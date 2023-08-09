@@ -31,12 +31,12 @@ namespace RubrikSecurityCloud.Types
         public System.Int64? EndTime { get; set; }
 
         //      C# -> System.Int32? Failed
-        // GraphQL -> failed: Int! (scalar)
+        // GraphQL -> failed: Int (scalar)
         [JsonProperty("failed")]
         public System.Int32? Failed { get; set; }
 
         //      C# -> System.Int32? InProgress
-        // GraphQL -> inProgress: Int! (scalar)
+        // GraphQL -> inProgress: Int (scalar)
         [JsonProperty("inProgress")]
         public System.Int32? InProgress { get; set; }
 
@@ -46,7 +46,7 @@ namespace RubrikSecurityCloud.Types
         public System.String? Message { get; set; }
 
         //      C# -> System.Int32? ObjectsWithoutSnapshot
-        // GraphQL -> objectsWithoutSnapshot: Int! (scalar)
+        // GraphQL -> objectsWithoutSnapshot: Int (scalar)
         [JsonProperty("objectsWithoutSnapshot")]
         public System.Int32? ObjectsWithoutSnapshot { get; set; }
 
@@ -56,7 +56,7 @@ namespace RubrikSecurityCloud.Types
         public System.Int32? Seq { get; set; }
 
         //      C# -> System.Int64? StartTime
-        // GraphQL -> startTime: Long! (scalar)
+        // GraphQL -> startTime: Long (scalar)
         [JsonProperty("startTime")]
         public System.Int64? StartTime { get; set; }
 
@@ -66,7 +66,7 @@ namespace RubrikSecurityCloud.Types
         public System.String? Status { get; set; }
 
         //      C# -> System.Int32? Total
-        // GraphQL -> total: Int! (scalar)
+        // GraphQL -> total: Int (scalar)
         [JsonProperty("total")]
         public System.Int32? Total { get; set; }
 
@@ -143,12 +143,12 @@ namespace RubrikSecurityCloud.Types
             s += ind + "endTime\n" ;
         }
         //      C# -> System.Int32? Failed
-        // GraphQL -> failed: Int! (scalar)
+        // GraphQL -> failed: Int (scalar)
         if (this.Failed != null) {
             s += ind + "failed\n" ;
         }
         //      C# -> System.Int32? InProgress
-        // GraphQL -> inProgress: Int! (scalar)
+        // GraphQL -> inProgress: Int (scalar)
         if (this.InProgress != null) {
             s += ind + "inProgress\n" ;
         }
@@ -158,7 +158,7 @@ namespace RubrikSecurityCloud.Types
             s += ind + "message\n" ;
         }
         //      C# -> System.Int32? ObjectsWithoutSnapshot
-        // GraphQL -> objectsWithoutSnapshot: Int! (scalar)
+        // GraphQL -> objectsWithoutSnapshot: Int (scalar)
         if (this.ObjectsWithoutSnapshot != null) {
             s += ind + "objectsWithoutSnapshot\n" ;
         }
@@ -168,7 +168,7 @@ namespace RubrikSecurityCloud.Types
             s += ind + "seq\n" ;
         }
         //      C# -> System.Int64? StartTime
-        // GraphQL -> startTime: Long! (scalar)
+        // GraphQL -> startTime: Long (scalar)
         if (this.StartTime != null) {
             s += ind + "startTime\n" ;
         }
@@ -178,7 +178,7 @@ namespace RubrikSecurityCloud.Types
             s += ind + "status\n" ;
         }
         //      C# -> System.Int32? Total
-        // GraphQL -> total: Int! (scalar)
+        // GraphQL -> total: Int (scalar)
         if (this.Total != null) {
             s += ind + "total\n" ;
         }
@@ -203,13 +203,13 @@ namespace RubrikSecurityCloud.Types
             this.EndTime = new System.Int64();
         }
         //      C# -> System.Int32? Failed
-        // GraphQL -> failed: Int! (scalar)
+        // GraphQL -> failed: Int (scalar)
         if (this.Failed == null && Exploration.Includes(parent + ".failed", true))
         {
             this.Failed = Int32.MinValue;
         }
         //      C# -> System.Int32? InProgress
-        // GraphQL -> inProgress: Int! (scalar)
+        // GraphQL -> inProgress: Int (scalar)
         if (this.InProgress == null && Exploration.Includes(parent + ".inProgress", true))
         {
             this.InProgress = Int32.MinValue;
@@ -221,7 +221,7 @@ namespace RubrikSecurityCloud.Types
             this.Message = "FETCH";
         }
         //      C# -> System.Int32? ObjectsWithoutSnapshot
-        // GraphQL -> objectsWithoutSnapshot: Int! (scalar)
+        // GraphQL -> objectsWithoutSnapshot: Int (scalar)
         if (this.ObjectsWithoutSnapshot == null && Exploration.Includes(parent + ".objectsWithoutSnapshot", true))
         {
             this.ObjectsWithoutSnapshot = Int32.MinValue;
@@ -233,7 +233,7 @@ namespace RubrikSecurityCloud.Types
             this.Seq = Int32.MinValue;
         }
         //      C# -> System.Int64? StartTime
-        // GraphQL -> startTime: Long! (scalar)
+        // GraphQL -> startTime: Long (scalar)
         if (this.StartTime == null && Exploration.Includes(parent + ".startTime", true))
         {
             this.StartTime = new System.Int64();
@@ -245,7 +245,7 @@ namespace RubrikSecurityCloud.Types
             this.Status = "FETCH";
         }
         //      C# -> System.Int32? Total
-        // GraphQL -> total: Int! (scalar)
+        // GraphQL -> total: Int (scalar)
         if (this.Total == null && Exploration.Includes(parent + ".total", true))
         {
             this.Total = Int32.MinValue;

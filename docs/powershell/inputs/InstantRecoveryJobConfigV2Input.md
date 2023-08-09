@@ -26,3 +26,9 @@ Supported in v5.1+
   - 
 - requiredRecoveryParameters: RequiredRecoveryParametersInput
   - 
+- migrationConfig: RelocateMountConfigV2Input
+  - Supported in v9.0+
+      Configuration for datastore migration.
+- shouldMigrateImmediately: System.Boolean
+  - Supported in v9.0+
+      Specifies whether to trigger datastore migration immediately when the Instant Recovery succeeds.

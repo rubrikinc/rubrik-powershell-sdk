@@ -20,16 +20,14 @@ namespace RubrikSecurityCloud.PowerShell.Private
     }
 
 
-    public class RscPSCmdlet : RscBasePSCmdlet
+    public class RscPSCmdlet : RscGqlPSCmdlet
     {
         internal RscGraphQLClient _rbkClient;
+        internal bool _hasConnection ;
 
-        internal Dictionary<string, string> _validOperations = null;
-
-
-        // _input is instantiated in BeginProcessing() here
-        // and initialized in the Invoke methods in derived classes.
-        internal RscCmdletInput _input = null;
+        public RscPSCmdlet()
+        {
+        }
 
         protected Dictionary<string, string> GetMetricTags()
         {
@@ -52,8 +50,9 @@ namespace RubrikSecurityCloud.PowerShell.Private
         protected override void BeginProcessing()
         {
             base.BeginProcessing();
-            this._input = new RscCmdletInput(this);
-            if (! this.GetInputs )
+            this._logger.Debug("GetInputs=" + this.GetInputs+" GetGqlRequest="+this.GetGqlRequest + " _hasConnection="+_hasConnection);
+            _hasConnection = ! ( this.GetInputs || this.GetGqlRequest );
+            if (_hasConnection)
             {
                 RetrieveConnection();
             }
@@ -62,6 +61,14 @@ namespace RubrikSecurityCloud.PowerShell.Private
         protected override void EndProcessing()
         {
             base.EndProcessing();
+            if (_gqlRequest != null &&_hasConnection)
+            {
+                this._logger.Debug($"Sending request {_opName} -> {_opReturnType}");
+                var result = this._rbkClient.Invoke(
+                    _gqlRequest, _gqlVars, _opReturnType, this._logger,
+                    GetMetricTags());
+                WriteObject(result, true);
+            }
         }
 
         protected void RetrieveConnection() 

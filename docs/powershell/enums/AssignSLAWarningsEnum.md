@@ -42,3 +42,4 @@ Warnings related to SLA Domain assignment.
 - SAP_HANA_RETENTION_LOCK_NOT_SUPPORTED_ON_CLUSTER_WARNING - Retention lock is not supported for SAP HANA workloads on the cluster.
 - AZURE_BLOB_EXCLUSIVE_SLA_ASSIGNMENT_WARNING - Azure Blob SLA is only assignable to Azure Storage Account.
 - SAP_HANA_CHANGE_RETENTION_NOT_SUPPORTED_WARNING
+- SAP_HANA_CASCADED_ARCHIVAL_NOT_SUPPORTED_ON_CLUSTER_WARNING - Cascaded Archival is not supported for SAP HANA workloads on the cluster.

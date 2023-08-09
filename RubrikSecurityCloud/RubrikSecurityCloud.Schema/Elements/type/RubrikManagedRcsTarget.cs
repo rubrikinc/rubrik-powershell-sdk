@@ -101,6 +101,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isArchived")]
         public System.Boolean? IsArchived { get; set; }
 
+        //      C# -> System.Boolean? IsBlobImmutabilityEnabled
+        // GraphQL -> isBlobImmutabilityEnabled: Boolean! (scalar)
+        [JsonProperty("isBlobImmutabilityEnabled")]
+        public System.Boolean? IsBlobImmutabilityEnabled { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
@@ -110,6 +115,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> runningTasks: Int (scalar)
         [JsonProperty("runningTasks")]
         public System.Int32? RunningTasks { get; set; }
+
+        //      C# -> System.Boolean? ShouldBypassProxy
+        // GraphQL -> shouldBypassProxy: Boolean! (scalar)
+        [JsonProperty("shouldBypassProxy")]
+        public System.Boolean? ShouldBypassProxy { get; set; }
 
         //      C# -> System.Int32? SpaceUsageAlertThreshold
         // GraphQL -> spaceUsageAlertThreshold: Int! (scalar)
@@ -177,8 +187,10 @@ namespace RubrikSecurityCloud.Types
         System.Int64? ImmutabilityPeriodDays = null,
         System.Boolean? IsActive = null,
         System.Boolean? IsArchived = null,
+        System.Boolean? IsBlobImmutabilityEnabled = null,
         System.String? Name = null,
         System.Int32? RunningTasks = null,
+        System.Boolean? ShouldBypassProxy = null,
         System.Int32? SpaceUsageAlertThreshold = null,
         System.Single? StorageConsumptionValue = null,
         System.String? SyncFailureReason = null,
@@ -237,11 +249,17 @@ namespace RubrikSecurityCloud.Types
         if ( IsArchived != null ) {
             this.IsArchived = IsArchived;
         }
+        if ( IsBlobImmutabilityEnabled != null ) {
+            this.IsBlobImmutabilityEnabled = IsBlobImmutabilityEnabled;
+        }
         if ( Name != null ) {
             this.Name = Name;
         }
         if ( RunningTasks != null ) {
             this.RunningTasks = RunningTasks;
+        }
+        if ( ShouldBypassProxy != null ) {
+            this.ShouldBypassProxy = ShouldBypassProxy;
         }
         if ( SpaceUsageAlertThreshold != null ) {
             this.SpaceUsageAlertThreshold = SpaceUsageAlertThreshold;
@@ -357,6 +375,11 @@ namespace RubrikSecurityCloud.Types
         if (this.IsArchived != null) {
             s += ind + "isArchived\n" ;
         }
+        //      C# -> System.Boolean? IsBlobImmutabilityEnabled
+        // GraphQL -> isBlobImmutabilityEnabled: Boolean! (scalar)
+        if (this.IsBlobImmutabilityEnabled != null) {
+            s += ind + "isBlobImmutabilityEnabled\n" ;
+        }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
@@ -366,6 +389,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> runningTasks: Int (scalar)
         if (this.RunningTasks != null) {
             s += ind + "runningTasks\n" ;
+        }
+        //      C# -> System.Boolean? ShouldBypassProxy
+        // GraphQL -> shouldBypassProxy: Boolean! (scalar)
+        if (this.ShouldBypassProxy != null) {
+            s += ind + "shouldBypassProxy\n" ;
         }
         //      C# -> System.Int32? SpaceUsageAlertThreshold
         // GraphQL -> spaceUsageAlertThreshold: Int! (scalar)
@@ -526,6 +554,12 @@ namespace RubrikSecurityCloud.Types
         {
             this.IsArchived = true;
         }
+        //      C# -> System.Boolean? IsBlobImmutabilityEnabled
+        // GraphQL -> isBlobImmutabilityEnabled: Boolean! (scalar)
+        if (this.IsBlobImmutabilityEnabled == null && Exploration.Includes(parent + ".isBlobImmutabilityEnabled", true))
+        {
+            this.IsBlobImmutabilityEnabled = true;
+        }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
@@ -537,6 +571,12 @@ namespace RubrikSecurityCloud.Types
         if (this.RunningTasks == null && Exploration.Includes(parent + ".runningTasks", true))
         {
             this.RunningTasks = Int32.MinValue;
+        }
+        //      C# -> System.Boolean? ShouldBypassProxy
+        // GraphQL -> shouldBypassProxy: Boolean! (scalar)
+        if (this.ShouldBypassProxy == null && Exploration.Includes(parent + ".shouldBypassProxy", true))
+        {
+            this.ShouldBypassProxy = true;
         }
         //      C# -> System.Int32? SpaceUsageAlertThreshold
         // GraphQL -> spaceUsageAlertThreshold: Int! (scalar)

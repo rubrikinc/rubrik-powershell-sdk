@@ -1,4 +1,6 @@
 ### MountStatusEnum
-- MOUNT_STATUS_UNSPECIFIED
-- MOUNTED
-- MOUNTING
+Mount status enum.
+
+- MOUNT_STATUS_UNSPECIFIED - Unspecified Mount Status.
+- MOUNTED - Mount Status Mounted.
+- MOUNTING - Mount Status Mounting.

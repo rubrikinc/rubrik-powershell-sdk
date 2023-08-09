@@ -96,6 +96,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("hasPermissions")]
         public System.Boolean? HasPermissions { get; set; }
 
+        //      C# -> System.Int64? HostLogRetention
+        // GraphQL -> hostLogRetention: Long! (scalar)
+        [JsonProperty("hostLogRetention")]
+        public System.Int64? HostLogRetention { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         [JsonProperty("id")]
@@ -326,6 +331,7 @@ namespace RubrikSecurityCloud.Types
         System.String? DagId = null,
         System.Boolean? HasLogConfigFromSla = null,
         System.Boolean? HasPermissions = null,
+        System.Int64? HostLogRetention = null,
         System.String? Id = null,
         System.Boolean? IsInAvailabilityGroup = null,
         System.Boolean? IsLogShippingSecondary = null,
@@ -413,6 +419,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( HasPermissions != null ) {
             this.HasPermissions = HasPermissions;
+        }
+        if ( HostLogRetention != null ) {
+            this.HostLogRetention = HostLogRetention;
         }
         if ( Id != null ) {
             this.Id = Id;
@@ -636,6 +645,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> hasPermissions: Boolean! (scalar)
         if (this.HasPermissions != null) {
             s += ind + "hasPermissions\n" ;
+        }
+        //      C# -> System.Int64? HostLogRetention
+        // GraphQL -> hostLogRetention: Long! (scalar)
+        if (this.HostLogRetention != null) {
+            s += ind + "hostLogRetention\n" ;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
@@ -1020,6 +1034,12 @@ namespace RubrikSecurityCloud.Types
         if (this.HasPermissions == null && Exploration.Includes(parent + ".hasPermissions", true))
         {
             this.HasPermissions = true;
+        }
+        //      C# -> System.Int64? HostLogRetention
+        // GraphQL -> hostLogRetention: Long! (scalar)
+        if (this.HostLogRetention == null && Exploration.Includes(parent + ".hostLogRetention", true))
+        {
+            this.HostLogRetention = new System.Int64();
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)

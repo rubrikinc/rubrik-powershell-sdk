@@ -55,6 +55,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
+        //      C# -> System.Boolean? IsUserAccessEnabledObject
+        // GraphQL -> isUserAccessEnabledObject: Boolean! (scalar)
+        [JsonProperty("isUserAccessEnabledObject")]
+        public System.Boolean? IsUserAccessEnabledObject { get; set; }
+
         //      C# -> System.String? SnapshotFid
         // GraphQL -> snapshotFid: String! (scalar)
         [JsonProperty("snapshotFid")]
@@ -147,6 +152,7 @@ namespace RubrikSecurityCloud.Types
         DataGovShareType? ShareType = null,
         HierarchyObject? Snappable = null,
         System.String? Id = null,
+        System.Boolean? IsUserAccessEnabledObject = null,
         System.String? SnapshotFid = null,
         System.Int64? SnapshotTimestamp = null,
         System.String? TimeContext = null,
@@ -184,6 +190,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Id != null ) {
             this.Id = Id;
+        }
+        if ( IsUserAccessEnabledObject != null ) {
+            this.IsUserAccessEnabledObject = IsUserAccessEnabledObject;
         }
         if ( SnapshotFid != null ) {
             this.SnapshotFid = SnapshotFid;
@@ -277,6 +286,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
             s += ind + "id\n" ;
+        }
+        //      C# -> System.Boolean? IsUserAccessEnabledObject
+        // GraphQL -> isUserAccessEnabledObject: Boolean! (scalar)
+        if (this.IsUserAccessEnabledObject != null) {
+            s += ind + "isUserAccessEnabledObject\n" ;
         }
         //      C# -> System.String? SnapshotFid
         // GraphQL -> snapshotFid: String! (scalar)
@@ -440,6 +454,12 @@ namespace RubrikSecurityCloud.Types
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
             this.Id = "FETCH";
+        }
+        //      C# -> System.Boolean? IsUserAccessEnabledObject
+        // GraphQL -> isUserAccessEnabledObject: Boolean! (scalar)
+        if (this.IsUserAccessEnabledObject == null && Exploration.Includes(parent + ".isUserAccessEnabledObject", true))
+        {
+            this.IsUserAccessEnabledObject = true;
         }
         //      C# -> System.String? SnapshotFid
         // GraphQL -> snapshotFid: String! (scalar)

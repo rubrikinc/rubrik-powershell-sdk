@@ -1,115 +1,120 @@
 ### ActivityObjectTypeEnum
+The list of object types for activities.
+
 - ACTIVE_DIRECTORY_DOMAIN - Specifies that the activity object type is related to Activity Directory domain.
 - K8S_CLUSTER - Specifies that the activity object type is Kubernetes Cluster.
-- KuprNamespace
-- OracleRac
-- AzureSqlManagedInstanceDatabase
-- HypervVm
-- DataLocation
+- KuprNamespace - Specifies that the activity object type is Kubernetes Namespace.
+- OracleRac - Specifies that the activity object type is Oracle RAC.
+- AzureSqlManagedInstanceDatabase - Specifies that the activity object type is Azure SQL Managed Instance Database.
+- HypervVm - Specifies that the activity object type is Hyperv Virtual Machine.
+- DataLocation - Specifies that the activity object type is Data Location.
 - CLOUD_DIRECT_NAS_EXPORT - Specifies that the activity object type is Cloud Direct NAS export.
-- HypervScvmm
-- O365Onedrive
-- Hdfs
+- HypervScvmm - Specifies that the activity object type is HyperV SCVMM.
+- O365Onedrive - Specifies that the activity object type is O365 OneDrive.
+- Hdfs - Specifies that the activity object type is HDFS.
 - CASSANDRA_SOURCE - Specifies that the activity object type is Cassandra source.
-- AppFlows
+- AppFlows - Specifies that the activity object type is Orchestrated Application Recovery.
 - AWS_NATIVE_S3_BUCKET - Specifies that the activity object type is AWS S3 Bucket.
-- SapHanaSystem
-- KuprCluster
-- GcpNativeProject
-- AwsNativeRdsInstance
-- O365Organization
-- VolumeGroup
+- SapHanaSystem - Specifies that the activity object type is Sap Hana System.
+- KuprCluster - Specifies that the activity object type is Kubernetes Cluster.
+- GcpNativeProject - Specifies that the activity object type is GCP Native Project.
+- AwsNativeRdsInstance - Specifies that the activity object type is AWS Native RDS Instance.
+- O365Organization - Specifies that the activity object type is O365 Organization.
+- VolumeGroup - Specifies that the activity object type is Volume Group.
 - MONGO_COLLECTION - Specifies that the activity object type is MongoDB collection.
-- RubrikEc2Instance
-- O365Group
-- ObjectProtection
-- NutanixVm
+- RubrikEc2Instance - Specifies that the activity object type is Rubrik EC2 Instance.
+- O365Group - Specifies that the activity object type is O365 Group.
+- ObjectProtection - Specifies that the activity object type is Object Protection.
+- NutanixVm - Specifies that the activity object type is Nutanix Virtual Machine.
+- ATLASSIAN_SITE - Specifies that the activity object type is Atlassian site.
 - MONGODB_SOURCE - Specifies that the activity object type is MongoDB source.
-- HypervServer
-- O365SharePointList
-- Vcenter
-- AzureNativeDisk
-- PublicCloudMachineInstance
-- O365SharePointDrive
-- ShareFileset
+- HypervServer - Specifies that the activity object type is HyperV Server.
+- O365SharePointList - Specifies that the activity object type is O365 SharePoint List.
+- Vcenter - Specifies that the activity object type is vCenter.
+- AzureNativeDisk - Specifies that the activity object type is Azure Native Disk.
+- PublicCloudMachineInstance - Specifies that the activity object type is Public Cloud Machine Instance.
+- O365SharePointDrive - Specifies that the activity object type is O365 SharePoint Drive.
+- ShareFileset - Specifies that the activity object type is Share Fileset.
 - MONGODB_COLLECTION - Specifies that the activity object type is MongoDB collection.
-- AwsNativeEc2Instance
-- Ldap
-- WEBHOOK
-- Upgrade
-- LinuxHost
-- O365Mailbox
-- AwsNativeAccount
+- AwsNativeEc2Instance - Specifies that the activity object type is AWS Native EC2 Instance.
+- Ldap - Specifies that the activity object type is LDAP.
+- WEBHOOK - Specifies that the activity object type is Webhook.
+- Upgrade - Specifies that the activity object type is Upgrade.
+- LinuxHost - Specifies that the activity object type is Linux Host.
+- O365Mailbox - Specifies that the activity object type is O365 Mailbox.
+- AwsNativeAccount - Specifies that the activity object type is AWS Native Account.
 - AZURE_STORAGE_ACCOUNT - Specifies that the activity object type is Azure Storage Account.
 - VMWARE_HOST - Specifies that the activity object type is a VSphere host.
-- PolarisAccount
-- AzureSqlManagedInstance
-- AzureNativeVm
-- O365Team
-- CloudNativeVm
-- WindowsFileset
-- StorageArray
-- Db2Database
-- AuthDomain
+- PolarisAccount - Specifies that the activity object type is RSC Account.
+- AzureSqlManagedInstance - Specifies that the activity object type is Azure SQL Managed Instance.
+- AzureNativeVm - Specifies that the activity object type is Azure Native Virtual Machine.
+- O365Team - Specifies that the activity object type is O365 Team.
+- CloudNativeVm - Specifies that the activity object type is Cloud Native Virtual Machine.
+- WindowsFileset - Specifies that the activity object type is Windows Fileset.
+- StorageArray - Specifies that the activity object type is Storage Array.
+- Db2Database - Specifies that the activity object type is Db2 Database.
+- AuthDomain - Specifies that the activity object type is Auth Domain.
 - CERTIFICATE_MANAGEMENT - Specifies that the activity object type is a certificate.
-- Mssql
-- NAS_FILESET
-- CloudNativeVirtualMachine
+- Mssql - Specifies that the activity object type is MSSQL.
+- NAS_FILESET - Specifies that the activity object type is NAS Fileset.
+- CloudNativeVirtualMachine - Specifies that the activity object type is Cloud Native Virtual Machine.
 - AZURE_AD_DIRECTORY - Specifies that the activity object type is Azure AD Directory.
-- VmwareVm
-- JobInstance
-- SlaDomain
-- AwsEventType
+- VmwareVm - Specifies that the activity object type is VMware Virtual Machine.
+- JobInstance - Specifies that the activity object type is Job Instance.
+- SlaDomain - Specifies that the activity object type is SLA Domain.
+- AwsEventType - Specifies that the activity object type is AWS Event Type.
 - MONGODB_DATABASE - Specifies that the activity object type is MongoDB database.
-- NasSystem
-- Exocompute
-- SmbDomain
+- NasSystem - Specifies that the activity object type is NAS System.
+- Exocompute - Specifies that the activity object type is Exocompute.
+- SmbDomain - Specifies that the activity object type is SMB Domain.
 - NUTANIX_PRISM_CENTRAL - Specifies that the activity object type is Nutanix Prism Central.
-- O365Calendar
+- O365Calendar - Specifies that the activity object type is O365 Calendar.
 - MONGO_SOURCE - Specifies that the activity object type is MongoDB source.
-- AwsNativeEbsVolume
+- AwsNativeEbsVolume - Specifies that the activity object type is AWS Native EBS Volume.
 - ACTIVE_DIRECTORY_DOMAIN_CONTROLLER - Specifies that the activity object type is related to Activity Directory domain controller.
 - CASSANDRA_COLUMN_FAMILY - Specifies that the activity object type is Cassandra column family.
 - ENCRYPTION_MANAGEMENT - Specifies that the activity object type is related to Encryption Management.
-- ManagedVolume
-- Vcd
-- AzureSqlDatabase
-- Db2Instance
-- LinuxFileset
-- O365Site
-- NasHost
-- User
-- RubrikEbsVolume
-- VcdVapp
-- WindowsHost
-- Storm
-- VmwareComputeCluster
-- ExchangeDatabase
-- CapacityBundle
+- ManagedVolume - Specifies that the activity object type is Managed Volume.
+- Vcd - Specifies that the activity object type is VCD.
+- AzureSqlDatabase - Specifies that the activity object type is Azure SQL Database.
+- Db2Instance - Specifies that the activity object type is Db2 Instance.
+- LinuxFileset - Specifies that the activity object type is Linux Fileset.
+- O365Site - Specifies that the activity object type is O365 Site.
+- NasHost - Specifies that the activity object type is NAS Host.
+- User - Specifies that the activity object type is User.
+- RubrikEbsVolume - Specifies that the activity object type is Rubrik EBS Volume.
+- VcdVapp - Specifies that the activity object type is VCD VApp.
+- WindowsHost - Specifies that the activity object type is Windows Host.
+- Storm - Specifies that the activity object type is Storm.
+- VmwareComputeCluster - Specifies that the activity object type is VMware Compute Cluster.
+- ExchangeDatabase - Specifies that the activity object type is Exchange Database.
+- CapacityBundle - Specifies that the activity object type is Capacity Bundle.
 - MONGO_DATABASE - Specifies that the activity object type is MongoDB database.
-- Ec2Instance
-- StorageArrayVolumeGroup
+- Ec2Instance - Specifies that the activity object type is EC2 Instance.
+- JIRA_PROJECT - Specifies that the activity object type is Jira project.
+- StorageArrayVolumeGroup - Specifies that the activity object type is Storage Array Volume Group.
 - K8S_RESOURCE_SET - Specifies that the activity object type is Kubernetes Resource Set.
-- SnapMirrorCloud
-- GcpNativeGceInstance
-- Envoy
-- Cluster
-- AppBlueprint
-- AzureNativeSubscription
-- Certificate
-- SamlSso
-- OracleDb
-- FailoverClusterApp
-- Host
-- GcpNativeDisk
-- SupportBundle
-- NutanixCluster
-- ComputeInstance
+- SnapMirrorCloud - Specifies that the activity object type is Snap Mirror Cloud.
+- GcpNativeGceInstance - Specifies that the activity object type is GCP Native GCE Instance.
+- Envoy - Specifies that the activity object type is Envoy.
+- Cluster - Specifies that the activity object type is Rubrik Cluster.
+- AppBlueprint - Specifies that the activity object type is App Blueprint.
+- AzureNativeSubscription - Specifies that the activity object type is Azure Native Subscription.
+- Certificate - Specifies that the activity object type is Certificate.
+- SamlSso - Specifies that the activity object type is Saml SSO.
+- OracleDb - Specifies that the activity object type is Oracle Database.
+- FailoverClusterApp - Specifies that the activity object type is Failover Cluster App.
+- Host - Specifies that the activity object type is Host.
+- GcpNativeDisk - Specifies that the activity object type is GCP Native Disk.
+- JIRA_SETTINGS - Specifies that the activity object type is Jira settings.
+- SupportBundle - Specifies that the activity object type is Support Bundle.
+- NutanixCluster - Specifies that the activity object type is Nutanix Cluster.
+- ComputeInstance - Specifies that the activity object type is Compute Instance.
 - CASSANDRA_KEYSPACE - Specifies that the activity object type is Cassandra keyspace.
-- SapHanaDb
-- AwsAccount
-- Oracle
-- OracleHost
-- UnknownObjectType
-- AzureSqlDatabaseServer
-- StorageLocation
+- SapHanaDb - Specifies that the activity object type is Sap Hana Database.
+- AwsAccount - Specifies that the activity object type is AWS Account.
+- Oracle - Specifies that the activity object type is Oracle.
+- OracleHost - Specifies that the activity object type is Oracle Host.
+- UnknownObjectType - Specifies that the activity object type is Unknown Object Type.
+- AzureSqlDatabaseServer - Specifies that the activity object type is Azure SQL Database Server.
+- StorageLocation - Specifies that the activity object type is Storage Location.

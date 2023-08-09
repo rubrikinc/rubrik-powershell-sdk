@@ -140,33 +140,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "ActivitySeriesInput!"),
             };
-            ActivitySeries? fields = null ;
-            if (this.Field != null)
-            {
+            ActivitySeries? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (ActivitySeries)psObject.BaseObject;
+                    fieldSpecObj = (ActivitySeries)psObject.BaseObject;
                 } else {
-                    fields = (ActivitySeries)this.Field;
+                    fieldSpecObj = (ActivitySeries)this.Field;
                 }
             }
-            string document = Query.ActivitySeries(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.ActivitySeries");
-            var parameters = "($input: ActivitySeriesInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryActivitySeries" + parameters + "{" + document + "}",
-                OperationName = "QueryActivitySeries",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "ActivitySeries", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.ActivitySeries(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryActivitySeries",
+                "($input: ActivitySeriesInput!)",
+                fieldSpecDoc,
+                "ActivitySeries"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -190,33 +181,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("sortBy", "ActivitySeriesSortField"),
                 Tuple.Create("filters", "ActivitySeriesFilter"),
             };
-            ActivitySeriesConnection? fields = null ;
-            if (this.Field != null)
-            {
+            ActivitySeriesConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (ActivitySeriesConnection)psObject.BaseObject;
+                    fieldSpecObj = (ActivitySeriesConnection)psObject.BaseObject;
                 } else {
-                    fields = (ActivitySeriesConnection)this.Field;
+                    fieldSpecObj = (ActivitySeriesConnection)this.Field;
                 }
             }
-            string document = Query.ActivitySeriesConnection(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.ActivitySeriesConnection");
-            var parameters = "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: ActivitySeriesSortField,$filters: ActivitySeriesFilter)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryActivitySeriesConnection" + parameters + "{" + document + "}",
-                OperationName = "QueryActivitySeriesConnection",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "ActivitySeriesConnection", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.ActivitySeriesConnection(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryActivitySeriesConnection",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: ActivitySeriesSortField,$filters: ActivitySeriesFilter)",
+                fieldSpecDoc,
+                "ActivitySeriesConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -240,33 +222,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("filters", "ActivitySeriesFilterInput"),
                 Tuple.Create("timezoneOffset", "Float"),
             };
-            ActivitySeriesGroupByConnection? fields = null ;
-            if (this.Field != null)
-            {
+            ActivitySeriesGroupByConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (ActivitySeriesGroupByConnection)psObject.BaseObject;
+                    fieldSpecObj = (ActivitySeriesGroupByConnection)psObject.BaseObject;
                 } else {
-                    fields = (ActivitySeriesGroupByConnection)this.Field;
+                    fieldSpecObj = (ActivitySeriesGroupByConnection)this.Field;
                 }
             }
-            string document = Query.ActivitySeriesGroupByConnection(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.ActivitySeriesGroupByConnection");
-            var parameters = "($first: Int,$after: String,$last: Int,$before: String,$groupBy: ActivitySeriesGroupByEnum!,$filters: ActivitySeriesFilterInput,$timezoneOffset: Float)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryActivitySeriesGroupByConnection" + parameters + "{" + document + "}",
-                OperationName = "QueryActivitySeriesGroupByConnection",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "ActivitySeriesGroupByConnection", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.ActivitySeriesGroupByConnection(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryActivitySeriesGroupByConnection",
+                "($first: Int,$after: String,$last: Int,$before: String,$groupBy: ActivitySeriesGroupByEnum!,$filters: ActivitySeriesFilterInput,$timezoneOffset: Float)",
+                fieldSpecDoc,
+                "ActivitySeriesGroupByConnection"
+            );
         }
 
 

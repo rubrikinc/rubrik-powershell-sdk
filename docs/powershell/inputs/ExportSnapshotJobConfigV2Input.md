@@ -11,8 +11,7 @@ Supported in v5.1+
   - Supported in v5.1+
       A Boolean value that determines whether the new virtual machine created from a snapshot is registered with the vCenter Server. When this value is 'true', the registration is removed from the vCenter Server. When this value is 'false', the registration is kept on the vCenter Server. The default is 'false'.
 - clusterId: System.String
-  - Supported in v5.2+
-      ID of the cluster to export the new virtual machine to. virtual machine.
+  - ID of the Rubrik cluster to export the new virtual machine to.
 - resourcePoolId: System.String
   - Supported in v5.2+
       ID of the resource pool to export the new virtual machine to.
@@ -26,6 +25,8 @@ Supported in v5.1+
   - 
 - requiredRecoveryParameters: RequiredRecoveryParametersInput
   - 
+- folderId: System.String
+  - ID of the virtual machine folder to export the new virtual machine to.
 - datastoreId: System.String
   - Required. Supported in v5.1+
       ID of the datastore to assign to the exported virtual machine.

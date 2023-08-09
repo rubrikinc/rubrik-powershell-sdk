@@ -120,24 +120,24 @@ Create a request to delete a Live Mount virtual machine.
 
         
         // -------------------------------------------------------------------
-        // DownloadVirtualMachineFile parameter set
+        // DownloadVirtualMachineFiles parameter set
         //
         // [GraphQL: downloadVsphereVirtualMachineFiles]
         //
         [Parameter(
-            ParameterSetName = "DownloadVirtualMachineFile",
+            ParameterSetName = "DownloadVirtualMachineFiles",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
 @"Download Virtual Machine files from a snapshot
 
-Supported in v9.0
+Supported in v9.0+
 Start an asynchronous job to download multiple Virtual Machine files, such as .vmdk, .vmx, and .nvram files, from the specified Virtual Machine snapshot.
 [GraphQL: downloadVsphereVirtualMachineFiles]",
             Position = 0
         )]
-        public SwitchParameter DownloadVirtualMachineFile { get; set; }
+        public SwitchParameter DownloadVirtualMachineFiles { get; set; }
 
         
         // -------------------------------------------------------------------
@@ -224,8 +224,8 @@ Updates the name, condition, and description of the specified multi-tag filter.
                     case "ExportSnapshotToStandaloneHost":
                         this.ProcessRecord_ExportSnapshotToStandaloneHost();
                         break;
-                    case "DownloadVirtualMachineFile":
-                        this.ProcessRecord_DownloadVirtualMachineFile();
+                    case "DownloadVirtualMachineFiles":
+                        this.ProcessRecord_DownloadVirtualMachineFiles();
                         break;
                     case "CreateAdvancedTag":
                         this.ProcessRecord_CreateAdvancedTag();
@@ -293,9 +293,9 @@ Updates the name, condition, and description of the specified multi-tag filter.
 
         // This parameter set invokes a single graphql operation:
         // downloadVsphereVirtualMachineFiles.
-        protected void ProcessRecord_DownloadVirtualMachineFile()
+        protected void ProcessRecord_DownloadVirtualMachineFiles()
         {
-            this._logger.name += " -DownloadVirtualMachineFile";
+            this._logger.name += " -DownloadVirtualMachineFiles";
             // Invoke graphql operation downloadVsphereVirtualMachineFiles
             InvokeMutationDownloadVsphereVirtualMachineFiles();
         }
@@ -335,33 +335,24 @@ Updates the name, condition, and description of the specified multi-tag filter.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereOnDemandSnapshotInput!"),
             };
-            AsyncRequestStatus? fields = null ;
-            if (this.Field != null)
-            {
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (AsyncRequestStatus)psObject.BaseObject;
+                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
                 } else {
-                    fields = (AsyncRequestStatus)this.Field;
+                    fieldSpecObj = (AsyncRequestStatus)this.Field;
                 }
             }
-            string document = Mutation.VsphereOnDemandSnapshot(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.VsphereOnDemandSnapshot");
-            var parameters = "($input: VsphereOnDemandSnapshotInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "mutation MutationVsphereOnDemandSnapshot" + parameters + "{" + document + "}",
-                OperationName = "MutationVsphereOnDemandSnapshot",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "AsyncRequestStatus", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Mutation.VsphereOnDemandSnapshot(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationVsphereOnDemandSnapshot",
+                "($input: VsphereOnDemandSnapshotInput!)",
+                fieldSpecDoc,
+                "AsyncRequestStatus"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -371,33 +362,24 @@ Updates the name, condition, and description of the specified multi-tag filter.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereBulkOnDemandSnapshotInput!"),
             };
-            BatchAsyncRequestStatus? fields = null ;
-            if (this.Field != null)
-            {
+            BatchAsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (BatchAsyncRequestStatus)psObject.BaseObject;
+                    fieldSpecObj = (BatchAsyncRequestStatus)psObject.BaseObject;
                 } else {
-                    fields = (BatchAsyncRequestStatus)this.Field;
+                    fieldSpecObj = (BatchAsyncRequestStatus)this.Field;
                 }
             }
-            string document = Mutation.VsphereBulkOnDemandSnapshot(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.VsphereBulkOnDemandSnapshot");
-            var parameters = "($input: VsphereBulkOnDemandSnapshotInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "mutation MutationVsphereBulkOnDemandSnapshot" + parameters + "{" + document + "}",
-                OperationName = "MutationVsphereBulkOnDemandSnapshot",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "BatchAsyncRequestStatus", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Mutation.VsphereBulkOnDemandSnapshot(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationVsphereBulkOnDemandSnapshot",
+                "($input: VsphereBulkOnDemandSnapshotInput!)",
+                fieldSpecDoc,
+                "BatchAsyncRequestStatus"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -407,33 +389,24 @@ Updates the name, condition, and description of the specified multi-tag filter.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteVsphereLiveMountInput!"),
             };
-            AsyncRequestStatus? fields = null ;
-            if (this.Field != null)
-            {
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (AsyncRequestStatus)psObject.BaseObject;
+                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
                 } else {
-                    fields = (AsyncRequestStatus)this.Field;
+                    fieldSpecObj = (AsyncRequestStatus)this.Field;
                 }
             }
-            string document = Mutation.DeleteVsphereLiveMount(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.DeleteVsphereLiveMount");
-            var parameters = "($input: DeleteVsphereLiveMountInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "mutation MutationDeleteVsphereLiveMount" + parameters + "{" + document + "}",
-                OperationName = "MutationDeleteVsphereLiveMount",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "AsyncRequestStatus", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Mutation.DeleteVsphereLiveMount(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationDeleteVsphereLiveMount",
+                "($input: DeleteVsphereLiveMountInput!)",
+                fieldSpecDoc,
+                "AsyncRequestStatus"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -443,33 +416,24 @@ Updates the name, condition, and description of the specified multi-tag filter.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereExportSnapshotToStandaloneHostV2Input!"),
             };
-            AsyncRequestStatus? fields = null ;
-            if (this.Field != null)
-            {
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (AsyncRequestStatus)psObject.BaseObject;
+                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
                 } else {
-                    fields = (AsyncRequestStatus)this.Field;
+                    fieldSpecObj = (AsyncRequestStatus)this.Field;
                 }
             }
-            string document = Mutation.VsphereExportSnapshotToStandaloneHostV2(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.VsphereExportSnapshotToStandaloneHostV2");
-            var parameters = "($input: VsphereExportSnapshotToStandaloneHostV2Input!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "mutation MutationVsphereExportSnapshotToStandaloneHostV2" + parameters + "{" + document + "}",
-                OperationName = "MutationVsphereExportSnapshotToStandaloneHostV2",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "AsyncRequestStatus", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Mutation.VsphereExportSnapshotToStandaloneHostV2(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationVsphereExportSnapshotToStandaloneHostV2",
+                "($input: VsphereExportSnapshotToStandaloneHostV2Input!)",
+                fieldSpecDoc,
+                "AsyncRequestStatus"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -499,33 +463,24 @@ Updates the name, condition, and description of the specified multi-tag filter.
                 Tuple.Create("hostUsername", "String!"),
                 Tuple.Create("hostPassword", "String!"),
             };
-            VsphereAsyncRequestStatus? fields = null ;
-            if (this.Field != null)
-            {
+            VsphereAsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (VsphereAsyncRequestStatus)psObject.BaseObject;
+                    fieldSpecObj = (VsphereAsyncRequestStatus)psObject.BaseObject;
                 } else {
-                    fields = (VsphereAsyncRequestStatus)this.Field;
+                    fieldSpecObj = (VsphereAsyncRequestStatus)this.Field;
                 }
             }
-            string document = Mutation.VsphereExportSnapshotToStandaloneHost(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.VsphereExportSnapshotToStandaloneHost");
-            var parameters = "($snapshotFid: UUID!,$vmName: String,$disableNetwork: Boolean,$removeNetworkDevices: Boolean,$powerOn: Boolean,$keepMacAddresses: Boolean,$hostIpAddress: String!,$datastoreName: String!,$hostUsername: String!,$hostPassword: String!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "mutation MutationVsphereExportSnapshotToStandaloneHost" + parameters + "{" + document + "}",
-                OperationName = "MutationVsphereExportSnapshotToStandaloneHost",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "VsphereAsyncRequestStatus", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Mutation.VsphereExportSnapshotToStandaloneHost(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationVsphereExportSnapshotToStandaloneHost",
+                "($snapshotFid: UUID!,$vmName: String,$disableNetwork: Boolean,$removeNetworkDevices: Boolean,$powerOn: Boolean,$keepMacAddresses: Boolean,$hostIpAddress: String!,$datastoreName: String!,$hostUsername: String!,$hostPassword: String!)",
+                fieldSpecDoc,
+                "VsphereAsyncRequestStatus"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -535,33 +490,24 @@ Updates the name, condition, and description of the specified multi-tag filter.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DownloadVsphereVirtualMachineFilesInput!"),
             };
-            AsyncRequestStatus? fields = null ;
-            if (this.Field != null)
-            {
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (AsyncRequestStatus)psObject.BaseObject;
+                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
                 } else {
-                    fields = (AsyncRequestStatus)this.Field;
+                    fieldSpecObj = (AsyncRequestStatus)this.Field;
                 }
             }
-            string document = Mutation.DownloadVsphereVirtualMachineFiles(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.DownloadVsphereVirtualMachineFiles");
-            var parameters = "($input: DownloadVsphereVirtualMachineFilesInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "mutation MutationDownloadVsphereVirtualMachineFiles" + parameters + "{" + document + "}",
-                OperationName = "MutationDownloadVsphereVirtualMachineFiles",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "AsyncRequestStatus", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Mutation.DownloadVsphereVirtualMachineFiles(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationDownloadVsphereVirtualMachineFiles",
+                "($input: DownloadVsphereVirtualMachineFilesInput!)",
+                fieldSpecDoc,
+                "AsyncRequestStatus"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -571,33 +517,24 @@ Updates the name, condition, and description of the specified multi-tag filter.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CreateVsphereAdvancedTagInput!"),
             };
-            CreateVsphereAdvancedTagReply? fields = null ;
-            if (this.Field != null)
-            {
+            CreateVsphereAdvancedTagReply? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (CreateVsphereAdvancedTagReply)psObject.BaseObject;
+                    fieldSpecObj = (CreateVsphereAdvancedTagReply)psObject.BaseObject;
                 } else {
-                    fields = (CreateVsphereAdvancedTagReply)this.Field;
+                    fieldSpecObj = (CreateVsphereAdvancedTagReply)this.Field;
                 }
             }
-            string document = Mutation.CreateVsphereAdvancedTag(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.CreateVsphereAdvancedTag");
-            var parameters = "($input: CreateVsphereAdvancedTagInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "mutation MutationCreateVsphereAdvancedTag" + parameters + "{" + document + "}",
-                OperationName = "MutationCreateVsphereAdvancedTag",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "CreateVsphereAdvancedTagReply", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Mutation.CreateVsphereAdvancedTag(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationCreateVsphereAdvancedTag",
+                "($input: CreateVsphereAdvancedTagInput!)",
+                fieldSpecDoc,
+                "CreateVsphereAdvancedTagReply"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -607,33 +544,24 @@ Updates the name, condition, and description of the specified multi-tag filter.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteVsphereAdvancedTagInput!"),
             };
-            RequestSuccess? fields = null ;
-            if (this.Field != null)
-            {
+            RequestSuccess? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (RequestSuccess)psObject.BaseObject;
+                    fieldSpecObj = (RequestSuccess)psObject.BaseObject;
                 } else {
-                    fields = (RequestSuccess)this.Field;
+                    fieldSpecObj = (RequestSuccess)this.Field;
                 }
             }
-            string document = Mutation.DeleteVsphereAdvancedTag(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.DeleteVsphereAdvancedTag");
-            var parameters = "($input: DeleteVsphereAdvancedTagInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "mutation MutationDeleteVsphereAdvancedTag" + parameters + "{" + document + "}",
-                OperationName = "MutationDeleteVsphereAdvancedTag",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "RequestSuccess", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Mutation.DeleteVsphereAdvancedTag(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationDeleteVsphereAdvancedTag",
+                "($input: DeleteVsphereAdvancedTagInput!)",
+                fieldSpecDoc,
+                "RequestSuccess"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -643,33 +571,24 @@ Updates the name, condition, and description of the specified multi-tag filter.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpdateVsphereAdvancedTagInput!"),
             };
-            UpdateVsphereAdvancedTagReply? fields = null ;
-            if (this.Field != null)
-            {
+            UpdateVsphereAdvancedTagReply? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (UpdateVsphereAdvancedTagReply)psObject.BaseObject;
+                    fieldSpecObj = (UpdateVsphereAdvancedTagReply)psObject.BaseObject;
                 } else {
-                    fields = (UpdateVsphereAdvancedTagReply)this.Field;
+                    fieldSpecObj = (UpdateVsphereAdvancedTagReply)this.Field;
                 }
             }
-            string document = Mutation.UpdateVsphereAdvancedTag(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.UpdateVsphereAdvancedTag");
-            var parameters = "($input: UpdateVsphereAdvancedTagInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "mutation MutationUpdateVsphereAdvancedTag" + parameters + "{" + document + "}",
-                OperationName = "MutationUpdateVsphereAdvancedTag",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "UpdateVsphereAdvancedTagReply", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Mutation.UpdateVsphereAdvancedTag(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationUpdateVsphereAdvancedTag",
+                "($input: UpdateVsphereAdvancedTagInput!)",
+                fieldSpecDoc,
+                "UpdateVsphereAdvancedTagReply"
+            );
         }
 
 

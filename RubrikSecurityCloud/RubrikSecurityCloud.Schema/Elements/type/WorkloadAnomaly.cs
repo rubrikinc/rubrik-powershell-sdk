@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> AnomalyType? AnomalyType
+        // GraphQL -> anomalyType: AnomalyType! (enum)
+        [JsonProperty("anomalyType")]
+        public AnomalyType? AnomalyType { get; set; }
+
         //      C# -> EncryptionLevel? Encryption
         // GraphQL -> encryption: EncryptionLevel! (enum)
         [JsonProperty("encryption")]
@@ -50,6 +55,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("anomalousSnapshotId")]
         public System.String? AnomalousSnapshotId { get; set; }
 
+        //      C# -> System.String? AnomalyId
+        // GraphQL -> anomalyId: String! (scalar)
+        [JsonProperty("anomalyId")]
+        public System.String? AnomalyId { get; set; }
+
         //      C# -> System.Int64? CreatedFileCount
         // GraphQL -> createdFileCount: Long! (scalar)
         [JsonProperty("createdFileCount")]
@@ -59,6 +69,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deletedFileCount: Long! (scalar)
         [JsonProperty("deletedFileCount")]
         public System.Int64? DeletedFileCount { get; set; }
+
+        //      C# -> DateTime? DetectionTime
+        // GraphQL -> detectionTime: DateTime (scalar)
+        [JsonProperty("detectionTime")]
+        public DateTime? DetectionTime { get; set; }
 
         //      C# -> System.Int64? ModifiedFileCount
         // GraphQL -> modifiedFileCount: Long! (scalar)
@@ -130,14 +145,17 @@ namespace RubrikSecurityCloud.Types
     }
 
     public WorkloadAnomaly Set(
+        AnomalyType? AnomalyType = null,
         EncryptionLevel? Encryption = null,
         HierarchyObjectTypeEnum? ObjectType = null,
         ActivitySeverityEnum? Severity = null,
         DateTime? AnomalousSnapshotDate = null,
         System.String? AnomalousSnapshotFid = null,
         System.String? AnomalousSnapshotId = null,
+        System.String? AnomalyId = null,
         System.Int64? CreatedFileCount = null,
         System.Int64? DeletedFileCount = null,
+        DateTime? DetectionTime = null,
         System.Int64? ModifiedFileCount = null,
         System.String? PreviousSnapshotFid = null,
         System.Int64? SuspiciousFileCount = null,
@@ -152,6 +170,9 @@ namespace RubrikSecurityCloud.Types
         SnappableLocationType? Location = null
     ) 
     {
+        if ( AnomalyType != null ) {
+            this.AnomalyType = AnomalyType;
+        }
         if ( Encryption != null ) {
             this.Encryption = Encryption;
         }
@@ -170,11 +191,17 @@ namespace RubrikSecurityCloud.Types
         if ( AnomalousSnapshotId != null ) {
             this.AnomalousSnapshotId = AnomalousSnapshotId;
         }
+        if ( AnomalyId != null ) {
+            this.AnomalyId = AnomalyId;
+        }
         if ( CreatedFileCount != null ) {
             this.CreatedFileCount = CreatedFileCount;
         }
         if ( DeletedFileCount != null ) {
             this.DeletedFileCount = DeletedFileCount;
+        }
+        if ( DetectionTime != null ) {
+            this.DetectionTime = DetectionTime;
         }
         if ( ModifiedFileCount != null ) {
             this.ModifiedFileCount = ModifiedFileCount;
@@ -222,6 +249,11 @@ namespace RubrikSecurityCloud.Types
     {
         string ind = new string(' ', indent*2);
         string s = "";
+        //      C# -> AnomalyType? AnomalyType
+        // GraphQL -> anomalyType: AnomalyType! (enum)
+        if (this.AnomalyType != null) {
+            s += ind + "anomalyType\n" ;
+        }
         //      C# -> EncryptionLevel? Encryption
         // GraphQL -> encryption: EncryptionLevel! (enum)
         if (this.Encryption != null) {
@@ -252,6 +284,11 @@ namespace RubrikSecurityCloud.Types
         if (this.AnomalousSnapshotId != null) {
             s += ind + "anomalousSnapshotId\n" ;
         }
+        //      C# -> System.String? AnomalyId
+        // GraphQL -> anomalyId: String! (scalar)
+        if (this.AnomalyId != null) {
+            s += ind + "anomalyId\n" ;
+        }
         //      C# -> System.Int64? CreatedFileCount
         // GraphQL -> createdFileCount: Long! (scalar)
         if (this.CreatedFileCount != null) {
@@ -261,6 +298,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deletedFileCount: Long! (scalar)
         if (this.DeletedFileCount != null) {
             s += ind + "deletedFileCount\n" ;
+        }
+        //      C# -> DateTime? DetectionTime
+        // GraphQL -> detectionTime: DateTime (scalar)
+        if (this.DetectionTime != null) {
+            s += ind + "detectionTime\n" ;
         }
         //      C# -> System.Int64? ModifiedFileCount
         // GraphQL -> modifiedFileCount: Long! (scalar)
@@ -345,6 +387,12 @@ namespace RubrikSecurityCloud.Types
     //[JsonIgnore]
     public override void ApplyExploratoryFieldSpec(String parent = "")
     {
+        //      C# -> AnomalyType? AnomalyType
+        // GraphQL -> anomalyType: AnomalyType! (enum)
+        if (this.AnomalyType == null && Exploration.Includes(parent + ".anomalyType", true))
+        {
+            this.AnomalyType = new AnomalyType();
+        }
         //      C# -> EncryptionLevel? Encryption
         // GraphQL -> encryption: EncryptionLevel! (enum)
         if (this.Encryption == null && Exploration.Includes(parent + ".encryption", true))
@@ -381,6 +429,12 @@ namespace RubrikSecurityCloud.Types
         {
             this.AnomalousSnapshotId = "FETCH";
         }
+        //      C# -> System.String? AnomalyId
+        // GraphQL -> anomalyId: String! (scalar)
+        if (this.AnomalyId == null && Exploration.Includes(parent + ".anomalyId", true))
+        {
+            this.AnomalyId = "FETCH";
+        }
         //      C# -> System.Int64? CreatedFileCount
         // GraphQL -> createdFileCount: Long! (scalar)
         if (this.CreatedFileCount == null && Exploration.Includes(parent + ".createdFileCount", true))
@@ -392,6 +446,12 @@ namespace RubrikSecurityCloud.Types
         if (this.DeletedFileCount == null && Exploration.Includes(parent + ".deletedFileCount", true))
         {
             this.DeletedFileCount = new System.Int64();
+        }
+        //      C# -> DateTime? DetectionTime
+        // GraphQL -> detectionTime: DateTime (scalar)
+        if (this.DetectionTime == null && Exploration.Includes(parent + ".detectionTime", true))
+        {
+            this.DetectionTime = new DateTime();
         }
         //      C# -> System.Int64? ModifiedFileCount
         // GraphQL -> modifiedFileCount: Long! (scalar)

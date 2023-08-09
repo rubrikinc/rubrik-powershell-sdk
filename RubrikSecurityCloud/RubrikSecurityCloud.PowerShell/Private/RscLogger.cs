@@ -122,7 +122,7 @@ namespace RubrikSecurityCloud.PowerShell.Private
                             break;
                     }
                 }
-                catch (Exception ex)
+                catch (Exception )
                 {
                     // However it may not be possible because
                     // the Write methods cannot be called from

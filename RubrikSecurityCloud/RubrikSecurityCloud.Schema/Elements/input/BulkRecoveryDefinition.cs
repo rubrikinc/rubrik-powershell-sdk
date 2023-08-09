@@ -26,10 +26,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 
-        //      C# -> AdGroupSelectorWithRecoverySpec? AdGroupSelectorWithRecoverySpec
-        // GraphQL -> adGroupSelectorWithRecoverySpec: ADGroupSelectorWithRecoverySpec (input)
-        [JsonProperty("adGroupSelectorWithRecoverySpec")]
-        public AdGroupSelectorWithRecoverySpec? AdGroupSelectorWithRecoverySpec { get; set; }
+        //      C# -> O365GroupSelectorWithRecoverySpec? O365GroupSelectorWithRecoverySpec
+        // GraphQL -> o365GroupSelectorWithRecoverySpec: O365GroupSelectorWithRecoverySpec (input)
+        [JsonProperty("o365GroupSelectorWithRecoverySpec")]
+        public O365GroupSelectorWithRecoverySpec? O365GroupSelectorWithRecoverySpec { get; set; }
 
         //      C# -> FailureActionType? FailureAction
         // GraphQL -> failureAction: FailureActionType! (enum)

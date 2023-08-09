@@ -5,12 +5,12 @@ Account ID.
 
 - The id subcommand takes no arguments.
 - Returns System.String.
-### owner
+### owners
 List of account owners.
 
-- The owner subcommand takes no arguments.
+- The owners subcommand takes no arguments.
 - Returns list of Users.
-### product
+### products
 - There are 5 arguments.
     - nameFilter - list of ProductNames: Name of product (Data Protection, Ransomware Investigation, etc.).
     - typeFilter - list of ProductTypes: Type of product (Revenue, POC, etc.).
@@ -18,12 +18,12 @@ List of account owners.
     - startDateArg - DateTime: Start date of product (yyyy-mm-dd).
     - endDateArg - DateTime: End date of product (yyyy-mm-dd).
 - Returns list of AccountProducts.
-### setting
+### settings
 This endpoint is deprecated.
 
-- The setting subcommand takes no arguments.
+- The settings subcommand takes no arguments.
 - Returns AccountSetting.
-### swithexocomputemapping
+### swithexocomputemappings
 Retrieves the list of all accounts with their Exocompute account mapping, if exists.
 
 - There are 3 arguments.

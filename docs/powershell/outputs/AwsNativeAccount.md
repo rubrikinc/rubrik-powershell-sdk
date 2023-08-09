@@ -17,6 +17,8 @@ AWS native account.
   - Count of Amazon S3 Buckets in the AWS native account.
 - cloudType: AwsCloudType
   - AWS cloud type.
+- cloudAccountState: CloudAccountState
+  - Specifies the status of the cloud account associated with the feature requested.
 - authorizedOperations: list of PolarisObjectAuthorizedOperationsEnums
   - The authorized operations on the object.
 - awsNativeEc2Instances: AwsNativeEc2InstanceConnection

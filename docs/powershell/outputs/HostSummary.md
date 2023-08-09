@@ -42,8 +42,11 @@ Supported in v5.0+
 - hdfsBaseConfig: HdfsBaseConfig
   - Supported in v5.2+
 - isRefreshPaused: System.Boolean
-  - Supported in v9.0
+  - Supported in v9.0+
   Specifies whether the refresh of host metadata for this host is paused.
+- lastRefreshTimeStamp: System.Int64
+  - Supported in v9.0+
+  Specifies the last refresh epoch time in msec.
 - mssqlCbtEffectiveStatus: MssqlCbtEffectiveStatusType
   - 
 - mssqlCbtEnabled: MssqlCbtStatusType

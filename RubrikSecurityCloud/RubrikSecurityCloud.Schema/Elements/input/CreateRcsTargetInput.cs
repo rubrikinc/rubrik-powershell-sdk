@@ -75,6 +75,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("lockDurationDays")]
         public System.Int64? LockDurationDays { get; set; }
 
+        //      C# -> System.Boolean? ShouldBypassProxy
+        // GraphQL -> shouldBypassProxy: Boolean (scalar)
+        [JsonProperty("shouldBypassProxy")]
+        public System.Boolean? ShouldBypassProxy { get; set; }
+
 
         #endregion
 

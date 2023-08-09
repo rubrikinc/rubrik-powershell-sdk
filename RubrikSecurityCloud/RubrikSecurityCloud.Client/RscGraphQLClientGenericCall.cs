@@ -8,7 +8,6 @@ using GraphQLParser.AST;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RubrikSecurityCloud;
-using System.Management.Automation;
 using RubrikSecurityCloud.Client;
 using System.Reflection;
 
@@ -113,7 +112,7 @@ namespace RubrikSecurityCloud.NetSDK.Client
             }
             catch( GraphQLParser.Exceptions.GraphQLSyntaxErrorException ex)
             {
-                throw new ParseException(
+                throw new FormatException(
                     $"Could not parse query:\n\n{request.Query}\n\n{ex}"
                 );
             }

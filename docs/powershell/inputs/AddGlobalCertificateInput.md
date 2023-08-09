@@ -13,3 +13,5 @@ Input to add a global certificate.
   - The certificate in x509 PEM format.
 - clusters: list of CertificateClusterInputs
   - The clusters on which to add the certificate.
+- csrFid: System.String
+  - The CSR corresponding to the certificate, if applicable.

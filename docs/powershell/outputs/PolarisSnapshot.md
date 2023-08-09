@@ -30,7 +30,7 @@
 - latestUserNote: LatestUserNote
   - Latest User note information.
 - polarisSpecificSnapshot: PolarisSpecificSnapshot
-  - Rubrik-specific information about snapshots of specific workloads. Currently, this is only valid for Azure Virtual Machine, AWS EC2, and O365 Site snapshots.
+  - Rubrik-specific information about snapshots of specific workloads. Currently, this is only valid for Azure Virtual Machine, AWS EC2, and M365 snapshots.
 - slaDomain: SlaDomain
 - isIndexed: System.Boolean
   - Specifies whether or not the snapshot is indexed.

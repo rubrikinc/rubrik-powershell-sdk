@@ -130,7 +130,6 @@
           }
         }
       },
-      "System.Management.Automation/6.0.4": {},
       "System.Reactive/5.0.0": {
         "dependencies": {
           "System.Runtime.InteropServices.WindowsRuntime": "4.3.0",
@@ -188,8 +187,7 @@
           "GraphQL.Client.Serializer.Newtonsoft": "5.1.0",
           "GraphQL.Query.Builder": "2.0.1",
           "Newtonsoft.Json": "13.0.3",
-          "System.ComponentModel.Annotations": "5.0.0",
-          "System.Management.Automation": "6.0.4"
+          "System.ComponentModel.Annotations": "5.0.0"
         },
         "runtime": {
           "RubrikSecurityCloud.Common.dll": {}
@@ -293,13 +291,6 @@
       "sha512": "sha512-dMkqfy2el8A8/I76n2Hi1oBFEbG1SfxD2l5nhwXV3XjlnOmwxJlQbYpJH4W51odnU9sARCSAgv7S3CyAFMkpYg==",
       "path": "system.componentmodel.annotations/5.0.0",
       "hashPath": "system.componentmodel.annotations.5.0.0.nupkg.sha512"
-    },
-    "System.Management.Automation/6.0.4": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-dS2UF86ydpzBjHlqFTFJCAGWv4XPZa1hr2h3X5BqrosG+xyIxsbo4dx//6lOAhnWehxdgZNtUSNk8jYEYRhERQ==",
-      "path": "system.management.automation/6.0.4",
-      "hashPath": "system.management.automation.6.0.4.nupkg.sha512"
     },
     "System.Reactive/5.0.0": {
       "type": "package",

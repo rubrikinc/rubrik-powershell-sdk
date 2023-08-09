@@ -21,6 +21,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "DELETED_FILE_COUNT")]
         DELETED_FILE_COUNT,
 
+        [EnumMember(Value = "DETECTION_TIME")]
+        DETECTION_TIME,
+
         [EnumMember(Value = "ENCRYPTION")]
         ENCRYPTION,
 

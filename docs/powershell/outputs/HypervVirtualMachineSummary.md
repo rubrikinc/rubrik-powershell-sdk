@@ -23,6 +23,7 @@ Supported in v5.0+
   - Supported in v6.0+
   Indicates if the Hyper-V virtual machine is configured to perform a full snapshot for the next backup.
 - agentStatus: CdmAgentStatus
-  - The status of the Rubrik Backup Service agent for virtual machines.
+  - Supported in v9.0+
+  The status of the Rubrik Backup Service agent for virtual machines.
 - snappable: CdmWorkload
   - 

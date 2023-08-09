@@ -15,9 +15,9 @@ Supported in v5.3+
 - shouldCancelBackupOnPreBackupScriptFailure: System.Boolean
   - Supported in v5.3+
       Specifies whether a failure of the pre-backup script halts the backup process.
-- logConfig: ManagedVolumeLogConfigInput
-  - Supported in v9.0
-      Specifies the configuration for creating log export.
+- shouldEnableLogExport: System.Boolean
+  - Supported in v9.0+
+      Specifies whether log streaming should be enabled for the specified Managed Volume.
 - backupScript: SlaManagedVolumeScriptConfigInput
   - Required. Supported in v5.3+
       Specifies configuration information for the main backup script that backs up data from the host.

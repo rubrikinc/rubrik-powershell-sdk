@@ -25,4 +25,6 @@ Bulk recovery progress at the group workload level.
   - Selector level steps.
 - workloadsWithoutSnapshot: System.Int32
   - Number of workloads for which recovery was skipped due to no snapshot.
+- createTime: System.Int64
+  - Create time.
 - status: BulkRecoveryGroupWorkloadStatus

@@ -67,7 +67,10 @@ namespace RubrikSecurityCloud.Types
         SONAR_UCL,
 
         [EnumMember(Value = "UNSPECIFIED_NAME")]
-        UNSPECIFIED_NAME
+        UNSPECIFIED_NAME,
+
+        [EnumMember(Value = "USER_ACCESS")]
+        USER_ACCESS
 
 
     } // enum ProductName

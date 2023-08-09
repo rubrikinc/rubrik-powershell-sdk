@@ -34,6 +34,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shouldEnableHotAddProxyForOnPrem")]
         public System.Boolean? ShouldEnableHotAddProxyForOnPrem { get; set; }
 
+        //      C# -> System.String? OrgNetworkId
+        // GraphQL -> orgNetworkId: String (scalar)
+        [JsonProperty("orgNetworkId")]
+        public System.String? OrgNetworkId { get; set; }
+
         //      C# -> VcenterConfigV2ConflictResolutionAuthz? ConflictResolutionAuthz
         // GraphQL -> conflictResolutionAuthz: VcenterConfigV2ConflictResolutionAuthz (enum)
         [JsonProperty("conflictResolutionAuthz")]

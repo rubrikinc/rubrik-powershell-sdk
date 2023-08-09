@@ -21,6 +21,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "O365_ONEDRIVE")]
         O365_ONEDRIVE,
 
+        [EnumMember(Value = "O365_SHAREPOINT")]
+        O365_SHAREPOINT,
+
         [EnumMember(Value = "SNAPPABLE_TYPE_UNKNOWN")]
         SNAPPABLE_TYPE_UNKNOWN
 

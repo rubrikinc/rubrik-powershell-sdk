@@ -11,7 +11,7 @@ Checks the network subnet of the Azure resources.
     - subnet_name - System.String
     - strict_addr_check - System.Boolean
 - Returns AzureNetworkSubnetResp.
-### checknsgoutboundrule
+### checknsgoutboundrules
 Checks the NSG Outbound rules of the Azure resources.
 
 - There are 5 arguments.
@@ -86,7 +86,7 @@ Retrieves the unused addresses available in a subnet.
     - subnet_name - System.String
     - strict_addr_check - System.Boolean
 - Returns AzureNetworkSubnetUnusedAddrResp.
-### validateuserrole
+### validateuserroles
 Validates the user roles in the subscription.
 
 - There are 2 arguments.

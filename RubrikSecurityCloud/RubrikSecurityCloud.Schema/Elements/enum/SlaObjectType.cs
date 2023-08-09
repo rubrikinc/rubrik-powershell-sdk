@@ -60,6 +60,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "HYPERV_OBJECT_TYPE")]
         HYPERV_OBJECT_TYPE,
 
+        [EnumMember(Value = "K8S_OBJECT_TYPE")]
+        K8S_OBJECT_TYPE,
+
         [EnumMember(Value = "KUPR_OBJECT_TYPE")]
         KUPR_OBJECT_TYPE,
 
@@ -86,6 +89,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "ORACLE_OBJECT_TYPE")]
         ORACLE_OBJECT_TYPE,
+
+        [EnumMember(Value = "SAAS_APPS_OBJECT_TYPE")]
+        SAAS_APPS_OBJECT_TYPE,
 
         [EnumMember(Value = "SAP_HANA_OBJECT_TYPE")]
         SAP_HANA_OBJECT_TYPE,

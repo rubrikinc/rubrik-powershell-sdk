@@ -27,6 +27,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ARCHIVAL_LOCATION")]
         ARCHIVAL_LOCATION,
 
+        [EnumMember(Value = "ATLASSIAN_SITE")]
+        ATLASSIAN_SITE,
+
         [EnumMember(Value = "AUDIT_OBJECT_TYPE_UNSPECIFIED")]
         AUDIT_OBJECT_TYPE_UNSPECIFIED,
 
@@ -152,6 +155,12 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "IP_WHITELIST")]
         IP_WHITELIST,
+
+        [EnumMember(Value = "JIRA_PROJECT")]
+        JIRA_PROJECT,
+
+        [EnumMember(Value = "JIRA_SETTINGS")]
+        JIRA_SETTINGS,
 
         [EnumMember(Value = "JOB_INSTANCE")]
         JOB_INSTANCE,

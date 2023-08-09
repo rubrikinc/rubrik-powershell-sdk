@@ -581,43 +581,12 @@
         </member>
         <member name="T:RubrikSecurityCloud.PowerShell.Private.RscBasePSCmdlet">
             <summary>
-            Base class for all Rubrik Security Cloud PowerShell cmdlets.
-            </summary>
-        </member>
-        <member name="P:RubrikSecurityCloud.PowerShell.Private.RscBasePSCmdlet.Op">
-            <summary>
-            Input: Operation to run. Overridden by operation switches.
-            </summary>
-        </member>
-        <member name="P:RubrikSecurityCloud.PowerShell.Private.RscBasePSCmdlet.Arg">
-            <summary>
-            Input: Arguments to the operation. Overridden by argument parameters.
-            </summary>
-        </member>
-        <member name="P:RubrikSecurityCloud.PowerShell.Private.RscBasePSCmdlet.Field">
-            <summary>
-            An object that represents the fields that need to be returned
-            for a given query. Each property on this object that does not
-            have a null value (actual values don’t matter) will be included 
-            in the API request.
-            </summary>
-        </member>
-        <member name="P:RubrikSecurityCloud.PowerShell.Private.RscBasePSCmdlet.GetInputs">
-            <summary>
-            Returns an object that contains the Op, Arg and Field inputs
-            that would be used to run the operation.
-            </summary>
-        </member>
-        <member name="P:RubrikSecurityCloud.PowerShell.Private.RscBasePSCmdlet.InputProfile">
-            <summary>
-            The input profile determines how inputs to the operation
-            should be automatically set if they are not explicitly given
-            as parameters.
+            Base class for all RSC PowerShell cmdlets.
             </summary>
         </member>
         <member name="M:RubrikSecurityCloud.PowerShell.Private.RscBasePSCmdlet.#ctor">
             <summary>
-            Create a new Rubrik Security Cloud PowerShell cmdlet.
+            Create a new RSC PowerShell cmdlet.
             </summary>
         </member>
         <member name="M:RubrikSecurityCloud.PowerShell.Private.RscCmdletInput.GqlOperation">
@@ -625,6 +594,53 @@
             The name of the underlying GQL operation.
             </summary>
             <returns> String </returns>
+        </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Private.RscGqlPSCmdlet">
+            <summary>
+            Base class for all RSC PowerShell cmdlets that use a GraphQL query.
+            </summary>
+        </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Private.RscGqlPSCmdlet.Op">
+            <summary>
+            Input: Operation to run. Overridden by operation switches.
+            </summary>
+        </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Private.RscGqlPSCmdlet.Arg">
+            <summary>
+            Input: Arguments to the operation. Overridden by argument parameters.
+            </summary>
+        </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Private.RscGqlPSCmdlet.Field">
+            <summary>
+            An object that represents the fields that need to be returned
+            for a given query. Each property on this object that does not
+            have a null value (actual values don’t matter) will be included 
+            in the API request.
+            </summary>
+        </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Private.RscGqlPSCmdlet.GetInputs">
+            <summary>
+            Returns an object that contains the Op, Arg and Field inputs
+            that would be used to run the operation.
+            </summary>
+        </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Private.RscGqlPSCmdlet.InputProfile">
+            <summary>
+            The input profile determines how inputs to the operation
+            should be automatically set if they are not explicitly given
+            as parameters.
+            </summary>
+        </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Private.RscGqlPSCmdlet.GetGqlRequest">
+            <summary>
+            Returns the GraphQL request instead of sending it
+            to the server.
+            </summary>
+        </member>
+        <member name="M:RubrikSecurityCloud.PowerShell.Private.RscGqlPSCmdlet.#ctor">
+            <summary>
+            Create a new RSC PowerShell cmdlet.
+            </summary>
         </member>
         <member name="T:RubrikSecurityCloud.PowerShell.Private.RscSessionInfo">
             <summary>

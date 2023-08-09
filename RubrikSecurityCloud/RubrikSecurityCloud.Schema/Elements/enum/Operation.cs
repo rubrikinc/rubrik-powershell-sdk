@@ -21,6 +21,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ADD_AZURE_CLOUD_ACCOUNT")]
         ADD_AZURE_CLOUD_ACCOUNT,
 
+        [EnumMember(Value = "ADD_CERTIFICATE")]
+        ADD_CERTIFICATE,
+
         [EnumMember(Value = "ADD_CLUSTER")]
         ADD_CLUSTER,
 
@@ -231,6 +234,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MANAGE_WEBHOOKS")]
         MANAGE_WEBHOOKS,
 
+        [EnumMember(Value = "MANAGE_ZSCALER_DLP_INTEGRATION")]
+        MANAGE_ZSCALER_DLP_INTEGRATION,
+
         [EnumMember(Value = "MODIFY_CLUSTER")]
         MODIFY_CLUSTER,
 
@@ -275,6 +281,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "TAKE_ON_DEMAND_SNAPSHOT")]
         TAKE_ON_DEMAND_SNAPSHOT,
+
+        [EnumMember(Value = "TIER_EXISTING_SNAPSHOTS")]
+        TIER_EXISTING_SNAPSHOTS,
 
         [EnumMember(Value = "TOGGLE_BLACKOUT_WINDOW")]
         TOGGLE_BLACKOUT_WINDOW,
@@ -406,7 +415,10 @@ namespace RubrikSecurityCloud.Types
         VIEW_USER_MANAGEMENT,
 
         [EnumMember(Value = "VIEW_WEBHOOKS")]
-        VIEW_WEBHOOKS
+        VIEW_WEBHOOKS,
+
+        [EnumMember(Value = "VIEW_ZSCALER_DLP_INTEGRATION")]
+        VIEW_ZSCALER_DLP_INTEGRATION
 
 
     } // enum Operation

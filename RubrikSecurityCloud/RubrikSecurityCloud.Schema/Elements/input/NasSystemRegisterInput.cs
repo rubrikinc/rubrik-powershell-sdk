@@ -34,6 +34,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("nasTmpApiCredentials")]
         public NasApiCredentialsInput? NasTmpApiCredentials { get; set; }
 
+        //      C# -> FlashBladeSystemParametersInput? NasFlashBladeApiCredentials
+        // GraphQL -> nasFlashBladeApiCredentials: FlashBladeSystemParametersInput (input)
+        [JsonProperty("nasFlashBladeApiCredentials")]
+        public FlashBladeSystemParametersInput? NasFlashBladeApiCredentials { get; set; }
+
         //      C# -> NasVendorType? NasVendorType
         // GraphQL -> nasVendorType: NasVendorType! (enum)
         [Required]

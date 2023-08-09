@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("authorizedOperations")]
         public List<PolarisObjectAuthorizedOperationsEnum>? AuthorizedOperations { get; set; }
 
+        //      C# -> CloudAccountState? CloudAccountState
+        // GraphQL -> cloudAccountState: CloudAccountState! (enum)
+        [JsonProperty("cloudAccountState")]
+        public CloudAccountState? CloudAccountState { get; set; }
+
         //      C# -> AwsCloudType? CloudType
         // GraphQL -> cloudType: AwsCloudType! (enum)
         [JsonProperty("cloudType")]
@@ -162,6 +167,7 @@ namespace RubrikSecurityCloud.Types
 
     public AwsNativeAccount Set(
         List<PolarisObjectAuthorizedOperationsEnum>? AuthorizedOperations = null,
+        CloudAccountState? CloudAccountState = null,
         AwsCloudType? CloudType = null,
         HierarchyObjectTypeEnum? ObjectType = null,
         SlaAssignmentTypeEnum? SlaAssignment = null,
@@ -191,6 +197,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( AuthorizedOperations != null ) {
             this.AuthorizedOperations = AuthorizedOperations;
+        }
+        if ( CloudAccountState != null ) {
+            this.CloudAccountState = CloudAccountState;
         }
         if ( CloudType != null ) {
             this.CloudType = CloudType;
@@ -281,6 +290,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> authorizedOperations: [PolarisObjectAuthorizedOperationsEnum!]! (enum)
         if (this.AuthorizedOperations != null) {
             s += ind + "authorizedOperations\n" ;
+        }
+        //      C# -> CloudAccountState? CloudAccountState
+        // GraphQL -> cloudAccountState: CloudAccountState! (enum)
+        if (this.CloudAccountState != null) {
+            s += ind + "cloudAccountState\n" ;
         }
         //      C# -> AwsCloudType? CloudType
         // GraphQL -> cloudType: AwsCloudType! (enum)
@@ -456,6 +470,12 @@ namespace RubrikSecurityCloud.Types
         if (this.AuthorizedOperations == null && Exploration.Includes(parent + ".authorizedOperations", true))
         {
             this.AuthorizedOperations = new List<PolarisObjectAuthorizedOperationsEnum>();
+        }
+        //      C# -> CloudAccountState? CloudAccountState
+        // GraphQL -> cloudAccountState: CloudAccountState! (enum)
+        if (this.CloudAccountState == null && Exploration.Includes(parent + ".cloudAccountState", true))
+        {
+            this.CloudAccountState = new CloudAccountState();
         }
         //      C# -> AwsCloudType? CloudType
         // GraphQL -> cloudType: AwsCloudType! (enum)

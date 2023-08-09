@@ -17,3 +17,5 @@ Input to create RCS location.
   - Space usage threshold of RCS location above which alert will be raised.
 - lockDurationDays: System.Int64
   - Immutability lock period, in days.
+- shouldBypassProxy: System.Boolean
+  - Specifies whether the proxy settings must be bypassed for  the RCV archival target.

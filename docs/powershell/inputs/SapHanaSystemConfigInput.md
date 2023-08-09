@@ -7,6 +7,8 @@ Supported in v5.3+
 - sslInfo: SapHanaSslInfoInput
   - Supported in v7.0+
       Information required to connect to SAP HANA database over SSL.
+- authTypeSpec: SapHanaSystemAuthTypeSpecInput
+  - The authentication type for the SAP HANA system.
 - hostIds: list of System.Strings
   - Required. Supported in v5.3+
       The SAP HANA system hosts.

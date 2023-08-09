@@ -29,6 +29,6 @@ Inventory workloads that are supported on Rubrik.
 - EXCHANGE_ROOT - Root of exchange hierarchy.
 - CLOUD_DIRECT_NAS_EXPORT_ROOT - Cloud Direct NAS export root.
 - AZURE_AD_ROOT - Azure AD root.
-- ON_PREM_AD_ROOT - On-prem AD root.
 - ACTIVE_DIRECTORY_ROOT - Active Directory root.
 - ATLASSIAN_ROOT - Atlassian root.
+- K8S_ROOT - K8S root.

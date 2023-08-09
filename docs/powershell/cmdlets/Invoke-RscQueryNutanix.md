@@ -9,31 +9,16 @@ Lists all files and directories in a given path.
 
 - There is a single argument of type BrowseNutanixSnapshotInput.
 - Returns BrowseResponseListResponse.
-### categorie
-Paginated list of Nutanix Category objects.
-
-- There are 5 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - sortBy - HierarchySortByField: Sort hierarchy objects by hierarchy field.
-    - sortOrder - SortOrder: Sorting order for the results.
-    - filter - list of Filters: The hierarchy object filter.
-- Returns NutanixCategoryConnection.
-### categoryvalue
-Paginated list of Nutanix Category Value objects.
+### category
+Details of the given category.
 
 - There is a single argument of type System.String.
-- Returns NutanixCategoryValueConnection.
-### categoryvaluevm
-Paginated list of Nutanix Virtual Machines in a Category Value.
+- Returns NutanixCategory.
+### categoryvalue
+Details of the given category value.
 
-- There are 5 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - sortBy - HierarchySortByField: Sort hierarchy objects by hierarchy field.
-    - sortOrder - SortOrder: Sorting order for the results.
-    - filter - list of Filters: The hierarchy object filter.
-- Returns NutanixVmConnection.
+- There is a single argument of type System.String.
+- Returns NutanixCategoryValue.
 ### cluster
 A Nutanix Cluster.
 
@@ -47,7 +32,7 @@ Get details about a Nutanix cluster-related async request.
 
 - There is a single argument of type GetNutanixClusterAsyncRequestStatusInput.
 - Returns AsyncRequestStatus.
-### clustercontainer
+### clustercontainers
 Get list of containers on this cluster
 
 Supported in v5.0+
@@ -55,7 +40,7 @@ Query the nutanix cluster to get the list of containers, used for export purpose
 
 - There is a single argument of type GetContainersInput.
 - Returns NutanixContainerListResponse.
-### clusternetwork
+### clusternetworks
 Get list of networks on this cluster
 
 Supported in v8.1+
@@ -63,7 +48,17 @@ Retrieves the list of networks by querying the Nutanix cluster. The list of netw
 
 - There is a single argument of type GetNutanixNetworksInput.
 - Returns NutanixNetworkListResponse.
-### mount
+### clusters
+Paginated list of Nutanix Clusters.
+
+- There are 5 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - sortBy - HierarchySortByField: Sort hierarchy objects by hierarchy field.
+    - sortOrder - SortOrder: Sorting order for the results.
+    - filter - list of Filters: The hierarchy object filter.
+- Returns NutanixClusterConnection.
+### mounts
 Nutanix Live Mount Connection.
 
 - There are 4 arguments.
@@ -73,6 +68,11 @@ Nutanix Live Mount Connection.
     - sortBy - NutanixLiveMountSortByInput: Sort by argument for Nutanix virtual machine live mounts.
 - Returns NutanixLiveMountConnection.
 ### prismcentral
+Details of the given Prism Central.
+
+- There is a single argument of type System.String.
+- Returns NutanixPrismCentral.
+### prismcentrals
 Paginated list of Nutanix Prism Central objects.
 
 - There are 5 arguments.
@@ -97,7 +97,7 @@ Supported in v5.0+. Get Nutanix virtual machine snapshot details.
 
 - There is a single argument of type GetNutanixSnapshotDetailInput.
 - Returns NutanixVmSnapshotDetail.
-### topleveldescendant
+### topleveldescendants
 Paginated list of the highest-level Nutanix Objects accessible by the current user.
 
 - There are 6 arguments.
@@ -108,17 +108,6 @@ Paginated list of the highest-level Nutanix Objects accessible by the current us
     - typeFilter - list of HierarchyObjectTypeEnums: Types of objects to include.
     - filter - list of Filters: The hierarchy object filter.
 - Returns CdmHierarchyObjectConnection.
-### topleveldescendantsv2
-Paginated list of the highest-level Nutanix Objects accessible by the current user.
-
-- There are 6 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - sortBy - HierarchySortByField: Sort hierarchy objects by hierarchy field.
-    - sortOrder - SortOrder: Sorting order for the results.
-    - typeFilter - list of HierarchyObjectTypeEnums: Types of objects to include.
-    - filter - list of Filters: The hierarchy object filter.
-- Returns NutanixTopLevelDescendantTypeConnection.
 ### vm
 A Nutanix Virtual Machine.
 
@@ -134,7 +123,7 @@ v8.1+: Get details about a Nutanix virtual machine-related async request.
 
 - There is a single argument of type GetNutanixVmAsyncRequestStatusInput.
 - Returns AsyncRequestStatus.
-### vmmissedsnapshot
+### vmmissedsnapshots
 v5.0-v8.0: Get details about missed snapshots for a VM
 v8.1+: Get details about missed snapshots for a virtual machine
 
@@ -144,3 +133,13 @@ v8.1+: Retrieve the time of the day when the snapshots were missed specific to a
 
 - There is a single argument of type NutanixMissedSnapshotsInput.
 - Returns MissedSnapshotListResponse.
+### vms
+Paginated list of Nutanix Virtual Machines.
+
+- There are 5 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - sortBy - HierarchySortByField: Sort hierarchy objects by hierarchy field.
+    - sortOrder - SortOrder: Sorting order for the results.
+    - filter - list of Filters: The hierarchy object filter.
+- Returns NutanixVmConnection.

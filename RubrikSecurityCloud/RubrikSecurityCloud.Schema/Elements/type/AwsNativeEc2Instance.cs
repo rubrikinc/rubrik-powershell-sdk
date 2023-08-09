@@ -101,6 +101,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("instanceType")]
         public System.String? InstanceType { get; set; }
 
+        //      C# -> System.Boolean? IsAppConsistencyEnabled
+        // GraphQL -> isAppConsistencyEnabled: Boolean! (scalar)
+        [JsonProperty("isAppConsistencyEnabled")]
+        public System.Boolean? IsAppConsistencyEnabled { get; set; }
+
         //      C# -> System.Boolean? IsExocomputeConfigured
         // GraphQL -> isExocomputeConfigured: Boolean! (scalar)
         [JsonProperty("isExocomputeConfigured")]
@@ -115,6 +120,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> isMarketplace: Boolean! (scalar)
         [JsonProperty("isMarketplace")]
         public System.Boolean? IsMarketplace { get; set; }
+
+        //      C# -> System.Boolean? IsPreOrPostScriptEnabled
+        // GraphQL -> isPreOrPostScriptEnabled: Boolean! (scalar)
+        [JsonProperty("isPreOrPostScriptEnabled")]
+        public System.Boolean? IsPreOrPostScriptEnabled { get; set; }
 
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
@@ -251,6 +261,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("tags")]
         public List<Tag>? Tags { get; set; }
 
+        //      C# -> VmAppConsistentSpecsInternal? VmAppConsistentSpecs
+        // GraphQL -> vmAppConsistentSpecs: VmAppConsistentSpecsInternal (type)
+        [JsonProperty("vmAppConsistentSpecs")]
+        public VmAppConsistentSpecsInternal? VmAppConsistentSpecs { get; set; }
+
         //      C# -> GenericSnapshotConnection? WorkloadSnapshotConnection
         // GraphQL -> workloadSnapshotConnection: GenericSnapshotConnection (type)
         [JsonProperty("workloadSnapshotConnection")]
@@ -282,9 +297,11 @@ namespace RubrikSecurityCloud.Types
         System.String? InstanceName = null,
         System.String? InstanceNativeId = null,
         System.String? InstanceType = null,
+        System.Boolean? IsAppConsistencyEnabled = null,
         System.Boolean? IsExocomputeConfigured = null,
         System.Boolean? IsIndexingEnabled = null,
         System.Boolean? IsMarketplace = null,
+        System.Boolean? IsPreOrPostScriptEnabled = null,
         System.Boolean? IsRelic = null,
         System.String? Name = null,
         System.String? NativeName = null,
@@ -312,6 +329,7 @@ namespace RubrikSecurityCloud.Types
         PolarisSnapshotGroupByConnection? SnapshotGroupByConnection = null,
         PolarisSnapshotGroupByNewConnection? SnapshotGroupByNewConnection = null,
         List<Tag>? Tags = null,
+        VmAppConsistentSpecsInternal? VmAppConsistentSpecs = null,
         GenericSnapshotConnection? WorkloadSnapshotConnection = null
     ) 
     {
@@ -363,6 +381,9 @@ namespace RubrikSecurityCloud.Types
         if ( InstanceType != null ) {
             this.InstanceType = InstanceType;
         }
+        if ( IsAppConsistencyEnabled != null ) {
+            this.IsAppConsistencyEnabled = IsAppConsistencyEnabled;
+        }
         if ( IsExocomputeConfigured != null ) {
             this.IsExocomputeConfigured = IsExocomputeConfigured;
         }
@@ -371,6 +392,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsMarketplace != null ) {
             this.IsMarketplace = IsMarketplace;
+        }
+        if ( IsPreOrPostScriptEnabled != null ) {
+            this.IsPreOrPostScriptEnabled = IsPreOrPostScriptEnabled;
         }
         if ( IsRelic != null ) {
             this.IsRelic = IsRelic;
@@ -452,6 +476,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Tags != null ) {
             this.Tags = Tags;
+        }
+        if ( VmAppConsistentSpecs != null ) {
+            this.VmAppConsistentSpecs = VmAppConsistentSpecs;
         }
         if ( WorkloadSnapshotConnection != null ) {
             this.WorkloadSnapshotConnection = WorkloadSnapshotConnection;
@@ -555,6 +582,11 @@ namespace RubrikSecurityCloud.Types
         if (this.InstanceType != null) {
             s += ind + "instanceType\n" ;
         }
+        //      C# -> System.Boolean? IsAppConsistencyEnabled
+        // GraphQL -> isAppConsistencyEnabled: Boolean! (scalar)
+        if (this.IsAppConsistencyEnabled != null) {
+            s += ind + "isAppConsistencyEnabled\n" ;
+        }
         //      C# -> System.Boolean? IsExocomputeConfigured
         // GraphQL -> isExocomputeConfigured: Boolean! (scalar)
         if (this.IsExocomputeConfigured != null) {
@@ -569,6 +601,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> isMarketplace: Boolean! (scalar)
         if (this.IsMarketplace != null) {
             s += ind + "isMarketplace\n" ;
+        }
+        //      C# -> System.Boolean? IsPreOrPostScriptEnabled
+        // GraphQL -> isPreOrPostScriptEnabled: Boolean! (scalar)
+        if (this.IsPreOrPostScriptEnabled != null) {
+            s += ind + "isPreOrPostScriptEnabled\n" ;
         }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
@@ -753,6 +790,14 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "tags {\n" + fspec + ind + "}\n" ;
             }
         }
+        //      C# -> VmAppConsistentSpecsInternal? VmAppConsistentSpecs
+        // GraphQL -> vmAppConsistentSpecs: VmAppConsistentSpecsInternal (type)
+        if (this.VmAppConsistentSpecs != null) {
+            var fspec = this.VmAppConsistentSpecs.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "vmAppConsistentSpecs {\n" + fspec + ind + "}\n" ;
+            }
+        }
         //      C# -> GenericSnapshotConnection? WorkloadSnapshotConnection
         // GraphQL -> workloadSnapshotConnection: GenericSnapshotConnection (type)
         if (this.WorkloadSnapshotConnection != null) {
@@ -871,6 +916,12 @@ namespace RubrikSecurityCloud.Types
         {
             this.InstanceType = "FETCH";
         }
+        //      C# -> System.Boolean? IsAppConsistencyEnabled
+        // GraphQL -> isAppConsistencyEnabled: Boolean! (scalar)
+        if (this.IsAppConsistencyEnabled == null && Exploration.Includes(parent + ".isAppConsistencyEnabled", true))
+        {
+            this.IsAppConsistencyEnabled = true;
+        }
         //      C# -> System.Boolean? IsExocomputeConfigured
         // GraphQL -> isExocomputeConfigured: Boolean! (scalar)
         if (this.IsExocomputeConfigured == null && Exploration.Includes(parent + ".isExocomputeConfigured", true))
@@ -888,6 +939,12 @@ namespace RubrikSecurityCloud.Types
         if (this.IsMarketplace == null && Exploration.Includes(parent + ".isMarketplace", true))
         {
             this.IsMarketplace = true;
+        }
+        //      C# -> System.Boolean? IsPreOrPostScriptEnabled
+        // GraphQL -> isPreOrPostScriptEnabled: Boolean! (scalar)
+        if (this.IsPreOrPostScriptEnabled == null && Exploration.Includes(parent + ".isPreOrPostScriptEnabled", true))
+        {
+            this.IsPreOrPostScriptEnabled = true;
         }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
@@ -1066,6 +1123,13 @@ namespace RubrikSecurityCloud.Types
         {
             this.Tags = new List<Tag>();
             this.Tags.ApplyExploratoryFieldSpec(parent + ".tags");
+        }
+        //      C# -> VmAppConsistentSpecsInternal? VmAppConsistentSpecs
+        // GraphQL -> vmAppConsistentSpecs: VmAppConsistentSpecsInternal (type)
+        if (this.VmAppConsistentSpecs == null && Exploration.Includes(parent + ".vmAppConsistentSpecs"))
+        {
+            this.VmAppConsistentSpecs = new VmAppConsistentSpecsInternal();
+            this.VmAppConsistentSpecs.ApplyExploratoryFieldSpec(parent + ".vmAppConsistentSpecs");
         }
         //      C# -> GenericSnapshotConnection? WorkloadSnapshotConnection
         // GraphQL -> workloadSnapshotConnection: GenericSnapshotConnection (type)

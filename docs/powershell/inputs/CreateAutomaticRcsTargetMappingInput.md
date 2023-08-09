@@ -15,3 +15,5 @@ Input for creating RCS locations.
   - List of Rubrik cluster UUIDs.
 - ipMapping: list of IpMappingInputs
   - IP mapping for each Rubrik cluster.
+- shouldBypassProxy: System.Boolean
+  - Specifies whether the proxy settings must be bypassed for  the RCV archival target.

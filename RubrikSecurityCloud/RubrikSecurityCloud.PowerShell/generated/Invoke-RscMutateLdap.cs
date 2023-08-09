@@ -63,12 +63,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         
         // -------------------------------------------------------------------
-        // DeletePrincipal parameter set
+        // DeletePrincipals parameter set
         //
         // [GraphQL: deleteLdapPrincipals]
         //
         [Parameter(
-            ParameterSetName = "DeletePrincipal",
+            ParameterSetName = "DeletePrincipals",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -77,7 +77,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: deleteLdapPrincipals]",
             Position = 0
         )]
-        public SwitchParameter DeletePrincipal { get; set; }
+        public SwitchParameter DeletePrincipals { get; set; }
 
         
         // -------------------------------------------------------------------
@@ -110,8 +110,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "RemoveIntegration":
                         this.ProcessRecord_RemoveIntegration();
                         break;
-                    case "DeletePrincipal":
-                        this.ProcessRecord_DeletePrincipal();
+                    case "DeletePrincipals":
+                        this.ProcessRecord_DeletePrincipals();
                         break;
                     case "SetMfaSetting":
                         this.ProcessRecord_SetMfaSetting();
@@ -146,9 +146,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // deleteLdapPrincipals.
-        protected void ProcessRecord_DeletePrincipal()
+        protected void ProcessRecord_DeletePrincipals()
         {
-            this._logger.name += " -DeletePrincipal";
+            this._logger.name += " -DeletePrincipals";
             // Invoke graphql operation deleteLdapPrincipals
             InvokeMutationDeleteLdapPrincipals();
         }
@@ -196,33 +196,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("groupSearchFilter", "String"),
                 Tuple.Create("groupMemberAttr", "String"),
             };
-            System.String? fields = null ;
-            if (this.Field != null)
-            {
+            System.String? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (System.String)psObject.BaseObject;
+                    fieldSpecObj = (System.String)psObject.BaseObject;
                 } else {
-                    fields = (System.String)this.Field;
+                    fieldSpecObj = (System.String)this.Field;
                 }
             }
-            string document = Mutation.UpdateLdapIntegration(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.UpdateLdapIntegration");
-            var parameters = "($id: UUID,$name: String!,$bindUserName: String!,$bindUserPassword: String!,$baseDn: String,$trustedCerts: String,$dynamicDnsName: String,$ldapServers: [LdapServerInput!],$userSearchFilter: String,$userNameAttr: String,$groupMembershipAttr: String,$groupSearchFilter: String,$groupMemberAttr: String)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "mutation MutationUpdateLdapIntegration" + parameters + "{" + document + "}",
-                OperationName = "MutationUpdateLdapIntegration",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "System.String", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Mutation.UpdateLdapIntegration(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationUpdateLdapIntegration",
+                "($id: UUID,$name: String!,$bindUserName: String!,$bindUserPassword: String!,$baseDn: String,$trustedCerts: String,$dynamicDnsName: String,$ldapServers: [LdapServerInput!],$userSearchFilter: String,$userNameAttr: String,$groupMembershipAttr: String,$groupSearchFilter: String,$groupMemberAttr: String)",
+                fieldSpecDoc,
+                "System.String"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -232,33 +223,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("id", "UUID!"),
             };
-            System.Boolean? fields = null ;
-            if (this.Field != null)
-            {
+            System.Boolean? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (System.Boolean)psObject.BaseObject;
+                    fieldSpecObj = (System.Boolean)psObject.BaseObject;
                 } else {
-                    fields = (System.Boolean)this.Field;
+                    fieldSpecObj = (System.Boolean)this.Field;
                 }
             }
-            string document = Mutation.RemoveLdapIntegration(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.RemoveLdapIntegration");
-            var parameters = "($id: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "mutation MutationRemoveLdapIntegration" + parameters + "{" + document + "}",
-                OperationName = "MutationRemoveLdapIntegration",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "System.Boolean", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Mutation.RemoveLdapIntegration(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationRemoveLdapIntegration",
+                "($id: UUID!)",
+                fieldSpecDoc,
+                "System.Boolean"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -268,33 +250,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("principalIds", "[String!]!"),
             };
-            System.Boolean? fields = null ;
-            if (this.Field != null)
-            {
+            System.Boolean? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (System.Boolean)psObject.BaseObject;
+                    fieldSpecObj = (System.Boolean)psObject.BaseObject;
                 } else {
-                    fields = (System.Boolean)this.Field;
+                    fieldSpecObj = (System.Boolean)this.Field;
                 }
             }
-            string document = Mutation.DeleteLdapPrincipals(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.DeleteLdapPrincipals");
-            var parameters = "($principalIds: [String!]!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "mutation MutationDeleteLdapPrincipals" + parameters + "{" + document + "}",
-                OperationName = "MutationDeleteLdapPrincipals",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "System.Boolean", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Mutation.DeleteLdapPrincipals(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationDeleteLdapPrincipals",
+                "($principalIds: [String!]!)",
+                fieldSpecDoc,
+                "System.Boolean"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -304,33 +277,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "SetLdapMfaSettingInput!"),
             };
-            System.Boolean? fields = null ;
-            if (this.Field != null)
-            {
+            System.Boolean? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (System.Boolean)psObject.BaseObject;
+                    fieldSpecObj = (System.Boolean)psObject.BaseObject;
                 } else {
-                    fields = (System.Boolean)this.Field;
+                    fieldSpecObj = (System.Boolean)this.Field;
                 }
             }
-            string document = Mutation.SetLdapMfaSetting(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.SetLdapMfaSetting");
-            var parameters = "($input: SetLdapMfaSettingInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "mutation MutationSetLdapMfaSetting" + parameters + "{" + document + "}",
-                OperationName = "MutationSetLdapMfaSetting",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "System.Boolean", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Mutation.SetLdapMfaSetting(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationSetLdapMfaSetting",
+                "($input: SetLdapMfaSettingInput!)",
+                fieldSpecDoc,
+                "System.Boolean"
+            );
         }
 
 

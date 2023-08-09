@@ -13,7 +13,7 @@ Get details about a Hyper-V host related async request.
 
 - There is a single argument of type GetHypervHostAsyncRequestStatusInput.
 - Returns AsyncRequestStatus.
-### mount
+### mounts
 HyperV Live Mount Connection.
 
 - There are 4 arguments.
@@ -35,12 +35,30 @@ Get details about a Hyper-V SCVMM related async request.
 
 - There is a single argument of type GetHypervScvmmAsyncRequestStatusInput.
 - Returns AsyncRequestStatus.
+### scvmms
+Paginated list of HyperV SCVMMs.
+
+- There are 5 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - sortBy - HierarchySortByField: Sort hierarchy objects by hierarchy field.
+    - sortOrder - SortOrder: Sorting order for the results.
+    - filter - list of Filters: The hierarchy object filter.
+- Returns HyperVSCVMMConnection.
 ### server
 Details of the given Hyper-V Server.
 
 - There is a single argument of type System.String.
 - Returns HypervServer.
-### topleveldescendant
+### servers
+Get summary of all the Hyper-V hosts
+
+Supported in v5.0+
+Get summary of all the Hyper-V hosts.
+
+- There is a single argument of type QueryHypervHostInput.
+- Returns HypervHostSummaryListResponse.
+### topleveldescendants
 Paginated list of the highest-level HyperV Objects accessible by the current user.
 
 - There are 6 arguments.
@@ -57,6 +75,19 @@ Count of unique HyperV Servers.
 - There is a single argument of type list of Filters.
 - Returns System.Int32.
 ### virtualmachine
+Details of the given Hyper-V Virtual Machine.
+
+- There is a single argument of type System.String.
+- Returns HyperVVirtualMachine.
+### virtualmachineasyncrequeststatus
+Get VM async request details
+
+Supported in v5.0+
+Get details about a Hyper-V vm related async request.
+
+- There is a single argument of type GetHypervVirtualMachineAsyncRequestStatusInput.
+- Returns AsyncRequestStatus.
+### virtualmachines
 Paginated list of HyperV Virtual Machines.
 
 - There are 5 arguments.
@@ -66,14 +97,6 @@ Paginated list of HyperV Virtual Machines.
     - sortOrder - SortOrder: Sorting order for the results.
     - filter - list of Filters: The hierarchy object filter.
 - Returns HyperVVirtualMachineConnection.
-### virtualmachineasyncrequeststatus
-Get VM async request details
-
-Supported in v5.0+
-Get details about a Hyper-V vm related async request.
-
-- There is a single argument of type GetHypervVirtualMachineAsyncRequestStatusInput.
-- Returns AsyncRequestStatus.
 ### vmdetail
 HyperV Virtual Machine detail from CDM.
 

@@ -10,3 +10,4 @@ Paginated list of Snappable objects. Each page of the results will include at mo
 - count: System.Int32
   - Total number of Snappable objects matching the request arguments.
 - aggregation: SnappableAggregation
+  - Aggregated information about the workloads.

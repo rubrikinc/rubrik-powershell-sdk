@@ -2,6 +2,7 @@
 Type of hierarchy object.
 
 - ACTIVE_DIRECTORY_DOMAIN - Active Directory domain.
+- K8S_CLUSTER - Kubernetes Cluster
 - KuprNamespace
 - HostShare
 - MssqlDatabaseBatchMaintenance
@@ -104,6 +105,7 @@ Type of hierarchy object.
 - HypervCluster
 - JIRA_PROJECT - Jira project.
 - StorageArrayVolumeGroup
+- K8S_RESOURCE_SET - Kubernetes Resource Set
 - SnapMirrorCloud
 - HypervSCVMM
 - AppBlueprint

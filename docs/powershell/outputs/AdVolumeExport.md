@@ -15,6 +15,8 @@ Active Directory volume export.
   - UUID of the corresponding domain controller.
 - domainControllerName: System.String
   - Name of the corresponding domain controller.
+- smbValidIps: list of System.Strings
+  - The whitelisted IP addresses that can access Active Directory live mount.
 - id: System.String
   - Fid of the volume export.
 - sourceSnapshot: CdmSnapshot

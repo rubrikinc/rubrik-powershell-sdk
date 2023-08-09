@@ -297,6 +297,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNMANAGED_OBJECTS_UNEXPIRED_SNAPSHOT_COUNT")]
         UNMANAGED_OBJECTS_UNEXPIRED_SNAPSHOT_COUNT,
 
+        [EnumMember(Value = "VMWARE_VCENTER_NAME_AND_VM_NAME")]
+        VMWARE_VCENTER_NAME_AND_VM_NAME,
+
+        [EnumMember(Value = "VMWARE_VM_AGENT_STATUS")]
+        VMWARE_VM_AGENT_STATUS,
+
         [EnumMember(Value = "VSPHERE_DATASTORE_CAPACITY")]
         VSPHERE_DATASTORE_CAPACITY,
 

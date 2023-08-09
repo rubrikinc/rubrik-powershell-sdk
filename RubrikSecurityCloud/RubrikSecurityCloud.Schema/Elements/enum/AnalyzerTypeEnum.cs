@@ -102,6 +102,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "GERMANY_PASSPORT")]
         GERMANY_PASSPORT,
 
+        [EnumMember(Value = "GOOGLE_API_KEY")]
+        GOOGLE_API_KEY,
+
         [EnumMember(Value = "IBAN")]
         IBAN,
 

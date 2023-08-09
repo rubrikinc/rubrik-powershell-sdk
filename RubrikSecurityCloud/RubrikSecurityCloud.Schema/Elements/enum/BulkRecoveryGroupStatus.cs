@@ -24,8 +24,8 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "IN_PROGRESS")]
         IN_PROGRESS,
 
-        [EnumMember(Value = "PARTIALLY_FAILED")]
-        PARTIALLY_FAILED,
+        [EnumMember(Value = "PARTIALLY_SUCCEEDED")]
+        PARTIALLY_SUCCEEDED,
 
         [EnumMember(Value = "SCHEDULED")]
         SCHEDULED,

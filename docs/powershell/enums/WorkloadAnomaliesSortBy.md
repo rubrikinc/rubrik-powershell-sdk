@@ -11,3 +11,4 @@ Fields to sort workload anomalies.
 - SNAPSHOT_DATE - Sort by snapshot date.
 - SENSITIVE_HITS - Sort by number of sensitive hits.
 - SENSITIVE_FILES - Sort by number of sensitive files.
+- DETECTION_TIME - Sort by detection time.

@@ -26,6 +26,13 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("siteUrl")]
         public System.String? SiteUrl { get; set; }
 
+        //      C# -> System.String? CustomerUrl
+        // GraphQL -> customerUrl: URL! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("customerUrl")]
+        public System.String? CustomerUrl { get; set; }
+
 
         #endregion
 

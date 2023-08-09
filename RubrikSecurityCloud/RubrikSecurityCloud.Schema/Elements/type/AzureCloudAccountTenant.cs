@@ -45,6 +45,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("domainName")]
         public System.String? DomainName { get; set; }
 
+        //      C# -> System.Boolean? IsAppRubrikManaged
+        // GraphQL -> isAppRubrikManaged: Boolean! (scalar)
+        [JsonProperty("isAppRubrikManaged")]
+        public System.Boolean? IsAppRubrikManaged { get; set; }
+
         //      C# -> System.Int32? SubscriptionCount
         // GraphQL -> subscriptionCount: Int! (scalar)
         [JsonProperty("subscriptionCount")]
@@ -70,6 +75,7 @@ namespace RubrikSecurityCloud.Types
         System.String? AzureCloudAccountTenantRubrikId = null,
         System.String? ClientId = null,
         System.String? DomainName = null,
+        System.Boolean? IsAppRubrikManaged = null,
         System.Int32? SubscriptionCount = null,
         List<AzureCloudAccountSubscriptionDetail>? Subscriptions = null
     ) 
@@ -88,6 +94,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( DomainName != null ) {
             this.DomainName = DomainName;
+        }
+        if ( IsAppRubrikManaged != null ) {
+            this.IsAppRubrikManaged = IsAppRubrikManaged;
         }
         if ( SubscriptionCount != null ) {
             this.SubscriptionCount = SubscriptionCount;
@@ -129,6 +138,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> domainName: String! (scalar)
         if (this.DomainName != null) {
             s += ind + "domainName\n" ;
+        }
+        //      C# -> System.Boolean? IsAppRubrikManaged
+        // GraphQL -> isAppRubrikManaged: Boolean! (scalar)
+        if (this.IsAppRubrikManaged != null) {
+            s += ind + "isAppRubrikManaged\n" ;
         }
         //      C# -> System.Int32? SubscriptionCount
         // GraphQL -> subscriptionCount: Int! (scalar)
@@ -180,6 +194,12 @@ namespace RubrikSecurityCloud.Types
         if (this.DomainName == null && Exploration.Includes(parent + ".domainName", true))
         {
             this.DomainName = "FETCH";
+        }
+        //      C# -> System.Boolean? IsAppRubrikManaged
+        // GraphQL -> isAppRubrikManaged: Boolean! (scalar)
+        if (this.IsAppRubrikManaged == null && Exploration.Includes(parent + ".isAppRubrikManaged", true))
+        {
+            this.IsAppRubrikManaged = true;
         }
         //      C# -> System.Int32? SubscriptionCount
         // GraphQL -> subscriptionCount: Int! (scalar)

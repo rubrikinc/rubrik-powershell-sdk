@@ -171,12 +171,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         
         // -------------------------------------------------------------------
-        // HostsByFid parameter set
+        // HostsByFids parameter set
         //
         // [GraphQL: vSphereHostsByFids]
         //
         [Parameter(
-            ParameterSetName = "HostsByFid",
+            ParameterSetName = "HostsByFids",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -185,7 +185,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: vSphereHostsByFids]",
             Position = 0
         )]
-        public SwitchParameter HostsByFid { get; set; }
+        public SwitchParameter HostsByFids { get; set; }
 
         
         // -------------------------------------------------------------------
@@ -297,6 +297,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         
         // -------------------------------------------------------------------
+        // ComputeClusters parameter set
+        //
+        // [GraphQL: vSphereComputeClusters]
+        //
+        [Parameter(
+            ParameterSetName = "ComputeClusters",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Query compute clusters
+[GraphQL: vSphereComputeClusters]",
+            Position = 0
+        )]
+        public SwitchParameter ComputeClusters { get; set; }
+
+        
+        // -------------------------------------------------------------------
         // DatastoreList parameter set
         //
         // [GraphQL: vSphereDatastoreConnection]
@@ -315,12 +333,30 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         
         // -------------------------------------------------------------------
-        // LiveMount parameter set
+        // DatastoreClusters parameter set
+        //
+        // [GraphQL: vSphereDatastoreClusters]
+        //
+        [Parameter(
+            ParameterSetName = "DatastoreClusters",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Query vSphere datastore clusters.
+[GraphQL: vSphereDatastoreClusters]",
+            Position = 0
+        )]
+        public SwitchParameter DatastoreClusters { get; set; }
+
+        
+        // -------------------------------------------------------------------
+        // LiveMounts parameter set
         //
         // [GraphQL: vSphereLiveMounts]
         //
         [Parameter(
-            ParameterSetName = "LiveMount",
+            ParameterSetName = "LiveMounts",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -329,7 +365,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: vSphereLiveMounts]",
             Position = 0
         )]
-        public SwitchParameter LiveMount { get; set; }
+        public SwitchParameter LiveMounts { get; set; }
 
         
         // -------------------------------------------------------------------
@@ -369,12 +405,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         
         // -------------------------------------------------------------------
-        // HostDetail parameter set
+        // HostDetails parameter set
         //
         // [GraphQL: vSphereHostDetails]
         //
         [Parameter(
-            ParameterSetName = "HostDetail",
+            ParameterSetName = "HostDetails",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -386,7 +422,7 @@ Get details of a ESXi hypervisor.
 [GraphQL: vSphereHostDetails]",
             Position = 0
         )]
-        public SwitchParameter HostDetail { get; set; }
+        public SwitchParameter HostDetails { get; set; }
 
         
         // -------------------------------------------------------------------
@@ -437,8 +473,8 @@ Get details of a ESXi hypervisor.
                     case "Datastore":
                         this.ProcessRecord_Datastore();
                         break;
-                    case "HostsByFid":
-                        this.ProcessRecord_HostsByFid();
+                    case "HostsByFids":
+                        this.ProcessRecord_HostsByFids();
                         break;
                     case "Tag":
                         this.ProcessRecord_Tag();
@@ -458,11 +494,17 @@ Get details of a ESXi hypervisor.
                     case "HostList":
                         this.ProcessRecord_HostList();
                         break;
+                    case "ComputeClusters":
+                        this.ProcessRecord_ComputeClusters();
+                        break;
                     case "DatastoreList":
                         this.ProcessRecord_DatastoreList();
                         break;
-                    case "LiveMount":
-                        this.ProcessRecord_LiveMount();
+                    case "DatastoreClusters":
+                        this.ProcessRecord_DatastoreClusters();
+                        break;
+                    case "LiveMounts":
+                        this.ProcessRecord_LiveMounts();
                         break;
                     case "MountList":
                         this.ProcessRecord_MountList();
@@ -470,8 +512,8 @@ Get details of a ESXi hypervisor.
                     case "Mount":
                         this.ProcessRecord_Mount();
                         break;
-                    case "HostDetail":
-                        this.ProcessRecord_HostDetail();
+                    case "HostDetails":
+                        this.ProcessRecord_HostDetails();
                         break;
                     case "VmwareCdpLiveInfo":
                         this.ProcessRecord_VmwareCdpLiveInfo();
@@ -560,9 +602,9 @@ Get details of a ESXi hypervisor.
 
         // This parameter set invokes a single graphql operation:
         // vSphereHostsByFids.
-        protected void ProcessRecord_HostsByFid()
+        protected void ProcessRecord_HostsByFids()
         {
-            this._logger.name += " -HostsByFid";
+            this._logger.name += " -HostsByFids";
             // Invoke graphql operation vSphereHostsByFids
             InvokeQueryVsphereHostsByFids();
         }
@@ -622,6 +664,15 @@ Get details of a ESXi hypervisor.
         }
 
         // This parameter set invokes a single graphql operation:
+        // vSphereComputeClusters.
+        protected void ProcessRecord_ComputeClusters()
+        {
+            this._logger.name += " -ComputeClusters";
+            // Invoke graphql operation vSphereComputeClusters
+            InvokeQueryVsphereComputeClusters();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // vSphereDatastoreConnection.
         protected void ProcessRecord_DatastoreList()
         {
@@ -631,10 +682,19 @@ Get details of a ESXi hypervisor.
         }
 
         // This parameter set invokes a single graphql operation:
-        // vSphereLiveMounts.
-        protected void ProcessRecord_LiveMount()
+        // vSphereDatastoreClusters.
+        protected void ProcessRecord_DatastoreClusters()
         {
-            this._logger.name += " -LiveMount";
+            this._logger.name += " -DatastoreClusters";
+            // Invoke graphql operation vSphereDatastoreClusters
+            InvokeQueryVsphereDatastoreClusters();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // vSphereLiveMounts.
+        protected void ProcessRecord_LiveMounts()
+        {
+            this._logger.name += " -LiveMounts";
             // Invoke graphql operation vSphereLiveMounts
             InvokeQueryVsphereLiveMounts();
         }
@@ -659,9 +719,9 @@ Get details of a ESXi hypervisor.
 
         // This parameter set invokes a single graphql operation:
         // vSphereHostDetails.
-        protected void ProcessRecord_HostDetail()
+        protected void ProcessRecord_HostDetails()
         {
-            this._logger.name += " -HostDetail";
+            this._logger.name += " -HostDetails";
             // Invoke graphql operation vSphereHostDetails
             InvokeQueryVsphereHostDetails();
         }
@@ -683,33 +743,24 @@ Get details of a ESXi hypervisor.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            VsphereBlueprint? fields = null ;
-            if (this.Field != null)
-            {
+            VsphereBlueprint? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (VsphereBlueprint)psObject.BaseObject;
+                    fieldSpecObj = (VsphereBlueprint)psObject.BaseObject;
                 } else {
-                    fields = (VsphereBlueprint)this.Field;
+                    fieldSpecObj = (VsphereBlueprint)this.Field;
                 }
             }
-            string document = Query.VsphereBlueprint(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.VsphereBlueprint");
-            var parameters = "($fid: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryVsphereBlueprint" + parameters + "{" + document + "}",
-                OperationName = "QueryVsphereBlueprint",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "VsphereBlueprint", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.VsphereBlueprint(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryVsphereBlueprint",
+                "($fid: UUID!)",
+                fieldSpecDoc,
+                "VsphereBlueprint"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -719,33 +770,24 @@ Get details of a ESXi hypervisor.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            VsphereDatacenter? fields = null ;
-            if (this.Field != null)
-            {
+            VsphereDatacenter? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (VsphereDatacenter)psObject.BaseObject;
+                    fieldSpecObj = (VsphereDatacenter)psObject.BaseObject;
                 } else {
-                    fields = (VsphereDatacenter)this.Field;
+                    fieldSpecObj = (VsphereDatacenter)this.Field;
                 }
             }
-            string document = Query.VsphereDatacenter(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.VsphereDatacenter");
-            var parameters = "($fid: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryVsphereDatacenter" + parameters + "{" + document + "}",
-                OperationName = "QueryVsphereDatacenter",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "VsphereDatacenter", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.VsphereDatacenter(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryVsphereDatacenter",
+                "($fid: UUID!)",
+                fieldSpecDoc,
+                "VsphereDatacenter"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -755,33 +797,24 @@ Get details of a ESXi hypervisor.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            VsphereComputeCluster? fields = null ;
-            if (this.Field != null)
-            {
+            VsphereComputeCluster? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (VsphereComputeCluster)psObject.BaseObject;
+                    fieldSpecObj = (VsphereComputeCluster)psObject.BaseObject;
                 } else {
-                    fields = (VsphereComputeCluster)this.Field;
+                    fieldSpecObj = (VsphereComputeCluster)this.Field;
                 }
             }
-            string document = Query.VsphereComputeCluster(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.VsphereComputeCluster");
-            var parameters = "($fid: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryVsphereComputeCluster" + parameters + "{" + document + "}",
-                OperationName = "QueryVsphereComputeCluster",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "VsphereComputeCluster", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.VsphereComputeCluster(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryVsphereComputeCluster",
+                "($fid: UUID!)",
+                fieldSpecDoc,
+                "VsphereComputeCluster"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -791,33 +824,24 @@ Get details of a ESXi hypervisor.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            VsphereResourcePool? fields = null ;
-            if (this.Field != null)
-            {
+            VsphereResourcePool? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (VsphereResourcePool)psObject.BaseObject;
+                    fieldSpecObj = (VsphereResourcePool)psObject.BaseObject;
                 } else {
-                    fields = (VsphereResourcePool)this.Field;
+                    fieldSpecObj = (VsphereResourcePool)this.Field;
                 }
             }
-            string document = Query.VsphereResourcePool(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.VsphereResourcePool");
-            var parameters = "($fid: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryVsphereResourcePool" + parameters + "{" + document + "}",
-                OperationName = "QueryVsphereResourcePool",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "VsphereResourcePool", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.VsphereResourcePool(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryVsphereResourcePool",
+                "($fid: UUID!)",
+                fieldSpecDoc,
+                "VsphereResourcePool"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -827,33 +851,24 @@ Get details of a ESXi hypervisor.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            VsphereFolder? fields = null ;
-            if (this.Field != null)
-            {
+            VsphereFolder? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (VsphereFolder)psObject.BaseObject;
+                    fieldSpecObj = (VsphereFolder)psObject.BaseObject;
                 } else {
-                    fields = (VsphereFolder)this.Field;
+                    fieldSpecObj = (VsphereFolder)this.Field;
                 }
             }
-            string document = Query.VsphereFolder(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.VsphereFolder");
-            var parameters = "($fid: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryVsphereFolder" + parameters + "{" + document + "}",
-                OperationName = "QueryVsphereFolder",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "VsphereFolder", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.VsphereFolder(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryVsphereFolder",
+                "($fid: UUID!)",
+                fieldSpecDoc,
+                "VsphereFolder"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -863,33 +878,24 @@ Get details of a ESXi hypervisor.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            VsphereHost? fields = null ;
-            if (this.Field != null)
-            {
+            VsphereHost? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (VsphereHost)psObject.BaseObject;
+                    fieldSpecObj = (VsphereHost)psObject.BaseObject;
                 } else {
-                    fields = (VsphereHost)this.Field;
+                    fieldSpecObj = (VsphereHost)this.Field;
                 }
             }
-            string document = Query.VsphereHost(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.VsphereHost");
-            var parameters = "($fid: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryVsphereHost" + parameters + "{" + document + "}",
-                OperationName = "QueryVsphereHost",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "VsphereHost", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.VsphereHost(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryVsphereHost",
+                "($fid: UUID!)",
+                fieldSpecDoc,
+                "VsphereHost"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -899,33 +905,24 @@ Get details of a ESXi hypervisor.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            VsphereDatastoreCluster? fields = null ;
-            if (this.Field != null)
-            {
+            VsphereDatastoreCluster? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (VsphereDatastoreCluster)psObject.BaseObject;
+                    fieldSpecObj = (VsphereDatastoreCluster)psObject.BaseObject;
                 } else {
-                    fields = (VsphereDatastoreCluster)this.Field;
+                    fieldSpecObj = (VsphereDatastoreCluster)this.Field;
                 }
             }
-            string document = Query.VsphereDatastoreCluster(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.VsphereDatastoreCluster");
-            var parameters = "($fid: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryVsphereDatastoreCluster" + parameters + "{" + document + "}",
-                OperationName = "QueryVsphereDatastoreCluster",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "VsphereDatastoreCluster", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.VsphereDatastoreCluster(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryVsphereDatastoreCluster",
+                "($fid: UUID!)",
+                fieldSpecDoc,
+                "VsphereDatastoreCluster"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -935,33 +932,24 @@ Get details of a ESXi hypervisor.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            VsphereDatastore? fields = null ;
-            if (this.Field != null)
-            {
+            VsphereDatastore? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (VsphereDatastore)psObject.BaseObject;
+                    fieldSpecObj = (VsphereDatastore)psObject.BaseObject;
                 } else {
-                    fields = (VsphereDatastore)this.Field;
+                    fieldSpecObj = (VsphereDatastore)this.Field;
                 }
             }
-            string document = Query.VsphereDatastore(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.VsphereDatastore");
-            var parameters = "($fid: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryVsphereDatastore" + parameters + "{" + document + "}",
-                OperationName = "QueryVsphereDatastore",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "VsphereDatastore", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.VsphereDatastore(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryVsphereDatastore",
+                "($fid: UUID!)",
+                fieldSpecDoc,
+                "VsphereDatastore"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -971,33 +959,24 @@ Get details of a ESXi hypervisor.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fids", "[UUID!]!"),
             };
-            List<VsphereHost>? fields = null ;
-            if (this.Field != null)
-            {
+            List<VsphereHost>? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (List<VsphereHost>)psObject.BaseObject;
+                    fieldSpecObj = (List<VsphereHost>)psObject.BaseObject;
                 } else {
-                    fields = (List<VsphereHost>)this.Field;
+                    fieldSpecObj = (List<VsphereHost>)this.Field;
                 }
             }
-            string document = Query.VsphereHostsByFids(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.VsphereHostsByFids");
-            var parameters = "($fids: [UUID!]!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryVsphereHostsByFids" + parameters + "{" + document + "}",
-                OperationName = "QueryVsphereHostsByFids",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "List<VsphereHost>", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.VsphereHostsByFids(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryVsphereHostsByFids",
+                "($fids: [UUID!]!)",
+                fieldSpecDoc,
+                "List<VsphereHost>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1007,33 +986,24 @@ Get details of a ESXi hypervisor.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            VsphereTag? fields = null ;
-            if (this.Field != null)
-            {
+            VsphereTag? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (VsphereTag)psObject.BaseObject;
+                    fieldSpecObj = (VsphereTag)psObject.BaseObject;
                 } else {
-                    fields = (VsphereTag)this.Field;
+                    fieldSpecObj = (VsphereTag)this.Field;
                 }
             }
-            string document = Query.VsphereTag(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.VsphereTag");
-            var parameters = "($fid: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryVsphereTag" + parameters + "{" + document + "}",
-                OperationName = "QueryVsphereTag",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "VsphereTag", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.VsphereTag(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryVsphereTag",
+                "($fid: UUID!)",
+                fieldSpecDoc,
+                "VsphereTag"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1043,33 +1013,24 @@ Get details of a ESXi hypervisor.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            VsphereTagCategory? fields = null ;
-            if (this.Field != null)
-            {
+            VsphereTagCategory? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (VsphereTagCategory)psObject.BaseObject;
+                    fieldSpecObj = (VsphereTagCategory)psObject.BaseObject;
                 } else {
-                    fields = (VsphereTagCategory)this.Field;
+                    fieldSpecObj = (VsphereTagCategory)this.Field;
                 }
             }
-            string document = Query.VsphereTagCategory(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.VsphereTagCategory");
-            var parameters = "($fid: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryVsphereTagCategory" + parameters + "{" + document + "}",
-                OperationName = "QueryVsphereTagCategory",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "VsphereTagCategory", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.VsphereTagCategory(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryVsphereTagCategory",
+                "($fid: UUID!)",
+                fieldSpecDoc,
+                "VsphereTagCategory"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1079,33 +1040,24 @@ Get details of a ESXi hypervisor.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            VsphereNetwork? fields = null ;
-            if (this.Field != null)
-            {
+            VsphereNetwork? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (VsphereNetwork)psObject.BaseObject;
+                    fieldSpecObj = (VsphereNetwork)psObject.BaseObject;
                 } else {
-                    fields = (VsphereNetwork)this.Field;
+                    fieldSpecObj = (VsphereNetwork)this.Field;
                 }
             }
-            string document = Query.VsphereNetwork(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.VsphereNetwork");
-            var parameters = "($fid: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryVsphereNetwork" + parameters + "{" + document + "}",
-                OperationName = "QueryVsphereNetwork",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "VsphereNetwork", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.VsphereNetwork(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryVsphereNetwork",
+                "($fid: UUID!)",
+                fieldSpecDoc,
+                "VsphereNetwork"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1127,33 +1079,24 @@ Get details of a ESXi hypervisor.
                 Tuple.Create("typeFilter", "[HierarchyObjectTypeEnum!]"),
                 Tuple.Create("filter", "[Filter!]"),
             };
-            CdmHierarchyObjectConnection? fields = null ;
-            if (this.Field != null)
-            {
+            CdmHierarchyObjectConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (CdmHierarchyObjectConnection)psObject.BaseObject;
+                    fieldSpecObj = (CdmHierarchyObjectConnection)psObject.BaseObject;
                 } else {
-                    fields = (CdmHierarchyObjectConnection)this.Field;
+                    fieldSpecObj = (CdmHierarchyObjectConnection)this.Field;
                 }
             }
-            string document = Query.VsphereTopLevelDescendantsConnection(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.VsphereTopLevelDescendantsConnection");
-            var parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$typeFilter: [HierarchyObjectTypeEnum!],$filter: [Filter!])\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryVsphereTopLevelDescendantsConnection" + parameters + "{" + document + "}",
-                OperationName = "QueryVsphereTopLevelDescendantsConnection",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "CdmHierarchyObjectConnection", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.VsphereTopLevelDescendantsConnection(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryVsphereTopLevelDescendantsConnection",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$typeFilter: [HierarchyObjectTypeEnum!],$filter: [Filter!])",
+                fieldSpecDoc,
+                "CdmHierarchyObjectConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1173,33 +1116,24 @@ Get details of a ESXi hypervisor.
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
             };
-            CdmHierarchyObjectConnection? fields = null ;
-            if (this.Field != null)
-            {
+            CdmHierarchyObjectConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (CdmHierarchyObjectConnection)psObject.BaseObject;
+                    fieldSpecObj = (CdmHierarchyObjectConnection)psObject.BaseObject;
                 } else {
-                    fields = (CdmHierarchyObjectConnection)this.Field;
+                    fieldSpecObj = (CdmHierarchyObjectConnection)this.Field;
                 }
             }
-            string document = Query.VsphereRootRecoveryHierarchy(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.VsphereRootRecoveryHierarchy");
-            var parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryVsphereRootRecoveryHierarchy" + parameters + "{" + document + "}",
-                OperationName = "QueryVsphereRootRecoveryHierarchy",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "CdmHierarchyObjectConnection", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.VsphereRootRecoveryHierarchy(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryVsphereRootRecoveryHierarchy",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                fieldSpecDoc,
+                "CdmHierarchyObjectConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1219,33 +1153,61 @@ Get details of a ESXi hypervisor.
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
             };
-            VsphereHostConnection? fields = null ;
-            if (this.Field != null)
-            {
+            VsphereHostConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (VsphereHostConnection)psObject.BaseObject;
+                    fieldSpecObj = (VsphereHostConnection)psObject.BaseObject;
                 } else {
-                    fields = (VsphereHostConnection)this.Field;
+                    fieldSpecObj = (VsphereHostConnection)this.Field;
                 }
             }
-            string document = Query.VsphereHostConnection(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.VsphereHostConnection");
-            var parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryVsphereHostConnection" + parameters + "{" + document + "}",
-                OperationName = "QueryVsphereHostConnection",
+            string fieldSpecDoc = Query.VsphereHostConnection(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryVsphereHostConnection",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                fieldSpecDoc,
+                "VsphereHostConnection"
+            );
+        }
+
+        // Invoke GraphQL Query:
+        // vSphereComputeClusters(
+        //     first: Int
+        //     after: String
+        //     sortBy: HierarchySortByField
+        //     sortOrder: SortOrder
+        //     filter: [Filter!]
+        //   ): VsphereComputeClusterConnection!
+        protected void InvokeQueryVsphereComputeClusters()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("sortBy", "HierarchySortByField"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("filter", "[Filter!]"),
             };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
+            VsphereComputeClusterConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                if (this.Field is PSObject psObject) {
+                    fieldSpecObj = (VsphereComputeClusterConnection)psObject.BaseObject;
+                } else {
+                    fieldSpecObj = (VsphereComputeClusterConnection)this.Field;
+                }
             }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "VsphereHostConnection", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.VsphereComputeClusters(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryVsphereComputeClusters",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                fieldSpecDoc,
+                "VsphereComputeClusterConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1265,33 +1227,61 @@ Get details of a ESXi hypervisor.
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
             };
-            VsphereDatastoreConnection? fields = null ;
-            if (this.Field != null)
-            {
+            VsphereDatastoreConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (VsphereDatastoreConnection)psObject.BaseObject;
+                    fieldSpecObj = (VsphereDatastoreConnection)psObject.BaseObject;
                 } else {
-                    fields = (VsphereDatastoreConnection)this.Field;
+                    fieldSpecObj = (VsphereDatastoreConnection)this.Field;
                 }
             }
-            string document = Query.VsphereDatastoreConnection(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.VsphereDatastoreConnection");
-            var parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryVsphereDatastoreConnection" + parameters + "{" + document + "}",
-                OperationName = "QueryVsphereDatastoreConnection",
+            string fieldSpecDoc = Query.VsphereDatastoreConnection(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryVsphereDatastoreConnection",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                fieldSpecDoc,
+                "VsphereDatastoreConnection"
+            );
+        }
+
+        // Invoke GraphQL Query:
+        // vSphereDatastoreClusters(
+        //     first: Int
+        //     after: String
+        //     sortBy: HierarchySortByField
+        //     sortOrder: SortOrder
+        //     filter: [Filter!]
+        //   ): VsphereDatastoreClusterConnection!
+        protected void InvokeQueryVsphereDatastoreClusters()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("sortBy", "HierarchySortByField"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("filter", "[Filter!]"),
             };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
+            VsphereDatastoreClusterConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                if (this.Field is PSObject psObject) {
+                    fieldSpecObj = (VsphereDatastoreClusterConnection)psObject.BaseObject;
+                } else {
+                    fieldSpecObj = (VsphereDatastoreClusterConnection)this.Field;
+                }
             }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "VsphereDatastoreConnection", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.VsphereDatastoreClusters(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryVsphereDatastoreClusters",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                fieldSpecDoc,
+                "VsphereDatastoreClusterConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1309,33 +1299,24 @@ Get details of a ESXi hypervisor.
                 Tuple.Create("filter", "[VsphereLiveMountFilterInput!]"),
                 Tuple.Create("sortBy", "VsphereLiveMountSortBy"),
             };
-            VsphereLiveMountConnection? fields = null ;
-            if (this.Field != null)
-            {
+            VsphereLiveMountConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (VsphereLiveMountConnection)psObject.BaseObject;
+                    fieldSpecObj = (VsphereLiveMountConnection)psObject.BaseObject;
                 } else {
-                    fields = (VsphereLiveMountConnection)this.Field;
+                    fieldSpecObj = (VsphereLiveMountConnection)this.Field;
                 }
             }
-            string document = Query.VsphereLiveMounts(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.VsphereLiveMounts");
-            var parameters = "($first: Int,$after: String,$filter: [VsphereLiveMountFilterInput!],$sortBy: VsphereLiveMountSortBy)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryVsphereLiveMounts" + parameters + "{" + document + "}",
-                OperationName = "QueryVsphereLiveMounts",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "VsphereLiveMountConnection", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.VsphereLiveMounts(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryVsphereLiveMounts",
+                "($first: Int,$after: String,$filter: [VsphereLiveMountFilterInput!],$sortBy: VsphereLiveMountSortBy)",
+                fieldSpecDoc,
+                "VsphereLiveMountConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1355,33 +1336,24 @@ Get details of a ESXi hypervisor.
                 Tuple.Create("sortBy", "VsphereMountSortBy"),
                 Tuple.Create("sortOrder", "SortOrder"),
             };
-            VsphereMountConnection? fields = null ;
-            if (this.Field != null)
-            {
+            VsphereMountConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (VsphereMountConnection)psObject.BaseObject;
+                    fieldSpecObj = (VsphereMountConnection)psObject.BaseObject;
                 } else {
-                    fields = (VsphereMountConnection)this.Field;
+                    fieldSpecObj = (VsphereMountConnection)this.Field;
                 }
             }
-            string document = Query.VsphereMountConnection(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.VsphereMountConnection");
-            var parameters = "($first: Int,$after: String,$filter: VSphereMountFilter,$sortBy: VsphereMountSortBy,$sortOrder: SortOrder)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryVsphereMountConnection" + parameters + "{" + document + "}",
-                OperationName = "QueryVsphereMountConnection",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "VsphereMountConnection", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.VsphereMountConnection(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryVsphereMountConnection",
+                "($first: Int,$after: String,$filter: VSphereMountFilter,$sortBy: VsphereMountSortBy,$sortOrder: SortOrder)",
+                fieldSpecDoc,
+                "VsphereMountConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1391,33 +1363,24 @@ Get details of a ESXi hypervisor.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            VsphereMount? fields = null ;
-            if (this.Field != null)
-            {
+            VsphereMount? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (VsphereMount)psObject.BaseObject;
+                    fieldSpecObj = (VsphereMount)psObject.BaseObject;
                 } else {
-                    fields = (VsphereMount)this.Field;
+                    fieldSpecObj = (VsphereMount)this.Field;
                 }
             }
-            string document = Query.VsphereMount(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.VsphereMount");
-            var parameters = "($fid: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryVsphereMount" + parameters + "{" + document + "}",
-                OperationName = "QueryVsphereMount",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "VsphereMount", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.VsphereMount(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryVsphereMount",
+                "($fid: UUID!)",
+                fieldSpecDoc,
+                "VsphereMount"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1427,33 +1390,24 @@ Get details of a ESXi hypervisor.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetVmwareHostInput!"),
             };
-            VmwareHostDetail? fields = null ;
-            if (this.Field != null)
-            {
+            VmwareHostDetail? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (VmwareHostDetail)psObject.BaseObject;
+                    fieldSpecObj = (VmwareHostDetail)psObject.BaseObject;
                 } else {
-                    fields = (VmwareHostDetail)this.Field;
+                    fieldSpecObj = (VmwareHostDetail)this.Field;
                 }
             }
-            string document = Query.VsphereHostDetails(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.VsphereHostDetails");
-            var parameters = "($input: GetVmwareHostInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryVsphereHostDetails" + parameters + "{" + document + "}",
-                OperationName = "QueryVsphereHostDetails",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "VmwareHostDetail", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.VsphereHostDetails(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryVsphereHostDetails",
+                "($input: GetVmwareHostInput!)",
+                fieldSpecDoc,
+                "VmwareHostDetail"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1463,33 +1417,24 @@ Get details of a ESXi hypervisor.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("ids", "[String!]!"),
             };
-            BatchVmwareCdpLiveInfo? fields = null ;
-            if (this.Field != null)
-            {
+            BatchVmwareCdpLiveInfo? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (BatchVmwareCdpLiveInfo)psObject.BaseObject;
+                    fieldSpecObj = (BatchVmwareCdpLiveInfo)psObject.BaseObject;
                 } else {
-                    fields = (BatchVmwareCdpLiveInfo)this.Field;
+                    fieldSpecObj = (BatchVmwareCdpLiveInfo)this.Field;
                 }
             }
-            string document = Query.VsphereVmwareCdpLiveInfo(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.VsphereVmwareCdpLiveInfo");
-            var parameters = "($ids: [String!]!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryVsphereVmwareCdpLiveInfo" + parameters + "{" + document + "}",
-                OperationName = "QueryVsphereVmwareCdpLiveInfo",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "BatchVmwareCdpLiveInfo", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.VsphereVmwareCdpLiveInfo(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryVsphereVmwareCdpLiveInfo",
+                "($ids: [String!]!)",
+                fieldSpecDoc,
+                "BatchVmwareCdpLiveInfo"
+            );
         }
 
 

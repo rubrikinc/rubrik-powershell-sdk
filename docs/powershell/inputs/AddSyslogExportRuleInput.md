@@ -17,5 +17,7 @@
   - Syslog export rule.
 - syslogExportRuleV90: SyslogExportRuleFullInput
   - Syslog export rule.
+- syslogExportRuleV91: SyslogExportRuleFullInput
+  - Syslog export rule.
 - clusterUuid: System.String
   - Required. UUID used to identify the cluster the request goes to.

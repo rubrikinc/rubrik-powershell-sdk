@@ -1,6 +1,6 @@
 ﻿# @powershell-sdk.cmdlet-name Get-ClusterSlaDomain
 query ClusterSlaDomain {
-  clusterSlaDomainConnection {
+  clusterSlaDomains {
     ...ClusterSlaDomainFragment
   }
 }

@@ -28,7 +28,7 @@ namespace RubrikSecurityCloud
             {
                 foreach (var item in Variables)
                 {
-                    logger?.Verbose(
+                    logger?.Debug(
                         "item.Key: "
                             + item.Key +
                             ", item.Value: "

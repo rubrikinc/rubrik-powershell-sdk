@@ -14,7 +14,8 @@ namespace RubrikSecurityCloud
         public enum Profile
         {
             DEFAULT,
-            DETAILS
+            DETAIL,
+            CUSTOM
         }
 
         // --------------------------------------------------
@@ -66,11 +67,12 @@ namespace RubrikSecurityCloud
             bool included;
             switch (GlobalProfile)
             {
+                case Profile.CUSTOM:
                 case Profile.DEFAULT:
                     included = DefaultIncludes(nodes, lastNode, depth, isLeaf);
                     break;
 
-                case Profile.DETAILS:
+                case Profile.DETAIL:
                     included = DetailsIncludes(nodes, lastNode, depth, isLeaf);
                     break;
 

@@ -27,3 +27,5 @@ Supported in Rubrik CDM version 9.0 and later.
   - Common fields for recovery operations.
 - requiredRecoveryParameters: RequiredRecoveryParametersInput
   - Target snapshot ID or a point in time for recovery.
+- folderId: System.String
+  - ID of the virtual machine folder to export the new virtual machine to.

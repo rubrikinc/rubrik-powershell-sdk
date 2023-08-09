@@ -64,6 +64,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("requiredRecoveryParameters")]
         public RequiredRecoveryParametersInput? RequiredRecoveryParameters { get; set; }
 
+        //      C# -> RelocateMountConfigV2Input? MigrationConfig
+        // GraphQL -> migrationConfig: RelocateMountConfigV2Input (input)
+        [JsonProperty("migrationConfig")]
+        public RelocateMountConfigV2Input? MigrationConfig { get; set; }
+
+        //      C# -> System.Boolean? ShouldMigrateImmediately
+        // GraphQL -> shouldMigrateImmediately: Boolean (scalar)
+        [JsonProperty("shouldMigrateImmediately")]
+        public System.Boolean? ShouldMigrateImmediately { get; set; }
+
 
         #endregion
 

@@ -26,7 +26,7 @@ namespace RubrikSecurityCloud.Types
         public ManagedObjectType? ObjectType { get; set; }
 
         //      C# -> System.String? Id
-        // GraphQL -> id: UUID! (scalar)
+        // GraphQL -> id: String! (scalar)
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
@@ -93,7 +93,7 @@ namespace RubrikSecurityCloud.Types
             s += ind + "objectType\n" ;
         }
         //      C# -> System.String? Id
-        // GraphQL -> id: UUID! (scalar)
+        // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
             s += ind + "id\n" ;
         }
@@ -127,7 +127,7 @@ namespace RubrikSecurityCloud.Types
             this.ObjectType = new ManagedObjectType();
         }
         //      C# -> System.String? Id
-        // GraphQL -> id: UUID! (scalar)
+        // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
             this.Id = "FETCH";

@@ -19,6 +19,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> ContractType? ContractType
+        // GraphQL -> contractType: ContractType (enum)
+        [JsonProperty("contractType")]
+        public ContractType? ContractType { get; set; }
+
         //      C# -> System.String? VersionId
         // GraphQL -> versionId: String! (scalar)
         [Required]

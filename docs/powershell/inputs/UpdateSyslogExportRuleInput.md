@@ -17,6 +17,8 @@
   - Syslog export rule.
 - syslogSettingsV90: SyslogExportRulePartialInput
   - Syslog export rule.
+- syslogSettingsV91: SyslogExportRulePartialInput
+  - Syslog export rule.
 - clusterUuid: System.String
   - Required. UUID used to identify the cluster the request goes to.
 - id: System.String

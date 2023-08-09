@@ -64,6 +64,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="System.Management.Automation" Version="6.2.7" />
+  </ItemGroup>
   <Target Name="GeneratePSDocs" AfterTargets="Build">
       <Message Text="############ GENERATING POWERSHELL HELP DOCUMENTATION############" Importance="High" />
       <Exec Command="pwsh -File $(ProjectDir)docs/GenerateDocs.ps1 -sourceXml $(TargetDir)RubrikSecurityCloud.PowerShell.xml -ModuleFilePath $(TargetDir)RubrikSecurityCloud.psd1 -ModuleName RubrikSecurityCloud -OutputPath $(TargetDir)" />

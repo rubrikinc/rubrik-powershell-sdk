@@ -82,7 +82,10 @@ namespace RubrikSecurityCloud.Types
         TASK_DETAILS,
 
         [EnumMember(Value = "THREAT_MONITORING_LIST")]
-        THREAT_MONITORING_LIST
+        THREAT_MONITORING_LIST,
+
+        [EnumMember(Value = "THREAT_MONITORING_SNAPSHOT_RESULTS")]
+        THREAT_MONITORING_SNAPSHOT_RESULTS
 
 
     } // enum DataViewTypeEnum

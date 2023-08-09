@@ -9,7 +9,7 @@ Azure Live Mount Details.
   - Target Subscription.
 - resourceGroup: ResourceGroupDetails
   - Resource group on which disk is selected to be mounted.
-- diskDetails: list of AzureMountDiskDetailss
+- diskDetails: list of AzureDiskDetailss
   - Details of disks which are mounted.
 - region: AzureCommonRegion
   - Region where disk is mounted.

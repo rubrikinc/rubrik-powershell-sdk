@@ -10,6 +10,8 @@ Supported in v7.0+
       Specifies the default Changelist setting for all shares in the Isilon NAS system.
 - nasTmpApiCredentials: NasApiCredentialsInput
   - Supported in v7.0+
+- nasFlashBladeApiCredentials: FlashBladeSystemParametersInput
+  - Supported in v9.0+
 - nasVendorType: NasVendorType
   - Required. Supported in v7.0+
 - hostname: System.String

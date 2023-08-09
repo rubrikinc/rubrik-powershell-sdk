@@ -14,15 +14,15 @@ namespace RubrikSecurityCloud.PowerShell.Private
     {
         public String Op { get; set; }
         public Hashtable Arg { get; set; }
-        public Object Field { get; set; }
+        public System.Object Field { get; set; }
         internal Tuple<String, String>[] _argDefs = null;
         internal String _gqlOperation = null;
-        internal RscBasePSCmdlet _parent = null;
+        internal RscGqlPSCmdlet _parent = null;
 
         // For clarity, _logger points to _parent._logger
         internal RscLogger _logger = null;
 
-        public RscCmdletInput(RscBasePSCmdlet parent)
+        public RscCmdletInput(RscGqlPSCmdlet parent)
         {
             _parent = parent;
             _logger = parent._logger;
@@ -39,7 +39,7 @@ namespace RubrikSecurityCloud.PowerShell.Private
             return _gqlOperation;
         }
 
-        private Object _jsonOk(Object obj)
+        private System.Object _jsonOk(System.Object obj)
         {
             if (
                 obj == null ||
@@ -87,7 +87,7 @@ namespace RubrikSecurityCloud.PowerShell.Private
 
         internal void Initialize(
             Tuple<String, String>[] argDefs,
-            Object field,
+            System.Object field,
             String gqlOperation)
         {
             _argDefs = argDefs;

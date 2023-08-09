@@ -233,7 +233,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         GraphQL.GraphQLRequest snapByIdRequest = BuildSnapshotBuIdRequest();
                         OperationVariableSet snapByIdVars = new OperationVariableSet
                         {
-                            Variables = new Dictionary<string, Object>
+                            Variables = new Dictionary<string, System.Object>
                             {
                                 { "snapshotFid", SnapshotId },
                                 { "clusterUuid", ClusterUUID}

@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("channelHostMountPaths")]
         public List<System.String>? ChannelHostMountPaths { get; set; }
 
+        //      C# -> System.Boolean? IsLogExportEnabled
+        // GraphQL -> isLogExportEnabled: Boolean (scalar)
+        [JsonProperty("isLogExportEnabled")]
+        public System.Boolean? IsLogExportEnabled { get; set; }
+
         //      C# -> System.Boolean? ShouldCancelBackupOnPreBackupScriptFailure
         // GraphQL -> shouldCancelBackupOnPreBackupScriptFailure: Boolean (scalar)
         [JsonProperty("shouldCancelBackupOnPreBackupScriptFailure")]
@@ -39,6 +44,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> hostDetails: SlaManagedVolumeHostSummary (type)
         [JsonProperty("hostDetails")]
         public SlaManagedVolumeHostSummary? HostDetails { get; set; }
+
+        //      C# -> SlaManagedVolumeLogExportSummary? LogExportSummary
+        // GraphQL -> logExportSummary: SlaManagedVolumeLogExportSummary (type)
+        [JsonProperty("logExportSummary")]
+        public SlaManagedVolumeLogExportSummary? LogExportSummary { get; set; }
 
         //      C# -> SlaManagedVolumeScriptSummary? PostBackupScriptOnBackupFailureDetails
         // GraphQL -> postBackupScriptOnBackupFailureDetails: SlaManagedVolumeScriptSummary (type)
@@ -66,9 +76,11 @@ namespace RubrikSecurityCloud.Types
 
     public SlaManagedVolumeDetail Set(
         List<System.String>? ChannelHostMountPaths = null,
+        System.Boolean? IsLogExportEnabled = null,
         System.Boolean? ShouldCancelBackupOnPreBackupScriptFailure = null,
         SlaManagedVolumeScriptSummary? BackupScriptDetails = null,
         SlaManagedVolumeHostSummary? HostDetails = null,
+        SlaManagedVolumeLogExportSummary? LogExportSummary = null,
         SlaManagedVolumeScriptSummary? PostBackupScriptOnBackupFailureDetails = null,
         SlaManagedVolumeScriptSummary? PostBackupScriptOnBackupSuccessDetails = null,
         SlaManagedVolumeScriptSummary? PreBackupScriptDetails = null
@@ -76,6 +88,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( ChannelHostMountPaths != null ) {
             this.ChannelHostMountPaths = ChannelHostMountPaths;
+        }
+        if ( IsLogExportEnabled != null ) {
+            this.IsLogExportEnabled = IsLogExportEnabled;
         }
         if ( ShouldCancelBackupOnPreBackupScriptFailure != null ) {
             this.ShouldCancelBackupOnPreBackupScriptFailure = ShouldCancelBackupOnPreBackupScriptFailure;
@@ -85,6 +100,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( HostDetails != null ) {
             this.HostDetails = HostDetails;
+        }
+        if ( LogExportSummary != null ) {
+            this.LogExportSummary = LogExportSummary;
         }
         if ( PostBackupScriptOnBackupFailureDetails != null ) {
             this.PostBackupScriptOnBackupFailureDetails = PostBackupScriptOnBackupFailureDetails;
@@ -110,6 +128,11 @@ namespace RubrikSecurityCloud.Types
         if (this.ChannelHostMountPaths != null) {
             s += ind + "channelHostMountPaths\n" ;
         }
+        //      C# -> System.Boolean? IsLogExportEnabled
+        // GraphQL -> isLogExportEnabled: Boolean (scalar)
+        if (this.IsLogExportEnabled != null) {
+            s += ind + "isLogExportEnabled\n" ;
+        }
         //      C# -> System.Boolean? ShouldCancelBackupOnPreBackupScriptFailure
         // GraphQL -> shouldCancelBackupOnPreBackupScriptFailure: Boolean (scalar)
         if (this.ShouldCancelBackupOnPreBackupScriptFailure != null) {
@@ -129,6 +152,14 @@ namespace RubrikSecurityCloud.Types
             var fspec = this.HostDetails.AsFieldSpec(indent+1);
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
                 s += ind + "hostDetails {\n" + fspec + ind + "}\n" ;
+            }
+        }
+        //      C# -> SlaManagedVolumeLogExportSummary? LogExportSummary
+        // GraphQL -> logExportSummary: SlaManagedVolumeLogExportSummary (type)
+        if (this.LogExportSummary != null) {
+            var fspec = this.LogExportSummary.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "logExportSummary {\n" + fspec + ind + "}\n" ;
             }
         }
         //      C# -> SlaManagedVolumeScriptSummary? PostBackupScriptOnBackupFailureDetails
@@ -169,6 +200,12 @@ namespace RubrikSecurityCloud.Types
         {
             this.ChannelHostMountPaths = new List<System.String>();
         }
+        //      C# -> System.Boolean? IsLogExportEnabled
+        // GraphQL -> isLogExportEnabled: Boolean (scalar)
+        if (this.IsLogExportEnabled == null && Exploration.Includes(parent + ".isLogExportEnabled", true))
+        {
+            this.IsLogExportEnabled = true;
+        }
         //      C# -> System.Boolean? ShouldCancelBackupOnPreBackupScriptFailure
         // GraphQL -> shouldCancelBackupOnPreBackupScriptFailure: Boolean (scalar)
         if (this.ShouldCancelBackupOnPreBackupScriptFailure == null && Exploration.Includes(parent + ".shouldCancelBackupOnPreBackupScriptFailure", true))
@@ -188,6 +225,13 @@ namespace RubrikSecurityCloud.Types
         {
             this.HostDetails = new SlaManagedVolumeHostSummary();
             this.HostDetails.ApplyExploratoryFieldSpec(parent + ".hostDetails");
+        }
+        //      C# -> SlaManagedVolumeLogExportSummary? LogExportSummary
+        // GraphQL -> logExportSummary: SlaManagedVolumeLogExportSummary (type)
+        if (this.LogExportSummary == null && Exploration.Includes(parent + ".logExportSummary"))
+        {
+            this.LogExportSummary = new SlaManagedVolumeLogExportSummary();
+            this.LogExportSummary.ApplyExploratoryFieldSpec(parent + ".logExportSummary");
         }
         //      C# -> SlaManagedVolumeScriptSummary? PostBackupScriptOnBackupFailureDetails
         // GraphQL -> postBackupScriptOnBackupFailureDetails: SlaManagedVolumeScriptSummary (type)

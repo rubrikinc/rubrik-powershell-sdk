@@ -43,6 +43,12 @@ AWS native EC2 instance.
   - AWS Native ID of Instance.
 - nativeName: System.String
   - AWS Native name of the object.
+- isPreOrPostScriptEnabled: System.Boolean
+  - Specifies whether the pre-script or post-script framework is enabled on the EC2 instance. When enabled, it facilitates application-consistent backups.
+- vmAppConsistentSpecs: VmAppConsistentSpecsInternal
+  - Specifications for ensuring application consistency on the EC2 instance.
+- isAppConsistencyEnabled: System.Boolean
+  - Specifies whether application consistent snapshots are enabled for this EC2 instance. When enabled, Rubrik informs the AWS applications before taking snapshots, allowing them to prepare. During the preparation phrase, Rubrik freezes the IO, takes the snapshot, and then unfreezes IO, enabling the apps to resume regular operation.
 - authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
   - The authorized operations on the object.
 - awsNativeAccount: AwsNativeAccount

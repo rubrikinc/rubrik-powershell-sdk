@@ -72,6 +72,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ENABLE_POLARIS_AS_REPLICATION_SOURCE")]
         ENABLE_POLARIS_AS_REPLICATION_SOURCE,
 
+        [EnumMember(Value = "FEDERATED_LOGIN")]
+        FEDERATED_LOGIN,
+
         [EnumMember(Value = "GLOBAL_SLA_ASSIGN")]
         GLOBAL_SLA_ASSIGN,
 

@@ -1,6 +1,8 @@
 ### AzureCloudAccountTenantWithExoConfigs
 Azure Cloud Account Tenant with details of exocompute configured for subscriptions for a given feature.
 
+- rubrikId: System.String
+  - Rubrik ID of the Azure Tenant.
 - domainName: System.String
   - Azure Active Directory (AD) domain corresponding to subscription.
 - subscriptionCount: System.Int32
@@ -11,5 +13,7 @@ Azure Cloud Account Tenant with details of exocompute configured for subscriptio
   - Type of Azure Tenant. Can be Azure Public Cloud or Azure China Cloud.
 - appName: System.String
   - App name of Azure application for the tenant.
+- isAppRubrikManaged: System.Boolean
+  - If Rubrik manages the application associated with this tenant, this field will be set to FALSE. However, if the application is customer-managed and the customers manually added the credentials, this field will have a different value.
 - subscriptions: list of AzureSubscriptionWithExoConfigss
   - Details of subscriptions for the tenant.

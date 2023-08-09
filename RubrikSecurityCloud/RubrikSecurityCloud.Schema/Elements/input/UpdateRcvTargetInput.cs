@@ -43,6 +43,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("ipMapping")]
         public IpMappingInput? IpMapping { get; set; }
 
+        //      C# -> System.Boolean? ShouldBypassProxy
+        // GraphQL -> shouldBypassProxy: Boolean (scalar)
+        [JsonProperty("shouldBypassProxy")]
+        public System.Boolean? ShouldBypassProxy { get; set; }
+
 
         #endregion
 

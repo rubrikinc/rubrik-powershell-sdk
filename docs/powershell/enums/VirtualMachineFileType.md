@@ -1,5 +1,5 @@
 ### VirtualMachineFileType
-Supported in v9.0
+Supported in v9.0+
   VMware virtual machine file type.
 
 - VIRTUAL_MACHINE_FILE_TYPE_FILE - Virtual Machine file type.

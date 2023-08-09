@@ -26,5 +26,5 @@ Supported in v5.2+
   - Supported in v7.0+
   Indicates whether the snapshots is retained beyond its expiration date for security reasons.
 - isSnapshotOnLegalHold: System.Boolean
-  - Supported in v9.0
+  - Supported in v9.0+
   Indicates whether snapshot is on legal hold for this location. By default, this is false.

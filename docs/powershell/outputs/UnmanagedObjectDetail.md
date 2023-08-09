@@ -6,7 +6,7 @@ UnmanagedObjectDetails.
 - hasSnapshotsWithPolicy: System.Boolean
   - Any of the snapshots are retained by a SLA.
 - id: System.String
-  - Snappable id.
+  - Workload ID.
 - isRemote: System.Boolean
   - Whether the object is remote or local.
 - localStorage: System.Int64
@@ -17,14 +17,14 @@ UnmanagedObjectDetails.
   - Type of the unmanaged object.
 - physicalLocation: list of LocationPathPoints
   - Physical path to this object.
-- recoveryInfo: SnappableRecoveryInfo
+- recoveryInfo: WorkloadRecoveryInfo
   - Recovery information for the reader archival locations.
 - retentionSlaDomainId: System.String
   - SLA Domain retention policy ID.
 - retentionSlaDomainName: System.String
   - SLA Domain retention policy name.
-- retentionSlaDomainPolarisManagedId: System.String
-  - Polaris SLA Domain ID.
+- retentionSlaDomainRscManagedId: System.String
+  - RSC SLA Domain ID.
 - snapshotCount: System.Int64
   - Snapshot count.
 - unmanagedStatus: UnmanagedObjectAvailabilityFilter

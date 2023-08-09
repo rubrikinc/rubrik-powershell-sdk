@@ -166,6 +166,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cdmClusterNodeDetails")]
         public List<CdmNodeDetail>? CdmClusterNodeDetails { get; set; }
 
+        //      C# -> NotificationSettingSummaryListResponse? CdmNotificationSettings
+        // GraphQL -> cdmNotificationSettings: NotificationSettingSummaryListResponse! (type)
+        [JsonProperty("cdmNotificationSettings")]
+        public NotificationSettingSummaryListResponse? CdmNotificationSettings { get; set; }
+
         //      C# -> CdmUpgradeInfo? CdmUpgradeInfo
         // GraphQL -> cdmUpgradeInfo: CdmUpgradeInfo (type)
         [JsonProperty("cdmUpgradeInfo")]
@@ -310,6 +315,7 @@ namespace RubrikSecurityCloud.Types
         AuthorizedOperations? AuthorizedOperations = null,
         CcprovisionInfo? CcprovisionInfo = null,
         List<CdmNodeDetail>? CdmClusterNodeDetails = null,
+        NotificationSettingSummaryListResponse? CdmNotificationSettings = null,
         CdmUpgradeInfo? CdmUpgradeInfo = null,
         CcWithCloudInfo? CloudInfo = null,
         ClusterDiskConnection? ClusterDiskConnection = null,
@@ -419,6 +425,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( CdmClusterNodeDetails != null ) {
             this.CdmClusterNodeDetails = CdmClusterNodeDetails;
+        }
+        if ( CdmNotificationSettings != null ) {
+            this.CdmNotificationSettings = CdmNotificationSettings;
         }
         if ( CdmUpgradeInfo != null ) {
             this.CdmUpgradeInfo = CdmUpgradeInfo;
@@ -651,6 +660,14 @@ namespace RubrikSecurityCloud.Types
             var fspec = this.CdmClusterNodeDetails.AsFieldSpec(indent+1);
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
                 s += ind + "cdmClusterNodeDetails {\n" + fspec + ind + "}\n" ;
+            }
+        }
+        //      C# -> NotificationSettingSummaryListResponse? CdmNotificationSettings
+        // GraphQL -> cdmNotificationSettings: NotificationSettingSummaryListResponse! (type)
+        if (this.CdmNotificationSettings != null) {
+            var fspec = this.CdmNotificationSettings.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "cdmNotificationSettings {\n" + fspec + ind + "}\n" ;
             }
         }
         //      C# -> CdmUpgradeInfo? CdmUpgradeInfo
@@ -1007,6 +1024,13 @@ namespace RubrikSecurityCloud.Types
         {
             this.CdmClusterNodeDetails = new List<CdmNodeDetail>();
             this.CdmClusterNodeDetails.ApplyExploratoryFieldSpec(parent + ".cdmClusterNodeDetails");
+        }
+        //      C# -> NotificationSettingSummaryListResponse? CdmNotificationSettings
+        // GraphQL -> cdmNotificationSettings: NotificationSettingSummaryListResponse! (type)
+        if (this.CdmNotificationSettings == null && Exploration.Includes(parent + ".cdmNotificationSettings"))
+        {
+            this.CdmNotificationSettings = new NotificationSettingSummaryListResponse();
+            this.CdmNotificationSettings.ApplyExploratoryFieldSpec(parent + ".cdmNotificationSettings");
         }
         //      C# -> CdmUpgradeInfo? CdmUpgradeInfo
         // GraphQL -> cdmUpgradeInfo: CdmUpgradeInfo (type)

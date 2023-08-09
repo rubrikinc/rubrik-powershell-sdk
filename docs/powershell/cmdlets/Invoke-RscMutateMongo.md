@@ -16,7 +16,7 @@ Assigns SLA Domain to the given MongoDB collection objects.
 
 - There is a single argument of type AssignSlaToMongoDbCollectionInput.
 - Returns AsyncRequestStatus.
-### bulkdeletedbsource
+### bulkdeletedbsources
 Bulk Delete Sources
 
 Supported in m3.2.0-m4.2.0.

@@ -14,5 +14,5 @@ Supported in v5.1+
   - Supported in v7.0+
       A boolean value specifying whether the database obtains the log backup configurations from the SLA Domain.
 - hostLogRetention: System.Int32
-  - Supported in v9.0
+  - Supported in v9.0+
       Specifies the interval, in seconds, the Rubrik cluster waits before the next log backup job deletes MSSQL log files whose 'nextTime' field specifies a time longer than this interval. To specify a wait interval, enter a positive integer. To immediately delete log files regardless of age, specify an interval of -1. To preserve all log files, specify an interval of -2.

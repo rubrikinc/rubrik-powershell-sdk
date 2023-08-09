@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("table")]
         public TableViewType? Table { get; set; }
 
+        //      C# -> System.String? Fid
+        // GraphQL -> fid: UUID! (scalar)
+        [JsonProperty("fid")]
+        public System.String? Fid { get; set; }
+
         //      C# -> System.Int64? Id
         // GraphQL -> id: Long! (scalar)
         [JsonProperty("id")]
@@ -74,6 +79,7 @@ namespace RubrikSecurityCloud.Types
         PolarisReportViewType? ReportViewType = null,
         SortOrder? SortOrder = null,
         TableViewType? Table = null,
+        System.String? Fid = null,
         System.Int64? Id = null,
         System.String? Name = null,
         System.String? SortBy = null,
@@ -91,6 +97,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Table != null ) {
             this.Table = Table;
+        }
+        if ( Fid != null ) {
+            this.Fid = Fid;
         }
         if ( Id != null ) {
             this.Id = Id;
@@ -133,6 +142,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> table: TableViewType! (enum)
         if (this.Table != null) {
             s += ind + "table\n" ;
+        }
+        //      C# -> System.String? Fid
+        // GraphQL -> fid: UUID! (scalar)
+        if (this.Fid != null) {
+            s += ind + "fid\n" ;
         }
         //      C# -> System.Int64? Id
         // GraphQL -> id: Long! (scalar)
@@ -188,6 +202,12 @@ namespace RubrikSecurityCloud.Types
         if (this.Table == null && Exploration.Includes(parent + ".table", true))
         {
             this.Table = new TableViewType();
+        }
+        //      C# -> System.String? Fid
+        // GraphQL -> fid: UUID! (scalar)
+        if (this.Fid == null && Exploration.Includes(parent + ".fid", true))
+        {
+            this.Fid = "FETCH";
         }
         //      C# -> System.Int64? Id
         // GraphQL -> id: Long! (scalar)

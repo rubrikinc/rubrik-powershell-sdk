@@ -40,6 +40,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("compressionEnabled")]
         public System.Boolean? CompressionEnabled { get; set; }
 
+        //      C# -> System.String? HostDomainId
+        // GraphQL -> hostDomainId: String (scalar)
+        [JsonProperty("hostDomainId")]
+        public System.String? HostDomainId { get; set; }
+
+        //      C# -> System.String? HostDomainName
+        // GraphQL -> hostDomainName: String (scalar)
+        [JsonProperty("hostDomainName")]
+        public System.String? HostDomainName { get; set; }
+
         //      C# -> System.Boolean? IsOracleHost
         // GraphQL -> isOracleHost: Boolean (scalar)
         [JsonProperty("isOracleHost")]
@@ -89,6 +99,8 @@ namespace RubrikSecurityCloud.Types
         HostVfdInstallConfig? HostVfdEnabled = null,
         System.String? AgentId = null,
         System.Boolean? CompressionEnabled = null,
+        System.String? HostDomainId = null,
+        System.String? HostDomainName = null,
         System.Boolean? IsOracleHost = null,
         System.Boolean? IsRefreshPaused = null,
         System.Boolean? IsRelic = null,
@@ -109,6 +121,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( CompressionEnabled != null ) {
             this.CompressionEnabled = CompressionEnabled;
+        }
+        if ( HostDomainId != null ) {
+            this.HostDomainId = HostDomainId;
+        }
+        if ( HostDomainName != null ) {
+            this.HostDomainName = HostDomainName;
         }
         if ( IsOracleHost != null ) {
             this.IsOracleHost = IsOracleHost;
@@ -160,6 +178,16 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> compressionEnabled: Boolean (scalar)
         if (this.CompressionEnabled != null) {
             s += ind + "compressionEnabled\n" ;
+        }
+        //      C# -> System.String? HostDomainId
+        // GraphQL -> hostDomainId: String (scalar)
+        if (this.HostDomainId != null) {
+            s += ind + "hostDomainId\n" ;
+        }
+        //      C# -> System.String? HostDomainName
+        // GraphQL -> hostDomainName: String (scalar)
+        if (this.HostDomainName != null) {
+            s += ind + "hostDomainName\n" ;
         }
         //      C# -> System.Boolean? IsOracleHost
         // GraphQL -> isOracleHost: Boolean (scalar)
@@ -230,6 +258,18 @@ namespace RubrikSecurityCloud.Types
         if (this.CompressionEnabled == null && Exploration.Includes(parent + ".compressionEnabled", true))
         {
             this.CompressionEnabled = true;
+        }
+        //      C# -> System.String? HostDomainId
+        // GraphQL -> hostDomainId: String (scalar)
+        if (this.HostDomainId == null && Exploration.Includes(parent + ".hostDomainId", true))
+        {
+            this.HostDomainId = "FETCH";
+        }
+        //      C# -> System.String? HostDomainName
+        // GraphQL -> hostDomainName: String (scalar)
+        if (this.HostDomainName == null && Exploration.Includes(parent + ".hostDomainName", true))
+        {
+            this.HostDomainName = "FETCH";
         }
         //      C# -> System.Boolean? IsOracleHost
         // GraphQL -> isOracleHost: Boolean (scalar)

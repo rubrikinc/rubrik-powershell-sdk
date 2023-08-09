@@ -12,3 +12,12 @@ The different TPR rules.
 - PAUSE_CLUSTER - The TPR rule is for pausing cluster.
 - DELETE_SNAPSHOT - The TPR rule is for deleting snapshots.
 - LEGAL_HOLD - The TPR rule is for legal holds.
+- ASSIGN_TPR_ROLE - The TPR rule is for assigning TPR roles to a user.
+- EDIT_TPR_ROLE - The TPR rule is for updating a TPR role that has been assigned to a user.
+- DELETE_TPR_ROLE - The TPR rule is for deleting a TPR role.
+- REVOKE_TPR_ROLE - The TPR rule is for revoking a TPR role from a user.
+- RESET_USER_TOTP_CONFIG - The TPR rule is for resetting MFA for a TPR user.
+- EDIT_TPR_POLICY - The TPR rule is for editing a TPR policy.
+- DELETE_TPR_POLICY - The TPR rule is for deleting a TPR policy.
+- UNLOCK_TPR_USER - The TPR rule is for unlocking a TPR user that has been locked.
+- DELETE_TPR_USER - The TPR rule is for deleting a TPR user.

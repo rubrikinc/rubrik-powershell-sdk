@@ -16,6 +16,7 @@ Supported in v5.0+
   - Required. Supported in v5.0+
   Connection status of the SCVMM server.
 - scvmmVersion: System.String
-  - Version of SCVMM.
+  - Supported in v9.0+
+  Version of SCVMM.
 - slaAssignable: SlaAssignable
   - 

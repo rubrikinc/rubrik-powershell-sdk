@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("status")]
         public BulkRecoveryGroupStatus? Status { get; set; }
 
+        //      C# -> System.Int64? CreateTime
+        // GraphQL -> createTime: Long (scalar)
+        [JsonProperty("createTime")]
+        public System.Int64? CreateTime { get; set; }
+
         //      C# -> System.Int64? ElapsedTime
         // GraphQL -> elapsedTime: Long! (scalar)
         [JsonProperty("elapsedTime")]
@@ -36,7 +41,7 @@ namespace RubrikSecurityCloud.Types
         public System.Int64? EndTime { get; set; }
 
         //      C# -> System.String? GroupId
-        // GraphQL -> groupId: UUID! (scalar)
+        // GraphQL -> groupId: UUID (scalar)
         [JsonProperty("groupId")]
         public System.String? GroupId { get; set; }
 
@@ -56,7 +61,7 @@ namespace RubrikSecurityCloud.Types
         public System.Int32? Seq { get; set; }
 
         //      C# -> System.Int64? StartTime
-        // GraphQL -> startTime: Long! (scalar)
+        // GraphQL -> startTime: Long (scalar)
         [JsonProperty("startTime")]
         public System.Int64? StartTime { get; set; }
 
@@ -76,6 +81,7 @@ namespace RubrikSecurityCloud.Types
 
     public BulkRecoveryGroupProgress Set(
         BulkRecoveryGroupStatus? Status = null,
+        System.Int64? CreateTime = null,
         System.Int64? ElapsedTime = null,
         System.Int64? EndTime = null,
         System.String? GroupId = null,
@@ -88,6 +94,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( Status != null ) {
             this.Status = Status;
+        }
+        if ( CreateTime != null ) {
+            this.CreateTime = CreateTime;
         }
         if ( ElapsedTime != null ) {
             this.ElapsedTime = ElapsedTime;
@@ -128,6 +137,11 @@ namespace RubrikSecurityCloud.Types
         if (this.Status != null) {
             s += ind + "status\n" ;
         }
+        //      C# -> System.Int64? CreateTime
+        // GraphQL -> createTime: Long (scalar)
+        if (this.CreateTime != null) {
+            s += ind + "createTime\n" ;
+        }
         //      C# -> System.Int64? ElapsedTime
         // GraphQL -> elapsedTime: Long! (scalar)
         if (this.ElapsedTime != null) {
@@ -139,7 +153,7 @@ namespace RubrikSecurityCloud.Types
             s += ind + "endTime\n" ;
         }
         //      C# -> System.String? GroupId
-        // GraphQL -> groupId: UUID! (scalar)
+        // GraphQL -> groupId: UUID (scalar)
         if (this.GroupId != null) {
             s += ind + "groupId\n" ;
         }
@@ -159,7 +173,7 @@ namespace RubrikSecurityCloud.Types
             s += ind + "seq\n" ;
         }
         //      C# -> System.Int64? StartTime
-        // GraphQL -> startTime: Long! (scalar)
+        // GraphQL -> startTime: Long (scalar)
         if (this.StartTime != null) {
             s += ind + "startTime\n" ;
         }
@@ -185,6 +199,12 @@ namespace RubrikSecurityCloud.Types
         {
             this.Status = new BulkRecoveryGroupStatus();
         }
+        //      C# -> System.Int64? CreateTime
+        // GraphQL -> createTime: Long (scalar)
+        if (this.CreateTime == null && Exploration.Includes(parent + ".createTime", true))
+        {
+            this.CreateTime = new System.Int64();
+        }
         //      C# -> System.Int64? ElapsedTime
         // GraphQL -> elapsedTime: Long! (scalar)
         if (this.ElapsedTime == null && Exploration.Includes(parent + ".elapsedTime", true))
@@ -198,7 +218,7 @@ namespace RubrikSecurityCloud.Types
             this.EndTime = new System.Int64();
         }
         //      C# -> System.String? GroupId
-        // GraphQL -> groupId: UUID! (scalar)
+        // GraphQL -> groupId: UUID (scalar)
         if (this.GroupId == null && Exploration.Includes(parent + ".groupId", true))
         {
             this.GroupId = "FETCH";
@@ -222,7 +242,7 @@ namespace RubrikSecurityCloud.Types
             this.Seq = Int32.MinValue;
         }
         //      C# -> System.Int64? StartTime
-        // GraphQL -> startTime: Long! (scalar)
+        // GraphQL -> startTime: Long (scalar)
         if (this.StartTime == null && Exploration.Includes(parent + ".startTime", true))
         {
             this.StartTime = new System.Int64();

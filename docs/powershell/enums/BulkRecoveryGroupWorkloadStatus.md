@@ -5,6 +5,6 @@ Bulk Recovery Group Workload Status.
 - IN_PROGRESS - In Progress
 - SUCCEEDED - Succeeded
 - FAILED - Failed
-- PARTIALLY_FAILED - Partially Failed
+- PARTIALLY_SUCCEEDED - Partially Succeeded
 - CANCELED - Canceled
 - SCHEDULED - Scheduled

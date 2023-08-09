@@ -19,7 +19,7 @@ Mounts a batch of snapshots from a group of specified virtual machines.
 ### bulkondemandsnapshotvm
 Take an on-demand snapshot for selected Nutanix virtual machines
 
-Supported in v9.0
+Supported in v9.0+
 Take bulk backups for multiple Nutanix virtual machines.
 
 - There is a single argument of type BulkOnDemandSnapshotNutanixVmInput.
@@ -46,7 +46,7 @@ v8.1+: Create an on-demand snapshot for the given virtual machine ID.
 ### createprismcentral
 Add Nutanix Prism Central and it's corresponding Prism Elements
 
-Supported in v9.0
+Supported in v9.0+
 Create a Nutanix Prism Central object and refresh the Prism Elements present in it.
 
 - There is a single argument of type CreateNutanixPrismCentralInput.
@@ -70,12 +70,22 @@ Initiates a request to remove a Live Mount of a Nutanix virtual machine snapshot
 ### deleteprismcentral
 Remove Nutanix Prism Central
 
-Supported in v9.0
+Supported in v9.0+
 Initiates an asynchronous job to remove a Nutanix Prism Central object. The Nutanix Clusters attached to the Prism Central cannot have Virtual Machines mounted through the Rubrik cluster.
 
 - There is a single argument of type DeleteNutanixPrismCentralInput.
 - Returns BatchAsyncRequestStatus.
 ### deletesnapshot
+v5.0-v8.0: Delete VM snapshot
+v8.1+: Delete virtual machine snapshot
+
+Supported in v5.0+
+v5.0-v8.0: Delete a snapshot by expiring it. Snapshot is expired only if it is a manual snapshot or a snapshot of an unprotected vm.
+v8.1+: Delete a snapshot by expiring it. Snapshot is expired only if it is a manual snapshot or a snapshot of an unprotected virtual machine.
+
+- There is a single argument of type DeleteNutanixSnapshotInput.
+- Returns RequestSuccess.
+### deletesnapshots
 v5.0-v8.0: Delete all snapshots of VM
 v8.1+: Delete all snapshots of virtual machine
 
@@ -144,6 +154,14 @@ Changes the power status of a mounted Nutanix virtual machine.
 
 - There is a single argument of type PatchNutanixMountV1Input.
 - Returns PatchNutanixMountV1Reply.
+### prismcentralasyncrequeststatus
+Get Nutanix Prism Central async request status
+
+Supported in v9.0+
+Get details about a Nutanix pc-related async request.
+
+- There is a single argument of type NutanixPrismCentralAsyncRequestStatusInput.
+- Returns AsyncRequestStatus.
 ### refreshcluster
 Refresh Nutanix cluster metadata
 
@@ -155,7 +173,7 @@ Create a job to refresh the metadata for the specified Nutanix cluster.
 ### refreshprismcentral
 Refresh Nutanix Prism Central metadata
 
-Supported in v9.0
+Supported in v9.0+
 Initiates a job to refresh the metadata for the specified Nutanix Prism Central and all its associated clusters.
 
 - There is a single argument of type RefreshNutanixPrismCentralInput.
@@ -190,7 +208,7 @@ Patch the host, credentials, and/or CA certs of the specified Nutanix cluster ob
 ### updateprismcentral
 Patch Nutanix Prism Central
 
-Supported in v9.0
+Supported in v9.0+
 Patch the host and credentials of Nutanix Prism Central.
 
 - There is a single argument of type UpdateNutanixPrismCentralInput.

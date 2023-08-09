@@ -43,6 +43,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("clusterUuidList")]
         public List<System.String>? ClusterUuidList { get; set; }
 
+        //      C# -> System.Boolean? ShouldBypassProxy
+        // GraphQL -> shouldBypassProxy: Boolean (scalar)
+        [JsonProperty("shouldBypassProxy")]
+        public System.Boolean? ShouldBypassProxy { get; set; }
+
 
         #endregion
 

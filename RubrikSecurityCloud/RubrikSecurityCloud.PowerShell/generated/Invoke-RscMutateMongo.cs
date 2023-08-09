@@ -227,12 +227,12 @@ For more info on MongoDB cluster, refer to: https://docs.mongodb.com/manual/intr
 
         
         // -------------------------------------------------------------------
-        // BulkDeletedbSource parameter set
+        // BulkDeletedbSources parameter set
         //
         // [GraphQL: bulkDeleteMongodbSources]
         //
         [Parameter(
-            ParameterSetName = "BulkDeletedbSource",
+            ParameterSetName = "BulkDeletedbSources",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -243,7 +243,7 @@ Supported in m3.2.0-m4.2.0.
 [GraphQL: bulkDeleteMongodbSources]",
             Position = 0
         )]
-        public SwitchParameter BulkDeletedbSource { get; set; }
+        public SwitchParameter BulkDeletedbSources { get; set; }
 
         
         // -------------------------------------------------------------------
@@ -300,8 +300,8 @@ Supported in m3.2.0-m4.2.0.
                     case "DeletedbSource":
                         this.ProcessRecord_DeletedbSource();
                         break;
-                    case "BulkDeletedbSource":
-                        this.ProcessRecord_BulkDeletedbSource();
+                    case "BulkDeletedbSources":
+                        this.ProcessRecord_BulkDeletedbSources();
                         break;
                     case "RecoverdbSource":
                         this.ProcessRecord_RecoverdbSource();
@@ -408,9 +408,9 @@ Supported in m3.2.0-m4.2.0.
 
         // This parameter set invokes a single graphql operation:
         // bulkDeleteMongodbSources.
-        protected void ProcessRecord_BulkDeletedbSource()
+        protected void ProcessRecord_BulkDeletedbSources()
         {
-            this._logger.name += " -BulkDeletedbSource";
+            this._logger.name += " -BulkDeletedbSources";
             // Invoke graphql operation bulkDeleteMongodbSources
             InvokeMutationBulkDeleteMongodbSources();
         }
@@ -432,33 +432,24 @@ Supported in m3.2.0-m4.2.0.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "AddMongoSourceInput!"),
             };
-            AddMongoSourceReply? fields = null ;
-            if (this.Field != null)
-            {
+            AddMongoSourceReply? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (AddMongoSourceReply)psObject.BaseObject;
+                    fieldSpecObj = (AddMongoSourceReply)psObject.BaseObject;
                 } else {
-                    fields = (AddMongoSourceReply)this.Field;
+                    fieldSpecObj = (AddMongoSourceReply)this.Field;
                 }
             }
-            string document = Mutation.AddMongoSource(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.AddMongoSource");
-            var parameters = "($input: AddMongoSourceInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "mutation MutationAddMongoSource" + parameters + "{" + document + "}",
-                OperationName = "MutationAddMongoSource",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "AddMongoSourceReply", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Mutation.AddMongoSource(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationAddMongoSource",
+                "($input: AddMongoSourceInput!)",
+                fieldSpecDoc,
+                "AddMongoSourceReply"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -468,33 +459,24 @@ Supported in m3.2.0-m4.2.0.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteMongoSourceInput!"),
             };
-            AsyncRequestStatus? fields = null ;
-            if (this.Field != null)
-            {
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (AsyncRequestStatus)psObject.BaseObject;
+                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
                 } else {
-                    fields = (AsyncRequestStatus)this.Field;
+                    fieldSpecObj = (AsyncRequestStatus)this.Field;
                 }
             }
-            string document = Mutation.DeleteMongoSource(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.DeleteMongoSource");
-            var parameters = "($input: DeleteMongoSourceInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "mutation MutationDeleteMongoSource" + parameters + "{" + document + "}",
-                OperationName = "MutationDeleteMongoSource",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "AsyncRequestStatus", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Mutation.DeleteMongoSource(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationDeleteMongoSource",
+                "($input: DeleteMongoSourceInput!)",
+                fieldSpecDoc,
+                "AsyncRequestStatus"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -504,33 +486,24 @@ Supported in m3.2.0-m4.2.0.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DiscoverMongoSourceInput!"),
             };
-            AsyncRequestStatus? fields = null ;
-            if (this.Field != null)
-            {
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (AsyncRequestStatus)psObject.BaseObject;
+                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
                 } else {
-                    fields = (AsyncRequestStatus)this.Field;
+                    fieldSpecObj = (AsyncRequestStatus)this.Field;
                 }
             }
-            string document = Mutation.DiscoverMongoSource(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.DiscoverMongoSource");
-            var parameters = "($input: DiscoverMongoSourceInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "mutation MutationDiscoverMongoSource" + parameters + "{" + document + "}",
-                OperationName = "MutationDiscoverMongoSource",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "AsyncRequestStatus", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Mutation.DiscoverMongoSource(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationDiscoverMongoSource",
+                "($input: DiscoverMongoSourceInput!)",
+                fieldSpecDoc,
+                "AsyncRequestStatus"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -540,33 +513,24 @@ Supported in m3.2.0-m4.2.0.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "PatchMongoSourceInput!"),
             };
-            AsyncRequestStatus? fields = null ;
-            if (this.Field != null)
-            {
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (AsyncRequestStatus)psObject.BaseObject;
+                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
                 } else {
-                    fields = (AsyncRequestStatus)this.Field;
+                    fieldSpecObj = (AsyncRequestStatus)this.Field;
                 }
             }
-            string document = Mutation.PatchMongoSource(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.PatchMongoSource");
-            var parameters = "($input: PatchMongoSourceInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "mutation MutationPatchMongoSource" + parameters + "{" + document + "}",
-                OperationName = "MutationPatchMongoSource",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "AsyncRequestStatus", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Mutation.PatchMongoSource(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationPatchMongoSource",
+                "($input: PatchMongoSourceInput!)",
+                fieldSpecDoc,
+                "AsyncRequestStatus"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -576,33 +540,24 @@ Supported in m3.2.0-m4.2.0.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RetryAddMongoSourceInput!"),
             };
-            AsyncRequestStatus? fields = null ;
-            if (this.Field != null)
-            {
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (AsyncRequestStatus)psObject.BaseObject;
+                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
                 } else {
-                    fields = (AsyncRequestStatus)this.Field;
+                    fieldSpecObj = (AsyncRequestStatus)this.Field;
                 }
             }
-            string document = Mutation.RetryAddMongoSource(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.RetryAddMongoSource");
-            var parameters = "($input: RetryAddMongoSourceInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "mutation MutationRetryAddMongoSource" + parameters + "{" + document + "}",
-                OperationName = "MutationRetryAddMongoSource",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "AsyncRequestStatus", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Mutation.RetryAddMongoSource(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationRetryAddMongoSource",
+                "($input: RetryAddMongoSourceInput!)",
+                fieldSpecDoc,
+                "AsyncRequestStatus"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -612,33 +567,24 @@ Supported in m3.2.0-m4.2.0.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "AssignSlaToMongoDbCollectionInput!"),
             };
-            AsyncRequestStatus? fields = null ;
-            if (this.Field != null)
-            {
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (AsyncRequestStatus)psObject.BaseObject;
+                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
                 } else {
-                    fields = (AsyncRequestStatus)this.Field;
+                    fieldSpecObj = (AsyncRequestStatus)this.Field;
                 }
             }
-            string document = Mutation.AssignSlaToMongoDbCollection(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.AssignSlaToMongoDbCollection");
-            var parameters = "($input: AssignSlaToMongoDbCollectionInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "mutation MutationAssignSlaToMongoDbCollection" + parameters + "{" + document + "}",
-                OperationName = "MutationAssignSlaToMongoDbCollection",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "AsyncRequestStatus", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Mutation.AssignSlaToMongoDbCollection(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationAssignSlaToMongoDbCollection",
+                "($input: AssignSlaToMongoDbCollectionInput!)",
+                fieldSpecDoc,
+                "AsyncRequestStatus"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -648,33 +594,24 @@ Supported in m3.2.0-m4.2.0.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RecoverMongoSourceInput!"),
             };
-            AsyncRequestStatus? fields = null ;
-            if (this.Field != null)
-            {
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (AsyncRequestStatus)psObject.BaseObject;
+                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
                 } else {
-                    fields = (AsyncRequestStatus)this.Field;
+                    fieldSpecObj = (AsyncRequestStatus)this.Field;
                 }
             }
-            string document = Mutation.RecoverMongoSource(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.RecoverMongoSource");
-            var parameters = "($input: RecoverMongoSourceInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "mutation MutationRecoverMongoSource" + parameters + "{" + document + "}",
-                OperationName = "MutationRecoverMongoSource",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "AsyncRequestStatus", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Mutation.RecoverMongoSource(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationRecoverMongoSource",
+                "($input: RecoverMongoSourceInput!)",
+                fieldSpecDoc,
+                "AsyncRequestStatus"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -684,33 +621,24 @@ Supported in m3.2.0-m4.2.0.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "AddMosaicSourceInput!"),
             };
-            MosaicAsyncResponse? fields = null ;
-            if (this.Field != null)
-            {
+            MosaicAsyncResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (MosaicAsyncResponse)psObject.BaseObject;
+                    fieldSpecObj = (MosaicAsyncResponse)psObject.BaseObject;
                 } else {
-                    fields = (MosaicAsyncResponse)this.Field;
+                    fieldSpecObj = (MosaicAsyncResponse)this.Field;
                 }
             }
-            string document = Mutation.CreateMongodbSource(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.CreateMongodbSource");
-            var parameters = "($input: AddMosaicSourceInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "mutation MutationCreateMongodbSource" + parameters + "{" + document + "}",
-                OperationName = "MutationCreateMongodbSource",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "MosaicAsyncResponse", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Mutation.CreateMongodbSource(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationCreateMongodbSource",
+                "($input: AddMosaicSourceInput!)",
+                fieldSpecDoc,
+                "MosaicAsyncResponse"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -720,33 +648,24 @@ Supported in m3.2.0-m4.2.0.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "ModifyMosaicSourceInput!"),
             };
-            MosaicAsyncResponse? fields = null ;
-            if (this.Field != null)
-            {
+            MosaicAsyncResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (MosaicAsyncResponse)psObject.BaseObject;
+                    fieldSpecObj = (MosaicAsyncResponse)psObject.BaseObject;
                 } else {
-                    fields = (MosaicAsyncResponse)this.Field;
+                    fieldSpecObj = (MosaicAsyncResponse)this.Field;
                 }
             }
-            string document = Mutation.UpdateMongodbSource(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.UpdateMongodbSource");
-            var parameters = "($input: ModifyMosaicSourceInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "mutation MutationUpdateMongodbSource" + parameters + "{" + document + "}",
-                OperationName = "MutationUpdateMongodbSource",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "MosaicAsyncResponse", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Mutation.UpdateMongodbSource(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationUpdateMongodbSource",
+                "($input: ModifyMosaicSourceInput!)",
+                fieldSpecDoc,
+                "MosaicAsyncResponse"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -756,33 +675,24 @@ Supported in m3.2.0-m4.2.0.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteMosaicSourceInput!"),
             };
-            MosaicAsyncResponse? fields = null ;
-            if (this.Field != null)
-            {
+            MosaicAsyncResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (MosaicAsyncResponse)psObject.BaseObject;
+                    fieldSpecObj = (MosaicAsyncResponse)psObject.BaseObject;
                 } else {
-                    fields = (MosaicAsyncResponse)this.Field;
+                    fieldSpecObj = (MosaicAsyncResponse)this.Field;
                 }
             }
-            string document = Mutation.DeleteMongodbSource(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.DeleteMongodbSource");
-            var parameters = "($input: DeleteMosaicSourceInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "mutation MutationDeleteMongodbSource" + parameters + "{" + document + "}",
-                OperationName = "MutationDeleteMongodbSource",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "MosaicAsyncResponse", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Mutation.DeleteMongodbSource(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationDeleteMongodbSource",
+                "($input: DeleteMosaicSourceInput!)",
+                fieldSpecDoc,
+                "MosaicAsyncResponse"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -792,33 +702,24 @@ Supported in m3.2.0-m4.2.0.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "BulkDeleteMosaicSourcesInput!"),
             };
-            MosaicAsyncResponse? fields = null ;
-            if (this.Field != null)
-            {
+            MosaicAsyncResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (MosaicAsyncResponse)psObject.BaseObject;
+                    fieldSpecObj = (MosaicAsyncResponse)psObject.BaseObject;
                 } else {
-                    fields = (MosaicAsyncResponse)this.Field;
+                    fieldSpecObj = (MosaicAsyncResponse)this.Field;
                 }
             }
-            string document = Mutation.BulkDeleteMongodbSources(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.BulkDeleteMongodbSources");
-            var parameters = "($input: BulkDeleteMosaicSourcesInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "mutation MutationBulkDeleteMongodbSources" + parameters + "{" + document + "}",
-                OperationName = "MutationBulkDeleteMongodbSources",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "MosaicAsyncResponse", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Mutation.BulkDeleteMongodbSources(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationBulkDeleteMongodbSources",
+                "($input: BulkDeleteMosaicSourcesInput!)",
+                fieldSpecDoc,
+                "MosaicAsyncResponse"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -828,33 +729,24 @@ Supported in m3.2.0-m4.2.0.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "MosaicRestoreDataInput!"),
             };
-            MosaicAsyncResponse? fields = null ;
-            if (this.Field != null)
-            {
+            MosaicAsyncResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (MosaicAsyncResponse)psObject.BaseObject;
+                    fieldSpecObj = (MosaicAsyncResponse)psObject.BaseObject;
                 } else {
-                    fields = (MosaicAsyncResponse)this.Field;
+                    fieldSpecObj = (MosaicAsyncResponse)this.Field;
                 }
             }
-            string document = Mutation.RecoverMongodbSource(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.RecoverMongodbSource");
-            var parameters = "($input: MosaicRestoreDataInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "mutation MutationRecoverMongodbSource" + parameters + "{" + document + "}",
-                OperationName = "MutationRecoverMongodbSource",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "MosaicAsyncResponse", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Mutation.RecoverMongodbSource(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationRecoverMongodbSource",
+                "($input: MosaicRestoreDataInput!)",
+                fieldSpecDoc,
+                "MosaicAsyncResponse"
+            );
         }
 
 

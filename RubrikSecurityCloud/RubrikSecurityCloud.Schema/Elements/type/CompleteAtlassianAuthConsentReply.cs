@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("siteId")]
         public System.String? SiteId { get; set; }
 
+        //      C# -> System.String? SiteName
+        // GraphQL -> siteName: String! (scalar)
+        [JsonProperty("siteName")]
+        public System.String? SiteName { get; set; }
+
         //      C# -> System.String? SiteUrl
         // GraphQL -> siteUrl: URL! (scalar)
         [JsonProperty("siteUrl")]
@@ -53,6 +58,7 @@ namespace RubrikSecurityCloud.Types
         System.String? AuthorizingUserEmail = null,
         System.String? AuthorizingUserName = null,
         System.String? SiteId = null,
+        System.String? SiteName = null,
         System.String? SiteUrl = null
     ) 
     {
@@ -64,6 +70,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SiteId != null ) {
             this.SiteId = SiteId;
+        }
+        if ( SiteName != null ) {
+            this.SiteName = SiteName;
         }
         if ( SiteUrl != null ) {
             this.SiteUrl = SiteUrl;
@@ -92,6 +101,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> siteId: String! (scalar)
         if (this.SiteId != null) {
             s += ind + "siteId\n" ;
+        }
+        //      C# -> System.String? SiteName
+        // GraphQL -> siteName: String! (scalar)
+        if (this.SiteName != null) {
+            s += ind + "siteName\n" ;
         }
         //      C# -> System.String? SiteUrl
         // GraphQL -> siteUrl: URL! (scalar)
@@ -123,6 +137,12 @@ namespace RubrikSecurityCloud.Types
         if (this.SiteId == null && Exploration.Includes(parent + ".siteId", true))
         {
             this.SiteId = "FETCH";
+        }
+        //      C# -> System.String? SiteName
+        // GraphQL -> siteName: String! (scalar)
+        if (this.SiteName == null && Exploration.Includes(parent + ".siteName", true))
+        {
+            this.SiteName = "FETCH";
         }
         //      C# -> System.String? SiteUrl
         // GraphQL -> siteUrl: URL! (scalar)

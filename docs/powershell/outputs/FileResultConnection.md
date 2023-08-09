@@ -9,3 +9,7 @@ Paginated list of FileResult objects. Each page of the results will include at m
   - General information about this page of results.
 - count: System.Int32
   - Total number of FileResult objects matching the request arguments.
+- hasLatestData: System.Boolean
+  - Specifies whether the response contains the latest indexed data or not.
+- indexingVersion: System.Int32
+  - Specifies the indexing version. 

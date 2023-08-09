@@ -11,3 +11,5 @@ Migration metadata of CDM clusters.
   - Total count of migrated prechecks.
 - registeredMode: ClusterRegistrationMode
   - Mode of registration.
+- clusterStatus: ClusterStatus
+  - Connected status of the Rubrik cluster.

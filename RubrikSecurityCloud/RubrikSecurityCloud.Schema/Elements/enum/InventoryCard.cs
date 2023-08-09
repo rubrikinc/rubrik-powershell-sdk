@@ -63,6 +63,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "KUBERNETES")]
         KUBERNETES,
 
+        [EnumMember(Value = "KUBERNETES_V2")]
+        KUBERNETES_V2,
+
         [EnumMember(Value = "LINUX_UNIX_FILESETS")]
         LINUX_UNIX_FILESETS,
 

@@ -21,7 +21,7 @@ namespace RubrikSecurityCloud.Types
         #region members
 
         //      C# -> System.String? Id
-        // GraphQL -> id: UUID! (scalar)
+        // GraphQL -> id: String! (scalar)
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
@@ -61,7 +61,7 @@ namespace RubrikSecurityCloud.Types
         string ind = new string(' ', indent*2);
         string s = "";
         //      C# -> System.String? Id
-        // GraphQL -> id: UUID! (scalar)
+        // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
             s += ind + "id\n" ;
         }
@@ -79,7 +79,7 @@ namespace RubrikSecurityCloud.Types
     public override void ApplyExploratoryFieldSpec(String parent = "")
     {
         //      C# -> System.String? Id
-        // GraphQL -> id: UUID! (scalar)
+        // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
             this.Id = "FETCH";

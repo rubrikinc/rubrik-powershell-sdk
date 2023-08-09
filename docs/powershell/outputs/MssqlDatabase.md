@@ -31,6 +31,8 @@ SQL Server database.
   - Number of seconds between two log backups. When the value is set to 0, log backups are not enabled. When the value is set to -1, the default log backup frequency of the Rubrik cluster is used. When the value is set to -2, the log backup frequency is derived from the SLA Domain.
 - logBackupRetentionInHours: System.Int32
   - Number of hours to retain a log backup. When the value is set to -1, the Rubrik cluster retains the log backup until the database snapshots that precede the log backup have expired. When the value is set to -2, the default log backup retention of the Rubrik cluster is used. When the value is set to -3, the log backup retention is derived from the SLA Domain.
+- hostLogRetention: System.Int64
+  - Interval, in seconds, between the deletion of archived log files whose 'nextTime' field specifies a time longer than this interval. To specify an interval, enter a positive integer. To immediately delete archived log files regardless of age, specify an interval of -1. To preserve all archived log files, specify an interval of -2.
 - hasLogConfigFromSla: System.Boolean
   - Boolean flag indicating if the database derives log backup configurations from SLA.
 - dagId: System.String

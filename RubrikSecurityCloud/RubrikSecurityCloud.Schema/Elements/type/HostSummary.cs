@@ -50,6 +50,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isRefreshPaused")]
         public System.Boolean? IsRefreshPaused { get; set; }
 
+        //      C# -> System.Int64? LastRefreshTimeStamp
+        // GraphQL -> lastRefreshTimeStamp: Long (scalar)
+        [JsonProperty("lastRefreshTimeStamp")]
+        public System.Int64? LastRefreshTimeStamp { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String (scalar)
         [JsonProperty("name")]
@@ -111,6 +116,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Hostname = null,
         System.String? Id = null,
         System.Boolean? IsRefreshPaused = null,
+        System.Int64? LastRefreshTimeStamp = null,
         System.String? Name = null,
         System.String? OperatingSystem = null,
         System.String? OperatingSystemType = null,
@@ -139,6 +145,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsRefreshPaused != null ) {
             this.IsRefreshPaused = IsRefreshPaused;
+        }
+        if ( LastRefreshTimeStamp != null ) {
+            this.LastRefreshTimeStamp = LastRefreshTimeStamp;
         }
         if ( Name != null ) {
             this.Name = Name;
@@ -206,6 +215,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> isRefreshPaused: Boolean (scalar)
         if (this.IsRefreshPaused != null) {
             s += ind + "isRefreshPaused\n" ;
+        }
+        //      C# -> System.Int64? LastRefreshTimeStamp
+        // GraphQL -> lastRefreshTimeStamp: Long (scalar)
+        if (this.LastRefreshTimeStamp != null) {
+            s += ind + "lastRefreshTimeStamp\n" ;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String (scalar)
@@ -301,6 +315,12 @@ namespace RubrikSecurityCloud.Types
         if (this.IsRefreshPaused == null && Exploration.Includes(parent + ".isRefreshPaused", true))
         {
             this.IsRefreshPaused = true;
+        }
+        //      C# -> System.Int64? LastRefreshTimeStamp
+        // GraphQL -> lastRefreshTimeStamp: Long (scalar)
+        if (this.LastRefreshTimeStamp == null && Exploration.Includes(parent + ".lastRefreshTimeStamp", true))
+        {
+            this.LastRefreshTimeStamp = new System.Int64();
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String (scalar)

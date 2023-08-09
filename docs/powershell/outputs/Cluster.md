@@ -65,6 +65,8 @@ A Rubrik CDM Cluster.
   - The organizations to which this cluster is authorized.
 - activitySeriesConnection: ActivitySeriesConnection
   - The cluster's activity series.
+- cdmNotificationSettings: NotificationSettingSummaryListResponse
+  - Rubrik cluster email notification settings.
 - snappableConnection: SnappableConnection
   - The cluster's snappables.
 - clusterNodeConnection: ClusterNodeConnection

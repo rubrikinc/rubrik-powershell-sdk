@@ -27,12 +27,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     {
         
         // -------------------------------------------------------------------
-        // TopLevelDescendant parameter set
+        // TopLevelDescendants parameter set
         //
         // [GraphQL: hypervTopLevelDescendants]
         //
         [Parameter(
-            ParameterSetName = "TopLevelDescendant",
+            ParameterSetName = "TopLevelDescendants",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -41,16 +41,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: hypervTopLevelDescendants]",
             Position = 0
         )]
-        public SwitchParameter TopLevelDescendant { get; set; }
+        public SwitchParameter TopLevelDescendants { get; set; }
 
         
         // -------------------------------------------------------------------
-        // VirtualMachine parameter set
+        // VirtualMachines parameter set
         //
         // [GraphQL: hypervVirtualMachines]
         //
         [Parameter(
-            ParameterSetName = "VirtualMachine",
+            ParameterSetName = "VirtualMachines",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -59,7 +59,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: hypervVirtualMachines]",
             Position = 0
         )]
-        public SwitchParameter VirtualMachine { get; set; }
+        public SwitchParameter VirtualMachines { get; set; }
 
         
         // -------------------------------------------------------------------
@@ -117,6 +117,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         
         // -------------------------------------------------------------------
+        // VirtualMachine parameter set
+        //
+        // [GraphQL: hypervVirtualMachine]
+        //
+        [Parameter(
+            ParameterSetName = "VirtualMachine",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Details of the given Hyper-V Virtual Machine.
+[GraphQL: hypervVirtualMachine]",
+            Position = 0
+        )]
+        public SwitchParameter VirtualMachine { get; set; }
+
+        
+        // -------------------------------------------------------------------
         // UniqueServersCount parameter set
         //
         // [GraphQL: uniqueHypervServersCount]
@@ -135,12 +153,51 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         
         // -------------------------------------------------------------------
-        // Mount parameter set
+        // Scvmms parameter set
+        //
+        // [GraphQL: hypervScvmms]
+        //
+        [Parameter(
+            ParameterSetName = "Scvmms",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Paginated list of HyperV SCVMMs.
+[GraphQL: hypervScvmms]",
+            Position = 0
+        )]
+        public SwitchParameter Scvmms { get; set; }
+
+        
+        // -------------------------------------------------------------------
+        // Servers parameter set
+        //
+        // [GraphQL: hypervServers]
+        //
+        [Parameter(
+            ParameterSetName = "Servers",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Get summary of all the Hyper-V hosts
+
+Supported in v5.0+
+Get summary of all the Hyper-V hosts.
+[GraphQL: hypervServers]",
+            Position = 0
+        )]
+        public SwitchParameter Servers { get; set; }
+
+        
+        // -------------------------------------------------------------------
+        // Mounts parameter set
         //
         // [GraphQL: hypervMounts]
         //
         [Parameter(
-            ParameterSetName = "Mount",
+            ParameterSetName = "Mounts",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -149,7 +206,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: hypervMounts]",
             Position = 0
         )]
-        public SwitchParameter Mount { get; set; }
+        public SwitchParameter Mounts { get; set; }
 
         
         // -------------------------------------------------------------------
@@ -239,11 +296,11 @@ Get details about a Hyper-V vm related async request.
             {
                 switch(Op)
                 {
-                    case "TopLevelDescendant":
-                        this.ProcessRecord_TopLevelDescendant();
+                    case "TopLevelDescendants":
+                        this.ProcessRecord_TopLevelDescendants();
                         break;
-                    case "VirtualMachine":
-                        this.ProcessRecord_VirtualMachine();
+                    case "VirtualMachines":
+                        this.ProcessRecord_VirtualMachines();
                         break;
                     case "Scvmm":
                         this.ProcessRecord_Scvmm();
@@ -254,11 +311,20 @@ Get details about a Hyper-V vm related async request.
                     case "Server":
                         this.ProcessRecord_Server();
                         break;
+                    case "VirtualMachine":
+                        this.ProcessRecord_VirtualMachine();
+                        break;
                     case "UniqueServersCount":
                         this.ProcessRecord_UniqueServersCount();
                         break;
-                    case "Mount":
-                        this.ProcessRecord_Mount();
+                    case "Scvmms":
+                        this.ProcessRecord_Scvmms();
+                        break;
+                    case "Servers":
+                        this.ProcessRecord_Servers();
+                        break;
+                    case "Mounts":
+                        this.ProcessRecord_Mounts();
                         break;
                     case "VmDetail":
                         this.ProcessRecord_VmDetail();
@@ -284,18 +350,18 @@ Get details about a Hyper-V vm related async request.
 
         // This parameter set invokes a single graphql operation:
         // hypervTopLevelDescendants.
-        protected void ProcessRecord_TopLevelDescendant()
+        protected void ProcessRecord_TopLevelDescendants()
         {
-            this._logger.name += " -TopLevelDescendant";
+            this._logger.name += " -TopLevelDescendants";
             // Invoke graphql operation hypervTopLevelDescendants
             InvokeQueryHypervTopLevelDescendants();
         }
 
         // This parameter set invokes a single graphql operation:
         // hypervVirtualMachines.
-        protected void ProcessRecord_VirtualMachine()
+        protected void ProcessRecord_VirtualMachines()
         {
-            this._logger.name += " -VirtualMachine";
+            this._logger.name += " -VirtualMachines";
             // Invoke graphql operation hypervVirtualMachines
             InvokeQueryHypervVirtualMachines();
         }
@@ -328,6 +394,15 @@ Get details about a Hyper-V vm related async request.
         }
 
         // This parameter set invokes a single graphql operation:
+        // hypervVirtualMachine.
+        protected void ProcessRecord_VirtualMachine()
+        {
+            this._logger.name += " -VirtualMachine";
+            // Invoke graphql operation hypervVirtualMachine
+            InvokeQueryHypervVirtualMachine();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // uniqueHypervServersCount.
         protected void ProcessRecord_UniqueServersCount()
         {
@@ -337,10 +412,28 @@ Get details about a Hyper-V vm related async request.
         }
 
         // This parameter set invokes a single graphql operation:
-        // hypervMounts.
-        protected void ProcessRecord_Mount()
+        // hypervScvmms.
+        protected void ProcessRecord_Scvmms()
         {
-            this._logger.name += " -Mount";
+            this._logger.name += " -Scvmms";
+            // Invoke graphql operation hypervScvmms
+            InvokeQueryHypervScvmms();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // hypervServers.
+        protected void ProcessRecord_Servers()
+        {
+            this._logger.name += " -Servers";
+            // Invoke graphql operation hypervServers
+            InvokeQueryHypervServers();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // hypervMounts.
+        protected void ProcessRecord_Mounts()
+        {
+            this._logger.name += " -Mounts";
             // Invoke graphql operation hypervMounts
             InvokeQueryHypervMounts();
         }
@@ -401,33 +494,24 @@ Get details about a Hyper-V vm related async request.
                 Tuple.Create("typeFilter", "[HierarchyObjectTypeEnum!]"),
                 Tuple.Create("filter", "[Filter!]"),
             };
-            HypervTopLevelDescendantTypeConnection? fields = null ;
-            if (this.Field != null)
-            {
+            HypervTopLevelDescendantTypeConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (HypervTopLevelDescendantTypeConnection)psObject.BaseObject;
+                    fieldSpecObj = (HypervTopLevelDescendantTypeConnection)psObject.BaseObject;
                 } else {
-                    fields = (HypervTopLevelDescendantTypeConnection)this.Field;
+                    fieldSpecObj = (HypervTopLevelDescendantTypeConnection)this.Field;
                 }
             }
-            string document = Query.HypervTopLevelDescendants(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.HypervTopLevelDescendants");
-            var parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$typeFilter: [HierarchyObjectTypeEnum!],$filter: [Filter!])\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryHypervTopLevelDescendants" + parameters + "{" + document + "}",
-                OperationName = "QueryHypervTopLevelDescendants",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "HypervTopLevelDescendantTypeConnection", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.HypervTopLevelDescendants(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryHypervTopLevelDescendants",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$typeFilter: [HierarchyObjectTypeEnum!],$filter: [Filter!])",
+                fieldSpecDoc,
+                "HypervTopLevelDescendantTypeConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -447,33 +531,24 @@ Get details about a Hyper-V vm related async request.
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
             };
-            HyperVvirtualMachineConnection? fields = null ;
-            if (this.Field != null)
-            {
+            HyperVvirtualMachineConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (HyperVvirtualMachineConnection)psObject.BaseObject;
+                    fieldSpecObj = (HyperVvirtualMachineConnection)psObject.BaseObject;
                 } else {
-                    fields = (HyperVvirtualMachineConnection)this.Field;
+                    fieldSpecObj = (HyperVvirtualMachineConnection)this.Field;
                 }
             }
-            string document = Query.HypervVirtualMachines(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.HypervVirtualMachines");
-            var parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryHypervVirtualMachines" + parameters + "{" + document + "}",
-                OperationName = "QueryHypervVirtualMachines",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "HyperVvirtualMachineConnection", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.HypervVirtualMachines(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryHypervVirtualMachines",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                fieldSpecDoc,
+                "HyperVvirtualMachineConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -483,33 +558,24 @@ Get details about a Hyper-V vm related async request.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            HyperVscvmm? fields = null ;
-            if (this.Field != null)
-            {
+            HyperVscvmm? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (HyperVscvmm)psObject.BaseObject;
+                    fieldSpecObj = (HyperVscvmm)psObject.BaseObject;
                 } else {
-                    fields = (HyperVscvmm)this.Field;
+                    fieldSpecObj = (HyperVscvmm)this.Field;
                 }
             }
-            string document = Query.HypervScvmm(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.HypervScvmm");
-            var parameters = "($fid: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryHypervScvmm" + parameters + "{" + document + "}",
-                OperationName = "QueryHypervScvmm",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "HyperVscvmm", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.HypervScvmm(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryHypervScvmm",
+                "($fid: UUID!)",
+                fieldSpecDoc,
+                "HyperVscvmm"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -519,33 +585,24 @@ Get details about a Hyper-V vm related async request.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            HyperVcluster? fields = null ;
-            if (this.Field != null)
-            {
+            HyperVcluster? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (HyperVcluster)psObject.BaseObject;
+                    fieldSpecObj = (HyperVcluster)psObject.BaseObject;
                 } else {
-                    fields = (HyperVcluster)this.Field;
+                    fieldSpecObj = (HyperVcluster)this.Field;
                 }
             }
-            string document = Query.HypervCluster(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.HypervCluster");
-            var parameters = "($fid: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryHypervCluster" + parameters + "{" + document + "}",
-                OperationName = "QueryHypervCluster",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "HyperVcluster", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.HypervCluster(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryHypervCluster",
+                "($fid: UUID!)",
+                fieldSpecDoc,
+                "HyperVcluster"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -555,33 +612,51 @@ Get details about a Hyper-V vm related async request.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            HypervServer? fields = null ;
-            if (this.Field != null)
-            {
+            HypervServer? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (HypervServer)psObject.BaseObject;
+                    fieldSpecObj = (HypervServer)psObject.BaseObject;
                 } else {
-                    fields = (HypervServer)this.Field;
+                    fieldSpecObj = (HypervServer)this.Field;
                 }
             }
-            string document = Query.HypervServer(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.HypervServer");
-            var parameters = "($fid: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryHypervServer" + parameters + "{" + document + "}",
-                OperationName = "QueryHypervServer",
+            string fieldSpecDoc = Query.HypervServer(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryHypervServer",
+                "($fid: UUID!)",
+                fieldSpecDoc,
+                "HypervServer"
+            );
+        }
+
+        // Invoke GraphQL Query:
+        // hypervVirtualMachine(fid: UUID!): HyperVVirtualMachine!
+        protected void InvokeQueryHypervVirtualMachine()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("fid", "UUID!"),
             };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
+            HyperVvirtualMachine? fieldSpecObj = null ;
+            if (this.Field != null) {
+                if (this.Field is PSObject psObject) {
+                    fieldSpecObj = (HyperVvirtualMachine)psObject.BaseObject;
+                } else {
+                    fieldSpecObj = (HyperVvirtualMachine)this.Field;
+                }
             }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "HypervServer", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.HypervVirtualMachine(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryHypervVirtualMachine",
+                "($fid: UUID!)",
+                fieldSpecDoc,
+                "HyperVvirtualMachine"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -591,33 +666,88 @@ Get details about a Hyper-V vm related async request.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("filter", "[Filter!]"),
             };
-            System.Int32? fields = null ;
-            if (this.Field != null)
-            {
+            System.Int32? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (System.Int32)psObject.BaseObject;
+                    fieldSpecObj = (System.Int32)psObject.BaseObject;
                 } else {
-                    fields = (System.Int32)this.Field;
+                    fieldSpecObj = (System.Int32)this.Field;
                 }
             }
-            string document = Query.UniqueHypervServersCount(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.UniqueHypervServersCount");
-            var parameters = "($filter: [Filter!])\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryUniqueHypervServersCount" + parameters + "{" + document + "}",
-                OperationName = "QueryUniqueHypervServersCount",
+            string fieldSpecDoc = Query.UniqueHypervServersCount(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryUniqueHypervServersCount",
+                "($filter: [Filter!])",
+                fieldSpecDoc,
+                "System.Int32"
+            );
+        }
+
+        // Invoke GraphQL Query:
+        // hypervScvmms(
+        //     first: Int
+        //     after: String
+        //     sortBy: HierarchySortByField
+        //     sortOrder: SortOrder
+        //     filter: [Filter!]
+        //   ): HyperVSCVMMConnection!
+        protected void InvokeQueryHypervScvmms()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("sortBy", "HierarchySortByField"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("filter", "[Filter!]"),
             };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
+            HyperVscvmmConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                if (this.Field is PSObject psObject) {
+                    fieldSpecObj = (HyperVscvmmConnection)psObject.BaseObject;
+                } else {
+                    fieldSpecObj = (HyperVscvmmConnection)this.Field;
+                }
             }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "System.Int32", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.HypervScvmms(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryHypervScvmms",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                fieldSpecDoc,
+                "HyperVscvmmConnection"
+            );
+        }
+
+        // Invoke GraphQL Query:
+        // hypervServers(input: QueryHypervHostInput!): HypervHostSummaryListResponse!
+        protected void InvokeQueryHypervServers()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "QueryHypervHostInput!"),
+            };
+            HypervHostSummaryListResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
+                if (this.Field is PSObject psObject) {
+                    fieldSpecObj = (HypervHostSummaryListResponse)psObject.BaseObject;
+                } else {
+                    fieldSpecObj = (HypervHostSummaryListResponse)this.Field;
+                }
+            }
+            string fieldSpecDoc = Query.HypervServers(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryHypervServers",
+                "($input: QueryHypervHostInput!)",
+                fieldSpecDoc,
+                "HypervHostSummaryListResponse"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -635,33 +765,24 @@ Get details about a Hyper-V vm related async request.
                 Tuple.Create("filters", "[HypervLiveMountFilterInput!]"),
                 Tuple.Create("sortBy", "HypervLiveMountSortByInput"),
             };
-            HyperVliveMountConnection? fields = null ;
-            if (this.Field != null)
-            {
+            HyperVliveMountConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (HyperVliveMountConnection)psObject.BaseObject;
+                    fieldSpecObj = (HyperVliveMountConnection)psObject.BaseObject;
                 } else {
-                    fields = (HyperVliveMountConnection)this.Field;
+                    fieldSpecObj = (HyperVliveMountConnection)this.Field;
                 }
             }
-            string document = Query.HypervMounts(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.HypervMounts");
-            var parameters = "($first: Int,$after: String,$filters: [HypervLiveMountFilterInput!],$sortBy: HypervLiveMountSortByInput)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryHypervMounts" + parameters + "{" + document + "}",
-                OperationName = "QueryHypervMounts",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "HyperVliveMountConnection", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.HypervMounts(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryHypervMounts",
+                "($first: Int,$after: String,$filters: [HypervLiveMountFilterInput!],$sortBy: HypervLiveMountSortByInput)",
+                fieldSpecDoc,
+                "HyperVliveMountConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -671,33 +792,24 @@ Get details about a Hyper-V vm related async request.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetHypervVirtualMachineInput!"),
             };
-            HypervVirtualMachineDetail? fields = null ;
-            if (this.Field != null)
-            {
+            HypervVirtualMachineDetail? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (HypervVirtualMachineDetail)psObject.BaseObject;
+                    fieldSpecObj = (HypervVirtualMachineDetail)psObject.BaseObject;
                 } else {
-                    fields = (HypervVirtualMachineDetail)this.Field;
+                    fieldSpecObj = (HypervVirtualMachineDetail)this.Field;
                 }
             }
-            string document = Query.HypervVmDetail(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.HypervVmDetail");
-            var parameters = "($input: GetHypervVirtualMachineInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryHypervVmDetail" + parameters + "{" + document + "}",
-                OperationName = "QueryHypervVmDetail",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "HypervVirtualMachineDetail", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.HypervVmDetail(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryHypervVmDetail",
+                "($input: GetHypervVirtualMachineInput!)",
+                fieldSpecDoc,
+                "HypervVirtualMachineDetail"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -707,33 +819,24 @@ Get details about a Hyper-V vm related async request.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetHypervHostAsyncRequestStatusInput!"),
             };
-            AsyncRequestStatus? fields = null ;
-            if (this.Field != null)
-            {
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (AsyncRequestStatus)psObject.BaseObject;
+                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
                 } else {
-                    fields = (AsyncRequestStatus)this.Field;
+                    fieldSpecObj = (AsyncRequestStatus)this.Field;
                 }
             }
-            string document = Query.HypervHostAsyncRequestStatus(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.HypervHostAsyncRequestStatus");
-            var parameters = "($input: GetHypervHostAsyncRequestStatusInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryHypervHostAsyncRequestStatus" + parameters + "{" + document + "}",
-                OperationName = "QueryHypervHostAsyncRequestStatus",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "AsyncRequestStatus", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.HypervHostAsyncRequestStatus(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryHypervHostAsyncRequestStatus",
+                "($input: GetHypervHostAsyncRequestStatusInput!)",
+                fieldSpecDoc,
+                "AsyncRequestStatus"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -743,33 +846,24 @@ Get details about a Hyper-V vm related async request.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetHypervScvmmAsyncRequestStatusInput!"),
             };
-            AsyncRequestStatus? fields = null ;
-            if (this.Field != null)
-            {
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (AsyncRequestStatus)psObject.BaseObject;
+                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
                 } else {
-                    fields = (AsyncRequestStatus)this.Field;
+                    fieldSpecObj = (AsyncRequestStatus)this.Field;
                 }
             }
-            string document = Query.HypervScvmmAsyncRequestStatus(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.HypervScvmmAsyncRequestStatus");
-            var parameters = "($input: GetHypervScvmmAsyncRequestStatusInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryHypervScvmmAsyncRequestStatus" + parameters + "{" + document + "}",
-                OperationName = "QueryHypervScvmmAsyncRequestStatus",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "AsyncRequestStatus", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.HypervScvmmAsyncRequestStatus(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryHypervScvmmAsyncRequestStatus",
+                "($input: GetHypervScvmmAsyncRequestStatusInput!)",
+                fieldSpecDoc,
+                "AsyncRequestStatus"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -779,33 +873,24 @@ Get details about a Hyper-V vm related async request.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetHypervVirtualMachineAsyncRequestStatusInput!"),
             };
-            AsyncRequestStatus? fields = null ;
-            if (this.Field != null)
-            {
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (AsyncRequestStatus)psObject.BaseObject;
+                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
                 } else {
-                    fields = (AsyncRequestStatus)this.Field;
+                    fieldSpecObj = (AsyncRequestStatus)this.Field;
                 }
             }
-            string document = Query.HypervVirtualMachineAsyncRequestStatus(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.HypervVirtualMachineAsyncRequestStatus");
-            var parameters = "($input: GetHypervVirtualMachineAsyncRequestStatusInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryHypervVirtualMachineAsyncRequestStatus" + parameters + "{" + document + "}",
-                OperationName = "QueryHypervVirtualMachineAsyncRequestStatus",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "AsyncRequestStatus", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.HypervVirtualMachineAsyncRequestStatus(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryHypervVirtualMachineAsyncRequestStatus",
+                "($input: GetHypervVirtualMachineAsyncRequestStatusInput!)",
+                fieldSpecDoc,
+                "AsyncRequestStatus"
+            );
         }
 
 

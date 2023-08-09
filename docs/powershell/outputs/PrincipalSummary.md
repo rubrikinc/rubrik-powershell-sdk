@@ -26,3 +26,5 @@ Summary of a principal.
   - Risk reasons for a principal.
 - deltaSensitiveHits: SummaryHits
   - Delta sensitive hits accumulated across different workloads for the user.
+- deltaSensitiveFiles: SensitiveFiles
+  - Delta sensitive file count for various risk levels.

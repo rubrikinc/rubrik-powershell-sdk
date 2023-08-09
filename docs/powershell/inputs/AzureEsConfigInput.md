@@ -12,4 +12,4 @@ ES storage for Azure account.
 - shouldCreateContainer: System.Boolean
   - Should create a new container or not?
 - enableImmutability: System.Boolean
-  - Enable support for immutable filesystem in SDFS.
+  - Specifies whether to enable support for immutable filesystem in SDFS.

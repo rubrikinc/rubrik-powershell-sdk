@@ -41,3 +41,4 @@ Inventory Card options that the user can select as a workload.
 - ON_PREM_AD - Inventory card is on-prem Active Directory.
 - AZURE_AD - Inventory card is Azure Active Directory.
 - ATLASSIAN - Inventory card is Atlassian.
+- KUBERNETES_V2 - Inventory Card is Kubernetes V2.

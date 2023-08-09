@@ -1,6 +1,8 @@
 ### CompleteAtlassianAuthConsentReply
 - siteId: System.String
   - ID of the Atlassian site.
+- siteName: System.String
+  - Name of the Atlassian site.
 - authorizingUserName: System.String
   - Name of the authorizing user.
 - authorizingUserEmail: System.String

@@ -41,3 +41,4 @@ The subgroup type for the pending action.
 - SECURITY_SETTING_EDIT_KMIP_SERVER - The subgroup type of the pending action is for editing a KMIP server.
 - QSTAR_LOCATION_PUT - The subgroup type of the pending action is forput of Q-star location.
 - QSTAR_LOCATION_READER_POST - The subgroup type of the pending action is forcreate of reader of Q=star location.
+- FEDERATED_LOGIN - The subgroup type of the pending action is for configuring or deleting federated login configuration.

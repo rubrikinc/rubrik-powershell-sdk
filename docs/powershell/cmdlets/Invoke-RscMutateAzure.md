@@ -5,7 +5,7 @@ Add the Azure Subscriptions cloud account for the given feature.
 
 - There is a single argument of type AddAzureCloudAccountInput.
 - Returns AddAzureCloudAccountReply.
-### addcloudaccountexocomputeconfiguration
+### addcloudaccountexocomputeconfigurations
 Add Exocompute configurations for an Azure Cloud Account.
 
 - There is a single argument of type AddAzureCloudAccountExocomputeConfigurationsInput.
@@ -81,7 +81,7 @@ Delete the Azure Subscriptions cloud account for the given feature.
 
 - There is a single argument of type DeleteAzureCloudAccountInput.
 - Returns DeleteAzureCloudAccountReply.
-### deletecloudaccountexocomputeconfiguration
+### deletecloudaccountexocomputeconfigurations
 Delete Exocompute configurations for an Azure Cloud Account.
 
 - There is a single argument of type DeleteAzureCloudAccountExocomputeConfigurationsInput.
@@ -131,7 +131,7 @@ Kicks off an OAuth consent flow for Azure resource access.
 
 - The oauthconsentkickoff subcommand takes no arguments.
 - Returns AzureOauthConsentKickoffReply.
-### setcloudaccountcustomerappcredential
+### setcloudaccountcustomerappcredentials
 Set credentials for the customer application, for the tenant domain name.
 
 - There is a single argument of type SetAzureCloudAccountCustomerAppCredentialsInput.
@@ -196,6 +196,11 @@ Unmap Azure cloud accounts from the mapped Exocompute subscription.
 
 - There is a single argument of type UnmapAzureCloudAccountExocomputeSubscriptionInput.
 - Returns UnmapAzureCloudAccountExocomputeSubscriptionReply.
+### unmappersistentstoragesubscription
+Unmaps the archival location from the subscription.
+
+- There is a single argument of type UnmapAzurePersistentStorageSubscriptionInput.
+- Returns System.String.
 ### updateaccount
 - There is a single argument of type UpdateAzureAccountInput.
 - Returns CloudAccount.

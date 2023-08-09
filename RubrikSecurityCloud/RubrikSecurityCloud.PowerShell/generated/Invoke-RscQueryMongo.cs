@@ -27,12 +27,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     {
         
         // -------------------------------------------------------------------
-        // Source parameter set
+        // Sources parameter set
         //
         // [GraphQL: mongoSources]
         //
         [Parameter(
-            ParameterSetName = "Source",
+            ParameterSetName = "Sources",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -41,16 +41,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: mongoSources]",
             Position = 0
         )]
-        public SwitchParameter Source { get; set; }
+        public SwitchParameter Sources { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Database parameter set
+        // Databases parameter set
         //
         // [GraphQL: mongoDatabases]
         //
         [Parameter(
-            ParameterSetName = "Database",
+            ParameterSetName = "Databases",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -59,16 +59,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: mongoDatabases]",
             Position = 0
         )]
-        public SwitchParameter Database { get; set; }
+        public SwitchParameter Databases { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Collection parameter set
+        // Collections parameter set
         //
         // [GraphQL: mongoCollections]
         //
         [Parameter(
-            ParameterSetName = "Collection",
+            ParameterSetName = "Collections",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -77,34 +77,106 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: mongoCollections]",
             Position = 0
         )]
-        public SwitchParameter Collection { get; set; }
+        public SwitchParameter Collections { get; set; }
 
         
         // -------------------------------------------------------------------
-        // RecoverableRange parameter set
+        // Source parameter set
         //
-        // [GraphQL: mongoRecoverableRanges]
+        // [GraphQL: mongoSource]
         //
         [Parameter(
-            ParameterSetName = "RecoverableRange",
+            ParameterSetName = "Source",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Provides the range for recovery of MongoDB objects.
-[GraphQL: mongoRecoverableRanges]",
+@"Provides details for the MongoDB source cluster identified by the fid.
+[GraphQL: mongoSource]",
             Position = 0
         )]
-        public SwitchParameter RecoverableRange { get; set; }
+        public SwitchParameter Source { get; set; }
 
         
         // -------------------------------------------------------------------
-        // DbSource parameter set
+        // Database parameter set
+        //
+        // [GraphQL: mongoDatabase]
+        //
+        [Parameter(
+            ParameterSetName = "Database",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Provides details for a MongoDB database identified by the fid.
+[GraphQL: mongoDatabase]",
+            Position = 0
+        )]
+        public SwitchParameter Database { get; set; }
+
+        
+        // -------------------------------------------------------------------
+        // Collection parameter set
+        //
+        // [GraphQL: mongoCollection]
+        //
+        [Parameter(
+            ParameterSetName = "Collection",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Provides details for a MongoDB collection identified by the fid.
+[GraphQL: mongoCollection]",
+            Position = 0
+        )]
+        public SwitchParameter Collection { get; set; }
+
+        
+        // -------------------------------------------------------------------
+        // RecoverableRanges parameter set
+        //
+        // [GraphQL: mongoRecoverableRanges]
+        //
+        [Parameter(
+            ParameterSetName = "RecoverableRanges",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Provides the point in time range for MongoDB object recovery.
+[GraphQL: mongoRecoverableRanges]",
+            Position = 0
+        )]
+        public SwitchParameter RecoverableRanges { get; set; }
+
+        
+        // -------------------------------------------------------------------
+        // BulkRecoverableRanges parameter set
+        //
+        // [GraphQL: mongoBulkRecoverableRanges]
+        //
+        [Parameter(
+            ParameterSetName = "BulkRecoverableRanges",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Provides the bulk recoverable range for MongoDB object recovery, including data and log snapshots.
+[GraphQL: mongoBulkRecoverableRanges]",
+            Position = 0
+        )]
+        public SwitchParameter BulkRecoverableRanges { get; set; }
+
+        
+        // -------------------------------------------------------------------
+        // DbSources parameter set
         //
         // [GraphQL: mongodbSources]
         //
         [Parameter(
-            ParameterSetName = "DbSource",
+            ParameterSetName = "DbSources",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -113,16 +185,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: mongodbSources]",
             Position = 0
         )]
-        public SwitchParameter DbSource { get; set; }
+        public SwitchParameter DbSources { get; set; }
 
         
         // -------------------------------------------------------------------
-        // DbDatabase parameter set
+        // DbDatabases parameter set
         //
         // [GraphQL: mongodbDatabases]
         //
         [Parameter(
-            ParameterSetName = "DbDatabase",
+            ParameterSetName = "DbDatabases",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -131,13 +203,72 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: mongodbDatabases]",
             Position = 0
         )]
+        public SwitchParameter DbDatabases { get; set; }
+
+        
+        // -------------------------------------------------------------------
+        // DbCollections parameter set
+        //
+        // [GraphQL: mongodbCollections]
+        //
+        [Parameter(
+            ParameterSetName = "DbCollections",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Paginated list of MongoDB collections on NoSQL cluster.
+[GraphQL: mongodbCollections]",
+            Position = 0
+        )]
+        public SwitchParameter DbCollections { get; set; }
+
+        
+        // -------------------------------------------------------------------
+        // DbSource parameter set
+        //
+        // [GraphQL: mongodbSource]
+        //
+        [Parameter(
+            ParameterSetName = "DbSource",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"MongoDB source cluster identified by FID on NoSQL cluster. 
+For MongoDB, the term ""source"" is usually used for either a replica set or a sharded cluster. 
+For more info on MongoDB cluster refer to : https://docs.mongodb.com/manual/introduction/
+[GraphQL: mongodbSource]",
+            Position = 0
+        )]
+        public SwitchParameter DbSource { get; set; }
+
+        
+        // -------------------------------------------------------------------
+        // DbDatabase parameter set
+        //
+        // [GraphQL: mongodbDatabase]
+        //
+        [Parameter(
+            ParameterSetName = "DbDatabase",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"MongoDB database identified by FID on NoSQL cluster. 
+MongoDB stores data records as documents which are gathered together in collections. 
+A database stores one or more collections of documents. 
+For more info refer to : https://docs.mongodb.com/manual/core/databases-and-collections/
+[GraphQL: mongodbDatabase]",
+            Position = 0
+        )]
         public SwitchParameter DbDatabase { get; set; }
 
         
         // -------------------------------------------------------------------
         // DbCollection parameter set
         //
-        // [GraphQL: mongodbCollections]
+        // [GraphQL: mongodbCollection]
         //
         [Parameter(
             ParameterSetName = "DbCollection",
@@ -145,8 +276,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Paginated list of MongoDB collections on NoSQL cluster.
-[GraphQL: mongodbCollections]",
+@"MongoDB collection identified by FID on NoSQL cluster. 
+MongoDB stores data records as documents which are gathered together in collections. 
+For more info refer to : https://docs.mongodb.com/manual/core/databases-and-collections
+[GraphQL: mongodbCollection]",
             Position = 0
         )]
         public SwitchParameter DbCollection { get; set; }
@@ -194,6 +327,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             {
                 switch(Op)
                 {
+                    case "Sources":
+                        this.ProcessRecord_Sources();
+                        break;
+                    case "Databases":
+                        this.ProcessRecord_Databases();
+                        break;
+                    case "Collections":
+                        this.ProcessRecord_Collections();
+                        break;
                     case "Source":
                         this.ProcessRecord_Source();
                         break;
@@ -203,8 +345,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "Collection":
                         this.ProcessRecord_Collection();
                         break;
-                    case "RecoverableRange":
-                        this.ProcessRecord_RecoverableRange();
+                    case "RecoverableRanges":
+                        this.ProcessRecord_RecoverableRanges();
+                        break;
+                    case "BulkRecoverableRanges":
+                        this.ProcessRecord_BulkRecoverableRanges();
+                        break;
+                    case "DbSources":
+                        this.ProcessRecord_DbSources();
+                        break;
+                    case "DbDatabases":
+                        this.ProcessRecord_DbDatabases();
+                        break;
+                    case "DbCollections":
+                        this.ProcessRecord_DbCollections();
                         break;
                     case "DbSource":
                         this.ProcessRecord_DbSource();
@@ -233,65 +387,128 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // mongoSources.
-        protected void ProcessRecord_Source()
+        protected void ProcessRecord_Sources()
         {
-            this._logger.name += " -Source";
+            this._logger.name += " -Sources";
             // Invoke graphql operation mongoSources
             InvokeQueryMongoSources();
         }
 
         // This parameter set invokes a single graphql operation:
         // mongoDatabases.
-        protected void ProcessRecord_Database()
+        protected void ProcessRecord_Databases()
         {
-            this._logger.name += " -Database";
+            this._logger.name += " -Databases";
             // Invoke graphql operation mongoDatabases
             InvokeQueryMongoDatabases();
         }
 
         // This parameter set invokes a single graphql operation:
         // mongoCollections.
-        protected void ProcessRecord_Collection()
+        protected void ProcessRecord_Collections()
         {
-            this._logger.name += " -Collection";
+            this._logger.name += " -Collections";
             // Invoke graphql operation mongoCollections
             InvokeQueryMongoCollections();
         }
 
         // This parameter set invokes a single graphql operation:
-        // mongoRecoverableRanges.
-        protected void ProcessRecord_RecoverableRange()
+        // mongoSource.
+        protected void ProcessRecord_Source()
         {
-            this._logger.name += " -RecoverableRange";
+            this._logger.name += " -Source";
+            // Invoke graphql operation mongoSource
+            InvokeQueryMongoSource();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // mongoDatabase.
+        protected void ProcessRecord_Database()
+        {
+            this._logger.name += " -Database";
+            // Invoke graphql operation mongoDatabase
+            InvokeQueryMongoDatabase();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // mongoCollection.
+        protected void ProcessRecord_Collection()
+        {
+            this._logger.name += " -Collection";
+            // Invoke graphql operation mongoCollection
+            InvokeQueryMongoCollection();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // mongoRecoverableRanges.
+        protected void ProcessRecord_RecoverableRanges()
+        {
+            this._logger.name += " -RecoverableRanges";
             // Invoke graphql operation mongoRecoverableRanges
             InvokeQueryMongoRecoverableRanges();
         }
 
         // This parameter set invokes a single graphql operation:
-        // mongodbSources.
-        protected void ProcessRecord_DbSource()
+        // mongoBulkRecoverableRanges.
+        protected void ProcessRecord_BulkRecoverableRanges()
         {
-            this._logger.name += " -DbSource";
+            this._logger.name += " -BulkRecoverableRanges";
+            // Invoke graphql operation mongoBulkRecoverableRanges
+            InvokeQueryMongoBulkRecoverableRanges();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // mongodbSources.
+        protected void ProcessRecord_DbSources()
+        {
+            this._logger.name += " -DbSources";
             // Invoke graphql operation mongodbSources
             InvokeQueryMongodbSources();
         }
 
         // This parameter set invokes a single graphql operation:
         // mongodbDatabases.
-        protected void ProcessRecord_DbDatabase()
+        protected void ProcessRecord_DbDatabases()
         {
-            this._logger.name += " -DbDatabase";
+            this._logger.name += " -DbDatabases";
             // Invoke graphql operation mongodbDatabases
             InvokeQueryMongodbDatabases();
         }
 
         // This parameter set invokes a single graphql operation:
         // mongodbCollections.
+        protected void ProcessRecord_DbCollections()
+        {
+            this._logger.name += " -DbCollections";
+            // Invoke graphql operation mongodbCollections
+            InvokeQueryMongodbCollections();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // mongodbSource.
+        protected void ProcessRecord_DbSource()
+        {
+            this._logger.name += " -DbSource";
+            // Invoke graphql operation mongodbSource
+            InvokeQueryMongodbSource();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // mongodbDatabase.
+        protected void ProcessRecord_DbDatabase()
+        {
+            this._logger.name += " -DbDatabase";
+            // Invoke graphql operation mongodbDatabase
+            InvokeQueryMongodbDatabase();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // mongodbCollection.
         protected void ProcessRecord_DbCollection()
         {
             this._logger.name += " -DbCollection";
-            // Invoke graphql operation mongodbCollections
-            InvokeQueryMongodbCollections();
+            // Invoke graphql operation mongodbCollection
+            InvokeQueryMongodbCollection();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -330,33 +547,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
             };
-            MongoSourceConnection? fields = null ;
-            if (this.Field != null)
-            {
+            MongoSourceConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (MongoSourceConnection)psObject.BaseObject;
+                    fieldSpecObj = (MongoSourceConnection)psObject.BaseObject;
                 } else {
-                    fields = (MongoSourceConnection)this.Field;
+                    fieldSpecObj = (MongoSourceConnection)this.Field;
                 }
             }
-            string document = Query.MongoSources(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.MongoSources");
-            var parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryMongoSources" + parameters + "{" + document + "}",
-                OperationName = "QueryMongoSources",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "MongoSourceConnection", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.MongoSources(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryMongoSources",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                fieldSpecDoc,
+                "MongoSourceConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -376,33 +584,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
             };
-            MongoDatabaseConnection? fields = null ;
-            if (this.Field != null)
-            {
+            MongoDatabaseConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (MongoDatabaseConnection)psObject.BaseObject;
+                    fieldSpecObj = (MongoDatabaseConnection)psObject.BaseObject;
                 } else {
-                    fields = (MongoDatabaseConnection)this.Field;
+                    fieldSpecObj = (MongoDatabaseConnection)this.Field;
                 }
             }
-            string document = Query.MongoDatabases(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.MongoDatabases");
-            var parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryMongoDatabases" + parameters + "{" + document + "}",
-                OperationName = "QueryMongoDatabases",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "MongoDatabaseConnection", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.MongoDatabases(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryMongoDatabases",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                fieldSpecDoc,
+                "MongoDatabaseConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -422,33 +621,105 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
             };
-            MongoCollectionConnection? fields = null ;
-            if (this.Field != null)
-            {
+            MongoCollectionConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (MongoCollectionConnection)psObject.BaseObject;
+                    fieldSpecObj = (MongoCollectionConnection)psObject.BaseObject;
                 } else {
-                    fields = (MongoCollectionConnection)this.Field;
+                    fieldSpecObj = (MongoCollectionConnection)this.Field;
                 }
             }
-            string document = Query.MongoCollections(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.MongoCollections");
-            var parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryMongoCollections" + parameters + "{" + document + "}",
-                OperationName = "QueryMongoCollections",
+            string fieldSpecDoc = Query.MongoCollections(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryMongoCollections",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                fieldSpecDoc,
+                "MongoCollectionConnection"
+            );
+        }
+
+        // Invoke GraphQL Query:
+        // mongoSource(fid: UUID!): MongoSource!
+        protected void InvokeQueryMongoSource()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("fid", "UUID!"),
             };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
+            MongoSource? fieldSpecObj = null ;
+            if (this.Field != null) {
+                if (this.Field is PSObject psObject) {
+                    fieldSpecObj = (MongoSource)psObject.BaseObject;
+                } else {
+                    fieldSpecObj = (MongoSource)this.Field;
+                }
             }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "MongoCollectionConnection", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.MongoSource(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryMongoSource",
+                "($fid: UUID!)",
+                fieldSpecDoc,
+                "MongoSource"
+            );
+        }
+
+        // Invoke GraphQL Query:
+        // mongoDatabase(fid: UUID!): MongoDatabase!
+        protected void InvokeQueryMongoDatabase()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("fid", "UUID!"),
+            };
+            MongoDatabase? fieldSpecObj = null ;
+            if (this.Field != null) {
+                if (this.Field is PSObject psObject) {
+                    fieldSpecObj = (MongoDatabase)psObject.BaseObject;
+                } else {
+                    fieldSpecObj = (MongoDatabase)this.Field;
+                }
+            }
+            string fieldSpecDoc = Query.MongoDatabase(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryMongoDatabase",
+                "($fid: UUID!)",
+                fieldSpecDoc,
+                "MongoDatabase"
+            );
+        }
+
+        // Invoke GraphQL Query:
+        // mongoCollection(fid: UUID!): MongoCollection!
+        protected void InvokeQueryMongoCollection()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("fid", "UUID!"),
+            };
+            MongoCollection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                if (this.Field is PSObject psObject) {
+                    fieldSpecObj = (MongoCollection)psObject.BaseObject;
+                } else {
+                    fieldSpecObj = (MongoCollection)this.Field;
+                }
+            }
+            string fieldSpecDoc = Query.MongoCollection(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryMongoCollection",
+                "($fid: UUID!)",
+                fieldSpecDoc,
+                "MongoCollection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -458,33 +729,51 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RecoverableRangeInput!"),
             };
-            MongoRecoverableRanges? fields = null ;
-            if (this.Field != null)
-            {
+            MongoRecoverableRanges? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (MongoRecoverableRanges)psObject.BaseObject;
+                    fieldSpecObj = (MongoRecoverableRanges)psObject.BaseObject;
                 } else {
-                    fields = (MongoRecoverableRanges)this.Field;
+                    fieldSpecObj = (MongoRecoverableRanges)this.Field;
                 }
             }
-            string document = Query.MongoRecoverableRanges(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.MongoRecoverableRanges");
-            var parameters = "($input: RecoverableRangeInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryMongoRecoverableRanges" + parameters + "{" + document + "}",
-                OperationName = "QueryMongoRecoverableRanges",
+            string fieldSpecDoc = Query.MongoRecoverableRanges(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryMongoRecoverableRanges",
+                "($input: RecoverableRangeInput!)",
+                fieldSpecDoc,
+                "MongoRecoverableRanges"
+            );
+        }
+
+        // Invoke GraphQL Query:
+        // mongoBulkRecoverableRanges(input: RecoverableRangeInput!): MongoRecoverableRanges!
+        protected void InvokeQueryMongoBulkRecoverableRanges()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "RecoverableRangeInput!"),
             };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
+            MongoRecoverableRanges? fieldSpecObj = null ;
+            if (this.Field != null) {
+                if (this.Field is PSObject psObject) {
+                    fieldSpecObj = (MongoRecoverableRanges)psObject.BaseObject;
+                } else {
+                    fieldSpecObj = (MongoRecoverableRanges)this.Field;
+                }
             }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "MongoRecoverableRanges", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.MongoBulkRecoverableRanges(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryMongoBulkRecoverableRanges",
+                "($input: RecoverableRangeInput!)",
+                fieldSpecDoc,
+                "MongoRecoverableRanges"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -504,33 +793,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
             };
-            MongodbSourceConnection? fields = null ;
-            if (this.Field != null)
-            {
+            MongodbSourceConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (MongodbSourceConnection)psObject.BaseObject;
+                    fieldSpecObj = (MongodbSourceConnection)psObject.BaseObject;
                 } else {
-                    fields = (MongodbSourceConnection)this.Field;
+                    fieldSpecObj = (MongodbSourceConnection)this.Field;
                 }
             }
-            string document = Query.MongodbSources(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.MongodbSources");
-            var parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryMongodbSources" + parameters + "{" + document + "}",
-                OperationName = "QueryMongodbSources",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "MongodbSourceConnection", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.MongodbSources(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryMongodbSources",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                fieldSpecDoc,
+                "MongodbSourceConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -550,33 +830,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
             };
-            MongodbDatabaseConnection? fields = null ;
-            if (this.Field != null)
-            {
+            MongodbDatabaseConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (MongodbDatabaseConnection)psObject.BaseObject;
+                    fieldSpecObj = (MongodbDatabaseConnection)psObject.BaseObject;
                 } else {
-                    fields = (MongodbDatabaseConnection)this.Field;
+                    fieldSpecObj = (MongodbDatabaseConnection)this.Field;
                 }
             }
-            string document = Query.MongodbDatabases(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.MongodbDatabases");
-            var parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryMongodbDatabases" + parameters + "{" + document + "}",
-                OperationName = "QueryMongodbDatabases",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "MongodbDatabaseConnection", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.MongodbDatabases(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryMongodbDatabases",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                fieldSpecDoc,
+                "MongodbDatabaseConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -596,33 +867,105 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
             };
-            MongodbCollectionConnection? fields = null ;
-            if (this.Field != null)
-            {
+            MongodbCollectionConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (MongodbCollectionConnection)psObject.BaseObject;
+                    fieldSpecObj = (MongodbCollectionConnection)psObject.BaseObject;
                 } else {
-                    fields = (MongodbCollectionConnection)this.Field;
+                    fieldSpecObj = (MongodbCollectionConnection)this.Field;
                 }
             }
-            string document = Query.MongodbCollections(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.MongodbCollections");
-            var parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryMongodbCollections" + parameters + "{" + document + "}",
-                OperationName = "QueryMongodbCollections",
+            string fieldSpecDoc = Query.MongodbCollections(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryMongodbCollections",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                fieldSpecDoc,
+                "MongodbCollectionConnection"
+            );
+        }
+
+        // Invoke GraphQL Query:
+        // mongodbSource(fid: UUID!): MongodbSource!
+        protected void InvokeQueryMongodbSource()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("fid", "UUID!"),
             };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
+            MongodbSource? fieldSpecObj = null ;
+            if (this.Field != null) {
+                if (this.Field is PSObject psObject) {
+                    fieldSpecObj = (MongodbSource)psObject.BaseObject;
+                } else {
+                    fieldSpecObj = (MongodbSource)this.Field;
+                }
             }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "MongodbCollectionConnection", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.MongodbSource(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryMongodbSource",
+                "($fid: UUID!)",
+                fieldSpecDoc,
+                "MongodbSource"
+            );
+        }
+
+        // Invoke GraphQL Query:
+        // mongodbDatabase(fid: UUID!): MongodbDatabase!
+        protected void InvokeQueryMongodbDatabase()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("fid", "UUID!"),
+            };
+            MongodbDatabase? fieldSpecObj = null ;
+            if (this.Field != null) {
+                if (this.Field is PSObject psObject) {
+                    fieldSpecObj = (MongodbDatabase)psObject.BaseObject;
+                } else {
+                    fieldSpecObj = (MongodbDatabase)this.Field;
+                }
+            }
+            string fieldSpecDoc = Query.MongodbDatabase(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryMongodbDatabase",
+                "($fid: UUID!)",
+                fieldSpecDoc,
+                "MongodbDatabase"
+            );
+        }
+
+        // Invoke GraphQL Query:
+        // mongodbCollection(fid: UUID!): MongodbCollection!
+        protected void InvokeQueryMongodbCollection()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("fid", "UUID!"),
+            };
+            MongodbCollection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                if (this.Field is PSObject psObject) {
+                    fieldSpecObj = (MongodbCollection)psObject.BaseObject;
+                } else {
+                    fieldSpecObj = (MongodbCollection)this.Field;
+                }
+            }
+            string fieldSpecDoc = Query.MongodbCollection(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryMongodbCollection",
+                "($fid: UUID!)",
+                fieldSpecDoc,
+                "MongodbCollection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -632,33 +975,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetMosaicRecoverableRangeInput!"),
             };
-            GetMosaicRecoverableRangeResponse? fields = null ;
-            if (this.Field != null)
-            {
+            GetMosaicRecoverableRangeResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (GetMosaicRecoverableRangeResponse)psObject.BaseObject;
+                    fieldSpecObj = (GetMosaicRecoverableRangeResponse)psObject.BaseObject;
                 } else {
-                    fields = (GetMosaicRecoverableRangeResponse)this.Field;
+                    fieldSpecObj = (GetMosaicRecoverableRangeResponse)this.Field;
                 }
             }
-            string document = Query.MongodbCollectionRecoverableRange(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.MongodbCollectionRecoverableRange");
-            var parameters = "($input: GetMosaicRecoverableRangeInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryMongodbCollectionRecoverableRange" + parameters + "{" + document + "}",
-                OperationName = "QueryMongodbCollectionRecoverableRange",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "GetMosaicRecoverableRangeResponse", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.MongodbCollectionRecoverableRange(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryMongodbCollectionRecoverableRange",
+                "($input: GetMosaicRecoverableRangeInput!)",
+                fieldSpecDoc,
+                "GetMosaicRecoverableRangeResponse"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -668,33 +1002,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "MosaicBulkRecoveryRangeInput!"),
             };
-            MosaicRecoveryRangeResponse? fields = null ;
-            if (this.Field != null)
-            {
+            MosaicRecoveryRangeResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (MosaicRecoveryRangeResponse)psObject.BaseObject;
+                    fieldSpecObj = (MosaicRecoveryRangeResponse)psObject.BaseObject;
                 } else {
-                    fields = (MosaicRecoveryRangeResponse)this.Field;
+                    fieldSpecObj = (MosaicRecoveryRangeResponse)this.Field;
                 }
             }
-            string document = Query.MongodbBulkRecoverableRange(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.MongodbBulkRecoverableRange");
-            var parameters = "($input: MosaicBulkRecoveryRangeInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryMongodbBulkRecoverableRange" + parameters + "{" + document + "}",
-                OperationName = "QueryMongodbBulkRecoverableRange",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "MosaicRecoveryRangeResponse", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.MongodbBulkRecoverableRange(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryMongodbBulkRecoverableRange",
+                "($input: MosaicBulkRecoveryRangeInput!)",
+                fieldSpecDoc,
+                "MosaicRecoveryRangeResponse"
+            );
         }
 
 

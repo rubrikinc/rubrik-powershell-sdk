@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isSystemReplicationEnabled")]
         public System.Boolean? IsSystemReplicationEnabled { get; set; }
 
+        //      C# -> SapHanaSystemAuthTypeSpec? AuthTypeSpec
+        // GraphQL -> authTypeSpec: SapHanaSystemAuthTypeSpec (type)
+        [JsonProperty("authTypeSpec")]
+        public SapHanaSystemAuthTypeSpec? AuthTypeSpec { get; set; }
+
 
         #endregion
 
@@ -41,7 +46,8 @@ namespace RubrikSecurityCloud.Types
 
     public SapHanaSystemInfo Set(
         System.String? HanaVersion = null,
-        System.Boolean? IsSystemReplicationEnabled = null
+        System.Boolean? IsSystemReplicationEnabled = null,
+        SapHanaSystemAuthTypeSpec? AuthTypeSpec = null
     ) 
     {
         if ( HanaVersion != null ) {
@@ -49,6 +55,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsSystemReplicationEnabled != null ) {
             this.IsSystemReplicationEnabled = IsSystemReplicationEnabled;
+        }
+        if ( AuthTypeSpec != null ) {
+            this.AuthTypeSpec = AuthTypeSpec;
         }
         return this;
     }
@@ -70,6 +79,14 @@ namespace RubrikSecurityCloud.Types
         if (this.IsSystemReplicationEnabled != null) {
             s += ind + "isSystemReplicationEnabled\n" ;
         }
+        //      C# -> SapHanaSystemAuthTypeSpec? AuthTypeSpec
+        // GraphQL -> authTypeSpec: SapHanaSystemAuthTypeSpec (type)
+        if (this.AuthTypeSpec != null) {
+            var fspec = this.AuthTypeSpec.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "authTypeSpec {\n" + fspec + ind + "}\n" ;
+            }
+        }
         return s;
     }
 
@@ -89,6 +106,13 @@ namespace RubrikSecurityCloud.Types
         if (this.IsSystemReplicationEnabled == null && Exploration.Includes(parent + ".isSystemReplicationEnabled", true))
         {
             this.IsSystemReplicationEnabled = true;
+        }
+        //      C# -> SapHanaSystemAuthTypeSpec? AuthTypeSpec
+        // GraphQL -> authTypeSpec: SapHanaSystemAuthTypeSpec (type)
+        if (this.AuthTypeSpec == null && Exploration.Includes(parent + ".authTypeSpec"))
+        {
+            this.AuthTypeSpec = new SapHanaSystemAuthTypeSpec();
+            this.AuthTypeSpec.ApplyExploratoryFieldSpec(parent + ".authTypeSpec");
         }
     }
 

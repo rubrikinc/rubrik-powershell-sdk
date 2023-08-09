@@ -1,6 +1,6 @@
 # Invoke-RscMutateCassandra
 ## Subcommands
-### bulkdeletesource
+### bulkdeletesources
 Bulk Delete cassandra sources.
 
 - There is a single argument of type BulkDeleteMosaicSourcesInput.

@@ -219,6 +219,7 @@ $coreCmdlets = @('Set-RscServiceAccountFile', 'Connect-Rsc', 'Disconnect-Rsc', '
 | `Invoke-RscMutateAzure` | Run an Azure-related GraphQL mutation |
 | `Invoke-RscMutateCassandra` | Run a Cassandra-related GraphQL mutation|
 | `Invoke-RscMutateCluster` | Run a Cluster-related GraphQL mutation|
+| `Invoke-RscMutateDb2` | Run a DB2-related GraphQL mutation|
 | `Invoke-RscMutateHyperv` | Run a HyperV-related GraphQL mutation|
 | `Invoke-RscMutateLdap` | Run an LDAP-related GraphQL mutation|
 | `Invoke-RscMutateMongo` | Run a Mongo-related GraphQL mutation|
@@ -236,6 +237,7 @@ $coreCmdlets = @('Set-RscServiceAccountFile', 'Connect-Rsc', 'Disconnect-Rsc', '
 | `Invoke-RscQueryAzure` | Run an Azure-related GraphQL query |
 | `Invoke-RscQueryCassandra` | Run a Cassandra-related GraphQL query |
 | `Invoke-RscQueryCluster` | Run a  Cluster-related GraphQL query |
+| `Invoke-RscQueryDb2` | Run a DB2-related GraphQL query |
 | `Invoke-RscQueryHyperv` | Run an HyperV-related GraphQL query |
 | `Invoke-RscQueryLdap` | Run an LDAP-related GraphQL query |
 | `Invoke-RscQueryMongo` | Run a Mongo-related GraphQL query |
@@ -247,6 +249,8 @@ $coreCmdlets = @('Set-RscServiceAccountFile', 'Connect-Rsc', 'Disconnect-Rsc', '
 | `Invoke-RscQueryVcenter` | Run a VCenter-related GraphQL query |
 | `Invoke-RscQueryVsphere` | Run a VSphere-related GraphQL query |
 | `Invoke-RscQueryVsphereVm` | Run a VSphere VM-related GraphQL query |
+
+To obtain this list programmatically, you can do:
 
 ```powershell
 $opCmdlets=(Get-Module RubrikSecurityCloud).ExportedCommands.Keys | Sort-Object | Where-Object { $_ -like 'Invoke-Rsc*' -and $coreCmdlets -notcontains $_ }

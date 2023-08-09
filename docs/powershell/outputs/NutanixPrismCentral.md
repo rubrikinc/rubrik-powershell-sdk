@@ -3,6 +3,8 @@ Nutanix Prism Central details.
 
 - cdmId: System.String
   - CDM ID of the Nutanix Virtual Machine.
+- lastRefreshTime: DateTime
+  - Last refresh timestamp of Nutanix Prism Central.
 - hostName: System.String
   - IP address of Nutanix Prism Central.
 - userName: System.String
@@ -15,8 +17,6 @@ Nutanix Prism Central details.
   - List of Nutanix Clusters that are protected as part of this Nutanix Prism Central.
 - id: System.String
   - Object ID.
-- lastRefreshTime: DateTime
-  - Last time when the Nutanix Prism Central was refreshed.
 - connectionStatus: RefreshableObjectConnectionStatus
   - Connection status of the Nutanix Prism Central. If the CDM cluster is disconnected, then the status is set to 'Disconnected'.
 - descendantConnection: NutanixPrismCentralDescendantTypeConnection

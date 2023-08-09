@@ -27,12 +27,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     {
         
         // -------------------------------------------------------------------
-        // Setting parameter set
+        // Settings parameter set
         //
         // [GraphQL: accountSettings]
         //
         [Parameter(
-            ParameterSetName = "Setting",
+            ParameterSetName = "Settings",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -41,16 +41,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: accountSettings]",
             Position = 0
         )]
-        public SwitchParameter Setting { get; set; }
+        public SwitchParameter Settings { get; set; }
 
         
         // -------------------------------------------------------------------
-        // SWithExocomputeMapping parameter set
+        // SWithExocomputeMappings parameter set
         //
         // [GraphQL: allAccountsWithExocomputeMappings]
         //
         [Parameter(
-            ParameterSetName = "SWithExocomputeMapping",
+            ParameterSetName = "SWithExocomputeMappings",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -59,16 +59,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: allAccountsWithExocomputeMappings]",
             Position = 0
         )]
-        public SwitchParameter SWithExocomputeMapping { get; set; }
+        public SwitchParameter SWithExocomputeMappings { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Product parameter set
+        // Products parameter set
         //
         // [GraphQL: allAccountProducts]
         //
         [Parameter(
-            ParameterSetName = "Product",
+            ParameterSetName = "Products",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -77,7 +77,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: allAccountProducts]",
             Position = 0
         )]
-        public SwitchParameter Product { get; set; }
+        public SwitchParameter Products { get; set; }
 
         
         // -------------------------------------------------------------------
@@ -99,12 +99,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         
         // -------------------------------------------------------------------
-        // Owner parameter set
+        // Owners parameter set
         //
         // [GraphQL: allAccountOwners]
         //
         [Parameter(
-            ParameterSetName = "Owner",
+            ParameterSetName = "Owners",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -113,7 +113,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: allAccountOwners]",
             Position = 0
         )]
-        public SwitchParameter Owner { get; set; }
+        public SwitchParameter Owners { get; set; }
 
 
         protected override void ProcessRecord()
@@ -122,20 +122,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             {
                 switch(Op)
                 {
-                    case "Setting":
-                        this.ProcessRecord_Setting();
+                    case "Settings":
+                        this.ProcessRecord_Settings();
                         break;
-                    case "SWithExocomputeMapping":
-                        this.ProcessRecord_SWithExocomputeMapping();
+                    case "SWithExocomputeMappings":
+                        this.ProcessRecord_SWithExocomputeMappings();
                         break;
-                    case "Product":
-                        this.ProcessRecord_Product();
+                    case "Products":
+                        this.ProcessRecord_Products();
                         break;
                     case "Id":
                         this.ProcessRecord_Id();
                         break;
-                    case "Owner":
-                        this.ProcessRecord_Owner();
+                    case "Owners":
+                        this.ProcessRecord_Owners();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -149,27 +149,27 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // accountSettings.
-        protected void ProcessRecord_Setting()
+        protected void ProcessRecord_Settings()
         {
-            this._logger.name += " -Setting";
+            this._logger.name += " -Settings";
             // Invoke graphql operation accountSettings
             InvokeQueryAccountSettings();
         }
 
         // This parameter set invokes a single graphql operation:
         // allAccountsWithExocomputeMappings.
-        protected void ProcessRecord_SWithExocomputeMapping()
+        protected void ProcessRecord_SWithExocomputeMappings()
         {
-            this._logger.name += " -SWithExocomputeMapping";
+            this._logger.name += " -SWithExocomputeMappings";
             // Invoke graphql operation allAccountsWithExocomputeMappings
             InvokeQueryAllAccountsWithExocomputeMappings();
         }
 
         // This parameter set invokes a single graphql operation:
         // allAccountProducts.
-        protected void ProcessRecord_Product()
+        protected void ProcessRecord_Products()
         {
-            this._logger.name += " -Product";
+            this._logger.name += " -Products";
             // Invoke graphql operation allAccountProducts
             InvokeQueryAllAccountProducts();
         }
@@ -185,9 +185,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allAccountOwners.
-        protected void ProcessRecord_Owner()
+        protected void ProcessRecord_Owners()
         {
-            this._logger.name += " -Owner";
+            this._logger.name += " -Owners";
             // Invoke graphql operation allAccountOwners
             InvokeQueryAllAccountOwners();
         }
@@ -199,32 +199,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         {
             Tuple<string, string>[] argDefs = {
             };
-            AccountSetting? fields = null ;
-            if (this.Field != null)
-            {
+            AccountSetting? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (AccountSetting)psObject.BaseObject;
+                    fieldSpecObj = (AccountSetting)psObject.BaseObject;
                 } else {
-                    fields = (AccountSetting)this.Field;
+                    fieldSpecObj = (AccountSetting)this.Field;
                 }
             }
-            string document = Query.AccountSettings(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AccountSettings");
-            var parameters = "";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAccountSettings" + parameters + "{" + document + "}",
-                OperationName = "QueryAccountSettings",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            var result = this._rbkClient.Invoke(
-                request, vars, "AccountSetting", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AccountSettings(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAccountSettings",
+                "",
+                fieldSpecDoc,
+                "AccountSetting"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -236,33 +228,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("features", "[CloudAccountFeature!]!"),
                 Tuple.Create("exocomputeAccountIdsFilter", "[UUID!]!"),
             };
-            List<CloudAccountWithExocomputeMapping>? fields = null ;
-            if (this.Field != null)
-            {
+            List<CloudAccountWithExocomputeMapping>? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (List<CloudAccountWithExocomputeMapping>)psObject.BaseObject;
+                    fieldSpecObj = (List<CloudAccountWithExocomputeMapping>)psObject.BaseObject;
                 } else {
-                    fields = (List<CloudAccountWithExocomputeMapping>)this.Field;
+                    fieldSpecObj = (List<CloudAccountWithExocomputeMapping>)this.Field;
                 }
             }
-            string document = Query.AllAccountsWithExocomputeMappings(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AllAccountsWithExocomputeMappings");
-            var parameters = "($cloudVendor: CloudVendor!,$features: [CloudAccountFeature!]!,$exocomputeAccountIdsFilter: [UUID!]!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAllAccountsWithExocomputeMappings" + parameters + "{" + document + "}",
-                OperationName = "QueryAllAccountsWithExocomputeMappings",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "List<CloudAccountWithExocomputeMapping>", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AllAccountsWithExocomputeMappings(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAllAccountsWithExocomputeMappings",
+                "($cloudVendor: CloudVendor!,$features: [CloudAccountFeature!]!,$exocomputeAccountIdsFilter: [UUID!]!)",
+                fieldSpecDoc,
+                "List<CloudAccountWithExocomputeMapping>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -282,33 +265,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("startDateArg", "DateTime"),
                 Tuple.Create("endDateArg", "DateTime"),
             };
-            List<AccountProduct>? fields = null ;
-            if (this.Field != null)
-            {
+            List<AccountProduct>? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (List<AccountProduct>)psObject.BaseObject;
+                    fieldSpecObj = (List<AccountProduct>)psObject.BaseObject;
                 } else {
-                    fields = (List<AccountProduct>)this.Field;
+                    fieldSpecObj = (List<AccountProduct>)this.Field;
                 }
             }
-            string document = Query.AllAccountProducts(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AllAccountProducts");
-            var parameters = "($nameFilter: [ProductName!]!,$typeFilter: [ProductType!]!,$stateFilter: [ProductState!]!,$startDateArg: DateTime,$endDateArg: DateTime)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAllAccountProducts" + parameters + "{" + document + "}",
-                OperationName = "QueryAllAccountProducts",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "List<AccountProduct>", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AllAccountProducts(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAllAccountProducts",
+                "($nameFilter: [ProductName!]!,$typeFilter: [ProductType!]!,$stateFilter: [ProductState!]!,$startDateArg: DateTime,$endDateArg: DateTime)",
+                fieldSpecDoc,
+                "List<AccountProduct>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -317,32 +291,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         {
             Tuple<string, string>[] argDefs = {
             };
-            System.String? fields = null ;
-            if (this.Field != null)
-            {
+            System.String? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (System.String)psObject.BaseObject;
+                    fieldSpecObj = (System.String)psObject.BaseObject;
                 } else {
-                    fields = (System.String)this.Field;
+                    fieldSpecObj = (System.String)this.Field;
                 }
             }
-            string document = Query.AccountId(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AccountId");
-            var parameters = "";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAccountId" + parameters + "{" + document + "}",
-                OperationName = "QueryAccountId",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            var result = this._rbkClient.Invoke(
-                request, vars, "System.String", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AccountId(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAccountId",
+                "",
+                fieldSpecDoc,
+                "System.String"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -351,32 +317,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         {
             Tuple<string, string>[] argDefs = {
             };
-            List<User>? fields = null ;
-            if (this.Field != null)
-            {
+            List<User>? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (List<User>)psObject.BaseObject;
+                    fieldSpecObj = (List<User>)psObject.BaseObject;
                 } else {
-                    fields = (List<User>)this.Field;
+                    fieldSpecObj = (List<User>)this.Field;
                 }
             }
-            string document = Query.AllAccountOwners(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AllAccountOwners");
-            var parameters = "";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAllAccountOwners" + parameters + "{" + document + "}",
-                OperationName = "QueryAllAccountOwners",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            var result = this._rbkClient.Invoke(
-                request, vars, "List<User>", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AllAccountOwners(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAllAccountOwners",
+                "",
+                fieldSpecDoc,
+                "List<User>"
+            );
         }
 
 

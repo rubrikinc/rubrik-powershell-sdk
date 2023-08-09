@@ -27,7 +27,7 @@ Mounts a batch of snapshots from a group of specified virtual machines.
 ### batchondemandbackupvm
 Takes bulk on-demand backup of Hyper-V virtual machines
 
-Supported in v9.0
+Supported in v9.0+
 Takes on-demand backup of multiple specified Hyper-V virtual machines.
 
 - There is a single argument of type BatchOnDemandBackupHypervVmInput.
@@ -40,7 +40,7 @@ Create a live mount request with given configuration.
 
 - There is a single argument of type CreateHypervVirtualMachineSnapshotMountInput.
 - Returns AsyncRequestStatus.
-### deleteallsnapshot
+### deleteallsnapshots
 Delete all snapshots of VM
 
 Supported in v5.0+
@@ -80,7 +80,7 @@ Download a snapshot from archival.
 
 - There is a single argument of type DownloadHypervVirtualMachineSnapshotInput.
 - Returns AsyncRequestStatus.
-### downloadvirtualmachinesnapshotfile
+### downloadvirtualmachinesnapshotfiles
 Download files from a Hyper-V VM backup
 
 Supported in v5.0+
@@ -138,7 +138,7 @@ Register HyperV SCVMM to Rubrik Cluster.
 
 - There is a single argument of type RegisterHypervScvmmInput.
 - Returns AsyncRequestStatus.
-### restorevirtualmachinesnapshotfile
+### restorevirtualmachinesnapshotfiles
 Restore files from snapshot
 
 Supported in v5.0+

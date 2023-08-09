@@ -2,7 +2,7 @@
 Configuration for the protection and storage of an Atlassian site in Rsc.
 
 - siteId: System.String
-  - The ID of the Atlassian site in Rsc.
+  - The natural ID of the Atlassian site.
 - slaDomainId: System.String
   - The ID of the SLA domain to apply to the Atlassian site.
 - storageRegion: StorageRegion

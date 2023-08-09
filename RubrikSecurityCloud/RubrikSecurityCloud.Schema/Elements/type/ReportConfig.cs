@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("columns")]
         public List<System.String>? Columns { get; set; }
 
+        //      C# -> System.String? Fid
+        // GraphQL -> fid: UUID! (scalar)
+        [JsonProperty("fid")]
+        public System.String? Fid { get; set; }
+
         //      C# -> System.Int64? Id
         // GraphQL -> id: Long! (scalar)
         [JsonProperty("id")]
@@ -79,6 +84,7 @@ namespace RubrikSecurityCloud.Types
         SortOrder? SortOrder = null,
         List<System.String>? Aggregations = null,
         List<System.String>? Columns = null,
+        System.String? Fid = null,
         System.Int64? Id = null,
         System.String? Name = null,
         System.String? SortBy = null,
@@ -97,6 +103,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Columns != null ) {
             this.Columns = Columns;
+        }
+        if ( Fid != null ) {
+            this.Fid = Fid;
         }
         if ( Id != null ) {
             this.Id = Id;
@@ -142,6 +151,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> columns: [String!]! (scalar)
         if (this.Columns != null) {
             s += ind + "columns\n" ;
+        }
+        //      C# -> System.String? Fid
+        // GraphQL -> fid: UUID! (scalar)
+        if (this.Fid != null) {
+            s += ind + "fid\n" ;
         }
         //      C# -> System.Int64? Id
         // GraphQL -> id: Long! (scalar)
@@ -205,6 +219,12 @@ namespace RubrikSecurityCloud.Types
         if (this.Columns == null && Exploration.Includes(parent + ".columns", true))
         {
             this.Columns = new List<System.String>();
+        }
+        //      C# -> System.String? Fid
+        // GraphQL -> fid: UUID! (scalar)
+        if (this.Fid == null && Exploration.Includes(parent + ".fid", true))
+        {
+            this.Fid = "FETCH";
         }
         //      C# -> System.Int64? Id
         // GraphQL -> id: Long! (scalar)

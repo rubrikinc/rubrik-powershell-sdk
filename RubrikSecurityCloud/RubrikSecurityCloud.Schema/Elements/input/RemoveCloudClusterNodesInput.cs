@@ -24,6 +24,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("nodeIds")]
         public List<System.String>? NodeIds { get; set; }
 
+        //      C# -> System.Boolean? UseQuickDrain
+        // GraphQL -> useQuickDrain: Boolean (scalar)
+        [JsonProperty("useQuickDrain")]
+        public System.Boolean? UseQuickDrain { get; set; }
+
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
         [Required]

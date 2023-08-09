@@ -29,6 +29,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("sslInfo")]
         public SapHanaSslInfoInput? SslInfo { get; set; }
 
+        //      C# -> SapHanaSystemAuthTypeSpecInput? AuthTypeSpec
+        // GraphQL -> authTypeSpec: SapHanaSystemAuthTypeSpecInput (input)
+        [JsonProperty("authTypeSpec")]
+        public SapHanaSystemAuthTypeSpecInput? AuthTypeSpec { get; set; }
+
         //      C# -> List<System.String>? HostIds
         // GraphQL -> hostIds: [String!]! (scalar)
         [Required]

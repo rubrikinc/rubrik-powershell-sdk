@@ -41,9 +41,14 @@ namespace RubrikSecurityCloud.Types
         public System.String? BulkRecoveryInstanceId { get; set; }
 
         //      C# -> System.Int32? CanceledObjects
-        // GraphQL -> canceledObjects: Int! (scalar)
+        // GraphQL -> canceledObjects: Int (scalar)
         [JsonProperty("canceledObjects")]
         public System.Int32? CanceledObjects { get; set; }
+
+        //      C# -> System.Int64? CreateTime
+        // GraphQL -> createTime: Long (scalar)
+        [JsonProperty("createTime")]
+        public System.Int64? CreateTime { get; set; }
 
         //      C# -> System.String? CurrentStep
         // GraphQL -> currentStep: String! (scalar)
@@ -61,7 +66,7 @@ namespace RubrikSecurityCloud.Types
         public System.Int64? EndTime { get; set; }
 
         //      C# -> System.Int32? FailedObjects
-        // GraphQL -> failedObjects: Int! (scalar)
+        // GraphQL -> failedObjects: Int (scalar)
         [JsonProperty("failedObjects")]
         public System.Int32? FailedObjects { get; set; }
 
@@ -76,12 +81,12 @@ namespace RubrikSecurityCloud.Types
         public System.Int32? GroupsProcessed { get; set; }
 
         //      C# -> System.Int32? InProgressObjects
-        // GraphQL -> inProgressObjects: Int! (scalar)
+        // GraphQL -> inProgressObjects: Int (scalar)
         [JsonProperty("inProgressObjects")]
         public System.Int32? InProgressObjects { get; set; }
 
         //      C# -> System.Int32? ObjectsWithoutSnapshot
-        // GraphQL -> objectsWithoutSnapshot: Int! (scalar)
+        // GraphQL -> objectsWithoutSnapshot: Int (scalar)
         [JsonProperty("objectsWithoutSnapshot")]
         public System.Int32? ObjectsWithoutSnapshot { get; set; }
 
@@ -91,12 +96,12 @@ namespace RubrikSecurityCloud.Types
         public System.String? RecoveryPlanName { get; set; }
 
         //      C# -> System.Int64? StartTime
-        // GraphQL -> startTime: Long! (scalar)
+        // GraphQL -> startTime: Long (scalar)
         [JsonProperty("startTime")]
         public System.Int64? StartTime { get; set; }
 
         //      C# -> System.Int32? SucceededObjects
-        // GraphQL -> succeededObjects: Int! (scalar)
+        // GraphQL -> succeededObjects: Int (scalar)
         [JsonProperty("succeededObjects")]
         public System.Int32? SucceededObjects { get; set; }
 
@@ -111,7 +116,7 @@ namespace RubrikSecurityCloud.Types
         public System.Int32? TotalGroups { get; set; }
 
         //      C# -> System.Int32? TotalObjects
-        // GraphQL -> totalObjects: Int! (scalar)
+        // GraphQL -> totalObjects: Int (scalar)
         [JsonProperty("totalObjects")]
         public System.Int32? TotalObjects { get; set; }
 
@@ -135,6 +140,7 @@ namespace RubrikSecurityCloud.Types
         BulkRecoveryStatus? Status = null,
         System.String? BulkRecoveryInstanceId = null,
         System.Int32? CanceledObjects = null,
+        System.Int64? CreateTime = null,
         System.String? CurrentStep = null,
         System.Int64? ElapsedTime = null,
         System.Int64? EndTime = null,
@@ -166,6 +172,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( CanceledObjects != null ) {
             this.CanceledObjects = CanceledObjects;
+        }
+        if ( CreateTime != null ) {
+            this.CreateTime = CreateTime;
         }
         if ( CurrentStep != null ) {
             this.CurrentStep = CurrentStep;
@@ -243,9 +252,14 @@ namespace RubrikSecurityCloud.Types
             s += ind + "bulkRecoveryInstanceId\n" ;
         }
         //      C# -> System.Int32? CanceledObjects
-        // GraphQL -> canceledObjects: Int! (scalar)
+        // GraphQL -> canceledObjects: Int (scalar)
         if (this.CanceledObjects != null) {
             s += ind + "canceledObjects\n" ;
+        }
+        //      C# -> System.Int64? CreateTime
+        // GraphQL -> createTime: Long (scalar)
+        if (this.CreateTime != null) {
+            s += ind + "createTime\n" ;
         }
         //      C# -> System.String? CurrentStep
         // GraphQL -> currentStep: String! (scalar)
@@ -263,7 +277,7 @@ namespace RubrikSecurityCloud.Types
             s += ind + "endTime\n" ;
         }
         //      C# -> System.Int32? FailedObjects
-        // GraphQL -> failedObjects: Int! (scalar)
+        // GraphQL -> failedObjects: Int (scalar)
         if (this.FailedObjects != null) {
             s += ind + "failedObjects\n" ;
         }
@@ -278,12 +292,12 @@ namespace RubrikSecurityCloud.Types
             s += ind + "groupsProcessed\n" ;
         }
         //      C# -> System.Int32? InProgressObjects
-        // GraphQL -> inProgressObjects: Int! (scalar)
+        // GraphQL -> inProgressObjects: Int (scalar)
         if (this.InProgressObjects != null) {
             s += ind + "inProgressObjects\n" ;
         }
         //      C# -> System.Int32? ObjectsWithoutSnapshot
-        // GraphQL -> objectsWithoutSnapshot: Int! (scalar)
+        // GraphQL -> objectsWithoutSnapshot: Int (scalar)
         if (this.ObjectsWithoutSnapshot != null) {
             s += ind + "objectsWithoutSnapshot\n" ;
         }
@@ -293,12 +307,12 @@ namespace RubrikSecurityCloud.Types
             s += ind + "recoveryPlanName\n" ;
         }
         //      C# -> System.Int64? StartTime
-        // GraphQL -> startTime: Long! (scalar)
+        // GraphQL -> startTime: Long (scalar)
         if (this.StartTime != null) {
             s += ind + "startTime\n" ;
         }
         //      C# -> System.Int32? SucceededObjects
-        // GraphQL -> succeededObjects: Int! (scalar)
+        // GraphQL -> succeededObjects: Int (scalar)
         if (this.SucceededObjects != null) {
             s += ind + "succeededObjects\n" ;
         }
@@ -313,7 +327,7 @@ namespace RubrikSecurityCloud.Types
             s += ind + "totalGroups\n" ;
         }
         //      C# -> System.Int32? TotalObjects
-        // GraphQL -> totalObjects: Int! (scalar)
+        // GraphQL -> totalObjects: Int (scalar)
         if (this.TotalObjects != null) {
             s += ind + "totalObjects\n" ;
         }
@@ -358,10 +372,16 @@ namespace RubrikSecurityCloud.Types
             this.BulkRecoveryInstanceId = "FETCH";
         }
         //      C# -> System.Int32? CanceledObjects
-        // GraphQL -> canceledObjects: Int! (scalar)
+        // GraphQL -> canceledObjects: Int (scalar)
         if (this.CanceledObjects == null && Exploration.Includes(parent + ".canceledObjects", true))
         {
             this.CanceledObjects = Int32.MinValue;
+        }
+        //      C# -> System.Int64? CreateTime
+        // GraphQL -> createTime: Long (scalar)
+        if (this.CreateTime == null && Exploration.Includes(parent + ".createTime", true))
+        {
+            this.CreateTime = new System.Int64();
         }
         //      C# -> System.String? CurrentStep
         // GraphQL -> currentStep: String! (scalar)
@@ -382,7 +402,7 @@ namespace RubrikSecurityCloud.Types
             this.EndTime = new System.Int64();
         }
         //      C# -> System.Int32? FailedObjects
-        // GraphQL -> failedObjects: Int! (scalar)
+        // GraphQL -> failedObjects: Int (scalar)
         if (this.FailedObjects == null && Exploration.Includes(parent + ".failedObjects", true))
         {
             this.FailedObjects = Int32.MinValue;
@@ -400,13 +420,13 @@ namespace RubrikSecurityCloud.Types
             this.GroupsProcessed = Int32.MinValue;
         }
         //      C# -> System.Int32? InProgressObjects
-        // GraphQL -> inProgressObjects: Int! (scalar)
+        // GraphQL -> inProgressObjects: Int (scalar)
         if (this.InProgressObjects == null && Exploration.Includes(parent + ".inProgressObjects", true))
         {
             this.InProgressObjects = Int32.MinValue;
         }
         //      C# -> System.Int32? ObjectsWithoutSnapshot
-        // GraphQL -> objectsWithoutSnapshot: Int! (scalar)
+        // GraphQL -> objectsWithoutSnapshot: Int (scalar)
         if (this.ObjectsWithoutSnapshot == null && Exploration.Includes(parent + ".objectsWithoutSnapshot", true))
         {
             this.ObjectsWithoutSnapshot = Int32.MinValue;
@@ -418,13 +438,13 @@ namespace RubrikSecurityCloud.Types
             this.RecoveryPlanName = "FETCH";
         }
         //      C# -> System.Int64? StartTime
-        // GraphQL -> startTime: Long! (scalar)
+        // GraphQL -> startTime: Long (scalar)
         if (this.StartTime == null && Exploration.Includes(parent + ".startTime", true))
         {
             this.StartTime = new System.Int64();
         }
         //      C# -> System.Int32? SucceededObjects
-        // GraphQL -> succeededObjects: Int! (scalar)
+        // GraphQL -> succeededObjects: Int (scalar)
         if (this.SucceededObjects == null && Exploration.Includes(parent + ".succeededObjects", true))
         {
             this.SucceededObjects = Int32.MinValue;
@@ -442,7 +462,7 @@ namespace RubrikSecurityCloud.Types
             this.TotalGroups = Int32.MinValue;
         }
         //      C# -> System.Int32? TotalObjects
-        // GraphQL -> totalObjects: Int! (scalar)
+        // GraphQL -> totalObjects: Int (scalar)
         if (this.TotalObjects == null && Exploration.Includes(parent + ".totalObjects", true))
         {
             this.TotalObjects = Int32.MinValue;

@@ -1,6 +1,10 @@
 ### RubrikManagedRcsTarget
 Specific information for Rubrik Cloud Vault (RCV) target created on Rubrik.
 
+- shouldBypassProxy: System.Boolean
+  - Specifies whether the proxy settings is bypassed for  the RCV archival target.
+- isBlobImmutabilityEnabled: System.Boolean
+  - Specifies whether blob immutability is enabled for the RCV archival target.
 - syncStatus: TargetSyncStatus
   - Sync status of RCV target.
 - region: RcsRegionEnumType
@@ -22,17 +26,17 @@ Specific information for Rubrik Cloud Vault (RCV) target created on Rubrik.
 - cluster: Cluster
   - The cluster to which this target belongs.
 - targetType: TargetType
-  - The type of this target.
+  - The type of the target.
 - id: System.String
-  - The ID of this target.
+  - The ID of the target.
 - name: System.String
-  - The name of this target.
+  - The name of the target.
 - locationScope: LocationScope
-  - The scope of location of this target. Possible values are Global or Local.
+  - The scope of the location of the target. Possible values are Global or Local.
 - isActive: System.Boolean
-  - Specifies whether this target is active. When false, the target is either paused or not enabled.
+  - Specifies whether the status of the target is active. When set to false, the target is either paused or not enabled.
 - isArchived: System.Boolean
-  - Specifies whether this target is archived.
+  - Specifies whether the target is archived.
 - targetMapping: TargetMappingBasic
   - Archival location to which the mapping target belongs.
 - clusterName: System.String
@@ -50,6 +54,6 @@ Specific information for Rubrik Cloud Vault (RCV) target created on Rubrik.
 - readerRetrievalMethod: ReaderRetrievalMethod
   - The retrieval method of the reader target.
 - targetMappingBasic: list of TargetMappingBasics
-  - List of archival groups the archival target belongs to. In case target has no valid mappings we return null array.
+  - List of archival groups the archival target belongs to. In case the target has no valid mappings, a null array is returned.
 - locationConnectionStatus: ConnectionStatusType
-  - Connected or Disconnected status of the target.
+  - Status of the target.

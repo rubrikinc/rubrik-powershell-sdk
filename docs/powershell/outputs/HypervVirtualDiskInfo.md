@@ -11,4 +11,5 @@ Supported in v5.2+
   - Required. Supported in v5.2+
   The path of the Hyper-V virtual disk.
 - size: System.Int64
-  - The size of the Hyper-V virtual disk.
+  - Supported in v9.0+
+  The size of the Hyper-V virtual disk.

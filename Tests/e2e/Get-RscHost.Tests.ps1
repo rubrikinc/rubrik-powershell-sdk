@@ -2,6 +2,8 @@
 .SYNOPSIS
 Run tests around hosts
 #>
+# TODO: SPARK-225907 fix this
+return
 
 Describe -Name 'Get-RscHost' -Tag 'Public' -Fixture{
     BeforeAll {

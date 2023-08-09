@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("createdAt")]
         public DateTime? CreatedAt { get; set; }
 
+        //      C# -> System.String? Fid
+        // GraphQL -> fid: UUID! (scalar)
+        [JsonProperty("fid")]
+        public System.String? Fid { get; set; }
+
         //      C# -> System.Int32? Id
         // GraphQL -> id: Int! (scalar)
         [JsonProperty("id")]
@@ -107,6 +112,7 @@ namespace RubrikSecurityCloud.Types
     public CustomReport Set(
         ReportFocusEnum? Focus = null,
         DateTime? CreatedAt = null,
+        System.String? Fid = null,
         System.Int32? Id = null,
         System.Boolean? IsHidden = null,
         System.Boolean? IsReadOnly = null,
@@ -127,6 +133,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( CreatedAt != null ) {
             this.CreatedAt = CreatedAt;
+        }
+        if ( Fid != null ) {
+            this.Fid = Fid;
         }
         if ( Id != null ) {
             this.Id = Id;
@@ -186,6 +195,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createdAt: DateTime! (scalar)
         if (this.CreatedAt != null) {
             s += ind + "createdAt\n" ;
+        }
+        //      C# -> System.String? Fid
+        // GraphQL -> fid: UUID! (scalar)
+        if (this.Fid != null) {
+            s += ind + "fid\n" ;
         }
         //      C# -> System.Int32? Id
         // GraphQL -> id: Int! (scalar)
@@ -286,6 +300,12 @@ namespace RubrikSecurityCloud.Types
         if (this.CreatedAt == null && Exploration.Includes(parent + ".createdAt", true))
         {
             this.CreatedAt = new DateTime();
+        }
+        //      C# -> System.String? Fid
+        // GraphQL -> fid: UUID! (scalar)
+        if (this.Fid == null && Exploration.Includes(parent + ".fid", true))
+        {
+            this.Fid = "FETCH";
         }
         //      C# -> System.Int32? Id
         // GraphQL -> id: Int! (scalar)

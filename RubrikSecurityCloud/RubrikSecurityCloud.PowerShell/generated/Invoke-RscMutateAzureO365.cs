@@ -82,33 +82,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("subscriptionId", "UUID!"),
                 Tuple.Create("exocomputeConfig", "AzureO365ExocomputeConfig!"),
             };
-            SetupAzureO365ExocomputeResp? fields = null ;
-            if (this.Field != null)
-            {
+            SetupAzureO365ExocomputeResp? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (SetupAzureO365ExocomputeResp)psObject.BaseObject;
+                    fieldSpecObj = (SetupAzureO365ExocomputeResp)psObject.BaseObject;
                 } else {
-                    fields = (SetupAzureO365ExocomputeResp)this.Field;
+                    fieldSpecObj = (SetupAzureO365ExocomputeResp)this.Field;
                 }
             }
-            string document = Mutation.SetupAzureO365Exocompute(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.SetupAzureO365Exocompute");
-            var parameters = "($tenantId: String!,$subscriptionId: UUID!,$exocomputeConfig: AzureO365ExocomputeConfig!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "mutation MutationSetupAzureO365Exocompute" + parameters + "{" + document + "}",
-                OperationName = "MutationSetupAzureO365Exocompute",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "SetupAzureO365ExocomputeResp", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Mutation.SetupAzureO365Exocompute(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationSetupAzureO365Exocompute",
+                "($tenantId: String!,$subscriptionId: UUID!,$exocomputeConfig: AzureO365ExocomputeConfig!)",
+                fieldSpecDoc,
+                "SetupAzureO365ExocomputeResp"
+            );
         }
 
 

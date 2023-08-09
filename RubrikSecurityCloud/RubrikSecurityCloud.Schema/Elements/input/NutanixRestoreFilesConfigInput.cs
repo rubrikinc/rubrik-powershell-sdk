@@ -19,6 +19,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? TargetVirtualMachineId
+        // GraphQL -> targetVirtualMachineId: String (scalar)
+        [JsonProperty("targetVirtualMachineId")]
+        public System.String? TargetVirtualMachineId { get; set; }
+
         //      C# -> List<NutanixRestoreFileConfigInput>? RestoreConfig
         // GraphQL -> restoreConfig: [NutanixRestoreFileConfigInput!]! (input)
         [Required]

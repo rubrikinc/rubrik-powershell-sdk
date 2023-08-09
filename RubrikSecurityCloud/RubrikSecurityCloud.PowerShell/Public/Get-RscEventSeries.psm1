@@ -35,15 +35,15 @@ function Get-RscEventSeries {
   This example lists the first 3 events.
 
   .EXAMPLE
-  (Get-RscEventSeries -First 3).Id
-  24738
-  24736
-  24731
+  (Get-RscEventSeries -First 3).ActivitySeriesId
+  a17b691d-3935-4e1f-8abf-82f3229e836f
+  36081adp-148e-4c19-9896-3f9b2f3b3026
+  5ce92d82-9ce7-4fdf-9d4f-97ed7eb93a71
   
   This example lists the first 3 events, and only get their ids.
 
   .EXAMPLE
-  $firstId = (Get-RscEventSeries -First 1 -Detail).ActivitySeriesId
+  $firstId = (Get-RscEventSeries -First 1).ActivitySeriesId
 
   Saves the first id.
 
@@ -139,6 +139,7 @@ function Get-RscEventSeries {
           if ( $First -gt 0 ) {
               $inputs.Arg.first = $First
           }
+          $inputs.Field.Nodes[0].ActivitySeriesId = ""
       }
 
       # -5- Invoke GraphQL operation:

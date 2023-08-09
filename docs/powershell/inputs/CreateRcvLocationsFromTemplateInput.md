@@ -13,5 +13,7 @@ Input for creating Rubrik Cloud Vault locations.
   - List of Rubrik cluster UUIDs.
 - ipMapping: list of IpMappingInputs
   - IP mapping for each Rubrik cluster.
+- shouldBypassProxy: System.Boolean
+  - Specifies whether the proxy settings must be bypassed for  the RCV archival target.
 - rsaKey: System.String
   - RSA key for the RCV location.

@@ -1,6 +1,6 @@
 # Invoke-RscQueryCluster
 ## Subcommands
-### certificate
+### certificates
 Get all certificates
 
 Supported in v5.1+
@@ -59,7 +59,7 @@ Filter clusters by encryption information.
     - clusters - list of System.Strings: The IDs of the Rubrik clusters to select.
     - encryptionTypes - list of ClusterEncryptionTypes: The types of encryption.
 - Returns ClusterEncryptionInfoConnection.
-### floatingip
+### floatingips
 Get a list of a cluster's always-available Ips
 
 Supported in v5.0+
@@ -74,7 +74,7 @@ All files and folders matching input filters.
     - clusters - list of System.Strings: List of Rubrik cluster UUID's. If no clusters are provided, the search is applied to all clusters that the user has access to.
     - regex - System.String: The regular expression used to filter the files and folders.
 - Returns GlobalFileSearchReplyType.
-### globalsla
+### globalslas
 Global SLA Domains protecting at least one object on the specified Rubrik cluster.
 
 - There is a single argument of type System.String.
@@ -86,7 +86,7 @@ Global SLA Domains protecting at least one object on the specified Rubrik cluste
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
     - groupBy - ClusterGroupByEnum: Group by field.
-    - filter - ClusterFilterInput
+    - filter - ClusterFilterInput: Filter by cluster.
     - timezoneOffset - System.Single: Offset based on customer timezone.
 - Returns ClusterGroupByConnection.
 ### hostfailover
@@ -120,6 +120,16 @@ Checks whether acknowledgement of the Time-based, One-Time Password (TOTP) manda
     - sortOrder - SortOrder: Sorting order for the results.
     - filter - list of Filters: The hierarchy object filter.
 - Returns K8sClusterConnection.
+### kubernetes
+Summary of all Kubernetes Clusters.
+
+- There are 5 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - sortBy - HierarchySortByField: Sort hierarchy objects by hierarchy field.
+    - sortOrder - SortOrder: Sorting order for the results.
+    - filter - list of Filters: The hierarchy object filter.
+- Returns KubernetesClusterConnection.
 ### ladomainfilterlist
 - There are 4 arguments.
     - first - System.Int32: Returns the first n elements from the list.
@@ -127,7 +137,9 @@ Checks whether acknowledgement of the Time-based, One-Time Password (TOTP) manda
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
 - Returns ClusterSlaDomainForFilterConnection.
-### ladomainlist
+### ladomains
+Returns paginated list of SLA domains that were created on Rubrik CDM.
+
 - There are 4 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
@@ -142,11 +154,11 @@ List of the available cluster objects.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - filter - ClusterFilterInput
+    - filter - ClusterFilterInput: Filter by cluster.
     - sortOrder - SortOrder: Cluster sort order.
     - sortBy - ClusterSortByEnum: Sort clusters by field.
 - Returns ClusterConnection.
-### networkinterface
+### networkinterfaces
 Get network interfaces for a Rubrik Cluster cluster
 
 Supported in v5.0+
@@ -154,7 +166,7 @@ Retrieves network interfaces(including VLANs) on bond0/bond1.
 
 - There is a single argument of type GetNetworkInterfaceInput.
 - Returns NetworkInterfaceListResponse.
-### node
+### nodes
 Get list of nodes in this Rubrik cluster
 
 Supported in v5.0+
@@ -162,7 +174,7 @@ Returns the list of all Rubrik nodes.
 
 - There is a single argument of type GetNodesInput.
 - Returns NodeStatusListResponse.
-### ntpserver
+### ntpservers
 Get NTP Servers
 
 Supported in v5.0+
@@ -180,7 +192,7 @@ Rubrik cluster proxy information.
 
 - There is a single argument of type System.String.
 - Returns ClusterProxyReply.
-### rcvlocation
+### rcvlocations
 List Rubrik Cloud Vault locations of the cluster.
 
 - There are 6 arguments.
@@ -196,11 +208,34 @@ Info about the cluster product types the user is entitled to.
 
 - The registrationproductinfo subcommand takes no arguments.
 - Returns ClusterRegistrationProductInfoType.
-### replicationtarget
+### replicationtargets
 All replication targets for a cluster.
 
 - There is a single argument of type System.String.
 - Returns list of ClusterReplicationTargets.
+### reportmigrationcount
+Retrieve the counts of the Rubrik cluster reports migration.
+
+- There are 2 arguments.
+    - clusterUuid - System.String: The Rubrik cluster ID.
+    - status - list of CdmReportMigrationStatuss: Rubrik cluster report migration status.
+- Returns ReportsMigrationCount.
+### reportmigrationjobstatus
+Retrieve the status of the cluster report migration job.
+
+- There is a single argument of type System.String.
+- Returns ClusterReportMigrationJobStatus.
+### reportmigrationstatus
+Retrieve details of the Rubrik clusters' reports migration.
+
+- There are 6 arguments.
+    - clusterUuid - System.String: The Rubrik cluster ID.
+    - status - list of CdmReportMigrationStatuss: Rubrik cluster report migration status.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that come before the specified cursor.
+- Returns ReportMigrationStatusConnection.
 ### totpackstatus
 Checks whether acknowledgement of the Time-based, One-Time Password (TOTP) mandate is required for upgrading the Rubrik cluster version.
 
@@ -215,16 +250,18 @@ List of vCloud Director clusters.
 - There is a single argument of type QueryVcdClusterInput.
 - Returns VcdClusterSummaryListResponse.
 ### verifyslawithreplicationto
+Verify for a Rubrik cluster if it is replication target in any SLA Domain.
+
 - There are 2 arguments.
     - cdmClusterUUID - System.String: UUID of the Rubrik cluster.
     - includeArchived - System.Boolean: Include Archived SLA.
-- Returns VerifySLAWithReplicationToClusterResp.
-### vlan
+- Returns VerifySlaWithReplicationToClusterResponse.
+### vlans
 Rubrik cluster VLAN information.
 
 - There is a single argument of type GetVlanInput.
 - Returns VlanConfigListResponse.
-### webcertsandipmi
+### webcertsandipmis
 Get web server certificate and IPMI details for multiple clusters.
 
 - There is a single argument of type BulkClusterWebCertAndIpmiInput.
@@ -237,7 +274,7 @@ If the web server uses a signed certificate, fetch it.
 
 - There is a single argument of type ClusterWebSignedCertificateInput.
 - Returns ClusterWebSignedCertificateReply.
-### window
+### windows
 A Windows Cluster.
 
 - There is a single argument of type System.String.

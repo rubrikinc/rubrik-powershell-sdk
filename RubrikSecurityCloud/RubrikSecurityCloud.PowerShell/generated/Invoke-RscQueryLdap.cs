@@ -152,33 +152,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("sortBy", "LdapIntegrationFieldEnum"),
             };
-            LdapIntegrationConnection? fields = null ;
-            if (this.Field != null)
-            {
+            LdapIntegrationConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (LdapIntegrationConnection)psObject.BaseObject;
+                    fieldSpecObj = (LdapIntegrationConnection)psObject.BaseObject;
                 } else {
-                    fields = (LdapIntegrationConnection)this.Field;
+                    fieldSpecObj = (LdapIntegrationConnection)this.Field;
                 }
             }
-            string document = Query.LdapIntegrationConnection(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.LdapIntegrationConnection");
-            var parameters = "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: LdapIntegrationFieldEnum)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryLdapIntegrationConnection" + parameters + "{" + document + "}",
-                OperationName = "QueryLdapIntegrationConnection",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "LdapIntegrationConnection", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.LdapIntegrationConnection(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryLdapIntegrationConnection",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: LdapIntegrationFieldEnum)",
+                fieldSpecDoc,
+                "LdapIntegrationConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -204,33 +195,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("id", "UUID!"),
                 Tuple.Create("searchText", "String!"),
             };
-            PrincipalConnection? fields = null ;
-            if (this.Field != null)
-            {
+            PrincipalConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (PrincipalConnection)psObject.BaseObject;
+                    fieldSpecObj = (PrincipalConnection)psObject.BaseObject;
                 } else {
-                    fields = (PrincipalConnection)this.Field;
+                    fieldSpecObj = (PrincipalConnection)this.Field;
                 }
             }
-            string document = Query.LdapPrincipalConnection(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.LdapPrincipalConnection");
-            var parameters = "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: LdapPrincipalFieldEnum,$id: UUID!,$searchText: String!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryLdapPrincipalConnection" + parameters + "{" + document + "}",
-                OperationName = "QueryLdapPrincipalConnection",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "PrincipalConnection", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.LdapPrincipalConnection(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryLdapPrincipalConnection",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: LdapPrincipalFieldEnum,$id: UUID!,$searchText: String!)",
+                fieldSpecDoc,
+                "PrincipalConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -256,33 +238,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("searchText", "String!"),
                 Tuple.Create("roleIds", "[UUID!]"),
             };
-            AuthorizedPrincipalConnection? fields = null ;
-            if (this.Field != null)
-            {
+            AuthorizedPrincipalConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (AuthorizedPrincipalConnection)psObject.BaseObject;
+                    fieldSpecObj = (AuthorizedPrincipalConnection)psObject.BaseObject;
                 } else {
-                    fields = (AuthorizedPrincipalConnection)this.Field;
+                    fieldSpecObj = (AuthorizedPrincipalConnection)this.Field;
                 }
             }
-            string document = Query.LdapAuthorizedPrincipalConnection(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.LdapAuthorizedPrincipalConnection");
-            var parameters = "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: LdapAuthorizedPrincipalFieldEnum,$searchText: String!,$roleIds: [UUID!])\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryLdapAuthorizedPrincipalConnection" + parameters + "{" + document + "}",
-                OperationName = "QueryLdapAuthorizedPrincipalConnection",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "AuthorizedPrincipalConnection", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.LdapAuthorizedPrincipalConnection(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryLdapAuthorizedPrincipalConnection",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: LdapAuthorizedPrincipalFieldEnum,$searchText: String!,$roleIds: [UUID!])",
+                fieldSpecDoc,
+                "AuthorizedPrincipalConnection"
+            );
         }
 
 

@@ -1,5 +1,7 @@
 ### ReportConfig
 - id: System.Int64
+- fid: System.String
+  - Report forever ID.
 - name: System.String
   - Report name.
 - dataViewType: DataViewTypeEnum

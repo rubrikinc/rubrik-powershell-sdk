@@ -1,6 +1,6 @@
 # Invoke-RscMutateOracle
 ## Subcommands
-### bulkupdatedatabase
+### bulkupdatedatabases
 Update Oracle Databases
 
 Supported in v5.2+
@@ -8,7 +8,7 @@ Update the properties of the objects that represent the specified Oracle Databas
 
 - There is a single argument of type BulkUpdateOracleDatabasesInput.
 - Returns BulkUpdateOracleDatabasesReply.
-### bulkupdatehost
+### bulkupdatehosts
 Update Oracle Hosts
 
 Supported in v5.2+
@@ -16,7 +16,7 @@ Update properties to Oracle Host objects.
 
 - There is a single argument of type BulkUpdateOracleHostsInput.
 - Returns BulkUpdateOracleHostsReply.
-### bulkupdaterac
+### bulkupdateracs
 Update Oracle RACs
 
 Supported in v5.2+
@@ -32,7 +32,7 @@ Initiates an asynchronous request to restore PDBs on an Oracle database from a s
 
 - There is a single argument of type CreateOraclePdbRestoreInput.
 - Returns AsyncRequestStatus.
-### deletealldatabasesnapshot
+### deletealldatabasesnapshots
 Delete Oracle database snapshots
 
 Supported in v5.0+
@@ -96,7 +96,7 @@ Starts an asynchronous job to refresh the Oracle database metadata by querying t
 
 - There is a single argument of type RefreshOracleDatabaseInput.
 - Returns AsyncRequestStatus.
-### restorelog
+### restorelogs
 Restore archive logs of an Oracle database
 
 Supported in v6.0+
@@ -137,7 +137,7 @@ Validate the provided Oracle ACO (Advanced Cloning Options) file.
 
 - There is a single argument of type ValidateOracleAcoFileInput.
 - Returns ValidateOracleAcoFileReply.
-### validatedatabasebackup
+### validatedatabasebackups
 Validate Oracle database backups
 
 Supported in v5.3+

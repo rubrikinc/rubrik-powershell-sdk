@@ -17,3 +17,5 @@ Input for the job to export the specified Azure SQL Database.
   - Input for exporting from Long Term Retention (LTR) backup.
 - persistentBackupExportInput: AzureSqlPersistentBackupExportInput
   - Input for exporting from Rubrik managed persistent backup.
+- serviceTier: System.String
+  - Input for service tier selected for the export of the database.

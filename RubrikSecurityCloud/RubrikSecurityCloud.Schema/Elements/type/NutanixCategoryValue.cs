@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region NutanixCategoryValue
  
-    public class NutanixCategoryValue: BaseType, CdmHierarchyObject, HierarchyObject
+    public class NutanixCategoryValue: BaseType, CdmHierarchyObject, HierarchyObject, NutanixCategoryDescendantType, NutanixCategoryLogicalChildType, NutanixPrismCentralDescendantType
     {
         #region members
 
@@ -116,6 +116,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("connectionStatus")]
         public RefreshableObjectConnectionStatus? ConnectionStatus { get; set; }
 
+        //      C# -> NutanixCategoryValueDescendantTypeConnection? DescendantConnection
+        // GraphQL -> descendantConnection: NutanixCategoryValueDescendantTypeConnection! (type)
+        [JsonProperty("descendantConnection")]
+        public NutanixCategoryValueDescendantTypeConnection? DescendantConnection { get; set; }
+
         //      C# -> PathNode? EffectiveSlaSourceObject
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)
         [JsonProperty("effectiveSlaSourceObject")]
@@ -125,6 +130,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> latestUserNote: LatestUserNote (type)
         [JsonProperty("latestUserNote")]
         public LatestUserNote? LatestUserNote { get; set; }
+
+        //      C# -> NutanixCategoryValueLogicalChildTypeConnection? LogicalChildConnection
+        // GraphQL -> logicalChildConnection: NutanixCategoryValueLogicalChildTypeConnection! (type)
+        [JsonProperty("logicalChildConnection")]
+        public NutanixCategoryValueLogicalChildTypeConnection? LogicalChildConnection { get; set; }
 
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)
@@ -180,8 +190,10 @@ namespace RubrikSecurityCloud.Types
         List<Org>? AllOrgs = null,
         Cluster? Cluster = null,
         RefreshableObjectConnectionStatus? ConnectionStatus = null,
+        NutanixCategoryValueDescendantTypeConnection? DescendantConnection = null,
         PathNode? EffectiveSlaSourceObject = null,
         LatestUserNote? LatestUserNote = null,
+        NutanixCategoryValueLogicalChildTypeConnection? LogicalChildConnection = null,
         List<PathNode>? LogicalPath = null,
         PendingSnapshotsOfObjectDeletion? PendingObjectDeletionStatus = null,
         List<PathNode>? PhysicalPath = null,
@@ -246,11 +258,17 @@ namespace RubrikSecurityCloud.Types
         if ( ConnectionStatus != null ) {
             this.ConnectionStatus = ConnectionStatus;
         }
+        if ( DescendantConnection != null ) {
+            this.DescendantConnection = DescendantConnection;
+        }
         if ( EffectiveSlaSourceObject != null ) {
             this.EffectiveSlaSourceObject = EffectiveSlaSourceObject;
         }
         if ( LatestUserNote != null ) {
             this.LatestUserNote = LatestUserNote;
+        }
+        if ( LogicalChildConnection != null ) {
+            this.LogicalChildConnection = LogicalChildConnection;
         }
         if ( LogicalPath != null ) {
             this.LogicalPath = LogicalPath;
@@ -396,6 +414,14 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "connectionStatus {\n" + fspec + ind + "}\n" ;
             }
         }
+        //      C# -> NutanixCategoryValueDescendantTypeConnection? DescendantConnection
+        // GraphQL -> descendantConnection: NutanixCategoryValueDescendantTypeConnection! (type)
+        if (this.DescendantConnection != null) {
+            var fspec = this.DescendantConnection.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "descendantConnection {\n" + fspec + ind + "}\n" ;
+            }
+        }
         //      C# -> PathNode? EffectiveSlaSourceObject
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)
         if (this.EffectiveSlaSourceObject != null) {
@@ -410,6 +436,14 @@ namespace RubrikSecurityCloud.Types
             var fspec = this.LatestUserNote.AsFieldSpec(indent+1);
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
                 s += ind + "latestUserNote {\n" + fspec + ind + "}\n" ;
+            }
+        }
+        //      C# -> NutanixCategoryValueLogicalChildTypeConnection? LogicalChildConnection
+        // GraphQL -> logicalChildConnection: NutanixCategoryValueLogicalChildTypeConnection! (type)
+        if (this.LogicalChildConnection != null) {
+            var fspec = this.LogicalChildConnection.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "logicalChildConnection {\n" + fspec + ind + "}\n" ;
             }
         }
         //      C# -> List<PathNode>? LogicalPath
@@ -586,6 +620,13 @@ namespace RubrikSecurityCloud.Types
             this.ConnectionStatus = new RefreshableObjectConnectionStatus();
             this.ConnectionStatus.ApplyExploratoryFieldSpec(parent + ".connectionStatus");
         }
+        //      C# -> NutanixCategoryValueDescendantTypeConnection? DescendantConnection
+        // GraphQL -> descendantConnection: NutanixCategoryValueDescendantTypeConnection! (type)
+        if (this.DescendantConnection == null && Exploration.Includes(parent + ".descendantConnection"))
+        {
+            this.DescendantConnection = new NutanixCategoryValueDescendantTypeConnection();
+            this.DescendantConnection.ApplyExploratoryFieldSpec(parent + ".descendantConnection");
+        }
         //      C# -> PathNode? EffectiveSlaSourceObject
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)
         if (this.EffectiveSlaSourceObject == null && Exploration.Includes(parent + ".effectiveSlaSourceObject"))
@@ -599,6 +640,13 @@ namespace RubrikSecurityCloud.Types
         {
             this.LatestUserNote = new LatestUserNote();
             this.LatestUserNote.ApplyExploratoryFieldSpec(parent + ".latestUserNote");
+        }
+        //      C# -> NutanixCategoryValueLogicalChildTypeConnection? LogicalChildConnection
+        // GraphQL -> logicalChildConnection: NutanixCategoryValueLogicalChildTypeConnection! (type)
+        if (this.LogicalChildConnection == null && Exploration.Includes(parent + ".logicalChildConnection"))
+        {
+            this.LogicalChildConnection = new NutanixCategoryValueLogicalChildTypeConnection();
+            this.LogicalChildConnection.ApplyExploratoryFieldSpec(parent + ".logicalChildConnection");
         }
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)

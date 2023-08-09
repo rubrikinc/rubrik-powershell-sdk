@@ -40,7 +40,7 @@ Retrieve summary information for all HotAdd proxy virtual machines.
     - sortOrder - SortOrder: Sorting order for the results.
     - filter - list of Filters: The hierarchy object filter.
 - Returns VsphereVcenterConnection.
-### network
+### networks
 Get the user-configured networks in the vCenter
 
 Supported in v5.3+

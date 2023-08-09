@@ -1,6 +1,6 @@
 # Invoke-RscMutateMssql
 ## Subcommands
-### assignsladomainpropertie
+### assignsladomainproperties
 Assign SLA domain properties to Mssql objects.
 
 - There is a single argument of type AssignMssqlSlaDomainPropertiesInput.
@@ -20,7 +20,7 @@ Take a bulk on-demand backup of a Microsoft SQL Database.
 
 - There is a single argument of type BulkCreateOnDemandMssqlBackupInput.
 - Returns AsyncRequestStatus.
-### bulkupdatedb
+### bulkupdatedbs
 Update multiple Microsoft SQL databases with the specified properties.
 
 - There is a single argument of type BulkUpdateMssqlDbsInput.
@@ -40,7 +40,7 @@ Take an on-demand backup of a Microsoft SQL Database
 
 - There is a single argument of type CreateOnDemandMssqlBackupInput.
 - Returns AsyncRequestStatus.
-### deletedbsnapshot
+### deletedbsnapshots
 Delete snapshots of a Microsoft SQL Database.
 
 - There is a single argument of type DeleteMssqlDbSnapshotsInput.
@@ -53,7 +53,7 @@ Create an async request to delete a Live Mount of a SQL Server database. Poll th
 
 - There is a single argument of type DeleteMssqlLiveMountInput.
 - Returns AsyncRequestStatus.
-### downloaddatabasebackupfile
+### downloaddatabasebackupfiles
 Downloads a list of snapshot and log backups from a Microsoft SQL database
 
 Supported in v5.2+
@@ -81,7 +81,7 @@ Take an on-demand log backup for a Microsoft SQL database.
 
 - There is a single argument of type TakeMssqlLogBackupInput.
 - Returns AsyncRequestStatus.
-### updatedefaultpropertie
+### updatedefaultproperties
 Update the default properties for Microsoft SQL databases.
 
 - There is a single argument of type UpdateMssqlDefaultPropertiesInput.

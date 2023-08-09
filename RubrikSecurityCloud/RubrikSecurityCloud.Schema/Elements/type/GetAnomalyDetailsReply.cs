@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> AnomalyType? AnomalyType
+        // GraphQL -> anomalyType: AnomalyType! (enum)
+        [JsonProperty("anomalyType")]
+        public AnomalyType? AnomalyType { get; set; }
+
         //      C# -> EncryptionLevel? Encryption
         // GraphQL -> encryption: EncryptionLevel! (enum)
         [JsonProperty("encryption")]
@@ -34,6 +39,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> severity: ActivitySeverityEnum! (enum)
         [JsonProperty("severity")]
         public ActivitySeverityEnum? Severity { get; set; }
+
+        //      C# -> System.String? ActivitySeriesId
+        // GraphQL -> activitySeriesId: String! (scalar)
+        [JsonProperty("activitySeriesId")]
+        public System.String? ActivitySeriesId { get; set; }
 
         //      C# -> System.Single? AnomalyProbability
         // GraphQL -> anomalyProbability: Float! (scalar)
@@ -64,6 +74,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> bytesSuspiciousCount: Long! (scalar)
         [JsonProperty("bytesSuspiciousCount")]
         public System.Int64? BytesSuspiciousCount { get; set; }
+
+        //      C# -> DateTime? DetectionTime
+        // GraphQL -> detectionTime: DateTime (scalar)
+        [JsonProperty("detectionTime")]
+        public DateTime? DetectionTime { get; set; }
 
         //      C# -> System.Int64? FilesCreatedCount
         // GraphQL -> filesCreatedCount: Long! (scalar)
@@ -175,15 +190,18 @@ namespace RubrikSecurityCloud.Types
     }
 
     public GetAnomalyDetailsReply Set(
+        AnomalyType? AnomalyType = null,
         EncryptionLevel? Encryption = null,
         ObjectTypeEnum? ObjectType = null,
         ActivitySeverityEnum? Severity = null,
+        System.String? ActivitySeriesId = null,
         System.Single? AnomalyProbability = null,
         System.Int64? BytesCreatedCount = null,
         System.Int64? BytesDeletedCount = null,
         System.Int64? BytesModifiedCount = null,
         System.Int64? BytesNetChangedCount = null,
         System.Int64? BytesSuspiciousCount = null,
+        DateTime? DetectionTime = null,
         System.Int64? FilesCreatedCount = null,
         System.Int64? FilesDeletedCount = null,
         System.Int64? FilesModifiedCount = null,
@@ -206,6 +224,9 @@ namespace RubrikSecurityCloud.Types
         CdmSnapshot? Snapshot = null
     ) 
     {
+        if ( AnomalyType != null ) {
+            this.AnomalyType = AnomalyType;
+        }
         if ( Encryption != null ) {
             this.Encryption = Encryption;
         }
@@ -214,6 +235,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Severity != null ) {
             this.Severity = Severity;
+        }
+        if ( ActivitySeriesId != null ) {
+            this.ActivitySeriesId = ActivitySeriesId;
         }
         if ( AnomalyProbability != null ) {
             this.AnomalyProbability = AnomalyProbability;
@@ -232,6 +256,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( BytesSuspiciousCount != null ) {
             this.BytesSuspiciousCount = BytesSuspiciousCount;
+        }
+        if ( DetectionTime != null ) {
+            this.DetectionTime = DetectionTime;
         }
         if ( FilesCreatedCount != null ) {
             this.FilesCreatedCount = FilesCreatedCount;
@@ -303,6 +330,11 @@ namespace RubrikSecurityCloud.Types
     {
         string ind = new string(' ', indent*2);
         string s = "";
+        //      C# -> AnomalyType? AnomalyType
+        // GraphQL -> anomalyType: AnomalyType! (enum)
+        if (this.AnomalyType != null) {
+            s += ind + "anomalyType\n" ;
+        }
         //      C# -> EncryptionLevel? Encryption
         // GraphQL -> encryption: EncryptionLevel! (enum)
         if (this.Encryption != null) {
@@ -317,6 +349,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> severity: ActivitySeverityEnum! (enum)
         if (this.Severity != null) {
             s += ind + "severity\n" ;
+        }
+        //      C# -> System.String? ActivitySeriesId
+        // GraphQL -> activitySeriesId: String! (scalar)
+        if (this.ActivitySeriesId != null) {
+            s += ind + "activitySeriesId\n" ;
         }
         //      C# -> System.Single? AnomalyProbability
         // GraphQL -> anomalyProbability: Float! (scalar)
@@ -347,6 +384,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> bytesSuspiciousCount: Long! (scalar)
         if (this.BytesSuspiciousCount != null) {
             s += ind + "bytesSuspiciousCount\n" ;
+        }
+        //      C# -> DateTime? DetectionTime
+        // GraphQL -> detectionTime: DateTime (scalar)
+        if (this.DetectionTime != null) {
+            s += ind + "detectionTime\n" ;
         }
         //      C# -> System.Int64? FilesCreatedCount
         // GraphQL -> filesCreatedCount: Long! (scalar)
@@ -468,6 +510,12 @@ namespace RubrikSecurityCloud.Types
     //[JsonIgnore]
     public override void ApplyExploratoryFieldSpec(String parent = "")
     {
+        //      C# -> AnomalyType? AnomalyType
+        // GraphQL -> anomalyType: AnomalyType! (enum)
+        if (this.AnomalyType == null && Exploration.Includes(parent + ".anomalyType", true))
+        {
+            this.AnomalyType = new AnomalyType();
+        }
         //      C# -> EncryptionLevel? Encryption
         // GraphQL -> encryption: EncryptionLevel! (enum)
         if (this.Encryption == null && Exploration.Includes(parent + ".encryption", true))
@@ -485,6 +533,12 @@ namespace RubrikSecurityCloud.Types
         if (this.Severity == null && Exploration.Includes(parent + ".severity", true))
         {
             this.Severity = new ActivitySeverityEnum();
+        }
+        //      C# -> System.String? ActivitySeriesId
+        // GraphQL -> activitySeriesId: String! (scalar)
+        if (this.ActivitySeriesId == null && Exploration.Includes(parent + ".activitySeriesId", true))
+        {
+            this.ActivitySeriesId = "FETCH";
         }
         //      C# -> System.Single? AnomalyProbability
         // GraphQL -> anomalyProbability: Float! (scalar)
@@ -521,6 +575,12 @@ namespace RubrikSecurityCloud.Types
         if (this.BytesSuspiciousCount == null && Exploration.Includes(parent + ".bytesSuspiciousCount", true))
         {
             this.BytesSuspiciousCount = new System.Int64();
+        }
+        //      C# -> DateTime? DetectionTime
+        // GraphQL -> detectionTime: DateTime (scalar)
+        if (this.DetectionTime == null && Exploration.Includes(parent + ".detectionTime", true))
+        {
+            this.DetectionTime = new DateTime();
         }
         //      C# -> System.Int64? FilesCreatedCount
         // GraphQL -> filesCreatedCount: Long! (scalar)

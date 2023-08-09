@@ -61,16 +61,12 @@ namespace RubrikSecurityCloud.Types
         public System.String? StackSetName { get; set; }
 
         //      C# -> System.String? ExternalId
-        // GraphQL -> externalId: String! (scalar)
-        [Required]
-        [JsonRequired]
+        // GraphQL -> externalId: String (scalar)
         [JsonProperty("externalId")]
         public System.String? ExternalId { get; set; }
 
         //      C# -> List<AwsCloudAccountFeatureVersionInput>? FeatureVersion
-        // GraphQL -> featureVersion: [AwsCloudAccountFeatureVersionInput!]! (input)
-        [Required]
-        [JsonRequired]
+        // GraphQL -> featureVersion: [AwsCloudAccountFeatureVersionInput!] (input)
         [JsonProperty("featureVersion")]
         public List<AwsCloudAccountFeatureVersionInput>? FeatureVersion { get; set; }
 

@@ -10,8 +10,6 @@ using RubrikSecurityCloud;
 using RubrikSecurityCloud.NetSDK.Client;
 using RubrikSecurityCloud.NetSDK.Client.Models.Authentication;
 using RubrikSecurityCloud.PowerShell.Models;
-using RubrikSecurityCloud.PowerShell.Models;
-using RubrikSecurityCloud.PowerShell.Private;
 using RubrikSecurityCloud.PowerShell.Private;
 using System.Xml.Linq;
 using System.Management.Automation.Runspaces;
@@ -188,11 +186,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                                 //ServiceAccountFile option specified, but no file given
                                 //Set the default service account file now
 
-                                string psProfilePath = this.SessionState.PSVariable.Get("PROFILE").Value.ToString();
-                                string psProfileDir = Path.GetDirectoryName(psProfilePath);
-                                ServiceAccountFile = Path.Combine(psProfileDir,
-                                                                  "rubrik-powershell-sdk",
-                                                                  "rsc_service_account_default.xml");
+                                string psProfileFile = this.SessionState.PSVariable.Get("PROFILE").Value.ToString();
+                                string psProfileDir = FileUtils.GetUserProfileDir(psProfileFile);
+                                ServiceAccountFile = Path.Combine(
+                                    psProfileDir,
+                                    "rsc_service_account_default.xml");
                             }
 
                             if (!File.Exists(ServiceAccountFile))

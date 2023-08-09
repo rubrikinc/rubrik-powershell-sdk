@@ -47,6 +47,12 @@ Anomaly analysis report from lambda service.
   - Information about possible ransomware strains.
 - id: System.String
   - The id of the anomaly.
+- detectionTime: DateTime
+  - Time when the anomaly was detected.
+- activitySeriesId: System.String
+  - Activity series id for the events of this anomaly.
+- anomalyType: AnomalyType
+  - Type of the anomaly detected.
 - severity: ActivitySeverityEnum
   - Severity of the anomaly.
 - objectType: ObjectTypeEnum

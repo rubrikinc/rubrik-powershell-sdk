@@ -211,6 +211,36 @@ namespace RubrikSecurityCloud.NetSDK.Client
             }
         }
 
+        public async Task Disconnect()
+        {
+            if (this._authenticationState != AuthenticationState.AUTHORIZED)
+            {
+                //Session isn't valid, do nothing
+                return;
+            }
+
+            HttpClientHandler httpHandler = new HttpClientHandler();
+            HttpClient apiClient = new HttpClient(httpHandler)
+            {
+                BaseAddress = new Uri($"{_polarisUrlScheme}://{_polarisBaseUrl}")
+            };
+            apiClient.DefaultRequestHeaders.Accept.Clear();
+            apiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            apiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _clientToken.AccessToken);
+
+            HttpResponseMessage response = await apiClient.DeleteAsync("api/session").ConfigureAwait(false);
+
+            if (response.IsSuccessStatusCode)
+            {
+                this.AuthenticationState = AuthenticationState.NOT_AUTHORIZED;
+                return;
+            }
+            else
+            {
+                throw new Exception($"Call DELETE to \"api/session\" failed with : {response.ReasonPhrase}");
+            }
+        }
+
         private async Task<T> InvokeGraphQLQuery<T>(
             GraphQLRequest Request,
             IRscLogger logger = null,

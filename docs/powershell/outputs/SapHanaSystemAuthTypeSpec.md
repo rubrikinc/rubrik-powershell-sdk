@@ -1,0 +1,5 @@
+### SapHanaSystemAuthTypeSpec
+
+
+- authType: SapHanaSystemAuthTypeSpecAuthType
+  - 

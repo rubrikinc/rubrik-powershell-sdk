@@ -19,6 +19,8 @@
   - SNMP configuration updates for the specified Rubrik cluster.
 - snmpConfigV90: SnmpConfigurationPatchInput
   - SNMP configuration updates for the specified Rubrik cluster.
+- snmpConfigV91: SnmpConfigurationPatchInput
+  - SNMP configuration updates for the specified Rubrik cluster.
 - clusterUuid: System.String
   - Required. UUID used to identify the cluster the request goes to.
 - id: System.String

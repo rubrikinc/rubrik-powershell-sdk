@@ -22,7 +22,7 @@ Input to create SLA Domain.
 - archivalSpecs: list of ArchivalSpecInputs
   - List of archival specifications for SLA Domain.
 - replicationSpecsV2: list of ReplicationSpecV2Inputs
-  - Replication specificationsof the SLA Domain.
+  - Replication specifications of the SLA Domain.
 - objectTypes: list of SlaObjectTypes
   - Object types of the SLA Domain.
 - isRetentionLockedSla: System.Boolean

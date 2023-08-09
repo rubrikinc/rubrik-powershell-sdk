@@ -15,8 +15,17 @@ namespace RubrikSecurityCloud.Types
 {
     public enum UrlName
     {
-        [EnumMember(Value = "SampleUrl")]
-        SAMPLE_URL
+        [EnumMember(Value = "ARCHIVAL_LOCATIONS_UPGRADE_WIZARD")]
+        ARCHIVAL_LOCATIONS_UPGRADE_WIZARD,
+
+        [EnumMember(Value = "CDM_NAS_HOST")]
+        CDM_NAS_HOST,
+
+        [EnumMember(Value = "RUBRIK_SUPPORT")]
+        RUBRIK_SUPPORT,
+
+        [EnumMember(Value = "SLA_DOMAINS_UPGRADE_WIZARD")]
+        SLA_DOMAINS_UPGRADE_WIZARD
 
 
     } // enum UrlName

@@ -345,6 +345,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "GUEST_OS_TYPE_FOR_FILE_RESTORE")]
         GUEST_OS_TYPE_FOR_FILE_RESTORE,
 
+        [EnumMember(Value = "HAS_EXPIRED_INDEXED_SNAPSHOTS")]
+        HAS_EXPIRED_INDEXED_SNAPSHOTS,
+
         [EnumMember(Value = "HAS_PARENT_SNAPPABLE")]
         HAS_PARENT_SNAPPABLE,
 
@@ -453,6 +456,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MANAGED_VOLUME_EXPORT_ID")]
         MANAGED_VOLUME_EXPORT_ID,
 
+        [EnumMember(Value = "MANAGED_VOLUME_EXPORT_MOUNT_TYPE")]
+        MANAGED_VOLUME_EXPORT_MOUNT_TYPE,
+
         [EnumMember(Value = "MANAGED_VOLUME_ID")]
         MANAGED_VOLUME_ID,
 
@@ -461,6 +467,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "MIGRATED_HOSTS_WITH_GHOST_OBJECTS")]
         MIGRATED_HOSTS_WITH_GHOST_OBJECTS,
+
+        [EnumMember(Value = "MIGRATED_HOST_SHARES_WITH_GHOST_OBJECTS")]
+        MIGRATED_HOST_SHARES_WITH_GHOST_OBJECTS,
 
         [EnumMember(Value = "MONGODB_DATABASE_ID")]
         MONGODB_DATABASE_ID,

@@ -23,3 +23,5 @@ Input for completing authentication of the Azure Cloud Accounts.
   - The resource that requires OAuth access.
 - performBasicOauth: System.Boolean
   - Ensures that only basic OAuth is performed. The session will be stored in Rubrik, however, no additional information (such as list of subscriptions) is returned.
+- shouldKeepRefreshToken: System.Boolean
+  - Indicates whether the OAuth refresh token should be retained for future use.

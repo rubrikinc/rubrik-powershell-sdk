@@ -39,6 +39,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "EXPIRED")]
         EXPIRED,
 
+        [EnumMember(Value = "INACTIVE")]
+        INACTIVE,
+
         [EnumMember(Value = "UNSPECIFIED_STATE")]
         UNSPECIFIED_STATE
 

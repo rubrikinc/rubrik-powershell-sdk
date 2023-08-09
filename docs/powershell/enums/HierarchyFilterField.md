@@ -102,7 +102,7 @@
 - KUPR_NAMESPACE_CLUSTER_STATUS - Filter Kubernetes namespace based on the connection status of the parent.
 - KUPR_NAMESPACE_CDM_CLUSTER_ID - Filter Kubernetes namespaces based on the associated Rubrik cluster of the parent Kubernetes cluster.
  Since Kubernetes namespace is natively managed by Rubrik SaaS, a separate filter is used.
-- GUEST_OS_TYPE_FOR_FILE_RESTORE - Filter VSphere virtual machines by guest OS type for file export.
+- GUEST_OS_TYPE_FOR_FILE_RESTORE - Filter VSphere and Hyper-V virtual machines by guest OS type for file export.
 - FAILOVER_CLUSTER_ID - Filter by ID of parent of Failover Cluster.
 - AZURE_RG_DISK_OR_VM_SLA - Filter Azure resource groups by disk SLA or virtual machine SLA.
 - IS_ACTIVE - Return only the workloads that are active.
@@ -239,9 +239,12 @@
 - JIRA_PROJECT_TYPE - Filter by the Jira project type.
 - JIRA_PROJECT_KEY - Filter by the Jira project key.
 - JIRA_PROJECT_LEAD - Filter by the Jira project lead.
-- NUTANIX_SHOW_ONLY_STANDALONE_CLUSTERS - Filter out the standalone Nutanix cluster objects that are not 
+- NUTANIX_SHOW_ONLY_STANDALONE_CLUSTERS - Filter out the standalone Nutanix cluster objects that are not
  associated with any Prism Central object.
 - DOMAIN_CONTROLLER_CONNECTION_STATUS - Filter by the Active Directory domain controller connection status.
 - MIGRATED_HOSTS_WITH_GHOST_OBJECTS - Filter to show all migrated hosts, including ghost objects.
 - MSSQL_IS_HOST_PROTECTED - Filter Microsoft SQL Server hosts that are protected by an SLA Domain.
 - MSSQL_IS_FAILOVER_CLUSTER_PROTECTED - Filter Microsoft SQL Server failover clusters that are protected by an SLA Domain.
+- HAS_EXPIRED_INDEXED_SNAPSHOTS - Filter objects if they have snapshots that are expired and indexed.
+- MANAGED_VOLUME_EXPORT_MOUNT_TYPE - Filter according to the Managed Volume export mount type.
+- MIGRATED_HOST_SHARES_WITH_GHOST_OBJECTS - Filter to show all migrated host shares, including ghost objects.

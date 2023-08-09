@@ -7,3 +7,5 @@ When an org member adds an object to Rubrik that matches the provided (`inventor
   - The inventory workload type to which this set of permissions will apply.
 - operations: list of Operations
   - The operations granted to the org on newly added objects matching the provided `inventoryRoot` and `inventoryWorkloadType`.
+- hierarchyRoot: System.String
+  - The hierarchy root to which this set of permissions applies.

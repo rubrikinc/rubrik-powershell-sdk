@@ -5,7 +5,7 @@ Endpoint to assign SLA Domain.
 
 - There is a single argument of type AssignSlaInput.
 - Returns SlaAssignResult.
-### assignretentiontosnappable
+### assignretentiontosnappables
 - There are 6 arguments.
     - globalSlaOptionalFid - System.String: Global SLA Domain forever UUID.
     - globalSlaAssignType - SlaAssignTypeEnum: Corresponds to the assignment type for the global SLA
@@ -14,14 +14,14 @@ Endpoint to assign SLA Domain.
     - shouldApplyToNonPolicySnapshots - System.Boolean: Boolean value to indicate if the new configuration keeps existing, non-policy snapshots of data sources retained by this SLA Domain.
     - userNote - System.String: Optional User note.
 - Returns SlaAssignResult.
-### assignretentiontosnapshot
+### assignretentiontosnapshots
 - There are 4 arguments.
     - globalSlaOptionalFid - System.String: Global SLA Domain forever UUID.
     - globalSlaAssignType - SlaAssignTypeEnum: Corresponds to the assignment type for the global SLA
     - snapshotFids - list of System.Strings: List of UUIDs of objects.
     - userNote - System.String: Optional User note.
 - Returns SlaAssignResult.
-### assignsforsnappablehierarchie
+### assignsforsnappablehierarchies
 - There are 8 arguments.
     - globalSlaOptionalFid - System.String: Global SLA Domain forever UUID.
     - globalSlaAssignType - SlaAssignTypeEnum: Corresponds to the assignment type for the global SLA
@@ -53,7 +53,7 @@ Export a managed volume snapshot as a share and mount it on a given host.
 
 - There is a single argument of type ExportSlaManagedVolumeSnapshotInput.
 - Returns AsyncRequestStatus.
-### getpendingassignment
+### getpendingassignments
 Get pending SLA Domain assignments on selected managed objects
 
 Supported in v5.2+
@@ -62,16 +62,16 @@ Retrieve the details of pending SLA Domain assignments on the given managed obje
 - There is a single argument of type GetPendingSlaAssignmentsInput.
 - Returns PendingSlaOperations.
 ### pause
-Pause/Resume Global SLA on the given clusters.
+Pause or resume SLA Domain on the given Rubrik clusters.
 
-- There is a single argument of type PauseSlaRequest.
-- Returns SlaResult.
+- There is a single argument of type PauseSlaInput.
+- Returns PauseSlaReply.
 ### updateglobal
 Update SLA Domain.
 
 - There is a single argument of type UpdateGlobalSlaInput.
 - Returns GlobalSlaReply.
-### upgrade
+### upgrades
 Upgrade SLA Domains from the Rubrik clusters.
 
 - There is a single argument of type UpgradeSlasInput.

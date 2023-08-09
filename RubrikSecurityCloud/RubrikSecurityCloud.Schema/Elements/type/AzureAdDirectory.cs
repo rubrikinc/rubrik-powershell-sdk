@@ -71,6 +71,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
+        //      C# -> System.Boolean? IsProvisioned
+        // GraphQL -> isProvisioned: Boolean! (scalar)
+        [JsonProperty("isProvisioned")]
+        public System.Boolean? IsProvisioned { get; set; }
+
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
         [JsonProperty("isRelic")]
@@ -80,6 +85,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> latestGroupCount: Int! (scalar)
         [JsonProperty("latestGroupCount")]
         public System.Int32? LatestGroupCount { get; set; }
+
+        //      C# -> DateTime? LatestSnapshotTime
+        // GraphQL -> latestSnapshotTime: DateTime (scalar)
+        [JsonProperty("latestSnapshotTime")]
+        public DateTime? LatestSnapshotTime { get; set; }
 
         //      C# -> System.Int32? LatestUserCount
         // GraphQL -> latestUserCount: Int! (scalar)
@@ -191,8 +201,10 @@ namespace RubrikSecurityCloud.Types
         System.String? DomainName = null,
         System.String? ExocomputeId = null,
         System.String? Id = null,
+        System.Boolean? IsProvisioned = null,
         System.Boolean? IsRelic = null,
         System.Int32? LatestGroupCount = null,
+        DateTime? LatestSnapshotTime = null,
         System.Int32? LatestUserCount = null,
         System.String? Name = null,
         System.Int32? NumWorkloadDescendants = null,
@@ -243,11 +255,17 @@ namespace RubrikSecurityCloud.Types
         if ( Id != null ) {
             this.Id = Id;
         }
+        if ( IsProvisioned != null ) {
+            this.IsProvisioned = IsProvisioned;
+        }
         if ( IsRelic != null ) {
             this.IsRelic = IsRelic;
         }
         if ( LatestGroupCount != null ) {
             this.LatestGroupCount = LatestGroupCount;
+        }
+        if ( LatestSnapshotTime != null ) {
+            this.LatestSnapshotTime = LatestSnapshotTime;
         }
         if ( LatestUserCount != null ) {
             this.LatestUserCount = LatestUserCount;
@@ -372,6 +390,11 @@ namespace RubrikSecurityCloud.Types
         if (this.Id != null) {
             s += ind + "id\n" ;
         }
+        //      C# -> System.Boolean? IsProvisioned
+        // GraphQL -> isProvisioned: Boolean! (scalar)
+        if (this.IsProvisioned != null) {
+            s += ind + "isProvisioned\n" ;
+        }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
         if (this.IsRelic != null) {
@@ -381,6 +404,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> latestGroupCount: Int! (scalar)
         if (this.LatestGroupCount != null) {
             s += ind + "latestGroupCount\n" ;
+        }
+        //      C# -> DateTime? LatestSnapshotTime
+        // GraphQL -> latestSnapshotTime: DateTime (scalar)
+        if (this.LatestSnapshotTime != null) {
+            s += ind + "latestSnapshotTime\n" ;
         }
         //      C# -> System.Int32? LatestUserCount
         // GraphQL -> latestUserCount: Int! (scalar)
@@ -582,6 +610,12 @@ namespace RubrikSecurityCloud.Types
         {
             this.Id = "FETCH";
         }
+        //      C# -> System.Boolean? IsProvisioned
+        // GraphQL -> isProvisioned: Boolean! (scalar)
+        if (this.IsProvisioned == null && Exploration.Includes(parent + ".isProvisioned", true))
+        {
+            this.IsProvisioned = true;
+        }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
         if (this.IsRelic == null && Exploration.Includes(parent + ".isRelic", true))
@@ -593,6 +627,12 @@ namespace RubrikSecurityCloud.Types
         if (this.LatestGroupCount == null && Exploration.Includes(parent + ".latestGroupCount", true))
         {
             this.LatestGroupCount = Int32.MinValue;
+        }
+        //      C# -> DateTime? LatestSnapshotTime
+        // GraphQL -> latestSnapshotTime: DateTime (scalar)
+        if (this.LatestSnapshotTime == null && Exploration.Includes(parent + ".latestSnapshotTime", true))
+        {
+            this.LatestSnapshotTime = new DateTime();
         }
         //      C# -> System.Int32? LatestUserCount
         // GraphQL -> latestUserCount: Int! (scalar)

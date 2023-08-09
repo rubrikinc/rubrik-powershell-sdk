@@ -26,3 +26,9 @@ Supported in v5.3+
 - shouldCancelBackupOnPreBackupScriptFailure: System.Boolean
   - Supported in v5.3+
   Indicates if a failure of the script run prior to backup halts the backup process.
+- logExportSummary: SlaManagedVolumeLogExportSummary
+  - Supported in v9.0+
+  Log export specifications.
+- isLogExportEnabled: System.Boolean
+  - Supported in v9.0+
+  Indicates if log export is enabled for the specified Managed Volume.

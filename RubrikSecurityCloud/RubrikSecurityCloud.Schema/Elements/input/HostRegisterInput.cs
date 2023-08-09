@@ -59,6 +59,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isOracleHost")]
         public System.Boolean? IsOracleHost { get; set; }
 
+        //      C# -> System.String? OrgNetworkId
+        // GraphQL -> orgNetworkId: String (scalar)
+        [JsonProperty("orgNetworkId")]
+        public System.String? OrgNetworkId { get; set; }
+
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String! (scalar)
         [Required]

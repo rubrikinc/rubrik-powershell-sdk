@@ -20,10 +20,20 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? TaskchainId
-        // GraphQL -> taskchainId: String! (scalar)
-        [JsonProperty("taskchainId")]
-        public System.String? TaskchainId { get; set; }
+        //      C# -> System.String? ExocomputeSetupTaskchainId
+        // GraphQL -> exocomputeSetupTaskchainId: String! (scalar)
+        [JsonProperty("exocomputeSetupTaskchainId")]
+        public System.String? ExocomputeSetupTaskchainId { get; set; }
+
+        //      C# -> System.String? OrgId
+        // GraphQL -> orgId: String! (scalar)
+        [JsonProperty("orgId")]
+        public System.String? OrgId { get; set; }
+
+        //      C# -> System.String? RefreshTaskchainId
+        // GraphQL -> refreshTaskchainId: String! (scalar)
+        [JsonProperty("refreshTaskchainId")]
+        public System.String? RefreshTaskchainId { get; set; }
 
 
         #endregion
@@ -35,11 +45,19 @@ namespace RubrikSecurityCloud.Types
     }
 
     public SetupAtlassianSiteReply Set(
-        System.String? TaskchainId = null
+        System.String? ExocomputeSetupTaskchainId = null,
+        System.String? OrgId = null,
+        System.String? RefreshTaskchainId = null
     ) 
     {
-        if ( TaskchainId != null ) {
-            this.TaskchainId = TaskchainId;
+        if ( ExocomputeSetupTaskchainId != null ) {
+            this.ExocomputeSetupTaskchainId = ExocomputeSetupTaskchainId;
+        }
+        if ( OrgId != null ) {
+            this.OrgId = OrgId;
+        }
+        if ( RefreshTaskchainId != null ) {
+            this.RefreshTaskchainId = RefreshTaskchainId;
         }
         return this;
     }
@@ -51,10 +69,20 @@ namespace RubrikSecurityCloud.Types
     {
         string ind = new string(' ', indent*2);
         string s = "";
-        //      C# -> System.String? TaskchainId
-        // GraphQL -> taskchainId: String! (scalar)
-        if (this.TaskchainId != null) {
-            s += ind + "taskchainId\n" ;
+        //      C# -> System.String? ExocomputeSetupTaskchainId
+        // GraphQL -> exocomputeSetupTaskchainId: String! (scalar)
+        if (this.ExocomputeSetupTaskchainId != null) {
+            s += ind + "exocomputeSetupTaskchainId\n" ;
+        }
+        //      C# -> System.String? OrgId
+        // GraphQL -> orgId: String! (scalar)
+        if (this.OrgId != null) {
+            s += ind + "orgId\n" ;
+        }
+        //      C# -> System.String? RefreshTaskchainId
+        // GraphQL -> refreshTaskchainId: String! (scalar)
+        if (this.RefreshTaskchainId != null) {
+            s += ind + "refreshTaskchainId\n" ;
         }
         return s;
     }
@@ -64,11 +92,23 @@ namespace RubrikSecurityCloud.Types
     //[JsonIgnore]
     public override void ApplyExploratoryFieldSpec(String parent = "")
     {
-        //      C# -> System.String? TaskchainId
-        // GraphQL -> taskchainId: String! (scalar)
-        if (this.TaskchainId == null && Exploration.Includes(parent + ".taskchainId", true))
+        //      C# -> System.String? ExocomputeSetupTaskchainId
+        // GraphQL -> exocomputeSetupTaskchainId: String! (scalar)
+        if (this.ExocomputeSetupTaskchainId == null && Exploration.Includes(parent + ".exocomputeSetupTaskchainId", true))
         {
-            this.TaskchainId = "FETCH";
+            this.ExocomputeSetupTaskchainId = "FETCH";
+        }
+        //      C# -> System.String? OrgId
+        // GraphQL -> orgId: String! (scalar)
+        if (this.OrgId == null && Exploration.Includes(parent + ".orgId", true))
+        {
+            this.OrgId = "FETCH";
+        }
+        //      C# -> System.String? RefreshTaskchainId
+        // GraphQL -> refreshTaskchainId: String! (scalar)
+        if (this.RefreshTaskchainId == null && Exploration.Includes(parent + ".refreshTaskchainId", true))
+        {
+            this.RefreshTaskchainId = "FETCH";
         }
     }
 

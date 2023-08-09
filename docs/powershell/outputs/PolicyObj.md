@@ -31,6 +31,8 @@
   - User count for various risk levels.
 - riskHits: SensitiveHits
   - Sensitive hits for various risk levels.
+- isUserAccessEnabledObject: System.Boolean
+  - Specifies whether the object has user access enabled or not.
 - id: System.String
 - folderChildConnection: FileResultConnection
 - fileResultConnection: FileResultConnection

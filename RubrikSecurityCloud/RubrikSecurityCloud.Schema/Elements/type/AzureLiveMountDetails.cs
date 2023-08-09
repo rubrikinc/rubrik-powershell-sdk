@@ -25,10 +25,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("region")]
         public AzureCommonRegion? Region { get; set; }
 
-        //      C# -> List<AzureMountDiskDetails>? DiskDetails
-        // GraphQL -> diskDetails: [AzureMountDiskDetails!]! (type)
+        //      C# -> List<AzureDiskDetails>? DiskDetails
+        // GraphQL -> diskDetails: [AzureDiskDetails!]! (type)
         [JsonProperty("diskDetails")]
-        public List<AzureMountDiskDetails>? DiskDetails { get; set; }
+        public List<AzureDiskDetails>? DiskDetails { get; set; }
 
         //      C# -> ResourceGroupDetails? ResourceGroup
         // GraphQL -> resourceGroup: ResourceGroupDetails (type)
@@ -61,7 +61,7 @@ namespace RubrikSecurityCloud.Types
 
     public AzureLiveMountDetails Set(
         AzureCommonRegion? Region = null,
-        List<AzureMountDiskDetails>? DiskDetails = null,
+        List<AzureDiskDetails>? DiskDetails = null,
         ResourceGroupDetails? ResourceGroup = null,
         VirtualMachineDetails? SourceVm = null,
         SubscriptionDetails? TargetSubscription = null,
@@ -101,8 +101,8 @@ namespace RubrikSecurityCloud.Types
         if (this.Region != null) {
             s += ind + "region\n" ;
         }
-        //      C# -> List<AzureMountDiskDetails>? DiskDetails
-        // GraphQL -> diskDetails: [AzureMountDiskDetails!]! (type)
+        //      C# -> List<AzureDiskDetails>? DiskDetails
+        // GraphQL -> diskDetails: [AzureDiskDetails!]! (type)
         if (this.DiskDetails != null) {
             var fspec = this.DiskDetails.AsFieldSpec(indent+1);
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
@@ -155,11 +155,11 @@ namespace RubrikSecurityCloud.Types
         {
             this.Region = new AzureCommonRegion();
         }
-        //      C# -> List<AzureMountDiskDetails>? DiskDetails
-        // GraphQL -> diskDetails: [AzureMountDiskDetails!]! (type)
+        //      C# -> List<AzureDiskDetails>? DiskDetails
+        // GraphQL -> diskDetails: [AzureDiskDetails!]! (type)
         if (this.DiskDetails == null && Exploration.Includes(parent + ".diskDetails"))
         {
-            this.DiskDetails = new List<AzureMountDiskDetails>();
+            this.DiskDetails = new List<AzureDiskDetails>();
             this.DiskDetails.ApplyExploratoryFieldSpec(parent + ".diskDetails");
         }
         //      C# -> ResourceGroupDetails? ResourceGroup

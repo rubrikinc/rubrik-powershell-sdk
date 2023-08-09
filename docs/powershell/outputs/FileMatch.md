@@ -15,6 +15,8 @@ Data for a matched file.
   - Name of the file that was matched.
 - fileSize: System.Int64
   - Size of the file that was matched.
+- matchId: System.Int64
+  - ID of the matched file being returned.
 - objectFid: System.String
   - FID of the object.
 - snapshotFid: System.String

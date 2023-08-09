@@ -24,3 +24,4 @@ All reporting table schemas.
 - GLOBAL_OBJECT_SUMMARY_DAILY - Global object summary daily database table schema.
 - GLOBAL_OBJECT_SUMMARY_MONTHLY - Global object summary monthly database table schema.
 - THREAT_MONITORING_LIST - Specifies the Threat Monitoring report list information.
+- THREAT_MONITORING_SNAPSHOT_RESULTS - Specifies the Threat Monitoring snapshot result information.

@@ -85,10 +85,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("retentionSlaDomainName")]
         public System.String? RetentionSlaDomainName { get; set; }
 
-        //      C# -> System.String? RetentionSlaDomainPolarisManagedId
-        // GraphQL -> retentionSlaDomainPolarisManagedId: String (scalar)
-        [JsonProperty("retentionSlaDomainPolarisManagedId")]
-        public System.String? RetentionSlaDomainPolarisManagedId { get; set; }
+        //      C# -> System.String? RetentionSlaDomainRscManagedId
+        // GraphQL -> retentionSlaDomainRscManagedId: String (scalar)
+        [JsonProperty("retentionSlaDomainRscManagedId")]
+        public System.String? RetentionSlaDomainRscManagedId { get; set; }
 
         //      C# -> System.Int64? SnapshotCount
         // GraphQL -> snapshotCount: Long! (scalar)
@@ -105,10 +105,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("physicalLocation")]
         public List<LocationPathPoint>? PhysicalLocation { get; set; }
 
-        //      C# -> SnappableRecoveryInfo? RecoveryInfo
-        // GraphQL -> recoveryInfo: SnappableRecoveryInfo (type)
+        //      C# -> WorkloadRecoveryInfo? RecoveryInfo
+        // GraphQL -> recoveryInfo: WorkloadRecoveryInfo (type)
         [JsonProperty("recoveryInfo")]
-        public SnappableRecoveryInfo? RecoveryInfo { get; set; }
+        public WorkloadRecoveryInfo? RecoveryInfo { get; set; }
 
 
         #endregion
@@ -133,11 +133,11 @@ namespace RubrikSecurityCloud.Types
         System.String? Name = null,
         System.String? RetentionSlaDomainId = null,
         System.String? RetentionSlaDomainName = null,
-        System.String? RetentionSlaDomainPolarisManagedId = null,
+        System.String? RetentionSlaDomainRscManagedId = null,
         System.Int64? SnapshotCount = null,
         Cluster? Cluster = null,
         List<LocationPathPoint>? PhysicalLocation = null,
-        SnappableRecoveryInfo? RecoveryInfo = null
+        WorkloadRecoveryInfo? RecoveryInfo = null
     ) 
     {
         if ( ObjectType != null ) {
@@ -179,8 +179,8 @@ namespace RubrikSecurityCloud.Types
         if ( RetentionSlaDomainName != null ) {
             this.RetentionSlaDomainName = RetentionSlaDomainName;
         }
-        if ( RetentionSlaDomainPolarisManagedId != null ) {
-            this.RetentionSlaDomainPolarisManagedId = RetentionSlaDomainPolarisManagedId;
+        if ( RetentionSlaDomainRscManagedId != null ) {
+            this.RetentionSlaDomainRscManagedId = RetentionSlaDomainRscManagedId;
         }
         if ( SnapshotCount != null ) {
             this.SnapshotCount = SnapshotCount;
@@ -275,10 +275,10 @@ namespace RubrikSecurityCloud.Types
         if (this.RetentionSlaDomainName != null) {
             s += ind + "retentionSlaDomainName\n" ;
         }
-        //      C# -> System.String? RetentionSlaDomainPolarisManagedId
-        // GraphQL -> retentionSlaDomainPolarisManagedId: String (scalar)
-        if (this.RetentionSlaDomainPolarisManagedId != null) {
-            s += ind + "retentionSlaDomainPolarisManagedId\n" ;
+        //      C# -> System.String? RetentionSlaDomainRscManagedId
+        // GraphQL -> retentionSlaDomainRscManagedId: String (scalar)
+        if (this.RetentionSlaDomainRscManagedId != null) {
+            s += ind + "retentionSlaDomainRscManagedId\n" ;
         }
         //      C# -> System.Int64? SnapshotCount
         // GraphQL -> snapshotCount: Long! (scalar)
@@ -301,8 +301,8 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "physicalLocation {\n" + fspec + ind + "}\n" ;
             }
         }
-        //      C# -> SnappableRecoveryInfo? RecoveryInfo
-        // GraphQL -> recoveryInfo: SnappableRecoveryInfo (type)
+        //      C# -> WorkloadRecoveryInfo? RecoveryInfo
+        // GraphQL -> recoveryInfo: WorkloadRecoveryInfo (type)
         if (this.RecoveryInfo != null) {
             var fspec = this.RecoveryInfo.AsFieldSpec(indent+1);
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
@@ -399,11 +399,11 @@ namespace RubrikSecurityCloud.Types
         {
             this.RetentionSlaDomainName = "FETCH";
         }
-        //      C# -> System.String? RetentionSlaDomainPolarisManagedId
-        // GraphQL -> retentionSlaDomainPolarisManagedId: String (scalar)
-        if (this.RetentionSlaDomainPolarisManagedId == null && Exploration.Includes(parent + ".retentionSlaDomainPolarisManagedId", true))
+        //      C# -> System.String? RetentionSlaDomainRscManagedId
+        // GraphQL -> retentionSlaDomainRscManagedId: String (scalar)
+        if (this.RetentionSlaDomainRscManagedId == null && Exploration.Includes(parent + ".retentionSlaDomainRscManagedId", true))
         {
-            this.RetentionSlaDomainPolarisManagedId = "FETCH";
+            this.RetentionSlaDomainRscManagedId = "FETCH";
         }
         //      C# -> System.Int64? SnapshotCount
         // GraphQL -> snapshotCount: Long! (scalar)
@@ -425,11 +425,11 @@ namespace RubrikSecurityCloud.Types
             this.PhysicalLocation = new List<LocationPathPoint>();
             this.PhysicalLocation.ApplyExploratoryFieldSpec(parent + ".physicalLocation");
         }
-        //      C# -> SnappableRecoveryInfo? RecoveryInfo
-        // GraphQL -> recoveryInfo: SnappableRecoveryInfo (type)
+        //      C# -> WorkloadRecoveryInfo? RecoveryInfo
+        // GraphQL -> recoveryInfo: WorkloadRecoveryInfo (type)
         if (this.RecoveryInfo == null && Exploration.Includes(parent + ".recoveryInfo"))
         {
-            this.RecoveryInfo = new SnappableRecoveryInfo();
+            this.RecoveryInfo = new WorkloadRecoveryInfo();
             this.RecoveryInfo.ApplyExploratoryFieldSpec(parent + ".recoveryInfo");
         }
     }

@@ -196,6 +196,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("sslInfo")]
         public SapHanaSslInformation? SslInfo { get; set; }
 
+        //      C# -> SapHanaSystemInformation? SystemInfo
+        // GraphQL -> systemInfo: SapHanaSystemInformation (type)
+        [JsonProperty("systemInfo")]
+        public SapHanaSystemInformation? SystemInfo { get; set; }
+
 
         #endregion
 
@@ -240,7 +245,8 @@ namespace RubrikSecurityCloud.Types
         List<PathNode>? PhysicalPath = null,
         DataLocation? PrimaryClusterLocation = null,
         SnapshotDistribution? SnapshotDistribution = null,
-        SapHanaSslInformation? SslInfo = null
+        SapHanaSslInformation? SslInfo = null,
+        SapHanaSystemInformation? SystemInfo = null
     ) 
     {
         if ( AuthorizedOperations != null ) {
@@ -347,6 +353,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SslInfo != null ) {
             this.SslInfo = SslInfo;
+        }
+        if ( SystemInfo != null ) {
+            this.SystemInfo = SystemInfo;
         }
         return this;
     }
@@ -585,6 +594,14 @@ namespace RubrikSecurityCloud.Types
             var fspec = this.SslInfo.AsFieldSpec(indent+1);
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
                 s += ind + "sslInfo {\n" + fspec + ind + "}\n" ;
+            }
+        }
+        //      C# -> SapHanaSystemInformation? SystemInfo
+        // GraphQL -> systemInfo: SapHanaSystemInformation (type)
+        if (this.SystemInfo != null) {
+            var fspec = this.SystemInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "systemInfo {\n" + fspec + ind + "}\n" ;
             }
         }
         return s;
@@ -826,6 +843,13 @@ namespace RubrikSecurityCloud.Types
         {
             this.SslInfo = new SapHanaSslInformation();
             this.SslInfo.ApplyExploratoryFieldSpec(parent + ".sslInfo");
+        }
+        //      C# -> SapHanaSystemInformation? SystemInfo
+        // GraphQL -> systemInfo: SapHanaSystemInformation (type)
+        if (this.SystemInfo == null && Exploration.Includes(parent + ".systemInfo"))
+        {
+            this.SystemInfo = new SapHanaSystemInformation();
+            this.SystemInfo.ApplyExploratoryFieldSpec(parent + ".systemInfo");
         }
     }
 

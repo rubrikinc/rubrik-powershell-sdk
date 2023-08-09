@@ -27,12 +27,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     {
         
         // -------------------------------------------------------------------
-        // TopLevelDescendant parameter set
+        // TopLevelDescendants parameter set
         //
         // [GraphQL: nutanixTopLevelDescendants]
         //
         [Parameter(
-            ParameterSetName = "TopLevelDescendant",
+            ParameterSetName = "TopLevelDescendants",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -41,25 +41,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: nutanixTopLevelDescendants]",
             Position = 0
         )]
-        public SwitchParameter TopLevelDescendant { get; set; }
-
-        
-        // -------------------------------------------------------------------
-        // TopLevelDescendantsV2 parameter set
-        //
-        // [GraphQL: nutanixTopLevelDescendantsV2]
-        //
-        [Parameter(
-            ParameterSetName = "TopLevelDescendantsV2",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Paginated list of the highest-level Nutanix Objects accessible by the current user.
-[GraphQL: nutanixTopLevelDescendantsV2]",
-            Position = 0
-        )]
-        public SwitchParameter TopLevelDescendantsV2 { get; set; }
+        public SwitchParameter TopLevelDescendants { get; set; }
 
         
         // -------------------------------------------------------------------
@@ -81,12 +63,30 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         
         // -------------------------------------------------------------------
-        // PrismCentral parameter set
+        // Clusters parameter set
+        //
+        // [GraphQL: nutanixClusters]
+        //
+        [Parameter(
+            ParameterSetName = "Clusters",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Paginated list of Nutanix Clusters.
+[GraphQL: nutanixClusters]",
+            Position = 0
+        )]
+        public SwitchParameter Clusters { get; set; }
+
+        
+        // -------------------------------------------------------------------
+        // PrismCentrals parameter set
         //
         // [GraphQL: nutanixPrismCentrals]
         //
         [Parameter(
-            ParameterSetName = "PrismCentral",
+            ParameterSetName = "PrismCentrals",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -95,31 +95,49 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: nutanixPrismCentrals]",
             Position = 0
         )]
-        public SwitchParameter PrismCentral { get; set; }
+        public SwitchParameter PrismCentrals { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Categorie parameter set
+        // PrismCentral parameter set
         //
-        // [GraphQL: nutanixCategories]
+        // [GraphQL: nutanixPrismCentral]
         //
         [Parameter(
-            ParameterSetName = "Categorie",
+            ParameterSetName = "PrismCentral",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Paginated list of Nutanix Category objects.
-[GraphQL: nutanixCategories]",
+@"Details of the given Prism Central.
+[GraphQL: nutanixPrismCentral]",
             Position = 0
         )]
-        public SwitchParameter Categorie { get; set; }
+        public SwitchParameter PrismCentral { get; set; }
+
+        
+        // -------------------------------------------------------------------
+        // Category parameter set
+        //
+        // [GraphQL: nutanixCategory]
+        //
+        [Parameter(
+            ParameterSetName = "Category",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Details of the given category.
+[GraphQL: nutanixCategory]",
+            Position = 0
+        )]
+        public SwitchParameter Category { get; set; }
 
         
         // -------------------------------------------------------------------
         // CategoryValue parameter set
         //
-        // [GraphQL: nutanixCategoryValues]
+        // [GraphQL: nutanixCategoryValue]
         //
         [Parameter(
             ParameterSetName = "CategoryValue",
@@ -127,29 +145,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Paginated list of Nutanix Category Value objects.
-[GraphQL: nutanixCategoryValues]",
+@"Details of the given category value.
+[GraphQL: nutanixCategoryValue]",
             Position = 0
         )]
         public SwitchParameter CategoryValue { get; set; }
-
-        
-        // -------------------------------------------------------------------
-        // CategoryValueVm parameter set
-        //
-        // [GraphQL: nutanixCategoryValueVms]
-        //
-        [Parameter(
-            ParameterSetName = "CategoryValueVm",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Paginated list of Nutanix Virtual Machines in a Category Value.
-[GraphQL: nutanixCategoryValueVms]",
-            Position = 0
-        )]
-        public SwitchParameter CategoryValueVm { get; set; }
 
         
         // -------------------------------------------------------------------
@@ -171,12 +171,30 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         
         // -------------------------------------------------------------------
-        // Mount parameter set
+        // Vms parameter set
+        //
+        // [GraphQL: nutanixVms]
+        //
+        [Parameter(
+            ParameterSetName = "Vms",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Paginated list of Nutanix Virtual Machines.
+[GraphQL: nutanixVms]",
+            Position = 0
+        )]
+        public SwitchParameter Vms { get; set; }
+
+        
+        // -------------------------------------------------------------------
+        // Mounts parameter set
         //
         // [GraphQL: nutanixMounts]
         //
         [Parameter(
-            ParameterSetName = "Mount",
+            ParameterSetName = "Mounts",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -185,16 +203,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: nutanixMounts]",
             Position = 0
         )]
-        public SwitchParameter Mount { get; set; }
+        public SwitchParameter Mounts { get; set; }
 
         
         // -------------------------------------------------------------------
-        // ClusterContainer parameter set
+        // ClusterContainers parameter set
         //
         // [GraphQL: nutanixClusterContainers]
         //
         [Parameter(
-            ParameterSetName = "ClusterContainer",
+            ParameterSetName = "ClusterContainers",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -206,16 +224,16 @@ Query the nutanix cluster to get the list of containers, used for export purpose
 [GraphQL: nutanixClusterContainers]",
             Position = 0
         )]
-        public SwitchParameter ClusterContainer { get; set; }
+        public SwitchParameter ClusterContainers { get; set; }
 
         
         // -------------------------------------------------------------------
-        // ClusterNetwork parameter set
+        // ClusterNetworks parameter set
         //
         // [GraphQL: nutanixClusterNetworks]
         //
         [Parameter(
-            ParameterSetName = "ClusterNetwork",
+            ParameterSetName = "ClusterNetworks",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -227,7 +245,7 @@ Retrieves the list of networks by querying the Nutanix cluster. The list of netw
 [GraphQL: nutanixClusterNetworks]",
             Position = 0
         )]
-        public SwitchParameter ClusterNetwork { get; set; }
+        public SwitchParameter ClusterNetworks { get; set; }
 
         
         // -------------------------------------------------------------------
@@ -297,12 +315,12 @@ Search for a file within the Nutanix Virtual Machine. Search via full path prefi
 
         
         // -------------------------------------------------------------------
-        // VmMissedSnapshot parameter set
+        // VmMissedSnapshots parameter set
         //
         // [GraphQL: nutanixVmMissedSnapshots]
         //
         [Parameter(
-            ParameterSetName = "VmMissedSnapshot",
+            ParameterSetName = "VmMissedSnapshots",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -316,7 +334,7 @@ v8.1+: Retrieve the time of the day when the snapshots were missed specific to a
 [GraphQL: nutanixVmMissedSnapshots]",
             Position = 0
         )]
-        public SwitchParameter VmMissedSnapshot { get; set; }
+        public SwitchParameter VmMissedSnapshots { get; set; }
 
         
         // -------------------------------------------------------------------
@@ -366,38 +384,41 @@ Lists all files and directories in a given path.
             {
                 switch(Op)
                 {
-                    case "TopLevelDescendant":
-                        this.ProcessRecord_TopLevelDescendant();
-                        break;
-                    case "TopLevelDescendantsV2":
-                        this.ProcessRecord_TopLevelDescendantsV2();
+                    case "TopLevelDescendants":
+                        this.ProcessRecord_TopLevelDescendants();
                         break;
                     case "Cluster":
                         this.ProcessRecord_Cluster();
                         break;
+                    case "Clusters":
+                        this.ProcessRecord_Clusters();
+                        break;
+                    case "PrismCentrals":
+                        this.ProcessRecord_PrismCentrals();
+                        break;
                     case "PrismCentral":
                         this.ProcessRecord_PrismCentral();
                         break;
-                    case "Categorie":
-                        this.ProcessRecord_Categorie();
+                    case "Category":
+                        this.ProcessRecord_Category();
                         break;
                     case "CategoryValue":
                         this.ProcessRecord_CategoryValue();
                         break;
-                    case "CategoryValueVm":
-                        this.ProcessRecord_CategoryValueVm();
-                        break;
                     case "Vm":
                         this.ProcessRecord_Vm();
                         break;
-                    case "Mount":
-                        this.ProcessRecord_Mount();
+                    case "Vms":
+                        this.ProcessRecord_Vms();
                         break;
-                    case "ClusterContainer":
-                        this.ProcessRecord_ClusterContainer();
+                    case "Mounts":
+                        this.ProcessRecord_Mounts();
                         break;
-                    case "ClusterNetwork":
-                        this.ProcessRecord_ClusterNetwork();
+                    case "ClusterContainers":
+                        this.ProcessRecord_ClusterContainers();
+                        break;
+                    case "ClusterNetworks":
+                        this.ProcessRecord_ClusterNetworks();
                         break;
                     case "ClusterAsyncRequestStatus":
                         this.ProcessRecord_ClusterAsyncRequestStatus();
@@ -408,8 +429,8 @@ Lists all files and directories in a given path.
                     case "SearchVm":
                         this.ProcessRecord_SearchVm();
                         break;
-                    case "VmMissedSnapshot":
-                        this.ProcessRecord_VmMissedSnapshot();
+                    case "VmMissedSnapshots":
+                        this.ProcessRecord_VmMissedSnapshots();
                         break;
                     case "BrowseSnapshot":
                         this.ProcessRecord_BrowseSnapshot();
@@ -429,20 +450,11 @@ Lists all files and directories in a given path.
 
         // This parameter set invokes a single graphql operation:
         // nutanixTopLevelDescendants.
-        protected void ProcessRecord_TopLevelDescendant()
+        protected void ProcessRecord_TopLevelDescendants()
         {
-            this._logger.name += " -TopLevelDescendant";
+            this._logger.name += " -TopLevelDescendants";
             // Invoke graphql operation nutanixTopLevelDescendants
             InvokeQueryNutanixTopLevelDescendants();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // nutanixTopLevelDescendantsV2.
-        protected void ProcessRecord_TopLevelDescendantsV2()
-        {
-            this._logger.name += " -TopLevelDescendantsV2";
-            // Invoke graphql operation nutanixTopLevelDescendantsV2
-            InvokeQueryNutanixTopLevelDescendantsV2();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -455,39 +467,48 @@ Lists all files and directories in a given path.
         }
 
         // This parameter set invokes a single graphql operation:
-        // nutanixPrismCentrals.
-        protected void ProcessRecord_PrismCentral()
+        // nutanixClusters.
+        protected void ProcessRecord_Clusters()
         {
-            this._logger.name += " -PrismCentral";
+            this._logger.name += " -Clusters";
+            // Invoke graphql operation nutanixClusters
+            InvokeQueryNutanixClusters();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // nutanixPrismCentrals.
+        protected void ProcessRecord_PrismCentrals()
+        {
+            this._logger.name += " -PrismCentrals";
             // Invoke graphql operation nutanixPrismCentrals
             InvokeQueryNutanixPrismCentrals();
         }
 
         // This parameter set invokes a single graphql operation:
-        // nutanixCategories.
-        protected void ProcessRecord_Categorie()
+        // nutanixPrismCentral.
+        protected void ProcessRecord_PrismCentral()
         {
-            this._logger.name += " -Categorie";
-            // Invoke graphql operation nutanixCategories
-            InvokeQueryNutanixCategories();
+            this._logger.name += " -PrismCentral";
+            // Invoke graphql operation nutanixPrismCentral
+            InvokeQueryNutanixPrismCentral();
         }
 
         // This parameter set invokes a single graphql operation:
-        // nutanixCategoryValues.
+        // nutanixCategory.
+        protected void ProcessRecord_Category()
+        {
+            this._logger.name += " -Category";
+            // Invoke graphql operation nutanixCategory
+            InvokeQueryNutanixCategory();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // nutanixCategoryValue.
         protected void ProcessRecord_CategoryValue()
         {
             this._logger.name += " -CategoryValue";
-            // Invoke graphql operation nutanixCategoryValues
-            InvokeQueryNutanixCategoryValues();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // nutanixCategoryValueVms.
-        protected void ProcessRecord_CategoryValueVm()
-        {
-            this._logger.name += " -CategoryValueVm";
-            // Invoke graphql operation nutanixCategoryValueVms
-            InvokeQueryNutanixCategoryValueVms();
+            // Invoke graphql operation nutanixCategoryValue
+            InvokeQueryNutanixCategoryValue();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -500,28 +521,37 @@ Lists all files and directories in a given path.
         }
 
         // This parameter set invokes a single graphql operation:
-        // nutanixMounts.
-        protected void ProcessRecord_Mount()
+        // nutanixVms.
+        protected void ProcessRecord_Vms()
         {
-            this._logger.name += " -Mount";
+            this._logger.name += " -Vms";
+            // Invoke graphql operation nutanixVms
+            InvokeQueryNutanixVms();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // nutanixMounts.
+        protected void ProcessRecord_Mounts()
+        {
+            this._logger.name += " -Mounts";
             // Invoke graphql operation nutanixMounts
             InvokeQueryNutanixMounts();
         }
 
         // This parameter set invokes a single graphql operation:
         // nutanixClusterContainers.
-        protected void ProcessRecord_ClusterContainer()
+        protected void ProcessRecord_ClusterContainers()
         {
-            this._logger.name += " -ClusterContainer";
+            this._logger.name += " -ClusterContainers";
             // Invoke graphql operation nutanixClusterContainers
             InvokeQueryNutanixClusterContainers();
         }
 
         // This parameter set invokes a single graphql operation:
         // nutanixClusterNetworks.
-        protected void ProcessRecord_ClusterNetwork()
+        protected void ProcessRecord_ClusterNetworks()
         {
-            this._logger.name += " -ClusterNetwork";
+            this._logger.name += " -ClusterNetworks";
             // Invoke graphql operation nutanixClusterNetworks
             InvokeQueryNutanixClusterNetworks();
         }
@@ -555,9 +585,9 @@ Lists all files and directories in a given path.
 
         // This parameter set invokes a single graphql operation:
         // nutanixVmMissedSnapshots.
-        protected void ProcessRecord_VmMissedSnapshot()
+        protected void ProcessRecord_VmMissedSnapshots()
         {
-            this._logger.name += " -VmMissedSnapshot";
+            this._logger.name += " -VmMissedSnapshots";
             // Invoke graphql operation nutanixVmMissedSnapshots
             InvokeQueryNutanixVmMissedSnapshots();
         }
@@ -600,81 +630,24 @@ Lists all files and directories in a given path.
                 Tuple.Create("typeFilter", "[HierarchyObjectTypeEnum!]"),
                 Tuple.Create("filter", "[Filter!]"),
             };
-            CdmHierarchyObjectConnection? fields = null ;
-            if (this.Field != null)
-            {
+            CdmHierarchyObjectConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (CdmHierarchyObjectConnection)psObject.BaseObject;
+                    fieldSpecObj = (CdmHierarchyObjectConnection)psObject.BaseObject;
                 } else {
-                    fields = (CdmHierarchyObjectConnection)this.Field;
+                    fieldSpecObj = (CdmHierarchyObjectConnection)this.Field;
                 }
             }
-            string document = Query.NutanixTopLevelDescendants(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.NutanixTopLevelDescendants");
-            var parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$typeFilter: [HierarchyObjectTypeEnum!],$filter: [Filter!])\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryNutanixTopLevelDescendants" + parameters + "{" + document + "}",
-                OperationName = "QueryNutanixTopLevelDescendants",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "CdmHierarchyObjectConnection", this._logger, GetMetricTags());
-            WriteObject(result, true);
-        }
-
-        // Invoke GraphQL Query:
-        // nutanixTopLevelDescendantsV2(
-        //     first: Int
-        //     after: String
-        //     sortBy: HierarchySortByField
-        //     sortOrder: SortOrder
-        //     typeFilter: [HierarchyObjectTypeEnum!]
-        //     filter: [Filter!]
-        //   ): NutanixTopLevelDescendantTypeConnection!
-        protected void InvokeQueryNutanixTopLevelDescendantsV2()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("first", "Int"),
-                Tuple.Create("after", "String"),
-                Tuple.Create("sortBy", "HierarchySortByField"),
-                Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("typeFilter", "[HierarchyObjectTypeEnum!]"),
-                Tuple.Create("filter", "[Filter!]"),
-            };
-            NutanixTopLevelDescendantTypeConnection? fields = null ;
-            if (this.Field != null)
-            {
-                if (this.Field is PSObject psObject) {
-                    fields = (NutanixTopLevelDescendantTypeConnection)psObject.BaseObject;
-                } else {
-                    fields = (NutanixTopLevelDescendantTypeConnection)this.Field;
-                }
-            }
-            string document = Query.NutanixTopLevelDescendantsV2(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.NutanixTopLevelDescendantsV2");
-            var parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$typeFilter: [HierarchyObjectTypeEnum!],$filter: [Filter!])\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryNutanixTopLevelDescendantsV2" + parameters + "{" + document + "}",
-                OperationName = "QueryNutanixTopLevelDescendantsV2",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "NutanixTopLevelDescendantTypeConnection", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.NutanixTopLevelDescendants(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryNutanixTopLevelDescendants",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$typeFilter: [HierarchyObjectTypeEnum!],$filter: [Filter!])",
+                fieldSpecDoc,
+                "CdmHierarchyObjectConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -684,33 +657,61 @@ Lists all files and directories in a given path.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            NutanixCluster? fields = null ;
-            if (this.Field != null)
-            {
+            NutanixCluster? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (NutanixCluster)psObject.BaseObject;
+                    fieldSpecObj = (NutanixCluster)psObject.BaseObject;
                 } else {
-                    fields = (NutanixCluster)this.Field;
+                    fieldSpecObj = (NutanixCluster)this.Field;
                 }
             }
-            string document = Query.NutanixCluster(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.NutanixCluster");
-            var parameters = "($fid: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryNutanixCluster" + parameters + "{" + document + "}",
-                OperationName = "QueryNutanixCluster",
+            string fieldSpecDoc = Query.NutanixCluster(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryNutanixCluster",
+                "($fid: UUID!)",
+                fieldSpecDoc,
+                "NutanixCluster"
+            );
+        }
+
+        // Invoke GraphQL Query:
+        // nutanixClusters(
+        //     first: Int
+        //     after: String
+        //     sortBy: HierarchySortByField
+        //     sortOrder: SortOrder
+        //     filter: [Filter!]
+        //   ): NutanixClusterConnection!
+        protected void InvokeQueryNutanixClusters()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("sortBy", "HierarchySortByField"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("filter", "[Filter!]"),
             };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
+            NutanixClusterConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                if (this.Field is PSObject psObject) {
+                    fieldSpecObj = (NutanixClusterConnection)psObject.BaseObject;
+                } else {
+                    fieldSpecObj = (NutanixClusterConnection)this.Field;
+                }
             }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "NutanixCluster", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.NutanixClusters(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryNutanixClusters",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                fieldSpecDoc,
+                "NutanixClusterConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -730,161 +731,105 @@ Lists all files and directories in a given path.
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
             };
-            NutanixPrismCentralConnection? fields = null ;
-            if (this.Field != null)
-            {
+            NutanixPrismCentralConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (NutanixPrismCentralConnection)psObject.BaseObject;
+                    fieldSpecObj = (NutanixPrismCentralConnection)psObject.BaseObject;
                 } else {
-                    fields = (NutanixPrismCentralConnection)this.Field;
+                    fieldSpecObj = (NutanixPrismCentralConnection)this.Field;
                 }
             }
-            string document = Query.NutanixPrismCentrals(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.NutanixPrismCentrals");
-            var parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryNutanixPrismCentrals" + parameters + "{" + document + "}",
-                OperationName = "QueryNutanixPrismCentrals",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "NutanixPrismCentralConnection", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.NutanixPrismCentrals(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryNutanixPrismCentrals",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                fieldSpecDoc,
+                "NutanixPrismCentralConnection"
+            );
         }
 
         // Invoke GraphQL Query:
-        // nutanixCategories(
-        //     first: Int
-        //     after: String
-        //     sortBy: HierarchySortByField
-        //     sortOrder: SortOrder
-        //     filter: [Filter!]
-        //   ): NutanixCategoryConnection!
-        protected void InvokeQueryNutanixCategories()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("first", "Int"),
-                Tuple.Create("after", "String"),
-                Tuple.Create("sortBy", "HierarchySortByField"),
-                Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("filter", "[Filter!]"),
-            };
-            NutanixCategoryConnection? fields = null ;
-            if (this.Field != null)
-            {
-                if (this.Field is PSObject psObject) {
-                    fields = (NutanixCategoryConnection)psObject.BaseObject;
-                } else {
-                    fields = (NutanixCategoryConnection)this.Field;
-                }
-            }
-            string document = Query.NutanixCategories(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.NutanixCategories");
-            var parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryNutanixCategories" + parameters + "{" + document + "}",
-                OperationName = "QueryNutanixCategories",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "NutanixCategoryConnection", this._logger, GetMetricTags());
-            WriteObject(result, true);
-        }
-
-        // Invoke GraphQL Query:
-        // nutanixCategoryValues(fid: UUID!): NutanixCategoryValueConnection!
-        protected void InvokeQueryNutanixCategoryValues()
+        // nutanixPrismCentral(fid: UUID!): NutanixPrismCentral!
+        protected void InvokeQueryNutanixPrismCentral()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            NutanixCategoryValueConnection? fields = null ;
-            if (this.Field != null)
-            {
+            NutanixPrismCentral? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (NutanixCategoryValueConnection)psObject.BaseObject;
+                    fieldSpecObj = (NutanixPrismCentral)psObject.BaseObject;
                 } else {
-                    fields = (NutanixCategoryValueConnection)this.Field;
+                    fieldSpecObj = (NutanixPrismCentral)this.Field;
                 }
             }
-            string document = Query.NutanixCategoryValues(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.NutanixCategoryValues");
-            var parameters = "($fid: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryNutanixCategoryValues" + parameters + "{" + document + "}",
-                OperationName = "QueryNutanixCategoryValues",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "NutanixCategoryValueConnection", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.NutanixPrismCentral(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryNutanixPrismCentral",
+                "($fid: UUID!)",
+                fieldSpecDoc,
+                "NutanixPrismCentral"
+            );
         }
 
         // Invoke GraphQL Query:
-        // nutanixCategoryValueVms(
-        //     first: Int
-        //     after: String
-        //     sortBy: HierarchySortByField
-        //     sortOrder: SortOrder
-        //     filter: [Filter!]
-        //   ): NutanixVmConnection!
-        protected void InvokeQueryNutanixCategoryValueVms()
+        // nutanixCategory(fid: UUID!): NutanixCategory!
+        protected void InvokeQueryNutanixCategory()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("first", "Int"),
-                Tuple.Create("after", "String"),
-                Tuple.Create("sortBy", "HierarchySortByField"),
-                Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("filter", "[Filter!]"),
+                Tuple.Create("fid", "UUID!"),
             };
-            NutanixVmConnection? fields = null ;
-            if (this.Field != null)
-            {
+            NutanixCategory? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (NutanixVmConnection)psObject.BaseObject;
+                    fieldSpecObj = (NutanixCategory)psObject.BaseObject;
                 } else {
-                    fields = (NutanixVmConnection)this.Field;
+                    fieldSpecObj = (NutanixCategory)this.Field;
                 }
             }
-            string document = Query.NutanixCategoryValueVms(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.NutanixCategoryValueVms");
-            var parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryNutanixCategoryValueVms" + parameters + "{" + document + "}",
-                OperationName = "QueryNutanixCategoryValueVms",
+            string fieldSpecDoc = Query.NutanixCategory(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryNutanixCategory",
+                "($fid: UUID!)",
+                fieldSpecDoc,
+                "NutanixCategory"
+            );
+        }
+
+        // Invoke GraphQL Query:
+        // nutanixCategoryValue(fid: UUID!): NutanixCategoryValue!
+        protected void InvokeQueryNutanixCategoryValue()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("fid", "UUID!"),
             };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
+            NutanixCategoryValue? fieldSpecObj = null ;
+            if (this.Field != null) {
+                if (this.Field is PSObject psObject) {
+                    fieldSpecObj = (NutanixCategoryValue)psObject.BaseObject;
+                } else {
+                    fieldSpecObj = (NutanixCategoryValue)this.Field;
+                }
             }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "NutanixVmConnection", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.NutanixCategoryValue(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryNutanixCategoryValue",
+                "($fid: UUID!)",
+                fieldSpecDoc,
+                "NutanixCategoryValue"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -894,33 +839,61 @@ Lists all files and directories in a given path.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            NutanixVm? fields = null ;
-            if (this.Field != null)
-            {
+            NutanixVm? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (NutanixVm)psObject.BaseObject;
+                    fieldSpecObj = (NutanixVm)psObject.BaseObject;
                 } else {
-                    fields = (NutanixVm)this.Field;
+                    fieldSpecObj = (NutanixVm)this.Field;
                 }
             }
-            string document = Query.NutanixVm(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.NutanixVm");
-            var parameters = "($fid: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryNutanixVm" + parameters + "{" + document + "}",
-                OperationName = "QueryNutanixVm",
+            string fieldSpecDoc = Query.NutanixVm(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryNutanixVm",
+                "($fid: UUID!)",
+                fieldSpecDoc,
+                "NutanixVm"
+            );
+        }
+
+        // Invoke GraphQL Query:
+        // nutanixVms(
+        //     first: Int
+        //     after: String
+        //     sortBy: HierarchySortByField
+        //     sortOrder: SortOrder
+        //     filter: [Filter!]
+        //   ): NutanixVmConnection!
+        protected void InvokeQueryNutanixVms()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("sortBy", "HierarchySortByField"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("filter", "[Filter!]"),
             };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
+            NutanixVmConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                if (this.Field is PSObject psObject) {
+                    fieldSpecObj = (NutanixVmConnection)psObject.BaseObject;
+                } else {
+                    fieldSpecObj = (NutanixVmConnection)this.Field;
+                }
             }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "NutanixVm", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.NutanixVms(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryNutanixVms",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                fieldSpecDoc,
+                "NutanixVmConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -938,33 +911,24 @@ Lists all files and directories in a given path.
                 Tuple.Create("filters", "[NutanixLiveMountFilterInput!]"),
                 Tuple.Create("sortBy", "NutanixLiveMountSortByInput"),
             };
-            NutanixLiveMountConnection? fields = null ;
-            if (this.Field != null)
-            {
+            NutanixLiveMountConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (NutanixLiveMountConnection)psObject.BaseObject;
+                    fieldSpecObj = (NutanixLiveMountConnection)psObject.BaseObject;
                 } else {
-                    fields = (NutanixLiveMountConnection)this.Field;
+                    fieldSpecObj = (NutanixLiveMountConnection)this.Field;
                 }
             }
-            string document = Query.NutanixMounts(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.NutanixMounts");
-            var parameters = "($first: Int,$after: String,$filters: [NutanixLiveMountFilterInput!],$sortBy: NutanixLiveMountSortByInput)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryNutanixMounts" + parameters + "{" + document + "}",
-                OperationName = "QueryNutanixMounts",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "NutanixLiveMountConnection", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.NutanixMounts(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryNutanixMounts",
+                "($first: Int,$after: String,$filters: [NutanixLiveMountFilterInput!],$sortBy: NutanixLiveMountSortByInput)",
+                fieldSpecDoc,
+                "NutanixLiveMountConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -974,33 +938,24 @@ Lists all files and directories in a given path.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetContainersInput!"),
             };
-            NutanixContainerListResponse? fields = null ;
-            if (this.Field != null)
-            {
+            NutanixContainerListResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (NutanixContainerListResponse)psObject.BaseObject;
+                    fieldSpecObj = (NutanixContainerListResponse)psObject.BaseObject;
                 } else {
-                    fields = (NutanixContainerListResponse)this.Field;
+                    fieldSpecObj = (NutanixContainerListResponse)this.Field;
                 }
             }
-            string document = Query.NutanixClusterContainers(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.NutanixClusterContainers");
-            var parameters = "($input: GetContainersInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryNutanixClusterContainers" + parameters + "{" + document + "}",
-                OperationName = "QueryNutanixClusterContainers",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "NutanixContainerListResponse", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.NutanixClusterContainers(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryNutanixClusterContainers",
+                "($input: GetContainersInput!)",
+                fieldSpecDoc,
+                "NutanixContainerListResponse"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1010,33 +965,24 @@ Lists all files and directories in a given path.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetNutanixNetworksInput!"),
             };
-            NutanixNetworkListResponse? fields = null ;
-            if (this.Field != null)
-            {
+            NutanixNetworkListResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (NutanixNetworkListResponse)psObject.BaseObject;
+                    fieldSpecObj = (NutanixNetworkListResponse)psObject.BaseObject;
                 } else {
-                    fields = (NutanixNetworkListResponse)this.Field;
+                    fieldSpecObj = (NutanixNetworkListResponse)this.Field;
                 }
             }
-            string document = Query.NutanixClusterNetworks(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.NutanixClusterNetworks");
-            var parameters = "($input: GetNutanixNetworksInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryNutanixClusterNetworks" + parameters + "{" + document + "}",
-                OperationName = "QueryNutanixClusterNetworks",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "NutanixNetworkListResponse", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.NutanixClusterNetworks(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryNutanixClusterNetworks",
+                "($input: GetNutanixNetworksInput!)",
+                fieldSpecDoc,
+                "NutanixNetworkListResponse"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1046,33 +992,24 @@ Lists all files and directories in a given path.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetNutanixClusterAsyncRequestStatusInput!"),
             };
-            AsyncRequestStatus? fields = null ;
-            if (this.Field != null)
-            {
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (AsyncRequestStatus)psObject.BaseObject;
+                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
                 } else {
-                    fields = (AsyncRequestStatus)this.Field;
+                    fieldSpecObj = (AsyncRequestStatus)this.Field;
                 }
             }
-            string document = Query.NutanixClusterAsyncRequestStatus(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.NutanixClusterAsyncRequestStatus");
-            var parameters = "($input: GetNutanixClusterAsyncRequestStatusInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryNutanixClusterAsyncRequestStatus" + parameters + "{" + document + "}",
-                OperationName = "QueryNutanixClusterAsyncRequestStatus",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "AsyncRequestStatus", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.NutanixClusterAsyncRequestStatus(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryNutanixClusterAsyncRequestStatus",
+                "($input: GetNutanixClusterAsyncRequestStatusInput!)",
+                fieldSpecDoc,
+                "AsyncRequestStatus"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1082,33 +1019,24 @@ Lists all files and directories in a given path.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetNutanixVmAsyncRequestStatusInput!"),
             };
-            AsyncRequestStatus? fields = null ;
-            if (this.Field != null)
-            {
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (AsyncRequestStatus)psObject.BaseObject;
+                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
                 } else {
-                    fields = (AsyncRequestStatus)this.Field;
+                    fieldSpecObj = (AsyncRequestStatus)this.Field;
                 }
             }
-            string document = Query.NutanixVmAsyncRequestStatus(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.NutanixVmAsyncRequestStatus");
-            var parameters = "($input: GetNutanixVmAsyncRequestStatusInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryNutanixVmAsyncRequestStatus" + parameters + "{" + document + "}",
-                OperationName = "QueryNutanixVmAsyncRequestStatus",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "AsyncRequestStatus", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.NutanixVmAsyncRequestStatus(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryNutanixVmAsyncRequestStatus",
+                "($input: GetNutanixVmAsyncRequestStatusInput!)",
+                fieldSpecDoc,
+                "AsyncRequestStatus"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1118,33 +1046,24 @@ Lists all files and directories in a given path.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "SearchNutanixVmInput!"),
             };
-            SearchResponseListResponse? fields = null ;
-            if (this.Field != null)
-            {
+            SearchResponseListResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (SearchResponseListResponse)psObject.BaseObject;
+                    fieldSpecObj = (SearchResponseListResponse)psObject.BaseObject;
                 } else {
-                    fields = (SearchResponseListResponse)this.Field;
+                    fieldSpecObj = (SearchResponseListResponse)this.Field;
                 }
             }
-            string document = Query.SearchNutanixVm(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.SearchNutanixVm");
-            var parameters = "($input: SearchNutanixVmInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QuerySearchNutanixVm" + parameters + "{" + document + "}",
-                OperationName = "QuerySearchNutanixVm",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "SearchResponseListResponse", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.SearchNutanixVm(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QuerySearchNutanixVm",
+                "($input: SearchNutanixVmInput!)",
+                fieldSpecDoc,
+                "SearchResponseListResponse"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1154,33 +1073,24 @@ Lists all files and directories in a given path.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "NutanixMissedSnapshotsInput!"),
             };
-            MissedSnapshotListResponse? fields = null ;
-            if (this.Field != null)
-            {
+            MissedSnapshotListResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (MissedSnapshotListResponse)psObject.BaseObject;
+                    fieldSpecObj = (MissedSnapshotListResponse)psObject.BaseObject;
                 } else {
-                    fields = (MissedSnapshotListResponse)this.Field;
+                    fieldSpecObj = (MissedSnapshotListResponse)this.Field;
                 }
             }
-            string document = Query.NutanixVmMissedSnapshots(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.NutanixVmMissedSnapshots");
-            var parameters = "($input: NutanixMissedSnapshotsInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryNutanixVmMissedSnapshots" + parameters + "{" + document + "}",
-                OperationName = "QueryNutanixVmMissedSnapshots",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "MissedSnapshotListResponse", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.NutanixVmMissedSnapshots(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryNutanixVmMissedSnapshots",
+                "($input: NutanixMissedSnapshotsInput!)",
+                fieldSpecDoc,
+                "MissedSnapshotListResponse"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1190,33 +1100,24 @@ Lists all files and directories in a given path.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "BrowseNutanixSnapshotInput!"),
             };
-            BrowseResponseListResponse? fields = null ;
-            if (this.Field != null)
-            {
+            BrowseResponseListResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (BrowseResponseListResponse)psObject.BaseObject;
+                    fieldSpecObj = (BrowseResponseListResponse)psObject.BaseObject;
                 } else {
-                    fields = (BrowseResponseListResponse)this.Field;
+                    fieldSpecObj = (BrowseResponseListResponse)this.Field;
                 }
             }
-            string document = Query.NutanixBrowseSnapshot(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.NutanixBrowseSnapshot");
-            var parameters = "($input: BrowseNutanixSnapshotInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryNutanixBrowseSnapshot" + parameters + "{" + document + "}",
-                OperationName = "QueryNutanixBrowseSnapshot",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "BrowseResponseListResponse", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.NutanixBrowseSnapshot(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryNutanixBrowseSnapshot",
+                "($input: BrowseNutanixSnapshotInput!)",
+                fieldSpecDoc,
+                "BrowseResponseListResponse"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1226,33 +1127,24 @@ Lists all files and directories in a given path.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetNutanixSnapshotDetailInput!"),
             };
-            NutanixVmSnapshotDetail? fields = null ;
-            if (this.Field != null)
-            {
+            NutanixVmSnapshotDetail? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (NutanixVmSnapshotDetail)psObject.BaseObject;
+                    fieldSpecObj = (NutanixVmSnapshotDetail)psObject.BaseObject;
                 } else {
-                    fields = (NutanixVmSnapshotDetail)this.Field;
+                    fieldSpecObj = (NutanixVmSnapshotDetail)this.Field;
                 }
             }
-            string document = Query.NutanixSnapshotDetail(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.NutanixSnapshotDetail");
-            var parameters = "($input: GetNutanixSnapshotDetailInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryNutanixSnapshotDetail" + parameters + "{" + document + "}",
-                OperationName = "QueryNutanixSnapshotDetail",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "NutanixVmSnapshotDetail", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.NutanixSnapshotDetail(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryNutanixSnapshotDetail",
+                "($input: GetNutanixSnapshotDetailInput!)",
+                fieldSpecDoc,
+                "NutanixVmSnapshotDetail"
+            );
         }
 
 

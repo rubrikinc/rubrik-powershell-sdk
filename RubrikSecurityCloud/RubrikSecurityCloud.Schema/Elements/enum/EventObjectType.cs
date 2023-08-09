@@ -27,6 +27,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "APP_FLOWS")]
         APP_FLOWS,
 
+        [EnumMember(Value = "ATLASSIAN_SITE")]
+        ATLASSIAN_SITE,
+
         [EnumMember(Value = "AWS_ACCOUNT")]
         AWS_ACCOUNT,
 
@@ -143,6 +146,12 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "HYPERV_VM")]
         HYPERV_VM,
+
+        [EnumMember(Value = "JIRA_PROJECT")]
+        JIRA_PROJECT,
+
+        [EnumMember(Value = "JIRA_SETTINGS")]
+        JIRA_SETTINGS,
 
         [EnumMember(Value = "JOB_INSTANCE")]
         JOB_INSTANCE,

@@ -23,6 +23,8 @@ SAP HANA system details object.
   - List of hosts associated with SAP HANA system.
 - sslInfo: SapHanaSslInformation
   - Information required to connect to SAP HANA database over SSL.
+- systemInfo: SapHanaSystemInformation
+  - Additional information about the SAP HANA system.
 - descendantConnection: SapHanaSystemDescendantTypeConnection
   - List of descendants.
 - physicalChildConnection: SapHanaSystemPhysicalChildTypeConnection

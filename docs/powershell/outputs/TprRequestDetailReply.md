@@ -3,7 +3,7 @@ Reply for getting TPR Request Detail.
 
 - id: System.String
   - ID of the TPR request.
-- requester: TprRequester
+- requester: UserSummary
   - User making the TPR request.
 - orgName: System.String
   - Name of the org.
@@ -17,16 +17,16 @@ Reply for getting TPR Request Detail.
   - Time the request's execution window expires.
 - statusLog: list of TprReqStatusChanges
   - Log of the changes to the request.
-- triggeredTprRule: System.String
-  - Highest priority rule triggered by the request.
-- triggeredTprRules: list of System.Strings
-  - All rules triggered by the request.
 - triggeredTprPolicies: list of TriggeredTprPolicys
   - Policies triggered by the request.
 - details: TprRequestDetail
   - Details of the request.
 - status: TprReqStatus
   - Status of the request.
+- triggeredTprRule: TprRule
+  - Highest priority rule triggered by the request.
+- triggeredTprRules: list of TprRules
+  - All rules triggered by the request.
 - executionType: TprExecutionType
   - Execution type for the request.
 - orgId: System.String

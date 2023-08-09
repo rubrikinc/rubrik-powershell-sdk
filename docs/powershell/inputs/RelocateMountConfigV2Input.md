@@ -8,10 +8,14 @@ Supported in Rubrik CDM version 9.0 and later.
   - Supported in v8.1+
       The ID of the datastore or datastore cluster that is the target of relocation.
 - computeClusterId: System.String
-  - ID of the compute cluster to relocate the new virtual machine to.
+  - Supported in v9.0+
+      ID of the compute cluster to relocate the new virtual machine to.
 - hostId: System.String
-  - ID of the ESXi host to relocate the new virtual machine to. Include if the target host is different from the mounted host.
+  - Supported in v9.0+
+      ID of the ESXi host to relocate the new virtual machine to. Include if the target host is different from the mounted host.
 - networkDeviceKeyToNetworkName: list of VmwareDeviceKeywithNetworkNameV2Inputs
-  - List of mappings between network device keys and network names.
+  - Supported in v9.0+
+      List of mappings between network device keys and network names.
 - resourcePoolId: System.String
-  - ID of the resource pool where the new virtual machine will be mounted.
+  - Supported in v9.0+
+      ID of the resource pool where the new virtual machine will be mounted.

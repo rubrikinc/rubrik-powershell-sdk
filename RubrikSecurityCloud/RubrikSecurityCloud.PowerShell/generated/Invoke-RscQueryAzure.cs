@@ -21,7 +21,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "Invoke",
         "RscQueryAzure",
-        DefaultParameterSetName = "VNet")
+        DefaultParameterSetName = "VNets")
     ]
     public class Invoke_RscQueryAzure : RscPSCmdlet
     {
@@ -63,6 +63,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         
         // -------------------------------------------------------------------
+        // NativeSubscriptions parameter set
+        //
+        // [GraphQL: azureNativeSubscriptions]
+        //
+        [Parameter(
+            ParameterSetName = "NativeSubscriptions",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Retrieves a paginated list of all Azure Native Subscriptions.
+[GraphQL: azureNativeSubscriptions]",
+            Position = 0
+        )]
+        public SwitchParameter NativeSubscriptions { get; set; }
+
+        
+        // -------------------------------------------------------------------
         // NativeResourceGroup parameter set
         //
         // [GraphQL: azureNativeResourceGroup]
@@ -78,6 +96,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Position = 0
         )]
         public SwitchParameter NativeResourceGroup { get; set; }
+
+        
+        // -------------------------------------------------------------------
+        // NativeResourceGroups parameter set
+        //
+        // [GraphQL: azureNativeResourceGroups]
+        //
+        [Parameter(
+            ParameterSetName = "NativeResourceGroups",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Retrieves a paginated list of all Azure Native Resource Groups.
+[GraphQL: azureNativeResourceGroups]",
+            Position = 0
+        )]
+        public SwitchParameter NativeResourceGroups { get; set; }
 
         
         // -------------------------------------------------------------------
@@ -99,6 +135,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         
         // -------------------------------------------------------------------
+        // NativeVirtualMachines parameter set
+        //
+        // [GraphQL: azureNativeVirtualMachines]
+        //
+        [Parameter(
+            ParameterSetName = "NativeVirtualMachines",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Retrieves a paginated list of all Azure Virtual Machines (VMs).
+[GraphQL: azureNativeVirtualMachines]",
+            Position = 0
+        )]
+        public SwitchParameter NativeVirtualMachines { get; set; }
+
+        
+        // -------------------------------------------------------------------
         // NativeManagedDisk parameter set
         //
         // [GraphQL: azureNativeManagedDisk]
@@ -117,12 +171,30 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         
         // -------------------------------------------------------------------
-        // AllNativeVirtualNetwork parameter set
+        // NativeManagedDisks parameter set
+        //
+        // [GraphQL: azureNativeManagedDisks]
+        //
+        [Parameter(
+            ParameterSetName = "NativeManagedDisks",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Retrieves a paginated list of all Azure Native Managed Disks.
+[GraphQL: azureNativeManagedDisks]",
+            Position = 0
+        )]
+        public SwitchParameter NativeManagedDisks { get; set; }
+
+        
+        // -------------------------------------------------------------------
+        // AllNativeVirtualNetworks parameter set
         //
         // [GraphQL: allAzureNativeVirtualNetworks]
         //
         [Parameter(
-            ParameterSetName = "AllNativeVirtualNetwork",
+            ParameterSetName = "AllNativeVirtualNetworks",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -131,7 +203,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: allAzureNativeVirtualNetworks]",
             Position = 0
         )]
-        public SwitchParameter AllNativeVirtualNetwork { get; set; }
+        public SwitchParameter AllNativeVirtualNetworks { get; set; }
 
         
         // -------------------------------------------------------------------
@@ -243,12 +315,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         
         // -------------------------------------------------------------------
-        // AllNativeVirtualMachineSize parameter set
+        // AllNativeVirtualMachineSizes parameter set
         //
         // [GraphQL: allAzureNativeVirtualMachineSizes]
         //
         [Parameter(
-            ParameterSetName = "AllNativeVirtualMachineSize",
+            ParameterSetName = "AllNativeVirtualMachineSizes",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -257,7 +329,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: allAzureNativeVirtualMachineSizes]",
             Position = 0
         )]
-        public SwitchParameter AllNativeVirtualMachineSize { get; set; }
+        public SwitchParameter AllNativeVirtualMachineSizes { get; set; }
 
         
         // -------------------------------------------------------------------
@@ -333,6 +405,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         
         // -------------------------------------------------------------------
+        // SqlDatabases parameter set
+        //
+        // [GraphQL: azureSqlDatabases]
+        //
+        [Parameter(
+            ParameterSetName = "SqlDatabases",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Retrieves a paginated list of all Azure SQL Databases.
+[GraphQL: azureSqlDatabases]",
+            Position = 0
+        )]
+        public SwitchParameter SqlDatabases { get; set; }
+
+        
+        // -------------------------------------------------------------------
         // SqlDatabaseServer parameter set
         //
         // [GraphQL: azureSqlDatabaseServer]
@@ -348,6 +438,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Position = 0
         )]
         public SwitchParameter SqlDatabaseServer { get; set; }
+
+        
+        // -------------------------------------------------------------------
+        // SqlDatabaseServers parameter set
+        //
+        // [GraphQL: azureSqlDatabaseServers]
+        //
+        [Parameter(
+            ParameterSetName = "SqlDatabaseServers",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Retrieves a paginated list of all Azure SQL Database Servers.
+[GraphQL: azureSqlDatabaseServers]",
+            Position = 0
+        )]
+        public SwitchParameter SqlDatabaseServers { get; set; }
 
         
         // -------------------------------------------------------------------
@@ -369,6 +477,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         
         // -------------------------------------------------------------------
+        // SqlManagedInstanceDatabases parameter set
+        //
+        // [GraphQL: azureSqlManagedInstanceDatabases]
+        //
+        [Parameter(
+            ParameterSetName = "SqlManagedInstanceDatabases",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Retrieves a paginated list of all Azure SQL Managed Instance Databases.
+[GraphQL: azureSqlManagedInstanceDatabases]",
+            Position = 0
+        )]
+        public SwitchParameter SqlManagedInstanceDatabases { get; set; }
+
+        
+        // -------------------------------------------------------------------
         // SqlManagedInstanceServer parameter set
         //
         // [GraphQL: azureSqlManagedInstanceServer]
@@ -384,6 +510,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Position = 0
         )]
         public SwitchParameter SqlManagedInstanceServer { get; set; }
+
+        
+        // -------------------------------------------------------------------
+        // SqlManagedInstanceServers parameter set
+        //
+        // [GraphQL: azureSqlManagedInstanceServers]
+        //
+        [Parameter(
+            ParameterSetName = "SqlManagedInstanceServers",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Retrieves a paginated list of all Azure SQL Managed Instance Servers.
+[GraphQL: azureSqlManagedInstanceServers]",
+            Position = 0
+        )]
+        public SwitchParameter SqlManagedInstanceServers { get; set; }
 
         
         // -------------------------------------------------------------------
@@ -459,12 +603,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         
         // -------------------------------------------------------------------
-        // AllSqlDatabaseServerElasticPool parameter set
+        // AllSqlDatabaseServerElasticPools parameter set
         //
         // [GraphQL: allAzureSqlDatabaseServerElasticPools]
         //
         [Parameter(
-            ParameterSetName = "AllSqlDatabaseServerElasticPool",
+            ParameterSetName = "AllSqlDatabaseServerElasticPools",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -473,7 +617,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: allAzureSqlDatabaseServerElasticPools]",
             Position = 0
         )]
-        public SwitchParameter AllSqlDatabaseServerElasticPool { get; set; }
+        public SwitchParameter AllSqlDatabaseServerElasticPools { get; set; }
 
         
         // -------------------------------------------------------------------
@@ -495,6 +639,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         
         // -------------------------------------------------------------------
+        // NativeLiveMountDisks parameter set
+        //
+        // [GraphQL: azureNativeLiveMountDisks]
+        //
+        [Parameter(
+            ParameterSetName = "NativeLiveMountDisks",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"List of mounted disks for Azure.
+[GraphQL: azureNativeLiveMountDisks]",
+            Position = 0
+        )]
+        public SwitchParameter NativeLiveMountDisks { get; set; }
+
+        
+        // -------------------------------------------------------------------
         // AllKeyVaultsByRegion parameter set
         //
         // [GraphQL: allAzureKeyVaultsByRegion]
@@ -513,12 +675,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         
         // -------------------------------------------------------------------
-        // AllEncryptionKey parameter set
+        // AllEncryptionKeys parameter set
         //
         // [GraphQL: allAzureEncryptionKeys]
         //
         [Parameter(
-            ParameterSetName = "AllEncryptionKey",
+            ParameterSetName = "AllEncryptionKeys",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -527,7 +689,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: allAzureEncryptionKeys]",
             Position = 0
         )]
-        public SwitchParameter AllEncryptionKey { get; set; }
+        public SwitchParameter AllEncryptionKeys { get; set; }
 
         
         // -------------------------------------------------------------------
@@ -549,12 +711,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         
         // -------------------------------------------------------------------
-        // CloudAccountTenantWithExoConfig parameter set
+        // CloudAccountTenantWithExoConfigs parameter set
         //
         // [GraphQL: azureCloudAccountTenantWithExoConfigs]
         //
         [Parameter(
-            ParameterSetName = "CloudAccountTenantWithExoConfig",
+            ParameterSetName = "CloudAccountTenantWithExoConfigs",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -563,16 +725,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: azureCloudAccountTenantWithExoConfigs]",
             Position = 0
         )]
-        public SwitchParameter CloudAccountTenantWithExoConfig { get; set; }
+        public SwitchParameter CloudAccountTenantWithExoConfigs { get; set; }
 
         
         // -------------------------------------------------------------------
-        // AllCloudAccountTenantsWithExoConfig parameter set
+        // AllCloudAccountTenantsWithExoConfigs parameter set
         //
         // [GraphQL: allAzureCloudAccountTenantsWithExoConfigs]
         //
         [Parameter(
-            ParameterSetName = "AllCloudAccountTenantsWithExoConfig",
+            ParameterSetName = "AllCloudAccountTenantsWithExoConfigs",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -581,16 +743,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: allAzureCloudAccountTenantsWithExoConfigs]",
             Position = 0
         )]
-        public SwitchParameter AllCloudAccountTenantsWithExoConfig { get; set; }
+        public SwitchParameter AllCloudAccountTenantsWithExoConfigs { get; set; }
 
         
         // -------------------------------------------------------------------
-        // AllCloudAccountTenant parameter set
+        // AllCloudAccountTenants parameter set
         //
         // [GraphQL: allAzureCloudAccountTenants]
         //
         [Parameter(
-            ParameterSetName = "AllCloudAccountTenant",
+            ParameterSetName = "AllCloudAccountTenants",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -599,16 +761,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: allAzureCloudAccountTenants]",
             Position = 0
         )]
-        public SwitchParameter AllCloudAccountTenant { get; set; }
+        public SwitchParameter AllCloudAccountTenants { get; set; }
 
         
         // -------------------------------------------------------------------
-        // CloudAccountSubscriptionWithFeature parameter set
+        // CloudAccountSubscriptionWithFeatures parameter set
         //
         // [GraphQL: azureCloudAccountSubscriptionWithFeatures]
         //
         [Parameter(
-            ParameterSetName = "CloudAccountSubscriptionWithFeature",
+            ParameterSetName = "CloudAccountSubscriptionWithFeatures",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -617,7 +779,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: azureCloudAccountSubscriptionWithFeatures]",
             Position = 0
         )]
-        public SwitchParameter CloudAccountSubscriptionWithFeature { get; set; }
+        public SwitchParameter CloudAccountSubscriptionWithFeatures { get; set; }
 
         
         // -------------------------------------------------------------------
@@ -639,12 +801,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         
         // -------------------------------------------------------------------
-        // AllSubscriptionWithExocomputeMapping parameter set
+        // AllSubscriptionWithExocomputeMappings parameter set
         //
         // [GraphQL: allAzureSubscriptionWithExocomputeMappings]
         //
         [Parameter(
-            ParameterSetName = "AllSubscriptionWithExocomputeMapping",
+            ParameterSetName = "AllSubscriptionWithExocomputeMappings",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -653,7 +815,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: allAzureSubscriptionWithExocomputeMappings]",
             Position = 0
         )]
-        public SwitchParameter AllSubscriptionWithExocomputeMapping { get; set; }
+        public SwitchParameter AllSubscriptionWithExocomputeMappings { get; set; }
 
         
         // -------------------------------------------------------------------
@@ -711,12 +873,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         
         // -------------------------------------------------------------------
-        // AllCloudAccountMissingPermission parameter set
+        // AllCloudAccountMissingPermissions parameter set
         //
         // [GraphQL: allAzureCloudAccountMissingPermissions]
         //
         [Parameter(
-            ParameterSetName = "AllCloudAccountMissingPermission",
+            ParameterSetName = "AllCloudAccountMissingPermissions",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -725,7 +887,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: allAzureCloudAccountMissingPermissions]",
             Position = 0
         )]
-        public SwitchParameter AllCloudAccountMissingPermission { get; set; }
+        public SwitchParameter AllCloudAccountMissingPermissions { get; set; }
 
         
         // -------------------------------------------------------------------
@@ -744,6 +906,60 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Position = 0
         )]
         public SwitchParameter CloudAccountPermissionConfig { get; set; }
+
+        
+        // -------------------------------------------------------------------
+        // CloudAccountGrantedPermissionsGroups parameter set
+        //
+        // [GraphQL: azureCloudAccountGrantedPermissionsGroups]
+        //
+        [Parameter(
+            ParameterSetName = "CloudAccountGrantedPermissionsGroups",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Retrieves the permissions groups which have been granted for a specific feature.
+[GraphQL: azureCloudAccountGrantedPermissionsGroups]",
+            Position = 0
+        )]
+        public SwitchParameter CloudAccountGrantedPermissionsGroups { get; set; }
+
+        
+        // -------------------------------------------------------------------
+        // CloudAccountGrantedPermissionsGroupsForRecovery parameter set
+        //
+        // [GraphQL: azureCloudAccountGrantedPermissionsGroupsForRecovery]
+        //
+        [Parameter(
+            ParameterSetName = "CloudAccountGrantedPermissionsGroupsForRecovery",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Retrieves the permissions groups which have been granted for a specific feature.
+[GraphQL: azureCloudAccountGrantedPermissionsGroupsForRecovery]",
+            Position = 0
+        )]
+        public SwitchParameter CloudAccountGrantedPermissionsGroupsForRecovery { get; set; }
+
+        
+        // -------------------------------------------------------------------
+        // CloudAccountCheckRefreshTokenExistsForRecovery parameter set
+        //
+        // [GraphQL: azureCloudAccountCheckRefreshTokenExistsForRecovery]
+        //
+        [Parameter(
+            ParameterSetName = "CloudAccountCheckRefreshTokenExistsForRecovery",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Check whether a refresh token exists for the current user.
+[GraphQL: azureCloudAccountCheckRefreshTokenExistsForRecovery]",
+            Position = 0
+        )]
+        public SwitchParameter CloudAccountCheckRefreshTokenExistsForRecovery { get; set; }
 
         
         // -------------------------------------------------------------------
@@ -783,12 +999,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         
         // -------------------------------------------------------------------
-        // ValidateCloudAccountExocomputeConfiguration parameter set
+        // ValidateCloudAccountExocomputeConfigurations parameter set
         //
         // [GraphQL: validateAzureCloudAccountExocomputeConfigurations]
         //
         [Parameter(
-            ParameterSetName = "ValidateCloudAccountExocomputeConfiguration",
+            ParameterSetName = "ValidateCloudAccountExocomputeConfigurations",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -797,7 +1013,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: validateAzureCloudAccountExocomputeConfigurations]",
             Position = 0
         )]
-        public SwitchParameter ValidateCloudAccountExocomputeConfiguration { get; set; }
+        public SwitchParameter ValidateCloudAccountExocomputeConfigurations { get; set; }
 
         
         // -------------------------------------------------------------------
@@ -819,12 +1035,30 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         
         // -------------------------------------------------------------------
-        // Subscription parameter set
+        // CheckPersistentStorageSubscriptionCanUnmap parameter set
+        //
+        // [GraphQL: checkAzurePersistentStorageSubscriptionCanUnmap]
+        //
+        [Parameter(
+            ParameterSetName = "CheckPersistentStorageSubscriptionCanUnmap",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Checks if we can unmap the archival location from the subscription.
+[GraphQL: checkAzurePersistentStorageSubscriptionCanUnmap]",
+            Position = 0
+        )]
+        public SwitchParameter CheckPersistentStorageSubscriptionCanUnmap { get; set; }
+
+        
+        // -------------------------------------------------------------------
+        // Subscriptions parameter set
         //
         // [GraphQL: azureSubscriptions]
         //
         [Parameter(
-            ParameterSetName = "Subscription",
+            ParameterSetName = "Subscriptions",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -833,16 +1067,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: azureSubscriptions]",
             Position = 0
         )]
-        public SwitchParameter Subscription { get; set; }
+        public SwitchParameter Subscriptions { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Region parameter set
+        // Regions parameter set
         //
         // [GraphQL: azureRegions]
         //
         [Parameter(
-            ParameterSetName = "Region",
+            ParameterSetName = "Regions",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -851,16 +1085,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: azureRegions]",
             Position = 0
         )]
-        public SwitchParameter Region { get; set; }
+        public SwitchParameter Regions { get; set; }
 
         
         // -------------------------------------------------------------------
-        // ResourceGroup parameter set
+        // ResourceGroups parameter set
         //
         // [GraphQL: azureResourceGroups]
         //
         [Parameter(
-            ParameterSetName = "ResourceGroup",
+            ParameterSetName = "ResourceGroups",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -869,16 +1103,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: azureResourceGroups]",
             Position = 0
         )]
-        public SwitchParameter ResourceGroup { get; set; }
+        public SwitchParameter ResourceGroups { get; set; }
 
         
         // -------------------------------------------------------------------
-        // VNet parameter set
+        // VNets parameter set
         //
         // [GraphQL: azureVNets]
         //
         [Parameter(
-            ParameterSetName = "VNet",
+            ParameterSetName = "VNets",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -887,16 +1121,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: azureVNets]",
             Position = 0
         )]
-        public SwitchParameter VNet { get; set; }
+        public SwitchParameter VNets { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Subnet parameter set
+        // Subnets parameter set
         //
         // [GraphQL: azureSubnets]
         //
         [Parameter(
-            ParameterSetName = "Subnet",
+            ParameterSetName = "Subnets",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -905,16 +1139,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: azureSubnets]",
             Position = 0
         )]
-        public SwitchParameter Subnet { get; set; }
+        public SwitchParameter Subnets { get; set; }
 
         
         // -------------------------------------------------------------------
-        // StorageAccount parameter set
+        // StorageAccounts parameter set
         //
         // [GraphQL: azureStorageAccounts]
         //
         [Parameter(
-            ParameterSetName = "StorageAccount",
+            ParameterSetName = "StorageAccounts",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -923,16 +1157,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: azureStorageAccounts]",
             Position = 0
         )]
-        public SwitchParameter StorageAccount { get; set; }
+        public SwitchParameter StorageAccounts { get; set; }
 
         
         // -------------------------------------------------------------------
-        // AllHostedRegion parameter set
+        // AllHostedRegions parameter set
         //
         // [GraphQL: allHostedAzureRegions]
         //
         [Parameter(
-            ParameterSetName = "AllHostedRegion",
+            ParameterSetName = "AllHostedRegions",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -941,16 +1175,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: allHostedAzureRegions]",
             Position = 0
         )]
-        public SwitchParameter AllHostedRegion { get; set; }
+        public SwitchParameter AllHostedRegions { get; set; }
 
         
         // -------------------------------------------------------------------
-        // AllResourceGroup parameter set
+        // AllResourceGroups parameter set
         //
         // [GraphQL: allAzureResourceGroups]
         //
         [Parameter(
-            ParameterSetName = "AllResourceGroup",
+            ParameterSetName = "AllResourceGroups",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -959,16 +1193,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: allAzureResourceGroups]",
             Position = 0
         )]
-        public SwitchParameter AllResourceGroup { get; set; }
+        public SwitchParameter AllResourceGroups { get; set; }
 
         
         // -------------------------------------------------------------------
-        // AllVnet parameter set
+        // AllVnets parameter set
         //
         // [GraphQL: allAzureVnets]
         //
         [Parameter(
-            ParameterSetName = "AllVnet",
+            ParameterSetName = "AllVnets",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -977,16 +1211,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: allAzureVnets]",
             Position = 0
         )]
-        public SwitchParameter AllVnet { get; set; }
+        public SwitchParameter AllVnets { get; set; }
 
         
         // -------------------------------------------------------------------
-        // AllSubnet parameter set
+        // AllSubnets parameter set
         //
         // [GraphQL: allAzureSubnets]
         //
         [Parameter(
-            ParameterSetName = "AllSubnet",
+            ParameterSetName = "AllSubnets",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -995,16 +1229,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: allAzureSubnets]",
             Position = 0
         )]
-        public SwitchParameter AllSubnet { get; set; }
+        public SwitchParameter AllSubnets { get; set; }
 
         
         // -------------------------------------------------------------------
-        // AllCdmVersion parameter set
+        // AllCdmVersions parameter set
         //
         // [GraphQL: allAzureCdmVersions]
         //
         [Parameter(
-            ParameterSetName = "AllCdmVersion",
+            ParameterSetName = "AllCdmVersions",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -1013,16 +1247,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: allAzureCdmVersions]",
             Position = 0
         )]
-        public SwitchParameter AllCdmVersion { get; set; }
+        public SwitchParameter AllCdmVersions { get; set; }
 
         
         // -------------------------------------------------------------------
-        // AllRegion parameter set
+        // AllRegions parameter set
         //
         // [GraphQL: allAzureRegions]
         //
         [Parameter(
-            ParameterSetName = "AllRegion",
+            ParameterSetName = "AllRegions",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -1031,16 +1265,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: allAzureRegions]",
             Position = 0
         )]
-        public SwitchParameter AllRegion { get; set; }
+        public SwitchParameter AllRegions { get; set; }
 
         
         // -------------------------------------------------------------------
-        // AllNsg parameter set
+        // AllNsgs parameter set
         //
         // [GraphQL: allAzureNsgs]
         //
         [Parameter(
-            ParameterSetName = "AllNsg",
+            ParameterSetName = "AllNsgs",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -1049,16 +1283,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: allAzureNsgs]",
             Position = 0
         )]
-        public SwitchParameter AllNsg { get; set; }
+        public SwitchParameter AllNsgs { get; set; }
 
         
         // -------------------------------------------------------------------
-        // AllStorageAccount parameter set
+        // AllStorageAccounts parameter set
         //
         // [GraphQL: allAzureStorageAccounts]
         //
         [Parameter(
-            ParameterSetName = "AllStorageAccount",
+            ParameterSetName = "AllStorageAccounts",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -1067,16 +1301,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: allAzureStorageAccounts]",
             Position = 0
         )]
-        public SwitchParameter AllStorageAccount { get; set; }
+        public SwitchParameter AllStorageAccounts { get; set; }
 
         
         // -------------------------------------------------------------------
-        // AdDirectorie parameter set
+        // AdDirectories parameter set
         //
         // [GraphQL: azureAdDirectories]
         //
         [Parameter(
-            ParameterSetName = "AdDirectorie",
+            ParameterSetName = "AdDirectories",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -1085,7 +1319,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: azureAdDirectories]",
             Position = 0
         )]
-        public SwitchParameter AdDirectorie { get; set; }
+        public SwitchParameter AdDirectories { get; set; }
 
         
         // -------------------------------------------------------------------
@@ -1105,6 +1339,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         )]
         public SwitchParameter AdDirectory { get; set; }
 
+        
+        // -------------------------------------------------------------------
+        // AdObjectsByType parameter set
+        //
+        // [GraphQL: azureAdObjectsByType]
+        //
+        [Parameter(
+            ParameterSetName = "AdObjectsByType",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Details of the Azure AD objects corresponding to the type.
+[GraphQL: azureAdObjectsByType]",
+            Position = 0
+        )]
+        public SwitchParameter AdObjectsByType { get; set; }
+
 
         protected override void ProcessRecord()
         {
@@ -1118,17 +1370,29 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "NativeSubscription":
                         this.ProcessRecord_NativeSubscription();
                         break;
+                    case "NativeSubscriptions":
+                        this.ProcessRecord_NativeSubscriptions();
+                        break;
                     case "NativeResourceGroup":
                         this.ProcessRecord_NativeResourceGroup();
+                        break;
+                    case "NativeResourceGroups":
+                        this.ProcessRecord_NativeResourceGroups();
                         break;
                     case "NativeVirtualMachine":
                         this.ProcessRecord_NativeVirtualMachine();
                         break;
+                    case "NativeVirtualMachines":
+                        this.ProcessRecord_NativeVirtualMachines();
+                        break;
                     case "NativeManagedDisk":
                         this.ProcessRecord_NativeManagedDisk();
                         break;
-                    case "AllNativeVirtualNetwork":
-                        this.ProcessRecord_AllNativeVirtualNetwork();
+                    case "NativeManagedDisks":
+                        this.ProcessRecord_NativeManagedDisks();
+                        break;
+                    case "AllNativeVirtualNetworks":
+                        this.ProcessRecord_AllNativeVirtualNetworks();
                         break;
                     case "AllNativeSubnetsByRegionFromAzure":
                         this.ProcessRecord_AllNativeSubnetsByRegionFromAzure();
@@ -1148,8 +1412,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "AllNativeExportCompatibleDiskTypesByRegionFromAzure":
                         this.ProcessRecord_AllNativeExportCompatibleDiskTypesByRegionFromAzure();
                         break;
-                    case "AllNativeVirtualMachineSize":
-                        this.ProcessRecord_AllNativeVirtualMachineSize();
+                    case "AllNativeVirtualMachineSizes":
+                        this.ProcessRecord_AllNativeVirtualMachineSizes();
                         break;
                     case "IsNativeManagedDiskSnapshotRestorable":
                         this.ProcessRecord_IsNativeManagedDiskSnapshotRestorable();
@@ -1163,14 +1427,26 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "SqlDatabase":
                         this.ProcessRecord_SqlDatabase();
                         break;
+                    case "SqlDatabases":
+                        this.ProcessRecord_SqlDatabases();
+                        break;
                     case "SqlDatabaseServer":
                         this.ProcessRecord_SqlDatabaseServer();
+                        break;
+                    case "SqlDatabaseServers":
+                        this.ProcessRecord_SqlDatabaseServers();
                         break;
                     case "SqlManagedInstanceDatabase":
                         this.ProcessRecord_SqlManagedInstanceDatabase();
                         break;
+                    case "SqlManagedInstanceDatabases":
+                        this.ProcessRecord_SqlManagedInstanceDatabases();
+                        break;
                     case "SqlManagedInstanceServer":
                         this.ProcessRecord_SqlManagedInstanceServer();
+                        break;
+                    case "SqlManagedInstanceServers":
+                        this.ProcessRecord_SqlManagedInstanceServers();
                         break;
                     case "SqlDatabaseDbPointInTimeRestoreWindowFromAzure":
                         this.ProcessRecord_SqlDatabaseDbPointInTimeRestoreWindowFromAzure();
@@ -1184,38 +1460,41 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "ValidateNativeSqlManagedInstanceDbNameForExport":
                         this.ProcessRecord_ValidateNativeSqlManagedInstanceDbNameForExport();
                         break;
-                    case "AllSqlDatabaseServerElasticPool":
-                        this.ProcessRecord_AllSqlDatabaseServerElasticPool();
+                    case "AllSqlDatabaseServerElasticPools":
+                        this.ProcessRecord_AllSqlDatabaseServerElasticPools();
                         break;
                     case "IsNativeSqlDatabaseSnapshotPersistent":
                         this.ProcessRecord_IsNativeSqlDatabaseSnapshotPersistent();
                         break;
+                    case "NativeLiveMountDisks":
+                        this.ProcessRecord_NativeLiveMountDisks();
+                        break;
                     case "AllKeyVaultsByRegion":
                         this.ProcessRecord_AllKeyVaultsByRegion();
                         break;
-                    case "AllEncryptionKey":
-                        this.ProcessRecord_AllEncryptionKey();
+                    case "AllEncryptionKeys":
+                        this.ProcessRecord_AllEncryptionKeys();
                         break;
                     case "CloudAccountTenant":
                         this.ProcessRecord_CloudAccountTenant();
                         break;
-                    case "CloudAccountTenantWithExoConfig":
-                        this.ProcessRecord_CloudAccountTenantWithExoConfig();
+                    case "CloudAccountTenantWithExoConfigs":
+                        this.ProcessRecord_CloudAccountTenantWithExoConfigs();
                         break;
-                    case "AllCloudAccountTenantsWithExoConfig":
-                        this.ProcessRecord_AllCloudAccountTenantsWithExoConfig();
+                    case "AllCloudAccountTenantsWithExoConfigs":
+                        this.ProcessRecord_AllCloudAccountTenantsWithExoConfigs();
                         break;
-                    case "AllCloudAccountTenant":
-                        this.ProcessRecord_AllCloudAccountTenant();
+                    case "AllCloudAccountTenants":
+                        this.ProcessRecord_AllCloudAccountTenants();
                         break;
-                    case "CloudAccountSubscriptionWithFeature":
-                        this.ProcessRecord_CloudAccountSubscriptionWithFeature();
+                    case "CloudAccountSubscriptionWithFeatures":
+                        this.ProcessRecord_CloudAccountSubscriptionWithFeatures();
                         break;
                     case "AllCloudAccountSubscriptionsByFeature":
                         this.ProcessRecord_AllCloudAccountSubscriptionsByFeature();
                         break;
-                    case "AllSubscriptionWithExocomputeMapping":
-                        this.ProcessRecord_AllSubscriptionWithExocomputeMapping();
+                    case "AllSubscriptionWithExocomputeMappings":
+                        this.ProcessRecord_AllSubscriptionWithExocomputeMappings();
                         break;
                     case "AllResourceGroupsFrom":
                         this.ProcessRecord_AllResourceGroupsFrom();
@@ -1226,11 +1505,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "AllNativeResourceGroupsInfoIfExist":
                         this.ProcessRecord_AllNativeResourceGroupsInfoIfExist();
                         break;
-                    case "AllCloudAccountMissingPermission":
-                        this.ProcessRecord_AllCloudAccountMissingPermission();
+                    case "AllCloudAccountMissingPermissions":
+                        this.ProcessRecord_AllCloudAccountMissingPermissions();
                         break;
                     case "CloudAccountPermissionConfig":
                         this.ProcessRecord_CloudAccountPermissionConfig();
+                        break;
+                    case "CloudAccountGrantedPermissionsGroups":
+                        this.ProcessRecord_CloudAccountGrantedPermissionsGroups();
+                        break;
+                    case "CloudAccountGrantedPermissionsGroupsForRecovery":
+                        this.ProcessRecord_CloudAccountGrantedPermissionsGroupsForRecovery();
+                        break;
+                    case "CloudAccountCheckRefreshTokenExistsForRecovery":
+                        this.ProcessRecord_CloudAccountCheckRefreshTokenExistsForRecovery();
                         break;
                     case "AllExocomputeConfigsInAccount":
                         this.ProcessRecord_AllExocomputeConfigsInAccount();
@@ -1238,59 +1526,65 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "AllCloudAccountSubnetsByRegion":
                         this.ProcessRecord_AllCloudAccountSubnetsByRegion();
                         break;
-                    case "ValidateCloudAccountExocomputeConfiguration":
-                        this.ProcessRecord_ValidateCloudAccountExocomputeConfiguration();
+                    case "ValidateCloudAccountExocomputeConfigurations":
+                        this.ProcessRecord_ValidateCloudAccountExocomputeConfigurations();
                         break;
                     case "AllArmTemplatesByFeature":
                         this.ProcessRecord_AllArmTemplatesByFeature();
                         break;
-                    case "Subscription":
-                        this.ProcessRecord_Subscription();
+                    case "CheckPersistentStorageSubscriptionCanUnmap":
+                        this.ProcessRecord_CheckPersistentStorageSubscriptionCanUnmap();
                         break;
-                    case "Region":
-                        this.ProcessRecord_Region();
+                    case "Subscriptions":
+                        this.ProcessRecord_Subscriptions();
                         break;
-                    case "ResourceGroup":
-                        this.ProcessRecord_ResourceGroup();
+                    case "Regions":
+                        this.ProcessRecord_Regions();
                         break;
-                    case "VNet":
-                        this.ProcessRecord_VNet();
+                    case "ResourceGroups":
+                        this.ProcessRecord_ResourceGroups();
                         break;
-                    case "Subnet":
-                        this.ProcessRecord_Subnet();
+                    case "VNets":
+                        this.ProcessRecord_VNets();
                         break;
-                    case "StorageAccount":
-                        this.ProcessRecord_StorageAccount();
+                    case "Subnets":
+                        this.ProcessRecord_Subnets();
                         break;
-                    case "AllHostedRegion":
-                        this.ProcessRecord_AllHostedRegion();
+                    case "StorageAccounts":
+                        this.ProcessRecord_StorageAccounts();
                         break;
-                    case "AllResourceGroup":
-                        this.ProcessRecord_AllResourceGroup();
+                    case "AllHostedRegions":
+                        this.ProcessRecord_AllHostedRegions();
                         break;
-                    case "AllVnet":
-                        this.ProcessRecord_AllVnet();
+                    case "AllResourceGroups":
+                        this.ProcessRecord_AllResourceGroups();
                         break;
-                    case "AllSubnet":
-                        this.ProcessRecord_AllSubnet();
+                    case "AllVnets":
+                        this.ProcessRecord_AllVnets();
                         break;
-                    case "AllCdmVersion":
-                        this.ProcessRecord_AllCdmVersion();
+                    case "AllSubnets":
+                        this.ProcessRecord_AllSubnets();
                         break;
-                    case "AllRegion":
-                        this.ProcessRecord_AllRegion();
+                    case "AllCdmVersions":
+                        this.ProcessRecord_AllCdmVersions();
                         break;
-                    case "AllNsg":
-                        this.ProcessRecord_AllNsg();
+                    case "AllRegions":
+                        this.ProcessRecord_AllRegions();
                         break;
-                    case "AllStorageAccount":
-                        this.ProcessRecord_AllStorageAccount();
+                    case "AllNsgs":
+                        this.ProcessRecord_AllNsgs();
                         break;
-                    case "AdDirectorie":
-                        this.ProcessRecord_AdDirectorie();
+                    case "AllStorageAccounts":
+                        this.ProcessRecord_AllStorageAccounts();
+                        break;
+                    case "AdDirectories":
+                        this.ProcessRecord_AdDirectories();
                         break;
                     case "AdDirectory":
                         this.ProcessRecord_AdDirectory();
+                        break;
+                    case "AdObjectsByType":
+                        this.ProcessRecord_AdObjectsByType();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -1321,12 +1615,30 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // azureNativeSubscriptions.
+        protected void ProcessRecord_NativeSubscriptions()
+        {
+            this._logger.name += " -NativeSubscriptions";
+            // Invoke graphql operation azureNativeSubscriptions
+            InvokeQueryAzureNativeSubscriptions();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // azureNativeResourceGroup.
         protected void ProcessRecord_NativeResourceGroup()
         {
             this._logger.name += " -NativeResourceGroup";
             // Invoke graphql operation azureNativeResourceGroup
             InvokeQueryAzureNativeResourceGroup();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // azureNativeResourceGroups.
+        protected void ProcessRecord_NativeResourceGroups()
+        {
+            this._logger.name += " -NativeResourceGroups";
+            // Invoke graphql operation azureNativeResourceGroups
+            InvokeQueryAzureNativeResourceGroups();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1339,6 +1651,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // azureNativeVirtualMachines.
+        protected void ProcessRecord_NativeVirtualMachines()
+        {
+            this._logger.name += " -NativeVirtualMachines";
+            // Invoke graphql operation azureNativeVirtualMachines
+            InvokeQueryAzureNativeVirtualMachines();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // azureNativeManagedDisk.
         protected void ProcessRecord_NativeManagedDisk()
         {
@@ -1348,10 +1669,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // allAzureNativeVirtualNetworks.
-        protected void ProcessRecord_AllNativeVirtualNetwork()
+        // azureNativeManagedDisks.
+        protected void ProcessRecord_NativeManagedDisks()
         {
-            this._logger.name += " -AllNativeVirtualNetwork";
+            this._logger.name += " -NativeManagedDisks";
+            // Invoke graphql operation azureNativeManagedDisks
+            InvokeQueryAzureNativeManagedDisks();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allAzureNativeVirtualNetworks.
+        protected void ProcessRecord_AllNativeVirtualNetworks()
+        {
+            this._logger.name += " -AllNativeVirtualNetworks";
             // Invoke graphql operation allAzureNativeVirtualNetworks
             InvokeQueryAllAzureNativeVirtualNetworks();
         }
@@ -1412,9 +1742,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allAzureNativeVirtualMachineSizes.
-        protected void ProcessRecord_AllNativeVirtualMachineSize()
+        protected void ProcessRecord_AllNativeVirtualMachineSizes()
         {
-            this._logger.name += " -AllNativeVirtualMachineSize";
+            this._logger.name += " -AllNativeVirtualMachineSizes";
             // Invoke graphql operation allAzureNativeVirtualMachineSizes
             InvokeQueryAllAzureNativeVirtualMachineSizes();
         }
@@ -1456,12 +1786,30 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // azureSqlDatabases.
+        protected void ProcessRecord_SqlDatabases()
+        {
+            this._logger.name += " -SqlDatabases";
+            // Invoke graphql operation azureSqlDatabases
+            InvokeQueryAzureSqlDatabases();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // azureSqlDatabaseServer.
         protected void ProcessRecord_SqlDatabaseServer()
         {
             this._logger.name += " -SqlDatabaseServer";
             // Invoke graphql operation azureSqlDatabaseServer
             InvokeQueryAzureSqlDatabaseServer();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // azureSqlDatabaseServers.
+        protected void ProcessRecord_SqlDatabaseServers()
+        {
+            this._logger.name += " -SqlDatabaseServers";
+            // Invoke graphql operation azureSqlDatabaseServers
+            InvokeQueryAzureSqlDatabaseServers();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1474,12 +1822,30 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // azureSqlManagedInstanceDatabases.
+        protected void ProcessRecord_SqlManagedInstanceDatabases()
+        {
+            this._logger.name += " -SqlManagedInstanceDatabases";
+            // Invoke graphql operation azureSqlManagedInstanceDatabases
+            InvokeQueryAzureSqlManagedInstanceDatabases();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // azureSqlManagedInstanceServer.
         protected void ProcessRecord_SqlManagedInstanceServer()
         {
             this._logger.name += " -SqlManagedInstanceServer";
             // Invoke graphql operation azureSqlManagedInstanceServer
             InvokeQueryAzureSqlManagedInstanceServer();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // azureSqlManagedInstanceServers.
+        protected void ProcessRecord_SqlManagedInstanceServers()
+        {
+            this._logger.name += " -SqlManagedInstanceServers";
+            // Invoke graphql operation azureSqlManagedInstanceServers
+            InvokeQueryAzureSqlManagedInstanceServers();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1520,9 +1886,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allAzureSqlDatabaseServerElasticPools.
-        protected void ProcessRecord_AllSqlDatabaseServerElasticPool()
+        protected void ProcessRecord_AllSqlDatabaseServerElasticPools()
         {
-            this._logger.name += " -AllSqlDatabaseServerElasticPool";
+            this._logger.name += " -AllSqlDatabaseServerElasticPools";
             // Invoke graphql operation allAzureSqlDatabaseServerElasticPools
             InvokeQueryAllAzureSqlDatabaseServerElasticPools();
         }
@@ -1537,6 +1903,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // azureNativeLiveMountDisks.
+        protected void ProcessRecord_NativeLiveMountDisks()
+        {
+            this._logger.name += " -NativeLiveMountDisks";
+            // Invoke graphql operation azureNativeLiveMountDisks
+            InvokeQueryAzureNativeLiveMountDisks();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // allAzureKeyVaultsByRegion.
         protected void ProcessRecord_AllKeyVaultsByRegion()
         {
@@ -1547,9 +1922,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allAzureEncryptionKeys.
-        protected void ProcessRecord_AllEncryptionKey()
+        protected void ProcessRecord_AllEncryptionKeys()
         {
-            this._logger.name += " -AllEncryptionKey";
+            this._logger.name += " -AllEncryptionKeys";
             // Invoke graphql operation allAzureEncryptionKeys
             InvokeQueryAllAzureEncryptionKeys();
         }
@@ -1565,36 +1940,36 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // azureCloudAccountTenantWithExoConfigs.
-        protected void ProcessRecord_CloudAccountTenantWithExoConfig()
+        protected void ProcessRecord_CloudAccountTenantWithExoConfigs()
         {
-            this._logger.name += " -CloudAccountTenantWithExoConfig";
+            this._logger.name += " -CloudAccountTenantWithExoConfigs";
             // Invoke graphql operation azureCloudAccountTenantWithExoConfigs
             InvokeQueryAzureCloudAccountTenantWithExoConfigs();
         }
 
         // This parameter set invokes a single graphql operation:
         // allAzureCloudAccountTenantsWithExoConfigs.
-        protected void ProcessRecord_AllCloudAccountTenantsWithExoConfig()
+        protected void ProcessRecord_AllCloudAccountTenantsWithExoConfigs()
         {
-            this._logger.name += " -AllCloudAccountTenantsWithExoConfig";
+            this._logger.name += " -AllCloudAccountTenantsWithExoConfigs";
             // Invoke graphql operation allAzureCloudAccountTenantsWithExoConfigs
             InvokeQueryAllAzureCloudAccountTenantsWithExoConfigs();
         }
 
         // This parameter set invokes a single graphql operation:
         // allAzureCloudAccountTenants.
-        protected void ProcessRecord_AllCloudAccountTenant()
+        protected void ProcessRecord_AllCloudAccountTenants()
         {
-            this._logger.name += " -AllCloudAccountTenant";
+            this._logger.name += " -AllCloudAccountTenants";
             // Invoke graphql operation allAzureCloudAccountTenants
             InvokeQueryAllAzureCloudAccountTenants();
         }
 
         // This parameter set invokes a single graphql operation:
         // azureCloudAccountSubscriptionWithFeatures.
-        protected void ProcessRecord_CloudAccountSubscriptionWithFeature()
+        protected void ProcessRecord_CloudAccountSubscriptionWithFeatures()
         {
-            this._logger.name += " -CloudAccountSubscriptionWithFeature";
+            this._logger.name += " -CloudAccountSubscriptionWithFeatures";
             // Invoke graphql operation azureCloudAccountSubscriptionWithFeatures
             InvokeQueryAzureCloudAccountSubscriptionWithFeatures();
         }
@@ -1610,9 +1985,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allAzureSubscriptionWithExocomputeMappings.
-        protected void ProcessRecord_AllSubscriptionWithExocomputeMapping()
+        protected void ProcessRecord_AllSubscriptionWithExocomputeMappings()
         {
-            this._logger.name += " -AllSubscriptionWithExocomputeMapping";
+            this._logger.name += " -AllSubscriptionWithExocomputeMappings";
             // Invoke graphql operation allAzureSubscriptionWithExocomputeMappings
             InvokeQueryAllAzureSubscriptionWithExocomputeMappings();
         }
@@ -1646,9 +2021,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allAzureCloudAccountMissingPermissions.
-        protected void ProcessRecord_AllCloudAccountMissingPermission()
+        protected void ProcessRecord_AllCloudAccountMissingPermissions()
         {
-            this._logger.name += " -AllCloudAccountMissingPermission";
+            this._logger.name += " -AllCloudAccountMissingPermissions";
             // Invoke graphql operation allAzureCloudAccountMissingPermissions
             InvokeQueryAllAzureCloudAccountMissingPermissions();
         }
@@ -1660,6 +2035,33 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -CloudAccountPermissionConfig";
             // Invoke graphql operation azureCloudAccountPermissionConfig
             InvokeQueryAzureCloudAccountPermissionConfig();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // azureCloudAccountGrantedPermissionsGroups.
+        protected void ProcessRecord_CloudAccountGrantedPermissionsGroups()
+        {
+            this._logger.name += " -CloudAccountGrantedPermissionsGroups";
+            // Invoke graphql operation azureCloudAccountGrantedPermissionsGroups
+            InvokeQueryAzureCloudAccountGrantedPermissionsGroups();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // azureCloudAccountGrantedPermissionsGroupsForRecovery.
+        protected void ProcessRecord_CloudAccountGrantedPermissionsGroupsForRecovery()
+        {
+            this._logger.name += " -CloudAccountGrantedPermissionsGroupsForRecovery";
+            // Invoke graphql operation azureCloudAccountGrantedPermissionsGroupsForRecovery
+            InvokeQueryAzureCloudAccountGrantedPermissionsGroupsForRecovery();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // azureCloudAccountCheckRefreshTokenExistsForRecovery.
+        protected void ProcessRecord_CloudAccountCheckRefreshTokenExistsForRecovery()
+        {
+            this._logger.name += " -CloudAccountCheckRefreshTokenExistsForRecovery";
+            // Invoke graphql operation azureCloudAccountCheckRefreshTokenExistsForRecovery
+            InvokeQueryAzureCloudAccountCheckRefreshTokenExistsForRecovery();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1682,9 +2084,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // validateAzureCloudAccountExocomputeConfigurations.
-        protected void ProcessRecord_ValidateCloudAccountExocomputeConfiguration()
+        protected void ProcessRecord_ValidateCloudAccountExocomputeConfigurations()
         {
-            this._logger.name += " -ValidateCloudAccountExocomputeConfiguration";
+            this._logger.name += " -ValidateCloudAccountExocomputeConfigurations";
             // Invoke graphql operation validateAzureCloudAccountExocomputeConfigurations
             InvokeQueryValidateAzureCloudAccountExocomputeConfigurations();
         }
@@ -1699,136 +2101,145 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // azureSubscriptions.
-        protected void ProcessRecord_Subscription()
+        // checkAzurePersistentStorageSubscriptionCanUnmap.
+        protected void ProcessRecord_CheckPersistentStorageSubscriptionCanUnmap()
         {
-            this._logger.name += " -Subscription";
+            this._logger.name += " -CheckPersistentStorageSubscriptionCanUnmap";
+            // Invoke graphql operation checkAzurePersistentStorageSubscriptionCanUnmap
+            InvokeQueryCheckAzurePersistentStorageSubscriptionCanUnmap();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // azureSubscriptions.
+        protected void ProcessRecord_Subscriptions()
+        {
+            this._logger.name += " -Subscriptions";
             // Invoke graphql operation azureSubscriptions
             InvokeQueryAzureSubscriptions();
         }
 
         // This parameter set invokes a single graphql operation:
         // azureRegions.
-        protected void ProcessRecord_Region()
+        protected void ProcessRecord_Regions()
         {
-            this._logger.name += " -Region";
+            this._logger.name += " -Regions";
             // Invoke graphql operation azureRegions
             InvokeQueryAzureRegions();
         }
 
         // This parameter set invokes a single graphql operation:
         // azureResourceGroups.
-        protected void ProcessRecord_ResourceGroup()
+        protected void ProcessRecord_ResourceGroups()
         {
-            this._logger.name += " -ResourceGroup";
+            this._logger.name += " -ResourceGroups";
             // Invoke graphql operation azureResourceGroups
             InvokeQueryAzureResourceGroups();
         }
 
         // This parameter set invokes a single graphql operation:
         // azureVNets.
-        protected void ProcessRecord_VNet()
+        protected void ProcessRecord_VNets()
         {
-            this._logger.name += " -VNet";
+            this._logger.name += " -VNets";
             // Invoke graphql operation azureVNets
             InvokeQueryAzureVnets();
         }
 
         // This parameter set invokes a single graphql operation:
         // azureSubnets.
-        protected void ProcessRecord_Subnet()
+        protected void ProcessRecord_Subnets()
         {
-            this._logger.name += " -Subnet";
+            this._logger.name += " -Subnets";
             // Invoke graphql operation azureSubnets
             InvokeQueryAzureSubnets();
         }
 
         // This parameter set invokes a single graphql operation:
         // azureStorageAccounts.
-        protected void ProcessRecord_StorageAccount()
+        protected void ProcessRecord_StorageAccounts()
         {
-            this._logger.name += " -StorageAccount";
+            this._logger.name += " -StorageAccounts";
             // Invoke graphql operation azureStorageAccounts
             InvokeQueryAzureStorageAccounts();
         }
 
         // This parameter set invokes a single graphql operation:
         // allHostedAzureRegions.
-        protected void ProcessRecord_AllHostedRegion()
+        protected void ProcessRecord_AllHostedRegions()
         {
-            this._logger.name += " -AllHostedRegion";
+            this._logger.name += " -AllHostedRegions";
             // Invoke graphql operation allHostedAzureRegions
             InvokeQueryAllHostedAzureRegions();
         }
 
         // This parameter set invokes a single graphql operation:
         // allAzureResourceGroups.
-        protected void ProcessRecord_AllResourceGroup()
+        protected void ProcessRecord_AllResourceGroups()
         {
-            this._logger.name += " -AllResourceGroup";
+            this._logger.name += " -AllResourceGroups";
             // Invoke graphql operation allAzureResourceGroups
             InvokeQueryAllAzureResourceGroups();
         }
 
         // This parameter set invokes a single graphql operation:
         // allAzureVnets.
-        protected void ProcessRecord_AllVnet()
+        protected void ProcessRecord_AllVnets()
         {
-            this._logger.name += " -AllVnet";
+            this._logger.name += " -AllVnets";
             // Invoke graphql operation allAzureVnets
             InvokeQueryAllAzureVnets();
         }
 
         // This parameter set invokes a single graphql operation:
         // allAzureSubnets.
-        protected void ProcessRecord_AllSubnet()
+        protected void ProcessRecord_AllSubnets()
         {
-            this._logger.name += " -AllSubnet";
+            this._logger.name += " -AllSubnets";
             // Invoke graphql operation allAzureSubnets
             InvokeQueryAllAzureSubnets();
         }
 
         // This parameter set invokes a single graphql operation:
         // allAzureCdmVersions.
-        protected void ProcessRecord_AllCdmVersion()
+        protected void ProcessRecord_AllCdmVersions()
         {
-            this._logger.name += " -AllCdmVersion";
+            this._logger.name += " -AllCdmVersions";
             // Invoke graphql operation allAzureCdmVersions
             InvokeQueryAllAzureCdmVersions();
         }
 
         // This parameter set invokes a single graphql operation:
         // allAzureRegions.
-        protected void ProcessRecord_AllRegion()
+        protected void ProcessRecord_AllRegions()
         {
-            this._logger.name += " -AllRegion";
+            this._logger.name += " -AllRegions";
             // Invoke graphql operation allAzureRegions
             InvokeQueryAllAzureRegions();
         }
 
         // This parameter set invokes a single graphql operation:
         // allAzureNsgs.
-        protected void ProcessRecord_AllNsg()
+        protected void ProcessRecord_AllNsgs()
         {
-            this._logger.name += " -AllNsg";
+            this._logger.name += " -AllNsgs";
             // Invoke graphql operation allAzureNsgs
             InvokeQueryAllAzureNsgs();
         }
 
         // This parameter set invokes a single graphql operation:
         // allAzureStorageAccounts.
-        protected void ProcessRecord_AllStorageAccount()
+        protected void ProcessRecord_AllStorageAccounts()
         {
-            this._logger.name += " -AllStorageAccount";
+            this._logger.name += " -AllStorageAccounts";
             // Invoke graphql operation allAzureStorageAccounts
             InvokeQueryAllAzureStorageAccounts();
         }
 
         // This parameter set invokes a single graphql operation:
         // azureAdDirectories.
-        protected void ProcessRecord_AdDirectorie()
+        protected void ProcessRecord_AdDirectories()
         {
-            this._logger.name += " -AdDirectorie";
+            this._logger.name += " -AdDirectories";
             // Invoke graphql operation azureAdDirectories
             InvokeQueryAzureAdDirectories();
         }
@@ -1842,6 +2253,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             InvokeQueryAzureAdDirectory();
         }
 
+        // This parameter set invokes a single graphql operation:
+        // azureAdObjectsByType.
+        protected void ProcessRecord_AdObjectsByType()
+        {
+            this._logger.name += " -AdObjectsByType";
+            // Invoke graphql operation azureAdObjectsByType
+            InvokeQueryAzureAdObjectsByType();
+        }
+
 
         // Invoke GraphQL Query:
         // azureNativeRoot: AzureNativeRoot!
@@ -1849,32 +2269,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         {
             Tuple<string, string>[] argDefs = {
             };
-            AzureNativeRoot? fields = null ;
-            if (this.Field != null)
-            {
+            AzureNativeRoot? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (AzureNativeRoot)psObject.BaseObject;
+                    fieldSpecObj = (AzureNativeRoot)psObject.BaseObject;
                 } else {
-                    fields = (AzureNativeRoot)this.Field;
+                    fieldSpecObj = (AzureNativeRoot)this.Field;
                 }
             }
-            string document = Query.AzureNativeRoot(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AzureNativeRoot");
-            var parameters = "";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAzureNativeRoot" + parameters + "{" + document + "}",
-                OperationName = "QueryAzureNativeRoot",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            var result = this._rbkClient.Invoke(
-                request, vars, "AzureNativeRoot", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AzureNativeRoot(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAzureNativeRoot",
+                "",
+                fieldSpecDoc,
+                "AzureNativeRoot"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1884,33 +2296,71 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("azureSubscriptionRubrikId", "UUID!"),
             };
-            AzureNativeSubscription? fields = null ;
-            if (this.Field != null)
-            {
+            AzureNativeSubscription? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (AzureNativeSubscription)psObject.BaseObject;
+                    fieldSpecObj = (AzureNativeSubscription)psObject.BaseObject;
                 } else {
-                    fields = (AzureNativeSubscription)this.Field;
+                    fieldSpecObj = (AzureNativeSubscription)this.Field;
                 }
             }
-            string document = Query.AzureNativeSubscription(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AzureNativeSubscription");
-            var parameters = "($azureSubscriptionRubrikId: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAzureNativeSubscription" + parameters + "{" + document + "}",
-                OperationName = "QueryAzureNativeSubscription",
+            string fieldSpecDoc = Query.AzureNativeSubscription(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAzureNativeSubscription",
+                "($azureSubscriptionRubrikId: UUID!)",
+                fieldSpecDoc,
+                "AzureNativeSubscription"
+            );
+        }
+
+        // Invoke GraphQL Query:
+        // azureNativeSubscriptions(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     sortBy: AzureNativeSubscriptionSortFields
+        //     sortOrder: SortOrder
+        //     subscriptionFilters: AzureNativeSubscriptionFilters
+        //     authorizedOperationFilter: Operation
+        //     workloadHierarchy: WorkloadLevelHierarchy
+        //     azureNativeProtectionFeature: AzureNativeProtectionFeature
+        //   ): AzureNativeSubscriptionConnection!
+        protected void InvokeQueryAzureNativeSubscriptions()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("sortBy", "AzureNativeSubscriptionSortFields"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("subscriptionFilters", "AzureNativeSubscriptionFilters"),
+                Tuple.Create("authorizedOperationFilter", "Operation"),
+                Tuple.Create("workloadHierarchy", "WorkloadLevelHierarchy"),
+                Tuple.Create("azureNativeProtectionFeature", "AzureNativeProtectionFeature"),
             };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
+            AzureNativeSubscriptionConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                if (this.Field is PSObject psObject) {
+                    fieldSpecObj = (AzureNativeSubscriptionConnection)psObject.BaseObject;
+                } else {
+                    fieldSpecObj = (AzureNativeSubscriptionConnection)this.Field;
+                }
             }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "AzureNativeSubscription", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AzureNativeSubscriptions(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAzureNativeSubscriptions",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AzureNativeSubscriptionSortFields,$sortOrder: SortOrder,$subscriptionFilters: AzureNativeSubscriptionFilters,$authorizedOperationFilter: Operation,$workloadHierarchy: WorkloadLevelHierarchy,$azureNativeProtectionFeature: AzureNativeProtectionFeature)",
+                fieldSpecDoc,
+                "AzureNativeSubscriptionConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1920,33 +2370,69 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("resourceGroupId", "UUID!"),
             };
-            AzureNativeResourceGroup? fields = null ;
-            if (this.Field != null)
-            {
+            AzureNativeResourceGroup? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (AzureNativeResourceGroup)psObject.BaseObject;
+                    fieldSpecObj = (AzureNativeResourceGroup)psObject.BaseObject;
                 } else {
-                    fields = (AzureNativeResourceGroup)this.Field;
+                    fieldSpecObj = (AzureNativeResourceGroup)this.Field;
                 }
             }
-            string document = Query.AzureNativeResourceGroup(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AzureNativeResourceGroup");
-            var parameters = "($resourceGroupId: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAzureNativeResourceGroup" + parameters + "{" + document + "}",
-                OperationName = "QueryAzureNativeResourceGroup",
+            string fieldSpecDoc = Query.AzureNativeResourceGroup(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAzureNativeResourceGroup",
+                "($resourceGroupId: UUID!)",
+                fieldSpecDoc,
+                "AzureNativeResourceGroup"
+            );
+        }
+
+        // Invoke GraphQL Query:
+        // azureNativeResourceGroups(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     sortBy: AzureNativeCommonResourceGroupSortFields
+        //     sortOrder: SortOrder
+        //     commonResourceGroupFilters: AzureNativeCommonResourceGroupFilters
+        //     protectedObjectTypes: [WorkloadLevelHierarchy!]
+        //     azureNativeProtectionFeatures: [AzureNativeProtectionFeature!]
+        //   ): AzureNativeResourceGroupConnection!
+        protected void InvokeQueryAzureNativeResourceGroups()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("sortBy", "AzureNativeCommonResourceGroupSortFields"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("commonResourceGroupFilters", "AzureNativeCommonResourceGroupFilters"),
+                Tuple.Create("protectedObjectTypes", "[WorkloadLevelHierarchy!]"),
+                Tuple.Create("azureNativeProtectionFeatures", "[AzureNativeProtectionFeature!]"),
             };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
+            AzureNativeResourceGroupConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                if (this.Field is PSObject psObject) {
+                    fieldSpecObj = (AzureNativeResourceGroupConnection)psObject.BaseObject;
+                } else {
+                    fieldSpecObj = (AzureNativeResourceGroupConnection)this.Field;
+                }
             }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "AzureNativeResourceGroup", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AzureNativeResourceGroups(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAzureNativeResourceGroups",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AzureNativeCommonResourceGroupSortFields,$sortOrder: SortOrder,$commonResourceGroupFilters: AzureNativeCommonResourceGroupFilters,$protectedObjectTypes: [WorkloadLevelHierarchy!],$azureNativeProtectionFeatures: [AzureNativeProtectionFeature!])",
+                fieldSpecDoc,
+                "AzureNativeResourceGroupConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1956,33 +2442,67 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("azureVirtualMachineRubrikId", "UUID!"),
             };
-            AzureNativeVirtualMachine? fields = null ;
-            if (this.Field != null)
-            {
+            AzureNativeVirtualMachine? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (AzureNativeVirtualMachine)psObject.BaseObject;
+                    fieldSpecObj = (AzureNativeVirtualMachine)psObject.BaseObject;
                 } else {
-                    fields = (AzureNativeVirtualMachine)this.Field;
+                    fieldSpecObj = (AzureNativeVirtualMachine)this.Field;
                 }
             }
-            string document = Query.AzureNativeVirtualMachine(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AzureNativeVirtualMachine");
-            var parameters = "($azureVirtualMachineRubrikId: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAzureNativeVirtualMachine" + parameters + "{" + document + "}",
-                OperationName = "QueryAzureNativeVirtualMachine",
+            string fieldSpecDoc = Query.AzureNativeVirtualMachine(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAzureNativeVirtualMachine",
+                "($azureVirtualMachineRubrikId: UUID!)",
+                fieldSpecDoc,
+                "AzureNativeVirtualMachine"
+            );
+        }
+
+        // Invoke GraphQL Query:
+        // azureNativeVirtualMachines(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     sortBy: AzureNativeVirtualMachineSortFields
+        //     sortOrder: SortOrder
+        //     descendantTypeFilter: [HierarchyObjectTypeEnum!]
+        //     virtualMachineFilters: AzureNativeVirtualMachineFilters
+        //   ): AzureNativeVirtualMachineConnection!
+        protected void InvokeQueryAzureNativeVirtualMachines()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("sortBy", "AzureNativeVirtualMachineSortFields"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("descendantTypeFilter", "[HierarchyObjectTypeEnum!]"),
+                Tuple.Create("virtualMachineFilters", "AzureNativeVirtualMachineFilters"),
             };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
+            AzureNativeVirtualMachineConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                if (this.Field is PSObject psObject) {
+                    fieldSpecObj = (AzureNativeVirtualMachineConnection)psObject.BaseObject;
+                } else {
+                    fieldSpecObj = (AzureNativeVirtualMachineConnection)this.Field;
+                }
             }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "AzureNativeVirtualMachine", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AzureNativeVirtualMachines(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAzureNativeVirtualMachines",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AzureNativeVirtualMachineSortFields,$sortOrder: SortOrder,$descendantTypeFilter: [HierarchyObjectTypeEnum!],$virtualMachineFilters: AzureNativeVirtualMachineFilters)",
+                fieldSpecDoc,
+                "AzureNativeVirtualMachineConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1992,33 +2512,65 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("azureManagedDiskRubrikId", "UUID!"),
             };
-            AzureNativeManagedDisk? fields = null ;
-            if (this.Field != null)
-            {
+            AzureNativeManagedDisk? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (AzureNativeManagedDisk)psObject.BaseObject;
+                    fieldSpecObj = (AzureNativeManagedDisk)psObject.BaseObject;
                 } else {
-                    fields = (AzureNativeManagedDisk)this.Field;
+                    fieldSpecObj = (AzureNativeManagedDisk)this.Field;
                 }
             }
-            string document = Query.AzureNativeManagedDisk(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AzureNativeManagedDisk");
-            var parameters = "($azureManagedDiskRubrikId: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAzureNativeManagedDisk" + parameters + "{" + document + "}",
-                OperationName = "QueryAzureNativeManagedDisk",
+            string fieldSpecDoc = Query.AzureNativeManagedDisk(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAzureNativeManagedDisk",
+                "($azureManagedDiskRubrikId: UUID!)",
+                fieldSpecDoc,
+                "AzureNativeManagedDisk"
+            );
+        }
+
+        // Invoke GraphQL Query:
+        // azureNativeManagedDisks(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     sortBy: AzureNativeDiskSortFields
+        //     sortOrder: SortOrder
+        //     diskFilters: AzureNativeDiskFilters
+        //   ): AzureNativeManagedDiskConnection!
+        protected void InvokeQueryAzureNativeManagedDisks()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("sortBy", "AzureNativeDiskSortFields"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("diskFilters", "AzureNativeDiskFilters"),
             };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
+            AzureNativeManagedDiskConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                if (this.Field is PSObject psObject) {
+                    fieldSpecObj = (AzureNativeManagedDiskConnection)psObject.BaseObject;
+                } else {
+                    fieldSpecObj = (AzureNativeManagedDiskConnection)this.Field;
+                }
             }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "AzureNativeManagedDisk", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AzureNativeManagedDisks(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAzureNativeManagedDisks",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AzureNativeDiskSortFields,$sortOrder: SortOrder,$diskFilters: AzureNativeDiskFilters)",
+                fieldSpecDoc,
+                "AzureNativeManagedDiskConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2028,33 +2580,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("azureSubscriptionRubrikId", "UUID"),
             };
-            List<AzureNativeVirtualNetwork>? fields = null ;
-            if (this.Field != null)
-            {
+            List<AzureNativeVirtualNetwork>? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (List<AzureNativeVirtualNetwork>)psObject.BaseObject;
+                    fieldSpecObj = (List<AzureNativeVirtualNetwork>)psObject.BaseObject;
                 } else {
-                    fields = (List<AzureNativeVirtualNetwork>)this.Field;
+                    fieldSpecObj = (List<AzureNativeVirtualNetwork>)this.Field;
                 }
             }
-            string document = Query.AllAzureNativeVirtualNetworks(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AllAzureNativeVirtualNetworks");
-            var parameters = "($azureSubscriptionRubrikId: UUID)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAllAzureNativeVirtualNetworks" + parameters + "{" + document + "}",
-                OperationName = "QueryAllAzureNativeVirtualNetworks",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "List<AzureNativeVirtualNetwork>", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AllAzureNativeVirtualNetworks(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAllAzureNativeVirtualNetworks",
+                "($azureSubscriptionRubrikId: UUID)",
+                fieldSpecDoc,
+                "List<AzureNativeVirtualNetwork>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2065,33 +2608,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("azureSubscriptionRubrikId", "UUID!"),
                 Tuple.Create("region", "AzureNativeRegion!"),
             };
-            List<AzureNativeSubnet>? fields = null ;
-            if (this.Field != null)
-            {
+            List<AzureNativeSubnet>? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (List<AzureNativeSubnet>)psObject.BaseObject;
+                    fieldSpecObj = (List<AzureNativeSubnet>)psObject.BaseObject;
                 } else {
-                    fields = (List<AzureNativeSubnet>)this.Field;
+                    fieldSpecObj = (List<AzureNativeSubnet>)this.Field;
                 }
             }
-            string document = Query.AllAzureNativeSubnetsByRegionFromAzure(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AllAzureNativeSubnetsByRegionFromAzure");
-            var parameters = "($azureSubscriptionRubrikId: UUID!,$region: AzureNativeRegion!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAllAzureNativeSubnetsByRegionFromAzure" + parameters + "{" + document + "}",
-                OperationName = "QueryAllAzureNativeSubnetsByRegionFromAzure",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "List<AzureNativeSubnet>", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AllAzureNativeSubnetsByRegionFromAzure(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAllAzureNativeSubnetsByRegionFromAzure",
+                "($azureSubscriptionRubrikId: UUID!,$region: AzureNativeRegion!)",
+                fieldSpecDoc,
+                "List<AzureNativeSubnet>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2102,33 +2636,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("azureSubscriptionRubrikId", "UUID!"),
                 Tuple.Create("region", "AzureNativeRegion!"),
             };
-            List<AzureNativeSecurityGroup>? fields = null ;
-            if (this.Field != null)
-            {
+            List<AzureNativeSecurityGroup>? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (List<AzureNativeSecurityGroup>)psObject.BaseObject;
+                    fieldSpecObj = (List<AzureNativeSecurityGroup>)psObject.BaseObject;
                 } else {
-                    fields = (List<AzureNativeSecurityGroup>)this.Field;
+                    fieldSpecObj = (List<AzureNativeSecurityGroup>)this.Field;
                 }
             }
-            string document = Query.AllAzureNativeSecurityGroupsByRegionFromAzure(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AllAzureNativeSecurityGroupsByRegionFromAzure");
-            var parameters = "($azureSubscriptionRubrikId: UUID!,$region: AzureNativeRegion!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAllAzureNativeSecurityGroupsByRegionFromAzure" + parameters + "{" + document + "}",
-                OperationName = "QueryAllAzureNativeSecurityGroupsByRegionFromAzure",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "List<AzureNativeSecurityGroup>", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AllAzureNativeSecurityGroupsByRegionFromAzure(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAllAzureNativeSecurityGroupsByRegionFromAzure",
+                "($azureSubscriptionRubrikId: UUID!,$region: AzureNativeRegion!)",
+                fieldSpecDoc,
+                "List<AzureNativeSecurityGroup>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2139,33 +2664,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("azureSubscriptionRubrikId", "UUID!"),
                 Tuple.Create("region", "AzureNativeRegion!"),
             };
-            List<AzureNativeDiskEncryptionSet>? fields = null ;
-            if (this.Field != null)
-            {
+            List<AzureNativeDiskEncryptionSet>? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (List<AzureNativeDiskEncryptionSet>)psObject.BaseObject;
+                    fieldSpecObj = (List<AzureNativeDiskEncryptionSet>)psObject.BaseObject;
                 } else {
-                    fields = (List<AzureNativeDiskEncryptionSet>)this.Field;
+                    fieldSpecObj = (List<AzureNativeDiskEncryptionSet>)this.Field;
                 }
             }
-            string document = Query.AllAzureDiskEncryptionSetsByRegion(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AllAzureDiskEncryptionSetsByRegion");
-            var parameters = "($azureSubscriptionRubrikId: UUID!,$region: AzureNativeRegion!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAllAzureDiskEncryptionSetsByRegion" + parameters + "{" + document + "}",
-                OperationName = "QueryAllAzureDiskEncryptionSetsByRegion",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "List<AzureNativeDiskEncryptionSet>", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AllAzureDiskEncryptionSetsByRegion(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAllAzureDiskEncryptionSetsByRegion",
+                "($azureSubscriptionRubrikId: UUID!,$region: AzureNativeRegion!)",
+                fieldSpecDoc,
+                "List<AzureNativeDiskEncryptionSet>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2177,33 +2693,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("resourceGroupName", "String!"),
                 Tuple.Create("region", "AzureNativeRegion!"),
             };
-            List<AzureNativeAvailabilitySet>? fields = null ;
-            if (this.Field != null)
-            {
+            List<AzureNativeAvailabilitySet>? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (List<AzureNativeAvailabilitySet>)psObject.BaseObject;
+                    fieldSpecObj = (List<AzureNativeAvailabilitySet>)psObject.BaseObject;
                 } else {
-                    fields = (List<AzureNativeAvailabilitySet>)this.Field;
+                    fieldSpecObj = (List<AzureNativeAvailabilitySet>)this.Field;
                 }
             }
-            string document = Query.AllAzureNativeAvailabilitySetsByRegionFromAzure(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AllAzureNativeAvailabilitySetsByRegionFromAzure");
-            var parameters = "($azureSubscriptionRubrikId: UUID!,$resourceGroupName: String!,$region: AzureNativeRegion!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAllAzureNativeAvailabilitySetsByRegionFromAzure" + parameters + "{" + document + "}",
-                OperationName = "QueryAllAzureNativeAvailabilitySetsByRegionFromAzure",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "List<AzureNativeAvailabilitySet>", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AllAzureNativeAvailabilitySetsByRegionFromAzure(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAllAzureNativeAvailabilitySetsByRegionFromAzure",
+                "($azureSubscriptionRubrikId: UUID!,$resourceGroupName: String!,$region: AzureNativeRegion!)",
+                fieldSpecDoc,
+                "List<AzureNativeAvailabilitySet>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2215,33 +2722,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("region", "AzureNativeRegion!"),
                 Tuple.Create("vmSnapshotId", "UUID!"),
             };
-            List<AzureNativeExportCompatibleVmSizes>? fields = null ;
-            if (this.Field != null)
-            {
+            List<AzureNativeExportCompatibleVmSizes>? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (List<AzureNativeExportCompatibleVmSizes>)psObject.BaseObject;
+                    fieldSpecObj = (List<AzureNativeExportCompatibleVmSizes>)psObject.BaseObject;
                 } else {
-                    fields = (List<AzureNativeExportCompatibleVmSizes>)this.Field;
+                    fieldSpecObj = (List<AzureNativeExportCompatibleVmSizes>)this.Field;
                 }
             }
-            string document = Query.AllAzureNativeExportCompatibleVmSizesByRegionFromAzure(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AllAzureNativeExportCompatibleVmSizesByRegionFromAzure");
-            var parameters = "($azureSubscriptionRubrikId: UUID!,$region: AzureNativeRegion!,$vmSnapshotId: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAllAzureNativeExportCompatibleVmSizesByRegionFromAzure" + parameters + "{" + document + "}",
-                OperationName = "QueryAllAzureNativeExportCompatibleVmSizesByRegionFromAzure",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "List<AzureNativeExportCompatibleVmSizes>", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AllAzureNativeExportCompatibleVmSizesByRegionFromAzure(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAllAzureNativeExportCompatibleVmSizesByRegionFromAzure",
+                "($azureSubscriptionRubrikId: UUID!,$region: AzureNativeRegion!,$vmSnapshotId: UUID!)",
+                fieldSpecDoc,
+                "List<AzureNativeExportCompatibleVmSizes>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2252,33 +2750,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("azureSubscriptionRubrikId", "UUID!"),
                 Tuple.Create("region", "AzureNativeRegion!"),
             };
-            List<AzureNativeExportCompatibleDiskTypes>? fields = null ;
-            if (this.Field != null)
-            {
+            List<AzureNativeExportCompatibleDiskTypes>? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (List<AzureNativeExportCompatibleDiskTypes>)psObject.BaseObject;
+                    fieldSpecObj = (List<AzureNativeExportCompatibleDiskTypes>)psObject.BaseObject;
                 } else {
-                    fields = (List<AzureNativeExportCompatibleDiskTypes>)this.Field;
+                    fieldSpecObj = (List<AzureNativeExportCompatibleDiskTypes>)this.Field;
                 }
             }
-            string document = Query.AllAzureNativeExportCompatibleDiskTypesByRegionFromAzure(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AllAzureNativeExportCompatibleDiskTypesByRegionFromAzure");
-            var parameters = "($azureSubscriptionRubrikId: UUID!,$region: AzureNativeRegion!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAllAzureNativeExportCompatibleDiskTypesByRegionFromAzure" + parameters + "{" + document + "}",
-                OperationName = "QueryAllAzureNativeExportCompatibleDiskTypesByRegionFromAzure",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "List<AzureNativeExportCompatibleDiskTypes>", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AllAzureNativeExportCompatibleDiskTypesByRegionFromAzure(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAllAzureNativeExportCompatibleDiskTypesByRegionFromAzure",
+                "($azureSubscriptionRubrikId: UUID!,$region: AzureNativeRegion!)",
+                fieldSpecDoc,
+                "List<AzureNativeExportCompatibleDiskTypes>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2288,33 +2777,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("azureSubscriptionRubrikId", "UUID"),
             };
-            List<System.String>? fields = null ;
-            if (this.Field != null)
-            {
+            List<System.String>? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (List<System.String>)psObject.BaseObject;
+                    fieldSpecObj = (List<System.String>)psObject.BaseObject;
                 } else {
-                    fields = (List<System.String>)this.Field;
+                    fieldSpecObj = (List<System.String>)this.Field;
                 }
             }
-            string document = Query.AllAzureNativeVirtualMachineSizes(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AllAzureNativeVirtualMachineSizes");
-            var parameters = "($azureSubscriptionRubrikId: UUID)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAllAzureNativeVirtualMachineSizes" + parameters + "{" + document + "}",
-                OperationName = "QueryAllAzureNativeVirtualMachineSizes",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "List<System.String>", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AllAzureNativeVirtualMachineSizes(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAllAzureNativeVirtualMachineSizes",
+                "($azureSubscriptionRubrikId: UUID)",
+                fieldSpecDoc,
+                "List<System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2325,33 +2805,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("azureSubscriptionRubrikId", "UUID!"),
                 Tuple.Create("diskSnapshotId", "UUID!"),
             };
-            System.Boolean? fields = null ;
-            if (this.Field != null)
-            {
+            System.Boolean? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (System.Boolean)psObject.BaseObject;
+                    fieldSpecObj = (System.Boolean)psObject.BaseObject;
                 } else {
-                    fields = (System.Boolean)this.Field;
+                    fieldSpecObj = (System.Boolean)this.Field;
                 }
             }
-            string document = Query.IsAzureNativeManagedDiskSnapshotRestorable(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.IsAzureNativeManagedDiskSnapshotRestorable");
-            var parameters = "($azureSubscriptionRubrikId: UUID!,$diskSnapshotId: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryIsAzureNativeManagedDiskSnapshotRestorable" + parameters + "{" + document + "}",
-                OperationName = "QueryIsAzureNativeManagedDiskSnapshotRestorable",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "System.Boolean", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.IsAzureNativeManagedDiskSnapshotRestorable(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryIsAzureNativeManagedDiskSnapshotRestorable",
+                "($azureSubscriptionRubrikId: UUID!,$diskSnapshotId: UUID!)",
+                fieldSpecDoc,
+                "System.Boolean"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2362,33 +2833,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("azureSubscriptionRubrikId", "UUID!"),
                 Tuple.Create("storageAccountName", "String!"),
             };
-            System.Boolean? fields = null ;
-            if (this.Field != null)
-            {
+            System.Boolean? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (System.Boolean)psObject.BaseObject;
+                    fieldSpecObj = (System.Boolean)psObject.BaseObject;
                 } else {
-                    fields = (System.Boolean)this.Field;
+                    fieldSpecObj = (System.Boolean)this.Field;
                 }
             }
-            string document = Query.IsAzureStorageAccountNameAvailable(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.IsAzureStorageAccountNameAvailable");
-            var parameters = "($azureSubscriptionRubrikId: UUID!,$storageAccountName: String!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryIsAzureStorageAccountNameAvailable" + parameters + "{" + document + "}",
-                OperationName = "QueryIsAzureStorageAccountNameAvailable",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "System.Boolean", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.IsAzureStorageAccountNameAvailable(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryIsAzureStorageAccountNameAvailable",
+                "($azureSubscriptionRubrikId: UUID!,$storageAccountName: String!)",
+                fieldSpecDoc,
+                "System.Boolean"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2398,33 +2860,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("azureSubscriptionRubrikId", "UUID!"),
             };
-            List<AzureNativeStorageAccount>? fields = null ;
-            if (this.Field != null)
-            {
+            List<AzureNativeStorageAccount>? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (List<AzureNativeStorageAccount>)psObject.BaseObject;
+                    fieldSpecObj = (List<AzureNativeStorageAccount>)psObject.BaseObject;
                 } else {
-                    fields = (List<AzureNativeStorageAccount>)this.Field;
+                    fieldSpecObj = (List<AzureNativeStorageAccount>)this.Field;
                 }
             }
-            string document = Query.AllAzureNativeStorageAccountsFromAzure(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AllAzureNativeStorageAccountsFromAzure");
-            var parameters = "($azureSubscriptionRubrikId: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAllAzureNativeStorageAccountsFromAzure" + parameters + "{" + document + "}",
-                OperationName = "QueryAllAzureNativeStorageAccountsFromAzure",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "List<AzureNativeStorageAccount>", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AllAzureNativeStorageAccountsFromAzure(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAllAzureNativeStorageAccountsFromAzure",
+                "($azureSubscriptionRubrikId: UUID!)",
+                fieldSpecDoc,
+                "List<AzureNativeStorageAccount>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2434,33 +2887,65 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("azureSqlDatabaseRubrikId", "UUID!"),
             };
-            AzureSqlDatabaseDb? fields = null ;
-            if (this.Field != null)
-            {
+            AzureSqlDatabaseDb? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (AzureSqlDatabaseDb)psObject.BaseObject;
+                    fieldSpecObj = (AzureSqlDatabaseDb)psObject.BaseObject;
                 } else {
-                    fields = (AzureSqlDatabaseDb)this.Field;
+                    fieldSpecObj = (AzureSqlDatabaseDb)this.Field;
                 }
             }
-            string document = Query.AzureSqlDatabase(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AzureSqlDatabase");
-            var parameters = "($azureSqlDatabaseRubrikId: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAzureSqlDatabase" + parameters + "{" + document + "}",
-                OperationName = "QueryAzureSqlDatabase",
+            string fieldSpecDoc = Query.AzureSqlDatabase(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAzureSqlDatabase",
+                "($azureSqlDatabaseRubrikId: UUID!)",
+                fieldSpecDoc,
+                "AzureSqlDatabaseDb"
+            );
+        }
+
+        // Invoke GraphQL Query:
+        // azureSqlDatabases(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     sortBy: AzureSqlDatabaseSortFields
+        //     sortOrder: SortOrder
+        //     azureSqlDatabaseFilters: AzureSqlDatabaseFilters
+        //   ): AzureSqlDatabaseDbConnection!
+        protected void InvokeQueryAzureSqlDatabases()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("sortBy", "AzureSqlDatabaseSortFields"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("azureSqlDatabaseFilters", "AzureSqlDatabaseFilters"),
             };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
+            AzureSqlDatabaseDbConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                if (this.Field is PSObject psObject) {
+                    fieldSpecObj = (AzureSqlDatabaseDbConnection)psObject.BaseObject;
+                } else {
+                    fieldSpecObj = (AzureSqlDatabaseDbConnection)this.Field;
+                }
             }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "AzureSqlDatabaseDb", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AzureSqlDatabases(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAzureSqlDatabases",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AzureSqlDatabaseSortFields,$sortOrder: SortOrder,$azureSqlDatabaseFilters: AzureSqlDatabaseFilters)",
+                fieldSpecDoc,
+                "AzureSqlDatabaseDbConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2470,33 +2955,65 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("azureSqlDatabaseServerRubrikId", "UUID!"),
             };
-            AzureSqlDatabaseServer? fields = null ;
-            if (this.Field != null)
-            {
+            AzureSqlDatabaseServer? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (AzureSqlDatabaseServer)psObject.BaseObject;
+                    fieldSpecObj = (AzureSqlDatabaseServer)psObject.BaseObject;
                 } else {
-                    fields = (AzureSqlDatabaseServer)this.Field;
+                    fieldSpecObj = (AzureSqlDatabaseServer)this.Field;
                 }
             }
-            string document = Query.AzureSqlDatabaseServer(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AzureSqlDatabaseServer");
-            var parameters = "($azureSqlDatabaseServerRubrikId: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAzureSqlDatabaseServer" + parameters + "{" + document + "}",
-                OperationName = "QueryAzureSqlDatabaseServer",
+            string fieldSpecDoc = Query.AzureSqlDatabaseServer(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAzureSqlDatabaseServer",
+                "($azureSqlDatabaseServerRubrikId: UUID!)",
+                fieldSpecDoc,
+                "AzureSqlDatabaseServer"
+            );
+        }
+
+        // Invoke GraphQL Query:
+        // azureSqlDatabaseServers(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     sortBy: AzureSqlDatabaseServerSortFields
+        //     sortOrder: SortOrder
+        //     azureSqlDatabaseServerFilters: AzureSqlDatabaseServerFilters
+        //   ): AzureSqlDatabaseServerConnection!
+        protected void InvokeQueryAzureSqlDatabaseServers()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("sortBy", "AzureSqlDatabaseServerSortFields"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("azureSqlDatabaseServerFilters", "AzureSqlDatabaseServerFilters"),
             };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
+            AzureSqlDatabaseServerConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                if (this.Field is PSObject psObject) {
+                    fieldSpecObj = (AzureSqlDatabaseServerConnection)psObject.BaseObject;
+                } else {
+                    fieldSpecObj = (AzureSqlDatabaseServerConnection)this.Field;
+                }
             }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "AzureSqlDatabaseServer", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AzureSqlDatabaseServers(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAzureSqlDatabaseServers",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AzureSqlDatabaseServerSortFields,$sortOrder: SortOrder,$azureSqlDatabaseServerFilters: AzureSqlDatabaseServerFilters)",
+                fieldSpecDoc,
+                "AzureSqlDatabaseServerConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2506,33 +3023,65 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("azureSqlManagedInstanceDatabaseRubrikId", "UUID!"),
             };
-            AzureSqlManagedInstanceDatabase? fields = null ;
-            if (this.Field != null)
-            {
+            AzureSqlManagedInstanceDatabase? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (AzureSqlManagedInstanceDatabase)psObject.BaseObject;
+                    fieldSpecObj = (AzureSqlManagedInstanceDatabase)psObject.BaseObject;
                 } else {
-                    fields = (AzureSqlManagedInstanceDatabase)this.Field;
+                    fieldSpecObj = (AzureSqlManagedInstanceDatabase)this.Field;
                 }
             }
-            string document = Query.AzureSqlManagedInstanceDatabase(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AzureSqlManagedInstanceDatabase");
-            var parameters = "($azureSqlManagedInstanceDatabaseRubrikId: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAzureSqlManagedInstanceDatabase" + parameters + "{" + document + "}",
-                OperationName = "QueryAzureSqlManagedInstanceDatabase",
+            string fieldSpecDoc = Query.AzureSqlManagedInstanceDatabase(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAzureSqlManagedInstanceDatabase",
+                "($azureSqlManagedInstanceDatabaseRubrikId: UUID!)",
+                fieldSpecDoc,
+                "AzureSqlManagedInstanceDatabase"
+            );
+        }
+
+        // Invoke GraphQL Query:
+        // azureSqlManagedInstanceDatabases(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     sortBy: AzureSqlManagedInstanceDatabaseSortFields
+        //     sortOrder: SortOrder
+        //     azureSqlManagedInstanceDatabaseFilters: AzureSqlManagedInstanceDatabaseFilters
+        //   ): AzureSqlManagedInstanceDatabaseConnection!
+        protected void InvokeQueryAzureSqlManagedInstanceDatabases()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("sortBy", "AzureSqlManagedInstanceDatabaseSortFields"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("azureSqlManagedInstanceDatabaseFilters", "AzureSqlManagedInstanceDatabaseFilters"),
             };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
+            AzureSqlManagedInstanceDatabaseConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                if (this.Field is PSObject psObject) {
+                    fieldSpecObj = (AzureSqlManagedInstanceDatabaseConnection)psObject.BaseObject;
+                } else {
+                    fieldSpecObj = (AzureSqlManagedInstanceDatabaseConnection)this.Field;
+                }
             }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "AzureSqlManagedInstanceDatabase", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AzureSqlManagedInstanceDatabases(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAzureSqlManagedInstanceDatabases",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AzureSqlManagedInstanceDatabaseSortFields,$sortOrder: SortOrder,$azureSqlManagedInstanceDatabaseFilters: AzureSqlManagedInstanceDatabaseFilters)",
+                fieldSpecDoc,
+                "AzureSqlManagedInstanceDatabaseConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2542,33 +3091,65 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("azureSqlManagedInstanceServerRubrikId", "UUID!"),
             };
-            AzureSqlManagedInstanceServer? fields = null ;
-            if (this.Field != null)
-            {
+            AzureSqlManagedInstanceServer? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (AzureSqlManagedInstanceServer)psObject.BaseObject;
+                    fieldSpecObj = (AzureSqlManagedInstanceServer)psObject.BaseObject;
                 } else {
-                    fields = (AzureSqlManagedInstanceServer)this.Field;
+                    fieldSpecObj = (AzureSqlManagedInstanceServer)this.Field;
                 }
             }
-            string document = Query.AzureSqlManagedInstanceServer(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AzureSqlManagedInstanceServer");
-            var parameters = "($azureSqlManagedInstanceServerRubrikId: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAzureSqlManagedInstanceServer" + parameters + "{" + document + "}",
-                OperationName = "QueryAzureSqlManagedInstanceServer",
+            string fieldSpecDoc = Query.AzureSqlManagedInstanceServer(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAzureSqlManagedInstanceServer",
+                "($azureSqlManagedInstanceServerRubrikId: UUID!)",
+                fieldSpecDoc,
+                "AzureSqlManagedInstanceServer"
+            );
+        }
+
+        // Invoke GraphQL Query:
+        // azureSqlManagedInstanceServers(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     sortBy: AzureSqlManagedInstanceServerSortFields
+        //     sortOrder: SortOrder
+        //     azureSqlManagedInstanceServerFilters: AzureSqlManagedInstanceServerFilters
+        //   ): AzureSqlManagedInstanceServerConnection!
+        protected void InvokeQueryAzureSqlManagedInstanceServers()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("sortBy", "AzureSqlManagedInstanceServerSortFields"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("azureSqlManagedInstanceServerFilters", "AzureSqlManagedInstanceServerFilters"),
             };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
+            AzureSqlManagedInstanceServerConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                if (this.Field is PSObject psObject) {
+                    fieldSpecObj = (AzureSqlManagedInstanceServerConnection)psObject.BaseObject;
+                } else {
+                    fieldSpecObj = (AzureSqlManagedInstanceServerConnection)this.Field;
+                }
             }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "AzureSqlManagedInstanceServer", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AzureSqlManagedInstanceServers(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAzureSqlManagedInstanceServers",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AzureSqlManagedInstanceServerSortFields,$sortOrder: SortOrder,$azureSqlManagedInstanceServerFilters: AzureSqlManagedInstanceServerFilters)",
+                fieldSpecDoc,
+                "AzureSqlManagedInstanceServerConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2586,33 +3167,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("azureSqlDatabaseServerName", "String!"),
                 Tuple.Create("azureSqlDatabaseName", "String!"),
             };
-            AzureNativeSqlDatabasePointInTimeRestoreWindow? fields = null ;
-            if (this.Field != null)
-            {
+            AzureNativeSqlDatabasePointInTimeRestoreWindow? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (AzureNativeSqlDatabasePointInTimeRestoreWindow)psObject.BaseObject;
+                    fieldSpecObj = (AzureNativeSqlDatabasePointInTimeRestoreWindow)psObject.BaseObject;
                 } else {
-                    fields = (AzureNativeSqlDatabasePointInTimeRestoreWindow)this.Field;
+                    fieldSpecObj = (AzureNativeSqlDatabasePointInTimeRestoreWindow)this.Field;
                 }
             }
-            string document = Query.AzureSqlDatabaseDbPointInTimeRestoreWindowFromAzure(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AzureSqlDatabaseDbPointInTimeRestoreWindowFromAzure");
-            var parameters = "($subscriptionId: UUID!,$resourceGroupName: String!,$azureSqlDatabaseServerName: String!,$azureSqlDatabaseName: String!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAzureSqlDatabaseDbPointInTimeRestoreWindowFromAzure" + parameters + "{" + document + "}",
-                OperationName = "QueryAzureSqlDatabaseDbPointInTimeRestoreWindowFromAzure",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "AzureNativeSqlDatabasePointInTimeRestoreWindow", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AzureSqlDatabaseDbPointInTimeRestoreWindowFromAzure(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAzureSqlDatabaseDbPointInTimeRestoreWindowFromAzure",
+                "($subscriptionId: UUID!,$resourceGroupName: String!,$azureSqlDatabaseServerName: String!,$azureSqlDatabaseName: String!)",
+                fieldSpecDoc,
+                "AzureNativeSqlDatabasePointInTimeRestoreWindow"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2630,33 +3202,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("azureSqlManagedInstanceName", "String!"),
                 Tuple.Create("azureSqlDatabaseName", "String!"),
             };
-            AzureNativeSqlDatabasePointInTimeRestoreWindow? fields = null ;
-            if (this.Field != null)
-            {
+            AzureNativeSqlDatabasePointInTimeRestoreWindow? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (AzureNativeSqlDatabasePointInTimeRestoreWindow)psObject.BaseObject;
+                    fieldSpecObj = (AzureNativeSqlDatabasePointInTimeRestoreWindow)psObject.BaseObject;
                 } else {
-                    fields = (AzureNativeSqlDatabasePointInTimeRestoreWindow)this.Field;
+                    fieldSpecObj = (AzureNativeSqlDatabasePointInTimeRestoreWindow)this.Field;
                 }
             }
-            string document = Query.AzureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AzureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure");
-            var parameters = "($subscriptionId: UUID!,$resourceGroupName: String!,$azureSqlManagedInstanceName: String!,$azureSqlDatabaseName: String!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAzureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure" + parameters + "{" + document + "}",
-                OperationName = "QueryAzureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "AzureNativeSqlDatabasePointInTimeRestoreWindow", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AzureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAzureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure",
+                "($subscriptionId: UUID!,$resourceGroupName: String!,$azureSqlManagedInstanceName: String!,$azureSqlDatabaseName: String!)",
+                fieldSpecDoc,
+                "AzureNativeSqlDatabasePointInTimeRestoreWindow"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2667,33 +3230,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("azureSqlDatabaseName", "String!"),
                 Tuple.Create("azureSqlDatabaseServerRubrikId", "UUID!"),
             };
-            ValidateAzureNativeSqlDatabaseDbNameForExportReply? fields = null ;
-            if (this.Field != null)
-            {
+            ValidateAzureNativeSqlDatabaseDbNameForExportReply? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (ValidateAzureNativeSqlDatabaseDbNameForExportReply)psObject.BaseObject;
+                    fieldSpecObj = (ValidateAzureNativeSqlDatabaseDbNameForExportReply)psObject.BaseObject;
                 } else {
-                    fields = (ValidateAzureNativeSqlDatabaseDbNameForExportReply)this.Field;
+                    fieldSpecObj = (ValidateAzureNativeSqlDatabaseDbNameForExportReply)this.Field;
                 }
             }
-            string document = Query.ValidateAzureNativeSqlDatabaseDbNameForExport(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.ValidateAzureNativeSqlDatabaseDbNameForExport");
-            var parameters = "($azureSqlDatabaseName: String!,$azureSqlDatabaseServerRubrikId: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryValidateAzureNativeSqlDatabaseDbNameForExport" + parameters + "{" + document + "}",
-                OperationName = "QueryValidateAzureNativeSqlDatabaseDbNameForExport",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "ValidateAzureNativeSqlDatabaseDbNameForExportReply", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.ValidateAzureNativeSqlDatabaseDbNameForExport(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryValidateAzureNativeSqlDatabaseDbNameForExport",
+                "($azureSqlDatabaseName: String!,$azureSqlDatabaseServerRubrikId: UUID!)",
+                fieldSpecDoc,
+                "ValidateAzureNativeSqlDatabaseDbNameForExportReply"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2704,33 +3258,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("azureSqlDatabaseName", "String!"),
                 Tuple.Create("azureSqlManagedInstanceServerRubrikId", "UUID!"),
             };
-            ValidateAzureNativeSqlManagedInstanceDbNameForExportReply? fields = null ;
-            if (this.Field != null)
-            {
+            ValidateAzureNativeSqlManagedInstanceDbNameForExportReply? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (ValidateAzureNativeSqlManagedInstanceDbNameForExportReply)psObject.BaseObject;
+                    fieldSpecObj = (ValidateAzureNativeSqlManagedInstanceDbNameForExportReply)psObject.BaseObject;
                 } else {
-                    fields = (ValidateAzureNativeSqlManagedInstanceDbNameForExportReply)this.Field;
+                    fieldSpecObj = (ValidateAzureNativeSqlManagedInstanceDbNameForExportReply)this.Field;
                 }
             }
-            string document = Query.ValidateAzureNativeSqlManagedInstanceDbNameForExport(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.ValidateAzureNativeSqlManagedInstanceDbNameForExport");
-            var parameters = "($azureSqlDatabaseName: String!,$azureSqlManagedInstanceServerRubrikId: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryValidateAzureNativeSqlManagedInstanceDbNameForExport" + parameters + "{" + document + "}",
-                OperationName = "QueryValidateAzureNativeSqlManagedInstanceDbNameForExport",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "ValidateAzureNativeSqlManagedInstanceDbNameForExportReply", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.ValidateAzureNativeSqlManagedInstanceDbNameForExport(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryValidateAzureNativeSqlManagedInstanceDbNameForExport",
+                "($azureSqlDatabaseName: String!,$azureSqlManagedInstanceServerRubrikId: UUID!)",
+                fieldSpecDoc,
+                "ValidateAzureNativeSqlManagedInstanceDbNameForExportReply"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2748,33 +3293,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("azureSqlDatabaseServerName", "String!"),
                 Tuple.Create("azureSqlDatabaseServerRubrikId", "UUID!"),
             };
-            List<AzureSqlDatabaseServerElasticPool>? fields = null ;
-            if (this.Field != null)
-            {
+            List<AzureSqlDatabaseServerElasticPool>? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (List<AzureSqlDatabaseServerElasticPool>)psObject.BaseObject;
+                    fieldSpecObj = (List<AzureSqlDatabaseServerElasticPool>)psObject.BaseObject;
                 } else {
-                    fields = (List<AzureSqlDatabaseServerElasticPool>)this.Field;
+                    fieldSpecObj = (List<AzureSqlDatabaseServerElasticPool>)this.Field;
                 }
             }
-            string document = Query.AllAzureSqlDatabaseServerElasticPools(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AllAzureSqlDatabaseServerElasticPools");
-            var parameters = "($subscriptionId: UUID!,$resourceGroupName: String!,$azureSqlDatabaseServerName: String!,$azureSqlDatabaseServerRubrikId: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAllAzureSqlDatabaseServerElasticPools" + parameters + "{" + document + "}",
-                OperationName = "QueryAllAzureSqlDatabaseServerElasticPools",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "List<AzureSqlDatabaseServerElasticPool>", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AllAzureSqlDatabaseServerElasticPools(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAllAzureSqlDatabaseServerElasticPools",
+                "($subscriptionId: UUID!,$resourceGroupName: String!,$azureSqlDatabaseServerName: String!,$azureSqlDatabaseServerRubrikId: UUID!)",
+                fieldSpecDoc,
+                "List<AzureSqlDatabaseServerElasticPool>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2784,33 +3320,67 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("snapshotId", "UUID!"),
             };
-            System.Boolean? fields = null ;
-            if (this.Field != null)
-            {
+            System.Boolean? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (System.Boolean)psObject.BaseObject;
+                    fieldSpecObj = (System.Boolean)psObject.BaseObject;
                 } else {
-                    fields = (System.Boolean)this.Field;
+                    fieldSpecObj = (System.Boolean)this.Field;
                 }
             }
-            string document = Query.IsAzureNativeSqlDatabaseSnapshotPersistent(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.IsAzureNativeSqlDatabaseSnapshotPersistent");
-            var parameters = "($snapshotId: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryIsAzureNativeSqlDatabaseSnapshotPersistent" + parameters + "{" + document + "}",
-                OperationName = "QueryIsAzureNativeSqlDatabaseSnapshotPersistent",
+            string fieldSpecDoc = Query.IsAzureNativeSqlDatabaseSnapshotPersistent(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryIsAzureNativeSqlDatabaseSnapshotPersistent",
+                "($snapshotId: UUID!)",
+                fieldSpecDoc,
+                "System.Boolean"
+            );
+        }
+
+        // Invoke GraphQL Query:
+        // azureNativeLiveMountDisks(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     cloudNativeObjectType: CloudNativeObjectType!
+        //     liveMountFilters: [CloudNativeLiveMountFilter!]
+        //     sortBy: CloudNativeLiveMountSortByFields
+        //     sortOrder: SortOrder
+        //   ): LiveMountDetailsConnection!
+        protected void InvokeQueryAzureNativeLiveMountDisks()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("cloudNativeObjectType", "CloudNativeObjectType!"),
+                Tuple.Create("liveMountFilters", "[CloudNativeLiveMountFilter!]"),
+                Tuple.Create("sortBy", "CloudNativeLiveMountSortByFields"),
+                Tuple.Create("sortOrder", "SortOrder"),
             };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
+            LiveMountDetailsConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                if (this.Field is PSObject psObject) {
+                    fieldSpecObj = (LiveMountDetailsConnection)psObject.BaseObject;
+                } else {
+                    fieldSpecObj = (LiveMountDetailsConnection)this.Field;
+                }
             }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "System.Boolean", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AzureNativeLiveMountDisks(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAzureNativeLiveMountDisks",
+                "($first: Int,$after: String,$last: Int,$before: String,$cloudNativeObjectType: CloudNativeObjectType!,$liveMountFilters: [CloudNativeLiveMountFilter!],$sortBy: CloudNativeLiveMountSortByFields,$sortOrder: SortOrder)",
+                fieldSpecDoc,
+                "LiveMountDetailsConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2820,33 +3390,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("azureKeyVaultsInput", "AzureKeyVaultsInput!"),
             };
-            List<AzureKeyVault>? fields = null ;
-            if (this.Field != null)
-            {
+            List<AzureKeyVault>? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (List<AzureKeyVault>)psObject.BaseObject;
+                    fieldSpecObj = (List<AzureKeyVault>)psObject.BaseObject;
                 } else {
-                    fields = (List<AzureKeyVault>)this.Field;
+                    fieldSpecObj = (List<AzureKeyVault>)this.Field;
                 }
             }
-            string document = Query.AllAzureKeyVaultsByRegion(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AllAzureKeyVaultsByRegion");
-            var parameters = "($azureKeyVaultsInput: AzureKeyVaultsInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAllAzureKeyVaultsByRegion" + parameters + "{" + document + "}",
-                OperationName = "QueryAllAzureKeyVaultsByRegion",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "List<AzureKeyVault>", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AllAzureKeyVaultsByRegion(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAllAzureKeyVaultsByRegion",
+                "($azureKeyVaultsInput: AzureKeyVaultsInput!)",
+                fieldSpecDoc,
+                "List<AzureKeyVault>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2856,33 +3417,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("azureEncryptionKeysInput", "AzureEncryptionKeysInput!"),
             };
-            List<AzureEncryptionKey>? fields = null ;
-            if (this.Field != null)
-            {
+            List<AzureEncryptionKey>? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (List<AzureEncryptionKey>)psObject.BaseObject;
+                    fieldSpecObj = (List<AzureEncryptionKey>)psObject.BaseObject;
                 } else {
-                    fields = (List<AzureEncryptionKey>)this.Field;
+                    fieldSpecObj = (List<AzureEncryptionKey>)this.Field;
                 }
             }
-            string document = Query.AllAzureEncryptionKeys(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AllAzureEncryptionKeys");
-            var parameters = "($azureEncryptionKeysInput: AzureEncryptionKeysInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAllAzureEncryptionKeys" + parameters + "{" + document + "}",
-                OperationName = "QueryAllAzureEncryptionKeys",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "List<AzureEncryptionKey>", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AllAzureEncryptionKeys(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAllAzureEncryptionKeys",
+                "($azureEncryptionKeysInput: AzureEncryptionKeysInput!)",
+                fieldSpecDoc,
+                "List<AzureEncryptionKey>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2902,33 +3454,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("subscriptionSearchText", "String!"),
                 Tuple.Create("subscriptionIdsFilter", "[UUID!]"),
             };
-            AzureCloudAccountTenant? fields = null ;
-            if (this.Field != null)
-            {
+            AzureCloudAccountTenant? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (AzureCloudAccountTenant)psObject.BaseObject;
+                    fieldSpecObj = (AzureCloudAccountTenant)psObject.BaseObject;
                 } else {
-                    fields = (AzureCloudAccountTenant)this.Field;
+                    fieldSpecObj = (AzureCloudAccountTenant)this.Field;
                 }
             }
-            string document = Query.AzureCloudAccountTenant(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AzureCloudAccountTenant");
-            var parameters = "($tenantId: UUID!,$feature: CloudAccountFeature!,$subscriptionStatusFilters: [CloudAccountStatus!]!,$subscriptionSearchText: String!,$subscriptionIdsFilter: [UUID!])\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAzureCloudAccountTenant" + parameters + "{" + document + "}",
-                OperationName = "QueryAzureCloudAccountTenant",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "AzureCloudAccountTenant", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AzureCloudAccountTenant(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAzureCloudAccountTenant",
+                "($tenantId: UUID!,$feature: CloudAccountFeature!,$subscriptionStatusFilters: [CloudAccountStatus!]!,$subscriptionSearchText: String!,$subscriptionIdsFilter: [UUID!])",
+                fieldSpecDoc,
+                "AzureCloudAccountTenant"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2948,33 +3491,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("subscriptionSearchText", "String!"),
                 Tuple.Create("subscriptionIdsFilter", "[UUID!]"),
             };
-            AzureCloudAccountTenantWithExoConfigs? fields = null ;
-            if (this.Field != null)
-            {
+            AzureCloudAccountTenantWithExoConfigs? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (AzureCloudAccountTenantWithExoConfigs)psObject.BaseObject;
+                    fieldSpecObj = (AzureCloudAccountTenantWithExoConfigs)psObject.BaseObject;
                 } else {
-                    fields = (AzureCloudAccountTenantWithExoConfigs)this.Field;
+                    fieldSpecObj = (AzureCloudAccountTenantWithExoConfigs)this.Field;
                 }
             }
-            string document = Query.AzureCloudAccountTenantWithExoConfigs(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AzureCloudAccountTenantWithExoConfigs");
-            var parameters = "($tenantId: UUID!,$feature: CloudAccountFeature!,$subscriptionStatusFilters: [CloudAccountStatus!]!,$subscriptionSearchText: String!,$subscriptionIdsFilter: [UUID!])\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAzureCloudAccountTenantWithExoConfigs" + parameters + "{" + document + "}",
-                OperationName = "QueryAzureCloudAccountTenantWithExoConfigs",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "AzureCloudAccountTenantWithExoConfigs", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AzureCloudAccountTenantWithExoConfigs(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAzureCloudAccountTenantWithExoConfigs",
+                "($tenantId: UUID!,$feature: CloudAccountFeature!,$subscriptionStatusFilters: [CloudAccountStatus!]!,$subscriptionSearchText: String!,$subscriptionIdsFilter: [UUID!])",
+                fieldSpecDoc,
+                "AzureCloudAccountTenantWithExoConfigs"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2984,33 +3518,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("features", "[CloudAccountFeature!]!"),
             };
-            List<AzureCloudAccountTenantWithExoConfigs>? fields = null ;
-            if (this.Field != null)
-            {
+            List<AzureCloudAccountTenantWithExoConfigs>? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (List<AzureCloudAccountTenantWithExoConfigs>)psObject.BaseObject;
+                    fieldSpecObj = (List<AzureCloudAccountTenantWithExoConfigs>)psObject.BaseObject;
                 } else {
-                    fields = (List<AzureCloudAccountTenantWithExoConfigs>)this.Field;
+                    fieldSpecObj = (List<AzureCloudAccountTenantWithExoConfigs>)this.Field;
                 }
             }
-            string document = Query.AllAzureCloudAccountTenantsWithExoConfigs(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AllAzureCloudAccountTenantsWithExoConfigs");
-            var parameters = "($features: [CloudAccountFeature!]!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAllAzureCloudAccountTenantsWithExoConfigs" + parameters + "{" + document + "}",
-                OperationName = "QueryAllAzureCloudAccountTenantsWithExoConfigs",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "List<AzureCloudAccountTenantWithExoConfigs>", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AllAzureCloudAccountTenantsWithExoConfigs(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAllAzureCloudAccountTenantsWithExoConfigs",
+                "($features: [CloudAccountFeature!]!)",
+                fieldSpecDoc,
+                "List<AzureCloudAccountTenantWithExoConfigs>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3022,33 +3547,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("feature", "CloudAccountFeature!"),
                 Tuple.Create("includeSubscriptionDetails", "Boolean!"),
             };
-            List<AzureCloudAccountTenant>? fields = null ;
-            if (this.Field != null)
-            {
+            List<AzureCloudAccountTenant>? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (List<AzureCloudAccountTenant>)psObject.BaseObject;
+                    fieldSpecObj = (List<AzureCloudAccountTenant>)psObject.BaseObject;
                 } else {
-                    fields = (List<AzureCloudAccountTenant>)this.Field;
+                    fieldSpecObj = (List<AzureCloudAccountTenant>)this.Field;
                 }
             }
-            string document = Query.AllAzureCloudAccountTenants(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AllAzureCloudAccountTenants");
-            var parameters = "($features: [CloudAccountFeature!],$feature: CloudAccountFeature!,$includeSubscriptionDetails: Boolean!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAllAzureCloudAccountTenants" + parameters + "{" + document + "}",
-                OperationName = "QueryAllAzureCloudAccountTenants",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "List<AzureCloudAccountTenant>", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AllAzureCloudAccountTenants(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAllAzureCloudAccountTenants",
+                "($features: [CloudAccountFeature!],$feature: CloudAccountFeature!,$includeSubscriptionDetails: Boolean!)",
+                fieldSpecDoc,
+                "List<AzureCloudAccountTenant>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3058,33 +3574,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("cloudAccountId", "UUID!"),
             };
-            AzureCloudAccountSubscriptionWithFeatures? fields = null ;
-            if (this.Field != null)
-            {
+            AzureCloudAccountSubscriptionWithFeatures? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (AzureCloudAccountSubscriptionWithFeatures)psObject.BaseObject;
+                    fieldSpecObj = (AzureCloudAccountSubscriptionWithFeatures)psObject.BaseObject;
                 } else {
-                    fields = (AzureCloudAccountSubscriptionWithFeatures)this.Field;
+                    fieldSpecObj = (AzureCloudAccountSubscriptionWithFeatures)this.Field;
                 }
             }
-            string document = Query.AzureCloudAccountSubscriptionWithFeatures(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AzureCloudAccountSubscriptionWithFeatures");
-            var parameters = "($cloudAccountId: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAzureCloudAccountSubscriptionWithFeatures" + parameters + "{" + document + "}",
-                OperationName = "QueryAzureCloudAccountSubscriptionWithFeatures",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "AzureCloudAccountSubscriptionWithFeatures", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AzureCloudAccountSubscriptionWithFeatures(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAzureCloudAccountSubscriptionWithFeatures",
+                "($cloudAccountId: UUID!)",
+                fieldSpecDoc,
+                "AzureCloudAccountSubscriptionWithFeatures"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3095,33 +3602,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("feature", "CloudAccountFeature!"),
                 Tuple.Create("subscriptionStatusFilters", "[CloudAccountStatus!]!"),
             };
-            List<AzureSubscriptionWithFeaturesType>? fields = null ;
-            if (this.Field != null)
-            {
+            List<AzureSubscriptionWithFeaturesType>? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (List<AzureSubscriptionWithFeaturesType>)psObject.BaseObject;
+                    fieldSpecObj = (List<AzureSubscriptionWithFeaturesType>)psObject.BaseObject;
                 } else {
-                    fields = (List<AzureSubscriptionWithFeaturesType>)this.Field;
+                    fieldSpecObj = (List<AzureSubscriptionWithFeaturesType>)this.Field;
                 }
             }
-            string document = Query.AllAzureCloudAccountSubscriptionsByFeature(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AllAzureCloudAccountSubscriptionsByFeature");
-            var parameters = "($feature: CloudAccountFeature!,$subscriptionStatusFilters: [CloudAccountStatus!]!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAllAzureCloudAccountSubscriptionsByFeature" + parameters + "{" + document + "}",
-                OperationName = "QueryAllAzureCloudAccountSubscriptionsByFeature",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "List<AzureSubscriptionWithFeaturesType>", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AllAzureCloudAccountSubscriptionsByFeature(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAllAzureCloudAccountSubscriptionsByFeature",
+                "($feature: CloudAccountFeature!,$subscriptionStatusFilters: [CloudAccountStatus!]!)",
+                fieldSpecDoc,
+                "List<AzureSubscriptionWithFeaturesType>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3132,33 +3630,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("features", "[CloudAccountFeature!]"),
                 Tuple.Create("exocomputeSubscriptionIdsFilter", "[UUID!]"),
             };
-            List<AzureSubscriptionWithExocomputeMapping>? fields = null ;
-            if (this.Field != null)
-            {
+            List<AzureSubscriptionWithExocomputeMapping>? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (List<AzureSubscriptionWithExocomputeMapping>)psObject.BaseObject;
+                    fieldSpecObj = (List<AzureSubscriptionWithExocomputeMapping>)psObject.BaseObject;
                 } else {
-                    fields = (List<AzureSubscriptionWithExocomputeMapping>)this.Field;
+                    fieldSpecObj = (List<AzureSubscriptionWithExocomputeMapping>)this.Field;
                 }
             }
-            string document = Query.AllAzureSubscriptionWithExocomputeMappings(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AllAzureSubscriptionWithExocomputeMappings");
-            var parameters = "($features: [CloudAccountFeature!],$exocomputeSubscriptionIdsFilter: [UUID!])\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAllAzureSubscriptionWithExocomputeMappings" + parameters + "{" + document + "}",
-                OperationName = "QueryAllAzureSubscriptionWithExocomputeMappings",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "List<AzureSubscriptionWithExocomputeMapping>", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AllAzureSubscriptionWithExocomputeMappings(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAllAzureSubscriptionWithExocomputeMappings",
+                "($features: [CloudAccountFeature!],$exocomputeSubscriptionIdsFilter: [UUID!])",
+                fieldSpecDoc,
+                "List<AzureSubscriptionWithExocomputeMapping>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3170,33 +3659,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("azureSubscriptionNativeId", "UUID!"),
                 Tuple.Create("feature", "CloudAccountFeature!"),
             };
-            List<AzureResourceGroup>? fields = null ;
-            if (this.Field != null)
-            {
+            List<AzureResourceGroup>? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (List<AzureResourceGroup>)psObject.BaseObject;
+                    fieldSpecObj = (List<AzureResourceGroup>)psObject.BaseObject;
                 } else {
-                    fields = (List<AzureResourceGroup>)this.Field;
+                    fieldSpecObj = (List<AzureResourceGroup>)this.Field;
                 }
             }
-            string document = Query.AllResourceGroupsFromAzure(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AllResourceGroupsFromAzure");
-            var parameters = "($cloudAccountId: UUID!,$azureSubscriptionNativeId: UUID!,$feature: CloudAccountFeature!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAllResourceGroupsFromAzure" + parameters + "{" + document + "}",
-                OperationName = "QueryAllResourceGroupsFromAzure",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "List<AzureResourceGroup>", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AllResourceGroupsFromAzure(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAllResourceGroupsFromAzure",
+                "($cloudAccountId: UUID!,$azureSubscriptionNativeId: UUID!,$feature: CloudAccountFeature!)",
+                fieldSpecDoc,
+                "List<AzureResourceGroup>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3214,33 +3694,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("resourceGroupName", "String!"),
                 Tuple.Create("feature", "CloudAccountFeature!"),
             };
-            System.Boolean? fields = null ;
-            if (this.Field != null)
-            {
+            System.Boolean? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (System.Boolean)psObject.BaseObject;
+                    fieldSpecObj = (System.Boolean)psObject.BaseObject;
                 } else {
-                    fields = (System.Boolean)this.Field;
+                    fieldSpecObj = (System.Boolean)this.Field;
                 }
             }
-            string document = Query.DoesAzureNativeResourceGroupExist(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.DoesAzureNativeResourceGroupExist");
-            var parameters = "($cloudAccountId: UUID!,$azureSubscriptionNativeId: UUID!,$resourceGroupName: String!,$feature: CloudAccountFeature!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryDoesAzureNativeResourceGroupExist" + parameters + "{" + document + "}",
-                OperationName = "QueryDoesAzureNativeResourceGroupExist",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "System.Boolean", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.DoesAzureNativeResourceGroupExist(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryDoesAzureNativeResourceGroupExist",
+                "($cloudAccountId: UUID!,$azureSubscriptionNativeId: UUID!,$resourceGroupName: String!,$feature: CloudAccountFeature!)",
+                fieldSpecDoc,
+                "System.Boolean"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3250,33 +3721,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "AzureGetResourceGroupsInfoIfExistInput!"),
             };
-            List<AzureResourceGroupInfo>? fields = null ;
-            if (this.Field != null)
-            {
+            List<AzureResourceGroupInfo>? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (List<AzureResourceGroupInfo>)psObject.BaseObject;
+                    fieldSpecObj = (List<AzureResourceGroupInfo>)psObject.BaseObject;
                 } else {
-                    fields = (List<AzureResourceGroupInfo>)this.Field;
+                    fieldSpecObj = (List<AzureResourceGroupInfo>)this.Field;
                 }
             }
-            string document = Query.AllAzureNativeResourceGroupsInfoIfExist(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AllAzureNativeResourceGroupsInfoIfExist");
-            var parameters = "($input: AzureGetResourceGroupsInfoIfExistInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAllAzureNativeResourceGroupsInfoIfExist" + parameters + "{" + document + "}",
-                OperationName = "QueryAllAzureNativeResourceGroupsInfoIfExist",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "List<AzureResourceGroupInfo>", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AllAzureNativeResourceGroupsInfoIfExist(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAllAzureNativeResourceGroupsInfoIfExist",
+                "($input: AzureGetResourceGroupsInfoIfExistInput!)",
+                fieldSpecDoc,
+                "List<AzureResourceGroupInfo>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3288,33 +3750,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("subscriptionIds", "[UUID!]!"),
                 Tuple.Create("cloudAccountAction", "CloudAccountAction!"),
             };
-            List<AzureSubscriptionMissingPermissions>? fields = null ;
-            if (this.Field != null)
-            {
+            List<AzureSubscriptionMissingPermissions>? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (List<AzureSubscriptionMissingPermissions>)psObject.BaseObject;
+                    fieldSpecObj = (List<AzureSubscriptionMissingPermissions>)psObject.BaseObject;
                 } else {
-                    fields = (List<AzureSubscriptionMissingPermissions>)this.Field;
+                    fieldSpecObj = (List<AzureSubscriptionMissingPermissions>)this.Field;
                 }
             }
-            string document = Query.AllAzureCloudAccountMissingPermissions(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AllAzureCloudAccountMissingPermissions");
-            var parameters = "($sessionId: String!,$subscriptionIds: [UUID!]!,$cloudAccountAction: CloudAccountAction!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAllAzureCloudAccountMissingPermissions" + parameters + "{" + document + "}",
-                OperationName = "QueryAllAzureCloudAccountMissingPermissions",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "List<AzureSubscriptionMissingPermissions>", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AllAzureCloudAccountMissingPermissions(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAllAzureCloudAccountMissingPermissions",
+                "($sessionId: String!,$subscriptionIds: [UUID!]!,$cloudAccountAction: CloudAccountAction!)",
+                fieldSpecDoc,
+                "List<AzureSubscriptionMissingPermissions>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3324,33 +3777,109 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("feature", "CloudAccountFeature!"),
             };
-            AzureCloudAccountPermissionConfigResponse? fields = null ;
-            if (this.Field != null)
-            {
+            AzureCloudAccountPermissionConfigResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (AzureCloudAccountPermissionConfigResponse)psObject.BaseObject;
+                    fieldSpecObj = (AzureCloudAccountPermissionConfigResponse)psObject.BaseObject;
                 } else {
-                    fields = (AzureCloudAccountPermissionConfigResponse)this.Field;
+                    fieldSpecObj = (AzureCloudAccountPermissionConfigResponse)this.Field;
                 }
             }
-            string document = Query.AzureCloudAccountPermissionConfig(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AzureCloudAccountPermissionConfig");
-            var parameters = "($feature: CloudAccountFeature!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAzureCloudAccountPermissionConfig" + parameters + "{" + document + "}",
-                OperationName = "QueryAzureCloudAccountPermissionConfig",
+            string fieldSpecDoc = Query.AzureCloudAccountPermissionConfig(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAzureCloudAccountPermissionConfig",
+                "($feature: CloudAccountFeature!)",
+                fieldSpecDoc,
+                "AzureCloudAccountPermissionConfigResponse"
+            );
+        }
+
+        // Invoke GraphQL Query:
+        // azureCloudAccountGrantedPermissionsGroups(cloudAccountId: UUID!, feature: CloudAccountFeature!): AzureCloudAccountGrantedPermissionsGroupsReply!
+        protected void InvokeQueryAzureCloudAccountGrantedPermissionsGroups()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("cloudAccountId", "UUID!"),
+                Tuple.Create("feature", "CloudAccountFeature!"),
             };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
+            AzureCloudAccountGrantedPermissionsGroupsReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                if (this.Field is PSObject psObject) {
+                    fieldSpecObj = (AzureCloudAccountGrantedPermissionsGroupsReply)psObject.BaseObject;
+                } else {
+                    fieldSpecObj = (AzureCloudAccountGrantedPermissionsGroupsReply)this.Field;
+                }
             }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "AzureCloudAccountPermissionConfigResponse", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AzureCloudAccountGrantedPermissionsGroups(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAzureCloudAccountGrantedPermissionsGroups",
+                "($cloudAccountId: UUID!,$feature: CloudAccountFeature!)",
+                fieldSpecDoc,
+                "AzureCloudAccountGrantedPermissionsGroupsReply"
+            );
+        }
+
+        // Invoke GraphQL Query:
+        // azureCloudAccountGrantedPermissionsGroupsForRecovery(cloudAccountId: UUID!, azureNativeSubscriptionId: UUID!, feature: CloudAccountFeature!): AzureCloudAccountGrantedPermissionsGroupsReply!
+        protected void InvokeQueryAzureCloudAccountGrantedPermissionsGroupsForRecovery()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("cloudAccountId", "UUID!"),
+                Tuple.Create("azureNativeSubscriptionId", "UUID!"),
+                Tuple.Create("feature", "CloudAccountFeature!"),
+            };
+            AzureCloudAccountGrantedPermissionsGroupsReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                if (this.Field is PSObject psObject) {
+                    fieldSpecObj = (AzureCloudAccountGrantedPermissionsGroupsReply)psObject.BaseObject;
+                } else {
+                    fieldSpecObj = (AzureCloudAccountGrantedPermissionsGroupsReply)this.Field;
+                }
+            }
+            string fieldSpecDoc = Query.AzureCloudAccountGrantedPermissionsGroupsForRecovery(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAzureCloudAccountGrantedPermissionsGroupsForRecovery",
+                "($cloudAccountId: UUID!,$azureNativeSubscriptionId: UUID!,$feature: CloudAccountFeature!)",
+                fieldSpecDoc,
+                "AzureCloudAccountGrantedPermissionsGroupsReply"
+            );
+        }
+
+        // Invoke GraphQL Query:
+        // azureCloudAccountCheckRefreshTokenExistsForRecovery(cloudAccountId: UUID!, azureNativeSubscriptionId: UUID!): AzureCloudAccountCheckRefreshTokenExistsReply!
+        protected void InvokeQueryAzureCloudAccountCheckRefreshTokenExistsForRecovery()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("cloudAccountId", "UUID!"),
+                Tuple.Create("azureNativeSubscriptionId", "UUID!"),
+            };
+            AzureCloudAccountCheckRefreshTokenExistsReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                if (this.Field is PSObject psObject) {
+                    fieldSpecObj = (AzureCloudAccountCheckRefreshTokenExistsReply)psObject.BaseObject;
+                } else {
+                    fieldSpecObj = (AzureCloudAccountCheckRefreshTokenExistsReply)this.Field;
+                }
+            }
+            string fieldSpecDoc = Query.AzureCloudAccountCheckRefreshTokenExistsForRecovery(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAzureCloudAccountCheckRefreshTokenExistsForRecovery",
+                "($cloudAccountId: UUID!,$azureNativeSubscriptionId: UUID!)",
+                fieldSpecDoc,
+                "AzureCloudAccountCheckRefreshTokenExistsReply"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3361,33 +3890,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("azureExocomputeSearchQuery", "String"),
                 Tuple.Create("cloudAccountIDs", "[UUID!]"),
             };
-            List<AzureExocomputeConfigsInAccount>? fields = null ;
-            if (this.Field != null)
-            {
+            List<AzureExocomputeConfigsInAccount>? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (List<AzureExocomputeConfigsInAccount>)psObject.BaseObject;
+                    fieldSpecObj = (List<AzureExocomputeConfigsInAccount>)psObject.BaseObject;
                 } else {
-                    fields = (List<AzureExocomputeConfigsInAccount>)this.Field;
+                    fieldSpecObj = (List<AzureExocomputeConfigsInAccount>)this.Field;
                 }
             }
-            string document = Query.AllAzureExocomputeConfigsInAccount(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AllAzureExocomputeConfigsInAccount");
-            var parameters = "($azureExocomputeSearchQuery: String,$cloudAccountIDs: [UUID!])\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAllAzureExocomputeConfigsInAccount" + parameters + "{" + document + "}",
-                OperationName = "QueryAllAzureExocomputeConfigsInAccount",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "List<AzureExocomputeConfigsInAccount>", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AllAzureExocomputeConfigsInAccount(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAllAzureExocomputeConfigsInAccount",
+                "($azureExocomputeSearchQuery: String,$cloudAccountIDs: [UUID!])",
+                fieldSpecDoc,
+                "List<AzureExocomputeConfigsInAccount>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3398,33 +3918,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("cloudAccountId", "UUID!"),
                 Tuple.Create("region", "AzureCloudAccountRegion!"),
             };
-            List<AzureNativeSubnet>? fields = null ;
-            if (this.Field != null)
-            {
+            List<AzureNativeSubnet>? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (List<AzureNativeSubnet>)psObject.BaseObject;
+                    fieldSpecObj = (List<AzureNativeSubnet>)psObject.BaseObject;
                 } else {
-                    fields = (List<AzureNativeSubnet>)this.Field;
+                    fieldSpecObj = (List<AzureNativeSubnet>)this.Field;
                 }
             }
-            string document = Query.AllAzureCloudAccountSubnetsByRegion(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AllAzureCloudAccountSubnetsByRegion");
-            var parameters = "($cloudAccountId: UUID!,$region: AzureCloudAccountRegion!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAllAzureCloudAccountSubnetsByRegion" + parameters + "{" + document + "}",
-                OperationName = "QueryAllAzureCloudAccountSubnetsByRegion",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "List<AzureNativeSubnet>", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AllAzureCloudAccountSubnetsByRegion(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAllAzureCloudAccountSubnetsByRegion",
+                "($cloudAccountId: UUID!,$region: AzureCloudAccountRegion!)",
+                fieldSpecDoc,
+                "List<AzureNativeSubnet>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3434,33 +3945,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "ValidateAzureCloudAccountExocomputeConfigurationsInput!"),
             };
-            ValidateAzureSubnetsForCloudAccountExocomputeReply? fields = null ;
-            if (this.Field != null)
-            {
+            ValidateAzureSubnetsForCloudAccountExocomputeReply? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (ValidateAzureSubnetsForCloudAccountExocomputeReply)psObject.BaseObject;
+                    fieldSpecObj = (ValidateAzureSubnetsForCloudAccountExocomputeReply)psObject.BaseObject;
                 } else {
-                    fields = (ValidateAzureSubnetsForCloudAccountExocomputeReply)this.Field;
+                    fieldSpecObj = (ValidateAzureSubnetsForCloudAccountExocomputeReply)this.Field;
                 }
             }
-            string document = Query.ValidateAzureCloudAccountExocomputeConfigurations(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.ValidateAzureCloudAccountExocomputeConfigurations");
-            var parameters = "($input: ValidateAzureCloudAccountExocomputeConfigurationsInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryValidateAzureCloudAccountExocomputeConfigurations" + parameters + "{" + document + "}",
-                OperationName = "QueryValidateAzureCloudAccountExocomputeConfigurations",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "ValidateAzureSubnetsForCloudAccountExocomputeReply", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.ValidateAzureCloudAccountExocomputeConfigurations(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryValidateAzureCloudAccountExocomputeConfigurations",
+                "($input: ValidateAzureCloudAccountExocomputeConfigurationsInput!)",
+                fieldSpecDoc,
+                "ValidateAzureSubnetsForCloudAccountExocomputeReply"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3470,33 +3972,53 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "AzureArmTemplatesByFeatureInput!"),
             };
-            List<AzureArmTemplateByFeature>? fields = null ;
-            if (this.Field != null)
-            {
+            List<AzureArmTemplateByFeature>? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (List<AzureArmTemplateByFeature>)psObject.BaseObject;
+                    fieldSpecObj = (List<AzureArmTemplateByFeature>)psObject.BaseObject;
                 } else {
-                    fields = (List<AzureArmTemplateByFeature>)this.Field;
+                    fieldSpecObj = (List<AzureArmTemplateByFeature>)this.Field;
                 }
             }
-            string document = Query.AllAzureArmTemplatesByFeature(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AllAzureArmTemplatesByFeature");
-            var parameters = "($input: AzureArmTemplatesByFeatureInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAllAzureArmTemplatesByFeature" + parameters + "{" + document + "}",
-                OperationName = "QueryAllAzureArmTemplatesByFeature",
+            string fieldSpecDoc = Query.AllAzureArmTemplatesByFeature(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAllAzureArmTemplatesByFeature",
+                "($input: AzureArmTemplatesByFeatureInput!)",
+                fieldSpecDoc,
+                "List<AzureArmTemplateByFeature>"
+            );
+        }
+
+        // Invoke GraphQL Query:
+        // checkAzurePersistentStorageSubscriptionCanUnmap(cloudAccountId: UUID!, feature: CloudAccountFeature!, unmappingValidationType: UnmappingValidationType!): CheckAzurePersistentStorageSubscriptionCanUnmapReply!
+        protected void InvokeQueryCheckAzurePersistentStorageSubscriptionCanUnmap()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("cloudAccountId", "UUID!"),
+                Tuple.Create("feature", "CloudAccountFeature!"),
+                Tuple.Create("unmappingValidationType", "UnmappingValidationType!"),
             };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
+            CheckAzurePersistentStorageSubscriptionCanUnmapReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                if (this.Field is PSObject psObject) {
+                    fieldSpecObj = (CheckAzurePersistentStorageSubscriptionCanUnmapReply)psObject.BaseObject;
+                } else {
+                    fieldSpecObj = (CheckAzurePersistentStorageSubscriptionCanUnmapReply)this.Field;
+                }
             }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "List<AzureArmTemplateByFeature>", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.CheckAzurePersistentStorageSubscriptionCanUnmap(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryCheckAzurePersistentStorageSubscriptionCanUnmap",
+                "($cloudAccountId: UUID!,$feature: CloudAccountFeature!,$unmappingValidationType: UnmappingValidationType!)",
+                fieldSpecDoc,
+                "CheckAzurePersistentStorageSubscriptionCanUnmapReply"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3506,33 +4028,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("tenantId", "String!"),
             };
-            AzureSubscriptionConnection? fields = null ;
-            if (this.Field != null)
-            {
+            AzureSubscriptionConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (AzureSubscriptionConnection)psObject.BaseObject;
+                    fieldSpecObj = (AzureSubscriptionConnection)psObject.BaseObject;
                 } else {
-                    fields = (AzureSubscriptionConnection)this.Field;
+                    fieldSpecObj = (AzureSubscriptionConnection)this.Field;
                 }
             }
-            string document = Query.AzureSubscriptions(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AzureSubscriptions");
-            var parameters = "($tenantId: String!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAzureSubscriptions" + parameters + "{" + document + "}",
-                OperationName = "QueryAzureSubscriptions",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "AzureSubscriptionConnection", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AzureSubscriptions(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAzureSubscriptions",
+                "($tenantId: String!)",
+                fieldSpecDoc,
+                "AzureSubscriptionConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3543,33 +4056,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("tenantId", "String!"),
                 Tuple.Create("subscriptionId", "UUID!"),
             };
-            RegionConnection? fields = null ;
-            if (this.Field != null)
-            {
+            RegionConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (RegionConnection)psObject.BaseObject;
+                    fieldSpecObj = (RegionConnection)psObject.BaseObject;
                 } else {
-                    fields = (RegionConnection)this.Field;
+                    fieldSpecObj = (RegionConnection)this.Field;
                 }
             }
-            string document = Query.AzureRegions(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AzureRegions");
-            var parameters = "($tenantId: String!,$subscriptionId: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAzureRegions" + parameters + "{" + document + "}",
-                OperationName = "QueryAzureRegions",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "RegionConnection", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AzureRegions(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAzureRegions",
+                "($tenantId: String!,$subscriptionId: UUID!)",
+                fieldSpecDoc,
+                "RegionConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3580,33 +4084,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("tenantId", "String!"),
                 Tuple.Create("subscriptionId", "UUID!"),
             };
-            ResourceGroupConnection? fields = null ;
-            if (this.Field != null)
-            {
+            ResourceGroupConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (ResourceGroupConnection)psObject.BaseObject;
+                    fieldSpecObj = (ResourceGroupConnection)psObject.BaseObject;
                 } else {
-                    fields = (ResourceGroupConnection)this.Field;
+                    fieldSpecObj = (ResourceGroupConnection)this.Field;
                 }
             }
-            string document = Query.AzureResourceGroups(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AzureResourceGroups");
-            var parameters = "($tenantId: String!,$subscriptionId: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAzureResourceGroups" + parameters + "{" + document + "}",
-                OperationName = "QueryAzureResourceGroups",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "ResourceGroupConnection", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AzureResourceGroups(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAzureResourceGroups",
+                "($tenantId: String!,$subscriptionId: UUID!)",
+                fieldSpecDoc,
+                "ResourceGroupConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3618,33 +4113,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("subscriptionId", "UUID!"),
                 Tuple.Create("regionName", "String!"),
             };
-            VnetConnection? fields = null ;
-            if (this.Field != null)
-            {
+            VnetConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (VnetConnection)psObject.BaseObject;
+                    fieldSpecObj = (VnetConnection)psObject.BaseObject;
                 } else {
-                    fields = (VnetConnection)this.Field;
+                    fieldSpecObj = (VnetConnection)this.Field;
                 }
             }
-            string document = Query.AzureVnets(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AzureVnets");
-            var parameters = "($tenantId: String!,$subscriptionId: UUID!,$regionName: String!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAzureVnets" + parameters + "{" + document + "}",
-                OperationName = "QueryAzureVnets",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "VnetConnection", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AzureVnets(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAzureVnets",
+                "($tenantId: String!,$subscriptionId: UUID!,$regionName: String!)",
+                fieldSpecDoc,
+                "VnetConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3656,33 +4142,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("subscriptionId", "UUID!"),
                 Tuple.Create("vNetId", "String!"),
             };
-            SubnetConnection? fields = null ;
-            if (this.Field != null)
-            {
+            SubnetConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (SubnetConnection)psObject.BaseObject;
+                    fieldSpecObj = (SubnetConnection)psObject.BaseObject;
                 } else {
-                    fields = (SubnetConnection)this.Field;
+                    fieldSpecObj = (SubnetConnection)this.Field;
                 }
             }
-            string document = Query.AzureSubnets(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AzureSubnets");
-            var parameters = "($tenantId: String!,$subscriptionId: UUID!,$vNetId: String!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAzureSubnets" + parameters + "{" + document + "}",
-                OperationName = "QueryAzureSubnets",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "SubnetConnection", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AzureSubnets(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAzureSubnets",
+                "($tenantId: String!,$subscriptionId: UUID!,$vNetId: String!)",
+                fieldSpecDoc,
+                "SubnetConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3694,33 +4171,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("subscriptionId", "UUID!"),
                 Tuple.Create("regionName", "String!"),
             };
-            StorageAccountConnection? fields = null ;
-            if (this.Field != null)
-            {
+            StorageAccountConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (StorageAccountConnection)psObject.BaseObject;
+                    fieldSpecObj = (StorageAccountConnection)psObject.BaseObject;
                 } else {
-                    fields = (StorageAccountConnection)this.Field;
+                    fieldSpecObj = (StorageAccountConnection)this.Field;
                 }
             }
-            string document = Query.AzureStorageAccounts(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AzureStorageAccounts");
-            var parameters = "($tenantId: String!,$subscriptionId: UUID!,$regionName: String!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAzureStorageAccounts" + parameters + "{" + document + "}",
-                OperationName = "QueryAzureStorageAccounts",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "StorageAccountConnection", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AzureStorageAccounts(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAzureStorageAccounts",
+                "($tenantId: String!,$subscriptionId: UUID!,$regionName: String!)",
+                fieldSpecDoc,
+                "StorageAccountConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3729,32 +4197,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         {
             Tuple<string, string>[] argDefs = {
             };
-            AzureRegionsResp? fields = null ;
-            if (this.Field != null)
-            {
+            AzureRegionsResp? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (AzureRegionsResp)psObject.BaseObject;
+                    fieldSpecObj = (AzureRegionsResp)psObject.BaseObject;
                 } else {
-                    fields = (AzureRegionsResp)this.Field;
+                    fieldSpecObj = (AzureRegionsResp)this.Field;
                 }
             }
-            string document = Query.AllHostedAzureRegions(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AllHostedAzureRegions");
-            var parameters = "";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAllHostedAzureRegions" + parameters + "{" + document + "}",
-                OperationName = "QueryAllHostedAzureRegions",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            var result = this._rbkClient.Invoke(
-                request, vars, "AzureRegionsResp", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AllHostedAzureRegions(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAllHostedAzureRegions",
+                "",
+                fieldSpecDoc,
+                "AzureRegionsResp"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3765,33 +4225,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("cloudAccountId", "String!"),
                 Tuple.Create("azureRegion", "String!"),
             };
-            List<System.String>? fields = null ;
-            if (this.Field != null)
-            {
+            List<System.String>? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (List<System.String>)psObject.BaseObject;
+                    fieldSpecObj = (List<System.String>)psObject.BaseObject;
                 } else {
-                    fields = (List<System.String>)this.Field;
+                    fieldSpecObj = (List<System.String>)this.Field;
                 }
             }
-            string document = Query.AllAzureResourceGroups(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AllAzureResourceGroups");
-            var parameters = "($cloudAccountId: String!,$azureRegion: String!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAllAzureResourceGroups" + parameters + "{" + document + "}",
-                OperationName = "QueryAllAzureResourceGroups",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "List<System.String>", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AllAzureResourceGroups(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAllAzureResourceGroups",
+                "($cloudAccountId: String!,$azureRegion: String!)",
+                fieldSpecDoc,
+                "List<System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3801,33 +4252,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("vnetRequest", "AzureVnetReq!"),
             };
-            List<System.String>? fields = null ;
-            if (this.Field != null)
-            {
+            List<System.String>? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (List<System.String>)psObject.BaseObject;
+                    fieldSpecObj = (List<System.String>)psObject.BaseObject;
                 } else {
-                    fields = (List<System.String>)this.Field;
+                    fieldSpecObj = (List<System.String>)this.Field;
                 }
             }
-            string document = Query.AllAzureVnets(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AllAzureVnets");
-            var parameters = "($vnetRequest: AzureVnetReq!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAllAzureVnets" + parameters + "{" + document + "}",
-                OperationName = "QueryAllAzureVnets",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "List<System.String>", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AllAzureVnets(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAllAzureVnets",
+                "($vnetRequest: AzureVnetReq!)",
+                fieldSpecDoc,
+                "List<System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3837,33 +4279,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("subnetRequest", "AzureSubnetReq!"),
             };
-            List<System.String>? fields = null ;
-            if (this.Field != null)
-            {
+            List<System.String>? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (List<System.String>)psObject.BaseObject;
+                    fieldSpecObj = (List<System.String>)psObject.BaseObject;
                 } else {
-                    fields = (List<System.String>)this.Field;
+                    fieldSpecObj = (List<System.String>)this.Field;
                 }
             }
-            string document = Query.AllAzureSubnets(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AllAzureSubnets");
-            var parameters = "($subnetRequest: AzureSubnetReq!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAllAzureSubnets" + parameters + "{" + document + "}",
-                OperationName = "QueryAllAzureSubnets",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "List<System.String>", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AllAzureSubnets(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAllAzureSubnets",
+                "($subnetRequest: AzureSubnetReq!)",
+                fieldSpecDoc,
+                "List<System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3873,33 +4306,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("cdmVersionRequest", "AzureCdmVersionReq!"),
             };
-            List<AzureCdmVersion>? fields = null ;
-            if (this.Field != null)
-            {
+            List<AzureCdmVersion>? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (List<AzureCdmVersion>)psObject.BaseObject;
+                    fieldSpecObj = (List<AzureCdmVersion>)psObject.BaseObject;
                 } else {
-                    fields = (List<AzureCdmVersion>)this.Field;
+                    fieldSpecObj = (List<AzureCdmVersion>)this.Field;
                 }
             }
-            string document = Query.AllAzureCdmVersions(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AllAzureCdmVersions");
-            var parameters = "($cdmVersionRequest: AzureCdmVersionReq!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAllAzureCdmVersions" + parameters + "{" + document + "}",
-                OperationName = "QueryAllAzureCdmVersions",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "List<AzureCdmVersion>", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AllAzureCdmVersions(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAllAzureCdmVersions",
+                "($cdmVersionRequest: AzureCdmVersionReq!)",
+                fieldSpecDoc,
+                "List<AzureCdmVersion>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3909,33 +4333,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("cloudAccountId", "String!"),
             };
-            List<AzureCloudAccountRegion>? fields = null ;
-            if (this.Field != null)
-            {
+            List<AzureCloudAccountRegion>? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (List<AzureCloudAccountRegion>)psObject.BaseObject;
+                    fieldSpecObj = (List<AzureCloudAccountRegion>)psObject.BaseObject;
                 } else {
-                    fields = (List<AzureCloudAccountRegion>)this.Field;
+                    fieldSpecObj = (List<AzureCloudAccountRegion>)this.Field;
                 }
             }
-            string document = Query.AllAzureRegions(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AllAzureRegions");
-            var parameters = "($cloudAccountId: String!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAllAzureRegions" + parameters + "{" + document + "}",
-                OperationName = "QueryAllAzureRegions",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "List<AzureCloudAccountRegion>", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AllAzureRegions(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAllAzureRegions",
+                "($cloudAccountId: String!)",
+                fieldSpecDoc,
+                "List<AzureCloudAccountRegion>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3945,33 +4360,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("nsgRequest", "AzureNsgRequest!"),
             };
-            List<System.String>? fields = null ;
-            if (this.Field != null)
-            {
+            List<System.String>? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (List<System.String>)psObject.BaseObject;
+                    fieldSpecObj = (List<System.String>)psObject.BaseObject;
                 } else {
-                    fields = (List<System.String>)this.Field;
+                    fieldSpecObj = (List<System.String>)this.Field;
                 }
             }
-            string document = Query.AllAzureNsgs(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AllAzureNsgs");
-            var parameters = "($nsgRequest: AzureNsgRequest!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAllAzureNsgs" + parameters + "{" + document + "}",
-                OperationName = "QueryAllAzureNsgs",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "List<System.String>", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AllAzureNsgs(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAllAzureNsgs",
+                "($nsgRequest: AzureNsgRequest!)",
+                fieldSpecDoc,
+                "List<System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3981,33 +4387,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("storageAccountsRequest", "AzureStorageAccountsReq!"),
             };
-            List<System.String>? fields = null ;
-            if (this.Field != null)
-            {
+            List<System.String>? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (List<System.String>)psObject.BaseObject;
+                    fieldSpecObj = (List<System.String>)psObject.BaseObject;
                 } else {
-                    fields = (List<System.String>)this.Field;
+                    fieldSpecObj = (List<System.String>)this.Field;
                 }
             }
-            string document = Query.AllAzureStorageAccounts(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AllAzureStorageAccounts");
-            var parameters = "($storageAccountsRequest: AzureStorageAccountsReq!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAllAzureStorageAccounts" + parameters + "{" + document + "}",
-                OperationName = "QueryAllAzureStorageAccounts",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "List<System.String>", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AllAzureStorageAccounts(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAllAzureStorageAccounts",
+                "($storageAccountsRequest: AzureStorageAccountsReq!)",
+                fieldSpecDoc,
+                "List<System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -4027,33 +4424,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
             };
-            AzureAdDirectoryConnection? fields = null ;
-            if (this.Field != null)
-            {
+            AzureAdDirectoryConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (AzureAdDirectoryConnection)psObject.BaseObject;
+                    fieldSpecObj = (AzureAdDirectoryConnection)psObject.BaseObject;
                 } else {
-                    fields = (AzureAdDirectoryConnection)this.Field;
+                    fieldSpecObj = (AzureAdDirectoryConnection)this.Field;
                 }
             }
-            string document = Query.AzureAdDirectories(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AzureAdDirectories");
-            var parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAzureAdDirectories" + parameters + "{" + document + "}",
-                OperationName = "QueryAzureAdDirectories",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "AzureAdDirectoryConnection", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AzureAdDirectories(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAzureAdDirectories",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                fieldSpecDoc,
+                "AzureAdDirectoryConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -4063,33 +4451,61 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("workloadFid", "UUID!"),
             };
-            AzureAdDirectory? fields = null ;
-            if (this.Field != null)
-            {
+            AzureAdDirectory? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (AzureAdDirectory)psObject.BaseObject;
+                    fieldSpecObj = (AzureAdDirectory)psObject.BaseObject;
                 } else {
-                    fields = (AzureAdDirectory)this.Field;
+                    fieldSpecObj = (AzureAdDirectory)this.Field;
                 }
             }
-            string document = Query.AzureAdDirectory(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AzureAdDirectory");
-            var parameters = "($workloadFid: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAzureAdDirectory" + parameters + "{" + document + "}",
-                OperationName = "QueryAzureAdDirectory",
+            string fieldSpecDoc = Query.AzureAdDirectory(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAzureAdDirectory",
+                "($workloadFid: UUID!)",
+                fieldSpecDoc,
+                "AzureAdDirectory"
+            );
+        }
+
+        // Invoke GraphQL Query:
+        // azureAdObjectsByType(
+        //     first: Int
+        //     after: String
+        //     sortByOption: [AzureAdObjectSearchType!]
+        //     sortOrder: SortOrder
+        //     input: AzureAdObjectTypeInput!
+        //   ): AzureAdObjectConnection!
+        protected void InvokeQueryAzureAdObjectsByType()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("sortByOption", "[AzureAdObjectSearchType!]"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("input", "AzureAdObjectTypeInput!"),
             };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
+            AzureAdObjectConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                if (this.Field is PSObject psObject) {
+                    fieldSpecObj = (AzureAdObjectConnection)psObject.BaseObject;
+                } else {
+                    fieldSpecObj = (AzureAdObjectConnection)this.Field;
+                }
             }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "AzureAdDirectory", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AzureAdObjectsByType(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAzureAdObjectsByType",
+                "($first: Int,$after: String,$sortByOption: [AzureAdObjectSearchType!],$sortOrder: SortOrder,$input: AzureAdObjectTypeInput!)",
+                fieldSpecDoc,
+                "AzureAdObjectConnection"
+            );
         }
 
 

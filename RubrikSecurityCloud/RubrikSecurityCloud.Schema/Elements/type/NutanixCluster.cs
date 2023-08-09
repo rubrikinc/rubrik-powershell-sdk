@@ -77,7 +77,7 @@ namespace RubrikSecurityCloud.Types
         public System.String? Id { get; set; }
 
         //      C# -> DateTime? LastRefreshTime
-        // GraphQL -> lastRefreshTime: DateTime! (scalar)
+        // GraphQL -> lastRefreshTime: DateTime (scalar)
         [JsonProperty("lastRefreshTime")]
         public DateTime? LastRefreshTime { get; set; }
 
@@ -393,7 +393,7 @@ namespace RubrikSecurityCloud.Types
             s += ind + "id\n" ;
         }
         //      C# -> DateTime? LastRefreshTime
-        // GraphQL -> lastRefreshTime: DateTime! (scalar)
+        // GraphQL -> lastRefreshTime: DateTime (scalar)
         if (this.LastRefreshTime != null) {
             s += ind + "lastRefreshTime\n" ;
         }
@@ -612,7 +612,7 @@ namespace RubrikSecurityCloud.Types
             this.Id = "FETCH";
         }
         //      C# -> DateTime? LastRefreshTime
-        // GraphQL -> lastRefreshTime: DateTime! (scalar)
+        // GraphQL -> lastRefreshTime: DateTime (scalar)
         if (this.LastRefreshTime == null && Exploration.Includes(parent + ".lastRefreshTime", true))
         {
             this.LastRefreshTime = new DateTime();

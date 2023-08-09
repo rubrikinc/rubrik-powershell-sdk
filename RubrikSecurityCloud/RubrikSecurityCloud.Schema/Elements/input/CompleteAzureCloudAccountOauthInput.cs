@@ -86,6 +86,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("performBasicOauth")]
         public System.Boolean? PerformBasicOauth { get; set; }
 
+        //      C# -> System.Boolean? ShouldKeepRefreshToken
+        // GraphQL -> shouldKeepRefreshToken: Boolean (scalar)
+        [JsonProperty("shouldKeepRefreshToken")]
+        public System.Boolean? ShouldKeepRefreshToken { get; set; }
+
 
         #endregion
 

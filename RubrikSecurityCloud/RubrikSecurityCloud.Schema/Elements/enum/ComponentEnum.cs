@@ -69,6 +69,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "GPS")]
         GPS,
 
+        [EnumMember(Value = "INTEGRATIONS_HUB")]
+        INTEGRATIONS_HUB,
+
         [EnumMember(Value = "KUPR")]
         KUPR,
 
@@ -109,7 +112,10 @@ namespace RubrikSecurityCloud.Types
         USER_MANAGEMENT,
 
         [EnumMember(Value = "WATCHERS")]
-        WATCHERS
+        WATCHERS,
+
+        [EnumMember(Value = "ZEUS")]
+        ZEUS
 
 
     } // enum ComponentEnum

@@ -26,9 +26,14 @@ namespace RubrikSecurityCloud.Types
         public BulkRecoveryGroupWorkloadStatus? Status { get; set; }
 
         //      C# -> System.Int32? CanceledWorkloads
-        // GraphQL -> canceledWorkloads: Int! (scalar)
+        // GraphQL -> canceledWorkloads: Int (scalar)
         [JsonProperty("canceledWorkloads")]
         public System.Int32? CanceledWorkloads { get; set; }
+
+        //      C# -> System.Int64? CreateTime
+        // GraphQL -> createTime: Long (scalar)
+        [JsonProperty("createTime")]
+        public System.Int64? CreateTime { get; set; }
 
         //      C# -> System.Int64? ElapsedTime
         // GraphQL -> elapsedTime: Long! (scalar)
@@ -41,12 +46,12 @@ namespace RubrikSecurityCloud.Types
         public System.Int64? EndTime { get; set; }
 
         //      C# -> System.Int32? FailedWorkloads
-        // GraphQL -> failedWorkloads: Int! (scalar)
+        // GraphQL -> failedWorkloads: Int (scalar)
         [JsonProperty("failedWorkloads")]
         public System.Int32? FailedWorkloads { get; set; }
 
         //      C# -> System.Int32? InProgressWorkloads
-        // GraphQL -> inProgressWorkloads: Int! (scalar)
+        // GraphQL -> inProgressWorkloads: Int (scalar)
         [JsonProperty("inProgressWorkloads")]
         public System.Int32? InProgressWorkloads { get; set; }
 
@@ -56,17 +61,17 @@ namespace RubrikSecurityCloud.Types
         public System.Int32? Seq { get; set; }
 
         //      C# -> System.Int64? StartTime
-        // GraphQL -> startTime: Long! (scalar)
+        // GraphQL -> startTime: Long (scalar)
         [JsonProperty("startTime")]
         public System.Int64? StartTime { get; set; }
 
         //      C# -> System.Int32? SucceededWorkloads
-        // GraphQL -> succeededWorkloads: Int! (scalar)
+        // GraphQL -> succeededWorkloads: Int (scalar)
         [JsonProperty("succeededWorkloads")]
         public System.Int32? SucceededWorkloads { get; set; }
 
         //      C# -> System.Int32? TotalWorkloads
-        // GraphQL -> totalWorkloads: Int! (scalar)
+        // GraphQL -> totalWorkloads: Int (scalar)
         [JsonProperty("totalWorkloads")]
         public System.Int32? TotalWorkloads { get; set; }
 
@@ -76,7 +81,7 @@ namespace RubrikSecurityCloud.Types
         public System.String? WorkloadType { get; set; }
 
         //      C# -> System.Int32? WorkloadsWithoutSnapshot
-        // GraphQL -> workloadsWithoutSnapshot: Int! (scalar)
+        // GraphQL -> workloadsWithoutSnapshot: Int (scalar)
         [JsonProperty("workloadsWithoutSnapshot")]
         public System.Int32? WorkloadsWithoutSnapshot { get; set; }
 
@@ -97,6 +102,7 @@ namespace RubrikSecurityCloud.Types
     public BulkRecoveryGroupWorkloadProgress Set(
         BulkRecoveryGroupWorkloadStatus? Status = null,
         System.Int32? CanceledWorkloads = null,
+        System.Int64? CreateTime = null,
         System.Int64? ElapsedTime = null,
         System.Int64? EndTime = null,
         System.Int32? FailedWorkloads = null,
@@ -115,6 +121,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( CanceledWorkloads != null ) {
             this.CanceledWorkloads = CanceledWorkloads;
+        }
+        if ( CreateTime != null ) {
+            this.CreateTime = CreateTime;
         }
         if ( ElapsedTime != null ) {
             this.ElapsedTime = ElapsedTime;
@@ -165,9 +174,14 @@ namespace RubrikSecurityCloud.Types
             s += ind + "status\n" ;
         }
         //      C# -> System.Int32? CanceledWorkloads
-        // GraphQL -> canceledWorkloads: Int! (scalar)
+        // GraphQL -> canceledWorkloads: Int (scalar)
         if (this.CanceledWorkloads != null) {
             s += ind + "canceledWorkloads\n" ;
+        }
+        //      C# -> System.Int64? CreateTime
+        // GraphQL -> createTime: Long (scalar)
+        if (this.CreateTime != null) {
+            s += ind + "createTime\n" ;
         }
         //      C# -> System.Int64? ElapsedTime
         // GraphQL -> elapsedTime: Long! (scalar)
@@ -180,12 +194,12 @@ namespace RubrikSecurityCloud.Types
             s += ind + "endTime\n" ;
         }
         //      C# -> System.Int32? FailedWorkloads
-        // GraphQL -> failedWorkloads: Int! (scalar)
+        // GraphQL -> failedWorkloads: Int (scalar)
         if (this.FailedWorkloads != null) {
             s += ind + "failedWorkloads\n" ;
         }
         //      C# -> System.Int32? InProgressWorkloads
-        // GraphQL -> inProgressWorkloads: Int! (scalar)
+        // GraphQL -> inProgressWorkloads: Int (scalar)
         if (this.InProgressWorkloads != null) {
             s += ind + "inProgressWorkloads\n" ;
         }
@@ -195,17 +209,17 @@ namespace RubrikSecurityCloud.Types
             s += ind + "seq\n" ;
         }
         //      C# -> System.Int64? StartTime
-        // GraphQL -> startTime: Long! (scalar)
+        // GraphQL -> startTime: Long (scalar)
         if (this.StartTime != null) {
             s += ind + "startTime\n" ;
         }
         //      C# -> System.Int32? SucceededWorkloads
-        // GraphQL -> succeededWorkloads: Int! (scalar)
+        // GraphQL -> succeededWorkloads: Int (scalar)
         if (this.SucceededWorkloads != null) {
             s += ind + "succeededWorkloads\n" ;
         }
         //      C# -> System.Int32? TotalWorkloads
-        // GraphQL -> totalWorkloads: Int! (scalar)
+        // GraphQL -> totalWorkloads: Int (scalar)
         if (this.TotalWorkloads != null) {
             s += ind + "totalWorkloads\n" ;
         }
@@ -215,7 +229,7 @@ namespace RubrikSecurityCloud.Types
             s += ind + "workloadType\n" ;
         }
         //      C# -> System.Int32? WorkloadsWithoutSnapshot
-        // GraphQL -> workloadsWithoutSnapshot: Int! (scalar)
+        // GraphQL -> workloadsWithoutSnapshot: Int (scalar)
         if (this.WorkloadsWithoutSnapshot != null) {
             s += ind + "workloadsWithoutSnapshot\n" ;
         }
@@ -242,10 +256,16 @@ namespace RubrikSecurityCloud.Types
             this.Status = new BulkRecoveryGroupWorkloadStatus();
         }
         //      C# -> System.Int32? CanceledWorkloads
-        // GraphQL -> canceledWorkloads: Int! (scalar)
+        // GraphQL -> canceledWorkloads: Int (scalar)
         if (this.CanceledWorkloads == null && Exploration.Includes(parent + ".canceledWorkloads", true))
         {
             this.CanceledWorkloads = Int32.MinValue;
+        }
+        //      C# -> System.Int64? CreateTime
+        // GraphQL -> createTime: Long (scalar)
+        if (this.CreateTime == null && Exploration.Includes(parent + ".createTime", true))
+        {
+            this.CreateTime = new System.Int64();
         }
         //      C# -> System.Int64? ElapsedTime
         // GraphQL -> elapsedTime: Long! (scalar)
@@ -260,13 +280,13 @@ namespace RubrikSecurityCloud.Types
             this.EndTime = new System.Int64();
         }
         //      C# -> System.Int32? FailedWorkloads
-        // GraphQL -> failedWorkloads: Int! (scalar)
+        // GraphQL -> failedWorkloads: Int (scalar)
         if (this.FailedWorkloads == null && Exploration.Includes(parent + ".failedWorkloads", true))
         {
             this.FailedWorkloads = Int32.MinValue;
         }
         //      C# -> System.Int32? InProgressWorkloads
-        // GraphQL -> inProgressWorkloads: Int! (scalar)
+        // GraphQL -> inProgressWorkloads: Int (scalar)
         if (this.InProgressWorkloads == null && Exploration.Includes(parent + ".inProgressWorkloads", true))
         {
             this.InProgressWorkloads = Int32.MinValue;
@@ -278,19 +298,19 @@ namespace RubrikSecurityCloud.Types
             this.Seq = Int32.MinValue;
         }
         //      C# -> System.Int64? StartTime
-        // GraphQL -> startTime: Long! (scalar)
+        // GraphQL -> startTime: Long (scalar)
         if (this.StartTime == null && Exploration.Includes(parent + ".startTime", true))
         {
             this.StartTime = new System.Int64();
         }
         //      C# -> System.Int32? SucceededWorkloads
-        // GraphQL -> succeededWorkloads: Int! (scalar)
+        // GraphQL -> succeededWorkloads: Int (scalar)
         if (this.SucceededWorkloads == null && Exploration.Includes(parent + ".succeededWorkloads", true))
         {
             this.SucceededWorkloads = Int32.MinValue;
         }
         //      C# -> System.Int32? TotalWorkloads
-        // GraphQL -> totalWorkloads: Int! (scalar)
+        // GraphQL -> totalWorkloads: Int (scalar)
         if (this.TotalWorkloads == null && Exploration.Includes(parent + ".totalWorkloads", true))
         {
             this.TotalWorkloads = Int32.MinValue;
@@ -302,7 +322,7 @@ namespace RubrikSecurityCloud.Types
             this.WorkloadType = "FETCH";
         }
         //      C# -> System.Int32? WorkloadsWithoutSnapshot
-        // GraphQL -> workloadsWithoutSnapshot: Int! (scalar)
+        // GraphQL -> workloadsWithoutSnapshot: Int (scalar)
         if (this.WorkloadsWithoutSnapshot == null && Exploration.Includes(parent + ".workloadsWithoutSnapshot", true))
         {
             this.WorkloadsWithoutSnapshot = Int32.MinValue;

@@ -35,6 +35,7 @@ Feature flag names.
 - WINDOWS_VOLUME_GROUP_LIVE_MOUNT_ENABLED
 - CLOUD_COMPUTE_CONNECTIVITY_CHECK_ENABLED - Specifies whether the Cloud Compute Connectivity Check feature is enabled.
 - DetailedInventoryCardEnabled
+- NAS_NUTANIX_SYSTEM_ENABLED - Determines whether Nutanix systems are presented as a NAS System type to be added.
 - AzureSeparateResourceGroupEnabled
 - AWSAutoProtectByTagsEnabled
 - MULTIPLE_ARCHIVAL_ENABLED - Determines whether multiple archival configuration is allowed for SLAs.
@@ -47,10 +48,12 @@ Feature flag names.
 - M365_SHAREPOINTDRIVE_RANSOMWARE_INVESTIGATION_ENABLED - Determines whether Ransomware Investigation for M365 SharePointDrive is enabled.
 - RADAR_RANSOMWARE_MODEL_B_SHADOW_ENABLED - Determines if model-b is enabled in shadow mode for stage 2.
 - AzureCrossRegionReplicationEnabled
+- APPFLOWS_SCHEDULE_RECOVERIES_ENABLED - Determines whether the AppFlows Schedule Recoveries feature is enabled.
 - DSCC_DASHBOARD_ENABLED - Determines whether the Data Security Command Center dashboard is enabled.
 - AWS_MULTI_ACCOUNT_ADDITION_ENABLED - Determines whether multiple cloud account addition is enabled for AWS.
 - ALLOW_ONLINE_REGISTRATION - Enables online registration workflow.
 - MS_EXCHANGE_GA_ENABLED - Determines if MS Exchange GA is enabled.
+- AWS_APP_CONSISTENCY_ENABLED - Determines whether the App-consistent Snapshot feature for AWS EC2 instance is enabled in RSC.
 - CUSTOMER_INSIGHTS_ENABLED - Specifies whether the customer insights feature is enabled.
 - DB2_ARCHIVAL_ENABLED - Determines whether archiving is enabled for Db2.
 - AwsRDSCrossRegionReplicationEnabled
@@ -75,6 +78,7 @@ Feature flag names.
 - POLARIS2_CC_CNP_ENABLED - Enables the CC-CNP unification changes.
 - DarkSiteEnabled
 - SONAR_FOR_AZURE_ENABLED - Determines if Rubrik Sensitive Data Discovery is enabled for Azure.
+- CNP_AWS_DIRECT_ARCHIVAL_ENABLED - Determines whether direct archival is enabled for AWS snapshots.
 - BackupFailureRemediationEnabled
 - THEME_SWITCHER_ENABLED
 - MONGO_CDM_ARCHIVAL_ENABLED - Specifies whether archival is enabled for MongoDB NoSQL databases.
@@ -89,8 +93,11 @@ Feature flag names.
 - O365CalendarEnabled
 - FEDERATED_LOGIN_PORT_ENABLED - Determines if port is enabled for federated login redirection.
 - SLA_DOMAIN_UPGRADE_ENABLED
+- UI_GA_ACTIVE_DIRECTORY_ENABLED - Determines whether the Active Directory features are enabled in the Rubrik Security Cloud.
+- NODE_REPLACEMENT_ENABLED - Determines whether the node replacement feature for Rubrik clusters is enabled in RSC.
 - AwsRDSProtectionEnabled
 - CNP_AWS_AURORA_SUPPORT_ENABLED - Determines whether AWS Aurora support is enabled.
+- ORG_NETWORKS_ENABLED
 - CLASSIFICATION_BANNER_ENABLED
 - NEW_O365_AUTH_ENABLED - Enables the popup based OAuth flows for O365.
 - FilesetInventoryEnabled
@@ -135,6 +142,7 @@ Feature flag names.
 - UserAwarenessV1Enabled
 - ENABLE_UPGRADE_TYPE - Enables option to change upgrade type.
 - MORE_MENU_ENABLED - Enables the more items menu in the global header navbar.
+- UI_PROMPT_CDM_9_UPGRADE - Determines whether the user is prompted for CDM 9.0 Upgrade on Spark UI.
 - CloudAccountsAwsUpgradePermissionEnabled
 - SAMPLE_FLAG - Sample feature flag on unified feature flag framework.
 - AutoStorageSettingEnabled
@@ -155,6 +163,7 @@ Feature flag names.
 - SONAR_WINDOWS_VOLUME_GROUP_ENABLED - Determines if Windows Volume Group is enabled on Sonar.
 - SAP_HANA_CROSS_RESTORE_ENABLED - Determines whether Restore is enabled for SAP HANA.
 - AzureNationalCloudEnabled
+- SONAR_MSSQL_ENABLED - Determines if Rubrik Sensitive Data Discovery is enabled for Microsoft SQL Server databases.
 - PRODUCT_TRIALS_ENABLED - Specifies whether product trials are enabled.
 - RADAR_ANOMALY_MODEL_B_SHADOW_ENABLED - Determines if model-b is enabled in shadow mode for stage 1.
 - RCV_CONSUMPTION
@@ -235,6 +244,7 @@ Feature flag names.
 - NEW_THEMES_MIXED_MODE_ENABLED
 - OracleHierarchyEnabled
 - UserAwarenessV2Enabled
+- ARCHIVAL_LOCATION_DETAIL_ENABLED - Determines whether archival location detail page is enabled.
 - CloudNativeAWSEnabled
 - RADAR_ANOMALY_MODEL_B_RELEASE_ENABLED - Determines Determines whether model-b is released for stage 1.
 - UnmanagedObjectEnabled
@@ -325,6 +335,7 @@ Feature flag names.
 - DATA_DISCOVERY_ML_ANALYZERS_ENABLED - Determines whether the machine learning based content analyzers are enabled.
 - AZURE_MANUAL_CLOUD_ACCOUNTS_SETUP_ENABLED - Specifies whether the Azure cloud accounts can be configured manually without OAuth.
 - AzureRecoverPoweredOffEnabled
+- SAP_HANA_SECURE_STORE_ENABLED - Determines whether SAP HANA secure store option is enabled.
 - NODE_REMOVAL_ENABLED - Determines whether the node removal feature for Rubrik clusters is enabled.
 - RANSOMWARE_SUGGESTED_SNAPSHOTS_ENABLED - Determines whether the Ransomware Investigation Mass Recovery to Suggested Snapshots feature is enabled.
 - RANSOMWARE_INVESTIGATION_ANOMALIES_UPDATE_ENABLED - Enables the Ransomware Investigation Anomalies update.
@@ -334,6 +345,7 @@ Feature flag names.
 - SonarDashEnabled
 - M365_IMMUTABILITY_ENABLED - Determines whether immutability is enabled for Microsoft 365 backups.
 - APPFLOWS_PROGRESS_IMPROVEMENT_ENABLED - Determines whether Progress Improvement is enabled for AppFlows.
+- UI_ACTIVE_DIRECTORY_ENABLED - Determines whether the Active Directory is enabled in the Rubrik Security Cloud.
 - SSO_CERT_MANAGEMENT_ENABLED - Specifies whether the ca-signed sso cert management is enabeld.
 - O365InventoryEnabled
 - APPFLOWS_CYBER_RECOVERY_THREAT_HUNT_ENABLED - Determines whether Cyber Recovery threat hunt is enabled for Application Recovery.
@@ -350,7 +362,6 @@ Feature flag names.
 - MULTITENANCY_ARCHIVAL_PARITY_ENABLED - Specifies whether parity gap of archival is enabled for multitenant organizations.
 - RecoverySearchEnabled
 - SUPPORT_IMPERSONATION_UI - Determines whether Support Impersonation UI is enabled for this account or not.
-- O365_TEAMS_POSTS_ENABLED
 - O365SharePointEnabled
 - JobMonitoringUIEnabled
 - M365_MULTI_GEO - Determines whether Microsoft 365 Multi-Geo support is enabled.
@@ -375,6 +386,7 @@ Feature flag names.
 - LANGUAGE_JAPANESE_ENABLED - Determines whether Japanese can be selected as the display language in the UI.
 - SUPPORT_TUNNEL_ENABLED - Determines whether managing support tunnel operations is enabled.
 - SlaComplianceFilterEnabled
+- NATIVE_SERVICE_ACCOUNT_AUTHENTICATION_ENABLED - Determines whether the native stack for service accounts is enabled in RSC.
 - PRISM_CENTRAL_ENABLED - Enables Prism Central on AHV virtual machines workload inventory.
 - VMWARE_VM_LEVEL_FILE_DOWNLOAD_ENABLED - Specifies whether VM-level file download feature is supported.
 - TPR_ENABLED - Specifies whether the two-person rule (TPR) has been enabled.
@@ -397,8 +409,11 @@ Feature flag names.
 - APPFLOWS_COMPUTE_CLUSTER_ENABLED - Determine whether compute cluster support is enabled for Appflows.
 - INVENTORY_SWITCHER_ENABLED - Enables the inventory switcher in the global header navbar.
 - MS_EXCHANGE_INVENTORY_ENABLED - Determines if MS Exchange is enabled.
+- M365_SKIPPED_ITEM_VISIBILITY_ENABLED - Determines whether Microsoft 365 skipped item visibility is enabled.
 - SapHanaOnGcpEnabled
+- ORG_REPORT_ASSIGNMENT_ENABLED - Specifies whether tenant organizations can be assigned reports.
 - ObjectTypeSLAEnhancementEnabled
+- CNP_AZURE_DISK_MOUNT_ENABLED - Determines whether disk mount for Azure native protection is enabled.
 - APPFLOWS_IRE_PROMOTION_ENABLED - Determines whether IRE Promotion is enabled for AppFlows.
 - RADAR_RUN_ANOMALY_MODELB_ENABLED
 - SONAR_ON_O365_ONEDRIVE_ENABLED - Determines if Rubrik Sensitive Data Discovery is enabled for O365 OneDrive.
@@ -428,6 +443,7 @@ Feature flag names.
 - INTEGRATIONS_HUB_ENABLED - Determines whether the integrations hub settings page is enabled.
 - SENTRY_PERFORMANCE_ENABLED
 - ON_PREM_PREFERENCES_ENABLED
+- CNP_AKS_CNI_OVERLAY_NETWORKING_ENABLED - Determines whether Azure CNI overlay networking for AKS is enabled.
 - AWS_NATIVE_INSTANT_ARCHIVAL_ENABLED
 - AZURE_SQL_V1_ENABLED
 - VMWARE_DATASTORE_CLUSTER_ENABLED - Specifies whether datastore clusters are supported during recovery operations.
@@ -436,15 +452,19 @@ Feature flag names.
 - RELEASE_NOTES_ENABLED - Determines if RSC release notes are enabled.
 - FilesetInventoryEAEnabled
 - MssqlFeatureEnablementEnabled
+- DB_LOG_REPORTING_ENABLED - Determines if the database log reporting is enabled.
 - NasFilesetRbacEnabled
 - RETENTION_LOCK_SLA_ENABLED - Determines if Retention Lock feature is enabled on SLA.
 - SONAR_FOR_NAS_CD_ENABLED - Determines if Rubrik Sensitive Data Discovery is enabled for NAS Cloud Direct.
+- VIEWED_HISTORY_ENABLED - Determines whether Viewed History Framework is enabled.
 - QSTAR_LOCATION_ENABLED - Determines whether QStar archival location is enabled.
 - FORMIK_ROLE_ORG_CRUD_WIZARD_ENABLED - Enables Formik version of the Role and Org CRUD wizards.
+- AZURE_AD_RECOVERY_ENABLED - Specifies whether Azure AD recovery is enabled.
 - DISABLE_LOW_PERFORMANCE_COMPONENT - Specifies whether a component must be temporarily disabled due to performance issues.
 - OracleEnabled - Determines if Oracle features are enabled.
 - DataClassificationEnabled
 - ENABLE_AWS_MANAGED_POLICIES - Determines if AWS cross account role has inline policies or managed policies.
+- M365_L3_ENCRYPTION - Determines if three-level encryption should be used for Microsoft 365 backups.
 - APPFLOWS_DATASTORE_CLUSTER_ENABLED - Determines whether Datastore cluster is enabled for Appflows.
 - SnapMirrorInventoryEnabled
 - RADAR_QUARANTINE_ENABLED - Determines whether the RadarQuarantine is enabled.
@@ -477,6 +497,7 @@ Feature flag names.
 - RubrikSEDemoEnabled
 - AWSCustomKeyPairInExportEnabled
 - CNP_AZURE_GOV_CLOUD_SUPPORT_ENABLED - Determines whether the Azure Gov Cloud Support is enabled.
+- CCES_SERVERS_AND_APPS_ENABLED - Determines whether Servers and Apps permissions feature is enabled.
 - REPLICATION_TARGETS_ENABLED
 - NETWORK_THROTTLE_ENABLED
 - TEST_FALSE_FLAG - A flag that evaluates to the false variant for all entities on all configurations. Used for testing feature flagging.

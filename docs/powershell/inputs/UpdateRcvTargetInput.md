@@ -9,3 +9,5 @@ Input for the Rubrik Cloud Vault update request.
   - Lock duration for the immutable location, in days.
 - ipMapping: IpMappingInput
   - List of allowed IP addresses for the RCV location.
+- shouldBypassProxy: System.Boolean
+  - Specifies whether the proxy settings must be bypassed for the RCV archival target.

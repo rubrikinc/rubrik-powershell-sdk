@@ -40,10 +40,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("clusters")]
         public List<ClusterSummary>? Clusters { get; set; }
 
-        //      C# -> List<ManagedObjectSummary>? Objects
-        // GraphQL -> objects: [ManagedObjectSummary!]! (type)
-        [JsonProperty("objects")]
-        public List<ManagedObjectSummary>? Objects { get; set; }
+        //      C# -> List<ManagedObjectSummary>? InventoryObjects
+        // GraphQL -> inventoryObjects: [ManagedObjectSummary!]! (type)
+        [JsonProperty("inventoryObjects")]
+        public List<ManagedObjectSummary>? InventoryObjects { get; set; }
 
         //      C# -> SlaDomainSummary? SlaDomain
         // GraphQL -> slaDomain: SlaDomainSummary (type)
@@ -69,7 +69,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Description = null,
         System.String? EditedPolicy = null,
         List<ClusterSummary>? Clusters = null,
-        List<ManagedObjectSummary>? Objects = null,
+        List<ManagedObjectSummary>? InventoryObjects = null,
         SlaDomainSummary? SlaDomain = null,
         SlaDomainSummary? TargetSlaDomain = null
     ) 
@@ -86,8 +86,8 @@ namespace RubrikSecurityCloud.Types
         if ( Clusters != null ) {
             this.Clusters = Clusters;
         }
-        if ( Objects != null ) {
-            this.Objects = Objects;
+        if ( InventoryObjects != null ) {
+            this.InventoryObjects = InventoryObjects;
         }
         if ( SlaDomain != null ) {
             this.SlaDomain = SlaDomain;
@@ -131,12 +131,12 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "clusters {\n" + fspec + ind + "}\n" ;
             }
         }
-        //      C# -> List<ManagedObjectSummary>? Objects
-        // GraphQL -> objects: [ManagedObjectSummary!]! (type)
-        if (this.Objects != null) {
-            var fspec = this.Objects.AsFieldSpec(indent+1);
+        //      C# -> List<ManagedObjectSummary>? InventoryObjects
+        // GraphQL -> inventoryObjects: [ManagedObjectSummary!]! (type)
+        if (this.InventoryObjects != null) {
+            var fspec = this.InventoryObjects.AsFieldSpec(indent+1);
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "objects {\n" + fspec + ind + "}\n" ;
+                s += ind + "inventoryObjects {\n" + fspec + ind + "}\n" ;
             }
         }
         //      C# -> SlaDomainSummary? SlaDomain
@@ -190,12 +190,12 @@ namespace RubrikSecurityCloud.Types
             this.Clusters = new List<ClusterSummary>();
             this.Clusters.ApplyExploratoryFieldSpec(parent + ".clusters");
         }
-        //      C# -> List<ManagedObjectSummary>? Objects
-        // GraphQL -> objects: [ManagedObjectSummary!]! (type)
-        if (this.Objects == null && Exploration.Includes(parent + ".objects"))
+        //      C# -> List<ManagedObjectSummary>? InventoryObjects
+        // GraphQL -> inventoryObjects: [ManagedObjectSummary!]! (type)
+        if (this.InventoryObjects == null && Exploration.Includes(parent + ".inventoryObjects"))
         {
-            this.Objects = new List<ManagedObjectSummary>();
-            this.Objects.ApplyExploratoryFieldSpec(parent + ".objects");
+            this.InventoryObjects = new List<ManagedObjectSummary>();
+            this.InventoryObjects.ApplyExploratoryFieldSpec(parent + ".inventoryObjects");
         }
         //      C# -> SlaDomainSummary? SlaDomain
         // GraphQL -> slaDomain: SlaDomainSummary (type)

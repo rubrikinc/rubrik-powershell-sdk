@@ -31,3 +31,5 @@ Type of objects managed by SLA Domains.
 - AZURE_BLOB_OBJECT_TYPE - Azure Blob object.
 - AWS_S3_OBJECT_TYPE - AWS S3 object.
 - ACTIVE_DIRECTORY_OBJECT_TYPE - Active Directory object.
+- K8S_OBJECT_TYPE - CDM Native K8s object.
+- SAAS_APPS_OBJECT_TYPE - SaaS App Protection object.

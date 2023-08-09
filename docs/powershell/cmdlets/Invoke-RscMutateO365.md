@@ -67,7 +67,7 @@ Enables SharePoint protection in the exocompute cluster.
 
 - There is a single argument of type EnableO365SharePointInput.
 - Returns RequestStatus.
-### enableteam
+### enableteams
 Enables Teams protection in the exocompute cluster.
 
 - There is a single argument of type System.String.
@@ -76,6 +76,16 @@ Enables Teams protection in the exocompute cluster.
 Exports an Exchange mailbox.
 
 - There is a single argument of type ExportO365MailboxInput.
+- Returns CreateOnDemandJobReply.
+### exportteamsfiles
+Export Team files.
+
+- There is a single argument of type RestoreO365TeamsFilesInput.
+- Returns CreateOnDemandJobReply.
+### exportworkload
+Export an O365 workload.
+
+- There is a single argument of type RestoreO365SnappableInput.
 - Returns CreateOnDemandJobReply.
 ### insertcustomerapp
 Inserts a Customer-hosted O365 Azure AD App.
@@ -92,7 +102,7 @@ Kicks off the OAuth consent flow for an O365 Azure AD App.
 
 - There is a single argument of type O365OauthConsentKickoffInput.
 - Returns O365OauthConsentKickoffReply.
-### pdlgroup
+### pdlgroups
 Retrieve or create the groups corresponding to the preferred data location and workload pairings for use in role creation.
 
 - There is a single argument of type O365PdlGroupsInput.
@@ -112,12 +122,12 @@ Restores an O365 snappable.
 
 - There is a single argument of type RestoreO365SnappableInput.
 - Returns CreateOnDemandJobReply.
-### restoreteamsconversation
+### restoreteamsconversations
 Restore Team conversations.
 
 - There is a single argument of type RestoreO365TeamsConversationsInput.
 - Returns CreateOnDemandJobReply.
-### restoreteamsfile
+### restoreteamsfiles
 Restore Team files.
 
 - There is a single argument of type RestoreO365TeamsFilesInput.
@@ -148,7 +158,7 @@ Update O365 App authentication status to applicable app version.
 
 - There is a single argument of type UpdateO365AppAuthStatusInput.
 - Returns UpdateO365AppAuthStatusReply.
-### updateapppermission
+### updateapppermissions
 Update O365 Azure app permission in Azure AD portal.
 
 - There is a single argument of type UpdateO365AppPermissionsInput.

@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("operations")]
         public List<Operation>? Operations { get; set; }
 
+        //      C# -> System.String? HierarchyRoot
+        // GraphQL -> hierarchyRoot: String! (scalar)
+        [JsonProperty("hierarchyRoot")]
+        public System.String? HierarchyRoot { get; set; }
+
 
         #endregion
 
@@ -47,7 +52,8 @@ namespace RubrikSecurityCloud.Types
     public SelfServicePermission Set(
         InventorySubHierarchyRootEnum? InventoryRoot = null,
         WorkloadLevelHierarchy? InventoryWorkloadType = null,
-        List<Operation>? Operations = null
+        List<Operation>? Operations = null,
+        System.String? HierarchyRoot = null
     ) 
     {
         if ( InventoryRoot != null ) {
@@ -58,6 +64,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Operations != null ) {
             this.Operations = Operations;
+        }
+        if ( HierarchyRoot != null ) {
+            this.HierarchyRoot = HierarchyRoot;
         }
         return this;
     }
@@ -84,6 +93,11 @@ namespace RubrikSecurityCloud.Types
         if (this.Operations != null) {
             s += ind + "operations\n" ;
         }
+        //      C# -> System.String? HierarchyRoot
+        // GraphQL -> hierarchyRoot: String! (scalar)
+        if (this.HierarchyRoot != null) {
+            s += ind + "hierarchyRoot\n" ;
+        }
         return s;
     }
 
@@ -109,6 +123,12 @@ namespace RubrikSecurityCloud.Types
         if (this.Operations == null && Exploration.Includes(parent + ".operations", true))
         {
             this.Operations = new List<Operation>();
+        }
+        //      C# -> System.String? HierarchyRoot
+        // GraphQL -> hierarchyRoot: String! (scalar)
+        if (this.HierarchyRoot == null && Exploration.Includes(parent + ".hierarchyRoot", true))
+        {
+            this.HierarchyRoot = "FETCH";
         }
     }
 

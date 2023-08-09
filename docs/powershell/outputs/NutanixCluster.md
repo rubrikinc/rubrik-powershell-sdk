@@ -3,6 +3,8 @@ Nutanix cluster details.
 
 - cdmId: System.String
   - CDM ID of the Nutanix virtual machine.
+- lastRefreshTime: DateTime
+  - Last refresh timestamp of Nutanix cluster.
 - hostName: System.String
   - IP address of Nutanix cluster.
 - userName: System.String
@@ -13,8 +15,6 @@ Nutanix cluster details.
   - Nutanix cluster version.
 - id: System.String
   - Object ID.
-- lastRefreshTime: DateTime
-  - Last time when the Nutanix cluster was refreshed.
 - connectionStatus: RefreshableObjectConnectionStatus
   - Connection status of the Nutanix Cluster. If the CDM cluster is disconnected, then the status is set to 'Disconnected'.
 - descendantConnection: NutanixClusterDescendantTypeConnection

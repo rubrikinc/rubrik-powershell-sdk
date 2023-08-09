@@ -12,7 +12,7 @@ namespace RubrikSecurityCloud.Types
 {
     public static class SchemaMeta
     {
-        public static string GraphqlSchemaVersion = "v20230621-28" ;
+        public static string GraphqlSchemaVersion = "v20230726-39" ;
 
         public static HashSet<string> InterfaceImpls( string interfaceName )
         {
@@ -137,6 +137,8 @@ namespace RubrikSecurityCloud.Types
                     "HyperVscvmm",
                     "HypervServer",
                     "HyperVvirtualMachine",
+                    "KubernetesCluster",
+                    "KubernetesResourceSet",
                     "LinuxFileset",
                     "ManagedVolume",
                     "ManagedVolumeMount",
@@ -197,6 +199,7 @@ namespace RubrikSecurityCloud.Types
                     "Db2Database",
                     "ExchangeDatabase",
                     "HyperVvirtualMachine",
+                    "KubernetesResourceSet",
                     "LinuxFileset",
                     "ManagedVolume",
                     "MongoCollectionSet",
@@ -386,6 +389,8 @@ namespace RubrikSecurityCloud.Types
                     "JiraProject",
                     "K8sCluster",
                     "K8sNamespace",
+                    "KubernetesCluster",
+                    "KubernetesResourceSet",
                     "LinuxFileset",
                     "ManagedVolume",
                     "ManagedVolumeMount",
@@ -460,6 +465,7 @@ namespace RubrikSecurityCloud.Types
                     "AzureAdDirectory",
                     "JiraProject",
                     "K8sNamespace",
+                    "KubernetesResourceSet",
                     "LinuxFileset",
                     "NasFileset",
                     "NutanixVm",
@@ -567,6 +573,13 @@ namespace RubrikSecurityCloud.Types
                     new HashSet<string> {
                     "K8sClusterDescendant",
                     "K8sNamespace",
+                    }
+                },
+                {
+                    "KubernetesClusterDescendant",
+                    new HashSet<string> {
+                    "KubernetesClusterDescendant",
+                    "KubernetesResourceSet",
                     }
                 },
                 {
@@ -768,6 +781,35 @@ namespace RubrikSecurityCloud.Types
                     }
                 },
                 {
+                    "NutanixCategoryDescendantType",
+                    new HashSet<string> {
+                    "NutanixCategoryDescendantType",
+                    "NutanixCategoryValue",
+                    "NutanixVm",
+                    }
+                },
+                {
+                    "NutanixCategoryLogicalChildType",
+                    new HashSet<string> {
+                    "NutanixCategoryLogicalChildType",
+                    "NutanixCategoryValue",
+                    }
+                },
+                {
+                    "NutanixCategoryValueDescendantType",
+                    new HashSet<string> {
+                    "NutanixCategoryValueDescendantType",
+                    "NutanixVm",
+                    }
+                },
+                {
+                    "NutanixCategoryValueLogicalChildType",
+                    new HashSet<string> {
+                    "NutanixCategoryValueLogicalChildType",
+                    "NutanixVm",
+                    }
+                },
+                {
                     "NutanixClusterDescendantType",
                     new HashSet<string> {
                     "NutanixClusterDescendantType",
@@ -784,12 +826,16 @@ namespace RubrikSecurityCloud.Types
                 {
                     "NutanixPrismCentralDescendantType",
                     new HashSet<string> {
+                    "NutanixCategory",
+                    "NutanixCategoryValue",
                     "NutanixCluster",
+                    "NutanixVm",
                     }
                 },
                 {
                     "NutanixPrismCentralLogicalChildType",
                     new HashSet<string> {
+                    "NutanixCategory",
                     "NutanixCluster",
                     }
                 },
@@ -1028,6 +1074,7 @@ namespace RubrikSecurityCloud.Types
                     new HashSet<string> {
                     "AwsNativeEc2InstanceSpecificSnapshot",
                     "AzureNativeVmSpecificSnapshot",
+                    "M365Snapshot",
                     "O365SiteSpecificSnapshot",
                     }
                 },
@@ -1106,6 +1153,7 @@ namespace RubrikSecurityCloud.Types
                     "CdmManagedGlacierTarget",
                     "CdmManagedNfsTarget",
                     "CdmManagedS3CompatibleTarget",
+                    "CdmManagedTapeTarget",
                     "CdmTarget",
                     "RubrikManagedAwsTarget",
                     "RubrikManagedAzureTarget",
@@ -1747,6 +1795,8 @@ namespace RubrikSecurityCloud.Types
             addAzureCloudAccount,
             addAzureCloudAccountExocomputeConfigurations,
             addAzureCloudAccountWithoutOauth,
+            addDb2Instance,
+            addK8sCluster,
             addMongoSource,
             addNodesToCloudCluster,
             addO365Org,
@@ -1761,6 +1811,7 @@ namespace RubrikSecurityCloud.Types
             allAwsComputeSettings,
             allAwsExocomputeConfigs,
             allAwsInstanceProfileNames,
+            allAwsPermissionPolicies,
             allAwsRdsAuroraInstanceClasses,
             allAwsRegions,
             allAzureArmTemplatesByFeature,
@@ -1814,6 +1865,7 @@ namespace RubrikSecurityCloud.Types
             allS3BucketsDetailsFromAws,
             allS3BucketsFromAws,
             allSlaIofilterStatuses,
+            allSlaSummariesByIds,
             allSupportedAwsRdsDatabaseInstanceClasses,
             allVcenterHotAddProxyVms,
             allVpcsByRegionFromAws,
@@ -1827,6 +1879,7 @@ namespace RubrikSecurityCloud.Types
             assignSla,
             assignSlaToMongoDbCollection,
             assignSlasForSnappableHierarchies,
+            awsArtifactsToDelete,
             awsCloudAccountInitiate,
             awsCloudAccountListSecurityGroups,
             awsCloudAccountListSubnets,
@@ -1836,27 +1889,41 @@ namespace RubrikSecurityCloud.Types
             awsCloudAccountWithFeatures,
             awsComputeSettings,
             awsNativeAccount,
+            awsNativeAccounts,
             awsNativeEbsVolume,
+            awsNativeEbsVolumes,
             awsNativeEbsVolumesByName,
             awsNativeEc2Instance,
+            awsNativeEc2Instances,
             awsNativeEc2InstancesByName,
             awsNativeProtectionAccountAdd,
             awsNativeRdsExportDefaults,
             awsNativeRdsInstance,
+            awsNativeRdsInstances,
             awsNativeRdsPointInTimeRestoreWindow,
             awsNativeRoot,
             awsNativeS3Bucket,
+            awsTrustPolicy,
             azureAdDirectories,
             azureAdDirectory,
+            azureAdObjectsByType,
+            azureCloudAccountCheckRefreshTokenExistsForRecovery,
+            azureCloudAccountGrantedPermissionsGroups,
+            azureCloudAccountGrantedPermissionsGroupsForRecovery,
             azureCloudAccountPermissionConfig,
             azureCloudAccountSubscriptionWithFeatures,
             azureCloudAccountTenant,
             azureCloudAccountTenantWithExoConfigs,
+            azureNativeLiveMountDisks,
             azureNativeManagedDisk,
+            azureNativeManagedDisks,
             azureNativeResourceGroup,
+            azureNativeResourceGroups,
             azureNativeRoot,
             azureNativeSubscription,
+            azureNativeSubscriptions,
             azureNativeVirtualMachine,
+            azureNativeVirtualMachines,
             azureO365CheckNSGOutboundRules,
             azureO365CheckNetworkSubnet,
             azureO365CheckResourceGroupName,
@@ -1875,9 +1942,13 @@ namespace RubrikSecurityCloud.Types
             azureSqlDatabase,
             azureSqlDatabaseDbPointInTimeRestoreWindowFromAzure,
             azureSqlDatabaseServer,
+            azureSqlDatabaseServers,
+            azureSqlDatabases,
             azureSqlManagedInstanceDatabase,
+            azureSqlManagedInstanceDatabases,
             azureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure,
             azureSqlManagedInstanceServer,
+            azureSqlManagedInstanceServers,
             azureStorageAccounts,
             azureSubnets,
             azureSubscriptions,
@@ -1898,6 +1969,7 @@ namespace RubrikSecurityCloud.Types
             browseMssqlDatabaseSnapshot,
             browseO365TeamConvChannels,
             bulkCreateOnDemandMssqlBackup,
+            bulkDeleteAwsCloudAccountWithoutCft,
             bulkDeleteCassandraSources,
             bulkDeleteFailoverCluster,
             bulkDeleteMongodbSources,
@@ -1908,11 +1980,16 @@ namespace RubrikSecurityCloud.Types
             bulkUpdateOracleRacs,
             cancelActivitySeries,
             cassandraColumnFamilies,
+            cassandraColumnFamily,
             cassandraColumnFamilyRecoverableRange,
             cassandraColumnFamilySchema,
+            cassandraKeyspace,
             cassandraKeyspaces,
+            cassandraSource,
             cassandraSources,
+            cdmMssqlLogShippingTarget,
             cdmMssqlLogShippingTargets,
+            checkAzurePersistentStorageSubscriptionCanUnmap,
             cluster,
             clusterCertificates,
             clusterConnection,
@@ -1931,8 +2008,11 @@ namespace RubrikSecurityCloud.Types
             clusterProxy,
             clusterRcvLocations,
             clusterRegistrationProductInfo,
-            clusterSlaDomainConnection,
+            clusterReportMigrationCount,
+            clusterReportMigrationJobStatus,
+            clusterReportMigrationStatus,
             clusterSlaDomainFilterConnection,
+            clusterSlaDomains,
             clusterTypeList,
             clusterVlans,
             clusterWebSignedCertificate,
@@ -1970,10 +2050,19 @@ namespace RubrikSecurityCloud.Types
             createNutanixPrismCentral,
             createO365AppComplete,
             createO365AppKickoff,
+            createOnDemandDb2Backup,
             createOnDemandMssqlBackup,
             createOnDemandNutanixBackup,
             createOraclePdbRestore,
             createVsphereAdvancedTag,
+            db2Database,
+            db2Databases,
+            db2Instance,
+            db2Instances,
+            db2LogSnapshot,
+            db2LogSnapshots,
+            db2RecoverableRange,
+            db2RecoverableRanges,
             deleteAllOracleDatabaseSnapshots,
             deleteAwsCloudAccountWithoutCft,
             deleteAwsCluster,
@@ -1986,10 +2075,13 @@ namespace RubrikSecurityCloud.Types
             deleteAzureCloudAccountWithoutOauth,
             deleteAzureCluster,
             deleteCassandraSource,
+            deleteDb2Database,
+            deleteDb2Instance,
             deleteFailoverCluster,
             deleteGlobalSla,
             deleteHypervVirtualMachineSnapshot,
             deleteHypervVirtualMachineSnapshotMount,
+            deleteK8sCluster,
             deleteLdapPrincipals,
             deleteMongoSource,
             deleteMongodbSource,
@@ -1998,6 +2090,7 @@ namespace RubrikSecurityCloud.Types
             deleteNutanixCluster,
             deleteNutanixMountV1,
             deleteNutanixPrismCentral,
+            deleteNutanixSnapshot,
             deleteNutanixSnapshots,
             deleteO365AzureApp,
             deleteO365Org,
@@ -2005,8 +2098,11 @@ namespace RubrikSecurityCloud.Types
             deleteOracleMount,
             deleteVsphereAdvancedTag,
             deleteVsphereLiveMount,
+            discoverDb2Instance,
             discoverMongoSource,
             doesAzureNativeResourceGroupExist,
+            downloadDb2Snapshot,
+            downloadDb2SnapshotsForPointInTimeRecovery,
             downloadFilesNutanixSnapshot,
             downloadHypervSnapshotFromLocation,
             downloadHypervVirtualMachineSnapshot,
@@ -2023,10 +2119,13 @@ namespace RubrikSecurityCloud.Types
             enableO365Teams,
             excludeAwsNativeEbsVolumesFromSnapshot,
             excludeAzureNativeManagedDisksFromSnapshot,
+            expireDownloadedDb2Snapshots,
             exportHypervVirtualMachine,
             exportMssqlDatabase,
             exportNutanixSnapshot,
             exportO365Mailbox,
+            exportO365TeamsFiles,
+            exportO365Workload,
             exportOracleDatabase,
             exportOracleTablespace,
             exportSlaManagedVolumeSnapshot,
@@ -2045,8 +2144,11 @@ namespace RubrikSecurityCloud.Types
             hypervScvmmAsyncRequestStatus,
             hypervScvmmDelete,
             hypervScvmmUpdate,
+            hypervScvmms,
             hypervServer,
+            hypervServers,
             hypervTopLevelDescendants,
+            hypervVirtualMachine,
             hypervVirtualMachineAsyncRequestStatus,
             hypervVirtualMachines,
             hypervVmDetail,
@@ -2063,6 +2165,7 @@ namespace RubrikSecurityCloud.Types
             isTotpAckNecessaryForCluster,
             k8sClusters,
             kickoffAzureAdAppSetup,
+            kubernetesClusters,
             ldapAuthorizedPrincipalConnection,
             ldapIntegrationConnection,
             ldapPrincipalConnection,
@@ -2070,19 +2173,27 @@ namespace RubrikSecurityCloud.Types
             mapAzureCloudAccountExocomputeSubscription,
             mapAzureCloudAccountToPersistentStorageLocation,
             migrateNutanixMountV1,
+            mongoBulkRecoverableRanges,
+            mongoCollection,
             mongoCollections,
+            mongoDatabase,
             mongoDatabases,
             mongoRecoverableRanges,
+            mongoSource,
             mongoSources,
             mongodbBulkRecoverableRange,
+            mongodbCollection,
             mongodbCollectionRecoverableRange,
             mongodbCollections,
+            mongodbDatabase,
             mongodbDatabases,
+            mongodbSource,
             mongodbSources,
             mountNutanixSnapshotV1,
             mountOracleDatabase,
             mssqlAvailabilityGroup,
             mssqlCompatibleInstances,
+            mssqlDatabase,
             mssqlDatabaseLiveMounts,
             mssqlDatabaseMissedRecoverableRanges,
             mssqlDatabaseMissedSnapshots,
@@ -2094,21 +2205,23 @@ namespace RubrikSecurityCloud.Types
             mssqlRecoverableRanges,
             mssqlTopLevelDescendants,
             nutanixBrowseSnapshot,
-            nutanixCategories,
-            nutanixCategoryValueVms,
-            nutanixCategoryValues,
+            nutanixCategory,
+            nutanixCategoryValue,
             nutanixCluster,
             nutanixClusterAsyncRequestStatus,
             nutanixClusterContainers,
             nutanixClusterNetworks,
+            nutanixClusters,
             nutanixMounts,
+            nutanixPrismCentral,
+            nutanixPrismCentralAsyncRequestStatus,
             nutanixPrismCentrals,
             nutanixSnapshotDetail,
             nutanixTopLevelDescendants,
-            nutanixTopLevelDescendantsV2,
             nutanixVm,
             nutanixVmAsyncRequestStatus,
             nutanixVmMissedSnapshots,
+            nutanixVms,
             o365Calendar,
             o365Groups,
             o365License,
@@ -2118,9 +2231,11 @@ namespace RubrikSecurityCloud.Types
             o365OauthConsentKickoff,
             o365ObjectAncestors,
             o365Onedrive,
+            o365Onedrives,
             o365Org,
             o365OrgAtSnappableLevel,
             o365OrgSummaries,
+            o365Orgs,
             o365PdlGroups,
             o365SaaSSetupKickoff,
             o365SaasSetupComplete,
@@ -2128,21 +2243,27 @@ namespace RubrikSecurityCloud.Types
             o365ServiceStatus,
             o365SetupKickoff,
             o365SharepointDrive,
+            o365SharepointDrives,
             o365SharepointList,
+            o365SharepointLists,
             o365SharepointObjectList,
             o365SharepointObjects,
             o365SharepointSite,
+            o365SharepointSites,
             o365Site,
+            o365Sites,
             o365StorageStats,
             o365Team,
             o365TeamChannels,
             o365TeamConversationsFolderID,
             o365TeamPostedBy,
+            o365Teams,
             o365User,
             o365UserObjects,
             oracleAcoExampleDownloadLink,
             oracleAcoParameters,
             oracleDataGuardGroup,
+            oracleDatabase,
             oracleDatabaseLogBackupConfig,
             oracleDatabases,
             oracleHost,
@@ -2157,6 +2278,8 @@ namespace RubrikSecurityCloud.Types
             oracleTopLevelDescendants,
             patchAwsAuthenticationServerBasedCloudAccount,
             patchAwsIamUserBasedCloudAccount,
+            patchDb2Database,
+            patchDb2Instance,
             patchMongoSource,
             patchNutanixMountV1,
             pauseSla,
@@ -2168,15 +2291,18 @@ namespace RubrikSecurityCloud.Types
             recoverCloudCluster,
             recoverMongoSource,
             recoverMongodbSource,
+            refreshDb2Database,
             refreshHypervScvmm,
             refreshHypervServer,
             refreshK8sCluster,
+            refreshK8sV2Cluster,
             refreshNutanixCluster,
             refreshNutanixPrismCentral,
             refreshO365Org,
             refreshOracleDatabase,
             registerAgentHypervVirtualMachine,
             registerAgentNutanixVm,
+            registerAwsFeatureArtifacts,
             registerCloudCluster,
             registerHypervScvmm,
             removeCdmCluster,
@@ -2198,11 +2324,12 @@ namespace RubrikSecurityCloud.Types
             slaArchivalValidationWarnings,
             slaAuditDetail,
             slaConflictObjects,
+            slaDomain,
             slaDomainWithWarnings,
             slaDomainWithWarningsList,
             slaDomains,
+            slaManagedVolume,
             slaManagedVolumes,
-            slaSummariesByIds,
             startAwsExocomputeDisableJob,
             startAwsNativeAccountDisableJob,
             startAwsNativeEc2InstanceSnapshotsJob,
@@ -2228,6 +2355,7 @@ namespace RubrikSecurityCloud.Types
             uniqueHypervServersCount,
             uniqueVSphereVCenterCount,
             unmapAzureCloudAccountExocomputeSubscription,
+            unmapAzurePersistentStorageSubscription,
             updateAutomaticAwsTargetMapping,
             updateAutomaticAzureTargetMapping,
             updateAwsAccount,
@@ -2276,9 +2404,11 @@ namespace RubrikSecurityCloud.Types
             vCenterPreAddInfo,
             vSphereBlueprint,
             vSphereComputeCluster,
+            vSphereComputeClusters,
             vSphereDatacenter,
             vSphereDatastore,
             vSphereDatastoreCluster,
+            vSphereDatastoreClusters,
             vSphereDatastoreConnection,
             vSphereFolder,
             vSphereHost,
@@ -2309,7 +2439,7 @@ namespace RubrikSecurityCloud.Types
             validateOracleAcoFile,
             validateOracleDatabaseBackups,
             vcdClusters,
-            verifySLAWithReplicationToCluster,
+            verifySlaWithReplicationToCluster,
             vsphereBulkOnDemandSnapshot,
             vsphereCreateVCenter,
             vsphereDeleteVcenter,
@@ -2358,7 +2488,7 @@ namespace RubrikSecurityCloud.Types
             var OperationLookupDict = new Dictionary<GqlOperationName, string> {
                 {
                     GqlOperationName.AwsCloudAccountListKMSKeys,
-                    "Invoke-RscQueryAws -CloudAccountListKMSKey"
+                    "Invoke-RscQueryAws -CloudAccountListKMSKeys"
                 },
                 {
                     GqlOperationName.accountId,
@@ -2366,7 +2496,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.accountSettings,
-                    "Invoke-RscQueryAccount -Setting"
+                    "Invoke-RscQueryAccount -Settings"
                 },
                 {
                     GqlOperationName.activitySeries,
@@ -2394,11 +2524,19 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.addAzureCloudAccountExocomputeConfigurations,
-                    "Invoke-RscMutateAzure -AddCloudAccountExocomputeConfiguration"
+                    "Invoke-RscMutateAzure -AddCloudAccountExocomputeConfigurations"
                 },
                 {
                     GqlOperationName.addAzureCloudAccountWithoutOauth,
                     "Invoke-RscMutateAzure -AddCloudAccountWithoutOauth"
+                },
+                {
+                    GqlOperationName.addDb2Instance,
+                    "Invoke-RscMutateDb2 -AddInstance"
+                },
+                {
+                    GqlOperationName.addK8sCluster,
+                    "Invoke-RscMutateCluster -AddK8s"
                 },
                 {
                     GqlOperationName.addMongoSource,
@@ -2414,15 +2552,15 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.allAccountOwners,
-                    "Invoke-RscQueryAccount -Owner"
+                    "Invoke-RscQueryAccount -Owners"
                 },
                 {
                     GqlOperationName.allAccountProducts,
-                    "Invoke-RscQueryAccount -Product"
+                    "Invoke-RscQueryAccount -Products"
                 },
                 {
                     GqlOperationName.allAccountsWithExocomputeMappings,
-                    "Invoke-RscQueryAccount -SWithExocomputeMapping"
+                    "Invoke-RscQueryAccount -SWithExocomputeMappings"
                 },
                 {
                     GqlOperationName.allAvailabilityZonesByRegionFromAws,
@@ -2430,39 +2568,43 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.allAwsCdmVersions,
-                    "Invoke-RscQueryAws -AllCdmVersion"
+                    "Invoke-RscQueryAws -AllCdmVersions"
                 },
                 {
                     GqlOperationName.allAwsCloudAccountConfigs,
-                    "Invoke-RscQueryAws -AllCloudAccountConfig"
+                    "Invoke-RscQueryAws -AllCloudAccountConfigs"
                 },
                 {
                     GqlOperationName.allAwsCloudAccountsFeaturesWithExoConfigs,
-                    "Invoke-RscQueryAws -AllCloudAccountsFeaturesWithExoConfig"
+                    "Invoke-RscQueryAws -AllCloudAccountsFeaturesWithExoConfigs"
                 },
                 {
                     GqlOperationName.allAwsCloudAccountsWithFeatures,
-                    "Invoke-RscQueryAws -AllCloudAccountsWithFeature"
+                    "Invoke-RscQueryAws -AllCloudAccountsWithFeatures"
                 },
                 {
                     GqlOperationName.allAwsComputeSettings,
-                    "Invoke-RscQueryAws -AllComputeSetting"
+                    "Invoke-RscQueryAws -AllComputeSettings"
                 },
                 {
                     GqlOperationName.allAwsExocomputeConfigs,
-                    "Invoke-RscQueryAws -AllExocomputeConfig"
+                    "Invoke-RscQueryAws -AllExocomputeConfigs"
                 },
                 {
                     GqlOperationName.allAwsInstanceProfileNames,
-                    "Invoke-RscQueryAws -AllInstanceProfileName"
+                    "Invoke-RscQueryAws -AllInstanceProfileNames"
+                },
+                {
+                    GqlOperationName.allAwsPermissionPolicies,
+                    "Invoke-RscQueryAws -AllPermissionPolicies"
                 },
                 {
                     GqlOperationName.allAwsRdsAuroraInstanceClasses,
-                    "Invoke-RscQueryAws -AllRdsAuroraInstanceClass"
+                    "Invoke-RscQueryAws -AllRdsAuroraInstanceClasses"
                 },
                 {
                     GqlOperationName.allAwsRegions,
-                    "Invoke-RscQueryAws -AllRegion"
+                    "Invoke-RscQueryAws -AllRegions"
                 },
                 {
                     GqlOperationName.allAzureArmTemplatesByFeature,
@@ -2470,11 +2612,11 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.allAzureCdmVersions,
-                    "Invoke-RscQueryAzure -AllCdmVersion"
+                    "Invoke-RscQueryAzure -AllCdmVersions"
                 },
                 {
                     GqlOperationName.allAzureCloudAccountMissingPermissions,
-                    "Invoke-RscQueryAzure -AllCloudAccountMissingPermission"
+                    "Invoke-RscQueryAzure -AllCloudAccountMissingPermissions"
                 },
                 {
                     GqlOperationName.allAzureCloudAccountSubnetsByRegion,
@@ -2486,11 +2628,11 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.allAzureCloudAccountTenants,
-                    "Invoke-RscQueryAzure -AllCloudAccountTenant"
+                    "Invoke-RscQueryAzure -AllCloudAccountTenants"
                 },
                 {
                     GqlOperationName.allAzureCloudAccountTenantsWithExoConfigs,
-                    "Invoke-RscQueryAzure -AllCloudAccountTenantsWithExoConfig"
+                    "Invoke-RscQueryAzure -AllCloudAccountTenantsWithExoConfigs"
                 },
                 {
                     GqlOperationName.allAzureDiskEncryptionSetsByRegion,
@@ -2498,7 +2640,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.allAzureEncryptionKeys,
-                    "Invoke-RscQueryAzure -AllEncryptionKey"
+                    "Invoke-RscQueryAzure -AllEncryptionKeys"
                 },
                 {
                     GqlOperationName.allAzureExocomputeConfigsInAccount,
@@ -2538,47 +2680,47 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.allAzureNativeVirtualMachineSizes,
-                    "Invoke-RscQueryAzure -AllNativeVirtualMachineSize"
+                    "Invoke-RscQueryAzure -AllNativeVirtualMachineSizes"
                 },
                 {
                     GqlOperationName.allAzureNativeVirtualNetworks,
-                    "Invoke-RscQueryAzure -AllNativeVirtualNetwork"
+                    "Invoke-RscQueryAzure -AllNativeVirtualNetworks"
                 },
                 {
                     GqlOperationName.allAzureNsgs,
-                    "Invoke-RscQueryAzure -AllNsg"
+                    "Invoke-RscQueryAzure -AllNsgs"
                 },
                 {
                     GqlOperationName.allAzureRegions,
-                    "Invoke-RscQueryAzure -AllRegion"
+                    "Invoke-RscQueryAzure -AllRegions"
                 },
                 {
                     GqlOperationName.allAzureResourceGroups,
-                    "Invoke-RscQueryAzure -AllResourceGroup"
+                    "Invoke-RscQueryAzure -AllResourceGroups"
                 },
                 {
                     GqlOperationName.allAzureSqlDatabaseServerElasticPools,
-                    "Invoke-RscQueryAzure -AllSqlDatabaseServerElasticPool"
+                    "Invoke-RscQueryAzure -AllSqlDatabaseServerElasticPools"
                 },
                 {
                     GqlOperationName.allAzureStorageAccounts,
-                    "Invoke-RscQueryAzure -AllStorageAccount"
+                    "Invoke-RscQueryAzure -AllStorageAccounts"
                 },
                 {
                     GqlOperationName.allAzureSubnets,
-                    "Invoke-RscQueryAzure -AllSubnet"
+                    "Invoke-RscQueryAzure -AllSubnets"
                 },
                 {
                     GqlOperationName.allAzureSubscriptionWithExocomputeMappings,
-                    "Invoke-RscQueryAzure -AllSubscriptionWithExocomputeMapping"
+                    "Invoke-RscQueryAzure -AllSubscriptionWithExocomputeMappings"
                 },
                 {
                     GqlOperationName.allAzureVnets,
-                    "Invoke-RscQueryAzure -AllVnet"
+                    "Invoke-RscQueryAzure -AllVnets"
                 },
                 {
                     GqlOperationName.allCdpSlaVmNames,
-                    "Invoke-RscQuerySla -AllCdpVmName"
+                    "Invoke-RscQuerySla -AllCdpVmNames"
                 },
                 {
                     GqlOperationName.allCloudClusters,
@@ -2586,15 +2728,15 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.allClusterGlobalSlas,
-                    "Invoke-RscQuerySla -AllClusterGlobal"
+                    "Invoke-RscQuerySla -AllClusterGlobals"
                 },
                 {
                     GqlOperationName.allClusterReplicationTargets,
-                    "Invoke-RscQueryCluster -ReplicationTarget"
+                    "Invoke-RscQueryCluster -ReplicationTargets"
                 },
                 {
                     GqlOperationName.allClusterWebCertsAndIpmis,
-                    "Invoke-RscQueryCluster -WebCertsAndIpmi"
+                    "Invoke-RscQueryCluster -WebCertsAndIpmis"
                 },
                 {
                     GqlOperationName.allClustersTotpAckStatus,
@@ -2622,7 +2764,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.allHostedAzureRegions,
-                    "Invoke-RscQueryAzure -AllHostedRegion"
+                    "Invoke-RscQueryAzure -AllHostedRegions"
                 },
                 {
                     GqlOperationName.allKmsEncryptionKeysByRegionFromAws,
@@ -2630,7 +2772,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.allMssqlDatabaseRestoreFiles,
-                    "Invoke-RscQueryMssql -AllDatabaseRestoreFile"
+                    "Invoke-RscQueryMssql -AllDatabaseRestoreFiles"
                 },
                 {
                     GqlOperationName.allNcdSlaComplianceData,
@@ -2638,15 +2780,15 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.allO365AdGroups,
-                    "Invoke-RscQueryO365 -AllAdGroup"
+                    "Invoke-RscQueryO365 -AllAdGroups"
                 },
                 {
                     GqlOperationName.allO365OrgStatuses,
-                    "Invoke-RscQueryO365 -AllOrgStatus"
+                    "Invoke-RscQueryO365 -AllOrgStatuses"
                 },
                 {
                     GqlOperationName.allO365SubscriptionsAppTypeCounts,
-                    "Invoke-RscQueryO365 -AllSubscriptionsAppTypeCount"
+                    "Invoke-RscQueryO365 -AllSubscriptionsAppTypeCounts"
                 },
                 {
                     GqlOperationName.allOptionGroupsByRegionFromAws,
@@ -2658,19 +2800,23 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.allS3BucketsDetailsFromAws,
-                    "Invoke-RscQueryAws -AllS3BucketsDetail"
+                    "Invoke-RscQueryAws -AllS3BucketsDetails"
                 },
                 {
                     GqlOperationName.allS3BucketsFromAws,
-                    "Invoke-RscQueryAws -AllS3Bucket"
+                    "Invoke-RscQueryAws -AllS3Buckets"
                 },
                 {
                     GqlOperationName.allSlaIofilterStatuses,
-                    "Invoke-RscQuerySla -AllIofilterStatus"
+                    "Invoke-RscQuerySla -AllIofilterStatuses"
+                },
+                {
+                    GqlOperationName.allSlaSummariesByIds,
+                    "Invoke-RscQuerySla -AllSummariesByIds"
                 },
                 {
                     GqlOperationName.allSupportedAwsRdsDatabaseInstanceClasses,
-                    "Invoke-RscQueryAws -AllSupportedRdsDatabaseInstanceClass"
+                    "Invoke-RscQueryAws -AllSupportedRdsDatabaseInstanceClasses"
                 },
                 {
                     GqlOperationName.allVcenterHotAddProxyVms,
@@ -2682,7 +2828,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.allVpcsFromAws,
-                    "Invoke-RscQueryAws -AllVpc"
+                    "Invoke-RscQueryAws -AllVpcs"
                 },
                 {
                     GqlOperationName.amiTypeForAwsNativeArchivedSnapshotExport,
@@ -2694,7 +2840,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.assignMssqlSlaDomainProperties,
-                    "Invoke-RscMutateMssql -AssignSlaDomainPropertie"
+                    "Invoke-RscMutateMssql -AssignSlaDomainProperties"
                 },
                 {
                     GqlOperationName.assignMssqlSlaDomainPropertiesAsync,
@@ -2702,11 +2848,11 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.assignRetentionSLAToSnappables,
-                    "Invoke-RscMutateSla -AssignRetentionToSnappable"
+                    "Invoke-RscMutateSla -AssignRetentionToSnappables"
                 },
                 {
                     GqlOperationName.assignRetentionSLAToSnapshots,
-                    "Invoke-RscMutateSla -AssignRetentionToSnapshot"
+                    "Invoke-RscMutateSla -AssignRetentionToSnapshots"
                 },
                 {
                     GqlOperationName.assignSla,
@@ -2718,7 +2864,11 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.assignSlasForSnappableHierarchies,
-                    "Invoke-RscMutateSla -AssignsForSnappableHierarchie"
+                    "Invoke-RscMutateSla -AssignsForSnappableHierarchies"
+                },
+                {
+                    GqlOperationName.awsArtifactsToDelete,
+                    "Invoke-RscQueryAws -ArtifactsToDelete"
                 },
                 {
                     GqlOperationName.awsCloudAccountInitiate,
@@ -2726,15 +2876,15 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.awsCloudAccountListSecurityGroups,
-                    "Invoke-RscQueryAws -CloudAccountListSecurityGroup"
+                    "Invoke-RscQueryAws -CloudAccountListSecurityGroups"
                 },
                 {
                     GqlOperationName.awsCloudAccountListSubnets,
-                    "Invoke-RscQueryAws -CloudAccountListSubnet"
+                    "Invoke-RscQueryAws -CloudAccountListSubnets"
                 },
                 {
                     GqlOperationName.awsCloudAccountListVpcs,
-                    "Invoke-RscQueryAws -CloudAccountListVpc"
+                    "Invoke-RscQueryAws -CloudAccountListVpcs"
                 },
                 {
                     GqlOperationName.awsCloudAccountUpdateFeature,
@@ -2746,19 +2896,27 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.awsCloudAccountWithFeatures,
-                    "Invoke-RscQueryAws -CloudAccountWithFeature"
+                    "Invoke-RscQueryAws -CloudAccountWithFeatures"
                 },
                 {
                     GqlOperationName.awsComputeSettings,
-                    "Invoke-RscQueryAws -ComputeSetting"
+                    "Invoke-RscQueryAws -ComputeSettings"
                 },
                 {
                     GqlOperationName.awsNativeAccount,
                     "Invoke-RscQueryAws -NativeAccount"
                 },
                 {
+                    GqlOperationName.awsNativeAccounts,
+                    "Invoke-RscQueryAws -NativeAccounts"
+                },
+                {
                     GqlOperationName.awsNativeEbsVolume,
                     "Invoke-RscQueryAws -NativeEbsVolume"
+                },
+                {
+                    GqlOperationName.awsNativeEbsVolumes,
+                    "Invoke-RscQueryAws -NativeEbsVolumes"
                 },
                 {
                     GqlOperationName.awsNativeEbsVolumesByName,
@@ -2767,6 +2925,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlOperationName.awsNativeEc2Instance,
                     "Invoke-RscQueryAws -NativeEc2Instance"
+                },
+                {
+                    GqlOperationName.awsNativeEc2Instances,
+                    "Invoke-RscQueryAws -NativeEc2Instances"
                 },
                 {
                     GqlOperationName.awsNativeEc2InstancesByName,
@@ -2778,11 +2940,15 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.awsNativeRdsExportDefaults,
-                    "Invoke-RscQueryAws -NativeRdsExportDefault"
+                    "Invoke-RscQueryAws -NativeRdsExportDefaults"
                 },
                 {
                     GqlOperationName.awsNativeRdsInstance,
                     "Invoke-RscQueryAws -NativeRdsInstance"
+                },
+                {
+                    GqlOperationName.awsNativeRdsInstances,
+                    "Invoke-RscQueryAws -NativeRdsInstances"
                 },
                 {
                     GqlOperationName.awsNativeRdsPointInTimeRestoreWindow,
@@ -2797,12 +2963,32 @@ namespace RubrikSecurityCloud.Types
                     "Invoke-RscQueryAws -NativeS3Bucket"
                 },
                 {
+                    GqlOperationName.awsTrustPolicy,
+                    "Invoke-RscQueryAws -TrustPolicy"
+                },
+                {
                     GqlOperationName.azureAdDirectories,
-                    "Invoke-RscQueryAzure -AdDirectorie"
+                    "Invoke-RscQueryAzure -AdDirectories"
                 },
                 {
                     GqlOperationName.azureAdDirectory,
                     "Invoke-RscQueryAzure -AdDirectory"
+                },
+                {
+                    GqlOperationName.azureAdObjectsByType,
+                    "Invoke-RscQueryAzure -AdObjectsByType"
+                },
+                {
+                    GqlOperationName.azureCloudAccountCheckRefreshTokenExistsForRecovery,
+                    "Invoke-RscQueryAzure -CloudAccountCheckRefreshTokenExistsForRecovery"
+                },
+                {
+                    GqlOperationName.azureCloudAccountGrantedPermissionsGroups,
+                    "Invoke-RscQueryAzure -CloudAccountGrantedPermissionsGroups"
+                },
+                {
+                    GqlOperationName.azureCloudAccountGrantedPermissionsGroupsForRecovery,
+                    "Invoke-RscQueryAzure -CloudAccountGrantedPermissionsGroupsForRecovery"
                 },
                 {
                     GqlOperationName.azureCloudAccountPermissionConfig,
@@ -2810,7 +2996,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.azureCloudAccountSubscriptionWithFeatures,
-                    "Invoke-RscQueryAzure -CloudAccountSubscriptionWithFeature"
+                    "Invoke-RscQueryAzure -CloudAccountSubscriptionWithFeatures"
                 },
                 {
                     GqlOperationName.azureCloudAccountTenant,
@@ -2818,15 +3004,27 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.azureCloudAccountTenantWithExoConfigs,
-                    "Invoke-RscQueryAzure -CloudAccountTenantWithExoConfig"
+                    "Invoke-RscQueryAzure -CloudAccountTenantWithExoConfigs"
+                },
+                {
+                    GqlOperationName.azureNativeLiveMountDisks,
+                    "Invoke-RscQueryAzure -NativeLiveMountDisks"
                 },
                 {
                     GqlOperationName.azureNativeManagedDisk,
                     "Invoke-RscQueryAzure -NativeManagedDisk"
                 },
                 {
+                    GqlOperationName.azureNativeManagedDisks,
+                    "Invoke-RscQueryAzure -NativeManagedDisks"
+                },
+                {
                     GqlOperationName.azureNativeResourceGroup,
                     "Invoke-RscQueryAzure -NativeResourceGroup"
+                },
+                {
+                    GqlOperationName.azureNativeResourceGroups,
+                    "Invoke-RscQueryAzure -NativeResourceGroups"
                 },
                 {
                     GqlOperationName.azureNativeRoot,
@@ -2837,12 +3035,20 @@ namespace RubrikSecurityCloud.Types
                     "Invoke-RscQueryAzure -NativeSubscription"
                 },
                 {
+                    GqlOperationName.azureNativeSubscriptions,
+                    "Invoke-RscQueryAzure -NativeSubscriptions"
+                },
+                {
                     GqlOperationName.azureNativeVirtualMachine,
                     "Invoke-RscQueryAzure -NativeVirtualMachine"
                 },
                 {
+                    GqlOperationName.azureNativeVirtualMachines,
+                    "Invoke-RscQueryAzure -NativeVirtualMachines"
+                },
+                {
                     GqlOperationName.azureO365CheckNSGOutboundRules,
-                    "Invoke-RscQueryAzureO365 -CheckNSGOutboundRule"
+                    "Invoke-RscQueryAzureO365 -CheckNSGOutboundRules"
                 },
                 {
                     GqlOperationName.azureO365CheckNetworkSubnet,
@@ -2882,7 +3088,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.azureO365ValidateUserRoles,
-                    "Invoke-RscQueryAzureO365 -ValidateUserRole"
+                    "Invoke-RscQueryAzureO365 -ValidateUserRoles"
                 },
                 {
                     GqlOperationName.azureOauthConsentComplete,
@@ -2894,11 +3100,11 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.azureRegions,
-                    "Invoke-RscQueryAzure -Region"
+                    "Invoke-RscQueryAzure -Regions"
                 },
                 {
                     GqlOperationName.azureResourceGroups,
-                    "Invoke-RscQueryAzure -ResourceGroup"
+                    "Invoke-RscQueryAzure -ResourceGroups"
                 },
                 {
                     GqlOperationName.azureSqlDatabase,
@@ -2913,8 +3119,20 @@ namespace RubrikSecurityCloud.Types
                     "Invoke-RscQueryAzure -SqlDatabaseServer"
                 },
                 {
+                    GqlOperationName.azureSqlDatabaseServers,
+                    "Invoke-RscQueryAzure -SqlDatabaseServers"
+                },
+                {
+                    GqlOperationName.azureSqlDatabases,
+                    "Invoke-RscQueryAzure -SqlDatabases"
+                },
+                {
                     GqlOperationName.azureSqlManagedInstanceDatabase,
                     "Invoke-RscQueryAzure -SqlManagedInstanceDatabase"
+                },
+                {
+                    GqlOperationName.azureSqlManagedInstanceDatabases,
+                    "Invoke-RscQueryAzure -SqlManagedInstanceDatabases"
                 },
                 {
                     GqlOperationName.azureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure,
@@ -2925,20 +3143,24 @@ namespace RubrikSecurityCloud.Types
                     "Invoke-RscQueryAzure -SqlManagedInstanceServer"
                 },
                 {
+                    GqlOperationName.azureSqlManagedInstanceServers,
+                    "Invoke-RscQueryAzure -SqlManagedInstanceServers"
+                },
+                {
                     GqlOperationName.azureStorageAccounts,
-                    "Invoke-RscQueryAzure -StorageAccount"
+                    "Invoke-RscQueryAzure -StorageAccounts"
                 },
                 {
                     GqlOperationName.azureSubnets,
-                    "Invoke-RscQueryAzure -Subnet"
+                    "Invoke-RscQueryAzure -Subnets"
                 },
                 {
                     GqlOperationName.azureSubscriptions,
-                    "Invoke-RscQueryAzure -Subscription"
+                    "Invoke-RscQueryAzure -Subscriptions"
                 },
                 {
                     GqlOperationName.azureVNets,
-                    "Invoke-RscQueryAzure -VNet"
+                    "Invoke-RscQueryAzure -VNets"
                 },
                 {
                     GqlOperationName.backupAzureAdDirectory,
@@ -2998,15 +3220,19 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.browseO365TeamConvChannels,
-                    "Invoke-RscQueryO365 -BrowseTeamConvChannel"
+                    "Invoke-RscQueryO365 -BrowseTeamConvChannels"
                 },
                 {
                     GqlOperationName.bulkCreateOnDemandMssqlBackup,
                     "Invoke-RscMutateMssql -BulkCreateOnDemandBackup"
                 },
                 {
+                    GqlOperationName.bulkDeleteAwsCloudAccountWithoutCft,
+                    "Invoke-RscMutateAws -BulkDeleteCloudAccountWithoutCft"
+                },
+                {
                     GqlOperationName.bulkDeleteCassandraSources,
-                    "Invoke-RscMutateCassandra -BulkDeleteSource"
+                    "Invoke-RscMutateCassandra -BulkDeleteSources"
                 },
                 {
                     GqlOperationName.bulkDeleteFailoverCluster,
@@ -3014,7 +3240,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.bulkDeleteMongodbSources,
-                    "Invoke-RscMutateMongo -BulkDeletedbSource"
+                    "Invoke-RscMutateMongo -BulkDeletedbSources"
                 },
                 {
                     GqlOperationName.bulkOnDemandSnapshotNutanixVm,
@@ -3022,19 +3248,19 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.bulkUpdateMssqlDbs,
-                    "Invoke-RscMutateMssql -BulkUpdateDb"
+                    "Invoke-RscMutateMssql -BulkUpdateDbs"
                 },
                 {
                     GqlOperationName.bulkUpdateOracleDatabases,
-                    "Invoke-RscMutateOracle -BulkUpdateDatabase"
+                    "Invoke-RscMutateOracle -BulkUpdateDatabases"
                 },
                 {
                     GqlOperationName.bulkUpdateOracleHosts,
-                    "Invoke-RscMutateOracle -BulkUpdateHost"
+                    "Invoke-RscMutateOracle -BulkUpdateHosts"
                 },
                 {
                     GqlOperationName.bulkUpdateOracleRacs,
-                    "Invoke-RscMutateOracle -BulkUpdateRac"
+                    "Invoke-RscMutateOracle -BulkUpdateRacs"
                 },
                 {
                     GqlOperationName.cancelActivitySeries,
@@ -3042,6 +3268,10 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.cassandraColumnFamilies,
+                    "Invoke-RscQueryCassandra -ColumnFamilies"
+                },
+                {
+                    GqlOperationName.cassandraColumnFamily,
                     "Invoke-RscQueryCassandra -ColumnFamily"
                 },
                 {
@@ -3053,16 +3283,32 @@ namespace RubrikSecurityCloud.Types
                     "Invoke-RscQueryCassandra -ColumnFamilySchema"
                 },
                 {
-                    GqlOperationName.cassandraKeyspaces,
+                    GqlOperationName.cassandraKeyspace,
                     "Invoke-RscQueryCassandra -Keyspace"
                 },
                 {
-                    GqlOperationName.cassandraSources,
+                    GqlOperationName.cassandraKeyspaces,
+                    "Invoke-RscQueryCassandra -Keyspaces"
+                },
+                {
+                    GqlOperationName.cassandraSource,
                     "Invoke-RscQueryCassandra -Source"
                 },
                 {
-                    GqlOperationName.cdmMssqlLogShippingTargets,
+                    GqlOperationName.cassandraSources,
+                    "Invoke-RscQueryCassandra -Sources"
+                },
+                {
+                    GqlOperationName.cdmMssqlLogShippingTarget,
                     "Invoke-RscQueryMssql -CdmLogShippingTarget"
+                },
+                {
+                    GqlOperationName.cdmMssqlLogShippingTargets,
+                    "Invoke-RscQueryMssql -CdmLogShippingTargets"
+                },
+                {
+                    GqlOperationName.checkAzurePersistentStorageSubscriptionCanUnmap,
+                    "Invoke-RscQueryAzure -CheckPersistentStorageSubscriptionCanUnmap"
                 },
                 {
                     GqlOperationName.cluster,
@@ -3070,7 +3316,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.clusterCertificates,
-                    "Invoke-RscQueryCluster -Certificate"
+                    "Invoke-RscQueryCluster -Certificates"
                 },
                 {
                     GqlOperationName.clusterConnection,
@@ -3094,7 +3340,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.clusterFloatingIps,
-                    "Invoke-RscQueryCluster -FloatingIp"
+                    "Invoke-RscQueryCluster -FloatingIps"
                 },
                 {
                     GqlOperationName.clusterGroupByConnection,
@@ -3110,15 +3356,15 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.clusterNetworkInterfaces,
-                    "Invoke-RscQueryCluster -NetworkInterface"
+                    "Invoke-RscQueryCluster -NetworkInterfaces"
                 },
                 {
                     GqlOperationName.clusterNodes,
-                    "Invoke-RscQueryCluster -Node"
+                    "Invoke-RscQueryCluster -Nodes"
                 },
                 {
                     GqlOperationName.clusterNtpServers,
-                    "Invoke-RscQueryCluster -NtpServer"
+                    "Invoke-RscQueryCluster -NtpServers"
                 },
                 {
                     GqlOperationName.clusterOperationJobProgress,
@@ -3130,19 +3376,31 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.clusterRcvLocations,
-                    "Invoke-RscQueryCluster -RcvLocation"
+                    "Invoke-RscQueryCluster -RcvLocations"
                 },
                 {
                     GqlOperationName.clusterRegistrationProductInfo,
                     "Invoke-RscQueryCluster -RegistrationProductInfo"
                 },
                 {
-                    GqlOperationName.clusterSlaDomainConnection,
-                    "Invoke-RscQuerySla -ClusterDomainList"
+                    GqlOperationName.clusterReportMigrationCount,
+                    "Invoke-RscQueryCluster -ReportMigrationCount"
+                },
+                {
+                    GqlOperationName.clusterReportMigrationJobStatus,
+                    "Invoke-RscQueryCluster -ReportMigrationJobStatus"
+                },
+                {
+                    GqlOperationName.clusterReportMigrationStatus,
+                    "Invoke-RscQueryCluster -ReportMigrationStatus"
                 },
                 {
                     GqlOperationName.clusterSlaDomainFilterConnection,
                     "Invoke-RscQuerySla -ClusterDomainFilterList"
+                },
+                {
+                    GqlOperationName.clusterSlaDomains,
+                    "Invoke-RscQuerySla -ClusterDomains"
                 },
                 {
                     GqlOperationName.clusterTypeList,
@@ -3150,7 +3408,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.clusterVlans,
-                    "Invoke-RscQueryCluster -Vlan"
+                    "Invoke-RscQueryCluster -Vlans"
                 },
                 {
                     GqlOperationName.clusterWebSignedCertificate,
@@ -3202,7 +3460,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.createAwsExocomputeConfigs,
-                    "Invoke-RscMutateAws -CreateExocomputeConfig"
+                    "Invoke-RscMutateAws -CreateExocomputeConfigs"
                 },
                 {
                     GqlOperationName.createAwsReaderTarget,
@@ -3293,6 +3551,10 @@ namespace RubrikSecurityCloud.Types
                     "Invoke-RscMutateO365 -CreateAppKickoff"
                 },
                 {
+                    GqlOperationName.createOnDemandDb2Backup,
+                    "Invoke-RscMutateDb2 -CreateOnDemandBackup"
+                },
+                {
                     GqlOperationName.createOnDemandMssqlBackup,
                     "Invoke-RscMutateMssql -CreateOnDemandBackup"
                 },
@@ -3309,8 +3571,40 @@ namespace RubrikSecurityCloud.Types
                     "Invoke-RscMutateVsphere -CreateAdvancedTag"
                 },
                 {
+                    GqlOperationName.db2Database,
+                    "Invoke-RscQueryDb2 -Database"
+                },
+                {
+                    GqlOperationName.db2Databases,
+                    "Invoke-RscQueryDb2 -Databases"
+                },
+                {
+                    GqlOperationName.db2Instance,
+                    "Invoke-RscQueryDb2 -Instance"
+                },
+                {
+                    GqlOperationName.db2Instances,
+                    "Invoke-RscQueryDb2 -Instances"
+                },
+                {
+                    GqlOperationName.db2LogSnapshot,
+                    "Invoke-RscQueryDb2 -LogSnapshot"
+                },
+                {
+                    GqlOperationName.db2LogSnapshots,
+                    "Invoke-RscQueryDb2 -LogSnapshots"
+                },
+                {
+                    GqlOperationName.db2RecoverableRange,
+                    "Invoke-RscQueryDb2 -RecoverableRange"
+                },
+                {
+                    GqlOperationName.db2RecoverableRanges,
+                    "Invoke-RscQueryDb2 -RecoverableRanges"
+                },
+                {
                     GqlOperationName.deleteAllOracleDatabaseSnapshots,
-                    "Invoke-RscMutateOracle -DeleteAllDatabaseSnapshot"
+                    "Invoke-RscMutateOracle -DeleteAllDatabaseSnapshots"
                 },
                 {
                     GqlOperationName.deleteAwsCloudAccountWithoutCft,
@@ -3326,7 +3620,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.deleteAwsExocomputeConfigs,
-                    "Invoke-RscMutateAws -DeleteExocomputeConfig"
+                    "Invoke-RscMutateAws -DeleteExocomputeConfigs"
                 },
                 {
                     GqlOperationName.deleteAwsIamUserBasedCloudAccount,
@@ -3342,7 +3636,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.deleteAzureCloudAccountExocomputeConfigurations,
-                    "Invoke-RscMutateAzure -DeleteCloudAccountExocomputeConfiguration"
+                    "Invoke-RscMutateAzure -DeleteCloudAccountExocomputeConfigurations"
                 },
                 {
                     GqlOperationName.deleteAzureCloudAccountWithoutOauth,
@@ -3355,6 +3649,14 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlOperationName.deleteCassandraSource,
                     "Invoke-RscMutateCassandra -DeleteSource"
+                },
+                {
+                    GqlOperationName.deleteDb2Database,
+                    "Invoke-RscMutateDb2 -DeleteDatabase"
+                },
+                {
+                    GqlOperationName.deleteDb2Instance,
+                    "Invoke-RscMutateDb2 -DeleteInstance"
                 },
                 {
                     GqlOperationName.deleteFailoverCluster,
@@ -3373,8 +3675,12 @@ namespace RubrikSecurityCloud.Types
                     "Invoke-RscMutateHyperv -DeleteVirtualMachineSnapshotMount"
                 },
                 {
+                    GqlOperationName.deleteK8sCluster,
+                    "Invoke-RscMutateCluster -DeleteK8s"
+                },
+                {
                     GqlOperationName.deleteLdapPrincipals,
-                    "Invoke-RscMutateLdap -DeletePrincipal"
+                    "Invoke-RscMutateLdap -DeletePrincipals"
                 },
                 {
                     GqlOperationName.deleteMongoSource,
@@ -3386,7 +3692,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.deleteMssqlDbSnapshots,
-                    "Invoke-RscMutateMssql -DeleteDbSnapshot"
+                    "Invoke-RscMutateMssql -DeleteDbSnapshots"
                 },
                 {
                     GqlOperationName.deleteMssqlLiveMount,
@@ -3405,8 +3711,12 @@ namespace RubrikSecurityCloud.Types
                     "Invoke-RscMutateNutanix -DeletePrismCentral"
                 },
                 {
-                    GqlOperationName.deleteNutanixSnapshots,
+                    GqlOperationName.deleteNutanixSnapshot,
                     "Invoke-RscMutateNutanix -DeleteSnapshot"
+                },
+                {
+                    GqlOperationName.deleteNutanixSnapshots,
+                    "Invoke-RscMutateNutanix -DeleteSnapshots"
                 },
                 {
                     GqlOperationName.deleteO365AzureApp,
@@ -3433,12 +3743,24 @@ namespace RubrikSecurityCloud.Types
                     "Invoke-RscMutateVsphere -DeleteLiveMount"
                 },
                 {
+                    GqlOperationName.discoverDb2Instance,
+                    "Invoke-RscMutateDb2 -DiscoverInstance"
+                },
+                {
                     GqlOperationName.discoverMongoSource,
                     "Invoke-RscMutateMongo -DiscoverSource"
                 },
                 {
                     GqlOperationName.doesAzureNativeResourceGroupExist,
                     "Invoke-RscQueryAzure -DoesNativeResourceGroupExist"
+                },
+                {
+                    GqlOperationName.downloadDb2Snapshot,
+                    "Invoke-RscMutateDb2 -DownloadSnapshot"
+                },
+                {
+                    GqlOperationName.downloadDb2SnapshotsForPointInTimeRecovery,
+                    "Invoke-RscMutateDb2 -DownloadSnapshotsForPointInTimeRecovery"
                 },
                 {
                     GqlOperationName.downloadFilesNutanixSnapshot,
@@ -3454,11 +3776,11 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.downloadHypervVirtualMachineSnapshotFiles,
-                    "Invoke-RscMutateHyperv -DownloadVirtualMachineSnapshotFile"
+                    "Invoke-RscMutateHyperv -DownloadVirtualMachineSnapshotFiles"
                 },
                 {
                     GqlOperationName.downloadMssqlDatabaseBackupFiles,
-                    "Invoke-RscMutateMssql -DownloadDatabaseBackupFile"
+                    "Invoke-RscMutateMssql -DownloadDatabaseBackupFiles"
                 },
                 {
                     GqlOperationName.downloadMssqlDatabaseFilesFromArchivalLocation,
@@ -3482,7 +3804,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.downloadVsphereVirtualMachineFiles,
-                    "Invoke-RscMutateVsphere -DownloadVirtualMachineFile"
+                    "Invoke-RscMutateVsphere -DownloadVirtualMachineFiles"
                 },
                 {
                     GqlOperationName.editGlobalSla,
@@ -3494,7 +3816,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.enableO365Teams,
-                    "Invoke-RscMutateO365 -EnableTeam"
+                    "Invoke-RscMutateO365 -EnableTeams"
                 },
                 {
                     GqlOperationName.excludeAwsNativeEbsVolumesFromSnapshot,
@@ -3503,6 +3825,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlOperationName.excludeAzureNativeManagedDisksFromSnapshot,
                     "Invoke-RscMutateAzure -ExcludeNativeManagedDisksFromSnapshot"
+                },
+                {
+                    GqlOperationName.expireDownloadedDb2Snapshots,
+                    "Invoke-RscMutateDb2 -ExpireDownloadedSnapshots"
                 },
                 {
                     GqlOperationName.exportHypervVirtualMachine,
@@ -3519,6 +3845,14 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlOperationName.exportO365Mailbox,
                     "Invoke-RscMutateO365 -ExportMailbox"
+                },
+                {
+                    GqlOperationName.exportO365TeamsFiles,
+                    "Invoke-RscMutateO365 -ExportTeamsFiles"
+                },
+                {
+                    GqlOperationName.exportO365Workload,
+                    "Invoke-RscMutateO365 -ExportWorkload"
                 },
                 {
                     GqlOperationName.exportOracleDatabase,
@@ -3542,7 +3876,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.getPendingSlaAssignments,
-                    "Invoke-RscMutateSla -GetPendingAssignment"
+                    "Invoke-RscMutateSla -GetPendingAssignments"
                 },
                 {
                     GqlOperationName.globalSlaFilterConnection,
@@ -3550,7 +3884,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.globalSlaStatuses,
-                    "Invoke-RscQuerySla -GlobalStatus"
+                    "Invoke-RscQuerySla -GlobalStatuses"
                 },
                 {
                     GqlOperationName.hostFailoverCluster,
@@ -3562,7 +3896,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.hypervDeleteAllSnapshots,
-                    "Invoke-RscMutateHyperv -DeleteAllSnapshot"
+                    "Invoke-RscMutateHyperv -DeleteAllSnapshots"
                 },
                 {
                     GqlOperationName.hypervHostAsyncRequestStatus,
@@ -3570,7 +3904,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.hypervMounts,
-                    "Invoke-RscQueryHyperv -Mount"
+                    "Invoke-RscQueryHyperv -Mounts"
                 },
                 {
                     GqlOperationName.hypervOnDemandSnapshot,
@@ -3593,12 +3927,24 @@ namespace RubrikSecurityCloud.Types
                     "Invoke-RscMutateHyperv -ScvmmUpdate"
                 },
                 {
+                    GqlOperationName.hypervScvmms,
+                    "Invoke-RscQueryHyperv -Scvmms"
+                },
+                {
                     GqlOperationName.hypervServer,
                     "Invoke-RscQueryHyperv -Server"
                 },
                 {
+                    GqlOperationName.hypervServers,
+                    "Invoke-RscQueryHyperv -Servers"
+                },
+                {
                     GqlOperationName.hypervTopLevelDescendants,
-                    "Invoke-RscQueryHyperv -TopLevelDescendant"
+                    "Invoke-RscQueryHyperv -TopLevelDescendants"
+                },
+                {
+                    GqlOperationName.hypervVirtualMachine,
+                    "Invoke-RscQueryHyperv -VirtualMachine"
                 },
                 {
                     GqlOperationName.hypervVirtualMachineAsyncRequestStatus,
@@ -3606,7 +3952,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.hypervVirtualMachines,
-                    "Invoke-RscQueryHyperv -VirtualMachine"
+                    "Invoke-RscQueryHyperv -VirtualMachines"
                 },
                 {
                     GqlOperationName.hypervVmDetail,
@@ -3665,6 +4011,10 @@ namespace RubrikSecurityCloud.Types
                     "Invoke-RscMutateAzure -KickoffAdAppSetup"
                 },
                 {
+                    GqlOperationName.kubernetesClusters,
+                    "Invoke-RscQueryCluster -Kubernetes"
+                },
+                {
                     GqlOperationName.ldapAuthorizedPrincipalConnection,
                     "Invoke-RscQueryLdap -AuthorizedPrincipalList"
                 },
@@ -3678,7 +4028,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.listO365Apps,
-                    "Invoke-RscQueryO365 -ListApp"
+                    "Invoke-RscQueryO365 -ListApps"
                 },
                 {
                     GqlOperationName.mapAzureCloudAccountExocomputeSubscription,
@@ -3693,24 +4043,44 @@ namespace RubrikSecurityCloud.Types
                     "Invoke-RscMutateNutanix -MigrateMountV1"
                 },
                 {
-                    GqlOperationName.mongoCollections,
+                    GqlOperationName.mongoBulkRecoverableRanges,
+                    "Invoke-RscQueryMongo -BulkRecoverableRanges"
+                },
+                {
+                    GqlOperationName.mongoCollection,
                     "Invoke-RscQueryMongo -Collection"
                 },
                 {
-                    GqlOperationName.mongoDatabases,
+                    GqlOperationName.mongoCollections,
+                    "Invoke-RscQueryMongo -Collections"
+                },
+                {
+                    GqlOperationName.mongoDatabase,
                     "Invoke-RscQueryMongo -Database"
                 },
                 {
+                    GqlOperationName.mongoDatabases,
+                    "Invoke-RscQueryMongo -Databases"
+                },
+                {
                     GqlOperationName.mongoRecoverableRanges,
-                    "Invoke-RscQueryMongo -RecoverableRange"
+                    "Invoke-RscQueryMongo -RecoverableRanges"
+                },
+                {
+                    GqlOperationName.mongoSource,
+                    "Invoke-RscQueryMongo -Source"
                 },
                 {
                     GqlOperationName.mongoSources,
-                    "Invoke-RscQueryMongo -Source"
+                    "Invoke-RscQueryMongo -Sources"
                 },
                 {
                     GqlOperationName.mongodbBulkRecoverableRange,
                     "Invoke-RscQueryMongo -DbBulkRecoverableRange"
+                },
+                {
+                    GqlOperationName.mongodbCollection,
+                    "Invoke-RscQueryMongo -DbCollection"
                 },
                 {
                     GqlOperationName.mongodbCollectionRecoverableRange,
@@ -3718,15 +4088,23 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.mongodbCollections,
-                    "Invoke-RscQueryMongo -DbCollection"
+                    "Invoke-RscQueryMongo -DbCollections"
                 },
                 {
-                    GqlOperationName.mongodbDatabases,
+                    GqlOperationName.mongodbDatabase,
                     "Invoke-RscQueryMongo -DbDatabase"
                 },
                 {
-                    GqlOperationName.mongodbSources,
+                    GqlOperationName.mongodbDatabases,
+                    "Invoke-RscQueryMongo -DbDatabases"
+                },
+                {
+                    GqlOperationName.mongodbSource,
                     "Invoke-RscQueryMongo -DbSource"
+                },
+                {
+                    GqlOperationName.mongodbSources,
+                    "Invoke-RscQueryMongo -DbSources"
                 },
                 {
                     GqlOperationName.mountNutanixSnapshotV1,
@@ -3742,19 +4120,23 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.mssqlCompatibleInstances,
-                    "Invoke-RscQueryMssql -CompatibleInstance"
+                    "Invoke-RscQueryMssql -CompatibleInstances"
+                },
+                {
+                    GqlOperationName.mssqlDatabase,
+                    "Invoke-RscQueryMssql -Database"
                 },
                 {
                     GqlOperationName.mssqlDatabaseLiveMounts,
-                    "Invoke-RscQueryMssql -DatabaseLiveMount"
+                    "Invoke-RscQueryMssql -DatabaseLiveMounts"
                 },
                 {
                     GqlOperationName.mssqlDatabaseMissedRecoverableRanges,
-                    "Invoke-RscQueryMssql -DatabaseMissedRecoverableRange"
+                    "Invoke-RscQueryMssql -DatabaseMissedRecoverableRanges"
                 },
                 {
                     GqlOperationName.mssqlDatabaseMissedSnapshots,
-                    "Invoke-RscQueryMssql -DatabaseMissedSnapshot"
+                    "Invoke-RscQueryMssql -DatabaseMissedSnapshots"
                 },
                 {
                     GqlOperationName.mssqlDatabaseRestoreEstimate,
@@ -3762,11 +4144,11 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.mssqlDatabases,
-                    "Invoke-RscQueryMssql -Database"
+                    "Invoke-RscQueryMssql -Databases"
                 },
                 {
                     GqlOperationName.mssqlDefaultProperties,
-                    "Invoke-RscQueryMssql -DefaultPropertie"
+                    "Invoke-RscQueryMssql -DefaultProperties"
                 },
                 {
                     GqlOperationName.mssqlInstance,
@@ -3774,30 +4156,26 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.mssqlLogShippingTargets,
-                    "Invoke-RscQueryMssql -LogShippingTarget"
+                    "Invoke-RscQueryMssql -LogShippingTargets"
                 },
                 {
                     GqlOperationName.mssqlRecoverableRanges,
-                    "Invoke-RscQueryMssql -RecoverableRange"
+                    "Invoke-RscQueryMssql -RecoverableRanges"
                 },
                 {
                     GqlOperationName.mssqlTopLevelDescendants,
-                    "Invoke-RscQueryMssql -TopLevelDescendant"
+                    "Invoke-RscQueryMssql -TopLevelDescendants"
                 },
                 {
                     GqlOperationName.nutanixBrowseSnapshot,
                     "Invoke-RscQueryNutanix -BrowseSnapshot"
                 },
                 {
-                    GqlOperationName.nutanixCategories,
-                    "Invoke-RscQueryNutanix -Categorie"
+                    GqlOperationName.nutanixCategory,
+                    "Invoke-RscQueryNutanix -Category"
                 },
                 {
-                    GqlOperationName.nutanixCategoryValueVms,
-                    "Invoke-RscQueryNutanix -CategoryValueVm"
-                },
-                {
-                    GqlOperationName.nutanixCategoryValues,
+                    GqlOperationName.nutanixCategoryValue,
                     "Invoke-RscQueryNutanix -CategoryValue"
                 },
                 {
@@ -3810,19 +4188,31 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.nutanixClusterContainers,
-                    "Invoke-RscQueryNutanix -ClusterContainer"
+                    "Invoke-RscQueryNutanix -ClusterContainers"
                 },
                 {
                     GqlOperationName.nutanixClusterNetworks,
-                    "Invoke-RscQueryNutanix -ClusterNetwork"
+                    "Invoke-RscQueryNutanix -ClusterNetworks"
+                },
+                {
+                    GqlOperationName.nutanixClusters,
+                    "Invoke-RscQueryNutanix -Clusters"
                 },
                 {
                     GqlOperationName.nutanixMounts,
-                    "Invoke-RscQueryNutanix -Mount"
+                    "Invoke-RscQueryNutanix -Mounts"
+                },
+                {
+                    GqlOperationName.nutanixPrismCentral,
+                    "Invoke-RscQueryNutanix -PrismCentral"
+                },
+                {
+                    GqlOperationName.nutanixPrismCentralAsyncRequestStatus,
+                    "Invoke-RscMutateNutanix -PrismCentralAsyncRequestStatus"
                 },
                 {
                     GqlOperationName.nutanixPrismCentrals,
-                    "Invoke-RscQueryNutanix -PrismCentral"
+                    "Invoke-RscQueryNutanix -PrismCentrals"
                 },
                 {
                     GqlOperationName.nutanixSnapshotDetail,
@@ -3830,11 +4220,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.nutanixTopLevelDescendants,
-                    "Invoke-RscQueryNutanix -TopLevelDescendant"
-                },
-                {
-                    GqlOperationName.nutanixTopLevelDescendantsV2,
-                    "Invoke-RscQueryNutanix -TopLevelDescendantsV2"
+                    "Invoke-RscQueryNutanix -TopLevelDescendants"
                 },
                 {
                     GqlOperationName.nutanixVm,
@@ -3846,7 +4232,11 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.nutanixVmMissedSnapshots,
-                    "Invoke-RscQueryNutanix -VmMissedSnapshot"
+                    "Invoke-RscQueryNutanix -VmMissedSnapshots"
+                },
+                {
+                    GqlOperationName.nutanixVms,
+                    "Invoke-RscQueryNutanix -Vms"
                 },
                 {
                     GqlOperationName.o365Calendar,
@@ -3854,7 +4244,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.o365Groups,
-                    "Invoke-RscQueryO365 -Group"
+                    "Invoke-RscQueryO365 -Groups"
                 },
                 {
                     GqlOperationName.o365License,
@@ -3866,7 +4256,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.o365Mailboxes,
-                    "Invoke-RscQueryO365 -Mailboxe"
+                    "Invoke-RscQueryO365 -Mailboxes"
                 },
                 {
                     GqlOperationName.o365OauthConsentComplete,
@@ -3878,11 +4268,15 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.o365ObjectAncestors,
-                    "Invoke-RscQueryO365 -ObjectAncestor"
+                    "Invoke-RscQueryO365 -ObjectAncestors"
                 },
                 {
                     GqlOperationName.o365Onedrive,
                     "Invoke-RscQueryO365 -Onedrive"
+                },
+                {
+                    GqlOperationName.o365Onedrives,
+                    "Invoke-RscQueryO365 -Onedrives"
                 },
                 {
                     GqlOperationName.o365Org,
@@ -3894,11 +4288,15 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.o365OrgSummaries,
-                    "Invoke-RscQueryO365 -OrgSummarie"
+                    "Invoke-RscQueryO365 -OrgSummaries"
+                },
+                {
+                    GqlOperationName.o365Orgs,
+                    "Invoke-RscQueryO365 -Orgs"
                 },
                 {
                     GqlOperationName.o365PdlGroups,
-                    "Invoke-RscMutateO365 -PdlGroup"
+                    "Invoke-RscMutateO365 -PdlGroups"
                 },
                 {
                     GqlOperationName.o365SaaSSetupKickoff,
@@ -3925,8 +4323,16 @@ namespace RubrikSecurityCloud.Types
                     "Invoke-RscQueryO365 -SharepointDrive"
                 },
                 {
+                    GqlOperationName.o365SharepointDrives,
+                    "Invoke-RscQueryO365 -SharepointDrives"
+                },
+                {
                     GqlOperationName.o365SharepointList,
                     "Invoke-RscQueryO365 -SharepointList"
+                },
+                {
+                    GqlOperationName.o365SharepointLists,
+                    "Invoke-RscQueryO365 -SharepointLists"
                 },
                 {
                     GqlOperationName.o365SharepointObjectList,
@@ -3934,19 +4340,27 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.o365SharepointObjects,
-                    "Invoke-RscQueryO365 -SharepointObject"
+                    "Invoke-RscQueryO365 -SharepointObjects"
                 },
                 {
                     GqlOperationName.o365SharepointSite,
                     "Invoke-RscQueryO365 -SharepointSite"
                 },
                 {
+                    GqlOperationName.o365SharepointSites,
+                    "Invoke-RscQueryO365 -SharepointSites"
+                },
+                {
                     GqlOperationName.o365Site,
                     "Invoke-RscQueryO365 -Site"
                 },
                 {
+                    GqlOperationName.o365Sites,
+                    "Invoke-RscQueryO365 -Sites"
+                },
+                {
                     GqlOperationName.o365StorageStats,
-                    "Invoke-RscQueryO365 -StorageStat"
+                    "Invoke-RscQueryO365 -StorageStats"
                 },
                 {
                     GqlOperationName.o365Team,
@@ -3954,7 +4368,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.o365TeamChannels,
-                    "Invoke-RscQueryO365 -TeamChannel"
+                    "Invoke-RscQueryO365 -TeamChannels"
                 },
                 {
                     GqlOperationName.o365TeamConversationsFolderID,
@@ -3965,12 +4379,16 @@ namespace RubrikSecurityCloud.Types
                     "Invoke-RscQueryO365 -TeamPostedBy"
                 },
                 {
+                    GqlOperationName.o365Teams,
+                    "Invoke-RscQueryO365 -Teams"
+                },
+                {
                     GqlOperationName.o365User,
                     "Invoke-RscQueryO365 -User"
                 },
                 {
                     GqlOperationName.o365UserObjects,
-                    "Invoke-RscQueryO365 -UserObject"
+                    "Invoke-RscQueryO365 -UserObjects"
                 },
                 {
                     GqlOperationName.oracleAcoExampleDownloadLink,
@@ -3978,11 +4396,15 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.oracleAcoParameters,
-                    "Invoke-RscQueryOracle -AcoParameter"
+                    "Invoke-RscQueryOracle -AcoParameters"
                 },
                 {
                     GqlOperationName.oracleDataGuardGroup,
                     "Invoke-RscQueryOracle -DataGuardGroup"
+                },
+                {
+                    GqlOperationName.oracleDatabase,
+                    "Invoke-RscQueryOracle -Database"
                 },
                 {
                     GqlOperationName.oracleDatabaseLogBackupConfig,
@@ -3990,7 +4412,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.oracleDatabases,
-                    "Invoke-RscQueryOracle -Database"
+                    "Invoke-RscQueryOracle -Databases"
                 },
                 {
                     GqlOperationName.oracleHost,
@@ -4002,19 +4424,19 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.oracleLiveMounts,
-                    "Invoke-RscQueryOracle -LiveMount"
+                    "Invoke-RscQueryOracle -LiveMounts"
                 },
                 {
                     GqlOperationName.oracleMissedRecoverableRanges,
-                    "Invoke-RscQueryOracle -MissedRecoverableRange"
+                    "Invoke-RscQueryOracle -MissedRecoverableRanges"
                 },
                 {
                     GqlOperationName.oracleMissedSnapshots,
-                    "Invoke-RscQueryOracle -MissedSnapshot"
+                    "Invoke-RscQueryOracle -MissedSnapshots"
                 },
                 {
                     GqlOperationName.oraclePdbDetails,
-                    "Invoke-RscQueryOracle -PdbDetail"
+                    "Invoke-RscQueryOracle -PdbDetails"
                 },
                 {
                     GqlOperationName.oracleRac,
@@ -4026,11 +4448,11 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.oracleRecoverableRanges,
-                    "Invoke-RscQueryOracle -RecoverableRange"
+                    "Invoke-RscQueryOracle -RecoverableRanges"
                 },
                 {
                     GqlOperationName.oracleTopLevelDescendants,
-                    "Invoke-RscQueryOracle -TopLevelDescendant"
+                    "Invoke-RscQueryOracle -TopLevelDescendants"
                 },
                 {
                     GqlOperationName.patchAwsAuthenticationServerBasedCloudAccount,
@@ -4039,6 +4461,14 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlOperationName.patchAwsIamUserBasedCloudAccount,
                     "Invoke-RscMutateAws -PatchIamUserBasedCloudAccount"
+                },
+                {
+                    GqlOperationName.patchDb2Database,
+                    "Invoke-RscMutateDb2 -PatchDatabase"
+                },
+                {
+                    GqlOperationName.patchDb2Instance,
+                    "Invoke-RscMutateDb2 -PatchInstance"
                 },
                 {
                     GqlOperationName.patchMongoSource,
@@ -4066,7 +4496,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.rdsInstanceDetailsFromAws,
-                    "Invoke-RscQueryAws -RdsInstanceDetail"
+                    "Invoke-RscQueryAws -RdsInstanceDetails"
                 },
                 {
                     GqlOperationName.recoverCassandraSource,
@@ -4085,6 +4515,10 @@ namespace RubrikSecurityCloud.Types
                     "Invoke-RscMutateMongo -RecoverdbSource"
                 },
                 {
+                    GqlOperationName.refreshDb2Database,
+                    "Invoke-RscMutateDb2 -RefreshDatabase"
+                },
+                {
                     GqlOperationName.refreshHypervScvmm,
                     "Invoke-RscMutateHyperv -RefreshScvmm"
                 },
@@ -4095,6 +4529,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlOperationName.refreshK8sCluster,
                     "Invoke-RscMutateCluster -RefreshK8s"
+                },
+                {
+                    GqlOperationName.refreshK8sV2Cluster,
+                    "Invoke-RscMutateCluster -RefreshK8sV2"
                 },
                 {
                     GqlOperationName.refreshNutanixCluster,
@@ -4121,6 +4559,10 @@ namespace RubrikSecurityCloud.Types
                     "Invoke-RscMutateNutanix -RegisterAgentVm"
                 },
                 {
+                    GqlOperationName.registerAwsFeatureArtifacts,
+                    "Invoke-RscMutateAws -RegisterFeatureArtifacts"
+                },
+                {
                     GqlOperationName.registerCloudCluster,
                     "Invoke-RscMutateCluster -RegisterCloud"
                 },
@@ -4142,7 +4584,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.restoreHypervVirtualMachineSnapshotFiles,
-                    "Invoke-RscMutateHyperv -RestoreVirtualMachineSnapshotFile"
+                    "Invoke-RscMutateHyperv -RestoreVirtualMachineSnapshotFiles"
                 },
                 {
                     GqlOperationName.restoreMssqlDatabase,
@@ -4158,15 +4600,15 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.restoreO365TeamsConversations,
-                    "Invoke-RscMutateO365 -RestoreTeamsConversation"
+                    "Invoke-RscMutateO365 -RestoreTeamsConversations"
                 },
                 {
                     GqlOperationName.restoreO365TeamsFiles,
-                    "Invoke-RscMutateO365 -RestoreTeamsFile"
+                    "Invoke-RscMutateO365 -RestoreTeamsFiles"
                 },
                 {
                     GqlOperationName.restoreOracleLogs,
-                    "Invoke-RscMutateOracle -RestoreLog"
+                    "Invoke-RscMutateOracle -RestoreLogs"
                 },
                 {
                     GqlOperationName.retryAddMongoSource,
@@ -4178,7 +4620,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.setAzureCloudAccountCustomerAppCredentials,
-                    "Invoke-RscMutateAzure -SetCloudAccountCustomerAppCredential"
+                    "Invoke-RscMutateAzure -SetCloudAccountCustomerAppCredentials"
                 },
                 {
                     GqlOperationName.setLdapMfaSetting,
@@ -4194,7 +4636,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.slaArchivalValidationWarnings,
-                    "Invoke-RscQuerySla -ArchivalValidationWarning"
+                    "Invoke-RscQuerySla -ArchivalValidationWarnings"
                 },
                 {
                     GqlOperationName.slaAuditDetail,
@@ -4202,11 +4644,15 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.slaConflictObjects,
-                    "Invoke-RscQuerySla -ConflictObject"
+                    "Invoke-RscQuerySla -ConflictObjects"
+                },
+                {
+                    GqlOperationName.slaDomain,
+                    "Invoke-RscQuerySla -Domain"
                 },
                 {
                     GqlOperationName.slaDomainWithWarnings,
-                    "Invoke-RscQuerySla -DomainWithWarning"
+                    "Invoke-RscQuerySla -DomainWithWarnings"
                 },
                 {
                     GqlOperationName.slaDomainWithWarningsList,
@@ -4214,15 +4660,15 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.slaDomains,
-                    "Invoke-RscQuerySla -Domain"
+                    "Invoke-RscQuerySla -Domains"
                 },
                 {
-                    GqlOperationName.slaManagedVolumes,
+                    GqlOperationName.slaManagedVolume,
                     "Invoke-RscQuerySla -ManagedVolume"
                 },
                 {
-                    GqlOperationName.slaSummariesByIds,
-                    "Invoke-RscQuerySla -SummariesById"
+                    GqlOperationName.slaManagedVolumes,
+                    "Invoke-RscQuerySla -ManagedVolumes"
                 },
                 {
                     GqlOperationName.startAwsExocomputeDisableJob,
@@ -4325,6 +4771,10 @@ namespace RubrikSecurityCloud.Types
                     "Invoke-RscMutateAzure -UnmapCloudAccountExocomputeSubscription"
                 },
                 {
+                    GqlOperationName.unmapAzurePersistentStorageSubscription,
+                    "Invoke-RscMutateAzure -UnmapPersistentStorageSubscription"
+                },
+                {
                     GqlOperationName.updateAutomaticAwsTargetMapping,
                     "Invoke-RscMutateAws -UpdateAutomaticTargetMapping"
                 },
@@ -4350,7 +4800,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.updateAwsExocomputeConfigs,
-                    "Invoke-RscMutateAws -UpdateExocomputeConfig"
+                    "Invoke-RscMutateAws -UpdateExocomputeConfigs"
                 },
                 {
                     GqlOperationName.updateAwsTarget,
@@ -4414,7 +4864,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.updateMssqlDefaultProperties,
-                    "Invoke-RscMutateMssql -UpdateDefaultPropertie"
+                    "Invoke-RscMutateMssql -UpdateDefaultProperties"
                 },
                 {
                     GqlOperationName.updateMssqlLogShippingConfiguration,
@@ -4438,7 +4888,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.updateO365AppPermissions,
-                    "Invoke-RscMutateO365 -UpdateAppPermission"
+                    "Invoke-RscMutateO365 -UpdateAppPermissions"
                 },
                 {
                     GqlOperationName.updateO365OrgCustomName,
@@ -4470,7 +4920,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.upgradeAwsIamUserBasedCloudAccountPermissions,
-                    "Invoke-RscMutateAws -UpgradeIamUserBasedCloudAccountPermission"
+                    "Invoke-RscMutateAws -UpgradeIamUserBasedCloudAccountPermissions"
                 },
                 {
                     GqlOperationName.upgradeAzureCloudAccount,
@@ -4482,7 +4932,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.upgradeSlas,
-                    "Invoke-RscMutateSla -Upgrade"
+                    "Invoke-RscMutateSla -Upgrades"
                 },
                 {
                     GqlOperationName.vCenterAdvancedTagPreview,
@@ -4498,7 +4948,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.vCenterNetworks,
-                    "Invoke-RscQueryVcenter -Network"
+                    "Invoke-RscQueryVcenter -Networks"
                 },
                 {
                     GqlOperationName.vCenterNumProxiesNeeded,
@@ -4517,6 +4967,10 @@ namespace RubrikSecurityCloud.Types
                     "Invoke-RscQueryVsphere -ComputeCluster"
                 },
                 {
+                    GqlOperationName.vSphereComputeClusters,
+                    "Invoke-RscQueryVsphere -ComputeClusters"
+                },
+                {
                     GqlOperationName.vSphereDatacenter,
                     "Invoke-RscQueryVsphere -Datacenter"
                 },
@@ -4527,6 +4981,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlOperationName.vSphereDatastoreCluster,
                     "Invoke-RscQueryVsphere -DatastoreCluster"
+                },
+                {
+                    GqlOperationName.vSphereDatastoreClusters,
+                    "Invoke-RscQueryVsphere -DatastoreClusters"
                 },
                 {
                     GqlOperationName.vSphereDatastoreConnection,
@@ -4546,15 +5004,15 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.vSphereHostDetails,
-                    "Invoke-RscQueryVsphere -HostDetail"
+                    "Invoke-RscQueryVsphere -HostDetails"
                 },
                 {
                     GqlOperationName.vSphereHostsByFids,
-                    "Invoke-RscQueryVsphere -HostsByFid"
+                    "Invoke-RscQueryVsphere -HostsByFids"
                 },
                 {
                     GqlOperationName.vSphereLiveMounts,
-                    "Invoke-RscQueryVsphere -LiveMount"
+                    "Invoke-RscQueryVsphere -LiveMounts"
                 },
                 {
                     GqlOperationName.vSphereMount,
@@ -4626,7 +5084,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.validateAzureCloudAccountExocomputeConfigurations,
-                    "Invoke-RscQueryAzure -ValidateCloudAccountExocomputeConfiguration"
+                    "Invoke-RscQueryAzure -ValidateCloudAccountExocomputeConfigurations"
                 },
                 {
                     GqlOperationName.validateAzureNativeSqlDatabaseDbNameForExport,
@@ -4642,14 +5100,14 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.validateOracleDatabaseBackups,
-                    "Invoke-RscMutateOracle -ValidateDatabaseBackup"
+                    "Invoke-RscMutateOracle -ValidateDatabaseBackups"
                 },
                 {
                     GqlOperationName.vcdClusters,
                     "Invoke-RscQueryCluster -Vcd"
                 },
                 {
-                    GqlOperationName.verifySLAWithReplicationToCluster,
+                    GqlOperationName.verifySlaWithReplicationToCluster,
                     "Invoke-RscQuerySla -VerifyWithReplicationToCluster"
                 },
                 {
@@ -4670,7 +5128,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.vsphereExcludeVmDisks,
-                    "Invoke-RscMutateVsphereVm -ExcludeVmDisk"
+                    "Invoke-RscMutateVsphereVm -ExcludeVmDisks"
                 },
                 {
                     GqlOperationName.vsphereExportSnapshotToStandaloneHost,
@@ -4742,7 +5200,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.vsphereVmDownloadSnapshotFiles,
-                    "Invoke-RscMutateVsphereVm -DownloadSnapshotFile"
+                    "Invoke-RscMutateVsphereVm -DownloadSnapshotFiles"
                 },
                 {
                     GqlOperationName.vsphereVmExportSnapshotV2,
@@ -4782,7 +5240,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.vsphereVmListEsxiDatastores,
-                    "Invoke-RscMutateVsphereVm -ListEsxiDatastore"
+                    "Invoke-RscMutateVsphereVm -ListEsxiDatastores"
                 },
                 {
                     GqlOperationName.vsphereVmMountRelocate,
@@ -4798,7 +5256,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.vsphereVmRecoverFiles,
-                    "Invoke-RscMutateVsphereVm -RecoverFile"
+                    "Invoke-RscMutateVsphereVm -RecoverFiles"
                 },
                 {
                     GqlOperationName.vsphereVmRecoverFilesNew,
@@ -4814,7 +5272,7 @@ namespace RubrikSecurityCloud.Types
                 },
                 {
                     GqlOperationName.windowsCluster,
-                    "Invoke-RscQueryCluster -Window"
+                    "Invoke-RscQueryCluster -Windows"
                 },
             };
             if (OperationLookupDict.TryGetValue(gqlOpName, out var cmdName))

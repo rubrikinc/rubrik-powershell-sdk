@@ -2,8 +2,11 @@
 List of Virtual Machine file info.
 
 - data: list of VirtualMachineFileInfos
-  - List of matching objects.
+  - Supported in v9.0+
+  List of matching objects.
 - hasMore: System.Boolean
-  - If there is more.
+  - Supported in v9.0+
+  If there is more.
 - total: System.Int32
-  - Total list responses.
+  - Supported in v9.0+
+  Total list responses.

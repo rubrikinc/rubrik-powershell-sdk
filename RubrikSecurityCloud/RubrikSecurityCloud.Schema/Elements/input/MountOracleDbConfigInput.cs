@@ -64,6 +64,26 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("pdbsToLiveMount")]
         public List<System.String>? PdbsToLiveMount { get; set; }
 
+        //      C# -> List<System.String>? TargetRacHostIds
+        // GraphQL -> targetRacHostIds: [String!] (scalar)
+        [JsonProperty("targetRacHostIds")]
+        public List<System.String>? TargetRacHostIds { get; set; }
+
+        //      C# -> System.String? LmDbName
+        // GraphQL -> lmDbName: String (scalar)
+        [JsonProperty("lmDbName")]
+        public System.String? LmDbName { get; set; }
+
+        //      C# -> System.String? TargetRacPrimaryHostId
+        // GraphQL -> targetRacPrimaryHostId: String (scalar)
+        [JsonProperty("targetRacPrimaryHostId")]
+        public System.String? TargetRacPrimaryHostId { get; set; }
+
+        //      C# -> System.Boolean? ShouldAllowRenameToSource
+        // GraphQL -> shouldAllowRenameToSource: Boolean (scalar)
+        [JsonProperty("shouldAllowRenameToSource")]
+        public System.Boolean? ShouldAllowRenameToSource { get; set; }
+
         //      C# -> OracleRecoveryPointInput? RecoveryPoint
         // GraphQL -> recoveryPoint: OracleRecoveryPointInput! (input)
         [Required]

@@ -31,3 +31,9 @@ Filters for the cluster list.
   - Product type specific filters for the clusters.
 - excludeId: list of System.Strings
   - Exclude the Rubrik cluster UUIDs.
+- systemStatus: list of ClusterSystemStatuss
+  - System status of the Rubrik cluster.
+- connectionState: list of ClusterStatuss
+  - Connection status of the Rubrik cluster.
+- isInFatalOrDisconnectedState: System.Boolean
+  - Include Rubrik clusters which are disconnected  or in fatal state.

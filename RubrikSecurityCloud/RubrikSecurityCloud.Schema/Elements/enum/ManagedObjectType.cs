@@ -159,6 +159,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "JIRA_PROJECT")]
         JIRA_PROJECT,
 
+        [EnumMember(Value = "K8S_CLUSTER")]
+        K8S_CLUSTER,
+
+        [EnumMember(Value = "K8S_RESOURCE_SET")]
+        K8S_RESOURCE_SET,
+
         [EnumMember(Value = "KUPR_CLUSTER")]
         KUPR_CLUSTER,
 
@@ -311,6 +317,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "SNAPMIRROR_CLOUD")]
         SNAPMIRROR_CLOUD,
+
+        [EnumMember(Value = "UNKNOWN_MANAGED_OBJECT_TYPE")]
+        UNKNOWN_MANAGED_OBJECT_TYPE,
 
         [EnumMember(Value = "USER")]
         USER,

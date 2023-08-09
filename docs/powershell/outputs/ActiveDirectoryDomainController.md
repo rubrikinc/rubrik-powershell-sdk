@@ -13,15 +13,18 @@ Active Directory Domain Controller.
   - RBS status.
 - adServiceStatus: ActiveDirectoryServiceStatus
   - Service status of the Active Directory.
-- location: System.String
 - fsmoRoles: list of FsmoRoless
+  - Different master roles played by the Domain Controller.
 - serverRoles: list of ServerRoless
+  - Mentions if services like DNS or DHCP are hosted.
 - reportWorkload: Snappable
   - Includes statistics for the protected objects, for example, archive storage.
 - activeDirectoryDomain: ActiveDirectoryDomain
   - Active Directory Domain to which this domain controller belongs to.
 - cluster: Cluster
   - Rubrik cluster UUID.
+- dcLocation: System.String
+  - Physical location of the Domain Controller.
 - primaryClusterLocation: DataLocation
   - The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
 - pendingSla: SlaDomain

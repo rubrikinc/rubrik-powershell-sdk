@@ -41,7 +41,7 @@ namespace RubrikSecurityCloud.Types
         public System.Int32? Seq { get; set; }
 
         //      C# -> System.Int64? StartTime
-        // GraphQL -> startTime: Long! (scalar)
+        // GraphQL -> startTime: Long (scalar)
         [JsonProperty("startTime")]
         public System.Int64? StartTime { get; set; }
 
@@ -126,7 +126,7 @@ namespace RubrikSecurityCloud.Types
             s += ind + "seq\n" ;
         }
         //      C# -> System.Int64? StartTime
-        // GraphQL -> startTime: Long! (scalar)
+        // GraphQL -> startTime: Long (scalar)
         if (this.StartTime != null) {
             s += ind + "startTime\n" ;
         }
@@ -176,7 +176,7 @@ namespace RubrikSecurityCloud.Types
             this.Seq = Int32.MinValue;
         }
         //      C# -> System.Int64? StartTime
-        // GraphQL -> startTime: Long! (scalar)
+        // GraphQL -> startTime: Long (scalar)
         if (this.StartTime == null && Exploration.Includes(parent + ".startTime", true))
         {
             this.StartTime = new System.Int64();

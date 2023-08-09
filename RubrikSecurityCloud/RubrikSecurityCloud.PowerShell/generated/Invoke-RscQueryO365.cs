@@ -63,12 +63,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         
         // -------------------------------------------------------------------
-        // AllAdGroup parameter set
+        // AllAdGroups parameter set
         //
         // [GraphQL: allO365AdGroups]
         //
         [Parameter(
-            ParameterSetName = "AllAdGroup",
+            ParameterSetName = "AllAdGroups",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -77,7 +77,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: allO365AdGroups]",
             Position = 0
         )]
-        public SwitchParameter AllAdGroup { get; set; }
+        public SwitchParameter AllAdGroups { get; set; }
 
         
         // -------------------------------------------------------------------
@@ -117,12 +117,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         
         // -------------------------------------------------------------------
-        // Group parameter set
+        // Groups parameter set
         //
         // [GraphQL: o365Groups]
         //
         [Parameter(
-            ParameterSetName = "Group",
+            ParameterSetName = "Groups",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -131,16 +131,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: o365Groups]",
             Position = 0
         )]
-        public SwitchParameter Group { get; set; }
+        public SwitchParameter Groups { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Mailboxe parameter set
+        // Mailboxes parameter set
         //
         // [GraphQL: o365Mailboxes]
         //
         [Parameter(
-            ParameterSetName = "Mailboxe",
+            ParameterSetName = "Mailboxes",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -149,7 +149,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: o365Mailboxes]",
             Position = 0
         )]
-        public SwitchParameter Mailboxe { get; set; }
+        public SwitchParameter Mailboxes { get; set; }
 
         
         // -------------------------------------------------------------------
@@ -171,6 +171,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         
         // -------------------------------------------------------------------
+        // Onedrives parameter set
+        //
+        // [GraphQL: o365Onedrives]
+        //
+        [Parameter(
+            ParameterSetName = "Onedrives",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"List of Onedrives in the O365Org.
+[GraphQL: o365Onedrives]",
+            Position = 0
+        )]
+        public SwitchParameter Onedrives { get; set; }
+
+        
+        // -------------------------------------------------------------------
         // Site parameter set
         //
         // [GraphQL: o365Site]
@@ -186,6 +204,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Position = 0
         )]
         public SwitchParameter Site { get; set; }
+
+        
+        // -------------------------------------------------------------------
+        // Sites parameter set
+        //
+        // [GraphQL: o365Sites]
+        //
+        [Parameter(
+            ParameterSetName = "Sites",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"List of sites in the O365Org.
+[GraphQL: o365Sites]",
+            Position = 0
+        )]
+        public SwitchParameter Sites { get; set; }
 
         
         // -------------------------------------------------------------------
@@ -207,6 +243,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         
         // -------------------------------------------------------------------
+        // SharepointDrives parameter set
+        //
+        // [GraphQL: o365SharepointDrives]
+        //
+        [Parameter(
+            ParameterSetName = "SharepointDrives",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"List of sharepoint drives (document libraries) in the O365Org.
+[GraphQL: o365SharepointDrives]",
+            Position = 0
+        )]
+        public SwitchParameter SharepointDrives { get; set; }
+
+        
+        // -------------------------------------------------------------------
         // SharepointList parameter set
         //
         // [GraphQL: o365SharepointList]
@@ -222,6 +276,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Position = 0
         )]
         public SwitchParameter SharepointList { get; set; }
+
+        
+        // -------------------------------------------------------------------
+        // SharepointLists parameter set
+        //
+        // [GraphQL: o365SharepointLists]
+        //
+        [Parameter(
+            ParameterSetName = "SharepointLists",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Paginated list of sharepoint lists in the O365Org.
+[GraphQL: o365SharepointLists]",
+            Position = 0
+        )]
+        public SwitchParameter SharepointLists { get; set; }
 
         
         // -------------------------------------------------------------------
@@ -243,6 +315,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         
         // -------------------------------------------------------------------
+        // SharepointSites parameter set
+        //
+        // [GraphQL: o365SharepointSites]
+        //
+        [Parameter(
+            ParameterSetName = "SharepointSites",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Paginated list of sharepoint sites in the O365Org.
+[GraphQL: o365SharepointSites]",
+            Position = 0
+        )]
+        public SwitchParameter SharepointSites { get; set; }
+
+        
+        // -------------------------------------------------------------------
         // Team parameter set
         //
         // [GraphQL: o365Team]
@@ -261,12 +351,30 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         
         // -------------------------------------------------------------------
-        // TeamChannel parameter set
+        // Teams parameter set
+        //
+        // [GraphQL: o365Teams]
+        //
+        [Parameter(
+            ParameterSetName = "Teams",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"List of O365 Teams in the O365Org.
+[GraphQL: o365Teams]",
+            Position = 0
+        )]
+        public SwitchParameter Teams { get; set; }
+
+        
+        // -------------------------------------------------------------------
+        // TeamChannels parameter set
         //
         // [GraphQL: o365TeamChannels]
         //
         [Parameter(
-            ParameterSetName = "TeamChannel",
+            ParameterSetName = "TeamChannels",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -275,7 +383,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: o365TeamChannels]",
             Position = 0
         )]
-        public SwitchParameter TeamChannel { get; set; }
+        public SwitchParameter TeamChannels { get; set; }
 
         
         // -------------------------------------------------------------------
@@ -333,6 +441,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         
         // -------------------------------------------------------------------
+        // Orgs parameter set
+        //
+        // [GraphQL: o365Orgs]
+        //
+        [Parameter(
+            ParameterSetName = "Orgs",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"All O365 orgs for the account.
+[GraphQL: o365Orgs]",
+            Position = 0
+        )]
+        public SwitchParameter Orgs { get; set; }
+
+        
+        // -------------------------------------------------------------------
         // SharepointObjectList parameter set
         //
         // [GraphQL: o365SharepointObjectList]
@@ -351,12 +477,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         
         // -------------------------------------------------------------------
-        // SharepointObject parameter set
+        // SharepointObjects parameter set
         //
         // [GraphQL: o365SharepointObjects]
         //
         [Parameter(
-            ParameterSetName = "SharepointObject",
+            ParameterSetName = "SharepointObjects",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -365,16 +491,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: o365SharepointObjects]",
             Position = 0
         )]
-        public SwitchParameter SharepointObject { get; set; }
+        public SwitchParameter SharepointObjects { get; set; }
 
         
         // -------------------------------------------------------------------
-        // UserObject parameter set
+        // UserObjects parameter set
         //
         // [GraphQL: o365UserObjects]
         //
         [Parameter(
-            ParameterSetName = "UserObject",
+            ParameterSetName = "UserObjects",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -383,16 +509,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: o365UserObjects]",
             Position = 0
         )]
-        public SwitchParameter UserObject { get; set; }
+        public SwitchParameter UserObjects { get; set; }
 
         
         // -------------------------------------------------------------------
-        // OrgSummarie parameter set
+        // OrgSummaries parameter set
         //
         // [GraphQL: o365OrgSummaries]
         //
         [Parameter(
-            ParameterSetName = "OrgSummarie",
+            ParameterSetName = "OrgSummaries",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -401,16 +527,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: o365OrgSummaries]",
             Position = 0
         )]
-        public SwitchParameter OrgSummarie { get; set; }
+        public SwitchParameter OrgSummaries { get; set; }
 
         
         // -------------------------------------------------------------------
-        // ObjectAncestor parameter set
+        // ObjectAncestors parameter set
         //
         // [GraphQL: o365ObjectAncestors]
         //
         [Parameter(
-            ParameterSetName = "ObjectAncestor",
+            ParameterSetName = "ObjectAncestors",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -419,16 +545,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: o365ObjectAncestors]",
             Position = 0
         )]
-        public SwitchParameter ObjectAncestor { get; set; }
+        public SwitchParameter ObjectAncestors { get; set; }
 
         
         // -------------------------------------------------------------------
-        // BrowseTeamConvChannel parameter set
+        // BrowseTeamConvChannels parameter set
         //
         // [GraphQL: browseO365TeamConvChannels]
         //
         [Parameter(
-            ParameterSetName = "BrowseTeamConvChannel",
+            ParameterSetName = "BrowseTeamConvChannels",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -437,7 +563,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: browseO365TeamConvChannels]",
             Position = 0
         )]
-        public SwitchParameter BrowseTeamConvChannel { get; set; }
+        public SwitchParameter BrowseTeamConvChannels { get; set; }
 
         
         // -------------------------------------------------------------------
@@ -459,12 +585,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         
         // -------------------------------------------------------------------
-        // AllOrgStatus parameter set
+        // AllOrgStatuses parameter set
         //
         // [GraphQL: allO365OrgStatuses]
         //
         [Parameter(
-            ParameterSetName = "AllOrgStatus",
+            ParameterSetName = "AllOrgStatuses",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -473,7 +599,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: allO365OrgStatuses]",
             Position = 0
         )]
-        public SwitchParameter AllOrgStatus { get; set; }
+        public SwitchParameter AllOrgStatuses { get; set; }
 
         
         // -------------------------------------------------------------------
@@ -495,12 +621,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         
         // -------------------------------------------------------------------
-        // ListApp parameter set
+        // ListApps parameter set
         //
         // [GraphQL: listO365Apps]
         //
         [Parameter(
-            ParameterSetName = "ListApp",
+            ParameterSetName = "ListApps",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -509,16 +635,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: listO365Apps]",
             Position = 0
         )]
-        public SwitchParameter ListApp { get; set; }
+        public SwitchParameter ListApps { get; set; }
 
         
         // -------------------------------------------------------------------
-        // AllSubscriptionsAppTypeCount parameter set
+        // AllSubscriptionsAppTypeCounts parameter set
         //
         // [GraphQL: allO365SubscriptionsAppTypeCounts]
         //
         [Parameter(
-            ParameterSetName = "AllSubscriptionsAppTypeCount",
+            ParameterSetName = "AllSubscriptionsAppTypeCounts",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -527,16 +653,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: allO365SubscriptionsAppTypeCounts]",
             Position = 0
         )]
-        public SwitchParameter AllSubscriptionsAppTypeCount { get; set; }
+        public SwitchParameter AllSubscriptionsAppTypeCounts { get; set; }
 
         
         // -------------------------------------------------------------------
-        // StorageStat parameter set
+        // StorageStats parameter set
         //
         // [GraphQL: o365StorageStats]
         //
         [Parameter(
-            ParameterSetName = "StorageStat",
+            ParameterSetName = "StorageStats",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -545,7 +671,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: o365StorageStats]",
             Position = 0
         )]
-        public SwitchParameter StorageStat { get; set; }
+        public SwitchParameter StorageStats { get; set; }
 
         
         // -------------------------------------------------------------------
@@ -578,8 +704,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "OrgAtSnappableLevel":
                         this.ProcessRecord_OrgAtSnappableLevel();
                         break;
-                    case "AllAdGroup":
-                        this.ProcessRecord_AllAdGroup();
+                    case "AllAdGroups":
+                        this.ProcessRecord_AllAdGroups();
                         break;
                     case "User":
                         this.ProcessRecord_User();
@@ -587,32 +713,50 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "Mailbox":
                         this.ProcessRecord_Mailbox();
                         break;
-                    case "Group":
-                        this.ProcessRecord_Group();
+                    case "Groups":
+                        this.ProcessRecord_Groups();
                         break;
-                    case "Mailboxe":
-                        this.ProcessRecord_Mailboxe();
+                    case "Mailboxes":
+                        this.ProcessRecord_Mailboxes();
                         break;
                     case "Onedrive":
                         this.ProcessRecord_Onedrive();
                         break;
+                    case "Onedrives":
+                        this.ProcessRecord_Onedrives();
+                        break;
                     case "Site":
                         this.ProcessRecord_Site();
+                        break;
+                    case "Sites":
+                        this.ProcessRecord_Sites();
                         break;
                     case "SharepointDrive":
                         this.ProcessRecord_SharepointDrive();
                         break;
+                    case "SharepointDrives":
+                        this.ProcessRecord_SharepointDrives();
+                        break;
                     case "SharepointList":
                         this.ProcessRecord_SharepointList();
+                        break;
+                    case "SharepointLists":
+                        this.ProcessRecord_SharepointLists();
                         break;
                     case "SharepointSite":
                         this.ProcessRecord_SharepointSite();
                         break;
+                    case "SharepointSites":
+                        this.ProcessRecord_SharepointSites();
+                        break;
                     case "Team":
                         this.ProcessRecord_Team();
                         break;
-                    case "TeamChannel":
-                        this.ProcessRecord_TeamChannel();
+                    case "Teams":
+                        this.ProcessRecord_Teams();
+                        break;
+                    case "TeamChannels":
+                        this.ProcessRecord_TeamChannels();
                         break;
                     case "TeamConversationsFolderID":
                         this.ProcessRecord_TeamConversationsFolderID();
@@ -623,41 +767,44 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "Calendar":
                         this.ProcessRecord_Calendar();
                         break;
+                    case "Orgs":
+                        this.ProcessRecord_Orgs();
+                        break;
                     case "SharepointObjectList":
                         this.ProcessRecord_SharepointObjectList();
                         break;
-                    case "SharepointObject":
-                        this.ProcessRecord_SharepointObject();
+                    case "SharepointObjects":
+                        this.ProcessRecord_SharepointObjects();
                         break;
-                    case "UserObject":
-                        this.ProcessRecord_UserObject();
+                    case "UserObjects":
+                        this.ProcessRecord_UserObjects();
                         break;
-                    case "OrgSummarie":
-                        this.ProcessRecord_OrgSummarie();
+                    case "OrgSummaries":
+                        this.ProcessRecord_OrgSummaries();
                         break;
-                    case "ObjectAncestor":
-                        this.ProcessRecord_ObjectAncestor();
+                    case "ObjectAncestors":
+                        this.ProcessRecord_ObjectAncestors();
                         break;
-                    case "BrowseTeamConvChannel":
-                        this.ProcessRecord_BrowseTeamConvChannel();
+                    case "BrowseTeamConvChannels":
+                        this.ProcessRecord_BrowseTeamConvChannels();
                         break;
                     case "ServiceAccount":
                         this.ProcessRecord_ServiceAccount();
                         break;
-                    case "AllOrgStatus":
-                        this.ProcessRecord_AllOrgStatus();
+                    case "AllOrgStatuses":
+                        this.ProcessRecord_AllOrgStatuses();
                         break;
                     case "License":
                         this.ProcessRecord_License();
                         break;
-                    case "ListApp":
-                        this.ProcessRecord_ListApp();
+                    case "ListApps":
+                        this.ProcessRecord_ListApps();
                         break;
-                    case "AllSubscriptionsAppTypeCount":
-                        this.ProcessRecord_AllSubscriptionsAppTypeCount();
+                    case "AllSubscriptionsAppTypeCounts":
+                        this.ProcessRecord_AllSubscriptionsAppTypeCounts();
                         break;
-                    case "StorageStat":
-                        this.ProcessRecord_StorageStat();
+                    case "StorageStats":
+                        this.ProcessRecord_StorageStats();
                         break;
                     case "ServiceStatus":
                         this.ProcessRecord_ServiceStatus();
@@ -692,9 +839,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allO365AdGroups.
-        protected void ProcessRecord_AllAdGroup()
+        protected void ProcessRecord_AllAdGroups()
         {
-            this._logger.name += " -AllAdGroup";
+            this._logger.name += " -AllAdGroups";
             // Invoke graphql operation allO365AdGroups
             InvokeQueryAllO365AdGroups();
         }
@@ -719,18 +866,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // o365Groups.
-        protected void ProcessRecord_Group()
+        protected void ProcessRecord_Groups()
         {
-            this._logger.name += " -Group";
+            this._logger.name += " -Groups";
             // Invoke graphql operation o365Groups
             InvokeQueryO365Groups();
         }
 
         // This parameter set invokes a single graphql operation:
         // o365Mailboxes.
-        protected void ProcessRecord_Mailboxe()
+        protected void ProcessRecord_Mailboxes()
         {
-            this._logger.name += " -Mailboxe";
+            this._logger.name += " -Mailboxes";
             // Invoke graphql operation o365Mailboxes
             InvokeQueryO365Mailboxes();
         }
@@ -745,12 +892,30 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // o365Onedrives.
+        protected void ProcessRecord_Onedrives()
+        {
+            this._logger.name += " -Onedrives";
+            // Invoke graphql operation o365Onedrives
+            InvokeQueryO365Onedrives();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // o365Site.
         protected void ProcessRecord_Site()
         {
             this._logger.name += " -Site";
             // Invoke graphql operation o365Site
             InvokeQueryO365Site();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // o365Sites.
+        protected void ProcessRecord_Sites()
+        {
+            this._logger.name += " -Sites";
+            // Invoke graphql operation o365Sites
+            InvokeQueryO365Sites();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -763,12 +928,30 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // o365SharepointDrives.
+        protected void ProcessRecord_SharepointDrives()
+        {
+            this._logger.name += " -SharepointDrives";
+            // Invoke graphql operation o365SharepointDrives
+            InvokeQueryO365SharepointDrives();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // o365SharepointList.
         protected void ProcessRecord_SharepointList()
         {
             this._logger.name += " -SharepointList";
             // Invoke graphql operation o365SharepointList
             InvokeQueryO365SharepointList();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // o365SharepointLists.
+        protected void ProcessRecord_SharepointLists()
+        {
+            this._logger.name += " -SharepointLists";
+            // Invoke graphql operation o365SharepointLists
+            InvokeQueryO365SharepointLists();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -781,6 +964,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // o365SharepointSites.
+        protected void ProcessRecord_SharepointSites()
+        {
+            this._logger.name += " -SharepointSites";
+            // Invoke graphql operation o365SharepointSites
+            InvokeQueryO365SharepointSites();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // o365Team.
         protected void ProcessRecord_Team()
         {
@@ -790,10 +982,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // o365TeamChannels.
-        protected void ProcessRecord_TeamChannel()
+        // o365Teams.
+        protected void ProcessRecord_Teams()
         {
-            this._logger.name += " -TeamChannel";
+            this._logger.name += " -Teams";
+            // Invoke graphql operation o365Teams
+            InvokeQueryO365Teams();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // o365TeamChannels.
+        protected void ProcessRecord_TeamChannels()
+        {
+            this._logger.name += " -TeamChannels";
             // Invoke graphql operation o365TeamChannels
             InvokeQueryO365TeamChannels();
         }
@@ -826,6 +1027,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // o365Orgs.
+        protected void ProcessRecord_Orgs()
+        {
+            this._logger.name += " -Orgs";
+            // Invoke graphql operation o365Orgs
+            InvokeQueryO365Orgs();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // o365SharepointObjectList.
         protected void ProcessRecord_SharepointObjectList()
         {
@@ -836,45 +1046,45 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // o365SharepointObjects.
-        protected void ProcessRecord_SharepointObject()
+        protected void ProcessRecord_SharepointObjects()
         {
-            this._logger.name += " -SharepointObject";
+            this._logger.name += " -SharepointObjects";
             // Invoke graphql operation o365SharepointObjects
             InvokeQueryO365SharepointObjects();
         }
 
         // This parameter set invokes a single graphql operation:
         // o365UserObjects.
-        protected void ProcessRecord_UserObject()
+        protected void ProcessRecord_UserObjects()
         {
-            this._logger.name += " -UserObject";
+            this._logger.name += " -UserObjects";
             // Invoke graphql operation o365UserObjects
             InvokeQueryO365UserObjects();
         }
 
         // This parameter set invokes a single graphql operation:
         // o365OrgSummaries.
-        protected void ProcessRecord_OrgSummarie()
+        protected void ProcessRecord_OrgSummaries()
         {
-            this._logger.name += " -OrgSummarie";
+            this._logger.name += " -OrgSummaries";
             // Invoke graphql operation o365OrgSummaries
             InvokeQueryO365OrgSummaries();
         }
 
         // This parameter set invokes a single graphql operation:
         // o365ObjectAncestors.
-        protected void ProcessRecord_ObjectAncestor()
+        protected void ProcessRecord_ObjectAncestors()
         {
-            this._logger.name += " -ObjectAncestor";
+            this._logger.name += " -ObjectAncestors";
             // Invoke graphql operation o365ObjectAncestors
             InvokeQueryO365ObjectAncestors();
         }
 
         // This parameter set invokes a single graphql operation:
         // browseO365TeamConvChannels.
-        protected void ProcessRecord_BrowseTeamConvChannel()
+        protected void ProcessRecord_BrowseTeamConvChannels()
         {
-            this._logger.name += " -BrowseTeamConvChannel";
+            this._logger.name += " -BrowseTeamConvChannels";
             // Invoke graphql operation browseO365TeamConvChannels
             InvokeQueryBrowseO365TeamConvChannels();
         }
@@ -890,9 +1100,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allO365OrgStatuses.
-        protected void ProcessRecord_AllOrgStatus()
+        protected void ProcessRecord_AllOrgStatuses()
         {
-            this._logger.name += " -AllOrgStatus";
+            this._logger.name += " -AllOrgStatuses";
             // Invoke graphql operation allO365OrgStatuses
             InvokeQueryAllO365OrgStatuses();
         }
@@ -908,27 +1118,27 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // listO365Apps.
-        protected void ProcessRecord_ListApp()
+        protected void ProcessRecord_ListApps()
         {
-            this._logger.name += " -ListApp";
+            this._logger.name += " -ListApps";
             // Invoke graphql operation listO365Apps
             InvokeQueryListO365Apps();
         }
 
         // This parameter set invokes a single graphql operation:
         // allO365SubscriptionsAppTypeCounts.
-        protected void ProcessRecord_AllSubscriptionsAppTypeCount()
+        protected void ProcessRecord_AllSubscriptionsAppTypeCounts()
         {
-            this._logger.name += " -AllSubscriptionsAppTypeCount";
+            this._logger.name += " -AllSubscriptionsAppTypeCounts";
             // Invoke graphql operation allO365SubscriptionsAppTypeCounts
             InvokeQueryAllO365SubscriptionsAppTypeCounts();
         }
 
         // This parameter set invokes a single graphql operation:
         // o365StorageStats.
-        protected void ProcessRecord_StorageStat()
+        protected void ProcessRecord_StorageStats()
         {
-            this._logger.name += " -StorageStat";
+            this._logger.name += " -StorageStats";
             // Invoke graphql operation o365StorageStats
             InvokeQueryO365StorageStats();
         }
@@ -950,33 +1160,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            O365Org? fields = null ;
-            if (this.Field != null)
-            {
+            O365Org? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (O365Org)psObject.BaseObject;
+                    fieldSpecObj = (O365Org)psObject.BaseObject;
                 } else {
-                    fields = (O365Org)this.Field;
+                    fieldSpecObj = (O365Org)this.Field;
                 }
             }
-            string document = Query.O365Org(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.O365Org");
-            var parameters = "($fid: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryO365Org" + parameters + "{" + document + "}",
-                OperationName = "QueryO365Org",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "O365Org", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.O365Org(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryO365Org",
+                "($fid: UUID!)",
+                fieldSpecDoc,
+                "O365Org"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -987,33 +1188,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("fid", "UUID!"),
                 Tuple.Create("snappableType", "SnappableType!"),
             };
-            O365Org? fields = null ;
-            if (this.Field != null)
-            {
+            O365Org? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (O365Org)psObject.BaseObject;
+                    fieldSpecObj = (O365Org)psObject.BaseObject;
                 } else {
-                    fields = (O365Org)this.Field;
+                    fieldSpecObj = (O365Org)this.Field;
                 }
             }
-            string document = Query.O365OrgAtSnappableLevel(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.O365OrgAtSnappableLevel");
-            var parameters = "($fid: UUID!,$snappableType: SnappableType!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryO365OrgAtSnappableLevel" + parameters + "{" + document + "}",
-                OperationName = "QueryO365OrgAtSnappableLevel",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "O365Org", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.O365OrgAtSnappableLevel(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryO365OrgAtSnappableLevel",
+                "($fid: UUID!,$snappableType: SnappableType!)",
+                fieldSpecDoc,
+                "O365Org"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1024,33 +1216,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("orgId", "UUID!"),
                 Tuple.Create("adGroupSearchFilter", "String!"),
             };
-            List<AdGroup>? fields = null ;
-            if (this.Field != null)
-            {
+            List<AdGroup>? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (List<AdGroup>)psObject.BaseObject;
+                    fieldSpecObj = (List<AdGroup>)psObject.BaseObject;
                 } else {
-                    fields = (List<AdGroup>)this.Field;
+                    fieldSpecObj = (List<AdGroup>)this.Field;
                 }
             }
-            string document = Query.AllO365AdGroups(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AllO365AdGroups");
-            var parameters = "($orgId: UUID!,$adGroupSearchFilter: String!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAllO365AdGroups" + parameters + "{" + document + "}",
-                OperationName = "QueryAllO365AdGroups",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "List<AdGroup>", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AllO365AdGroups(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAllO365AdGroups",
+                "($orgId: UUID!,$adGroupSearchFilter: String!)",
+                fieldSpecDoc,
+                "List<AdGroup>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1060,33 +1243,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            O365User? fields = null ;
-            if (this.Field != null)
-            {
+            O365User? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (O365User)psObject.BaseObject;
+                    fieldSpecObj = (O365User)psObject.BaseObject;
                 } else {
-                    fields = (O365User)this.Field;
+                    fieldSpecObj = (O365User)this.Field;
                 }
             }
-            string document = Query.O365User(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.O365User");
-            var parameters = "($fid: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryO365User" + parameters + "{" + document + "}",
-                OperationName = "QueryO365User",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "O365User", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.O365User(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryO365User",
+                "($fid: UUID!)",
+                fieldSpecDoc,
+                "O365User"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1096,33 +1270,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("snappableFid", "UUID!"),
             };
-            O365Mailbox? fields = null ;
-            if (this.Field != null)
-            {
+            O365Mailbox? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (O365Mailbox)psObject.BaseObject;
+                    fieldSpecObj = (O365Mailbox)psObject.BaseObject;
                 } else {
-                    fields = (O365Mailbox)this.Field;
+                    fieldSpecObj = (O365Mailbox)this.Field;
                 }
             }
-            string document = Query.O365Mailbox(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.O365Mailbox");
-            var parameters = "($snappableFid: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryO365Mailbox" + parameters + "{" + document + "}",
-                OperationName = "QueryO365Mailbox",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "O365Mailbox", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.O365Mailbox(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryO365Mailbox",
+                "($snappableFid: UUID!)",
+                fieldSpecDoc,
+                "O365Mailbox"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1146,33 +1311,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("o365OrgId", "UUID!"),
                 Tuple.Create("snappableType", "SnappableType!"),
             };
-            O365GroupConnection? fields = null ;
-            if (this.Field != null)
-            {
+            O365GroupConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (O365GroupConnection)psObject.BaseObject;
+                    fieldSpecObj = (O365GroupConnection)psObject.BaseObject;
                 } else {
-                    fields = (O365GroupConnection)this.Field;
+                    fieldSpecObj = (O365GroupConnection)this.Field;
                 }
             }
-            string document = Query.O365Groups(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.O365Groups");
-            var parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$o365OrgId: UUID!,$snappableType: SnappableType!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryO365Groups" + parameters + "{" + document + "}",
-                OperationName = "QueryO365Groups",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "O365GroupConnection", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.O365Groups(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryO365Groups",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$o365OrgId: UUID!,$snappableType: SnappableType!)",
+                fieldSpecDoc,
+                "O365GroupConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1194,33 +1350,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("filter", "[Filter!]"),
                 Tuple.Create("o365OrgId", "UUID!"),
             };
-            O365MailboxConnection? fields = null ;
-            if (this.Field != null)
-            {
+            O365MailboxConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (O365MailboxConnection)psObject.BaseObject;
+                    fieldSpecObj = (O365MailboxConnection)psObject.BaseObject;
                 } else {
-                    fields = (O365MailboxConnection)this.Field;
+                    fieldSpecObj = (O365MailboxConnection)this.Field;
                 }
             }
-            string document = Query.O365Mailboxes(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.O365Mailboxes");
-            var parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$o365OrgId: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryO365Mailboxes" + parameters + "{" + document + "}",
-                OperationName = "QueryO365Mailboxes",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "O365MailboxConnection", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.O365Mailboxes(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryO365Mailboxes",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$o365OrgId: UUID!)",
+                fieldSpecDoc,
+                "O365MailboxConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1230,33 +1377,63 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("snappableFid", "UUID!"),
             };
-            O365Onedrive? fields = null ;
-            if (this.Field != null)
-            {
+            O365Onedrive? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (O365Onedrive)psObject.BaseObject;
+                    fieldSpecObj = (O365Onedrive)psObject.BaseObject;
                 } else {
-                    fields = (O365Onedrive)this.Field;
+                    fieldSpecObj = (O365Onedrive)this.Field;
                 }
             }
-            string document = Query.O365Onedrive(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.O365Onedrive");
-            var parameters = "($snappableFid: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryO365Onedrive" + parameters + "{" + document + "}",
-                OperationName = "QueryO365Onedrive",
+            string fieldSpecDoc = Query.O365Onedrive(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryO365Onedrive",
+                "($snappableFid: UUID!)",
+                fieldSpecDoc,
+                "O365Onedrive"
+            );
+        }
+
+        // Invoke GraphQL Query:
+        // o365Onedrives(
+        //     first: Int
+        //     after: String
+        //     sortBy: HierarchySortByField
+        //     sortOrder: SortOrder
+        //     filter: [Filter!]
+        //     o365OrgId: UUID!
+        //   ): O365OnedriveConnection!
+        protected void InvokeQueryO365Onedrives()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("sortBy", "HierarchySortByField"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("filter", "[Filter!]"),
+                Tuple.Create("o365OrgId", "UUID!"),
             };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
+            O365OnedriveConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                if (this.Field is PSObject psObject) {
+                    fieldSpecObj = (O365OnedriveConnection)psObject.BaseObject;
+                } else {
+                    fieldSpecObj = (O365OnedriveConnection)this.Field;
+                }
             }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "O365Onedrive", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.O365Onedrives(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryO365Onedrives",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$o365OrgId: UUID!)",
+                fieldSpecDoc,
+                "O365OnedriveConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1266,33 +1443,65 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("snappableFid", "UUID!"),
             };
-            O365Site? fields = null ;
-            if (this.Field != null)
-            {
+            O365Site? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (O365Site)psObject.BaseObject;
+                    fieldSpecObj = (O365Site)psObject.BaseObject;
                 } else {
-                    fields = (O365Site)this.Field;
+                    fieldSpecObj = (O365Site)this.Field;
                 }
             }
-            string document = Query.O365Site(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.O365Site");
-            var parameters = "($snappableFid: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryO365Site" + parameters + "{" + document + "}",
-                OperationName = "QueryO365Site",
+            string fieldSpecDoc = Query.O365Site(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryO365Site",
+                "($snappableFid: UUID!)",
+                fieldSpecDoc,
+                "O365Site"
+            );
+        }
+
+        // Invoke GraphQL Query:
+        // o365Sites(
+        //     first: Int
+        //     after: String
+        //     sortBy: HierarchySortByField
+        //     sortOrder: SortOrder
+        //     filter: [Filter!]
+        //     o365OrgId: UUID!
+        //     excludeChildSites: Boolean
+        //   ): O365SiteConnection!
+        protected void InvokeQueryO365Sites()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("sortBy", "HierarchySortByField"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("filter", "[Filter!]"),
+                Tuple.Create("o365OrgId", "UUID!"),
+                Tuple.Create("excludeChildSites", "Boolean"),
             };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
+            O365SiteConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                if (this.Field is PSObject psObject) {
+                    fieldSpecObj = (O365SiteConnection)psObject.BaseObject;
+                } else {
+                    fieldSpecObj = (O365SiteConnection)this.Field;
+                }
             }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "O365Site", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.O365Sites(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryO365Sites",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$o365OrgId: UUID!,$excludeChildSites: Boolean)",
+                fieldSpecDoc,
+                "O365SiteConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1302,33 +1511,63 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("snappableFid", "UUID!"),
             };
-            O365SharepointDrive? fields = null ;
-            if (this.Field != null)
-            {
+            O365SharepointDrive? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (O365SharepointDrive)psObject.BaseObject;
+                    fieldSpecObj = (O365SharepointDrive)psObject.BaseObject;
                 } else {
-                    fields = (O365SharepointDrive)this.Field;
+                    fieldSpecObj = (O365SharepointDrive)this.Field;
                 }
             }
-            string document = Query.O365SharepointDrive(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.O365SharepointDrive");
-            var parameters = "($snappableFid: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryO365SharepointDrive" + parameters + "{" + document + "}",
-                OperationName = "QueryO365SharepointDrive",
+            string fieldSpecDoc = Query.O365SharepointDrive(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryO365SharepointDrive",
+                "($snappableFid: UUID!)",
+                fieldSpecDoc,
+                "O365SharepointDrive"
+            );
+        }
+
+        // Invoke GraphQL Query:
+        // o365SharepointDrives(
+        //     first: Int
+        //     after: String
+        //     sortBy: HierarchySortByField
+        //     sortOrder: SortOrder
+        //     filter: [Filter!]
+        //     o365OrgId: UUID!
+        //   ): O365SharepointDriveConnection!
+        protected void InvokeQueryO365SharepointDrives()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("sortBy", "HierarchySortByField"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("filter", "[Filter!]"),
+                Tuple.Create("o365OrgId", "UUID!"),
             };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
+            O365SharepointDriveConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                if (this.Field is PSObject psObject) {
+                    fieldSpecObj = (O365SharepointDriveConnection)psObject.BaseObject;
+                } else {
+                    fieldSpecObj = (O365SharepointDriveConnection)this.Field;
+                }
             }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "O365SharepointDrive", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.O365SharepointDrives(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryO365SharepointDrives",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$o365OrgId: UUID!)",
+                fieldSpecDoc,
+                "O365SharepointDriveConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1338,33 +1577,63 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("snappableFid", "UUID!"),
             };
-            O365SharepointList? fields = null ;
-            if (this.Field != null)
-            {
+            O365SharepointList? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (O365SharepointList)psObject.BaseObject;
+                    fieldSpecObj = (O365SharepointList)psObject.BaseObject;
                 } else {
-                    fields = (O365SharepointList)this.Field;
+                    fieldSpecObj = (O365SharepointList)this.Field;
                 }
             }
-            string document = Query.O365SharepointList(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.O365SharepointList");
-            var parameters = "($snappableFid: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryO365SharepointList" + parameters + "{" + document + "}",
-                OperationName = "QueryO365SharepointList",
+            string fieldSpecDoc = Query.O365SharepointList(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryO365SharepointList",
+                "($snappableFid: UUID!)",
+                fieldSpecDoc,
+                "O365SharepointList"
+            );
+        }
+
+        // Invoke GraphQL Query:
+        // o365SharepointLists(
+        //     first: Int
+        //     after: String
+        //     sortBy: HierarchySortByField
+        //     sortOrder: SortOrder
+        //     filter: [Filter!]
+        //     o365OrgId: UUID!
+        //   ): O365SharepointListConnection!
+        protected void InvokeQueryO365SharepointLists()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("sortBy", "HierarchySortByField"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("filter", "[Filter!]"),
+                Tuple.Create("o365OrgId", "UUID!"),
             };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
+            O365SharepointListConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                if (this.Field is PSObject psObject) {
+                    fieldSpecObj = (O365SharepointListConnection)psObject.BaseObject;
+                } else {
+                    fieldSpecObj = (O365SharepointListConnection)this.Field;
+                }
             }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "O365SharepointList", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.O365SharepointLists(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryO365SharepointLists",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$o365OrgId: UUID!)",
+                fieldSpecDoc,
+                "O365SharepointListConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1374,33 +1643,63 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("siteFid", "UUID!"),
             };
-            O365Site? fields = null ;
-            if (this.Field != null)
-            {
+            O365Site? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (O365Site)psObject.BaseObject;
+                    fieldSpecObj = (O365Site)psObject.BaseObject;
                 } else {
-                    fields = (O365Site)this.Field;
+                    fieldSpecObj = (O365Site)this.Field;
                 }
             }
-            string document = Query.O365SharepointSite(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.O365SharepointSite");
-            var parameters = "($siteFid: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryO365SharepointSite" + parameters + "{" + document + "}",
-                OperationName = "QueryO365SharepointSite",
+            string fieldSpecDoc = Query.O365SharepointSite(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryO365SharepointSite",
+                "($siteFid: UUID!)",
+                fieldSpecDoc,
+                "O365Site"
+            );
+        }
+
+        // Invoke GraphQL Query:
+        // o365SharepointSites(
+        //     first: Int
+        //     after: String
+        //     sortBy: HierarchySortByField
+        //     sortOrder: SortOrder
+        //     filter: [Filter!]
+        //     o365OrgId: UUID!
+        //   ): O365SiteConnection!
+        protected void InvokeQueryO365SharepointSites()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("sortBy", "HierarchySortByField"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("filter", "[Filter!]"),
+                Tuple.Create("o365OrgId", "UUID!"),
             };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
+            O365SiteConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                if (this.Field is PSObject psObject) {
+                    fieldSpecObj = (O365SiteConnection)psObject.BaseObject;
+                } else {
+                    fieldSpecObj = (O365SiteConnection)this.Field;
+                }
             }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "O365Site", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.O365SharepointSites(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryO365SharepointSites",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$o365OrgId: UUID!)",
+                fieldSpecDoc,
+                "O365SiteConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1410,33 +1709,63 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("snappableFid", "UUID!"),
             };
-            O365Teams? fields = null ;
-            if (this.Field != null)
-            {
+            O365Teams? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (O365Teams)psObject.BaseObject;
+                    fieldSpecObj = (O365Teams)psObject.BaseObject;
                 } else {
-                    fields = (O365Teams)this.Field;
+                    fieldSpecObj = (O365Teams)this.Field;
                 }
             }
-            string document = Query.O365Team(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.O365Team");
-            var parameters = "($snappableFid: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryO365Team" + parameters + "{" + document + "}",
-                OperationName = "QueryO365Team",
+            string fieldSpecDoc = Query.O365Team(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryO365Team",
+                "($snappableFid: UUID!)",
+                fieldSpecDoc,
+                "O365Teams"
+            );
+        }
+
+        // Invoke GraphQL Query:
+        // o365Teams(
+        //     first: Int
+        //     after: String
+        //     sortBy: HierarchySortByField
+        //     sortOrder: SortOrder
+        //     filter: [Filter!]
+        //     o365OrgId: UUID!
+        //   ): O365TeamsConnection!
+        protected void InvokeQueryO365Teams()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("sortBy", "HierarchySortByField"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("filter", "[Filter!]"),
+                Tuple.Create("o365OrgId", "UUID!"),
             };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
+            O365TeamsConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                if (this.Field is PSObject psObject) {
+                    fieldSpecObj = (O365TeamsConnection)psObject.BaseObject;
+                } else {
+                    fieldSpecObj = (O365TeamsConnection)this.Field;
+                }
             }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "O365Teams", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.O365Teams(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryO365Teams",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$o365OrgId: UUID!)",
+                fieldSpecDoc,
+                "O365TeamsConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1458,33 +1787,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("channelMembershipTypeFilter", "ChannelMembershipType!"),
                 Tuple.Create("nameFilter", "String"),
             };
-            O365TeamsChannelConnection? fields = null ;
-            if (this.Field != null)
-            {
+            O365TeamsChannelConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (O365TeamsChannelConnection)psObject.BaseObject;
+                    fieldSpecObj = (O365TeamsChannelConnection)psObject.BaseObject;
                 } else {
-                    fields = (O365TeamsChannelConnection)this.Field;
+                    fieldSpecObj = (O365TeamsChannelConnection)this.Field;
                 }
             }
-            string document = Query.O365TeamChannels(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.O365TeamChannels");
-            var parameters = "($first: Int,$after: String,$snappableFid: UUID!,$excludeArchived: Boolean!,$channelMembershipTypeFilter: ChannelMembershipType!,$nameFilter: String)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryO365TeamChannels" + parameters + "{" + document + "}",
-                OperationName = "QueryO365TeamChannels",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "O365TeamsChannelConnection", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.O365TeamChannels(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryO365TeamChannels",
+                "($first: Int,$after: String,$snappableFid: UUID!,$excludeArchived: Boolean!,$channelMembershipTypeFilter: ChannelMembershipType!,$nameFilter: String)",
+                fieldSpecDoc,
+                "O365TeamsChannelConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1496,33 +1816,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("snapshotFid", "UUID!"),
                 Tuple.Create("o365OrgId", "UUID!"),
             };
-            System.String? fields = null ;
-            if (this.Field != null)
-            {
+            System.String? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (System.String)psObject.BaseObject;
+                    fieldSpecObj = (System.String)psObject.BaseObject;
                 } else {
-                    fields = (System.String)this.Field;
+                    fieldSpecObj = (System.String)this.Field;
                 }
             }
-            string document = Query.O365TeamConversationsFolderId(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.O365TeamConversationsFolderId");
-            var parameters = "($snappableFid: UUID!,$snapshotFid: UUID!,$o365OrgId: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryO365TeamConversationsFolderId" + parameters + "{" + document + "}",
-                OperationName = "QueryO365TeamConversationsFolderId",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "System.String", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.O365TeamConversationsFolderId(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryO365TeamConversationsFolderId",
+                "($snappableFid: UUID!,$snapshotFid: UUID!,$o365OrgId: UUID!)",
+                fieldSpecDoc,
+                "System.String"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1542,33 +1853,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("o365OrgId", "UUID!"),
                 Tuple.Create("nameFilter", "String"),
             };
-            O365TeamConversationsSenderConnection? fields = null ;
-            if (this.Field != null)
-            {
+            O365TeamConversationsSenderConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (O365TeamConversationsSenderConnection)psObject.BaseObject;
+                    fieldSpecObj = (O365TeamConversationsSenderConnection)psObject.BaseObject;
                 } else {
-                    fields = (O365TeamConversationsSenderConnection)this.Field;
+                    fieldSpecObj = (O365TeamConversationsSenderConnection)this.Field;
                 }
             }
-            string document = Query.O365TeamPostedBy(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.O365TeamPostedBy");
-            var parameters = "($first: Int,$after: String,$snappableFid: UUID!,$o365OrgId: UUID!,$nameFilter: String)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryO365TeamPostedBy" + parameters + "{" + document + "}",
-                OperationName = "QueryO365TeamPostedBy",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "O365TeamConversationsSenderConnection", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.O365TeamPostedBy(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryO365TeamPostedBy",
+                "($first: Int,$after: String,$snappableFid: UUID!,$o365OrgId: UUID!,$nameFilter: String)",
+                fieldSpecDoc,
+                "O365TeamConversationsSenderConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1578,33 +1880,63 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("snappableFid", "UUID!"),
             };
-            O365Calendar? fields = null ;
-            if (this.Field != null)
-            {
+            O365Calendar? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (O365Calendar)psObject.BaseObject;
+                    fieldSpecObj = (O365Calendar)psObject.BaseObject;
                 } else {
-                    fields = (O365Calendar)this.Field;
+                    fieldSpecObj = (O365Calendar)this.Field;
                 }
             }
-            string document = Query.O365Calendar(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.O365Calendar");
-            var parameters = "($snappableFid: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryO365Calendar" + parameters + "{" + document + "}",
-                OperationName = "QueryO365Calendar",
+            string fieldSpecDoc = Query.O365Calendar(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryO365Calendar",
+                "($snappableFid: UUID!)",
+                fieldSpecDoc,
+                "O365Calendar"
+            );
+        }
+
+        // Invoke GraphQL Query:
+        // o365Orgs(
+        //     first: Int
+        //     after: String
+        //     sortBy: HierarchySortByField
+        //     sortOrder: SortOrder
+        //     filter: [Filter!]
+        //     workloadHierarchy: WorkloadLevelHierarchy
+        //   ): O365OrgConnection!
+        protected void InvokeQueryO365Orgs()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("sortBy", "HierarchySortByField"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("filter", "[Filter!]"),
+                Tuple.Create("workloadHierarchy", "WorkloadLevelHierarchy"),
             };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
+            O365OrgConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                if (this.Field is PSObject psObject) {
+                    fieldSpecObj = (O365OrgConnection)psObject.BaseObject;
+                } else {
+                    fieldSpecObj = (O365OrgConnection)this.Field;
+                }
             }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "O365Calendar", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.O365Orgs(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryO365Orgs",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$workloadHierarchy: WorkloadLevelHierarchy)",
+                fieldSpecDoc,
+                "O365OrgConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1630,33 +1962,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("includeEntireHierarchy", "Boolean!"),
                 Tuple.Create("fid", "UUID!"),
             };
-            O365SharepointObjectConnection? fields = null ;
-            if (this.Field != null)
-            {
+            O365SharepointObjectConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (O365SharepointObjectConnection)psObject.BaseObject;
+                    fieldSpecObj = (O365SharepointObjectConnection)psObject.BaseObject;
                 } else {
-                    fields = (O365SharepointObjectConnection)this.Field;
+                    fieldSpecObj = (O365SharepointObjectConnection)this.Field;
                 }
             }
-            string document = Query.O365SharepointObjectList(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.O365SharepointObjectList");
-            var parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$objectTypeFilter: [String!],$includeEntireHierarchy: Boolean!,$fid: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryO365SharepointObjectList" + parameters + "{" + document + "}",
-                OperationName = "QueryO365SharepointObjectList",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "O365SharepointObjectConnection", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.O365SharepointObjectList(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryO365SharepointObjectList",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$objectTypeFilter: [String!],$includeEntireHierarchy: Boolean!,$fid: UUID!)",
+                fieldSpecDoc,
+                "O365SharepointObjectConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1678,33 +2001,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("filter", "[Filter!]"),
                 Tuple.Create("fid", "UUID!"),
             };
-            O365SharepointObjectConnection? fields = null ;
-            if (this.Field != null)
-            {
+            O365SharepointObjectConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (O365SharepointObjectConnection)psObject.BaseObject;
+                    fieldSpecObj = (O365SharepointObjectConnection)psObject.BaseObject;
                 } else {
-                    fields = (O365SharepointObjectConnection)this.Field;
+                    fieldSpecObj = (O365SharepointObjectConnection)this.Field;
                 }
             }
-            string document = Query.O365SharepointObjects(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.O365SharepointObjects");
-            var parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$fid: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryO365SharepointObjects" + parameters + "{" + document + "}",
-                OperationName = "QueryO365SharepointObjects",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "O365SharepointObjectConnection", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.O365SharepointObjects(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryO365SharepointObjects",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$fid: UUID!)",
+                fieldSpecDoc,
+                "O365SharepointObjectConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1726,33 +2040,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("filter", "[Filter!]"),
                 Tuple.Create("fid", "UUID!"),
             };
-            O365UserDescendantMetadataConnection? fields = null ;
-            if (this.Field != null)
-            {
+            O365UserDescendantMetadataConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (O365UserDescendantMetadataConnection)psObject.BaseObject;
+                    fieldSpecObj = (O365UserDescendantMetadataConnection)psObject.BaseObject;
                 } else {
-                    fields = (O365UserDescendantMetadataConnection)this.Field;
+                    fieldSpecObj = (O365UserDescendantMetadataConnection)this.Field;
                 }
             }
-            string document = Query.O365UserObjects(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.O365UserObjects");
-            var parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$fid: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryO365UserObjects" + parameters + "{" + document + "}",
-                OperationName = "QueryO365UserObjects",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "O365UserDescendantMetadataConnection", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.O365UserObjects(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryO365UserObjects",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$fid: UUID!)",
+                fieldSpecDoc,
+                "O365UserDescendantMetadataConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1761,32 +2066,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         {
             Tuple<string, string>[] argDefs = {
             };
-            GetImplicitlyAuthorizedObjectSummariesResponse? fields = null ;
-            if (this.Field != null)
-            {
+            GetImplicitlyAuthorizedObjectSummariesResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (GetImplicitlyAuthorizedObjectSummariesResponse)psObject.BaseObject;
+                    fieldSpecObj = (GetImplicitlyAuthorizedObjectSummariesResponse)psObject.BaseObject;
                 } else {
-                    fields = (GetImplicitlyAuthorizedObjectSummariesResponse)this.Field;
+                    fieldSpecObj = (GetImplicitlyAuthorizedObjectSummariesResponse)this.Field;
                 }
             }
-            string document = Query.O365OrgSummaries(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.O365OrgSummaries");
-            var parameters = "";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryO365OrgSummaries" + parameters + "{" + document + "}",
-                OperationName = "QueryO365OrgSummaries",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            var result = this._rbkClient.Invoke(
-                request, vars, "GetImplicitlyAuthorizedObjectSummariesResponse", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.O365OrgSummaries(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryO365OrgSummaries",
+                "",
+                fieldSpecDoc,
+                "GetImplicitlyAuthorizedObjectSummariesResponse"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1796,33 +2093,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("snappableFid", "UUID!"),
             };
-            GetImplicitlyAuthorizedAncestorSummariesResponse? fields = null ;
-            if (this.Field != null)
-            {
+            GetImplicitlyAuthorizedAncestorSummariesResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (GetImplicitlyAuthorizedAncestorSummariesResponse)psObject.BaseObject;
+                    fieldSpecObj = (GetImplicitlyAuthorizedAncestorSummariesResponse)psObject.BaseObject;
                 } else {
-                    fields = (GetImplicitlyAuthorizedAncestorSummariesResponse)this.Field;
+                    fieldSpecObj = (GetImplicitlyAuthorizedAncestorSummariesResponse)this.Field;
                 }
             }
-            string document = Query.O365ObjectAncestors(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.O365ObjectAncestors");
-            var parameters = "($snappableFid: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryO365ObjectAncestors" + parameters + "{" + document + "}",
-                OperationName = "QueryO365ObjectAncestors",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "GetImplicitlyAuthorizedAncestorSummariesResponse", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.O365ObjectAncestors(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryO365ObjectAncestors",
+                "($snappableFid: UUID!)",
+                fieldSpecDoc,
+                "GetImplicitlyAuthorizedAncestorSummariesResponse"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1848,33 +2136,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("channelMembershipTypeFilter", "ChannelMembershipType!"),
                 Tuple.Create("nameFilter", "String"),
             };
-            O365TeamConvChannelConnection? fields = null ;
-            if (this.Field != null)
-            {
+            O365TeamConvChannelConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (O365TeamConvChannelConnection)psObject.BaseObject;
+                    fieldSpecObj = (O365TeamConvChannelConnection)psObject.BaseObject;
                 } else {
-                    fields = (O365TeamConvChannelConnection)this.Field;
+                    fieldSpecObj = (O365TeamConvChannelConnection)this.Field;
                 }
             }
-            string document = Query.BrowseO365TeamConvChannels(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.BrowseO365TeamConvChannels");
-            var parameters = "($first: Int,$after: String,$snappableFid: UUID!,$snapshotFidOpt: UUID,$excludeArchived: Boolean!,$orgId: UUID!,$channelMembershipTypeFilter: ChannelMembershipType!,$nameFilter: String)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryBrowseO365TeamConvChannels" + parameters + "{" + document + "}",
-                OperationName = "QueryBrowseO365TeamConvChannels",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "O365TeamConvChannelConnection", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.BrowseO365TeamConvChannels(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryBrowseO365TeamConvChannels",
+                "($first: Int,$after: String,$snappableFid: UUID!,$snapshotFidOpt: UUID,$excludeArchived: Boolean!,$orgId: UUID!,$channelMembershipTypeFilter: ChannelMembershipType!,$nameFilter: String)",
+                fieldSpecDoc,
+                "O365TeamConvChannelConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1884,33 +2163,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("orgId", "UUID!"),
             };
-            O365ServiceAccountStatusResp? fields = null ;
-            if (this.Field != null)
-            {
+            O365ServiceAccountStatusResp? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (O365ServiceAccountStatusResp)psObject.BaseObject;
+                    fieldSpecObj = (O365ServiceAccountStatusResp)psObject.BaseObject;
                 } else {
-                    fields = (O365ServiceAccountStatusResp)this.Field;
+                    fieldSpecObj = (O365ServiceAccountStatusResp)this.Field;
                 }
             }
-            string document = Query.O365ServiceAccount(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.O365ServiceAccount");
-            var parameters = "($orgId: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryO365ServiceAccount" + parameters + "{" + document + "}",
-                OperationName = "QueryO365ServiceAccount",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "O365ServiceAccountStatusResp", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.O365ServiceAccount(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryO365ServiceAccount",
+                "($orgId: UUID!)",
+                fieldSpecDoc,
+                "O365ServiceAccountStatusResp"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1919,32 +2189,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         {
             Tuple<string, string>[] argDefs = {
             };
-            List<O365OrgInfo>? fields = null ;
-            if (this.Field != null)
-            {
+            List<O365OrgInfo>? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (List<O365OrgInfo>)psObject.BaseObject;
+                    fieldSpecObj = (List<O365OrgInfo>)psObject.BaseObject;
                 } else {
-                    fields = (List<O365OrgInfo>)this.Field;
+                    fieldSpecObj = (List<O365OrgInfo>)this.Field;
                 }
             }
-            string document = Query.AllO365OrgStatuses(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AllO365OrgStatuses");
-            var parameters = "";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAllO365OrgStatuses" + parameters + "{" + document + "}",
-                OperationName = "QueryAllO365OrgStatuses",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            var result = this._rbkClient.Invoke(
-                request, vars, "List<O365OrgInfo>", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AllO365OrgStatuses(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAllO365OrgStatuses",
+                "",
+                fieldSpecDoc,
+                "List<O365OrgInfo>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1953,32 +2215,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         {
             Tuple<string, string>[] argDefs = {
             };
-            O365License? fields = null ;
-            if (this.Field != null)
-            {
+            O365License? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (O365License)psObject.BaseObject;
+                    fieldSpecObj = (O365License)psObject.BaseObject;
                 } else {
-                    fields = (O365License)this.Field;
+                    fieldSpecObj = (O365License)this.Field;
                 }
             }
-            string document = Query.O365License(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.O365License");
-            var parameters = "";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryO365License" + parameters + "{" + document + "}",
-                OperationName = "QueryO365License",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            var result = this._rbkClient.Invoke(
-                request, vars, "O365License", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.O365License(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryO365License",
+                "",
+                fieldSpecDoc,
+                "O365License"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1996,33 +2250,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("o365AppFilters", "[AppFilter!]!"),
                 Tuple.Create("o365AppSortByParam", "AppSortByParam"),
             };
-            O365AppConnection? fields = null ;
-            if (this.Field != null)
-            {
+            O365AppConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (O365AppConnection)psObject.BaseObject;
+                    fieldSpecObj = (O365AppConnection)psObject.BaseObject;
                 } else {
-                    fields = (O365AppConnection)this.Field;
+                    fieldSpecObj = (O365AppConnection)this.Field;
                 }
             }
-            string document = Query.ListO365Apps(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.ListO365Apps");
-            var parameters = "($first: Int,$after: String,$o365AppFilters: [AppFilter!]!,$o365AppSortByParam: AppSortByParam)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryListO365Apps" + parameters + "{" + document + "}",
-                OperationName = "QueryListO365Apps",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "O365AppConnection", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.ListO365Apps(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryListO365Apps",
+                "($first: Int,$after: String,$o365AppFilters: [AppFilter!]!,$o365AppSortByParam: AppSortByParam)",
+                fieldSpecDoc,
+                "O365AppConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2031,32 +2276,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         {
             Tuple<string, string>[] argDefs = {
             };
-            List<O365SubscriptionAppTypeCounts>? fields = null ;
-            if (this.Field != null)
-            {
+            List<O365SubscriptionAppTypeCounts>? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (List<O365SubscriptionAppTypeCounts>)psObject.BaseObject;
+                    fieldSpecObj = (List<O365SubscriptionAppTypeCounts>)psObject.BaseObject;
                 } else {
-                    fields = (List<O365SubscriptionAppTypeCounts>)this.Field;
+                    fieldSpecObj = (List<O365SubscriptionAppTypeCounts>)this.Field;
                 }
             }
-            string document = Query.AllO365SubscriptionsAppTypeCounts(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AllO365SubscriptionsAppTypeCounts");
-            var parameters = "";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAllO365SubscriptionsAppTypeCounts" + parameters + "{" + document + "}",
-                OperationName = "QueryAllO365SubscriptionsAppTypeCounts",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            var result = this._rbkClient.Invoke(
-                request, vars, "List<O365SubscriptionAppTypeCounts>", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AllO365SubscriptionsAppTypeCounts(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAllO365SubscriptionsAppTypeCounts",
+                "",
+                fieldSpecDoc,
+                "List<O365SubscriptionAppTypeCounts>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2066,33 +2303,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("orgID", "UUID"),
             };
-            GetO365StorageStatsResp? fields = null ;
-            if (this.Field != null)
-            {
+            GetO365StorageStatsResp? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (GetO365StorageStatsResp)psObject.BaseObject;
+                    fieldSpecObj = (GetO365StorageStatsResp)psObject.BaseObject;
                 } else {
-                    fields = (GetO365StorageStatsResp)this.Field;
+                    fieldSpecObj = (GetO365StorageStatsResp)this.Field;
                 }
             }
-            string document = Query.O365StorageStats(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.O365StorageStats");
-            var parameters = "($orgID: UUID)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryO365StorageStats" + parameters + "{" + document + "}",
-                OperationName = "QueryO365StorageStats",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "GetO365StorageStatsResp", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.O365StorageStats(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryO365StorageStats",
+                "($orgID: UUID)",
+                fieldSpecDoc,
+                "GetO365StorageStatsResp"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2102,33 +2330,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("orgID", "UUID"),
             };
-            GetO365ServiceStatusResp? fields = null ;
-            if (this.Field != null)
-            {
+            GetO365ServiceStatusResp? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (GetO365ServiceStatusResp)psObject.BaseObject;
+                    fieldSpecObj = (GetO365ServiceStatusResp)psObject.BaseObject;
                 } else {
-                    fields = (GetO365ServiceStatusResp)this.Field;
+                    fieldSpecObj = (GetO365ServiceStatusResp)this.Field;
                 }
             }
-            string document = Query.O365ServiceStatus(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.O365ServiceStatus");
-            var parameters = "($orgID: UUID)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryO365ServiceStatus" + parameters + "{" + document + "}",
-                OperationName = "QueryO365ServiceStatus",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "GetO365ServiceStatusResp", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.O365ServiceStatus(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryO365ServiceStatus",
+                "($orgID: UUID)",
+                fieldSpecDoc,
+                "GetO365ServiceStatusResp"
+            );
         }
 
 

@@ -30,6 +30,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("status")]
         public TprReqStatus? Status { get; set; }
 
+        //      C# -> TprRule? TriggeredTprRule
+        // GraphQL -> triggeredTprRule: TprRule! (enum)
+        [JsonProperty("triggeredTprRule")]
+        public TprRule? TriggeredTprRule { get; set; }
+
+        //      C# -> List<TprRule>? TriggeredTprRules
+        // GraphQL -> triggeredTprRules: [TprRule!]! (enum)
+        [JsonProperty("triggeredTprRules")]
+        public List<TprRule>? TriggeredTprRules { get; set; }
+
         //      C# -> DateTime? CreatedAt
         // GraphQL -> createdAt: DateTime (scalar)
         [JsonProperty("createdAt")]
@@ -60,16 +70,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("orgName")]
         public System.String? OrgName { get; set; }
 
-        //      C# -> System.String? TriggeredTprRule
-        // GraphQL -> triggeredTprRule: String! (scalar)
-        [JsonProperty("triggeredTprRule")]
-        public System.String? TriggeredTprRule { get; set; }
-
-        //      C# -> List<System.String>? TriggeredTprRules
-        // GraphQL -> triggeredTprRules: [String!]! (scalar)
-        [JsonProperty("triggeredTprRules")]
-        public List<System.String>? TriggeredTprRules { get; set; }
-
         //      C# -> DateTime? UpdatedAt
         // GraphQL -> updatedAt: DateTime (scalar)
         [JsonProperty("updatedAt")]
@@ -80,10 +80,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("details")]
         public TprRequestDetail? Details { get; set; }
 
-        //      C# -> TprRequester? Requester
-        // GraphQL -> requester: TprRequester (type)
+        //      C# -> UserSummary? Requester
+        // GraphQL -> requester: UserSummary (type)
         [JsonProperty("requester")]
-        public TprRequester? Requester { get; set; }
+        public UserSummary? Requester { get; set; }
 
         //      C# -> List<TprReqStatusChange>? StatusLog
         // GraphQL -> statusLog: [TprReqStatusChange!]! (type)
@@ -107,17 +107,17 @@ namespace RubrikSecurityCloud.Types
     public TprRequestDetailReply Set(
         TprExecutionType? ExecutionType = null,
         TprReqStatus? Status = null,
+        TprRule? TriggeredTprRule = null,
+        List<TprRule>? TriggeredTprRules = null,
         DateTime? CreatedAt = null,
         DateTime? ExecutionExpiresAt = null,
         DateTime? ExpiresAt = null,
         System.String? Id = null,
         System.String? OrgId = null,
         System.String? OrgName = null,
-        System.String? TriggeredTprRule = null,
-        List<System.String>? TriggeredTprRules = null,
         DateTime? UpdatedAt = null,
         TprRequestDetail? Details = null,
-        TprRequester? Requester = null,
+        UserSummary? Requester = null,
         List<TprReqStatusChange>? StatusLog = null,
         List<TriggeredTprPolicy>? TriggeredTprPolicies = null
     ) 
@@ -127,6 +127,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Status != null ) {
             this.Status = Status;
+        }
+        if ( TriggeredTprRule != null ) {
+            this.TriggeredTprRule = TriggeredTprRule;
+        }
+        if ( TriggeredTprRules != null ) {
+            this.TriggeredTprRules = TriggeredTprRules;
         }
         if ( CreatedAt != null ) {
             this.CreatedAt = CreatedAt;
@@ -145,12 +151,6 @@ namespace RubrikSecurityCloud.Types
         }
         if ( OrgName != null ) {
             this.OrgName = OrgName;
-        }
-        if ( TriggeredTprRule != null ) {
-            this.TriggeredTprRule = TriggeredTprRule;
-        }
-        if ( TriggeredTprRules != null ) {
-            this.TriggeredTprRules = TriggeredTprRules;
         }
         if ( UpdatedAt != null ) {
             this.UpdatedAt = UpdatedAt;
@@ -187,6 +187,16 @@ namespace RubrikSecurityCloud.Types
         if (this.Status != null) {
             s += ind + "status\n" ;
         }
+        //      C# -> TprRule? TriggeredTprRule
+        // GraphQL -> triggeredTprRule: TprRule! (enum)
+        if (this.TriggeredTprRule != null) {
+            s += ind + "triggeredTprRule\n" ;
+        }
+        //      C# -> List<TprRule>? TriggeredTprRules
+        // GraphQL -> triggeredTprRules: [TprRule!]! (enum)
+        if (this.TriggeredTprRules != null) {
+            s += ind + "triggeredTprRules\n" ;
+        }
         //      C# -> DateTime? CreatedAt
         // GraphQL -> createdAt: DateTime (scalar)
         if (this.CreatedAt != null) {
@@ -217,16 +227,6 @@ namespace RubrikSecurityCloud.Types
         if (this.OrgName != null) {
             s += ind + "orgName\n" ;
         }
-        //      C# -> System.String? TriggeredTprRule
-        // GraphQL -> triggeredTprRule: String! (scalar)
-        if (this.TriggeredTprRule != null) {
-            s += ind + "triggeredTprRule\n" ;
-        }
-        //      C# -> List<System.String>? TriggeredTprRules
-        // GraphQL -> triggeredTprRules: [String!]! (scalar)
-        if (this.TriggeredTprRules != null) {
-            s += ind + "triggeredTprRules\n" ;
-        }
         //      C# -> DateTime? UpdatedAt
         // GraphQL -> updatedAt: DateTime (scalar)
         if (this.UpdatedAt != null) {
@@ -240,8 +240,8 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "details {\n" + fspec + ind + "}\n" ;
             }
         }
-        //      C# -> TprRequester? Requester
-        // GraphQL -> requester: TprRequester (type)
+        //      C# -> UserSummary? Requester
+        // GraphQL -> requester: UserSummary (type)
         if (this.Requester != null) {
             var fspec = this.Requester.AsFieldSpec(indent+1);
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
@@ -284,6 +284,18 @@ namespace RubrikSecurityCloud.Types
         {
             this.Status = new TprReqStatus();
         }
+        //      C# -> TprRule? TriggeredTprRule
+        // GraphQL -> triggeredTprRule: TprRule! (enum)
+        if (this.TriggeredTprRule == null && Exploration.Includes(parent + ".triggeredTprRule", true))
+        {
+            this.TriggeredTprRule = new TprRule();
+        }
+        //      C# -> List<TprRule>? TriggeredTprRules
+        // GraphQL -> triggeredTprRules: [TprRule!]! (enum)
+        if (this.TriggeredTprRules == null && Exploration.Includes(parent + ".triggeredTprRules", true))
+        {
+            this.TriggeredTprRules = new List<TprRule>();
+        }
         //      C# -> DateTime? CreatedAt
         // GraphQL -> createdAt: DateTime (scalar)
         if (this.CreatedAt == null && Exploration.Includes(parent + ".createdAt", true))
@@ -320,18 +332,6 @@ namespace RubrikSecurityCloud.Types
         {
             this.OrgName = "FETCH";
         }
-        //      C# -> System.String? TriggeredTprRule
-        // GraphQL -> triggeredTprRule: String! (scalar)
-        if (this.TriggeredTprRule == null && Exploration.Includes(parent + ".triggeredTprRule", true))
-        {
-            this.TriggeredTprRule = "FETCH";
-        }
-        //      C# -> List<System.String>? TriggeredTprRules
-        // GraphQL -> triggeredTprRules: [String!]! (scalar)
-        if (this.TriggeredTprRules == null && Exploration.Includes(parent + ".triggeredTprRules", true))
-        {
-            this.TriggeredTprRules = new List<System.String>();
-        }
         //      C# -> DateTime? UpdatedAt
         // GraphQL -> updatedAt: DateTime (scalar)
         if (this.UpdatedAt == null && Exploration.Includes(parent + ".updatedAt", true))
@@ -345,11 +345,11 @@ namespace RubrikSecurityCloud.Types
             this.Details = new TprRequestDetail();
             this.Details.ApplyExploratoryFieldSpec(parent + ".details");
         }
-        //      C# -> TprRequester? Requester
-        // GraphQL -> requester: TprRequester (type)
+        //      C# -> UserSummary? Requester
+        // GraphQL -> requester: UserSummary (type)
         if (this.Requester == null && Exploration.Includes(parent + ".requester"))
         {
-            this.Requester = new TprRequester();
+            this.Requester = new UserSummary();
             this.Requester.ApplyExploratoryFieldSpec(parent + ".requester");
         }
         //      C# -> List<TprReqStatusChange>? StatusLog

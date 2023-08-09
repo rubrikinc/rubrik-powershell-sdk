@@ -13,6 +13,10 @@
   - User count from the latest snapshot.
 - latestGroupCount: System.Int32
   - Group count from the latest snapshot.
+- isProvisioned: System.Boolean
+  - Specifies whether the infrastructure has been provisioned to enable protection for this Azure AD.
+- latestSnapshotTime: DateTime
+  - Time of the latest snapshot.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
 - id: System.String

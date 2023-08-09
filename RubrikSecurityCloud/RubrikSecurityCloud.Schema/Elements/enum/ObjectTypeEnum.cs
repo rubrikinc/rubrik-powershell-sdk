@@ -93,6 +93,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "JIRA_PROJECT")]
         JIRA_PROJECT,
 
+        [EnumMember(Value = "K8S_RESOURCE_SET")]
+        K8S_RESOURCE_SET,
+
         [EnumMember(Value = "KuprNamespace")]
         KUPR_NAMESPACE,
 

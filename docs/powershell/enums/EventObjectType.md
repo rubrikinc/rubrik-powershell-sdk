@@ -115,3 +115,6 @@ Enum representing all the possible object types which generate events.
 - ACTIVE_DIRECTORY_DOMAIN_CONTROLLER - Active Directory domain controller.
 - OBJECT_TYPE_NUTANIX_PRISM_CENTRAL - Nutanix Prism Central object.
 - VMWARE_HOST - VMware host.
+- ATLASSIAN_SITE - Atlassian site.
+- JIRA_PROJECT - Atlassian Jira project.
+- JIRA_SETTINGS - Atlassian Jira settings.

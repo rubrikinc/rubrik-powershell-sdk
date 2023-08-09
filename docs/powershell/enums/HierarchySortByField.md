@@ -96,3 +96,5 @@
 - FAILOVER_CLUSTER_APP_CONNECTION_STATUS - Sort based on failover cluster app connection status.
 - ACTIVE_DIRECTORY_DOMAIN_NAME - Sort based on Active Directory domain name.
 - CDM_CLUSTER_NAME - Sort based on Rubrik cluster name.
+- VMWARE_VCENTER_NAME_AND_VM_NAME - Sort based on the combination of vCenter name and virtual machine name.
+- VMWARE_VM_AGENT_STATUS - Sort based on the VMware virtual machine agent status.

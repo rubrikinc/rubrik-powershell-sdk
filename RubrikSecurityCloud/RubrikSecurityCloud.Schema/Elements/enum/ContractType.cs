@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         CONTRACT_TYPE_UNSPECIFIED,
 
         [EnumMember(Value = "LOGIN")]
-        LOGIN
+        LOGIN,
+
+        [EnumMember(Value = "M365_TRIAL")]
+        M365_TRIAL
 
 
     } // enum ContractType

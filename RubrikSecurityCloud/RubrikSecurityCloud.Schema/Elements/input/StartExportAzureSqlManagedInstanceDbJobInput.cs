@@ -67,6 +67,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("persistentBackupExportInput")]
         public AzureSqlPersistentBackupExportInput? PersistentBackupExportInput { get; set; }
 
+        //      C# -> System.String? ServiceTier
+        // GraphQL -> serviceTier: String (scalar)
+        [JsonProperty("serviceTier")]
+        public System.String? ServiceTier { get; set; }
+
 
         #endregion
 

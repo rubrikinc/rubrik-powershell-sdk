@@ -80,6 +80,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isProvisioned")]
         public System.Boolean? IsProvisioned { get; set; }
 
+        //      C# -> DateTime? KekBackupStartTime
+        // GraphQL -> kekBackupStartTime: DateTime (scalar)
+        [JsonProperty("kekBackupStartTime")]
+        public DateTime? KekBackupStartTime { get; set; }
+
         //      C# -> System.String? KmsId
         // GraphQL -> kmsId: String! (scalar)
         [JsonProperty("kmsId")]
@@ -135,6 +140,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("tenantId")]
         public System.String? TenantId { get; set; }
 
+        //      C# -> ZeusDatabaseIds? DatabaseIds
+        // GraphQL -> databaseIds: ZeusDatabaseIds (type)
+        [JsonProperty("databaseIds")]
+        public ZeusDatabaseIds? DatabaseIds { get; set; }
+
         //      C# -> KmsSpec? KmsSpec
         // GraphQL -> kmsSpec: KmsSpec (type)
         [JsonProperty("kmsSpec")]
@@ -172,6 +182,7 @@ namespace RubrikSecurityCloud.Types
         System.String? GroupName = null,
         System.String? Id = null,
         System.Boolean? IsProvisioned = null,
+        DateTime? KekBackupStartTime = null,
         System.String? KmsId = null,
         System.String? OrgId = null,
         System.String? OrgName = null,
@@ -183,6 +194,7 @@ namespace RubrikSecurityCloud.Types
         System.String? StorageId = null,
         System.String? SubscriptionId = null,
         System.String? TenantId = null,
+        ZeusDatabaseIds? DatabaseIds = null,
         KmsSpec? KmsSpec = null,
         ScaleRuntime? ScaleRuntime = null,
         ExocomputeStorageAccountIds? StorageIds = null
@@ -224,6 +236,9 @@ namespace RubrikSecurityCloud.Types
         if ( IsProvisioned != null ) {
             this.IsProvisioned = IsProvisioned;
         }
+        if ( KekBackupStartTime != null ) {
+            this.KekBackupStartTime = KekBackupStartTime;
+        }
         if ( KmsId != null ) {
             this.KmsId = KmsId;
         }
@@ -256,6 +271,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( TenantId != null ) {
             this.TenantId = TenantId;
+        }
+        if ( DatabaseIds != null ) {
+            this.DatabaseIds = DatabaseIds;
         }
         if ( KmsSpec != null ) {
             this.KmsSpec = KmsSpec;
@@ -336,6 +354,11 @@ namespace RubrikSecurityCloud.Types
         if (this.IsProvisioned != null) {
             s += ind + "isProvisioned\n" ;
         }
+        //      C# -> DateTime? KekBackupStartTime
+        // GraphQL -> kekBackupStartTime: DateTime (scalar)
+        if (this.KekBackupStartTime != null) {
+            s += ind + "kekBackupStartTime\n" ;
+        }
         //      C# -> System.String? KmsId
         // GraphQL -> kmsId: String! (scalar)
         if (this.KmsId != null) {
@@ -390,6 +413,14 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> tenantId: String! (scalar)
         if (this.TenantId != null) {
             s += ind + "tenantId\n" ;
+        }
+        //      C# -> ZeusDatabaseIds? DatabaseIds
+        // GraphQL -> databaseIds: ZeusDatabaseIds (type)
+        if (this.DatabaseIds != null) {
+            var fspec = this.DatabaseIds.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "databaseIds {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> KmsSpec? KmsSpec
         // GraphQL -> kmsSpec: KmsSpec (type)
@@ -495,6 +526,12 @@ namespace RubrikSecurityCloud.Types
         {
             this.IsProvisioned = true;
         }
+        //      C# -> DateTime? KekBackupStartTime
+        // GraphQL -> kekBackupStartTime: DateTime (scalar)
+        if (this.KekBackupStartTime == null && Exploration.Includes(parent + ".kekBackupStartTime", true))
+        {
+            this.KekBackupStartTime = new DateTime();
+        }
         //      C# -> System.String? KmsId
         // GraphQL -> kmsId: String! (scalar)
         if (this.KmsId == null && Exploration.Includes(parent + ".kmsId", true))
@@ -560,6 +597,13 @@ namespace RubrikSecurityCloud.Types
         if (this.TenantId == null && Exploration.Includes(parent + ".tenantId", true))
         {
             this.TenantId = "FETCH";
+        }
+        //      C# -> ZeusDatabaseIds? DatabaseIds
+        // GraphQL -> databaseIds: ZeusDatabaseIds (type)
+        if (this.DatabaseIds == null && Exploration.Includes(parent + ".databaseIds"))
+        {
+            this.DatabaseIds = new ZeusDatabaseIds();
+            this.DatabaseIds.ApplyExploratoryFieldSpec(parent + ".databaseIds");
         }
         //      C# -> KmsSpec? KmsSpec
         // GraphQL -> kmsSpec: KmsSpec (type)

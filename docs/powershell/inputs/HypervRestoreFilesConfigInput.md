@@ -1,6 +1,9 @@
 ### HypervRestoreFilesConfigInput
 Supported in v5.0+
 
+- targetVirtualMachineId: System.String
+  - Supported in v9.0+
+      Workload ID of the target HyperV virtual machine, which is the destination for the recovered data.
 - restoreConfig: list of HypervRestoreFileConfigInputs
   - Required. Supported in v5.0+
       v5.0-v5.3: Absolute path of the target location for the copied files

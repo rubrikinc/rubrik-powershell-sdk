@@ -57,6 +57,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "HYPERV_ROOT")]
         HYPERV_ROOT,
 
+        [EnumMember(Value = "K8S_ROOT")]
+        K8S_ROOT,
+
         [EnumMember(Value = "KUPR_ROOT")]
         KUPR_ROOT,
 
@@ -86,9 +89,6 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "O365_ROOT")]
         O365_ROOT,
-
-        [EnumMember(Value = "ON_PREM_AD_ROOT")]
-        ON_PREM_AD_ROOT,
 
         [EnumMember(Value = "ORACLE_ROOT")]
         ORACLE_ROOT,

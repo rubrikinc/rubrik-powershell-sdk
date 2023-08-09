@@ -108,6 +108,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "VMWARE_HOST")]
         VMWARE_HOST,
 
+        [EnumMember(Value = "VMWARE_RESOURCE_POOL")]
+        VMWARE_RESOURCE_POOL,
+
         [EnumMember(Value = "VMWARE_TAG_CATEGORY")]
         VMWARE_TAG_CATEGORY,
 

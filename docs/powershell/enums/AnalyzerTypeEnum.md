@@ -32,6 +32,7 @@ AnalyzerType is the shared enum for the backend and frontend to
 - GERMANY_DL - Germany driver's license number analyzer.
 - GERMANY_ID - Germany identity card number analyzer.
 - GERMANY_PASSPORT - Germany passport number analyzer.
+- GOOGLE_API_KEY - Google API Key analyzer.
 - IBAN - International Bank Account Number (IBAN) analyzer.
 - IPV4_ADDRESS - IP address analyzer.
 - IRELAND_DL - Ireland drivers license number analyzer.

@@ -21,7 +21,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "Invoke",
         "RscMutateCluster",
-        DefaultParameterSetName = "CreateK8s")
+        DefaultParameterSetName = "AddK8s")
     ]
     public class Invoke_RscMutateCluster : RscPSCmdlet
     {
@@ -147,6 +147,69 @@ Delete the provided failover clusters.
 
         
         // -------------------------------------------------------------------
+        // AddK8s parameter set
+        //
+        // [GraphQL: addK8sCluster]
+        //
+        [Parameter(
+            ParameterSetName = "AddK8s",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Add a Kubernetes cluster
+
+Supported in v9.0+
+Adds a Kubernetes cluster to the Rubrik cluster.
+[GraphQL: addK8sCluster]",
+            Position = 0
+        )]
+        public SwitchParameter AddK8s { get; set; }
+
+        
+        // -------------------------------------------------------------------
+        // DeleteK8s parameter set
+        //
+        // [GraphQL: deleteK8sCluster]
+        //
+        [Parameter(
+            ParameterSetName = "DeleteK8s",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Delete a Kubernetes cluster
+
+Supported in v9.0+
+Deletes a Kubernetes cluster by specifying the cluster ID.
+[GraphQL: deleteK8sCluster]",
+            Position = 0
+        )]
+        public SwitchParameter DeleteK8s { get; set; }
+
+        
+        // -------------------------------------------------------------------
+        // RefreshK8sV2 parameter set
+        //
+        // [GraphQL: refreshK8sV2Cluster]
+        //
+        [Parameter(
+            ParameterSetName = "RefreshK8sV2",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Initiate an on-demand refresh for a Kubernetes cluster
+
+Supported in v9.0+
+Initiates an on-demand refresh request for the specified Kubernetes cluster.
+[GraphQL: refreshK8sV2Cluster]",
+            Position = 0
+        )]
+        public SwitchParameter RefreshK8sV2 { get; set; }
+
+        
+        // -------------------------------------------------------------------
         // CreateK8s parameter set
         //
         // [GraphQL: createK8sCluster]
@@ -260,6 +323,15 @@ Delete the provided failover clusters.
                     case "BulkDeleteFailover":
                         this.ProcessRecord_BulkDeleteFailover();
                         break;
+                    case "AddK8s":
+                        this.ProcessRecord_AddK8s();
+                        break;
+                    case "DeleteK8s":
+                        this.ProcessRecord_DeleteK8s();
+                        break;
+                    case "RefreshK8sV2":
+                        this.ProcessRecord_RefreshK8sV2();
+                        break;
                     case "CreateK8s":
                         this.ProcessRecord_CreateK8s();
                         break;
@@ -340,6 +412,33 @@ Delete the provided failover clusters.
         }
 
         // This parameter set invokes a single graphql operation:
+        // addK8sCluster.
+        protected void ProcessRecord_AddK8s()
+        {
+            this._logger.name += " -AddK8s";
+            // Invoke graphql operation addK8sCluster
+            InvokeMutationAddK8sCluster();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // deleteK8sCluster.
+        protected void ProcessRecord_DeleteK8s()
+        {
+            this._logger.name += " -DeleteK8s";
+            // Invoke graphql operation deleteK8sCluster
+            InvokeMutationDeleteK8sCluster();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // refreshK8sV2Cluster.
+        protected void ProcessRecord_RefreshK8sV2()
+        {
+            this._logger.name += " -RefreshK8sV2";
+            // Invoke graphql operation refreshK8sV2Cluster
+            InvokeMutationRefreshK8sV2Cluster();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // createK8sCluster.
         protected void ProcessRecord_CreateK8s()
         {
@@ -392,33 +491,24 @@ Delete the provided failover clusters.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "AddNodesToCloudClusterInput!"),
             };
-            CcProvisionJobReply? fields = null ;
-            if (this.Field != null)
-            {
+            CcProvisionJobReply? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (CcProvisionJobReply)psObject.BaseObject;
+                    fieldSpecObj = (CcProvisionJobReply)psObject.BaseObject;
                 } else {
-                    fields = (CcProvisionJobReply)this.Field;
+                    fieldSpecObj = (CcProvisionJobReply)this.Field;
                 }
             }
-            string document = Mutation.AddNodesToCloudCluster(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.AddNodesToCloudCluster");
-            var parameters = "($input: AddNodesToCloudClusterInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "mutation MutationAddNodesToCloudCluster" + parameters + "{" + document + "}",
-                OperationName = "MutationAddNodesToCloudCluster",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "CcProvisionJobReply", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Mutation.AddNodesToCloudCluster(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationAddNodesToCloudCluster",
+                "($input: AddNodesToCloudClusterInput!)",
+                fieldSpecDoc,
+                "CcProvisionJobReply"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -428,33 +518,24 @@ Delete the provided failover clusters.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RegisterCloudClusterInput!"),
             };
-            RegisterCloudClusterReply? fields = null ;
-            if (this.Field != null)
-            {
+            RegisterCloudClusterReply? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (RegisterCloudClusterReply)psObject.BaseObject;
+                    fieldSpecObj = (RegisterCloudClusterReply)psObject.BaseObject;
                 } else {
-                    fields = (RegisterCloudClusterReply)this.Field;
+                    fieldSpecObj = (RegisterCloudClusterReply)this.Field;
                 }
             }
-            string document = Mutation.RegisterCloudCluster(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.RegisterCloudCluster");
-            var parameters = "($input: RegisterCloudClusterInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "mutation MutationRegisterCloudCluster" + parameters + "{" + document + "}",
-                OperationName = "MutationRegisterCloudCluster",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "RegisterCloudClusterReply", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Mutation.RegisterCloudCluster(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationRegisterCloudCluster",
+                "($input: RegisterCloudClusterInput!)",
+                fieldSpecDoc,
+                "RegisterCloudClusterReply"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -464,33 +545,24 @@ Delete the provided failover clusters.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CreateFailoverClusterInput!"),
             };
-            CreateFailoverClusterReply? fields = null ;
-            if (this.Field != null)
-            {
+            CreateFailoverClusterReply? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (CreateFailoverClusterReply)psObject.BaseObject;
+                    fieldSpecObj = (CreateFailoverClusterReply)psObject.BaseObject;
                 } else {
-                    fields = (CreateFailoverClusterReply)this.Field;
+                    fieldSpecObj = (CreateFailoverClusterReply)this.Field;
                 }
             }
-            string document = Mutation.CreateFailoverCluster(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.CreateFailoverCluster");
-            var parameters = "($input: CreateFailoverClusterInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "mutation MutationCreateFailoverCluster" + parameters + "{" + document + "}",
-                OperationName = "MutationCreateFailoverCluster",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "CreateFailoverClusterReply", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Mutation.CreateFailoverCluster(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationCreateFailoverCluster",
+                "($input: CreateFailoverClusterInput!)",
+                fieldSpecDoc,
+                "CreateFailoverClusterReply"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -500,33 +572,24 @@ Delete the provided failover clusters.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpdateFailoverClusterInput!"),
             };
-            UpdateFailoverClusterReply? fields = null ;
-            if (this.Field != null)
-            {
+            UpdateFailoverClusterReply? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (UpdateFailoverClusterReply)psObject.BaseObject;
+                    fieldSpecObj = (UpdateFailoverClusterReply)psObject.BaseObject;
                 } else {
-                    fields = (UpdateFailoverClusterReply)this.Field;
+                    fieldSpecObj = (UpdateFailoverClusterReply)this.Field;
                 }
             }
-            string document = Mutation.UpdateFailoverCluster(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.UpdateFailoverCluster");
-            var parameters = "($input: UpdateFailoverClusterInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "mutation MutationUpdateFailoverCluster" + parameters + "{" + document + "}",
-                OperationName = "MutationUpdateFailoverCluster",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "UpdateFailoverClusterReply", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Mutation.UpdateFailoverCluster(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationUpdateFailoverCluster",
+                "($input: UpdateFailoverClusterInput!)",
+                fieldSpecDoc,
+                "UpdateFailoverClusterReply"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -536,33 +599,24 @@ Delete the provided failover clusters.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteFailoverClusterInput!"),
             };
-            ResponseSuccess? fields = null ;
-            if (this.Field != null)
-            {
+            ResponseSuccess? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (ResponseSuccess)psObject.BaseObject;
+                    fieldSpecObj = (ResponseSuccess)psObject.BaseObject;
                 } else {
-                    fields = (ResponseSuccess)this.Field;
+                    fieldSpecObj = (ResponseSuccess)this.Field;
                 }
             }
-            string document = Mutation.DeleteFailoverCluster(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.DeleteFailoverCluster");
-            var parameters = "($input: DeleteFailoverClusterInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "mutation MutationDeleteFailoverCluster" + parameters + "{" + document + "}",
-                OperationName = "MutationDeleteFailoverCluster",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "ResponseSuccess", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Mutation.DeleteFailoverCluster(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationDeleteFailoverCluster",
+                "($input: DeleteFailoverClusterInput!)",
+                fieldSpecDoc,
+                "ResponseSuccess"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -572,33 +626,105 @@ Delete the provided failover clusters.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "BulkDeleteFailoverClusterInput!"),
             };
-            ResponseSuccess? fields = null ;
-            if (this.Field != null)
-            {
+            ResponseSuccess? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (ResponseSuccess)psObject.BaseObject;
+                    fieldSpecObj = (ResponseSuccess)psObject.BaseObject;
                 } else {
-                    fields = (ResponseSuccess)this.Field;
+                    fieldSpecObj = (ResponseSuccess)this.Field;
                 }
             }
-            string document = Mutation.BulkDeleteFailoverCluster(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.BulkDeleteFailoverCluster");
-            var parameters = "($input: BulkDeleteFailoverClusterInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "mutation MutationBulkDeleteFailoverCluster" + parameters + "{" + document + "}",
-                OperationName = "MutationBulkDeleteFailoverCluster",
+            string fieldSpecDoc = Mutation.BulkDeleteFailoverCluster(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationBulkDeleteFailoverCluster",
+                "($input: BulkDeleteFailoverClusterInput!)",
+                fieldSpecDoc,
+                "ResponseSuccess"
+            );
+        }
+
+        // Invoke GraphQL Mutation:
+        // addK8sCluster(input: AddK8sClusterInput!): K8sClusterSummary!
+        protected void InvokeMutationAddK8sCluster()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "AddK8sClusterInput!"),
             };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
+            K8sClusterSummary? fieldSpecObj = null ;
+            if (this.Field != null) {
+                if (this.Field is PSObject psObject) {
+                    fieldSpecObj = (K8sClusterSummary)psObject.BaseObject;
+                } else {
+                    fieldSpecObj = (K8sClusterSummary)this.Field;
+                }
             }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "ResponseSuccess", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Mutation.AddK8sCluster(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationAddK8sCluster",
+                "($input: AddK8sClusterInput!)",
+                fieldSpecDoc,
+                "K8sClusterSummary"
+            );
+        }
+
+        // Invoke GraphQL Mutation:
+        // deleteK8sCluster(input: DeleteK8sClusterInput!): AsyncRequestStatus!
+        protected void InvokeMutationDeleteK8sCluster()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DeleteK8sClusterInput!"),
+            };
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                if (this.Field is PSObject psObject) {
+                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
+                } else {
+                    fieldSpecObj = (AsyncRequestStatus)this.Field;
+                }
+            }
+            string fieldSpecDoc = Mutation.DeleteK8sCluster(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationDeleteK8sCluster",
+                "($input: DeleteK8sClusterInput!)",
+                fieldSpecDoc,
+                "AsyncRequestStatus"
+            );
+        }
+
+        // Invoke GraphQL Mutation:
+        // refreshK8sV2Cluster(input: RefreshK8sV2ClusterInput!): AsyncRequestStatus!
+        protected void InvokeMutationRefreshK8sV2Cluster()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "RefreshK8sV2ClusterInput!"),
+            };
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                if (this.Field is PSObject psObject) {
+                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
+                } else {
+                    fieldSpecObj = (AsyncRequestStatus)this.Field;
+                }
+            }
+            string fieldSpecDoc = Mutation.RefreshK8sV2Cluster(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationRefreshK8sV2Cluster",
+                "($input: RefreshK8sV2ClusterInput!)",
+                fieldSpecDoc,
+                "AsyncRequestStatus"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -608,33 +734,24 @@ Delete the provided failover clusters.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CreateK8sClusterInput!"),
             };
-            CreateK8sClusterReply? fields = null ;
-            if (this.Field != null)
-            {
+            CreateK8sClusterReply? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (CreateK8sClusterReply)psObject.BaseObject;
+                    fieldSpecObj = (CreateK8sClusterReply)psObject.BaseObject;
                 } else {
-                    fields = (CreateK8sClusterReply)this.Field;
+                    fieldSpecObj = (CreateK8sClusterReply)this.Field;
                 }
             }
-            string document = Mutation.CreateK8sCluster(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.CreateK8sCluster");
-            var parameters = "($input: CreateK8sClusterInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "mutation MutationCreateK8sCluster" + parameters + "{" + document + "}",
-                OperationName = "MutationCreateK8sCluster",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "CreateK8sClusterReply", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Mutation.CreateK8sCluster(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationCreateK8sCluster",
+                "($input: CreateK8sClusterInput!)",
+                fieldSpecDoc,
+                "CreateK8sClusterReply"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -644,33 +761,24 @@ Delete the provided failover clusters.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RefreshK8sClusterInput!"),
             };
-            CreateOnDemandJobReply? fields = null ;
-            if (this.Field != null)
-            {
+            CreateOnDemandJobReply? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (CreateOnDemandJobReply)psObject.BaseObject;
+                    fieldSpecObj = (CreateOnDemandJobReply)psObject.BaseObject;
                 } else {
-                    fields = (CreateOnDemandJobReply)this.Field;
+                    fieldSpecObj = (CreateOnDemandJobReply)this.Field;
                 }
             }
-            string document = Mutation.RefreshK8sCluster(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.RefreshK8sCluster");
-            var parameters = "($input: RefreshK8sClusterInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "mutation MutationRefreshK8sCluster" + parameters + "{" + document + "}",
-                OperationName = "MutationRefreshK8sCluster",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "CreateOnDemandJobReply", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Mutation.RefreshK8sCluster(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationRefreshK8sCluster",
+                "($input: RefreshK8sClusterInput!)",
+                fieldSpecDoc,
+                "CreateOnDemandJobReply"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -680,33 +788,24 @@ Delete the provided failover clusters.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "ArchiveK8sClusterInput!"),
             };
-            ArchiveK8sClusterReply? fields = null ;
-            if (this.Field != null)
-            {
+            ArchiveK8sClusterReply? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (ArchiveK8sClusterReply)psObject.BaseObject;
+                    fieldSpecObj = (ArchiveK8sClusterReply)psObject.BaseObject;
                 } else {
-                    fields = (ArchiveK8sClusterReply)this.Field;
+                    fieldSpecObj = (ArchiveK8sClusterReply)this.Field;
                 }
             }
-            string document = Mutation.ArchiveK8sCluster(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.ArchiveK8sCluster");
-            var parameters = "($input: ArchiveK8sClusterInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "mutation MutationArchiveK8sCluster" + parameters + "{" + document + "}",
-                OperationName = "MutationArchiveK8sCluster",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "ArchiveK8sClusterReply", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Mutation.ArchiveK8sCluster(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationArchiveK8sCluster",
+                "($input: ArchiveK8sClusterInput!)",
+                fieldSpecDoc,
+                "ArchiveK8sClusterReply"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -718,33 +817,24 @@ Delete the provided failover clusters.
                 Tuple.Create("isForce", "Boolean!"),
                 Tuple.Create("expireInDays", "Long"),
             };
-            System.Boolean? fields = null ;
-            if (this.Field != null)
-            {
+            System.Boolean? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (System.Boolean)psObject.BaseObject;
+                    fieldSpecObj = (System.Boolean)psObject.BaseObject;
                 } else {
-                    fields = (System.Boolean)this.Field;
+                    fieldSpecObj = (System.Boolean)this.Field;
                 }
             }
-            string document = Mutation.RemoveCdmCluster(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.RemoveCdmCluster");
-            var parameters = "($clusterUUID: UUID!,$isForce: Boolean!,$expireInDays: Long)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "mutation MutationRemoveCdmCluster" + parameters + "{" + document + "}",
-                OperationName = "MutationRemoveCdmCluster",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "System.Boolean", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Mutation.RemoveCdmCluster(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationRemoveCdmCluster",
+                "($clusterUUID: UUID!,$isForce: Boolean!,$expireInDays: Long)",
+                fieldSpecDoc,
+                "System.Boolean"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -754,33 +844,24 @@ Delete the provided failover clusters.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RecoverCloudClusterInput!"),
             };
-            CcProvisionJobReply? fields = null ;
-            if (this.Field != null)
-            {
+            CcProvisionJobReply? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (CcProvisionJobReply)psObject.BaseObject;
+                    fieldSpecObj = (CcProvisionJobReply)psObject.BaseObject;
                 } else {
-                    fields = (CcProvisionJobReply)this.Field;
+                    fieldSpecObj = (CcProvisionJobReply)this.Field;
                 }
             }
-            string document = Mutation.RecoverCloudCluster(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.RecoverCloudCluster");
-            var parameters = "($input: RecoverCloudClusterInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "mutation MutationRecoverCloudCluster" + parameters + "{" + document + "}",
-                OperationName = "MutationRecoverCloudCluster",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "CcProvisionJobReply", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Mutation.RecoverCloudCluster(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationRecoverCloudCluster",
+                "($input: RecoverCloudClusterInput!)",
+                fieldSpecDoc,
+                "CcProvisionJobReply"
+            );
         }
 
 

@@ -6,7 +6,6 @@ using GraphQLParser.AST;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RubrikSecurityCloud;
-using System.Management.Automation;
 using RubrikSecurityCloud.Client;
 using System.Reflection;
 

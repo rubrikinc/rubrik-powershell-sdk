@@ -6,7 +6,11 @@ Nutanix Category details.
 - prismCentralId: System.String
   - Prism Central ID of the Category.
 - connectionStatus: RefreshableObjectConnectionStatus
-  - Connection status of the Nutanix Prism Central. If the CDM cluster is disconnected, then the status is set to 'Disconnected'.
+  - Connection status of the CDM cluster. If the CDM cluster is disconnected, then the status is set to 'Disconnected'.
+- descendantConnection: NutanixCategoryDescendantTypeConnection
+  - List of descendants.
+- logicalChildConnection: NutanixCategoryLogicalChildTypeConnection
+  - List of logical children.
 - cluster: Cluster
   - Rubrik cluster where this object originated.
 - primaryClusterLocation: DataLocation

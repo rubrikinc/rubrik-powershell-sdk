@@ -7,27 +7,27 @@ List of Availability Zones (AZs) in the specified region on the specified AWS Na
     - awsAccountRubrikId - System.String: Rubrik ID for AWS account.
     - region - AwsNativeRegion: Region in AWS.
 - Returns list of System.Strings.
-### allcdmversion
+### allcdmversions
 Get all Rubrik CDM versions in the AWS marketplace.
 
 - There is a single argument of type AwsCdmVersionRequest.
 - Returns list of AwsCdmVersions.
-### allcloudaccountconfig
+### allcloudaccountconfigs
 List of all AWS cloud account configurations with the given search query.
 
 - There is a single argument of type AwsCloudAccountConfigsInput.
 - Returns list of AwsFeatureConfigs.
-### allcloudaccountsfeatureswithexoconfig
+### allcloudaccountsfeatureswithexoconfigs
 List of active AWS cloud account features and the Exocompute mapping information for the accounts. A cloud account is an AWS account added to the Rubrik platform.
 
 - There is a single argument of type AwsCloudAccountsWithFeaturesInput.
 - Returns list of AwsCloudAccountFeaturesWithExoConfigss.
-### allcloudaccountswithfeature
+### allcloudaccountswithfeatures
 List of active AWS cloud accounts and the features for the accounts. A cloud account is an AWS account added to the Rubrik platform.
 
 - There is a single argument of type AwsCloudAccountsWithFeaturesInput.
 - Returns list of AwsCloudAccountWithFeaturess.
-### allcomputesetting
+### allcomputesettings
 List all aws compute settings.
 
 - There are 4 arguments.
@@ -60,12 +60,12 @@ List of all key pairs for a given region. A key pair, consisting of a public key
     - awsAccountRubrikId - System.String: Rubrik ID for AWS account.
     - region - AwsNativeRegion: Region in AWS.
 - Returns list of System.Strings.
-### allexocomputeconfig
+### allexocomputeconfigs
 List of all AWS exocompute configurations filtered by a cloud account ID or a cloud account name prefix.
 
 - There is a single argument of type System.String.
 - Returns list of AwsExocomputeConfigs.
-### allinstanceprofilename
+### allinstanceprofilenames
 All Rubrik CC-ES instance profiles in the AWS account.
 
 - There are 2 arguments.
@@ -89,29 +89,36 @@ List of all RDS option groups in a given region. Refers to settings of how a par
     - dbEngineVersion - System.String: Version of DB engine.
     - majorEngineVersion - System.String: Major version of the option group engine.
 - Returns list of OptionGroups.
-### allrdsaurorainstanceclass
+### allpermissionpolicies
+Retrieves the permissions policy for all the input features along with any AWS-managed policy ARNs which need to be attached to the roles. Each policy document can be used to create an AWS-managed policy which then needs to be attached to corresponding role.
+
+- There are 2 arguments.
+    - awsCloudType - AwsCloudType: AWS cloud type.
+    - features - list of CloudAccountFeatures: Cloud Account Features.
+- Returns list of PermissionPolicys.
+### allrdsaurorainstanceclasses
 List of all the database instance classes supported by AWS RDS Aurora databases.
 
-- The allrdsaurorainstanceclass subcommand takes no arguments.
+- The allrdsaurorainstanceclasses subcommand takes no arguments.
 - Returns AwsNativeRdsAuroraInstanceClassesReply.
-### allregion
+### allregions
 All valid AWS regions for this cloud account.
 
 - There is a single argument of type System.String.
 - Returns list of AwsCloudAccountRegions.
-### alls3bucket
+### alls3buckets
 List of all S3 bucket names across regions for the AWS Native account.
 
 - There is a single argument of type System.String.
 - Returns list of System.Strings.
-### alls3bucketsdetail
+### alls3bucketsdetails
 List of all S3 bucket details across regions for the AWS Native account.
 
 - There are 2 arguments.
     - awsAccountRubrikId - System.String: Rubrik ID for AWS account.
     - region - AwsNativeRegion: The region in AWS. If no region is provided, the AWS function will return all buckets.
 - Returns list of S3BucketDetailss.
-### allsupportedrdsdatabaseinstanceclass
+### allsupportedrdsdatabaseinstanceclasses
 List of all the database instance classes supported by AWS RDS database for the provided DB engine and engine version. DB engine version is a optional argument, it can be ignored if we want to retrieve all the supported instance class for a DB engine irrespective of DB engine version.
 
 - There are 4 arguments.
@@ -120,7 +127,7 @@ List of all the database instance classes supported by AWS RDS database for the 
     - dbEngine - AwsNativeRdsDbEngine: DB Engine of RDS Instance.
     - dbEngineVersion - System.String: Version of DB engine.
 - Returns list of System.Strings.
-### allvpc
+### allvpcs
 List of all Virtual Private Clouds (VPCs) in the AWS Native account.
 
 - There is a single argument of type System.String.
@@ -137,13 +144,18 @@ Amazon Machine Image (AMI) type for export of an archived EC2 Instance snapshot.
 
 - There is a single argument of type AmiTypeForAwsNativeArchivedSnapshotExportInput.
 - Returns AmiTypeForAwsNativeArchivedSnapshotExportReply.
-### cloudaccountlistkmskey
+### artifactstodelete
+Retrieves the AWS artifacts that need to be deleted when an account is being deleted.
+
+- There is a single argument of type AwsArtifactsToDeleteInput.
+- Returns AwsArtifactsToDelete.
+### cloudaccountlistkmskeys
 - There are 3 arguments.
     - cloudAccountUuid - System.String: The ID of the cloud account.
     - feature - CloudAccountFeature: A cloud account feature of Rubrik Security Cloud.
     - region - AwsRegion: AWS region argument for archival use case.
 - Returns AwsCloudAccountListKMSKeysResponse.
-### cloudaccountlistsecuritygroup
+### cloudaccountlistsecuritygroups
 Retrieves a list of security groups in the specified cloud account and virtual private cloud (VPC).
 
 - There are 4 arguments.
@@ -152,7 +164,7 @@ Retrieves a list of security groups in the specified cloud account and virtual p
     - region - AwsRegion: AWS region argument for archival use case.
     - vpcID - System.String: VPC native ID.
 - Returns AwsCloudAccountListSecurityGroupsResponse.
-### cloudaccountlistsubnet
+### cloudaccountlistsubnets
 Retrieves a list of subnets in the specified cloud account and virtual private cloud (VPC).
 
 - There are 4 arguments.
@@ -161,7 +173,7 @@ Retrieves a list of subnets in the specified cloud account and virtual private c
     - region - AwsRegion: AWS region argument for archival use case.
     - vpcID - System.String: VPC native ID.
 - Returns AwsCloudAccountListSubnetsResponse.
-### cloudaccountlistvpc
+### cloudaccountlistvpcs
 Retrieves a list of virtual private clouds (VPCs) in the specific cloud account.
 
 - There are 3 arguments.
@@ -169,14 +181,14 @@ Retrieves a list of virtual private clouds (VPCs) in the specific cloud account.
     - feature - CloudAccountFeature: A cloud account feature of Rubrik Security Cloud.
     - region - AwsRegion: AWS region argument for archival use case.
 - Returns AwsCloudAccountListVpcResponse.
-### cloudaccountwithfeature
+### cloudaccountwithfeatures
 List of AWS cloud accounts and the features for each account, classified by ID.
 
 - There are 2 arguments.
     - cloudAccountId - System.String: The Rubrik ID of the cloud account.
     - awsCloudAccountArg - AwsCloudAccountWithFeaturesInput: Arguments for get cloud account.
 - Returns AwsCloudAccountWithFeatures.
-### computesetting
+### computesettings
 Retrieve aws compute settings.
 
 - There is a single argument of type System.String.
@@ -216,11 +228,37 @@ Refers to the AWS Native account that serves as a container for all your AWS res
     - awsNativeAccountRubrikId - System.String: The Rubrik ID for the AWS Native account.
     - awsNativeProtectionFeature - AwsNativeProtectionFeature: Cloud native protection feature.
 - Returns AwsNativeAccount.
+### nativeaccounts
+Paginated list of all AWS Native accounts.
+
+- There are 9 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that come before the specified cursor.
+    - sortBy - AwsNativeAccountSortFields: Sort fields for list of AWS accounts.
+    - sortOrder - SortOrder: Sorting order for the results.
+    - accountFilters - AwsNativeAccountFilters
+    - authorizedOperationFilter - Operation
+    - awsNativeProtectionFeature - AwsNativeProtectionFeature: Cloud native protection feature.
+- Returns AwsNativeAccountConnection.
 ### nativeebsvolume
 Refers to the Amazon Elastic Block Store (EBS) Volume represented by a specific ID. For more information, see https://aws.amazon.com/ebs/.
 
 - There is a single argument of type System.String.
 - Returns AwsNativeEbsVolume.
+### nativeebsvolumes
+Paginated list of all AWS EBS Volumes.
+
+- There are 7 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that come before the specified cursor.
+    - sortBy - AwsNativeEbsVolumeSortFields: Sort fields for list of AWS EBS volumes.
+    - sortOrder - SortOrder: Sorting order for the results.
+    - ebsVolumeFilters - AwsNativeEbsVolumeFilters: Filter for EBS volumes.
+- Returns AwsNativeEbsVolumeConnection.
 ### nativeebsvolumesbyname
 Paginated list of all AWS EBS Volumes by name or substring of name.
 
@@ -238,6 +276,19 @@ Refers to Amazon Elastic Compute Cloud (EC2) Instance represented by a specific 
 
 - There is a single argument of type System.String.
 - Returns AwsNativeEc2Instance.
+### nativeec2instances
+Paginated list of all AWS EC2 Instances.
+
+- There are 8 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that come before the specified cursor.
+    - sortBy - AwsNativeEc2InstanceSortFields: Sort fields for list of AWS EC2 instances.
+    - sortOrder - SortOrder: Sorting order for the results.
+    - descendantTypeFilter - list of HierarchyObjectTypeEnums: Filter the CDM cloud hosts by workload type.
+    - ec2InstanceFilters - AwsNativeEc2InstanceFilters: Filter for EC2 instances.
+- Returns AwsNativeEc2InstanceConnection.
 ### nativeec2instancesbyname
 Paginated list of all AWS EC2 Instances by name or substring of name.
 
@@ -250,7 +301,7 @@ Paginated list of all AWS EC2 Instances by name or substring of name.
     - sortOrder - SortOrder: Sorting order for the results.
     - ec2InstanceName - System.String: Native name for the AWS EC2 Instance object.
 - Returns AwsNativeEc2InstanceConnection.
-### nativerdsexportdefault
+### nativerdsexportdefaults
 Refers to the default values for the export operation of the RDS DB Instance in the AWS Native account.
 
 - There are 3 arguments.
@@ -263,6 +314,18 @@ Refers to AWS Relational Database Service (RDS) represented by a specific ID. Fo
 
 - There is a single argument of type System.String.
 - Returns AwsNativeRdsInstance.
+### nativerdsinstances
+Paginated list of AWS RDS Instances on AWS Native account.
+
+- There are 7 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that come before the specified cursor.
+    - sortBy - AwsNativeRdsInstanceSortFields: Sort fields for list of AWS RDS instances.
+    - sortOrder - SortOrder: Sorting order for the results.
+    - rdsInstanceFilters - AwsNativeRdsInstanceFilters: Filter for RDS instances.
+- Returns AwsNativeRdsInstanceConnection.
 ### nativerdspointintimerestorewindow
 Point-in-Time (PiT) restore window of the RDS Instance in the AWS Native account. Refers to the range of time within which the database is available to be restored to a particular point in time. For more information,see https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIT.html.
 
@@ -282,7 +345,7 @@ Represents the Amazon S3 Bucket with a specific ID. For more information, see ht
 
 - There is a single argument of type System.String.
 - Returns AwsNativeS3Bucket.
-### rdsinstancedetail
+### rdsinstancedetails
 Details of the RDS Instance in the AWS Native account.
 
 - There are 4 arguments.
@@ -291,6 +354,11 @@ Details of the RDS Instance in the AWS Native account.
     - rdsInstanceName - System.String: Name of the RDS DB Instance
     - rdsDatabaseRubrikId - System.String: The Rubrik ID for the AWS RDS database.
 - Returns RdsInstanceDetailsFromAws.
+### trustpolicy
+Retrieves the AWS trust policy that will be attached with each role (cross-account, exocompute, etc.) in the customer's environment.
+
+- There is a single argument of type AwsTrustPolicyInput.
+- Returns AwsTrustPolicy.
 ### validatenativerdsclusternameforexport
 Validates the name used for an RDS cluster during an export operation. Returns true if the RDS cluster name is valid. Returns false, with an error message, if the RDS cluster name validation fails. Returns false, without an error message for all other failures.
 

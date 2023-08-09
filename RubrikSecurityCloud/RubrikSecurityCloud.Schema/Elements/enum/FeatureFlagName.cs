@@ -60,6 +60,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "APPFLOWS_RESOURCE_MAPPING_PERSISTENCE_ENABLED")]
         APPFLOWS_RESOURCE_MAPPING_PERSISTENCE_ENABLED,
 
+        [EnumMember(Value = "APPFLOWS_SCHEDULE_RECOVERIES_ENABLED")]
+        APPFLOWS_SCHEDULE_RECOVERIES_ENABLED,
+
         [EnumMember(Value = "APPFLOWS_ZERO_RPO")]
         APPFLOWS_ZERO_RPO,
 
@@ -77,6 +80,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "ARCHIVAL_HIERARCHY_ENABLED")]
         ARCHIVAL_HIERARCHY_ENABLED,
+
+        [EnumMember(Value = "ARCHIVAL_LOCATION_DETAIL_ENABLED")]
+        ARCHIVAL_LOCATION_DETAIL_ENABLED,
 
         [EnumMember(Value = "AWSAutoProtectByTagsEnabled")]
         AWS_AUTO_PROTECT_BY_TAGS_ENABLED,
@@ -99,6 +105,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AWSSnapshotIntegrityEnabled")]
         AWS_SNAPSHOT_INTEGRITY_ENABLED,
 
+        [EnumMember(Value = "AWS_APP_CONSISTENCY_ENABLED")]
+        AWS_APP_CONSISTENCY_ENABLED,
+
         [EnumMember(Value = "AWS_EXPORT_IAM_INSTANCE_PROFILE_ENABLED")]
         AWS_EXPORT_IAM_INSTANCE_PROFILE_ENABLED,
 
@@ -119,6 +128,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "AZURE_AD_GA2_ENABLED")]
         AZURE_AD_GA2_ENABLED,
+
+        [EnumMember(Value = "AZURE_AD_RECOVERY_ENABLED")]
+        AZURE_AD_RECOVERY_ENABLED,
 
         [EnumMember(Value = "AZURE_AD_WORKLOAD_ENABLED")]
         AZURE_AD_WORKLOAD_ENABLED,
@@ -255,6 +267,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CASCADING_ARCHIVAL_ENABLED")]
         CASCADING_ARCHIVAL_ENABLED,
 
+        [EnumMember(Value = "CCES_SERVERS_AND_APPS_ENABLED")]
+        CCES_SERVERS_AND_APPS_ENABLED,
+
         [EnumMember(Value = "CDM_9_UPGRADE_ENABLED")]
         CDM_9_UPGRADE_ENABLED,
 
@@ -318,11 +333,17 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLUSTER_OPERATIONS_ENABLED")]
         CLUSTER_OPERATIONS_ENABLED,
 
+        [EnumMember(Value = "CNP_AKS_CNI_OVERLAY_NETWORKING_ENABLED")]
+        CNP_AKS_CNI_OVERLAY_NETWORKING_ENABLED,
+
         [EnumMember(Value = "CNP_AWS_ARCHIVAL_IMMUTABILITY_ENABLED")]
         CNP_AWS_ARCHIVAL_IMMUTABILITY_ENABLED,
 
         [EnumMember(Value = "CNP_AWS_AURORA_SUPPORT_ENABLED")]
         CNP_AWS_AURORA_SUPPORT_ENABLED,
+
+        [EnumMember(Value = "CNP_AWS_DIRECT_ARCHIVAL_ENABLED")]
+        CNP_AWS_DIRECT_ARCHIVAL_ENABLED,
 
         [EnumMember(Value = "CNP_AWS_GOV_CLOUD_SUPPORT_ENABLED")]
         CNP_AWS_GOV_CLOUD_SUPPORT_ENABLED,
@@ -335,6 +356,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "CNP_AZURE_BLOB_V1_ENABLED")]
         CNP_AZURE_BLOB_V1_ENABLED,
+
+        [EnumMember(Value = "CNP_AZURE_DISK_MOUNT_ENABLED")]
+        CNP_AZURE_DISK_MOUNT_ENABLED,
 
         [EnumMember(Value = "CNP_AZURE_DYNAMIC_IP_ALLOCATION_ENABLED")]
         CNP_AZURE_DYNAMIC_IP_ALLOCATION_ENABLED,
@@ -491,6 +515,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "DB2_REPLICATION_ENABLED")]
         DB2_REPLICATION_ENABLED,
+
+        [EnumMember(Value = "DB_LOG_REPORTING_ENABLED")]
+        DB_LOG_REPORTING_ENABLED,
 
         [EnumMember(Value = "DELL_ECS_ENABLED")]
         DELL_ECS_ENABLED,
@@ -726,6 +753,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "M365_IMMUTABILITY_ENABLED")]
         M365_IMMUTABILITY_ENABLED,
 
+        [EnumMember(Value = "M365_L3_ENCRYPTION")]
+        M365_L3_ENCRYPTION,
+
         [EnumMember(Value = "M365_MULTI_GEO")]
         M365_MULTI_GEO,
 
@@ -734,6 +764,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "M365_SHAREPOINTDRIVE_RANSOMWARE_INVESTIGATION_ENABLED")]
         M365_SHAREPOINTDRIVE_RANSOMWARE_INVESTIGATION_ENABLED,
+
+        [EnumMember(Value = "M365_SKIPPED_ITEM_VISIBILITY_ENABLED")]
+        M365_SKIPPED_ITEM_VISIBILITY_ENABLED,
 
         [EnumMember(Value = "M365_SLA_EXCLUSION")]
         M365_SLA_EXCLUSION,
@@ -834,6 +867,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "NAS_INVENTORY_GA_ENABLED")]
         NAS_INVENTORY_GA_ENABLED,
 
+        [EnumMember(Value = "NAS_NUTANIX_SYSTEM_ENABLED")]
+        NAS_NUTANIX_SYSTEM_ENABLED,
+
         [EnumMember(Value = "NATIVE_ACCOUNT_LOCKOUT_ENABLED")]
         NATIVE_ACCOUNT_LOCKOUT_ENABLED,
 
@@ -842,6 +878,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "NATIVE_ACCOUNT_LOCKOUT_V2_ENABLED")]
         NATIVE_ACCOUNT_LOCKOUT_V2_ENABLED,
+
+        [EnumMember(Value = "NATIVE_SERVICE_ACCOUNT_AUTHENTICATION_ENABLED")]
+        NATIVE_SERVICE_ACCOUNT_AUTHENTICATION_ENABLED,
 
         [EnumMember(Value = "NATIVE_SSO_ENABLED")]
         NATIVE_SSO_ENABLED,
@@ -863,6 +902,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "NODE_REMOVAL_ENABLED")]
         NODE_REMOVAL_ENABLED,
+
+        [EnumMember(Value = "NODE_REPLACEMENT_ENABLED")]
+        NODE_REPLACEMENT_ENABLED,
 
         [EnumMember(Value = "NON_FILESYSTEM_ANOMALY_DETECTION_ENABLED")]
         NON_FILESYSTEM_ANOMALY_DETECTION_ENABLED,
@@ -951,9 +993,6 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "O365_TEAMS_EXPORT_ENABLED")]
         O365_TEAMS_EXPORT_ENABLED,
 
-        [EnumMember(Value = "O365_TEAMS_POSTS_ENABLED")]
-        O365_TEAMS_POSTS_ENABLED,
-
         [EnumMember(Value = "O365_TEAMS_PRIVATE_CHANNELS_ENABLED")]
         O365_TEAMS_PRIVATE_CHANNELS_ENABLED,
 
@@ -965,6 +1004,12 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "ORGANIZATION_SWITCHER_ENABLED")]
         ORGANIZATION_SWITCHER_ENABLED,
+
+        [EnumMember(Value = "ORG_NETWORKS_ENABLED")]
+        ORG_NETWORKS_ENABLED,
+
+        [EnumMember(Value = "ORG_REPORT_ASSIGNMENT_ENABLED")]
+        ORG_REPORT_ASSIGNMENT_ENABLED,
 
         [EnumMember(Value = "ObjectTypeSLAEnhancementEnabled")]
         OBJECT_TYPE_SLA_ENHANCEMENT_ENABLED,
@@ -1242,6 +1287,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "SAP_HANA_RETENTION_LOCK_ENABLED")]
         SAP_HANA_RETENTION_LOCK_ENABLED,
 
+        [EnumMember(Value = "SAP_HANA_SECURE_STORE_ENABLED")]
+        SAP_HANA_SECURE_STORE_ENABLED,
+
         [EnumMember(Value = "SAP_HANA_STATIC_RETENTION_ENABLED")]
         SAP_HANA_STATIC_RETENTION_ENABLED,
 
@@ -1295,6 +1343,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "SONAR_FOR_NAS_FILESET_ENABLED")]
         SONAR_FOR_NAS_FILESET_ENABLED,
+
+        [EnumMember(Value = "SONAR_MSSQL_ENABLED")]
+        SONAR_MSSQL_ENABLED,
 
         [EnumMember(Value = "SONAR_ON_O365_ONEDRIVE_ENABLED")]
         SONAR_ON_O365_ONEDRIVE_ENABLED,
@@ -1419,8 +1470,17 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UAPermissionsTabEnabled")]
         UA_PERMISSIONS_TAB_ENABLED,
 
+        [EnumMember(Value = "UI_ACTIVE_DIRECTORY_ENABLED")]
+        UI_ACTIVE_DIRECTORY_ENABLED,
+
         [EnumMember(Value = "UI_DISABLE_CTA_FOR_UNSUPPORTED_CDM_VERSIONS")]
         UI_DISABLE_CTA_FOR_UNSUPPORTED_CDM_VERSIONS,
+
+        [EnumMember(Value = "UI_GA_ACTIVE_DIRECTORY_ENABLED")]
+        UI_GA_ACTIVE_DIRECTORY_ENABLED,
+
+        [EnumMember(Value = "UI_PROMPT_CDM_9_UPGRADE")]
+        UI_PROMPT_CDM_9_UPGRADE,
 
         [EnumMember(Value = "USER_ACCESS_ENABLED")]
         USER_ACCESS_ENABLED,
@@ -1436,6 +1496,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "VCD_SNAPPABLE_ENABLED")]
         VCD_SNAPPABLE_ENABLED,
+
+        [EnumMember(Value = "VIEWED_HISTORY_ENABLED")]
+        VIEWED_HISTORY_ENABLED,
 
         [EnumMember(Value = "VMWARE_DATASTORE_CLUSTER_ENABLED")]
         VMWARE_DATASTORE_CLUSTER_ENABLED,

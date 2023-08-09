@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum CloudNativeVmAppConsistentObjectType
     {
+        [EnumMember(Value = "AWS_EC2_INSTANCE")]
+        AWS_EC2_INSTANCE,
+
         [EnumMember(Value = "AZURE_VIRTUAL_MACHINE")]
         AZURE_VIRTUAL_MACHINE
 

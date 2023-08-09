@@ -167,7 +167,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allBlueprintResourceSpecs" + args + "{\n" +
+                "allBlueprintResourceSpecs" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -185,7 +185,25 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allCloudAccounts" + args + "{\n" +
+                "allCloudAccounts" + args + "\n{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> List<SlaDomain>? AllSlaSummariesByIds
+        // GraphQL -> allSlaSummariesByIds: [SlaDomain!]! (interface)
+        public static string AllSlaSummariesByIds(
+            ref List<SlaDomain>? fieldSpec
+        )
+        {
+            string args = "\n(\nslaIds: $slaIds\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new List<SlaDomain>();
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "allSlaSummariesByIds" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -203,7 +221,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allSnappableResourceSpecs" + args + "{\n" +
+                "allSnappableResourceSpecs" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -221,7 +239,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allTargets" + args + "{\n" +
+                "allTargets" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -244,7 +262,7 @@ namespace RubrikSecurityCloud.Types
                 }
             }
             return new string(
-                "blueprint" + args + "{\n" +
+                "blueprint" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -267,7 +285,7 @@ namespace RubrikSecurityCloud.Types
                 }
             }
             return new string(
-                "blueprintNew" + args + "{\n" +
+                "blueprintNew" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -290,7 +308,7 @@ namespace RubrikSecurityCloud.Types
                 }
             }
             return new string(
-                "cdmHierarchySnappableNew" + args + "{\n" +
+                "cdmHierarchySnappableNew" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -308,7 +326,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "cdmHierarchySnappablesNew" + args + "{\n" +
+                "cdmHierarchySnappablesNew" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -331,7 +349,7 @@ namespace RubrikSecurityCloud.Types
                 }
             }
             return new string(
-                "cloudAccount" + args + "{\n" +
+                "cloudAccount" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -354,7 +372,7 @@ namespace RubrikSecurityCloud.Types
                 }
             }
             return new string(
-                "hierarchyObject" + args + "{\n" +
+                "hierarchyObject" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -372,7 +390,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "hierarchyObjects" + args + "{\n" +
+                "hierarchyObjects" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -390,7 +408,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "slaConflictObjects" + args + "{\n" +
+                "slaConflictObjects" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -413,25 +431,7 @@ namespace RubrikSecurityCloud.Types
                 }
             }
             return new string(
-                "slaDomain" + args + "{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
-        }
-
-        //      C# -> List<SlaDomain>? SlaSummariesByIds
-        // GraphQL -> slaSummariesByIds: [SlaDomain!]! (interface)
-        public static string SlaSummariesByIds(
-            ref List<SlaDomain>? fieldSpec
-        )
-        {
-            string args = "\n(\nslaIds: $slaIds\n)";
-            if (fieldSpec == null)
-            {
-                fieldSpec = new List<SlaDomain>();
-                fieldSpec.ApplyExploratoryFieldSpec();
-            }
-            return new string(
-                "slaSummariesByIds" + args + "{\n" +
+                "slaDomain" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -454,7 +454,7 @@ namespace RubrikSecurityCloud.Types
                 }
             }
             return new string(
-                "target" + args + "{\n" +
+                "target" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -879,6 +879,21 @@ namespace RubrikSecurityCloud.Types
             return new string("allSupportedAwsRdsDatabaseInstanceClasses" + args + "\n");
         }
 
+        //      C# -> System.Boolean? AreClusterAlertsPaused
+        // GraphQL -> areClusterAlertsPaused: Boolean! (scalar)
+        public static string AreClusterAlertsPaused(
+            ref System.Boolean? fieldSpec
+        )
+        {
+            string args = "\n(\ninput: $input\n)";
+            if ( fieldSpec == null ) {
+                // there is no field spec for scalar types, but we still
+                // populate the fieldSpec so that caller can see the type 
+                fieldSpec = true ;
+            }
+            return new string("areClusterAlertsPaused" + args + "\n");
+        }
+
         //      C# -> System.Boolean? AreMultiGeoBackupsEnabled
         // GraphQL -> areMultiGeoBackupsEnabled: Boolean! (scalar)
         public static string AreMultiGeoBackupsEnabled(
@@ -1224,6 +1239,36 @@ namespace RubrikSecurityCloud.Types
             return new string("isVMwareManagementEnabled" + args + "\n");
         }
 
+        //      C# -> System.String? K8sObjectFid
+        // GraphQL -> k8sObjectFid: UUID! (scalar)
+        public static string K8sObjectFid(
+            ref System.String? fieldSpec
+        )
+        {
+            string args = "\n(\nclusterUuid: $clusterUuid\nK8sObjectInternalIDArg: $K8sObjectInternalIDArg\n)";
+            if ( fieldSpec == null ) {
+                // there is no field spec for scalar types, but we still
+                // populate the fieldSpec so that caller can see the type 
+                fieldSpec = "FETCH" ;
+            }
+            return new string("k8sObjectFid" + args + "\n");
+        }
+
+        //      C# -> System.String? K8sObjectInternalId
+        // GraphQL -> k8sObjectInternalId: UUID! (scalar)
+        public static string K8sObjectInternalId(
+            ref System.String? fieldSpec
+        )
+        {
+            string args = "\n(\nfid: $fid\n)";
+            if ( fieldSpec == null ) {
+                // there is no field spec for scalar types, but we still
+                // populate the fieldSpec so that caller can see the type 
+                fieldSpec = "FETCH" ;
+            }
+            return new string("k8sObjectInternalId" + args + "\n");
+        }
+
         //      C# -> System.Int32? MaxProtectedAppsCount
         // GraphQL -> maxProtectedAppsCount: Int! (scalar)
         public static string MaxProtectedAppsCount(
@@ -1357,7 +1402,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "AwsCloudAccountListKMSKeys" + args + "{\n" +
+                "AwsCloudAccountListKMSKeys" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -1375,7 +1420,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "GetMountDetails" + args + "{\n" +
+                "GetMountDetails" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -1393,7 +1438,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "accountSettings" + args + "{\n" +
+                "accountSettings" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -1411,7 +1456,25 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "activeCustomAnalyzers" + args + "{\n" +
+                "activeCustomAnalyzers" + args + "\n{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> AsyncRequestStatus? ActiveDirectoryAsyncRequestStatus
+        // GraphQL -> activeDirectoryAsyncRequestStatus: AsyncRequestStatus! (type)
+        public static string ActiveDirectoryAsyncRequestStatus(
+            ref AsyncRequestStatus? fieldSpec
+        )
+        {
+            string args = "\n(\ninput: $input\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new AsyncRequestStatus() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "activeDirectoryAsyncRequestStatus" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -1429,7 +1492,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "activeDirectoryDomain" + args + "{\n" +
+                "activeDirectoryDomain" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -1447,7 +1510,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "activeDirectoryDomainController" + args + "{\n" +
+                "activeDirectoryDomainController" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -1465,7 +1528,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "activeDirectoryDomainControllers" + args + "{\n" +
+                "activeDirectoryDomainControllers" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -1483,7 +1546,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "activeDirectoryDomains" + args + "{\n" +
+                "activeDirectoryDomains" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -1494,14 +1557,14 @@ namespace RubrikSecurityCloud.Types
             ref ActiveInsightConnection? fieldSpec
         )
         {
-            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nclusterUUIDs: $clusterUUIDs\nseverities: $severities\nincludeClusterLevelInsights: $includeClusterLevelInsights\nincludeAccountLevelInsights: $includeAccountLevelInsights\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nclusterUUIDs: $clusterUUIDs\nseverities: $severities\nincludeClusterLevelInsights: $includeClusterLevelInsights\nincludeAccountLevelInsights: $includeAccountLevelInsights\nincludeDismissedInsights: $includeDismissedInsights\n)";
             if (fieldSpec == null)
             {
                 fieldSpec = new ActiveInsightConnection() ;
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "activeInsights" + args + "{\n" +
+                "activeInsights" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -1519,7 +1582,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "activitySeries" + args + "{\n" +
+                "activitySeries" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -1537,7 +1600,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "activitySeriesConnection" + args + "{\n" +
+                "activitySeriesConnection" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -1555,7 +1618,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "activitySeriesGroupByConnection" + args + "{\n" +
+                "activitySeriesGroupByConnection" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -1573,7 +1636,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "adVolumeExports" + args + "{\n" +
+                "adVolumeExports" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -1591,7 +1654,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allAccountOwners" + args + "{\n" +
+                "allAccountOwners" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -1609,7 +1672,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allAccountProducts" + args + "{\n" +
+                "allAccountProducts" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -1627,7 +1690,25 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allAccountsWithExocomputeMappings" + args + "{\n" +
+                "allAccountsWithExocomputeMappings" + args + "\n{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> List<AuthorizedOperations>? AllAuthorizationsForObjects
+        // GraphQL -> allAuthorizationsForObjects: [AuthorizedOperations!]! (type)
+        public static string AllAuthorizationsForObjects(
+            ref List<AuthorizedOperations>? fieldSpec
+        )
+        {
+            string args = "\n(\nfids: $fids\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new List<AuthorizedOperations>() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "allAuthorizationsForObjects" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -1645,7 +1726,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allAwsCdmVersions" + args + "{\n" +
+                "allAwsCdmVersions" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -1663,7 +1744,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allAwsCloudAccountConfigs" + args + "{\n" +
+                "allAwsCloudAccountConfigs" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -1681,7 +1762,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allAwsCloudAccountsFeaturesWithExoConfigs" + args + "{\n" +
+                "allAwsCloudAccountsFeaturesWithExoConfigs" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -1699,7 +1780,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allAwsCloudAccountsWithFeatures" + args + "{\n" +
+                "allAwsCloudAccountsWithFeatures" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -1717,7 +1798,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allAwsComputeSettings" + args + "{\n" +
+                "allAwsComputeSettings" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -1735,7 +1816,25 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allAwsExocomputeConfigs" + args + "{\n" +
+                "allAwsExocomputeConfigs" + args + "\n{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> List<PermissionPolicy>? AllAwsPermissionPolicies
+        // GraphQL -> allAwsPermissionPolicies: [PermissionPolicy!]! (type)
+        public static string AllAwsPermissionPolicies(
+            ref List<PermissionPolicy>? fieldSpec
+        )
+        {
+            string args = "\n(\nawsCloudType: $awsCloudType\nfeatures: $features\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new List<PermissionPolicy>() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "allAwsPermissionPolicies" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -1753,7 +1852,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allAwsRdsAuroraInstanceClasses" + args + "{\n" +
+                "allAwsRdsAuroraInstanceClasses" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -1771,7 +1870,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allAzureArmTemplatesByFeature" + args + "{\n" +
+                "allAzureArmTemplatesByFeature" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -1789,7 +1888,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allAzureCdmVersions" + args + "{\n" +
+                "allAzureCdmVersions" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -1807,7 +1906,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allAzureCloudAccountMissingPermissions" + args + "{\n" +
+                "allAzureCloudAccountMissingPermissions" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -1825,7 +1924,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allAzureCloudAccountSubnetsByRegion" + args + "{\n" +
+                "allAzureCloudAccountSubnetsByRegion" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -1843,7 +1942,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allAzureCloudAccountSubscriptionsByFeature" + args + "{\n" +
+                "allAzureCloudAccountSubscriptionsByFeature" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -1861,7 +1960,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allAzureCloudAccountTenants" + args + "{\n" +
+                "allAzureCloudAccountTenants" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -1879,7 +1978,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allAzureCloudAccountTenantsWithExoConfigs" + args + "{\n" +
+                "allAzureCloudAccountTenantsWithExoConfigs" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -1897,7 +1996,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allAzureDiskEncryptionSetsByRegion" + args + "{\n" +
+                "allAzureDiskEncryptionSetsByRegion" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -1915,7 +2014,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allAzureEncryptionKeys" + args + "{\n" +
+                "allAzureEncryptionKeys" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -1933,7 +2032,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allAzureExocomputeConfigsInAccount" + args + "{\n" +
+                "allAzureExocomputeConfigsInAccount" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -1951,7 +2050,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allAzureKeyVaultsByRegion" + args + "{\n" +
+                "allAzureKeyVaultsByRegion" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -1969,7 +2068,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allAzureNativeAvailabilitySetsByRegionFromAzure" + args + "{\n" +
+                "allAzureNativeAvailabilitySetsByRegionFromAzure" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -1987,7 +2086,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allAzureNativeExportCompatibleDiskTypesByRegionFromAzure" + args + "{\n" +
+                "allAzureNativeExportCompatibleDiskTypesByRegionFromAzure" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2005,7 +2104,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allAzureNativeExportCompatibleVmSizesByRegionFromAzure" + args + "{\n" +
+                "allAzureNativeExportCompatibleVmSizesByRegionFromAzure" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2023,7 +2122,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allAzureNativeResourceGroupsInfoIfExist" + args + "{\n" +
+                "allAzureNativeResourceGroupsInfoIfExist" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2041,7 +2140,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allAzureNativeSecurityGroupsByRegionFromAzure" + args + "{\n" +
+                "allAzureNativeSecurityGroupsByRegionFromAzure" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2059,7 +2158,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allAzureNativeStorageAccountsFromAzure" + args + "{\n" +
+                "allAzureNativeStorageAccountsFromAzure" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2077,7 +2176,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allAzureNativeSubnetsByRegionFromAzure" + args + "{\n" +
+                "allAzureNativeSubnetsByRegionFromAzure" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2095,7 +2194,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allAzureNativeVirtualNetworks" + args + "{\n" +
+                "allAzureNativeVirtualNetworks" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2113,7 +2212,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allAzureSqlDatabaseServerElasticPools" + args + "{\n" +
+                "allAzureSqlDatabaseServerElasticPools" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2131,7 +2230,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allAzureSubscriptionWithExocomputeMappings" + args + "{\n" +
+                "allAzureSubscriptionWithExocomputeMappings" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2149,7 +2248,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allBlueprints" + args + "{\n" +
+                "allBlueprints" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2167,7 +2266,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allCdmGuestCredentials" + args + "{\n" +
+                "allCdmGuestCredentials" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2185,7 +2284,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allCdmOvaDetails" + args + "{\n" +
+                "allCdmOvaDetails" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2203,7 +2302,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allCdpVmsInfos" + args + "{\n" +
+                "allCdpVmsInfos" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2221,7 +2320,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allCloudAccountExocomputeMappings" + args + "{\n" +
+                "allCloudAccountExocomputeMappings" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2239,7 +2338,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allCloudClusters" + args + "{\n" +
+                "allCloudClusters" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2257,7 +2356,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allCloudDirectShares" + args + "{\n" +
+                "allCloudDirectShares" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2275,7 +2374,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allCloudDirectSites" + args + "{\n" +
+                "allCloudDirectSites" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2293,7 +2392,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allClusterConnection" + args + "{\n" +
+                "allClusterConnection" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2311,7 +2410,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allClusterGlobalSlas" + args + "{\n" +
+                "allClusterGlobalSlas" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2329,7 +2428,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allClusterReplicationTargets" + args + "{\n" +
+                "allClusterReplicationTargets" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2347,7 +2446,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allClusterWebCertsAndIpmis" + args + "{\n" +
+                "allClusterWebCertsAndIpmis" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2365,7 +2464,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allComparisonsBetweenSaasAppSnapshotAndLive" + args + "{\n" +
+                "allComparisonsBetweenSaasAppSnapshotAndLive" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2383,7 +2482,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allComplianceTimeSeries" + args + "{\n" +
+                "allComplianceTimeSeries" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2401,7 +2500,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allConfigProtectionBackups" + args + "{\n" +
+                "allConfigProtectionBackups" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2419,7 +2518,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allConnectedClusters" + args + "{\n" +
+                "allConnectedClusters" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2437,7 +2536,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allCurrentFeaturePermissionsForCloudAccounts" + args + "{\n" +
+                "allCurrentFeaturePermissionsForCloudAccounts" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2455,7 +2554,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allCurrentOrgIdentityProviders" + args + "{\n" +
+                "allCurrentOrgIdentityProviders" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2473,7 +2572,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allDbParameterGroupsByRegionFromAws" + args + "{\n" +
+                "allDbParameterGroupsByRegionFromAws" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2491,7 +2590,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allDbSubnetGroupsByRegionFromAws" + args + "{\n" +
+                "allDbSubnetGroupsByRegionFromAws" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2509,7 +2608,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allDhrcActiveRecommendations" + args + "{\n" +
+                "allDhrcActiveRecommendations" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2527,7 +2626,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allDhrcLatestMetrics" + args + "{\n" +
+                "allDhrcLatestMetrics" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2545,7 +2644,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allDhrcScores" + args + "{\n" +
+                "allDhrcScores" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2563,7 +2662,25 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allEffectiveRbacPermissions" + args + "{\n" +
+                "allEffectiveRbacPermissions" + args + "\n{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> AllEnabledFeaturesForAccountReply? AllEnabledFeaturesForAccount
+        // GraphQL -> allEnabledFeaturesForAccount: AllEnabledFeaturesForAccountReply! (type)
+        public static string AllEnabledFeaturesForAccount(
+            ref AllEnabledFeaturesForAccountReply? fieldSpec
+        )
+        {
+            string args = "";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new AllEnabledFeaturesForAccountReply() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "allEnabledFeaturesForAccount" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2581,7 +2698,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allEventDigests" + args + "{\n" +
+                "allEventDigests" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2599,7 +2716,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allFailoverJobReports" + args + "{\n" +
+                "allFailoverJobReports" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2617,7 +2734,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allFeaturePermissionsForGcpCloudAccount" + args + "{\n" +
+                "allFeaturePermissionsForGcpCloudAccount" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2635,7 +2752,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allFileActivities" + args + "{\n" +
+                "allFileActivities" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2653,7 +2770,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allGcpCloudAccountMissingPermissionsForAddition" + args + "{\n" +
+                "allGcpCloudAccountMissingPermissionsForAddition" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2671,7 +2788,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allGcpCloudAccountProjectsByFeature" + args + "{\n" +
+                "allGcpCloudAccountProjectsByFeature" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2689,7 +2806,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allGcpCloudAccountProjectsForOauth" + args + "{\n" +
+                "allGcpCloudAccountProjectsForOauth" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2707,7 +2824,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allGcpNativeAvailableKmsCryptoKeys" + args + "{\n" +
+                "allGcpNativeAvailableKmsCryptoKeys" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2725,7 +2842,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allGcpNativeNetworks" + args + "{\n" +
+                "allGcpNativeNetworks" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2743,7 +2860,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allGcpNativeProjectsWithAccessibleNetworks" + args + "{\n" +
+                "allGcpNativeProjectsWithAccessibleNetworks" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2761,7 +2878,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allGcpNativeRegions" + args + "{\n" +
+                "allGcpNativeRegions" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2779,7 +2896,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allGlobalFileSearchMultipleClusters" + args + "{\n" +
+                "allGlobalFileSearchMultipleClusters" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2797,7 +2914,25 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allHostedAzureRegions" + args + "{\n" +
+                "allHostedAzureRegions" + args + "\n{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> ListIntegrationsReply? AllIntegrations
+        // GraphQL -> allIntegrations: ListIntegrationsReply! (type)
+        public static string AllIntegrations(
+            ref ListIntegrationsReply? fieldSpec
+        )
+        {
+            string args = "\n(\nintegrationTypes: $integrationTypes\nnameFilter: $nameFilter\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new ListIntegrationsReply() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "allIntegrations" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2815,7 +2950,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allJiraIssueTypes" + args + "{\n" +
+                "allJiraIssueTypes" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2833,7 +2968,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allK8sReplicaSnapshotInfos" + args + "{\n" +
+                "allK8sReplicaSnapshotInfos" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2851,7 +2986,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allKmsEncryptionKeysByRegionFromAws" + args + "{\n" +
+                "allKmsEncryptionKeysByRegionFromAws" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2869,7 +3004,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allLatestConfigProtectionBackupsByVersion" + args + "{\n" +
+                "allLatestConfigProtectionBackupsByVersion" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2887,7 +3022,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allLatestFeaturePermissionsForCloudAccounts" + args + "{\n" +
+                "allLatestFeaturePermissionsForCloudAccounts" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2905,7 +3040,25 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allLicensedProducts" + args + "{\n" +
+                "allLicensedProducts" + args + "\n{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> List<MigrationMetadata>? AllMigrationMetadata
+        // GraphQL -> allMigrationMetadata: [MigrationMetadata!]! (type)
+        public static string AllMigrationMetadata(
+            ref List<MigrationMetadata>? fieldSpec
+        )
+        {
+            string args = "";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new List<MigrationMetadata>() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "allMigrationMetadata" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2923,7 +3076,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allMigrationPrechecks" + args + "{\n" +
+                "allMigrationPrechecks" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2941,7 +3094,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allMssqlDatabaseRestoreFiles" + args + "{\n" +
+                "allMssqlDatabaseRestoreFiles" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2959,7 +3112,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allNcdObjectsOverTimeData" + args + "{\n" +
+                "allNcdObjectsOverTimeData" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2977,7 +3130,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allNcdSlaComplianceData" + args + "{\n" +
+                "allNcdSlaComplianceData" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2995,7 +3148,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allNcdTaskData" + args + "{\n" +
+                "allNcdTaskData" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3013,7 +3166,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allNcdUsageOverTimeData" + args + "{\n" +
+                "allNcdUsageOverTimeData" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3031,7 +3184,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allNosqlStorageLocations" + args + "{\n" +
+                "allNosqlStorageLocations" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3049,7 +3202,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allO365AdGroups" + args + "{\n" +
+                "allO365AdGroups" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3067,7 +3220,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allO365OrgStatuses" + args + "{\n" +
+                "allO365OrgStatuses" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3085,7 +3238,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allO365SubscriptionsAppTypeCounts" + args + "{\n" +
+                "allO365SubscriptionsAppTypeCounts" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3103,7 +3256,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allObjectsAlreadyAssignedToOrgs" + args + "{\n" +
+                "allObjectsAlreadyAssignedToOrgs" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3121,7 +3274,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allOptionGroupsByRegionFromAws" + args + "{\n" +
+                "allOptionGroupsByRegionFromAws" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3139,7 +3292,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allOrgsByIds" + args + "{\n" +
+                "allOrgsByIds" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3157,7 +3310,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allPendingActions" + args + "{\n" +
+                "allPendingActions" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3168,14 +3321,14 @@ namespace RubrikSecurityCloud.Types
             ref List<PolicyRiskSummary>? fieldSpec
         )
         {
-            string args = "\n(\npolicyIds: $policyIds\nsummaryDate: $summaryDate\n)";
+            string args = "\n(\npolicyIds: $policyIds\nsummaryDate: $summaryDate\nincludeWhitelistedResults: $includeWhitelistedResults\n)";
             if (fieldSpec == null)
             {
                 fieldSpec = new List<PolicyRiskSummary>() ;
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allPolicyRiskSummaries" + args + "{\n" +
+                "allPolicyRiskSummaries" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3193,7 +3346,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allPrincipalRiskSummaries" + args + "{\n" +
+                "allPrincipalRiskSummaries" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3211,7 +3364,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allQuarantinedDetailsForSnapshots" + args + "{\n" +
+                "allQuarantinedDetailsForSnapshots" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3229,7 +3382,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allQuarantinedDetailsForWorkload" + args + "{\n" +
+                "allQuarantinedDetailsForWorkload" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3247,7 +3400,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allReportConfigs" + args + "{\n" +
+                "allReportConfigs" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3265,7 +3418,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allReportMetadata" + args + "{\n" +
+                "allReportMetadata" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3283,7 +3436,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allResourceGroupsFromAzure" + args + "{\n" +
+                "allResourceGroupsFromAzure" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3301,7 +3454,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allRscReportConfigs" + args + "{\n" +
+                "allRscReportConfigs" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3319,7 +3472,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allS3BucketsDetailsFromAws" + args + "{\n" +
+                "allS3BucketsDetailsFromAws" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3337,7 +3490,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allSharepointSiteExclusions" + args + "{\n" +
+                "allSharepointSiteExclusions" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3355,7 +3508,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allSlaIofilterStatuses" + args + "{\n" +
+                "allSlaIofilterStatuses" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3373,7 +3526,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allSnapshotPvcs" + args + "{\n" +
+                "allSnapshotPvcs" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3391,7 +3544,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allSnapshotsClosestToPointInTime" + args + "{\n" +
+                "allSnapshotsClosestToPointInTime" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3409,7 +3562,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allSourceRecoverySpecs" + args + "{\n" +
+                "allSourceRecoverySpecs" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3427,7 +3580,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allStorageArrays" + args + "{\n" +
+                "allStorageArrays" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3445,7 +3598,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allTargetMappings" + args + "{\n" +
+                "allTargetMappings" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3463,7 +3616,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allTopRiskPolicySummaries" + args + "{\n" +
+                "allTopRiskPolicySummaries" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3481,7 +3634,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allUnifiedFeatureFlags" + args + "{\n" +
+                "allUnifiedFeatureFlags" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3499,7 +3652,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allUsersOnAccount" + args + "{\n" +
+                "allUsersOnAccount" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3517,7 +3670,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allUsersOnAccountConnection" + args + "{\n" +
+                "allUsersOnAccountConnection" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3535,7 +3688,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allValidReplicationTargets" + args + "{\n" +
+                "allValidReplicationTargets" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3553,7 +3706,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allVcenterHotAddProxyVms" + args + "{\n" +
+                "allVcenterHotAddProxyVms" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3571,7 +3724,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allVirtualMachineFiles" + args + "{\n" +
+                "allVirtualMachineFiles" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3589,7 +3742,25 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allVmIofilterStatuses" + args + "{\n" +
+                "allVmIofilterStatuses" + args + "\n{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> List<VmRecoveryJobInfo>? AllVmRecoveryJobsInfo
+        // GraphQL -> allVmRecoveryJobsInfo: [VmRecoveryJobInfo!]! (type)
+        public static string AllVmRecoveryJobsInfo(
+            ref List<VmRecoveryJobInfo>? fieldSpec
+        )
+        {
+            string args = "\n(\nfid: $fid\ninput: $input\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new List<VmRecoveryJobInfo>() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "allVmRecoveryJobsInfo" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3607,7 +3778,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allVmwareCdpStateInfos" + args + "{\n" +
+                "allVmwareCdpStateInfos" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3625,7 +3796,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allVpcsByRegionFromAws" + args + "{\n" +
+                "allVpcsByRegionFromAws" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3643,7 +3814,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allVpcsFromAws" + args + "{\n" +
+                "allVpcsFromAws" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3661,7 +3832,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "allWebhooks" + args + "{\n" +
+                "allWebhooks" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3679,7 +3850,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "amiTypeForAwsNativeArchivedSnapshotExport" + args + "{\n" +
+                "amiTypeForAwsNativeArchivedSnapshotExport" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3697,7 +3868,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "analyzerGroups" + args + "{\n" +
+                "analyzerGroups" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3715,7 +3886,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "analyzerUsages" + args + "{\n" +
+                "analyzerUsages" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3726,14 +3897,14 @@ namespace RubrikSecurityCloud.Types
             ref GetAnomalyDetailsReply? fieldSpec
         )
         {
-            string args = "\n(\nclusterUuid: $clusterUuid\nsnapshotId: $snapshotId\n)";
+            string args = "\n(\nclusterUuid: $clusterUuid\nsnapshotId: $snapshotId\nworkloadId: $workloadId\nanomalyId: $anomalyId\n)";
             if (fieldSpec == null)
             {
                 fieldSpec = new GetAnomalyDetailsReply() ;
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "anomalyResultOpt" + args + "{\n" +
+                "anomalyResultOpt" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3751,7 +3922,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "anomalyResults" + args + "{\n" +
+                "anomalyResults" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3769,7 +3940,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "anomalyResultsGrouped" + args + "{\n" +
+                "anomalyResultsGrouped" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3787,7 +3958,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "appflowsSummary" + args + "{\n" +
+                "appflowsSummary" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3805,7 +3976,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "archivalEntities" + args + "{\n" +
+                "archivalEntities" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3823,7 +3994,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "assignableGlobalCertificates" + args + "{\n" +
+                "assignableGlobalCertificates" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3841,7 +4012,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "atlassianSites" + args + "{\n" +
+                "atlassianSites" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3859,7 +4030,25 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "attributedFeatureFlag" + args + "{\n" +
+                "attributedFeatureFlag" + args + "\n{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> AwsArtifactsToDelete? AwsArtifactsToDelete
+        // GraphQL -> awsArtifactsToDelete: AwsArtifactsToDelete! (type)
+        public static string AwsArtifactsToDelete(
+            ref AwsArtifactsToDelete? fieldSpec
+        )
+        {
+            string args = "\n(\ninput: $input\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new AwsArtifactsToDelete() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "awsArtifactsToDelete" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3877,7 +4066,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "awsCloudAccountListSecurityGroups" + args + "{\n" +
+                "awsCloudAccountListSecurityGroups" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3895,7 +4084,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "awsCloudAccountListSubnets" + args + "{\n" +
+                "awsCloudAccountListSubnets" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3913,7 +4102,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "awsCloudAccountListVpcs" + args + "{\n" +
+                "awsCloudAccountListVpcs" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3931,7 +4120,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "awsCloudAccountWithFeatures" + args + "{\n" +
+                "awsCloudAccountWithFeatures" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3949,7 +4138,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "awsComputeSettings" + args + "{\n" +
+                "awsComputeSettings" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3967,7 +4156,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "awsNativeAccount" + args + "{\n" +
+                "awsNativeAccount" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3985,7 +4174,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "awsNativeAccounts" + args + "{\n" +
+                "awsNativeAccounts" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4003,7 +4192,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "awsNativeEbsVolume" + args + "{\n" +
+                "awsNativeEbsVolume" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4021,7 +4210,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "awsNativeEbsVolumes" + args + "{\n" +
+                "awsNativeEbsVolumes" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4039,7 +4228,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "awsNativeEbsVolumesByName" + args + "{\n" +
+                "awsNativeEbsVolumesByName" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4057,7 +4246,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "awsNativeEc2Instance" + args + "{\n" +
+                "awsNativeEc2Instance" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4075,7 +4264,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "awsNativeEc2Instances" + args + "{\n" +
+                "awsNativeEc2Instances" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4093,7 +4282,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "awsNativeEc2InstancesByName" + args + "{\n" +
+                "awsNativeEc2InstancesByName" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4111,7 +4300,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "awsNativeRdsExportDefaults" + args + "{\n" +
+                "awsNativeRdsExportDefaults" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4129,7 +4318,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "awsNativeRdsInstance" + args + "{\n" +
+                "awsNativeRdsInstance" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4147,7 +4336,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "awsNativeRdsInstances" + args + "{\n" +
+                "awsNativeRdsInstances" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4165,7 +4354,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "awsNativeRdsPointInTimeRestoreWindow" + args + "{\n" +
+                "awsNativeRdsPointInTimeRestoreWindow" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4183,7 +4372,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "awsNativeRoot" + args + "{\n" +
+                "awsNativeRoot" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4201,7 +4390,25 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "awsNativeS3Bucket" + args + "{\n" +
+                "awsNativeS3Bucket" + args + "\n{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> AwsTrustPolicy? AwsTrustPolicy
+        // GraphQL -> awsTrustPolicy: AwsTrustPolicy! (type)
+        public static string AwsTrustPolicy(
+            ref AwsTrustPolicy? fieldSpec
+        )
+        {
+            string args = "\n(\ninput: $input\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new AwsTrustPolicy() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "awsTrustPolicy" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4219,7 +4426,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "azureAdDirectories" + args + "{\n" +
+                "azureAdDirectories" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4237,7 +4444,79 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "azureAdDirectory" + args + "{\n" +
+                "azureAdDirectory" + args + "\n{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> AzureAdObjectConnection? AzureAdObjectsByType
+        // GraphQL -> azureAdObjectsByType: AzureAdObjectConnection! (type)
+        public static string AzureAdObjectsByType(
+            ref AzureAdObjectConnection? fieldSpec
+        )
+        {
+            string args = "\n(\nfirst: $first\nafter: $after\nsortByOption: $sortByOption\nsortOrder: $sortOrder\ninput: $input\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new AzureAdObjectConnection() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "azureAdObjectsByType" + args + "\n{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> AzureCloudAccountCheckRefreshTokenExistsReply? AzureCloudAccountCheckRefreshTokenExistsForRecovery
+        // GraphQL -> azureCloudAccountCheckRefreshTokenExistsForRecovery: AzureCloudAccountCheckRefreshTokenExistsReply! (type)
+        public static string AzureCloudAccountCheckRefreshTokenExistsForRecovery(
+            ref AzureCloudAccountCheckRefreshTokenExistsReply? fieldSpec
+        )
+        {
+            string args = "\n(\ncloudAccountId: $cloudAccountId\nazureNativeSubscriptionId: $azureNativeSubscriptionId\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new AzureCloudAccountCheckRefreshTokenExistsReply() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "azureCloudAccountCheckRefreshTokenExistsForRecovery" + args + "\n{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> AzureCloudAccountGrantedPermissionsGroupsReply? AzureCloudAccountGrantedPermissionsGroups
+        // GraphQL -> azureCloudAccountGrantedPermissionsGroups: AzureCloudAccountGrantedPermissionsGroupsReply! (type)
+        public static string AzureCloudAccountGrantedPermissionsGroups(
+            ref AzureCloudAccountGrantedPermissionsGroupsReply? fieldSpec
+        )
+        {
+            string args = "\n(\ncloudAccountId: $cloudAccountId\nfeature: $feature\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new AzureCloudAccountGrantedPermissionsGroupsReply() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "azureCloudAccountGrantedPermissionsGroups" + args + "\n{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> AzureCloudAccountGrantedPermissionsGroupsReply? AzureCloudAccountGrantedPermissionsGroupsForRecovery
+        // GraphQL -> azureCloudAccountGrantedPermissionsGroupsForRecovery: AzureCloudAccountGrantedPermissionsGroupsReply! (type)
+        public static string AzureCloudAccountGrantedPermissionsGroupsForRecovery(
+            ref AzureCloudAccountGrantedPermissionsGroupsReply? fieldSpec
+        )
+        {
+            string args = "\n(\ncloudAccountId: $cloudAccountId\nazureNativeSubscriptionId: $azureNativeSubscriptionId\nfeature: $feature\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new AzureCloudAccountGrantedPermissionsGroupsReply() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "azureCloudAccountGrantedPermissionsGroupsForRecovery" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4255,7 +4534,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "azureCloudAccountPermissionConfig" + args + "{\n" +
+                "azureCloudAccountPermissionConfig" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4273,7 +4552,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "azureCloudAccountSubscriptionWithFeatures" + args + "{\n" +
+                "azureCloudAccountSubscriptionWithFeatures" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4291,7 +4570,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "azureCloudAccountTenant" + args + "{\n" +
+                "azureCloudAccountTenant" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4309,7 +4588,25 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "azureCloudAccountTenantWithExoConfigs" + args + "{\n" +
+                "azureCloudAccountTenantWithExoConfigs" + args + "\n{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> LiveMountDetailsConnection? AzureNativeLiveMountDisks
+        // GraphQL -> azureNativeLiveMountDisks: LiveMountDetailsConnection! (type)
+        public static string AzureNativeLiveMountDisks(
+            ref LiveMountDetailsConnection? fieldSpec
+        )
+        {
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\ncloudNativeObjectType: $cloudNativeObjectType\nliveMountFilters: $liveMountFilters\nsortBy: $sortBy\nsortOrder: $sortOrder\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new LiveMountDetailsConnection() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "azureNativeLiveMountDisks" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4327,7 +4624,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "azureNativeManagedDisk" + args + "{\n" +
+                "azureNativeManagedDisk" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4345,7 +4642,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "azureNativeManagedDisks" + args + "{\n" +
+                "azureNativeManagedDisks" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4363,7 +4660,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "azureNativeResourceGroup" + args + "{\n" +
+                "azureNativeResourceGroup" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4381,7 +4678,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "azureNativeResourceGroups" + args + "{\n" +
+                "azureNativeResourceGroups" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4399,7 +4696,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "azureNativeRoot" + args + "{\n" +
+                "azureNativeRoot" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4417,7 +4714,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "azureNativeSubscription" + args + "{\n" +
+                "azureNativeSubscription" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4435,7 +4732,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "azureNativeSubscriptions" + args + "{\n" +
+                "azureNativeSubscriptions" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4453,7 +4750,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "azureNativeVirtualMachine" + args + "{\n" +
+                "azureNativeVirtualMachine" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4471,7 +4768,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "azureNativeVirtualMachines" + args + "{\n" +
+                "azureNativeVirtualMachines" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4489,7 +4786,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "azureO365CheckNSGOutboundRules" + args + "{\n" +
+                "azureO365CheckNSGOutboundRules" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4507,7 +4804,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "azureO365CheckNetworkSubnet" + args + "{\n" +
+                "azureO365CheckNetworkSubnet" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4525,7 +4822,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "azureO365CheckResourceGroupName" + args + "{\n" +
+                "azureO365CheckResourceGroupName" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4543,7 +4840,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "azureO365CheckStorageAccountAccessibility" + args + "{\n" +
+                "azureO365CheckStorageAccountAccessibility" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4561,7 +4858,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "azureO365CheckStorageAccountName" + args + "{\n" +
+                "azureO365CheckStorageAccountName" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4579,7 +4876,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "azureO365CheckSubscriptionQuota" + args + "{\n" +
+                "azureO365CheckSubscriptionQuota" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4597,7 +4894,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "azureO365CheckVirtualNetworkName" + args + "{\n" +
+                "azureO365CheckVirtualNetworkName" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4615,7 +4912,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "azureO365Exocompute" + args + "{\n" +
+                "azureO365Exocompute" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4633,7 +4930,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "azureO365GetAzureHostType" + args + "{\n" +
+                "azureO365GetAzureHostType" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4651,7 +4948,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "azureO365GetNetworkSubnetUnusedAddr" + args + "{\n" +
+                "azureO365GetNetworkSubnetUnusedAddr" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4669,7 +4966,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "azureO365ValidateUserRoles" + args + "{\n" +
+                "azureO365ValidateUserRoles" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4687,7 +4984,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "azureRegions" + args + "{\n" +
+                "azureRegions" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4705,7 +5002,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "azureResourceGroups" + args + "{\n" +
+                "azureResourceGroups" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4723,7 +5020,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "azureSqlDatabase" + args + "{\n" +
+                "azureSqlDatabase" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4741,7 +5038,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "azureSqlDatabaseDbPointInTimeRestoreWindowFromAzure" + args + "{\n" +
+                "azureSqlDatabaseDbPointInTimeRestoreWindowFromAzure" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4759,7 +5056,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "azureSqlDatabaseServer" + args + "{\n" +
+                "azureSqlDatabaseServer" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4777,7 +5074,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "azureSqlDatabaseServers" + args + "{\n" +
+                "azureSqlDatabaseServers" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4795,7 +5092,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "azureSqlDatabases" + args + "{\n" +
+                "azureSqlDatabases" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4813,7 +5110,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "azureSqlManagedInstanceDatabase" + args + "{\n" +
+                "azureSqlManagedInstanceDatabase" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4831,7 +5128,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "azureSqlManagedInstanceDatabases" + args + "{\n" +
+                "azureSqlManagedInstanceDatabases" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4849,7 +5146,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "azureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure" + args + "{\n" +
+                "azureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4867,7 +5164,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "azureSqlManagedInstanceServer" + args + "{\n" +
+                "azureSqlManagedInstanceServer" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4885,7 +5182,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "azureSqlManagedInstanceServers" + args + "{\n" +
+                "azureSqlManagedInstanceServers" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4903,7 +5200,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "azureStorageAccounts" + args + "{\n" +
+                "azureStorageAccounts" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4921,7 +5218,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "azureSubnets" + args + "{\n" +
+                "azureSubnets" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4939,7 +5236,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "azureSubscriptions" + args + "{\n" +
+                "azureSubscriptions" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4957,7 +5254,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "azureVNets" + args + "{\n" +
+                "azureVNets" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4975,7 +5272,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "blueprintConnection" + args + "{\n" +
+                "blueprintConnection" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -4993,7 +5290,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "blueprintRecoverySpecs" + args + "{\n" +
+                "blueprintRecoverySpecs" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5011,7 +5308,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "browseCalendar" + args + "{\n" +
+                "browseCalendar" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5029,7 +5326,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "browseContacts" + args + "{\n" +
+                "browseContacts" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5047,7 +5344,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "browseFolder" + args + "{\n" +
+                "browseFolder" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5065,7 +5362,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "browseO365TeamConvChannels" + args + "{\n" +
+                "browseO365TeamConvChannels" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5083,7 +5380,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "browseOnedrive" + args + "{\n" +
+                "browseOnedrive" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5101,7 +5398,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "browseSharepointDrive" + args + "{\n" +
+                "browseSharepointDrive" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5119,7 +5416,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "browseSharepointList" + args + "{\n" +
+                "browseSharepointList" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5137,7 +5434,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "browseSnapshotFileConnection" + args + "{\n" +
+                "browseSnapshotFileConnection" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5155,7 +5452,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "browseTeamsChannels" + args + "{\n" +
+                "browseTeamsChannels" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5173,7 +5470,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "browseTeamsDrive" + args + "{\n" +
+                "browseTeamsDrive" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5191,7 +5488,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "bulkRecoveryProgress" + args + "{\n" +
+                "bulkRecoveryProgress" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5209,7 +5506,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "cassandraColumnFamilies" + args + "{\n" +
+                "cassandraColumnFamilies" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5227,7 +5524,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "cassandraColumnFamily" + args + "{\n" +
+                "cassandraColumnFamily" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5245,7 +5542,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "cassandraColumnFamilyRecoverableRange" + args + "{\n" +
+                "cassandraColumnFamilyRecoverableRange" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5263,7 +5560,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "cassandraColumnFamilySchema" + args + "{\n" +
+                "cassandraColumnFamilySchema" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5281,7 +5578,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "cassandraKeyspace" + args + "{\n" +
+                "cassandraKeyspace" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5299,7 +5596,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "cassandraKeyspaces" + args + "{\n" +
+                "cassandraKeyspaces" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5317,7 +5614,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "cassandraSource" + args + "{\n" +
+                "cassandraSource" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5335,7 +5632,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "cassandraSources" + args + "{\n" +
+                "cassandraSources" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5353,7 +5650,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "cdmInventorySubHierarchyRoot" + args + "{\n" +
+                "cdmInventorySubHierarchyRoot" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5371,7 +5668,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "cdmMssqlLogShippingTarget" + args + "{\n" +
+                "cdmMssqlLogShippingTarget" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5389,7 +5686,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "cdmMssqlLogShippingTargets" + args + "{\n" +
+                "cdmMssqlLogShippingTargets" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5407,7 +5704,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "cdmVersionCheck" + args + "{\n" +
+                "cdmVersionCheck" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5425,7 +5722,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "certificateInfo" + args + "{\n" +
+                "certificateInfo" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5443,7 +5740,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "certificateSigningRequest" + args + "{\n" +
+                "certificateSigningRequest" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5461,7 +5758,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "certificateSigningRequests" + args + "{\n" +
+                "certificateSigningRequests" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5479,7 +5776,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "certificates" + args + "{\n" +
+                "certificates" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5497,7 +5794,25 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "certificatesWithKey" + args + "{\n" +
+                "certificatesWithKey" + args + "\n{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> CheckAzurePersistentStorageSubscriptionCanUnmapReply? CheckAzurePersistentStorageSubscriptionCanUnmap
+        // GraphQL -> checkAzurePersistentStorageSubscriptionCanUnmap: CheckAzurePersistentStorageSubscriptionCanUnmapReply! (type)
+        public static string CheckAzurePersistentStorageSubscriptionCanUnmap(
+            ref CheckAzurePersistentStorageSubscriptionCanUnmapReply? fieldSpec
+        )
+        {
+            string args = "\n(\ncloudAccountId: $cloudAccountId\nfeature: $feature\nunmappingValidationType: $unmappingValidationType\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new CheckAzurePersistentStorageSubscriptionCanUnmapReply() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "checkAzurePersistentStorageSubscriptionCanUnmap" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5515,7 +5830,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "checkCloudComputeConnectivityJobProgress" + args + "{\n" +
+                "checkCloudComputeConnectivityJobProgress" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5533,7 +5848,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "checkCloudNativeLabelRuleNameUniqueness" + args + "{\n" +
+                "checkCloudNativeLabelRuleNameUniqueness" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5551,7 +5866,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "checkCloudNativeTagRuleNameUniqueness" + args + "{\n" +
+                "checkCloudNativeTagRuleNameUniqueness" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5569,7 +5884,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "checkGuestOsForAppBlueprint" + args + "{\n" +
+                "checkGuestOsForAppBlueprint" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5587,7 +5902,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "classificationBannerSettings" + args + "{\n" +
+                "classificationBannerSettings" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5605,7 +5920,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "classificationLoginSettings" + args + "{\n" +
+                "classificationLoginSettings" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5623,7 +5938,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "cloudDirectNasExport" + args + "{\n" +
+                "cloudDirectNasExport" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5641,7 +5956,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "cloudDirectSnapshot" + args + "{\n" +
+                "cloudDirectSnapshot" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5659,7 +5974,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "cloudDirectSnapshots" + args + "{\n" +
+                "cloudDirectSnapshots" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5677,7 +5992,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "cloudDirectSystems" + args + "{\n" +
+                "cloudDirectSystems" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5695,7 +6010,25 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "cloudNativeCheckArchivedSnapshotsLocked" + args + "{\n" +
+                "cloudNativeCheckArchivedSnapshotsLocked" + args + "\n{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> CloudNativeCustomerTagsReply? CloudNativeCustomerTags
+        // GraphQL -> cloudNativeCustomerTags: CloudNativeCustomerTagsReply! (type)
+        public static string CloudNativeCustomerTags(
+            ref CloudNativeCustomerTagsReply? fieldSpec
+        )
+        {
+            string args = "\n(\ncloudVendor: $cloudVendor\ncloudAccountId: $cloudAccountId\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new CloudNativeCustomerTagsReply() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "cloudNativeCustomerTags" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5713,7 +6046,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "cloudNativeLabelRules" + args + "{\n" +
+                "cloudNativeLabelRules" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5731,7 +6064,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "cloudNativeRbaInstallers" + args + "{\n" +
+                "cloudNativeRbaInstallers" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5749,7 +6082,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "cloudNativeSnapshotDetailsForRecovery" + args + "{\n" +
+                "cloudNativeSnapshotDetailsForRecovery" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5767,7 +6100,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "cloudNativeSnapshots" + args + "{\n" +
+                "cloudNativeSnapshots" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5785,7 +6118,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "cloudNativeSqlServerSetupScript" + args + "{\n" +
+                "cloudNativeSqlServerSetupScript" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5803,7 +6136,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "cloudNativeTagRules" + args + "{\n" +
+                "cloudNativeTagRules" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5821,7 +6154,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "cloudNativeWorkloadVersionedFiles" + args + "{\n" +
+                "cloudNativeWorkloadVersionedFiles" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5839,7 +6172,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "cluster" + args + "{\n" +
+                "cluster" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5857,7 +6190,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "clusterCertificates" + args + "{\n" +
+                "clusterCertificates" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5875,7 +6208,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "clusterConnection" + args + "{\n" +
+                "clusterConnection" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5893,7 +6226,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "clusterCsr" + args + "{\n" +
+                "clusterCsr" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5911,7 +6244,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "clusterDefaultGateway" + args + "{\n" +
+                "clusterDefaultGateway" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5929,7 +6262,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "clusterDns" + args + "{\n" +
+                "clusterDns" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5947,7 +6280,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "clusterEncryptionInfo" + args + "{\n" +
+                "clusterEncryptionInfo" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5965,7 +6298,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "clusterFloatingIps" + args + "{\n" +
+                "clusterFloatingIps" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -5983,7 +6316,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "clusterGroupByConnection" + args + "{\n" +
+                "clusterGroupByConnection" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6001,7 +6334,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "clusterIpmi" + args + "{\n" +
+                "clusterIpmi" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6019,7 +6352,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "clusterIpv6Mode" + args + "{\n" +
+                "clusterIpv6Mode" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6037,7 +6370,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "clusterNetworkInterfaces" + args + "{\n" +
+                "clusterNetworkInterfaces" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6055,7 +6388,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "clusterNodes" + args + "{\n" +
+                "clusterNodes" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6073,7 +6406,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "clusterNtpServers" + args + "{\n" +
+                "clusterNtpServers" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6091,7 +6424,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "clusterOperationJobProgress" + args + "{\n" +
+                "clusterOperationJobProgress" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6109,7 +6442,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "clusterProxy" + args + "{\n" +
+                "clusterProxy" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6127,7 +6460,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "clusterRcvLocations" + args + "{\n" +
+                "clusterRcvLocations" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6145,25 +6478,61 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "clusterRegistrationProductInfo" + args + "{\n" +
+                "clusterRegistrationProductInfo" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
 
-        //      C# -> ClusterSlaDomainConnection? ClusterSlaDomainConnection
-        // GraphQL -> clusterSlaDomainConnection: ClusterSlaDomainConnection! (type)
-        public static string ClusterSlaDomainConnection(
-            ref ClusterSlaDomainConnection? fieldSpec
+        //      C# -> ReportsMigrationCount? ClusterReportMigrationCount
+        // GraphQL -> clusterReportMigrationCount: ReportsMigrationCount! (type)
+        public static string ClusterReportMigrationCount(
+            ref ReportsMigrationCount? fieldSpec
         )
         {
-            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
+            string args = "\n(\nclusterUuid: $clusterUuid\nstatus: $status\n)";
             if (fieldSpec == null)
             {
-                fieldSpec = new ClusterSlaDomainConnection() ;
+                fieldSpec = new ReportsMigrationCount() ;
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "clusterSlaDomainConnection" + args + "{\n" +
+                "clusterReportMigrationCount" + args + "\n{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> ClusterReportMigrationJobStatus? ClusterReportMigrationJobStatus
+        // GraphQL -> clusterReportMigrationJobStatus: ClusterReportMigrationJobStatus! (type)
+        public static string ClusterReportMigrationJobStatus(
+            ref ClusterReportMigrationJobStatus? fieldSpec
+        )
+        {
+            string args = "\n(\nclusterUuid: $clusterUuid\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new ClusterReportMigrationJobStatus() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "clusterReportMigrationJobStatus" + args + "\n{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> ReportMigrationStatusConnection? ClusterReportMigrationStatus
+        // GraphQL -> clusterReportMigrationStatus: ReportMigrationStatusConnection! (type)
+        public static string ClusterReportMigrationStatus(
+            ref ReportMigrationStatusConnection? fieldSpec
+        )
+        {
+            string args = "\n(\nclusterUuid: $clusterUuid\nstatus: $status\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new ReportMigrationStatusConnection() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "clusterReportMigrationStatus" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6181,7 +6550,25 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "clusterSlaDomainFilterConnection" + args + "{\n" +
+                "clusterSlaDomainFilterConnection" + args + "\n{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> ClusterSlaDomainConnection? ClusterSlaDomains
+        // GraphQL -> clusterSlaDomains: ClusterSlaDomainConnection! (type)
+        public static string ClusterSlaDomains(
+            ref ClusterSlaDomainConnection? fieldSpec
+        )
+        {
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new ClusterSlaDomainConnection() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "clusterSlaDomains" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6199,7 +6586,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "clusterTypeList" + args + "{\n" +
+                "clusterTypeList" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6217,7 +6604,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "clusterVlans" + args + "{\n" +
+                "clusterVlans" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6235,7 +6622,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "clusterWebSignedCertificate" + args + "{\n" +
+                "clusterWebSignedCertificate" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6253,7 +6640,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "clusterWithConfigProtectionInfo" + args + "{\n" +
+                "clusterWithConfigProtectionInfo" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6271,7 +6658,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "clusterWithUpgradesInfo" + args + "{\n" +
+                "clusterWithUpgradesInfo" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6289,7 +6676,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "computeClusterStatus" + args + "{\n" +
+                "computeClusterStatus" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6307,7 +6694,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "configProtectionSetupInfo" + args + "{\n" +
+                "configProtectionSetupInfo" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6325,7 +6712,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "configuredGroupMembers" + args + "{\n" +
+                "configuredGroupMembers" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6343,7 +6730,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "countOfObjectsProtectedBySlas" + args + "{\n" +
+                "countOfObjectsProtectedBySlas" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6361,7 +6748,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "crawl" + args + "{\n" +
+                "crawl" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6379,7 +6766,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "crawls" + args + "{\n" +
+                "crawls" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6397,7 +6784,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "currentOrg" + args + "{\n" +
+                "currentOrg" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6415,7 +6802,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "currentUser" + args + "{\n" +
+                "currentUser" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6433,7 +6820,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "currentUserLoginContext" + args + "{\n" +
+                "currentUserLoginContext" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6451,7 +6838,25 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "customAnalyzer" + args + "{\n" +
+                "customAnalyzer" + args + "\n{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> CustomTprPolicyConnection? CustomTprPolicies
+        // GraphQL -> customTprPolicies: CustomTprPolicyConnection! (type)
+        public static string CustomTprPolicies(
+            ref CustomTprPolicyConnection? fieldSpec
+        )
+        {
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new CustomTprPolicyConnection() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "customTprPolicies" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6469,7 +6874,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "cyberRecoveryObjects" + args + "{\n" +
+                "cyberRecoveryObjects" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6487,7 +6892,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "dashboardSummary" + args + "{\n" +
+                "dashboardSummary" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6505,7 +6910,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "dataDiscoveryObjectsCount" + args + "{\n" +
+                "dataDiscoveryObjectsCount" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6523,7 +6928,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "dataViewMetadata" + args + "{\n" +
+                "dataViewMetadata" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6534,14 +6939,14 @@ namespace RubrikSecurityCloud.Types
             ref QuerySddlReply? fieldSpec
         )
         {
-            string args = "\n(\nsnappableFid: $snappableFid\nsnapshotFid: $snapshotFid\nstdPath: $stdPath\nskipResolveSids: $skipResolveSids\n)";
+            string args = "\n(\nsnappableFid: $snappableFid\nsnapshotFid: $snapshotFid\nstdPath: $stdPath\nskipResolveSids: $skipResolveSids\nfilters: $filters\n)";
             if (fieldSpec == null)
             {
                 fieldSpec = new QuerySddlReply() ;
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "datagovSecDesc" + args + "{\n" +
+                "datagovSecDesc" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6559,7 +6964,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "db2Database" + args + "{\n" +
+                "db2Database" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6577,7 +6982,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "db2Databases" + args + "{\n" +
+                "db2Databases" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6595,7 +7000,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "db2Instance" + args + "{\n" +
+                "db2Instance" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6613,7 +7018,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "db2Instances" + args + "{\n" +
+                "db2Instances" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6631,7 +7036,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "db2LogSnapshot" + args + "{\n" +
+                "db2LogSnapshot" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6649,7 +7054,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "db2LogSnapshots" + args + "{\n" +
+                "db2LogSnapshots" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6667,7 +7072,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "db2RecoverableRange" + args + "{\n" +
+                "db2RecoverableRange" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6685,7 +7090,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "db2RecoverableRanges" + args + "{\n" +
+                "db2RecoverableRanges" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6696,14 +7101,14 @@ namespace RubrikSecurityCloud.Types
             ref ExportUrlSpecs? fieldSpec
         )
         {
-            string args = "\n(\nexportUrlSpecsEnc: $exportUrlSpecsEnc\n)";
+            string args = "\n(\nworkloadFid: $workloadFid\nexportUrlSpecsEnc: $exportUrlSpecsEnc\n)";
             if (fieldSpec == null)
             {
                 fieldSpec = new ExportUrlSpecs() ;
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "decryptExportUrl" + args + "{\n" +
+                "decryptExportUrl" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6721,7 +7126,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "diffFmd" + args + "{\n" +
+                "diffFmd" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6739,7 +7144,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "discoverNodes" + args + "{\n" +
+                "discoverNodes" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6757,7 +7162,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "discoveryTimeline" + args + "{\n" +
+                "discoveryTimeline" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6775,7 +7180,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "downloadCdmUpgradesPdf" + args + "{\n" +
+                "downloadCdmUpgradesPdf" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6793,7 +7198,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "downloadPackageStatus" + args + "{\n" +
+                "downloadPackageStatus" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6811,7 +7216,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "downloadReportLink" + args + "{\n" +
+                "downloadReportLink" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6829,7 +7234,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "downloadReportPdfLink" + args + "{\n" +
+                "downloadReportPdfLink" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6847,7 +7252,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "downloadSlaWithReplicationCsv" + args + "{\n" +
+                "downloadSlaWithReplicationCsv" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6865,7 +7270,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "downloadedVersionList" + args + "{\n" +
+                "downloadedVersionList" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6883,7 +7288,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "edgeWindowsToolLink" + args + "{\n" +
+                "edgeWindowsToolLink" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6901,25 +7306,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "envoyRegistrationToken" + args + "{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
-        }
-
-        //      C# -> EventClusterSettingReply? EventClusterSetting
-        // GraphQL -> eventClusterSetting: EventClusterSettingReply! (type)
-        public static string EventClusterSetting(
-            ref EventClusterSettingReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-            if (fieldSpec == null)
-            {
-                fieldSpec = new EventClusterSettingReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
-            }
-            return new string(
-                "eventClusterSetting" + args + "{\n" +
+                "envoyRegistrationToken" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6937,7 +7324,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "exchangeDag" + args + "{\n" +
+                "exchangeDag" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6955,7 +7342,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "exchangeDags" + args + "{\n" +
+                "exchangeDags" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6973,7 +7360,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "exchangeDatabase" + args + "{\n" +
+                "exchangeDatabase" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6991,7 +7378,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "exchangeDatabases" + args + "{\n" +
+                "exchangeDatabases" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7009,7 +7396,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "exchangeLiveMounts" + args + "{\n" +
+                "exchangeLiveMounts" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7027,7 +7414,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "exchangeServer" + args + "{\n" +
+                "exchangeServer" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7045,7 +7432,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "exchangeServers" + args + "{\n" +
+                "exchangeServers" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7063,7 +7450,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "failover" + args + "{\n" +
+                "failover" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7081,7 +7468,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "failoverAllSourceConnection" + args + "{\n" +
+                "failoverAllSourceConnection" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7099,7 +7486,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "failoverAllTargetSiteConnection" + args + "{\n" +
+                "failoverAllTargetSiteConnection" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7117,7 +7504,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "failoverClusterApp" + args + "{\n" +
+                "failoverClusterApp" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7135,7 +7522,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "failoverClusterApps" + args + "{\n" +
+                "failoverClusterApps" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7153,7 +7540,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "failoverClusterTopLevelDescendants" + args + "{\n" +
+                "failoverClusterTopLevelDescendants" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7171,7 +7558,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "failoverConnection" + args + "{\n" +
+                "failoverConnection" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7189,7 +7576,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "failoverGroupByConnection" + args + "{\n" +
+                "failoverGroupByConnection" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7207,7 +7594,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "failoverJobReports" + args + "{\n" +
+                "failoverJobReports" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7225,7 +7612,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "failoverReport" + args + "{\n" +
+                "failoverReport" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7243,7 +7630,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "featureFlag" + args + "{\n" +
+                "featureFlag" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7261,7 +7648,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "featureFlagAll" + args + "{\n" +
+                "featureFlagAll" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7279,7 +7666,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "federatedLoginStatus" + args + "{\n" +
+                "federatedLoginStatus" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7297,7 +7684,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "fetchFakeData" + args + "{\n" +
+                "fetchFakeData" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7315,7 +7702,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "filesetSnapshot" + args + "{\n" +
+                "filesetSnapshot" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7333,7 +7720,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "filesetSnapshotFiles" + args + "{\n" +
+                "filesetSnapshotFiles" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7351,7 +7738,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "filesetTemplate" + args + "{\n" +
+                "filesetTemplate" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7369,7 +7756,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "filesetTemplates" + args + "{\n" +
+                "filesetTemplates" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7387,7 +7774,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "gcpNativeDisk" + args + "{\n" +
+                "gcpNativeDisk" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7405,7 +7792,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "gcpNativeDisks" + args + "{\n" +
+                "gcpNativeDisks" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7423,7 +7810,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "gcpNativeGceInstance" + args + "{\n" +
+                "gcpNativeGceInstance" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7441,7 +7828,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "gcpNativeGceInstances" + args + "{\n" +
+                "gcpNativeGceInstances" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7459,7 +7846,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "gcpNativeProject" + args + "{\n" +
+                "gcpNativeProject" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7477,7 +7864,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "gcpNativeProjects" + args + "{\n" +
+                "gcpNativeProjects" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7495,7 +7882,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "gcpNativeStoredDiskLocations" + args + "{\n" +
+                "gcpNativeStoredDiskLocations" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7513,7 +7900,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "geoLocationList" + args + "{\n" +
+                "geoLocationList" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7531,7 +7918,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "getAccountSettingValue" + args + "{\n" +
+                "getAccountSettingValue" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7549,7 +7936,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "getAllRolesInOrgConnection" + args + "{\n" +
+                "getAllRolesInOrgConnection" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7567,7 +7954,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "getCdmReleaseDetailsForClusterFromSupportPortal" + args + "{\n" +
+                "getCdmReleaseDetailsForClusterFromSupportPortal" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7585,7 +7972,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "getCdmReleaseDetailsForVersionFromSupportPortal" + args + "{\n" +
+                "getCdmReleaseDetailsForVersionFromSupportPortal" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7603,7 +7990,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "getCdmReleaseDetailsFromSupportPortal" + args + "{\n" +
+                "getCdmReleaseDetailsFromSupportPortal" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7621,7 +8008,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "getGroupCountByCdmClusterStatus" + args + "{\n" +
+                "getGroupCountByCdmClusterStatus" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7639,7 +8026,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "getGroupCountByPrechecksStatus" + args + "{\n" +
+                "getGroupCountByPrechecksStatus" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7657,7 +8044,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "getGroupCountByUpgradeJobStatus" + args + "{\n" +
+                "getGroupCountByUpgradeJobStatus" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7675,7 +8062,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "getGroupCountByVersionStatus" + args + "{\n" +
+                "getGroupCountByVersionStatus" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7693,7 +8080,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "getKorgTaskchainStatus" + args + "{\n" +
+                "getKorgTaskchainStatus" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7711,7 +8098,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "getPermissions" + args + "{\n" +
+                "getPermissions" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7729,7 +8116,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "getRolesByIds" + args + "{\n" +
+                "getRolesByIds" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7747,7 +8134,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "getUserDownloads" + args + "{\n" +
+                "getUserDownloads" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7765,7 +8152,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "globalCertificate" + args + "{\n" +
+                "globalCertificate" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7783,7 +8170,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "globalCertificates" + args + "{\n" +
+                "globalCertificates" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7801,7 +8188,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "globalFileSearch" + args + "{\n" +
+                "globalFileSearch" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7819,7 +8206,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "globalLockoutConfig" + args + "{\n" +
+                "globalLockoutConfig" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7837,7 +8224,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "globalMfaSetting" + args + "{\n" +
+                "globalMfaSetting" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7855,7 +8242,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "globalSearchResults" + args + "{\n" +
+                "globalSearchResults" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7873,25 +8260,25 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "globalSlaFilterConnection" + args + "{\n" +
+                "globalSlaFilterConnection" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
 
-        //      C# -> PolarisSlaStatusConnection? GlobalSlaStatuses
-        // GraphQL -> globalSlaStatuses: PolarisSlaStatusConnection! (type)
+        //      C# -> GlobalSlaStatusConnection? GlobalSlaStatuses
+        // GraphQL -> globalSlaStatuses: GlobalSlaStatusConnection! (type)
         public static string GlobalSlaStatuses(
-            ref PolarisSlaStatusConnection? fieldSpec
+            ref GlobalSlaStatusConnection? fieldSpec
         )
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilter: $filter\nSlaId: $SlaId\n)";
             if (fieldSpec == null)
             {
-                fieldSpec = new PolarisSlaStatusConnection() ;
+                fieldSpec = new GlobalSlaStatusConnection() ;
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "globalSlaStatuses" + args + "{\n" +
+                "globalSlaStatuses" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7909,7 +8296,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "groupedReleasesNotes" + args + "{\n" +
+                "groupedReleasesNotes" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7927,7 +8314,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "groupsInCurrentAndDescendantOrganization" + args + "{\n" +
+                "groupsInCurrentAndDescendantOrganization" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7945,7 +8332,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "guestCredentials" + args + "{\n" +
+                "guestCredentials" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7963,7 +8350,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "helpContentSnippets" + args + "{\n" +
+                "helpContentSnippets" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7981,7 +8368,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "hierarchySnappables" + args + "{\n" +
+                "hierarchySnappables" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7999,7 +8386,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "hostDiagnosis" + args + "{\n" +
+                "hostDiagnosis" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8017,7 +8404,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "hostFailoverCluster" + args + "{\n" +
+                "hostFailoverCluster" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8035,7 +8422,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "hostFailoverClusters" + args + "{\n" +
+                "hostFailoverClusters" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8053,7 +8440,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "hostShare" + args + "{\n" +
+                "hostShare" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8071,7 +8458,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "hostShares" + args + "{\n" +
+                "hostShares" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8089,7 +8476,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "hypervCluster" + args + "{\n" +
+                "hypervCluster" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8107,7 +8494,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "hypervHostAsyncRequestStatus" + args + "{\n" +
+                "hypervHostAsyncRequestStatus" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8125,7 +8512,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "hypervMounts" + args + "{\n" +
+                "hypervMounts" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8143,7 +8530,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "hypervScvmm" + args + "{\n" +
+                "hypervScvmm" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8161,7 +8548,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "hypervScvmmAsyncRequestStatus" + args + "{\n" +
+                "hypervScvmmAsyncRequestStatus" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8179,7 +8566,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "hypervScvmms" + args + "{\n" +
+                "hypervScvmms" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8197,7 +8584,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "hypervServer" + args + "{\n" +
+                "hypervServer" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8215,7 +8602,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "hypervServers" + args + "{\n" +
+                "hypervServers" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8233,7 +8620,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "hypervTopLevelDescendants" + args + "{\n" +
+                "hypervTopLevelDescendants" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8251,7 +8638,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "hypervVirtualMachine" + args + "{\n" +
+                "hypervVirtualMachine" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8269,7 +8656,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "hypervVirtualMachineAsyncRequestStatus" + args + "{\n" +
+                "hypervVirtualMachineAsyncRequestStatus" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8287,7 +8674,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "hypervVirtualMachines" + args + "{\n" +
+                "hypervVirtualMachines" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8305,7 +8692,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "hypervVmDetail" + args + "{\n" +
+                "hypervVmDetail" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8323,7 +8710,25 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "installedVersionList" + args + "{\n" +
+                "installedVersionList" + args + "\n{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> ReadIntegrationReply? Integration
+        // GraphQL -> integration: ReadIntegrationReply! (type)
+        public static string Integration(
+            ref ReadIntegrationReply? fieldSpec
+        )
+        {
+            string args = "\n(\nid: $id\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new ReadIntegrationReply() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "integration" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8341,7 +8746,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "inventoryRoot" + args + "{\n" +
+                "inventoryRoot" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8359,7 +8764,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "inventorySubHierarchyRoot" + args + "{\n" +
+                "inventorySubHierarchyRoot" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8377,7 +8782,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "investigationCsvDownloadLink" + args + "{\n" +
+                "investigationCsvDownloadLink" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8395,7 +8800,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "ipWhitelist" + args + "{\n" +
+                "ipWhitelist" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8413,7 +8818,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "isAwsNativeEbsVolumeSnapshotRestorable" + args + "{\n" +
+                "isAwsNativeEbsVolumeSnapshotRestorable" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8431,7 +8836,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "isCloudNativeFileRecoveryFeasible" + args + "{\n" +
+                "isCloudNativeFileRecoveryFeasible" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8449,7 +8854,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "isLoggedIntoRubrikSupportPortal" + args + "{\n" +
+                "isLoggedIntoRubrikSupportPortal" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8467,7 +8872,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "isUpgradeAvailable" + args + "{\n" +
+                "isUpgradeAvailable" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8485,7 +8890,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "isUpgradeRecommended" + args + "{\n" +
+                "isUpgradeRecommended" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8503,7 +8908,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "isZrsAvailableForLocation" + args + "{\n" +
+                "isZrsAvailableForLocation" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8521,7 +8926,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "issue" + args + "{\n" +
+                "issue" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8539,7 +8944,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "issues" + args + "{\n" +
+                "issues" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8557,7 +8962,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "jiraIssueAssignees" + args + "{\n" +
+                "jiraIssueAssignees" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8575,7 +8980,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "jiraIssues" + args + "{\n" +
+                "jiraIssues" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8593,7 +8998,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "jiraProjectLeads" + args + "{\n" +
+                "jiraProjectLeads" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8611,7 +9016,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "jiraProjects" + args + "{\n" +
+                "jiraProjects" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8629,7 +9034,25 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "jiraSettings" + args + "{\n" +
+                "jiraSettings" + args + "\n{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> InternalJobInstanceDetail? JobInstance
+        // GraphQL -> jobInstance: InternalJobInstanceDetail! (type)
+        public static string JobInstance(
+            ref InternalJobInstanceDetail? fieldSpec
+        )
+        {
+            string args = "\n(\ninput: $input\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new InternalJobInstanceDetail() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "jobInstance" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8647,7 +9070,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "k8sAppManifest" + args + "{\n" +
+                "k8sAppManifest" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8665,7 +9088,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "k8sCluster" + args + "{\n" +
+                "k8sCluster" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8683,7 +9106,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "k8sClusters" + args + "{\n" +
+                "k8sClusters" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8701,7 +9124,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "k8sNamespace" + args + "{\n" +
+                "k8sNamespace" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8719,7 +9142,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "k8sNamespaces" + args + "{\n" +
+                "k8sNamespaces" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8737,7 +9160,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "k8sSnapshotInfo" + args + "{\n" +
+                "k8sSnapshotInfo" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8755,7 +9178,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "kmipServerConnection" + args + "{\n" +
+                "kmipServerConnection" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8773,7 +9196,79 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "knowledgeBaseArticle" + args + "{\n" +
+                "knowledgeBaseArticle" + args + "\n{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> KubernetesCluster? KubernetesCluster
+        // GraphQL -> kubernetesCluster: KubernetesCluster! (type)
+        public static string KubernetesCluster(
+            ref KubernetesCluster? fieldSpec
+        )
+        {
+            string args = "\n(\nfid: $fid\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new KubernetesCluster() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "kubernetesCluster" + args + "\n{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> KubernetesClusterConnection? KubernetesClusters
+        // GraphQL -> kubernetesClusters: KubernetesClusterConnection! (type)
+        public static string KubernetesClusters(
+            ref KubernetesClusterConnection? fieldSpec
+        )
+        {
+            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new KubernetesClusterConnection() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "kubernetesClusters" + args + "\n{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> KubernetesResourceSet? KubernetesResourceSet
+        // GraphQL -> kubernetesResourceSet: KubernetesResourceSet! (type)
+        public static string KubernetesResourceSet(
+            ref KubernetesResourceSet? fieldSpec
+        )
+        {
+            string args = "\n(\nfid: $fid\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new KubernetesResourceSet() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "kubernetesResourceSet" + args + "\n{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> KubernetesResourceSetConnection? KubernetesResourceSets
+        // GraphQL -> kubernetesResourceSets: KubernetesResourceSetConnection! (type)
+        public static string KubernetesResourceSets(
+            ref KubernetesResourceSetConnection? fieldSpec
+        )
+        {
+            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\nk8sClusterId: $k8sClusterId\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new KubernetesResourceSetConnection() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "kubernetesResourceSets" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8791,7 +9286,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "lambdaSettings" + args + "{\n" +
+                "lambdaSettings" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8809,7 +9304,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "latestInsightSync" + args + "{\n" +
+                "latestInsightSync" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8827,7 +9322,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "ldapAuthorizedPrincipalConnection" + args + "{\n" +
+                "ldapAuthorizedPrincipalConnection" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8845,7 +9340,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "ldapIntegrationConnection" + args + "{\n" +
+                "ldapIntegrationConnection" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8863,7 +9358,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "ldapPrincipalConnection" + args + "{\n" +
+                "ldapPrincipalConnection" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8881,7 +9376,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "legalHoldSnapshotsForSnappable" + args + "{\n" +
+                "legalHoldSnapshotsForSnappable" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8899,7 +9394,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "licensesForClusterProductSummary" + args + "{\n" +
+                "licensesForClusterProductSummary" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8917,7 +9412,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "linuxFileset" + args + "{\n" +
+                "linuxFileset" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8935,7 +9430,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "listO365Apps" + args + "{\n" +
+                "listO365Apps" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8953,7 +9448,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "lockoutConfig" + args + "{\n" +
+                "lockoutConfig" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8971,7 +9466,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "lookupAccount" + args + "{\n" +
+                "lookupAccount" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8989,7 +9484,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "m365Regions" + args + "{\n" +
+                "m365Regions" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9007,7 +9502,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "malwareDetectionTaskResult" + args + "{\n" +
+                "malwareDetectionTaskResult" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9025,7 +9520,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "malwareDetectionTaskStatus" + args + "{\n" +
+                "malwareDetectionTaskStatus" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9043,7 +9538,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "malwareScanDetail" + args + "{\n" +
+                "malwareScanDetail" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9061,7 +9556,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "malwareScans" + args + "{\n" +
+                "malwareScans" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9079,7 +9574,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "managedVolume" + args + "{\n" +
+                "managedVolume" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9097,7 +9592,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "managedVolumeInventoryStats" + args + "{\n" +
+                "managedVolumeInventoryStats" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9115,7 +9610,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "managedVolumeLiveMounts" + args + "{\n" +
+                "managedVolumeLiveMounts" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9133,7 +9628,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "managedVolumes" + args + "{\n" +
+                "managedVolumes" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9151,7 +9646,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "mandatoryTotpGracePeriod" + args + "{\n" +
+                "mandatoryTotpGracePeriod" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9169,25 +9664,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "mfaSetting" + args + "{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
-        }
-
-        //      C# -> List<MigrationMetadata>? MigrationMetadata
-        // GraphQL -> migrationMetadata: [MigrationMetadata!]! (type)
-        public static string MigrationMetadata(
-            ref List<MigrationMetadata>? fieldSpec
-        )
-        {
-            string args = "";
-            if (fieldSpec == null)
-            {
-                fieldSpec = new List<MigrationMetadata>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
-            }
-            return new string(
-                "migrationMetadata" + args + "{\n" +
+                "mfaSetting" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9205,7 +9682,25 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "minimumCdmVersionForFeatureSet" + args + "{\n" +
+                "minimumCdmVersionForFeatureSet" + args + "\n{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> MongoRecoverableRanges? MongoBulkRecoverableRanges
+        // GraphQL -> mongoBulkRecoverableRanges: MongoRecoverableRanges! (type)
+        public static string MongoBulkRecoverableRanges(
+            ref MongoRecoverableRanges? fieldSpec
+        )
+        {
+            string args = "\n(\ninput: $input\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new MongoRecoverableRanges() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "mongoBulkRecoverableRanges" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9223,7 +9718,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "mongoCollection" + args + "{\n" +
+                "mongoCollection" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9241,7 +9736,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "mongoCollections" + args + "{\n" +
+                "mongoCollections" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9259,7 +9754,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "mongoDatabase" + args + "{\n" +
+                "mongoDatabase" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9277,7 +9772,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "mongoDatabases" + args + "{\n" +
+                "mongoDatabases" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9295,7 +9790,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "mongoRecoverableRanges" + args + "{\n" +
+                "mongoRecoverableRanges" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9313,7 +9808,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "mongoSource" + args + "{\n" +
+                "mongoSource" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9331,7 +9826,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "mongoSources" + args + "{\n" +
+                "mongoSources" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9349,7 +9844,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "mongodbBulkRecoverableRange" + args + "{\n" +
+                "mongodbBulkRecoverableRange" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9367,7 +9862,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "mongodbCollection" + args + "{\n" +
+                "mongodbCollection" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9385,7 +9880,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "mongodbCollectionRecoverableRange" + args + "{\n" +
+                "mongodbCollectionRecoverableRange" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9403,7 +9898,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "mongodbCollections" + args + "{\n" +
+                "mongodbCollections" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9421,7 +9916,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "mongodbDatabase" + args + "{\n" +
+                "mongodbDatabase" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9439,7 +9934,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "mongodbDatabases" + args + "{\n" +
+                "mongodbDatabases" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9457,7 +9952,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "mongodbSource" + args + "{\n" +
+                "mongodbSource" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9475,7 +9970,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "mongodbSources" + args + "{\n" +
+                "mongodbSources" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9493,7 +9988,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "mosaicBulkRecoveryRange" + args + "{\n" +
+                "mosaicBulkRecoveryRange" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9511,7 +10006,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "mosaicSnapshots" + args + "{\n" +
+                "mosaicSnapshots" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9529,7 +10024,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "mosaicStores" + args + "{\n" +
+                "mosaicStores" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9547,7 +10042,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "mosaicVersions" + args + "{\n" +
+                "mosaicVersions" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9565,7 +10060,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "mssqlAvailabilityGroup" + args + "{\n" +
+                "mssqlAvailabilityGroup" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9583,7 +10078,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "mssqlCompatibleInstances" + args + "{\n" +
+                "mssqlCompatibleInstances" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9601,7 +10096,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "mssqlDatabase" + args + "{\n" +
+                "mssqlDatabase" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9619,7 +10114,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "mssqlDatabaseLiveMounts" + args + "{\n" +
+                "mssqlDatabaseLiveMounts" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9637,7 +10132,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "mssqlDatabaseMissedRecoverableRanges" + args + "{\n" +
+                "mssqlDatabaseMissedRecoverableRanges" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9655,7 +10150,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "mssqlDatabaseMissedSnapshots" + args + "{\n" +
+                "mssqlDatabaseMissedSnapshots" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9673,7 +10168,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "mssqlDatabaseRestoreEstimate" + args + "{\n" +
+                "mssqlDatabaseRestoreEstimate" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9691,7 +10186,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "mssqlDatabases" + args + "{\n" +
+                "mssqlDatabases" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9709,7 +10204,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "mssqlDefaultProperties" + args + "{\n" +
+                "mssqlDefaultProperties" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9727,7 +10222,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "mssqlInstance" + args + "{\n" +
+                "mssqlInstance" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9745,7 +10240,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "mssqlLogShippingTargets" + args + "{\n" +
+                "mssqlLogShippingTargets" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9763,7 +10258,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "mssqlRecoverableRanges" + args + "{\n" +
+                "mssqlRecoverableRanges" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9781,7 +10276,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "mssqlTopLevelDescendants" + args + "{\n" +
+                "mssqlTopLevelDescendants" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9799,7 +10294,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "nasFileset" + args + "{\n" +
+                "nasFileset" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9817,7 +10312,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "nasNamespace" + args + "{\n" +
+                "nasNamespace" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9835,7 +10330,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "nasNamespaces" + args + "{\n" +
+                "nasNamespaces" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9853,7 +10348,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "nasShare" + args + "{\n" +
+                "nasShare" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9871,7 +10366,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "nasSystem" + args + "{\n" +
+                "nasSystem" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9889,7 +10384,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "nasSystems" + args + "{\n" +
+                "nasSystems" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9907,7 +10402,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "nasTopLevelDescendants" + args + "{\n" +
+                "nasTopLevelDescendants" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9925,7 +10420,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "nasVolume" + args + "{\n" +
+                "nasVolume" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9943,7 +10438,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "ncdBackEndCapacity" + args + "{\n" +
+                "ncdBackEndCapacity" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9961,7 +10456,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "ncdFrontEndCapacity" + args + "{\n" +
+                "ncdFrontEndCapacity" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9979,7 +10474,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "ncdObjectProtectionStatus" + args + "{\n" +
+                "ncdObjectProtectionStatus" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9997,7 +10492,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "networkThrottle" + args + "{\n" +
+                "networkThrottle" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10015,7 +10510,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "nodeKeyRotation" + args + "{\n" +
+                "nodeKeyRotation" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10033,7 +10528,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "nodeRemovalCancelPermission" + args + "{\n" +
+                "nodeRemovalCancelPermission" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10051,61 +10546,43 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "nutanixBrowseSnapshot" + args + "{\n" +
+                "nutanixBrowseSnapshot" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
 
-        //      C# -> NutanixCategoryConnection? NutanixCategories
-        // GraphQL -> nutanixCategories: NutanixCategoryConnection! (type)
-        public static string NutanixCategories(
-            ref NutanixCategoryConnection? fieldSpec
-        )
-        {
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
-            if (fieldSpec == null)
-            {
-                fieldSpec = new NutanixCategoryConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
-            }
-            return new string(
-                "nutanixCategories" + args + "{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
-        }
-
-        //      C# -> NutanixVmConnection? NutanixCategoryValueVms
-        // GraphQL -> nutanixCategoryValueVms: NutanixVmConnection! (type)
-        public static string NutanixCategoryValueVms(
-            ref NutanixVmConnection? fieldSpec
-        )
-        {
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
-            if (fieldSpec == null)
-            {
-                fieldSpec = new NutanixVmConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
-            }
-            return new string(
-                "nutanixCategoryValueVms" + args + "{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
-        }
-
-        //      C# -> NutanixCategoryValueConnection? NutanixCategoryValues
-        // GraphQL -> nutanixCategoryValues: NutanixCategoryValueConnection! (type)
-        public static string NutanixCategoryValues(
-            ref NutanixCategoryValueConnection? fieldSpec
+        //      C# -> NutanixCategory? NutanixCategory
+        // GraphQL -> nutanixCategory: NutanixCategory! (type)
+        public static string NutanixCategory(
+            ref NutanixCategory? fieldSpec
         )
         {
             string args = "\n(\nfid: $fid\n)";
             if (fieldSpec == null)
             {
-                fieldSpec = new NutanixCategoryValueConnection() ;
+                fieldSpec = new NutanixCategory() ;
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "nutanixCategoryValues" + args + "{\n" +
+                "nutanixCategory" + args + "\n{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> NutanixCategoryValue? NutanixCategoryValue
+        // GraphQL -> nutanixCategoryValue: NutanixCategoryValue! (type)
+        public static string NutanixCategoryValue(
+            ref NutanixCategoryValue? fieldSpec
+        )
+        {
+            string args = "\n(\nfid: $fid\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new NutanixCategoryValue() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "nutanixCategoryValue" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10123,7 +10600,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "nutanixCluster" + args + "{\n" +
+                "nutanixCluster" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10141,7 +10618,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "nutanixClusterAsyncRequestStatus" + args + "{\n" +
+                "nutanixClusterAsyncRequestStatus" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10159,7 +10636,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "nutanixClusterContainers" + args + "{\n" +
+                "nutanixClusterContainers" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10177,7 +10654,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "nutanixClusterNetworks" + args + "{\n" +
+                "nutanixClusterNetworks" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10195,7 +10672,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "nutanixClusters" + args + "{\n" +
+                "nutanixClusters" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10213,7 +10690,25 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "nutanixMounts" + args + "{\n" +
+                "nutanixMounts" + args + "\n{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> NutanixPrismCentral? NutanixPrismCentral
+        // GraphQL -> nutanixPrismCentral: NutanixPrismCentral! (type)
+        public static string NutanixPrismCentral(
+            ref NutanixPrismCentral? fieldSpec
+        )
+        {
+            string args = "\n(\nfid: $fid\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new NutanixPrismCentral() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "nutanixPrismCentral" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10231,7 +10726,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "nutanixPrismCentrals" + args + "{\n" +
+                "nutanixPrismCentrals" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10249,7 +10744,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "nutanixSnapshotDetail" + args + "{\n" +
+                "nutanixSnapshotDetail" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10267,25 +10762,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "nutanixTopLevelDescendants" + args + "{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
-        }
-
-        //      C# -> NutanixTopLevelDescendantTypeConnection? NutanixTopLevelDescendantsV2
-        // GraphQL -> nutanixTopLevelDescendantsV2: NutanixTopLevelDescendantTypeConnection! (type)
-        public static string NutanixTopLevelDescendantsV2(
-            ref NutanixTopLevelDescendantTypeConnection? fieldSpec
-        )
-        {
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\ntypeFilter: $typeFilter\nfilter: $filter\n)";
-            if (fieldSpec == null)
-            {
-                fieldSpec = new NutanixTopLevelDescendantTypeConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
-            }
-            return new string(
-                "nutanixTopLevelDescendantsV2" + args + "{\n" +
+                "nutanixTopLevelDescendants" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10303,7 +10780,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "nutanixVm" + args + "{\n" +
+                "nutanixVm" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10321,7 +10798,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "nutanixVmAsyncRequestStatus" + args + "{\n" +
+                "nutanixVmAsyncRequestStatus" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10339,7 +10816,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "nutanixVmMissedSnapshots" + args + "{\n" +
+                "nutanixVmMissedSnapshots" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10357,7 +10834,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "nutanixVms" + args + "{\n" +
+                "nutanixVms" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10375,7 +10852,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "o365Calendar" + args + "{\n" +
+                "o365Calendar" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10393,7 +10870,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "o365Groups" + args + "{\n" +
+                "o365Groups" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10411,7 +10888,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "o365License" + args + "{\n" +
+                "o365License" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10429,7 +10906,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "o365Mailbox" + args + "{\n" +
+                "o365Mailbox" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10447,7 +10924,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "o365Mailboxes" + args + "{\n" +
+                "o365Mailboxes" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10465,7 +10942,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "o365ObjectAncestors" + args + "{\n" +
+                "o365ObjectAncestors" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10483,7 +10960,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "o365Onedrive" + args + "{\n" +
+                "o365Onedrive" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10501,7 +10978,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "o365Onedrives" + args + "{\n" +
+                "o365Onedrives" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10519,7 +10996,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "o365Org" + args + "{\n" +
+                "o365Org" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10537,7 +11014,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "o365OrgAtSnappableLevel" + args + "{\n" +
+                "o365OrgAtSnappableLevel" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10555,7 +11032,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "o365OrgSummaries" + args + "{\n" +
+                "o365OrgSummaries" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10573,7 +11050,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "o365Orgs" + args + "{\n" +
+                "o365Orgs" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10591,7 +11068,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "o365ServiceAccount" + args + "{\n" +
+                "o365ServiceAccount" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10609,7 +11086,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "o365ServiceStatus" + args + "{\n" +
+                "o365ServiceStatus" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10627,7 +11104,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "o365SharepointDrive" + args + "{\n" +
+                "o365SharepointDrive" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10645,7 +11122,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "o365SharepointDrives" + args + "{\n" +
+                "o365SharepointDrives" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10663,7 +11140,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "o365SharepointList" + args + "{\n" +
+                "o365SharepointList" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10681,7 +11158,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "o365SharepointLists" + args + "{\n" +
+                "o365SharepointLists" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10699,7 +11176,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "o365SharepointObjectList" + args + "{\n" +
+                "o365SharepointObjectList" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10717,7 +11194,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "o365SharepointObjects" + args + "{\n" +
+                "o365SharepointObjects" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10735,7 +11212,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "o365SharepointSite" + args + "{\n" +
+                "o365SharepointSite" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10753,7 +11230,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "o365SharepointSites" + args + "{\n" +
+                "o365SharepointSites" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10771,7 +11248,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "o365Site" + args + "{\n" +
+                "o365Site" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10789,7 +11266,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "o365Sites" + args + "{\n" +
+                "o365Sites" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10807,7 +11284,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "o365StorageStats" + args + "{\n" +
+                "o365StorageStats" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10825,7 +11302,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "o365Team" + args + "{\n" +
+                "o365Team" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10843,7 +11320,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "o365TeamChannels" + args + "{\n" +
+                "o365TeamChannels" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10861,7 +11338,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "o365TeamPostedBy" + args + "{\n" +
+                "o365TeamPostedBy" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10879,7 +11356,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "o365Teams" + args + "{\n" +
+                "o365Teams" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10897,7 +11374,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "o365User" + args + "{\n" +
+                "o365User" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10915,7 +11392,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "o365UserObjects" + args + "{\n" +
+                "o365UserObjects" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10933,7 +11410,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "oauthCodesForEdgeReg" + args + "{\n" +
+                "oauthCodesForEdgeReg" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10951,7 +11428,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "objectFiles" + args + "{\n" +
+                "objectFiles" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10969,7 +11446,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "oracleAcoExampleDownloadLink" + args + "{\n" +
+                "oracleAcoExampleDownloadLink" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10987,7 +11464,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "oracleAcoParameters" + args + "{\n" +
+                "oracleAcoParameters" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11005,7 +11482,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "oracleDataGuardGroup" + args + "{\n" +
+                "oracleDataGuardGroup" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11023,7 +11500,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "oracleDatabase" + args + "{\n" +
+                "oracleDatabase" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11041,7 +11518,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "oracleDatabaseLogBackupConfig" + args + "{\n" +
+                "oracleDatabaseLogBackupConfig" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11059,7 +11536,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "oracleDatabases" + args + "{\n" +
+                "oracleDatabases" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11077,7 +11554,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "oracleHost" + args + "{\n" +
+                "oracleHost" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11095,7 +11572,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "oracleHostLogBackupConfig" + args + "{\n" +
+                "oracleHostLogBackupConfig" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11113,7 +11590,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "oracleLiveMounts" + args + "{\n" +
+                "oracleLiveMounts" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11131,7 +11608,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "oracleMissedRecoverableRanges" + args + "{\n" +
+                "oracleMissedRecoverableRanges" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11149,7 +11626,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "oracleMissedSnapshots" + args + "{\n" +
+                "oracleMissedSnapshots" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11167,7 +11644,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "oraclePdbDetails" + args + "{\n" +
+                "oraclePdbDetails" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11185,7 +11662,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "oracleRac" + args + "{\n" +
+                "oracleRac" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11203,7 +11680,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "oracleRacLogBackupConfig" + args + "{\n" +
+                "oracleRacLogBackupConfig" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11221,7 +11698,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "oracleRecoverableRanges" + args + "{\n" +
+                "oracleRecoverableRanges" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11239,7 +11716,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "oracleTopLevelDescendants" + args + "{\n" +
+                "oracleTopLevelDescendants" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11257,7 +11734,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "org" + args + "{\n" +
+                "org" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11275,7 +11752,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "orgNetwork" + args + "{\n" +
+                "orgNetwork" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11293,7 +11770,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "orgNetworks" + args + "{\n" +
+                "orgNetworks" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11311,7 +11788,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "orgSecurityPolicy" + args + "{\n" +
+                "orgSecurityPolicy" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11329,7 +11806,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "orgs" + args + "{\n" +
+                "orgs" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11347,7 +11824,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "orgsForPrincipal" + args + "{\n" +
+                "orgsForPrincipal" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11365,7 +11842,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "overallRansomwareInvestigationSummary" + args + "{\n" +
+                "overallRansomwareInvestigationSummary" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11383,7 +11860,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "pactsafeContract" + args + "{\n" +
+                "pactsafeContract" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11401,7 +11878,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "pactsafeEulaState" + args + "{\n" +
+                "pactsafeEulaState" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11419,7 +11896,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "passwordComplexityPolicy" + args + "{\n" +
+                "passwordComplexityPolicy" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11437,7 +11914,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "pendingAction" + args + "{\n" +
+                "pendingAction" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11455,7 +11932,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "pendingRansomwareInvestigationResultsCount" + args + "{\n" +
+                "pendingRansomwareInvestigationResultsCount" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11473,7 +11950,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "phoenixRolloutProgress" + args + "{\n" +
+                "phoenixRolloutProgress" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11491,7 +11968,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "physicalHost" + args + "{\n" +
+                "physicalHost" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11502,14 +11979,14 @@ namespace RubrikSecurityCloud.Types
             ref PhysicalHostConnection? fieldSpec
         )
         {
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\nhostRoot: $hostRoot\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\nhostRoot: $hostRoot\nisBulkPolicyAssignmentFlow: $isBulkPolicyAssignmentFlow\n)";
             if (fieldSpec == null)
             {
                 fieldSpec = new PhysicalHostConnection() ;
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "physicalHosts" + args + "{\n" +
+                "physicalHosts" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11527,7 +12004,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "pipelineHealthForTimeRange" + args + "{\n" +
+                "pipelineHealthForTimeRange" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11545,7 +12022,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "polarisInventorySubHierarchyRoot" + args + "{\n" +
+                "polarisInventorySubHierarchyRoot" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11563,7 +12040,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "polarisReportConfig" + args + "{\n" +
+                "polarisReportConfig" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11581,7 +12058,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "polarisReportSchema" + args + "{\n" +
+                "polarisReportSchema" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11599,7 +12076,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "polarisReportTableIntrospection" + args + "{\n" +
+                "polarisReportTableIntrospection" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11617,7 +12094,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "polarisSnapshot" + args + "{\n" +
+                "polarisSnapshot" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11635,7 +12112,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "policies" + args + "{\n" +
+                "policies" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11653,7 +12130,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "policy" + args + "{\n" +
+                "policy" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11671,7 +12148,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "policyDetails" + args + "{\n" +
+                "policyDetails" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11689,7 +12166,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "policyObj" + args + "{\n" +
+                "policyObj" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11707,7 +12184,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "policyObjOpt" + args + "{\n" +
+                "policyObjOpt" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11725,7 +12202,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "policyObjectUsages" + args + "{\n" +
+                "policyObjectUsages" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11736,14 +12213,14 @@ namespace RubrikSecurityCloud.Types
             ref PolicyObjConnection? fieldSpec
         )
         {
-            string args = "\n(\nday: $day\ntimezone: $timezone\nworkloadTypes: $workloadTypes\nsortBy: $sortBy\nsortOrder: $sortOrder\nanalysisStatusesFilter: $analysisStatusesFilter\npolicyIdsFilter: $policyIdsFilter\nriskLevelsFilter: $riskLevelsFilter\nclusterIdsFilter: $clusterIdsFilter\nsearchObjectName: $searchObjectName\nsubscriptionIdsFilter: $subscriptionIdsFilter\nincludeWhitelistedResults: $includeWhitelistedResults\nsids: $sids\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
+            string args = "\n(\nday: $day\ntimezone: $timezone\nworkloadTypes: $workloadTypes\nsortBy: $sortBy\nsortOrder: $sortOrder\nanalysisStatusesFilter: $analysisStatusesFilter\npolicyIdsFilter: $policyIdsFilter\nriskLevelsFilter: $riskLevelsFilter\nclusterIdsFilter: $clusterIdsFilter\nsearchObjectName: $searchObjectName\nsubscriptionIdsFilter: $subscriptionIdsFilter\nincludeWhitelistedResults: $includeWhitelistedResults\nsids: $sids\nuserAccessObjectsFilter: $userAccessObjectsFilter\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
             if (fieldSpec == null)
             {
                 fieldSpec = new PolicyObjConnection() ;
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "policyObjs" + args + "{\n" +
+                "policyObjs" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11761,7 +12238,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "prechecksStatus" + args + "{\n" +
+                "prechecksStatus" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11779,7 +12256,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "prechecksStatusWithNextJobInfo" + args + "{\n" +
+                "prechecksStatusWithNextJobInfo" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11790,14 +12267,14 @@ namespace RubrikSecurityCloud.Types
             ref PrincipalDetails? fieldSpec
         )
         {
-            string args = "\n(\nsid: $sid\ntimelineDate: $timelineDate\n)";
+            string args = "\n(\nsid: $sid\ntimelineDate: $timelineDate\nincludeWhitelistedResults: $includeWhitelistedResults\n)";
             if (fieldSpec == null)
             {
                 fieldSpec = new PrincipalDetails() ;
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "principalDetails" + args + "{\n" +
+                "principalDetails" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11808,14 +12285,14 @@ namespace RubrikSecurityCloud.Types
             ref PrincipalObjectSummaryConnection? fieldSpec
         )
         {
-            string args = "\n(\nsids: $sids\nfilter: $filter\ntimelineDate: $timelineDate\nincludeCount: $includeCount\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
+            string args = "\n(\nsids: $sids\nfilter: $filter\ntimelineDate: $timelineDate\nincludeCount: $includeCount\nincludeWhitelistedResults: $includeWhitelistedResults\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
             if (fieldSpec == null)
             {
                 fieldSpec = new PrincipalObjectSummaryConnection() ;
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "principalObjectSummaries" + args + "{\n" +
+                "principalObjectSummaries" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11826,14 +12303,14 @@ namespace RubrikSecurityCloud.Types
             ref GetPrincipalRiskChangesReply? fieldSpec
         )
         {
-            string args = "\n(\nprincipalRiskSummaryPrincipalType: $principalRiskSummaryPrincipalType\nstartTime: $startTime\nendTime: $endTime\n)";
+            string args = "\n(\nprincipalRiskSummaryPrincipalType: $principalRiskSummaryPrincipalType\nlimit: $limit\nstartTime: $startTime\nendTime: $endTime\nincludeWhitelistedResults: $includeWhitelistedResults\n)";
             if (fieldSpec == null)
             {
                 fieldSpec = new GetPrincipalRiskChangesReply() ;
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "principalRiskChanges" + args + "{\n" +
+                "principalRiskChanges" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11844,14 +12321,14 @@ namespace RubrikSecurityCloud.Types
             ref GetPrincipalRiskTrendReply? fieldSpec
         )
         {
-            string args = "\n(\nsid: $sid\nstartTime: $startTime\nendTime: $endTime\npolicyId: $policyId\n)";
+            string args = "\n(\nsid: $sid\nstartTime: $startTime\nendTime: $endTime\npolicyId: $policyId\nincludeWhitelistedResults: $includeWhitelistedResults\n)";
             if (fieldSpec == null)
             {
                 fieldSpec = new GetPrincipalRiskTrendReply() ;
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "principalRiskTrend" + args + "{\n" +
+                "principalRiskTrend" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11862,14 +12339,14 @@ namespace RubrikSecurityCloud.Types
             ref PrincipalSummaryConnection? fieldSpec
         )
         {
-            string args = "\n(\nfilter: $filter\ntimelineDate: $timelineDate\nsort: $sort\nincludeCount: $includeCount\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
+            string args = "\n(\nfilter: $filter\ntimelineDate: $timelineDate\nsort: $sort\nincludeCount: $includeCount\nhistoricalDeltaDays: $historicalDeltaDays\nincludeWhitelistedResults: $includeWhitelistedResults\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
             if (fieldSpec == null)
             {
                 fieldSpec = new PrincipalSummaryConnection() ;
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "principalSummaries" + args + "{\n" +
+                "principalSummaries" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11887,7 +12364,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "processedRansomwareInvestigationWorkloadCount" + args + "{\n" +
+                "processedRansomwareInvestigationWorkloadCount" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11905,7 +12382,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "productDocumentation" + args + "{\n" +
+                "productDocumentation" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11923,7 +12400,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "protectedClustersForGlobalSla" + args + "{\n" +
+                "protectedClustersForGlobalSla" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11941,7 +12418,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "protectedObjectsConnection" + args + "{\n" +
+                "protectedObjectsConnection" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11959,7 +12436,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "protectedRansomwareInvestigationWorkloadCount" + args + "{\n" +
+                "protectedRansomwareInvestigationWorkloadCount" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11977,7 +12454,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "queryDatastoreFreespaceThresholds" + args + "{\n" +
+                "queryDatastoreFreespaceThresholds" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11995,7 +12472,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "radarClusterConnection" + args + "{\n" +
+                "radarClusterConnection" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12013,7 +12490,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "ransomwareDetectionWorkloadLocations" + args + "{\n" +
+                "ransomwareDetectionWorkloadLocations" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12031,7 +12508,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "ransomwareInvestigationAnalysisSummary" + args + "{\n" +
+                "ransomwareInvestigationAnalysisSummary" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12049,7 +12526,25 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "ransomwareInvestigationEnablement" + args + "{\n" +
+                "ransomwareInvestigationEnablement" + args + "\n{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> RansomwareInvestigationObjectsReply? RansomwareInvestigationObjects
+        // GraphQL -> ransomwareInvestigationObjects: RansomwareInvestigationObjectsReply! (type)
+        public static string RansomwareInvestigationObjects(
+            ref RansomwareInvestigationObjectsReply? fieldSpec
+        )
+        {
+            string args = "\n(\nbeginTime: $beginTime\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new RansomwareInvestigationObjectsReply() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "ransomwareInvestigationObjects" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12067,7 +12562,43 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "ransomwareInvestigationWorkloadScannedCount" + args + "{\n" +
+                "ransomwareInvestigationWorkloadScannedCount" + args + "\n{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> RansomwareMonitoringPipelineHealth? RansomwareMonitoringPipelineHealth
+        // GraphQL -> ransomwareMonitoringPipelineHealth: RansomwareMonitoringPipelineHealth! (type)
+        public static string RansomwareMonitoringPipelineHealth(
+            ref RansomwareMonitoringPipelineHealth? fieldSpec
+        )
+        {
+            string args = "\n(\nbeginTime: $beginTime\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new RansomwareMonitoringPipelineHealth() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "ransomwareMonitoringPipelineHealth" + args + "\n{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> RansomwareMonitoringTimelineAnalysis? RansomwareMonitoringTimelineAnalysis
+        // GraphQL -> ransomwareMonitoringTimelineAnalysis: RansomwareMonitoringTimelineAnalysis! (type)
+        public static string RansomwareMonitoringTimelineAnalysis(
+            ref RansomwareMonitoringTimelineAnalysis? fieldSpec
+        )
+        {
+            string args = "\n(\nbeginTime: $beginTime\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new RansomwareMonitoringTimelineAnalysis() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "ransomwareMonitoringTimelineAnalysis" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12085,7 +12616,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "ransomwareResult" + args + "{\n" +
+                "ransomwareResult" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12103,7 +12634,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "ransomwareResultOpt" + args + "{\n" +
+                "ransomwareResultOpt" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12121,7 +12652,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "ransomwareResults" + args + "{\n" +
+                "ransomwareResults" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12139,7 +12670,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "ransomwareResultsGrouped" + args + "{\n" +
+                "ransomwareResultsGrouped" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12157,7 +12688,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "rcsArchivalLocationsConsumptionStats" + args + "{\n" +
+                "rcsArchivalLocationsConsumptionStats" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12175,7 +12706,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "rcvAccountEntitlement" + args + "{\n" +
+                "rcvAccountEntitlement" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12193,7 +12724,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "rdsInstanceDetailsFromAws" + args + "{\n" +
+                "rdsInstanceDetailsFromAws" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12211,7 +12742,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "recoveryPermissionCheck" + args + "{\n" +
+                "recoveryPermissionCheck" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12229,7 +12760,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "recoveryPlanPermissionCheck" + args + "{\n" +
+                "recoveryPlanPermissionCheck" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12247,7 +12778,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "releasesNotes" + args + "{\n" +
+                "releasesNotes" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12265,7 +12796,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "replicationIncomingStats" + args + "{\n" +
+                "replicationIncomingStats" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12283,7 +12814,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "replicationOutgoingStats" + args + "{\n" +
+                "replicationOutgoingStats" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12301,7 +12832,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "replicationPairs" + args + "{\n" +
+                "replicationPairs" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12319,7 +12850,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "report" + args + "{\n" +
+                "report" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12337,7 +12868,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "reportChartData" + args + "{\n" +
+                "reportChartData" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12355,7 +12886,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "reportConfig" + args + "{\n" +
+                "reportConfig" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12373,7 +12904,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "reportConnection" + args + "{\n" +
+                "reportConnection" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12391,7 +12922,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "reportData" + args + "{\n" +
+                "reportData" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12409,7 +12940,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "reportFromConfig" + args + "{\n" +
+                "reportFromConfig" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12427,7 +12958,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "reportGroupByConnection" + args + "{\n" +
+                "reportGroupByConnection" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12445,7 +12976,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "reportSchema" + args + "{\n" +
+                "reportSchema" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12463,7 +12994,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "reportTableData" + args + "{\n" +
+                "reportTableData" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12481,7 +13012,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "reportVersion" + args + "{\n" +
+                "reportVersion" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12499,7 +13030,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "roleTemplates" + args + "{\n" +
+                "roleTemplates" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12517,7 +13048,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "rscAutoUpgradeInfo" + args + "{\n" +
+                "rscAutoUpgradeInfo" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12535,7 +13066,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "runningJobsStatus" + args + "{\n" +
+                "runningJobsStatus" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12553,7 +13084,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "s3BucketStateForRecovery" + args + "{\n" +
+                "s3BucketStateForRecovery" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12571,7 +13102,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "saasAppCascadingImpact" + args + "{\n" +
+                "saasAppCascadingImpact" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12589,7 +13120,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "saasAppItemOverlappingSnapshots" + args + "{\n" +
+                "saasAppItemOverlappingSnapshots" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12607,7 +13138,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "sapHanaDatabase" + args + "{\n" +
+                "sapHanaDatabase" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12625,7 +13156,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "sapHanaDatabases" + args + "{\n" +
+                "sapHanaDatabases" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12643,7 +13174,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "sapHanaLogSnapshot" + args + "{\n" +
+                "sapHanaLogSnapshot" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12661,7 +13192,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "sapHanaLogSnapshots" + args + "{\n" +
+                "sapHanaLogSnapshots" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12679,7 +13210,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "sapHanaRecoverableRange" + args + "{\n" +
+                "sapHanaRecoverableRange" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12697,7 +13228,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "sapHanaRecoverableRanges" + args + "{\n" +
+                "sapHanaRecoverableRanges" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12715,7 +13246,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "sapHanaSystem" + args + "{\n" +
+                "sapHanaSystem" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12733,7 +13264,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "sapHanaSystems" + args + "{\n" +
+                "sapHanaSystems" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12751,7 +13282,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "scheduledReport" + args + "{\n" +
+                "scheduledReport" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12769,7 +13300,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "scheduledReports" + args + "{\n" +
+                "scheduledReports" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12787,7 +13318,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "screenshotReport" + args + "{\n" +
+                "screenshotReport" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12805,7 +13336,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "searchFileByPrefix" + args + "{\n" +
+                "searchFileByPrefix" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12823,7 +13354,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "searchHost" + args + "{\n" +
+                "searchHost" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12841,7 +13372,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "searchNutanixVm" + args + "{\n" +
+                "searchNutanixVm" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12859,7 +13390,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "searchSnapMirrorCloud" + args + "{\n" +
+                "searchSnapMirrorCloud" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12877,7 +13408,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "searchSnappableConnection" + args + "{\n" +
+                "searchSnappableConnection" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12895,7 +13426,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "searchSnappableVersionedFiles" + args + "{\n" +
+                "searchSnappableVersionedFiles" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12913,7 +13444,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "searchVappFiles" + args + "{\n" +
+                "searchVappFiles" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12931,7 +13462,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "serviceAccounts" + args + "{\n" +
+                "serviceAccounts" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12949,7 +13480,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "serviceProviderMetadataFields" + args + "{\n" +
+                "serviceProviderMetadataFields" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12967,7 +13498,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "shareFileset" + args + "{\n" +
+                "shareFileset" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12985,7 +13516,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "sharepointSiteDescendants" + args + "{\n" +
+                "sharepointSiteDescendants" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13003,7 +13534,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "sharepointSiteSearch" + args + "{\n" +
+                "sharepointSiteSearch" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13021,7 +13552,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "sidsPolicyHitsSummary" + args + "{\n" +
+                "sidsPolicyHitsSummary" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13039,7 +13570,25 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "singleUnifiedFeatureFlag" + args + "{\n" +
+                "singleUnifiedFeatureFlag" + args + "\n{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> M365SkippedItemInfo? SkippedItemInfo
+        // GraphQL -> skippedItemInfo: M365SkippedItemInfo! (type)
+        public static string SkippedItemInfo(
+            ref M365SkippedItemInfo? fieldSpec
+        )
+        {
+            string args = "\n(\nworkloadFid: $workloadFid\nsnapshotFid: $snapshotFid\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new M365SkippedItemInfo() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "skippedItemInfo" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13057,7 +13606,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "slaArchivalValidationWarnings" + args + "{\n" +
+                "slaArchivalValidationWarnings" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13075,7 +13624,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "slaAuditDetail" + args + "{\n" +
+                "slaAuditDetail" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13093,7 +13642,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "slaDomainWithWarnings" + args + "{\n" +
+                "slaDomainWithWarnings" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13111,7 +13660,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "slaDomainWithWarningsList" + args + "{\n" +
+                "slaDomainWithWarningsList" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13129,7 +13678,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "slaDomains" + args + "{\n" +
+                "slaDomains" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13147,7 +13696,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "slaManagedVolume" + args + "{\n" +
+                "slaManagedVolume" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13165,7 +13714,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "slaManagedVolumes" + args + "{\n" +
+                "slaManagedVolumes" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13183,7 +13732,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "smbConfiguration" + args + "{\n" +
+                "smbConfiguration" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13201,7 +13750,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "smbDomains" + args + "{\n" +
+                "smbDomains" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13219,7 +13768,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "smtpConfiguration" + args + "{\n" +
+                "smtpConfiguration" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13237,7 +13786,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "snapMirrorCloud" + args + "{\n" +
+                "snapMirrorCloud" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13255,7 +13804,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "snapMirrorCloudSnapshotFiles" + args + "{\n" +
+                "snapMirrorCloudSnapshotFiles" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13273,7 +13822,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "snappableConnection" + args + "{\n" +
+                "snappableConnection" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13291,7 +13840,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "snappableContactSearch" + args + "{\n" +
+                "snappableContactSearch" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13309,7 +13858,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "snappableEmailSearch" + args + "{\n" +
+                "snappableEmailSearch" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13327,7 +13876,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "snappableEventSearch" + args + "{\n" +
+                "snappableEventSearch" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13345,7 +13894,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "snappableGroupByAtSpecifiedTimeConnection" + args + "{\n" +
+                "snappableGroupByAtSpecifiedTimeConnection" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13363,7 +13912,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "snappableGroupByConnection" + args + "{\n" +
+                "snappableGroupByConnection" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13381,7 +13930,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "snappableOnedriveSearch" + args + "{\n" +
+                "snappableOnedriveSearch" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13399,7 +13948,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "snappableSharepointDriveSearch" + args + "{\n" +
+                "snappableSharepointDriveSearch" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13417,7 +13966,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "snappableSharepointListSearch" + args + "{\n" +
+                "snappableSharepointListSearch" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13435,7 +13984,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "snappableTeamsConversationsSearch" + args + "{\n" +
+                "snappableTeamsConversationsSearch" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13453,7 +14002,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "snappableTeamsDriveSearch" + args + "{\n" +
+                "snappableTeamsDriveSearch" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13471,7 +14020,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "snappablesWithLegalHoldSnapshotsSummary" + args + "{\n" +
+                "snappablesWithLegalHoldSnapshotsSummary" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13489,7 +14038,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "snapshot" + args + "{\n" +
+                "snapshot" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13507,7 +14056,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "snapshotEmailSearch" + args + "{\n" +
+                "snapshotEmailSearch" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13525,7 +14074,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "snapshotEventSearch" + args + "{\n" +
+                "snapshotEventSearch" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13543,7 +14092,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "snapshotFilesDelta" + args + "{\n" +
+                "snapshotFilesDelta" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13561,7 +14110,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "snapshotFilesDeltaV2" + args + "{\n" +
+                "snapshotFilesDeltaV2" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13579,7 +14128,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "snapshotOfASnappableConnection" + args + "{\n" +
+                "snapshotOfASnappableConnection" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13597,7 +14146,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "snapshotOfSnappablesConnection" + args + "{\n" +
+                "snapshotOfSnappablesConnection" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13615,7 +14164,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "snapshotOnedriveSearch" + args + "{\n" +
+                "snapshotOnedriveSearch" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13633,7 +14182,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "snapshotResults" + args + "{\n" +
+                "snapshotResults" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13651,7 +14200,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "snapshotSharepointDriveSearch" + args + "{\n" +
+                "snapshotSharepointDriveSearch" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13669,7 +14218,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "snapshotsAnomalyInfo" + args + "{\n" +
+                "snapshotsAnomalyInfo" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13687,7 +14236,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "snapshotsForUnmanagedObject" + args + "{\n" +
+                "snapshotsForUnmanagedObject" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13705,7 +14254,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "snapshotsMalwareInfo" + args + "{\n" +
+                "snapshotsMalwareInfo" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13723,7 +14272,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "snmpConfigurations" + args + "{\n" +
+                "snmpConfigurations" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13741,7 +14290,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "sonarContentReport" + args + "{\n" +
+                "sonarContentReport" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13759,7 +14308,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "sonarReport" + args + "{\n" +
+                "sonarReport" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13777,7 +14326,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "sonarReportRow" + args + "{\n" +
+                "sonarReportRow" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13795,7 +14344,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "sonarUserGroups" + args + "{\n" +
+                "sonarUserGroups" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13813,7 +14362,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "sonarUsers" + args + "{\n" +
+                "sonarUsers" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13831,7 +14380,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "sourceBlueprintInfo" + args + "{\n" +
+                "sourceBlueprintInfo" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13849,7 +14398,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "supportBundle" + args + "{\n" +
+                "supportBundle" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13867,7 +14416,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "supportPortalRole" + args + "{\n" +
+                "supportPortalRole" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13885,7 +14434,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "supportUserAccesses" + args + "{\n" +
+                "supportUserAccesses" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13903,7 +14452,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "syslogConfiguration" + args + "{\n" +
+                "syslogConfiguration" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13921,7 +14470,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "syslogExportRules" + args + "{\n" +
+                "syslogExportRules" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13939,7 +14488,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "tableFilters" + args + "{\n" +
+                "tableFilters" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13957,7 +14506,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "targetMapping" + args + "{\n" +
+                "targetMapping" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13975,7 +14524,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "targets" + args + "{\n" +
+                "targets" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13993,7 +14542,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "taskDetailConnection" + args + "{\n" +
+                "taskDetailConnection" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14011,7 +14560,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "taskDetailGroupByConnection" + args + "{\n" +
+                "taskDetailGroupByConnection" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14029,7 +14578,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "taskSummaryConnection" + args + "{\n" +
+                "taskSummaryConnection" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14047,7 +14596,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "taskSummaryGroupByConnection" + args + "{\n" +
+                "taskSummaryGroupByConnection" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14065,7 +14614,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "taskchainInfo" + args + "{\n" +
+                "taskchainInfo" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14083,7 +14632,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "threatHuntDetail" + args + "{\n" +
+                "threatHuntDetail" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14101,7 +14650,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "threatHuntResult" + args + "{\n" +
+                "threatHuntResult" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14119,7 +14668,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "threatHuntStatus" + args + "{\n" +
+                "threatHuntStatus" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14137,7 +14686,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "threatHuntSummary" + args + "{\n" +
+                "threatHuntSummary" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14155,7 +14704,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "threatHunts" + args + "{\n" +
+                "threatHunts" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14166,14 +14715,14 @@ namespace RubrikSecurityCloud.Types
             ref ThreatMonitoringFileMatchDetailsReply? fieldSpec
         )
         {
-            string args = "\n(\nobjectFid: $objectFid\nfilename: $filename\n)";
+            string args = "\n(\nmatchId: $matchId\n)";
             if (fieldSpec == null)
             {
                 fieldSpec = new ThreatMonitoringFileMatchDetailsReply() ;
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "threatMonitoringMatchedFileDetails" + args + "{\n" +
+                "threatMonitoringMatchedFileDetails" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14191,7 +14740,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "threatMonitoringMatchedFiles" + args + "{\n" +
+                "threatMonitoringMatchedFiles" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14209,7 +14758,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "threatMonitoringMatchedObjects" + args + "{\n" +
+                "threatMonitoringMatchedObjects" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14227,7 +14776,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "topRiskPrincipals" + args + "{\n" +
+                "topRiskPrincipals" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14245,25 +14794,43 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "totpConfigStatus" + args + "{\n" +
+                "totpConfigStatus" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
 
-        //      C# -> TprConfigurationType? TprConfiguration
-        // GraphQL -> tprConfiguration: TprConfigurationType! (type)
+        //      C# -> GetTprConfigurationReply? TprConfiguration
+        // GraphQL -> tprConfiguration: GetTprConfigurationReply! (type)
         public static string TprConfiguration(
-            ref TprConfigurationType? fieldSpec
+            ref GetTprConfigurationReply? fieldSpec
         )
         {
             string args = "\n(\norgId: $orgId\n)";
             if (fieldSpec == null)
             {
-                fieldSpec = new TprConfigurationType() ;
+                fieldSpec = new GetTprConfigurationReply() ;
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "tprConfiguration" + args + "{\n" +
+                "tprConfiguration" + args + "\n{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> TprPolicyDetail? TprPolicyDetail
+        // GraphQL -> tprPolicyDetail: TprPolicyDetail! (type)
+        public static string TprPolicyDetail(
+            ref TprPolicyDetail? fieldSpec
+        )
+        {
+            string args = "\n(\ntprPolicyId: $tprPolicyId\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new TprPolicyDetail() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "tprPolicyDetail" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14281,7 +14848,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "tprRequestDetail" + args + "{\n" +
+                "tprRequestDetail" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14292,14 +14859,14 @@ namespace RubrikSecurityCloud.Types
             ref TprRequestSummaryConnection? fieldSpec
         )
         {
-            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilter: $filter\n)";
             if (fieldSpec == null)
             {
                 fieldSpec = new TprRequestSummaryConnection() ;
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "tprRequestSummaries" + args + "{\n" +
+                "tprRequestSummaries" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14317,7 +14884,25 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "tprRoleEligibility" + args + "{\n" +
+                "tprRoleEligibility" + args + "\n{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> TprRulesMap? TprRulesMap
+        // GraphQL -> tprRulesMap: TprRulesMap! (type)
+        public static string TprRulesMap(
+            ref TprRulesMap? fieldSpec
+        )
+        {
+            string args = "";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new TprRulesMap() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "tprRulesMap" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14335,7 +14920,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "tunnelStatus" + args + "{\n" +
+                "tunnelStatus" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14353,7 +14938,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "unmanagedObjects" + args + "{\n" +
+                "unmanagedObjects" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14371,7 +14956,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "upgradeStatus" + args + "{\n" +
+                "upgradeStatus" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14389,7 +14974,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "userAccessInsights" + args + "{\n" +
+                "userAccessInsights" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14407,7 +14992,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "userActivities" + args + "{\n" +
+                "userActivities" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14425,7 +15010,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "userActivityTimeline" + args + "{\n" +
+                "userActivityTimeline" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14443,7 +15028,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "userAnalyzerAccess" + args + "{\n" +
+                "userAnalyzerAccess" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14461,7 +15046,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "userAuditConnection" + args + "{\n" +
+                "userAuditConnection" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14479,7 +15064,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "userAuditGroupByConnection" + args + "{\n" +
+                "userAuditGroupByConnection" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14497,7 +15082,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "userDetail" + args + "{\n" +
+                "userDetail" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14515,7 +15100,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "userFileActivityTimeline" + args + "{\n" +
+                "userFileActivityTimeline" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14533,7 +15118,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "userGroups" + args + "{\n" +
+                "userGroups" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14551,7 +15136,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "userNotifications" + args + "{\n" +
+                "userNotifications" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14569,7 +15154,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "userSessionManagementConfig" + args + "{\n" +
+                "userSessionManagementConfig" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14587,7 +15172,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "userSettings" + args + "{\n" +
+                "userSettings" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14605,7 +15190,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "usersInCurrentAndDescendantOrganization" + args + "{\n" +
+                "usersInCurrentAndDescendantOrganization" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14623,7 +15208,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "usersSummary" + args + "{\n" +
+                "usersSummary" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14641,7 +15226,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vCenterAdvancedTagPreview" + args + "{\n" +
+                "vCenterAdvancedTagPreview" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14659,7 +15244,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vCenterHotAddBandwidth" + args + "{\n" +
+                "vCenterHotAddBandwidth" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14677,7 +15262,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vCenterHotAddNetwork" + args + "{\n" +
+                "vCenterHotAddNetwork" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14695,7 +15280,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vCenterNetworks" + args + "{\n" +
+                "vCenterNetworks" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14713,7 +15298,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vCenterPreAddInfo" + args + "{\n" +
+                "vCenterPreAddInfo" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14731,7 +15316,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vSphereBlueprint" + args + "{\n" +
+                "vSphereBlueprint" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14749,7 +15334,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vSphereComputeCluster" + args + "{\n" +
+                "vSphereComputeCluster" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14767,7 +15352,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vSphereComputeClusters" + args + "{\n" +
+                "vSphereComputeClusters" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14785,7 +15370,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vSphereDatacenter" + args + "{\n" +
+                "vSphereDatacenter" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14803,7 +15388,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vSphereDatastore" + args + "{\n" +
+                "vSphereDatastore" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14821,7 +15406,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vSphereDatastoreCluster" + args + "{\n" +
+                "vSphereDatastoreCluster" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14839,7 +15424,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vSphereDatastoreClusters" + args + "{\n" +
+                "vSphereDatastoreClusters" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14857,7 +15442,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vSphereDatastoreConnection" + args + "{\n" +
+                "vSphereDatastoreConnection" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14875,7 +15460,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vSphereFolder" + args + "{\n" +
+                "vSphereFolder" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14893,7 +15478,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vSphereHost" + args + "{\n" +
+                "vSphereHost" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14911,7 +15496,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vSphereHostConnection" + args + "{\n" +
+                "vSphereHostConnection" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14929,7 +15514,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vSphereHostDetails" + args + "{\n" +
+                "vSphereHostDetails" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14947,7 +15532,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vSphereHostsByFids" + args + "{\n" +
+                "vSphereHostsByFids" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14965,7 +15550,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vSphereLiveMounts" + args + "{\n" +
+                "vSphereLiveMounts" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14983,7 +15568,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vSphereMount" + args + "{\n" +
+                "vSphereMount" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -15001,7 +15586,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vSphereMountConnection" + args + "{\n" +
+                "vSphereMountConnection" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -15019,7 +15604,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vSphereNetwork" + args + "{\n" +
+                "vSphereNetwork" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -15037,7 +15622,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vSphereResourcePool" + args + "{\n" +
+                "vSphereResourcePool" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -15055,7 +15640,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vSphereRootRecoveryHierarchy" + args + "{\n" +
+                "vSphereRootRecoveryHierarchy" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -15073,7 +15658,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vSphereTag" + args + "{\n" +
+                "vSphereTag" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -15091,7 +15676,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vSphereTagCategory" + args + "{\n" +
+                "vSphereTagCategory" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -15109,7 +15694,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vSphereTopLevelDescendantsConnection" + args + "{\n" +
+                "vSphereTopLevelDescendantsConnection" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -15127,7 +15712,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vSphereVCenter" + args + "{\n" +
+                "vSphereVCenter" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -15145,7 +15730,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vSphereVCenterConnection" + args + "{\n" +
+                "vSphereVCenterConnection" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -15163,7 +15748,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vSphereVMAsyncRequestStatus" + args + "{\n" +
+                "vSphereVMAsyncRequestStatus" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -15181,7 +15766,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vSphereVmNew" + args + "{\n" +
+                "vSphereVmNew" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -15199,7 +15784,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vSphereVmNewConnection" + args + "{\n" +
+                "vSphereVmNewConnection" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -15217,7 +15802,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "validateAwsNativeRdsClusterNameForExport" + args + "{\n" +
+                "validateAwsNativeRdsClusterNameForExport" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -15235,7 +15820,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "validateAwsNativeRdsInstanceNameForExport" + args + "{\n" +
+                "validateAwsNativeRdsInstanceNameForExport" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -15253,7 +15838,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "validateAzureCloudAccountExocomputeConfigurations" + args + "{\n" +
+                "validateAzureCloudAccountExocomputeConfigurations" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -15271,7 +15856,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "validateAzureNativeSqlDatabaseDbNameForExport" + args + "{\n" +
+                "validateAzureNativeSqlDatabaseDbNameForExport" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -15289,7 +15874,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "validateAzureNativeSqlManagedInstanceDbNameForExport" + args + "{\n" +
+                "validateAzureNativeSqlManagedInstanceDbNameForExport" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -15307,7 +15892,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "validateCertificate" + args + "{\n" +
+                "validateCertificate" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -15325,7 +15910,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "validateClusterLicenseCapacity" + args + "{\n" +
+                "validateClusterLicenseCapacity" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -15343,7 +15928,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "validateOrgName" + args + "{\n" +
+                "validateOrgName" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -15361,7 +15946,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vappSnapshotExportOptions" + args + "{\n" +
+                "vappSnapshotExportOptions" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -15379,7 +15964,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vappSnapshotInstantRecoveryOptions" + args + "{\n" +
+                "vappSnapshotInstantRecoveryOptions" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -15397,7 +15982,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vappTemplateSnapshotExportOptions" + args + "{\n" +
+                "vappTemplateSnapshotExportOptions" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -15415,7 +16000,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vcd" + args + "{\n" +
+                "vcd" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -15433,7 +16018,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vcdCatalog" + args + "{\n" +
+                "vcdCatalog" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -15451,7 +16036,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vcdClusters" + args + "{\n" +
+                "vcdClusters" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -15469,7 +16054,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vcdOrg" + args + "{\n" +
+                "vcdOrg" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -15487,7 +16072,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vcdOrgVdc" + args + "{\n" +
+                "vcdOrgVdc" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -15505,7 +16090,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vcdOrgs" + args + "{\n" +
+                "vcdOrgs" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -15523,7 +16108,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vcdTopLevelDescendants" + args + "{\n" +
+                "vcdTopLevelDescendants" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -15541,7 +16126,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vcdVapp" + args + "{\n" +
+                "vcdVapp" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -15559,7 +16144,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vcdVappVms" + args + "{\n" +
+                "vcdVappVms" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -15577,7 +16162,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vcdVapps" + args + "{\n" +
+                "vcdVapps" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -15595,7 +16180,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vcdVimServer" + args + "{\n" +
+                "vcdVimServer" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -15613,25 +16198,25 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vcdVimServers" + args + "{\n" +
+                "vcdVimServers" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
 
-        //      C# -> VerifySlaWithReplicationToClusterResp? VerifySlaWithReplicationToCluster
-        // GraphQL -> verifySLAWithReplicationToCluster: VerifySLAWithReplicationToClusterResp! (type)
+        //      C# -> VerifySlaWithReplicationToClusterResponse? VerifySlaWithReplicationToCluster
+        // GraphQL -> verifySlaWithReplicationToCluster: VerifySlaWithReplicationToClusterResponse! (type)
         public static string VerifySlaWithReplicationToCluster(
-            ref VerifySlaWithReplicationToClusterResp? fieldSpec
+            ref VerifySlaWithReplicationToClusterResponse? fieldSpec
         )
         {
             string args = "\n(\ncdmClusterUUID: $cdmClusterUUID\nincludeArchived: $includeArchived\n)";
             if (fieldSpec == null)
             {
-                fieldSpec = new VerifySlaWithReplicationToClusterResp() ;
+                fieldSpec = new VerifySlaWithReplicationToClusterResponse() ;
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "verifySLAWithReplicationToCluster" + args + "{\n" +
+                "verifySlaWithReplicationToCluster" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -15649,7 +16234,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vmwareVmsRecoveryPermissionCheck" + args + "{\n" +
+                "vmwareVmsRecoveryPermissionCheck" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -15667,7 +16252,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "volumeGroup" + args + "{\n" +
+                "volumeGroup" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -15685,7 +16270,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "volumeGroupConnection" + args + "{\n" +
+                "volumeGroupConnection" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -15703,7 +16288,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "volumeGroupMounts" + args + "{\n" +
+                "volumeGroupMounts" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -15721,7 +16306,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vsphereVMMissedRecoverableRange" + args + "{\n" +
+                "vsphereVMMissedRecoverableRange" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -15739,7 +16324,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vsphereVMRecoverableRange" + args + "{\n" +
+                "vsphereVMRecoverableRange" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -15757,7 +16342,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vsphereVMRecoverableRangeInBatch" + args + "{\n" +
+                "vsphereVMRecoverableRangeInBatch" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -15775,7 +16360,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "vsphereVmwareCdpLiveInfo" + args + "{\n" +
+                "vsphereVmwareCdpLiveInfo" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -15793,7 +16378,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "windowsCluster" + args + "{\n" +
+                "windowsCluster" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -15811,7 +16396,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "windowsFileset" + args + "{\n" +
+                "windowsFileset" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -15829,7 +16414,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "workloadAlertSetting" + args + "{\n" +
+                "workloadAlertSetting" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -15847,7 +16432,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "workloadAnomalies" + args + "{\n" +
+                "workloadAnomalies" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -15865,7 +16450,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "workloadGroupByAtSpecifiedTime" + args + "{\n" +
+                "workloadGroupByAtSpecifiedTime" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -15883,7 +16468,7 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
-                "wwwTlsCert" + args + "{\n" +
+                "wwwTlsCert" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }

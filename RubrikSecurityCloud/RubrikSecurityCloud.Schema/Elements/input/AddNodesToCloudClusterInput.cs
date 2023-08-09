@@ -24,6 +24,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("numberOfNodes")]
         public System.Int32? NumberOfNodes { get; set; }
 
+        //      C# -> System.Boolean? ShouldKeepResourcesOnFailure
+        // GraphQL -> shouldKeepResourcesOnFailure: Boolean (scalar)
+        [JsonProperty("shouldKeepResourcesOnFailure")]
+        public System.Boolean? ShouldKeepResourcesOnFailure { get; set; }
+
         //      C# -> System.String? CloudAccountId
         // GraphQL -> cloudAccountId: UUID! (scalar)
         [Required]

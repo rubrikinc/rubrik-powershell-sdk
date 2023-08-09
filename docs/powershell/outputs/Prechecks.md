@@ -11,6 +11,8 @@ List of all the prechecks.
   - Migration status.
 - precheckType: PrecheckType
   - Migration status.
+- migrationPrecheckType: MigrationPrecheckType
+  - Migration Precheck Type.
 - precheckStatus: PrecheckStatus
   - Migration status.
 - summary: PrecheckMessage

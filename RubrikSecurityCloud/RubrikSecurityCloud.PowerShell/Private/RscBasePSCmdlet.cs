@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,72 +12,19 @@ using RubrikSecurityCloud.NetSDK.Client;
 using RubrikSecurityCloud.NetSDK.Client.Models.Authentication;
 using RubrikSecurityCloud;
 using RubrikSecurityCloud.Types;
+using GraphQL;
 
 namespace RubrikSecurityCloud.PowerShell.Private
 {
     /// <summary>
-    /// Base class for all Rubrik Security Cloud PowerShell cmdlets.
+    /// Base class for all RSC PowerShell cmdlets.
     /// </summary>
     public class RscBasePSCmdlet : PSCmdlet
     {
-        /// <summary>
-        /// Input: Operation to run. Overridden by operation switches.
-        /// </summary>
-        [Parameter(
-            Mandatory = false,
-            Position = 1,
-            ValueFromPipeline = true,
-            ValueFromPipelineByPropertyName = true)]
-        public string Op { get; set; }
-
-        /// <summary>
-        /// Input: Arguments to the operation. Overridden by argument parameters.
-        /// </summary>
-        [Parameter(
-            Mandatory = false,
-            Position = 2,
-            ValueFromPipeline = true,
-            ValueFromPipelineByPropertyName = true)]
-        public object Arg { get; set; }
-
-        /// <summary>
-        /// An object that represents the fields that need to be returned
-        /// for a given query. Each property on this object that does not
-        /// have a null value (actual values don’t matter) will be included 
-        /// in the API request.
-        /// </summary>
-        [Parameter(
-            Mandatory = false,
-            Position = 3,
-            ValueFromPipeline = true,
-            ValueFromPipelineByPropertyName = true)]
-        public object Field { get; set; }
-
-        /// <summary>
-        /// Returns an object that contains the Op, Arg and Field inputs
-        /// that would be used to run the operation.
-        /// </summary>
-        [Parameter(
-            Mandatory = false,
-            Position = 4,
-            ValueFromPipeline = false)]
-        public SwitchParameter GetInputs { get; set; }
-
-        /// <summary>
-        /// The input profile determines how inputs to the operation
-        /// should be automatically set if they are not explicitly given
-        /// as parameters.
-        /// </summary>
-        [Parameter(
-            Mandatory = false,
-            Position = 5,
-            ValueFromPipeline = false)]
-        public Exploration.Profile InputProfile { get; set; }
-
         internal RscLogger _logger = null;
 
         /// <summary>
-        /// Create a new Rubrik Security Cloud PowerShell cmdlet.
+        /// Create a new RSC PowerShell cmdlet.
         /// </summary>
         public RscBasePSCmdlet()
         {
@@ -86,12 +34,7 @@ namespace RubrikSecurityCloud.PowerShell.Private
         protected override void BeginProcessing()
         {
             base.BeginProcessing();
-            Exploration.Init(this.InputProfile);
             this._logger.Debug(CmdletParametersReport());
-            if (string.IsNullOrEmpty(Op))
-            {
-                Op = ParameterSetName ;
-            }
         }
 
         protected override void EndProcessing()
@@ -164,7 +107,7 @@ namespace RubrikSecurityCloud.PowerShell.Private
                     }
 
                     // Display actual type for Object:
-                    if (propType is Object && propVal != null)
+                    if (propType is System.Object && propVal != null)
                     {
                         propTypeName = propVal.GetType().Name;
                     }
@@ -178,8 +121,6 @@ namespace RubrikSecurityCloud.PowerShell.Private
             }
             return string.Join("\n", lines);
         }
-
     }
-
 }
 

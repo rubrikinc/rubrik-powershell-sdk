@@ -39,10 +39,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shouldCancelBackupOnPreBackupScriptFailure")]
         public System.Boolean? ShouldCancelBackupOnPreBackupScriptFailure { get; set; }
 
-        //      C# -> ManagedVolumeLogConfigInput? LogConfig
-        // GraphQL -> logConfig: ManagedVolumeLogConfigInput (input)
-        [JsonProperty("logConfig")]
-        public ManagedVolumeLogConfigInput? LogConfig { get; set; }
+        //      C# -> System.Boolean? ShouldEnableLogExport
+        // GraphQL -> shouldEnableLogExport: Boolean (scalar)
+        [JsonProperty("shouldEnableLogExport")]
+        public System.Boolean? ShouldEnableLogExport { get; set; }
 
         //      C# -> SlaManagedVolumeScriptConfigInput? BackupScript
         // GraphQL -> backupScript: SlaManagedVolumeScriptConfigInput! (input)

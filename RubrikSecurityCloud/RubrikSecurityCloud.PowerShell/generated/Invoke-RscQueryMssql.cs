@@ -21,18 +21,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "Invoke",
         "RscQueryMssql",
-        DefaultParameterSetName = "Database")
+        DefaultParameterSetName = "Instance")
     ]
     public class Invoke_RscQueryMssql : RscPSCmdlet
     {
         
         // -------------------------------------------------------------------
-        // TopLevelDescendant parameter set
+        // TopLevelDescendants parameter set
         //
         // [GraphQL: mssqlTopLevelDescendants]
         //
         [Parameter(
-            ParameterSetName = "TopLevelDescendant",
+            ParameterSetName = "TopLevelDescendants",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -41,16 +41,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: mssqlTopLevelDescendants]",
             Position = 0
         )]
-        public SwitchParameter TopLevelDescendant { get; set; }
+        public SwitchParameter TopLevelDescendants { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Database parameter set
+        // Databases parameter set
         //
         // [GraphQL: mssqlDatabases]
         //
         [Parameter(
-            ParameterSetName = "Database",
+            ParameterSetName = "Databases",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -59,7 +59,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: mssqlDatabases]",
             Position = 0
         )]
-        public SwitchParameter Database { get; set; }
+        public SwitchParameter Databases { get; set; }
 
         
         // -------------------------------------------------------------------
@@ -99,12 +99,30 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         
         // -------------------------------------------------------------------
-        // RecoverableRange parameter set
+        // Database parameter set
+        //
+        // [GraphQL: mssqlDatabase]
+        //
+        [Parameter(
+            ParameterSetName = "Database",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"A Microsoft SQL Database.
+[GraphQL: mssqlDatabase]",
+            Position = 0
+        )]
+        public SwitchParameter Database { get; set; }
+
+        
+        // -------------------------------------------------------------------
+        // RecoverableRanges parameter set
         //
         // [GraphQL: mssqlRecoverableRanges]
         //
         [Parameter(
-            ParameterSetName = "RecoverableRange",
+            ParameterSetName = "RecoverableRanges",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -113,16 +131,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: mssqlRecoverableRanges]",
             Position = 0
         )]
-        public SwitchParameter RecoverableRange { get; set; }
+        public SwitchParameter RecoverableRanges { get; set; }
 
         
         // -------------------------------------------------------------------
-        // DatabaseMissedSnapshot parameter set
+        // DatabaseMissedSnapshots parameter set
         //
         // [GraphQL: mssqlDatabaseMissedSnapshots]
         //
         [Parameter(
-            ParameterSetName = "DatabaseMissedSnapshot",
+            ParameterSetName = "DatabaseMissedSnapshots",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -131,16 +149,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: mssqlDatabaseMissedSnapshots]",
             Position = 0
         )]
-        public SwitchParameter DatabaseMissedSnapshot { get; set; }
+        public SwitchParameter DatabaseMissedSnapshots { get; set; }
 
         
         // -------------------------------------------------------------------
-        // CompatibleInstance parameter set
+        // CompatibleInstances parameter set
         //
         // [GraphQL: mssqlCompatibleInstances]
         //
         [Parameter(
-            ParameterSetName = "CompatibleInstance",
+            ParameterSetName = "CompatibleInstances",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -149,16 +167,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: mssqlCompatibleInstances]",
             Position = 0
         )]
-        public SwitchParameter CompatibleInstance { get; set; }
+        public SwitchParameter CompatibleInstances { get; set; }
 
         
         // -------------------------------------------------------------------
-        // DatabaseMissedRecoverableRange parameter set
+        // DatabaseMissedRecoverableRanges parameter set
         //
         // [GraphQL: mssqlDatabaseMissedRecoverableRanges]
         //
         [Parameter(
-            ParameterSetName = "DatabaseMissedRecoverableRange",
+            ParameterSetName = "DatabaseMissedRecoverableRanges",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -167,16 +185,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: mssqlDatabaseMissedRecoverableRanges]",
             Position = 0
         )]
-        public SwitchParameter DatabaseMissedRecoverableRange { get; set; }
+        public SwitchParameter DatabaseMissedRecoverableRanges { get; set; }
 
         
         // -------------------------------------------------------------------
-        // AllDatabaseRestoreFile parameter set
+        // AllDatabaseRestoreFiles parameter set
         //
         // [GraphQL: allMssqlDatabaseRestoreFiles]
         //
         [Parameter(
-            ParameterSetName = "AllDatabaseRestoreFile",
+            ParameterSetName = "AllDatabaseRestoreFiles",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -185,16 +203,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: allMssqlDatabaseRestoreFiles]",
             Position = 0
         )]
-        public SwitchParameter AllDatabaseRestoreFile { get; set; }
+        public SwitchParameter AllDatabaseRestoreFiles { get; set; }
 
         
         // -------------------------------------------------------------------
-        // DatabaseLiveMount parameter set
+        // DatabaseLiveMounts parameter set
         //
         // [GraphQL: mssqlDatabaseLiveMounts]
         //
         [Parameter(
-            ParameterSetName = "DatabaseLiveMount",
+            ParameterSetName = "DatabaseLiveMounts",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -203,16 +221,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: mssqlDatabaseLiveMounts]",
             Position = 0
         )]
-        public SwitchParameter DatabaseLiveMount { get; set; }
+        public SwitchParameter DatabaseLiveMounts { get; set; }
 
         
         // -------------------------------------------------------------------
-        // DefaultPropertie parameter set
+        // DefaultProperties parameter set
         //
         // [GraphQL: mssqlDefaultProperties]
         //
         [Parameter(
-            ParameterSetName = "DefaultPropertie",
+            ParameterSetName = "DefaultProperties",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -221,7 +239,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: mssqlDefaultProperties]",
             Position = 0
         )]
-        public SwitchParameter DefaultPropertie { get; set; }
+        public SwitchParameter DefaultProperties { get; set; }
 
         
         // -------------------------------------------------------------------
@@ -243,12 +261,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         
         // -------------------------------------------------------------------
-        // CdmLogShippingTarget parameter set
+        // CdmLogShippingTargets parameter set
         //
         // [GraphQL: cdmMssqlLogShippingTargets]
         //
         [Parameter(
-            ParameterSetName = "CdmLogShippingTarget",
+            ParameterSetName = "CdmLogShippingTargets",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -257,16 +275,34 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: cdmMssqlLogShippingTargets]",
             Position = 0
         )]
+        public SwitchParameter CdmLogShippingTargets { get; set; }
+
+        
+        // -------------------------------------------------------------------
+        // CdmLogShippingTarget parameter set
+        //
+        // [GraphQL: cdmMssqlLogShippingTarget]
+        //
+        [Parameter(
+            ParameterSetName = "CdmLogShippingTarget",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"A single Microsoft SQL log shipping target.
+[GraphQL: cdmMssqlLogShippingTarget]",
+            Position = 0
+        )]
         public SwitchParameter CdmLogShippingTarget { get; set; }
 
         
         // -------------------------------------------------------------------
-        // LogShippingTarget parameter set
+        // LogShippingTargets parameter set
         //
         // [GraphQL: mssqlLogShippingTargets]
         //
         [Parameter(
-            ParameterSetName = "LogShippingTarget",
+            ParameterSetName = "LogShippingTargets",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -275,7 +311,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: mssqlLogShippingTargets]",
             Position = 0
         )]
-        public SwitchParameter LogShippingTarget { get; set; }
+        public SwitchParameter LogShippingTargets { get; set; }
 
 
         protected override void ProcessRecord()
@@ -284,11 +320,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             {
                 switch(Op)
                 {
-                    case "TopLevelDescendant":
-                        this.ProcessRecord_TopLevelDescendant();
+                    case "TopLevelDescendants":
+                        this.ProcessRecord_TopLevelDescendants();
                         break;
-                    case "Database":
-                        this.ProcessRecord_Database();
+                    case "Databases":
+                        this.ProcessRecord_Databases();
                         break;
                     case "AvailabilityGroup":
                         this.ProcessRecord_AvailabilityGroup();
@@ -296,35 +332,41 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "Instance":
                         this.ProcessRecord_Instance();
                         break;
-                    case "RecoverableRange":
-                        this.ProcessRecord_RecoverableRange();
+                    case "Database":
+                        this.ProcessRecord_Database();
                         break;
-                    case "DatabaseMissedSnapshot":
-                        this.ProcessRecord_DatabaseMissedSnapshot();
+                    case "RecoverableRanges":
+                        this.ProcessRecord_RecoverableRanges();
                         break;
-                    case "CompatibleInstance":
-                        this.ProcessRecord_CompatibleInstance();
+                    case "DatabaseMissedSnapshots":
+                        this.ProcessRecord_DatabaseMissedSnapshots();
                         break;
-                    case "DatabaseMissedRecoverableRange":
-                        this.ProcessRecord_DatabaseMissedRecoverableRange();
+                    case "CompatibleInstances":
+                        this.ProcessRecord_CompatibleInstances();
                         break;
-                    case "AllDatabaseRestoreFile":
-                        this.ProcessRecord_AllDatabaseRestoreFile();
+                    case "DatabaseMissedRecoverableRanges":
+                        this.ProcessRecord_DatabaseMissedRecoverableRanges();
                         break;
-                    case "DatabaseLiveMount":
-                        this.ProcessRecord_DatabaseLiveMount();
+                    case "AllDatabaseRestoreFiles":
+                        this.ProcessRecord_AllDatabaseRestoreFiles();
                         break;
-                    case "DefaultPropertie":
-                        this.ProcessRecord_DefaultPropertie();
+                    case "DatabaseLiveMounts":
+                        this.ProcessRecord_DatabaseLiveMounts();
+                        break;
+                    case "DefaultProperties":
+                        this.ProcessRecord_DefaultProperties();
                         break;
                     case "DatabaseRestoreEstimate":
                         this.ProcessRecord_DatabaseRestoreEstimate();
                         break;
+                    case "CdmLogShippingTargets":
+                        this.ProcessRecord_CdmLogShippingTargets();
+                        break;
                     case "CdmLogShippingTarget":
                         this.ProcessRecord_CdmLogShippingTarget();
                         break;
-                    case "LogShippingTarget":
-                        this.ProcessRecord_LogShippingTarget();
+                    case "LogShippingTargets":
+                        this.ProcessRecord_LogShippingTargets();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -338,18 +380,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // mssqlTopLevelDescendants.
-        protected void ProcessRecord_TopLevelDescendant()
+        protected void ProcessRecord_TopLevelDescendants()
         {
-            this._logger.name += " -TopLevelDescendant";
+            this._logger.name += " -TopLevelDescendants";
             // Invoke graphql operation mssqlTopLevelDescendants
             InvokeQueryMssqlTopLevelDescendants();
         }
 
         // This parameter set invokes a single graphql operation:
         // mssqlDatabases.
-        protected void ProcessRecord_Database()
+        protected void ProcessRecord_Databases()
         {
-            this._logger.name += " -Database";
+            this._logger.name += " -Databases";
             // Invoke graphql operation mssqlDatabases
             InvokeQueryMssqlDatabases();
         }
@@ -373,64 +415,73 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // mssqlRecoverableRanges.
-        protected void ProcessRecord_RecoverableRange()
+        // mssqlDatabase.
+        protected void ProcessRecord_Database()
         {
-            this._logger.name += " -RecoverableRange";
+            this._logger.name += " -Database";
+            // Invoke graphql operation mssqlDatabase
+            InvokeQueryMssqlDatabase();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // mssqlRecoverableRanges.
+        protected void ProcessRecord_RecoverableRanges()
+        {
+            this._logger.name += " -RecoverableRanges";
             // Invoke graphql operation mssqlRecoverableRanges
             InvokeQueryMssqlRecoverableRanges();
         }
 
         // This parameter set invokes a single graphql operation:
         // mssqlDatabaseMissedSnapshots.
-        protected void ProcessRecord_DatabaseMissedSnapshot()
+        protected void ProcessRecord_DatabaseMissedSnapshots()
         {
-            this._logger.name += " -DatabaseMissedSnapshot";
+            this._logger.name += " -DatabaseMissedSnapshots";
             // Invoke graphql operation mssqlDatabaseMissedSnapshots
             InvokeQueryMssqlDatabaseMissedSnapshots();
         }
 
         // This parameter set invokes a single graphql operation:
         // mssqlCompatibleInstances.
-        protected void ProcessRecord_CompatibleInstance()
+        protected void ProcessRecord_CompatibleInstances()
         {
-            this._logger.name += " -CompatibleInstance";
+            this._logger.name += " -CompatibleInstances";
             // Invoke graphql operation mssqlCompatibleInstances
             InvokeQueryMssqlCompatibleInstances();
         }
 
         // This parameter set invokes a single graphql operation:
         // mssqlDatabaseMissedRecoverableRanges.
-        protected void ProcessRecord_DatabaseMissedRecoverableRange()
+        protected void ProcessRecord_DatabaseMissedRecoverableRanges()
         {
-            this._logger.name += " -DatabaseMissedRecoverableRange";
+            this._logger.name += " -DatabaseMissedRecoverableRanges";
             // Invoke graphql operation mssqlDatabaseMissedRecoverableRanges
             InvokeQueryMssqlDatabaseMissedRecoverableRanges();
         }
 
         // This parameter set invokes a single graphql operation:
         // allMssqlDatabaseRestoreFiles.
-        protected void ProcessRecord_AllDatabaseRestoreFile()
+        protected void ProcessRecord_AllDatabaseRestoreFiles()
         {
-            this._logger.name += " -AllDatabaseRestoreFile";
+            this._logger.name += " -AllDatabaseRestoreFiles";
             // Invoke graphql operation allMssqlDatabaseRestoreFiles
             InvokeQueryAllMssqlDatabaseRestoreFiles();
         }
 
         // This parameter set invokes a single graphql operation:
         // mssqlDatabaseLiveMounts.
-        protected void ProcessRecord_DatabaseLiveMount()
+        protected void ProcessRecord_DatabaseLiveMounts()
         {
-            this._logger.name += " -DatabaseLiveMount";
+            this._logger.name += " -DatabaseLiveMounts";
             // Invoke graphql operation mssqlDatabaseLiveMounts
             InvokeQueryMssqlDatabaseLiveMounts();
         }
 
         // This parameter set invokes a single graphql operation:
         // mssqlDefaultProperties.
-        protected void ProcessRecord_DefaultPropertie()
+        protected void ProcessRecord_DefaultProperties()
         {
-            this._logger.name += " -DefaultPropertie";
+            this._logger.name += " -DefaultProperties";
             // Invoke graphql operation mssqlDefaultProperties
             InvokeQueryMssqlDefaultProperties();
         }
@@ -446,18 +497,27 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // cdmMssqlLogShippingTargets.
-        protected void ProcessRecord_CdmLogShippingTarget()
+        protected void ProcessRecord_CdmLogShippingTargets()
         {
-            this._logger.name += " -CdmLogShippingTarget";
+            this._logger.name += " -CdmLogShippingTargets";
             // Invoke graphql operation cdmMssqlLogShippingTargets
             InvokeQueryCdmMssqlLogShippingTargets();
         }
 
         // This parameter set invokes a single graphql operation:
-        // mssqlLogShippingTargets.
-        protected void ProcessRecord_LogShippingTarget()
+        // cdmMssqlLogShippingTarget.
+        protected void ProcessRecord_CdmLogShippingTarget()
         {
-            this._logger.name += " -LogShippingTarget";
+            this._logger.name += " -CdmLogShippingTarget";
+            // Invoke graphql operation cdmMssqlLogShippingTarget
+            InvokeQueryCdmMssqlLogShippingTarget();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // mssqlLogShippingTargets.
+        protected void ProcessRecord_LogShippingTargets()
+        {
+            this._logger.name += " -LogShippingTargets";
             // Invoke graphql operation mssqlLogShippingTargets
             InvokeQueryMssqlLogShippingTargets();
         }
@@ -482,33 +542,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("typeFilter", "[HierarchyObjectTypeEnum!]"),
                 Tuple.Create("filter", "[Filter!]"),
             };
-            MssqlTopLevelDescendantTypeConnection? fields = null ;
-            if (this.Field != null)
-            {
+            MssqlTopLevelDescendantTypeConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (MssqlTopLevelDescendantTypeConnection)psObject.BaseObject;
+                    fieldSpecObj = (MssqlTopLevelDescendantTypeConnection)psObject.BaseObject;
                 } else {
-                    fields = (MssqlTopLevelDescendantTypeConnection)this.Field;
+                    fieldSpecObj = (MssqlTopLevelDescendantTypeConnection)this.Field;
                 }
             }
-            string document = Query.MssqlTopLevelDescendants(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.MssqlTopLevelDescendants");
-            var parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$typeFilter: [HierarchyObjectTypeEnum!],$filter: [Filter!])\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryMssqlTopLevelDescendants" + parameters + "{" + document + "}",
-                OperationName = "QueryMssqlTopLevelDescendants",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "MssqlTopLevelDescendantTypeConnection", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.MssqlTopLevelDescendants(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryMssqlTopLevelDescendants",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$typeFilter: [HierarchyObjectTypeEnum!],$filter: [Filter!])",
+                fieldSpecDoc,
+                "MssqlTopLevelDescendantTypeConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -528,33 +579,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
             };
-            MssqlDatabaseConnection? fields = null ;
-            if (this.Field != null)
-            {
+            MssqlDatabaseConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (MssqlDatabaseConnection)psObject.BaseObject;
+                    fieldSpecObj = (MssqlDatabaseConnection)psObject.BaseObject;
                 } else {
-                    fields = (MssqlDatabaseConnection)this.Field;
+                    fieldSpecObj = (MssqlDatabaseConnection)this.Field;
                 }
             }
-            string document = Query.MssqlDatabases(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.MssqlDatabases");
-            var parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryMssqlDatabases" + parameters + "{" + document + "}",
-                OperationName = "QueryMssqlDatabases",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "MssqlDatabaseConnection", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.MssqlDatabases(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryMssqlDatabases",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                fieldSpecDoc,
+                "MssqlDatabaseConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -564,33 +606,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            MssqlAvailabilityGroup? fields = null ;
-            if (this.Field != null)
-            {
+            MssqlAvailabilityGroup? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (MssqlAvailabilityGroup)psObject.BaseObject;
+                    fieldSpecObj = (MssqlAvailabilityGroup)psObject.BaseObject;
                 } else {
-                    fields = (MssqlAvailabilityGroup)this.Field;
+                    fieldSpecObj = (MssqlAvailabilityGroup)this.Field;
                 }
             }
-            string document = Query.MssqlAvailabilityGroup(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.MssqlAvailabilityGroup");
-            var parameters = "($fid: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryMssqlAvailabilityGroup" + parameters + "{" + document + "}",
-                OperationName = "QueryMssqlAvailabilityGroup",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "MssqlAvailabilityGroup", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.MssqlAvailabilityGroup(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryMssqlAvailabilityGroup",
+                "($fid: UUID!)",
+                fieldSpecDoc,
+                "MssqlAvailabilityGroup"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -600,33 +633,51 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            MssqlInstance? fields = null ;
-            if (this.Field != null)
-            {
+            MssqlInstance? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (MssqlInstance)psObject.BaseObject;
+                    fieldSpecObj = (MssqlInstance)psObject.BaseObject;
                 } else {
-                    fields = (MssqlInstance)this.Field;
+                    fieldSpecObj = (MssqlInstance)this.Field;
                 }
             }
-            string document = Query.MssqlInstance(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.MssqlInstance");
-            var parameters = "($fid: UUID!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryMssqlInstance" + parameters + "{" + document + "}",
-                OperationName = "QueryMssqlInstance",
+            string fieldSpecDoc = Query.MssqlInstance(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryMssqlInstance",
+                "($fid: UUID!)",
+                fieldSpecDoc,
+                "MssqlInstance"
+            );
+        }
+
+        // Invoke GraphQL Query:
+        // mssqlDatabase(fid: UUID!): MssqlDatabase!
+        protected void InvokeQueryMssqlDatabase()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("fid", "UUID!"),
             };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
+            MssqlDatabase? fieldSpecObj = null ;
+            if (this.Field != null) {
+                if (this.Field is PSObject psObject) {
+                    fieldSpecObj = (MssqlDatabase)psObject.BaseObject;
+                } else {
+                    fieldSpecObj = (MssqlDatabase)this.Field;
+                }
             }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "MssqlInstance", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.MssqlDatabase(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryMssqlDatabase",
+                "($fid: UUID!)",
+                fieldSpecDoc,
+                "MssqlDatabase"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -636,33 +687,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetMssqlDbRecoverableRangesInput!"),
             };
-            MssqlRecoverableRangeListResponse? fields = null ;
-            if (this.Field != null)
-            {
+            MssqlRecoverableRangeListResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (MssqlRecoverableRangeListResponse)psObject.BaseObject;
+                    fieldSpecObj = (MssqlRecoverableRangeListResponse)psObject.BaseObject;
                 } else {
-                    fields = (MssqlRecoverableRangeListResponse)this.Field;
+                    fieldSpecObj = (MssqlRecoverableRangeListResponse)this.Field;
                 }
             }
-            string document = Query.MssqlRecoverableRanges(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.MssqlRecoverableRanges");
-            var parameters = "($input: GetMssqlDbRecoverableRangesInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryMssqlRecoverableRanges" + parameters + "{" + document + "}",
-                OperationName = "QueryMssqlRecoverableRanges",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "MssqlRecoverableRangeListResponse", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.MssqlRecoverableRanges(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryMssqlRecoverableRanges",
+                "($input: GetMssqlDbRecoverableRangesInput!)",
+                fieldSpecDoc,
+                "MssqlRecoverableRangeListResponse"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -672,33 +714,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetMissedMssqlDbSnapshotsInput!"),
             };
-            MissedSnapshotListResponse? fields = null ;
-            if (this.Field != null)
-            {
+            MissedSnapshotListResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (MissedSnapshotListResponse)psObject.BaseObject;
+                    fieldSpecObj = (MissedSnapshotListResponse)psObject.BaseObject;
                 } else {
-                    fields = (MissedSnapshotListResponse)this.Field;
+                    fieldSpecObj = (MissedSnapshotListResponse)this.Field;
                 }
             }
-            string document = Query.MssqlDatabaseMissedSnapshots(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.MssqlDatabaseMissedSnapshots");
-            var parameters = "($input: GetMissedMssqlDbSnapshotsInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryMssqlDatabaseMissedSnapshots" + parameters + "{" + document + "}",
-                OperationName = "QueryMssqlDatabaseMissedSnapshots",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "MissedSnapshotListResponse", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.MssqlDatabaseMissedSnapshots(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryMssqlDatabaseMissedSnapshots",
+                "($input: GetMissedMssqlDbSnapshotsInput!)",
+                fieldSpecDoc,
+                "MissedSnapshotListResponse"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -708,33 +741,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetCompatibleMssqlInstancesV1Input!"),
             };
-            MssqlInstanceSummaryListResponse? fields = null ;
-            if (this.Field != null)
-            {
+            MssqlInstanceSummaryListResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (MssqlInstanceSummaryListResponse)psObject.BaseObject;
+                    fieldSpecObj = (MssqlInstanceSummaryListResponse)psObject.BaseObject;
                 } else {
-                    fields = (MssqlInstanceSummaryListResponse)this.Field;
+                    fieldSpecObj = (MssqlInstanceSummaryListResponse)this.Field;
                 }
             }
-            string document = Query.MssqlCompatibleInstances(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.MssqlCompatibleInstances");
-            var parameters = "($input: GetCompatibleMssqlInstancesV1Input!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryMssqlCompatibleInstances" + parameters + "{" + document + "}",
-                OperationName = "QueryMssqlCompatibleInstances",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "MssqlInstanceSummaryListResponse", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.MssqlCompatibleInstances(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryMssqlCompatibleInstances",
+                "($input: GetCompatibleMssqlInstancesV1Input!)",
+                fieldSpecDoc,
+                "MssqlInstanceSummaryListResponse"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -744,33 +768,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetMssqlDbMissedRecoverableRangesInput!"),
             };
-            MssqlMissedRecoverableRangeListResponse? fields = null ;
-            if (this.Field != null)
-            {
+            MssqlMissedRecoverableRangeListResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (MssqlMissedRecoverableRangeListResponse)psObject.BaseObject;
+                    fieldSpecObj = (MssqlMissedRecoverableRangeListResponse)psObject.BaseObject;
                 } else {
-                    fields = (MssqlMissedRecoverableRangeListResponse)this.Field;
+                    fieldSpecObj = (MssqlMissedRecoverableRangeListResponse)this.Field;
                 }
             }
-            string document = Query.MssqlDatabaseMissedRecoverableRanges(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.MssqlDatabaseMissedRecoverableRanges");
-            var parameters = "($input: GetMssqlDbMissedRecoverableRangesInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryMssqlDatabaseMissedRecoverableRanges" + parameters + "{" + document + "}",
-                OperationName = "QueryMssqlDatabaseMissedRecoverableRanges",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "MssqlMissedRecoverableRangeListResponse", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.MssqlDatabaseMissedRecoverableRanges(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryMssqlDatabaseMissedRecoverableRanges",
+                "($input: GetMssqlDbMissedRecoverableRangesInput!)",
+                fieldSpecDoc,
+                "MssqlMissedRecoverableRangeListResponse"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -780,33 +795,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "MssqlGetRestoreFilesV1Input!"),
             };
-            V1MssqlGetRestoreFilesV1Response? fields = null ;
-            if (this.Field != null)
-            {
+            V1MssqlGetRestoreFilesV1Response? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (V1MssqlGetRestoreFilesV1Response)psObject.BaseObject;
+                    fieldSpecObj = (V1MssqlGetRestoreFilesV1Response)psObject.BaseObject;
                 } else {
-                    fields = (V1MssqlGetRestoreFilesV1Response)this.Field;
+                    fieldSpecObj = (V1MssqlGetRestoreFilesV1Response)this.Field;
                 }
             }
-            string document = Query.AllMssqlDatabaseRestoreFiles(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.AllMssqlDatabaseRestoreFiles");
-            var parameters = "($input: MssqlGetRestoreFilesV1Input!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryAllMssqlDatabaseRestoreFiles" + parameters + "{" + document + "}",
-                OperationName = "QueryAllMssqlDatabaseRestoreFiles",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "V1MssqlGetRestoreFilesV1Response", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.AllMssqlDatabaseRestoreFiles(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryAllMssqlDatabaseRestoreFiles",
+                "($input: MssqlGetRestoreFilesV1Input!)",
+                fieldSpecDoc,
+                "V1MssqlGetRestoreFilesV1Response"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -824,33 +830,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("sortBy", "MssqlDatabaseLiveMountSortByInput"),
                 Tuple.Create("filters", "[MssqlDatabaseLiveMountFilterInput!]"),
             };
-            MssqlDatabaseLiveMountConnection? fields = null ;
-            if (this.Field != null)
-            {
+            MssqlDatabaseLiveMountConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (MssqlDatabaseLiveMountConnection)psObject.BaseObject;
+                    fieldSpecObj = (MssqlDatabaseLiveMountConnection)psObject.BaseObject;
                 } else {
-                    fields = (MssqlDatabaseLiveMountConnection)this.Field;
+                    fieldSpecObj = (MssqlDatabaseLiveMountConnection)this.Field;
                 }
             }
-            string document = Query.MssqlDatabaseLiveMounts(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.MssqlDatabaseLiveMounts");
-            var parameters = "($first: Int,$after: String,$sortBy: MssqlDatabaseLiveMountSortByInput,$filters: [MssqlDatabaseLiveMountFilterInput!])\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryMssqlDatabaseLiveMounts" + parameters + "{" + document + "}",
-                OperationName = "QueryMssqlDatabaseLiveMounts",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "MssqlDatabaseLiveMountConnection", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.MssqlDatabaseLiveMounts(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryMssqlDatabaseLiveMounts",
+                "($first: Int,$after: String,$sortBy: MssqlDatabaseLiveMountSortByInput,$filters: [MssqlDatabaseLiveMountFilterInput!])",
+                fieldSpecDoc,
+                "MssqlDatabaseLiveMountConnection"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -860,33 +857,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetDefaultDbPropertiesV1Input!"),
             };
-            UpdateMssqlDefaultPropertiesReply? fields = null ;
-            if (this.Field != null)
-            {
+            UpdateMssqlDefaultPropertiesReply? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (UpdateMssqlDefaultPropertiesReply)psObject.BaseObject;
+                    fieldSpecObj = (UpdateMssqlDefaultPropertiesReply)psObject.BaseObject;
                 } else {
-                    fields = (UpdateMssqlDefaultPropertiesReply)this.Field;
+                    fieldSpecObj = (UpdateMssqlDefaultPropertiesReply)this.Field;
                 }
             }
-            string document = Query.MssqlDefaultProperties(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.MssqlDefaultProperties");
-            var parameters = "($input: GetDefaultDbPropertiesV1Input!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryMssqlDefaultProperties" + parameters + "{" + document + "}",
-                OperationName = "QueryMssqlDefaultProperties",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "UpdateMssqlDefaultPropertiesReply", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.MssqlDefaultProperties(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryMssqlDefaultProperties",
+                "($input: GetDefaultDbPropertiesV1Input!)",
+                fieldSpecDoc,
+                "UpdateMssqlDefaultPropertiesReply"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -896,33 +884,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "MssqlRestoreEstimateV1Input!"),
             };
-            MssqlRestoreEstimateResult? fields = null ;
-            if (this.Field != null)
-            {
+            MssqlRestoreEstimateResult? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (MssqlRestoreEstimateResult)psObject.BaseObject;
+                    fieldSpecObj = (MssqlRestoreEstimateResult)psObject.BaseObject;
                 } else {
-                    fields = (MssqlRestoreEstimateResult)this.Field;
+                    fieldSpecObj = (MssqlRestoreEstimateResult)this.Field;
                 }
             }
-            string document = Query.MssqlDatabaseRestoreEstimate(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.MssqlDatabaseRestoreEstimate");
-            var parameters = "($input: MssqlRestoreEstimateV1Input!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryMssqlDatabaseRestoreEstimate" + parameters + "{" + document + "}",
-                OperationName = "QueryMssqlDatabaseRestoreEstimate",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "MssqlRestoreEstimateResult", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.MssqlDatabaseRestoreEstimate(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryMssqlDatabaseRestoreEstimate",
+                "($input: MssqlRestoreEstimateV1Input!)",
+                fieldSpecDoc,
+                "MssqlRestoreEstimateResult"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -940,33 +919,51 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("sortBy", "MssqlLogShippingTargetSortByInput"),
                 Tuple.Create("filters", "[MssqlLogShippingTargetFilterInput!]"),
             };
-            MssqlLogShippingTargetConnection? fields = null ;
-            if (this.Field != null)
-            {
+            MssqlLogShippingTargetConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (MssqlLogShippingTargetConnection)psObject.BaseObject;
+                    fieldSpecObj = (MssqlLogShippingTargetConnection)psObject.BaseObject;
                 } else {
-                    fields = (MssqlLogShippingTargetConnection)this.Field;
+                    fieldSpecObj = (MssqlLogShippingTargetConnection)this.Field;
                 }
             }
-            string document = Query.CdmMssqlLogShippingTargets(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.CdmMssqlLogShippingTargets");
-            var parameters = "($first: Int,$after: String,$sortBy: MssqlLogShippingTargetSortByInput,$filters: [MssqlLogShippingTargetFilterInput!])\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryCdmMssqlLogShippingTargets" + parameters + "{" + document + "}",
-                OperationName = "QueryCdmMssqlLogShippingTargets",
+            string fieldSpecDoc = Query.CdmMssqlLogShippingTargets(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryCdmMssqlLogShippingTargets",
+                "($first: Int,$after: String,$sortBy: MssqlLogShippingTargetSortByInput,$filters: [MssqlLogShippingTargetFilterInput!])",
+                fieldSpecDoc,
+                "MssqlLogShippingTargetConnection"
+            );
+        }
+
+        // Invoke GraphQL Query:
+        // cdmMssqlLogShippingTarget(fid: UUID!): MssqlLogShippingTarget
+        protected void InvokeQueryCdmMssqlLogShippingTarget()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("fid", "UUID!"),
             };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
+            MssqlLogShippingTarget? fieldSpecObj = null ;
+            if (this.Field != null) {
+                if (this.Field is PSObject psObject) {
+                    fieldSpecObj = (MssqlLogShippingTarget)psObject.BaseObject;
+                } else {
+                    fieldSpecObj = (MssqlLogShippingTarget)this.Field;
+                }
             }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "MssqlLogShippingTargetConnection", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.CdmMssqlLogShippingTarget(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryCdmMssqlLogShippingTarget",
+                "($fid: UUID!)",
+                fieldSpecDoc,
+                "MssqlLogShippingTarget"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -976,33 +973,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "QueryLogShippingConfigurationsV2Input!"),
             };
-            MssqlLogShippingSummaryV2ListResponse? fields = null ;
-            if (this.Field != null)
-            {
+            MssqlLogShippingSummaryV2ListResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (MssqlLogShippingSummaryV2ListResponse)psObject.BaseObject;
+                    fieldSpecObj = (MssqlLogShippingSummaryV2ListResponse)psObject.BaseObject;
                 } else {
-                    fields = (MssqlLogShippingSummaryV2ListResponse)this.Field;
+                    fieldSpecObj = (MssqlLogShippingSummaryV2ListResponse)this.Field;
                 }
             }
-            string document = Query.MssqlLogShippingTargets(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.MssqlLogShippingTargets");
-            var parameters = "($input: QueryLogShippingConfigurationsV2Input!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryMssqlLogShippingTargets" + parameters + "{" + document + "}",
-                OperationName = "QueryMssqlLogShippingTargets",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "MssqlLogShippingSummaryV2ListResponse", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Query.MssqlLogShippingTargets(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "query",
+                "QueryMssqlLogShippingTargets",
+                "($input: QueryLogShippingConfigurationsV2Input!)",
+                fieldSpecDoc,
+                "MssqlLogShippingSummaryV2ListResponse"
+            );
         }
 
 

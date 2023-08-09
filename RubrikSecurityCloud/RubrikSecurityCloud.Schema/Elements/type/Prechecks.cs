@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> MigrationPrecheckType? MigrationPrecheckType
+        // GraphQL -> migrationPrecheckType: MigrationPrecheckType! (enum)
+        [JsonProperty("migrationPrecheckType")]
+        public MigrationPrecheckType? MigrationPrecheckType { get; set; }
+
         //      C# -> MigrationStatus? MigrationStatus
         // GraphQL -> migrationStatus: MigrationStatus! (enum)
         [JsonProperty("migrationStatus")]
@@ -51,22 +56,22 @@ namespace RubrikSecurityCloud.Types
         public DateTime? LastRunTimestamp { get; set; }
 
         //      C# -> PrecheckMessage? Cause
-        // GraphQL -> cause: PrecheckMessage! (type)
+        // GraphQL -> cause: PrecheckMessage (type)
         [JsonProperty("cause")]
         public PrecheckMessage? Cause { get; set; }
 
         //      C# -> PrecheckMessage? Consequence
-        // GraphQL -> consequence: PrecheckMessage! (type)
+        // GraphQL -> consequence: PrecheckMessage (type)
         [JsonProperty("consequence")]
         public PrecheckMessage? Consequence { get; set; }
 
         //      C# -> PrecheckMessage? Remedy
-        // GraphQL -> remedy: PrecheckMessage! (type)
+        // GraphQL -> remedy: PrecheckMessage (type)
         [JsonProperty("remedy")]
         public PrecheckMessage? Remedy { get; set; }
 
         //      C# -> PrecheckMessage? Summary
-        // GraphQL -> summary: PrecheckMessage! (type)
+        // GraphQL -> summary: PrecheckMessage (type)
         [JsonProperty("summary")]
         public PrecheckMessage? Summary { get; set; }
 
@@ -80,6 +85,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public Prechecks Set(
+        MigrationPrecheckType? MigrationPrecheckType = null,
         MigrationStatus? MigrationStatus = null,
         PrecheckName? PrecheckName = null,
         PrecheckStatus? PrecheckStatus = null,
@@ -92,6 +98,9 @@ namespace RubrikSecurityCloud.Types
         PrecheckMessage? Summary = null
     ) 
     {
+        if ( MigrationPrecheckType != null ) {
+            this.MigrationPrecheckType = MigrationPrecheckType;
+        }
         if ( MigrationStatus != null ) {
             this.MigrationStatus = MigrationStatus;
         }
@@ -132,6 +141,11 @@ namespace RubrikSecurityCloud.Types
     {
         string ind = new string(' ', indent*2);
         string s = "";
+        //      C# -> MigrationPrecheckType? MigrationPrecheckType
+        // GraphQL -> migrationPrecheckType: MigrationPrecheckType! (enum)
+        if (this.MigrationPrecheckType != null) {
+            s += ind + "migrationPrecheckType\n" ;
+        }
         //      C# -> MigrationStatus? MigrationStatus
         // GraphQL -> migrationStatus: MigrationStatus! (enum)
         if (this.MigrationStatus != null) {
@@ -163,7 +177,7 @@ namespace RubrikSecurityCloud.Types
             s += ind + "lastRunTimestamp\n" ;
         }
         //      C# -> PrecheckMessage? Cause
-        // GraphQL -> cause: PrecheckMessage! (type)
+        // GraphQL -> cause: PrecheckMessage (type)
         if (this.Cause != null) {
             var fspec = this.Cause.AsFieldSpec(indent+1);
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
@@ -171,7 +185,7 @@ namespace RubrikSecurityCloud.Types
             }
         }
         //      C# -> PrecheckMessage? Consequence
-        // GraphQL -> consequence: PrecheckMessage! (type)
+        // GraphQL -> consequence: PrecheckMessage (type)
         if (this.Consequence != null) {
             var fspec = this.Consequence.AsFieldSpec(indent+1);
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
@@ -179,7 +193,7 @@ namespace RubrikSecurityCloud.Types
             }
         }
         //      C# -> PrecheckMessage? Remedy
-        // GraphQL -> remedy: PrecheckMessage! (type)
+        // GraphQL -> remedy: PrecheckMessage (type)
         if (this.Remedy != null) {
             var fspec = this.Remedy.AsFieldSpec(indent+1);
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
@@ -187,7 +201,7 @@ namespace RubrikSecurityCloud.Types
             }
         }
         //      C# -> PrecheckMessage? Summary
-        // GraphQL -> summary: PrecheckMessage! (type)
+        // GraphQL -> summary: PrecheckMessage (type)
         if (this.Summary != null) {
             var fspec = this.Summary.AsFieldSpec(indent+1);
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
@@ -202,6 +216,12 @@ namespace RubrikSecurityCloud.Types
     //[JsonIgnore]
     public override void ApplyExploratoryFieldSpec(String parent = "")
     {
+        //      C# -> MigrationPrecheckType? MigrationPrecheckType
+        // GraphQL -> migrationPrecheckType: MigrationPrecheckType! (enum)
+        if (this.MigrationPrecheckType == null && Exploration.Includes(parent + ".migrationPrecheckType", true))
+        {
+            this.MigrationPrecheckType = new MigrationPrecheckType();
+        }
         //      C# -> MigrationStatus? MigrationStatus
         // GraphQL -> migrationStatus: MigrationStatus! (enum)
         if (this.MigrationStatus == null && Exploration.Includes(parent + ".migrationStatus", true))
@@ -239,28 +259,28 @@ namespace RubrikSecurityCloud.Types
             this.LastRunTimestamp = new DateTime();
         }
         //      C# -> PrecheckMessage? Cause
-        // GraphQL -> cause: PrecheckMessage! (type)
+        // GraphQL -> cause: PrecheckMessage (type)
         if (this.Cause == null && Exploration.Includes(parent + ".cause"))
         {
             this.Cause = new PrecheckMessage();
             this.Cause.ApplyExploratoryFieldSpec(parent + ".cause");
         }
         //      C# -> PrecheckMessage? Consequence
-        // GraphQL -> consequence: PrecheckMessage! (type)
+        // GraphQL -> consequence: PrecheckMessage (type)
         if (this.Consequence == null && Exploration.Includes(parent + ".consequence"))
         {
             this.Consequence = new PrecheckMessage();
             this.Consequence.ApplyExploratoryFieldSpec(parent + ".consequence");
         }
         //      C# -> PrecheckMessage? Remedy
-        // GraphQL -> remedy: PrecheckMessage! (type)
+        // GraphQL -> remedy: PrecheckMessage (type)
         if (this.Remedy == null && Exploration.Includes(parent + ".remedy"))
         {
             this.Remedy = new PrecheckMessage();
             this.Remedy.ApplyExploratoryFieldSpec(parent + ".remedy");
         }
         //      C# -> PrecheckMessage? Summary
-        // GraphQL -> summary: PrecheckMessage! (type)
+        // GraphQL -> summary: PrecheckMessage (type)
         if (this.Summary == null && Exploration.Includes(parent + ".summary"))
         {
             this.Summary = new PrecheckMessage();

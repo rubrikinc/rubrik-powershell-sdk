@@ -29,10 +29,16 @@ Supported in v5.0+
   v5.3: Specifies whether this is an Oracle host. This indicates whether to show Oracle discovery fields in the UI.
   v6.0+: Specifies whether this is an Oracle host. This indicates whether to show Oracle discovery fields in the UI.
 - isRefreshPaused: System.Boolean
-  - Supported in v9.0
+  - Supported in v9.0+
   Specifies whether the refresh of host metadata for this host is paused.
 - hostSummary: HostSummary
   - 
+- hostDomainName: System.String
+  - Supported in v9.0+
+  Specify the name of active directory domain.
+- hostDomainId: System.String
+  - Supported in v9.0+
+  Id of the Active Directory Domain if the windows host has domain controller hosted.
 - hostVfdDriverState: HostVfdState
   - 
 - hostVfdEnabled: HostVfdInstallConfig

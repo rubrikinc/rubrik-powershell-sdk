@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> ClusterStatus? ClusterStatus
+        // GraphQL -> clusterStatus: ClusterStatus! (enum)
+        [JsonProperty("clusterStatus")]
+        public ClusterStatus? ClusterStatus { get; set; }
+
         //      C# -> ClusterRegistrationMode? RegisteredMode
         // GraphQL -> registeredMode: ClusterRegistrationMode! (enum)
         [JsonProperty("registeredMode")]
@@ -55,6 +60,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public MigrationMetadata Set(
+        ClusterStatus? ClusterStatus = null,
         ClusterRegistrationMode? RegisteredMode = null,
         System.String? ClusterName = null,
         System.String? ClusterUuid = null,
@@ -62,6 +68,9 @@ namespace RubrikSecurityCloud.Types
         System.Int32? TotalMigratedPrechecks = null
     ) 
     {
+        if ( ClusterStatus != null ) {
+            this.ClusterStatus = ClusterStatus;
+        }
         if ( RegisteredMode != null ) {
             this.RegisteredMode = RegisteredMode;
         }
@@ -87,6 +96,11 @@ namespace RubrikSecurityCloud.Types
     {
         string ind = new string(' ', indent*2);
         string s = "";
+        //      C# -> ClusterStatus? ClusterStatus
+        // GraphQL -> clusterStatus: ClusterStatus! (enum)
+        if (this.ClusterStatus != null) {
+            s += ind + "clusterStatus\n" ;
+        }
         //      C# -> ClusterRegistrationMode? RegisteredMode
         // GraphQL -> registeredMode: ClusterRegistrationMode! (enum)
         if (this.RegisteredMode != null) {
@@ -120,6 +134,12 @@ namespace RubrikSecurityCloud.Types
     //[JsonIgnore]
     public override void ApplyExploratoryFieldSpec(String parent = "")
     {
+        //      C# -> ClusterStatus? ClusterStatus
+        // GraphQL -> clusterStatus: ClusterStatus! (enum)
+        if (this.ClusterStatus == null && Exploration.Includes(parent + ".clusterStatus", true))
+        {
+            this.ClusterStatus = new ClusterStatus();
+        }
         //      C# -> ClusterRegistrationMode? RegisteredMode
         // GraphQL -> registeredMode: ClusterRegistrationMode! (enum)
         if (this.RegisteredMode == null && Exploration.Includes(parent + ".registeredMode", true))

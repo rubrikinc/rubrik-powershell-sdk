@@ -29,10 +29,10 @@ Create a request to delete a Live Mount virtual machine.
 
 - There is a single argument of type DeleteVsphereLiveMountInput.
 - Returns AsyncRequestStatus.
-### downloadvirtualmachinefile
+### downloadvirtualmachinefiles
 Download Virtual Machine files from a snapshot
 
-Supported in v9.0
+Supported in v9.0+
 Start an asynchronous job to download multiple Virtual Machine files, such as .vmdk, .vmx, and .nvram files, from the specified Virtual Machine snapshot.
 
 - There is a single argument of type DownloadVsphereVirtualMachineFilesInput.

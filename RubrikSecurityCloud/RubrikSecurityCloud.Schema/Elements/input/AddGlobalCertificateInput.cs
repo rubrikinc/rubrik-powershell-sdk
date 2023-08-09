@@ -53,6 +53,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("clusters")]
         public List<CertificateClusterInput>? Clusters { get; set; }
 
+        //      C# -> System.String? CsrFid
+        // GraphQL -> csrFid: UUID (scalar)
+        [JsonProperty("csrFid")]
+        public System.String? CsrFid { get; set; }
+
 
         #endregion
 

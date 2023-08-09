@@ -9,3 +9,5 @@ Input to update RCS automatic target mapping.
   - Immutability lock duration in days.
 - clusterUuidList: list of System.Strings
   - List of cluster UUIDs.
+- shouldBypassProxy: System.Boolean
+  - Specifies whether the proxy settings must be bypassed  the RCV archival target.

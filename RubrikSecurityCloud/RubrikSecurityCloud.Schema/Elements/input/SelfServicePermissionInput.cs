@@ -20,9 +20,7 @@ namespace RubrikSecurityCloud.Types
         #region members
 
         //      C# -> InventorySubHierarchyRootEnum? InventoryRoot
-        // GraphQL -> inventoryRoot: InventorySubHierarchyRootEnum! (enum)
-        [Required]
-        [JsonRequired]
+        // GraphQL -> inventoryRoot: InventorySubHierarchyRootEnum (enum)
         [JsonProperty("inventoryRoot")]
         public InventorySubHierarchyRootEnum? InventoryRoot { get; set; }
 
@@ -39,6 +37,11 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("operations")]
         public List<Operation>? Operations { get; set; }
+
+        //      C# -> System.String? HierarchyRoot
+        // GraphQL -> hierarchyRoot: String (scalar)
+        [JsonProperty("hierarchyRoot")]
+        public System.String? HierarchyRoot { get; set; }
 
 
         #endregion

@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("host")]
         public System.String? Host { get; set; }
 
+        //      C# -> System.String? HostFid
+        // GraphQL -> hostFid: UUID! (scalar)
+        [JsonProperty("hostFid")]
+        public System.String? HostFid { get; set; }
+
         //      C# -> System.Int32? Port
         // GraphQL -> port: Int! (scalar)
         [JsonProperty("port")]
@@ -41,11 +46,15 @@ namespace RubrikSecurityCloud.Types
 
     public CdmMongoNode Set(
         System.String? Host = null,
+        System.String? HostFid = null,
         System.Int32? Port = null
     ) 
     {
         if ( Host != null ) {
             this.Host = Host;
+        }
+        if ( HostFid != null ) {
+            this.HostFid = HostFid;
         }
         if ( Port != null ) {
             this.Port = Port;
@@ -65,6 +74,11 @@ namespace RubrikSecurityCloud.Types
         if (this.Host != null) {
             s += ind + "host\n" ;
         }
+        //      C# -> System.String? HostFid
+        // GraphQL -> hostFid: UUID! (scalar)
+        if (this.HostFid != null) {
+            s += ind + "hostFid\n" ;
+        }
         //      C# -> System.Int32? Port
         // GraphQL -> port: Int! (scalar)
         if (this.Port != null) {
@@ -83,6 +97,12 @@ namespace RubrikSecurityCloud.Types
         if (this.Host == null && Exploration.Includes(parent + ".host", true))
         {
             this.Host = "FETCH";
+        }
+        //      C# -> System.String? HostFid
+        // GraphQL -> hostFid: UUID! (scalar)
+        if (this.HostFid == null && Exploration.Includes(parent + ".hostFid", true))
+        {
+            this.HostFid = "FETCH";
         }
         //      C# -> System.Int32? Port
         // GraphQL -> port: Int! (scalar)

@@ -64,6 +64,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("requiredRecoveryParameters")]
         public RequiredRecoveryParametersInput? RequiredRecoveryParameters { get; set; }
 
+        //      C# -> System.String? FolderId
+        // GraphQL -> folderId: String (scalar)
+        [JsonProperty("folderId")]
+        public System.String? FolderId { get; set; }
+
         //      C# -> System.String? DatastoreId
         // GraphQL -> datastoreId: String! (scalar)
         [Required]

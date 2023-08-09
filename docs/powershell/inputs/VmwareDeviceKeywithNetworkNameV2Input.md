@@ -1,7 +1,10 @@
 ### VmwareDeviceKeywithNetworkNameV2Input
-VMware network device key and the network name.
+Supported in v9.0+
+  VMware network device key and the network name.
 
 - deviceKey: System.Int32
-  - Required. VMware network device key.
+  - Required. Supported in v9.0+
+      VMware network device key.
 - networkName: System.String
-  - Required. Name of the network.
+  - Required. Supported in v9.0+
+      Name of the network.

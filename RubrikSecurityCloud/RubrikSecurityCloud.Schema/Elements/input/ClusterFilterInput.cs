@@ -94,6 +94,21 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("excludeId")]
         public List<System.String>? ExcludeId { get; set; }
 
+        //      C# -> List<ClusterSystemStatus>? SystemStatus
+        // GraphQL -> systemStatus: [ClusterSystemStatus!] (enum)
+        [JsonProperty("systemStatus")]
+        public List<ClusterSystemStatus>? SystemStatus { get; set; }
+
+        //      C# -> List<ClusterStatus>? ConnectionState
+        // GraphQL -> connectionState: [ClusterStatus!] (enum)
+        [JsonProperty("connectionState")]
+        public List<ClusterStatus>? ConnectionState { get; set; }
+
+        //      C# -> System.Boolean? IsInFatalOrDisconnectedState
+        // GraphQL -> isInFatalOrDisconnectedState: Boolean (scalar)
+        [JsonProperty("isInFatalOrDisconnectedState")]
+        public System.Boolean? IsInFatalOrDisconnectedState { get; set; }
+
 
         #endregion
 

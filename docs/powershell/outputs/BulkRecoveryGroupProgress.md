@@ -11,6 +11,8 @@ Bulk recovery group level progress.
   - Start time.
 - endTime: System.Int64
   - End time.
+- createTime: System.Int64
+  - Create time.
 - elapsedTime: System.Int64
   - Elapsed time.
 - workloadProgresses: list of BulkRecoveryGroupWorkloadProgresss

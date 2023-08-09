@@ -1,110 +1,110 @@
 ### UserAuditObjectTypeEnum
 User audit object type.
 
-- ArchivalLocation
+- ArchivalLocation - Archival location type.
 - ACTIVE_DIRECTORY_DOMAIN - Active Directory domain type.
 - K8S_CLUSTER - Kubernetes Cluster type.
-- OracleRac
-- IpWhitelist
-- HypervVm
-- DataLocation
-- DB2_INSTANCE
-- DB2_DATABASE
-- HypervScvmm
-- O365Onedrive
+- OracleRac - Oracle RAC type.
+- IpWhitelist - IP whitelist type.
+- HypervVm - Hyper-V virtual machine type.
+- DataLocation - Data location type.
+- DB2_INSTANCE - Db2 instance type.
+- DB2_DATABASE - Db2 database type.
+- HypervScvmm - Hyper-V SCVMM type.
+- O365Onedrive - Office 365 OneDrive type.
 - CASSANDRA_SOURCE - Cassandra source type.
-- O365_SHAREPOINT_SITE - O365 SharePoint Site type.
+- O365_SHAREPOINT_SITE - Office 365 SharePoint Site type.
 - AWS_NATIVE_S3_BUCKET - AWS native S3 bucket.
-- SapHanaSystem
-- GcpNativeProject
-- AwsNativeRdsInstance
-- O365Organization
-- VolumeGroup
+- SapHanaSystem - SAP HANA system type.
+- GcpNativeProject - GCP native project type.
+- AwsNativeRdsInstance - AWS native RDS instance type.
+- O365Organization - Office 365 organization type.
+- VolumeGroup - Volume group type.
 - MONGO_COLLECTION - MongoDB Collection type.
-- O365Group - O365 Group type.
-- NutanixVm
+- O365Group - Office 365 Group type.
+- NutanixVm - Nutanix virtual machine type.
 - MONGODB_SOURCE - MongoDB source type.
-- HypervServer
+- HypervServer - Hyper-V server type.
 - MSSQL_MOUNT - MSSQL Mount type.
-- Vcenter
-- AzureNativeDisk
-- PublicCloudMachineInstance
-- HostFailoverCluster
-- ShareFileset
-- AwsNativeEc2Instance
-- Ldap
-- Upgrade
-- LinuxHost
-- O365Mailbox
-- AwsNativeAccount
+- Vcenter - A vCenter type.
+- AzureNativeDisk - Azure native disk type.
+- PublicCloudMachineInstance - Public cloud machine instance type.
+- HostFailoverCluster - Host failover cluster type.
+- ShareFileset - Share fileset type.
+- AwsNativeEc2Instance - AWS native EC2 instance type.
+- Ldap - LDAP type.
+- Upgrade - Upgrade type.
+- LinuxHost - Linux host type.
+- O365Mailbox - Office 365 mailbox type.
+- AwsNativeAccount - AWS native account type.
 - AZURE_STORAGE_ACCOUNT - Azure storage account.
 - EXCHANGE_DATABASE - Exchange Database type.
-- AzureSqlManagedInstance
-- AzureNativeVm
+- AzureSqlManagedInstance - Azure SQL managed instance type.
+- AzureNativeVm - Azure native virtual machine type.
 - ORGANIZATION - Organization type.
-- O365Team
-- WindowsFileset
-- CloudNativeTagRule
-- StorageArray
-- UserGroup
-- AuthDomain
+- O365Team - Office 365 team type.
+- WindowsFileset - Windows fileset type.
+- CloudNativeTagRule - Cloud native tag rule type.
+- StorageArray - Storage array type.
+- UserGroup - User group type.
+- AuthDomain - Auth domain type.
 - CERTIFICATE_MANAGEMENT - Certificate management type.
-- Mssql
+- Mssql - MSSQL type.
 - AZURE_AD_DIRECTORY - Azure AD Directory type.
-- VmwareVm
-- JobInstance
-- SlaDomain
-- AwsEventType
-- Snapshot
+- VmwareVm - VMware virtual machine type.
+- JobInstance - Job instance type.
+- SlaDomain - SLA Domain type.
+- AwsEventType - AWS event type.
+- Snapshot - Snapshot type.
 - VMWARE_COMPUTE_CLUSTER - VMware Compute Cluster type.
-- SmbDomain
+- SmbDomain - SMB domain type.
 - NUTANIX_PRISM_CENTRAL - Nutanix Prism Central type.
-- O365Calendar
-- MssqlDatabase
-- SupportTunnel
+- O365Calendar - Office 365 calendar type.
+- MssqlDatabase - MSSQL database type.
+- SupportTunnel - Support tunnel type.
 - MONGO_SOURCE - MongoDB Source type.
 - MSSQL_OBJECT - MSSQL object type.
-- AwsNativeEbsVolume
+- AwsNativeEbsVolume - AWS native EBS volume type.
 - ACTIVE_DIRECTORY_DOMAIN_CONTROLLER - Active Directory domain controller type.
-- UserActionAudit
+- UserActionAudit - User action audit type.
 - CASSANDRA_COLUMN_FAMILY - Cassandra column family type.
 - EXCHANGE_SERVER - Exchange Server type.
 - ENCRYPTION_MANAGEMENT - Encryption Management type.
-- ManagedVolume
-- Vcd
-- AzureSqlDatabase
-- LinuxFileset
-- VmwareMount
-- NasHost
-- FederatedAccess
-- User
-- SystemPreference
-- VcdVapp
-- O365SharepointDrive
-- UserRole
-- WindowsHost
-- O365SharepointList
-- Storm
-- Sla
-- Blueprint
-- Ec2Instance
-- StorageArrayVolumeGroup
-- StorageSettings
+- ManagedVolume - Managed Volume type.
+- Vcd - VCD type.
+- AzureSqlDatabase - Azure SQL database type.
+- LinuxFileset - Linux fileset type.
+- VmwareMount - VMware mount type.
+- NasHost - NAS host type.
+- FederatedAccess - Federated access type.
+- User - User type.
+- SystemPreference - System preference type.
+- VcdVapp - VCD vApp type.
+- O365SharepointDrive - Office 365 SharePoint drive type.
+- UserRole - User role type.
+- WindowsHost - Windows host type.
+- O365SharepointList - Office 365 SharePoint list type.
+- Storm - Storm type.
+- Sla - SLA Domain type.
+- Blueprint - Blueprint type.
+- Ec2Instance - EC2 instance type.
+- StorageArrayVolumeGroup - Storage array volume group type.
+- StorageSettings - Storage settings type.
 - K8S_RESOURCE_SET - Kubernetes Resource Set type.
-- GcpNativeGceInstance
-- Cluster
-- Unknown
-- AppBlueprint
-- AzureNativeSubscription
+- GcpNativeGceInstance - GCP native GCE instance type.
+- Cluster - Rubrik cluster type.
+- Unknown - Unknown type.
+- AppBlueprint - App blueprint type.
+- AzureNativeSubscription - Azure native subscription type.
 - EXCHANGE_DAG - Exchange DAG type.
-- OracleDb
-- FailoverClusterApp
-- Host
-- GcpNativeDisk
-- NutanixCluster
+- OracleDb - Oracle database type.
+- FailoverClusterApp - Failover cluster app type.
+- Host - Host type.
+- GcpNativeDisk - GCP native disk type.
+- NutanixCluster - Nutanix cluster type.
 - ORACLE_MOUNT - Oracle Mount type.
 - CASSANDRA_KEYSPACE - Cassandra keyspace type.
-- SapHanaDb
-- AwsAccount
-- OracleHost
+- SapHanaDb - SAP HANA Database type.
+- AwsAccount - AWS account type.
+- OracleHost - Oracle host type.
 - MOSAIC_STORAGE_LOCATION - NoSQL storage location type.

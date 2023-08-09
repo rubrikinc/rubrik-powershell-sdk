@@ -60,6 +60,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("mountDir")]
         public System.String? MountDir { get; set; }
 
+        //      C# -> List<System.String>? SmbValidIps
+        // GraphQL -> smbValidIps: [String!]! (scalar)
+        [JsonProperty("smbValidIps")]
+        public List<System.String>? SmbValidIps { get; set; }
+
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
         [JsonProperty("cluster")]
@@ -93,6 +98,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsActive = null,
         System.Boolean? IsUserVisible = null,
         System.String? MountDir = null,
+        List<System.String>? SmbValidIps = null,
         Cluster? Cluster = null,
         ClusterNode? Node = null,
         CdmSnapshot? SourceSnapshot = null
@@ -121,6 +127,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( MountDir != null ) {
             this.MountDir = MountDir;
+        }
+        if ( SmbValidIps != null ) {
+            this.SmbValidIps = SmbValidIps;
         }
         if ( Cluster != null ) {
             this.Cluster = Cluster;
@@ -180,6 +189,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> mountDir: String! (scalar)
         if (this.MountDir != null) {
             s += ind + "mountDir\n" ;
+        }
+        //      C# -> List<System.String>? SmbValidIps
+        // GraphQL -> smbValidIps: [String!]! (scalar)
+        if (this.SmbValidIps != null) {
+            s += ind + "smbValidIps\n" ;
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
@@ -260,6 +274,12 @@ namespace RubrikSecurityCloud.Types
         if (this.MountDir == null && Exploration.Includes(parent + ".mountDir", true))
         {
             this.MountDir = "FETCH";
+        }
+        //      C# -> List<System.String>? SmbValidIps
+        // GraphQL -> smbValidIps: [String!]! (scalar)
+        if (this.SmbValidIps == null && Exploration.Includes(parent + ".smbValidIps", true))
+        {
+            this.SmbValidIps = new List<System.String>();
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)

@@ -53,6 +53,7 @@
 - Ec2Instance
 - JIRA_PROJECT - Jira project.
 - StorageArrayVolumeGroup
+- K8S_RESOURCE_SET - Kubernetes Resource Set.
 - SnapMirrorCloud
 - AppBlueprint
 - NutanixVirtualMachine

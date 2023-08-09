@@ -117,12 +117,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         
         // -------------------------------------------------------------------
-        // AssignsForSnappableHierarchie parameter set
+        // AssignsForSnappableHierarchies parameter set
         //
         // [GraphQL: assignSlasForSnappableHierarchies]
         //
         [Parameter(
-            ParameterSetName = "AssignsForSnappableHierarchie",
+            ParameterSetName = "AssignsForSnappableHierarchies",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -131,16 +131,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: assignSlasForSnappableHierarchies]",
             Position = 0
         )]
-        public SwitchParameter AssignsForSnappableHierarchie { get; set; }
+        public SwitchParameter AssignsForSnappableHierarchies { get; set; }
 
         
         // -------------------------------------------------------------------
-        // AssignRetentionToSnappable parameter set
+        // AssignRetentionToSnappables parameter set
         //
         // [GraphQL: assignRetentionSLAToSnappables]
         //
         [Parameter(
-            ParameterSetName = "AssignRetentionToSnappable",
+            ParameterSetName = "AssignRetentionToSnappables",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -149,16 +149,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: assignRetentionSLAToSnappables]",
             Position = 0
         )]
-        public SwitchParameter AssignRetentionToSnappable { get; set; }
+        public SwitchParameter AssignRetentionToSnappables { get; set; }
 
         
         // -------------------------------------------------------------------
-        // AssignRetentionToSnapshot parameter set
+        // AssignRetentionToSnapshots parameter set
         //
         // [GraphQL: assignRetentionSLAToSnapshots]
         //
         [Parameter(
-            ParameterSetName = "AssignRetentionToSnapshot",
+            ParameterSetName = "AssignRetentionToSnapshots",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -167,7 +167,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: assignRetentionSLAToSnapshots]",
             Position = 0
         )]
-        public SwitchParameter AssignRetentionToSnapshot { get; set; }
+        public SwitchParameter AssignRetentionToSnapshots { get; set; }
 
         
         // -------------------------------------------------------------------
@@ -181,7 +181,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Pause/Resume Global SLA on the given clusters.
+@"Pause or resume SLA Domain on the given Rubrik clusters.
 [GraphQL: pauseSla]",
             Position = 0
         )]
@@ -189,12 +189,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         
         // -------------------------------------------------------------------
-        // Upgrade parameter set
+        // Upgrades parameter set
         //
         // [GraphQL: upgradeSlas]
         //
         [Parameter(
-            ParameterSetName = "Upgrade",
+            ParameterSetName = "Upgrades",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -203,16 +203,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: upgradeSlas]",
             Position = 0
         )]
-        public SwitchParameter Upgrade { get; set; }
+        public SwitchParameter Upgrades { get; set; }
 
         
         // -------------------------------------------------------------------
-        // GetPendingAssignment parameter set
+        // GetPendingAssignments parameter set
         //
         // [GraphQL: getPendingSlaAssignments]
         //
         [Parameter(
-            ParameterSetName = "GetPendingAssignment",
+            ParameterSetName = "GetPendingAssignments",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -224,7 +224,7 @@ Retrieve the details of pending SLA Domain assignments on the given managed obje
 [GraphQL: getPendingSlaAssignments]",
             Position = 0
         )]
-        public SwitchParameter GetPendingAssignment { get; set; }
+        public SwitchParameter GetPendingAssignments { get; set; }
 
         
         // -------------------------------------------------------------------
@@ -269,23 +269,23 @@ Export a managed volume snapshot as a share and mount it on a given host.
                     case "Assign":
                         this.ProcessRecord_Assign();
                         break;
-                    case "AssignsForSnappableHierarchie":
-                        this.ProcessRecord_AssignsForSnappableHierarchie();
+                    case "AssignsForSnappableHierarchies":
+                        this.ProcessRecord_AssignsForSnappableHierarchies();
                         break;
-                    case "AssignRetentionToSnappable":
-                        this.ProcessRecord_AssignRetentionToSnappable();
+                    case "AssignRetentionToSnappables":
+                        this.ProcessRecord_AssignRetentionToSnappables();
                         break;
-                    case "AssignRetentionToSnapshot":
-                        this.ProcessRecord_AssignRetentionToSnapshot();
+                    case "AssignRetentionToSnapshots":
+                        this.ProcessRecord_AssignRetentionToSnapshots();
                         break;
                     case "Pause":
                         this.ProcessRecord_Pause();
                         break;
-                    case "Upgrade":
-                        this.ProcessRecord_Upgrade();
+                    case "Upgrades":
+                        this.ProcessRecord_Upgrades();
                         break;
-                    case "GetPendingAssignment":
-                        this.ProcessRecord_GetPendingAssignment();
+                    case "GetPendingAssignments":
+                        this.ProcessRecord_GetPendingAssignments();
                         break;
                     case "ExportManagedVolumeSnapshot":
                         this.ProcessRecord_ExportManagedVolumeSnapshot();
@@ -347,27 +347,27 @@ Export a managed volume snapshot as a share and mount it on a given host.
 
         // This parameter set invokes a single graphql operation:
         // assignSlasForSnappableHierarchies.
-        protected void ProcessRecord_AssignsForSnappableHierarchie()
+        protected void ProcessRecord_AssignsForSnappableHierarchies()
         {
-            this._logger.name += " -AssignsForSnappableHierarchie";
+            this._logger.name += " -AssignsForSnappableHierarchies";
             // Invoke graphql operation assignSlasForSnappableHierarchies
             InvokeMutationAssignSlasForSnappableHierarchies();
         }
 
         // This parameter set invokes a single graphql operation:
         // assignRetentionSLAToSnappables.
-        protected void ProcessRecord_AssignRetentionToSnappable()
+        protected void ProcessRecord_AssignRetentionToSnappables()
         {
-            this._logger.name += " -AssignRetentionToSnappable";
+            this._logger.name += " -AssignRetentionToSnappables";
             // Invoke graphql operation assignRetentionSLAToSnappables
             InvokeMutationAssignRetentionSlaToSnappables();
         }
 
         // This parameter set invokes a single graphql operation:
         // assignRetentionSLAToSnapshots.
-        protected void ProcessRecord_AssignRetentionToSnapshot()
+        protected void ProcessRecord_AssignRetentionToSnapshots()
         {
-            this._logger.name += " -AssignRetentionToSnapshot";
+            this._logger.name += " -AssignRetentionToSnapshots";
             // Invoke graphql operation assignRetentionSLAToSnapshots
             InvokeMutationAssignRetentionSlaToSnapshots();
         }
@@ -383,18 +383,18 @@ Export a managed volume snapshot as a share and mount it on a given host.
 
         // This parameter set invokes a single graphql operation:
         // upgradeSlas.
-        protected void ProcessRecord_Upgrade()
+        protected void ProcessRecord_Upgrades()
         {
-            this._logger.name += " -Upgrade";
+            this._logger.name += " -Upgrades";
             // Invoke graphql operation upgradeSlas
             InvokeMutationUpgradeSlas();
         }
 
         // This parameter set invokes a single graphql operation:
         // getPendingSlaAssignments.
-        protected void ProcessRecord_GetPendingAssignment()
+        protected void ProcessRecord_GetPendingAssignments()
         {
-            this._logger.name += " -GetPendingAssignment";
+            this._logger.name += " -GetPendingAssignments";
             // Invoke graphql operation getPendingSlaAssignments
             InvokeMutationGetPendingSlaAssignments();
         }
@@ -416,33 +416,24 @@ Export a managed volume snapshot as a share and mount it on a given host.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CreateGlobalSlaInput!"),
             };
-            GlobalSlaReply? fields = null ;
-            if (this.Field != null)
-            {
+            GlobalSlaReply? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (GlobalSlaReply)psObject.BaseObject;
+                    fieldSpecObj = (GlobalSlaReply)psObject.BaseObject;
                 } else {
-                    fields = (GlobalSlaReply)this.Field;
+                    fieldSpecObj = (GlobalSlaReply)this.Field;
                 }
             }
-            string document = Mutation.CreateGlobalSla(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.CreateGlobalSla");
-            var parameters = "($input: CreateGlobalSlaInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "mutation MutationCreateGlobalSla" + parameters + "{" + document + "}",
-                OperationName = "MutationCreateGlobalSla",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "GlobalSlaReply", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Mutation.CreateGlobalSla(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationCreateGlobalSla",
+                "($input: CreateGlobalSlaInput!)",
+                fieldSpecDoc,
+                "GlobalSlaReply"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -452,33 +443,24 @@ Export a managed volume snapshot as a share and mount it on a given host.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("globalSlaEditRequest", "GlobalSlaEditRequest!"),
             };
-            GlobalSlaReply? fields = null ;
-            if (this.Field != null)
-            {
+            GlobalSlaReply? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (GlobalSlaReply)psObject.BaseObject;
+                    fieldSpecObj = (GlobalSlaReply)psObject.BaseObject;
                 } else {
-                    fields = (GlobalSlaReply)this.Field;
+                    fieldSpecObj = (GlobalSlaReply)this.Field;
                 }
             }
-            string document = Mutation.EditGlobalSla(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.EditGlobalSla");
-            var parameters = "($globalSlaEditRequest: GlobalSlaEditRequest!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "mutation MutationEditGlobalSla" + parameters + "{" + document + "}",
-                OperationName = "MutationEditGlobalSla",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "GlobalSlaReply", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Mutation.EditGlobalSla(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationEditGlobalSla",
+                "($globalSlaEditRequest: GlobalSlaEditRequest!)",
+                fieldSpecDoc,
+                "GlobalSlaReply"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -488,33 +470,24 @@ Export a managed volume snapshot as a share and mount it on a given host.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpdateGlobalSlaInput!"),
             };
-            GlobalSlaReply? fields = null ;
-            if (this.Field != null)
-            {
+            GlobalSlaReply? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (GlobalSlaReply)psObject.BaseObject;
+                    fieldSpecObj = (GlobalSlaReply)psObject.BaseObject;
                 } else {
-                    fields = (GlobalSlaReply)this.Field;
+                    fieldSpecObj = (GlobalSlaReply)this.Field;
                 }
             }
-            string document = Mutation.UpdateGlobalSla(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.UpdateGlobalSla");
-            var parameters = "($input: UpdateGlobalSlaInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "mutation MutationUpdateGlobalSla" + parameters + "{" + document + "}",
-                OperationName = "MutationUpdateGlobalSla",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "GlobalSlaReply", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Mutation.UpdateGlobalSla(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationUpdateGlobalSla",
+                "($input: UpdateGlobalSlaInput!)",
+                fieldSpecDoc,
+                "GlobalSlaReply"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -525,33 +498,24 @@ Export a managed volume snapshot as a share and mount it on a given host.
                 Tuple.Create("id", "UUID!"),
                 Tuple.Create("userNote", "String"),
             };
-            SlaResult? fields = null ;
-            if (this.Field != null)
-            {
+            SlaResult? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (SlaResult)psObject.BaseObject;
+                    fieldSpecObj = (SlaResult)psObject.BaseObject;
                 } else {
-                    fields = (SlaResult)this.Field;
+                    fieldSpecObj = (SlaResult)this.Field;
                 }
             }
-            string document = Mutation.DeleteGlobalSla(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.DeleteGlobalSla");
-            var parameters = "($id: UUID!,$userNote: String)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "mutation MutationDeleteGlobalSla" + parameters + "{" + document + "}",
-                OperationName = "MutationDeleteGlobalSla",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "SlaResult", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Mutation.DeleteGlobalSla(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationDeleteGlobalSla",
+                "($id: UUID!,$userNote: String)",
+                fieldSpecDoc,
+                "SlaResult"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -561,33 +525,24 @@ Export a managed volume snapshot as a share and mount it on a given host.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "AssignSlaInput!"),
             };
-            SlaAssignResult? fields = null ;
-            if (this.Field != null)
-            {
+            SlaAssignResult? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (SlaAssignResult)psObject.BaseObject;
+                    fieldSpecObj = (SlaAssignResult)psObject.BaseObject;
                 } else {
-                    fields = (SlaAssignResult)this.Field;
+                    fieldSpecObj = (SlaAssignResult)this.Field;
                 }
             }
-            string document = Mutation.AssignSla(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.AssignSla");
-            var parameters = "($input: AssignSlaInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "mutation MutationAssignSla" + parameters + "{" + document + "}",
-                OperationName = "MutationAssignSla",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "SlaAssignResult", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Mutation.AssignSla(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationAssignSla",
+                "($input: AssignSlaInput!)",
+                fieldSpecDoc,
+                "SlaAssignResult"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -613,33 +568,24 @@ Export a managed volume snapshot as a share and mount it on a given host.
                 Tuple.Create("globalExistingSnapshotRetention", "GlobalExistingSnapshotRetention"),
                 Tuple.Create("userNote", "String"),
             };
-            List<SlaAssignResult>? fields = null ;
-            if (this.Field != null)
-            {
+            List<SlaAssignResult>? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (List<SlaAssignResult>)psObject.BaseObject;
+                    fieldSpecObj = (List<SlaAssignResult>)psObject.BaseObject;
                 } else {
-                    fields = (List<SlaAssignResult>)this.Field;
+                    fieldSpecObj = (List<SlaAssignResult>)this.Field;
                 }
             }
-            string document = Mutation.AssignSlasForSnappableHierarchies(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.AssignSlasForSnappableHierarchies");
-            var parameters = "($globalSlaOptionalFid: UUID,$globalSlaAssignType: SlaAssignTypeEnum!,$objectIds: [UUID!]!,$applicableSnappableTypes: [WorkloadLevelHierarchy!],$shouldApplyToExistingSnapshots: Boolean,$shouldApplyToNonPolicySnapshots: Boolean,$globalExistingSnapshotRetention: GlobalExistingSnapshotRetention,$userNote: String)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "mutation MutationAssignSlasForSnappableHierarchies" + parameters + "{" + document + "}",
-                OperationName = "MutationAssignSlasForSnappableHierarchies",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "List<SlaAssignResult>", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Mutation.AssignSlasForSnappableHierarchies(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationAssignSlasForSnappableHierarchies",
+                "($globalSlaOptionalFid: UUID,$globalSlaAssignType: SlaAssignTypeEnum!,$objectIds: [UUID!]!,$applicableSnappableTypes: [WorkloadLevelHierarchy!],$shouldApplyToExistingSnapshots: Boolean,$shouldApplyToNonPolicySnapshots: Boolean,$globalExistingSnapshotRetention: GlobalExistingSnapshotRetention,$userNote: String)",
+                fieldSpecDoc,
+                "List<SlaAssignResult>"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -661,33 +607,24 @@ Export a managed volume snapshot as a share and mount it on a given host.
                 Tuple.Create("shouldApplyToNonPolicySnapshots", "Boolean"),
                 Tuple.Create("userNote", "String"),
             };
-            SlaAssignResult? fields = null ;
-            if (this.Field != null)
-            {
+            SlaAssignResult? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (SlaAssignResult)psObject.BaseObject;
+                    fieldSpecObj = (SlaAssignResult)psObject.BaseObject;
                 } else {
-                    fields = (SlaAssignResult)this.Field;
+                    fieldSpecObj = (SlaAssignResult)this.Field;
                 }
             }
-            string document = Mutation.AssignRetentionSlaToSnappables(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.AssignRetentionSlaToSnappables");
-            var parameters = "($globalSlaOptionalFid: UUID,$globalSlaAssignType: SlaAssignTypeEnum!,$objectIds: [UUID!]!,$applicableSnappableType: WorkloadLevelHierarchy,$shouldApplyToNonPolicySnapshots: Boolean,$userNote: String)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "mutation MutationAssignRetentionSlaToSnappables" + parameters + "{" + document + "}",
-                OperationName = "MutationAssignRetentionSlaToSnappables",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "SlaAssignResult", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Mutation.AssignRetentionSlaToSnappables(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationAssignRetentionSlaToSnappables",
+                "($globalSlaOptionalFid: UUID,$globalSlaAssignType: SlaAssignTypeEnum!,$objectIds: [UUID!]!,$applicableSnappableType: WorkloadLevelHierarchy,$shouldApplyToNonPolicySnapshots: Boolean,$userNote: String)",
+                fieldSpecDoc,
+                "SlaAssignResult"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -705,69 +642,51 @@ Export a managed volume snapshot as a share and mount it on a given host.
                 Tuple.Create("snapshotFids", "[UUID!]!"),
                 Tuple.Create("userNote", "String"),
             };
-            SlaAssignResult? fields = null ;
-            if (this.Field != null)
-            {
+            SlaAssignResult? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (SlaAssignResult)psObject.BaseObject;
+                    fieldSpecObj = (SlaAssignResult)psObject.BaseObject;
                 } else {
-                    fields = (SlaAssignResult)this.Field;
+                    fieldSpecObj = (SlaAssignResult)this.Field;
                 }
             }
-            string document = Mutation.AssignRetentionSlaToSnapshots(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.AssignRetentionSlaToSnapshots");
-            var parameters = "($globalSlaOptionalFid: UUID,$globalSlaAssignType: SlaAssignTypeEnum!,$snapshotFids: [UUID!]!,$userNote: String)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "mutation MutationAssignRetentionSlaToSnapshots" + parameters + "{" + document + "}",
-                OperationName = "MutationAssignRetentionSlaToSnapshots",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "SlaAssignResult", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Mutation.AssignRetentionSlaToSnapshots(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationAssignRetentionSlaToSnapshots",
+                "($globalSlaOptionalFid: UUID,$globalSlaAssignType: SlaAssignTypeEnum!,$snapshotFids: [UUID!]!,$userNote: String)",
+                fieldSpecDoc,
+                "SlaAssignResult"
+            );
         }
 
         // Invoke GraphQL Mutation:
-        // pauseSla(input: PauseSlaRequest!): SlaResult!
+        // pauseSla(input: PauseSlaInput!): PauseSlaReply!
         protected void InvokeMutationPauseSla()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "PauseSlaRequest!"),
+                Tuple.Create("input", "PauseSlaInput!"),
             };
-            SlaResult? fields = null ;
-            if (this.Field != null)
-            {
+            PauseSlaReply? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (SlaResult)psObject.BaseObject;
+                    fieldSpecObj = (PauseSlaReply)psObject.BaseObject;
                 } else {
-                    fields = (SlaResult)this.Field;
+                    fieldSpecObj = (PauseSlaReply)this.Field;
                 }
             }
-            string document = Mutation.PauseSla(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.PauseSla");
-            var parameters = "($input: PauseSlaRequest!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "mutation MutationPauseSla" + parameters + "{" + document + "}",
-                OperationName = "MutationPauseSla",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "SlaResult", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Mutation.PauseSla(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationPauseSla",
+                "($input: PauseSlaInput!)",
+                fieldSpecDoc,
+                "PauseSlaReply"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -777,33 +696,24 @@ Export a managed volume snapshot as a share and mount it on a given host.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpgradeSlasInput!"),
             };
-            UpgradeSlasReply? fields = null ;
-            if (this.Field != null)
-            {
+            UpgradeSlasReply? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (UpgradeSlasReply)psObject.BaseObject;
+                    fieldSpecObj = (UpgradeSlasReply)psObject.BaseObject;
                 } else {
-                    fields = (UpgradeSlasReply)this.Field;
+                    fieldSpecObj = (UpgradeSlasReply)this.Field;
                 }
             }
-            string document = Mutation.UpgradeSlas(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.UpgradeSlas");
-            var parameters = "($input: UpgradeSlasInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "mutation MutationUpgradeSlas" + parameters + "{" + document + "}",
-                OperationName = "MutationUpgradeSlas",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "UpgradeSlasReply", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Mutation.UpgradeSlas(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationUpgradeSlas",
+                "($input: UpgradeSlasInput!)",
+                fieldSpecDoc,
+                "UpgradeSlasReply"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -813,33 +723,24 @@ Export a managed volume snapshot as a share and mount it on a given host.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetPendingSlaAssignmentsInput!"),
             };
-            PendingSlaOperations? fields = null ;
-            if (this.Field != null)
-            {
+            PendingSlaOperations? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (PendingSlaOperations)psObject.BaseObject;
+                    fieldSpecObj = (PendingSlaOperations)psObject.BaseObject;
                 } else {
-                    fields = (PendingSlaOperations)this.Field;
+                    fieldSpecObj = (PendingSlaOperations)this.Field;
                 }
             }
-            string document = Mutation.GetPendingSlaAssignments(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.GetPendingSlaAssignments");
-            var parameters = "($input: GetPendingSlaAssignmentsInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "mutation MutationGetPendingSlaAssignments" + parameters + "{" + document + "}",
-                OperationName = "MutationGetPendingSlaAssignments",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "PendingSlaOperations", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Mutation.GetPendingSlaAssignments(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationGetPendingSlaAssignments",
+                "($input: GetPendingSlaAssignmentsInput!)",
+                fieldSpecDoc,
+                "PendingSlaOperations"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -849,33 +750,24 @@ Export a managed volume snapshot as a share and mount it on a given host.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "ExportSlaManagedVolumeSnapshotInput!"),
             };
-            AsyncRequestStatus? fields = null ;
-            if (this.Field != null)
-            {
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
                 if (this.Field is PSObject psObject) {
-                    fields = (AsyncRequestStatus)psObject.BaseObject;
+                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
                 } else {
-                    fields = (AsyncRequestStatus)this.Field;
+                    fieldSpecObj = (AsyncRequestStatus)this.Field;
                 }
             }
-            string document = Mutation.ExportSlaManagedVolumeSnapshot(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.ExportSlaManagedVolumeSnapshot");
-            var parameters = "($input: ExportSlaManagedVolumeSnapshotInput!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "mutation MutationExportSlaManagedVolumeSnapshot" + parameters + "{" + document + "}",
-                OperationName = "MutationExportSlaManagedVolumeSnapshot",
-            };
-            var vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "AsyncRequestStatus", this._logger, GetMetricTags());
-            WriteObject(result, true);
+            string fieldSpecDoc = Mutation.ExportSlaManagedVolumeSnapshot(ref fieldSpecObj);
+            Initialize(
+                argDefs,
+                fieldSpecObj,
+                "mutation",
+                "MutationExportSlaManagedVolumeSnapshot",
+                "($input: ExportSlaManagedVolumeSnapshotInput!)",
+                fieldSpecDoc,
+                "AsyncRequestStatus"
+            );
         }
 
 

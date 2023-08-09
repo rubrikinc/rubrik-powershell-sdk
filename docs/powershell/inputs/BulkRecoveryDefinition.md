@@ -3,8 +3,8 @@ Bulk recovery definition.
 
 - name: System.String
   - Bulk recovery name.
-- adGroupSelectorWithRecoverySpec: ADGroupSelectorWithRecoverySpec
-  - Specifies Active Directory group selector and recovery specifications.
+- o365GroupSelectorWithRecoverySpec: O365GroupSelectorWithRecoverySpec
+  - Specifies O365 group selector and recovery specifications.
 - failureAction: FailureActionType
   - Failure action.
 - recoveryMode: RecoveryModeType

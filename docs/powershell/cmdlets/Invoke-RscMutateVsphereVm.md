@@ -38,12 +38,12 @@ Provides a method for retrieving a snapshot, that is not available locally, from
 
 - There is a single argument of type VsphereVmDownloadSnapshotInput.
 - Returns AsyncRequestStatus.
-### downloadsnapshotfile
+### downloadsnapshotfiles
 Download files from snapshot.
 
 - There is a single argument of type VsphereVmDownloadSnapshotFilesInput.
 - Returns AsyncRequestStatus.
-### excludevmdisk
+### excludevmdisks
 Exclude or include virtual disks during snapshot.
 
 - There is a single argument of type list of VsphereExcludeVmDisksInputs.
@@ -139,7 +139,7 @@ Create a vSphere Live Mount from a snapshot or point-in-time.
 
 - There is a single argument of type VsphereVmInitiateLiveMountV2Input.
 - Returns AsyncRequestStatus.
-### listesxidatastore
+### listesxidatastores
 List ESXi datastores
 
 Supported in v5.0+
@@ -168,7 +168,7 @@ Power a specified Live Mount virtual machine on or off. Pass **_true_** to power
 
 - There is a single argument of type VsphereVmPowerOnOffLiveMountInput.
 - Returns VsphereVmPowerOnOffLiveMountReply.
-### recoverfile
+### recoverfiles
 Restores multiple files/directories from snapshot.
 
 - There is a single argument of type VsphereVmRecoverFilesInput.

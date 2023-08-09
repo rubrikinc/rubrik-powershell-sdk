@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using RubrikSecurityCloud;
 using RubrikSecurityCloud.PowerShell.Private;
 using RubrikSecurityCloud.Types;
-using RubrikSecurityCloud.PowerShell.Private;
 
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {

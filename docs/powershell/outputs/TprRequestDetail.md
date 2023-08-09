@@ -1,7 +1,7 @@
 ### TprRequestDetail
 Details of a TPR request.
 
-- objects: list of ManagedObjectSummarys
+- inventoryObjects: list of ManagedObjectSummarys
   - Managed objects that are part of the request.
 - clusters: list of ClusterSummarys
   - Clusters that are part of the request.

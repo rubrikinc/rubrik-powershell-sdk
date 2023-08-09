@@ -15,3 +15,5 @@ Azure Tenant with details of subscriptions that are configured for a given featu
   - Type of Azure Tenant. Possible values: Azure Public Cloud, Azure China Cloud.
 - appName: System.String
   - App name of the application configured for authentication of the Azure tenant.
+- isAppRubrikManaged: System.Boolean
+  - If Rubrik manages the application associated with this tenant, this field will be set to FALSE. However, if the application is customer-managed and the customers manually added the credentials,this field will have a different value.

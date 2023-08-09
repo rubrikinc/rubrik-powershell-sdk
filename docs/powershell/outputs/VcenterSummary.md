@@ -30,9 +30,9 @@ Supported in v5.0+
   - Supported in v7.0+
   An optional field that specifies whether HotAdd transport mode is enabled for On-Premise vCenter. When this value is `true`, HotAdd transport mode is enabled for this vCenter. When this value is `false`, HotAdd transport mode is disabled for this vCenter. When this value is not specified, it indicates that this is an VMC vCenter.
 - vcenterUuid: System.String
-  - Supported in v8.0, v9.0
+  - Supported in v8.0, v9.0+
   v8.0: An optional field that identifies the vCenter Server with a unique identifier.
-  v9.0: An optional field that identifies the vCenter Server with a unique identifier.
+  v9.0+: An optional field that identifies the vCenter Server with a unique identifier.
 - slaAssignable: SlaAssignable
   - 
 - vcenterPatch: VcenterPatch

@@ -45,10 +45,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("updatedAt")]
         public DateTime? UpdatedAt { get; set; }
 
-        //      C# -> TprRequester? Requester
-        // GraphQL -> requester: TprRequester! (type)
+        //      C# -> UserSummary? Requester
+        // GraphQL -> requester: UserSummary! (type)
         [JsonProperty("requester")]
-        public TprRequester? Requester { get; set; }
+        public UserSummary? Requester { get; set; }
 
 
         #endregion
@@ -65,7 +65,7 @@ namespace RubrikSecurityCloud.Types
         System.String? OrgId = null,
         System.String? RequestId = null,
         DateTime? UpdatedAt = null,
-        TprRequester? Requester = null
+        UserSummary? Requester = null
     ) 
     {
         if ( Status != null ) {
@@ -121,8 +121,8 @@ namespace RubrikSecurityCloud.Types
         if (this.UpdatedAt != null) {
             s += ind + "updatedAt\n" ;
         }
-        //      C# -> TprRequester? Requester
-        // GraphQL -> requester: TprRequester! (type)
+        //      C# -> UserSummary? Requester
+        // GraphQL -> requester: UserSummary! (type)
         if (this.Requester != null) {
             var fspec = this.Requester.AsFieldSpec(indent+1);
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
@@ -167,11 +167,11 @@ namespace RubrikSecurityCloud.Types
         {
             this.UpdatedAt = new DateTime();
         }
-        //      C# -> TprRequester? Requester
-        // GraphQL -> requester: TprRequester! (type)
+        //      C# -> UserSummary? Requester
+        // GraphQL -> requester: UserSummary! (type)
         if (this.Requester == null && Exploration.Includes(parent + ".requester"))
         {
-            this.Requester = new TprRequester();
+            this.Requester = new UserSummary();
             this.Requester.ApplyExploratoryFieldSpec(parent + ".requester");
         }
     }

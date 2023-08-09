@@ -15,3 +15,5 @@ Supported in v7.0+
 - nasApiCredentials: NasApiCredentialsInput
   - Supported in v7.0+
       The updated API credentials of the NAS system.
+- nasFlashBladeApiCredentials: FlashBladeSystemParametersInput
+  - Supported in v9.0+

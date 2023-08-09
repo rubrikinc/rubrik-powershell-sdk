@@ -55,6 +55,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("upn")]
         public System.String? Upn { get; set; }
 
+        //      C# -> SensitiveFiles? DeltaSensitiveFiles
+        // GraphQL -> deltaSensitiveFiles: SensitiveFiles (type)
+        [JsonProperty("deltaSensitiveFiles")]
+        public SensitiveFiles? DeltaSensitiveFiles { get; set; }
+
         //      C# -> SummaryHits? DeltaSensitiveHits
         // GraphQL -> deltaSensitiveHits: SummaryHits (type)
         [JsonProperty("deltaSensitiveHits")]
@@ -97,6 +102,7 @@ namespace RubrikSecurityCloud.Types
         System.Int32? NumDescendants = null,
         System.String? PrincipalId = null,
         System.String? Upn = null,
+        SensitiveFiles? DeltaSensitiveFiles = null,
         SummaryHits? DeltaSensitiveHits = null,
         PrincipalRiskReasons? RiskReasons = null,
         SensitiveFiles? SensitiveFiles = null,
@@ -124,6 +130,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Upn != null ) {
             this.Upn = Upn;
+        }
+        if ( DeltaSensitiveFiles != null ) {
+            this.DeltaSensitiveFiles = DeltaSensitiveFiles;
         }
         if ( DeltaSensitiveHits != null ) {
             this.DeltaSensitiveHits = DeltaSensitiveHits;
@@ -184,6 +193,14 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> upn: String! (scalar)
         if (this.Upn != null) {
             s += ind + "upn\n" ;
+        }
+        //      C# -> SensitiveFiles? DeltaSensitiveFiles
+        // GraphQL -> deltaSensitiveFiles: SensitiveFiles (type)
+        if (this.DeltaSensitiveFiles != null) {
+            var fspec = this.DeltaSensitiveFiles.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "deltaSensitiveFiles {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SummaryHits? DeltaSensitiveHits
         // GraphQL -> deltaSensitiveHits: SummaryHits (type)
@@ -274,6 +291,13 @@ namespace RubrikSecurityCloud.Types
         if (this.Upn == null && Exploration.Includes(parent + ".upn", true))
         {
             this.Upn = "FETCH";
+        }
+        //      C# -> SensitiveFiles? DeltaSensitiveFiles
+        // GraphQL -> deltaSensitiveFiles: SensitiveFiles (type)
+        if (this.DeltaSensitiveFiles == null && Exploration.Includes(parent + ".deltaSensitiveFiles"))
+        {
+            this.DeltaSensitiveFiles = new SensitiveFiles();
+            this.DeltaSensitiveFiles.ApplyExploratoryFieldSpec(parent + ".deltaSensitiveFiles");
         }
         //      C# -> SummaryHits? DeltaSensitiveHits
         // GraphQL -> deltaSensitiveHits: SummaryHits (type)

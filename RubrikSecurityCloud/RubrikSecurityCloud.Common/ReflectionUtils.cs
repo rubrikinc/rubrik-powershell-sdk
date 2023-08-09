@@ -6,7 +6,6 @@ using GraphQLParser.AST;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RubrikSecurityCloud;
-using System.Management.Automation;
 using System.Reflection;
 namespace RubrikSecurityCloud
 {
@@ -14,9 +13,31 @@ namespace RubrikSecurityCloud
     {
         public static Type? GetType(string typeName)
         {
+            const string ListPrefix = "System.Collections.Generic.List`1[";
+            const string ListSuffix = "]";
+
             if (string.IsNullOrEmpty(typeName))
             {
                 return typeof(object);
+            }
+
+            if (typeName.StartsWith(ListPrefix) && typeName.EndsWith(ListSuffix))
+            {
+                // It's a System.Collections.Generic.List
+                // remove "System.Collections.Generic.List`1[" at start and
+                // "]" at end
+                var innerTypeName =
+                    typeName.Substring(
+                        ListPrefix.Length,
+                        typeName.Length - ListPrefix.Length - ListSuffix.Length
+                    );
+                var innerType = GetType(innerTypeName);
+                if (innerType == null)
+                {
+                    return null;
+                }
+
+                return typeof(List<>).MakeGenericType(innerType);
             }
 
             if (typeName.StartsWith("List<") && typeName.EndsWith(">"))

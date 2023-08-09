@@ -76,3 +76,7 @@ Supported in v5.0+
   - 
 - oracleNonSlaProperties: OracleNonSlaProperties
   - 
+- oldestRecoveryPointV91: DateTime
+  - The time stamp of the earliest recovery point for this database.
+- latestRecoveryPointV91: DateTime
+  - The time stamp of the most recent recovery point for this database.

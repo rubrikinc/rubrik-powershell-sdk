@@ -10,6 +10,11 @@ Adds an IAM user-based AWS cloud account and enables the features specified in t
 
 - There is a single argument of type AddAwsIamUserBasedCloudAccountInput.
 - Returns AddAwsIamUserBasedCloudAccountReply.
+### bulkdeletecloudaccountwithoutcft
+Deletes specified AWS cloud accounts without using CloudFormation Template (CFT).
+
+- There is a single argument of type BulkDeleteAwsCloudAccountWithoutCftInput.
+- Returns BulkDeleteAwsCloudAccountWithoutCftReply.
 ### cloudaccountinitiate
 This endpoint is deprecated.
 
@@ -44,7 +49,7 @@ Create a Rubrik Cloud Cluster on AWS.
 ### createcomputesetting
 - There is a single argument of type CreateAwsComputeSettingInput.
 - Returns AwsComputeSettings.
-### createexocomputeconfig
+### createexocomputeconfigs
 Create AWS Exocompute configs.
 
 - There is a single argument of type CreateAwsExocomputeConfigsInput.
@@ -70,7 +75,7 @@ Delete a Rubrik Cloud Cluster on AWS.
 ### deletecomputesetting
 - There is a single argument of type DeleteAwsComputeSettingInput.
 - Returns System.String.
-### deleteexocomputeconfig
+### deleteexocomputeconfigs
 Deletes AWS Exocompute configs.
 
 - There is a single argument of type DeleteAwsExocomputeConfigsInput.
@@ -120,6 +125,11 @@ Prepare manual update features to latest version.
 
 - There is a single argument of type PrepareFeatureUpdateForAwsCloudAccountInput.
 - Returns PrepareFeatureUpdateForAwsCloudAccountReply.
+### registerfeatureartifacts
+Registers the AWS account artifacts such as roles in RSC backend while onboarding AWS account in manual flow.
+
+- There is a single argument of type RegisterAwsFeatureArtifactsInput.
+- Returns RegisterAwsFeatureArtifactsReply.
 ### startcreatenativeebsvolumesnapshotsjob
 Start job to create snapshots of EBS Volumes with given IDs. When completed, this will start taking an on-demand snapshot of the selected EBS Volumes  as per the SLA Policy assigned to the respective volumes.
 
@@ -182,7 +192,7 @@ Updates regions, stack ARN, and role ARN for a feature for a given cloud account
 ### updatecomputesetting
 - There is a single argument of type UpdateAwsComputeSettingInput.
 - Returns AwsComputeSettings.
-### updateexocomputeconfig
+### updateexocomputeconfigs
 Update AWS Exocompute configs.
 
 - There is a single argument of type UpdateAwsExocomputeConfigsInput.
@@ -195,7 +205,7 @@ Updates status of AWS cloud account features to connected if they are in update 
 
 - There is a single argument of type UpgradeAwsCloudAccountFeaturesWithoutCftInput.
 - Returns System.Boolean.
-### upgradeiamuserbasedcloudaccountpermission
+### upgradeiamuserbasedcloudaccountpermissions
 Set IAM user-based AWS account features status to Connected from Update Permissions state. It should be used by caution from cloud accounts only after latest required permissions are granted to authorized IAM user.
 
 - There is a single argument of type UpgradeAwsIamUserBasedCloudAccountPermissionsInput.

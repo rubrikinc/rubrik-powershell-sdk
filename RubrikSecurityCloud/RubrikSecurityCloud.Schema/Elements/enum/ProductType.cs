@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ProductType
     {
+        [EnumMember(Value = "PAG_TRIAL")]
+        PAG_TRIAL,
+
         [EnumMember(Value = "POC")]
         POC,
 

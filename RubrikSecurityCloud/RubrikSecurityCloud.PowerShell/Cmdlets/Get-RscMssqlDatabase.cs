@@ -49,6 +49,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         [Parameter(
             Position = 0,
             ParameterSetName = "Query")]
+        [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
@@ -57,6 +58,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         [Parameter(
             Position = 1,
             ParameterSetName = "Id")]
+        [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
         /// <summary>

@@ -31,3 +31,7 @@ Azure O365 Exocompute cluster details.
   - Rubrik SaaS feature type using the Exocompute cluster.
 - colossusBackupStorageAccountId: System.String
   - Storage account used for the backup of Colossus metadata.
+- databaseIds: ZeusDatabaseIds
+  - Database IDs used for Zeus data store.
+- kekBackupStartTime: DateTime
+  - Specifies the KEK backup start time to determine the last time the backup was run.

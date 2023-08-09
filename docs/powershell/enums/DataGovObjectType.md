@@ -45,3 +45,4 @@ TODO: SPARK-150447 - Deprecate this enum to use managed object type
 - VMWARE_TAG_CATEGORY - Represents VMware Tag Category.
 - HYPERV_SCVMM - Represents HyperV SCVMM.
 - HYPERV_SERVER - Represents HyperV Server.
+- VMWARE_RESOURCE_POOL - Represents VMware resource pool.

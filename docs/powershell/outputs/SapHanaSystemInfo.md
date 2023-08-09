@@ -7,3 +7,5 @@ Supported in v5.3+
 - isSystemReplicationEnabled: System.Boolean
   - Required. Supported in v5.3+
   Indicates whether the SAP HANA system has replication enabled.
+- authTypeSpec: SapHanaSystemAuthTypeSpec
+  - Specifies the authentication type for the SAP HANA system.

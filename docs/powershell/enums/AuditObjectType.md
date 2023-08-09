@@ -108,3 +108,6 @@ Represents all the object types for which we expect to see audits.
 - NUTANIX_PRISM_CENTRAL - Nutanix prism central audit object.
 - ACTIVE_DIRECTORY_DOMAIN - Active Directory domain.
 - ACTIVE_DIRECTORY_DOMAIN_CONTROLLER - Active Directory domain controller.
+- ATLASSIAN_SITE - Atlassian site.
+- JIRA_PROJECT - Atlassian Jira project.
+- JIRA_SETTINGS - Atlassian Jira settings.

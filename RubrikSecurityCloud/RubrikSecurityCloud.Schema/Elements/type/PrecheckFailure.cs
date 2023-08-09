@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> PrecheckIdentifier? PrecheckIdentifier
+        // GraphQL -> precheckIdentifier: PrecheckIdentifier! (enum)
+        [JsonProperty("precheckIdentifier")]
+        public PrecheckIdentifier? PrecheckIdentifier { get; set; }
+
         //      C# -> System.String? Cause
         // GraphQL -> cause: String! (scalar)
         [JsonProperty("cause")]
@@ -50,12 +55,16 @@ namespace RubrikSecurityCloud.Types
     }
 
     public PrecheckFailure Set(
+        PrecheckIdentifier? PrecheckIdentifier = null,
         System.String? Cause = null,
         System.String? PrecheckName = null,
         System.String? Remedy = null,
         System.Boolean? UpgradeBlocker = null
     ) 
     {
+        if ( PrecheckIdentifier != null ) {
+            this.PrecheckIdentifier = PrecheckIdentifier;
+        }
         if ( Cause != null ) {
             this.Cause = Cause;
         }
@@ -78,6 +87,11 @@ namespace RubrikSecurityCloud.Types
     {
         string ind = new string(' ', indent*2);
         string s = "";
+        //      C# -> PrecheckIdentifier? PrecheckIdentifier
+        // GraphQL -> precheckIdentifier: PrecheckIdentifier! (enum)
+        if (this.PrecheckIdentifier != null) {
+            s += ind + "precheckIdentifier\n" ;
+        }
         //      C# -> System.String? Cause
         // GraphQL -> cause: String! (scalar)
         if (this.Cause != null) {
@@ -106,6 +120,12 @@ namespace RubrikSecurityCloud.Types
     //[JsonIgnore]
     public override void ApplyExploratoryFieldSpec(String parent = "")
     {
+        //      C# -> PrecheckIdentifier? PrecheckIdentifier
+        // GraphQL -> precheckIdentifier: PrecheckIdentifier! (enum)
+        if (this.PrecheckIdentifier == null && Exploration.Includes(parent + ".precheckIdentifier", true))
+        {
+            this.PrecheckIdentifier = new PrecheckIdentifier();
+        }
         //      C# -> System.String? Cause
         // GraphQL -> cause: String! (scalar)
         if (this.Cause == null && Exploration.Includes(parent + ".cause", true))

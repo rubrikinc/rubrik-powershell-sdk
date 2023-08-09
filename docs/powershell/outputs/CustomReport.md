@@ -3,6 +3,8 @@ Metadata for rendering a custom report.
 
 - id: System.Int32
   - ID of the custom report.
+- fid: System.String
+  - Forever ID of the custom report.
 - name: System.String
   - Name of the custom report.
 - focus: ReportFocusEnum

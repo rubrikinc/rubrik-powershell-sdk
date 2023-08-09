@@ -8,7 +8,7 @@
 RootModule = 'RubrikSecurityCloud.PowerShell.dll'
 
 # Version number of this module.
-ModuleVersion = '0.8.0'
+ModuleVersion = '0.9.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -27,7 +27,7 @@ Copyright = '(c) Rubrik. All rights reserved.'
 
 # Description of the functionality provided by this module
 # NOTE: The word after "GraphQL schema version:" is generated.
-Description = 'PowerShell Module for Rubrik Security Cloud. GraphQL schema version: v20230621-28 .'
+Description = 'PowerShell Module for Rubrik Security Cloud. GraphQL schema version: v20230726-39 .'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '6.0.0'

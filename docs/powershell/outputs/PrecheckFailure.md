@@ -9,3 +9,5 @@ Precheck details.
   - Remedy to fix the precheck failure.
 - upgradeBlocker: System.Boolean
   - Is upgrade blocker flag.
+- precheckIdentifier: PrecheckIdentifier
+  - Identifier for the precheck.

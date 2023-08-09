@@ -3,6 +3,8 @@ The saved configurations of a report.
 
 - id: System.Int64
   - Report ID.
+- fid: System.String
+  - Report forever ID.
 - name: System.String
   - Report name.
 - reportViewType: PolarisReportViewType

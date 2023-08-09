@@ -72,7 +72,7 @@ namespace RubrikSecurityCloud.Types
         public List<CdmHierarchyObject>? ReplicatedObjects { get; set; }
 
         //      C# -> System.String? AgentUuid
-        // GraphQL -> agentUuid: UUID (scalar)
+        // GraphQL -> agentUuid: String (scalar)
         [JsonProperty("agentUuid")]
         public System.String? AgentUuid { get; set; }
 
@@ -85,6 +85,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> cdmLink: String! (scalar)
         [JsonProperty("cdmLink")]
         public System.String? CdmLink { get; set; }
+
+        //      C# -> System.String? DcLocation
+        // GraphQL -> dcLocation: String (scalar)
+        [JsonProperty("dcLocation")]
+        public System.String? DcLocation { get; set; }
 
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String! (scalar)
@@ -100,11 +105,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> isRelic: Boolean! (scalar)
         [JsonProperty("isRelic")]
         public System.Boolean? IsRelic { get; set; }
-
-        //      C# -> System.String? Location
-        // GraphQL -> location: String (scalar)
-        [JsonProperty("location")]
-        public System.String? Location { get; set; }
 
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
@@ -264,10 +264,10 @@ namespace RubrikSecurityCloud.Types
         System.String? AgentUuid = null,
         System.String? CdmId = null,
         System.String? CdmLink = null,
+        System.String? DcLocation = null,
         System.String? Hostname = null,
         System.String? Id = null,
         System.Boolean? IsRelic = null,
-        System.String? Location = null,
         System.String? Name = null,
         System.Int32? NumWorkloadDescendants = null,
         System.Int32? OnDemandSnapshotCount = null,
@@ -336,6 +336,9 @@ namespace RubrikSecurityCloud.Types
         if ( CdmLink != null ) {
             this.CdmLink = CdmLink;
         }
+        if ( DcLocation != null ) {
+            this.DcLocation = DcLocation;
+        }
         if ( Hostname != null ) {
             this.Hostname = Hostname;
         }
@@ -344,9 +347,6 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsRelic != null ) {
             this.IsRelic = IsRelic;
-        }
-        if ( Location != null ) {
-            this.Location = Location;
         }
         if ( Name != null ) {
             this.Name = Name;
@@ -505,7 +505,7 @@ namespace RubrikSecurityCloud.Types
             }
         }
         //      C# -> System.String? AgentUuid
-        // GraphQL -> agentUuid: UUID (scalar)
+        // GraphQL -> agentUuid: String (scalar)
         if (this.AgentUuid != null) {
             s += ind + "agentUuid\n" ;
         }
@@ -518,6 +518,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> cdmLink: String! (scalar)
         if (this.CdmLink != null) {
             s += ind + "cdmLink\n" ;
+        }
+        //      C# -> System.String? DcLocation
+        // GraphQL -> dcLocation: String (scalar)
+        if (this.DcLocation != null) {
+            s += ind + "dcLocation\n" ;
         }
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String! (scalar)
@@ -533,11 +538,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> isRelic: Boolean! (scalar)
         if (this.IsRelic != null) {
             s += ind + "isRelic\n" ;
-        }
-        //      C# -> System.String? Location
-        // GraphQL -> location: String (scalar)
-        if (this.Location != null) {
-            s += ind + "location\n" ;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
@@ -818,7 +818,7 @@ namespace RubrikSecurityCloud.Types
             this.ReplicatedObjects.ApplyExploratoryFieldSpec(parent + ".replicatedObjects");
         }
         //      C# -> System.String? AgentUuid
-        // GraphQL -> agentUuid: UUID (scalar)
+        // GraphQL -> agentUuid: String (scalar)
         if (this.AgentUuid == null && Exploration.Includes(parent + ".agentUuid", true))
         {
             this.AgentUuid = "FETCH";
@@ -834,6 +834,12 @@ namespace RubrikSecurityCloud.Types
         if (this.CdmLink == null && Exploration.Includes(parent + ".cdmLink", true))
         {
             this.CdmLink = "FETCH";
+        }
+        //      C# -> System.String? DcLocation
+        // GraphQL -> dcLocation: String (scalar)
+        if (this.DcLocation == null && Exploration.Includes(parent + ".dcLocation", true))
+        {
+            this.DcLocation = "FETCH";
         }
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String! (scalar)
@@ -852,12 +858,6 @@ namespace RubrikSecurityCloud.Types
         if (this.IsRelic == null && Exploration.Includes(parent + ".isRelic", true))
         {
             this.IsRelic = true;
-        }
-        //      C# -> System.String? Location
-        // GraphQL -> location: String (scalar)
-        if (this.Location == null && Exploration.Includes(parent + ".location", true))
-        {
-            this.Location = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)

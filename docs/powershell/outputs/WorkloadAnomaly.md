@@ -32,6 +32,12 @@ A workload that has a snapshot or children with anomalous activity.
 - previousSnapshotFid: System.String
   - The FID of the snapshot taken before the snapshot that was determined
  to have anomalous activity.
+- anomalyType: AnomalyType
+  - Type of the anomaly detected.
+- detectionTime: DateTime
+  - Time when the anomaly was detected.
+- anomalyId: System.String
+  - Identifies the anomaly for a given workload.
 - objectType: HierarchyObjectTypeEnum
   - The object type of the workload.
 - anomalousSnapshotDate: DateTime

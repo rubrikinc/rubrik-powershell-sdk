@@ -25,6 +25,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("count")]
         public System.Int32? Count { get; set; }
 
+        //      C# -> System.Boolean? HasLatestData
+        // GraphQL -> hasLatestData: Boolean! (scalar)
+        [JsonProperty("hasLatestData")]
+        public System.Boolean? HasLatestData { get; set; }
+
+        //      C# -> System.Int32? IndexingVersion
+        // GraphQL -> indexingVersion: Int! (scalar)
+        [JsonProperty("indexingVersion")]
+        public System.Int32? IndexingVersion { get; set; }
+
         //      C# -> List<FileResultEdge>? Edges
         // GraphQL -> edges: [FileResultEdge!]! (type)
         [JsonProperty("edges")]
@@ -51,6 +61,8 @@ namespace RubrikSecurityCloud.Types
 
     public FileResultConnection Set(
         System.Int32? Count = null,
+        System.Boolean? HasLatestData = null,
+        System.Int32? IndexingVersion = null,
         List<FileResultEdge>? Edges = null,
         List<FileResult>? Nodes = null,
         PageInfo? PageInfo = null
@@ -58,6 +70,12 @@ namespace RubrikSecurityCloud.Types
     {
         if ( Count != null ) {
             this.Count = Count;
+        }
+        if ( HasLatestData != null ) {
+            this.HasLatestData = HasLatestData;
+        }
+        if ( IndexingVersion != null ) {
+            this.IndexingVersion = IndexingVersion;
         }
         if ( Edges != null ) {
             this.Edges = Edges;
@@ -82,6 +100,16 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> count: Int! (scalar)
         if (this.Count != null) {
             s += ind + "count\n" ;
+        }
+        //      C# -> System.Boolean? HasLatestData
+        // GraphQL -> hasLatestData: Boolean! (scalar)
+        if (this.HasLatestData != null) {
+            s += ind + "hasLatestData\n" ;
+        }
+        //      C# -> System.Int32? IndexingVersion
+        // GraphQL -> indexingVersion: Int! (scalar)
+        if (this.IndexingVersion != null) {
+            s += ind + "indexingVersion\n" ;
         }
         //      C# -> List<FileResultEdge>? Edges
         // GraphQL -> edges: [FileResultEdge!]! (type)
@@ -120,6 +148,18 @@ namespace RubrikSecurityCloud.Types
         if (this.Count == null && Exploration.Includes(parent + ".count", true))
         {
             this.Count = Int32.MinValue;
+        }
+        //      C# -> System.Boolean? HasLatestData
+        // GraphQL -> hasLatestData: Boolean! (scalar)
+        if (this.HasLatestData == null && Exploration.Includes(parent + ".hasLatestData", true))
+        {
+            this.HasLatestData = true;
+        }
+        //      C# -> System.Int32? IndexingVersion
+        // GraphQL -> indexingVersion: Int! (scalar)
+        if (this.IndexingVersion == null && Exploration.Includes(parent + ".indexingVersion", true))
+        {
+            this.IndexingVersion = Int32.MinValue;
         }
         //      C# -> List<FileResultEdge>? Edges
         // GraphQL -> edges: [FileResultEdge!]! (type)

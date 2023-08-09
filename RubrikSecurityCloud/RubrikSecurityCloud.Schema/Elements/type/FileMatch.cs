@@ -60,6 +60,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isQuarantined")]
         public System.Boolean? IsQuarantined { get; set; }
 
+        //      C# -> System.Int64? MatchId
+        // GraphQL -> matchId: Long! (scalar)
+        [JsonProperty("matchId")]
+        public System.Int64? MatchId { get; set; }
+
         //      C# -> System.String? ObjectFid
         // GraphQL -> objectFid: UUID! (scalar)
         [JsonProperty("objectFid")]
@@ -93,6 +98,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Filepath = null,
         DateTime? FirstMatchedSnapshotDate = null,
         System.Boolean? IsQuarantined = null,
+        System.Int64? MatchId = null,
         System.String? ObjectFid = null,
         System.String? ObjectName = null,
         System.String? SnapshotFid = null
@@ -121,6 +127,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsQuarantined != null ) {
             this.IsQuarantined = IsQuarantined;
+        }
+        if ( MatchId != null ) {
+            this.MatchId = MatchId;
         }
         if ( ObjectFid != null ) {
             this.ObjectFid = ObjectFid;
@@ -180,6 +189,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> isQuarantined: Boolean! (scalar)
         if (this.IsQuarantined != null) {
             s += ind + "isQuarantined\n" ;
+        }
+        //      C# -> System.Int64? MatchId
+        // GraphQL -> matchId: Long! (scalar)
+        if (this.MatchId != null) {
+            s += ind + "matchId\n" ;
         }
         //      C# -> System.String? ObjectFid
         // GraphQL -> objectFid: UUID! (scalar)
@@ -251,6 +265,12 @@ namespace RubrikSecurityCloud.Types
         if (this.IsQuarantined == null && Exploration.Includes(parent + ".isQuarantined", true))
         {
             this.IsQuarantined = true;
+        }
+        //      C# -> System.Int64? MatchId
+        // GraphQL -> matchId: Long! (scalar)
+        if (this.MatchId == null && Exploration.Includes(parent + ".matchId", true))
+        {
+            this.MatchId = new System.Int64();
         }
         //      C# -> System.String? ObjectFid
         // GraphQL -> objectFid: UUID! (scalar)

@@ -74,7 +74,7 @@ Supported in v5.0+
   - Supported in v7.0+
   A boolean value that specifies whether the database derives the log backup configurations from SLA.
 - hostLogRetention: System.Int32
-  - Supported in v9.0
+  - Supported in v9.0+
   Specifies the interval, in seconds, the Rubrik cluster waits before the next log backup job deletes MSSQL log files whose 'nextTime' field specifies a time longer than this interval. To specify a wait interval, enter a positive integer. To immediately delete log files regardless of age, specify an interval of -1. To preserve all log files, specify an interval of -2.
 - snappable: CdmWorkload
   - 
@@ -95,6 +95,8 @@ Supported in v5.0+
 - unprotectableReasonsV81: list of System.Strings
   - A list of reasons that a SQL Server database cannot be protected by the Rubrik CDM.
 - unprotectableReasonsV90: list of System.Strings
+  - A list of reasons that a SQL Server database cannot be protected by the Rubrik CDM.
+- unprotectableReasonsV91: list of System.Strings
   - A list of reasons that a SQL Server database cannot be protected by the Rubrik CDM.
 - recoveryModel: MssqlDbSummaryRecoveryModel
   - 

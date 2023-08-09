@@ -6,6 +6,16 @@
 ### computecluster
 - There is a single argument of type System.String.
 - Returns VsphereComputeCluster.
+### computeclusters
+Query compute clusters
+
+- There are 5 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - sortBy - HierarchySortByField: Sort hierarchy objects by hierarchy field.
+    - sortOrder - SortOrder: Sorting order for the results.
+    - filter - list of Filters: The hierarchy object filter.
+- Returns VsphereComputeClusterConnection.
 ### datacenter
 - There is a single argument of type System.String.
 - Returns VsphereDatacenter.
@@ -19,6 +29,16 @@ Vsphere datastore cluster based on id passed in.
 
 - There is a single argument of type System.String.
 - Returns VsphereDatastoreCluster.
+### datastoreclusters
+Query vSphere datastore clusters.
+
+- There are 5 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - sortBy - HierarchySortByField: Sort hierarchy objects by hierarchy field.
+    - sortOrder - SortOrder: Sorting order for the results.
+    - filter - list of Filters: The hierarchy object filter.
+- Returns VsphereDatastoreClusterConnection.
 ### datastorelist
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
@@ -33,7 +53,7 @@ Vsphere datastore cluster based on id passed in.
 ### host
 - There is a single argument of type System.String.
 - Returns VsphereHost.
-### hostdetail
+### hostdetails
 Get details of a ESXi hypervisor
 
 Supported in v5.0+
@@ -49,12 +69,12 @@ Get details of a ESXi hypervisor.
     - sortOrder - SortOrder: Sorting order for the results.
     - filter - list of Filters: The hierarchy object filter.
 - Returns VsphereHostConnection.
-### hostsbyfid
+### hostsbyfids
 All of the VSphere hosts based on fids passed in.
 
 - There is a single argument of type list of System.Strings.
 - Returns list of VsphereHosts.
-### livemount
+### livemounts
 List of vSphere Live Mounts.
 
 - There are 4 arguments.
