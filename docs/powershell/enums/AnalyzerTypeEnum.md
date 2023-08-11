@@ -29,9 +29,11 @@ AnalyzerType is the shared enum for the backend and frontend to
 - EIN - U.S. employer identification number analyzer.
 - EMAIL_ADDRESS - Email address analyzer.
 - FRANCE_SSN - France Social Security number (SSN).
+- GCP_OAUTH_REFRESH_TOKEN - Google Cloud Platform OAuth Refresh Token analyzer.
 - GERMANY_DL - Germany driver's license number analyzer.
 - GERMANY_ID - Germany identity card number analyzer.
 - GERMANY_PASSPORT - Germany passport number analyzer.
+- GITHUB_OAUTH_REFRESH_TOKEN - GitHub OAuth Refresh Token analyzer.
 - GOOGLE_API_KEY - Google API Key analyzer.
 - IBAN - International Bank Account Number (IBAN) analyzer.
 - IPV4_ADDRESS - IP address analyzer.

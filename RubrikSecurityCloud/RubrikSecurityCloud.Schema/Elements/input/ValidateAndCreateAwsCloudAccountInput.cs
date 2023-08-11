@@ -45,10 +45,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("awsChildAccounts")]
         public List<AwsCloudAccountInput>? AwsChildAccounts { get; set; }
 
-        //      C# -> AwsRoleCustomization? RoleCustomization
-        // GraphQL -> roleCustomization: AwsRoleCustomization (input)
-        [JsonProperty("roleCustomization")]
-        public AwsRoleCustomization? RoleCustomization { get; set; }
+        //      C# -> AwsRoleCustomization? AwsRoleCustomization
+        // GraphQL -> awsRoleCustomization: AwsRoleCustomization (input)
+        [JsonProperty("awsRoleCustomization")]
+        public AwsRoleCustomization? AwsRoleCustomization { get; set; }
 
 
         #endregion

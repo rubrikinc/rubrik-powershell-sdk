@@ -26,11 +26,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     public class Invoke_RscQueryCassandra : RscPSCmdlet
     {
         
-        // -------------------------------------------------------------------
-        // Sources parameter set
-        //
-        // [GraphQL: cassandraSources]
-        //
+        /// <summary>
+        /// Sources parameter set
+        ///
+        /// [GraphQL: cassandraSources]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Sources",
             Mandatory = false,
@@ -44,11 +44,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Sources { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Keyspaces parameter set
-        //
-        // [GraphQL: cassandraKeyspaces]
-        //
+        /// <summary>
+        /// Keyspaces parameter set
+        ///
+        /// [GraphQL: cassandraKeyspaces]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Keyspaces",
             Mandatory = false,
@@ -62,11 +62,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Keyspaces { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ColumnFamilies parameter set
-        //
-        // [GraphQL: cassandraColumnFamilies]
-        //
+        /// <summary>
+        /// ColumnFamilies parameter set
+        ///
+        /// [GraphQL: cassandraColumnFamilies]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ColumnFamilies",
             Mandatory = false,
@@ -80,11 +80,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter ColumnFamilies { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ColumnFamilyRecoverableRange parameter set
-        //
-        // [GraphQL: cassandraColumnFamilyRecoverableRange]
-        //
+        /// <summary>
+        /// ColumnFamilyRecoverableRange parameter set
+        ///
+        /// [GraphQL: cassandraColumnFamilyRecoverableRange]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ColumnFamilyRecoverableRange",
             Mandatory = false,
@@ -98,11 +98,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter ColumnFamilyRecoverableRange { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ColumnFamilySchema parameter set
-        //
-        // [GraphQL: cassandraColumnFamilySchema]
-        //
+        /// <summary>
+        /// ColumnFamilySchema parameter set
+        ///
+        /// [GraphQL: cassandraColumnFamilySchema]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ColumnFamilySchema",
             Mandatory = false,
@@ -116,11 +116,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter ColumnFamilySchema { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Source parameter set
-        //
-        // [GraphQL: cassandraSource]
-        //
+        /// <summary>
+        /// Source parameter set
+        ///
+        /// [GraphQL: cassandraSource]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Source",
             Mandatory = false,
@@ -134,11 +134,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Source { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Keyspace parameter set
-        //
-        // [GraphQL: cassandraKeyspace]
-        //
+        /// <summary>
+        /// Keyspace parameter set
+        ///
+        /// [GraphQL: cassandraKeyspace]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Keyspace",
             Mandatory = false,
@@ -152,11 +152,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Keyspace { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ColumnFamily parameter set
-        //
-        // [GraphQL: cassandraColumnFamily]
-        //
+        /// <summary>
+        /// ColumnFamily parameter set
+        ///
+        /// [GraphQL: cassandraColumnFamily]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ColumnFamily",
             Mandatory = false,
@@ -170,6 +170,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter ColumnFamily { get; set; }
 
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
         protected override void ProcessRecord()
         {
             try
@@ -209,10 +211,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 ThrowTerminatingException(ex);
            }
         }
+#pragma warning restore 1591
 
         // This parameter set invokes a single graphql operation:
         // cassandraSources.
-        protected void ProcessRecord_Sources()
+        internal void ProcessRecord_Sources()
         {
             this._logger.name += " -Sources";
             // Invoke graphql operation cassandraSources
@@ -221,7 +224,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // cassandraKeyspaces.
-        protected void ProcessRecord_Keyspaces()
+        internal void ProcessRecord_Keyspaces()
         {
             this._logger.name += " -Keyspaces";
             // Invoke graphql operation cassandraKeyspaces
@@ -230,7 +233,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // cassandraColumnFamilies.
-        protected void ProcessRecord_ColumnFamilies()
+        internal void ProcessRecord_ColumnFamilies()
         {
             this._logger.name += " -ColumnFamilies";
             // Invoke graphql operation cassandraColumnFamilies
@@ -239,7 +242,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // cassandraColumnFamilyRecoverableRange.
-        protected void ProcessRecord_ColumnFamilyRecoverableRange()
+        internal void ProcessRecord_ColumnFamilyRecoverableRange()
         {
             this._logger.name += " -ColumnFamilyRecoverableRange";
             // Invoke graphql operation cassandraColumnFamilyRecoverableRange
@@ -248,7 +251,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // cassandraColumnFamilySchema.
-        protected void ProcessRecord_ColumnFamilySchema()
+        internal void ProcessRecord_ColumnFamilySchema()
         {
             this._logger.name += " -ColumnFamilySchema";
             // Invoke graphql operation cassandraColumnFamilySchema
@@ -257,7 +260,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // cassandraSource.
-        protected void ProcessRecord_Source()
+        internal void ProcessRecord_Source()
         {
             this._logger.name += " -Source";
             // Invoke graphql operation cassandraSource
@@ -266,7 +269,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // cassandraKeyspace.
-        protected void ProcessRecord_Keyspace()
+        internal void ProcessRecord_Keyspace()
         {
             this._logger.name += " -Keyspace";
             // Invoke graphql operation cassandraKeyspace
@@ -275,7 +278,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // cassandraColumnFamily.
-        protected void ProcessRecord_ColumnFamily()
+        internal void ProcessRecord_ColumnFamily()
         {
             this._logger.name += " -ColumnFamily";
             // Invoke graphql operation cassandraColumnFamily
@@ -291,7 +294,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     sortOrder: SortOrder
         //     filter: [Filter!]
         //   ): CassandraSourceConnection!
-        protected void InvokeQueryCassandraSources()
+        internal void InvokeQueryCassandraSources()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -328,7 +331,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     sortOrder: SortOrder
         //     filter: [Filter!]
         //   ): CassandraKeyspaceConnection!
-        protected void InvokeQueryCassandraKeyspaces()
+        internal void InvokeQueryCassandraKeyspaces()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -365,7 +368,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     sortOrder: SortOrder
         //     filter: [Filter!]
         //   ): CassandraColumnFamilyConnection!
-        protected void InvokeQueryCassandraColumnFamilies()
+        internal void InvokeQueryCassandraColumnFamilies()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -396,7 +399,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // cassandraColumnFamilyRecoverableRange(input: GetMosaicRecoverableRangeInput!): GetMosaicRecoverableRangeResponse!
-        protected void InvokeQueryCassandraColumnFamilyRecoverableRange()
+        internal void InvokeQueryCassandraColumnFamilyRecoverableRange()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetMosaicRecoverableRangeInput!"),
@@ -423,7 +426,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // cassandraColumnFamilySchema(input: GetMosaicTableSchemaInput!): GetSchemaResponse!
-        protected void InvokeQueryCassandraColumnFamilySchema()
+        internal void InvokeQueryCassandraColumnFamilySchema()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetMosaicTableSchemaInput!"),
@@ -450,7 +453,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // cassandraSource(fid: UUID!): CassandraSource!
-        protected void InvokeQueryCassandraSource()
+        internal void InvokeQueryCassandraSource()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
@@ -477,7 +480,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // cassandraKeyspace(fid: UUID!): CassandraKeyspace!
-        protected void InvokeQueryCassandraKeyspace()
+        internal void InvokeQueryCassandraKeyspace()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
@@ -504,7 +507,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // cassandraColumnFamily(fid: UUID!): CassandraColumnFamily!
-        protected void InvokeQueryCassandraColumnFamily()
+        internal void InvokeQueryCassandraColumnFamily()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),

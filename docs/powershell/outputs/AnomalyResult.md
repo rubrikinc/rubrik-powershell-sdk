@@ -17,6 +17,8 @@ Anomaly analysis report from lambda service.
   - The internal ID of the snapshot.
 - snapshotDate: DateTime
   - The date of the snapshot.
+- detectionTime: DateTime
+  - Time when the anomaly was detected.
 - previousSnapshotId: System.String
   - The ID of the previous snapshot.
 - previousSnapshotDate: DateTime

@@ -26,11 +26,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     public class Invoke_RscQueryMongo : RscPSCmdlet
     {
         
-        // -------------------------------------------------------------------
-        // Sources parameter set
-        //
-        // [GraphQL: mongoSources]
-        //
+        /// <summary>
+        /// Sources parameter set
+        ///
+        /// [GraphQL: mongoSources]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Sources",
             Mandatory = false,
@@ -44,11 +44,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Sources { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Databases parameter set
-        //
-        // [GraphQL: mongoDatabases]
-        //
+        /// <summary>
+        /// Databases parameter set
+        ///
+        /// [GraphQL: mongoDatabases]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Databases",
             Mandatory = false,
@@ -62,11 +62,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Databases { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Collections parameter set
-        //
-        // [GraphQL: mongoCollections]
-        //
+        /// <summary>
+        /// Collections parameter set
+        ///
+        /// [GraphQL: mongoCollections]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Collections",
             Mandatory = false,
@@ -80,11 +80,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Collections { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Source parameter set
-        //
-        // [GraphQL: mongoSource]
-        //
+        /// <summary>
+        /// Source parameter set
+        ///
+        /// [GraphQL: mongoSource]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Source",
             Mandatory = false,
@@ -98,11 +98,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Source { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Database parameter set
-        //
-        // [GraphQL: mongoDatabase]
-        //
+        /// <summary>
+        /// Database parameter set
+        ///
+        /// [GraphQL: mongoDatabase]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Database",
             Mandatory = false,
@@ -116,11 +116,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Database { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Collection parameter set
-        //
-        // [GraphQL: mongoCollection]
-        //
+        /// <summary>
+        /// Collection parameter set
+        ///
+        /// [GraphQL: mongoCollection]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Collection",
             Mandatory = false,
@@ -134,11 +134,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Collection { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // RecoverableRanges parameter set
-        //
-        // [GraphQL: mongoRecoverableRanges]
-        //
+        /// <summary>
+        /// RecoverableRanges parameter set
+        ///
+        /// [GraphQL: mongoRecoverableRanges]
+        /// </summary>
         [Parameter(
             ParameterSetName = "RecoverableRanges",
             Mandatory = false,
@@ -152,11 +152,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter RecoverableRanges { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // BulkRecoverableRanges parameter set
-        //
-        // [GraphQL: mongoBulkRecoverableRanges]
-        //
+        /// <summary>
+        /// BulkRecoverableRanges parameter set
+        ///
+        /// [GraphQL: mongoBulkRecoverableRanges]
+        /// </summary>
         [Parameter(
             ParameterSetName = "BulkRecoverableRanges",
             Mandatory = false,
@@ -170,11 +170,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter BulkRecoverableRanges { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DbSources parameter set
-        //
-        // [GraphQL: mongodbSources]
-        //
+        /// <summary>
+        /// DbSources parameter set
+        ///
+        /// [GraphQL: mongodbSources]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DbSources",
             Mandatory = false,
@@ -188,11 +188,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter DbSources { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DbDatabases parameter set
-        //
-        // [GraphQL: mongodbDatabases]
-        //
+        /// <summary>
+        /// DbDatabases parameter set
+        ///
+        /// [GraphQL: mongodbDatabases]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DbDatabases",
             Mandatory = false,
@@ -206,11 +206,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter DbDatabases { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DbCollections parameter set
-        //
-        // [GraphQL: mongodbCollections]
-        //
+        /// <summary>
+        /// DbCollections parameter set
+        ///
+        /// [GraphQL: mongodbCollections]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DbCollections",
             Mandatory = false,
@@ -224,11 +224,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter DbCollections { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DbSource parameter set
-        //
-        // [GraphQL: mongodbSource]
-        //
+        /// <summary>
+        /// DbSource parameter set
+        ///
+        /// [GraphQL: mongodbSource]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DbSource",
             Mandatory = false,
@@ -244,11 +244,11 @@ For more info on MongoDB cluster refer to : https://docs.mongodb.com/manual/intr
         public SwitchParameter DbSource { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DbDatabase parameter set
-        //
-        // [GraphQL: mongodbDatabase]
-        //
+        /// <summary>
+        /// DbDatabase parameter set
+        ///
+        /// [GraphQL: mongodbDatabase]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DbDatabase",
             Mandatory = false,
@@ -265,11 +265,11 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
         public SwitchParameter DbDatabase { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DbCollection parameter set
-        //
-        // [GraphQL: mongodbCollection]
-        //
+        /// <summary>
+        /// DbCollection parameter set
+        ///
+        /// [GraphQL: mongodbCollection]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DbCollection",
             Mandatory = false,
@@ -285,11 +285,11 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
         public SwitchParameter DbCollection { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DbCollectionRecoverableRange parameter set
-        //
-        // [GraphQL: mongodbCollectionRecoverableRange]
-        //
+        /// <summary>
+        /// DbCollectionRecoverableRange parameter set
+        ///
+        /// [GraphQL: mongodbCollectionRecoverableRange]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DbCollectionRecoverableRange",
             Mandatory = false,
@@ -303,11 +303,11 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
         public SwitchParameter DbCollectionRecoverableRange { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DbBulkRecoverableRange parameter set
-        //
-        // [GraphQL: mongodbBulkRecoverableRange]
-        //
+        /// <summary>
+        /// DbBulkRecoverableRange parameter set
+        ///
+        /// [GraphQL: mongodbBulkRecoverableRange]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DbBulkRecoverableRange",
             Mandatory = false,
@@ -321,6 +321,8 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
         public SwitchParameter DbBulkRecoverableRange { get; set; }
 
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
         protected override void ProcessRecord()
         {
             try
@@ -384,10 +386,11 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
                 ThrowTerminatingException(ex);
            }
         }
+#pragma warning restore 1591
 
         // This parameter set invokes a single graphql operation:
         // mongoSources.
-        protected void ProcessRecord_Sources()
+        internal void ProcessRecord_Sources()
         {
             this._logger.name += " -Sources";
             // Invoke graphql operation mongoSources
@@ -396,7 +399,7 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
 
         // This parameter set invokes a single graphql operation:
         // mongoDatabases.
-        protected void ProcessRecord_Databases()
+        internal void ProcessRecord_Databases()
         {
             this._logger.name += " -Databases";
             // Invoke graphql operation mongoDatabases
@@ -405,7 +408,7 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
 
         // This parameter set invokes a single graphql operation:
         // mongoCollections.
-        protected void ProcessRecord_Collections()
+        internal void ProcessRecord_Collections()
         {
             this._logger.name += " -Collections";
             // Invoke graphql operation mongoCollections
@@ -414,7 +417,7 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
 
         // This parameter set invokes a single graphql operation:
         // mongoSource.
-        protected void ProcessRecord_Source()
+        internal void ProcessRecord_Source()
         {
             this._logger.name += " -Source";
             // Invoke graphql operation mongoSource
@@ -423,7 +426,7 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
 
         // This parameter set invokes a single graphql operation:
         // mongoDatabase.
-        protected void ProcessRecord_Database()
+        internal void ProcessRecord_Database()
         {
             this._logger.name += " -Database";
             // Invoke graphql operation mongoDatabase
@@ -432,7 +435,7 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
 
         // This parameter set invokes a single graphql operation:
         // mongoCollection.
-        protected void ProcessRecord_Collection()
+        internal void ProcessRecord_Collection()
         {
             this._logger.name += " -Collection";
             // Invoke graphql operation mongoCollection
@@ -441,7 +444,7 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
 
         // This parameter set invokes a single graphql operation:
         // mongoRecoverableRanges.
-        protected void ProcessRecord_RecoverableRanges()
+        internal void ProcessRecord_RecoverableRanges()
         {
             this._logger.name += " -RecoverableRanges";
             // Invoke graphql operation mongoRecoverableRanges
@@ -450,7 +453,7 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
 
         // This parameter set invokes a single graphql operation:
         // mongoBulkRecoverableRanges.
-        protected void ProcessRecord_BulkRecoverableRanges()
+        internal void ProcessRecord_BulkRecoverableRanges()
         {
             this._logger.name += " -BulkRecoverableRanges";
             // Invoke graphql operation mongoBulkRecoverableRanges
@@ -459,7 +462,7 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
 
         // This parameter set invokes a single graphql operation:
         // mongodbSources.
-        protected void ProcessRecord_DbSources()
+        internal void ProcessRecord_DbSources()
         {
             this._logger.name += " -DbSources";
             // Invoke graphql operation mongodbSources
@@ -468,7 +471,7 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
 
         // This parameter set invokes a single graphql operation:
         // mongodbDatabases.
-        protected void ProcessRecord_DbDatabases()
+        internal void ProcessRecord_DbDatabases()
         {
             this._logger.name += " -DbDatabases";
             // Invoke graphql operation mongodbDatabases
@@ -477,7 +480,7 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
 
         // This parameter set invokes a single graphql operation:
         // mongodbCollections.
-        protected void ProcessRecord_DbCollections()
+        internal void ProcessRecord_DbCollections()
         {
             this._logger.name += " -DbCollections";
             // Invoke graphql operation mongodbCollections
@@ -486,7 +489,7 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
 
         // This parameter set invokes a single graphql operation:
         // mongodbSource.
-        protected void ProcessRecord_DbSource()
+        internal void ProcessRecord_DbSource()
         {
             this._logger.name += " -DbSource";
             // Invoke graphql operation mongodbSource
@@ -495,7 +498,7 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
 
         // This parameter set invokes a single graphql operation:
         // mongodbDatabase.
-        protected void ProcessRecord_DbDatabase()
+        internal void ProcessRecord_DbDatabase()
         {
             this._logger.name += " -DbDatabase";
             // Invoke graphql operation mongodbDatabase
@@ -504,7 +507,7 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
 
         // This parameter set invokes a single graphql operation:
         // mongodbCollection.
-        protected void ProcessRecord_DbCollection()
+        internal void ProcessRecord_DbCollection()
         {
             this._logger.name += " -DbCollection";
             // Invoke graphql operation mongodbCollection
@@ -513,7 +516,7 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
 
         // This parameter set invokes a single graphql operation:
         // mongodbCollectionRecoverableRange.
-        protected void ProcessRecord_DbCollectionRecoverableRange()
+        internal void ProcessRecord_DbCollectionRecoverableRange()
         {
             this._logger.name += " -DbCollectionRecoverableRange";
             // Invoke graphql operation mongodbCollectionRecoverableRange
@@ -522,7 +525,7 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
 
         // This parameter set invokes a single graphql operation:
         // mongodbBulkRecoverableRange.
-        protected void ProcessRecord_DbBulkRecoverableRange()
+        internal void ProcessRecord_DbBulkRecoverableRange()
         {
             this._logger.name += " -DbBulkRecoverableRange";
             // Invoke graphql operation mongodbBulkRecoverableRange
@@ -538,7 +541,7 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
         //     sortOrder: SortOrder
         //     filter: [Filter!]
         //   ): MongoSourceConnection!
-        protected void InvokeQueryMongoSources()
+        internal void InvokeQueryMongoSources()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -575,7 +578,7 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
         //     sortOrder: SortOrder
         //     filter: [Filter!]
         //   ): MongoDatabaseConnection!
-        protected void InvokeQueryMongoDatabases()
+        internal void InvokeQueryMongoDatabases()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -612,7 +615,7 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
         //     sortOrder: SortOrder
         //     filter: [Filter!]
         //   ): MongoCollectionConnection!
-        protected void InvokeQueryMongoCollections()
+        internal void InvokeQueryMongoCollections()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -643,7 +646,7 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
 
         // Invoke GraphQL Query:
         // mongoSource(fid: UUID!): MongoSource!
-        protected void InvokeQueryMongoSource()
+        internal void InvokeQueryMongoSource()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
@@ -670,7 +673,7 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
 
         // Invoke GraphQL Query:
         // mongoDatabase(fid: UUID!): MongoDatabase!
-        protected void InvokeQueryMongoDatabase()
+        internal void InvokeQueryMongoDatabase()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
@@ -697,7 +700,7 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
 
         // Invoke GraphQL Query:
         // mongoCollection(fid: UUID!): MongoCollection!
-        protected void InvokeQueryMongoCollection()
+        internal void InvokeQueryMongoCollection()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
@@ -724,7 +727,7 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
 
         // Invoke GraphQL Query:
         // mongoRecoverableRanges(input: RecoverableRangeInput!): MongoRecoverableRanges!
-        protected void InvokeQueryMongoRecoverableRanges()
+        internal void InvokeQueryMongoRecoverableRanges()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RecoverableRangeInput!"),
@@ -751,7 +754,7 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
 
         // Invoke GraphQL Query:
         // mongoBulkRecoverableRanges(input: RecoverableRangeInput!): MongoRecoverableRanges!
-        protected void InvokeQueryMongoBulkRecoverableRanges()
+        internal void InvokeQueryMongoBulkRecoverableRanges()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RecoverableRangeInput!"),
@@ -784,7 +787,7 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
         //     sortOrder: SortOrder
         //     filter: [Filter!]
         //   ): MongodbSourceConnection!
-        protected void InvokeQueryMongodbSources()
+        internal void InvokeQueryMongodbSources()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -821,7 +824,7 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
         //     sortOrder: SortOrder
         //     filter: [Filter!]
         //   ): MongodbDatabaseConnection!
-        protected void InvokeQueryMongodbDatabases()
+        internal void InvokeQueryMongodbDatabases()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -858,7 +861,7 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
         //     sortOrder: SortOrder
         //     filter: [Filter!]
         //   ): MongodbCollectionConnection!
-        protected void InvokeQueryMongodbCollections()
+        internal void InvokeQueryMongodbCollections()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -889,7 +892,7 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
 
         // Invoke GraphQL Query:
         // mongodbSource(fid: UUID!): MongodbSource!
-        protected void InvokeQueryMongodbSource()
+        internal void InvokeQueryMongodbSource()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
@@ -916,7 +919,7 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
 
         // Invoke GraphQL Query:
         // mongodbDatabase(fid: UUID!): MongodbDatabase!
-        protected void InvokeQueryMongodbDatabase()
+        internal void InvokeQueryMongodbDatabase()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
@@ -943,7 +946,7 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
 
         // Invoke GraphQL Query:
         // mongodbCollection(fid: UUID!): MongodbCollection!
-        protected void InvokeQueryMongodbCollection()
+        internal void InvokeQueryMongodbCollection()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
@@ -970,7 +973,7 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
 
         // Invoke GraphQL Query:
         // mongodbCollectionRecoverableRange(input: GetMosaicRecoverableRangeInput!): GetMosaicRecoverableRangeResponse!
-        protected void InvokeQueryMongodbCollectionRecoverableRange()
+        internal void InvokeQueryMongodbCollectionRecoverableRange()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetMosaicRecoverableRangeInput!"),
@@ -997,7 +1000,7 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
 
         // Invoke GraphQL Query:
         // mongodbBulkRecoverableRange(input: MosaicBulkRecoveryRangeInput!): MosaicRecoveryRangeResponse!
-        protected void InvokeQueryMongodbBulkRecoverableRange()
+        internal void InvokeQueryMongodbBulkRecoverableRange()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "MosaicBulkRecoveryRangeInput!"),

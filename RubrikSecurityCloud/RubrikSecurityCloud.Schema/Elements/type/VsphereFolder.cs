@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region VsphereFolder
  
-    public class VsphereFolder: BaseType, CdmHierarchyObject, HierarchyObject, VsphereDatacenterDescendantType, VsphereDatacenterLogicalChildType, VsphereFolderDescendantType, VsphereFolderLogicalChildType, VsphereVcenterDescendantType
+    public class VsphereFolder: BaseType, CdmHierarchyObject, HierarchyObject, VsphereDatacenterDescendantType, VsphereDatacenterLogicalChildType, VsphereFolderDescendantType, VsphereFolderLogicalChildType, VsphereVcenterDescendantType, VsphereVcenterLogicalChildType
     {
         #region members
 
@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> authorizedOperations: [Operation!]! (enum)
         [JsonProperty("authorizedOperations")]
         public List<Operation>? AuthorizedOperations { get; set; }
+
+        //      C# -> VmwareFolderType? FolderType
+        // GraphQL -> folderType: VmwareFolderType (enum)
+        [JsonProperty("folderType")]
+        public VmwareFolderType? FolderType { get; set; }
 
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
@@ -61,6 +66,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("replicatedObjects")]
         public List<CdmHierarchyObject>? ReplicatedObjects { get; set; }
 
+        //      C# -> System.String? DatacenterId
+        // GraphQL -> datacenterId: UUID (scalar)
+        [JsonProperty("datacenterId")]
+        public System.String? DatacenterId { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         [JsonProperty("id")]
@@ -85,6 +95,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
         [JsonProperty("slaPauseStatus")]
         public System.Boolean? SlaPauseStatus { get; set; }
+
+        //      C# -> System.String? VcenterId
+        // GraphQL -> vCenterId: UUID! (scalar)
+        [JsonProperty("vCenterId")]
+        public System.String? VcenterId { get; set; }
 
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
@@ -152,6 +167,7 @@ namespace RubrikSecurityCloud.Types
 
     public VsphereFolder Set(
         List<Operation>? AuthorizedOperations = null,
+        VmwareFolderType? FolderType = null,
         HierarchyObjectTypeEnum? ObjectType = null,
         SlaAssignmentTypeEnum? SlaAssignment = null,
         SlaDomain? ConfiguredSlaDomain = null,
@@ -159,11 +175,13 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? EffectiveSlaDomain = null,
         SlaDomain? PendingSla = null,
         List<CdmHierarchyObject>? ReplicatedObjects = null,
+        System.String? DatacenterId = null,
         System.String? Id = null,
         System.String? Name = null,
         System.Int32? NumWorkloadDescendants = null,
         System.Int32? ReplicatedObjectCount = null,
         System.Boolean? SlaPauseStatus = null,
+        System.String? VcenterId = null,
         List<Org>? AllOrgs = null,
         Cluster? Cluster = null,
         VsphereFolderDescendantTypeConnection? DescendantConnection = null,
@@ -179,6 +197,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( AuthorizedOperations != null ) {
             this.AuthorizedOperations = AuthorizedOperations;
+        }
+        if ( FolderType != null ) {
+            this.FolderType = FolderType;
         }
         if ( ObjectType != null ) {
             this.ObjectType = ObjectType;
@@ -201,6 +222,9 @@ namespace RubrikSecurityCloud.Types
         if ( ReplicatedObjects != null ) {
             this.ReplicatedObjects = ReplicatedObjects;
         }
+        if ( DatacenterId != null ) {
+            this.DatacenterId = DatacenterId;
+        }
         if ( Id != null ) {
             this.Id = Id;
         }
@@ -215,6 +239,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SlaPauseStatus != null ) {
             this.SlaPauseStatus = SlaPauseStatus;
+        }
+        if ( VcenterId != null ) {
+            this.VcenterId = VcenterId;
         }
         if ( AllOrgs != null ) {
             this.AllOrgs = AllOrgs;
@@ -263,6 +290,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> authorizedOperations: [Operation!]! (enum)
         if (this.AuthorizedOperations != null) {
             s += ind + "authorizedOperations\n" ;
+        }
+        //      C# -> VmwareFolderType? FolderType
+        // GraphQL -> folderType: VmwareFolderType (enum)
+        if (this.FolderType != null) {
+            s += ind + "folderType\n" ;
         }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
@@ -314,6 +346,11 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "replicatedObjects {\n" + fspec + ind + "}\n";
             }
         }
+        //      C# -> System.String? DatacenterId
+        // GraphQL -> datacenterId: UUID (scalar)
+        if (this.DatacenterId != null) {
+            s += ind + "datacenterId\n" ;
+        }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (this.Id != null) {
@@ -338,6 +375,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
         if (this.SlaPauseStatus != null) {
             s += ind + "slaPauseStatus\n" ;
+        }
+        //      C# -> System.String? VcenterId
+        // GraphQL -> vCenterId: UUID! (scalar)
+        if (this.VcenterId != null) {
+            s += ind + "vCenterId\n" ;
         }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
@@ -441,6 +483,12 @@ namespace RubrikSecurityCloud.Types
         {
             this.AuthorizedOperations = new List<Operation>();
         }
+        //      C# -> VmwareFolderType? FolderType
+        // GraphQL -> folderType: VmwareFolderType (enum)
+        if (this.FolderType == null && Exploration.Includes(parent + ".folderType", true))
+        {
+            this.FolderType = new VmwareFolderType();
+        }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
         if (this.ObjectType == null && Exploration.Includes(parent + ".objectType", true))
@@ -492,6 +540,12 @@ namespace RubrikSecurityCloud.Types
             this.ReplicatedObjects = new List<CdmHierarchyObject>();
             this.ReplicatedObjects.ApplyExploratoryFieldSpec(parent + ".replicatedObjects");
         }
+        //      C# -> System.String? DatacenterId
+        // GraphQL -> datacenterId: UUID (scalar)
+        if (this.DatacenterId == null && Exploration.Includes(parent + ".datacenterId", true))
+        {
+            this.DatacenterId = "FETCH";
+        }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
@@ -521,6 +575,12 @@ namespace RubrikSecurityCloud.Types
         if (this.SlaPauseStatus == null && Exploration.Includes(parent + ".slaPauseStatus", true))
         {
             this.SlaPauseStatus = true;
+        }
+        //      C# -> System.String? VcenterId
+        // GraphQL -> vCenterId: UUID! (scalar)
+        if (this.VcenterId == null && Exploration.Includes(parent + ".vCenterId", true))
+        {
+            this.VcenterId = "FETCH";
         }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)

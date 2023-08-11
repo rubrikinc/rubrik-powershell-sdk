@@ -26,11 +26,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     public class Invoke_RscQuerySla : RscPSCmdlet
     {
         
-        // -------------------------------------------------------------------
-        // AllIofilterStatuses parameter set
-        //
-        // [GraphQL: allSlaIofilterStatuses]
-        //
+        /// <summary>
+        /// AllIofilterStatuses parameter set
+        ///
+        /// [GraphQL: allSlaIofilterStatuses]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllIofilterStatuses",
             Mandatory = false,
@@ -44,11 +44,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllIofilterStatuses { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllCdpVmNames parameter set
-        //
-        // [GraphQL: allCdpSlaVmNames]
-        //
+        /// <summary>
+        /// AllCdpVmNames parameter set
+        ///
+        /// [GraphQL: allCdpSlaVmNames]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllCdpVmNames",
             Mandatory = false,
@@ -62,11 +62,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllCdpVmNames { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Domains parameter set
-        //
-        // [GraphQL: slaDomains]
-        //
+        /// <summary>
+        /// Domains parameter set
+        ///
+        /// [GraphQL: slaDomains]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Domains",
             Mandatory = false,
@@ -80,11 +80,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Domains { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DomainWithWarningsList parameter set
-        //
-        // [GraphQL: slaDomainWithWarningsList]
-        //
+        /// <summary>
+        /// DomainWithWarningsList parameter set
+        ///
+        /// [GraphQL: slaDomainWithWarningsList]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DomainWithWarningsList",
             Mandatory = false,
@@ -98,11 +98,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter DomainWithWarningsList { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // GlobalFilterList parameter set
-        //
-        // [GraphQL: globalSlaFilterConnection]
-        //
+        /// <summary>
+        /// GlobalFilterList parameter set
+        ///
+        /// [GraphQL: globalSlaFilterConnection]
+        /// </summary>
         [Parameter(
             ParameterSetName = "GlobalFilterList",
             Mandatory = false,
@@ -116,11 +116,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter GlobalFilterList { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Domain parameter set
-        //
-        // [GraphQL: slaDomain]
-        //
+        /// <summary>
+        /// Domain parameter set
+        ///
+        /// [GraphQL: slaDomain]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Domain",
             Mandatory = false,
@@ -134,11 +134,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Domain { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DomainWithWarnings parameter set
-        //
-        // [GraphQL: slaDomainWithWarnings]
-        //
+        /// <summary>
+        /// DomainWithWarnings parameter set
+        ///
+        /// [GraphQL: slaDomainWithWarnings]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DomainWithWarnings",
             Mandatory = false,
@@ -152,11 +152,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter DomainWithWarnings { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ArchivalValidationWarnings parameter set
-        //
-        // [GraphQL: slaArchivalValidationWarnings]
-        //
+        /// <summary>
+        /// ArchivalValidationWarnings parameter set
+        ///
+        /// [GraphQL: slaArchivalValidationWarnings]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ArchivalValidationWarnings",
             Mandatory = false,
@@ -170,11 +170,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter ArchivalValidationWarnings { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // CountOfObjectsProtected parameter set
-        //
-        // [GraphQL: countOfObjectsProtectedBySlas]
-        //
+        /// <summary>
+        /// CountOfObjectsProtected parameter set
+        ///
+        /// [GraphQL: countOfObjectsProtectedBySlas]
+        /// </summary>
         [Parameter(
             ParameterSetName = "CountOfObjectsProtected",
             Mandatory = false,
@@ -188,11 +188,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter CountOfObjectsProtected { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AuditDetail parameter set
-        //
-        // [GraphQL: slaAuditDetail]
-        //
+        /// <summary>
+        /// AuditDetail parameter set
+        ///
+        /// [GraphQL: slaAuditDetail]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AuditDetail",
             Mandatory = false,
@@ -206,11 +206,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AuditDetail { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllSummariesByIds parameter set
-        //
-        // [GraphQL: allSlaSummariesByIds]
-        //
+        /// <summary>
+        /// AllSummariesByIds parameter set
+        ///
+        /// [GraphQL: allSlaSummariesByIds]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllSummariesByIds",
             Mandatory = false,
@@ -224,11 +224,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllSummariesByIds { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // GlobalStatuses parameter set
-        //
-        // [GraphQL: globalSlaStatuses]
-        //
+        /// <summary>
+        /// GlobalStatuses parameter set
+        ///
+        /// [GraphQL: globalSlaStatuses]
+        /// </summary>
         [Parameter(
             ParameterSetName = "GlobalStatuses",
             Mandatory = false,
@@ -242,11 +242,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter GlobalStatuses { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ProtectedClustersForGlobal parameter set
-        //
-        // [GraphQL: protectedClustersForGlobalSla]
-        //
+        /// <summary>
+        /// ProtectedClustersForGlobal parameter set
+        ///
+        /// [GraphQL: protectedClustersForGlobalSla]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ProtectedClustersForGlobal",
             Mandatory = false,
@@ -260,11 +260,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter ProtectedClustersForGlobal { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ConflictObjects parameter set
-        //
-        // [GraphQL: slaConflictObjects]
-        //
+        /// <summary>
+        /// ConflictObjects parameter set
+        ///
+        /// [GraphQL: slaConflictObjects]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ConflictObjects",
             Mandatory = false,
@@ -278,11 +278,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter ConflictObjects { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ManagedVolumes parameter set
-        //
-        // [GraphQL: slaManagedVolumes]
-        //
+        /// <summary>
+        /// ManagedVolumes parameter set
+        ///
+        /// [GraphQL: slaManagedVolumes]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ManagedVolumes",
             Mandatory = false,
@@ -296,11 +296,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter ManagedVolumes { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ManagedVolume parameter set
-        //
-        // [GraphQL: slaManagedVolume]
-        //
+        /// <summary>
+        /// ManagedVolume parameter set
+        ///
+        /// [GraphQL: slaManagedVolume]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ManagedVolume",
             Mandatory = false,
@@ -314,11 +314,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter ManagedVolume { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ClusterDomains parameter set
-        //
-        // [GraphQL: clusterSlaDomains]
-        //
+        /// <summary>
+        /// ClusterDomains parameter set
+        ///
+        /// [GraphQL: clusterSlaDomains]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ClusterDomains",
             Mandatory = false,
@@ -332,11 +332,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter ClusterDomains { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ClusterDomainFilterList parameter set
-        //
-        // [GraphQL: clusterSlaDomainFilterConnection]
-        //
+        /// <summary>
+        /// ClusterDomainFilterList parameter set
+        ///
+        /// [GraphQL: clusterSlaDomainFilterConnection]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ClusterDomainFilterList",
             Mandatory = false,
@@ -350,11 +350,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter ClusterDomainFilterList { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // VerifyWithReplicationToCluster parameter set
-        //
-        // [GraphQL: verifySlaWithReplicationToCluster]
-        //
+        /// <summary>
+        /// VerifyWithReplicationToCluster parameter set
+        ///
+        /// [GraphQL: verifySlaWithReplicationToCluster]
+        /// </summary>
         [Parameter(
             ParameterSetName = "VerifyWithReplicationToCluster",
             Mandatory = false,
@@ -368,11 +368,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter VerifyWithReplicationToCluster { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DownloadWithReplicationCsv parameter set
-        //
-        // [GraphQL: downloadSlaWithReplicationCsv]
-        //
+        /// <summary>
+        /// DownloadWithReplicationCsv parameter set
+        ///
+        /// [GraphQL: downloadSlaWithReplicationCsv]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DownloadWithReplicationCsv",
             Mandatory = false,
@@ -386,11 +386,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter DownloadWithReplicationCsv { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllClusterGlobals parameter set
-        //
-        // [GraphQL: allClusterGlobalSlas]
-        //
+        /// <summary>
+        /// AllClusterGlobals parameter set
+        ///
+        /// [GraphQL: allClusterGlobalSlas]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllClusterGlobals",
             Mandatory = false,
@@ -404,11 +404,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllClusterGlobals { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllNcdComplianceData parameter set
-        //
-        // [GraphQL: allNcdSlaComplianceData]
-        //
+        /// <summary>
+        /// AllNcdComplianceData parameter set
+        ///
+        /// [GraphQL: allNcdSlaComplianceData]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllNcdComplianceData",
             Mandatory = false,
@@ -422,6 +422,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllNcdComplianceData { get; set; }
 
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
         protected override void ProcessRecord()
         {
             try
@@ -503,10 +505,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 ThrowTerminatingException(ex);
            }
         }
+#pragma warning restore 1591
 
         // This parameter set invokes a single graphql operation:
         // allSlaIofilterStatuses.
-        protected void ProcessRecord_AllIofilterStatuses()
+        internal void ProcessRecord_AllIofilterStatuses()
         {
             this._logger.name += " -AllIofilterStatuses";
             // Invoke graphql operation allSlaIofilterStatuses
@@ -515,7 +518,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allCdpSlaVmNames.
-        protected void ProcessRecord_AllCdpVmNames()
+        internal void ProcessRecord_AllCdpVmNames()
         {
             this._logger.name += " -AllCdpVmNames";
             // Invoke graphql operation allCdpSlaVmNames
@@ -524,7 +527,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // slaDomains.
-        protected void ProcessRecord_Domains()
+        internal void ProcessRecord_Domains()
         {
             this._logger.name += " -Domains";
             // Invoke graphql operation slaDomains
@@ -533,7 +536,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // slaDomainWithWarningsList.
-        protected void ProcessRecord_DomainWithWarningsList()
+        internal void ProcessRecord_DomainWithWarningsList()
         {
             this._logger.name += " -DomainWithWarningsList";
             // Invoke graphql operation slaDomainWithWarningsList
@@ -542,7 +545,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // globalSlaFilterConnection.
-        protected void ProcessRecord_GlobalFilterList()
+        internal void ProcessRecord_GlobalFilterList()
         {
             this._logger.name += " -GlobalFilterList";
             // Invoke graphql operation globalSlaFilterConnection
@@ -551,7 +554,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // slaDomain.
-        protected void ProcessRecord_Domain()
+        internal void ProcessRecord_Domain()
         {
             this._logger.name += " -Domain";
             // Invoke graphql operation slaDomain
@@ -560,7 +563,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // slaDomainWithWarnings.
-        protected void ProcessRecord_DomainWithWarnings()
+        internal void ProcessRecord_DomainWithWarnings()
         {
             this._logger.name += " -DomainWithWarnings";
             // Invoke graphql operation slaDomainWithWarnings
@@ -569,7 +572,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // slaArchivalValidationWarnings.
-        protected void ProcessRecord_ArchivalValidationWarnings()
+        internal void ProcessRecord_ArchivalValidationWarnings()
         {
             this._logger.name += " -ArchivalValidationWarnings";
             // Invoke graphql operation slaArchivalValidationWarnings
@@ -578,7 +581,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // countOfObjectsProtectedBySlas.
-        protected void ProcessRecord_CountOfObjectsProtected()
+        internal void ProcessRecord_CountOfObjectsProtected()
         {
             this._logger.name += " -CountOfObjectsProtected";
             // Invoke graphql operation countOfObjectsProtectedBySlas
@@ -587,7 +590,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // slaAuditDetail.
-        protected void ProcessRecord_AuditDetail()
+        internal void ProcessRecord_AuditDetail()
         {
             this._logger.name += " -AuditDetail";
             // Invoke graphql operation slaAuditDetail
@@ -596,7 +599,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allSlaSummariesByIds.
-        protected void ProcessRecord_AllSummariesByIds()
+        internal void ProcessRecord_AllSummariesByIds()
         {
             this._logger.name += " -AllSummariesByIds";
             // Invoke graphql operation allSlaSummariesByIds
@@ -605,7 +608,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // globalSlaStatuses.
-        protected void ProcessRecord_GlobalStatuses()
+        internal void ProcessRecord_GlobalStatuses()
         {
             this._logger.name += " -GlobalStatuses";
             // Invoke graphql operation globalSlaStatuses
@@ -614,7 +617,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // protectedClustersForGlobalSla.
-        protected void ProcessRecord_ProtectedClustersForGlobal()
+        internal void ProcessRecord_ProtectedClustersForGlobal()
         {
             this._logger.name += " -ProtectedClustersForGlobal";
             // Invoke graphql operation protectedClustersForGlobalSla
@@ -623,7 +626,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // slaConflictObjects.
-        protected void ProcessRecord_ConflictObjects()
+        internal void ProcessRecord_ConflictObjects()
         {
             this._logger.name += " -ConflictObjects";
             // Invoke graphql operation slaConflictObjects
@@ -632,7 +635,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // slaManagedVolumes.
-        protected void ProcessRecord_ManagedVolumes()
+        internal void ProcessRecord_ManagedVolumes()
         {
             this._logger.name += " -ManagedVolumes";
             // Invoke graphql operation slaManagedVolumes
@@ -641,7 +644,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // slaManagedVolume.
-        protected void ProcessRecord_ManagedVolume()
+        internal void ProcessRecord_ManagedVolume()
         {
             this._logger.name += " -ManagedVolume";
             // Invoke graphql operation slaManagedVolume
@@ -650,7 +653,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // clusterSlaDomains.
-        protected void ProcessRecord_ClusterDomains()
+        internal void ProcessRecord_ClusterDomains()
         {
             this._logger.name += " -ClusterDomains";
             // Invoke graphql operation clusterSlaDomains
@@ -659,7 +662,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // clusterSlaDomainFilterConnection.
-        protected void ProcessRecord_ClusterDomainFilterList()
+        internal void ProcessRecord_ClusterDomainFilterList()
         {
             this._logger.name += " -ClusterDomainFilterList";
             // Invoke graphql operation clusterSlaDomainFilterConnection
@@ -668,7 +671,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // verifySlaWithReplicationToCluster.
-        protected void ProcessRecord_VerifyWithReplicationToCluster()
+        internal void ProcessRecord_VerifyWithReplicationToCluster()
         {
             this._logger.name += " -VerifyWithReplicationToCluster";
             // Invoke graphql operation verifySlaWithReplicationToCluster
@@ -677,7 +680,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // downloadSlaWithReplicationCsv.
-        protected void ProcessRecord_DownloadWithReplicationCsv()
+        internal void ProcessRecord_DownloadWithReplicationCsv()
         {
             this._logger.name += " -DownloadWithReplicationCsv";
             // Invoke graphql operation downloadSlaWithReplicationCsv
@@ -686,7 +689,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allClusterGlobalSlas.
-        protected void ProcessRecord_AllClusterGlobals()
+        internal void ProcessRecord_AllClusterGlobals()
         {
             this._logger.name += " -AllClusterGlobals";
             // Invoke graphql operation allClusterGlobalSlas
@@ -695,7 +698,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allNcdSlaComplianceData.
-        protected void ProcessRecord_AllNcdComplianceData()
+        internal void ProcessRecord_AllNcdComplianceData()
         {
             this._logger.name += " -AllNcdComplianceData";
             // Invoke graphql operation allNcdSlaComplianceData
@@ -705,7 +708,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allSlaIofilterStatuses(fid: UUID!): [ComputeClusterIofilterStatus!]!
-        protected void InvokeQueryAllSlaIofilterStatuses()
+        internal void InvokeQueryAllSlaIofilterStatuses()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
@@ -732,7 +735,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allCdpSlaVmNames(fid: UUID!): [String!]!
-        protected void InvokeQueryAllCdpSlaVmNames()
+        internal void InvokeQueryAllCdpSlaVmNames()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
@@ -774,7 +777,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     showRemoteSlas: Boolean
         //     shouldShowPausedClusters: Boolean = false
         //   ): SlaDomainConnection!
-        protected void InvokeQuerySlaDomains()
+        internal void InvokeQuerySlaDomains()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -827,7 +830,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     snapshotIds: [UUID!]
         //     operation: SlaWarningsOperation
         //   ): [SlaDomainWithWarnings!]!
-        protected void InvokeQuerySlaDomainWithWarningsList()
+        internal void InvokeQuerySlaDomainWithWarningsList()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -880,7 +883,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     showRemoteSlas: Boolean
         //     shouldShowPausedClusters: Boolean = false
         //   ): GlobalSlaForFilterConnection!
-        protected void InvokeQueryGlobalSlaFilterConnection()
+        internal void InvokeQueryGlobalSlaFilterConnection()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -925,7 +928,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     shouldShowUpgradeInfo: Boolean = false
         //     shouldShowPausedClusters: Boolean = false
         //   ): SlaDomain!
-        protected void InvokeQuerySlaDomain()
+        internal void InvokeQuerySlaDomain()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("id", "UUID!"),
@@ -955,7 +958,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // slaDomainWithWarnings(id: UUID!, objectIds: [UUID!]!, applicableSnappableTypes: [WorkloadLevelHierarchy!]): SlaDomainWithWarnings!
-        protected void InvokeQuerySlaDomainWithWarnings()
+        internal void InvokeQuerySlaDomainWithWarnings()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("id", "UUID!"),
@@ -984,7 +987,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // slaArchivalValidationWarnings(input: SlaArchivalWarningsInput!): SlaArchivalValidationWithWarnings!
-        protected void InvokeQuerySlaArchivalValidationWarnings()
+        internal void InvokeQuerySlaArchivalValidationWarnings()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "SlaArchivalWarningsInput!"),
@@ -1016,7 +1019,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     filter: [Filter!]
         //     typeFilter: [HierarchyObjectTypeEnum!]
         //   ): CountOfObjectsProtectedBySLAsResult!
-        protected void InvokeQueryCountOfObjectsProtectedBySlas()
+        internal void InvokeQueryCountOfObjectsProtectedBySlas()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("rootOptionalFid", "UUID"),
@@ -1054,7 +1057,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     filter: [SLAAuditDetailFilterInput!]
         //     timezone: String
         //   ): [SlaAuditDetail!]!
-        protected void InvokeQuerySlaAuditDetail()
+        internal void InvokeQuerySlaAuditDetail()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -1087,7 +1090,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allSlaSummariesByIds(slaIds: [UUID!]!): [SlaDomain!]!
-        protected void InvokeQueryAllSlaSummariesByIds()
+        internal void InvokeQueryAllSlaSummariesByIds()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("slaIds", "[UUID!]!"),
@@ -1121,7 +1124,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     filter: [SlaStatusFilterInput!]
         //     SlaId: UUID!
         //   ): GlobalSlaStatusConnection!
-        protected void InvokeQueryGlobalSlaStatuses()
+        internal void InvokeQueryGlobalSlaStatuses()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -1159,7 +1162,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     before: String
         //     slaId: UUID!
         //   ): ClusterConnection!
-        protected void InvokeQueryProtectedClustersForGlobalSla()
+        internal void InvokeQueryProtectedClustersForGlobalSla()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -1190,7 +1193,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // slaConflictObjects(fids: [UUID!]!): [HierarchyObject!]!
-        protected void InvokeQuerySlaConflictObjects()
+        internal void InvokeQuerySlaConflictObjects()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fids", "[UUID!]!"),
@@ -1223,7 +1226,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     sortOrder: SortOrder
         //     filter: [Filter!]
         //   ): ManagedVolumeConnection!
-        protected void InvokeQuerySlaManagedVolumes()
+        internal void InvokeQuerySlaManagedVolumes()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -1254,7 +1257,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // slaManagedVolume(fid: UUID!): ManagedVolume!
-        protected void InvokeQuerySlaManagedVolume()
+        internal void InvokeQuerySlaManagedVolume()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
@@ -1286,7 +1289,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     last: Int
         //     before: String
         //   ): ClusterSlaDomainConnection!
-        protected void InvokeQueryClusterSlaDomains()
+        internal void InvokeQueryClusterSlaDomains()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -1321,7 +1324,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     last: Int
         //     before: String
         //   ): ClusterSlaDomainForFilterConnection!
-        protected void InvokeQueryClusterSlaDomainFilterConnection()
+        internal void InvokeQueryClusterSlaDomainFilterConnection()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -1351,7 +1354,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // verifySlaWithReplicationToCluster(cdmClusterUUID: UUID!, includeArchived: Boolean!): VerifySlaWithReplicationToClusterResponse!
-        protected void InvokeQueryVerifySlaWithReplicationToCluster()
+        internal void InvokeQueryVerifySlaWithReplicationToCluster()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("cdmClusterUUID", "UUID!"),
@@ -1379,7 +1382,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // downloadSlaWithReplicationCsv(cdmClusterUUID: UUID!, includeArchived: Boolean!): DownloadSlaWithReplicationCsvReply!
-        protected void InvokeQueryDownloadSlaWithReplicationCsv()
+        internal void InvokeQueryDownloadSlaWithReplicationCsv()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("cdmClusterUUID", "UUID!"),
@@ -1407,7 +1410,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allClusterGlobalSlas(cdmClusterUUID: UUID!): [SlaInfo!]!
-        protected void InvokeQueryAllClusterGlobalSlas()
+        internal void InvokeQueryAllClusterGlobalSlas()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("cdmClusterUUID", "UUID!"),
@@ -1434,7 +1437,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allNcdSlaComplianceData(clusters: [UUID!]!): [NcdSlaComplianceData!]!
-        protected void InvokeQueryAllNcdSlaComplianceData()
+        internal void InvokeQueryAllNcdSlaComplianceData()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("clusters", "[UUID!]!"),

@@ -26,11 +26,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     public class Invoke_RscQueryVcenter : RscPSCmdlet
     {
         
-        // -------------------------------------------------------------------
-        // Vcenter parameter set
-        //
-        // [GraphQL: vSphereVCenter]
-        //
+        /// <summary>
+        /// Vcenter parameter set
+        ///
+        /// [GraphQL: vSphereVCenter]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Vcenter",
             Mandatory = false,
@@ -44,11 +44,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Vcenter { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // List parameter set
-        //
-        // [GraphQL: vSphereVCenterConnection]
-        //
+        /// <summary>
+        /// List parameter set
+        ///
+        /// [GraphQL: vSphereVCenterConnection]
+        /// </summary>
         [Parameter(
             ParameterSetName = "List",
             Mandatory = false,
@@ -62,11 +62,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter List { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // UniqueCount parameter set
-        //
-        // [GraphQL: uniqueVSphereVCenterCount]
-        //
+        /// <summary>
+        /// UniqueCount parameter set
+        ///
+        /// [GraphQL: uniqueVSphereVCenterCount]
+        /// </summary>
         [Parameter(
             ParameterSetName = "UniqueCount",
             Mandatory = false,
@@ -80,11 +80,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter UniqueCount { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // PreAddInfo parameter set
-        //
-        // [GraphQL: vCenterPreAddInfo]
-        //
+        /// <summary>
+        /// PreAddInfo parameter set
+        ///
+        /// [GraphQL: vCenterPreAddInfo]
+        /// </summary>
         [Parameter(
             ParameterSetName = "PreAddInfo",
             Mandatory = false,
@@ -98,11 +98,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter PreAddInfo { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Networks parameter set
-        //
-        // [GraphQL: vCenterNetworks]
-        //
+        /// <summary>
+        /// Networks parameter set
+        ///
+        /// [GraphQL: vCenterNetworks]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Networks",
             Mandatory = false,
@@ -119,11 +119,11 @@ Get the names and IDs of the user configured networks in the vCenter. This infor
         public SwitchParameter Networks { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // HotAddNetwork parameter set
-        //
-        // [GraphQL: vCenterHotAddNetwork]
-        //
+        /// <summary>
+        /// HotAddNetwork parameter set
+        ///
+        /// [GraphQL: vCenterHotAddNetwork]
+        /// </summary>
         [Parameter(
             ParameterSetName = "HotAddNetwork",
             Mandatory = false,
@@ -140,11 +140,11 @@ Retrieve the user-configured network for HotAdd backup and recovery operations o
         public SwitchParameter HotAddNetwork { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // NumProxiesNeeded parameter set
-        //
-        // [GraphQL: vCenterNumProxiesNeeded]
-        //
+        /// <summary>
+        /// NumProxiesNeeded parameter set
+        ///
+        /// [GraphQL: vCenterNumProxiesNeeded]
+        /// </summary>
         [Parameter(
             ParameterSetName = "NumProxiesNeeded",
             Mandatory = false,
@@ -161,11 +161,11 @@ Get the number of HotAdd proxies that need to be deployed to the vCenter to supp
         public SwitchParameter NumProxiesNeeded { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // HotAddProxy parameter set
-        //
-        // [GraphQL: allVcenterHotAddProxyVms]
-        //
+        /// <summary>
+        /// HotAddProxy parameter set
+        ///
+        /// [GraphQL: allVcenterHotAddProxyVms]
+        /// </summary>
         [Parameter(
             ParameterSetName = "HotAddProxy",
             Mandatory = false,
@@ -182,11 +182,11 @@ Retrieve summary information for all HotAdd proxy virtual machines.
         public SwitchParameter HotAddProxy { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // HotAddBandwidth parameter set
-        //
-        // [GraphQL: vCenterHotAddBandwidth]
-        //
+        /// <summary>
+        /// HotAddBandwidth parameter set
+        ///
+        /// [GraphQL: vCenterHotAddBandwidth]
+        /// </summary>
         [Parameter(
             ParameterSetName = "HotAddBandwidth",
             Mandatory = false,
@@ -203,11 +203,11 @@ Get the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
         public SwitchParameter HotAddBandwidth { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AdvancedTagPreview parameter set
-        //
-        // [GraphQL: vCenterAdvancedTagPreview]
-        //
+        /// <summary>
+        /// AdvancedTagPreview parameter set
+        ///
+        /// [GraphQL: vCenterAdvancedTagPreview]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AdvancedTagPreview",
             Mandatory = false,
@@ -224,6 +224,8 @@ Preview list of virtual machines of a proposed filter condition. The result migh
         public SwitchParameter AdvancedTagPreview { get; set; }
 
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
         protected override void ProcessRecord()
         {
             try
@@ -269,10 +271,11 @@ Preview list of virtual machines of a proposed filter condition. The result migh
                 ThrowTerminatingException(ex);
            }
         }
+#pragma warning restore 1591
 
         // This parameter set invokes a single graphql operation:
         // vSphereVCenter.
-        protected void ProcessRecord_Vcenter()
+        internal void ProcessRecord_Vcenter()
         {
             this._logger.name += " -Vcenter";
             // Invoke graphql operation vSphereVCenter
@@ -281,7 +284,7 @@ Preview list of virtual machines of a proposed filter condition. The result migh
 
         // This parameter set invokes a single graphql operation:
         // vSphereVCenterConnection.
-        protected void ProcessRecord_List()
+        internal void ProcessRecord_List()
         {
             this._logger.name += " -List";
             // Invoke graphql operation vSphereVCenterConnection
@@ -290,7 +293,7 @@ Preview list of virtual machines of a proposed filter condition. The result migh
 
         // This parameter set invokes a single graphql operation:
         // uniqueVSphereVCenterCount.
-        protected void ProcessRecord_UniqueCount()
+        internal void ProcessRecord_UniqueCount()
         {
             this._logger.name += " -UniqueCount";
             // Invoke graphql operation uniqueVSphereVCenterCount
@@ -299,7 +302,7 @@ Preview list of virtual machines of a proposed filter condition. The result migh
 
         // This parameter set invokes a single graphql operation:
         // vCenterPreAddInfo.
-        protected void ProcessRecord_PreAddInfo()
+        internal void ProcessRecord_PreAddInfo()
         {
             this._logger.name += " -PreAddInfo";
             // Invoke graphql operation vCenterPreAddInfo
@@ -308,7 +311,7 @@ Preview list of virtual machines of a proposed filter condition. The result migh
 
         // This parameter set invokes a single graphql operation:
         // vCenterNetworks.
-        protected void ProcessRecord_Networks()
+        internal void ProcessRecord_Networks()
         {
             this._logger.name += " -Networks";
             // Invoke graphql operation vCenterNetworks
@@ -317,7 +320,7 @@ Preview list of virtual machines of a proposed filter condition. The result migh
 
         // This parameter set invokes a single graphql operation:
         // vCenterHotAddNetwork.
-        protected void ProcessRecord_HotAddNetwork()
+        internal void ProcessRecord_HotAddNetwork()
         {
             this._logger.name += " -HotAddNetwork";
             // Invoke graphql operation vCenterHotAddNetwork
@@ -326,7 +329,7 @@ Preview list of virtual machines of a proposed filter condition. The result migh
 
         // This parameter set invokes a single graphql operation:
         // vCenterNumProxiesNeeded.
-        protected void ProcessRecord_NumProxiesNeeded()
+        internal void ProcessRecord_NumProxiesNeeded()
         {
             this._logger.name += " -NumProxiesNeeded";
             // Invoke graphql operation vCenterNumProxiesNeeded
@@ -335,7 +338,7 @@ Preview list of virtual machines of a proposed filter condition. The result migh
 
         // This parameter set invokes a single graphql operation:
         // allVcenterHotAddProxyVms.
-        protected void ProcessRecord_HotAddProxy()
+        internal void ProcessRecord_HotAddProxy()
         {
             this._logger.name += " -HotAddProxy";
             // Invoke graphql operation allVcenterHotAddProxyVms
@@ -344,7 +347,7 @@ Preview list of virtual machines of a proposed filter condition. The result migh
 
         // This parameter set invokes a single graphql operation:
         // vCenterHotAddBandwidth.
-        protected void ProcessRecord_HotAddBandwidth()
+        internal void ProcessRecord_HotAddBandwidth()
         {
             this._logger.name += " -HotAddBandwidth";
             // Invoke graphql operation vCenterHotAddBandwidth
@@ -353,7 +356,7 @@ Preview list of virtual machines of a proposed filter condition. The result migh
 
         // This parameter set invokes a single graphql operation:
         // vCenterAdvancedTagPreview.
-        protected void ProcessRecord_AdvancedTagPreview()
+        internal void ProcessRecord_AdvancedTagPreview()
         {
             this._logger.name += " -AdvancedTagPreview";
             // Invoke graphql operation vCenterAdvancedTagPreview
@@ -363,7 +366,7 @@ Preview list of virtual machines of a proposed filter condition. The result migh
 
         // Invoke GraphQL Query:
         // vSphereVCenter(fid: UUID!): VsphereVcenter!
-        protected void InvokeQueryVsphereVcenter()
+        internal void InvokeQueryVsphereVcenter()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
@@ -396,7 +399,7 @@ Preview list of virtual machines of a proposed filter condition. The result migh
         //     sortOrder: SortOrder
         //     filter: [Filter!]
         //   ): VsphereVcenterConnection!
-        protected void InvokeQueryVsphereVcenterConnection()
+        internal void InvokeQueryVsphereVcenterConnection()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -427,7 +430,7 @@ Preview list of virtual machines of a proposed filter condition. The result migh
 
         // Invoke GraphQL Query:
         // uniqueVSphereVCenterCount(filter: [Filter!]): Int!
-        protected void InvokeQueryUniqueVsphereVcenterCount()
+        internal void InvokeQueryUniqueVsphereVcenterCount()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("filter", "[Filter!]"),
@@ -454,7 +457,7 @@ Preview list of virtual machines of a proposed filter condition. The result migh
 
         // Invoke GraphQL Query:
         // vCenterPreAddInfo(input: PreAddVcenterInput!): VcenterPreAddInfo!
-        protected void InvokeQueryVcenterPreAddInfo()
+        internal void InvokeQueryVcenterPreAddInfo()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "PreAddVcenterInput!"),
@@ -481,7 +484,7 @@ Preview list of virtual machines of a proposed filter condition. The result migh
 
         // Invoke GraphQL Query:
         // vCenterNetworks(input: GetNetworksInput!): NetworkInfoListResponse!
-        protected void InvokeQueryVcenterNetworks()
+        internal void InvokeQueryVcenterNetworks()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetNetworksInput!"),
@@ -508,7 +511,7 @@ Preview list of virtual machines of a proposed filter condition. The result migh
 
         // Invoke GraphQL Query:
         // vCenterHotAddNetwork(input: GetHotAddNetworkInput!): HotAddNetworkConfigWithName!
-        protected void InvokeQueryVcenterHotAddNetwork()
+        internal void InvokeQueryVcenterHotAddNetwork()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetHotAddNetworkInput!"),
@@ -535,7 +538,7 @@ Preview list of virtual machines of a proposed filter condition. The result migh
 
         // Invoke GraphQL Query:
         // vCenterNumProxiesNeeded(input: GetNumProxiesNeededInput!): Int!
-        protected void InvokeQueryVcenterNumProxiesNeeded()
+        internal void InvokeQueryVcenterNumProxiesNeeded()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetNumProxiesNeededInput!"),
@@ -562,7 +565,7 @@ Preview list of virtual machines of a proposed filter condition. The result migh
 
         // Invoke GraphQL Query:
         // allVcenterHotAddProxyVms(clusterUuids: [UUID!]!): [VcenterHotAddProxyVmInfo!]!
-        protected void InvokeQueryAllVcenterHotAddProxyVms()
+        internal void InvokeQueryAllVcenterHotAddProxyVms()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("clusterUuids", "[UUID!]!"),
@@ -589,7 +592,7 @@ Preview list of virtual machines of a proposed filter condition. The result migh
 
         // Invoke GraphQL Query:
         // vCenterHotAddBandwidth(input: GetHotAddBandwidthInput!): HotAddBandwidthInfo!
-        protected void InvokeQueryVcenterHotAddBandwidth()
+        internal void InvokeQueryVcenterHotAddBandwidth()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetHotAddBandwidthInput!"),
@@ -616,7 +619,7 @@ Preview list of virtual machines of a proposed filter condition. The result migh
 
         // Invoke GraphQL Query:
         // vCenterAdvancedTagPreview(input: PreviewFilterInput!): VcenterAdvancedTagPreviewReply!
-        protected void InvokeQueryVcenterAdvancedTagPreview()
+        internal void InvokeQueryVcenterAdvancedTagPreview()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "PreviewFilterInput!"),

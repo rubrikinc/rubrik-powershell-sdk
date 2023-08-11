@@ -12,7 +12,7 @@ namespace RubrikSecurityCloud.Types
 {
     public static class SchemaMeta
     {
-        public static string GraphqlSchemaVersion = "v20230726-39" ;
+        public static string GraphqlSchemaVersion = "v20230802-35" ;
 
         public static HashSet<string> InterfaceImpls( string interfaceName )
         {
@@ -1334,6 +1334,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     "VsphereFolderDescendantType",
                     new HashSet<string> {
+                    "VsphereDatacenter",
                     "VsphereFolder",
                     "VsphereVm",
                     }
@@ -1341,6 +1342,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     "VsphereFolderLogicalChildType",
                     new HashSet<string> {
+                    "VsphereDatacenter",
                     "VsphereFolder",
                     "VsphereVm",
                     }
@@ -1424,6 +1426,7 @@ namespace RubrikSecurityCloud.Types
                     "VsphereVcenterLogicalChildType",
                     new HashSet<string> {
                     "VsphereDatacenter",
+                    "VsphereFolder",
                     "VsphereVcenterLogicalChildType",
                     }
                 },
@@ -1513,6 +1516,7 @@ namespace RubrikSecurityCloud.Types
                     "AnomalyStatus",
                     new HashSet<string> {
                     "AnomalyResultGroupByInfo",
+                    "NfAnomalyResultGroupByInfo",
                     }
                 },
                 {
@@ -1538,6 +1542,7 @@ namespace RubrikSecurityCloud.Types
                     new HashSet<string> {
                     "ActivitySeriesGroupByInfo",
                     "AnomalyResultGroupByInfo",
+                    "NfAnomalyResultGroupByInfo",
                     "RansomwareResultGroupByInfo",
                     "SnappableGroupByInfo",
                     "TaskDetailGroupByInfo",
@@ -1614,6 +1619,12 @@ namespace RubrikSecurityCloud.Types
                     }
                 },
                 {
+                    "M365TrialLicenseParams",
+                    new HashSet<string> {
+                    "TrialParams",
+                    }
+                },
+                {
                     "ObjectType",
                     new HashSet<string> {
                     "SnappableGroupByInfo",
@@ -1642,6 +1653,7 @@ namespace RubrikSecurityCloud.Types
                     "Snappable",
                     new HashSet<string> {
                     "AnomalyResultGroupByInfo",
+                    "NfAnomalyResultGroupByInfo",
                     "RansomwareResultGroupByInfo",
                     }
                 },
@@ -1748,6 +1760,7 @@ namespace RubrikSecurityCloud.Types
                     "MissedSnapshotGroupByInfo",
                     "MongoSnapshotGroupByInfo",
                     "MosaicSnapshotGroupByInfo",
+                    "NfAnomalyResultGroupByInfo",
                     "PolarisSnapshotGroupByInfo",
                     "RansomwareResultGroupByInfo",
                     "SnappableGroupByInfo",
@@ -2051,6 +2064,7 @@ namespace RubrikSecurityCloud.Types
             createO365AppComplete,
             createO365AppKickoff,
             createOnDemandDb2Backup,
+            createOnDemandMongoDatabaseBackup,
             createOnDemandMssqlBackup,
             createOnDemandNutanixBackup,
             createOraclePdbRestore,
@@ -2307,6 +2321,7 @@ namespace RubrikSecurityCloud.Types
             registerHypervScvmm,
             removeCdmCluster,
             removeLdapIntegration,
+            restoreAzureAdObjectsWithPassword,
             restoreFilesNutanixSnapshot,
             restoreHypervVirtualMachineSnapshotFiles,
             restoreMssqlDatabase,
@@ -3555,6 +3570,10 @@ namespace RubrikSecurityCloud.Types
                     "Invoke-RscMutateDb2 -CreateOnDemandBackup"
                 },
                 {
+                    GqlOperationName.createOnDemandMongoDatabaseBackup,
+                    "Invoke-RscMutateMongo -CreateOnDemandDatabaseBackup"
+                },
+                {
                     GqlOperationName.createOnDemandMssqlBackup,
                     "Invoke-RscMutateMssql -CreateOnDemandBackup"
                 },
@@ -4577,6 +4596,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlOperationName.removeLdapIntegration,
                     "Invoke-RscMutateLdap -RemoveIntegration"
+                },
+                {
+                    GqlOperationName.restoreAzureAdObjectsWithPassword,
+                    "Invoke-RscMutateAzure -RestoreAdObjectsWithPassword"
                 },
                 {
                     GqlOperationName.restoreFilesNutanixSnapshot,

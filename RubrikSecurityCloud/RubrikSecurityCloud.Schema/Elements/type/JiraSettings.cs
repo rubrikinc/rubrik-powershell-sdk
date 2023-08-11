@@ -20,15 +20,10 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> JiraSettingsType? SettingsType
-        // GraphQL -> settingsType: JiraSettingsType! (enum)
-        [JsonProperty("settingsType")]
-        public JiraSettingsType? SettingsType { get; set; }
-
-        //      C# -> DateTime? LastUpdatedTime
-        // GraphQL -> lastUpdatedTime: DateTime! (scalar)
-        [JsonProperty("lastUpdatedTime")]
-        public DateTime? LastUpdatedTime { get; set; }
+        //      C# -> System.String? AppItemTypeToken
+        // GraphQL -> appItemTypeToken: String! (scalar)
+        [JsonProperty("appItemTypeToken")]
+        public System.String? AppItemTypeToken { get; set; }
 
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
@@ -40,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("naturalId")]
         public System.String? NaturalId { get; set; }
 
+        //      C# -> System.String? WorkloadId
+        // GraphQL -> workloadId: UUID! (scalar)
+        [JsonProperty("workloadId")]
+        public System.String? WorkloadId { get; set; }
+
 
         #endregion
 
@@ -50,23 +50,23 @@ namespace RubrikSecurityCloud.Types
     }
 
     public JiraSettings Set(
-        JiraSettingsType? SettingsType = null,
-        DateTime? LastUpdatedTime = null,
+        System.String? AppItemTypeToken = null,
         System.String? Name = null,
-        System.String? NaturalId = null
+        System.String? NaturalId = null,
+        System.String? WorkloadId = null
     ) 
     {
-        if ( SettingsType != null ) {
-            this.SettingsType = SettingsType;
-        }
-        if ( LastUpdatedTime != null ) {
-            this.LastUpdatedTime = LastUpdatedTime;
+        if ( AppItemTypeToken != null ) {
+            this.AppItemTypeToken = AppItemTypeToken;
         }
         if ( Name != null ) {
             this.Name = Name;
         }
         if ( NaturalId != null ) {
             this.NaturalId = NaturalId;
+        }
+        if ( WorkloadId != null ) {
+            this.WorkloadId = WorkloadId;
         }
         return this;
     }
@@ -78,15 +78,10 @@ namespace RubrikSecurityCloud.Types
     {
         string ind = new string(' ', indent*2);
         string s = "";
-        //      C# -> JiraSettingsType? SettingsType
-        // GraphQL -> settingsType: JiraSettingsType! (enum)
-        if (this.SettingsType != null) {
-            s += ind + "settingsType\n" ;
-        }
-        //      C# -> DateTime? LastUpdatedTime
-        // GraphQL -> lastUpdatedTime: DateTime! (scalar)
-        if (this.LastUpdatedTime != null) {
-            s += ind + "lastUpdatedTime\n" ;
+        //      C# -> System.String? AppItemTypeToken
+        // GraphQL -> appItemTypeToken: String! (scalar)
+        if (this.AppItemTypeToken != null) {
+            s += ind + "appItemTypeToken\n" ;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
@@ -98,6 +93,11 @@ namespace RubrikSecurityCloud.Types
         if (this.NaturalId != null) {
             s += ind + "naturalId\n" ;
         }
+        //      C# -> System.String? WorkloadId
+        // GraphQL -> workloadId: UUID! (scalar)
+        if (this.WorkloadId != null) {
+            s += ind + "workloadId\n" ;
+        }
         return s;
     }
 
@@ -106,17 +106,11 @@ namespace RubrikSecurityCloud.Types
     //[JsonIgnore]
     public override void ApplyExploratoryFieldSpec(String parent = "")
     {
-        //      C# -> JiraSettingsType? SettingsType
-        // GraphQL -> settingsType: JiraSettingsType! (enum)
-        if (this.SettingsType == null && Exploration.Includes(parent + ".settingsType", true))
+        //      C# -> System.String? AppItemTypeToken
+        // GraphQL -> appItemTypeToken: String! (scalar)
+        if (this.AppItemTypeToken == null && Exploration.Includes(parent + ".appItemTypeToken", true))
         {
-            this.SettingsType = new JiraSettingsType();
-        }
-        //      C# -> DateTime? LastUpdatedTime
-        // GraphQL -> lastUpdatedTime: DateTime! (scalar)
-        if (this.LastUpdatedTime == null && Exploration.Includes(parent + ".lastUpdatedTime", true))
-        {
-            this.LastUpdatedTime = new DateTime();
+            this.AppItemTypeToken = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
@@ -129,6 +123,12 @@ namespace RubrikSecurityCloud.Types
         if (this.NaturalId == null && Exploration.Includes(parent + ".naturalId", true))
         {
             this.NaturalId = "FETCH";
+        }
+        //      C# -> System.String? WorkloadId
+        // GraphQL -> workloadId: UUID! (scalar)
+        if (this.WorkloadId == null && Exploration.Includes(parent + ".workloadId", true))
+        {
+            this.WorkloadId = "FETCH";
         }
     }
 

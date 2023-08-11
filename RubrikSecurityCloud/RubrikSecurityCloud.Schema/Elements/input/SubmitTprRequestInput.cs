@@ -19,22 +19,17 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? Id
-        // GraphQL -> id: UUID! (scalar)
+        //      C# -> System.String? RequestId
+        // GraphQL -> requestId: UUID! (scalar)
         [Required]
         [JsonRequired]
-        [JsonProperty("id")]
-        public System.String? Id { get; set; }
+        [JsonProperty("requestId")]
+        public System.String? RequestId { get; set; }
 
         //      C# -> System.String? Comment
         // GraphQL -> comment: String (scalar)
         [JsonProperty("comment")]
         public System.String? Comment { get; set; }
-
-        //      C# -> System.Int32? ExecutionTimeoutHours
-        // GraphQL -> executionTimeoutHours: Int (scalar)
-        [JsonProperty("executionTimeoutHours")]
-        public System.Int32? ExecutionTimeoutHours { get; set; }
 
         //      C# -> TprExecutionType? ExecutionType
         // GraphQL -> executionType: TprExecutionType! (enum)
@@ -42,6 +37,11 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("executionType")]
         public TprExecutionType? ExecutionType { get; set; }
+
+        //      C# -> System.Int32? ExecutionTimeoutHours
+        // GraphQL -> executionTimeoutHours: Int (scalar)
+        [JsonProperty("executionTimeoutHours")]
+        public System.Int32? ExecutionTimeoutHours { get; set; }
 
 
         #endregion

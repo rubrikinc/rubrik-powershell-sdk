@@ -36,6 +36,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("slaAssignment")]
         public SlaAssignmentTypeEnum? SlaAssignment { get; set; }
 
+        //      C# -> StorageRegion? StorageRegion
+        // GraphQL -> storageRegion: StorageRegion! (enum)
+        [JsonProperty("storageRegion")]
+        public StorageRegion? StorageRegion { get; set; }
+
         //      C# -> SlaDomain? ConfiguredSlaDomain
         // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
         [JsonProperty("configuredSlaDomain")]
@@ -86,6 +91,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("effectiveSlaSourceObject")]
         public PathNode? EffectiveSlaSourceObject { get; set; }
 
+        //      C# -> AtlassianSiteLicenseDetails? LicenseDetails
+        // GraphQL -> licenseDetails: AtlassianSiteLicenseDetails (type)
+        [JsonProperty("licenseDetails")]
+        public AtlassianSiteLicenseDetails? LicenseDetails { get; set; }
+
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)
         [JsonProperty("logicalPath")]
@@ -114,6 +124,7 @@ namespace RubrikSecurityCloud.Types
         List<Operation>? AuthorizedOperations = null,
         HierarchyObjectTypeEnum? ObjectType = null,
         SlaAssignmentTypeEnum? SlaAssignment = null,
+        StorageRegion? StorageRegion = null,
         SlaDomain? ConfiguredSlaDomain = null,
         SlaDomain? EffectiveRetentionSlaDomain = null,
         SlaDomain? EffectiveSlaDomain = null,
@@ -124,6 +135,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? SlaPauseStatus = null,
         List<Org>? AllOrgs = null,
         PathNode? EffectiveSlaSourceObject = null,
+        AtlassianSiteLicenseDetails? LicenseDetails = null,
         List<PathNode>? LogicalPath = null,
         List<PathNode>? PhysicalPath = null,
         SnapshotDistribution? SnapshotDistribution = null
@@ -137,6 +149,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SlaAssignment != null ) {
             this.SlaAssignment = SlaAssignment;
+        }
+        if ( StorageRegion != null ) {
+            this.StorageRegion = StorageRegion;
         }
         if ( ConfiguredSlaDomain != null ) {
             this.ConfiguredSlaDomain = ConfiguredSlaDomain;
@@ -167,6 +182,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( EffectiveSlaSourceObject != null ) {
             this.EffectiveSlaSourceObject = EffectiveSlaSourceObject;
+        }
+        if ( LicenseDetails != null ) {
+            this.LicenseDetails = LicenseDetails;
         }
         if ( LogicalPath != null ) {
             this.LogicalPath = LogicalPath;
@@ -201,6 +219,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> slaAssignment: SlaAssignmentTypeEnum! (enum)
         if (this.SlaAssignment != null) {
             s += ind + "slaAssignment\n" ;
+        }
+        //      C# -> StorageRegion? StorageRegion
+        // GraphQL -> storageRegion: StorageRegion! (enum)
+        if (this.StorageRegion != null) {
+            s += ind + "storageRegion\n" ;
         }
         //      C# -> SlaDomain? ConfiguredSlaDomain
         // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
@@ -267,6 +290,14 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "effectiveSlaSourceObject {\n" + fspec + ind + "}\n" ;
             }
         }
+        //      C# -> AtlassianSiteLicenseDetails? LicenseDetails
+        // GraphQL -> licenseDetails: AtlassianSiteLicenseDetails (type)
+        if (this.LicenseDetails != null) {
+            var fspec = this.LicenseDetails.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "licenseDetails {\n" + fspec + ind + "}\n" ;
+            }
+        }
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)
         if (this.LogicalPath != null) {
@@ -316,6 +347,12 @@ namespace RubrikSecurityCloud.Types
         if (this.SlaAssignment == null && Exploration.Includes(parent + ".slaAssignment", true))
         {
             this.SlaAssignment = new SlaAssignmentTypeEnum();
+        }
+        //      C# -> StorageRegion? StorageRegion
+        // GraphQL -> storageRegion: StorageRegion! (enum)
+        if (this.StorageRegion == null && Exploration.Includes(parent + ".storageRegion", true))
+        {
+            this.StorageRegion = new StorageRegion();
         }
         //      C# -> SlaDomain? ConfiguredSlaDomain
         // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
@@ -384,6 +421,13 @@ namespace RubrikSecurityCloud.Types
         {
             this.EffectiveSlaSourceObject = new PathNode();
             this.EffectiveSlaSourceObject.ApplyExploratoryFieldSpec(parent + ".effectiveSlaSourceObject");
+        }
+        //      C# -> AtlassianSiteLicenseDetails? LicenseDetails
+        // GraphQL -> licenseDetails: AtlassianSiteLicenseDetails (type)
+        if (this.LicenseDetails == null && Exploration.Includes(parent + ".licenseDetails"))
+        {
+            this.LicenseDetails = new AtlassianSiteLicenseDetails();
+            this.LicenseDetails.ApplyExploratoryFieldSpec(parent + ".licenseDetails");
         }
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)

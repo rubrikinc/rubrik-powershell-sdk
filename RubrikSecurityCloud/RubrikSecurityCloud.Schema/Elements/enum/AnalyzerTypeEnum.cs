@@ -93,6 +93,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "FRANCE_SSN")]
         FRANCE_SSN,
 
+        [EnumMember(Value = "GCP_OAUTH_REFRESH_TOKEN")]
+        GCP_OAUTH_REFRESH_TOKEN,
+
         [EnumMember(Value = "GERMANY_DL")]
         GERMANY_DL,
 
@@ -101,6 +104,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "GERMANY_PASSPORT")]
         GERMANY_PASSPORT,
+
+        [EnumMember(Value = "GITHUB_OAUTH_REFRESH_TOKEN")]
+        GITHUB_OAUTH_REFRESH_TOKEN,
 
         [EnumMember(Value = "GOOGLE_API_KEY")]
         GOOGLE_API_KEY,

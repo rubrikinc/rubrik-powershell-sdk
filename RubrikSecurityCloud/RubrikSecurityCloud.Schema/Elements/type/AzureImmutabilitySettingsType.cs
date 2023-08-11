@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.Boolean? IsBlobImmutabilityEnabled
+        // GraphQL -> isBlobImmutabilityEnabled: Boolean! (scalar)
+        [JsonProperty("isBlobImmutabilityEnabled")]
+        public System.Boolean? IsBlobImmutabilityEnabled { get; set; }
+
         //      C# -> System.Int32? LockDurationDays
         // GraphQL -> lockDurationDays: Int! (scalar)
         [JsonProperty("lockDurationDays")]
@@ -35,9 +40,13 @@ namespace RubrikSecurityCloud.Types
     }
 
     public AzureImmutabilitySettingsType Set(
+        System.Boolean? IsBlobImmutabilityEnabled = null,
         System.Int32? LockDurationDays = null
     ) 
     {
+        if ( IsBlobImmutabilityEnabled != null ) {
+            this.IsBlobImmutabilityEnabled = IsBlobImmutabilityEnabled;
+        }
         if ( LockDurationDays != null ) {
             this.LockDurationDays = LockDurationDays;
         }
@@ -51,6 +60,11 @@ namespace RubrikSecurityCloud.Types
     {
         string ind = new string(' ', indent*2);
         string s = "";
+        //      C# -> System.Boolean? IsBlobImmutabilityEnabled
+        // GraphQL -> isBlobImmutabilityEnabled: Boolean! (scalar)
+        if (this.IsBlobImmutabilityEnabled != null) {
+            s += ind + "isBlobImmutabilityEnabled\n" ;
+        }
         //      C# -> System.Int32? LockDurationDays
         // GraphQL -> lockDurationDays: Int! (scalar)
         if (this.LockDurationDays != null) {
@@ -64,6 +78,12 @@ namespace RubrikSecurityCloud.Types
     //[JsonIgnore]
     public override void ApplyExploratoryFieldSpec(String parent = "")
     {
+        //      C# -> System.Boolean? IsBlobImmutabilityEnabled
+        // GraphQL -> isBlobImmutabilityEnabled: Boolean! (scalar)
+        if (this.IsBlobImmutabilityEnabled == null && Exploration.Includes(parent + ".isBlobImmutabilityEnabled", true))
+        {
+            this.IsBlobImmutabilityEnabled = true;
+        }
         //      C# -> System.Int32? LockDurationDays
         // GraphQL -> lockDurationDays: Int! (scalar)
         if (this.LockDurationDays == null && Exploration.Includes(parent + ".lockDurationDays", true))

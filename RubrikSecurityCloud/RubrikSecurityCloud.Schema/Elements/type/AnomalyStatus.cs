@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region AnomalyStatus
  
-    public class AnomalyStatus: BaseType, AnomalyResultGroupByInfo
+    public class AnomalyStatus: BaseType, AnomalyResultGroupByInfo, NfAnomalyResultGroupByInfo
     {
         #region members
 

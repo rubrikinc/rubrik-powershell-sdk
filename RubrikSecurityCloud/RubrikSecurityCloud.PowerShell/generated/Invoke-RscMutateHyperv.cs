@@ -26,11 +26,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     public class Invoke_RscMutateHyperv : RscPSCmdlet
     {
         
-        // -------------------------------------------------------------------
-        // RegisterScvmm parameter set
-        //
-        // [GraphQL: registerHypervScvmm]
-        //
+        /// <summary>
+        /// RegisterScvmm parameter set
+        ///
+        /// [GraphQL: registerHypervScvmm]
+        /// </summary>
         [Parameter(
             ParameterSetName = "RegisterScvmm",
             Mandatory = false,
@@ -44,11 +44,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter RegisterScvmm { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ScvmmUpdate parameter set
-        //
-        // [GraphQL: hypervScvmmUpdate]
-        //
+        /// <summary>
+        /// ScvmmUpdate parameter set
+        ///
+        /// [GraphQL: hypervScvmmUpdate]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ScvmmUpdate",
             Mandatory = false,
@@ -62,11 +62,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter ScvmmUpdate { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ScvmmDelete parameter set
-        //
-        // [GraphQL: hypervScvmmDelete]
-        //
+        /// <summary>
+        /// ScvmmDelete parameter set
+        ///
+        /// [GraphQL: hypervScvmmDelete]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ScvmmDelete",
             Mandatory = false,
@@ -80,11 +80,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter ScvmmDelete { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // RefreshScvmm parameter set
-        //
-        // [GraphQL: refreshHypervScvmm]
-        //
+        /// <summary>
+        /// RefreshScvmm parameter set
+        ///
+        /// [GraphQL: refreshHypervScvmm]
+        /// </summary>
         [Parameter(
             ParameterSetName = "RefreshScvmm",
             Mandatory = false,
@@ -98,11 +98,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter RefreshScvmm { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // OnDemandSnapshot parameter set
-        //
-        // [GraphQL: hypervOnDemandSnapshot]
-        //
+        /// <summary>
+        /// OnDemandSnapshot parameter set
+        ///
+        /// [GraphQL: hypervOnDemandSnapshot]
+        /// </summary>
         [Parameter(
             ParameterSetName = "OnDemandSnapshot",
             Mandatory = false,
@@ -119,11 +119,11 @@ Create an on-demand snapshot for the given VM ID.
         public SwitchParameter OnDemandSnapshot { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DeleteAllSnapshots parameter set
-        //
-        // [GraphQL: hypervDeleteAllSnapshots]
-        //
+        /// <summary>
+        /// DeleteAllSnapshots parameter set
+        ///
+        /// [GraphQL: hypervDeleteAllSnapshots]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DeleteAllSnapshots",
             Mandatory = false,
@@ -140,11 +140,11 @@ Delete all snapshots of a virtual machine.
         public SwitchParameter DeleteAllSnapshots { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ExportVirtualMachine parameter set
-        //
-        // [GraphQL: exportHypervVirtualMachine]
-        //
+        /// <summary>
+        /// ExportVirtualMachine parameter set
+        ///
+        /// [GraphQL: exportHypervVirtualMachine]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ExportVirtualMachine",
             Mandatory = false,
@@ -161,11 +161,11 @@ Export snapshot of a vm.
         public SwitchParameter ExportVirtualMachine { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DownloadVirtualMachineSnapshotFiles parameter set
-        //
-        // [GraphQL: downloadHypervVirtualMachineSnapshotFiles]
-        //
+        /// <summary>
+        /// DownloadVirtualMachineSnapshotFiles parameter set
+        ///
+        /// [GraphQL: downloadHypervVirtualMachineSnapshotFiles]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DownloadVirtualMachineSnapshotFiles",
             Mandatory = false,
@@ -182,11 +182,11 @@ Start an asynchronous job to download multiple files and folders from a specifie
         public SwitchParameter DownloadVirtualMachineSnapshotFiles { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // InstantRecoverVirtualMachineSnapshot parameter set
-        //
-        // [GraphQL: instantRecoverHypervVirtualMachineSnapshot]
-        //
+        /// <summary>
+        /// InstantRecoverVirtualMachineSnapshot parameter set
+        ///
+        /// [GraphQL: instantRecoverHypervVirtualMachineSnapshot]
+        /// </summary>
         [Parameter(
             ParameterSetName = "InstantRecoverVirtualMachineSnapshot",
             Mandatory = false,
@@ -203,11 +203,11 @@ The VM will be started with networking enabled. If the VM does not exist anymore
         public SwitchParameter InstantRecoverVirtualMachineSnapshot { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // RestoreVirtualMachineSnapshotFiles parameter set
-        //
-        // [GraphQL: restoreHypervVirtualMachineSnapshotFiles]
-        //
+        /// <summary>
+        /// RestoreVirtualMachineSnapshotFiles parameter set
+        ///
+        /// [GraphQL: restoreHypervVirtualMachineSnapshotFiles]
+        /// </summary>
         [Parameter(
             ParameterSetName = "RestoreVirtualMachineSnapshotFiles",
             Mandatory = false,
@@ -224,11 +224,11 @@ Restore files from a snapshot to the original source location.
         public SwitchParameter RestoreVirtualMachineSnapshotFiles { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // RegisterAgentVirtualMachine parameter set
-        //
-        // [GraphQL: registerAgentHypervVirtualMachine]
-        //
+        /// <summary>
+        /// RegisterAgentVirtualMachine parameter set
+        ///
+        /// [GraphQL: registerAgentHypervVirtualMachine]
+        /// </summary>
         [Parameter(
             ParameterSetName = "RegisterAgentVirtualMachine",
             Mandatory = false,
@@ -245,11 +245,11 @@ Register the agent that installed in VM.
         public SwitchParameter RegisterAgentVirtualMachine { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DeleteVirtualMachineSnapshot parameter set
-        //
-        // [GraphQL: deleteHypervVirtualMachineSnapshot]
-        //
+        /// <summary>
+        /// DeleteVirtualMachineSnapshot parameter set
+        ///
+        /// [GraphQL: deleteHypervVirtualMachineSnapshot]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DeleteVirtualMachineSnapshot",
             Mandatory = false,
@@ -266,11 +266,11 @@ Delete a snapshot by expiring it. Snapshot is expired only if it is a manual sna
         public SwitchParameter DeleteVirtualMachineSnapshot { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DownloadVirtualMachineSnapshot parameter set
-        //
-        // [GraphQL: downloadHypervVirtualMachineSnapshot]
-        //
+        /// <summary>
+        /// DownloadVirtualMachineSnapshot parameter set
+        ///
+        /// [GraphQL: downloadHypervVirtualMachineSnapshot]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DownloadVirtualMachineSnapshot",
             Mandatory = false,
@@ -287,11 +287,11 @@ Download a snapshot from archival.
         public SwitchParameter DownloadVirtualMachineSnapshot { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // CreateVirtualMachineSnapshotMount parameter set
-        //
-        // [GraphQL: createHypervVirtualMachineSnapshotMount]
-        //
+        /// <summary>
+        /// CreateVirtualMachineSnapshotMount parameter set
+        ///
+        /// [GraphQL: createHypervVirtualMachineSnapshotMount]
+        /// </summary>
         [Parameter(
             ParameterSetName = "CreateVirtualMachineSnapshotMount",
             Mandatory = false,
@@ -308,11 +308,11 @@ Create a live mount request with given configuration.
         public SwitchParameter CreateVirtualMachineSnapshotMount { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // UpdateVirtualMachineSnapshotMount parameter set
-        //
-        // [GraphQL: updateHypervVirtualMachineSnapshotMount]
-        //
+        /// <summary>
+        /// UpdateVirtualMachineSnapshotMount parameter set
+        ///
+        /// [GraphQL: updateHypervVirtualMachineSnapshotMount]
+        /// </summary>
         [Parameter(
             ParameterSetName = "UpdateVirtualMachineSnapshotMount",
             Mandatory = false,
@@ -329,11 +329,11 @@ Power a specified Live Mount virtual machine on or off. Pass **_true_** to power
         public SwitchParameter UpdateVirtualMachineSnapshotMount { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DeleteVirtualMachineSnapshotMount parameter set
-        //
-        // [GraphQL: deleteHypervVirtualMachineSnapshotMount]
-        //
+        /// <summary>
+        /// DeleteVirtualMachineSnapshotMount parameter set
+        ///
+        /// [GraphQL: deleteHypervVirtualMachineSnapshotMount]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DeleteVirtualMachineSnapshotMount",
             Mandatory = false,
@@ -350,11 +350,11 @@ Create a request to delete a live mount.
         public SwitchParameter DeleteVirtualMachineSnapshotMount { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // RefreshServer parameter set
-        //
-        // [GraphQL: refreshHypervServer]
-        //
+        /// <summary>
+        /// RefreshServer parameter set
+        ///
+        /// [GraphQL: refreshHypervServer]
+        /// </summary>
         [Parameter(
             ParameterSetName = "RefreshServer",
             Mandatory = false,
@@ -371,11 +371,11 @@ Create a job to refresh the metadata for the specified Hyper-V host.
         public SwitchParameter RefreshServer { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // BatchOnDemandBackupVm parameter set
-        //
-        // [GraphQL: batchOnDemandBackupHypervVm]
-        //
+        /// <summary>
+        /// BatchOnDemandBackupVm parameter set
+        ///
+        /// [GraphQL: batchOnDemandBackupHypervVm]
+        /// </summary>
         [Parameter(
             ParameterSetName = "BatchOnDemandBackupVm",
             Mandatory = false,
@@ -392,11 +392,11 @@ Takes on-demand backup of multiple specified Hyper-V virtual machines.
         public SwitchParameter BatchOnDemandBackupVm { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // BatchExportVm parameter set
-        //
-        // [GraphQL: batchExportHypervVm]
-        //
+        /// <summary>
+        /// BatchExportVm parameter set
+        ///
+        /// [GraphQL: batchExportHypervVm]
+        /// </summary>
         [Parameter(
             ParameterSetName = "BatchExportVm",
             Mandatory = false,
@@ -413,11 +413,11 @@ Export a snapshot from each member of a set of virtual machines.
         public SwitchParameter BatchExportVm { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // BatchMountVm parameter set
-        //
-        // [GraphQL: batchMountHypervVm]
-        //
+        /// <summary>
+        /// BatchMountVm parameter set
+        ///
+        /// [GraphQL: batchMountHypervVm]
+        /// </summary>
         [Parameter(
             ParameterSetName = "BatchMountVm",
             Mandatory = false,
@@ -434,11 +434,11 @@ Mounts a batch of snapshots from a group of specified virtual machines.
         public SwitchParameter BatchMountVm { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // BatchInstantRecoverVm parameter set
-        //
-        // [GraphQL: batchInstantRecoverHypervVm]
-        //
+        /// <summary>
+        /// BatchInstantRecoverVm parameter set
+        ///
+        /// [GraphQL: batchInstantRecoverHypervVm]
+        /// </summary>
         [Parameter(
             ParameterSetName = "BatchInstantRecoverVm",
             Mandatory = false,
@@ -455,11 +455,11 @@ Instantly recovers a batch of snapshots from a group of specified virtual machin
         public SwitchParameter BatchInstantRecoverVm { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // UpdateVirtualMachine parameter set
-        //
-        // [GraphQL: updateHypervVirtualMachine]
-        //
+        /// <summary>
+        /// UpdateVirtualMachine parameter set
+        ///
+        /// [GraphQL: updateHypervVirtualMachine]
+        /// </summary>
         [Parameter(
             ParameterSetName = "UpdateVirtualMachine",
             Mandatory = false,
@@ -476,11 +476,11 @@ Update VM with specified properties.
         public SwitchParameter UpdateVirtualMachine { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DownloadSnapshotFromLocation parameter set
-        //
-        // [GraphQL: downloadHypervSnapshotFromLocation]
-        //
+        /// <summary>
+        /// DownloadSnapshotFromLocation parameter set
+        ///
+        /// [GraphQL: downloadHypervSnapshotFromLocation]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DownloadSnapshotFromLocation",
             Mandatory = false,
@@ -497,6 +497,8 @@ Initiates a job to download a snapshot from the specified location when the snap
         public SwitchParameter DownloadSnapshotFromLocation { get; set; }
 
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
         protected override void ProcessRecord()
         {
             try
@@ -581,10 +583,11 @@ Initiates a job to download a snapshot from the specified location when the snap
                 ThrowTerminatingException(ex);
            }
         }
+#pragma warning restore 1591
 
         // This parameter set invokes a single graphql operation:
         // registerHypervScvmm.
-        protected void ProcessRecord_RegisterScvmm()
+        internal void ProcessRecord_RegisterScvmm()
         {
             this._logger.name += " -RegisterScvmm";
             // Invoke graphql operation registerHypervScvmm
@@ -593,7 +596,7 @@ Initiates a job to download a snapshot from the specified location when the snap
 
         // This parameter set invokes a single graphql operation:
         // hypervScvmmUpdate.
-        protected void ProcessRecord_ScvmmUpdate()
+        internal void ProcessRecord_ScvmmUpdate()
         {
             this._logger.name += " -ScvmmUpdate";
             // Invoke graphql operation hypervScvmmUpdate
@@ -602,7 +605,7 @@ Initiates a job to download a snapshot from the specified location when the snap
 
         // This parameter set invokes a single graphql operation:
         // hypervScvmmDelete.
-        protected void ProcessRecord_ScvmmDelete()
+        internal void ProcessRecord_ScvmmDelete()
         {
             this._logger.name += " -ScvmmDelete";
             // Invoke graphql operation hypervScvmmDelete
@@ -611,7 +614,7 @@ Initiates a job to download a snapshot from the specified location when the snap
 
         // This parameter set invokes a single graphql operation:
         // refreshHypervScvmm.
-        protected void ProcessRecord_RefreshScvmm()
+        internal void ProcessRecord_RefreshScvmm()
         {
             this._logger.name += " -RefreshScvmm";
             // Invoke graphql operation refreshHypervScvmm
@@ -620,7 +623,7 @@ Initiates a job to download a snapshot from the specified location when the snap
 
         // This parameter set invokes a single graphql operation:
         // hypervOnDemandSnapshot.
-        protected void ProcessRecord_OnDemandSnapshot()
+        internal void ProcessRecord_OnDemandSnapshot()
         {
             this._logger.name += " -OnDemandSnapshot";
             // Invoke graphql operation hypervOnDemandSnapshot
@@ -629,7 +632,7 @@ Initiates a job to download a snapshot from the specified location when the snap
 
         // This parameter set invokes a single graphql operation:
         // hypervDeleteAllSnapshots.
-        protected void ProcessRecord_DeleteAllSnapshots()
+        internal void ProcessRecord_DeleteAllSnapshots()
         {
             this._logger.name += " -DeleteAllSnapshots";
             // Invoke graphql operation hypervDeleteAllSnapshots
@@ -638,7 +641,7 @@ Initiates a job to download a snapshot from the specified location when the snap
 
         // This parameter set invokes a single graphql operation:
         // exportHypervVirtualMachine.
-        protected void ProcessRecord_ExportVirtualMachine()
+        internal void ProcessRecord_ExportVirtualMachine()
         {
             this._logger.name += " -ExportVirtualMachine";
             // Invoke graphql operation exportHypervVirtualMachine
@@ -647,7 +650,7 @@ Initiates a job to download a snapshot from the specified location when the snap
 
         // This parameter set invokes a single graphql operation:
         // downloadHypervVirtualMachineSnapshotFiles.
-        protected void ProcessRecord_DownloadVirtualMachineSnapshotFiles()
+        internal void ProcessRecord_DownloadVirtualMachineSnapshotFiles()
         {
             this._logger.name += " -DownloadVirtualMachineSnapshotFiles";
             // Invoke graphql operation downloadHypervVirtualMachineSnapshotFiles
@@ -656,7 +659,7 @@ Initiates a job to download a snapshot from the specified location when the snap
 
         // This parameter set invokes a single graphql operation:
         // instantRecoverHypervVirtualMachineSnapshot.
-        protected void ProcessRecord_InstantRecoverVirtualMachineSnapshot()
+        internal void ProcessRecord_InstantRecoverVirtualMachineSnapshot()
         {
             this._logger.name += " -InstantRecoverVirtualMachineSnapshot";
             // Invoke graphql operation instantRecoverHypervVirtualMachineSnapshot
@@ -665,7 +668,7 @@ Initiates a job to download a snapshot from the specified location when the snap
 
         // This parameter set invokes a single graphql operation:
         // restoreHypervVirtualMachineSnapshotFiles.
-        protected void ProcessRecord_RestoreVirtualMachineSnapshotFiles()
+        internal void ProcessRecord_RestoreVirtualMachineSnapshotFiles()
         {
             this._logger.name += " -RestoreVirtualMachineSnapshotFiles";
             // Invoke graphql operation restoreHypervVirtualMachineSnapshotFiles
@@ -674,7 +677,7 @@ Initiates a job to download a snapshot from the specified location when the snap
 
         // This parameter set invokes a single graphql operation:
         // registerAgentHypervVirtualMachine.
-        protected void ProcessRecord_RegisterAgentVirtualMachine()
+        internal void ProcessRecord_RegisterAgentVirtualMachine()
         {
             this._logger.name += " -RegisterAgentVirtualMachine";
             // Invoke graphql operation registerAgentHypervVirtualMachine
@@ -683,7 +686,7 @@ Initiates a job to download a snapshot from the specified location when the snap
 
         // This parameter set invokes a single graphql operation:
         // deleteHypervVirtualMachineSnapshot.
-        protected void ProcessRecord_DeleteVirtualMachineSnapshot()
+        internal void ProcessRecord_DeleteVirtualMachineSnapshot()
         {
             this._logger.name += " -DeleteVirtualMachineSnapshot";
             // Invoke graphql operation deleteHypervVirtualMachineSnapshot
@@ -692,7 +695,7 @@ Initiates a job to download a snapshot from the specified location when the snap
 
         // This parameter set invokes a single graphql operation:
         // downloadHypervVirtualMachineSnapshot.
-        protected void ProcessRecord_DownloadVirtualMachineSnapshot()
+        internal void ProcessRecord_DownloadVirtualMachineSnapshot()
         {
             this._logger.name += " -DownloadVirtualMachineSnapshot";
             // Invoke graphql operation downloadHypervVirtualMachineSnapshot
@@ -701,7 +704,7 @@ Initiates a job to download a snapshot from the specified location when the snap
 
         // This parameter set invokes a single graphql operation:
         // createHypervVirtualMachineSnapshotMount.
-        protected void ProcessRecord_CreateVirtualMachineSnapshotMount()
+        internal void ProcessRecord_CreateVirtualMachineSnapshotMount()
         {
             this._logger.name += " -CreateVirtualMachineSnapshotMount";
             // Invoke graphql operation createHypervVirtualMachineSnapshotMount
@@ -710,7 +713,7 @@ Initiates a job to download a snapshot from the specified location when the snap
 
         // This parameter set invokes a single graphql operation:
         // updateHypervVirtualMachineSnapshotMount.
-        protected void ProcessRecord_UpdateVirtualMachineSnapshotMount()
+        internal void ProcessRecord_UpdateVirtualMachineSnapshotMount()
         {
             this._logger.name += " -UpdateVirtualMachineSnapshotMount";
             // Invoke graphql operation updateHypervVirtualMachineSnapshotMount
@@ -719,7 +722,7 @@ Initiates a job to download a snapshot from the specified location when the snap
 
         // This parameter set invokes a single graphql operation:
         // deleteHypervVirtualMachineSnapshotMount.
-        protected void ProcessRecord_DeleteVirtualMachineSnapshotMount()
+        internal void ProcessRecord_DeleteVirtualMachineSnapshotMount()
         {
             this._logger.name += " -DeleteVirtualMachineSnapshotMount";
             // Invoke graphql operation deleteHypervVirtualMachineSnapshotMount
@@ -728,7 +731,7 @@ Initiates a job to download a snapshot from the specified location when the snap
 
         // This parameter set invokes a single graphql operation:
         // refreshHypervServer.
-        protected void ProcessRecord_RefreshServer()
+        internal void ProcessRecord_RefreshServer()
         {
             this._logger.name += " -RefreshServer";
             // Invoke graphql operation refreshHypervServer
@@ -737,7 +740,7 @@ Initiates a job to download a snapshot from the specified location when the snap
 
         // This parameter set invokes a single graphql operation:
         // batchOnDemandBackupHypervVm.
-        protected void ProcessRecord_BatchOnDemandBackupVm()
+        internal void ProcessRecord_BatchOnDemandBackupVm()
         {
             this._logger.name += " -BatchOnDemandBackupVm";
             // Invoke graphql operation batchOnDemandBackupHypervVm
@@ -746,7 +749,7 @@ Initiates a job to download a snapshot from the specified location when the snap
 
         // This parameter set invokes a single graphql operation:
         // batchExportHypervVm.
-        protected void ProcessRecord_BatchExportVm()
+        internal void ProcessRecord_BatchExportVm()
         {
             this._logger.name += " -BatchExportVm";
             // Invoke graphql operation batchExportHypervVm
@@ -755,7 +758,7 @@ Initiates a job to download a snapshot from the specified location when the snap
 
         // This parameter set invokes a single graphql operation:
         // batchMountHypervVm.
-        protected void ProcessRecord_BatchMountVm()
+        internal void ProcessRecord_BatchMountVm()
         {
             this._logger.name += " -BatchMountVm";
             // Invoke graphql operation batchMountHypervVm
@@ -764,7 +767,7 @@ Initiates a job to download a snapshot from the specified location when the snap
 
         // This parameter set invokes a single graphql operation:
         // batchInstantRecoverHypervVm.
-        protected void ProcessRecord_BatchInstantRecoverVm()
+        internal void ProcessRecord_BatchInstantRecoverVm()
         {
             this._logger.name += " -BatchInstantRecoverVm";
             // Invoke graphql operation batchInstantRecoverHypervVm
@@ -773,7 +776,7 @@ Initiates a job to download a snapshot from the specified location when the snap
 
         // This parameter set invokes a single graphql operation:
         // updateHypervVirtualMachine.
-        protected void ProcessRecord_UpdateVirtualMachine()
+        internal void ProcessRecord_UpdateVirtualMachine()
         {
             this._logger.name += " -UpdateVirtualMachine";
             // Invoke graphql operation updateHypervVirtualMachine
@@ -782,7 +785,7 @@ Initiates a job to download a snapshot from the specified location when the snap
 
         // This parameter set invokes a single graphql operation:
         // downloadHypervSnapshotFromLocation.
-        protected void ProcessRecord_DownloadSnapshotFromLocation()
+        internal void ProcessRecord_DownloadSnapshotFromLocation()
         {
             this._logger.name += " -DownloadSnapshotFromLocation";
             // Invoke graphql operation downloadHypervSnapshotFromLocation
@@ -792,7 +795,7 @@ Initiates a job to download a snapshot from the specified location when the snap
 
         // Invoke GraphQL Mutation:
         // registerHypervScvmm(input: RegisterHypervScvmmInput!): AsyncRequestStatus!
-        protected void InvokeMutationRegisterHypervScvmm()
+        internal void InvokeMutationRegisterHypervScvmm()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RegisterHypervScvmmInput!"),
@@ -819,7 +822,7 @@ Initiates a job to download a snapshot from the specified location when the snap
 
         // Invoke GraphQL Mutation:
         // hypervScvmmUpdate(input: HypervScvmmUpdateInput!): HypervScvmmUpdateReply!
-        protected void InvokeMutationHypervScvmmUpdate()
+        internal void InvokeMutationHypervScvmmUpdate()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "HypervScvmmUpdateInput!"),
@@ -846,7 +849,7 @@ Initiates a job to download a snapshot from the specified location when the snap
 
         // Invoke GraphQL Mutation:
         // hypervScvmmDelete(input: HypervScvmmDeleteInput!): ResponseSuccess!
-        protected void InvokeMutationHypervScvmmDelete()
+        internal void InvokeMutationHypervScvmmDelete()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "HypervScvmmDeleteInput!"),
@@ -873,7 +876,7 @@ Initiates a job to download a snapshot from the specified location when the snap
 
         // Invoke GraphQL Mutation:
         // refreshHypervScvmm(input: RefreshHypervScvmmInput!): AsyncRequestStatus!
-        protected void InvokeMutationRefreshHypervScvmm()
+        internal void InvokeMutationRefreshHypervScvmm()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RefreshHypervScvmmInput!"),
@@ -900,7 +903,7 @@ Initiates a job to download a snapshot from the specified location when the snap
 
         // Invoke GraphQL Mutation:
         // hypervOnDemandSnapshot(input: HypervOnDemandSnapshotInput!): AsyncRequestStatus!
-        protected void InvokeMutationHypervOnDemandSnapshot()
+        internal void InvokeMutationHypervOnDemandSnapshot()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "HypervOnDemandSnapshotInput!"),
@@ -927,7 +930,7 @@ Initiates a job to download a snapshot from the specified location when the snap
 
         // Invoke GraphQL Mutation:
         // hypervDeleteAllSnapshots(input: HypervDeleteAllSnapshotsInput!): RequestSuccess!
-        protected void InvokeMutationHypervDeleteAllSnapshots()
+        internal void InvokeMutationHypervDeleteAllSnapshots()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "HypervDeleteAllSnapshotsInput!"),
@@ -954,7 +957,7 @@ Initiates a job to download a snapshot from the specified location when the snap
 
         // Invoke GraphQL Mutation:
         // exportHypervVirtualMachine(input: ExportHypervVirtualMachineInput!): AsyncRequestStatus!
-        protected void InvokeMutationExportHypervVirtualMachine()
+        internal void InvokeMutationExportHypervVirtualMachine()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "ExportHypervVirtualMachineInput!"),
@@ -981,7 +984,7 @@ Initiates a job to download a snapshot from the specified location when the snap
 
         // Invoke GraphQL Mutation:
         // downloadHypervVirtualMachineSnapshotFiles(input: DownloadHypervVirtualMachineSnapshotFilesInput!): AsyncRequestStatus!
-        protected void InvokeMutationDownloadHypervVirtualMachineSnapshotFiles()
+        internal void InvokeMutationDownloadHypervVirtualMachineSnapshotFiles()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DownloadHypervVirtualMachineSnapshotFilesInput!"),
@@ -1008,7 +1011,7 @@ Initiates a job to download a snapshot from the specified location when the snap
 
         // Invoke GraphQL Mutation:
         // instantRecoverHypervVirtualMachineSnapshot(input: InstantRecoverHypervVirtualMachineSnapshotInput!): AsyncRequestStatus!
-        protected void InvokeMutationInstantRecoverHypervVirtualMachineSnapshot()
+        internal void InvokeMutationInstantRecoverHypervVirtualMachineSnapshot()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "InstantRecoverHypervVirtualMachineSnapshotInput!"),
@@ -1035,7 +1038,7 @@ Initiates a job to download a snapshot from the specified location when the snap
 
         // Invoke GraphQL Mutation:
         // restoreHypervVirtualMachineSnapshotFiles(input: RestoreHypervVirtualMachineSnapshotFilesInput!): AsyncRequestStatus!
-        protected void InvokeMutationRestoreHypervVirtualMachineSnapshotFiles()
+        internal void InvokeMutationRestoreHypervVirtualMachineSnapshotFiles()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RestoreHypervVirtualMachineSnapshotFilesInput!"),
@@ -1062,7 +1065,7 @@ Initiates a job to download a snapshot from the specified location when the snap
 
         // Invoke GraphQL Mutation:
         // registerAgentHypervVirtualMachine(input: RegisterAgentHypervVirtualMachineInput!): RequestSuccess!
-        protected void InvokeMutationRegisterAgentHypervVirtualMachine()
+        internal void InvokeMutationRegisterAgentHypervVirtualMachine()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RegisterAgentHypervVirtualMachineInput!"),
@@ -1089,7 +1092,7 @@ Initiates a job to download a snapshot from the specified location when the snap
 
         // Invoke GraphQL Mutation:
         // deleteHypervVirtualMachineSnapshot(input: DeleteHypervVirtualMachineSnapshotInput!): RequestSuccess!
-        protected void InvokeMutationDeleteHypervVirtualMachineSnapshot()
+        internal void InvokeMutationDeleteHypervVirtualMachineSnapshot()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteHypervVirtualMachineSnapshotInput!"),
@@ -1116,7 +1119,7 @@ Initiates a job to download a snapshot from the specified location when the snap
 
         // Invoke GraphQL Mutation:
         // downloadHypervVirtualMachineSnapshot(input: DownloadHypervVirtualMachineSnapshotInput!): AsyncRequestStatus!
-        protected void InvokeMutationDownloadHypervVirtualMachineSnapshot()
+        internal void InvokeMutationDownloadHypervVirtualMachineSnapshot()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DownloadHypervVirtualMachineSnapshotInput!"),
@@ -1143,7 +1146,7 @@ Initiates a job to download a snapshot from the specified location when the snap
 
         // Invoke GraphQL Mutation:
         // createHypervVirtualMachineSnapshotMount(input: CreateHypervVirtualMachineSnapshotMountInput!): AsyncRequestStatus!
-        protected void InvokeMutationCreateHypervVirtualMachineSnapshotMount()
+        internal void InvokeMutationCreateHypervVirtualMachineSnapshotMount()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CreateHypervVirtualMachineSnapshotMountInput!"),
@@ -1170,7 +1173,7 @@ Initiates a job to download a snapshot from the specified location when the snap
 
         // Invoke GraphQL Mutation:
         // updateHypervVirtualMachineSnapshotMount(input: UpdateHypervVirtualMachineSnapshotMountInput!): UpdateHypervVirtualMachineSnapshotMountReply!
-        protected void InvokeMutationUpdateHypervVirtualMachineSnapshotMount()
+        internal void InvokeMutationUpdateHypervVirtualMachineSnapshotMount()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpdateHypervVirtualMachineSnapshotMountInput!"),
@@ -1197,7 +1200,7 @@ Initiates a job to download a snapshot from the specified location when the snap
 
         // Invoke GraphQL Mutation:
         // deleteHypervVirtualMachineSnapshotMount(input: DeleteHypervVirtualMachineSnapshotMountInput!): AsyncRequestStatus!
-        protected void InvokeMutationDeleteHypervVirtualMachineSnapshotMount()
+        internal void InvokeMutationDeleteHypervVirtualMachineSnapshotMount()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteHypervVirtualMachineSnapshotMountInput!"),
@@ -1224,7 +1227,7 @@ Initiates a job to download a snapshot from the specified location when the snap
 
         // Invoke GraphQL Mutation:
         // refreshHypervServer(input: RefreshHypervServerInput!): AsyncRequestStatus!
-        protected void InvokeMutationRefreshHypervServer()
+        internal void InvokeMutationRefreshHypervServer()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RefreshHypervServerInput!"),
@@ -1251,7 +1254,7 @@ Initiates a job to download a snapshot from the specified location when the snap
 
         // Invoke GraphQL Mutation:
         // batchOnDemandBackupHypervVm(input: BatchOnDemandBackupHypervVmInput!): BatchOnDemandBackupHypervVmReply!
-        protected void InvokeMutationBatchOnDemandBackupHypervVm()
+        internal void InvokeMutationBatchOnDemandBackupHypervVm()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "BatchOnDemandBackupHypervVmInput!"),
@@ -1278,7 +1281,7 @@ Initiates a job to download a snapshot from the specified location when the snap
 
         // Invoke GraphQL Mutation:
         // batchExportHypervVm(input: BatchExportHypervVmInput!): BatchExportHypervVmReply!
-        protected void InvokeMutationBatchExportHypervVm()
+        internal void InvokeMutationBatchExportHypervVm()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "BatchExportHypervVmInput!"),
@@ -1305,7 +1308,7 @@ Initiates a job to download a snapshot from the specified location when the snap
 
         // Invoke GraphQL Mutation:
         // batchMountHypervVm(input: BatchMountHypervVmInput!): BatchMountHypervVmReply!
-        protected void InvokeMutationBatchMountHypervVm()
+        internal void InvokeMutationBatchMountHypervVm()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "BatchMountHypervVmInput!"),
@@ -1332,7 +1335,7 @@ Initiates a job to download a snapshot from the specified location when the snap
 
         // Invoke GraphQL Mutation:
         // batchInstantRecoverHypervVm(input: BatchInstantRecoverHypervVmInput!): BatchInstantRecoverHypervVmReply!
-        protected void InvokeMutationBatchInstantRecoverHypervVm()
+        internal void InvokeMutationBatchInstantRecoverHypervVm()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "BatchInstantRecoverHypervVmInput!"),
@@ -1359,7 +1362,7 @@ Initiates a job to download a snapshot from the specified location when the snap
 
         // Invoke GraphQL Mutation:
         // updateHypervVirtualMachine(input: UpdateHypervVirtualMachineInput!): UpdateHypervVirtualMachineReply!
-        protected void InvokeMutationUpdateHypervVirtualMachine()
+        internal void InvokeMutationUpdateHypervVirtualMachine()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpdateHypervVirtualMachineInput!"),
@@ -1386,7 +1389,7 @@ Initiates a job to download a snapshot from the specified location when the snap
 
         // Invoke GraphQL Mutation:
         // downloadHypervSnapshotFromLocation(input: DownloadHypervSnapshotFromLocationInput!): AsyncRequestStatus!
-        protected void InvokeMutationDownloadHypervSnapshotFromLocation()
+        internal void InvokeMutationDownloadHypervSnapshotFromLocation()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DownloadHypervSnapshotFromLocationInput!"),

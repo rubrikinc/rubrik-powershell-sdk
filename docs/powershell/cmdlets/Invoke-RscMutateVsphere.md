@@ -39,7 +39,7 @@ Start an asynchronous job to download multiple Virtual Machine files, such as .v
 - Returns AsyncRequestStatus.
 ### exportsnapshottostandalonehost
 - There are 10 arguments.
-    - snapshotFid - System.String: Snapshot forever UUID in Rubrik Security Cloud.
+    - snapshotFid - System.String: Snapshot persistent UUID in RSC.
     - vmName - System.String
     - disableNetwork - System.Boolean
     - removeNetworkDevices - System.Boolean

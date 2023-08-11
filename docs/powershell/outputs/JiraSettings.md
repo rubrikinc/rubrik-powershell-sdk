@@ -1,11 +1,11 @@
 ### JiraSettings
 Jira settings.
 
-- naturalId: System.String
-  - The natural ID of the Jira settings.
 - name: System.String
   - Name of the Jira settings.
-- settingsType: JiraSettingsType
-  - Type of the Jira settings.
-- lastUpdatedTime: DateTime
-  - The last updated time of the Jira settings.
+- naturalId: System.String
+  - ID of the Jira settings.
+- appItemTypeToken: System.String
+  - Token specifying the type of the item.
+- workloadId: System.String
+  - Rubrik ID of the Jira settings workload.

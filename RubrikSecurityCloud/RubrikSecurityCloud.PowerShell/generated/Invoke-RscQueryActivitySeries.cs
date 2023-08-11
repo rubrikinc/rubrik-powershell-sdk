@@ -26,11 +26,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     public class Invoke_RscQueryActivitySeries : RscPSCmdlet
     {
         
-        // -------------------------------------------------------------------
-        // ActivitySeries parameter set
-        //
-        // [GraphQL: activitySeries]
-        //
+        /// <summary>
+        /// ActivitySeries parameter set
+        ///
+        /// [GraphQL: activitySeries]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ActivitySeries",
             Mandatory = false,
@@ -44,11 +44,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter ActivitySeries { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // List parameter set
-        //
-        // [GraphQL: activitySeriesConnection]
-        //
+        /// <summary>
+        /// List parameter set
+        ///
+        /// [GraphQL: activitySeriesConnection]
+        /// </summary>
         [Parameter(
             ParameterSetName = "List",
             Mandatory = false,
@@ -62,11 +62,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter List { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // GroupByList parameter set
-        //
-        // [GraphQL: activitySeriesGroupByConnection]
-        //
+        /// <summary>
+        /// GroupByList parameter set
+        ///
+        /// [GraphQL: activitySeriesGroupByConnection]
+        /// </summary>
         [Parameter(
             ParameterSetName = "GroupByList",
             Mandatory = false,
@@ -80,6 +80,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter GroupByList { get; set; }
 
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
         protected override void ProcessRecord()
         {
             try
@@ -104,10 +106,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 ThrowTerminatingException(ex);
            }
         }
+#pragma warning restore 1591
 
         // This parameter set invokes a single graphql operation:
         // activitySeries.
-        protected void ProcessRecord_ActivitySeries()
+        internal void ProcessRecord_ActivitySeries()
         {
             this._logger.name += " -ActivitySeries";
             // Invoke graphql operation activitySeries
@@ -116,7 +119,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // activitySeriesConnection.
-        protected void ProcessRecord_List()
+        internal void ProcessRecord_List()
         {
             this._logger.name += " -List";
             // Invoke graphql operation activitySeriesConnection
@@ -125,7 +128,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // activitySeriesGroupByConnection.
-        protected void ProcessRecord_GroupByList()
+        internal void ProcessRecord_GroupByList()
         {
             this._logger.name += " -GroupByList";
             // Invoke graphql operation activitySeriesGroupByConnection
@@ -135,7 +138,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // activitySeries(input: ActivitySeriesInput!): ActivitySeries!
-        protected void InvokeQueryActivitySeries()
+        internal void InvokeQueryActivitySeries()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "ActivitySeriesInput!"),
@@ -170,7 +173,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     sortBy: ActivitySeriesSortField
         //     filters: ActivitySeriesFilter
         //   ): ActivitySeriesConnection!
-        protected void InvokeQueryActivitySeriesConnection()
+        internal void InvokeQueryActivitySeriesConnection()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -211,7 +214,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     filters: ActivitySeriesFilterInput
         //     timezoneOffset: Float = 0.0
         //   ): ActivitySeriesGroupByConnection!
-        protected void InvokeQueryActivitySeriesGroupByConnection()
+        internal void InvokeQueryActivitySeriesGroupByConnection()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),

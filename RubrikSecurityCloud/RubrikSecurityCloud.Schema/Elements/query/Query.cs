@@ -1827,7 +1827,7 @@ namespace RubrikSecurityCloud.Types
             ref List<PermissionPolicy>? fieldSpec
         )
         {
-            string args = "\n(\nawsCloudType: $awsCloudType\nfeatures: $features\n)";
+            string args = "\n(\ninput: $input\n)";
             if (fieldSpec == null)
             {
                 fieldSpec = new List<PermissionPolicy>() ;
@@ -3621,6 +3621,24 @@ namespace RubrikSecurityCloud.Types
                 "}\n");
         }
 
+        //      C# -> List<Trial>? AllTrials
+        // GraphQL -> allTrials: [Trial!]! (type)
+        public static string AllTrials(
+            ref List<Trial>? fieldSpec
+        )
+        {
+            string args = "\n(\nstates: $states\ntypes: $types\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new List<Trial>() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "allTrials" + args + "\n{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
         //      C# -> List<UnifiedFeatureFlag>? AllUnifiedFeatureFlags
         // GraphQL -> allUnifiedFeatureFlags: [UnifiedFeatureFlag!]! (type)
         public static string AllUnifiedFeatureFlags(
@@ -3981,6 +3999,24 @@ namespace RubrikSecurityCloud.Types
                 "}\n");
         }
 
+        //      C# -> List<ArchivalStorageUsage>? ArchivalStorageUsage
+        // GraphQL -> archivalStorageUsage: [ArchivalStorageUsage!]! (type)
+        public static string ArchivalStorageUsage(
+            ref List<ArchivalStorageUsage>? fieldSpec
+        )
+        {
+            string args = "\n(\ninput: $input\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new List<ArchivalStorageUsage>() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "archivalStorageUsage" + args + "\n{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
         //      C# -> GlobalCertificateConnection? AssignableGlobalCertificates
         // GraphQL -> assignableGlobalCertificates: GlobalCertificateConnection! (type)
         public static string AssignableGlobalCertificates(
@@ -3995,6 +4031,24 @@ namespace RubrikSecurityCloud.Types
             }
             return new string(
                 "assignableGlobalCertificates" + args + "\n{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> AtlassianSite? AtlassianSite
+        // GraphQL -> atlassianSite: AtlassianSite! (type)
+        public static string AtlassianSite(
+            ref AtlassianSite? fieldSpec
+        )
+        {
+            string args = "\n(\nsiteId: $siteId\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new AtlassianSite() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "atlassianSite" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9027,7 +9081,7 @@ namespace RubrikSecurityCloud.Types
             ref JiraSettingsConnection? fieldSpec
         )
         {
-            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\njiraSettingsId: $jiraSettingsId\njiraSettingsType: $jiraSettingsType\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsiteId: $siteId\njiraSettingsType: $jiraSettingsType\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             if (fieldSpec == null)
             {
                 fieldSpec = new JiraSettingsConnection() ;
@@ -9143,6 +9197,24 @@ namespace RubrikSecurityCloud.Types
             }
             return new string(
                 "k8sNamespaces" + args + "\n{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> K8sSnapshotSummaryListResponse? K8sResourceSetSnapshots
+        // GraphQL -> k8sResourceSetSnapshots: K8sSnapshotSummaryListResponse! (type)
+        public static string K8sResourceSetSnapshots(
+            ref K8sSnapshotSummaryListResponse? fieldSpec
+        )
+        {
+            string args = "\n(\ninput: $input\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new K8sSnapshotSummaryListResponse() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "k8sResourceSetSnapshots" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10497,6 +10569,42 @@ namespace RubrikSecurityCloud.Types
                 "}\n");
         }
 
+        //      C# -> NfAnomalyResultConnection? NfAnomalyResults
+        // GraphQL -> nfAnomalyResults: NfAnomalyResultConnection! (type)
+        public static string NfAnomalyResults(
+            ref NfAnomalyResultConnection? fieldSpec
+        )
+        {
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\nfilter: $filter\ntimezoneOffset: $timezoneOffset\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new NfAnomalyResultConnection() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "nfAnomalyResults" + args + "\n{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> NfAnomalyResultGroupedDataConnection? NfAnomalyResultsGrouped
+        // GraphQL -> nfAnomalyResultsGrouped: NfAnomalyResultGroupedDataConnection! (type)
+        public static string NfAnomalyResultsGrouped(
+            ref NfAnomalyResultGroupedDataConnection? fieldSpec
+        )
+        {
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\ngroupBy: $groupBy\nfilter: $filter\ntimezoneOffset: $timezoneOffset\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new NfAnomalyResultGroupedDataConnection() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "nfAnomalyResultsGrouped" + args + "\n{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
         //      C# -> NodeKeyRotationConnection? NodeKeyRotation
         // GraphQL -> nodeKeyRotation: NodeKeyRotationConnection! (type)
         public static string NodeKeyRotation(
@@ -10529,6 +10637,24 @@ namespace RubrikSecurityCloud.Types
             }
             return new string(
                 "nodeRemovalCancelPermission" + args + "\n{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> NodeToReplaceReply? NodeToReplace
+        // GraphQL -> nodeToReplace: NodeToReplaceReply! (type)
+        public static string NodeToReplace(
+            ref NodeToReplaceReply? fieldSpec
+        )
+        {
+            string args = "\n(\ninput: $input\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new NodeToReplaceReply() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "nodeToReplace" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -13113,7 +13239,7 @@ namespace RubrikSecurityCloud.Types
             ref SaasAppSnapshotConnection? fieldSpec
         )
         {
-            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nworkloadId: $workloadId\nitemId: $itemId\nappItemTypeToken: $appItemTypeToken\ntimeFilter: $timeFilter\nsortBy: $sortBy\nsortOrder: $sortOrder\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nworkloadId: $workloadId\nitemIds: $itemIds\nappItemTypeToken: $appItemTypeToken\ntimeFilter: $timeFilter\nsortBy: $sortBy\nsortOrder: $sortOrder\n)";
             if (fieldSpec == null)
             {
                 fieldSpec = new SaasAppSnapshotConnection() ;
@@ -13121,6 +13247,24 @@ namespace RubrikSecurityCloud.Types
             }
             return new string(
                 "saasAppItemOverlappingSnapshots" + args + "\n{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> ConnectionStatus? SaasConnectionStatus
+        // GraphQL -> saasConnectionStatus: ConnectionStatus! (type)
+        public static string SaasConnectionStatus(
+            ref ConnectionStatus? fieldSpec
+        )
+        {
+            string args = "\n(\norgId: $orgId\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new ConnectionStatus() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "saasConnectionStatus" + args + "\n{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }

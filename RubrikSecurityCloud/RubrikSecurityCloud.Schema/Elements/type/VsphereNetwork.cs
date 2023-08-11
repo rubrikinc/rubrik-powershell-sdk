@@ -66,6 +66,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
+        //      C# -> System.String? Moid
+        // GraphQL -> moid: String! (scalar)
+        [JsonProperty("moid")]
+        public System.String? Moid { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
@@ -150,6 +155,7 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? PendingSla = null,
         List<CdmHierarchyObject>? ReplicatedObjects = null,
         System.String? Id = null,
+        System.String? Moid = null,
         System.String? Name = null,
         System.Int32? NumWorkloadDescendants = null,
         System.Int32? ReplicatedObjectCount = null,
@@ -191,6 +197,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Id != null ) {
             this.Id = Id;
+        }
+        if ( Moid != null ) {
+            this.Moid = Moid;
         }
         if ( Name != null ) {
             this.Name = Name;
@@ -300,6 +309,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> id: UUID! (scalar)
         if (this.Id != null) {
             s += ind + "id\n" ;
+        }
+        //      C# -> System.String? Moid
+        // GraphQL -> moid: String! (scalar)
+        if (this.Moid != null) {
+            s += ind + "moid\n" ;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
@@ -463,6 +477,12 @@ namespace RubrikSecurityCloud.Types
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
             this.Id = "FETCH";
+        }
+        //      C# -> System.String? Moid
+        // GraphQL -> moid: String! (scalar)
+        if (this.Moid == null && Exploration.Includes(parent + ".moid", true))
+        {
+            this.Moid = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)

@@ -19,26 +19,26 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? SrcSubscriptionName
-        // GraphQL -> srcSubscriptionName: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("srcSubscriptionName")]
-        public System.String? SrcSubscriptionName { get; set; }
-
-        //      C# -> System.String? TargetSubscriptionName
-        // GraphQL -> targetSubscriptionName: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("targetSubscriptionName")]
-        public System.String? TargetSubscriptionName { get; set; }
-
         //      C# -> System.Int64? RecoveryPoint
         // GraphQL -> recoveryPoint: Long! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("recoveryPoint")]
         public System.Int64? RecoveryPoint { get; set; }
+
+        //      C# -> System.String? SrcSubscriptionId
+        // GraphQL -> srcSubscriptionId: UUID! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("srcSubscriptionId")]
+        public System.String? SrcSubscriptionId { get; set; }
+
+        //      C# -> System.String? TargetSubscriptionId
+        // GraphQL -> targetSubscriptionId: UUID! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("targetSubscriptionId")]
+        public System.String? TargetSubscriptionId { get; set; }
 
 
         #endregion

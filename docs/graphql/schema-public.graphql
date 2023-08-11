@@ -9326,12 +9326,12 @@ type Mutation {
     # Input for V1PatchNutanixVmMount.
     input: PatchNutanixMountV1Input!): PatchNutanixMountV1Reply!
 
-  # v5.3-v9.0: Update the SLA Domain for a SAP HANA system
-  # v9.1: Update the system properties of the SAP HANA system
+  # v5.3-v8.1: Update the SLA Domain for a SAP HANA system
+  # v9.0+: Update the system properties of the SAP HANA system
   # 
   # Supported in v5.3+
-  # v5.3-v9.0: Update the SLA Domain that is configured for a SAP HANA system.
-  # v9.1: Update the system properties for the SAP HANA system.
+  # v5.3-v8.1: Update the SLA Domain that is configured for a SAP HANA system.
+  # v9.0+: Update the system properties for the SAP HANA system.
   patchSapHanaSystem(
     # Input for V1PatchSapHanaSystem.
     input: PatchSapHanaSystemInput!): PatchSapHanaSystemReply!
@@ -14952,6 +14952,12 @@ enum AwsCloudExternalArtifact {
 
   # Keyword to capture AWS account secret key.
   SECRET_KEY
+
+  # Keyword to capture stack ARN.
+  STACK_ARN
+
+  # Keyword to capture stack name.
+  STACK_NAME
 }
 # AWS Cloud Type Enum.
 enum AwsCloudType {
@@ -15414,9 +15420,6 @@ input AwsNativeAccountFilters {
 }
 # Represent an AWS native account.
 input AwsNativeAccountInput {
-  # Cloud account name.
-  name: String = ""
-
   # External ID to be associated with account roles.
   externalId: String = ""
 
@@ -32323,6 +32326,9 @@ input CreateOrgInput {
 
   # New SSO groups to be authorized for this tenant organization.
   newSsoGroups: [NewSsoGroupInput!]
+
+  # Specifies if service accounts are enabled for this organization.
+  isServiceAccountEnabled: Boolean
 }
 # UUID of created organization.
 type CreateOrgReply {
@@ -35852,9 +35858,6 @@ type DisplayableValueString implements DisplayableValue {
 }
 # Holds the configuration for the Data Loss Prevention integration.
 type DlpConfig {
-  # Policies to which the configuration applies.
-  policies: [String!]!
-
   # The target to use when exporting files for fingerprinting.
   targetType: DlpConfigTargetType!
 
@@ -35863,6 +35866,20 @@ type DlpConfig {
 
   # The VMware virtual machine target configuration.
   vmwareVm: DlpConfigVmwareVm
+
+  # Policies to which the configuration applies.
+  policies: [String!]
+
+  # The service account ID. Optional, if empty the Data Loss Prevention job
+  # runs with administrator privileges.
+  serviceAccountId: String
+
+  # The service account name. Optional, if empty the integration name is used
+  # to create a service account name.
+  serviceAccountName: String
+
+  # The status of the integration.
+  status: DlpStatus!
 }
 # Holds the configuration for a generic NAS target.
 type DlpConfigGenericNas {
@@ -35894,14 +35911,25 @@ input DlpConfigGenericNasInput {
 }
 # Holds the configuration for the Data Loss Prevention integration.
 input DlpConfigInput {
+  # Policies to which the configuration applies.
+  policies: [String!] = []
+
   # The generic NAS target configuration.
   genericNas: DlpConfigGenericNasInput
 
   # The VMware virtual machine target configuration.
   vmwareVm: DlpConfigVmwareVmInput
 
-  # Policies to which the configuration applies.
-  policies: [String!]!
+  # The service account ID. Optional, if empty the Data Loss Prevention job
+  # runs with administrator privileges.
+  serviceAccountId: String = ""
+
+  # The service account name. Optional, if empty the integration name is used
+  # to create a service account name.
+  serviceAccountName: String = ""
+
+  # The status of the integration.
+  status: DlpStatusInput
 
   # The target to use when exporting files for fingerprinting.
   targetType: DlpConfigTargetType!
@@ -35961,6 +35989,30 @@ input DlpConfigVmwareVmInput {
 
   # The path to which files will be recovered on the target.
   path: String!
+}
+# Holds the status of the Data Loss Prevention integration.
+type DlpStatus {
+  # The status code.
+  code: DlpStatusCode!
+}
+# The Data Loss Prevention status codes.
+enum DlpStatusCode {
+  # Unspecified integration status.
+  INTEGRATION_STATUS_UNSPECIFIED
+
+  # The integration is working as expected.
+  OK
+
+  # The service account lacks permissions required by the integration.
+  SERVICE_ACCOUNT_INSUFFICIENT_PERMISSIONS
+
+  # The service account assigned to an integration is missing.
+  SERVICE_ACCOUNT_MISSING
+}
+# Holds the status of the Data Loss Prevention integration.
+input DlpStatusInput {
+  # The status code.
+  code: DlpStatusCode = INTEGRATION_STATUS_UNSPECIFIED
 }
 # Information about the archival location.
 type DlsArchivalLocation {
@@ -38466,6 +38518,9 @@ input ExportOracleDbConfigInput {
   # Supported in v8.1+
   # Indicates whether to skip dropping the database in undo task if the database was partially recovered.
   shouldSkipDropDbInUndo: Boolean
+
+  # A boolean value determines if the database can be renamed back to the source Oracle host or RAC during the clone.
+  shouldAllowRenameToSource: Boolean
 
   # Required. Supported in v5.0+
   # v5.0-v5.2: Snapshot ID or timestamp for which the export is done.
@@ -48753,21 +48808,21 @@ type Integration {
 # can hold multiple configurations at once but only the configuration specified
 # with IntegrationType will be considered.
 type IntegrationConfig {
-  # The DataLossPrevention configuration.
+  # The Data Loss Prevention configuration.
   dataLossPrevention: DlpConfig
 }
 # Holds the configuration of a single integration. Note that IntegrationConfig
 # can hold multiple configurations at once but only the configuration specified
 # with IntegrationType will be considered.
 input IntegrationConfigInput {
-  # The DataLossPrevention configuration.
+  # The Data Loss Prevention configuration.
   dataLossPrevention: DlpConfigInput
 }
-# Specifies the type of an integration. Note that the values
-# are stored in a database and therefore cannot be changed.
+# Specifies the type of an integration. Note that the values are stored in a
+# database and therefore cannot be changed.
 enum IntegrationType {
-  # Represents a security integration that fingerprints files
-  # with sensitive data hits to prevent them from being exfiltrated.
+  # Represents a security integration that fingerprints files with sensitive
+  # data hits to prevent them from being exfiltrated.
   DATA_LOSS_PREVENTION
 
   # Represents an unspecified integration.
@@ -64484,6 +64539,14 @@ enum O365ConfiguredGroupMemberType {
   # Unknown member type.
   UNKNOWN
 }
+# Metadata for a Microsoft 365 configured group.
+type O365ConfiguredGroupMetadata {
+  # Number of SharePoint site collections.
+  sharepointObjects: Int
+
+  # Number of Teams.
+  teamsObjects: Int
+}
 # Specifications for a Microsoft 365 configured group.
 type O365ConfiguredGroupSpec {
   # The preferred data locations for the group.
@@ -64730,6 +64793,9 @@ type O365Group implements HierarchyObject , PolarisHierarchyObject , O365OrgDesc
   # The specification for a configured group.
   configuredGroupSpecification: O365ConfiguredGroupSpec!
 
+  # The metadata for an Office 365 group.
+  metadata: O365GroupMetadata
+
   # The authorized operations on the object.
   authorizedOperations: [Operation!]!
 
@@ -64796,6 +64862,11 @@ type O365GroupEdge {
 
   # The actual O365Group object wrapped by this edge.
   node: O365Group!
+}
+# Metadata for a Microsoft 365 group.
+type O365GroupMetadata {
+  # Metadata for configured group.
+  configuredGroupMetadata: O365ConfiguredGroupMetadata
 }
 # Type of an O365 Group.
 enum O365GroupType {
@@ -70327,8 +70398,8 @@ input PatchSapHanaSystemInput {
   # Required. The ID of the SAP HANA system.
   id: String!
 
-  # Required. v5.3-v9.0: An object that contains the updated SLA Domain ID for the SAP HANA system.
-  # v9.1: An object that contains the system properties to be updated for the SAP HANA system.
+  # Required. v5.3-v8.1: An object that contains the updated SLA Domain ID for the SAP HANA system.
+  # v9.0+: An object that contains the system properties to be updated for the SAP HANA system.
   updateProperties: SapHanaSystemPatchInput!
 }
 # Supported in v5.3+
@@ -77120,6 +77191,7 @@ enum SapHanaSystemAuthType {
   # User credentials.
   SAP_HANA_SYSTEM_AUTH_TYPE_SPEC_AUTH_TYPE_USER_CREDENTIALS
 }
+# Supported in v9.0+
 type SapHanaSystemAuthTypeSpec {
   authType: SapHanaSystemAuthTypeSpecAuthType!
 }
@@ -77127,8 +77199,10 @@ enum SapHanaSystemAuthTypeSpecAuthType {
   SAP_HANA_SYSTEM_AUTH_TYPE_SPEC_AUTH_TYPE_HDB_USERSTORE
   SAP_HANA_SYSTEM_AUTH_TYPE_SPEC_AUTH_TYPE_USER_CREDENTIALS
 }
+# Supported in v9.0+
 input SapHanaSystemAuthTypeSpecInput {
-  # Required. The authentication type for SAP HANA system. Currently, username and password credentials or userstore_key are the supported mechanisms for authenticating to the SAP HANA system.
+  # Required. Supported in v9.0+
+  # The authentication type for SAP HANA system. Currently, username and password credentials or userstore_key are the supported mechanisms for authenticating to the SAP HANA system.
   authType: SapHanaSystemAuthTypeSpecAuthType!
 }
 # Supported in v5.3+
@@ -77141,6 +77215,7 @@ input SapHanaSystemConfigInput {
   # Information required to connect to SAP HANA database over SSL.
   sslInfo: SapHanaSslInfoInput
 
+  # Supported in v9.0+
   # The authentication type for the SAP HANA system.
   authTypeSpec: SapHanaSystemAuthTypeSpecInput
 
@@ -77292,6 +77367,7 @@ type SapHanaSystemInfo {
   # Indicates whether the SAP HANA system has replication enabled.
   isSystemReplicationEnabled: Boolean!
 
+  # Supported in v9.0+
   # Specifies the authentication type for the SAP HANA system.
   authTypeSpec: SapHanaSystemAuthTypeSpec
 }
@@ -77309,8 +77385,8 @@ type SapHanaSystemInformation {
 # Supported in v5.3+
 input SapHanaSystemPatchInput {
   # Supported in v5.3+
-  # v5.3-v9.0: The ID of the SLA Domain that is configured for the SAP HANA system.
-  # v9.1: Deprecated. Make sure to use the SLA APIs for updating the SLA Domain of the SAP HANA database.
+  # v5.3-v8.1: The ID of the SLA Domain that is configured for the SAP HANA system.
+  # v9.0+: Deprecated. Make sure to use the SLA APIs for updating the SLA Domain of the SAP HANA database.
   configuredSlaDomainId: String
 
   # Supported in v5.3+
@@ -77337,6 +77413,7 @@ input SapHanaSystemPatchInput {
   # Information required to connect to SAP HANA database over SSL.
   sslInfo: SapHanaSslInfoInput
 
+  # Supported in v9.0+
   # Specifies the authentication type for the SAP HANA system.
   authTypeSpec: SapHanaSystemAuthTypeSpecInput
 }
@@ -85337,6 +85414,9 @@ input UpdateOrgInput {
 
   # New SSO groups to be authorized for this tenant organization.
   newSsoGroups: [NewSsoGroupInput!]
+
+  # Specifies if service accounts are enabled for this organization.
+  isServiceAccountEnabled: Boolean
 }
 # UUID of updated organization.
 type UpdateOrgReply {

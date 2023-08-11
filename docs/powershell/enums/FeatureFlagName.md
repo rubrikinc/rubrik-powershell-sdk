@@ -19,6 +19,7 @@ Feature flag names.
 - PRODUCT_NOTIFICATIONS_ENABLED - Determines whether product notifications are enabled within RSC.
 - AutoStorageSettingClusterListEnabled
 - DSCC_PDF_DOWNLOAD_ENABLED - Determines whether the Data Security Command Center PDF report can be downloaded.
+- APPFLOWS_SHAREPOINT_BULK_RECOVERY_ENABLED - Specifies whether the appflows bulk recovery workflow for Sharepoint is enabled.
 - SLA_ONBOARDING_ENABLED
 - MANAGED_VOLUME_ENABLED - Determines if Managed Volume is enabled.
 - AwsRoleBasedArchivalLocationsEnabled
@@ -68,7 +69,6 @@ Feature flag names.
 - SAP_HANA_REPLICATION_DOWNLOAD_ENABLED - Determines whether downloads from replicated clusters is enabled for SAP HANA.
 - O365_CONTACTS_ENABLED - Determines whether O365 Exchange Contacts is enabled.
 - GLOBAL_SLA_AUDIT_REPORT_ENABLED - Determines if Global SLA Audit Report feature is enabled.
-- CROSS_ACCOUNT_REPLICATION_ENABLED - Specifies whether cross-account replication has been enabled.
 - HYPERV_MASS_RECOVERY_ENABLED - Specifies whether mass recovery is enabled for Hyper-V virtual machines.
 - DATA_DISCOVERY_OPTIMIZED_MANAGEMENT_PAGE_ENABLED - Determines whether the Data Discovery Optimized Management Page is enabled.
 - NAS_INVENTORY_ENABLED - Enables the features for Nas Inventory.
@@ -93,6 +93,7 @@ Feature flag names.
 - O365CalendarEnabled
 - FEDERATED_LOGIN_PORT_ENABLED - Determines if port is enabled for federated login redirection.
 - SLA_DOMAIN_UPGRADE_ENABLED
+- ACCOUNT_DEPROVISIONING_ENABLED_UFF - Determines whether deprovisioning is enabled on the RSC account.
 - UI_GA_ACTIVE_DIRECTORY_ENABLED - Determines whether the Active Directory features are enabled in the Rubrik Security Cloud.
 - NODE_REPLACEMENT_ENABLED - Determines whether the node replacement feature for Rubrik clusters is enabled in RSC.
 - AwsRDSProtectionEnabled
@@ -115,7 +116,7 @@ Feature flag names.
 - CDM_ENCRYPTION_MANAGEMENT_ENABLED - Determines if the Encryption Management feature in RSC is enabled.
 - GLOBAL_FILE_SEARCH_ENABLED - Determines if the improved global file search feature is enabled.
 - DATA_DISCOVERY_RISK_COMPUTATION_UI_ENABLED - Determines whether Sonar risk computation is enabled on the UI.
-- AZURE_GRANULAR_PERMISSIONS_ENABLED - Determines whether granular scoping and on-demand authorization for Azure native permissions is enabled.
+- AZURE_GRANULAR_PERMISSIONS_ENABLED - Determines whether alpha functionality for granular scoping and on-demand authorization of Azure native permissions is enabled.
 - DELL_ECS_ENABLED - Specifies whether DELL ECS archival location is enabled.
 - DATA_DISCOVERY_OPTIMIZED_CONTENT_REPORT_ENABLED - Determines if the optimized Data Discovery content report is enabled.
 - SMB_SETTINGS_ENABLED - Enables SMB settings.
@@ -214,6 +215,7 @@ Feature flag names.
 - TENANT_ORG_CLOUD_NATIVE_SELF_SERVICE_ENABLED - Determines if cloud native self service is enabled on tenant organizations.
 - SAP_HANA_CCES_ACCESS - Determines CC-ES cluster access for SAP HANA.
 - LAST_SNAPSHOT_LOGICAL_SIZE_ENABLED - Enables the use of lastSnapshotLogicalBytes instead of logicalBytes in protected objects panel.
+- GQL_API_PLAYGROUND_ENABLED - Determines whether the Graphql API Playground for RSC is enabled.
 - VMWARE_VDISK_MAPPING_ENABLED - Specifies whether virtual disk mapping is supported during recovery operations.
 - GcpNativeExportInstancesInSharedVPC
 - CdmUpgradesReportNgEnabled
@@ -227,6 +229,7 @@ Feature flag names.
 - SONAR_EU_DEFAULT_POLICIES_ENABLED - Determines if EU Default policies are enabled in Sonar.
 - DB2_HADR_ENABLED
 - HyperVHierarchyEnabled
+- APPFLOWS_EXCHANGE_BULK_RECOVERY_ENABLED - Specifies whether the appflows bulk recovery workflow for Exchange is enabled.
 - DATA_DISCOVERY_RISK_COMPUTATION_ENABLED - Determines whether Sonar risk computation is enabled.
 - RBACForGlobalSLAEnabled
 - CLUSTER_CONFIG_PROTECTION_ENABLED - Determines whether the provision to take a backup of the cluster configuration is present.
@@ -266,7 +269,6 @@ Feature flag names.
 - WEBHOOKS_ENABLED - Determines if webhooks are enabled.
 - IAM_MULTITENANCY_ENABLED
 - MONGO_CDM_ENABLED - Determines whether MongoDB feature is enabled on CDM.
-- APPFLOWS_BULK_RECOVERY_ENABLED - Specifies whether the appflows bulk recovery workflow is enabled.
 - RCV_IMMUTABLE_DELETE_ENABLED - Determines if deletion of the RCV immutable archival location based on the lock period is enabled.
 - MONGO_BETA_ENABLED
 - AZURE_SQL_SETUP_PERSISTENT_BACKUP_ENABLED - Determines whether Setup Persistent Backup feature for Azure SQL databases and managed instances is enabled.
@@ -306,7 +308,7 @@ Feature flag names.
 - SystemAnnouncementsEnabled
 - ManagedVolumeHierarchyEnabled
 - KUPR_REPLICATION_ENABLED
-- RollingUpgradeEnabled
+- AZURE_GRANULAR_PERMISSIONS_BETA_ENABLED - Determines whether beta functionality for granular scoping and on-demand authorization of Azure native permissions is enabled.
 - RCV_EDIT_DELETE_PAUSE_RESUME_ENABLED
 - CNP_AZURE_ARCHIVAL_IMMUTABILITY_ENABLED - Specifies whether archival immutability is enabled for Azure native protection.
 - RSC_TO_CDM_USER_CTX_ENABLED - Determines whether RSC can pass user context to CDM through API headers.
@@ -362,6 +364,7 @@ Feature flag names.
 - MULTITENANCY_ARCHIVAL_PARITY_ENABLED - Specifies whether parity gap of archival is enabled for multitenant organizations.
 - RecoverySearchEnabled
 - SUPPORT_IMPERSONATION_UI - Determines whether Support Impersonation UI is enabled for this account or not.
+- EMPTY_SCHEDULE_SLA_DOMAIN_ENABLED - Defines if optional SLA is enabled.
 - O365SharePointEnabled
 - JobMonitoringUIEnabled
 - M365_MULTI_GEO - Determines whether Microsoft 365 Multi-Geo support is enabled.
@@ -458,6 +461,7 @@ Feature flag names.
 - SONAR_FOR_NAS_CD_ENABLED - Determines if Rubrik Sensitive Data Discovery is enabled for NAS Cloud Direct.
 - VIEWED_HISTORY_ENABLED - Determines whether Viewed History Framework is enabled.
 - QSTAR_LOCATION_ENABLED - Determines whether QStar archival location is enabled.
+- APPFLOWS_ONEDRIVE_BULK_RECOVERY_ENABLED - Specifies whether the appflows bulk recovery workflow for OneDrive is enabled.
 - FORMIK_ROLE_ORG_CRUD_WIZARD_ENABLED - Enables Formik version of the Role and Org CRUD wizards.
 - AZURE_AD_RECOVERY_ENABLED - Specifies whether Azure AD recovery is enabled.
 - DISABLE_LOW_PERFORMANCE_COMPONENT - Specifies whether a component must be temporarily disabled due to performance issues.

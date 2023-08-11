@@ -26,11 +26,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     public class Invoke_RscMutateLdap : RscPSCmdlet
     {
         
-        // -------------------------------------------------------------------
-        // UpdateIntegration parameter set
-        //
-        // [GraphQL: updateLdapIntegration]
-        //
+        /// <summary>
+        /// UpdateIntegration parameter set
+        ///
+        /// [GraphQL: updateLdapIntegration]
+        /// </summary>
         [Parameter(
             ParameterSetName = "UpdateIntegration",
             Mandatory = false,
@@ -44,11 +44,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter UpdateIntegration { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // RemoveIntegration parameter set
-        //
-        // [GraphQL: removeLdapIntegration]
-        //
+        /// <summary>
+        /// RemoveIntegration parameter set
+        ///
+        /// [GraphQL: removeLdapIntegration]
+        /// </summary>
         [Parameter(
             ParameterSetName = "RemoveIntegration",
             Mandatory = false,
@@ -62,11 +62,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter RemoveIntegration { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DeletePrincipals parameter set
-        //
-        // [GraphQL: deleteLdapPrincipals]
-        //
+        /// <summary>
+        /// DeletePrincipals parameter set
+        ///
+        /// [GraphQL: deleteLdapPrincipals]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DeletePrincipals",
             Mandatory = false,
@@ -80,11 +80,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter DeletePrincipals { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // SetMfaSetting parameter set
-        //
-        // [GraphQL: setLdapMfaSetting]
-        //
+        /// <summary>
+        /// SetMfaSetting parameter set
+        ///
+        /// [GraphQL: setLdapMfaSetting]
+        /// </summary>
         [Parameter(
             ParameterSetName = "SetMfaSetting",
             Mandatory = false,
@@ -98,6 +98,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter SetMfaSetting { get; set; }
 
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
         protected override void ProcessRecord()
         {
             try
@@ -125,10 +127,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 ThrowTerminatingException(ex);
            }
         }
+#pragma warning restore 1591
 
         // This parameter set invokes a single graphql operation:
         // updateLdapIntegration.
-        protected void ProcessRecord_UpdateIntegration()
+        internal void ProcessRecord_UpdateIntegration()
         {
             this._logger.name += " -UpdateIntegration";
             // Invoke graphql operation updateLdapIntegration
@@ -137,7 +140,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // removeLdapIntegration.
-        protected void ProcessRecord_RemoveIntegration()
+        internal void ProcessRecord_RemoveIntegration()
         {
             this._logger.name += " -RemoveIntegration";
             // Invoke graphql operation removeLdapIntegration
@@ -146,7 +149,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // deleteLdapPrincipals.
-        protected void ProcessRecord_DeletePrincipals()
+        internal void ProcessRecord_DeletePrincipals()
         {
             this._logger.name += " -DeletePrincipals";
             // Invoke graphql operation deleteLdapPrincipals
@@ -155,7 +158,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // setLdapMfaSetting.
-        protected void ProcessRecord_SetMfaSetting()
+        internal void ProcessRecord_SetMfaSetting()
         {
             this._logger.name += " -SetMfaSetting";
             // Invoke graphql operation setLdapMfaSetting
@@ -179,7 +182,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     groupSearchFilter: String
         //     groupMemberAttr: String
         //   ): String!
-        protected void InvokeMutationUpdateLdapIntegration()
+        internal void InvokeMutationUpdateLdapIntegration()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("id", "UUID"),
@@ -218,7 +221,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // removeLdapIntegration(id: UUID!): Boolean!
-        protected void InvokeMutationRemoveLdapIntegration()
+        internal void InvokeMutationRemoveLdapIntegration()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("id", "UUID!"),
@@ -245,7 +248,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // deleteLdapPrincipals(principalIds: [String!]!): Boolean!
-        protected void InvokeMutationDeleteLdapPrincipals()
+        internal void InvokeMutationDeleteLdapPrincipals()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("principalIds", "[String!]!"),
@@ -272,7 +275,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // setLdapMfaSetting(input: SetLdapMfaSettingInput!): Boolean!
-        protected void InvokeMutationSetLdapMfaSetting()
+        internal void InvokeMutationSetLdapMfaSetting()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "SetLdapMfaSettingInput!"),

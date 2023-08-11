@@ -94,7 +94,7 @@ function Get-RscHelp {
         }
 
         function GetCustomOperationsHelp {
-            $profDir = [RubrikSecurityCloud.FileUtils]::GetUserOperationsDir($PROFILE)
+            $profDir = [RubrikSecurityCloud.Files]::GetCustomDir($RSC_CUSTOM_DIR)
             [PSCustomObject]@{
                 CustomOperationsDir = $profDir
                 CustomOperations    = @(Get-ChildItem $profDir -Filter *.gql | Select-Object -ExpandProperty Name)

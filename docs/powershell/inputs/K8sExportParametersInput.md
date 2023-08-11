@@ -5,6 +5,8 @@ Supported in v9.0+
 - filter: System.String
   - Supported in v9.0+
       The filter for selecting resources from the snapshot to export.
+- shouldDeleteNamespaceIfExportFailed: System.Boolean
+  - Specifies whether to delete exported namespace if the export failed. By default, this value is false.
 - ignoreErrors: System.Boolean
   - Supported in v9.0+
       Specifies whether to ignore errors during the export operation. By default, this value is false.

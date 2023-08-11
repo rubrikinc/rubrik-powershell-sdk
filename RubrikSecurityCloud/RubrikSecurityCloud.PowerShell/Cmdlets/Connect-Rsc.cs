@@ -186,11 +186,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                                 //ServiceAccountFile option specified, but no file given
                                 //Set the default service account file now
 
-                                string psProfileFile = this.SessionState.PSVariable.Get("PROFILE").Value.ToString();
-                                string psProfileDir = FileUtils.GetUserProfileDir(psProfileFile);
+                                string psProfileDir = Files.GetUserProfileDir(
+                                    this.SessionState.PSVariable.GetValue(
+                                        "PROFILE", "").ToString());
                                 ServiceAccountFile = Path.Combine(
                                     psProfileDir,
-                                    "rsc_service_account_default.xml");
+                                    Files.DefaultServiceAccountFileName
+                                );
                             }
 
                             if (!File.Exists(ServiceAccountFile))

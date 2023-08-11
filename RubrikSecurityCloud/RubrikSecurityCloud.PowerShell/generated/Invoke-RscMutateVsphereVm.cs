@@ -26,11 +26,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     public class Invoke_RscMutateVsphereVm : RscPSCmdlet
     {
         
-        // -------------------------------------------------------------------
-        // RecoverFiles parameter set
-        //
-        // [GraphQL: vsphereVmRecoverFiles]
-        //
+        /// <summary>
+        /// RecoverFiles parameter set
+        ///
+        /// [GraphQL: vsphereVmRecoverFiles]
+        /// </summary>
         [Parameter(
             ParameterSetName = "RecoverFiles",
             Mandatory = false,
@@ -44,11 +44,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter RecoverFiles { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // RecoverFilesNew parameter set
-        //
-        // [GraphQL: vsphereVmRecoverFilesNew]
-        //
+        /// <summary>
+        /// RecoverFilesNew parameter set
+        ///
+        /// [GraphQL: vsphereVmRecoverFilesNew]
+        /// </summary>
         [Parameter(
             ParameterSetName = "RecoverFilesNew",
             Mandatory = false,
@@ -62,11 +62,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter RecoverFilesNew { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // RegisterAgent parameter set
-        //
-        // [GraphQL: vsphereVmRegisterAgent]
-        //
+        /// <summary>
+        /// RegisterAgent parameter set
+        ///
+        /// [GraphQL: vsphereVmRegisterAgent]
+        /// </summary>
         [Parameter(
             ParameterSetName = "RegisterAgent",
             Mandatory = false,
@@ -83,11 +83,11 @@ Register the Rubrik Backup Service that is running on a specified host with the 
         public SwitchParameter RegisterAgent { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DownloadSnapshot parameter set
-        //
-        // [GraphQL: vsphereVmDownloadSnapshot]
-        //
+        /// <summary>
+        /// DownloadSnapshot parameter set
+        ///
+        /// [GraphQL: vsphereVmDownloadSnapshot]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DownloadSnapshot",
             Mandatory = false,
@@ -104,11 +104,11 @@ Provides a method for retrieving a snapshot, that is not available locally, from
         public SwitchParameter DownloadSnapshot { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ExportSnapshot parameter set
-        //
-        // [GraphQL: vsphereVMExportSnapshot]
-        //
+        /// <summary>
+        /// ExportSnapshot parameter set
+        ///
+        /// [GraphQL: vsphereVMExportSnapshot]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ExportSnapshot",
             Mandatory = false,
@@ -122,11 +122,11 @@ Provides a method for retrieving a snapshot, that is not available locally, from
         public SwitchParameter ExportSnapshot { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ExportSnapshotV2 parameter set
-        //
-        // [GraphQL: vsphereVmExportSnapshotV2]
-        //
+        /// <summary>
+        /// ExportSnapshotV2 parameter set
+        ///
+        /// [GraphQL: vsphereVmExportSnapshotV2]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ExportSnapshotV2",
             Mandatory = false,
@@ -140,11 +140,11 @@ Provides a method for retrieving a snapshot, that is not available locally, from
         public SwitchParameter ExportSnapshotV2 { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ExportSnapshotV3 parameter set
-        //
-        // [GraphQL: vsphereVmExportSnapshotV3]
-        //
+        /// <summary>
+        /// ExportSnapshotV3 parameter set
+        ///
+        /// [GraphQL: vsphereVmExportSnapshotV3]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ExportSnapshotV3",
             Mandatory = false,
@@ -158,11 +158,11 @@ Provides a method for retrieving a snapshot, that is not available locally, from
         public SwitchParameter ExportSnapshotV3 { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // BatchExport parameter set
-        //
-        // [GraphQL: vsphereVmBatchExport]
-        //
+        /// <summary>
+        /// BatchExport parameter set
+        ///
+        /// [GraphQL: vsphereVmBatchExport]
+        /// </summary>
         [Parameter(
             ParameterSetName = "BatchExport",
             Mandatory = false,
@@ -176,11 +176,11 @@ Provides a method for retrieving a snapshot, that is not available locally, from
         public SwitchParameter BatchExport { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // BatchExportV3 parameter set
-        //
-        // [GraphQL: vsphereVmBatchExportV3]
-        //
+        /// <summary>
+        /// BatchExportV3 parameter set
+        ///
+        /// [GraphQL: vsphereVmBatchExportV3]
+        /// </summary>
         [Parameter(
             ParameterSetName = "BatchExportV3",
             Mandatory = false,
@@ -194,11 +194,11 @@ Provides a method for retrieving a snapshot, that is not available locally, from
         public SwitchParameter BatchExportV3 { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // InitiateInPlaceRecovery parameter set
-        //
-        // [GraphQL: vsphereVmInitiateInPlaceRecovery]
-        //
+        /// <summary>
+        /// InitiateInPlaceRecovery parameter set
+        ///
+        /// [GraphQL: vsphereVmInitiateInPlaceRecovery]
+        /// </summary>
         [Parameter(
             ParameterSetName = "InitiateInPlaceRecovery",
             Mandatory = false,
@@ -212,11 +212,11 @@ Provides a method for retrieving a snapshot, that is not available locally, from
         public SwitchParameter InitiateInPlaceRecovery { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ExportSnapshotWithDownloadFromCloud parameter set
-        //
-        // [GraphQL: vsphereVmExportSnapshotWithDownloadFromCloud]
-        //
+        /// <summary>
+        /// ExportSnapshotWithDownloadFromCloud parameter set
+        ///
+        /// [GraphQL: vsphereVmExportSnapshotWithDownloadFromCloud]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ExportSnapshotWithDownloadFromCloud",
             Mandatory = false,
@@ -233,11 +233,11 @@ Download a snapshot from an archival location and then export a virtual machine 
         public SwitchParameter ExportSnapshotWithDownloadFromCloud { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // BatchInPlaceRecovery parameter set
-        //
-        // [GraphQL: vsphereVmBatchInPlaceRecovery]
-        //
+        /// <summary>
+        /// BatchInPlaceRecovery parameter set
+        ///
+        /// [GraphQL: vsphereVmBatchInPlaceRecovery]
+        /// </summary>
         [Parameter(
             ParameterSetName = "BatchInPlaceRecovery",
             Mandatory = false,
@@ -251,11 +251,11 @@ Download a snapshot from an archival location and then export a virtual machine 
         public SwitchParameter BatchInPlaceRecovery { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DeleteSnapshot parameter set
-        //
-        // [GraphQL: vsphereVmDeleteSnapshot]
-        //
+        /// <summary>
+        /// DeleteSnapshot parameter set
+        ///
+        /// [GraphQL: vsphereVmDeleteSnapshot]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DeleteSnapshot",
             Mandatory = false,
@@ -269,11 +269,11 @@ Download a snapshot from an archival location and then export a virtual machine 
         public SwitchParameter DeleteSnapshot { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Update parameter set
-        //
-        // [GraphQL: vsphereVMUpdate]
-        //
+        /// <summary>
+        /// Update parameter set
+        ///
+        /// [GraphQL: vsphereVMUpdate]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Update",
             Mandatory = false,
@@ -287,11 +287,11 @@ Download a snapshot from an archival location and then export a virtual machine 
         public SwitchParameter Update { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // InitiateInstantRecovery parameter set
-        //
-        // [GraphQL: vsphereVMInitiateInstantRecovery]
-        //
+        /// <summary>
+        /// InitiateInstantRecovery parameter set
+        ///
+        /// [GraphQL: vsphereVMInitiateInstantRecovery]
+        /// </summary>
         [Parameter(
             ParameterSetName = "InitiateInstantRecovery",
             Mandatory = false,
@@ -305,11 +305,11 @@ Download a snapshot from an archival location and then export a virtual machine 
         public SwitchParameter InitiateInstantRecovery { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // InitiateInstantRecoveryV2 parameter set
-        //
-        // [GraphQL: vsphereVmInitiateInstantRecoveryV2]
-        //
+        /// <summary>
+        /// InitiateInstantRecoveryV2 parameter set
+        ///
+        /// [GraphQL: vsphereVmInitiateInstantRecoveryV2]
+        /// </summary>
         [Parameter(
             ParameterSetName = "InitiateInstantRecoveryV2",
             Mandatory = false,
@@ -323,11 +323,11 @@ Download a snapshot from an archival location and then export a virtual machine 
         public SwitchParameter InitiateInstantRecoveryV2 { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // InitiateBatchInstantRecovery parameter set
-        //
-        // [GraphQL: vsphereVmInitiateBatchInstantRecovery]
-        //
+        /// <summary>
+        /// InitiateBatchInstantRecovery parameter set
+        ///
+        /// [GraphQL: vsphereVmInitiateBatchInstantRecovery]
+        /// </summary>
         [Parameter(
             ParameterSetName = "InitiateBatchInstantRecovery",
             Mandatory = false,
@@ -341,11 +341,11 @@ Download a snapshot from an archival location and then export a virtual machine 
         public SwitchParameter InitiateBatchInstantRecovery { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // InitiateDiskMount parameter set
-        //
-        // [GraphQL: vsphereVmInitiateDiskMount]
-        //
+        /// <summary>
+        /// InitiateDiskMount parameter set
+        ///
+        /// [GraphQL: vsphereVmInitiateDiskMount]
+        /// </summary>
         [Parameter(
             ParameterSetName = "InitiateDiskMount",
             Mandatory = false,
@@ -362,11 +362,11 @@ Requests a snapshot mount to attach disks to an existing virtual machine.
         public SwitchParameter InitiateDiskMount { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // InitiateLiveMount parameter set
-        //
-        // [GraphQL: vsphereVMInitiateLiveMount]
-        //
+        /// <summary>
+        /// InitiateLiveMount parameter set
+        ///
+        /// [GraphQL: vsphereVMInitiateLiveMount]
+        /// </summary>
         [Parameter(
             ParameterSetName = "InitiateLiveMount",
             Mandatory = false,
@@ -380,11 +380,11 @@ Requests a snapshot mount to attach disks to an existing virtual machine.
         public SwitchParameter InitiateLiveMount { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // InitiateLiveMountV2 parameter set
-        //
-        // [GraphQL: vsphereVmInitiateLiveMountV2]
-        //
+        /// <summary>
+        /// InitiateLiveMountV2 parameter set
+        ///
+        /// [GraphQL: vsphereVmInitiateLiveMountV2]
+        /// </summary>
         [Parameter(
             ParameterSetName = "InitiateLiveMountV2",
             Mandatory = false,
@@ -398,11 +398,11 @@ Requests a snapshot mount to attach disks to an existing virtual machine.
         public SwitchParameter InitiateLiveMountV2 { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // BatchLiveMount parameter set
-        //
-        // [GraphQL: vSphereVMBatchLiveMount]
-        //
+        /// <summary>
+        /// BatchLiveMount parameter set
+        ///
+        /// [GraphQL: vSphereVMBatchLiveMount]
+        /// </summary>
         [Parameter(
             ParameterSetName = "BatchLiveMount",
             Mandatory = false,
@@ -416,11 +416,11 @@ Requests a snapshot mount to attach disks to an existing virtual machine.
         public SwitchParameter BatchLiveMount { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // InitiateBatchLiveMountV2 parameter set
-        //
-        // [GraphQL: vsphereVmInitiateBatchLiveMountV2]
-        //
+        /// <summary>
+        /// InitiateBatchLiveMountV2 parameter set
+        ///
+        /// [GraphQL: vsphereVmInitiateBatchLiveMountV2]
+        /// </summary>
         [Parameter(
             ParameterSetName = "InitiateBatchLiveMountV2",
             Mandatory = false,
@@ -434,11 +434,11 @@ Requests a snapshot mount to attach disks to an existing virtual machine.
         public SwitchParameter InitiateBatchLiveMountV2 { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // PowerOnOffLiveMount parameter set
-        //
-        // [GraphQL: vsphereVmPowerOnOffLiveMount]
-        //
+        /// <summary>
+        /// PowerOnOffLiveMount parameter set
+        ///
+        /// [GraphQL: vsphereVmPowerOnOffLiveMount]
+        /// </summary>
         [Parameter(
             ParameterSetName = "PowerOnOffLiveMount",
             Mandatory = false,
@@ -455,11 +455,11 @@ Power a specified Live Mount virtual machine on or off. Pass **_true_** to power
         public SwitchParameter PowerOnOffLiveMount { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DeleteLiveMount parameter set
-        //
-        // [GraphQL: vsphereVMDeleteLiveMount]
-        //
+        /// <summary>
+        /// DeleteLiveMount parameter set
+        ///
+        /// [GraphQL: vsphereVMDeleteLiveMount]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DeleteLiveMount",
             Mandatory = false,
@@ -473,11 +473,11 @@ Power a specified Live Mount virtual machine on or off. Pass **_true_** to power
         public SwitchParameter DeleteLiveMount { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ListEsxiDatastores parameter set
-        //
-        // [GraphQL: vsphereVmListEsxiDatastores]
-        //
+        /// <summary>
+        /// ListEsxiDatastores parameter set
+        ///
+        /// [GraphQL: vsphereVmListEsxiDatastores]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ListEsxiDatastores",
             Mandatory = false,
@@ -494,11 +494,11 @@ Retrieve a list of the datastores for a specified ESXi host.
         public SwitchParameter ListEsxiDatastores { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // MountRelocate parameter set
-        //
-        // [GraphQL: vsphereVmMountRelocate]
-        //
+        /// <summary>
+        /// MountRelocate parameter set
+        ///
+        /// [GraphQL: vsphereVmMountRelocate]
+        /// </summary>
         [Parameter(
             ParameterSetName = "MountRelocate",
             Mandatory = false,
@@ -515,11 +515,11 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
         public SwitchParameter MountRelocate { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // MountRelocateV2 parameter set
-        //
-        // [GraphQL: vsphereVmMountRelocateV2]
-        //
+        /// <summary>
+        /// MountRelocateV2 parameter set
+        ///
+        /// [GraphQL: vsphereVmMountRelocateV2]
+        /// </summary>
         [Parameter(
             ParameterSetName = "MountRelocateV2",
             Mandatory = false,
@@ -533,11 +533,11 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
         public SwitchParameter MountRelocateV2 { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ExcludeVmDisks parameter set
-        //
-        // [GraphQL: vsphereExcludeVmDisks]
-        //
+        /// <summary>
+        /// ExcludeVmDisks parameter set
+        ///
+        /// [GraphQL: vsphereExcludeVmDisks]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ExcludeVmDisks",
             Mandatory = false,
@@ -551,11 +551,11 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
         public SwitchParameter ExcludeVmDisks { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DownloadSnapshotFiles parameter set
-        //
-        // [GraphQL: vsphereVmDownloadSnapshotFiles]
-        //
+        /// <summary>
+        /// DownloadSnapshotFiles parameter set
+        ///
+        /// [GraphQL: vsphereVmDownloadSnapshotFiles]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DownloadSnapshotFiles",
             Mandatory = false,
@@ -569,6 +569,8 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
         public SwitchParameter DownloadSnapshotFiles { get; set; }
 
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
         protected override void ProcessRecord()
         {
             try
@@ -671,10 +673,11 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 ThrowTerminatingException(ex);
            }
         }
+#pragma warning restore 1591
 
         // This parameter set invokes a single graphql operation:
         // vsphereVmRecoverFiles.
-        protected void ProcessRecord_RecoverFiles()
+        internal void ProcessRecord_RecoverFiles()
         {
             this._logger.name += " -RecoverFiles";
             // Invoke graphql operation vsphereVmRecoverFiles
@@ -683,7 +686,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // This parameter set invokes a single graphql operation:
         // vsphereVmRecoverFilesNew.
-        protected void ProcessRecord_RecoverFilesNew()
+        internal void ProcessRecord_RecoverFilesNew()
         {
             this._logger.name += " -RecoverFilesNew";
             // Invoke graphql operation vsphereVmRecoverFilesNew
@@ -692,7 +695,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // This parameter set invokes a single graphql operation:
         // vsphereVmRegisterAgent.
-        protected void ProcessRecord_RegisterAgent()
+        internal void ProcessRecord_RegisterAgent()
         {
             this._logger.name += " -RegisterAgent";
             // Invoke graphql operation vsphereVmRegisterAgent
@@ -701,7 +704,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // This parameter set invokes a single graphql operation:
         // vsphereVmDownloadSnapshot.
-        protected void ProcessRecord_DownloadSnapshot()
+        internal void ProcessRecord_DownloadSnapshot()
         {
             this._logger.name += " -DownloadSnapshot";
             // Invoke graphql operation vsphereVmDownloadSnapshot
@@ -710,7 +713,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // This parameter set invokes a single graphql operation:
         // vsphereVMExportSnapshot.
-        protected void ProcessRecord_ExportSnapshot()
+        internal void ProcessRecord_ExportSnapshot()
         {
             this._logger.name += " -ExportSnapshot";
             // Invoke graphql operation vsphereVMExportSnapshot
@@ -719,7 +722,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // This parameter set invokes a single graphql operation:
         // vsphereVmExportSnapshotV2.
-        protected void ProcessRecord_ExportSnapshotV2()
+        internal void ProcessRecord_ExportSnapshotV2()
         {
             this._logger.name += " -ExportSnapshotV2";
             // Invoke graphql operation vsphereVmExportSnapshotV2
@@ -728,7 +731,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // This parameter set invokes a single graphql operation:
         // vsphereVmExportSnapshotV3.
-        protected void ProcessRecord_ExportSnapshotV3()
+        internal void ProcessRecord_ExportSnapshotV3()
         {
             this._logger.name += " -ExportSnapshotV3";
             // Invoke graphql operation vsphereVmExportSnapshotV3
@@ -737,7 +740,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // This parameter set invokes a single graphql operation:
         // vsphereVmBatchExport.
-        protected void ProcessRecord_BatchExport()
+        internal void ProcessRecord_BatchExport()
         {
             this._logger.name += " -BatchExport";
             // Invoke graphql operation vsphereVmBatchExport
@@ -746,7 +749,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // This parameter set invokes a single graphql operation:
         // vsphereVmBatchExportV3.
-        protected void ProcessRecord_BatchExportV3()
+        internal void ProcessRecord_BatchExportV3()
         {
             this._logger.name += " -BatchExportV3";
             // Invoke graphql operation vsphereVmBatchExportV3
@@ -755,7 +758,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // This parameter set invokes a single graphql operation:
         // vsphereVmInitiateInPlaceRecovery.
-        protected void ProcessRecord_InitiateInPlaceRecovery()
+        internal void ProcessRecord_InitiateInPlaceRecovery()
         {
             this._logger.name += " -InitiateInPlaceRecovery";
             // Invoke graphql operation vsphereVmInitiateInPlaceRecovery
@@ -764,7 +767,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // This parameter set invokes a single graphql operation:
         // vsphereVmExportSnapshotWithDownloadFromCloud.
-        protected void ProcessRecord_ExportSnapshotWithDownloadFromCloud()
+        internal void ProcessRecord_ExportSnapshotWithDownloadFromCloud()
         {
             this._logger.name += " -ExportSnapshotWithDownloadFromCloud";
             // Invoke graphql operation vsphereVmExportSnapshotWithDownloadFromCloud
@@ -773,7 +776,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // This parameter set invokes a single graphql operation:
         // vsphereVmBatchInPlaceRecovery.
-        protected void ProcessRecord_BatchInPlaceRecovery()
+        internal void ProcessRecord_BatchInPlaceRecovery()
         {
             this._logger.name += " -BatchInPlaceRecovery";
             // Invoke graphql operation vsphereVmBatchInPlaceRecovery
@@ -782,7 +785,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // This parameter set invokes a single graphql operation:
         // vsphereVmDeleteSnapshot.
-        protected void ProcessRecord_DeleteSnapshot()
+        internal void ProcessRecord_DeleteSnapshot()
         {
             this._logger.name += " -DeleteSnapshot";
             // Invoke graphql operation vsphereVmDeleteSnapshot
@@ -791,7 +794,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // This parameter set invokes a single graphql operation:
         // vsphereVMUpdate.
-        protected void ProcessRecord_Update()
+        internal void ProcessRecord_Update()
         {
             this._logger.name += " -Update";
             // Invoke graphql operation vsphereVMUpdate
@@ -800,7 +803,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // This parameter set invokes a single graphql operation:
         // vsphereVMInitiateInstantRecovery.
-        protected void ProcessRecord_InitiateInstantRecovery()
+        internal void ProcessRecord_InitiateInstantRecovery()
         {
             this._logger.name += " -InitiateInstantRecovery";
             // Invoke graphql operation vsphereVMInitiateInstantRecovery
@@ -809,7 +812,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // This parameter set invokes a single graphql operation:
         // vsphereVmInitiateInstantRecoveryV2.
-        protected void ProcessRecord_InitiateInstantRecoveryV2()
+        internal void ProcessRecord_InitiateInstantRecoveryV2()
         {
             this._logger.name += " -InitiateInstantRecoveryV2";
             // Invoke graphql operation vsphereVmInitiateInstantRecoveryV2
@@ -818,7 +821,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // This parameter set invokes a single graphql operation:
         // vsphereVmInitiateBatchInstantRecovery.
-        protected void ProcessRecord_InitiateBatchInstantRecovery()
+        internal void ProcessRecord_InitiateBatchInstantRecovery()
         {
             this._logger.name += " -InitiateBatchInstantRecovery";
             // Invoke graphql operation vsphereVmInitiateBatchInstantRecovery
@@ -827,7 +830,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // This parameter set invokes a single graphql operation:
         // vsphereVmInitiateDiskMount.
-        protected void ProcessRecord_InitiateDiskMount()
+        internal void ProcessRecord_InitiateDiskMount()
         {
             this._logger.name += " -InitiateDiskMount";
             // Invoke graphql operation vsphereVmInitiateDiskMount
@@ -836,7 +839,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // This parameter set invokes a single graphql operation:
         // vsphereVMInitiateLiveMount.
-        protected void ProcessRecord_InitiateLiveMount()
+        internal void ProcessRecord_InitiateLiveMount()
         {
             this._logger.name += " -InitiateLiveMount";
             // Invoke graphql operation vsphereVMInitiateLiveMount
@@ -845,7 +848,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // This parameter set invokes a single graphql operation:
         // vsphereVmInitiateLiveMountV2.
-        protected void ProcessRecord_InitiateLiveMountV2()
+        internal void ProcessRecord_InitiateLiveMountV2()
         {
             this._logger.name += " -InitiateLiveMountV2";
             // Invoke graphql operation vsphereVmInitiateLiveMountV2
@@ -854,7 +857,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // This parameter set invokes a single graphql operation:
         // vSphereVMBatchLiveMount.
-        protected void ProcessRecord_BatchLiveMount()
+        internal void ProcessRecord_BatchLiveMount()
         {
             this._logger.name += " -BatchLiveMount";
             // Invoke graphql operation vSphereVMBatchLiveMount
@@ -863,7 +866,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // This parameter set invokes a single graphql operation:
         // vsphereVmInitiateBatchLiveMountV2.
-        protected void ProcessRecord_InitiateBatchLiveMountV2()
+        internal void ProcessRecord_InitiateBatchLiveMountV2()
         {
             this._logger.name += " -InitiateBatchLiveMountV2";
             // Invoke graphql operation vsphereVmInitiateBatchLiveMountV2
@@ -872,7 +875,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // This parameter set invokes a single graphql operation:
         // vsphereVmPowerOnOffLiveMount.
-        protected void ProcessRecord_PowerOnOffLiveMount()
+        internal void ProcessRecord_PowerOnOffLiveMount()
         {
             this._logger.name += " -PowerOnOffLiveMount";
             // Invoke graphql operation vsphereVmPowerOnOffLiveMount
@@ -881,7 +884,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // This parameter set invokes a single graphql operation:
         // vsphereVMDeleteLiveMount.
-        protected void ProcessRecord_DeleteLiveMount()
+        internal void ProcessRecord_DeleteLiveMount()
         {
             this._logger.name += " -DeleteLiveMount";
             // Invoke graphql operation vsphereVMDeleteLiveMount
@@ -890,7 +893,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // This parameter set invokes a single graphql operation:
         // vsphereVmListEsxiDatastores.
-        protected void ProcessRecord_ListEsxiDatastores()
+        internal void ProcessRecord_ListEsxiDatastores()
         {
             this._logger.name += " -ListEsxiDatastores";
             // Invoke graphql operation vsphereVmListEsxiDatastores
@@ -899,7 +902,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // This parameter set invokes a single graphql operation:
         // vsphereVmMountRelocate.
-        protected void ProcessRecord_MountRelocate()
+        internal void ProcessRecord_MountRelocate()
         {
             this._logger.name += " -MountRelocate";
             // Invoke graphql operation vsphereVmMountRelocate
@@ -908,7 +911,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // This parameter set invokes a single graphql operation:
         // vsphereVmMountRelocateV2.
-        protected void ProcessRecord_MountRelocateV2()
+        internal void ProcessRecord_MountRelocateV2()
         {
             this._logger.name += " -MountRelocateV2";
             // Invoke graphql operation vsphereVmMountRelocateV2
@@ -917,7 +920,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // This parameter set invokes a single graphql operation:
         // vsphereExcludeVmDisks.
-        protected void ProcessRecord_ExcludeVmDisks()
+        internal void ProcessRecord_ExcludeVmDisks()
         {
             this._logger.name += " -ExcludeVmDisks";
             // Invoke graphql operation vsphereExcludeVmDisks
@@ -926,7 +929,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // This parameter set invokes a single graphql operation:
         // vsphereVmDownloadSnapshotFiles.
-        protected void ProcessRecord_DownloadSnapshotFiles()
+        internal void ProcessRecord_DownloadSnapshotFiles()
         {
             this._logger.name += " -DownloadSnapshotFiles";
             // Invoke graphql operation vsphereVmDownloadSnapshotFiles
@@ -936,7 +939,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // Invoke GraphQL Mutation:
         // vsphereVmRecoverFiles(input: VsphereVmRecoverFilesInput!): VsphereAsyncRequestStatus!
-        protected void InvokeMutationVsphereVmRecoverFiles()
+        internal void InvokeMutationVsphereVmRecoverFiles()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereVmRecoverFilesInput!"),
@@ -963,7 +966,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // Invoke GraphQL Mutation:
         // vsphereVmRecoverFilesNew(input: VsphereVmRecoverFilesNewInput!): AsyncRequestStatus!
-        protected void InvokeMutationVsphereVmRecoverFilesNew()
+        internal void InvokeMutationVsphereVmRecoverFilesNew()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereVmRecoverFilesNewInput!"),
@@ -990,7 +993,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // Invoke GraphQL Mutation:
         // vsphereVmRegisterAgent(input: VsphereVmRegisterAgentInput!): RequestSuccess!
-        protected void InvokeMutationVsphereVmRegisterAgent()
+        internal void InvokeMutationVsphereVmRegisterAgent()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereVmRegisterAgentInput!"),
@@ -1017,7 +1020,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // Invoke GraphQL Mutation:
         // vsphereVmDownloadSnapshot(input: VsphereVmDownloadSnapshotInput!): AsyncRequestStatus!
-        protected void InvokeMutationVsphereVmDownloadSnapshot()
+        internal void InvokeMutationVsphereVmDownloadSnapshot()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereVmDownloadSnapshotInput!"),
@@ -1055,7 +1058,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
         //     unregsiterVm: Boolean
         //     shouldRecoverTags: Boolean
         //   ): VsphereAsyncRequestStatus!
-        protected void InvokeMutationVsphereVmExportSnapshot()
+        internal void InvokeMutationVsphereVmExportSnapshot()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("snapshotFid", "UUID!"),
@@ -1091,7 +1094,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // Invoke GraphQL Mutation:
         // vsphereVmExportSnapshotV2(input: VsphereVmExportSnapshotV2Input!): AsyncRequestStatus!
-        protected void InvokeMutationVsphereVmExportSnapshotV2()
+        internal void InvokeMutationVsphereVmExportSnapshotV2()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereVmExportSnapshotV2Input!"),
@@ -1118,7 +1121,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // Invoke GraphQL Mutation:
         // vsphereVmExportSnapshotV3(input: VsphereVmExportSnapshotV3Input!): AsyncRequestStatus!
-        protected void InvokeMutationVsphereVmExportSnapshotV3()
+        internal void InvokeMutationVsphereVmExportSnapshotV3()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereVmExportSnapshotV3Input!"),
@@ -1145,7 +1148,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // Invoke GraphQL Mutation:
         // vsphereVmBatchExport(input: VsphereVmBatchExportInput!): BatchAsyncRequestStatus!
-        protected void InvokeMutationVsphereVmBatchExport()
+        internal void InvokeMutationVsphereVmBatchExport()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereVmBatchExportInput!"),
@@ -1172,7 +1175,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // Invoke GraphQL Mutation:
         // vsphereVmBatchExportV3(input: VsphereVmBatchExportV3Input!): BatchAsyncRequestStatus!
-        protected void InvokeMutationVsphereVmBatchExportV3()
+        internal void InvokeMutationVsphereVmBatchExportV3()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereVmBatchExportV3Input!"),
@@ -1199,7 +1202,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // Invoke GraphQL Mutation:
         // vsphereVmInitiateInPlaceRecovery(input: VsphereVmInitiateInPlaceRecoveryInput!): AsyncRequestStatus!
-        protected void InvokeMutationVsphereVmInitiateInPlaceRecovery()
+        internal void InvokeMutationVsphereVmInitiateInPlaceRecovery()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereVmInitiateInPlaceRecoveryInput!"),
@@ -1226,7 +1229,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // Invoke GraphQL Mutation:
         // vsphereVmExportSnapshotWithDownloadFromCloud(input: VsphereVmExportSnapshotWithDownloadFromCloudInput!): AsyncRequestStatus!
-        protected void InvokeMutationVsphereVmExportSnapshotWithDownloadFromCloud()
+        internal void InvokeMutationVsphereVmExportSnapshotWithDownloadFromCloud()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereVmExportSnapshotWithDownloadFromCloudInput!"),
@@ -1253,7 +1256,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // Invoke GraphQL Mutation:
         // vsphereVmBatchInPlaceRecovery(input: VsphereVmBatchInPlaceRecoveryInput!): BatchAsyncRequestStatus!
-        protected void InvokeMutationVsphereVmBatchInPlaceRecovery()
+        internal void InvokeMutationVsphereVmBatchInPlaceRecovery()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereVmBatchInPlaceRecoveryInput!"),
@@ -1280,7 +1283,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // Invoke GraphQL Mutation:
         // vsphereVmDeleteSnapshot(input: VsphereVmDeleteSnapshotInput!): Void
-        protected void InvokeMutationVsphereVmDeleteSnapshot()
+        internal void InvokeMutationVsphereVmDeleteSnapshot()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereVmDeleteSnapshotInput!"),
@@ -1314,7 +1317,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
         //     postSnapScript: PostSnapScriptInputType
         //     isArrayIntegrationEnabled: Boolean
         //   ): RequestSuccess!
-        protected void InvokeMutationVsphereVmUpdate()
+        internal void InvokeMutationVsphereVmUpdate()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("snappableFid", "UUID!"),
@@ -1357,7 +1360,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
         //     vlan: Int
         //     shouldRecoverTags: Boolean
         //   ): VsphereAsyncRequestStatus!
-        protected void InvokeMutationVsphereVmInitiateInstantRecovery()
+        internal void InvokeMutationVsphereVmInitiateInstantRecovery()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("snapshotFid", "UUID!"),
@@ -1393,7 +1396,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // Invoke GraphQL Mutation:
         // vsphereVmInitiateInstantRecoveryV2(input: VsphereVmInitiateInstantRecoveryV2Input!): AsyncRequestStatus!
-        protected void InvokeMutationVsphereVmInitiateInstantRecoveryV2()
+        internal void InvokeMutationVsphereVmInitiateInstantRecoveryV2()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereVmInitiateInstantRecoveryV2Input!"),
@@ -1420,7 +1423,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // Invoke GraphQL Mutation:
         // vsphereVmInitiateBatchInstantRecovery(input: VsphereVmInitiateBatchInstantRecoveryInput!): BatchAsyncRequestStatus!
-        protected void InvokeMutationVsphereVmInitiateBatchInstantRecovery()
+        internal void InvokeMutationVsphereVmInitiateBatchInstantRecovery()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereVmInitiateBatchInstantRecoveryInput!"),
@@ -1447,7 +1450,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // Invoke GraphQL Mutation:
         // vsphereVmInitiateDiskMount(input: VsphereVmInitiateDiskMountInput!): AsyncRequestStatus!
-        protected void InvokeMutationVsphereVmInitiateDiskMount()
+        internal void InvokeMutationVsphereVmInitiateDiskMount()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereVmInitiateDiskMountInput!"),
@@ -1486,7 +1489,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
         //     vlan: Int
         //     shouldRecoverTags: Boolean
         //   ): VsphereAsyncRequestStatus!
-        protected void InvokeMutationVsphereVmInitiateLiveMount()
+        internal void InvokeMutationVsphereVmInitiateLiveMount()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("snapshotFid", "UUID!"),
@@ -1523,7 +1526,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // Invoke GraphQL Mutation:
         // vsphereVmInitiateLiveMountV2(input: VsphereVmInitiateLiveMountV2Input!): AsyncRequestStatus!
-        protected void InvokeMutationVsphereVmInitiateLiveMountV2()
+        internal void InvokeMutationVsphereVmInitiateLiveMountV2()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereVmInitiateLiveMountV2Input!"),
@@ -1550,7 +1553,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // Invoke GraphQL Mutation:
         // vSphereVMBatchLiveMount(clusterUuid: UUID!, config: BatchMountSnapshotJobConfigInput!): BatchAsyncRequestStatus!
-        protected void InvokeMutationVsphereVmBatchLiveMount()
+        internal void InvokeMutationVsphereVmBatchLiveMount()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("clusterUuid", "UUID!"),
@@ -1578,7 +1581,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // Invoke GraphQL Mutation:
         // vsphereVmInitiateBatchLiveMountV2(input: VsphereVmInitiateBatchLiveMountV2Input!): BatchAsyncRequestStatus!
-        protected void InvokeMutationVsphereVmInitiateBatchLiveMountV2()
+        internal void InvokeMutationVsphereVmInitiateBatchLiveMountV2()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereVmInitiateBatchLiveMountV2Input!"),
@@ -1605,7 +1608,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // Invoke GraphQL Mutation:
         // vsphereVmPowerOnOffLiveMount(input: VsphereVmPowerOnOffLiveMountInput!): VsphereVmPowerOnOffLiveMountReply!
-        protected void InvokeMutationVsphereVmPowerOnOffLiveMount()
+        internal void InvokeMutationVsphereVmPowerOnOffLiveMount()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereVmPowerOnOffLiveMountInput!"),
@@ -1632,7 +1635,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // Invoke GraphQL Mutation:
         // vsphereVMDeleteLiveMount(livemountId: UUID!, force: Boolean): VsphereAsyncRequestStatus!
-        protected void InvokeMutationVsphereVmDeleteLiveMount()
+        internal void InvokeMutationVsphereVmDeleteLiveMount()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("livemountId", "UUID!"),
@@ -1660,7 +1663,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // Invoke GraphQL Mutation:
         // vsphereVmListEsxiDatastores(input: VsphereVmListEsxiDatastoresInput!): VsphereVmListEsxiDatastoresReply!
-        protected void InvokeMutationVsphereVmListEsxiDatastores()
+        internal void InvokeMutationVsphereVmListEsxiDatastores()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereVmListEsxiDatastoresInput!"),
@@ -1687,7 +1690,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // Invoke GraphQL Mutation:
         // vsphereVmMountRelocate(input: VsphereVmMountRelocateInput!): AsyncRequestStatus!
-        protected void InvokeMutationVsphereVmMountRelocate()
+        internal void InvokeMutationVsphereVmMountRelocate()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereVmMountRelocateInput!"),
@@ -1714,7 +1717,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // Invoke GraphQL Mutation:
         // vsphereVmMountRelocateV2(input: VsphereVmMountRelocateV2Input!): AsyncRequestStatus!
-        protected void InvokeMutationVsphereVmMountRelocateV2()
+        internal void InvokeMutationVsphereVmMountRelocateV2()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereVmMountRelocateV2Input!"),
@@ -1741,7 +1744,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // Invoke GraphQL Mutation:
         // vsphereExcludeVmDisks(input: [VsphereExcludeVmDisksInput!]!): RequestSuccess!
-        protected void InvokeMutationVsphereExcludeVmDisks()
+        internal void InvokeMutationVsphereExcludeVmDisks()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "[VsphereExcludeVmDisksInput!]!"),
@@ -1768,7 +1771,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // Invoke GraphQL Mutation:
         // vsphereVmDownloadSnapshotFiles(input: VsphereVmDownloadSnapshotFilesInput!): AsyncRequestStatus!
-        protected void InvokeMutationVsphereVmDownloadSnapshotFiles()
+        internal void InvokeMutationVsphereVmDownloadSnapshotFiles()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereVmDownloadSnapshotFilesInput!"),

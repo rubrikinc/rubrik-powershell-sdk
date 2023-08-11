@@ -26,11 +26,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     public class Invoke_RscMutateVsphere : RscPSCmdlet
     {
         
-        // -------------------------------------------------------------------
-        // OnDemandSnapshot parameter set
-        //
-        // [GraphQL: vsphereOnDemandSnapshot]
-        //
+        /// <summary>
+        /// OnDemandSnapshot parameter set
+        ///
+        /// [GraphQL: vsphereOnDemandSnapshot]
+        /// </summary>
         [Parameter(
             ParameterSetName = "OnDemandSnapshot",
             Mandatory = false,
@@ -44,11 +44,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter OnDemandSnapshot { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // BulkOnDemandSnapshot parameter set
-        //
-        // [GraphQL: vsphereBulkOnDemandSnapshot]
-        //
+        /// <summary>
+        /// BulkOnDemandSnapshot parameter set
+        ///
+        /// [GraphQL: vsphereBulkOnDemandSnapshot]
+        /// </summary>
         [Parameter(
             ParameterSetName = "BulkOnDemandSnapshot",
             Mandatory = false,
@@ -62,11 +62,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter BulkOnDemandSnapshot { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DeleteLiveMount parameter set
-        //
-        // [GraphQL: deleteVsphereLiveMount]
-        //
+        /// <summary>
+        /// DeleteLiveMount parameter set
+        ///
+        /// [GraphQL: deleteVsphereLiveMount]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DeleteLiveMount",
             Mandatory = false,
@@ -83,11 +83,11 @@ Create a request to delete a Live Mount virtual machine.
         public SwitchParameter DeleteLiveMount { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ExportSnapshotToStandaloneHostV2 parameter set
-        //
-        // [GraphQL: vsphereExportSnapshotToStandaloneHostV2]
-        //
+        /// <summary>
+        /// ExportSnapshotToStandaloneHostV2 parameter set
+        ///
+        /// [GraphQL: vsphereExportSnapshotToStandaloneHostV2]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ExportSnapshotToStandaloneHostV2",
             Mandatory = false,
@@ -101,11 +101,11 @@ Create a request to delete a Live Mount virtual machine.
         public SwitchParameter ExportSnapshotToStandaloneHostV2 { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ExportSnapshotToStandaloneHost parameter set
-        //
-        // [GraphQL: vsphereExportSnapshotToStandaloneHost]
-        //
+        /// <summary>
+        /// ExportSnapshotToStandaloneHost parameter set
+        ///
+        /// [GraphQL: vsphereExportSnapshotToStandaloneHost]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ExportSnapshotToStandaloneHost",
             Mandatory = false,
@@ -119,11 +119,11 @@ Create a request to delete a Live Mount virtual machine.
         public SwitchParameter ExportSnapshotToStandaloneHost { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DownloadVirtualMachineFiles parameter set
-        //
-        // [GraphQL: downloadVsphereVirtualMachineFiles]
-        //
+        /// <summary>
+        /// DownloadVirtualMachineFiles parameter set
+        ///
+        /// [GraphQL: downloadVsphereVirtualMachineFiles]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DownloadVirtualMachineFiles",
             Mandatory = false,
@@ -140,11 +140,11 @@ Start an asynchronous job to download multiple Virtual Machine files, such as .v
         public SwitchParameter DownloadVirtualMachineFiles { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // CreateAdvancedTag parameter set
-        //
-        // [GraphQL: createVsphereAdvancedTag]
-        //
+        /// <summary>
+        /// CreateAdvancedTag parameter set
+        ///
+        /// [GraphQL: createVsphereAdvancedTag]
+        /// </summary>
         [Parameter(
             ParameterSetName = "CreateAdvancedTag",
             Mandatory = false,
@@ -161,11 +161,11 @@ Create a filter consisting of vSphere tags joined with logical operators.
         public SwitchParameter CreateAdvancedTag { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DeleteAdvancedTag parameter set
-        //
-        // [GraphQL: deleteVsphereAdvancedTag]
-        //
+        /// <summary>
+        /// DeleteAdvancedTag parameter set
+        ///
+        /// [GraphQL: deleteVsphereAdvancedTag]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DeleteAdvancedTag",
             Mandatory = false,
@@ -182,11 +182,11 @@ Remove the multi-tag filter.
         public SwitchParameter DeleteAdvancedTag { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // UpdateAdvancedTag parameter set
-        //
-        // [GraphQL: updateVsphereAdvancedTag]
-        //
+        /// <summary>
+        /// UpdateAdvancedTag parameter set
+        ///
+        /// [GraphQL: updateVsphereAdvancedTag]
+        /// </summary>
         [Parameter(
             ParameterSetName = "UpdateAdvancedTag",
             Mandatory = false,
@@ -203,6 +203,8 @@ Updates the name, condition, and description of the specified multi-tag filter.
         public SwitchParameter UpdateAdvancedTag { get; set; }
 
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
         protected override void ProcessRecord()
         {
             try
@@ -245,10 +247,11 @@ Updates the name, condition, and description of the specified multi-tag filter.
                 ThrowTerminatingException(ex);
            }
         }
+#pragma warning restore 1591
 
         // This parameter set invokes a single graphql operation:
         // vsphereOnDemandSnapshot.
-        protected void ProcessRecord_OnDemandSnapshot()
+        internal void ProcessRecord_OnDemandSnapshot()
         {
             this._logger.name += " -OnDemandSnapshot";
             // Invoke graphql operation vsphereOnDemandSnapshot
@@ -257,7 +260,7 @@ Updates the name, condition, and description of the specified multi-tag filter.
 
         // This parameter set invokes a single graphql operation:
         // vsphereBulkOnDemandSnapshot.
-        protected void ProcessRecord_BulkOnDemandSnapshot()
+        internal void ProcessRecord_BulkOnDemandSnapshot()
         {
             this._logger.name += " -BulkOnDemandSnapshot";
             // Invoke graphql operation vsphereBulkOnDemandSnapshot
@@ -266,7 +269,7 @@ Updates the name, condition, and description of the specified multi-tag filter.
 
         // This parameter set invokes a single graphql operation:
         // deleteVsphereLiveMount.
-        protected void ProcessRecord_DeleteLiveMount()
+        internal void ProcessRecord_DeleteLiveMount()
         {
             this._logger.name += " -DeleteLiveMount";
             // Invoke graphql operation deleteVsphereLiveMount
@@ -275,7 +278,7 @@ Updates the name, condition, and description of the specified multi-tag filter.
 
         // This parameter set invokes a single graphql operation:
         // vsphereExportSnapshotToStandaloneHostV2.
-        protected void ProcessRecord_ExportSnapshotToStandaloneHostV2()
+        internal void ProcessRecord_ExportSnapshotToStandaloneHostV2()
         {
             this._logger.name += " -ExportSnapshotToStandaloneHostV2";
             // Invoke graphql operation vsphereExportSnapshotToStandaloneHostV2
@@ -284,7 +287,7 @@ Updates the name, condition, and description of the specified multi-tag filter.
 
         // This parameter set invokes a single graphql operation:
         // vsphereExportSnapshotToStandaloneHost.
-        protected void ProcessRecord_ExportSnapshotToStandaloneHost()
+        internal void ProcessRecord_ExportSnapshotToStandaloneHost()
         {
             this._logger.name += " -ExportSnapshotToStandaloneHost";
             // Invoke graphql operation vsphereExportSnapshotToStandaloneHost
@@ -293,7 +296,7 @@ Updates the name, condition, and description of the specified multi-tag filter.
 
         // This parameter set invokes a single graphql operation:
         // downloadVsphereVirtualMachineFiles.
-        protected void ProcessRecord_DownloadVirtualMachineFiles()
+        internal void ProcessRecord_DownloadVirtualMachineFiles()
         {
             this._logger.name += " -DownloadVirtualMachineFiles";
             // Invoke graphql operation downloadVsphereVirtualMachineFiles
@@ -302,7 +305,7 @@ Updates the name, condition, and description of the specified multi-tag filter.
 
         // This parameter set invokes a single graphql operation:
         // createVsphereAdvancedTag.
-        protected void ProcessRecord_CreateAdvancedTag()
+        internal void ProcessRecord_CreateAdvancedTag()
         {
             this._logger.name += " -CreateAdvancedTag";
             // Invoke graphql operation createVsphereAdvancedTag
@@ -311,7 +314,7 @@ Updates the name, condition, and description of the specified multi-tag filter.
 
         // This parameter set invokes a single graphql operation:
         // deleteVsphereAdvancedTag.
-        protected void ProcessRecord_DeleteAdvancedTag()
+        internal void ProcessRecord_DeleteAdvancedTag()
         {
             this._logger.name += " -DeleteAdvancedTag";
             // Invoke graphql operation deleteVsphereAdvancedTag
@@ -320,7 +323,7 @@ Updates the name, condition, and description of the specified multi-tag filter.
 
         // This parameter set invokes a single graphql operation:
         // updateVsphereAdvancedTag.
-        protected void ProcessRecord_UpdateAdvancedTag()
+        internal void ProcessRecord_UpdateAdvancedTag()
         {
             this._logger.name += " -UpdateAdvancedTag";
             // Invoke graphql operation updateVsphereAdvancedTag
@@ -330,7 +333,7 @@ Updates the name, condition, and description of the specified multi-tag filter.
 
         // Invoke GraphQL Mutation:
         // vsphereOnDemandSnapshot(input: VsphereOnDemandSnapshotInput!): AsyncRequestStatus!
-        protected void InvokeMutationVsphereOnDemandSnapshot()
+        internal void InvokeMutationVsphereOnDemandSnapshot()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereOnDemandSnapshotInput!"),
@@ -357,7 +360,7 @@ Updates the name, condition, and description of the specified multi-tag filter.
 
         // Invoke GraphQL Mutation:
         // vsphereBulkOnDemandSnapshot(input: VsphereBulkOnDemandSnapshotInput!): BatchAsyncRequestStatus!
-        protected void InvokeMutationVsphereBulkOnDemandSnapshot()
+        internal void InvokeMutationVsphereBulkOnDemandSnapshot()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereBulkOnDemandSnapshotInput!"),
@@ -384,7 +387,7 @@ Updates the name, condition, and description of the specified multi-tag filter.
 
         // Invoke GraphQL Mutation:
         // deleteVsphereLiveMount(input: DeleteVsphereLiveMountInput!): AsyncRequestStatus!
-        protected void InvokeMutationDeleteVsphereLiveMount()
+        internal void InvokeMutationDeleteVsphereLiveMount()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteVsphereLiveMountInput!"),
@@ -411,7 +414,7 @@ Updates the name, condition, and description of the specified multi-tag filter.
 
         // Invoke GraphQL Mutation:
         // vsphereExportSnapshotToStandaloneHostV2(input: VsphereExportSnapshotToStandaloneHostV2Input!): AsyncRequestStatus!
-        protected void InvokeMutationVsphereExportSnapshotToStandaloneHostV2()
+        internal void InvokeMutationVsphereExportSnapshotToStandaloneHostV2()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereExportSnapshotToStandaloneHostV2Input!"),
@@ -449,7 +452,7 @@ Updates the name, condition, and description of the specified multi-tag filter.
         //     hostUsername: String!
         //     hostPassword: String!
         //   ): VsphereAsyncRequestStatus!
-        protected void InvokeMutationVsphereExportSnapshotToStandaloneHost()
+        internal void InvokeMutationVsphereExportSnapshotToStandaloneHost()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("snapshotFid", "UUID!"),
@@ -485,7 +488,7 @@ Updates the name, condition, and description of the specified multi-tag filter.
 
         // Invoke GraphQL Mutation:
         // downloadVsphereVirtualMachineFiles(input: DownloadVsphereVirtualMachineFilesInput!): AsyncRequestStatus!
-        protected void InvokeMutationDownloadVsphereVirtualMachineFiles()
+        internal void InvokeMutationDownloadVsphereVirtualMachineFiles()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DownloadVsphereVirtualMachineFilesInput!"),
@@ -512,7 +515,7 @@ Updates the name, condition, and description of the specified multi-tag filter.
 
         // Invoke GraphQL Mutation:
         // createVsphereAdvancedTag(input: CreateVsphereAdvancedTagInput!): CreateVsphereAdvancedTagReply!
-        protected void InvokeMutationCreateVsphereAdvancedTag()
+        internal void InvokeMutationCreateVsphereAdvancedTag()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CreateVsphereAdvancedTagInput!"),
@@ -539,7 +542,7 @@ Updates the name, condition, and description of the specified multi-tag filter.
 
         // Invoke GraphQL Mutation:
         // deleteVsphereAdvancedTag(input: DeleteVsphereAdvancedTagInput!): RequestSuccess!
-        protected void InvokeMutationDeleteVsphereAdvancedTag()
+        internal void InvokeMutationDeleteVsphereAdvancedTag()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteVsphereAdvancedTagInput!"),
@@ -566,7 +569,7 @@ Updates the name, condition, and description of the specified multi-tag filter.
 
         // Invoke GraphQL Mutation:
         // updateVsphereAdvancedTag(input: UpdateVsphereAdvancedTagInput!): UpdateVsphereAdvancedTagReply!
-        protected void InvokeMutationUpdateVsphereAdvancedTag()
+        internal void InvokeMutationUpdateVsphereAdvancedTag()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpdateVsphereAdvancedTagInput!"),

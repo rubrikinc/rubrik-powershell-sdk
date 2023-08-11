@@ -1,8 +1,14 @@
 ### VsphereFolder
+- folderType: VmwareFolderType
+  - Vsphere folder type.
+- vCenterId: System.String
+  - Vcenter ID of the vSphere folder.
 - descendantConnection: VsphereFolderDescendantTypeConnection
   - List of descendants.
 - logicalChildConnection: VsphereFolderLogicalChildTypeConnection
   - List of logical children.
+- datacenterId: System.String
+  - Datacenter ID of the vSphere folder.
 - cluster: Cluster
   - Rubrik cluster where this object originated.
 - primaryClusterLocation: DataLocation

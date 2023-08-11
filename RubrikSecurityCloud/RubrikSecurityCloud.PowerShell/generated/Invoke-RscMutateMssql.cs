@@ -26,11 +26,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     public class Invoke_RscMutateMssql : RscPSCmdlet
     {
         
-        // -------------------------------------------------------------------
-        // BrowseDatabaseSnapshot parameter set
-        //
-        // [GraphQL: browseMssqlDatabaseSnapshot]
-        //
+        /// <summary>
+        /// BrowseDatabaseSnapshot parameter set
+        ///
+        /// [GraphQL: browseMssqlDatabaseSnapshot]
+        /// </summary>
         [Parameter(
             ParameterSetName = "BrowseDatabaseSnapshot",
             Mandatory = false,
@@ -44,11 +44,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter BrowseDatabaseSnapshot { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ExportDatabase parameter set
-        //
-        // [GraphQL: exportMssqlDatabase]
-        //
+        /// <summary>
+        /// ExportDatabase parameter set
+        ///
+        /// [GraphQL: exportMssqlDatabase]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ExportDatabase",
             Mandatory = false,
@@ -62,11 +62,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter ExportDatabase { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // RestoreDatabase parameter set
-        //
-        // [GraphQL: restoreMssqlDatabase]
-        //
+        /// <summary>
+        /// RestoreDatabase parameter set
+        ///
+        /// [GraphQL: restoreMssqlDatabase]
+        /// </summary>
         [Parameter(
             ParameterSetName = "RestoreDatabase",
             Mandatory = false,
@@ -80,11 +80,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter RestoreDatabase { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // BulkUpdateDbs parameter set
-        //
-        // [GraphQL: bulkUpdateMssqlDbs]
-        //
+        /// <summary>
+        /// BulkUpdateDbs parameter set
+        ///
+        /// [GraphQL: bulkUpdateMssqlDbs]
+        /// </summary>
         [Parameter(
             ParameterSetName = "BulkUpdateDbs",
             Mandatory = false,
@@ -98,11 +98,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter BulkUpdateDbs { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // TakeLogBackup parameter set
-        //
-        // [GraphQL: takeMssqlLogBackup]
-        //
+        /// <summary>
+        /// TakeLogBackup parameter set
+        ///
+        /// [GraphQL: takeMssqlLogBackup]
+        /// </summary>
         [Parameter(
             ParameterSetName = "TakeLogBackup",
             Mandatory = false,
@@ -116,11 +116,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter TakeLogBackup { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // CreateOnDemandBackup parameter set
-        //
-        // [GraphQL: createOnDemandMssqlBackup]
-        //
+        /// <summary>
+        /// CreateOnDemandBackup parameter set
+        ///
+        /// [GraphQL: createOnDemandMssqlBackup]
+        /// </summary>
         [Parameter(
             ParameterSetName = "CreateOnDemandBackup",
             Mandatory = false,
@@ -134,11 +134,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter CreateOnDemandBackup { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DeleteDbSnapshots parameter set
-        //
-        // [GraphQL: deleteMssqlDbSnapshots]
-        //
+        /// <summary>
+        /// DeleteDbSnapshots parameter set
+        ///
+        /// [GraphQL: deleteMssqlDbSnapshots]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DeleteDbSnapshots",
             Mandatory = false,
@@ -152,11 +152,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter DeleteDbSnapshots { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DeleteLiveMount parameter set
-        //
-        // [GraphQL: deleteMssqlLiveMount]
-        //
+        /// <summary>
+        /// DeleteLiveMount parameter set
+        ///
+        /// [GraphQL: deleteMssqlLiveMount]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DeleteLiveMount",
             Mandatory = false,
@@ -173,11 +173,11 @@ Create an async request to delete a Live Mount of a SQL Server database. Poll th
         public SwitchParameter DeleteLiveMount { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // BulkCreateOnDemandBackup parameter set
-        //
-        // [GraphQL: bulkCreateOnDemandMssqlBackup]
-        //
+        /// <summary>
+        /// BulkCreateOnDemandBackup parameter set
+        ///
+        /// [GraphQL: bulkCreateOnDemandMssqlBackup]
+        /// </summary>
         [Parameter(
             ParameterSetName = "BulkCreateOnDemandBackup",
             Mandatory = false,
@@ -191,11 +191,11 @@ Create an async request to delete a Live Mount of a SQL Server database. Poll th
         public SwitchParameter BulkCreateOnDemandBackup { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // CreateLiveMount parameter set
-        //
-        // [GraphQL: createMssqlLiveMount]
-        //
+        /// <summary>
+        /// CreateLiveMount parameter set
+        ///
+        /// [GraphQL: createMssqlLiveMount]
+        /// </summary>
         [Parameter(
             ParameterSetName = "CreateLiveMount",
             Mandatory = false,
@@ -209,11 +209,11 @@ Create an async request to delete a Live Mount of a SQL Server database. Poll th
         public SwitchParameter CreateLiveMount { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // UpdateLogShippingConfiguration parameter set
-        //
-        // [GraphQL: updateMssqlLogShippingConfiguration]
-        //
+        /// <summary>
+        /// UpdateLogShippingConfiguration parameter set
+        ///
+        /// [GraphQL: updateMssqlLogShippingConfiguration]
+        /// </summary>
         [Parameter(
             ParameterSetName = "UpdateLogShippingConfiguration",
             Mandatory = false,
@@ -227,11 +227,11 @@ Create an async request to delete a Live Mount of a SQL Server database. Poll th
         public SwitchParameter UpdateLogShippingConfiguration { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DownloadDatabaseFilesFromArchivalLocation parameter set
-        //
-        // [GraphQL: downloadMssqlDatabaseFilesFromArchivalLocation]
-        //
+        /// <summary>
+        /// DownloadDatabaseFilesFromArchivalLocation parameter set
+        ///
+        /// [GraphQL: downloadMssqlDatabaseFilesFromArchivalLocation]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DownloadDatabaseFilesFromArchivalLocation",
             Mandatory = false,
@@ -245,11 +245,11 @@ Create an async request to delete a Live Mount of a SQL Server database. Poll th
         public SwitchParameter DownloadDatabaseFilesFromArchivalLocation { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DownloadDatabaseBackupFiles parameter set
-        //
-        // [GraphQL: downloadMssqlDatabaseBackupFiles]
-        //
+        /// <summary>
+        /// DownloadDatabaseBackupFiles parameter set
+        ///
+        /// [GraphQL: downloadMssqlDatabaseBackupFiles]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DownloadDatabaseBackupFiles",
             Mandatory = false,
@@ -266,11 +266,11 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
         public SwitchParameter DownloadDatabaseBackupFiles { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AssignSlaDomainProperties parameter set
-        //
-        // [GraphQL: assignMssqlSlaDomainProperties]
-        //
+        /// <summary>
+        /// AssignSlaDomainProperties parameter set
+        ///
+        /// [GraphQL: assignMssqlSlaDomainProperties]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AssignSlaDomainProperties",
             Mandatory = false,
@@ -284,11 +284,11 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
         public SwitchParameter AssignSlaDomainProperties { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // UpdateDefaultProperties parameter set
-        //
-        // [GraphQL: updateMssqlDefaultProperties]
-        //
+        /// <summary>
+        /// UpdateDefaultProperties parameter set
+        ///
+        /// [GraphQL: updateMssqlDefaultProperties]
+        /// </summary>
         [Parameter(
             ParameterSetName = "UpdateDefaultProperties",
             Mandatory = false,
@@ -302,11 +302,11 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
         public SwitchParameter UpdateDefaultProperties { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // CreateLogShippingConfiguration parameter set
-        //
-        // [GraphQL: createMssqlLogShippingConfiguration]
-        //
+        /// <summary>
+        /// CreateLogShippingConfiguration parameter set
+        ///
+        /// [GraphQL: createMssqlLogShippingConfiguration]
+        /// </summary>
         [Parameter(
             ParameterSetName = "CreateLogShippingConfiguration",
             Mandatory = false,
@@ -320,11 +320,11 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
         public SwitchParameter CreateLogShippingConfiguration { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AssignSlaDomainPropertiesAsync parameter set
-        //
-        // [GraphQL: assignMssqlSlaDomainPropertiesAsync]
-        //
+        /// <summary>
+        /// AssignSlaDomainPropertiesAsync parameter set
+        ///
+        /// [GraphQL: assignMssqlSlaDomainPropertiesAsync]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AssignSlaDomainPropertiesAsync",
             Mandatory = false,
@@ -338,6 +338,8 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
         public SwitchParameter AssignSlaDomainPropertiesAsync { get; set; }
 
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
         protected override void ProcessRecord()
         {
             try
@@ -404,10 +406,11 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
                 ThrowTerminatingException(ex);
            }
         }
+#pragma warning restore 1591
 
         // This parameter set invokes a single graphql operation:
         // browseMssqlDatabaseSnapshot.
-        protected void ProcessRecord_BrowseDatabaseSnapshot()
+        internal void ProcessRecord_BrowseDatabaseSnapshot()
         {
             this._logger.name += " -BrowseDatabaseSnapshot";
             // Invoke graphql operation browseMssqlDatabaseSnapshot
@@ -416,7 +419,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
 
         // This parameter set invokes a single graphql operation:
         // exportMssqlDatabase.
-        protected void ProcessRecord_ExportDatabase()
+        internal void ProcessRecord_ExportDatabase()
         {
             this._logger.name += " -ExportDatabase";
             // Invoke graphql operation exportMssqlDatabase
@@ -425,7 +428,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
 
         // This parameter set invokes a single graphql operation:
         // restoreMssqlDatabase.
-        protected void ProcessRecord_RestoreDatabase()
+        internal void ProcessRecord_RestoreDatabase()
         {
             this._logger.name += " -RestoreDatabase";
             // Invoke graphql operation restoreMssqlDatabase
@@ -434,7 +437,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
 
         // This parameter set invokes a single graphql operation:
         // bulkUpdateMssqlDbs.
-        protected void ProcessRecord_BulkUpdateDbs()
+        internal void ProcessRecord_BulkUpdateDbs()
         {
             this._logger.name += " -BulkUpdateDbs";
             // Invoke graphql operation bulkUpdateMssqlDbs
@@ -443,7 +446,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
 
         // This parameter set invokes a single graphql operation:
         // takeMssqlLogBackup.
-        protected void ProcessRecord_TakeLogBackup()
+        internal void ProcessRecord_TakeLogBackup()
         {
             this._logger.name += " -TakeLogBackup";
             // Invoke graphql operation takeMssqlLogBackup
@@ -452,7 +455,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
 
         // This parameter set invokes a single graphql operation:
         // createOnDemandMssqlBackup.
-        protected void ProcessRecord_CreateOnDemandBackup()
+        internal void ProcessRecord_CreateOnDemandBackup()
         {
             this._logger.name += " -CreateOnDemandBackup";
             // Invoke graphql operation createOnDemandMssqlBackup
@@ -461,7 +464,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
 
         // This parameter set invokes a single graphql operation:
         // deleteMssqlDbSnapshots.
-        protected void ProcessRecord_DeleteDbSnapshots()
+        internal void ProcessRecord_DeleteDbSnapshots()
         {
             this._logger.name += " -DeleteDbSnapshots";
             // Invoke graphql operation deleteMssqlDbSnapshots
@@ -470,7 +473,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
 
         // This parameter set invokes a single graphql operation:
         // deleteMssqlLiveMount.
-        protected void ProcessRecord_DeleteLiveMount()
+        internal void ProcessRecord_DeleteLiveMount()
         {
             this._logger.name += " -DeleteLiveMount";
             // Invoke graphql operation deleteMssqlLiveMount
@@ -479,7 +482,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
 
         // This parameter set invokes a single graphql operation:
         // bulkCreateOnDemandMssqlBackup.
-        protected void ProcessRecord_BulkCreateOnDemandBackup()
+        internal void ProcessRecord_BulkCreateOnDemandBackup()
         {
             this._logger.name += " -BulkCreateOnDemandBackup";
             // Invoke graphql operation bulkCreateOnDemandMssqlBackup
@@ -488,7 +491,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
 
         // This parameter set invokes a single graphql operation:
         // createMssqlLiveMount.
-        protected void ProcessRecord_CreateLiveMount()
+        internal void ProcessRecord_CreateLiveMount()
         {
             this._logger.name += " -CreateLiveMount";
             // Invoke graphql operation createMssqlLiveMount
@@ -497,7 +500,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
 
         // This parameter set invokes a single graphql operation:
         // updateMssqlLogShippingConfiguration.
-        protected void ProcessRecord_UpdateLogShippingConfiguration()
+        internal void ProcessRecord_UpdateLogShippingConfiguration()
         {
             this._logger.name += " -UpdateLogShippingConfiguration";
             // Invoke graphql operation updateMssqlLogShippingConfiguration
@@ -506,7 +509,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
 
         // This parameter set invokes a single graphql operation:
         // downloadMssqlDatabaseFilesFromArchivalLocation.
-        protected void ProcessRecord_DownloadDatabaseFilesFromArchivalLocation()
+        internal void ProcessRecord_DownloadDatabaseFilesFromArchivalLocation()
         {
             this._logger.name += " -DownloadDatabaseFilesFromArchivalLocation";
             // Invoke graphql operation downloadMssqlDatabaseFilesFromArchivalLocation
@@ -515,7 +518,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
 
         // This parameter set invokes a single graphql operation:
         // downloadMssqlDatabaseBackupFiles.
-        protected void ProcessRecord_DownloadDatabaseBackupFiles()
+        internal void ProcessRecord_DownloadDatabaseBackupFiles()
         {
             this._logger.name += " -DownloadDatabaseBackupFiles";
             // Invoke graphql operation downloadMssqlDatabaseBackupFiles
@@ -524,7 +527,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
 
         // This parameter set invokes a single graphql operation:
         // assignMssqlSlaDomainProperties.
-        protected void ProcessRecord_AssignSlaDomainProperties()
+        internal void ProcessRecord_AssignSlaDomainProperties()
         {
             this._logger.name += " -AssignSlaDomainProperties";
             // Invoke graphql operation assignMssqlSlaDomainProperties
@@ -533,7 +536,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
 
         // This parameter set invokes a single graphql operation:
         // updateMssqlDefaultProperties.
-        protected void ProcessRecord_UpdateDefaultProperties()
+        internal void ProcessRecord_UpdateDefaultProperties()
         {
             this._logger.name += " -UpdateDefaultProperties";
             // Invoke graphql operation updateMssqlDefaultProperties
@@ -542,7 +545,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
 
         // This parameter set invokes a single graphql operation:
         // createMssqlLogShippingConfiguration.
-        protected void ProcessRecord_CreateLogShippingConfiguration()
+        internal void ProcessRecord_CreateLogShippingConfiguration()
         {
             this._logger.name += " -CreateLogShippingConfiguration";
             // Invoke graphql operation createMssqlLogShippingConfiguration
@@ -551,7 +554,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
 
         // This parameter set invokes a single graphql operation:
         // assignMssqlSlaDomainPropertiesAsync.
-        protected void ProcessRecord_AssignSlaDomainPropertiesAsync()
+        internal void ProcessRecord_AssignSlaDomainPropertiesAsync()
         {
             this._logger.name += " -AssignSlaDomainPropertiesAsync";
             // Invoke graphql operation assignMssqlSlaDomainPropertiesAsync
@@ -561,7 +564,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
 
         // Invoke GraphQL Mutation:
         // browseMssqlDatabaseSnapshot(input: BrowseMssqlDatabaseSnapshotInput!): BrowseMssqlDatabaseSnapshotReply!
-        protected void InvokeMutationBrowseMssqlDatabaseSnapshot()
+        internal void InvokeMutationBrowseMssqlDatabaseSnapshot()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "BrowseMssqlDatabaseSnapshotInput!"),
@@ -588,7 +591,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
 
         // Invoke GraphQL Mutation:
         // exportMssqlDatabase(input: ExportMssqlDatabaseInput!): AsyncRequestStatus!
-        protected void InvokeMutationExportMssqlDatabase()
+        internal void InvokeMutationExportMssqlDatabase()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "ExportMssqlDatabaseInput!"),
@@ -615,7 +618,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
 
         // Invoke GraphQL Mutation:
         // restoreMssqlDatabase(input: RestoreMssqlDatabaseInput!): AsyncRequestStatus!
-        protected void InvokeMutationRestoreMssqlDatabase()
+        internal void InvokeMutationRestoreMssqlDatabase()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RestoreMssqlDatabaseInput!"),
@@ -642,7 +645,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
 
         // Invoke GraphQL Mutation:
         // bulkUpdateMssqlDbs(input: BulkUpdateMssqlDbsInput!): BulkUpdateMssqlDbsReply!
-        protected void InvokeMutationBulkUpdateMssqlDbs()
+        internal void InvokeMutationBulkUpdateMssqlDbs()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "BulkUpdateMssqlDbsInput!"),
@@ -669,7 +672,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
 
         // Invoke GraphQL Mutation:
         // takeMssqlLogBackup(input: TakeMssqlLogBackupInput!): AsyncRequestStatus!
-        protected void InvokeMutationTakeMssqlLogBackup()
+        internal void InvokeMutationTakeMssqlLogBackup()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "TakeMssqlLogBackupInput!"),
@@ -696,7 +699,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
 
         // Invoke GraphQL Mutation:
         // createOnDemandMssqlBackup(input: CreateOnDemandMssqlBackupInput!): AsyncRequestStatus!
-        protected void InvokeMutationCreateOnDemandMssqlBackup()
+        internal void InvokeMutationCreateOnDemandMssqlBackup()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CreateOnDemandMssqlBackupInput!"),
@@ -723,7 +726,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
 
         // Invoke GraphQL Mutation:
         // deleteMssqlDbSnapshots(input: DeleteMssqlDbSnapshotsInput!): ResponseSuccess!
-        protected void InvokeMutationDeleteMssqlDbSnapshots()
+        internal void InvokeMutationDeleteMssqlDbSnapshots()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteMssqlDbSnapshotsInput!"),
@@ -750,7 +753,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
 
         // Invoke GraphQL Mutation:
         // deleteMssqlLiveMount(input: DeleteMssqlLiveMountInput!): AsyncRequestStatus!
-        protected void InvokeMutationDeleteMssqlLiveMount()
+        internal void InvokeMutationDeleteMssqlLiveMount()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteMssqlLiveMountInput!"),
@@ -777,7 +780,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
 
         // Invoke GraphQL Mutation:
         // bulkCreateOnDemandMssqlBackup(input: BulkCreateOnDemandMssqlBackupInput!): AsyncRequestStatus!
-        protected void InvokeMutationBulkCreateOnDemandMssqlBackup()
+        internal void InvokeMutationBulkCreateOnDemandMssqlBackup()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "BulkCreateOnDemandMssqlBackupInput!"),
@@ -804,7 +807,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
 
         // Invoke GraphQL Mutation:
         // createMssqlLiveMount(input: CreateMssqlLiveMountInput!): AsyncRequestStatus!
-        protected void InvokeMutationCreateMssqlLiveMount()
+        internal void InvokeMutationCreateMssqlLiveMount()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CreateMssqlLiveMountInput!"),
@@ -831,7 +834,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
 
         // Invoke GraphQL Mutation:
         // updateMssqlLogShippingConfiguration(input: UpdateMssqlLogShippingConfigurationInput!): UpdateMssqlLogShippingConfigurationReply!
-        protected void InvokeMutationUpdateMssqlLogShippingConfiguration()
+        internal void InvokeMutationUpdateMssqlLogShippingConfiguration()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpdateMssqlLogShippingConfigurationInput!"),
@@ -858,7 +861,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
 
         // Invoke GraphQL Mutation:
         // downloadMssqlDatabaseFilesFromArchivalLocation(input: DownloadMssqlDatabaseFilesFromArchivalLocationInput!): AsyncRequestStatus!
-        protected void InvokeMutationDownloadMssqlDatabaseFilesFromArchivalLocation()
+        internal void InvokeMutationDownloadMssqlDatabaseFilesFromArchivalLocation()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DownloadMssqlDatabaseFilesFromArchivalLocationInput!"),
@@ -885,7 +888,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
 
         // Invoke GraphQL Mutation:
         // downloadMssqlDatabaseBackupFiles(input: DownloadMssqlDatabaseBackupFilesInput!): AsyncRequestStatus!
-        protected void InvokeMutationDownloadMssqlDatabaseBackupFiles()
+        internal void InvokeMutationDownloadMssqlDatabaseBackupFiles()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DownloadMssqlDatabaseBackupFilesInput!"),
@@ -912,7 +915,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
 
         // Invoke GraphQL Mutation:
         // assignMssqlSlaDomainProperties(input: AssignMssqlSlaDomainPropertiesInput!): ResponseSuccess!
-        protected void InvokeMutationAssignMssqlSlaDomainProperties()
+        internal void InvokeMutationAssignMssqlSlaDomainProperties()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "AssignMssqlSlaDomainPropertiesInput!"),
@@ -939,7 +942,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
 
         // Invoke GraphQL Mutation:
         // updateMssqlDefaultProperties(input: UpdateMssqlDefaultPropertiesInput!): UpdateMssqlDefaultPropertiesReply!
-        protected void InvokeMutationUpdateMssqlDefaultProperties()
+        internal void InvokeMutationUpdateMssqlDefaultProperties()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpdateMssqlDefaultPropertiesInput!"),
@@ -966,7 +969,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
 
         // Invoke GraphQL Mutation:
         // createMssqlLogShippingConfiguration(input: CreateMssqlLogShippingConfigurationInput!): AsyncRequestStatus!
-        protected void InvokeMutationCreateMssqlLogShippingConfiguration()
+        internal void InvokeMutationCreateMssqlLogShippingConfiguration()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CreateMssqlLogShippingConfigurationInput!"),
@@ -993,7 +996,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
 
         // Invoke GraphQL Mutation:
         // assignMssqlSlaDomainPropertiesAsync(input: AssignMssqlSlaDomainPropertiesAsyncInput!): AssignMssqlSlaDomainPropertiesAsyncReply!
-        protected void InvokeMutationAssignMssqlSlaDomainPropertiesAsync()
+        internal void InvokeMutationAssignMssqlSlaDomainPropertiesAsync()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "AssignMssqlSlaDomainPropertiesAsyncInput!"),

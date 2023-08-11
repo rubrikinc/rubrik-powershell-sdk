@@ -26,11 +26,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     public class Invoke_RscQueryAzure : RscPSCmdlet
     {
         
-        // -------------------------------------------------------------------
-        // NativeRoot parameter set
-        //
-        // [GraphQL: azureNativeRoot]
-        //
+        /// <summary>
+        /// NativeRoot parameter set
+        ///
+        /// [GraphQL: azureNativeRoot]
+        /// </summary>
         [Parameter(
             ParameterSetName = "NativeRoot",
             Mandatory = false,
@@ -44,11 +44,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter NativeRoot { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // NativeSubscription parameter set
-        //
-        // [GraphQL: azureNativeSubscription]
-        //
+        /// <summary>
+        /// NativeSubscription parameter set
+        ///
+        /// [GraphQL: azureNativeSubscription]
+        /// </summary>
         [Parameter(
             ParameterSetName = "NativeSubscription",
             Mandatory = false,
@@ -62,11 +62,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter NativeSubscription { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // NativeSubscriptions parameter set
-        //
-        // [GraphQL: azureNativeSubscriptions]
-        //
+        /// <summary>
+        /// NativeSubscriptions parameter set
+        ///
+        /// [GraphQL: azureNativeSubscriptions]
+        /// </summary>
         [Parameter(
             ParameterSetName = "NativeSubscriptions",
             Mandatory = false,
@@ -80,11 +80,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter NativeSubscriptions { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // NativeResourceGroup parameter set
-        //
-        // [GraphQL: azureNativeResourceGroup]
-        //
+        /// <summary>
+        /// NativeResourceGroup parameter set
+        ///
+        /// [GraphQL: azureNativeResourceGroup]
+        /// </summary>
         [Parameter(
             ParameterSetName = "NativeResourceGroup",
             Mandatory = false,
@@ -98,11 +98,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter NativeResourceGroup { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // NativeResourceGroups parameter set
-        //
-        // [GraphQL: azureNativeResourceGroups]
-        //
+        /// <summary>
+        /// NativeResourceGroups parameter set
+        ///
+        /// [GraphQL: azureNativeResourceGroups]
+        /// </summary>
         [Parameter(
             ParameterSetName = "NativeResourceGroups",
             Mandatory = false,
@@ -116,11 +116,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter NativeResourceGroups { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // NativeVirtualMachine parameter set
-        //
-        // [GraphQL: azureNativeVirtualMachine]
-        //
+        /// <summary>
+        /// NativeVirtualMachine parameter set
+        ///
+        /// [GraphQL: azureNativeVirtualMachine]
+        /// </summary>
         [Parameter(
             ParameterSetName = "NativeVirtualMachine",
             Mandatory = false,
@@ -134,11 +134,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter NativeVirtualMachine { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // NativeVirtualMachines parameter set
-        //
-        // [GraphQL: azureNativeVirtualMachines]
-        //
+        /// <summary>
+        /// NativeVirtualMachines parameter set
+        ///
+        /// [GraphQL: azureNativeVirtualMachines]
+        /// </summary>
         [Parameter(
             ParameterSetName = "NativeVirtualMachines",
             Mandatory = false,
@@ -152,11 +152,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter NativeVirtualMachines { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // NativeManagedDisk parameter set
-        //
-        // [GraphQL: azureNativeManagedDisk]
-        //
+        /// <summary>
+        /// NativeManagedDisk parameter set
+        ///
+        /// [GraphQL: azureNativeManagedDisk]
+        /// </summary>
         [Parameter(
             ParameterSetName = "NativeManagedDisk",
             Mandatory = false,
@@ -170,11 +170,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter NativeManagedDisk { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // NativeManagedDisks parameter set
-        //
-        // [GraphQL: azureNativeManagedDisks]
-        //
+        /// <summary>
+        /// NativeManagedDisks parameter set
+        ///
+        /// [GraphQL: azureNativeManagedDisks]
+        /// </summary>
         [Parameter(
             ParameterSetName = "NativeManagedDisks",
             Mandatory = false,
@@ -188,11 +188,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter NativeManagedDisks { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllNativeVirtualNetworks parameter set
-        //
-        // [GraphQL: allAzureNativeVirtualNetworks]
-        //
+        /// <summary>
+        /// AllNativeVirtualNetworks parameter set
+        ///
+        /// [GraphQL: allAzureNativeVirtualNetworks]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllNativeVirtualNetworks",
             Mandatory = false,
@@ -206,11 +206,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllNativeVirtualNetworks { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllNativeSubnetsByRegionFromAzure parameter set
-        //
-        // [GraphQL: allAzureNativeSubnetsByRegionFromAzure]
-        //
+        /// <summary>
+        /// AllNativeSubnetsByRegionFromAzure parameter set
+        ///
+        /// [GraphQL: allAzureNativeSubnetsByRegionFromAzure]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllNativeSubnetsByRegionFromAzure",
             Mandatory = false,
@@ -224,11 +224,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllNativeSubnetsByRegionFromAzure { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllNativeSecurityGroupsByRegionFromAzure parameter set
-        //
-        // [GraphQL: allAzureNativeSecurityGroupsByRegionFromAzure]
-        //
+        /// <summary>
+        /// AllNativeSecurityGroupsByRegionFromAzure parameter set
+        ///
+        /// [GraphQL: allAzureNativeSecurityGroupsByRegionFromAzure]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllNativeSecurityGroupsByRegionFromAzure",
             Mandatory = false,
@@ -242,11 +242,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllNativeSecurityGroupsByRegionFromAzure { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllDiskEncryptionSetsByRegion parameter set
-        //
-        // [GraphQL: allAzureDiskEncryptionSetsByRegion]
-        //
+        /// <summary>
+        /// AllDiskEncryptionSetsByRegion parameter set
+        ///
+        /// [GraphQL: allAzureDiskEncryptionSetsByRegion]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllDiskEncryptionSetsByRegion",
             Mandatory = false,
@@ -260,11 +260,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllDiskEncryptionSetsByRegion { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllNativeAvailabilitySetsByRegionFromAzure parameter set
-        //
-        // [GraphQL: allAzureNativeAvailabilitySetsByRegionFromAzure]
-        //
+        /// <summary>
+        /// AllNativeAvailabilitySetsByRegionFromAzure parameter set
+        ///
+        /// [GraphQL: allAzureNativeAvailabilitySetsByRegionFromAzure]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllNativeAvailabilitySetsByRegionFromAzure",
             Mandatory = false,
@@ -278,11 +278,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllNativeAvailabilitySetsByRegionFromAzure { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllNativeExportCompatibleVmSizesByRegionFromAzure parameter set
-        //
-        // [GraphQL: allAzureNativeExportCompatibleVmSizesByRegionFromAzure]
-        //
+        /// <summary>
+        /// AllNativeExportCompatibleVmSizesByRegionFromAzure parameter set
+        ///
+        /// [GraphQL: allAzureNativeExportCompatibleVmSizesByRegionFromAzure]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllNativeExportCompatibleVmSizesByRegionFromAzure",
             Mandatory = false,
@@ -296,11 +296,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllNativeExportCompatibleVmSizesByRegionFromAzure { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllNativeExportCompatibleDiskTypesByRegionFromAzure parameter set
-        //
-        // [GraphQL: allAzureNativeExportCompatibleDiskTypesByRegionFromAzure]
-        //
+        /// <summary>
+        /// AllNativeExportCompatibleDiskTypesByRegionFromAzure parameter set
+        ///
+        /// [GraphQL: allAzureNativeExportCompatibleDiskTypesByRegionFromAzure]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllNativeExportCompatibleDiskTypesByRegionFromAzure",
             Mandatory = false,
@@ -314,11 +314,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllNativeExportCompatibleDiskTypesByRegionFromAzure { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllNativeVirtualMachineSizes parameter set
-        //
-        // [GraphQL: allAzureNativeVirtualMachineSizes]
-        //
+        /// <summary>
+        /// AllNativeVirtualMachineSizes parameter set
+        ///
+        /// [GraphQL: allAzureNativeVirtualMachineSizes]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllNativeVirtualMachineSizes",
             Mandatory = false,
@@ -332,11 +332,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllNativeVirtualMachineSizes { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // IsNativeManagedDiskSnapshotRestorable parameter set
-        //
-        // [GraphQL: isAzureNativeManagedDiskSnapshotRestorable]
-        //
+        /// <summary>
+        /// IsNativeManagedDiskSnapshotRestorable parameter set
+        ///
+        /// [GraphQL: isAzureNativeManagedDiskSnapshotRestorable]
+        /// </summary>
         [Parameter(
             ParameterSetName = "IsNativeManagedDiskSnapshotRestorable",
             Mandatory = false,
@@ -350,11 +350,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter IsNativeManagedDiskSnapshotRestorable { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // IsStorageAccountNameAvailable parameter set
-        //
-        // [GraphQL: isAzureStorageAccountNameAvailable]
-        //
+        /// <summary>
+        /// IsStorageAccountNameAvailable parameter set
+        ///
+        /// [GraphQL: isAzureStorageAccountNameAvailable]
+        /// </summary>
         [Parameter(
             ParameterSetName = "IsStorageAccountNameAvailable",
             Mandatory = false,
@@ -368,11 +368,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter IsStorageAccountNameAvailable { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllNativeStorageAccountsFromAzure parameter set
-        //
-        // [GraphQL: allAzureNativeStorageAccountsFromAzure]
-        //
+        /// <summary>
+        /// AllNativeStorageAccountsFromAzure parameter set
+        ///
+        /// [GraphQL: allAzureNativeStorageAccountsFromAzure]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllNativeStorageAccountsFromAzure",
             Mandatory = false,
@@ -386,11 +386,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllNativeStorageAccountsFromAzure { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // SqlDatabase parameter set
-        //
-        // [GraphQL: azureSqlDatabase]
-        //
+        /// <summary>
+        /// SqlDatabase parameter set
+        ///
+        /// [GraphQL: azureSqlDatabase]
+        /// </summary>
         [Parameter(
             ParameterSetName = "SqlDatabase",
             Mandatory = false,
@@ -404,11 +404,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter SqlDatabase { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // SqlDatabases parameter set
-        //
-        // [GraphQL: azureSqlDatabases]
-        //
+        /// <summary>
+        /// SqlDatabases parameter set
+        ///
+        /// [GraphQL: azureSqlDatabases]
+        /// </summary>
         [Parameter(
             ParameterSetName = "SqlDatabases",
             Mandatory = false,
@@ -422,11 +422,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter SqlDatabases { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // SqlDatabaseServer parameter set
-        //
-        // [GraphQL: azureSqlDatabaseServer]
-        //
+        /// <summary>
+        /// SqlDatabaseServer parameter set
+        ///
+        /// [GraphQL: azureSqlDatabaseServer]
+        /// </summary>
         [Parameter(
             ParameterSetName = "SqlDatabaseServer",
             Mandatory = false,
@@ -440,11 +440,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter SqlDatabaseServer { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // SqlDatabaseServers parameter set
-        //
-        // [GraphQL: azureSqlDatabaseServers]
-        //
+        /// <summary>
+        /// SqlDatabaseServers parameter set
+        ///
+        /// [GraphQL: azureSqlDatabaseServers]
+        /// </summary>
         [Parameter(
             ParameterSetName = "SqlDatabaseServers",
             Mandatory = false,
@@ -458,11 +458,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter SqlDatabaseServers { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // SqlManagedInstanceDatabase parameter set
-        //
-        // [GraphQL: azureSqlManagedInstanceDatabase]
-        //
+        /// <summary>
+        /// SqlManagedInstanceDatabase parameter set
+        ///
+        /// [GraphQL: azureSqlManagedInstanceDatabase]
+        /// </summary>
         [Parameter(
             ParameterSetName = "SqlManagedInstanceDatabase",
             Mandatory = false,
@@ -476,11 +476,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter SqlManagedInstanceDatabase { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // SqlManagedInstanceDatabases parameter set
-        //
-        // [GraphQL: azureSqlManagedInstanceDatabases]
-        //
+        /// <summary>
+        /// SqlManagedInstanceDatabases parameter set
+        ///
+        /// [GraphQL: azureSqlManagedInstanceDatabases]
+        /// </summary>
         [Parameter(
             ParameterSetName = "SqlManagedInstanceDatabases",
             Mandatory = false,
@@ -494,11 +494,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter SqlManagedInstanceDatabases { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // SqlManagedInstanceServer parameter set
-        //
-        // [GraphQL: azureSqlManagedInstanceServer]
-        //
+        /// <summary>
+        /// SqlManagedInstanceServer parameter set
+        ///
+        /// [GraphQL: azureSqlManagedInstanceServer]
+        /// </summary>
         [Parameter(
             ParameterSetName = "SqlManagedInstanceServer",
             Mandatory = false,
@@ -512,11 +512,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter SqlManagedInstanceServer { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // SqlManagedInstanceServers parameter set
-        //
-        // [GraphQL: azureSqlManagedInstanceServers]
-        //
+        /// <summary>
+        /// SqlManagedInstanceServers parameter set
+        ///
+        /// [GraphQL: azureSqlManagedInstanceServers]
+        /// </summary>
         [Parameter(
             ParameterSetName = "SqlManagedInstanceServers",
             Mandatory = false,
@@ -530,11 +530,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter SqlManagedInstanceServers { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // SqlDatabaseDbPointInTimeRestoreWindowFromAzure parameter set
-        //
-        // [GraphQL: azureSqlDatabaseDbPointInTimeRestoreWindowFromAzure]
-        //
+        /// <summary>
+        /// SqlDatabaseDbPointInTimeRestoreWindowFromAzure parameter set
+        ///
+        /// [GraphQL: azureSqlDatabaseDbPointInTimeRestoreWindowFromAzure]
+        /// </summary>
         [Parameter(
             ParameterSetName = "SqlDatabaseDbPointInTimeRestoreWindowFromAzure",
             Mandatory = false,
@@ -548,11 +548,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter SqlDatabaseDbPointInTimeRestoreWindowFromAzure { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure parameter set
-        //
-        // [GraphQL: azureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure]
-        //
+        /// <summary>
+        /// SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure parameter set
+        ///
+        /// [GraphQL: azureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure]
+        /// </summary>
         [Parameter(
             ParameterSetName = "SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure",
             Mandatory = false,
@@ -566,11 +566,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ValidateNativeSqlDatabaseDbNameForExport parameter set
-        //
-        // [GraphQL: validateAzureNativeSqlDatabaseDbNameForExport]
-        //
+        /// <summary>
+        /// ValidateNativeSqlDatabaseDbNameForExport parameter set
+        ///
+        /// [GraphQL: validateAzureNativeSqlDatabaseDbNameForExport]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ValidateNativeSqlDatabaseDbNameForExport",
             Mandatory = false,
@@ -584,11 +584,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter ValidateNativeSqlDatabaseDbNameForExport { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ValidateNativeSqlManagedInstanceDbNameForExport parameter set
-        //
-        // [GraphQL: validateAzureNativeSqlManagedInstanceDbNameForExport]
-        //
+        /// <summary>
+        /// ValidateNativeSqlManagedInstanceDbNameForExport parameter set
+        ///
+        /// [GraphQL: validateAzureNativeSqlManagedInstanceDbNameForExport]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ValidateNativeSqlManagedInstanceDbNameForExport",
             Mandatory = false,
@@ -602,11 +602,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter ValidateNativeSqlManagedInstanceDbNameForExport { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllSqlDatabaseServerElasticPools parameter set
-        //
-        // [GraphQL: allAzureSqlDatabaseServerElasticPools]
-        //
+        /// <summary>
+        /// AllSqlDatabaseServerElasticPools parameter set
+        ///
+        /// [GraphQL: allAzureSqlDatabaseServerElasticPools]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllSqlDatabaseServerElasticPools",
             Mandatory = false,
@@ -620,11 +620,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllSqlDatabaseServerElasticPools { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // IsNativeSqlDatabaseSnapshotPersistent parameter set
-        //
-        // [GraphQL: isAzureNativeSqlDatabaseSnapshotPersistent]
-        //
+        /// <summary>
+        /// IsNativeSqlDatabaseSnapshotPersistent parameter set
+        ///
+        /// [GraphQL: isAzureNativeSqlDatabaseSnapshotPersistent]
+        /// </summary>
         [Parameter(
             ParameterSetName = "IsNativeSqlDatabaseSnapshotPersistent",
             Mandatory = false,
@@ -638,11 +638,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter IsNativeSqlDatabaseSnapshotPersistent { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // NativeLiveMountDisks parameter set
-        //
-        // [GraphQL: azureNativeLiveMountDisks]
-        //
+        /// <summary>
+        /// NativeLiveMountDisks parameter set
+        ///
+        /// [GraphQL: azureNativeLiveMountDisks]
+        /// </summary>
         [Parameter(
             ParameterSetName = "NativeLiveMountDisks",
             Mandatory = false,
@@ -656,11 +656,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter NativeLiveMountDisks { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllKeyVaultsByRegion parameter set
-        //
-        // [GraphQL: allAzureKeyVaultsByRegion]
-        //
+        /// <summary>
+        /// AllKeyVaultsByRegion parameter set
+        ///
+        /// [GraphQL: allAzureKeyVaultsByRegion]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllKeyVaultsByRegion",
             Mandatory = false,
@@ -674,11 +674,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllKeyVaultsByRegion { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllEncryptionKeys parameter set
-        //
-        // [GraphQL: allAzureEncryptionKeys]
-        //
+        /// <summary>
+        /// AllEncryptionKeys parameter set
+        ///
+        /// [GraphQL: allAzureEncryptionKeys]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllEncryptionKeys",
             Mandatory = false,
@@ -692,11 +692,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllEncryptionKeys { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // CloudAccountTenant parameter set
-        //
-        // [GraphQL: azureCloudAccountTenant]
-        //
+        /// <summary>
+        /// CloudAccountTenant parameter set
+        ///
+        /// [GraphQL: azureCloudAccountTenant]
+        /// </summary>
         [Parameter(
             ParameterSetName = "CloudAccountTenant",
             Mandatory = false,
@@ -710,11 +710,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter CloudAccountTenant { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // CloudAccountTenantWithExoConfigs parameter set
-        //
-        // [GraphQL: azureCloudAccountTenantWithExoConfigs]
-        //
+        /// <summary>
+        /// CloudAccountTenantWithExoConfigs parameter set
+        ///
+        /// [GraphQL: azureCloudAccountTenantWithExoConfigs]
+        /// </summary>
         [Parameter(
             ParameterSetName = "CloudAccountTenantWithExoConfigs",
             Mandatory = false,
@@ -728,11 +728,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter CloudAccountTenantWithExoConfigs { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllCloudAccountTenantsWithExoConfigs parameter set
-        //
-        // [GraphQL: allAzureCloudAccountTenantsWithExoConfigs]
-        //
+        /// <summary>
+        /// AllCloudAccountTenantsWithExoConfigs parameter set
+        ///
+        /// [GraphQL: allAzureCloudAccountTenantsWithExoConfigs]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllCloudAccountTenantsWithExoConfigs",
             Mandatory = false,
@@ -746,11 +746,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllCloudAccountTenantsWithExoConfigs { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllCloudAccountTenants parameter set
-        //
-        // [GraphQL: allAzureCloudAccountTenants]
-        //
+        /// <summary>
+        /// AllCloudAccountTenants parameter set
+        ///
+        /// [GraphQL: allAzureCloudAccountTenants]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllCloudAccountTenants",
             Mandatory = false,
@@ -764,11 +764,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllCloudAccountTenants { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // CloudAccountSubscriptionWithFeatures parameter set
-        //
-        // [GraphQL: azureCloudAccountSubscriptionWithFeatures]
-        //
+        /// <summary>
+        /// CloudAccountSubscriptionWithFeatures parameter set
+        ///
+        /// [GraphQL: azureCloudAccountSubscriptionWithFeatures]
+        /// </summary>
         [Parameter(
             ParameterSetName = "CloudAccountSubscriptionWithFeatures",
             Mandatory = false,
@@ -782,11 +782,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter CloudAccountSubscriptionWithFeatures { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllCloudAccountSubscriptionsByFeature parameter set
-        //
-        // [GraphQL: allAzureCloudAccountSubscriptionsByFeature]
-        //
+        /// <summary>
+        /// AllCloudAccountSubscriptionsByFeature parameter set
+        ///
+        /// [GraphQL: allAzureCloudAccountSubscriptionsByFeature]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllCloudAccountSubscriptionsByFeature",
             Mandatory = false,
@@ -800,11 +800,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllCloudAccountSubscriptionsByFeature { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllSubscriptionWithExocomputeMappings parameter set
-        //
-        // [GraphQL: allAzureSubscriptionWithExocomputeMappings]
-        //
+        /// <summary>
+        /// AllSubscriptionWithExocomputeMappings parameter set
+        ///
+        /// [GraphQL: allAzureSubscriptionWithExocomputeMappings]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllSubscriptionWithExocomputeMappings",
             Mandatory = false,
@@ -818,11 +818,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllSubscriptionWithExocomputeMappings { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllResourceGroupsFrom parameter set
-        //
-        // [GraphQL: allResourceGroupsFromAzure]
-        //
+        /// <summary>
+        /// AllResourceGroupsFrom parameter set
+        ///
+        /// [GraphQL: allResourceGroupsFromAzure]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllResourceGroupsFrom",
             Mandatory = false,
@@ -836,11 +836,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllResourceGroupsFrom { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DoesNativeResourceGroupExist parameter set
-        //
-        // [GraphQL: doesAzureNativeResourceGroupExist]
-        //
+        /// <summary>
+        /// DoesNativeResourceGroupExist parameter set
+        ///
+        /// [GraphQL: doesAzureNativeResourceGroupExist]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DoesNativeResourceGroupExist",
             Mandatory = false,
@@ -854,11 +854,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter DoesNativeResourceGroupExist { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllNativeResourceGroupsInfoIfExist parameter set
-        //
-        // [GraphQL: allAzureNativeResourceGroupsInfoIfExist]
-        //
+        /// <summary>
+        /// AllNativeResourceGroupsInfoIfExist parameter set
+        ///
+        /// [GraphQL: allAzureNativeResourceGroupsInfoIfExist]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllNativeResourceGroupsInfoIfExist",
             Mandatory = false,
@@ -872,11 +872,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllNativeResourceGroupsInfoIfExist { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllCloudAccountMissingPermissions parameter set
-        //
-        // [GraphQL: allAzureCloudAccountMissingPermissions]
-        //
+        /// <summary>
+        /// AllCloudAccountMissingPermissions parameter set
+        ///
+        /// [GraphQL: allAzureCloudAccountMissingPermissions]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllCloudAccountMissingPermissions",
             Mandatory = false,
@@ -890,11 +890,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllCloudAccountMissingPermissions { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // CloudAccountPermissionConfig parameter set
-        //
-        // [GraphQL: azureCloudAccountPermissionConfig]
-        //
+        /// <summary>
+        /// CloudAccountPermissionConfig parameter set
+        ///
+        /// [GraphQL: azureCloudAccountPermissionConfig]
+        /// </summary>
         [Parameter(
             ParameterSetName = "CloudAccountPermissionConfig",
             Mandatory = false,
@@ -908,11 +908,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter CloudAccountPermissionConfig { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // CloudAccountGrantedPermissionsGroups parameter set
-        //
-        // [GraphQL: azureCloudAccountGrantedPermissionsGroups]
-        //
+        /// <summary>
+        /// CloudAccountGrantedPermissionsGroups parameter set
+        ///
+        /// [GraphQL: azureCloudAccountGrantedPermissionsGroups]
+        /// </summary>
         [Parameter(
             ParameterSetName = "CloudAccountGrantedPermissionsGroups",
             Mandatory = false,
@@ -926,11 +926,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter CloudAccountGrantedPermissionsGroups { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // CloudAccountGrantedPermissionsGroupsForRecovery parameter set
-        //
-        // [GraphQL: azureCloudAccountGrantedPermissionsGroupsForRecovery]
-        //
+        /// <summary>
+        /// CloudAccountGrantedPermissionsGroupsForRecovery parameter set
+        ///
+        /// [GraphQL: azureCloudAccountGrantedPermissionsGroupsForRecovery]
+        /// </summary>
         [Parameter(
             ParameterSetName = "CloudAccountGrantedPermissionsGroupsForRecovery",
             Mandatory = false,
@@ -944,11 +944,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter CloudAccountGrantedPermissionsGroupsForRecovery { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // CloudAccountCheckRefreshTokenExistsForRecovery parameter set
-        //
-        // [GraphQL: azureCloudAccountCheckRefreshTokenExistsForRecovery]
-        //
+        /// <summary>
+        /// CloudAccountCheckRefreshTokenExistsForRecovery parameter set
+        ///
+        /// [GraphQL: azureCloudAccountCheckRefreshTokenExistsForRecovery]
+        /// </summary>
         [Parameter(
             ParameterSetName = "CloudAccountCheckRefreshTokenExistsForRecovery",
             Mandatory = false,
@@ -962,11 +962,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter CloudAccountCheckRefreshTokenExistsForRecovery { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllExocomputeConfigsInAccount parameter set
-        //
-        // [GraphQL: allAzureExocomputeConfigsInAccount]
-        //
+        /// <summary>
+        /// AllExocomputeConfigsInAccount parameter set
+        ///
+        /// [GraphQL: allAzureExocomputeConfigsInAccount]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllExocomputeConfigsInAccount",
             Mandatory = false,
@@ -980,11 +980,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllExocomputeConfigsInAccount { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllCloudAccountSubnetsByRegion parameter set
-        //
-        // [GraphQL: allAzureCloudAccountSubnetsByRegion]
-        //
+        /// <summary>
+        /// AllCloudAccountSubnetsByRegion parameter set
+        ///
+        /// [GraphQL: allAzureCloudAccountSubnetsByRegion]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllCloudAccountSubnetsByRegion",
             Mandatory = false,
@@ -998,11 +998,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllCloudAccountSubnetsByRegion { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ValidateCloudAccountExocomputeConfigurations parameter set
-        //
-        // [GraphQL: validateAzureCloudAccountExocomputeConfigurations]
-        //
+        /// <summary>
+        /// ValidateCloudAccountExocomputeConfigurations parameter set
+        ///
+        /// [GraphQL: validateAzureCloudAccountExocomputeConfigurations]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ValidateCloudAccountExocomputeConfigurations",
             Mandatory = false,
@@ -1016,11 +1016,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter ValidateCloudAccountExocomputeConfigurations { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllArmTemplatesByFeature parameter set
-        //
-        // [GraphQL: allAzureArmTemplatesByFeature]
-        //
+        /// <summary>
+        /// AllArmTemplatesByFeature parameter set
+        ///
+        /// [GraphQL: allAzureArmTemplatesByFeature]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllArmTemplatesByFeature",
             Mandatory = false,
@@ -1034,11 +1034,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllArmTemplatesByFeature { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // CheckPersistentStorageSubscriptionCanUnmap parameter set
-        //
-        // [GraphQL: checkAzurePersistentStorageSubscriptionCanUnmap]
-        //
+        /// <summary>
+        /// CheckPersistentStorageSubscriptionCanUnmap parameter set
+        ///
+        /// [GraphQL: checkAzurePersistentStorageSubscriptionCanUnmap]
+        /// </summary>
         [Parameter(
             ParameterSetName = "CheckPersistentStorageSubscriptionCanUnmap",
             Mandatory = false,
@@ -1052,11 +1052,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter CheckPersistentStorageSubscriptionCanUnmap { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Subscriptions parameter set
-        //
-        // [GraphQL: azureSubscriptions]
-        //
+        /// <summary>
+        /// Subscriptions parameter set
+        ///
+        /// [GraphQL: azureSubscriptions]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Subscriptions",
             Mandatory = false,
@@ -1070,11 +1070,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Subscriptions { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Regions parameter set
-        //
-        // [GraphQL: azureRegions]
-        //
+        /// <summary>
+        /// Regions parameter set
+        ///
+        /// [GraphQL: azureRegions]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Regions",
             Mandatory = false,
@@ -1088,11 +1088,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Regions { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ResourceGroups parameter set
-        //
-        // [GraphQL: azureResourceGroups]
-        //
+        /// <summary>
+        /// ResourceGroups parameter set
+        ///
+        /// [GraphQL: azureResourceGroups]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ResourceGroups",
             Mandatory = false,
@@ -1106,11 +1106,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter ResourceGroups { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // VNets parameter set
-        //
-        // [GraphQL: azureVNets]
-        //
+        /// <summary>
+        /// VNets parameter set
+        ///
+        /// [GraphQL: azureVNets]
+        /// </summary>
         [Parameter(
             ParameterSetName = "VNets",
             Mandatory = false,
@@ -1124,11 +1124,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter VNets { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Subnets parameter set
-        //
-        // [GraphQL: azureSubnets]
-        //
+        /// <summary>
+        /// Subnets parameter set
+        ///
+        /// [GraphQL: azureSubnets]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Subnets",
             Mandatory = false,
@@ -1142,11 +1142,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Subnets { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // StorageAccounts parameter set
-        //
-        // [GraphQL: azureStorageAccounts]
-        //
+        /// <summary>
+        /// StorageAccounts parameter set
+        ///
+        /// [GraphQL: azureStorageAccounts]
+        /// </summary>
         [Parameter(
             ParameterSetName = "StorageAccounts",
             Mandatory = false,
@@ -1160,11 +1160,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter StorageAccounts { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllHostedRegions parameter set
-        //
-        // [GraphQL: allHostedAzureRegions]
-        //
+        /// <summary>
+        /// AllHostedRegions parameter set
+        ///
+        /// [GraphQL: allHostedAzureRegions]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllHostedRegions",
             Mandatory = false,
@@ -1178,11 +1178,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllHostedRegions { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllResourceGroups parameter set
-        //
-        // [GraphQL: allAzureResourceGroups]
-        //
+        /// <summary>
+        /// AllResourceGroups parameter set
+        ///
+        /// [GraphQL: allAzureResourceGroups]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllResourceGroups",
             Mandatory = false,
@@ -1196,11 +1196,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllResourceGroups { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllVnets parameter set
-        //
-        // [GraphQL: allAzureVnets]
-        //
+        /// <summary>
+        /// AllVnets parameter set
+        ///
+        /// [GraphQL: allAzureVnets]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllVnets",
             Mandatory = false,
@@ -1214,11 +1214,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllVnets { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllSubnets parameter set
-        //
-        // [GraphQL: allAzureSubnets]
-        //
+        /// <summary>
+        /// AllSubnets parameter set
+        ///
+        /// [GraphQL: allAzureSubnets]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllSubnets",
             Mandatory = false,
@@ -1232,11 +1232,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllSubnets { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllCdmVersions parameter set
-        //
-        // [GraphQL: allAzureCdmVersions]
-        //
+        /// <summary>
+        /// AllCdmVersions parameter set
+        ///
+        /// [GraphQL: allAzureCdmVersions]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllCdmVersions",
             Mandatory = false,
@@ -1250,11 +1250,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllCdmVersions { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllRegions parameter set
-        //
-        // [GraphQL: allAzureRegions]
-        //
+        /// <summary>
+        /// AllRegions parameter set
+        ///
+        /// [GraphQL: allAzureRegions]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllRegions",
             Mandatory = false,
@@ -1268,11 +1268,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllRegions { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllNsgs parameter set
-        //
-        // [GraphQL: allAzureNsgs]
-        //
+        /// <summary>
+        /// AllNsgs parameter set
+        ///
+        /// [GraphQL: allAzureNsgs]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllNsgs",
             Mandatory = false,
@@ -1286,11 +1286,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllNsgs { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllStorageAccounts parameter set
-        //
-        // [GraphQL: allAzureStorageAccounts]
-        //
+        /// <summary>
+        /// AllStorageAccounts parameter set
+        ///
+        /// [GraphQL: allAzureStorageAccounts]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllStorageAccounts",
             Mandatory = false,
@@ -1304,11 +1304,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllStorageAccounts { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AdDirectories parameter set
-        //
-        // [GraphQL: azureAdDirectories]
-        //
+        /// <summary>
+        /// AdDirectories parameter set
+        ///
+        /// [GraphQL: azureAdDirectories]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AdDirectories",
             Mandatory = false,
@@ -1322,11 +1322,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AdDirectories { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AdDirectory parameter set
-        //
-        // [GraphQL: azureAdDirectory]
-        //
+        /// <summary>
+        /// AdDirectory parameter set
+        ///
+        /// [GraphQL: azureAdDirectory]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AdDirectory",
             Mandatory = false,
@@ -1340,11 +1340,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AdDirectory { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AdObjectsByType parameter set
-        //
-        // [GraphQL: azureAdObjectsByType]
-        //
+        /// <summary>
+        /// AdObjectsByType parameter set
+        ///
+        /// [GraphQL: azureAdObjectsByType]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AdObjectsByType",
             Mandatory = false,
@@ -1358,6 +1358,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AdObjectsByType { get; set; }
 
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
         protected override void ProcessRecord()
         {
             try
@@ -1595,10 +1597,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 ThrowTerminatingException(ex);
            }
         }
+#pragma warning restore 1591
 
         // This parameter set invokes a single graphql operation:
         // azureNativeRoot.
-        protected void ProcessRecord_NativeRoot()
+        internal void ProcessRecord_NativeRoot()
         {
             this._logger.name += " -NativeRoot";
             // Invoke graphql operation azureNativeRoot
@@ -1607,7 +1610,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // azureNativeSubscription.
-        protected void ProcessRecord_NativeSubscription()
+        internal void ProcessRecord_NativeSubscription()
         {
             this._logger.name += " -NativeSubscription";
             // Invoke graphql operation azureNativeSubscription
@@ -1616,7 +1619,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // azureNativeSubscriptions.
-        protected void ProcessRecord_NativeSubscriptions()
+        internal void ProcessRecord_NativeSubscriptions()
         {
             this._logger.name += " -NativeSubscriptions";
             // Invoke graphql operation azureNativeSubscriptions
@@ -1625,7 +1628,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // azureNativeResourceGroup.
-        protected void ProcessRecord_NativeResourceGroup()
+        internal void ProcessRecord_NativeResourceGroup()
         {
             this._logger.name += " -NativeResourceGroup";
             // Invoke graphql operation azureNativeResourceGroup
@@ -1634,7 +1637,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // azureNativeResourceGroups.
-        protected void ProcessRecord_NativeResourceGroups()
+        internal void ProcessRecord_NativeResourceGroups()
         {
             this._logger.name += " -NativeResourceGroups";
             // Invoke graphql operation azureNativeResourceGroups
@@ -1643,7 +1646,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // azureNativeVirtualMachine.
-        protected void ProcessRecord_NativeVirtualMachine()
+        internal void ProcessRecord_NativeVirtualMachine()
         {
             this._logger.name += " -NativeVirtualMachine";
             // Invoke graphql operation azureNativeVirtualMachine
@@ -1652,7 +1655,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // azureNativeVirtualMachines.
-        protected void ProcessRecord_NativeVirtualMachines()
+        internal void ProcessRecord_NativeVirtualMachines()
         {
             this._logger.name += " -NativeVirtualMachines";
             // Invoke graphql operation azureNativeVirtualMachines
@@ -1661,7 +1664,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // azureNativeManagedDisk.
-        protected void ProcessRecord_NativeManagedDisk()
+        internal void ProcessRecord_NativeManagedDisk()
         {
             this._logger.name += " -NativeManagedDisk";
             // Invoke graphql operation azureNativeManagedDisk
@@ -1670,7 +1673,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // azureNativeManagedDisks.
-        protected void ProcessRecord_NativeManagedDisks()
+        internal void ProcessRecord_NativeManagedDisks()
         {
             this._logger.name += " -NativeManagedDisks";
             // Invoke graphql operation azureNativeManagedDisks
@@ -1679,7 +1682,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allAzureNativeVirtualNetworks.
-        protected void ProcessRecord_AllNativeVirtualNetworks()
+        internal void ProcessRecord_AllNativeVirtualNetworks()
         {
             this._logger.name += " -AllNativeVirtualNetworks";
             // Invoke graphql operation allAzureNativeVirtualNetworks
@@ -1688,7 +1691,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allAzureNativeSubnetsByRegionFromAzure.
-        protected void ProcessRecord_AllNativeSubnetsByRegionFromAzure()
+        internal void ProcessRecord_AllNativeSubnetsByRegionFromAzure()
         {
             this._logger.name += " -AllNativeSubnetsByRegionFromAzure";
             // Invoke graphql operation allAzureNativeSubnetsByRegionFromAzure
@@ -1697,7 +1700,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allAzureNativeSecurityGroupsByRegionFromAzure.
-        protected void ProcessRecord_AllNativeSecurityGroupsByRegionFromAzure()
+        internal void ProcessRecord_AllNativeSecurityGroupsByRegionFromAzure()
         {
             this._logger.name += " -AllNativeSecurityGroupsByRegionFromAzure";
             // Invoke graphql operation allAzureNativeSecurityGroupsByRegionFromAzure
@@ -1706,7 +1709,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allAzureDiskEncryptionSetsByRegion.
-        protected void ProcessRecord_AllDiskEncryptionSetsByRegion()
+        internal void ProcessRecord_AllDiskEncryptionSetsByRegion()
         {
             this._logger.name += " -AllDiskEncryptionSetsByRegion";
             // Invoke graphql operation allAzureDiskEncryptionSetsByRegion
@@ -1715,7 +1718,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allAzureNativeAvailabilitySetsByRegionFromAzure.
-        protected void ProcessRecord_AllNativeAvailabilitySetsByRegionFromAzure()
+        internal void ProcessRecord_AllNativeAvailabilitySetsByRegionFromAzure()
         {
             this._logger.name += " -AllNativeAvailabilitySetsByRegionFromAzure";
             // Invoke graphql operation allAzureNativeAvailabilitySetsByRegionFromAzure
@@ -1724,7 +1727,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allAzureNativeExportCompatibleVmSizesByRegionFromAzure.
-        protected void ProcessRecord_AllNativeExportCompatibleVmSizesByRegionFromAzure()
+        internal void ProcessRecord_AllNativeExportCompatibleVmSizesByRegionFromAzure()
         {
             this._logger.name += " -AllNativeExportCompatibleVmSizesByRegionFromAzure";
             // Invoke graphql operation allAzureNativeExportCompatibleVmSizesByRegionFromAzure
@@ -1733,7 +1736,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allAzureNativeExportCompatibleDiskTypesByRegionFromAzure.
-        protected void ProcessRecord_AllNativeExportCompatibleDiskTypesByRegionFromAzure()
+        internal void ProcessRecord_AllNativeExportCompatibleDiskTypesByRegionFromAzure()
         {
             this._logger.name += " -AllNativeExportCompatibleDiskTypesByRegionFromAzure";
             // Invoke graphql operation allAzureNativeExportCompatibleDiskTypesByRegionFromAzure
@@ -1742,7 +1745,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allAzureNativeVirtualMachineSizes.
-        protected void ProcessRecord_AllNativeVirtualMachineSizes()
+        internal void ProcessRecord_AllNativeVirtualMachineSizes()
         {
             this._logger.name += " -AllNativeVirtualMachineSizes";
             // Invoke graphql operation allAzureNativeVirtualMachineSizes
@@ -1751,7 +1754,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // isAzureNativeManagedDiskSnapshotRestorable.
-        protected void ProcessRecord_IsNativeManagedDiskSnapshotRestorable()
+        internal void ProcessRecord_IsNativeManagedDiskSnapshotRestorable()
         {
             this._logger.name += " -IsNativeManagedDiskSnapshotRestorable";
             // Invoke graphql operation isAzureNativeManagedDiskSnapshotRestorable
@@ -1760,7 +1763,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // isAzureStorageAccountNameAvailable.
-        protected void ProcessRecord_IsStorageAccountNameAvailable()
+        internal void ProcessRecord_IsStorageAccountNameAvailable()
         {
             this._logger.name += " -IsStorageAccountNameAvailable";
             // Invoke graphql operation isAzureStorageAccountNameAvailable
@@ -1769,7 +1772,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allAzureNativeStorageAccountsFromAzure.
-        protected void ProcessRecord_AllNativeStorageAccountsFromAzure()
+        internal void ProcessRecord_AllNativeStorageAccountsFromAzure()
         {
             this._logger.name += " -AllNativeStorageAccountsFromAzure";
             // Invoke graphql operation allAzureNativeStorageAccountsFromAzure
@@ -1778,7 +1781,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // azureSqlDatabase.
-        protected void ProcessRecord_SqlDatabase()
+        internal void ProcessRecord_SqlDatabase()
         {
             this._logger.name += " -SqlDatabase";
             // Invoke graphql operation azureSqlDatabase
@@ -1787,7 +1790,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // azureSqlDatabases.
-        protected void ProcessRecord_SqlDatabases()
+        internal void ProcessRecord_SqlDatabases()
         {
             this._logger.name += " -SqlDatabases";
             // Invoke graphql operation azureSqlDatabases
@@ -1796,7 +1799,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // azureSqlDatabaseServer.
-        protected void ProcessRecord_SqlDatabaseServer()
+        internal void ProcessRecord_SqlDatabaseServer()
         {
             this._logger.name += " -SqlDatabaseServer";
             // Invoke graphql operation azureSqlDatabaseServer
@@ -1805,7 +1808,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // azureSqlDatabaseServers.
-        protected void ProcessRecord_SqlDatabaseServers()
+        internal void ProcessRecord_SqlDatabaseServers()
         {
             this._logger.name += " -SqlDatabaseServers";
             // Invoke graphql operation azureSqlDatabaseServers
@@ -1814,7 +1817,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // azureSqlManagedInstanceDatabase.
-        protected void ProcessRecord_SqlManagedInstanceDatabase()
+        internal void ProcessRecord_SqlManagedInstanceDatabase()
         {
             this._logger.name += " -SqlManagedInstanceDatabase";
             // Invoke graphql operation azureSqlManagedInstanceDatabase
@@ -1823,7 +1826,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // azureSqlManagedInstanceDatabases.
-        protected void ProcessRecord_SqlManagedInstanceDatabases()
+        internal void ProcessRecord_SqlManagedInstanceDatabases()
         {
             this._logger.name += " -SqlManagedInstanceDatabases";
             // Invoke graphql operation azureSqlManagedInstanceDatabases
@@ -1832,7 +1835,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // azureSqlManagedInstanceServer.
-        protected void ProcessRecord_SqlManagedInstanceServer()
+        internal void ProcessRecord_SqlManagedInstanceServer()
         {
             this._logger.name += " -SqlManagedInstanceServer";
             // Invoke graphql operation azureSqlManagedInstanceServer
@@ -1841,7 +1844,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // azureSqlManagedInstanceServers.
-        protected void ProcessRecord_SqlManagedInstanceServers()
+        internal void ProcessRecord_SqlManagedInstanceServers()
         {
             this._logger.name += " -SqlManagedInstanceServers";
             // Invoke graphql operation azureSqlManagedInstanceServers
@@ -1850,7 +1853,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // azureSqlDatabaseDbPointInTimeRestoreWindowFromAzure.
-        protected void ProcessRecord_SqlDatabaseDbPointInTimeRestoreWindowFromAzure()
+        internal void ProcessRecord_SqlDatabaseDbPointInTimeRestoreWindowFromAzure()
         {
             this._logger.name += " -SqlDatabaseDbPointInTimeRestoreWindowFromAzure";
             // Invoke graphql operation azureSqlDatabaseDbPointInTimeRestoreWindowFromAzure
@@ -1859,7 +1862,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // azureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure.
-        protected void ProcessRecord_SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure()
+        internal void ProcessRecord_SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure()
         {
             this._logger.name += " -SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure";
             // Invoke graphql operation azureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure
@@ -1868,7 +1871,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // validateAzureNativeSqlDatabaseDbNameForExport.
-        protected void ProcessRecord_ValidateNativeSqlDatabaseDbNameForExport()
+        internal void ProcessRecord_ValidateNativeSqlDatabaseDbNameForExport()
         {
             this._logger.name += " -ValidateNativeSqlDatabaseDbNameForExport";
             // Invoke graphql operation validateAzureNativeSqlDatabaseDbNameForExport
@@ -1877,7 +1880,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // validateAzureNativeSqlManagedInstanceDbNameForExport.
-        protected void ProcessRecord_ValidateNativeSqlManagedInstanceDbNameForExport()
+        internal void ProcessRecord_ValidateNativeSqlManagedInstanceDbNameForExport()
         {
             this._logger.name += " -ValidateNativeSqlManagedInstanceDbNameForExport";
             // Invoke graphql operation validateAzureNativeSqlManagedInstanceDbNameForExport
@@ -1886,7 +1889,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allAzureSqlDatabaseServerElasticPools.
-        protected void ProcessRecord_AllSqlDatabaseServerElasticPools()
+        internal void ProcessRecord_AllSqlDatabaseServerElasticPools()
         {
             this._logger.name += " -AllSqlDatabaseServerElasticPools";
             // Invoke graphql operation allAzureSqlDatabaseServerElasticPools
@@ -1895,7 +1898,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // isAzureNativeSqlDatabaseSnapshotPersistent.
-        protected void ProcessRecord_IsNativeSqlDatabaseSnapshotPersistent()
+        internal void ProcessRecord_IsNativeSqlDatabaseSnapshotPersistent()
         {
             this._logger.name += " -IsNativeSqlDatabaseSnapshotPersistent";
             // Invoke graphql operation isAzureNativeSqlDatabaseSnapshotPersistent
@@ -1904,7 +1907,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // azureNativeLiveMountDisks.
-        protected void ProcessRecord_NativeLiveMountDisks()
+        internal void ProcessRecord_NativeLiveMountDisks()
         {
             this._logger.name += " -NativeLiveMountDisks";
             // Invoke graphql operation azureNativeLiveMountDisks
@@ -1913,7 +1916,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allAzureKeyVaultsByRegion.
-        protected void ProcessRecord_AllKeyVaultsByRegion()
+        internal void ProcessRecord_AllKeyVaultsByRegion()
         {
             this._logger.name += " -AllKeyVaultsByRegion";
             // Invoke graphql operation allAzureKeyVaultsByRegion
@@ -1922,7 +1925,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allAzureEncryptionKeys.
-        protected void ProcessRecord_AllEncryptionKeys()
+        internal void ProcessRecord_AllEncryptionKeys()
         {
             this._logger.name += " -AllEncryptionKeys";
             // Invoke graphql operation allAzureEncryptionKeys
@@ -1931,7 +1934,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // azureCloudAccountTenant.
-        protected void ProcessRecord_CloudAccountTenant()
+        internal void ProcessRecord_CloudAccountTenant()
         {
             this._logger.name += " -CloudAccountTenant";
             // Invoke graphql operation azureCloudAccountTenant
@@ -1940,7 +1943,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // azureCloudAccountTenantWithExoConfigs.
-        protected void ProcessRecord_CloudAccountTenantWithExoConfigs()
+        internal void ProcessRecord_CloudAccountTenantWithExoConfigs()
         {
             this._logger.name += " -CloudAccountTenantWithExoConfigs";
             // Invoke graphql operation azureCloudAccountTenantWithExoConfigs
@@ -1949,7 +1952,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allAzureCloudAccountTenantsWithExoConfigs.
-        protected void ProcessRecord_AllCloudAccountTenantsWithExoConfigs()
+        internal void ProcessRecord_AllCloudAccountTenantsWithExoConfigs()
         {
             this._logger.name += " -AllCloudAccountTenantsWithExoConfigs";
             // Invoke graphql operation allAzureCloudAccountTenantsWithExoConfigs
@@ -1958,7 +1961,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allAzureCloudAccountTenants.
-        protected void ProcessRecord_AllCloudAccountTenants()
+        internal void ProcessRecord_AllCloudAccountTenants()
         {
             this._logger.name += " -AllCloudAccountTenants";
             // Invoke graphql operation allAzureCloudAccountTenants
@@ -1967,7 +1970,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // azureCloudAccountSubscriptionWithFeatures.
-        protected void ProcessRecord_CloudAccountSubscriptionWithFeatures()
+        internal void ProcessRecord_CloudAccountSubscriptionWithFeatures()
         {
             this._logger.name += " -CloudAccountSubscriptionWithFeatures";
             // Invoke graphql operation azureCloudAccountSubscriptionWithFeatures
@@ -1976,7 +1979,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allAzureCloudAccountSubscriptionsByFeature.
-        protected void ProcessRecord_AllCloudAccountSubscriptionsByFeature()
+        internal void ProcessRecord_AllCloudAccountSubscriptionsByFeature()
         {
             this._logger.name += " -AllCloudAccountSubscriptionsByFeature";
             // Invoke graphql operation allAzureCloudAccountSubscriptionsByFeature
@@ -1985,7 +1988,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allAzureSubscriptionWithExocomputeMappings.
-        protected void ProcessRecord_AllSubscriptionWithExocomputeMappings()
+        internal void ProcessRecord_AllSubscriptionWithExocomputeMappings()
         {
             this._logger.name += " -AllSubscriptionWithExocomputeMappings";
             // Invoke graphql operation allAzureSubscriptionWithExocomputeMappings
@@ -1994,7 +1997,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allResourceGroupsFromAzure.
-        protected void ProcessRecord_AllResourceGroupsFrom()
+        internal void ProcessRecord_AllResourceGroupsFrom()
         {
             this._logger.name += " -AllResourceGroupsFrom";
             // Invoke graphql operation allResourceGroupsFromAzure
@@ -2003,7 +2006,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // doesAzureNativeResourceGroupExist.
-        protected void ProcessRecord_DoesNativeResourceGroupExist()
+        internal void ProcessRecord_DoesNativeResourceGroupExist()
         {
             this._logger.name += " -DoesNativeResourceGroupExist";
             // Invoke graphql operation doesAzureNativeResourceGroupExist
@@ -2012,7 +2015,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allAzureNativeResourceGroupsInfoIfExist.
-        protected void ProcessRecord_AllNativeResourceGroupsInfoIfExist()
+        internal void ProcessRecord_AllNativeResourceGroupsInfoIfExist()
         {
             this._logger.name += " -AllNativeResourceGroupsInfoIfExist";
             // Invoke graphql operation allAzureNativeResourceGroupsInfoIfExist
@@ -2021,7 +2024,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allAzureCloudAccountMissingPermissions.
-        protected void ProcessRecord_AllCloudAccountMissingPermissions()
+        internal void ProcessRecord_AllCloudAccountMissingPermissions()
         {
             this._logger.name += " -AllCloudAccountMissingPermissions";
             // Invoke graphql operation allAzureCloudAccountMissingPermissions
@@ -2030,7 +2033,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // azureCloudAccountPermissionConfig.
-        protected void ProcessRecord_CloudAccountPermissionConfig()
+        internal void ProcessRecord_CloudAccountPermissionConfig()
         {
             this._logger.name += " -CloudAccountPermissionConfig";
             // Invoke graphql operation azureCloudAccountPermissionConfig
@@ -2039,7 +2042,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // azureCloudAccountGrantedPermissionsGroups.
-        protected void ProcessRecord_CloudAccountGrantedPermissionsGroups()
+        internal void ProcessRecord_CloudAccountGrantedPermissionsGroups()
         {
             this._logger.name += " -CloudAccountGrantedPermissionsGroups";
             // Invoke graphql operation azureCloudAccountGrantedPermissionsGroups
@@ -2048,7 +2051,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // azureCloudAccountGrantedPermissionsGroupsForRecovery.
-        protected void ProcessRecord_CloudAccountGrantedPermissionsGroupsForRecovery()
+        internal void ProcessRecord_CloudAccountGrantedPermissionsGroupsForRecovery()
         {
             this._logger.name += " -CloudAccountGrantedPermissionsGroupsForRecovery";
             // Invoke graphql operation azureCloudAccountGrantedPermissionsGroupsForRecovery
@@ -2057,7 +2060,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // azureCloudAccountCheckRefreshTokenExistsForRecovery.
-        protected void ProcessRecord_CloudAccountCheckRefreshTokenExistsForRecovery()
+        internal void ProcessRecord_CloudAccountCheckRefreshTokenExistsForRecovery()
         {
             this._logger.name += " -CloudAccountCheckRefreshTokenExistsForRecovery";
             // Invoke graphql operation azureCloudAccountCheckRefreshTokenExistsForRecovery
@@ -2066,7 +2069,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allAzureExocomputeConfigsInAccount.
-        protected void ProcessRecord_AllExocomputeConfigsInAccount()
+        internal void ProcessRecord_AllExocomputeConfigsInAccount()
         {
             this._logger.name += " -AllExocomputeConfigsInAccount";
             // Invoke graphql operation allAzureExocomputeConfigsInAccount
@@ -2075,7 +2078,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allAzureCloudAccountSubnetsByRegion.
-        protected void ProcessRecord_AllCloudAccountSubnetsByRegion()
+        internal void ProcessRecord_AllCloudAccountSubnetsByRegion()
         {
             this._logger.name += " -AllCloudAccountSubnetsByRegion";
             // Invoke graphql operation allAzureCloudAccountSubnetsByRegion
@@ -2084,7 +2087,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // validateAzureCloudAccountExocomputeConfigurations.
-        protected void ProcessRecord_ValidateCloudAccountExocomputeConfigurations()
+        internal void ProcessRecord_ValidateCloudAccountExocomputeConfigurations()
         {
             this._logger.name += " -ValidateCloudAccountExocomputeConfigurations";
             // Invoke graphql operation validateAzureCloudAccountExocomputeConfigurations
@@ -2093,7 +2096,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allAzureArmTemplatesByFeature.
-        protected void ProcessRecord_AllArmTemplatesByFeature()
+        internal void ProcessRecord_AllArmTemplatesByFeature()
         {
             this._logger.name += " -AllArmTemplatesByFeature";
             // Invoke graphql operation allAzureArmTemplatesByFeature
@@ -2102,7 +2105,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // checkAzurePersistentStorageSubscriptionCanUnmap.
-        protected void ProcessRecord_CheckPersistentStorageSubscriptionCanUnmap()
+        internal void ProcessRecord_CheckPersistentStorageSubscriptionCanUnmap()
         {
             this._logger.name += " -CheckPersistentStorageSubscriptionCanUnmap";
             // Invoke graphql operation checkAzurePersistentStorageSubscriptionCanUnmap
@@ -2111,7 +2114,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // azureSubscriptions.
-        protected void ProcessRecord_Subscriptions()
+        internal void ProcessRecord_Subscriptions()
         {
             this._logger.name += " -Subscriptions";
             // Invoke graphql operation azureSubscriptions
@@ -2120,7 +2123,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // azureRegions.
-        protected void ProcessRecord_Regions()
+        internal void ProcessRecord_Regions()
         {
             this._logger.name += " -Regions";
             // Invoke graphql operation azureRegions
@@ -2129,7 +2132,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // azureResourceGroups.
-        protected void ProcessRecord_ResourceGroups()
+        internal void ProcessRecord_ResourceGroups()
         {
             this._logger.name += " -ResourceGroups";
             // Invoke graphql operation azureResourceGroups
@@ -2138,7 +2141,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // azureVNets.
-        protected void ProcessRecord_VNets()
+        internal void ProcessRecord_VNets()
         {
             this._logger.name += " -VNets";
             // Invoke graphql operation azureVNets
@@ -2147,7 +2150,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // azureSubnets.
-        protected void ProcessRecord_Subnets()
+        internal void ProcessRecord_Subnets()
         {
             this._logger.name += " -Subnets";
             // Invoke graphql operation azureSubnets
@@ -2156,7 +2159,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // azureStorageAccounts.
-        protected void ProcessRecord_StorageAccounts()
+        internal void ProcessRecord_StorageAccounts()
         {
             this._logger.name += " -StorageAccounts";
             // Invoke graphql operation azureStorageAccounts
@@ -2165,7 +2168,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allHostedAzureRegions.
-        protected void ProcessRecord_AllHostedRegions()
+        internal void ProcessRecord_AllHostedRegions()
         {
             this._logger.name += " -AllHostedRegions";
             // Invoke graphql operation allHostedAzureRegions
@@ -2174,7 +2177,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allAzureResourceGroups.
-        protected void ProcessRecord_AllResourceGroups()
+        internal void ProcessRecord_AllResourceGroups()
         {
             this._logger.name += " -AllResourceGroups";
             // Invoke graphql operation allAzureResourceGroups
@@ -2183,7 +2186,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allAzureVnets.
-        protected void ProcessRecord_AllVnets()
+        internal void ProcessRecord_AllVnets()
         {
             this._logger.name += " -AllVnets";
             // Invoke graphql operation allAzureVnets
@@ -2192,7 +2195,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allAzureSubnets.
-        protected void ProcessRecord_AllSubnets()
+        internal void ProcessRecord_AllSubnets()
         {
             this._logger.name += " -AllSubnets";
             // Invoke graphql operation allAzureSubnets
@@ -2201,7 +2204,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allAzureCdmVersions.
-        protected void ProcessRecord_AllCdmVersions()
+        internal void ProcessRecord_AllCdmVersions()
         {
             this._logger.name += " -AllCdmVersions";
             // Invoke graphql operation allAzureCdmVersions
@@ -2210,7 +2213,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allAzureRegions.
-        protected void ProcessRecord_AllRegions()
+        internal void ProcessRecord_AllRegions()
         {
             this._logger.name += " -AllRegions";
             // Invoke graphql operation allAzureRegions
@@ -2219,7 +2222,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allAzureNsgs.
-        protected void ProcessRecord_AllNsgs()
+        internal void ProcessRecord_AllNsgs()
         {
             this._logger.name += " -AllNsgs";
             // Invoke graphql operation allAzureNsgs
@@ -2228,7 +2231,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allAzureStorageAccounts.
-        protected void ProcessRecord_AllStorageAccounts()
+        internal void ProcessRecord_AllStorageAccounts()
         {
             this._logger.name += " -AllStorageAccounts";
             // Invoke graphql operation allAzureStorageAccounts
@@ -2237,7 +2240,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // azureAdDirectories.
-        protected void ProcessRecord_AdDirectories()
+        internal void ProcessRecord_AdDirectories()
         {
             this._logger.name += " -AdDirectories";
             // Invoke graphql operation azureAdDirectories
@@ -2246,7 +2249,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // azureAdDirectory.
-        protected void ProcessRecord_AdDirectory()
+        internal void ProcessRecord_AdDirectory()
         {
             this._logger.name += " -AdDirectory";
             // Invoke graphql operation azureAdDirectory
@@ -2255,7 +2258,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // azureAdObjectsByType.
-        protected void ProcessRecord_AdObjectsByType()
+        internal void ProcessRecord_AdObjectsByType()
         {
             this._logger.name += " -AdObjectsByType";
             // Invoke graphql operation azureAdObjectsByType
@@ -2265,7 +2268,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // azureNativeRoot: AzureNativeRoot!
-        protected void InvokeQueryAzureNativeRoot()
+        internal void InvokeQueryAzureNativeRoot()
         {
             Tuple<string, string>[] argDefs = {
             };
@@ -2291,7 +2294,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // azureNativeSubscription(azureSubscriptionRubrikId: UUID!): AzureNativeSubscription!
-        protected void InvokeQueryAzureNativeSubscription()
+        internal void InvokeQueryAzureNativeSubscription()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("azureSubscriptionRubrikId", "UUID!"),
@@ -2329,7 +2332,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     workloadHierarchy: WorkloadLevelHierarchy
         //     azureNativeProtectionFeature: AzureNativeProtectionFeature
         //   ): AzureNativeSubscriptionConnection!
-        protected void InvokeQueryAzureNativeSubscriptions()
+        internal void InvokeQueryAzureNativeSubscriptions()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -2365,7 +2368,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // azureNativeResourceGroup(resourceGroupId: UUID!): AzureNativeResourceGroup!
-        protected void InvokeQueryAzureNativeResourceGroup()
+        internal void InvokeQueryAzureNativeResourceGroup()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("resourceGroupId", "UUID!"),
@@ -2402,7 +2405,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     protectedObjectTypes: [WorkloadLevelHierarchy!]
         //     azureNativeProtectionFeatures: [AzureNativeProtectionFeature!]
         //   ): AzureNativeResourceGroupConnection!
-        protected void InvokeQueryAzureNativeResourceGroups()
+        internal void InvokeQueryAzureNativeResourceGroups()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -2437,7 +2440,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // azureNativeVirtualMachine(azureVirtualMachineRubrikId: UUID!): AzureNativeVirtualMachine!
-        protected void InvokeQueryAzureNativeVirtualMachine()
+        internal void InvokeQueryAzureNativeVirtualMachine()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("azureVirtualMachineRubrikId", "UUID!"),
@@ -2473,7 +2476,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     descendantTypeFilter: [HierarchyObjectTypeEnum!]
         //     virtualMachineFilters: AzureNativeVirtualMachineFilters
         //   ): AzureNativeVirtualMachineConnection!
-        protected void InvokeQueryAzureNativeVirtualMachines()
+        internal void InvokeQueryAzureNativeVirtualMachines()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -2507,7 +2510,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // azureNativeManagedDisk(azureManagedDiskRubrikId: UUID!): AzureNativeManagedDisk!
-        protected void InvokeQueryAzureNativeManagedDisk()
+        internal void InvokeQueryAzureNativeManagedDisk()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("azureManagedDiskRubrikId", "UUID!"),
@@ -2542,7 +2545,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     sortOrder: SortOrder
         //     diskFilters: AzureNativeDiskFilters
         //   ): AzureNativeManagedDiskConnection!
-        protected void InvokeQueryAzureNativeManagedDisks()
+        internal void InvokeQueryAzureNativeManagedDisks()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -2575,7 +2578,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allAzureNativeVirtualNetworks(azureSubscriptionRubrikId: UUID): [AzureNativeVirtualNetwork!]!
-        protected void InvokeQueryAllAzureNativeVirtualNetworks()
+        internal void InvokeQueryAllAzureNativeVirtualNetworks()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("azureSubscriptionRubrikId", "UUID"),
@@ -2602,7 +2605,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allAzureNativeSubnetsByRegionFromAzure(azureSubscriptionRubrikId: UUID!, region: AzureNativeRegion!): [AzureNativeSubnet!]!
-        protected void InvokeQueryAllAzureNativeSubnetsByRegionFromAzure()
+        internal void InvokeQueryAllAzureNativeSubnetsByRegionFromAzure()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("azureSubscriptionRubrikId", "UUID!"),
@@ -2630,7 +2633,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allAzureNativeSecurityGroupsByRegionFromAzure(azureSubscriptionRubrikId: UUID!, region: AzureNativeRegion!): [AzureNativeSecurityGroup!]!
-        protected void InvokeQueryAllAzureNativeSecurityGroupsByRegionFromAzure()
+        internal void InvokeQueryAllAzureNativeSecurityGroupsByRegionFromAzure()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("azureSubscriptionRubrikId", "UUID!"),
@@ -2658,7 +2661,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allAzureDiskEncryptionSetsByRegion(azureSubscriptionRubrikId: UUID!, region: AzureNativeRegion!): [AzureNativeDiskEncryptionSet!]!
-        protected void InvokeQueryAllAzureDiskEncryptionSetsByRegion()
+        internal void InvokeQueryAllAzureDiskEncryptionSetsByRegion()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("azureSubscriptionRubrikId", "UUID!"),
@@ -2686,7 +2689,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allAzureNativeAvailabilitySetsByRegionFromAzure(azureSubscriptionRubrikId: UUID!, resourceGroupName: String!, region: AzureNativeRegion!): [AzureNativeAvailabilitySet!]!
-        protected void InvokeQueryAllAzureNativeAvailabilitySetsByRegionFromAzure()
+        internal void InvokeQueryAllAzureNativeAvailabilitySetsByRegionFromAzure()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("azureSubscriptionRubrikId", "UUID!"),
@@ -2715,7 +2718,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allAzureNativeExportCompatibleVmSizesByRegionFromAzure(azureSubscriptionRubrikId: UUID!, region: AzureNativeRegion!, vmSnapshotId: UUID!): [AzureNativeExportCompatibleVmSizes!]!
-        protected void InvokeQueryAllAzureNativeExportCompatibleVmSizesByRegionFromAzure()
+        internal void InvokeQueryAllAzureNativeExportCompatibleVmSizesByRegionFromAzure()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("azureSubscriptionRubrikId", "UUID!"),
@@ -2744,7 +2747,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allAzureNativeExportCompatibleDiskTypesByRegionFromAzure(azureSubscriptionRubrikId: UUID!, region: AzureNativeRegion!): [AzureNativeExportCompatibleDiskTypes!]!
-        protected void InvokeQueryAllAzureNativeExportCompatibleDiskTypesByRegionFromAzure()
+        internal void InvokeQueryAllAzureNativeExportCompatibleDiskTypesByRegionFromAzure()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("azureSubscriptionRubrikId", "UUID!"),
@@ -2772,7 +2775,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allAzureNativeVirtualMachineSizes(azureSubscriptionRubrikId: UUID): [String!]!
-        protected void InvokeQueryAllAzureNativeVirtualMachineSizes()
+        internal void InvokeQueryAllAzureNativeVirtualMachineSizes()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("azureSubscriptionRubrikId", "UUID"),
@@ -2799,7 +2802,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // isAzureNativeManagedDiskSnapshotRestorable(azureSubscriptionRubrikId: UUID!, diskSnapshotId: UUID!): Boolean!
-        protected void InvokeQueryIsAzureNativeManagedDiskSnapshotRestorable()
+        internal void InvokeQueryIsAzureNativeManagedDiskSnapshotRestorable()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("azureSubscriptionRubrikId", "UUID!"),
@@ -2827,7 +2830,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // isAzureStorageAccountNameAvailable(azureSubscriptionRubrikId: UUID!, storageAccountName: String!): Boolean!
-        protected void InvokeQueryIsAzureStorageAccountNameAvailable()
+        internal void InvokeQueryIsAzureStorageAccountNameAvailable()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("azureSubscriptionRubrikId", "UUID!"),
@@ -2855,7 +2858,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allAzureNativeStorageAccountsFromAzure(azureSubscriptionRubrikId: UUID!): [AzureNativeStorageAccount!]!
-        protected void InvokeQueryAllAzureNativeStorageAccountsFromAzure()
+        internal void InvokeQueryAllAzureNativeStorageAccountsFromAzure()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("azureSubscriptionRubrikId", "UUID!"),
@@ -2882,7 +2885,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // azureSqlDatabase(azureSqlDatabaseRubrikId: UUID!): AzureSqlDatabaseDb!
-        protected void InvokeQueryAzureSqlDatabase()
+        internal void InvokeQueryAzureSqlDatabase()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("azureSqlDatabaseRubrikId", "UUID!"),
@@ -2917,7 +2920,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     sortOrder: SortOrder
         //     azureSqlDatabaseFilters: AzureSqlDatabaseFilters
         //   ): AzureSqlDatabaseDbConnection!
-        protected void InvokeQueryAzureSqlDatabases()
+        internal void InvokeQueryAzureSqlDatabases()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -2950,7 +2953,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // azureSqlDatabaseServer(azureSqlDatabaseServerRubrikId: UUID!): AzureSqlDatabaseServer!
-        protected void InvokeQueryAzureSqlDatabaseServer()
+        internal void InvokeQueryAzureSqlDatabaseServer()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("azureSqlDatabaseServerRubrikId", "UUID!"),
@@ -2985,7 +2988,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     sortOrder: SortOrder
         //     azureSqlDatabaseServerFilters: AzureSqlDatabaseServerFilters
         //   ): AzureSqlDatabaseServerConnection!
-        protected void InvokeQueryAzureSqlDatabaseServers()
+        internal void InvokeQueryAzureSqlDatabaseServers()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -3018,7 +3021,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // azureSqlManagedInstanceDatabase(azureSqlManagedInstanceDatabaseRubrikId: UUID!): AzureSqlManagedInstanceDatabase!
-        protected void InvokeQueryAzureSqlManagedInstanceDatabase()
+        internal void InvokeQueryAzureSqlManagedInstanceDatabase()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("azureSqlManagedInstanceDatabaseRubrikId", "UUID!"),
@@ -3053,7 +3056,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     sortOrder: SortOrder
         //     azureSqlManagedInstanceDatabaseFilters: AzureSqlManagedInstanceDatabaseFilters
         //   ): AzureSqlManagedInstanceDatabaseConnection!
-        protected void InvokeQueryAzureSqlManagedInstanceDatabases()
+        internal void InvokeQueryAzureSqlManagedInstanceDatabases()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -3086,7 +3089,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // azureSqlManagedInstanceServer(azureSqlManagedInstanceServerRubrikId: UUID!): AzureSqlManagedInstanceServer!
-        protected void InvokeQueryAzureSqlManagedInstanceServer()
+        internal void InvokeQueryAzureSqlManagedInstanceServer()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("azureSqlManagedInstanceServerRubrikId", "UUID!"),
@@ -3121,7 +3124,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     sortOrder: SortOrder
         //     azureSqlManagedInstanceServerFilters: AzureSqlManagedInstanceServerFilters
         //   ): AzureSqlManagedInstanceServerConnection!
-        protected void InvokeQueryAzureSqlManagedInstanceServers()
+        internal void InvokeQueryAzureSqlManagedInstanceServers()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -3159,7 +3162,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     azureSqlDatabaseServerName: String!
         //     azureSqlDatabaseName: String!
         //   ): AzureNativeSqlDatabasePointInTimeRestoreWindow!
-        protected void InvokeQueryAzureSqlDatabaseDbPointInTimeRestoreWindowFromAzure()
+        internal void InvokeQueryAzureSqlDatabaseDbPointInTimeRestoreWindowFromAzure()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("subscriptionId", "UUID!"),
@@ -3194,7 +3197,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     azureSqlManagedInstanceName: String!
         //     azureSqlDatabaseName: String!
         //   ): AzureNativeSqlDatabasePointInTimeRestoreWindow!
-        protected void InvokeQueryAzureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure()
+        internal void InvokeQueryAzureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("subscriptionId", "UUID!"),
@@ -3224,7 +3227,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // validateAzureNativeSqlDatabaseDbNameForExport(azureSqlDatabaseName: String!, azureSqlDatabaseServerRubrikId: UUID!): ValidateAzureNativeSqlDatabaseDbNameForExportReply!
-        protected void InvokeQueryValidateAzureNativeSqlDatabaseDbNameForExport()
+        internal void InvokeQueryValidateAzureNativeSqlDatabaseDbNameForExport()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("azureSqlDatabaseName", "String!"),
@@ -3252,7 +3255,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // validateAzureNativeSqlManagedInstanceDbNameForExport(azureSqlDatabaseName: String!, azureSqlManagedInstanceServerRubrikId: UUID!): ValidateAzureNativeSqlManagedInstanceDbNameForExportReply!
-        protected void InvokeQueryValidateAzureNativeSqlManagedInstanceDbNameForExport()
+        internal void InvokeQueryValidateAzureNativeSqlManagedInstanceDbNameForExport()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("azureSqlDatabaseName", "String!"),
@@ -3285,7 +3288,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     azureSqlDatabaseServerName: String!
         //     azureSqlDatabaseServerRubrikId: UUID!
         //   ): [AzureSqlDatabaseServerElasticPool!]!
-        protected void InvokeQueryAllAzureSqlDatabaseServerElasticPools()
+        internal void InvokeQueryAllAzureSqlDatabaseServerElasticPools()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("subscriptionId", "UUID!"),
@@ -3315,7 +3318,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // isAzureNativeSqlDatabaseSnapshotPersistent(snapshotId: UUID!): Boolean!
-        protected void InvokeQueryIsAzureNativeSqlDatabaseSnapshotPersistent()
+        internal void InvokeQueryIsAzureNativeSqlDatabaseSnapshotPersistent()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("snapshotId", "UUID!"),
@@ -3351,7 +3354,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     sortBy: CloudNativeLiveMountSortByFields
         //     sortOrder: SortOrder
         //   ): LiveMountDetailsConnection!
-        protected void InvokeQueryAzureNativeLiveMountDisks()
+        internal void InvokeQueryAzureNativeLiveMountDisks()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -3385,7 +3388,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allAzureKeyVaultsByRegion(azureKeyVaultsInput: AzureKeyVaultsInput!): [AzureKeyVault!]!
-        protected void InvokeQueryAllAzureKeyVaultsByRegion()
+        internal void InvokeQueryAllAzureKeyVaultsByRegion()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("azureKeyVaultsInput", "AzureKeyVaultsInput!"),
@@ -3412,7 +3415,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allAzureEncryptionKeys(azureEncryptionKeysInput: AzureEncryptionKeysInput!): [AzureEncryptionKey!]!
-        protected void InvokeQueryAllAzureEncryptionKeys()
+        internal void InvokeQueryAllAzureEncryptionKeys()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("azureEncryptionKeysInput", "AzureEncryptionKeysInput!"),
@@ -3445,7 +3448,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     subscriptionSearchText: String!
         //     subscriptionIdsFilter: [UUID!]
         //   ): AzureCloudAccountTenant!
-        protected void InvokeQueryAzureCloudAccountTenant()
+        internal void InvokeQueryAzureCloudAccountTenant()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("tenantId", "UUID!"),
@@ -3482,7 +3485,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     subscriptionSearchText: String!
         //     subscriptionIdsFilter: [UUID!]
         //   ): AzureCloudAccountTenantWithExoConfigs!
-        protected void InvokeQueryAzureCloudAccountTenantWithExoConfigs()
+        internal void InvokeQueryAzureCloudAccountTenantWithExoConfigs()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("tenantId", "UUID!"),
@@ -3513,7 +3516,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allAzureCloudAccountTenantsWithExoConfigs(features: [CloudAccountFeature!]!): [AzureCloudAccountTenantWithExoConfigs!]!
-        protected void InvokeQueryAllAzureCloudAccountTenantsWithExoConfigs()
+        internal void InvokeQueryAllAzureCloudAccountTenantsWithExoConfigs()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("features", "[CloudAccountFeature!]!"),
@@ -3540,7 +3543,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allAzureCloudAccountTenants(features: [CloudAccountFeature!], feature: CloudAccountFeature!, includeSubscriptionDetails: Boolean!): [AzureCloudAccountTenant!]!
-        protected void InvokeQueryAllAzureCloudAccountTenants()
+        internal void InvokeQueryAllAzureCloudAccountTenants()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("features", "[CloudAccountFeature!]"),
@@ -3569,7 +3572,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // azureCloudAccountSubscriptionWithFeatures(cloudAccountId: UUID!): AzureCloudAccountSubscriptionWithFeatures!
-        protected void InvokeQueryAzureCloudAccountSubscriptionWithFeatures()
+        internal void InvokeQueryAzureCloudAccountSubscriptionWithFeatures()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("cloudAccountId", "UUID!"),
@@ -3596,7 +3599,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allAzureCloudAccountSubscriptionsByFeature(feature: CloudAccountFeature!, subscriptionStatusFilters: [CloudAccountStatus!]!): [AzureSubscriptionWithFeaturesType!]!
-        protected void InvokeQueryAllAzureCloudAccountSubscriptionsByFeature()
+        internal void InvokeQueryAllAzureCloudAccountSubscriptionsByFeature()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("feature", "CloudAccountFeature!"),
@@ -3624,7 +3627,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allAzureSubscriptionWithExocomputeMappings(features: [CloudAccountFeature!], exocomputeSubscriptionIdsFilter: [UUID!]): [AzureSubscriptionWithExocomputeMapping!]!
-        protected void InvokeQueryAllAzureSubscriptionWithExocomputeMappings()
+        internal void InvokeQueryAllAzureSubscriptionWithExocomputeMappings()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("features", "[CloudAccountFeature!]"),
@@ -3652,7 +3655,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allResourceGroupsFromAzure(cloudAccountId: UUID!, azureSubscriptionNativeId: UUID!, feature: CloudAccountFeature!): [AzureResourceGroup!]!
-        protected void InvokeQueryAllResourceGroupsFromAzure()
+        internal void InvokeQueryAllResourceGroupsFromAzure()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("cloudAccountId", "UUID!"),
@@ -3686,7 +3689,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     resourceGroupName: String!
         //     feature: CloudAccountFeature!
         //   ): Boolean!
-        protected void InvokeQueryDoesAzureNativeResourceGroupExist()
+        internal void InvokeQueryDoesAzureNativeResourceGroupExist()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("cloudAccountId", "UUID!"),
@@ -3716,7 +3719,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allAzureNativeResourceGroupsInfoIfExist(input: AzureGetResourceGroupsInfoIfExistInput!): [AzureResourceGroupInfo!]!
-        protected void InvokeQueryAllAzureNativeResourceGroupsInfoIfExist()
+        internal void InvokeQueryAllAzureNativeResourceGroupsInfoIfExist()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "AzureGetResourceGroupsInfoIfExistInput!"),
@@ -3743,7 +3746,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allAzureCloudAccountMissingPermissions(sessionId: String!, subscriptionIds: [UUID!]!, cloudAccountAction: CloudAccountAction!): [AzureSubscriptionMissingPermissions!]!
-        protected void InvokeQueryAllAzureCloudAccountMissingPermissions()
+        internal void InvokeQueryAllAzureCloudAccountMissingPermissions()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("sessionId", "String!"),
@@ -3772,7 +3775,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // azureCloudAccountPermissionConfig(feature: CloudAccountFeature!): AzureCloudAccountPermissionConfigResponse!
-        protected void InvokeQueryAzureCloudAccountPermissionConfig()
+        internal void InvokeQueryAzureCloudAccountPermissionConfig()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("feature", "CloudAccountFeature!"),
@@ -3799,7 +3802,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // azureCloudAccountGrantedPermissionsGroups(cloudAccountId: UUID!, feature: CloudAccountFeature!): AzureCloudAccountGrantedPermissionsGroupsReply!
-        protected void InvokeQueryAzureCloudAccountGrantedPermissionsGroups()
+        internal void InvokeQueryAzureCloudAccountGrantedPermissionsGroups()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("cloudAccountId", "UUID!"),
@@ -3827,7 +3830,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // azureCloudAccountGrantedPermissionsGroupsForRecovery(cloudAccountId: UUID!, azureNativeSubscriptionId: UUID!, feature: CloudAccountFeature!): AzureCloudAccountGrantedPermissionsGroupsReply!
-        protected void InvokeQueryAzureCloudAccountGrantedPermissionsGroupsForRecovery()
+        internal void InvokeQueryAzureCloudAccountGrantedPermissionsGroupsForRecovery()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("cloudAccountId", "UUID!"),
@@ -3856,7 +3859,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // azureCloudAccountCheckRefreshTokenExistsForRecovery(cloudAccountId: UUID!, azureNativeSubscriptionId: UUID!): AzureCloudAccountCheckRefreshTokenExistsReply!
-        protected void InvokeQueryAzureCloudAccountCheckRefreshTokenExistsForRecovery()
+        internal void InvokeQueryAzureCloudAccountCheckRefreshTokenExistsForRecovery()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("cloudAccountId", "UUID!"),
@@ -3884,7 +3887,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allAzureExocomputeConfigsInAccount(azureExocomputeSearchQuery: String, cloudAccountIDs: [UUID!]): [AzureExocomputeConfigsInAccount!]!
-        protected void InvokeQueryAllAzureExocomputeConfigsInAccount()
+        internal void InvokeQueryAllAzureExocomputeConfigsInAccount()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("azureExocomputeSearchQuery", "String"),
@@ -3912,7 +3915,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allAzureCloudAccountSubnetsByRegion(cloudAccountId: UUID!, region: AzureCloudAccountRegion!): [AzureNativeSubnet!]!
-        protected void InvokeQueryAllAzureCloudAccountSubnetsByRegion()
+        internal void InvokeQueryAllAzureCloudAccountSubnetsByRegion()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("cloudAccountId", "UUID!"),
@@ -3940,7 +3943,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // validateAzureCloudAccountExocomputeConfigurations(input: ValidateAzureCloudAccountExocomputeConfigurationsInput!): ValidateAzureSubnetsForCloudAccountExocomputeReply!
-        protected void InvokeQueryValidateAzureCloudAccountExocomputeConfigurations()
+        internal void InvokeQueryValidateAzureCloudAccountExocomputeConfigurations()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "ValidateAzureCloudAccountExocomputeConfigurationsInput!"),
@@ -3967,7 +3970,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allAzureArmTemplatesByFeature(input: AzureArmTemplatesByFeatureInput!): [AzureArmTemplateByFeature!]!
-        protected void InvokeQueryAllAzureArmTemplatesByFeature()
+        internal void InvokeQueryAllAzureArmTemplatesByFeature()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "AzureArmTemplatesByFeatureInput!"),
@@ -3994,7 +3997,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // checkAzurePersistentStorageSubscriptionCanUnmap(cloudAccountId: UUID!, feature: CloudAccountFeature!, unmappingValidationType: UnmappingValidationType!): CheckAzurePersistentStorageSubscriptionCanUnmapReply!
-        protected void InvokeQueryCheckAzurePersistentStorageSubscriptionCanUnmap()
+        internal void InvokeQueryCheckAzurePersistentStorageSubscriptionCanUnmap()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("cloudAccountId", "UUID!"),
@@ -4023,7 +4026,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // azureSubscriptions(tenantId: String!): AzureSubscriptionConnection!
-        protected void InvokeQueryAzureSubscriptions()
+        internal void InvokeQueryAzureSubscriptions()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("tenantId", "String!"),
@@ -4050,7 +4053,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // azureRegions(tenantId: String!, subscriptionId: UUID!): RegionConnection!
-        protected void InvokeQueryAzureRegions()
+        internal void InvokeQueryAzureRegions()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("tenantId", "String!"),
@@ -4078,7 +4081,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // azureResourceGroups(tenantId: String!, subscriptionId: UUID!): ResourceGroupConnection!
-        protected void InvokeQueryAzureResourceGroups()
+        internal void InvokeQueryAzureResourceGroups()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("tenantId", "String!"),
@@ -4106,7 +4109,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // azureVNets(tenantId: String!, subscriptionId: UUID!, regionName: String!): VnetConnection!
-        protected void InvokeQueryAzureVnets()
+        internal void InvokeQueryAzureVnets()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("tenantId", "String!"),
@@ -4135,7 +4138,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // azureSubnets(tenantId: String!, subscriptionId: UUID!, vNetId: String!): SubnetConnection!
-        protected void InvokeQueryAzureSubnets()
+        internal void InvokeQueryAzureSubnets()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("tenantId", "String!"),
@@ -4164,7 +4167,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // azureStorageAccounts(tenantId: String!, subscriptionId: UUID!, regionName: String!): StorageAccountConnection!
-        protected void InvokeQueryAzureStorageAccounts()
+        internal void InvokeQueryAzureStorageAccounts()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("tenantId", "String!"),
@@ -4193,7 +4196,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allHostedAzureRegions: AzureRegionsResp!
-        protected void InvokeQueryAllHostedAzureRegions()
+        internal void InvokeQueryAllHostedAzureRegions()
         {
             Tuple<string, string>[] argDefs = {
             };
@@ -4219,7 +4222,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allAzureResourceGroups(cloudAccountId: String!, azureRegion: String!): [String!]!
-        protected void InvokeQueryAllAzureResourceGroups()
+        internal void InvokeQueryAllAzureResourceGroups()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("cloudAccountId", "String!"),
@@ -4247,7 +4250,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allAzureVnets(vnetRequest: AzureVnetReq!): [String!]!
-        protected void InvokeQueryAllAzureVnets()
+        internal void InvokeQueryAllAzureVnets()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("vnetRequest", "AzureVnetReq!"),
@@ -4274,7 +4277,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allAzureSubnets(subnetRequest: AzureSubnetReq!): [String!]!
-        protected void InvokeQueryAllAzureSubnets()
+        internal void InvokeQueryAllAzureSubnets()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("subnetRequest", "AzureSubnetReq!"),
@@ -4301,7 +4304,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allAzureCdmVersions(cdmVersionRequest: AzureCdmVersionReq!): [AzureCdmVersion!]!
-        protected void InvokeQueryAllAzureCdmVersions()
+        internal void InvokeQueryAllAzureCdmVersions()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("cdmVersionRequest", "AzureCdmVersionReq!"),
@@ -4328,7 +4331,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allAzureRegions(cloudAccountId: String!): [AzureCloudAccountRegion!]!
-        protected void InvokeQueryAllAzureRegions()
+        internal void InvokeQueryAllAzureRegions()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("cloudAccountId", "String!"),
@@ -4355,7 +4358,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allAzureNsgs(nsgRequest: AzureNsgRequest!): [String!]!
-        protected void InvokeQueryAllAzureNsgs()
+        internal void InvokeQueryAllAzureNsgs()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("nsgRequest", "AzureNsgRequest!"),
@@ -4382,7 +4385,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allAzureStorageAccounts(storageAccountsRequest: AzureStorageAccountsReq!): [String!]!
-        protected void InvokeQueryAllAzureStorageAccounts()
+        internal void InvokeQueryAllAzureStorageAccounts()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("storageAccountsRequest", "AzureStorageAccountsReq!"),
@@ -4415,7 +4418,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     sortOrder: SortOrder
         //     filter: [Filter!]
         //   ): AzureAdDirectoryConnection!
-        protected void InvokeQueryAzureAdDirectories()
+        internal void InvokeQueryAzureAdDirectories()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -4446,7 +4449,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // azureAdDirectory(workloadFid: UUID!): AzureAdDirectory!
-        protected void InvokeQueryAzureAdDirectory()
+        internal void InvokeQueryAzureAdDirectory()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("workloadFid", "UUID!"),
@@ -4479,7 +4482,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     sortOrder: SortOrder
         //     input: AzureAdObjectTypeInput!
         //   ): AzureAdObjectConnection!
-        protected void InvokeQueryAzureAdObjectsByType()
+        internal void InvokeQueryAzureAdObjectsByType()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),

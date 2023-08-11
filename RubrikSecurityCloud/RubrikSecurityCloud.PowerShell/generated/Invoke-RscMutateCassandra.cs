@@ -26,11 +26,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     public class Invoke_RscMutateCassandra : RscPSCmdlet
     {
         
-        // -------------------------------------------------------------------
-        // RecoverSource parameter set
-        //
-        // [GraphQL: recoverCassandraSource]
-        //
+        /// <summary>
+        /// RecoverSource parameter set
+        ///
+        /// [GraphQL: recoverCassandraSource]
+        /// </summary>
         [Parameter(
             ParameterSetName = "RecoverSource",
             Mandatory = false,
@@ -44,11 +44,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter RecoverSource { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // CreateSource parameter set
-        //
-        // [GraphQL: createCassandraSource]
-        //
+        /// <summary>
+        /// CreateSource parameter set
+        ///
+        /// [GraphQL: createCassandraSource]
+        /// </summary>
         [Parameter(
             ParameterSetName = "CreateSource",
             Mandatory = false,
@@ -62,11 +62,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter CreateSource { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // UpdateSource parameter set
-        //
-        // [GraphQL: updateCassandraSource]
-        //
+        /// <summary>
+        /// UpdateSource parameter set
+        ///
+        /// [GraphQL: updateCassandraSource]
+        /// </summary>
         [Parameter(
             ParameterSetName = "UpdateSource",
             Mandatory = false,
@@ -80,11 +80,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter UpdateSource { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DeleteSource parameter set
-        //
-        // [GraphQL: deleteCassandraSource]
-        //
+        /// <summary>
+        /// DeleteSource parameter set
+        ///
+        /// [GraphQL: deleteCassandraSource]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DeleteSource",
             Mandatory = false,
@@ -98,11 +98,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter DeleteSource { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // BulkDeleteSources parameter set
-        //
-        // [GraphQL: bulkDeleteCassandraSources]
-        //
+        /// <summary>
+        /// BulkDeleteSources parameter set
+        ///
+        /// [GraphQL: bulkDeleteCassandraSources]
+        /// </summary>
         [Parameter(
             ParameterSetName = "BulkDeleteSources",
             Mandatory = false,
@@ -116,6 +116,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter BulkDeleteSources { get; set; }
 
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
         protected override void ProcessRecord()
         {
             try
@@ -146,10 +148,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 ThrowTerminatingException(ex);
            }
         }
+#pragma warning restore 1591
 
         // This parameter set invokes a single graphql operation:
         // recoverCassandraSource.
-        protected void ProcessRecord_RecoverSource()
+        internal void ProcessRecord_RecoverSource()
         {
             this._logger.name += " -RecoverSource";
             // Invoke graphql operation recoverCassandraSource
@@ -158,7 +161,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // createCassandraSource.
-        protected void ProcessRecord_CreateSource()
+        internal void ProcessRecord_CreateSource()
         {
             this._logger.name += " -CreateSource";
             // Invoke graphql operation createCassandraSource
@@ -167,7 +170,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // updateCassandraSource.
-        protected void ProcessRecord_UpdateSource()
+        internal void ProcessRecord_UpdateSource()
         {
             this._logger.name += " -UpdateSource";
             // Invoke graphql operation updateCassandraSource
@@ -176,7 +179,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // deleteCassandraSource.
-        protected void ProcessRecord_DeleteSource()
+        internal void ProcessRecord_DeleteSource()
         {
             this._logger.name += " -DeleteSource";
             // Invoke graphql operation deleteCassandraSource
@@ -185,7 +188,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // bulkDeleteCassandraSources.
-        protected void ProcessRecord_BulkDeleteSources()
+        internal void ProcessRecord_BulkDeleteSources()
         {
             this._logger.name += " -BulkDeleteSources";
             // Invoke graphql operation bulkDeleteCassandraSources
@@ -195,7 +198,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // recoverCassandraSource(input: MosaicRestoreDataInput!): MosaicAsyncResponse!
-        protected void InvokeMutationRecoverCassandraSource()
+        internal void InvokeMutationRecoverCassandraSource()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "MosaicRestoreDataInput!"),
@@ -222,7 +225,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // createCassandraSource(input: AddMosaicSourceInput!): MosaicAsyncResponse!
-        protected void InvokeMutationCreateCassandraSource()
+        internal void InvokeMutationCreateCassandraSource()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "AddMosaicSourceInput!"),
@@ -249,7 +252,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // updateCassandraSource(input: ModifyMosaicSourceInput!): MosaicAsyncResponse!
-        protected void InvokeMutationUpdateCassandraSource()
+        internal void InvokeMutationUpdateCassandraSource()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "ModifyMosaicSourceInput!"),
@@ -276,7 +279,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // deleteCassandraSource(input: DeleteMosaicSourceInput!): MosaicAsyncResponse!
-        protected void InvokeMutationDeleteCassandraSource()
+        internal void InvokeMutationDeleteCassandraSource()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteMosaicSourceInput!"),
@@ -303,7 +306,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // bulkDeleteCassandraSources(input: BulkDeleteMosaicSourcesInput!): MosaicAsyncResponse!
-        protected void InvokeMutationBulkDeleteCassandraSources()
+        internal void InvokeMutationBulkDeleteCassandraSources()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "BulkDeleteMosaicSourcesInput!"),

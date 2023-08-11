@@ -131,6 +131,11 @@ Kicks off an OAuth consent flow for Azure resource access.
 
 - The oauthconsentkickoff subcommand takes no arguments.
 - Returns AzureOauthConsentKickoffReply.
+### restoreadobjectswithpassword
+Restores the Azure AD directory.
+
+- There is a single argument of type RestoreAzureAdObjectsWithPasswordInput.
+- Returns list of CreateOnDemandJobReplys.
 ### setcloudaccountcustomerappcredentials
 Set credentials for the customer application, for the tenant domain name.
 

@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region TimeRangeWithUnit
  
-    public class TimeRangeWithUnit: BaseType, ActivitySeriesGroupByInfo, AnomalyResultGroupByInfo, CdmSnapshotGroupByInfo, ClusterGroupByInfo, ClusterMetricGroupByInfo, FailoverGroupByInfo, ManagedVolumeQueuedSnapshotGroupByInfo, MissedSnapshotGroupByInfo, MongoSnapshotGroupByInfo, MosaicSnapshotGroupByInfo, PolarisSnapshotGroupByInfo, RansomwareResultGroupByInfo, SnappableGroupByInfo, TaskDetailGroupByInfo, TaskSummaryGroupByInfo
+    public class TimeRangeWithUnit: BaseType, ActivitySeriesGroupByInfo, AnomalyResultGroupByInfo, CdmSnapshotGroupByInfo, ClusterGroupByInfo, ClusterMetricGroupByInfo, FailoverGroupByInfo, ManagedVolumeQueuedSnapshotGroupByInfo, MissedSnapshotGroupByInfo, MongoSnapshotGroupByInfo, MosaicSnapshotGroupByInfo, NfAnomalyResultGroupByInfo, PolarisSnapshotGroupByInfo, RansomwareResultGroupByInfo, SnappableGroupByInfo, TaskDetailGroupByInfo, TaskSummaryGroupByInfo
     {
         #region members
 

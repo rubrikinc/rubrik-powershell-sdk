@@ -50,6 +50,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("host")]
         public PhysicalHost? Host { get; set; }
 
+        //      C# -> PhysicalHost? SystemHost
+        // GraphQL -> systemHost: PhysicalHost (type)
+        [JsonProperty("systemHost")]
+        public PhysicalHost? SystemHost { get; set; }
+
 
         #endregion
 
@@ -65,7 +70,8 @@ namespace RubrikSecurityCloud.Types
         System.String? HostType = null,
         System.String? HostUuid = null,
         System.String? Status = null,
-        PhysicalHost? Host = null
+        PhysicalHost? Host = null,
+        PhysicalHost? SystemHost = null
     ) 
     {
         if ( ClusterUuid != null ) {
@@ -85,6 +91,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Host != null ) {
             this.Host = Host;
+        }
+        if ( SystemHost != null ) {
+            this.SystemHost = SystemHost;
         }
         return this;
     }
@@ -127,6 +136,14 @@ namespace RubrikSecurityCloud.Types
             var fspec = this.Host.AsFieldSpec(indent+1);
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
                 s += ind + "host {\n" + fspec + ind + "}\n" ;
+            }
+        }
+        //      C# -> PhysicalHost? SystemHost
+        // GraphQL -> systemHost: PhysicalHost (type)
+        if (this.SystemHost != null) {
+            var fspec = this.SystemHost.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "systemHost {\n" + fspec + ind + "}\n" ;
             }
         }
         return s;
@@ -173,6 +190,13 @@ namespace RubrikSecurityCloud.Types
         {
             this.Host = new PhysicalHost();
             this.Host.ApplyExploratoryFieldSpec(parent + ".host");
+        }
+        //      C# -> PhysicalHost? SystemHost
+        // GraphQL -> systemHost: PhysicalHost (type)
+        if (this.SystemHost == null && Exploration.Includes(parent + ".systemHost"))
+        {
+            this.SystemHost = new PhysicalHost();
+            this.SystemHost.ApplyExploratoryFieldSpec(parent + ".systemHost");
         }
     }
 

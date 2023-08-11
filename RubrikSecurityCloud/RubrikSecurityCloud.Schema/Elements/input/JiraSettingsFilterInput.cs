@@ -19,16 +19,6 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> DateTime? LastUpdatedTimeLt
-        // GraphQL -> lastUpdatedTimeLt: DateTime (scalar)
-        [JsonProperty("lastUpdatedTimeLt")]
-        public DateTime? LastUpdatedTimeLt { get; set; }
-
-        //      C# -> DateTime? LastUpdatedTimeGt
-        // GraphQL -> lastUpdatedTimeGt: DateTime (scalar)
-        [JsonProperty("lastUpdatedTimeGt")]
-        public DateTime? LastUpdatedTimeGt { get; set; }
-
         //      C# -> System.String? SearchTerm
         // GraphQL -> searchTerm: String (scalar)
         [JsonProperty("searchTerm")]

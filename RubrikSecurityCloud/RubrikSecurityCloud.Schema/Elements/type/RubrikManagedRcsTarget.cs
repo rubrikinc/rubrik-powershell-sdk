@@ -101,10 +101,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isArchived")]
         public System.Boolean? IsArchived { get; set; }
 
-        //      C# -> System.Boolean? IsBlobImmutabilityEnabled
-        // GraphQL -> isBlobImmutabilityEnabled: Boolean! (scalar)
-        [JsonProperty("isBlobImmutabilityEnabled")]
-        public System.Boolean? IsBlobImmutabilityEnabled { get; set; }
+        //      C# -> System.Boolean? IsVersionLevelImmutabilityEnabled
+        // GraphQL -> isVersionLevelImmutabilityEnabled: Boolean! (scalar)
+        [JsonProperty("isVersionLevelImmutabilityEnabled")]
+        public System.Boolean? IsVersionLevelImmutabilityEnabled { get; set; }
 
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
@@ -187,7 +187,7 @@ namespace RubrikSecurityCloud.Types
         System.Int64? ImmutabilityPeriodDays = null,
         System.Boolean? IsActive = null,
         System.Boolean? IsArchived = null,
-        System.Boolean? IsBlobImmutabilityEnabled = null,
+        System.Boolean? IsVersionLevelImmutabilityEnabled = null,
         System.String? Name = null,
         System.Int32? RunningTasks = null,
         System.Boolean? ShouldBypassProxy = null,
@@ -249,8 +249,8 @@ namespace RubrikSecurityCloud.Types
         if ( IsArchived != null ) {
             this.IsArchived = IsArchived;
         }
-        if ( IsBlobImmutabilityEnabled != null ) {
-            this.IsBlobImmutabilityEnabled = IsBlobImmutabilityEnabled;
+        if ( IsVersionLevelImmutabilityEnabled != null ) {
+            this.IsVersionLevelImmutabilityEnabled = IsVersionLevelImmutabilityEnabled;
         }
         if ( Name != null ) {
             this.Name = Name;
@@ -375,10 +375,10 @@ namespace RubrikSecurityCloud.Types
         if (this.IsArchived != null) {
             s += ind + "isArchived\n" ;
         }
-        //      C# -> System.Boolean? IsBlobImmutabilityEnabled
-        // GraphQL -> isBlobImmutabilityEnabled: Boolean! (scalar)
-        if (this.IsBlobImmutabilityEnabled != null) {
-            s += ind + "isBlobImmutabilityEnabled\n" ;
+        //      C# -> System.Boolean? IsVersionLevelImmutabilityEnabled
+        // GraphQL -> isVersionLevelImmutabilityEnabled: Boolean! (scalar)
+        if (this.IsVersionLevelImmutabilityEnabled != null) {
+            s += ind + "isVersionLevelImmutabilityEnabled\n" ;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
@@ -554,11 +554,11 @@ namespace RubrikSecurityCloud.Types
         {
             this.IsArchived = true;
         }
-        //      C# -> System.Boolean? IsBlobImmutabilityEnabled
-        // GraphQL -> isBlobImmutabilityEnabled: Boolean! (scalar)
-        if (this.IsBlobImmutabilityEnabled == null && Exploration.Includes(parent + ".isBlobImmutabilityEnabled", true))
+        //      C# -> System.Boolean? IsVersionLevelImmutabilityEnabled
+        // GraphQL -> isVersionLevelImmutabilityEnabled: Boolean! (scalar)
+        if (this.IsVersionLevelImmutabilityEnabled == null && Exploration.Includes(parent + ".isVersionLevelImmutabilityEnabled", true))
         {
-            this.IsBlobImmutabilityEnabled = true;
+            this.IsVersionLevelImmutabilityEnabled = true;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)

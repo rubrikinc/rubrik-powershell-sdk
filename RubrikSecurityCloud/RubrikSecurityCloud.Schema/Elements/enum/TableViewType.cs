@@ -48,6 +48,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "RECOVERY_TASKS_DETAIL_TABLE")]
         RECOVERY_TASKS_DETAIL_TABLE,
 
+        [EnumMember(Value = "SLA_AUDIT_DETAIL_TABLE")]
+        SLA_AUDIT_DETAIL_TABLE,
+
+        [EnumMember(Value = "SLA_AUDIT_LIST_TABLE")]
+        SLA_AUDIT_LIST_TABLE,
+
         [EnumMember(Value = "TABLE_UNSPECIFIED")]
         TABLE_UNSPECIFIED,
 

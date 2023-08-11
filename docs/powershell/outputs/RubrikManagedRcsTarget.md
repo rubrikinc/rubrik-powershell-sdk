@@ -3,7 +3,7 @@ Specific information for Rubrik Cloud Vault (RCV) target created on Rubrik.
 
 - shouldBypassProxy: System.Boolean
   - Specifies whether the proxy settings is bypassed for  the RCV archival target.
-- isBlobImmutabilityEnabled: System.Boolean
+- isVersionLevelImmutabilityEnabled: System.Boolean
   - Specifies whether blob immutability is enabled for the RCV archival target.
 - syncStatus: TargetSyncStatus
   - Sync status of RCV target.

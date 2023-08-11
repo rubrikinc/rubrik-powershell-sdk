@@ -1,12 +1,10 @@
 ### JiraSettingsType
-JiraSettingType enumerates the different types of jira settings.
+JiraSettingType enumerates the different types of Jira settings.
 
-- JIRA_SETTINGS_TYPE_UNSPECIFIED - JiraSettingType is unknown.
 - ISSUE_TYPES - Jira issue type setting.
 - ISSUE_TYPE_SCHEME - Jira issue type scheme setting.
 - WORKFLOWS - Jira workflows setting.
 - WORKFLOW_SCHEMES - Jira workflow schemes setting.
-- CUSTOM_FIELD_CONTEXT - Jira custom field context setting.
 - CUSTOM_FIELDS - Jira custom field settings.
 - FIELD_CONFIGURATION - Jira field configuration settings.
 - FIELD_CONFIGURATION_SCHEMES - Jira field configuration schemes settings.
@@ -20,6 +18,7 @@ JiraSettingType enumerates the different types of jira settings.
 - NOTIFICATION_SCHEMES - Jira notification schemes settings.
 - PERMISSION_SCHEMES - Jira permission schemes settings.
 - PROJECT_ROLES - Jira project roles settings.
+- PROJECT_CATEGORY - Jira project category settings.
 - GLOBAL_PERMISSIONS - Jira global permission settings.
 - APPLICATION_ROLE - Jira application role settings.
 - USER - Jira user settings.

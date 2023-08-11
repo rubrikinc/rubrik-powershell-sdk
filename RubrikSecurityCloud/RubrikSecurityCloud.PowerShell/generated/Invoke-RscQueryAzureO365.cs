@@ -26,11 +26,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     public class Invoke_RscQueryAzureO365 : RscPSCmdlet
     {
         
-        // -------------------------------------------------------------------
-        // Exocompute parameter set
-        //
-        // [GraphQL: azureO365Exocompute]
-        //
+        /// <summary>
+        /// Exocompute parameter set
+        ///
+        /// [GraphQL: azureO365Exocompute]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Exocompute",
             Mandatory = false,
@@ -44,11 +44,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Exocompute { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // CheckStorageAccountName parameter set
-        //
-        // [GraphQL: azureO365CheckStorageAccountName]
-        //
+        /// <summary>
+        /// CheckStorageAccountName parameter set
+        ///
+        /// [GraphQL: azureO365CheckStorageAccountName]
+        /// </summary>
         [Parameter(
             ParameterSetName = "CheckStorageAccountName",
             Mandatory = false,
@@ -62,11 +62,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter CheckStorageAccountName { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // CheckStorageAccountAccessibility parameter set
-        //
-        // [GraphQL: azureO365CheckStorageAccountAccessibility]
-        //
+        /// <summary>
+        /// CheckStorageAccountAccessibility parameter set
+        ///
+        /// [GraphQL: azureO365CheckStorageAccountAccessibility]
+        /// </summary>
         [Parameter(
             ParameterSetName = "CheckStorageAccountAccessibility",
             Mandatory = false,
@@ -80,11 +80,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter CheckStorageAccountAccessibility { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // CheckSubscriptionQuota parameter set
-        //
-        // [GraphQL: azureO365CheckSubscriptionQuota]
-        //
+        /// <summary>
+        /// CheckSubscriptionQuota parameter set
+        ///
+        /// [GraphQL: azureO365CheckSubscriptionQuota]
+        /// </summary>
         [Parameter(
             ParameterSetName = "CheckSubscriptionQuota",
             Mandatory = false,
@@ -98,11 +98,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter CheckSubscriptionQuota { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // CheckResourceGroupName parameter set
-        //
-        // [GraphQL: azureO365CheckResourceGroupName]
-        //
+        /// <summary>
+        /// CheckResourceGroupName parameter set
+        ///
+        /// [GraphQL: azureO365CheckResourceGroupName]
+        /// </summary>
         [Parameter(
             ParameterSetName = "CheckResourceGroupName",
             Mandatory = false,
@@ -116,11 +116,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter CheckResourceGroupName { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // CheckVirtualNetworkName parameter set
-        //
-        // [GraphQL: azureO365CheckVirtualNetworkName]
-        //
+        /// <summary>
+        /// CheckVirtualNetworkName parameter set
+        ///
+        /// [GraphQL: azureO365CheckVirtualNetworkName]
+        /// </summary>
         [Parameter(
             ParameterSetName = "CheckVirtualNetworkName",
             Mandatory = false,
@@ -134,11 +134,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter CheckVirtualNetworkName { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ValidateUserRoles parameter set
-        //
-        // [GraphQL: azureO365ValidateUserRoles]
-        //
+        /// <summary>
+        /// ValidateUserRoles parameter set
+        ///
+        /// [GraphQL: azureO365ValidateUserRoles]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ValidateUserRoles",
             Mandatory = false,
@@ -152,11 +152,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter ValidateUserRoles { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // CheckNSGOutboundRules parameter set
-        //
-        // [GraphQL: azureO365CheckNSGOutboundRules]
-        //
+        /// <summary>
+        /// CheckNSGOutboundRules parameter set
+        ///
+        /// [GraphQL: azureO365CheckNSGOutboundRules]
+        /// </summary>
         [Parameter(
             ParameterSetName = "CheckNSGOutboundRules",
             Mandatory = false,
@@ -170,11 +170,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter CheckNSGOutboundRules { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // CheckNetworkSubnet parameter set
-        //
-        // [GraphQL: azureO365CheckNetworkSubnet]
-        //
+        /// <summary>
+        /// CheckNetworkSubnet parameter set
+        ///
+        /// [GraphQL: azureO365CheckNetworkSubnet]
+        /// </summary>
         [Parameter(
             ParameterSetName = "CheckNetworkSubnet",
             Mandatory = false,
@@ -188,11 +188,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter CheckNetworkSubnet { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // GetNetworkSubnetUnusedAddr parameter set
-        //
-        // [GraphQL: azureO365GetNetworkSubnetUnusedAddr]
-        //
+        /// <summary>
+        /// GetNetworkSubnetUnusedAddr parameter set
+        ///
+        /// [GraphQL: azureO365GetNetworkSubnetUnusedAddr]
+        /// </summary>
         [Parameter(
             ParameterSetName = "GetNetworkSubnetUnusedAddr",
             Mandatory = false,
@@ -206,11 +206,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter GetNetworkSubnetUnusedAddr { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // GetAzureHostType parameter set
-        //
-        // [GraphQL: azureO365GetAzureHostType]
-        //
+        /// <summary>
+        /// GetAzureHostType parameter set
+        ///
+        /// [GraphQL: azureO365GetAzureHostType]
+        /// </summary>
         [Parameter(
             ParameterSetName = "GetAzureHostType",
             Mandatory = false,
@@ -224,6 +224,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter GetAzureHostType { get; set; }
 
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
         protected override void ProcessRecord()
         {
             try
@@ -272,10 +274,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 ThrowTerminatingException(ex);
            }
         }
+#pragma warning restore 1591
 
         // This parameter set invokes a single graphql operation:
         // azureO365Exocompute.
-        protected void ProcessRecord_Exocompute()
+        internal void ProcessRecord_Exocompute()
         {
             this._logger.name += " -Exocompute";
             // Invoke graphql operation azureO365Exocompute
@@ -284,7 +287,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // azureO365CheckStorageAccountName.
-        protected void ProcessRecord_CheckStorageAccountName()
+        internal void ProcessRecord_CheckStorageAccountName()
         {
             this._logger.name += " -CheckStorageAccountName";
             // Invoke graphql operation azureO365CheckStorageAccountName
@@ -293,7 +296,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // azureO365CheckStorageAccountAccessibility.
-        protected void ProcessRecord_CheckStorageAccountAccessibility()
+        internal void ProcessRecord_CheckStorageAccountAccessibility()
         {
             this._logger.name += " -CheckStorageAccountAccessibility";
             // Invoke graphql operation azureO365CheckStorageAccountAccessibility
@@ -302,7 +305,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // azureO365CheckSubscriptionQuota.
-        protected void ProcessRecord_CheckSubscriptionQuota()
+        internal void ProcessRecord_CheckSubscriptionQuota()
         {
             this._logger.name += " -CheckSubscriptionQuota";
             // Invoke graphql operation azureO365CheckSubscriptionQuota
@@ -311,7 +314,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // azureO365CheckResourceGroupName.
-        protected void ProcessRecord_CheckResourceGroupName()
+        internal void ProcessRecord_CheckResourceGroupName()
         {
             this._logger.name += " -CheckResourceGroupName";
             // Invoke graphql operation azureO365CheckResourceGroupName
@@ -320,7 +323,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // azureO365CheckVirtualNetworkName.
-        protected void ProcessRecord_CheckVirtualNetworkName()
+        internal void ProcessRecord_CheckVirtualNetworkName()
         {
             this._logger.name += " -CheckVirtualNetworkName";
             // Invoke graphql operation azureO365CheckVirtualNetworkName
@@ -329,7 +332,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // azureO365ValidateUserRoles.
-        protected void ProcessRecord_ValidateUserRoles()
+        internal void ProcessRecord_ValidateUserRoles()
         {
             this._logger.name += " -ValidateUserRoles";
             // Invoke graphql operation azureO365ValidateUserRoles
@@ -338,7 +341,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // azureO365CheckNSGOutboundRules.
-        protected void ProcessRecord_CheckNSGOutboundRules()
+        internal void ProcessRecord_CheckNSGOutboundRules()
         {
             this._logger.name += " -CheckNSGOutboundRules";
             // Invoke graphql operation azureO365CheckNSGOutboundRules
@@ -347,7 +350,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // azureO365CheckNetworkSubnet.
-        protected void ProcessRecord_CheckNetworkSubnet()
+        internal void ProcessRecord_CheckNetworkSubnet()
         {
             this._logger.name += " -CheckNetworkSubnet";
             // Invoke graphql operation azureO365CheckNetworkSubnet
@@ -356,7 +359,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // azureO365GetNetworkSubnetUnusedAddr.
-        protected void ProcessRecord_GetNetworkSubnetUnusedAddr()
+        internal void ProcessRecord_GetNetworkSubnetUnusedAddr()
         {
             this._logger.name += " -GetNetworkSubnetUnusedAddr";
             // Invoke graphql operation azureO365GetNetworkSubnetUnusedAddr
@@ -365,7 +368,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // azureO365GetAzureHostType.
-        protected void ProcessRecord_GetAzureHostType()
+        internal void ProcessRecord_GetAzureHostType()
         {
             this._logger.name += " -GetAzureHostType";
             // Invoke graphql operation azureO365GetAzureHostType
@@ -375,7 +378,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // azureO365Exocompute(orgId: UUID!, exocomputeClusterId: String!): GetAzureO365ExocomputeResp!
-        protected void InvokeQueryAzureO365Exocompute()
+        internal void InvokeQueryAzureO365Exocompute()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("orgId", "UUID!"),
@@ -403,7 +406,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // azureO365CheckStorageAccountName(tenantId: String!, subscriptionId: UUID!, storage_account_name: String!): AzureResourceAvailabilityResp!
-        protected void InvokeQueryAzureO365CheckStorageAccountName()
+        internal void InvokeQueryAzureO365CheckStorageAccountName()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("tenantId", "String!"),
@@ -437,7 +440,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     storage_account_name: String!
         //     groupName: String!
         //   ): AzureResourceAvailabilityResp!
-        protected void InvokeQueryAzureO365CheckStorageAccountAccessibility()
+        internal void InvokeQueryAzureO365CheckStorageAccountAccessibility()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("tenantId", "String!"),
@@ -467,7 +470,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // azureO365CheckSubscriptionQuota(tenantId: String!, subscriptionId: UUID!, regionName: String!): AzureResourceAvailabilityResp!
-        protected void InvokeQueryAzureO365CheckSubscriptionQuota()
+        internal void InvokeQueryAzureO365CheckSubscriptionQuota()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("tenantId", "String!"),
@@ -496,7 +499,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // azureO365CheckResourceGroupName(tenantId: String!, subscriptionId: UUID!, groupName: String!): AzureResourceAvailabilityResp!
-        protected void InvokeQueryAzureO365CheckResourceGroupName()
+        internal void InvokeQueryAzureO365CheckResourceGroupName()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("tenantId", "String!"),
@@ -530,7 +533,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     groupName: String!
         //     vnet_name: String!
         //   ): AzureResourceAvailabilityResp!
-        protected void InvokeQueryAzureO365CheckVirtualNetworkName()
+        internal void InvokeQueryAzureO365CheckVirtualNetworkName()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("tenantId", "String!"),
@@ -560,7 +563,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // azureO365ValidateUserRoles(tenantId: String!, subscriptionId: UUID!): AzureUserRoleResp!
-        protected void InvokeQueryAzureO365ValidateUserRoles()
+        internal void InvokeQueryAzureO365ValidateUserRoles()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("tenantId", "String!"),
@@ -594,7 +597,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     vnet_name: String!
         //     subnet_name: String!
         //   ): AzureNetworkSecurityGroupResp!
-        protected void InvokeQueryAzureO365CheckNsgOutboundRules()
+        internal void InvokeQueryAzureO365CheckNsgOutboundRules()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("tenantId", "String!"),
@@ -632,7 +635,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     subnet_name: String!
         //     strict_addr_check: Boolean!
         //   ): AzureNetworkSubnetResp!
-        protected void InvokeQueryAzureO365CheckNetworkSubnet()
+        internal void InvokeQueryAzureO365CheckNetworkSubnet()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("tenantId", "String!"),
@@ -671,7 +674,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     subnet_name: String!
         //     strict_addr_check: Boolean!
         //   ): AzureNetworkSubnetUnusedAddrResp!
-        protected void InvokeQueryAzureO365GetNetworkSubnetUnusedAddr()
+        internal void InvokeQueryAzureO365GetNetworkSubnetUnusedAddr()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("tenantId", "String!"),
@@ -703,7 +706,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // azureO365GetAzureHostType: GetAzureHostTypeResp!
-        protected void InvokeQueryAzureO365GetAzureHostType()
+        internal void InvokeQueryAzureO365GetAzureHostType()
         {
             Tuple<string, string>[] argDefs = {
             };

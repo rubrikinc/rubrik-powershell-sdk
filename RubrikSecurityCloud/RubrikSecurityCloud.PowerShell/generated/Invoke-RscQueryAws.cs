@@ -26,11 +26,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     public class Invoke_RscQueryAws : RscPSCmdlet
     {
         
-        // -------------------------------------------------------------------
-        // NativeRoot parameter set
-        //
-        // [GraphQL: awsNativeRoot]
-        //
+        /// <summary>
+        /// NativeRoot parameter set
+        ///
+        /// [GraphQL: awsNativeRoot]
+        /// </summary>
         [Parameter(
             ParameterSetName = "NativeRoot",
             Mandatory = false,
@@ -44,11 +44,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter NativeRoot { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // NativeAccount parameter set
-        //
-        // [GraphQL: awsNativeAccount]
-        //
+        /// <summary>
+        /// NativeAccount parameter set
+        ///
+        /// [GraphQL: awsNativeAccount]
+        /// </summary>
         [Parameter(
             ParameterSetName = "NativeAccount",
             Mandatory = false,
@@ -62,11 +62,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter NativeAccount { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // NativeEc2Instance parameter set
-        //
-        // [GraphQL: awsNativeEc2Instance]
-        //
+        /// <summary>
+        /// NativeEc2Instance parameter set
+        ///
+        /// [GraphQL: awsNativeEc2Instance]
+        /// </summary>
         [Parameter(
             ParameterSetName = "NativeEc2Instance",
             Mandatory = false,
@@ -80,11 +80,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter NativeEc2Instance { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // NativeEbsVolume parameter set
-        //
-        // [GraphQL: awsNativeEbsVolume]
-        //
+        /// <summary>
+        /// NativeEbsVolume parameter set
+        ///
+        /// [GraphQL: awsNativeEbsVolume]
+        /// </summary>
         [Parameter(
             ParameterSetName = "NativeEbsVolume",
             Mandatory = false,
@@ -98,11 +98,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter NativeEbsVolume { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // NativeS3Bucket parameter set
-        //
-        // [GraphQL: awsNativeS3Bucket]
-        //
+        /// <summary>
+        /// NativeS3Bucket parameter set
+        ///
+        /// [GraphQL: awsNativeS3Bucket]
+        /// </summary>
         [Parameter(
             ParameterSetName = "NativeS3Bucket",
             Mandatory = false,
@@ -116,11 +116,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter NativeS3Bucket { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // NativeAccounts parameter set
-        //
-        // [GraphQL: awsNativeAccounts]
-        //
+        /// <summary>
+        /// NativeAccounts parameter set
+        ///
+        /// [GraphQL: awsNativeAccounts]
+        /// </summary>
         [Parameter(
             ParameterSetName = "NativeAccounts",
             Mandatory = false,
@@ -134,11 +134,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter NativeAccounts { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // NativeEc2InstancesByName parameter set
-        //
-        // [GraphQL: awsNativeEc2InstancesByName]
-        //
+        /// <summary>
+        /// NativeEc2InstancesByName parameter set
+        ///
+        /// [GraphQL: awsNativeEc2InstancesByName]
+        /// </summary>
         [Parameter(
             ParameterSetName = "NativeEc2InstancesByName",
             Mandatory = false,
@@ -152,11 +152,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter NativeEc2InstancesByName { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // NativeEc2Instances parameter set
-        //
-        // [GraphQL: awsNativeEc2Instances]
-        //
+        /// <summary>
+        /// NativeEc2Instances parameter set
+        ///
+        /// [GraphQL: awsNativeEc2Instances]
+        /// </summary>
         [Parameter(
             ParameterSetName = "NativeEc2Instances",
             Mandatory = false,
@@ -170,11 +170,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter NativeEc2Instances { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // NativeEbsVolumesByName parameter set
-        //
-        // [GraphQL: awsNativeEbsVolumesByName]
-        //
+        /// <summary>
+        /// NativeEbsVolumesByName parameter set
+        ///
+        /// [GraphQL: awsNativeEbsVolumesByName]
+        /// </summary>
         [Parameter(
             ParameterSetName = "NativeEbsVolumesByName",
             Mandatory = false,
@@ -188,11 +188,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter NativeEbsVolumesByName { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // NativeEbsVolumes parameter set
-        //
-        // [GraphQL: awsNativeEbsVolumes]
-        //
+        /// <summary>
+        /// NativeEbsVolumes parameter set
+        ///
+        /// [GraphQL: awsNativeEbsVolumes]
+        /// </summary>
         [Parameter(
             ParameterSetName = "NativeEbsVolumes",
             Mandatory = false,
@@ -206,11 +206,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter NativeEbsVolumes { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllVpcsByRegion parameter set
-        //
-        // [GraphQL: allVpcsByRegionFromAws]
-        //
+        /// <summary>
+        /// AllVpcsByRegion parameter set
+        ///
+        /// [GraphQL: allVpcsByRegionFromAws]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllVpcsByRegion",
             Mandatory = false,
@@ -224,11 +224,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllVpcsByRegion { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllVpcs parameter set
-        //
-        // [GraphQL: allVpcsFromAws]
-        //
+        /// <summary>
+        /// AllVpcs parameter set
+        ///
+        /// [GraphQL: allVpcsFromAws]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllVpcs",
             Mandatory = false,
@@ -242,11 +242,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllVpcs { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // IsNativeEbsVolumeSnapshotRestorable parameter set
-        //
-        // [GraphQL: isAwsNativeEbsVolumeSnapshotRestorable]
-        //
+        /// <summary>
+        /// IsNativeEbsVolumeSnapshotRestorable parameter set
+        ///
+        /// [GraphQL: isAwsNativeEbsVolumeSnapshotRestorable]
+        /// </summary>
         [Parameter(
             ParameterSetName = "IsNativeEbsVolumeSnapshotRestorable",
             Mandatory = false,
@@ -260,11 +260,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter IsNativeEbsVolumeSnapshotRestorable { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllAvailabilityZonesByRegion parameter set
-        //
-        // [GraphQL: allAvailabilityZonesByRegionFromAws]
-        //
+        /// <summary>
+        /// AllAvailabilityZonesByRegion parameter set
+        ///
+        /// [GraphQL: allAvailabilityZonesByRegionFromAws]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllAvailabilityZonesByRegion",
             Mandatory = false,
@@ -278,11 +278,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllAvailabilityZonesByRegion { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllKmsEncryptionKeysByRegion parameter set
-        //
-        // [GraphQL: allKmsEncryptionKeysByRegionFromAws]
-        //
+        /// <summary>
+        /// AllKmsEncryptionKeysByRegion parameter set
+        ///
+        /// [GraphQL: allKmsEncryptionKeysByRegionFromAws]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllKmsEncryptionKeysByRegion",
             Mandatory = false,
@@ -296,11 +296,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllKmsEncryptionKeysByRegion { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // IsS3BucketNameAvailable parameter set
-        //
-        // [GraphQL: isAwsS3BucketNameAvailable]
-        //
+        /// <summary>
+        /// IsS3BucketNameAvailable parameter set
+        ///
+        /// [GraphQL: isAwsS3BucketNameAvailable]
+        /// </summary>
         [Parameter(
             ParameterSetName = "IsS3BucketNameAvailable",
             Mandatory = false,
@@ -314,11 +314,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter IsS3BucketNameAvailable { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllS3Buckets parameter set
-        //
-        // [GraphQL: allS3BucketsFromAws]
-        //
+        /// <summary>
+        /// AllS3Buckets parameter set
+        ///
+        /// [GraphQL: allS3BucketsFromAws]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllS3Buckets",
             Mandatory = false,
@@ -332,11 +332,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllS3Buckets { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllS3BucketsDetails parameter set
-        //
-        // [GraphQL: allS3BucketsDetailsFromAws]
-        //
+        /// <summary>
+        /// AllS3BucketsDetails parameter set
+        ///
+        /// [GraphQL: allS3BucketsDetailsFromAws]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllS3BucketsDetails",
             Mandatory = false,
@@ -350,11 +350,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllS3BucketsDetails { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // NativeRdsInstance parameter set
-        //
-        // [GraphQL: awsNativeRdsInstance]
-        //
+        /// <summary>
+        /// NativeRdsInstance parameter set
+        ///
+        /// [GraphQL: awsNativeRdsInstance]
+        /// </summary>
         [Parameter(
             ParameterSetName = "NativeRdsInstance",
             Mandatory = false,
@@ -368,11 +368,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter NativeRdsInstance { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // NativeRdsInstances parameter set
-        //
-        // [GraphQL: awsNativeRdsInstances]
-        //
+        /// <summary>
+        /// NativeRdsInstances parameter set
+        ///
+        /// [GraphQL: awsNativeRdsInstances]
+        /// </summary>
         [Parameter(
             ParameterSetName = "NativeRdsInstances",
             Mandatory = false,
@@ -386,11 +386,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter NativeRdsInstances { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // NativeRdsPointInTimeRestoreWindow parameter set
-        //
-        // [GraphQL: awsNativeRdsPointInTimeRestoreWindow]
-        //
+        /// <summary>
+        /// NativeRdsPointInTimeRestoreWindow parameter set
+        ///
+        /// [GraphQL: awsNativeRdsPointInTimeRestoreWindow]
+        /// </summary>
         [Parameter(
             ParameterSetName = "NativeRdsPointInTimeRestoreWindow",
             Mandatory = false,
@@ -404,11 +404,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter NativeRdsPointInTimeRestoreWindow { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // RdsInstanceDetails parameter set
-        //
-        // [GraphQL: rdsInstanceDetailsFromAws]
-        //
+        /// <summary>
+        /// RdsInstanceDetails parameter set
+        ///
+        /// [GraphQL: rdsInstanceDetailsFromAws]
+        /// </summary>
         [Parameter(
             ParameterSetName = "RdsInstanceDetails",
             Mandatory = false,
@@ -422,11 +422,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter RdsInstanceDetails { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // IsNativeRdsInstanceLaunchConfigurationValid parameter set
-        //
-        // [GraphQL: isAwsNativeRdsInstanceLaunchConfigurationValid]
-        //
+        /// <summary>
+        /// IsNativeRdsInstanceLaunchConfigurationValid parameter set
+        ///
+        /// [GraphQL: isAwsNativeRdsInstanceLaunchConfigurationValid]
+        /// </summary>
         [Parameter(
             ParameterSetName = "IsNativeRdsInstanceLaunchConfigurationValid",
             Mandatory = false,
@@ -440,11 +440,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter IsNativeRdsInstanceLaunchConfigurationValid { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllOptionGroupsByRegion parameter set
-        //
-        // [GraphQL: allOptionGroupsByRegionFromAws]
-        //
+        /// <summary>
+        /// AllOptionGroupsByRegion parameter set
+        ///
+        /// [GraphQL: allOptionGroupsByRegionFromAws]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllOptionGroupsByRegion",
             Mandatory = false,
@@ -458,11 +458,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllOptionGroupsByRegion { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllDbParameterGroupsByRegion parameter set
-        //
-        // [GraphQL: allDbParameterGroupsByRegionFromAws]
-        //
+        /// <summary>
+        /// AllDbParameterGroupsByRegion parameter set
+        ///
+        /// [GraphQL: allDbParameterGroupsByRegionFromAws]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllDbParameterGroupsByRegion",
             Mandatory = false,
@@ -476,11 +476,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllDbParameterGroupsByRegion { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllDbSubnetGroupsByRegion parameter set
-        //
-        // [GraphQL: allDbSubnetGroupsByRegionFromAws]
-        //
+        /// <summary>
+        /// AllDbSubnetGroupsByRegion parameter set
+        ///
+        /// [GraphQL: allDbSubnetGroupsByRegionFromAws]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllDbSubnetGroupsByRegion",
             Mandatory = false,
@@ -494,11 +494,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllDbSubnetGroupsByRegion { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ValidateNativeRdsInstanceNameForExport parameter set
-        //
-        // [GraphQL: validateAwsNativeRdsInstanceNameForExport]
-        //
+        /// <summary>
+        /// ValidateNativeRdsInstanceNameForExport parameter set
+        ///
+        /// [GraphQL: validateAwsNativeRdsInstanceNameForExport]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ValidateNativeRdsInstanceNameForExport",
             Mandatory = false,
@@ -512,11 +512,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter ValidateNativeRdsInstanceNameForExport { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ValidateNativeRdsClusterNameForExport parameter set
-        //
-        // [GraphQL: validateAwsNativeRdsClusterNameForExport]
-        //
+        /// <summary>
+        /// ValidateNativeRdsClusterNameForExport parameter set
+        ///
+        /// [GraphQL: validateAwsNativeRdsClusterNameForExport]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ValidateNativeRdsClusterNameForExport",
             Mandatory = false,
@@ -530,11 +530,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter ValidateNativeRdsClusterNameForExport { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // NativeRdsExportDefaults parameter set
-        //
-        // [GraphQL: awsNativeRdsExportDefaults]
-        //
+        /// <summary>
+        /// NativeRdsExportDefaults parameter set
+        ///
+        /// [GraphQL: awsNativeRdsExportDefaults]
+        /// </summary>
         [Parameter(
             ParameterSetName = "NativeRdsExportDefaults",
             Mandatory = false,
@@ -548,11 +548,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter NativeRdsExportDefaults { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllEc2KeyPairsByRegion parameter set
-        //
-        // [GraphQL: allEc2KeyPairsByRegionFromAws]
-        //
+        /// <summary>
+        /// AllEc2KeyPairsByRegion parameter set
+        ///
+        /// [GraphQL: allEc2KeyPairsByRegionFromAws]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllEc2KeyPairsByRegion",
             Mandatory = false,
@@ -566,11 +566,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllEc2KeyPairsByRegion { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AmiTypeForNativeArchivedSnapshotExport parameter set
-        //
-        // [GraphQL: amiTypeForAwsNativeArchivedSnapshotExport]
-        //
+        /// <summary>
+        /// AmiTypeForNativeArchivedSnapshotExport parameter set
+        ///
+        /// [GraphQL: amiTypeForAwsNativeArchivedSnapshotExport]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AmiTypeForNativeArchivedSnapshotExport",
             Mandatory = false,
@@ -584,11 +584,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AmiTypeForNativeArchivedSnapshotExport { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllRdsAuroraInstanceClasses parameter set
-        //
-        // [GraphQL: allAwsRdsAuroraInstanceClasses]
-        //
+        /// <summary>
+        /// AllRdsAuroraInstanceClasses parameter set
+        ///
+        /// [GraphQL: allAwsRdsAuroraInstanceClasses]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllRdsAuroraInstanceClasses",
             Mandatory = false,
@@ -602,11 +602,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllRdsAuroraInstanceClasses { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllSupportedRdsDatabaseInstanceClasses parameter set
-        //
-        // [GraphQL: allSupportedAwsRdsDatabaseInstanceClasses]
-        //
+        /// <summary>
+        /// AllSupportedRdsDatabaseInstanceClasses parameter set
+        ///
+        /// [GraphQL: allSupportedAwsRdsDatabaseInstanceClasses]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllSupportedRdsDatabaseInstanceClasses",
             Mandatory = false,
@@ -620,11 +620,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllSupportedRdsDatabaseInstanceClasses { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ComputeSettings parameter set
-        //
-        // [GraphQL: awsComputeSettings]
-        //
+        /// <summary>
+        /// ComputeSettings parameter set
+        ///
+        /// [GraphQL: awsComputeSettings]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ComputeSettings",
             Mandatory = false,
@@ -638,11 +638,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter ComputeSettings { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllComputeSettings parameter set
-        //
-        // [GraphQL: allAwsComputeSettings]
-        //
+        /// <summary>
+        /// AllComputeSettings parameter set
+        ///
+        /// [GraphQL: allAwsComputeSettings]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllComputeSettings",
             Mandatory = false,
@@ -656,11 +656,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllComputeSettings { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllCloudAccountsWithFeatures parameter set
-        //
-        // [GraphQL: allAwsCloudAccountsWithFeatures]
-        //
+        /// <summary>
+        /// AllCloudAccountsWithFeatures parameter set
+        ///
+        /// [GraphQL: allAwsCloudAccountsWithFeatures]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllCloudAccountsWithFeatures",
             Mandatory = false,
@@ -674,11 +674,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllCloudAccountsWithFeatures { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllCloudAccountsFeaturesWithExoConfigs parameter set
-        //
-        // [GraphQL: allAwsCloudAccountsFeaturesWithExoConfigs]
-        //
+        /// <summary>
+        /// AllCloudAccountsFeaturesWithExoConfigs parameter set
+        ///
+        /// [GraphQL: allAwsCloudAccountsFeaturesWithExoConfigs]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllCloudAccountsFeaturesWithExoConfigs",
             Mandatory = false,
@@ -692,11 +692,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllCloudAccountsFeaturesWithExoConfigs { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // CloudAccountWithFeatures parameter set
-        //
-        // [GraphQL: awsCloudAccountWithFeatures]
-        //
+        /// <summary>
+        /// CloudAccountWithFeatures parameter set
+        ///
+        /// [GraphQL: awsCloudAccountWithFeatures]
+        /// </summary>
         [Parameter(
             ParameterSetName = "CloudAccountWithFeatures",
             Mandatory = false,
@@ -710,11 +710,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter CloudAccountWithFeatures { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // CloudAccountListVpcs parameter set
-        //
-        // [GraphQL: awsCloudAccountListVpcs]
-        //
+        /// <summary>
+        /// CloudAccountListVpcs parameter set
+        ///
+        /// [GraphQL: awsCloudAccountListVpcs]
+        /// </summary>
         [Parameter(
             ParameterSetName = "CloudAccountListVpcs",
             Mandatory = false,
@@ -728,11 +728,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter CloudAccountListVpcs { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // CloudAccountListSubnets parameter set
-        //
-        // [GraphQL: awsCloudAccountListSubnets]
-        //
+        /// <summary>
+        /// CloudAccountListSubnets parameter set
+        ///
+        /// [GraphQL: awsCloudAccountListSubnets]
+        /// </summary>
         [Parameter(
             ParameterSetName = "CloudAccountListSubnets",
             Mandatory = false,
@@ -746,11 +746,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter CloudAccountListSubnets { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // CloudAccountListSecurityGroups parameter set
-        //
-        // [GraphQL: awsCloudAccountListSecurityGroups]
-        //
+        /// <summary>
+        /// CloudAccountListSecurityGroups parameter set
+        ///
+        /// [GraphQL: awsCloudAccountListSecurityGroups]
+        /// </summary>
         [Parameter(
             ParameterSetName = "CloudAccountListSecurityGroups",
             Mandatory = false,
@@ -764,11 +764,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter CloudAccountListSecurityGroups { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // CloudAccountListKMSKeys parameter set
-        //
-        // [GraphQL: AwsCloudAccountListKMSKeys]
-        //
+        /// <summary>
+        /// CloudAccountListKMSKeys parameter set
+        ///
+        /// [GraphQL: AwsCloudAccountListKMSKeys]
+        /// </summary>
         [Parameter(
             ParameterSetName = "CloudAccountListKMSKeys",
             Mandatory = false,
@@ -782,11 +782,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter CloudAccountListKMSKeys { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllExocomputeConfigs parameter set
-        //
-        // [GraphQL: allAwsExocomputeConfigs]
-        //
+        /// <summary>
+        /// AllExocomputeConfigs parameter set
+        ///
+        /// [GraphQL: allAwsExocomputeConfigs]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllExocomputeConfigs",
             Mandatory = false,
@@ -800,11 +800,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllExocomputeConfigs { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllCloudAccountConfigs parameter set
-        //
-        // [GraphQL: allAwsCloudAccountConfigs]
-        //
+        /// <summary>
+        /// AllCloudAccountConfigs parameter set
+        ///
+        /// [GraphQL: allAwsCloudAccountConfigs]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllCloudAccountConfigs",
             Mandatory = false,
@@ -818,11 +818,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllCloudAccountConfigs { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // TrustPolicy parameter set
-        //
-        // [GraphQL: awsTrustPolicy]
-        //
+        /// <summary>
+        /// TrustPolicy parameter set
+        ///
+        /// [GraphQL: awsTrustPolicy]
+        /// </summary>
         [Parameter(
             ParameterSetName = "TrustPolicy",
             Mandatory = false,
@@ -836,11 +836,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter TrustPolicy { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllPermissionPolicies parameter set
-        //
-        // [GraphQL: allAwsPermissionPolicies]
-        //
+        /// <summary>
+        /// AllPermissionPolicies parameter set
+        ///
+        /// [GraphQL: allAwsPermissionPolicies]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllPermissionPolicies",
             Mandatory = false,
@@ -854,11 +854,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllPermissionPolicies { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ArtifactsToDelete parameter set
-        //
-        // [GraphQL: awsArtifactsToDelete]
-        //
+        /// <summary>
+        /// ArtifactsToDelete parameter set
+        ///
+        /// [GraphQL: awsArtifactsToDelete]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ArtifactsToDelete",
             Mandatory = false,
@@ -872,11 +872,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter ArtifactsToDelete { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllRegions parameter set
-        //
-        // [GraphQL: allAwsRegions]
-        //
+        /// <summary>
+        /// AllRegions parameter set
+        ///
+        /// [GraphQL: allAwsRegions]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllRegions",
             Mandatory = false,
@@ -890,11 +890,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllRegions { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllCdmVersions parameter set
-        //
-        // [GraphQL: allAwsCdmVersions]
-        //
+        /// <summary>
+        /// AllCdmVersions parameter set
+        ///
+        /// [GraphQL: allAwsCdmVersions]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllCdmVersions",
             Mandatory = false,
@@ -908,11 +908,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllCdmVersions { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AllInstanceProfileNames parameter set
-        //
-        // [GraphQL: allAwsInstanceProfileNames]
-        //
+        /// <summary>
+        /// AllInstanceProfileNames parameter set
+        ///
+        /// [GraphQL: allAwsInstanceProfileNames]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AllInstanceProfileNames",
             Mandatory = false,
@@ -926,6 +926,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AllInstanceProfileNames { get; set; }
 
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
         protected override void ProcessRecord()
         {
             try
@@ -1091,10 +1093,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 ThrowTerminatingException(ex);
            }
         }
+#pragma warning restore 1591
 
         // This parameter set invokes a single graphql operation:
         // awsNativeRoot.
-        protected void ProcessRecord_NativeRoot()
+        internal void ProcessRecord_NativeRoot()
         {
             this._logger.name += " -NativeRoot";
             // Invoke graphql operation awsNativeRoot
@@ -1103,7 +1106,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // awsNativeAccount.
-        protected void ProcessRecord_NativeAccount()
+        internal void ProcessRecord_NativeAccount()
         {
             this._logger.name += " -NativeAccount";
             // Invoke graphql operation awsNativeAccount
@@ -1112,7 +1115,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // awsNativeEc2Instance.
-        protected void ProcessRecord_NativeEc2Instance()
+        internal void ProcessRecord_NativeEc2Instance()
         {
             this._logger.name += " -NativeEc2Instance";
             // Invoke graphql operation awsNativeEc2Instance
@@ -1121,7 +1124,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // awsNativeEbsVolume.
-        protected void ProcessRecord_NativeEbsVolume()
+        internal void ProcessRecord_NativeEbsVolume()
         {
             this._logger.name += " -NativeEbsVolume";
             // Invoke graphql operation awsNativeEbsVolume
@@ -1130,7 +1133,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // awsNativeS3Bucket.
-        protected void ProcessRecord_NativeS3Bucket()
+        internal void ProcessRecord_NativeS3Bucket()
         {
             this._logger.name += " -NativeS3Bucket";
             // Invoke graphql operation awsNativeS3Bucket
@@ -1139,7 +1142,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // awsNativeAccounts.
-        protected void ProcessRecord_NativeAccounts()
+        internal void ProcessRecord_NativeAccounts()
         {
             this._logger.name += " -NativeAccounts";
             // Invoke graphql operation awsNativeAccounts
@@ -1148,7 +1151,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // awsNativeEc2InstancesByName.
-        protected void ProcessRecord_NativeEc2InstancesByName()
+        internal void ProcessRecord_NativeEc2InstancesByName()
         {
             this._logger.name += " -NativeEc2InstancesByName";
             // Invoke graphql operation awsNativeEc2InstancesByName
@@ -1157,7 +1160,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // awsNativeEc2Instances.
-        protected void ProcessRecord_NativeEc2Instances()
+        internal void ProcessRecord_NativeEc2Instances()
         {
             this._logger.name += " -NativeEc2Instances";
             // Invoke graphql operation awsNativeEc2Instances
@@ -1166,7 +1169,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // awsNativeEbsVolumesByName.
-        protected void ProcessRecord_NativeEbsVolumesByName()
+        internal void ProcessRecord_NativeEbsVolumesByName()
         {
             this._logger.name += " -NativeEbsVolumesByName";
             // Invoke graphql operation awsNativeEbsVolumesByName
@@ -1175,7 +1178,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // awsNativeEbsVolumes.
-        protected void ProcessRecord_NativeEbsVolumes()
+        internal void ProcessRecord_NativeEbsVolumes()
         {
             this._logger.name += " -NativeEbsVolumes";
             // Invoke graphql operation awsNativeEbsVolumes
@@ -1184,7 +1187,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allVpcsByRegionFromAws.
-        protected void ProcessRecord_AllVpcsByRegion()
+        internal void ProcessRecord_AllVpcsByRegion()
         {
             this._logger.name += " -AllVpcsByRegion";
             // Invoke graphql operation allVpcsByRegionFromAws
@@ -1193,7 +1196,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allVpcsFromAws.
-        protected void ProcessRecord_AllVpcs()
+        internal void ProcessRecord_AllVpcs()
         {
             this._logger.name += " -AllVpcs";
             // Invoke graphql operation allVpcsFromAws
@@ -1202,7 +1205,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // isAwsNativeEbsVolumeSnapshotRestorable.
-        protected void ProcessRecord_IsNativeEbsVolumeSnapshotRestorable()
+        internal void ProcessRecord_IsNativeEbsVolumeSnapshotRestorable()
         {
             this._logger.name += " -IsNativeEbsVolumeSnapshotRestorable";
             // Invoke graphql operation isAwsNativeEbsVolumeSnapshotRestorable
@@ -1211,7 +1214,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allAvailabilityZonesByRegionFromAws.
-        protected void ProcessRecord_AllAvailabilityZonesByRegion()
+        internal void ProcessRecord_AllAvailabilityZonesByRegion()
         {
             this._logger.name += " -AllAvailabilityZonesByRegion";
             // Invoke graphql operation allAvailabilityZonesByRegionFromAws
@@ -1220,7 +1223,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allKmsEncryptionKeysByRegionFromAws.
-        protected void ProcessRecord_AllKmsEncryptionKeysByRegion()
+        internal void ProcessRecord_AllKmsEncryptionKeysByRegion()
         {
             this._logger.name += " -AllKmsEncryptionKeysByRegion";
             // Invoke graphql operation allKmsEncryptionKeysByRegionFromAws
@@ -1229,7 +1232,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // isAwsS3BucketNameAvailable.
-        protected void ProcessRecord_IsS3BucketNameAvailable()
+        internal void ProcessRecord_IsS3BucketNameAvailable()
         {
             this._logger.name += " -IsS3BucketNameAvailable";
             // Invoke graphql operation isAwsS3BucketNameAvailable
@@ -1238,7 +1241,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allS3BucketsFromAws.
-        protected void ProcessRecord_AllS3Buckets()
+        internal void ProcessRecord_AllS3Buckets()
         {
             this._logger.name += " -AllS3Buckets";
             // Invoke graphql operation allS3BucketsFromAws
@@ -1247,7 +1250,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allS3BucketsDetailsFromAws.
-        protected void ProcessRecord_AllS3BucketsDetails()
+        internal void ProcessRecord_AllS3BucketsDetails()
         {
             this._logger.name += " -AllS3BucketsDetails";
             // Invoke graphql operation allS3BucketsDetailsFromAws
@@ -1256,7 +1259,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // awsNativeRdsInstance.
-        protected void ProcessRecord_NativeRdsInstance()
+        internal void ProcessRecord_NativeRdsInstance()
         {
             this._logger.name += " -NativeRdsInstance";
             // Invoke graphql operation awsNativeRdsInstance
@@ -1265,7 +1268,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // awsNativeRdsInstances.
-        protected void ProcessRecord_NativeRdsInstances()
+        internal void ProcessRecord_NativeRdsInstances()
         {
             this._logger.name += " -NativeRdsInstances";
             // Invoke graphql operation awsNativeRdsInstances
@@ -1274,7 +1277,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // awsNativeRdsPointInTimeRestoreWindow.
-        protected void ProcessRecord_NativeRdsPointInTimeRestoreWindow()
+        internal void ProcessRecord_NativeRdsPointInTimeRestoreWindow()
         {
             this._logger.name += " -NativeRdsPointInTimeRestoreWindow";
             // Invoke graphql operation awsNativeRdsPointInTimeRestoreWindow
@@ -1283,7 +1286,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // rdsInstanceDetailsFromAws.
-        protected void ProcessRecord_RdsInstanceDetails()
+        internal void ProcessRecord_RdsInstanceDetails()
         {
             this._logger.name += " -RdsInstanceDetails";
             // Invoke graphql operation rdsInstanceDetailsFromAws
@@ -1292,7 +1295,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // isAwsNativeRdsInstanceLaunchConfigurationValid.
-        protected void ProcessRecord_IsNativeRdsInstanceLaunchConfigurationValid()
+        internal void ProcessRecord_IsNativeRdsInstanceLaunchConfigurationValid()
         {
             this._logger.name += " -IsNativeRdsInstanceLaunchConfigurationValid";
             // Invoke graphql operation isAwsNativeRdsInstanceLaunchConfigurationValid
@@ -1301,7 +1304,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allOptionGroupsByRegionFromAws.
-        protected void ProcessRecord_AllOptionGroupsByRegion()
+        internal void ProcessRecord_AllOptionGroupsByRegion()
         {
             this._logger.name += " -AllOptionGroupsByRegion";
             // Invoke graphql operation allOptionGroupsByRegionFromAws
@@ -1310,7 +1313,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allDbParameterGroupsByRegionFromAws.
-        protected void ProcessRecord_AllDbParameterGroupsByRegion()
+        internal void ProcessRecord_AllDbParameterGroupsByRegion()
         {
             this._logger.name += " -AllDbParameterGroupsByRegion";
             // Invoke graphql operation allDbParameterGroupsByRegionFromAws
@@ -1319,7 +1322,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allDbSubnetGroupsByRegionFromAws.
-        protected void ProcessRecord_AllDbSubnetGroupsByRegion()
+        internal void ProcessRecord_AllDbSubnetGroupsByRegion()
         {
             this._logger.name += " -AllDbSubnetGroupsByRegion";
             // Invoke graphql operation allDbSubnetGroupsByRegionFromAws
@@ -1328,7 +1331,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // validateAwsNativeRdsInstanceNameForExport.
-        protected void ProcessRecord_ValidateNativeRdsInstanceNameForExport()
+        internal void ProcessRecord_ValidateNativeRdsInstanceNameForExport()
         {
             this._logger.name += " -ValidateNativeRdsInstanceNameForExport";
             // Invoke graphql operation validateAwsNativeRdsInstanceNameForExport
@@ -1337,7 +1340,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // validateAwsNativeRdsClusterNameForExport.
-        protected void ProcessRecord_ValidateNativeRdsClusterNameForExport()
+        internal void ProcessRecord_ValidateNativeRdsClusterNameForExport()
         {
             this._logger.name += " -ValidateNativeRdsClusterNameForExport";
             // Invoke graphql operation validateAwsNativeRdsClusterNameForExport
@@ -1346,7 +1349,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // awsNativeRdsExportDefaults.
-        protected void ProcessRecord_NativeRdsExportDefaults()
+        internal void ProcessRecord_NativeRdsExportDefaults()
         {
             this._logger.name += " -NativeRdsExportDefaults";
             // Invoke graphql operation awsNativeRdsExportDefaults
@@ -1355,7 +1358,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allEc2KeyPairsByRegionFromAws.
-        protected void ProcessRecord_AllEc2KeyPairsByRegion()
+        internal void ProcessRecord_AllEc2KeyPairsByRegion()
         {
             this._logger.name += " -AllEc2KeyPairsByRegion";
             // Invoke graphql operation allEc2KeyPairsByRegionFromAws
@@ -1364,7 +1367,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // amiTypeForAwsNativeArchivedSnapshotExport.
-        protected void ProcessRecord_AmiTypeForNativeArchivedSnapshotExport()
+        internal void ProcessRecord_AmiTypeForNativeArchivedSnapshotExport()
         {
             this._logger.name += " -AmiTypeForNativeArchivedSnapshotExport";
             // Invoke graphql operation amiTypeForAwsNativeArchivedSnapshotExport
@@ -1373,7 +1376,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allAwsRdsAuroraInstanceClasses.
-        protected void ProcessRecord_AllRdsAuroraInstanceClasses()
+        internal void ProcessRecord_AllRdsAuroraInstanceClasses()
         {
             this._logger.name += " -AllRdsAuroraInstanceClasses";
             // Invoke graphql operation allAwsRdsAuroraInstanceClasses
@@ -1382,7 +1385,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allSupportedAwsRdsDatabaseInstanceClasses.
-        protected void ProcessRecord_AllSupportedRdsDatabaseInstanceClasses()
+        internal void ProcessRecord_AllSupportedRdsDatabaseInstanceClasses()
         {
             this._logger.name += " -AllSupportedRdsDatabaseInstanceClasses";
             // Invoke graphql operation allSupportedAwsRdsDatabaseInstanceClasses
@@ -1391,7 +1394,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // awsComputeSettings.
-        protected void ProcessRecord_ComputeSettings()
+        internal void ProcessRecord_ComputeSettings()
         {
             this._logger.name += " -ComputeSettings";
             // Invoke graphql operation awsComputeSettings
@@ -1400,7 +1403,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allAwsComputeSettings.
-        protected void ProcessRecord_AllComputeSettings()
+        internal void ProcessRecord_AllComputeSettings()
         {
             this._logger.name += " -AllComputeSettings";
             // Invoke graphql operation allAwsComputeSettings
@@ -1409,7 +1412,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allAwsCloudAccountsWithFeatures.
-        protected void ProcessRecord_AllCloudAccountsWithFeatures()
+        internal void ProcessRecord_AllCloudAccountsWithFeatures()
         {
             this._logger.name += " -AllCloudAccountsWithFeatures";
             // Invoke graphql operation allAwsCloudAccountsWithFeatures
@@ -1418,7 +1421,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allAwsCloudAccountsFeaturesWithExoConfigs.
-        protected void ProcessRecord_AllCloudAccountsFeaturesWithExoConfigs()
+        internal void ProcessRecord_AllCloudAccountsFeaturesWithExoConfigs()
         {
             this._logger.name += " -AllCloudAccountsFeaturesWithExoConfigs";
             // Invoke graphql operation allAwsCloudAccountsFeaturesWithExoConfigs
@@ -1427,7 +1430,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // awsCloudAccountWithFeatures.
-        protected void ProcessRecord_CloudAccountWithFeatures()
+        internal void ProcessRecord_CloudAccountWithFeatures()
         {
             this._logger.name += " -CloudAccountWithFeatures";
             // Invoke graphql operation awsCloudAccountWithFeatures
@@ -1436,7 +1439,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // awsCloudAccountListVpcs.
-        protected void ProcessRecord_CloudAccountListVpcs()
+        internal void ProcessRecord_CloudAccountListVpcs()
         {
             this._logger.name += " -CloudAccountListVpcs";
             // Invoke graphql operation awsCloudAccountListVpcs
@@ -1445,7 +1448,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // awsCloudAccountListSubnets.
-        protected void ProcessRecord_CloudAccountListSubnets()
+        internal void ProcessRecord_CloudAccountListSubnets()
         {
             this._logger.name += " -CloudAccountListSubnets";
             // Invoke graphql operation awsCloudAccountListSubnets
@@ -1454,7 +1457,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // awsCloudAccountListSecurityGroups.
-        protected void ProcessRecord_CloudAccountListSecurityGroups()
+        internal void ProcessRecord_CloudAccountListSecurityGroups()
         {
             this._logger.name += " -CloudAccountListSecurityGroups";
             // Invoke graphql operation awsCloudAccountListSecurityGroups
@@ -1463,7 +1466,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // AwsCloudAccountListKMSKeys.
-        protected void ProcessRecord_CloudAccountListKMSKeys()
+        internal void ProcessRecord_CloudAccountListKMSKeys()
         {
             this._logger.name += " -CloudAccountListKMSKeys";
             // Invoke graphql operation AwsCloudAccountListKMSKeys
@@ -1472,7 +1475,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allAwsExocomputeConfigs.
-        protected void ProcessRecord_AllExocomputeConfigs()
+        internal void ProcessRecord_AllExocomputeConfigs()
         {
             this._logger.name += " -AllExocomputeConfigs";
             // Invoke graphql operation allAwsExocomputeConfigs
@@ -1481,7 +1484,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allAwsCloudAccountConfigs.
-        protected void ProcessRecord_AllCloudAccountConfigs()
+        internal void ProcessRecord_AllCloudAccountConfigs()
         {
             this._logger.name += " -AllCloudAccountConfigs";
             // Invoke graphql operation allAwsCloudAccountConfigs
@@ -1490,7 +1493,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // awsTrustPolicy.
-        protected void ProcessRecord_TrustPolicy()
+        internal void ProcessRecord_TrustPolicy()
         {
             this._logger.name += " -TrustPolicy";
             // Invoke graphql operation awsTrustPolicy
@@ -1499,7 +1502,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allAwsPermissionPolicies.
-        protected void ProcessRecord_AllPermissionPolicies()
+        internal void ProcessRecord_AllPermissionPolicies()
         {
             this._logger.name += " -AllPermissionPolicies";
             // Invoke graphql operation allAwsPermissionPolicies
@@ -1508,7 +1511,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // awsArtifactsToDelete.
-        protected void ProcessRecord_ArtifactsToDelete()
+        internal void ProcessRecord_ArtifactsToDelete()
         {
             this._logger.name += " -ArtifactsToDelete";
             // Invoke graphql operation awsArtifactsToDelete
@@ -1517,7 +1520,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allAwsRegions.
-        protected void ProcessRecord_AllRegions()
+        internal void ProcessRecord_AllRegions()
         {
             this._logger.name += " -AllRegions";
             // Invoke graphql operation allAwsRegions
@@ -1526,7 +1529,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allAwsCdmVersions.
-        protected void ProcessRecord_AllCdmVersions()
+        internal void ProcessRecord_AllCdmVersions()
         {
             this._logger.name += " -AllCdmVersions";
             // Invoke graphql operation allAwsCdmVersions
@@ -1535,7 +1538,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allAwsInstanceProfileNames.
-        protected void ProcessRecord_AllInstanceProfileNames()
+        internal void ProcessRecord_AllInstanceProfileNames()
         {
             this._logger.name += " -AllInstanceProfileNames";
             // Invoke graphql operation allAwsInstanceProfileNames
@@ -1545,7 +1548,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // awsNativeRoot: AwsNativeRoot!
-        protected void InvokeQueryAwsNativeRoot()
+        internal void InvokeQueryAwsNativeRoot()
         {
             Tuple<string, string>[] argDefs = {
             };
@@ -1571,7 +1574,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // awsNativeAccount(awsNativeAccountRubrikId: UUID!, awsNativeProtectionFeature: AwsNativeProtectionFeature!): AwsNativeAccount!
-        protected void InvokeQueryAwsNativeAccount()
+        internal void InvokeQueryAwsNativeAccount()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("awsNativeAccountRubrikId", "UUID!"),
@@ -1599,7 +1602,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // awsNativeEc2Instance(ec2InstanceRubrikId: UUID!): AwsNativeEc2Instance!
-        protected void InvokeQueryAwsNativeEc2Instance()
+        internal void InvokeQueryAwsNativeEc2Instance()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("ec2InstanceRubrikId", "UUID!"),
@@ -1626,7 +1629,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // awsNativeEbsVolume(ebsVolumeRubrikId: UUID!): AwsNativeEbsVolume!
-        protected void InvokeQueryAwsNativeEbsVolume()
+        internal void InvokeQueryAwsNativeEbsVolume()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("ebsVolumeRubrikId", "UUID!"),
@@ -1653,7 +1656,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // awsNativeS3Bucket(s3BucketRubrikId: UUID!): AwsNativeS3Bucket!
-        protected void InvokeQueryAwsNativeS3Bucket()
+        internal void InvokeQueryAwsNativeS3Bucket()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("s3BucketRubrikId", "UUID!"),
@@ -1690,7 +1693,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     authorizedOperationFilter: Operation
         //     awsNativeProtectionFeature: AwsNativeProtectionFeature!
         //   ): AwsNativeAccountConnection!
-        protected void InvokeQueryAwsNativeAccounts()
+        internal void InvokeQueryAwsNativeAccounts()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -1733,7 +1736,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     sortOrder: SortOrder
         //     ec2InstanceName: String!
         //   ): AwsNativeEc2InstanceConnection!
-        protected void InvokeQueryAwsNativeEc2InstancesByName()
+        internal void InvokeQueryAwsNativeEc2InstancesByName()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -1775,7 +1778,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     descendantTypeFilter: [HierarchyObjectTypeEnum!]
         //     ec2InstanceFilters: AwsNativeEc2InstanceFilters
         //   ): AwsNativeEc2InstanceConnection!
-        protected void InvokeQueryAwsNativeEc2Instances()
+        internal void InvokeQueryAwsNativeEc2Instances()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -1817,7 +1820,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     sortOrder: SortOrder
         //     ebsVolumeName: String!
         //   ): AwsNativeEbsVolumeConnection!
-        protected void InvokeQueryAwsNativeEbsVolumesByName()
+        internal void InvokeQueryAwsNativeEbsVolumesByName()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -1858,7 +1861,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     sortOrder: SortOrder
         //     ebsVolumeFilters: AwsNativeEbsVolumeFilters
         //   ): AwsNativeEbsVolumeConnection!
-        protected void InvokeQueryAwsNativeEbsVolumes()
+        internal void InvokeQueryAwsNativeEbsVolumes()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -1891,7 +1894,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allVpcsByRegionFromAws(awsAccountRubrikId: UUID!, region: AwsNativeRegion!): [AwsVpc!]!
-        protected void InvokeQueryAllVpcsByRegionFromAws()
+        internal void InvokeQueryAllVpcsByRegionFromAws()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("awsAccountRubrikId", "UUID!"),
@@ -1919,7 +1922,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allVpcsFromAws(awsAccountRubrikId: UUID): [AwsVpc!]!
-        protected void InvokeQueryAllVpcsFromAws()
+        internal void InvokeQueryAllVpcsFromAws()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("awsAccountRubrikId", "UUID"),
@@ -1946,7 +1949,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // isAwsNativeEbsVolumeSnapshotRestorable(snapshotId: String!): IsVolumeSnapshotRestorableReply!
-        protected void InvokeQueryIsAwsNativeEbsVolumeSnapshotRestorable()
+        internal void InvokeQueryIsAwsNativeEbsVolumeSnapshotRestorable()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("snapshotId", "String!"),
@@ -1973,7 +1976,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allAvailabilityZonesByRegionFromAws(awsAccountRubrikId: UUID!, region: AwsNativeRegion!): [String!]!
-        protected void InvokeQueryAllAvailabilityZonesByRegionFromAws()
+        internal void InvokeQueryAllAvailabilityZonesByRegionFromAws()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("awsAccountRubrikId", "UUID!"),
@@ -2001,7 +2004,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allKmsEncryptionKeysByRegionFromAws(awsAccountRubrikId: UUID!, region: AwsNativeRegion!): [KmsEncryptionKey!]!
-        protected void InvokeQueryAllKmsEncryptionKeysByRegionFromAws()
+        internal void InvokeQueryAllKmsEncryptionKeysByRegionFromAws()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("awsAccountRubrikId", "UUID!"),
@@ -2029,7 +2032,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // isAwsS3BucketNameAvailable(bucketName: String!, awsAccountRubrikId: UUID!): Boolean!
-        protected void InvokeQueryIsAwsS3BucketNameAvailable()
+        internal void InvokeQueryIsAwsS3BucketNameAvailable()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("bucketName", "String!"),
@@ -2057,7 +2060,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allS3BucketsFromAws(awsAccountRubrikId: UUID!): [String!]!
-        protected void InvokeQueryAllS3BucketsFromAws()
+        internal void InvokeQueryAllS3BucketsFromAws()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("awsAccountRubrikId", "UUID!"),
@@ -2084,7 +2087,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allS3BucketsDetailsFromAws(awsAccountRubrikId: UUID!, region: AwsNativeRegion): [S3BucketDetails!]!
-        protected void InvokeQueryAllS3BucketsDetailsFromAws()
+        internal void InvokeQueryAllS3BucketsDetailsFromAws()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("awsAccountRubrikId", "UUID!"),
@@ -2112,7 +2115,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // awsNativeRdsInstance(rdsInstanceRubrikId: UUID!): AwsNativeRdsInstance!
-        protected void InvokeQueryAwsNativeRdsInstance()
+        internal void InvokeQueryAwsNativeRdsInstance()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("rdsInstanceRubrikId", "UUID!"),
@@ -2147,7 +2150,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     sortOrder: SortOrder
         //     rdsInstanceFilters: AwsNativeRdsInstanceFilters
         //   ): AwsNativeRdsInstanceConnection!
-        protected void InvokeQueryAwsNativeRdsInstances()
+        internal void InvokeQueryAwsNativeRdsInstances()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -2185,7 +2188,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     rdsInstanceName: String!
         //     rdsDatabaseRubrikId: UUID
         //   ): AwsNativeRdsPointInTimeRestoreWindow!
-        protected void InvokeQueryAwsNativeRdsPointInTimeRestoreWindow()
+        internal void InvokeQueryAwsNativeRdsPointInTimeRestoreWindow()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("awsAccountRubrikId", "UUID!"),
@@ -2220,7 +2223,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     rdsInstanceName: String!
         //     rdsDatabaseRubrikId: UUID
         //   ): RdsInstanceDetailsFromAws!
-        protected void InvokeQueryRdsInstanceDetailsFromAws()
+        internal void InvokeQueryRdsInstanceDetailsFromAws()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("awsAccountRubrikId", "UUID!"),
@@ -2262,7 +2265,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     kmsKeyId: String
         //     iops: Int
         //   ): Boolean!
-        protected void InvokeQueryIsAwsNativeRdsInstanceLaunchConfigurationValid()
+        internal void InvokeQueryIsAwsNativeRdsInstanceLaunchConfigurationValid()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("awsAccountRubrikId", "UUID!"),
@@ -2305,7 +2308,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     dbEngineVersion: String!
         //     majorEngineVersion: String!
         //   ): [OptionGroup!]!
-        protected void InvokeQueryAllOptionGroupsByRegionFromAws()
+        internal void InvokeQueryAllOptionGroupsByRegionFromAws()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("awsAccountRubrikId", "UUID!"),
@@ -2342,7 +2345,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     dbEngineVersion: String!
         //     rdsType: AwsNativeRdsType
         //   ): [DbParameterGroup!]!
-        protected void InvokeQueryAllDbParameterGroupsByRegionFromAws()
+        internal void InvokeQueryAllDbParameterGroupsByRegionFromAws()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("awsAccountRubrikId", "UUID!"),
@@ -2373,7 +2376,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allDbSubnetGroupsByRegionFromAws(awsAccountRubrikId: UUID!, region: AwsNativeRegion!): [SubnetGroup!]!
-        protected void InvokeQueryAllDbSubnetGroupsByRegionFromAws()
+        internal void InvokeQueryAllDbSubnetGroupsByRegionFromAws()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("awsAccountRubrikId", "UUID!"),
@@ -2401,7 +2404,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // validateAwsNativeRdsInstanceNameForExport(awsAccountRubrikId: UUID!, region: AwsNativeRegion!, rdsInstanceName: String!): ValidateAwsNativeRdsInstanceNameForExportReply!
-        protected void InvokeQueryValidateAwsNativeRdsInstanceNameForExport()
+        internal void InvokeQueryValidateAwsNativeRdsInstanceNameForExport()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("awsAccountRubrikId", "UUID!"),
@@ -2430,7 +2433,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // validateAwsNativeRdsClusterNameForExport(awsAccountRubrikId: UUID!, region: AwsNativeRegion!, rdsClusterName: String!): ValidateAwsNativeRdsClusterNameForExportReply!
-        protected void InvokeQueryValidateAwsNativeRdsClusterNameForExport()
+        internal void InvokeQueryValidateAwsNativeRdsClusterNameForExport()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("awsAccountRubrikId", "UUID!"),
@@ -2459,7 +2462,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // awsNativeRdsExportDefaults(rdsInstanceRubrikId: UUID!, snapshotId: String, isPointInTime: Boolean!): RdsInstanceExportDefaults!
-        protected void InvokeQueryAwsNativeRdsExportDefaults()
+        internal void InvokeQueryAwsNativeRdsExportDefaults()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("rdsInstanceRubrikId", "UUID!"),
@@ -2488,7 +2491,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allEc2KeyPairsByRegionFromAws(awsAccountRubrikId: UUID!, region: AwsNativeRegion!): [String!]!
-        protected void InvokeQueryAllEc2KeyPairsByRegionFromAws()
+        internal void InvokeQueryAllEc2KeyPairsByRegionFromAws()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("awsAccountRubrikId", "UUID!"),
@@ -2516,7 +2519,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // amiTypeForAwsNativeArchivedSnapshotExport(input: AmiTypeForAwsNativeArchivedSnapshotExportInput!): AmiTypeForAwsNativeArchivedSnapshotExportReply!
-        protected void InvokeQueryAmiTypeForAwsNativeArchivedSnapshotExport()
+        internal void InvokeQueryAmiTypeForAwsNativeArchivedSnapshotExport()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "AmiTypeForAwsNativeArchivedSnapshotExportInput!"),
@@ -2543,7 +2546,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allAwsRdsAuroraInstanceClasses: AwsNativeRdsAuroraInstanceClassesReply!
-        protected void InvokeQueryAllAwsRdsAuroraInstanceClasses()
+        internal void InvokeQueryAllAwsRdsAuroraInstanceClasses()
         {
             Tuple<string, string>[] argDefs = {
             };
@@ -2574,7 +2577,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     dbEngine: AwsNativeRdsDbEngine!
         //     dbEngineVersion: String
         //   ): [String!]!
-        protected void InvokeQueryAllSupportedAwsRdsDatabaseInstanceClasses()
+        internal void InvokeQueryAllSupportedAwsRdsDatabaseInstanceClasses()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("awsAccountRubrikId", "UUID!"),
@@ -2604,7 +2607,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // awsComputeSettings(computeSettingId: UUID!): AwsComputeSettings!
-        protected void InvokeQueryAwsComputeSettings()
+        internal void InvokeQueryAwsComputeSettings()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("computeSettingId", "UUID!"),
@@ -2636,7 +2639,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     filter: [AwsCloudComputeSettingFilterInput!]
         //     contextFilter: ContextFilterTypeEnum
         //   ): [AwsComputeSettings!]!
-        protected void InvokeQueryAllAwsComputeSettings()
+        internal void InvokeQueryAllAwsComputeSettings()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("sortBy", "AwsCloudComputeSettingQuerySortByField"),
@@ -2666,7 +2669,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allAwsCloudAccountsWithFeatures(awsCloudAccountsArg: AwsCloudAccountsWithFeaturesInput!): [AwsCloudAccountWithFeatures!]!
-        protected void InvokeQueryAllAwsCloudAccountsWithFeatures()
+        internal void InvokeQueryAllAwsCloudAccountsWithFeatures()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("awsCloudAccountsArg", "AwsCloudAccountsWithFeaturesInput!"),
@@ -2693,7 +2696,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allAwsCloudAccountsFeaturesWithExoConfigs(awsCloudAccountsArg: AwsCloudAccountsWithFeaturesInput!): [AwsCloudAccountFeaturesWithExoConfigs!]!
-        protected void InvokeQueryAllAwsCloudAccountsFeaturesWithExoConfigs()
+        internal void InvokeQueryAllAwsCloudAccountsFeaturesWithExoConfigs()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("awsCloudAccountsArg", "AwsCloudAccountsWithFeaturesInput!"),
@@ -2720,7 +2723,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // awsCloudAccountWithFeatures(cloudAccountId: UUID!, awsCloudAccountArg: AwsCloudAccountWithFeaturesInput!): AwsCloudAccountWithFeatures!
-        protected void InvokeQueryAwsCloudAccountWithFeatures()
+        internal void InvokeQueryAwsCloudAccountWithFeatures()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("cloudAccountId", "UUID!"),
@@ -2748,7 +2751,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // awsCloudAccountListVpcs(cloudAccountUuid: UUID!, feature: CloudAccountFeature!, region: AwsRegion!): AwsCloudAccountListVpcResponse!
-        protected void InvokeQueryAwsCloudAccountListVpcs()
+        internal void InvokeQueryAwsCloudAccountListVpcs()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("cloudAccountUuid", "UUID!"),
@@ -2782,7 +2785,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     region: AwsRegion!
         //     vpcID: String!
         //   ): AwsCloudAccountListSubnetsResponse!
-        protected void InvokeQueryAwsCloudAccountListSubnets()
+        internal void InvokeQueryAwsCloudAccountListSubnets()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("cloudAccountUuid", "UUID!"),
@@ -2817,7 +2820,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     region: AwsRegion!
         //     vpcID: String!
         //   ): AwsCloudAccountListSecurityGroupsResponse!
-        protected void InvokeQueryAwsCloudAccountListSecurityGroups()
+        internal void InvokeQueryAwsCloudAccountListSecurityGroups()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("cloudAccountUuid", "UUID!"),
@@ -2847,7 +2850,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // AwsCloudAccountListKMSKeys(cloudAccountUuid: UUID!, feature: CloudAccountFeature!, region: AwsRegion!): AwsCloudAccountListKMSKeysResponse!
-        protected void InvokeQueryAwsCloudAccountListKmsKeys()
+        internal void InvokeQueryAwsCloudAccountListKmsKeys()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("cloudAccountUuid", "UUID!"),
@@ -2876,7 +2879,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allAwsExocomputeConfigs(awsNativeAccountIdOrNamePrefix: String!): [AwsExocomputeConfig!]!
-        protected void InvokeQueryAllAwsExocomputeConfigs()
+        internal void InvokeQueryAllAwsExocomputeConfigs()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("awsNativeAccountIdOrNamePrefix", "String!"),
@@ -2903,7 +2906,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allAwsCloudAccountConfigs(awsCloudAccountsArg: AwsCloudAccountConfigsInput!): [AwsFeatureConfig!]!
-        protected void InvokeQueryAllAwsCloudAccountConfigs()
+        internal void InvokeQueryAllAwsCloudAccountConfigs()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("awsCloudAccountsArg", "AwsCloudAccountConfigsInput!"),
@@ -2930,7 +2933,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // awsTrustPolicy(input: AwsTrustPolicyInput!): AwsTrustPolicy!
-        protected void InvokeQueryAwsTrustPolicy()
+        internal void InvokeQueryAwsTrustPolicy()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "AwsTrustPolicyInput!"),
@@ -2956,12 +2959,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // Invoke GraphQL Query:
-        // allAwsPermissionPolicies(awsCloudType: AwsCloudType!, features: [CloudAccountFeature!]!): [PermissionPolicy!]!
-        protected void InvokeQueryAllAwsPermissionPolicies()
+        // allAwsPermissionPolicies(input: AwsGetPermissionPoliciesInput!): [PermissionPolicy!]!
+        internal void InvokeQueryAllAwsPermissionPolicies()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("awsCloudType", "AwsCloudType!"),
-                Tuple.Create("features", "[CloudAccountFeature!]!"),
+                Tuple.Create("input", "AwsGetPermissionPoliciesInput!"),
             };
             List<PermissionPolicy>? fieldSpecObj = null ;
             if (this.Field != null) {
@@ -2977,7 +2979,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj,
                 "query",
                 "QueryAllAwsPermissionPolicies",
-                "($awsCloudType: AwsCloudType!,$features: [CloudAccountFeature!]!)",
+                "($input: AwsGetPermissionPoliciesInput!)",
                 fieldSpecDoc,
                 "List<PermissionPolicy>"
             );
@@ -2985,7 +2987,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // awsArtifactsToDelete(input: AwsArtifactsToDeleteInput!): AwsArtifactsToDelete!
-        protected void InvokeQueryAwsArtifactsToDelete()
+        internal void InvokeQueryAwsArtifactsToDelete()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "AwsArtifactsToDeleteInput!"),
@@ -3012,7 +3014,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allAwsRegions(cloudAccountId: String!): [AwsCloudAccountRegion!]!
-        protected void InvokeQueryAllAwsRegions()
+        internal void InvokeQueryAllAwsRegions()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("cloudAccountId", "String!"),
@@ -3039,7 +3041,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allAwsCdmVersions(input: AwsCdmVersionRequest!): [AwsCdmVersion!]!
-        protected void InvokeQueryAllAwsCdmVersions()
+        internal void InvokeQueryAllAwsCdmVersions()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "AwsCdmVersionRequest!"),
@@ -3066,7 +3068,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allAwsInstanceProfileNames(cloudAccountId: String!, region: String!): [String!]!
-        protected void InvokeQueryAllAwsInstanceProfileNames()
+        internal void InvokeQueryAllAwsInstanceProfileNames()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("cloudAccountId", "String!"),

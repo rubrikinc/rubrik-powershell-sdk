@@ -26,11 +26,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     public class Invoke_RscMutateAzureO365 : RscPSCmdlet
     {
         
-        // -------------------------------------------------------------------
-        // SetupExocompute parameter set
-        //
-        // [GraphQL: setupAzureO365Exocompute]
-        //
+        /// <summary>
+        /// SetupExocompute parameter set
+        ///
+        /// [GraphQL: setupAzureO365Exocompute]
+        /// </summary>
         [Parameter(
             ParameterSetName = "SetupExocompute",
             Mandatory = false,
@@ -44,6 +44,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter SetupExocompute { get; set; }
 
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
         protected override void ProcessRecord()
         {
             try
@@ -62,10 +64,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 ThrowTerminatingException(ex);
            }
         }
+#pragma warning restore 1591
 
         // This parameter set invokes a single graphql operation:
         // setupAzureO365Exocompute.
-        protected void ProcessRecord_SetupExocompute()
+        internal void ProcessRecord_SetupExocompute()
         {
             this._logger.name += " -SetupExocompute";
             // Invoke graphql operation setupAzureO365Exocompute
@@ -75,7 +78,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // setupAzureO365Exocompute(tenantId: String!, subscriptionId: UUID!, exocomputeConfig: AzureO365ExocomputeConfig!): SetupAzureO365ExocomputeResp!
-        protected void InvokeMutationSetupAzureO365Exocompute()
+        internal void InvokeMutationSetupAzureO365Exocompute()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("tenantId", "String!"),

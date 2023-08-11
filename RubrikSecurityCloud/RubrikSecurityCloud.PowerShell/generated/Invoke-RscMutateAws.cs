@@ -26,11 +26,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     public class Invoke_RscMutateAws : RscPSCmdlet
     {
         
-        // -------------------------------------------------------------------
-        // StartNativeEc2InstanceSnapshotsJob parameter set
-        //
-        // [GraphQL: startAwsNativeEc2InstanceSnapshotsJob]
-        //
+        /// <summary>
+        /// StartNativeEc2InstanceSnapshotsJob parameter set
+        ///
+        /// [GraphQL: startAwsNativeEc2InstanceSnapshotsJob]
+        /// </summary>
         [Parameter(
             ParameterSetName = "StartNativeEc2InstanceSnapshotsJob",
             Mandatory = false,
@@ -44,11 +44,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter StartNativeEc2InstanceSnapshotsJob { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // StartRestoreNativeEc2InstanceSnapshotJob parameter set
-        //
-        // [GraphQL: startRestoreAwsNativeEc2InstanceSnapshotJob]
-        //
+        /// <summary>
+        /// StartRestoreNativeEc2InstanceSnapshotJob parameter set
+        ///
+        /// [GraphQL: startRestoreAwsNativeEc2InstanceSnapshotJob]
+        /// </summary>
         [Parameter(
             ParameterSetName = "StartRestoreNativeEc2InstanceSnapshotJob",
             Mandatory = false,
@@ -62,11 +62,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter StartRestoreNativeEc2InstanceSnapshotJob { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // StartRefreshNativeAccountsJob parameter set
-        //
-        // [GraphQL: startRefreshAwsNativeAccountsJob]
-        //
+        /// <summary>
+        /// StartRefreshNativeAccountsJob parameter set
+        ///
+        /// [GraphQL: startRefreshAwsNativeAccountsJob]
+        /// </summary>
         [Parameter(
             ParameterSetName = "StartRefreshNativeAccountsJob",
             Mandatory = false,
@@ -80,11 +80,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter StartRefreshNativeAccountsJob { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // StartCreateNativeEbsVolumeSnapshotsJob parameter set
-        //
-        // [GraphQL: startCreateAwsNativeEbsVolumeSnapshotsJob]
-        //
+        /// <summary>
+        /// StartCreateNativeEbsVolumeSnapshotsJob parameter set
+        ///
+        /// [GraphQL: startCreateAwsNativeEbsVolumeSnapshotsJob]
+        /// </summary>
         [Parameter(
             ParameterSetName = "StartCreateNativeEbsVolumeSnapshotsJob",
             Mandatory = false,
@@ -98,11 +98,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter StartCreateNativeEbsVolumeSnapshotsJob { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // StartNativeAccountDisableJob parameter set
-        //
-        // [GraphQL: startAwsNativeAccountDisableJob]
-        //
+        /// <summary>
+        /// StartNativeAccountDisableJob parameter set
+        ///
+        /// [GraphQL: startAwsNativeAccountDisableJob]
+        /// </summary>
         [Parameter(
             ParameterSetName = "StartNativeAccountDisableJob",
             Mandatory = false,
@@ -116,11 +116,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter StartNativeAccountDisableJob { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // StartExportNativeEbsVolumeSnapshotJob parameter set
-        //
-        // [GraphQL: startExportAwsNativeEbsVolumeSnapshotJob]
-        //
+        /// <summary>
+        /// StartExportNativeEbsVolumeSnapshotJob parameter set
+        ///
+        /// [GraphQL: startExportAwsNativeEbsVolumeSnapshotJob]
+        /// </summary>
         [Parameter(
             ParameterSetName = "StartExportNativeEbsVolumeSnapshotJob",
             Mandatory = false,
@@ -134,11 +134,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter StartExportNativeEbsVolumeSnapshotJob { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ExcludeNativeEbsVolumesFromSnapshot parameter set
-        //
-        // [GraphQL: excludeAwsNativeEbsVolumesFromSnapshot]
-        //
+        /// <summary>
+        /// ExcludeNativeEbsVolumesFromSnapshot parameter set
+        ///
+        /// [GraphQL: excludeAwsNativeEbsVolumesFromSnapshot]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ExcludeNativeEbsVolumesFromSnapshot",
             Mandatory = false,
@@ -152,11 +152,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter ExcludeNativeEbsVolumesFromSnapshot { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // StartNativeRdsInstanceSnapshotsJob parameter set
-        //
-        // [GraphQL: startAwsNativeRdsInstanceSnapshotsJob]
-        //
+        /// <summary>
+        /// StartNativeRdsInstanceSnapshotsJob parameter set
+        ///
+        /// [GraphQL: startAwsNativeRdsInstanceSnapshotsJob]
+        /// </summary>
         [Parameter(
             ParameterSetName = "StartNativeRdsInstanceSnapshotsJob",
             Mandatory = false,
@@ -170,11 +170,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter StartNativeRdsInstanceSnapshotsJob { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // CreateAccount parameter set
-        //
-        // [GraphQL: createAwsAccount]
-        //
+        /// <summary>
+        /// CreateAccount parameter set
+        ///
+        /// [GraphQL: createAwsAccount]
+        /// </summary>
         [Parameter(
             ParameterSetName = "CreateAccount",
             Mandatory = false,
@@ -188,11 +188,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter CreateAccount { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // UpdateAccount parameter set
-        //
-        // [GraphQL: updateAwsAccount]
-        //
+        /// <summary>
+        /// UpdateAccount parameter set
+        ///
+        /// [GraphQL: updateAwsAccount]
+        /// </summary>
         [Parameter(
             ParameterSetName = "UpdateAccount",
             Mandatory = false,
@@ -206,11 +206,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter UpdateAccount { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // CreateAutomaticTargetMapping parameter set
-        //
-        // [GraphQL: createAutomaticAwsTargetMapping]
-        //
+        /// <summary>
+        /// CreateAutomaticTargetMapping parameter set
+        ///
+        /// [GraphQL: createAutomaticAwsTargetMapping]
+        /// </summary>
         [Parameter(
             ParameterSetName = "CreateAutomaticTargetMapping",
             Mandatory = false,
@@ -224,11 +224,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter CreateAutomaticTargetMapping { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // CreateCloudNativeStorageSetting parameter set
-        //
-        // [GraphQL: createCloudNativeAwsStorageSetting]
-        //
+        /// <summary>
+        /// CreateCloudNativeStorageSetting parameter set
+        ///
+        /// [GraphQL: createCloudNativeAwsStorageSetting]
+        /// </summary>
         [Parameter(
             ParameterSetName = "CreateCloudNativeStorageSetting",
             Mandatory = false,
@@ -242,11 +242,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter CreateCloudNativeStorageSetting { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // UpdateAutomaticTargetMapping parameter set
-        //
-        // [GraphQL: updateAutomaticAwsTargetMapping]
-        //
+        /// <summary>
+        /// UpdateAutomaticTargetMapping parameter set
+        ///
+        /// [GraphQL: updateAutomaticAwsTargetMapping]
+        /// </summary>
         [Parameter(
             ParameterSetName = "UpdateAutomaticTargetMapping",
             Mandatory = false,
@@ -260,11 +260,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter UpdateAutomaticTargetMapping { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // UpdateCloudNativeStorageSetting parameter set
-        //
-        // [GraphQL: updateCloudNativeAwsStorageSetting]
-        //
+        /// <summary>
+        /// UpdateCloudNativeStorageSetting parameter set
+        ///
+        /// [GraphQL: updateCloudNativeAwsStorageSetting]
+        /// </summary>
         [Parameter(
             ParameterSetName = "UpdateCloudNativeStorageSetting",
             Mandatory = false,
@@ -278,11 +278,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter UpdateCloudNativeStorageSetting { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // CreateTarget parameter set
-        //
-        // [GraphQL: createAwsTarget]
-        //
+        /// <summary>
+        /// CreateTarget parameter set
+        ///
+        /// [GraphQL: createAwsTarget]
+        /// </summary>
         [Parameter(
             ParameterSetName = "CreateTarget",
             Mandatory = false,
@@ -296,11 +296,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter CreateTarget { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // UpdateTarget parameter set
-        //
-        // [GraphQL: updateAwsTarget]
-        //
+        /// <summary>
+        /// UpdateTarget parameter set
+        ///
+        /// [GraphQL: updateAwsTarget]
+        /// </summary>
         [Parameter(
             ParameterSetName = "UpdateTarget",
             Mandatory = false,
@@ -314,11 +314,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter UpdateTarget { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // CreateReaderTarget parameter set
-        //
-        // [GraphQL: createAwsReaderTarget]
-        //
+        /// <summary>
+        /// CreateReaderTarget parameter set
+        ///
+        /// [GraphQL: createAwsReaderTarget]
+        /// </summary>
         [Parameter(
             ParameterSetName = "CreateReaderTarget",
             Mandatory = false,
@@ -332,11 +332,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter CreateReaderTarget { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // CreateComputeSetting parameter set
-        //
-        // [GraphQL: createAwsComputeSetting]
-        //
+        /// <summary>
+        /// CreateComputeSetting parameter set
+        ///
+        /// [GraphQL: createAwsComputeSetting]
+        /// </summary>
         [Parameter(
             ParameterSetName = "CreateComputeSetting",
             Mandatory = false,
@@ -350,11 +350,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter CreateComputeSetting { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // UpdateComputeSetting parameter set
-        //
-        // [GraphQL: updateAwsComputeSetting]
-        //
+        /// <summary>
+        /// UpdateComputeSetting parameter set
+        ///
+        /// [GraphQL: updateAwsComputeSetting]
+        /// </summary>
         [Parameter(
             ParameterSetName = "UpdateComputeSetting",
             Mandatory = false,
@@ -368,11 +368,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter UpdateComputeSetting { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DeleteComputeSetting parameter set
-        //
-        // [GraphQL: deleteAwsComputeSetting]
-        //
+        /// <summary>
+        /// DeleteComputeSetting parameter set
+        ///
+        /// [GraphQL: deleteAwsComputeSetting]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DeleteComputeSetting",
             Mandatory = false,
@@ -386,11 +386,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter DeleteComputeSetting { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // CloudAccountValidate parameter set
-        //
-        // [GraphQL: awsCloudAccountValidate]
-        //
+        /// <summary>
+        /// CloudAccountValidate parameter set
+        ///
+        /// [GraphQL: awsCloudAccountValidate]
+        /// </summary>
         [Parameter(
             ParameterSetName = "CloudAccountValidate",
             Mandatory = false,
@@ -404,11 +404,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter CloudAccountValidate { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // CloudAccountInitiate parameter set
-        //
-        // [GraphQL: awsCloudAccountInitiate]
-        //
+        /// <summary>
+        /// CloudAccountInitiate parameter set
+        ///
+        /// [GraphQL: awsCloudAccountInitiate]
+        /// </summary>
         [Parameter(
             ParameterSetName = "CloudAccountInitiate",
             Mandatory = false,
@@ -422,11 +422,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter CloudAccountInitiate { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // NativeProtectionAccountAdd parameter set
-        //
-        // [GraphQL: awsNativeProtectionAccountAdd]
-        //
+        /// <summary>
+        /// NativeProtectionAccountAdd parameter set
+        ///
+        /// [GraphQL: awsNativeProtectionAccountAdd]
+        /// </summary>
         [Parameter(
             ParameterSetName = "NativeProtectionAccountAdd",
             Mandatory = false,
@@ -440,11 +440,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter NativeProtectionAccountAdd { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ValidateAndCreateCloudAccount parameter set
-        //
-        // [GraphQL: validateAndCreateAwsCloudAccount]
-        //
+        /// <summary>
+        /// ValidateAndCreateCloudAccount parameter set
+        ///
+        /// [GraphQL: validateAndCreateAwsCloudAccount]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ValidateAndCreateCloudAccount",
             Mandatory = false,
@@ -458,11 +458,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter ValidateAndCreateCloudAccount { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // FinalizeCloudAccountProtection parameter set
-        //
-        // [GraphQL: finalizeAwsCloudAccountProtection]
-        //
+        /// <summary>
+        /// FinalizeCloudAccountProtection parameter set
+        ///
+        /// [GraphQL: finalizeAwsCloudAccountProtection]
+        /// </summary>
         [Parameter(
             ParameterSetName = "FinalizeCloudAccountProtection",
             Mandatory = false,
@@ -476,11 +476,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter FinalizeCloudAccountProtection { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // PrepareCloudAccountDeletion parameter set
-        //
-        // [GraphQL: prepareAwsCloudAccountDeletion]
-        //
+        /// <summary>
+        /// PrepareCloudAccountDeletion parameter set
+        ///
+        /// [GraphQL: prepareAwsCloudAccountDeletion]
+        /// </summary>
         [Parameter(
             ParameterSetName = "PrepareCloudAccountDeletion",
             Mandatory = false,
@@ -494,11 +494,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter PrepareCloudAccountDeletion { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // FinalizeCloudAccountDeletion parameter set
-        //
-        // [GraphQL: finalizeAwsCloudAccountDeletion]
-        //
+        /// <summary>
+        /// FinalizeCloudAccountDeletion parameter set
+        ///
+        /// [GraphQL: finalizeAwsCloudAccountDeletion]
+        /// </summary>
         [Parameter(
             ParameterSetName = "FinalizeCloudAccountDeletion",
             Mandatory = false,
@@ -512,11 +512,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter FinalizeCloudAccountDeletion { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // UpdateCloudAccountFeature parameter set
-        //
-        // [GraphQL: updateAwsCloudAccountFeature]
-        //
+        /// <summary>
+        /// UpdateCloudAccountFeature parameter set
+        ///
+        /// [GraphQL: updateAwsCloudAccountFeature]
+        /// </summary>
         [Parameter(
             ParameterSetName = "UpdateCloudAccountFeature",
             Mandatory = false,
@@ -530,11 +530,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter UpdateCloudAccountFeature { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // UpdateCloudAccount parameter set
-        //
-        // [GraphQL: updateAwsCloudAccount]
-        //
+        /// <summary>
+        /// UpdateCloudAccount parameter set
+        ///
+        /// [GraphQL: updateAwsCloudAccount]
+        /// </summary>
         [Parameter(
             ParameterSetName = "UpdateCloudAccount",
             Mandatory = false,
@@ -548,11 +548,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter UpdateCloudAccount { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // PrepareFeatureUpdateForCloudAccount parameter set
-        //
-        // [GraphQL: prepareFeatureUpdateForAwsCloudAccount]
-        //
+        /// <summary>
+        /// PrepareFeatureUpdateForCloudAccount parameter set
+        ///
+        /// [GraphQL: prepareFeatureUpdateForAwsCloudAccount]
+        /// </summary>
         [Parameter(
             ParameterSetName = "PrepareFeatureUpdateForCloudAccount",
             Mandatory = false,
@@ -566,11 +566,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter PrepareFeatureUpdateForCloudAccount { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // CloudAccountUpdateFeature parameter set
-        //
-        // [GraphQL: awsCloudAccountUpdateFeature]
-        //
+        /// <summary>
+        /// CloudAccountUpdateFeature parameter set
+        ///
+        /// [GraphQL: awsCloudAccountUpdateFeature]
+        /// </summary>
         [Parameter(
             ParameterSetName = "CloudAccountUpdateFeature",
             Mandatory = false,
@@ -584,11 +584,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter CloudAccountUpdateFeature { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // CreateExocomputeConfigs parameter set
-        //
-        // [GraphQL: createAwsExocomputeConfigs]
-        //
+        /// <summary>
+        /// CreateExocomputeConfigs parameter set
+        ///
+        /// [GraphQL: createAwsExocomputeConfigs]
+        /// </summary>
         [Parameter(
             ParameterSetName = "CreateExocomputeConfigs",
             Mandatory = false,
@@ -602,11 +602,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter CreateExocomputeConfigs { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DeleteExocomputeConfigs parameter set
-        //
-        // [GraphQL: deleteAwsExocomputeConfigs]
-        //
+        /// <summary>
+        /// DeleteExocomputeConfigs parameter set
+        ///
+        /// [GraphQL: deleteAwsExocomputeConfigs]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DeleteExocomputeConfigs",
             Mandatory = false,
@@ -620,11 +620,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter DeleteExocomputeConfigs { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // UpdateExocomputeConfigs parameter set
-        //
-        // [GraphQL: updateAwsExocomputeConfigs]
-        //
+        /// <summary>
+        /// UpdateExocomputeConfigs parameter set
+        ///
+        /// [GraphQL: updateAwsExocomputeConfigs]
+        /// </summary>
         [Parameter(
             ParameterSetName = "UpdateExocomputeConfigs",
             Mandatory = false,
@@ -638,11 +638,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter UpdateExocomputeConfigs { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // StartExocomputeDisableJob parameter set
-        //
-        // [GraphQL: startAwsExocomputeDisableJob]
-        //
+        /// <summary>
+        /// StartExocomputeDisableJob parameter set
+        ///
+        /// [GraphQL: startAwsExocomputeDisableJob]
+        /// </summary>
         [Parameter(
             ParameterSetName = "StartExocomputeDisableJob",
             Mandatory = false,
@@ -656,11 +656,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter StartExocomputeDisableJob { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AddIamUserBasedCloudAccount parameter set
-        //
-        // [GraphQL: addAwsIamUserBasedCloudAccount]
-        //
+        /// <summary>
+        /// AddIamUserBasedCloudAccount parameter set
+        ///
+        /// [GraphQL: addAwsIamUserBasedCloudAccount]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AddIamUserBasedCloudAccount",
             Mandatory = false,
@@ -674,11 +674,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AddIamUserBasedCloudAccount { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DeleteIamUserBasedCloudAccount parameter set
-        //
-        // [GraphQL: deleteAwsIamUserBasedCloudAccount]
-        //
+        /// <summary>
+        /// DeleteIamUserBasedCloudAccount parameter set
+        ///
+        /// [GraphQL: deleteAwsIamUserBasedCloudAccount]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DeleteIamUserBasedCloudAccount",
             Mandatory = false,
@@ -692,11 +692,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter DeleteIamUserBasedCloudAccount { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DeleteCloudAccountWithoutCft parameter set
-        //
-        // [GraphQL: deleteAwsCloudAccountWithoutCft]
-        //
+        /// <summary>
+        /// DeleteCloudAccountWithoutCft parameter set
+        ///
+        /// [GraphQL: deleteAwsCloudAccountWithoutCft]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DeleteCloudAccountWithoutCft",
             Mandatory = false,
@@ -710,11 +710,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter DeleteCloudAccountWithoutCft { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // UpgradeIamUserBasedCloudAccountPermissions parameter set
-        //
-        // [GraphQL: upgradeAwsIamUserBasedCloudAccountPermissions]
-        //
+        /// <summary>
+        /// UpgradeIamUserBasedCloudAccountPermissions parameter set
+        ///
+        /// [GraphQL: upgradeAwsIamUserBasedCloudAccountPermissions]
+        /// </summary>
         [Parameter(
             ParameterSetName = "UpgradeIamUserBasedCloudAccountPermissions",
             Mandatory = false,
@@ -728,11 +728,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter UpgradeIamUserBasedCloudAccountPermissions { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // UpgradeCloudAccountFeaturesWithoutCft parameter set
-        //
-        // [GraphQL: upgradeAwsCloudAccountFeaturesWithoutCft]
-        //
+        /// <summary>
+        /// UpgradeCloudAccountFeaturesWithoutCft parameter set
+        ///
+        /// [GraphQL: upgradeAwsCloudAccountFeaturesWithoutCft]
+        /// </summary>
         [Parameter(
             ParameterSetName = "UpgradeCloudAccountFeaturesWithoutCft",
             Mandatory = false,
@@ -746,11 +746,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter UpgradeCloudAccountFeaturesWithoutCft { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AddAuthenticationServerBasedCloudAccount parameter set
-        //
-        // [GraphQL: addAwsAuthenticationServerBasedCloudAccount]
-        //
+        /// <summary>
+        /// AddAuthenticationServerBasedCloudAccount parameter set
+        ///
+        /// [GraphQL: addAwsAuthenticationServerBasedCloudAccount]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AddAuthenticationServerBasedCloudAccount",
             Mandatory = false,
@@ -764,11 +764,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AddAuthenticationServerBasedCloudAccount { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // PatchAuthenticationServerBasedCloudAccount parameter set
-        //
-        // [GraphQL: patchAwsAuthenticationServerBasedCloudAccount]
-        //
+        /// <summary>
+        /// PatchAuthenticationServerBasedCloudAccount parameter set
+        ///
+        /// [GraphQL: patchAwsAuthenticationServerBasedCloudAccount]
+        /// </summary>
         [Parameter(
             ParameterSetName = "PatchAuthenticationServerBasedCloudAccount",
             Mandatory = false,
@@ -782,11 +782,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter PatchAuthenticationServerBasedCloudAccount { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // PatchIamUserBasedCloudAccount parameter set
-        //
-        // [GraphQL: patchAwsIamUserBasedCloudAccount]
-        //
+        /// <summary>
+        /// PatchIamUserBasedCloudAccount parameter set
+        ///
+        /// [GraphQL: patchAwsIamUserBasedCloudAccount]
+        /// </summary>
         [Parameter(
             ParameterSetName = "PatchIamUserBasedCloudAccount",
             Mandatory = false,
@@ -800,11 +800,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter PatchIamUserBasedCloudAccount { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // RegisterFeatureArtifacts parameter set
-        //
-        // [GraphQL: registerAwsFeatureArtifacts]
-        //
+        /// <summary>
+        /// RegisterFeatureArtifacts parameter set
+        ///
+        /// [GraphQL: registerAwsFeatureArtifacts]
+        /// </summary>
         [Parameter(
             ParameterSetName = "RegisterFeatureArtifacts",
             Mandatory = false,
@@ -818,11 +818,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter RegisterFeatureArtifacts { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // BulkDeleteCloudAccountWithoutCft parameter set
-        //
-        // [GraphQL: bulkDeleteAwsCloudAccountWithoutCft]
-        //
+        /// <summary>
+        /// BulkDeleteCloudAccountWithoutCft parameter set
+        ///
+        /// [GraphQL: bulkDeleteAwsCloudAccountWithoutCft]
+        /// </summary>
         [Parameter(
             ParameterSetName = "BulkDeleteCloudAccountWithoutCft",
             Mandatory = false,
@@ -836,11 +836,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter BulkDeleteCloudAccountWithoutCft { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // CreateCluster parameter set
-        //
-        // [GraphQL: createAwsCluster]
-        //
+        /// <summary>
+        /// CreateCluster parameter set
+        ///
+        /// [GraphQL: createAwsCluster]
+        /// </summary>
         [Parameter(
             ParameterSetName = "CreateCluster",
             Mandatory = false,
@@ -854,11 +854,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter CreateCluster { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DeleteCluster parameter set
-        //
-        // [GraphQL: deleteAwsCluster]
-        //
+        /// <summary>
+        /// DeleteCluster parameter set
+        ///
+        /// [GraphQL: deleteAwsCluster]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DeleteCluster",
             Mandatory = false,
@@ -872,6 +872,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter DeleteCluster { get; set; }
 
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
         protected override void ProcessRecord()
         {
             try
@@ -1028,10 +1030,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 ThrowTerminatingException(ex);
            }
         }
+#pragma warning restore 1591
 
         // This parameter set invokes a single graphql operation:
         // startAwsNativeEc2InstanceSnapshotsJob.
-        protected void ProcessRecord_StartNativeEc2InstanceSnapshotsJob()
+        internal void ProcessRecord_StartNativeEc2InstanceSnapshotsJob()
         {
             this._logger.name += " -StartNativeEc2InstanceSnapshotsJob";
             // Invoke graphql operation startAwsNativeEc2InstanceSnapshotsJob
@@ -1040,7 +1043,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // startRestoreAwsNativeEc2InstanceSnapshotJob.
-        protected void ProcessRecord_StartRestoreNativeEc2InstanceSnapshotJob()
+        internal void ProcessRecord_StartRestoreNativeEc2InstanceSnapshotJob()
         {
             this._logger.name += " -StartRestoreNativeEc2InstanceSnapshotJob";
             // Invoke graphql operation startRestoreAwsNativeEc2InstanceSnapshotJob
@@ -1049,7 +1052,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // startRefreshAwsNativeAccountsJob.
-        protected void ProcessRecord_StartRefreshNativeAccountsJob()
+        internal void ProcessRecord_StartRefreshNativeAccountsJob()
         {
             this._logger.name += " -StartRefreshNativeAccountsJob";
             // Invoke graphql operation startRefreshAwsNativeAccountsJob
@@ -1058,7 +1061,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // startCreateAwsNativeEbsVolumeSnapshotsJob.
-        protected void ProcessRecord_StartCreateNativeEbsVolumeSnapshotsJob()
+        internal void ProcessRecord_StartCreateNativeEbsVolumeSnapshotsJob()
         {
             this._logger.name += " -StartCreateNativeEbsVolumeSnapshotsJob";
             // Invoke graphql operation startCreateAwsNativeEbsVolumeSnapshotsJob
@@ -1067,7 +1070,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // startAwsNativeAccountDisableJob.
-        protected void ProcessRecord_StartNativeAccountDisableJob()
+        internal void ProcessRecord_StartNativeAccountDisableJob()
         {
             this._logger.name += " -StartNativeAccountDisableJob";
             // Invoke graphql operation startAwsNativeAccountDisableJob
@@ -1076,7 +1079,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // startExportAwsNativeEbsVolumeSnapshotJob.
-        protected void ProcessRecord_StartExportNativeEbsVolumeSnapshotJob()
+        internal void ProcessRecord_StartExportNativeEbsVolumeSnapshotJob()
         {
             this._logger.name += " -StartExportNativeEbsVolumeSnapshotJob";
             // Invoke graphql operation startExportAwsNativeEbsVolumeSnapshotJob
@@ -1085,7 +1088,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // excludeAwsNativeEbsVolumesFromSnapshot.
-        protected void ProcessRecord_ExcludeNativeEbsVolumesFromSnapshot()
+        internal void ProcessRecord_ExcludeNativeEbsVolumesFromSnapshot()
         {
             this._logger.name += " -ExcludeNativeEbsVolumesFromSnapshot";
             // Invoke graphql operation excludeAwsNativeEbsVolumesFromSnapshot
@@ -1094,7 +1097,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // startAwsNativeRdsInstanceSnapshotsJob.
-        protected void ProcessRecord_StartNativeRdsInstanceSnapshotsJob()
+        internal void ProcessRecord_StartNativeRdsInstanceSnapshotsJob()
         {
             this._logger.name += " -StartNativeRdsInstanceSnapshotsJob";
             // Invoke graphql operation startAwsNativeRdsInstanceSnapshotsJob
@@ -1103,7 +1106,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // createAwsAccount.
-        protected void ProcessRecord_CreateAccount()
+        internal void ProcessRecord_CreateAccount()
         {
             this._logger.name += " -CreateAccount";
             // Invoke graphql operation createAwsAccount
@@ -1112,7 +1115,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // updateAwsAccount.
-        protected void ProcessRecord_UpdateAccount()
+        internal void ProcessRecord_UpdateAccount()
         {
             this._logger.name += " -UpdateAccount";
             // Invoke graphql operation updateAwsAccount
@@ -1121,7 +1124,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // createAutomaticAwsTargetMapping.
-        protected void ProcessRecord_CreateAutomaticTargetMapping()
+        internal void ProcessRecord_CreateAutomaticTargetMapping()
         {
             this._logger.name += " -CreateAutomaticTargetMapping";
             // Invoke graphql operation createAutomaticAwsTargetMapping
@@ -1130,7 +1133,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // createCloudNativeAwsStorageSetting.
-        protected void ProcessRecord_CreateCloudNativeStorageSetting()
+        internal void ProcessRecord_CreateCloudNativeStorageSetting()
         {
             this._logger.name += " -CreateCloudNativeStorageSetting";
             // Invoke graphql operation createCloudNativeAwsStorageSetting
@@ -1139,7 +1142,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // updateAutomaticAwsTargetMapping.
-        protected void ProcessRecord_UpdateAutomaticTargetMapping()
+        internal void ProcessRecord_UpdateAutomaticTargetMapping()
         {
             this._logger.name += " -UpdateAutomaticTargetMapping";
             // Invoke graphql operation updateAutomaticAwsTargetMapping
@@ -1148,7 +1151,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // updateCloudNativeAwsStorageSetting.
-        protected void ProcessRecord_UpdateCloudNativeStorageSetting()
+        internal void ProcessRecord_UpdateCloudNativeStorageSetting()
         {
             this._logger.name += " -UpdateCloudNativeStorageSetting";
             // Invoke graphql operation updateCloudNativeAwsStorageSetting
@@ -1157,7 +1160,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // createAwsTarget.
-        protected void ProcessRecord_CreateTarget()
+        internal void ProcessRecord_CreateTarget()
         {
             this._logger.name += " -CreateTarget";
             // Invoke graphql operation createAwsTarget
@@ -1166,7 +1169,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // updateAwsTarget.
-        protected void ProcessRecord_UpdateTarget()
+        internal void ProcessRecord_UpdateTarget()
         {
             this._logger.name += " -UpdateTarget";
             // Invoke graphql operation updateAwsTarget
@@ -1175,7 +1178,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // createAwsReaderTarget.
-        protected void ProcessRecord_CreateReaderTarget()
+        internal void ProcessRecord_CreateReaderTarget()
         {
             this._logger.name += " -CreateReaderTarget";
             // Invoke graphql operation createAwsReaderTarget
@@ -1184,7 +1187,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // createAwsComputeSetting.
-        protected void ProcessRecord_CreateComputeSetting()
+        internal void ProcessRecord_CreateComputeSetting()
         {
             this._logger.name += " -CreateComputeSetting";
             // Invoke graphql operation createAwsComputeSetting
@@ -1193,7 +1196,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // updateAwsComputeSetting.
-        protected void ProcessRecord_UpdateComputeSetting()
+        internal void ProcessRecord_UpdateComputeSetting()
         {
             this._logger.name += " -UpdateComputeSetting";
             // Invoke graphql operation updateAwsComputeSetting
@@ -1202,7 +1205,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // deleteAwsComputeSetting.
-        protected void ProcessRecord_DeleteComputeSetting()
+        internal void ProcessRecord_DeleteComputeSetting()
         {
             this._logger.name += " -DeleteComputeSetting";
             // Invoke graphql operation deleteAwsComputeSetting
@@ -1211,7 +1214,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // awsCloudAccountValidate.
-        protected void ProcessRecord_CloudAccountValidate()
+        internal void ProcessRecord_CloudAccountValidate()
         {
             this._logger.name += " -CloudAccountValidate";
             // Invoke graphql operation awsCloudAccountValidate
@@ -1220,7 +1223,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // awsCloudAccountInitiate.
-        protected void ProcessRecord_CloudAccountInitiate()
+        internal void ProcessRecord_CloudAccountInitiate()
         {
             this._logger.name += " -CloudAccountInitiate";
             // Invoke graphql operation awsCloudAccountInitiate
@@ -1229,7 +1232,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // awsNativeProtectionAccountAdd.
-        protected void ProcessRecord_NativeProtectionAccountAdd()
+        internal void ProcessRecord_NativeProtectionAccountAdd()
         {
             this._logger.name += " -NativeProtectionAccountAdd";
             // Invoke graphql operation awsNativeProtectionAccountAdd
@@ -1238,7 +1241,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // validateAndCreateAwsCloudAccount.
-        protected void ProcessRecord_ValidateAndCreateCloudAccount()
+        internal void ProcessRecord_ValidateAndCreateCloudAccount()
         {
             this._logger.name += " -ValidateAndCreateCloudAccount";
             // Invoke graphql operation validateAndCreateAwsCloudAccount
@@ -1247,7 +1250,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // finalizeAwsCloudAccountProtection.
-        protected void ProcessRecord_FinalizeCloudAccountProtection()
+        internal void ProcessRecord_FinalizeCloudAccountProtection()
         {
             this._logger.name += " -FinalizeCloudAccountProtection";
             // Invoke graphql operation finalizeAwsCloudAccountProtection
@@ -1256,7 +1259,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // prepareAwsCloudAccountDeletion.
-        protected void ProcessRecord_PrepareCloudAccountDeletion()
+        internal void ProcessRecord_PrepareCloudAccountDeletion()
         {
             this._logger.name += " -PrepareCloudAccountDeletion";
             // Invoke graphql operation prepareAwsCloudAccountDeletion
@@ -1265,7 +1268,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // finalizeAwsCloudAccountDeletion.
-        protected void ProcessRecord_FinalizeCloudAccountDeletion()
+        internal void ProcessRecord_FinalizeCloudAccountDeletion()
         {
             this._logger.name += " -FinalizeCloudAccountDeletion";
             // Invoke graphql operation finalizeAwsCloudAccountDeletion
@@ -1274,7 +1277,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // updateAwsCloudAccountFeature.
-        protected void ProcessRecord_UpdateCloudAccountFeature()
+        internal void ProcessRecord_UpdateCloudAccountFeature()
         {
             this._logger.name += " -UpdateCloudAccountFeature";
             // Invoke graphql operation updateAwsCloudAccountFeature
@@ -1283,7 +1286,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // updateAwsCloudAccount.
-        protected void ProcessRecord_UpdateCloudAccount()
+        internal void ProcessRecord_UpdateCloudAccount()
         {
             this._logger.name += " -UpdateCloudAccount";
             // Invoke graphql operation updateAwsCloudAccount
@@ -1292,7 +1295,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // prepareFeatureUpdateForAwsCloudAccount.
-        protected void ProcessRecord_PrepareFeatureUpdateForCloudAccount()
+        internal void ProcessRecord_PrepareFeatureUpdateForCloudAccount()
         {
             this._logger.name += " -PrepareFeatureUpdateForCloudAccount";
             // Invoke graphql operation prepareFeatureUpdateForAwsCloudAccount
@@ -1301,7 +1304,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // awsCloudAccountUpdateFeature.
-        protected void ProcessRecord_CloudAccountUpdateFeature()
+        internal void ProcessRecord_CloudAccountUpdateFeature()
         {
             this._logger.name += " -CloudAccountUpdateFeature";
             // Invoke graphql operation awsCloudAccountUpdateFeature
@@ -1310,7 +1313,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // createAwsExocomputeConfigs.
-        protected void ProcessRecord_CreateExocomputeConfigs()
+        internal void ProcessRecord_CreateExocomputeConfigs()
         {
             this._logger.name += " -CreateExocomputeConfigs";
             // Invoke graphql operation createAwsExocomputeConfigs
@@ -1319,7 +1322,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // deleteAwsExocomputeConfigs.
-        protected void ProcessRecord_DeleteExocomputeConfigs()
+        internal void ProcessRecord_DeleteExocomputeConfigs()
         {
             this._logger.name += " -DeleteExocomputeConfigs";
             // Invoke graphql operation deleteAwsExocomputeConfigs
@@ -1328,7 +1331,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // updateAwsExocomputeConfigs.
-        protected void ProcessRecord_UpdateExocomputeConfigs()
+        internal void ProcessRecord_UpdateExocomputeConfigs()
         {
             this._logger.name += " -UpdateExocomputeConfigs";
             // Invoke graphql operation updateAwsExocomputeConfigs
@@ -1337,7 +1340,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // startAwsExocomputeDisableJob.
-        protected void ProcessRecord_StartExocomputeDisableJob()
+        internal void ProcessRecord_StartExocomputeDisableJob()
         {
             this._logger.name += " -StartExocomputeDisableJob";
             // Invoke graphql operation startAwsExocomputeDisableJob
@@ -1346,7 +1349,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // addAwsIamUserBasedCloudAccount.
-        protected void ProcessRecord_AddIamUserBasedCloudAccount()
+        internal void ProcessRecord_AddIamUserBasedCloudAccount()
         {
             this._logger.name += " -AddIamUserBasedCloudAccount";
             // Invoke graphql operation addAwsIamUserBasedCloudAccount
@@ -1355,7 +1358,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // deleteAwsIamUserBasedCloudAccount.
-        protected void ProcessRecord_DeleteIamUserBasedCloudAccount()
+        internal void ProcessRecord_DeleteIamUserBasedCloudAccount()
         {
             this._logger.name += " -DeleteIamUserBasedCloudAccount";
             // Invoke graphql operation deleteAwsIamUserBasedCloudAccount
@@ -1364,7 +1367,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // deleteAwsCloudAccountWithoutCft.
-        protected void ProcessRecord_DeleteCloudAccountWithoutCft()
+        internal void ProcessRecord_DeleteCloudAccountWithoutCft()
         {
             this._logger.name += " -DeleteCloudAccountWithoutCft";
             // Invoke graphql operation deleteAwsCloudAccountWithoutCft
@@ -1373,7 +1376,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // upgradeAwsIamUserBasedCloudAccountPermissions.
-        protected void ProcessRecord_UpgradeIamUserBasedCloudAccountPermissions()
+        internal void ProcessRecord_UpgradeIamUserBasedCloudAccountPermissions()
         {
             this._logger.name += " -UpgradeIamUserBasedCloudAccountPermissions";
             // Invoke graphql operation upgradeAwsIamUserBasedCloudAccountPermissions
@@ -1382,7 +1385,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // upgradeAwsCloudAccountFeaturesWithoutCft.
-        protected void ProcessRecord_UpgradeCloudAccountFeaturesWithoutCft()
+        internal void ProcessRecord_UpgradeCloudAccountFeaturesWithoutCft()
         {
             this._logger.name += " -UpgradeCloudAccountFeaturesWithoutCft";
             // Invoke graphql operation upgradeAwsCloudAccountFeaturesWithoutCft
@@ -1391,7 +1394,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // addAwsAuthenticationServerBasedCloudAccount.
-        protected void ProcessRecord_AddAuthenticationServerBasedCloudAccount()
+        internal void ProcessRecord_AddAuthenticationServerBasedCloudAccount()
         {
             this._logger.name += " -AddAuthenticationServerBasedCloudAccount";
             // Invoke graphql operation addAwsAuthenticationServerBasedCloudAccount
@@ -1400,7 +1403,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // patchAwsAuthenticationServerBasedCloudAccount.
-        protected void ProcessRecord_PatchAuthenticationServerBasedCloudAccount()
+        internal void ProcessRecord_PatchAuthenticationServerBasedCloudAccount()
         {
             this._logger.name += " -PatchAuthenticationServerBasedCloudAccount";
             // Invoke graphql operation patchAwsAuthenticationServerBasedCloudAccount
@@ -1409,7 +1412,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // patchAwsIamUserBasedCloudAccount.
-        protected void ProcessRecord_PatchIamUserBasedCloudAccount()
+        internal void ProcessRecord_PatchIamUserBasedCloudAccount()
         {
             this._logger.name += " -PatchIamUserBasedCloudAccount";
             // Invoke graphql operation patchAwsIamUserBasedCloudAccount
@@ -1418,7 +1421,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // registerAwsFeatureArtifacts.
-        protected void ProcessRecord_RegisterFeatureArtifacts()
+        internal void ProcessRecord_RegisterFeatureArtifacts()
         {
             this._logger.name += " -RegisterFeatureArtifacts";
             // Invoke graphql operation registerAwsFeatureArtifacts
@@ -1427,7 +1430,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // bulkDeleteAwsCloudAccountWithoutCft.
-        protected void ProcessRecord_BulkDeleteCloudAccountWithoutCft()
+        internal void ProcessRecord_BulkDeleteCloudAccountWithoutCft()
         {
             this._logger.name += " -BulkDeleteCloudAccountWithoutCft";
             // Invoke graphql operation bulkDeleteAwsCloudAccountWithoutCft
@@ -1436,7 +1439,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // createAwsCluster.
-        protected void ProcessRecord_CreateCluster()
+        internal void ProcessRecord_CreateCluster()
         {
             this._logger.name += " -CreateCluster";
             // Invoke graphql operation createAwsCluster
@@ -1445,7 +1448,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // deleteAwsCluster.
-        protected void ProcessRecord_DeleteCluster()
+        internal void ProcessRecord_DeleteCluster()
         {
             this._logger.name += " -DeleteCluster";
             // Invoke graphql operation deleteAwsCluster
@@ -1455,7 +1458,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // startAwsNativeEc2InstanceSnapshotsJob(input: StartAwsNativeEc2InstanceSnapshotsJobInput!): BatchAsyncJobStatus!
-        protected void InvokeMutationStartAwsNativeEc2InstanceSnapshotsJob()
+        internal void InvokeMutationStartAwsNativeEc2InstanceSnapshotsJob()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "StartAwsNativeEc2InstanceSnapshotsJobInput!"),
@@ -1482,7 +1485,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // startRestoreAwsNativeEc2InstanceSnapshotJob(input: StartRestoreAwsNativeEc2InstanceSnapshotJobInput!): AsyncJobStatus!
-        protected void InvokeMutationStartRestoreAwsNativeEc2InstanceSnapshotJob()
+        internal void InvokeMutationStartRestoreAwsNativeEc2InstanceSnapshotJob()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "StartRestoreAwsNativeEc2InstanceSnapshotJobInput!"),
@@ -1509,7 +1512,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // startRefreshAwsNativeAccountsJob(input: StartRefreshAwsNativeAccountsJobInput!): BatchAsyncJobStatus!
-        protected void InvokeMutationStartRefreshAwsNativeAccountsJob()
+        internal void InvokeMutationStartRefreshAwsNativeAccountsJob()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "StartRefreshAwsNativeAccountsJobInput!"),
@@ -1536,7 +1539,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // startCreateAwsNativeEbsVolumeSnapshotsJob(input: StartCreateAwsNativeEbsVolumeSnapshotsJobInput!): BatchAsyncJobStatus!
-        protected void InvokeMutationStartCreateAwsNativeEbsVolumeSnapshotsJob()
+        internal void InvokeMutationStartCreateAwsNativeEbsVolumeSnapshotsJob()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "StartCreateAwsNativeEbsVolumeSnapshotsJobInput!"),
@@ -1563,7 +1566,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // startAwsNativeAccountDisableJob(input: StartAwsNativeAccountDisableJobInput!): AsyncJobStatus!
-        protected void InvokeMutationStartAwsNativeAccountDisableJob()
+        internal void InvokeMutationStartAwsNativeAccountDisableJob()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "StartAwsNativeAccountDisableJobInput!"),
@@ -1590,7 +1593,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // startExportAwsNativeEbsVolumeSnapshotJob(input: StartExportAwsNativeEbsVolumeSnapshotJobInput!): AsyncJobStatus!
-        protected void InvokeMutationStartExportAwsNativeEbsVolumeSnapshotJob()
+        internal void InvokeMutationStartExportAwsNativeEbsVolumeSnapshotJob()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "StartExportAwsNativeEbsVolumeSnapshotJobInput!"),
@@ -1617,7 +1620,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // excludeAwsNativeEbsVolumesFromSnapshot(input: ExcludeAwsNativeEbsVolumesFromSnapshotInput!): Void
-        protected void InvokeMutationExcludeAwsNativeEbsVolumesFromSnapshot()
+        internal void InvokeMutationExcludeAwsNativeEbsVolumesFromSnapshot()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "ExcludeAwsNativeEbsVolumesFromSnapshotInput!"),
@@ -1644,7 +1647,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // startAwsNativeRdsInstanceSnapshotsJob(input: StartAwsNativeRdsInstanceSnapshotsJobInput!): BatchAsyncJobStatus!
-        protected void InvokeMutationStartAwsNativeRdsInstanceSnapshotsJob()
+        internal void InvokeMutationStartAwsNativeRdsInstanceSnapshotsJob()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "StartAwsNativeRdsInstanceSnapshotsJobInput!"),
@@ -1671,7 +1674,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // createAwsAccount(input: CreateAwsAccountInput!): CloudAccount!
-        protected void InvokeMutationCreateAwsAccount()
+        internal void InvokeMutationCreateAwsAccount()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CreateAwsAccountInput!"),
@@ -1698,7 +1701,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // updateAwsAccount(input: UpdateAwsAccountInput!): CloudAccount!
-        protected void InvokeMutationUpdateAwsAccount()
+        internal void InvokeMutationUpdateAwsAccount()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpdateAwsAccountInput!"),
@@ -1725,7 +1728,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // createAutomaticAwsTargetMapping(input: CreateAutomaticAwsTargetMappingInput!): TargetMapping!
-        protected void InvokeMutationCreateAutomaticAwsTargetMapping()
+        internal void InvokeMutationCreateAutomaticAwsTargetMapping()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CreateAutomaticAwsTargetMappingInput!"),
@@ -1752,7 +1755,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // createCloudNativeAwsStorageSetting(input: CreateCloudNativeAwsStorageSettingInput!): CreateCloudNativeAwsStorageSettingReply!
-        protected void InvokeMutationCreateCloudNativeAwsStorageSetting()
+        internal void InvokeMutationCreateCloudNativeAwsStorageSetting()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CreateCloudNativeAwsStorageSettingInput!"),
@@ -1779,7 +1782,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // updateAutomaticAwsTargetMapping(input: UpdateAutomaticAwsTargetMappingInput!): TargetMapping!
-        protected void InvokeMutationUpdateAutomaticAwsTargetMapping()
+        internal void InvokeMutationUpdateAutomaticAwsTargetMapping()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpdateAutomaticAwsTargetMappingInput!"),
@@ -1806,7 +1809,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // updateCloudNativeAwsStorageSetting(input: UpdateCloudNativeAwsStorageSettingInput!): UpdateCloudNativeAwsStorageSettingReply!
-        protected void InvokeMutationUpdateCloudNativeAwsStorageSetting()
+        internal void InvokeMutationUpdateCloudNativeAwsStorageSetting()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpdateCloudNativeAwsStorageSettingInput!"),
@@ -1833,7 +1836,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // createAwsTarget(input: CreateAwsTargetInput!): Target!
-        protected void InvokeMutationCreateAwsTarget()
+        internal void InvokeMutationCreateAwsTarget()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CreateAwsTargetInput!"),
@@ -1860,7 +1863,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // updateAwsTarget(input: UpdateAwsTargetInput!): Target!
-        protected void InvokeMutationUpdateAwsTarget()
+        internal void InvokeMutationUpdateAwsTarget()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpdateAwsTargetInput!"),
@@ -1887,7 +1890,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // createAwsReaderTarget(input: CreateAwsReaderTargetInput!): Target!
-        protected void InvokeMutationCreateAwsReaderTarget()
+        internal void InvokeMutationCreateAwsReaderTarget()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CreateAwsReaderTargetInput!"),
@@ -1914,7 +1917,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // createAwsComputeSetting(input: CreateAwsComputeSettingInput!): AwsComputeSettings!
-        protected void InvokeMutationCreateAwsComputeSetting()
+        internal void InvokeMutationCreateAwsComputeSetting()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CreateAwsComputeSettingInput!"),
@@ -1941,7 +1944,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // updateAwsComputeSetting(input: UpdateAwsComputeSettingInput!): AwsComputeSettings!
-        protected void InvokeMutationUpdateAwsComputeSetting()
+        internal void InvokeMutationUpdateAwsComputeSetting()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpdateAwsComputeSettingInput!"),
@@ -1968,7 +1971,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // deleteAwsComputeSetting(input: DeleteAwsComputeSettingInput!): Void
-        protected void InvokeMutationDeleteAwsComputeSetting()
+        internal void InvokeMutationDeleteAwsComputeSetting()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteAwsComputeSettingInput!"),
@@ -1995,7 +1998,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // awsCloudAccountValidate(awsCloudAccountValidateArg: AwsCloudAccountValidateInput!): AwsCloudAccountValidateResponse!
-        protected void InvokeMutationAwsCloudAccountValidate()
+        internal void InvokeMutationAwsCloudAccountValidate()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("awsCloudAccountValidateArg", "AwsCloudAccountValidateInput!"),
@@ -2022,7 +2025,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // awsCloudAccountInitiate(awsCloudAccountInitiateArg: AwsCloudAccountInitiateInput!): AwsCloudAccountCreateResponse!
-        protected void InvokeMutationAwsCloudAccountInitiate()
+        internal void InvokeMutationAwsCloudAccountInitiate()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("awsCloudAccountInitiateArg", "AwsCloudAccountInitiateInput!"),
@@ -2049,7 +2052,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // awsNativeProtectionAccountAdd(awsNativeProtectionAccountAddArg: AwsNativeProtectionAccountAddRequest!): AwsNativeProtectionAccountAddResponse!
-        protected void InvokeMutationAwsNativeProtectionAccountAdd()
+        internal void InvokeMutationAwsNativeProtectionAccountAdd()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("awsNativeProtectionAccountAddArg", "AwsNativeProtectionAccountAddRequest!"),
@@ -2076,7 +2079,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // validateAndCreateAwsCloudAccount(input: ValidateAndCreateAwsCloudAccountInput!): ValidateAndCreateAwsCloudAccountReply!
-        protected void InvokeMutationValidateAndCreateAwsCloudAccount()
+        internal void InvokeMutationValidateAndCreateAwsCloudAccount()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "ValidateAndCreateAwsCloudAccountInput!"),
@@ -2103,7 +2106,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // finalizeAwsCloudAccountProtection(input: FinalizeAwsCloudAccountProtectionInput!): FinalizeAwsCloudAccountProtectionReply!
-        protected void InvokeMutationFinalizeAwsCloudAccountProtection()
+        internal void InvokeMutationFinalizeAwsCloudAccountProtection()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "FinalizeAwsCloudAccountProtectionInput!"),
@@ -2130,7 +2133,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // prepareAwsCloudAccountDeletion(input: PrepareAwsCloudAccountDeletionInput!): PrepareAwsCloudAccountDeletionReply!
-        protected void InvokeMutationPrepareAwsCloudAccountDeletion()
+        internal void InvokeMutationPrepareAwsCloudAccountDeletion()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "PrepareAwsCloudAccountDeletionInput!"),
@@ -2157,7 +2160,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // finalizeAwsCloudAccountDeletion(input: FinalizeAwsCloudAccountDeletionInput!): FinalizeAwsCloudAccountDeletionReply!
-        protected void InvokeMutationFinalizeAwsCloudAccountDeletion()
+        internal void InvokeMutationFinalizeAwsCloudAccountDeletion()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "FinalizeAwsCloudAccountDeletionInput!"),
@@ -2184,7 +2187,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // updateAwsCloudAccountFeature(input: UpdateAwsCloudAccountFeatureInput!): UpdateAwsCloudAccountFeatureReply!
-        protected void InvokeMutationUpdateAwsCloudAccountFeature()
+        internal void InvokeMutationUpdateAwsCloudAccountFeature()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpdateAwsCloudAccountFeatureInput!"),
@@ -2211,7 +2214,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // updateAwsCloudAccount(input: UpdateAwsCloudAccountInput!): Void
-        protected void InvokeMutationUpdateAwsCloudAccount()
+        internal void InvokeMutationUpdateAwsCloudAccount()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpdateAwsCloudAccountInput!"),
@@ -2238,7 +2241,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // prepareFeatureUpdateForAwsCloudAccount(input: PrepareFeatureUpdateForAwsCloudAccountInput!): PrepareFeatureUpdateForAwsCloudAccountReply!
-        protected void InvokeMutationPrepareFeatureUpdateForAwsCloudAccount()
+        internal void InvokeMutationPrepareFeatureUpdateForAwsCloudAccount()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "PrepareFeatureUpdateForAwsCloudAccountInput!"),
@@ -2265,7 +2268,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // awsCloudAccountUpdateFeature(cloudAccountUuid: UUID!, features: [CloudAccountFeature!]!): AwsCloudAccountUpdateFeatureResponse!
-        protected void InvokeMutationAwsCloudAccountUpdateFeature()
+        internal void InvokeMutationAwsCloudAccountUpdateFeature()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("cloudAccountUuid", "UUID!"),
@@ -2293,7 +2296,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // createAwsExocomputeConfigs(input: CreateAwsExocomputeConfigsInput!): CreateAwsExocomputeConfigsReply!
-        protected void InvokeMutationCreateAwsExocomputeConfigs()
+        internal void InvokeMutationCreateAwsExocomputeConfigs()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CreateAwsExocomputeConfigsInput!"),
@@ -2320,7 +2323,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // deleteAwsExocomputeConfigs(input: DeleteAwsExocomputeConfigsInput!): DeleteAwsExocomputeConfigsReply!
-        protected void InvokeMutationDeleteAwsExocomputeConfigs()
+        internal void InvokeMutationDeleteAwsExocomputeConfigs()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteAwsExocomputeConfigsInput!"),
@@ -2347,7 +2350,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // updateAwsExocomputeConfigs(input: UpdateAwsExocomputeConfigsInput!): UpdateAwsExocomputeConfigsReply!
-        protected void InvokeMutationUpdateAwsExocomputeConfigs()
+        internal void InvokeMutationUpdateAwsExocomputeConfigs()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpdateAwsExocomputeConfigsInput!"),
@@ -2374,7 +2377,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // startAwsExocomputeDisableJob(input: StartAwsExocomputeDisableJobInput!): AsyncJobStatus!
-        protected void InvokeMutationStartAwsExocomputeDisableJob()
+        internal void InvokeMutationStartAwsExocomputeDisableJob()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "StartAwsExocomputeDisableJobInput!"),
@@ -2401,7 +2404,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // addAwsIamUserBasedCloudAccount(input: AddAwsIamUserBasedCloudAccountInput!): AddAwsIamUserBasedCloudAccountReply!
-        protected void InvokeMutationAddAwsIamUserBasedCloudAccount()
+        internal void InvokeMutationAddAwsIamUserBasedCloudAccount()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "AddAwsIamUserBasedCloudAccountInput!"),
@@ -2428,7 +2431,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // deleteAwsIamUserBasedCloudAccount(input: DeleteAwsIamUserBasedCloudAccountInput!): DeleteAwsIamUserBasedCloudAccountReply!
-        protected void InvokeMutationDeleteAwsIamUserBasedCloudAccount()
+        internal void InvokeMutationDeleteAwsIamUserBasedCloudAccount()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteAwsIamUserBasedCloudAccountInput!"),
@@ -2455,7 +2458,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // deleteAwsCloudAccountWithoutCft(input: DeleteAwsCloudAccountWithoutCftInput!): DeleteAwsCloudAccountWithoutCftReply!
-        protected void InvokeMutationDeleteAwsCloudAccountWithoutCft()
+        internal void InvokeMutationDeleteAwsCloudAccountWithoutCft()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteAwsCloudAccountWithoutCftInput!"),
@@ -2482,7 +2485,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // upgradeAwsIamUserBasedCloudAccountPermissions(input: UpgradeAwsIamUserBasedCloudAccountPermissionsInput!): Boolean!
-        protected void InvokeMutationUpgradeAwsIamUserBasedCloudAccountPermissions()
+        internal void InvokeMutationUpgradeAwsIamUserBasedCloudAccountPermissions()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpgradeAwsIamUserBasedCloudAccountPermissionsInput!"),
@@ -2509,7 +2512,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // upgradeAwsCloudAccountFeaturesWithoutCft(input: UpgradeAwsCloudAccountFeaturesWithoutCftInput!): Boolean!
-        protected void InvokeMutationUpgradeAwsCloudAccountFeaturesWithoutCft()
+        internal void InvokeMutationUpgradeAwsCloudAccountFeaturesWithoutCft()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpgradeAwsCloudAccountFeaturesWithoutCftInput!"),
@@ -2536,7 +2539,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // addAwsAuthenticationServerBasedCloudAccount(input: AddAwsAuthenticationServerBasedCloudAccountInput!): AddAwsAuthenticationServerBasedCloudAccountReply!
-        protected void InvokeMutationAddAwsAuthenticationServerBasedCloudAccount()
+        internal void InvokeMutationAddAwsAuthenticationServerBasedCloudAccount()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "AddAwsAuthenticationServerBasedCloudAccountInput!"),
@@ -2563,7 +2566,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // patchAwsAuthenticationServerBasedCloudAccount(input: PatchAwsAuthenticationServerBasedCloudAccountInput!): Boolean!
-        protected void InvokeMutationPatchAwsAuthenticationServerBasedCloudAccount()
+        internal void InvokeMutationPatchAwsAuthenticationServerBasedCloudAccount()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "PatchAwsAuthenticationServerBasedCloudAccountInput!"),
@@ -2590,7 +2593,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // patchAwsIamUserBasedCloudAccount(input: PatchAwsIamUserBasedCloudAccountInput!): Boolean!
-        protected void InvokeMutationPatchAwsIamUserBasedCloudAccount()
+        internal void InvokeMutationPatchAwsIamUserBasedCloudAccount()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "PatchAwsIamUserBasedCloudAccountInput!"),
@@ -2617,7 +2620,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // registerAwsFeatureArtifacts(input: RegisterAwsFeatureArtifactsInput!): RegisterAwsFeatureArtifactsReply!
-        protected void InvokeMutationRegisterAwsFeatureArtifacts()
+        internal void InvokeMutationRegisterAwsFeatureArtifacts()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RegisterAwsFeatureArtifactsInput!"),
@@ -2644,7 +2647,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // bulkDeleteAwsCloudAccountWithoutCft(input: BulkDeleteAwsCloudAccountWithoutCftInput!): BulkDeleteAwsCloudAccountWithoutCftReply!
-        protected void InvokeMutationBulkDeleteAwsCloudAccountWithoutCft()
+        internal void InvokeMutationBulkDeleteAwsCloudAccountWithoutCft()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "BulkDeleteAwsCloudAccountWithoutCftInput!"),
@@ -2671,7 +2674,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // createAwsCluster(input: CreateAwsClusterInput!): CcProvisionJobReply!
-        protected void InvokeMutationCreateAwsCluster()
+        internal void InvokeMutationCreateAwsCluster()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CreateAwsClusterInput!"),
@@ -2698,7 +2701,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // deleteAwsCluster(input: DeleteAwsClusterInput!): CcProvisionJobReply!
-        protected void InvokeMutationDeleteAwsCluster()
+        internal void InvokeMutationDeleteAwsCluster()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteAwsClusterInput!"),

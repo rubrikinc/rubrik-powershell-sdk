@@ -86,7 +86,7 @@ namespace RubrikSecurityCloud.PowerShell.Private
         public SwitchParameter GetGqlRequest { get; set; }
 
         internal string _operationsDir = null;
-        internal string _customOperationsDir = null;
+        internal string _customDir = null;
 
         // _input is instantiated in BeginProcessing() here
         // and initialized in the Invoke methods in derived classes.
@@ -129,7 +129,7 @@ namespace RubrikSecurityCloud.PowerShell.Private
             if (this.GetGqlRequest) {
                 _gqlRequest.Init(
                     variables: _gqlVars.AsJson(this._logger),
-                    customOperationsDir: _customOperationsDir);
+                    customOperationsDir: _customDir);
                 this.WriteObject(_gqlRequest);
                 return;
             }
@@ -137,13 +137,14 @@ namespace RubrikSecurityCloud.PowerShell.Private
 
         protected void ResolveOperationsDir() 
         {
-            string sessionProfileFile = this.SessionState.PSVariable.Get("PROFILE").Value.ToString();
-            _customOperationsDir = FileUtils.GetUserOperationsDir(sessionProfileFile);
+            _customDir = Files.GetCustomDir(
+                this.SessionState.PSVariable.GetValue(
+                    "RSC_CUSTOM_DIR", "").ToString());
             if (this.InputProfile == Exploration.Profile.CUSTOM)
             {
-                _operationsDir = _customOperationsDir;
+                _operationsDir = _customDir;
             } else {
-                _operationsDir = FileUtils.GetSdkOperationsDir(this.InputProfile.ToString());
+                _operationsDir = Files.GetSdkOperationsDir(this.InputProfile.ToString());
             }
             this._logger.Debug($"_operationsDir: {_operationsDir} {Directory.Exists(_operationsDir)}");
         }
@@ -169,7 +170,7 @@ namespace RubrikSecurityCloud.PowerShell.Private
             }
             string query = _opKind + " " + _opName + _opArgs + "\n{\n" + _opFields + "}\n" ;
             string overrideFile = Path.Combine(_operationsDir, _opName + ".gql");
-            string overrideQuery = FileUtils.ReadFileIfExists(overrideFile);
+            string overrideQuery = Files.ReadFileIfExists(overrideFile);
 
             if ( ! string.IsNullOrEmpty(overrideQuery) ) {
                 this._logger.Debug("Using override " + overrideFile);

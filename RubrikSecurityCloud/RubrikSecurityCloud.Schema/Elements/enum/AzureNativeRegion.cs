@@ -102,6 +102,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "NOT_SPECIFIED")]
         NOT_SPECIFIED,
 
+        [EnumMember(Value = "POLAND_CENTRAL")]
+        POLAND_CENTRAL,
+
         [EnumMember(Value = "QATAR_CENTRAL")]
         QATAR_CENTRAL,
 

@@ -3,7 +3,8 @@ Supported in v5.3+
 
 - configuredSlaDomainId: System.String
   - Supported in v5.3+
-      The ID of the SLA Domain that is configured for the SAP HANA system.
+      v5.3-v9.0: The ID of the SLA Domain that is configured for the SAP HANA system.
+      v9.1: Deprecated. Make sure to use the SLA APIs for updating the SLA Domain of the SAP HANA database.
 - hostIds: list of System.Strings
   - Supported in v5.3+
       The SAP HANA system hosts.

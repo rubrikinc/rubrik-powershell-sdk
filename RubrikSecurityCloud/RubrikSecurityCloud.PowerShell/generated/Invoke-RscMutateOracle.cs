@@ -26,11 +26,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     public class Invoke_RscMutateOracle : RscPSCmdlet
     {
         
-        // -------------------------------------------------------------------
-        // BulkUpdateHosts parameter set
-        //
-        // [GraphQL: bulkUpdateOracleHosts]
-        //
+        /// <summary>
+        /// BulkUpdateHosts parameter set
+        ///
+        /// [GraphQL: bulkUpdateOracleHosts]
+        /// </summary>
         [Parameter(
             ParameterSetName = "BulkUpdateHosts",
             Mandatory = false,
@@ -47,11 +47,11 @@ Update properties to Oracle Host objects.
         public SwitchParameter BulkUpdateHosts { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // RefreshDatabase parameter set
-        //
-        // [GraphQL: refreshOracleDatabase]
-        //
+        /// <summary>
+        /// RefreshDatabase parameter set
+        ///
+        /// [GraphQL: refreshOracleDatabase]
+        /// </summary>
         [Parameter(
             ParameterSetName = "RefreshDatabase",
             Mandatory = false,
@@ -68,11 +68,11 @@ Starts an asynchronous job to refresh the Oracle database metadata by querying t
         public SwitchParameter RefreshDatabase { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // UpdateDataGuardGroup parameter set
-        //
-        // [GraphQL: updateOracleDataGuardGroup]
-        //
+        /// <summary>
+        /// UpdateDataGuardGroup parameter set
+        ///
+        /// [GraphQL: updateOracleDataGuardGroup]
+        /// </summary>
         [Parameter(
             ParameterSetName = "UpdateDataGuardGroup",
             Mandatory = false,
@@ -89,11 +89,11 @@ Update properties of an Oracle Data Guard group object.
         public SwitchParameter UpdateDataGuardGroup { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DeleteAllDatabaseSnapshots parameter set
-        //
-        // [GraphQL: deleteAllOracleDatabaseSnapshots]
-        //
+        /// <summary>
+        /// DeleteAllDatabaseSnapshots parameter set
+        ///
+        /// [GraphQL: deleteAllOracleDatabaseSnapshots]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DeleteAllDatabaseSnapshots",
             Mandatory = false,
@@ -110,11 +110,11 @@ Delete all snapshots for a specified Oracle database object. For the operation t
         public SwitchParameter DeleteAllDatabaseSnapshots { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // TakeOnDemandDatabaseSnapshot parameter set
-        //
-        // [GraphQL: takeOnDemandOracleDatabaseSnapshot]
-        //
+        /// <summary>
+        /// TakeOnDemandDatabaseSnapshot parameter set
+        ///
+        /// [GraphQL: takeOnDemandOracleDatabaseSnapshot]
+        /// </summary>
         [Parameter(
             ParameterSetName = "TakeOnDemandDatabaseSnapshot",
             Mandatory = false,
@@ -131,11 +131,11 @@ Create an asynchronous job for an on-demand snapshot of an Oracle database. The 
         public SwitchParameter TakeOnDemandDatabaseSnapshot { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // TakeOnDemandLogSnapshot parameter set
-        //
-        // [GraphQL: takeOnDemandOracleLogSnapshot]
-        //
+        /// <summary>
+        /// TakeOnDemandLogSnapshot parameter set
+        ///
+        /// [GraphQL: takeOnDemandOracleLogSnapshot]
+        /// </summary>
         [Parameter(
             ParameterSetName = "TakeOnDemandLogSnapshot",
             Mandatory = false,
@@ -152,11 +152,11 @@ Create an asynchronous job for an on-demand backup of an Oracle database log. Th
         public SwitchParameter TakeOnDemandLogSnapshot { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // BulkUpdateRacs parameter set
-        //
-        // [GraphQL: bulkUpdateOracleRacs]
-        //
+        /// <summary>
+        /// BulkUpdateRacs parameter set
+        ///
+        /// [GraphQL: bulkUpdateOracleRacs]
+        /// </summary>
         [Parameter(
             ParameterSetName = "BulkUpdateRacs",
             Mandatory = false,
@@ -173,11 +173,11 @@ Update the properties of the objects that represent the specified Oracle RAC.
         public SwitchParameter BulkUpdateRacs { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ExportTablespace parameter set
-        //
-        // [GraphQL: exportOracleTablespace]
-        //
+        /// <summary>
+        /// ExportTablespace parameter set
+        ///
+        /// [GraphQL: exportOracleTablespace]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ExportTablespace",
             Mandatory = false,
@@ -194,11 +194,11 @@ Request an asynchronous job to export an Oracle tablespace from a specified snap
         public SwitchParameter ExportTablespace { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ValidateAcoFile parameter set
-        //
-        // [GraphQL: validateOracleAcoFile]
-        //
+        /// <summary>
+        /// ValidateAcoFile parameter set
+        ///
+        /// [GraphQL: validateOracleAcoFile]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ValidateAcoFile",
             Mandatory = false,
@@ -215,11 +215,11 @@ Validate the provided Oracle ACO (Advanced Cloning Options) file.
         public SwitchParameter ValidateAcoFile { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ValidateDatabaseBackups parameter set
-        //
-        // [GraphQL: validateOracleDatabaseBackups]
-        //
+        /// <summary>
+        /// ValidateDatabaseBackups parameter set
+        ///
+        /// [GraphQL: validateOracleDatabaseBackups]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ValidateDatabaseBackups",
             Mandatory = false,
@@ -236,11 +236,11 @@ Queue a job to validate Oracle backups for a database snapshot or a specified ti
         public SwitchParameter ValidateDatabaseBackups { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // BulkUpdateDatabases parameter set
-        //
-        // [GraphQL: bulkUpdateOracleDatabases]
-        //
+        /// <summary>
+        /// BulkUpdateDatabases parameter set
+        ///
+        /// [GraphQL: bulkUpdateOracleDatabases]
+        /// </summary>
         [Parameter(
             ParameterSetName = "BulkUpdateDatabases",
             Mandatory = false,
@@ -257,11 +257,11 @@ Update the properties of the objects that represent the specified Oracle Databas
         public SwitchParameter BulkUpdateDatabases { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // InstantRecoverSnapshot parameter set
-        //
-        // [GraphQL: instantRecoverOracleSnapshot]
-        //
+        /// <summary>
+        /// InstantRecoverSnapshot parameter set
+        ///
+        /// [GraphQL: instantRecoverOracleSnapshot]
+        /// </summary>
         [Parameter(
             ParameterSetName = "InstantRecoverSnapshot",
             Mandatory = false,
@@ -278,11 +278,11 @@ Creates an instant recover request that restores a target database from the give
         public SwitchParameter InstantRecoverSnapshot { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // MountDatabase parameter set
-        //
-        // [GraphQL: mountOracleDatabase]
-        //
+        /// <summary>
+        /// MountDatabase parameter set
+        ///
+        /// [GraphQL: mountOracleDatabase]
+        /// </summary>
         [Parameter(
             ParameterSetName = "MountDatabase",
             Mandatory = false,
@@ -299,11 +299,11 @@ Create an asynchronous job to Live Mount an Oracle database from a snapshot.
         public SwitchParameter MountDatabase { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ExportDatabase parameter set
-        //
-        // [GraphQL: exportOracleDatabase]
-        //
+        /// <summary>
+        /// ExportDatabase parameter set
+        ///
+        /// [GraphQL: exportOracleDatabase]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ExportDatabase",
             Mandatory = false,
@@ -320,11 +320,11 @@ Request an asynchronous job to export an Oracle database from a specified snapsh
         public SwitchParameter ExportDatabase { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // CreatePdbRestore parameter set
-        //
-        // [GraphQL: createOraclePdbRestore]
-        //
+        /// <summary>
+        /// CreatePdbRestore parameter set
+        ///
+        /// [GraphQL: createOraclePdbRestore]
+        /// </summary>
         [Parameter(
             ParameterSetName = "CreatePdbRestore",
             Mandatory = false,
@@ -341,11 +341,11 @@ Initiates an asynchronous request to restore PDBs on an Oracle database from a s
         public SwitchParameter CreatePdbRestore { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DownloadDatabaseSnapshot parameter set
-        //
-        // [GraphQL: downloadOracleDatabaseSnapshot]
-        //
+        /// <summary>
+        /// DownloadDatabaseSnapshot parameter set
+        ///
+        /// [GraphQL: downloadOracleDatabaseSnapshot]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DownloadDatabaseSnapshot",
             Mandatory = false,
@@ -362,11 +362,11 @@ Create an asynchronous job to download an Oracle database snapshot and associate
         public SwitchParameter DownloadDatabaseSnapshot { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DeleteMount parameter set
-        //
-        // [GraphQL: deleteOracleMount]
-        //
+        /// <summary>
+        /// DeleteMount parameter set
+        ///
+        /// [GraphQL: deleteOracleMount]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DeleteMount",
             Mandatory = false,
@@ -383,11 +383,11 @@ Request an asynchronous job to delete a specified Live Mount of an Oracle databa
         public SwitchParameter DeleteMount { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // RestoreLogs parameter set
-        //
-        // [GraphQL: restoreOracleLogs]
-        //
+        /// <summary>
+        /// RestoreLogs parameter set
+        ///
+        /// [GraphQL: restoreOracleLogs]
+        /// </summary>
         [Parameter(
             ParameterSetName = "RestoreLogs",
             Mandatory = false,
@@ -405,6 +405,8 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
         public SwitchParameter RestoreLogs { get; set; }
 
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
         protected override void ProcessRecord()
         {
             try
@@ -474,10 +476,11 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
                 ThrowTerminatingException(ex);
            }
         }
+#pragma warning restore 1591
 
         // This parameter set invokes a single graphql operation:
         // bulkUpdateOracleHosts.
-        protected void ProcessRecord_BulkUpdateHosts()
+        internal void ProcessRecord_BulkUpdateHosts()
         {
             this._logger.name += " -BulkUpdateHosts";
             // Invoke graphql operation bulkUpdateOracleHosts
@@ -486,7 +489,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
 
         // This parameter set invokes a single graphql operation:
         // refreshOracleDatabase.
-        protected void ProcessRecord_RefreshDatabase()
+        internal void ProcessRecord_RefreshDatabase()
         {
             this._logger.name += " -RefreshDatabase";
             // Invoke graphql operation refreshOracleDatabase
@@ -495,7 +498,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
 
         // This parameter set invokes a single graphql operation:
         // updateOracleDataGuardGroup.
-        protected void ProcessRecord_UpdateDataGuardGroup()
+        internal void ProcessRecord_UpdateDataGuardGroup()
         {
             this._logger.name += " -UpdateDataGuardGroup";
             // Invoke graphql operation updateOracleDataGuardGroup
@@ -504,7 +507,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
 
         // This parameter set invokes a single graphql operation:
         // deleteAllOracleDatabaseSnapshots.
-        protected void ProcessRecord_DeleteAllDatabaseSnapshots()
+        internal void ProcessRecord_DeleteAllDatabaseSnapshots()
         {
             this._logger.name += " -DeleteAllDatabaseSnapshots";
             // Invoke graphql operation deleteAllOracleDatabaseSnapshots
@@ -513,7 +516,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
 
         // This parameter set invokes a single graphql operation:
         // takeOnDemandOracleDatabaseSnapshot.
-        protected void ProcessRecord_TakeOnDemandDatabaseSnapshot()
+        internal void ProcessRecord_TakeOnDemandDatabaseSnapshot()
         {
             this._logger.name += " -TakeOnDemandDatabaseSnapshot";
             // Invoke graphql operation takeOnDemandOracleDatabaseSnapshot
@@ -522,7 +525,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
 
         // This parameter set invokes a single graphql operation:
         // takeOnDemandOracleLogSnapshot.
-        protected void ProcessRecord_TakeOnDemandLogSnapshot()
+        internal void ProcessRecord_TakeOnDemandLogSnapshot()
         {
             this._logger.name += " -TakeOnDemandLogSnapshot";
             // Invoke graphql operation takeOnDemandOracleLogSnapshot
@@ -531,7 +534,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
 
         // This parameter set invokes a single graphql operation:
         // bulkUpdateOracleRacs.
-        protected void ProcessRecord_BulkUpdateRacs()
+        internal void ProcessRecord_BulkUpdateRacs()
         {
             this._logger.name += " -BulkUpdateRacs";
             // Invoke graphql operation bulkUpdateOracleRacs
@@ -540,7 +543,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
 
         // This parameter set invokes a single graphql operation:
         // exportOracleTablespace.
-        protected void ProcessRecord_ExportTablespace()
+        internal void ProcessRecord_ExportTablespace()
         {
             this._logger.name += " -ExportTablespace";
             // Invoke graphql operation exportOracleTablespace
@@ -549,7 +552,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
 
         // This parameter set invokes a single graphql operation:
         // validateOracleAcoFile.
-        protected void ProcessRecord_ValidateAcoFile()
+        internal void ProcessRecord_ValidateAcoFile()
         {
             this._logger.name += " -ValidateAcoFile";
             // Invoke graphql operation validateOracleAcoFile
@@ -558,7 +561,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
 
         // This parameter set invokes a single graphql operation:
         // validateOracleDatabaseBackups.
-        protected void ProcessRecord_ValidateDatabaseBackups()
+        internal void ProcessRecord_ValidateDatabaseBackups()
         {
             this._logger.name += " -ValidateDatabaseBackups";
             // Invoke graphql operation validateOracleDatabaseBackups
@@ -567,7 +570,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
 
         // This parameter set invokes a single graphql operation:
         // bulkUpdateOracleDatabases.
-        protected void ProcessRecord_BulkUpdateDatabases()
+        internal void ProcessRecord_BulkUpdateDatabases()
         {
             this._logger.name += " -BulkUpdateDatabases";
             // Invoke graphql operation bulkUpdateOracleDatabases
@@ -576,7 +579,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
 
         // This parameter set invokes a single graphql operation:
         // instantRecoverOracleSnapshot.
-        protected void ProcessRecord_InstantRecoverSnapshot()
+        internal void ProcessRecord_InstantRecoverSnapshot()
         {
             this._logger.name += " -InstantRecoverSnapshot";
             // Invoke graphql operation instantRecoverOracleSnapshot
@@ -585,7 +588,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
 
         // This parameter set invokes a single graphql operation:
         // mountOracleDatabase.
-        protected void ProcessRecord_MountDatabase()
+        internal void ProcessRecord_MountDatabase()
         {
             this._logger.name += " -MountDatabase";
             // Invoke graphql operation mountOracleDatabase
@@ -594,7 +597,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
 
         // This parameter set invokes a single graphql operation:
         // exportOracleDatabase.
-        protected void ProcessRecord_ExportDatabase()
+        internal void ProcessRecord_ExportDatabase()
         {
             this._logger.name += " -ExportDatabase";
             // Invoke graphql operation exportOracleDatabase
@@ -603,7 +606,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
 
         // This parameter set invokes a single graphql operation:
         // createOraclePdbRestore.
-        protected void ProcessRecord_CreatePdbRestore()
+        internal void ProcessRecord_CreatePdbRestore()
         {
             this._logger.name += " -CreatePdbRestore";
             // Invoke graphql operation createOraclePdbRestore
@@ -612,7 +615,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
 
         // This parameter set invokes a single graphql operation:
         // downloadOracleDatabaseSnapshot.
-        protected void ProcessRecord_DownloadDatabaseSnapshot()
+        internal void ProcessRecord_DownloadDatabaseSnapshot()
         {
             this._logger.name += " -DownloadDatabaseSnapshot";
             // Invoke graphql operation downloadOracleDatabaseSnapshot
@@ -621,7 +624,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
 
         // This parameter set invokes a single graphql operation:
         // deleteOracleMount.
-        protected void ProcessRecord_DeleteMount()
+        internal void ProcessRecord_DeleteMount()
         {
             this._logger.name += " -DeleteMount";
             // Invoke graphql operation deleteOracleMount
@@ -630,7 +633,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
 
         // This parameter set invokes a single graphql operation:
         // restoreOracleLogs.
-        protected void ProcessRecord_RestoreLogs()
+        internal void ProcessRecord_RestoreLogs()
         {
             this._logger.name += " -RestoreLogs";
             // Invoke graphql operation restoreOracleLogs
@@ -640,7 +643,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
 
         // Invoke GraphQL Mutation:
         // bulkUpdateOracleHosts(input: BulkUpdateOracleHostsInput!): BulkUpdateOracleHostsReply!
-        protected void InvokeMutationBulkUpdateOracleHosts()
+        internal void InvokeMutationBulkUpdateOracleHosts()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "BulkUpdateOracleHostsInput!"),
@@ -667,7 +670,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
 
         // Invoke GraphQL Mutation:
         // refreshOracleDatabase(input: RefreshOracleDatabaseInput!): AsyncRequestStatus!
-        protected void InvokeMutationRefreshOracleDatabase()
+        internal void InvokeMutationRefreshOracleDatabase()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RefreshOracleDatabaseInput!"),
@@ -694,7 +697,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
 
         // Invoke GraphQL Mutation:
         // updateOracleDataGuardGroup(input: UpdateOracleDataGuardGroupInput!): OracleDbDetail!
-        protected void InvokeMutationUpdateOracleDataGuardGroup()
+        internal void InvokeMutationUpdateOracleDataGuardGroup()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpdateOracleDataGuardGroupInput!"),
@@ -721,7 +724,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
 
         // Invoke GraphQL Mutation:
         // deleteAllOracleDatabaseSnapshots(input: DeleteAllOracleDatabaseSnapshotsInput!): Void
-        protected void InvokeMutationDeleteAllOracleDatabaseSnapshots()
+        internal void InvokeMutationDeleteAllOracleDatabaseSnapshots()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteAllOracleDatabaseSnapshotsInput!"),
@@ -748,7 +751,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
 
         // Invoke GraphQL Mutation:
         // takeOnDemandOracleDatabaseSnapshot(input: TakeOnDemandOracleDatabaseSnapshotInput!): AsyncRequestStatus!
-        protected void InvokeMutationTakeOnDemandOracleDatabaseSnapshot()
+        internal void InvokeMutationTakeOnDemandOracleDatabaseSnapshot()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "TakeOnDemandOracleDatabaseSnapshotInput!"),
@@ -775,7 +778,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
 
         // Invoke GraphQL Mutation:
         // takeOnDemandOracleLogSnapshot(input: TakeOnDemandOracleLogSnapshotInput!): AsyncRequestStatus!
-        protected void InvokeMutationTakeOnDemandOracleLogSnapshot()
+        internal void InvokeMutationTakeOnDemandOracleLogSnapshot()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "TakeOnDemandOracleLogSnapshotInput!"),
@@ -802,7 +805,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
 
         // Invoke GraphQL Mutation:
         // bulkUpdateOracleRacs(input: BulkUpdateOracleRacsInput!): BulkUpdateOracleRacsReply!
-        protected void InvokeMutationBulkUpdateOracleRacs()
+        internal void InvokeMutationBulkUpdateOracleRacs()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "BulkUpdateOracleRacsInput!"),
@@ -829,7 +832,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
 
         // Invoke GraphQL Mutation:
         // exportOracleTablespace(input: ExportOracleTablespaceInput!): AsyncRequestStatus!
-        protected void InvokeMutationExportOracleTablespace()
+        internal void InvokeMutationExportOracleTablespace()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "ExportOracleTablespaceInput!"),
@@ -856,7 +859,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
 
         // Invoke GraphQL Mutation:
         // validateOracleAcoFile(input: ValidateOracleAcoFileInput!): ValidateOracleAcoFileReply!
-        protected void InvokeMutationValidateOracleAcoFile()
+        internal void InvokeMutationValidateOracleAcoFile()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "ValidateOracleAcoFileInput!"),
@@ -883,7 +886,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
 
         // Invoke GraphQL Mutation:
         // validateOracleDatabaseBackups(input: ValidateOracleDatabaseBackupsInput!): AsyncRequestStatus!
-        protected void InvokeMutationValidateOracleDatabaseBackups()
+        internal void InvokeMutationValidateOracleDatabaseBackups()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "ValidateOracleDatabaseBackupsInput!"),
@@ -910,7 +913,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
 
         // Invoke GraphQL Mutation:
         // bulkUpdateOracleDatabases(input: BulkUpdateOracleDatabasesInput!): BulkUpdateOracleDatabasesReply!
-        protected void InvokeMutationBulkUpdateOracleDatabases()
+        internal void InvokeMutationBulkUpdateOracleDatabases()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "BulkUpdateOracleDatabasesInput!"),
@@ -937,7 +940,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
 
         // Invoke GraphQL Mutation:
         // instantRecoverOracleSnapshot(input: InstantRecoverOracleSnapshotInput!): AsyncRequestStatus!
-        protected void InvokeMutationInstantRecoverOracleSnapshot()
+        internal void InvokeMutationInstantRecoverOracleSnapshot()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "InstantRecoverOracleSnapshotInput!"),
@@ -964,7 +967,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
 
         // Invoke GraphQL Mutation:
         // mountOracleDatabase(input: MountOracleDatabaseInput!): AsyncRequestStatus!
-        protected void InvokeMutationMountOracleDatabase()
+        internal void InvokeMutationMountOracleDatabase()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "MountOracleDatabaseInput!"),
@@ -991,7 +994,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
 
         // Invoke GraphQL Mutation:
         // exportOracleDatabase(input: ExportOracleDatabaseInput!): AsyncRequestStatus!
-        protected void InvokeMutationExportOracleDatabase()
+        internal void InvokeMutationExportOracleDatabase()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "ExportOracleDatabaseInput!"),
@@ -1018,7 +1021,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
 
         // Invoke GraphQL Mutation:
         // createOraclePdbRestore(input: CreateOraclePdbRestoreInput!): AsyncRequestStatus!
-        protected void InvokeMutationCreateOraclePdbRestore()
+        internal void InvokeMutationCreateOraclePdbRestore()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CreateOraclePdbRestoreInput!"),
@@ -1045,7 +1048,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
 
         // Invoke GraphQL Mutation:
         // downloadOracleDatabaseSnapshot(input: DownloadOracleDatabaseSnapshotInput!): AsyncRequestStatus!
-        protected void InvokeMutationDownloadOracleDatabaseSnapshot()
+        internal void InvokeMutationDownloadOracleDatabaseSnapshot()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DownloadOracleDatabaseSnapshotInput!"),
@@ -1072,7 +1075,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
 
         // Invoke GraphQL Mutation:
         // deleteOracleMount(input: DeleteOracleMountInput!): AsyncRequestStatus!
-        protected void InvokeMutationDeleteOracleMount()
+        internal void InvokeMutationDeleteOracleMount()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteOracleMountInput!"),
@@ -1099,7 +1102,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
 
         // Invoke GraphQL Mutation:
         // restoreOracleLogs(input: RestoreOracleLogsInput!): AsyncRequestStatus!
-        protected void InvokeMutationRestoreOracleLogs()
+        internal void InvokeMutationRestoreOracleLogs()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RestoreOracleLogsInput!"),

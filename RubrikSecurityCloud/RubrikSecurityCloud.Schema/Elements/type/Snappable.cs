@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region Snappable
  
-    public class Snappable: BaseType, AnomalyResultGroupByInfo, RansomwareResultGroupByInfo
+    public class Snappable: BaseType, AnomalyResultGroupByInfo, NfAnomalyResultGroupByInfo, RansomwareResultGroupByInfo
     {
         #region members
 

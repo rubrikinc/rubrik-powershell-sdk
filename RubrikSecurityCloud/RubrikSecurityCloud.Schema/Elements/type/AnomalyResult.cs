@@ -55,6 +55,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("bytesNetChangedCount")]
         public System.Int64? BytesNetChangedCount { get; set; }
 
+        //      C# -> DateTime? DetectionTime
+        // GraphQL -> detectionTime: DateTime! (scalar)
+        [JsonProperty("detectionTime")]
+        public DateTime? DetectionTime { get; set; }
+
         //      C# -> System.Int64? FilesCreatedCount
         // GraphQL -> filesCreatedCount: Long (scalar)
         [JsonProperty("filesCreatedCount")]
@@ -172,6 +177,7 @@ namespace RubrikSecurityCloud.Types
         System.Int64? BytesDeletedCount = null,
         System.Int64? BytesModifiedCount = null,
         System.Int64? BytesNetChangedCount = null,
+        DateTime? DetectionTime = null,
         System.Int64? FilesCreatedCount = null,
         System.Int64? FilesDeletedCount = null,
         System.Int64? FilesModifiedCount = null,
@@ -214,6 +220,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( BytesNetChangedCount != null ) {
             this.BytesNetChangedCount = BytesNetChangedCount;
+        }
+        if ( DetectionTime != null ) {
+            this.DetectionTime = DetectionTime;
         }
         if ( FilesCreatedCount != null ) {
             this.FilesCreatedCount = FilesCreatedCount;
@@ -319,6 +328,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> bytesNetChangedCount: Long (scalar)
         if (this.BytesNetChangedCount != null) {
             s += ind + "bytesNetChangedCount\n" ;
+        }
+        //      C# -> DateTime? DetectionTime
+        // GraphQL -> detectionTime: DateTime! (scalar)
+        if (this.DetectionTime != null) {
+            s += ind + "detectionTime\n" ;
         }
         //      C# -> System.Int64? FilesCreatedCount
         // GraphQL -> filesCreatedCount: Long (scalar)
@@ -478,6 +492,12 @@ namespace RubrikSecurityCloud.Types
         if (this.BytesNetChangedCount == null && Exploration.Includes(parent + ".bytesNetChangedCount", true))
         {
             this.BytesNetChangedCount = new System.Int64();
+        }
+        //      C# -> DateTime? DetectionTime
+        // GraphQL -> detectionTime: DateTime! (scalar)
+        if (this.DetectionTime == null && Exploration.Includes(parent + ".detectionTime", true))
+        {
+            this.DetectionTime = new DateTime();
         }
         //      C# -> System.Int64? FilesCreatedCount
         // GraphQL -> filesCreatedCount: Long (scalar)

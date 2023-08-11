@@ -26,11 +26,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     public class Invoke_RscMutateDb2 : RscPSCmdlet
     {
         
-        // -------------------------------------------------------------------
-        // AddInstance parameter set
-        //
-        // [GraphQL: addDb2Instance]
-        //
+        /// <summary>
+        /// AddInstance parameter set
+        ///
+        /// [GraphQL: addDb2Instance]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AddInstance",
             Mandatory = false,
@@ -44,11 +44,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AddInstance { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DeleteInstance parameter set
-        //
-        // [GraphQL: deleteDb2Instance]
-        //
+        /// <summary>
+        /// DeleteInstance parameter set
+        ///
+        /// [GraphQL: deleteDb2Instance]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DeleteInstance",
             Mandatory = false,
@@ -62,11 +62,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter DeleteInstance { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DiscoverInstance parameter set
-        //
-        // [GraphQL: discoverDb2Instance]
-        //
+        /// <summary>
+        /// DiscoverInstance parameter set
+        ///
+        /// [GraphQL: discoverDb2Instance]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DiscoverInstance",
             Mandatory = false,
@@ -83,11 +83,11 @@ Initiates an on-demand job to discover a Db2 instance.
         public SwitchParameter DiscoverInstance { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // PatchInstance parameter set
-        //
-        // [GraphQL: patchDb2Instance]
-        //
+        /// <summary>
+        /// PatchInstance parameter set
+        ///
+        /// [GraphQL: patchDb2Instance]
+        /// </summary>
         [Parameter(
             ParameterSetName = "PatchInstance",
             Mandatory = false,
@@ -101,11 +101,11 @@ Initiates an on-demand job to discover a Db2 instance.
         public SwitchParameter PatchInstance { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // CreateOnDemandBackup parameter set
-        //
-        // [GraphQL: createOnDemandDb2Backup]
-        //
+        /// <summary>
+        /// CreateOnDemandBackup parameter set
+        ///
+        /// [GraphQL: createOnDemandDb2Backup]
+        /// </summary>
         [Parameter(
             ParameterSetName = "CreateOnDemandBackup",
             Mandatory = false,
@@ -122,11 +122,11 @@ Initiates a job to take an on demand, full snapshot of a specified Db2 database 
         public SwitchParameter CreateOnDemandBackup { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DownloadSnapshot parameter set
-        //
-        // [GraphQL: downloadDb2Snapshot]
-        //
+        /// <summary>
+        /// DownloadSnapshot parameter set
+        ///
+        /// [GraphQL: downloadDb2Snapshot]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DownloadSnapshot",
             Mandatory = false,
@@ -143,11 +143,11 @@ Downloads a specific Db2 database snapshot from the specified archival location.
         public SwitchParameter DownloadSnapshot { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DownloadSnapshotsForPointInTimeRecovery parameter set
-        //
-        // [GraphQL: downloadDb2SnapshotsForPointInTimeRecovery]
-        //
+        /// <summary>
+        /// DownloadSnapshotsForPointInTimeRecovery parameter set
+        ///
+        /// [GraphQL: downloadDb2SnapshotsForPointInTimeRecovery]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DownloadSnapshotsForPointInTimeRecovery",
             Mandatory = false,
@@ -164,11 +164,11 @@ Downloads the most recent full snapshot and the log snapshots taken after the fu
         public SwitchParameter DownloadSnapshotsForPointInTimeRecovery { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ExpireDownloadedSnapshots parameter set
-        //
-        // [GraphQL: expireDownloadedDb2Snapshots]
-        //
+        /// <summary>
+        /// ExpireDownloadedSnapshots parameter set
+        ///
+        /// [GraphQL: expireDownloadedDb2Snapshots]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ExpireDownloadedSnapshots",
             Mandatory = false,
@@ -185,11 +185,11 @@ Requests an asynchronous job to expire all downloaded data and log snapshots. Yo
         public SwitchParameter ExpireDownloadedSnapshots { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // PatchDatabase parameter set
-        //
-        // [GraphQL: patchDb2Database]
-        //
+        /// <summary>
+        /// PatchDatabase parameter set
+        ///
+        /// [GraphQL: patchDb2Database]
+        /// </summary>
         [Parameter(
             ParameterSetName = "PatchDatabase",
             Mandatory = false,
@@ -206,11 +206,11 @@ Updating a Db2 database involves modifying the metadata associated with the Db2 
         public SwitchParameter PatchDatabase { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // RefreshDatabase parameter set
-        //
-        // [GraphQL: refreshDb2Database]
-        //
+        /// <summary>
+        /// RefreshDatabase parameter set
+        ///
+        /// [GraphQL: refreshDb2Database]
+        /// </summary>
         [Parameter(
             ParameterSetName = "RefreshDatabase",
             Mandatory = false,
@@ -227,11 +227,11 @@ Initiates an on-demand job to refresh a Db2 database. Currently, this is allowed
         public SwitchParameter RefreshDatabase { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DeleteDatabase parameter set
-        //
-        // [GraphQL: deleteDb2Database]
-        //
+        /// <summary>
+        /// DeleteDatabase parameter set
+        ///
+        /// [GraphQL: deleteDb2Database]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DeleteDatabase",
             Mandatory = false,
@@ -248,6 +248,8 @@ Deletes a Db2 database.
         public SwitchParameter DeleteDatabase { get; set; }
 
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
         protected override void ProcessRecord()
         {
             try
@@ -296,10 +298,11 @@ Deletes a Db2 database.
                 ThrowTerminatingException(ex);
            }
         }
+#pragma warning restore 1591
 
         // This parameter set invokes a single graphql operation:
         // addDb2Instance.
-        protected void ProcessRecord_AddInstance()
+        internal void ProcessRecord_AddInstance()
         {
             this._logger.name += " -AddInstance";
             // Invoke graphql operation addDb2Instance
@@ -308,7 +311,7 @@ Deletes a Db2 database.
 
         // This parameter set invokes a single graphql operation:
         // deleteDb2Instance.
-        protected void ProcessRecord_DeleteInstance()
+        internal void ProcessRecord_DeleteInstance()
         {
             this._logger.name += " -DeleteInstance";
             // Invoke graphql operation deleteDb2Instance
@@ -317,7 +320,7 @@ Deletes a Db2 database.
 
         // This parameter set invokes a single graphql operation:
         // discoverDb2Instance.
-        protected void ProcessRecord_DiscoverInstance()
+        internal void ProcessRecord_DiscoverInstance()
         {
             this._logger.name += " -DiscoverInstance";
             // Invoke graphql operation discoverDb2Instance
@@ -326,7 +329,7 @@ Deletes a Db2 database.
 
         // This parameter set invokes a single graphql operation:
         // patchDb2Instance.
-        protected void ProcessRecord_PatchInstance()
+        internal void ProcessRecord_PatchInstance()
         {
             this._logger.name += " -PatchInstance";
             // Invoke graphql operation patchDb2Instance
@@ -335,7 +338,7 @@ Deletes a Db2 database.
 
         // This parameter set invokes a single graphql operation:
         // createOnDemandDb2Backup.
-        protected void ProcessRecord_CreateOnDemandBackup()
+        internal void ProcessRecord_CreateOnDemandBackup()
         {
             this._logger.name += " -CreateOnDemandBackup";
             // Invoke graphql operation createOnDemandDb2Backup
@@ -344,7 +347,7 @@ Deletes a Db2 database.
 
         // This parameter set invokes a single graphql operation:
         // downloadDb2Snapshot.
-        protected void ProcessRecord_DownloadSnapshot()
+        internal void ProcessRecord_DownloadSnapshot()
         {
             this._logger.name += " -DownloadSnapshot";
             // Invoke graphql operation downloadDb2Snapshot
@@ -353,7 +356,7 @@ Deletes a Db2 database.
 
         // This parameter set invokes a single graphql operation:
         // downloadDb2SnapshotsForPointInTimeRecovery.
-        protected void ProcessRecord_DownloadSnapshotsForPointInTimeRecovery()
+        internal void ProcessRecord_DownloadSnapshotsForPointInTimeRecovery()
         {
             this._logger.name += " -DownloadSnapshotsForPointInTimeRecovery";
             // Invoke graphql operation downloadDb2SnapshotsForPointInTimeRecovery
@@ -362,7 +365,7 @@ Deletes a Db2 database.
 
         // This parameter set invokes a single graphql operation:
         // expireDownloadedDb2Snapshots.
-        protected void ProcessRecord_ExpireDownloadedSnapshots()
+        internal void ProcessRecord_ExpireDownloadedSnapshots()
         {
             this._logger.name += " -ExpireDownloadedSnapshots";
             // Invoke graphql operation expireDownloadedDb2Snapshots
@@ -371,7 +374,7 @@ Deletes a Db2 database.
 
         // This parameter set invokes a single graphql operation:
         // patchDb2Database.
-        protected void ProcessRecord_PatchDatabase()
+        internal void ProcessRecord_PatchDatabase()
         {
             this._logger.name += " -PatchDatabase";
             // Invoke graphql operation patchDb2Database
@@ -380,7 +383,7 @@ Deletes a Db2 database.
 
         // This parameter set invokes a single graphql operation:
         // refreshDb2Database.
-        protected void ProcessRecord_RefreshDatabase()
+        internal void ProcessRecord_RefreshDatabase()
         {
             this._logger.name += " -RefreshDatabase";
             // Invoke graphql operation refreshDb2Database
@@ -389,7 +392,7 @@ Deletes a Db2 database.
 
         // This parameter set invokes a single graphql operation:
         // deleteDb2Database.
-        protected void ProcessRecord_DeleteDatabase()
+        internal void ProcessRecord_DeleteDatabase()
         {
             this._logger.name += " -DeleteDatabase";
             // Invoke graphql operation deleteDb2Database
@@ -399,7 +402,7 @@ Deletes a Db2 database.
 
         // Invoke GraphQL Mutation:
         // addDb2Instance(input: AddDb2InstanceInput!): AddDb2InstanceReply!
-        protected void InvokeMutationAddDb2Instance()
+        internal void InvokeMutationAddDb2Instance()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "AddDb2InstanceInput!"),
@@ -426,7 +429,7 @@ Deletes a Db2 database.
 
         // Invoke GraphQL Mutation:
         // deleteDb2Instance(input: DeleteDb2InstanceInput!): AsyncRequestStatus!
-        protected void InvokeMutationDeleteDb2Instance()
+        internal void InvokeMutationDeleteDb2Instance()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteDb2InstanceInput!"),
@@ -453,7 +456,7 @@ Deletes a Db2 database.
 
         // Invoke GraphQL Mutation:
         // discoverDb2Instance(input: DiscoverDb2InstanceInput!): AsyncRequestStatus!
-        protected void InvokeMutationDiscoverDb2Instance()
+        internal void InvokeMutationDiscoverDb2Instance()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DiscoverDb2InstanceInput!"),
@@ -480,7 +483,7 @@ Deletes a Db2 database.
 
         // Invoke GraphQL Mutation:
         // patchDb2Instance(input: PatchDb2InstanceInput!): PatchDb2InstanceReply!
-        protected void InvokeMutationPatchDb2Instance()
+        internal void InvokeMutationPatchDb2Instance()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "PatchDb2InstanceInput!"),
@@ -507,7 +510,7 @@ Deletes a Db2 database.
 
         // Invoke GraphQL Mutation:
         // createOnDemandDb2Backup(input: CreateOnDemandDb2BackupInput!): AsyncRequestStatus!
-        protected void InvokeMutationCreateOnDemandDb2Backup()
+        internal void InvokeMutationCreateOnDemandDb2Backup()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CreateOnDemandDb2BackupInput!"),
@@ -534,7 +537,7 @@ Deletes a Db2 database.
 
         // Invoke GraphQL Mutation:
         // downloadDb2Snapshot(input: DownloadDb2SnapshotInput!): AsyncRequestStatus!
-        protected void InvokeMutationDownloadDb2Snapshot()
+        internal void InvokeMutationDownloadDb2Snapshot()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DownloadDb2SnapshotInput!"),
@@ -561,7 +564,7 @@ Deletes a Db2 database.
 
         // Invoke GraphQL Mutation:
         // downloadDb2SnapshotsForPointInTimeRecovery(input: DownloadDb2SnapshotsForPointInTimeRecoveryInput!): AsyncRequestStatus!
-        protected void InvokeMutationDownloadDb2SnapshotsForPointInTimeRecovery()
+        internal void InvokeMutationDownloadDb2SnapshotsForPointInTimeRecovery()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DownloadDb2SnapshotsForPointInTimeRecoveryInput!"),
@@ -588,7 +591,7 @@ Deletes a Db2 database.
 
         // Invoke GraphQL Mutation:
         // expireDownloadedDb2Snapshots(input: ExpireDownloadedDb2SnapshotsInput!): AsyncRequestStatus!
-        protected void InvokeMutationExpireDownloadedDb2Snapshots()
+        internal void InvokeMutationExpireDownloadedDb2Snapshots()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "ExpireDownloadedDb2SnapshotsInput!"),
@@ -615,7 +618,7 @@ Deletes a Db2 database.
 
         // Invoke GraphQL Mutation:
         // patchDb2Database(input: PatchDb2DatabaseInput!): PatchDb2DatabaseReply!
-        protected void InvokeMutationPatchDb2Database()
+        internal void InvokeMutationPatchDb2Database()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "PatchDb2DatabaseInput!"),
@@ -642,7 +645,7 @@ Deletes a Db2 database.
 
         // Invoke GraphQL Mutation:
         // refreshDb2Database(input: RefreshDb2DatabaseInput!): AsyncRequestStatus!
-        protected void InvokeMutationRefreshDb2Database()
+        internal void InvokeMutationRefreshDb2Database()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RefreshDb2DatabaseInput!"),
@@ -669,7 +672,7 @@ Deletes a Db2 database.
 
         // Invoke GraphQL Mutation:
         // deleteDb2Database(input: DeleteDb2DatabaseInput!): AsyncRequestStatus!
-        protected void InvokeMutationDeleteDb2Database()
+        internal void InvokeMutationDeleteDb2Database()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteDb2DatabaseInput!"),

@@ -26,11 +26,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     public class Invoke_RscQueryDb2 : RscPSCmdlet
     {
         
-        // -------------------------------------------------------------------
-        // Instances parameter set
-        //
-        // [GraphQL: db2Instances]
-        //
+        /// <summary>
+        /// Instances parameter set
+        ///
+        /// [GraphQL: db2Instances]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Instances",
             Mandatory = false,
@@ -44,11 +44,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Instances { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Instance parameter set
-        //
-        // [GraphQL: db2Instance]
-        //
+        /// <summary>
+        /// Instance parameter set
+        ///
+        /// [GraphQL: db2Instance]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Instance",
             Mandatory = false,
@@ -62,11 +62,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Instance { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Database parameter set
-        //
-        // [GraphQL: db2Database]
-        //
+        /// <summary>
+        /// Database parameter set
+        ///
+        /// [GraphQL: db2Database]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Database",
             Mandatory = false,
@@ -80,11 +80,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Database { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Databases parameter set
-        //
-        // [GraphQL: db2Databases]
-        //
+        /// <summary>
+        /// Databases parameter set
+        ///
+        /// [GraphQL: db2Databases]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Databases",
             Mandatory = false,
@@ -98,11 +98,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Databases { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // RecoverableRange parameter set
-        //
-        // [GraphQL: db2RecoverableRange]
-        //
+        /// <summary>
+        /// RecoverableRange parameter set
+        ///
+        /// [GraphQL: db2RecoverableRange]
+        /// </summary>
         [Parameter(
             ParameterSetName = "RecoverableRange",
             Mandatory = false,
@@ -116,11 +116,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter RecoverableRange { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // RecoverableRanges parameter set
-        //
-        // [GraphQL: db2RecoverableRanges]
-        //
+        /// <summary>
+        /// RecoverableRanges parameter set
+        ///
+        /// [GraphQL: db2RecoverableRanges]
+        /// </summary>
         [Parameter(
             ParameterSetName = "RecoverableRanges",
             Mandatory = false,
@@ -134,11 +134,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter RecoverableRanges { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // LogSnapshot parameter set
-        //
-        // [GraphQL: db2LogSnapshot]
-        //
+        /// <summary>
+        /// LogSnapshot parameter set
+        ///
+        /// [GraphQL: db2LogSnapshot]
+        /// </summary>
         [Parameter(
             ParameterSetName = "LogSnapshot",
             Mandatory = false,
@@ -152,11 +152,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter LogSnapshot { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // LogSnapshots parameter set
-        //
-        // [GraphQL: db2LogSnapshots]
-        //
+        /// <summary>
+        /// LogSnapshots parameter set
+        ///
+        /// [GraphQL: db2LogSnapshots]
+        /// </summary>
         [Parameter(
             ParameterSetName = "LogSnapshots",
             Mandatory = false,
@@ -170,6 +170,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter LogSnapshots { get; set; }
 
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
         protected override void ProcessRecord()
         {
             try
@@ -209,10 +211,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 ThrowTerminatingException(ex);
            }
         }
+#pragma warning restore 1591
 
         // This parameter set invokes a single graphql operation:
         // db2Instances.
-        protected void ProcessRecord_Instances()
+        internal void ProcessRecord_Instances()
         {
             this._logger.name += " -Instances";
             // Invoke graphql operation db2Instances
@@ -221,7 +224,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // db2Instance.
-        protected void ProcessRecord_Instance()
+        internal void ProcessRecord_Instance()
         {
             this._logger.name += " -Instance";
             // Invoke graphql operation db2Instance
@@ -230,7 +233,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // db2Database.
-        protected void ProcessRecord_Database()
+        internal void ProcessRecord_Database()
         {
             this._logger.name += " -Database";
             // Invoke graphql operation db2Database
@@ -239,7 +242,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // db2Databases.
-        protected void ProcessRecord_Databases()
+        internal void ProcessRecord_Databases()
         {
             this._logger.name += " -Databases";
             // Invoke graphql operation db2Databases
@@ -248,7 +251,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // db2RecoverableRange.
-        protected void ProcessRecord_RecoverableRange()
+        internal void ProcessRecord_RecoverableRange()
         {
             this._logger.name += " -RecoverableRange";
             // Invoke graphql operation db2RecoverableRange
@@ -257,7 +260,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // db2RecoverableRanges.
-        protected void ProcessRecord_RecoverableRanges()
+        internal void ProcessRecord_RecoverableRanges()
         {
             this._logger.name += " -RecoverableRanges";
             // Invoke graphql operation db2RecoverableRanges
@@ -266,7 +269,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // db2LogSnapshot.
-        protected void ProcessRecord_LogSnapshot()
+        internal void ProcessRecord_LogSnapshot()
         {
             this._logger.name += " -LogSnapshot";
             // Invoke graphql operation db2LogSnapshot
@@ -275,7 +278,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // db2LogSnapshots.
-        protected void ProcessRecord_LogSnapshots()
+        internal void ProcessRecord_LogSnapshots()
         {
             this._logger.name += " -LogSnapshots";
             // Invoke graphql operation db2LogSnapshots
@@ -291,7 +294,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     sortOrder: SortOrder
         //     filter: [Filter!]
         //   ): Db2InstanceConnection!
-        protected void InvokeQueryDb2Instances()
+        internal void InvokeQueryDb2Instances()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -322,7 +325,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // db2Instance(id: UUID!): Db2Instance!
-        protected void InvokeQueryDb2Instance()
+        internal void InvokeQueryDb2Instance()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("id", "UUID!"),
@@ -349,7 +352,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // db2Database(fid: UUID!): Db2Database!
-        protected void InvokeQueryDb2Database()
+        internal void InvokeQueryDb2Database()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
@@ -382,7 +385,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     sortOrder: SortOrder
         //     filter: [Filter!]
         //   ): Db2DatabaseConnection!
-        protected void InvokeQueryDb2Databases()
+        internal void InvokeQueryDb2Databases()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -413,7 +416,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // db2RecoverableRange(db2RecoverableRangeFid: UUID!): Db2RecoverableRange!
-        protected void InvokeQueryDb2RecoverableRange()
+        internal void InvokeQueryDb2RecoverableRange()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("db2RecoverableRangeFid", "UUID!"),
@@ -448,7 +451,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     sortBy: Db2RecoverableRangeSortBy
         //     filter: Db2RecoverableRangeFilterInput
         //   ): Db2RecoverableRangeConnection!
-        protected void InvokeQueryDb2RecoverableRanges()
+        internal void InvokeQueryDb2RecoverableRanges()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -481,7 +484,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // db2LogSnapshot(db2LogSnapshotFid: UUID!): Db2LogSnapshot!
-        protected void InvokeQueryDb2LogSnapshot()
+        internal void InvokeQueryDb2LogSnapshot()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("db2LogSnapshotFid", "UUID!"),
@@ -516,7 +519,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     sortBy: Db2LogSnapshotSortBy
         //     filter: Db2LogSnapshotFilterInput
         //   ): Db2LogSnapshotConnection!
-        protected void InvokeQueryDb2LogSnapshots()
+        internal void InvokeQueryDb2LogSnapshots()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),

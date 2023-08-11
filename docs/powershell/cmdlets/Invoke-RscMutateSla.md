@@ -6,31 +6,39 @@ Endpoint to assign SLA Domain.
 - There is a single argument of type AssignSlaInput.
 - Returns SlaAssignResult.
 ### assignretentiontosnappables
+Endpoint to assign retention SLA Domain to workloads.
+
 - There are 6 arguments.
-    - globalSlaOptionalFid - System.String: Global SLA Domain forever UUID.
-    - globalSlaAssignType - SlaAssignTypeEnum: Corresponds to the assignment type for the global SLA
-    - objectIds - list of System.Strings: A list of object forever UUIDs to assign to the global SLA Domain.
-    - applicableSnappableType - WorkloadLevelHierarchy: Provide optional snappable type under the object for SLA assignment. This is meant to be used only for objects that support multiple snappable hierarchies. This allows an SLA to be set for one/more specific snappable types under the object, instead of applying the SLA for all the snappable types. For example, an AWS account object can potentially have 2 different snappable types under it - AwsNativeEc2Instance and AwsNativeRdsInstance. This field can be set with the appropriate type so that the SLA only gets applied to snappables of the selected type under that account. If the SLA must be applicable for all the snappable types under the object, then this field can be set to `AllSubHierarchyType` or left blank. This field must either be left blank or set to `AllSubHierarchyType` when assigning SLA to a snappable or to an object that does not support multiple snappable types.
-    - shouldApplyToNonPolicySnapshots - System.Boolean: Boolean value to indicate if the new configuration keeps existing, non-policy snapshots of data sources retained by this SLA Domain.
-    - userNote - System.String: Optional User note.
+    - globalSlaOptionalFid - System.String: SLA Domain forever UUID.
+    - globalSlaAssignType - SlaAssignTypeEnum: Corresponds to the assignment type for the SLA Domain.
+    - objectIds - list of System.Strings: A list of object forever UUIDs to assign to the SLA Domain.
+    - applicableSnappableType - WorkloadLevelHierarchy: Optional workload type selection for SLA Domain assignment is available for workloads that support multiple workload hierarchies. It allows setting an SLA Domain for specific workload types under the workload rather than applying the SLA Domain for all the workload types.
+
+For example, for an AWS account object with two different workload types, AwsNativeEc2Instance and AwsNativeRdsInstance, the appropriate type can be selected to apply the SLA Domain only to the selected workloads under that account. If the SLA Domain must be applicable to all workload types, the field can be set to AllSubHierarchyType or left blank. However, for workloads that do not support multiple workload types, this field must either be left blank or set to AllSubHierarchyType when assigning the SLA Domain to a workload.
+    - shouldApplyToNonPolicySnapshots - System.Boolean: Specifies whether the new configuration keeps existing, non-policy snapshots of data sources retained by this SLA Domain.
+    - userNote - System.String: Optional user note.
 - Returns SlaAssignResult.
 ### assignretentiontosnapshots
+Endpoint to assign retention SLA Domain to snapshots.
+
 - There are 4 arguments.
-    - globalSlaOptionalFid - System.String: Global SLA Domain forever UUID.
-    - globalSlaAssignType - SlaAssignTypeEnum: Corresponds to the assignment type for the global SLA
-    - snapshotFids - list of System.Strings: List of UUIDs of objects.
-    - userNote - System.String: Optional User note.
+    - globalSlaOptionalFid - System.String: SLA Domain forever UUID.
+    - globalSlaAssignType - SlaAssignTypeEnum: Corresponds to the assignment type for the SLA Domain.
+    - snapshotFids - list of System.Strings: List of snapshot UUIDs.
+    - userNote - System.String: Optional user note.
 - Returns SlaAssignResult.
 ### assignsforsnappablehierarchies
+Assign SLA Domain to workloads with multiple hierarchies.
+
 - There are 8 arguments.
-    - globalSlaOptionalFid - System.String: Global SLA Domain forever UUID.
-    - globalSlaAssignType - SlaAssignTypeEnum: Corresponds to the assignment type for the global SLA
-    - objectIds - list of System.Strings: A list of object forever UUIDs to assign to the global SLA Domain.
-    - applicableSnappableTypes - list of WorkloadLevelHierarchys: Provide optional snappable types under the object for SLA assignment. This is meant to be used only for objects that support multiple snappable hierarchies. See 'applicableSnappableType' for more details. If more than one is provided, the SLA will be assigned to all.
-    - shouldApplyToExistingSnapshots - System.Boolean: Boolean value to indicate whether to apply changes made to the SLA to existing snapshots.
-    - shouldApplyToNonPolicySnapshots - System.Boolean: Boolean value to indicate if the new configuration keeps existing, non-policy snapshots of data sources retained by this SLA Domain.
-    - globalExistingSnapshotRetention - GlobalExistingSnapshotRetention: Choose what to do with existing snapshot in case of do not protect slas
-    - userNote - System.String: Optional User note.
+    - globalSlaOptionalFid - System.String: SLA Domain forever UUID.
+    - globalSlaAssignType - SlaAssignTypeEnum: Corresponds to the assignment type for the SLA Domain.
+    - objectIds - list of System.Strings: A list of object forever UUIDs to assign to the SLA Domain.
+    - applicableSnappableTypes - list of WorkloadLevelHierarchys: Provide optional workload types under the object for SLA Domain assignment. This is meant to be used only for objects that support multiple workload hierarchies. This allows an SLA Domain to be set for one or more specific workload types under the object, instead of applying the SLA Domain for all the workload types. For example, an AWS account object can potentially have 2 different workload types under it - AwsNativeEc2Instance and AwsNativeRdsInstance. This field can be set with the appropriate type so that the SLA Domain only gets applied to workloads of the selected type under that account. If the SLA Domain must be applicable for all the workload types under the object, then this field can be set to `AllSubHierarchyType` or left blank. This field must either be left blank or set to `AllSubHierarchyType` when assigning SLA Domain to a workload or to an object that does not support multiple workload types. If more than one is provided, the SLA will be assigned to all.
+    - shouldApplyToExistingSnapshots - System.Boolean: Specifies whether to apply SLA Domain changes to existing snapshots.
+    - shouldApplyToNonPolicySnapshots - System.Boolean: Specifies whether the new configuration keeps existing, non-policy snapshots of data sources retained by this SLA Domain.
+    - globalExistingSnapshotRetention - GlobalExistingSnapshotRetention: Choose the behavior for existing snapshots when the Do Not Protect option is selected instead of an SLA Domain.
+    - userNote - System.String: Optional user note.
 - Returns list of SlaAssignResults.
 ### createglobal
 Create SLA Domain.
@@ -40,7 +48,7 @@ Create SLA Domain.
 ### deleteglobal
 - There are 2 arguments.
     - id - System.String: SLA Domain ID.
-    - userNote - System.String: Optional User note.
+    - userNote - System.String: Optional user note.
 - Returns SlaResult.
 ### editglobal
 - There is a single argument of type GlobalSlaEditRequest.

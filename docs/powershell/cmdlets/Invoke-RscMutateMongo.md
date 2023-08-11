@@ -30,6 +30,14 @@ For more info on MongoDB cluster, refer to: https://docs.mongodb.com/manual/intr
 
 - There is a single argument of type AddMosaicSourceInput.
 - Returns MosaicAsyncResponse.
+### createondemanddatabasebackup
+Take an on-demand snapshot for a MongoDB database
+
+Supported in v9.1
+Initiates a job to take an on-demand, full or incremental snapshot of the specified MongoDB database.
+
+- There is a single argument of type CreateOnDemandMongoDatabaseSnapshotInput.
+- Returns AsyncRequestStatus.
 ### deletedbsource
 Remove a registered MongoDB source from NoSQL cluster.
 

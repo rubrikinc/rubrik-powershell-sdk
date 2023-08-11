@@ -101,8 +101,8 @@ Retrieves a list of SLA Domains.
 ### domainwithwarnings
 - There are 3 arguments.
     - id - System.String: SLA Domain ID.
-    - objectIds - list of System.Strings: A list of object forever UUIDs to assign to the global SLA Domain.
-    - applicableSnappableTypes - list of WorkloadLevelHierarchys: Provide optional snappable types under the object for SLA assignment. This is meant to be used only for objects that support multiple snappable hierarchies. See 'applicableSnappableType' for more details. If more than one is provided, the SLA will be assigned to all.
+    - objectIds - list of System.Strings: A list of object forever UUIDs to assign to the SLA Domain.
+    - applicableSnappableTypes - list of WorkloadLevelHierarchys: Provide optional workload types under the object for SLA Domain assignment. This is meant to be used only for objects that support multiple workload hierarchies. This allows an SLA Domain to be set for one or more specific workload types under the object, instead of applying the SLA Domain for all the workload types. For example, an AWS account object can potentially have 2 different workload types under it - AwsNativeEc2Instance and AwsNativeRdsInstance. This field can be set with the appropriate type so that the SLA Domain only gets applied to workloads of the selected type under that account. If the SLA Domain must be applicable for all the workload types under the object, then this field can be set to `AllSubHierarchyType` or left blank. This field must either be left blank or set to `AllSubHierarchyType` when assigning SLA Domain to a workload or to an object that does not support multiple workload types. If more than one is provided, the SLA will be assigned to all.
 - Returns SlaDomainWithWarnings.
 ### domainwithwarningslist
 Query sla list with warnings
@@ -117,7 +117,7 @@ Query sla list with warnings
     - filter - list of GlobalSlaFilterInputs: Filter for the SLA Domain query.
     - contextFilter - ContextFilterTypeEnum: Specifies the context filter to use.
     - objectIds - list of System.Strings: Provide list of object forever IDS you want to assign SLA
-    - applicableSnappableTypes - list of WorkloadLevelHierarchys: Provide optional snappable types under the object for SLA assignment. This is meant to be used only for objects that support multiple snappable hierarchies. See 'applicableSnappableType' for more details. If more than one is provided, the SLA will be assigned to all.
+    - applicableSnappableTypes - list of WorkloadLevelHierarchys: Provide optional workload types under the object for SLA Domain assignment. This is meant to be used only for objects that support multiple workload hierarchies. This allows an SLA Domain to be set for one or more specific workload types under the object, instead of applying the SLA Domain for all the workload types. For example, an AWS account object can potentially have 2 different workload types under it - AwsNativeEc2Instance and AwsNativeRdsInstance. This field can be set with the appropriate type so that the SLA Domain only gets applied to workloads of the selected type under that account. If the SLA Domain must be applicable for all the workload types under the object, then this field can be set to `AllSubHierarchyType` or left blank. This field must either be left blank or set to `AllSubHierarchyType` when assigning SLA Domain to a workload or to an object that does not support multiple workload types. If more than one is provided, the SLA will be assigned to all.
     - snapshotIds - list of System.Strings: Provides the forever IDs of the snapshots to assign SLA Domains to.
     - operation - SlaWarningsOperation: Assignment operation with the SLA Domain.
 - Returns list of SlaDomainWithWarningss.

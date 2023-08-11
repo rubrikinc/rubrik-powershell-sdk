@@ -8,6 +8,7 @@ Azure native regions for replication.
 - CENTRAL_US - Azure native region for replication is Central US.
 - AUSTRALIA_EAST - Azure native region for replication is Australia East.
 - KOREA_CENTRAL - Azure native region for replication is Korea Central.
+- POLAND_CENTRAL - Azure native region for replication is Poland Central.
 - UAE_CENTRAL - Azure native region for replication is UAE Central.
 - SOUTH_CENTRAL_US - Azure native region for replication is South Central US.
 - GERMANY_WEST_CENTRAL - Azure native region for replication is Germany West Central.

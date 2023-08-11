@@ -1,5 +1,5 @@
 ### UpdateSnmpConfigInput
-
+Input for updating an SNMP configuration.
 
 - snmpConfigV50: SnmpConfigurationInput
   - SNMP configuration updates for the specified Rubrik cluster.

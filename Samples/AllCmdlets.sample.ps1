@@ -9,6 +9,15 @@
 $inputs = Invoke-RscMutateActivitySeries -Cancel -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	activitySeriesId = <System.String>
+	# REQUIRED
+	clusterUuid = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateActivitySeries -Cancel" @"
 Cancel an activity series.
 "@ "[GraphQL: cancelActivitySeries]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -22,6 +31,17 @@ Cancel an activity series.
 $inputs = Invoke-RscMutateAws -StartNativeEc2InstanceSnapshotsJob -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	ec2InstanceIds = @(
+		<System.String>
+	)
+	# OPTIONAL
+	retentionSlaId = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateAws -StartNativeEc2InstanceSnapshotsJob" @"
 Start an on demand create snapshot job for AWS EC2 Instances.When completed, this will start taking an on-demand snapshot of the selected EC2 Instances  as per the SLA Policy assigned to the respective instances.
 "@ "[GraphQL: startAwsNativeEc2InstanceSnapshotsJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -34,6 +54,19 @@ Start an on demand create snapshot job for AWS EC2 Instances.When completed, thi
 $inputs = Invoke-RscMutateAws -StartRestoreNativeEc2InstanceSnapshotJob -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	snapshotId = <System.String>
+	# REQUIRED
+	shouldPowerOn = <System.Boolean>
+	# REQUIRED
+	shouldRestoreTags = <System.Boolean>
+	# OPTIONAL
+	snapshotTypeToUseIfSourceExpired = <SnapshotTypeToUseIfSourceExpired>
+}
+"@
 Write-Message "Invoke-RscMutateAws -StartRestoreNativeEc2InstanceSnapshotJob" @"
 Start an on demand restore snapshot job for AWS EC2 Instance. When completed, this will replace the original EC2 Instance with the selected snapshot.
 "@ "[GraphQL: startRestoreAwsNativeEc2InstanceSnapshotJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -46,6 +79,19 @@ Start an on demand restore snapshot job for AWS EC2 Instance. When completed, th
 $inputs = Invoke-RscMutateAws -StartRefreshNativeAccountsJob -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	awsAccountRubrikIds = @(
+		<System.String>
+	)
+	# REQUIRED
+	awsNativeProtectionFeatures = @(
+		<AwsNativeProtectionFeature>
+	)
+}
+"@
 Write-Message "Invoke-RscMutateAws -StartRefreshNativeAccountsJob" @"
 Start an on demand job to refresh AWS accounts. The job updates the Rubrik platform with changes to the AWS Native accounts.
 "@ "[GraphQL: startRefreshAwsNativeAccountsJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -58,6 +104,17 @@ Start an on demand job to refresh AWS accounts. The job updates the Rubrik platf
 $inputs = Invoke-RscMutateAws -StartCreateNativeEbsVolumeSnapshotsJob -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	ebsVolumeIds = @(
+		<System.String>
+	)
+	# OPTIONAL
+	retentionSlaId = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateAws -StartCreateNativeEbsVolumeSnapshotsJob" @"
 Start job to create snapshots of EBS Volumes with given IDs. When completed, this will start taking an on-demand snapshot of the selected EBS Volumes  as per the SLA Policy assigned to the respective volumes.
 "@ "[GraphQL: startCreateAwsNativeEbsVolumeSnapshotsJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -70,6 +127,17 @@ Start job to create snapshots of EBS Volumes with given IDs. When completed, thi
 $inputs = Invoke-RscMutateAws -StartNativeAccountDisableJob -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	awsAccountRubrikId = <System.String>
+	# REQUIRED
+	shouldDeleteNativeSnapshots = <System.Boolean>
+	# REQUIRED
+	awsNativeProtectionFeature = <AwsNativeProtectionFeature>
+}
+"@
 Write-Message "Invoke-RscMutateAws -StartNativeAccountDisableJob" @"
 Starts a job to disable a specific AWS Native account. When complete, the job will disable protection for the specified AWS Native account.
 "@ "[GraphQL: startAwsNativeAccountDisableJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -82,6 +150,35 @@ Starts a job to disable a specific AWS Native account. When complete, the job wi
 $inputs = Invoke-RscMutateAws -StartExportNativeEbsVolumeSnapshotJob -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	snapshotId = <System.String>
+	# REQUIRED
+	destinationAwsAccountRubrikId = <System.String>
+	# REQUIRED
+	destinationRegionNativeId = <AwsNativeRegion>
+	# REQUIRED
+	volumeName = <System.String>
+	# REQUIRED
+	volumeSize = <System.Int32>
+	# REQUIRED
+	volumeType = <AwsNativeEbsVolumeType>
+	# REQUIRED
+	availabilityZone = <System.String>
+	# REQUIRED
+	iops = <System.Int32>
+	# REQUIRED
+	shouldCopyTags = <System.Boolean>
+	# REQUIRED
+	shouldReplaceAttached = <System.Boolean>
+	# OPTIONAL
+	kmsKeyId = <System.String>
+	# OPTIONAL
+	snapshotType = <SnapshotType>
+}
+"@
 Write-Message "Invoke-RscMutateAws -StartExportNativeEbsVolumeSnapshotJob" @"
 Start a job to export EBS Volume. The job creates a new EBS Volume with the same properties as that of the snapshot that is exported.
 "@ "[GraphQL: startExportAwsNativeEbsVolumeSnapshotJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -94,6 +191,22 @@ Start a job to export EBS Volume. The job creates a new EBS Volume with the same
 $inputs = Invoke-RscMutateAws -ExcludeNativeEbsVolumesFromSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	awsNativeEc2InstanceId = <System.String>
+	# REQUIRED
+	volumeIdExclusions = @(
+		@{
+			# REQUIRED
+			volumeId = <System.String>
+			# REQUIRED
+			isExcluded = <System.Boolean>
+		}
+	)
+}
+"@
 Write-Message "Invoke-RscMutateAws -ExcludeNativeEbsVolumesFromSnapshot" @"
 Mark AWS Native EBS Volumes to be excluded from EC2 Instance snapshot. By default, all EBS Volumes are marked as included.
 "@ "[GraphQL: excludeAwsNativeEbsVolumesFromSnapshot]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -106,6 +219,17 @@ Mark AWS Native EBS Volumes to be excluded from EC2 Instance snapshot. By defaul
 $inputs = Invoke-RscMutateAws -StartNativeRdsInstanceSnapshotsJob -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	rdsInstanceIds = @(
+		<System.String>
+	)
+	# OPTIONAL
+	retentionSlaId = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateAws -StartNativeRdsInstanceSnapshotsJob" @"
 Start job to create snapshots of RDS Instance with given IDs. When completed, this will start taking an on-demand snapshot of the selected RDS Instances  as per the SLA Policy assigned to the respective instances.
 "@ "[GraphQL: startAwsNativeRdsInstanceSnapshotsJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -118,6 +242,19 @@ Start job to create snapshots of RDS Instance with given IDs. When completed, th
 $inputs = Invoke-RscMutateAws -CreateAccount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	name = <System.String>
+	# OPTIONAL
+	description = <System.String>
+	# REQUIRED
+	accessKey = <System.String>
+	# REQUIRED
+	secretKey = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateAws -CreateAccount" @"
 
 "@ "[GraphQL: createAwsAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -130,6 +267,21 @@ Write-Message "Invoke-RscMutateAws -CreateAccount" @"
 $inputs = Invoke-RscMutateAws -UpdateAccount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+	# REQUIRED
+	name = <System.String>
+	# OPTIONAL
+	description = <System.String>
+	# REQUIRED
+	accessKey = <System.String>
+	# REQUIRED
+	secretKey = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateAws -UpdateAccount" @"
 
 "@ "[GraphQL: updateAwsAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -142,6 +294,46 @@ Write-Message "Invoke-RscMutateAws -UpdateAccount" @"
 $inputs = Invoke-RscMutateAws -CreateAutomaticTargetMapping -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	name = <System.String>
+	# REQUIRED
+	cloudAccountId = <System.String>
+	# REQUIRED
+	bucketPrefix = <System.String>
+	# REQUIRED
+	storageClass = <AwsStorageClass>
+	# REQUIRED
+	region = <AwsRegion>
+	# OPTIONAL
+	kmsMasterKeyId = <System.String>
+	# OPTIONAL
+	rsaKey = <System.String>
+	# REQUIRED
+	isConsolidationEnabled = <System.Boolean>
+	# OPTIONAL
+	proxySettings = @{
+		# OPTIONAL
+		proxyServer = <System.String>
+		# OPTIONAL
+		portNumber = <System.Int32>
+		# OPTIONAL
+		username = <System.String>
+		# OPTIONAL
+		password = <System.String>
+		# OPTIONAL
+		protocol = <System.String>
+	}
+	# OPTIONAL
+	clusterUuidList = @(
+		<System.String>
+	)
+	# OPTIONAL
+	awsComputeSettingsId = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateAws -CreateAutomaticTargetMapping" @"
 
 "@ "[GraphQL: createAutomaticAwsTargetMapping]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -154,6 +346,37 @@ Write-Message "Invoke-RscMutateAws -CreateAutomaticTargetMapping" @"
 $inputs = Invoke-RscMutateAws -CreateCloudNativeStorageSetting -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	name = <System.String>
+	# REQUIRED
+	cloudAccountId = <System.String>
+	# REQUIRED
+	bucketPrefix = <System.String>
+	# REQUIRED
+	storageClass = <AwsStorageClass>
+	# OPTIONAL
+	region = <AwsRegion>
+	# OPTIONAL
+	kmsMasterKeyId = <System.String>
+	# REQUIRED
+	cloudNativeLocTemplateType = <CloudNativeLocTemplateType>
+	# OPTIONAL
+	bucketTags = @{
+		# REQUIRED
+		tagList = @(
+			@{
+				# REQUIRED
+				key = <System.String>
+				# REQUIRED
+				value = <System.String>
+			}
+		)
+	}
+}
+"@
 Write-Message "Invoke-RscMutateAws -CreateCloudNativeStorageSetting" @"
 
 "@ "[GraphQL: createCloudNativeAwsStorageSetting]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -166,6 +389,40 @@ Write-Message "Invoke-RscMutateAws -CreateCloudNativeStorageSetting" @"
 $inputs = Invoke-RscMutateAws -UpdateAutomaticTargetMapping -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+	# OPTIONAL
+	name = <System.String>
+	# OPTIONAL
+	cloudAccountId = <System.String>
+	# OPTIONAL
+	storageClass = <AwsStorageClass>
+	# OPTIONAL
+	isConsolidationEnabled = <System.Boolean>
+	# OPTIONAL
+	proxySettings = @{
+		# OPTIONAL
+		proxyServer = <System.String>
+		# OPTIONAL
+		portNumber = <System.Int32>
+		# OPTIONAL
+		username = <System.String>
+		# OPTIONAL
+		password = <System.String>
+		# OPTIONAL
+		protocol = <System.String>
+	}
+	# OPTIONAL
+	clusterUuidList = @(
+		<System.String>
+	)
+	# OPTIONAL
+	awsComputeSettingsId = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateAws -UpdateAutomaticTargetMapping" @"
 
 "@ "[GraphQL: updateAutomaticAwsTargetMapping]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -178,6 +435,19 @@ Write-Message "Invoke-RscMutateAws -UpdateAutomaticTargetMapping" @"
 $inputs = Invoke-RscMutateAws -UpdateCloudNativeStorageSetting -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+	# OPTIONAL
+	name = <System.String>
+	# OPTIONAL
+	storageClass = <AwsStorageClass>
+	# OPTIONAL
+	kmsMasterKeyId = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateAws -UpdateCloudNativeStorageSetting" @"
 
 "@ "[GraphQL: updateCloudNativeAwsStorageSetting]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -190,6 +460,94 @@ Write-Message "Invoke-RscMutateAws -UpdateCloudNativeStorageSetting" @"
 $inputs = Invoke-RscMutateAws -CreateTarget -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	name = <System.String>
+	# REQUIRED
+	cloudAccountId = <System.String>
+	# REQUIRED
+	bucketName = <System.String>
+	# REQUIRED
+	storageClass = <AwsStorageClass>
+	# REQUIRED
+	region = <AwsRegion>
+	# OPTIONAL
+	kmsMasterKeyId = <System.String>
+	# OPTIONAL
+	rsaKey = <System.String>
+	# OPTIONAL
+	encryptionPassword = <System.String>
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	isConsolidationEnabled = <System.Boolean>
+	# OPTIONAL
+	proxySettings = @{
+		# OPTIONAL
+		proxyServer = <System.String>
+		# OPTIONAL
+		portNumber = <System.Int32>
+		# OPTIONAL
+		username = <System.String>
+		# OPTIONAL
+		password = <System.String>
+		# OPTIONAL
+		protocol = <System.String>
+	}
+	# OPTIONAL
+	awsComputeSettingsId = <System.String>
+	# OPTIONAL
+	cloudComputeSettings = @{
+		# OPTIONAL
+		subnetId = <System.String>
+		# OPTIONAL
+		vpcId = <System.String>
+		# OPTIONAL
+		securityGroupId = <System.String>
+		# OPTIONAL
+		computeProxySettings = @{
+			# OPTIONAL
+			proxyServer = <System.String>
+			# OPTIONAL
+			portNumber = <System.Int32>
+			# OPTIONAL
+			username = <System.String>
+			# OPTIONAL
+			password = <System.String>
+			# OPTIONAL
+			protocol = <System.String>
+		}
+	}
+	# OPTIONAL
+	computeProxySettings = @{
+		# OPTIONAL
+		proxyServer = <System.String>
+		# OPTIONAL
+		portNumber = <System.Int32>
+		# OPTIONAL
+		username = <System.String>
+		# OPTIONAL
+		password = <System.String>
+		# OPTIONAL
+		protocol = <System.String>
+	}
+	# OPTIONAL
+	awsRetrievalTier = <AwsRetrievalTier>
+	# OPTIONAL
+	immutabilitySettings = @{
+		# OPTIONAL
+		lockDurationDays = <System.Int32>
+	}
+	# OPTIONAL
+	s3Endpoint = <System.String>
+	# OPTIONAL
+	kmsEndpoint = <System.String>
+	# REQUIRED
+	bypassProxy = <System.Boolean>
+}
+"@
 Write-Message "Invoke-RscMutateAws -CreateTarget" @"
 
 "@ "[GraphQL: createAwsTarget]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -202,6 +560,84 @@ Write-Message "Invoke-RscMutateAws -CreateTarget" @"
 $inputs = Invoke-RscMutateAws -UpdateTarget -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+	# OPTIONAL
+	name = <System.String>
+	# OPTIONAL
+	cloudAccountId = <System.String>
+	# OPTIONAL
+	storageClass = <AwsStorageClass>
+	# OPTIONAL
+	isConsolidationEnabled = <System.Boolean>
+	# OPTIONAL
+	proxySettings = @{
+		# OPTIONAL
+		proxyServer = <System.String>
+		# OPTIONAL
+		portNumber = <System.Int32>
+		# OPTIONAL
+		username = <System.String>
+		# OPTIONAL
+		password = <System.String>
+		# OPTIONAL
+		protocol = <System.String>
+	}
+	# OPTIONAL
+	awsComputeSettingsId = <System.String>
+	# OPTIONAL
+	cloudComputeSettings = @{
+		# OPTIONAL
+		subnetId = <System.String>
+		# OPTIONAL
+		vpcId = <System.String>
+		# OPTIONAL
+		securityGroupId = <System.String>
+		# OPTIONAL
+		computeProxySettings = @{
+			# OPTIONAL
+			proxyServer = <System.String>
+			# OPTIONAL
+			portNumber = <System.Int32>
+			# OPTIONAL
+			username = <System.String>
+			# OPTIONAL
+			password = <System.String>
+			# OPTIONAL
+			protocol = <System.String>
+		}
+	}
+	# OPTIONAL
+	computeProxySettings = @{
+		# OPTIONAL
+		proxyServer = <System.String>
+		# OPTIONAL
+		portNumber = <System.Int32>
+		# OPTIONAL
+		username = <System.String>
+		# OPTIONAL
+		password = <System.String>
+		# OPTIONAL
+		protocol = <System.String>
+	}
+	# OPTIONAL
+	awsRetrievalTier = <AwsRetrievalTier>
+	# OPTIONAL
+	immutabilitySettings = @{
+		# OPTIONAL
+		lockDurationDays = <System.Int32>
+	}
+	# OPTIONAL
+	s3Endpoint = <System.String>
+	# OPTIONAL
+	kmsEndpoint = <System.String>
+	# OPTIONAL
+	bypassProxy = <System.Boolean>
+}
+"@
 Write-Message "Invoke-RscMutateAws -UpdateTarget" @"
 
 "@ "[GraphQL: updateAwsTarget]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -214,6 +650,91 @@ Write-Message "Invoke-RscMutateAws -UpdateTarget" @"
 $inputs = Invoke-RscMutateAws -CreateReaderTarget -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	name = <System.String>
+	# REQUIRED
+	cloudAccountId = <System.String>
+	# REQUIRED
+	bucketName = <System.String>
+	# REQUIRED
+	storageClass = <AwsStorageClass>
+	# REQUIRED
+	region = <AwsRegion>
+	# OPTIONAL
+	kmsMasterKeyId = <System.String>
+	# OPTIONAL
+	rsaKey = <System.String>
+	# OPTIONAL
+	encryptionPassword = <System.String>
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	isConsolidationEnabled = <System.Boolean>
+	# OPTIONAL
+	proxySettings = @{
+		# OPTIONAL
+		proxyServer = <System.String>
+		# OPTIONAL
+		portNumber = <System.Int32>
+		# OPTIONAL
+		username = <System.String>
+		# OPTIONAL
+		password = <System.String>
+		# OPTIONAL
+		protocol = <System.String>
+	}
+	# OPTIONAL
+	awsComputeSettingsId = <System.String>
+	# OPTIONAL
+	cloudComputeSettings = @{
+		# OPTIONAL
+		subnetId = <System.String>
+		# OPTIONAL
+		vpcId = <System.String>
+		# OPTIONAL
+		securityGroupId = <System.String>
+		# OPTIONAL
+		computeProxySettings = @{
+			# OPTIONAL
+			proxyServer = <System.String>
+			# OPTIONAL
+			portNumber = <System.Int32>
+			# OPTIONAL
+			username = <System.String>
+			# OPTIONAL
+			password = <System.String>
+			# OPTIONAL
+			protocol = <System.String>
+		}
+	}
+	# OPTIONAL
+	awsRetrievalTier = <AwsRetrievalTier>
+	# REQUIRED
+	readerRetrievalMethod = <ReaderRetrievalMethod>
+	# OPTIONAL
+	s3Endpoint = <System.String>
+	# OPTIONAL
+	kmsEndpoint = <System.String>
+	# OPTIONAL
+	computeProxySettings = @{
+		# OPTIONAL
+		proxyServer = <System.String>
+		# OPTIONAL
+		portNumber = <System.Int32>
+		# OPTIONAL
+		username = <System.String>
+		# OPTIONAL
+		password = <System.String>
+		# OPTIONAL
+		protocol = <System.String>
+	}
+	# REQUIRED
+	bypassProxy = <System.Boolean>
+}
+"@
 Write-Message "Invoke-RscMutateAws -CreateReaderTarget" @"
 Create a reader type for AWS archival location on a Rubrik cluster.
 "@ "[GraphQL: createAwsReaderTarget]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -226,6 +747,45 @@ Create a reader type for AWS archival location on a Rubrik cluster.
 $inputs = Invoke-RscMutateAws -CreateComputeSetting -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	name = <System.String>
+	# OPTIONAL
+	subnetId = <System.String>
+	# OPTIONAL
+	vpcId = <System.String>
+	# OPTIONAL
+	securityGroupId = <System.String>
+	# OPTIONAL
+	cloudAccountId = <System.String>
+	# OPTIONAL
+	region = <AwsRegion>
+	# OPTIONAL
+	isSecurityGroupPolarisManaged = <System.Boolean>
+	# OPTIONAL
+	clusterInterfaceCidrs = @(
+		@{
+			# OPTIONAL
+			clusterName = <System.String>
+			# OPTIONAL
+			clusterId = <System.String>
+			# OPTIONAL
+			interfaceCidr = @(
+				@{
+					# OPTIONAL
+					interfaceType = <InterfaceType>
+					# OPTIONAL
+					cidr = <System.String>
+					# OPTIONAL
+					selected = <System.Boolean>
+				}
+			)
+		}
+	)
+}
+"@
 Write-Message "Invoke-RscMutateAws -CreateComputeSetting" @"
 
 "@ "[GraphQL: createAwsComputeSetting]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -238,6 +798,21 @@ Write-Message "Invoke-RscMutateAws -CreateComputeSetting" @"
 $inputs = Invoke-RscMutateAws -UpdateComputeSetting -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	id = <System.String>
+	# OPTIONAL
+	name = <System.String>
+	# OPTIONAL
+	subnetId = <System.String>
+	# OPTIONAL
+	vpcId = <System.String>
+	# OPTIONAL
+	securityGroupId = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateAws -UpdateComputeSetting" @"
 
 "@ "[GraphQL: updateAwsComputeSetting]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -250,6 +825,13 @@ Write-Message "Invoke-RscMutateAws -UpdateComputeSetting" @"
 $inputs = Invoke-RscMutateAws -DeleteComputeSetting -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateAws -DeleteComputeSetting" @"
 
 "@ "[GraphQL: deleteAwsComputeSetting]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -262,6 +844,43 @@ Write-Message "Invoke-RscMutateAws -DeleteComputeSetting" @"
 $inputs = Invoke-RscMutateAws -CloudAccountValidate -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.awsCloudAccountValidateArg = @{
+	# REQUIRED
+	features = @(
+		<CloudAccountFeature>
+	)
+	# OPTIONAL
+	awsAdminAccount = @{
+		# OPTIONAL
+		id = <System.String>
+		# OPTIONAL
+		nativeId = <System.String>
+		# OPTIONAL
+		accountName = <System.String>
+		# OPTIONAL
+		seamlessFlowEnabled = <System.Boolean>
+		# OPTIONAL
+		cloudType = <AwsCloudType>
+	}
+	# REQUIRED
+	awsChildAccounts = @(
+		@{
+			# OPTIONAL
+			id = <System.String>
+			# OPTIONAL
+			nativeId = <System.String>
+			# OPTIONAL
+			accountName = <System.String>
+			# OPTIONAL
+			seamlessFlowEnabled = <System.Boolean>
+			# OPTIONAL
+			cloudType = <AwsCloudType>
+		}
+	)
+}
+"@
 Write-Message "Invoke-RscMutateAws -CloudAccountValidate" @"
 This endpoint is deprecated.
 "@ "[GraphQL: awsCloudAccountValidate]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -274,6 +893,45 @@ This endpoint is deprecated.
 $inputs = Invoke-RscMutateAws -CloudAccountInitiate -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.awsCloudAccountInitiateArg = @{
+	# REQUIRED
+	action = <CloudAccountAction>
+	# REQUIRED
+	features = @(
+		<CloudAccountFeature>
+	)
+	# OPTIONAL
+	awsAdminAccount = @{
+		# OPTIONAL
+		id = <System.String>
+		# OPTIONAL
+		nativeId = <System.String>
+		# OPTIONAL
+		accountName = <System.String>
+		# OPTIONAL
+		seamlessFlowEnabled = <System.Boolean>
+		# OPTIONAL
+		cloudType = <AwsCloudType>
+	}
+	# REQUIRED
+	awsChildAccounts = @(
+		@{
+			# OPTIONAL
+			id = <System.String>
+			# OPTIONAL
+			nativeId = <System.String>
+			# OPTIONAL
+			accountName = <System.String>
+			# OPTIONAL
+			seamlessFlowEnabled = <System.Boolean>
+			# OPTIONAL
+			cloudType = <AwsCloudType>
+		}
+	)
+}
+"@
 Write-Message "Invoke-RscMutateAws -CloudAccountInitiate" @"
 This endpoint is deprecated.
 "@ "[GraphQL: awsCloudAccountInitiate]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -286,6 +944,19 @@ This endpoint is deprecated.
 $inputs = Invoke-RscMutateAws -NativeProtectionAccountAdd -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.awsNativeProtectionAccountAddArg = @{
+	# REQUIRED
+	accountId = <System.String>
+	# REQUIRED
+	name = <System.String>
+	# REQUIRED
+	regions = @(
+		<System.String>
+	)
+}
+"@
 Write-Message "Invoke-RscMutateAws -NativeProtectionAccountAdd" @"
 This endpoint is deprecated.
 "@ "[GraphQL: awsNativeProtectionAccountAdd]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -298,6 +969,66 @@ This endpoint is deprecated.
 $inputs = Invoke-RscMutateAws -ValidateAndCreateCloudAccount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	action = <CloudAccountAction>
+	# REQUIRED
+	features = @(
+		<CloudAccountFeature>
+	)
+	# OPTIONAL
+	awsAdminAccount = @{
+		# OPTIONAL
+		id = <System.String>
+		# OPTIONAL
+		nativeId = <System.String>
+		# OPTIONAL
+		accountName = <System.String>
+		# OPTIONAL
+		seamlessFlowEnabled = <System.Boolean>
+		# OPTIONAL
+		cloudType = <AwsCloudType>
+	}
+	# REQUIRED
+	awsChildAccounts = @(
+		@{
+			# OPTIONAL
+			id = <System.String>
+			# OPTIONAL
+			nativeId = <System.String>
+			# OPTIONAL
+			accountName = <System.String>
+			# OPTIONAL
+			seamlessFlowEnabled = <System.Boolean>
+			# OPTIONAL
+			cloudType = <AwsCloudType>
+		}
+	)
+	# OPTIONAL
+	awsRoleCustomization = @{
+		# OPTIONAL
+		crossAccountRoleName = <System.String>
+		# OPTIONAL
+		crossAccountRolePath = <System.String>
+		# OPTIONAL
+		masterRoleName = <System.String>
+		# OPTIONAL
+		masterRolePath = <System.String>
+		# OPTIONAL
+		workerRoleName = <System.String>
+		# OPTIONAL
+		workerRolePath = <System.String>
+		# OPTIONAL
+		instanceProfileName = <System.String>
+		# OPTIONAL
+		instanceProfilePath = <System.String>
+		# OPTIONAL
+		ec2RecoveryRolePath = <System.String>
+	}
+}
+"@
 Write-Message "Invoke-RscMutateAws -ValidateAndCreateCloudAccount" @"
 Validate and create AWS cloud account. If validation fails, no error is returned and the cause is present in the ""message"" field of return object or within admin/child accounts of return object. In case validation succeeds, it initiates creation of AWS cloud account. This is the first step to set up native protection.
 "@ "[GraphQL: validateAndCreateAwsCloudAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -310,6 +1041,64 @@ Validate and create AWS cloud account. If validation fails, no error is returned
 $inputs = Invoke-RscMutateAws -FinalizeCloudAccountProtection -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	action = <CloudAccountAction>
+	# REQUIRED
+	features = @(
+		<CloudAccountFeature>
+	)
+	# OPTIONAL
+	awsAdminAccount = @{
+		# OPTIONAL
+		id = <System.String>
+		# OPTIONAL
+		nativeId = <System.String>
+		# OPTIONAL
+		accountName = <System.String>
+		# OPTIONAL
+		seamlessFlowEnabled = <System.Boolean>
+		# OPTIONAL
+		cloudType = <AwsCloudType>
+	}
+	# REQUIRED
+	awsChildAccounts = @(
+		@{
+			# OPTIONAL
+			id = <System.String>
+			# OPTIONAL
+			nativeId = <System.String>
+			# OPTIONAL
+			accountName = <System.String>
+			# OPTIONAL
+			seamlessFlowEnabled = <System.Boolean>
+			# OPTIONAL
+			cloudType = <AwsCloudType>
+		}
+	)
+	# OPTIONAL
+	awsRegions = @(
+		<AwsCloudAccountRegion>
+	)
+	# OPTIONAL
+	stackName = <System.String>
+	# OPTIONAL
+	stackSetName = <System.String>
+	# OPTIONAL
+	externalId = <System.String>
+	# OPTIONAL
+	featureVersion = @(
+		@{
+			# REQUIRED
+			feature = <CloudAccountFeature>
+			# REQUIRED
+			version = <System.Int32>
+		}
+	)
+}
+"@
 Write-Message "Invoke-RscMutateAws -FinalizeCloudAccountProtection" @"
 Process cloud account. This is the second step after validate and create in addition of a feature for cloud account.The CloudFormation stack should be created after this step using the CloudFormation URL provided in the first step.
 "@ "[GraphQL: finalizeAwsCloudAccountProtection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -322,6 +1111,15 @@ Process cloud account. This is the second step after validate and create in addi
 $inputs = Invoke-RscMutateAws -PrepareCloudAccountDeletion -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	cloudAccountId = <System.String>
+	# REQUIRED
+	feature = <CloudAccountFeature>
+}
+"@
 Write-Message "Invoke-RscMutateAws -PrepareCloudAccountDeletion" @"
 Prepare deletion of cloud account. This is the first step to delete AWS cloud account. It generated template for deletion of cloud account and does not change any state of account.
 "@ "[GraphQL: prepareAwsCloudAccountDeletion]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -334,6 +1132,15 @@ Prepare deletion of cloud account. This is the first step to delete AWS cloud ac
 $inputs = Invoke-RscMutateAws -FinalizeCloudAccountDeletion -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	cloudAccountId = <System.String>
+	# REQUIRED
+	feature = <CloudAccountFeature>
+}
+"@
 Write-Message "Invoke-RscMutateAws -FinalizeCloudAccountDeletion" @"
 Process and finalize deletion of cloud account is the last step in deletion of a feature from cloud account. This endpoint is a MUST for deletion of disconnected features.
 "@ "[GraphQL: finalizeAwsCloudAccountDeletion]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -346,6 +1153,27 @@ Process and finalize deletion of cloud account is the last step in deletion of a
 $inputs = Invoke-RscMutateAws -UpdateCloudAccountFeature -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	cloudAccountId = <System.String>
+	# REQUIRED
+	action = <CloudAccountAction>
+	# REQUIRED
+	feature = <CloudAccountFeature>
+	# OPTIONAL
+	awsRegions = @(
+		<AwsCloudAccountRegion>
+	)
+	# OPTIONAL
+	roleArn = <System.String>
+	# OPTIONAL
+	stackArn = <System.String>
+	# OPTIONAL
+	awsAccountName = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateAws -UpdateCloudAccountFeature" @"
 Updates regions, stack ARN, and role ARN for a feature for a given cloud account.
 "@ "[GraphQL: updateAwsCloudAccountFeature]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -358,6 +1186,15 @@ Updates regions, stack ARN, and role ARN for a feature for a given cloud account
 $inputs = Invoke-RscMutateAws -UpdateCloudAccount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	cloudAccountId = <System.String>
+	# OPTIONAL
+	awsAccountName = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateAws -UpdateCloudAccount" @"
 Update properties for a given AWS cloud account.
 "@ "[GraphQL: updateAwsCloudAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -370,6 +1207,17 @@ Update properties for a given AWS cloud account.
 $inputs = Invoke-RscMutateAws -PrepareFeatureUpdateForCloudAccount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	cloudAccountId = <System.String>
+	# REQUIRED
+	features = @(
+		<CloudAccountFeature>
+	)
+}
+"@
 Write-Message "Invoke-RscMutateAws -PrepareFeatureUpdateForCloudAccount" @"
 Prepare manual update features to latest version.
 "@ "[GraphQL: prepareFeatureUpdateForAwsCloudAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -382,6 +1230,14 @@ Prepare manual update features to latest version.
 $inputs = Invoke-RscMutateAws -CloudAccountUpdateFeature -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.cloudAccountUuid = <System.String>
+# REQUIRED
+$inputs.Arg.features = @(
+	<CloudAccountFeature>
+)
+"@
 Write-Message "Invoke-RscMutateAws -CloudAccountUpdateFeature" @"
 This endpoint is deprecated.
 "@ "[GraphQL: awsCloudAccountUpdateFeature]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -394,6 +1250,39 @@ This endpoint is deprecated.
 $inputs = Invoke-RscMutateAws -CreateExocomputeConfigs -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	cloudAccountId = <System.String>
+	# REQUIRED
+	configs = @(
+		@{
+			# REQUIRED
+			region = <AwsCloudAccountRegion>
+			# OPTIONAL
+			clusterSecurityGroupId = <System.String>
+			# REQUIRED
+			vpcId = <System.String>
+			# OPTIONAL
+			nodeSecurityGroupId = <System.String>
+			# REQUIRED
+			subnets = @(
+				@{
+					# REQUIRED
+					subnetId = <System.String>
+					# REQUIRED
+					availabilityZone = <System.String>
+				}
+			)
+			# REQUIRED
+			isRscManaged = <System.Boolean>
+		}
+	)
+	# OPTIONAL
+	triggerHealthCheck = <System.Boolean>
+}
+"@
 Write-Message "Invoke-RscMutateAws -CreateExocomputeConfigs" @"
 Create AWS Exocompute configs.
 "@ "[GraphQL: createAwsExocomputeConfigs]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -406,6 +1295,15 @@ Create AWS Exocompute configs.
 $inputs = Invoke-RscMutateAws -DeleteExocomputeConfigs -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	configIdsToBeDeleted = @(
+		<System.String>
+	)
+}
+"@
 Write-Message "Invoke-RscMutateAws -DeleteExocomputeConfigs" @"
 Deletes AWS Exocompute configs.
 "@ "[GraphQL: deleteAwsExocomputeConfigs]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -418,6 +1316,39 @@ Deletes AWS Exocompute configs.
 $inputs = Invoke-RscMutateAws -UpdateExocomputeConfigs -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	cloudAccountId = <System.String>
+	# REQUIRED
+	configs = @(
+		@{
+			# REQUIRED
+			region = <AwsCloudAccountRegion>
+			# OPTIONAL
+			clusterSecurityGroupId = <System.String>
+			# REQUIRED
+			vpcId = <System.String>
+			# OPTIONAL
+			nodeSecurityGroupId = <System.String>
+			# REQUIRED
+			subnets = @(
+				@{
+					# REQUIRED
+					subnetId = <System.String>
+					# REQUIRED
+					availabilityZone = <System.String>
+				}
+			)
+			# REQUIRED
+			isRscManaged = <System.Boolean>
+		}
+	)
+	# OPTIONAL
+	triggerHealthCheck = <System.Boolean>
+}
+"@
 Write-Message "Invoke-RscMutateAws -UpdateExocomputeConfigs" @"
 Update AWS Exocompute configs.
 "@ "[GraphQL: updateAwsExocomputeConfigs]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -430,6 +1361,13 @@ Update AWS Exocompute configs.
 $inputs = Invoke-RscMutateAws -StartExocomputeDisableJob -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	cloudAccountId = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateAws -StartExocomputeDisableJob" @"
 Starts a job to disable AWS Exocompute feature. When complete, the job will disable exocompute feature for the specified AWS Native account.
 "@ "[GraphQL: startAwsExocomputeDisableJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -442,6 +1380,31 @@ Starts a job to disable AWS Exocompute feature. When complete, the job will disa
 $inputs = Invoke-RscMutateAws -AddIamUserBasedCloudAccount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	features = @(
+		<CloudAccountFeature>
+	)
+	# OPTIONAL
+	accessKey = <System.String>
+	# OPTIONAL
+	secretKey = <System.String>
+	# REQUIRED
+	nativeId = <System.String>
+	# REQUIRED
+	cloudAccountName = <System.String>
+	# OPTIONAL
+	cloudType = <AwsCloudType>
+	# OPTIONAL
+	awsRegions = @(
+		<AwsCloudAccountRegion>
+	)
+	# OPTIONAL
+	roleArn = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateAws -AddIamUserBasedCloudAccount" @"
 Adds an IAM user-based AWS cloud account and enables the features specified in the input after successful validation of the request.
 "@ "[GraphQL: addAwsIamUserBasedCloudAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -454,6 +1417,15 @@ Adds an IAM user-based AWS cloud account and enables the features specified in t
 $inputs = Invoke-RscMutateAws -DeleteIamUserBasedCloudAccount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	awsCloudAccountId = <System.String>
+	# REQUIRED
+	feature = <CloudAccountFeature>
+}
+"@
 Write-Message "Invoke-RscMutateAws -DeleteIamUserBasedCloudAccount" @"
 Deletes IAM user-based AWS cloud account.
 "@ "[GraphQL: deleteAwsIamUserBasedCloudAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -466,6 +1438,15 @@ Deletes IAM user-based AWS cloud account.
 $inputs = Invoke-RscMutateAws -DeleteCloudAccountWithoutCft -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	awsCloudAccountId = <System.String>
+	# REQUIRED
+	feature = <CloudAccountFeature>
+}
+"@
 Write-Message "Invoke-RscMutateAws -DeleteCloudAccountWithoutCft" @"
 Removes AWS cloud account without cleaning up the associated permissions from the AWS cloud account. Customer needs to clean up the permissions in the AWS account themselves. This mutation is supported only for IAM user-based and authentication server-based AWS cloud accounts.
 "@ "[GraphQL: deleteAwsCloudAccountWithoutCft]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -478,6 +1459,17 @@ Removes AWS cloud account without cleaning up the associated permissions from th
 $inputs = Invoke-RscMutateAws -UpgradeIamUserBasedCloudAccountPermissions -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	awsCloudAccountId = <System.String>
+	# REQUIRED
+	features = @(
+		<CloudAccountFeature>
+	)
+}
+"@
 Write-Message "Invoke-RscMutateAws -UpgradeIamUserBasedCloudAccountPermissions" @"
 Set IAM user-based AWS account features status to Connected from Update Permissions state. It should be used by caution from cloud accounts only after latest required permissions are granted to authorized IAM user.
 "@ "[GraphQL: upgradeAwsIamUserBasedCloudAccountPermissions]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -490,6 +1482,17 @@ Set IAM user-based AWS account features status to Connected from Update Permissi
 $inputs = Invoke-RscMutateAws -UpgradeCloudAccountFeaturesWithoutCft -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	awsCloudAccountId = <System.String>
+	# REQUIRED
+	features = @(
+		<CloudAccountFeature>
+	)
+}
+"@
 Write-Message "Invoke-RscMutateAws -UpgradeCloudAccountFeaturesWithoutCft" @"
 Updates status of AWS cloud account features to connected if they are in update permissions state. This mutation should be used with caution. It should be invoked only after the latest required permissions are granted to the AWS cloud account user used by Rubrik. This mutation does not verify if the required permissions are actually granted to the user or not. Its usage is restricted to only IAM user-based and authentication server-based AWS cloud accounts.
 "@ "[GraphQL: upgradeAwsCloudAccountFeaturesWithoutCft]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -502,6 +1505,46 @@ Updates status of AWS cloud account features to connected if they are in update 
 $inputs = Invoke-RscMutateAws -AddAuthenticationServerBasedCloudAccount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	cloudType = <AwsCloudType>
+	# REQUIRED
+	awsAccountName = <System.String>
+	# OPTIONAL
+	awsRegions = @(
+		<AwsAuthServerBasedCloudAccountRegion>
+	)
+	# REQUIRED
+	features = @(
+		<CloudAccountFeature>
+	)
+	# OPTIONAL
+	nativeId = <System.String>
+	# OPTIONAL
+	agencyName = <System.String>
+	# OPTIONAL
+	roleName = <System.String>
+	# OPTIONAL
+	authServerHostName = <System.String>
+	# OPTIONAL
+	authServerUserClientCertId = @{
+		# REQUIRED
+		id = <System.Int64>
+	}
+	# OPTIONAL
+	authServerCaCertId = @{
+		# REQUIRED
+		id = <System.Int64>
+	}
+	# OPTIONAL
+	awsCaCertId = @{
+		# REQUIRED
+		id = <System.Int64>
+	}
+}
+"@
 Write-Message "Invoke-RscMutateAws -AddAuthenticationServerBasedCloudAccount" @"
 Validates and adds an authentication server-based AWS cloud account. When validation succeeds, the AWS cloud account is added and the features specified in the request are enabled. When validation fails, an error is not returned, but the cause of the failure is specified in the ""message"" field of the response object.
 "@ "[GraphQL: addAwsAuthenticationServerBasedCloudAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -514,6 +1557,37 @@ Validates and adds an authentication server-based AWS cloud account. When valida
 $inputs = Invoke-RscMutateAws -PatchAuthenticationServerBasedCloudAccount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	awsCloudAccountId = <System.String>
+	# REQUIRED
+	feature = <CloudAccountFeature>
+	# OPTIONAL
+	awsRegions = @{
+		# REQUIRED
+		regions = @(
+			<AwsAuthServerBasedCloudAccountRegion>
+		)
+	}
+	# OPTIONAL
+	roleName = @{
+		# REQUIRED
+		name = <System.String>
+	}
+	# OPTIONAL
+	authServerUserClientCertId = @{
+		# REQUIRED
+		id = <System.Int64>
+	}
+	# OPTIONAL
+	authServerCaCertId = @{
+		# REQUIRED
+		id = <System.Int64>
+	}
+}
+"@
 Write-Message "Invoke-RscMutateAws -PatchAuthenticationServerBasedCloudAccount" @"
 Updates authentication server-based AWS cloud account. Use this mutation to update account details related to role name, certificates, features. The mutation can update one or more certificates associated to an account in a single request. All input fields except account identifier are optional so that any combination of account attributes can be updated in a single call. If none of the optional fields are provided in the input then no updates are performed, and the response does not contain any error message.
 "@ "[GraphQL: patchAwsAuthenticationServerBasedCloudAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -526,6 +1600,34 @@ Updates authentication server-based AWS cloud account. Use this mutation to upda
 $inputs = Invoke-RscMutateAws -PatchIamUserBasedCloudAccount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	awsCloudAccountId = <System.String>
+	# REQUIRED
+	feature = <CloudAccountFeature>
+	# OPTIONAL
+	awsRegions = @{
+		# REQUIRED
+		regions = @(
+			<AwsCloudAccountRegion>
+		)
+	}
+	# OPTIONAL
+	awsUserKeys = @{
+		# REQUIRED
+		accessKey = <System.String>
+		# REQUIRED
+		secretKey = <System.String>
+	}
+	# OPTIONAL
+	awsRoleArn = @{
+		# REQUIRED
+		roleArn = <System.String>
+	}
+}
+"@
 Write-Message "Invoke-RscMutateAws -PatchIamUserBasedCloudAccount" @"
 Updates IAM user-based AWS cloud account. Use this mutation to update account details access/secret keys, role ARN and regions. All input fields except account ID are optional so that any combination of account attributes can be updated in a single call. If none of the optional fields are provided in the input then no updates are performed, and the response does not contain any error message.
 "@ "[GraphQL: patchAwsIamUserBasedCloudAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -538,6 +1640,33 @@ Updates IAM user-based AWS cloud account. Use this mutation to update account de
 $inputs = Invoke-RscMutateAws -RegisterFeatureArtifacts -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	awsArtifacts = @(
+		@{
+			# REQUIRED
+			awsNativeId = <System.String>
+			# REQUIRED
+			externalArtifacts = @(
+				@{
+					# REQUIRED
+					externalArtifactValue = <System.String>
+					# OPTIONAL
+					externalArtifactKey = <AwsCloudExternalArtifact>
+				}
+			)
+			# REQUIRED
+			features = @(
+				<CloudAccountFeature>
+			)
+		}
+	)
+	# OPTIONAL
+	cloudType = <AwsCloudType>
+}
+"@
 Write-Message "Invoke-RscMutateAws -RegisterFeatureArtifacts" @"
 Registers the AWS account artifacts such as roles in RSC backend while onboarding AWS account in manual flow.
 "@ "[GraphQL: registerAwsFeatureArtifacts]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -550,6 +1679,17 @@ Registers the AWS account artifacts such as roles in RSC backend while onboardin
 $inputs = Invoke-RscMutateAws -BulkDeleteCloudAccountWithoutCft -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	awsNativeId = <System.String>
+	# OPTIONAL
+	features = @(
+		<CloudAccountFeature>
+	)
+}
+"@
 Write-Message "Invoke-RscMutateAws -BulkDeleteCloudAccountWithoutCft" @"
 Deletes specified AWS cloud accounts without using CloudFormation Template (CFT).
 "@ "[GraphQL: bulkDeleteAwsCloudAccountWithoutCft]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -562,6 +1702,95 @@ Deletes specified AWS cloud accounts without using CloudFormation Template (CFT)
 $inputs = Invoke-RscMutateAws -CreateCluster -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	cloudAccountId = <System.String>
+	# OPTIONAL
+	isEsType = <System.Boolean>
+	# OPTIONAL
+	keepClusterOnFailure = <System.Boolean>
+	# OPTIONAL
+	region = <System.String>
+	# OPTIONAL
+	disableApiTermination = <System.Boolean>
+	# OPTIONAL
+	clusterConfig = @{
+		# OPTIONAL
+		userEmail = <System.String>
+		# OPTIONAL
+		adminPassword = <System.String>
+		# OPTIONAL
+		clusterName = <System.String>
+		# OPTIONAL
+		numNodes = <System.Int32>
+		# OPTIONAL
+		dnsSearchDomains = @(
+			<System.String>
+		)
+		# OPTIONAL
+		dnsNameServers = @(
+			<System.String>
+		)
+		# OPTIONAL
+		ntpServers = @(
+			<System.String>
+		)
+		# OPTIONAL
+		azureEsConfig = @{
+			# OPTIONAL
+			storageAccount = <System.String>
+			# OPTIONAL
+			resourceGroup = <System.String>
+			# OPTIONAL
+			storageSecret = <System.String>
+			# OPTIONAL
+			containerName = <System.String>
+			# OPTIONAL
+			shouldCreateContainer = <System.Boolean>
+			# OPTIONAL
+			enableImmutability = <System.Boolean>
+		}
+		# OPTIONAL
+		awsEsConfig = @{
+			# OPTIONAL
+			bucketName = <System.String>
+			# OPTIONAL
+			shouldCreateBucket = <System.Boolean>
+			# OPTIONAL
+			enableObjectLock = <System.Boolean>
+			# OPTIONAL
+			enableImmutability = <System.Boolean>
+		}
+	}
+	# OPTIONAL
+	vmConfig = @{
+		# OPTIONAL
+		cdmVersion = <System.String>
+		# OPTIONAL
+		nodeSizeGb = <System.Int32>
+		# OPTIONAL
+		subnet = <System.String>
+		# OPTIONAL
+		tags = <System.String>
+		# OPTIONAL
+		imageId = <System.String>
+		# OPTIONAL
+		instanceProfileName = <System.String>
+		# OPTIONAL
+		cdmProduct = <System.String>
+		# OPTIONAL
+		vmType = <VmType>
+		# OPTIONAL
+		securityGroups = @(
+			<System.String>
+		)
+		# OPTIONAL
+		instanceType = <AwsInstanceType>
+	}
+}
+"@
 Write-Message "Invoke-RscMutateAws -CreateCluster" @"
 Create a Rubrik Cloud Cluster on AWS.
 "@ "[GraphQL: createAwsCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -574,6 +1803,27 @@ Create a Rubrik Cloud Cluster on AWS.
 $inputs = Invoke-RscMutateAws -DeleteCluster -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	cloudAccountId = <System.String>
+	# OPTIONAL
+	clusterName = <System.String>
+	# OPTIONAL
+	numNodes = <System.Int32>
+	# OPTIONAL
+	isEsType = <System.Boolean>
+	# OPTIONAL
+	bucketName = <System.String>
+	# OPTIONAL
+	isNewContainer = <System.Boolean>
+	# OPTIONAL
+	clusterUuid = <System.String>
+	# OPTIONAL
+	region = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateAws -DeleteCluster" @"
 Delete a Rubrik Cloud Cluster on AWS.
 "@ "[GraphQL: deleteAwsCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -587,6 +1837,15 @@ Delete a Rubrik Cloud Cluster on AWS.
 $inputs = Invoke-RscMutateAzure -StartRefreshNativeSubscriptionsJob -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	azureSubscriptionRubrikIds = @(
+		<System.String>
+	)
+}
+"@
 Write-Message "Invoke-RscMutateAzure -StartRefreshNativeSubscriptionsJob" @"
 Start a job to refresh Azure Native subscription for the given subscription IDs. When started, this job will update the Rubrik platform with any changes that have been done on Azure for the respective subscription.
 "@ "[GraphQL: startRefreshAzureNativeSubscriptionsJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -599,6 +1858,23 @@ Start a job to refresh Azure Native subscription for the given subscription IDs.
 $inputs = Invoke-RscMutateAzure -StartRestoreNativeVirtualMachineJob -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	snapshotId = <System.String>
+	# REQUIRED
+	shouldPowerOn = <System.Boolean>
+	# REQUIRED
+	shouldRestoreTags = <System.Boolean>
+	# OPTIONAL
+	snapshotTypeToUseIfSourceExpired = <SnapshotTypeForRestoreIfSourceExpired>
+	# OPTIONAL
+	recoveryDiskIds = @(
+		<System.String>
+	)
+}
+"@
 Write-Message "Invoke-RscMutateAzure -StartRestoreNativeVirtualMachineJob" @"
 Start a job to restore Azure Native virtual machine with the selected snapshot. When started, this will replace the original VM with the selected snapshot.
 "@ "[GraphQL: startRestoreAzureNativeVirtualMachineJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -611,6 +1887,47 @@ Start a job to restore Azure Native virtual machine with the selected snapshot. 
 $inputs = Invoke-RscMutateAzure -StartExportNativeVirtualMachineJob -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	snapshotId = <System.String>
+	# REQUIRED
+	virtualMachineName = <System.String>
+	# OPTIONAL
+	diskEncryptionSetNativeId = <System.String>
+	# REQUIRED
+	resourceGroupName = <System.String>
+	# REQUIRED
+	destinationRegion = <AzureNativeRegion>
+	# OPTIONAL
+	destinationAvailabilityZone = <System.String>
+	# OPTIONAL
+	destinationSubscriptionRubrikId = <System.String>
+	# REQUIRED
+	virtualMachineSize = <System.String>
+	# REQUIRED
+	subnetNativeId = <System.String>
+	# OPTIONAL
+	networkSecurityGroupNativeId = <System.String>
+	# REQUIRED
+	shouldExportTags = <System.Boolean>
+	# REQUIRED
+	shouldPowerOff = <System.Boolean>
+	# OPTIONAL
+	shouldUseReplica = <System.Boolean>
+	# OPTIONAL
+	availabilitySetNativeId = <System.String>
+	# OPTIONAL
+	shouldEnableAcceleratedNetworking = <System.Boolean>
+	# OPTIONAL
+	snapshotType = <AzureSnapshotType>
+	# OPTIONAL
+	recoveryDiskIds = @(
+		<System.String>
+	)
+}
+"@
 Write-Message "Invoke-RscMutateAzure -StartExportNativeVirtualMachineJob" @"
 Start a job to export the Azure native virtual machine for a specified snapshot to a specified destination.
 "@ "[GraphQL: startExportAzureNativeVirtualMachineJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -623,6 +1940,22 @@ Start a job to export the Azure native virtual machine for a specified snapshot 
 $inputs = Invoke-RscMutateAzure -ExcludeNativeManagedDisksFromSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	virtualMachineRubrikId = <System.String>
+	# REQUIRED
+	managedDiskExclusions = @(
+		@{
+			# REQUIRED
+			managedDiskRubrikId = <System.String>
+			# REQUIRED
+			isExcludedFromSnapshot = <System.Boolean>
+		}
+	)
+}
+"@
 Write-Message "Invoke-RscMutateAzure -ExcludeNativeManagedDisksFromSnapshot" @"
 Exclude the Managed Disks from snapshots, for the specified virtual machines.
 "@ "[GraphQL: excludeAzureNativeManagedDisksFromSnapshot]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -635,6 +1968,17 @@ Exclude the Managed Disks from snapshots, for the specified virtual machines.
 $inputs = Invoke-RscMutateAzure -StartCreateNativeVirtualMachineSnapshotsJob -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	virtualMachineRubrikIds = @(
+		<System.String>
+	)
+	# OPTIONAL
+	retentionSlaId = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateAzure -StartCreateNativeVirtualMachineSnapshotsJob" @"
 Start a job to create a snapshot for the Azure Native virtual machine identified by the IDs. When started, this will start taking an on-demand snapshot of the selected VMs as per the SLA Policy assigned to the respective VMs.
 "@ "[GraphQL: startCreateAzureNativeVirtualMachineSnapshotsJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -647,6 +1991,17 @@ Start a job to create a snapshot for the Azure Native virtual machine identified
 $inputs = Invoke-RscMutateAzure -StartDisableNativeSubscriptionProtectionJob -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	azureSubscriptionRubrikId = <System.String>
+	# REQUIRED
+	shouldDeleteNativeSnapshots = <System.Boolean>
+	# REQUIRED
+	azureNativeProtectionFeature = <AzureNativeProtectionFeature>
+}
+"@
 Write-Message "Invoke-RscMutateAzure -StartDisableNativeSubscriptionProtectionJob" @"
 Start a job to disable protection for a specified Azure subscription.
 "@ "[GraphQL: startDisableAzureNativeSubscriptionProtectionJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -659,6 +2014,17 @@ Start a job to disable protection for a specified Azure subscription.
 $inputs = Invoke-RscMutateAzure -StartCreateNativeManagedDiskSnapshotsJob -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	managedDiskRubrikIds = @(
+		<System.String>
+	)
+	# OPTIONAL
+	retentionSlaId = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateAzure -StartCreateNativeManagedDiskSnapshotsJob" @"
 Start a job to create snapshots of the Azure Native Managed Disks identified by the given IDs. When started, this will start taking an on-demand snapshot of the selected disks as per the SLA Policy assigned to the respective disks.
 "@ "[GraphQL: startCreateAzureNativeManagedDiskSnapshotsJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -671,6 +2037,37 @@ Start a job to create snapshots of the Azure Native Managed Disks identified by 
 $inputs = Invoke-RscMutateAzure -StartExportNativeManagedDiskJob -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	snapshotId = <System.String>
+	# REQUIRED
+	diskName = <System.String>
+	# OPTIONAL
+	diskEncryptionSetNativeId = <System.String>
+	# REQUIRED
+	diskStorageTier = <AzureNativeManagedDiskType>
+	# REQUIRED
+	diskSize = <System.Int32>
+	# REQUIRED
+	resourceGroup = <System.String>
+	# REQUIRED
+	destinationRegion = <AzureNativeRegion>
+	# OPTIONAL
+	destinationAvailabilityZone = <System.String>
+	# OPTIONAL
+	destinationSubscriptionRubrikId = <System.String>
+	# REQUIRED
+	shouldExportTags = <System.Boolean>
+	# REQUIRED
+	shouldReplaceAttachedManagedDisk = <System.Boolean>
+	# OPTIONAL
+	shouldUseReplica = <System.Boolean>
+	# OPTIONAL
+	snapshotType = <AzureSnapshotType>
+}
+"@
 Write-Message "Invoke-RscMutateAzure -StartExportNativeManagedDiskJob" @"
 Start a job to export the specified Azure Native Managed Disks to the desired destination.
 "@ "[GraphQL: startExportAzureNativeManagedDiskJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -683,6 +2080,63 @@ Start a job to export the specified Azure Native Managed Disks to the desired de
 $inputs = Invoke-RscMutateAzure -StartExportSqlDatabaseDbJob -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	sourceDatabaseRubrikId = <System.String>
+	# REQUIRED
+	destinationDatabaseName = <System.String>
+	# OPTIONAL
+	destinationServerRubrikId = <System.String>
+	# OPTIONAL
+	elasticPoolName = <System.String>
+	# REQUIRED
+	shouldExportTags = <System.Boolean>
+	# OPTIONAL
+	azureSqlDatabaseDbPitExportInput = @{
+		# REQUIRED
+		restorePointInTime = <DateTime>
+		# OPTIONAL
+		dbBackupRedundancy = <AzureSqlBackupStorageRedundancyType>
+	}
+	# OPTIONAL
+	azureSqlDatabaseDbLtrExportInput = @{
+		# REQUIRED
+		sourceSnapshotRubrikId = <System.String>
+		# REQUIRED
+		destinationResourceGroupName = <System.String>
+		# REQUIRED
+		destinationServerName = <System.String>
+		# REQUIRED
+		destinationRegionName = <System.String>
+		# OPTIONAL
+		dbBackupRedundancy = <AzureSqlBackupStorageRedundancyType>
+	}
+	# OPTIONAL
+	persistentBackupExportInput = @{
+		# REQUIRED
+		sourceSnapshotRubrikId = <System.String>
+		# OPTIONAL
+		destinationServerCredentials = @{
+			# REQUIRED
+			login = <System.String>
+			# REQUIRED
+			password = <System.String>
+		}
+		# OPTIONAL
+		authMechanism = <SqlAuthenticationMechanism>
+		# OPTIONAL
+		sessionId = <System.String>
+		# OPTIONAL
+		dbBackupRedundancy = <AzureSqlBackupStorageRedundancyType>
+	}
+	# OPTIONAL
+	serviceTier = <System.String>
+	# OPTIONAL
+	serviceObjectiveName = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateAzure -StartExportSqlDatabaseDbJob" @"
 Start a job to export Azure SQL Database. The job creates a new Azure SQL Database with the same properties as that of the instance that is exported.
 "@ "[GraphQL: startExportAzureSqlDatabaseDbJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -695,6 +2149,55 @@ Start a job to export Azure SQL Database. The job creates a new Azure SQL Databa
 $inputs = Invoke-RscMutateAzure -StartExportSqlManagedInstanceDbJob -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	sourceManagedInstanceDatabaseRubrikId = <System.String>
+	# OPTIONAL
+	destinationManagedInstanceRubrikId = <System.String>
+	# REQUIRED
+	destinationDatabaseName = <System.String>
+	# REQUIRED
+	destinationManagedInstanceName = <System.String>
+	# REQUIRED
+	destinationResourceGroupName = <System.String>
+	# OPTIONAL
+	azureSqlManagedInstanceDbPitExportInput = @{
+		# REQUIRED
+		restorePointInTime = <DateTime>
+	}
+	# OPTIONAL
+	azureSqlManagedInstanceDbLtrExportInput = @{
+		# REQUIRED
+		sourceSnapshotRubrikId = <System.String>
+		# REQUIRED
+		destinationRegionName = <System.String>
+	}
+	# OPTIONAL
+	persistentBackupExportInput = @{
+		# REQUIRED
+		sourceSnapshotRubrikId = <System.String>
+		# OPTIONAL
+		destinationServerCredentials = @{
+			# REQUIRED
+			login = <System.String>
+			# REQUIRED
+			password = <System.String>
+		}
+		# OPTIONAL
+		authMechanism = <SqlAuthenticationMechanism>
+		# OPTIONAL
+		sessionId = <System.String>
+		# OPTIONAL
+		dbBackupRedundancy = <AzureSqlBackupStorageRedundancyType>
+	}
+	# OPTIONAL
+	serviceTier = <System.String>
+	# OPTIONAL
+	serviceObjectiveName = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateAzure -StartExportSqlManagedInstanceDbJob" @"
 Start a job to export Azure SQL Managed Instance database. The job creates a new Azure SQL Managed Instance database with the same properties as that of the instance that is exported.
 "@ "[GraphQL: startExportAzureSqlManagedInstanceDbJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -707,6 +2210,17 @@ Start a job to export Azure SQL Managed Instance database. The job creates a new
 $inputs = Invoke-RscMutateAzure -CreateAccount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	name = <System.String>
+	# OPTIONAL
+	description = <System.String>
+	# REQUIRED
+	subscriptionId = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateAzure -CreateAccount" @"
 
 "@ "[GraphQL: createAzureAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -719,6 +2233,19 @@ Write-Message "Invoke-RscMutateAzure -CreateAccount" @"
 $inputs = Invoke-RscMutateAzure -UpdateAccount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+	# OPTIONAL
+	name = <System.String>
+	# OPTIONAL
+	description = <System.String>
+	# OPTIONAL
+	subscriptionId = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateAzure -UpdateAccount" @"
 
 "@ "[GraphQL: updateAzureAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -731,6 +2258,80 @@ Write-Message "Invoke-RscMutateAzure -UpdateAccount" @"
 $inputs = Invoke-RscMutateAzure -CreateAutomaticTargetMapping -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	name = <System.String>
+	# REQUIRED
+	storageAccountName = <System.String>
+	# REQUIRED
+	accessKey = <System.String>
+	# REQUIRED
+	containerNamePrefix = <System.String>
+	# REQUIRED
+	cloudAccountId = <System.String>
+	# REQUIRED
+	instanceType = <InstanceTypeEnum>
+	# REQUIRED
+	rsaKey = <System.String>
+	# OPTIONAL
+	computeSettings = @{
+		# OPTIONAL
+		appId = <System.String>
+		# OPTIONAL
+		appSecretKey = <System.String>
+		# OPTIONAL
+		region = <AzureRegion>
+		# OPTIONAL
+		generalPurposeStorageName = <System.String>
+		# OPTIONAL
+		generalPurposeStorageContainer = <System.String>
+		# OPTIONAL
+		resourceGroup = <System.String>
+		# OPTIONAL
+		virtualNetworkId = <System.String>
+		# OPTIONAL
+		subnetId = <System.String>
+		# OPTIONAL
+		securityGroupId = <System.String>
+		# OPTIONAL
+		computeProxySettings = @{
+			# OPTIONAL
+			proxyServer = <System.String>
+			# OPTIONAL
+			portNumber = <System.Int32>
+			# OPTIONAL
+			username = <System.String>
+			# OPTIONAL
+			password = <System.String>
+			# OPTIONAL
+			protocol = <System.String>
+		}
+		# OPTIONAL
+		cloudAccountId = <System.String>
+	}
+	# OPTIONAL
+	proxySettings = @{
+		# OPTIONAL
+		proxyServer = <System.String>
+		# OPTIONAL
+		portNumber = <System.Int32>
+		# OPTIONAL
+		username = <System.String>
+		# OPTIONAL
+		password = <System.String>
+		# OPTIONAL
+		protocol = <System.String>
+	}
+	# OPTIONAL
+	clusterUuidList = @(
+		<System.String>
+	)
+	# REQUIRED
+	isConsolidationEnabled = <System.Boolean>
+}
+"@
 Write-Message "Invoke-RscMutateAzure -CreateAutomaticTargetMapping" @"
 
 "@ "[GraphQL: createAutomaticAzureTargetMapping]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -743,6 +2344,54 @@ Write-Message "Invoke-RscMutateAzure -CreateAutomaticTargetMapping" @"
 $inputs = Invoke-RscMutateAzure -CreateCloudNativeStorageSetting -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	name = <System.String>
+	# REQUIRED
+	cloudAccountId = <System.String>
+	# REQUIRED
+	storageAccountName = <System.String>
+	# REQUIRED
+	containerName = <System.String>
+	# OPTIONAL
+	storageAccountTags = @{
+		# REQUIRED
+		tagList = @(
+			@{
+				# REQUIRED
+				key = <System.String>
+				# REQUIRED
+				value = <System.String>
+			}
+		)
+	}
+	# OPTIONAL
+	storageAccountRegion = <AzureRegion>
+	# REQUIRED
+	storageTier = <AzureStorageTier>
+	# REQUIRED
+	redundancy = <AzureRedundancy>
+	# REQUIRED
+	subscriptionNativeId = <System.String>
+	# REQUIRED
+	cloudNativeLocTemplateType = <CloudNativeLocTemplateType>
+	# OPTIONAL
+	cmkInfo = @(
+		@{
+			# OPTIONAL
+			keyVaultName = <System.String>
+			# OPTIONAL
+			keyName = <System.String>
+			# OPTIONAL
+			region = <AzureRegion>
+		}
+	)
+	# OPTIONAL
+	azureCloudType = <AzureCloudType>
+}
+"@
 Write-Message "Invoke-RscMutateAzure -CreateCloudNativeStorageSetting" @"
 Creates Storage Settings for the archival of azure cloud native protected objects
 "@ "[GraphQL: createCloudNativeAzureStorageSetting]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -755,6 +2404,17 @@ Creates Storage Settings for the archival of azure cloud native protected object
 $inputs = Invoke-RscMutateAzure -CreateCloudNativeRcvStorageSetting -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	name = <System.String>
+	# REQUIRED
+	region = <AzureRegion>
+	# REQUIRED
+	cloudNativeLocTemplateType = <CloudNativeLocTemplateType>
+}
+"@
 Write-Message "Invoke-RscMutateAzure -CreateCloudNativeRcvStorageSetting" @"
 Create Rubrik Cloud Vault storage settings for archiving azure cloud native protected objects.
 "@ "[GraphQL: createCloudNativeRcvAzureStorageSetting]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -767,6 +2427,76 @@ Create Rubrik Cloud Vault storage settings for archiving azure cloud native prot
 $inputs = Invoke-RscMutateAzure -UpdateAutomaticTargetMapping -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+	# OPTIONAL
+	name = <System.String>
+	# OPTIONAL
+	storageAccountName = <System.String>
+	# OPTIONAL
+	accessKey = <System.String>
+	# OPTIONAL
+	cloudAccountId = <System.String>
+	# OPTIONAL
+	computeSettings = @{
+		# OPTIONAL
+		appId = <System.String>
+		# OPTIONAL
+		appSecretKey = <System.String>
+		# OPTIONAL
+		region = <AzureRegion>
+		# OPTIONAL
+		generalPurposeStorageName = <System.String>
+		# OPTIONAL
+		generalPurposeStorageContainer = <System.String>
+		# OPTIONAL
+		resourceGroup = <System.String>
+		# OPTIONAL
+		virtualNetworkId = <System.String>
+		# OPTIONAL
+		subnetId = <System.String>
+		# OPTIONAL
+		securityGroupId = <System.String>
+		# OPTIONAL
+		computeProxySettings = @{
+			# OPTIONAL
+			proxyServer = <System.String>
+			# OPTIONAL
+			portNumber = <System.Int32>
+			# OPTIONAL
+			username = <System.String>
+			# OPTIONAL
+			password = <System.String>
+			# OPTIONAL
+			protocol = <System.String>
+		}
+		# OPTIONAL
+		cloudAccountId = <System.String>
+	}
+	# OPTIONAL
+	proxySettings = @{
+		# OPTIONAL
+		proxyServer = <System.String>
+		# OPTIONAL
+		portNumber = <System.Int32>
+		# OPTIONAL
+		username = <System.String>
+		# OPTIONAL
+		password = <System.String>
+		# OPTIONAL
+		protocol = <System.String>
+	}
+	# OPTIONAL
+	clusterUuidList = @(
+		<System.String>
+	)
+	# OPTIONAL
+	isConsolidationEnabled = <System.Boolean>
+}
+"@
 Write-Message "Invoke-RscMutateAzure -UpdateAutomaticTargetMapping" @"
 
 "@ "[GraphQL: updateAutomaticAzureTargetMapping]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -779,6 +2509,40 @@ Write-Message "Invoke-RscMutateAzure -UpdateAutomaticTargetMapping" @"
 $inputs = Invoke-RscMutateAzure -UpdateCloudNativeStorageSetting -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+	# REQUIRED
+	name = <System.String>
+	# REQUIRED
+	storageAccountTags = @{
+		# REQUIRED
+		tagList = @(
+			@{
+				# REQUIRED
+				key = <System.String>
+				# REQUIRED
+				value = <System.String>
+			}
+		)
+	}
+	# REQUIRED
+	storageTier = <AzureStorageTier>
+	# OPTIONAL
+	cmkInfo = @(
+		@{
+			# OPTIONAL
+			keyVaultName = <System.String>
+			# OPTIONAL
+			keyName = <System.String>
+			# OPTIONAL
+			region = <AzureRegion>
+		}
+	)
+}
+"@
 Write-Message "Invoke-RscMutateAzure -UpdateCloudNativeStorageSetting" @"
 
 "@ "[GraphQL: updateCloudNativeAzureStorageSetting]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -791,6 +2555,15 @@ Write-Message "Invoke-RscMutateAzure -UpdateCloudNativeStorageSetting" @"
 $inputs = Invoke-RscMutateAzure -UpdateCloudNativeRcvStorageSetting -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+	# REQUIRED
+	name = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateAzure -UpdateCloudNativeRcvStorageSetting" @"
 Updates an existing Rubrik Cloud Vault Storage Settings for the archival of azure cloud native protected objects.
 "@ "[GraphQL: updateCloudNativeRcvAzureStorageSetting]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -803,6 +2576,87 @@ Updates an existing Rubrik Cloud Vault Storage Settings for the archival of azur
 $inputs = Invoke-RscMutateAzure -CreateTarget -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	name = <System.String>
+	# REQUIRED
+	storageAccountName = <System.String>
+	# REQUIRED
+	accessKey = <System.String>
+	# REQUIRED
+	containerName = <System.String>
+	# REQUIRED
+	cloudAccountId = <System.String>
+	# REQUIRED
+	instanceType = <InstanceTypeEnum>
+	# REQUIRED
+	rsaKey = <System.String>
+	# OPTIONAL
+	computeSettings = @{
+		# OPTIONAL
+		appId = <System.String>
+		# OPTIONAL
+		appSecretKey = <System.String>
+		# OPTIONAL
+		region = <AzureRegion>
+		# OPTIONAL
+		generalPurposeStorageName = <System.String>
+		# OPTIONAL
+		generalPurposeStorageContainer = <System.String>
+		# OPTIONAL
+		resourceGroup = <System.String>
+		# OPTIONAL
+		virtualNetworkId = <System.String>
+		# OPTIONAL
+		subnetId = <System.String>
+		# OPTIONAL
+		securityGroupId = <System.String>
+		# OPTIONAL
+		computeProxySettings = @{
+			# OPTIONAL
+			proxyServer = <System.String>
+			# OPTIONAL
+			portNumber = <System.Int32>
+			# OPTIONAL
+			username = <System.String>
+			# OPTIONAL
+			password = <System.String>
+			# OPTIONAL
+			protocol = <System.String>
+		}
+		# OPTIONAL
+		cloudAccountId = <System.String>
+	}
+	# OPTIONAL
+	proxySettings = @{
+		# OPTIONAL
+		proxyServer = <System.String>
+		# OPTIONAL
+		portNumber = <System.Int32>
+		# OPTIONAL
+		username = <System.String>
+		# OPTIONAL
+		password = <System.String>
+		# OPTIONAL
+		protocol = <System.String>
+	}
+	# REQUIRED
+	isConsolidationEnabled = <System.Boolean>
+	# OPTIONAL
+	immutabilitySettings = @{
+		# OPTIONAL
+		lockDurationDays = <System.Int32>
+	}
+	# OPTIONAL
+	retrievalTier = <AzureRetrievalTier>
+	# REQUIRED
+	bypassProxy = <System.Boolean>
+}
+"@
 Write-Message "Invoke-RscMutateAzure -CreateTarget" @"
 Creates an Azure archival target on the Rubrik cluster.
 "@ "[GraphQL: createAzureTarget]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -815,6 +2669,81 @@ Creates an Azure archival target on the Rubrik cluster.
 $inputs = Invoke-RscMutateAzure -UpdateTarget -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+	# OPTIONAL
+	name = <System.String>
+	# OPTIONAL
+	storageAccountName = <System.String>
+	# OPTIONAL
+	accessKey = <System.String>
+	# OPTIONAL
+	cloudAccountId = <System.String>
+	# OPTIONAL
+	computeSettings = @{
+		# OPTIONAL
+		appId = <System.String>
+		# OPTIONAL
+		appSecretKey = <System.String>
+		# OPTIONAL
+		region = <AzureRegion>
+		# OPTIONAL
+		generalPurposeStorageName = <System.String>
+		# OPTIONAL
+		generalPurposeStorageContainer = <System.String>
+		# OPTIONAL
+		resourceGroup = <System.String>
+		# OPTIONAL
+		virtualNetworkId = <System.String>
+		# OPTIONAL
+		subnetId = <System.String>
+		# OPTIONAL
+		securityGroupId = <System.String>
+		# OPTIONAL
+		computeProxySettings = @{
+			# OPTIONAL
+			proxyServer = <System.String>
+			# OPTIONAL
+			portNumber = <System.Int32>
+			# OPTIONAL
+			username = <System.String>
+			# OPTIONAL
+			password = <System.String>
+			# OPTIONAL
+			protocol = <System.String>
+		}
+		# OPTIONAL
+		cloudAccountId = <System.String>
+	}
+	# OPTIONAL
+	proxySettings = @{
+		# OPTIONAL
+		proxyServer = <System.String>
+		# OPTIONAL
+		portNumber = <System.Int32>
+		# OPTIONAL
+		username = <System.String>
+		# OPTIONAL
+		password = <System.String>
+		# OPTIONAL
+		protocol = <System.String>
+	}
+	# OPTIONAL
+	isConsolidationEnabled = <System.Boolean>
+	# OPTIONAL
+	immutabilitySettings = @{
+		# OPTIONAL
+		lockDurationDays = <System.Int32>
+	}
+	# OPTIONAL
+	retrievalTier = <AzureRetrievalTier>
+	# REQUIRED
+	bypassProxy = <System.Boolean>
+}
+"@
 Write-Message "Invoke-RscMutateAzure -UpdateTarget" @"
 
 "@ "[GraphQL: updateAzureTarget]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -827,6 +2756,89 @@ Write-Message "Invoke-RscMutateAzure -UpdateTarget" @"
 $inputs = Invoke-RscMutateAzure -CreateReaderTarget -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	name = <System.String>
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	storageAccountName = <System.String>
+	# REQUIRED
+	accessKey = <System.String>
+	# REQUIRED
+	containerName = <System.String>
+	# REQUIRED
+	cloudAccountId = <System.String>
+	# REQUIRED
+	instanceType = <InstanceTypeEnum>
+	# REQUIRED
+	rsaKey = <System.String>
+	# OPTIONAL
+	computeSettings = @{
+		# OPTIONAL
+		appId = <System.String>
+		# OPTIONAL
+		appSecretKey = <System.String>
+		# OPTIONAL
+		region = <AzureRegion>
+		# OPTIONAL
+		generalPurposeStorageName = <System.String>
+		# OPTIONAL
+		generalPurposeStorageContainer = <System.String>
+		# OPTIONAL
+		resourceGroup = <System.String>
+		# OPTIONAL
+		virtualNetworkId = <System.String>
+		# OPTIONAL
+		subnetId = <System.String>
+		# OPTIONAL
+		securityGroupId = <System.String>
+		# OPTIONAL
+		computeProxySettings = @{
+			# OPTIONAL
+			proxyServer = <System.String>
+			# OPTIONAL
+			portNumber = <System.Int32>
+			# OPTIONAL
+			username = <System.String>
+			# OPTIONAL
+			password = <System.String>
+			# OPTIONAL
+			protocol = <System.String>
+		}
+		# OPTIONAL
+		cloudAccountId = <System.String>
+	}
+	# OPTIONAL
+	proxySettings = @{
+		# OPTIONAL
+		proxyServer = <System.String>
+		# OPTIONAL
+		portNumber = <System.Int32>
+		# OPTIONAL
+		username = <System.String>
+		# OPTIONAL
+		password = <System.String>
+		# OPTIONAL
+		protocol = <System.String>
+	}
+	# REQUIRED
+	isConsolidationEnabled = <System.Boolean>
+	# OPTIONAL
+	immutabilitySettings = @{
+		# OPTIONAL
+		lockDurationDays = <System.Int32>
+	}
+	# REQUIRED
+	readerRetrievalMethod = <ReaderRetrievalMethod>
+	# OPTIONAL
+	retrievalTier = <AzureRetrievalTier>
+	# REQUIRED
+	bypassProxy = <System.Boolean>
+}
+"@
 Write-Message "Invoke-RscMutateAzure -CreateReaderTarget" @"
 Creates reader type for Azure archival location on a CDM cluster.
 "@ "[GraphQL: createAzureReaderTarget]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -839,6 +2851,15 @@ Creates reader type for Azure archival location on a CDM cluster.
 $inputs = Invoke-RscMutateAzure -StartCloudAccountOauth -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	tenantDomainName = <System.String>
+	# OPTIONAL
+	azureCloudType = <AzureCloudType>
+}
+"@
 Write-Message "Invoke-RscMutateAzure -StartCloudAccountOauth" @"
 Initiates a session before doing Azure OAuth flow. If a custom app is configured for the tenant, the client ID of the custom app is returned. Otherwise, the client ID of the default app is returned.
 "@ "[GraphQL: startAzureCloudAccountOauth]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -851,6 +2872,37 @@ Initiates a session before doing Azure OAuth flow. If a custom app is configured
 $inputs = Invoke-RscMutateAzure -CompleteCloudAccountOauth -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	sessionId = <System.String>
+	# REQUIRED
+	tenantDomainName = <System.String>
+	# REQUIRED
+	authorizationCode = <System.String>
+	# REQUIRED
+	redirectUrl = <System.String>
+	# REQUIRED
+	features = @(
+		<CloudAccountFeature>
+	)
+	# OPTIONAL
+	appId = <System.String>
+	# OPTIONAL
+	appSecretKey = <System.String>
+	# REQUIRED
+	shouldSkipPermissionChecks = <System.Boolean>
+	# OPTIONAL
+	azureCloudType = <AzureCloudType>
+	# OPTIONAL
+	resource = <AzureOauthResource>
+	# OPTIONAL
+	performBasicOauth = <System.Boolean>
+	# OPTIONAL
+	shouldKeepRefreshToken = <System.Boolean>
+}
+"@
 Write-Message "Invoke-RscMutateAzure -CompleteCloudAccountOauth" @"
 Complete the Azure OAuth flow and pass the authorization code.
 "@ "[GraphQL: completeAzureCloudAccountOauth]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -863,6 +2915,25 @@ Complete the Azure OAuth flow and pass the authorization code.
 $inputs = Invoke-RscMutateAzure -SetCloudAccountCustomerAppCredentials -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	appId = <System.String>
+	# REQUIRED
+	appSecretKey = <System.String>
+	# OPTIONAL
+	appTenantId = <System.String>
+	# OPTIONAL
+	appName = <System.String>
+	# OPTIONAL
+	tenantDomainName = <System.String>
+	# REQUIRED
+	shouldReplace = <System.Boolean>
+	# REQUIRED
+	azureCloudType = <AzureCloudType>
+}
+"@
 Write-Message "Invoke-RscMutateAzure -SetCloudAccountCustomerAppCredentials" @"
 Set credentials for the customer application, for the tenant domain name.
 "@ "[GraphQL: setAzureCloudAccountCustomerAppCredentials]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -875,6 +2946,61 @@ Set credentials for the customer application, for the tenant domain name.
 $inputs = Invoke-RscMutateAzure -AddCloudAccount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	sessionId = <System.String>
+	# REQUIRED
+	tenantDomainName = <System.String>
+	# REQUIRED
+	subscriptions = @(
+		@{
+			# REQUIRED
+			features = @(
+				@{
+					# OPTIONAL
+					resourceGroup = @{
+						# REQUIRED
+						name = <System.String>
+						# OPTIONAL
+						tags = @{
+							# REQUIRED
+							tagList = @(
+								@{
+									# REQUIRED
+									key = <System.String>
+									# REQUIRED
+									value = <System.String>
+								}
+							)
+						}
+						# REQUIRED
+						region = <AzureCloudAccountRegion>
+					}
+					# REQUIRED
+					featureType = <CloudAccountFeature>
+					# OPTIONAL
+					permissionsGroups = @(
+						<PermissionsGroup>
+					)
+				}
+			)
+			# REQUIRED
+			subscription = @{
+				# REQUIRED
+				nativeId = <System.String>
+				# REQUIRED
+				name = <System.String>
+			}
+		}
+	)
+	# REQUIRED
+	regions = @(
+		<AzureCloudAccountRegion>
+	)
+}
+"@
 Write-Message "Invoke-RscMutateAzure -AddCloudAccount" @"
 Add the Azure Subscriptions cloud account for the given feature.
 "@ "[GraphQL: addAzureCloudAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -887,6 +3013,77 @@ Add the Azure Subscriptions cloud account for the given feature.
 $inputs = Invoke-RscMutateAzure -AddCloudAccountWithoutOauth -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	tenantDomainName = <System.String>
+	# REQUIRED
+	subscriptions = @(
+		@{
+			# REQUIRED
+			features = @(
+				@{
+					# REQUIRED
+					policyVersion = <System.Int32>
+					# OPTIONAL
+					resourceGroup = @{
+						# REQUIRED
+						name = <System.String>
+						# OPTIONAL
+						tags = @{
+							# REQUIRED
+							tagList = @(
+								@{
+									# REQUIRED
+									key = <System.String>
+									# REQUIRED
+									value = <System.String>
+								}
+							)
+						}
+						# REQUIRED
+						region = <AzureCloudAccountRegion>
+					}
+					# OPTIONAL
+					specificFeatureInput = @{
+						# REQUIRED
+						userAssignedManagedIdentityInput = @{
+							# REQUIRED
+							name = <System.String>
+							# REQUIRED
+							resourceGroupName = <System.String>
+							# REQUIRED
+							principalId = <System.String>
+							# REQUIRED
+							region = <AzureCloudAccountRegion>
+						}
+					}
+					# REQUIRED
+					featureType = <CloudAccountFeature>
+					# OPTIONAL
+					permissionsGroups = @(
+						<PermissionsGroup>
+					)
+				}
+			)
+			# REQUIRED
+			subscription = @{
+				# REQUIRED
+				nativeId = <System.String>
+				# REQUIRED
+				name = <System.String>
+			}
+		}
+	)
+	# REQUIRED
+	regions = @(
+		<AzureCloudAccountRegion>
+	)
+	# OPTIONAL
+	azureCloudType = <AzureCloudType>
+}
+"@
 Write-Message "Invoke-RscMutateAzure -AddCloudAccountWithoutOauth" @"
 Add the Azure Subscription cloud account for the given feature without OAuth.
 "@ "[GraphQL: addAzureCloudAccountWithoutOauth]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -899,6 +3096,21 @@ Add the Azure Subscription cloud account for the given feature without OAuth.
 $inputs = Invoke-RscMutateAzure -DeleteCloudAccount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	sessionId = <System.String>
+	# REQUIRED
+	features = @(
+		<CloudAccountFeature>
+	)
+	# REQUIRED
+	azureSubscriptionRubrikIds = @(
+		<System.String>
+	)
+}
+"@
 Write-Message "Invoke-RscMutateAzure -DeleteCloudAccount" @"
 Delete the Azure Subscriptions cloud account for the given feature.
 "@ "[GraphQL: deleteAzureCloudAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -911,6 +3123,19 @@ Delete the Azure Subscriptions cloud account for the given feature.
 $inputs = Invoke-RscMutateAzure -DeleteCloudAccountWithoutOauth -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	features = @(
+		<CloudAccountFeature>
+	)
+	# REQUIRED
+	azureSubscriptionRubrikIds = @(
+		<System.String>
+	)
+}
+"@
 Write-Message "Invoke-RscMutateAzure -DeleteCloudAccountWithoutOauth" @"
 Delete the Azure Subscriptions cloud account for the given feature without OAuth.
 "@ "[GraphQL: deleteAzureCloudAccountWithoutOauth]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -923,6 +3148,21 @@ Delete the Azure Subscriptions cloud account for the given feature without OAuth
 $inputs = Invoke-RscMutateAzure -UpgradeCloudAccount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	sessionId = <System.String>
+	# REQUIRED
+	features = @(
+		<CloudAccountFeature>
+	)
+	# REQUIRED
+	azureSubscriptionRubrikIds = @(
+		<System.String>
+	)
+}
+"@
 Write-Message "Invoke-RscMutateAzure -UpgradeCloudAccount" @"
 Update permissions of the Azure Subscriptions cloud account for given feature.
 "@ "[GraphQL: upgradeAzureCloudAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -935,6 +3175,9 @@ Update permissions of the Azure Subscriptions cloud account for given feature.
 $inputs = Invoke-RscMutateAzure -UpdateCustomerAppPermissionForSql -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+
+"@
 Write-Message "Invoke-RscMutateAzure -UpdateCustomerAppPermissionForSql" @"
 Updates the Azure app for the specified account in an idempotent manner to support Azure SQL Database and  Managed Instance Database authentication.
 "@ "[GraphQL: updateCustomerAppPermissionForAzureSql]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -947,6 +3190,17 @@ Updates the Azure app for the specified account in an idempotent manner to suppo
 $inputs = Invoke-RscMutateAzure -StartDisableCloudAccountJob -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	feature = <CloudAccountFeature>
+	# REQUIRED
+	cloudAccountIds = @(
+		<System.String>
+	)
+}
+"@
 Write-Message "Invoke-RscMutateAzure -StartDisableCloudAccountJob" @"
 Start on-demand jobs to disable the feature for the given Azure Cloud Accounts. When completed, the status of cloud account feature will change to Disabled and the feature will become eligible to be deleted.
 "@ "[GraphQL: startDisableAzureCloudAccountJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -959,6 +3213,32 @@ Start on-demand jobs to disable the feature for the given Azure Cloud Accounts. 
 $inputs = Invoke-RscMutateAzure -UpdateCloudAccount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	subscriptions = @(
+		@{
+			# OPTIONAL
+			id = <System.String>
+			# OPTIONAL
+			name = <System.String>
+		}
+	)
+	# REQUIRED
+	features = @(
+		<CloudAccountFeature>
+	)
+	# OPTIONAL
+	regionsToAdd = @(
+		<AzureCloudAccountRegion>
+	)
+	# OPTIONAL
+	regionsToRemove = @(
+		<AzureCloudAccountRegion>
+	)
+}
+"@
 Write-Message "Invoke-RscMutateAzure -UpdateCloudAccount" @"
 Update names of the Azure Subscriptions cloud account and regions for the given feature.
 "@ "[GraphQL: updateAzureCloudAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -971,6 +3251,19 @@ Update names of the Azure Subscriptions cloud account and regions for the given 
 $inputs = Invoke-RscMutateAzure -MapCloudAccountToPersistentStorageLocation -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	cloudAccountIds = @(
+		<System.String>
+	)
+	# REQUIRED
+	persistentStorageId = <System.String>
+	# REQUIRED
+	azureNativeProtectionFeature = <AzureNativeProtectionFeature>
+}
+"@
 Write-Message "Invoke-RscMutateAzure -MapCloudAccountToPersistentStorageLocation" @"
 Map Azure cloud accounts to a persistent storage location.
 "@ "[GraphQL: mapAzureCloudAccountToPersistentStorageLocation]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -983,6 +3276,28 @@ Map Azure cloud accounts to a persistent storage location.
 $inputs = Invoke-RscMutateAzure -AddCloudAccountExocomputeConfigurations -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	cloudAccountId = <System.String>
+	# REQUIRED
+	azureExocomputeRegionConfigs = @(
+		@{
+			# REQUIRED
+			region = <AzureCloudAccountRegion>
+			# REQUIRED
+			subnetNativeId = <System.String>
+			# REQUIRED
+			isRscManaged = <System.Boolean>
+			# OPTIONAL
+			podSubnetNativeId = <System.String>
+		}
+	)
+	# OPTIONAL
+	triggerHealthCheck = <System.Boolean>
+}
+"@
 Write-Message "Invoke-RscMutateAzure -AddCloudAccountExocomputeConfigurations" @"
 Add Exocompute configurations for an Azure Cloud Account.
 "@ "[GraphQL: addAzureCloudAccountExocomputeConfigurations]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -995,6 +3310,15 @@ Add Exocompute configurations for an Azure Cloud Account.
 $inputs = Invoke-RscMutateAzure -DeleteCloudAccountExocomputeConfigurations -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	cloudAccountIds = @(
+		<System.String>
+	)
+}
+"@
 Write-Message "Invoke-RscMutateAzure -DeleteCloudAccountExocomputeConfigurations" @"
 Delete Exocompute configurations for an Azure Cloud Account.
 "@ "[GraphQL: deleteAzureCloudAccountExocomputeConfigurations]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -1007,6 +3331,17 @@ Delete Exocompute configurations for an Azure Cloud Account.
 $inputs = Invoke-RscMutateAzure -MapCloudAccountExocomputeSubscription -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	cloudAccountIds = @(
+		<System.String>
+	)
+	# REQUIRED
+	exocomputeCloudAccountId = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateAzure -MapCloudAccountExocomputeSubscription" @"
 Map Azure cloud accounts to an Exocompute subscription.
 "@ "[GraphQL: mapAzureCloudAccountExocomputeSubscription]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -1019,6 +3354,15 @@ Map Azure cloud accounts to an Exocompute subscription.
 $inputs = Invoke-RscMutateAzure -UnmapCloudAccountExocomputeSubscription -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	cloudAccountIds = @(
+		<System.String>
+	)
+}
+"@
 Write-Message "Invoke-RscMutateAzure -UnmapCloudAccountExocomputeSubscription" @"
 Unmap Azure cloud accounts from the mapped Exocompute subscription.
 "@ "[GraphQL: unmapAzureCloudAccountExocomputeSubscription]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -1031,6 +3375,15 @@ Unmap Azure cloud accounts from the mapped Exocompute subscription.
 $inputs = Invoke-RscMutateAzure -UpgradeCloudAccountPermissionsWithoutOauth -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	cloudAccountId = <System.String>
+	# REQUIRED
+	feature = <CloudAccountFeature>
+}
+"@
 Write-Message "Invoke-RscMutateAzure -UpgradeCloudAccountPermissionsWithoutOauth" @"
 Set Azure Cloud Account feature status to Connected from Update Permissions state without any permission validation. It should be used by caution from cloud accounts which have been set up without using OAuth, only after adding the latest permissions that are required.
 "@ "[GraphQL: upgradeAzureCloudAccountPermissionsWithoutOauth]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -1043,6 +3396,19 @@ Set Azure Cloud Account feature status to Connected from Update Permissions stat
 $inputs = Invoke-RscMutateAzure -UnmapPersistentStorageSubscription -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	applicationCloudAccountIds = @(
+		<System.String>
+	)
+	# REQUIRED
+	feature = <CloudAccountFeature>
+	# REQUIRED
+	unmappingValidationType = <UnmappingValidationType>
+}
+"@
 Write-Message "Invoke-RscMutateAzure -UnmapPersistentStorageSubscription" @"
 Unmaps the archival location from the subscription.
 "@ "[GraphQL: unmapAzurePersistentStorageSubscription]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -1055,6 +3421,9 @@ Unmaps the archival location from the subscription.
 $inputs = Invoke-RscMutateAzure -OauthConsentKickoff -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+
+"@
 Write-Message "Invoke-RscMutateAzure -OauthConsentKickoff" @"
 Kicks off an OAuth consent flow for Azure resource access.
 "@ "[GraphQL: azureOauthConsentKickoff]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -1067,6 +3436,25 @@ Kicks off an OAuth consent flow for Azure resource access.
 $inputs = Invoke-RscMutateAzure -OauthConsentComplete -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	tenantId = <System.String>
+	# REQUIRED
+	code = <System.String>
+	# REQUIRED
+	stateToken = <System.String>
+	# REQUIRED
+	redirectUrl = <System.String>
+	# OPTIONAL
+	azureAppId = <System.String>
+	# OPTIONAL
+	azureAppSecret = <System.String>
+	# REQUIRED
+	azureCloudType = <O365AzureCloudType>
+}
+"@
 Write-Message "Invoke-RscMutateAzure -OauthConsentComplete" @"
 Completes an OAuth consent flow for Azure resource access.
 "@ "[GraphQL: azureOauthConsentComplete]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -1079,6 +3467,9 @@ Completes an OAuth consent flow for Azure resource access.
 $inputs = Invoke-RscMutateAzure -CreateSaasAppAad -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+
+"@
 Write-Message "Invoke-RscMutateAzure -CreateSaasAppAad" @"
 Create or get an Azure AAD application.
 "@ "[GraphQL: createAzureSaasAppAad]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -1091,6 +3482,99 @@ Create or get an Azure AAD application.
 $inputs = Invoke-RscMutateAzure -CreateCluster -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	cloudAccountId = <System.String>
+	# OPTIONAL
+	isEsType = <System.Boolean>
+	# OPTIONAL
+	keepClusterOnFailure = <System.Boolean>
+	# OPTIONAL
+	clusterConfig = @{
+		# OPTIONAL
+		userEmail = <System.String>
+		# OPTIONAL
+		adminPassword = <System.String>
+		# OPTIONAL
+		clusterName = <System.String>
+		# OPTIONAL
+		numNodes = <System.Int32>
+		# OPTIONAL
+		dnsSearchDomains = @(
+			<System.String>
+		)
+		# OPTIONAL
+		dnsNameServers = @(
+			<System.String>
+		)
+		# OPTIONAL
+		ntpServers = @(
+			<System.String>
+		)
+		# OPTIONAL
+		azureEsConfig = @{
+			# OPTIONAL
+			storageAccount = <System.String>
+			# OPTIONAL
+			resourceGroup = <System.String>
+			# OPTIONAL
+			storageSecret = <System.String>
+			# OPTIONAL
+			containerName = <System.String>
+			# OPTIONAL
+			shouldCreateContainer = <System.Boolean>
+			# OPTIONAL
+			enableImmutability = <System.Boolean>
+		}
+		# OPTIONAL
+		awsEsConfig = @{
+			# OPTIONAL
+			bucketName = <System.String>
+			# OPTIONAL
+			shouldCreateBucket = <System.Boolean>
+			# OPTIONAL
+			enableObjectLock = <System.Boolean>
+			# OPTIONAL
+			enableImmutability = <System.Boolean>
+		}
+	}
+	# OPTIONAL
+	vmConfig = @{
+		# OPTIONAL
+		resourceGroup = <System.String>
+		# OPTIONAL
+		cdmVersion = <System.String>
+		# OPTIONAL
+		location = <System.String>
+		# OPTIONAL
+		nodeSizeGb = <System.Int32>
+		# OPTIONAL
+		networkResourceGroup = <System.String>
+		# OPTIONAL
+		vnetResourceGroup = <System.String>
+		# OPTIONAL
+		networkSecurityGroup = <System.String>
+		# OPTIONAL
+		networkSecurityResourceGroup = <System.String>
+		# OPTIONAL
+		vnet = <System.String>
+		# OPTIONAL
+		subnet = <System.String>
+		# OPTIONAL
+		tags = <System.String>
+		# OPTIONAL
+		vmImage = <System.String>
+		# OPTIONAL
+		cdmProduct = <System.String>
+		# OPTIONAL
+		vmType = <VmType>
+		# OPTIONAL
+		instanceType = <AzureInstanceType>
+	}
+}
+"@
 Write-Message "Invoke-RscMutateAzure -CreateCluster" @"
 Create a Rubrik Cloud Cluster on Azure.
 "@ "[GraphQL: createAzureCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -1103,6 +3587,33 @@ Create a Rubrik Cloud Cluster on Azure.
 $inputs = Invoke-RscMutateAzure -DeleteCluster -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	cloudAccountId = <System.String>
+	# OPTIONAL
+	clusterName = <System.String>
+	# OPTIONAL
+	numNodes = <System.Int32>
+	# OPTIONAL
+	resourceGroupName = <System.String>
+	# OPTIONAL
+	networkResourceGroup = <System.String>
+	# OPTIONAL
+	isEsType = <System.Boolean>
+	# OPTIONAL
+	storageAccount = <System.String>
+	# OPTIONAL
+	containerName = <System.String>
+	# OPTIONAL
+	storageResourceGroup = <System.String>
+	# OPTIONAL
+	isNewContainer = <System.Boolean>
+	# OPTIONAL
+	clusterUuid = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateAzure -DeleteCluster" @"
 Delete a Rubrik Cloud Cluster on Azure.
 "@ "[GraphQL: deleteAzureCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -1115,6 +3626,22 @@ Delete a Rubrik Cloud Cluster on Azure.
 $inputs = Invoke-RscMutateAzure -KickoffAdAppSetup -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	domainName = <System.String>
+	# REQUIRED
+	region = <AzureAdRegion>
+	# OPTIONAL
+	azureADApp = @{
+		# OPTIONAL
+		clientId = <System.String>
+		# OPTIONAL
+		clientSecret = <System.String>
+	}
+}
+"@
 Write-Message "Invoke-RscMutateAzure -KickoffAdAppSetup" @"
 Initiates the Azure AD app creation flow.
 "@ "[GraphQL: kickoffAzureAdAppSetup]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -1127,6 +3654,32 @@ Initiates the Azure AD app creation flow.
 $inputs = Invoke-RscMutateAzure -CompleteAdAppSetup -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	domainName = <System.String>
+	# REQUIRED
+	stateToken = <System.String>
+	# OPTIONAL
+	kmsSpec = @{
+		# OPTIONAL
+		cloudType = <O365AzureCloudType>
+		# OPTIONAL
+		tenantId = <System.String>
+		# OPTIONAL
+		kmsId = <System.String>
+		# OPTIONAL
+		appId = <System.String>
+		# OPTIONAL
+		appSecret = <System.String>
+		# OPTIONAL
+		keyName = <System.String>
+		# OPTIONAL
+		kekNameColossus = <System.String>
+	}
+}
+"@
 Write-Message "Invoke-RscMutateAzure -CompleteAdAppSetup" @"
 Completes the creation flow for an Azure AD app.
 "@ "[GraphQL: completeAzureAdAppSetup]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -1139,6 +3692,10 @@ Completes the creation flow for an Azure AD app.
 $inputs = Invoke-RscMutateAzure -DeleteAdDirectory -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.workloadFid = <System.String>
+"@
 Write-Message "Invoke-RscMutateAzure -DeleteAdDirectory" @"
 Deletes an Azure AD directory.
 "@ "[GraphQL: deleteAzureAdDirectory]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -1151,6 +3708,15 @@ Deletes an Azure AD directory.
 $inputs = Invoke-RscMutateAzure -BackupAdDirectory -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	workloadFids = @(
+		<System.String>
+	)
+}
+"@
 Write-Message "Invoke-RscMutateAzure -BackupAdDirectory" @"
 Backs up the Azure AD directory.
 "@ "[GraphQL: backupAzureAdDirectory]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -1163,6 +3729,20 @@ Backs up the Azure AD directory.
 $inputs = Invoke-RscMutateAzure -InitiateAdAppUpdate -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	workloadFid = <System.String>
+	# OPTIONAL
+	azureADApp = @{
+		# OPTIONAL
+		clientId = <System.String>
+		# OPTIONAL
+		clientSecret = <System.String>
+	}
+}
+"@
 Write-Message "Invoke-RscMutateAzure -InitiateAdAppUpdate" @"
 Initiates an update to the Azure AD directory App.
 "@ "[GraphQL: initiateAzureAdAppUpdate]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -1175,9 +3755,50 @@ Initiates an update to the Azure AD directory App.
 $inputs = Invoke-RscMutateAzure -CompleteAdAppUpdate -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	workloadFid = <System.String>
+	# REQUIRED
+	stateToken = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateAzure -CompleteAdAppUpdate" @"
 Completes an update to the Azure AD directory App.
 "@ "[GraphQL: completeAzureAdAppUpdate]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
+
+
+# -------------------------------------------------------------------
+# Invoke-RscMutateAzure -RestoreAdObjectsWithPassword
+# -------------------------------------------------------------------
+
+$inputs = Invoke-RscMutateAzure -RestoreAdObjectsWithPassword -GetInputs
+$fieldTypeName = $inputs.Field.GetType().Name
+$argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	workloadFid = <System.String>
+	# REQUIRED
+	snapshotFid = <System.String>
+	# REQUIRED
+	password = <System.String>
+	# REQUIRED
+	objectTypeToIdMap = @(
+		@{
+			# REQUIRED
+			objectId = <System.String>
+			# REQUIRED
+			azureAdObjectType = <AzureAdObjectType>
+		}
+	)
+}
+"@
+Write-Message "Invoke-RscMutateAzure -RestoreAdObjectsWithPassword" @"
+Restores the Azure AD directory.
+"@ "[GraphQL: restoreAzureAdObjectsWithPassword]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 
@@ -1188,6 +3809,72 @@ Completes an update to the Azure AD directory App.
 $inputs = Invoke-RscMutateAzureO365 -SetupExocompute -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.tenantId = <System.String>
+# REQUIRED
+$inputs.Arg.subscriptionId = <System.String>
+# REQUIRED
+$inputs.Arg.exocomputeConfig = @{
+	# REQUIRED
+	regionName = <System.String>
+	# OPTIONAL
+	newGroupConfig = @{
+		# OPTIONAL
+		name = <System.String>
+	}
+	# OPTIONAL
+	existingGroupConfig = @{
+		# OPTIONAL
+		name = <System.String>
+	}
+	# OPTIONAL
+	newComputeConfig = @{
+		# OPTIONAL
+		vnetName = <System.String>
+		# OPTIONAL
+		subnetName = <System.String>
+		# OPTIONAL
+		securityGroupName = <System.String>
+	}
+	# OPTIONAL
+	existingComputeConfig = @{
+		# OPTIONAL
+		vnetId = <System.String>
+		# OPTIONAL
+		subnetId = <System.String>
+	}
+	# OPTIONAL
+	newStorageAccountConfig = @{
+		# OPTIONAL
+		name = <System.String>
+		# OPTIONAL
+		tier = <StorageAccountTier>
+		# OPTIONAL
+		sku = <StorageAccountSku>
+		# OPTIONAL
+		storages = @(
+			@{
+				# OPTIONAL
+				name = <System.String>
+				# OPTIONAL
+				tier = <StorageAccountTier>
+				# OPTIONAL
+				sku = <StorageAccountSku>
+				# OPTIONAL
+				containerImmutabilityStatus = <ColossusStorageContainerImmutabilityStatus>
+				# OPTIONAL
+				versioningEnabled = <System.Boolean>
+			}
+		)
+	}
+	# OPTIONAL
+	existingStorageAccountConfig = @{
+		# OPTIONAL
+		id = <System.String>
+	}
+}
+"@
 Write-Message "Invoke-RscMutateAzureO365 -SetupExocompute" @"
 Sets up Exocompute for an O365 subscription.
 "@ "[GraphQL: setupAzureO365Exocompute]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -1201,6 +3888,70 @@ Sets up Exocompute for an O365 subscription.
 $inputs = Invoke-RscMutateCassandra -RecoverSource -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	recoveryData = @{
+		# OPTIONAL
+		destinationManagementObjects = @{
+			# OPTIONAL
+			databases = @(
+				@{
+					# OPTIONAL
+					dbName = <System.String>
+					# OPTIONAL
+					tables = @(
+						<System.String>
+					)
+				}
+			)
+		}
+		# OPTIONAL
+		destinationSourceName = <System.String>
+		# OPTIONAL
+		keyspaceConfig = <System.String>
+		# OPTIONAL
+		maxDiskUsage = <System.String>
+		# OPTIONAL
+		restoreDbUserPwd = <System.String>
+		# OPTIONAL
+		restoreDbUsername = <System.String>
+		# OPTIONAL
+		startTimestamp = <System.Int32>
+		# OPTIONAL
+		targetEncryptionKey = <System.String>
+		# OPTIONAL
+		targetQuery = <System.String>
+		# OPTIONAL
+		sourceType = <MosaicRetrieveRequestSourceType>
+		# REQUIRED
+		destinationPath = <System.String>
+		# REQUIRED
+		managementObjects = @{
+			# OPTIONAL
+			databases = @(
+				@{
+					# OPTIONAL
+					dbName = <System.String>
+					# OPTIONAL
+					tables = @(
+						<System.String>
+					)
+				}
+			)
+		}
+		# REQUIRED
+		parameterEncoded = <System.Boolean>
+		# REQUIRED
+		sourceName = <System.String>
+		# REQUIRED
+		versionTime = <System.Int32>
+	}
+}
+"@
 Write-Message "Invoke-RscMutateCassandra -RecoverSource" @"
 Recover a cassandra source.
 "@ "[GraphQL: recoverCassandraSource]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -1213,6 +3964,78 @@ Recover a cassandra source.
 $inputs = Invoke-RscMutateCassandra -CreateSource -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	sourceData = @{
+		# OPTIONAL
+		async = <System.Boolean>
+		# OPTIONAL
+		cassandraYaml = @(
+			<System.String>
+		)
+		# OPTIONAL
+		dseYaml = @(
+			<System.String>
+		)
+		# OPTIONAL
+		enableSsl = <System.Boolean>
+		# OPTIONAL
+		httpsCertificate = <System.String>
+		# OPTIONAL
+		ignoreSecondaries = @(
+			<System.String>
+		)
+		# OPTIONAL
+		jmxPassword = <System.String>
+		# OPTIONAL
+		jmxUser = <System.String>
+		# OPTIONAL
+		parameterEncoded = <System.Boolean>
+		# OPTIONAL
+		sourceAuthKey = <System.String>
+		# OPTIONAL
+		sourceAuthKeyfile = <System.String>
+		# OPTIONAL
+		sourceAuthPassphrase = <System.String>
+		# OPTIONAL
+		sourceDriverPassword = <System.String>
+		# OPTIONAL
+		sourceDriverUser = <System.String>
+		# OPTIONAL
+		sourceHttpsPort = <System.String>
+		# OPTIONAL
+		sourcePassword = <System.String>
+		# OPTIONAL
+		sourcePort = <System.String>
+		# OPTIONAL
+		sourceRpcPort = <System.String>
+		# OPTIONAL
+		sourceSshPort = <System.String>
+		# OPTIONAL
+		sourceUser = <System.String>
+		# OPTIONAL
+		sslCaCerts = <System.String>
+		# OPTIONAL
+		sslCertfile = <System.String>
+		# OPTIONAL
+		sslKeyfile = <System.String>
+		# REQUIRED
+		sourceType = <SourceSourceType>
+		# OPTIONAL
+		sslCertReqs = <SourceSslCertReqs>
+		# REQUIRED
+		sourceIp = @(
+			<System.String>
+		)
+		# REQUIRED
+		sourceName = <System.String>
+	}
+}
+"@
 Write-Message "Invoke-RscMutateCassandra -CreateSource" @"
 Create a cassandra source.
 "@ "[GraphQL: createCassandraSource]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -1225,6 +4048,78 @@ Create a cassandra source.
 $inputs = Invoke-RscMutateCassandra -UpdateSource -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	sourceData = @{
+		# OPTIONAL
+		async = <System.Boolean>
+		# OPTIONAL
+		cassandraYaml = @(
+			<System.String>
+		)
+		# OPTIONAL
+		dseYaml = @(
+			<System.String>
+		)
+		# OPTIONAL
+		enableSsl = <System.Boolean>
+		# OPTIONAL
+		httpsCertificate = <System.String>
+		# OPTIONAL
+		ignoreSecondaries = @(
+			<System.String>
+		)
+		# OPTIONAL
+		jmxPassword = <System.String>
+		# OPTIONAL
+		jmxUser = <System.String>
+		# OPTIONAL
+		parameterEncoded = <System.Boolean>
+		# OPTIONAL
+		sourceAuthKey = <System.String>
+		# OPTIONAL
+		sourceAuthKeyfile = <System.String>
+		# OPTIONAL
+		sourceAuthPassphrase = <System.String>
+		# OPTIONAL
+		sourceDriverPassword = <System.String>
+		# OPTIONAL
+		sourceDriverUser = <System.String>
+		# OPTIONAL
+		sourceHttpsPort = <System.String>
+		# OPTIONAL
+		sourcePassword = <System.String>
+		# OPTIONAL
+		sourcePort = <System.String>
+		# OPTIONAL
+		sourceRpcPort = <System.String>
+		# OPTIONAL
+		sourceSshPort = <System.String>
+		# OPTIONAL
+		sourceUser = <System.String>
+		# OPTIONAL
+		sslCaCerts = <System.String>
+		# OPTIONAL
+		sslCertfile = <System.String>
+		# OPTIONAL
+		sslKeyfile = <System.String>
+		# REQUIRED
+		sourceType = <SourceSourceType>
+		# OPTIONAL
+		sslCertReqs = <SourceSslCertReqs>
+		# REQUIRED
+		sourceIp = @(
+			<System.String>
+		)
+		# REQUIRED
+		sourceName = <System.String>
+	}
+}
+"@
 Write-Message "Invoke-RscMutateCassandra -UpdateSource" @"
 Update a cassandra source.
 "@ "[GraphQL: updateCassandraSource]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -1237,6 +4132,17 @@ Update a cassandra source.
 $inputs = Invoke-RscMutateCassandra -DeleteSource -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	sourceType = <V2DeleteMosaicSourceRequestSourceType>
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	sourceName = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateCassandra -DeleteSource" @"
 Delete a cassandra source.
 "@ "[GraphQL: deleteCassandraSource]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -1249,6 +4155,24 @@ Delete a cassandra source.
 $inputs = Invoke-RscMutateCassandra -BulkDeleteSources -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	sourceType = <V2BulkDeleteMosaicSourcesRequestSourceType>
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	sourceData = @{
+		# OPTIONAL
+		async = <System.Boolean>
+		# REQUIRED
+		sourceNames = @(
+			<System.String>
+		)
+	}
+}
+"@
 Write-Message "Invoke-RscMutateCassandra -BulkDeleteSources" @"
 Bulk Delete cassandra sources.
 "@ "[GraphQL: bulkDeleteCassandraSources]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -1262,6 +4186,21 @@ Bulk Delete cassandra sources.
 $inputs = Invoke-RscMutateCluster -AddNodesToCloud -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	numberOfNodes = <System.Int32>
+	# OPTIONAL
+	shouldKeepResourcesOnFailure = <System.Boolean>
+	# REQUIRED
+	cloudAccountId = <System.String>
+	# REQUIRED
+	vendor = <CcpVendorType>
+	# REQUIRED
+	clusterUuid = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateCluster -AddNodesToCloud" @"
 Add nodes to cloud cluster.
 "@ "[GraphQL: addNodesToCloudCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -1274,6 +4213,13 @@ Add nodes to cloud cluster.
 $inputs = Invoke-RscMutateCluster -RegisterCloud -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	clusterUuid = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateCluster -RegisterCloud" @"
 Register a cloud cluster.
 "@ "[GraphQL: registerCloudCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -1286,6 +4232,24 @@ Register a cloud cluster.
 $inputs = Invoke-RscMutateCluster -CreateFailover -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		configuredSlaDomainId = <System.String>
+		# REQUIRED
+		hostIds = @(
+			<System.String>
+		)
+		# REQUIRED
+		name = <System.String>
+	}
+}
+"@
 Write-Message "Invoke-RscMutateCluster -CreateFailover" @"
 Create a failover cluster
 
@@ -1301,6 +4265,24 @@ Create a failover cluster.
 $inputs = Invoke-RscMutateCluster -UpdateFailover -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+	# REQUIRED
+	updateProperties = @{
+		# OPTIONAL
+		configuredSlaDomainId = <System.String>
+		# REQUIRED
+		hostIds = @(
+			<System.String>
+		)
+		# REQUIRED
+		name = <System.String>
+	}
+}
+"@
 Write-Message "Invoke-RscMutateCluster -UpdateFailover" @"
 Update a failover cluster
 
@@ -1316,6 +4298,15 @@ Update failover cluster with specified properties.
 $inputs = Invoke-RscMutateCluster -DeleteFailover -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	preserveSnapshots = <System.Boolean>
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateCluster -DeleteFailover" @"
 Delete a failover cluster
 
@@ -1331,6 +4322,17 @@ Delete a failover cluster.
 $inputs = Invoke-RscMutateCluster -BulkDeleteFailover -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	preserveSnapshots = <System.Boolean>
+	# REQUIRED
+	ids = @(
+		<System.String>
+	)
+}
+"@
 Write-Message "Invoke-RscMutateCluster -BulkDeleteFailover" @"
 Delete the provided failover clusters
 
@@ -1346,6 +4348,26 @@ Delete the provided failover clusters.
 $inputs = Invoke-RscMutateCluster -AddK8s -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		registry = <System.String>
+		# OPTIONAL
+		distribution = <System.String>
+		# OPTIONAL
+		region = <System.String>
+		# REQUIRED
+		kubeconfig = <System.String>
+		# REQUIRED
+		name = <System.String>
+	}
+}
+"@
 Write-Message "Invoke-RscMutateCluster -AddK8s" @"
 Add a Kubernetes cluster
 
@@ -1361,6 +4383,15 @@ Adds a Kubernetes cluster to the Rubrik cluster.
 $inputs = Invoke-RscMutateCluster -DeleteK8s -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	preserveSnapshots = <System.Boolean>
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateCluster -DeleteK8s" @"
 Delete a Kubernetes cluster
 
@@ -1376,6 +4407,15 @@ Deletes a Kubernetes cluster by specifying the cluster ID.
 $inputs = Invoke-RscMutateCluster -RefreshK8sV2 -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateCluster -RefreshK8sV2" @"
 Initiate an on-demand refresh for a Kubernetes cluster
 
@@ -1391,6 +4431,43 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
 $inputs = Invoke-RscMutateCluster -CreateK8s -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	cdmClusterId = <System.String>
+	# REQUIRED
+	hostList = @(
+		<System.String>
+	)
+	# REQUIRED
+	name = <System.String>
+	# REQUIRED
+	port = <System.Int32>
+	# REQUIRED
+	rbsPortRanges = @(
+		@{
+			# OPTIONAL
+			portMin = <System.Int32>
+			# OPTIONAL
+			portMax = <System.Int32>
+		}
+	)
+	# OPTIONAL
+	userDrivenPortRanges = @(
+		@{
+			# OPTIONAL
+			portMin = <System.Int32>
+			# OPTIONAL
+			portMax = <System.Int32>
+		}
+	)
+	# REQUIRED
+	type = <K8sClusterProtoType>
+	# OPTIONAL
+	proxyUrl = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateCluster -CreateK8s" @"
 Add a Kubernetes cluster.
 "@ "[GraphQL: createK8sCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -1403,6 +4480,13 @@ Add a Kubernetes cluster.
 $inputs = Invoke-RscMutateCluster -RefreshK8s -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	k8sClusterId = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateCluster -RefreshK8s" @"
 Refresh resources of a Kubernetes cluster.
 "@ "[GraphQL: refreshK8sCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -1415,6 +4499,13 @@ Refresh resources of a Kubernetes cluster.
 $inputs = Invoke-RscMutateCluster -ArchiveK8s -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	clusterId = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateCluster -ArchiveK8s" @"
 Archive a Kubernetes cluster.
 "@ "[GraphQL: archiveK8sCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -1427,6 +4518,14 @@ Archive a Kubernetes cluster.
 $inputs = Invoke-RscMutateCluster -RemoveCdm -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.clusterUUID = <System.String>
+# REQUIRED
+$inputs.Arg.isForce = <System.Boolean>
+# OPTIONAL
+$inputs.Arg.expireInDays = <System.Int64>
+"@
 Write-Message "Invoke-RscMutateCluster -RemoveCdm" @"
 
 "@ "[GraphQL: removeCdmCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -1439,6 +4538,89 @@ Write-Message "Invoke-RscMutateCluster -RemoveCdm" @"
 $inputs = Invoke-RscMutateCluster -RecoverCloud -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	adminPassword = <System.String>
+	# OPTIONAL
+	userEmail = <System.String>
+	# REQUIRED
+	cloudAccountId = <System.String>
+	# REQUIRED
+	clusterUuid = <System.String>
+	# OPTIONAL
+	azureEsResourceGroup = <System.String>
+	# OPTIONAL
+	azureVmConfig = @{
+		# OPTIONAL
+		resourceGroup = <System.String>
+		# OPTIONAL
+		cdmVersion = <System.String>
+		# OPTIONAL
+		location = <System.String>
+		# OPTIONAL
+		nodeSizeGb = <System.Int32>
+		# OPTIONAL
+		networkResourceGroup = <System.String>
+		# OPTIONAL
+		vnetResourceGroup = <System.String>
+		# OPTIONAL
+		networkSecurityGroup = <System.String>
+		# OPTIONAL
+		networkSecurityResourceGroup = <System.String>
+		# OPTIONAL
+		vnet = <System.String>
+		# OPTIONAL
+		subnet = <System.String>
+		# OPTIONAL
+		tags = <System.String>
+		# OPTIONAL
+		vmImage = <System.String>
+		# OPTIONAL
+		cdmProduct = <System.String>
+		# OPTIONAL
+		vmType = <VmType>
+		# OPTIONAL
+		instanceType = <AzureInstanceType>
+	}
+	# OPTIONAL
+	awsVmConfig = @{
+		# OPTIONAL
+		cdmVersion = <System.String>
+		# OPTIONAL
+		nodeSizeGb = <System.Int32>
+		# OPTIONAL
+		subnet = <System.String>
+		# OPTIONAL
+		tags = <System.String>
+		# OPTIONAL
+		imageId = <System.String>
+		# OPTIONAL
+		instanceProfileName = <System.String>
+		# OPTIONAL
+		cdmProduct = <System.String>
+		# OPTIONAL
+		vmType = <VmType>
+		# OPTIONAL
+		securityGroups = @(
+			<System.String>
+		)
+		# OPTIONAL
+		instanceType = <AwsInstanceType>
+	}
+	# OPTIONAL
+	awsRegion = <System.String>
+	# REQUIRED
+	shouldDisableAwsApiTermination = <System.Boolean>
+	# REQUIRED
+	shouldKeepClusterOnFailure = <System.Boolean>
+	# OPTIONAL
+	ntpServers = @(
+		<System.String>
+	)
+}
+"@
 Write-Message "Invoke-RscMutateCluster -RecoverCloud" @"
 Recover a Rubrik Cloud Cluster.
 "@ "[GraphQL: recoverCloudCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -1452,6 +4634,26 @@ Recover a Rubrik Cloud Cluster.
 $inputs = Invoke-RscMutateDb2 -AddInstance -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	db2InstanceRequestConfig = @{
+		# REQUIRED
+		hostIds = @(
+			<System.String>
+		)
+		# REQUIRED
+		instanceName = <System.String>
+		# REQUIRED
+		password = <System.String>
+		# REQUIRED
+		username = <System.String>
+	}
+}
+"@
 Write-Message "Invoke-RscMutateDb2 -AddInstance" @"
 Mutation to add a new Db2 instance.
 "@ "[GraphQL: addDb2Instance]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -1464,6 +4666,13 @@ Mutation to add a new Db2 instance.
 $inputs = Invoke-RscMutateDb2 -DeleteInstance -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateDb2 -DeleteInstance" @"
 Mutation to delete existing Db2 instance.
 "@ "[GraphQL: deleteDb2Instance]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -1476,6 +4685,13 @@ Mutation to delete existing Db2 instance.
 $inputs = Invoke-RscMutateDb2 -DiscoverInstance -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateDb2 -DiscoverInstance" @"
 On-demand discovery of a Db2 instance
 
@@ -1491,6 +4707,26 @@ Initiates an on-demand job to discover a Db2 instance.
 $inputs = Invoke-RscMutateDb2 -PatchInstance -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	db2InstanceRequestConfig = @{
+		# OPTIONAL
+		hostIds = @(
+			<System.String>
+		)
+		# OPTIONAL
+		password = <System.String>
+		# OPTIONAL
+		username = <System.String>
+		# OPTIONAL
+		instanceName = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateDb2 -PatchInstance" @"
 Mutation to update an existing Db2 instance.
 "@ "[GraphQL: patchDb2Instance]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -1503,6 +4739,18 @@ Mutation to update an existing Db2 instance.
 $inputs = Invoke-RscMutateDb2 -CreateOnDemandBackup -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	config = @{
+		# OPTIONAL
+		slaId = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateDb2 -CreateOnDemandBackup" @"
 Create on demand database snapshot
 
@@ -1518,6 +4766,15 @@ Initiates a job to take an on demand, full snapshot of a specified Db2 database 
 $inputs = Invoke-RscMutateDb2 -DownloadSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	locationId = <System.String>
+	# REQUIRED
+	snapshotId = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateDb2 -DownloadSnapshot" @"
 Download Db2 database snapshot from archive
 
@@ -1533,6 +4790,20 @@ Downloads a specific Db2 database snapshot from the specified archival location.
 $inputs = Invoke-RscMutateDb2 -DownloadSnapshotsForPointInTimeRecovery -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	downloadConfig = @{
+		# OPTIONAL
+		pointInTime = <DateTime>
+		# REQUIRED
+		preferredLocationId = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateDb2 -DownloadSnapshotsForPointInTimeRecovery" @"
 Download Db2 database snapshots from archive for a point in time recovery
 
@@ -1548,6 +4819,19 @@ Downloads the most recent full snapshot and the log snapshots taken after the fu
 $inputs = Invoke-RscMutateDb2 -ExpireDownloadedSnapshots -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	afterTime = <DateTime>
+	# OPTIONAL
+	beforeTime = <DateTime>
+	# OPTIONAL
+	shouldExpireLogsOnly = <System.Boolean>
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateDb2 -ExpireDownloadedSnapshots" @"
 Expire downloaded snapshots of a Db2 database
 
@@ -1563,6 +4847,20 @@ Requests an asynchronous job to expire all downloaded data and log snapshots. Yo
 $inputs = Invoke-RscMutateDb2 -PatchDatabase -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	db2DatabaseConfig = @{
+		# OPTIONAL
+		backupParallelism = <System.Int32>
+		# OPTIONAL
+		backupSessions = <System.Int32>
+	}
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateDb2 -PatchDatabase" @"
 Update a Db2 database
 
@@ -1578,6 +4876,13 @@ Updating a Db2 database involves modifying the metadata associated with the Db2 
 $inputs = Invoke-RscMutateDb2 -RefreshDatabase -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateDb2 -RefreshDatabase" @"
 On-demand refresh of a Db2 database
 
@@ -1593,6 +4898,13 @@ Initiates an on-demand job to refresh a Db2 database. Currently, this is allowed
 $inputs = Invoke-RscMutateDb2 -DeleteDatabase -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateDb2 -DeleteDatabase" @"
 Delete Db2 database
 
@@ -1609,6 +4921,22 @@ Deletes a Db2 database.
 $inputs = Invoke-RscMutateHyperv -RegisterScvmm -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	scvmm = @{
+		# REQUIRED
+		hostname = <System.String>
+		# REQUIRED
+		runAsAccount = <System.String>
+		# REQUIRED
+		shouldDeployAgent = <System.Boolean>
+	}
+}
+"@
 Write-Message "Invoke-RscMutateHyperv -RegisterScvmm" @"
 Register HyperV SCVMM to Rubrik Cluster.
 "@ "[GraphQL: registerHypervScvmm]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -1621,6 +4949,24 @@ Register HyperV SCVMM to Rubrik Cluster.
 $inputs = Invoke-RscMutateHyperv -ScvmmUpdate -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+	# REQUIRED
+	updateProperties = @{
+		# OPTIONAL
+		configuredSlaDomainId = <System.String>
+		# OPTIONAL
+		hostname = <System.String>
+		# OPTIONAL
+		runAsAccount = <System.String>
+		# OPTIONAL
+		shouldDeployAgent = <System.Boolean>
+	}
+}
+"@
 Write-Message "Invoke-RscMutateHyperv -ScvmmUpdate" @"
 Update properties for a given HyperV SCVMM.
 "@ "[GraphQL: hypervScvmmUpdate]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -1633,6 +4979,13 @@ Update properties for a given HyperV SCVMM.
 $inputs = Invoke-RscMutateHyperv -ScvmmDelete -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateHyperv -ScvmmDelete" @"
 Delete a given HyperV SCVMM.
 "@ "[GraphQL: hypervScvmmDelete]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -1645,6 +4998,13 @@ Delete a given HyperV SCVMM.
 $inputs = Invoke-RscMutateHyperv -RefreshScvmm -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateHyperv -RefreshScvmm" @"
 Refresh a given HyperV SCVMM.
 "@ "[GraphQL: refreshHypervScvmm]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -1657,6 +5017,20 @@ Refresh a given HyperV SCVMM.
 $inputs = Invoke-RscMutateHyperv -OnDemandSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	config = @{
+		# OPTIONAL
+		slaId = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+	# OPTIONAL
+	userNote = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateHyperv -OnDemandSnapshot" @"
 Create on-demand VM snapshot
 
@@ -1672,6 +5046,13 @@ Create an on-demand snapshot for the given VM ID.
 $inputs = Invoke-RscMutateHyperv -DeleteAllSnapshots -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateHyperv -DeleteAllSnapshots" @"
 Delete all snapshots of VM
 
@@ -1687,6 +5068,28 @@ Delete all snapshots of a virtual machine.
 $inputs = Invoke-RscMutateHyperv -ExportVirtualMachine -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		disableNetwork = <System.Boolean>
+		# OPTIONAL
+		hostId = <System.String>
+		# OPTIONAL
+		powerOn = <System.Boolean>
+		# OPTIONAL
+		removeNetworkDevices = <System.Boolean>
+		# OPTIONAL
+		vmName = <System.String>
+		# REQUIRED
+		path = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateHyperv -ExportVirtualMachine" @"
 Export VM snapshot
 
@@ -1702,6 +5105,27 @@ Export snapshot of a vm.
 $inputs = Invoke-RscMutateHyperv -DownloadVirtualMachineSnapshotFiles -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		legalHoldDownloadConfig = @{
+			# REQUIRED
+			isLegalHoldDownload = <System.Boolean>
+		}
+		# REQUIRED
+		paths = @(
+			<System.String>
+		)
+	}
+	# REQUIRED
+	id = <System.String>
+	# OPTIONAL
+	userNote = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateHyperv -DownloadVirtualMachineSnapshotFiles" @"
 Download files from a Hyper-V VM backup
 
@@ -1717,6 +5141,20 @@ Start an asynchronous job to download multiple files and folders from a specifie
 $inputs = Invoke-RscMutateHyperv -InstantRecoverVirtualMachineSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		hostId = <System.String>
+		# OPTIONAL
+		vmName = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateHyperv -InstantRecoverVirtualMachineSnapshot" @"
 Creates an instant recover request that restores a target VM from the given Rubrik-hosted-snapshot
 
@@ -1732,6 +5170,27 @@ The VM will be started with networking enabled. If the VM does not exist anymore
 $inputs = Invoke-RscMutateHyperv -RestoreVirtualMachineSnapshotFiles -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		targetVirtualMachineId = <System.String>
+		# REQUIRED
+		restoreConfig = @(
+			@{
+				# REQUIRED
+				path = <System.String>
+				# REQUIRED
+				restorePath = <System.String>
+			}
+		)
+	}
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateHyperv -RestoreVirtualMachineSnapshotFiles" @"
 Restore files from snapshot
 
@@ -1747,6 +5206,13 @@ Restore files from a snapshot to the original source location.
 $inputs = Invoke-RscMutateHyperv -RegisterAgentVirtualMachine -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateHyperv -RegisterAgentVirtualMachine" @"
 Register the agent installed in VM
 
@@ -1762,6 +5228,15 @@ Register the agent that installed in VM.
 $inputs = Invoke-RscMutateHyperv -DeleteVirtualMachineSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	location = <InternalDeleteHypervVirtualMachineSnapshotRequestLocation>
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateHyperv -DeleteVirtualMachineSnapshot" @"
 Delete VM snapshot
 
@@ -1777,6 +5252,13 @@ Delete a snapshot by expiring it. Snapshot is expired only if it is a manual sna
 $inputs = Invoke-RscMutateHyperv -DownloadVirtualMachineSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateHyperv -DownloadVirtualMachineSnapshot" @"
 Creates a download from archival request
 
@@ -1792,6 +5274,26 @@ Download a snapshot from archival.
 $inputs = Invoke-RscMutateHyperv -CreateVirtualMachineSnapshotMount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	config = @{
+		# OPTIONAL
+		disableNetwork = <System.Boolean>
+		# OPTIONAL
+		hostId = <System.String>
+		# OPTIONAL
+		powerOn = <System.Boolean>
+		# OPTIONAL
+		removeNetworkDevices = <System.Boolean>
+		# OPTIONAL
+		vmName = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateHyperv -CreateVirtualMachineSnapshotMount" @"
 Create a live mount request
 
@@ -1807,6 +5309,18 @@ Create a live mount request with given configuration.
 $inputs = Invoke-RscMutateHyperv -UpdateVirtualMachineSnapshotMount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		powerStatus = <System.Boolean>
+	}
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateHyperv -UpdateVirtualMachineSnapshotMount" @"
 Power a Live Mount on and off
 
@@ -1822,6 +5336,15 @@ Power a specified Live Mount virtual machine on or off. Pass **_true_** to power
 $inputs = Invoke-RscMutateHyperv -DeleteVirtualMachineSnapshotMount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	force = <System.Boolean>
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateHyperv -DeleteVirtualMachineSnapshotMount" @"
 Requst to delete a live mount
 
@@ -1837,6 +5360,13 @@ Create a request to delete a live mount.
 $inputs = Invoke-RscMutateHyperv -RefreshServer -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateHyperv -RefreshServer" @"
 Refresh Hyper-V host metadata
 
@@ -1852,6 +5382,28 @@ Create a job to refresh the metadata for the specified Hyper-V host.
 $inputs = Invoke-RscMutateHyperv -BatchOnDemandBackupVm -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	userNote = <System.String>
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		vms = @(
+			@{
+				# OPTIONAL
+				backupConfig = @{
+					# OPTIONAL
+					slaId = <System.String>
+				}
+				# OPTIONAL
+				vmId = <System.String>
+			}
+		)
+	}
+}
+"@
 Write-Message "Invoke-RscMutateHyperv -BatchOnDemandBackupVm" @"
 Takes bulk on-demand backup of Hyper-V virtual machines
 
@@ -1867,6 +5419,46 @@ Takes on-demand backup of multiple specified Hyper-V virtual machines.
 $inputs = Invoke-RscMutateHyperv -BatchExportVm -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		snapshots = @(
+			@{
+				# OPTIONAL
+				snapshotAfterDate = <DateTime>
+				# OPTIONAL
+				snapshotBeforeDate = <DateTime>
+				# OPTIONAL
+				snapshotId = <System.String>
+				# OPTIONAL
+				vmNamePrefix = <System.String>
+				# REQUIRED
+				exportConfig = @{
+					# OPTIONAL
+					disableNetwork = <System.Boolean>
+					# OPTIONAL
+					hostId = <System.String>
+					# OPTIONAL
+					powerOn = <System.Boolean>
+					# OPTIONAL
+					removeNetworkDevices = <System.Boolean>
+					# OPTIONAL
+					vmName = <System.String>
+					# REQUIRED
+					path = <System.String>
+				}
+				# REQUIRED
+				vmId = <System.String>
+			}
+		)
+	}
+}
+"@
 Write-Message "Invoke-RscMutateHyperv -BatchExportVm" @"
 Exports a snapshot from each member of a set of virtual machines
 
@@ -1882,6 +5474,44 @@ Export a snapshot from each member of a set of virtual machines.
 $inputs = Invoke-RscMutateHyperv -BatchMountVm -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		snapshots = @(
+			@{
+				# OPTIONAL
+				snapshotAfterDate = <DateTime>
+				# OPTIONAL
+				snapshotBeforeDate = <DateTime>
+				# OPTIONAL
+				snapshotId = <System.String>
+				# OPTIONAL
+				vmNamePrefix = <System.String>
+				# REQUIRED
+				mountConfig = @{
+					# OPTIONAL
+					disableNetwork = <System.Boolean>
+					# OPTIONAL
+					hostId = <System.String>
+					# OPTIONAL
+					powerOn = <System.Boolean>
+					# OPTIONAL
+					removeNetworkDevices = <System.Boolean>
+					# OPTIONAL
+					vmName = <System.String>
+				}
+				# REQUIRED
+				vmId = <System.String>
+			}
+		)
+	}
+}
+"@
 Write-Message "Invoke-RscMutateHyperv -BatchMountVm" @"
 Mount snapshots from multiple virtual machines
 
@@ -1897,6 +5527,36 @@ Mounts a batch of snapshots from a group of specified virtual machines.
 $inputs = Invoke-RscMutateHyperv -BatchInstantRecoverVm -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		snapshots = @(
+			@{
+				# OPTIONAL
+				snapshotAfterDate = <DateTime>
+				# OPTIONAL
+				snapshotBeforeDate = <DateTime>
+				# OPTIONAL
+				snapshotId = <System.String>
+				# REQUIRED
+				instantRecoveryConfig = @{
+					# OPTIONAL
+					hostId = <System.String>
+					# OPTIONAL
+					vmName = <System.String>
+				}
+				# REQUIRED
+				vmId = <System.String>
+			}
+		)
+	}
+}
+"@
 Write-Message "Invoke-RscMutateHyperv -BatchInstantRecoverVm" @"
 Instantly recovers snapshots from multiple virtual machines
 
@@ -1912,6 +5572,27 @@ Instantly recovers a batch of snapshots from a group of specified virtual machin
 $inputs = Invoke-RscMutateHyperv -UpdateVirtualMachine -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+	# REQUIRED
+	vmUpdateProperties = @{
+		# OPTIONAL
+		cloudInstantiationSpec = @{
+			# REQUIRED
+			imageRetentionInSeconds = <System.Int64>
+		}
+		# OPTIONAL
+		configuredSlaDomainId = <System.String>
+		# OPTIONAL
+		virtualDiskIdsExcludedFromSnapshot = @(
+			<System.String>
+		)
+	}
+}
+"@
 Write-Message "Invoke-RscMutateHyperv -UpdateVirtualMachine" @"
 Update VM
 
@@ -1927,6 +5608,20 @@ Update VM with specified properties.
 $inputs = Invoke-RscMutateHyperv -DownloadSnapshotFromLocation -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	locationId = <System.String>
+	# REQUIRED
+	snapshotId = <System.String>
+	# REQUIRED
+	downloadConfig = @{
+		# OPTIONAL
+		slaId = <System.String>
+	}
+}
+"@
 Write-Message "Invoke-RscMutateHyperv -DownloadSnapshotFromLocation" @"
 Download a snapshot from a replication target
 
@@ -1943,6 +5638,43 @@ Initiates a job to download a snapshot from the specified location when the snap
 $inputs = Invoke-RscMutateLdap -UpdateIntegration -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.id = <System.String>
+# REQUIRED
+$inputs.Arg.name = <System.String>
+# REQUIRED
+$inputs.Arg.bindUserName = <System.String>
+# REQUIRED
+$inputs.Arg.bindUserPassword = <System.String>
+# OPTIONAL
+$inputs.Arg.baseDn = <System.String>
+# OPTIONAL
+$inputs.Arg.trustedCerts = <System.String>
+# OPTIONAL
+$inputs.Arg.dynamicDnsName = <System.String>
+# OPTIONAL
+$inputs.Arg.ldapServers = @(
+	@{
+		# OPTIONAL
+		hostname = <System.String>
+		# OPTIONAL
+		port = <System.Int32>
+		# OPTIONAL
+		useTls = <System.Boolean>
+}
+)
+# OPTIONAL
+$inputs.Arg.userSearchFilter = <System.String>
+# OPTIONAL
+$inputs.Arg.userNameAttr = <System.String>
+# OPTIONAL
+$inputs.Arg.groupMembershipAttr = <System.String>
+# OPTIONAL
+$inputs.Arg.groupSearchFilter = <System.String>
+# OPTIONAL
+$inputs.Arg.groupMemberAttr = <System.String>
+"@
 Write-Message "Invoke-RscMutateLdap -UpdateIntegration" @"
 Mutate LDAP integration.
 "@ "[GraphQL: updateLdapIntegration]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -1955,6 +5687,10 @@ Mutate LDAP integration.
 $inputs = Invoke-RscMutateLdap -RemoveIntegration -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.id = <System.String>
+"@
 Write-Message "Invoke-RscMutateLdap -RemoveIntegration" @"
 Remove LDAP integration.
 "@ "[GraphQL: removeLdapIntegration]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -1967,6 +5703,12 @@ Remove LDAP integration.
 $inputs = Invoke-RscMutateLdap -DeletePrincipals -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.principalIds = @(
+	<System.String>
+)
+"@
 Write-Message "Invoke-RscMutateLdap -DeletePrincipals" @"
 
 "@ "[GraphQL: deleteLdapPrincipals]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -1979,6 +5721,15 @@ Write-Message "Invoke-RscMutateLdap -DeletePrincipals" @"
 $inputs = Invoke-RscMutateLdap -SetMfaSetting -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	ldapId = <System.String>
+	# OPTIONAL
+	isTotpEnforced = <System.Boolean>
+}
+"@
 Write-Message "Invoke-RscMutateLdap -SetMfaSetting" @"
 Update the MFA settings for the given LDAP integration. Return true when the operation succeeds.
 "@ "[GraphQL: setLdapMfaSetting]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -1992,6 +5743,45 @@ Update the MFA settings for the given LDAP integration. Return true when the ope
 $inputs = Invoke-RscMutateMongo -AddSource -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	mongoSourceAddRequestConfig = @{
+		# OPTIONAL
+		caCertfilePath = <System.String>
+		# OPTIONAL
+		ignoreSecondaries = @(
+			<System.String>
+		)
+		# OPTIONAL
+		sourceDriverPassword = <System.String>
+		# OPTIONAL
+		sourceDriverUser = <System.String>
+		# OPTIONAL
+		sslKeyfilePath = <System.String>
+		# OPTIONAL
+		sslCertfilePath = <System.String>
+		# REQUIRED
+		mongoType = <MongoType>
+		# OPTIONAL
+		sslCertificateRequired = <MongoSslCertificateRequirement>
+		# REQUIRED
+		mongoClientHosts = @(
+			@{
+				# REQUIRED
+				configurationPort = <System.Int32>
+				# REQUIRED
+				hostId = <System.String>
+			}
+		)
+		# REQUIRED
+		sourceName = <System.String>
+	}
+}
+"@
 Write-Message "Invoke-RscMutateMongo -AddSource" @"
 Add a new MongoDB source
 
@@ -2007,6 +5797,13 @@ Adds a new MongoDB source to the Rubrik Cluster.
 $inputs = Invoke-RscMutateMongo -DeleteSource -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateMongo -DeleteSource" @"
 Delete a MongoDB source
 
@@ -2022,6 +5819,13 @@ Deletes a specific MongoDB source.
 $inputs = Invoke-RscMutateMongo -DiscoverSource -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateMongo -DiscoverSource" @"
 Discover a MongoDB source on-demand
 
@@ -2037,6 +5841,32 @@ Initiates an on-demand job to discover a MongoDB source.
 $inputs = Invoke-RscMutateMongo -PatchSource -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+	# REQUIRED
+	mongoSourcePatchRequestConfig = @{
+		# OPTIONAL
+		caCertfilePath = <System.String>
+		# OPTIONAL
+		ignoreSecondaries = @(
+			<System.String>
+		)
+		# OPTIONAL
+		sourceDriverPassword = <System.String>
+		# OPTIONAL
+		sourceDriverUser = <System.String>
+		# OPTIONAL
+		sslKeyfilePath = <System.String>
+		# OPTIONAL
+		sslCertfilePath = <System.String>
+		# OPTIONAL
+		sslCertificateRequired = <MongoSslCertificateRequirement>
+	}
+}
+"@
 Write-Message "Invoke-RscMutateMongo -PatchSource" @"
 Edit a MongoDB source
 
@@ -2052,6 +5882,45 @@ Edits the properties of a MongoDB source. Hosts, name, and type of MongoDB canno
 $inputs = Invoke-RscMutateMongo -RetryAddSource -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+	# REQUIRED
+	mongoSourceRequestConfig = @{
+		# OPTIONAL
+		caCertfilePath = <System.String>
+		# OPTIONAL
+		ignoreSecondaries = @(
+			<System.String>
+		)
+		# OPTIONAL
+		sourceDriverPassword = <System.String>
+		# OPTIONAL
+		sourceDriverUser = <System.String>
+		# OPTIONAL
+		sslKeyfilePath = <System.String>
+		# OPTIONAL
+		sslCertfilePath = <System.String>
+		# REQUIRED
+		mongoType = <MongoType>
+		# OPTIONAL
+		sslCertificateRequired = <MongoSslCertificateRequirement>
+		# REQUIRED
+		mongoClientHosts = @(
+			@{
+				# REQUIRED
+				configurationPort = <System.Int32>
+				# REQUIRED
+				hostId = <System.String>
+			}
+		)
+		# REQUIRED
+		sourceName = <System.String>
+	}
+}
+"@
 Write-Message "Invoke-RscMutateMongo -RetryAddSource" @"
 Update a MongoDB source
 
@@ -2067,6 +5936,20 @@ Updates a MongoDB source details. You can use this endpoint for updating MongoDB
 $inputs = Invoke-RscMutateMongo -AssignSlaToDbCollection -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	input = @{
+		# REQUIRED
+		ids = @(
+			<System.String>
+		)
+		# REQUIRED
+		slaId = <System.String>
+	}
+}
+"@
 Write-Message "Invoke-RscMutateMongo -AssignSlaToDbCollection" @"
 Assign SLA Domain to MongoDB collection objects
 
@@ -2082,9 +5965,72 @@ Assigns SLA Domain to the given MongoDB collection objects.
 $inputs = Invoke-RscMutateMongo -RecoverSource -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	input = @{
+		# OPTIONAL
+		prefix = <System.String>
+		# OPTIONAL
+		restoreDbPassword = <System.String>
+		# OPTIONAL
+		restoreDbUsername = <System.String>
+		# OPTIONAL
+		shouldDropExistingCollection = <System.Boolean>
+		# OPTIONAL
+		sourceCollectionIds = @(
+			<System.String>
+		)
+		# OPTIONAL
+		sourceDatabaseIds = @(
+			<System.String>
+		)
+		# OPTIONAL
+		targetCollectionName = <System.String>
+		# OPTIONAL
+		targetDatabaseName = <System.String>
+		# OPTIONAL
+		versionTime = <DateTime>
+		# REQUIRED
+		sourceMongoClusterId = <System.String>
+		# REQUIRED
+		targetMongoClusterId = <System.String>
+	}
+}
+"@
 Write-Message "Invoke-RscMutateMongo -RecoverSource" @"
 Recover a MongoDB source from Rubrik CDM cluster.
 "@ "[GraphQL: recoverMongoSource]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
+
+
+# -------------------------------------------------------------------
+# Invoke-RscMutateMongo -CreateOnDemandDatabaseBackup
+# -------------------------------------------------------------------
+
+$inputs = Invoke-RscMutateMongo -CreateOnDemandDatabaseBackup -GetInputs
+$fieldTypeName = $inputs.Field.GetType().Name
+$argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		isFullbackup = <System.Boolean>
+		# REQUIRED
+		slaId = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+}
+"@
+Write-Message "Invoke-RscMutateMongo -CreateOnDemandDatabaseBackup" @"
+Take an on-demand snapshot for a MongoDB database
+
+Supported in v9.1
+Initiates a job to take an on-demand, full or incremental snapshot of the specified MongoDB database.
+"@ "[GraphQL: createOnDemandMongoDatabaseBackup]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
@@ -2094,6 +6040,78 @@ Recover a MongoDB source from Rubrik CDM cluster.
 $inputs = Invoke-RscMutateMongo -CreatedbSource -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	sourceData = @{
+		# OPTIONAL
+		async = <System.Boolean>
+		# OPTIONAL
+		cassandraYaml = @(
+			<System.String>
+		)
+		# OPTIONAL
+		dseYaml = @(
+			<System.String>
+		)
+		# OPTIONAL
+		enableSsl = <System.Boolean>
+		# OPTIONAL
+		httpsCertificate = <System.String>
+		# OPTIONAL
+		ignoreSecondaries = @(
+			<System.String>
+		)
+		# OPTIONAL
+		jmxPassword = <System.String>
+		# OPTIONAL
+		jmxUser = <System.String>
+		# OPTIONAL
+		parameterEncoded = <System.Boolean>
+		# OPTIONAL
+		sourceAuthKey = <System.String>
+		# OPTIONAL
+		sourceAuthKeyfile = <System.String>
+		# OPTIONAL
+		sourceAuthPassphrase = <System.String>
+		# OPTIONAL
+		sourceDriverPassword = <System.String>
+		# OPTIONAL
+		sourceDriverUser = <System.String>
+		# OPTIONAL
+		sourceHttpsPort = <System.String>
+		# OPTIONAL
+		sourcePassword = <System.String>
+		# OPTIONAL
+		sourcePort = <System.String>
+		# OPTIONAL
+		sourceRpcPort = <System.String>
+		# OPTIONAL
+		sourceSshPort = <System.String>
+		# OPTIONAL
+		sourceUser = <System.String>
+		# OPTIONAL
+		sslCaCerts = <System.String>
+		# OPTIONAL
+		sslCertfile = <System.String>
+		# OPTIONAL
+		sslKeyfile = <System.String>
+		# REQUIRED
+		sourceType = <SourceSourceType>
+		# OPTIONAL
+		sslCertReqs = <SourceSslCertReqs>
+		# REQUIRED
+		sourceIp = @(
+			<System.String>
+		)
+		# REQUIRED
+		sourceName = <System.String>
+	}
+}
+"@
 Write-Message "Invoke-RscMutateMongo -CreatedbSource" @"
 Register a new MongoDB source to NoSQL cluster. 
 For MongoDB, the term ""source"" is usually used for either a replica set or a sharded cluster.
@@ -2108,6 +6126,78 @@ For more info on MongoDB cluster, refer to: https://docs.mongodb.com/manual/intr
 $inputs = Invoke-RscMutateMongo -UpdatedbSource -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	sourceData = @{
+		# OPTIONAL
+		async = <System.Boolean>
+		# OPTIONAL
+		cassandraYaml = @(
+			<System.String>
+		)
+		# OPTIONAL
+		dseYaml = @(
+			<System.String>
+		)
+		# OPTIONAL
+		enableSsl = <System.Boolean>
+		# OPTIONAL
+		httpsCertificate = <System.String>
+		# OPTIONAL
+		ignoreSecondaries = @(
+			<System.String>
+		)
+		# OPTIONAL
+		jmxPassword = <System.String>
+		# OPTIONAL
+		jmxUser = <System.String>
+		# OPTIONAL
+		parameterEncoded = <System.Boolean>
+		# OPTIONAL
+		sourceAuthKey = <System.String>
+		# OPTIONAL
+		sourceAuthKeyfile = <System.String>
+		# OPTIONAL
+		sourceAuthPassphrase = <System.String>
+		# OPTIONAL
+		sourceDriverPassword = <System.String>
+		# OPTIONAL
+		sourceDriverUser = <System.String>
+		# OPTIONAL
+		sourceHttpsPort = <System.String>
+		# OPTIONAL
+		sourcePassword = <System.String>
+		# OPTIONAL
+		sourcePort = <System.String>
+		# OPTIONAL
+		sourceRpcPort = <System.String>
+		# OPTIONAL
+		sourceSshPort = <System.String>
+		# OPTIONAL
+		sourceUser = <System.String>
+		# OPTIONAL
+		sslCaCerts = <System.String>
+		# OPTIONAL
+		sslCertfile = <System.String>
+		# OPTIONAL
+		sslKeyfile = <System.String>
+		# REQUIRED
+		sourceType = <SourceSourceType>
+		# OPTIONAL
+		sslCertReqs = <SourceSslCertReqs>
+		# REQUIRED
+		sourceIp = @(
+			<System.String>
+		)
+		# REQUIRED
+		sourceName = <System.String>
+	}
+}
+"@
 Write-Message "Invoke-RscMutateMongo -UpdatedbSource" @"
 Modifies configuration for a registered MongoDB source in NoSQL cluster.
 "@ "[GraphQL: updateMongodbSource]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -2120,6 +6210,17 @@ Modifies configuration for a registered MongoDB source in NoSQL cluster.
 $inputs = Invoke-RscMutateMongo -DeletedbSource -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	sourceType = <V2DeleteMosaicSourceRequestSourceType>
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	sourceName = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateMongo -DeletedbSource" @"
 Remove a registered MongoDB source from NoSQL cluster.
 "@ "[GraphQL: deleteMongodbSource]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -2132,6 +6233,24 @@ Remove a registered MongoDB source from NoSQL cluster.
 $inputs = Invoke-RscMutateMongo -BulkDeletedbSources -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	sourceType = <V2BulkDeleteMosaicSourcesRequestSourceType>
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	sourceData = @{
+		# OPTIONAL
+		async = <System.Boolean>
+		# REQUIRED
+		sourceNames = @(
+			<System.String>
+		)
+	}
+}
+"@
 Write-Message "Invoke-RscMutateMongo -BulkDeletedbSources" @"
 Bulk Delete Sources
 
@@ -2146,6 +6265,70 @@ Supported in m3.2.0-m4.2.0.
 $inputs = Invoke-RscMutateMongo -RecoverdbSource -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	recoveryData = @{
+		# OPTIONAL
+		destinationManagementObjects = @{
+			# OPTIONAL
+			databases = @(
+				@{
+					# OPTIONAL
+					dbName = <System.String>
+					# OPTIONAL
+					tables = @(
+						<System.String>
+					)
+				}
+			)
+		}
+		# OPTIONAL
+		destinationSourceName = <System.String>
+		# OPTIONAL
+		keyspaceConfig = <System.String>
+		# OPTIONAL
+		maxDiskUsage = <System.String>
+		# OPTIONAL
+		restoreDbUserPwd = <System.String>
+		# OPTIONAL
+		restoreDbUsername = <System.String>
+		# OPTIONAL
+		startTimestamp = <System.Int32>
+		# OPTIONAL
+		targetEncryptionKey = <System.String>
+		# OPTIONAL
+		targetQuery = <System.String>
+		# OPTIONAL
+		sourceType = <MosaicRetrieveRequestSourceType>
+		# REQUIRED
+		destinationPath = <System.String>
+		# REQUIRED
+		managementObjects = @{
+			# OPTIONAL
+			databases = @(
+				@{
+					# OPTIONAL
+					dbName = <System.String>
+					# OPTIONAL
+					tables = @(
+						<System.String>
+					)
+				}
+			)
+		}
+		# REQUIRED
+		parameterEncoded = <System.Boolean>
+		# REQUIRED
+		sourceName = <System.String>
+		# REQUIRED
+		versionTime = <System.Int32>
+	}
+}
+"@
 Write-Message "Invoke-RscMutateMongo -RecoverdbSource" @"
 Recover a MongoDB source from NoSQL cluster.
 "@ "[GraphQL: recoverMongodbSource]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -2159,6 +6342,65 @@ Recover a MongoDB source from NoSQL cluster.
 $inputs = Invoke-RscMutateMssql -BrowseDatabaseSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		endPoint = @{
+			# OPTIONAL
+			lsnPoint = @{
+				# OPTIONAL
+				recoveryForkGuid = <System.String>
+				# REQUIRED
+				lsn = <System.String>
+			}
+			# OPTIONAL
+			timestampMs = <System.Int64>
+			# OPTIONAL
+			date = <DateTime>
+		}
+		# OPTIONAL
+		legalHoldDownloadConfig = @{
+			# REQUIRED
+			isLegalHoldDownload = <System.Boolean>
+		}
+		# OPTIONAL
+		recoveryPoint = @{
+			# OPTIONAL
+			lsnPoint = @{
+				# OPTIONAL
+				recoveryForkGuid = <System.String>
+				# REQUIRED
+				lsn = <System.String>
+			}
+			# OPTIONAL
+			timestampMs = <System.Int64>
+			# OPTIONAL
+			date = <DateTime>
+		}
+		# OPTIONAL
+		startPoint = @{
+			# OPTIONAL
+			lsnPoint = @{
+				# OPTIONAL
+				recoveryForkGuid = <System.String>
+				# REQUIRED
+				lsn = <System.String>
+			}
+			# OPTIONAL
+			timestampMs = <System.Int64>
+			# OPTIONAL
+			date = <DateTime>
+		}
+		# OPTIONAL
+		backupType = <MssqlBackupType>
+	}
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateMssql -BrowseDatabaseSnapshot" @"
 List snapshots and logs from a Mssql Database. This endpoint is only used to fetch data, but uses a mutation instead of a query due to limitations with the CDM API.
 "@ "[GraphQL: browseMssqlDatabaseSnapshot]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -2171,6 +6413,57 @@ List snapshots and logs from a Mssql Database. This endpoint is only used to fet
 $inputs = Invoke-RscMutateMssql -ExportDatabase -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		allowOverwrite = <System.Boolean>
+		# OPTIONAL
+		finishRecovery = <System.Boolean>
+		# OPTIONAL
+		maxDataStreams = <System.Int32>
+		# OPTIONAL
+		targetDataFilePath = <System.String>
+		# OPTIONAL
+		targetFilePaths = @(
+			@{
+				# OPTIONAL
+				newFilename = <System.String>
+				# OPTIONAL
+				newLogicalName = <System.String>
+				# REQUIRED
+				exportPath = <System.String>
+				# REQUIRED
+				logicalName = <System.String>
+			}
+		)
+		# OPTIONAL
+		targetLogFilePath = <System.String>
+		# REQUIRED
+		recoveryPoint = @{
+			# OPTIONAL
+			lsnPoint = @{
+				# OPTIONAL
+				recoveryForkGuid = <System.String>
+				# REQUIRED
+				lsn = <System.String>
+			}
+			# OPTIONAL
+			timestampMs = <System.Int64>
+			# OPTIONAL
+			date = <DateTime>
+		}
+		# REQUIRED
+		targetDatabaseName = <System.String>
+		# REQUIRED
+		targetInstanceId = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateMssql -ExportDatabase" @"
 Create a request to export a Microsoft SQL database.
 "@ "[GraphQL: exportMssqlDatabase]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -2183,6 +6476,34 @@ Create a request to export a Microsoft SQL database.
 $inputs = Invoke-RscMutateMssql -RestoreDatabase -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		finishRecovery = <System.Boolean>
+		# OPTIONAL
+		maxDataStreams = <System.Int32>
+		# REQUIRED
+		recoveryPoint = @{
+			# OPTIONAL
+			lsnPoint = @{
+				# OPTIONAL
+				recoveryForkGuid = <System.String>
+				# REQUIRED
+				lsn = <System.String>
+			}
+			# OPTIONAL
+			timestampMs = <System.Int64>
+			# OPTIONAL
+			date = <DateTime>
+		}
+	}
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateMssql -RestoreDatabase" @"
 Create a request to restore a Microsoft SQL database.
 "@ "[GraphQL: restoreMssqlDatabase]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -2195,6 +6516,91 @@ Create a request to restore a Microsoft SQL database.
 $inputs = Invoke-RscMutateMssql -BulkUpdateDbs -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	dbsUpdateProperties = @(
+		@{
+			# REQUIRED
+			databaseId = <System.String>
+			# REQUIRED
+			updateProperties = @{
+				# OPTIONAL
+				configuredSlaDomainId = <System.String>
+				# OPTIONAL
+				maxDataStreams = <System.Int32>
+				# OPTIONAL
+				postBackupScript = @{
+					# REQUIRED
+					scriptErrorAction = <ScriptErrorAction>
+					# REQUIRED
+					scriptPath = <System.String>
+					# REQUIRED
+					timeoutMs = <System.Int64>
+				}
+				# OPTIONAL
+				preBackupScript = @{
+					# REQUIRED
+					scriptErrorAction = <ScriptErrorAction>
+					# REQUIRED
+					scriptPath = <System.String>
+					# REQUIRED
+					timeoutMs = <System.Int64>
+				}
+				# OPTIONAL
+				isPaused = <System.Boolean>
+				# OPTIONAL
+				shouldForceFull = <System.Boolean>
+				# OPTIONAL
+				mssqlNonSlaProperties = @{
+					# OPTIONAL
+					copyOnly = <System.Boolean>
+					# OPTIONAL
+					logBackupFrequencyInSeconds = <System.Int32>
+					# OPTIONAL
+					logRetentionHours = <System.Int32>
+				}
+				# OPTIONAL
+				mssqlSlaPatchProperties = @{
+					# OPTIONAL
+					configuredSlaDomainId = <System.String>
+					# OPTIONAL
+					useConfiguredDefaultLogRetention = <System.Boolean>
+					# OPTIONAL
+					mssqlSlaRelatedProperties = @{
+						# OPTIONAL
+						copyOnly = <System.Boolean>
+						# OPTIONAL
+						logBackupFrequencyInSeconds = <System.Int32>
+						# OPTIONAL
+						logRetentionHours = <System.Int32>
+						# OPTIONAL
+						hasLogConfigFromSla = <System.Boolean>
+						# OPTIONAL
+						hostLogRetention = <System.Int32>
+					}
+				}
+				# OPTIONAL
+				mssqlSlaRelatedProperties = @{
+					# OPTIONAL
+					copyOnly = <System.Boolean>
+					# OPTIONAL
+					logBackupFrequencyInSeconds = <System.Int32>
+					# OPTIONAL
+					logRetentionHours = <System.Int32>
+					# OPTIONAL
+					hasLogConfigFromSla = <System.Boolean>
+					# OPTIONAL
+					hostLogRetention = <System.Int32>
+				}
+			}
+		}
+	)
+}
+"@
 Write-Message "Invoke-RscMutateMssql -BulkUpdateDbs" @"
 Update multiple Microsoft SQL databases with the specified properties.
 "@ "[GraphQL: bulkUpdateMssqlDbs]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -2207,6 +6613,13 @@ Update multiple Microsoft SQL databases with the specified properties.
 $inputs = Invoke-RscMutateMssql -TakeLogBackup -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateMssql -TakeLogBackup" @"
 Take an on-demand log backup for a Microsoft SQL database.
 "@ "[GraphQL: takeMssqlLogBackup]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -2219,6 +6632,25 @@ Take an on-demand log backup for a Microsoft SQL database.
 $inputs = Invoke-RscMutateMssql -CreateOnDemandBackup -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		forceFullSnapshot = <System.Boolean>
+		# OPTIONAL
+		baseOnDemandSnapshotConfig = @{
+			# OPTIONAL
+			slaId = <System.String>
+		}
+	}
+	# REQUIRED
+	id = <System.String>
+	# OPTIONAL
+	userNote = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateMssql -CreateOnDemandBackup" @"
 Take an on-demand backup of a Microsoft SQL Database
 "@ "[GraphQL: createOnDemandMssqlBackup]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -2231,6 +6663,13 @@ Take an on-demand backup of a Microsoft SQL Database
 $inputs = Invoke-RscMutateMssql -DeleteDbSnapshots -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateMssql -DeleteDbSnapshots" @"
 Delete snapshots of a Microsoft SQL Database.
 "@ "[GraphQL: deleteMssqlDbSnapshots]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -2243,6 +6682,15 @@ Delete snapshots of a Microsoft SQL Database.
 $inputs = Invoke-RscMutateMssql -DeleteLiveMount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	force = <System.Boolean>
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateMssql -DeleteLiveMount" @"
 Delete a Live Mount of a SQL Server database
 
@@ -2258,6 +6706,43 @@ Create an async request to delete a Live Mount of a SQL Server database. Poll th
 $inputs = Invoke-RscMutateMssql -BulkCreateOnDemandBackup -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		availabilityGroupIds = @(
+			<System.String>
+		)
+		# OPTIONAL
+		databaseIds = @(
+			<System.String>
+		)
+		# OPTIONAL
+		forceFullSnapshot = <System.Boolean>
+		# OPTIONAL
+		hostIds = @(
+			<System.String>
+		)
+		# OPTIONAL
+		instanceIds = @(
+			<System.String>
+		)
+		# OPTIONAL
+		windowsClusterIds = @(
+			<System.String>
+		)
+		# OPTIONAL
+		baseOnDemandSnapshotConfig = @{
+			# OPTIONAL
+			slaId = <System.String>
+		}
+	}
+	# OPTIONAL
+	userNote = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateMssql -BulkCreateOnDemandBackup" @"
 Take a bulk on-demand backup of a Microsoft SQL Database.
 "@ "[GraphQL: bulkCreateOnDemandMssqlBackup]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -2270,6 +6755,36 @@ Take a bulk on-demand backup of a Microsoft SQL Database.
 $inputs = Invoke-RscMutateMssql -CreateLiveMount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		targetInstanceId = <System.String>
+		# OPTIONAL
+		recoveryModel = <MssqlDatabaseRecoveryModel>
+		# REQUIRED
+		mountedDatabaseName = <System.String>
+		# REQUIRED
+		recoveryPoint = @{
+			# OPTIONAL
+			lsnPoint = @{
+				# OPTIONAL
+				recoveryForkGuid = <System.String>
+				# REQUIRED
+				lsn = <System.String>
+			}
+			# OPTIONAL
+			timestampMs = <System.Int64>
+			# OPTIONAL
+			date = <DateTime>
+		}
+	}
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateMssql -CreateLiveMount" @"
 Create live mount of a Microsoft SQL Database.
 "@ "[GraphQL: createMssqlLiveMount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -2282,6 +6797,20 @@ Create live mount of a Microsoft SQL Database.
 $inputs = Invoke-RscMutateMssql -UpdateLogShippingConfiguration -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		makeupReseedLimit = <System.Int32>
+	}
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateMssql -UpdateLogShippingConfiguration" @"
 Update log shipping configuration of a Microsoft SQL Database.
 "@ "[GraphQL: updateMssqlLogShippingConfiguration]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -2294,6 +6823,30 @@ Update log shipping configuration of a Microsoft SQL Database.
 $inputs = Invoke-RscMutateMssql -DownloadDatabaseFilesFromArchivalLocation -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		recoveryPoint = @{
+			# OPTIONAL
+			lsnPoint = @{
+				# OPTIONAL
+				recoveryForkGuid = <System.String>
+				# REQUIRED
+				lsn = <System.String>
+			}
+			# OPTIONAL
+			timestampMs = <System.Int64>
+			# OPTIONAL
+			date = <DateTime>
+		}
+	}
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateMssql -DownloadDatabaseFilesFromArchivalLocation" @"
 Download Microsoft SQL Database backup files from archival location.
 "@ "[GraphQL: downloadMssqlDatabaseFilesFromArchivalLocation]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -2306,6 +6859,27 @@ Download Microsoft SQL Database backup files from archival location.
 $inputs = Invoke-RscMutateMssql -DownloadDatabaseBackupFiles -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		legalHoldDownloadConfig = @{
+			# REQUIRED
+			isLegalHoldDownload = <System.Boolean>
+		}
+		# REQUIRED
+		items = @(
+			<System.String>
+		)
+	}
+	# REQUIRED
+	id = <System.String>
+	# OPTIONAL
+	userNote = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateMssql -DownloadDatabaseBackupFiles" @"
 Downloads a list of snapshot and log backups from a Microsoft SQL database
 
@@ -2321,6 +6895,44 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
 $inputs = Invoke-RscMutateMssql -AssignSlaDomainProperties -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	updateInfo = @{
+		# OPTIONAL
+		shouldApplyToExistingSnapshots = <System.Boolean>
+		# OPTIONAL
+		shouldApplyToNonPolicySnapshots = <System.Boolean>
+		# OPTIONAL
+		mssqlSlaPatchProperties = @{
+			# OPTIONAL
+			configuredSlaDomainId = <System.String>
+			# OPTIONAL
+			useConfiguredDefaultLogRetention = <System.Boolean>
+			# OPTIONAL
+			mssqlSlaRelatedProperties = @{
+				# OPTIONAL
+				copyOnly = <System.Boolean>
+				# OPTIONAL
+				logBackupFrequencyInSeconds = <System.Int32>
+				# OPTIONAL
+				logRetentionHours = <System.Int32>
+				# OPTIONAL
+				hasLogConfigFromSla = <System.Boolean>
+				# OPTIONAL
+				hostLogRetention = <System.Int32>
+			}
+		}
+		# OPTIONAL
+		existingSnapshotRetention = <ExistingSnapshotRetention>
+		# REQUIRED
+		ids = @(
+			<System.String>
+		)
+	}
+}
+"@
 Write-Message "Invoke-RscMutateMssql -AssignSlaDomainProperties" @"
 Assign SLA domain properties to Mssql objects.
 "@ "[GraphQL: assignMssqlSlaDomainProperties]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -2333,6 +6945,24 @@ Assign SLA domain properties to Mssql objects.
 $inputs = Invoke-RscMutateMssql -UpdateDefaultProperties -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	defaultProperties = @{
+		# OPTIONAL
+		cbtStatus = <System.Boolean>
+		# OPTIONAL
+		logBackupFrequencyInSeconds = <System.Int64>
+		# OPTIONAL
+		logRetentionTimeInHours = <System.Int32>
+		# OPTIONAL
+		shouldUseDefaultBackupLocation = <System.Boolean>
+	}
+}
+"@
 Write-Message "Invoke-RscMutateMssql -UpdateDefaultProperties" @"
 Update the default properties for Microsoft SQL databases.
 "@ "[GraphQL: updateMssqlDefaultProperties]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -2345,6 +6975,53 @@ Update the default properties for Microsoft SQL databases.
 $inputs = Invoke-RscMutateMssql -CreateLogShippingConfiguration -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		makeupReseedLimit = <System.Int32>
+		# OPTIONAL
+		mssqlLogShippingCreateConfig = @{
+			# OPTIONAL
+			maxDataStreams = <System.Int32>
+			# OPTIONAL
+			targetDataFilePath = <System.String>
+			# OPTIONAL
+			targetFilePaths = @(
+				@{
+					# OPTIONAL
+					newFilename = <System.String>
+					# OPTIONAL
+					newLogicalName = <System.String>
+					# REQUIRED
+					exportPath = <System.String>
+					# REQUIRED
+					logicalName = <System.String>
+				}
+			)
+			# OPTIONAL
+			targetLogFilePath = <System.String>
+			# OPTIONAL
+			mssqlLogShippingTargetStateOptions = @{
+				# OPTIONAL
+				shouldDisconnectStandbyUsers = <System.Boolean>
+				# REQUIRED
+				state = <MssqlLogShippingOkState>
+			}
+			# REQUIRED
+			targetDatabaseName = <System.String>
+			# REQUIRED
+			targetInstanceId = <System.String>
+		}
+	}
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateMssql -CreateLogShippingConfiguration" @"
 Create log shipping configuration of a Microsoft SQL Database.
 "@ "[GraphQL: createMssqlLogShippingConfiguration]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -2357,6 +7034,46 @@ Create log shipping configuration of a Microsoft SQL Database.
 $inputs = Invoke-RscMutateMssql -AssignSlaDomainPropertiesAsync -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	updateInfo = @{
+		# OPTIONAL
+		shouldApplyToExistingSnapshots = <System.Boolean>
+		# OPTIONAL
+		shouldApplyToNonPolicySnapshots = <System.Boolean>
+		# OPTIONAL
+		mssqlSlaPatchProperties = @{
+			# OPTIONAL
+			configuredSlaDomainId = <System.String>
+			# OPTIONAL
+			useConfiguredDefaultLogRetention = <System.Boolean>
+			# OPTIONAL
+			mssqlSlaRelatedProperties = @{
+				# OPTIONAL
+				copyOnly = <System.Boolean>
+				# OPTIONAL
+				logBackupFrequencyInSeconds = <System.Int32>
+				# OPTIONAL
+				logRetentionHours = <System.Int32>
+				# OPTIONAL
+				hasLogConfigFromSla = <System.Boolean>
+				# OPTIONAL
+				hostLogRetention = <System.Int32>
+			}
+		}
+		# OPTIONAL
+		existingSnapshotRetention = <ExistingSnapshotRetention>
+		# REQUIRED
+		ids = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	userNote = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateMssql -AssignSlaDomainPropertiesAsync" @"
 Assign SLA domain properties to Mssql objects.
 "@ "[GraphQL: assignMssqlSlaDomainPropertiesAsync]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -2370,6 +7087,26 @@ Assign SLA domain properties to Mssql objects.
 $inputs = Invoke-RscMutateNutanix -CreateCluster -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	nutanixClusterConfig = @{
+		# REQUIRED
+		caCerts = <System.String>
+		# REQUIRED
+		hostname = <System.String>
+		# REQUIRED
+		nutanixClusterUuid = <System.String>
+		# REQUIRED
+		password = <System.String>
+		# REQUIRED
+		username = <System.String>
+	}
+}
+"@
 Write-Message "Invoke-RscMutateNutanix -CreateCluster" @"
 Add Nutanix cluster
 
@@ -2385,6 +7122,13 @@ Create a Nutanix cluster object by providing an address and account credentials 
 $inputs = Invoke-RscMutateNutanix -RefreshCluster -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateNutanix -RefreshCluster" @"
 Refresh Nutanix cluster metadata
 
@@ -2400,6 +7144,26 @@ Create a job to refresh the metadata for the specified Nutanix cluster.
 $inputs = Invoke-RscMutateNutanix -UpdateCluster -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+	# REQUIRED
+	patchProperties = @{
+		# OPTIONAL
+		caCerts = <System.String>
+		# OPTIONAL
+		configuredSlaDomainId = <System.String>
+		# OPTIONAL
+		hostname = <System.String>
+		# OPTIONAL
+		password = <System.String>
+		# OPTIONAL
+		username = <System.String>
+	}
+}
+"@
 Write-Message "Invoke-RscMutateNutanix -UpdateCluster" @"
 Patch Nutanix cluster
 
@@ -2415,6 +7179,13 @@ Patch the host, credentials, and/or CA certs of the specified Nutanix cluster ob
 $inputs = Invoke-RscMutateNutanix -DeleteCluster -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateNutanix -DeleteCluster" @"
 Remove Nutanix cluster
 
@@ -2430,6 +7201,13 @@ Initiates an asynchronous job to remove a Nutanix cluster object. The Nutanix cl
 $inputs = Invoke-RscMutateNutanix -RegisterAgentVm -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateNutanix -RegisterAgentVm" @"
 v5.0-v8.0: Register the agent installed on the Nutanix VM
 v8.1+: Register the agent installed on the Nutanix virtual machine
@@ -2448,6 +7226,53 @@ v8.1+: Register the agent installed on the Nutanix virtual machine.
 $inputs = Invoke-RscMutateNutanix -UpdateVm -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+	# REQUIRED
+	vmPatchProperties = @{
+		# OPTIONAL
+		configuredSlaDomainId = <System.String>
+		# OPTIONAL
+		excludedDiskIds = @(
+			<System.String>
+		)
+		# OPTIONAL
+		isPaused = <System.Boolean>
+		# OPTIONAL
+		postBackupScript = @{
+			# REQUIRED
+			failureHandling = <NutanixVirtualMachineScriptDetailFailureHandling>
+			# REQUIRED
+			scriptPath = <System.String>
+			# REQUIRED
+			timeoutMs = <System.Int64>
+		}
+		# OPTIONAL
+		postSnapScript = @{
+			# REQUIRED
+			failureHandling = <NutanixVirtualMachineScriptDetailFailureHandling>
+			# REQUIRED
+			scriptPath = <System.String>
+			# REQUIRED
+			timeoutMs = <System.Int64>
+		}
+		# OPTIONAL
+		preBackupScript = @{
+			# REQUIRED
+			failureHandling = <NutanixVirtualMachineScriptDetailFailureHandling>
+			# REQUIRED
+			scriptPath = <System.String>
+			# REQUIRED
+			timeoutMs = <System.Int64>
+		}
+		# OPTIONAL
+		snapshotConsistencyMandate = <CdmNutanixSnapshotConsistencyMandate>
+	}
+}
+"@
 Write-Message "Invoke-RscMutateNutanix -UpdateVm" @"
 v5.0-v8.0: Patch VM
 v8.1+: Patch virtual machine
@@ -2466,6 +7291,20 @@ v8.1+: Patch virtual machine with specified properties.
 $inputs = Invoke-RscMutateNutanix -CreateOnDemandBackup -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	config = @{
+		# OPTIONAL
+		slaId = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+	# OPTIONAL
+	userNote = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateNutanix -CreateOnDemandBackup" @"
 v5.0-v8.0: Create on-demand VM snapshot
 v8.1+: Create on-demand virtual machine snapshot
@@ -2484,6 +7323,13 @@ v8.1+: Create an on-demand snapshot for the given virtual machine ID.
 $inputs = Invoke-RscMutateNutanix -DeleteSnapshots -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateNutanix -DeleteSnapshots" @"
 v5.0-v8.0: Delete all snapshots of VM
 v8.1+: Delete all snapshots of virtual machine
@@ -2500,6 +7346,38 @@ Delete all snapshots of a virtual machine.
 $inputs = Invoke-RscMutateNutanix -MountSnapshotV1 -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		containerNaturalId = <System.String>
+		# OPTIONAL
+		nutanixClusterId = <System.String>
+		# OPTIONAL
+		shouldMigrateImmediately = <System.Boolean>
+		# OPTIONAL
+		shouldPowerOn = <System.Boolean>
+		# OPTIONAL
+		shouldRemoveNetwork = <System.Boolean>
+		# OPTIONAL
+		targetNetwork = <System.String>
+		# OPTIONAL
+		vmName = <System.String>
+		# OPTIONAL
+		keepMacAddresses = <System.Boolean>
+		# OPTIONAL
+		nicNetworkUuids = @(
+			<System.String>
+		)
+		# REQUIRED
+		shouldDisableMigration = <System.Boolean>
+	}
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateNutanix -MountSnapshotV1" @"
 Initiate a Live Mount of a Nutanix virtual machine snapshot
 
@@ -2515,6 +7393,18 @@ Initiates a request to perform a Live Mount of a Nutanix virtual machine snapsho
 $inputs = Invoke-RscMutateNutanix -PatchMountV1 -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		shouldPowerOn = <System.Boolean>
+	}
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateNutanix -PatchMountV1" @"
 Change Nutanix Live Mount power status
 
@@ -2530,6 +7420,13 @@ Changes the power status of a mounted Nutanix virtual machine.
 $inputs = Invoke-RscMutateNutanix -DeleteMountV1 -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateNutanix -DeleteMountV1" @"
 Remove a Live Mount of a Nutanix virtual machine snapshot
 
@@ -2545,6 +7442,13 @@ Initiates a request to remove a Live Mount of a Nutanix virtual machine snapshot
 $inputs = Invoke-RscMutateNutanix -MigrateMountV1 -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateNutanix -MigrateMountV1" @"
 Relocate a Nutanix virtual machine to another storage container
 
@@ -2560,6 +7464,15 @@ Initiate a request to migrate the virtual disks of a specified Nutanix Live Moun
 $inputs = Invoke-RscMutateNutanix -DeleteSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	location = <InternalDeleteNutanixSnapshotRequestLocation>
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateNutanix -DeleteSnapshot" @"
 v5.0-v8.0: Delete VM snapshot
 v8.1+: Delete virtual machine snapshot
@@ -2577,6 +7490,27 @@ v8.1+: Delete a snapshot by expiring it. Snapshot is expired only if it is a man
 $inputs = Invoke-RscMutateNutanix -RestoreFilesSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		targetVirtualMachineId = <System.String>
+		# REQUIRED
+		restoreConfig = @(
+			@{
+				# REQUIRED
+				path = <System.String>
+				# REQUIRED
+				restorePath = <System.String>
+			}
+		)
+	}
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateNutanix -RestoreFilesSnapshot" @"
 Restore files
 
@@ -2592,6 +7526,27 @@ Restore files from a snapshot to the source Nutanix virtual machine.
 $inputs = Invoke-RscMutateNutanix -DownloadFilesSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		legalHoldDownloadConfig = @{
+			# REQUIRED
+			isLegalHoldDownload = <System.Boolean>
+		}
+		# REQUIRED
+		paths = @(
+			<System.String>
+		)
+	}
+	# REQUIRED
+	id = <System.String>
+	# OPTIONAL
+	userNote = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateNutanix -DownloadFilesSnapshot" @"
 v5.0-v8.0: Download files from a Nutanix VM backup
 v8.1+: Download files from a Nutanix virtual machine backup
@@ -2609,6 +7564,32 @@ v8.1+: Start an asynchronous job to download multiple files and folders from a s
 $inputs = Invoke-RscMutateNutanix -ExportSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		nutanixClusterId = <System.String>
+		# OPTIONAL
+		powerOn = <System.Boolean>
+		# OPTIONAL
+		removeNetworkDevices = <System.Boolean>
+		# OPTIONAL
+		vmName = <System.String>
+		# OPTIONAL
+		keepMacAddresses = <System.Boolean>
+		# OPTIONAL
+		nicNetworkUuids = @(
+			<System.String>
+		)
+		# REQUIRED
+		containerNaturalId = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateNutanix -ExportSnapshot" @"
 v5.0-v8.0: Export VM snapshot
 v8.1+: Export virtual machine snapshot
@@ -2626,6 +7607,13 @@ v8.1+: Export snapshot of a virtual machine.
 $inputs = Invoke-RscMutateNutanix -DownloadSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateNutanix -DownloadSnapshot" @"
 Creates a download from archival request
 
@@ -2641,6 +7629,48 @@ Download a snapshot from archival.
 $inputs = Invoke-RscMutateNutanix -BatchExportVm -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		snapshots = @(
+			@{
+				# OPTIONAL
+				snapshotAfterDate = <DateTime>
+				# OPTIONAL
+				snapshotBeforeDate = <DateTime>
+				# OPTIONAL
+				snapshotId = <System.String>
+				# OPTIONAL
+				vmNamePrefix = <System.String>
+				# REQUIRED
+				exportConfig = @{
+					# OPTIONAL
+					nutanixClusterId = <System.String>
+					# OPTIONAL
+					powerOn = <System.Boolean>
+					# OPTIONAL
+					removeNetworkDevices = <System.Boolean>
+					# OPTIONAL
+					vmName = <System.String>
+					# OPTIONAL
+					keepMacAddresses = <System.Boolean>
+					# OPTIONAL
+					nicNetworkUuids = @(
+						<System.String>
+					)
+					# REQUIRED
+					containerNaturalId = <System.String>
+				}
+				# REQUIRED
+				vmId = <System.String>
+			}
+		)
+	}
+}
+"@
 Write-Message "Invoke-RscMutateNutanix -BatchExportVm" @"
 Exports a snapshot from each member of a set of virtual machines
 
@@ -2656,6 +7686,54 @@ Export a snapshot from each member of a set of virtual machines.
 $inputs = Invoke-RscMutateNutanix -BatchMountVm -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		snapshots = @(
+			@{
+				# OPTIONAL
+				snapshotAfterDate = <DateTime>
+				# OPTIONAL
+				snapshotBeforeDate = <DateTime>
+				# OPTIONAL
+				snapshotId = <System.String>
+				# OPTIONAL
+				vmNamePrefix = <System.String>
+				# REQUIRED
+				mountConfig = @{
+					# OPTIONAL
+					containerNaturalId = <System.String>
+					# OPTIONAL
+					nutanixClusterId = <System.String>
+					# OPTIONAL
+					shouldMigrateImmediately = <System.Boolean>
+					# OPTIONAL
+					shouldPowerOn = <System.Boolean>
+					# OPTIONAL
+					shouldRemoveNetwork = <System.Boolean>
+					# OPTIONAL
+					targetNetwork = <System.String>
+					# OPTIONAL
+					vmName = <System.String>
+					# OPTIONAL
+					keepMacAddresses = <System.Boolean>
+					# OPTIONAL
+					nicNetworkUuids = @(
+						<System.String>
+					)
+					# REQUIRED
+					shouldDisableMigration = <System.Boolean>
+				}
+				# REQUIRED
+				vmId = <System.String>
+			}
+		)
+	}
+}
+"@
 Write-Message "Invoke-RscMutateNutanix -BatchMountVm" @"
 Mount snapshots from multiple virtual machines
 
@@ -2671,6 +7749,20 @@ Mounts a batch of snapshots from a group of specified virtual machines.
 $inputs = Invoke-RscMutateNutanix -DownloadVmFromLocation -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	downloadConfig = @{
+		# OPTIONAL
+		slaId = <System.String>
+	}
+	# REQUIRED
+	locationId = <System.String>
+	# REQUIRED
+	snapshotId = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateNutanix -DownloadVmFromLocation" @"
 Download a snapshot from a replication target
 
@@ -2686,6 +7778,31 @@ Initiates a job to download a snapshot from the specified location when the snap
 $inputs = Invoke-RscMutateNutanix -CreatePrismCentral -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	prismCentralConfig = @{
+		# REQUIRED
+		caCerts = <System.String>
+		# REQUIRED
+		hostname = <System.String>
+		# REQUIRED
+		password = <System.String>
+		# REQUIRED
+		username = <System.String>
+	}
+	# REQUIRED
+	prismElementCdmTuple = @(
+		@{
+			# REQUIRED
+			nutanixClusterId = <System.String>
+			# REQUIRED
+			cdmClusterId = <System.String>
+		}
+	)
+}
+"@
 Write-Message "Invoke-RscMutateNutanix -CreatePrismCentral" @"
 Add Nutanix Prism Central and it's corresponding Prism Elements
 
@@ -2701,6 +7818,26 @@ Create a Nutanix Prism Central object and refresh the Prism Elements present in 
 $inputs = Invoke-RscMutateNutanix -UpdatePrismCentral -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+	# REQUIRED
+	patchProperties = @{
+		# OPTIONAL
+		caCerts = <System.String>
+		# OPTIONAL
+		configuredSlaDomainId = <System.String>
+		# OPTIONAL
+		hostname = <System.String>
+		# OPTIONAL
+		password = <System.String>
+		# OPTIONAL
+		username = <System.String>
+	}
+}
+"@
 Write-Message "Invoke-RscMutateNutanix -UpdatePrismCentral" @"
 Patch Nutanix Prism Central
 
@@ -2716,6 +7853,13 @@ Patch the host and credentials of Nutanix Prism Central.
 $inputs = Invoke-RscMutateNutanix -DeletePrismCentral -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateNutanix -DeletePrismCentral" @"
 Remove Nutanix Prism Central
 
@@ -2731,6 +7875,13 @@ Initiates an asynchronous job to remove a Nutanix Prism Central object. The Nuta
 $inputs = Invoke-RscMutateNutanix -RefreshPrismCentral -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateNutanix -RefreshPrismCentral" @"
 Refresh Nutanix Prism Central metadata
 
@@ -2746,6 +7897,15 @@ Initiates a job to refresh the metadata for the specified Nutanix Prism Central 
 $inputs = Invoke-RscMutateNutanix -PrismCentralAsyncRequestStatus -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateNutanix -PrismCentralAsyncRequestStatus" @"
 Get Nutanix Prism Central async request status
 
@@ -2761,6 +7921,28 @@ Get details about a Nutanix pc-related async request.
 $inputs = Invoke-RscMutateNutanix -BulkOnDemandSnapshotVm -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		vms = @(
+			@{
+				# REQUIRED
+				backupConfig = @{
+					# OPTIONAL
+					slaId = <System.String>
+				}
+				# REQUIRED
+				vmId = <System.String>
+			}
+		)
+	}
+	# OPTIONAL
+	userNote = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateNutanix -BulkOnDemandSnapshotVm" @"
 Take an on-demand snapshot for selected Nutanix virtual machines
 
@@ -2777,6 +7959,9 @@ Take bulk backups for multiple Nutanix virtual machines.
 $inputs = Invoke-RscMutateO365 -SaaSSetupKickoff -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+
+"@
 Write-Message "Invoke-RscMutateO365 -SaaSSetupKickoff" @"
 
 "@ "[GraphQL: o365SaaSSetupKickoff]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -2789,6 +7974,22 @@ Write-Message "Invoke-RscMutateO365 -SaaSSetupKickoff" @"
 $inputs = Invoke-RscMutateO365 -PdlGroups -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	orgId = <System.String>
+	# REQUIRED
+	pdlAndWorkloadPairs = @(
+		@{
+			# REQUIRED
+			pdl = <System.String>
+			# REQUIRED
+			workload = <WorkloadLevelHierarchy>
+		}
+	)
+}
+"@
 Write-Message "Invoke-RscMutateO365 -PdlGroups" @"
 Retrieve or create the groups corresponding to the preferred data location and workload pairings for use in role creation.
 "@ "[GraphQL: o365PdlGroups]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -2801,6 +8002,40 @@ Retrieve or create the groups corresponding to the preferred data location and w
 $inputs = Invoke-RscMutateO365 -SaasSetupComplete -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	tenantId = <System.String>
+	# REQUIRED
+	regionName = <System.String>
+	# REQUIRED
+	stateToken = <System.String>
+	# REQUIRED
+	appTypes = @(
+		<System.String>
+	)
+	# OPTIONAL
+	kmsSpec = @{
+		# OPTIONAL
+		cloudType = <O365AzureCloudType>
+		# OPTIONAL
+		tenantId = <System.String>
+		# OPTIONAL
+		kmsId = <System.String>
+		# OPTIONAL
+		appId = <System.String>
+		# OPTIONAL
+		appSecret = <System.String>
+		# OPTIONAL
+		keyName = <System.String>
+		# OPTIONAL
+		kekNameColossus = <System.String>
+	}
+	# REQUIRED
+	storeBackupInSameRegionAsData = <System.Boolean>
+}
+"@
 Write-Message "Invoke-RscMutateO365 -SaasSetupComplete" @"
 Completes a Rubrik-Hosted setup flow.
 "@ "[GraphQL: o365SaasSetupComplete]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -2813,6 +8048,9 @@ Completes a Rubrik-Hosted setup flow.
 $inputs = Invoke-RscMutateO365 -SetupKickoff -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+
+"@
 Write-Message "Invoke-RscMutateO365 -SetupKickoff" @"
 Kicks off an O365 subscription setup flow.
 "@ "[GraphQL: o365SetupKickoff]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -2825,6 +8063,21 @@ Kicks off an O365 subscription setup flow.
 $inputs = Invoke-RscMutateO365 -AddOrg -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	tenantId = <System.String>
+	# REQUIRED
+	stateToken = <System.String>
+	# REQUIRED
+	exocomputeClusterId = <System.String>
+	# REQUIRED
+	appTypes = @(
+		<System.String>
+	)
+}
+"@
 Write-Message "Invoke-RscMutateO365 -AddOrg" @"
 Adds an O365 org to the account.
 "@ "[GraphQL: addO365Org]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -2837,6 +8090,15 @@ Adds an O365 org to the account.
 $inputs = Invoke-RscMutateO365 -OauthConsentKickoff -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	orgId = <System.String>
+	# REQUIRED
+	appType = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateO365 -OauthConsentKickoff" @"
 Kicks off the OAuth consent flow for an O365 Azure AD App.
 "@ "[GraphQL: o365OauthConsentKickoff]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -2849,6 +8111,21 @@ Kicks off the OAuth consent flow for an O365 Azure AD App.
 $inputs = Invoke-RscMutateO365 -OauthConsentComplete -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	tenantId = <System.String>
+	# REQUIRED
+	code = <System.String>
+	# REQUIRED
+	stateToken = <System.String>
+	# REQUIRED
+	redirectUrl = <System.String>
+	# REQUIRED
+	resourceNaturalId = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateO365 -OauthConsentComplete" @"
 Completes the OAuth consent flow for an O365 Azure AD App.
 "@ "[GraphQL: o365OauthConsentComplete]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -2861,6 +8138,15 @@ Completes the OAuth consent flow for an O365 Azure AD App.
 $inputs = Invoke-RscMutateO365 -CreateAppKickoff -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	orgId = <System.String>
+	# REQUIRED
+	appType = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateO365 -CreateAppKickoff" @"
 Kicks off the creation flow for an O365 Azure AD App.
 "@ "[GraphQL: createO365AppKickoff]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -2873,6 +8159,17 @@ Kicks off the creation flow for an O365 Azure AD App.
 $inputs = Invoke-RscMutateO365 -CreateAppComplete -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	appClientId = <System.String>
+	# REQUIRED
+	stateToken = <System.String>
+	# REQUIRED
+	tenantId = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateO365 -CreateAppComplete" @"
 Completes the creation flow for an O365 Azure AD App.
 "@ "[GraphQL: createO365AppComplete]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -2885,6 +8182,23 @@ Completes the creation flow for an O365 Azure AD App.
 $inputs = Invoke-RscMutateO365 -InsertCustomerApp -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	appType = <System.String>
+	# REQUIRED
+	appClientId = <System.String>
+	# REQUIRED
+	appClientSecret = <System.String>
+	# REQUIRED
+	subscriptionId = <System.String>
+	# OPTIONAL
+	base64AppCertificate = <System.String>
+	# OPTIONAL
+	base64AppPrivateKey = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateO365 -InsertCustomerApp" @"
 Inserts a Customer-hosted O365 Azure AD App.
 "@ "[GraphQL: insertCustomerO365App]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -2897,6 +8211,15 @@ Inserts a Customer-hosted O365 Azure AD App.
 $inputs = Invoke-RscMutateO365 -UpdateAppAuthStatus -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	o365OrgId = <System.String>
+	# REQUIRED
+	o365AppId = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateO365 -UpdateAppAuthStatus" @"
 Update O365 App authentication status to applicable app version.
 "@ "[GraphQL: updateO365AppAuthStatus]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -2909,6 +8232,15 @@ Update O365 App authentication status to applicable app version.
 $inputs = Invoke-RscMutateO365 -UpdateAppPermissions -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	o365AppType = <O365AppType>
+	# REQUIRED
+	o365AppId = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateO365 -UpdateAppPermissions" @"
 Update O365 Azure app permission in Azure AD portal.
 "@ "[GraphQL: updateO365AppPermissions]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -2921,6 +8253,12 @@ Update O365 Azure app permission in Azure AD portal.
 $inputs = Invoke-RscMutateO365 -DeleteAzureApp -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.o365AppClientId = <System.String>
+# REQUIRED
+$inputs.Arg.o365AppType = <System.String>
+"@
 Write-Message "Invoke-RscMutateO365 -DeleteAzureApp" @"
 Deletes an O365 Azure AD App from the account.
 "@ "[GraphQL: deleteO365AzureApp]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -2933,6 +8271,12 @@ Deletes an O365 Azure AD App from the account.
 $inputs = Invoke-RscMutateO365 -BackupMailbox -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.mailboxIds = @(
+	<System.String>
+)
+"@
 Write-Message "Invoke-RscMutateO365 -BackupMailbox" @"
 Backup mailbox workload.
 "@ "[GraphQL: backupO365Mailbox]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -2945,6 +8289,15 @@ Backup mailbox workload.
 $inputs = Invoke-RscMutateO365 -BackupOnedrive -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	snappableUuids = @(
+		<System.String>
+	)
+}
+"@
 Write-Message "Invoke-RscMutateO365 -BackupOnedrive" @"
 Take on-demand snapshot for Onedrive.
 "@ "[GraphQL: backupO365Onedrive]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -2957,6 +8310,15 @@ Take on-demand snapshot for Onedrive.
 $inputs = Invoke-RscMutateO365 -BackupSharepointDrive -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	snappableUuids = @(
+		<System.String>
+	)
+}
+"@
 Write-Message "Invoke-RscMutateO365 -BackupSharepointDrive" @"
 Take on-demand snapshot for Sharepoint drive.
 "@ "[GraphQL: backupO365SharepointDrive]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -2969,6 +8331,13 @@ Take on-demand snapshot for Sharepoint drive.
 $inputs = Invoke-RscMutateO365 -BackupSharepointList -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	snappableUuid = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateO365 -BackupSharepointList" @"
 Take on-demand snapshot for SharePoint list.
 "@ "[GraphQL: backupO365SharepointList]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -2981,6 +8350,13 @@ Take on-demand snapshot for SharePoint list.
 $inputs = Invoke-RscMutateO365 -BackupSharePointSite -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	siteFid = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateO365 -BackupSharePointSite" @"
 Take on-demand snapshot for a SharePoint site.
 "@ "[GraphQL: backupO365SharePointSite]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -2993,6 +8369,15 @@ Take on-demand snapshot for a SharePoint site.
 $inputs = Invoke-RscMutateO365 -BackupTeam -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	snappableUuids = @(
+		<System.String>
+	)
+}
+"@
 Write-Message "Invoke-RscMutateO365 -BackupTeam" @"
 Take on-demand snapshot for Teams.
 "@ "[GraphQL: backupO365Team]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -3005,6 +8390,101 @@ Take on-demand snapshot for Teams.
 $inputs = Invoke-RscMutateO365 -RestoreTeamsFiles -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	filesToRestore = @(
+		@{
+			# REQUIRED
+			fileId = <System.String>
+			# REQUIRED
+			fileName = <System.String>
+			# REQUIRED
+			fileSnapshotsToRestore = @(
+				@{
+					# REQUIRED
+					snapshotId = <System.String>
+					# REQUIRED
+					snapshotNum = <System.Int32>
+					# REQUIRED
+					fileSize = <System.Int64>
+				}
+			)
+			# OPTIONAL
+			channelInfo = @{
+				# REQUIRED
+				TeamID = <System.String>
+				# OPTIONAL
+				ChannelID = <System.String>
+				# OPTIONAL
+				ChannelName = <System.String>
+				# OPTIONAL
+				ChannelFolderName = <System.String>
+				# OPTIONAL
+				ChannelNaturalId = <System.String>
+				# REQUIRED
+				channelMembershipType = <ChannelMembershipType>
+			}
+		}
+	)
+	# REQUIRED
+	foldersToRestore = @(
+		@{
+			# REQUIRED
+			folderId = <System.String>
+			# REQUIRED
+			folderName = <System.String>
+			# REQUIRED
+			folderSize = <System.Int64>
+			# REQUIRED
+			snapshotId = <System.String>
+			# REQUIRED
+			snapshotNum = <System.Int32>
+			# OPTIONAL
+			channelInfo = @{
+				# REQUIRED
+				TeamID = <System.String>
+				# OPTIONAL
+				ChannelID = <System.String>
+				# OPTIONAL
+				ChannelName = <System.String>
+				# OPTIONAL
+				ChannelFolderName = <System.String>
+				# OPTIONAL
+				ChannelNaturalId = <System.String>
+				# REQUIRED
+				channelMembershipType = <ChannelMembershipType>
+			}
+		}
+	)
+	# OPTIONAL
+	destTeamsChannelInfo = @{
+		# REQUIRED
+		TeamID = <System.String>
+		# OPTIONAL
+		ChannelID = <System.String>
+		# OPTIONAL
+		ChannelName = <System.String>
+		# OPTIONAL
+		ChannelFolderName = <System.String>
+		# OPTIONAL
+		ChannelNaturalId = <System.String>
+		# REQUIRED
+		channelMembershipType = <ChannelMembershipType>
+	}
+	# REQUIRED
+	shouldCreateDestChannel = <System.Boolean>
+	# REQUIRED
+	actionType = <O365RestoreActionType>
+	# REQUIRED
+	channelRecoveryType = <ChannelMembershipType>
+	# REQUIRED
+	recoverWithLatestPermissions = <System.Boolean>
+	# REQUIRED
+	snapshotSequenceNum = <System.Int32>
+}
+"@
 Write-Message "Invoke-RscMutateO365 -RestoreTeamsFiles" @"
 Restore Team files.
 "@ "[GraphQL: restoreO365TeamsFiles]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -3017,6 +8497,101 @@ Restore Team files.
 $inputs = Invoke-RscMutateO365 -ExportTeamsFiles -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	filesToRestore = @(
+		@{
+			# REQUIRED
+			fileId = <System.String>
+			# REQUIRED
+			fileName = <System.String>
+			# REQUIRED
+			fileSnapshotsToRestore = @(
+				@{
+					# REQUIRED
+					snapshotId = <System.String>
+					# REQUIRED
+					snapshotNum = <System.Int32>
+					# REQUIRED
+					fileSize = <System.Int64>
+				}
+			)
+			# OPTIONAL
+			channelInfo = @{
+				# REQUIRED
+				TeamID = <System.String>
+				# OPTIONAL
+				ChannelID = <System.String>
+				# OPTIONAL
+				ChannelName = <System.String>
+				# OPTIONAL
+				ChannelFolderName = <System.String>
+				# OPTIONAL
+				ChannelNaturalId = <System.String>
+				# REQUIRED
+				channelMembershipType = <ChannelMembershipType>
+			}
+		}
+	)
+	# REQUIRED
+	foldersToRestore = @(
+		@{
+			# REQUIRED
+			folderId = <System.String>
+			# REQUIRED
+			folderName = <System.String>
+			# REQUIRED
+			folderSize = <System.Int64>
+			# REQUIRED
+			snapshotId = <System.String>
+			# REQUIRED
+			snapshotNum = <System.Int32>
+			# OPTIONAL
+			channelInfo = @{
+				# REQUIRED
+				TeamID = <System.String>
+				# OPTIONAL
+				ChannelID = <System.String>
+				# OPTIONAL
+				ChannelName = <System.String>
+				# OPTIONAL
+				ChannelFolderName = <System.String>
+				# OPTIONAL
+				ChannelNaturalId = <System.String>
+				# REQUIRED
+				channelMembershipType = <ChannelMembershipType>
+			}
+		}
+	)
+	# OPTIONAL
+	destTeamsChannelInfo = @{
+		# REQUIRED
+		TeamID = <System.String>
+		# OPTIONAL
+		ChannelID = <System.String>
+		# OPTIONAL
+		ChannelName = <System.String>
+		# OPTIONAL
+		ChannelFolderName = <System.String>
+		# OPTIONAL
+		ChannelNaturalId = <System.String>
+		# REQUIRED
+		channelMembershipType = <ChannelMembershipType>
+	}
+	# REQUIRED
+	shouldCreateDestChannel = <System.Boolean>
+	# REQUIRED
+	actionType = <O365RestoreActionType>
+	# REQUIRED
+	channelRecoveryType = <ChannelMembershipType>
+	# REQUIRED
+	recoverWithLatestPermissions = <System.Boolean>
+	# REQUIRED
+	snapshotSequenceNum = <System.Int32>
+}
+"@
 Write-Message "Invoke-RscMutateO365 -ExportTeamsFiles" @"
 Export Team files.
 "@ "[GraphQL: exportO365TeamsFiles]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -3029,6 +8604,92 @@ Export Team files.
 $inputs = Invoke-RscMutateO365 -RestoreTeamsConversations -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	teamUuid = <System.String>
+	# OPTIONAL
+	destTeamsChannelInfo = @{
+		# REQUIRED
+		TeamID = <System.String>
+		# OPTIONAL
+		ChannelID = <System.String>
+		# OPTIONAL
+		ChannelName = <System.String>
+		# OPTIONAL
+		ChannelFolderName = <System.String>
+		# OPTIONAL
+		ChannelNaturalId = <System.String>
+		# REQUIRED
+		channelMembershipType = <ChannelMembershipType>
+	}
+	# REQUIRED
+	shouldCreateDestChannel = <System.Boolean>
+	# OPTIONAL
+	channelInfoForFullRestore = @{
+		# REQUIRED
+		naturalId = <System.String>
+		# REQUIRED
+		name = <System.String>
+		# REQUIRED
+		folderId = <System.String>
+		# REQUIRED
+		membershipType = <ChannelMembershipType>
+	}
+	# REQUIRED
+	shouldRestoreFileAttachments = <System.Boolean>
+	# REQUIRED
+	teamChannels = @(
+		@{
+			# REQUIRED
+			naturalId = <System.String>
+			# REQUIRED
+			name = <System.String>
+			# REQUIRED
+			folderId = <System.String>
+			# REQUIRED
+			membershipType = <ChannelMembershipType>
+		}
+	)
+	# OPTIONAL
+	teamsConversationsSearchFilter = @{
+		# OPTIONAL
+		postedTime = @{
+			# OPTIONAL
+			fromTime = <DateTime>
+			# OPTIONAL
+			untilTime = <DateTime>
+		}
+		# OPTIONAL
+		channelNaturalId = <System.String>
+		# OPTIONAL
+		postedBy = <System.String>
+		# OPTIONAL
+		snapshotId = <System.String>
+		# OPTIONAL
+		parentId = <System.String>
+		# OPTIONAL
+		convId = <System.String>
+		# OPTIONAL
+		snapshotNum = <System.Int32>
+		# OPTIONAL
+		includeArchived = <System.Boolean>
+		# OPTIONAL
+		fetchAllPostSenders = <System.String>
+	}
+	# REQUIRED
+	refreshTokenEncrypted = <System.String>
+	# REQUIRED
+	o365AppId = <System.String>
+	# REQUIRED
+	channelRecoveryType = <ChannelMembershipType>
+	# REQUIRED
+	recoverWithLatestPermissions = <System.Boolean>
+	# REQUIRED
+	snapshotSequenceNum = <System.Int32>
+}
+"@
 Write-Message "Invoke-RscMutateO365 -RestoreTeamsConversations" @"
 Restore Team conversations.
 "@ "[GraphQL: restoreO365TeamsConversations]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -3041,6 +8702,566 @@ Restore Team conversations.
 $inputs = Invoke-RscMutateO365 -RestoreSnappable -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	snappableType = <SnappableType>
+	# REQUIRED
+	sourceSnappableUuid = <System.String>
+	# REQUIRED
+	destinationSnappableUuid = <System.String>
+	# REQUIRED
+	restoreConfig = @{
+		# OPTIONAL
+		SharePointDriveRestoreConfig = @{
+			# REQUIRED
+			driveRestoreConfig = @{
+				# REQUIRED
+				filesToRestore = @(
+					@{
+						# REQUIRED
+						fileId = <System.String>
+						# REQUIRED
+						fileName = <System.String>
+						# REQUIRED
+						fileSnapshotsToRestore = @(
+							@{
+								# REQUIRED
+								snapshotId = <System.String>
+								# REQUIRED
+								snapshotNum = <System.Int32>
+								# REQUIRED
+								fileSize = <System.Int64>
+							}
+						)
+						# OPTIONAL
+						channelInfo = @{
+							# REQUIRED
+							TeamID = <System.String>
+							# OPTIONAL
+							ChannelID = <System.String>
+							# OPTIONAL
+							ChannelName = <System.String>
+							# OPTIONAL
+							ChannelFolderName = <System.String>
+							# OPTIONAL
+							ChannelNaturalId = <System.String>
+							# REQUIRED
+							channelMembershipType = <ChannelMembershipType>
+						}
+					}
+				)
+				# REQUIRED
+				foldersToRestore = @(
+					@{
+						# REQUIRED
+						folderId = <System.String>
+						# REQUIRED
+						folderName = <System.String>
+						# REQUIRED
+						folderSize = <System.Int64>
+						# REQUIRED
+						snapshotId = <System.String>
+						# REQUIRED
+						snapshotNum = <System.Int32>
+						# OPTIONAL
+						channelInfo = @{
+							# REQUIRED
+							TeamID = <System.String>
+							# OPTIONAL
+							ChannelID = <System.String>
+							# OPTIONAL
+							ChannelName = <System.String>
+							# OPTIONAL
+							ChannelFolderName = <System.String>
+							# OPTIONAL
+							ChannelNaturalId = <System.String>
+							# REQUIRED
+							channelMembershipType = <ChannelMembershipType>
+						}
+					}
+				)
+				# REQUIRED
+				restoreFolderPath = <System.String>
+			}
+			# OPTIONAL
+			docLibName = <System.String>
+			# OPTIONAL
+			parentSiteUuid = <System.String>
+		}
+		# OPTIONAL
+		sharePointListRestoreConfig = @{
+			# REQUIRED
+			itemsToRestore = @(
+				@{
+					# REQUIRED
+					itemId = <System.String>
+					# REQUIRED
+					itemName = <System.String>
+					# REQUIRED
+					itemSnapshotsToRestore = @(
+						@{
+							# REQUIRED
+							snapshotId = <System.String>
+							# REQUIRED
+							snapshotNum = <System.Int32>
+						}
+					)
+				}
+			)
+			# REQUIRED
+			foldersToRestore = @(
+				@{
+					# REQUIRED
+					folderId = <System.String>
+					# REQUIRED
+					folderName = <System.String>
+					# REQUIRED
+					folderSize = <System.Int64>
+					# REQUIRED
+					snapshotId = <System.String>
+					# REQUIRED
+					snapshotNum = <System.Int32>
+					# OPTIONAL
+					channelInfo = @{
+						# REQUIRED
+						TeamID = <System.String>
+						# OPTIONAL
+						ChannelID = <System.String>
+						# OPTIONAL
+						ChannelName = <System.String>
+						# OPTIONAL
+						ChannelFolderName = <System.String>
+						# OPTIONAL
+						ChannelNaturalId = <System.String>
+						# REQUIRED
+						channelMembershipType = <ChannelMembershipType>
+					}
+				}
+			)
+			# REQUIRED
+			restoreFolderPath = <System.String>
+			# OPTIONAL
+			listName = <System.String>
+			# OPTIONAL
+			parentSiteUuid = <System.String>
+		}
+		# OPTIONAL
+		sharePointFullRestoreConfig = @{
+			# OPTIONAL
+			spObjectToRestore = @{
+				# REQUIRED
+				objectSharepointId = <System.String>
+				# REQUIRED
+				objectName = <System.String>
+				# OPTIONAL
+				objectType = <SnappableType>
+				# REQUIRED
+				snapshotId = <System.String>
+				# REQUIRED
+				snapshotNum = <System.Int32>
+			}
+			# OPTIONAL
+			spItemsToRestore = @{
+				# REQUIRED
+				sharepointId = <System.String>
+				# OPTIONAL
+				snappableType = <SnappableType>
+				# REQUIRED
+				listItems = @(
+					@{
+						# REQUIRED
+						itemId = <System.String>
+						# REQUIRED
+						itemName = <System.String>
+						# REQUIRED
+						itemSnapshotsToRestore = @(
+							@{
+								# REQUIRED
+								snapshotId = <System.String>
+								# REQUIRED
+								snapshotNum = <System.Int32>
+							}
+						)
+					}
+				)
+				# REQUIRED
+				folderItems = @(
+					@{
+						# REQUIRED
+						folderId = <System.String>
+						# REQUIRED
+						folderName = <System.String>
+						# REQUIRED
+						folderSize = <System.Int64>
+						# REQUIRED
+						snapshotId = <System.String>
+						# REQUIRED
+						snapshotNum = <System.Int32>
+						# OPTIONAL
+						channelInfo = @{
+							# REQUIRED
+							TeamID = <System.String>
+							# OPTIONAL
+							ChannelID = <System.String>
+							# OPTIONAL
+							ChannelName = <System.String>
+							# OPTIONAL
+							ChannelFolderName = <System.String>
+							# OPTIONAL
+							ChannelNaturalId = <System.String>
+							# REQUIRED
+							channelMembershipType = <ChannelMembershipType>
+						}
+					}
+				)
+				# REQUIRED
+				fileItems = @(
+					@{
+						# REQUIRED
+						fileId = <System.String>
+						# REQUIRED
+						fileName = <System.String>
+						# REQUIRED
+						fileSnapshotsToRestore = @(
+							@{
+								# REQUIRED
+								snapshotId = <System.String>
+								# REQUIRED
+								snapshotNum = <System.Int32>
+								# REQUIRED
+								fileSize = <System.Int64>
+							}
+						)
+						# OPTIONAL
+						channelInfo = @{
+							# REQUIRED
+							TeamID = <System.String>
+							# OPTIONAL
+							ChannelID = <System.String>
+							# OPTIONAL
+							ChannelName = <System.String>
+							# OPTIONAL
+							ChannelFolderName = <System.String>
+							# OPTIONAL
+							ChannelNaturalId = <System.String>
+							# REQUIRED
+							channelMembershipType = <ChannelMembershipType>
+						}
+					}
+				)
+				# REQUIRED
+				arePageLibraryItems = <System.Boolean>
+			}
+			# OPTIONAL
+			targetObjectUuid = <System.String>
+			# OPTIONAL
+			targetObjectType = <SnappableType>
+			# REQUIRED
+			shouldCreateNewObject = <System.Boolean>
+			# OPTIONAL
+			newObjectType = <SnappableType>
+			# OPTIONAL
+			newObjectName = <System.String>
+		}
+		# OPTIONAL
+		OneDriveRestoreConfig = @{
+			# REQUIRED
+			filesToRestore = @(
+				@{
+					# REQUIRED
+					fileId = <System.String>
+					# REQUIRED
+					fileName = <System.String>
+					# REQUIRED
+					fileSnapshotsToRestore = @(
+						@{
+							# REQUIRED
+							snapshotId = <System.String>
+							# REQUIRED
+							snapshotNum = <System.Int32>
+							# REQUIRED
+							fileSize = <System.Int64>
+						}
+					)
+					# OPTIONAL
+					channelInfo = @{
+						# REQUIRED
+						TeamID = <System.String>
+						# OPTIONAL
+						ChannelID = <System.String>
+						# OPTIONAL
+						ChannelName = <System.String>
+						# OPTIONAL
+						ChannelFolderName = <System.String>
+						# OPTIONAL
+						ChannelNaturalId = <System.String>
+						# REQUIRED
+						channelMembershipType = <ChannelMembershipType>
+					}
+				}
+			)
+			# REQUIRED
+			foldersToRestore = @(
+				@{
+					# REQUIRED
+					folderId = <System.String>
+					# REQUIRED
+					folderName = <System.String>
+					# REQUIRED
+					folderSize = <System.Int64>
+					# REQUIRED
+					snapshotId = <System.String>
+					# REQUIRED
+					snapshotNum = <System.Int32>
+					# OPTIONAL
+					channelInfo = @{
+						# REQUIRED
+						TeamID = <System.String>
+						# OPTIONAL
+						ChannelID = <System.String>
+						# OPTIONAL
+						ChannelName = <System.String>
+						# OPTIONAL
+						ChannelFolderName = <System.String>
+						# OPTIONAL
+						ChannelNaturalId = <System.String>
+						# REQUIRED
+						channelMembershipType = <ChannelMembershipType>
+					}
+				}
+			)
+			# REQUIRED
+			restoreFolderPath = <System.String>
+		}
+		# OPTIONAL
+		TeamsRestoreConfig = @{
+			# OPTIONAL
+			filesRestoreConfig = @{
+				# REQUIRED
+				filesToRestore = @(
+					@{
+						# REQUIRED
+						fileId = <System.String>
+						# REQUIRED
+						fileName = <System.String>
+						# REQUIRED
+						fileSnapshotsToRestore = @(
+							@{
+								# REQUIRED
+								snapshotId = <System.String>
+								# REQUIRED
+								snapshotNum = <System.Int32>
+								# REQUIRED
+								fileSize = <System.Int64>
+							}
+						)
+						# OPTIONAL
+						channelInfo = @{
+							# REQUIRED
+							TeamID = <System.String>
+							# OPTIONAL
+							ChannelID = <System.String>
+							# OPTIONAL
+							ChannelName = <System.String>
+							# OPTIONAL
+							ChannelFolderName = <System.String>
+							# OPTIONAL
+							ChannelNaturalId = <System.String>
+							# REQUIRED
+							channelMembershipType = <ChannelMembershipType>
+						}
+					}
+				)
+				# REQUIRED
+				foldersToRestore = @(
+					@{
+						# REQUIRED
+						folderId = <System.String>
+						# REQUIRED
+						folderName = <System.String>
+						# REQUIRED
+						folderSize = <System.Int64>
+						# REQUIRED
+						snapshotId = <System.String>
+						# REQUIRED
+						snapshotNum = <System.Int32>
+						# OPTIONAL
+						channelInfo = @{
+							# REQUIRED
+							TeamID = <System.String>
+							# OPTIONAL
+							ChannelID = <System.String>
+							# OPTIONAL
+							ChannelName = <System.String>
+							# OPTIONAL
+							ChannelFolderName = <System.String>
+							# OPTIONAL
+							ChannelNaturalId = <System.String>
+							# REQUIRED
+							channelMembershipType = <ChannelMembershipType>
+						}
+					}
+				)
+				# REQUIRED
+				restoreFolderPath = <System.String>
+			}
+			# OPTIONAL
+			conversationsRestoreConfig = @{
+				# OPTIONAL
+				SearchFilter = @{
+					# OPTIONAL
+					PostedTime = @{
+						# OPTIONAL
+						FromTime = <System.Int64>
+						# OPTIONAL
+						UntilTime = <System.Int64>
+					}
+					# OPTIONAL
+					PostedBy = <System.String>
+					# OPTIONAL
+					SnapshotId = <System.String>
+				}
+				# OPTIONAL
+				ChannelInfoForFullRestore = @{
+					# REQUIRED
+					TeamID = <System.String>
+					# OPTIONAL
+					ChannelID = <System.String>
+					# OPTIONAL
+					ChannelName = <System.String>
+					# OPTIONAL
+					ChannelFolderName = <System.String>
+					# OPTIONAL
+					ChannelFolderId = <System.String>
+					# OPTIONAL
+					ChannelNaturalId = <System.String>
+				}
+				# REQUIRED
+				RefreshTokenEncrypted = <System.String>
+				# REQUIRED
+				O365AppID = <System.String>
+				# REQUIRED
+				ChannelsToRestore = @(
+					@{
+						# REQUIRED
+						TeamID = <System.String>
+						# OPTIONAL
+						ChannelID = <System.String>
+						# OPTIONAL
+						ChannelName = <System.String>
+						# OPTIONAL
+						ChannelFolderName = <System.String>
+						# OPTIONAL
+						ChannelFolderId = <System.String>
+						# OPTIONAL
+						ChannelNaturalId = <System.String>
+					}
+				)
+				# REQUIRED
+				ShouldRestoreFileAttachments = <System.Boolean>
+			}
+			# OPTIONAL
+			destChannelInfo = @{
+				# REQUIRED
+				TeamID = <System.String>
+				# OPTIONAL
+				ChannelID = <System.String>
+				# OPTIONAL
+				ChannelName = <System.String>
+				# OPTIONAL
+				ChannelFolderName = <System.String>
+				# OPTIONAL
+				ChannelNaturalId = <System.String>
+				# REQUIRED
+				channelMembershipType = <ChannelMembershipType>
+			}
+			# REQUIRED
+			shouldCreateDestChannel = <System.Boolean>
+			# REQUIRED
+			channelType = <ChannelMembershipType>
+			# REQUIRED
+			restoreLatestPermissions = <System.Boolean>
+			# REQUIRED
+			snapshotSequenceNum = <System.Int32>
+		}
+		# OPTIONAL
+		MailboxRestoreConfig = @{
+			# OPTIONAL
+			SnapshotUUID = <System.String>
+			# REQUIRED
+			RestoreConfigs = @(
+				@{
+					# REQUIRED
+					SnapshotUUID = <System.String>
+					# OPTIONAL
+					EmailID = <System.String>
+					# OPTIONAL
+					FolderID = <System.String>
+				}
+			)
+		}
+		# OPTIONAL
+		calendarRestoreConfig = @{
+			# REQUIRED
+			eventsToRestore = @(
+				@{
+					# REQUIRED
+					eventId = <System.String>
+					# REQUIRED
+					snapshotId = <System.String>
+				}
+			)
+			# REQUIRED
+			calendarsToRestore = @(
+				@{
+					# REQUIRED
+					calendarId = <System.String>
+					# REQUIRED
+					snapshotId = <System.String>
+				}
+			)
+			# REQUIRED
+			calendarGroupsToRestore = @(
+				@{
+					# REQUIRED
+					calendarGroupId = <System.String>
+					# REQUIRED
+					snapshotId = <System.String>
+				}
+			)
+		}
+		# OPTIONAL
+		contactsRestoreConfig = @{
+			# REQUIRED
+			contactsToRestore = @(
+				@{
+					# REQUIRED
+					contactId = <System.String>
+					# REQUIRED
+					snapshotId = <System.String>
+					# REQUIRED
+					snapshotNum = <System.Int32>
+				}
+			)
+			# REQUIRED
+			contactFoldersToRestore = @(
+				@{
+					# REQUIRED
+					contactFolderId = <System.String>
+					# REQUIRED
+					snapshotId = <System.String>
+					# REQUIRED
+					snapshotNum = <System.Int32>
+				}
+			)
+		}
+	}
+	# REQUIRED
+	actionType = <O365RestoreActionType>
+}
+"@
 Write-Message "Invoke-RscMutateO365 -RestoreSnappable" @"
 Restores an O365 snappable.
 "@ "[GraphQL: restoreO365Snappable]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -3053,6 +9274,566 @@ Restores an O365 snappable.
 $inputs = Invoke-RscMutateO365 -ExportWorkload -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	snappableType = <SnappableType>
+	# REQUIRED
+	sourceSnappableUuid = <System.String>
+	# REQUIRED
+	destinationSnappableUuid = <System.String>
+	# REQUIRED
+	restoreConfig = @{
+		# OPTIONAL
+		SharePointDriveRestoreConfig = @{
+			# REQUIRED
+			driveRestoreConfig = @{
+				# REQUIRED
+				filesToRestore = @(
+					@{
+						# REQUIRED
+						fileId = <System.String>
+						# REQUIRED
+						fileName = <System.String>
+						# REQUIRED
+						fileSnapshotsToRestore = @(
+							@{
+								# REQUIRED
+								snapshotId = <System.String>
+								# REQUIRED
+								snapshotNum = <System.Int32>
+								# REQUIRED
+								fileSize = <System.Int64>
+							}
+						)
+						# OPTIONAL
+						channelInfo = @{
+							# REQUIRED
+							TeamID = <System.String>
+							# OPTIONAL
+							ChannelID = <System.String>
+							# OPTIONAL
+							ChannelName = <System.String>
+							# OPTIONAL
+							ChannelFolderName = <System.String>
+							# OPTIONAL
+							ChannelNaturalId = <System.String>
+							# REQUIRED
+							channelMembershipType = <ChannelMembershipType>
+						}
+					}
+				)
+				# REQUIRED
+				foldersToRestore = @(
+					@{
+						# REQUIRED
+						folderId = <System.String>
+						# REQUIRED
+						folderName = <System.String>
+						# REQUIRED
+						folderSize = <System.Int64>
+						# REQUIRED
+						snapshotId = <System.String>
+						# REQUIRED
+						snapshotNum = <System.Int32>
+						# OPTIONAL
+						channelInfo = @{
+							# REQUIRED
+							TeamID = <System.String>
+							# OPTIONAL
+							ChannelID = <System.String>
+							# OPTIONAL
+							ChannelName = <System.String>
+							# OPTIONAL
+							ChannelFolderName = <System.String>
+							# OPTIONAL
+							ChannelNaturalId = <System.String>
+							# REQUIRED
+							channelMembershipType = <ChannelMembershipType>
+						}
+					}
+				)
+				# REQUIRED
+				restoreFolderPath = <System.String>
+			}
+			# OPTIONAL
+			docLibName = <System.String>
+			# OPTIONAL
+			parentSiteUuid = <System.String>
+		}
+		# OPTIONAL
+		sharePointListRestoreConfig = @{
+			# REQUIRED
+			itemsToRestore = @(
+				@{
+					# REQUIRED
+					itemId = <System.String>
+					# REQUIRED
+					itemName = <System.String>
+					# REQUIRED
+					itemSnapshotsToRestore = @(
+						@{
+							# REQUIRED
+							snapshotId = <System.String>
+							# REQUIRED
+							snapshotNum = <System.Int32>
+						}
+					)
+				}
+			)
+			# REQUIRED
+			foldersToRestore = @(
+				@{
+					# REQUIRED
+					folderId = <System.String>
+					# REQUIRED
+					folderName = <System.String>
+					# REQUIRED
+					folderSize = <System.Int64>
+					# REQUIRED
+					snapshotId = <System.String>
+					# REQUIRED
+					snapshotNum = <System.Int32>
+					# OPTIONAL
+					channelInfo = @{
+						# REQUIRED
+						TeamID = <System.String>
+						# OPTIONAL
+						ChannelID = <System.String>
+						# OPTIONAL
+						ChannelName = <System.String>
+						# OPTIONAL
+						ChannelFolderName = <System.String>
+						# OPTIONAL
+						ChannelNaturalId = <System.String>
+						# REQUIRED
+						channelMembershipType = <ChannelMembershipType>
+					}
+				}
+			)
+			# REQUIRED
+			restoreFolderPath = <System.String>
+			# OPTIONAL
+			listName = <System.String>
+			# OPTIONAL
+			parentSiteUuid = <System.String>
+		}
+		# OPTIONAL
+		sharePointFullRestoreConfig = @{
+			# OPTIONAL
+			spObjectToRestore = @{
+				# REQUIRED
+				objectSharepointId = <System.String>
+				# REQUIRED
+				objectName = <System.String>
+				# OPTIONAL
+				objectType = <SnappableType>
+				# REQUIRED
+				snapshotId = <System.String>
+				# REQUIRED
+				snapshotNum = <System.Int32>
+			}
+			# OPTIONAL
+			spItemsToRestore = @{
+				# REQUIRED
+				sharepointId = <System.String>
+				# OPTIONAL
+				snappableType = <SnappableType>
+				# REQUIRED
+				listItems = @(
+					@{
+						# REQUIRED
+						itemId = <System.String>
+						# REQUIRED
+						itemName = <System.String>
+						# REQUIRED
+						itemSnapshotsToRestore = @(
+							@{
+								# REQUIRED
+								snapshotId = <System.String>
+								# REQUIRED
+								snapshotNum = <System.Int32>
+							}
+						)
+					}
+				)
+				# REQUIRED
+				folderItems = @(
+					@{
+						# REQUIRED
+						folderId = <System.String>
+						# REQUIRED
+						folderName = <System.String>
+						# REQUIRED
+						folderSize = <System.Int64>
+						# REQUIRED
+						snapshotId = <System.String>
+						# REQUIRED
+						snapshotNum = <System.Int32>
+						# OPTIONAL
+						channelInfo = @{
+							# REQUIRED
+							TeamID = <System.String>
+							# OPTIONAL
+							ChannelID = <System.String>
+							# OPTIONAL
+							ChannelName = <System.String>
+							# OPTIONAL
+							ChannelFolderName = <System.String>
+							# OPTIONAL
+							ChannelNaturalId = <System.String>
+							# REQUIRED
+							channelMembershipType = <ChannelMembershipType>
+						}
+					}
+				)
+				# REQUIRED
+				fileItems = @(
+					@{
+						# REQUIRED
+						fileId = <System.String>
+						# REQUIRED
+						fileName = <System.String>
+						# REQUIRED
+						fileSnapshotsToRestore = @(
+							@{
+								# REQUIRED
+								snapshotId = <System.String>
+								# REQUIRED
+								snapshotNum = <System.Int32>
+								# REQUIRED
+								fileSize = <System.Int64>
+							}
+						)
+						# OPTIONAL
+						channelInfo = @{
+							# REQUIRED
+							TeamID = <System.String>
+							# OPTIONAL
+							ChannelID = <System.String>
+							# OPTIONAL
+							ChannelName = <System.String>
+							# OPTIONAL
+							ChannelFolderName = <System.String>
+							# OPTIONAL
+							ChannelNaturalId = <System.String>
+							# REQUIRED
+							channelMembershipType = <ChannelMembershipType>
+						}
+					}
+				)
+				# REQUIRED
+				arePageLibraryItems = <System.Boolean>
+			}
+			# OPTIONAL
+			targetObjectUuid = <System.String>
+			# OPTIONAL
+			targetObjectType = <SnappableType>
+			# REQUIRED
+			shouldCreateNewObject = <System.Boolean>
+			# OPTIONAL
+			newObjectType = <SnappableType>
+			# OPTIONAL
+			newObjectName = <System.String>
+		}
+		# OPTIONAL
+		OneDriveRestoreConfig = @{
+			# REQUIRED
+			filesToRestore = @(
+				@{
+					# REQUIRED
+					fileId = <System.String>
+					# REQUIRED
+					fileName = <System.String>
+					# REQUIRED
+					fileSnapshotsToRestore = @(
+						@{
+							# REQUIRED
+							snapshotId = <System.String>
+							# REQUIRED
+							snapshotNum = <System.Int32>
+							# REQUIRED
+							fileSize = <System.Int64>
+						}
+					)
+					# OPTIONAL
+					channelInfo = @{
+						# REQUIRED
+						TeamID = <System.String>
+						# OPTIONAL
+						ChannelID = <System.String>
+						# OPTIONAL
+						ChannelName = <System.String>
+						# OPTIONAL
+						ChannelFolderName = <System.String>
+						# OPTIONAL
+						ChannelNaturalId = <System.String>
+						# REQUIRED
+						channelMembershipType = <ChannelMembershipType>
+					}
+				}
+			)
+			# REQUIRED
+			foldersToRestore = @(
+				@{
+					# REQUIRED
+					folderId = <System.String>
+					# REQUIRED
+					folderName = <System.String>
+					# REQUIRED
+					folderSize = <System.Int64>
+					# REQUIRED
+					snapshotId = <System.String>
+					# REQUIRED
+					snapshotNum = <System.Int32>
+					# OPTIONAL
+					channelInfo = @{
+						# REQUIRED
+						TeamID = <System.String>
+						# OPTIONAL
+						ChannelID = <System.String>
+						# OPTIONAL
+						ChannelName = <System.String>
+						# OPTIONAL
+						ChannelFolderName = <System.String>
+						# OPTIONAL
+						ChannelNaturalId = <System.String>
+						# REQUIRED
+						channelMembershipType = <ChannelMembershipType>
+					}
+				}
+			)
+			# REQUIRED
+			restoreFolderPath = <System.String>
+		}
+		# OPTIONAL
+		TeamsRestoreConfig = @{
+			# OPTIONAL
+			filesRestoreConfig = @{
+				# REQUIRED
+				filesToRestore = @(
+					@{
+						# REQUIRED
+						fileId = <System.String>
+						# REQUIRED
+						fileName = <System.String>
+						# REQUIRED
+						fileSnapshotsToRestore = @(
+							@{
+								# REQUIRED
+								snapshotId = <System.String>
+								# REQUIRED
+								snapshotNum = <System.Int32>
+								# REQUIRED
+								fileSize = <System.Int64>
+							}
+						)
+						# OPTIONAL
+						channelInfo = @{
+							# REQUIRED
+							TeamID = <System.String>
+							# OPTIONAL
+							ChannelID = <System.String>
+							# OPTIONAL
+							ChannelName = <System.String>
+							# OPTIONAL
+							ChannelFolderName = <System.String>
+							# OPTIONAL
+							ChannelNaturalId = <System.String>
+							# REQUIRED
+							channelMembershipType = <ChannelMembershipType>
+						}
+					}
+				)
+				# REQUIRED
+				foldersToRestore = @(
+					@{
+						# REQUIRED
+						folderId = <System.String>
+						# REQUIRED
+						folderName = <System.String>
+						# REQUIRED
+						folderSize = <System.Int64>
+						# REQUIRED
+						snapshotId = <System.String>
+						# REQUIRED
+						snapshotNum = <System.Int32>
+						# OPTIONAL
+						channelInfo = @{
+							# REQUIRED
+							TeamID = <System.String>
+							# OPTIONAL
+							ChannelID = <System.String>
+							# OPTIONAL
+							ChannelName = <System.String>
+							# OPTIONAL
+							ChannelFolderName = <System.String>
+							# OPTIONAL
+							ChannelNaturalId = <System.String>
+							# REQUIRED
+							channelMembershipType = <ChannelMembershipType>
+						}
+					}
+				)
+				# REQUIRED
+				restoreFolderPath = <System.String>
+			}
+			# OPTIONAL
+			conversationsRestoreConfig = @{
+				# OPTIONAL
+				SearchFilter = @{
+					# OPTIONAL
+					PostedTime = @{
+						# OPTIONAL
+						FromTime = <System.Int64>
+						# OPTIONAL
+						UntilTime = <System.Int64>
+					}
+					# OPTIONAL
+					PostedBy = <System.String>
+					# OPTIONAL
+					SnapshotId = <System.String>
+				}
+				# OPTIONAL
+				ChannelInfoForFullRestore = @{
+					# REQUIRED
+					TeamID = <System.String>
+					# OPTIONAL
+					ChannelID = <System.String>
+					# OPTIONAL
+					ChannelName = <System.String>
+					# OPTIONAL
+					ChannelFolderName = <System.String>
+					# OPTIONAL
+					ChannelFolderId = <System.String>
+					# OPTIONAL
+					ChannelNaturalId = <System.String>
+				}
+				# REQUIRED
+				RefreshTokenEncrypted = <System.String>
+				# REQUIRED
+				O365AppID = <System.String>
+				# REQUIRED
+				ChannelsToRestore = @(
+					@{
+						# REQUIRED
+						TeamID = <System.String>
+						# OPTIONAL
+						ChannelID = <System.String>
+						# OPTIONAL
+						ChannelName = <System.String>
+						# OPTIONAL
+						ChannelFolderName = <System.String>
+						# OPTIONAL
+						ChannelFolderId = <System.String>
+						# OPTIONAL
+						ChannelNaturalId = <System.String>
+					}
+				)
+				# REQUIRED
+				ShouldRestoreFileAttachments = <System.Boolean>
+			}
+			# OPTIONAL
+			destChannelInfo = @{
+				# REQUIRED
+				TeamID = <System.String>
+				# OPTIONAL
+				ChannelID = <System.String>
+				# OPTIONAL
+				ChannelName = <System.String>
+				# OPTIONAL
+				ChannelFolderName = <System.String>
+				# OPTIONAL
+				ChannelNaturalId = <System.String>
+				# REQUIRED
+				channelMembershipType = <ChannelMembershipType>
+			}
+			# REQUIRED
+			shouldCreateDestChannel = <System.Boolean>
+			# REQUIRED
+			channelType = <ChannelMembershipType>
+			# REQUIRED
+			restoreLatestPermissions = <System.Boolean>
+			# REQUIRED
+			snapshotSequenceNum = <System.Int32>
+		}
+		# OPTIONAL
+		MailboxRestoreConfig = @{
+			# OPTIONAL
+			SnapshotUUID = <System.String>
+			# REQUIRED
+			RestoreConfigs = @(
+				@{
+					# REQUIRED
+					SnapshotUUID = <System.String>
+					# OPTIONAL
+					EmailID = <System.String>
+					# OPTIONAL
+					FolderID = <System.String>
+				}
+			)
+		}
+		# OPTIONAL
+		calendarRestoreConfig = @{
+			# REQUIRED
+			eventsToRestore = @(
+				@{
+					# REQUIRED
+					eventId = <System.String>
+					# REQUIRED
+					snapshotId = <System.String>
+				}
+			)
+			# REQUIRED
+			calendarsToRestore = @(
+				@{
+					# REQUIRED
+					calendarId = <System.String>
+					# REQUIRED
+					snapshotId = <System.String>
+				}
+			)
+			# REQUIRED
+			calendarGroupsToRestore = @(
+				@{
+					# REQUIRED
+					calendarGroupId = <System.String>
+					# REQUIRED
+					snapshotId = <System.String>
+				}
+			)
+		}
+		# OPTIONAL
+		contactsRestoreConfig = @{
+			# REQUIRED
+			contactsToRestore = @(
+				@{
+					# REQUIRED
+					contactId = <System.String>
+					# REQUIRED
+					snapshotId = <System.String>
+					# REQUIRED
+					snapshotNum = <System.Int32>
+				}
+			)
+			# REQUIRED
+			contactFoldersToRestore = @(
+				@{
+					# REQUIRED
+					contactFolderId = <System.String>
+					# REQUIRED
+					snapshotId = <System.String>
+					# REQUIRED
+					snapshotNum = <System.Int32>
+				}
+			)
+		}
+	}
+	# REQUIRED
+	actionType = <O365RestoreActionType>
+}
+"@
 Write-Message "Invoke-RscMutateO365 -ExportWorkload" @"
 Export an O365 workload.
 "@ "[GraphQL: exportO365Workload]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -3065,6 +9846,10 @@ Export an O365 workload.
 $inputs = Invoke-RscMutateO365 -RefreshOrg -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.orgId = <System.String>
+"@
 Write-Message "Invoke-RscMutateO365 -RefreshOrg" @"
 Refreshes an O365 org.
 "@ "[GraphQL: refreshO365Org]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -3077,6 +9862,10 @@ Refreshes an O365 org.
 $inputs = Invoke-RscMutateO365 -DeleteOrg -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.orgId = <System.String>
+"@
 Write-Message "Invoke-RscMutateO365 -DeleteOrg" @"
 Deletes an O365 org from the account.
 "@ "[GraphQL: deleteO365Org]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -3089,6 +9878,30 @@ Deletes an O365 org from the account.
 $inputs = Invoke-RscMutateO365 -RestoreMailbox -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.restoreConfig = @{
+	# OPTIONAL
+	orgUuid = <System.String>
+	# REQUIRED
+	mailboxUuid = <System.String>
+	# OPTIONAL
+	snapshotUuid = <System.String>
+	# REQUIRED
+	restoreConfigs = @(
+		@{
+			# REQUIRED
+			SnapshotUUID = <System.String>
+			# OPTIONAL
+			EmailID = <System.String>
+			# OPTIONAL
+			FolderID = <System.String>
+		}
+	)
+	# REQUIRED
+	actionType = <O365RestoreActionType>
+}
+"@
 Write-Message "Invoke-RscMutateO365 -RestoreMailbox" @"
 Restores an Exchange mailbox.
 "@ "[GraphQL: restoreO365Mailbox]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -3101,6 +9914,30 @@ Restores an Exchange mailbox.
 $inputs = Invoke-RscMutateO365 -ExportMailbox -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.exportConfig = @{
+	# OPTIONAL
+	orgUuid = <System.String>
+	# REQUIRED
+	fromMailboxUuid = <System.String>
+	# REQUIRED
+	toMailboxUuid = <System.String>
+	# OPTIONAL
+	snapshotUuid = <System.String>
+	# REQUIRED
+	exportConfigs = @(
+		@{
+			# REQUIRED
+			SnapshotUUID = <System.String>
+			# OPTIONAL
+			EmailID = <System.String>
+			# OPTIONAL
+			FolderID = <System.String>
+		}
+	)
+}
+"@
 Write-Message "Invoke-RscMutateO365 -ExportMailbox" @"
 Exports an Exchange mailbox.
 "@ "[GraphQL: exportO365Mailbox]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -3113,6 +9950,14 @@ Exports an Exchange mailbox.
 $inputs = Invoke-RscMutateO365 -SetServiceAccount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.username = <System.String>
+# REQUIRED
+$inputs.Arg.appPassword = <System.String>
+# REQUIRED
+$inputs.Arg.orgId = <System.String>
+"@
 Write-Message "Invoke-RscMutateO365 -SetServiceAccount" @"
 Sets the service account for the org.
 "@ "[GraphQL: setO365ServiceAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -3125,6 +9970,13 @@ Sets the service account for the org.
 $inputs = Invoke-RscMutateO365 -EnableSharePoint -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	exocomputeClusterId = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateO365 -EnableSharePoint" @"
 Enables SharePoint protection in the exocompute cluster.
 "@ "[GraphQL: enableO365SharePoint]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -3137,6 +9989,10 @@ Enables SharePoint protection in the exocompute cluster.
 $inputs = Invoke-RscMutateO365 -EnableTeams -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.exocomputeClusterId = <System.String>
+"@
 Write-Message "Invoke-RscMutateO365 -EnableTeams" @"
 Enables Teams protection in the exocompute cluster.
 "@ "[GraphQL: enableO365Teams]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -3149,6 +10005,10 @@ Enables Teams protection in the exocompute cluster.
 $inputs = Invoke-RscMutateO365 -DeleteServiceAccount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.orgId = <System.String>
+"@
 Write-Message "Invoke-RscMutateO365 -DeleteServiceAccount" @"
 Deletes the service account for an org.
 "@ "[GraphQL: deleteO365ServiceAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -3161,6 +10021,15 @@ Deletes the service account for an org.
 $inputs = Invoke-RscMutateO365 -UpdateOrgCustomName -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	orgUuid = <System.String>
+	# REQUIRED
+	customName = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateO365 -UpdateOrgCustomName" @"
 Update the custom name for an O365 Organization.
 "@ "[GraphQL: updateO365OrgCustomName]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -3174,6 +10043,67 @@ Update the custom name for an O365 Organization.
 $inputs = Invoke-RscMutateOracle -BulkUpdateHosts -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	bulkUpdateProperties = @{
+		# OPTIONAL
+		oracleUpdate = @{
+			# OPTIONAL
+			configuredSlaDomainId = <System.String>
+			# OPTIONAL
+			hostMount = <System.String>
+			# OPTIONAL
+			logBackupFrequencyInMinutes = <System.Int32>
+			# OPTIONAL
+			logRetentionHours = <System.Int32>
+			# OPTIONAL
+			numChannels = <System.Int32>
+			# OPTIONAL
+			hostLogRetentionHours = <System.Int32>
+			# OPTIONAL
+			configuredSlaDomainIdDeprecated = <System.String>
+			# OPTIONAL
+			nodeOrder = @(
+				@{
+					# REQUIRED
+					nodeName = <System.String>
+					# REQUIRED
+					order = <System.Int32>
+				}
+			)
+			# OPTIONAL
+			shouldDistributeBackupsAutomatically = <System.Boolean>
+			# OPTIONAL
+			oracleUpdateCommon = @{
+				# OPTIONAL
+				hostLogRetentionHours = <System.Int32>
+				# OPTIONAL
+				hostMount = <System.String>
+				# OPTIONAL
+				logBackupFrequencyInMinutes = <System.Int32>
+				# OPTIONAL
+				logRetentionHours = <System.Int32>
+				# OPTIONAL
+				numChannels = <System.Int32>
+				# OPTIONAL
+				hasLogConfigFromSla = <System.Boolean>
+				# OPTIONAL
+				shouldEnableHighFileCountSupport = <System.Boolean>
+				# OPTIONAL
+				shouldUseSecureThriftForDataTransfer = <System.Boolean>
+				# OPTIONAL
+				sectionSizeInGb = <System.Int32>
+			}
+		}
+		# REQUIRED
+		ids = @(
+			<System.String>
+		)
+	}
+}
+"@
 Write-Message "Invoke-RscMutateOracle -BulkUpdateHosts" @"
 Update Oracle Hosts
 
@@ -3189,6 +10119,13 @@ Update properties to Oracle Host objects.
 $inputs = Invoke-RscMutateOracle -RefreshDatabase -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateOracle -RefreshDatabase" @"
 Refresh an Oracle database
 
@@ -3204,6 +10141,43 @@ Starts an asynchronous job to refresh the Oracle database metadata by querying t
 $inputs = Invoke-RscMutateOracle -UpdateDataGuardGroup -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+	# REQUIRED
+	updateProperties = @{
+		# OPTIONAL
+		preferredDgMemberUniqueNames = @(
+			<System.String>
+		)
+		# OPTIONAL
+		shouldBackupFromPrimaryOnly = <System.Boolean>
+		# OPTIONAL
+		oracleUpdateCommon = @{
+			# OPTIONAL
+			hostLogRetentionHours = <System.Int32>
+			# OPTIONAL
+			hostMount = <System.String>
+			# OPTIONAL
+			logBackupFrequencyInMinutes = <System.Int32>
+			# OPTIONAL
+			logRetentionHours = <System.Int32>
+			# OPTIONAL
+			numChannels = <System.Int32>
+			# OPTIONAL
+			hasLogConfigFromSla = <System.Boolean>
+			# OPTIONAL
+			shouldEnableHighFileCountSupport = <System.Boolean>
+			# OPTIONAL
+			shouldUseSecureThriftForDataTransfer = <System.Boolean>
+			# OPTIONAL
+			sectionSizeInGb = <System.Int32>
+		}
+	}
+}
+"@
 Write-Message "Invoke-RscMutateOracle -UpdateDataGuardGroup" @"
 Update an Oracle Data Guard group
 
@@ -3219,6 +10193,13 @@ Update properties of an Oracle Data Guard group object.
 $inputs = Invoke-RscMutateOracle -DeleteAllDatabaseSnapshots -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateOracle -DeleteAllDatabaseSnapshots" @"
 Delete Oracle database snapshots
 
@@ -3234,6 +10215,25 @@ Delete all snapshots for a specified Oracle database object. For the operation t
 $inputs = Invoke-RscMutateOracle -TakeOnDemandDatabaseSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		forceFullSnapshot = <System.Boolean>
+		# OPTIONAL
+		baseOnDemandSnapshotConfig = @{
+			# OPTIONAL
+			slaId = <System.String>
+		}
+	}
+	# REQUIRED
+	id = <System.String>
+	# OPTIONAL
+	userNote = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateOracle -TakeOnDemandDatabaseSnapshot" @"
 On-demand backup of an Oracle database
 
@@ -3249,6 +10249,13 @@ Create an asynchronous job for an on-demand snapshot of an Oracle database. The 
 $inputs = Invoke-RscMutateOracle -TakeOnDemandLogSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateOracle -TakeOnDemandLogSnapshot" @"
 On-demand log backup for an Oracle database log
 
@@ -3264,6 +10271,67 @@ Create an asynchronous job for an on-demand backup of an Oracle database log. Th
 $inputs = Invoke-RscMutateOracle -BulkUpdateRacs -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	bulkUpdateProperties = @{
+		# OPTIONAL
+		oracleUpdate = @{
+			# OPTIONAL
+			configuredSlaDomainId = <System.String>
+			# OPTIONAL
+			hostMount = <System.String>
+			# OPTIONAL
+			logBackupFrequencyInMinutes = <System.Int32>
+			# OPTIONAL
+			logRetentionHours = <System.Int32>
+			# OPTIONAL
+			numChannels = <System.Int32>
+			# OPTIONAL
+			hostLogRetentionHours = <System.Int32>
+			# OPTIONAL
+			configuredSlaDomainIdDeprecated = <System.String>
+			# OPTIONAL
+			nodeOrder = @(
+				@{
+					# REQUIRED
+					nodeName = <System.String>
+					# REQUIRED
+					order = <System.Int32>
+				}
+			)
+			# OPTIONAL
+			shouldDistributeBackupsAutomatically = <System.Boolean>
+			# OPTIONAL
+			oracleUpdateCommon = @{
+				# OPTIONAL
+				hostLogRetentionHours = <System.Int32>
+				# OPTIONAL
+				hostMount = <System.String>
+				# OPTIONAL
+				logBackupFrequencyInMinutes = <System.Int32>
+				# OPTIONAL
+				logRetentionHours = <System.Int32>
+				# OPTIONAL
+				numChannels = <System.Int32>
+				# OPTIONAL
+				hasLogConfigFromSla = <System.Boolean>
+				# OPTIONAL
+				shouldEnableHighFileCountSupport = <System.Boolean>
+				# OPTIONAL
+				shouldUseSecureThriftForDataTransfer = <System.Boolean>
+				# OPTIONAL
+				sectionSizeInGb = <System.Int32>
+			}
+		}
+		# REQUIRED
+		ids = @(
+			<System.String>
+		)
+	}
+}
+"@
 Write-Message "Invoke-RscMutateOracle -BulkUpdateRacs" @"
 Update Oracle RACs
 
@@ -3279,6 +10347,29 @@ Update the properties of the objects that represent the specified Oracle RAC.
 $inputs = Invoke-RscMutateOracle -ExportTablespace -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		exposeAllLogs = <System.Boolean>
+		# REQUIRED
+		auxiliaryDestinationPath = <System.String>
+		# REQUIRED
+		recoveryPoint = @{
+			# OPTIONAL
+			snapshotId = <System.String>
+			# OPTIONAL
+			timestampMs = <System.Int64>
+		}
+		# REQUIRED
+		tablespaceName = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateOracle -ExportTablespace" @"
 Export an Oracle tablespace
 
@@ -3294,6 +10385,19 @@ Request an asynchronous job to export an Oracle tablespace from a specified snap
 $inputs = Invoke-RscMutateOracle -ValidateAcoFile -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	acoContentsBase64 = <System.String>
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	isLiveMount = <System.Boolean>
+	# REQUIRED
+	dbId = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateOracle -ValidateAcoFile" @"
 Validate Oracle ACO file
 
@@ -3309,6 +10413,33 @@ Validate the provided Oracle ACO (Advanced Cloning Options) file.
 $inputs = Invoke-RscMutateOracle -ValidateDatabaseBackups -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		numChannels = <System.Int32>
+		# OPTIONAL
+		sgaMaxSizeInMb = <System.Int64>
+		# OPTIONAL
+		targetMountPath = <System.String>
+		# OPTIONAL
+		targetOracleHome = <System.String>
+		# REQUIRED
+		recoveryPoint = @{
+			# OPTIONAL
+			snapshotId = <System.String>
+			# OPTIONAL
+			timestampMs = <System.Int64>
+		}
+		# REQUIRED
+		targetOracleHostOrRacId = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateOracle -ValidateDatabaseBackups" @"
 Validate Oracle database backups
 
@@ -3324,6 +10455,67 @@ Queue a job to validate Oracle backups for a database snapshot or a specified ti
 $inputs = Invoke-RscMutateOracle -BulkUpdateDatabases -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	bulkUpdateProperties = @{
+		# OPTIONAL
+		oracleUpdate = @{
+			# OPTIONAL
+			configuredSlaDomainId = <System.String>
+			# OPTIONAL
+			hostMount = <System.String>
+			# OPTIONAL
+			logBackupFrequencyInMinutes = <System.Int32>
+			# OPTIONAL
+			logRetentionHours = <System.Int32>
+			# OPTIONAL
+			numChannels = <System.Int32>
+			# OPTIONAL
+			hostLogRetentionHours = <System.Int32>
+			# OPTIONAL
+			configuredSlaDomainIdDeprecated = <System.String>
+			# OPTIONAL
+			nodeOrder = @(
+				@{
+					# REQUIRED
+					nodeName = <System.String>
+					# REQUIRED
+					order = <System.Int32>
+				}
+			)
+			# OPTIONAL
+			shouldDistributeBackupsAutomatically = <System.Boolean>
+			# OPTIONAL
+			oracleUpdateCommon = @{
+				# OPTIONAL
+				hostLogRetentionHours = <System.Int32>
+				# OPTIONAL
+				hostMount = <System.String>
+				# OPTIONAL
+				logBackupFrequencyInMinutes = <System.Int32>
+				# OPTIONAL
+				logRetentionHours = <System.Int32>
+				# OPTIONAL
+				numChannels = <System.Int32>
+				# OPTIONAL
+				hasLogConfigFromSla = <System.Boolean>
+				# OPTIONAL
+				shouldEnableHighFileCountSupport = <System.Boolean>
+				# OPTIONAL
+				shouldUseSecureThriftForDataTransfer = <System.Boolean>
+				# OPTIONAL
+				sectionSizeInGb = <System.Int32>
+			}
+		}
+		# REQUIRED
+		ids = @(
+			<System.String>
+		)
+	}
+}
+"@
 Write-Message "Invoke-RscMutateOracle -BulkUpdateDatabases" @"
 Update Oracle Databases
 
@@ -3339,6 +10531,25 @@ Update the properties of the objects that represent the specified Oracle Databas
 $inputs = Invoke-RscMutateOracle -InstantRecoverSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		numChannels = <System.Int32>
+		# REQUIRED
+		recoveryPoint = @{
+			# OPTIONAL
+			snapshotId = <System.String>
+			# OPTIONAL
+			timestampMs = <System.Int64>
+		}
+	}
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateOracle -InstantRecoverSnapshot" @"
 Instant recovery of a database
 
@@ -3354,6 +10565,67 @@ Creates an instant recover request that restores a target database from the give
 $inputs = Invoke-RscMutateOracle -MountDatabase -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	request = @{
+		# REQUIRED
+		config = @{
+			# OPTIONAL
+			shouldMountFilesOnly = <System.Boolean>
+			# OPTIONAL
+			targetMountPath = <System.String>
+			# OPTIONAL
+			advancedRecoveryConfigBase64 = <System.String>
+			# OPTIONAL
+			customPfilePath = <System.String>
+			# OPTIONAL
+			numChannels = <System.Int32>
+			# OPTIONAL
+			postScriptPath = <System.String>
+			# OPTIONAL
+			preScriptPath = <System.String>
+			# OPTIONAL
+			shouldStopRecoveryOnPreScriptFailure = <System.Boolean>
+			# OPTIONAL
+			pdbsToLiveMount = @(
+				<System.String>
+			)
+			# OPTIONAL
+			targetRacHostIds = @(
+				<System.String>
+			)
+			# OPTIONAL
+			lmDbName = <System.String>
+			# OPTIONAL
+			targetRacPrimaryHostId = <System.String>
+			# OPTIONAL
+			shouldAllowRenameToSource = <System.Boolean>
+			# REQUIRED
+			recoveryPoint = @{
+				# OPTIONAL
+				snapshotId = <System.String>
+				# OPTIONAL
+				timestampMs = <System.Int64>
+			}
+			# REQUIRED
+			targetOracleHostOrRacId = <System.String>
+		}
+		# REQUIRED
+		id = <System.String>
+	}
+	# OPTIONAL
+	advancedRecoveryConfigMap = @(
+		@{
+			# OPTIONAL
+			key = <System.String>
+			# OPTIONAL
+			value = <System.String>
+		}
+	)
+}
+"@
 Write-Message "Invoke-RscMutateOracle -MountDatabase" @"
 Live Mount an Oracle database snapshot
 
@@ -3369,6 +10641,65 @@ Create an asynchronous job to Live Mount an Oracle database from a snapshot.
 $inputs = Invoke-RscMutateOracle -ExportDatabase -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	request = @{
+		# REQUIRED
+		config = @{
+			# OPTIONAL
+			restoreFilesPath = <System.String>
+			# OPTIONAL
+			shouldRestoreFilesOnly = <System.Boolean>
+			# OPTIONAL
+			targetMountPath = <System.String>
+			# OPTIONAL
+			advancedRecoveryConfigBase64 = <System.String>
+			# OPTIONAL
+			archiveLogPath = <System.String>
+			# OPTIONAL
+			cloneDbName = <System.String>
+			# OPTIONAL
+			customPfilePath = <System.String>
+			# OPTIONAL
+			numChannels = <System.Int32>
+			# OPTIONAL
+			postScriptPath = <System.String>
+			# OPTIONAL
+			preScriptPath = <System.String>
+			# OPTIONAL
+			shouldStopRecoveryOnPreScriptFailure = <System.Boolean>
+			# OPTIONAL
+			pdbsToClone = @(
+				<System.String>
+			)
+			# OPTIONAL
+			shouldSkipDropDbInUndo = <System.Boolean>
+			# REQUIRED
+			recoveryPoint = @{
+				# OPTIONAL
+				snapshotId = <System.String>
+				# OPTIONAL
+				timestampMs = <System.Int64>
+			}
+			# REQUIRED
+			targetOracleHostOrRacId = <System.String>
+		}
+		# REQUIRED
+		id = <System.String>
+	}
+	# OPTIONAL
+	advancedRecoveryConfigMap = @(
+		@{
+			# OPTIONAL
+			key = <System.String>
+			# OPTIONAL
+			value = <System.String>
+		}
+	)
+}
+"@
 Write-Message "Invoke-RscMutateOracle -ExportDatabase" @"
 Export an Oracle database
 
@@ -3384,6 +10715,27 @@ Request an asynchronous job to export an Oracle database from a specified snapsh
 $inputs = Invoke-RscMutateOracle -CreatePdbRestore -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		pdbsToRestore = @(
+			<System.String>
+		)
+		# REQUIRED
+		recoveryPoint = @{
+			# OPTIONAL
+			snapshotId = <System.String>
+			# OPTIONAL
+			timestampMs = <System.Int64>
+		}
+	}
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateOracle -CreatePdbRestore" @"
 Restore PDBs on an Oracle database
 
@@ -3399,6 +10751,13 @@ Initiates an asynchronous request to restore PDBs on an Oracle database from a s
 $inputs = Invoke-RscMutateOracle -DownloadDatabaseSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	snapshotId = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateOracle -DownloadDatabaseSnapshot" @"
 Download Oracle snapshot from cloud
 
@@ -3414,6 +10773,15 @@ Create an asynchronous job to download an Oracle database snapshot and associate
 $inputs = Invoke-RscMutateOracle -DeleteMount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	force = <System.Boolean>
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateOracle -DeleteMount" @"
 Delete an Oracle database Live Mount
 
@@ -3429,6 +10797,32 @@ Request an asynchronous job to delete a specified Live Mount of an Oracle databa
 $inputs = Invoke-RscMutateOracle -RestoreLogs -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		targetMountPath = <System.String>
+		# REQUIRED
+		oracleLogRecoveryRange = @{
+			# OPTIONAL
+			oracleTimeRange = @{
+				# OPTIONAL
+				endTime = <DateTime>
+				# OPTIONAL
+				startTime = <DateTime>
+			}
+		}
+		# REQUIRED
+		shouldMountFilesOnly = <System.Boolean>
+		# REQUIRED
+		targetOracleHostOrRacId = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateOracle -RestoreLogs" @"
 Restore archive logs of an Oracle database
 
@@ -3446,6 +10840,480 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
 $inputs = Invoke-RscMutateSla -CreateGlobal -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	name = <System.String>
+	# OPTIONAL
+	description = <System.String>
+	# OPTIONAL
+	snapshotSchedule = @{
+		# OPTIONAL
+		minute = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit>
+			}
+		}
+		# OPTIONAL
+		hourly = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit>
+			}
+		}
+		# OPTIONAL
+		daily = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit>
+			}
+		}
+		# OPTIONAL
+		weekly = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit>
+			}
+			# OPTIONAL
+			dayOfWeek = <DayOfWeek>
+		}
+		# OPTIONAL
+		monthly = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit>
+			}
+			# OPTIONAL
+			dayOfMonth = <DayOfMonth>
+		}
+		# OPTIONAL
+		quarterly = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit>
+			}
+			# OPTIONAL
+			dayOfQuarter = <DayOfQuarter>
+			# OPTIONAL
+			quarterStartMonth = <Month>
+		}
+		# OPTIONAL
+		yearly = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit>
+			}
+			# OPTIONAL
+			dayOfYear = <DayOfYear>
+			# OPTIONAL
+			yearStartMonth = <Month>
+		}
+	}
+	# OPTIONAL
+	replicationSpecInput = @{
+		# OPTIONAL
+		replicationType = <ReplicationType>
+		# OPTIONAL
+		specificReplicationSpecInput = @{
+			# OPTIONAL
+			unidirectionalSpecInput = @{
+				# OPTIONAL
+				replicationTargetId = <System.String>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit>
+			}
+			# OPTIONAL
+			bidirectionalSpecInput = @{
+				# OPTIONAL
+				replicationSpec1 = @{
+					# OPTIONAL
+					replicationTargetId = <System.String>
+					# OPTIONAL
+					retention = <System.Int32>
+					# OPTIONAL
+					retentionUnit = <RetentionUnit>
+				}
+				# OPTIONAL
+				replicationSpec2 = @{
+					# OPTIONAL
+					replicationTargetId = <System.String>
+					# OPTIONAL
+					retention = <System.Int32>
+					# OPTIONAL
+					retentionUnit = <RetentionUnit>
+				}
+			}
+			# OPTIONAL
+			cloudRegionSpecInput = @{
+				# OPTIONAL
+				replicationTargetRegion = <System.String>
+				# OPTIONAL
+				cloudProvider = <CloudProvider>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit>
+			}
+			# OPTIONAL
+			cloudLocationSpecInput = @{
+				# OPTIONAL
+				replicationTargetId = <System.String>
+				# OPTIONAL
+				cloudProvider = <CloudProvider>
+				# OPTIONAL
+				retentionDuration = @{
+					# OPTIONAL
+					duration = <System.Int32>
+					# OPTIONAL
+					unit = <RetentionUnit>
+				}
+			}
+		}
+	}
+	# OPTIONAL
+	localRetentionLimit = @{
+		# OPTIONAL
+		duration = <System.Int32>
+		# OPTIONAL
+		unit = <RetentionUnit>
+	}
+	# OPTIONAL
+	firstFullBackupWindows = @(
+		@{
+			# OPTIONAL
+			durationInHours = <System.Int32>
+			# OPTIONAL
+			startTimeAttributes = @{
+				# OPTIONAL
+				dayOfWeek = @{
+					# OPTIONAL
+					day = <DayOfWeek>
+				}
+				# OPTIONAL
+				hour = <System.Int32>
+				# OPTIONAL
+				minute = <System.Int32>
+			}
+		}
+	)
+	# OPTIONAL
+	backupWindows = @(
+		@{
+			# OPTIONAL
+			durationInHours = <System.Int32>
+			# OPTIONAL
+			startTimeAttributes = @{
+				# OPTIONAL
+				dayOfWeek = @{
+					# OPTIONAL
+					day = <DayOfWeek>
+				}
+				# OPTIONAL
+				hour = <System.Int32>
+				# OPTIONAL
+				minute = <System.Int32>
+			}
+		}
+	)
+	# OPTIONAL
+	logConfig = @{
+		# OPTIONAL
+		slaLogFrequencyConfig = @{
+			# OPTIONAL
+			retention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+		}
+	}
+	# OPTIONAL
+	objectSpecificConfigsInput = @{
+		# OPTIONAL
+		sapHanaConfigInput = @{
+			# OPTIONAL
+			incrementalFrequency = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+			# OPTIONAL
+			logRetention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+			# OPTIONAL
+			differentialFrequency = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+		}
+		# OPTIONAL
+		awsRdsConfigInput = @{
+			# OPTIONAL
+			logRetention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+		}
+		# OPTIONAL
+		vmwareVmConfigInput = @{
+			# OPTIONAL
+			logRetentionSeconds = <System.Int64>
+		}
+		# OPTIONAL
+		azureSqlDatabaseDbConfigInput = @{
+			# OPTIONAL
+			logRetentionInDays = <System.Int32>
+		}
+		# OPTIONAL
+		azureSqlManagedInstanceDbConfigInput = @{
+			# OPTIONAL
+			logRetentionInDays = <System.Int32>
+		}
+		# OPTIONAL
+		db2ConfigInput = @{
+			# OPTIONAL
+			incrementalFrequency = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+			# OPTIONAL
+			logRetention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+			# OPTIONAL
+			differentialFrequency = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+		}
+		# OPTIONAL
+		mssqlConfigInput = @{
+			# OPTIONAL
+			frequency = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+			# OPTIONAL
+			logRetention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+		}
+		# OPTIONAL
+		oracleConfigInput = @{
+			# OPTIONAL
+			frequency = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+			# OPTIONAL
+			logRetention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+			# OPTIONAL
+			hostLogRetention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+		}
+		# OPTIONAL
+		mongoConfigInput = @{
+			# OPTIONAL
+			logFrequency = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+			# OPTIONAL
+			logRetention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+		}
+		# OPTIONAL
+		azureBlobConfigInput = @{
+			# OPTIONAL
+			continuousBackupRetentionInDays = <System.Int32>
+		}
+		# OPTIONAL
+		awsNativeS3SlaConfigInput = @{
+			# OPTIONAL
+			continuousBackupRetentionInDays = <System.Int32>
+		}
+	}
+	# OPTIONAL
+	archivalSpecs = @(
+		@{
+			# OPTIONAL
+			archivalGroupId = <System.String>
+			# OPTIONAL
+			threshold = <System.Int32>
+			# OPTIONAL
+			thresholdUnit = <RetentionUnit>
+			# OPTIONAL
+			archivalTieringSpecInput = @{
+				# OPTIONAL
+				isInstantTieringEnabled = <System.Boolean>
+				# OPTIONAL
+				minAccessibleDurationInSeconds = <System.Int64>
+				# OPTIONAL
+				coldStorageClass = <ColdStorageClass>
+				# OPTIONAL
+				shouldTierExistingSnapshots = <System.Boolean>
+			}
+			# OPTIONAL
+			frequencies = @(
+				<RetentionUnit>
+			)
+			# OPTIONAL
+			archivalLocationToClusterMapping = @(
+				@{
+					# OPTIONAL
+					clusterUuid = <System.String>
+					# OPTIONAL
+					locationId = <System.String>
+				}
+			)
+		}
+	)
+	# OPTIONAL
+	replicationSpecsV2 = @(
+		@{
+			# OPTIONAL
+			clusterUuid = <System.String>
+			# OPTIONAL
+			storageSettingId = <System.String>
+			# OPTIONAL
+			retentionDuration = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+			# OPTIONAL
+			awsAccount = <System.String>
+			# OPTIONAL
+			azureSubscription = <System.String>
+			# OPTIONAL
+			replicationLocalRetentionDuration = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+			# OPTIONAL
+			cascadingArchivalSpecs = @(
+				@{
+					# OPTIONAL
+					archivalLocationId = <System.String>
+					# OPTIONAL
+					archivalThreshold = @{
+						# OPTIONAL
+						duration = <System.Int32>
+						# OPTIONAL
+						unit = <RetentionUnit>
+					}
+					# OPTIONAL
+					archivalTieringSpecInput = @{
+						# OPTIONAL
+						isInstantTieringEnabled = <System.Boolean>
+						# OPTIONAL
+						minAccessibleDurationInSeconds = <System.Int64>
+						# OPTIONAL
+						coldStorageClass = <ColdStorageClass>
+						# OPTIONAL
+						shouldTierExistingSnapshots = <System.Boolean>
+					}
+					# OPTIONAL
+					frequency = @(
+						<RetentionUnit>
+					)
+				}
+			)
+			# OPTIONAL
+			awsRegion = <AwsNativeRegionForReplication>
+			# OPTIONAL
+			azureRegion = <AzureNativeRegionForReplication>
+		}
+	)
+	# OPTIONAL
+	objectTypes = @(
+		<SlaObjectType>
+	)
+	# OPTIONAL
+	isRetentionLockedSla = <System.Boolean>
+}
+"@
 Write-Message "Invoke-RscMutateSla -CreateGlobal" @"
 Create SLA Domain.
 "@ "[GraphQL: createGlobalSla]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -3458,6 +11326,628 @@ Create SLA Domain.
 $inputs = Invoke-RscMutateSla -EditGlobal -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.globalSlaEditRequest = @{
+	# OPTIONAL
+	id = <System.String>
+	# OPTIONAL
+	name = <System.String>
+	# OPTIONAL
+	description = <System.String>
+	# OPTIONAL
+	snapshotSchedule = @{
+		# OPTIONAL
+		minute = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit>
+			}
+		}
+		# OPTIONAL
+		hourly = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit>
+			}
+		}
+		# OPTIONAL
+		daily = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit>
+			}
+		}
+		# OPTIONAL
+		weekly = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit>
+			}
+			# OPTIONAL
+			dayOfWeek = <DayOfWeek>
+		}
+		# OPTIONAL
+		monthly = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit>
+			}
+			# OPTIONAL
+			dayOfMonth = <DayOfMonth>
+		}
+		# OPTIONAL
+		quarterly = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit>
+			}
+			# OPTIONAL
+			dayOfQuarter = <DayOfQuarter>
+			# OPTIONAL
+			quarterStartMonth = <Month>
+		}
+		# OPTIONAL
+		yearly = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit>
+			}
+			# OPTIONAL
+			dayOfYear = <DayOfYear>
+			# OPTIONAL
+			yearStartMonth = <Month>
+		}
+	}
+	# OPTIONAL
+	archivalSpecInput = @{
+		# OPTIONAL
+		archivalGroupId = <System.String>
+		# OPTIONAL
+		threshold = <System.Int32>
+		# OPTIONAL
+		thresholdUnit = <RetentionUnit>
+		# OPTIONAL
+		archivalTieringSpecInput = @{
+			# OPTIONAL
+			isInstantTieringEnabled = <System.Boolean>
+			# OPTIONAL
+			minAccessibleDurationInSeconds = <System.Int64>
+			# OPTIONAL
+			coldStorageClass = <ColdStorageClass>
+			# OPTIONAL
+			shouldTierExistingSnapshots = <System.Boolean>
+		}
+		# OPTIONAL
+		frequencies = @(
+			<RetentionUnit>
+		)
+		# OPTIONAL
+		archivalLocationToClusterMapping = @(
+			@{
+				# OPTIONAL
+				clusterUuid = <System.String>
+				# OPTIONAL
+				locationId = <System.String>
+			}
+		)
+	}
+	# OPTIONAL
+	stateVersion = <System.Int64>
+	# OPTIONAL
+	replicationSpecInput = @{
+		# OPTIONAL
+		replicationType = <ReplicationType>
+		# OPTIONAL
+		specificReplicationSpecInput = @{
+			# OPTIONAL
+			unidirectionalSpecInput = @{
+				# OPTIONAL
+				replicationTargetId = <System.String>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit>
+			}
+			# OPTIONAL
+			bidirectionalSpecInput = @{
+				# OPTIONAL
+				replicationSpec1 = @{
+					# OPTIONAL
+					replicationTargetId = <System.String>
+					# OPTIONAL
+					retention = <System.Int32>
+					# OPTIONAL
+					retentionUnit = <RetentionUnit>
+				}
+				# OPTIONAL
+				replicationSpec2 = @{
+					# OPTIONAL
+					replicationTargetId = <System.String>
+					# OPTIONAL
+					retention = <System.Int32>
+					# OPTIONAL
+					retentionUnit = <RetentionUnit>
+				}
+			}
+			# OPTIONAL
+			cloudRegionSpecInput = @{
+				# OPTIONAL
+				replicationTargetRegion = <System.String>
+				# OPTIONAL
+				cloudProvider = <CloudProvider>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit>
+			}
+			# OPTIONAL
+			cloudLocationSpecInput = @{
+				# OPTIONAL
+				replicationTargetId = <System.String>
+				# OPTIONAL
+				cloudProvider = <CloudProvider>
+				# OPTIONAL
+				retentionDuration = @{
+					# OPTIONAL
+					duration = <System.Int32>
+					# OPTIONAL
+					unit = <RetentionUnit>
+				}
+			}
+		}
+	}
+	# OPTIONAL
+	localRetentionLimit = @{
+		# OPTIONAL
+		duration = <System.Int32>
+		# OPTIONAL
+		unit = <RetentionUnit>
+	}
+	# OPTIONAL
+	firstFullBackupWindows = @(
+		@{
+			# OPTIONAL
+			durationInHours = <System.Int32>
+			# OPTIONAL
+			startTimeAttributes = @{
+				# OPTIONAL
+				dayOfWeek = @{
+					# OPTIONAL
+					day = <DayOfWeek>
+				}
+				# OPTIONAL
+				hour = <System.Int32>
+				# OPTIONAL
+				minute = <System.Int32>
+			}
+		}
+	)
+	# OPTIONAL
+	backupWindows = @(
+		@{
+			# OPTIONAL
+			durationInHours = <System.Int32>
+			# OPTIONAL
+			startTimeAttributes = @{
+				# OPTIONAL
+				dayOfWeek = @{
+					# OPTIONAL
+					day = <DayOfWeek>
+				}
+				# OPTIONAL
+				hour = <System.Int32>
+				# OPTIONAL
+				minute = <System.Int32>
+			}
+		}
+	)
+	# OPTIONAL
+	logConfig = @{
+		# OPTIONAL
+		slaLogFrequencyConfig = @{
+			# OPTIONAL
+			retention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+		}
+	}
+	# OPTIONAL
+	objectSpecificConfigsInput = @{
+		# OPTIONAL
+		sapHanaConfigInput = @{
+			# OPTIONAL
+			incrementalFrequency = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+			# OPTIONAL
+			logRetention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+			# OPTIONAL
+			differentialFrequency = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+		}
+		# OPTIONAL
+		awsRdsConfigInput = @{
+			# OPTIONAL
+			logRetention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+		}
+		# OPTIONAL
+		vmwareVmConfigInput = @{
+			# OPTIONAL
+			logRetentionSeconds = <System.Int64>
+		}
+		# OPTIONAL
+		azureSqlDatabaseDbConfigInput = @{
+			# OPTIONAL
+			logRetentionInDays = <System.Int32>
+		}
+		# OPTIONAL
+		azureSqlManagedInstanceDbConfigInput = @{
+			# OPTIONAL
+			logRetentionInDays = <System.Int32>
+		}
+		# OPTIONAL
+		db2ConfigInput = @{
+			# OPTIONAL
+			incrementalFrequency = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+			# OPTIONAL
+			logRetention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+			# OPTIONAL
+			differentialFrequency = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+		}
+		# OPTIONAL
+		mssqlConfigInput = @{
+			# OPTIONAL
+			frequency = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+			# OPTIONAL
+			logRetention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+		}
+		# OPTIONAL
+		oracleConfigInput = @{
+			# OPTIONAL
+			frequency = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+			# OPTIONAL
+			logRetention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+			# OPTIONAL
+			hostLogRetention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+		}
+		# OPTIONAL
+		mongoConfigInput = @{
+			# OPTIONAL
+			logFrequency = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+			# OPTIONAL
+			logRetention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+		}
+		# OPTIONAL
+		azureBlobConfigInput = @{
+			# OPTIONAL
+			continuousBackupRetentionInDays = <System.Int32>
+		}
+		# OPTIONAL
+		awsNativeS3SlaConfigInput = @{
+			# OPTIONAL
+			continuousBackupRetentionInDays = <System.Int32>
+		}
+	}
+	# OPTIONAL
+	objectTypeList = @(
+		<SlaObjectType>
+	)
+	# OPTIONAL
+	replicationSpecV2List = @(
+		@{
+			# OPTIONAL
+			clusterUuid = <System.String>
+			# OPTIONAL
+			storageSettingId = <System.String>
+			# OPTIONAL
+			retentionDuration = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+			# OPTIONAL
+			awsAccount = <System.String>
+			# OPTIONAL
+			azureSubscription = <System.String>
+			# OPTIONAL
+			replicationLocalRetentionDuration = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+			# OPTIONAL
+			cascadingArchivalSpecs = @(
+				@{
+					# OPTIONAL
+					archivalLocationId = <System.String>
+					# OPTIONAL
+					archivalThreshold = @{
+						# OPTIONAL
+						duration = <System.Int32>
+						# OPTIONAL
+						unit = <RetentionUnit>
+					}
+					# OPTIONAL
+					archivalTieringSpecInput = @{
+						# OPTIONAL
+						isInstantTieringEnabled = <System.Boolean>
+						# OPTIONAL
+						minAccessibleDurationInSeconds = <System.Int64>
+						# OPTIONAL
+						coldStorageClass = <ColdStorageClass>
+						# OPTIONAL
+						shouldTierExistingSnapshots = <System.Boolean>
+					}
+					# OPTIONAL
+					frequency = @(
+						<RetentionUnit>
+					)
+				}
+			)
+			# OPTIONAL
+			awsRegion = <AwsNativeRegionForReplication>
+			# OPTIONAL
+			azureRegion = <AzureNativeRegionForReplication>
+		}
+	)
+	# OPTIONAL
+	archivalSpecInputs = @(
+		@{
+			# OPTIONAL
+			archivalGroupId = <System.String>
+			# OPTIONAL
+			threshold = <System.Int32>
+			# OPTIONAL
+			thresholdUnit = <RetentionUnit>
+			# OPTIONAL
+			archivalTieringSpecInput = @{
+				# OPTIONAL
+				isInstantTieringEnabled = <System.Boolean>
+				# OPTIONAL
+				minAccessibleDurationInSeconds = <System.Int64>
+				# OPTIONAL
+				coldStorageClass = <ColdStorageClass>
+				# OPTIONAL
+				shouldTierExistingSnapshots = <System.Boolean>
+			}
+			# OPTIONAL
+			frequencies = @(
+				<RetentionUnit>
+			)
+			# OPTIONAL
+			archivalLocationToClusterMapping = @(
+				@{
+					# OPTIONAL
+					clusterUuid = <System.String>
+					# OPTIONAL
+					locationId = <System.String>
+				}
+			)
+		}
+	)
+	# OPTIONAL
+	shouldApplyToExistingSnapshots = @{
+		# OPTIONAL
+		value = <System.Boolean>
+	}
+	# OPTIONAL
+	shouldApplyToNonPolicySnapshots = @{
+		# OPTIONAL
+		value = <System.Boolean>
+	}
+	# OPTIONAL
+	userNote = <System.String>
+	# OPTIONAL
+	archivalSpecs = @(
+		@{
+			# OPTIONAL
+			archivalGroupId = <System.String>
+			# OPTIONAL
+			threshold = <System.Int32>
+			# OPTIONAL
+			thresholdUnit = <RetentionUnit>
+			# OPTIONAL
+			archivalTieringSpecInput = @{
+				# OPTIONAL
+				isInstantTieringEnabled = <System.Boolean>
+				# OPTIONAL
+				minAccessibleDurationInSeconds = <System.Int64>
+				# OPTIONAL
+				coldStorageClass = <ColdStorageClass>
+				# OPTIONAL
+				shouldTierExistingSnapshots = <System.Boolean>
+			}
+			# OPTIONAL
+			frequencies = @(
+				<RetentionUnit>
+			)
+			# OPTIONAL
+			archivalLocationToClusterMapping = @(
+				@{
+					# OPTIONAL
+					clusterUuid = <System.String>
+					# OPTIONAL
+					locationId = <System.String>
+				}
+			)
+		}
+	)
+	# OPTIONAL
+	replicationSpecsV2 = @(
+		@{
+			# OPTIONAL
+			clusterUuid = <System.String>
+			# OPTIONAL
+			storageSettingId = <System.String>
+			# OPTIONAL
+			retentionDuration = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+			# OPTIONAL
+			awsAccount = <System.String>
+			# OPTIONAL
+			azureSubscription = <System.String>
+			# OPTIONAL
+			replicationLocalRetentionDuration = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+			# OPTIONAL
+			cascadingArchivalSpecs = @(
+				@{
+					# OPTIONAL
+					archivalLocationId = <System.String>
+					# OPTIONAL
+					archivalThreshold = @{
+						# OPTIONAL
+						duration = <System.Int32>
+						# OPTIONAL
+						unit = <RetentionUnit>
+					}
+					# OPTIONAL
+					archivalTieringSpecInput = @{
+						# OPTIONAL
+						isInstantTieringEnabled = <System.Boolean>
+						# OPTIONAL
+						minAccessibleDurationInSeconds = <System.Int64>
+						# OPTIONAL
+						coldStorageClass = <ColdStorageClass>
+						# OPTIONAL
+						shouldTierExistingSnapshots = <System.Boolean>
+					}
+					# OPTIONAL
+					frequency = @(
+						<RetentionUnit>
+					)
+				}
+			)
+			# OPTIONAL
+			awsRegion = <AwsNativeRegionForReplication>
+			# OPTIONAL
+			azureRegion = <AzureNativeRegionForReplication>
+		}
+	)
+	# OPTIONAL
+	objectTypes = @(
+		<SlaObjectType>
+	)
+	# OPTIONAL
+	isRetentionLockedSla = <System.Boolean>
+}
+"@
 Write-Message "Invoke-RscMutateSla -EditGlobal" @"
 
 "@ "[GraphQL: editGlobalSla]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -3470,6 +11960,496 @@ Write-Message "Invoke-RscMutateSla -EditGlobal" @"
 $inputs = Invoke-RscMutateSla -UpdateGlobal -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	id = <System.String>
+	# OPTIONAL
+	name = <System.String>
+	# OPTIONAL
+	description = <System.String>
+	# OPTIONAL
+	snapshotSchedule = @{
+		# OPTIONAL
+		minute = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit>
+			}
+		}
+		# OPTIONAL
+		hourly = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit>
+			}
+		}
+		# OPTIONAL
+		daily = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit>
+			}
+		}
+		# OPTIONAL
+		weekly = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit>
+			}
+			# OPTIONAL
+			dayOfWeek = <DayOfWeek>
+		}
+		# OPTIONAL
+		monthly = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit>
+			}
+			# OPTIONAL
+			dayOfMonth = <DayOfMonth>
+		}
+		# OPTIONAL
+		quarterly = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit>
+			}
+			# OPTIONAL
+			dayOfQuarter = <DayOfQuarter>
+			# OPTIONAL
+			quarterStartMonth = <Month>
+		}
+		# OPTIONAL
+		yearly = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit>
+			}
+			# OPTIONAL
+			dayOfYear = <DayOfYear>
+			# OPTIONAL
+			yearStartMonth = <Month>
+		}
+	}
+	# OPTIONAL
+	stateVersion = <System.Int64>
+	# OPTIONAL
+	replicationSpecInput = @{
+		# OPTIONAL
+		replicationType = <ReplicationType>
+		# OPTIONAL
+		specificReplicationSpecInput = @{
+			# OPTIONAL
+			unidirectionalSpecInput = @{
+				# OPTIONAL
+				replicationTargetId = <System.String>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit>
+			}
+			# OPTIONAL
+			bidirectionalSpecInput = @{
+				# OPTIONAL
+				replicationSpec1 = @{
+					# OPTIONAL
+					replicationTargetId = <System.String>
+					# OPTIONAL
+					retention = <System.Int32>
+					# OPTIONAL
+					retentionUnit = <RetentionUnit>
+				}
+				# OPTIONAL
+				replicationSpec2 = @{
+					# OPTIONAL
+					replicationTargetId = <System.String>
+					# OPTIONAL
+					retention = <System.Int32>
+					# OPTIONAL
+					retentionUnit = <RetentionUnit>
+				}
+			}
+			# OPTIONAL
+			cloudRegionSpecInput = @{
+				# OPTIONAL
+				replicationTargetRegion = <System.String>
+				# OPTIONAL
+				cloudProvider = <CloudProvider>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit>
+			}
+			# OPTIONAL
+			cloudLocationSpecInput = @{
+				# OPTIONAL
+				replicationTargetId = <System.String>
+				# OPTIONAL
+				cloudProvider = <CloudProvider>
+				# OPTIONAL
+				retentionDuration = @{
+					# OPTIONAL
+					duration = <System.Int32>
+					# OPTIONAL
+					unit = <RetentionUnit>
+				}
+			}
+		}
+	}
+	# OPTIONAL
+	localRetentionLimit = @{
+		# OPTIONAL
+		duration = <System.Int32>
+		# OPTIONAL
+		unit = <RetentionUnit>
+	}
+	# OPTIONAL
+	firstFullBackupWindows = @(
+		@{
+			# OPTIONAL
+			durationInHours = <System.Int32>
+			# OPTIONAL
+			startTimeAttributes = @{
+				# OPTIONAL
+				dayOfWeek = @{
+					# OPTIONAL
+					day = <DayOfWeek>
+				}
+				# OPTIONAL
+				hour = <System.Int32>
+				# OPTIONAL
+				minute = <System.Int32>
+			}
+		}
+	)
+	# OPTIONAL
+	backupWindows = @(
+		@{
+			# OPTIONAL
+			durationInHours = <System.Int32>
+			# OPTIONAL
+			startTimeAttributes = @{
+				# OPTIONAL
+				dayOfWeek = @{
+					# OPTIONAL
+					day = <DayOfWeek>
+				}
+				# OPTIONAL
+				hour = <System.Int32>
+				# OPTIONAL
+				minute = <System.Int32>
+			}
+		}
+	)
+	# OPTIONAL
+	logConfig = @{
+		# OPTIONAL
+		slaLogFrequencyConfig = @{
+			# OPTIONAL
+			retention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+		}
+	}
+	# OPTIONAL
+	objectSpecificConfigsInput = @{
+		# OPTIONAL
+		sapHanaConfigInput = @{
+			# OPTIONAL
+			incrementalFrequency = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+			# OPTIONAL
+			logRetention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+			# OPTIONAL
+			differentialFrequency = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+		}
+		# OPTIONAL
+		awsRdsConfigInput = @{
+			# OPTIONAL
+			logRetention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+		}
+		# OPTIONAL
+		vmwareVmConfigInput = @{
+			# OPTIONAL
+			logRetentionSeconds = <System.Int64>
+		}
+		# OPTIONAL
+		azureSqlDatabaseDbConfigInput = @{
+			# OPTIONAL
+			logRetentionInDays = <System.Int32>
+		}
+		# OPTIONAL
+		azureSqlManagedInstanceDbConfigInput = @{
+			# OPTIONAL
+			logRetentionInDays = <System.Int32>
+		}
+		# OPTIONAL
+		db2ConfigInput = @{
+			# OPTIONAL
+			incrementalFrequency = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+			# OPTIONAL
+			logRetention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+			# OPTIONAL
+			differentialFrequency = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+		}
+		# OPTIONAL
+		mssqlConfigInput = @{
+			# OPTIONAL
+			frequency = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+			# OPTIONAL
+			logRetention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+		}
+		# OPTIONAL
+		oracleConfigInput = @{
+			# OPTIONAL
+			frequency = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+			# OPTIONAL
+			logRetention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+			# OPTIONAL
+			hostLogRetention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+		}
+		# OPTIONAL
+		mongoConfigInput = @{
+			# OPTIONAL
+			logFrequency = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+			# OPTIONAL
+			logRetention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+		}
+		# OPTIONAL
+		azureBlobConfigInput = @{
+			# OPTIONAL
+			continuousBackupRetentionInDays = <System.Int32>
+		}
+		# OPTIONAL
+		awsNativeS3SlaConfigInput = @{
+			# OPTIONAL
+			continuousBackupRetentionInDays = <System.Int32>
+		}
+	}
+	# OPTIONAL
+	shouldApplyToExistingSnapshots = @{
+		# OPTIONAL
+		value = <System.Boolean>
+	}
+	# OPTIONAL
+	shouldApplyToNonPolicySnapshots = @{
+		# OPTIONAL
+		value = <System.Boolean>
+	}
+	# OPTIONAL
+	userNote = <System.String>
+	# OPTIONAL
+	archivalSpecs = @(
+		@{
+			# OPTIONAL
+			archivalGroupId = <System.String>
+			# OPTIONAL
+			threshold = <System.Int32>
+			# OPTIONAL
+			thresholdUnit = <RetentionUnit>
+			# OPTIONAL
+			archivalTieringSpecInput = @{
+				# OPTIONAL
+				isInstantTieringEnabled = <System.Boolean>
+				# OPTIONAL
+				minAccessibleDurationInSeconds = <System.Int64>
+				# OPTIONAL
+				coldStorageClass = <ColdStorageClass>
+				# OPTIONAL
+				shouldTierExistingSnapshots = <System.Boolean>
+			}
+			# OPTIONAL
+			frequencies = @(
+				<RetentionUnit>
+			)
+			# OPTIONAL
+			archivalLocationToClusterMapping = @(
+				@{
+					# OPTIONAL
+					clusterUuid = <System.String>
+					# OPTIONAL
+					locationId = <System.String>
+				}
+			)
+		}
+	)
+	# OPTIONAL
+	replicationSpecsV2 = @(
+		@{
+			# OPTIONAL
+			clusterUuid = <System.String>
+			# OPTIONAL
+			storageSettingId = <System.String>
+			# OPTIONAL
+			retentionDuration = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+			# OPTIONAL
+			awsAccount = <System.String>
+			# OPTIONAL
+			azureSubscription = <System.String>
+			# OPTIONAL
+			replicationLocalRetentionDuration = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit>
+			}
+			# OPTIONAL
+			cascadingArchivalSpecs = @(
+				@{
+					# OPTIONAL
+					archivalLocationId = <System.String>
+					# OPTIONAL
+					archivalThreshold = @{
+						# OPTIONAL
+						duration = <System.Int32>
+						# OPTIONAL
+						unit = <RetentionUnit>
+					}
+					# OPTIONAL
+					archivalTieringSpecInput = @{
+						# OPTIONAL
+						isInstantTieringEnabled = <System.Boolean>
+						# OPTIONAL
+						minAccessibleDurationInSeconds = <System.Int64>
+						# OPTIONAL
+						coldStorageClass = <ColdStorageClass>
+						# OPTIONAL
+						shouldTierExistingSnapshots = <System.Boolean>
+					}
+					# OPTIONAL
+					frequency = @(
+						<RetentionUnit>
+					)
+				}
+			)
+			# OPTIONAL
+			awsRegion = <AwsNativeRegionForReplication>
+			# OPTIONAL
+			azureRegion = <AzureNativeRegionForReplication>
+		}
+	)
+	# OPTIONAL
+	objectTypes = @(
+		<SlaObjectType>
+	)
+	# OPTIONAL
+	isRetentionLockedSla = <System.Boolean>
+}
+"@
 Write-Message "Invoke-RscMutateSla -UpdateGlobal" @"
 Update SLA Domain.
 "@ "[GraphQL: updateGlobalSla]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -3482,6 +12462,12 @@ Update SLA Domain.
 $inputs = Invoke-RscMutateSla -DeleteGlobal -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.id = <System.String>
+# OPTIONAL
+$inputs.Arg.userNote = <System.String>
+"@
 Write-Message "Invoke-RscMutateSla -DeleteGlobal" @"
 
 "@ "[GraphQL: deleteGlobalSla]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -3494,6 +12480,29 @@ Write-Message "Invoke-RscMutateSla -DeleteGlobal" @"
 $inputs = Invoke-RscMutateSla -Assign -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	slaDomainAssignType = <SlaAssignTypeEnum>
+	# OPTIONAL
+	slaOptionalId = <System.String>
+	# REQUIRED
+	objectIds = @(
+		<System.String>
+	)
+	# OPTIONAL
+	applicableWorkloadType = <WorkloadLevelHierarchy>
+	# OPTIONAL
+	shouldApplyToExistingSnapshots = <System.Boolean>
+	# OPTIONAL
+	shouldApplyToNonPolicySnapshots = <System.Boolean>
+	# OPTIONAL
+	existingSnapshotRetention = <GlobalExistingSnapshotRetention>
+	# OPTIONAL
+	userNote = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateSla -Assign" @"
 Endpoint to assign SLA Domain.
 "@ "[GraphQL: assignSla]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -3506,8 +12515,30 @@ Endpoint to assign SLA Domain.
 $inputs = Invoke-RscMutateSla -AssignsForSnappableHierarchies -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.globalSlaOptionalFid = <System.String>
+# REQUIRED
+$inputs.Arg.globalSlaAssignType = <SlaAssignTypeEnum>
+# REQUIRED
+$inputs.Arg.objectIds = @(
+	<System.String>
+)
+# OPTIONAL
+$inputs.Arg.applicableSnappableTypes = @(
+	<WorkloadLevelHierarchy>
+)
+# OPTIONAL
+$inputs.Arg.shouldApplyToExistingSnapshots = <System.Boolean>
+# OPTIONAL
+$inputs.Arg.shouldApplyToNonPolicySnapshots = <System.Boolean>
+# OPTIONAL
+$inputs.Arg.globalExistingSnapshotRetention = <GlobalExistingSnapshotRetention>
+# OPTIONAL
+$inputs.Arg.userNote = <System.String>
+"@
 Write-Message "Invoke-RscMutateSla -AssignsForSnappableHierarchies" @"
-
+Assign SLA Domain to workloads with multiple hierarchies.
 "@ "[GraphQL: assignSlasForSnappableHierarchies]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
@@ -3518,8 +12549,24 @@ Write-Message "Invoke-RscMutateSla -AssignsForSnappableHierarchies" @"
 $inputs = Invoke-RscMutateSla -AssignRetentionToSnappables -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.globalSlaOptionalFid = <System.String>
+# REQUIRED
+$inputs.Arg.globalSlaAssignType = <SlaAssignTypeEnum>
+# REQUIRED
+$inputs.Arg.objectIds = @(
+	<System.String>
+)
+# OPTIONAL
+$inputs.Arg.applicableSnappableType = <WorkloadLevelHierarchy>
+# OPTIONAL
+$inputs.Arg.shouldApplyToNonPolicySnapshots = <System.Boolean>
+# OPTIONAL
+$inputs.Arg.userNote = <System.String>
+"@
 Write-Message "Invoke-RscMutateSla -AssignRetentionToSnappables" @"
-
+Endpoint to assign retention SLA Domain to workloads.
 "@ "[GraphQL: assignRetentionSLAToSnappables]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
@@ -3530,8 +12577,20 @@ Write-Message "Invoke-RscMutateSla -AssignRetentionToSnappables" @"
 $inputs = Invoke-RscMutateSla -AssignRetentionToSnapshots -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.globalSlaOptionalFid = <System.String>
+# REQUIRED
+$inputs.Arg.globalSlaAssignType = <SlaAssignTypeEnum>
+# REQUIRED
+$inputs.Arg.snapshotFids = @(
+	<System.String>
+)
+# OPTIONAL
+$inputs.Arg.userNote = <System.String>
+"@
 Write-Message "Invoke-RscMutateSla -AssignRetentionToSnapshots" @"
-
+Endpoint to assign retention SLA Domain to snapshots.
 "@ "[GraphQL: assignRetentionSLAToSnapshots]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
@@ -3542,6 +12601,19 @@ Write-Message "Invoke-RscMutateSla -AssignRetentionToSnapshots" @"
 $inputs = Invoke-RscMutateSla -Pause -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	slaId = <System.String>
+	# REQUIRED
+	clusterUuids = @(
+		<System.String>
+	)
+	# REQUIRED
+	pauseSla = <System.Boolean>
+}
+"@
 Write-Message "Invoke-RscMutateSla -Pause" @"
 Pause or resume SLA Domain on the given Rubrik clusters.
 "@ "[GraphQL: pauseSla]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -3554,6 +12626,15 @@ Pause or resume SLA Domain on the given Rubrik clusters.
 $inputs = Invoke-RscMutateSla -Upgrades -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	slaIds = @(
+		<System.String>
+	)
+}
+"@
 Write-Message "Invoke-RscMutateSla -Upgrades" @"
 Upgrade SLA Domains from the Rubrik clusters.
 "@ "[GraphQL: upgradeSlas]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -3566,6 +12647,18 @@ Upgrade SLA Domains from the Rubrik clusters.
 $inputs = Invoke-RscMutateSla -GetPendingAssignments -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	pendingAssignmentsRequest = @{
+		# REQUIRED
+		objectIds = @(
+			<System.String>
+		)
+	}
+}
+"@
 Write-Message "Invoke-RscMutateSla -GetPendingAssignments" @"
 Get pending SLA Domain assignments on selected managed objects
 
@@ -3581,6 +12674,55 @@ Retrieve the details of pending SLA Domain assignments on the given managed obje
 $inputs = Invoke-RscMutateSla -ExportManagedVolumeSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+	# OPTIONAL
+	params = @{
+		# OPTIONAL
+		shouldDownloadToLocal = <System.Boolean>
+		# OPTIONAL
+		managedVolumeSlaExportConfig = @{
+			# OPTIONAL
+			managedVolumeExportConfig = @{
+				# OPTIONAL
+				subnet = <System.String>
+				# OPTIONAL
+				managedVolumePatchConfig = @{
+					# OPTIONAL
+					hostPatterns = @(
+						<System.String>
+					)
+					# OPTIONAL
+					nodeHint = @(
+						<System.String>
+					)
+					# OPTIONAL
+					smbDomainName = <System.String>
+					# OPTIONAL
+					smbValidIps = @(
+						<System.String>
+					)
+					# OPTIONAL
+					smbValidUsers = @(
+						<System.String>
+					)
+				}
+				# OPTIONAL
+				shareType = <ManagedVolumeShareType>
+			}
+			# REQUIRED
+			hostId = <System.String>
+			# REQUIRED
+			hostMountPaths = @(
+				<System.String>
+			)
+		}
+	}
+}
+"@
 Write-Message "Invoke-RscMutateSla -ExportManagedVolumeSnapshot" @"
 Create a request to export a snapshot and mount it on a host
 
@@ -3597,6 +12739,20 @@ Export a managed volume snapshot as a share and mount it on a given host.
 $inputs = Invoke-RscMutateVcenter -Create -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.clusterUuid = <System.String>
+# REQUIRED
+$inputs.Arg.hostname = <System.String>
+# REQUIRED
+$inputs.Arg.username = <System.String>
+# REQUIRED
+$inputs.Arg.password = <System.String>
+# REQUIRED
+$inputs.Arg.conflictResolutionAuthz = <ConflictResolutionAuthzEnum>
+# OPTIONAL
+$inputs.Arg.caCert = <System.String>
+"@
 Write-Message "Invoke-RscMutateVcenter -Create" @"
 
 "@ "[GraphQL: vsphereCreateVCenter]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -3609,6 +12765,13 @@ Write-Message "Invoke-RscMutateVcenter -Create" @"
 $inputs = Invoke-RscMutateVcenter -Delete -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateVcenter -Delete" @"
 Remove vCenter Server
 
@@ -3624,6 +12787,20 @@ Initiates an asynchronous job to remove a vCenter Server object. The vCenter Ser
 $inputs = Invoke-RscMutateVcenter -Edit -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.vcenterId = <System.String>
+# REQUIRED
+$inputs.Arg.hostname = <System.String>
+# REQUIRED
+$inputs.Arg.username = <System.String>
+# REQUIRED
+$inputs.Arg.password = <System.String>
+# REQUIRED
+$inputs.Arg.conflictResolutionAuthz = <ConflictResolutionAuthzEnum>
+# OPTIONAL
+$inputs.Arg.caCert = <System.String>
+"@
 Write-Message "Invoke-RscMutateVcenter -Edit" @"
 
 "@ "[GraphQL: vsphereEditVCenter]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -3636,6 +12813,10 @@ Write-Message "Invoke-RscMutateVcenter -Edit" @"
 $inputs = Invoke-RscMutateVcenter -Refresh -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.vcenterId = <System.String>
+"@
 Write-Message "Invoke-RscMutateVcenter -Refresh" @"
 
 "@ "[GraphQL: vsphereRefreshVCenter]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -3648,6 +12829,41 @@ Write-Message "Invoke-RscMutateVcenter -Refresh" @"
 $inputs = Invoke-RscMutateVcenter -Update -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+	# REQUIRED
+	updateProperties = @{
+		# OPTIONAL
+		caCerts = <System.String>
+		# OPTIONAL
+		computeVisibilityFilter = @(
+			@{
+				# OPTIONAL
+				isVmwareMetroStorageCluster = <System.Boolean>
+				# REQUIRED
+				hostGroupFilter = @(
+					<System.String>
+				)
+				# REQUIRED
+				id = <System.String>
+			}
+		)
+		# OPTIONAL
+		shouldEnableHotAddProxyForOnPrem = <System.Boolean>
+		# OPTIONAL
+		conflictResolutionAuthz = <VcenterConfigConflictResolutionAuthz>
+		# REQUIRED
+		hostname = <System.String>
+		# REQUIRED
+		password = <System.String>
+		# REQUIRED
+		username = <System.String>
+	}
+}
+"@
 Write-Message "Invoke-RscMutateVcenter -Update" @"
 Update vCenter Server
 
@@ -3663,6 +12879,33 @@ Update the address, username and password of the specified vCenter Server object
 $inputs = Invoke-RscMutateVcenter -UpdateHotAddNetwork -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	hotAddNetworkInfo = @{
+		# OPTIONAL
+		staticIpInfo = @{
+			# OPTIONAL
+			dnsServers = @(
+				<System.String>
+			)
+			# OPTIONAL
+			gateway = <System.String>
+			# REQUIRED
+			ipAddresses = @(
+				<System.String>
+			)
+			# REQUIRED
+			subnetMask = <System.String>
+		}
+		# REQUIRED
+		networkId = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateVcenter -UpdateHotAddNetwork" @"
 Set the user-configured network for HotAdd backup and recovery
 
@@ -3678,6 +12921,20 @@ Set the user-configured network for HotAdd backup and recovery operations on VMw
 $inputs = Invoke-RscMutateVcenter -UpdateHotAddBandwidth -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	hotAddBandwidthInfo = @{
+		# REQUIRED
+		exportLimit = <System.Int32>
+		# REQUIRED
+		ingestLimit = <System.Int32>
+	}
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateVcenter -UpdateHotAddBandwidth" @"
 Set the ingest and export bandwidth limits for HotAdd with the vCenter
 
@@ -3694,6 +12951,20 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
 $inputs = Invoke-RscMutateVsphere -OnDemandSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	config = @{
+		# OPTIONAL
+		slaId = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+	# OPTIONAL
+	userNote = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateVsphere -OnDemandSnapshot" @"
 
 "@ "[GraphQL: vsphereOnDemandSnapshot]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -3706,6 +12977,22 @@ Write-Message "Invoke-RscMutateVsphere -OnDemandSnapshot" @"
 $inputs = Invoke-RscMutateVsphere -BulkOnDemandSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		slaId = <System.String>
+		# REQUIRED
+		vms = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	userNote = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateVsphere -BulkOnDemandSnapshot" @"
 Trigger a bulk on demand snapshot.
 "@ "[GraphQL: vsphereBulkOnDemandSnapshot]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -3718,6 +13005,15 @@ Trigger a bulk on demand snapshot.
 $inputs = Invoke-RscMutateVsphere -DeleteLiveMount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	force = <System.Boolean>
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateVsphere -DeleteLiveMount" @"
 Delete a Live Mount VM
 
@@ -3733,6 +13029,37 @@ Create a request to delete a Live Mount virtual machine.
 $inputs = Invoke-RscMutateVsphere -ExportSnapshotToStandaloneHostV2 -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		mountExportSnapshotJobCommonOptions = @{
+			# OPTIONAL
+			disableNetwork = <System.Boolean>
+			# OPTIONAL
+			keepMacAddresses = <System.Boolean>
+			# OPTIONAL
+			powerOn = <System.Boolean>
+			# OPTIONAL
+			removeNetworkDevices = <System.Boolean>
+			# OPTIONAL
+			vmName = <System.String>
+		}
+		# REQUIRED
+		datastoreName = <System.String>
+		# REQUIRED
+		hostIpAddress = <System.String>
+		# REQUIRED
+		hostPassword = <System.String>
+		# REQUIRED
+		hostUsername = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateVsphere -ExportSnapshotToStandaloneHostV2" @"
 Export snapshot of a virtual machine to standalone ESXi server.
 "@ "[GraphQL: vsphereExportSnapshotToStandaloneHostV2]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -3745,6 +13072,28 @@ Export snapshot of a virtual machine to standalone ESXi server.
 $inputs = Invoke-RscMutateVsphere -ExportSnapshotToStandaloneHost -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.snapshotFid = <System.String>
+# OPTIONAL
+$inputs.Arg.vmName = <System.String>
+# OPTIONAL
+$inputs.Arg.disableNetwork = <System.Boolean>
+# OPTIONAL
+$inputs.Arg.removeNetworkDevices = <System.Boolean>
+# OPTIONAL
+$inputs.Arg.powerOn = <System.Boolean>
+# OPTIONAL
+$inputs.Arg.keepMacAddresses = <System.Boolean>
+# REQUIRED
+$inputs.Arg.hostIpAddress = <System.String>
+# REQUIRED
+$inputs.Arg.datastoreName = <System.String>
+# REQUIRED
+$inputs.Arg.hostUsername = <System.String>
+# REQUIRED
+$inputs.Arg.hostPassword = <System.String>
+"@
 Write-Message "Invoke-RscMutateVsphere -ExportSnapshotToStandaloneHost" @"
 
 "@ "[GraphQL: vsphereExportSnapshotToStandaloneHost]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -3757,6 +13106,22 @@ Write-Message "Invoke-RscMutateVsphere -ExportSnapshotToStandaloneHost" @"
 $inputs = Invoke-RscMutateVsphere -DownloadVirtualMachineFiles -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		fileNamesToDownload = @(
+			<System.String>
+		)
+		# REQUIRED
+		vmId = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateVsphere -DownloadVirtualMachineFiles" @"
 Download Virtual Machine files from a snapshot
 
@@ -3772,6 +13137,22 @@ Start an asynchronous job to download multiple Virtual Machine files, such as .v
 $inputs = Invoke-RscMutateVsphere -CreateAdvancedTag -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	filterInfo = @{
+		# OPTIONAL
+		description = <System.String>
+		# REQUIRED
+		condition = <System.String>
+		# REQUIRED
+		name = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateVsphere -CreateAdvancedTag" @"
 Create a multi-tag filter for vSphere tags
 
@@ -3787,6 +13168,15 @@ Create a filter consisting of vSphere tags joined with logical operators.
 $inputs = Invoke-RscMutateVsphere -DeleteAdvancedTag -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	filterId = <System.String>
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateVsphere -DeleteAdvancedTag" @"
 Remove the multi-tag filter
 
@@ -3802,6 +13192,24 @@ Remove the multi-tag filter.
 $inputs = Invoke-RscMutateVsphere -UpdateAdvancedTag -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	filterId = <System.String>
+	# REQUIRED
+	filterInfo = @{
+		# OPTIONAL
+		description = <System.String>
+		# REQUIRED
+		condition = <System.String>
+		# REQUIRED
+		name = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateVsphere -UpdateAdvancedTag" @"
 Update the multi-tag filter
 
@@ -3818,6 +13226,45 @@ Updates the name, condition, and description of the specified multi-tag filter.
 $inputs = Invoke-RscMutateVsphereVm -RecoverFiles -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	snapshotFid = <System.String>
+	# REQUIRED
+	restoreConfig = @{
+		# OPTIONAL
+		restoreFilesConfig = @(
+			@{
+				# OPTIONAL
+				path = <System.String>
+				# OPTIONAL
+				restorePath = <System.String>
+			}
+		)
+		# OPTIONAL
+		domainName = <System.String>
+		# OPTIONAL
+		username = <System.String>
+		# OPTIONAL
+		password = <System.String>
+		# OPTIONAL
+		shouldIgnoreErrors = <System.Boolean>
+		# OPTIONAL
+		shouldSaveCredentials = <System.Boolean>
+		# OPTIONAL
+		shouldUseAgent = <System.Boolean>
+		# OPTIONAL
+		shouldRestoreXAttrs = <System.Boolean>
+		# OPTIONAL
+		deltaTypeFilter = @(
+			<DeltaType>
+		)
+		# OPTIONAL
+		nextSnapshotFid = <System.String>
+	}
+}
+"@
 Write-Message "Invoke-RscMutateVsphereVm -RecoverFiles" @"
 Restores multiple files/directories from snapshot.
 "@ "[GraphQL: vsphereVmRecoverFiles]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -3830,6 +13277,57 @@ Restores multiple files/directories from snapshot.
 $inputs = Invoke-RscMutateVsphereVm -RecoverFilesNew -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		domainName = <System.String>
+		# OPTIONAL
+		ignoreErrors = <System.Boolean>
+		# OPTIONAL
+		password = <System.String>
+		# OPTIONAL
+		shouldSaveCredentials = <System.Boolean>
+		# OPTIONAL
+		username = <System.String>
+		# OPTIONAL
+		destObjectId = <System.String>
+		# OPTIONAL
+		shouldRestoreXAttrs = <System.Boolean>
+		# OPTIONAL
+		shouldUseAgent = <System.Boolean>
+		# OPTIONAL
+		guestCredentialId = <System.String>
+		# REQUIRED
+		restoreConfig = @(
+			@{
+				# OPTIONAL
+				restorePathPair = @{
+					# OPTIONAL
+					restorePath = <System.String>
+					# REQUIRED
+					path = <System.String>
+				}
+			}
+		)
+	}
+	# OPTIONAL
+	deltaRequest = @{
+		# REQUIRED
+		nextSnapshotFid = <System.String>
+		# REQUIRED
+		deltaTypeFilter = @(
+			<DeltaType>
+		)
+	}
+}
+"@
 Write-Message "Invoke-RscMutateVsphereVm -RecoverFilesNew" @"
 Restores multiple files/directories from snapshot.
 "@ "[GraphQL: vsphereVmRecoverFilesNew]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -3842,6 +13340,13 @@ Restores multiple files/directories from snapshot.
 $inputs = Invoke-RscMutateVsphereVm -RegisterAgent -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateVsphereVm -RegisterAgent" @"
 Register Rubrik Backup Service
 
@@ -3857,6 +13362,13 @@ Register the Rubrik Backup Service that is running on a specified host with the 
 $inputs = Invoke-RscMutateVsphereVm -DownloadSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateVsphereVm -DownloadSnapshot" @"
 Download snapshot from archive
 
@@ -3872,6 +13384,28 @@ Provides a method for retrieving a snapshot, that is not available locally, from
 $inputs = Invoke-RscMutateVsphereVm -ExportSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.snapshotFid = <System.String>
+# OPTIONAL
+$inputs.Arg.vmName = <System.String>
+# OPTIONAL
+$inputs.Arg.disableNetwork = <System.Boolean>
+# OPTIONAL
+$inputs.Arg.removeNetworkDevices = <System.Boolean>
+# OPTIONAL
+$inputs.Arg.powerOn = <System.Boolean>
+# OPTIONAL
+$inputs.Arg.keepMacAddresses = <System.Boolean>
+# OPTIONAL
+$inputs.Arg.hostID = <System.String>
+# REQUIRED
+$inputs.Arg.datastoreId = <System.String>
+# OPTIONAL
+$inputs.Arg.unregsiterVm = <System.Boolean>
+# OPTIONAL
+$inputs.Arg.shouldRecoverTags = <System.Boolean>
+"@
 Write-Message "Invoke-RscMutateVsphereVm -ExportSnapshot" @"
 
 "@ "[GraphQL: vsphereVMExportSnapshot]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -3884,6 +13418,71 @@ Write-Message "Invoke-RscMutateVsphereVm -ExportSnapshot" @"
 $inputs = Invoke-RscMutateVsphereVm -ExportSnapshotV2 -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		hostId = <System.String>
+		# OPTIONAL
+		shouldRecoverTags = <System.Boolean>
+		# OPTIONAL
+		unregisterVm = <System.Boolean>
+		# OPTIONAL
+		clusterId = <System.String>
+		# OPTIONAL
+		resourcePoolId = <System.String>
+		# OPTIONAL
+		vNicBindings = @(
+			@{
+				# REQUIRED
+				backingNetworkInfo = @{
+					# REQUIRED
+					moid = <System.String>
+					# REQUIRED
+					name = <System.String>
+				}
+				# REQUIRED
+				networkDeviceInfo = @{
+					# REQUIRED
+					key = <System.Int32>
+					# REQUIRED
+					name = <System.String>
+				}
+			}
+		)
+		# OPTIONAL
+		shouldUseHotAddProxy = <System.Boolean>
+		# OPTIONAL
+		mountExportSnapshotJobCommonOptionsV2 = @{
+			# OPTIONAL
+			disableNetwork = <System.Boolean>
+			# OPTIONAL
+			keepMacAddresses = <System.Boolean>
+			# OPTIONAL
+			powerOn = <System.Boolean>
+			# OPTIONAL
+			removeNetworkDevices = <System.Boolean>
+			# OPTIONAL
+			vmName = <System.String>
+		}
+		# OPTIONAL
+		requiredRecoveryParameters = @{
+			# OPTIONAL
+			recoveryPoint = <DateTime>
+			# OPTIONAL
+			snapshotId = <System.String>
+		}
+		# OPTIONAL
+		folderId = <System.String>
+		# REQUIRED
+		datastoreId = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateVsphereVm -ExportSnapshotV2" @"
 Create a vSphere Export from a snapshot or a point-in-time.
 "@ "[GraphQL: vsphereVmExportSnapshotV2]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -3896,6 +13495,80 @@ Create a vSphere Export from a snapshot or a point-in-time.
 $inputs = Invoke-RscMutateVsphereVm -ExportSnapshotV3 -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		clusterId = <System.String>
+		# OPTIONAL
+		diskDeviceKeyToStorageId = @(
+			@{
+				# OPTIONAL
+				storageLocationId = <System.String>
+				# REQUIRED
+				deviceKey = <System.Int32>
+			}
+		)
+		# OPTIONAL
+		hostId = <System.String>
+		# OPTIONAL
+		resourcePoolId = <System.String>
+		# OPTIONAL
+		shouldRecoverTags = <System.Boolean>
+		# OPTIONAL
+		shouldUseHotAddProxy = <System.Boolean>
+		# OPTIONAL
+		storageLocationId = <System.String>
+		# OPTIONAL
+		unregisterVm = <System.Boolean>
+		# OPTIONAL
+		vNicBindings = @(
+			@{
+				# REQUIRED
+				backingNetworkInfo = @{
+					# REQUIRED
+					moid = <System.String>
+					# REQUIRED
+					name = <System.String>
+				}
+				# REQUIRED
+				networkDeviceInfo = @{
+					# REQUIRED
+					key = <System.Int32>
+					# REQUIRED
+					name = <System.String>
+				}
+			}
+		)
+		# OPTIONAL
+		mountExportSnapshotJobCommonOptionsV2 = @{
+			# OPTIONAL
+			disableNetwork = <System.Boolean>
+			# OPTIONAL
+			keepMacAddresses = <System.Boolean>
+			# OPTIONAL
+			powerOn = <System.Boolean>
+			# OPTIONAL
+			removeNetworkDevices = <System.Boolean>
+			# OPTIONAL
+			vmName = <System.String>
+		}
+		# OPTIONAL
+		requiredRecoveryParameters = @{
+			# OPTIONAL
+			recoveryPoint = <DateTime>
+			# OPTIONAL
+			snapshotId = <System.String>
+		}
+		# OPTIONAL
+		folderId = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateVsphereVm -ExportSnapshotV3" @"
 Create a vSphere Export from a snapshot or a point-in-time with datastore cluster and virtual disk mapping support.
 "@ "[GraphQL: vsphereVmExportSnapshotV3]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -3908,6 +13581,89 @@ Create a vSphere Export from a snapshot or a point-in-time with datastore cluste
 $inputs = Invoke-RscMutateVsphereVm -BatchExport -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		snapshots = @(
+			@{
+				# OPTIONAL
+				snapshotAfterDate = <DateTime>
+				# OPTIONAL
+				snapshotBeforeDate = <DateTime>
+				# OPTIONAL
+				snapshotId = <System.String>
+				# OPTIONAL
+				vmNamePrefix = <System.String>
+				# REQUIRED
+				config = @{
+					# OPTIONAL
+					hostId = <System.String>
+					# OPTIONAL
+					shouldRecoverTags = <System.Boolean>
+					# OPTIONAL
+					unregisterVm = <System.Boolean>
+					# OPTIONAL
+					clusterId = <System.String>
+					# OPTIONAL
+					resourcePoolId = <System.String>
+					# OPTIONAL
+					vNicBindings = @(
+						@{
+							# REQUIRED
+							backingNetworkInfo = @{
+								# REQUIRED
+								moid = <System.String>
+								# REQUIRED
+								name = <System.String>
+							}
+							# REQUIRED
+							networkDeviceInfo = @{
+								# REQUIRED
+								key = <System.Int32>
+								# REQUIRED
+								name = <System.String>
+							}
+						}
+					)
+					# OPTIONAL
+					shouldUseHotAddProxy = <System.Boolean>
+					# OPTIONAL
+					mountExportSnapshotJobCommonOptionsV2 = @{
+						# OPTIONAL
+						disableNetwork = <System.Boolean>
+						# OPTIONAL
+						keepMacAddresses = <System.Boolean>
+						# OPTIONAL
+						powerOn = <System.Boolean>
+						# OPTIONAL
+						removeNetworkDevices = <System.Boolean>
+						# OPTIONAL
+						vmName = <System.String>
+					}
+					# OPTIONAL
+					requiredRecoveryParameters = @{
+						# OPTIONAL
+						recoveryPoint = <DateTime>
+						# OPTIONAL
+						snapshotId = <System.String>
+					}
+					# OPTIONAL
+					folderId = <System.String>
+					# REQUIRED
+					datastoreId = <System.String>
+				}
+				# REQUIRED
+				vmId = <System.String>
+			}
+		)
+	}
+}
+"@
 Write-Message "Invoke-RscMutateVsphereVm -BatchExport" @"
 Create a mass export for a group of virtual machines.
 "@ "[GraphQL: vsphereVmBatchExport]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -3920,6 +13676,98 @@ Create a mass export for a group of virtual machines.
 $inputs = Invoke-RscMutateVsphereVm -BatchExportV3 -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		snapshots = @(
+			@{
+				# OPTIONAL
+				snapshotAfterDate = <DateTime>
+				# OPTIONAL
+				snapshotBeforeDate = <DateTime>
+				# OPTIONAL
+				snapshotId = <System.String>
+				# OPTIONAL
+				vmNamePrefix = <System.String>
+				# REQUIRED
+				config = @{
+					# OPTIONAL
+					clusterId = <System.String>
+					# OPTIONAL
+					diskDeviceKeyToStorageId = @(
+						@{
+							# OPTIONAL
+							storageLocationId = <System.String>
+							# REQUIRED
+							deviceKey = <System.Int32>
+						}
+					)
+					# OPTIONAL
+					hostId = <System.String>
+					# OPTIONAL
+					resourcePoolId = <System.String>
+					# OPTIONAL
+					shouldRecoverTags = <System.Boolean>
+					# OPTIONAL
+					shouldUseHotAddProxy = <System.Boolean>
+					# OPTIONAL
+					storageLocationId = <System.String>
+					# OPTIONAL
+					unregisterVm = <System.Boolean>
+					# OPTIONAL
+					vNicBindings = @(
+						@{
+							# REQUIRED
+							backingNetworkInfo = @{
+								# REQUIRED
+								moid = <System.String>
+								# REQUIRED
+								name = <System.String>
+							}
+							# REQUIRED
+							networkDeviceInfo = @{
+								# REQUIRED
+								key = <System.Int32>
+								# REQUIRED
+								name = <System.String>
+							}
+						}
+					)
+					# OPTIONAL
+					mountExportSnapshotJobCommonOptionsV2 = @{
+						# OPTIONAL
+						disableNetwork = <System.Boolean>
+						# OPTIONAL
+						keepMacAddresses = <System.Boolean>
+						# OPTIONAL
+						powerOn = <System.Boolean>
+						# OPTIONAL
+						removeNetworkDevices = <System.Boolean>
+						# OPTIONAL
+						vmName = <System.String>
+					}
+					# OPTIONAL
+					requiredRecoveryParameters = @{
+						# OPTIONAL
+						recoveryPoint = <DateTime>
+						# OPTIONAL
+						snapshotId = <System.String>
+					}
+					# OPTIONAL
+					folderId = <System.String>
+				}
+				# REQUIRED
+				vmId = <System.String>
+			}
+		)
+	}
+}
+"@
 Write-Message "Invoke-RscMutateVsphereVm -BatchExportV3" @"
 Create a batch export for a group of virtual machines with datastore cluster support.
 "@ "[GraphQL: vsphereVmBatchExportV3]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -3932,6 +13780,25 @@ Create a batch export for a group of virtual machines with datastore cluster sup
 $inputs = Invoke-RscMutateVsphereVm -InitiateInPlaceRecovery -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		shouldKeepVsphereSnapshotAfterRecovery = <System.Boolean>
+		# OPTIONAL
+		requiredRecoveryParameters = @{
+			# OPTIONAL
+			recoveryPoint = <DateTime>
+			# OPTIONAL
+			snapshotId = <System.String>
+		}
+	}
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateVsphereVm -InitiateInPlaceRecovery" @"
 Trigger an in-place recovery from a snapshot or point-in-time.
 "@ "[GraphQL: vsphereVmInitiateInPlaceRecovery]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -3944,6 +13811,71 @@ Trigger an in-place recovery from a snapshot or point-in-time.
 $inputs = Invoke-RscMutateVsphereVm -ExportSnapshotWithDownloadFromCloud -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		hostId = <System.String>
+		# OPTIONAL
+		shouldRecoverTags = <System.Boolean>
+		# OPTIONAL
+		unregisterVm = <System.Boolean>
+		# OPTIONAL
+		clusterId = <System.String>
+		# OPTIONAL
+		resourcePoolId = <System.String>
+		# OPTIONAL
+		vNicBindings = @(
+			@{
+				# REQUIRED
+				backingNetworkInfo = @{
+					# REQUIRED
+					moid = <System.String>
+					# REQUIRED
+					name = <System.String>
+				}
+				# REQUIRED
+				networkDeviceInfo = @{
+					# REQUIRED
+					key = <System.Int32>
+					# REQUIRED
+					name = <System.String>
+				}
+			}
+		)
+		# OPTIONAL
+		shouldUseHotAddProxy = <System.Boolean>
+		# OPTIONAL
+		mountExportSnapshotJobCommonOptionsV2 = @{
+			# OPTIONAL
+			disableNetwork = <System.Boolean>
+			# OPTIONAL
+			keepMacAddresses = <System.Boolean>
+			# OPTIONAL
+			powerOn = <System.Boolean>
+			# OPTIONAL
+			removeNetworkDevices = <System.Boolean>
+			# OPTIONAL
+			vmName = <System.String>
+		}
+		# OPTIONAL
+		requiredRecoveryParameters = @{
+			# OPTIONAL
+			recoveryPoint = <DateTime>
+			# OPTIONAL
+			snapshotId = <System.String>
+		}
+		# OPTIONAL
+		folderId = <System.String>
+		# REQUIRED
+		datastoreId = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateVsphereVm -ExportSnapshotWithDownloadFromCloud" @"
 Download a snapshot from an archival location, then export a virtual machine using the downloaded snapshot
 
@@ -3959,6 +13891,41 @@ Download a snapshot from an archival location and then export a virtual machine 
 $inputs = Invoke-RscMutateVsphereVm -BatchInPlaceRecovery -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		snapshots = @(
+			@{
+				# OPTIONAL
+				snapshotAfterDate = <DateTime>
+				# OPTIONAL
+				snapshotBeforeDate = <DateTime>
+				# OPTIONAL
+				snapshotId = <System.String>
+				# REQUIRED
+				config = @{
+					# OPTIONAL
+					shouldKeepVsphereSnapshotAfterRecovery = <System.Boolean>
+					# OPTIONAL
+					requiredRecoveryParameters = @{
+						# OPTIONAL
+						recoveryPoint = <DateTime>
+						# OPTIONAL
+						snapshotId = <System.String>
+					}
+				}
+				# REQUIRED
+				vmId = <System.String>
+			}
+		)
+	}
+}
+"@
 Write-Message "Invoke-RscMutateVsphereVm -BatchInPlaceRecovery" @"
 Supported in v6.0+. Export a snapshot each from a set of virtual machines.
 "@ "[GraphQL: vsphereVmBatchInPlaceRecovery]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -3971,6 +13938,15 @@ Supported in v6.0+. Export a snapshot each from a set of virtual machines.
 $inputs = Invoke-RscMutateVsphereVm -DeleteSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	location = <DeleteVmwareSnapshotRequestLocation>
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateVsphereVm -DeleteSnapshot" @"
 Designate a snapshot as expired and available for garbage collection. The snapshot must be an on-demand snapshot or a snapshot from a virtual machine that is not assigned to an SLA Domain.
 "@ "[GraphQL: vsphereVmDeleteSnapshot]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -3983,6 +13959,41 @@ Designate a snapshot as expired and available for garbage collection. The snapsh
 $inputs = Invoke-RscMutateVsphereVm -Update -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.snappableFid = <System.String>
+# OPTIONAL
+$inputs.Arg.snapshotConsistencyMandate = <System.String>
+# OPTIONAL
+$inputs.Arg.preBackupScript = @{
+	# OPTIONAL
+	scriptPath = <System.String>
+	# OPTIONAL
+	timeoutInMs = <System.Int64>
+	# OPTIONAL
+	failureHandling = <System.String>
+}
+# OPTIONAL
+$inputs.Arg.postBackupScript = @{
+	# OPTIONAL
+	scriptPath = <System.String>
+	# OPTIONAL
+	timeoutInMs = <System.Int64>
+	# OPTIONAL
+	failureHandling = <System.String>
+}
+# OPTIONAL
+$inputs.Arg.postSnapScript = @{
+	# OPTIONAL
+	scriptPath = <System.String>
+	# OPTIONAL
+	timeoutInMs = <System.Int64>
+	# OPTIONAL
+	failureHandling = <System.String>
+}
+# OPTIONAL
+$inputs.Arg.isArrayIntegrationEnabled = <System.Boolean>
+"@
 Write-Message "Invoke-RscMutateVsphereVm -Update" @"
 
 "@ "[GraphQL: vsphereVMUpdate]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -3995,6 +14006,28 @@ Write-Message "Invoke-RscMutateVsphereVm -Update" @"
 $inputs = Invoke-RscMutateVsphereVm -InitiateInstantRecovery -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.snapshotFid = <System.String>
+# OPTIONAL
+$inputs.Arg.vmName = <System.String>
+# OPTIONAL
+$inputs.Arg.disableNetwork = <System.Boolean>
+# OPTIONAL
+$inputs.Arg.removeNetworkDevices = <System.Boolean>
+# OPTIONAL
+$inputs.Arg.powerOn = <System.Boolean>
+# OPTIONAL
+$inputs.Arg.keepMacAddresses = <System.Boolean>
+# OPTIONAL
+$inputs.Arg.hostID = <System.String>
+# OPTIONAL
+$inputs.Arg.preserveMOID = <System.Boolean>
+# OPTIONAL
+$inputs.Arg.vlan = <System.Int32>
+# OPTIONAL
+$inputs.Arg.shouldRecoverTags = <System.Boolean>
+"@
 Write-Message "Invoke-RscMutateVsphereVm -InitiateInstantRecovery" @"
 
 "@ "[GraphQL: vsphereVMInitiateInstantRecovery]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4007,6 +14040,98 @@ Write-Message "Invoke-RscMutateVsphereVm -InitiateInstantRecovery" @"
 $inputs = Invoke-RscMutateVsphereVm -InitiateInstantRecoveryV2 -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		hostId = <System.String>
+		# OPTIONAL
+		preserveMoid = <System.Boolean>
+		# OPTIONAL
+		shouldRecoverTags = <System.Boolean>
+		# OPTIONAL
+		vlan = <System.Int32>
+		# OPTIONAL
+		clusterId = <System.String>
+		# OPTIONAL
+		resourcePoolId = <System.String>
+		# OPTIONAL
+		vNicBindings = @(
+			@{
+				# REQUIRED
+				backingNetworkInfo = @{
+					# REQUIRED
+					moid = <System.String>
+					# REQUIRED
+					name = <System.String>
+				}
+				# REQUIRED
+				networkDeviceInfo = @{
+					# REQUIRED
+					key = <System.Int32>
+					# REQUIRED
+					name = <System.String>
+				}
+			}
+		)
+		# OPTIONAL
+		mountExportSnapshotJobCommonOptionsV2 = @{
+			# OPTIONAL
+			disableNetwork = <System.Boolean>
+			# OPTIONAL
+			keepMacAddresses = <System.Boolean>
+			# OPTIONAL
+			powerOn = <System.Boolean>
+			# OPTIONAL
+			removeNetworkDevices = <System.Boolean>
+			# OPTIONAL
+			vmName = <System.String>
+		}
+		# OPTIONAL
+		requiredRecoveryParameters = @{
+			# OPTIONAL
+			recoveryPoint = <DateTime>
+			# OPTIONAL
+			snapshotId = <System.String>
+		}
+		# OPTIONAL
+		migrationConfig = @{
+			# OPTIONAL
+			diskDeviceKeyToStorageId = @(
+				@{
+					# OPTIONAL
+					storageLocationId = <System.String>
+					# REQUIRED
+					deviceKey = <System.Int32>
+				}
+			)
+			# OPTIONAL
+			storageLocationId = <System.String>
+			# OPTIONAL
+			computeClusterId = <System.String>
+			# OPTIONAL
+			hostId = <System.String>
+			# OPTIONAL
+			networkDeviceKeyToNetworkName = @(
+				@{
+					# REQUIRED
+					deviceKey = <System.Int32>
+					# REQUIRED
+					networkName = <System.String>
+				}
+			)
+			# OPTIONAL
+			resourcePoolId = <System.String>
+		}
+		# OPTIONAL
+		shouldMigrateImmediately = <System.Boolean>
+	}
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateVsphereVm -InitiateInstantRecoveryV2" @"
 Instantly recover a vSphere virtual machine from a snapshot or point-in-time.
 "@ "[GraphQL: vsphereVmInitiateInstantRecoveryV2]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4019,6 +14144,114 @@ Instantly recover a vSphere virtual machine from a snapshot or point-in-time.
 $inputs = Invoke-RscMutateVsphereVm -InitiateBatchInstantRecovery -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		snapshots = @(
+			@{
+				# OPTIONAL
+				snapshotAfterDate = <DateTime>
+				# OPTIONAL
+				snapshotBeforeDate = <DateTime>
+				# OPTIONAL
+				snapshotId = <System.String>
+				# REQUIRED
+				config = @{
+					# OPTIONAL
+					hostId = <System.String>
+					# OPTIONAL
+					preserveMoid = <System.Boolean>
+					# OPTIONAL
+					shouldRecoverTags = <System.Boolean>
+					# OPTIONAL
+					vlan = <System.Int32>
+					# OPTIONAL
+					clusterId = <System.String>
+					# OPTIONAL
+					resourcePoolId = <System.String>
+					# OPTIONAL
+					vNicBindings = @(
+						@{
+							# REQUIRED
+							backingNetworkInfo = @{
+								# REQUIRED
+								moid = <System.String>
+								# REQUIRED
+								name = <System.String>
+							}
+							# REQUIRED
+							networkDeviceInfo = @{
+								# REQUIRED
+								key = <System.Int32>
+								# REQUIRED
+								name = <System.String>
+							}
+						}
+					)
+					# OPTIONAL
+					mountExportSnapshotJobCommonOptionsV2 = @{
+						# OPTIONAL
+						disableNetwork = <System.Boolean>
+						# OPTIONAL
+						keepMacAddresses = <System.Boolean>
+						# OPTIONAL
+						powerOn = <System.Boolean>
+						# OPTIONAL
+						removeNetworkDevices = <System.Boolean>
+						# OPTIONAL
+						vmName = <System.String>
+					}
+					# OPTIONAL
+					requiredRecoveryParameters = @{
+						# OPTIONAL
+						recoveryPoint = <DateTime>
+						# OPTIONAL
+						snapshotId = <System.String>
+					}
+					# OPTIONAL
+					migrationConfig = @{
+						# OPTIONAL
+						diskDeviceKeyToStorageId = @(
+							@{
+								# OPTIONAL
+								storageLocationId = <System.String>
+								# REQUIRED
+								deviceKey = <System.Int32>
+							}
+						)
+						# OPTIONAL
+						storageLocationId = <System.String>
+						# OPTIONAL
+						computeClusterId = <System.String>
+						# OPTIONAL
+						hostId = <System.String>
+						# OPTIONAL
+						networkDeviceKeyToNetworkName = @(
+							@{
+								# REQUIRED
+								deviceKey = <System.Int32>
+								# REQUIRED
+								networkName = <System.String>
+							}
+						)
+						# OPTIONAL
+						resourcePoolId = <System.String>
+					}
+					# OPTIONAL
+					shouldMigrateImmediately = <System.Boolean>
+				}
+				# REQUIRED
+				vmId = <System.String>
+			}
+		)
+	}
+}
+"@
 Write-Message "Invoke-RscMutateVsphereVm -InitiateBatchInstantRecovery" @"
 Initiate a mass instant recovery for a group of VMs.
 "@ "[GraphQL: vsphereVmInitiateBatchInstantRecovery]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4031,6 +14264,24 @@ Initiate a mass instant recovery for a group of VMs.
 $inputs = Invoke-RscMutateVsphereVm -InitiateDiskMount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		targetVmId = <System.String>
+		# OPTIONAL
+		vlan = <System.Int32>
+		# OPTIONAL
+		vmdkIds = @(
+			<System.String>
+		)
+	}
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateVsphereVm -InitiateDiskMount" @"
 Attaching disks from a snapshot to an existing virtual machine
 
@@ -4046,6 +14297,30 @@ Requests a snapshot mount to attach disks to an existing virtual machine.
 $inputs = Invoke-RscMutateVsphereVm -InitiateLiveMount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.snapshotFid = <System.String>
+# OPTIONAL
+$inputs.Arg.vmName = <System.String>
+# OPTIONAL
+$inputs.Arg.disableNetwork = <System.Boolean>
+# OPTIONAL
+$inputs.Arg.removeNetworkDevices = <System.Boolean>
+# OPTIONAL
+$inputs.Arg.powerOn = <System.Boolean>
+# OPTIONAL
+$inputs.Arg.keepMacAddresses = <System.Boolean>
+# OPTIONAL
+$inputs.Arg.hostID = <System.String>
+# OPTIONAL
+$inputs.Arg.datastoreName = <System.String>
+# OPTIONAL
+$inputs.Arg.createDatastoreOnly = <System.Boolean>
+# OPTIONAL
+$inputs.Arg.vlan = <System.Int32>
+# OPTIONAL
+$inputs.Arg.shouldRecoverTags = <System.Boolean>
+"@
 Write-Message "Invoke-RscMutateVsphereVm -InitiateLiveMount" @"
 
 "@ "[GraphQL: vsphereVMInitiateLiveMount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4058,6 +14333,102 @@ Write-Message "Invoke-RscMutateVsphereVm -InitiateLiveMount" @"
 $inputs = Invoke-RscMutateVsphereVm -InitiateLiveMountV2 -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	config = @{
+		# OPTIONAL
+		createDatastoreOnly = <System.Boolean>
+		# OPTIONAL
+		dataStoreName = <System.String>
+		# OPTIONAL
+		hostId = <System.String>
+		# OPTIONAL
+		shouldRecoverTags = <System.Boolean>
+		# OPTIONAL
+		vlan = <System.Int32>
+		# OPTIONAL
+		clusterId = <System.String>
+		# OPTIONAL
+		resourcePoolId = <System.String>
+		# OPTIONAL
+		vNicBindings = @(
+			@{
+				# REQUIRED
+				backingNetworkInfo = @{
+					# REQUIRED
+					moid = <System.String>
+					# REQUIRED
+					name = <System.String>
+				}
+				# REQUIRED
+				networkDeviceInfo = @{
+					# REQUIRED
+					key = <System.Int32>
+					# REQUIRED
+					name = <System.String>
+				}
+			}
+		)
+		# OPTIONAL
+		migrationConfig = @{
+			# OPTIONAL
+			diskDeviceKeyToStorageId = @(
+				@{
+					# OPTIONAL
+					storageLocationId = <System.String>
+					# REQUIRED
+					deviceKey = <System.Int32>
+				}
+			)
+			# OPTIONAL
+			storageLocationId = <System.String>
+			# OPTIONAL
+			computeClusterId = <System.String>
+			# OPTIONAL
+			hostId = <System.String>
+			# OPTIONAL
+			networkDeviceKeyToNetworkName = @(
+				@{
+					# REQUIRED
+					deviceKey = <System.Int32>
+					# REQUIRED
+					networkName = <System.String>
+				}
+			)
+			# OPTIONAL
+			resourcePoolId = <System.String>
+		}
+		# OPTIONAL
+		shouldMigrateImmediately = <System.Boolean>
+		# OPTIONAL
+		mountExportSnapshotJobCommonOptionsV2 = @{
+			# OPTIONAL
+			disableNetwork = <System.Boolean>
+			# OPTIONAL
+			keepMacAddresses = <System.Boolean>
+			# OPTIONAL
+			powerOn = <System.Boolean>
+			# OPTIONAL
+			removeNetworkDevices = <System.Boolean>
+			# OPTIONAL
+			vmName = <System.String>
+		}
+		# OPTIONAL
+		requiredRecoveryParameters = @{
+			# OPTIONAL
+			recoveryPoint = <DateTime>
+			# OPTIONAL
+			snapshotId = <System.String>
+		}
+		# OPTIONAL
+		folderId = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateVsphereVm -InitiateLiveMountV2" @"
 Create a vSphere Live Mount from a snapshot or point-in-time.
 "@ "[GraphQL: vsphereVmInitiateLiveMountV2]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4070,6 +14441,52 @@ Create a vSphere Live Mount from a snapshot or point-in-time.
 $inputs = Invoke-RscMutateVsphereVm -BatchLiveMount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.clusterUuid = <System.String>
+# REQUIRED
+$inputs.Arg.config = @{
+	# REQUIRED
+	snapshots = @(
+		@{
+			# OPTIONAL
+			snapshotAfterDate = <DateTime>
+			# OPTIONAL
+			snapshotBeforeDate = <DateTime>
+			# OPTIONAL
+			snapshotId = <System.String>
+			# REQUIRED
+			config = @{
+				# OPTIONAL
+				createDatastoreOnly = <System.Boolean>
+				# OPTIONAL
+				dataStoreName = <System.String>
+				# OPTIONAL
+				hostId = <System.String>
+				# OPTIONAL
+				shouldRecoverTags = <System.Boolean>
+				# OPTIONAL
+				vlan = <System.Int32>
+				# OPTIONAL
+				mountExportSnapshotJobCommonOptions = @{
+					# OPTIONAL
+					disableNetwork = <System.Boolean>
+					# OPTIONAL
+					keepMacAddresses = <System.Boolean>
+					# OPTIONAL
+					powerOn = <System.Boolean>
+					# OPTIONAL
+					removeNetworkDevices = <System.Boolean>
+					# OPTIONAL
+					vmName = <System.String>
+				}
+			}
+			# REQUIRED
+			vmId = <System.String>
+		}
+	)
+}
+"@
 Write-Message "Invoke-RscMutateVsphereVm -BatchLiveMount" @"
 
 "@ "[GraphQL: vSphereVMBatchLiveMount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4082,6 +14499,120 @@ Write-Message "Invoke-RscMutateVsphereVm -BatchLiveMount" @"
 $inputs = Invoke-RscMutateVsphereVm -InitiateBatchLiveMountV2 -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		snapshots = @(
+			@{
+				# OPTIONAL
+				snapshotAfterDate = <DateTime>
+				# OPTIONAL
+				snapshotBeforeDate = <DateTime>
+				# OPTIONAL
+				snapshotId = <System.String>
+				# OPTIONAL
+				vmNamePrefix = <System.String>
+				# REQUIRED
+				config = @{
+					# OPTIONAL
+					createDatastoreOnly = <System.Boolean>
+					# OPTIONAL
+					dataStoreName = <System.String>
+					# OPTIONAL
+					hostId = <System.String>
+					# OPTIONAL
+					shouldRecoverTags = <System.Boolean>
+					# OPTIONAL
+					vlan = <System.Int32>
+					# OPTIONAL
+					clusterId = <System.String>
+					# OPTIONAL
+					resourcePoolId = <System.String>
+					# OPTIONAL
+					vNicBindings = @(
+						@{
+							# REQUIRED
+							backingNetworkInfo = @{
+								# REQUIRED
+								moid = <System.String>
+								# REQUIRED
+								name = <System.String>
+							}
+							# REQUIRED
+							networkDeviceInfo = @{
+								# REQUIRED
+								key = <System.Int32>
+								# REQUIRED
+								name = <System.String>
+							}
+						}
+					)
+					# OPTIONAL
+					migrationConfig = @{
+						# OPTIONAL
+						diskDeviceKeyToStorageId = @(
+							@{
+								# OPTIONAL
+								storageLocationId = <System.String>
+								# REQUIRED
+								deviceKey = <System.Int32>
+							}
+						)
+						# OPTIONAL
+						storageLocationId = <System.String>
+						# OPTIONAL
+						computeClusterId = <System.String>
+						# OPTIONAL
+						hostId = <System.String>
+						# OPTIONAL
+						networkDeviceKeyToNetworkName = @(
+							@{
+								# REQUIRED
+								deviceKey = <System.Int32>
+								# REQUIRED
+								networkName = <System.String>
+							}
+						)
+						# OPTIONAL
+						resourcePoolId = <System.String>
+					}
+					# OPTIONAL
+					shouldMigrateImmediately = <System.Boolean>
+					# OPTIONAL
+					mountExportSnapshotJobCommonOptionsV2 = @{
+						# OPTIONAL
+						disableNetwork = <System.Boolean>
+						# OPTIONAL
+						keepMacAddresses = <System.Boolean>
+						# OPTIONAL
+						powerOn = <System.Boolean>
+						# OPTIONAL
+						removeNetworkDevices = <System.Boolean>
+						# OPTIONAL
+						vmName = <System.String>
+					}
+					# OPTIONAL
+					requiredRecoveryParameters = @{
+						# OPTIONAL
+						recoveryPoint = <DateTime>
+						# OPTIONAL
+						snapshotId = <System.String>
+					}
+					# OPTIONAL
+					folderId = <System.String>
+				}
+				# REQUIRED
+				vmId = <System.String>
+			}
+		)
+	}
+}
+"@
 Write-Message "Invoke-RscMutateVsphereVm -InitiateBatchLiveMountV2" @"
 Initiate a mass live mount for a group of VMs.
 "@ "[GraphQL: vsphereVmInitiateBatchLiveMountV2]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4094,6 +14625,20 @@ Initiate a mass live mount for a group of VMs.
 $inputs = Invoke-RscMutateVsphereVm -PowerOnOffLiveMount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		shouldForce = <System.Boolean>
+		# REQUIRED
+		powerStatus = <System.Boolean>
+	}
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateVsphereVm -PowerOnOffLiveMount" @"
 Power a Live Mount on and off
 
@@ -4109,6 +14654,12 @@ Power a specified Live Mount virtual machine on or off. Pass **_true_** to power
 $inputs = Invoke-RscMutateVsphereVm -DeleteLiveMount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.livemountId = <System.String>
+# OPTIONAL
+$inputs.Arg.force = <System.Boolean>
+"@
 Write-Message "Invoke-RscMutateVsphereVm -DeleteLiveMount" @"
 
 "@ "[GraphQL: vsphereVMDeleteLiveMount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4121,6 +14672,22 @@ Write-Message "Invoke-RscMutateVsphereVm -DeleteLiveMount" @"
 $inputs = Invoke-RscMutateVsphereVm -ListEsxiDatastores -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	loginInfo = @{
+		# REQUIRED
+		ip = <System.String>
+		# REQUIRED
+		password = <System.String>
+		# REQUIRED
+		username = <System.String>
+	}
+}
+"@
 Write-Message "Invoke-RscMutateVsphereVm -ListEsxiDatastores" @"
 List ESXi datastores
 
@@ -4136,6 +14703,18 @@ Retrieve a list of the datastores for a specified ESXi host.
 $inputs = Invoke-RscMutateVsphereVm -MountRelocate -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		datastoreId = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateVsphereVm -MountRelocate" @"
 Relocate a virtual machine to another datastore
 
@@ -4151,6 +14730,42 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 $inputs = Invoke-RscMutateVsphereVm -MountRelocateV2 -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		diskDeviceKeyToStorageId = @(
+			@{
+				# OPTIONAL
+				storageLocationId = <System.String>
+				# REQUIRED
+				deviceKey = <System.Int32>
+			}
+		)
+		# OPTIONAL
+		storageLocationId = <System.String>
+		# OPTIONAL
+		computeClusterId = <System.String>
+		# OPTIONAL
+		hostId = <System.String>
+		# OPTIONAL
+		networkDeviceKeyToNetworkName = @(
+			@{
+				# REQUIRED
+				deviceKey = <System.Int32>
+				# REQUIRED
+				networkName = <System.String>
+			}
+		)
+		# OPTIONAL
+		resourcePoolId = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateVsphereVm -MountRelocateV2" @"
 Create a Live Mount migration to a datastore or datastore cluster with virtual disk mapping support.
 "@ "[GraphQL: vsphereVmMountRelocateV2]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4163,6 +14778,17 @@ Create a Live Mount migration to a datastore or datastore cluster with virtual d
 $inputs = Invoke-RscMutateVsphereVm -ExcludeVmDisks -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @(
+	@{
+		# REQUIRED
+		virtualDiskFid = <System.String>
+		# OPTIONAL
+		excludeFromSnapshots = <System.Boolean>
+}
+)
+"@
 Write-Message "Invoke-RscMutateVsphereVm -ExcludeVmDisks" @"
 Exclude or include virtual disks during snapshot.
 "@ "[GraphQL: vsphereExcludeVmDisks]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4175,6 +14801,27 @@ Exclude or include virtual disks during snapshot.
 $inputs = Invoke-RscMutateVsphereVm -DownloadSnapshotFiles -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	snapshotFid = <System.String>
+	# REQUIRED
+	paths = @(
+		<System.String>
+	)
+	# OPTIONAL
+	deltaTypeFilter = @(
+		<DeltaType>
+	)
+	# OPTIONAL
+	nextSnapshotFid = <System.String>
+	# OPTIONAL
+	isLegalHoldDownload = <System.Boolean>
+	# OPTIONAL
+	userNote = <System.String>
+}
+"@
 Write-Message "Invoke-RscMutateVsphereVm -DownloadSnapshotFiles" @"
 Download files from snapshot.
 "@ "[GraphQL: vsphereVmDownloadSnapshotFiles]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4188,6 +14835,9 @@ Download files from snapshot.
 $inputs = Invoke-RscQueryAccount -Settings -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+
+"@
 Write-Message "Invoke-RscQueryAccount -Settings" @"
 This endpoint is deprecated.
 "@ "[GraphQL: accountSettings]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4200,6 +14850,18 @@ This endpoint is deprecated.
 $inputs = Invoke-RscQueryAccount -SWithExocomputeMappings -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.cloudVendor = <CloudVendor>
+# REQUIRED
+$inputs.Arg.features = @(
+	<CloudAccountFeature>
+)
+# REQUIRED
+$inputs.Arg.exocomputeAccountIdsFilter = @(
+	<System.String>
+)
+"@
 Write-Message "Invoke-RscQueryAccount -SWithExocomputeMappings" @"
 Retrieves the list of all accounts with their Exocompute account mapping, if exists.
 "@ "[GraphQL: allAccountsWithExocomputeMappings]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4212,6 +14874,24 @@ Retrieves the list of all accounts with their Exocompute account mapping, if exi
 $inputs = Invoke-RscQueryAccount -Products -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.nameFilter = @(
+	<ProductName>
+)
+# REQUIRED
+$inputs.Arg.typeFilter = @(
+	<ProductType>
+)
+# REQUIRED
+$inputs.Arg.stateFilter = @(
+	<ProductState>
+)
+# OPTIONAL
+$inputs.Arg.startDateArg = <DateTime>
+# OPTIONAL
+$inputs.Arg.endDateArg = <DateTime>
+"@
 Write-Message "Invoke-RscQueryAccount -Products" @"
 
 "@ "[GraphQL: allAccountProducts]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4224,6 +14904,9 @@ Write-Message "Invoke-RscQueryAccount -Products" @"
 $inputs = Invoke-RscQueryAccount -Id -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+
+"@
 Write-Message "Invoke-RscQueryAccount -Id" @"
 Account ID.
 "@ "[GraphQL: accountId]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4236,6 +14919,9 @@ Account ID.
 $inputs = Invoke-RscQueryAccount -Owners -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+
+"@
 Write-Message "Invoke-RscQueryAccount -Owners" @"
 List of account owners.
 "@ "[GraphQL: allAccountOwners]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4249,6 +14935,15 @@ List of account owners.
 $inputs = Invoke-RscQueryActivitySeries -ActivitySeries -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	activitySeriesId = <System.String>
+	# OPTIONAL
+	clusterUuid = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryActivitySeries -ActivitySeries" @"
 Retrieve an activity series.
 "@ "[GraphQL: activitySeries]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4261,6 +14956,69 @@ Retrieve an activity series.
 $inputs = Invoke-RscQueryActivitySeries -List -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.last = <System.Int32>
+# OPTIONAL
+$inputs.Arg.before = <System.String>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.sortBy = <ActivitySeriesSortField>
+# OPTIONAL
+$inputs.Arg.filters = @{
+	# OPTIONAL
+	lastActivityStatus = @(
+		<EventStatus>
+	)
+	# OPTIONAL
+	lastActivityType = @(
+		<EventType>
+	)
+	# OPTIONAL
+	severity = @(
+		<EventSeverity>
+	)
+	# OPTIONAL
+	objectName = <System.String>
+	# OPTIONAL
+	objectType = @(
+		<EventObjectType>
+	)
+	# OPTIONAL
+	startTimeGt = <DateTime>
+	# OPTIONAL
+	startTimeLt = <DateTime>
+	# OPTIONAL
+	lastUpdatedTimeGt = <DateTime>
+	# OPTIONAL
+	lastUpdatedTimeLt = <DateTime>
+	# OPTIONAL
+	clusterId = @(
+		<System.String>
+	)
+	# OPTIONAL
+	clusterType = @(
+		<EventClusterType>
+	)
+	# OPTIONAL
+	objectFid = @(
+		<System.String>
+	)
+	# OPTIONAL
+	ancestorId = <System.String>
+	# OPTIONAL
+	searchTerm = <System.String>
+	# OPTIONAL
+	orgIds = @(
+		<System.String>
+	)
+}
+"@
 Write-Message "Invoke-RscQueryActivitySeries -List" @"
 
 "@ "[GraphQL: activitySeriesConnection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4273,6 +15031,68 @@ Write-Message "Invoke-RscQueryActivitySeries -List" @"
 $inputs = Invoke-RscQueryActivitySeries -GroupByList -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.last = <System.Int32>
+# OPTIONAL
+$inputs.Arg.before = <System.String>
+# REQUIRED
+$inputs.Arg.groupBy = <ActivitySeriesGroupByEnum>
+# OPTIONAL
+$inputs.Arg.filters = @{
+	# OPTIONAL
+	lastActivityStatus = @(
+		<ActivityStatusEnum>
+	)
+	# OPTIONAL
+	lastActivityType = @(
+		<ActivityTypeEnum>
+	)
+	# OPTIONAL
+	severity = @(
+		<ActivitySeverityEnum>
+	)
+	# OPTIONAL
+	objectName = <System.String>
+	# OPTIONAL
+	objectType = @(
+		<ActivityObjectTypeEnum>
+	)
+	# OPTIONAL
+	startTimeGt = <DateTime>
+	# OPTIONAL
+	startTimeLt = <DateTime>
+	# OPTIONAL
+	lastUpdatedGt = <DateTime>
+	# OPTIONAL
+	lastUpdatedLt = <DateTime>
+	# OPTIONAL
+	cluster = @{
+		# OPTIONAL
+		id = @(
+			<System.String>
+		)
+		# OPTIONAL
+		type = @(
+			<ClusterTypeEnum>
+		)
+	}
+	# OPTIONAL
+	objectFids = @(
+		<System.String>
+	)
+	# OPTIONAL
+	ancestorId = <System.String>
+	# OPTIONAL
+	searchTerm = <System.String>
+}
+# OPTIONAL
+$inputs.Arg.timezoneOffset = <System.Single>
+"@
 Write-Message "Invoke-RscQueryActivitySeries -GroupByList" @"
 
 "@ "[GraphQL: activitySeriesGroupByConnection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4286,6 +15106,9 @@ Write-Message "Invoke-RscQueryActivitySeries -GroupByList" @"
 $inputs = Invoke-RscQueryAws -NativeRoot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+
+"@
 Write-Message "Invoke-RscQueryAws -NativeRoot" @"
 Root of AWS native hierarchy.
 "@ "[GraphQL: awsNativeRoot]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4298,6 +15121,12 @@ Root of AWS native hierarchy.
 $inputs = Invoke-RscQueryAws -NativeAccount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.awsNativeAccountRubrikId = <System.String>
+# REQUIRED
+$inputs.Arg.awsNativeProtectionFeature = <AwsNativeProtectionFeature>
+"@
 Write-Message "Invoke-RscQueryAws -NativeAccount" @"
 Refers to the AWS Native account that serves as a container for all your AWS resources. The AWS Native account contains information about the metadata related to the AWS Native resources.
 "@ "[GraphQL: awsNativeAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4310,6 +15139,10 @@ Refers to the AWS Native account that serves as a container for all your AWS res
 $inputs = Invoke-RscQueryAws -NativeEc2Instance -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.ec2InstanceRubrikId = <System.String>
+"@
 Write-Message "Invoke-RscQueryAws -NativeEc2Instance" @"
 Refers to Amazon Elastic Compute Cloud (EC2) Instance represented by a specific ID. For more information, see https://aws.amazon.com/ec2/.
 "@ "[GraphQL: awsNativeEc2Instance]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4322,6 +15155,10 @@ Refers to Amazon Elastic Compute Cloud (EC2) Instance represented by a specific 
 $inputs = Invoke-RscQueryAws -NativeEbsVolume -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.ebsVolumeRubrikId = <System.String>
+"@
 Write-Message "Invoke-RscQueryAws -NativeEbsVolume" @"
 Refers to the Amazon Elastic Block Store (EBS) Volume represented by a specific ID. For more information, see https://aws.amazon.com/ebs/.
 "@ "[GraphQL: awsNativeEbsVolume]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4334,6 +15171,10 @@ Refers to the Amazon Elastic Block Store (EBS) Volume represented by a specific 
 $inputs = Invoke-RscQueryAws -NativeS3Bucket -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.s3BucketRubrikId = <System.String>
+"@
 Write-Message "Invoke-RscQueryAws -NativeS3Bucket" @"
 Represents the Amazon S3 Bucket with a specific ID. For more information, see https://aws.amazon.com/s3/.
 "@ "[GraphQL: awsNativeS3Bucket]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4346,6 +15187,46 @@ Represents the Amazon S3 Bucket with a specific ID. For more information, see ht
 $inputs = Invoke-RscQueryAws -NativeAccounts -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.last = <System.Int32>
+# OPTIONAL
+$inputs.Arg.before = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <AwsNativeAccountSortFields>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.accountFilters = @{
+	# OPTIONAL
+	nameSubstringFilter = @{
+		# REQUIRED
+		nameSubstring = <System.String>
+	}
+	# OPTIONAL
+	effectiveSlaFilter = @{
+		# REQUIRED
+		effectiveSlaIds = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	cloudTypeFilter = @{
+		# REQUIRED
+		cloudTypes = @(
+			<AwsCloudType>
+		)
+	}
+}
+# OPTIONAL
+$inputs.Arg.authorizedOperationFilter = <Operation>
+# REQUIRED
+$inputs.Arg.awsNativeProtectionFeature = <AwsNativeProtectionFeature>
+"@
 Write-Message "Invoke-RscQueryAws -NativeAccounts" @"
 Paginated list of all AWS Native accounts.
 "@ "[GraphQL: awsNativeAccounts]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4358,6 +15239,22 @@ Paginated list of all AWS Native accounts.
 $inputs = Invoke-RscQueryAws -NativeEc2InstancesByName -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.last = <System.Int32>
+# OPTIONAL
+$inputs.Arg.before = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <AwsNativeEc2InstanceSortFields>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# REQUIRED
+$inputs.Arg.ec2InstanceName = <System.String>
+"@
 Write-Message "Invoke-RscQueryAws -NativeEc2InstancesByName" @"
 Paginated list of all AWS EC2 Instances by name or substring of name.
 "@ "[GraphQL: awsNativeEc2InstancesByName]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4370,6 +15267,110 @@ Paginated list of all AWS EC2 Instances by name or substring of name.
 $inputs = Invoke-RscQueryAws -NativeEc2Instances -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.last = <System.Int32>
+# OPTIONAL
+$inputs.Arg.before = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <AwsNativeEc2InstanceSortFields>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.descendantTypeFilter = @(
+	<HierarchyObjectTypeEnum>
+)
+# OPTIONAL
+$inputs.Arg.ec2InstanceFilters = @{
+	# OPTIONAL
+	nameOrIdSubstringFilter = @{
+		# REQUIRED
+		nameOrIdSubstring = <System.String>
+	}
+	# OPTIONAL
+	effectiveSlaFilter = @{
+		# REQUIRED
+		effectiveSlaIds = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	accountFilter = @{
+		# REQUIRED
+		accountIds = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	fileRecoveryStatusFilter = @{
+		# REQUIRED
+		statuses = @(
+			<AwsNativeFileRecoveryStatus>
+		)
+	}
+	# OPTIONAL
+	regionFilter = @{
+		# REQUIRED
+		regions = @(
+			<AwsNativeRegion>
+		)
+	}
+	# OPTIONAL
+	typeFilter = @{
+		# REQUIRED
+		ec2InstanceTypes = @(
+			<AwsNativeEc2InstanceType>
+		)
+	}
+	# OPTIONAL
+	vpcFilter = @{
+		# REQUIRED
+		vpcIds = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	relicFilter = @{
+		# REQUIRED
+		relic = <System.Boolean>
+	}
+	# OPTIONAL
+	tagFilter = @{
+		# REQUIRED
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+	}
+	# OPTIONAL
+	appProtectionStatusFilter = @{
+		# REQUIRED
+		isProtectionSetup = <System.Boolean>
+	}
+	# OPTIONAL
+	rbsStatusFilter = @{
+		# REQUIRED
+		status = <CloudInstanceRbsConnectionStatus>
+	}
+	# OPTIONAL
+	orgFilter = @{
+		# REQUIRED
+		orgIds = @(
+			<System.String>
+		)
+	}
+}
+"@
 Write-Message "Invoke-RscQueryAws -NativeEc2Instances" @"
 Paginated list of all AWS EC2 Instances.
 "@ "[GraphQL: awsNativeEc2Instances]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4382,6 +15383,22 @@ Paginated list of all AWS EC2 Instances.
 $inputs = Invoke-RscQueryAws -NativeEbsVolumesByName -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.last = <System.Int32>
+# OPTIONAL
+$inputs.Arg.before = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <AwsNativeEbsVolumeSortFields>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# REQUIRED
+$inputs.Arg.ebsVolumeName = <System.String>
+"@
 Write-Message "Invoke-RscQueryAws -NativeEbsVolumesByName" @"
 Paginated list of all AWS EBS Volumes by name or substring of name.
 "@ "[GraphQL: awsNativeEbsVolumesByName]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4394,6 +15411,96 @@ Paginated list of all AWS EBS Volumes by name or substring of name.
 $inputs = Invoke-RscQueryAws -NativeEbsVolumes -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.last = <System.Int32>
+# OPTIONAL
+$inputs.Arg.before = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <AwsNativeEbsVolumeSortFields>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.ebsVolumeFilters = @{
+	# OPTIONAL
+	nameOrIdSubstringFilter = @{
+		# REQUIRED
+		nameOrIdSubstring = <System.String>
+	}
+	# OPTIONAL
+	fileRecoveryStatusFilter = @{
+		# REQUIRED
+		statuses = @(
+			<AwsNativeFileRecoveryStatus>
+		)
+	}
+	# OPTIONAL
+	typeFilter = @{
+		# REQUIRED
+		ebsVolumeTypes = @(
+			<AwsNativeEbsVolumeType>
+		)
+	}
+	# OPTIONAL
+	attachedInstanceFilter = @{
+		# REQUIRED
+		ec2InstanceIds = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	effectiveSlaFilter = @{
+		# REQUIRED
+		effectiveSlaIds = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	accountFilter = @{
+		# REQUIRED
+		accountIds = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	regionFilter = @{
+		# REQUIRED
+		regions = @(
+			<AwsNativeRegion>
+		)
+	}
+	# OPTIONAL
+	relicFilter = @{
+		# REQUIRED
+		relic = <System.Boolean>
+	}
+	# OPTIONAL
+	tagFilter = @{
+		# REQUIRED
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+	}
+	# OPTIONAL
+	orgFilter = @{
+		# REQUIRED
+		orgIds = @(
+			<System.String>
+		)
+	}
+}
+"@
 Write-Message "Invoke-RscQueryAws -NativeEbsVolumes" @"
 Paginated list of all AWS EBS Volumes.
 "@ "[GraphQL: awsNativeEbsVolumes]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4406,6 +15513,12 @@ Paginated list of all AWS EBS Volumes.
 $inputs = Invoke-RscQueryAws -AllVpcsByRegion -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.awsAccountRubrikId = <System.String>
+# REQUIRED
+$inputs.Arg.region = <AwsNativeRegion>
+"@
 Write-Message "Invoke-RscQueryAws -AllVpcsByRegion" @"
 List of all Virtual Private Clouds (VPCs) in the AWS Native account, classified by region.
 "@ "[GraphQL: allVpcsByRegionFromAws]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4418,6 +15531,10 @@ List of all Virtual Private Clouds (VPCs) in the AWS Native account, classified 
 $inputs = Invoke-RscQueryAws -AllVpcs -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.awsAccountRubrikId = <System.String>
+"@
 Write-Message "Invoke-RscQueryAws -AllVpcs" @"
 List of all Virtual Private Clouds (VPCs) in the AWS Native account.
 "@ "[GraphQL: allVpcsFromAws]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4430,6 +15547,10 @@ List of all Virtual Private Clouds (VPCs) in the AWS Native account.
 $inputs = Invoke-RscQueryAws -IsNativeEbsVolumeSnapshotRestorable -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.snapshotId = <System.String>
+"@
 Write-Message "Invoke-RscQueryAws -IsNativeEbsVolumeSnapshotRestorable" @"
 Specified whether an EBS volume is restorable. For an EBS Volume to be restorable, the volume should be able to replace where attached.
 "@ "[GraphQL: isAwsNativeEbsVolumeSnapshotRestorable]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4442,6 +15563,12 @@ Specified whether an EBS volume is restorable. For an EBS Volume to be restorabl
 $inputs = Invoke-RscQueryAws -AllAvailabilityZonesByRegion -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.awsAccountRubrikId = <System.String>
+# REQUIRED
+$inputs.Arg.region = <AwsNativeRegion>
+"@
 Write-Message "Invoke-RscQueryAws -AllAvailabilityZonesByRegion" @"
 List of Availability Zones (AZs) in the specified region on the specified AWS Native account.
 "@ "[GraphQL: allAvailabilityZonesByRegionFromAws]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4454,6 +15581,12 @@ List of Availability Zones (AZs) in the specified region on the specified AWS Na
 $inputs = Invoke-RscQueryAws -AllKmsEncryptionKeysByRegion -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.awsAccountRubrikId = <System.String>
+# REQUIRED
+$inputs.Arg.region = <AwsNativeRegion>
+"@
 Write-Message "Invoke-RscQueryAws -AllKmsEncryptionKeysByRegion" @"
 List of encryption keys in the specified region on the specified AWS Native account. All the encrytion keys listed are managed by AWS Key Management System (KMS). For more information, see https://aws.amazon.com/kms/.
 "@ "[GraphQL: allKmsEncryptionKeysByRegionFromAws]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4466,6 +15599,12 @@ List of encryption keys in the specified region on the specified AWS Native acco
 $inputs = Invoke-RscQueryAws -IsS3BucketNameAvailable -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.bucketName = <System.String>
+# REQUIRED
+$inputs.Arg.awsAccountRubrikId = <System.String>
+"@
 Write-Message "Invoke-RscQueryAws -IsS3BucketNameAvailable" @"
 Specifies whether an S3 bucket name is available for use in AWS or not. When true, the bucket name is available for use.
 "@ "[GraphQL: isAwsS3BucketNameAvailable]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4478,6 +15617,10 @@ Specifies whether an S3 bucket name is available for use in AWS or not. When tru
 $inputs = Invoke-RscQueryAws -AllS3Buckets -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.awsAccountRubrikId = <System.String>
+"@
 Write-Message "Invoke-RscQueryAws -AllS3Buckets" @"
 List of all S3 bucket names across regions for the AWS Native account.
 "@ "[GraphQL: allS3BucketsFromAws]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4490,6 +15633,12 @@ List of all S3 bucket names across regions for the AWS Native account.
 $inputs = Invoke-RscQueryAws -AllS3BucketsDetails -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.awsAccountRubrikId = <System.String>
+# OPTIONAL
+$inputs.Arg.region = <AwsNativeRegion>
+"@
 Write-Message "Invoke-RscQueryAws -AllS3BucketsDetails" @"
 List of all S3 bucket details across regions for the AWS Native account.
 "@ "[GraphQL: allS3BucketsDetailsFromAws]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4502,6 +15651,10 @@ List of all S3 bucket details across regions for the AWS Native account.
 $inputs = Invoke-RscQueryAws -NativeRdsInstance -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.rdsInstanceRubrikId = <System.String>
+"@
 Write-Message "Invoke-RscQueryAws -NativeRdsInstance" @"
 Refers to AWS Relational Database Service (RDS) represented by a specific ID. For more information, see https://aws.amazon.com/rds/.
 "@ "[GraphQL: awsNativeRdsInstance]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4514,6 +15667,96 @@ Refers to AWS Relational Database Service (RDS) represented by a specific ID. Fo
 $inputs = Invoke-RscQueryAws -NativeRdsInstances -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.last = <System.Int32>
+# OPTIONAL
+$inputs.Arg.before = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <AwsNativeRdsInstanceSortFields>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.rdsInstanceFilters = @{
+	# OPTIONAL
+	nameSubstringFilter = @{
+		# REQUIRED
+		nameSubstring = <System.String>
+	}
+	# OPTIONAL
+	effectiveSlaFilter = @{
+		# REQUIRED
+		effectiveSlaIds = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	accountFilter = @{
+		# REQUIRED
+		accountIds = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	vpcFilter = @{
+		# REQUIRED
+		vpcIds = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	relicFilter = @{
+		# REQUIRED
+		relic = <System.Boolean>
+	}
+	# OPTIONAL
+	tagFilter = @{
+		# REQUIRED
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+	}
+	# OPTIONAL
+	regionFilter = @{
+		# REQUIRED
+		regions = @(
+			<AwsNativeRegion>
+		)
+	}
+	# OPTIONAL
+	dbEngineFilter = @{
+		# REQUIRED
+		dbEngines = @(
+			<AwsNativeRdsDbEngine>
+		)
+	}
+	# OPTIONAL
+	dbInstanceClassFilter = @{
+		# REQUIRED
+		dbInstanceClasses = @(
+			<AwsNativeRdsDbInstanceClass>
+		)
+	}
+	# OPTIONAL
+	orgFilter = @{
+		# REQUIRED
+		orgIds = @(
+			<System.String>
+		)
+	}
+}
+"@
 Write-Message "Invoke-RscQueryAws -NativeRdsInstances" @"
 Paginated list of AWS RDS Instances on AWS Native account.
 "@ "[GraphQL: awsNativeRdsInstances]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4526,6 +15769,16 @@ Paginated list of AWS RDS Instances on AWS Native account.
 $inputs = Invoke-RscQueryAws -NativeRdsPointInTimeRestoreWindow -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.awsAccountRubrikId = <System.String>
+# REQUIRED
+$inputs.Arg.region = <AwsNativeRegion>
+# REQUIRED
+$inputs.Arg.rdsInstanceName = <System.String>
+# OPTIONAL
+$inputs.Arg.rdsDatabaseRubrikId = <System.String>
+"@
 Write-Message "Invoke-RscQueryAws -NativeRdsPointInTimeRestoreWindow" @"
 Point-in-Time (PiT) restore window of the RDS Instance in the AWS Native account. Refers to the range of time within which the database is available to be restored to a particular point in time. For more information,see https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIT.html.
 "@ "[GraphQL: awsNativeRdsPointInTimeRestoreWindow]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4538,6 +15791,16 @@ Point-in-Time (PiT) restore window of the RDS Instance in the AWS Native account
 $inputs = Invoke-RscQueryAws -RdsInstanceDetails -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.awsAccountRubrikId = <System.String>
+# REQUIRED
+$inputs.Arg.region = <AwsNativeRegion>
+# REQUIRED
+$inputs.Arg.rdsInstanceName = <System.String>
+# OPTIONAL
+$inputs.Arg.rdsDatabaseRubrikId = <System.String>
+"@
 Write-Message "Invoke-RscQueryAws -RdsInstanceDetails" @"
 Details of the RDS Instance in the AWS Native account.
 "@ "[GraphQL: rdsInstanceDetailsFromAws]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4550,6 +15813,30 @@ Details of the RDS Instance in the AWS Native account.
 $inputs = Invoke-RscQueryAws -IsNativeRdsInstanceLaunchConfigurationValid -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.awsAccountRubrikId = <System.String>
+# REQUIRED
+$inputs.Arg.region = <AwsNativeRegion>
+# REQUIRED
+$inputs.Arg.dbEngine = <AwsNativeRdsDbEngine>
+# REQUIRED
+$inputs.Arg.dbEngineVersion = <System.String>
+# REQUIRED
+$inputs.Arg.dbClass = <AwsNativeRdsDbInstanceClass>
+# OPTIONAL
+$inputs.Arg.databaseInstanceClass = <System.String>
+# OPTIONAL
+$inputs.Arg.primaryAz = <System.String>
+# OPTIONAL
+$inputs.Arg.storageType = <AwsNativeRdsStorageType>
+# REQUIRED
+$inputs.Arg.isMultiAz = <System.Boolean>
+# OPTIONAL
+$inputs.Arg.kmsKeyId = <System.String>
+# OPTIONAL
+$inputs.Arg.iops = <System.Int32>
+"@
 Write-Message "Invoke-RscQueryAws -IsNativeRdsInstanceLaunchConfigurationValid" @"
 Specifies whether the given DbInstance class, storage type, multi-az capability, encryption capability, iops value are supported for the given dbEngine, dbEngineVersion in the specified availability zone. When true, the specification is valid for a RDS Instance and can be used to create a new Instance.
 "@ "[GraphQL: isAwsNativeRdsInstanceLaunchConfigurationValid]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4562,6 +15849,18 @@ Specifies whether the given DbInstance class, storage type, multi-az capability,
 $inputs = Invoke-RscQueryAws -AllOptionGroupsByRegion -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.awsAccountRubrikId = <System.String>
+# REQUIRED
+$inputs.Arg.region = <AwsNativeRegion>
+# REQUIRED
+$inputs.Arg.dbEngine = <AwsNativeRdsDbEngine>
+# REQUIRED
+$inputs.Arg.dbEngineVersion = <System.String>
+# REQUIRED
+$inputs.Arg.majorEngineVersion = <System.String>
+"@
 Write-Message "Invoke-RscQueryAws -AllOptionGroupsByRegion" @"
 List of all RDS option groups in a given region. Refers to settings of how a particular option works for an RDS Instance. For more information, see https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithOptionGroups.html.
 "@ "[GraphQL: allOptionGroupsByRegionFromAws]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4574,6 +15873,18 @@ List of all RDS option groups in a given region. Refers to settings of how a par
 $inputs = Invoke-RscQueryAws -AllDbParameterGroupsByRegion -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.awsAccountRubrikId = <System.String>
+# REQUIRED
+$inputs.Arg.region = <AwsNativeRegion>
+# REQUIRED
+$inputs.Arg.dbEngine = <AwsNativeRdsDbEngine>
+# REQUIRED
+$inputs.Arg.dbEngineVersion = <System.String>
+# OPTIONAL
+$inputs.Arg.rdsType = <AwsNativeRdsType>
+"@
 Write-Message "Invoke-RscQueryAws -AllDbParameterGroupsByRegion" @"
 List of all DB parameter groups in a given region. Refers to container for engine configuration that applies to one or more DB Instances. For more information, see https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithOptionGroups.html.
 "@ "[GraphQL: allDbParameterGroupsByRegionFromAws]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4586,6 +15897,12 @@ List of all DB parameter groups in a given region. Refers to container for engin
 $inputs = Invoke-RscQueryAws -AllDbSubnetGroupsByRegion -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.awsAccountRubrikId = <System.String>
+# REQUIRED
+$inputs.Arg.region = <AwsNativeRegion>
+"@
 Write-Message "Invoke-RscQueryAws -AllDbSubnetGroupsByRegion" @"
 All DB subnet groups in a given region. Refers to logical isolation of RDS on a network. For more information, see https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html.
 "@ "[GraphQL: allDbSubnetGroupsByRegionFromAws]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4598,6 +15915,14 @@ All DB subnet groups in a given region. Refers to logical isolation of RDS on a 
 $inputs = Invoke-RscQueryAws -ValidateNativeRdsInstanceNameForExport -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.awsAccountRubrikId = <System.String>
+# REQUIRED
+$inputs.Arg.region = <AwsNativeRegion>
+# REQUIRED
+$inputs.Arg.rdsInstanceName = <System.String>
+"@
 Write-Message "Invoke-RscQueryAws -ValidateNativeRdsInstanceNameForExport" @"
 Validates the name used for an RDS Instance during an export operation. Returns true if the RDS Instance name is valid. Returns false, with an error message, if the RDS Instance name validation fails. Returns false, without an error message for all other failures.
 "@ "[GraphQL: validateAwsNativeRdsInstanceNameForExport]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4610,6 +15935,14 @@ Validates the name used for an RDS Instance during an export operation. Returns 
 $inputs = Invoke-RscQueryAws -ValidateNativeRdsClusterNameForExport -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.awsAccountRubrikId = <System.String>
+# REQUIRED
+$inputs.Arg.region = <AwsNativeRegion>
+# REQUIRED
+$inputs.Arg.rdsClusterName = <System.String>
+"@
 Write-Message "Invoke-RscQueryAws -ValidateNativeRdsClusterNameForExport" @"
 Validates the name used for an RDS cluster during an export operation. Returns true if the RDS cluster name is valid. Returns false, with an error message, if the RDS cluster name validation fails. Returns false, without an error message for all other failures.
 "@ "[GraphQL: validateAwsNativeRdsClusterNameForExport]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4622,6 +15955,14 @@ Validates the name used for an RDS cluster during an export operation. Returns t
 $inputs = Invoke-RscQueryAws -NativeRdsExportDefaults -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.rdsInstanceRubrikId = <System.String>
+# OPTIONAL
+$inputs.Arg.snapshotId = <System.String>
+# REQUIRED
+$inputs.Arg.isPointInTime = <System.Boolean>
+"@
 Write-Message "Invoke-RscQueryAws -NativeRdsExportDefaults" @"
 Refers to the default values for the export operation of the RDS DB Instance in the AWS Native account.
 "@ "[GraphQL: awsNativeRdsExportDefaults]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4634,6 +15975,12 @@ Refers to the default values for the export operation of the RDS DB Instance in 
 $inputs = Invoke-RscQueryAws -AllEc2KeyPairsByRegion -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.awsAccountRubrikId = <System.String>
+# REQUIRED
+$inputs.Arg.region = <AwsNativeRegion>
+"@
 Write-Message "Invoke-RscQueryAws -AllEc2KeyPairsByRegion" @"
 List of all key pairs for a given region. A key pair, consisting of a public key and a private key, is a set of security credentials that you use to prove your identity when connecting to an EC2 instance. For more information, see https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html.
 "@ "[GraphQL: allEc2KeyPairsByRegionFromAws]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4646,6 +15993,17 @@ List of all key pairs for a given region. A key pair, consisting of a public key
 $inputs = Invoke-RscQueryAws -AmiTypeForNativeArchivedSnapshotExport -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	snapshotId = <System.String>
+	# REQUIRED
+	destinationRegionId = <AwsNativeRegion>
+	# REQUIRED
+	destinationAwsAccountRubrikId = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryAws -AmiTypeForNativeArchivedSnapshotExport" @"
 Amazon Machine Image (AMI) type for export of an archived EC2 Instance snapshot. For more information, see https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instances-and-amis.html.
 "@ "[GraphQL: amiTypeForAwsNativeArchivedSnapshotExport]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4658,6 +16016,9 @@ Amazon Machine Image (AMI) type for export of an archived EC2 Instance snapshot.
 $inputs = Invoke-RscQueryAws -AllRdsAuroraInstanceClasses -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+
+"@
 Write-Message "Invoke-RscQueryAws -AllRdsAuroraInstanceClasses" @"
 List of all the database instance classes supported by AWS RDS Aurora databases.
 "@ "[GraphQL: allAwsRdsAuroraInstanceClasses]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4670,6 +16031,16 @@ List of all the database instance classes supported by AWS RDS Aurora databases.
 $inputs = Invoke-RscQueryAws -AllSupportedRdsDatabaseInstanceClasses -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.awsAccountRubrikId = <System.String>
+# REQUIRED
+$inputs.Arg.region = <AwsNativeRegion>
+# REQUIRED
+$inputs.Arg.dbEngine = <AwsNativeRdsDbEngine>
+# OPTIONAL
+$inputs.Arg.dbEngineVersion = <System.String>
+"@
 Write-Message "Invoke-RscQueryAws -AllSupportedRdsDatabaseInstanceClasses" @"
 List of all the database instance classes supported by AWS RDS database for the provided DB engine and engine version. DB engine version is a optional argument, it can be ignored if we want to retrieve all the supported instance class for a DB engine irrespective of DB engine version.
 "@ "[GraphQL: allSupportedAwsRdsDatabaseInstanceClasses]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4682,6 +16053,10 @@ List of all the database instance classes supported by AWS RDS database for the 
 $inputs = Invoke-RscQueryAws -ComputeSettings -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.computeSettingId = <System.String>
+"@
 Write-Message "Invoke-RscQueryAws -ComputeSettings" @"
 Retrieve aws compute settings.
 "@ "[GraphQL: awsComputeSettings]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4694,6 +16069,23 @@ Retrieve aws compute settings.
 $inputs = Invoke-RscQueryAws -AllComputeSettings -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.sortBy = <AwsCloudComputeSettingQuerySortByField>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <AwsCloudComputeSettingFilterField>
+		# OPTIONAL
+		text = <System.String>
+}
+)
+# OPTIONAL
+$inputs.Arg.contextFilter = <ContextFilterTypeEnum>
+"@
 Write-Message "Invoke-RscQueryAws -AllComputeSettings" @"
 List all aws compute settings.
 "@ "[GraphQL: allAwsComputeSettings]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4706,6 +16098,21 @@ List all aws compute settings.
 $inputs = Invoke-RscQueryAws -AllCloudAccountsWithFeatures -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.awsCloudAccountsArg = @{
+	# REQUIRED
+	feature = <CloudAccountFeature>
+	# REQUIRED
+	statusFilters = @(
+		<CloudAccountStatus>
+	)
+	# OPTIONAL
+	awsAdminAccountFilter = <System.String>
+	# OPTIONAL
+	columnSearchFilter = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryAws -AllCloudAccountsWithFeatures" @"
 List of active AWS cloud accounts and the features for the accounts. A cloud account is an AWS account added to the Rubrik platform.
 "@ "[GraphQL: allAwsCloudAccountsWithFeatures]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4718,6 +16125,21 @@ List of active AWS cloud accounts and the features for the accounts. A cloud acc
 $inputs = Invoke-RscQueryAws -AllCloudAccountsFeaturesWithExoConfigs -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.awsCloudAccountsArg = @{
+	# REQUIRED
+	feature = <CloudAccountFeature>
+	# REQUIRED
+	statusFilters = @(
+		<CloudAccountStatus>
+	)
+	# OPTIONAL
+	awsAdminAccountFilter = <System.String>
+	# OPTIONAL
+	columnSearchFilter = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryAws -AllCloudAccountsFeaturesWithExoConfigs" @"
 List of active AWS cloud account features and the Exocompute mapping information for the accounts. A cloud account is an AWS account added to the Rubrik platform.
 "@ "[GraphQL: allAwsCloudAccountsFeaturesWithExoConfigs]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4730,6 +16152,17 @@ List of active AWS cloud account features and the Exocompute mapping information
 $inputs = Invoke-RscQueryAws -CloudAccountWithFeatures -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.cloudAccountId = <System.String>
+# REQUIRED
+$inputs.Arg.awsCloudAccountArg = @{
+	# REQUIRED
+	features = @(
+		<CloudAccountFeature>
+	)
+}
+"@
 Write-Message "Invoke-RscQueryAws -CloudAccountWithFeatures" @"
 List of AWS cloud accounts and the features for each account, classified by ID.
 "@ "[GraphQL: awsCloudAccountWithFeatures]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4742,6 +16175,14 @@ List of AWS cloud accounts and the features for each account, classified by ID.
 $inputs = Invoke-RscQueryAws -CloudAccountListVpcs -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.cloudAccountUuid = <System.String>
+# REQUIRED
+$inputs.Arg.feature = <CloudAccountFeature>
+# REQUIRED
+$inputs.Arg.region = <AwsRegion>
+"@
 Write-Message "Invoke-RscQueryAws -CloudAccountListVpcs" @"
 Retrieves a list of virtual private clouds (VPCs) in the specific cloud account.
 "@ "[GraphQL: awsCloudAccountListVpcs]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4754,6 +16195,16 @@ Retrieves a list of virtual private clouds (VPCs) in the specific cloud account.
 $inputs = Invoke-RscQueryAws -CloudAccountListSubnets -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.cloudAccountUuid = <System.String>
+# REQUIRED
+$inputs.Arg.feature = <CloudAccountFeature>
+# REQUIRED
+$inputs.Arg.region = <AwsRegion>
+# REQUIRED
+$inputs.Arg.vpcID = <System.String>
+"@
 Write-Message "Invoke-RscQueryAws -CloudAccountListSubnets" @"
 Retrieves a list of subnets in the specified cloud account and virtual private cloud (VPC).
 "@ "[GraphQL: awsCloudAccountListSubnets]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4766,6 +16217,16 @@ Retrieves a list of subnets in the specified cloud account and virtual private c
 $inputs = Invoke-RscQueryAws -CloudAccountListSecurityGroups -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.cloudAccountUuid = <System.String>
+# REQUIRED
+$inputs.Arg.feature = <CloudAccountFeature>
+# REQUIRED
+$inputs.Arg.region = <AwsRegion>
+# REQUIRED
+$inputs.Arg.vpcID = <System.String>
+"@
 Write-Message "Invoke-RscQueryAws -CloudAccountListSecurityGroups" @"
 Retrieves a list of security groups in the specified cloud account and virtual private cloud (VPC).
 "@ "[GraphQL: awsCloudAccountListSecurityGroups]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4778,6 +16239,14 @@ Retrieves a list of security groups in the specified cloud account and virtual p
 $inputs = Invoke-RscQueryAws -CloudAccountListKMSKeys -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.cloudAccountUuid = <System.String>
+# REQUIRED
+$inputs.Arg.feature = <CloudAccountFeature>
+# REQUIRED
+$inputs.Arg.region = <AwsRegion>
+"@
 Write-Message "Invoke-RscQueryAws -CloudAccountListKMSKeys" @"
 
 "@ "[GraphQL: AwsCloudAccountListKMSKeys]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4790,6 +16259,10 @@ Write-Message "Invoke-RscQueryAws -CloudAccountListKMSKeys" @"
 $inputs = Invoke-RscQueryAws -AllExocomputeConfigs -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.awsNativeAccountIdOrNamePrefix = <System.String>
+"@
 Write-Message "Invoke-RscQueryAws -AllExocomputeConfigs" @"
 List of all AWS exocompute configurations filtered by a cloud account ID or a cloud account name prefix.
 "@ "[GraphQL: allAwsExocomputeConfigs]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4802,6 +16275,21 @@ List of all AWS exocompute configurations filtered by a cloud account ID or a cl
 $inputs = Invoke-RscQueryAws -AllCloudAccountConfigs -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.awsCloudAccountsArg = @{
+	# REQUIRED
+	feature = <CloudAccountFeature>
+	# REQUIRED
+	statusFilters = @(
+		<CloudAccountStatus>
+	)
+	# OPTIONAL
+	awsAdminAccountFilter = <System.String>
+	# OPTIONAL
+	columnSearchFilter = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryAws -AllCloudAccountConfigs" @"
 List of all AWS cloud account configurations with the given search query.
 "@ "[GraphQL: allAwsCloudAccountConfigs]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4814,6 +16302,28 @@ List of all AWS cloud account configurations with the given search query.
 $inputs = Invoke-RscQueryAws -TrustPolicy -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	cloudType = <AwsCloudType>
+	# REQUIRED
+	features = @(
+		<CloudAccountFeature>
+	)
+	# REQUIRED
+	awsNativeAccounts = @(
+		@{
+			# OPTIONAL
+			name = <System.String>
+			# OPTIONAL
+			externalId = <System.String>
+			# REQUIRED
+			id = <System.String>
+		}
+	)
+}
+"@
 Write-Message "Invoke-RscQueryAws -TrustPolicy" @"
 Retrieves the AWS trust policy that will be attached with each role (cross-account, exocompute, etc.) in the customer's environment.
 "@ "[GraphQL: awsTrustPolicy]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4826,6 +16336,22 @@ Retrieves the AWS trust policy that will be attached with each role (cross-accou
 $inputs = Invoke-RscQueryAws -AllPermissionPolicies -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	cloudType = <AwsCloudType>
+	# REQUIRED
+	features = @(
+		<CloudAccountFeature>
+	)
+	# OPTIONAL
+	featureSpecificDetails = @{
+		# OPTIONAL
+		ec2RecoveryRolePath = <System.String>
+	}
+}
+"@
 Write-Message "Invoke-RscQueryAws -AllPermissionPolicies" @"
 Retrieves the permissions policy for all the input features along with any AWS-managed policy ARNs which need to be attached to the roles. Each policy document can be used to create an AWS-managed policy which then needs to be attached to corresponding role.
 "@ "[GraphQL: allAwsPermissionPolicies]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4838,6 +16364,17 @@ Retrieves the permissions policy for all the input features along with any AWS-m
 $inputs = Invoke-RscQueryAws -ArtifactsToDelete -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	awsNativeId = <System.String>
+	# REQUIRED
+	features = @(
+		<CloudAccountFeature>
+	)
+}
+"@
 Write-Message "Invoke-RscQueryAws -ArtifactsToDelete" @"
 Retrieves the AWS artifacts that need to be deleted when an account is being deleted.
 "@ "[GraphQL: awsArtifactsToDelete]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4850,6 +16387,10 @@ Retrieves the AWS artifacts that need to be deleted when an account is being del
 $inputs = Invoke-RscQueryAws -AllRegions -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.cloudAccountId = <System.String>
+"@
 Write-Message "Invoke-RscQueryAws -AllRegions" @"
 All valid AWS regions for this cloud account.
 "@ "[GraphQL: allAwsRegions]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4862,6 +16403,15 @@ All valid AWS regions for this cloud account.
 $inputs = Invoke-RscQueryAws -AllCdmVersions -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	cloudAccountId = <System.String>
+	# OPTIONAL
+	region = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryAws -AllCdmVersions" @"
 Get all Rubrik CDM versions in the AWS marketplace.
 "@ "[GraphQL: allAwsCdmVersions]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4874,6 +16424,12 @@ Get all Rubrik CDM versions in the AWS marketplace.
 $inputs = Invoke-RscQueryAws -AllInstanceProfileNames -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.cloudAccountId = <System.String>
+# REQUIRED
+$inputs.Arg.region = <System.String>
+"@
 Write-Message "Invoke-RscQueryAws -AllInstanceProfileNames" @"
 All Rubrik CC-ES instance profiles in the AWS account.
 "@ "[GraphQL: allAwsInstanceProfileNames]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4887,6 +16443,9 @@ All Rubrik CC-ES instance profiles in the AWS account.
 $inputs = Invoke-RscQueryAzure -NativeRoot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+
+"@
 Write-Message "Invoke-RscQueryAzure -NativeRoot" @"
 Root of Azure native hierarchy.
 "@ "[GraphQL: azureNativeRoot]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4899,6 +16458,10 @@ Root of Azure native hierarchy.
 $inputs = Invoke-RscQueryAzure -NativeSubscription -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.azureSubscriptionRubrikId = <System.String>
+"@
 Write-Message "Invoke-RscQueryAzure -NativeSubscription" @"
 Retrieves an Azure Native Subscription. Refers to the logical entity that provides entitlement to deploy and consume Azure resources.
 "@ "[GraphQL: azureNativeSubscription]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4911,6 +16474,41 @@ Retrieves an Azure Native Subscription. Refers to the logical entity that provid
 $inputs = Invoke-RscQueryAzure -NativeSubscriptions -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.last = <System.Int32>
+# OPTIONAL
+$inputs.Arg.before = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <AzureNativeSubscriptionSortFields>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.subscriptionFilters = @{
+	# OPTIONAL
+	nameSubstringFilter = @{
+		# REQUIRED
+		nameSubstring = <System.String>
+	}
+	# OPTIONAL
+	effectiveSlaFilter = @{
+		# REQUIRED
+		effectiveSlaIds = @(
+			<System.String>
+		)
+	}
+}
+# OPTIONAL
+$inputs.Arg.authorizedOperationFilter = <Operation>
+# OPTIONAL
+$inputs.Arg.workloadHierarchy = <WorkloadLevelHierarchy>
+# OPTIONAL
+$inputs.Arg.azureNativeProtectionFeature = <AzureNativeProtectionFeature>
+"@
 Write-Message "Invoke-RscQueryAzure -NativeSubscriptions" @"
 Retrieves a paginated list of all Azure Native Subscriptions.
 "@ "[GraphQL: azureNativeSubscriptions]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4923,6 +16521,10 @@ Retrieves a paginated list of all Azure Native Subscriptions.
 $inputs = Invoke-RscQueryAzure -NativeResourceGroup -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.resourceGroupId = <System.String>
+"@
 Write-Message "Invoke-RscQueryAzure -NativeResourceGroup" @"
 Retrieves an Azure Native Resource Group. Refers to a collection of resources in which multiple Azure services can reside.
 "@ "[GraphQL: azureNativeResourceGroup]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4935,6 +16537,57 @@ Retrieves an Azure Native Resource Group. Refers to a collection of resources in
 $inputs = Invoke-RscQueryAzure -NativeResourceGroups -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.last = <System.Int32>
+# OPTIONAL
+$inputs.Arg.before = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <AzureNativeCommonResourceGroupSortFields>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.commonResourceGroupFilters = @{
+	# OPTIONAL
+	nameSubstringFilter = @{
+		# REQUIRED
+		nameSubstring = <System.String>
+	}
+	# OPTIONAL
+	subscriptionFilter = @{
+		# REQUIRED
+		subscriptionIds = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	regionFilter = @{
+		# REQUIRED
+		regions = @(
+			<AzureNativeRegion>
+		)
+	}
+	# OPTIONAL
+	effectiveSlaFilter = @{
+		# REQUIRED
+		effectiveSlaIds = @(
+			<System.String>
+		)
+	}
+}
+# OPTIONAL
+$inputs.Arg.protectedObjectTypes = @(
+	<WorkloadLevelHierarchy>
+)
+# OPTIONAL
+$inputs.Arg.azureNativeProtectionFeatures = @(
+	<AzureNativeProtectionFeature>
+)
+"@
 Write-Message "Invoke-RscQueryAzure -NativeResourceGroups" @"
 Retrieves a paginated list of all Azure Native Resource Groups.
 "@ "[GraphQL: azureNativeResourceGroups]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4947,6 +16600,10 @@ Retrieves a paginated list of all Azure Native Resource Groups.
 $inputs = Invoke-RscQueryAzure -NativeVirtualMachine -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.azureVirtualMachineRubrikId = <System.String>
+"@
 Write-Message "Invoke-RscQueryAzure -NativeVirtualMachine" @"
 Retrieves an Azure Virtual Machine that refers to the Azure infrastructure as a service (IaaS) used to deploy persistent VMs. For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/.
 "@ "[GraphQL: azureNativeVirtualMachine]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4959,6 +16616,115 @@ Retrieves an Azure Virtual Machine that refers to the Azure infrastructure as a 
 $inputs = Invoke-RscQueryAzure -NativeVirtualMachines -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.last = <System.Int32>
+# OPTIONAL
+$inputs.Arg.before = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <AzureNativeVirtualMachineSortFields>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.descendantTypeFilter = @(
+	<HierarchyObjectTypeEnum>
+)
+# OPTIONAL
+$inputs.Arg.virtualMachineFilters = @{
+	# OPTIONAL
+	nameSubstringFilter = @{
+		# REQUIRED
+		nameSubstring = <System.String>
+	}
+	# OPTIONAL
+	effectiveSlaFilter = @{
+		# REQUIRED
+		effectiveSlaIds = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	resourceGroupFilter = @{
+		# REQUIRED
+		resourceGroupNames = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	subscriptionFilter = @{
+		# REQUIRED
+		subscriptionIds = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	regionFilter = @{
+		# REQUIRED
+		regions = @(
+			<AzureNativeRegion>
+		)
+	}
+	# OPTIONAL
+	vmSizeFilter = @{
+		# REQUIRED
+		vmSizes = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	vnetFilter = @{
+		# REQUIRED
+		vnetNames = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	relicFilter = @{
+		# REQUIRED
+		relic = <System.Boolean>
+	}
+	# OPTIONAL
+	tagFilter = @{
+		# REQUIRED
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+	}
+	# OPTIONAL
+	exocomputeConnectedFilter = @{
+		# REQUIRED
+		isConnected = <System.Boolean>
+	}
+	# OPTIONAL
+	fileIndexingFilter = @{
+		# REQUIRED
+		statuses = @(
+			<AzureNativeFileIndexingStatus>
+		)
+	}
+	# OPTIONAL
+	appProtectionStatusFilter = @{
+		# REQUIRED
+		isProtectionSetup = <System.Boolean>
+	}
+	# OPTIONAL
+	rbsStatusFilter = @{
+		# REQUIRED
+		status = <CloudInstanceRbsConnectionStatus>
+	}
+}
+"@
 Write-Message "Invoke-RscQueryAzure -NativeVirtualMachines" @"
 Retrieves a paginated list of all Azure Virtual Machines (VMs).
 "@ "[GraphQL: azureNativeVirtualMachines]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4971,6 +16737,10 @@ Retrieves a paginated list of all Azure Virtual Machines (VMs).
 $inputs = Invoke-RscQueryAzure -NativeManagedDisk -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.azureManagedDiskRubrikId = <System.String>
+"@
 Write-Message "Invoke-RscQueryAzure -NativeManagedDisk" @"
 Retrieves an Azure Native Managed Disk that refers to the block storage designed to be used with Azure Virtual Machines. Some examples are: ultra disks, premium solid-state drives (SSD), standard SSDs, and standard hard disk drives (HDD). For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/managed-disks-overview.
 "@ "[GraphQL: azureNativeManagedDisk]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4983,6 +16753,101 @@ Retrieves an Azure Native Managed Disk that refers to the block storage designed
 $inputs = Invoke-RscQueryAzure -NativeManagedDisks -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.last = <System.Int32>
+# OPTIONAL
+$inputs.Arg.before = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <AzureNativeDiskSortFields>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.diskFilters = @{
+	# OPTIONAL
+	nameSubstringFilter = @{
+		# REQUIRED
+		nameSubstring = <System.String>
+	}
+	# OPTIONAL
+	effectiveSlaFilter = @{
+		# REQUIRED
+		effectiveSlaIds = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	resourceGroupFilter = @{
+		# REQUIRED
+		resourceGroupNames = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	subscriptionFilter = @{
+		# REQUIRED
+		subscriptionIds = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	regionFilter = @{
+		# REQUIRED
+		regions = @(
+			<AzureNativeRegion>
+		)
+	}
+	# OPTIONAL
+	diskTypeFilter = @{
+		# REQUIRED
+		diskTypes = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	attachedVmFilter = @{
+		# REQUIRED
+		virtualMachineIds = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	relicFilter = @{
+		# REQUIRED
+		relic = <System.Boolean>
+	}
+	# OPTIONAL
+	tagFilter = @{
+		# REQUIRED
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+	}
+	# OPTIONAL
+	exocomputeConnectedFilter = @{
+		# REQUIRED
+		isConnected = <System.Boolean>
+	}
+	# OPTIONAL
+	fileIndexingFilter = @{
+		# REQUIRED
+		statuses = @(
+			<AzureNativeFileIndexingStatus>
+		)
+	}
+}
+"@
 Write-Message "Invoke-RscQueryAzure -NativeManagedDisks" @"
 Retrieves a paginated list of all Azure Native Managed Disks.
 "@ "[GraphQL: azureNativeManagedDisks]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -4995,6 +16860,10 @@ Retrieves a paginated list of all Azure Native Managed Disks.
 $inputs = Invoke-RscQueryAzure -AllNativeVirtualNetworks -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.azureSubscriptionRubrikId = <System.String>
+"@
 Write-Message "Invoke-RscQueryAzure -AllNativeVirtualNetworks" @"
 Retrieves all virtual networks (VNets) in the protected subscriptions. VNet enables secure communication with other VNets, the internet, and on-premise networks. For more information, see https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview.
 "@ "[GraphQL: allAzureNativeVirtualNetworks]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5007,6 +16876,12 @@ Retrieves all virtual networks (VNets) in the protected subscriptions. VNet enab
 $inputs = Invoke-RscQueryAzure -AllNativeSubnetsByRegionFromAzure -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.azureSubscriptionRubrikId = <System.String>
+# REQUIRED
+$inputs.Arg.region = <AzureNativeRegion>
+"@
 Write-Message "Invoke-RscQueryAzure -AllNativeSubnetsByRegionFromAzure" @"
 Retrieves all subnets in the specified region and subscription. Subnets allow you to choose IP address range of your choice. For more information, see https://docs.microsoft.com/en-us/azure/virtual-network/network-overview#virtual-network-and-subnets.
 "@ "[GraphQL: allAzureNativeSubnetsByRegionFromAzure]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5019,6 +16894,12 @@ Retrieves all subnets in the specified region and subscription. Subnets allow yo
 $inputs = Invoke-RscQueryAzure -AllNativeSecurityGroupsByRegionFromAzure -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.azureSubscriptionRubrikId = <System.String>
+# REQUIRED
+$inputs.Arg.region = <AzureNativeRegion>
+"@
 Write-Message "Invoke-RscQueryAzure -AllNativeSecurityGroupsByRegionFromAzure" @"
 Retrieves all security groups in the specified region and subscription. Security groups enable you to configure network security as a natural extension of an application's structure, allowing you to group virtual machines and define network security policies based on those groups. For more information, see https://docs.microsoft.com/en-us/azure/virtual-network/application-security-groups.
 "@ "[GraphQL: allAzureNativeSecurityGroupsByRegionFromAzure]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5031,6 +16912,12 @@ Retrieves all security groups in the specified region and subscription. Security
 $inputs = Invoke-RscQueryAzure -AllDiskEncryptionSetsByRegion -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.azureSubscriptionRubrikId = <System.String>
+# REQUIRED
+$inputs.Arg.region = <AzureNativeRegion>
+"@
 Write-Message "Invoke-RscQueryAzure -AllDiskEncryptionSetsByRegion" @"
 List of all Azure Disk Encryption Sets in a region.
 "@ "[GraphQL: allAzureDiskEncryptionSetsByRegion]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5043,6 +16930,14 @@ List of all Azure Disk Encryption Sets in a region.
 $inputs = Invoke-RscQueryAzure -AllNativeAvailabilitySetsByRegionFromAzure -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.azureSubscriptionRubrikId = <System.String>
+# REQUIRED
+$inputs.Arg.resourceGroupName = <System.String>
+# REQUIRED
+$inputs.Arg.region = <AzureNativeRegion>
+"@
 Write-Message "Invoke-RscQueryAzure -AllNativeAvailabilitySetsByRegionFromAzure" @"
 Retrieves all availability sets in the specified region, resource group, and subscription. An availability set is a logical grouping of VMs to facilitate redundancy and availability. For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/availability-set-overview.
 "@ "[GraphQL: allAzureNativeAvailabilitySetsByRegionFromAzure]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5055,6 +16950,14 @@ Retrieves all availability sets in the specified region, resource group, and sub
 $inputs = Invoke-RscQueryAzure -AllNativeExportCompatibleVmSizesByRegionFromAzure -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.azureSubscriptionRubrikId = <System.String>
+# REQUIRED
+$inputs.Arg.region = <AzureNativeRegion>
+# REQUIRED
+$inputs.Arg.vmSnapshotId = <System.String>
+"@
 Write-Message "Invoke-RscQueryAzure -AllNativeExportCompatibleVmSizesByRegionFromAzure" @"
 Retrieves all supported virtual machine (VM) sizes when exporting a particular snapshot. Not all VM sizes are supported in all the regions. For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/sizes.
 "@ "[GraphQL: allAzureNativeExportCompatibleVmSizesByRegionFromAzure]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5067,6 +16970,12 @@ Retrieves all supported virtual machine (VM) sizes when exporting a particular s
 $inputs = Invoke-RscQueryAzure -AllNativeExportCompatibleDiskTypesByRegionFromAzure -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.azureSubscriptionRubrikId = <System.String>
+# REQUIRED
+$inputs.Arg.region = <AzureNativeRegion>
+"@
 Write-Message "Invoke-RscQueryAzure -AllNativeExportCompatibleDiskTypesByRegionFromAzure" @"
 Retrieves all supported disk types when exporting a specific snapshot. Not all disk types are supported in all the regions. For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/disks-types.
 "@ "[GraphQL: allAzureNativeExportCompatibleDiskTypesByRegionFromAzure]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5079,6 +16988,10 @@ Retrieves all supported disk types when exporting a specific snapshot. Not all d
 $inputs = Invoke-RscQueryAzure -AllNativeVirtualMachineSizes -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.azureSubscriptionRubrikId = <System.String>
+"@
 Write-Message "Invoke-RscQueryAzure -AllNativeVirtualMachineSizes" @"
 Retrieves all virtual machine (VM) sizes in the subscriptions protected by Rubrik that have been configured for protection. For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/sizes.
 "@ "[GraphQL: allAzureNativeVirtualMachineSizes]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5091,6 +17004,12 @@ Retrieves all virtual machine (VM) sizes in the subscriptions protected by Rubri
 $inputs = Invoke-RscQueryAzure -IsNativeManagedDiskSnapshotRestorable -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.azureSubscriptionRubrikId = <System.String>
+# REQUIRED
+$inputs.Arg.diskSnapshotId = <System.String>
+"@
 Write-Message "Invoke-RscQueryAzure -IsNativeManagedDiskSnapshotRestorable" @"
 Specifies whether the Managed Disk snapshot is restorable or not. A managed disk is restorable when the restore settings of the Managed Disk are configured on the Azure portal and on the Rubrik platform. When the value is true, the managed disk snapshot is restorable.
 "@ "[GraphQL: isAzureNativeManagedDiskSnapshotRestorable]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5103,6 +17022,12 @@ Specifies whether the Managed Disk snapshot is restorable or not. A managed disk
 $inputs = Invoke-RscQueryAzure -IsStorageAccountNameAvailable -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.azureSubscriptionRubrikId = <System.String>
+# REQUIRED
+$inputs.Arg.storageAccountName = <System.String>
+"@
 Write-Message "Invoke-RscQueryAzure -IsStorageAccountNameAvailable" @"
 Specifies whether the given storage account name is valid and available in Azure to be assigned to a new storage account. When the value is true, the specified account name is available in Azure.
 "@ "[GraphQL: isAzureStorageAccountNameAvailable]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5115,6 +17040,10 @@ Specifies whether the given storage account name is valid and available in Azure
 $inputs = Invoke-RscQueryAzure -AllNativeStorageAccountsFromAzure -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.azureSubscriptionRubrikId = <System.String>
+"@
 Write-Message "Invoke-RscQueryAzure -AllNativeStorageAccountsFromAzure" @"
 Retrieves list of all storage Accounts in a subscription.
 "@ "[GraphQL: allAzureNativeStorageAccountsFromAzure]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5127,6 +17056,10 @@ Retrieves list of all storage Accounts in a subscription.
 $inputs = Invoke-RscQueryAzure -SqlDatabase -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.azureSqlDatabaseRubrikId = <System.String>
+"@
 Write-Message "Invoke-RscQueryAzure -SqlDatabase" @"
 Retrieves an Azure SQL Database. Refers to the fully managed SQL database built for the cloud. For more information, see https://azure.microsoft.com/en-us/products/azure-sql/database/.
 "@ "[GraphQL: azureSqlDatabase]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5139,6 +17072,82 @@ Retrieves an Azure SQL Database. Refers to the fully managed SQL database built 
 $inputs = Invoke-RscQueryAzure -SqlDatabases -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.last = <System.Int32>
+# OPTIONAL
+$inputs.Arg.before = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <AzureSqlDatabaseSortFields>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.azureSqlDatabaseFilters = @{
+	# OPTIONAL
+	nameSubstringFilter = @{
+		# REQUIRED
+		nameSubstring = <System.String>
+	}
+	# OPTIONAL
+	effectiveSlaFilter = @{
+		# REQUIRED
+		effectiveSlaIds = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	resourceGroupFilter = @{
+		# REQUIRED
+		resourceGroupNames = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	subscriptionFilter = @{
+		# REQUIRED
+		subscriptionIds = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	regionFilter = @{
+		# REQUIRED
+		regions = @(
+			<AzureNativeRegion>
+		)
+	}
+	# OPTIONAL
+	relicFilter = @{
+		# REQUIRED
+		relic = <System.Boolean>
+	}
+	# OPTIONAL
+	tagFilter = @{
+		# REQUIRED
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+	}
+	# OPTIONAL
+	serverFilter = @{
+		# REQUIRED
+		serverNames = @(
+			<System.String>
+		)
+	}
+}
+"@
 Write-Message "Invoke-RscQueryAzure -SqlDatabases" @"
 Retrieves a paginated list of all Azure SQL Databases.
 "@ "[GraphQL: azureSqlDatabases]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5151,6 +17160,10 @@ Retrieves a paginated list of all Azure SQL Databases.
 $inputs = Invoke-RscQueryAzure -SqlDatabaseServer -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.azureSqlDatabaseServerRubrikId = <System.String>
+"@
 Write-Message "Invoke-RscQueryAzure -SqlDatabaseServer" @"
 Retrieves an Azure SQL Database Server. Refers to the server that contains the Azure SQL Databases. For more information, see https://docs.microsoft.com/en-us/azure/azure-sql/database/logical-servers.
 "@ "[GraphQL: azureSqlDatabaseServer]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5163,6 +17176,56 @@ Retrieves an Azure SQL Database Server. Refers to the server that contains the A
 $inputs = Invoke-RscQueryAzure -SqlDatabaseServers -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.last = <System.Int32>
+# OPTIONAL
+$inputs.Arg.before = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <AzureSqlDatabaseServerSortFields>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.azureSqlDatabaseServerFilters = @{
+	# OPTIONAL
+	nameSubstringFilter = @{
+		# REQUIRED
+		nameSubstring = <System.String>
+	}
+	# OPTIONAL
+	effectiveSlaFilter = @{
+		# REQUIRED
+		effectiveSlaIds = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	resourceGroupFilter = @{
+		# REQUIRED
+		resourceGroupNames = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	subscriptionFilter = @{
+		# REQUIRED
+		subscriptionIds = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	regionFilter = @{
+		# REQUIRED
+		regions = @(
+			<AzureNativeRegion>
+		)
+	}
+}
+"@
 Write-Message "Invoke-RscQueryAzure -SqlDatabaseServers" @"
 Retrieves a paginated list of all Azure SQL Database Servers.
 "@ "[GraphQL: azureSqlDatabaseServers]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5175,6 +17238,10 @@ Retrieves a paginated list of all Azure SQL Database Servers.
 $inputs = Invoke-RscQueryAzure -SqlManagedInstanceDatabase -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.azureSqlManagedInstanceDatabaseRubrikId = <System.String>
+"@
 Write-Message "Invoke-RscQueryAzure -SqlManagedInstanceDatabase" @"
 Retrieves an Azure SQL Managed Instance Database. Refers to the database engine compatible with the latest SQL Server (Enterprise Edition) database engine. For more information, see https://docs.microsoft.com/en-us/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview.
 "@ "[GraphQL: azureSqlManagedInstanceDatabase]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5187,6 +17254,68 @@ Retrieves an Azure SQL Managed Instance Database. Refers to the database engine 
 $inputs = Invoke-RscQueryAzure -SqlManagedInstanceDatabases -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.last = <System.Int32>
+# OPTIONAL
+$inputs.Arg.before = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <AzureSqlManagedInstanceDatabaseSortFields>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.azureSqlManagedInstanceDatabaseFilters = @{
+	# OPTIONAL
+	nameSubstringFilter = @{
+		# REQUIRED
+		nameSubstring = <System.String>
+	}
+	# OPTIONAL
+	effectiveSlaFilter = @{
+		# REQUIRED
+		effectiveSlaIds = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	resourceGroupFilter = @{
+		# REQUIRED
+		resourceGroupNames = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	subscriptionFilter = @{
+		# REQUIRED
+		subscriptionIds = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	regionFilter = @{
+		# REQUIRED
+		regions = @(
+			<AzureNativeRegion>
+		)
+	}
+	# OPTIONAL
+	relicFilter = @{
+		# REQUIRED
+		relic = <System.Boolean>
+	}
+	# OPTIONAL
+	serverFilter = @{
+		# REQUIRED
+		serverNames = @(
+			<System.String>
+		)
+	}
+}
+"@
 Write-Message "Invoke-RscQueryAzure -SqlManagedInstanceDatabases" @"
 Retrieves a paginated list of all Azure SQL Managed Instance Databases.
 "@ "[GraphQL: azureSqlManagedInstanceDatabases]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5199,6 +17328,10 @@ Retrieves a paginated list of all Azure SQL Managed Instance Databases.
 $inputs = Invoke-RscQueryAzure -SqlManagedInstanceServer -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.azureSqlManagedInstanceServerRubrikId = <System.String>
+"@
 Write-Message "Invoke-RscQueryAzure -SqlManagedInstanceServer" @"
 Retrieves an Azure SQL Managed Instance Server. Refers to the server the Azure SQL Managed Instance Database is a part of.
 "@ "[GraphQL: azureSqlManagedInstanceServer]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5211,6 +17344,70 @@ Retrieves an Azure SQL Managed Instance Server. Refers to the server the Azure S
 $inputs = Invoke-RscQueryAzure -SqlManagedInstanceServers -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.last = <System.Int32>
+# OPTIONAL
+$inputs.Arg.before = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <AzureSqlManagedInstanceServerSortFields>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.azureSqlManagedInstanceServerFilters = @{
+	# OPTIONAL
+	nameSubstringFilter = @{
+		# REQUIRED
+		nameSubstring = <System.String>
+	}
+	# OPTIONAL
+	effectiveSlaFilter = @{
+		# REQUIRED
+		effectiveSlaIds = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	resourceGroupFilter = @{
+		# REQUIRED
+		resourceGroupNames = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	subscriptionFilter = @{
+		# REQUIRED
+		subscriptionIds = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	regionFilter = @{
+		# REQUIRED
+		regions = @(
+			<AzureNativeRegion>
+		)
+	}
+	# OPTIONAL
+	tagFilter = @{
+		# REQUIRED
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+	}
+}
+"@
 Write-Message "Invoke-RscQueryAzure -SqlManagedInstanceServers" @"
 Retrieves a paginated list of all Azure SQL Managed Instance Servers.
 "@ "[GraphQL: azureSqlManagedInstanceServers]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5223,6 +17420,16 @@ Retrieves a paginated list of all Azure SQL Managed Instance Servers.
 $inputs = Invoke-RscQueryAzure -SqlDatabaseDbPointInTimeRestoreWindowFromAzure -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.subscriptionId = <System.String>
+# REQUIRED
+$inputs.Arg.resourceGroupName = <System.String>
+# REQUIRED
+$inputs.Arg.azureSqlDatabaseServerName = <System.String>
+# REQUIRED
+$inputs.Arg.azureSqlDatabaseName = <System.String>
+"@
 Write-Message "Invoke-RscQueryAzure -SqlDatabaseDbPointInTimeRestoreWindowFromAzure" @"
 Point-in-Time (PiT) restore window of the Azure SQL Database instance in the Azure native account. Refers to the range of time within which the database is available to be restored to a particular point in time. For more information, see https://azure.microsoft.com/en-in/blog/azure-sql-database-point-in-time-restore/.
 "@ "[GraphQL: azureSqlDatabaseDbPointInTimeRestoreWindowFromAzure]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5235,6 +17442,16 @@ Point-in-Time (PiT) restore window of the Azure SQL Database instance in the Azu
 $inputs = Invoke-RscQueryAzure -SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.subscriptionId = <System.String>
+# REQUIRED
+$inputs.Arg.resourceGroupName = <System.String>
+# REQUIRED
+$inputs.Arg.azureSqlManagedInstanceName = <System.String>
+# REQUIRED
+$inputs.Arg.azureSqlDatabaseName = <System.String>
+"@
 Write-Message "Invoke-RscQueryAzure -SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure" @"
 Point-in-Time (PiT) restore window of the Azure SQL Managed Instance database in the Azure native account. Refers to the range of time within which the database is available to be restored to a particular point in time. For more information, see https://docs.microsoft.com/en-us/azure/azure-sql/managed-instance/point-in-time-restore?tabs=azure-portal.
 "@ "[GraphQL: azureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5247,6 +17464,12 @@ Point-in-Time (PiT) restore window of the Azure SQL Managed Instance database in
 $inputs = Invoke-RscQueryAzure -ValidateNativeSqlDatabaseDbNameForExport -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.azureSqlDatabaseName = <System.String>
+# REQUIRED
+$inputs.Arg.azureSqlDatabaseServerRubrikId = <System.String>
+"@
 Write-Message "Invoke-RscQueryAzure -ValidateNativeSqlDatabaseDbNameForExport" @"
 Validates the name used for an Sql Database during an export operation. Returns true if the database name is valid. Returns false, with an error message, if the database name validation fails. Returns false, without an error message for all other failures.
 "@ "[GraphQL: validateAzureNativeSqlDatabaseDbNameForExport]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5259,6 +17482,12 @@ Validates the name used for an Sql Database during an export operation. Returns 
 $inputs = Invoke-RscQueryAzure -ValidateNativeSqlManagedInstanceDbNameForExport -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.azureSqlDatabaseName = <System.String>
+# REQUIRED
+$inputs.Arg.azureSqlManagedInstanceServerRubrikId = <System.String>
+"@
 Write-Message "Invoke-RscQueryAzure -ValidateNativeSqlManagedInstanceDbNameForExport" @"
 Validates the name used for an Managed Instance Database during an export operation. Returns true if the database name is valid. Returns false, with an error message, if the database name validation fails. Returns false, without an error message for all other failures.
 "@ "[GraphQL: validateAzureNativeSqlManagedInstanceDbNameForExport]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5271,6 +17500,16 @@ Validates the name used for an Managed Instance Database during an export operat
 $inputs = Invoke-RscQueryAzure -AllSqlDatabaseServerElasticPools -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.subscriptionId = <System.String>
+# REQUIRED
+$inputs.Arg.resourceGroupName = <System.String>
+# REQUIRED
+$inputs.Arg.azureSqlDatabaseServerName = <System.String>
+# REQUIRED
+$inputs.Arg.azureSqlDatabaseServerRubrikId = <System.String>
+"@
 Write-Message "Invoke-RscQueryAzure -AllSqlDatabaseServerElasticPools" @"
 Retrieves the list of elastic pools available for a SQL Database Server.For more information, see https://docs.microsoft.com/en-us/azure/azure-sql/database/elastic-pool-overview.
 "@ "[GraphQL: allAzureSqlDatabaseServerElasticPools]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5283,6 +17522,10 @@ Retrieves the list of elastic pools available for a SQL Database Server.For more
 $inputs = Invoke-RscQueryAzure -IsNativeSqlDatabaseSnapshotPersistent -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.snapshotId = <System.String>
+"@
 Write-Message "Invoke-RscQueryAzure -IsNativeSqlDatabaseSnapshotPersistent" @"
 Checks if an Azure SQL Database Snapshot or an Azure SQL Managed Instance Database Snapshot is a persistent snapshot.
 "@ "[GraphQL: isAzureNativeSqlDatabaseSnapshotPersistent]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5295,6 +17538,33 @@ Checks if an Azure SQL Database Snapshot or an Azure SQL Managed Instance Databa
 $inputs = Invoke-RscQueryAzure -NativeLiveMountDisks -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.last = <System.Int32>
+# OPTIONAL
+$inputs.Arg.before = <System.String>
+# REQUIRED
+$inputs.Arg.cloudNativeObjectType = <CloudNativeObjectType>
+# OPTIONAL
+$inputs.Arg.liveMountFilters = @(
+	@{
+		# OPTIONAL
+		mountField = <LiveMountsFilterMountField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+}
+)
+# OPTIONAL
+$inputs.Arg.sortBy = <CloudNativeLiveMountSortByFields>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+"@
 Write-Message "Invoke-RscQueryAzure -NativeLiveMountDisks" @"
 List of mounted disks for Azure.
 "@ "[GraphQL: azureNativeLiveMountDisks]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5307,6 +17577,17 @@ List of mounted disks for Azure.
 $inputs = Invoke-RscQueryAzure -AllKeyVaultsByRegion -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.azureKeyVaultsInput = @{
+	# REQUIRED
+	cloudAccountId = <System.String>
+	# REQUIRED
+	region = <AzureRegion>
+	# OPTIONAL
+	userAssignedManagedIdentityPrincipalId = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryAzure -AllKeyVaultsByRegion" @"
 List of all Azure Key Vaults in a region.
 "@ "[GraphQL: allAzureKeyVaultsByRegion]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5319,6 +17600,17 @@ List of all Azure Key Vaults in a region.
 $inputs = Invoke-RscQueryAzure -AllEncryptionKeys -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.azureEncryptionKeysInput = @{
+	# REQUIRED
+	cloudAccountId = <System.String>
+	# REQUIRED
+	keyVaultName = <System.String>
+	# REQUIRED
+	resourceGroupName = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryAzure -AllEncryptionKeys" @"
 List of all Encryption Keys in an Azure Key Vault.
 "@ "[GraphQL: allAzureEncryptionKeys]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5331,6 +17623,22 @@ List of all Encryption Keys in an Azure Key Vault.
 $inputs = Invoke-RscQueryAzure -CloudAccountTenant -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.tenantId = <System.String>
+# REQUIRED
+$inputs.Arg.feature = <CloudAccountFeature>
+# REQUIRED
+$inputs.Arg.subscriptionStatusFilters = @(
+	<CloudAccountStatus>
+)
+# REQUIRED
+$inputs.Arg.subscriptionSearchText = <System.String>
+# OPTIONAL
+$inputs.Arg.subscriptionIdsFilter = @(
+	<System.String>
+)
+"@
 Write-Message "Invoke-RscQueryAzure -CloudAccountTenant" @"
 Retrieves the details of the Azure tenant and all the subscriptions of the tenant, for a feature.
 "@ "[GraphQL: azureCloudAccountTenant]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5343,6 +17651,22 @@ Retrieves the details of the Azure tenant and all the subscriptions of the tenan
 $inputs = Invoke-RscQueryAzure -CloudAccountTenantWithExoConfigs -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.tenantId = <System.String>
+# REQUIRED
+$inputs.Arg.feature = <CloudAccountFeature>
+# REQUIRED
+$inputs.Arg.subscriptionStatusFilters = @(
+	<CloudAccountStatus>
+)
+# REQUIRED
+$inputs.Arg.subscriptionSearchText = <System.String>
+# OPTIONAL
+$inputs.Arg.subscriptionIdsFilter = @(
+	<System.String>
+)
+"@
 Write-Message "Invoke-RscQueryAzure -CloudAccountTenantWithExoConfigs" @"
 Retrieves details about the Azure cloud account tenant including the Exocompute configurations for the tenant subscriptions, for a specified feature.
 "@ "[GraphQL: azureCloudAccountTenantWithExoConfigs]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5355,6 +17679,12 @@ Retrieves details about the Azure cloud account tenant including the Exocompute 
 $inputs = Invoke-RscQueryAzure -AllCloudAccountTenantsWithExoConfigs -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.features = @(
+	<CloudAccountFeature>
+)
+"@
 Write-Message "Invoke-RscQueryAzure -AllCloudAccountTenantsWithExoConfigs" @"
 Retrieves details about all the Azure cloud account tenants including the Exocompute configurations for the tenant subscriptions, for specified set of features.
 "@ "[GraphQL: allAzureCloudAccountTenantsWithExoConfigs]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5367,6 +17697,16 @@ Retrieves details about all the Azure cloud account tenants including the Exocom
 $inputs = Invoke-RscQueryAzure -AllCloudAccountTenants -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.features = @(
+	<CloudAccountFeature>
+)
+# REQUIRED
+$inputs.Arg.feature = <CloudAccountFeature>
+# REQUIRED
+$inputs.Arg.includeSubscriptionDetails = <System.Boolean>
+"@
 Write-Message "Invoke-RscQueryAzure -AllCloudAccountTenants" @"
 Retrieves a list of all the Azure tenants and tenant subscriptions for features. The list can be filtered by feature status, subscription native ID, and subscription name.
 "@ "[GraphQL: allAzureCloudAccountTenants]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5379,6 +17719,10 @@ Retrieves a list of all the Azure tenants and tenant subscriptions for features.
 $inputs = Invoke-RscQueryAzure -CloudAccountSubscriptionWithFeatures -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.cloudAccountId = <System.String>
+"@
 Write-Message "Invoke-RscQueryAzure -CloudAccountSubscriptionWithFeatures" @"
 Retrieves the details of the Azure cloud account.
 "@ "[GraphQL: azureCloudAccountSubscriptionWithFeatures]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5391,6 +17735,14 @@ Retrieves the details of the Azure cloud account.
 $inputs = Invoke-RscQueryAzure -AllCloudAccountSubscriptionsByFeature -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.feature = <CloudAccountFeature>
+# REQUIRED
+$inputs.Arg.subscriptionStatusFilters = @(
+	<CloudAccountStatus>
+)
+"@
 Write-Message "Invoke-RscQueryAzure -AllCloudAccountSubscriptionsByFeature" @"
 Retrieves a list of all Azure Subscriptions with feature details such as feature, status, and regions.
 "@ "[GraphQL: allAzureCloudAccountSubscriptionsByFeature]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5403,6 +17755,16 @@ Retrieves a list of all Azure Subscriptions with feature details such as feature
 $inputs = Invoke-RscQueryAzure -AllSubscriptionWithExocomputeMappings -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.features = @(
+	<CloudAccountFeature>
+)
+# OPTIONAL
+$inputs.Arg.exocomputeSubscriptionIdsFilter = @(
+	<System.String>
+)
+"@
 Write-Message "Invoke-RscQueryAzure -AllSubscriptionWithExocomputeMappings" @"
 Retrieves a list of all Azure subscriptions with Exocompute subscription mapping.
 "@ "[GraphQL: allAzureSubscriptionWithExocomputeMappings]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5415,6 +17777,14 @@ Retrieves a list of all Azure subscriptions with Exocompute subscription mapping
 $inputs = Invoke-RscQueryAzure -AllResourceGroupsFrom -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.cloudAccountId = <System.String>
+# REQUIRED
+$inputs.Arg.azureSubscriptionNativeId = <System.String>
+# REQUIRED
+$inputs.Arg.feature = <CloudAccountFeature>
+"@
 Write-Message "Invoke-RscQueryAzure -AllResourceGroupsFrom" @"
 Retrieves a list og all resource groups in the specified account.
 "@ "[GraphQL: allResourceGroupsFromAzure]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5427,6 +17797,16 @@ Retrieves a list og all resource groups in the specified account.
 $inputs = Invoke-RscQueryAzure -DoesNativeResourceGroupExist -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.cloudAccountId = <System.String>
+# REQUIRED
+$inputs.Arg.azureSubscriptionNativeId = <System.String>
+# REQUIRED
+$inputs.Arg.resourceGroupName = <System.String>
+# REQUIRED
+$inputs.Arg.feature = <CloudAccountFeature>
+"@
 Write-Message "Invoke-RscQueryAzure -DoesNativeResourceGroupExist" @"
 Checks if a resource group with the specified name exists in the specified account.
 "@ "[GraphQL: doesAzureNativeResourceGroupExist]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5439,6 +17819,22 @@ Checks if a resource group with the specified name exists in the specified accou
 $inputs = Invoke-RscQueryAzure -AllNativeResourceGroupsInfoIfExist -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	sessionId = <System.String>
+	# REQUIRED
+	resourceGroupInputs = @(
+		@{
+			# REQUIRED
+			subscriptionNativeId = <System.String>
+			# REQUIRED
+			resourceGroupName = <System.String>
+		}
+	)
+}
+"@
 Write-Message "Invoke-RscQueryAzure -AllNativeResourceGroupsInfoIfExist" @"
 Retrieves a list of resource groups with the specified names which exist in the specified account.
 "@ "[GraphQL: allAzureNativeResourceGroupsInfoIfExist]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5451,6 +17847,16 @@ Retrieves a list of resource groups with the specified names which exist in the 
 $inputs = Invoke-RscQueryAzure -AllCloudAccountMissingPermissions -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.sessionId = <System.String>
+# REQUIRED
+$inputs.Arg.subscriptionIds = @(
+	<System.String>
+)
+# REQUIRED
+$inputs.Arg.cloudAccountAction = <CloudAccountAction>
+"@
 Write-Message "Invoke-RscQueryAzure -AllCloudAccountMissingPermissions" @"
 Retrieves a list of all the missing permissions on Azure subscriptions that are a part of the Azure Cloud Account.
 "@ "[GraphQL: allAzureCloudAccountMissingPermissions]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5463,6 +17869,10 @@ Retrieves a list of all the missing permissions on Azure subscriptions that are 
 $inputs = Invoke-RscQueryAzure -CloudAccountPermissionConfig -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.feature = <CloudAccountFeature>
+"@
 Write-Message "Invoke-RscQueryAzure -CloudAccountPermissionConfig" @"
 Retrieves the configuration consisting of role permissions and feature policy version required for Azure subscription setup. Features refer to the Polaris features that the customer wants to be enabled on the cloud account.
 "@ "[GraphQL: azureCloudAccountPermissionConfig]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5475,6 +17885,12 @@ Retrieves the configuration consisting of role permissions and feature policy ve
 $inputs = Invoke-RscQueryAzure -CloudAccountGrantedPermissionsGroups -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.cloudAccountId = <System.String>
+# REQUIRED
+$inputs.Arg.feature = <CloudAccountFeature>
+"@
 Write-Message "Invoke-RscQueryAzure -CloudAccountGrantedPermissionsGroups" @"
 Retrieves the permissions groups which have been granted for a specific feature.
 "@ "[GraphQL: azureCloudAccountGrantedPermissionsGroups]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5487,6 +17903,14 @@ Retrieves the permissions groups which have been granted for a specific feature.
 $inputs = Invoke-RscQueryAzure -CloudAccountGrantedPermissionsGroupsForRecovery -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.cloudAccountId = <System.String>
+# REQUIRED
+$inputs.Arg.azureNativeSubscriptionId = <System.String>
+# REQUIRED
+$inputs.Arg.feature = <CloudAccountFeature>
+"@
 Write-Message "Invoke-RscQueryAzure -CloudAccountGrantedPermissionsGroupsForRecovery" @"
 Retrieves the permissions groups which have been granted for a specific feature.
 "@ "[GraphQL: azureCloudAccountGrantedPermissionsGroupsForRecovery]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5499,6 +17923,12 @@ Retrieves the permissions groups which have been granted for a specific feature.
 $inputs = Invoke-RscQueryAzure -CloudAccountCheckRefreshTokenExistsForRecovery -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.cloudAccountId = <System.String>
+# REQUIRED
+$inputs.Arg.azureNativeSubscriptionId = <System.String>
+"@
 Write-Message "Invoke-RscQueryAzure -CloudAccountCheckRefreshTokenExistsForRecovery" @"
 Check whether a refresh token exists for the current user.
 "@ "[GraphQL: azureCloudAccountCheckRefreshTokenExistsForRecovery]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5511,6 +17941,14 @@ Check whether a refresh token exists for the current user.
 $inputs = Invoke-RscQueryAzure -AllExocomputeConfigsInAccount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.azureExocomputeSearchQuery = <System.String>
+# OPTIONAL
+$inputs.Arg.cloudAccountIDs = @(
+	<System.String>
+)
+"@
 Write-Message "Invoke-RscQueryAzure -AllExocomputeConfigsInAccount" @"
 Retrieves a list of Azure Exocompute configurations filtered by a cloud account ID or a search query.
 "@ "[GraphQL: allAzureExocomputeConfigsInAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5523,6 +17961,12 @@ Retrieves a list of Azure Exocompute configurations filtered by a cloud account 
 $inputs = Invoke-RscQueryAzure -AllCloudAccountSubnetsByRegion -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.cloudAccountId = <System.String>
+# REQUIRED
+$inputs.Arg.region = <AzureCloudAccountRegion>
+"@
 Write-Message "Invoke-RscQueryAzure -AllCloudAccountSubnetsByRegion" @"
 Retrieves all subnets in the specified region and subscription. Subnets allow you to choose IP address range of your choice. For more information, see https://docs.microsoft.com/en-us/azure/virtual-network/network-overview#virtual-network-and-subnets.
 "@ "[GraphQL: allAzureCloudAccountSubnetsByRegion]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5535,6 +17979,26 @@ Retrieves all subnets in the specified region and subscription. Subnets allow yo
 $inputs = Invoke-RscQueryAzure -ValidateCloudAccountExocomputeConfigurations -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	cloudAccountId = <System.String>
+	# REQUIRED
+	azureExocomputeRegionConfigs = @(
+		@{
+			# REQUIRED
+			region = <AzureCloudAccountRegion>
+			# REQUIRED
+			subnetNativeId = <System.String>
+			# REQUIRED
+			isRscManaged = <System.Boolean>
+			# OPTIONAL
+			podSubnetNativeId = <System.String>
+		}
+	)
+}
+"@
 Write-Message "Invoke-RscQueryAzure -ValidateCloudAccountExocomputeConfigurations" @"
 Validates if Azure subnets are correctly configured for running Azure Kubernetes Service (AKS) Clusters. When correctly configured, the Azure subnets allow the required region-specific outbound connectivity and do not overlap with Azure restricted IP Address Space.
 "@ "[GraphQL: validateAzureCloudAccountExocomputeConfigurations]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5547,6 +18011,21 @@ Validates if Azure subnets are correctly configured for running Azure Kubernetes
 $inputs = Invoke-RscQueryAzure -AllArmTemplatesByFeature -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	customerTenantDomainName = <System.String>
+	# REQUIRED
+	features = @(
+		<CloudAccountFeature>
+	)
+	# REQUIRED
+	operationType = <CloudAccountOperation>
+	# REQUIRED
+	cloudType = <AzureCloudType>
+}
+"@
 Write-Message "Invoke-RscQueryAzure -AllArmTemplatesByFeature" @"
 Retrieve ARM templates for role definition and role assignment.
 "@ "[GraphQL: allAzureArmTemplatesByFeature]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5559,6 +18038,14 @@ Retrieve ARM templates for role definition and role assignment.
 $inputs = Invoke-RscQueryAzure -CheckPersistentStorageSubscriptionCanUnmap -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.cloudAccountId = <System.String>
+# REQUIRED
+$inputs.Arg.feature = <CloudAccountFeature>
+# REQUIRED
+$inputs.Arg.unmappingValidationType = <UnmappingValidationType>
+"@
 Write-Message "Invoke-RscQueryAzure -CheckPersistentStorageSubscriptionCanUnmap" @"
 Checks if we can unmap the archival location from the subscription.
 "@ "[GraphQL: checkAzurePersistentStorageSubscriptionCanUnmap]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5571,6 +18058,10 @@ Checks if we can unmap the archival location from the subscription.
 $inputs = Invoke-RscQueryAzure -Subscriptions -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.tenantId = <System.String>
+"@
 Write-Message "Invoke-RscQueryAzure -Subscriptions" @"
 Gets the subscriptions for the given Azure tenant.
 "@ "[GraphQL: azureSubscriptions]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5583,6 +18074,12 @@ Gets the subscriptions for the given Azure tenant.
 $inputs = Invoke-RscQueryAzure -Regions -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.tenantId = <System.String>
+# REQUIRED
+$inputs.Arg.subscriptionId = <System.String>
+"@
 Write-Message "Invoke-RscQueryAzure -Regions" @"
 Gets the Azure regions for the given subscription.
 "@ "[GraphQL: azureRegions]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5595,6 +18092,12 @@ Gets the Azure regions for the given subscription.
 $inputs = Invoke-RscQueryAzure -ResourceGroups -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.tenantId = <System.String>
+# REQUIRED
+$inputs.Arg.subscriptionId = <System.String>
+"@
 Write-Message "Invoke-RscQueryAzure -ResourceGroups" @"
 Gets the Azure resource groups for the given subscription.
 "@ "[GraphQL: azureResourceGroups]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5607,6 +18110,14 @@ Gets the Azure resource groups for the given subscription.
 $inputs = Invoke-RscQueryAzure -VNets -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.tenantId = <System.String>
+# REQUIRED
+$inputs.Arg.subscriptionId = <System.String>
+# REQUIRED
+$inputs.Arg.regionName = <System.String>
+"@
 Write-Message "Invoke-RscQueryAzure -VNets" @"
 Gets the VNets for the given subscription.
 "@ "[GraphQL: azureVNets]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5619,6 +18130,14 @@ Gets the VNets for the given subscription.
 $inputs = Invoke-RscQueryAzure -Subnets -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.tenantId = <System.String>
+# REQUIRED
+$inputs.Arg.subscriptionId = <System.String>
+# REQUIRED
+$inputs.Arg.vNetId = <System.String>
+"@
 Write-Message "Invoke-RscQueryAzure -Subnets" @"
 Gets the subnets for the given subscription.
 "@ "[GraphQL: azureSubnets]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5631,6 +18150,14 @@ Gets the subnets for the given subscription.
 $inputs = Invoke-RscQueryAzure -StorageAccounts -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.tenantId = <System.String>
+# REQUIRED
+$inputs.Arg.subscriptionId = <System.String>
+# REQUIRED
+$inputs.Arg.regionName = <System.String>
+"@
 Write-Message "Invoke-RscQueryAzure -StorageAccounts" @"
 Gets the storage accounts for the given subscription.
 "@ "[GraphQL: azureStorageAccounts]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5643,6 +18170,9 @@ Gets the storage accounts for the given subscription.
 $inputs = Invoke-RscQueryAzure -AllHostedRegions -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+
+"@
 Write-Message "Invoke-RscQueryAzure -AllHostedRegions" @"
 Lists all Azure regions supported by the Rubrik-Hosted SaaS protection.
 "@ "[GraphQL: allHostedAzureRegions]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5655,6 +18185,12 @@ Lists all Azure regions supported by the Rubrik-Hosted SaaS protection.
 $inputs = Invoke-RscQueryAzure -AllResourceGroups -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.cloudAccountId = <System.String>
+# REQUIRED
+$inputs.Arg.azureRegion = <System.String>
+"@
 Write-Message "Invoke-RscQueryAzure -AllResourceGroups" @"
 Get resource groups for a service principal in Azure.
 "@ "[GraphQL: allAzureResourceGroups]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5667,6 +18203,15 @@ Get resource groups for a service principal in Azure.
 $inputs = Invoke-RscQueryAzure -AllVnets -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.vnetRequest = @{
+	# OPTIONAL
+	cloudAccountId = <System.String>
+	# OPTIONAL
+	resourceGroup = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryAzure -AllVnets" @"
 Get VNets for a given account in Azure.
 "@ "[GraphQL: allAzureVnets]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5679,6 +18224,17 @@ Get VNets for a given account in Azure.
 $inputs = Invoke-RscQueryAzure -AllSubnets -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.subnetRequest = @{
+	# OPTIONAL
+	cloudAccountId = <System.String>
+	# OPTIONAL
+	resourceGroup = <System.String>
+	# OPTIONAL
+	vnetName = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryAzure -AllSubnets" @"
 Get subnets for a given account in Azure.
 "@ "[GraphQL: allAzureSubnets]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5691,6 +18247,15 @@ Get subnets for a given account in Azure.
 $inputs = Invoke-RscQueryAzure -AllCdmVersions -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.cdmVersionRequest = @{
+	# OPTIONAL
+	cloudAccountId = <System.String>
+	# OPTIONAL
+	location = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryAzure -AllCdmVersions" @"
 Get all Rubrik CDM versions in the Azure marketplace.
 "@ "[GraphQL: allAzureCdmVersions]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5703,6 +18268,10 @@ Get all Rubrik CDM versions in the Azure marketplace.
 $inputs = Invoke-RscQueryAzure -AllRegions -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.cloudAccountId = <System.String>
+"@
 Write-Message "Invoke-RscQueryAzure -AllRegions" @"
 Get all available regions for Azure.
 "@ "[GraphQL: allAzureRegions]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5715,6 +18284,15 @@ Get all available regions for Azure.
 $inputs = Invoke-RscQueryAzure -AllNsgs -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.nsgRequest = @{
+	# OPTIONAL
+	cloudAccountId = <System.String>
+	# OPTIONAL
+	resourceGroup = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryAzure -AllNsgs" @"
 Get all available network security groups for Azure.
 "@ "[GraphQL: allAzureNsgs]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5727,6 +18305,15 @@ Get all available network security groups for Azure.
 $inputs = Invoke-RscQueryAzure -AllStorageAccounts -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.storageAccountsRequest = @{
+	# OPTIONAL
+	cloudAccountId = <System.String>
+	# OPTIONAL
+	resourceGroup = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryAzure -AllStorageAccounts" @"
 List all storage accounts from Azure.
 "@ "[GraphQL: allAzureStorageAccounts]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5739,6 +18326,58 @@ List all storage accounts from Azure.
 $inputs = Invoke-RscQueryAzure -AdDirectories -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <HierarchySortByField>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType>
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature>
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature>
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter>
+		)
+}
+)
+"@
 Write-Message "Invoke-RscQueryAzure -AdDirectories" @"
 All Azure AD directories for the account.
 "@ "[GraphQL: azureAdDirectories]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5751,6 +18390,10 @@ All Azure AD directories for the account.
 $inputs = Invoke-RscQueryAzure -AdDirectory -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.workloadFid = <System.String>
+"@
 Write-Message "Invoke-RscQueryAzure -AdDirectory" @"
 Details of the Azure AD corresponds to the workload ID.
 "@ "[GraphQL: azureAdDirectory]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5763,6 +18406,25 @@ Details of the Azure AD corresponds to the workload ID.
 $inputs = Invoke-RscQueryAzure -AdObjectsByType -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.sortByOption = @(
+	<AzureAdObjectSearchType>
+)
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	snapshotId = <System.String>
+	# REQUIRED
+	azureAdObjectType = <AzureAdObjectType>
+}
+"@
 Write-Message "Invoke-RscQueryAzure -AdObjectsByType" @"
 Details of the Azure AD objects corresponding to the type.
 "@ "[GraphQL: azureAdObjectsByType]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5776,6 +18438,12 @@ Details of the Azure AD objects corresponding to the type.
 $inputs = Invoke-RscQueryAzureO365 -Exocompute -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.orgId = <System.String>
+# REQUIRED
+$inputs.Arg.exocomputeClusterId = <System.String>
+"@
 Write-Message "Invoke-RscQueryAzureO365 -Exocompute" @"
 Gets the exocompute details of the given cluster.
 "@ "[GraphQL: azureO365Exocompute]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5788,6 +18456,14 @@ Gets the exocompute details of the given cluster.
 $inputs = Invoke-RscQueryAzureO365 -CheckStorageAccountName -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.tenantId = <System.String>
+# REQUIRED
+$inputs.Arg.subscriptionId = <System.String>
+# REQUIRED
+$inputs.Arg.storage_account_name = <System.String>
+"@
 Write-Message "Invoke-RscQueryAzureO365 -CheckStorageAccountName" @"
 Checks the storage account name.
 "@ "[GraphQL: azureO365CheckStorageAccountName]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5800,6 +18476,16 @@ Checks the storage account name.
 $inputs = Invoke-RscQueryAzureO365 -CheckStorageAccountAccessibility -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.tenantId = <System.String>
+# REQUIRED
+$inputs.Arg.subscriptionId = <System.String>
+# REQUIRED
+$inputs.Arg.storage_account_name = <System.String>
+# REQUIRED
+$inputs.Arg.groupName = <System.String>
+"@
 Write-Message "Invoke-RscQueryAzureO365 -CheckStorageAccountAccessibility" @"
 Checks the accessibility of the storage account.
 "@ "[GraphQL: azureO365CheckStorageAccountAccessibility]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5812,6 +18498,14 @@ Checks the accessibility of the storage account.
 $inputs = Invoke-RscQueryAzureO365 -CheckSubscriptionQuota -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.tenantId = <System.String>
+# REQUIRED
+$inputs.Arg.subscriptionId = <System.String>
+# REQUIRED
+$inputs.Arg.regionName = <System.String>
+"@
 Write-Message "Invoke-RscQueryAzureO365 -CheckSubscriptionQuota" @"
 Checks the Azure subscription quota.
 "@ "[GraphQL: azureO365CheckSubscriptionQuota]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5824,6 +18518,14 @@ Checks the Azure subscription quota.
 $inputs = Invoke-RscQueryAzureO365 -CheckResourceGroupName -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.tenantId = <System.String>
+# REQUIRED
+$inputs.Arg.subscriptionId = <System.String>
+# REQUIRED
+$inputs.Arg.groupName = <System.String>
+"@
 Write-Message "Invoke-RscQueryAzureO365 -CheckResourceGroupName" @"
 Checks the resource group name.
 "@ "[GraphQL: azureO365CheckResourceGroupName]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5836,6 +18538,16 @@ Checks the resource group name.
 $inputs = Invoke-RscQueryAzureO365 -CheckVirtualNetworkName -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.tenantId = <System.String>
+# REQUIRED
+$inputs.Arg.subscriptionId = <System.String>
+# REQUIRED
+$inputs.Arg.groupName = <System.String>
+# REQUIRED
+$inputs.Arg.vnet_name = <System.String>
+"@
 Write-Message "Invoke-RscQueryAzureO365 -CheckVirtualNetworkName" @"
 Checks the virtual network name.
 "@ "[GraphQL: azureO365CheckVirtualNetworkName]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5848,6 +18560,12 @@ Checks the virtual network name.
 $inputs = Invoke-RscQueryAzureO365 -ValidateUserRoles -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.tenantId = <System.String>
+# REQUIRED
+$inputs.Arg.subscriptionId = <System.String>
+"@
 Write-Message "Invoke-RscQueryAzureO365 -ValidateUserRoles" @"
 Validates the user roles in the subscription.
 "@ "[GraphQL: azureO365ValidateUserRoles]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5860,6 +18578,18 @@ Validates the user roles in the subscription.
 $inputs = Invoke-RscQueryAzureO365 -CheckNSGOutboundRules -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.tenantId = <System.String>
+# REQUIRED
+$inputs.Arg.subscriptionId = <System.String>
+# REQUIRED
+$inputs.Arg.resourceGroupName = <System.String>
+# REQUIRED
+$inputs.Arg.vnet_name = <System.String>
+# REQUIRED
+$inputs.Arg.subnet_name = <System.String>
+"@
 Write-Message "Invoke-RscQueryAzureO365 -CheckNSGOutboundRules" @"
 Checks the NSG Outbound rules of the Azure resources.
 "@ "[GraphQL: azureO365CheckNSGOutboundRules]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5872,6 +18602,20 @@ Checks the NSG Outbound rules of the Azure resources.
 $inputs = Invoke-RscQueryAzureO365 -CheckNetworkSubnet -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.tenantId = <System.String>
+# REQUIRED
+$inputs.Arg.subscriptionId = <System.String>
+# REQUIRED
+$inputs.Arg.resourceGroupName = <System.String>
+# REQUIRED
+$inputs.Arg.vnet_name = <System.String>
+# REQUIRED
+$inputs.Arg.subnet_name = <System.String>
+# REQUIRED
+$inputs.Arg.strict_addr_check = <System.Boolean>
+"@
 Write-Message "Invoke-RscQueryAzureO365 -CheckNetworkSubnet" @"
 Checks the network subnet of the Azure resources.
 "@ "[GraphQL: azureO365CheckNetworkSubnet]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5884,6 +18628,20 @@ Checks the network subnet of the Azure resources.
 $inputs = Invoke-RscQueryAzureO365 -GetNetworkSubnetUnusedAddr -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.tenantId = <System.String>
+# REQUIRED
+$inputs.Arg.subscriptionId = <System.String>
+# REQUIRED
+$inputs.Arg.resourceGroupName = <System.String>
+# REQUIRED
+$inputs.Arg.vnet_name = <System.String>
+# REQUIRED
+$inputs.Arg.subnet_name = <System.String>
+# REQUIRED
+$inputs.Arg.strict_addr_check = <System.Boolean>
+"@
 Write-Message "Invoke-RscQueryAzureO365 -GetNetworkSubnetUnusedAddr" @"
 Retrieves the unused addresses available in a subnet.
 "@ "[GraphQL: azureO365GetNetworkSubnetUnusedAddr]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5896,6 +18654,9 @@ Retrieves the unused addresses available in a subnet.
 $inputs = Invoke-RscQueryAzureO365 -GetAzureHostType -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+
+"@
 Write-Message "Invoke-RscQueryAzureO365 -GetAzureHostType" @"
 Retrieves the AzureHostType of the account.
 "@ "[GraphQL: azureO365GetAzureHostType]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5909,6 +18670,58 @@ Retrieves the AzureHostType of the account.
 $inputs = Invoke-RscQueryCassandra -Sources -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <HierarchySortByField>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType>
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature>
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature>
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter>
+		)
+}
+)
+"@
 Write-Message "Invoke-RscQueryCassandra -Sources" @"
 Paginated list of cassandra sources.
 "@ "[GraphQL: cassandraSources]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5921,6 +18734,58 @@ Paginated list of cassandra sources.
 $inputs = Invoke-RscQueryCassandra -Keyspaces -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <HierarchySortByField>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType>
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature>
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature>
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter>
+		)
+}
+)
+"@
 Write-Message "Invoke-RscQueryCassandra -Keyspaces" @"
 Paginated list of cassandra keyspaces.
 "@ "[GraphQL: cassandraKeyspaces]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5933,6 +18798,58 @@ Paginated list of cassandra keyspaces.
 $inputs = Invoke-RscQueryCassandra -ColumnFamilies -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <HierarchySortByField>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType>
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature>
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature>
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter>
+		)
+}
+)
+"@
 Write-Message "Invoke-RscQueryCassandra -ColumnFamilies" @"
 Paginated list of cassandra column families.
 "@ "[GraphQL: cassandraColumnFamilies]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5945,6 +18862,24 @@ Paginated list of cassandra column families.
 $inputs = Invoke-RscQueryCassandra -ColumnFamilyRecoverableRange -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	recoveryRangeRequestData = @{
+		# OPTIONAL
+		sourceType = <MosaicRecoverableRangeRequestSourceType>
+		# REQUIRED
+		databaseName = <System.String>
+		# REQUIRED
+		sourceName = <System.String>
+		# REQUIRED
+		tableName = <System.String>
+	}
+}
+"@
 Write-Message "Invoke-RscQueryCassandra -ColumnFamilyRecoverableRange" @"
 Get Recoverable Range of a Cassandra Column Family.
 "@ "[GraphQL: cassandraColumnFamilyRecoverableRange]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5957,6 +18892,24 @@ Get Recoverable Range of a Cassandra Column Family.
 $inputs = Invoke-RscQueryCassandra -ColumnFamilySchema -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	schemaRequestData = @{
+		# REQUIRED
+		databaseName = <System.String>
+		# REQUIRED
+		sourceName = <System.String>
+		# REQUIRED
+		tableName = <System.String>
+		# REQUIRED
+		versionTimestamp = <System.String>
+	}
+}
+"@
 Write-Message "Invoke-RscQueryCassandra -ColumnFamilySchema" @"
 Get Schema of a Cassandra Column Family.
 "@ "[GraphQL: cassandraColumnFamilySchema]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5969,6 +18922,10 @@ Get Schema of a Cassandra Column Family.
 $inputs = Invoke-RscQueryCassandra -Source -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+"@
 Write-Message "Invoke-RscQueryCassandra -Source" @"
 Details of a cassandra source.
 "@ "[GraphQL: cassandraSource]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5981,6 +18938,10 @@ Details of a cassandra source.
 $inputs = Invoke-RscQueryCassandra -Keyspace -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+"@
 Write-Message "Invoke-RscQueryCassandra -Keyspace" @"
 Details of a cassandra keyspace.
 "@ "[GraphQL: cassandraKeyspace]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -5993,6 +18954,10 @@ Details of a cassandra keyspace.
 $inputs = Invoke-RscQueryCassandra -ColumnFamily -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+"@
 Write-Message "Invoke-RscQueryCassandra -ColumnFamily" @"
 Details of a cassandra column family.
 "@ "[GraphQL: cassandraColumnFamily]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6006,6 +18971,10 @@ Details of a cassandra column family.
 $inputs = Invoke-RscQueryCluster -Cloud -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.cloudVendorType = <CcpVendorType>
+"@
 Write-Message "Invoke-RscQueryCluster -Cloud" @"
 List of Cloud Clusters with cloud information.
 "@ "[GraphQL: allCloudClusters]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6018,6 +18987,13 @@ List of Cloud Clusters with cloud information.
 $inputs = Invoke-RscQueryCluster -Nodes -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryCluster -Nodes" @"
 Get list of nodes in this Rubrik cluster
 
@@ -6033,6 +19009,88 @@ Returns the list of all Rubrik nodes.
 $inputs = Invoke-RscQueryCluster -List -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.last = <System.Int32>
+# OPTIONAL
+$inputs.Arg.before = <System.String>
+# OPTIONAL
+$inputs.Arg.filter = @{
+	# OPTIONAL
+	id = @(
+		<System.String>
+	)
+	# OPTIONAL
+	name = @(
+		<System.String>
+	)
+	# OPTIONAL
+	type = @(
+		<ClusterTypeEnum>
+	)
+	# OPTIONAL
+	objectType = @(
+		<ObjectTypeEnum>
+	)
+	# OPTIONAL
+	registrationTime_gt = <DateTime>
+	# OPTIONAL
+	registrationTime_lt = <DateTime>
+	# OPTIONAL
+	minSoftwareVersion = <System.String>
+	# OPTIONAL
+	clusterLocation = @(
+		<System.String>
+	)
+	# OPTIONAL
+	excludeEmptyCluster = <System.Boolean>
+	# OPTIONAL
+	productType = @(
+		<ClusterProductEnum>
+	)
+	# OPTIONAL
+	registeredMode = @(
+		<ClusterRegistrationMode>
+	)
+	# OPTIONAL
+	product = <Product>
+	# OPTIONAL
+	orgId = @(
+		<System.String>
+	)
+	# OPTIONAL
+	productFilters = @(
+		@{
+			# REQUIRED
+			productType = <ClusterProductEnum>
+			# OPTIONAL
+			minSoftwareVersion = <System.String>
+		}
+	)
+	# OPTIONAL
+	excludeId = @(
+		<System.String>
+	)
+	# OPTIONAL
+	systemStatus = @(
+		<ClusterSystemStatus>
+	)
+	# OPTIONAL
+	connectionState = @(
+		<ClusterStatus>
+	)
+	# OPTIONAL
+	isInFatalOrDisconnectedState = <System.Boolean>
+}
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.sortBy = <ClusterSortByEnum>
+"@
 Write-Message "Invoke-RscQueryCluster -List" @"
 List of the available cluster objects.
 "@ "[GraphQL: clusterConnection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6045,6 +19103,10 @@ List of the available cluster objects.
 $inputs = Invoke-RscQueryCluster -Cluster -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.clusterUuid = <System.String>
+"@
 Write-Message "Invoke-RscQueryCluster -Cluster" @"
 A cluster object.
 "@ "[GraphQL: cluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6057,6 +19119,75 @@ A cluster object.
 $inputs = Invoke-RscQueryCluster -WithUpgradesInfo -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.last = <System.Int32>
+# OPTIONAL
+$inputs.Arg.before = <System.String>
+# OPTIONAL
+$inputs.Arg.upgradeFilter = @{
+	# OPTIONAL
+	id = @(
+		<System.String>
+	)
+	# OPTIONAL
+	name = @(
+		<System.String>
+	)
+	# OPTIONAL
+	type = @(
+		<ClusterTypeEnum>
+	)
+	# OPTIONAL
+	registrationTime_gt = <DateTime>
+	# OPTIONAL
+	registrationTime_lt = <DateTime>
+	# OPTIONAL
+	minSoftwareVersion = <System.String>
+	# OPTIONAL
+	downloadedVersion = @(
+		<System.String>
+	)
+	# OPTIONAL
+	installedVersion = @(
+		<System.String>
+	)
+	# OPTIONAL
+	upgradeJobStatus = @(
+		<ClusterJobStatusTypeEnum>
+	)
+	# OPTIONAL
+	clusterLocation = @(
+		<System.String>
+	)
+	# OPTIONAL
+	versionStatus = @(
+		<VersionStatus>
+	)
+	# OPTIONAL
+	prechecksStatus = @(
+		<PrechecksStatusTypeEnum>
+	)
+	# OPTIONAL
+	connectionState = @(
+		<ClusterStatus>
+	)
+	# OPTIONAL
+	upgradeScheduled = <System.Boolean>
+	# OPTIONAL
+	productType = @(
+		<ClusterProductEnum>
+	)
+}
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.sortBy = <UpgradeInfoSortByEnum>
+"@
 Write-Message "Invoke-RscQueryCluster -WithUpgradesInfo" @"
 
 "@ "[GraphQL: clusterWithUpgradesInfo]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6069,6 +19200,10 @@ Write-Message "Invoke-RscQueryCluster -WithUpgradesInfo" @"
 $inputs = Invoke-RscQueryCluster -Dns -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.clusterUuid = <System.String>
+"@
 Write-Message "Invoke-RscQueryCluster -Dns" @"
 Rubrik cluster DNS information.
 "@ "[GraphQL: clusterDns]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6081,6 +19216,10 @@ Rubrik cluster DNS information.
 $inputs = Invoke-RscQueryCluster -Proxy -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.clusterUuid = <System.String>
+"@
 Write-Message "Invoke-RscQueryCluster -Proxy" @"
 Rubrik cluster proxy information.
 "@ "[GraphQL: clusterProxy]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6093,6 +19232,13 @@ Rubrik cluster proxy information.
 $inputs = Invoke-RscQueryCluster -NtpServers -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryCluster -NtpServers" @"
 Get NTP Servers
 
@@ -6108,6 +19254,15 @@ Retrieve a list of the NTP servers assigned to the Rubrik cluster. Encryption ke
 $inputs = Invoke-RscQueryCluster -NetworkInterfaces -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	interface = <System.String>
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryCluster -NetworkInterfaces" @"
 Get network interfaces for a Rubrik Cluster cluster
 
@@ -6123,6 +19278,13 @@ Retrieves network interfaces(including VLANs) on bond0/bond1.
 $inputs = Invoke-RscQueryCluster -FloatingIps -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryCluster -FloatingIps" @"
 Get a list of a cluster's always-available Ips
 
@@ -6138,6 +19300,15 @@ Get a list of a cluster's always-available Ips.
 $inputs = Invoke-RscQueryCluster -Vlans -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	vlan = <System.Int32>
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryCluster -Vlans" @"
 Rubrik cluster VLAN information.
 "@ "[GraphQL: clusterVlans]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6150,6 +19321,13 @@ Rubrik cluster VLAN information.
 $inputs = Invoke-RscQueryCluster -DefaultGateway -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryCluster -DefaultGateway" @"
 Get current default gateway
 
@@ -6165,6 +19343,13 @@ Get current default gateway.
 $inputs = Invoke-RscQueryCluster -WebSignedCertificate -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryCluster -WebSignedCertificate" @"
 Get the signed certificate for Web server
 
@@ -6180,6 +19365,13 @@ If the web server uses a signed certificate, fetch it.
 $inputs = Invoke-RscQueryCluster -Ipmi -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryCluster -Ipmi" @"
 Get IPMI details
 
@@ -6195,6 +19387,29 @@ get IPMI details of availability and enabled access in the cluster.
 $inputs = Invoke-RscQueryCluster -Certificates -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	description = <System.String>
+	# OPTIONAL
+	expiration = <System.String>
+	# OPTIONAL
+	hasKey = <System.Boolean>
+	# OPTIONAL
+	includeExpired = <System.Boolean>
+	# OPTIONAL
+	isTrusted = <System.Boolean>
+	# OPTIONAL
+	name = <System.String>
+	# OPTIONAL
+	sortBy = <V1QueryCertificatesRequestSortBy>
+	# OPTIONAL
+	sortOrder = <V1QueryCertificatesRequestSortOrder>
+	# REQUIRED
+	clusterUuid = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryCluster -Certificates" @"
 Get all certificates
 
@@ -6210,6 +19425,15 @@ Get all certificates.
 $inputs = Invoke-RscQueryCluster -WebCertsAndIpmis -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	clusterUuids = @(
+		<System.String>
+	)
+}
+"@
 Write-Message "Invoke-RscQueryCluster -WebCertsAndIpmis" @"
 Get web server certificate and IPMI details for multiple clusters.
 "@ "[GraphQL: allClusterWebCertsAndIpmis]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6222,6 +19446,15 @@ Get web server certificate and IPMI details for multiple clusters.
 $inputs = Invoke-RscQueryCluster -OperationJobProgress -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	clusterUuid = <System.String>
+	# REQUIRED
+	jobType = <CcpJobType>
+}
+"@
 Write-Message "Invoke-RscQueryCluster -OperationJobProgress" @"
 Get updates on the job progress of the Rubrik cluster operation.
 "@ "[GraphQL: clusterOperationJobProgress]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6234,6 +19467,13 @@ Get updates on the job progress of the Rubrik cluster operation.
 $inputs = Invoke-RscQueryCluster -Ipv6Mode -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryCluster -Ipv6Mode" @"
 Rubrik cluster IPv6 mode.
 "@ "[GraphQL: clusterIpv6Mode]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6246,6 +19486,13 @@ Rubrik cluster IPv6 mode.
 $inputs = Invoke-RscQueryCluster -Csr -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryCluster -Csr" @"
 Get the cluster certificate signing request
 
@@ -6261,6 +19508,9 @@ Returns the certificate signing request generated from the private key of the Ru
 $inputs = Invoke-RscQueryCluster -TypeList -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+
+"@
 Write-Message "Invoke-RscQueryCluster -TypeList" @"
 
 "@ "[GraphQL: clusterTypeList]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6273,6 +19523,88 @@ Write-Message "Invoke-RscQueryCluster -TypeList" @"
 $inputs = Invoke-RscQueryCluster -GroupByList -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.last = <System.Int32>
+# OPTIONAL
+$inputs.Arg.before = <System.String>
+# REQUIRED
+$inputs.Arg.groupBy = <ClusterGroupByEnum>
+# OPTIONAL
+$inputs.Arg.filter = @{
+	# OPTIONAL
+	id = @(
+		<System.String>
+	)
+	# OPTIONAL
+	name = @(
+		<System.String>
+	)
+	# OPTIONAL
+	type = @(
+		<ClusterTypeEnum>
+	)
+	# OPTIONAL
+	objectType = @(
+		<ObjectTypeEnum>
+	)
+	# OPTIONAL
+	registrationTime_gt = <DateTime>
+	# OPTIONAL
+	registrationTime_lt = <DateTime>
+	# OPTIONAL
+	minSoftwareVersion = <System.String>
+	# OPTIONAL
+	clusterLocation = @(
+		<System.String>
+	)
+	# OPTIONAL
+	excludeEmptyCluster = <System.Boolean>
+	# OPTIONAL
+	productType = @(
+		<ClusterProductEnum>
+	)
+	# OPTIONAL
+	registeredMode = @(
+		<ClusterRegistrationMode>
+	)
+	# OPTIONAL
+	product = <Product>
+	# OPTIONAL
+	orgId = @(
+		<System.String>
+	)
+	# OPTIONAL
+	productFilters = @(
+		@{
+			# REQUIRED
+			productType = <ClusterProductEnum>
+			# OPTIONAL
+			minSoftwareVersion = <System.String>
+		}
+	)
+	# OPTIONAL
+	excludeId = @(
+		<System.String>
+	)
+	# OPTIONAL
+	systemStatus = @(
+		<ClusterSystemStatus>
+	)
+	# OPTIONAL
+	connectionState = @(
+		<ClusterStatus>
+	)
+	# OPTIONAL
+	isInFatalOrDisconnectedState = <System.Boolean>
+}
+# OPTIONAL
+$inputs.Arg.timezoneOffset = <System.Single>
+"@
 Write-Message "Invoke-RscQueryCluster -GroupByList" @"
 
 "@ "[GraphQL: clusterGroupByConnection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6285,6 +19617,53 @@ Write-Message "Invoke-RscQueryCluster -GroupByList" @"
 $inputs = Invoke-RscQueryCluster -WithConfigProtectionInfo -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.last = <System.Int32>
+# OPTIONAL
+$inputs.Arg.before = <System.String>
+# OPTIONAL
+$inputs.Arg.configProtectionFilter = @{
+	# OPTIONAL
+	id = @(
+		<System.String>
+	)
+	# OPTIONAL
+	name = @(
+		<System.String>
+	)
+	# OPTIONAL
+	type = @(
+		<ClusterTypeEnum>
+	)
+	# OPTIONAL
+	minSoftwareVersion = <System.String>
+	# OPTIONAL
+	clusterLocation = @(
+		<System.String>
+	)
+	# OPTIONAL
+	connectionState = @(
+		<ClusterStatus>
+	)
+	# OPTIONAL
+	productType = @(
+		<ClusterProductEnum>
+	)
+	# OPTIONAL
+	configProtectionStatus = @(
+		<ConfigProtectionStatus>
+	)
+}
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.sortBy = <ConfigProtectionInfoSortBy>
+"@
 Write-Message "Invoke-RscQueryCluster -WithConfigProtectionInfo" @"
 A cluster object with config protection information.
 "@ "[GraphQL: clusterWithConfigProtectionInfo]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6297,6 +19676,20 @@ A cluster object with config protection information.
 $inputs = Invoke-RscQueryCluster -RcvLocations -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.last = <System.Int32>
+# OPTIONAL
+$inputs.Arg.before = <System.String>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# REQUIRED
+$inputs.Arg.cdmClusterUUID = <System.String>
+"@
 Write-Message "Invoke-RscQueryCluster -RcvLocations" @"
 List Rubrik Cloud Vault locations of the cluster.
 "@ "[GraphQL: clusterRcvLocations]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6309,6 +19702,10 @@ List Rubrik Cloud Vault locations of the cluster.
 $inputs = Invoke-RscQueryCluster -Connected -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.clusterFilterArg = <ClusterTypeEnum>
+"@
 Write-Message "Invoke-RscQueryCluster -Connected" @"
 List all connected clusters.
 "@ "[GraphQL: allConnectedClusters]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6321,6 +19718,10 @@ List all connected clusters.
 $inputs = Invoke-RscQueryCluster -ReplicationTargets -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.clusterUuid = <System.String>
+"@
 Write-Message "Invoke-RscQueryCluster -ReplicationTargets" @"
 All replication targets for a cluster.
 "@ "[GraphQL: allClusterReplicationTargets]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6333,6 +19734,36 @@ All replication targets for a cluster.
 $inputs = Invoke-RscQueryCluster -EncryptionInfo -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.last = <System.Int32>
+# OPTIONAL
+$inputs.Arg.before = <System.String>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.clusterName = <System.String>
+# REQUIRED
+$inputs.Arg.encryptionStatusFilter = @(
+	<ClusterEncryptionStatusFilter>
+)
+# REQUIRED
+$inputs.Arg.keyProtection = @(
+	<ClusterKeyProtection>
+)
+# REQUIRED
+$inputs.Arg.clusters = @(
+	<System.String>
+)
+# REQUIRED
+$inputs.Arg.encryptionTypes = @(
+	<ClusterEncryptionType>
+)
+"@
 Write-Message "Invoke-RscQueryCluster -EncryptionInfo" @"
 Filter clusters by encryption information.
 "@ "[GraphQL: clusterEncryptionInfo]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6345,6 +19776,10 @@ Filter clusters by encryption information.
 $inputs = Invoke-RscQueryCluster -HostFailover -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+"@
 Write-Message "Invoke-RscQueryCluster -HostFailover" @"
 Get details of the given host failover cluster.
 "@ "[GraphQL: hostFailoverCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6357,6 +19792,14 @@ Get details of the given host failover cluster.
 $inputs = Invoke-RscQueryCluster -GlobalFileSearchMultiple -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.clusters = @(
+	<System.String>
+)
+# REQUIRED
+$inputs.Arg.regex = <System.String>
+"@
 Write-Message "Invoke-RscQueryCluster -GlobalFileSearchMultiple" @"
 All files and folders matching input filters.
 "@ "[GraphQL: allGlobalFileSearchMultipleClusters]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6369,6 +19812,58 @@ All files and folders matching input filters.
 $inputs = Invoke-RscQueryCluster -Kubernetes -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <HierarchySortByField>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType>
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature>
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature>
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter>
+		)
+}
+)
+"@
 Write-Message "Invoke-RscQueryCluster -Kubernetes" @"
 Summary of all Kubernetes Clusters.
 "@ "[GraphQL: kubernetesClusters]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6381,6 +19876,58 @@ Summary of all Kubernetes Clusters.
 $inputs = Invoke-RscQueryCluster -K8s -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <HierarchySortByField>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType>
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature>
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature>
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter>
+		)
+}
+)
+"@
 Write-Message "Invoke-RscQueryCluster -K8s" @"
 
 "@ "[GraphQL: k8sClusters]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6393,6 +19940,10 @@ Write-Message "Invoke-RscQueryCluster -K8s" @"
 $inputs = Invoke-RscQueryCluster -Windows -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+"@
 Write-Message "Invoke-RscQueryCluster -Windows" @"
 A Windows Cluster.
 "@ "[GraphQL: windowsCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6405,6 +19956,22 @@ A Windows Cluster.
 $inputs = Invoke-RscQueryCluster -ReportMigrationStatus -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.clusterUuid = <System.String>
+# REQUIRED
+$inputs.Arg.status = @(
+	<CdmReportMigrationStatus>
+)
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.last = <System.Int32>
+# OPTIONAL
+$inputs.Arg.before = <System.String>
+"@
 Write-Message "Invoke-RscQueryCluster -ReportMigrationStatus" @"
 Retrieve details of the Rubrik clusters' reports migration.
 "@ "[GraphQL: clusterReportMigrationStatus]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6417,6 +19984,14 @@ Retrieve details of the Rubrik clusters' reports migration.
 $inputs = Invoke-RscQueryCluster -ReportMigrationCount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.clusterUuid = <System.String>
+# REQUIRED
+$inputs.Arg.status = @(
+	<CdmReportMigrationStatus>
+)
+"@
 Write-Message "Invoke-RscQueryCluster -ReportMigrationCount" @"
 Retrieve the counts of the Rubrik cluster reports migration.
 "@ "[GraphQL: clusterReportMigrationCount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6429,6 +20004,10 @@ Retrieve the counts of the Rubrik cluster reports migration.
 $inputs = Invoke-RscQueryCluster -ReportMigrationJobStatus -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.clusterUuid = <System.String>
+"@
 Write-Message "Invoke-RscQueryCluster -ReportMigrationJobStatus" @"
 Retrieve the status of the cluster report migration job.
 "@ "[GraphQL: clusterReportMigrationJobStatus]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6441,6 +20020,16 @@ Retrieve the status of the cluster report migration job.
 $inputs = Invoke-RscQueryCluster -LaDomains -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.last = <System.Int32>
+# OPTIONAL
+$inputs.Arg.before = <System.String>
+"@
 Write-Message "Invoke-RscQueryCluster -LaDomains" @"
 Returns paginated list of SLA domains that were created on Rubrik CDM.
 "@ "[GraphQL: clusterSlaDomains]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6453,6 +20042,16 @@ Returns paginated list of SLA domains that were created on Rubrik CDM.
 $inputs = Invoke-RscQueryCluster -LaDomainFilterList -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.last = <System.Int32>
+# OPTIONAL
+$inputs.Arg.before = <System.String>
+"@
 Write-Message "Invoke-RscQueryCluster -LaDomainFilterList" @"
 
 "@ "[GraphQL: clusterSlaDomainFilterConnection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6465,6 +20064,12 @@ Write-Message "Invoke-RscQueryCluster -LaDomainFilterList" @"
 $inputs = Invoke-RscQueryCluster -VerifySlaWithReplicationTo -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.cdmClusterUUID = <System.String>
+# REQUIRED
+$inputs.Arg.includeArchived = <System.Boolean>
+"@
 Write-Message "Invoke-RscQueryCluster -VerifySlaWithReplicationTo" @"
 Verify for a Rubrik cluster if it is replication target in any SLA Domain.
 "@ "[GraphQL: verifySlaWithReplicationToCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6477,6 +20082,10 @@ Verify for a Rubrik cluster if it is replication target in any SLA Domain.
 $inputs = Invoke-RscQueryCluster -GlobalSlas -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.cdmClusterUUID = <System.String>
+"@
 Write-Message "Invoke-RscQueryCluster -GlobalSlas" @"
 Global SLA Domains protecting at least one object on the specified Rubrik cluster.
 "@ "[GraphQL: allClusterGlobalSlas]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6489,6 +20098,9 @@ Global SLA Domains protecting at least one object on the specified Rubrik cluste
 $inputs = Invoke-RscQueryCluster -RegistrationProductInfo -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+
+"@
 Write-Message "Invoke-RscQueryCluster -RegistrationProductInfo" @"
 Info about the cluster product types the user is entitled to.
 "@ "[GraphQL: clusterRegistrationProductInfo]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6501,6 +20113,21 @@ Info about the cluster product types the user is entitled to.
 $inputs = Invoke-RscQueryCluster -Vcd -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	name = <System.String>
+	# OPTIONAL
+	sortBy = <QueryVcdClusterRequestSortBy>
+	# OPTIONAL
+	sortOrder = <QueryVcdClusterRequestSortOrder>
+	# OPTIONAL
+	status = <QueryVcdClusterRequestStatus>
+	# REQUIRED
+	clusterUuid = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryCluster -Vcd" @"
 List of vCloud Director clusters.
 "@ "[GraphQL: vcdClusters]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6513,6 +20140,10 @@ List of vCloud Director clusters.
 $inputs = Invoke-RscQueryCluster -IsTotpAckNecessary -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.clusterUuid = <System.String>
+"@
 Write-Message "Invoke-RscQueryCluster -IsTotpAckNecessary" @"
 Checks whether acknowledgement of the Time-based, One-Time Password (TOTP) mandate is required for upgrading the Rubrik cluster version.
 "@ "[GraphQL: isTotpAckNecessaryForCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6525,6 +20156,12 @@ Checks whether acknowledgement of the Time-based, One-Time Password (TOTP) manda
 $inputs = Invoke-RscQueryCluster -TotpAckStatus -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.listClusterUuid = @(
+	<System.String>
+)
+"@
 Write-Message "Invoke-RscQueryCluster -TotpAckStatus" @"
 Checks whether acknowledgement of the Time-based, One-Time Password (TOTP) mandate is required for upgrading the Rubrik cluster version.
 "@ "[GraphQL: allClustersTotpAckStatus]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6538,6 +20175,58 @@ Checks whether acknowledgement of the Time-based, One-Time Password (TOTP) manda
 $inputs = Invoke-RscQueryDb2 -Instances -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <HierarchySortByField>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType>
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature>
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature>
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter>
+		)
+}
+)
+"@
 Write-Message "Invoke-RscQueryDb2 -Instances" @"
 Connection of filtered db2 instances based on specific filters.
 "@ "[GraphQL: db2Instances]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6550,6 +20239,10 @@ Connection of filtered db2 instances based on specific filters.
 $inputs = Invoke-RscQueryDb2 -Instance -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.id = <System.String>
+"@
 Write-Message "Invoke-RscQueryDb2 -Instance" @"
 Details of a db2 instance for a given fid.
 "@ "[GraphQL: db2Instance]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6562,6 +20255,10 @@ Details of a db2 instance for a given fid.
 $inputs = Invoke-RscQueryDb2 -Database -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+"@
 Write-Message "Invoke-RscQueryDb2 -Database" @"
 Details of a db2 database for a given fid.
 "@ "[GraphQL: db2Database]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6574,6 +20271,58 @@ Details of a db2 database for a given fid.
 $inputs = Invoke-RscQueryDb2 -Databases -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <HierarchySortByField>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType>
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature>
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature>
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter>
+		)
+}
+)
+"@
 Write-Message "Invoke-RscQueryDb2 -Databases" @"
 Connection of filtered db2 databases based on specific filters.
 "@ "[GraphQL: db2Databases]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6586,6 +20335,10 @@ Connection of filtered db2 databases based on specific filters.
 $inputs = Invoke-RscQueryDb2 -RecoverableRange -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.db2RecoverableRangeFid = <System.String>
+"@
 Write-Message "Invoke-RscQueryDb2 -RecoverableRange" @"
 Details of a Db2 recoverable range for a given fid.
 "@ "[GraphQL: db2RecoverableRange]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6598,6 +20351,37 @@ Details of a Db2 recoverable range for a given fid.
 $inputs = Invoke-RscQueryDb2 -RecoverableRanges -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.last = <System.Int32>
+# OPTIONAL
+$inputs.Arg.before = <System.String>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.sortBy = <Db2RecoverableRangeSortBy>
+# OPTIONAL
+$inputs.Arg.filter = @{
+	# OPTIONAL
+	clusterUuid = @(
+		<System.String>
+	)
+	# OPTIONAL
+	databaseId = @(
+		<System.String>
+	)
+	# OPTIONAL
+	fromTime = <DateTime>
+	# OPTIONAL
+	toTime = <DateTime>
+	# OPTIONAL
+	isArchived = <System.Boolean>
+}
+"@
 Write-Message "Invoke-RscQueryDb2 -RecoverableRanges" @"
 Connection of all recoverable ranges for Db2.
 "@ "[GraphQL: db2RecoverableRanges]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6610,6 +20394,10 @@ Connection of all recoverable ranges for Db2.
 $inputs = Invoke-RscQueryDb2 -LogSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.db2LogSnapshotFid = <System.String>
+"@
 Write-Message "Invoke-RscQueryDb2 -LogSnapshot" @"
 Details of a Db2 log snapshot for a given fid.
 "@ "[GraphQL: db2LogSnapshot]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6622,6 +20410,37 @@ Details of a Db2 log snapshot for a given fid.
 $inputs = Invoke-RscQueryDb2 -LogSnapshots -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.last = <System.Int32>
+# OPTIONAL
+$inputs.Arg.before = <System.String>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.sortBy = <Db2LogSnapshotSortBy>
+# OPTIONAL
+$inputs.Arg.filter = @{
+	# OPTIONAL
+	workloadId = @(
+		<System.String>
+	)
+	# OPTIONAL
+	clusterUuid = @(
+		<System.String>
+	)
+	# OPTIONAL
+	fromTime = <DateTime>
+	# OPTIONAL
+	toTime = <DateTime>
+	# OPTIONAL
+	isArchived = <System.Boolean>
+}
+"@
 Write-Message "Invoke-RscQueryDb2 -LogSnapshots" @"
 Connection of all log snapshots for Db2.
 "@ "[GraphQL: db2LogSnapshots]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6635,6 +20454,62 @@ Connection of all log snapshots for Db2.
 $inputs = Invoke-RscQueryHyperv -TopLevelDescendants -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <HierarchySortByField>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.typeFilter = @(
+	<HierarchyObjectTypeEnum>
+)
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType>
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature>
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature>
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter>
+		)
+}
+)
+"@
 Write-Message "Invoke-RscQueryHyperv -TopLevelDescendants" @"
 Paginated list of the highest-level HyperV Objects accessible by the current user.
 "@ "[GraphQL: hypervTopLevelDescendants]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6647,6 +20522,58 @@ Paginated list of the highest-level HyperV Objects accessible by the current use
 $inputs = Invoke-RscQueryHyperv -VirtualMachines -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <HierarchySortByField>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType>
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature>
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature>
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter>
+		)
+}
+)
+"@
 Write-Message "Invoke-RscQueryHyperv -VirtualMachines" @"
 Paginated list of HyperV Virtual Machines.
 "@ "[GraphQL: hypervVirtualMachines]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6659,6 +20586,10 @@ Paginated list of HyperV Virtual Machines.
 $inputs = Invoke-RscQueryHyperv -Scvmm -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+"@
 Write-Message "Invoke-RscQueryHyperv -Scvmm" @"
 Details of the given Hyper-V SCVMM.
 "@ "[GraphQL: hypervScvmm]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6671,6 +20602,10 @@ Details of the given Hyper-V SCVMM.
 $inputs = Invoke-RscQueryHyperv -Cluster -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+"@
 Write-Message "Invoke-RscQueryHyperv -Cluster" @"
 Details of the given Hyper-V Cluster.
 "@ "[GraphQL: hypervCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6683,6 +20618,10 @@ Details of the given Hyper-V Cluster.
 $inputs = Invoke-RscQueryHyperv -Server -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+"@
 Write-Message "Invoke-RscQueryHyperv -Server" @"
 Details of the given Hyper-V Server.
 "@ "[GraphQL: hypervServer]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6695,6 +20634,10 @@ Details of the given Hyper-V Server.
 $inputs = Invoke-RscQueryHyperv -VirtualMachine -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+"@
 Write-Message "Invoke-RscQueryHyperv -VirtualMachine" @"
 Details of the given Hyper-V Virtual Machine.
 "@ "[GraphQL: hypervVirtualMachine]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6707,6 +20650,50 @@ Details of the given Hyper-V Virtual Machine.
 $inputs = Invoke-RscQueryHyperv -UniqueServersCount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType>
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature>
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature>
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter>
+		)
+}
+)
+"@
 Write-Message "Invoke-RscQueryHyperv -UniqueServersCount" @"
 Count of unique HyperV Servers.
 "@ "[GraphQL: uniqueHypervServersCount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6719,6 +20706,58 @@ Count of unique HyperV Servers.
 $inputs = Invoke-RscQueryHyperv -Scvmms -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <HierarchySortByField>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType>
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature>
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature>
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter>
+		)
+}
+)
+"@
 Write-Message "Invoke-RscQueryHyperv -Scvmms" @"
 Paginated list of HyperV SCVMMs.
 "@ "[GraphQL: hypervScvmms]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6731,6 +20770,29 @@ Paginated list of HyperV SCVMMs.
 $inputs = Invoke-RscQueryHyperv -Servers -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	effectiveSlaDomainId = <System.String>
+	# OPTIONAL
+	limit = <System.Int32>
+	# OPTIONAL
+	name = <System.String>
+	# OPTIONAL
+	offset = <System.Int32>
+	# OPTIONAL
+	primaryClusterId = <System.String>
+	# OPTIONAL
+	slaAssignment = <InternalQueryHypervHostRequestSlaAssignment>
+	# OPTIONAL
+	sortBy = <InternalQueryHypervHostRequestSortBy>
+	# OPTIONAL
+	sortOrder = <InternalQueryHypervHostRequestSortOrder>
+	# REQUIRED
+	clusterUuid = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryHyperv -Servers" @"
 Get summary of all the Hyper-V hosts
 
@@ -6746,6 +20808,30 @@ Get summary of all the Hyper-V hosts.
 $inputs = Invoke-RscQueryHyperv -Mounts -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.filters = @(
+	@{
+		# OPTIONAL
+		field = <HypervLiveMountFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+}
+)
+# OPTIONAL
+$inputs.Arg.sortBy = @{
+	# OPTIONAL
+	field = <HypervLiveMountSortByField>
+	# OPTIONAL
+	sortOrder = <SortOrder>
+}
+"@
 Write-Message "Invoke-RscQueryHyperv -Mounts" @"
 HyperV Live Mount Connection.
 "@ "[GraphQL: hypervMounts]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6758,6 +20844,13 @@ HyperV Live Mount Connection.
 $inputs = Invoke-RscQueryHyperv -VmDetail -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryHyperv -VmDetail" @"
 HyperV Virtual Machine detail from CDM.
 "@ "[GraphQL: hypervVmDetail]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6770,6 +20863,15 @@ HyperV Virtual Machine detail from CDM.
 $inputs = Invoke-RscQueryHyperv -HostAsyncRequestStatus -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryHyperv -HostAsyncRequestStatus" @"
 Get Hyper-V host async request
 
@@ -6785,6 +20887,15 @@ Get details about a Hyper-V host related async request.
 $inputs = Invoke-RscQueryHyperv -ScvmmAsyncRequestStatus -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryHyperv -ScvmmAsyncRequestStatus" @"
 Get Hyper-V SCVMM async request
 
@@ -6800,6 +20911,15 @@ Get details about a Hyper-V SCVMM related async request.
 $inputs = Invoke-RscQueryHyperv -VirtualMachineAsyncRequestStatus -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryHyperv -VirtualMachineAsyncRequestStatus" @"
 Get VM async request details
 
@@ -6816,6 +20936,20 @@ Get details about a Hyper-V vm related async request.
 $inputs = Invoke-RscQueryLdap -IntegrationList -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.last = <System.Int32>
+# OPTIONAL
+$inputs.Arg.before = <System.String>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.sortBy = <LdapIntegrationFieldEnum>
+"@
 Write-Message "Invoke-RscQueryLdap -IntegrationList" @"
 Browse LDAP integrations.
 "@ "[GraphQL: ldapIntegrationConnection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6828,6 +20962,24 @@ Browse LDAP integrations.
 $inputs = Invoke-RscQueryLdap -PrincipalList -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.last = <System.Int32>
+# OPTIONAL
+$inputs.Arg.before = <System.String>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.sortBy = <LdapPrincipalFieldEnum>
+# REQUIRED
+$inputs.Arg.id = <System.String>
+# REQUIRED
+$inputs.Arg.searchText = <System.String>
+"@
 Write-Message "Invoke-RscQueryLdap -PrincipalList" @"
 Search LDAP Principals.
 "@ "[GraphQL: ldapPrincipalConnection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6840,6 +20992,26 @@ Search LDAP Principals.
 $inputs = Invoke-RscQueryLdap -AuthorizedPrincipalList -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.last = <System.Int32>
+# OPTIONAL
+$inputs.Arg.before = <System.String>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.sortBy = <LdapAuthorizedPrincipalFieldEnum>
+# REQUIRED
+$inputs.Arg.searchText = <System.String>
+# OPTIONAL
+$inputs.Arg.roleIds = @(
+	<System.String>
+)
+"@
 Write-Message "Invoke-RscQueryLdap -AuthorizedPrincipalList" @"
 Browse LDAP-authorized principals.
 "@ "[GraphQL: ldapAuthorizedPrincipalConnection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6853,6 +21025,58 @@ Browse LDAP-authorized principals.
 $inputs = Invoke-RscQueryMongo -Sources -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <HierarchySortByField>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType>
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature>
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature>
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter>
+		)
+}
+)
+"@
 Write-Message "Invoke-RscQueryMongo -Sources" @"
 Paginated list of MongoDB sources.
 "@ "[GraphQL: mongoSources]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6865,6 +21089,58 @@ Paginated list of MongoDB sources.
 $inputs = Invoke-RscQueryMongo -Databases -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <HierarchySortByField>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType>
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature>
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature>
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter>
+		)
+}
+)
+"@
 Write-Message "Invoke-RscQueryMongo -Databases" @"
 Paginated list of MongoDB databases.
 "@ "[GraphQL: mongoDatabases]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6877,6 +21153,58 @@ Paginated list of MongoDB databases.
 $inputs = Invoke-RscQueryMongo -Collections -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <HierarchySortByField>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType>
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature>
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature>
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter>
+		)
+}
+)
+"@
 Write-Message "Invoke-RscQueryMongo -Collections" @"
 Paginated list of MongoDB collections.
 "@ "[GraphQL: mongoCollections]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6889,6 +21217,10 @@ Paginated list of MongoDB collections.
 $inputs = Invoke-RscQueryMongo -Source -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+"@
 Write-Message "Invoke-RscQueryMongo -Source" @"
 Provides details for the MongoDB source cluster identified by the fid.
 "@ "[GraphQL: mongoSource]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6901,6 +21233,10 @@ Provides details for the MongoDB source cluster identified by the fid.
 $inputs = Invoke-RscQueryMongo -Database -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+"@
 Write-Message "Invoke-RscQueryMongo -Database" @"
 Provides details for a MongoDB database identified by the fid.
 "@ "[GraphQL: mongoDatabase]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6913,6 +21249,10 @@ Provides details for a MongoDB database identified by the fid.
 $inputs = Invoke-RscQueryMongo -Collection -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+"@
 Write-Message "Invoke-RscQueryMongo -Collection" @"
 Provides details for a MongoDB collection identified by the fid.
 "@ "[GraphQL: mongoCollection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6925,6 +21265,21 @@ Provides details for a MongoDB collection identified by the fid.
 $inputs = Invoke-RscQueryMongo -RecoverableRanges -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	source = <System.String>
+	# OPTIONAL
+	databases = @(
+		<System.String>
+	)
+	# OPTIONAL
+	collections = @(
+		<System.String>
+	)
+}
+"@
 Write-Message "Invoke-RscQueryMongo -RecoverableRanges" @"
 Provides the point in time range for MongoDB object recovery.
 "@ "[GraphQL: mongoRecoverableRanges]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6937,6 +21292,21 @@ Provides the point in time range for MongoDB object recovery.
 $inputs = Invoke-RscQueryMongo -BulkRecoverableRanges -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	source = <System.String>
+	# OPTIONAL
+	databases = @(
+		<System.String>
+	)
+	# OPTIONAL
+	collections = @(
+		<System.String>
+	)
+}
+"@
 Write-Message "Invoke-RscQueryMongo -BulkRecoverableRanges" @"
 Provides the bulk recoverable range for MongoDB object recovery, including data and log snapshots.
 "@ "[GraphQL: mongoBulkRecoverableRanges]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6949,6 +21319,58 @@ Provides the bulk recoverable range for MongoDB object recovery, including data 
 $inputs = Invoke-RscQueryMongo -DbSources -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <HierarchySortByField>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType>
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature>
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature>
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter>
+		)
+}
+)
+"@
 Write-Message "Invoke-RscQueryMongo -DbSources" @"
 Paginated list of MongoDB sources on NoSQL cluster.
 "@ "[GraphQL: mongodbSources]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6961,6 +21383,58 @@ Paginated list of MongoDB sources on NoSQL cluster.
 $inputs = Invoke-RscQueryMongo -DbDatabases -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <HierarchySortByField>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType>
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature>
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature>
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter>
+		)
+}
+)
+"@
 Write-Message "Invoke-RscQueryMongo -DbDatabases" @"
 Paginated list of MongoDB databases on NoSQL cluster.
 "@ "[GraphQL: mongodbDatabases]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6973,6 +21447,58 @@ Paginated list of MongoDB databases on NoSQL cluster.
 $inputs = Invoke-RscQueryMongo -DbCollections -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <HierarchySortByField>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType>
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature>
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature>
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter>
+		)
+}
+)
+"@
 Write-Message "Invoke-RscQueryMongo -DbCollections" @"
 Paginated list of MongoDB collections on NoSQL cluster.
 "@ "[GraphQL: mongodbCollections]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6985,6 +21511,10 @@ Paginated list of MongoDB collections on NoSQL cluster.
 $inputs = Invoke-RscQueryMongo -DbSource -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+"@
 Write-Message "Invoke-RscQueryMongo -DbSource" @"
 MongoDB source cluster identified by FID on NoSQL cluster. 
 For MongoDB, the term ""source"" is usually used for either a replica set or a sharded cluster. 
@@ -6999,6 +21529,10 @@ For more info on MongoDB cluster refer to : https://docs.mongodb.com/manual/intr
 $inputs = Invoke-RscQueryMongo -DbDatabase -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+"@
 Write-Message "Invoke-RscQueryMongo -DbDatabase" @"
 MongoDB database identified by FID on NoSQL cluster. 
 MongoDB stores data records as documents which are gathered together in collections. 
@@ -7014,6 +21548,10 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
 $inputs = Invoke-RscQueryMongo -DbCollection -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+"@
 Write-Message "Invoke-RscQueryMongo -DbCollection" @"
 MongoDB collection identified by FID on NoSQL cluster. 
 MongoDB stores data records as documents which are gathered together in collections. 
@@ -7028,6 +21566,24 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
 $inputs = Invoke-RscQueryMongo -DbCollectionRecoverableRange -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	recoveryRangeRequestData = @{
+		# OPTIONAL
+		sourceType = <MosaicRecoverableRangeRequestSourceType>
+		# REQUIRED
+		databaseName = <System.String>
+		# REQUIRED
+		sourceName = <System.String>
+		# REQUIRED
+		tableName = <System.String>
+	}
+}
+"@
 Write-Message "Invoke-RscQueryMongo -DbCollectionRecoverableRange" @"
 Recoverable Range of a MongoDB collection on NoSQL cluster.
 "@ "[GraphQL: mongodbCollectionRecoverableRange]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7040,6 +21596,34 @@ Recoverable Range of a MongoDB collection on NoSQL cluster.
 $inputs = Invoke-RscQueryMongo -DbBulkRecoverableRange -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	recoveryRangeData = @{
+		# OPTIONAL
+		sourceType = <MosaicBulkRecoverableRangeRequestSourceType>
+		# REQUIRED
+		managementObjects = @{
+			# OPTIONAL
+			databases = @(
+				@{
+					# OPTIONAL
+					dbName = <System.String>
+					# OPTIONAL
+					tables = @(
+						<System.String>
+					)
+				}
+			)
+		}
+		# REQUIRED
+		sourceName = <System.String>
+	}
+}
+"@
 Write-Message "Invoke-RscQueryMongo -DbBulkRecoverableRange" @"
 Recoverable range for multiple Management Objects on NoSQL cluster.
 "@ "[GraphQL: mongodbBulkRecoverableRange]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7053,6 +21637,62 @@ Recoverable range for multiple Management Objects on NoSQL cluster.
 $inputs = Invoke-RscQueryMssql -TopLevelDescendants -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <HierarchySortByField>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.typeFilter = @(
+	<HierarchyObjectTypeEnum>
+)
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType>
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature>
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature>
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter>
+		)
+}
+)
+"@
 Write-Message "Invoke-RscQueryMssql -TopLevelDescendants" @"
 Paginated list of the highest-level Microsoft SQL Objects accessible by the current user.
 "@ "[GraphQL: mssqlTopLevelDescendants]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7065,6 +21705,58 @@ Paginated list of the highest-level Microsoft SQL Objects accessible by the curr
 $inputs = Invoke-RscQueryMssql -Databases -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <HierarchySortByField>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType>
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature>
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature>
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter>
+		)
+}
+)
+"@
 Write-Message "Invoke-RscQueryMssql -Databases" @"
 Paginated list of Microsoft SQL Databases.
 "@ "[GraphQL: mssqlDatabases]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7077,6 +21769,10 @@ Paginated list of Microsoft SQL Databases.
 $inputs = Invoke-RscQueryMssql -AvailabilityGroup -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+"@
 Write-Message "Invoke-RscQueryMssql -AvailabilityGroup" @"
 A Microsoft SQL Availability Group.
 "@ "[GraphQL: mssqlAvailabilityGroup]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7089,6 +21785,10 @@ A Microsoft SQL Availability Group.
 $inputs = Invoke-RscQueryMssql -Instance -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+"@
 Write-Message "Invoke-RscQueryMssql -Instance" @"
 A Microsoft SQL Instance.
 "@ "[GraphQL: mssqlInstance]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7101,6 +21801,10 @@ A Microsoft SQL Instance.
 $inputs = Invoke-RscQueryMssql -Database -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+"@
 Write-Message "Invoke-RscQueryMssql -Database" @"
 A Microsoft SQL Database.
 "@ "[GraphQL: mssqlDatabase]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7113,6 +21817,17 @@ A Microsoft SQL Database.
 $inputs = Invoke-RscQueryMssql -RecoverableRanges -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	afterTime = <DateTime>
+	# OPTIONAL
+	beforeTime = <DateTime>
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryMssql -RecoverableRanges" @"
 List of recoverable ranges for a Microsoft SQL Database.
 "@ "[GraphQL: mssqlRecoverableRanges]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7125,6 +21840,17 @@ List of recoverable ranges for a Microsoft SQL Database.
 $inputs = Invoke-RscQueryMssql -DatabaseMissedSnapshots -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	afterTime = <DateTime>
+	# OPTIONAL
+	beforeTime = <DateTime>
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryMssql -DatabaseMissedSnapshots" @"
 List of missed snapshots for a Microsoft SQL Database.
 "@ "[GraphQL: mssqlDatabaseMissedSnapshots]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7137,6 +21863,17 @@ List of missed snapshots for a Microsoft SQL Database.
 $inputs = Invoke-RscQueryMssql -CompatibleInstances -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	recoveryTime = <DateTime>
+	# REQUIRED
+	recoveryType = <V1GetCompatibleMssqlInstancesV1RequestRecoveryType>
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryMssql -CompatibleInstances" @"
 Returns all compatible instances for export for the specified recovery time.
 "@ "[GraphQL: mssqlCompatibleInstances]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7149,6 +21886,17 @@ Returns all compatible instances for export for the specified recovery time.
 $inputs = Invoke-RscQueryMssql -DatabaseMissedRecoverableRanges -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	afterTime = <DateTime>
+	# OPTIONAL
+	beforeTime = <DateTime>
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryMssql -DatabaseMissedRecoverableRanges" @"
 List of missed recoverable ranges for a Microsoft SQL Database.
 "@ "[GraphQL: mssqlDatabaseMissedRecoverableRanges]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7161,6 +21909,19 @@ List of missed recoverable ranges for a Microsoft SQL Database.
 $inputs = Invoke-RscQueryMssql -AllDatabaseRestoreFiles -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	lsn = <System.String>
+	# OPTIONAL
+	recoveryForkGuid = <System.String>
+	# OPTIONAL
+	time = <DateTime>
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryMssql -AllDatabaseRestoreFiles" @"
 Provides a list of database files to be restored for the specified restore or export operation.
 "@ "[GraphQL: allMssqlDatabaseRestoreFiles]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7173,6 +21934,30 @@ Provides a list of database files to be restored for the specified restore or ex
 $inputs = Invoke-RscQueryMssql -DatabaseLiveMounts -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = @{
+	# OPTIONAL
+	field = <MssqlDatabaseLiveMountSortByField>
+	# OPTIONAL
+	sortOrder = <SortOrder>
+}
+# OPTIONAL
+$inputs.Arg.filters = @(
+	@{
+		# OPTIONAL
+		field = <MssqlDatabaseLiveMountFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+}
+)
+"@
 Write-Message "Invoke-RscQueryMssql -DatabaseLiveMounts" @"
 Paginated list of Microsoft SQL Database live mounts.
 "@ "[GraphQL: mssqlDatabaseLiveMounts]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7185,6 +21970,13 @@ Paginated list of Microsoft SQL Database live mounts.
 $inputs = Invoke-RscQueryMssql -DefaultProperties -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryMssql -DefaultProperties" @"
 The current default properties for Microsoft SQL databases.
 "@ "[GraphQL: mssqlDefaultProperties]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7197,6 +21989,19 @@ The current default properties for Microsoft SQL databases.
 $inputs = Invoke-RscQueryMssql -DatabaseRestoreEstimate -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	lsn = <System.String>
+	# OPTIONAL
+	recoveryForkGuid = <System.String>
+	# OPTIONAL
+	time = <DateTime>
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryMssql -DatabaseRestoreEstimate" @"
 Returns a size estimate for a restore, export, or mount.
 "@ "[GraphQL: mssqlDatabaseRestoreEstimate]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7209,6 +22014,30 @@ Returns a size estimate for a restore, export, or mount.
 $inputs = Invoke-RscQueryMssql -CdmLogShippingTargets -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = @{
+	# OPTIONAL
+	field = <MssqlLogShippingTargetSortByField>
+	# OPTIONAL
+	sortOrder = <SortOrder>
+}
+# OPTIONAL
+$inputs.Arg.filters = @(
+	@{
+		# OPTIONAL
+		field = <MssqlLogShippingTargetFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+}
+)
+"@
 Write-Message "Invoke-RscQueryMssql -CdmLogShippingTargets" @"
 Paginated list of Microsoft SQL log shipping target.
 "@ "[GraphQL: cdmMssqlLogShippingTargets]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7221,6 +22050,10 @@ Paginated list of Microsoft SQL log shipping target.
 $inputs = Invoke-RscQueryMssql -CdmLogShippingTarget -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+"@
 Write-Message "Invoke-RscQueryMssql -CdmLogShippingTarget" @"
 A single Microsoft SQL log shipping target.
 "@ "[GraphQL: cdmMssqlLogShippingTarget]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7233,6 +22066,31 @@ A single Microsoft SQL log shipping target.
 $inputs = Invoke-RscQueryMssql -LogShippingTargets -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	limit = <System.Int32>
+	# OPTIONAL
+	location = <System.String>
+	# OPTIONAL
+	offset = <System.Int32>
+	# OPTIONAL
+	primaryDatabaseId = <System.String>
+	# OPTIONAL
+	primaryDatabaseName = <System.String>
+	# OPTIONAL
+	secondaryDatabaseName = <System.String>
+	# OPTIONAL
+	sortBy = <V2QueryLogShippingConfigurationsV2RequestSortBy>
+	# OPTIONAL
+	sortOrder = <V2QueryLogShippingConfigurationsV2RequestSortOrder>
+	# OPTIONAL
+	status = <V2QueryLogShippingConfigurationsV2RequestStatus>
+	# REQUIRED
+	clusterUuid = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryMssql -LogShippingTargets" @"
 List of filtered Microsoft SQL log shipping targets.
 "@ "[GraphQL: mssqlLogShippingTargets]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7246,6 +22104,62 @@ List of filtered Microsoft SQL log shipping targets.
 $inputs = Invoke-RscQueryNutanix -TopLevelDescendants -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <HierarchySortByField>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.typeFilter = @(
+	<HierarchyObjectTypeEnum>
+)
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType>
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature>
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature>
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter>
+		)
+}
+)
+"@
 Write-Message "Invoke-RscQueryNutanix -TopLevelDescendants" @"
 Paginated list of the highest-level Nutanix Objects accessible by the current user.
 "@ "[GraphQL: nutanixTopLevelDescendants]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7258,6 +22172,10 @@ Paginated list of the highest-level Nutanix Objects accessible by the current us
 $inputs = Invoke-RscQueryNutanix -Cluster -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+"@
 Write-Message "Invoke-RscQueryNutanix -Cluster" @"
 A Nutanix Cluster.
 "@ "[GraphQL: nutanixCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7270,6 +22188,58 @@ A Nutanix Cluster.
 $inputs = Invoke-RscQueryNutanix -Clusters -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <HierarchySortByField>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType>
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature>
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature>
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter>
+		)
+}
+)
+"@
 Write-Message "Invoke-RscQueryNutanix -Clusters" @"
 Paginated list of Nutanix Clusters.
 "@ "[GraphQL: nutanixClusters]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7282,6 +22252,58 @@ Paginated list of Nutanix Clusters.
 $inputs = Invoke-RscQueryNutanix -PrismCentrals -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <HierarchySortByField>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType>
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature>
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature>
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter>
+		)
+}
+)
+"@
 Write-Message "Invoke-RscQueryNutanix -PrismCentrals" @"
 Paginated list of Nutanix Prism Central objects.
 "@ "[GraphQL: nutanixPrismCentrals]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7294,6 +22316,10 @@ Paginated list of Nutanix Prism Central objects.
 $inputs = Invoke-RscQueryNutanix -PrismCentral -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+"@
 Write-Message "Invoke-RscQueryNutanix -PrismCentral" @"
 Details of the given Prism Central.
 "@ "[GraphQL: nutanixPrismCentral]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7306,6 +22332,10 @@ Details of the given Prism Central.
 $inputs = Invoke-RscQueryNutanix -Category -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+"@
 Write-Message "Invoke-RscQueryNutanix -Category" @"
 Details of the given category.
 "@ "[GraphQL: nutanixCategory]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7318,6 +22348,10 @@ Details of the given category.
 $inputs = Invoke-RscQueryNutanix -CategoryValue -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+"@
 Write-Message "Invoke-RscQueryNutanix -CategoryValue" @"
 Details of the given category value.
 "@ "[GraphQL: nutanixCategoryValue]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7330,6 +22364,10 @@ Details of the given category value.
 $inputs = Invoke-RscQueryNutanix -Vm -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+"@
 Write-Message "Invoke-RscQueryNutanix -Vm" @"
 A Nutanix Virtual Machine.
 "@ "[GraphQL: nutanixVm]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7342,6 +22380,58 @@ A Nutanix Virtual Machine.
 $inputs = Invoke-RscQueryNutanix -Vms -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <HierarchySortByField>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType>
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature>
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature>
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter>
+		)
+}
+)
+"@
 Write-Message "Invoke-RscQueryNutanix -Vms" @"
 Paginated list of Nutanix Virtual Machines.
 "@ "[GraphQL: nutanixVms]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7354,6 +22444,30 @@ Paginated list of Nutanix Virtual Machines.
 $inputs = Invoke-RscQueryNutanix -Mounts -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.filters = @(
+	@{
+		# OPTIONAL
+		field = <NutanixLiveMountFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+}
+)
+# OPTIONAL
+$inputs.Arg.sortBy = @{
+	# OPTIONAL
+	field = <NutanixLiveMountSortByField>
+	# OPTIONAL
+	sortOrder = <SortOrder>
+}
+"@
 Write-Message "Invoke-RscQueryNutanix -Mounts" @"
 Nutanix Live Mount Connection.
 "@ "[GraphQL: nutanixMounts]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7366,6 +22480,13 @@ Nutanix Live Mount Connection.
 $inputs = Invoke-RscQueryNutanix -ClusterContainers -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryNutanix -ClusterContainers" @"
 Get list of containers on this cluster
 
@@ -7381,6 +22502,13 @@ Query the nutanix cluster to get the list of containers, used for export purpose
 $inputs = Invoke-RscQueryNutanix -ClusterNetworks -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryNutanix -ClusterNetworks" @"
 Get list of networks on this cluster
 
@@ -7396,6 +22524,15 @@ Retrieves the list of networks by querying the Nutanix cluster. The list of netw
 $inputs = Invoke-RscQueryNutanix -ClusterAsyncRequestStatus -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryNutanix -ClusterAsyncRequestStatus" @"
 Get Nutanix cluster async request
 
@@ -7411,6 +22548,15 @@ Get details about a Nutanix cluster-related async request.
 $inputs = Invoke-RscQueryNutanix -VmAsyncRequestStatus -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryNutanix -VmAsyncRequestStatus" @"
 v5.0-v8.0: Get VM async request details
 v8.1+: Get virtual machine async request details
@@ -7428,6 +22574,19 @@ v8.1+: Get details about a Nutanix virtual machine-related async request.
 $inputs = Invoke-RscQueryNutanix -SearchVm -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	cursor = <System.String>
+	# OPTIONAL
+	limit = <System.Int32>
+	# REQUIRED
+	id = <System.String>
+	# REQUIRED
+	path = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryNutanix -SearchVm" @"
 v5.0-v8.0: Search for file in Nutanix VM
 v8.1+: Search for file in Nutanix virtual machine
@@ -7444,6 +22603,13 @@ Search for a file within the Nutanix Virtual Machine. Search via full path prefi
 $inputs = Invoke-RscQueryNutanix -VmMissedSnapshots -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryNutanix -VmMissedSnapshots" @"
 v5.0-v8.0: Get details about missed snapshots for a VM
 v8.1+: Get details about missed snapshots for a virtual machine
@@ -7461,6 +22627,19 @@ v8.1+: Retrieve the time of the day when the snapshots were missed specific to a
 $inputs = Invoke-RscQueryNutanix -BrowseSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	limit = <System.Int32>
+	# OPTIONAL
+	offset = <System.Int32>
+	# REQUIRED
+	id = <System.String>
+	# REQUIRED
+	path = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryNutanix -BrowseSnapshot" @"
 v5.0-v8.0: Lists all files in VM snapshot
 v8.1+: Lists all files in virtual machine snapshot
@@ -7477,6 +22656,13 @@ Lists all files and directories in a given path.
 $inputs = Invoke-RscQueryNutanix -SnapshotDetail -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryNutanix -SnapshotDetail" @"
 Supported in v5.0+. Get Nutanix virtual machine snapshot details.
  Retrieve detailed information about a snapshot.
@@ -7491,6 +22677,10 @@ Supported in v5.0+. Get Nutanix virtual machine snapshot details.
 $inputs = Invoke-RscQueryO365 -Org -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+"@
 Write-Message "Invoke-RscQueryO365 -Org" @"
 Details of the O365Org.
 "@ "[GraphQL: o365Org]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7503,6 +22693,12 @@ Details of the O365Org.
 $inputs = Invoke-RscQueryO365 -OrgAtSnappableLevel -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+# REQUIRED
+$inputs.Arg.snappableType = <SnappableType>
+"@
 Write-Message "Invoke-RscQueryO365 -OrgAtSnappableLevel" @"
 Details of the O365Org at snappable level, given the snappable type.
 "@ "[GraphQL: o365OrgAtSnappableLevel]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7515,6 +22711,12 @@ Details of the O365Org at snappable level, given the snappable type.
 $inputs = Invoke-RscQueryO365 -AllAdGroups -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.orgId = <System.String>
+# REQUIRED
+$inputs.Arg.adGroupSearchFilter = <System.String>
+"@
 Write-Message "Invoke-RscQueryO365 -AllAdGroups" @"
 All AD Groups belonging to the O365 organization.
 "@ "[GraphQL: allO365AdGroups]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7527,6 +22729,10 @@ All AD Groups belonging to the O365 organization.
 $inputs = Invoke-RscQueryO365 -User -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+"@
 Write-Message "Invoke-RscQueryO365 -User" @"
 Details for the O365 user corresponding to the ID.
 "@ "[GraphQL: o365User]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7539,6 +22745,10 @@ Details for the O365 user corresponding to the ID.
 $inputs = Invoke-RscQueryO365 -Mailbox -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.snappableFid = <System.String>
+"@
 Write-Message "Invoke-RscQueryO365 -Mailbox" @"
 Details for the Exchange mailbox corresponding to the snappable ID.
 "@ "[GraphQL: o365Mailbox]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7551,6 +22761,62 @@ Details for the Exchange mailbox corresponding to the snappable ID.
 $inputs = Invoke-RscQueryO365 -Groups -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <HierarchySortByField>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType>
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature>
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature>
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter>
+		)
+}
+)
+# REQUIRED
+$inputs.Arg.o365OrgId = <System.String>
+# REQUIRED
+$inputs.Arg.snappableType = <SnappableType>
+"@
 Write-Message "Invoke-RscQueryO365 -Groups" @"
 List of O365 Groups in the O365Org.
 "@ "[GraphQL: o365Groups]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7563,6 +22829,60 @@ List of O365 Groups in the O365Org.
 $inputs = Invoke-RscQueryO365 -Mailboxes -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <HierarchySortByField>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType>
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature>
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature>
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter>
+		)
+}
+)
+# REQUIRED
+$inputs.Arg.o365OrgId = <System.String>
+"@
 Write-Message "Invoke-RscQueryO365 -Mailboxes" @"
 List of Mailboxes in the O365Org.
 "@ "[GraphQL: o365Mailboxes]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7575,6 +22895,10 @@ List of Mailboxes in the O365Org.
 $inputs = Invoke-RscQueryO365 -Onedrive -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.snappableFid = <System.String>
+"@
 Write-Message "Invoke-RscQueryO365 -Onedrive" @"
 Details for the OneDrive corresponding to the snappable ID.
 "@ "[GraphQL: o365Onedrive]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7587,6 +22911,60 @@ Details for the OneDrive corresponding to the snappable ID.
 $inputs = Invoke-RscQueryO365 -Onedrives -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <HierarchySortByField>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType>
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature>
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature>
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter>
+		)
+}
+)
+# REQUIRED
+$inputs.Arg.o365OrgId = <System.String>
+"@
 Write-Message "Invoke-RscQueryO365 -Onedrives" @"
 List of Onedrives in the O365Org.
 "@ "[GraphQL: o365Onedrives]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7599,6 +22977,10 @@ List of Onedrives in the O365Org.
 $inputs = Invoke-RscQueryO365 -Site -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.snappableFid = <System.String>
+"@
 Write-Message "Invoke-RscQueryO365 -Site" @"
 Details for the SharePoint site corresponding to the snappable ID.
 "@ "[GraphQL: o365Site]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7611,6 +22993,62 @@ Details for the SharePoint site corresponding to the snappable ID.
 $inputs = Invoke-RscQueryO365 -Sites -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <HierarchySortByField>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType>
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature>
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature>
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter>
+		)
+}
+)
+# REQUIRED
+$inputs.Arg.o365OrgId = <System.String>
+# OPTIONAL
+$inputs.Arg.excludeChildSites = <System.Boolean>
+"@
 Write-Message "Invoke-RscQueryO365 -Sites" @"
 List of sites in the O365Org.
 "@ "[GraphQL: o365Sites]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7623,6 +23061,10 @@ List of sites in the O365Org.
 $inputs = Invoke-RscQueryO365 -SharepointDrive -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.snappableFid = <System.String>
+"@
 Write-Message "Invoke-RscQueryO365 -SharepointDrive" @"
 Details for the SharePoint drive corresponding to the snappable ID.
 "@ "[GraphQL: o365SharepointDrive]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7635,6 +23077,60 @@ Details for the SharePoint drive corresponding to the snappable ID.
 $inputs = Invoke-RscQueryO365 -SharepointDrives -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <HierarchySortByField>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType>
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature>
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature>
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter>
+		)
+}
+)
+# REQUIRED
+$inputs.Arg.o365OrgId = <System.String>
+"@
 Write-Message "Invoke-RscQueryO365 -SharepointDrives" @"
 List of sharepoint drives (document libraries) in the O365Org.
 "@ "[GraphQL: o365SharepointDrives]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7647,6 +23143,10 @@ List of sharepoint drives (document libraries) in the O365Org.
 $inputs = Invoke-RscQueryO365 -SharepointList -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.snappableFid = <System.String>
+"@
 Write-Message "Invoke-RscQueryO365 -SharepointList" @"
 Details for the SharePoint list corresponding to the snappable ID.
 "@ "[GraphQL: o365SharepointList]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7659,6 +23159,60 @@ Details for the SharePoint list corresponding to the snappable ID.
 $inputs = Invoke-RscQueryO365 -SharepointLists -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <HierarchySortByField>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType>
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature>
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature>
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter>
+		)
+}
+)
+# REQUIRED
+$inputs.Arg.o365OrgId = <System.String>
+"@
 Write-Message "Invoke-RscQueryO365 -SharepointLists" @"
 Paginated list of sharepoint lists in the O365Org.
 "@ "[GraphQL: o365SharepointLists]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7671,6 +23225,10 @@ Paginated list of sharepoint lists in the O365Org.
 $inputs = Invoke-RscQueryO365 -SharepointSite -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.siteFid = <System.String>
+"@
 Write-Message "Invoke-RscQueryO365 -SharepointSite" @"
 Details for the SharePoint site corresponding to the site ID.
 "@ "[GraphQL: o365SharepointSite]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7683,6 +23241,60 @@ Details for the SharePoint site corresponding to the site ID.
 $inputs = Invoke-RscQueryO365 -SharepointSites -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <HierarchySortByField>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType>
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature>
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature>
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter>
+		)
+}
+)
+# REQUIRED
+$inputs.Arg.o365OrgId = <System.String>
+"@
 Write-Message "Invoke-RscQueryO365 -SharepointSites" @"
 Paginated list of sharepoint sites in the O365Org.
 "@ "[GraphQL: o365SharepointSites]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7695,6 +23307,10 @@ Paginated list of sharepoint sites in the O365Org.
 $inputs = Invoke-RscQueryO365 -Team -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.snappableFid = <System.String>
+"@
 Write-Message "Invoke-RscQueryO365 -Team" @"
 Details for the team corresponding to the snappable ID.
 "@ "[GraphQL: o365Team]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7707,6 +23323,60 @@ Details for the team corresponding to the snappable ID.
 $inputs = Invoke-RscQueryO365 -Teams -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <HierarchySortByField>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType>
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature>
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature>
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter>
+		)
+}
+)
+# REQUIRED
+$inputs.Arg.o365OrgId = <System.String>
+"@
 Write-Message "Invoke-RscQueryO365 -Teams" @"
 List of O365 Teams in the O365Org.
 "@ "[GraphQL: o365Teams]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7719,6 +23389,20 @@ List of O365 Teams in the O365Org.
 $inputs = Invoke-RscQueryO365 -TeamChannels -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# REQUIRED
+$inputs.Arg.snappableFid = <System.String>
+# REQUIRED
+$inputs.Arg.excludeArchived = <System.Boolean>
+# REQUIRED
+$inputs.Arg.channelMembershipTypeFilter = <ChannelMembershipType>
+# OPTIONAL
+$inputs.Arg.nameFilter = <System.String>
+"@
 Write-Message "Invoke-RscQueryO365 -TeamChannels" @"
 List of Channels for the O365Team.
 "@ "[GraphQL: o365TeamChannels]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7731,6 +23415,14 @@ List of Channels for the O365Team.
 $inputs = Invoke-RscQueryO365 -TeamConversationsFolderID -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.snappableFid = <System.String>
+# REQUIRED
+$inputs.Arg.snapshotFid = <System.String>
+# REQUIRED
+$inputs.Arg.o365OrgId = <System.String>
+"@
 Write-Message "Invoke-RscQueryO365 -TeamConversationsFolderID" @"
 ID for the conversations folder in the Team's Group Mailbox.
 "@ "[GraphQL: o365TeamConversationsFolderID]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7743,6 +23435,18 @@ ID for the conversations folder in the Team's Group Mailbox.
 $inputs = Invoke-RscQueryO365 -TeamPostedBy -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# REQUIRED
+$inputs.Arg.snappableFid = <System.String>
+# REQUIRED
+$inputs.Arg.o365OrgId = <System.String>
+# OPTIONAL
+$inputs.Arg.nameFilter = <System.String>
+"@
 Write-Message "Invoke-RscQueryO365 -TeamPostedBy" @"
 Users who have posted in a team.
 "@ "[GraphQL: o365TeamPostedBy]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7755,6 +23459,10 @@ Users who have posted in a team.
 $inputs = Invoke-RscQueryO365 -Calendar -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.snappableFid = <System.String>
+"@
 Write-Message "Invoke-RscQueryO365 -Calendar" @"
 Details of the Exchange calendar pertaining to the snappable ID.
 "@ "[GraphQL: o365Calendar]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7767,6 +23475,60 @@ Details of the Exchange calendar pertaining to the snappable ID.
 $inputs = Invoke-RscQueryO365 -Orgs -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <HierarchySortByField>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType>
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature>
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature>
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter>
+		)
+}
+)
+# OPTIONAL
+$inputs.Arg.workloadHierarchy = <WorkloadLevelHierarchy>
+"@
 Write-Message "Invoke-RscQueryO365 -Orgs" @"
 All O365 orgs for the account.
 "@ "[GraphQL: o365Orgs]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7779,6 +23541,66 @@ All O365 orgs for the account.
 $inputs = Invoke-RscQueryO365 -SharepointObjectList -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <HierarchySortByField>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType>
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature>
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature>
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter>
+		)
+}
+)
+# OPTIONAL
+$inputs.Arg.objectTypeFilter = @(
+	<System.String>
+)
+# REQUIRED
+$inputs.Arg.includeEntireHierarchy = <System.Boolean>
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+"@
 Write-Message "Invoke-RscQueryO365 -SharepointObjectList" @"
 Returns the sharepoint objects after filtering on the object types and includeEntireHierarchy.
 "@ "[GraphQL: o365SharepointObjectList]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7791,6 +23613,60 @@ Returns the sharepoint objects after filtering on the object types and includeEn
 $inputs = Invoke-RscQueryO365 -SharepointObjects -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <HierarchySortByField>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType>
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature>
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature>
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter>
+		)
+}
+)
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+"@
 Write-Message "Invoke-RscQueryO365 -SharepointObjects" @"
 
 "@ "[GraphQL: o365SharepointObjects]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7803,6 +23679,60 @@ Write-Message "Invoke-RscQueryO365 -SharepointObjects" @"
 $inputs = Invoke-RscQueryO365 -UserObjects -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <HierarchySortByField>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType>
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature>
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature>
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter>
+		)
+}
+)
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+"@
 Write-Message "Invoke-RscQueryO365 -UserObjects" @"
 Name, id, object type, and mail address of user descendant object.
 "@ "[GraphQL: o365UserObjects]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7815,6 +23745,9 @@ Name, id, object type, and mail address of user descendant object.
 $inputs = Invoke-RscQueryO365 -OrgSummaries -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+
+"@
 Write-Message "Invoke-RscQueryO365 -OrgSummaries" @"
 
 "@ "[GraphQL: o365OrgSummaries]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7827,6 +23760,10 @@ Write-Message "Invoke-RscQueryO365 -OrgSummaries" @"
 $inputs = Invoke-RscQueryO365 -ObjectAncestors -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.snappableFid = <System.String>
+"@
 Write-Message "Invoke-RscQueryO365 -ObjectAncestors" @"
 
 "@ "[GraphQL: o365ObjectAncestors]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7839,6 +23776,24 @@ Write-Message "Invoke-RscQueryO365 -ObjectAncestors" @"
 $inputs = Invoke-RscQueryO365 -BrowseTeamConvChannels -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# REQUIRED
+$inputs.Arg.snappableFid = <System.String>
+# OPTIONAL
+$inputs.Arg.snapshotFidOpt = <System.String>
+# REQUIRED
+$inputs.Arg.excludeArchived = <System.Boolean>
+# REQUIRED
+$inputs.Arg.orgId = <System.String>
+# REQUIRED
+$inputs.Arg.channelMembershipTypeFilter = <ChannelMembershipType>
+# OPTIONAL
+$inputs.Arg.nameFilter = <System.String>
+"@
 Write-Message "Invoke-RscQueryO365 -BrowseTeamConvChannels" @"
 Browse channels in a Teams conversations snapshot.
 "@ "[GraphQL: browseO365TeamConvChannels]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7851,6 +23806,10 @@ Browse channels in a Teams conversations snapshot.
 $inputs = Invoke-RscQueryO365 -ServiceAccount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.orgId = <System.String>
+"@
 Write-Message "Invoke-RscQueryO365 -ServiceAccount" @"
 Gets the service account for the given org.
 "@ "[GraphQL: o365ServiceAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7863,6 +23822,9 @@ Gets the service account for the given org.
 $inputs = Invoke-RscQueryO365 -AllOrgStatuses -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+
+"@
 Write-Message "Invoke-RscQueryO365 -AllOrgStatuses" @"
 Gets the status of each org in the account.
 "@ "[GraphQL: allO365OrgStatuses]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7875,6 +23837,9 @@ Gets the status of each org in the account.
 $inputs = Invoke-RscQueryO365 -License -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+
+"@
 Write-Message "Invoke-RscQueryO365 -License" @"
 Retrieve o365 licence details.
 "@ "[GraphQL: o365License]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7887,6 +23852,30 @@ Retrieve o365 licence details.
 $inputs = Invoke-RscQueryO365 -ListApps -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# REQUIRED
+$inputs.Arg.o365AppFilters = @(
+	@{
+		# OPTIONAL
+		field = <AppFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+}
+)
+# OPTIONAL
+$inputs.Arg.o365AppSortByParam = @{
+	# OPTIONAL
+	field = <AppSortByParamField>
+	# OPTIONAL
+	sortOrder = <SortOrder>
+}
+"@
 Write-Message "Invoke-RscQueryO365 -ListApps" @"
 Lists the O365 apps.
 "@ "[GraphQL: listO365Apps]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7899,6 +23888,9 @@ Lists the O365 apps.
 $inputs = Invoke-RscQueryO365 -AllSubscriptionsAppTypeCounts -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+
+"@
 Write-Message "Invoke-RscQueryO365 -AllSubscriptionsAppTypeCounts" @"
 Returns the total number of apps of each type, for each O365 org.
 "@ "[GraphQL: allO365SubscriptionsAppTypeCounts]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7911,6 +23903,10 @@ Returns the total number of apps of each type, for each O365 org.
 $inputs = Invoke-RscQueryO365 -StorageStats -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.orgID = <System.String>
+"@
 Write-Message "Invoke-RscQueryO365 -StorageStats" @"
 Returns the storage stats of an O365 org.
 "@ "[GraphQL: o365StorageStats]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7923,6 +23919,10 @@ Returns the storage stats of an O365 org.
 $inputs = Invoke-RscQueryO365 -ServiceStatus -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.orgID = <System.String>
+"@
 Write-Message "Invoke-RscQueryO365 -ServiceStatus" @"
 Returns the service status of the O365 service running on MSFT server.
 "@ "[GraphQL: o365ServiceStatus]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7936,6 +23936,62 @@ Returns the service status of the O365 service running on MSFT server.
 $inputs = Invoke-RscQueryOracle -TopLevelDescendants -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <HierarchySortByField>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.typeFilter = @(
+	<HierarchyObjectTypeEnum>
+)
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType>
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature>
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature>
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter>
+		)
+}
+)
+"@
 Write-Message "Invoke-RscQueryOracle -TopLevelDescendants" @"
 Paginated list of the highest-level Oracle Objects accessible by the current user.
 "@ "[GraphQL: oracleTopLevelDescendants]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7948,6 +24004,58 @@ Paginated list of the highest-level Oracle Objects accessible by the current use
 $inputs = Invoke-RscQueryOracle -Databases -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <HierarchySortByField>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType>
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature>
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature>
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter>
+		)
+}
+)
+"@
 Write-Message "Invoke-RscQueryOracle -Databases" @"
 Paginated list of Oracle Databases.
 "@ "[GraphQL: oracleDatabases]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7960,6 +24068,10 @@ Paginated list of Oracle Databases.
 $inputs = Invoke-RscQueryOracle -Host -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+"@
 Write-Message "Invoke-RscQueryOracle -Host" @"
 An Oracle Host.
 "@ "[GraphQL: oracleHost]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7972,6 +24084,10 @@ An Oracle Host.
 $inputs = Invoke-RscQueryOracle -Rac -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+"@
 Write-Message "Invoke-RscQueryOracle -Rac" @"
 An Oracle Real Application Cluster.
 "@ "[GraphQL: oracleRac]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7984,6 +24100,10 @@ An Oracle Real Application Cluster.
 $inputs = Invoke-RscQueryOracle -DataGuardGroup -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+"@
 Write-Message "Invoke-RscQueryOracle -DataGuardGroup" @"
 An Oracle Data Guard Group.
 "@ "[GraphQL: oracleDataGuardGroup]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -7996,6 +24116,10 @@ An Oracle Data Guard Group.
 $inputs = Invoke-RscQueryOracle -Database -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+"@
 Write-Message "Invoke-RscQueryOracle -Database" @"
 An Oracle Database.
 "@ "[GraphQL: oracleDatabase]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8008,6 +24132,30 @@ An Oracle Database.
 $inputs = Invoke-RscQueryOracle -LiveMounts -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.filters = @(
+	@{
+		# OPTIONAL
+		field = <OracleLiveMountFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+}
+)
+# OPTIONAL
+$inputs.Arg.sortBy = @{
+	# OPTIONAL
+	field = <OracleLiveMountSortByField>
+	# OPTIONAL
+	sortOrder = <SortOrder>
+}
+"@
 Write-Message "Invoke-RscQueryOracle -LiveMounts" @"
 Paginated list of Oracle Live Mounts.
 "@ "[GraphQL: oracleLiveMounts]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8020,6 +24168,15 @@ Paginated list of Oracle Live Mounts.
 $inputs = Invoke-RscQueryOracle -AcoParameters -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	dbId = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryOracle -AcoParameters" @"
 List of supported Advanced Cloning Options
 
@@ -8035,6 +24192,19 @@ Get the list of supported Advanced Cloning Options (ACO) parameters.
 $inputs = Invoke-RscQueryOracle -RecoverableRanges -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	afterTime = <DateTime>
+	# OPTIONAL
+	beforeTime = <DateTime>
+	# OPTIONAL
+	shouldIncludeDbSnapshotSummaries = <System.Boolean>
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryOracle -RecoverableRanges" @"
 Get recoverable ranges of a Oracle database
 
@@ -8050,6 +24220,17 @@ Retrieve the recoverable ranges for a specified Oracle database. A begin and/or 
 $inputs = Invoke-RscQueryOracle -MissedRecoverableRanges -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	afterTime = <DateTime>
+	# OPTIONAL
+	beforeTime = <DateTime>
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryOracle -MissedRecoverableRanges" @"
 Get missed recoverable ranges of a Oracle database
 
@@ -8065,6 +24246,17 @@ Retrieve a list of missed recoverable ranges for a Oracle database. For each run
 $inputs = Invoke-RscQueryOracle -MissedSnapshots -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	afterTime = <DateTime>
+	# OPTIONAL
+	beforeTime = <DateTime>
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryOracle -MissedSnapshots" @"
 Get missed snapshots for an Oracle database
 
@@ -8080,6 +24272,15 @@ Retrieve summary information about the missed snapshots of an Oracle database.
 $inputs = Invoke-RscQueryOracle -AcoExampleDownloadLink -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	dbId = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryOracle -AcoExampleDownloadLink" @"
 Link to download the Advanced Recovery Options example file
 
@@ -8095,6 +24296,23 @@ Link to download the Advanced Recovery Options example file which can be used to
 $inputs = Invoke-RscQueryOracle -PdbDetails -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+	# REQUIRED
+	pdbDetailsRequest = @{
+		# REQUIRED
+		recoveryPoint = @{
+			# OPTIONAL
+			snapshotId = <System.String>
+			# OPTIONAL
+			timestampMs = <System.Int64>
+		}
+	}
+}
+"@
 Write-Message "Invoke-RscQueryOracle -PdbDetails" @"
 Get PDB details
 
@@ -8110,6 +24328,13 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
 $inputs = Invoke-RscQueryOracle -HostLogBackupConfig -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryOracle -HostLogBackupConfig" @"
 Oracle Log backup configuration for Oracle Host.
 "@ "[GraphQL: oracleHostLogBackupConfig]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8122,6 +24347,13 @@ Oracle Log backup configuration for Oracle Host.
 $inputs = Invoke-RscQueryOracle -DatabaseLogBackupConfig -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryOracle -DatabaseLogBackupConfig" @"
 Oracle log backup configuration for an Oracle Database.
 "@ "[GraphQL: oracleDatabaseLogBackupConfig]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8134,6 +24366,13 @@ Oracle log backup configuration for an Oracle Database.
 $inputs = Invoke-RscQueryOracle -RacLogBackupConfig -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryOracle -RacLogBackupConfig" @"
 Oracle log backup configuration for an Oracle RAC.
 "@ "[GraphQL: oracleRacLogBackupConfig]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8147,6 +24386,10 @@ Oracle log backup configuration for an Oracle RAC.
 $inputs = Invoke-RscQuerySla -AllIofilterStatuses -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+"@
 Write-Message "Invoke-RscQuerySla -AllIofilterStatuses" @"
 The iofilter installation status of the compute clusters related to this SLA Domain.
 "@ "[GraphQL: allSlaIofilterStatuses]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8159,6 +24402,10 @@ The iofilter installation status of the compute clusters related to this SLA Dom
 $inputs = Invoke-RscQuerySla -AllCdpVmNames -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+"@
 Write-Message "Invoke-RscQuerySla -AllCdpVmNames" @"
 Names of the virtual machines in compute cluster with Continuous Data Protection (CDP) SLA Domain.
 "@ "[GraphQL: allCdpSlaVmNames]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8171,6 +24418,58 @@ Names of the virtual machines in compute cluster with Continuous Data Protection
 $inputs = Invoke-RscQuerySla -Domains -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.last = <System.Int32>
+# OPTIONAL
+$inputs.Arg.before = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <SlaQuerySortByField>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <GlobalSlaQueryFilterInputField>
+		# OPTIONAL
+		text = <System.String>
+		# OPTIONAL
+		objectTypeList = @(
+			<SlaObjectType>
+		)
+		# OPTIONAL
+		textList = @(
+			<System.String>
+		)
+}
+)
+# OPTIONAL
+$inputs.Arg.contextFilter = <ContextFilterTypeEnum>
+# OPTIONAL
+$inputs.Arg.contextFilterInput = @(
+	@{
+		# REQUIRED
+		field = <System.String>
+		# REQUIRED
+		text = <System.String>
+}
+)
+# OPTIONAL
+$inputs.Arg.shouldShowSyncStatus = <System.Boolean>
+# OPTIONAL
+$inputs.Arg.shouldShowProtectedObjectCount = <System.Boolean>
+# OPTIONAL
+$inputs.Arg.shouldShowUpgradeInfo = <System.Boolean>
+# OPTIONAL
+$inputs.Arg.showRemoteSlas = <System.Boolean>
+# OPTIONAL
+$inputs.Arg.shouldShowPausedClusters = <System.Boolean>
+"@
 Write-Message "Invoke-RscQuerySla -Domains" @"
 Retrieves a list of SLA Domains.
 "@ "[GraphQL: slaDomains]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8183,6 +24482,53 @@ Retrieves a list of SLA Domains.
 $inputs = Invoke-RscQuerySla -DomainWithWarningsList -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.last = <System.Int32>
+# OPTIONAL
+$inputs.Arg.before = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <SlaQuerySortByField>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <GlobalSlaQueryFilterInputField>
+		# OPTIONAL
+		text = <System.String>
+		# OPTIONAL
+		objectTypeList = @(
+			<SlaObjectType>
+		)
+		# OPTIONAL
+		textList = @(
+			<System.String>
+		)
+}
+)
+# OPTIONAL
+$inputs.Arg.contextFilter = <ContextFilterTypeEnum>
+# OPTIONAL
+$inputs.Arg.objectIds = @(
+	<System.String>
+)
+# OPTIONAL
+$inputs.Arg.applicableSnappableTypes = @(
+	<WorkloadLevelHierarchy>
+)
+# OPTIONAL
+$inputs.Arg.snapshotIds = @(
+	<System.String>
+)
+# OPTIONAL
+$inputs.Arg.operation = <SlaWarningsOperation>
+"@
 Write-Message "Invoke-RscQuerySla -DomainWithWarningsList" @"
 Query sla list with warnings
 "@ "[GraphQL: slaDomainWithWarningsList]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8195,6 +24541,58 @@ Query sla list with warnings
 $inputs = Invoke-RscQuerySla -GlobalFilterList -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.last = <System.Int32>
+# OPTIONAL
+$inputs.Arg.before = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <SlaQuerySortByField>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <GlobalSlaQueryFilterInputField>
+		# OPTIONAL
+		text = <System.String>
+		# OPTIONAL
+		objectTypeList = @(
+			<SlaObjectType>
+		)
+		# OPTIONAL
+		textList = @(
+			<System.String>
+		)
+}
+)
+# OPTIONAL
+$inputs.Arg.contextFilter = <ContextFilterTypeEnum>
+# OPTIONAL
+$inputs.Arg.contextFilterInput = @(
+	@{
+		# REQUIRED
+		field = <System.String>
+		# REQUIRED
+		text = <System.String>
+}
+)
+# OPTIONAL
+$inputs.Arg.shouldShowSyncStatus = <System.Boolean>
+# OPTIONAL
+$inputs.Arg.shouldShowProtectedObjectCount = <System.Boolean>
+# OPTIONAL
+$inputs.Arg.shouldShowUpgradeInfo = <System.Boolean>
+# OPTIONAL
+$inputs.Arg.showRemoteSlas = <System.Boolean>
+# OPTIONAL
+$inputs.Arg.shouldShowPausedClusters = <System.Boolean>
+"@
 Write-Message "Invoke-RscQuerySla -GlobalFilterList" @"
 
 "@ "[GraphQL: globalSlaFilterConnection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8207,6 +24605,16 @@ Write-Message "Invoke-RscQuerySla -GlobalFilterList" @"
 $inputs = Invoke-RscQuerySla -Domain -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.id = <System.String>
+# OPTIONAL
+$inputs.Arg.shouldShowSyncStatus = <System.Boolean>
+# OPTIONAL
+$inputs.Arg.shouldShowUpgradeInfo = <System.Boolean>
+# OPTIONAL
+$inputs.Arg.shouldShowPausedClusters = <System.Boolean>
+"@
 Write-Message "Invoke-RscQuerySla -Domain" @"
 Query that retrieves an SLA Domain.
 "@ "[GraphQL: slaDomain]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8219,6 +24627,18 @@ Query that retrieves an SLA Domain.
 $inputs = Invoke-RscQuerySla -DomainWithWarnings -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.id = <System.String>
+# REQUIRED
+$inputs.Arg.objectIds = @(
+	<System.String>
+)
+# OPTIONAL
+$inputs.Arg.applicableSnappableTypes = @(
+	<WorkloadLevelHierarchy>
+)
+"@
 Write-Message "Invoke-RscQuerySla -DomainWithWarnings" @"
 
 "@ "[GraphQL: slaDomainWithWarnings]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8231,6 +24651,129 @@ Write-Message "Invoke-RscQuerySla -DomainWithWarnings" @"
 $inputs = Invoke-RscQuerySla -ArchivalValidationWarnings -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	snapshotSchedule = @{
+		# OPTIONAL
+		minute = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit>
+			}
+		}
+		# OPTIONAL
+		hourly = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit>
+			}
+		}
+		# OPTIONAL
+		daily = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit>
+			}
+		}
+		# OPTIONAL
+		weekly = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit>
+			}
+			# OPTIONAL
+			dayOfWeek = <DayOfWeek>
+		}
+		# OPTIONAL
+		monthly = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit>
+			}
+			# OPTIONAL
+			dayOfMonth = <DayOfMonth>
+		}
+		# OPTIONAL
+		quarterly = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit>
+			}
+			# OPTIONAL
+			dayOfQuarter = <DayOfQuarter>
+			# OPTIONAL
+			quarterStartMonth = <Month>
+		}
+		# OPTIONAL
+		yearly = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit>
+			}
+			# OPTIONAL
+			dayOfYear = <DayOfYear>
+			# OPTIONAL
+			yearStartMonth = <Month>
+		}
+	}
+	# OPTIONAL
+	archivalThreshold = <System.Int32>
+	# OPTIONAL
+	archivalThresholdUnit = <RetentionUnit>
+	# OPTIONAL
+	archivalGroupId = <System.String>
+	# OPTIONAL
+	archivalLocationToClusterMapping = @(
+		@{
+			# OPTIONAL
+			clusterUuid = <System.String>
+			# OPTIONAL
+			locationId = <System.String>
+		}
+	)
+	# OPTIONAL
+	frequencies = @(
+		<RetentionUnit>
+	)
+}
+"@
 Write-Message "Invoke-RscQuerySla -ArchivalValidationWarnings" @"
 SLA Domain warnings related to non-compliant archival retention duration in the archival policy.
 "@ "[GraphQL: slaArchivalValidationWarnings]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8243,6 +24786,60 @@ SLA Domain warnings related to non-compliant archival retention duration in the 
 $inputs = Invoke-RscQuerySla -CountOfObjectsProtected -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.rootOptionalFid = <System.String>
+# REQUIRED
+$inputs.Arg.slaIds = @(
+	<System.String>
+)
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType>
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature>
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature>
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter>
+		)
+}
+)
+# OPTIONAL
+$inputs.Arg.typeFilter = @(
+	<HierarchyObjectTypeEnum>
+)
+"@
 Write-Message "Invoke-RscQuerySla -CountOfObjectsProtected" @"
 The number of objects protected by the SLA Domains.
 "@ "[GraphQL: countOfObjectsProtectedBySlas]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8255,6 +24852,29 @@ The number of objects protected by the SLA Domains.
 $inputs = Invoke-RscQuerySla -AuditDetail -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.last = <System.Int32>
+# OPTIONAL
+$inputs.Arg.before = <System.String>
+# REQUIRED
+$inputs.Arg.SlaId = <System.String>
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <SLAAuditDetailFilterFieldEnum>
+		# OPTIONAL
+		text = <System.String>
+}
+)
+# OPTIONAL
+$inputs.Arg.timezone = <System.String>
+"@
 Write-Message "Invoke-RscQuerySla -AuditDetail" @"
 List of audit details for a given SLA Domain.
 "@ "[GraphQL: slaAuditDetail]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8267,6 +24887,12 @@ List of audit details for a given SLA Domain.
 $inputs = Invoke-RscQuerySla -AllSummariesByIds -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.slaIds = @(
+	<System.String>
+)
+"@
 Write-Message "Invoke-RscQuerySla -AllSummariesByIds" @"
 List of SLA Domain summaries for the given IDs.
 "@ "[GraphQL: allSlaSummariesByIds]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8279,6 +24905,27 @@ List of SLA Domain summaries for the given IDs.
 $inputs = Invoke-RscQuerySla -GlobalStatuses -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.last = <System.Int32>
+# OPTIONAL
+$inputs.Arg.before = <System.String>
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <SlaStatusFilterField>
+		# OPTIONAL
+		text = <System.String>
+}
+)
+# REQUIRED
+$inputs.Arg.SlaId = <System.String>
+"@
 Write-Message "Invoke-RscQuerySla -GlobalStatuses" @"
 Status on the clusters where global SLA is synced.
 "@ "[GraphQL: globalSlaStatuses]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8291,6 +24938,18 @@ Status on the clusters where global SLA is synced.
 $inputs = Invoke-RscQuerySla -ProtectedClustersForGlobal -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.last = <System.Int32>
+# OPTIONAL
+$inputs.Arg.before = <System.String>
+# REQUIRED
+$inputs.Arg.slaId = <System.String>
+"@
 Write-Message "Invoke-RscQuerySla -ProtectedClustersForGlobal" @"
 Clusters that have object(s) protected by global SLA.
 "@ "[GraphQL: protectedClustersForGlobalSla]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8303,6 +24962,12 @@ Clusters that have object(s) protected by global SLA.
 $inputs = Invoke-RscQuerySla -ConflictObjects -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.fids = @(
+	<System.String>
+)
+"@
 Write-Message "Invoke-RscQuerySla -ConflictObjects" @"
 
 "@ "[GraphQL: slaConflictObjects]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8315,6 +24980,58 @@ Write-Message "Invoke-RscQuerySla -ConflictObjects" @"
 $inputs = Invoke-RscQuerySla -ManagedVolumes -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <HierarchySortByField>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType>
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature>
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature>
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter>
+		)
+}
+)
+"@
 Write-Message "Invoke-RscQuerySla -ManagedVolumes" @"
 Paginated list of SLA Managed Volumes.
 "@ "[GraphQL: slaManagedVolumes]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8327,6 +25044,10 @@ Paginated list of SLA Managed Volumes.
 $inputs = Invoke-RscQuerySla -ManagedVolume -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+"@
 Write-Message "Invoke-RscQuerySla -ManagedVolume" @"
 Details of a SLA Managed Volume object.
 "@ "[GraphQL: slaManagedVolume]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8339,6 +25060,16 @@ Details of a SLA Managed Volume object.
 $inputs = Invoke-RscQuerySla -ClusterDomains -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.last = <System.Int32>
+# OPTIONAL
+$inputs.Arg.before = <System.String>
+"@
 Write-Message "Invoke-RscQuerySla -ClusterDomains" @"
 Returns paginated list of SLA domains that were created on Rubrik CDM.
 "@ "[GraphQL: clusterSlaDomains]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8351,6 +25082,16 @@ Returns paginated list of SLA domains that were created on Rubrik CDM.
 $inputs = Invoke-RscQuerySla -ClusterDomainFilterList -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.last = <System.Int32>
+# OPTIONAL
+$inputs.Arg.before = <System.String>
+"@
 Write-Message "Invoke-RscQuerySla -ClusterDomainFilterList" @"
 
 "@ "[GraphQL: clusterSlaDomainFilterConnection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8363,6 +25104,12 @@ Write-Message "Invoke-RscQuerySla -ClusterDomainFilterList" @"
 $inputs = Invoke-RscQuerySla -VerifyWithReplicationToCluster -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.cdmClusterUUID = <System.String>
+# REQUIRED
+$inputs.Arg.includeArchived = <System.Boolean>
+"@
 Write-Message "Invoke-RscQuerySla -VerifyWithReplicationToCluster" @"
 Verify for a Rubrik cluster if it is replication target in any SLA Domain.
 "@ "[GraphQL: verifySlaWithReplicationToCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8375,6 +25122,12 @@ Verify for a Rubrik cluster if it is replication target in any SLA Domain.
 $inputs = Invoke-RscQuerySla -DownloadWithReplicationCsv -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.cdmClusterUUID = <System.String>
+# REQUIRED
+$inputs.Arg.includeArchived = <System.Boolean>
+"@
 Write-Message "Invoke-RscQuerySla -DownloadWithReplicationCsv" @"
 Download list of Global SLA CSV that have Replication to the given Rubrik Cluster.
 "@ "[GraphQL: downloadSlaWithReplicationCsv]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8387,6 +25140,10 @@ Download list of Global SLA CSV that have Replication to the given Rubrik Cluste
 $inputs = Invoke-RscQuerySla -AllClusterGlobals -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.cdmClusterUUID = <System.String>
+"@
 Write-Message "Invoke-RscQuerySla -AllClusterGlobals" @"
 Global SLA Domains protecting at least one object on the specified Rubrik cluster.
 "@ "[GraphQL: allClusterGlobalSlas]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8399,6 +25156,12 @@ Global SLA Domains protecting at least one object on the specified Rubrik cluste
 $inputs = Invoke-RscQuerySla -AllNcdComplianceData -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.clusters = @(
+	<System.String>
+)
+"@
 Write-Message "Invoke-RscQuerySla -AllNcdComplianceData" @"
 NAS Cloud Direct SLA Domain compliance data for the requested clusters.
 "@ "[GraphQL: allNcdSlaComplianceData]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8412,6 +25175,10 @@ NAS Cloud Direct SLA Domain compliance data for the requested clusters.
 $inputs = Invoke-RscQueryVcenter -Vcenter -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+"@
 Write-Message "Invoke-RscQueryVcenter -Vcenter" @"
 
 "@ "[GraphQL: vSphereVCenter]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8424,6 +25191,58 @@ Write-Message "Invoke-RscQueryVcenter -Vcenter" @"
 $inputs = Invoke-RscQueryVcenter -List -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <HierarchySortByField>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType>
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature>
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature>
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter>
+		)
+}
+)
+"@
 Write-Message "Invoke-RscQueryVcenter -List" @"
 
 "@ "[GraphQL: vSphereVCenterConnection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8436,6 +25255,50 @@ Write-Message "Invoke-RscQueryVcenter -List" @"
 $inputs = Invoke-RscQueryVcenter -UniqueCount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType>
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature>
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature>
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter>
+		)
+}
+)
+"@
 Write-Message "Invoke-RscQueryVcenter -UniqueCount" @"
 
 "@ "[GraphQL: uniqueVSphereVCenterCount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8448,6 +25311,29 @@ Write-Message "Invoke-RscQueryVcenter -UniqueCount" @"
 $inputs = Invoke-RscQueryVcenter -PreAddInfo -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	vcenterConfig = @{
+		# OPTIONAL
+		connectionConfig = @{
+			# OPTIONAL
+			caCerts = <System.String>
+			# REQUIRED
+			hostname = <System.String>
+			# REQUIRED
+			password = <System.String>
+			# REQUIRED
+			username = <System.String>
+		}
+		# OPTIONAL
+		id = <System.String>
+	}
+}
+"@
 Write-Message "Invoke-RscQueryVcenter -PreAddInfo" @"
 Get preAddInfo for a vcenter.
 "@ "[GraphQL: vCenterPreAddInfo]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8460,6 +25346,13 @@ Get preAddInfo for a vcenter.
 $inputs = Invoke-RscQueryVcenter -Networks -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryVcenter -Networks" @"
 Get the user-configured networks in the vCenter
 
@@ -8475,6 +25368,13 @@ Get the names and IDs of the user configured networks in the vCenter. This infor
 $inputs = Invoke-RscQueryVcenter -HotAddNetwork -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryVcenter -HotAddNetwork" @"
 Retrieve the user-configured network for HotAdd operations
 
@@ -8490,6 +25390,13 @@ Retrieve the user-configured network for HotAdd backup and recovery operations o
 $inputs = Invoke-RscQueryVcenter -NumProxiesNeeded -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryVcenter -NumProxiesNeeded" @"
 Get the number of HotAdd proxies needed for the vCenter
 
@@ -8505,6 +25412,12 @@ Get the number of HotAdd proxies that need to be deployed to the vCenter to supp
 $inputs = Invoke-RscQueryVcenter -HotAddProxy -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.clusterUuids = @(
+	<System.String>
+)
+"@
 Write-Message "Invoke-RscQueryVcenter -HotAddProxy" @"
 Get a list of HotAdd proxy virtual machines
 
@@ -8520,6 +25433,13 @@ Retrieve summary information for all HotAdd proxy virtual machines.
 $inputs = Invoke-RscQueryVcenter -HotAddBandwidth -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryVcenter -HotAddBandwidth" @"
 Get the ingest and export bandwidth limits for HotAdd with the vCenter
 
@@ -8535,6 +25455,19 @@ Get the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
 $inputs = Invoke-RscQueryVcenter -AdvancedTagPreview -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# OPTIONAL
+	limit = <System.Int32>
+	# OPTIONAL
+	offset = <System.Int32>
+	# REQUIRED
+	filterCondition = <System.String>
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryVcenter -AdvancedTagPreview" @"
 Preview list of virtual machines of a proposed filter condition
 
@@ -8551,6 +25484,10 @@ Preview list of virtual machines of a proposed filter condition. The result migh
 $inputs = Invoke-RscQueryVsphere -Blueprint -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+"@
 Write-Message "Invoke-RscQueryVsphere -Blueprint" @"
 
 "@ "[GraphQL: vSphereBlueprint]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8563,6 +25500,10 @@ Write-Message "Invoke-RscQueryVsphere -Blueprint" @"
 $inputs = Invoke-RscQueryVsphere -Datacenter -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+"@
 Write-Message "Invoke-RscQueryVsphere -Datacenter" @"
 
 "@ "[GraphQL: vSphereDatacenter]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8575,6 +25516,10 @@ Write-Message "Invoke-RscQueryVsphere -Datacenter" @"
 $inputs = Invoke-RscQueryVsphere -ComputeCluster -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+"@
 Write-Message "Invoke-RscQueryVsphere -ComputeCluster" @"
 
 "@ "[GraphQL: vSphereComputeCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8587,6 +25532,10 @@ Write-Message "Invoke-RscQueryVsphere -ComputeCluster" @"
 $inputs = Invoke-RscQueryVsphere -ResourcePool -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+"@
 Write-Message "Invoke-RscQueryVsphere -ResourcePool" @"
 
 "@ "[GraphQL: vSphereResourcePool]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8599,6 +25548,10 @@ Write-Message "Invoke-RscQueryVsphere -ResourcePool" @"
 $inputs = Invoke-RscQueryVsphere -Folder -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+"@
 Write-Message "Invoke-RscQueryVsphere -Folder" @"
 
 "@ "[GraphQL: vSphereFolder]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8611,6 +25564,10 @@ Write-Message "Invoke-RscQueryVsphere -Folder" @"
 $inputs = Invoke-RscQueryVsphere -Host -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+"@
 Write-Message "Invoke-RscQueryVsphere -Host" @"
 
 "@ "[GraphQL: vSphereHost]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8623,6 +25580,10 @@ Write-Message "Invoke-RscQueryVsphere -Host" @"
 $inputs = Invoke-RscQueryVsphere -DatastoreCluster -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+"@
 Write-Message "Invoke-RscQueryVsphere -DatastoreCluster" @"
 Vsphere datastore cluster based on id passed in.
 "@ "[GraphQL: vSphereDatastoreCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8635,6 +25596,10 @@ Vsphere datastore cluster based on id passed in.
 $inputs = Invoke-RscQueryVsphere -Datastore -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+"@
 Write-Message "Invoke-RscQueryVsphere -Datastore" @"
 Vsphere datastore based on id passed in.
 "@ "[GraphQL: vSphereDatastore]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8647,6 +25612,12 @@ Vsphere datastore based on id passed in.
 $inputs = Invoke-RscQueryVsphere -HostsByFids -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.fids = @(
+	<System.String>
+)
+"@
 Write-Message "Invoke-RscQueryVsphere -HostsByFids" @"
 All of the VSphere hosts based on fids passed in.
 "@ "[GraphQL: vSphereHostsByFids]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8659,6 +25630,10 @@ All of the VSphere hosts based on fids passed in.
 $inputs = Invoke-RscQueryVsphere -Tag -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+"@
 Write-Message "Invoke-RscQueryVsphere -Tag" @"
 
 "@ "[GraphQL: vSphereTag]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8671,6 +25646,10 @@ Write-Message "Invoke-RscQueryVsphere -Tag" @"
 $inputs = Invoke-RscQueryVsphere -TagCategory -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+"@
 Write-Message "Invoke-RscQueryVsphere -TagCategory" @"
 
 "@ "[GraphQL: vSphereTagCategory]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8683,6 +25662,10 @@ Write-Message "Invoke-RscQueryVsphere -TagCategory" @"
 $inputs = Invoke-RscQueryVsphere -Network -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+"@
 Write-Message "Invoke-RscQueryVsphere -Network" @"
 
 "@ "[GraphQL: vSphereNetwork]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8695,6 +25678,62 @@ Write-Message "Invoke-RscQueryVsphere -Network" @"
 $inputs = Invoke-RscQueryVsphere -TopLevelDescendantsList -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <HierarchySortByField>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.typeFilter = @(
+	<HierarchyObjectTypeEnum>
+)
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType>
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature>
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature>
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter>
+		)
+}
+)
+"@
 Write-Message "Invoke-RscQueryVsphere -TopLevelDescendantsList" @"
 
 "@ "[GraphQL: vSphereTopLevelDescendantsConnection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8707,6 +25746,58 @@ Write-Message "Invoke-RscQueryVsphere -TopLevelDescendantsList" @"
 $inputs = Invoke-RscQueryVsphere -RootRecoveryHierarchy -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <HierarchySortByField>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType>
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature>
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature>
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter>
+		)
+}
+)
+"@
 Write-Message "Invoke-RscQueryVsphere -RootRecoveryHierarchy" @"
 The root hierarchy for VMware export, which includes VMware compute clusters and standalone hosts.
 "@ "[GraphQL: vSphereRootRecoveryHierarchy]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8719,6 +25810,58 @@ The root hierarchy for VMware export, which includes VMware compute clusters and
 $inputs = Invoke-RscQueryVsphere -HostList -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <HierarchySortByField>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType>
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature>
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature>
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter>
+		)
+}
+)
+"@
 Write-Message "Invoke-RscQueryVsphere -HostList" @"
 
 "@ "[GraphQL: vSphereHostConnection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8731,6 +25874,58 @@ Write-Message "Invoke-RscQueryVsphere -HostList" @"
 $inputs = Invoke-RscQueryVsphere -ComputeClusters -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <HierarchySortByField>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType>
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature>
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature>
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter>
+		)
+}
+)
+"@
 Write-Message "Invoke-RscQueryVsphere -ComputeClusters" @"
 Query compute clusters
 "@ "[GraphQL: vSphereComputeClusters]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8743,6 +25938,58 @@ Query compute clusters
 $inputs = Invoke-RscQueryVsphere -DatastoreList -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <HierarchySortByField>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType>
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature>
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature>
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter>
+		)
+}
+)
+"@
 Write-Message "Invoke-RscQueryVsphere -DatastoreList" @"
 
 "@ "[GraphQL: vSphereDatastoreConnection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8755,6 +26002,58 @@ Write-Message "Invoke-RscQueryVsphere -DatastoreList" @"
 $inputs = Invoke-RscQueryVsphere -DatastoreClusters -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <HierarchySortByField>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType>
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature>
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature>
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter>
+		)
+}
+)
+"@
 Write-Message "Invoke-RscQueryVsphere -DatastoreClusters" @"
 Query vSphere datastore clusters.
 "@ "[GraphQL: vSphereDatastoreClusters]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8767,6 +26066,30 @@ Query vSphere datastore clusters.
 $inputs = Invoke-RscQueryVsphere -LiveMounts -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <VsphereLiveMountFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+}
+)
+# OPTIONAL
+$inputs.Arg.sortBy = @{
+	# OPTIONAL
+	field = <VsphereLiveMountSortByField>
+	# OPTIONAL
+	sortOrder = <SortOrder>
+}
+"@
 Write-Message "Invoke-RscQueryVsphere -LiveMounts" @"
 List of vSphere Live Mounts.
 "@ "[GraphQL: vSphereLiveMounts]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8779,6 +26102,31 @@ List of vSphere Live Mounts.
 $inputs = Invoke-RscQueryVsphere -MountList -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.filter = @{
+	# OPTIONAL
+	name = <System.String>
+	# OPTIONAL
+	clusterUuid = @(
+		<System.String>
+	)
+	# OPTIONAL
+	powerStatus = @(
+		<System.Boolean>
+	)
+	# OPTIONAL
+	sourceVmId = <System.String>
+}
+# OPTIONAL
+$inputs.Arg.sortBy = <VsphereMountSortBy>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+"@
 Write-Message "Invoke-RscQueryVsphere -MountList" @"
 vSphere Live Mount Connection
 "@ "[GraphQL: vSphereMountConnection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8791,6 +26139,10 @@ vSphere Live Mount Connection
 $inputs = Invoke-RscQueryVsphere -Mount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+"@
 Write-Message "Invoke-RscQueryVsphere -Mount" @"
 Get a vSphere Live Mount by id
 "@ "[GraphQL: vSphereMount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8803,6 +26155,13 @@ Get a vSphere Live Mount by id
 $inputs = Invoke-RscQueryVsphere -HostDetails -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.input = @{
+	# REQUIRED
+	id = <System.String>
+}
+"@
 Write-Message "Invoke-RscQueryVsphere -HostDetails" @"
 Get details of a ESXi hypervisor
 
@@ -8818,6 +26177,12 @@ Get details of a ESXi hypervisor.
 $inputs = Invoke-RscQueryVsphere -VmwareCdpLiveInfo -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.ids = @(
+	<System.String>
+)
+"@
 Write-Message "Invoke-RscQueryVsphere -VmwareCdpLiveInfo" @"
 
 "@ "[GraphQL: vsphereVmwareCdpLiveInfo]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8831,6 +26196,10 @@ Write-Message "Invoke-RscQueryVsphere -VmwareCdpLiveInfo" @"
 $inputs = Invoke-RscQueryVsphereVm -New -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.fid = <System.String>
+"@
 Write-Message "Invoke-RscQueryVsphereVm -New" @"
 
 "@ "[GraphQL: vSphereVmNew]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8843,6 +26212,58 @@ Write-Message "Invoke-RscQueryVsphereVm -New" @"
 $inputs = Invoke-RscQueryVsphereVm -NewList -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# OPTIONAL
+$inputs.Arg.first = <System.Int32>
+# OPTIONAL
+$inputs.Arg.after = <System.String>
+# OPTIONAL
+$inputs.Arg.sortBy = <HierarchySortByField>
+# OPTIONAL
+$inputs.Arg.sortOrder = <SortOrder>
+# OPTIONAL
+$inputs.Arg.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField>
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType>
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType>
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature>
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature>
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter>
+		)
+}
+)
+"@
 Write-Message "Invoke-RscQueryVsphereVm -NewList" @"
 
 "@ "[GraphQL: vSphereVmNewConnection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8855,6 +26276,14 @@ Write-Message "Invoke-RscQueryVsphereVm -NewList" @"
 $inputs = Invoke-RscQueryVsphereVm -RecoverableRange -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.snappableFid = <System.String>
+# OPTIONAL
+$inputs.Arg.beforeTime = <DateTime>
+# OPTIONAL
+$inputs.Arg.afterTime = <DateTime>
+"@
 Write-Message "Invoke-RscQueryVsphereVm -RecoverableRange" @"
 
 "@ "[GraphQL: vsphereVMRecoverableRange]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8867,6 +26296,19 @@ Write-Message "Invoke-RscQueryVsphereVm -RecoverableRange" @"
 $inputs = Invoke-RscQueryVsphereVm -RecoverableRangeInBatch -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.requestInfo = @{
+	# OPTIONAL
+	afterTime = <DateTime>
+	# OPTIONAL
+	beforeTime = <DateTime>
+	# REQUIRED
+	vmIds = @(
+		<System.String>
+	)
+}
+"@
 Write-Message "Invoke-RscQueryVsphereVm -RecoverableRangeInBatch" @"
 
 "@ "[GraphQL: vsphereVMRecoverableRangeInBatch]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8879,6 +26321,14 @@ Write-Message "Invoke-RscQueryVsphereVm -RecoverableRangeInBatch" @"
 $inputs = Invoke-RscQueryVsphereVm -MissedRecoverableRange -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.snappableFid = <System.String>
+# OPTIONAL
+$inputs.Arg.beforeTime = <DateTime>
+# OPTIONAL
+$inputs.Arg.afterTime = <DateTime>
+"@
 Write-Message "Invoke-RscQueryVsphereVm -MissedRecoverableRange" @"
 
 "@ "[GraphQL: vsphereVMMissedRecoverableRange]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -8891,6 +26341,12 @@ Write-Message "Invoke-RscQueryVsphereVm -MissedRecoverableRange" @"
 $inputs = Invoke-RscQueryVsphereVm -AsyncRequestStatus -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
+Write-Message @"
+# REQUIRED
+$inputs.Arg.clusterUuid = <System.String>
+# REQUIRED
+$inputs.Arg.id = <System.String>
+"@
 Write-Message "Invoke-RscQueryVsphereVm -AsyncRequestStatus" @"
 
 "@ "[GraphQL: vSphereVMAsyncRequestStatus]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"

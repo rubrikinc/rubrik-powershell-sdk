@@ -26,11 +26,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     public class Invoke_RscQueryLdap : RscPSCmdlet
     {
         
-        // -------------------------------------------------------------------
-        // IntegrationList parameter set
-        //
-        // [GraphQL: ldapIntegrationConnection]
-        //
+        /// <summary>
+        /// IntegrationList parameter set
+        ///
+        /// [GraphQL: ldapIntegrationConnection]
+        /// </summary>
         [Parameter(
             ParameterSetName = "IntegrationList",
             Mandatory = false,
@@ -44,11 +44,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter IntegrationList { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // PrincipalList parameter set
-        //
-        // [GraphQL: ldapPrincipalConnection]
-        //
+        /// <summary>
+        /// PrincipalList parameter set
+        ///
+        /// [GraphQL: ldapPrincipalConnection]
+        /// </summary>
         [Parameter(
             ParameterSetName = "PrincipalList",
             Mandatory = false,
@@ -62,11 +62,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter PrincipalList { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AuthorizedPrincipalList parameter set
-        //
-        // [GraphQL: ldapAuthorizedPrincipalConnection]
-        //
+        /// <summary>
+        /// AuthorizedPrincipalList parameter set
+        ///
+        /// [GraphQL: ldapAuthorizedPrincipalConnection]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AuthorizedPrincipalList",
             Mandatory = false,
@@ -80,6 +80,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AuthorizedPrincipalList { get; set; }
 
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
         protected override void ProcessRecord()
         {
             try
@@ -104,10 +106,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 ThrowTerminatingException(ex);
            }
         }
+#pragma warning restore 1591
 
         // This parameter set invokes a single graphql operation:
         // ldapIntegrationConnection.
-        protected void ProcessRecord_IntegrationList()
+        internal void ProcessRecord_IntegrationList()
         {
             this._logger.name += " -IntegrationList";
             // Invoke graphql operation ldapIntegrationConnection
@@ -116,7 +119,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // ldapPrincipalConnection.
-        protected void ProcessRecord_PrincipalList()
+        internal void ProcessRecord_PrincipalList()
         {
             this._logger.name += " -PrincipalList";
             // Invoke graphql operation ldapPrincipalConnection
@@ -125,7 +128,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // ldapAuthorizedPrincipalConnection.
-        protected void ProcessRecord_AuthorizedPrincipalList()
+        internal void ProcessRecord_AuthorizedPrincipalList()
         {
             this._logger.name += " -AuthorizedPrincipalList";
             // Invoke graphql operation ldapAuthorizedPrincipalConnection
@@ -142,7 +145,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     sortOrder: SortOrder
         //     sortBy: LdapIntegrationFieldEnum = Name
         //   ): LdapIntegrationConnection!
-        protected void InvokeQueryLdapIntegrationConnection()
+        internal void InvokeQueryLdapIntegrationConnection()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -183,7 +186,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     id: UUID!
         //     searchText: String!
         //   ): PrincipalConnection!
-        protected void InvokeQueryLdapPrincipalConnection()
+        internal void InvokeQueryLdapPrincipalConnection()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -226,7 +229,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     searchText: String!
         //     roleIds: [UUID!]
         //   ): AuthorizedPrincipalConnection!
-        protected void InvokeQueryLdapAuthorizedPrincipalConnection()
+        internal void InvokeQueryLdapAuthorizedPrincipalConnection()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),

@@ -19,3 +19,5 @@ Input for the job to export the specified Azure SQL Managed Instance database.
   - Input for exporting from Rubrik managed persistent backup.
 - serviceTier: System.String
   - Input for service tier selected for the export of the database.
+- serviceObjectiveName: System.String
+  - Input for service object name selected for the export of the database.

@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? CreationType
+        // GraphQL -> creationType: String! (scalar)
+        [JsonProperty("creationType")]
+        public System.String? CreationType { get; set; }
+
         //      C# -> System.String? DisplayName
         // GraphQL -> displayName: String! (scalar)
         [JsonProperty("displayName")]
@@ -45,11 +50,15 @@ namespace RubrikSecurityCloud.Types
     }
 
     public AzureAdUser Set(
+        System.String? CreationType = null,
         System.String? DisplayName = null,
         System.String? PrincipalUserName = null,
         System.String? UserType = null
     ) 
     {
+        if ( CreationType != null ) {
+            this.CreationType = CreationType;
+        }
         if ( DisplayName != null ) {
             this.DisplayName = DisplayName;
         }
@@ -69,6 +78,11 @@ namespace RubrikSecurityCloud.Types
     {
         string ind = new string(' ', indent*2);
         string s = "";
+        //      C# -> System.String? CreationType
+        // GraphQL -> creationType: String! (scalar)
+        if (this.CreationType != null) {
+            s += ind + "creationType\n" ;
+        }
         //      C# -> System.String? DisplayName
         // GraphQL -> displayName: String! (scalar)
         if (this.DisplayName != null) {
@@ -92,6 +106,12 @@ namespace RubrikSecurityCloud.Types
     //[JsonIgnore]
     public override void ApplyExploratoryFieldSpec(String parent = "")
     {
+        //      C# -> System.String? CreationType
+        // GraphQL -> creationType: String! (scalar)
+        if (this.CreationType == null && Exploration.Includes(parent + ".creationType", true))
+        {
+            this.CreationType = "FETCH";
+        }
         //      C# -> System.String? DisplayName
         // GraphQL -> displayName: String! (scalar)
         if (this.DisplayName == null && Exploration.Includes(parent + ".displayName", true))

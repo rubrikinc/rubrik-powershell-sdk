@@ -26,11 +26,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     public class Invoke_RscQueryVsphereVm : RscPSCmdlet
     {
         
-        // -------------------------------------------------------------------
-        // New parameter set
-        //
-        // [GraphQL: vSphereVmNew]
-        //
+        /// <summary>
+        /// New parameter set
+        ///
+        /// [GraphQL: vSphereVmNew]
+        /// </summary>
         [Parameter(
             ParameterSetName = "New",
             Mandatory = false,
@@ -44,11 +44,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter New { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // NewList parameter set
-        //
-        // [GraphQL: vSphereVmNewConnection]
-        //
+        /// <summary>
+        /// NewList parameter set
+        ///
+        /// [GraphQL: vSphereVmNewConnection]
+        /// </summary>
         [Parameter(
             ParameterSetName = "NewList",
             Mandatory = false,
@@ -62,11 +62,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter NewList { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // RecoverableRange parameter set
-        //
-        // [GraphQL: vsphereVMRecoverableRange]
-        //
+        /// <summary>
+        /// RecoverableRange parameter set
+        ///
+        /// [GraphQL: vsphereVMRecoverableRange]
+        /// </summary>
         [Parameter(
             ParameterSetName = "RecoverableRange",
             Mandatory = false,
@@ -80,11 +80,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter RecoverableRange { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // RecoverableRangeInBatch parameter set
-        //
-        // [GraphQL: vsphereVMRecoverableRangeInBatch]
-        //
+        /// <summary>
+        /// RecoverableRangeInBatch parameter set
+        ///
+        /// [GraphQL: vsphereVMRecoverableRangeInBatch]
+        /// </summary>
         [Parameter(
             ParameterSetName = "RecoverableRangeInBatch",
             Mandatory = false,
@@ -98,11 +98,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter RecoverableRangeInBatch { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // MissedRecoverableRange parameter set
-        //
-        // [GraphQL: vsphereVMMissedRecoverableRange]
-        //
+        /// <summary>
+        /// MissedRecoverableRange parameter set
+        ///
+        /// [GraphQL: vsphereVMMissedRecoverableRange]
+        /// </summary>
         [Parameter(
             ParameterSetName = "MissedRecoverableRange",
             Mandatory = false,
@@ -116,11 +116,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter MissedRecoverableRange { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AsyncRequestStatus parameter set
-        //
-        // [GraphQL: vSphereVMAsyncRequestStatus]
-        //
+        /// <summary>
+        /// AsyncRequestStatus parameter set
+        ///
+        /// [GraphQL: vSphereVMAsyncRequestStatus]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AsyncRequestStatus",
             Mandatory = false,
@@ -134,6 +134,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AsyncRequestStatus { get; set; }
 
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
         protected override void ProcessRecord()
         {
             try
@@ -167,10 +169,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 ThrowTerminatingException(ex);
            }
         }
+#pragma warning restore 1591
 
         // This parameter set invokes a single graphql operation:
         // vSphereVmNew.
-        protected void ProcessRecord_New()
+        internal void ProcessRecord_New()
         {
             this._logger.name += " -New";
             // Invoke graphql operation vSphereVmNew
@@ -179,7 +182,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // vSphereVmNewConnection.
-        protected void ProcessRecord_NewList()
+        internal void ProcessRecord_NewList()
         {
             this._logger.name += " -NewList";
             // Invoke graphql operation vSphereVmNewConnection
@@ -188,7 +191,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // vsphereVMRecoverableRange.
-        protected void ProcessRecord_RecoverableRange()
+        internal void ProcessRecord_RecoverableRange()
         {
             this._logger.name += " -RecoverableRange";
             // Invoke graphql operation vsphereVMRecoverableRange
@@ -197,7 +200,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // vsphereVMRecoverableRangeInBatch.
-        protected void ProcessRecord_RecoverableRangeInBatch()
+        internal void ProcessRecord_RecoverableRangeInBatch()
         {
             this._logger.name += " -RecoverableRangeInBatch";
             // Invoke graphql operation vsphereVMRecoverableRangeInBatch
@@ -206,7 +209,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // vsphereVMMissedRecoverableRange.
-        protected void ProcessRecord_MissedRecoverableRange()
+        internal void ProcessRecord_MissedRecoverableRange()
         {
             this._logger.name += " -MissedRecoverableRange";
             // Invoke graphql operation vsphereVMMissedRecoverableRange
@@ -215,7 +218,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // vSphereVMAsyncRequestStatus.
-        protected void ProcessRecord_AsyncRequestStatus()
+        internal void ProcessRecord_AsyncRequestStatus()
         {
             this._logger.name += " -AsyncRequestStatus";
             // Invoke graphql operation vSphereVMAsyncRequestStatus
@@ -225,7 +228,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // vSphereVmNew(fid: UUID!): VsphereVm!
-        protected void InvokeQueryVsphereVmNew()
+        internal void InvokeQueryVsphereVmNew()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
@@ -258,7 +261,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     sortOrder: SortOrder
         //     filter: [Filter!]
         //   ): VsphereVmConnection!
-        protected void InvokeQueryVsphereVmNewConnection()
+        internal void InvokeQueryVsphereVmNewConnection()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -289,7 +292,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // vsphereVMRecoverableRange(snappableFid: UUID!, beforeTime: DateTime, afterTime: DateTime): RecoverableRangeResponse!
-        protected void InvokeQueryVsphereVmRecoverableRange()
+        internal void InvokeQueryVsphereVmRecoverableRange()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("snappableFid", "UUID!"),
@@ -318,7 +321,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // vsphereVMRecoverableRangeInBatch(requestInfo: BatchVmwareVmRecoverableRangesRequestInput!): BatchVmwareVmRecoverableRanges!
-        protected void InvokeQueryVsphereVmRecoverableRangeInBatch()
+        internal void InvokeQueryVsphereVmRecoverableRangeInBatch()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("requestInfo", "BatchVmwareVmRecoverableRangesRequestInput!"),
@@ -345,7 +348,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // vsphereVMMissedRecoverableRange(snappableFid: UUID!, beforeTime: DateTime, afterTime: DateTime): RecoverableRangeResponse!
-        protected void InvokeQueryVsphereVmMissedRecoverableRange()
+        internal void InvokeQueryVsphereVmMissedRecoverableRange()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("snappableFid", "UUID!"),
@@ -374,7 +377,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // vSphereVMAsyncRequestStatus(clusterUuid: UUID!, id: String!): AsyncRequestStatus!
-        protected void InvokeQueryVsphereVmAsyncRequestStatus()
+        internal void InvokeQueryVsphereVmAsyncRequestStatus()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("clusterUuid", "UUID!"),

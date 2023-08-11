@@ -52,3 +52,4 @@ Azure region Enum.
 - USGOVARIZONA - Azure region is US Gov Arizona.
 - QATARCENTRAL - Azure region is Qatar Central.
 - SWEDENCENTRAL - Azure region is Sweden Central.
+- POLANDCENTRAL - Azure region is Poland Central.

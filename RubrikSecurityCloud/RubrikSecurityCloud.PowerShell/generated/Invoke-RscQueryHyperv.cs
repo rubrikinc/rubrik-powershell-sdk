@@ -26,11 +26,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     public class Invoke_RscQueryHyperv : RscPSCmdlet
     {
         
-        // -------------------------------------------------------------------
-        // TopLevelDescendants parameter set
-        //
-        // [GraphQL: hypervTopLevelDescendants]
-        //
+        /// <summary>
+        /// TopLevelDescendants parameter set
+        ///
+        /// [GraphQL: hypervTopLevelDescendants]
+        /// </summary>
         [Parameter(
             ParameterSetName = "TopLevelDescendants",
             Mandatory = false,
@@ -44,11 +44,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter TopLevelDescendants { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // VirtualMachines parameter set
-        //
-        // [GraphQL: hypervVirtualMachines]
-        //
+        /// <summary>
+        /// VirtualMachines parameter set
+        ///
+        /// [GraphQL: hypervVirtualMachines]
+        /// </summary>
         [Parameter(
             ParameterSetName = "VirtualMachines",
             Mandatory = false,
@@ -62,11 +62,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter VirtualMachines { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Scvmm parameter set
-        //
-        // [GraphQL: hypervScvmm]
-        //
+        /// <summary>
+        /// Scvmm parameter set
+        ///
+        /// [GraphQL: hypervScvmm]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Scvmm",
             Mandatory = false,
@@ -80,11 +80,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Scvmm { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Cluster parameter set
-        //
-        // [GraphQL: hypervCluster]
-        //
+        /// <summary>
+        /// Cluster parameter set
+        ///
+        /// [GraphQL: hypervCluster]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Cluster",
             Mandatory = false,
@@ -98,11 +98,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Cluster { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Server parameter set
-        //
-        // [GraphQL: hypervServer]
-        //
+        /// <summary>
+        /// Server parameter set
+        ///
+        /// [GraphQL: hypervServer]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Server",
             Mandatory = false,
@@ -116,11 +116,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Server { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // VirtualMachine parameter set
-        //
-        // [GraphQL: hypervVirtualMachine]
-        //
+        /// <summary>
+        /// VirtualMachine parameter set
+        ///
+        /// [GraphQL: hypervVirtualMachine]
+        /// </summary>
         [Parameter(
             ParameterSetName = "VirtualMachine",
             Mandatory = false,
@@ -134,11 +134,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter VirtualMachine { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // UniqueServersCount parameter set
-        //
-        // [GraphQL: uniqueHypervServersCount]
-        //
+        /// <summary>
+        /// UniqueServersCount parameter set
+        ///
+        /// [GraphQL: uniqueHypervServersCount]
+        /// </summary>
         [Parameter(
             ParameterSetName = "UniqueServersCount",
             Mandatory = false,
@@ -152,11 +152,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter UniqueServersCount { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Scvmms parameter set
-        //
-        // [GraphQL: hypervScvmms]
-        //
+        /// <summary>
+        /// Scvmms parameter set
+        ///
+        /// [GraphQL: hypervScvmms]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Scvmms",
             Mandatory = false,
@@ -170,11 +170,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Scvmms { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Servers parameter set
-        //
-        // [GraphQL: hypervServers]
-        //
+        /// <summary>
+        /// Servers parameter set
+        ///
+        /// [GraphQL: hypervServers]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Servers",
             Mandatory = false,
@@ -191,11 +191,11 @@ Get summary of all the Hyper-V hosts.
         public SwitchParameter Servers { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Mounts parameter set
-        //
-        // [GraphQL: hypervMounts]
-        //
+        /// <summary>
+        /// Mounts parameter set
+        ///
+        /// [GraphQL: hypervMounts]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Mounts",
             Mandatory = false,
@@ -209,11 +209,11 @@ Get summary of all the Hyper-V hosts.
         public SwitchParameter Mounts { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // VmDetail parameter set
-        //
-        // [GraphQL: hypervVmDetail]
-        //
+        /// <summary>
+        /// VmDetail parameter set
+        ///
+        /// [GraphQL: hypervVmDetail]
+        /// </summary>
         [Parameter(
             ParameterSetName = "VmDetail",
             Mandatory = false,
@@ -227,11 +227,11 @@ Get summary of all the Hyper-V hosts.
         public SwitchParameter VmDetail { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // HostAsyncRequestStatus parameter set
-        //
-        // [GraphQL: hypervHostAsyncRequestStatus]
-        //
+        /// <summary>
+        /// HostAsyncRequestStatus parameter set
+        ///
+        /// [GraphQL: hypervHostAsyncRequestStatus]
+        /// </summary>
         [Parameter(
             ParameterSetName = "HostAsyncRequestStatus",
             Mandatory = false,
@@ -248,11 +248,11 @@ Get details about a Hyper-V host related async request.
         public SwitchParameter HostAsyncRequestStatus { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ScvmmAsyncRequestStatus parameter set
-        //
-        // [GraphQL: hypervScvmmAsyncRequestStatus]
-        //
+        /// <summary>
+        /// ScvmmAsyncRequestStatus parameter set
+        ///
+        /// [GraphQL: hypervScvmmAsyncRequestStatus]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ScvmmAsyncRequestStatus",
             Mandatory = false,
@@ -269,11 +269,11 @@ Get details about a Hyper-V SCVMM related async request.
         public SwitchParameter ScvmmAsyncRequestStatus { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // VirtualMachineAsyncRequestStatus parameter set
-        //
-        // [GraphQL: hypervVirtualMachineAsyncRequestStatus]
-        //
+        /// <summary>
+        /// VirtualMachineAsyncRequestStatus parameter set
+        ///
+        /// [GraphQL: hypervVirtualMachineAsyncRequestStatus]
+        /// </summary>
         [Parameter(
             ParameterSetName = "VirtualMachineAsyncRequestStatus",
             Mandatory = false,
@@ -290,6 +290,8 @@ Get details about a Hyper-V vm related async request.
         public SwitchParameter VirtualMachineAsyncRequestStatus { get; set; }
 
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
         protected override void ProcessRecord()
         {
             try
@@ -347,10 +349,11 @@ Get details about a Hyper-V vm related async request.
                 ThrowTerminatingException(ex);
            }
         }
+#pragma warning restore 1591
 
         // This parameter set invokes a single graphql operation:
         // hypervTopLevelDescendants.
-        protected void ProcessRecord_TopLevelDescendants()
+        internal void ProcessRecord_TopLevelDescendants()
         {
             this._logger.name += " -TopLevelDescendants";
             // Invoke graphql operation hypervTopLevelDescendants
@@ -359,7 +362,7 @@ Get details about a Hyper-V vm related async request.
 
         // This parameter set invokes a single graphql operation:
         // hypervVirtualMachines.
-        protected void ProcessRecord_VirtualMachines()
+        internal void ProcessRecord_VirtualMachines()
         {
             this._logger.name += " -VirtualMachines";
             // Invoke graphql operation hypervVirtualMachines
@@ -368,7 +371,7 @@ Get details about a Hyper-V vm related async request.
 
         // This parameter set invokes a single graphql operation:
         // hypervScvmm.
-        protected void ProcessRecord_Scvmm()
+        internal void ProcessRecord_Scvmm()
         {
             this._logger.name += " -Scvmm";
             // Invoke graphql operation hypervScvmm
@@ -377,7 +380,7 @@ Get details about a Hyper-V vm related async request.
 
         // This parameter set invokes a single graphql operation:
         // hypervCluster.
-        protected void ProcessRecord_Cluster()
+        internal void ProcessRecord_Cluster()
         {
             this._logger.name += " -Cluster";
             // Invoke graphql operation hypervCluster
@@ -386,7 +389,7 @@ Get details about a Hyper-V vm related async request.
 
         // This parameter set invokes a single graphql operation:
         // hypervServer.
-        protected void ProcessRecord_Server()
+        internal void ProcessRecord_Server()
         {
             this._logger.name += " -Server";
             // Invoke graphql operation hypervServer
@@ -395,7 +398,7 @@ Get details about a Hyper-V vm related async request.
 
         // This parameter set invokes a single graphql operation:
         // hypervVirtualMachine.
-        protected void ProcessRecord_VirtualMachine()
+        internal void ProcessRecord_VirtualMachine()
         {
             this._logger.name += " -VirtualMachine";
             // Invoke graphql operation hypervVirtualMachine
@@ -404,7 +407,7 @@ Get details about a Hyper-V vm related async request.
 
         // This parameter set invokes a single graphql operation:
         // uniqueHypervServersCount.
-        protected void ProcessRecord_UniqueServersCount()
+        internal void ProcessRecord_UniqueServersCount()
         {
             this._logger.name += " -UniqueServersCount";
             // Invoke graphql operation uniqueHypervServersCount
@@ -413,7 +416,7 @@ Get details about a Hyper-V vm related async request.
 
         // This parameter set invokes a single graphql operation:
         // hypervScvmms.
-        protected void ProcessRecord_Scvmms()
+        internal void ProcessRecord_Scvmms()
         {
             this._logger.name += " -Scvmms";
             // Invoke graphql operation hypervScvmms
@@ -422,7 +425,7 @@ Get details about a Hyper-V vm related async request.
 
         // This parameter set invokes a single graphql operation:
         // hypervServers.
-        protected void ProcessRecord_Servers()
+        internal void ProcessRecord_Servers()
         {
             this._logger.name += " -Servers";
             // Invoke graphql operation hypervServers
@@ -431,7 +434,7 @@ Get details about a Hyper-V vm related async request.
 
         // This parameter set invokes a single graphql operation:
         // hypervMounts.
-        protected void ProcessRecord_Mounts()
+        internal void ProcessRecord_Mounts()
         {
             this._logger.name += " -Mounts";
             // Invoke graphql operation hypervMounts
@@ -440,7 +443,7 @@ Get details about a Hyper-V vm related async request.
 
         // This parameter set invokes a single graphql operation:
         // hypervVmDetail.
-        protected void ProcessRecord_VmDetail()
+        internal void ProcessRecord_VmDetail()
         {
             this._logger.name += " -VmDetail";
             // Invoke graphql operation hypervVmDetail
@@ -449,7 +452,7 @@ Get details about a Hyper-V vm related async request.
 
         // This parameter set invokes a single graphql operation:
         // hypervHostAsyncRequestStatus.
-        protected void ProcessRecord_HostAsyncRequestStatus()
+        internal void ProcessRecord_HostAsyncRequestStatus()
         {
             this._logger.name += " -HostAsyncRequestStatus";
             // Invoke graphql operation hypervHostAsyncRequestStatus
@@ -458,7 +461,7 @@ Get details about a Hyper-V vm related async request.
 
         // This parameter set invokes a single graphql operation:
         // hypervScvmmAsyncRequestStatus.
-        protected void ProcessRecord_ScvmmAsyncRequestStatus()
+        internal void ProcessRecord_ScvmmAsyncRequestStatus()
         {
             this._logger.name += " -ScvmmAsyncRequestStatus";
             // Invoke graphql operation hypervScvmmAsyncRequestStatus
@@ -467,7 +470,7 @@ Get details about a Hyper-V vm related async request.
 
         // This parameter set invokes a single graphql operation:
         // hypervVirtualMachineAsyncRequestStatus.
-        protected void ProcessRecord_VirtualMachineAsyncRequestStatus()
+        internal void ProcessRecord_VirtualMachineAsyncRequestStatus()
         {
             this._logger.name += " -VirtualMachineAsyncRequestStatus";
             // Invoke graphql operation hypervVirtualMachineAsyncRequestStatus
@@ -484,7 +487,7 @@ Get details about a Hyper-V vm related async request.
         //     typeFilter: [HierarchyObjectTypeEnum!]
         //     filter: [Filter!]
         //   ): HypervTopLevelDescendantTypeConnection!
-        protected void InvokeQueryHypervTopLevelDescendants()
+        internal void InvokeQueryHypervTopLevelDescendants()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -522,7 +525,7 @@ Get details about a Hyper-V vm related async request.
         //     sortOrder: SortOrder
         //     filter: [Filter!]
         //   ): HyperVVirtualMachineConnection!
-        protected void InvokeQueryHypervVirtualMachines()
+        internal void InvokeQueryHypervVirtualMachines()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -553,7 +556,7 @@ Get details about a Hyper-V vm related async request.
 
         // Invoke GraphQL Query:
         // hypervScvmm(fid: UUID!): HyperVSCVMM!
-        protected void InvokeQueryHypervScvmm()
+        internal void InvokeQueryHypervScvmm()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
@@ -580,7 +583,7 @@ Get details about a Hyper-V vm related async request.
 
         // Invoke GraphQL Query:
         // hypervCluster(fid: UUID!): HyperVCluster!
-        protected void InvokeQueryHypervCluster()
+        internal void InvokeQueryHypervCluster()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
@@ -607,7 +610,7 @@ Get details about a Hyper-V vm related async request.
 
         // Invoke GraphQL Query:
         // hypervServer(fid: UUID!): HypervServer!
-        protected void InvokeQueryHypervServer()
+        internal void InvokeQueryHypervServer()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
@@ -634,7 +637,7 @@ Get details about a Hyper-V vm related async request.
 
         // Invoke GraphQL Query:
         // hypervVirtualMachine(fid: UUID!): HyperVVirtualMachine!
-        protected void InvokeQueryHypervVirtualMachine()
+        internal void InvokeQueryHypervVirtualMachine()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
@@ -661,7 +664,7 @@ Get details about a Hyper-V vm related async request.
 
         // Invoke GraphQL Query:
         // uniqueHypervServersCount(filter: [Filter!]): Int!
-        protected void InvokeQueryUniqueHypervServersCount()
+        internal void InvokeQueryUniqueHypervServersCount()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("filter", "[Filter!]"),
@@ -694,7 +697,7 @@ Get details about a Hyper-V vm related async request.
         //     sortOrder: SortOrder
         //     filter: [Filter!]
         //   ): HyperVSCVMMConnection!
-        protected void InvokeQueryHypervScvmms()
+        internal void InvokeQueryHypervScvmms()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -725,7 +728,7 @@ Get details about a Hyper-V vm related async request.
 
         // Invoke GraphQL Query:
         // hypervServers(input: QueryHypervHostInput!): HypervHostSummaryListResponse!
-        protected void InvokeQueryHypervServers()
+        internal void InvokeQueryHypervServers()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "QueryHypervHostInput!"),
@@ -757,7 +760,7 @@ Get details about a Hyper-V vm related async request.
         //     filters: [HypervLiveMountFilterInput!]
         //     sortBy: HypervLiveMountSortByInput
         //   ): HyperVLiveMountConnection!
-        protected void InvokeQueryHypervMounts()
+        internal void InvokeQueryHypervMounts()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -787,7 +790,7 @@ Get details about a Hyper-V vm related async request.
 
         // Invoke GraphQL Query:
         // hypervVmDetail(input: GetHypervVirtualMachineInput!): HypervVirtualMachineDetail!
-        protected void InvokeQueryHypervVmDetail()
+        internal void InvokeQueryHypervVmDetail()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetHypervVirtualMachineInput!"),
@@ -814,7 +817,7 @@ Get details about a Hyper-V vm related async request.
 
         // Invoke GraphQL Query:
         // hypervHostAsyncRequestStatus(input: GetHypervHostAsyncRequestStatusInput!): AsyncRequestStatus!
-        protected void InvokeQueryHypervHostAsyncRequestStatus()
+        internal void InvokeQueryHypervHostAsyncRequestStatus()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetHypervHostAsyncRequestStatusInput!"),
@@ -841,7 +844,7 @@ Get details about a Hyper-V vm related async request.
 
         // Invoke GraphQL Query:
         // hypervScvmmAsyncRequestStatus(input: GetHypervScvmmAsyncRequestStatusInput!): AsyncRequestStatus!
-        protected void InvokeQueryHypervScvmmAsyncRequestStatus()
+        internal void InvokeQueryHypervScvmmAsyncRequestStatus()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetHypervScvmmAsyncRequestStatusInput!"),
@@ -868,7 +871,7 @@ Get details about a Hyper-V vm related async request.
 
         // Invoke GraphQL Query:
         // hypervVirtualMachineAsyncRequestStatus(input: GetHypervVirtualMachineAsyncRequestStatusInput!): AsyncRequestStatus!
-        protected void InvokeQueryHypervVirtualMachineAsyncRequestStatus()
+        internal void InvokeQueryHypervVirtualMachineAsyncRequestStatus()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetHypervVirtualMachineAsyncRequestStatusInput!"),

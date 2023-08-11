@@ -52,3 +52,4 @@ Azure cloud account region Enum.
 - USGOVARIZONA - Azure Cloud account region is US Gov Arizona.
 - QATARCENTRAL - Azure Cloud account region is Qatar Central.
 - SWEDENCENTRAL - Azure Cloud account region is Sweden Central.
+- POLANDCENTRAL - Azure Cloud account region is Poland Central.

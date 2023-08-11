@@ -7,8 +7,6 @@ Specific information for Azure target created on Rubrik.
   - Connection status of the Azure target.
 - cloudNativeCompanion: AzureCloudNativeTargetCompanion
   - Cloud native information of the Azure target.
-- isBlobImmutabilityEnabled: System.Boolean
-  - Specifies whether blob immutability is enabled for the Azure archival target.
 - cloudAccount: CloudAccount
   - Cloud account details of the Azure target.
 - instanceType: InstanceTypeEnum

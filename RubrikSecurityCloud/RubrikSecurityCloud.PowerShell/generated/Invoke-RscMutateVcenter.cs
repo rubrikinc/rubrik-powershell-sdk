@@ -26,11 +26,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     public class Invoke_RscMutateVcenter : RscPSCmdlet
     {
         
-        // -------------------------------------------------------------------
-        // Create parameter set
-        //
-        // [GraphQL: vsphereCreateVCenter]
-        //
+        /// <summary>
+        /// Create parameter set
+        ///
+        /// [GraphQL: vsphereCreateVCenter]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Create",
             Mandatory = false,
@@ -44,11 +44,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Create { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Delete parameter set
-        //
-        // [GraphQL: vsphereDeleteVcenter]
-        //
+        /// <summary>
+        /// Delete parameter set
+        ///
+        /// [GraphQL: vsphereDeleteVcenter]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Delete",
             Mandatory = false,
@@ -65,11 +65,11 @@ Initiates an asynchronous job to remove a vCenter Server object. The vCenter Ser
         public SwitchParameter Delete { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Edit parameter set
-        //
-        // [GraphQL: vsphereEditVCenter]
-        //
+        /// <summary>
+        /// Edit parameter set
+        ///
+        /// [GraphQL: vsphereEditVCenter]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Edit",
             Mandatory = false,
@@ -83,11 +83,11 @@ Initiates an asynchronous job to remove a vCenter Server object. The vCenter Ser
         public SwitchParameter Edit { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Refresh parameter set
-        //
-        // [GraphQL: vsphereRefreshVCenter]
-        //
+        /// <summary>
+        /// Refresh parameter set
+        ///
+        /// [GraphQL: vsphereRefreshVCenter]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Refresh",
             Mandatory = false,
@@ -101,11 +101,11 @@ Initiates an asynchronous job to remove a vCenter Server object. The vCenter Ser
         public SwitchParameter Refresh { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Update parameter set
-        //
-        // [GraphQL: updateVcenter]
-        //
+        /// <summary>
+        /// Update parameter set
+        ///
+        /// [GraphQL: updateVcenter]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Update",
             Mandatory = false,
@@ -122,11 +122,11 @@ Update the address, username and password of the specified vCenter Server object
         public SwitchParameter Update { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // UpdateHotAddNetwork parameter set
-        //
-        // [GraphQL: updateVcenterHotAddNetwork]
-        //
+        /// <summary>
+        /// UpdateHotAddNetwork parameter set
+        ///
+        /// [GraphQL: updateVcenterHotAddNetwork]
+        /// </summary>
         [Parameter(
             ParameterSetName = "UpdateHotAddNetwork",
             Mandatory = false,
@@ -143,11 +143,11 @@ Set the user-configured network for HotAdd backup and recovery operations on VMw
         public SwitchParameter UpdateHotAddNetwork { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // UpdateHotAddBandwidth parameter set
-        //
-        // [GraphQL: updateVcenterHotAddBandwidth]
-        //
+        /// <summary>
+        /// UpdateHotAddBandwidth parameter set
+        ///
+        /// [GraphQL: updateVcenterHotAddBandwidth]
+        /// </summary>
         [Parameter(
             ParameterSetName = "UpdateHotAddBandwidth",
             Mandatory = false,
@@ -164,6 +164,8 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
         public SwitchParameter UpdateHotAddBandwidth { get; set; }
 
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
         protected override void ProcessRecord()
         {
             try
@@ -200,10 +202,11 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
                 ThrowTerminatingException(ex);
            }
         }
+#pragma warning restore 1591
 
         // This parameter set invokes a single graphql operation:
         // vsphereCreateVCenter.
-        protected void ProcessRecord_Create()
+        internal void ProcessRecord_Create()
         {
             this._logger.name += " -Create";
             // Invoke graphql operation vsphereCreateVCenter
@@ -212,7 +215,7 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
 
         // This parameter set invokes a single graphql operation:
         // vsphereDeleteVcenter.
-        protected void ProcessRecord_Delete()
+        internal void ProcessRecord_Delete()
         {
             this._logger.name += " -Delete";
             // Invoke graphql operation vsphereDeleteVcenter
@@ -221,7 +224,7 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
 
         // This parameter set invokes a single graphql operation:
         // vsphereEditVCenter.
-        protected void ProcessRecord_Edit()
+        internal void ProcessRecord_Edit()
         {
             this._logger.name += " -Edit";
             // Invoke graphql operation vsphereEditVCenter
@@ -230,7 +233,7 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
 
         // This parameter set invokes a single graphql operation:
         // vsphereRefreshVCenter.
-        protected void ProcessRecord_Refresh()
+        internal void ProcessRecord_Refresh()
         {
             this._logger.name += " -Refresh";
             // Invoke graphql operation vsphereRefreshVCenter
@@ -239,7 +242,7 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
 
         // This parameter set invokes a single graphql operation:
         // updateVcenter.
-        protected void ProcessRecord_Update()
+        internal void ProcessRecord_Update()
         {
             this._logger.name += " -Update";
             // Invoke graphql operation updateVcenter
@@ -248,7 +251,7 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
 
         // This parameter set invokes a single graphql operation:
         // updateVcenterHotAddNetwork.
-        protected void ProcessRecord_UpdateHotAddNetwork()
+        internal void ProcessRecord_UpdateHotAddNetwork()
         {
             this._logger.name += " -UpdateHotAddNetwork";
             // Invoke graphql operation updateVcenterHotAddNetwork
@@ -257,7 +260,7 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
 
         // This parameter set invokes a single graphql operation:
         // updateVcenterHotAddBandwidth.
-        protected void ProcessRecord_UpdateHotAddBandwidth()
+        internal void ProcessRecord_UpdateHotAddBandwidth()
         {
             this._logger.name += " -UpdateHotAddBandwidth";
             // Invoke graphql operation updateVcenterHotAddBandwidth
@@ -274,7 +277,7 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
         //     conflictResolutionAuthz: ConflictResolutionAuthzEnum!
         //     caCert: String
         //   ): VsphereAsyncRequestStatus!
-        protected void InvokeMutationVsphereCreateVcenter()
+        internal void InvokeMutationVsphereCreateVcenter()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("clusterUuid", "UUID!"),
@@ -306,7 +309,7 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
 
         // Invoke GraphQL Mutation:
         // vsphereDeleteVcenter(input: VsphereDeleteVcenterInput!): AsyncRequestStatus!
-        protected void InvokeMutationVsphereDeleteVcenter()
+        internal void InvokeMutationVsphereDeleteVcenter()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereDeleteVcenterInput!"),
@@ -340,7 +343,7 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
         //     conflictResolutionAuthz: ConflictResolutionAuthzEnum!
         //     caCert: String
         //   ): RequestSuccess!
-        protected void InvokeMutationVsphereEditVcenter()
+        internal void InvokeMutationVsphereEditVcenter()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("vcenterId", "UUID!"),
@@ -372,7 +375,7 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
 
         // Invoke GraphQL Mutation:
         // vsphereRefreshVCenter(vcenterId: UUID!): VsphereAsyncRequestStatus!
-        protected void InvokeMutationVsphereRefreshVcenter()
+        internal void InvokeMutationVsphereRefreshVcenter()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("vcenterId", "UUID!"),
@@ -399,7 +402,7 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
 
         // Invoke GraphQL Mutation:
         // updateVcenter(input: UpdateVcenterInput!): UpdateVcenterReply!
-        protected void InvokeMutationUpdateVcenter()
+        internal void InvokeMutationUpdateVcenter()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpdateVcenterInput!"),
@@ -426,7 +429,7 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
 
         // Invoke GraphQL Mutation:
         // updateVcenterHotAddNetwork(input: UpdateVcenterHotAddNetworkInput!): RequestSuccess!
-        protected void InvokeMutationUpdateVcenterHotAddNetwork()
+        internal void InvokeMutationUpdateVcenterHotAddNetwork()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpdateVcenterHotAddNetworkInput!"),
@@ -453,7 +456,7 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
 
         // Invoke GraphQL Mutation:
         // updateVcenterHotAddBandwidth(input: UpdateVcenterHotAddBandwidthInput!): RequestSuccess!
-        protected void InvokeMutationUpdateVcenterHotAddBandwidth()
+        internal void InvokeMutationUpdateVcenterHotAddBandwidth()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpdateVcenterHotAddBandwidthInput!"),

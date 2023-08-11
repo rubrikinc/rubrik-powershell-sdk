@@ -1,4 +1,6 @@
 ### VsphereNetwork
+- moid: System.String
+  - MOID of the vSphere network.
 - id: System.String
   - Object ID.
 - cluster: Cluster

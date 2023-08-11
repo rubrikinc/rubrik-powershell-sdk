@@ -13,3 +13,5 @@ Information about SAP HANA hosts of the system.
   - UUID of cluster associated with SAP HANA host.
 - host: PhysicalHost
   - Details of the host for SAP HANA system.
+- systemHost: PhysicalHost
+  - Details of the host for SAP HANA system.

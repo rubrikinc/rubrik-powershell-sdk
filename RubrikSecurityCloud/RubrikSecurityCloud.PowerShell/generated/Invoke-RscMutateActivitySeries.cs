@@ -26,11 +26,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     public class Invoke_RscMutateActivitySeries : RscPSCmdlet
     {
         
-        // -------------------------------------------------------------------
-        // Cancel parameter set
-        //
-        // [GraphQL: cancelActivitySeries]
-        //
+        /// <summary>
+        /// Cancel parameter set
+        ///
+        /// [GraphQL: cancelActivitySeries]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Cancel",
             Mandatory = false,
@@ -44,6 +44,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Cancel { get; set; }
 
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
         protected override void ProcessRecord()
         {
             try
@@ -62,10 +64,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 ThrowTerminatingException(ex);
            }
         }
+#pragma warning restore 1591
 
         // This parameter set invokes a single graphql operation:
         // cancelActivitySeries.
-        protected void ProcessRecord_Cancel()
+        internal void ProcessRecord_Cancel()
         {
             this._logger.name += " -Cancel";
             // Invoke graphql operation cancelActivitySeries
@@ -75,7 +78,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // cancelActivitySeries(input: CancelActivitySeriesInput!): Boolean!
-        protected void InvokeMutationCancelActivitySeries()
+        internal void InvokeMutationCancelActivitySeries()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CancelActivitySeriesInput!"),

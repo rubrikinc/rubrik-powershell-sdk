@@ -72,6 +72,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("serviceTier")]
         public System.String? ServiceTier { get; set; }
 
+        //      C# -> System.String? ServiceObjectiveName
+        // GraphQL -> serviceObjectiveName: String (scalar)
+        [JsonProperty("serviceObjectiveName")]
+        public System.String? ServiceObjectiveName { get; set; }
+
 
         #endregion
 

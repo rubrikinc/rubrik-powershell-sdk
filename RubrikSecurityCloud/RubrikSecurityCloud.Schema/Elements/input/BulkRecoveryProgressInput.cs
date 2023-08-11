@@ -26,6 +26,13 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("bulkRecoveryInstanceId")]
         public System.String? BulkRecoveryInstanceId { get; set; }
 
+        //      C# -> System.String? SubscriptionId
+        // GraphQL -> subscriptionId: UUID! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("subscriptionId")]
+        public System.String? SubscriptionId { get; set; }
+
 
         #endregion
 

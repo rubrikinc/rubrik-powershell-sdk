@@ -1,4 +1,4 @@
-// RestoreItemInfo.cs
+// CompleteTrialOnboardingInput.cs
 //
 // This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
@@ -13,32 +13,18 @@ using RubrikSecurityCloud;
 
 namespace RubrikSecurityCloud.Types
 {
-    #region RestoreItemInfo
+    #region CompleteTrialOnboardingInput
 
-    public class RestoreItemInfo: IInput
+    public class CompleteTrialOnboardingInput: IInput
     {
         #region members
 
-        //      C# -> System.String? ItemId
-        // GraphQL -> itemId: String! (scalar)
+        //      C# -> System.String? TrialId
+        // GraphQL -> trialId: UUID! (scalar)
         [Required]
         [JsonRequired]
-        [JsonProperty("itemId")]
-        public System.String? ItemId { get; set; }
-
-        //      C# -> System.String? SnapshotId
-        // GraphQL -> snapshotId: UUID! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("snapshotId")]
-        public System.String? SnapshotId { get; set; }
-
-        //      C# -> System.Int32? SequenceNumber
-        // GraphQL -> sequenceNumber: Int! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("sequenceNumber")]
-        public System.Int32? SequenceNumber { get; set; }
+        [JsonProperty("trialId")]
+        public System.String? TrialId { get; set; }
 
 
         #endregion
@@ -66,7 +52,7 @@ namespace RubrikSecurityCloud.Types
         }
         #endregion
 
-    } // class RestoreItemInfo
+    } // class CompleteTrialOnboardingInput
     #endregion
 
 } // namespace RubrikSecurityCloud.Types

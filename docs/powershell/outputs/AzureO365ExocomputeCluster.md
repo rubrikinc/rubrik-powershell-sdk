@@ -21,12 +21,9 @@ Azure O365 Exocompute cluster details.
 - polarisAccount: System.String
 - orgTenantId: System.String
 - azureCloudType: O365AzureCloudType
-- hostType: AzureHostType
 - storageIds: ExocomputeStorageAccountIds
 - kmsSpec: KmsSpec
   - KMS and key details.
-- kmsHostType: AzureHostType
-  - KMS host type details. The possible values are RUBRIK_HOST and CUSTOMER_HOST.
 - saasFeature: SaasFeature
   - Rubrik SaaS feature type using the Exocompute cluster.
 - colossusBackupStorageAccountId: System.String
@@ -35,3 +32,7 @@ Azure O365 Exocompute cluster details.
   - Database IDs used for Zeus data store.
 - kekBackupStartTime: DateTime
   - Specifies the KEK backup start time to determine the last time the backup was run.
+- kmsHostType: AzureHostType
+  - KMS host type details. The possible values are RUBRIK_HOST and CUSTOMER_HOST.
+- hostType: AzureHostType
+  - Azure host type details.

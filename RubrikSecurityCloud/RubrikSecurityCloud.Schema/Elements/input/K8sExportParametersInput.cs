@@ -24,6 +24,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("filter")]
         public System.String? Filter { get; set; }
 
+        //      C# -> System.Boolean? ShouldDeleteNamespaceIfExportFailed
+        // GraphQL -> shouldDeleteNamespaceIfExportFailed: Boolean (scalar)
+        [JsonProperty("shouldDeleteNamespaceIfExportFailed")]
+        public System.Boolean? ShouldDeleteNamespaceIfExportFailed { get; set; }
+
         //      C# -> System.Boolean? IgnoreErrors
         // GraphQL -> ignoreErrors: Boolean (scalar)
         [JsonProperty("ignoreErrors")]

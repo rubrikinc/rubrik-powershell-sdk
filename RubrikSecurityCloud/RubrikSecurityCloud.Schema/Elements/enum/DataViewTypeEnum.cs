@@ -72,8 +72,14 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "SLA_AUDIT_DETAIL")]
         SLA_AUDIT_DETAIL,
 
+        [EnumMember(Value = "SLA_AUDIT_DETAIL_NG")]
+        SLA_AUDIT_DETAIL_NG,
+
         [EnumMember(Value = "SLA_AUDIT_LIST")]
         SLA_AUDIT_LIST,
+
+        [EnumMember(Value = "SLA_AUDIT_LIST_NG")]
+        SLA_AUDIT_LIST_NG,
 
         [EnumMember(Value = "SLA_COMPLIANCE")]
         SLA_COMPLIANCE,

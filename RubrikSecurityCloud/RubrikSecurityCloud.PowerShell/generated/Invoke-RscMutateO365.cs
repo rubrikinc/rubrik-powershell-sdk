@@ -26,11 +26,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     public class Invoke_RscMutateO365 : RscPSCmdlet
     {
         
-        // -------------------------------------------------------------------
-        // SaaSSetupKickoff parameter set
-        //
-        // [GraphQL: o365SaaSSetupKickoff]
-        //
+        /// <summary>
+        /// SaaSSetupKickoff parameter set
+        ///
+        /// [GraphQL: o365SaaSSetupKickoff]
+        /// </summary>
         [Parameter(
             ParameterSetName = "SaaSSetupKickoff",
             Mandatory = false,
@@ -44,11 +44,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter SaaSSetupKickoff { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // PdlGroups parameter set
-        //
-        // [GraphQL: o365PdlGroups]
-        //
+        /// <summary>
+        /// PdlGroups parameter set
+        ///
+        /// [GraphQL: o365PdlGroups]
+        /// </summary>
         [Parameter(
             ParameterSetName = "PdlGroups",
             Mandatory = false,
@@ -62,11 +62,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter PdlGroups { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // SaasSetupComplete parameter set
-        //
-        // [GraphQL: o365SaasSetupComplete]
-        //
+        /// <summary>
+        /// SaasSetupComplete parameter set
+        ///
+        /// [GraphQL: o365SaasSetupComplete]
+        /// </summary>
         [Parameter(
             ParameterSetName = "SaasSetupComplete",
             Mandatory = false,
@@ -80,11 +80,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter SaasSetupComplete { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // SetupKickoff parameter set
-        //
-        // [GraphQL: o365SetupKickoff]
-        //
+        /// <summary>
+        /// SetupKickoff parameter set
+        ///
+        /// [GraphQL: o365SetupKickoff]
+        /// </summary>
         [Parameter(
             ParameterSetName = "SetupKickoff",
             Mandatory = false,
@@ -98,11 +98,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter SetupKickoff { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AddOrg parameter set
-        //
-        // [GraphQL: addO365Org]
-        //
+        /// <summary>
+        /// AddOrg parameter set
+        ///
+        /// [GraphQL: addO365Org]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AddOrg",
             Mandatory = false,
@@ -116,11 +116,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AddOrg { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // OauthConsentKickoff parameter set
-        //
-        // [GraphQL: o365OauthConsentKickoff]
-        //
+        /// <summary>
+        /// OauthConsentKickoff parameter set
+        ///
+        /// [GraphQL: o365OauthConsentKickoff]
+        /// </summary>
         [Parameter(
             ParameterSetName = "OauthConsentKickoff",
             Mandatory = false,
@@ -134,11 +134,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter OauthConsentKickoff { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // OauthConsentComplete parameter set
-        //
-        // [GraphQL: o365OauthConsentComplete]
-        //
+        /// <summary>
+        /// OauthConsentComplete parameter set
+        ///
+        /// [GraphQL: o365OauthConsentComplete]
+        /// </summary>
         [Parameter(
             ParameterSetName = "OauthConsentComplete",
             Mandatory = false,
@@ -152,11 +152,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter OauthConsentComplete { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // CreateAppKickoff parameter set
-        //
-        // [GraphQL: createO365AppKickoff]
-        //
+        /// <summary>
+        /// CreateAppKickoff parameter set
+        ///
+        /// [GraphQL: createO365AppKickoff]
+        /// </summary>
         [Parameter(
             ParameterSetName = "CreateAppKickoff",
             Mandatory = false,
@@ -170,11 +170,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter CreateAppKickoff { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // CreateAppComplete parameter set
-        //
-        // [GraphQL: createO365AppComplete]
-        //
+        /// <summary>
+        /// CreateAppComplete parameter set
+        ///
+        /// [GraphQL: createO365AppComplete]
+        /// </summary>
         [Parameter(
             ParameterSetName = "CreateAppComplete",
             Mandatory = false,
@@ -188,11 +188,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter CreateAppComplete { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // InsertCustomerApp parameter set
-        //
-        // [GraphQL: insertCustomerO365App]
-        //
+        /// <summary>
+        /// InsertCustomerApp parameter set
+        ///
+        /// [GraphQL: insertCustomerO365App]
+        /// </summary>
         [Parameter(
             ParameterSetName = "InsertCustomerApp",
             Mandatory = false,
@@ -206,11 +206,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter InsertCustomerApp { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // UpdateAppAuthStatus parameter set
-        //
-        // [GraphQL: updateO365AppAuthStatus]
-        //
+        /// <summary>
+        /// UpdateAppAuthStatus parameter set
+        ///
+        /// [GraphQL: updateO365AppAuthStatus]
+        /// </summary>
         [Parameter(
             ParameterSetName = "UpdateAppAuthStatus",
             Mandatory = false,
@@ -224,11 +224,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter UpdateAppAuthStatus { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // UpdateAppPermissions parameter set
-        //
-        // [GraphQL: updateO365AppPermissions]
-        //
+        /// <summary>
+        /// UpdateAppPermissions parameter set
+        ///
+        /// [GraphQL: updateO365AppPermissions]
+        /// </summary>
         [Parameter(
             ParameterSetName = "UpdateAppPermissions",
             Mandatory = false,
@@ -242,11 +242,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter UpdateAppPermissions { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DeleteAzureApp parameter set
-        //
-        // [GraphQL: deleteO365AzureApp]
-        //
+        /// <summary>
+        /// DeleteAzureApp parameter set
+        ///
+        /// [GraphQL: deleteO365AzureApp]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DeleteAzureApp",
             Mandatory = false,
@@ -260,11 +260,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter DeleteAzureApp { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // BackupMailbox parameter set
-        //
-        // [GraphQL: backupO365Mailbox]
-        //
+        /// <summary>
+        /// BackupMailbox parameter set
+        ///
+        /// [GraphQL: backupO365Mailbox]
+        /// </summary>
         [Parameter(
             ParameterSetName = "BackupMailbox",
             Mandatory = false,
@@ -278,11 +278,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter BackupMailbox { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // BackupOnedrive parameter set
-        //
-        // [GraphQL: backupO365Onedrive]
-        //
+        /// <summary>
+        /// BackupOnedrive parameter set
+        ///
+        /// [GraphQL: backupO365Onedrive]
+        /// </summary>
         [Parameter(
             ParameterSetName = "BackupOnedrive",
             Mandatory = false,
@@ -296,11 +296,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter BackupOnedrive { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // BackupSharepointDrive parameter set
-        //
-        // [GraphQL: backupO365SharepointDrive]
-        //
+        /// <summary>
+        /// BackupSharepointDrive parameter set
+        ///
+        /// [GraphQL: backupO365SharepointDrive]
+        /// </summary>
         [Parameter(
             ParameterSetName = "BackupSharepointDrive",
             Mandatory = false,
@@ -314,11 +314,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter BackupSharepointDrive { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // BackupSharepointList parameter set
-        //
-        // [GraphQL: backupO365SharepointList]
-        //
+        /// <summary>
+        /// BackupSharepointList parameter set
+        ///
+        /// [GraphQL: backupO365SharepointList]
+        /// </summary>
         [Parameter(
             ParameterSetName = "BackupSharepointList",
             Mandatory = false,
@@ -332,11 +332,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter BackupSharepointList { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // BackupSharePointSite parameter set
-        //
-        // [GraphQL: backupO365SharePointSite]
-        //
+        /// <summary>
+        /// BackupSharePointSite parameter set
+        ///
+        /// [GraphQL: backupO365SharePointSite]
+        /// </summary>
         [Parameter(
             ParameterSetName = "BackupSharePointSite",
             Mandatory = false,
@@ -350,11 +350,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter BackupSharePointSite { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // BackupTeam parameter set
-        //
-        // [GraphQL: backupO365Team]
-        //
+        /// <summary>
+        /// BackupTeam parameter set
+        ///
+        /// [GraphQL: backupO365Team]
+        /// </summary>
         [Parameter(
             ParameterSetName = "BackupTeam",
             Mandatory = false,
@@ -368,11 +368,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter BackupTeam { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // RestoreTeamsFiles parameter set
-        //
-        // [GraphQL: restoreO365TeamsFiles]
-        //
+        /// <summary>
+        /// RestoreTeamsFiles parameter set
+        ///
+        /// [GraphQL: restoreO365TeamsFiles]
+        /// </summary>
         [Parameter(
             ParameterSetName = "RestoreTeamsFiles",
             Mandatory = false,
@@ -386,11 +386,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter RestoreTeamsFiles { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ExportTeamsFiles parameter set
-        //
-        // [GraphQL: exportO365TeamsFiles]
-        //
+        /// <summary>
+        /// ExportTeamsFiles parameter set
+        ///
+        /// [GraphQL: exportO365TeamsFiles]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ExportTeamsFiles",
             Mandatory = false,
@@ -404,11 +404,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter ExportTeamsFiles { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // RestoreTeamsConversations parameter set
-        //
-        // [GraphQL: restoreO365TeamsConversations]
-        //
+        /// <summary>
+        /// RestoreTeamsConversations parameter set
+        ///
+        /// [GraphQL: restoreO365TeamsConversations]
+        /// </summary>
         [Parameter(
             ParameterSetName = "RestoreTeamsConversations",
             Mandatory = false,
@@ -422,11 +422,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter RestoreTeamsConversations { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // RestoreSnappable parameter set
-        //
-        // [GraphQL: restoreO365Snappable]
-        //
+        /// <summary>
+        /// RestoreSnappable parameter set
+        ///
+        /// [GraphQL: restoreO365Snappable]
+        /// </summary>
         [Parameter(
             ParameterSetName = "RestoreSnappable",
             Mandatory = false,
@@ -440,11 +440,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter RestoreSnappable { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ExportWorkload parameter set
-        //
-        // [GraphQL: exportO365Workload]
-        //
+        /// <summary>
+        /// ExportWorkload parameter set
+        ///
+        /// [GraphQL: exportO365Workload]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ExportWorkload",
             Mandatory = false,
@@ -458,11 +458,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter ExportWorkload { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // RefreshOrg parameter set
-        //
-        // [GraphQL: refreshO365Org]
-        //
+        /// <summary>
+        /// RefreshOrg parameter set
+        ///
+        /// [GraphQL: refreshO365Org]
+        /// </summary>
         [Parameter(
             ParameterSetName = "RefreshOrg",
             Mandatory = false,
@@ -476,11 +476,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter RefreshOrg { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DeleteOrg parameter set
-        //
-        // [GraphQL: deleteO365Org]
-        //
+        /// <summary>
+        /// DeleteOrg parameter set
+        ///
+        /// [GraphQL: deleteO365Org]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DeleteOrg",
             Mandatory = false,
@@ -494,11 +494,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter DeleteOrg { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // RestoreMailbox parameter set
-        //
-        // [GraphQL: restoreO365Mailbox]
-        //
+        /// <summary>
+        /// RestoreMailbox parameter set
+        ///
+        /// [GraphQL: restoreO365Mailbox]
+        /// </summary>
         [Parameter(
             ParameterSetName = "RestoreMailbox",
             Mandatory = false,
@@ -512,11 +512,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter RestoreMailbox { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ExportMailbox parameter set
-        //
-        // [GraphQL: exportO365Mailbox]
-        //
+        /// <summary>
+        /// ExportMailbox parameter set
+        ///
+        /// [GraphQL: exportO365Mailbox]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ExportMailbox",
             Mandatory = false,
@@ -530,11 +530,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter ExportMailbox { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // SetServiceAccount parameter set
-        //
-        // [GraphQL: setO365ServiceAccount]
-        //
+        /// <summary>
+        /// SetServiceAccount parameter set
+        ///
+        /// [GraphQL: setO365ServiceAccount]
+        /// </summary>
         [Parameter(
             ParameterSetName = "SetServiceAccount",
             Mandatory = false,
@@ -548,11 +548,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter SetServiceAccount { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // EnableSharePoint parameter set
-        //
-        // [GraphQL: enableO365SharePoint]
-        //
+        /// <summary>
+        /// EnableSharePoint parameter set
+        ///
+        /// [GraphQL: enableO365SharePoint]
+        /// </summary>
         [Parameter(
             ParameterSetName = "EnableSharePoint",
             Mandatory = false,
@@ -566,11 +566,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter EnableSharePoint { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // EnableTeams parameter set
-        //
-        // [GraphQL: enableO365Teams]
-        //
+        /// <summary>
+        /// EnableTeams parameter set
+        ///
+        /// [GraphQL: enableO365Teams]
+        /// </summary>
         [Parameter(
             ParameterSetName = "EnableTeams",
             Mandatory = false,
@@ -584,11 +584,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter EnableTeams { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DeleteServiceAccount parameter set
-        //
-        // [GraphQL: deleteO365ServiceAccount]
-        //
+        /// <summary>
+        /// DeleteServiceAccount parameter set
+        ///
+        /// [GraphQL: deleteO365ServiceAccount]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DeleteServiceAccount",
             Mandatory = false,
@@ -602,11 +602,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter DeleteServiceAccount { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // UpdateOrgCustomName parameter set
-        //
-        // [GraphQL: updateO365OrgCustomName]
-        //
+        /// <summary>
+        /// UpdateOrgCustomName parameter set
+        ///
+        /// [GraphQL: updateO365OrgCustomName]
+        /// </summary>
         [Parameter(
             ParameterSetName = "UpdateOrgCustomName",
             Mandatory = false,
@@ -620,6 +620,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter UpdateOrgCustomName { get; set; }
 
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
         protected override void ProcessRecord()
         {
             try
@@ -734,10 +736,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 ThrowTerminatingException(ex);
            }
         }
+#pragma warning restore 1591
 
         // This parameter set invokes a single graphql operation:
         // o365SaaSSetupKickoff.
-        protected void ProcessRecord_SaaSSetupKickoff()
+        internal void ProcessRecord_SaaSSetupKickoff()
         {
             this._logger.name += " -SaaSSetupKickoff";
             // Invoke graphql operation o365SaaSSetupKickoff
@@ -746,7 +749,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // o365PdlGroups.
-        protected void ProcessRecord_PdlGroups()
+        internal void ProcessRecord_PdlGroups()
         {
             this._logger.name += " -PdlGroups";
             // Invoke graphql operation o365PdlGroups
@@ -755,7 +758,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // o365SaasSetupComplete.
-        protected void ProcessRecord_SaasSetupComplete()
+        internal void ProcessRecord_SaasSetupComplete()
         {
             this._logger.name += " -SaasSetupComplete";
             // Invoke graphql operation o365SaasSetupComplete
@@ -764,7 +767,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // o365SetupKickoff.
-        protected void ProcessRecord_SetupKickoff()
+        internal void ProcessRecord_SetupKickoff()
         {
             this._logger.name += " -SetupKickoff";
             // Invoke graphql operation o365SetupKickoff
@@ -773,7 +776,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // addO365Org.
-        protected void ProcessRecord_AddOrg()
+        internal void ProcessRecord_AddOrg()
         {
             this._logger.name += " -AddOrg";
             // Invoke graphql operation addO365Org
@@ -782,7 +785,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // o365OauthConsentKickoff.
-        protected void ProcessRecord_OauthConsentKickoff()
+        internal void ProcessRecord_OauthConsentKickoff()
         {
             this._logger.name += " -OauthConsentKickoff";
             // Invoke graphql operation o365OauthConsentKickoff
@@ -791,7 +794,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // o365OauthConsentComplete.
-        protected void ProcessRecord_OauthConsentComplete()
+        internal void ProcessRecord_OauthConsentComplete()
         {
             this._logger.name += " -OauthConsentComplete";
             // Invoke graphql operation o365OauthConsentComplete
@@ -800,7 +803,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // createO365AppKickoff.
-        protected void ProcessRecord_CreateAppKickoff()
+        internal void ProcessRecord_CreateAppKickoff()
         {
             this._logger.name += " -CreateAppKickoff";
             // Invoke graphql operation createO365AppKickoff
@@ -809,7 +812,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // createO365AppComplete.
-        protected void ProcessRecord_CreateAppComplete()
+        internal void ProcessRecord_CreateAppComplete()
         {
             this._logger.name += " -CreateAppComplete";
             // Invoke graphql operation createO365AppComplete
@@ -818,7 +821,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // insertCustomerO365App.
-        protected void ProcessRecord_InsertCustomerApp()
+        internal void ProcessRecord_InsertCustomerApp()
         {
             this._logger.name += " -InsertCustomerApp";
             // Invoke graphql operation insertCustomerO365App
@@ -827,7 +830,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // updateO365AppAuthStatus.
-        protected void ProcessRecord_UpdateAppAuthStatus()
+        internal void ProcessRecord_UpdateAppAuthStatus()
         {
             this._logger.name += " -UpdateAppAuthStatus";
             // Invoke graphql operation updateO365AppAuthStatus
@@ -836,7 +839,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // updateO365AppPermissions.
-        protected void ProcessRecord_UpdateAppPermissions()
+        internal void ProcessRecord_UpdateAppPermissions()
         {
             this._logger.name += " -UpdateAppPermissions";
             // Invoke graphql operation updateO365AppPermissions
@@ -845,7 +848,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // deleteO365AzureApp.
-        protected void ProcessRecord_DeleteAzureApp()
+        internal void ProcessRecord_DeleteAzureApp()
         {
             this._logger.name += " -DeleteAzureApp";
             // Invoke graphql operation deleteO365AzureApp
@@ -854,7 +857,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // backupO365Mailbox.
-        protected void ProcessRecord_BackupMailbox()
+        internal void ProcessRecord_BackupMailbox()
         {
             this._logger.name += " -BackupMailbox";
             // Invoke graphql operation backupO365Mailbox
@@ -863,7 +866,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // backupO365Onedrive.
-        protected void ProcessRecord_BackupOnedrive()
+        internal void ProcessRecord_BackupOnedrive()
         {
             this._logger.name += " -BackupOnedrive";
             // Invoke graphql operation backupO365Onedrive
@@ -872,7 +875,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // backupO365SharepointDrive.
-        protected void ProcessRecord_BackupSharepointDrive()
+        internal void ProcessRecord_BackupSharepointDrive()
         {
             this._logger.name += " -BackupSharepointDrive";
             // Invoke graphql operation backupO365SharepointDrive
@@ -881,7 +884,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // backupO365SharepointList.
-        protected void ProcessRecord_BackupSharepointList()
+        internal void ProcessRecord_BackupSharepointList()
         {
             this._logger.name += " -BackupSharepointList";
             // Invoke graphql operation backupO365SharepointList
@@ -890,7 +893,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // backupO365SharePointSite.
-        protected void ProcessRecord_BackupSharePointSite()
+        internal void ProcessRecord_BackupSharePointSite()
         {
             this._logger.name += " -BackupSharePointSite";
             // Invoke graphql operation backupO365SharePointSite
@@ -899,7 +902,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // backupO365Team.
-        protected void ProcessRecord_BackupTeam()
+        internal void ProcessRecord_BackupTeam()
         {
             this._logger.name += " -BackupTeam";
             // Invoke graphql operation backupO365Team
@@ -908,7 +911,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // restoreO365TeamsFiles.
-        protected void ProcessRecord_RestoreTeamsFiles()
+        internal void ProcessRecord_RestoreTeamsFiles()
         {
             this._logger.name += " -RestoreTeamsFiles";
             // Invoke graphql operation restoreO365TeamsFiles
@@ -917,7 +920,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // exportO365TeamsFiles.
-        protected void ProcessRecord_ExportTeamsFiles()
+        internal void ProcessRecord_ExportTeamsFiles()
         {
             this._logger.name += " -ExportTeamsFiles";
             // Invoke graphql operation exportO365TeamsFiles
@@ -926,7 +929,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // restoreO365TeamsConversations.
-        protected void ProcessRecord_RestoreTeamsConversations()
+        internal void ProcessRecord_RestoreTeamsConversations()
         {
             this._logger.name += " -RestoreTeamsConversations";
             // Invoke graphql operation restoreO365TeamsConversations
@@ -935,7 +938,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // restoreO365Snappable.
-        protected void ProcessRecord_RestoreSnappable()
+        internal void ProcessRecord_RestoreSnappable()
         {
             this._logger.name += " -RestoreSnappable";
             // Invoke graphql operation restoreO365Snappable
@@ -944,7 +947,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // exportO365Workload.
-        protected void ProcessRecord_ExportWorkload()
+        internal void ProcessRecord_ExportWorkload()
         {
             this._logger.name += " -ExportWorkload";
             // Invoke graphql operation exportO365Workload
@@ -953,7 +956,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // refreshO365Org.
-        protected void ProcessRecord_RefreshOrg()
+        internal void ProcessRecord_RefreshOrg()
         {
             this._logger.name += " -RefreshOrg";
             // Invoke graphql operation refreshO365Org
@@ -962,7 +965,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // deleteO365Org.
-        protected void ProcessRecord_DeleteOrg()
+        internal void ProcessRecord_DeleteOrg()
         {
             this._logger.name += " -DeleteOrg";
             // Invoke graphql operation deleteO365Org
@@ -971,7 +974,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // restoreO365Mailbox.
-        protected void ProcessRecord_RestoreMailbox()
+        internal void ProcessRecord_RestoreMailbox()
         {
             this._logger.name += " -RestoreMailbox";
             // Invoke graphql operation restoreO365Mailbox
@@ -980,7 +983,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // exportO365Mailbox.
-        protected void ProcessRecord_ExportMailbox()
+        internal void ProcessRecord_ExportMailbox()
         {
             this._logger.name += " -ExportMailbox";
             // Invoke graphql operation exportO365Mailbox
@@ -989,7 +992,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // setO365ServiceAccount.
-        protected void ProcessRecord_SetServiceAccount()
+        internal void ProcessRecord_SetServiceAccount()
         {
             this._logger.name += " -SetServiceAccount";
             // Invoke graphql operation setO365ServiceAccount
@@ -998,7 +1001,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // enableO365SharePoint.
-        protected void ProcessRecord_EnableSharePoint()
+        internal void ProcessRecord_EnableSharePoint()
         {
             this._logger.name += " -EnableSharePoint";
             // Invoke graphql operation enableO365SharePoint
@@ -1007,7 +1010,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // enableO365Teams.
-        protected void ProcessRecord_EnableTeams()
+        internal void ProcessRecord_EnableTeams()
         {
             this._logger.name += " -EnableTeams";
             // Invoke graphql operation enableO365Teams
@@ -1016,7 +1019,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // deleteO365ServiceAccount.
-        protected void ProcessRecord_DeleteServiceAccount()
+        internal void ProcessRecord_DeleteServiceAccount()
         {
             this._logger.name += " -DeleteServiceAccount";
             // Invoke graphql operation deleteO365ServiceAccount
@@ -1025,7 +1028,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // updateO365OrgCustomName.
-        protected void ProcessRecord_UpdateOrgCustomName()
+        internal void ProcessRecord_UpdateOrgCustomName()
         {
             this._logger.name += " -UpdateOrgCustomName";
             // Invoke graphql operation updateO365OrgCustomName
@@ -1035,7 +1038,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // o365SaaSSetupKickoff: O365SaasSetupKickoffReply!
-        protected void InvokeMutationO365SaaSsetupKickoff()
+        internal void InvokeMutationO365SaaSsetupKickoff()
         {
             Tuple<string, string>[] argDefs = {
             };
@@ -1061,7 +1064,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // o365PdlGroups(input: O365PdlGroupsInput!): O365PdlGroupsReply!
-        protected void InvokeMutationO365PdlGroups()
+        internal void InvokeMutationO365PdlGroups()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "O365PdlGroupsInput!"),
@@ -1088,7 +1091,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // o365SaasSetupComplete(input: O365SaasSetupCompleteInput!): AddO365OrgResponse!
-        protected void InvokeMutationO365SaasSetupComplete()
+        internal void InvokeMutationO365SaasSetupComplete()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "O365SaasSetupCompleteInput!"),
@@ -1115,7 +1118,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // o365SetupKickoff: O365SetupKickoffResp!
-        protected void InvokeMutationO365SetupKickoff()
+        internal void InvokeMutationO365SetupKickoff()
         {
             Tuple<string, string>[] argDefs = {
             };
@@ -1141,7 +1144,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // addO365Org(input: AddO365OrgInput!): AddO365OrgResponse!
-        protected void InvokeMutationAddO365Org()
+        internal void InvokeMutationAddO365Org()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "AddO365OrgInput!"),
@@ -1168,7 +1171,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // o365OauthConsentKickoff(input: O365OauthConsentKickoffInput!): O365OauthConsentKickoffReply!
-        protected void InvokeMutationO365OauthConsentKickoff()
+        internal void InvokeMutationO365OauthConsentKickoff()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "O365OauthConsentKickoffInput!"),
@@ -1195,7 +1198,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // o365OauthConsentComplete(input: O365OauthConsentCompleteInput!): O365OauthConsentCompleteReply!
-        protected void InvokeMutationO365OauthConsentComplete()
+        internal void InvokeMutationO365OauthConsentComplete()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "O365OauthConsentCompleteInput!"),
@@ -1222,7 +1225,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // createO365AppKickoff(input: CreateO365AppKickoffInput!): CreateO365AppKickoffResp!
-        protected void InvokeMutationCreateO365AppKickoff()
+        internal void InvokeMutationCreateO365AppKickoff()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CreateO365AppKickoffInput!"),
@@ -1249,7 +1252,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // createO365AppComplete(input: CreateO365AppCompleteInput!): RequestStatus!
-        protected void InvokeMutationCreateO365AppComplete()
+        internal void InvokeMutationCreateO365AppComplete()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CreateO365AppCompleteInput!"),
@@ -1276,7 +1279,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // insertCustomerO365App(input: InsertCustomerO365AppInput!): RequestStatus!
-        protected void InvokeMutationInsertCustomerO365App()
+        internal void InvokeMutationInsertCustomerO365App()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "InsertCustomerO365AppInput!"),
@@ -1303,7 +1306,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // updateO365AppAuthStatus(input: UpdateO365AppAuthStatusInput!): UpdateO365AppAuthStatusReply!
-        protected void InvokeMutationUpdateO365AppAuthStatus()
+        internal void InvokeMutationUpdateO365AppAuthStatus()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpdateO365AppAuthStatusInput!"),
@@ -1330,7 +1333,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // updateO365AppPermissions(input: UpdateO365AppPermissionsInput!): Void
-        protected void InvokeMutationUpdateO365AppPermissions()
+        internal void InvokeMutationUpdateO365AppPermissions()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpdateO365AppPermissionsInput!"),
@@ -1357,7 +1360,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // deleteO365AzureApp(o365AppClientId: String!, o365AppType: String!): RequestStatus!
-        protected void InvokeMutationDeleteO365AzureApp()
+        internal void InvokeMutationDeleteO365AzureApp()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("o365AppClientId", "String!"),
@@ -1385,7 +1388,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // backupO365Mailbox(mailboxIds: [UUID!]!): BatchAsyncJobStatus!
-        protected void InvokeMutationBackupO365Mailbox()
+        internal void InvokeMutationBackupO365Mailbox()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("mailboxIds", "[UUID!]!"),
@@ -1412,7 +1415,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // backupO365Onedrive(input: BackupO365OnedriveInput!): BatchAsyncJobStatus!
-        protected void InvokeMutationBackupO365Onedrive()
+        internal void InvokeMutationBackupO365Onedrive()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "BackupO365OnedriveInput!"),
@@ -1439,7 +1442,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // backupO365SharepointDrive(input: BackupO365SharepointDriveInput!): BatchAsyncJobStatus!
-        protected void InvokeMutationBackupO365SharepointDrive()
+        internal void InvokeMutationBackupO365SharepointDrive()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "BackupO365SharepointDriveInput!"),
@@ -1466,7 +1469,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // backupO365SharepointList(input: BackupO365SharePointListInput!): CreateOnDemandJobReply!
-        protected void InvokeMutationBackupO365SharepointList()
+        internal void InvokeMutationBackupO365SharepointList()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "BackupO365SharePointListInput!"),
@@ -1493,7 +1496,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // backupO365SharePointSite(input: BackupO365SharePointSiteInput!): CreateOnDemandJobReply!
-        protected void InvokeMutationBackupO365SharePointSite()
+        internal void InvokeMutationBackupO365SharePointSite()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "BackupO365SharePointSiteInput!"),
@@ -1520,7 +1523,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // backupO365Team(input: BackupO365TeamInput!): BatchAsyncJobStatus!
-        protected void InvokeMutationBackupO365Team()
+        internal void InvokeMutationBackupO365Team()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "BackupO365TeamInput!"),
@@ -1547,7 +1550,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // restoreO365TeamsFiles(input: RestoreO365TeamsFilesInput!): CreateOnDemandJobReply!
-        protected void InvokeMutationRestoreO365TeamsFiles()
+        internal void InvokeMutationRestoreO365TeamsFiles()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RestoreO365TeamsFilesInput!"),
@@ -1574,7 +1577,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // exportO365TeamsFiles(input: RestoreO365TeamsFilesInput!): CreateOnDemandJobReply!
-        protected void InvokeMutationExportO365TeamsFiles()
+        internal void InvokeMutationExportO365TeamsFiles()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RestoreO365TeamsFilesInput!"),
@@ -1601,7 +1604,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // restoreO365TeamsConversations(input: RestoreO365TeamsConversationsInput!): CreateOnDemandJobReply!
-        protected void InvokeMutationRestoreO365TeamsConversations()
+        internal void InvokeMutationRestoreO365TeamsConversations()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RestoreO365TeamsConversationsInput!"),
@@ -1628,7 +1631,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // restoreO365Snappable(input: RestoreO365SnappableInput!): CreateOnDemandJobReply!
-        protected void InvokeMutationRestoreO365Snappable()
+        internal void InvokeMutationRestoreO365Snappable()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RestoreO365SnappableInput!"),
@@ -1655,7 +1658,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // exportO365Workload(input: RestoreO365SnappableInput!): CreateOnDemandJobReply!
-        protected void InvokeMutationExportO365Workload()
+        internal void InvokeMutationExportO365Workload()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RestoreO365SnappableInput!"),
@@ -1682,7 +1685,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // refreshO365Org(orgId: UUID!): CreateOnDemandJobReply!
-        protected void InvokeMutationRefreshO365Org()
+        internal void InvokeMutationRefreshO365Org()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("orgId", "UUID!"),
@@ -1709,7 +1712,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // deleteO365Org(orgId: UUID!): CreateOnDemandJobReply!
-        protected void InvokeMutationDeleteO365Org()
+        internal void InvokeMutationDeleteO365Org()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("orgId", "UUID!"),
@@ -1736,7 +1739,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // restoreO365Mailbox(restoreConfig: RestoreO365MailboxInput!): CreateOnDemandJobReply!
-        protected void InvokeMutationRestoreO365Mailbox()
+        internal void InvokeMutationRestoreO365Mailbox()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("restoreConfig", "RestoreO365MailboxInput!"),
@@ -1763,7 +1766,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // exportO365Mailbox(exportConfig: ExportO365MailboxInput!): CreateOnDemandJobReply!
-        protected void InvokeMutationExportO365Mailbox()
+        internal void InvokeMutationExportO365Mailbox()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("exportConfig", "ExportO365MailboxInput!"),
@@ -1790,7 +1793,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // setO365ServiceAccount(username: String!, appPassword: String!, orgId: UUID!): RequestStatus!
-        protected void InvokeMutationSetO365ServiceAccount()
+        internal void InvokeMutationSetO365ServiceAccount()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("username", "String!"),
@@ -1819,7 +1822,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // enableO365SharePoint(input: EnableO365SharePointInput!): RequestStatus!
-        protected void InvokeMutationEnableO365SharePoint()
+        internal void InvokeMutationEnableO365SharePoint()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "EnableO365SharePointInput!"),
@@ -1846,7 +1849,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // enableO365Teams(exocomputeClusterId: String!): RequestStatus!
-        protected void InvokeMutationEnableO365Teams()
+        internal void InvokeMutationEnableO365Teams()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("exocomputeClusterId", "String!"),
@@ -1873,7 +1876,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // deleteO365ServiceAccount(orgId: UUID!): RequestStatus!
-        protected void InvokeMutationDeleteO365ServiceAccount()
+        internal void InvokeMutationDeleteO365ServiceAccount()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("orgId", "UUID!"),
@@ -1900,7 +1903,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Mutation:
         // updateO365OrgCustomName(input: UpdateO365OrgCustomNameInput!): UpdateO365OrgCustomNameReply!
-        protected void InvokeMutationUpdateO365OrgCustomName()
+        internal void InvokeMutationUpdateO365OrgCustomName()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpdateO365OrgCustomNameInput!"),

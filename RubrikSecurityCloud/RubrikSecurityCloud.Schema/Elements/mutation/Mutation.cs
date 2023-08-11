@@ -912,6 +912,36 @@ namespace RubrikSecurityCloud.Types
             return new string("completeAzureAdAppUpdate" + args + "\n");
         }
 
+        //      C# -> System.String? CompleteTrialOnboarding
+        // GraphQL -> completeTrialOnboarding: Void (scalar)
+        public static string CompleteTrialOnboarding(
+            ref System.String? fieldSpec
+        )
+        {
+            string args = "\n(\ninput: $input\n)";
+            if ( fieldSpec == null ) {
+                // there is no field spec for scalar types, but we still
+                // populate the fieldSpec so that caller can see the type 
+                fieldSpec = "FETCH" ;
+            }
+            return new string("completeTrialOnboarding" + args + "\n");
+        }
+
+        //      C# -> System.String? CompleteTrialTask
+        // GraphQL -> completeTrialTask: Void (scalar)
+        public static string CompleteTrialTask(
+            ref System.String? fieldSpec
+        )
+        {
+            string args = "\n(\ninput: $input\n)";
+            if ( fieldSpec == null ) {
+                // there is no field spec for scalar types, but we still
+                // populate the fieldSpec so that caller can see the type 
+                fieldSpec = "FETCH" ;
+            }
+            return new string("completeTrialTask" + args + "\n");
+        }
+
         //      C# -> System.Boolean? ConfigureDns
         // GraphQL -> configureDns: Boolean! (scalar)
         public static string ConfigureDns(
@@ -1782,6 +1812,21 @@ namespace RubrikSecurityCloud.Types
             return new string("hideRevealNasNamespaces" + args + "\n");
         }
 
+        //      C# -> System.String? IgnoreTrial
+        // GraphQL -> ignoreTrial: Void (scalar)
+        public static string IgnoreTrial(
+            ref System.String? fieldSpec
+        )
+        {
+            string args = "\n(\ninput: $input\n)";
+            if ( fieldSpec == null ) {
+                // there is no field spec for scalar types, but we still
+                // populate the fieldSpec so that caller can see the type 
+                fieldSpec = "FETCH" ;
+            }
+            return new string("ignoreTrial" + args + "\n");
+        }
+
         //      C# -> System.Boolean? InviteSsoGroup
         // GraphQL -> inviteSsoGroup: Boolean! (scalar)
         public static string InviteSsoGroup(
@@ -2337,17 +2382,17 @@ namespace RubrikSecurityCloud.Types
             return new string("stopJobInstanceFromEventSeries" + args + "\n");
         }
 
-        //      C# -> System.Boolean? SubmitTprRequest
-        // GraphQL -> submitTprRequest: Boolean! (scalar)
+        //      C# -> System.String? SubmitTprRequest
+        // GraphQL -> submitTprRequest: Void (scalar)
         public static string SubmitTprRequest(
-            ref System.Boolean? fieldSpec
+            ref System.String? fieldSpec
         )
         {
             string args = "\n(\ninput: $input\n)";
             if ( fieldSpec == null ) {
                 // there is no field spec for scalar types, but we still
                 // populate the fieldSpec so that caller can see the type 
-                fieldSpec = true ;
+                fieldSpec = "FETCH" ;
             }
             return new string("submitTprRequest" + args + "\n");
         }
@@ -4902,6 +4947,24 @@ namespace RubrikSecurityCloud.Types
                 "}\n");
         }
 
+        //      C# -> ComputeBucketImmutabilityLockDurationReply? ComputeBucketImmutabilityLockDuration
+        // GraphQL -> computeBucketImmutabilityLockDuration: ComputeBucketImmutabilityLockDurationReply! (type)
+        public static string ComputeBucketImmutabilityLockDuration(
+            ref ComputeBucketImmutabilityLockDurationReply? fieldSpec
+        )
+        {
+            string args = "\n(\ninput: $input\n)";
+           if (fieldSpec == null)
+            {
+                fieldSpec = new ComputeBucketImmutabilityLockDurationReply() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "computeBucketImmutabilityLockDuration" + args + "{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
         //      C# -> AsyncRequestStatus? ConfigureLogExport
         // GraphQL -> configureLogExport: AsyncRequestStatus! (type)
         public static string ConfigureLogExport(
@@ -5784,6 +5847,24 @@ namespace RubrikSecurityCloud.Types
                 "}\n");
         }
 
+        //      C# -> AsyncRequestStatus? CreateOnDemandMongoDatabaseBackup
+        // GraphQL -> createOnDemandMongoDatabaseBackup: AsyncRequestStatus! (type)
+        public static string CreateOnDemandMongoDatabaseBackup(
+            ref AsyncRequestStatus? fieldSpec
+        )
+        {
+            string args = "\n(\ninput: $input\n)";
+           if (fieldSpec == null)
+            {
+                fieldSpec = new AsyncRequestStatus() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "createOnDemandMongoDatabaseBackup" + args + "{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
         //      C# -> AsyncRequestStatus? CreateOnDemandMssqlBackup
         // GraphQL -> createOnDemandMssqlBackup: AsyncRequestStatus! (type)
         public static string CreateOnDemandMssqlBackup(
@@ -5996,6 +6077,24 @@ namespace RubrikSecurityCloud.Types
             }
             return new string(
                 "createSapHanaSystemRefresh" + args + "{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> CreateScheduleReply? CreateSchedule
+        // GraphQL -> createSchedule: CreateScheduleReply! (type)
+        public static string CreateSchedule(
+            ref CreateScheduleReply? fieldSpec
+        )
+        {
+            string args = "\n(\ninput: $input\n)";
+           if (fieldSpec == null)
+            {
+                fieldSpec = new CreateScheduleReply() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "createSchedule" + args + "{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9078,6 +9177,24 @@ namespace RubrikSecurityCloud.Types
                 "}\n");
         }
 
+        //      C# -> InviteUsersToTrialReply? InviteUsersToTrial
+        // GraphQL -> inviteUsersToTrial: InviteUsersToTrialReply! (type)
+        public static string InviteUsersToTrial(
+            ref InviteUsersToTrialReply? fieldSpec
+        )
+        {
+            string args = "\n(\ninput: $input\n)";
+           if (fieldSpec == null)
+            {
+                fieldSpec = new InviteUsersToTrialReply() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "inviteUsersToTrial" + args + "{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
         //      C# -> KickoffAzureAdAppSetupReply? KickoffAzureAdAppSetup
         // GraphQL -> kickoffAzureAdAppSetup: KickoffAzureAdAppSetupReply! (type)
         public static string KickoffAzureAdAppSetup(
@@ -9110,6 +9227,24 @@ namespace RubrikSecurityCloud.Types
             }
             return new string(
                 "listCidrsForComputeSetting" + args + "{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> RecentlyViewedItem? ListRecentlyViewed
+        // GraphQL -> listRecentlyViewed: RecentlyViewedItem! (type)
+        public static string ListRecentlyViewed(
+            ref RecentlyViewedItem? fieldSpec
+        )
+        {
+            string args = "\n(\nreferrer: $referrer\n)";
+           if (fieldSpec == null)
+            {
+                fieldSpec = new RecentlyViewedItem() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "listRecentlyViewed" + args + "{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -10370,6 +10505,24 @@ namespace RubrikSecurityCloud.Types
             }
             return new string(
                 "resolveVolumeGroupsConflict" + args + "{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> List<CreateOnDemandJobReply>? RestoreAzureAdObjectsWithPassword
+        // GraphQL -> restoreAzureAdObjectsWithPassword: [CreateOnDemandJobReply!]! (type)
+        public static string RestoreAzureAdObjectsWithPassword(
+            ref List<CreateOnDemandJobReply>? fieldSpec
+        )
+        {
+            string args = "\n(\ninput: $input\n)";
+           if (fieldSpec == null)
+            {
+                fieldSpec = new List<CreateOnDemandJobReply>() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "restoreAzureAdObjectsWithPassword" + args + "{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11882,6 +12035,42 @@ namespace RubrikSecurityCloud.Types
             }
             return new string(
                 "takeOnDemandSnapshot" + args + "{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> BatchAsyncJobStatus? TakeSaasOnDemandSnapshot
+        // GraphQL -> takeSaasOnDemandSnapshot: BatchAsyncJobStatus! (type)
+        public static string TakeSaasOnDemandSnapshot(
+            ref BatchAsyncJobStatus? fieldSpec
+        )
+        {
+            string args = "\n(\ninput: $input\n)";
+           if (fieldSpec == null)
+            {
+                fieldSpec = new BatchAsyncJobStatus() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "takeSaasOnDemandSnapshot" + args + "{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> ChatReply? TestChat
+        // GraphQL -> testChat: ChatReply! (type)
+        public static string TestChat(
+            ref ChatReply? fieldSpec
+        )
+        {
+            string args = "\n(\ninput: $input\n)";
+           if (fieldSpec == null)
+            {
+                fieldSpec = new ChatReply() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "testChat" + args + "{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }

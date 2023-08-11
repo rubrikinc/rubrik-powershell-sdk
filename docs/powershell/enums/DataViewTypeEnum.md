@@ -25,3 +25,5 @@ All reporting table schemas.
 - GLOBAL_OBJECT_SUMMARY_MONTHLY - Global object summary monthly database table schema.
 - THREAT_MONITORING_LIST - Specifies the Threat Monitoring report list information.
 - THREAT_MONITORING_SNAPSHOT_RESULTS - Specifies the Threat Monitoring snapshot result information.
+- SLA_AUDIT_LIST_NG - Specifies the latest audit information for each SLA Domain.
+- SLA_AUDIT_DETAIL_NG - Specifies all audit information for the single SLA Domain.

@@ -26,11 +26,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     public class Invoke_RscQueryAccount : RscPSCmdlet
     {
         
-        // -------------------------------------------------------------------
-        // Settings parameter set
-        //
-        // [GraphQL: accountSettings]
-        //
+        /// <summary>
+        /// Settings parameter set
+        ///
+        /// [GraphQL: accountSettings]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Settings",
             Mandatory = false,
@@ -44,11 +44,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Settings { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // SWithExocomputeMappings parameter set
-        //
-        // [GraphQL: allAccountsWithExocomputeMappings]
-        //
+        /// <summary>
+        /// SWithExocomputeMappings parameter set
+        ///
+        /// [GraphQL: allAccountsWithExocomputeMappings]
+        /// </summary>
         [Parameter(
             ParameterSetName = "SWithExocomputeMappings",
             Mandatory = false,
@@ -62,11 +62,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter SWithExocomputeMappings { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Products parameter set
-        //
-        // [GraphQL: allAccountProducts]
-        //
+        /// <summary>
+        /// Products parameter set
+        ///
+        /// [GraphQL: allAccountProducts]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Products",
             Mandatory = false,
@@ -80,11 +80,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Products { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Id parameter set
-        //
-        // [GraphQL: accountId]
-        //
+        /// <summary>
+        /// Id parameter set
+        ///
+        /// [GraphQL: accountId]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Id",
             Mandatory = false,
@@ -98,11 +98,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Id { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Owners parameter set
-        //
-        // [GraphQL: allAccountOwners]
-        //
+        /// <summary>
+        /// Owners parameter set
+        ///
+        /// [GraphQL: allAccountOwners]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Owners",
             Mandatory = false,
@@ -116,6 +116,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Owners { get; set; }
 
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
         protected override void ProcessRecord()
         {
             try
@@ -146,10 +148,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 ThrowTerminatingException(ex);
            }
         }
+#pragma warning restore 1591
 
         // This parameter set invokes a single graphql operation:
         // accountSettings.
-        protected void ProcessRecord_Settings()
+        internal void ProcessRecord_Settings()
         {
             this._logger.name += " -Settings";
             // Invoke graphql operation accountSettings
@@ -158,7 +161,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allAccountsWithExocomputeMappings.
-        protected void ProcessRecord_SWithExocomputeMappings()
+        internal void ProcessRecord_SWithExocomputeMappings()
         {
             this._logger.name += " -SWithExocomputeMappings";
             // Invoke graphql operation allAccountsWithExocomputeMappings
@@ -167,7 +170,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allAccountProducts.
-        protected void ProcessRecord_Products()
+        internal void ProcessRecord_Products()
         {
             this._logger.name += " -Products";
             // Invoke graphql operation allAccountProducts
@@ -176,7 +179,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // accountId.
-        protected void ProcessRecord_Id()
+        internal void ProcessRecord_Id()
         {
             this._logger.name += " -Id";
             // Invoke graphql operation accountId
@@ -185,7 +188,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allAccountOwners.
-        protected void ProcessRecord_Owners()
+        internal void ProcessRecord_Owners()
         {
             this._logger.name += " -Owners";
             // Invoke graphql operation allAccountOwners
@@ -195,7 +198,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // accountSettings: AccountSetting!
-        protected void InvokeQueryAccountSettings()
+        internal void InvokeQueryAccountSettings()
         {
             Tuple<string, string>[] argDefs = {
             };
@@ -221,7 +224,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allAccountsWithExocomputeMappings(cloudVendor: CloudVendor!, features: [CloudAccountFeature!]! = [], exocomputeAccountIdsFilter: [UUID!]! = []): [CloudAccountWithExocomputeMapping!]!
-        protected void InvokeQueryAllAccountsWithExocomputeMappings()
+        internal void InvokeQueryAllAccountsWithExocomputeMappings()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("cloudVendor", "CloudVendor!"),
@@ -256,7 +259,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     startDateArg: DateTime
         //     endDateArg: DateTime
         //   ): [AccountProduct!]!
-        protected void InvokeQueryAllAccountProducts()
+        internal void InvokeQueryAllAccountProducts()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("nameFilter", "[ProductName!]!"),
@@ -287,7 +290,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // accountId: String!
-        protected void InvokeQueryAccountId()
+        internal void InvokeQueryAccountId()
         {
             Tuple<string, string>[] argDefs = {
             };
@@ -313,7 +316,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Invoke GraphQL Query:
         // allAccountOwners: [User!]!
-        protected void InvokeQueryAllAccountOwners()
+        internal void InvokeQueryAllAccountOwners()
         {
             Tuple<string, string>[] argDefs = {
             };

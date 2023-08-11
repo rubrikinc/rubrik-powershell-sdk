@@ -1,5 +1,5 @@
 ### AddSyslogExportRuleInput
-
+Input for adding a syslog export rule.
 
 - syslogExportRuleV51: SyslogExportRuleInput
   - Syslog export rule.

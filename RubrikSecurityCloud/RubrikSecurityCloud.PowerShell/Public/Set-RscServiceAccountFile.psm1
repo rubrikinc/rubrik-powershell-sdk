@@ -79,7 +79,7 @@ function Set-RscServiceAccountFile {
         {
             # This will be placed under the user PowerShell Profile
             $sdk_credential_store_path = "/rubrik-powershell-sdk"
-            $sdk_default_credential_file = "rsc_service_account_default.xml"
+            $sdk_default_credential_file = [RubrikSecurityCloud.Files]::DefaultServiceAccountFileName
         
             $outFile = $null
 

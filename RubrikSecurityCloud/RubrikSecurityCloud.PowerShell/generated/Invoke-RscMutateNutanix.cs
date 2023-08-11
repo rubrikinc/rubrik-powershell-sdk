@@ -26,11 +26,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     public class Invoke_RscMutateNutanix : RscPSCmdlet
     {
         
-        // -------------------------------------------------------------------
-        // CreateCluster parameter set
-        //
-        // [GraphQL: createNutanixCluster]
-        //
+        /// <summary>
+        /// CreateCluster parameter set
+        ///
+        /// [GraphQL: createNutanixCluster]
+        /// </summary>
         [Parameter(
             ParameterSetName = "CreateCluster",
             Mandatory = false,
@@ -47,11 +47,11 @@ Create a Nutanix cluster object by providing an address and account credentials 
         public SwitchParameter CreateCluster { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // RefreshCluster parameter set
-        //
-        // [GraphQL: refreshNutanixCluster]
-        //
+        /// <summary>
+        /// RefreshCluster parameter set
+        ///
+        /// [GraphQL: refreshNutanixCluster]
+        /// </summary>
         [Parameter(
             ParameterSetName = "RefreshCluster",
             Mandatory = false,
@@ -68,11 +68,11 @@ Create a job to refresh the metadata for the specified Nutanix cluster.
         public SwitchParameter RefreshCluster { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // UpdateCluster parameter set
-        //
-        // [GraphQL: updateNutanixCluster]
-        //
+        /// <summary>
+        /// UpdateCluster parameter set
+        ///
+        /// [GraphQL: updateNutanixCluster]
+        /// </summary>
         [Parameter(
             ParameterSetName = "UpdateCluster",
             Mandatory = false,
@@ -89,11 +89,11 @@ Patch the host, credentials, and/or CA certs of the specified Nutanix cluster ob
         public SwitchParameter UpdateCluster { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DeleteCluster parameter set
-        //
-        // [GraphQL: deleteNutanixCluster]
-        //
+        /// <summary>
+        /// DeleteCluster parameter set
+        ///
+        /// [GraphQL: deleteNutanixCluster]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DeleteCluster",
             Mandatory = false,
@@ -110,11 +110,11 @@ Initiates an asynchronous job to remove a Nutanix cluster object. The Nutanix cl
         public SwitchParameter DeleteCluster { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // RegisterAgentVm parameter set
-        //
-        // [GraphQL: registerAgentNutanixVm]
-        //
+        /// <summary>
+        /// RegisterAgentVm parameter set
+        ///
+        /// [GraphQL: registerAgentNutanixVm]
+        /// </summary>
         [Parameter(
             ParameterSetName = "RegisterAgentVm",
             Mandatory = false,
@@ -134,11 +134,11 @@ v8.1+: Register the agent installed on the Nutanix virtual machine.
         public SwitchParameter RegisterAgentVm { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // UpdateVm parameter set
-        //
-        // [GraphQL: updateNutanixVm]
-        //
+        /// <summary>
+        /// UpdateVm parameter set
+        ///
+        /// [GraphQL: updateNutanixVm]
+        /// </summary>
         [Parameter(
             ParameterSetName = "UpdateVm",
             Mandatory = false,
@@ -158,11 +158,11 @@ v8.1+: Patch virtual machine with specified properties.
         public SwitchParameter UpdateVm { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // CreateOnDemandBackup parameter set
-        //
-        // [GraphQL: createOnDemandNutanixBackup]
-        //
+        /// <summary>
+        /// CreateOnDemandBackup parameter set
+        ///
+        /// [GraphQL: createOnDemandNutanixBackup]
+        /// </summary>
         [Parameter(
             ParameterSetName = "CreateOnDemandBackup",
             Mandatory = false,
@@ -182,11 +182,11 @@ v8.1+: Create an on-demand snapshot for the given virtual machine ID.
         public SwitchParameter CreateOnDemandBackup { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DeleteSnapshots parameter set
-        //
-        // [GraphQL: deleteNutanixSnapshots]
-        //
+        /// <summary>
+        /// DeleteSnapshots parameter set
+        ///
+        /// [GraphQL: deleteNutanixSnapshots]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DeleteSnapshots",
             Mandatory = false,
@@ -204,11 +204,11 @@ Delete all snapshots of a virtual machine.
         public SwitchParameter DeleteSnapshots { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // MountSnapshotV1 parameter set
-        //
-        // [GraphQL: mountNutanixSnapshotV1]
-        //
+        /// <summary>
+        /// MountSnapshotV1 parameter set
+        ///
+        /// [GraphQL: mountNutanixSnapshotV1]
+        /// </summary>
         [Parameter(
             ParameterSetName = "MountSnapshotV1",
             Mandatory = false,
@@ -225,11 +225,11 @@ Initiates a request to perform a Live Mount of a Nutanix virtual machine snapsho
         public SwitchParameter MountSnapshotV1 { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // PatchMountV1 parameter set
-        //
-        // [GraphQL: patchNutanixMountV1]
-        //
+        /// <summary>
+        /// PatchMountV1 parameter set
+        ///
+        /// [GraphQL: patchNutanixMountV1]
+        /// </summary>
         [Parameter(
             ParameterSetName = "PatchMountV1",
             Mandatory = false,
@@ -246,11 +246,11 @@ Changes the power status of a mounted Nutanix virtual machine.
         public SwitchParameter PatchMountV1 { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DeleteMountV1 parameter set
-        //
-        // [GraphQL: deleteNutanixMountV1]
-        //
+        /// <summary>
+        /// DeleteMountV1 parameter set
+        ///
+        /// [GraphQL: deleteNutanixMountV1]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DeleteMountV1",
             Mandatory = false,
@@ -267,11 +267,11 @@ Initiates a request to remove a Live Mount of a Nutanix virtual machine snapshot
         public SwitchParameter DeleteMountV1 { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // MigrateMountV1 parameter set
-        //
-        // [GraphQL: migrateNutanixMountV1]
-        //
+        /// <summary>
+        /// MigrateMountV1 parameter set
+        ///
+        /// [GraphQL: migrateNutanixMountV1]
+        /// </summary>
         [Parameter(
             ParameterSetName = "MigrateMountV1",
             Mandatory = false,
@@ -288,11 +288,11 @@ Initiate a request to migrate the virtual disks of a specified Nutanix Live Moun
         public SwitchParameter MigrateMountV1 { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DeleteSnapshot parameter set
-        //
-        // [GraphQL: deleteNutanixSnapshot]
-        //
+        /// <summary>
+        /// DeleteSnapshot parameter set
+        ///
+        /// [GraphQL: deleteNutanixSnapshot]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DeleteSnapshot",
             Mandatory = false,
@@ -311,11 +311,11 @@ v8.1+: Delete a snapshot by expiring it. Snapshot is expired only if it is a man
         public SwitchParameter DeleteSnapshot { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // RestoreFilesSnapshot parameter set
-        //
-        // [GraphQL: restoreFilesNutanixSnapshot]
-        //
+        /// <summary>
+        /// RestoreFilesSnapshot parameter set
+        ///
+        /// [GraphQL: restoreFilesNutanixSnapshot]
+        /// </summary>
         [Parameter(
             ParameterSetName = "RestoreFilesSnapshot",
             Mandatory = false,
@@ -332,11 +332,11 @@ Restore files from a snapshot to the source Nutanix virtual machine.
         public SwitchParameter RestoreFilesSnapshot { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DownloadFilesSnapshot parameter set
-        //
-        // [GraphQL: downloadFilesNutanixSnapshot]
-        //
+        /// <summary>
+        /// DownloadFilesSnapshot parameter set
+        ///
+        /// [GraphQL: downloadFilesNutanixSnapshot]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DownloadFilesSnapshot",
             Mandatory = false,
@@ -355,11 +355,11 @@ v8.1+: Start an asynchronous job to download multiple files and folders from a s
         public SwitchParameter DownloadFilesSnapshot { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ExportSnapshot parameter set
-        //
-        // [GraphQL: exportNutanixSnapshot]
-        //
+        /// <summary>
+        /// ExportSnapshot parameter set
+        ///
+        /// [GraphQL: exportNutanixSnapshot]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ExportSnapshot",
             Mandatory = false,
@@ -378,11 +378,11 @@ v8.1+: Export snapshot of a virtual machine.
         public SwitchParameter ExportSnapshot { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DownloadSnapshot parameter set
-        //
-        // [GraphQL: downloadNutanixSnapshot]
-        //
+        /// <summary>
+        /// DownloadSnapshot parameter set
+        ///
+        /// [GraphQL: downloadNutanixSnapshot]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DownloadSnapshot",
             Mandatory = false,
@@ -399,11 +399,11 @@ Download a snapshot from archival.
         public SwitchParameter DownloadSnapshot { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // BatchExportVm parameter set
-        //
-        // [GraphQL: batchExportNutanixVm]
-        //
+        /// <summary>
+        /// BatchExportVm parameter set
+        ///
+        /// [GraphQL: batchExportNutanixVm]
+        /// </summary>
         [Parameter(
             ParameterSetName = "BatchExportVm",
             Mandatory = false,
@@ -420,11 +420,11 @@ Export a snapshot from each member of a set of virtual machines.
         public SwitchParameter BatchExportVm { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // BatchMountVm parameter set
-        //
-        // [GraphQL: batchMountNutanixVm]
-        //
+        /// <summary>
+        /// BatchMountVm parameter set
+        ///
+        /// [GraphQL: batchMountNutanixVm]
+        /// </summary>
         [Parameter(
             ParameterSetName = "BatchMountVm",
             Mandatory = false,
@@ -441,11 +441,11 @@ Mounts a batch of snapshots from a group of specified virtual machines.
         public SwitchParameter BatchMountVm { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DownloadVmFromLocation parameter set
-        //
-        // [GraphQL: downloadNutanixVmFromLocation]
-        //
+        /// <summary>
+        /// DownloadVmFromLocation parameter set
+        ///
+        /// [GraphQL: downloadNutanixVmFromLocation]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DownloadVmFromLocation",
             Mandatory = false,
@@ -462,11 +462,11 @@ Initiates a job to download a snapshot from the specified location when the snap
         public SwitchParameter DownloadVmFromLocation { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // CreatePrismCentral parameter set
-        //
-        // [GraphQL: createNutanixPrismCentral]
-        //
+        /// <summary>
+        /// CreatePrismCentral parameter set
+        ///
+        /// [GraphQL: createNutanixPrismCentral]
+        /// </summary>
         [Parameter(
             ParameterSetName = "CreatePrismCentral",
             Mandatory = false,
@@ -483,11 +483,11 @@ Create a Nutanix Prism Central object and refresh the Prism Elements present in 
         public SwitchParameter CreatePrismCentral { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // UpdatePrismCentral parameter set
-        //
-        // [GraphQL: updateNutanixPrismCentral]
-        //
+        /// <summary>
+        /// UpdatePrismCentral parameter set
+        ///
+        /// [GraphQL: updateNutanixPrismCentral]
+        /// </summary>
         [Parameter(
             ParameterSetName = "UpdatePrismCentral",
             Mandatory = false,
@@ -504,11 +504,11 @@ Patch the host and credentials of Nutanix Prism Central.
         public SwitchParameter UpdatePrismCentral { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DeletePrismCentral parameter set
-        //
-        // [GraphQL: deleteNutanixPrismCentral]
-        //
+        /// <summary>
+        /// DeletePrismCentral parameter set
+        ///
+        /// [GraphQL: deleteNutanixPrismCentral]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DeletePrismCentral",
             Mandatory = false,
@@ -525,11 +525,11 @@ Initiates an asynchronous job to remove a Nutanix Prism Central object. The Nuta
         public SwitchParameter DeletePrismCentral { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // RefreshPrismCentral parameter set
-        //
-        // [GraphQL: refreshNutanixPrismCentral]
-        //
+        /// <summary>
+        /// RefreshPrismCentral parameter set
+        ///
+        /// [GraphQL: refreshNutanixPrismCentral]
+        /// </summary>
         [Parameter(
             ParameterSetName = "RefreshPrismCentral",
             Mandatory = false,
@@ -546,11 +546,11 @@ Initiates a job to refresh the metadata for the specified Nutanix Prism Central 
         public SwitchParameter RefreshPrismCentral { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // PrismCentralAsyncRequestStatus parameter set
-        //
-        // [GraphQL: nutanixPrismCentralAsyncRequestStatus]
-        //
+        /// <summary>
+        /// PrismCentralAsyncRequestStatus parameter set
+        ///
+        /// [GraphQL: nutanixPrismCentralAsyncRequestStatus]
+        /// </summary>
         [Parameter(
             ParameterSetName = "PrismCentralAsyncRequestStatus",
             Mandatory = false,
@@ -567,11 +567,11 @@ Get details about a Nutanix pc-related async request.
         public SwitchParameter PrismCentralAsyncRequestStatus { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // BulkOnDemandSnapshotVm parameter set
-        //
-        // [GraphQL: bulkOnDemandSnapshotNutanixVm]
-        //
+        /// <summary>
+        /// BulkOnDemandSnapshotVm parameter set
+        ///
+        /// [GraphQL: bulkOnDemandSnapshotNutanixVm]
+        /// </summary>
         [Parameter(
             ParameterSetName = "BulkOnDemandSnapshotVm",
             Mandatory = false,
@@ -588,6 +588,8 @@ Take bulk backups for multiple Nutanix virtual machines.
         public SwitchParameter BulkOnDemandSnapshotVm { get; set; }
 
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
         protected override void ProcessRecord()
         {
             try
@@ -681,10 +683,11 @@ Take bulk backups for multiple Nutanix virtual machines.
                 ThrowTerminatingException(ex);
            }
         }
+#pragma warning restore 1591
 
         // This parameter set invokes a single graphql operation:
         // createNutanixCluster.
-        protected void ProcessRecord_CreateCluster()
+        internal void ProcessRecord_CreateCluster()
         {
             this._logger.name += " -CreateCluster";
             // Invoke graphql operation createNutanixCluster
@@ -693,7 +696,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // This parameter set invokes a single graphql operation:
         // refreshNutanixCluster.
-        protected void ProcessRecord_RefreshCluster()
+        internal void ProcessRecord_RefreshCluster()
         {
             this._logger.name += " -RefreshCluster";
             // Invoke graphql operation refreshNutanixCluster
@@ -702,7 +705,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // This parameter set invokes a single graphql operation:
         // updateNutanixCluster.
-        protected void ProcessRecord_UpdateCluster()
+        internal void ProcessRecord_UpdateCluster()
         {
             this._logger.name += " -UpdateCluster";
             // Invoke graphql operation updateNutanixCluster
@@ -711,7 +714,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // This parameter set invokes a single graphql operation:
         // deleteNutanixCluster.
-        protected void ProcessRecord_DeleteCluster()
+        internal void ProcessRecord_DeleteCluster()
         {
             this._logger.name += " -DeleteCluster";
             // Invoke graphql operation deleteNutanixCluster
@@ -720,7 +723,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // This parameter set invokes a single graphql operation:
         // registerAgentNutanixVm.
-        protected void ProcessRecord_RegisterAgentVm()
+        internal void ProcessRecord_RegisterAgentVm()
         {
             this._logger.name += " -RegisterAgentVm";
             // Invoke graphql operation registerAgentNutanixVm
@@ -729,7 +732,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // This parameter set invokes a single graphql operation:
         // updateNutanixVm.
-        protected void ProcessRecord_UpdateVm()
+        internal void ProcessRecord_UpdateVm()
         {
             this._logger.name += " -UpdateVm";
             // Invoke graphql operation updateNutanixVm
@@ -738,7 +741,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // This parameter set invokes a single graphql operation:
         // createOnDemandNutanixBackup.
-        protected void ProcessRecord_CreateOnDemandBackup()
+        internal void ProcessRecord_CreateOnDemandBackup()
         {
             this._logger.name += " -CreateOnDemandBackup";
             // Invoke graphql operation createOnDemandNutanixBackup
@@ -747,7 +750,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // This parameter set invokes a single graphql operation:
         // deleteNutanixSnapshots.
-        protected void ProcessRecord_DeleteSnapshots()
+        internal void ProcessRecord_DeleteSnapshots()
         {
             this._logger.name += " -DeleteSnapshots";
             // Invoke graphql operation deleteNutanixSnapshots
@@ -756,7 +759,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // This parameter set invokes a single graphql operation:
         // mountNutanixSnapshotV1.
-        protected void ProcessRecord_MountSnapshotV1()
+        internal void ProcessRecord_MountSnapshotV1()
         {
             this._logger.name += " -MountSnapshotV1";
             // Invoke graphql operation mountNutanixSnapshotV1
@@ -765,7 +768,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // This parameter set invokes a single graphql operation:
         // patchNutanixMountV1.
-        protected void ProcessRecord_PatchMountV1()
+        internal void ProcessRecord_PatchMountV1()
         {
             this._logger.name += " -PatchMountV1";
             // Invoke graphql operation patchNutanixMountV1
@@ -774,7 +777,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // This parameter set invokes a single graphql operation:
         // deleteNutanixMountV1.
-        protected void ProcessRecord_DeleteMountV1()
+        internal void ProcessRecord_DeleteMountV1()
         {
             this._logger.name += " -DeleteMountV1";
             // Invoke graphql operation deleteNutanixMountV1
@@ -783,7 +786,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // This parameter set invokes a single graphql operation:
         // migrateNutanixMountV1.
-        protected void ProcessRecord_MigrateMountV1()
+        internal void ProcessRecord_MigrateMountV1()
         {
             this._logger.name += " -MigrateMountV1";
             // Invoke graphql operation migrateNutanixMountV1
@@ -792,7 +795,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // This parameter set invokes a single graphql operation:
         // deleteNutanixSnapshot.
-        protected void ProcessRecord_DeleteSnapshot()
+        internal void ProcessRecord_DeleteSnapshot()
         {
             this._logger.name += " -DeleteSnapshot";
             // Invoke graphql operation deleteNutanixSnapshot
@@ -801,7 +804,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // This parameter set invokes a single graphql operation:
         // restoreFilesNutanixSnapshot.
-        protected void ProcessRecord_RestoreFilesSnapshot()
+        internal void ProcessRecord_RestoreFilesSnapshot()
         {
             this._logger.name += " -RestoreFilesSnapshot";
             // Invoke graphql operation restoreFilesNutanixSnapshot
@@ -810,7 +813,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // This parameter set invokes a single graphql operation:
         // downloadFilesNutanixSnapshot.
-        protected void ProcessRecord_DownloadFilesSnapshot()
+        internal void ProcessRecord_DownloadFilesSnapshot()
         {
             this._logger.name += " -DownloadFilesSnapshot";
             // Invoke graphql operation downloadFilesNutanixSnapshot
@@ -819,7 +822,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // This parameter set invokes a single graphql operation:
         // exportNutanixSnapshot.
-        protected void ProcessRecord_ExportSnapshot()
+        internal void ProcessRecord_ExportSnapshot()
         {
             this._logger.name += " -ExportSnapshot";
             // Invoke graphql operation exportNutanixSnapshot
@@ -828,7 +831,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // This parameter set invokes a single graphql operation:
         // downloadNutanixSnapshot.
-        protected void ProcessRecord_DownloadSnapshot()
+        internal void ProcessRecord_DownloadSnapshot()
         {
             this._logger.name += " -DownloadSnapshot";
             // Invoke graphql operation downloadNutanixSnapshot
@@ -837,7 +840,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // This parameter set invokes a single graphql operation:
         // batchExportNutanixVm.
-        protected void ProcessRecord_BatchExportVm()
+        internal void ProcessRecord_BatchExportVm()
         {
             this._logger.name += " -BatchExportVm";
             // Invoke graphql operation batchExportNutanixVm
@@ -846,7 +849,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // This parameter set invokes a single graphql operation:
         // batchMountNutanixVm.
-        protected void ProcessRecord_BatchMountVm()
+        internal void ProcessRecord_BatchMountVm()
         {
             this._logger.name += " -BatchMountVm";
             // Invoke graphql operation batchMountNutanixVm
@@ -855,7 +858,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // This parameter set invokes a single graphql operation:
         // downloadNutanixVmFromLocation.
-        protected void ProcessRecord_DownloadVmFromLocation()
+        internal void ProcessRecord_DownloadVmFromLocation()
         {
             this._logger.name += " -DownloadVmFromLocation";
             // Invoke graphql operation downloadNutanixVmFromLocation
@@ -864,7 +867,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // This parameter set invokes a single graphql operation:
         // createNutanixPrismCentral.
-        protected void ProcessRecord_CreatePrismCentral()
+        internal void ProcessRecord_CreatePrismCentral()
         {
             this._logger.name += " -CreatePrismCentral";
             // Invoke graphql operation createNutanixPrismCentral
@@ -873,7 +876,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // This parameter set invokes a single graphql operation:
         // updateNutanixPrismCentral.
-        protected void ProcessRecord_UpdatePrismCentral()
+        internal void ProcessRecord_UpdatePrismCentral()
         {
             this._logger.name += " -UpdatePrismCentral";
             // Invoke graphql operation updateNutanixPrismCentral
@@ -882,7 +885,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // This parameter set invokes a single graphql operation:
         // deleteNutanixPrismCentral.
-        protected void ProcessRecord_DeletePrismCentral()
+        internal void ProcessRecord_DeletePrismCentral()
         {
             this._logger.name += " -DeletePrismCentral";
             // Invoke graphql operation deleteNutanixPrismCentral
@@ -891,7 +894,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // This parameter set invokes a single graphql operation:
         // refreshNutanixPrismCentral.
-        protected void ProcessRecord_RefreshPrismCentral()
+        internal void ProcessRecord_RefreshPrismCentral()
         {
             this._logger.name += " -RefreshPrismCentral";
             // Invoke graphql operation refreshNutanixPrismCentral
@@ -900,7 +903,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // This parameter set invokes a single graphql operation:
         // nutanixPrismCentralAsyncRequestStatus.
-        protected void ProcessRecord_PrismCentralAsyncRequestStatus()
+        internal void ProcessRecord_PrismCentralAsyncRequestStatus()
         {
             this._logger.name += " -PrismCentralAsyncRequestStatus";
             // Invoke graphql operation nutanixPrismCentralAsyncRequestStatus
@@ -909,7 +912,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // This parameter set invokes a single graphql operation:
         // bulkOnDemandSnapshotNutanixVm.
-        protected void ProcessRecord_BulkOnDemandSnapshotVm()
+        internal void ProcessRecord_BulkOnDemandSnapshotVm()
         {
             this._logger.name += " -BulkOnDemandSnapshotVm";
             // Invoke graphql operation bulkOnDemandSnapshotNutanixVm
@@ -919,7 +922,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // Invoke GraphQL Mutation:
         // createNutanixCluster(input: CreateNutanixClusterInput!): AsyncRequestStatus!
-        protected void InvokeMutationCreateNutanixCluster()
+        internal void InvokeMutationCreateNutanixCluster()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CreateNutanixClusterInput!"),
@@ -946,7 +949,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // Invoke GraphQL Mutation:
         // refreshNutanixCluster(input: RefreshNutanixClusterInput!): AsyncRequestStatus!
-        protected void InvokeMutationRefreshNutanixCluster()
+        internal void InvokeMutationRefreshNutanixCluster()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RefreshNutanixClusterInput!"),
@@ -973,7 +976,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // Invoke GraphQL Mutation:
         // updateNutanixCluster(input: UpdateNutanixClusterInput!): UpdateNutanixClusterReply!
-        protected void InvokeMutationUpdateNutanixCluster()
+        internal void InvokeMutationUpdateNutanixCluster()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpdateNutanixClusterInput!"),
@@ -1000,7 +1003,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // Invoke GraphQL Mutation:
         // deleteNutanixCluster(input: DeleteNutanixClusterInput!): AsyncRequestStatus!
-        protected void InvokeMutationDeleteNutanixCluster()
+        internal void InvokeMutationDeleteNutanixCluster()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteNutanixClusterInput!"),
@@ -1027,7 +1030,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // Invoke GraphQL Mutation:
         // registerAgentNutanixVm(input: RegisterAgentNutanixVmInput!): RequestSuccess!
-        protected void InvokeMutationRegisterAgentNutanixVm()
+        internal void InvokeMutationRegisterAgentNutanixVm()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RegisterAgentNutanixVmInput!"),
@@ -1054,7 +1057,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // Invoke GraphQL Mutation:
         // updateNutanixVm(input: UpdateNutanixVmInput!): Void
-        protected void InvokeMutationUpdateNutanixVm()
+        internal void InvokeMutationUpdateNutanixVm()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpdateNutanixVmInput!"),
@@ -1081,7 +1084,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // Invoke GraphQL Mutation:
         // createOnDemandNutanixBackup(input: CreateOnDemandNutanixBackupInput!): AsyncRequestStatus!
-        protected void InvokeMutationCreateOnDemandNutanixBackup()
+        internal void InvokeMutationCreateOnDemandNutanixBackup()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CreateOnDemandNutanixBackupInput!"),
@@ -1108,7 +1111,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // Invoke GraphQL Mutation:
         // deleteNutanixSnapshots(input: DeleteNutanixSnapshotsInput!): RequestSuccess!
-        protected void InvokeMutationDeleteNutanixSnapshots()
+        internal void InvokeMutationDeleteNutanixSnapshots()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteNutanixSnapshotsInput!"),
@@ -1135,7 +1138,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // Invoke GraphQL Mutation:
         // mountNutanixSnapshotV1(input: MountNutanixSnapshotV1Input!): AsyncRequestStatus!
-        protected void InvokeMutationMountNutanixSnapshotV1()
+        internal void InvokeMutationMountNutanixSnapshotV1()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "MountNutanixSnapshotV1Input!"),
@@ -1162,7 +1165,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // Invoke GraphQL Mutation:
         // patchNutanixMountV1(input: PatchNutanixMountV1Input!): PatchNutanixMountV1Reply!
-        protected void InvokeMutationPatchNutanixMountV1()
+        internal void InvokeMutationPatchNutanixMountV1()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "PatchNutanixMountV1Input!"),
@@ -1189,7 +1192,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // Invoke GraphQL Mutation:
         // deleteNutanixMountV1(input: DeleteNutanixMountV1Input!): AsyncRequestStatus!
-        protected void InvokeMutationDeleteNutanixMountV1()
+        internal void InvokeMutationDeleteNutanixMountV1()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteNutanixMountV1Input!"),
@@ -1216,7 +1219,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // Invoke GraphQL Mutation:
         // migrateNutanixMountV1(input: MigrateNutanixMountV1Input!): AsyncRequestStatus!
-        protected void InvokeMutationMigrateNutanixMountV1()
+        internal void InvokeMutationMigrateNutanixMountV1()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "MigrateNutanixMountV1Input!"),
@@ -1243,7 +1246,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // Invoke GraphQL Mutation:
         // deleteNutanixSnapshot(input: DeleteNutanixSnapshotInput!): RequestSuccess!
-        protected void InvokeMutationDeleteNutanixSnapshot()
+        internal void InvokeMutationDeleteNutanixSnapshot()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteNutanixSnapshotInput!"),
@@ -1270,7 +1273,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // Invoke GraphQL Mutation:
         // restoreFilesNutanixSnapshot(input: RestoreFilesNutanixSnapshotInput!): AsyncRequestStatus!
-        protected void InvokeMutationRestoreFilesNutanixSnapshot()
+        internal void InvokeMutationRestoreFilesNutanixSnapshot()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RestoreFilesNutanixSnapshotInput!"),
@@ -1297,7 +1300,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // Invoke GraphQL Mutation:
         // downloadFilesNutanixSnapshot(input: DownloadFilesNutanixSnapshotInput!): AsyncRequestStatus!
-        protected void InvokeMutationDownloadFilesNutanixSnapshot()
+        internal void InvokeMutationDownloadFilesNutanixSnapshot()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DownloadFilesNutanixSnapshotInput!"),
@@ -1324,7 +1327,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // Invoke GraphQL Mutation:
         // exportNutanixSnapshot(input: ExportNutanixSnapshotInput!): AsyncRequestStatus!
-        protected void InvokeMutationExportNutanixSnapshot()
+        internal void InvokeMutationExportNutanixSnapshot()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "ExportNutanixSnapshotInput!"),
@@ -1351,7 +1354,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // Invoke GraphQL Mutation:
         // downloadNutanixSnapshot(input: DownloadNutanixSnapshotInput!): AsyncRequestStatus!
-        protected void InvokeMutationDownloadNutanixSnapshot()
+        internal void InvokeMutationDownloadNutanixSnapshot()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DownloadNutanixSnapshotInput!"),
@@ -1378,7 +1381,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // Invoke GraphQL Mutation:
         // batchExportNutanixVm(input: BatchExportNutanixVmInput!): BatchExportNutanixVmReply!
-        protected void InvokeMutationBatchExportNutanixVm()
+        internal void InvokeMutationBatchExportNutanixVm()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "BatchExportNutanixVmInput!"),
@@ -1405,7 +1408,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // Invoke GraphQL Mutation:
         // batchMountNutanixVm(input: BatchMountNutanixVmInput!): BatchMountNutanixVmReply!
-        protected void InvokeMutationBatchMountNutanixVm()
+        internal void InvokeMutationBatchMountNutanixVm()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "BatchMountNutanixVmInput!"),
@@ -1432,7 +1435,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // Invoke GraphQL Mutation:
         // downloadNutanixVmFromLocation(input: DownloadNutanixVmFromLocationInput!): AsyncRequestStatus!
-        protected void InvokeMutationDownloadNutanixVmFromLocation()
+        internal void InvokeMutationDownloadNutanixVmFromLocation()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DownloadNutanixVmFromLocationInput!"),
@@ -1459,7 +1462,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // Invoke GraphQL Mutation:
         // createNutanixPrismCentral(input: CreateNutanixPrismCentralInput!): BatchAsyncRequestStatus!
-        protected void InvokeMutationCreateNutanixPrismCentral()
+        internal void InvokeMutationCreateNutanixPrismCentral()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CreateNutanixPrismCentralInput!"),
@@ -1486,7 +1489,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // Invoke GraphQL Mutation:
         // updateNutanixPrismCentral(input: UpdateNutanixPrismCentralInput!): UpdateNutanixPrismCentralReply!
-        protected void InvokeMutationUpdateNutanixPrismCentral()
+        internal void InvokeMutationUpdateNutanixPrismCentral()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpdateNutanixPrismCentralInput!"),
@@ -1513,7 +1516,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // Invoke GraphQL Mutation:
         // deleteNutanixPrismCentral(input: DeleteNutanixPrismCentralInput!): BatchAsyncRequestStatus!
-        protected void InvokeMutationDeleteNutanixPrismCentral()
+        internal void InvokeMutationDeleteNutanixPrismCentral()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteNutanixPrismCentralInput!"),
@@ -1540,7 +1543,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // Invoke GraphQL Mutation:
         // refreshNutanixPrismCentral(input: RefreshNutanixPrismCentralInput!): BatchAsyncRequestStatus!
-        protected void InvokeMutationRefreshNutanixPrismCentral()
+        internal void InvokeMutationRefreshNutanixPrismCentral()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RefreshNutanixPrismCentralInput!"),
@@ -1567,7 +1570,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // Invoke GraphQL Mutation:
         // nutanixPrismCentralAsyncRequestStatus(input: NutanixPrismCentralAsyncRequestStatusInput!): AsyncRequestStatus!
-        protected void InvokeMutationNutanixPrismCentralAsyncRequestStatus()
+        internal void InvokeMutationNutanixPrismCentralAsyncRequestStatus()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "NutanixPrismCentralAsyncRequestStatusInput!"),
@@ -1594,7 +1597,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // Invoke GraphQL Mutation:
         // bulkOnDemandSnapshotNutanixVm(input: BulkOnDemandSnapshotNutanixVmInput!): BulkOnDemandSnapshotNutanixVmReply!
-        protected void InvokeMutationBulkOnDemandSnapshotNutanixVm()
+        internal void InvokeMutationBulkOnDemandSnapshotNutanixVm()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "BulkOnDemandSnapshotNutanixVmInput!"),

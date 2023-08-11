@@ -126,11 +126,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isAzureTieringSupported")]
         public System.Boolean? IsAzureTieringSupported { get; set; }
 
-        //      C# -> System.Boolean? IsBlobImmutabilityEnabled
-        // GraphQL -> isBlobImmutabilityEnabled: Boolean! (scalar)
-        [JsonProperty("isBlobImmutabilityEnabled")]
-        public System.Boolean? IsBlobImmutabilityEnabled { get; set; }
-
         //      C# -> System.Boolean? IsConsolidationEnabled
         // GraphQL -> isConsolidationEnabled: Boolean! (scalar)
         [JsonProperty("isConsolidationEnabled")]
@@ -222,7 +217,6 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsActive = null,
         System.Boolean? IsArchived = null,
         System.Boolean? IsAzureTieringSupported = null,
-        System.Boolean? IsBlobImmutabilityEnabled = null,
         System.Boolean? IsConsolidationEnabled = null,
         System.String? Name = null,
         System.Int32? RunningTasks = null,
@@ -299,9 +293,6 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsAzureTieringSupported != null ) {
             this.IsAzureTieringSupported = IsAzureTieringSupported;
-        }
-        if ( IsBlobImmutabilityEnabled != null ) {
-            this.IsBlobImmutabilityEnabled = IsBlobImmutabilityEnabled;
         }
         if ( IsConsolidationEnabled != null ) {
             this.IsConsolidationEnabled = IsConsolidationEnabled;
@@ -456,11 +447,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> isAzureTieringSupported: Boolean (scalar)
         if (this.IsAzureTieringSupported != null) {
             s += ind + "isAzureTieringSupported\n" ;
-        }
-        //      C# -> System.Boolean? IsBlobImmutabilityEnabled
-        // GraphQL -> isBlobImmutabilityEnabled: Boolean! (scalar)
-        if (this.IsBlobImmutabilityEnabled != null) {
-            s += ind + "isBlobImmutabilityEnabled\n" ;
         }
         //      C# -> System.Boolean? IsConsolidationEnabled
         // GraphQL -> isConsolidationEnabled: Boolean! (scalar)
@@ -678,12 +664,6 @@ namespace RubrikSecurityCloud.Types
         if (this.IsAzureTieringSupported == null && Exploration.Includes(parent + ".isAzureTieringSupported", true))
         {
             this.IsAzureTieringSupported = true;
-        }
-        //      C# -> System.Boolean? IsBlobImmutabilityEnabled
-        // GraphQL -> isBlobImmutabilityEnabled: Boolean! (scalar)
-        if (this.IsBlobImmutabilityEnabled == null && Exploration.Includes(parent + ".isBlobImmutabilityEnabled", true))
-        {
-            this.IsBlobImmutabilityEnabled = true;
         }
         //      C# -> System.Boolean? IsConsolidationEnabled
         // GraphQL -> isConsolidationEnabled: Boolean! (scalar)

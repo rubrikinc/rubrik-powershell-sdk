@@ -92,9 +92,7 @@ List of all RDS option groups in a given region. Refers to settings of how a par
 ### allpermissionpolicies
 Retrieves the permissions policy for all the input features along with any AWS-managed policy ARNs which need to be attached to the roles. Each policy document can be used to create an AWS-managed policy which then needs to be attached to corresponding role.
 
-- There are 2 arguments.
-    - awsCloudType - AwsCloudType: AWS cloud type.
-    - features - list of CloudAccountFeatures: Cloud Account Features.
+- There is a single argument of type AwsGetPermissionPoliciesInput.
 - Returns list of PermissionPolicys.
 ### allrdsaurorainstanceclasses
 List of all the database instance classes supported by AWS RDS Aurora databases.

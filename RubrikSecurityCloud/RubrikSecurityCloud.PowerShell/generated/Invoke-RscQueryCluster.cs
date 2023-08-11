@@ -26,11 +26,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     public class Invoke_RscQueryCluster : RscPSCmdlet
     {
         
-        // -------------------------------------------------------------------
-        // Cloud parameter set
-        //
-        // [GraphQL: allCloudClusters]
-        //
+        /// <summary>
+        /// Cloud parameter set
+        ///
+        /// [GraphQL: allCloudClusters]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Cloud",
             Mandatory = false,
@@ -44,11 +44,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Cloud { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Nodes parameter set
-        //
-        // [GraphQL: clusterNodes]
-        //
+        /// <summary>
+        /// Nodes parameter set
+        ///
+        /// [GraphQL: clusterNodes]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Nodes",
             Mandatory = false,
@@ -65,11 +65,11 @@ Returns the list of all Rubrik nodes.
         public SwitchParameter Nodes { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // List parameter set
-        //
-        // [GraphQL: clusterConnection]
-        //
+        /// <summary>
+        /// List parameter set
+        ///
+        /// [GraphQL: clusterConnection]
+        /// </summary>
         [Parameter(
             ParameterSetName = "List",
             Mandatory = false,
@@ -83,11 +83,11 @@ Returns the list of all Rubrik nodes.
         public SwitchParameter List { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Cluster parameter set
-        //
-        // [GraphQL: cluster]
-        //
+        /// <summary>
+        /// Cluster parameter set
+        ///
+        /// [GraphQL: cluster]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Cluster",
             Mandatory = false,
@@ -101,11 +101,11 @@ Returns the list of all Rubrik nodes.
         public SwitchParameter Cluster { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // WithUpgradesInfo parameter set
-        //
-        // [GraphQL: clusterWithUpgradesInfo]
-        //
+        /// <summary>
+        /// WithUpgradesInfo parameter set
+        ///
+        /// [GraphQL: clusterWithUpgradesInfo]
+        /// </summary>
         [Parameter(
             ParameterSetName = "WithUpgradesInfo",
             Mandatory = false,
@@ -119,11 +119,11 @@ Returns the list of all Rubrik nodes.
         public SwitchParameter WithUpgradesInfo { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Dns parameter set
-        //
-        // [GraphQL: clusterDns]
-        //
+        /// <summary>
+        /// Dns parameter set
+        ///
+        /// [GraphQL: clusterDns]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Dns",
             Mandatory = false,
@@ -137,11 +137,11 @@ Returns the list of all Rubrik nodes.
         public SwitchParameter Dns { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Proxy parameter set
-        //
-        // [GraphQL: clusterProxy]
-        //
+        /// <summary>
+        /// Proxy parameter set
+        ///
+        /// [GraphQL: clusterProxy]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Proxy",
             Mandatory = false,
@@ -155,11 +155,11 @@ Returns the list of all Rubrik nodes.
         public SwitchParameter Proxy { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // NtpServers parameter set
-        //
-        // [GraphQL: clusterNtpServers]
-        //
+        /// <summary>
+        /// NtpServers parameter set
+        ///
+        /// [GraphQL: clusterNtpServers]
+        /// </summary>
         [Parameter(
             ParameterSetName = "NtpServers",
             Mandatory = false,
@@ -176,11 +176,11 @@ Retrieve a list of the NTP servers assigned to the Rubrik cluster. Encryption ke
         public SwitchParameter NtpServers { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // NetworkInterfaces parameter set
-        //
-        // [GraphQL: clusterNetworkInterfaces]
-        //
+        /// <summary>
+        /// NetworkInterfaces parameter set
+        ///
+        /// [GraphQL: clusterNetworkInterfaces]
+        /// </summary>
         [Parameter(
             ParameterSetName = "NetworkInterfaces",
             Mandatory = false,
@@ -197,11 +197,11 @@ Retrieves network interfaces(including VLANs) on bond0/bond1.
         public SwitchParameter NetworkInterfaces { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // FloatingIps parameter set
-        //
-        // [GraphQL: clusterFloatingIps]
-        //
+        /// <summary>
+        /// FloatingIps parameter set
+        ///
+        /// [GraphQL: clusterFloatingIps]
+        /// </summary>
         [Parameter(
             ParameterSetName = "FloatingIps",
             Mandatory = false,
@@ -218,11 +218,11 @@ Get a list of a cluster's always-available Ips.
         public SwitchParameter FloatingIps { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Vlans parameter set
-        //
-        // [GraphQL: clusterVlans]
-        //
+        /// <summary>
+        /// Vlans parameter set
+        ///
+        /// [GraphQL: clusterVlans]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Vlans",
             Mandatory = false,
@@ -236,11 +236,11 @@ Get a list of a cluster's always-available Ips.
         public SwitchParameter Vlans { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DefaultGateway parameter set
-        //
-        // [GraphQL: clusterDefaultGateway]
-        //
+        /// <summary>
+        /// DefaultGateway parameter set
+        ///
+        /// [GraphQL: clusterDefaultGateway]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DefaultGateway",
             Mandatory = false,
@@ -257,11 +257,11 @@ Get current default gateway.
         public SwitchParameter DefaultGateway { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // WebSignedCertificate parameter set
-        //
-        // [GraphQL: clusterWebSignedCertificate]
-        //
+        /// <summary>
+        /// WebSignedCertificate parameter set
+        ///
+        /// [GraphQL: clusterWebSignedCertificate]
+        /// </summary>
         [Parameter(
             ParameterSetName = "WebSignedCertificate",
             Mandatory = false,
@@ -278,11 +278,11 @@ If the web server uses a signed certificate, fetch it.
         public SwitchParameter WebSignedCertificate { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Ipmi parameter set
-        //
-        // [GraphQL: clusterIpmi]
-        //
+        /// <summary>
+        /// Ipmi parameter set
+        ///
+        /// [GraphQL: clusterIpmi]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Ipmi",
             Mandatory = false,
@@ -299,11 +299,11 @@ get IPMI details of availability and enabled access in the cluster.
         public SwitchParameter Ipmi { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Certificates parameter set
-        //
-        // [GraphQL: clusterCertificates]
-        //
+        /// <summary>
+        /// Certificates parameter set
+        ///
+        /// [GraphQL: clusterCertificates]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Certificates",
             Mandatory = false,
@@ -320,11 +320,11 @@ Get all certificates.
         public SwitchParameter Certificates { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // WebCertsAndIpmis parameter set
-        //
-        // [GraphQL: allClusterWebCertsAndIpmis]
-        //
+        /// <summary>
+        /// WebCertsAndIpmis parameter set
+        ///
+        /// [GraphQL: allClusterWebCertsAndIpmis]
+        /// </summary>
         [Parameter(
             ParameterSetName = "WebCertsAndIpmis",
             Mandatory = false,
@@ -338,11 +338,11 @@ Get all certificates.
         public SwitchParameter WebCertsAndIpmis { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // OperationJobProgress parameter set
-        //
-        // [GraphQL: clusterOperationJobProgress]
-        //
+        /// <summary>
+        /// OperationJobProgress parameter set
+        ///
+        /// [GraphQL: clusterOperationJobProgress]
+        /// </summary>
         [Parameter(
             ParameterSetName = "OperationJobProgress",
             Mandatory = false,
@@ -356,11 +356,11 @@ Get all certificates.
         public SwitchParameter OperationJobProgress { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Ipv6Mode parameter set
-        //
-        // [GraphQL: clusterIpv6Mode]
-        //
+        /// <summary>
+        /// Ipv6Mode parameter set
+        ///
+        /// [GraphQL: clusterIpv6Mode]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Ipv6Mode",
             Mandatory = false,
@@ -374,11 +374,11 @@ Get all certificates.
         public SwitchParameter Ipv6Mode { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Csr parameter set
-        //
-        // [GraphQL: clusterCsr]
-        //
+        /// <summary>
+        /// Csr parameter set
+        ///
+        /// [GraphQL: clusterCsr]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Csr",
             Mandatory = false,
@@ -395,11 +395,11 @@ Returns the certificate signing request generated from the private key of the Ru
         public SwitchParameter Csr { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // TypeList parameter set
-        //
-        // [GraphQL: clusterTypeList]
-        //
+        /// <summary>
+        /// TypeList parameter set
+        ///
+        /// [GraphQL: clusterTypeList]
+        /// </summary>
         [Parameter(
             ParameterSetName = "TypeList",
             Mandatory = false,
@@ -413,11 +413,11 @@ Returns the certificate signing request generated from the private key of the Ru
         public SwitchParameter TypeList { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // GroupByList parameter set
-        //
-        // [GraphQL: clusterGroupByConnection]
-        //
+        /// <summary>
+        /// GroupByList parameter set
+        ///
+        /// [GraphQL: clusterGroupByConnection]
+        /// </summary>
         [Parameter(
             ParameterSetName = "GroupByList",
             Mandatory = false,
@@ -431,11 +431,11 @@ Returns the certificate signing request generated from the private key of the Ru
         public SwitchParameter GroupByList { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // WithConfigProtectionInfo parameter set
-        //
-        // [GraphQL: clusterWithConfigProtectionInfo]
-        //
+        /// <summary>
+        /// WithConfigProtectionInfo parameter set
+        ///
+        /// [GraphQL: clusterWithConfigProtectionInfo]
+        /// </summary>
         [Parameter(
             ParameterSetName = "WithConfigProtectionInfo",
             Mandatory = false,
@@ -449,11 +449,11 @@ Returns the certificate signing request generated from the private key of the Ru
         public SwitchParameter WithConfigProtectionInfo { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // RcvLocations parameter set
-        //
-        // [GraphQL: clusterRcvLocations]
-        //
+        /// <summary>
+        /// RcvLocations parameter set
+        ///
+        /// [GraphQL: clusterRcvLocations]
+        /// </summary>
         [Parameter(
             ParameterSetName = "RcvLocations",
             Mandatory = false,
@@ -467,11 +467,11 @@ Returns the certificate signing request generated from the private key of the Ru
         public SwitchParameter RcvLocations { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Connected parameter set
-        //
-        // [GraphQL: allConnectedClusters]
-        //
+        /// <summary>
+        /// Connected parameter set
+        ///
+        /// [GraphQL: allConnectedClusters]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Connected",
             Mandatory = false,
@@ -485,11 +485,11 @@ Returns the certificate signing request generated from the private key of the Ru
         public SwitchParameter Connected { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ReplicationTargets parameter set
-        //
-        // [GraphQL: allClusterReplicationTargets]
-        //
+        /// <summary>
+        /// ReplicationTargets parameter set
+        ///
+        /// [GraphQL: allClusterReplicationTargets]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ReplicationTargets",
             Mandatory = false,
@@ -503,11 +503,11 @@ Returns the certificate signing request generated from the private key of the Ru
         public SwitchParameter ReplicationTargets { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // EncryptionInfo parameter set
-        //
-        // [GraphQL: clusterEncryptionInfo]
-        //
+        /// <summary>
+        /// EncryptionInfo parameter set
+        ///
+        /// [GraphQL: clusterEncryptionInfo]
+        /// </summary>
         [Parameter(
             ParameterSetName = "EncryptionInfo",
             Mandatory = false,
@@ -521,11 +521,11 @@ Returns the certificate signing request generated from the private key of the Ru
         public SwitchParameter EncryptionInfo { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // HostFailover parameter set
-        //
-        // [GraphQL: hostFailoverCluster]
-        //
+        /// <summary>
+        /// HostFailover parameter set
+        ///
+        /// [GraphQL: hostFailoverCluster]
+        /// </summary>
         [Parameter(
             ParameterSetName = "HostFailover",
             Mandatory = false,
@@ -539,11 +539,11 @@ Returns the certificate signing request generated from the private key of the Ru
         public SwitchParameter HostFailover { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // GlobalFileSearchMultiple parameter set
-        //
-        // [GraphQL: allGlobalFileSearchMultipleClusters]
-        //
+        /// <summary>
+        /// GlobalFileSearchMultiple parameter set
+        ///
+        /// [GraphQL: allGlobalFileSearchMultipleClusters]
+        /// </summary>
         [Parameter(
             ParameterSetName = "GlobalFileSearchMultiple",
             Mandatory = false,
@@ -557,11 +557,11 @@ Returns the certificate signing request generated from the private key of the Ru
         public SwitchParameter GlobalFileSearchMultiple { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Kubernetes parameter set
-        //
-        // [GraphQL: kubernetesClusters]
-        //
+        /// <summary>
+        /// Kubernetes parameter set
+        ///
+        /// [GraphQL: kubernetesClusters]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Kubernetes",
             Mandatory = false,
@@ -575,11 +575,11 @@ Returns the certificate signing request generated from the private key of the Ru
         public SwitchParameter Kubernetes { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // K8s parameter set
-        //
-        // [GraphQL: k8sClusters]
-        //
+        /// <summary>
+        /// K8s parameter set
+        ///
+        /// [GraphQL: k8sClusters]
+        /// </summary>
         [Parameter(
             ParameterSetName = "K8s",
             Mandatory = false,
@@ -593,11 +593,11 @@ Returns the certificate signing request generated from the private key of the Ru
         public SwitchParameter K8s { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Windows parameter set
-        //
-        // [GraphQL: windowsCluster]
-        //
+        /// <summary>
+        /// Windows parameter set
+        ///
+        /// [GraphQL: windowsCluster]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Windows",
             Mandatory = false,
@@ -611,11 +611,11 @@ Returns the certificate signing request generated from the private key of the Ru
         public SwitchParameter Windows { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ReportMigrationStatus parameter set
-        //
-        // [GraphQL: clusterReportMigrationStatus]
-        //
+        /// <summary>
+        /// ReportMigrationStatus parameter set
+        ///
+        /// [GraphQL: clusterReportMigrationStatus]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ReportMigrationStatus",
             Mandatory = false,
@@ -629,11 +629,11 @@ Returns the certificate signing request generated from the private key of the Ru
         public SwitchParameter ReportMigrationStatus { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ReportMigrationCount parameter set
-        //
-        // [GraphQL: clusterReportMigrationCount]
-        //
+        /// <summary>
+        /// ReportMigrationCount parameter set
+        ///
+        /// [GraphQL: clusterReportMigrationCount]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ReportMigrationCount",
             Mandatory = false,
@@ -647,11 +647,11 @@ Returns the certificate signing request generated from the private key of the Ru
         public SwitchParameter ReportMigrationCount { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ReportMigrationJobStatus parameter set
-        //
-        // [GraphQL: clusterReportMigrationJobStatus]
-        //
+        /// <summary>
+        /// ReportMigrationJobStatus parameter set
+        ///
+        /// [GraphQL: clusterReportMigrationJobStatus]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ReportMigrationJobStatus",
             Mandatory = false,
@@ -665,11 +665,11 @@ Returns the certificate signing request generated from the private key of the Ru
         public SwitchParameter ReportMigrationJobStatus { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // LaDomains parameter set
-        //
-        // [GraphQL: clusterSlaDomains]
-        //
+        /// <summary>
+        /// LaDomains parameter set
+        ///
+        /// [GraphQL: clusterSlaDomains]
+        /// </summary>
         [Parameter(
             ParameterSetName = "LaDomains",
             Mandatory = false,
@@ -683,11 +683,11 @@ Returns the certificate signing request generated from the private key of the Ru
         public SwitchParameter LaDomains { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // LaDomainFilterList parameter set
-        //
-        // [GraphQL: clusterSlaDomainFilterConnection]
-        //
+        /// <summary>
+        /// LaDomainFilterList parameter set
+        ///
+        /// [GraphQL: clusterSlaDomainFilterConnection]
+        /// </summary>
         [Parameter(
             ParameterSetName = "LaDomainFilterList",
             Mandatory = false,
@@ -701,11 +701,11 @@ Returns the certificate signing request generated from the private key of the Ru
         public SwitchParameter LaDomainFilterList { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // VerifySlaWithReplicationTo parameter set
-        //
-        // [GraphQL: verifySlaWithReplicationToCluster]
-        //
+        /// <summary>
+        /// VerifySlaWithReplicationTo parameter set
+        ///
+        /// [GraphQL: verifySlaWithReplicationToCluster]
+        /// </summary>
         [Parameter(
             ParameterSetName = "VerifySlaWithReplicationTo",
             Mandatory = false,
@@ -719,11 +719,11 @@ Returns the certificate signing request generated from the private key of the Ru
         public SwitchParameter VerifySlaWithReplicationTo { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // GlobalSlas parameter set
-        //
-        // [GraphQL: allClusterGlobalSlas]
-        //
+        /// <summary>
+        /// GlobalSlas parameter set
+        ///
+        /// [GraphQL: allClusterGlobalSlas]
+        /// </summary>
         [Parameter(
             ParameterSetName = "GlobalSlas",
             Mandatory = false,
@@ -737,11 +737,11 @@ Returns the certificate signing request generated from the private key of the Ru
         public SwitchParameter GlobalSlas { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // RegistrationProductInfo parameter set
-        //
-        // [GraphQL: clusterRegistrationProductInfo]
-        //
+        /// <summary>
+        /// RegistrationProductInfo parameter set
+        ///
+        /// [GraphQL: clusterRegistrationProductInfo]
+        /// </summary>
         [Parameter(
             ParameterSetName = "RegistrationProductInfo",
             Mandatory = false,
@@ -755,11 +755,11 @@ Returns the certificate signing request generated from the private key of the Ru
         public SwitchParameter RegistrationProductInfo { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Vcd parameter set
-        //
-        // [GraphQL: vcdClusters]
-        //
+        /// <summary>
+        /// Vcd parameter set
+        ///
+        /// [GraphQL: vcdClusters]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Vcd",
             Mandatory = false,
@@ -773,11 +773,11 @@ Returns the certificate signing request generated from the private key of the Ru
         public SwitchParameter Vcd { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // IsTotpAckNecessary parameter set
-        //
-        // [GraphQL: isTotpAckNecessaryForCluster]
-        //
+        /// <summary>
+        /// IsTotpAckNecessary parameter set
+        ///
+        /// [GraphQL: isTotpAckNecessaryForCluster]
+        /// </summary>
         [Parameter(
             ParameterSetName = "IsTotpAckNecessary",
             Mandatory = false,
@@ -791,11 +791,11 @@ Returns the certificate signing request generated from the private key of the Ru
         public SwitchParameter IsTotpAckNecessary { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // TotpAckStatus parameter set
-        //
-        // [GraphQL: allClustersTotpAckStatus]
-        //
+        /// <summary>
+        /// TotpAckStatus parameter set
+        ///
+        /// [GraphQL: allClustersTotpAckStatus]
+        /// </summary>
         [Parameter(
             ParameterSetName = "TotpAckStatus",
             Mandatory = false,
@@ -809,6 +809,8 @@ Returns the certificate signing request generated from the private key of the Ru
         public SwitchParameter TotpAckStatus { get; set; }
 
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
         protected override void ProcessRecord()
         {
             try
@@ -950,10 +952,11 @@ Returns the certificate signing request generated from the private key of the Ru
                 ThrowTerminatingException(ex);
            }
         }
+#pragma warning restore 1591
 
         // This parameter set invokes a single graphql operation:
         // allCloudClusters.
-        protected void ProcessRecord_Cloud()
+        internal void ProcessRecord_Cloud()
         {
             this._logger.name += " -Cloud";
             // Invoke graphql operation allCloudClusters
@@ -962,7 +965,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // This parameter set invokes a single graphql operation:
         // clusterNodes.
-        protected void ProcessRecord_Nodes()
+        internal void ProcessRecord_Nodes()
         {
             this._logger.name += " -Nodes";
             // Invoke graphql operation clusterNodes
@@ -971,7 +974,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // This parameter set invokes a single graphql operation:
         // clusterConnection.
-        protected void ProcessRecord_List()
+        internal void ProcessRecord_List()
         {
             this._logger.name += " -List";
             // Invoke graphql operation clusterConnection
@@ -980,7 +983,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // This parameter set invokes a single graphql operation:
         // cluster.
-        protected void ProcessRecord_Cluster()
+        internal void ProcessRecord_Cluster()
         {
             this._logger.name += " -Cluster";
             // Invoke graphql operation cluster
@@ -989,7 +992,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // This parameter set invokes a single graphql operation:
         // clusterWithUpgradesInfo.
-        protected void ProcessRecord_WithUpgradesInfo()
+        internal void ProcessRecord_WithUpgradesInfo()
         {
             this._logger.name += " -WithUpgradesInfo";
             // Invoke graphql operation clusterWithUpgradesInfo
@@ -998,7 +1001,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // This parameter set invokes a single graphql operation:
         // clusterDns.
-        protected void ProcessRecord_Dns()
+        internal void ProcessRecord_Dns()
         {
             this._logger.name += " -Dns";
             // Invoke graphql operation clusterDns
@@ -1007,7 +1010,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // This parameter set invokes a single graphql operation:
         // clusterProxy.
-        protected void ProcessRecord_Proxy()
+        internal void ProcessRecord_Proxy()
         {
             this._logger.name += " -Proxy";
             // Invoke graphql operation clusterProxy
@@ -1016,7 +1019,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // This parameter set invokes a single graphql operation:
         // clusterNtpServers.
-        protected void ProcessRecord_NtpServers()
+        internal void ProcessRecord_NtpServers()
         {
             this._logger.name += " -NtpServers";
             // Invoke graphql operation clusterNtpServers
@@ -1025,7 +1028,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // This parameter set invokes a single graphql operation:
         // clusterNetworkInterfaces.
-        protected void ProcessRecord_NetworkInterfaces()
+        internal void ProcessRecord_NetworkInterfaces()
         {
             this._logger.name += " -NetworkInterfaces";
             // Invoke graphql operation clusterNetworkInterfaces
@@ -1034,7 +1037,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // This parameter set invokes a single graphql operation:
         // clusterFloatingIps.
-        protected void ProcessRecord_FloatingIps()
+        internal void ProcessRecord_FloatingIps()
         {
             this._logger.name += " -FloatingIps";
             // Invoke graphql operation clusterFloatingIps
@@ -1043,7 +1046,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // This parameter set invokes a single graphql operation:
         // clusterVlans.
-        protected void ProcessRecord_Vlans()
+        internal void ProcessRecord_Vlans()
         {
             this._logger.name += " -Vlans";
             // Invoke graphql operation clusterVlans
@@ -1052,7 +1055,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // This parameter set invokes a single graphql operation:
         // clusterDefaultGateway.
-        protected void ProcessRecord_DefaultGateway()
+        internal void ProcessRecord_DefaultGateway()
         {
             this._logger.name += " -DefaultGateway";
             // Invoke graphql operation clusterDefaultGateway
@@ -1061,7 +1064,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // This parameter set invokes a single graphql operation:
         // clusterWebSignedCertificate.
-        protected void ProcessRecord_WebSignedCertificate()
+        internal void ProcessRecord_WebSignedCertificate()
         {
             this._logger.name += " -WebSignedCertificate";
             // Invoke graphql operation clusterWebSignedCertificate
@@ -1070,7 +1073,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // This parameter set invokes a single graphql operation:
         // clusterIpmi.
-        protected void ProcessRecord_Ipmi()
+        internal void ProcessRecord_Ipmi()
         {
             this._logger.name += " -Ipmi";
             // Invoke graphql operation clusterIpmi
@@ -1079,7 +1082,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // This parameter set invokes a single graphql operation:
         // clusterCertificates.
-        protected void ProcessRecord_Certificates()
+        internal void ProcessRecord_Certificates()
         {
             this._logger.name += " -Certificates";
             // Invoke graphql operation clusterCertificates
@@ -1088,7 +1091,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // This parameter set invokes a single graphql operation:
         // allClusterWebCertsAndIpmis.
-        protected void ProcessRecord_WebCertsAndIpmis()
+        internal void ProcessRecord_WebCertsAndIpmis()
         {
             this._logger.name += " -WebCertsAndIpmis";
             // Invoke graphql operation allClusterWebCertsAndIpmis
@@ -1097,7 +1100,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // This parameter set invokes a single graphql operation:
         // clusterOperationJobProgress.
-        protected void ProcessRecord_OperationJobProgress()
+        internal void ProcessRecord_OperationJobProgress()
         {
             this._logger.name += " -OperationJobProgress";
             // Invoke graphql operation clusterOperationJobProgress
@@ -1106,7 +1109,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // This parameter set invokes a single graphql operation:
         // clusterIpv6Mode.
-        protected void ProcessRecord_Ipv6Mode()
+        internal void ProcessRecord_Ipv6Mode()
         {
             this._logger.name += " -Ipv6Mode";
             // Invoke graphql operation clusterIpv6Mode
@@ -1115,7 +1118,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // This parameter set invokes a single graphql operation:
         // clusterCsr.
-        protected void ProcessRecord_Csr()
+        internal void ProcessRecord_Csr()
         {
             this._logger.name += " -Csr";
             // Invoke graphql operation clusterCsr
@@ -1124,7 +1127,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // This parameter set invokes a single graphql operation:
         // clusterTypeList.
-        protected void ProcessRecord_TypeList()
+        internal void ProcessRecord_TypeList()
         {
             this._logger.name += " -TypeList";
             // Invoke graphql operation clusterTypeList
@@ -1133,7 +1136,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // This parameter set invokes a single graphql operation:
         // clusterGroupByConnection.
-        protected void ProcessRecord_GroupByList()
+        internal void ProcessRecord_GroupByList()
         {
             this._logger.name += " -GroupByList";
             // Invoke graphql operation clusterGroupByConnection
@@ -1142,7 +1145,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // This parameter set invokes a single graphql operation:
         // clusterWithConfigProtectionInfo.
-        protected void ProcessRecord_WithConfigProtectionInfo()
+        internal void ProcessRecord_WithConfigProtectionInfo()
         {
             this._logger.name += " -WithConfigProtectionInfo";
             // Invoke graphql operation clusterWithConfigProtectionInfo
@@ -1151,7 +1154,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // This parameter set invokes a single graphql operation:
         // clusterRcvLocations.
-        protected void ProcessRecord_RcvLocations()
+        internal void ProcessRecord_RcvLocations()
         {
             this._logger.name += " -RcvLocations";
             // Invoke graphql operation clusterRcvLocations
@@ -1160,7 +1163,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // This parameter set invokes a single graphql operation:
         // allConnectedClusters.
-        protected void ProcessRecord_Connected()
+        internal void ProcessRecord_Connected()
         {
             this._logger.name += " -Connected";
             // Invoke graphql operation allConnectedClusters
@@ -1169,7 +1172,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // This parameter set invokes a single graphql operation:
         // allClusterReplicationTargets.
-        protected void ProcessRecord_ReplicationTargets()
+        internal void ProcessRecord_ReplicationTargets()
         {
             this._logger.name += " -ReplicationTargets";
             // Invoke graphql operation allClusterReplicationTargets
@@ -1178,7 +1181,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // This parameter set invokes a single graphql operation:
         // clusterEncryptionInfo.
-        protected void ProcessRecord_EncryptionInfo()
+        internal void ProcessRecord_EncryptionInfo()
         {
             this._logger.name += " -EncryptionInfo";
             // Invoke graphql operation clusterEncryptionInfo
@@ -1187,7 +1190,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // This parameter set invokes a single graphql operation:
         // hostFailoverCluster.
-        protected void ProcessRecord_HostFailover()
+        internal void ProcessRecord_HostFailover()
         {
             this._logger.name += " -HostFailover";
             // Invoke graphql operation hostFailoverCluster
@@ -1196,7 +1199,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // This parameter set invokes a single graphql operation:
         // allGlobalFileSearchMultipleClusters.
-        protected void ProcessRecord_GlobalFileSearchMultiple()
+        internal void ProcessRecord_GlobalFileSearchMultiple()
         {
             this._logger.name += " -GlobalFileSearchMultiple";
             // Invoke graphql operation allGlobalFileSearchMultipleClusters
@@ -1205,7 +1208,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // This parameter set invokes a single graphql operation:
         // kubernetesClusters.
-        protected void ProcessRecord_Kubernetes()
+        internal void ProcessRecord_Kubernetes()
         {
             this._logger.name += " -Kubernetes";
             // Invoke graphql operation kubernetesClusters
@@ -1214,7 +1217,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // This parameter set invokes a single graphql operation:
         // k8sClusters.
-        protected void ProcessRecord_K8s()
+        internal void ProcessRecord_K8s()
         {
             this._logger.name += " -K8s";
             // Invoke graphql operation k8sClusters
@@ -1223,7 +1226,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // This parameter set invokes a single graphql operation:
         // windowsCluster.
-        protected void ProcessRecord_Windows()
+        internal void ProcessRecord_Windows()
         {
             this._logger.name += " -Windows";
             // Invoke graphql operation windowsCluster
@@ -1232,7 +1235,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // This parameter set invokes a single graphql operation:
         // clusterReportMigrationStatus.
-        protected void ProcessRecord_ReportMigrationStatus()
+        internal void ProcessRecord_ReportMigrationStatus()
         {
             this._logger.name += " -ReportMigrationStatus";
             // Invoke graphql operation clusterReportMigrationStatus
@@ -1241,7 +1244,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // This parameter set invokes a single graphql operation:
         // clusterReportMigrationCount.
-        protected void ProcessRecord_ReportMigrationCount()
+        internal void ProcessRecord_ReportMigrationCount()
         {
             this._logger.name += " -ReportMigrationCount";
             // Invoke graphql operation clusterReportMigrationCount
@@ -1250,7 +1253,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // This parameter set invokes a single graphql operation:
         // clusterReportMigrationJobStatus.
-        protected void ProcessRecord_ReportMigrationJobStatus()
+        internal void ProcessRecord_ReportMigrationJobStatus()
         {
             this._logger.name += " -ReportMigrationJobStatus";
             // Invoke graphql operation clusterReportMigrationJobStatus
@@ -1259,7 +1262,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // This parameter set invokes a single graphql operation:
         // clusterSlaDomains.
-        protected void ProcessRecord_LaDomains()
+        internal void ProcessRecord_LaDomains()
         {
             this._logger.name += " -LaDomains";
             // Invoke graphql operation clusterSlaDomains
@@ -1268,7 +1271,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // This parameter set invokes a single graphql operation:
         // clusterSlaDomainFilterConnection.
-        protected void ProcessRecord_LaDomainFilterList()
+        internal void ProcessRecord_LaDomainFilterList()
         {
             this._logger.name += " -LaDomainFilterList";
             // Invoke graphql operation clusterSlaDomainFilterConnection
@@ -1277,7 +1280,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // This parameter set invokes a single graphql operation:
         // verifySlaWithReplicationToCluster.
-        protected void ProcessRecord_VerifySlaWithReplicationTo()
+        internal void ProcessRecord_VerifySlaWithReplicationTo()
         {
             this._logger.name += " -VerifySlaWithReplicationTo";
             // Invoke graphql operation verifySlaWithReplicationToCluster
@@ -1286,7 +1289,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // This parameter set invokes a single graphql operation:
         // allClusterGlobalSlas.
-        protected void ProcessRecord_GlobalSlas()
+        internal void ProcessRecord_GlobalSlas()
         {
             this._logger.name += " -GlobalSlas";
             // Invoke graphql operation allClusterGlobalSlas
@@ -1295,7 +1298,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // This parameter set invokes a single graphql operation:
         // clusterRegistrationProductInfo.
-        protected void ProcessRecord_RegistrationProductInfo()
+        internal void ProcessRecord_RegistrationProductInfo()
         {
             this._logger.name += " -RegistrationProductInfo";
             // Invoke graphql operation clusterRegistrationProductInfo
@@ -1304,7 +1307,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // This parameter set invokes a single graphql operation:
         // vcdClusters.
-        protected void ProcessRecord_Vcd()
+        internal void ProcessRecord_Vcd()
         {
             this._logger.name += " -Vcd";
             // Invoke graphql operation vcdClusters
@@ -1313,7 +1316,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // This parameter set invokes a single graphql operation:
         // isTotpAckNecessaryForCluster.
-        protected void ProcessRecord_IsTotpAckNecessary()
+        internal void ProcessRecord_IsTotpAckNecessary()
         {
             this._logger.name += " -IsTotpAckNecessary";
             // Invoke graphql operation isTotpAckNecessaryForCluster
@@ -1322,7 +1325,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // This parameter set invokes a single graphql operation:
         // allClustersTotpAckStatus.
-        protected void ProcessRecord_TotpAckStatus()
+        internal void ProcessRecord_TotpAckStatus()
         {
             this._logger.name += " -TotpAckStatus";
             // Invoke graphql operation allClustersTotpAckStatus
@@ -1332,7 +1335,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // Invoke GraphQL Query:
         // allCloudClusters(cloudVendorType: CcpVendorType!): [CcWithCloudInfo!]!
-        protected void InvokeQueryAllCloudClusters()
+        internal void InvokeQueryAllCloudClusters()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("cloudVendorType", "CcpVendorType!"),
@@ -1359,7 +1362,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // Invoke GraphQL Query:
         // clusterNodes(input: GetNodesInput!): NodeStatusListResponse!
-        protected void InvokeQueryClusterNodes()
+        internal void InvokeQueryClusterNodes()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetNodesInput!"),
@@ -1394,7 +1397,7 @@ Returns the certificate signing request generated from the private key of the Ru
         //     sortOrder: SortOrder = DESC
         //     sortBy: ClusterSortByEnum = ClusterType
         //   ): ClusterConnection!
-        protected void InvokeQueryClusterConnection()
+        internal void InvokeQueryClusterConnection()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -1427,7 +1430,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // Invoke GraphQL Query:
         // cluster(clusterUuid: UUID!): Cluster!
-        protected void InvokeQueryCluster()
+        internal void InvokeQueryCluster()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("clusterUuid", "UUID!"),
@@ -1462,7 +1465,7 @@ Returns the certificate signing request generated from the private key of the Ru
         //     sortOrder: SortOrder = DESC
         //     sortBy: UpgradeInfoSortByEnum = ClusterType
         //   ): ClusterConnection!
-        protected void InvokeQueryClusterWithUpgradesInfo()
+        internal void InvokeQueryClusterWithUpgradesInfo()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -1495,7 +1498,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // Invoke GraphQL Query:
         // clusterDns(clusterUuid: UUID!): ClusterDnsReply!
-        protected void InvokeQueryClusterDns()
+        internal void InvokeQueryClusterDns()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("clusterUuid", "UUID!"),
@@ -1522,7 +1525,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // Invoke GraphQL Query:
         // clusterProxy(clusterUuid: UUID!): ClusterProxyReply!
-        protected void InvokeQueryClusterProxy()
+        internal void InvokeQueryClusterProxy()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("clusterUuid", "UUID!"),
@@ -1549,7 +1552,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // Invoke GraphQL Query:
         // clusterNtpServers(input: GetClusterNtpServersInput!): NtpServerConfigurationListResponse!
-        protected void InvokeQueryClusterNtpServers()
+        internal void InvokeQueryClusterNtpServers()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetClusterNtpServersInput!"),
@@ -1576,7 +1579,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // Invoke GraphQL Query:
         // clusterNetworkInterfaces(input: GetNetworkInterfaceInput!): NetworkInterfaceListResponse!
-        protected void InvokeQueryClusterNetworkInterfaces()
+        internal void InvokeQueryClusterNetworkInterfaces()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetNetworkInterfaceInput!"),
@@ -1603,7 +1606,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // Invoke GraphQL Query:
         // clusterFloatingIps(input: GetClusterIpsInput!): InternalGetClusterIpsResponse!
-        protected void InvokeQueryClusterFloatingIps()
+        internal void InvokeQueryClusterFloatingIps()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetClusterIpsInput!"),
@@ -1630,7 +1633,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // Invoke GraphQL Query:
         // clusterVlans(input: GetVlanInput!): VlanConfigListResponse!
-        protected void InvokeQueryClusterVlans()
+        internal void InvokeQueryClusterVlans()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetVlanInput!"),
@@ -1657,7 +1660,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // Invoke GraphQL Query:
         // clusterDefaultGateway(input: GetDefaultGatewayInput!): InternalGetDefaultGatewayResponse!
-        protected void InvokeQueryClusterDefaultGateway()
+        internal void InvokeQueryClusterDefaultGateway()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetDefaultGatewayInput!"),
@@ -1684,7 +1687,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // Invoke GraphQL Query:
         // clusterWebSignedCertificate(input: ClusterWebSignedCertificateInput!): ClusterWebSignedCertificateReply!
-        protected void InvokeQueryClusterWebSignedCertificate()
+        internal void InvokeQueryClusterWebSignedCertificate()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "ClusterWebSignedCertificateInput!"),
@@ -1711,7 +1714,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // Invoke GraphQL Query:
         // clusterIpmi(input: GetIpmiInput!): ModifyIpmiReply!
-        protected void InvokeQueryClusterIpmi()
+        internal void InvokeQueryClusterIpmi()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetIpmiInput!"),
@@ -1738,7 +1741,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // Invoke GraphQL Query:
         // clusterCertificates(input: QueryCertificatesInput!): CertificateSummaryListResponse!
-        protected void InvokeQueryClusterCertificates()
+        internal void InvokeQueryClusterCertificates()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "QueryCertificatesInput!"),
@@ -1765,7 +1768,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // Invoke GraphQL Query:
         // allClusterWebCertsAndIpmis(input: BulkClusterWebCertAndIpmiInput!): [ClusterWebCertAndIpmi!]!
-        protected void InvokeQueryAllClusterWebCertsAndIpmis()
+        internal void InvokeQueryAllClusterWebCertsAndIpmis()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "BulkClusterWebCertAndIpmiInput!"),
@@ -1792,7 +1795,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // Invoke GraphQL Query:
         // clusterOperationJobProgress(input: ClusterOperationJobProgressInput!): ClusterOperationJobProgress!
-        protected void InvokeQueryClusterOperationJobProgress()
+        internal void InvokeQueryClusterOperationJobProgress()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "ClusterOperationJobProgressInput!"),
@@ -1819,7 +1822,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // Invoke GraphQL Query:
         // clusterIpv6Mode(input: ClusterIpv6ModeInput!): ClusterIpv6ModeReply!
-        protected void InvokeQueryClusterIpv6Mode()
+        internal void InvokeQueryClusterIpv6Mode()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "ClusterIpv6ModeInput!"),
@@ -1846,7 +1849,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // Invoke GraphQL Query:
         // clusterCsr(input: GetClusterCsrInput!): ClusterCsr!
-        protected void InvokeQueryClusterCsr()
+        internal void InvokeQueryClusterCsr()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetClusterCsrInput!"),
@@ -1873,7 +1876,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // Invoke GraphQL Query:
         // clusterTypeList: [GroupCount!]!
-        protected void InvokeQueryClusterTypeList()
+        internal void InvokeQueryClusterTypeList()
         {
             Tuple<string, string>[] argDefs = {
             };
@@ -1907,7 +1910,7 @@ Returns the certificate signing request generated from the private key of the Ru
         //     filter: ClusterFilterInput
         //     timezoneOffset: Float = 0.0
         //   ): ClusterGroupByConnection!
-        protected void InvokeQueryClusterGroupByConnection()
+        internal void InvokeQueryClusterGroupByConnection()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -1948,7 +1951,7 @@ Returns the certificate signing request generated from the private key of the Ru
         //     sortOrder: SortOrder = DESC
         //     sortBy: ConfigProtectionInfoSortBy = CLUSTER_NAME
         //   ): ClusterConnection!
-        protected void InvokeQueryClusterWithConfigProtectionInfo()
+        internal void InvokeQueryClusterWithConfigProtectionInfo()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -1988,7 +1991,7 @@ Returns the certificate signing request generated from the private key of the Ru
         //     sortOrder: SortOrder
         //     cdmClusterUUID: UUID!
         //   ): RcvLocationBasicInfoConnection!
-        protected void InvokeQueryClusterRcvLocations()
+        internal void InvokeQueryClusterRcvLocations()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -2020,7 +2023,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // Invoke GraphQL Query:
         // allConnectedClusters(clusterFilterArg: ClusterTypeEnum): [DataLocationSupportedCluster!]!
-        protected void InvokeQueryAllConnectedClusters()
+        internal void InvokeQueryAllConnectedClusters()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("clusterFilterArg", "ClusterTypeEnum"),
@@ -2047,7 +2050,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // Invoke GraphQL Query:
         // allClusterReplicationTargets(clusterUuid: UUID!): [ClusterReplicationTarget!]!
-        protected void InvokeQueryAllClusterReplicationTargets()
+        internal void InvokeQueryAllClusterReplicationTargets()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("clusterUuid", "UUID!"),
@@ -2085,7 +2088,7 @@ Returns the certificate signing request generated from the private key of the Ru
         //     clusters: [UUID!]! = []
         //     encryptionTypes: [ClusterEncryptionType!]! = []
         //   ): ClusterEncryptionInfoConnection!
-        protected void InvokeQueryClusterEncryptionInfo()
+        internal void InvokeQueryClusterEncryptionInfo()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -2121,7 +2124,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // Invoke GraphQL Query:
         // hostFailoverCluster(fid: UUID!): HostFailoverCluster!
-        protected void InvokeQueryHostFailoverCluster()
+        internal void InvokeQueryHostFailoverCluster()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
@@ -2148,7 +2151,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // Invoke GraphQL Query:
         // allGlobalFileSearchMultipleClusters(clusters: [UUID!]! = [], regex: String!): GlobalFileSearchReplyType!
-        protected void InvokeQueryAllGlobalFileSearchMultipleClusters()
+        internal void InvokeQueryAllGlobalFileSearchMultipleClusters()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("clusters", "[UUID!]!"),
@@ -2182,7 +2185,7 @@ Returns the certificate signing request generated from the private key of the Ru
         //     sortOrder: SortOrder
         //     filter: [Filter!]
         //   ): KubernetesClusterConnection!
-        protected void InvokeQueryKubernetesClusters()
+        internal void InvokeQueryKubernetesClusters()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -2219,7 +2222,7 @@ Returns the certificate signing request generated from the private key of the Ru
         //     sortOrder: SortOrder
         //     filter: [Filter!]
         //   ): K8sClusterConnection!
-        protected void InvokeQueryK8sClusters()
+        internal void InvokeQueryK8sClusters()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -2250,7 +2253,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // Invoke GraphQL Query:
         // windowsCluster(fid: UUID!): WindowsCluster!
-        protected void InvokeQueryWindowsCluster()
+        internal void InvokeQueryWindowsCluster()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
@@ -2284,7 +2287,7 @@ Returns the certificate signing request generated from the private key of the Ru
         //     last: Int
         //     before: String
         //   ): ReportMigrationStatusConnection!
-        protected void InvokeQueryClusterReportMigrationStatus()
+        internal void InvokeQueryClusterReportMigrationStatus()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("clusterUuid", "UUID"),
@@ -2316,7 +2319,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // Invoke GraphQL Query:
         // clusterReportMigrationCount(clusterUuid: UUID, status: [CdmReportMigrationStatus!]!): ReportsMigrationCount!
-        protected void InvokeQueryClusterReportMigrationCount()
+        internal void InvokeQueryClusterReportMigrationCount()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("clusterUuid", "UUID"),
@@ -2344,7 +2347,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // Invoke GraphQL Query:
         // clusterReportMigrationJobStatus(clusterUuid: UUID): ClusterReportMigrationJobStatus!
-        protected void InvokeQueryClusterReportMigrationJobStatus()
+        internal void InvokeQueryClusterReportMigrationJobStatus()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("clusterUuid", "UUID"),
@@ -2376,7 +2379,7 @@ Returns the certificate signing request generated from the private key of the Ru
         //     last: Int
         //     before: String
         //   ): ClusterSlaDomainConnection!
-        protected void InvokeQueryClusterSlaDomains()
+        internal void InvokeQueryClusterSlaDomains()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -2411,7 +2414,7 @@ Returns the certificate signing request generated from the private key of the Ru
         //     last: Int
         //     before: String
         //   ): ClusterSlaDomainForFilterConnection!
-        protected void InvokeQueryClusterSlaDomainFilterConnection()
+        internal void InvokeQueryClusterSlaDomainFilterConnection()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -2441,7 +2444,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // Invoke GraphQL Query:
         // verifySlaWithReplicationToCluster(cdmClusterUUID: UUID!, includeArchived: Boolean!): VerifySlaWithReplicationToClusterResponse!
-        protected void InvokeQueryVerifySlaWithReplicationToCluster()
+        internal void InvokeQueryVerifySlaWithReplicationToCluster()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("cdmClusterUUID", "UUID!"),
@@ -2469,7 +2472,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // Invoke GraphQL Query:
         // allClusterGlobalSlas(cdmClusterUUID: UUID!): [SlaInfo!]!
-        protected void InvokeQueryAllClusterGlobalSlas()
+        internal void InvokeQueryAllClusterGlobalSlas()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("cdmClusterUUID", "UUID!"),
@@ -2496,7 +2499,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // Invoke GraphQL Query:
         // clusterRegistrationProductInfo: ClusterRegistrationProductInfoType!
-        protected void InvokeQueryClusterRegistrationProductInfo()
+        internal void InvokeQueryClusterRegistrationProductInfo()
         {
             Tuple<string, string>[] argDefs = {
             };
@@ -2522,7 +2525,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // Invoke GraphQL Query:
         // vcdClusters(input: QueryVcdClusterInput!): VcdClusterSummaryListResponse!
-        protected void InvokeQueryVcdClusters()
+        internal void InvokeQueryVcdClusters()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "QueryVcdClusterInput!"),
@@ -2549,7 +2552,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // Invoke GraphQL Query:
         // isTotpAckNecessaryForCluster(clusterUuid: UUID!): Boolean!
-        protected void InvokeQueryIsTotpAckNecessaryForCluster()
+        internal void InvokeQueryIsTotpAckNecessaryForCluster()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("clusterUuid", "UUID!"),
@@ -2576,7 +2579,7 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // Invoke GraphQL Query:
         // allClustersTotpAckStatus(listClusterUuid: [UUID!]!): [Boolean!]!
-        protected void InvokeQueryAllClustersTotpAckStatus()
+        internal void InvokeQueryAllClustersTotpAckStatus()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("listClusterUuid", "[UUID!]!"),

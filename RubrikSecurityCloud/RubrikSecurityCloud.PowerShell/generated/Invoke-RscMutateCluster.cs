@@ -26,11 +26,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     public class Invoke_RscMutateCluster : RscPSCmdlet
     {
         
-        // -------------------------------------------------------------------
-        // AddNodesToCloud parameter set
-        //
-        // [GraphQL: addNodesToCloudCluster]
-        //
+        /// <summary>
+        /// AddNodesToCloud parameter set
+        ///
+        /// [GraphQL: addNodesToCloudCluster]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AddNodesToCloud",
             Mandatory = false,
@@ -44,11 +44,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter AddNodesToCloud { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // RegisterCloud parameter set
-        //
-        // [GraphQL: registerCloudCluster]
-        //
+        /// <summary>
+        /// RegisterCloud parameter set
+        ///
+        /// [GraphQL: registerCloudCluster]
+        /// </summary>
         [Parameter(
             ParameterSetName = "RegisterCloud",
             Mandatory = false,
@@ -62,11 +62,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter RegisterCloud { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // CreateFailover parameter set
-        //
-        // [GraphQL: createFailoverCluster]
-        //
+        /// <summary>
+        /// CreateFailover parameter set
+        ///
+        /// [GraphQL: createFailoverCluster]
+        /// </summary>
         [Parameter(
             ParameterSetName = "CreateFailover",
             Mandatory = false,
@@ -83,11 +83,11 @@ Create a failover cluster.
         public SwitchParameter CreateFailover { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // UpdateFailover parameter set
-        //
-        // [GraphQL: updateFailoverCluster]
-        //
+        /// <summary>
+        /// UpdateFailover parameter set
+        ///
+        /// [GraphQL: updateFailoverCluster]
+        /// </summary>
         [Parameter(
             ParameterSetName = "UpdateFailover",
             Mandatory = false,
@@ -104,11 +104,11 @@ Update failover cluster with specified properties.
         public SwitchParameter UpdateFailover { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DeleteFailover parameter set
-        //
-        // [GraphQL: deleteFailoverCluster]
-        //
+        /// <summary>
+        /// DeleteFailover parameter set
+        ///
+        /// [GraphQL: deleteFailoverCluster]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DeleteFailover",
             Mandatory = false,
@@ -125,11 +125,11 @@ Delete a failover cluster.
         public SwitchParameter DeleteFailover { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // BulkDeleteFailover parameter set
-        //
-        // [GraphQL: bulkDeleteFailoverCluster]
-        //
+        /// <summary>
+        /// BulkDeleteFailover parameter set
+        ///
+        /// [GraphQL: bulkDeleteFailoverCluster]
+        /// </summary>
         [Parameter(
             ParameterSetName = "BulkDeleteFailover",
             Mandatory = false,
@@ -146,11 +146,11 @@ Delete the provided failover clusters.
         public SwitchParameter BulkDeleteFailover { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AddK8s parameter set
-        //
-        // [GraphQL: addK8sCluster]
-        //
+        /// <summary>
+        /// AddK8s parameter set
+        ///
+        /// [GraphQL: addK8sCluster]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AddK8s",
             Mandatory = false,
@@ -167,11 +167,11 @@ Adds a Kubernetes cluster to the Rubrik cluster.
         public SwitchParameter AddK8s { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DeleteK8s parameter set
-        //
-        // [GraphQL: deleteK8sCluster]
-        //
+        /// <summary>
+        /// DeleteK8s parameter set
+        ///
+        /// [GraphQL: deleteK8sCluster]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DeleteK8s",
             Mandatory = false,
@@ -188,11 +188,11 @@ Deletes a Kubernetes cluster by specifying the cluster ID.
         public SwitchParameter DeleteK8s { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // RefreshK8sV2 parameter set
-        //
-        // [GraphQL: refreshK8sV2Cluster]
-        //
+        /// <summary>
+        /// RefreshK8sV2 parameter set
+        ///
+        /// [GraphQL: refreshK8sV2Cluster]
+        /// </summary>
         [Parameter(
             ParameterSetName = "RefreshK8sV2",
             Mandatory = false,
@@ -209,11 +209,11 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
         public SwitchParameter RefreshK8sV2 { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // CreateK8s parameter set
-        //
-        // [GraphQL: createK8sCluster]
-        //
+        /// <summary>
+        /// CreateK8s parameter set
+        ///
+        /// [GraphQL: createK8sCluster]
+        /// </summary>
         [Parameter(
             ParameterSetName = "CreateK8s",
             Mandatory = false,
@@ -227,11 +227,11 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
         public SwitchParameter CreateK8s { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // RefreshK8s parameter set
-        //
-        // [GraphQL: refreshK8sCluster]
-        //
+        /// <summary>
+        /// RefreshK8s parameter set
+        ///
+        /// [GraphQL: refreshK8sCluster]
+        /// </summary>
         [Parameter(
             ParameterSetName = "RefreshK8s",
             Mandatory = false,
@@ -245,11 +245,11 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
         public SwitchParameter RefreshK8s { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ArchiveK8s parameter set
-        //
-        // [GraphQL: archiveK8sCluster]
-        //
+        /// <summary>
+        /// ArchiveK8s parameter set
+        ///
+        /// [GraphQL: archiveK8sCluster]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ArchiveK8s",
             Mandatory = false,
@@ -263,11 +263,11 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
         public SwitchParameter ArchiveK8s { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // RemoveCdm parameter set
-        //
-        // [GraphQL: removeCdmCluster]
-        //
+        /// <summary>
+        /// RemoveCdm parameter set
+        ///
+        /// [GraphQL: removeCdmCluster]
+        /// </summary>
         [Parameter(
             ParameterSetName = "RemoveCdm",
             Mandatory = false,
@@ -281,11 +281,11 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
         public SwitchParameter RemoveCdm { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // RecoverCloud parameter set
-        //
-        // [GraphQL: recoverCloudCluster]
-        //
+        /// <summary>
+        /// RecoverCloud parameter set
+        ///
+        /// [GraphQL: recoverCloudCluster]
+        /// </summary>
         [Parameter(
             ParameterSetName = "RecoverCloud",
             Mandatory = false,
@@ -299,6 +299,8 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
         public SwitchParameter RecoverCloud { get; set; }
 
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
         protected override void ProcessRecord()
         {
             try
@@ -356,10 +358,11 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
                 ThrowTerminatingException(ex);
            }
         }
+#pragma warning restore 1591
 
         // This parameter set invokes a single graphql operation:
         // addNodesToCloudCluster.
-        protected void ProcessRecord_AddNodesToCloud()
+        internal void ProcessRecord_AddNodesToCloud()
         {
             this._logger.name += " -AddNodesToCloud";
             // Invoke graphql operation addNodesToCloudCluster
@@ -368,7 +371,7 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
 
         // This parameter set invokes a single graphql operation:
         // registerCloudCluster.
-        protected void ProcessRecord_RegisterCloud()
+        internal void ProcessRecord_RegisterCloud()
         {
             this._logger.name += " -RegisterCloud";
             // Invoke graphql operation registerCloudCluster
@@ -377,7 +380,7 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
 
         // This parameter set invokes a single graphql operation:
         // createFailoverCluster.
-        protected void ProcessRecord_CreateFailover()
+        internal void ProcessRecord_CreateFailover()
         {
             this._logger.name += " -CreateFailover";
             // Invoke graphql operation createFailoverCluster
@@ -386,7 +389,7 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
 
         // This parameter set invokes a single graphql operation:
         // updateFailoverCluster.
-        protected void ProcessRecord_UpdateFailover()
+        internal void ProcessRecord_UpdateFailover()
         {
             this._logger.name += " -UpdateFailover";
             // Invoke graphql operation updateFailoverCluster
@@ -395,7 +398,7 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
 
         // This parameter set invokes a single graphql operation:
         // deleteFailoverCluster.
-        protected void ProcessRecord_DeleteFailover()
+        internal void ProcessRecord_DeleteFailover()
         {
             this._logger.name += " -DeleteFailover";
             // Invoke graphql operation deleteFailoverCluster
@@ -404,7 +407,7 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
 
         // This parameter set invokes a single graphql operation:
         // bulkDeleteFailoverCluster.
-        protected void ProcessRecord_BulkDeleteFailover()
+        internal void ProcessRecord_BulkDeleteFailover()
         {
             this._logger.name += " -BulkDeleteFailover";
             // Invoke graphql operation bulkDeleteFailoverCluster
@@ -413,7 +416,7 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
 
         // This parameter set invokes a single graphql operation:
         // addK8sCluster.
-        protected void ProcessRecord_AddK8s()
+        internal void ProcessRecord_AddK8s()
         {
             this._logger.name += " -AddK8s";
             // Invoke graphql operation addK8sCluster
@@ -422,7 +425,7 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
 
         // This parameter set invokes a single graphql operation:
         // deleteK8sCluster.
-        protected void ProcessRecord_DeleteK8s()
+        internal void ProcessRecord_DeleteK8s()
         {
             this._logger.name += " -DeleteK8s";
             // Invoke graphql operation deleteK8sCluster
@@ -431,7 +434,7 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
 
         // This parameter set invokes a single graphql operation:
         // refreshK8sV2Cluster.
-        protected void ProcessRecord_RefreshK8sV2()
+        internal void ProcessRecord_RefreshK8sV2()
         {
             this._logger.name += " -RefreshK8sV2";
             // Invoke graphql operation refreshK8sV2Cluster
@@ -440,7 +443,7 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
 
         // This parameter set invokes a single graphql operation:
         // createK8sCluster.
-        protected void ProcessRecord_CreateK8s()
+        internal void ProcessRecord_CreateK8s()
         {
             this._logger.name += " -CreateK8s";
             // Invoke graphql operation createK8sCluster
@@ -449,7 +452,7 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
 
         // This parameter set invokes a single graphql operation:
         // refreshK8sCluster.
-        protected void ProcessRecord_RefreshK8s()
+        internal void ProcessRecord_RefreshK8s()
         {
             this._logger.name += " -RefreshK8s";
             // Invoke graphql operation refreshK8sCluster
@@ -458,7 +461,7 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
 
         // This parameter set invokes a single graphql operation:
         // archiveK8sCluster.
-        protected void ProcessRecord_ArchiveK8s()
+        internal void ProcessRecord_ArchiveK8s()
         {
             this._logger.name += " -ArchiveK8s";
             // Invoke graphql operation archiveK8sCluster
@@ -467,7 +470,7 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
 
         // This parameter set invokes a single graphql operation:
         // removeCdmCluster.
-        protected void ProcessRecord_RemoveCdm()
+        internal void ProcessRecord_RemoveCdm()
         {
             this._logger.name += " -RemoveCdm";
             // Invoke graphql operation removeCdmCluster
@@ -476,7 +479,7 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
 
         // This parameter set invokes a single graphql operation:
         // recoverCloudCluster.
-        protected void ProcessRecord_RecoverCloud()
+        internal void ProcessRecord_RecoverCloud()
         {
             this._logger.name += " -RecoverCloud";
             // Invoke graphql operation recoverCloudCluster
@@ -486,7 +489,7 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
 
         // Invoke GraphQL Mutation:
         // addNodesToCloudCluster(input: AddNodesToCloudClusterInput!): CcProvisionJobReply!
-        protected void InvokeMutationAddNodesToCloudCluster()
+        internal void InvokeMutationAddNodesToCloudCluster()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "AddNodesToCloudClusterInput!"),
@@ -513,7 +516,7 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
 
         // Invoke GraphQL Mutation:
         // registerCloudCluster(input: RegisterCloudClusterInput!): RegisterCloudClusterReply!
-        protected void InvokeMutationRegisterCloudCluster()
+        internal void InvokeMutationRegisterCloudCluster()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RegisterCloudClusterInput!"),
@@ -540,7 +543,7 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
 
         // Invoke GraphQL Mutation:
         // createFailoverCluster(input: CreateFailoverClusterInput!): CreateFailoverClusterReply!
-        protected void InvokeMutationCreateFailoverCluster()
+        internal void InvokeMutationCreateFailoverCluster()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CreateFailoverClusterInput!"),
@@ -567,7 +570,7 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
 
         // Invoke GraphQL Mutation:
         // updateFailoverCluster(input: UpdateFailoverClusterInput!): UpdateFailoverClusterReply!
-        protected void InvokeMutationUpdateFailoverCluster()
+        internal void InvokeMutationUpdateFailoverCluster()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpdateFailoverClusterInput!"),
@@ -594,7 +597,7 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
 
         // Invoke GraphQL Mutation:
         // deleteFailoverCluster(input: DeleteFailoverClusterInput!): ResponseSuccess!
-        protected void InvokeMutationDeleteFailoverCluster()
+        internal void InvokeMutationDeleteFailoverCluster()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteFailoverClusterInput!"),
@@ -621,7 +624,7 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
 
         // Invoke GraphQL Mutation:
         // bulkDeleteFailoverCluster(input: BulkDeleteFailoverClusterInput!): ResponseSuccess!
-        protected void InvokeMutationBulkDeleteFailoverCluster()
+        internal void InvokeMutationBulkDeleteFailoverCluster()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "BulkDeleteFailoverClusterInput!"),
@@ -648,7 +651,7 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
 
         // Invoke GraphQL Mutation:
         // addK8sCluster(input: AddK8sClusterInput!): K8sClusterSummary!
-        protected void InvokeMutationAddK8sCluster()
+        internal void InvokeMutationAddK8sCluster()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "AddK8sClusterInput!"),
@@ -675,7 +678,7 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
 
         // Invoke GraphQL Mutation:
         // deleteK8sCluster(input: DeleteK8sClusterInput!): AsyncRequestStatus!
-        protected void InvokeMutationDeleteK8sCluster()
+        internal void InvokeMutationDeleteK8sCluster()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteK8sClusterInput!"),
@@ -702,7 +705,7 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
 
         // Invoke GraphQL Mutation:
         // refreshK8sV2Cluster(input: RefreshK8sV2ClusterInput!): AsyncRequestStatus!
-        protected void InvokeMutationRefreshK8sV2Cluster()
+        internal void InvokeMutationRefreshK8sV2Cluster()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RefreshK8sV2ClusterInput!"),
@@ -729,7 +732,7 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
 
         // Invoke GraphQL Mutation:
         // createK8sCluster(input: CreateK8sClusterInput!): CreateK8sClusterReply!
-        protected void InvokeMutationCreateK8sCluster()
+        internal void InvokeMutationCreateK8sCluster()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CreateK8sClusterInput!"),
@@ -756,7 +759,7 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
 
         // Invoke GraphQL Mutation:
         // refreshK8sCluster(input: RefreshK8sClusterInput!): CreateOnDemandJobReply!
-        protected void InvokeMutationRefreshK8sCluster()
+        internal void InvokeMutationRefreshK8sCluster()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RefreshK8sClusterInput!"),
@@ -783,7 +786,7 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
 
         // Invoke GraphQL Mutation:
         // archiveK8sCluster(input: ArchiveK8sClusterInput!): ArchiveK8sClusterReply!
-        protected void InvokeMutationArchiveK8sCluster()
+        internal void InvokeMutationArchiveK8sCluster()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "ArchiveK8sClusterInput!"),
@@ -810,7 +813,7 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
 
         // Invoke GraphQL Mutation:
         // removeCdmCluster(clusterUUID: UUID!, isForce: Boolean!, expireInDays: Long): Boolean!
-        protected void InvokeMutationRemoveCdmCluster()
+        internal void InvokeMutationRemoveCdmCluster()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("clusterUUID", "UUID!"),
@@ -839,7 +842,7 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
 
         // Invoke GraphQL Mutation:
         // recoverCloudCluster(input: RecoverCloudClusterInput!): CcProvisionJobReply!
-        protected void InvokeMutationRecoverCloudCluster()
+        internal void InvokeMutationRecoverCloudCluster()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RecoverCloudClusterInput!"),

@@ -26,11 +26,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     public class Invoke_RscQueryNutanix : RscPSCmdlet
     {
         
-        // -------------------------------------------------------------------
-        // TopLevelDescendants parameter set
-        //
-        // [GraphQL: nutanixTopLevelDescendants]
-        //
+        /// <summary>
+        /// TopLevelDescendants parameter set
+        ///
+        /// [GraphQL: nutanixTopLevelDescendants]
+        /// </summary>
         [Parameter(
             ParameterSetName = "TopLevelDescendants",
             Mandatory = false,
@@ -44,11 +44,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter TopLevelDescendants { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Cluster parameter set
-        //
-        // [GraphQL: nutanixCluster]
-        //
+        /// <summary>
+        /// Cluster parameter set
+        ///
+        /// [GraphQL: nutanixCluster]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Cluster",
             Mandatory = false,
@@ -62,11 +62,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Cluster { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Clusters parameter set
-        //
-        // [GraphQL: nutanixClusters]
-        //
+        /// <summary>
+        /// Clusters parameter set
+        ///
+        /// [GraphQL: nutanixClusters]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Clusters",
             Mandatory = false,
@@ -80,11 +80,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Clusters { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // PrismCentrals parameter set
-        //
-        // [GraphQL: nutanixPrismCentrals]
-        //
+        /// <summary>
+        /// PrismCentrals parameter set
+        ///
+        /// [GraphQL: nutanixPrismCentrals]
+        /// </summary>
         [Parameter(
             ParameterSetName = "PrismCentrals",
             Mandatory = false,
@@ -98,11 +98,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter PrismCentrals { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // PrismCentral parameter set
-        //
-        // [GraphQL: nutanixPrismCentral]
-        //
+        /// <summary>
+        /// PrismCentral parameter set
+        ///
+        /// [GraphQL: nutanixPrismCentral]
+        /// </summary>
         [Parameter(
             ParameterSetName = "PrismCentral",
             Mandatory = false,
@@ -116,11 +116,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter PrismCentral { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Category parameter set
-        //
-        // [GraphQL: nutanixCategory]
-        //
+        /// <summary>
+        /// Category parameter set
+        ///
+        /// [GraphQL: nutanixCategory]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Category",
             Mandatory = false,
@@ -134,11 +134,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Category { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // CategoryValue parameter set
-        //
-        // [GraphQL: nutanixCategoryValue]
-        //
+        /// <summary>
+        /// CategoryValue parameter set
+        ///
+        /// [GraphQL: nutanixCategoryValue]
+        /// </summary>
         [Parameter(
             ParameterSetName = "CategoryValue",
             Mandatory = false,
@@ -152,11 +152,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter CategoryValue { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Vm parameter set
-        //
-        // [GraphQL: nutanixVm]
-        //
+        /// <summary>
+        /// Vm parameter set
+        ///
+        /// [GraphQL: nutanixVm]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Vm",
             Mandatory = false,
@@ -170,11 +170,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Vm { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Vms parameter set
-        //
-        // [GraphQL: nutanixVms]
-        //
+        /// <summary>
+        /// Vms parameter set
+        ///
+        /// [GraphQL: nutanixVms]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Vms",
             Mandatory = false,
@@ -188,11 +188,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Vms { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Mounts parameter set
-        //
-        // [GraphQL: nutanixMounts]
-        //
+        /// <summary>
+        /// Mounts parameter set
+        ///
+        /// [GraphQL: nutanixMounts]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Mounts",
             Mandatory = false,
@@ -206,11 +206,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Mounts { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ClusterContainers parameter set
-        //
-        // [GraphQL: nutanixClusterContainers]
-        //
+        /// <summary>
+        /// ClusterContainers parameter set
+        ///
+        /// [GraphQL: nutanixClusterContainers]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ClusterContainers",
             Mandatory = false,
@@ -227,11 +227,11 @@ Query the nutanix cluster to get the list of containers, used for export purpose
         public SwitchParameter ClusterContainers { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ClusterNetworks parameter set
-        //
-        // [GraphQL: nutanixClusterNetworks]
-        //
+        /// <summary>
+        /// ClusterNetworks parameter set
+        ///
+        /// [GraphQL: nutanixClusterNetworks]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ClusterNetworks",
             Mandatory = false,
@@ -248,11 +248,11 @@ Retrieves the list of networks by querying the Nutanix cluster. The list of netw
         public SwitchParameter ClusterNetworks { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ClusterAsyncRequestStatus parameter set
-        //
-        // [GraphQL: nutanixClusterAsyncRequestStatus]
-        //
+        /// <summary>
+        /// ClusterAsyncRequestStatus parameter set
+        ///
+        /// [GraphQL: nutanixClusterAsyncRequestStatus]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ClusterAsyncRequestStatus",
             Mandatory = false,
@@ -269,11 +269,11 @@ Get details about a Nutanix cluster-related async request.
         public SwitchParameter ClusterAsyncRequestStatus { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // VmAsyncRequestStatus parameter set
-        //
-        // [GraphQL: nutanixVmAsyncRequestStatus]
-        //
+        /// <summary>
+        /// VmAsyncRequestStatus parameter set
+        ///
+        /// [GraphQL: nutanixVmAsyncRequestStatus]
+        /// </summary>
         [Parameter(
             ParameterSetName = "VmAsyncRequestStatus",
             Mandatory = false,
@@ -292,11 +292,11 @@ v8.1+: Get details about a Nutanix virtual machine-related async request.
         public SwitchParameter VmAsyncRequestStatus { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // SearchVm parameter set
-        //
-        // [GraphQL: searchNutanixVm]
-        //
+        /// <summary>
+        /// SearchVm parameter set
+        ///
+        /// [GraphQL: searchNutanixVm]
+        /// </summary>
         [Parameter(
             ParameterSetName = "SearchVm",
             Mandatory = false,
@@ -314,11 +314,11 @@ Search for a file within the Nutanix Virtual Machine. Search via full path prefi
         public SwitchParameter SearchVm { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // VmMissedSnapshots parameter set
-        //
-        // [GraphQL: nutanixVmMissedSnapshots]
-        //
+        /// <summary>
+        /// VmMissedSnapshots parameter set
+        ///
+        /// [GraphQL: nutanixVmMissedSnapshots]
+        /// </summary>
         [Parameter(
             ParameterSetName = "VmMissedSnapshots",
             Mandatory = false,
@@ -337,11 +337,11 @@ v8.1+: Retrieve the time of the day when the snapshots were missed specific to a
         public SwitchParameter VmMissedSnapshots { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // BrowseSnapshot parameter set
-        //
-        // [GraphQL: nutanixBrowseSnapshot]
-        //
+        /// <summary>
+        /// BrowseSnapshot parameter set
+        ///
+        /// [GraphQL: nutanixBrowseSnapshot]
+        /// </summary>
         [Parameter(
             ParameterSetName = "BrowseSnapshot",
             Mandatory = false,
@@ -359,11 +359,11 @@ Lists all files and directories in a given path.
         public SwitchParameter BrowseSnapshot { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // SnapshotDetail parameter set
-        //
-        // [GraphQL: nutanixSnapshotDetail]
-        //
+        /// <summary>
+        /// SnapshotDetail parameter set
+        ///
+        /// [GraphQL: nutanixSnapshotDetail]
+        /// </summary>
         [Parameter(
             ParameterSetName = "SnapshotDetail",
             Mandatory = false,
@@ -378,6 +378,8 @@ Lists all files and directories in a given path.
         public SwitchParameter SnapshotDetail { get; set; }
 
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
         protected override void ProcessRecord()
         {
             try
@@ -447,10 +449,11 @@ Lists all files and directories in a given path.
                 ThrowTerminatingException(ex);
            }
         }
+#pragma warning restore 1591
 
         // This parameter set invokes a single graphql operation:
         // nutanixTopLevelDescendants.
-        protected void ProcessRecord_TopLevelDescendants()
+        internal void ProcessRecord_TopLevelDescendants()
         {
             this._logger.name += " -TopLevelDescendants";
             // Invoke graphql operation nutanixTopLevelDescendants
@@ -459,7 +462,7 @@ Lists all files and directories in a given path.
 
         // This parameter set invokes a single graphql operation:
         // nutanixCluster.
-        protected void ProcessRecord_Cluster()
+        internal void ProcessRecord_Cluster()
         {
             this._logger.name += " -Cluster";
             // Invoke graphql operation nutanixCluster
@@ -468,7 +471,7 @@ Lists all files and directories in a given path.
 
         // This parameter set invokes a single graphql operation:
         // nutanixClusters.
-        protected void ProcessRecord_Clusters()
+        internal void ProcessRecord_Clusters()
         {
             this._logger.name += " -Clusters";
             // Invoke graphql operation nutanixClusters
@@ -477,7 +480,7 @@ Lists all files and directories in a given path.
 
         // This parameter set invokes a single graphql operation:
         // nutanixPrismCentrals.
-        protected void ProcessRecord_PrismCentrals()
+        internal void ProcessRecord_PrismCentrals()
         {
             this._logger.name += " -PrismCentrals";
             // Invoke graphql operation nutanixPrismCentrals
@@ -486,7 +489,7 @@ Lists all files and directories in a given path.
 
         // This parameter set invokes a single graphql operation:
         // nutanixPrismCentral.
-        protected void ProcessRecord_PrismCentral()
+        internal void ProcessRecord_PrismCentral()
         {
             this._logger.name += " -PrismCentral";
             // Invoke graphql operation nutanixPrismCentral
@@ -495,7 +498,7 @@ Lists all files and directories in a given path.
 
         // This parameter set invokes a single graphql operation:
         // nutanixCategory.
-        protected void ProcessRecord_Category()
+        internal void ProcessRecord_Category()
         {
             this._logger.name += " -Category";
             // Invoke graphql operation nutanixCategory
@@ -504,7 +507,7 @@ Lists all files and directories in a given path.
 
         // This parameter set invokes a single graphql operation:
         // nutanixCategoryValue.
-        protected void ProcessRecord_CategoryValue()
+        internal void ProcessRecord_CategoryValue()
         {
             this._logger.name += " -CategoryValue";
             // Invoke graphql operation nutanixCategoryValue
@@ -513,7 +516,7 @@ Lists all files and directories in a given path.
 
         // This parameter set invokes a single graphql operation:
         // nutanixVm.
-        protected void ProcessRecord_Vm()
+        internal void ProcessRecord_Vm()
         {
             this._logger.name += " -Vm";
             // Invoke graphql operation nutanixVm
@@ -522,7 +525,7 @@ Lists all files and directories in a given path.
 
         // This parameter set invokes a single graphql operation:
         // nutanixVms.
-        protected void ProcessRecord_Vms()
+        internal void ProcessRecord_Vms()
         {
             this._logger.name += " -Vms";
             // Invoke graphql operation nutanixVms
@@ -531,7 +534,7 @@ Lists all files and directories in a given path.
 
         // This parameter set invokes a single graphql operation:
         // nutanixMounts.
-        protected void ProcessRecord_Mounts()
+        internal void ProcessRecord_Mounts()
         {
             this._logger.name += " -Mounts";
             // Invoke graphql operation nutanixMounts
@@ -540,7 +543,7 @@ Lists all files and directories in a given path.
 
         // This parameter set invokes a single graphql operation:
         // nutanixClusterContainers.
-        protected void ProcessRecord_ClusterContainers()
+        internal void ProcessRecord_ClusterContainers()
         {
             this._logger.name += " -ClusterContainers";
             // Invoke graphql operation nutanixClusterContainers
@@ -549,7 +552,7 @@ Lists all files and directories in a given path.
 
         // This parameter set invokes a single graphql operation:
         // nutanixClusterNetworks.
-        protected void ProcessRecord_ClusterNetworks()
+        internal void ProcessRecord_ClusterNetworks()
         {
             this._logger.name += " -ClusterNetworks";
             // Invoke graphql operation nutanixClusterNetworks
@@ -558,7 +561,7 @@ Lists all files and directories in a given path.
 
         // This parameter set invokes a single graphql operation:
         // nutanixClusterAsyncRequestStatus.
-        protected void ProcessRecord_ClusterAsyncRequestStatus()
+        internal void ProcessRecord_ClusterAsyncRequestStatus()
         {
             this._logger.name += " -ClusterAsyncRequestStatus";
             // Invoke graphql operation nutanixClusterAsyncRequestStatus
@@ -567,7 +570,7 @@ Lists all files and directories in a given path.
 
         // This parameter set invokes a single graphql operation:
         // nutanixVmAsyncRequestStatus.
-        protected void ProcessRecord_VmAsyncRequestStatus()
+        internal void ProcessRecord_VmAsyncRequestStatus()
         {
             this._logger.name += " -VmAsyncRequestStatus";
             // Invoke graphql operation nutanixVmAsyncRequestStatus
@@ -576,7 +579,7 @@ Lists all files and directories in a given path.
 
         // This parameter set invokes a single graphql operation:
         // searchNutanixVm.
-        protected void ProcessRecord_SearchVm()
+        internal void ProcessRecord_SearchVm()
         {
             this._logger.name += " -SearchVm";
             // Invoke graphql operation searchNutanixVm
@@ -585,7 +588,7 @@ Lists all files and directories in a given path.
 
         // This parameter set invokes a single graphql operation:
         // nutanixVmMissedSnapshots.
-        protected void ProcessRecord_VmMissedSnapshots()
+        internal void ProcessRecord_VmMissedSnapshots()
         {
             this._logger.name += " -VmMissedSnapshots";
             // Invoke graphql operation nutanixVmMissedSnapshots
@@ -594,7 +597,7 @@ Lists all files and directories in a given path.
 
         // This parameter set invokes a single graphql operation:
         // nutanixBrowseSnapshot.
-        protected void ProcessRecord_BrowseSnapshot()
+        internal void ProcessRecord_BrowseSnapshot()
         {
             this._logger.name += " -BrowseSnapshot";
             // Invoke graphql operation nutanixBrowseSnapshot
@@ -603,7 +606,7 @@ Lists all files and directories in a given path.
 
         // This parameter set invokes a single graphql operation:
         // nutanixSnapshotDetail.
-        protected void ProcessRecord_SnapshotDetail()
+        internal void ProcessRecord_SnapshotDetail()
         {
             this._logger.name += " -SnapshotDetail";
             // Invoke graphql operation nutanixSnapshotDetail
@@ -620,7 +623,7 @@ Lists all files and directories in a given path.
         //     typeFilter: [HierarchyObjectTypeEnum!]
         //     filter: [Filter!]
         //   ): CdmHierarchyObjectConnection!
-        protected void InvokeQueryNutanixTopLevelDescendants()
+        internal void InvokeQueryNutanixTopLevelDescendants()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -652,7 +655,7 @@ Lists all files and directories in a given path.
 
         // Invoke GraphQL Query:
         // nutanixCluster(fid: UUID!): NutanixCluster!
-        protected void InvokeQueryNutanixCluster()
+        internal void InvokeQueryNutanixCluster()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
@@ -685,7 +688,7 @@ Lists all files and directories in a given path.
         //     sortOrder: SortOrder
         //     filter: [Filter!]
         //   ): NutanixClusterConnection!
-        protected void InvokeQueryNutanixClusters()
+        internal void InvokeQueryNutanixClusters()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -722,7 +725,7 @@ Lists all files and directories in a given path.
         //     sortOrder: SortOrder
         //     filter: [Filter!]
         //   ): NutanixPrismCentralConnection!
-        protected void InvokeQueryNutanixPrismCentrals()
+        internal void InvokeQueryNutanixPrismCentrals()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -753,7 +756,7 @@ Lists all files and directories in a given path.
 
         // Invoke GraphQL Query:
         // nutanixPrismCentral(fid: UUID!): NutanixPrismCentral!
-        protected void InvokeQueryNutanixPrismCentral()
+        internal void InvokeQueryNutanixPrismCentral()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
@@ -780,7 +783,7 @@ Lists all files and directories in a given path.
 
         // Invoke GraphQL Query:
         // nutanixCategory(fid: UUID!): NutanixCategory!
-        protected void InvokeQueryNutanixCategory()
+        internal void InvokeQueryNutanixCategory()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
@@ -807,7 +810,7 @@ Lists all files and directories in a given path.
 
         // Invoke GraphQL Query:
         // nutanixCategoryValue(fid: UUID!): NutanixCategoryValue!
-        protected void InvokeQueryNutanixCategoryValue()
+        internal void InvokeQueryNutanixCategoryValue()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
@@ -834,7 +837,7 @@ Lists all files and directories in a given path.
 
         // Invoke GraphQL Query:
         // nutanixVm(fid: UUID!): NutanixVm!
-        protected void InvokeQueryNutanixVm()
+        internal void InvokeQueryNutanixVm()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
@@ -867,7 +870,7 @@ Lists all files and directories in a given path.
         //     sortOrder: SortOrder
         //     filter: [Filter!]
         //   ): NutanixVmConnection!
-        protected void InvokeQueryNutanixVms()
+        internal void InvokeQueryNutanixVms()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -903,7 +906,7 @@ Lists all files and directories in a given path.
         //     filters: [NutanixLiveMountFilterInput!]
         //     sortBy: NutanixLiveMountSortByInput
         //   ): NutanixLiveMountConnection!
-        protected void InvokeQueryNutanixMounts()
+        internal void InvokeQueryNutanixMounts()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -933,7 +936,7 @@ Lists all files and directories in a given path.
 
         // Invoke GraphQL Query:
         // nutanixClusterContainers(input: GetContainersInput!): NutanixContainerListResponse!
-        protected void InvokeQueryNutanixClusterContainers()
+        internal void InvokeQueryNutanixClusterContainers()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetContainersInput!"),
@@ -960,7 +963,7 @@ Lists all files and directories in a given path.
 
         // Invoke GraphQL Query:
         // nutanixClusterNetworks(input: GetNutanixNetworksInput!): NutanixNetworkListResponse!
-        protected void InvokeQueryNutanixClusterNetworks()
+        internal void InvokeQueryNutanixClusterNetworks()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetNutanixNetworksInput!"),
@@ -987,7 +990,7 @@ Lists all files and directories in a given path.
 
         // Invoke GraphQL Query:
         // nutanixClusterAsyncRequestStatus(input: GetNutanixClusterAsyncRequestStatusInput!): AsyncRequestStatus!
-        protected void InvokeQueryNutanixClusterAsyncRequestStatus()
+        internal void InvokeQueryNutanixClusterAsyncRequestStatus()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetNutanixClusterAsyncRequestStatusInput!"),
@@ -1014,7 +1017,7 @@ Lists all files and directories in a given path.
 
         // Invoke GraphQL Query:
         // nutanixVmAsyncRequestStatus(input: GetNutanixVmAsyncRequestStatusInput!): AsyncRequestStatus!
-        protected void InvokeQueryNutanixVmAsyncRequestStatus()
+        internal void InvokeQueryNutanixVmAsyncRequestStatus()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetNutanixVmAsyncRequestStatusInput!"),
@@ -1041,7 +1044,7 @@ Lists all files and directories in a given path.
 
         // Invoke GraphQL Query:
         // searchNutanixVm(input: SearchNutanixVmInput!): SearchResponseListResponse!
-        protected void InvokeQuerySearchNutanixVm()
+        internal void InvokeQuerySearchNutanixVm()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "SearchNutanixVmInput!"),
@@ -1068,7 +1071,7 @@ Lists all files and directories in a given path.
 
         // Invoke GraphQL Query:
         // nutanixVmMissedSnapshots(input: NutanixMissedSnapshotsInput!): MissedSnapshotListResponse!
-        protected void InvokeQueryNutanixVmMissedSnapshots()
+        internal void InvokeQueryNutanixVmMissedSnapshots()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "NutanixMissedSnapshotsInput!"),
@@ -1095,7 +1098,7 @@ Lists all files and directories in a given path.
 
         // Invoke GraphQL Query:
         // nutanixBrowseSnapshot(input: BrowseNutanixSnapshotInput!): BrowseResponseListResponse!
-        protected void InvokeQueryNutanixBrowseSnapshot()
+        internal void InvokeQueryNutanixBrowseSnapshot()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "BrowseNutanixSnapshotInput!"),
@@ -1122,7 +1125,7 @@ Lists all files and directories in a given path.
 
         // Invoke GraphQL Query:
         // nutanixSnapshotDetail(input: GetNutanixSnapshotDetailInput!): NutanixVmSnapshotDetail!
-        protected void InvokeQueryNutanixSnapshotDetail()
+        internal void InvokeQueryNutanixSnapshotDetail()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetNutanixSnapshotDetailInput!"),

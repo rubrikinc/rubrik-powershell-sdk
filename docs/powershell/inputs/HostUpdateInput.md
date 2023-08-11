@@ -29,10 +29,10 @@ Supported in v5.0+
       v5.2-v5.3: A Boolean that specifies whether to discover Oracle information during host refresh. A value of 'true' discovers Oracle information during host refresh.
       v6.0: A Boolean that specifies whether to discover Oracle information during host refresh. A value of 'true' discovers Oracle information during host refresh.
       
-      v7.0-v8.0: A Boolean that specifies whether to discover Oracle information during host refresh. A value of 'true' discovers Oracle information during host refresh.
-
+      v7.0-v8.0: A Boolean that specifies whether to discover Oracle information during host refresh. A value of 'true' discovers Oracle information during host refresh. 
+      
       v8.1: A Boolean that specifies whether to discover Oracle information during host refresh. A value of 'true' discovers Oracle information during host refresh.
-
+      
       v9.0+: A Boolean that specifies whether to discover Oracle information during host refresh. A value of 'true' discovers Oracle information during host refresh.
 - isUpdateCertAndAgentIdEnabled: System.Boolean
   - Supported in v7.0+

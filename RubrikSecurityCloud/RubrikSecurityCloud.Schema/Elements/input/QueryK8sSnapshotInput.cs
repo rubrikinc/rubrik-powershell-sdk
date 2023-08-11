@@ -1,4 +1,4 @@
-// AppItemRestoreConfig.cs
+// QueryK8sSnapshotInput.cs
 //
 // This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
@@ -13,32 +13,18 @@ using RubrikSecurityCloud;
 
 namespace RubrikSecurityCloud.Types
 {
-    #region AppItemRestoreConfig
+    #region QueryK8sSnapshotInput
 
-    public class AppItemRestoreConfig: IInput
+    public class QueryK8sSnapshotInput: IInput
     {
         #region members
 
-        //      C# -> System.String? WorkloadId
-        // GraphQL -> workloadId: UUID! (scalar)
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
         [Required]
         [JsonRequired]
-        [JsonProperty("workloadId")]
-        public System.String? WorkloadId { get; set; }
-
-        //      C# -> System.String? AppItemTypeToken
-        // GraphQL -> appItemTypeToken: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("appItemTypeToken")]
-        public System.String? AppItemTypeToken { get; set; }
-
-        //      C# -> List<RestoreItemInfo>? ItemsToRestore
-        // GraphQL -> itemsToRestore: [RestoreItemInfo!]! (input)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("itemsToRestore")]
-        public List<RestoreItemInfo>? ItemsToRestore { get; set; }
+        [JsonProperty("id")]
+        public System.String? Id { get; set; }
 
 
         #endregion
@@ -66,7 +52,7 @@ namespace RubrikSecurityCloud.Types
         }
         #endregion
 
-    } // class AppItemRestoreConfig
+    } // class QueryK8sSnapshotInput
     #endregion
 
 } // namespace RubrikSecurityCloud.Types

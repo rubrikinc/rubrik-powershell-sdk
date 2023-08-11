@@ -26,11 +26,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     public class Invoke_RscMutateSla : RscPSCmdlet
     {
         
-        // -------------------------------------------------------------------
-        // CreateGlobal parameter set
-        //
-        // [GraphQL: createGlobalSla]
-        //
+        /// <summary>
+        /// CreateGlobal parameter set
+        ///
+        /// [GraphQL: createGlobalSla]
+        /// </summary>
         [Parameter(
             ParameterSetName = "CreateGlobal",
             Mandatory = false,
@@ -44,11 +44,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter CreateGlobal { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // EditGlobal parameter set
-        //
-        // [GraphQL: editGlobalSla]
-        //
+        /// <summary>
+        /// EditGlobal parameter set
+        ///
+        /// [GraphQL: editGlobalSla]
+        /// </summary>
         [Parameter(
             ParameterSetName = "EditGlobal",
             Mandatory = false,
@@ -62,11 +62,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter EditGlobal { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // UpdateGlobal parameter set
-        //
-        // [GraphQL: updateGlobalSla]
-        //
+        /// <summary>
+        /// UpdateGlobal parameter set
+        ///
+        /// [GraphQL: updateGlobalSla]
+        /// </summary>
         [Parameter(
             ParameterSetName = "UpdateGlobal",
             Mandatory = false,
@@ -80,11 +80,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter UpdateGlobal { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DeleteGlobal parameter set
-        //
-        // [GraphQL: deleteGlobalSla]
-        //
+        /// <summary>
+        /// DeleteGlobal parameter set
+        ///
+        /// [GraphQL: deleteGlobalSla]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DeleteGlobal",
             Mandatory = false,
@@ -98,11 +98,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter DeleteGlobal { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Assign parameter set
-        //
-        // [GraphQL: assignSla]
-        //
+        /// <summary>
+        /// Assign parameter set
+        ///
+        /// [GraphQL: assignSla]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Assign",
             Mandatory = false,
@@ -116,65 +116,65 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Assign { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AssignsForSnappableHierarchies parameter set
-        //
-        // [GraphQL: assignSlasForSnappableHierarchies]
-        //
+        /// <summary>
+        /// AssignsForSnappableHierarchies parameter set
+        ///
+        /// [GraphQL: assignSlasForSnappableHierarchies]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AssignsForSnappableHierarchies",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"
+@"Assign SLA Domain to workloads with multiple hierarchies.
 [GraphQL: assignSlasForSnappableHierarchies]",
             Position = 0
         )]
         public SwitchParameter AssignsForSnappableHierarchies { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AssignRetentionToSnappables parameter set
-        //
-        // [GraphQL: assignRetentionSLAToSnappables]
-        //
+        /// <summary>
+        /// AssignRetentionToSnappables parameter set
+        ///
+        /// [GraphQL: assignRetentionSLAToSnappables]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AssignRetentionToSnappables",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"
+@"Endpoint to assign retention SLA Domain to workloads.
 [GraphQL: assignRetentionSLAToSnappables]",
             Position = 0
         )]
         public SwitchParameter AssignRetentionToSnappables { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AssignRetentionToSnapshots parameter set
-        //
-        // [GraphQL: assignRetentionSLAToSnapshots]
-        //
+        /// <summary>
+        /// AssignRetentionToSnapshots parameter set
+        ///
+        /// [GraphQL: assignRetentionSLAToSnapshots]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AssignRetentionToSnapshots",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"
+@"Endpoint to assign retention SLA Domain to snapshots.
 [GraphQL: assignRetentionSLAToSnapshots]",
             Position = 0
         )]
         public SwitchParameter AssignRetentionToSnapshots { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Pause parameter set
-        //
-        // [GraphQL: pauseSla]
-        //
+        /// <summary>
+        /// Pause parameter set
+        ///
+        /// [GraphQL: pauseSla]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Pause",
             Mandatory = false,
@@ -188,11 +188,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Pause { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Upgrades parameter set
-        //
-        // [GraphQL: upgradeSlas]
-        //
+        /// <summary>
+        /// Upgrades parameter set
+        ///
+        /// [GraphQL: upgradeSlas]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Upgrades",
             Mandatory = false,
@@ -206,11 +206,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Upgrades { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // GetPendingAssignments parameter set
-        //
-        // [GraphQL: getPendingSlaAssignments]
-        //
+        /// <summary>
+        /// GetPendingAssignments parameter set
+        ///
+        /// [GraphQL: getPendingSlaAssignments]
+        /// </summary>
         [Parameter(
             ParameterSetName = "GetPendingAssignments",
             Mandatory = false,
@@ -227,11 +227,11 @@ Retrieve the details of pending SLA Domain assignments on the given managed obje
         public SwitchParameter GetPendingAssignments { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ExportManagedVolumeSnapshot parameter set
-        //
-        // [GraphQL: exportSlaManagedVolumeSnapshot]
-        //
+        /// <summary>
+        /// ExportManagedVolumeSnapshot parameter set
+        ///
+        /// [GraphQL: exportSlaManagedVolumeSnapshot]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ExportManagedVolumeSnapshot",
             Mandatory = false,
@@ -248,6 +248,8 @@ Export a managed volume snapshot as a share and mount it on a given host.
         public SwitchParameter ExportManagedVolumeSnapshot { get; set; }
 
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
         protected override void ProcessRecord()
         {
             try
@@ -299,10 +301,11 @@ Export a managed volume snapshot as a share and mount it on a given host.
                 ThrowTerminatingException(ex);
            }
         }
+#pragma warning restore 1591
 
         // This parameter set invokes a single graphql operation:
         // createGlobalSla.
-        protected void ProcessRecord_CreateGlobal()
+        internal void ProcessRecord_CreateGlobal()
         {
             this._logger.name += " -CreateGlobal";
             // Invoke graphql operation createGlobalSla
@@ -311,7 +314,7 @@ Export a managed volume snapshot as a share and mount it on a given host.
 
         // This parameter set invokes a single graphql operation:
         // editGlobalSla.
-        protected void ProcessRecord_EditGlobal()
+        internal void ProcessRecord_EditGlobal()
         {
             this._logger.name += " -EditGlobal";
             // Invoke graphql operation editGlobalSla
@@ -320,7 +323,7 @@ Export a managed volume snapshot as a share and mount it on a given host.
 
         // This parameter set invokes a single graphql operation:
         // updateGlobalSla.
-        protected void ProcessRecord_UpdateGlobal()
+        internal void ProcessRecord_UpdateGlobal()
         {
             this._logger.name += " -UpdateGlobal";
             // Invoke graphql operation updateGlobalSla
@@ -329,7 +332,7 @@ Export a managed volume snapshot as a share and mount it on a given host.
 
         // This parameter set invokes a single graphql operation:
         // deleteGlobalSla.
-        protected void ProcessRecord_DeleteGlobal()
+        internal void ProcessRecord_DeleteGlobal()
         {
             this._logger.name += " -DeleteGlobal";
             // Invoke graphql operation deleteGlobalSla
@@ -338,7 +341,7 @@ Export a managed volume snapshot as a share and mount it on a given host.
 
         // This parameter set invokes a single graphql operation:
         // assignSla.
-        protected void ProcessRecord_Assign()
+        internal void ProcessRecord_Assign()
         {
             this._logger.name += " -Assign";
             // Invoke graphql operation assignSla
@@ -347,7 +350,7 @@ Export a managed volume snapshot as a share and mount it on a given host.
 
         // This parameter set invokes a single graphql operation:
         // assignSlasForSnappableHierarchies.
-        protected void ProcessRecord_AssignsForSnappableHierarchies()
+        internal void ProcessRecord_AssignsForSnappableHierarchies()
         {
             this._logger.name += " -AssignsForSnappableHierarchies";
             // Invoke graphql operation assignSlasForSnappableHierarchies
@@ -356,7 +359,7 @@ Export a managed volume snapshot as a share and mount it on a given host.
 
         // This parameter set invokes a single graphql operation:
         // assignRetentionSLAToSnappables.
-        protected void ProcessRecord_AssignRetentionToSnappables()
+        internal void ProcessRecord_AssignRetentionToSnappables()
         {
             this._logger.name += " -AssignRetentionToSnappables";
             // Invoke graphql operation assignRetentionSLAToSnappables
@@ -365,7 +368,7 @@ Export a managed volume snapshot as a share and mount it on a given host.
 
         // This parameter set invokes a single graphql operation:
         // assignRetentionSLAToSnapshots.
-        protected void ProcessRecord_AssignRetentionToSnapshots()
+        internal void ProcessRecord_AssignRetentionToSnapshots()
         {
             this._logger.name += " -AssignRetentionToSnapshots";
             // Invoke graphql operation assignRetentionSLAToSnapshots
@@ -374,7 +377,7 @@ Export a managed volume snapshot as a share and mount it on a given host.
 
         // This parameter set invokes a single graphql operation:
         // pauseSla.
-        protected void ProcessRecord_Pause()
+        internal void ProcessRecord_Pause()
         {
             this._logger.name += " -Pause";
             // Invoke graphql operation pauseSla
@@ -383,7 +386,7 @@ Export a managed volume snapshot as a share and mount it on a given host.
 
         // This parameter set invokes a single graphql operation:
         // upgradeSlas.
-        protected void ProcessRecord_Upgrades()
+        internal void ProcessRecord_Upgrades()
         {
             this._logger.name += " -Upgrades";
             // Invoke graphql operation upgradeSlas
@@ -392,7 +395,7 @@ Export a managed volume snapshot as a share and mount it on a given host.
 
         // This parameter set invokes a single graphql operation:
         // getPendingSlaAssignments.
-        protected void ProcessRecord_GetPendingAssignments()
+        internal void ProcessRecord_GetPendingAssignments()
         {
             this._logger.name += " -GetPendingAssignments";
             // Invoke graphql operation getPendingSlaAssignments
@@ -401,7 +404,7 @@ Export a managed volume snapshot as a share and mount it on a given host.
 
         // This parameter set invokes a single graphql operation:
         // exportSlaManagedVolumeSnapshot.
-        protected void ProcessRecord_ExportManagedVolumeSnapshot()
+        internal void ProcessRecord_ExportManagedVolumeSnapshot()
         {
             this._logger.name += " -ExportManagedVolumeSnapshot";
             // Invoke graphql operation exportSlaManagedVolumeSnapshot
@@ -411,7 +414,7 @@ Export a managed volume snapshot as a share and mount it on a given host.
 
         // Invoke GraphQL Mutation:
         // createGlobalSla(input: CreateGlobalSlaInput!): GlobalSlaReply!
-        protected void InvokeMutationCreateGlobalSla()
+        internal void InvokeMutationCreateGlobalSla()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CreateGlobalSlaInput!"),
@@ -438,7 +441,7 @@ Export a managed volume snapshot as a share and mount it on a given host.
 
         // Invoke GraphQL Mutation:
         // editGlobalSla(globalSlaEditRequest: GlobalSlaEditRequest!): GlobalSlaReply!
-        protected void InvokeMutationEditGlobalSla()
+        internal void InvokeMutationEditGlobalSla()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("globalSlaEditRequest", "GlobalSlaEditRequest!"),
@@ -465,7 +468,7 @@ Export a managed volume snapshot as a share and mount it on a given host.
 
         // Invoke GraphQL Mutation:
         // updateGlobalSla(input: UpdateGlobalSlaInput!): GlobalSlaReply!
-        protected void InvokeMutationUpdateGlobalSla()
+        internal void InvokeMutationUpdateGlobalSla()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpdateGlobalSlaInput!"),
@@ -492,7 +495,7 @@ Export a managed volume snapshot as a share and mount it on a given host.
 
         // Invoke GraphQL Mutation:
         // deleteGlobalSla(id: UUID!, userNote: String): SlaResult!
-        protected void InvokeMutationDeleteGlobalSla()
+        internal void InvokeMutationDeleteGlobalSla()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("id", "UUID!"),
@@ -520,7 +523,7 @@ Export a managed volume snapshot as a share and mount it on a given host.
 
         // Invoke GraphQL Mutation:
         // assignSla(input: AssignSlaInput!): SlaAssignResult!
-        protected void InvokeMutationAssignSla()
+        internal void InvokeMutationAssignSla()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "AssignSlaInput!"),
@@ -556,7 +559,7 @@ Export a managed volume snapshot as a share and mount it on a given host.
         //     globalExistingSnapshotRetention: GlobalExistingSnapshotRetention
         //     userNote: String
         //   ): [SlaAssignResult!]!
-        protected void InvokeMutationAssignSlasForSnappableHierarchies()
+        internal void InvokeMutationAssignSlasForSnappableHierarchies()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("globalSlaOptionalFid", "UUID"),
@@ -597,7 +600,7 @@ Export a managed volume snapshot as a share and mount it on a given host.
         //     shouldApplyToNonPolicySnapshots: Boolean
         //     userNote: String
         //   ): SlaAssignResult!
-        protected void InvokeMutationAssignRetentionSlaToSnappables()
+        internal void InvokeMutationAssignRetentionSlaToSnappables()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("globalSlaOptionalFid", "UUID"),
@@ -634,7 +637,7 @@ Export a managed volume snapshot as a share and mount it on a given host.
         //     snapshotFids: [UUID!]!
         //     userNote: String
         //   ): SlaAssignResult!
-        protected void InvokeMutationAssignRetentionSlaToSnapshots()
+        internal void InvokeMutationAssignRetentionSlaToSnapshots()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("globalSlaOptionalFid", "UUID"),
@@ -664,7 +667,7 @@ Export a managed volume snapshot as a share and mount it on a given host.
 
         // Invoke GraphQL Mutation:
         // pauseSla(input: PauseSlaInput!): PauseSlaReply!
-        protected void InvokeMutationPauseSla()
+        internal void InvokeMutationPauseSla()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "PauseSlaInput!"),
@@ -691,7 +694,7 @@ Export a managed volume snapshot as a share and mount it on a given host.
 
         // Invoke GraphQL Mutation:
         // upgradeSlas(input: UpgradeSlasInput!): UpgradeSlasReply!
-        protected void InvokeMutationUpgradeSlas()
+        internal void InvokeMutationUpgradeSlas()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpgradeSlasInput!"),
@@ -718,7 +721,7 @@ Export a managed volume snapshot as a share and mount it on a given host.
 
         // Invoke GraphQL Mutation:
         // getPendingSlaAssignments(input: GetPendingSlaAssignmentsInput!): PendingSlaOperations!
-        protected void InvokeMutationGetPendingSlaAssignments()
+        internal void InvokeMutationGetPendingSlaAssignments()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetPendingSlaAssignmentsInput!"),
@@ -745,7 +748,7 @@ Export a managed volume snapshot as a share and mount it on a given host.
 
         // Invoke GraphQL Mutation:
         // exportSlaManagedVolumeSnapshot(input: ExportSlaManagedVolumeSnapshotInput!): AsyncRequestStatus!
-        protected void InvokeMutationExportSlaManagedVolumeSnapshot()
+        internal void InvokeMutationExportSlaManagedVolumeSnapshot()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "ExportSlaManagedVolumeSnapshotInput!"),

@@ -14,3 +14,5 @@ All valid table views.
 - RECOVERY_TASKS_DETAIL_BY_OBJECT_TYPE_TABLE
 - RECOVERY_TASKS_DETAIL_BY_TIME_TABLE
 - THREAT_MONITORING_LIST_TABLE - Table displaying a list of workloads where files were matched by IOC rules.
+- SLA_AUDIT_LIST_TABLE - Table displaying a list of latest audits for each SLA Domain.
+- SLA_AUDIT_DETAIL_TABLE - Table displaying a list of audits for the single SLA Domain.

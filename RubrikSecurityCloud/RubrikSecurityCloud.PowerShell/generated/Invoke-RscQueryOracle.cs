@@ -26,11 +26,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     public class Invoke_RscQueryOracle : RscPSCmdlet
     {
         
-        // -------------------------------------------------------------------
-        // TopLevelDescendants parameter set
-        //
-        // [GraphQL: oracleTopLevelDescendants]
-        //
+        /// <summary>
+        /// TopLevelDescendants parameter set
+        ///
+        /// [GraphQL: oracleTopLevelDescendants]
+        /// </summary>
         [Parameter(
             ParameterSetName = "TopLevelDescendants",
             Mandatory = false,
@@ -44,11 +44,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter TopLevelDescendants { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Databases parameter set
-        //
-        // [GraphQL: oracleDatabases]
-        //
+        /// <summary>
+        /// Databases parameter set
+        ///
+        /// [GraphQL: oracleDatabases]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Databases",
             Mandatory = false,
@@ -62,11 +62,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Databases { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Host parameter set
-        //
-        // [GraphQL: oracleHost]
-        //
+        /// <summary>
+        /// Host parameter set
+        ///
+        /// [GraphQL: oracleHost]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Host",
             Mandatory = false,
@@ -80,11 +80,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public new SwitchParameter Host { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Rac parameter set
-        //
-        // [GraphQL: oracleRac]
-        //
+        /// <summary>
+        /// Rac parameter set
+        ///
+        /// [GraphQL: oracleRac]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Rac",
             Mandatory = false,
@@ -98,11 +98,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Rac { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DataGuardGroup parameter set
-        //
-        // [GraphQL: oracleDataGuardGroup]
-        //
+        /// <summary>
+        /// DataGuardGroup parameter set
+        ///
+        /// [GraphQL: oracleDataGuardGroup]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DataGuardGroup",
             Mandatory = false,
@@ -116,11 +116,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter DataGuardGroup { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Database parameter set
-        //
-        // [GraphQL: oracleDatabase]
-        //
+        /// <summary>
+        /// Database parameter set
+        ///
+        /// [GraphQL: oracleDatabase]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Database",
             Mandatory = false,
@@ -134,11 +134,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Database { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // LiveMounts parameter set
-        //
-        // [GraphQL: oracleLiveMounts]
-        //
+        /// <summary>
+        /// LiveMounts parameter set
+        ///
+        /// [GraphQL: oracleLiveMounts]
+        /// </summary>
         [Parameter(
             ParameterSetName = "LiveMounts",
             Mandatory = false,
@@ -152,11 +152,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter LiveMounts { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AcoParameters parameter set
-        //
-        // [GraphQL: oracleAcoParameters]
-        //
+        /// <summary>
+        /// AcoParameters parameter set
+        ///
+        /// [GraphQL: oracleAcoParameters]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AcoParameters",
             Mandatory = false,
@@ -173,11 +173,11 @@ Get the list of supported Advanced Cloning Options (ACO) parameters.
         public SwitchParameter AcoParameters { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // RecoverableRanges parameter set
-        //
-        // [GraphQL: oracleRecoverableRanges]
-        //
+        /// <summary>
+        /// RecoverableRanges parameter set
+        ///
+        /// [GraphQL: oracleRecoverableRanges]
+        /// </summary>
         [Parameter(
             ParameterSetName = "RecoverableRanges",
             Mandatory = false,
@@ -194,11 +194,11 @@ Retrieve the recoverable ranges for a specified Oracle database. A begin and/or 
         public SwitchParameter RecoverableRanges { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // MissedRecoverableRanges parameter set
-        //
-        // [GraphQL: oracleMissedRecoverableRanges]
-        //
+        /// <summary>
+        /// MissedRecoverableRanges parameter set
+        ///
+        /// [GraphQL: oracleMissedRecoverableRanges]
+        /// </summary>
         [Parameter(
             ParameterSetName = "MissedRecoverableRanges",
             Mandatory = false,
@@ -215,11 +215,11 @@ Retrieve a list of missed recoverable ranges for a Oracle database. For each run
         public SwitchParameter MissedRecoverableRanges { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // MissedSnapshots parameter set
-        //
-        // [GraphQL: oracleMissedSnapshots]
-        //
+        /// <summary>
+        /// MissedSnapshots parameter set
+        ///
+        /// [GraphQL: oracleMissedSnapshots]
+        /// </summary>
         [Parameter(
             ParameterSetName = "MissedSnapshots",
             Mandatory = false,
@@ -236,11 +236,11 @@ Retrieve summary information about the missed snapshots of an Oracle database.
         public SwitchParameter MissedSnapshots { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // AcoExampleDownloadLink parameter set
-        //
-        // [GraphQL: oracleAcoExampleDownloadLink]
-        //
+        /// <summary>
+        /// AcoExampleDownloadLink parameter set
+        ///
+        /// [GraphQL: oracleAcoExampleDownloadLink]
+        /// </summary>
         [Parameter(
             ParameterSetName = "AcoExampleDownloadLink",
             Mandatory = false,
@@ -257,11 +257,11 @@ Link to download the Advanced Recovery Options example file which can be used to
         public SwitchParameter AcoExampleDownloadLink { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // PdbDetails parameter set
-        //
-        // [GraphQL: oraclePdbDetails]
-        //
+        /// <summary>
+        /// PdbDetails parameter set
+        ///
+        /// [GraphQL: oraclePdbDetails]
+        /// </summary>
         [Parameter(
             ParameterSetName = "PdbDetails",
             Mandatory = false,
@@ -278,11 +278,11 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
         public SwitchParameter PdbDetails { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // HostLogBackupConfig parameter set
-        //
-        // [GraphQL: oracleHostLogBackupConfig]
-        //
+        /// <summary>
+        /// HostLogBackupConfig parameter set
+        ///
+        /// [GraphQL: oracleHostLogBackupConfig]
+        /// </summary>
         [Parameter(
             ParameterSetName = "HostLogBackupConfig",
             Mandatory = false,
@@ -296,11 +296,11 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
         public SwitchParameter HostLogBackupConfig { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DatabaseLogBackupConfig parameter set
-        //
-        // [GraphQL: oracleDatabaseLogBackupConfig]
-        //
+        /// <summary>
+        /// DatabaseLogBackupConfig parameter set
+        ///
+        /// [GraphQL: oracleDatabaseLogBackupConfig]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DatabaseLogBackupConfig",
             Mandatory = false,
@@ -314,11 +314,11 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
         public SwitchParameter DatabaseLogBackupConfig { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // RacLogBackupConfig parameter set
-        //
-        // [GraphQL: oracleRacLogBackupConfig]
-        //
+        /// <summary>
+        /// RacLogBackupConfig parameter set
+        ///
+        /// [GraphQL: oracleRacLogBackupConfig]
+        /// </summary>
         [Parameter(
             ParameterSetName = "RacLogBackupConfig",
             Mandatory = false,
@@ -332,6 +332,8 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
         public SwitchParameter RacLogBackupConfig { get; set; }
 
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
         protected override void ProcessRecord()
         {
             try
@@ -395,10 +397,11 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
                 ThrowTerminatingException(ex);
            }
         }
+#pragma warning restore 1591
 
         // This parameter set invokes a single graphql operation:
         // oracleTopLevelDescendants.
-        protected void ProcessRecord_TopLevelDescendants()
+        internal void ProcessRecord_TopLevelDescendants()
         {
             this._logger.name += " -TopLevelDescendants";
             // Invoke graphql operation oracleTopLevelDescendants
@@ -407,7 +410,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
 
         // This parameter set invokes a single graphql operation:
         // oracleDatabases.
-        protected void ProcessRecord_Databases()
+        internal void ProcessRecord_Databases()
         {
             this._logger.name += " -Databases";
             // Invoke graphql operation oracleDatabases
@@ -416,7 +419,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
 
         // This parameter set invokes a single graphql operation:
         // oracleHost.
-        protected void ProcessRecord_Host()
+        internal void ProcessRecord_Host()
         {
             this._logger.name += " -Host";
             // Invoke graphql operation oracleHost
@@ -425,7 +428,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
 
         // This parameter set invokes a single graphql operation:
         // oracleRac.
-        protected void ProcessRecord_Rac()
+        internal void ProcessRecord_Rac()
         {
             this._logger.name += " -Rac";
             // Invoke graphql operation oracleRac
@@ -434,7 +437,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
 
         // This parameter set invokes a single graphql operation:
         // oracleDataGuardGroup.
-        protected void ProcessRecord_DataGuardGroup()
+        internal void ProcessRecord_DataGuardGroup()
         {
             this._logger.name += " -DataGuardGroup";
             // Invoke graphql operation oracleDataGuardGroup
@@ -443,7 +446,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
 
         // This parameter set invokes a single graphql operation:
         // oracleDatabase.
-        protected void ProcessRecord_Database()
+        internal void ProcessRecord_Database()
         {
             this._logger.name += " -Database";
             // Invoke graphql operation oracleDatabase
@@ -452,7 +455,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
 
         // This parameter set invokes a single graphql operation:
         // oracleLiveMounts.
-        protected void ProcessRecord_LiveMounts()
+        internal void ProcessRecord_LiveMounts()
         {
             this._logger.name += " -LiveMounts";
             // Invoke graphql operation oracleLiveMounts
@@ -461,7 +464,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
 
         // This parameter set invokes a single graphql operation:
         // oracleAcoParameters.
-        protected void ProcessRecord_AcoParameters()
+        internal void ProcessRecord_AcoParameters()
         {
             this._logger.name += " -AcoParameters";
             // Invoke graphql operation oracleAcoParameters
@@ -470,7 +473,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
 
         // This parameter set invokes a single graphql operation:
         // oracleRecoverableRanges.
-        protected void ProcessRecord_RecoverableRanges()
+        internal void ProcessRecord_RecoverableRanges()
         {
             this._logger.name += " -RecoverableRanges";
             // Invoke graphql operation oracleRecoverableRanges
@@ -479,7 +482,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
 
         // This parameter set invokes a single graphql operation:
         // oracleMissedRecoverableRanges.
-        protected void ProcessRecord_MissedRecoverableRanges()
+        internal void ProcessRecord_MissedRecoverableRanges()
         {
             this._logger.name += " -MissedRecoverableRanges";
             // Invoke graphql operation oracleMissedRecoverableRanges
@@ -488,7 +491,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
 
         // This parameter set invokes a single graphql operation:
         // oracleMissedSnapshots.
-        protected void ProcessRecord_MissedSnapshots()
+        internal void ProcessRecord_MissedSnapshots()
         {
             this._logger.name += " -MissedSnapshots";
             // Invoke graphql operation oracleMissedSnapshots
@@ -497,7 +500,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
 
         // This parameter set invokes a single graphql operation:
         // oracleAcoExampleDownloadLink.
-        protected void ProcessRecord_AcoExampleDownloadLink()
+        internal void ProcessRecord_AcoExampleDownloadLink()
         {
             this._logger.name += " -AcoExampleDownloadLink";
             // Invoke graphql operation oracleAcoExampleDownloadLink
@@ -506,7 +509,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
 
         // This parameter set invokes a single graphql operation:
         // oraclePdbDetails.
-        protected void ProcessRecord_PdbDetails()
+        internal void ProcessRecord_PdbDetails()
         {
             this._logger.name += " -PdbDetails";
             // Invoke graphql operation oraclePdbDetails
@@ -515,7 +518,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
 
         // This parameter set invokes a single graphql operation:
         // oracleHostLogBackupConfig.
-        protected void ProcessRecord_HostLogBackupConfig()
+        internal void ProcessRecord_HostLogBackupConfig()
         {
             this._logger.name += " -HostLogBackupConfig";
             // Invoke graphql operation oracleHostLogBackupConfig
@@ -524,7 +527,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
 
         // This parameter set invokes a single graphql operation:
         // oracleDatabaseLogBackupConfig.
-        protected void ProcessRecord_DatabaseLogBackupConfig()
+        internal void ProcessRecord_DatabaseLogBackupConfig()
         {
             this._logger.name += " -DatabaseLogBackupConfig";
             // Invoke graphql operation oracleDatabaseLogBackupConfig
@@ -533,7 +536,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
 
         // This parameter set invokes a single graphql operation:
         // oracleRacLogBackupConfig.
-        protected void ProcessRecord_RacLogBackupConfig()
+        internal void ProcessRecord_RacLogBackupConfig()
         {
             this._logger.name += " -RacLogBackupConfig";
             // Invoke graphql operation oracleRacLogBackupConfig
@@ -550,7 +553,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
         //     typeFilter: [HierarchyObjectTypeEnum!]
         //     filter: [Filter!]
         //   ): OracleTopLevelDescendantTypeConnection!
-        protected void InvokeQueryOracleTopLevelDescendants()
+        internal void InvokeQueryOracleTopLevelDescendants()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -588,7 +591,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
         //     sortOrder: SortOrder
         //     filter: [Filter!]
         //   ): OracleDatabaseConnection!
-        protected void InvokeQueryOracleDatabases()
+        internal void InvokeQueryOracleDatabases()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -619,7 +622,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
 
         // Invoke GraphQL Query:
         // oracleHost(fid: UUID!): OracleHost!
-        protected void InvokeQueryOracleHost()
+        internal void InvokeQueryOracleHost()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
@@ -646,7 +649,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
 
         // Invoke GraphQL Query:
         // oracleRac(fid: UUID!): OracleRac!
-        protected void InvokeQueryOracleRac()
+        internal void InvokeQueryOracleRac()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
@@ -673,7 +676,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
 
         // Invoke GraphQL Query:
         // oracleDataGuardGroup(fid: UUID!): OracleDataGuardGroup!
-        protected void InvokeQueryOracleDataGuardGroup()
+        internal void InvokeQueryOracleDataGuardGroup()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
@@ -700,7 +703,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
 
         // Invoke GraphQL Query:
         // oracleDatabase(fid: UUID!): OracleDatabase!
-        protected void InvokeQueryOracleDatabase()
+        internal void InvokeQueryOracleDatabase()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
@@ -732,7 +735,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
         //     filters: [OracleLiveMountFilterInput!]
         //     sortBy: OracleLiveMountSortBy
         //   ): OracleLiveMountConnection!
-        protected void InvokeQueryOracleLiveMounts()
+        internal void InvokeQueryOracleLiveMounts()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -762,7 +765,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
 
         // Invoke GraphQL Query:
         // oracleAcoParameters(input: ClusterUuidWithDbIdInput!): OracleAcoParameterList!
-        protected void InvokeQueryOracleAcoParameters()
+        internal void InvokeQueryOracleAcoParameters()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "ClusterUuidWithDbIdInput!"),
@@ -789,7 +792,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
 
         // Invoke GraphQL Query:
         // oracleRecoverableRanges(input: GetOracleDbRecoverableRangesInput!): OracleRecoverableRangeListResponse!
-        protected void InvokeQueryOracleRecoverableRanges()
+        internal void InvokeQueryOracleRecoverableRanges()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetOracleDbRecoverableRangesInput!"),
@@ -816,7 +819,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
 
         // Invoke GraphQL Query:
         // oracleMissedRecoverableRanges(input: GetOracleDbMissedRecoverableRangesInput!): OracleMissedRecoverableRangeListResponse!
-        protected void InvokeQueryOracleMissedRecoverableRanges()
+        internal void InvokeQueryOracleMissedRecoverableRanges()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetOracleDbMissedRecoverableRangesInput!"),
@@ -843,7 +846,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
 
         // Invoke GraphQL Query:
         // oracleMissedSnapshots(input: GetMissedOracleDbSnapshotsInput!): MissedSnapshotListResponse!
-        protected void InvokeQueryOracleMissedSnapshots()
+        internal void InvokeQueryOracleMissedSnapshots()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetMissedOracleDbSnapshotsInput!"),
@@ -870,7 +873,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
 
         // Invoke GraphQL Query:
         // oracleAcoExampleDownloadLink(input: ClusterUuidWithDbIdInput!): OracleFileDownloadLink!
-        protected void InvokeQueryOracleAcoExampleDownloadLink()
+        internal void InvokeQueryOracleAcoExampleDownloadLink()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "ClusterUuidWithDbIdInput!"),
@@ -897,7 +900,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
 
         // Invoke GraphQL Query:
         // oraclePdbDetails(input: OraclePdbDetailsInput!): OraclePdbDetails!
-        protected void InvokeQueryOraclePdbDetails()
+        internal void InvokeQueryOraclePdbDetails()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "OraclePdbDetailsInput!"),
@@ -924,7 +927,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
 
         // Invoke GraphQL Query:
         // oracleHostLogBackupConfig(input: OracleHostInput!): OracleLogBackupConfig!
-        protected void InvokeQueryOracleHostLogBackupConfig()
+        internal void InvokeQueryOracleHostLogBackupConfig()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "OracleHostInput!"),
@@ -951,7 +954,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
 
         // Invoke GraphQL Query:
         // oracleDatabaseLogBackupConfig(input: OracleDbInput!): OracleLogBackupConfig!
-        protected void InvokeQueryOracleDatabaseLogBackupConfig()
+        internal void InvokeQueryOracleDatabaseLogBackupConfig()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "OracleDbInput!"),
@@ -978,7 +981,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
 
         // Invoke GraphQL Query:
         // oracleRacLogBackupConfig(input: OracleRacInput!): OracleLogBackupConfig!
-        protected void InvokeQueryOracleRacLogBackupConfig()
+        internal void InvokeQueryOracleRacLogBackupConfig()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "OracleRacInput!"),

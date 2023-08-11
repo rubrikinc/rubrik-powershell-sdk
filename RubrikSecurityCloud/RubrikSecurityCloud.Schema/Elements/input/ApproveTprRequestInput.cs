@@ -19,12 +19,12 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? Id
-        // GraphQL -> id: String! (scalar)
+        //      C# -> System.String? RequestId
+        // GraphQL -> requestId: UUID! (scalar)
         [Required]
         [JsonRequired]
-        [JsonProperty("id")]
-        public System.String? Id { get; set; }
+        [JsonProperty("requestId")]
+        public System.String? RequestId { get; set; }
 
         //      C# -> System.String? Comment
         // GraphQL -> comment: String (scalar)

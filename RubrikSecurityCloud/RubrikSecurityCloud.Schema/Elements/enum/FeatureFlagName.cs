@@ -21,14 +21,14 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ACCOUNT_DEPROVISIONING_ENABLED")]
         ACCOUNT_DEPROVISIONING_ENABLED,
 
+        [EnumMember(Value = "ACCOUNT_DEPROVISIONING_ENABLED_UFF")]
+        ACCOUNT_DEPROVISIONING_ENABLED_UFF,
+
         [EnumMember(Value = "ACTIVE_DIRECTORY_ENABLED")]
         ACTIVE_DIRECTORY_ENABLED,
 
         [EnumMember(Value = "ALLOW_ONLINE_REGISTRATION")]
         ALLOW_ONLINE_REGISTRATION,
-
-        [EnumMember(Value = "APPFLOWS_BULK_RECOVERY_ENABLED")]
-        APPFLOWS_BULK_RECOVERY_ENABLED,
 
         [EnumMember(Value = "APPFLOWS_COMPUTE_CLUSTER_ENABLED")]
         APPFLOWS_COMPUTE_CLUSTER_ENABLED,
@@ -45,8 +45,14 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "APPFLOWS_DEV_ENABLED")]
         APPFLOWS_DEV_ENABLED,
 
+        [EnumMember(Value = "APPFLOWS_EXCHANGE_BULK_RECOVERY_ENABLED")]
+        APPFLOWS_EXCHANGE_BULK_RECOVERY_ENABLED,
+
         [EnumMember(Value = "APPFLOWS_IRE_PROMOTION_ENABLED")]
         APPFLOWS_IRE_PROMOTION_ENABLED,
+
+        [EnumMember(Value = "APPFLOWS_ONEDRIVE_BULK_RECOVERY_ENABLED")]
+        APPFLOWS_ONEDRIVE_BULK_RECOVERY_ENABLED,
 
         [EnumMember(Value = "APPFLOWS_PROGRESS_IMPROVEMENT_ENABLED")]
         APPFLOWS_PROGRESS_IMPROVEMENT_ENABLED,
@@ -62,6 +68,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "APPFLOWS_SCHEDULE_RECOVERIES_ENABLED")]
         APPFLOWS_SCHEDULE_RECOVERIES_ENABLED,
+
+        [EnumMember(Value = "APPFLOWS_SHAREPOINT_BULK_RECOVERY_ENABLED")]
+        APPFLOWS_SHAREPOINT_BULK_RECOVERY_ENABLED,
 
         [EnumMember(Value = "APPFLOWS_ZERO_RPO")]
         APPFLOWS_ZERO_RPO,
@@ -137,6 +146,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "AZURE_GRANULAR_DISK_RECOVERIES_ENABLED")]
         AZURE_GRANULAR_DISK_RECOVERIES_ENABLED,
+
+        [EnumMember(Value = "AZURE_GRANULAR_PERMISSIONS_BETA_ENABLED")]
+        AZURE_GRANULAR_PERMISSIONS_BETA_ENABLED,
 
         [EnumMember(Value = "AZURE_GRANULAR_PERMISSIONS_ENABLED")]
         AZURE_GRANULAR_PERMISSIONS_ENABLED,
@@ -378,9 +390,6 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CONTINUOUS_THREAT_MONITORING_ENABLED")]
         CONTINUOUS_THREAT_MONITORING_ENABLED,
 
-        [EnumMember(Value = "CROSS_ACCOUNT_REPLICATION_ENABLED")]
-        CROSS_ACCOUNT_REPLICATION_ENABLED,
-
         [EnumMember(Value = "CUSTOMER_INSIGHTS_ENABLED")]
         CUSTOMER_INSIGHTS_ENABLED,
 
@@ -564,6 +573,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "DetailedInventoryCardEnabled")]
         DETAILED_INVENTORY_CARD_ENABLED,
 
+        [EnumMember(Value = "EMPTY_SCHEDULE_SLA_DOMAIN_ENABLED")]
+        EMPTY_SCHEDULE_SLA_DOMAIN_ENABLED,
+
         [EnumMember(Value = "ENABLE_AWS_MANAGED_POLICIES")]
         ENABLE_AWS_MANAGED_POLICIES,
 
@@ -611,6 +623,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "GPS_ENABLED")]
         GPS_ENABLED,
+
+        [EnumMember(Value = "GQL_API_PLAYGROUND_ENABLED")]
+        GQL_API_PLAYGROUND_ENABLED,
 
         [EnumMember(Value = "GSLA_ARCHIVAL_REVAMP_ENABLED")]
         GSLA_ARCHIVAL_REVAMP_ENABLED,
@@ -1250,9 +1265,6 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "RollbackOnSuccessEnabled")]
         ROLLBACK_ON_SUCCESS_ENABLED,
-
-        [EnumMember(Value = "RollingUpgradeEnabled")]
-        ROLLING_UPGRADE_ENABLED,
 
         [EnumMember(Value = "RubrikSEDemoEnabled")]
         RUBRIK_SE_DEMO_ENABLED,

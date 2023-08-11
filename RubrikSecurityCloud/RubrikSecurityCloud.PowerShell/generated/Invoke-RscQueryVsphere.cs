@@ -26,11 +26,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     public class Invoke_RscQueryVsphere : RscPSCmdlet
     {
         
-        // -------------------------------------------------------------------
-        // Blueprint parameter set
-        //
-        // [GraphQL: vSphereBlueprint]
-        //
+        /// <summary>
+        /// Blueprint parameter set
+        ///
+        /// [GraphQL: vSphereBlueprint]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Blueprint",
             Mandatory = false,
@@ -44,11 +44,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Blueprint { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Datacenter parameter set
-        //
-        // [GraphQL: vSphereDatacenter]
-        //
+        /// <summary>
+        /// Datacenter parameter set
+        ///
+        /// [GraphQL: vSphereDatacenter]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Datacenter",
             Mandatory = false,
@@ -62,11 +62,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Datacenter { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ComputeCluster parameter set
-        //
-        // [GraphQL: vSphereComputeCluster]
-        //
+        /// <summary>
+        /// ComputeCluster parameter set
+        ///
+        /// [GraphQL: vSphereComputeCluster]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ComputeCluster",
             Mandatory = false,
@@ -80,11 +80,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter ComputeCluster { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ResourcePool parameter set
-        //
-        // [GraphQL: vSphereResourcePool]
-        //
+        /// <summary>
+        /// ResourcePool parameter set
+        ///
+        /// [GraphQL: vSphereResourcePool]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ResourcePool",
             Mandatory = false,
@@ -98,11 +98,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter ResourcePool { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Folder parameter set
-        //
-        // [GraphQL: vSphereFolder]
-        //
+        /// <summary>
+        /// Folder parameter set
+        ///
+        /// [GraphQL: vSphereFolder]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Folder",
             Mandatory = false,
@@ -116,11 +116,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Folder { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Host parameter set
-        //
-        // [GraphQL: vSphereHost]
-        //
+        /// <summary>
+        /// Host parameter set
+        ///
+        /// [GraphQL: vSphereHost]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Host",
             Mandatory = false,
@@ -134,11 +134,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public new SwitchParameter Host { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DatastoreCluster parameter set
-        //
-        // [GraphQL: vSphereDatastoreCluster]
-        //
+        /// <summary>
+        /// DatastoreCluster parameter set
+        ///
+        /// [GraphQL: vSphereDatastoreCluster]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DatastoreCluster",
             Mandatory = false,
@@ -152,11 +152,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter DatastoreCluster { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Datastore parameter set
-        //
-        // [GraphQL: vSphereDatastore]
-        //
+        /// <summary>
+        /// Datastore parameter set
+        ///
+        /// [GraphQL: vSphereDatastore]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Datastore",
             Mandatory = false,
@@ -170,11 +170,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Datastore { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // HostsByFids parameter set
-        //
-        // [GraphQL: vSphereHostsByFids]
-        //
+        /// <summary>
+        /// HostsByFids parameter set
+        ///
+        /// [GraphQL: vSphereHostsByFids]
+        /// </summary>
         [Parameter(
             ParameterSetName = "HostsByFids",
             Mandatory = false,
@@ -188,11 +188,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter HostsByFids { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Tag parameter set
-        //
-        // [GraphQL: vSphereTag]
-        //
+        /// <summary>
+        /// Tag parameter set
+        ///
+        /// [GraphQL: vSphereTag]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Tag",
             Mandatory = false,
@@ -206,11 +206,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Tag { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // TagCategory parameter set
-        //
-        // [GraphQL: vSphereTagCategory]
-        //
+        /// <summary>
+        /// TagCategory parameter set
+        ///
+        /// [GraphQL: vSphereTagCategory]
+        /// </summary>
         [Parameter(
             ParameterSetName = "TagCategory",
             Mandatory = false,
@@ -224,11 +224,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter TagCategory { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Network parameter set
-        //
-        // [GraphQL: vSphereNetwork]
-        //
+        /// <summary>
+        /// Network parameter set
+        ///
+        /// [GraphQL: vSphereNetwork]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Network",
             Mandatory = false,
@@ -242,11 +242,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Network { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // TopLevelDescendantsList parameter set
-        //
-        // [GraphQL: vSphereTopLevelDescendantsConnection]
-        //
+        /// <summary>
+        /// TopLevelDescendantsList parameter set
+        ///
+        /// [GraphQL: vSphereTopLevelDescendantsConnection]
+        /// </summary>
         [Parameter(
             ParameterSetName = "TopLevelDescendantsList",
             Mandatory = false,
@@ -260,11 +260,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter TopLevelDescendantsList { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // RootRecoveryHierarchy parameter set
-        //
-        // [GraphQL: vSphereRootRecoveryHierarchy]
-        //
+        /// <summary>
+        /// RootRecoveryHierarchy parameter set
+        ///
+        /// [GraphQL: vSphereRootRecoveryHierarchy]
+        /// </summary>
         [Parameter(
             ParameterSetName = "RootRecoveryHierarchy",
             Mandatory = false,
@@ -278,11 +278,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter RootRecoveryHierarchy { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // HostList parameter set
-        //
-        // [GraphQL: vSphereHostConnection]
-        //
+        /// <summary>
+        /// HostList parameter set
+        ///
+        /// [GraphQL: vSphereHostConnection]
+        /// </summary>
         [Parameter(
             ParameterSetName = "HostList",
             Mandatory = false,
@@ -296,11 +296,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter HostList { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // ComputeClusters parameter set
-        //
-        // [GraphQL: vSphereComputeClusters]
-        //
+        /// <summary>
+        /// ComputeClusters parameter set
+        ///
+        /// [GraphQL: vSphereComputeClusters]
+        /// </summary>
         [Parameter(
             ParameterSetName = "ComputeClusters",
             Mandatory = false,
@@ -314,11 +314,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter ComputeClusters { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DatastoreList parameter set
-        //
-        // [GraphQL: vSphereDatastoreConnection]
-        //
+        /// <summary>
+        /// DatastoreList parameter set
+        ///
+        /// [GraphQL: vSphereDatastoreConnection]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DatastoreList",
             Mandatory = false,
@@ -332,11 +332,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter DatastoreList { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // DatastoreClusters parameter set
-        //
-        // [GraphQL: vSphereDatastoreClusters]
-        //
+        /// <summary>
+        /// DatastoreClusters parameter set
+        ///
+        /// [GraphQL: vSphereDatastoreClusters]
+        /// </summary>
         [Parameter(
             ParameterSetName = "DatastoreClusters",
             Mandatory = false,
@@ -350,11 +350,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter DatastoreClusters { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // LiveMounts parameter set
-        //
-        // [GraphQL: vSphereLiveMounts]
-        //
+        /// <summary>
+        /// LiveMounts parameter set
+        ///
+        /// [GraphQL: vSphereLiveMounts]
+        /// </summary>
         [Parameter(
             ParameterSetName = "LiveMounts",
             Mandatory = false,
@@ -368,11 +368,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter LiveMounts { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // MountList parameter set
-        //
-        // [GraphQL: vSphereMountConnection]
-        //
+        /// <summary>
+        /// MountList parameter set
+        ///
+        /// [GraphQL: vSphereMountConnection]
+        /// </summary>
         [Parameter(
             ParameterSetName = "MountList",
             Mandatory = false,
@@ -386,11 +386,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter MountList { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // Mount parameter set
-        //
-        // [GraphQL: vSphereMount]
-        //
+        /// <summary>
+        /// Mount parameter set
+        ///
+        /// [GraphQL: vSphereMount]
+        /// </summary>
         [Parameter(
             ParameterSetName = "Mount",
             Mandatory = false,
@@ -404,11 +404,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Mount { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // HostDetails parameter set
-        //
-        // [GraphQL: vSphereHostDetails]
-        //
+        /// <summary>
+        /// HostDetails parameter set
+        ///
+        /// [GraphQL: vSphereHostDetails]
+        /// </summary>
         [Parameter(
             ParameterSetName = "HostDetails",
             Mandatory = false,
@@ -425,11 +425,11 @@ Get details of a ESXi hypervisor.
         public SwitchParameter HostDetails { get; set; }
 
         
-        // -------------------------------------------------------------------
-        // VmwareCdpLiveInfo parameter set
-        //
-        // [GraphQL: vsphereVmwareCdpLiveInfo]
-        //
+        /// <summary>
+        /// VmwareCdpLiveInfo parameter set
+        ///
+        /// [GraphQL: vsphereVmwareCdpLiveInfo]
+        /// </summary>
         [Parameter(
             ParameterSetName = "VmwareCdpLiveInfo",
             Mandatory = false,
@@ -443,6 +443,8 @@ Get details of a ESXi hypervisor.
         public SwitchParameter VmwareCdpLiveInfo { get; set; }
 
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
         protected override void ProcessRecord()
         {
             try
@@ -527,10 +529,11 @@ Get details of a ESXi hypervisor.
                 ThrowTerminatingException(ex);
            }
         }
+#pragma warning restore 1591
 
         // This parameter set invokes a single graphql operation:
         // vSphereBlueprint.
-        protected void ProcessRecord_Blueprint()
+        internal void ProcessRecord_Blueprint()
         {
             this._logger.name += " -Blueprint";
             // Invoke graphql operation vSphereBlueprint
@@ -539,7 +542,7 @@ Get details of a ESXi hypervisor.
 
         // This parameter set invokes a single graphql operation:
         // vSphereDatacenter.
-        protected void ProcessRecord_Datacenter()
+        internal void ProcessRecord_Datacenter()
         {
             this._logger.name += " -Datacenter";
             // Invoke graphql operation vSphereDatacenter
@@ -548,7 +551,7 @@ Get details of a ESXi hypervisor.
 
         // This parameter set invokes a single graphql operation:
         // vSphereComputeCluster.
-        protected void ProcessRecord_ComputeCluster()
+        internal void ProcessRecord_ComputeCluster()
         {
             this._logger.name += " -ComputeCluster";
             // Invoke graphql operation vSphereComputeCluster
@@ -557,7 +560,7 @@ Get details of a ESXi hypervisor.
 
         // This parameter set invokes a single graphql operation:
         // vSphereResourcePool.
-        protected void ProcessRecord_ResourcePool()
+        internal void ProcessRecord_ResourcePool()
         {
             this._logger.name += " -ResourcePool";
             // Invoke graphql operation vSphereResourcePool
@@ -566,7 +569,7 @@ Get details of a ESXi hypervisor.
 
         // This parameter set invokes a single graphql operation:
         // vSphereFolder.
-        protected void ProcessRecord_Folder()
+        internal void ProcessRecord_Folder()
         {
             this._logger.name += " -Folder";
             // Invoke graphql operation vSphereFolder
@@ -575,7 +578,7 @@ Get details of a ESXi hypervisor.
 
         // This parameter set invokes a single graphql operation:
         // vSphereHost.
-        protected void ProcessRecord_Host()
+        internal void ProcessRecord_Host()
         {
             this._logger.name += " -Host";
             // Invoke graphql operation vSphereHost
@@ -584,7 +587,7 @@ Get details of a ESXi hypervisor.
 
         // This parameter set invokes a single graphql operation:
         // vSphereDatastoreCluster.
-        protected void ProcessRecord_DatastoreCluster()
+        internal void ProcessRecord_DatastoreCluster()
         {
             this._logger.name += " -DatastoreCluster";
             // Invoke graphql operation vSphereDatastoreCluster
@@ -593,7 +596,7 @@ Get details of a ESXi hypervisor.
 
         // This parameter set invokes a single graphql operation:
         // vSphereDatastore.
-        protected void ProcessRecord_Datastore()
+        internal void ProcessRecord_Datastore()
         {
             this._logger.name += " -Datastore";
             // Invoke graphql operation vSphereDatastore
@@ -602,7 +605,7 @@ Get details of a ESXi hypervisor.
 
         // This parameter set invokes a single graphql operation:
         // vSphereHostsByFids.
-        protected void ProcessRecord_HostsByFids()
+        internal void ProcessRecord_HostsByFids()
         {
             this._logger.name += " -HostsByFids";
             // Invoke graphql operation vSphereHostsByFids
@@ -611,7 +614,7 @@ Get details of a ESXi hypervisor.
 
         // This parameter set invokes a single graphql operation:
         // vSphereTag.
-        protected void ProcessRecord_Tag()
+        internal void ProcessRecord_Tag()
         {
             this._logger.name += " -Tag";
             // Invoke graphql operation vSphereTag
@@ -620,7 +623,7 @@ Get details of a ESXi hypervisor.
 
         // This parameter set invokes a single graphql operation:
         // vSphereTagCategory.
-        protected void ProcessRecord_TagCategory()
+        internal void ProcessRecord_TagCategory()
         {
             this._logger.name += " -TagCategory";
             // Invoke graphql operation vSphereTagCategory
@@ -629,7 +632,7 @@ Get details of a ESXi hypervisor.
 
         // This parameter set invokes a single graphql operation:
         // vSphereNetwork.
-        protected void ProcessRecord_Network()
+        internal void ProcessRecord_Network()
         {
             this._logger.name += " -Network";
             // Invoke graphql operation vSphereNetwork
@@ -638,7 +641,7 @@ Get details of a ESXi hypervisor.
 
         // This parameter set invokes a single graphql operation:
         // vSphereTopLevelDescendantsConnection.
-        protected void ProcessRecord_TopLevelDescendantsList()
+        internal void ProcessRecord_TopLevelDescendantsList()
         {
             this._logger.name += " -TopLevelDescendantsList";
             // Invoke graphql operation vSphereTopLevelDescendantsConnection
@@ -647,7 +650,7 @@ Get details of a ESXi hypervisor.
 
         // This parameter set invokes a single graphql operation:
         // vSphereRootRecoveryHierarchy.
-        protected void ProcessRecord_RootRecoveryHierarchy()
+        internal void ProcessRecord_RootRecoveryHierarchy()
         {
             this._logger.name += " -RootRecoveryHierarchy";
             // Invoke graphql operation vSphereRootRecoveryHierarchy
@@ -656,7 +659,7 @@ Get details of a ESXi hypervisor.
 
         // This parameter set invokes a single graphql operation:
         // vSphereHostConnection.
-        protected void ProcessRecord_HostList()
+        internal void ProcessRecord_HostList()
         {
             this._logger.name += " -HostList";
             // Invoke graphql operation vSphereHostConnection
@@ -665,7 +668,7 @@ Get details of a ESXi hypervisor.
 
         // This parameter set invokes a single graphql operation:
         // vSphereComputeClusters.
-        protected void ProcessRecord_ComputeClusters()
+        internal void ProcessRecord_ComputeClusters()
         {
             this._logger.name += " -ComputeClusters";
             // Invoke graphql operation vSphereComputeClusters
@@ -674,7 +677,7 @@ Get details of a ESXi hypervisor.
 
         // This parameter set invokes a single graphql operation:
         // vSphereDatastoreConnection.
-        protected void ProcessRecord_DatastoreList()
+        internal void ProcessRecord_DatastoreList()
         {
             this._logger.name += " -DatastoreList";
             // Invoke graphql operation vSphereDatastoreConnection
@@ -683,7 +686,7 @@ Get details of a ESXi hypervisor.
 
         // This parameter set invokes a single graphql operation:
         // vSphereDatastoreClusters.
-        protected void ProcessRecord_DatastoreClusters()
+        internal void ProcessRecord_DatastoreClusters()
         {
             this._logger.name += " -DatastoreClusters";
             // Invoke graphql operation vSphereDatastoreClusters
@@ -692,7 +695,7 @@ Get details of a ESXi hypervisor.
 
         // This parameter set invokes a single graphql operation:
         // vSphereLiveMounts.
-        protected void ProcessRecord_LiveMounts()
+        internal void ProcessRecord_LiveMounts()
         {
             this._logger.name += " -LiveMounts";
             // Invoke graphql operation vSphereLiveMounts
@@ -701,7 +704,7 @@ Get details of a ESXi hypervisor.
 
         // This parameter set invokes a single graphql operation:
         // vSphereMountConnection.
-        protected void ProcessRecord_MountList()
+        internal void ProcessRecord_MountList()
         {
             this._logger.name += " -MountList";
             // Invoke graphql operation vSphereMountConnection
@@ -710,7 +713,7 @@ Get details of a ESXi hypervisor.
 
         // This parameter set invokes a single graphql operation:
         // vSphereMount.
-        protected void ProcessRecord_Mount()
+        internal void ProcessRecord_Mount()
         {
             this._logger.name += " -Mount";
             // Invoke graphql operation vSphereMount
@@ -719,7 +722,7 @@ Get details of a ESXi hypervisor.
 
         // This parameter set invokes a single graphql operation:
         // vSphereHostDetails.
-        protected void ProcessRecord_HostDetails()
+        internal void ProcessRecord_HostDetails()
         {
             this._logger.name += " -HostDetails";
             // Invoke graphql operation vSphereHostDetails
@@ -728,7 +731,7 @@ Get details of a ESXi hypervisor.
 
         // This parameter set invokes a single graphql operation:
         // vsphereVmwareCdpLiveInfo.
-        protected void ProcessRecord_VmwareCdpLiveInfo()
+        internal void ProcessRecord_VmwareCdpLiveInfo()
         {
             this._logger.name += " -VmwareCdpLiveInfo";
             // Invoke graphql operation vsphereVmwareCdpLiveInfo
@@ -738,7 +741,7 @@ Get details of a ESXi hypervisor.
 
         // Invoke GraphQL Query:
         // vSphereBlueprint(fid: UUID!): VSphereBlueprint!
-        protected void InvokeQueryVsphereBlueprint()
+        internal void InvokeQueryVsphereBlueprint()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
@@ -765,7 +768,7 @@ Get details of a ESXi hypervisor.
 
         // Invoke GraphQL Query:
         // vSphereDatacenter(fid: UUID!): VsphereDatacenter!
-        protected void InvokeQueryVsphereDatacenter()
+        internal void InvokeQueryVsphereDatacenter()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
@@ -792,7 +795,7 @@ Get details of a ESXi hypervisor.
 
         // Invoke GraphQL Query:
         // vSphereComputeCluster(fid: UUID!): VsphereComputeCluster!
-        protected void InvokeQueryVsphereComputeCluster()
+        internal void InvokeQueryVsphereComputeCluster()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
@@ -819,7 +822,7 @@ Get details of a ESXi hypervisor.
 
         // Invoke GraphQL Query:
         // vSphereResourcePool(fid: UUID!): VsphereResourcePool!
-        protected void InvokeQueryVsphereResourcePool()
+        internal void InvokeQueryVsphereResourcePool()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
@@ -846,7 +849,7 @@ Get details of a ESXi hypervisor.
 
         // Invoke GraphQL Query:
         // vSphereFolder(fid: UUID!): VsphereFolder!
-        protected void InvokeQueryVsphereFolder()
+        internal void InvokeQueryVsphereFolder()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
@@ -873,7 +876,7 @@ Get details of a ESXi hypervisor.
 
         // Invoke GraphQL Query:
         // vSphereHost(fid: UUID!): VsphereHost!
-        protected void InvokeQueryVsphereHost()
+        internal void InvokeQueryVsphereHost()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
@@ -900,7 +903,7 @@ Get details of a ESXi hypervisor.
 
         // Invoke GraphQL Query:
         // vSphereDatastoreCluster(fid: UUID!): VsphereDatastoreCluster!
-        protected void InvokeQueryVsphereDatastoreCluster()
+        internal void InvokeQueryVsphereDatastoreCluster()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
@@ -927,7 +930,7 @@ Get details of a ESXi hypervisor.
 
         // Invoke GraphQL Query:
         // vSphereDatastore(fid: UUID!): VsphereDatastore!
-        protected void InvokeQueryVsphereDatastore()
+        internal void InvokeQueryVsphereDatastore()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
@@ -954,7 +957,7 @@ Get details of a ESXi hypervisor.
 
         // Invoke GraphQL Query:
         // vSphereHostsByFids(fids: [UUID!]!): [VsphereHost!]!
-        protected void InvokeQueryVsphereHostsByFids()
+        internal void InvokeQueryVsphereHostsByFids()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fids", "[UUID!]!"),
@@ -981,7 +984,7 @@ Get details of a ESXi hypervisor.
 
         // Invoke GraphQL Query:
         // vSphereTag(fid: UUID!): VsphereTag!
-        protected void InvokeQueryVsphereTag()
+        internal void InvokeQueryVsphereTag()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
@@ -1008,7 +1011,7 @@ Get details of a ESXi hypervisor.
 
         // Invoke GraphQL Query:
         // vSphereTagCategory(fid: UUID!): VsphereTagCategory!
-        protected void InvokeQueryVsphereTagCategory()
+        internal void InvokeQueryVsphereTagCategory()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
@@ -1035,7 +1038,7 @@ Get details of a ESXi hypervisor.
 
         // Invoke GraphQL Query:
         // vSphereNetwork(fid: UUID!): VsphereNetwork!
-        protected void InvokeQueryVsphereNetwork()
+        internal void InvokeQueryVsphereNetwork()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
@@ -1069,7 +1072,7 @@ Get details of a ESXi hypervisor.
         //     typeFilter: [HierarchyObjectTypeEnum!]
         //     filter: [Filter!]
         //   ): CdmHierarchyObjectConnection!
-        protected void InvokeQueryVsphereTopLevelDescendantsConnection()
+        internal void InvokeQueryVsphereTopLevelDescendantsConnection()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -1107,7 +1110,7 @@ Get details of a ESXi hypervisor.
         //     sortOrder: SortOrder
         //     filter: [Filter!]
         //   ): CdmHierarchyObjectConnection!
-        protected void InvokeQueryVsphereRootRecoveryHierarchy()
+        internal void InvokeQueryVsphereRootRecoveryHierarchy()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -1144,7 +1147,7 @@ Get details of a ESXi hypervisor.
         //     sortOrder: SortOrder
         //     filter: [Filter!]
         //   ): VsphereHostConnection!
-        protected void InvokeQueryVsphereHostConnection()
+        internal void InvokeQueryVsphereHostConnection()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -1181,7 +1184,7 @@ Get details of a ESXi hypervisor.
         //     sortOrder: SortOrder
         //     filter: [Filter!]
         //   ): VsphereComputeClusterConnection!
-        protected void InvokeQueryVsphereComputeClusters()
+        internal void InvokeQueryVsphereComputeClusters()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -1218,7 +1221,7 @@ Get details of a ESXi hypervisor.
         //     sortOrder: SortOrder
         //     filter: [Filter!]
         //   ): VsphereDatastoreConnection!
-        protected void InvokeQueryVsphereDatastoreConnection()
+        internal void InvokeQueryVsphereDatastoreConnection()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -1255,7 +1258,7 @@ Get details of a ESXi hypervisor.
         //     sortOrder: SortOrder
         //     filter: [Filter!]
         //   ): VsphereDatastoreClusterConnection!
-        protected void InvokeQueryVsphereDatastoreClusters()
+        internal void InvokeQueryVsphereDatastoreClusters()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -1291,7 +1294,7 @@ Get details of a ESXi hypervisor.
         //     filter: [VsphereLiveMountFilterInput!]
         //     sortBy: VsphereLiveMountSortBy
         //   ): VsphereLiveMountConnection!
-        protected void InvokeQueryVsphereLiveMounts()
+        internal void InvokeQueryVsphereLiveMounts()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -1327,7 +1330,7 @@ Get details of a ESXi hypervisor.
         //     sortBy: VsphereMountSortBy
         //     sortOrder: SortOrder
         //   ): VsphereMountConnection!
-        protected void InvokeQueryVsphereMountConnection()
+        internal void InvokeQueryVsphereMountConnection()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
@@ -1358,7 +1361,7 @@ Get details of a ESXi hypervisor.
 
         // Invoke GraphQL Query:
         // vSphereMount(fid: UUID!): VsphereMount!
-        protected void InvokeQueryVsphereMount()
+        internal void InvokeQueryVsphereMount()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
@@ -1385,7 +1388,7 @@ Get details of a ESXi hypervisor.
 
         // Invoke GraphQL Query:
         // vSphereHostDetails(input: GetVmwareHostInput!): VmwareHostDetail!
-        protected void InvokeQueryVsphereHostDetails()
+        internal void InvokeQueryVsphereHostDetails()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetVmwareHostInput!"),
@@ -1412,7 +1415,7 @@ Get details of a ESXi hypervisor.
 
         // Invoke GraphQL Query:
         // vsphereVmwareCdpLiveInfo(ids: [String!]!): BatchVmwareCdpLiveInfo!
-        protected void InvokeQueryVsphereVmwareCdpLiveInfo()
+        internal void InvokeQueryVsphereVmwareCdpLiveInfo()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("ids", "[String!]!"),

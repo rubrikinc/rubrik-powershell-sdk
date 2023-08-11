@@ -11,15 +11,34 @@ BeforeAll {
     & "$PSScriptRoot\..\..\Utils\import.ps1"
 
     $script:QueryAccountSettings_CustomFileName = (Get-RscHelp -CustomOperations).CustomOperationsDir + "/QueryAccountSettings.gql"
-    # Delete the custom file if it exists
+    # Temporarily save the custom file if it exists
     if ( $script:QueryAccountSettings_CustomFileName | Test-Path ) {
-        Remove-Item $script:QueryAccountSettings_CustomFileName
+        $script:QueryAccountSettings_CustomFileName | Copy-Item -Destination "$script:QueryAccountSettings_CustomFileName.bak"
     }
 
-    $script:QueryAccountSettings_SdkFileName = [RubrikSecurityCloud.FileUtils]::GetSdkOperationsDir("DEFAULT") + "/QueryAccountSettings.gql"
-    # Delete the SDK file if it exists
+    $script:QueryAccountSettings_SdkFileName = [RubrikSecurityCloud.Files]::GetSdkOperationsDir("DEFAULT") + "/QueryAccountSettings.gql"
+    # Temporarily save the SDK file if it exists
     if ( $script:QueryAccountSettings_SdkFileName | Test-Path ) {
-        Remove-Item $script:QueryAccountSettings_SdkFileName
+        $script:QueryAccountSettings_SdkFileName | Copy-Item -Destination "$script:QueryAccountSettings_SdkFileName.bak"
+    }
+}
+
+AfterAll {
+    # Delete custom file created by test
+    if ( $script:QueryAccountSettings_CustomFileName | Test-Path ) {
+        $script:QueryAccountSettings_CustomFileName | Remove-Item
+    }
+    # Restore the custom file if it existed
+    if ( "$script:QueryAccountSettings_CustomFileName.bak" | Test-Path ) {
+        "$script:QueryAccountSettings_CustomFileName.bak" | Rename-Item -NewName $script:QueryAccountSettings_CustomFileName
+    }
+    # Delete SDK file created by test
+    if ( $script:QueryAccountSettings_SdkFileName | Test-Path ) {
+        $script:QueryAccountSettings_SdkFileName | Remove-Item
+    }
+    # Restore the SDK file if it existed
+    if ( "$script:QueryAccountSettings_SdkFileName.bak" | Test-Path ) {
+        "$script:QueryAccountSettings_SdkFileName.bak" | Rename-Item -NewName $script:QueryAccountSettings_SdkFileName
     }
 }
 
@@ -64,15 +83,5 @@ Describe -Name "Test custom input profile" -Fixture {
         $defaultGqlRequest2 = Invoke-RscQueryAccount -Settings -GetGqlRequest
         $retrievedDefaultQuery2 = $defaultGqlRequest2.Query -replace "\s+", " "
         $retrievedDefaultQuery2 | Should -Be $customQuery
-    }
-
-    # Delete the custom file
-    AfterAll {
-        if ( $script:QueryAccountSettings_CustomFileName | Test-Path ) {
-            Remove-Item $script:QueryAccountSettings_CustomFileName
-        }
-        if ( $script:QueryAccountSettings_SdkFileName | Test-Path ) {
-            Remove-Item $script:QueryAccountSettings_SdkFileName
-        }
     }
 }

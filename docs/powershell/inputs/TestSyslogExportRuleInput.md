@@ -1,5 +1,5 @@
 ### TestSyslogExportRuleInput
-
+Input for testing a syslog export rule.
 
 - syslogExportRuleV51: SyslogExportRuleInput
   - Syslog export rule.

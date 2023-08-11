@@ -50,7 +50,7 @@ Exclude or include virtual disks during snapshot.
 - Returns RequestSuccess.
 ### exportsnapshot
 - There are 10 arguments.
-    - snapshotFid - System.String: Snapshot forever UUID in Rubrik Security Cloud.
+    - snapshotFid - System.String: Snapshot persistent UUID in RSC.
     - vmName - System.String
     - disableNetwork - System.Boolean
     - removeNetworkDevices - System.Boolean
@@ -104,7 +104,7 @@ Trigger an in-place recovery from a snapshot or point-in-time.
 - Returns AsyncRequestStatus.
 ### initiateinstantrecovery
 - There are 10 arguments.
-    - snapshotFid - System.String: Snapshot forever UUID in Rubrik Security Cloud.
+    - snapshotFid - System.String: Snapshot persistent UUID in RSC.
     - vmName - System.String
     - disableNetwork - System.Boolean
     - removeNetworkDevices - System.Boolean
@@ -122,7 +122,7 @@ Instantly recover a vSphere virtual machine from a snapshot or point-in-time.
 - Returns AsyncRequestStatus.
 ### initiatelivemount
 - There are 11 arguments.
-    - snapshotFid - System.String: Snapshot forever UUID in Rubrik Security Cloud.
+    - snapshotFid - System.String: Snapshot persistent UUID in RSC.
     - vmName - System.String
     - disableNetwork - System.Boolean
     - removeNetworkDevices - System.Boolean

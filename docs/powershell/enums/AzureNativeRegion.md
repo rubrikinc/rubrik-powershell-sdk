@@ -23,6 +23,7 @@ Azure native regions.
 - JAPAN_WEST - Azure native region is Japan West.
 - SOUTH_AFRICA_NORTH - Azure native region is South Africa North.
 - WEST_US - Azure native region is West US.
+- POLAND_CENTRAL - Azure native region is Poland Central.
 - UK_SOUTH - Azure native region is UK South.
 - EAST_US - Azure native region is East US.
 - NOT_SPECIFIED - Azure native region is not specified.

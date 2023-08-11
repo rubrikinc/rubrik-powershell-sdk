@@ -21,9 +21,6 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CUSTOM_FIELDS")]
         CUSTOM_FIELDS,
 
-        [EnumMember(Value = "CUSTOM_FIELD_CONTEXT")]
-        CUSTOM_FIELD_CONTEXT,
-
         [EnumMember(Value = "DASHBOARDS")]
         DASHBOARDS,
 
@@ -63,14 +60,14 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ISSUE_TYPE_SCREEN_SCHEME")]
         ISSUE_TYPE_SCREEN_SCHEME,
 
-        [EnumMember(Value = "JIRA_SETTINGS_TYPE_UNSPECIFIED")]
-        JIRA_SETTINGS_TYPE_UNSPECIFIED,
-
         [EnumMember(Value = "NOTIFICATION_SCHEMES")]
         NOTIFICATION_SCHEMES,
 
         [EnumMember(Value = "PERMISSION_SCHEMES")]
         PERMISSION_SCHEMES,
+
+        [EnumMember(Value = "PROJECT_CATEGORY")]
+        PROJECT_CATEGORY,
 
         [EnumMember(Value = "PROJECT_ROLES")]
         PROJECT_ROLES,
