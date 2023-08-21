@@ -4,6 +4,9 @@
 
 New Features:
 
+- New Invoke parameters: `-Patch`, `-PatchFile`
+- RscCmdletInput: new FieldInfo() method that returns a link to the
+  online documentation for the field.
 - Extension scripts now live in the `Extensions` top directory.
 - `-Input` on cmdlets that accepts a `RscCmdletInput` object:
   the type you retrieve with `-GetInput`. For example:
@@ -21,10 +24,7 @@ New Features:
   will save the GraphQL query to file for *every* command in the SDK
   into a local `./gql/` directory.
   CAUTION: This will writes hundreds of files to disk!
-- New doc file: docs/faq.md
-- New Invoke parameters: `-Patch`, `-PatchFile`
-- RscCmdletInput: new FieldInfo() method that returns a link to the
-  online documentation for the field.
+- New doc files: docs/faq.md, docs/input_model.md
 
 Fixes:
 
@@ -34,6 +34,13 @@ Fixes:
   They were fixed by providing the override gql file
   `Operations/DETAIL/QueryClusterConnection.gql`
 - `Remove-NullProperties` now works with null input.
+
+Deprecations:
+
+- `-Arg` is deprecated in favor of `-Var` (for variables).
+  `-Arg` will be removed in a future release.
+- `=InputProfile` is deprecated in favor of `-FieldProfile`.
+  `=InputProfile` will be removed in a future release.
 
 Breaking changes:
 
