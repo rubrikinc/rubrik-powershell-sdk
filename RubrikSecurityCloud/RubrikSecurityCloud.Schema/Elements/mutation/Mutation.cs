@@ -2133,7 +2133,7 @@ namespace RubrikSecurityCloud.Types
             ref System.Boolean? fieldSpec
         )
         {
-            string args = "\n(\nuseExisting: $useExisting\nrecipient: $recipient\nhostName: $hostName\nport: $port\nuserName: $userName\npassword: $password\ndefaultFromEmail: $defaultFromEmail\nsecurityType: $securityType\ntrustedCerts: $trustedCerts\n)";
+            string args = "\n(\nuseExisting: $useExisting\nrecipient: $recipient\nhostName: $hostName\nport: $port\nuserName: $userName\npassword: $password\ndefaultFromEmail: $defaultFromEmail\nsecurityType: $securityType\ntrustedCertId: $trustedCertId\n)";
             if ( fieldSpec == null ) {
                 // there is no field spec for scalar types, but we still
                 // populate the fieldSpec so that caller can see the type 
@@ -2283,7 +2283,7 @@ namespace RubrikSecurityCloud.Types
             ref System.Boolean? fieldSpec
         )
         {
-            string args = "\n(\nhostName: $hostName\nport: $port\nuserName: $userName\npassword: $password\ndefaultFromEmail: $defaultFromEmail\nsecurityType: $securityType\ntrustedCerts: $trustedCerts\n)";
+            string args = "\n(\nhostName: $hostName\nport: $port\nuserName: $userName\npassword: $password\ndefaultFromEmail: $defaultFromEmail\nsecurityType: $securityType\ntrustedCertId: $trustedCertId\n)";
             if ( fieldSpec == null ) {
                 // there is no field spec for scalar types, but we still
                 // populate the fieldSpec so that caller can see the type 
@@ -6063,6 +6063,24 @@ namespace RubrikSecurityCloud.Types
                 "}\n");
         }
 
+        //      C# -> CreateScheduleReply? CreateRecoverySchedule
+        // GraphQL -> createRecoverySchedule: CreateScheduleReply! (type)
+        public static string CreateRecoverySchedule(
+            ref CreateScheduleReply? fieldSpec
+        )
+        {
+            string args = "\n(\ninput: $input\n)";
+           if (fieldSpec == null)
+            {
+                fieldSpec = new CreateScheduleReply() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "createRecoverySchedule" + args + "{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
         //      C# -> AsyncRequestStatus? CreateSapHanaSystemRefresh
         // GraphQL -> createSapHanaSystemRefresh: AsyncRequestStatus! (type)
         public static string CreateSapHanaSystemRefresh(
@@ -6077,24 +6095,6 @@ namespace RubrikSecurityCloud.Types
             }
             return new string(
                 "createSapHanaSystemRefresh" + args + "{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
-        }
-
-        //      C# -> CreateScheduleReply? CreateSchedule
-        // GraphQL -> createSchedule: CreateScheduleReply! (type)
-        public static string CreateSchedule(
-            ref CreateScheduleReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new CreateScheduleReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
-            }
-            return new string(
-                "createSchedule" + args + "{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8979,16 +8979,16 @@ namespace RubrikSecurityCloud.Types
                 "}\n");
         }
 
-        //      C# -> PendingSlaOperations? GetPendingSlaAssignments
-        // GraphQL -> getPendingSlaAssignments: PendingSlaOperations! (type)
+        //      C# -> GetPendingSlaAssignmentsReply? GetPendingSlaAssignments
+        // GraphQL -> getPendingSlaAssignments: GetPendingSlaAssignmentsReply! (type)
         public static string GetPendingSlaAssignments(
-            ref PendingSlaOperations? fieldSpec
+            ref GetPendingSlaAssignmentsReply? fieldSpec
         )
         {
             string args = "\n(\ninput: $input\n)";
            if (fieldSpec == null)
             {
-                fieldSpec = new PendingSlaOperations() ;
+                fieldSpec = new GetPendingSlaAssignmentsReply() ;
                 fieldSpec.ApplyExploratoryFieldSpec();
             }
             return new string(
@@ -9317,6 +9317,24 @@ namespace RubrikSecurityCloud.Types
             }
             return new string(
                 "mapCloudAccountExocomputeAccount" + args + "{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> MarkNotificationsAsReadReply? MarkNotificationsAsRead
+        // GraphQL -> markNotificationsAsRead: MarkNotificationsAsReadReply! (type)
+        public static string MarkNotificationsAsRead(
+            ref MarkNotificationsAsReadReply? fieldSpec
+        )
+        {
+            string args = "\n(\ninput: $input\n)";
+           if (fieldSpec == null)
+            {
+                fieldSpec = new MarkNotificationsAsReadReply() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "markNotificationsAsRead" + args + "{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -12701,6 +12719,24 @@ namespace RubrikSecurityCloud.Types
             }
             return new string(
                 "updateCustomReport" + args + "{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> DbLogReportProperties? UpdateDatabaseLogReportingPropertiesForCluster
+        // GraphQL -> updateDatabaseLogReportingPropertiesForCluster: DbLogReportProperties! (type)
+        public static string UpdateDatabaseLogReportingPropertiesForCluster(
+            ref DbLogReportProperties? fieldSpec
+        )
+        {
+            string args = "\n(\ninput: $input\n)";
+           if (fieldSpec == null)
+            {
+                fieldSpec = new DbLogReportProperties() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "updateDatabaseLogReportingPropertiesForCluster" + args + "{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }

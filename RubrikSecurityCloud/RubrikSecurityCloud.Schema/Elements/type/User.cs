@@ -90,6 +90,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("lockoutState")]
         public LockoutState? LockoutState { get; set; }
 
+        //      C# -> PasskeyMetadata? PasskeyMetadata
+        // GraphQL -> passkeyMetadata: PasskeyMetadata! (type)
+        [JsonProperty("passkeyMetadata")]
+        public PasskeyMetadata? PasskeyMetadata { get; set; }
+
         //      C# -> List<Role>? Roles
         // GraphQL -> roles: [Role!]! (type)
         [JsonProperty("roles")]
@@ -124,6 +129,7 @@ namespace RubrikSecurityCloud.Types
         List<EventDigest>? EmailConfig = null,
         EulaState? EulaState = null,
         LockoutState? LockoutState = null,
+        PasskeyMetadata? PasskeyMetadata = null,
         List<Role>? Roles = null,
         TotpStatus? TotpStatus = null
     ) 
@@ -169,6 +175,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( LockoutState != null ) {
             this.LockoutState = LockoutState;
+        }
+        if ( PasskeyMetadata != null ) {
+            this.PasskeyMetadata = PasskeyMetadata;
         }
         if ( Roles != null ) {
             this.Roles = Roles;
@@ -266,6 +275,14 @@ namespace RubrikSecurityCloud.Types
             var fspec = this.LockoutState.AsFieldSpec(indent+1);
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
                 s += ind + "lockoutState {\n" + fspec + ind + "}\n" ;
+            }
+        }
+        //      C# -> PasskeyMetadata? PasskeyMetadata
+        // GraphQL -> passkeyMetadata: PasskeyMetadata! (type)
+        if (this.PasskeyMetadata != null) {
+            var fspec = this.PasskeyMetadata.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "passkeyMetadata {\n" + fspec + ind + "}\n" ;
             }
         }
         //      C# -> List<Role>? Roles
@@ -379,6 +396,13 @@ namespace RubrikSecurityCloud.Types
         {
             this.LockoutState = new LockoutState();
             this.LockoutState.ApplyExploratoryFieldSpec(parent + ".lockoutState");
+        }
+        //      C# -> PasskeyMetadata? PasskeyMetadata
+        // GraphQL -> passkeyMetadata: PasskeyMetadata! (type)
+        if (this.PasskeyMetadata == null && Exploration.Includes(parent + ".passkeyMetadata"))
+        {
+            this.PasskeyMetadata = new PasskeyMetadata();
+            this.PasskeyMetadata.ApplyExploratoryFieldSpec(parent + ".passkeyMetadata");
         }
         //      C# -> List<Role>? Roles
         // GraphQL -> roles: [Role!]! (type)

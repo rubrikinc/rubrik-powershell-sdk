@@ -18,6 +18,45 @@ using RubrikSecurityCloud.PowerShell.Private;
 
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
+    /// <summary>
+    /// Db2 mutations
+    /// </summary>
+    /// <description>
+    /// Invoke-RscMutateDb2 is a master cmdlet for Db2 work that can invoke any of the following subcommands: AddInstance, DeleteInstance, DiscoverInstance, PatchInstance, CreateOnDemandBackup, DownloadSnapshot, DownloadSnapshotsForPointInTimeRecovery, ExpireDownloadedSnapshots, PatchDatabase, RefreshDatabase, DeleteDatabase.
+    /// </description>
+    /// <example>
+    /// <code>Invoke-RscMutateDb2 -AddInstance [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateDb2 -DeleteInstance [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateDb2 -DiscoverInstance [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateDb2 -PatchInstance [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateDb2 -CreateOnDemandBackup [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateDb2 -DownloadSnapshot [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateDb2 -DownloadSnapshotsForPointInTimeRecovery [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateDb2 -ExpireDownloadedSnapshots [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateDb2 -PatchDatabase [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateDb2 -RefreshDatabase [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateDb2 -DeleteDatabase [-Arg ..] [-Field ..]</code>
+    /// </example>
     [Cmdlet(
         "Invoke",
         "RscMutateDb2",
@@ -407,24 +446,20 @@ Deletes a Db2 database.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "AddDb2InstanceInput!"),
             };
-            AddDb2InstanceReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AddDb2InstanceReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AddDb2InstanceReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.AddDb2Instance(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationAddDb2Instance",
                 "($input: AddDb2InstanceInput!)",
-                fieldSpecDoc,
                 "AddDb2InstanceReply"
-            );
+                );
+            AddDb2InstanceReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AddDb2InstanceReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.AddDb2Instance(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -434,24 +469,20 @@ Deletes a Db2 database.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteDb2InstanceInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.DeleteDb2Instance(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationDeleteDb2Instance",
                 "($input: DeleteDb2InstanceInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.DeleteDb2Instance(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -461,24 +492,20 @@ Deletes a Db2 database.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DiscoverDb2InstanceInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.DiscoverDb2Instance(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationDiscoverDb2Instance",
                 "($input: DiscoverDb2InstanceInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.DiscoverDb2Instance(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -488,24 +515,20 @@ Deletes a Db2 database.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "PatchDb2InstanceInput!"),
             };
-            PatchDb2InstanceReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (PatchDb2InstanceReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (PatchDb2InstanceReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.PatchDb2Instance(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationPatchDb2Instance",
                 "($input: PatchDb2InstanceInput!)",
-                fieldSpecDoc,
                 "PatchDb2InstanceReply"
-            );
+                );
+            PatchDb2InstanceReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (PatchDb2InstanceReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.PatchDb2Instance(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -515,24 +538,20 @@ Deletes a Db2 database.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CreateOnDemandDb2BackupInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.CreateOnDemandDb2Backup(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationCreateOnDemandDb2Backup",
                 "($input: CreateOnDemandDb2BackupInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.CreateOnDemandDb2Backup(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -542,24 +561,20 @@ Deletes a Db2 database.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DownloadDb2SnapshotInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.DownloadDb2Snapshot(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationDownloadDb2Snapshot",
                 "($input: DownloadDb2SnapshotInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.DownloadDb2Snapshot(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -569,24 +584,20 @@ Deletes a Db2 database.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DownloadDb2SnapshotsForPointInTimeRecoveryInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.DownloadDb2SnapshotsForPointInTimeRecovery(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationDownloadDb2SnapshotsForPointInTimeRecovery",
                 "($input: DownloadDb2SnapshotsForPointInTimeRecoveryInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.DownloadDb2SnapshotsForPointInTimeRecovery(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -596,24 +607,20 @@ Deletes a Db2 database.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "ExpireDownloadedDb2SnapshotsInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.ExpireDownloadedDb2Snapshots(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationExpireDownloadedDb2Snapshots",
                 "($input: ExpireDownloadedDb2SnapshotsInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.ExpireDownloadedDb2Snapshots(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -623,24 +630,20 @@ Deletes a Db2 database.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "PatchDb2DatabaseInput!"),
             };
-            PatchDb2DatabaseReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (PatchDb2DatabaseReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (PatchDb2DatabaseReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.PatchDb2Database(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationPatchDb2Database",
                 "($input: PatchDb2DatabaseInput!)",
-                fieldSpecDoc,
                 "PatchDb2DatabaseReply"
-            );
+                );
+            PatchDb2DatabaseReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (PatchDb2DatabaseReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.PatchDb2Database(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -650,24 +653,20 @@ Deletes a Db2 database.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RefreshDb2DatabaseInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.RefreshDb2Database(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationRefreshDb2Database",
                 "($input: RefreshDb2DatabaseInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.RefreshDb2Database(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -677,24 +676,20 @@ Deletes a Db2 database.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteDb2DatabaseInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.DeleteDb2Database(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationDeleteDb2Database",
                 "($input: DeleteDb2DatabaseInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.DeleteDb2Database(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
 

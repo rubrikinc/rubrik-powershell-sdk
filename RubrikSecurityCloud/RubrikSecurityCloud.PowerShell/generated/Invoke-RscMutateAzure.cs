@@ -18,6 +18,165 @@ using RubrikSecurityCloud.PowerShell.Private;
 
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
+    /// <summary>
+    /// Azure mutations
+    /// </summary>
+    /// <description>
+    /// Invoke-RscMutateAzure is a master cmdlet for Azure work that can invoke any of the following subcommands: StartRefreshNativeSubscriptionsJob, StartRestoreNativeVirtualMachineJob, StartExportNativeVirtualMachineJob, ExcludeNativeManagedDisksFromSnapshot, StartCreateNativeVirtualMachineSnapshotsJob, StartDisableNativeSubscriptionProtectionJob, StartCreateNativeManagedDiskSnapshotsJob, StartExportNativeManagedDiskJob, StartExportSqlDatabaseDbJob, StartExportSqlManagedInstanceDbJob, CreateAccount, UpdateAccount, CreateAutomaticTargetMapping, CreateCloudNativeStorageSetting, CreateCloudNativeRcvStorageSetting, UpdateAutomaticTargetMapping, UpdateCloudNativeStorageSetting, UpdateCloudNativeRcvStorageSetting, CreateTarget, UpdateTarget, CreateReaderTarget, StartCloudAccountOauth, CompleteCloudAccountOauth, SetCloudAccountCustomerAppCredentials, AddCloudAccount, AddCloudAccountWithoutOauth, DeleteCloudAccount, DeleteCloudAccountWithoutOauth, UpgradeCloudAccount, UpdateCustomerAppPermissionForSql, StartDisableCloudAccountJob, UpdateCloudAccount, MapCloudAccountToPersistentStorageLocation, AddCloudAccountExocomputeConfigurations, DeleteCloudAccountExocomputeConfigurations, MapCloudAccountExocomputeSubscription, UnmapCloudAccountExocomputeSubscription, UpgradeCloudAccountPermissionsWithoutOauth, UnmapPersistentStorageSubscription, OauthConsentKickoff, OauthConsentComplete, CreateSaasAppAad, CreateCluster, DeleteCluster, KickoffAdAppSetup, CompleteAdAppSetup, DeleteAdDirectory, BackupAdDirectory, InitiateAdAppUpdate, CompleteAdAppUpdate, RestoreAdObjectsWithPassword.
+    /// </description>
+    /// <example>
+    /// <code>Invoke-RscMutateAzure -StartRefreshNativeSubscriptionsJob [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateAzure -StartRestoreNativeVirtualMachineJob [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateAzure -StartExportNativeVirtualMachineJob [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateAzure -ExcludeNativeManagedDisksFromSnapshot [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateAzure -StartCreateNativeVirtualMachineSnapshotsJob [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateAzure -StartDisableNativeSubscriptionProtectionJob [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateAzure -StartCreateNativeManagedDiskSnapshotsJob [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateAzure -StartExportNativeManagedDiskJob [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateAzure -StartExportSqlDatabaseDbJob [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateAzure -StartExportSqlManagedInstanceDbJob [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateAzure -CreateAccount [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateAzure -UpdateAccount [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateAzure -CreateAutomaticTargetMapping [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateAzure -CreateCloudNativeStorageSetting [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateAzure -CreateCloudNativeRcvStorageSetting [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateAzure -UpdateAutomaticTargetMapping [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateAzure -UpdateCloudNativeStorageSetting [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateAzure -UpdateCloudNativeRcvStorageSetting [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateAzure -CreateTarget [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateAzure -UpdateTarget [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateAzure -CreateReaderTarget [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateAzure -StartCloudAccountOauth [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateAzure -CompleteCloudAccountOauth [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateAzure -SetCloudAccountCustomerAppCredentials [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateAzure -AddCloudAccount [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateAzure -AddCloudAccountWithoutOauth [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateAzure -DeleteCloudAccount [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateAzure -DeleteCloudAccountWithoutOauth [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateAzure -UpgradeCloudAccount [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateAzure -UpdateCustomerAppPermissionForSql [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateAzure -StartDisableCloudAccountJob [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateAzure -UpdateCloudAccount [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateAzure -MapCloudAccountToPersistentStorageLocation [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateAzure -AddCloudAccountExocomputeConfigurations [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateAzure -DeleteCloudAccountExocomputeConfigurations [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateAzure -MapCloudAccountExocomputeSubscription [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateAzure -UnmapCloudAccountExocomputeSubscription [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateAzure -UpgradeCloudAccountPermissionsWithoutOauth [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateAzure -UnmapPersistentStorageSubscription [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateAzure -OauthConsentKickoff [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateAzure -OauthConsentComplete [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateAzure -CreateSaasAppAad [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateAzure -CreateCluster [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateAzure -DeleteCluster [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateAzure -KickoffAdAppSetup [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateAzure -CompleteAdAppSetup [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateAzure -DeleteAdDirectory [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateAzure -BackupAdDirectory [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateAzure -InitiateAdAppUpdate [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateAzure -CompleteAdAppUpdate [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateAzure -RestoreAdObjectsWithPassword [-Arg ..] [-Field ..]</code>
+    /// </example>
     [Cmdlet(
         "Invoke",
         "RscMutateAzure",
@@ -1583,24 +1742,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "StartRefreshAzureNativeSubscriptionsJobInput!"),
             };
-            BatchAsyncJobStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (BatchAsyncJobStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (BatchAsyncJobStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.StartRefreshAzureNativeSubscriptionsJob(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationStartRefreshAzureNativeSubscriptionsJob",
                 "($input: StartRefreshAzureNativeSubscriptionsJobInput!)",
-                fieldSpecDoc,
                 "BatchAsyncJobStatus"
-            );
+                );
+            BatchAsyncJobStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (BatchAsyncJobStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.StartRefreshAzureNativeSubscriptionsJob(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1610,24 +1765,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "StartRestoreAzureNativeVirtualMachineJobInput!"),
             };
-            AsyncJobStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncJobStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncJobStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.StartRestoreAzureNativeVirtualMachineJob(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationStartRestoreAzureNativeVirtualMachineJob",
                 "($input: StartRestoreAzureNativeVirtualMachineJobInput!)",
-                fieldSpecDoc,
                 "AsyncJobStatus"
-            );
+                );
+            AsyncJobStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncJobStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.StartRestoreAzureNativeVirtualMachineJob(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1637,24 +1788,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "StartExportAzureNativeVirtualMachineJobInput!"),
             };
-            AsyncJobStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncJobStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncJobStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.StartExportAzureNativeVirtualMachineJob(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationStartExportAzureNativeVirtualMachineJob",
                 "($input: StartExportAzureNativeVirtualMachineJobInput!)",
-                fieldSpecDoc,
                 "AsyncJobStatus"
-            );
+                );
+            AsyncJobStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncJobStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.StartExportAzureNativeVirtualMachineJob(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1664,24 +1811,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "ExcludeAzureNativeManagedDisksFromSnapshotInput!"),
             };
-            System.String? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (System.String)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (System.String)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.ExcludeAzureNativeManagedDisksFromSnapshot(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationExcludeAzureNativeManagedDisksFromSnapshot",
                 "($input: ExcludeAzureNativeManagedDisksFromSnapshotInput!)",
-                fieldSpecDoc,
                 "System.String"
-            );
+                );
+            System.String? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (System.String)this.Field;
+            }
+            string fieldSpecDoc = Mutation.ExcludeAzureNativeManagedDisksFromSnapshot(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1691,24 +1834,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "StartCreateAzureNativeVirtualMachineSnapshotsJobInput!"),
             };
-            BatchAsyncJobStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (BatchAsyncJobStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (BatchAsyncJobStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.StartCreateAzureNativeVirtualMachineSnapshotsJob(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationStartCreateAzureNativeVirtualMachineSnapshotsJob",
                 "($input: StartCreateAzureNativeVirtualMachineSnapshotsJobInput!)",
-                fieldSpecDoc,
                 "BatchAsyncJobStatus"
-            );
+                );
+            BatchAsyncJobStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (BatchAsyncJobStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.StartCreateAzureNativeVirtualMachineSnapshotsJob(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1718,24 +1857,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "StartDisableAzureNativeSubscriptionProtectionJobInput!"),
             };
-            AsyncJobStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncJobStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncJobStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.StartDisableAzureNativeSubscriptionProtectionJob(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationStartDisableAzureNativeSubscriptionProtectionJob",
                 "($input: StartDisableAzureNativeSubscriptionProtectionJobInput!)",
-                fieldSpecDoc,
                 "AsyncJobStatus"
-            );
+                );
+            AsyncJobStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncJobStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.StartDisableAzureNativeSubscriptionProtectionJob(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1745,24 +1880,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "StartCreateAzureNativeManagedDiskSnapshotsJobInput!"),
             };
-            BatchAsyncJobStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (BatchAsyncJobStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (BatchAsyncJobStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.StartCreateAzureNativeManagedDiskSnapshotsJob(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationStartCreateAzureNativeManagedDiskSnapshotsJob",
                 "($input: StartCreateAzureNativeManagedDiskSnapshotsJobInput!)",
-                fieldSpecDoc,
                 "BatchAsyncJobStatus"
-            );
+                );
+            BatchAsyncJobStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (BatchAsyncJobStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.StartCreateAzureNativeManagedDiskSnapshotsJob(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1772,24 +1903,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "StartExportAzureNativeManagedDiskJobInput!"),
             };
-            AsyncJobStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncJobStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncJobStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.StartExportAzureNativeManagedDiskJob(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationStartExportAzureNativeManagedDiskJob",
                 "($input: StartExportAzureNativeManagedDiskJobInput!)",
-                fieldSpecDoc,
                 "AsyncJobStatus"
-            );
+                );
+            AsyncJobStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncJobStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.StartExportAzureNativeManagedDiskJob(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1799,24 +1926,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "StartExportAzureSqlDatabaseDbJobInput!"),
             };
-            AsyncJobStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncJobStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncJobStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.StartExportAzureSqlDatabaseDbJob(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationStartExportAzureSqlDatabaseDbJob",
                 "($input: StartExportAzureSqlDatabaseDbJobInput!)",
-                fieldSpecDoc,
                 "AsyncJobStatus"
-            );
+                );
+            AsyncJobStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncJobStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.StartExportAzureSqlDatabaseDbJob(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1826,24 +1949,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "StartExportAzureSqlManagedInstanceDbJobInput!"),
             };
-            AsyncJobStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncJobStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncJobStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.StartExportAzureSqlManagedInstanceDbJob(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationStartExportAzureSqlManagedInstanceDbJob",
                 "($input: StartExportAzureSqlManagedInstanceDbJobInput!)",
-                fieldSpecDoc,
                 "AsyncJobStatus"
-            );
+                );
+            AsyncJobStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncJobStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.StartExportAzureSqlManagedInstanceDbJob(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1853,24 +1972,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CreateAzureAccountInput!"),
             };
-            CloudAccount? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (CloudAccount)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (CloudAccount)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.CreateAzureAccount(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationCreateAzureAccount",
                 "($input: CreateAzureAccountInput!)",
-                fieldSpecDoc,
                 "CloudAccount"
-            );
+                );
+            CloudAccount? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (CloudAccount)this.Field;
+            }
+            string fieldSpecDoc = Mutation.CreateAzureAccount(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1880,24 +1995,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpdateAzureAccountInput!"),
             };
-            CloudAccount? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (CloudAccount)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (CloudAccount)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.UpdateAzureAccount(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationUpdateAzureAccount",
                 "($input: UpdateAzureAccountInput!)",
-                fieldSpecDoc,
                 "CloudAccount"
-            );
+                );
+            CloudAccount? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (CloudAccount)this.Field;
+            }
+            string fieldSpecDoc = Mutation.UpdateAzureAccount(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1907,24 +2018,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CreateAutomaticAzureTargetMappingInput!"),
             };
-            TargetMapping? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (TargetMapping)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (TargetMapping)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.CreateAutomaticAzureTargetMapping(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationCreateAutomaticAzureTargetMapping",
                 "($input: CreateAutomaticAzureTargetMappingInput!)",
-                fieldSpecDoc,
                 "TargetMapping"
-            );
+                );
+            TargetMapping? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (TargetMapping)this.Field;
+            }
+            string fieldSpecDoc = Mutation.CreateAutomaticAzureTargetMapping(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1934,24 +2041,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CreateCloudNativeAzureStorageSettingInput!"),
             };
-            CreateCloudNativeAzureStorageSettingReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (CreateCloudNativeAzureStorageSettingReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (CreateCloudNativeAzureStorageSettingReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.CreateCloudNativeAzureStorageSetting(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationCreateCloudNativeAzureStorageSetting",
                 "($input: CreateCloudNativeAzureStorageSettingInput!)",
-                fieldSpecDoc,
                 "CreateCloudNativeAzureStorageSettingReply"
-            );
+                );
+            CreateCloudNativeAzureStorageSettingReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (CreateCloudNativeAzureStorageSettingReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.CreateCloudNativeAzureStorageSetting(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1961,24 +2064,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CreateCloudNativeRcvAzureStorageSettingInput!"),
             };
-            CreateCloudNativeRcvAzureStorageSettingReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (CreateCloudNativeRcvAzureStorageSettingReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (CreateCloudNativeRcvAzureStorageSettingReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.CreateCloudNativeRcvAzureStorageSetting(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationCreateCloudNativeRcvAzureStorageSetting",
                 "($input: CreateCloudNativeRcvAzureStorageSettingInput!)",
-                fieldSpecDoc,
                 "CreateCloudNativeRcvAzureStorageSettingReply"
-            );
+                );
+            CreateCloudNativeRcvAzureStorageSettingReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (CreateCloudNativeRcvAzureStorageSettingReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.CreateCloudNativeRcvAzureStorageSetting(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1988,24 +2087,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpdateAutomaticAzureTargetMappingInput!"),
             };
-            TargetMapping? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (TargetMapping)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (TargetMapping)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.UpdateAutomaticAzureTargetMapping(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationUpdateAutomaticAzureTargetMapping",
                 "($input: UpdateAutomaticAzureTargetMappingInput!)",
-                fieldSpecDoc,
                 "TargetMapping"
-            );
+                );
+            TargetMapping? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (TargetMapping)this.Field;
+            }
+            string fieldSpecDoc = Mutation.UpdateAutomaticAzureTargetMapping(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -2015,24 +2110,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpdateCloudNativeAzureStorageSettingInput!"),
             };
-            UpdateCloudNativeAzureStorageSettingReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (UpdateCloudNativeAzureStorageSettingReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (UpdateCloudNativeAzureStorageSettingReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.UpdateCloudNativeAzureStorageSetting(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationUpdateCloudNativeAzureStorageSetting",
                 "($input: UpdateCloudNativeAzureStorageSettingInput!)",
-                fieldSpecDoc,
                 "UpdateCloudNativeAzureStorageSettingReply"
-            );
+                );
+            UpdateCloudNativeAzureStorageSettingReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (UpdateCloudNativeAzureStorageSettingReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.UpdateCloudNativeAzureStorageSetting(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -2042,24 +2133,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpdateCloudNativeRcvAzureStorageSettingInput!"),
             };
-            UpdateCloudNativeRcvAzureStorageSettingReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (UpdateCloudNativeRcvAzureStorageSettingReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (UpdateCloudNativeRcvAzureStorageSettingReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.UpdateCloudNativeRcvAzureStorageSetting(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationUpdateCloudNativeRcvAzureStorageSetting",
                 "($input: UpdateCloudNativeRcvAzureStorageSettingInput!)",
-                fieldSpecDoc,
                 "UpdateCloudNativeRcvAzureStorageSettingReply"
-            );
+                );
+            UpdateCloudNativeRcvAzureStorageSettingReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (UpdateCloudNativeRcvAzureStorageSettingReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.UpdateCloudNativeRcvAzureStorageSetting(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -2069,24 +2156,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CreateAzureTargetInput!"),
             };
-            Target? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (Target)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (Target)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.CreateAzureTarget(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationCreateAzureTarget",
                 "($input: CreateAzureTargetInput!)",
-                fieldSpecDoc,
                 "Target"
-            );
+                );
+            Target? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (Target)this.Field;
+            }
+            string fieldSpecDoc = Mutation.CreateAzureTarget(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -2096,24 +2179,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpdateAzureTargetInput!"),
             };
-            Target? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (Target)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (Target)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.UpdateAzureTarget(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationUpdateAzureTarget",
                 "($input: UpdateAzureTargetInput!)",
-                fieldSpecDoc,
                 "Target"
-            );
+                );
+            Target? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (Target)this.Field;
+            }
+            string fieldSpecDoc = Mutation.UpdateAzureTarget(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -2123,24 +2202,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CreateAzureReaderTargetInput!"),
             };
-            Target? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (Target)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (Target)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.CreateAzureReaderTarget(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationCreateAzureReaderTarget",
                 "($input: CreateAzureReaderTargetInput!)",
-                fieldSpecDoc,
                 "Target"
-            );
+                );
+            Target? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (Target)this.Field;
+            }
+            string fieldSpecDoc = Mutation.CreateAzureReaderTarget(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -2150,24 +2225,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "StartAzureCloudAccountOauthInput!"),
             };
-            StartAzureCloudAccountOauthReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (StartAzureCloudAccountOauthReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (StartAzureCloudAccountOauthReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.StartAzureCloudAccountOauth(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationStartAzureCloudAccountOauth",
                 "($input: StartAzureCloudAccountOauthInput!)",
-                fieldSpecDoc,
                 "StartAzureCloudAccountOauthReply"
-            );
+                );
+            StartAzureCloudAccountOauthReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (StartAzureCloudAccountOauthReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.StartAzureCloudAccountOauth(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -2177,24 +2248,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CompleteAzureCloudAccountOauthInput!"),
             };
-            CompleteAzureCloudAccountOauthReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (CompleteAzureCloudAccountOauthReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (CompleteAzureCloudAccountOauthReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.CompleteAzureCloudAccountOauth(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationCompleteAzureCloudAccountOauth",
                 "($input: CompleteAzureCloudAccountOauthInput!)",
-                fieldSpecDoc,
                 "CompleteAzureCloudAccountOauthReply"
-            );
+                );
+            CompleteAzureCloudAccountOauthReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (CompleteAzureCloudAccountOauthReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.CompleteAzureCloudAccountOauth(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -2204,24 +2271,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "SetAzureCloudAccountCustomerAppCredentialsInput!"),
             };
-            System.Boolean? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (System.Boolean)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (System.Boolean)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.SetAzureCloudAccountCustomerAppCredentials(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationSetAzureCloudAccountCustomerAppCredentials",
                 "($input: SetAzureCloudAccountCustomerAppCredentialsInput!)",
-                fieldSpecDoc,
                 "System.Boolean"
-            );
+                );
+            System.Boolean? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (System.Boolean)this.Field;
+            }
+            string fieldSpecDoc = Mutation.SetAzureCloudAccountCustomerAppCredentials(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -2231,24 +2294,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "AddAzureCloudAccountInput!"),
             };
-            AddAzureCloudAccountReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AddAzureCloudAccountReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AddAzureCloudAccountReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.AddAzureCloudAccount(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationAddAzureCloudAccount",
                 "($input: AddAzureCloudAccountInput!)",
-                fieldSpecDoc,
                 "AddAzureCloudAccountReply"
-            );
+                );
+            AddAzureCloudAccountReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AddAzureCloudAccountReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.AddAzureCloudAccount(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -2258,24 +2317,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "AddAzureCloudAccountWithoutOauthInput!"),
             };
-            AddAzureCloudAccountWithoutOauthReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AddAzureCloudAccountWithoutOauthReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AddAzureCloudAccountWithoutOauthReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.AddAzureCloudAccountWithoutOauth(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationAddAzureCloudAccountWithoutOauth",
                 "($input: AddAzureCloudAccountWithoutOauthInput!)",
-                fieldSpecDoc,
                 "AddAzureCloudAccountWithoutOauthReply"
-            );
+                );
+            AddAzureCloudAccountWithoutOauthReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AddAzureCloudAccountWithoutOauthReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.AddAzureCloudAccountWithoutOauth(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -2285,24 +2340,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteAzureCloudAccountInput!"),
             };
-            DeleteAzureCloudAccountReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (DeleteAzureCloudAccountReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (DeleteAzureCloudAccountReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.DeleteAzureCloudAccount(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationDeleteAzureCloudAccount",
                 "($input: DeleteAzureCloudAccountInput!)",
-                fieldSpecDoc,
                 "DeleteAzureCloudAccountReply"
-            );
+                );
+            DeleteAzureCloudAccountReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (DeleteAzureCloudAccountReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.DeleteAzureCloudAccount(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -2312,24 +2363,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteAzureCloudAccountWithoutOauthInput!"),
             };
-            DeleteAzureCloudAccountWithoutOauthReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (DeleteAzureCloudAccountWithoutOauthReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (DeleteAzureCloudAccountWithoutOauthReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.DeleteAzureCloudAccountWithoutOauth(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationDeleteAzureCloudAccountWithoutOauth",
                 "($input: DeleteAzureCloudAccountWithoutOauthInput!)",
-                fieldSpecDoc,
                 "DeleteAzureCloudAccountWithoutOauthReply"
-            );
+                );
+            DeleteAzureCloudAccountWithoutOauthReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (DeleteAzureCloudAccountWithoutOauthReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.DeleteAzureCloudAccountWithoutOauth(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -2339,24 +2386,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpgradeAzureCloudAccountInput!"),
             };
-            UpgradeAzureCloudAccountReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (UpgradeAzureCloudAccountReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (UpgradeAzureCloudAccountReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.UpgradeAzureCloudAccount(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationUpgradeAzureCloudAccount",
                 "($input: UpgradeAzureCloudAccountInput!)",
-                fieldSpecDoc,
                 "UpgradeAzureCloudAccountReply"
-            );
+                );
+            UpgradeAzureCloudAccountReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (UpgradeAzureCloudAccountReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.UpgradeAzureCloudAccount(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -2365,24 +2408,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         {
             Tuple<string, string>[] argDefs = {
             };
-            System.String? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (System.String)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (System.String)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.UpdateCustomerAppPermissionForAzureSql(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationUpdateCustomerAppPermissionForAzureSql",
                 "",
-                fieldSpecDoc,
                 "System.String"
-            );
+                );
+            System.String? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (System.String)this.Field;
+            }
+            string fieldSpecDoc = Mutation.UpdateCustomerAppPermissionForAzureSql(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -2392,24 +2431,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "StartDisableAzureCloudAccountJobInput!"),
             };
-            BatchAsyncJobStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (BatchAsyncJobStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (BatchAsyncJobStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.StartDisableAzureCloudAccountJob(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationStartDisableAzureCloudAccountJob",
                 "($input: StartDisableAzureCloudAccountJobInput!)",
-                fieldSpecDoc,
                 "BatchAsyncJobStatus"
-            );
+                );
+            BatchAsyncJobStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (BatchAsyncJobStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.StartDisableAzureCloudAccountJob(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -2419,24 +2454,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpdateAzureCloudAccountInput!"),
             };
-            UpdateAzureCloudAccountReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (UpdateAzureCloudAccountReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (UpdateAzureCloudAccountReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.UpdateAzureCloudAccount(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationUpdateAzureCloudAccount",
                 "($input: UpdateAzureCloudAccountInput!)",
-                fieldSpecDoc,
                 "UpdateAzureCloudAccountReply"
-            );
+                );
+            UpdateAzureCloudAccountReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (UpdateAzureCloudAccountReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.UpdateAzureCloudAccount(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -2446,24 +2477,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "MapAzureCloudAccountToPersistentStorageLocationInput!"),
             };
-            MapAzureCloudAccountToPersistentStorageLocationReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (MapAzureCloudAccountToPersistentStorageLocationReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (MapAzureCloudAccountToPersistentStorageLocationReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.MapAzureCloudAccountToPersistentStorageLocation(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationMapAzureCloudAccountToPersistentStorageLocation",
                 "($input: MapAzureCloudAccountToPersistentStorageLocationInput!)",
-                fieldSpecDoc,
                 "MapAzureCloudAccountToPersistentStorageLocationReply"
-            );
+                );
+            MapAzureCloudAccountToPersistentStorageLocationReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (MapAzureCloudAccountToPersistentStorageLocationReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.MapAzureCloudAccountToPersistentStorageLocation(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -2473,24 +2500,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "AddAzureCloudAccountExocomputeConfigurationsInput!"),
             };
-            AddAzureCloudAccountExocomputeConfigurationsReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AddAzureCloudAccountExocomputeConfigurationsReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AddAzureCloudAccountExocomputeConfigurationsReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.AddAzureCloudAccountExocomputeConfigurations(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationAddAzureCloudAccountExocomputeConfigurations",
                 "($input: AddAzureCloudAccountExocomputeConfigurationsInput!)",
-                fieldSpecDoc,
                 "AddAzureCloudAccountExocomputeConfigurationsReply"
-            );
+                );
+            AddAzureCloudAccountExocomputeConfigurationsReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AddAzureCloudAccountExocomputeConfigurationsReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.AddAzureCloudAccountExocomputeConfigurations(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -2500,24 +2523,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteAzureCloudAccountExocomputeConfigurationsInput!"),
             };
-            DeleteAzureCloudAccountExocomputeConfigurationsReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (DeleteAzureCloudAccountExocomputeConfigurationsReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (DeleteAzureCloudAccountExocomputeConfigurationsReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.DeleteAzureCloudAccountExocomputeConfigurations(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationDeleteAzureCloudAccountExocomputeConfigurations",
                 "($input: DeleteAzureCloudAccountExocomputeConfigurationsInput!)",
-                fieldSpecDoc,
                 "DeleteAzureCloudAccountExocomputeConfigurationsReply"
-            );
+                );
+            DeleteAzureCloudAccountExocomputeConfigurationsReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (DeleteAzureCloudAccountExocomputeConfigurationsReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.DeleteAzureCloudAccountExocomputeConfigurations(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -2527,24 +2546,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "MapAzureCloudAccountExocomputeSubscriptionInput!"),
             };
-            MapAzureCloudAccountExocomputeSubscriptionReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (MapAzureCloudAccountExocomputeSubscriptionReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (MapAzureCloudAccountExocomputeSubscriptionReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.MapAzureCloudAccountExocomputeSubscription(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationMapAzureCloudAccountExocomputeSubscription",
                 "($input: MapAzureCloudAccountExocomputeSubscriptionInput!)",
-                fieldSpecDoc,
                 "MapAzureCloudAccountExocomputeSubscriptionReply"
-            );
+                );
+            MapAzureCloudAccountExocomputeSubscriptionReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (MapAzureCloudAccountExocomputeSubscriptionReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.MapAzureCloudAccountExocomputeSubscription(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -2554,24 +2569,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UnmapAzureCloudAccountExocomputeSubscriptionInput!"),
             };
-            UnmapAzureCloudAccountExocomputeSubscriptionReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (UnmapAzureCloudAccountExocomputeSubscriptionReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (UnmapAzureCloudAccountExocomputeSubscriptionReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.UnmapAzureCloudAccountExocomputeSubscription(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationUnmapAzureCloudAccountExocomputeSubscription",
                 "($input: UnmapAzureCloudAccountExocomputeSubscriptionInput!)",
-                fieldSpecDoc,
                 "UnmapAzureCloudAccountExocomputeSubscriptionReply"
-            );
+                );
+            UnmapAzureCloudAccountExocomputeSubscriptionReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (UnmapAzureCloudAccountExocomputeSubscriptionReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.UnmapAzureCloudAccountExocomputeSubscription(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -2581,24 +2592,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpgradeAzureCloudAccountPermissionsWithoutOauthInput!"),
             };
-            UpgradeAzureCloudAccountPermissionsWithoutOauthReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (UpgradeAzureCloudAccountPermissionsWithoutOauthReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (UpgradeAzureCloudAccountPermissionsWithoutOauthReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.UpgradeAzureCloudAccountPermissionsWithoutOauth(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationUpgradeAzureCloudAccountPermissionsWithoutOauth",
                 "($input: UpgradeAzureCloudAccountPermissionsWithoutOauthInput!)",
-                fieldSpecDoc,
                 "UpgradeAzureCloudAccountPermissionsWithoutOauthReply"
-            );
+                );
+            UpgradeAzureCloudAccountPermissionsWithoutOauthReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (UpgradeAzureCloudAccountPermissionsWithoutOauthReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.UpgradeAzureCloudAccountPermissionsWithoutOauth(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -2608,24 +2615,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UnmapAzurePersistentStorageSubscriptionInput!"),
             };
-            System.String? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (System.String)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (System.String)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.UnmapAzurePersistentStorageSubscription(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationUnmapAzurePersistentStorageSubscription",
                 "($input: UnmapAzurePersistentStorageSubscriptionInput!)",
-                fieldSpecDoc,
                 "System.String"
-            );
+                );
+            System.String? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (System.String)this.Field;
+            }
+            string fieldSpecDoc = Mutation.UnmapAzurePersistentStorageSubscription(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -2634,24 +2637,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         {
             Tuple<string, string>[] argDefs = {
             };
-            AzureOauthConsentKickoffReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AzureOauthConsentKickoffReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AzureOauthConsentKickoffReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.AzureOauthConsentKickoff(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationAzureOauthConsentKickoff",
                 "",
-                fieldSpecDoc,
                 "AzureOauthConsentKickoffReply"
-            );
+                );
+            AzureOauthConsentKickoffReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AzureOauthConsentKickoffReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.AzureOauthConsentKickoff(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -2661,24 +2660,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "AzureOauthConsentCompleteInput!"),
             };
-            RequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (RequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (RequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.AzureOauthConsentComplete(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationAzureOauthConsentComplete",
                 "($input: AzureOauthConsentCompleteInput!)",
-                fieldSpecDoc,
                 "RequestStatus"
-            );
+                );
+            RequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (RequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.AzureOauthConsentComplete(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -2687,24 +2682,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         {
             Tuple<string, string>[] argDefs = {
             };
-            CreateAzureSaasAppAadReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (CreateAzureSaasAppAadReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (CreateAzureSaasAppAadReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.CreateAzureSaasAppAad(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationCreateAzureSaasAppAad",
                 "",
-                fieldSpecDoc,
                 "CreateAzureSaasAppAadReply"
-            );
+                );
+            CreateAzureSaasAppAadReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (CreateAzureSaasAppAadReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.CreateAzureSaasAppAad(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -2714,24 +2705,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CreateAzureClusterInput!"),
             };
-            CcProvisionJobReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (CcProvisionJobReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (CcProvisionJobReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.CreateAzureCluster(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationCreateAzureCluster",
                 "($input: CreateAzureClusterInput!)",
-                fieldSpecDoc,
                 "CcProvisionJobReply"
-            );
+                );
+            CcProvisionJobReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (CcProvisionJobReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.CreateAzureCluster(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -2741,24 +2728,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteAzureClusterInput!"),
             };
-            CcProvisionJobReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (CcProvisionJobReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (CcProvisionJobReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.DeleteAzureCluster(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationDeleteAzureCluster",
                 "($input: DeleteAzureClusterInput!)",
-                fieldSpecDoc,
                 "CcProvisionJobReply"
-            );
+                );
+            CcProvisionJobReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (CcProvisionJobReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.DeleteAzureCluster(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -2768,24 +2751,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "KickoffAzureAdAppSetupInput!"),
             };
-            KickoffAzureAdAppSetupReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (KickoffAzureAdAppSetupReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (KickoffAzureAdAppSetupReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.KickoffAzureAdAppSetup(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationKickoffAzureAdAppSetup",
                 "($input: KickoffAzureAdAppSetupInput!)",
-                fieldSpecDoc,
                 "KickoffAzureAdAppSetupReply"
-            );
+                );
+            KickoffAzureAdAppSetupReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (KickoffAzureAdAppSetupReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.KickoffAzureAdAppSetup(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -2795,24 +2774,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CompleteAzureAdAppSetupInput!"),
             };
-            CompleteAzureAdAppSetupReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (CompleteAzureAdAppSetupReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (CompleteAzureAdAppSetupReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.CompleteAzureAdAppSetup(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationCompleteAzureAdAppSetup",
                 "($input: CompleteAzureAdAppSetupInput!)",
-                fieldSpecDoc,
                 "CompleteAzureAdAppSetupReply"
-            );
+                );
+            CompleteAzureAdAppSetupReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (CompleteAzureAdAppSetupReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.CompleteAzureAdAppSetup(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -2822,24 +2797,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("workloadFid", "UUID!"),
             };
-            CreateOnDemandJobReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (CreateOnDemandJobReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (CreateOnDemandJobReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.DeleteAzureAdDirectory(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationDeleteAzureAdDirectory",
                 "($workloadFid: UUID!)",
-                fieldSpecDoc,
                 "CreateOnDemandJobReply"
-            );
+                );
+            CreateOnDemandJobReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (CreateOnDemandJobReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.DeleteAzureAdDirectory(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -2849,24 +2820,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "BackupAzureAdDirectoryInput!"),
             };
-            List<CreateOnDemandJobReply>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (List<CreateOnDemandJobReply>)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (List<CreateOnDemandJobReply>)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.BackupAzureAdDirectory(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationBackupAzureAdDirectory",
                 "($input: BackupAzureAdDirectoryInput!)",
-                fieldSpecDoc,
                 "List<CreateOnDemandJobReply>"
-            );
+                );
+            List<CreateOnDemandJobReply>? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (List<CreateOnDemandJobReply>)this.Field;
+            }
+            string fieldSpecDoc = Mutation.BackupAzureAdDirectory(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -2876,24 +2843,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "InitiateAzureAdAppUpdateInput!"),
             };
-            InitiateAzureAdAppUpdateReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (InitiateAzureAdAppUpdateReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (InitiateAzureAdAppUpdateReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.InitiateAzureAdAppUpdate(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationInitiateAzureAdAppUpdate",
                 "($input: InitiateAzureAdAppUpdateInput!)",
-                fieldSpecDoc,
                 "InitiateAzureAdAppUpdateReply"
-            );
+                );
+            InitiateAzureAdAppUpdateReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (InitiateAzureAdAppUpdateReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.InitiateAzureAdAppUpdate(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -2903,24 +2866,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CompleteAzureAdAppUpdateInput!"),
             };
-            System.String? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (System.String)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (System.String)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.CompleteAzureAdAppUpdate(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationCompleteAzureAdAppUpdate",
                 "($input: CompleteAzureAdAppUpdateInput!)",
-                fieldSpecDoc,
                 "System.String"
-            );
+                );
+            System.String? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (System.String)this.Field;
+            }
+            string fieldSpecDoc = Mutation.CompleteAzureAdAppUpdate(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -2930,24 +2889,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RestoreAzureAdObjectsWithPasswordInput!"),
             };
-            List<CreateOnDemandJobReply>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (List<CreateOnDemandJobReply>)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (List<CreateOnDemandJobReply>)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.RestoreAzureAdObjectsWithPassword(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationRestoreAzureAdObjectsWithPassword",
                 "($input: RestoreAzureAdObjectsWithPasswordInput!)",
-                fieldSpecDoc,
                 "List<CreateOnDemandJobReply>"
-            );
+                );
+            List<CreateOnDemandJobReply>? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (List<CreateOnDemandJobReply>)this.Field;
+            }
+            string fieldSpecDoc = Mutation.RestoreAzureAdObjectsWithPassword(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
 

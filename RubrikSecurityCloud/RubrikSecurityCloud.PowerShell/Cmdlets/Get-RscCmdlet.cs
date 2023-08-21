@@ -43,7 +43,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </code>
     /// </example>
     [Cmdlet(VerbsCommon.Get, "RscCmdlet", DefaultParameterSetName = "LookupExistingOperation")]
-    public class Get_RscCmdlet : PSCmdlet
+    public class Get_RscCmdlet : RscBasePSCmdlet
     {
         /// <summary>
         /// The name of the GraphQL Operation to look up.
@@ -67,6 +67,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         [ValidateNotNullOrEmpty]
         public string AnyGqlOpName { get; set; }
 
+        /// <summary>
+        /// Info about the various locations the SDK uses
+        /// </summary>
+        [Parameter(
+            Mandatory = false,
+            Position = 1,
+            ValueFromPipeline = true,
+            ParameterSetName = "Locations")]
+        public SwitchParameter Locations { get; set; }
+
 
         protected override void ProcessRecord()
         {
@@ -79,7 +89,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "LookupAnyOperation":
                         LookupAnyOperation();
-                        break;                        
+                        break;
+                    case "Locations":  
+                        GetLocations();
+                        break;                  
                 }
             }
             catch (Exception ex)
@@ -132,6 +145,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     )
                 );
             }
+        }
+
+        protected void GetLocations()
+        {
+            var locations = new Hashtable();
+            var customDir = this.GetCustomDir();
+            locations.Add("CustomDir", customDir);
+            // retrieve the list of *.gql files that's in
+            // this.GetCustomDir():
+            var opList = new List<string>();
+            foreach (var file in System.IO.Directory.GetFiles(customDir, "*.gql"))
+            {
+                opList.Add(System.IO.Path.GetFileNameWithoutExtension(file));
+            }
+            locations.Add("CustomOperations", opList ) ;
+            locations.Add("ProfileDir", this.GetProfileDir());
+            locations.Add("AssemblyDir", Files.GetAssemblyDir());
+            WriteObject(locations, /*enumerateCollection=*/ true );
         }
 
     }

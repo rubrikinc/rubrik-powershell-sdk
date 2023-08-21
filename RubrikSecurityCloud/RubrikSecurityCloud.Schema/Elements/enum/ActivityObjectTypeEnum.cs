@@ -285,6 +285,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "PublicCloudMachineInstance")]
         PUBLIC_CLOUD_MACHINE_INSTANCE,
 
+        [EnumMember(Value = "REPLICATION_PAIR")]
+        REPLICATION_PAIR,
+
         [EnumMember(Value = "RubrikEbsVolume")]
         RUBRIK_EBS_VOLUME,
 

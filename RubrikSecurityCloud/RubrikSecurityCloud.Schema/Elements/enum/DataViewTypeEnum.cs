@@ -33,6 +33,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "INDEXING")]
         INDEXING,
 
+        [EnumMember(Value = "LATEST_GLOBAL_OBJECTS")]
+        LATEST_GLOBAL_OBJECTS,
+
         [EnumMember(Value = "MONITORING_ALL")]
         MONITORING_ALL,
 
@@ -65,6 +68,12 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "OBJECT_AUDIT_LIST")]
         OBJECT_AUDIT_LIST,
+
+        [EnumMember(Value = "OBJECT_PROTECTION_AUDIT_DETAIL")]
+        OBJECT_PROTECTION_AUDIT_DETAIL,
+
+        [EnumMember(Value = "OBJECT_PROTECTION_AUDIT_LIST")]
+        OBJECT_PROTECTION_AUDIT_LIST,
 
         [EnumMember(Value = "PROTECTION_TASK_DETAILS")]
         PROTECTION_TASK_DETAILS,

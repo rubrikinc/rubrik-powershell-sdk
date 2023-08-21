@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isRscManaged")]
         public System.Boolean? IsRscManaged { get; set; }
 
+        //      C# -> System.String? PodOverlayNetworkCidr
+        // GraphQL -> podOverlayNetworkCidr: String! (scalar)
+        [JsonProperty("podOverlayNetworkCidr")]
+        public System.String? PodOverlayNetworkCidr { get; set; }
+
         //      C# -> System.String? PodSubnetNativeId
         // GraphQL -> podSubnetNativeId: String! (scalar)
         [JsonProperty("podSubnetNativeId")]
@@ -52,6 +57,7 @@ namespace RubrikSecurityCloud.Types
     public AzureExocomputeRegionConfig Set(
         AzureCloudAccountRegion? Region = null,
         System.Boolean? IsRscManaged = null,
+        System.String? PodOverlayNetworkCidr = null,
         System.String? PodSubnetNativeId = null,
         System.String? SubnetNativeId = null
     ) 
@@ -61,6 +67,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsRscManaged != null ) {
             this.IsRscManaged = IsRscManaged;
+        }
+        if ( PodOverlayNetworkCidr != null ) {
+            this.PodOverlayNetworkCidr = PodOverlayNetworkCidr;
         }
         if ( PodSubnetNativeId != null ) {
             this.PodSubnetNativeId = PodSubnetNativeId;
@@ -87,6 +96,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> isRscManaged: Boolean! (scalar)
         if (this.IsRscManaged != null) {
             s += ind + "isRscManaged\n" ;
+        }
+        //      C# -> System.String? PodOverlayNetworkCidr
+        // GraphQL -> podOverlayNetworkCidr: String! (scalar)
+        if (this.PodOverlayNetworkCidr != null) {
+            s += ind + "podOverlayNetworkCidr\n" ;
         }
         //      C# -> System.String? PodSubnetNativeId
         // GraphQL -> podSubnetNativeId: String! (scalar)
@@ -117,6 +131,12 @@ namespace RubrikSecurityCloud.Types
         if (this.IsRscManaged == null && Exploration.Includes(parent + ".isRscManaged", true))
         {
             this.IsRscManaged = true;
+        }
+        //      C# -> System.String? PodOverlayNetworkCidr
+        // GraphQL -> podOverlayNetworkCidr: String! (scalar)
+        if (this.PodOverlayNetworkCidr == null && Exploration.Includes(parent + ".podOverlayNetworkCidr", true))
+        {
+            this.PodOverlayNetworkCidr = "FETCH";
         }
         //      C# -> System.String? PodSubnetNativeId
         // GraphQL -> podSubnetNativeId: String! (scalar)

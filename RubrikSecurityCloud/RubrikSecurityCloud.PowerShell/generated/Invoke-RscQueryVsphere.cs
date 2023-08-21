@@ -18,6 +18,84 @@ using RubrikSecurityCloud.PowerShell.Private;
 
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
+    /// <summary>
+    /// vSphere queries
+    /// </summary>
+    /// <description>
+    /// Invoke-RscQueryVsphere is a master cmdlet for Vsphere work that can invoke any of the following subcommands: Blueprint, Datacenter, ComputeCluster, ResourcePool, Folder, Host, DatastoreCluster, Datastore, HostsByFids, Tag, TagCategory, Network, TopLevelDescendantsList, RootRecoveryHierarchy, HostList, Folders, ComputeClusters, DatastoreList, DatastoreClusters, LiveMounts, MountList, Mount, HostDetails, VmwareCdpLiveInfo.
+    /// </description>
+    /// <example>
+    /// <code>Invoke-RscQueryVsphere -Blueprint [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryVsphere -Datacenter [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryVsphere -ComputeCluster [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryVsphere -ResourcePool [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryVsphere -Folder [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryVsphere -Host [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryVsphere -DatastoreCluster [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryVsphere -Datastore [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryVsphere -HostsByFids [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryVsphere -Tag [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryVsphere -TagCategory [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryVsphere -Network [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryVsphere -TopLevelDescendantsList [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryVsphere -RootRecoveryHierarchy [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryVsphere -HostList [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryVsphere -Folders [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryVsphere -ComputeClusters [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryVsphere -DatastoreList [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryVsphere -DatastoreClusters [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryVsphere -LiveMounts [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryVsphere -MountList [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryVsphere -Mount [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryVsphere -HostDetails [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryVsphere -VmwareCdpLiveInfo [-Arg ..] [-Field ..]</code>
+    /// </example>
     [Cmdlet(
         "Invoke",
         "RscQueryVsphere",
@@ -297,6 +375,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         
         /// <summary>
+        /// Folders parameter set
+        ///
+        /// [GraphQL: vSphereFolders]
+        /// </summary>
+        [Parameter(
+            ParameterSetName = "Folders",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Get all the vSphere folders.
+[GraphQL: vSphereFolders]",
+            Position = 0
+        )]
+        public SwitchParameter Folders { get; set; }
+
+        
+        /// <summary>
         /// ComputeClusters parameter set
         ///
         /// [GraphQL: vSphereComputeClusters]
@@ -496,6 +592,9 @@ Get details of a ESXi hypervisor.
                     case "HostList":
                         this.ProcessRecord_HostList();
                         break;
+                    case "Folders":
+                        this.ProcessRecord_Folders();
+                        break;
                     case "ComputeClusters":
                         this.ProcessRecord_ComputeClusters();
                         break;
@@ -667,6 +766,15 @@ Get details of a ESXi hypervisor.
         }
 
         // This parameter set invokes a single graphql operation:
+        // vSphereFolders.
+        internal void ProcessRecord_Folders()
+        {
+            this._logger.name += " -Folders";
+            // Invoke graphql operation vSphereFolders
+            InvokeQueryVsphereFolders();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // vSphereComputeClusters.
         internal void ProcessRecord_ComputeClusters()
         {
@@ -746,24 +854,20 @@ Get details of a ESXi hypervisor.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            VsphereBlueprint? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (VsphereBlueprint)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (VsphereBlueprint)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.VsphereBlueprint(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryVsphereBlueprint",
                 "($fid: UUID!)",
-                fieldSpecDoc,
                 "VsphereBlueprint"
-            );
+                );
+            VsphereBlueprint? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (VsphereBlueprint)this.Field;
+            }
+            string fieldSpecDoc = Query.VsphereBlueprint(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -773,24 +877,20 @@ Get details of a ESXi hypervisor.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            VsphereDatacenter? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (VsphereDatacenter)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (VsphereDatacenter)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.VsphereDatacenter(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryVsphereDatacenter",
                 "($fid: UUID!)",
-                fieldSpecDoc,
                 "VsphereDatacenter"
-            );
+                );
+            VsphereDatacenter? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (VsphereDatacenter)this.Field;
+            }
+            string fieldSpecDoc = Query.VsphereDatacenter(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -800,24 +900,20 @@ Get details of a ESXi hypervisor.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            VsphereComputeCluster? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (VsphereComputeCluster)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (VsphereComputeCluster)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.VsphereComputeCluster(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryVsphereComputeCluster",
                 "($fid: UUID!)",
-                fieldSpecDoc,
                 "VsphereComputeCluster"
-            );
+                );
+            VsphereComputeCluster? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (VsphereComputeCluster)this.Field;
+            }
+            string fieldSpecDoc = Query.VsphereComputeCluster(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -827,24 +923,20 @@ Get details of a ESXi hypervisor.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            VsphereResourcePool? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (VsphereResourcePool)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (VsphereResourcePool)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.VsphereResourcePool(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryVsphereResourcePool",
                 "($fid: UUID!)",
-                fieldSpecDoc,
                 "VsphereResourcePool"
-            );
+                );
+            VsphereResourcePool? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (VsphereResourcePool)this.Field;
+            }
+            string fieldSpecDoc = Query.VsphereResourcePool(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -854,24 +946,20 @@ Get details of a ESXi hypervisor.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            VsphereFolder? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (VsphereFolder)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (VsphereFolder)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.VsphereFolder(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryVsphereFolder",
                 "($fid: UUID!)",
-                fieldSpecDoc,
                 "VsphereFolder"
-            );
+                );
+            VsphereFolder? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (VsphereFolder)this.Field;
+            }
+            string fieldSpecDoc = Query.VsphereFolder(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -881,24 +969,20 @@ Get details of a ESXi hypervisor.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            VsphereHost? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (VsphereHost)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (VsphereHost)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.VsphereHost(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryVsphereHost",
                 "($fid: UUID!)",
-                fieldSpecDoc,
                 "VsphereHost"
-            );
+                );
+            VsphereHost? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (VsphereHost)this.Field;
+            }
+            string fieldSpecDoc = Query.VsphereHost(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -908,24 +992,20 @@ Get details of a ESXi hypervisor.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            VsphereDatastoreCluster? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (VsphereDatastoreCluster)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (VsphereDatastoreCluster)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.VsphereDatastoreCluster(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryVsphereDatastoreCluster",
                 "($fid: UUID!)",
-                fieldSpecDoc,
                 "VsphereDatastoreCluster"
-            );
+                );
+            VsphereDatastoreCluster? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (VsphereDatastoreCluster)this.Field;
+            }
+            string fieldSpecDoc = Query.VsphereDatastoreCluster(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -935,24 +1015,20 @@ Get details of a ESXi hypervisor.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            VsphereDatastore? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (VsphereDatastore)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (VsphereDatastore)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.VsphereDatastore(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryVsphereDatastore",
                 "($fid: UUID!)",
-                fieldSpecDoc,
                 "VsphereDatastore"
-            );
+                );
+            VsphereDatastore? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (VsphereDatastore)this.Field;
+            }
+            string fieldSpecDoc = Query.VsphereDatastore(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -962,24 +1038,20 @@ Get details of a ESXi hypervisor.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fids", "[UUID!]!"),
             };
-            List<VsphereHost>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (List<VsphereHost>)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (List<VsphereHost>)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.VsphereHostsByFids(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryVsphereHostsByFids",
                 "($fids: [UUID!]!)",
-                fieldSpecDoc,
                 "List<VsphereHost>"
-            );
+                );
+            List<VsphereHost>? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (List<VsphereHost>)this.Field;
+            }
+            string fieldSpecDoc = Query.VsphereHostsByFids(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -989,24 +1061,20 @@ Get details of a ESXi hypervisor.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            VsphereTag? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (VsphereTag)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (VsphereTag)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.VsphereTag(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryVsphereTag",
                 "($fid: UUID!)",
-                fieldSpecDoc,
                 "VsphereTag"
-            );
+                );
+            VsphereTag? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (VsphereTag)this.Field;
+            }
+            string fieldSpecDoc = Query.VsphereTag(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1016,24 +1084,20 @@ Get details of a ESXi hypervisor.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            VsphereTagCategory? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (VsphereTagCategory)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (VsphereTagCategory)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.VsphereTagCategory(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryVsphereTagCategory",
                 "($fid: UUID!)",
-                fieldSpecDoc,
                 "VsphereTagCategory"
-            );
+                );
+            VsphereTagCategory? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (VsphereTagCategory)this.Field;
+            }
+            string fieldSpecDoc = Query.VsphereTagCategory(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1043,24 +1107,20 @@ Get details of a ESXi hypervisor.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            VsphereNetwork? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (VsphereNetwork)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (VsphereNetwork)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.VsphereNetwork(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryVsphereNetwork",
                 "($fid: UUID!)",
-                fieldSpecDoc,
                 "VsphereNetwork"
-            );
+                );
+            VsphereNetwork? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (VsphereNetwork)this.Field;
+            }
+            string fieldSpecDoc = Query.VsphereNetwork(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1082,24 +1142,20 @@ Get details of a ESXi hypervisor.
                 Tuple.Create("typeFilter", "[HierarchyObjectTypeEnum!]"),
                 Tuple.Create("filter", "[Filter!]"),
             };
-            CdmHierarchyObjectConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (CdmHierarchyObjectConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (CdmHierarchyObjectConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.VsphereTopLevelDescendantsConnection(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryVsphereTopLevelDescendantsConnection",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$typeFilter: [HierarchyObjectTypeEnum!],$filter: [Filter!])",
-                fieldSpecDoc,
                 "CdmHierarchyObjectConnection"
-            );
+                );
+            CdmHierarchyObjectConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (CdmHierarchyObjectConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.VsphereTopLevelDescendantsConnection(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1119,24 +1175,20 @@ Get details of a ESXi hypervisor.
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
             };
-            CdmHierarchyObjectConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (CdmHierarchyObjectConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (CdmHierarchyObjectConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.VsphereRootRecoveryHierarchy(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryVsphereRootRecoveryHierarchy",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                fieldSpecDoc,
                 "CdmHierarchyObjectConnection"
-            );
+                );
+            CdmHierarchyObjectConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (CdmHierarchyObjectConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.VsphereRootRecoveryHierarchy(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1156,24 +1208,53 @@ Get details of a ESXi hypervisor.
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
             };
-            VsphereHostConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (VsphereHostConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (VsphereHostConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.VsphereHostConnection(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryVsphereHostConnection",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                fieldSpecDoc,
                 "VsphereHostConnection"
-            );
+                );
+            VsphereHostConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (VsphereHostConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.VsphereHostConnection(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
+        }
+
+        // Invoke GraphQL Query:
+        // vSphereFolders(
+        //     first: Int
+        //     after: String
+        //     sortBy: HierarchySortByField
+        //     sortOrder: SortOrder
+        //     filter: [Filter!]
+        //   ): VsphereFolderConnection!
+        internal void InvokeQueryVsphereFolders()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("sortBy", "HierarchySortByField"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("filter", "[Filter!]"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryVsphereFolders",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                "VsphereFolderConnection"
+                );
+            VsphereFolderConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (VsphereFolderConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.VsphereFolders(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1193,24 +1274,20 @@ Get details of a ESXi hypervisor.
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
             };
-            VsphereComputeClusterConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (VsphereComputeClusterConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (VsphereComputeClusterConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.VsphereComputeClusters(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryVsphereComputeClusters",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                fieldSpecDoc,
                 "VsphereComputeClusterConnection"
-            );
+                );
+            VsphereComputeClusterConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (VsphereComputeClusterConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.VsphereComputeClusters(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1230,24 +1307,20 @@ Get details of a ESXi hypervisor.
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
             };
-            VsphereDatastoreConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (VsphereDatastoreConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (VsphereDatastoreConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.VsphereDatastoreConnection(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryVsphereDatastoreConnection",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                fieldSpecDoc,
                 "VsphereDatastoreConnection"
-            );
+                );
+            VsphereDatastoreConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (VsphereDatastoreConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.VsphereDatastoreConnection(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1267,24 +1340,20 @@ Get details of a ESXi hypervisor.
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
             };
-            VsphereDatastoreClusterConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (VsphereDatastoreClusterConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (VsphereDatastoreClusterConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.VsphereDatastoreClusters(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryVsphereDatastoreClusters",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                fieldSpecDoc,
                 "VsphereDatastoreClusterConnection"
-            );
+                );
+            VsphereDatastoreClusterConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (VsphereDatastoreClusterConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.VsphereDatastoreClusters(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1302,24 +1371,20 @@ Get details of a ESXi hypervisor.
                 Tuple.Create("filter", "[VsphereLiveMountFilterInput!]"),
                 Tuple.Create("sortBy", "VsphereLiveMountSortBy"),
             };
-            VsphereLiveMountConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (VsphereLiveMountConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (VsphereLiveMountConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.VsphereLiveMounts(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryVsphereLiveMounts",
                 "($first: Int,$after: String,$filter: [VsphereLiveMountFilterInput!],$sortBy: VsphereLiveMountSortBy)",
-                fieldSpecDoc,
                 "VsphereLiveMountConnection"
-            );
+                );
+            VsphereLiveMountConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (VsphereLiveMountConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.VsphereLiveMounts(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1339,24 +1404,20 @@ Get details of a ESXi hypervisor.
                 Tuple.Create("sortBy", "VsphereMountSortBy"),
                 Tuple.Create("sortOrder", "SortOrder"),
             };
-            VsphereMountConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (VsphereMountConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (VsphereMountConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.VsphereMountConnection(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryVsphereMountConnection",
                 "($first: Int,$after: String,$filter: VSphereMountFilter,$sortBy: VsphereMountSortBy,$sortOrder: SortOrder)",
-                fieldSpecDoc,
                 "VsphereMountConnection"
-            );
+                );
+            VsphereMountConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (VsphereMountConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.VsphereMountConnection(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1366,24 +1427,20 @@ Get details of a ESXi hypervisor.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            VsphereMount? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (VsphereMount)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (VsphereMount)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.VsphereMount(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryVsphereMount",
                 "($fid: UUID!)",
-                fieldSpecDoc,
                 "VsphereMount"
-            );
+                );
+            VsphereMount? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (VsphereMount)this.Field;
+            }
+            string fieldSpecDoc = Query.VsphereMount(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1393,24 +1450,20 @@ Get details of a ESXi hypervisor.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetVmwareHostInput!"),
             };
-            VmwareHostDetail? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (VmwareHostDetail)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (VmwareHostDetail)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.VsphereHostDetails(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryVsphereHostDetails",
                 "($input: GetVmwareHostInput!)",
-                fieldSpecDoc,
                 "VmwareHostDetail"
-            );
+                );
+            VmwareHostDetail? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (VmwareHostDetail)this.Field;
+            }
+            string fieldSpecDoc = Query.VsphereHostDetails(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1420,24 +1473,20 @@ Get details of a ESXi hypervisor.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("ids", "[String!]!"),
             };
-            BatchVmwareCdpLiveInfo? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (BatchVmwareCdpLiveInfo)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (BatchVmwareCdpLiveInfo)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.VsphereVmwareCdpLiveInfo(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryVsphereVmwareCdpLiveInfo",
                 "($ids: [String!]!)",
-                fieldSpecDoc,
                 "BatchVmwareCdpLiveInfo"
-            );
+                );
+            BatchVmwareCdpLiveInfo? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (BatchVmwareCdpLiveInfo)this.Field;
+            }
+            string fieldSpecDoc = Query.VsphereVmwareCdpLiveInfo(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
 

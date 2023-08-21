@@ -84,6 +84,14 @@ Register a cloud cluster.
     - isForce - System.Boolean
     - expireInDays - System.Int64: Number of days after which data from Rubrik is removed.
 - Returns System.Boolean.
+### updatedatabaselogreportingproperties
+Update the database log backup report properties
+
+Supported in v5.3+
+Update the properties for the database (SQL and Oracle) log backup delay email notification creation. The properties are logDelayThresholdInMin and logDelayNotificationFrequencyInMin.
+
+- There is a single argument of type UpdateDatabaseLogReportingPropertiesForClusterInput.
+- Returns DbLogReportProperties.
 ### updatefailover
 Update a failover cluster
 

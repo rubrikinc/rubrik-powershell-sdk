@@ -39,6 +39,11 @@ namespace RubrikSecurityCloud.PowerShell.Private
             else return propertyInfo.PropertyType;
         }
 
+        /// <summary>
+        /// Get a list of all RSC schema types whose names contain a given string.
+        /// </summary>
+        /// <param name="nameFilter">string to match, case insensitive</param>
+        /// <param name="interfaces">if true, return interfaces; if false return classes</param>
         public static List<RscTypeSummary> GetAllTypeNames(
                string nameFilter = null,
                bool interfaces = false)
@@ -111,6 +116,9 @@ namespace RubrikSecurityCloud.PowerShell.Private
         }
 
 
+        /// <summary>
+        /// Get an RSC schema type by name.
+        /// </summary>
         public static Type GetTypeByName(string name)
         {
             var assembly = Assembly.Load("RubrikSecurityCloud.Schema");

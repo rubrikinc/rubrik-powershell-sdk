@@ -19,6 +19,8 @@ AWS native S3 Bucket.
   - The earliest time to which the S3 bucket can be restored.
 - creationTime: DateTime
   - The time when the Amazon S3 bucket was created.
+- isExocomputeConfigured: System.Boolean
+  - A boolean specifying whether exocompute is configured in the region.
 - authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
   - The authorized operations on the object.
 - awsNativeAccount: AwsNativeAccount

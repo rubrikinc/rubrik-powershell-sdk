@@ -15,6 +15,15 @@ namespace RubrikSecurityCloud.Types
 {
     public enum TableViewType
     {
+        [EnumMember(Value = "COMPLIANCE_ALL_TABLE")]
+        COMPLIANCE_ALL_TABLE,
+
+        [EnumMember(Value = "OBJECT_AUDIT_DETAIL_TABLE")]
+        OBJECT_AUDIT_DETAIL_TABLE,
+
+        [EnumMember(Value = "OBJECT_AUDIT_LIST_TABLE")]
+        OBJECT_AUDIT_LIST_TABLE,
+
         [EnumMember(Value = "OBJECT_CAPACITY_OVERTIME_ALL_TABLE")]
         OBJECT_CAPACITY_OVERTIME_ALL_TABLE,
 

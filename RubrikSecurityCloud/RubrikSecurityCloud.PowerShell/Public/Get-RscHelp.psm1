@@ -62,9 +62,9 @@ function Get-RscHelp {
         [string]$CommandName,
 
         [Parameter(
-            ParameterSetName = 'CustomOperations'
+            ParameterSetName = 'Locations'
         )]
-        [Switch]$CustomOperations
+        [Switch]$Locations
     )
     Begin {
         function GetCommandHelp {
@@ -77,7 +77,7 @@ function Get-RscHelp {
             $params = $command.Parameters.Values
 
             # Filter only switch parameters
-            $switchParams = $params | Where-Object { $_.ParameterType.Name -eq 'SwitchParameter' -and $_.Name -ne "Verbose" -and $_.Name -ne "Debug" -and $_.Name -ne "GetInputs" }
+            $switchParams = $params | Where-Object { $_.ParameterType.Name -eq 'SwitchParameter' -and $_.Name -ne "Verbose" -and $_.Name -ne "Debug" -and $_.Name -ne "GetInput" }
 
             $switchParams | ForEach-Object {
                 try {
@@ -93,19 +93,16 @@ function Get-RscHelp {
             }
         }
 
-        function GetCustomOperationsHelp {
-            $profDir = [RubrikSecurityCloud.Files]::GetCustomDir($RSC_CUSTOM_DIR)
-            [PSCustomObject]@{
-                CustomOperationsDir = $profDir
-                CustomOperations    = @(Get-ChildItem $profDir -Filter *.gql | Select-Object -ExpandProperty Name)
-            }
+        function GetLocationHelp {
+            Get-RscCmdlet -Locations
         }
+
     }
     
     Process {
         switch ($PSCmdlet.ParameterSetName) {
             'CommandName' { GetCommandHelp $CommandName }
-            'CustomOperations' { GetCustomOperationsHelp }
+            'Locations' { GetLocationHelp }
         }
     }
 }

@@ -76,7 +76,7 @@ Query that retrieves an SLA Domain.
 - There are 4 arguments.
     - id - System.String: SLA Domain ID.
     - shouldShowSyncStatus - System.Boolean: Specifies whether to show the SLA Domain sync status on Rubrik CDM.
-    - shouldShowUpgradeInfo - System.Boolean: Specifies whether to show the upgrade information for an SLA Domain or not.
+    - shouldShowUpgradeInfo - System.Boolean: Specifies whether to show the upgrade information for an SLA Domain.
     - shouldShowPausedClusters - System.Boolean: Specifies whether to show the Rubrik clusters where this SLA Domain is paused.
 - Returns SlaDomain.
 ### domains
@@ -94,7 +94,7 @@ Retrieves a list of SLA Domains.
     - contextFilterInput - list of ContextFilterInputFields: Specifies the context filter input to use.
     - shouldShowSyncStatus - System.Boolean: Specifies whether to show the SLA Domain sync status on Rubrik CDM.
     - shouldShowProtectedObjectCount - System.Boolean: Specifies whether to show the number of workloads protected by the SLA Domain.
-    - shouldShowUpgradeInfo - System.Boolean: Specifies whether to show the upgrade information for an SLA Domain or not.
+    - shouldShowUpgradeInfo - System.Boolean: Specifies whether to show the upgrade information for an SLA Domain.
     - showRemoteSlas - System.Boolean: Specifies whether to retrieve the remote SLA Domains from Rubrik CDM. By default, remote SLA Domains are not retrieved.
     - shouldShowPausedClusters - System.Boolean: Specifies whether to show the Rubrik clusters where this SLA Domain is paused.
 - Returns SlaDomainConnection.
@@ -129,6 +129,8 @@ Download list of Global SLA CSV that have Replication to the given Rubrik Cluste
     - includeArchived - System.Boolean: Include Archived SLA.
 - Returns DownloadSlaWithReplicationCsvReply.
 ### globalfilterlist
+Retrieves a list of SLA Domains.
+
 - There are 14 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
@@ -141,7 +143,7 @@ Download list of Global SLA CSV that have Replication to the given Rubrik Cluste
     - contextFilterInput - list of ContextFilterInputFields: Specifies the context filter input to use.
     - shouldShowSyncStatus - System.Boolean: Specifies whether to show the SLA Domain sync status on Rubrik CDM.
     - shouldShowProtectedObjectCount - System.Boolean: Specifies whether to show the number of workloads protected by the SLA Domain.
-    - shouldShowUpgradeInfo - System.Boolean: Specifies whether to show the upgrade information for an SLA Domain or not.
+    - shouldShowUpgradeInfo - System.Boolean: Specifies whether to show the upgrade information for an SLA Domain.
     - showRemoteSlas - System.Boolean: Specifies whether to retrieve the remote SLA Domains from Rubrik CDM. By default, remote SLA Domains are not retrieved.
     - shouldShowPausedClusters - System.Boolean: Specifies whether to show the Rubrik clusters where this SLA Domain is paused.
 - Returns GlobalSlaForFilterConnection.

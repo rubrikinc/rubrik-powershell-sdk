@@ -68,14 +68,36 @@
     <PackageReference Include="System.Management.Automation" Version="6.2.7" />
   </ItemGroup>
   <Target Name="GeneratePSDocs" AfterTargets="Build">
-      <Message Text="############ GENERATING POWERSHELL HELP DOCUMENTATION############" Importance="High" />
-      <Exec Command="pwsh -File $(ProjectDir)docs/GenerateDocs.ps1 -sourceXml $(TargetDir)RubrikSecurityCloud.PowerShell.xml -ModuleFilePath $(TargetDir)RubrikSecurityCloud.psd1 -ModuleName RubrikSecurityCloud -OutputPath $(TargetDir)" />
+    <Message Text="############ GENERATING POWERSHELL HELP DOCUMENTATION############" Importance="High" />
+    <Exec Command="pwsh -File $(ProjectDir)docs/GenerateDocs.ps1 -sourceXml $(TargetDir)RubrikSecurityCloud.PowerShell.xml -ModuleFilePath $(TargetDir)RubrikSecurityCloud.psd1 -ModuleName RubrikSecurityCloud -OutputPath $(TargetDir)" />
   </Target>
+
   <Target Name="CopyModules" AfterTargets="Build">
-  <ItemGroup>
-    <ModuleFiles Include="$(ProjectDir)/Public/*.psm1" />
-  </ItemGroup>
-  <Copy SourceFiles="@(ModuleFiles)" DestinationFolder="$(TargetDir)/Public" />
-</Target>
+    <ItemGroup>
+      <ModuleFiles Include="$(ProjectDir)/Public/*.psm1" />
+    </ItemGroup>
+    <Copy SourceFiles="@(ModuleFiles)" DestinationFolder="$(TargetDir)/Public" />
+  </Target>
+
+  <Target Name="CopyExtensionModules" AfterTargets="Build">
+    <ItemGroup>
+      <ExtensionModuleFiles Include="$(ProjectDir)/../../Extensions/*.psm1" />
+    </ItemGroup>
+    <Copy SourceFiles="@(ExtensionModuleFiles)" DestinationFolder="$(TargetDir)/Extensions" />
+  </Target>
+
+  <Target Name="CopyOperationFiles" AfterTargets="Build">
+    <!-- Copy all files from Operations/DEFAULT -->
+    <ItemGroup>
+      <DefaultOperationFiles Include="$(ProjectDir)/../../Operations/DEFAULT/*.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(DefaultOperationFiles)" DestinationFolder="$(TargetDir)/Operations/DEFAULT" />
+
+    <!-- Copy all files from Operations/DETAIL -->
+    <ItemGroup>
+      <DetailOperationFiles Include="$(ProjectDir)/../../Operations/DETAIL/*.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(DetailOperationFiles)" DestinationFolder="$(TargetDir)/Operations/DETAIL" />
+  </Target>
 
 </Project>

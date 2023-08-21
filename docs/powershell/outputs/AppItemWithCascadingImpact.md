@@ -1,8 +1,6 @@
 ### AppItemWithCascadingImpact
 App item type with their cascading impact.
 
-- workloadId: System.String
-  - The Rubrik ID of the workload.
 - appItemTypeToken: System.String
   - Token specifying the type of the item. The token should exactly match with the token retrieved from query graphql field response.
 - appItemTypeDisplayName: System.String

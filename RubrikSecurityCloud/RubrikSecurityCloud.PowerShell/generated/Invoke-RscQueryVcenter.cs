@@ -18,6 +18,42 @@ using RubrikSecurityCloud.PowerShell.Private;
 
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
+    /// <summary>
+    /// vSphere vCenter queries
+    /// </summary>
+    /// <description>
+    /// Invoke-RscQueryVcenter is a master cmdlet for Vcenter work that can invoke any of the following subcommands: Vcenter, List, UniqueCount, PreAddInfo, Networks, HotAddNetwork, NumProxiesNeeded, HotAddProxy, HotAddBandwidth, AdvancedTagPreview.
+    /// </description>
+    /// <example>
+    /// <code>Invoke-RscQueryVcenter -Vcenter [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryVcenter -List [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryVcenter -UniqueCount [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryVcenter -PreAddInfo [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryVcenter -Networks [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryVcenter -HotAddNetwork [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryVcenter -NumProxiesNeeded [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryVcenter -HotAddProxy [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryVcenter -HotAddBandwidth [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryVcenter -AdvancedTagPreview [-Arg ..] [-Field ..]</code>
+    /// </example>
     [Cmdlet(
         "Invoke",
         "RscQueryVcenter",
@@ -371,24 +407,20 @@ Preview list of virtual machines of a proposed filter condition. The result migh
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            VsphereVcenter? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (VsphereVcenter)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (VsphereVcenter)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.VsphereVcenter(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryVsphereVcenter",
                 "($fid: UUID!)",
-                fieldSpecDoc,
                 "VsphereVcenter"
-            );
+                );
+            VsphereVcenter? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (VsphereVcenter)this.Field;
+            }
+            string fieldSpecDoc = Query.VsphereVcenter(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -408,24 +440,20 @@ Preview list of virtual machines of a proposed filter condition. The result migh
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
             };
-            VsphereVcenterConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (VsphereVcenterConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (VsphereVcenterConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.VsphereVcenterConnection(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryVsphereVcenterConnection",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                fieldSpecDoc,
                 "VsphereVcenterConnection"
-            );
+                );
+            VsphereVcenterConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (VsphereVcenterConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.VsphereVcenterConnection(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -435,24 +463,20 @@ Preview list of virtual machines of a proposed filter condition. The result migh
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("filter", "[Filter!]"),
             };
-            System.Int32? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (System.Int32)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (System.Int32)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.UniqueVsphereVcenterCount(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryUniqueVsphereVcenterCount",
                 "($filter: [Filter!])",
-                fieldSpecDoc,
                 "System.Int32"
-            );
+                );
+            System.Int32? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (System.Int32)this.Field;
+            }
+            string fieldSpecDoc = Query.UniqueVsphereVcenterCount(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -462,24 +486,20 @@ Preview list of virtual machines of a proposed filter condition. The result migh
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "PreAddVcenterInput!"),
             };
-            VcenterPreAddInfo? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (VcenterPreAddInfo)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (VcenterPreAddInfo)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.VcenterPreAddInfo(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryVcenterPreAddInfo",
                 "($input: PreAddVcenterInput!)",
-                fieldSpecDoc,
                 "VcenterPreAddInfo"
-            );
+                );
+            VcenterPreAddInfo? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (VcenterPreAddInfo)this.Field;
+            }
+            string fieldSpecDoc = Query.VcenterPreAddInfo(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -489,24 +509,20 @@ Preview list of virtual machines of a proposed filter condition. The result migh
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetNetworksInput!"),
             };
-            NetworkInfoListResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (NetworkInfoListResponse)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (NetworkInfoListResponse)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.VcenterNetworks(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryVcenterNetworks",
                 "($input: GetNetworksInput!)",
-                fieldSpecDoc,
                 "NetworkInfoListResponse"
-            );
+                );
+            NetworkInfoListResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (NetworkInfoListResponse)this.Field;
+            }
+            string fieldSpecDoc = Query.VcenterNetworks(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -516,24 +532,20 @@ Preview list of virtual machines of a proposed filter condition. The result migh
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetHotAddNetworkInput!"),
             };
-            HotAddNetworkConfigWithName? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (HotAddNetworkConfigWithName)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (HotAddNetworkConfigWithName)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.VcenterHotAddNetwork(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryVcenterHotAddNetwork",
                 "($input: GetHotAddNetworkInput!)",
-                fieldSpecDoc,
                 "HotAddNetworkConfigWithName"
-            );
+                );
+            HotAddNetworkConfigWithName? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (HotAddNetworkConfigWithName)this.Field;
+            }
+            string fieldSpecDoc = Query.VcenterHotAddNetwork(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -543,24 +555,20 @@ Preview list of virtual machines of a proposed filter condition. The result migh
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetNumProxiesNeededInput!"),
             };
-            System.Int32? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (System.Int32)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (System.Int32)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.VcenterNumProxiesNeeded(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryVcenterNumProxiesNeeded",
                 "($input: GetNumProxiesNeededInput!)",
-                fieldSpecDoc,
                 "System.Int32"
-            );
+                );
+            System.Int32? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (System.Int32)this.Field;
+            }
+            string fieldSpecDoc = Query.VcenterNumProxiesNeeded(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -570,24 +578,20 @@ Preview list of virtual machines of a proposed filter condition. The result migh
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("clusterUuids", "[UUID!]!"),
             };
-            List<VcenterHotAddProxyVmInfo>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (List<VcenterHotAddProxyVmInfo>)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (List<VcenterHotAddProxyVmInfo>)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AllVcenterHotAddProxyVms(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAllVcenterHotAddProxyVms",
                 "($clusterUuids: [UUID!]!)",
-                fieldSpecDoc,
                 "List<VcenterHotAddProxyVmInfo>"
-            );
+                );
+            List<VcenterHotAddProxyVmInfo>? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (List<VcenterHotAddProxyVmInfo>)this.Field;
+            }
+            string fieldSpecDoc = Query.AllVcenterHotAddProxyVms(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -597,24 +601,20 @@ Preview list of virtual machines of a proposed filter condition. The result migh
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetHotAddBandwidthInput!"),
             };
-            HotAddBandwidthInfo? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (HotAddBandwidthInfo)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (HotAddBandwidthInfo)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.VcenterHotAddBandwidth(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryVcenterHotAddBandwidth",
                 "($input: GetHotAddBandwidthInput!)",
-                fieldSpecDoc,
                 "HotAddBandwidthInfo"
-            );
+                );
+            HotAddBandwidthInfo? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (HotAddBandwidthInfo)this.Field;
+            }
+            string fieldSpecDoc = Query.VcenterHotAddBandwidth(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -624,24 +624,20 @@ Preview list of virtual machines of a proposed filter condition. The result migh
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "PreviewFilterInput!"),
             };
-            VcenterAdvancedTagPreviewReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (VcenterAdvancedTagPreviewReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (VcenterAdvancedTagPreviewReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.VcenterAdvancedTagPreview(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryVcenterAdvancedTagPreview",
                 "($input: PreviewFilterInput!)",
-                fieldSpecDoc,
                 "VcenterAdvancedTagPreviewReply"
-            );
+                );
+            VcenterAdvancedTagPreviewReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (VcenterAdvancedTagPreviewReply)this.Field;
+            }
+            string fieldSpecDoc = Query.VcenterAdvancedTagPreview(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
 

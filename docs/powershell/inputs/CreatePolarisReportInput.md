@@ -5,6 +5,8 @@ Parameters for creating a report with configurations.
   - Report name.
 - reportViewType: PolarisReportViewType
   - Type of report.
+- room: ReportRoomType
+  - Room of report.
 - charts: list of ChartViewTypes
   - Selected charts of the report.
 - table: TableViewType

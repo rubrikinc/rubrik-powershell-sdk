@@ -18,6 +18,51 @@ using RubrikSecurityCloud.PowerShell.Private;
 
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
+    /// <summary>
+    /// Mongo mutations
+    /// </summary>
+    /// <description>
+    /// Invoke-RscMutateMongo is a master cmdlet for Mongo work that can invoke any of the following subcommands: AddSource, DeleteSource, DiscoverSource, PatchSource, RetryAddSource, AssignSlaToDbCollection, RecoverSource, CreateOnDemandDatabaseBackup, CreatedbSource, UpdatedbSource, DeletedbSource, BulkDeletedbSources, RecoverdbSource.
+    /// </description>
+    /// <example>
+    /// <code>Invoke-RscMutateMongo -AddSource [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateMongo -DeleteSource [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateMongo -DiscoverSource [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateMongo -PatchSource [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateMongo -RetryAddSource [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateMongo -AssignSlaToDbCollection [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateMongo -RecoverSource [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateMongo -CreateOnDemandDatabaseBackup [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateMongo -CreatedbSource [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateMongo -UpdatedbSource [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateMongo -DeletedbSource [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateMongo -BulkDeletedbSources [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateMongo -RecoverdbSource [-Arg ..] [-Field ..]</code>
+    /// </example>
     [Cmdlet(
         "Invoke",
         "RscMutateMongo",
@@ -468,24 +513,20 @@ Supported in m3.2.0-m4.2.0.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "AddMongoSourceInput!"),
             };
-            AddMongoSourceReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AddMongoSourceReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AddMongoSourceReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.AddMongoSource(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationAddMongoSource",
                 "($input: AddMongoSourceInput!)",
-                fieldSpecDoc,
                 "AddMongoSourceReply"
-            );
+                );
+            AddMongoSourceReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AddMongoSourceReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.AddMongoSource(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -495,24 +536,20 @@ Supported in m3.2.0-m4.2.0.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteMongoSourceInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.DeleteMongoSource(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationDeleteMongoSource",
                 "($input: DeleteMongoSourceInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.DeleteMongoSource(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -522,24 +559,20 @@ Supported in m3.2.0-m4.2.0.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DiscoverMongoSourceInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.DiscoverMongoSource(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationDiscoverMongoSource",
                 "($input: DiscoverMongoSourceInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.DiscoverMongoSource(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -549,24 +582,20 @@ Supported in m3.2.0-m4.2.0.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "PatchMongoSourceInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.PatchMongoSource(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationPatchMongoSource",
                 "($input: PatchMongoSourceInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.PatchMongoSource(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -576,24 +605,20 @@ Supported in m3.2.0-m4.2.0.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RetryAddMongoSourceInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.RetryAddMongoSource(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationRetryAddMongoSource",
                 "($input: RetryAddMongoSourceInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.RetryAddMongoSource(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -603,24 +628,20 @@ Supported in m3.2.0-m4.2.0.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "AssignSlaToMongoDbCollectionInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.AssignSlaToMongoDbCollection(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationAssignSlaToMongoDbCollection",
                 "($input: AssignSlaToMongoDbCollectionInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.AssignSlaToMongoDbCollection(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -630,24 +651,20 @@ Supported in m3.2.0-m4.2.0.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RecoverMongoSourceInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.RecoverMongoSource(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationRecoverMongoSource",
                 "($input: RecoverMongoSourceInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.RecoverMongoSource(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -657,24 +674,20 @@ Supported in m3.2.0-m4.2.0.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CreateOnDemandMongoDatabaseSnapshotInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.CreateOnDemandMongoDatabaseBackup(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationCreateOnDemandMongoDatabaseBackup",
                 "($input: CreateOnDemandMongoDatabaseSnapshotInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.CreateOnDemandMongoDatabaseBackup(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -684,24 +697,20 @@ Supported in m3.2.0-m4.2.0.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "AddMosaicSourceInput!"),
             };
-            MosaicAsyncResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (MosaicAsyncResponse)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (MosaicAsyncResponse)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.CreateMongodbSource(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationCreateMongodbSource",
                 "($input: AddMosaicSourceInput!)",
-                fieldSpecDoc,
                 "MosaicAsyncResponse"
-            );
+                );
+            MosaicAsyncResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (MosaicAsyncResponse)this.Field;
+            }
+            string fieldSpecDoc = Mutation.CreateMongodbSource(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -711,24 +720,20 @@ Supported in m3.2.0-m4.2.0.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "ModifyMosaicSourceInput!"),
             };
-            MosaicAsyncResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (MosaicAsyncResponse)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (MosaicAsyncResponse)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.UpdateMongodbSource(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationUpdateMongodbSource",
                 "($input: ModifyMosaicSourceInput!)",
-                fieldSpecDoc,
                 "MosaicAsyncResponse"
-            );
+                );
+            MosaicAsyncResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (MosaicAsyncResponse)this.Field;
+            }
+            string fieldSpecDoc = Mutation.UpdateMongodbSource(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -738,24 +743,20 @@ Supported in m3.2.0-m4.2.0.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteMosaicSourceInput!"),
             };
-            MosaicAsyncResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (MosaicAsyncResponse)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (MosaicAsyncResponse)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.DeleteMongodbSource(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationDeleteMongodbSource",
                 "($input: DeleteMosaicSourceInput!)",
-                fieldSpecDoc,
                 "MosaicAsyncResponse"
-            );
+                );
+            MosaicAsyncResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (MosaicAsyncResponse)this.Field;
+            }
+            string fieldSpecDoc = Mutation.DeleteMongodbSource(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -765,24 +766,20 @@ Supported in m3.2.0-m4.2.0.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "BulkDeleteMosaicSourcesInput!"),
             };
-            MosaicAsyncResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (MosaicAsyncResponse)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (MosaicAsyncResponse)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.BulkDeleteMongodbSources(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationBulkDeleteMongodbSources",
                 "($input: BulkDeleteMosaicSourcesInput!)",
-                fieldSpecDoc,
                 "MosaicAsyncResponse"
-            );
+                );
+            MosaicAsyncResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (MosaicAsyncResponse)this.Field;
+            }
+            string fieldSpecDoc = Mutation.BulkDeleteMongodbSources(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -792,24 +789,20 @@ Supported in m3.2.0-m4.2.0.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "MosaicRestoreDataInput!"),
             };
-            MosaicAsyncResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (MosaicAsyncResponse)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (MosaicAsyncResponse)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.RecoverMongodbSource(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationRecoverMongodbSource",
                 "($input: MosaicRestoreDataInput!)",
-                fieldSpecDoc,
                 "MosaicAsyncResponse"
-            );
+                );
+            MosaicAsyncResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (MosaicAsyncResponse)this.Field;
+            }
+            string fieldSpecDoc = Mutation.RecoverMongodbSource(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
 

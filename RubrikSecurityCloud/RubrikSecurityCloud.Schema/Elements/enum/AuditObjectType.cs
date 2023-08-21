@@ -264,6 +264,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "PUBLIC_CLOUD_MACHINE_INSTANCE")]
         PUBLIC_CLOUD_MACHINE_INSTANCE,
 
+        [EnumMember(Value = "REPLICATION_PAIR")]
+        REPLICATION_PAIR,
+
         [EnumMember(Value = "SAP_HANA_DB")]
         SAP_HANA_DB,
 

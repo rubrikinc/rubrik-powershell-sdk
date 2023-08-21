@@ -18,6 +18,60 @@ using RubrikSecurityCloud.PowerShell.Private;
 
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
+    /// <summary>
+    /// Oracle queries
+    /// </summary>
+    /// <description>
+    /// Invoke-RscQueryOracle is a master cmdlet for Oracle work that can invoke any of the following subcommands: TopLevelDescendants, Databases, Host, Rac, DataGuardGroup, Database, LiveMounts, AcoParameters, RecoverableRanges, MissedRecoverableRanges, MissedSnapshots, AcoExampleDownloadLink, PdbDetails, HostLogBackupConfig, DatabaseLogBackupConfig, RacLogBackupConfig.
+    /// </description>
+    /// <example>
+    /// <code>Invoke-RscQueryOracle -TopLevelDescendants [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryOracle -Databases [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryOracle -Host [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryOracle -Rac [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryOracle -DataGuardGroup [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryOracle -Database [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryOracle -LiveMounts [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryOracle -AcoParameters [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryOracle -RecoverableRanges [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryOracle -MissedRecoverableRanges [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryOracle -MissedSnapshots [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryOracle -AcoExampleDownloadLink [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryOracle -PdbDetails [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryOracle -HostLogBackupConfig [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryOracle -DatabaseLogBackupConfig [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryOracle -RacLogBackupConfig [-Arg ..] [-Field ..]</code>
+    /// </example>
     [Cmdlet(
         "Invoke",
         "RscQueryOracle",
@@ -563,24 +617,20 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
                 Tuple.Create("typeFilter", "[HierarchyObjectTypeEnum!]"),
                 Tuple.Create("filter", "[Filter!]"),
             };
-            OracleTopLevelDescendantTypeConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (OracleTopLevelDescendantTypeConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (OracleTopLevelDescendantTypeConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.OracleTopLevelDescendants(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryOracleTopLevelDescendants",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$typeFilter: [HierarchyObjectTypeEnum!],$filter: [Filter!])",
-                fieldSpecDoc,
                 "OracleTopLevelDescendantTypeConnection"
-            );
+                );
+            OracleTopLevelDescendantTypeConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (OracleTopLevelDescendantTypeConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.OracleTopLevelDescendants(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -600,24 +650,20 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
             };
-            OracleDatabaseConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (OracleDatabaseConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (OracleDatabaseConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.OracleDatabases(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryOracleDatabases",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                fieldSpecDoc,
                 "OracleDatabaseConnection"
-            );
+                );
+            OracleDatabaseConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (OracleDatabaseConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.OracleDatabases(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -627,24 +673,20 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            OracleHost? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (OracleHost)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (OracleHost)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.OracleHost(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryOracleHost",
                 "($fid: UUID!)",
-                fieldSpecDoc,
                 "OracleHost"
-            );
+                );
+            OracleHost? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (OracleHost)this.Field;
+            }
+            string fieldSpecDoc = Query.OracleHost(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -654,24 +696,20 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            OracleRac? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (OracleRac)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (OracleRac)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.OracleRac(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryOracleRac",
                 "($fid: UUID!)",
-                fieldSpecDoc,
                 "OracleRac"
-            );
+                );
+            OracleRac? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (OracleRac)this.Field;
+            }
+            string fieldSpecDoc = Query.OracleRac(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -681,24 +719,20 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            OracleDataGuardGroup? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (OracleDataGuardGroup)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (OracleDataGuardGroup)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.OracleDataGuardGroup(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryOracleDataGuardGroup",
                 "($fid: UUID!)",
-                fieldSpecDoc,
                 "OracleDataGuardGroup"
-            );
+                );
+            OracleDataGuardGroup? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (OracleDataGuardGroup)this.Field;
+            }
+            string fieldSpecDoc = Query.OracleDataGuardGroup(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -708,24 +742,20 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            OracleDatabase? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (OracleDatabase)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (OracleDatabase)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.OracleDatabase(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryOracleDatabase",
                 "($fid: UUID!)",
-                fieldSpecDoc,
                 "OracleDatabase"
-            );
+                );
+            OracleDatabase? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (OracleDatabase)this.Field;
+            }
+            string fieldSpecDoc = Query.OracleDatabase(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -743,24 +773,20 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
                 Tuple.Create("filters", "[OracleLiveMountFilterInput!]"),
                 Tuple.Create("sortBy", "OracleLiveMountSortBy"),
             };
-            OracleLiveMountConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (OracleLiveMountConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (OracleLiveMountConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.OracleLiveMounts(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryOracleLiveMounts",
                 "($first: Int,$after: String,$filters: [OracleLiveMountFilterInput!],$sortBy: OracleLiveMountSortBy)",
-                fieldSpecDoc,
                 "OracleLiveMountConnection"
-            );
+                );
+            OracleLiveMountConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (OracleLiveMountConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.OracleLiveMounts(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -770,24 +796,20 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "ClusterUuidWithDbIdInput!"),
             };
-            OracleAcoParameterList? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (OracleAcoParameterList)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (OracleAcoParameterList)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.OracleAcoParameters(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryOracleAcoParameters",
                 "($input: ClusterUuidWithDbIdInput!)",
-                fieldSpecDoc,
                 "OracleAcoParameterList"
-            );
+                );
+            OracleAcoParameterList? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (OracleAcoParameterList)this.Field;
+            }
+            string fieldSpecDoc = Query.OracleAcoParameters(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -797,24 +819,20 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetOracleDbRecoverableRangesInput!"),
             };
-            OracleRecoverableRangeListResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (OracleRecoverableRangeListResponse)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (OracleRecoverableRangeListResponse)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.OracleRecoverableRanges(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryOracleRecoverableRanges",
                 "($input: GetOracleDbRecoverableRangesInput!)",
-                fieldSpecDoc,
                 "OracleRecoverableRangeListResponse"
-            );
+                );
+            OracleRecoverableRangeListResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (OracleRecoverableRangeListResponse)this.Field;
+            }
+            string fieldSpecDoc = Query.OracleRecoverableRanges(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -824,24 +842,20 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetOracleDbMissedRecoverableRangesInput!"),
             };
-            OracleMissedRecoverableRangeListResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (OracleMissedRecoverableRangeListResponse)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (OracleMissedRecoverableRangeListResponse)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.OracleMissedRecoverableRanges(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryOracleMissedRecoverableRanges",
                 "($input: GetOracleDbMissedRecoverableRangesInput!)",
-                fieldSpecDoc,
                 "OracleMissedRecoverableRangeListResponse"
-            );
+                );
+            OracleMissedRecoverableRangeListResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (OracleMissedRecoverableRangeListResponse)this.Field;
+            }
+            string fieldSpecDoc = Query.OracleMissedRecoverableRanges(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -851,24 +865,20 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetMissedOracleDbSnapshotsInput!"),
             };
-            MissedSnapshotListResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (MissedSnapshotListResponse)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (MissedSnapshotListResponse)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.OracleMissedSnapshots(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryOracleMissedSnapshots",
                 "($input: GetMissedOracleDbSnapshotsInput!)",
-                fieldSpecDoc,
                 "MissedSnapshotListResponse"
-            );
+                );
+            MissedSnapshotListResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (MissedSnapshotListResponse)this.Field;
+            }
+            string fieldSpecDoc = Query.OracleMissedSnapshots(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -878,24 +888,20 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "ClusterUuidWithDbIdInput!"),
             };
-            OracleFileDownloadLink? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (OracleFileDownloadLink)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (OracleFileDownloadLink)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.OracleAcoExampleDownloadLink(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryOracleAcoExampleDownloadLink",
                 "($input: ClusterUuidWithDbIdInput!)",
-                fieldSpecDoc,
                 "OracleFileDownloadLink"
-            );
+                );
+            OracleFileDownloadLink? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (OracleFileDownloadLink)this.Field;
+            }
+            string fieldSpecDoc = Query.OracleAcoExampleDownloadLink(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -905,24 +911,20 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "OraclePdbDetailsInput!"),
             };
-            OraclePdbDetails? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (OraclePdbDetails)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (OraclePdbDetails)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.OraclePdbDetails(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryOraclePdbDetails",
                 "($input: OraclePdbDetailsInput!)",
-                fieldSpecDoc,
                 "OraclePdbDetails"
-            );
+                );
+            OraclePdbDetails? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (OraclePdbDetails)this.Field;
+            }
+            string fieldSpecDoc = Query.OraclePdbDetails(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -932,24 +934,20 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "OracleHostInput!"),
             };
-            OracleLogBackupConfig? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (OracleLogBackupConfig)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (OracleLogBackupConfig)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.OracleHostLogBackupConfig(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryOracleHostLogBackupConfig",
                 "($input: OracleHostInput!)",
-                fieldSpecDoc,
                 "OracleLogBackupConfig"
-            );
+                );
+            OracleLogBackupConfig? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (OracleLogBackupConfig)this.Field;
+            }
+            string fieldSpecDoc = Query.OracleHostLogBackupConfig(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -959,24 +957,20 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "OracleDbInput!"),
             };
-            OracleLogBackupConfig? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (OracleLogBackupConfig)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (OracleLogBackupConfig)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.OracleDatabaseLogBackupConfig(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryOracleDatabaseLogBackupConfig",
                 "($input: OracleDbInput!)",
-                fieldSpecDoc,
                 "OracleLogBackupConfig"
-            );
+                );
+            OracleLogBackupConfig? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (OracleLogBackupConfig)this.Field;
+            }
+            string fieldSpecDoc = Query.OracleDatabaseLogBackupConfig(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -986,24 +980,20 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "OracleRacInput!"),
             };
-            OracleLogBackupConfig? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (OracleLogBackupConfig)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (OracleLogBackupConfig)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.OracleRacLogBackupConfig(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryOracleRacLogBackupConfig",
                 "($input: OracleRacInput!)",
-                fieldSpecDoc,
                 "OracleLogBackupConfig"
-            );
+                );
+            OracleLogBackupConfig? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (OracleLogBackupConfig)this.Field;
+            }
+            string fieldSpecDoc = Query.OracleRacLogBackupConfig(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
 

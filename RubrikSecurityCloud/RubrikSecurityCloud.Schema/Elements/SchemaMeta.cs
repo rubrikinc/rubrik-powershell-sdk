@@ -12,7 +12,7 @@ namespace RubrikSecurityCloud.Types
 {
     public static class SchemaMeta
     {
-        public static string GraphqlSchemaVersion = "v20230802-35" ;
+        public static string GraphqlSchemaVersion = "v20230809-35" ;
 
         public static HashSet<string> InterfaceImpls( string interfaceName )
         {
@@ -1427,7 +1427,6 @@ namespace RubrikSecurityCloud.Types
                     new HashSet<string> {
                     "VsphereDatacenter",
                     "VsphereFolder",
-                    "VsphereVcenterLogicalChildType",
                     }
                 },
                 {
@@ -1838,6 +1837,7 @@ namespace RubrikSecurityCloud.Types
             allAzureEncryptionKeys,
             allAzureExocomputeConfigsInAccount,
             allAzureKeyVaultsByRegion,
+            allAzureManagedIdentities,
             allAzureNativeAvailabilitySetsByRegionFromAzure,
             allAzureNativeExportCompatibleDiskTypesByRegionFromAzure,
             allAzureNativeExportCompatibleVmSizesByRegionFromAzure,
@@ -2069,6 +2069,8 @@ namespace RubrikSecurityCloud.Types
             createOnDemandNutanixBackup,
             createOraclePdbRestore,
             createVsphereAdvancedTag,
+            databaseLogReportForCluster,
+            databaseLogReportingPropertiesForCluster,
             db2Database,
             db2Databases,
             db2Instance,
@@ -2387,6 +2389,7 @@ namespace RubrikSecurityCloud.Types
             updateCloudNativeAzureStorageSetting,
             updateCloudNativeRcvAzureStorageSetting,
             updateCustomerAppPermissionForAzureSql,
+            updateDatabaseLogReportingPropertiesForCluster,
             updateFailoverCluster,
             updateGlobalSla,
             updateHypervVirtualMachine,
@@ -2426,6 +2429,7 @@ namespace RubrikSecurityCloud.Types
             vSphereDatastoreClusters,
             vSphereDatastoreConnection,
             vSphereFolder,
+            vSphereFolders,
             vSphereHost,
             vSphereHostConnection,
             vSphereHostDetails,
@@ -2664,6 +2668,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlOperationName.allAzureKeyVaultsByRegion,
                     "Invoke-RscQueryAzure -AllKeyVaultsByRegion"
+                },
+                {
+                    GqlOperationName.allAzureManagedIdentities,
+                    "Invoke-RscQueryAzure -AllManagedIdentities"
                 },
                 {
                     GqlOperationName.allAzureNativeAvailabilitySetsByRegionFromAzure,
@@ -3588,6 +3596,14 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlOperationName.createVsphereAdvancedTag,
                     "Invoke-RscMutateVsphere -CreateAdvancedTag"
+                },
+                {
+                    GqlOperationName.databaseLogReportForCluster,
+                    "Invoke-RscQueryCluster -DatabaseLogReport"
+                },
+                {
+                    GqlOperationName.databaseLogReportingPropertiesForCluster,
+                    "Invoke-RscQueryCluster -DatabaseLogReportingProperties"
                 },
                 {
                     GqlOperationName.db2Database,
@@ -4862,6 +4878,10 @@ namespace RubrikSecurityCloud.Types
                     "Invoke-RscMutateAzure -UpdateCustomerAppPermissionForSql"
                 },
                 {
+                    GqlOperationName.updateDatabaseLogReportingPropertiesForCluster,
+                    "Invoke-RscMutateCluster -UpdateDatabaseLogReportingProperties"
+                },
+                {
                     GqlOperationName.updateFailoverCluster,
                     "Invoke-RscMutateCluster -UpdateFailover"
                 },
@@ -5016,6 +5036,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlOperationName.vSphereFolder,
                     "Invoke-RscQueryVsphere -Folder"
+                },
+                {
+                    GqlOperationName.vSphereFolders,
+                    "Invoke-RscQueryVsphere -Folders"
                 },
                 {
                     GqlOperationName.vSphereHost,

@@ -711,6 +711,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "JIRA_ENABLED")]
         JIRA_ENABLED,
 
+        [EnumMember(Value = "JIRA_GA_ENABLED")]
+        JIRA_GA_ENABLED,
+
         [EnumMember(Value = "JobMonitoringUIEnabled")]
         JOB_MONITORING_UI_ENABLED,
 
@@ -1305,6 +1308,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "SAP_HANA_STATIC_RETENTION_ENABLED")]
         SAP_HANA_STATIC_RETENTION_ENABLED,
 
+        [EnumMember(Value = "SA_ORG_MANAGEMENT_ENABLED")]
+        SA_ORG_MANAGEMENT_ENABLED,
+
         [EnumMember(Value = "SELF_HELP_ENABLED")]
         SELF_HELP_ENABLED,
 
@@ -1466,6 +1472,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "THREAT_HUNT_RESULTS_CSV_DOWNLOAD_ENABLED")]
         THREAT_HUNT_RESULTS_CSV_DOWNLOAD_ENABLED,
+
+        [EnumMember(Value = "THREAT_MONITORING_ENTITLED_ENABLED")]
+        THREAT_MONITORING_ENTITLED_ENABLED,
 
         [EnumMember(Value = "TIER_EXISTING_SNAPSHOTS_UNMANAGED_OBJECTS_ENABLED")]
         TIER_EXISTING_SNAPSHOTS_UNMANAGED_OBJECTS_ENABLED,

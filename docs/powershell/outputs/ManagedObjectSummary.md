@@ -9,5 +9,5 @@ Managed object summary.
   - Type of the managed object.
 - slaDomainName: System.String
   - Name of the SLA Domain the managed object belongs to.
-- snapshotsAt: list of DateTimes
-  - Timestamps of snapshots.
+- snapshotsDetails: list of SnapshotDetailss
+  - Snapshot details.

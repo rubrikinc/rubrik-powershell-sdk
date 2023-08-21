@@ -8,7 +8,7 @@ BeforeAll {
 
 Describe -Name 'Connect to API' -Fixture {
     It -Name 'Invoke-RscQueryAccount' -Test {
-        $f = (Invoke-RscQueryAccount -Setting -GetInputs).Field
+        $f = (Invoke-RscQueryAccount -Setting -GetInput).Field
         $f.IsEulaAccepted | Should -Not -BeNullOrEmpty
         $f.isEmailNotificationEnabled | Should -Not -BeNullOrEmpty
         $accountSetting = Invoke-RscQueryAccount -Setting

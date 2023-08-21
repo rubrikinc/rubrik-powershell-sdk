@@ -1,6 +1,8 @@
 ### AppItemRestoreConfig
 Represents the configuration for the items to be restored.
 
+- orgId: System.String
+  - ID of this workloads's organization.
 - workloadId: System.String
   - Rubrik ID of the workload whose data items needs to be restored.
 - appItemTypeToken: System.String

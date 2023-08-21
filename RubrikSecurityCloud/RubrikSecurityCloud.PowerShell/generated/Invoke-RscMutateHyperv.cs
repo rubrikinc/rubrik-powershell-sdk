@@ -18,6 +18,81 @@ using RubrikSecurityCloud.PowerShell.Private;
 
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
+    /// <summary>
+    /// Hyperv mutations
+    /// </summary>
+    /// <description>
+    /// Invoke-RscMutateHyperv is a master cmdlet for Hyperv work that can invoke any of the following subcommands: RegisterScvmm, ScvmmUpdate, ScvmmDelete, RefreshScvmm, OnDemandSnapshot, DeleteAllSnapshots, ExportVirtualMachine, DownloadVirtualMachineSnapshotFiles, InstantRecoverVirtualMachineSnapshot, RestoreVirtualMachineSnapshotFiles, RegisterAgentVirtualMachine, DeleteVirtualMachineSnapshot, DownloadVirtualMachineSnapshot, CreateVirtualMachineSnapshotMount, UpdateVirtualMachineSnapshotMount, DeleteVirtualMachineSnapshotMount, RefreshServer, BatchOnDemandBackupVm, BatchExportVm, BatchMountVm, BatchInstantRecoverVm, UpdateVirtualMachine, DownloadSnapshotFromLocation.
+    /// </description>
+    /// <example>
+    /// <code>Invoke-RscMutateHyperv -RegisterScvmm [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateHyperv -ScvmmUpdate [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateHyperv -ScvmmDelete [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateHyperv -RefreshScvmm [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateHyperv -OnDemandSnapshot [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateHyperv -DeleteAllSnapshots [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateHyperv -ExportVirtualMachine [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateHyperv -DownloadVirtualMachineSnapshotFiles [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateHyperv -InstantRecoverVirtualMachineSnapshot [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateHyperv -RestoreVirtualMachineSnapshotFiles [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateHyperv -RegisterAgentVirtualMachine [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateHyperv -DeleteVirtualMachineSnapshot [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateHyperv -DownloadVirtualMachineSnapshot [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateHyperv -CreateVirtualMachineSnapshotMount [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateHyperv -UpdateVirtualMachineSnapshotMount [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateHyperv -DeleteVirtualMachineSnapshotMount [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateHyperv -RefreshServer [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateHyperv -BatchOnDemandBackupVm [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateHyperv -BatchExportVm [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateHyperv -BatchMountVm [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateHyperv -BatchInstantRecoverVm [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateHyperv -UpdateVirtualMachine [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateHyperv -DownloadSnapshotFromLocation [-Arg ..] [-Field ..]</code>
+    /// </example>
     [Cmdlet(
         "Invoke",
         "RscMutateHyperv",
@@ -800,24 +875,20 @@ Initiates a job to download a snapshot from the specified location when the snap
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RegisterHypervScvmmInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.RegisterHypervScvmm(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationRegisterHypervScvmm",
                 "($input: RegisterHypervScvmmInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.RegisterHypervScvmm(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -827,24 +898,20 @@ Initiates a job to download a snapshot from the specified location when the snap
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "HypervScvmmUpdateInput!"),
             };
-            HypervScvmmUpdateReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (HypervScvmmUpdateReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (HypervScvmmUpdateReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.HypervScvmmUpdate(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationHypervScvmmUpdate",
                 "($input: HypervScvmmUpdateInput!)",
-                fieldSpecDoc,
                 "HypervScvmmUpdateReply"
-            );
+                );
+            HypervScvmmUpdateReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (HypervScvmmUpdateReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.HypervScvmmUpdate(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -854,24 +921,20 @@ Initiates a job to download a snapshot from the specified location when the snap
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "HypervScvmmDeleteInput!"),
             };
-            ResponseSuccess? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (ResponseSuccess)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (ResponseSuccess)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.HypervScvmmDelete(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationHypervScvmmDelete",
                 "($input: HypervScvmmDeleteInput!)",
-                fieldSpecDoc,
                 "ResponseSuccess"
-            );
+                );
+            ResponseSuccess? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (ResponseSuccess)this.Field;
+            }
+            string fieldSpecDoc = Mutation.HypervScvmmDelete(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -881,24 +944,20 @@ Initiates a job to download a snapshot from the specified location when the snap
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RefreshHypervScvmmInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.RefreshHypervScvmm(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationRefreshHypervScvmm",
                 "($input: RefreshHypervScvmmInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.RefreshHypervScvmm(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -908,24 +967,20 @@ Initiates a job to download a snapshot from the specified location when the snap
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "HypervOnDemandSnapshotInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.HypervOnDemandSnapshot(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationHypervOnDemandSnapshot",
                 "($input: HypervOnDemandSnapshotInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.HypervOnDemandSnapshot(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -935,24 +990,20 @@ Initiates a job to download a snapshot from the specified location when the snap
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "HypervDeleteAllSnapshotsInput!"),
             };
-            RequestSuccess? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (RequestSuccess)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (RequestSuccess)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.HypervDeleteAllSnapshots(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationHypervDeleteAllSnapshots",
                 "($input: HypervDeleteAllSnapshotsInput!)",
-                fieldSpecDoc,
                 "RequestSuccess"
-            );
+                );
+            RequestSuccess? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (RequestSuccess)this.Field;
+            }
+            string fieldSpecDoc = Mutation.HypervDeleteAllSnapshots(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -962,24 +1013,20 @@ Initiates a job to download a snapshot from the specified location when the snap
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "ExportHypervVirtualMachineInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.ExportHypervVirtualMachine(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationExportHypervVirtualMachine",
                 "($input: ExportHypervVirtualMachineInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.ExportHypervVirtualMachine(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -989,24 +1036,20 @@ Initiates a job to download a snapshot from the specified location when the snap
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DownloadHypervVirtualMachineSnapshotFilesInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.DownloadHypervVirtualMachineSnapshotFiles(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationDownloadHypervVirtualMachineSnapshotFiles",
                 "($input: DownloadHypervVirtualMachineSnapshotFilesInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.DownloadHypervVirtualMachineSnapshotFiles(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1016,24 +1059,20 @@ Initiates a job to download a snapshot from the specified location when the snap
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "InstantRecoverHypervVirtualMachineSnapshotInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.InstantRecoverHypervVirtualMachineSnapshot(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationInstantRecoverHypervVirtualMachineSnapshot",
                 "($input: InstantRecoverHypervVirtualMachineSnapshotInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.InstantRecoverHypervVirtualMachineSnapshot(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1043,24 +1082,20 @@ Initiates a job to download a snapshot from the specified location when the snap
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RestoreHypervVirtualMachineSnapshotFilesInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.RestoreHypervVirtualMachineSnapshotFiles(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationRestoreHypervVirtualMachineSnapshotFiles",
                 "($input: RestoreHypervVirtualMachineSnapshotFilesInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.RestoreHypervVirtualMachineSnapshotFiles(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1070,24 +1105,20 @@ Initiates a job to download a snapshot from the specified location when the snap
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RegisterAgentHypervVirtualMachineInput!"),
             };
-            RequestSuccess? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (RequestSuccess)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (RequestSuccess)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.RegisterAgentHypervVirtualMachine(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationRegisterAgentHypervVirtualMachine",
                 "($input: RegisterAgentHypervVirtualMachineInput!)",
-                fieldSpecDoc,
                 "RequestSuccess"
-            );
+                );
+            RequestSuccess? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (RequestSuccess)this.Field;
+            }
+            string fieldSpecDoc = Mutation.RegisterAgentHypervVirtualMachine(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1097,24 +1128,20 @@ Initiates a job to download a snapshot from the specified location when the snap
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteHypervVirtualMachineSnapshotInput!"),
             };
-            RequestSuccess? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (RequestSuccess)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (RequestSuccess)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.DeleteHypervVirtualMachineSnapshot(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationDeleteHypervVirtualMachineSnapshot",
                 "($input: DeleteHypervVirtualMachineSnapshotInput!)",
-                fieldSpecDoc,
                 "RequestSuccess"
-            );
+                );
+            RequestSuccess? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (RequestSuccess)this.Field;
+            }
+            string fieldSpecDoc = Mutation.DeleteHypervVirtualMachineSnapshot(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1124,24 +1151,20 @@ Initiates a job to download a snapshot from the specified location when the snap
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DownloadHypervVirtualMachineSnapshotInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.DownloadHypervVirtualMachineSnapshot(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationDownloadHypervVirtualMachineSnapshot",
                 "($input: DownloadHypervVirtualMachineSnapshotInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.DownloadHypervVirtualMachineSnapshot(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1151,24 +1174,20 @@ Initiates a job to download a snapshot from the specified location when the snap
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CreateHypervVirtualMachineSnapshotMountInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.CreateHypervVirtualMachineSnapshotMount(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationCreateHypervVirtualMachineSnapshotMount",
                 "($input: CreateHypervVirtualMachineSnapshotMountInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.CreateHypervVirtualMachineSnapshotMount(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1178,24 +1197,20 @@ Initiates a job to download a snapshot from the specified location when the snap
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpdateHypervVirtualMachineSnapshotMountInput!"),
             };
-            UpdateHypervVirtualMachineSnapshotMountReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (UpdateHypervVirtualMachineSnapshotMountReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (UpdateHypervVirtualMachineSnapshotMountReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.UpdateHypervVirtualMachineSnapshotMount(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationUpdateHypervVirtualMachineSnapshotMount",
                 "($input: UpdateHypervVirtualMachineSnapshotMountInput!)",
-                fieldSpecDoc,
                 "UpdateHypervVirtualMachineSnapshotMountReply"
-            );
+                );
+            UpdateHypervVirtualMachineSnapshotMountReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (UpdateHypervVirtualMachineSnapshotMountReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.UpdateHypervVirtualMachineSnapshotMount(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1205,24 +1220,20 @@ Initiates a job to download a snapshot from the specified location when the snap
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteHypervVirtualMachineSnapshotMountInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.DeleteHypervVirtualMachineSnapshotMount(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationDeleteHypervVirtualMachineSnapshotMount",
                 "($input: DeleteHypervVirtualMachineSnapshotMountInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.DeleteHypervVirtualMachineSnapshotMount(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1232,24 +1243,20 @@ Initiates a job to download a snapshot from the specified location when the snap
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RefreshHypervServerInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.RefreshHypervServer(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationRefreshHypervServer",
                 "($input: RefreshHypervServerInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.RefreshHypervServer(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1259,24 +1266,20 @@ Initiates a job to download a snapshot from the specified location when the snap
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "BatchOnDemandBackupHypervVmInput!"),
             };
-            BatchOnDemandBackupHypervVmReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (BatchOnDemandBackupHypervVmReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (BatchOnDemandBackupHypervVmReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.BatchOnDemandBackupHypervVm(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationBatchOnDemandBackupHypervVm",
                 "($input: BatchOnDemandBackupHypervVmInput!)",
-                fieldSpecDoc,
                 "BatchOnDemandBackupHypervVmReply"
-            );
+                );
+            BatchOnDemandBackupHypervVmReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (BatchOnDemandBackupHypervVmReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.BatchOnDemandBackupHypervVm(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1286,24 +1289,20 @@ Initiates a job to download a snapshot from the specified location when the snap
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "BatchExportHypervVmInput!"),
             };
-            BatchExportHypervVmReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (BatchExportHypervVmReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (BatchExportHypervVmReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.BatchExportHypervVm(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationBatchExportHypervVm",
                 "($input: BatchExportHypervVmInput!)",
-                fieldSpecDoc,
                 "BatchExportHypervVmReply"
-            );
+                );
+            BatchExportHypervVmReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (BatchExportHypervVmReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.BatchExportHypervVm(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1313,24 +1312,20 @@ Initiates a job to download a snapshot from the specified location when the snap
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "BatchMountHypervVmInput!"),
             };
-            BatchMountHypervVmReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (BatchMountHypervVmReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (BatchMountHypervVmReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.BatchMountHypervVm(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationBatchMountHypervVm",
                 "($input: BatchMountHypervVmInput!)",
-                fieldSpecDoc,
                 "BatchMountHypervVmReply"
-            );
+                );
+            BatchMountHypervVmReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (BatchMountHypervVmReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.BatchMountHypervVm(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1340,24 +1335,20 @@ Initiates a job to download a snapshot from the specified location when the snap
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "BatchInstantRecoverHypervVmInput!"),
             };
-            BatchInstantRecoverHypervVmReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (BatchInstantRecoverHypervVmReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (BatchInstantRecoverHypervVmReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.BatchInstantRecoverHypervVm(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationBatchInstantRecoverHypervVm",
                 "($input: BatchInstantRecoverHypervVmInput!)",
-                fieldSpecDoc,
                 "BatchInstantRecoverHypervVmReply"
-            );
+                );
+            BatchInstantRecoverHypervVmReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (BatchInstantRecoverHypervVmReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.BatchInstantRecoverHypervVm(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1367,24 +1358,20 @@ Initiates a job to download a snapshot from the specified location when the snap
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpdateHypervVirtualMachineInput!"),
             };
-            UpdateHypervVirtualMachineReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (UpdateHypervVirtualMachineReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (UpdateHypervVirtualMachineReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.UpdateHypervVirtualMachine(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationUpdateHypervVirtualMachine",
                 "($input: UpdateHypervVirtualMachineInput!)",
-                fieldSpecDoc,
                 "UpdateHypervVirtualMachineReply"
-            );
+                );
+            UpdateHypervVirtualMachineReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (UpdateHypervVirtualMachineReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.UpdateHypervVirtualMachine(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1394,24 +1381,20 @@ Initiates a job to download a snapshot from the specified location when the snap
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DownloadHypervSnapshotFromLocationInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.DownloadHypervSnapshotFromLocation(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationDownloadHypervSnapshotFromLocation",
                 "($input: DownloadHypervSnapshotFromLocationInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.DownloadHypervSnapshotFromLocation(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
 

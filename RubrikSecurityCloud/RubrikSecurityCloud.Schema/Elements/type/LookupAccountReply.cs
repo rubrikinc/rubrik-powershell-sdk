@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("accountHoldLength")]
         public System.Int64? AccountHoldLength { get; set; }
 
+        //      C# -> DateTime? AccountStateUpdatedAt
+        // GraphQL -> accountStateUpdatedAt: DateTime (scalar)
+        [JsonProperty("accountStateUpdatedAt")]
+        public DateTime? AccountStateUpdatedAt { get; set; }
+
         //      C# -> System.Int64? HoldWarningLength
         // GraphQL -> holdWarningLength: Long! (scalar)
         [JsonProperty("holdWarningLength")]
@@ -59,6 +64,7 @@ namespace RubrikSecurityCloud.Types
         AccountType? AccountType = null,
         DateTime? AccountExpiryDate = null,
         System.Int64? AccountHoldLength = null,
+        DateTime? AccountStateUpdatedAt = null,
         System.Int64? HoldWarningLength = null
     ) 
     {
@@ -73,6 +79,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AccountHoldLength != null ) {
             this.AccountHoldLength = AccountHoldLength;
+        }
+        if ( AccountStateUpdatedAt != null ) {
+            this.AccountStateUpdatedAt = AccountStateUpdatedAt;
         }
         if ( HoldWarningLength != null ) {
             this.HoldWarningLength = HoldWarningLength;
@@ -106,6 +115,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> accountHoldLength: Long! (scalar)
         if (this.AccountHoldLength != null) {
             s += ind + "accountHoldLength\n" ;
+        }
+        //      C# -> DateTime? AccountStateUpdatedAt
+        // GraphQL -> accountStateUpdatedAt: DateTime (scalar)
+        if (this.AccountStateUpdatedAt != null) {
+            s += ind + "accountStateUpdatedAt\n" ;
         }
         //      C# -> System.Int64? HoldWarningLength
         // GraphQL -> holdWarningLength: Long! (scalar)
@@ -143,6 +157,12 @@ namespace RubrikSecurityCloud.Types
         if (this.AccountHoldLength == null && Exploration.Includes(parent + ".accountHoldLength", true))
         {
             this.AccountHoldLength = new System.Int64();
+        }
+        //      C# -> DateTime? AccountStateUpdatedAt
+        // GraphQL -> accountStateUpdatedAt: DateTime (scalar)
+        if (this.AccountStateUpdatedAt == null && Exploration.Includes(parent + ".accountStateUpdatedAt", true))
+        {
+            this.AccountStateUpdatedAt = new DateTime();
         }
         //      C# -> System.Int64? HoldWarningLength
         // GraphQL -> holdWarningLength: Long! (scalar)

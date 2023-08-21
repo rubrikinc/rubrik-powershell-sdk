@@ -19,17 +19,17 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? Comment
-        // GraphQL -> comment: String (scalar)
-        [JsonProperty("comment")]
-        public System.String? Comment { get; set; }
-
         //      C# -> List<System.String>? RequestIds
         // GraphQL -> requestIds: [UUID!]! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("requestIds")]
         public List<System.String>? RequestIds { get; set; }
+
+        //      C# -> System.String? Comment
+        // GraphQL -> comment: String (scalar)
+        [JsonProperty("comment")]
+        public System.String? Comment { get; set; }
 
 
         #endregion

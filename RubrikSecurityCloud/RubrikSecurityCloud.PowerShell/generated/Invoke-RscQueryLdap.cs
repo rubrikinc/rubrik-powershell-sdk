@@ -18,6 +18,21 @@ using RubrikSecurityCloud.PowerShell.Private;
 
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
+    /// <summary>
+    /// Ldap queries
+    /// </summary>
+    /// <description>
+    /// Invoke-RscQueryLdap is a master cmdlet for Ldap work that can invoke any of the following subcommands: IntegrationList, PrincipalList, AuthorizedPrincipalList.
+    /// </description>
+    /// <example>
+    /// <code>Invoke-RscQueryLdap -IntegrationList [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryLdap -PrincipalList [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryLdap -AuthorizedPrincipalList [-Arg ..] [-Field ..]</code>
+    /// </example>
     [Cmdlet(
         "Invoke",
         "RscQueryLdap",
@@ -155,24 +170,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("sortBy", "LdapIntegrationFieldEnum"),
             };
-            LdapIntegrationConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (LdapIntegrationConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (LdapIntegrationConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.LdapIntegrationConnection(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryLdapIntegrationConnection",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: LdapIntegrationFieldEnum)",
-                fieldSpecDoc,
                 "LdapIntegrationConnection"
-            );
+                );
+            LdapIntegrationConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (LdapIntegrationConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.LdapIntegrationConnection(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -198,24 +209,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("id", "UUID!"),
                 Tuple.Create("searchText", "String!"),
             };
-            PrincipalConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (PrincipalConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (PrincipalConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.LdapPrincipalConnection(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryLdapPrincipalConnection",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: LdapPrincipalFieldEnum,$id: UUID!,$searchText: String!)",
-                fieldSpecDoc,
                 "PrincipalConnection"
-            );
+                );
+            PrincipalConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (PrincipalConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.LdapPrincipalConnection(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -241,24 +248,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("searchText", "String!"),
                 Tuple.Create("roleIds", "[UUID!]"),
             };
-            AuthorizedPrincipalConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AuthorizedPrincipalConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AuthorizedPrincipalConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.LdapAuthorizedPrincipalConnection(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryLdapAuthorizedPrincipalConnection",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: LdapAuthorizedPrincipalFieldEnum,$searchText: String!,$roleIds: [UUID!])",
-                fieldSpecDoc,
                 "AuthorizedPrincipalConnection"
-            );
+                );
+            AuthorizedPrincipalConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AuthorizedPrincipalConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.LdapAuthorizedPrincipalConnection(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
 

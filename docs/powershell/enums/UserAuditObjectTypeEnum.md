@@ -23,6 +23,7 @@ User audit object type.
 - MONGO_COLLECTION - MongoDB Collection type.
 - O365Group - Office 365 Group type.
 - NutanixVm - Nutanix virtual machine type.
+- REPLICATION_PAIR - Rubrik cluster replication pair.
 - MONGODB_SOURCE - MongoDB source type.
 - HypervServer - Hyper-V server type.
 - MSSQL_MOUNT - MSSQL Mount type.

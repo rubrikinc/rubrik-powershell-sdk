@@ -64,7 +64,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         VerbsCommunications.Connect,
         "Rsc",
         DefaultParameterSetName = "IfNeeded")]
-    public class Connect_Rsc : PSCmdlet
+    public class Connect_Rsc : RscBasePSCmdlet
     {
         [Parameter(
             ParameterSetName = "IfNeeded",
@@ -186,9 +186,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                                 //ServiceAccountFile option specified, but no file given
                                 //Set the default service account file now
 
-                                string psProfileDir = Files.GetUserProfileDir(
-                                    this.SessionState.PSVariable.GetValue(
-                                        "PROFILE", "").ToString());
+                                string psProfileDir = this.GetProfileDir();
                                 ServiceAccountFile = Path.Combine(
                                     psProfileDir,
                                     Files.DefaultServiceAccountFileName

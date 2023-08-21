@@ -12,18 +12,38 @@ namespace RubrikSecurityCloud
 
     public class RscGqlRequest : GraphQL.GraphQLRequest
     {
-        internal string? _customOperationsDir = null;
-        internal string? _queryFileName = null;
+        /// <summary>
+        /// Default for when SaveQueryToFile() is called without a filename.
+        /// </summary>
+        public string DefaultQueryFileName { get; set; } = "query.gql";
         
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
         public void Init(
+            string customOperationsDir,
             string? operationName = null,
             string? query = null,
-            string? variables = null,
-            string? customOperationsDir = null)
+            string? variables = null)
         {
             if ( operationName != null )
             {
                 this.OperationName = operationName;
+            }
+            
+            if ( string.IsNullOrEmpty(this.OperationName))
+            {
+                this.DefaultQueryFileName = "query.gql";
+            }
+            else 
+            {
+                this.DefaultQueryFileName = this.OperationName + ".gql" ;
+            }
+
+            if ( ! string.IsNullOrEmpty(customOperationsDir) )
+            {
+                this.DefaultQueryFileName = System.IO.Path.Combine(
+                    customOperationsDir, 
+                    this.DefaultQueryFileName);
             }
             if ( query != null )
             {
@@ -33,41 +53,21 @@ namespace RubrikSecurityCloud
             {
                 this.Variables = variables;
             }
-            if (customOperationsDir != null)
-            {
-                this._customOperationsDir = customOperationsDir;
-            }
         }
+#pragma warning restore 1591
 
+        /// <summary>
+        /// Save the query (just the query, not the variables) to a file.
+        /// If no filename is provided, DefaultQueryFileName is used.
+        /// </summary>
         public string SaveQueryToFile( string? filename = null )
         {
             if (filename == null)
             {
-                filename = QueryFileName();
-            } else {
-                this._queryFileName = filename;
+                filename = this.DefaultQueryFileName;
             }
-            System.IO.File.WriteAllText(filename, this.Query);
+            Files.WriteFile(filename, this.Query, true);
             return filename;
-        }
-
-        public string DefaultQueryFileName()
-        {
-            string filename = this.OperationName + ".gql" ;
-            if ( ! string.IsNullOrEmpty(this._customOperationsDir) )
-            {
-                filename = System.IO.Path.Combine(this._customOperationsDir, filename);
-            }
-            return filename;
-        }
-
-        public string QueryFileName()
-        {
-            if ( string.IsNullOrEmpty(this._queryFileName) )
-            {
-                this._queryFileName = DefaultQueryFileName();
-            }
-            return this._queryFileName;
         }
     }
 }

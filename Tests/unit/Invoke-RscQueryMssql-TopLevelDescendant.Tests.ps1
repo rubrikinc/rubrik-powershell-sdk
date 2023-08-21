@@ -3,7 +3,7 @@ BeforeAll {
 }
 Describe -Name 'Invoke-RscQueryMssql -TopLevelDescendant' -Fixture {
     It -Name 'PhysicalHost' -Test {
-        $inputs=(Invoke-RscQueryMssql -Topleveldescendant -GetInputs)
+        $inputs=(Invoke-RscQueryMssql -Topleveldescendant -GetInput)
 
         # Field is a MssqlTopLevelDescendantTypeConnection
         $inputs.Field.GetType().Name | Should -Be 'MssqlTopLevelDescendantTypeConnection'

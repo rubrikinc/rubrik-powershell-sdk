@@ -44,3 +44,4 @@ Warnings related to SLA Domain assignment.
 - SAP_HANA_CHANGE_RETENTION_NOT_SUPPORTED_WARNING
 - SAP_HANA_CASCADED_ARCHIVAL_NOT_SUPPORTED_ON_CLUSTER_WARNING - Cascaded Archival is not supported for SAP HANA workloads on the cluster.
 - INSTANT_ARCHIVAL_AWS_SHARED_EXOCOMPUTE_WARNING - Instant archival is not supported for AWS accounts or workloads that use another account's Exocompute.
+- CDP_ONLY_SLA_NOT_SUPPOERTED - SLA Domain without snapshot schedule not supported.

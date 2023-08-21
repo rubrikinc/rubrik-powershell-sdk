@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum PolarisReportViewType
     {
+        [EnumMember(Value = "COMPLIANCE_REPORT")]
+        COMPLIANCE_REPORT,
+
         [EnumMember(Value = "OBJECT_CAPACITY_OVERTIME_REPORT")]
         OBJECT_CAPACITY_OVERTIME_REPORT,
 

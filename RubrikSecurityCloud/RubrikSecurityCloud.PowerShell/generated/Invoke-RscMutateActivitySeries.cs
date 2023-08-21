@@ -18,6 +18,15 @@ using RubrikSecurityCloud.PowerShell.Private;
 
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
+    /// <summary>
+    /// Activity series mutations
+    /// </summary>
+    /// <description>
+    /// Invoke-RscMutateActivitySeries is a master cmdlet for ActivitySeries work that can invoke any of the following subcommands: Cancel.
+    /// </description>
+    /// <example>
+    /// <code>Invoke-RscMutateActivitySeries -Cancel [-Arg ..] [-Field ..]</code>
+    /// </example>
     [Cmdlet(
         "Invoke",
         "RscMutateActivitySeries",
@@ -83,24 +92,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CancelActivitySeriesInput!"),
             };
-            System.Boolean? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (System.Boolean)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (System.Boolean)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.CancelActivitySeries(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationCancelActivitySeries",
                 "($input: CancelActivitySeriesInput!)",
-                fieldSpecDoc,
                 "System.Boolean"
-            );
+                );
+            System.Boolean? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (System.Boolean)this.Field;
+            }
+            string fieldSpecDoc = Mutation.CancelActivitySeries(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
 

@@ -112,6 +112,11 @@
             The name of the GraphQL Operation to look up.
             </summary>
         </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Get_RscCmdlet.Locations">
+            <summary>
+            Info about the various locations the SDK uses
+            </summary>
+        </member>
         <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.Get_RscFileset">
             <summary>
             Retrieve one or more filsets managed by
@@ -579,12 +584,172 @@
             The variables to supply to the GraphQL query.
             </summary>
         </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscMutateActivitySeries">
+            <summary>
+            Activity series mutations
+            </summary>
+            <description>
+            Invoke-RscMutateActivitySeries is a master cmdlet for ActivitySeries work that can invoke any of the following subcommands: Cancel.
+            </description>
+            <example>
+            <code>Invoke-RscMutateActivitySeries -Cancel [-Arg ..] [-Field ..]</code>
+            </example>
+        </member>
         <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscMutateActivitySeries.Cancel">
              <summary>
              Cancel parameter set
             
              [GraphQL: cancelActivitySeries]
              </summary>
+        </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscMutateAws">
+            <summary>
+            AWS mutations
+            </summary>
+            <description>
+            Invoke-RscMutateAws is a master cmdlet for Aws work that can invoke any of the following subcommands: StartNativeEc2InstanceSnapshotsJob, StartRestoreNativeEc2InstanceSnapshotJob, StartRefreshNativeAccountsJob, StartCreateNativeEbsVolumeSnapshotsJob, StartNativeAccountDisableJob, StartExportNativeEbsVolumeSnapshotJob, ExcludeNativeEbsVolumesFromSnapshot, StartNativeRdsInstanceSnapshotsJob, CreateAccount, UpdateAccount, CreateAutomaticTargetMapping, CreateCloudNativeStorageSetting, UpdateAutomaticTargetMapping, UpdateCloudNativeStorageSetting, CreateTarget, UpdateTarget, CreateReaderTarget, CreateComputeSetting, UpdateComputeSetting, DeleteComputeSetting, CloudAccountValidate, CloudAccountInitiate, NativeProtectionAccountAdd, ValidateAndCreateCloudAccount, FinalizeCloudAccountProtection, PrepareCloudAccountDeletion, FinalizeCloudAccountDeletion, UpdateCloudAccountFeature, UpdateCloudAccount, PrepareFeatureUpdateForCloudAccount, CloudAccountUpdateFeature, CreateExocomputeConfigs, DeleteExocomputeConfigs, UpdateExocomputeConfigs, StartExocomputeDisableJob, AddIamUserBasedCloudAccount, DeleteIamUserBasedCloudAccount, DeleteCloudAccountWithoutCft, UpgradeIamUserBasedCloudAccountPermissions, UpgradeCloudAccountFeaturesWithoutCft, AddAuthenticationServerBasedCloudAccount, PatchAuthenticationServerBasedCloudAccount, PatchIamUserBasedCloudAccount, RegisterFeatureArtifacts, BulkDeleteCloudAccountWithoutCft, CreateCluster, DeleteCluster.
+            </description>
+            <example>
+            <code>Invoke-RscMutateAws -StartNativeEc2InstanceSnapshotsJob [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAws -StartRestoreNativeEc2InstanceSnapshotJob [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAws -StartRefreshNativeAccountsJob [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAws -StartCreateNativeEbsVolumeSnapshotsJob [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAws -StartNativeAccountDisableJob [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAws -StartExportNativeEbsVolumeSnapshotJob [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAws -ExcludeNativeEbsVolumesFromSnapshot [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAws -StartNativeRdsInstanceSnapshotsJob [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAws -CreateAccount [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAws -UpdateAccount [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAws -CreateAutomaticTargetMapping [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAws -CreateCloudNativeStorageSetting [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAws -UpdateAutomaticTargetMapping [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAws -UpdateCloudNativeStorageSetting [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAws -CreateTarget [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAws -UpdateTarget [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAws -CreateReaderTarget [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAws -CreateComputeSetting [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAws -UpdateComputeSetting [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAws -DeleteComputeSetting [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAws -CloudAccountValidate [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAws -CloudAccountInitiate [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAws -NativeProtectionAccountAdd [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAws -ValidateAndCreateCloudAccount [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAws -FinalizeCloudAccountProtection [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAws -PrepareCloudAccountDeletion [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAws -FinalizeCloudAccountDeletion [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAws -UpdateCloudAccountFeature [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAws -UpdateCloudAccount [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAws -PrepareFeatureUpdateForCloudAccount [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAws -CloudAccountUpdateFeature [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAws -CreateExocomputeConfigs [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAws -DeleteExocomputeConfigs [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAws -UpdateExocomputeConfigs [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAws -StartExocomputeDisableJob [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAws -AddIamUserBasedCloudAccount [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAws -DeleteIamUserBasedCloudAccount [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAws -DeleteCloudAccountWithoutCft [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAws -UpgradeIamUserBasedCloudAccountPermissions [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAws -UpgradeCloudAccountFeaturesWithoutCft [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAws -AddAuthenticationServerBasedCloudAccount [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAws -PatchAuthenticationServerBasedCloudAccount [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAws -PatchIamUserBasedCloudAccount [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAws -RegisterFeatureArtifacts [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAws -BulkDeleteCloudAccountWithoutCft [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAws -CreateCluster [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAws -DeleteCluster [-Arg ..] [-Field ..]</code>
+            </example>
         </member>
         <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscMutateAws.StartNativeEc2InstanceSnapshotsJob">
              <summary>
@@ -914,6 +1079,167 @@
             
              [GraphQL: deleteAwsCluster]
              </summary>
+        </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscMutateAzure">
+            <summary>
+            Azure mutations
+            </summary>
+            <description>
+            Invoke-RscMutateAzure is a master cmdlet for Azure work that can invoke any of the following subcommands: StartRefreshNativeSubscriptionsJob, StartRestoreNativeVirtualMachineJob, StartExportNativeVirtualMachineJob, ExcludeNativeManagedDisksFromSnapshot, StartCreateNativeVirtualMachineSnapshotsJob, StartDisableNativeSubscriptionProtectionJob, StartCreateNativeManagedDiskSnapshotsJob, StartExportNativeManagedDiskJob, StartExportSqlDatabaseDbJob, StartExportSqlManagedInstanceDbJob, CreateAccount, UpdateAccount, CreateAutomaticTargetMapping, CreateCloudNativeStorageSetting, CreateCloudNativeRcvStorageSetting, UpdateAutomaticTargetMapping, UpdateCloudNativeStorageSetting, UpdateCloudNativeRcvStorageSetting, CreateTarget, UpdateTarget, CreateReaderTarget, StartCloudAccountOauth, CompleteCloudAccountOauth, SetCloudAccountCustomerAppCredentials, AddCloudAccount, AddCloudAccountWithoutOauth, DeleteCloudAccount, DeleteCloudAccountWithoutOauth, UpgradeCloudAccount, UpdateCustomerAppPermissionForSql, StartDisableCloudAccountJob, UpdateCloudAccount, MapCloudAccountToPersistentStorageLocation, AddCloudAccountExocomputeConfigurations, DeleteCloudAccountExocomputeConfigurations, MapCloudAccountExocomputeSubscription, UnmapCloudAccountExocomputeSubscription, UpgradeCloudAccountPermissionsWithoutOauth, UnmapPersistentStorageSubscription, OauthConsentKickoff, OauthConsentComplete, CreateSaasAppAad, CreateCluster, DeleteCluster, KickoffAdAppSetup, CompleteAdAppSetup, DeleteAdDirectory, BackupAdDirectory, InitiateAdAppUpdate, CompleteAdAppUpdate, RestoreAdObjectsWithPassword.
+            </description>
+            <example>
+            <code>Invoke-RscMutateAzure -StartRefreshNativeSubscriptionsJob [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAzure -StartRestoreNativeVirtualMachineJob [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAzure -StartExportNativeVirtualMachineJob [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAzure -ExcludeNativeManagedDisksFromSnapshot [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAzure -StartCreateNativeVirtualMachineSnapshotsJob [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAzure -StartDisableNativeSubscriptionProtectionJob [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAzure -StartCreateNativeManagedDiskSnapshotsJob [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAzure -StartExportNativeManagedDiskJob [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAzure -StartExportSqlDatabaseDbJob [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAzure -StartExportSqlManagedInstanceDbJob [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAzure -CreateAccount [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAzure -UpdateAccount [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAzure -CreateAutomaticTargetMapping [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAzure -CreateCloudNativeStorageSetting [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAzure -CreateCloudNativeRcvStorageSetting [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAzure -UpdateAutomaticTargetMapping [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAzure -UpdateCloudNativeStorageSetting [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAzure -UpdateCloudNativeRcvStorageSetting [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAzure -CreateTarget [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAzure -UpdateTarget [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAzure -CreateReaderTarget [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAzure -StartCloudAccountOauth [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAzure -CompleteCloudAccountOauth [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAzure -SetCloudAccountCustomerAppCredentials [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAzure -AddCloudAccount [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAzure -AddCloudAccountWithoutOauth [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAzure -DeleteCloudAccount [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAzure -DeleteCloudAccountWithoutOauth [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAzure -UpgradeCloudAccount [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAzure -UpdateCustomerAppPermissionForSql [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAzure -StartDisableCloudAccountJob [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAzure -UpdateCloudAccount [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAzure -MapCloudAccountToPersistentStorageLocation [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAzure -AddCloudAccountExocomputeConfigurations [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAzure -DeleteCloudAccountExocomputeConfigurations [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAzure -MapCloudAccountExocomputeSubscription [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAzure -UnmapCloudAccountExocomputeSubscription [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAzure -UpgradeCloudAccountPermissionsWithoutOauth [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAzure -UnmapPersistentStorageSubscription [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAzure -OauthConsentKickoff [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAzure -OauthConsentComplete [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAzure -CreateSaasAppAad [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAzure -CreateCluster [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAzure -DeleteCluster [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAzure -KickoffAdAppSetup [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAzure -CompleteAdAppSetup [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAzure -DeleteAdDirectory [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAzure -BackupAdDirectory [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAzure -InitiateAdAppUpdate [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAzure -CompleteAdAppUpdate [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateAzure -RestoreAdObjectsWithPassword [-Arg ..] [-Field ..]</code>
+            </example>
         </member>
         <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscMutateAzure.StartRefreshNativeSubscriptionsJob">
              <summary>
@@ -1272,12 +1598,46 @@
              [GraphQL: restoreAzureAdObjectsWithPassword]
              </summary>
         </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscMutateAzureO365">
+            <summary>
+            AzureO365 mutations
+            </summary>
+            <description>
+            Invoke-RscMutateAzureO365 is a master cmdlet for AzureO365 work that can invoke any of the following subcommands: SetupExocompute.
+            </description>
+            <example>
+            <code>Invoke-RscMutateAzureO365 -SetupExocompute [-Arg ..] [-Field ..]</code>
+            </example>
+        </member>
         <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscMutateAzureO365.SetupExocompute">
              <summary>
              SetupExocompute parameter set
             
              [GraphQL: setupAzureO365Exocompute]
              </summary>
+        </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscMutateCassandra">
+            <summary>
+            Cassandra mutations
+            </summary>
+            <description>
+            Invoke-RscMutateCassandra is a master cmdlet for Cassandra work that can invoke any of the following subcommands: RecoverSource, CreateSource, UpdateSource, DeleteSource, BulkDeleteSources.
+            </description>
+            <example>
+            <code>Invoke-RscMutateCassandra -RecoverSource [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateCassandra -CreateSource [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateCassandra -UpdateSource [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateCassandra -DeleteSource [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateCassandra -BulkDeleteSources [-Arg ..] [-Field ..]</code>
+            </example>
         </member>
         <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscMutateCassandra.RecoverSource">
              <summary>
@@ -1314,6 +1674,59 @@
              [GraphQL: bulkDeleteCassandraSources]
              </summary>
         </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscMutateCluster">
+            <summary>
+            Cluster mutations
+            </summary>
+            <description>
+            Invoke-RscMutateCluster is a master cmdlet for Cluster work that can invoke any of the following subcommands: AddNodesToCloud, RegisterCloud, UpdateDatabaseLogReportingProperties, CreateFailover, UpdateFailover, DeleteFailover, BulkDeleteFailover, AddK8s, DeleteK8s, RefreshK8sV2, CreateK8s, RefreshK8s, ArchiveK8s, RemoveCdm, RecoverCloud.
+            </description>
+            <example>
+            <code>Invoke-RscMutateCluster -AddNodesToCloud [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateCluster -RegisterCloud [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateCluster -UpdateDatabaseLogReportingProperties [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateCluster -CreateFailover [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateCluster -UpdateFailover [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateCluster -DeleteFailover [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateCluster -BulkDeleteFailover [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateCluster -AddK8s [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateCluster -DeleteK8s [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateCluster -RefreshK8sV2 [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateCluster -CreateK8s [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateCluster -RefreshK8s [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateCluster -ArchiveK8s [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateCluster -RemoveCdm [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateCluster -RecoverCloud [-Arg ..] [-Field ..]</code>
+            </example>
+        </member>
         <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscMutateCluster.AddNodesToCloud">
              <summary>
              AddNodesToCloud parameter set
@@ -1326,6 +1739,13 @@
              RegisterCloud parameter set
             
              [GraphQL: registerCloudCluster]
+             </summary>
+        </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscMutateCluster.UpdateDatabaseLogReportingProperties">
+             <summary>
+             UpdateDatabaseLogReportingProperties parameter set
+            
+             [GraphQL: updateDatabaseLogReportingPropertiesForCluster]
              </summary>
         </member>
         <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscMutateCluster.CreateFailover">
@@ -1412,6 +1832,47 @@
              [GraphQL: recoverCloudCluster]
              </summary>
         </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscMutateDb2">
+            <summary>
+            Db2 mutations
+            </summary>
+            <description>
+            Invoke-RscMutateDb2 is a master cmdlet for Db2 work that can invoke any of the following subcommands: AddInstance, DeleteInstance, DiscoverInstance, PatchInstance, CreateOnDemandBackup, DownloadSnapshot, DownloadSnapshotsForPointInTimeRecovery, ExpireDownloadedSnapshots, PatchDatabase, RefreshDatabase, DeleteDatabase.
+            </description>
+            <example>
+            <code>Invoke-RscMutateDb2 -AddInstance [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateDb2 -DeleteInstance [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateDb2 -DiscoverInstance [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateDb2 -PatchInstance [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateDb2 -CreateOnDemandBackup [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateDb2 -DownloadSnapshot [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateDb2 -DownloadSnapshotsForPointInTimeRecovery [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateDb2 -ExpireDownloadedSnapshots [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateDb2 -PatchDatabase [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateDb2 -RefreshDatabase [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateDb2 -DeleteDatabase [-Arg ..] [-Field ..]</code>
+            </example>
+        </member>
         <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscMutateDb2.AddInstance">
              <summary>
              AddInstance parameter set
@@ -1488,6 +1949,83 @@
             
              [GraphQL: deleteDb2Database]
              </summary>
+        </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscMutateHyperv">
+            <summary>
+            Hyperv mutations
+            </summary>
+            <description>
+            Invoke-RscMutateHyperv is a master cmdlet for Hyperv work that can invoke any of the following subcommands: RegisterScvmm, ScvmmUpdate, ScvmmDelete, RefreshScvmm, OnDemandSnapshot, DeleteAllSnapshots, ExportVirtualMachine, DownloadVirtualMachineSnapshotFiles, InstantRecoverVirtualMachineSnapshot, RestoreVirtualMachineSnapshotFiles, RegisterAgentVirtualMachine, DeleteVirtualMachineSnapshot, DownloadVirtualMachineSnapshot, CreateVirtualMachineSnapshotMount, UpdateVirtualMachineSnapshotMount, DeleteVirtualMachineSnapshotMount, RefreshServer, BatchOnDemandBackupVm, BatchExportVm, BatchMountVm, BatchInstantRecoverVm, UpdateVirtualMachine, DownloadSnapshotFromLocation.
+            </description>
+            <example>
+            <code>Invoke-RscMutateHyperv -RegisterScvmm [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateHyperv -ScvmmUpdate [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateHyperv -ScvmmDelete [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateHyperv -RefreshScvmm [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateHyperv -OnDemandSnapshot [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateHyperv -DeleteAllSnapshots [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateHyperv -ExportVirtualMachine [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateHyperv -DownloadVirtualMachineSnapshotFiles [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateHyperv -InstantRecoverVirtualMachineSnapshot [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateHyperv -RestoreVirtualMachineSnapshotFiles [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateHyperv -RegisterAgentVirtualMachine [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateHyperv -DeleteVirtualMachineSnapshot [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateHyperv -DownloadVirtualMachineSnapshot [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateHyperv -CreateVirtualMachineSnapshotMount [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateHyperv -UpdateVirtualMachineSnapshotMount [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateHyperv -DeleteVirtualMachineSnapshotMount [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateHyperv -RefreshServer [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateHyperv -BatchOnDemandBackupVm [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateHyperv -BatchExportVm [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateHyperv -BatchMountVm [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateHyperv -BatchInstantRecoverVm [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateHyperv -UpdateVirtualMachine [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateHyperv -DownloadSnapshotFromLocation [-Arg ..] [-Field ..]</code>
+            </example>
         </member>
         <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscMutateHyperv.RegisterScvmm">
              <summary>
@@ -1650,6 +2188,26 @@
              [GraphQL: downloadHypervSnapshotFromLocation]
              </summary>
         </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscMutateLdap">
+            <summary>
+            Ldap mutations
+            </summary>
+            <description>
+            Invoke-RscMutateLdap is a master cmdlet for Ldap work that can invoke any of the following subcommands: UpdateIntegration, RemoveIntegration, DeletePrincipals, SetMfaSetting.
+            </description>
+            <example>
+            <code>Invoke-RscMutateLdap -UpdateIntegration [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateLdap -RemoveIntegration [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateLdap -DeletePrincipals [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateLdap -SetMfaSetting [-Arg ..] [-Field ..]</code>
+            </example>
+        </member>
         <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscMutateLdap.UpdateIntegration">
              <summary>
              UpdateIntegration parameter set
@@ -1677,6 +2235,53 @@
             
              [GraphQL: setLdapMfaSetting]
              </summary>
+        </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscMutateMongo">
+            <summary>
+            Mongo mutations
+            </summary>
+            <description>
+            Invoke-RscMutateMongo is a master cmdlet for Mongo work that can invoke any of the following subcommands: AddSource, DeleteSource, DiscoverSource, PatchSource, RetryAddSource, AssignSlaToDbCollection, RecoverSource, CreateOnDemandDatabaseBackup, CreatedbSource, UpdatedbSource, DeletedbSource, BulkDeletedbSources, RecoverdbSource.
+            </description>
+            <example>
+            <code>Invoke-RscMutateMongo -AddSource [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateMongo -DeleteSource [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateMongo -DiscoverSource [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateMongo -PatchSource [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateMongo -RetryAddSource [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateMongo -AssignSlaToDbCollection [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateMongo -RecoverSource [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateMongo -CreateOnDemandDatabaseBackup [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateMongo -CreatedbSource [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateMongo -UpdatedbSource [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateMongo -DeletedbSource [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateMongo -BulkDeletedbSources [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateMongo -RecoverdbSource [-Arg ..] [-Field ..]</code>
+            </example>
         </member>
         <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscMutateMongo.AddSource">
              <summary>
@@ -1768,6 +2373,65 @@
             
              [GraphQL: recoverMongodbSource]
              </summary>
+        </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscMutateMssql">
+            <summary>
+            MSSQL mutations
+            </summary>
+            <description>
+            Invoke-RscMutateMssql is a master cmdlet for Mssql work that can invoke any of the following subcommands: BrowseDatabaseSnapshot, ExportDatabase, RestoreDatabase, BulkUpdateDbs, TakeLogBackup, CreateOnDemandBackup, DeleteDbSnapshots, DeleteLiveMount, BulkCreateOnDemandBackup, CreateLiveMount, UpdateLogShippingConfiguration, DownloadDatabaseFilesFromArchivalLocation, DownloadDatabaseBackupFiles, AssignSlaDomainProperties, UpdateDefaultProperties, CreateLogShippingConfiguration, AssignSlaDomainPropertiesAsync.
+            </description>
+            <example>
+            <code>Invoke-RscMutateMssql -BrowseDatabaseSnapshot [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateMssql -ExportDatabase [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateMssql -RestoreDatabase [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateMssql -BulkUpdateDbs [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateMssql -TakeLogBackup [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateMssql -CreateOnDemandBackup [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateMssql -DeleteDbSnapshots [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateMssql -DeleteLiveMount [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateMssql -BulkCreateOnDemandBackup [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateMssql -CreateLiveMount [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateMssql -UpdateLogShippingConfiguration [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateMssql -DownloadDatabaseFilesFromArchivalLocation [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateMssql -DownloadDatabaseBackupFiles [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateMssql -AssignSlaDomainProperties [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateMssql -UpdateDefaultProperties [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateMssql -CreateLogShippingConfiguration [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateMssql -AssignSlaDomainPropertiesAsync [-Arg ..] [-Field ..]</code>
+            </example>
         </member>
         <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscMutateMssql.BrowseDatabaseSnapshot">
              <summary>
@@ -1887,6 +2551,92 @@
             
              [GraphQL: assignMssqlSlaDomainPropertiesAsync]
              </summary>
+        </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscMutateNutanix">
+            <summary>
+            Nutanix mutations
+            </summary>
+            <description>
+            Invoke-RscMutateNutanix is a master cmdlet for Nutanix work that can invoke any of the following subcommands: CreateCluster, RefreshCluster, UpdateCluster, DeleteCluster, RegisterAgentVm, UpdateVm, CreateOnDemandBackup, DeleteSnapshots, MountSnapshotV1, PatchMountV1, DeleteMountV1, MigrateMountV1, DeleteSnapshot, RestoreFilesSnapshot, DownloadFilesSnapshot, ExportSnapshot, DownloadSnapshot, BatchExportVm, BatchMountVm, DownloadVmFromLocation, CreatePrismCentral, UpdatePrismCentral, DeletePrismCentral, RefreshPrismCentral, PrismCentralAsyncRequestStatus, BulkOnDemandSnapshotVm.
+            </description>
+            <example>
+            <code>Invoke-RscMutateNutanix -CreateCluster [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateNutanix -RefreshCluster [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateNutanix -UpdateCluster [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateNutanix -DeleteCluster [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateNutanix -RegisterAgentVm [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateNutanix -UpdateVm [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateNutanix -CreateOnDemandBackup [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateNutanix -DeleteSnapshots [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateNutanix -MountSnapshotV1 [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateNutanix -PatchMountV1 [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateNutanix -DeleteMountV1 [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateNutanix -MigrateMountV1 [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateNutanix -DeleteSnapshot [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateNutanix -RestoreFilesSnapshot [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateNutanix -DownloadFilesSnapshot [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateNutanix -ExportSnapshot [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateNutanix -DownloadSnapshot [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateNutanix -BatchExportVm [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateNutanix -BatchMountVm [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateNutanix -DownloadVmFromLocation [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateNutanix -CreatePrismCentral [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateNutanix -UpdatePrismCentral [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateNutanix -DeletePrismCentral [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateNutanix -RefreshPrismCentral [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateNutanix -PrismCentralAsyncRequestStatus [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateNutanix -BulkOnDemandSnapshotVm [-Arg ..] [-Field ..]</code>
+            </example>
         </member>
         <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscMutateNutanix.CreateCluster">
              <summary>
@@ -2069,6 +2819,113 @@
             
              [GraphQL: bulkOnDemandSnapshotNutanixVm]
              </summary>
+        </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscMutateO365">
+            <summary>
+            O365 mutations
+            </summary>
+            <description>
+            Invoke-RscMutateO365 is a master cmdlet for O365 work that can invoke any of the following subcommands: SaaSSetupKickoff, PdlGroups, SaasSetupComplete, SetupKickoff, AddOrg, OauthConsentKickoff, OauthConsentComplete, CreateAppKickoff, CreateAppComplete, InsertCustomerApp, UpdateAppAuthStatus, UpdateAppPermissions, DeleteAzureApp, BackupMailbox, BackupOnedrive, BackupSharepointDrive, BackupSharepointList, BackupSharePointSite, BackupTeam, RestoreTeamsFiles, ExportTeamsFiles, RestoreTeamsConversations, RestoreSnappable, ExportWorkload, RefreshOrg, DeleteOrg, RestoreMailbox, ExportMailbox, SetServiceAccount, EnableSharePoint, EnableTeams, DeleteServiceAccount, UpdateOrgCustomName.
+            </description>
+            <example>
+            <code>Invoke-RscMutateO365 -SaaSSetupKickoff [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateO365 -PdlGroups [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateO365 -SaasSetupComplete [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateO365 -SetupKickoff [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateO365 -AddOrg [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateO365 -OauthConsentKickoff [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateO365 -OauthConsentComplete [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateO365 -CreateAppKickoff [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateO365 -CreateAppComplete [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateO365 -InsertCustomerApp [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateO365 -UpdateAppAuthStatus [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateO365 -UpdateAppPermissions [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateO365 -DeleteAzureApp [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateO365 -BackupMailbox [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateO365 -BackupOnedrive [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateO365 -BackupSharepointDrive [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateO365 -BackupSharepointList [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateO365 -BackupSharePointSite [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateO365 -BackupTeam [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateO365 -RestoreTeamsFiles [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateO365 -ExportTeamsFiles [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateO365 -RestoreTeamsConversations [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateO365 -RestoreSnappable [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateO365 -ExportWorkload [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateO365 -RefreshOrg [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateO365 -DeleteOrg [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateO365 -RestoreMailbox [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateO365 -ExportMailbox [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateO365 -SetServiceAccount [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateO365 -EnableSharePoint [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateO365 -EnableTeams [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateO365 -DeleteServiceAccount [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateO365 -UpdateOrgCustomName [-Arg ..] [-Field ..]</code>
+            </example>
         </member>
         <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscMutateO365.SaaSSetupKickoff">
              <summary>
@@ -2301,6 +3158,68 @@
              [GraphQL: updateO365OrgCustomName]
              </summary>
         </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscMutateOracle">
+            <summary>
+            Oracle mutations
+            </summary>
+            <description>
+            Invoke-RscMutateOracle is a master cmdlet for Oracle work that can invoke any of the following subcommands: BulkUpdateHosts, RefreshDatabase, UpdateDataGuardGroup, DeleteAllDatabaseSnapshots, TakeOnDemandDatabaseSnapshot, TakeOnDemandLogSnapshot, BulkUpdateRacs, ExportTablespace, ValidateAcoFile, ValidateDatabaseBackups, BulkUpdateDatabases, InstantRecoverSnapshot, MountDatabase, ExportDatabase, CreatePdbRestore, DownloadDatabaseSnapshot, DeleteMount, RestoreLogs.
+            </description>
+            <example>
+            <code>Invoke-RscMutateOracle -BulkUpdateHosts [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateOracle -RefreshDatabase [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateOracle -UpdateDataGuardGroup [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateOracle -DeleteAllDatabaseSnapshots [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateOracle -TakeOnDemandDatabaseSnapshot [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateOracle -TakeOnDemandLogSnapshot [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateOracle -BulkUpdateRacs [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateOracle -ExportTablespace [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateOracle -ValidateAcoFile [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateOracle -ValidateDatabaseBackups [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateOracle -BulkUpdateDatabases [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateOracle -InstantRecoverSnapshot [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateOracle -MountDatabase [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateOracle -ExportDatabase [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateOracle -CreatePdbRestore [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateOracle -DownloadDatabaseSnapshot [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateOracle -DeleteMount [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateOracle -RestoreLogs [-Arg ..] [-Field ..]</code>
+            </example>
+        </member>
         <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscMutateOracle.BulkUpdateHosts">
              <summary>
              BulkUpdateHosts parameter set
@@ -2427,6 +3346,50 @@
              [GraphQL: restoreOracleLogs]
              </summary>
         </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscMutateSla">
+            <summary>
+            SLA mutations
+            </summary>
+            <description>
+            Invoke-RscMutateSla is a master cmdlet for Sla work that can invoke any of the following subcommands: CreateGlobal, EditGlobal, UpdateGlobal, DeleteGlobal, Assign, AssignsForSnappableHierarchies, AssignRetentionToSnappables, AssignRetentionToSnapshots, Pause, Upgrades, GetPendingAssignments, ExportManagedVolumeSnapshot.
+            </description>
+            <example>
+            <code>Invoke-RscMutateSla -CreateGlobal [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateSla -EditGlobal [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateSla -UpdateGlobal [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateSla -DeleteGlobal [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateSla -Assign [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateSla -AssignsForSnappableHierarchies [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateSla -AssignRetentionToSnappables [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateSla -AssignRetentionToSnapshots [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateSla -Pause [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateSla -Upgrades [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateSla -GetPendingAssignments [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateSla -ExportManagedVolumeSnapshot [-Arg ..] [-Field ..]</code>
+            </example>
+        </member>
         <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscMutateSla.CreateGlobal">
              <summary>
              CreateGlobal parameter set
@@ -2511,6 +3474,35 @@
              [GraphQL: exportSlaManagedVolumeSnapshot]
              </summary>
         </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscMutateVcenter">
+            <summary>
+            vSphere vCenter mutations
+            </summary>
+            <description>
+            Invoke-RscMutateVcenter is a master cmdlet for Vcenter work that can invoke any of the following subcommands: Create, Delete, Edit, Refresh, Update, UpdateHotAddNetwork, UpdateHotAddBandwidth.
+            </description>
+            <example>
+            <code>Invoke-RscMutateVcenter -Create [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateVcenter -Delete [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateVcenter -Edit [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateVcenter -Refresh [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateVcenter -Update [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateVcenter -UpdateHotAddNetwork [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateVcenter -UpdateHotAddBandwidth [-Arg ..] [-Field ..]</code>
+            </example>
+        </member>
         <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscMutateVcenter.Create">
              <summary>
              Create parameter set
@@ -2559,6 +3551,41 @@
             
              [GraphQL: updateVcenterHotAddBandwidth]
              </summary>
+        </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscMutateVsphere">
+            <summary>
+            vSphere mutations
+            </summary>
+            <description>
+            Invoke-RscMutateVsphere is a master cmdlet for Vsphere work that can invoke any of the following subcommands: OnDemandSnapshot, BulkOnDemandSnapshot, DeleteLiveMount, ExportSnapshotToStandaloneHostV2, ExportSnapshotToStandaloneHost, DownloadVirtualMachineFiles, CreateAdvancedTag, DeleteAdvancedTag, UpdateAdvancedTag.
+            </description>
+            <example>
+            <code>Invoke-RscMutateVsphere -OnDemandSnapshot [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateVsphere -BulkOnDemandSnapshot [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateVsphere -DeleteLiveMount [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateVsphere -ExportSnapshotToStandaloneHostV2 [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateVsphere -ExportSnapshotToStandaloneHost [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateVsphere -DownloadVirtualMachineFiles [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateVsphere -CreateAdvancedTag [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateVsphere -DeleteAdvancedTag [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateVsphere -UpdateAdvancedTag [-Arg ..] [-Field ..]</code>
+            </example>
         </member>
         <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscMutateVsphere.OnDemandSnapshot">
              <summary>
@@ -2622,6 +3649,101 @@
             
              [GraphQL: updateVsphereAdvancedTag]
              </summary>
+        </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscMutateVsphereVm">
+            <summary>
+            vSphere VM mutations
+            </summary>
+            <description>
+            Invoke-RscMutateVsphereVm is a master cmdlet for VsphereVm work that can invoke any of the following subcommands: RecoverFiles, RecoverFilesNew, RegisterAgent, DownloadSnapshot, ExportSnapshot, ExportSnapshotV2, ExportSnapshotV3, BatchExport, BatchExportV3, InitiateInPlaceRecovery, ExportSnapshotWithDownloadFromCloud, BatchInPlaceRecovery, DeleteSnapshot, Update, InitiateInstantRecovery, InitiateInstantRecoveryV2, InitiateBatchInstantRecovery, InitiateDiskMount, InitiateLiveMount, InitiateLiveMountV2, BatchLiveMount, InitiateBatchLiveMountV2, PowerOnOffLiveMount, DeleteLiveMount, ListEsxiDatastores, MountRelocate, MountRelocateV2, ExcludeVmDisks, DownloadSnapshotFiles.
+            </description>
+            <example>
+            <code>Invoke-RscMutateVsphereVm -RecoverFiles [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateVsphereVm -RecoverFilesNew [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateVsphereVm -RegisterAgent [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateVsphereVm -DownloadSnapshot [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateVsphereVm -ExportSnapshot [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateVsphereVm -ExportSnapshotV2 [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateVsphereVm -ExportSnapshotV3 [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateVsphereVm -BatchExport [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateVsphereVm -BatchExportV3 [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateVsphereVm -InitiateInPlaceRecovery [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateVsphereVm -ExportSnapshotWithDownloadFromCloud [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateVsphereVm -BatchInPlaceRecovery [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateVsphereVm -DeleteSnapshot [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateVsphereVm -Update [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateVsphereVm -InitiateInstantRecovery [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateVsphereVm -InitiateInstantRecoveryV2 [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateVsphereVm -InitiateBatchInstantRecovery [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateVsphereVm -InitiateDiskMount [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateVsphereVm -InitiateLiveMount [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateVsphereVm -InitiateLiveMountV2 [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateVsphereVm -BatchLiveMount [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateVsphereVm -InitiateBatchLiveMountV2 [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateVsphereVm -PowerOnOffLiveMount [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateVsphereVm -DeleteLiveMount [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateVsphereVm -ListEsxiDatastores [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateVsphereVm -MountRelocate [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateVsphereVm -MountRelocateV2 [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateVsphereVm -ExcludeVmDisks [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscMutateVsphereVm -DownloadSnapshotFiles [-Arg ..] [-Field ..]</code>
+            </example>
         </member>
         <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscMutateVsphereVm.RecoverFiles">
              <summary>
@@ -2826,6 +3948,29 @@
              [GraphQL: vsphereVmDownloadSnapshotFiles]
              </summary>
         </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscQueryAccount">
+            <summary>
+            Account queries
+            </summary>
+            <description>
+            Invoke-RscQueryAccount is a master cmdlet for Account work that can invoke any of the following subcommands: Settings, SWithExocomputeMappings, Products, Id, Owners.
+            </description>
+            <example>
+            <code>Invoke-RscQueryAccount -Settings [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAccount -SWithExocomputeMappings [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAccount -Products [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAccount -Id [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAccount -Owners [-Arg ..] [-Field ..]</code>
+            </example>
+        </member>
         <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscQueryAccount.Settings">
              <summary>
              Settings parameter set
@@ -2861,6 +4006,23 @@
              [GraphQL: allAccountOwners]
              </summary>
         </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscQueryActivitySeries">
+            <summary>
+            Activity series queries
+            </summary>
+            <description>
+            Invoke-RscQueryActivitySeries is a master cmdlet for ActivitySeries work that can invoke any of the following subcommands: ActivitySeries, List, GroupByList.
+            </description>
+            <example>
+            <code>Invoke-RscQueryActivitySeries -ActivitySeries [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryActivitySeries -List [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryActivitySeries -GroupByList [-Arg ..] [-Field ..]</code>
+            </example>
+        </member>
         <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscQueryActivitySeries.ActivitySeries">
              <summary>
              ActivitySeries parameter set
@@ -2881,6 +4043,164 @@
             
              [GraphQL: activitySeriesGroupByConnection]
              </summary>
+        </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscQueryAws">
+            <summary>
+            AWS queries
+            </summary>
+            <description>
+            Invoke-RscQueryAws is a master cmdlet for Aws work that can invoke any of the following subcommands: NativeRoot, NativeAccount, NativeEc2Instance, NativeEbsVolume, NativeS3Bucket, NativeAccounts, NativeEc2InstancesByName, NativeEc2Instances, NativeEbsVolumesByName, NativeEbsVolumes, AllVpcsByRegion, AllVpcs, IsNativeEbsVolumeSnapshotRestorable, AllAvailabilityZonesByRegion, AllKmsEncryptionKeysByRegion, IsS3BucketNameAvailable, AllS3Buckets, AllS3BucketsDetails, NativeRdsInstance, NativeRdsInstances, NativeRdsPointInTimeRestoreWindow, RdsInstanceDetails, IsNativeRdsInstanceLaunchConfigurationValid, AllOptionGroupsByRegion, AllDbParameterGroupsByRegion, AllDbSubnetGroupsByRegion, ValidateNativeRdsInstanceNameForExport, ValidateNativeRdsClusterNameForExport, NativeRdsExportDefaults, AllEc2KeyPairsByRegion, AmiTypeForNativeArchivedSnapshotExport, AllRdsAuroraInstanceClasses, AllSupportedRdsDatabaseInstanceClasses, ComputeSettings, AllComputeSettings, AllCloudAccountsWithFeatures, AllCloudAccountsFeaturesWithExoConfigs, CloudAccountWithFeatures, CloudAccountListVpcs, CloudAccountListSubnets, CloudAccountListSecurityGroups, CloudAccountListKMSKeys, AllExocomputeConfigs, AllCloudAccountConfigs, TrustPolicy, AllPermissionPolicies, ArtifactsToDelete, AllRegions, AllCdmVersions, AllInstanceProfileNames.
+            </description>
+            <example>
+            <code>Invoke-RscQueryAws -NativeRoot [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAws -NativeAccount [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAws -NativeEc2Instance [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAws -NativeEbsVolume [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAws -NativeS3Bucket [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAws -NativeAccounts [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAws -NativeEc2InstancesByName [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAws -NativeEc2Instances [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAws -NativeEbsVolumesByName [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAws -NativeEbsVolumes [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAws -AllVpcsByRegion [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAws -AllVpcs [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAws -IsNativeEbsVolumeSnapshotRestorable [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAws -AllAvailabilityZonesByRegion [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAws -AllKmsEncryptionKeysByRegion [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAws -IsS3BucketNameAvailable [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAws -AllS3Buckets [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAws -AllS3BucketsDetails [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAws -NativeRdsInstance [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAws -NativeRdsInstances [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAws -NativeRdsPointInTimeRestoreWindow [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAws -RdsInstanceDetails [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAws -IsNativeRdsInstanceLaunchConfigurationValid [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAws -AllOptionGroupsByRegion [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAws -AllDbParameterGroupsByRegion [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAws -AllDbSubnetGroupsByRegion [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAws -ValidateNativeRdsInstanceNameForExport [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAws -ValidateNativeRdsClusterNameForExport [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAws -NativeRdsExportDefaults [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAws -AllEc2KeyPairsByRegion [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAws -AmiTypeForNativeArchivedSnapshotExport [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAws -AllRdsAuroraInstanceClasses [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAws -AllSupportedRdsDatabaseInstanceClasses [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAws -ComputeSettings [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAws -AllComputeSettings [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAws -AllCloudAccountsWithFeatures [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAws -AllCloudAccountsFeaturesWithExoConfigs [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAws -CloudAccountWithFeatures [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAws -CloudAccountListVpcs [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAws -CloudAccountListSubnets [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAws -CloudAccountListSecurityGroups [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAws -CloudAccountListKMSKeys [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAws -AllExocomputeConfigs [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAws -AllCloudAccountConfigs [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAws -TrustPolicy [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAws -AllPermissionPolicies [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAws -ArtifactsToDelete [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAws -AllRegions [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAws -AllCdmVersions [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAws -AllInstanceProfileNames [-Arg ..] [-Field ..]</code>
+            </example>
         </member>
         <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscQueryAws.NativeRoot">
              <summary>
@@ -3231,6 +4551,239 @@
             
              [GraphQL: allAwsInstanceProfileNames]
              </summary>
+        </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscQueryAzure">
+            <summary>
+            Azure queries
+            </summary>
+            <description>
+            Invoke-RscQueryAzure is a master cmdlet for Azure work that can invoke any of the following subcommands: NativeRoot, NativeSubscription, NativeSubscriptions, NativeResourceGroup, NativeResourceGroups, NativeVirtualMachine, NativeVirtualMachines, NativeManagedDisk, NativeManagedDisks, AllNativeVirtualNetworks, AllNativeSubnetsByRegionFromAzure, AllNativeSecurityGroupsByRegionFromAzure, AllDiskEncryptionSetsByRegion, AllNativeAvailabilitySetsByRegionFromAzure, AllNativeExportCompatibleVmSizesByRegionFromAzure, AllNativeExportCompatibleDiskTypesByRegionFromAzure, AllNativeVirtualMachineSizes, IsNativeManagedDiskSnapshotRestorable, IsStorageAccountNameAvailable, AllNativeStorageAccountsFromAzure, SqlDatabase, SqlDatabases, SqlDatabaseServer, SqlDatabaseServers, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceServer, SqlManagedInstanceServers, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, ValidateNativeSqlDatabaseDbNameForExport, ValidateNativeSqlManagedInstanceDbNameForExport, AllSqlDatabaseServerElasticPools, IsNativeSqlDatabaseSnapshotPersistent, NativeLiveMountDisks, AllKeyVaultsByRegion, AllEncryptionKeys, CloudAccountTenant, CloudAccountTenantWithExoConfigs, AllCloudAccountTenantsWithExoConfigs, AllCloudAccountTenants, CloudAccountSubscriptionWithFeatures, AllCloudAccountSubscriptionsByFeature, AllSubscriptionWithExocomputeMappings, AllResourceGroupsFrom, DoesNativeResourceGroupExist, AllNativeResourceGroupsInfoIfExist, AllCloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountGrantedPermissionsGroups, CloudAccountGrantedPermissionsGroupsForRecovery, CloudAccountCheckRefreshTokenExistsForRecovery, AllExocomputeConfigsInAccount, AllCloudAccountSubnetsByRegion, ValidateCloudAccountExocomputeConfigurations, AllArmTemplatesByFeature, CheckPersistentStorageSubscriptionCanUnmap, Subscriptions, Regions, ResourceGroups, VNets, Subnets, StorageAccounts, AllHostedRegions, AllResourceGroups, AllVnets, AllSubnets, AllCdmVersions, AllRegions, AllNsgs, AllStorageAccounts, AllManagedIdentities, AdDirectories, AdDirectory, AdObjectsByType.
+            </description>
+            <example>
+            <code>Invoke-RscQueryAzure -NativeRoot [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -NativeSubscription [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -NativeSubscriptions [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -NativeResourceGroup [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -NativeResourceGroups [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -NativeVirtualMachine [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -NativeVirtualMachines [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -NativeManagedDisk [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -NativeManagedDisks [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -AllNativeVirtualNetworks [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -AllNativeSubnetsByRegionFromAzure [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -AllNativeSecurityGroupsByRegionFromAzure [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -AllDiskEncryptionSetsByRegion [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -AllNativeAvailabilitySetsByRegionFromAzure [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -AllNativeExportCompatibleVmSizesByRegionFromAzure [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -AllNativeExportCompatibleDiskTypesByRegionFromAzure [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -AllNativeVirtualMachineSizes [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -IsNativeManagedDiskSnapshotRestorable [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -IsStorageAccountNameAvailable [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -AllNativeStorageAccountsFromAzure [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -SqlDatabase [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -SqlDatabases [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -SqlDatabaseServer [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -SqlDatabaseServers [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -SqlManagedInstanceDatabase [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -SqlManagedInstanceDatabases [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -SqlManagedInstanceServer [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -SqlManagedInstanceServers [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -SqlDatabaseDbPointInTimeRestoreWindowFromAzure [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -ValidateNativeSqlDatabaseDbNameForExport [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -ValidateNativeSqlManagedInstanceDbNameForExport [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -AllSqlDatabaseServerElasticPools [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -IsNativeSqlDatabaseSnapshotPersistent [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -NativeLiveMountDisks [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -AllKeyVaultsByRegion [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -AllEncryptionKeys [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -CloudAccountTenant [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -CloudAccountTenantWithExoConfigs [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -AllCloudAccountTenantsWithExoConfigs [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -AllCloudAccountTenants [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -CloudAccountSubscriptionWithFeatures [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -AllCloudAccountSubscriptionsByFeature [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -AllSubscriptionWithExocomputeMappings [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -AllResourceGroupsFrom [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -DoesNativeResourceGroupExist [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -AllNativeResourceGroupsInfoIfExist [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -AllCloudAccountMissingPermissions [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -CloudAccountPermissionConfig [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -CloudAccountGrantedPermissionsGroups [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -CloudAccountGrantedPermissionsGroupsForRecovery [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -CloudAccountCheckRefreshTokenExistsForRecovery [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -AllExocomputeConfigsInAccount [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -AllCloudAccountSubnetsByRegion [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -ValidateCloudAccountExocomputeConfigurations [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -AllArmTemplatesByFeature [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -CheckPersistentStorageSubscriptionCanUnmap [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -Subscriptions [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -Regions [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -ResourceGroups [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -VNets [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -Subnets [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -StorageAccounts [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -AllHostedRegions [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -AllResourceGroups [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -AllVnets [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -AllSubnets [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -AllCdmVersions [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -AllRegions [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -AllNsgs [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -AllStorageAccounts [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -AllManagedIdentities [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -AdDirectories [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -AdDirectory [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzure -AdObjectsByType [-Arg ..] [-Field ..]</code>
+            </example>
         </member>
         <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscQueryAzure.NativeRoot">
              <summary>
@@ -3729,6 +5282,13 @@
              [GraphQL: allAzureStorageAccounts]
              </summary>
         </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscQueryAzure.AllManagedIdentities">
+             <summary>
+             AllManagedIdentities parameter set
+            
+             [GraphQL: allAzureManagedIdentities]
+             </summary>
+        </member>
         <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscQueryAzure.AdDirectories">
              <summary>
              AdDirectories parameter set
@@ -3749,6 +5309,47 @@
             
              [GraphQL: azureAdObjectsByType]
              </summary>
+        </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscQueryAzureO365">
+            <summary>
+            AzureO365 queries
+            </summary>
+            <description>
+            Invoke-RscQueryAzureO365 is a master cmdlet for AzureO365 work that can invoke any of the following subcommands: Exocompute, CheckStorageAccountName, CheckStorageAccountAccessibility, CheckSubscriptionQuota, CheckResourceGroupName, CheckVirtualNetworkName, ValidateUserRoles, CheckNSGOutboundRules, CheckNetworkSubnet, GetNetworkSubnetUnusedAddr, GetAzureHostType.
+            </description>
+            <example>
+            <code>Invoke-RscQueryAzureO365 -Exocompute [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzureO365 -CheckStorageAccountName [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzureO365 -CheckStorageAccountAccessibility [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzureO365 -CheckSubscriptionQuota [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzureO365 -CheckResourceGroupName [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzureO365 -CheckVirtualNetworkName [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzureO365 -ValidateUserRoles [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzureO365 -CheckNSGOutboundRules [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzureO365 -CheckNetworkSubnet [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzureO365 -GetNetworkSubnetUnusedAddr [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryAzureO365 -GetAzureHostType [-Arg ..] [-Field ..]</code>
+            </example>
         </member>
         <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscQueryAzureO365.Exocompute">
              <summary>
@@ -3827,6 +5428,38 @@
              [GraphQL: azureO365GetAzureHostType]
              </summary>
         </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscQueryCassandra">
+            <summary>
+            Cassandra queries
+            </summary>
+            <description>
+            Invoke-RscQueryCassandra is a master cmdlet for Cassandra work that can invoke any of the following subcommands: Sources, Keyspaces, ColumnFamilies, ColumnFamilyRecoverableRange, ColumnFamilySchema, Source, Keyspace, ColumnFamily.
+            </description>
+            <example>
+            <code>Invoke-RscQueryCassandra -Sources [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryCassandra -Keyspaces [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryCassandra -ColumnFamilies [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryCassandra -ColumnFamilyRecoverableRange [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryCassandra -ColumnFamilySchema [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryCassandra -Source [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryCassandra -Keyspace [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryCassandra -ColumnFamily [-Arg ..] [-Field ..]</code>
+            </example>
+        </member>
         <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscQueryCassandra.Sources">
              <summary>
              Sources parameter set
@@ -3882,6 +5515,146 @@
             
              [GraphQL: cassandraColumnFamily]
              </summary>
+        </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscQueryCluster">
+            <summary>
+            Cluster queries
+            </summary>
+            <description>
+            Invoke-RscQueryCluster is a master cmdlet for Cluster work that can invoke any of the following subcommands: Cloud, Nodes, List, Cluster, WithUpgradesInfo, Dns, Proxy, NtpServers, NetworkInterfaces, FloatingIps, Vlans, DefaultGateway, WebSignedCertificate, Ipmi, Certificates, WebCertsAndIpmis, OperationJobProgress, Ipv6Mode, Csr, TypeList, GroupByList, WithConfigProtectionInfo, DatabaseLogReportingProperties, DatabaseLogReport, RcvLocations, Connected, ReplicationTargets, EncryptionInfo, HostFailover, GlobalFileSearchMultiple, Kubernetes, K8s, Windows, ReportMigrationStatus, ReportMigrationCount, ReportMigrationJobStatus, LaDomains, LaDomainFilterList, VerifySlaWithReplicationTo, GlobalSlas, RegistrationProductInfo, Vcd, IsTotpAckNecessary, TotpAckStatus.
+            </description>
+            <example>
+            <code>Invoke-RscQueryCluster -Cloud [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryCluster -Nodes [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryCluster -List [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryCluster -Cluster [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryCluster -WithUpgradesInfo [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryCluster -Dns [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryCluster -Proxy [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryCluster -NtpServers [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryCluster -NetworkInterfaces [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryCluster -FloatingIps [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryCluster -Vlans [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryCluster -DefaultGateway [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryCluster -WebSignedCertificate [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryCluster -Ipmi [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryCluster -Certificates [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryCluster -WebCertsAndIpmis [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryCluster -OperationJobProgress [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryCluster -Ipv6Mode [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryCluster -Csr [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryCluster -TypeList [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryCluster -GroupByList [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryCluster -WithConfigProtectionInfo [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryCluster -DatabaseLogReportingProperties [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryCluster -DatabaseLogReport [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryCluster -RcvLocations [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryCluster -Connected [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryCluster -ReplicationTargets [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryCluster -EncryptionInfo [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryCluster -HostFailover [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryCluster -GlobalFileSearchMultiple [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryCluster -Kubernetes [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryCluster -K8s [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryCluster -Windows [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryCluster -ReportMigrationStatus [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryCluster -ReportMigrationCount [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryCluster -ReportMigrationJobStatus [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryCluster -LaDomains [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryCluster -LaDomainFilterList [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryCluster -VerifySlaWithReplicationTo [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryCluster -GlobalSlas [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryCluster -RegistrationProductInfo [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryCluster -Vcd [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryCluster -IsTotpAckNecessary [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryCluster -TotpAckStatus [-Arg ..] [-Field ..]</code>
+            </example>
         </member>
         <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscQueryCluster.Cloud">
              <summary>
@@ -4037,6 +5810,20 @@
              [GraphQL: clusterWithConfigProtectionInfo]
              </summary>
         </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscQueryCluster.DatabaseLogReportingProperties">
+             <summary>
+             DatabaseLogReportingProperties parameter set
+            
+             [GraphQL: databaseLogReportingPropertiesForCluster]
+             </summary>
+        </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscQueryCluster.DatabaseLogReport">
+             <summary>
+             DatabaseLogReport parameter set
+            
+             [GraphQL: databaseLogReportForCluster]
+             </summary>
+        </member>
         <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscQueryCluster.RcvLocations">
              <summary>
              RcvLocations parameter set
@@ -4177,6 +5964,38 @@
              [GraphQL: allClustersTotpAckStatus]
              </summary>
         </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscQueryDb2">
+            <summary>
+            Db2 queries
+            </summary>
+            <description>
+            Invoke-RscQueryDb2 is a master cmdlet for Db2 work that can invoke any of the following subcommands: Instances, Instance, Database, Databases, RecoverableRange, RecoverableRanges, LogSnapshot, LogSnapshots.
+            </description>
+            <example>
+            <code>Invoke-RscQueryDb2 -Instances [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryDb2 -Instance [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryDb2 -Database [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryDb2 -Databases [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryDb2 -RecoverableRange [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryDb2 -RecoverableRanges [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryDb2 -LogSnapshot [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryDb2 -LogSnapshots [-Arg ..] [-Field ..]</code>
+            </example>
+        </member>
         <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscQueryDb2.Instances">
              <summary>
              Instances parameter set
@@ -4232,6 +6051,56 @@
             
              [GraphQL: db2LogSnapshots]
              </summary>
+        </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscQueryHyperv">
+            <summary>
+            Hyperv queries
+            </summary>
+            <description>
+            Invoke-RscQueryHyperv is a master cmdlet for Hyperv work that can invoke any of the following subcommands: TopLevelDescendants, VirtualMachines, Scvmm, Cluster, Server, VirtualMachine, UniqueServersCount, Scvmms, Servers, Mounts, VmDetail, HostAsyncRequestStatus, ScvmmAsyncRequestStatus, VirtualMachineAsyncRequestStatus.
+            </description>
+            <example>
+            <code>Invoke-RscQueryHyperv -TopLevelDescendants [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryHyperv -VirtualMachines [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryHyperv -Scvmm [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryHyperv -Cluster [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryHyperv -Server [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryHyperv -VirtualMachine [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryHyperv -UniqueServersCount [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryHyperv -Scvmms [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryHyperv -Servers [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryHyperv -Mounts [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryHyperv -VmDetail [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryHyperv -HostAsyncRequestStatus [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryHyperv -ScvmmAsyncRequestStatus [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryHyperv -VirtualMachineAsyncRequestStatus [-Arg ..] [-Field ..]</code>
+            </example>
         </member>
         <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscQueryHyperv.TopLevelDescendants">
              <summary>
@@ -4331,6 +6200,23 @@
              [GraphQL: hypervVirtualMachineAsyncRequestStatus]
              </summary>
         </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscQueryLdap">
+            <summary>
+            Ldap queries
+            </summary>
+            <description>
+            Invoke-RscQueryLdap is a master cmdlet for Ldap work that can invoke any of the following subcommands: IntegrationList, PrincipalList, AuthorizedPrincipalList.
+            </description>
+            <example>
+            <code>Invoke-RscQueryLdap -IntegrationList [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryLdap -PrincipalList [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryLdap -AuthorizedPrincipalList [-Arg ..] [-Field ..]</code>
+            </example>
+        </member>
         <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscQueryLdap.IntegrationList">
              <summary>
              IntegrationList parameter set
@@ -4351,6 +6237,62 @@
             
              [GraphQL: ldapAuthorizedPrincipalConnection]
              </summary>
+        </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscQueryMongo">
+            <summary>
+            Mongo queries
+            </summary>
+            <description>
+            Invoke-RscQueryMongo is a master cmdlet for Mongo work that can invoke any of the following subcommands: Sources, Databases, Collections, Source, Database, Collection, RecoverableRanges, BulkRecoverableRanges, DbSources, DbDatabases, DbCollections, DbSource, DbDatabase, DbCollection, DbCollectionRecoverableRange, DbBulkRecoverableRange.
+            </description>
+            <example>
+            <code>Invoke-RscQueryMongo -Sources [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryMongo -Databases [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryMongo -Collections [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryMongo -Source [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryMongo -Database [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryMongo -Collection [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryMongo -RecoverableRanges [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryMongo -BulkRecoverableRanges [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryMongo -DbSources [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryMongo -DbDatabases [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryMongo -DbCollections [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryMongo -DbSource [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryMongo -DbDatabase [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryMongo -DbCollection [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryMongo -DbCollectionRecoverableRange [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryMongo -DbBulkRecoverableRange [-Arg ..] [-Field ..]</code>
+            </example>
         </member>
         <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscQueryMongo.Sources">
              <summary>
@@ -4464,6 +6406,62 @@
              [GraphQL: mongodbBulkRecoverableRange]
              </summary>
         </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscQueryMssql">
+            <summary>
+            MSSQL queries
+            </summary>
+            <description>
+            Invoke-RscQueryMssql is a master cmdlet for Mssql work that can invoke any of the following subcommands: TopLevelDescendants, Databases, AvailabilityGroup, Instance, Database, RecoverableRanges, DatabaseMissedSnapshots, CompatibleInstances, DatabaseMissedRecoverableRanges, AllDatabaseRestoreFiles, DatabaseLiveMounts, DefaultProperties, DatabaseRestoreEstimate, CdmLogShippingTargets, CdmLogShippingTarget, LogShippingTargets.
+            </description>
+            <example>
+            <code>Invoke-RscQueryMssql -TopLevelDescendants [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryMssql -Databases [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryMssql -AvailabilityGroup [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryMssql -Instance [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryMssql -Database [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryMssql -RecoverableRanges [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryMssql -DatabaseMissedSnapshots [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryMssql -CompatibleInstances [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryMssql -DatabaseMissedRecoverableRanges [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryMssql -AllDatabaseRestoreFiles [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryMssql -DatabaseLiveMounts [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryMssql -DefaultProperties [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryMssql -DatabaseRestoreEstimate [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryMssql -CdmLogShippingTargets [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryMssql -CdmLogShippingTarget [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryMssql -LogShippingTargets [-Arg ..] [-Field ..]</code>
+            </example>
+        </member>
         <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscQueryMssql.TopLevelDescendants">
              <summary>
              TopLevelDescendants parameter set
@@ -4575,6 +6573,68 @@
             
              [GraphQL: mssqlLogShippingTargets]
              </summary>
+        </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscQueryNutanix">
+            <summary>
+            Nutanix queries
+            </summary>
+            <description>
+            Invoke-RscQueryNutanix is a master cmdlet for Nutanix work that can invoke any of the following subcommands: TopLevelDescendants, Cluster, Clusters, PrismCentrals, PrismCentral, Category, CategoryValue, Vm, Vms, Mounts, ClusterContainers, ClusterNetworks, ClusterAsyncRequestStatus, VmAsyncRequestStatus, SearchVm, VmMissedSnapshots, BrowseSnapshot, SnapshotDetail.
+            </description>
+            <example>
+            <code>Invoke-RscQueryNutanix -TopLevelDescendants [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryNutanix -Cluster [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryNutanix -Clusters [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryNutanix -PrismCentrals [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryNutanix -PrismCentral [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryNutanix -Category [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryNutanix -CategoryValue [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryNutanix -Vm [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryNutanix -Vms [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryNutanix -Mounts [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryNutanix -ClusterContainers [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryNutanix -ClusterNetworks [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryNutanix -ClusterAsyncRequestStatus [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryNutanix -VmAsyncRequestStatus [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryNutanix -SearchVm [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryNutanix -VmMissedSnapshots [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryNutanix -BrowseSnapshot [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryNutanix -SnapshotDetail [-Arg ..] [-Field ..]</code>
+            </example>
         </member>
         <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscQueryNutanix.TopLevelDescendants">
              <summary>
@@ -4701,6 +6761,125 @@
             
              [GraphQL: nutanixSnapshotDetail]
              </summary>
+        </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscQueryO365">
+            <summary>
+            O365 queries
+            </summary>
+            <description>
+            Invoke-RscQueryO365 is a master cmdlet for O365 work that can invoke any of the following subcommands: Org, OrgAtSnappableLevel, AllAdGroups, User, Mailbox, Groups, Mailboxes, Onedrive, Onedrives, Site, Sites, SharepointDrive, SharepointDrives, SharepointList, SharepointLists, SharepointSite, SharepointSites, Team, Teams, TeamChannels, TeamConversationsFolderID, TeamPostedBy, Calendar, Orgs, SharepointObjectList, SharepointObjects, UserObjects, OrgSummaries, ObjectAncestors, BrowseTeamConvChannels, ServiceAccount, AllOrgStatuses, License, ListApps, AllSubscriptionsAppTypeCounts, StorageStats, ServiceStatus.
+            </description>
+            <example>
+            <code>Invoke-RscQueryO365 -Org [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryO365 -OrgAtSnappableLevel [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryO365 -AllAdGroups [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryO365 -User [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryO365 -Mailbox [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryO365 -Groups [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryO365 -Mailboxes [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryO365 -Onedrive [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryO365 -Onedrives [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryO365 -Site [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryO365 -Sites [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryO365 -SharepointDrive [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryO365 -SharepointDrives [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryO365 -SharepointList [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryO365 -SharepointLists [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryO365 -SharepointSite [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryO365 -SharepointSites [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryO365 -Team [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryO365 -Teams [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryO365 -TeamChannels [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryO365 -TeamConversationsFolderID [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryO365 -TeamPostedBy [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryO365 -Calendar [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryO365 -Orgs [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryO365 -SharepointObjectList [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryO365 -SharepointObjects [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryO365 -UserObjects [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryO365 -OrgSummaries [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryO365 -ObjectAncestors [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryO365 -BrowseTeamConvChannels [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryO365 -ServiceAccount [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryO365 -AllOrgStatuses [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryO365 -License [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryO365 -ListApps [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryO365 -AllSubscriptionsAppTypeCounts [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryO365 -StorageStats [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryO365 -ServiceStatus [-Arg ..] [-Field ..]</code>
+            </example>
         </member>
         <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscQueryO365.Org">
              <summary>
@@ -4961,6 +7140,62 @@
              [GraphQL: o365ServiceStatus]
              </summary>
         </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscQueryOracle">
+            <summary>
+            Oracle queries
+            </summary>
+            <description>
+            Invoke-RscQueryOracle is a master cmdlet for Oracle work that can invoke any of the following subcommands: TopLevelDescendants, Databases, Host, Rac, DataGuardGroup, Database, LiveMounts, AcoParameters, RecoverableRanges, MissedRecoverableRanges, MissedSnapshots, AcoExampleDownloadLink, PdbDetails, HostLogBackupConfig, DatabaseLogBackupConfig, RacLogBackupConfig.
+            </description>
+            <example>
+            <code>Invoke-RscQueryOracle -TopLevelDescendants [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryOracle -Databases [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryOracle -Host [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryOracle -Rac [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryOracle -DataGuardGroup [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryOracle -Database [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryOracle -LiveMounts [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryOracle -AcoParameters [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryOracle -RecoverableRanges [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryOracle -MissedRecoverableRanges [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryOracle -MissedSnapshots [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryOracle -AcoExampleDownloadLink [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryOracle -PdbDetails [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryOracle -HostLogBackupConfig [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryOracle -DatabaseLogBackupConfig [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryOracle -RacLogBackupConfig [-Arg ..] [-Field ..]</code>
+            </example>
+        </member>
         <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscQueryOracle.TopLevelDescendants">
              <summary>
              TopLevelDescendants parameter set
@@ -5072,6 +7307,80 @@
             
              [GraphQL: oracleRacLogBackupConfig]
              </summary>
+        </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscQuerySla">
+            <summary>
+            SLA queries
+            </summary>
+            <description>
+            Invoke-RscQuerySla is a master cmdlet for Sla work that can invoke any of the following subcommands: AllIofilterStatuses, AllCdpVmNames, Domains, DomainWithWarningsList, GlobalFilterList, Domain, DomainWithWarnings, ArchivalValidationWarnings, CountOfObjectsProtected, AuditDetail, AllSummariesByIds, GlobalStatuses, ProtectedClustersForGlobal, ConflictObjects, ManagedVolumes, ManagedVolume, ClusterDomains, ClusterDomainFilterList, VerifyWithReplicationToCluster, DownloadWithReplicationCsv, AllClusterGlobals, AllNcdComplianceData.
+            </description>
+            <example>
+            <code>Invoke-RscQuerySla -AllIofilterStatuses [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQuerySla -AllCdpVmNames [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQuerySla -Domains [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQuerySla -DomainWithWarningsList [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQuerySla -GlobalFilterList [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQuerySla -Domain [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQuerySla -DomainWithWarnings [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQuerySla -ArchivalValidationWarnings [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQuerySla -CountOfObjectsProtected [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQuerySla -AuditDetail [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQuerySla -AllSummariesByIds [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQuerySla -GlobalStatuses [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQuerySla -ProtectedClustersForGlobal [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQuerySla -ConflictObjects [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQuerySla -ManagedVolumes [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQuerySla -ManagedVolume [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQuerySla -ClusterDomains [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQuerySla -ClusterDomainFilterList [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQuerySla -VerifyWithReplicationToCluster [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQuerySla -DownloadWithReplicationCsv [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQuerySla -AllClusterGlobals [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQuerySla -AllNcdComplianceData [-Arg ..] [-Field ..]</code>
+            </example>
         </member>
         <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscQuerySla.AllIofilterStatuses">
              <summary>
@@ -5227,6 +7536,44 @@
              [GraphQL: allNcdSlaComplianceData]
              </summary>
         </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscQueryVcenter">
+            <summary>
+            vSphere vCenter queries
+            </summary>
+            <description>
+            Invoke-RscQueryVcenter is a master cmdlet for Vcenter work that can invoke any of the following subcommands: Vcenter, List, UniqueCount, PreAddInfo, Networks, HotAddNetwork, NumProxiesNeeded, HotAddProxy, HotAddBandwidth, AdvancedTagPreview.
+            </description>
+            <example>
+            <code>Invoke-RscQueryVcenter -Vcenter [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryVcenter -List [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryVcenter -UniqueCount [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryVcenter -PreAddInfo [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryVcenter -Networks [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryVcenter -HotAddNetwork [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryVcenter -NumProxiesNeeded [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryVcenter -HotAddProxy [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryVcenter -HotAddBandwidth [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryVcenter -AdvancedTagPreview [-Arg ..] [-Field ..]</code>
+            </example>
+        </member>
         <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscQueryVcenter.Vcenter">
              <summary>
              Vcenter parameter set
@@ -5296,6 +7643,86 @@
             
              [GraphQL: vCenterAdvancedTagPreview]
              </summary>
+        </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscQueryVsphere">
+            <summary>
+            vSphere queries
+            </summary>
+            <description>
+            Invoke-RscQueryVsphere is a master cmdlet for Vsphere work that can invoke any of the following subcommands: Blueprint, Datacenter, ComputeCluster, ResourcePool, Folder, Host, DatastoreCluster, Datastore, HostsByFids, Tag, TagCategory, Network, TopLevelDescendantsList, RootRecoveryHierarchy, HostList, Folders, ComputeClusters, DatastoreList, DatastoreClusters, LiveMounts, MountList, Mount, HostDetails, VmwareCdpLiveInfo.
+            </description>
+            <example>
+            <code>Invoke-RscQueryVsphere -Blueprint [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryVsphere -Datacenter [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryVsphere -ComputeCluster [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryVsphere -ResourcePool [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryVsphere -Folder [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryVsphere -Host [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryVsphere -DatastoreCluster [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryVsphere -Datastore [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryVsphere -HostsByFids [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryVsphere -Tag [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryVsphere -TagCategory [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryVsphere -Network [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryVsphere -TopLevelDescendantsList [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryVsphere -RootRecoveryHierarchy [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryVsphere -HostList [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryVsphere -Folders [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryVsphere -ComputeClusters [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryVsphere -DatastoreList [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryVsphere -DatastoreClusters [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryVsphere -LiveMounts [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryVsphere -MountList [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryVsphere -Mount [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryVsphere -HostDetails [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryVsphere -VmwareCdpLiveInfo [-Arg ..] [-Field ..]</code>
+            </example>
         </member>
         <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscQueryVsphere.Blueprint">
              <summary>
@@ -5402,6 +7829,13 @@
              [GraphQL: vSphereHostConnection]
              </summary>
         </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscQueryVsphere.Folders">
+             <summary>
+             Folders parameter set
+            
+             [GraphQL: vSphereFolders]
+             </summary>
+        </member>
         <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscQueryVsphere.ComputeClusters">
              <summary>
              ComputeClusters parameter set
@@ -5458,6 +7892,32 @@
              [GraphQL: vsphereVmwareCdpLiveInfo]
              </summary>
         </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscQueryVsphereVm">
+            <summary>
+            vSphere VM queries
+            </summary>
+            <description>
+            Invoke-RscQueryVsphereVm is a master cmdlet for VsphereVm work that can invoke any of the following subcommands: New, NewList, AsyncRequestStatus, RecoverableRange, RecoverableRangeInBatch, MissedRecoverableRange.
+            </description>
+            <example>
+            <code>Invoke-RscQueryVsphereVm -New [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryVsphereVm -NewList [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryVsphereVm -AsyncRequestStatus [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryVsphereVm -RecoverableRange [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryVsphereVm -RecoverableRangeInBatch [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>Invoke-RscQueryVsphereVm -MissedRecoverableRange [-Arg ..] [-Field ..]</code>
+            </example>
+        </member>
         <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscQueryVsphereVm.New">
              <summary>
              New parameter set
@@ -5470,6 +7930,13 @@
              NewList parameter set
             
              [GraphQL: vSphereVmNewConnection]
+             </summary>
+        </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscQueryVsphereVm.AsyncRequestStatus">
+             <summary>
+             AsyncRequestStatus parameter set
+            
+             [GraphQL: vSphereVMAsyncRequestStatus]
              </summary>
         </member>
         <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscQueryVsphereVm.RecoverableRange">
@@ -5493,13 +7960,6 @@
              [GraphQL: vsphereVMMissedRecoverableRange]
              </summary>
         </member>
-        <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Invoke_RscQueryVsphereVm.AsyncRequestStatus">
-             <summary>
-             AsyncRequestStatus parameter set
-            
-             [GraphQL: vSphereVMAsyncRequestStatus]
-             </summary>
-        </member>
         <member name="T:RubrikSecurityCloud.PowerShell.Private.RscBasePSCmdlet">
             <summary>
             Base class for all RSC PowerShell cmdlets.
@@ -5510,25 +7970,47 @@
             Create a new RSC PowerShell cmdlet.
             </summary>
         </member>
-        <member name="M:RubrikSecurityCloud.PowerShell.Private.RscCmdletInput.GqlOperation">
+        <member name="M:RubrikSecurityCloud.PowerShell.Private.RscBasePSCmdlet.GetProfileDir">
             <summary>
-            The name of the underlying GQL operation.
+            Get the RSC SDK's user profile directory.
+            Typically "$(Split-Path $PROFILE -Parent)/rubrik-powershell-sdk"
+            But resolves to the current directory if $PROFILE is not defined.
             </summary>
-            <returns> String </returns>
+        </member>
+        <member name="M:RubrikSecurityCloud.PowerShell.Private.RscBasePSCmdlet.GetValueFromParameterSet(System.String)">
+            <summary>
+            If a cmdlet parameter exists with given name, within the current parameter set, return its value.
+            </summary>
         </member>
         <member name="T:RubrikSecurityCloud.PowerShell.Private.RscGqlPSCmdlet">
             <summary>
             Base class for all RSC PowerShell cmdlets that use a GraphQL query.
             </summary>
         </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Private.RscGqlPSCmdlet.Input">
+            <summary>
+            Specifies the inputs to the GraphQL operation.
+            Any other -Op, -Arg, or -Field parameter
+            will override what is given in -Input.
+            </summary>
+        </member>
         <member name="P:RubrikSecurityCloud.PowerShell.Private.RscGqlPSCmdlet.Op">
             <summary>
-            Input: Operation to run. Overridden by operation switches.
+            Operation to run. Overridden by operation switches.
+            Only use -Op to programmatically pick the operation to run.
+            Typically, you would use the operation switches instead.
+            For example, `Invoke-RscQueryCluster -List` is equivalent to
+            `Invoke-RscQueryCluster -Op List`. 
             </summary>
         </member>
         <member name="P:RubrikSecurityCloud.PowerShell.Private.RscGqlPSCmdlet.Arg">
             <summary>
-            Input: Arguments to the operation. Overridden by argument parameters.
+            Operation variables. DEPRECATED in favor of -Var
+            </summary>
+        </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Private.RscGqlPSCmdlet.Var">
+            <summary>
+            Operation variables.
             </summary>
         </member>
         <member name="P:RubrikSecurityCloud.PowerShell.Private.RscGqlPSCmdlet.Field">
@@ -5539,7 +8021,17 @@
             in the API request.
             </summary>
         </member>
-        <member name="P:RubrikSecurityCloud.PowerShell.Private.RscGqlPSCmdlet.GetInputs">
+        <member name="P:RubrikSecurityCloud.PowerShell.Private.RscGqlPSCmdlet.Patch">
+            <summary>
+             Patch the field spec with field names from a string
+            </summary>
+        </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Private.RscGqlPSCmdlet.PatchFile">
+            <summary>
+             Patch the field spec with field names from a file
+            </summary>
+        </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Private.RscGqlPSCmdlet.GetInput">
             <summary>
             Returns an object that contains the Op, Arg and Field inputs
             that would be used to run the operation.
@@ -5547,7 +8039,14 @@
         </member>
         <member name="P:RubrikSecurityCloud.PowerShell.Private.RscGqlPSCmdlet.InputProfile">
             <summary>
-            The input profile determines how inputs to the operation
+            The field profile determines how inputs to the operation
+            should be automatically set if they are not explicitly given
+            as parameters. DEPRECATED in favor of -FieldProfile
+            </summary>
+        </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Private.RscGqlPSCmdlet.FieldProfile">
+            <summary>
+            The field profile determines how inputs to the operation
             should be automatically set if they are not explicitly given
             as parameters.
             </summary>
@@ -5562,6 +8061,33 @@
             <summary>
             Create a new RSC PowerShell cmdlet.
             </summary>
+        </member>
+        <member name="M:RubrikSecurityCloud.PowerShell.Private.RscGqlPSCmdlet.Initialize(System.Tuple{System.String,System.String}[],System.String,System.String,System.String,System.String)">
+            <summary>
+            Initialize the inputs
+            </summary>
+            <param name="argDefs"></param>
+            <param name="opKind">
+            "query" or "mutation"
+            </param>
+            <param name="opName">
+            name of operation, e.g. "QueryClusterConnection"
+            </param>
+            <param name="opArgs">
+            e.g. "($first: Int,$after: String,$last: Int,$before: String,$filter: ClusterFilterInput,$sortOrder: SortOrder,$sortBy: ClusterSortByEnum)"
+            </param>
+            <param name="opReturnType">
+            e.g. "ClusterConnection"
+            </param>
+        </member>
+        <member name="M:RubrikSecurityCloud.PowerShell.Private.RscGqlPSCmdlet.BuildRequest(System.String)">
+            <summary>
+            Build the GraphQL request
+            </summary>
+            <param name="opFields">
+            GraphQL field specification
+            e.g. "count { node { id name } }"
+            </param>
         </member>
         <member name="T:RubrikSecurityCloud.PowerShell.Private.RscSessionInfo">
             <summary>
@@ -5590,6 +8116,18 @@
             client information, authentication state and version info.
             </summary>
             <returns>Instance of RscPsSessionInfo</returns>
+        </member>
+        <member name="M:RubrikSecurityCloud.PowerShell.Private.RscTypeInitializer.GetAllTypeNames(System.String,System.Boolean)">
+            <summary>
+            Get a list of all RSC schema types whose names contain a given string.
+            </summary>
+            <param name="nameFilter">string to match, case insensitive</param>
+            <param name="interfaces">if true, return interfaces; if false return classes</param>
+        </member>
+        <member name="M:RubrikSecurityCloud.PowerShell.Private.RscTypeInitializer.GetTypeByName(System.String)">
+            <summary>
+            Get an RSC schema type by name.
+            </summary>
         </member>
         <member name="M:RubrikSecurityCloud.PowerShell.Private.RscTypeInitializer.InitializeInputWithSelectedFields(System.String,System.Collections.Hashtable)">
             <summary>
@@ -5627,6 +8165,102 @@
             <summary>
               Overrides the current thread's CurrentUICulture property for all
               resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="M:RubrikSecurityCloud.JsonUtils.JsonReady(System.Object)">
+            <summary>
+            Convert an object so that it can be serialized to JSON.
+            - Handles basic types (string, int, etc.) by returning them as-is.
+            - Unwrap PowerShell PSObjects.
+            - RSC types pass through.
+            - Hashtables and Enumerable types are recursively processed.
+            - Defaults to ToString() on unrecognized types.
+            </summary>
+        </member>
+        <member name="M:RubrikSecurityCloud.RscCmdletInput.#ctor(System.String,RubrikSecurityCloud.RscGqlVars,System.Object,RubrikSecurityCloud.RscGqlOperation)">
+            <summary>
+            Create a new RscCmdletInput object.
+            </summary>
+        </member>
+        <member name="M:RubrikSecurityCloud.RscCmdletInput.GqlOperation">
+            <summary>
+            The name of the underlying GQL operation.
+            </summary>
+        </member>
+        <member name="M:RubrikSecurityCloud.RscCmdletInput.ToString">
+            <summary>
+             String representation of this object.
+            </summary>
+        </member>
+        <member name="M:RubrikSecurityCloud.RscGqlOperation.#ctor(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Create a new RscGqlOperation object.
+            </summary>
+            <param name="kind">The kind of operation (query, mutation, subscription).</param>
+            <param name="name">The name of the operation.</param>
+            <param name="args">The arguments of the operation.</param>
+            <param name="returnType">The return type of the operation.</param>
+            <param name="fieldSpec">The field spec of the operation.</param>
+            <returns>A new RscGqlOperation object.</returns>
+        </member>
+        <member name="T:RubrikSecurityCloud.RscGqlVars">
+            <summary>
+            Variables to be used in a GraphQL query.
+            </summary>
+        </member>
+        <member name="M:RubrikSecurityCloud.RscGqlVars.#ctor">
+            <summary>
+            Create a new RscGqlVars object.
+            </summary>
+        </member>
+        <member name="M:RubrikSecurityCloud.RscGqlVars.#ctor(System.Object,System.Tuple{System.String,System.String}[],RubrikSecurityCloud.GetOverrideValueForVarDelegate,System.Boolean)">
+            <summary>
+            Create a new RscGqlVars object.
+            </summary>
+        </member>
+        <member name="M:RubrikSecurityCloud.RscGqlVars.Set(System.Object,System.Tuple{System.String,System.String}[],RubrikSecurityCloud.GetOverrideValueForVarDelegate,System.Boolean)">
+            <summary>
+            Set variables from various input types.
+            </summary>
+            <param name="obj">
+            - If varDefs shows only 1 variable, and obj is not a hashtable,
+              then obj is assumed to be the value of that variable.
+            - If obj is a string, it is assumed to be a
+              comma-separated list of key-value pairs.
+            - Otherwise obj must be a hashtable.
+            Values are converted to JSON-serializable types
+            (RSC types are passed through as-is).
+            </param>
+            <param name="varDefs">
+            Variable definitions modify the variables in 3 ways:
+            - look up overrides from the cmdlet's parameters
+            - throw on missing required variables
+            - for basic types, convert the value to the correct type
+            </param>
+            <param name="getOverrideValueForVar">
+            Used to look up overrides from the cmdlet's parameters.
+            </param>
+            <param name="ignoreRequired">
+            if false, throw on missing required variables.
+            </param>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:RubrikSecurityCloud.RscGqlVars.conformToVarDefs(RubrikSecurityCloud.GetOverrideValueForVarDelegate,System.Boolean)">
+            <summary>
+            Variable definitions modify the variables in 3 ways:
+            - look up overrides from the cmdlet's parameters
+            - throw on missing required variables
+            - for basic types, convert the value to the correct type
+            </summary>
+        </member>
+        <member name="M:RubrikSecurityCloud.RscGqlVars.ToDict">
+            <summary>
+            Convert to a dictionary.
+            </summary>
+        </member>
+        <member name="M:RubrikSecurityCloud.RscGqlVars.ToString">
+            <summary>
+            String representation of the variables.
             </summary>
         </member>
     </members>

@@ -46,3 +46,265 @@ Cluster timezone.
 - CLUSTER_TIMEZONE_PACIFIC_HONOLULU - Cluster timezone Honolulu.
 - CLUSTER_TIMEZONE_PACIFIC_MIDWAY - Cluster timezone Midway.
 - CLUSTER_TIMEZONE_UTC - Cluster timezone UTC.
+- CLUSTER_TIMEZONE_AFRICA_ABIDJAN - Cluster timezone Abidjan.
+- CLUSTER_TIMEZONE_AFRICA_ALGIERS - Cluster timezone Algiers.
+- CLUSTER_TIMEZONE_AFRICA_BISSAU - Cluster timezone Bissau.
+- CLUSTER_TIMEZONE_AFRICA_CEUTA - Cluster timezone Ceuta.
+- CLUSTER_TIMEZONE_AFRICA_MAPUTO - Cluster timezone Maputo.
+- CLUSTER_TIMEZONE_AFRICA_MONROVIA - Cluster timezone Monrovia.
+- CLUSTER_TIMEZONE_AFRICA_NDJAMENA - Cluster timezone Ndjamena.
+- CLUSTER_TIMEZONE_AFRICA_SAO_TOME - Cluster timezone Sao Tome.
+- CLUSTER_TIMEZONE_AFRICA_TRIPOLI - Cluster timezone Tripoli.
+- CLUSTER_TIMEZONE_AFRICA_TUNIS - Cluster timezone Tunis.
+- CLUSTER_TIMEZONE_AFRICA_WINDHOEK - Cluster timezone Windhoek.
+- CLUSTER_TIMEZONE_AMERICA_ADAK - Cluster timezone Adak.
+- CLUSTER_TIMEZONE_AMERICA_ARGENTINA_BUENOS_AIRES - Cluster timezone Argentina Buenos Aires.
+- CLUSTER_TIMEZONE_AMERICA_ARGENTINA_CATAMARCA - Cluster timezone Argentina Catamarca.
+- CLUSTER_TIMEZONE_AMERICA_ARGENTINA_CORDOBA - Cluster timezone Argentina Cordoba.
+- CLUSTER_TIMEZONE_AMERICA_ARGENTINA_JUJUY - Cluster timezone Argentina Jujuy.
+- CLUSTER_TIMEZONE_AMERICA_ARGENTINA_LA_RIOJA - Cluster timezone Argentina La Rioja.
+- CLUSTER_TIMEZONE_AMERICA_ARGENTINA_MENDOZA - Cluster timezone Argentina Mendoza.
+- CLUSTER_TIMEZONE_AMERICA_ARGENTINA_RIO_GALLEGOS - Cluster timezone Argentina Rio Gallegos.
+- CLUSTER_TIMEZONE_AMERICA_ARGENTINA_SALTA - Cluster timezone Argentina Salta.
+- CLUSTER_TIMEZONE_AMERICA_ARGENTINA_SAN_JUAN - Cluster timezone Argentina San Juan.
+- CLUSTER_TIMEZONE_AMERICA_ARGENTINA_SAN_LUIS - Cluster timezone Argentina San Luis.
+- CLUSTER_TIMEZONE_AMERICA_ARGENTINA_TUCUMAN - Cluster timezone Argentina Tucuman.
+- CLUSTER_TIMEZONE_AMERICA_ARGENTINA_USHUAIA - Cluster timezone Argentina Ushuaia.
+- CLUSTER_TIMEZONE_AMERICA_BAHIA - Cluster timezone Bahia.
+- CLUSTER_TIMEZONE_AMERICA_BELEM - Cluster timezone Belem.
+- CLUSTER_TIMEZONE_AMERICA_BELIZE - Cluster timezone Belize.
+- CLUSTER_TIMEZONE_AMERICA_BOA_VISTA - Cluster timezone Boa Vista.
+- CLUSTER_TIMEZONE_AMERICA_BOISE - Cluster timezone Boise.
+- CLUSTER_TIMEZONE_AMERICA_CAMBRIDGE_BAY - Cluster timezone Cambridge Bay.
+- CLUSTER_TIMEZONE_AMERICA_CAMPO_GRANDE - Cluster timezone Campo Grande.
+- CLUSTER_TIMEZONE_AMERICA_CANCUN - Cluster timezone Cancun.
+- CLUSTER_TIMEZONE_AMERICA_CARACAS - Cluster timezone Caracas.
+- CLUSTER_TIMEZONE_AMERICA_CAYENNE - Cluster timezone Cayenne.
+- CLUSTER_TIMEZONE_AMERICA_CHIHUAHUA - Cluster timezone Chihuahua.
+- CLUSTER_TIMEZONE_AMERICA_CIUDAD_JUAREZ - Cluster timezone Ciudad Juarez.
+- CLUSTER_TIMEZONE_AMERICA_CUIABA - Cluster timezone Cuiaba.
+- CLUSTER_TIMEZONE_AMERICA_DANMARKSHAVN - Cluster timezone Danmarkshavn.
+- CLUSTER_TIMEZONE_AMERICA_DAWSON - Cluster timezone Dawson.
+- CLUSTER_TIMEZONE_AMERICA_DAWSON_CREEK - Cluster timezone Dawson Creek.
+- CLUSTER_TIMEZONE_AMERICA_DETROIT - Cluster timezone Detroit.
+- CLUSTER_TIMEZONE_AMERICA_EDMONTON - Cluster timezone Edmonton.
+- CLUSTER_TIMEZONE_AMERICA_EIRUNEPE - Cluster timezone Eirunepe.
+- CLUSTER_TIMEZONE_AMERICA_EL_SALVADOR - Cluster timezone El Salvador.
+- CLUSTER_TIMEZONE_AMERICA_FORT_NELSON - Cluster timezone Fort Nelson.
+- CLUSTER_TIMEZONE_AMERICA_FORTALEZA - Cluster timezone Fortaleza.
+- CLUSTER_TIMEZONE_AMERICA_GLACE_BAY - Cluster timezone Glace Bay.
+- CLUSTER_TIMEZONE_AMERICA_GOOSE_BAY - Cluster timezone Goose Bay.
+- CLUSTER_TIMEZONE_AMERICA_GRAND_TURK - Cluster timezone Grand Turk.
+- CLUSTER_TIMEZONE_AMERICA_GUATEMALA - Cluster timezone Guatemala.
+- CLUSTER_TIMEZONE_AMERICA_GUAYAQUIL - Cluster timezone Guayaquil.
+- CLUSTER_TIMEZONE_AMERICA_GUYANA - Cluster timezone Guyana.
+- CLUSTER_TIMEZONE_AMERICA_HALIFAX - Cluster timezone Halifax.
+- CLUSTER_TIMEZONE_AMERICA_HAVANA - Cluster timezone Havana.
+- CLUSTER_TIMEZONE_AMERICA_INDIANA_INDIANAPOLIS - Cluster timezone Indiana Indianapolis.
+- CLUSTER_TIMEZONE_AMERICA_INDIANA_KNOX - Cluster timezone Indiana Knox.
+- CLUSTER_TIMEZONE_AMERICA_INDIANA_MARENGO - Cluster timezone Indiana Marengo.
+- CLUSTER_TIMEZONE_AMERICA_INDIANA_PETERSBURG - Cluster timezone Indiana Petersburg.
+- CLUSTER_TIMEZONE_AMERICA_INDIANA_TELL_CITY - Cluster timezone Indiana Tell City.
+- CLUSTER_TIMEZONE_AMERICA_INDIANA_VEVAY - Cluster timezone Indiana Vevay.
+- CLUSTER_TIMEZONE_AMERICA_INDIANA_VINCENNES - Cluster timezone Indiana Vincennes.
+- CLUSTER_TIMEZONE_AMERICA_INDIANA_WINAMAC - Cluster timezone Indiana Winamac.
+- CLUSTER_TIMEZONE_AMERICA_INUVIK - Cluster timezone Inuvik.
+- CLUSTER_TIMEZONE_AMERICA_IQALUIT - Cluster timezone Iqaluit.
+- CLUSTER_TIMEZONE_AMERICA_JAMAICA - Cluster timezone Jamaica.
+- CLUSTER_TIMEZONE_AMERICA_JUNEAU - Cluster timezone Juneau.
+- CLUSTER_TIMEZONE_AMERICA_KENTUCKY_LOUISVILLE - Cluster timezone Kentucky Louisville.
+- CLUSTER_TIMEZONE_AMERICA_KENTUCKY_MONTICELLO - Cluster timezone Kentucky Monticello.
+- CLUSTER_TIMEZONE_AMERICA_LA_PAZ - Cluster timezone La Paz.
+- CLUSTER_TIMEZONE_AMERICA_LIMA - Cluster timezone Lima.
+- CLUSTER_TIMEZONE_AMERICA_MACEIO - Cluster timezone Maceio.
+- CLUSTER_TIMEZONE_AMERICA_MANAGUA - Cluster timezone Managua.
+- CLUSTER_TIMEZONE_AMERICA_MANAUS - Cluster timezone Manaus.
+- CLUSTER_TIMEZONE_AMERICA_MARTINIQUE - Cluster timezone Martinique.
+- CLUSTER_TIMEZONE_AMERICA_MATAMOROS - Cluster timezone Matamoros.
+- CLUSTER_TIMEZONE_AMERICA_MENOMINEE - Cluster timezone Menominee.
+- CLUSTER_TIMEZONE_AMERICA_MERIDA - Cluster timezone Merida.
+- CLUSTER_TIMEZONE_AMERICA_METLAKATLA - Cluster timezone Metlakatla.
+- CLUSTER_TIMEZONE_AMERICA_MIQUELON - Cluster timezone Miquelon.
+- CLUSTER_TIMEZONE_AMERICA_MONCTON - Cluster timezone Moncton.
+- CLUSTER_TIMEZONE_AMERICA_MONTERREY - Cluster timezone Monterrey.
+- CLUSTER_TIMEZONE_AMERICA_MONTEVIDEO - Cluster timezone Montevideo.
+- CLUSTER_TIMEZONE_AMERICA_NOME - Cluster timezone Nome.
+- CLUSTER_TIMEZONE_AMERICA_NORTH_DAKOTA_BEULAH - Cluster timezone North Dakota Beulah.
+- CLUSTER_TIMEZONE_AMERICA_NORTH_DAKOTA_CENTER - Cluster timezone North Dakota Center.
+- CLUSTER_TIMEZONE_AMERICA_NORTH_DAKOTA_NEW_SALEM - Cluster timezone North Dakota New Salem.
+- CLUSTER_TIMEZONE_AMERICA_OJINAGA - Cluster timezone Ojinaga.
+- CLUSTER_TIMEZONE_AMERICA_PARAMARIBO - Cluster timezone Paramaribo.
+- CLUSTER_TIMEZONE_AMERICA_PORTO_VELHO - Cluster timezone Porto Velho.
+- CLUSTER_TIMEZONE_AMERICA_PUERTO_RICO - Cluster timezone Puerto Rico.
+- CLUSTER_TIMEZONE_AMERICA_PUNTA_ARENAS - Cluster timezone Punta Arenas.
+- CLUSTER_TIMEZONE_AMERICA_RANKIN_INLET - Cluster timezone Rankin Inlet.
+- CLUSTER_TIMEZONE_AMERICA_RECIFE - Cluster timezone Recife.
+- CLUSTER_TIMEZONE_AMERICA_REGINA - Cluster timezone Regina.
+- CLUSTER_TIMEZONE_AMERICA_RESOLUTE - Cluster timezone Resolute.
+- CLUSTER_TIMEZONE_AMERICA_RIO_BRANCO - Cluster timezone Rio Branco.
+- CLUSTER_TIMEZONE_AMERICA_SANTAREM - Cluster timezone Santarem.
+- CLUSTER_TIMEZONE_AMERICA_SAO_PAULO - Cluster timezone Sao Paulo.
+- CLUSTER_TIMEZONE_AMERICA_SCORESBYSUND - Cluster timezone Scoresbysund.
+- CLUSTER_TIMEZONE_AMERICA_SITKA - Cluster timezone Sitka.
+- CLUSTER_TIMEZONE_AMERICA_SWIFT_CURRENT - Cluster timezone Swift Current.
+- CLUSTER_TIMEZONE_AMERICA_TEGUCIGALPA - Cluster timezone Tegucigalpa.
+- CLUSTER_TIMEZONE_AMERICA_THULE - Cluster timezone Thule.
+- CLUSTER_TIMEZONE_AMERICA_TIJUANA - Cluster timezone Tijuana.
+- CLUSTER_TIMEZONE_AMERICA_WHITEHORSE - Cluster timezone Whitehorse.
+- CLUSTER_TIMEZONE_AMERICA_WINNIPEG - Cluster timezone Winnipeg.
+- CLUSTER_TIMEZONE_AMERICA_YAKUTAT - Cluster timezone Yakutat.
+- CLUSTER_TIMEZONE_ANTARCTICA_CASEY - Cluster timezone Casey.
+- CLUSTER_TIMEZONE_ANTARCTICA_DAVIS - Cluster timezone Davis.
+- CLUSTER_TIMEZONE_ANTARCTICA_MACQUARIE - Cluster timezone Macquarie.
+- CLUSTER_TIMEZONE_ANTARCTICA_MAWSON - Cluster timezone Mawson.
+- CLUSTER_TIMEZONE_ANTARCTICA_PALMER - Cluster timezone Palmer.
+- CLUSTER_TIMEZONE_ANTARCTICA_ROTHERA - Cluster timezone Rothera.
+- CLUSTER_TIMEZONE_ANTARCTICA_TROLL - Cluster timezone Troll.
+- CLUSTER_TIMEZONE_ASIA_ALMATY - Cluster timezone Almaty.
+- CLUSTER_TIMEZONE_ASIA_ANADYR - Cluster timezone Anadyr.
+- CLUSTER_TIMEZONE_ASIA_AQTAU - Cluster timezone Aqtau.
+- CLUSTER_TIMEZONE_ASIA_AQTOBE - Cluster timezone Aqtobe.
+- CLUSTER_TIMEZONE_ASIA_ASHGABAT - Cluster timezone Ashgabat.
+- CLUSTER_TIMEZONE_ASIA_ATYRAU - Cluster timezone Atyrau.
+- CLUSTER_TIMEZONE_ASIA_BAGHDAD - Cluster timezone Baghdad.
+- CLUSTER_TIMEZONE_ASIA_BAKU - Cluster timezone Baku.
+- CLUSTER_TIMEZONE_ASIA_BARNAUL - Cluster timezone Barnaul.
+- CLUSTER_TIMEZONE_ASIA_BISHKEK - Cluster timezone Bishkek.
+- CLUSTER_TIMEZONE_ASIA_CHITA - Cluster timezone Chita.
+- CLUSTER_TIMEZONE_ASIA_CHOIBALSAN - Cluster timezone Choibalsan.
+- CLUSTER_TIMEZONE_ASIA_COLOMBO - Cluster timezone Colombo.
+- CLUSTER_TIMEZONE_ASIA_DAMASCUS - Cluster timezone Damascus.
+- CLUSTER_TIMEZONE_ASIA_DILI - Cluster timezone Dili.
+- CLUSTER_TIMEZONE_ASIA_DUSHANBE - Cluster timezone Dushanbe.
+- CLUSTER_TIMEZONE_ASIA_FAMAGUSTA - Cluster timezone Famagusta.
+- CLUSTER_TIMEZONE_ASIA_HO_CHI_MINH - Cluster timezone Ho Chi Minh.
+- CLUSTER_TIMEZONE_ASIA_HOVD - Cluster timezone Hovd.
+- CLUSTER_TIMEZONE_ASIA_IRKUTSK - Cluster timezone Irkutsk.
+- CLUSTER_TIMEZONE_ASIA_JAKARTA - Cluster timezone Jakarta.
+- CLUSTER_TIMEZONE_ASIA_JAYAPURA - Cluster timezone Jayapura.
+- CLUSTER_TIMEZONE_ASIA_JERUSALEM - Cluster timezone Jerusalem.
+- CLUSTER_TIMEZONE_ASIA_KABUL - Cluster timezone Kabul.
+- CLUSTER_TIMEZONE_ASIA_KAMCHATKA - Cluster timezone Kamchatka.
+- CLUSTER_TIMEZONE_ASIA_KHANDYGA - Cluster timezone Khandyga.
+- CLUSTER_TIMEZONE_ASIA_KRASNOYARSK - Cluster timezone Krasnoyarsk.
+- CLUSTER_TIMEZONE_ASIA_KUCHING - Cluster timezone Kuching.
+- CLUSTER_TIMEZONE_ASIA_MACAU - Cluster timezone Macau.
+- CLUSTER_TIMEZONE_ASIA_MAKASSAR - Cluster timezone Makassar.
+- CLUSTER_TIMEZONE_ASIA_MANILA - Cluster timezone Manila.
+- CLUSTER_TIMEZONE_ASIA_NICOSIA - Cluster timezone Nicosia.
+- CLUSTER_TIMEZONE_ASIA_NOVOKUZNETSK - Cluster timezone Novokuznetsk.
+- CLUSTER_TIMEZONE_ASIA_NOVOSIBIRSK - Cluster timezone Novosibirsk.
+- CLUSTER_TIMEZONE_ASIA_OMSK - Cluster timezone Omsk.
+- CLUSTER_TIMEZONE_ASIA_ORAL - Cluster timezone Oral.
+- CLUSTER_TIMEZONE_ASIA_PONTIANAK - Cluster timezone Pontianak.
+- CLUSTER_TIMEZONE_ASIA_PYONGYANG - Cluster timezone Pyongyang.
+- CLUSTER_TIMEZONE_ASIA_QATAR - Cluster timezone Qatar.
+- CLUSTER_TIMEZONE_ASIA_QOSTANAY - Cluster timezone Qostanay.
+- CLUSTER_TIMEZONE_ASIA_QYZYLORDA - Cluster timezone Qyzylorda.
+- CLUSTER_TIMEZONE_ASIA_RIYADH - Cluster timezone Riyadh.
+- CLUSTER_TIMEZONE_ASIA_SAKHALIN - Cluster timezone Sakhalin.
+- CLUSTER_TIMEZONE_ASIA_SAMARKAND - Cluster timezone Samarkand.
+- CLUSTER_TIMEZONE_ASIA_SEOUL - Cluster timezone Seoul.
+- CLUSTER_TIMEZONE_ASIA_SHANGHAI - Cluster timezone Shanghai.
+- CLUSTER_TIMEZONE_ASIA_SREDNEKOLYMSK - Cluster timezone Srednekolymsk.
+- CLUSTER_TIMEZONE_ASIA_TAIPEI - Cluster timezone Taipei.
+- CLUSTER_TIMEZONE_ASIA_TASHKENT - Cluster timezone Tashkent.
+- CLUSTER_TIMEZONE_ASIA_TBILISI - Cluster timezone Tbilisi.
+- CLUSTER_TIMEZONE_ASIA_TEHRAN - Cluster timezone Tehran.
+- CLUSTER_TIMEZONE_ASIA_THIMPHU - Cluster timezone Thimphu.
+- CLUSTER_TIMEZONE_ASIA_TOMSK - Cluster timezone Tomsk.
+- CLUSTER_TIMEZONE_ASIA_ULAANBAATAR - Cluster timezone Ulaanbaatar.
+- CLUSTER_TIMEZONE_ASIA_URUMQI - Cluster timezone Urumqi.
+- CLUSTER_TIMEZONE_ASIA_VLADIVOSTOK - Cluster timezone Vladivostok.
+- CLUSTER_TIMEZONE_ASIA_YAKUTSK - Cluster timezone Yakutsk.
+- CLUSTER_TIMEZONE_ASIA_YANGON - Cluster timezone Yangon.
+- CLUSTER_TIMEZONE_ASIA_YEKATERINBURG - Cluster timezone Yekaterinburg.
+- CLUSTER_TIMEZONE_ASIA_YEREVAN - Cluster timezone Yerevan.
+- CLUSTER_TIMEZONE_ATLANTIC_AZORES - Cluster timezone Azores.
+- CLUSTER_TIMEZONE_ATLANTIC_BERMUDA - Cluster timezone Bermuda.
+- CLUSTER_TIMEZONE_ATLANTIC_CANARY - Cluster timezone Canary.
+- CLUSTER_TIMEZONE_ATLANTIC_FAROE - Cluster timezone Faroe.
+- CLUSTER_TIMEZONE_ATLANTIC_MADEIRA - Cluster timezone Madeira.
+- CLUSTER_TIMEZONE_ATLANTIC_SOUTH_GEORGIA - Cluster timezone South Georgia.
+- CLUSTER_TIMEZONE_ATLANTIC_STANLEY - Cluster timezone Stanley.
+- CLUSTER_TIMEZONE_AUSTRALIA_BROKEN_HILL - Cluster timezone Broken Hill.
+- CLUSTER_TIMEZONE_AUSTRALIA_DARWIN - Cluster timezone Darwin.
+- CLUSTER_TIMEZONE_AUSTRALIA_EUCLA - Cluster timezone Eucla.
+- CLUSTER_TIMEZONE_AUSTRALIA_HOBART - Cluster timezone Hobart.
+- CLUSTER_TIMEZONE_AUSTRALIA_LINDEMAN - Cluster timezone Lindeman.
+- CLUSTER_TIMEZONE_AUSTRALIA_LORD_HOWE - Cluster timezone Lord Howe.
+- CLUSTER_TIMEZONE_AUSTRALIA_MELBOURNE - Cluster timezone Melbourne.
+- CLUSTER_TIMEZONE_CET - Cluster timezone CET.
+- CLUSTER_TIMEZONE_CST6CDT - Cluster timezone CST6CDT.
+- CLUSTER_TIMEZONE_EET - Cluster timezone EET.
+- CLUSTER_TIMEZONE_EST5EDT - Cluster timezone Est5edt.
+- CLUSTER_TIMEZONE_EUROPE_ANDORRA - Cluster timezone Andorra.
+- CLUSTER_TIMEZONE_EUROPE_ASTRAKHAN - Cluster timezone Astrakhan.
+- CLUSTER_TIMEZONE_EUROPE_BELGRADE - Cluster timezone Belgrade.
+- CLUSTER_TIMEZONE_EUROPE_BERLIN - Cluster timezone Berlin.
+- CLUSTER_TIMEZONE_EUROPE_BRUSSELS - Cluster timezone Brussels.
+- CLUSTER_TIMEZONE_EUROPE_BUCHAREST - Cluster timezone Bucharest.
+- CLUSTER_TIMEZONE_EUROPE_BUDAPEST - Cluster timezone Budapest.
+- CLUSTER_TIMEZONE_EUROPE_CHISINAU - Cluster timezone Chisinau.
+- CLUSTER_TIMEZONE_EUROPE_DUBLIN - Cluster timezone Dublin.
+- CLUSTER_TIMEZONE_EUROPE_GIBRALTAR - Cluster timezone Gibraltar.
+- CLUSTER_TIMEZONE_EUROPE_HELSINKI - Cluster timezone Helsinki.
+- CLUSTER_TIMEZONE_EUROPE_ISTANBUL - Cluster timezone Istanbul.
+- CLUSTER_TIMEZONE_EUROPE_KALININGRAD - Cluster timezone Kaliningrad.
+- CLUSTER_TIMEZONE_EUROPE_KIROV - Cluster timezone Kirov.
+- CLUSTER_TIMEZONE_EUROPE_KYIV - Cluster timezone Kyiv.
+- CLUSTER_TIMEZONE_EUROPE_LISBON - Cluster timezone Lisbon.
+- CLUSTER_TIMEZONE_EUROPE_MADRID - Cluster timezone Madrid.
+- CLUSTER_TIMEZONE_EUROPE_MALTA - Cluster timezone Malta.
+- CLUSTER_TIMEZONE_EUROPE_MINSK - Cluster timezone Minsk.
+- CLUSTER_TIMEZONE_EUROPE_PARIS - Cluster timezone Paris.
+- CLUSTER_TIMEZONE_EUROPE_PRAGUE - Cluster timezone Prague.
+- CLUSTER_TIMEZONE_EUROPE_RIGA - Cluster timezone Riga.
+- CLUSTER_TIMEZONE_EUROPE_ROME - Cluster timezone Rome.
+- CLUSTER_TIMEZONE_EUROPE_SAMARA - Cluster timezone Samara.
+- CLUSTER_TIMEZONE_EUROPE_SARATOV - Cluster timezone Saratov.
+- CLUSTER_TIMEZONE_EUROPE_SIMFEROPOL - Cluster timezone Simferopol.
+- CLUSTER_TIMEZONE_EUROPE_SOFIA - Cluster timezone Sofia.
+- CLUSTER_TIMEZONE_EUROPE_TALLINN - Cluster timezone Tallinn.
+- CLUSTER_TIMEZONE_EUROPE_TIRANE - Cluster timezone Tirane.
+- CLUSTER_TIMEZONE_EUROPE_ULYANOVSK - Cluster timezone Ulyanovsk.
+- CLUSTER_TIMEZONE_EUROPE_VIENNA - Cluster timezone Vienna.
+- CLUSTER_TIMEZONE_EUROPE_VILNIUS - Cluster timezone Vilnius.
+- CLUSTER_TIMEZONE_EUROPE_VOLGOGRAD - Cluster timezone Volgograd.
+- CLUSTER_TIMEZONE_EUROPE_WARSAW - Cluster timezone Warsaw.
+- CLUSTER_TIMEZONE_EUROPE_ZURICH - Cluster timezone Zurich.
+- CLUSTER_TIMEZONE_INDIAN_CHAGOS - Cluster timezone Chagos.
+- CLUSTER_TIMEZONE_INDIAN_MALDIVES - Cluster timezone Maldives.
+- CLUSTER_TIMEZONE_INDIAN_MAURITIUS - Cluster timezone Mauritius.
+- CLUSTER_TIMEZONE_MET - Cluster timezone MET.
+- CLUSTER_TIMEZONE_MST7MDT - Cluster timezone MST7MDT.
+- CLUSTER_TIMEZONE_PST8PDT - Cluster timezone PST8PDT.
+- CLUSTER_TIMEZONE_PACIFIC_APIA - Cluster timezone Apia.
+- CLUSTER_TIMEZONE_PACIFIC_BOUGAINVILLE - Cluster timezone Bougainville.
+- CLUSTER_TIMEZONE_PACIFIC_CHATHAM - Cluster timezone Chatham.
+- CLUSTER_TIMEZONE_PACIFIC_EASTER - Cluster timezone Easter.
+- CLUSTER_TIMEZONE_PACIFIC_EFATE - Cluster timezone Efate.
+- CLUSTER_TIMEZONE_PACIFIC_FAKAOFO - Cluster timezone Fakaofo.
+- CLUSTER_TIMEZONE_PACIFIC_FIJI - Cluster timezone Fiji.
+- CLUSTER_TIMEZONE_PACIFIC_GALAPAGOS - Cluster timezone Galapagos.
+- CLUSTER_TIMEZONE_PACIFIC_GAMBIER - Cluster timezone Gambier.
+- CLUSTER_TIMEZONE_PACIFIC_GUADALCANAL - Cluster timezone Guadalcanal.
+- CLUSTER_TIMEZONE_PACIFIC_GUAM - Cluster timezone Guam.
+- CLUSTER_TIMEZONE_PACIFIC_KANTON - Cluster timezone Kanton.
+- CLUSTER_TIMEZONE_PACIFIC_KIRITIMATI - Cluster timezone Kiritimati.
+- CLUSTER_TIMEZONE_PACIFIC_KOSRAE - Cluster timezone Kosrae.
+- CLUSTER_TIMEZONE_PACIFIC_KWAJALEIN - Cluster timezone Kwajalein.
+- CLUSTER_TIMEZONE_PACIFIC_MARQUESAS - Cluster timezone Marquesas.
+- CLUSTER_TIMEZONE_PACIFIC_NAURU - Cluster timezone Nauru.
+- CLUSTER_TIMEZONE_PACIFIC_NIUE - Cluster timezone Niue.
+- CLUSTER_TIMEZONE_PACIFIC_NORFOLK - Cluster timezone Norfolk.
+- CLUSTER_TIMEZONE_PACIFIC_NOUMEA - Cluster timezone Noumea.
+- CLUSTER_TIMEZONE_PACIFIC_PAGO_PAGO - Cluster timezone Pago Pago.
+- CLUSTER_TIMEZONE_PACIFIC_PALAU - Cluster timezone Palau.
+- CLUSTER_TIMEZONE_PACIFIC_PITCAIRN - Cluster timezone Pitcairn.
+- CLUSTER_TIMEZONE_PACIFIC_PORT_MORESBY - Cluster timezone Port Moresby.
+- CLUSTER_TIMEZONE_PACIFIC_RAROTONGA - Cluster timezone Rarotonga.
+- CLUSTER_TIMEZONE_PACIFIC_TAHITI - Cluster timezone Tahiti.
+- CLUSTER_TIMEZONE_PACIFIC_TARAWA - Cluster timezone Tarawa.
+- CLUSTER_TIMEZONE_PACIFIC_TONGATAPU - Cluster timezone Tongatapu.
+- CLUSTER_TIMEZONE_WET - Cluster timezone WET.

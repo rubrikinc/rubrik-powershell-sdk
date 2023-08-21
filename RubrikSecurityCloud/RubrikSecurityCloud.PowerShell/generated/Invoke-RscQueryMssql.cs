@@ -18,6 +18,60 @@ using RubrikSecurityCloud.PowerShell.Private;
 
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
+    /// <summary>
+    /// MSSQL queries
+    /// </summary>
+    /// <description>
+    /// Invoke-RscQueryMssql is a master cmdlet for Mssql work that can invoke any of the following subcommands: TopLevelDescendants, Databases, AvailabilityGroup, Instance, Database, RecoverableRanges, DatabaseMissedSnapshots, CompatibleInstances, DatabaseMissedRecoverableRanges, AllDatabaseRestoreFiles, DatabaseLiveMounts, DefaultProperties, DatabaseRestoreEstimate, CdmLogShippingTargets, CdmLogShippingTarget, LogShippingTargets.
+    /// </description>
+    /// <example>
+    /// <code>Invoke-RscQueryMssql -TopLevelDescendants [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryMssql -Databases [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryMssql -AvailabilityGroup [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryMssql -Instance [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryMssql -Database [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryMssql -RecoverableRanges [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryMssql -DatabaseMissedSnapshots [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryMssql -CompatibleInstances [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryMssql -DatabaseMissedRecoverableRanges [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryMssql -AllDatabaseRestoreFiles [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryMssql -DatabaseLiveMounts [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryMssql -DefaultProperties [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryMssql -DatabaseRestoreEstimate [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryMssql -CdmLogShippingTargets [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryMssql -CdmLogShippingTarget [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryMssql -LogShippingTargets [-Arg ..] [-Field ..]</code>
+    /// </example>
     [Cmdlet(
         "Invoke",
         "RscQueryMssql",
@@ -545,24 +599,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("typeFilter", "[HierarchyObjectTypeEnum!]"),
                 Tuple.Create("filter", "[Filter!]"),
             };
-            MssqlTopLevelDescendantTypeConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (MssqlTopLevelDescendantTypeConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (MssqlTopLevelDescendantTypeConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.MssqlTopLevelDescendants(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryMssqlTopLevelDescendants",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$typeFilter: [HierarchyObjectTypeEnum!],$filter: [Filter!])",
-                fieldSpecDoc,
                 "MssqlTopLevelDescendantTypeConnection"
-            );
+                );
+            MssqlTopLevelDescendantTypeConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (MssqlTopLevelDescendantTypeConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.MssqlTopLevelDescendants(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -582,24 +632,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
             };
-            MssqlDatabaseConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (MssqlDatabaseConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (MssqlDatabaseConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.MssqlDatabases(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryMssqlDatabases",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                fieldSpecDoc,
                 "MssqlDatabaseConnection"
-            );
+                );
+            MssqlDatabaseConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (MssqlDatabaseConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.MssqlDatabases(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -609,24 +655,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            MssqlAvailabilityGroup? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (MssqlAvailabilityGroup)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (MssqlAvailabilityGroup)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.MssqlAvailabilityGroup(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryMssqlAvailabilityGroup",
                 "($fid: UUID!)",
-                fieldSpecDoc,
                 "MssqlAvailabilityGroup"
-            );
+                );
+            MssqlAvailabilityGroup? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (MssqlAvailabilityGroup)this.Field;
+            }
+            string fieldSpecDoc = Query.MssqlAvailabilityGroup(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -636,24 +678,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            MssqlInstance? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (MssqlInstance)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (MssqlInstance)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.MssqlInstance(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryMssqlInstance",
                 "($fid: UUID!)",
-                fieldSpecDoc,
                 "MssqlInstance"
-            );
+                );
+            MssqlInstance? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (MssqlInstance)this.Field;
+            }
+            string fieldSpecDoc = Query.MssqlInstance(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -663,24 +701,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            MssqlDatabase? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (MssqlDatabase)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (MssqlDatabase)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.MssqlDatabase(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryMssqlDatabase",
                 "($fid: UUID!)",
-                fieldSpecDoc,
                 "MssqlDatabase"
-            );
+                );
+            MssqlDatabase? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (MssqlDatabase)this.Field;
+            }
+            string fieldSpecDoc = Query.MssqlDatabase(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -690,24 +724,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetMssqlDbRecoverableRangesInput!"),
             };
-            MssqlRecoverableRangeListResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (MssqlRecoverableRangeListResponse)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (MssqlRecoverableRangeListResponse)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.MssqlRecoverableRanges(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryMssqlRecoverableRanges",
                 "($input: GetMssqlDbRecoverableRangesInput!)",
-                fieldSpecDoc,
                 "MssqlRecoverableRangeListResponse"
-            );
+                );
+            MssqlRecoverableRangeListResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (MssqlRecoverableRangeListResponse)this.Field;
+            }
+            string fieldSpecDoc = Query.MssqlRecoverableRanges(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -717,24 +747,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetMissedMssqlDbSnapshotsInput!"),
             };
-            MissedSnapshotListResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (MissedSnapshotListResponse)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (MissedSnapshotListResponse)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.MssqlDatabaseMissedSnapshots(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryMssqlDatabaseMissedSnapshots",
                 "($input: GetMissedMssqlDbSnapshotsInput!)",
-                fieldSpecDoc,
                 "MissedSnapshotListResponse"
-            );
+                );
+            MissedSnapshotListResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (MissedSnapshotListResponse)this.Field;
+            }
+            string fieldSpecDoc = Query.MssqlDatabaseMissedSnapshots(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -744,24 +770,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetCompatibleMssqlInstancesV1Input!"),
             };
-            MssqlInstanceSummaryListResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (MssqlInstanceSummaryListResponse)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (MssqlInstanceSummaryListResponse)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.MssqlCompatibleInstances(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryMssqlCompatibleInstances",
                 "($input: GetCompatibleMssqlInstancesV1Input!)",
-                fieldSpecDoc,
                 "MssqlInstanceSummaryListResponse"
-            );
+                );
+            MssqlInstanceSummaryListResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (MssqlInstanceSummaryListResponse)this.Field;
+            }
+            string fieldSpecDoc = Query.MssqlCompatibleInstances(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -771,24 +793,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetMssqlDbMissedRecoverableRangesInput!"),
             };
-            MssqlMissedRecoverableRangeListResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (MssqlMissedRecoverableRangeListResponse)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (MssqlMissedRecoverableRangeListResponse)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.MssqlDatabaseMissedRecoverableRanges(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryMssqlDatabaseMissedRecoverableRanges",
                 "($input: GetMssqlDbMissedRecoverableRangesInput!)",
-                fieldSpecDoc,
                 "MssqlMissedRecoverableRangeListResponse"
-            );
+                );
+            MssqlMissedRecoverableRangeListResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (MssqlMissedRecoverableRangeListResponse)this.Field;
+            }
+            string fieldSpecDoc = Query.MssqlDatabaseMissedRecoverableRanges(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -798,24 +816,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "MssqlGetRestoreFilesV1Input!"),
             };
-            V1MssqlGetRestoreFilesV1Response? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (V1MssqlGetRestoreFilesV1Response)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (V1MssqlGetRestoreFilesV1Response)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AllMssqlDatabaseRestoreFiles(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAllMssqlDatabaseRestoreFiles",
                 "($input: MssqlGetRestoreFilesV1Input!)",
-                fieldSpecDoc,
                 "V1MssqlGetRestoreFilesV1Response"
-            );
+                );
+            V1MssqlGetRestoreFilesV1Response? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (V1MssqlGetRestoreFilesV1Response)this.Field;
+            }
+            string fieldSpecDoc = Query.AllMssqlDatabaseRestoreFiles(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -833,24 +847,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("sortBy", "MssqlDatabaseLiveMountSortByInput"),
                 Tuple.Create("filters", "[MssqlDatabaseLiveMountFilterInput!]"),
             };
-            MssqlDatabaseLiveMountConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (MssqlDatabaseLiveMountConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (MssqlDatabaseLiveMountConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.MssqlDatabaseLiveMounts(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryMssqlDatabaseLiveMounts",
                 "($first: Int,$after: String,$sortBy: MssqlDatabaseLiveMountSortByInput,$filters: [MssqlDatabaseLiveMountFilterInput!])",
-                fieldSpecDoc,
                 "MssqlDatabaseLiveMountConnection"
-            );
+                );
+            MssqlDatabaseLiveMountConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (MssqlDatabaseLiveMountConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.MssqlDatabaseLiveMounts(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -860,24 +870,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetDefaultDbPropertiesV1Input!"),
             };
-            UpdateMssqlDefaultPropertiesReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (UpdateMssqlDefaultPropertiesReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (UpdateMssqlDefaultPropertiesReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.MssqlDefaultProperties(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryMssqlDefaultProperties",
                 "($input: GetDefaultDbPropertiesV1Input!)",
-                fieldSpecDoc,
                 "UpdateMssqlDefaultPropertiesReply"
-            );
+                );
+            UpdateMssqlDefaultPropertiesReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (UpdateMssqlDefaultPropertiesReply)this.Field;
+            }
+            string fieldSpecDoc = Query.MssqlDefaultProperties(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -887,24 +893,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "MssqlRestoreEstimateV1Input!"),
             };
-            MssqlRestoreEstimateResult? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (MssqlRestoreEstimateResult)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (MssqlRestoreEstimateResult)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.MssqlDatabaseRestoreEstimate(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryMssqlDatabaseRestoreEstimate",
                 "($input: MssqlRestoreEstimateV1Input!)",
-                fieldSpecDoc,
                 "MssqlRestoreEstimateResult"
-            );
+                );
+            MssqlRestoreEstimateResult? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (MssqlRestoreEstimateResult)this.Field;
+            }
+            string fieldSpecDoc = Query.MssqlDatabaseRestoreEstimate(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -922,24 +924,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("sortBy", "MssqlLogShippingTargetSortByInput"),
                 Tuple.Create("filters", "[MssqlLogShippingTargetFilterInput!]"),
             };
-            MssqlLogShippingTargetConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (MssqlLogShippingTargetConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (MssqlLogShippingTargetConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.CdmMssqlLogShippingTargets(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryCdmMssqlLogShippingTargets",
                 "($first: Int,$after: String,$sortBy: MssqlLogShippingTargetSortByInput,$filters: [MssqlLogShippingTargetFilterInput!])",
-                fieldSpecDoc,
                 "MssqlLogShippingTargetConnection"
-            );
+                );
+            MssqlLogShippingTargetConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (MssqlLogShippingTargetConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.CdmMssqlLogShippingTargets(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -949,24 +947,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            MssqlLogShippingTarget? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (MssqlLogShippingTarget)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (MssqlLogShippingTarget)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.CdmMssqlLogShippingTarget(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryCdmMssqlLogShippingTarget",
                 "($fid: UUID!)",
-                fieldSpecDoc,
                 "MssqlLogShippingTarget"
-            );
+                );
+            MssqlLogShippingTarget? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (MssqlLogShippingTarget)this.Field;
+            }
+            string fieldSpecDoc = Query.CdmMssqlLogShippingTarget(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -976,24 +970,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "QueryLogShippingConfigurationsV2Input!"),
             };
-            MssqlLogShippingSummaryV2ListResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (MssqlLogShippingSummaryV2ListResponse)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (MssqlLogShippingSummaryV2ListResponse)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.MssqlLogShippingTargets(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryMssqlLogShippingTargets",
                 "($input: QueryLogShippingConfigurationsV2Input!)",
-                fieldSpecDoc,
                 "MssqlLogShippingSummaryV2ListResponse"
-            );
+                );
+            MssqlLogShippingSummaryV2ListResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (MssqlLogShippingSummaryV2ListResponse)this.Field;
+            }
+            string fieldSpecDoc = Query.MssqlLogShippingTargets(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
 

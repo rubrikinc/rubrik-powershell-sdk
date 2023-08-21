@@ -18,6 +18,33 @@ using RubrikSecurityCloud.PowerShell.Private;
 
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
+    /// <summary>
+    /// vSphere vCenter mutations
+    /// </summary>
+    /// <description>
+    /// Invoke-RscMutateVcenter is a master cmdlet for Vcenter work that can invoke any of the following subcommands: Create, Delete, Edit, Refresh, Update, UpdateHotAddNetwork, UpdateHotAddBandwidth.
+    /// </description>
+    /// <example>
+    /// <code>Invoke-RscMutateVcenter -Create [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateVcenter -Delete [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateVcenter -Edit [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateVcenter -Refresh [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateVcenter -Update [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateVcenter -UpdateHotAddNetwork [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateVcenter -UpdateHotAddBandwidth [-Arg ..] [-Field ..]</code>
+    /// </example>
     [Cmdlet(
         "Invoke",
         "RscMutateVcenter",
@@ -287,24 +314,20 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
                 Tuple.Create("conflictResolutionAuthz", "ConflictResolutionAuthzEnum!"),
                 Tuple.Create("caCert", "String"),
             };
-            VsphereAsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (VsphereAsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (VsphereAsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.VsphereCreateVcenter(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationVsphereCreateVcenter",
                 "($clusterUuid: UUID!,$hostname: String!,$username: String!,$password: String!,$conflictResolutionAuthz: ConflictResolutionAuthzEnum!,$caCert: String)",
-                fieldSpecDoc,
                 "VsphereAsyncRequestStatus"
-            );
+                );
+            VsphereAsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (VsphereAsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.VsphereCreateVcenter(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -314,24 +337,20 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereDeleteVcenterInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.VsphereDeleteVcenter(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationVsphereDeleteVcenter",
                 "($input: VsphereDeleteVcenterInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.VsphereDeleteVcenter(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -353,24 +372,20 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
                 Tuple.Create("conflictResolutionAuthz", "ConflictResolutionAuthzEnum!"),
                 Tuple.Create("caCert", "String"),
             };
-            RequestSuccess? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (RequestSuccess)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (RequestSuccess)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.VsphereEditVcenter(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationVsphereEditVcenter",
                 "($vcenterId: UUID!,$hostname: String!,$username: String!,$password: String!,$conflictResolutionAuthz: ConflictResolutionAuthzEnum!,$caCert: String)",
-                fieldSpecDoc,
                 "RequestSuccess"
-            );
+                );
+            RequestSuccess? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (RequestSuccess)this.Field;
+            }
+            string fieldSpecDoc = Mutation.VsphereEditVcenter(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -380,24 +395,20 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("vcenterId", "UUID!"),
             };
-            VsphereAsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (VsphereAsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (VsphereAsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.VsphereRefreshVcenter(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationVsphereRefreshVcenter",
                 "($vcenterId: UUID!)",
-                fieldSpecDoc,
                 "VsphereAsyncRequestStatus"
-            );
+                );
+            VsphereAsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (VsphereAsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.VsphereRefreshVcenter(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -407,24 +418,20 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpdateVcenterInput!"),
             };
-            UpdateVcenterReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (UpdateVcenterReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (UpdateVcenterReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.UpdateVcenter(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationUpdateVcenter",
                 "($input: UpdateVcenterInput!)",
-                fieldSpecDoc,
                 "UpdateVcenterReply"
-            );
+                );
+            UpdateVcenterReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (UpdateVcenterReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.UpdateVcenter(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -434,24 +441,20 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpdateVcenterHotAddNetworkInput!"),
             };
-            RequestSuccess? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (RequestSuccess)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (RequestSuccess)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.UpdateVcenterHotAddNetwork(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationUpdateVcenterHotAddNetwork",
                 "($input: UpdateVcenterHotAddNetworkInput!)",
-                fieldSpecDoc,
                 "RequestSuccess"
-            );
+                );
+            RequestSuccess? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (RequestSuccess)this.Field;
+            }
+            string fieldSpecDoc = Mutation.UpdateVcenterHotAddNetwork(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -461,24 +464,20 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpdateVcenterHotAddBandwidthInput!"),
             };
-            RequestSuccess? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (RequestSuccess)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (RequestSuccess)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.UpdateVcenterHotAddBandwidth(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationUpdateVcenterHotAddBandwidth",
                 "($input: UpdateVcenterHotAddBandwidthInput!)",
-                fieldSpecDoc,
                 "RequestSuccess"
-            );
+                );
+            RequestSuccess? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (RequestSuccess)this.Field;
+            }
+            string fieldSpecDoc = Mutation.UpdateVcenterHotAddBandwidth(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
 

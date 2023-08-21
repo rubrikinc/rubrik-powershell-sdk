@@ -99,6 +99,11 @@ List of all Azure Key Vaults in a region.
 
 - There is a single argument of type AzureKeyVaultsInput.
 - Returns list of AzureKeyVaults.
+### allmanagedidentities
+List all managed identities for Azure resources.
+
+- There is a single argument of type AzureManagedIdentitiesRequest.
+- Returns list of AzureManagedIdentitys.
 ### allnativeavailabilitysetsbyregionfromazure
 Retrieves all availability sets in the specified region, resource group, and subscription. An availability set is a logical grouping of VMs to facilitate redundancy and availability. For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/availability-set-overview.
 

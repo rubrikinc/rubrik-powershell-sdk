@@ -18,6 +18,111 @@ using RubrikSecurityCloud.PowerShell.Private;
 
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
+    /// <summary>
+    /// O365 mutations
+    /// </summary>
+    /// <description>
+    /// Invoke-RscMutateO365 is a master cmdlet for O365 work that can invoke any of the following subcommands: SaaSSetupKickoff, PdlGroups, SaasSetupComplete, SetupKickoff, AddOrg, OauthConsentKickoff, OauthConsentComplete, CreateAppKickoff, CreateAppComplete, InsertCustomerApp, UpdateAppAuthStatus, UpdateAppPermissions, DeleteAzureApp, BackupMailbox, BackupOnedrive, BackupSharepointDrive, BackupSharepointList, BackupSharePointSite, BackupTeam, RestoreTeamsFiles, ExportTeamsFiles, RestoreTeamsConversations, RestoreSnappable, ExportWorkload, RefreshOrg, DeleteOrg, RestoreMailbox, ExportMailbox, SetServiceAccount, EnableSharePoint, EnableTeams, DeleteServiceAccount, UpdateOrgCustomName.
+    /// </description>
+    /// <example>
+    /// <code>Invoke-RscMutateO365 -SaaSSetupKickoff [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateO365 -PdlGroups [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateO365 -SaasSetupComplete [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateO365 -SetupKickoff [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateO365 -AddOrg [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateO365 -OauthConsentKickoff [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateO365 -OauthConsentComplete [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateO365 -CreateAppKickoff [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateO365 -CreateAppComplete [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateO365 -InsertCustomerApp [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateO365 -UpdateAppAuthStatus [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateO365 -UpdateAppPermissions [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateO365 -DeleteAzureApp [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateO365 -BackupMailbox [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateO365 -BackupOnedrive [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateO365 -BackupSharepointDrive [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateO365 -BackupSharepointList [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateO365 -BackupSharePointSite [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateO365 -BackupTeam [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateO365 -RestoreTeamsFiles [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateO365 -ExportTeamsFiles [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateO365 -RestoreTeamsConversations [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateO365 -RestoreSnappable [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateO365 -ExportWorkload [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateO365 -RefreshOrg [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateO365 -DeleteOrg [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateO365 -RestoreMailbox [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateO365 -ExportMailbox [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateO365 -SetServiceAccount [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateO365 -EnableSharePoint [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateO365 -EnableTeams [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateO365 -DeleteServiceAccount [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateO365 -UpdateOrgCustomName [-Arg ..] [-Field ..]</code>
+    /// </example>
     [Cmdlet(
         "Invoke",
         "RscMutateO365",
@@ -1042,24 +1147,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         {
             Tuple<string, string>[] argDefs = {
             };
-            O365SaasSetupKickoffReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (O365SaasSetupKickoffReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (O365SaasSetupKickoffReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.O365SaaSsetupKickoff(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationO365SaaSsetupKickoff",
                 "",
-                fieldSpecDoc,
                 "O365SaasSetupKickoffReply"
-            );
+                );
+            O365SaasSetupKickoffReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (O365SaasSetupKickoffReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.O365SaaSsetupKickoff(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1069,24 +1170,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "O365PdlGroupsInput!"),
             };
-            O365PdlGroupsReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (O365PdlGroupsReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (O365PdlGroupsReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.O365PdlGroups(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationO365PdlGroups",
                 "($input: O365PdlGroupsInput!)",
-                fieldSpecDoc,
                 "O365PdlGroupsReply"
-            );
+                );
+            O365PdlGroupsReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (O365PdlGroupsReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.O365PdlGroups(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1096,24 +1193,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "O365SaasSetupCompleteInput!"),
             };
-            AddO365OrgResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AddO365OrgResponse)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AddO365OrgResponse)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.O365SaasSetupComplete(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationO365SaasSetupComplete",
                 "($input: O365SaasSetupCompleteInput!)",
-                fieldSpecDoc,
                 "AddO365OrgResponse"
-            );
+                );
+            AddO365OrgResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AddO365OrgResponse)this.Field;
+            }
+            string fieldSpecDoc = Mutation.O365SaasSetupComplete(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1122,24 +1215,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         {
             Tuple<string, string>[] argDefs = {
             };
-            O365SetupKickoffResp? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (O365SetupKickoffResp)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (O365SetupKickoffResp)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.O365SetupKickoff(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationO365SetupKickoff",
                 "",
-                fieldSpecDoc,
                 "O365SetupKickoffResp"
-            );
+                );
+            O365SetupKickoffResp? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (O365SetupKickoffResp)this.Field;
+            }
+            string fieldSpecDoc = Mutation.O365SetupKickoff(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1149,24 +1238,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "AddO365OrgInput!"),
             };
-            AddO365OrgResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AddO365OrgResponse)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AddO365OrgResponse)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.AddO365Org(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationAddO365Org",
                 "($input: AddO365OrgInput!)",
-                fieldSpecDoc,
                 "AddO365OrgResponse"
-            );
+                );
+            AddO365OrgResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AddO365OrgResponse)this.Field;
+            }
+            string fieldSpecDoc = Mutation.AddO365Org(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1176,24 +1261,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "O365OauthConsentKickoffInput!"),
             };
-            O365OauthConsentKickoffReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (O365OauthConsentKickoffReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (O365OauthConsentKickoffReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.O365OauthConsentKickoff(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationO365OauthConsentKickoff",
                 "($input: O365OauthConsentKickoffInput!)",
-                fieldSpecDoc,
                 "O365OauthConsentKickoffReply"
-            );
+                );
+            O365OauthConsentKickoffReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (O365OauthConsentKickoffReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.O365OauthConsentKickoff(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1203,24 +1284,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "O365OauthConsentCompleteInput!"),
             };
-            O365OauthConsentCompleteReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (O365OauthConsentCompleteReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (O365OauthConsentCompleteReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.O365OauthConsentComplete(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationO365OauthConsentComplete",
                 "($input: O365OauthConsentCompleteInput!)",
-                fieldSpecDoc,
                 "O365OauthConsentCompleteReply"
-            );
+                );
+            O365OauthConsentCompleteReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (O365OauthConsentCompleteReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.O365OauthConsentComplete(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1230,24 +1307,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CreateO365AppKickoffInput!"),
             };
-            CreateO365AppKickoffResp? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (CreateO365AppKickoffResp)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (CreateO365AppKickoffResp)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.CreateO365AppKickoff(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationCreateO365AppKickoff",
                 "($input: CreateO365AppKickoffInput!)",
-                fieldSpecDoc,
                 "CreateO365AppKickoffResp"
-            );
+                );
+            CreateO365AppKickoffResp? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (CreateO365AppKickoffResp)this.Field;
+            }
+            string fieldSpecDoc = Mutation.CreateO365AppKickoff(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1257,24 +1330,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CreateO365AppCompleteInput!"),
             };
-            RequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (RequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (RequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.CreateO365AppComplete(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationCreateO365AppComplete",
                 "($input: CreateO365AppCompleteInput!)",
-                fieldSpecDoc,
                 "RequestStatus"
-            );
+                );
+            RequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (RequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.CreateO365AppComplete(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1284,24 +1353,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "InsertCustomerO365AppInput!"),
             };
-            RequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (RequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (RequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.InsertCustomerO365App(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationInsertCustomerO365App",
                 "($input: InsertCustomerO365AppInput!)",
-                fieldSpecDoc,
                 "RequestStatus"
-            );
+                );
+            RequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (RequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.InsertCustomerO365App(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1311,24 +1376,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpdateO365AppAuthStatusInput!"),
             };
-            UpdateO365AppAuthStatusReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (UpdateO365AppAuthStatusReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (UpdateO365AppAuthStatusReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.UpdateO365AppAuthStatus(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationUpdateO365AppAuthStatus",
                 "($input: UpdateO365AppAuthStatusInput!)",
-                fieldSpecDoc,
                 "UpdateO365AppAuthStatusReply"
-            );
+                );
+            UpdateO365AppAuthStatusReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (UpdateO365AppAuthStatusReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.UpdateO365AppAuthStatus(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1338,24 +1399,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpdateO365AppPermissionsInput!"),
             };
-            System.String? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (System.String)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (System.String)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.UpdateO365AppPermissions(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationUpdateO365AppPermissions",
                 "($input: UpdateO365AppPermissionsInput!)",
-                fieldSpecDoc,
                 "System.String"
-            );
+                );
+            System.String? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (System.String)this.Field;
+            }
+            string fieldSpecDoc = Mutation.UpdateO365AppPermissions(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1366,24 +1423,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("o365AppClientId", "String!"),
                 Tuple.Create("o365AppType", "String!"),
             };
-            RequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (RequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (RequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.DeleteO365AzureApp(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationDeleteO365AzureApp",
                 "($o365AppClientId: String!,$o365AppType: String!)",
-                fieldSpecDoc,
                 "RequestStatus"
-            );
+                );
+            RequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (RequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.DeleteO365AzureApp(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1393,24 +1446,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("mailboxIds", "[UUID!]!"),
             };
-            BatchAsyncJobStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (BatchAsyncJobStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (BatchAsyncJobStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.BackupO365Mailbox(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationBackupO365Mailbox",
                 "($mailboxIds: [UUID!]!)",
-                fieldSpecDoc,
                 "BatchAsyncJobStatus"
-            );
+                );
+            BatchAsyncJobStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (BatchAsyncJobStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.BackupO365Mailbox(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1420,24 +1469,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "BackupO365OnedriveInput!"),
             };
-            BatchAsyncJobStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (BatchAsyncJobStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (BatchAsyncJobStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.BackupO365Onedrive(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationBackupO365Onedrive",
                 "($input: BackupO365OnedriveInput!)",
-                fieldSpecDoc,
                 "BatchAsyncJobStatus"
-            );
+                );
+            BatchAsyncJobStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (BatchAsyncJobStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.BackupO365Onedrive(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1447,24 +1492,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "BackupO365SharepointDriveInput!"),
             };
-            BatchAsyncJobStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (BatchAsyncJobStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (BatchAsyncJobStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.BackupO365SharepointDrive(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationBackupO365SharepointDrive",
                 "($input: BackupO365SharepointDriveInput!)",
-                fieldSpecDoc,
                 "BatchAsyncJobStatus"
-            );
+                );
+            BatchAsyncJobStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (BatchAsyncJobStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.BackupO365SharepointDrive(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1474,24 +1515,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "BackupO365SharePointListInput!"),
             };
-            CreateOnDemandJobReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (CreateOnDemandJobReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (CreateOnDemandJobReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.BackupO365SharepointList(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationBackupO365SharepointList",
                 "($input: BackupO365SharePointListInput!)",
-                fieldSpecDoc,
                 "CreateOnDemandJobReply"
-            );
+                );
+            CreateOnDemandJobReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (CreateOnDemandJobReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.BackupO365SharepointList(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1501,24 +1538,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "BackupO365SharePointSiteInput!"),
             };
-            CreateOnDemandJobReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (CreateOnDemandJobReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (CreateOnDemandJobReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.BackupO365SharePointSite(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationBackupO365SharePointSite",
                 "($input: BackupO365SharePointSiteInput!)",
-                fieldSpecDoc,
                 "CreateOnDemandJobReply"
-            );
+                );
+            CreateOnDemandJobReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (CreateOnDemandJobReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.BackupO365SharePointSite(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1528,24 +1561,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "BackupO365TeamInput!"),
             };
-            BatchAsyncJobStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (BatchAsyncJobStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (BatchAsyncJobStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.BackupO365Team(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationBackupO365Team",
                 "($input: BackupO365TeamInput!)",
-                fieldSpecDoc,
                 "BatchAsyncJobStatus"
-            );
+                );
+            BatchAsyncJobStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (BatchAsyncJobStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.BackupO365Team(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1555,24 +1584,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RestoreO365TeamsFilesInput!"),
             };
-            CreateOnDemandJobReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (CreateOnDemandJobReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (CreateOnDemandJobReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.RestoreO365TeamsFiles(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationRestoreO365TeamsFiles",
                 "($input: RestoreO365TeamsFilesInput!)",
-                fieldSpecDoc,
                 "CreateOnDemandJobReply"
-            );
+                );
+            CreateOnDemandJobReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (CreateOnDemandJobReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.RestoreO365TeamsFiles(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1582,24 +1607,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RestoreO365TeamsFilesInput!"),
             };
-            CreateOnDemandJobReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (CreateOnDemandJobReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (CreateOnDemandJobReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.ExportO365TeamsFiles(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationExportO365TeamsFiles",
                 "($input: RestoreO365TeamsFilesInput!)",
-                fieldSpecDoc,
                 "CreateOnDemandJobReply"
-            );
+                );
+            CreateOnDemandJobReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (CreateOnDemandJobReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.ExportO365TeamsFiles(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1609,24 +1630,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RestoreO365TeamsConversationsInput!"),
             };
-            CreateOnDemandJobReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (CreateOnDemandJobReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (CreateOnDemandJobReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.RestoreO365TeamsConversations(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationRestoreO365TeamsConversations",
                 "($input: RestoreO365TeamsConversationsInput!)",
-                fieldSpecDoc,
                 "CreateOnDemandJobReply"
-            );
+                );
+            CreateOnDemandJobReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (CreateOnDemandJobReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.RestoreO365TeamsConversations(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1636,24 +1653,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RestoreO365SnappableInput!"),
             };
-            CreateOnDemandJobReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (CreateOnDemandJobReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (CreateOnDemandJobReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.RestoreO365Snappable(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationRestoreO365Snappable",
                 "($input: RestoreO365SnappableInput!)",
-                fieldSpecDoc,
                 "CreateOnDemandJobReply"
-            );
+                );
+            CreateOnDemandJobReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (CreateOnDemandJobReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.RestoreO365Snappable(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1663,24 +1676,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RestoreO365SnappableInput!"),
             };
-            CreateOnDemandJobReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (CreateOnDemandJobReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (CreateOnDemandJobReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.ExportO365Workload(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationExportO365Workload",
                 "($input: RestoreO365SnappableInput!)",
-                fieldSpecDoc,
                 "CreateOnDemandJobReply"
-            );
+                );
+            CreateOnDemandJobReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (CreateOnDemandJobReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.ExportO365Workload(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1690,24 +1699,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("orgId", "UUID!"),
             };
-            CreateOnDemandJobReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (CreateOnDemandJobReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (CreateOnDemandJobReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.RefreshO365Org(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationRefreshO365Org",
                 "($orgId: UUID!)",
-                fieldSpecDoc,
                 "CreateOnDemandJobReply"
-            );
+                );
+            CreateOnDemandJobReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (CreateOnDemandJobReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.RefreshO365Org(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1717,24 +1722,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("orgId", "UUID!"),
             };
-            CreateOnDemandJobReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (CreateOnDemandJobReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (CreateOnDemandJobReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.DeleteO365Org(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationDeleteO365Org",
                 "($orgId: UUID!)",
-                fieldSpecDoc,
                 "CreateOnDemandJobReply"
-            );
+                );
+            CreateOnDemandJobReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (CreateOnDemandJobReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.DeleteO365Org(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1744,24 +1745,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("restoreConfig", "RestoreO365MailboxInput!"),
             };
-            CreateOnDemandJobReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (CreateOnDemandJobReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (CreateOnDemandJobReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.RestoreO365Mailbox(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationRestoreO365Mailbox",
                 "($restoreConfig: RestoreO365MailboxInput!)",
-                fieldSpecDoc,
                 "CreateOnDemandJobReply"
-            );
+                );
+            CreateOnDemandJobReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (CreateOnDemandJobReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.RestoreO365Mailbox(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1771,24 +1768,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("exportConfig", "ExportO365MailboxInput!"),
             };
-            CreateOnDemandJobReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (CreateOnDemandJobReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (CreateOnDemandJobReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.ExportO365Mailbox(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationExportO365Mailbox",
                 "($exportConfig: ExportO365MailboxInput!)",
-                fieldSpecDoc,
                 "CreateOnDemandJobReply"
-            );
+                );
+            CreateOnDemandJobReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (CreateOnDemandJobReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.ExportO365Mailbox(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1800,24 +1793,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("appPassword", "String!"),
                 Tuple.Create("orgId", "UUID!"),
             };
-            RequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (RequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (RequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.SetO365ServiceAccount(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationSetO365ServiceAccount",
                 "($username: String!,$appPassword: String!,$orgId: UUID!)",
-                fieldSpecDoc,
                 "RequestStatus"
-            );
+                );
+            RequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (RequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.SetO365ServiceAccount(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1827,24 +1816,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "EnableO365SharePointInput!"),
             };
-            RequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (RequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (RequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.EnableO365SharePoint(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationEnableO365SharePoint",
                 "($input: EnableO365SharePointInput!)",
-                fieldSpecDoc,
                 "RequestStatus"
-            );
+                );
+            RequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (RequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.EnableO365SharePoint(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1854,24 +1839,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("exocomputeClusterId", "String!"),
             };
-            RequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (RequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (RequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.EnableO365Teams(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationEnableO365Teams",
                 "($exocomputeClusterId: String!)",
-                fieldSpecDoc,
                 "RequestStatus"
-            );
+                );
+            RequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (RequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.EnableO365Teams(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1881,24 +1862,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("orgId", "UUID!"),
             };
-            RequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (RequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (RequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.DeleteO365ServiceAccount(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationDeleteO365ServiceAccount",
                 "($orgId: UUID!)",
-                fieldSpecDoc,
                 "RequestStatus"
-            );
+                );
+            RequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (RequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.DeleteO365ServiceAccount(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1908,24 +1885,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpdateO365OrgCustomNameInput!"),
             };
-            UpdateO365OrgCustomNameReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (UpdateO365OrgCustomNameReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (UpdateO365OrgCustomNameReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.UpdateO365OrgCustomName(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationUpdateO365OrgCustomName",
                 "($input: UpdateO365OrgCustomNameInput!)",
-                fieldSpecDoc,
                 "UpdateO365OrgCustomNameReply"
-            );
+                );
+            UpdateO365OrgCustomNameReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (UpdateO365OrgCustomNameReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.UpdateO365OrgCustomName(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
 

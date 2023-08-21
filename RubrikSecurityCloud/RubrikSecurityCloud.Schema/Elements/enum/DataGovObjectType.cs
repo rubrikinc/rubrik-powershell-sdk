@@ -63,6 +63,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "LINUX_HOST_ROOT")]
         LINUX_HOST_ROOT,
 
+        [EnumMember(Value = "MSSQL_DATABASE")]
+        MSSQL_DATABASE,
+
+        [EnumMember(Value = "MSSQL_ROOT")]
+        MSSQL_ROOT,
+
         [EnumMember(Value = "NAS_FILESET")]
         NAS_FILESET,
 

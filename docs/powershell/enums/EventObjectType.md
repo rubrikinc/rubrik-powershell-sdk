@@ -118,3 +118,4 @@ Enum representing all the possible object types which generate events.
 - ATLASSIAN_SITE - Atlassian site.
 - JIRA_PROJECT - Atlassian Jira project.
 - JIRA_SETTINGS - Atlassian Jira settings.
+- REPLICATION_PAIR - Rubrik cluster replication pair.

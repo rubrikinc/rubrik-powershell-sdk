@@ -110,6 +110,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("numActivitiesDelta")]
         public System.Int64? NumActivitiesDelta { get; set; }
 
+        //      C# -> System.Int64? NumChildren
+        // GraphQL -> numChildren: Long! (scalar)
+        [JsonProperty("numChildren")]
+        public System.Int64? NumChildren { get; set; }
+
         //      C# -> System.Int64? NumDescendantErrorFiles
         // GraphQL -> numDescendantErrorFiles: Long! (scalar)
         [JsonProperty("numDescendantErrorFiles")]
@@ -164,6 +169,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> stdPath: String! (scalar)
         [JsonProperty("stdPath")]
         public System.String? StdPath { get; set; }
+
+        //      C# -> System.String? Type
+        // GraphQL -> type: String! (scalar)
+        [JsonProperty("type")]
+        public System.String? Type { get; set; }
 
         //      C# -> List<AnalyzerGroupResult>? AnalyzerGroupResults
         // GraphQL -> analyzerGroupResults: [AnalyzerGroupResult!]! (type)
@@ -263,6 +273,7 @@ namespace RubrikSecurityCloud.Types
         System.String? NativePath = null,
         System.Int64? NumActivities = null,
         System.Int64? NumActivitiesDelta = null,
+        System.Int64? NumChildren = null,
         System.Int64? NumDescendantErrorFiles = null,
         System.Int32? NumDescendantFiles = null,
         System.Int64? NumDescendantFolders = null,
@@ -274,6 +285,7 @@ namespace RubrikSecurityCloud.Types
         System.String? SnapshotFid = null,
         System.Int64? SnapshotTimestamp = null,
         System.String? StdPath = null,
+        System.String? Type = null,
         List<AnalyzerGroupResult>? AnalyzerGroupResults = null,
         List<AnalyzerResult>? AnalyzerResults = null,
         AnalyzerHits? AnalyzerRiskHits = null,
@@ -344,6 +356,9 @@ namespace RubrikSecurityCloud.Types
         if ( NumActivitiesDelta != null ) {
             this.NumActivitiesDelta = NumActivitiesDelta;
         }
+        if ( NumChildren != null ) {
+            this.NumChildren = NumChildren;
+        }
         if ( NumDescendantErrorFiles != null ) {
             this.NumDescendantErrorFiles = NumDescendantErrorFiles;
         }
@@ -376,6 +391,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( StdPath != null ) {
             this.StdPath = StdPath;
+        }
+        if ( Type != null ) {
+            this.Type = Type;
         }
         if ( AnalyzerGroupResults != null ) {
             this.AnalyzerGroupResults = AnalyzerGroupResults;
@@ -522,6 +540,11 @@ namespace RubrikSecurityCloud.Types
         if (this.NumActivitiesDelta != null) {
             s += ind + "numActivitiesDelta\n" ;
         }
+        //      C# -> System.Int64? NumChildren
+        // GraphQL -> numChildren: Long! (scalar)
+        if (this.NumChildren != null) {
+            s += ind + "numChildren\n" ;
+        }
         //      C# -> System.Int64? NumDescendantErrorFiles
         // GraphQL -> numDescendantErrorFiles: Long! (scalar)
         if (this.NumDescendantErrorFiles != null) {
@@ -576,6 +599,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> stdPath: String! (scalar)
         if (this.StdPath != null) {
             s += ind + "stdPath\n" ;
+        }
+        //      C# -> System.String? Type
+        // GraphQL -> type: String! (scalar)
+        if (this.Type != null) {
+            s += ind + "type\n" ;
         }
         //      C# -> List<AnalyzerGroupResult>? AnalyzerGroupResults
         // GraphQL -> analyzerGroupResults: [AnalyzerGroupResult!]! (type)
@@ -807,6 +835,12 @@ namespace RubrikSecurityCloud.Types
         {
             this.NumActivitiesDelta = new System.Int64();
         }
+        //      C# -> System.Int64? NumChildren
+        // GraphQL -> numChildren: Long! (scalar)
+        if (this.NumChildren == null && Exploration.Includes(parent + ".numChildren", true))
+        {
+            this.NumChildren = new System.Int64();
+        }
         //      C# -> System.Int64? NumDescendantErrorFiles
         // GraphQL -> numDescendantErrorFiles: Long! (scalar)
         if (this.NumDescendantErrorFiles == null && Exploration.Includes(parent + ".numDescendantErrorFiles", true))
@@ -872,6 +906,12 @@ namespace RubrikSecurityCloud.Types
         if (this.StdPath == null && Exploration.Includes(parent + ".stdPath", true))
         {
             this.StdPath = "FETCH";
+        }
+        //      C# -> System.String? Type
+        // GraphQL -> type: String! (scalar)
+        if (this.Type == null && Exploration.Includes(parent + ".type", true))
+        {
+            this.Type = "FETCH";
         }
         //      C# -> List<AnalyzerGroupResult>? AnalyzerGroupResults
         // GraphQL -> analyzerGroupResults: [AnalyzerGroupResult!]! (type)

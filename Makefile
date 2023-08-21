@@ -3,13 +3,8 @@ OUTPUT = ./Output
 default: build
 
 # build: builds the SDK.
-build: copy_static_files
+build:
 	$(MAKE) -C RubrikSecurityCloud build
-
-# copy_static_files: copies static files to the output directory.
-copy_static_files:
-	mkdir -p $(OUTPUT)
-	cp -av ./Operations $(OUTPUT)
 
 # clean: removes all compiled files.
 clean:

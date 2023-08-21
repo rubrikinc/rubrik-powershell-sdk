@@ -14229,6 +14229,15 @@ enum AuditObjectType {
   # System preference.
   SYSTEM_PREFERENCE
 
+  # TPR configuration.
+  TPR_CONFIG
+
+  # TPR policy.
+  TPR_POLICY
+
+  # TPR request.
+  TPR_REQUEST
+
   # Upgrade audit object.
   UPGRADE
 
@@ -18361,9 +18370,15 @@ type AwsNativeS3Bucket implements PolarisHierarchyObject , PolarisHierarchySnapp
 type AwsNativeS3SlaConfig {
   # Specifies the duration for which the continuous backups will be retained. This duration determines the earliest time to which a Point-in-Time recovery can be performed on the associated S3 instances.
   continuousBackupRetentionInDays: Int!
+
+  # Specifies the location ID where the primary backups will be stored.
+  archivalLocationId: String!
 }
 # AWS Native S3 SLA configuration.
 input AwsNativeS3SlaConfigInput {
+  # Specifies the location ID where the primary backups will be stored.
+  archivalLocationId: String = ""
+
   # Specifies the number of days for which the AWS S3 continuous backups will be retained. 
   continuousBackupRetentionInDays: Int = 0
 }
@@ -33451,6 +33466,12 @@ enum DataViewTypeEnum {
   # Specifies the latest protection audit information for each protected workload.
   OBJECT_PROTECTION_AUDIT_LIST
   PROTECTION_TASK_DETAILS
+
+  # Specifies the database schema for QAuth objects.
+  QAUTH_OBJECTS
+
+  #  Specifies the database schema for QAuth roles.
+  QAUTH_ROLES
   SLA_AUDIT_DETAIL
 
   # Specifies all audit information for the single SLA Domain.
@@ -38519,6 +38540,7 @@ input ExportOracleDbConfigInput {
   # Indicates whether to skip dropping the database in undo task if the database was partially recovered.
   shouldSkipDropDbInUndo: Boolean
 
+  # Supported in v9.0+
   # A boolean value determines if the database can be renamed back to the source Oracle host or RAC during the clone.
   shouldAllowRenameToSource: Boolean
 
@@ -42636,7 +42658,7 @@ type GeoLocation {
 }
 # Anomaly analysis report from lambda service.
 type GetAnomalyDetailsReply {
-  # The internal fid of the object.
+  # The internal FID of the object.
   workloadFid: String!
 
   # The internal ID of the object.
@@ -42648,7 +42670,7 @@ type GetAnomalyDetailsReply {
   # The internal ID of the snapshot.
   snapshotId: String!
 
-  # The internal fid of the snapshot.
+  # The internal FID of the snapshot.
   snapshotFid: String!
 
   # The internal managed ID of the object.
@@ -42714,6 +42736,9 @@ type GetAnomalyDetailsReply {
   # Type of the anomaly detected.
   anomalyType: AnomalyType!
 
+  # The FID of the previous snapshot.
+  previousSnapshotFid: String!
+
   # Severity of the anomaly.
   severity: ActivitySeverityEnum!
 
@@ -42728,6 +42753,9 @@ type GetAnomalyDetailsReply {
 
   # The analyzed snapshot.
   snapshot: CdmSnapshot
+
+  # The previous snapshot.
+  previousSnapshot: CdmSnapshot
 
   # The ransomware analysis result, including encryption.
   ransomwareResult: RansomwareResult
@@ -45863,7 +45891,8 @@ input HostRegisterInput {
   # Supported in v5.0+
   # v5.0-v8.0: The ID of the organization to which the host is assigned.
   # v8.1: The ID of the CDM organization to which the host is assigned. For RSC driven host registration, this field should be set to None, and host will be added to CDM global org. For CDM driven host registration, this field should be set to the Org the host belongs to.
-  # v9.0+: The ID of the organization to which the host is assigned.
+  # v9.0: The ID of the organization to which the host is assigned.
+  # v9.1: The ID of the CDM organization to which the host is assigned. For RSC driven host registration, this field should be set to None, and host will be added to CDM global org. For CDM driven host registration, this field should be set to the Org the host belongs to.
   organizationId: String
 
   # Supported in v5.1+
@@ -45877,8 +45906,9 @@ input HostRegisterInput {
   # A Boolean that specifies whether to discover Oracle information at registration. A value of 'true' discovers Oracle information at registration.
   isOracleHost: Boolean
 
-  # Supported in v8.1
-  # The ID of the RSC orgNetwork to which the host is assigned. This field should only be set when the host registration is called by RSC and the host belongs to a RSC orgNetwork. This field should always be set to None in other cases. 1) The call is from CDM; or 2) the call is from RSC but the host does not belong to an orgNetwork.
+  # Supported in v8.1, v9.1
+  # v8.1: The ID of the RSC orgNetwork to which the host is assigned. This field should only be set when the host registration is called by RSC and the host belongs to a RSC orgNetwork. This field should always be set to None in other cases. 1) The call is from CDM; or 2) the call is from RSC but the host does not belong to an orgNetwork.
+  # v9.1: The ID of the RSC orgNetwork to which the host is assigned. This field should only be set when the host registration is called by RSC and the host belongs to a RSC orgNetwork. This field should always be set to None in other cases. 1) The call is from CDM; or 2) the call is from RSC but the host does not belong to an orgNetwork.
   orgNetworkId: String
 
   # Required. Supported in v5.0+
@@ -71712,6 +71742,9 @@ type PolicyObj {
 
   # Specifies whether the object has user access enabled or not.
   isUserAccessEnabledObject: Boolean!
+
+  # Change in the user count for various risk levels.
+  deltaUserCounts: PrincipalCounts
   id: String!
   folderChildConnection(
     # Returns the first n elements from the list.
@@ -72011,6 +72044,9 @@ type PrincipalCounts {
 
   # Number of Low-risk principals.
   lowRiskCount: SummaryCount
+
+  # Number of principals.
+  totalCount: SummaryCount
 }
 # Wrapper around the Principal object. This wrapper is used for pagination.
 type PrincipalEdge {
@@ -72179,6 +72215,9 @@ enum ProductName {
 
   # Sensitive Data Discovery on NAS.
   SONAR_NAS
+
+  # Sensitive Data Discovery on Microsoft Office 365.
+  SONAR_O365
 
   # Sensitive Data Discovery on CNP.
   SONAR_UCL
@@ -83234,6 +83273,9 @@ input TeamsConversationsSearchFilter {
 
   # Describes whether to send post senders(shouldn't be called by UI).
   fetchAllPostSenders: String
+
+  # Describes whether to skip attachments(shouldn't be called by UI).
+  skipPostsAttachments: Boolean = false
 }
 # Represents the teams conversations search filter.
 input TeamsConversationsSearchFilterJson {
@@ -86593,6 +86635,15 @@ enum UserAuditObjectTypeEnum {
   # System preference type.
   SystemPreference
 
+  # TPR configuration type.
+  TPR_CONFIG
+
+  # TPR policy type.
+  TPR_POLICY
+
+  # TPR request type.
+  TPR_REQUEST
+
   # Unknown type.
   Unknown
 
@@ -89085,7 +89136,9 @@ input VcenterConfigV2Input {
   # A Boolean value that determines whether to enable HotAdd transport mode for On-Premise vCenter. When this value is `true`, VMware virtual machines can use HotAdd proxy to transport virtual disk data in addition to NBD(SSL). When this value is `false`, VMware virtual machines can ONLY usee NBD(SSL) to transport virtual disk data. Default value is `false`.
   shouldEnableHotAddProxyForOnPrem: Boolean
 
-  # The managed ID of the organization network to which the vCenter Server is assigned.
+  # Supported in v8.1, v9.1
+  # v8.1: The managed ID of the organization network to which the vCenter Server is assigned.
+  # v9.1: The managed ID of the organization network to which the vCenter Server is assigned.
   orgNetworkId: String
 
   # Supported in v5.3+
@@ -91498,6 +91551,9 @@ input VsphereExportSnapshotToStandaloneHostV2Input {
   id: String!
 }
 type VsphereFolder implements CdmHierarchyObject , HierarchyObject , VsphereVcenterLogicalChildType , VsphereVcenterDescendantType , VsphereDatacenterLogicalChildType , VsphereDatacenterDescendantType , VsphereFolderLogicalChildType , VsphereFolderDescendantType {
+  # Vsphere folder CDM ID.
+  cdmId: String!
+
   # Vsphere folder type.
   folderType: VmwareFolderType
 
@@ -95131,7 +95187,7 @@ type WorkloadAnomaly {
   # The FID of the snapshot which was determined to have anomalous activity.
   anomalousSnapshotFid: String!
 
-  # The Rubrik CDM ID of the snapshot determined to have anomalous activity.
+  # The Rubrik cluster ID of the snapshot determined to have anomalous activity.
   anomalousSnapshotId: String!
 
   # The number of files created within the snapshot.

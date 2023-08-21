@@ -19,8 +19,6 @@ JiraSettingType enumerates the different types of Jira settings.
 - PERMISSION_SCHEMES - Jira permission schemes settings.
 - PROJECT_ROLES - Jira project roles settings.
 - PROJECT_CATEGORY - Jira project category settings.
-- GLOBAL_PERMISSIONS - Jira global permission settings.
-- APPLICATION_ROLE - Jira application role settings.
 - USER - Jira user settings.
 - GROUPS - Jira groups settings.
 - FILTERS - Jira filter settings.

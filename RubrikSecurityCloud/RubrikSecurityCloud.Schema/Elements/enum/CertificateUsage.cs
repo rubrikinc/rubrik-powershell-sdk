@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "SSO_SP_SIGNING")]
         SSO_SP_SIGNING,
 
+        [EnumMember(Value = "TRIDENT_SMTP")]
+        TRIDENT_SMTP,
+
         [EnumMember(Value = "TRIDENT_TLS_CERT")]
         TRIDENT_TLS_CERT
 

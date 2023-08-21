@@ -45,10 +45,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("port")]
         public System.Int32? Port { get; set; }
 
-        //      C# -> System.String? TrustedCerts
-        // GraphQL -> trustedCerts: String! (scalar)
-        [JsonProperty("trustedCerts")]
-        public System.String? TrustedCerts { get; set; }
+        //      C# -> System.Int64? TrustedCertId
+        // GraphQL -> trustedCertId: Long! (scalar)
+        [JsonProperty("trustedCertId")]
+        public System.Int64? TrustedCertId { get; set; }
 
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)
@@ -70,7 +70,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Hostname = null,
         System.Boolean? IsValid = null,
         System.Int32? Port = null,
-        System.String? TrustedCerts = null,
+        System.Int64? TrustedCertId = null,
         System.String? Username = null
     ) 
     {
@@ -89,8 +89,8 @@ namespace RubrikSecurityCloud.Types
         if ( Port != null ) {
             this.Port = Port;
         }
-        if ( TrustedCerts != null ) {
-            this.TrustedCerts = TrustedCerts;
+        if ( TrustedCertId != null ) {
+            this.TrustedCertId = TrustedCertId;
         }
         if ( Username != null ) {
             this.Username = Username;
@@ -130,10 +130,10 @@ namespace RubrikSecurityCloud.Types
         if (this.Port != null) {
             s += ind + "port\n" ;
         }
-        //      C# -> System.String? TrustedCerts
-        // GraphQL -> trustedCerts: String! (scalar)
-        if (this.TrustedCerts != null) {
-            s += ind + "trustedCerts\n" ;
+        //      C# -> System.Int64? TrustedCertId
+        // GraphQL -> trustedCertId: Long! (scalar)
+        if (this.TrustedCertId != null) {
+            s += ind + "trustedCertId\n" ;
         }
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)
@@ -178,11 +178,11 @@ namespace RubrikSecurityCloud.Types
         {
             this.Port = Int32.MinValue;
         }
-        //      C# -> System.String? TrustedCerts
-        // GraphQL -> trustedCerts: String! (scalar)
-        if (this.TrustedCerts == null && Exploration.Includes(parent + ".trustedCerts", true))
+        //      C# -> System.Int64? TrustedCertId
+        // GraphQL -> trustedCertId: Long! (scalar)
+        if (this.TrustedCertId == null && Exploration.Includes(parent + ".trustedCertId", true))
         {
-            this.TrustedCerts = "FETCH";
+            this.TrustedCertId = new System.Int64();
         }
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)

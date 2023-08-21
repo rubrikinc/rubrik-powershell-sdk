@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("externalArtifactKey")]
         public AwsCloudExternalArtifact? ExternalArtifactKey { get; set; }
 
+        //      C# -> System.String? ErrorMessage
+        // GraphQL -> errorMessage: String! (scalar)
+        [JsonProperty("errorMessage")]
+        public System.String? ErrorMessage { get; set; }
+
         //      C# -> System.String? TrustPolicyDoc
         // GraphQL -> trustPolicyDoc: String! (scalar)
         [JsonProperty("trustPolicyDoc")]
@@ -41,11 +46,15 @@ namespace RubrikSecurityCloud.Types
 
     public ArtifactPolicy Set(
         AwsCloudExternalArtifact? ExternalArtifactKey = null,
+        System.String? ErrorMessage = null,
         System.String? TrustPolicyDoc = null
     ) 
     {
         if ( ExternalArtifactKey != null ) {
             this.ExternalArtifactKey = ExternalArtifactKey;
+        }
+        if ( ErrorMessage != null ) {
+            this.ErrorMessage = ErrorMessage;
         }
         if ( TrustPolicyDoc != null ) {
             this.TrustPolicyDoc = TrustPolicyDoc;
@@ -65,6 +74,11 @@ namespace RubrikSecurityCloud.Types
         if (this.ExternalArtifactKey != null) {
             s += ind + "externalArtifactKey\n" ;
         }
+        //      C# -> System.String? ErrorMessage
+        // GraphQL -> errorMessage: String! (scalar)
+        if (this.ErrorMessage != null) {
+            s += ind + "errorMessage\n" ;
+        }
         //      C# -> System.String? TrustPolicyDoc
         // GraphQL -> trustPolicyDoc: String! (scalar)
         if (this.TrustPolicyDoc != null) {
@@ -83,6 +97,12 @@ namespace RubrikSecurityCloud.Types
         if (this.ExternalArtifactKey == null && Exploration.Includes(parent + ".externalArtifactKey", true))
         {
             this.ExternalArtifactKey = new AwsCloudExternalArtifact();
+        }
+        //      C# -> System.String? ErrorMessage
+        // GraphQL -> errorMessage: String! (scalar)
+        if (this.ErrorMessage == null && Exploration.Includes(parent + ".errorMessage", true))
+        {
+            this.ErrorMessage = "FETCH";
         }
         //      C# -> System.String? TrustPolicyDoc
         // GraphQL -> trustPolicyDoc: String! (scalar)

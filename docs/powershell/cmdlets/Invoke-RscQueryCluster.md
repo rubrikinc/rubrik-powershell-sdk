@@ -31,6 +31,23 @@ Returns the certificate signing request generated from the private key of the Ru
 
 - There is a single argument of type GetClusterCsrInput.
 - Returns ClusterCsr.
+### databaselogreport
+Get the database log backup delay information
+
+Supported in v5.3+
+v5.3: 
+v6.0+: Get the database log backup delay information.
+
+- There is a single argument of type QueryLogReportInput.
+- Returns DbLogReportSummaryListReply.
+### databaselogreportingproperties
+Get the database log backup report properties
+
+Supported in v5.3+
+Get the properties for the database (SQL and Oracle) log backup delay email notification creation. The properties are logDelayThresholdInMin and logDelayNotificationFrequencyInMin.
+
+- There is a single argument of type QueryReportPropertiesInput.
+- Returns DbLogReportProperties.
 ### defaultgateway
 Get current default gateway
 

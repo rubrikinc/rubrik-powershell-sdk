@@ -18,6 +18,30 @@ using RubrikSecurityCloud.PowerShell.Private;
 
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
+    /// <summary>
+    /// vSphere VM queries
+    /// </summary>
+    /// <description>
+    /// Invoke-RscQueryVsphereVm is a master cmdlet for VsphereVm work that can invoke any of the following subcommands: New, NewList, AsyncRequestStatus, RecoverableRange, RecoverableRangeInBatch, MissedRecoverableRange.
+    /// </description>
+    /// <example>
+    /// <code>Invoke-RscQueryVsphereVm -New [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryVsphereVm -NewList [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryVsphereVm -AsyncRequestStatus [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryVsphereVm -RecoverableRange [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryVsphereVm -RecoverableRangeInBatch [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryVsphereVm -MissedRecoverableRange [-Arg ..] [-Field ..]</code>
+    /// </example>
     [Cmdlet(
         "Invoke",
         "RscQueryVsphereVm",
@@ -60,6 +84,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Position = 0
         )]
         public SwitchParameter NewList { get; set; }
+
+        
+        /// <summary>
+        /// AsyncRequestStatus parameter set
+        ///
+        /// [GraphQL: vSphereVMAsyncRequestStatus]
+        /// </summary>
+        [Parameter(
+            ParameterSetName = "AsyncRequestStatus",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"
+[GraphQL: vSphereVMAsyncRequestStatus]",
+            Position = 0
+        )]
+        public SwitchParameter AsyncRequestStatus { get; set; }
 
         
         /// <summary>
@@ -115,24 +157,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         )]
         public SwitchParameter MissedRecoverableRange { get; set; }
 
-        
-        /// <summary>
-        /// AsyncRequestStatus parameter set
-        ///
-        /// [GraphQL: vSphereVMAsyncRequestStatus]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "AsyncRequestStatus",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-[GraphQL: vSphereVMAsyncRequestStatus]",
-            Position = 0
-        )]
-        public SwitchParameter AsyncRequestStatus { get; set; }
-
 
 // ignore warning 'Missing XML comment'
 #pragma warning disable 1591
@@ -148,6 +172,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "NewList":
                         this.ProcessRecord_NewList();
                         break;
+                    case "AsyncRequestStatus":
+                        this.ProcessRecord_AsyncRequestStatus();
+                        break;
                     case "RecoverableRange":
                         this.ProcessRecord_RecoverableRange();
                         break;
@@ -156,9 +183,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "MissedRecoverableRange":
                         this.ProcessRecord_MissedRecoverableRange();
-                        break;
-                    case "AsyncRequestStatus":
-                        this.ProcessRecord_AsyncRequestStatus();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -190,6 +214,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // vSphereVMAsyncRequestStatus.
+        internal void ProcessRecord_AsyncRequestStatus()
+        {
+            this._logger.name += " -AsyncRequestStatus";
+            // Invoke graphql operation vSphereVMAsyncRequestStatus
+            InvokeQueryVsphereVmAsyncRequestStatus();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // vsphereVMRecoverableRange.
         internal void ProcessRecord_RecoverableRange()
         {
@@ -216,15 +249,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             InvokeQueryVsphereVmMissedRecoverableRange();
         }
 
-        // This parameter set invokes a single graphql operation:
-        // vSphereVMAsyncRequestStatus.
-        internal void ProcessRecord_AsyncRequestStatus()
-        {
-            this._logger.name += " -AsyncRequestStatus";
-            // Invoke graphql operation vSphereVMAsyncRequestStatus
-            InvokeQueryVsphereVmAsyncRequestStatus();
-        }
-
 
         // Invoke GraphQL Query:
         // vSphereVmNew(fid: UUID!): VsphereVm!
@@ -233,24 +257,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            VsphereVm? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (VsphereVm)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (VsphereVm)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.VsphereVmNew(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryVsphereVmNew",
                 "($fid: UUID!)",
-                fieldSpecDoc,
                 "VsphereVm"
-            );
+                );
+            VsphereVm? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (VsphereVm)this.Field;
+            }
+            string fieldSpecDoc = Query.VsphereVmNew(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -270,24 +290,44 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
             };
-            VsphereVmConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (VsphereVmConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (VsphereVmConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.VsphereVmNewConnection(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryVsphereVmNewConnection",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                fieldSpecDoc,
                 "VsphereVmConnection"
-            );
+                );
+            VsphereVmConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (VsphereVmConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.VsphereVmNewConnection(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
+        }
+
+        // Invoke GraphQL Query:
+        // vSphereVMAsyncRequestStatus(clusterUuid: UUID!, id: String!): AsyncRequestStatus!
+        internal void InvokeQueryVsphereVmAsyncRequestStatus()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("clusterUuid", "UUID!"),
+                Tuple.Create("id", "String!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryVsphereVmAsyncRequestStatus",
+                "($clusterUuid: UUID!,$id: String!)",
+                "AsyncRequestStatus"
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Query.VsphereVmAsyncRequestStatus(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -299,24 +339,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("beforeTime", "DateTime"),
                 Tuple.Create("afterTime", "DateTime"),
             };
-            RecoverableRangeResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (RecoverableRangeResponse)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (RecoverableRangeResponse)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.VsphereVmRecoverableRange(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryVsphereVmRecoverableRange",
                 "($snappableFid: UUID!,$beforeTime: DateTime,$afterTime: DateTime)",
-                fieldSpecDoc,
                 "RecoverableRangeResponse"
-            );
+                );
+            RecoverableRangeResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (RecoverableRangeResponse)this.Field;
+            }
+            string fieldSpecDoc = Query.VsphereVmRecoverableRange(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -326,24 +362,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("requestInfo", "BatchVmwareVmRecoverableRangesRequestInput!"),
             };
-            BatchVmwareVmRecoverableRanges? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (BatchVmwareVmRecoverableRanges)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (BatchVmwareVmRecoverableRanges)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.VsphereVmRecoverableRangeInBatch(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryVsphereVmRecoverableRangeInBatch",
                 "($requestInfo: BatchVmwareVmRecoverableRangesRequestInput!)",
-                fieldSpecDoc,
                 "BatchVmwareVmRecoverableRanges"
-            );
+                );
+            BatchVmwareVmRecoverableRanges? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (BatchVmwareVmRecoverableRanges)this.Field;
+            }
+            string fieldSpecDoc = Query.VsphereVmRecoverableRangeInBatch(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -355,52 +387,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("beforeTime", "DateTime"),
                 Tuple.Create("afterTime", "DateTime"),
             };
-            RecoverableRangeResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (RecoverableRangeResponse)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (RecoverableRangeResponse)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.VsphereVmMissedRecoverableRange(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryVsphereVmMissedRecoverableRange",
                 "($snappableFid: UUID!,$beforeTime: DateTime,$afterTime: DateTime)",
-                fieldSpecDoc,
                 "RecoverableRangeResponse"
-            );
-        }
-
-        // Invoke GraphQL Query:
-        // vSphereVMAsyncRequestStatus(clusterUuid: UUID!, id: String!): AsyncRequestStatus!
-        internal void InvokeQueryVsphereVmAsyncRequestStatus()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("clusterUuid", "UUID!"),
-                Tuple.Create("id", "String!"),
-            };
-            AsyncRequestStatus? fieldSpecObj = null ;
+                );
+            RecoverableRangeResponse? fieldSpecObj = null ;
             if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
+                fieldSpecObj = (RecoverableRangeResponse)this.Field;
             }
-            string fieldSpecDoc = Query.VsphereVmAsyncRequestStatus(ref fieldSpecObj);
-            Initialize(
-                argDefs,
-                fieldSpecObj,
-                "query",
-                "QueryVsphereVmAsyncRequestStatus",
-                "($clusterUuid: UUID!,$id: String!)",
-                fieldSpecDoc,
-                "AsyncRequestStatus"
-            );
+            string fieldSpecDoc = Query.VsphereVmMissedRecoverableRange(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
 

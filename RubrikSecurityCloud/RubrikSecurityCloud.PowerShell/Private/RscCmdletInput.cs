@@ -7,301 +7,67 @@ using System.Management.Automation;
 using System.Reflection;
 using Newtonsoft.Json.Linq;
 using RubrikSecurityCloud.Types;
+using RubrikSecurityCloud.PowerShell.Private;
 
-namespace RubrikSecurityCloud.PowerShell.Private
+// namespace is RubrikSecurityCloud (and not private)
+// because this class is used by the public cmdlets
+// and is visible to the user
+namespace RubrikSecurityCloud
 {
     public class RscCmdletInput
     {
         public String Op { get; set; }
-        public Hashtable Arg { get; set; }
+        public RscGqlVars Arg { get; set; }
         public System.Object Field { get; set; }
-        internal Tuple<String, String>[] _argDefs = null;
-        internal String _gqlOperation = null;
-        internal RscGqlPSCmdlet _parent = null;
+        internal RscGqlOperation _gqlOperation = null;
 
-        // For clarity, _logger points to _parent._logger
-        internal RscLogger _logger = null;
-
-        public RscCmdletInput(RscGqlPSCmdlet parent)
+        /// <summary>
+        /// Create a new RscCmdletInput object.
+        /// </summary>
+        public RscCmdletInput(
+            string op,
+            RscGqlVars arg,
+            System.Object field,
+            RscGqlOperation gqlOperation)
         {
-            _parent = parent;
-            _logger = parent._logger;
-            this.Op = parent.Op;
-            this.Arg = new Hashtable(StringComparer.OrdinalIgnoreCase);
-            this.Field = null;
+            this.Op = op;
+            this.Arg = arg;
+            this.Field = field;
+            this._gqlOperation = gqlOperation;
         }
 
         /// <summary>
         /// The name of the underlying GQL operation.
         /// </summary>
-        /// <returns> String </returns>
-        public String GqlOperation() {
+        public RscGqlOperation GqlOperation()
+        {
             return _gqlOperation;
         }
 
-        private System.Object _jsonOk(System.Object obj)
+        public string FieldInfo()
         {
-            if (
-                obj == null ||
-                obj is string ||
-                obj is int ||
-                obj is bool ||
-                obj is IFieldSpec ||
-                obj is IInput ||
-                obj is Array ||
-                obj is Enum
-            )
+            if (string.IsNullOrEmpty(this._gqlOperation.ReturnType))
             {
-                return obj;
+                return "";
             }
-            if (obj is Hashtable hashtable)
-            {
-                var _arcDict = new Dictionary<string, object>();
-                foreach (DictionaryEntry entry in hashtable)
-                {
-                    if (entry.Value != null)
-                    {
-                        _arcDict.Add(
-                            (string)entry.Key, _jsonOk(entry.Value));
-                    }
-                }
-                return _arcDict;
-            }
-            // default:
-            return obj.ToString();
+            // example:
+            // https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/clusterconnection.doc.html
+            var gqlTypeName = this._gqlOperation.ReturnType.Replace("!", "").Replace("[", "").Replace("]", "").ToLower();
+            return "https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/" + gqlTypeName + ".doc.html";
         }
 
-        internal Dictionary<string, object> GetArgDict()
+        /// <summary>
+        ///  String representation of this object.
+        /// </summary>
+        public override string ToString()
         {
-            var _arcDict = new Dictionary<string, object>();
-            foreach (DictionaryEntry entry in this.Arg)
-            {
-                if (entry.Value != null)
-                {
-                    _arcDict.Add(
-                        (string)entry.Key, _jsonOk(entry.Value));
-                }
-            }
-            return _arcDict;
-        }
-
-        internal void Initialize(
-            Tuple<String, String>[] argDefs,
-            System.Object field,
-            String gqlOperation)
-        {
-            _argDefs = argDefs;
-            this.Field = field;
-            // 
-            this._gqlOperation = gqlOperation;
-            if (argDefs == null || argDefs.Length == 0)
-            {
-                return;
-            }
-            Hashtable args = cmdletArgToHashtable();
-          
-            foreach (var argDef in argDefs)
-            {
-                String argName = argDef.Item1;
-                String argType = argDef.Item2;
-                bool isRequired = argType[argType.Length - 1] == '!';
-                argType = argType.TrimEnd('!');
-
-                // Override if the cmdlet has a parameter with the same name,
-                // within the same parameter set
-                var ParamOverride = getValueFromParameterSet(argName);
-                if (ParamOverride != null)
-                {
-                    args[argName] = ParamOverride;
-                }
-
-                if (args.ContainsKey(argName)) // case-insensitive
-                {
-                    var argValue = args[argName];
-                    if (isRequired && argValue == null && !_parent.GetInputs)
-                    {
-                        throw new ArgumentException(
-                            String.Format(
-                                "Required input {0} of type {1} is null.",
-                                argName,
-                                argType
-                            )
-                        );
-                    }
-
-                    // non-scalar values in a PowerShell
-                    // hashtable are wrapped with PSObject
-                    if (argValue is PSObject)
-                    {
-                        var psObject = (PSObject)argValue;
-                        this.Arg.Add(argName, psObject.BaseObject);
-                    }
-                    else
-                    {
-                        // Minimal automatic type conversion:
-                        if (argValue is String)
-                        {
-                            String typ = argType.ToLower();
-                            if (typ == "int") {
-                                argValue = int.Parse((String)argValue);
-                            } else if (typ == "bool" || typ == "boolean" ) {
-                                argValue = bool.Parse((String)argValue);
-                            } else if (typ == "float" || typ == "double") {
-                                argValue = float.Parse((String)argValue);
-                            }
-                        }
-                        this.Arg.Add(argName, argValue);
-                    }
-                }
-                else
-                {
-                    this.Arg.Add(argName, null);
-                    if (isRequired && !_parent.GetInputs)
-                    {
-                        throw new ArgumentException(
-                            String.Format(
-                                "Required input {0} of type {1} is not provided.",
-                                argName,
-                                argType
-                            )
-                        );
-                    }
-                }
-            }
             var FieldStr = this.Field == null ? "null" : this.Field.ToString();
-            if ( this.Field != null && this.Field is IFieldSpec ) {
+            if (this.Field != null && this.Field is IFieldSpec)
+            {
                 FieldStr = ((IFieldSpec)this.Field).AsFieldSpec()
-                    .Replace("\n"," ");
+                    .Replace("\n", " ");
             }
-            _logger.Debug(
-                $"RscCmdletInput:\n" +
-                $"  Op   : {this.Op}\n" +
-                $"  Arg  : {this._argString()}\n" +
-                $"  Field: {FieldStr}"
-            );
-        }
-
-        private Hashtable cmdletArgToHashtable()
-        {
-            Hashtable args = new Hashtable(StringComparer.OrdinalIgnoreCase);
-            if (_parent.Arg == null)
-            {
-                return args ;
-            }
-            if (_argDefs.Length == 1 && !(_parent.Arg is Hashtable))
-            {
-                args.Add(_argDefs[0].Item1, _parent.Arg);
-                return args ;
-            }
-            if (_parent.Arg is String)
-            {
-                Hashtable _args = new Hashtable(StringComparer.OrdinalIgnoreCase);
-
-                // split the String into key-value pairs
-                // separated by commas: key1=value1,key2=value2
-                string[] pairs = ((string)_parent.Arg).Split(',');
-                foreach (string pair in pairs)
-                {
-                    string[] kv = pair.Split('=');
-                    if (kv.Length != 2)
-                    {
-                        throw new ArgumentException(
-                            string.Format(
-                                "Invalid argument {0}. Expected key=value pairs separated by commas.",
-                                _parent.Arg
-                            )
-                        );
-                    }
-                    _args.Add(kv[0], kv[1]);
-                }
-                _parent.Arg = _args;
-            }
-            // Passed argument must be a hashtable
-            if ( !(_parent.Arg is Hashtable) )
-            {
-                throw new ArgumentException(
-                    string.Format(
-                        "Invalid argument {0}. Expected a hashtable.",
-                        _parent.Arg
-                    )
-                );
-            }
-            // convert _parent.Arg to a case-insensitive hashtable,
-            // coalescing keys with the same name,
-            // and removing null values
-            foreach (DictionaryEntry entry in (Hashtable)_parent.Arg)
-            {
-                if (entry.Value != null)
-                {
-                    args.Add(
-                        (string)entry.Key, _jsonOk(entry.Value));
-                }
-            }
-
-            return args;
-        }
-
-        internal string _argString()
-        {
-            List<string> args = new();
-            foreach (var argDef in _argDefs)
-            {
-                string argName = argDef.Item1;
-                string argType = argDef.Item2;
-                object val = this.Arg[argName];
-                string valStr = "null";
-                if (val != null)
-                {
-                    if( val is Hashtable hashTable)
-                    {
-                        valStr = StringUtils.HashtableToString(hashTable);
-                    }
-                    else 
-                    {
-                        valStr = val.ToString();
-                    }
-                    valStr += "<" + val.GetType().Name + ">";
-                    args.Add(argName + "<" + argType + "> = " + valStr);
-                }
-            }
-            return string.Join(",", args);
-        }
-
-        private object getValueFromParameterSet(string argName)
-        {
-            string fieldName = StringUtils.Capitalize(argName);
-            Type parentType = _parent.GetType();
-            PropertyInfo propertyInfo = parentType.GetProperty(fieldName, BindingFlags.Public | BindingFlags.Instance);
-            if (propertyInfo == null)
-            {
-                // _logger.Debug($"No public property with name {fieldName}");
-                return null ;
-            }
-            // there is a public field with the same name
-            // but is it a parameter?
-            ParameterAttribute parameterAttribute = 
-                propertyInfo.GetCustomAttributes(typeof(ParameterAttribute), true).FirstOrDefault() as ParameterAttribute;
-
-            if (parameterAttribute == null )
-            {
-                // _logger.Debug($"No parameter attribute for field {fieldName}");
-                return null ;
-            }
-            // but is it part of the current parameter set?
-            if ( parameterAttribute.ParameterSetName != _parent
-                .ParameterSetName)
-            {
-                // _logger.Debug($"Parameter attribute for field {fieldName} is not in the current parameter set");
-                return null;
-            }
-            // If so, use the value of the parameter
-            var argValue = propertyInfo.GetValue(_parent);
-            if (argValue == null)
-            {
-                // _logger.Debug($"Field {fieldName} is null");
-                return null;
-            }
-            return argValue;
+            return $"RscCmdletInput(Op: {this.Op}, Arg: {this.Arg}, Field: {FieldStr})";
         }
     }
 }

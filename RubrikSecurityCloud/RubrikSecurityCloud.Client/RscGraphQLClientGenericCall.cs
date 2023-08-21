@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RubrikSecurityCloud;
 using RubrikSecurityCloud.Client;
+using RubrikSecurityCloud.Client.Models;
 using System.Reflection;
 
 namespace RubrikSecurityCloud.NetSDK.Client
@@ -83,7 +84,19 @@ namespace RubrikSecurityCloud.NetSDK.Client
                 variables,
                 logger,
                 metricsTags);
-            task.Wait();
+            try
+            {
+                task.Wait();
+            }
+            catch (Exception ex)
+            {
+                string message = ex.Message;
+                if ( ex.InnerException != null )
+                {
+                    message += "\n" + ex.InnerException.Message;
+                }
+                throw new RscInvokeException(message);
+            }
             return task.Result;
         }
 

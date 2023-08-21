@@ -18,6 +18,36 @@ using RubrikSecurityCloud.PowerShell.Private;
 
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
+    /// <summary>
+    /// Db2 queries
+    /// </summary>
+    /// <description>
+    /// Invoke-RscQueryDb2 is a master cmdlet for Db2 work that can invoke any of the following subcommands: Instances, Instance, Database, Databases, RecoverableRange, RecoverableRanges, LogSnapshot, LogSnapshots.
+    /// </description>
+    /// <example>
+    /// <code>Invoke-RscQueryDb2 -Instances [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryDb2 -Instance [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryDb2 -Database [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryDb2 -Databases [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryDb2 -RecoverableRange [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryDb2 -RecoverableRanges [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryDb2 -LogSnapshot [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryDb2 -LogSnapshots [-Arg ..] [-Field ..]</code>
+    /// </example>
     [Cmdlet(
         "Invoke",
         "RscQueryDb2",
@@ -303,24 +333,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
             };
-            Db2InstanceConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (Db2InstanceConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (Db2InstanceConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.Db2Instances(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryDb2Instances",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                fieldSpecDoc,
                 "Db2InstanceConnection"
-            );
+                );
+            Db2InstanceConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (Db2InstanceConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.Db2Instances(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -330,24 +356,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("id", "UUID!"),
             };
-            Db2Instance? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (Db2Instance)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (Db2Instance)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.Db2Instance(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryDb2Instance",
                 "($id: UUID!)",
-                fieldSpecDoc,
                 "Db2Instance"
-            );
+                );
+            Db2Instance? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (Db2Instance)this.Field;
+            }
+            string fieldSpecDoc = Query.Db2Instance(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -357,24 +379,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            Db2Database? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (Db2Database)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (Db2Database)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.Db2Database(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryDb2Database",
                 "($fid: UUID!)",
-                fieldSpecDoc,
                 "Db2Database"
-            );
+                );
+            Db2Database? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (Db2Database)this.Field;
+            }
+            string fieldSpecDoc = Query.Db2Database(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -394,24 +412,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
             };
-            Db2DatabaseConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (Db2DatabaseConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (Db2DatabaseConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.Db2Databases(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryDb2Databases",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                fieldSpecDoc,
                 "Db2DatabaseConnection"
-            );
+                );
+            Db2DatabaseConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (Db2DatabaseConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.Db2Databases(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -421,24 +435,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("db2RecoverableRangeFid", "UUID!"),
             };
-            Db2RecoverableRange? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (Db2RecoverableRange)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (Db2RecoverableRange)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.Db2RecoverableRange(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryDb2RecoverableRange",
                 "($db2RecoverableRangeFid: UUID!)",
-                fieldSpecDoc,
                 "Db2RecoverableRange"
-            );
+                );
+            Db2RecoverableRange? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (Db2RecoverableRange)this.Field;
+            }
+            string fieldSpecDoc = Query.Db2RecoverableRange(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -462,24 +472,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("sortBy", "Db2RecoverableRangeSortBy"),
                 Tuple.Create("filter", "Db2RecoverableRangeFilterInput"),
             };
-            Db2RecoverableRangeConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (Db2RecoverableRangeConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (Db2RecoverableRangeConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.Db2RecoverableRanges(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryDb2RecoverableRanges",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: Db2RecoverableRangeSortBy,$filter: Db2RecoverableRangeFilterInput)",
-                fieldSpecDoc,
                 "Db2RecoverableRangeConnection"
-            );
+                );
+            Db2RecoverableRangeConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (Db2RecoverableRangeConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.Db2RecoverableRanges(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -489,24 +495,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("db2LogSnapshotFid", "UUID!"),
             };
-            Db2LogSnapshot? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (Db2LogSnapshot)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (Db2LogSnapshot)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.Db2LogSnapshot(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryDb2LogSnapshot",
                 "($db2LogSnapshotFid: UUID!)",
-                fieldSpecDoc,
                 "Db2LogSnapshot"
-            );
+                );
+            Db2LogSnapshot? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (Db2LogSnapshot)this.Field;
+            }
+            string fieldSpecDoc = Query.Db2LogSnapshot(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -530,24 +532,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("sortBy", "Db2LogSnapshotSortBy"),
                 Tuple.Create("filter", "Db2LogSnapshotFilterInput"),
             };
-            Db2LogSnapshotConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (Db2LogSnapshotConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (Db2LogSnapshotConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.Db2LogSnapshots(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryDb2LogSnapshots",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: Db2LogSnapshotSortBy,$filter: Db2LogSnapshotFilterInput)",
-                fieldSpecDoc,
                 "Db2LogSnapshotConnection"
-            );
+                );
+            Db2LogSnapshotConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (Db2LogSnapshotConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.Db2LogSnapshots(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
 

@@ -18,6 +18,99 @@ using RubrikSecurityCloud.PowerShell.Private;
 
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
+    /// <summary>
+    /// vSphere VM mutations
+    /// </summary>
+    /// <description>
+    /// Invoke-RscMutateVsphereVm is a master cmdlet for VsphereVm work that can invoke any of the following subcommands: RecoverFiles, RecoverFilesNew, RegisterAgent, DownloadSnapshot, ExportSnapshot, ExportSnapshotV2, ExportSnapshotV3, BatchExport, BatchExportV3, InitiateInPlaceRecovery, ExportSnapshotWithDownloadFromCloud, BatchInPlaceRecovery, DeleteSnapshot, Update, InitiateInstantRecovery, InitiateInstantRecoveryV2, InitiateBatchInstantRecovery, InitiateDiskMount, InitiateLiveMount, InitiateLiveMountV2, BatchLiveMount, InitiateBatchLiveMountV2, PowerOnOffLiveMount, DeleteLiveMount, ListEsxiDatastores, MountRelocate, MountRelocateV2, ExcludeVmDisks, DownloadSnapshotFiles.
+    /// </description>
+    /// <example>
+    /// <code>Invoke-RscMutateVsphereVm -RecoverFiles [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateVsphereVm -RecoverFilesNew [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateVsphereVm -RegisterAgent [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateVsphereVm -DownloadSnapshot [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateVsphereVm -ExportSnapshot [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateVsphereVm -ExportSnapshotV2 [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateVsphereVm -ExportSnapshotV3 [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateVsphereVm -BatchExport [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateVsphereVm -BatchExportV3 [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateVsphereVm -InitiateInPlaceRecovery [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateVsphereVm -ExportSnapshotWithDownloadFromCloud [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateVsphereVm -BatchInPlaceRecovery [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateVsphereVm -DeleteSnapshot [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateVsphereVm -Update [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateVsphereVm -InitiateInstantRecovery [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateVsphereVm -InitiateInstantRecoveryV2 [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateVsphereVm -InitiateBatchInstantRecovery [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateVsphereVm -InitiateDiskMount [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateVsphereVm -InitiateLiveMount [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateVsphereVm -InitiateLiveMountV2 [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateVsphereVm -BatchLiveMount [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateVsphereVm -InitiateBatchLiveMountV2 [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateVsphereVm -PowerOnOffLiveMount [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateVsphereVm -DeleteLiveMount [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateVsphereVm -ListEsxiDatastores [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateVsphereVm -MountRelocate [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateVsphereVm -MountRelocateV2 [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateVsphereVm -ExcludeVmDisks [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateVsphereVm -DownloadSnapshotFiles [-Arg ..] [-Field ..]</code>
+    /// </example>
     [Cmdlet(
         "Invoke",
         "RscMutateVsphereVm",
@@ -944,24 +1037,20 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereVmRecoverFilesInput!"),
             };
-            VsphereAsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (VsphereAsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (VsphereAsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.VsphereVmRecoverFiles(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationVsphereVmRecoverFiles",
                 "($input: VsphereVmRecoverFilesInput!)",
-                fieldSpecDoc,
                 "VsphereAsyncRequestStatus"
-            );
+                );
+            VsphereAsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (VsphereAsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.VsphereVmRecoverFiles(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -971,24 +1060,20 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereVmRecoverFilesNewInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.VsphereVmRecoverFilesNew(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationVsphereVmRecoverFilesNew",
                 "($input: VsphereVmRecoverFilesNewInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.VsphereVmRecoverFilesNew(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -998,24 +1083,20 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereVmRegisterAgentInput!"),
             };
-            RequestSuccess? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (RequestSuccess)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (RequestSuccess)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.VsphereVmRegisterAgent(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationVsphereVmRegisterAgent",
                 "($input: VsphereVmRegisterAgentInput!)",
-                fieldSpecDoc,
                 "RequestSuccess"
-            );
+                );
+            RequestSuccess? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (RequestSuccess)this.Field;
+            }
+            string fieldSpecDoc = Mutation.VsphereVmRegisterAgent(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1025,24 +1106,20 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereVmDownloadSnapshotInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.VsphereVmDownloadSnapshot(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationVsphereVmDownloadSnapshot",
                 "($input: VsphereVmDownloadSnapshotInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.VsphereVmDownloadSnapshot(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1072,24 +1149,20 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 Tuple.Create("unregsiterVm", "Boolean"),
                 Tuple.Create("shouldRecoverTags", "Boolean"),
             };
-            VsphereAsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (VsphereAsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (VsphereAsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.VsphereVmExportSnapshot(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationVsphereVmExportSnapshot",
                 "($snapshotFid: UUID!,$vmName: String,$disableNetwork: Boolean,$removeNetworkDevices: Boolean,$powerOn: Boolean,$keepMacAddresses: Boolean,$hostID: String,$datastoreId: UUID!,$unregsiterVm: Boolean,$shouldRecoverTags: Boolean)",
-                fieldSpecDoc,
                 "VsphereAsyncRequestStatus"
-            );
+                );
+            VsphereAsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (VsphereAsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.VsphereVmExportSnapshot(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1099,24 +1172,20 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereVmExportSnapshotV2Input!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.VsphereVmExportSnapshotV2(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationVsphereVmExportSnapshotV2",
                 "($input: VsphereVmExportSnapshotV2Input!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.VsphereVmExportSnapshotV2(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1126,24 +1195,20 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereVmExportSnapshotV3Input!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.VsphereVmExportSnapshotV3(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationVsphereVmExportSnapshotV3",
                 "($input: VsphereVmExportSnapshotV3Input!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.VsphereVmExportSnapshotV3(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1153,24 +1218,20 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereVmBatchExportInput!"),
             };
-            BatchAsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (BatchAsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (BatchAsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.VsphereVmBatchExport(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationVsphereVmBatchExport",
                 "($input: VsphereVmBatchExportInput!)",
-                fieldSpecDoc,
                 "BatchAsyncRequestStatus"
-            );
+                );
+            BatchAsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (BatchAsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.VsphereVmBatchExport(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1180,24 +1241,20 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereVmBatchExportV3Input!"),
             };
-            BatchAsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (BatchAsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (BatchAsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.VsphereVmBatchExportV3(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationVsphereVmBatchExportV3",
                 "($input: VsphereVmBatchExportV3Input!)",
-                fieldSpecDoc,
                 "BatchAsyncRequestStatus"
-            );
+                );
+            BatchAsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (BatchAsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.VsphereVmBatchExportV3(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1207,24 +1264,20 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereVmInitiateInPlaceRecoveryInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.VsphereVmInitiateInPlaceRecovery(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationVsphereVmInitiateInPlaceRecovery",
                 "($input: VsphereVmInitiateInPlaceRecoveryInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.VsphereVmInitiateInPlaceRecovery(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1234,24 +1287,20 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereVmExportSnapshotWithDownloadFromCloudInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.VsphereVmExportSnapshotWithDownloadFromCloud(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationVsphereVmExportSnapshotWithDownloadFromCloud",
                 "($input: VsphereVmExportSnapshotWithDownloadFromCloudInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.VsphereVmExportSnapshotWithDownloadFromCloud(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1261,24 +1310,20 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereVmBatchInPlaceRecoveryInput!"),
             };
-            BatchAsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (BatchAsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (BatchAsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.VsphereVmBatchInPlaceRecovery(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationVsphereVmBatchInPlaceRecovery",
                 "($input: VsphereVmBatchInPlaceRecoveryInput!)",
-                fieldSpecDoc,
                 "BatchAsyncRequestStatus"
-            );
+                );
+            BatchAsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (BatchAsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.VsphereVmBatchInPlaceRecovery(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1288,24 +1333,20 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereVmDeleteSnapshotInput!"),
             };
-            System.String? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (System.String)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (System.String)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.VsphereVmDeleteSnapshot(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationVsphereVmDeleteSnapshot",
                 "($input: VsphereVmDeleteSnapshotInput!)",
-                fieldSpecDoc,
                 "System.String"
-            );
+                );
+            System.String? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (System.String)this.Field;
+            }
+            string fieldSpecDoc = Mutation.VsphereVmDeleteSnapshot(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1327,24 +1368,20 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 Tuple.Create("postSnapScript", "PostSnapScriptInputType"),
                 Tuple.Create("isArrayIntegrationEnabled", "Boolean"),
             };
-            RequestSuccess? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (RequestSuccess)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (RequestSuccess)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.VsphereVmUpdate(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationVsphereVmUpdate",
                 "($snappableFid: UUID!,$snapshotConsistencyMandate: String,$preBackupScript: PreBackupScriptInputType,$postBackupScript: PostBackupScriptInputType,$postSnapScript: PostSnapScriptInputType,$isArrayIntegrationEnabled: Boolean)",
-                fieldSpecDoc,
                 "RequestSuccess"
-            );
+                );
+            RequestSuccess? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (RequestSuccess)this.Field;
+            }
+            string fieldSpecDoc = Mutation.VsphereVmUpdate(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1374,24 +1411,20 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 Tuple.Create("vlan", "Int"),
                 Tuple.Create("shouldRecoverTags", "Boolean"),
             };
-            VsphereAsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (VsphereAsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (VsphereAsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.VsphereVmInitiateInstantRecovery(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationVsphereVmInitiateInstantRecovery",
                 "($snapshotFid: UUID!,$vmName: String,$disableNetwork: Boolean,$removeNetworkDevices: Boolean,$powerOn: Boolean,$keepMacAddresses: Boolean,$hostID: String,$preserveMOID: Boolean,$vlan: Int,$shouldRecoverTags: Boolean)",
-                fieldSpecDoc,
                 "VsphereAsyncRequestStatus"
-            );
+                );
+            VsphereAsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (VsphereAsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.VsphereVmInitiateInstantRecovery(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1401,24 +1434,20 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereVmInitiateInstantRecoveryV2Input!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.VsphereVmInitiateInstantRecoveryV2(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationVsphereVmInitiateInstantRecoveryV2",
                 "($input: VsphereVmInitiateInstantRecoveryV2Input!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.VsphereVmInitiateInstantRecoveryV2(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1428,24 +1457,20 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereVmInitiateBatchInstantRecoveryInput!"),
             };
-            BatchAsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (BatchAsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (BatchAsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.VsphereVmInitiateBatchInstantRecovery(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationVsphereVmInitiateBatchInstantRecovery",
                 "($input: VsphereVmInitiateBatchInstantRecoveryInput!)",
-                fieldSpecDoc,
                 "BatchAsyncRequestStatus"
-            );
+                );
+            BatchAsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (BatchAsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.VsphereVmInitiateBatchInstantRecovery(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1455,24 +1480,20 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereVmInitiateDiskMountInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.VsphereVmInitiateDiskMount(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationVsphereVmInitiateDiskMount",
                 "($input: VsphereVmInitiateDiskMountInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.VsphereVmInitiateDiskMount(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1504,24 +1525,20 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 Tuple.Create("vlan", "Int"),
                 Tuple.Create("shouldRecoverTags", "Boolean"),
             };
-            VsphereAsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (VsphereAsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (VsphereAsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.VsphereVmInitiateLiveMount(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationVsphereVmInitiateLiveMount",
                 "($snapshotFid: UUID!,$vmName: String,$disableNetwork: Boolean,$removeNetworkDevices: Boolean,$powerOn: Boolean,$keepMacAddresses: Boolean,$hostID: String,$datastoreName: String,$createDatastoreOnly: Boolean,$vlan: Int,$shouldRecoverTags: Boolean)",
-                fieldSpecDoc,
                 "VsphereAsyncRequestStatus"
-            );
+                );
+            VsphereAsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (VsphereAsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.VsphereVmInitiateLiveMount(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1531,24 +1548,20 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereVmInitiateLiveMountV2Input!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.VsphereVmInitiateLiveMountV2(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationVsphereVmInitiateLiveMountV2",
                 "($input: VsphereVmInitiateLiveMountV2Input!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.VsphereVmInitiateLiveMountV2(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1559,24 +1572,20 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 Tuple.Create("clusterUuid", "UUID!"),
                 Tuple.Create("config", "BatchMountSnapshotJobConfigInput!"),
             };
-            BatchAsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (BatchAsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (BatchAsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.VsphereVmBatchLiveMount(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationVsphereVmBatchLiveMount",
                 "($clusterUuid: UUID!,$config: BatchMountSnapshotJobConfigInput!)",
-                fieldSpecDoc,
                 "BatchAsyncRequestStatus"
-            );
+                );
+            BatchAsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (BatchAsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.VsphereVmBatchLiveMount(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1586,24 +1595,20 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereVmInitiateBatchLiveMountV2Input!"),
             };
-            BatchAsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (BatchAsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (BatchAsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.VsphereVmInitiateBatchLiveMountV2(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationVsphereVmInitiateBatchLiveMountV2",
                 "($input: VsphereVmInitiateBatchLiveMountV2Input!)",
-                fieldSpecDoc,
                 "BatchAsyncRequestStatus"
-            );
+                );
+            BatchAsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (BatchAsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.VsphereVmInitiateBatchLiveMountV2(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1613,24 +1618,20 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereVmPowerOnOffLiveMountInput!"),
             };
-            VsphereVmPowerOnOffLiveMountReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (VsphereVmPowerOnOffLiveMountReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (VsphereVmPowerOnOffLiveMountReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.VsphereVmPowerOnOffLiveMount(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationVsphereVmPowerOnOffLiveMount",
                 "($input: VsphereVmPowerOnOffLiveMountInput!)",
-                fieldSpecDoc,
                 "VsphereVmPowerOnOffLiveMountReply"
-            );
+                );
+            VsphereVmPowerOnOffLiveMountReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (VsphereVmPowerOnOffLiveMountReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.VsphereVmPowerOnOffLiveMount(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1641,24 +1642,20 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 Tuple.Create("livemountId", "UUID!"),
                 Tuple.Create("force", "Boolean"),
             };
-            VsphereAsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (VsphereAsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (VsphereAsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.VsphereVmDeleteLiveMount(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationVsphereVmDeleteLiveMount",
                 "($livemountId: UUID!,$force: Boolean)",
-                fieldSpecDoc,
                 "VsphereAsyncRequestStatus"
-            );
+                );
+            VsphereAsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (VsphereAsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.VsphereVmDeleteLiveMount(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1668,24 +1665,20 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereVmListEsxiDatastoresInput!"),
             };
-            VsphereVmListEsxiDatastoresReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (VsphereVmListEsxiDatastoresReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (VsphereVmListEsxiDatastoresReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.VsphereVmListEsxiDatastores(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationVsphereVmListEsxiDatastores",
                 "($input: VsphereVmListEsxiDatastoresInput!)",
-                fieldSpecDoc,
                 "VsphereVmListEsxiDatastoresReply"
-            );
+                );
+            VsphereVmListEsxiDatastoresReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (VsphereVmListEsxiDatastoresReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.VsphereVmListEsxiDatastores(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1695,24 +1688,20 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereVmMountRelocateInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.VsphereVmMountRelocate(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationVsphereVmMountRelocate",
                 "($input: VsphereVmMountRelocateInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.VsphereVmMountRelocate(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1722,24 +1711,20 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereVmMountRelocateV2Input!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.VsphereVmMountRelocateV2(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationVsphereVmMountRelocateV2",
                 "($input: VsphereVmMountRelocateV2Input!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.VsphereVmMountRelocateV2(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1749,24 +1734,20 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "[VsphereExcludeVmDisksInput!]!"),
             };
-            RequestSuccess? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (RequestSuccess)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (RequestSuccess)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.VsphereExcludeVmDisks(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationVsphereExcludeVmDisks",
                 "($input: [VsphereExcludeVmDisksInput!]!)",
-                fieldSpecDoc,
                 "RequestSuccess"
-            );
+                );
+            RequestSuccess? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (RequestSuccess)this.Field;
+            }
+            string fieldSpecDoc = Mutation.VsphereExcludeVmDisks(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1776,24 +1757,20 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereVmDownloadSnapshotFilesInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.VsphereVmDownloadSnapshotFiles(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationVsphereVmDownloadSnapshotFiles",
                 "($input: VsphereVmDownloadSnapshotFilesInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.VsphereVmDownloadSnapshotFiles(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
 

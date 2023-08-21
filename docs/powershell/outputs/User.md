@@ -15,6 +15,8 @@ User account details.
   - The groups that the user belongs to.
 - totpStatus: TotpStatus
   - The TOTP status of user.
+- passkeyMetadata: PasskeyMetadata
+  - The passkey metadata of the user.
 - lockoutState: LockoutState
   - The user account lockout information.
 - isHidden: System.Boolean

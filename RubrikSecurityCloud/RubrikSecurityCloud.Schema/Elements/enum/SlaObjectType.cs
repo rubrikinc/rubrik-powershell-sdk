@@ -18,6 +18,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ACTIVE_DIRECTORY_OBJECT_TYPE")]
         ACTIVE_DIRECTORY_OBJECT_TYPE,
 
+        [EnumMember(Value = "ATLASSIAN_JIRA_OBJECT_TYPE")]
+        ATLASSIAN_JIRA_OBJECT_TYPE,
+
         [EnumMember(Value = "AWS_EC2_EBS_OBJECT_TYPE")]
         AWS_EC2_EBS_OBJECT_TYPE,
 
@@ -89,9 +92,6 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "ORACLE_OBJECT_TYPE")]
         ORACLE_OBJECT_TYPE,
-
-        [EnumMember(Value = "SAAS_APPS_OBJECT_TYPE")]
-        SAAS_APPS_OBJECT_TYPE,
 
         [EnumMember(Value = "SAP_HANA_OBJECT_TYPE")]
         SAP_HANA_OBJECT_TYPE,

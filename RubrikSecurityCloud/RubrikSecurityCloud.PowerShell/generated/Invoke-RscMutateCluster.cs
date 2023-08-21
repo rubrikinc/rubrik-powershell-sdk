@@ -18,6 +18,57 @@ using RubrikSecurityCloud.PowerShell.Private;
 
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
+    /// <summary>
+    /// Cluster mutations
+    /// </summary>
+    /// <description>
+    /// Invoke-RscMutateCluster is a master cmdlet for Cluster work that can invoke any of the following subcommands: AddNodesToCloud, RegisterCloud, UpdateDatabaseLogReportingProperties, CreateFailover, UpdateFailover, DeleteFailover, BulkDeleteFailover, AddK8s, DeleteK8s, RefreshK8sV2, CreateK8s, RefreshK8s, ArchiveK8s, RemoveCdm, RecoverCloud.
+    /// </description>
+    /// <example>
+    /// <code>Invoke-RscMutateCluster -AddNodesToCloud [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateCluster -RegisterCloud [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateCluster -UpdateDatabaseLogReportingProperties [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateCluster -CreateFailover [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateCluster -UpdateFailover [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateCluster -DeleteFailover [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateCluster -BulkDeleteFailover [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateCluster -AddK8s [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateCluster -DeleteK8s [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateCluster -RefreshK8sV2 [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateCluster -CreateK8s [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateCluster -RefreshK8s [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateCluster -ArchiveK8s [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateCluster -RemoveCdm [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateCluster -RecoverCloud [-Arg ..] [-Field ..]</code>
+    /// </example>
     [Cmdlet(
         "Invoke",
         "RscMutateCluster",
@@ -60,6 +111,27 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Position = 0
         )]
         public SwitchParameter RegisterCloud { get; set; }
+
+        
+        /// <summary>
+        /// UpdateDatabaseLogReportingProperties parameter set
+        ///
+        /// [GraphQL: updateDatabaseLogReportingPropertiesForCluster]
+        /// </summary>
+        [Parameter(
+            ParameterSetName = "UpdateDatabaseLogReportingProperties",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Update the database log backup report properties
+
+Supported in v5.3+
+Update the properties for the database (SQL and Oracle) log backup delay email notification creation. The properties are logDelayThresholdInMin and logDelayNotificationFrequencyInMin.
+[GraphQL: updateDatabaseLogReportingPropertiesForCluster]",
+            Position = 0
+        )]
+        public SwitchParameter UpdateDatabaseLogReportingProperties { get; set; }
 
         
         /// <summary>
@@ -313,6 +385,9 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
                     case "RegisterCloud":
                         this.ProcessRecord_RegisterCloud();
                         break;
+                    case "UpdateDatabaseLogReportingProperties":
+                        this.ProcessRecord_UpdateDatabaseLogReportingProperties();
+                        break;
                     case "CreateFailover":
                         this.ProcessRecord_CreateFailover();
                         break;
@@ -376,6 +451,15 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
             this._logger.name += " -RegisterCloud";
             // Invoke graphql operation registerCloudCluster
             InvokeMutationRegisterCloudCluster();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // updateDatabaseLogReportingPropertiesForCluster.
+        internal void ProcessRecord_UpdateDatabaseLogReportingProperties()
+        {
+            this._logger.name += " -UpdateDatabaseLogReportingProperties";
+            // Invoke graphql operation updateDatabaseLogReportingPropertiesForCluster
+            InvokeMutationUpdateDatabaseLogReportingPropertiesForCluster();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -494,24 +578,20 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "AddNodesToCloudClusterInput!"),
             };
-            CcProvisionJobReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (CcProvisionJobReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (CcProvisionJobReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.AddNodesToCloudCluster(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationAddNodesToCloudCluster",
                 "($input: AddNodesToCloudClusterInput!)",
-                fieldSpecDoc,
                 "CcProvisionJobReply"
-            );
+                );
+            CcProvisionJobReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (CcProvisionJobReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.AddNodesToCloudCluster(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -521,24 +601,43 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RegisterCloudClusterInput!"),
             };
-            RegisterCloudClusterReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (RegisterCloudClusterReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (RegisterCloudClusterReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.RegisterCloudCluster(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationRegisterCloudCluster",
                 "($input: RegisterCloudClusterInput!)",
-                fieldSpecDoc,
                 "RegisterCloudClusterReply"
-            );
+                );
+            RegisterCloudClusterReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (RegisterCloudClusterReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.RegisterCloudCluster(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
+        }
+
+        // Invoke GraphQL Mutation:
+        // updateDatabaseLogReportingPropertiesForCluster(input: UpdateDatabaseLogReportingPropertiesForClusterInput!): DbLogReportProperties!
+        internal void InvokeMutationUpdateDatabaseLogReportingPropertiesForCluster()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpdateDatabaseLogReportingPropertiesForClusterInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdateDatabaseLogReportingPropertiesForCluster",
+                "($input: UpdateDatabaseLogReportingPropertiesForClusterInput!)",
+                "DbLogReportProperties"
+                );
+            DbLogReportProperties? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (DbLogReportProperties)this.Field;
+            }
+            string fieldSpecDoc = Mutation.UpdateDatabaseLogReportingPropertiesForCluster(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -548,24 +647,20 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CreateFailoverClusterInput!"),
             };
-            CreateFailoverClusterReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (CreateFailoverClusterReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (CreateFailoverClusterReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.CreateFailoverCluster(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationCreateFailoverCluster",
                 "($input: CreateFailoverClusterInput!)",
-                fieldSpecDoc,
                 "CreateFailoverClusterReply"
-            );
+                );
+            CreateFailoverClusterReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (CreateFailoverClusterReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.CreateFailoverCluster(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -575,24 +670,20 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpdateFailoverClusterInput!"),
             };
-            UpdateFailoverClusterReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (UpdateFailoverClusterReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (UpdateFailoverClusterReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.UpdateFailoverCluster(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationUpdateFailoverCluster",
                 "($input: UpdateFailoverClusterInput!)",
-                fieldSpecDoc,
                 "UpdateFailoverClusterReply"
-            );
+                );
+            UpdateFailoverClusterReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (UpdateFailoverClusterReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.UpdateFailoverCluster(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -602,24 +693,20 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteFailoverClusterInput!"),
             };
-            ResponseSuccess? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (ResponseSuccess)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (ResponseSuccess)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.DeleteFailoverCluster(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationDeleteFailoverCluster",
                 "($input: DeleteFailoverClusterInput!)",
-                fieldSpecDoc,
                 "ResponseSuccess"
-            );
+                );
+            ResponseSuccess? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (ResponseSuccess)this.Field;
+            }
+            string fieldSpecDoc = Mutation.DeleteFailoverCluster(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -629,24 +716,20 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "BulkDeleteFailoverClusterInput!"),
             };
-            ResponseSuccess? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (ResponseSuccess)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (ResponseSuccess)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.BulkDeleteFailoverCluster(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationBulkDeleteFailoverCluster",
                 "($input: BulkDeleteFailoverClusterInput!)",
-                fieldSpecDoc,
                 "ResponseSuccess"
-            );
+                );
+            ResponseSuccess? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (ResponseSuccess)this.Field;
+            }
+            string fieldSpecDoc = Mutation.BulkDeleteFailoverCluster(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -656,24 +739,20 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "AddK8sClusterInput!"),
             };
-            K8sClusterSummary? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (K8sClusterSummary)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (K8sClusterSummary)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.AddK8sCluster(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationAddK8sCluster",
                 "($input: AddK8sClusterInput!)",
-                fieldSpecDoc,
                 "K8sClusterSummary"
-            );
+                );
+            K8sClusterSummary? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (K8sClusterSummary)this.Field;
+            }
+            string fieldSpecDoc = Mutation.AddK8sCluster(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -683,24 +762,20 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteK8sClusterInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.DeleteK8sCluster(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationDeleteK8sCluster",
                 "($input: DeleteK8sClusterInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.DeleteK8sCluster(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -710,24 +785,20 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RefreshK8sV2ClusterInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.RefreshK8sV2Cluster(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationRefreshK8sV2Cluster",
                 "($input: RefreshK8sV2ClusterInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.RefreshK8sV2Cluster(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -737,24 +808,20 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CreateK8sClusterInput!"),
             };
-            CreateK8sClusterReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (CreateK8sClusterReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (CreateK8sClusterReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.CreateK8sCluster(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationCreateK8sCluster",
                 "($input: CreateK8sClusterInput!)",
-                fieldSpecDoc,
                 "CreateK8sClusterReply"
-            );
+                );
+            CreateK8sClusterReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (CreateK8sClusterReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.CreateK8sCluster(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -764,24 +831,20 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RefreshK8sClusterInput!"),
             };
-            CreateOnDemandJobReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (CreateOnDemandJobReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (CreateOnDemandJobReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.RefreshK8sCluster(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationRefreshK8sCluster",
                 "($input: RefreshK8sClusterInput!)",
-                fieldSpecDoc,
                 "CreateOnDemandJobReply"
-            );
+                );
+            CreateOnDemandJobReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (CreateOnDemandJobReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.RefreshK8sCluster(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -791,24 +854,20 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "ArchiveK8sClusterInput!"),
             };
-            ArchiveK8sClusterReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (ArchiveK8sClusterReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (ArchiveK8sClusterReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.ArchiveK8sCluster(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationArchiveK8sCluster",
                 "($input: ArchiveK8sClusterInput!)",
-                fieldSpecDoc,
                 "ArchiveK8sClusterReply"
-            );
+                );
+            ArchiveK8sClusterReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (ArchiveK8sClusterReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.ArchiveK8sCluster(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -820,24 +879,20 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
                 Tuple.Create("isForce", "Boolean!"),
                 Tuple.Create("expireInDays", "Long"),
             };
-            System.Boolean? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (System.Boolean)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (System.Boolean)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.RemoveCdmCluster(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationRemoveCdmCluster",
                 "($clusterUUID: UUID!,$isForce: Boolean!,$expireInDays: Long)",
-                fieldSpecDoc,
                 "System.Boolean"
-            );
+                );
+            System.Boolean? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (System.Boolean)this.Field;
+            }
+            string fieldSpecDoc = Mutation.RemoveCdmCluster(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -847,24 +902,20 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RecoverCloudClusterInput!"),
             };
-            CcProvisionJobReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (CcProvisionJobReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (CcProvisionJobReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.RecoverCloudCluster(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationRecoverCloudCluster",
                 "($input: RecoverCloudClusterInput!)",
-                fieldSpecDoc,
                 "CcProvisionJobReply"
-            );
+                );
+            CcProvisionJobReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (CcProvisionJobReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.RecoverCloudCluster(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
 

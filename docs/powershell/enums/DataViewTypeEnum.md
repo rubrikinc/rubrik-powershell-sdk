@@ -23,7 +23,10 @@ All reporting table schemas.
 - GLOBAL_OBJECT - Global object database table schema.
 - GLOBAL_OBJECT_SUMMARY_DAILY - Global object summary daily database table schema.
 - GLOBAL_OBJECT_SUMMARY_MONTHLY - Global object summary monthly database table schema.
+- LATEST_GLOBAL_OBJECTS - LatestGlobalObjects database view schema.
 - THREAT_MONITORING_LIST - Specifies the Threat Monitoring report list information.
 - THREAT_MONITORING_SNAPSHOT_RESULTS - Specifies the Threat Monitoring snapshot result information.
 - SLA_AUDIT_LIST_NG - Specifies the latest audit information for each SLA Domain.
 - SLA_AUDIT_DETAIL_NG - Specifies all audit information for the single SLA Domain.
+- OBJECT_PROTECTION_AUDIT_LIST - Specifies the latest protection audit information for each protected workload.
+- OBJECT_PROTECTION_AUDIT_DETAIL - Specifies all protection audit information for the single protected workload.

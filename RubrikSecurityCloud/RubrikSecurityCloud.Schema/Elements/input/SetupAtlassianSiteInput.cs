@@ -26,6 +26,13 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("siteId")]
         public System.String? SiteId { get; set; }
 
+        //      C# -> System.String? SiteName
+        // GraphQL -> siteName: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("siteName")]
+        public System.String? SiteName { get; set; }
+
         //      C# -> System.String? SlaDomainId
         // GraphQL -> slaDomainId: String (scalar)
         [JsonProperty("slaDomainId")]

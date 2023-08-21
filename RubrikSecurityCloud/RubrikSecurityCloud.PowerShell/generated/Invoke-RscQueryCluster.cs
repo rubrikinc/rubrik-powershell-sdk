@@ -18,6 +18,144 @@ using RubrikSecurityCloud.PowerShell.Private;
 
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
+    /// <summary>
+    /// Cluster queries
+    /// </summary>
+    /// <description>
+    /// Invoke-RscQueryCluster is a master cmdlet for Cluster work that can invoke any of the following subcommands: Cloud, Nodes, List, Cluster, WithUpgradesInfo, Dns, Proxy, NtpServers, NetworkInterfaces, FloatingIps, Vlans, DefaultGateway, WebSignedCertificate, Ipmi, Certificates, WebCertsAndIpmis, OperationJobProgress, Ipv6Mode, Csr, TypeList, GroupByList, WithConfigProtectionInfo, DatabaseLogReportingProperties, DatabaseLogReport, RcvLocations, Connected, ReplicationTargets, EncryptionInfo, HostFailover, GlobalFileSearchMultiple, Kubernetes, K8s, Windows, ReportMigrationStatus, ReportMigrationCount, ReportMigrationJobStatus, LaDomains, LaDomainFilterList, VerifySlaWithReplicationTo, GlobalSlas, RegistrationProductInfo, Vcd, IsTotpAckNecessary, TotpAckStatus.
+    /// </description>
+    /// <example>
+    /// <code>Invoke-RscQueryCluster -Cloud [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryCluster -Nodes [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryCluster -List [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryCluster -Cluster [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryCluster -WithUpgradesInfo [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryCluster -Dns [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryCluster -Proxy [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryCluster -NtpServers [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryCluster -NetworkInterfaces [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryCluster -FloatingIps [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryCluster -Vlans [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryCluster -DefaultGateway [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryCluster -WebSignedCertificate [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryCluster -Ipmi [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryCluster -Certificates [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryCluster -WebCertsAndIpmis [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryCluster -OperationJobProgress [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryCluster -Ipv6Mode [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryCluster -Csr [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryCluster -TypeList [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryCluster -GroupByList [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryCluster -WithConfigProtectionInfo [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryCluster -DatabaseLogReportingProperties [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryCluster -DatabaseLogReport [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryCluster -RcvLocations [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryCluster -Connected [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryCluster -ReplicationTargets [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryCluster -EncryptionInfo [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryCluster -HostFailover [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryCluster -GlobalFileSearchMultiple [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryCluster -Kubernetes [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryCluster -K8s [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryCluster -Windows [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryCluster -ReportMigrationStatus [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryCluster -ReportMigrationCount [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryCluster -ReportMigrationJobStatus [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryCluster -LaDomains [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryCluster -LaDomainFilterList [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryCluster -VerifySlaWithReplicationTo [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryCluster -GlobalSlas [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryCluster -RegistrationProductInfo [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryCluster -Vcd [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryCluster -IsTotpAckNecessary [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryCluster -TotpAckStatus [-Arg ..] [-Field ..]</code>
+    /// </example>
     [Cmdlet(
         "Invoke",
         "RscQueryCluster",
@@ -447,6 +585,49 @@ Returns the certificate signing request generated from the private key of the Ru
             Position = 0
         )]
         public SwitchParameter WithConfigProtectionInfo { get; set; }
+
+        
+        /// <summary>
+        /// DatabaseLogReportingProperties parameter set
+        ///
+        /// [GraphQL: databaseLogReportingPropertiesForCluster]
+        /// </summary>
+        [Parameter(
+            ParameterSetName = "DatabaseLogReportingProperties",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Get the database log backup report properties
+
+Supported in v5.3+
+Get the properties for the database (SQL and Oracle) log backup delay email notification creation. The properties are logDelayThresholdInMin and logDelayNotificationFrequencyInMin.
+[GraphQL: databaseLogReportingPropertiesForCluster]",
+            Position = 0
+        )]
+        public SwitchParameter DatabaseLogReportingProperties { get; set; }
+
+        
+        /// <summary>
+        /// DatabaseLogReport parameter set
+        ///
+        /// [GraphQL: databaseLogReportForCluster]
+        /// </summary>
+        [Parameter(
+            ParameterSetName = "DatabaseLogReport",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Get the database log backup delay information
+
+Supported in v5.3+
+v5.3: 
+v6.0+: Get the database log backup delay information.
+[GraphQL: databaseLogReportForCluster]",
+            Position = 0
+        )]
+        public SwitchParameter DatabaseLogReport { get; set; }
 
         
         /// <summary>
@@ -883,6 +1064,12 @@ Returns the certificate signing request generated from the private key of the Ru
                     case "WithConfigProtectionInfo":
                         this.ProcessRecord_WithConfigProtectionInfo();
                         break;
+                    case "DatabaseLogReportingProperties":
+                        this.ProcessRecord_DatabaseLogReportingProperties();
+                        break;
+                    case "DatabaseLogReport":
+                        this.ProcessRecord_DatabaseLogReport();
+                        break;
                     case "RcvLocations":
                         this.ProcessRecord_RcvLocations();
                         break;
@@ -1153,6 +1340,24 @@ Returns the certificate signing request generated from the private key of the Ru
         }
 
         // This parameter set invokes a single graphql operation:
+        // databaseLogReportingPropertiesForCluster.
+        internal void ProcessRecord_DatabaseLogReportingProperties()
+        {
+            this._logger.name += " -DatabaseLogReportingProperties";
+            // Invoke graphql operation databaseLogReportingPropertiesForCluster
+            InvokeQueryDatabaseLogReportingPropertiesForCluster();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // databaseLogReportForCluster.
+        internal void ProcessRecord_DatabaseLogReport()
+        {
+            this._logger.name += " -DatabaseLogReport";
+            // Invoke graphql operation databaseLogReportForCluster
+            InvokeQueryDatabaseLogReportForCluster();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // clusterRcvLocations.
         internal void ProcessRecord_RcvLocations()
         {
@@ -1340,24 +1545,20 @@ Returns the certificate signing request generated from the private key of the Ru
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("cloudVendorType", "CcpVendorType!"),
             };
-            List<CcWithCloudInfo>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (List<CcWithCloudInfo>)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (List<CcWithCloudInfo>)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AllCloudClusters(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAllCloudClusters",
                 "($cloudVendorType: CcpVendorType!)",
-                fieldSpecDoc,
                 "List<CcWithCloudInfo>"
-            );
+                );
+            List<CcWithCloudInfo>? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (List<CcWithCloudInfo>)this.Field;
+            }
+            string fieldSpecDoc = Query.AllCloudClusters(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1367,24 +1568,20 @@ Returns the certificate signing request generated from the private key of the Ru
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetNodesInput!"),
             };
-            NodeStatusListResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (NodeStatusListResponse)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (NodeStatusListResponse)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.ClusterNodes(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryClusterNodes",
                 "($input: GetNodesInput!)",
-                fieldSpecDoc,
                 "NodeStatusListResponse"
-            );
+                );
+            NodeStatusListResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (NodeStatusListResponse)this.Field;
+            }
+            string fieldSpecDoc = Query.ClusterNodes(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1408,24 +1605,20 @@ Returns the certificate signing request generated from the private key of the Ru
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("sortBy", "ClusterSortByEnum"),
             };
-            ClusterConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (ClusterConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (ClusterConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.ClusterConnection(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryClusterConnection",
                 "($first: Int,$after: String,$last: Int,$before: String,$filter: ClusterFilterInput,$sortOrder: SortOrder,$sortBy: ClusterSortByEnum)",
-                fieldSpecDoc,
                 "ClusterConnection"
-            );
+                );
+            ClusterConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (ClusterConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.ClusterConnection(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1435,24 +1628,20 @@ Returns the certificate signing request generated from the private key of the Ru
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("clusterUuid", "UUID!"),
             };
-            Cluster? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (Cluster)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (Cluster)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.Cluster(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryCluster",
                 "($clusterUuid: UUID!)",
-                fieldSpecDoc,
                 "Cluster"
-            );
+                );
+            Cluster? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (Cluster)this.Field;
+            }
+            string fieldSpecDoc = Query.Cluster(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1476,24 +1665,20 @@ Returns the certificate signing request generated from the private key of the Ru
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("sortBy", "UpgradeInfoSortByEnum"),
             };
-            ClusterConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (ClusterConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (ClusterConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.ClusterWithUpgradesInfo(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryClusterWithUpgradesInfo",
                 "($first: Int,$after: String,$last: Int,$before: String,$upgradeFilter: CdmUpgradeInfoFilterInput,$sortOrder: SortOrder,$sortBy: UpgradeInfoSortByEnum)",
-                fieldSpecDoc,
                 "ClusterConnection"
-            );
+                );
+            ClusterConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (ClusterConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.ClusterWithUpgradesInfo(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1503,24 +1688,20 @@ Returns the certificate signing request generated from the private key of the Ru
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("clusterUuid", "UUID!"),
             };
-            ClusterDnsReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (ClusterDnsReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (ClusterDnsReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.ClusterDns(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryClusterDns",
                 "($clusterUuid: UUID!)",
-                fieldSpecDoc,
                 "ClusterDnsReply"
-            );
+                );
+            ClusterDnsReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (ClusterDnsReply)this.Field;
+            }
+            string fieldSpecDoc = Query.ClusterDns(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1530,24 +1711,20 @@ Returns the certificate signing request generated from the private key of the Ru
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("clusterUuid", "UUID!"),
             };
-            ClusterProxyReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (ClusterProxyReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (ClusterProxyReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.ClusterProxy(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryClusterProxy",
                 "($clusterUuid: UUID!)",
-                fieldSpecDoc,
                 "ClusterProxyReply"
-            );
+                );
+            ClusterProxyReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (ClusterProxyReply)this.Field;
+            }
+            string fieldSpecDoc = Query.ClusterProxy(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1557,24 +1734,20 @@ Returns the certificate signing request generated from the private key of the Ru
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetClusterNtpServersInput!"),
             };
-            NtpServerConfigurationListResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (NtpServerConfigurationListResponse)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (NtpServerConfigurationListResponse)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.ClusterNtpServers(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryClusterNtpServers",
                 "($input: GetClusterNtpServersInput!)",
-                fieldSpecDoc,
                 "NtpServerConfigurationListResponse"
-            );
+                );
+            NtpServerConfigurationListResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (NtpServerConfigurationListResponse)this.Field;
+            }
+            string fieldSpecDoc = Query.ClusterNtpServers(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1584,24 +1757,20 @@ Returns the certificate signing request generated from the private key of the Ru
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetNetworkInterfaceInput!"),
             };
-            NetworkInterfaceListResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (NetworkInterfaceListResponse)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (NetworkInterfaceListResponse)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.ClusterNetworkInterfaces(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryClusterNetworkInterfaces",
                 "($input: GetNetworkInterfaceInput!)",
-                fieldSpecDoc,
                 "NetworkInterfaceListResponse"
-            );
+                );
+            NetworkInterfaceListResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (NetworkInterfaceListResponse)this.Field;
+            }
+            string fieldSpecDoc = Query.ClusterNetworkInterfaces(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1611,24 +1780,20 @@ Returns the certificate signing request generated from the private key of the Ru
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetClusterIpsInput!"),
             };
-            InternalGetClusterIpsResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (InternalGetClusterIpsResponse)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (InternalGetClusterIpsResponse)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.ClusterFloatingIps(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryClusterFloatingIps",
                 "($input: GetClusterIpsInput!)",
-                fieldSpecDoc,
                 "InternalGetClusterIpsResponse"
-            );
+                );
+            InternalGetClusterIpsResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (InternalGetClusterIpsResponse)this.Field;
+            }
+            string fieldSpecDoc = Query.ClusterFloatingIps(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1638,24 +1803,20 @@ Returns the certificate signing request generated from the private key of the Ru
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetVlanInput!"),
             };
-            VlanConfigListResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (VlanConfigListResponse)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (VlanConfigListResponse)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.ClusterVlans(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryClusterVlans",
                 "($input: GetVlanInput!)",
-                fieldSpecDoc,
                 "VlanConfigListResponse"
-            );
+                );
+            VlanConfigListResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (VlanConfigListResponse)this.Field;
+            }
+            string fieldSpecDoc = Query.ClusterVlans(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1665,24 +1826,20 @@ Returns the certificate signing request generated from the private key of the Ru
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetDefaultGatewayInput!"),
             };
-            InternalGetDefaultGatewayResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (InternalGetDefaultGatewayResponse)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (InternalGetDefaultGatewayResponse)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.ClusterDefaultGateway(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryClusterDefaultGateway",
                 "($input: GetDefaultGatewayInput!)",
-                fieldSpecDoc,
                 "InternalGetDefaultGatewayResponse"
-            );
+                );
+            InternalGetDefaultGatewayResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (InternalGetDefaultGatewayResponse)this.Field;
+            }
+            string fieldSpecDoc = Query.ClusterDefaultGateway(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1692,24 +1849,20 @@ Returns the certificate signing request generated from the private key of the Ru
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "ClusterWebSignedCertificateInput!"),
             };
-            ClusterWebSignedCertificateReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (ClusterWebSignedCertificateReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (ClusterWebSignedCertificateReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.ClusterWebSignedCertificate(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryClusterWebSignedCertificate",
                 "($input: ClusterWebSignedCertificateInput!)",
-                fieldSpecDoc,
                 "ClusterWebSignedCertificateReply"
-            );
+                );
+            ClusterWebSignedCertificateReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (ClusterWebSignedCertificateReply)this.Field;
+            }
+            string fieldSpecDoc = Query.ClusterWebSignedCertificate(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1719,24 +1872,20 @@ Returns the certificate signing request generated from the private key of the Ru
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetIpmiInput!"),
             };
-            ModifyIpmiReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (ModifyIpmiReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (ModifyIpmiReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.ClusterIpmi(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryClusterIpmi",
                 "($input: GetIpmiInput!)",
-                fieldSpecDoc,
                 "ModifyIpmiReply"
-            );
+                );
+            ModifyIpmiReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (ModifyIpmiReply)this.Field;
+            }
+            string fieldSpecDoc = Query.ClusterIpmi(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1746,24 +1895,20 @@ Returns the certificate signing request generated from the private key of the Ru
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "QueryCertificatesInput!"),
             };
-            CertificateSummaryListResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (CertificateSummaryListResponse)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (CertificateSummaryListResponse)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.ClusterCertificates(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryClusterCertificates",
                 "($input: QueryCertificatesInput!)",
-                fieldSpecDoc,
                 "CertificateSummaryListResponse"
-            );
+                );
+            CertificateSummaryListResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (CertificateSummaryListResponse)this.Field;
+            }
+            string fieldSpecDoc = Query.ClusterCertificates(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1773,24 +1918,20 @@ Returns the certificate signing request generated from the private key of the Ru
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "BulkClusterWebCertAndIpmiInput!"),
             };
-            List<ClusterWebCertAndIpmi>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (List<ClusterWebCertAndIpmi>)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (List<ClusterWebCertAndIpmi>)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AllClusterWebCertsAndIpmis(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAllClusterWebCertsAndIpmis",
                 "($input: BulkClusterWebCertAndIpmiInput!)",
-                fieldSpecDoc,
                 "List<ClusterWebCertAndIpmi>"
-            );
+                );
+            List<ClusterWebCertAndIpmi>? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (List<ClusterWebCertAndIpmi>)this.Field;
+            }
+            string fieldSpecDoc = Query.AllClusterWebCertsAndIpmis(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1800,24 +1941,20 @@ Returns the certificate signing request generated from the private key of the Ru
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "ClusterOperationJobProgressInput!"),
             };
-            ClusterOperationJobProgress? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (ClusterOperationJobProgress)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (ClusterOperationJobProgress)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.ClusterOperationJobProgress(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryClusterOperationJobProgress",
                 "($input: ClusterOperationJobProgressInput!)",
-                fieldSpecDoc,
                 "ClusterOperationJobProgress"
-            );
+                );
+            ClusterOperationJobProgress? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (ClusterOperationJobProgress)this.Field;
+            }
+            string fieldSpecDoc = Query.ClusterOperationJobProgress(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1827,24 +1964,20 @@ Returns the certificate signing request generated from the private key of the Ru
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "ClusterIpv6ModeInput!"),
             };
-            ClusterIpv6ModeReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (ClusterIpv6ModeReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (ClusterIpv6ModeReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.ClusterIpv6Mode(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryClusterIpv6Mode",
                 "($input: ClusterIpv6ModeInput!)",
-                fieldSpecDoc,
                 "ClusterIpv6ModeReply"
-            );
+                );
+            ClusterIpv6ModeReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (ClusterIpv6ModeReply)this.Field;
+            }
+            string fieldSpecDoc = Query.ClusterIpv6Mode(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1854,24 +1987,20 @@ Returns the certificate signing request generated from the private key of the Ru
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetClusterCsrInput!"),
             };
-            ClusterCsr? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (ClusterCsr)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (ClusterCsr)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.ClusterCsr(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryClusterCsr",
                 "($input: GetClusterCsrInput!)",
-                fieldSpecDoc,
                 "ClusterCsr"
-            );
+                );
+            ClusterCsr? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (ClusterCsr)this.Field;
+            }
+            string fieldSpecDoc = Query.ClusterCsr(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1880,24 +2009,20 @@ Returns the certificate signing request generated from the private key of the Ru
         {
             Tuple<string, string>[] argDefs = {
             };
-            List<GroupCount>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (List<GroupCount>)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (List<GroupCount>)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.ClusterTypeList(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryClusterTypeList",
                 "",
-                fieldSpecDoc,
                 "List<GroupCount>"
-            );
+                );
+            List<GroupCount>? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (List<GroupCount>)this.Field;
+            }
+            string fieldSpecDoc = Query.ClusterTypeList(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1921,24 +2046,20 @@ Returns the certificate signing request generated from the private key of the Ru
                 Tuple.Create("filter", "ClusterFilterInput"),
                 Tuple.Create("timezoneOffset", "Float"),
             };
-            ClusterGroupByConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (ClusterGroupByConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (ClusterGroupByConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.ClusterGroupByConnection(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryClusterGroupByConnection",
                 "($first: Int,$after: String,$last: Int,$before: String,$groupBy: ClusterGroupByEnum!,$filter: ClusterFilterInput,$timezoneOffset: Float)",
-                fieldSpecDoc,
                 "ClusterGroupByConnection"
-            );
+                );
+            ClusterGroupByConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (ClusterGroupByConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.ClusterGroupByConnection(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1962,24 +2083,66 @@ Returns the certificate signing request generated from the private key of the Ru
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("sortBy", "ConfigProtectionInfoSortBy"),
             };
-            ClusterConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (ClusterConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (ClusterConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.ClusterWithConfigProtectionInfo(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryClusterWithConfigProtectionInfo",
                 "($first: Int,$after: String,$last: Int,$before: String,$configProtectionFilter: ConfigProtectionInfoFilterInput,$sortOrder: SortOrder,$sortBy: ConfigProtectionInfoSortBy)",
-                fieldSpecDoc,
                 "ClusterConnection"
-            );
+                );
+            ClusterConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (ClusterConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.ClusterWithConfigProtectionInfo(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
+        }
+
+        // Invoke GraphQL Query:
+        // databaseLogReportingPropertiesForCluster(input: QueryReportPropertiesInput!): DbLogReportProperties!
+        internal void InvokeQueryDatabaseLogReportingPropertiesForCluster()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "QueryReportPropertiesInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryDatabaseLogReportingPropertiesForCluster",
+                "($input: QueryReportPropertiesInput!)",
+                "DbLogReportProperties"
+                );
+            DbLogReportProperties? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (DbLogReportProperties)this.Field;
+            }
+            string fieldSpecDoc = Query.DatabaseLogReportingPropertiesForCluster(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
+        }
+
+        // Invoke GraphQL Query:
+        // databaseLogReportForCluster(input: QueryLogReportInput!): DbLogReportSummaryListReply!
+        internal void InvokeQueryDatabaseLogReportForCluster()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "QueryLogReportInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryDatabaseLogReportForCluster",
+                "($input: QueryLogReportInput!)",
+                "DbLogReportSummaryListReply"
+                );
+            DbLogReportSummaryListReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (DbLogReportSummaryListReply)this.Field;
+            }
+            string fieldSpecDoc = Query.DatabaseLogReportForCluster(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2001,24 +2164,20 @@ Returns the certificate signing request generated from the private key of the Ru
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("cdmClusterUUID", "UUID!"),
             };
-            RcvLocationBasicInfoConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (RcvLocationBasicInfoConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (RcvLocationBasicInfoConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.ClusterRcvLocations(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryClusterRcvLocations",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$cdmClusterUUID: UUID!)",
-                fieldSpecDoc,
                 "RcvLocationBasicInfoConnection"
-            );
+                );
+            RcvLocationBasicInfoConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (RcvLocationBasicInfoConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.ClusterRcvLocations(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2028,24 +2187,20 @@ Returns the certificate signing request generated from the private key of the Ru
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("clusterFilterArg", "ClusterTypeEnum"),
             };
-            List<DataLocationSupportedCluster>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (List<DataLocationSupportedCluster>)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (List<DataLocationSupportedCluster>)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AllConnectedClusters(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAllConnectedClusters",
                 "($clusterFilterArg: ClusterTypeEnum)",
-                fieldSpecDoc,
                 "List<DataLocationSupportedCluster>"
-            );
+                );
+            List<DataLocationSupportedCluster>? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (List<DataLocationSupportedCluster>)this.Field;
+            }
+            string fieldSpecDoc = Query.AllConnectedClusters(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2055,24 +2210,20 @@ Returns the certificate signing request generated from the private key of the Ru
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("clusterUuid", "UUID!"),
             };
-            List<ClusterReplicationTarget>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (List<ClusterReplicationTarget>)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (List<ClusterReplicationTarget>)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AllClusterReplicationTargets(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAllClusterReplicationTargets",
                 "($clusterUuid: UUID!)",
-                fieldSpecDoc,
                 "List<ClusterReplicationTarget>"
-            );
+                );
+            List<ClusterReplicationTarget>? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (List<ClusterReplicationTarget>)this.Field;
+            }
+            string fieldSpecDoc = Query.AllClusterReplicationTargets(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2102,24 +2253,20 @@ Returns the certificate signing request generated from the private key of the Ru
                 Tuple.Create("clusters", "[UUID!]!"),
                 Tuple.Create("encryptionTypes", "[ClusterEncryptionType!]!"),
             };
-            ClusterEncryptionInfoConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (ClusterEncryptionInfoConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (ClusterEncryptionInfoConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.ClusterEncryptionInfo(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryClusterEncryptionInfo",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$clusterName: String,$encryptionStatusFilter: [ClusterEncryptionStatusFilter!]!,$keyProtection: [ClusterKeyProtection!]!,$clusters: [UUID!]!,$encryptionTypes: [ClusterEncryptionType!]!)",
-                fieldSpecDoc,
                 "ClusterEncryptionInfoConnection"
-            );
+                );
+            ClusterEncryptionInfoConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (ClusterEncryptionInfoConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.ClusterEncryptionInfo(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2129,24 +2276,20 @@ Returns the certificate signing request generated from the private key of the Ru
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            HostFailoverCluster? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (HostFailoverCluster)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (HostFailoverCluster)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.HostFailoverCluster(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryHostFailoverCluster",
                 "($fid: UUID!)",
-                fieldSpecDoc,
                 "HostFailoverCluster"
-            );
+                );
+            HostFailoverCluster? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (HostFailoverCluster)this.Field;
+            }
+            string fieldSpecDoc = Query.HostFailoverCluster(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2157,24 +2300,20 @@ Returns the certificate signing request generated from the private key of the Ru
                 Tuple.Create("clusters", "[UUID!]!"),
                 Tuple.Create("regex", "String!"),
             };
-            GlobalFileSearchReplyType? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (GlobalFileSearchReplyType)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (GlobalFileSearchReplyType)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AllGlobalFileSearchMultipleClusters(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAllGlobalFileSearchMultipleClusters",
                 "($clusters: [UUID!]!,$regex: String!)",
-                fieldSpecDoc,
                 "GlobalFileSearchReplyType"
-            );
+                );
+            GlobalFileSearchReplyType? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (GlobalFileSearchReplyType)this.Field;
+            }
+            string fieldSpecDoc = Query.AllGlobalFileSearchMultipleClusters(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2194,24 +2333,20 @@ Returns the certificate signing request generated from the private key of the Ru
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
             };
-            KubernetesClusterConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (KubernetesClusterConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (KubernetesClusterConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.KubernetesClusters(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryKubernetesClusters",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                fieldSpecDoc,
                 "KubernetesClusterConnection"
-            );
+                );
+            KubernetesClusterConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (KubernetesClusterConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.KubernetesClusters(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2231,24 +2366,20 @@ Returns the certificate signing request generated from the private key of the Ru
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
             };
-            K8sClusterConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (K8sClusterConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (K8sClusterConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.K8sClusters(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryK8sClusters",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                fieldSpecDoc,
                 "K8sClusterConnection"
-            );
+                );
+            K8sClusterConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (K8sClusterConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.K8sClusters(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2258,24 +2389,20 @@ Returns the certificate signing request generated from the private key of the Ru
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            WindowsCluster? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (WindowsCluster)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (WindowsCluster)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.WindowsCluster(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryWindowsCluster",
                 "($fid: UUID!)",
-                fieldSpecDoc,
                 "WindowsCluster"
-            );
+                );
+            WindowsCluster? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (WindowsCluster)this.Field;
+            }
+            string fieldSpecDoc = Query.WindowsCluster(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2297,24 +2424,20 @@ Returns the certificate signing request generated from the private key of the Ru
                 Tuple.Create("last", "Int"),
                 Tuple.Create("before", "String"),
             };
-            ReportMigrationStatusConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (ReportMigrationStatusConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (ReportMigrationStatusConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.ClusterReportMigrationStatus(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryClusterReportMigrationStatus",
                 "($clusterUuid: UUID,$status: [CdmReportMigrationStatus!]!,$first: Int,$after: String,$last: Int,$before: String)",
-                fieldSpecDoc,
                 "ReportMigrationStatusConnection"
-            );
+                );
+            ReportMigrationStatusConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (ReportMigrationStatusConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.ClusterReportMigrationStatus(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2325,24 +2448,20 @@ Returns the certificate signing request generated from the private key of the Ru
                 Tuple.Create("clusterUuid", "UUID"),
                 Tuple.Create("status", "[CdmReportMigrationStatus!]!"),
             };
-            ReportsMigrationCount? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (ReportsMigrationCount)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (ReportsMigrationCount)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.ClusterReportMigrationCount(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryClusterReportMigrationCount",
                 "($clusterUuid: UUID,$status: [CdmReportMigrationStatus!]!)",
-                fieldSpecDoc,
                 "ReportsMigrationCount"
-            );
+                );
+            ReportsMigrationCount? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (ReportsMigrationCount)this.Field;
+            }
+            string fieldSpecDoc = Query.ClusterReportMigrationCount(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2352,24 +2471,20 @@ Returns the certificate signing request generated from the private key of the Ru
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("clusterUuid", "UUID"),
             };
-            ClusterReportMigrationJobStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (ClusterReportMigrationJobStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (ClusterReportMigrationJobStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.ClusterReportMigrationJobStatus(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryClusterReportMigrationJobStatus",
                 "($clusterUuid: UUID)",
-                fieldSpecDoc,
                 "ClusterReportMigrationJobStatus"
-            );
+                );
+            ClusterReportMigrationJobStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (ClusterReportMigrationJobStatus)this.Field;
+            }
+            string fieldSpecDoc = Query.ClusterReportMigrationJobStatus(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2387,24 +2502,20 @@ Returns the certificate signing request generated from the private key of the Ru
                 Tuple.Create("last", "Int"),
                 Tuple.Create("before", "String"),
             };
-            ClusterSlaDomainConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (ClusterSlaDomainConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (ClusterSlaDomainConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.ClusterSlaDomains(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryClusterSlaDomains",
                 "($first: Int,$after: String,$last: Int,$before: String)",
-                fieldSpecDoc,
                 "ClusterSlaDomainConnection"
-            );
+                );
+            ClusterSlaDomainConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (ClusterSlaDomainConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.ClusterSlaDomains(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2422,24 +2533,20 @@ Returns the certificate signing request generated from the private key of the Ru
                 Tuple.Create("last", "Int"),
                 Tuple.Create("before", "String"),
             };
-            ClusterSlaDomainForFilterConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (ClusterSlaDomainForFilterConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (ClusterSlaDomainForFilterConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.ClusterSlaDomainFilterConnection(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryClusterSlaDomainFilterConnection",
                 "($first: Int,$after: String,$last: Int,$before: String)",
-                fieldSpecDoc,
                 "ClusterSlaDomainForFilterConnection"
-            );
+                );
+            ClusterSlaDomainForFilterConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (ClusterSlaDomainForFilterConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.ClusterSlaDomainFilterConnection(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2450,24 +2557,20 @@ Returns the certificate signing request generated from the private key of the Ru
                 Tuple.Create("cdmClusterUUID", "UUID!"),
                 Tuple.Create("includeArchived", "Boolean!"),
             };
-            VerifySlaWithReplicationToClusterResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (VerifySlaWithReplicationToClusterResponse)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (VerifySlaWithReplicationToClusterResponse)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.VerifySlaWithReplicationToCluster(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryVerifySlaWithReplicationToCluster",
                 "($cdmClusterUUID: UUID!,$includeArchived: Boolean!)",
-                fieldSpecDoc,
                 "VerifySlaWithReplicationToClusterResponse"
-            );
+                );
+            VerifySlaWithReplicationToClusterResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (VerifySlaWithReplicationToClusterResponse)this.Field;
+            }
+            string fieldSpecDoc = Query.VerifySlaWithReplicationToCluster(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2477,24 +2580,20 @@ Returns the certificate signing request generated from the private key of the Ru
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("cdmClusterUUID", "UUID!"),
             };
-            List<SlaInfo>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (List<SlaInfo>)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (List<SlaInfo>)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AllClusterGlobalSlas(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAllClusterGlobalSlas",
                 "($cdmClusterUUID: UUID!)",
-                fieldSpecDoc,
                 "List<SlaInfo>"
-            );
+                );
+            List<SlaInfo>? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (List<SlaInfo>)this.Field;
+            }
+            string fieldSpecDoc = Query.AllClusterGlobalSlas(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2503,24 +2602,20 @@ Returns the certificate signing request generated from the private key of the Ru
         {
             Tuple<string, string>[] argDefs = {
             };
-            ClusterRegistrationProductInfoType? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (ClusterRegistrationProductInfoType)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (ClusterRegistrationProductInfoType)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.ClusterRegistrationProductInfo(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryClusterRegistrationProductInfo",
                 "",
-                fieldSpecDoc,
                 "ClusterRegistrationProductInfoType"
-            );
+                );
+            ClusterRegistrationProductInfoType? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (ClusterRegistrationProductInfoType)this.Field;
+            }
+            string fieldSpecDoc = Query.ClusterRegistrationProductInfo(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2530,24 +2625,20 @@ Returns the certificate signing request generated from the private key of the Ru
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "QueryVcdClusterInput!"),
             };
-            VcdClusterSummaryListResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (VcdClusterSummaryListResponse)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (VcdClusterSummaryListResponse)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.VcdClusters(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryVcdClusters",
                 "($input: QueryVcdClusterInput!)",
-                fieldSpecDoc,
                 "VcdClusterSummaryListResponse"
-            );
+                );
+            VcdClusterSummaryListResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (VcdClusterSummaryListResponse)this.Field;
+            }
+            string fieldSpecDoc = Query.VcdClusters(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2557,24 +2648,20 @@ Returns the certificate signing request generated from the private key of the Ru
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("clusterUuid", "UUID!"),
             };
-            System.Boolean? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (System.Boolean)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (System.Boolean)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.IsTotpAckNecessaryForCluster(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryIsTotpAckNecessaryForCluster",
                 "($clusterUuid: UUID!)",
-                fieldSpecDoc,
                 "System.Boolean"
-            );
+                );
+            System.Boolean? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (System.Boolean)this.Field;
+            }
+            string fieldSpecDoc = Query.IsTotpAckNecessaryForCluster(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2584,24 +2671,20 @@ Returns the certificate signing request generated from the private key of the Ru
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("listClusterUuid", "[UUID!]!"),
             };
-            List<System.Boolean>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (List<System.Boolean>)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (List<System.Boolean>)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AllClustersTotpAckStatus(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAllClustersTotpAckStatus",
                 "($listClusterUuid: [UUID!]!)",
-                fieldSpecDoc,
                 "List<System.Boolean>"
-            );
+                );
+            List<System.Boolean>? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (List<System.Boolean>)this.Field;
+            }
+            string fieldSpecDoc = Query.AllClustersTotpAckStatus(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
 

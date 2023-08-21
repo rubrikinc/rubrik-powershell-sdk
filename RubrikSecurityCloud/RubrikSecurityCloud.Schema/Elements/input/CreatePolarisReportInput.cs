@@ -33,6 +33,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("reportViewType")]
         public PolarisReportViewType? ReportViewType { get; set; }
 
+        //      C# -> ReportRoomType? Room
+        // GraphQL -> room: ReportRoomType (enum)
+        [JsonProperty("room")]
+        public ReportRoomType? Room { get; set; }
+
         //      C# -> List<ChartViewType>? Charts
         // GraphQL -> charts: [ChartViewType!]! (enum)
         [Required]

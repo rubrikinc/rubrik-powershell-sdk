@@ -18,6 +18,78 @@ using RubrikSecurityCloud.PowerShell.Private;
 
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
+    /// <summary>
+    /// SLA queries
+    /// </summary>
+    /// <description>
+    /// Invoke-RscQuerySla is a master cmdlet for Sla work that can invoke any of the following subcommands: AllIofilterStatuses, AllCdpVmNames, Domains, DomainWithWarningsList, GlobalFilterList, Domain, DomainWithWarnings, ArchivalValidationWarnings, CountOfObjectsProtected, AuditDetail, AllSummariesByIds, GlobalStatuses, ProtectedClustersForGlobal, ConflictObjects, ManagedVolumes, ManagedVolume, ClusterDomains, ClusterDomainFilterList, VerifyWithReplicationToCluster, DownloadWithReplicationCsv, AllClusterGlobals, AllNcdComplianceData.
+    /// </description>
+    /// <example>
+    /// <code>Invoke-RscQuerySla -AllIofilterStatuses [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQuerySla -AllCdpVmNames [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQuerySla -Domains [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQuerySla -DomainWithWarningsList [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQuerySla -GlobalFilterList [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQuerySla -Domain [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQuerySla -DomainWithWarnings [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQuerySla -ArchivalValidationWarnings [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQuerySla -CountOfObjectsProtected [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQuerySla -AuditDetail [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQuerySla -AllSummariesByIds [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQuerySla -GlobalStatuses [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQuerySla -ProtectedClustersForGlobal [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQuerySla -ConflictObjects [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQuerySla -ManagedVolumes [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQuerySla -ManagedVolume [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQuerySla -ClusterDomains [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQuerySla -ClusterDomainFilterList [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQuerySla -VerifyWithReplicationToCluster [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQuerySla -DownloadWithReplicationCsv [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQuerySla -AllClusterGlobals [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQuerySla -AllNcdComplianceData [-Arg ..] [-Field ..]</code>
+    /// </example>
     [Cmdlet(
         "Invoke",
         "RscQuerySla",
@@ -109,7 +181,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"
+@"Retrieves a list of SLA Domains.
 [GraphQL: globalSlaFilterConnection]",
             Position = 0
         )]
@@ -713,24 +785,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            List<ComputeClusterIofilterStatus>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (List<ComputeClusterIofilterStatus>)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (List<ComputeClusterIofilterStatus>)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AllSlaIofilterStatuses(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAllSlaIofilterStatuses",
                 "($fid: UUID!)",
-                fieldSpecDoc,
                 "List<ComputeClusterIofilterStatus>"
-            );
+                );
+            List<ComputeClusterIofilterStatus>? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (List<ComputeClusterIofilterStatus>)this.Field;
+            }
+            string fieldSpecDoc = Query.AllSlaIofilterStatuses(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -740,24 +808,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            List<System.String>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (List<System.String>)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (List<System.String>)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AllCdpSlaVmNames(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAllCdpSlaVmNames",
                 "($fid: UUID!)",
-                fieldSpecDoc,
                 "List<System.String>"
-            );
+                );
+            List<System.String>? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (List<System.String>)this.Field;
+            }
+            string fieldSpecDoc = Query.AllCdpSlaVmNames(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -795,24 +859,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("showRemoteSlas", "Boolean"),
                 Tuple.Create("shouldShowPausedClusters", "Boolean"),
             };
-            SlaDomainConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (SlaDomainConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (SlaDomainConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.SlaDomains(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QuerySlaDomains",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: SlaQuerySortByField,$sortOrder: SortOrder,$filter: [GlobalSlaFilterInput!],$contextFilter: ContextFilterTypeEnum,$contextFilterInput: [ContextFilterInputField!],$shouldShowSyncStatus: Boolean,$shouldShowProtectedObjectCount: Boolean,$shouldShowUpgradeInfo: Boolean,$showRemoteSlas: Boolean,$shouldShowPausedClusters: Boolean)",
-                fieldSpecDoc,
                 "SlaDomainConnection"
-            );
+                );
+            SlaDomainConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (SlaDomainConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.SlaDomains(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -846,24 +906,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("snapshotIds", "[UUID!]"),
                 Tuple.Create("operation", "SlaWarningsOperation"),
             };
-            List<SlaDomainWithWarnings>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (List<SlaDomainWithWarnings>)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (List<SlaDomainWithWarnings>)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.SlaDomainWithWarningsList(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QuerySlaDomainWithWarningsList",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: SlaQuerySortByField,$sortOrder: SortOrder,$filter: [GlobalSlaFilterInput!],$contextFilter: ContextFilterTypeEnum,$objectIds: [UUID!],$applicableSnappableTypes: [WorkloadLevelHierarchy!],$snapshotIds: [UUID!],$operation: SlaWarningsOperation)",
-                fieldSpecDoc,
                 "List<SlaDomainWithWarnings>"
-            );
+                );
+            List<SlaDomainWithWarnings>? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (List<SlaDomainWithWarnings>)this.Field;
+            }
+            string fieldSpecDoc = Query.SlaDomainWithWarningsList(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -901,24 +957,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("showRemoteSlas", "Boolean"),
                 Tuple.Create("shouldShowPausedClusters", "Boolean"),
             };
-            GlobalSlaForFilterConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (GlobalSlaForFilterConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (GlobalSlaForFilterConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.GlobalSlaFilterConnection(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryGlobalSlaFilterConnection",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: SlaQuerySortByField,$sortOrder: SortOrder,$filter: [GlobalSlaFilterInput!],$contextFilter: ContextFilterTypeEnum,$contextFilterInput: [ContextFilterInputField!],$shouldShowSyncStatus: Boolean,$shouldShowProtectedObjectCount: Boolean,$shouldShowUpgradeInfo: Boolean,$showRemoteSlas: Boolean,$shouldShowPausedClusters: Boolean)",
-                fieldSpecDoc,
                 "GlobalSlaForFilterConnection"
-            );
+                );
+            GlobalSlaForFilterConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (GlobalSlaForFilterConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.GlobalSlaFilterConnection(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -936,24 +988,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("shouldShowUpgradeInfo", "Boolean"),
                 Tuple.Create("shouldShowPausedClusters", "Boolean"),
             };
-            SlaDomain? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (SlaDomain)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (SlaDomain)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.SlaDomain(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QuerySlaDomain",
                 "($id: UUID!,$shouldShowSyncStatus: Boolean,$shouldShowUpgradeInfo: Boolean,$shouldShowPausedClusters: Boolean)",
-                fieldSpecDoc,
                 "SlaDomain"
-            );
+                );
+            SlaDomain? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (SlaDomain)this.Field;
+            }
+            string fieldSpecDoc = Query.SlaDomain(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -965,24 +1013,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("objectIds", "[UUID!]!"),
                 Tuple.Create("applicableSnappableTypes", "[WorkloadLevelHierarchy!]"),
             };
-            SlaDomainWithWarnings? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (SlaDomainWithWarnings)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (SlaDomainWithWarnings)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.SlaDomainWithWarnings(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QuerySlaDomainWithWarnings",
                 "($id: UUID!,$objectIds: [UUID!]!,$applicableSnappableTypes: [WorkloadLevelHierarchy!])",
-                fieldSpecDoc,
                 "SlaDomainWithWarnings"
-            );
+                );
+            SlaDomainWithWarnings? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (SlaDomainWithWarnings)this.Field;
+            }
+            string fieldSpecDoc = Query.SlaDomainWithWarnings(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -992,24 +1036,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "SlaArchivalWarningsInput!"),
             };
-            SlaArchivalValidationWithWarnings? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (SlaArchivalValidationWithWarnings)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (SlaArchivalValidationWithWarnings)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.SlaArchivalValidationWarnings(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QuerySlaArchivalValidationWarnings",
                 "($input: SlaArchivalWarningsInput!)",
-                fieldSpecDoc,
                 "SlaArchivalValidationWithWarnings"
-            );
+                );
+            SlaArchivalValidationWithWarnings? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (SlaArchivalValidationWithWarnings)this.Field;
+            }
+            string fieldSpecDoc = Query.SlaArchivalValidationWarnings(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1027,24 +1067,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("filter", "[Filter!]"),
                 Tuple.Create("typeFilter", "[HierarchyObjectTypeEnum!]"),
             };
-            CountOfObjectsProtectedBySlAsResult? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (CountOfObjectsProtectedBySlAsResult)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (CountOfObjectsProtectedBySlAsResult)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.CountOfObjectsProtectedBySlas(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryCountOfObjectsProtectedBySlas",
                 "($rootOptionalFid: UUID,$slaIds: [UUID!]!,$filter: [Filter!],$typeFilter: [HierarchyObjectTypeEnum!])",
-                fieldSpecDoc,
                 "CountOfObjectsProtectedBySlAsResult"
-            );
+                );
+            CountOfObjectsProtectedBySlAsResult? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (CountOfObjectsProtectedBySlAsResult)this.Field;
+            }
+            string fieldSpecDoc = Query.CountOfObjectsProtectedBySlas(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1068,24 +1104,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("filter", "[SLAAuditDetailFilterInput!]"),
                 Tuple.Create("timezone", "String"),
             };
-            List<SlaAuditDetail>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (List<SlaAuditDetail>)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (List<SlaAuditDetail>)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.SlaAuditDetail(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QuerySlaAuditDetail",
                 "($first: Int,$after: String,$last: Int,$before: String,$SlaId: UUID!,$filter: [SLAAuditDetailFilterInput!],$timezone: String)",
-                fieldSpecDoc,
                 "List<SlaAuditDetail>"
-            );
+                );
+            List<SlaAuditDetail>? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (List<SlaAuditDetail>)this.Field;
+            }
+            string fieldSpecDoc = Query.SlaAuditDetail(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1095,24 +1127,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("slaIds", "[UUID!]!"),
             };
-            List<SlaDomain>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (List<SlaDomain>)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (List<SlaDomain>)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AllSlaSummariesByIds(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAllSlaSummariesByIds",
                 "($slaIds: [UUID!]!)",
-                fieldSpecDoc,
                 "List<SlaDomain>"
-            );
+                );
+            List<SlaDomain>? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (List<SlaDomain>)this.Field;
+            }
+            string fieldSpecDoc = Query.AllSlaSummariesByIds(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1134,24 +1162,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("filter", "[SlaStatusFilterInput!]"),
                 Tuple.Create("SlaId", "UUID!"),
             };
-            GlobalSlaStatusConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (GlobalSlaStatusConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (GlobalSlaStatusConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.GlobalSlaStatuses(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryGlobalSlaStatuses",
                 "($first: Int,$after: String,$last: Int,$before: String,$filter: [SlaStatusFilterInput!],$SlaId: UUID!)",
-                fieldSpecDoc,
                 "GlobalSlaStatusConnection"
-            );
+                );
+            GlobalSlaStatusConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (GlobalSlaStatusConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.GlobalSlaStatuses(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1171,24 +1195,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("before", "String"),
                 Tuple.Create("slaId", "UUID!"),
             };
-            ClusterConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (ClusterConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (ClusterConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.ProtectedClustersForGlobalSla(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryProtectedClustersForGlobalSla",
                 "($first: Int,$after: String,$last: Int,$before: String,$slaId: UUID!)",
-                fieldSpecDoc,
                 "ClusterConnection"
-            );
+                );
+            ClusterConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (ClusterConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.ProtectedClustersForGlobalSla(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1198,24 +1218,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fids", "[UUID!]!"),
             };
-            List<HierarchyObject>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (List<HierarchyObject>)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (List<HierarchyObject>)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.SlaConflictObjects(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QuerySlaConflictObjects",
                 "($fids: [UUID!]!)",
-                fieldSpecDoc,
                 "List<HierarchyObject>"
-            );
+                );
+            List<HierarchyObject>? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (List<HierarchyObject>)this.Field;
+            }
+            string fieldSpecDoc = Query.SlaConflictObjects(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1235,24 +1251,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
             };
-            ManagedVolumeConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (ManagedVolumeConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (ManagedVolumeConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.SlaManagedVolumes(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QuerySlaManagedVolumes",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                fieldSpecDoc,
                 "ManagedVolumeConnection"
-            );
+                );
+            ManagedVolumeConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (ManagedVolumeConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.SlaManagedVolumes(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1262,24 +1274,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            ManagedVolume? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (ManagedVolume)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (ManagedVolume)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.SlaManagedVolume(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QuerySlaManagedVolume",
                 "($fid: UUID!)",
-                fieldSpecDoc,
                 "ManagedVolume"
-            );
+                );
+            ManagedVolume? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (ManagedVolume)this.Field;
+            }
+            string fieldSpecDoc = Query.SlaManagedVolume(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1297,24 +1305,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("last", "Int"),
                 Tuple.Create("before", "String"),
             };
-            ClusterSlaDomainConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (ClusterSlaDomainConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (ClusterSlaDomainConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.ClusterSlaDomains(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryClusterSlaDomains",
                 "($first: Int,$after: String,$last: Int,$before: String)",
-                fieldSpecDoc,
                 "ClusterSlaDomainConnection"
-            );
+                );
+            ClusterSlaDomainConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (ClusterSlaDomainConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.ClusterSlaDomains(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1332,24 +1336,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("last", "Int"),
                 Tuple.Create("before", "String"),
             };
-            ClusterSlaDomainForFilterConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (ClusterSlaDomainForFilterConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (ClusterSlaDomainForFilterConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.ClusterSlaDomainFilterConnection(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryClusterSlaDomainFilterConnection",
                 "($first: Int,$after: String,$last: Int,$before: String)",
-                fieldSpecDoc,
                 "ClusterSlaDomainForFilterConnection"
-            );
+                );
+            ClusterSlaDomainForFilterConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (ClusterSlaDomainForFilterConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.ClusterSlaDomainFilterConnection(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1360,24 +1360,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("cdmClusterUUID", "UUID!"),
                 Tuple.Create("includeArchived", "Boolean!"),
             };
-            VerifySlaWithReplicationToClusterResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (VerifySlaWithReplicationToClusterResponse)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (VerifySlaWithReplicationToClusterResponse)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.VerifySlaWithReplicationToCluster(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryVerifySlaWithReplicationToCluster",
                 "($cdmClusterUUID: UUID!,$includeArchived: Boolean!)",
-                fieldSpecDoc,
                 "VerifySlaWithReplicationToClusterResponse"
-            );
+                );
+            VerifySlaWithReplicationToClusterResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (VerifySlaWithReplicationToClusterResponse)this.Field;
+            }
+            string fieldSpecDoc = Query.VerifySlaWithReplicationToCluster(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1388,24 +1384,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("cdmClusterUUID", "UUID!"),
                 Tuple.Create("includeArchived", "Boolean!"),
             };
-            DownloadSlaWithReplicationCsvReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (DownloadSlaWithReplicationCsvReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (DownloadSlaWithReplicationCsvReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.DownloadSlaWithReplicationCsv(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryDownloadSlaWithReplicationCsv",
                 "($cdmClusterUUID: UUID!,$includeArchived: Boolean!)",
-                fieldSpecDoc,
                 "DownloadSlaWithReplicationCsvReply"
-            );
+                );
+            DownloadSlaWithReplicationCsvReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (DownloadSlaWithReplicationCsvReply)this.Field;
+            }
+            string fieldSpecDoc = Query.DownloadSlaWithReplicationCsv(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1415,24 +1407,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("cdmClusterUUID", "UUID!"),
             };
-            List<SlaInfo>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (List<SlaInfo>)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (List<SlaInfo>)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AllClusterGlobalSlas(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAllClusterGlobalSlas",
                 "($cdmClusterUUID: UUID!)",
-                fieldSpecDoc,
                 "List<SlaInfo>"
-            );
+                );
+            List<SlaInfo>? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (List<SlaInfo>)this.Field;
+            }
+            string fieldSpecDoc = Query.AllClusterGlobalSlas(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1442,24 +1430,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("clusters", "[UUID!]!"),
             };
-            List<NcdSlaComplianceData>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (List<NcdSlaComplianceData>)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (List<NcdSlaComplianceData>)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AllNcdSlaComplianceData(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAllNcdSlaComplianceData",
                 "($clusters: [UUID!]!)",
-                fieldSpecDoc,
                 "List<NcdSlaComplianceData>"
-            );
+                );
+            List<NcdSlaComplianceData>? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (List<NcdSlaComplianceData>)this.Field;
+            }
+            string fieldSpecDoc = Query.AllNcdSlaComplianceData(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
 

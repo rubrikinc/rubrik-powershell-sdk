@@ -391,17 +391,17 @@ context of the SDK, we call the arguments `Arg` and the field specification
 `Field` (because PowerShell has the convention to use singular nouns).
 
 You can see the arguments and fields for a given cmdlet by using the
-`-GetInputs` parameter to `Invoke-RscQueryCluster`:
+`-GetInput` parameter to `Invoke-RscQueryCluster`:
 
 ```powershell
-PS> Invoke-RscQueryCluster -List -GetInputs
+PS> Invoke-RscQueryCluster -List -GetInput
 
 Op   Arg                                             Field
 --   ---                                             -----
 List {[before, ], [filter, ], [after, ], [first, ]…} ClusterConnection
 ```
 
-Note that when passing `-GetInputs` to a cmdlet, it does not actually
+Note that when passing `-GetInput` to a cmdlet, it does not actually
 reach out to the RSC API server, but only return info about its inputs.
 
 Also note that you are only required to pass arguments that are
@@ -418,7 +418,7 @@ Now let's say you only want to retrieve the first 3 clusters, you can
 pass the `first` argument like this:
 
 ```powershell
-$inputs=(Invoke-RscQueryCluster -List -GetInputs)
+$inputs=(Invoke-RscQueryCluster -List -GetInput)
 $inputs.Arg["first"]=3
 Invoke-RscQueryCluster -List -Arg $inputs.Arg
 ```
@@ -495,6 +495,29 @@ SystemStatusMessage             : 1 Node Down.
 Timezone                        :
 Version                         : 8.0.2-p2-22662
 ```
+
+## How the SDK works with GraphQL under the covers
+
+This section is for advanced users who want to understand how the SDK
+works under the covers.
+
+### Limitations
+
+The SDK is not a full GraphQL client, it only supports a subset of
+GraphQL features. In particular, it does not support:
+
+- aliases. For example, the label `objects` in the following will not work:
+
+  ```graphql
+  query getSLADomainByName($slaName: String!) {
+    objects: slaDomains(filter: {field: NAME, text: $slaName}) {
+      nodes { name id }
+    }
+  }
+  ```
+
+  If you need to run a field more than once (with different arguments),
+  you'll need to run the query multiple times.
 
 ## SDK Architecture
 

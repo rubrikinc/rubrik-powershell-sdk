@@ -6,3 +6,4 @@ All valid report views.
 - OBJECT_CAPACITY_OVERTIME_REPORT - The object capacity over time report.
 - RECOVERY_TASKS_DETAIL_REPORT - The recovery tasks detail report.
 - THREAT_MONITORING_REPORT - The threat monitoring report.
+- COMPLIANCE_REPORT - Compliance report.

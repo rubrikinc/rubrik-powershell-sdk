@@ -18,6 +18,63 @@ using RubrikSecurityCloud.PowerShell.Private;
 
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
+    /// <summary>
+    /// MSSQL mutations
+    /// </summary>
+    /// <description>
+    /// Invoke-RscMutateMssql is a master cmdlet for Mssql work that can invoke any of the following subcommands: BrowseDatabaseSnapshot, ExportDatabase, RestoreDatabase, BulkUpdateDbs, TakeLogBackup, CreateOnDemandBackup, DeleteDbSnapshots, DeleteLiveMount, BulkCreateOnDemandBackup, CreateLiveMount, UpdateLogShippingConfiguration, DownloadDatabaseFilesFromArchivalLocation, DownloadDatabaseBackupFiles, AssignSlaDomainProperties, UpdateDefaultProperties, CreateLogShippingConfiguration, AssignSlaDomainPropertiesAsync.
+    /// </description>
+    /// <example>
+    /// <code>Invoke-RscMutateMssql -BrowseDatabaseSnapshot [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateMssql -ExportDatabase [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateMssql -RestoreDatabase [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateMssql -BulkUpdateDbs [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateMssql -TakeLogBackup [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateMssql -CreateOnDemandBackup [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateMssql -DeleteDbSnapshots [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateMssql -DeleteLiveMount [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateMssql -BulkCreateOnDemandBackup [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateMssql -CreateLiveMount [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateMssql -UpdateLogShippingConfiguration [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateMssql -DownloadDatabaseFilesFromArchivalLocation [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateMssql -DownloadDatabaseBackupFiles [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateMssql -AssignSlaDomainProperties [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateMssql -UpdateDefaultProperties [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateMssql -CreateLogShippingConfiguration [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateMssql -AssignSlaDomainPropertiesAsync [-Arg ..] [-Field ..]</code>
+    /// </example>
     [Cmdlet(
         "Invoke",
         "RscMutateMssql",
@@ -569,24 +626,20 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "BrowseMssqlDatabaseSnapshotInput!"),
             };
-            BrowseMssqlDatabaseSnapshotReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (BrowseMssqlDatabaseSnapshotReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (BrowseMssqlDatabaseSnapshotReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.BrowseMssqlDatabaseSnapshot(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationBrowseMssqlDatabaseSnapshot",
                 "($input: BrowseMssqlDatabaseSnapshotInput!)",
-                fieldSpecDoc,
                 "BrowseMssqlDatabaseSnapshotReply"
-            );
+                );
+            BrowseMssqlDatabaseSnapshotReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (BrowseMssqlDatabaseSnapshotReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.BrowseMssqlDatabaseSnapshot(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -596,24 +649,20 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "ExportMssqlDatabaseInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.ExportMssqlDatabase(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationExportMssqlDatabase",
                 "($input: ExportMssqlDatabaseInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.ExportMssqlDatabase(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -623,24 +672,20 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RestoreMssqlDatabaseInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.RestoreMssqlDatabase(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationRestoreMssqlDatabase",
                 "($input: RestoreMssqlDatabaseInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.RestoreMssqlDatabase(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -650,24 +695,20 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "BulkUpdateMssqlDbsInput!"),
             };
-            BulkUpdateMssqlDbsReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (BulkUpdateMssqlDbsReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (BulkUpdateMssqlDbsReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.BulkUpdateMssqlDbs(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationBulkUpdateMssqlDbs",
                 "($input: BulkUpdateMssqlDbsInput!)",
-                fieldSpecDoc,
                 "BulkUpdateMssqlDbsReply"
-            );
+                );
+            BulkUpdateMssqlDbsReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (BulkUpdateMssqlDbsReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.BulkUpdateMssqlDbs(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -677,24 +718,20 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "TakeMssqlLogBackupInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.TakeMssqlLogBackup(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationTakeMssqlLogBackup",
                 "($input: TakeMssqlLogBackupInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.TakeMssqlLogBackup(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -704,24 +741,20 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CreateOnDemandMssqlBackupInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.CreateOnDemandMssqlBackup(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationCreateOnDemandMssqlBackup",
                 "($input: CreateOnDemandMssqlBackupInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.CreateOnDemandMssqlBackup(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -731,24 +764,20 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteMssqlDbSnapshotsInput!"),
             };
-            ResponseSuccess? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (ResponseSuccess)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (ResponseSuccess)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.DeleteMssqlDbSnapshots(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationDeleteMssqlDbSnapshots",
                 "($input: DeleteMssqlDbSnapshotsInput!)",
-                fieldSpecDoc,
                 "ResponseSuccess"
-            );
+                );
+            ResponseSuccess? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (ResponseSuccess)this.Field;
+            }
+            string fieldSpecDoc = Mutation.DeleteMssqlDbSnapshots(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -758,24 +787,20 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteMssqlLiveMountInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.DeleteMssqlLiveMount(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationDeleteMssqlLiveMount",
                 "($input: DeleteMssqlLiveMountInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.DeleteMssqlLiveMount(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -785,24 +810,20 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "BulkCreateOnDemandMssqlBackupInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.BulkCreateOnDemandMssqlBackup(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationBulkCreateOnDemandMssqlBackup",
                 "($input: BulkCreateOnDemandMssqlBackupInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.BulkCreateOnDemandMssqlBackup(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -812,24 +833,20 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CreateMssqlLiveMountInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.CreateMssqlLiveMount(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationCreateMssqlLiveMount",
                 "($input: CreateMssqlLiveMountInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.CreateMssqlLiveMount(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -839,24 +856,20 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpdateMssqlLogShippingConfigurationInput!"),
             };
-            UpdateMssqlLogShippingConfigurationReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (UpdateMssqlLogShippingConfigurationReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (UpdateMssqlLogShippingConfigurationReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.UpdateMssqlLogShippingConfiguration(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationUpdateMssqlLogShippingConfiguration",
                 "($input: UpdateMssqlLogShippingConfigurationInput!)",
-                fieldSpecDoc,
                 "UpdateMssqlLogShippingConfigurationReply"
-            );
+                );
+            UpdateMssqlLogShippingConfigurationReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (UpdateMssqlLogShippingConfigurationReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.UpdateMssqlLogShippingConfiguration(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -866,24 +879,20 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DownloadMssqlDatabaseFilesFromArchivalLocationInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.DownloadMssqlDatabaseFilesFromArchivalLocation(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationDownloadMssqlDatabaseFilesFromArchivalLocation",
                 "($input: DownloadMssqlDatabaseFilesFromArchivalLocationInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.DownloadMssqlDatabaseFilesFromArchivalLocation(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -893,24 +902,20 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DownloadMssqlDatabaseBackupFilesInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.DownloadMssqlDatabaseBackupFiles(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationDownloadMssqlDatabaseBackupFiles",
                 "($input: DownloadMssqlDatabaseBackupFilesInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.DownloadMssqlDatabaseBackupFiles(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -920,24 +925,20 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "AssignMssqlSlaDomainPropertiesInput!"),
             };
-            ResponseSuccess? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (ResponseSuccess)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (ResponseSuccess)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.AssignMssqlSlaDomainProperties(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationAssignMssqlSlaDomainProperties",
                 "($input: AssignMssqlSlaDomainPropertiesInput!)",
-                fieldSpecDoc,
                 "ResponseSuccess"
-            );
+                );
+            ResponseSuccess? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (ResponseSuccess)this.Field;
+            }
+            string fieldSpecDoc = Mutation.AssignMssqlSlaDomainProperties(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -947,24 +948,20 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpdateMssqlDefaultPropertiesInput!"),
             };
-            UpdateMssqlDefaultPropertiesReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (UpdateMssqlDefaultPropertiesReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (UpdateMssqlDefaultPropertiesReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.UpdateMssqlDefaultProperties(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationUpdateMssqlDefaultProperties",
                 "($input: UpdateMssqlDefaultPropertiesInput!)",
-                fieldSpecDoc,
                 "UpdateMssqlDefaultPropertiesReply"
-            );
+                );
+            UpdateMssqlDefaultPropertiesReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (UpdateMssqlDefaultPropertiesReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.UpdateMssqlDefaultProperties(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -974,24 +971,20 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CreateMssqlLogShippingConfigurationInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.CreateMssqlLogShippingConfiguration(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationCreateMssqlLogShippingConfiguration",
                 "($input: CreateMssqlLogShippingConfigurationInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.CreateMssqlLogShippingConfiguration(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1001,24 +994,20 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "AssignMssqlSlaDomainPropertiesAsyncInput!"),
             };
-            AssignMssqlSlaDomainPropertiesAsyncReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AssignMssqlSlaDomainPropertiesAsyncReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AssignMssqlSlaDomainPropertiesAsyncReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.AssignMssqlSlaDomainPropertiesAsync(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationAssignMssqlSlaDomainPropertiesAsync",
                 "($input: AssignMssqlSlaDomainPropertiesAsyncInput!)",
-                fieldSpecDoc,
                 "AssignMssqlSlaDomainPropertiesAsyncReply"
-            );
+                );
+            AssignMssqlSlaDomainPropertiesAsyncReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AssignMssqlSlaDomainPropertiesAsyncReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.AssignMssqlSlaDomainPropertiesAsync(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
 

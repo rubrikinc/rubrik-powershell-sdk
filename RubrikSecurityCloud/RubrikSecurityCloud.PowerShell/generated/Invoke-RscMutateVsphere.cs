@@ -18,6 +18,39 @@ using RubrikSecurityCloud.PowerShell.Private;
 
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
+    /// <summary>
+    /// vSphere mutations
+    /// </summary>
+    /// <description>
+    /// Invoke-RscMutateVsphere is a master cmdlet for Vsphere work that can invoke any of the following subcommands: OnDemandSnapshot, BulkOnDemandSnapshot, DeleteLiveMount, ExportSnapshotToStandaloneHostV2, ExportSnapshotToStandaloneHost, DownloadVirtualMachineFiles, CreateAdvancedTag, DeleteAdvancedTag, UpdateAdvancedTag.
+    /// </description>
+    /// <example>
+    /// <code>Invoke-RscMutateVsphere -OnDemandSnapshot [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateVsphere -BulkOnDemandSnapshot [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateVsphere -DeleteLiveMount [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateVsphere -ExportSnapshotToStandaloneHostV2 [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateVsphere -ExportSnapshotToStandaloneHost [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateVsphere -DownloadVirtualMachineFiles [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateVsphere -CreateAdvancedTag [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateVsphere -DeleteAdvancedTag [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateVsphere -UpdateAdvancedTag [-Arg ..] [-Field ..]</code>
+    /// </example>
     [Cmdlet(
         "Invoke",
         "RscMutateVsphere",
@@ -338,24 +371,20 @@ Updates the name, condition, and description of the specified multi-tag filter.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereOnDemandSnapshotInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.VsphereOnDemandSnapshot(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationVsphereOnDemandSnapshot",
                 "($input: VsphereOnDemandSnapshotInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.VsphereOnDemandSnapshot(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -365,24 +394,20 @@ Updates the name, condition, and description of the specified multi-tag filter.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereBulkOnDemandSnapshotInput!"),
             };
-            BatchAsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (BatchAsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (BatchAsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.VsphereBulkOnDemandSnapshot(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationVsphereBulkOnDemandSnapshot",
                 "($input: VsphereBulkOnDemandSnapshotInput!)",
-                fieldSpecDoc,
                 "BatchAsyncRequestStatus"
-            );
+                );
+            BatchAsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (BatchAsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.VsphereBulkOnDemandSnapshot(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -392,24 +417,20 @@ Updates the name, condition, and description of the specified multi-tag filter.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteVsphereLiveMountInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.DeleteVsphereLiveMount(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationDeleteVsphereLiveMount",
                 "($input: DeleteVsphereLiveMountInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.DeleteVsphereLiveMount(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -419,24 +440,20 @@ Updates the name, condition, and description of the specified multi-tag filter.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "VsphereExportSnapshotToStandaloneHostV2Input!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.VsphereExportSnapshotToStandaloneHostV2(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationVsphereExportSnapshotToStandaloneHostV2",
                 "($input: VsphereExportSnapshotToStandaloneHostV2Input!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.VsphereExportSnapshotToStandaloneHostV2(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -466,24 +483,20 @@ Updates the name, condition, and description of the specified multi-tag filter.
                 Tuple.Create("hostUsername", "String!"),
                 Tuple.Create("hostPassword", "String!"),
             };
-            VsphereAsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (VsphereAsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (VsphereAsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.VsphereExportSnapshotToStandaloneHost(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationVsphereExportSnapshotToStandaloneHost",
                 "($snapshotFid: UUID!,$vmName: String,$disableNetwork: Boolean,$removeNetworkDevices: Boolean,$powerOn: Boolean,$keepMacAddresses: Boolean,$hostIpAddress: String!,$datastoreName: String!,$hostUsername: String!,$hostPassword: String!)",
-                fieldSpecDoc,
                 "VsphereAsyncRequestStatus"
-            );
+                );
+            VsphereAsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (VsphereAsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.VsphereExportSnapshotToStandaloneHost(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -493,24 +506,20 @@ Updates the name, condition, and description of the specified multi-tag filter.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DownloadVsphereVirtualMachineFilesInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.DownloadVsphereVirtualMachineFiles(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationDownloadVsphereVirtualMachineFiles",
                 "($input: DownloadVsphereVirtualMachineFilesInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.DownloadVsphereVirtualMachineFiles(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -520,24 +529,20 @@ Updates the name, condition, and description of the specified multi-tag filter.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CreateVsphereAdvancedTagInput!"),
             };
-            CreateVsphereAdvancedTagReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (CreateVsphereAdvancedTagReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (CreateVsphereAdvancedTagReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.CreateVsphereAdvancedTag(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationCreateVsphereAdvancedTag",
                 "($input: CreateVsphereAdvancedTagInput!)",
-                fieldSpecDoc,
                 "CreateVsphereAdvancedTagReply"
-            );
+                );
+            CreateVsphereAdvancedTagReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (CreateVsphereAdvancedTagReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.CreateVsphereAdvancedTag(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -547,24 +552,20 @@ Updates the name, condition, and description of the specified multi-tag filter.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteVsphereAdvancedTagInput!"),
             };
-            RequestSuccess? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (RequestSuccess)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (RequestSuccess)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.DeleteVsphereAdvancedTag(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationDeleteVsphereAdvancedTag",
                 "($input: DeleteVsphereAdvancedTagInput!)",
-                fieldSpecDoc,
                 "RequestSuccess"
-            );
+                );
+            RequestSuccess? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (RequestSuccess)this.Field;
+            }
+            string fieldSpecDoc = Mutation.DeleteVsphereAdvancedTag(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -574,24 +575,20 @@ Updates the name, condition, and description of the specified multi-tag filter.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpdateVsphereAdvancedTagInput!"),
             };
-            UpdateVsphereAdvancedTagReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (UpdateVsphereAdvancedTagReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (UpdateVsphereAdvancedTagReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.UpdateVsphereAdvancedTag(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationUpdateVsphereAdvancedTag",
                 "($input: UpdateVsphereAdvancedTagInput!)",
-                fieldSpecDoc,
                 "UpdateVsphereAdvancedTagReply"
-            );
+                );
+            UpdateVsphereAdvancedTagReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (UpdateVsphereAdvancedTagReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.UpdateVsphereAdvancedTag(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
 

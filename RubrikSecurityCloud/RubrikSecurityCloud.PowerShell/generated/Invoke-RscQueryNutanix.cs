@@ -18,6 +18,66 @@ using RubrikSecurityCloud.PowerShell.Private;
 
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
+    /// <summary>
+    /// Nutanix queries
+    /// </summary>
+    /// <description>
+    /// Invoke-RscQueryNutanix is a master cmdlet for Nutanix work that can invoke any of the following subcommands: TopLevelDescendants, Cluster, Clusters, PrismCentrals, PrismCentral, Category, CategoryValue, Vm, Vms, Mounts, ClusterContainers, ClusterNetworks, ClusterAsyncRequestStatus, VmAsyncRequestStatus, SearchVm, VmMissedSnapshots, BrowseSnapshot, SnapshotDetail.
+    /// </description>
+    /// <example>
+    /// <code>Invoke-RscQueryNutanix -TopLevelDescendants [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryNutanix -Cluster [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryNutanix -Clusters [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryNutanix -PrismCentrals [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryNutanix -PrismCentral [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryNutanix -Category [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryNutanix -CategoryValue [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryNutanix -Vm [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryNutanix -Vms [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryNutanix -Mounts [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryNutanix -ClusterContainers [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryNutanix -ClusterNetworks [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryNutanix -ClusterAsyncRequestStatus [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryNutanix -VmAsyncRequestStatus [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryNutanix -SearchVm [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryNutanix -VmMissedSnapshots [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryNutanix -BrowseSnapshot [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryNutanix -SnapshotDetail [-Arg ..] [-Field ..]</code>
+    /// </example>
     [Cmdlet(
         "Invoke",
         "RscQueryNutanix",
@@ -633,24 +693,20 @@ Lists all files and directories in a given path.
                 Tuple.Create("typeFilter", "[HierarchyObjectTypeEnum!]"),
                 Tuple.Create("filter", "[Filter!]"),
             };
-            CdmHierarchyObjectConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (CdmHierarchyObjectConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (CdmHierarchyObjectConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.NutanixTopLevelDescendants(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryNutanixTopLevelDescendants",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$typeFilter: [HierarchyObjectTypeEnum!],$filter: [Filter!])",
-                fieldSpecDoc,
                 "CdmHierarchyObjectConnection"
-            );
+                );
+            CdmHierarchyObjectConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (CdmHierarchyObjectConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.NutanixTopLevelDescendants(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -660,24 +716,20 @@ Lists all files and directories in a given path.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            NutanixCluster? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (NutanixCluster)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (NutanixCluster)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.NutanixCluster(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryNutanixCluster",
                 "($fid: UUID!)",
-                fieldSpecDoc,
                 "NutanixCluster"
-            );
+                );
+            NutanixCluster? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (NutanixCluster)this.Field;
+            }
+            string fieldSpecDoc = Query.NutanixCluster(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -697,24 +749,20 @@ Lists all files and directories in a given path.
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
             };
-            NutanixClusterConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (NutanixClusterConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (NutanixClusterConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.NutanixClusters(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryNutanixClusters",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                fieldSpecDoc,
                 "NutanixClusterConnection"
-            );
+                );
+            NutanixClusterConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (NutanixClusterConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.NutanixClusters(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -734,24 +782,20 @@ Lists all files and directories in a given path.
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
             };
-            NutanixPrismCentralConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (NutanixPrismCentralConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (NutanixPrismCentralConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.NutanixPrismCentrals(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryNutanixPrismCentrals",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                fieldSpecDoc,
                 "NutanixPrismCentralConnection"
-            );
+                );
+            NutanixPrismCentralConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (NutanixPrismCentralConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.NutanixPrismCentrals(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -761,24 +805,20 @@ Lists all files and directories in a given path.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            NutanixPrismCentral? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (NutanixPrismCentral)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (NutanixPrismCentral)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.NutanixPrismCentral(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryNutanixPrismCentral",
                 "($fid: UUID!)",
-                fieldSpecDoc,
                 "NutanixPrismCentral"
-            );
+                );
+            NutanixPrismCentral? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (NutanixPrismCentral)this.Field;
+            }
+            string fieldSpecDoc = Query.NutanixPrismCentral(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -788,24 +828,20 @@ Lists all files and directories in a given path.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            NutanixCategory? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (NutanixCategory)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (NutanixCategory)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.NutanixCategory(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryNutanixCategory",
                 "($fid: UUID!)",
-                fieldSpecDoc,
                 "NutanixCategory"
-            );
+                );
+            NutanixCategory? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (NutanixCategory)this.Field;
+            }
+            string fieldSpecDoc = Query.NutanixCategory(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -815,24 +851,20 @@ Lists all files and directories in a given path.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            NutanixCategoryValue? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (NutanixCategoryValue)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (NutanixCategoryValue)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.NutanixCategoryValue(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryNutanixCategoryValue",
                 "($fid: UUID!)",
-                fieldSpecDoc,
                 "NutanixCategoryValue"
-            );
+                );
+            NutanixCategoryValue? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (NutanixCategoryValue)this.Field;
+            }
+            string fieldSpecDoc = Query.NutanixCategoryValue(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -842,24 +874,20 @@ Lists all files and directories in a given path.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            NutanixVm? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (NutanixVm)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (NutanixVm)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.NutanixVm(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryNutanixVm",
                 "($fid: UUID!)",
-                fieldSpecDoc,
                 "NutanixVm"
-            );
+                );
+            NutanixVm? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (NutanixVm)this.Field;
+            }
+            string fieldSpecDoc = Query.NutanixVm(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -879,24 +907,20 @@ Lists all files and directories in a given path.
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
             };
-            NutanixVmConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (NutanixVmConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (NutanixVmConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.NutanixVms(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryNutanixVms",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                fieldSpecDoc,
                 "NutanixVmConnection"
-            );
+                );
+            NutanixVmConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (NutanixVmConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.NutanixVms(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -914,24 +938,20 @@ Lists all files and directories in a given path.
                 Tuple.Create("filters", "[NutanixLiveMountFilterInput!]"),
                 Tuple.Create("sortBy", "NutanixLiveMountSortByInput"),
             };
-            NutanixLiveMountConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (NutanixLiveMountConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (NutanixLiveMountConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.NutanixMounts(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryNutanixMounts",
                 "($first: Int,$after: String,$filters: [NutanixLiveMountFilterInput!],$sortBy: NutanixLiveMountSortByInput)",
-                fieldSpecDoc,
                 "NutanixLiveMountConnection"
-            );
+                );
+            NutanixLiveMountConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (NutanixLiveMountConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.NutanixMounts(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -941,24 +961,20 @@ Lists all files and directories in a given path.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetContainersInput!"),
             };
-            NutanixContainerListResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (NutanixContainerListResponse)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (NutanixContainerListResponse)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.NutanixClusterContainers(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryNutanixClusterContainers",
                 "($input: GetContainersInput!)",
-                fieldSpecDoc,
                 "NutanixContainerListResponse"
-            );
+                );
+            NutanixContainerListResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (NutanixContainerListResponse)this.Field;
+            }
+            string fieldSpecDoc = Query.NutanixClusterContainers(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -968,24 +984,20 @@ Lists all files and directories in a given path.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetNutanixNetworksInput!"),
             };
-            NutanixNetworkListResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (NutanixNetworkListResponse)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (NutanixNetworkListResponse)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.NutanixClusterNetworks(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryNutanixClusterNetworks",
                 "($input: GetNutanixNetworksInput!)",
-                fieldSpecDoc,
                 "NutanixNetworkListResponse"
-            );
+                );
+            NutanixNetworkListResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (NutanixNetworkListResponse)this.Field;
+            }
+            string fieldSpecDoc = Query.NutanixClusterNetworks(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -995,24 +1007,20 @@ Lists all files and directories in a given path.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetNutanixClusterAsyncRequestStatusInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.NutanixClusterAsyncRequestStatus(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryNutanixClusterAsyncRequestStatus",
                 "($input: GetNutanixClusterAsyncRequestStatusInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Query.NutanixClusterAsyncRequestStatus(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1022,24 +1030,20 @@ Lists all files and directories in a given path.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetNutanixVmAsyncRequestStatusInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.NutanixVmAsyncRequestStatus(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryNutanixVmAsyncRequestStatus",
                 "($input: GetNutanixVmAsyncRequestStatusInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Query.NutanixVmAsyncRequestStatus(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1049,24 +1053,20 @@ Lists all files and directories in a given path.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "SearchNutanixVmInput!"),
             };
-            SearchResponseListResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (SearchResponseListResponse)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (SearchResponseListResponse)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.SearchNutanixVm(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QuerySearchNutanixVm",
                 "($input: SearchNutanixVmInput!)",
-                fieldSpecDoc,
                 "SearchResponseListResponse"
-            );
+                );
+            SearchResponseListResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (SearchResponseListResponse)this.Field;
+            }
+            string fieldSpecDoc = Query.SearchNutanixVm(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1076,24 +1076,20 @@ Lists all files and directories in a given path.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "NutanixMissedSnapshotsInput!"),
             };
-            MissedSnapshotListResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (MissedSnapshotListResponse)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (MissedSnapshotListResponse)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.NutanixVmMissedSnapshots(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryNutanixVmMissedSnapshots",
                 "($input: NutanixMissedSnapshotsInput!)",
-                fieldSpecDoc,
                 "MissedSnapshotListResponse"
-            );
+                );
+            MissedSnapshotListResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (MissedSnapshotListResponse)this.Field;
+            }
+            string fieldSpecDoc = Query.NutanixVmMissedSnapshots(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1103,24 +1099,20 @@ Lists all files and directories in a given path.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "BrowseNutanixSnapshotInput!"),
             };
-            BrowseResponseListResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (BrowseResponseListResponse)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (BrowseResponseListResponse)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.NutanixBrowseSnapshot(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryNutanixBrowseSnapshot",
                 "($input: BrowseNutanixSnapshotInput!)",
-                fieldSpecDoc,
                 "BrowseResponseListResponse"
-            );
+                );
+            BrowseResponseListResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (BrowseResponseListResponse)this.Field;
+            }
+            string fieldSpecDoc = Query.NutanixBrowseSnapshot(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1130,24 +1122,20 @@ Lists all files and directories in a given path.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetNutanixSnapshotDetailInput!"),
             };
-            NutanixVmSnapshotDetail? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (NutanixVmSnapshotDetail)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (NutanixVmSnapshotDetail)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.NutanixSnapshotDetail(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryNutanixSnapshotDetail",
                 "($input: GetNutanixSnapshotDetailInput!)",
-                fieldSpecDoc,
                 "NutanixVmSnapshotDetail"
-            );
+                );
+            NutanixVmSnapshotDetail? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (NutanixVmSnapshotDetail)this.Field;
+            }
+            string fieldSpecDoc = Query.NutanixSnapshotDetail(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
 

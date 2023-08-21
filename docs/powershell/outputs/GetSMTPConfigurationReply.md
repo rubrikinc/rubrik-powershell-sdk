@@ -4,5 +4,5 @@
 - username: System.String
 - defaultFromEmail: System.String
 - securityType: SMTPSecurityTypeEnum
-- trustedCerts: System.String
 - isValid: System.Boolean
+- trustedCertId: System.Int64

@@ -50,4 +50,8 @@
   - Represents if file has direct ACL.
 - principalAccessInfo: PrincipalAccessInfo
   - Represents principal access information for the file.
+- numChildren: System.Int64
+  - Represents number of children at each level.
+- type: System.String
+  - Represents data type of column for databases.
 - snappable: HierarchyObject

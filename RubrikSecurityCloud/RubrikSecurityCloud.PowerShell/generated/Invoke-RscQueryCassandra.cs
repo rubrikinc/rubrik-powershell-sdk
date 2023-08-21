@@ -18,6 +18,36 @@ using RubrikSecurityCloud.PowerShell.Private;
 
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
+    /// <summary>
+    /// Cassandra queries
+    /// </summary>
+    /// <description>
+    /// Invoke-RscQueryCassandra is a master cmdlet for Cassandra work that can invoke any of the following subcommands: Sources, Keyspaces, ColumnFamilies, ColumnFamilyRecoverableRange, ColumnFamilySchema, Source, Keyspace, ColumnFamily.
+    /// </description>
+    /// <example>
+    /// <code>Invoke-RscQueryCassandra -Sources [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryCassandra -Keyspaces [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryCassandra -ColumnFamilies [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryCassandra -ColumnFamilyRecoverableRange [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryCassandra -ColumnFamilySchema [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryCassandra -Source [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryCassandra -Keyspace [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryCassandra -ColumnFamily [-Arg ..] [-Field ..]</code>
+    /// </example>
     [Cmdlet(
         "Invoke",
         "RscQueryCassandra",
@@ -303,24 +333,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
             };
-            CassandraSourceConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (CassandraSourceConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (CassandraSourceConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.CassandraSources(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryCassandraSources",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                fieldSpecDoc,
                 "CassandraSourceConnection"
-            );
+                );
+            CassandraSourceConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (CassandraSourceConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.CassandraSources(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -340,24 +366,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
             };
-            CassandraKeyspaceConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (CassandraKeyspaceConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (CassandraKeyspaceConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.CassandraKeyspaces(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryCassandraKeyspaces",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                fieldSpecDoc,
                 "CassandraKeyspaceConnection"
-            );
+                );
+            CassandraKeyspaceConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (CassandraKeyspaceConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.CassandraKeyspaces(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -377,24 +399,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
             };
-            CassandraColumnFamilyConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (CassandraColumnFamilyConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (CassandraColumnFamilyConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.CassandraColumnFamilies(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryCassandraColumnFamilies",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                fieldSpecDoc,
                 "CassandraColumnFamilyConnection"
-            );
+                );
+            CassandraColumnFamilyConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (CassandraColumnFamilyConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.CassandraColumnFamilies(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -404,24 +422,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetMosaicRecoverableRangeInput!"),
             };
-            GetMosaicRecoverableRangeResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (GetMosaicRecoverableRangeResponse)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (GetMosaicRecoverableRangeResponse)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.CassandraColumnFamilyRecoverableRange(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryCassandraColumnFamilyRecoverableRange",
                 "($input: GetMosaicRecoverableRangeInput!)",
-                fieldSpecDoc,
                 "GetMosaicRecoverableRangeResponse"
-            );
+                );
+            GetMosaicRecoverableRangeResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (GetMosaicRecoverableRangeResponse)this.Field;
+            }
+            string fieldSpecDoc = Query.CassandraColumnFamilyRecoverableRange(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -431,24 +445,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetMosaicTableSchemaInput!"),
             };
-            GetSchemaResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (GetSchemaResponse)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (GetSchemaResponse)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.CassandraColumnFamilySchema(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryCassandraColumnFamilySchema",
                 "($input: GetMosaicTableSchemaInput!)",
-                fieldSpecDoc,
                 "GetSchemaResponse"
-            );
+                );
+            GetSchemaResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (GetSchemaResponse)this.Field;
+            }
+            string fieldSpecDoc = Query.CassandraColumnFamilySchema(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -458,24 +468,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            CassandraSource? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (CassandraSource)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (CassandraSource)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.CassandraSource(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryCassandraSource",
                 "($fid: UUID!)",
-                fieldSpecDoc,
                 "CassandraSource"
-            );
+                );
+            CassandraSource? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (CassandraSource)this.Field;
+            }
+            string fieldSpecDoc = Query.CassandraSource(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -485,24 +491,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            CassandraKeyspace? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (CassandraKeyspace)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (CassandraKeyspace)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.CassandraKeyspace(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryCassandraKeyspace",
                 "($fid: UUID!)",
-                fieldSpecDoc,
                 "CassandraKeyspace"
-            );
+                );
+            CassandraKeyspace? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (CassandraKeyspace)this.Field;
+            }
+            string fieldSpecDoc = Query.CassandraKeyspace(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -512,24 +514,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            CassandraColumnFamily? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (CassandraColumnFamily)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (CassandraColumnFamily)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.CassandraColumnFamily(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryCassandraColumnFamily",
                 "($fid: UUID!)",
-                fieldSpecDoc,
                 "CassandraColumnFamily"
-            );
+                );
+            CassandraColumnFamily? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (CassandraColumnFamily)this.Field;
+            }
+            string fieldSpecDoc = Query.CassandraColumnFamily(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
 

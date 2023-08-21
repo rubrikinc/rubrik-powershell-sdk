@@ -40,11 +40,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isOptionalToRestore")]
         public System.Boolean? IsOptionalToRestore { get; set; }
 
-        //      C# -> System.String? WorkloadId
-        // GraphQL -> workloadId: String! (scalar)
-        [JsonProperty("workloadId")]
-        public System.String? WorkloadId { get; set; }
-
         //      C# -> List<AppItemWithCascadingImpact>? CascadedItems
         // GraphQL -> cascadedItems: [AppItemWithCascadingImpact!]! (type)
         [JsonProperty("cascadedItems")]
@@ -64,7 +59,6 @@ namespace RubrikSecurityCloud.Types
         System.String? AppItemTypeToken = null,
         System.Int32? Count = null,
         System.Boolean? IsOptionalToRestore = null,
-        System.String? WorkloadId = null,
         List<AppItemWithCascadingImpact>? CascadedItems = null
     ) 
     {
@@ -79,9 +73,6 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsOptionalToRestore != null ) {
             this.IsOptionalToRestore = IsOptionalToRestore;
-        }
-        if ( WorkloadId != null ) {
-            this.WorkloadId = WorkloadId;
         }
         if ( CascadedItems != null ) {
             this.CascadedItems = CascadedItems;
@@ -115,11 +106,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> isOptionalToRestore: Boolean! (scalar)
         if (this.IsOptionalToRestore != null) {
             s += ind + "isOptionalToRestore\n" ;
-        }
-        //      C# -> System.String? WorkloadId
-        // GraphQL -> workloadId: String! (scalar)
-        if (this.WorkloadId != null) {
-            s += ind + "workloadId\n" ;
         }
         //      C# -> List<AppItemWithCascadingImpact>? CascadedItems
         // GraphQL -> cascadedItems: [AppItemWithCascadingImpact!]! (type)
@@ -160,12 +146,6 @@ namespace RubrikSecurityCloud.Types
         if (this.IsOptionalToRestore == null && Exploration.Includes(parent + ".isOptionalToRestore", true))
         {
             this.IsOptionalToRestore = true;
-        }
-        //      C# -> System.String? WorkloadId
-        // GraphQL -> workloadId: String! (scalar)
-        if (this.WorkloadId == null && Exploration.Includes(parent + ".workloadId", true))
-        {
-            this.WorkloadId = "FETCH";
         }
         //      C# -> List<AppItemWithCascadingImpact>? CascadedItems
         // GraphQL -> cascadedItems: [AppItemWithCascadingImpact!]! (type)

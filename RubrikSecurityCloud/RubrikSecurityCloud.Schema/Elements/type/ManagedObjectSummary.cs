@@ -40,10 +40,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("slaDomainName")]
         public System.String? SlaDomainName { get; set; }
 
-        //      C# -> List<DateTime>? SnapshotsAt
-        // GraphQL -> snapshotsAt: [DateTime!]! (scalar)
-        [JsonProperty("snapshotsAt")]
-        public List<DateTime>? SnapshotsAt { get; set; }
+        //      C# -> List<SnapshotDetails>? SnapshotsDetails
+        // GraphQL -> snapshotsDetails: [SnapshotDetails!]! (type)
+        [JsonProperty("snapshotsDetails")]
+        public List<SnapshotDetails>? SnapshotsDetails { get; set; }
 
 
         #endregion
@@ -59,7 +59,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Id = null,
         System.String? Name = null,
         System.String? SlaDomainName = null,
-        List<DateTime>? SnapshotsAt = null
+        List<SnapshotDetails>? SnapshotsDetails = null
     ) 
     {
         if ( ObjectType != null ) {
@@ -74,8 +74,8 @@ namespace RubrikSecurityCloud.Types
         if ( SlaDomainName != null ) {
             this.SlaDomainName = SlaDomainName;
         }
-        if ( SnapshotsAt != null ) {
-            this.SnapshotsAt = SnapshotsAt;
+        if ( SnapshotsDetails != null ) {
+            this.SnapshotsDetails = SnapshotsDetails;
         }
         return this;
     }
@@ -107,10 +107,13 @@ namespace RubrikSecurityCloud.Types
         if (this.SlaDomainName != null) {
             s += ind + "slaDomainName\n" ;
         }
-        //      C# -> List<DateTime>? SnapshotsAt
-        // GraphQL -> snapshotsAt: [DateTime!]! (scalar)
-        if (this.SnapshotsAt != null) {
-            s += ind + "snapshotsAt\n" ;
+        //      C# -> List<SnapshotDetails>? SnapshotsDetails
+        // GraphQL -> snapshotsDetails: [SnapshotDetails!]! (type)
+        if (this.SnapshotsDetails != null) {
+            var fspec = this.SnapshotsDetails.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "snapshotsDetails {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -144,11 +147,12 @@ namespace RubrikSecurityCloud.Types
         {
             this.SlaDomainName = "FETCH";
         }
-        //      C# -> List<DateTime>? SnapshotsAt
-        // GraphQL -> snapshotsAt: [DateTime!]! (scalar)
-        if (this.SnapshotsAt == null && Exploration.Includes(parent + ".snapshotsAt", true))
+        //      C# -> List<SnapshotDetails>? SnapshotsDetails
+        // GraphQL -> snapshotsDetails: [SnapshotDetails!]! (type)
+        if (this.SnapshotsDetails == null && Exploration.Includes(parent + ".snapshotsDetails"))
         {
-            this.SnapshotsAt = new List<DateTime>();
+            this.SnapshotsDetails = new List<SnapshotDetails>();
+            this.SnapshotsDetails.ApplyExploratoryFieldSpec(parent + ".snapshotsDetails");
         }
     }
 

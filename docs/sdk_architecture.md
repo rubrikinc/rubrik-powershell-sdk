@@ -6,11 +6,11 @@ The SDK is internally composed of two layers:
   it is a GraphQL client that handles the
   communication with the RSC GraphQL API, and
   provide:
-  - the core cmdlets
-  - the operation cmdlets
-  and mutations.
+    - the core cmdlets
+    - the operation cmdlets
+    and mutations.
 - __SDK-Extensions__ is the upper layer. It provides:
-  - the wrapper cmdlets
+    - the wrapper cmdlets
 
 Note that distinction is not visible to the user,
 cmdlets and types from both layers are exposed
@@ -43,21 +43,21 @@ Example: Query-RscCluster command
 ### Working with Inputs
 
 - Inputs: Arguments and Fields
-  - Direct match with GraphQL:
-    - Operation = GQL Operation,
-    - Arguments = Arguments to the GQL Operation,
-    - Fields = Fields in the response.
-- Using -GetInputs switch
-  - Example: `Query-RscCluster -List -GetInputs` returns
-    an object with three fields: Arg, Field, and Op
+    - Direct match with GraphQL:
+        - Operation = GQL Operation,
+        - Arguments = Arguments to the GQL Operation,
+        - Fields = Fields in the response.
+- Using -GetInput switch
+    - Example: `Query-RscCluster -List -GetInput` returns
+      an object with three fields: Arg, Field, and Op
 - Modifying inputs
-  - Typically, you don't set `Op` since it's already
-    set to the operation you're calling.
-  - Set the value of `Arg` and `Field` and then call the query
+    - Typically, you don't set `Op` since it's already
+      set to the operation you're calling.
+    - Set the value of `Arg` and `Field` and then call the query
 - Workflow: Define inputs using variables ahead of calling the query
-  - Call -GetInputs
-  - Modify the inputs
-  - Call the query
+    - Call -GetInput
+    - Modify the inputs
+    - Call the query
 
 ## SDK-Extensions
 
@@ -69,7 +69,7 @@ Example: Query-RscCluster command
 ### Creating an Extension
 
 - Connect to RSC if needed
-- Get inputs using -GetInputs
+- Get inputs using -GetInput
 - Modify inputs as required
 - Call the appropriate `Query-Rsc*` or `Mutate-Rsc*` cmdlet
 

@@ -4,7 +4,7 @@ JIRA project.
 - naturalId: System.String
 - key: System.String
   - The project key.
-- lead: JiraUser
+- lead: AtlassianUser
   - The project lead.
 - typeKey: JiraProjectTypeKey
   - The type of project.

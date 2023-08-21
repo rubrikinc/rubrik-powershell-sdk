@@ -69,6 +69,7 @@ Feature flag names.
 - SAP_HANA_REPLICATION_DOWNLOAD_ENABLED - Determines whether downloads from replicated clusters is enabled for SAP HANA.
 - O365_CONTACTS_ENABLED - Determines whether O365 Exchange Contacts is enabled.
 - GLOBAL_SLA_AUDIT_REPORT_ENABLED - Determines if Global SLA Audit Report feature is enabled.
+- SA_ORG_MANAGEMENT_ENABLED - Determines whether Service Account Management is enabled for tenant organizations.
 - HYPERV_MASS_RECOVERY_ENABLED - Specifies whether mass recovery is enabled for Hyper-V virtual machines.
 - DATA_DISCOVERY_OPTIMIZED_MANAGEMENT_PAGE_ENABLED - Determines whether the Data Discovery Optimized Management Page is enabled.
 - NAS_INVENTORY_ENABLED - Enables the features for Nas Inventory.
@@ -87,7 +88,7 @@ Feature flag names.
 - CassandraBetaEnabled
 - DASHBOARD_SWITCHER_ENABLED - Enables the dashboard switcher in the global header navbar.
 - THREAT_HUNT_RESULTS_CSV_DOWNLOAD_ENABLED - Specifies whether CSV download is enabled for threat hunt results.
-- JIRA_ENABLED - Determines if Jira is enabled in the SaaS expansion room.
+- JIRA_ENABLED - Determines whether Jira beta is enabled in the SaaS apps room.
 - DOWNLOAD_REPLICATED_SNAPSHOT_ENABLED - Determine whether download replicated snapshot feature is enabled.
 - MssqlGAEnabled
 - O365CalendarEnabled
@@ -154,6 +155,7 @@ Feature flag names.
 - CAPACITY_OVERTIME_REPORT_ENABLED - Determines whether the Capacity Overtime Report is enabled.
 - AWS_SHARED_EXOCOMPUTE_ENABLED - Determines whether AWS shared Exocompute settings are enabled.
 - AppFlowsGAEnabled
+- JIRA_GA_ENABLED - Determines whether Jira GA is enabled in the SaaS apps room.
 - MULTITENANCY_TENANT_QUOTAS_ENABLED - Specifies whether tenant organization storage quotas are enabled for multitenant organizations.
 - LambdaEnabled
 - NUTANIX_BULK_TAKE_ON_DEMAND_SNAPSHOT_ENABLED - Enables Nutanix bulk on demand snapshots in backup flows.
@@ -246,6 +248,7 @@ Feature flag names.
 - THREAT_HUNT_ENABLED - Determines whether threat hunt views are enabled.
 - NEW_THEMES_MIXED_MODE_ENABLED
 - OracleHierarchyEnabled
+- THREAT_MONITORING_ENTITLED_ENABLED - Specifies if the account is entitled to the Threat Monitoring feature.
 - UserAwarenessV2Enabled
 - ARCHIVAL_LOCATION_DETAIL_ENABLED - Determines whether archival location detail page is enabled.
 - CloudNativeAWSEnabled

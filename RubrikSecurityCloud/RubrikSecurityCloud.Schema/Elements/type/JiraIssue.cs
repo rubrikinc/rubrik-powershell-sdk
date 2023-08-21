@@ -20,15 +20,15 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? AppItemTypeToken
+        // GraphQL -> appItemTypeToken: String! (scalar)
+        [JsonProperty("appItemTypeToken")]
+        public System.String? AppItemTypeToken { get; set; }
+
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
         [JsonProperty("isRelic")]
         public System.Boolean? IsRelic { get; set; }
-
-        //      C# -> System.String? JiraProjectId
-        // GraphQL -> jiraProjectId: String! (scalar)
-        [JsonProperty("jiraProjectId")]
-        public System.String? JiraProjectId { get; set; }
 
         //      C# -> System.String? Key
         // GraphQL -> key: String! (scalar)
@@ -40,18 +40,23 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("naturalId")]
         public System.String? NaturalId { get; set; }
 
+        //      C# -> System.String? ProjectId
+        // GraphQL -> projectId: String! (scalar)
+        [JsonProperty("projectId")]
+        public System.String? ProjectId { get; set; }
+
         //      C# -> System.String? Summary
         // GraphQL -> summary: String! (scalar)
         [JsonProperty("summary")]
         public System.String? Summary { get; set; }
 
-        //      C# -> JiraUser? Assignee
-        // GraphQL -> assignee: JiraUser (type)
+        //      C# -> AtlassianUser? Assignee
+        // GraphQL -> assignee: AtlassianUser (type)
         [JsonProperty("assignee")]
-        public JiraUser? Assignee { get; set; }
+        public AtlassianUser? Assignee { get; set; }
 
         //      C# -> JiraIssueType? IssueType
-        // GraphQL -> issueType: JiraIssueType! (type)
+        // GraphQL -> issueType: JiraIssueType (type)
         [JsonProperty("issueType")]
         public JiraIssueType? IssueType { get; set; }
 
@@ -65,26 +70,30 @@ namespace RubrikSecurityCloud.Types
     }
 
     public JiraIssue Set(
+        System.String? AppItemTypeToken = null,
         System.Boolean? IsRelic = null,
-        System.String? JiraProjectId = null,
         System.String? Key = null,
         System.String? NaturalId = null,
+        System.String? ProjectId = null,
         System.String? Summary = null,
-        JiraUser? Assignee = null,
+        AtlassianUser? Assignee = null,
         JiraIssueType? IssueType = null
     ) 
     {
+        if ( AppItemTypeToken != null ) {
+            this.AppItemTypeToken = AppItemTypeToken;
+        }
         if ( IsRelic != null ) {
             this.IsRelic = IsRelic;
-        }
-        if ( JiraProjectId != null ) {
-            this.JiraProjectId = JiraProjectId;
         }
         if ( Key != null ) {
             this.Key = Key;
         }
         if ( NaturalId != null ) {
             this.NaturalId = NaturalId;
+        }
+        if ( ProjectId != null ) {
+            this.ProjectId = ProjectId;
         }
         if ( Summary != null ) {
             this.Summary = Summary;
@@ -105,15 +114,15 @@ namespace RubrikSecurityCloud.Types
     {
         string ind = new string(' ', indent*2);
         string s = "";
+        //      C# -> System.String? AppItemTypeToken
+        // GraphQL -> appItemTypeToken: String! (scalar)
+        if (this.AppItemTypeToken != null) {
+            s += ind + "appItemTypeToken\n" ;
+        }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
         if (this.IsRelic != null) {
             s += ind + "isRelic\n" ;
-        }
-        //      C# -> System.String? JiraProjectId
-        // GraphQL -> jiraProjectId: String! (scalar)
-        if (this.JiraProjectId != null) {
-            s += ind + "jiraProjectId\n" ;
         }
         //      C# -> System.String? Key
         // GraphQL -> key: String! (scalar)
@@ -125,13 +134,18 @@ namespace RubrikSecurityCloud.Types
         if (this.NaturalId != null) {
             s += ind + "naturalId\n" ;
         }
+        //      C# -> System.String? ProjectId
+        // GraphQL -> projectId: String! (scalar)
+        if (this.ProjectId != null) {
+            s += ind + "projectId\n" ;
+        }
         //      C# -> System.String? Summary
         // GraphQL -> summary: String! (scalar)
         if (this.Summary != null) {
             s += ind + "summary\n" ;
         }
-        //      C# -> JiraUser? Assignee
-        // GraphQL -> assignee: JiraUser (type)
+        //      C# -> AtlassianUser? Assignee
+        // GraphQL -> assignee: AtlassianUser (type)
         if (this.Assignee != null) {
             var fspec = this.Assignee.AsFieldSpec(indent+1);
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
@@ -139,7 +153,7 @@ namespace RubrikSecurityCloud.Types
             }
         }
         //      C# -> JiraIssueType? IssueType
-        // GraphQL -> issueType: JiraIssueType! (type)
+        // GraphQL -> issueType: JiraIssueType (type)
         if (this.IssueType != null) {
             var fspec = this.IssueType.AsFieldSpec(indent+1);
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
@@ -154,17 +168,17 @@ namespace RubrikSecurityCloud.Types
     //[JsonIgnore]
     public override void ApplyExploratoryFieldSpec(String parent = "")
     {
+        //      C# -> System.String? AppItemTypeToken
+        // GraphQL -> appItemTypeToken: String! (scalar)
+        if (this.AppItemTypeToken == null && Exploration.Includes(parent + ".appItemTypeToken", true))
+        {
+            this.AppItemTypeToken = "FETCH";
+        }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
         if (this.IsRelic == null && Exploration.Includes(parent + ".isRelic", true))
         {
             this.IsRelic = true;
-        }
-        //      C# -> System.String? JiraProjectId
-        // GraphQL -> jiraProjectId: String! (scalar)
-        if (this.JiraProjectId == null && Exploration.Includes(parent + ".jiraProjectId", true))
-        {
-            this.JiraProjectId = "FETCH";
         }
         //      C# -> System.String? Key
         // GraphQL -> key: String! (scalar)
@@ -178,21 +192,27 @@ namespace RubrikSecurityCloud.Types
         {
             this.NaturalId = "FETCH";
         }
+        //      C# -> System.String? ProjectId
+        // GraphQL -> projectId: String! (scalar)
+        if (this.ProjectId == null && Exploration.Includes(parent + ".projectId", true))
+        {
+            this.ProjectId = "FETCH";
+        }
         //      C# -> System.String? Summary
         // GraphQL -> summary: String! (scalar)
         if (this.Summary == null && Exploration.Includes(parent + ".summary", true))
         {
             this.Summary = "FETCH";
         }
-        //      C# -> JiraUser? Assignee
-        // GraphQL -> assignee: JiraUser (type)
+        //      C# -> AtlassianUser? Assignee
+        // GraphQL -> assignee: AtlassianUser (type)
         if (this.Assignee == null && Exploration.Includes(parent + ".assignee"))
         {
-            this.Assignee = new JiraUser();
+            this.Assignee = new AtlassianUser();
             this.Assignee.ApplyExploratoryFieldSpec(parent + ".assignee");
         }
         //      C# -> JiraIssueType? IssueType
-        // GraphQL -> issueType: JiraIssueType! (type)
+        // GraphQL -> issueType: JiraIssueType (type)
         if (this.IssueType == null && Exploration.Includes(parent + ".issueType"))
         {
             this.IssueType = new JiraIssueType();

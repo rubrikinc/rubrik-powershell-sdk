@@ -21,4 +21,4 @@ Supported in v5.2+
   - Required. Supported in v5.2+
   Managed ID of the object.
 - slaAssignment: SlaAssignment
-  - 
+  - Specifies the method used to assign an SLA Domain to the workload. Possible values are Derived, Direct, and Unassigned.

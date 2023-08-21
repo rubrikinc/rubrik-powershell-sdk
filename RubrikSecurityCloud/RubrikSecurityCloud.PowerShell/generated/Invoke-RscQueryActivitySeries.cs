@@ -18,6 +18,21 @@ using RubrikSecurityCloud.PowerShell.Private;
 
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
+    /// <summary>
+    /// Activity series queries
+    /// </summary>
+    /// <description>
+    /// Invoke-RscQueryActivitySeries is a master cmdlet for ActivitySeries work that can invoke any of the following subcommands: ActivitySeries, List, GroupByList.
+    /// </description>
+    /// <example>
+    /// <code>Invoke-RscQueryActivitySeries -ActivitySeries [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryActivitySeries -List [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryActivitySeries -GroupByList [-Arg ..] [-Field ..]</code>
+    /// </example>
     [Cmdlet(
         "Invoke",
         "RscQueryActivitySeries",
@@ -143,24 +158,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "ActivitySeriesInput!"),
             };
-            ActivitySeries? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (ActivitySeries)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (ActivitySeries)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.ActivitySeries(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryActivitySeries",
                 "($input: ActivitySeriesInput!)",
-                fieldSpecDoc,
                 "ActivitySeries"
-            );
+                );
+            ActivitySeries? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (ActivitySeries)this.Field;
+            }
+            string fieldSpecDoc = Query.ActivitySeries(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -184,24 +195,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("sortBy", "ActivitySeriesSortField"),
                 Tuple.Create("filters", "ActivitySeriesFilter"),
             };
-            ActivitySeriesConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (ActivitySeriesConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (ActivitySeriesConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.ActivitySeriesConnection(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryActivitySeriesConnection",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: ActivitySeriesSortField,$filters: ActivitySeriesFilter)",
-                fieldSpecDoc,
                 "ActivitySeriesConnection"
-            );
+                );
+            ActivitySeriesConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (ActivitySeriesConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.ActivitySeriesConnection(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -225,24 +232,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("filters", "ActivitySeriesFilterInput"),
                 Tuple.Create("timezoneOffset", "Float"),
             };
-            ActivitySeriesGroupByConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (ActivitySeriesGroupByConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (ActivitySeriesGroupByConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.ActivitySeriesGroupByConnection(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryActivitySeriesGroupByConnection",
                 "($first: Int,$after: String,$last: Int,$before: String,$groupBy: ActivitySeriesGroupByEnum!,$filters: ActivitySeriesFilterInput,$timezoneOffset: Float)",
-                fieldSpecDoc,
                 "ActivitySeriesGroupByConnection"
-            );
+                );
+            ActivitySeriesGroupByConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (ActivitySeriesGroupByConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.ActivitySeriesGroupByConnection(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
 

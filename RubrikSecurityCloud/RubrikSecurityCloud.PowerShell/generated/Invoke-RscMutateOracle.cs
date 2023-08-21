@@ -18,6 +18,66 @@ using RubrikSecurityCloud.PowerShell.Private;
 
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
+    /// <summary>
+    /// Oracle mutations
+    /// </summary>
+    /// <description>
+    /// Invoke-RscMutateOracle is a master cmdlet for Oracle work that can invoke any of the following subcommands: BulkUpdateHosts, RefreshDatabase, UpdateDataGuardGroup, DeleteAllDatabaseSnapshots, TakeOnDemandDatabaseSnapshot, TakeOnDemandLogSnapshot, BulkUpdateRacs, ExportTablespace, ValidateAcoFile, ValidateDatabaseBackups, BulkUpdateDatabases, InstantRecoverSnapshot, MountDatabase, ExportDatabase, CreatePdbRestore, DownloadDatabaseSnapshot, DeleteMount, RestoreLogs.
+    /// </description>
+    /// <example>
+    /// <code>Invoke-RscMutateOracle -BulkUpdateHosts [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateOracle -RefreshDatabase [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateOracle -UpdateDataGuardGroup [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateOracle -DeleteAllDatabaseSnapshots [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateOracle -TakeOnDemandDatabaseSnapshot [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateOracle -TakeOnDemandLogSnapshot [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateOracle -BulkUpdateRacs [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateOracle -ExportTablespace [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateOracle -ValidateAcoFile [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateOracle -ValidateDatabaseBackups [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateOracle -BulkUpdateDatabases [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateOracle -InstantRecoverSnapshot [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateOracle -MountDatabase [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateOracle -ExportDatabase [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateOracle -CreatePdbRestore [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateOracle -DownloadDatabaseSnapshot [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateOracle -DeleteMount [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateOracle -RestoreLogs [-Arg ..] [-Field ..]</code>
+    /// </example>
     [Cmdlet(
         "Invoke",
         "RscMutateOracle",
@@ -648,24 +708,20 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "BulkUpdateOracleHostsInput!"),
             };
-            BulkUpdateOracleHostsReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (BulkUpdateOracleHostsReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (BulkUpdateOracleHostsReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.BulkUpdateOracleHosts(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationBulkUpdateOracleHosts",
                 "($input: BulkUpdateOracleHostsInput!)",
-                fieldSpecDoc,
                 "BulkUpdateOracleHostsReply"
-            );
+                );
+            BulkUpdateOracleHostsReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (BulkUpdateOracleHostsReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.BulkUpdateOracleHosts(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -675,24 +731,20 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RefreshOracleDatabaseInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.RefreshOracleDatabase(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationRefreshOracleDatabase",
                 "($input: RefreshOracleDatabaseInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.RefreshOracleDatabase(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -702,24 +754,20 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpdateOracleDataGuardGroupInput!"),
             };
-            OracleDbDetail? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (OracleDbDetail)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (OracleDbDetail)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.UpdateOracleDataGuardGroup(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationUpdateOracleDataGuardGroup",
                 "($input: UpdateOracleDataGuardGroupInput!)",
-                fieldSpecDoc,
                 "OracleDbDetail"
-            );
+                );
+            OracleDbDetail? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (OracleDbDetail)this.Field;
+            }
+            string fieldSpecDoc = Mutation.UpdateOracleDataGuardGroup(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -729,24 +777,20 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteAllOracleDatabaseSnapshotsInput!"),
             };
-            System.String? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (System.String)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (System.String)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.DeleteAllOracleDatabaseSnapshots(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationDeleteAllOracleDatabaseSnapshots",
                 "($input: DeleteAllOracleDatabaseSnapshotsInput!)",
-                fieldSpecDoc,
                 "System.String"
-            );
+                );
+            System.String? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (System.String)this.Field;
+            }
+            string fieldSpecDoc = Mutation.DeleteAllOracleDatabaseSnapshots(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -756,24 +800,20 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "TakeOnDemandOracleDatabaseSnapshotInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.TakeOnDemandOracleDatabaseSnapshot(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationTakeOnDemandOracleDatabaseSnapshot",
                 "($input: TakeOnDemandOracleDatabaseSnapshotInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.TakeOnDemandOracleDatabaseSnapshot(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -783,24 +823,20 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "TakeOnDemandOracleLogSnapshotInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.TakeOnDemandOracleLogSnapshot(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationTakeOnDemandOracleLogSnapshot",
                 "($input: TakeOnDemandOracleLogSnapshotInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.TakeOnDemandOracleLogSnapshot(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -810,24 +846,20 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "BulkUpdateOracleRacsInput!"),
             };
-            BulkUpdateOracleRacsReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (BulkUpdateOracleRacsReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (BulkUpdateOracleRacsReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.BulkUpdateOracleRacs(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationBulkUpdateOracleRacs",
                 "($input: BulkUpdateOracleRacsInput!)",
-                fieldSpecDoc,
                 "BulkUpdateOracleRacsReply"
-            );
+                );
+            BulkUpdateOracleRacsReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (BulkUpdateOracleRacsReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.BulkUpdateOracleRacs(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -837,24 +869,20 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "ExportOracleTablespaceInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.ExportOracleTablespace(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationExportOracleTablespace",
                 "($input: ExportOracleTablespaceInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.ExportOracleTablespace(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -864,24 +892,20 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "ValidateOracleAcoFileInput!"),
             };
-            ValidateOracleAcoFileReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (ValidateOracleAcoFileReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (ValidateOracleAcoFileReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.ValidateOracleAcoFile(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationValidateOracleAcoFile",
                 "($input: ValidateOracleAcoFileInput!)",
-                fieldSpecDoc,
                 "ValidateOracleAcoFileReply"
-            );
+                );
+            ValidateOracleAcoFileReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (ValidateOracleAcoFileReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.ValidateOracleAcoFile(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -891,24 +915,20 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "ValidateOracleDatabaseBackupsInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.ValidateOracleDatabaseBackups(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationValidateOracleDatabaseBackups",
                 "($input: ValidateOracleDatabaseBackupsInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.ValidateOracleDatabaseBackups(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -918,24 +938,20 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "BulkUpdateOracleDatabasesInput!"),
             };
-            BulkUpdateOracleDatabasesReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (BulkUpdateOracleDatabasesReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (BulkUpdateOracleDatabasesReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.BulkUpdateOracleDatabases(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationBulkUpdateOracleDatabases",
                 "($input: BulkUpdateOracleDatabasesInput!)",
-                fieldSpecDoc,
                 "BulkUpdateOracleDatabasesReply"
-            );
+                );
+            BulkUpdateOracleDatabasesReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (BulkUpdateOracleDatabasesReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.BulkUpdateOracleDatabases(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -945,24 +961,20 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "InstantRecoverOracleSnapshotInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.InstantRecoverOracleSnapshot(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationInstantRecoverOracleSnapshot",
                 "($input: InstantRecoverOracleSnapshotInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.InstantRecoverOracleSnapshot(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -972,24 +984,20 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "MountOracleDatabaseInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.MountOracleDatabase(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationMountOracleDatabase",
                 "($input: MountOracleDatabaseInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.MountOracleDatabase(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -999,24 +1007,20 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "ExportOracleDatabaseInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.ExportOracleDatabase(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationExportOracleDatabase",
                 "($input: ExportOracleDatabaseInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.ExportOracleDatabase(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1026,24 +1030,20 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CreateOraclePdbRestoreInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.CreateOraclePdbRestore(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationCreateOraclePdbRestore",
                 "($input: CreateOraclePdbRestoreInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.CreateOraclePdbRestore(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1053,24 +1053,20 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DownloadOracleDatabaseSnapshotInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.DownloadOracleDatabaseSnapshot(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationDownloadOracleDatabaseSnapshot",
                 "($input: DownloadOracleDatabaseSnapshotInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.DownloadOracleDatabaseSnapshot(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1080,24 +1076,20 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteOracleMountInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.DeleteOracleMount(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationDeleteOracleMount",
                 "($input: DeleteOracleMountInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.DeleteOracleMount(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1107,24 +1099,20 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RestoreOracleLogsInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.RestoreOracleLogs(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationRestoreOracleLogs",
                 "($input: RestoreOracleLogsInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.RestoreOracleLogs(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
 

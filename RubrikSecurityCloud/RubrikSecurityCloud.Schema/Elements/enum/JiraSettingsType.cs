@@ -15,9 +15,6 @@ namespace RubrikSecurityCloud.Types
 {
     public enum JiraSettingsType
     {
-        [EnumMember(Value = "APPLICATION_ROLE")]
-        APPLICATION_ROLE,
-
         [EnumMember(Value = "CUSTOM_FIELDS")]
         CUSTOM_FIELDS,
 
@@ -32,9 +29,6 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "FILTERS")]
         FILTERS,
-
-        [EnumMember(Value = "GLOBAL_PERMISSIONS")]
-        GLOBAL_PERMISSIONS,
 
         [EnumMember(Value = "GROUPS")]
         GROUPS,

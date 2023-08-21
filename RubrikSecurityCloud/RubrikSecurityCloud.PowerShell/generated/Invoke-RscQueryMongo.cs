@@ -18,6 +18,60 @@ using RubrikSecurityCloud.PowerShell.Private;
 
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
+    /// <summary>
+    /// Mongo queries
+    /// </summary>
+    /// <description>
+    /// Invoke-RscQueryMongo is a master cmdlet for Mongo work that can invoke any of the following subcommands: Sources, Databases, Collections, Source, Database, Collection, RecoverableRanges, BulkRecoverableRanges, DbSources, DbDatabases, DbCollections, DbSource, DbDatabase, DbCollection, DbCollectionRecoverableRange, DbBulkRecoverableRange.
+    /// </description>
+    /// <example>
+    /// <code>Invoke-RscQueryMongo -Sources [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryMongo -Databases [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryMongo -Collections [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryMongo -Source [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryMongo -Database [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryMongo -Collection [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryMongo -RecoverableRanges [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryMongo -BulkRecoverableRanges [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryMongo -DbSources [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryMongo -DbDatabases [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryMongo -DbCollections [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryMongo -DbSource [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryMongo -DbDatabase [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryMongo -DbCollection [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryMongo -DbCollectionRecoverableRange [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryMongo -DbBulkRecoverableRange [-Arg ..] [-Field ..]</code>
+    /// </example>
     [Cmdlet(
         "Invoke",
         "RscQueryMongo",
@@ -550,24 +604,20 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
             };
-            MongoSourceConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (MongoSourceConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (MongoSourceConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.MongoSources(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryMongoSources",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                fieldSpecDoc,
                 "MongoSourceConnection"
-            );
+                );
+            MongoSourceConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (MongoSourceConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.MongoSources(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -587,24 +637,20 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
             };
-            MongoDatabaseConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (MongoDatabaseConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (MongoDatabaseConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.MongoDatabases(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryMongoDatabases",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                fieldSpecDoc,
                 "MongoDatabaseConnection"
-            );
+                );
+            MongoDatabaseConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (MongoDatabaseConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.MongoDatabases(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -624,24 +670,20 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
             };
-            MongoCollectionConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (MongoCollectionConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (MongoCollectionConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.MongoCollections(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryMongoCollections",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                fieldSpecDoc,
                 "MongoCollectionConnection"
-            );
+                );
+            MongoCollectionConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (MongoCollectionConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.MongoCollections(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -651,24 +693,20 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            MongoSource? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (MongoSource)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (MongoSource)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.MongoSource(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryMongoSource",
                 "($fid: UUID!)",
-                fieldSpecDoc,
                 "MongoSource"
-            );
+                );
+            MongoSource? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (MongoSource)this.Field;
+            }
+            string fieldSpecDoc = Query.MongoSource(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -678,24 +716,20 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            MongoDatabase? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (MongoDatabase)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (MongoDatabase)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.MongoDatabase(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryMongoDatabase",
                 "($fid: UUID!)",
-                fieldSpecDoc,
                 "MongoDatabase"
-            );
+                );
+            MongoDatabase? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (MongoDatabase)this.Field;
+            }
+            string fieldSpecDoc = Query.MongoDatabase(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -705,24 +739,20 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            MongoCollection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (MongoCollection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (MongoCollection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.MongoCollection(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryMongoCollection",
                 "($fid: UUID!)",
-                fieldSpecDoc,
                 "MongoCollection"
-            );
+                );
+            MongoCollection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (MongoCollection)this.Field;
+            }
+            string fieldSpecDoc = Query.MongoCollection(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -732,24 +762,20 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RecoverableRangeInput!"),
             };
-            MongoRecoverableRanges? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (MongoRecoverableRanges)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (MongoRecoverableRanges)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.MongoRecoverableRanges(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryMongoRecoverableRanges",
                 "($input: RecoverableRangeInput!)",
-                fieldSpecDoc,
                 "MongoRecoverableRanges"
-            );
+                );
+            MongoRecoverableRanges? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (MongoRecoverableRanges)this.Field;
+            }
+            string fieldSpecDoc = Query.MongoRecoverableRanges(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -759,24 +785,20 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RecoverableRangeInput!"),
             };
-            MongoRecoverableRanges? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (MongoRecoverableRanges)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (MongoRecoverableRanges)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.MongoBulkRecoverableRanges(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryMongoBulkRecoverableRanges",
                 "($input: RecoverableRangeInput!)",
-                fieldSpecDoc,
                 "MongoRecoverableRanges"
-            );
+                );
+            MongoRecoverableRanges? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (MongoRecoverableRanges)this.Field;
+            }
+            string fieldSpecDoc = Query.MongoBulkRecoverableRanges(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -796,24 +818,20 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
             };
-            MongodbSourceConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (MongodbSourceConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (MongodbSourceConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.MongodbSources(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryMongodbSources",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                fieldSpecDoc,
                 "MongodbSourceConnection"
-            );
+                );
+            MongodbSourceConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (MongodbSourceConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.MongodbSources(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -833,24 +851,20 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
             };
-            MongodbDatabaseConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (MongodbDatabaseConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (MongodbDatabaseConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.MongodbDatabases(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryMongodbDatabases",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                fieldSpecDoc,
                 "MongodbDatabaseConnection"
-            );
+                );
+            MongodbDatabaseConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (MongodbDatabaseConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.MongodbDatabases(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -870,24 +884,20 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
             };
-            MongodbCollectionConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (MongodbCollectionConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (MongodbCollectionConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.MongodbCollections(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryMongodbCollections",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                fieldSpecDoc,
                 "MongodbCollectionConnection"
-            );
+                );
+            MongodbCollectionConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (MongodbCollectionConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.MongodbCollections(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -897,24 +907,20 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            MongodbSource? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (MongodbSource)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (MongodbSource)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.MongodbSource(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryMongodbSource",
                 "($fid: UUID!)",
-                fieldSpecDoc,
                 "MongodbSource"
-            );
+                );
+            MongodbSource? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (MongodbSource)this.Field;
+            }
+            string fieldSpecDoc = Query.MongodbSource(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -924,24 +930,20 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            MongodbDatabase? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (MongodbDatabase)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (MongodbDatabase)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.MongodbDatabase(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryMongodbDatabase",
                 "($fid: UUID!)",
-                fieldSpecDoc,
                 "MongodbDatabase"
-            );
+                );
+            MongodbDatabase? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (MongodbDatabase)this.Field;
+            }
+            string fieldSpecDoc = Query.MongodbDatabase(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -951,24 +953,20 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("fid", "UUID!"),
             };
-            MongodbCollection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (MongodbCollection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (MongodbCollection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.MongodbCollection(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryMongodbCollection",
                 "($fid: UUID!)",
-                fieldSpecDoc,
                 "MongodbCollection"
-            );
+                );
+            MongodbCollection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (MongodbCollection)this.Field;
+            }
+            string fieldSpecDoc = Query.MongodbCollection(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -978,24 +976,20 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "GetMosaicRecoverableRangeInput!"),
             };
-            GetMosaicRecoverableRangeResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (GetMosaicRecoverableRangeResponse)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (GetMosaicRecoverableRangeResponse)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.MongodbCollectionRecoverableRange(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryMongodbCollectionRecoverableRange",
                 "($input: GetMosaicRecoverableRangeInput!)",
-                fieldSpecDoc,
                 "GetMosaicRecoverableRangeResponse"
-            );
+                );
+            GetMosaicRecoverableRangeResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (GetMosaicRecoverableRangeResponse)this.Field;
+            }
+            string fieldSpecDoc = Query.MongodbCollectionRecoverableRange(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1005,24 +999,20 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "MosaicBulkRecoveryRangeInput!"),
             };
-            MosaicRecoveryRangeResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (MosaicRecoveryRangeResponse)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (MosaicRecoveryRangeResponse)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.MongodbBulkRecoverableRange(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryMongodbBulkRecoverableRange",
                 "($input: MosaicBulkRecoveryRangeInput!)",
-                fieldSpecDoc,
                 "MosaicRecoveryRangeResponse"
-            );
+                );
+            MosaicRecoveryRangeResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (MosaicRecoveryRangeResponse)this.Field;
+            }
+            string fieldSpecDoc = Query.MongodbBulkRecoverableRange(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
 

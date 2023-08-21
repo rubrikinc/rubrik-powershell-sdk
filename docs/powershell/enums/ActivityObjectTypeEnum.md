@@ -26,6 +26,7 @@ The list of object types for activities.
 - O365Group - Specifies that the activity object type is O365 Group.
 - ObjectProtection - Specifies that the activity object type is Object Protection.
 - NutanixVm - Specifies that the activity object type is Nutanix Virtual Machine.
+- REPLICATION_PAIR - Rubrik cluster replication pair.
 - ATLASSIAN_SITE - Specifies that the activity object type is Atlassian site.
 - MONGODB_SOURCE - Specifies that the activity object type is MongoDB source.
 - HypervServer - Specifies that the activity object type is HyperV Server.

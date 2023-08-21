@@ -18,6 +18,162 @@ using RubrikSecurityCloud.PowerShell.Private;
 
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
+    /// <summary>
+    /// AWS queries
+    /// </summary>
+    /// <description>
+    /// Invoke-RscQueryAws is a master cmdlet for Aws work that can invoke any of the following subcommands: NativeRoot, NativeAccount, NativeEc2Instance, NativeEbsVolume, NativeS3Bucket, NativeAccounts, NativeEc2InstancesByName, NativeEc2Instances, NativeEbsVolumesByName, NativeEbsVolumes, AllVpcsByRegion, AllVpcs, IsNativeEbsVolumeSnapshotRestorable, AllAvailabilityZonesByRegion, AllKmsEncryptionKeysByRegion, IsS3BucketNameAvailable, AllS3Buckets, AllS3BucketsDetails, NativeRdsInstance, NativeRdsInstances, NativeRdsPointInTimeRestoreWindow, RdsInstanceDetails, IsNativeRdsInstanceLaunchConfigurationValid, AllOptionGroupsByRegion, AllDbParameterGroupsByRegion, AllDbSubnetGroupsByRegion, ValidateNativeRdsInstanceNameForExport, ValidateNativeRdsClusterNameForExport, NativeRdsExportDefaults, AllEc2KeyPairsByRegion, AmiTypeForNativeArchivedSnapshotExport, AllRdsAuroraInstanceClasses, AllSupportedRdsDatabaseInstanceClasses, ComputeSettings, AllComputeSettings, AllCloudAccountsWithFeatures, AllCloudAccountsFeaturesWithExoConfigs, CloudAccountWithFeatures, CloudAccountListVpcs, CloudAccountListSubnets, CloudAccountListSecurityGroups, CloudAccountListKMSKeys, AllExocomputeConfigs, AllCloudAccountConfigs, TrustPolicy, AllPermissionPolicies, ArtifactsToDelete, AllRegions, AllCdmVersions, AllInstanceProfileNames.
+    /// </description>
+    /// <example>
+    /// <code>Invoke-RscQueryAws -NativeRoot [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAws -NativeAccount [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAws -NativeEc2Instance [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAws -NativeEbsVolume [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAws -NativeS3Bucket [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAws -NativeAccounts [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAws -NativeEc2InstancesByName [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAws -NativeEc2Instances [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAws -NativeEbsVolumesByName [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAws -NativeEbsVolumes [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAws -AllVpcsByRegion [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAws -AllVpcs [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAws -IsNativeEbsVolumeSnapshotRestorable [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAws -AllAvailabilityZonesByRegion [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAws -AllKmsEncryptionKeysByRegion [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAws -IsS3BucketNameAvailable [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAws -AllS3Buckets [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAws -AllS3BucketsDetails [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAws -NativeRdsInstance [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAws -NativeRdsInstances [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAws -NativeRdsPointInTimeRestoreWindow [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAws -RdsInstanceDetails [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAws -IsNativeRdsInstanceLaunchConfigurationValid [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAws -AllOptionGroupsByRegion [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAws -AllDbParameterGroupsByRegion [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAws -AllDbSubnetGroupsByRegion [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAws -ValidateNativeRdsInstanceNameForExport [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAws -ValidateNativeRdsClusterNameForExport [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAws -NativeRdsExportDefaults [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAws -AllEc2KeyPairsByRegion [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAws -AmiTypeForNativeArchivedSnapshotExport [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAws -AllRdsAuroraInstanceClasses [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAws -AllSupportedRdsDatabaseInstanceClasses [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAws -ComputeSettings [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAws -AllComputeSettings [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAws -AllCloudAccountsWithFeatures [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAws -AllCloudAccountsFeaturesWithExoConfigs [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAws -CloudAccountWithFeatures [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAws -CloudAccountListVpcs [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAws -CloudAccountListSubnets [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAws -CloudAccountListSecurityGroups [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAws -CloudAccountListKMSKeys [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAws -AllExocomputeConfigs [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAws -AllCloudAccountConfigs [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAws -TrustPolicy [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAws -AllPermissionPolicies [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAws -ArtifactsToDelete [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAws -AllRegions [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAws -AllCdmVersions [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAws -AllInstanceProfileNames [-Arg ..] [-Field ..]</code>
+    /// </example>
     [Cmdlet(
         "Invoke",
         "RscQueryAws",
@@ -1552,24 +1708,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         {
             Tuple<string, string>[] argDefs = {
             };
-            AwsNativeRoot? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AwsNativeRoot)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AwsNativeRoot)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AwsNativeRoot(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAwsNativeRoot",
                 "",
-                fieldSpecDoc,
                 "AwsNativeRoot"
-            );
+                );
+            AwsNativeRoot? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AwsNativeRoot)this.Field;
+            }
+            string fieldSpecDoc = Query.AwsNativeRoot(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1580,24 +1732,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("awsNativeAccountRubrikId", "UUID!"),
                 Tuple.Create("awsNativeProtectionFeature", "AwsNativeProtectionFeature!"),
             };
-            AwsNativeAccount? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AwsNativeAccount)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AwsNativeAccount)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AwsNativeAccount(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAwsNativeAccount",
                 "($awsNativeAccountRubrikId: UUID!,$awsNativeProtectionFeature: AwsNativeProtectionFeature!)",
-                fieldSpecDoc,
                 "AwsNativeAccount"
-            );
+                );
+            AwsNativeAccount? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AwsNativeAccount)this.Field;
+            }
+            string fieldSpecDoc = Query.AwsNativeAccount(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1607,24 +1755,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("ec2InstanceRubrikId", "UUID!"),
             };
-            AwsNativeEc2Instance? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AwsNativeEc2Instance)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AwsNativeEc2Instance)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AwsNativeEc2Instance(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAwsNativeEc2Instance",
                 "($ec2InstanceRubrikId: UUID!)",
-                fieldSpecDoc,
                 "AwsNativeEc2Instance"
-            );
+                );
+            AwsNativeEc2Instance? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AwsNativeEc2Instance)this.Field;
+            }
+            string fieldSpecDoc = Query.AwsNativeEc2Instance(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1634,24 +1778,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("ebsVolumeRubrikId", "UUID!"),
             };
-            AwsNativeEbsVolume? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AwsNativeEbsVolume)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AwsNativeEbsVolume)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AwsNativeEbsVolume(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAwsNativeEbsVolume",
                 "($ebsVolumeRubrikId: UUID!)",
-                fieldSpecDoc,
                 "AwsNativeEbsVolume"
-            );
+                );
+            AwsNativeEbsVolume? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AwsNativeEbsVolume)this.Field;
+            }
+            string fieldSpecDoc = Query.AwsNativeEbsVolume(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1661,24 +1801,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("s3BucketRubrikId", "UUID!"),
             };
-            AwsNativeS3Bucket? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AwsNativeS3Bucket)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AwsNativeS3Bucket)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AwsNativeS3Bucket(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAwsNativeS3Bucket",
                 "($s3BucketRubrikId: UUID!)",
-                fieldSpecDoc,
                 "AwsNativeS3Bucket"
-            );
+                );
+            AwsNativeS3Bucket? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AwsNativeS3Bucket)this.Field;
+            }
+            string fieldSpecDoc = Query.AwsNativeS3Bucket(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1706,24 +1842,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("authorizedOperationFilter", "Operation"),
                 Tuple.Create("awsNativeProtectionFeature", "AwsNativeProtectionFeature!"),
             };
-            AwsNativeAccountConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AwsNativeAccountConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AwsNativeAccountConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AwsNativeAccounts(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAwsNativeAccounts",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AwsNativeAccountSortFields,$sortOrder: SortOrder,$accountFilters: AwsNativeAccountFilters,$authorizedOperationFilter: Operation,$awsNativeProtectionFeature: AwsNativeProtectionFeature!)",
-                fieldSpecDoc,
                 "AwsNativeAccountConnection"
-            );
+                );
+            AwsNativeAccountConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AwsNativeAccountConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.AwsNativeAccounts(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1747,24 +1879,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("ec2InstanceName", "String!"),
             };
-            AwsNativeEc2InstanceConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AwsNativeEc2InstanceConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AwsNativeEc2InstanceConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AwsNativeEc2InstancesByName(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAwsNativeEc2InstancesByName",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AwsNativeEc2InstanceSortFields,$sortOrder: SortOrder,$ec2InstanceName: String!)",
-                fieldSpecDoc,
                 "AwsNativeEc2InstanceConnection"
-            );
+                );
+            AwsNativeEc2InstanceConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AwsNativeEc2InstanceConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.AwsNativeEc2InstancesByName(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1790,24 +1918,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("descendantTypeFilter", "[HierarchyObjectTypeEnum!]"),
                 Tuple.Create("ec2InstanceFilters", "AwsNativeEc2InstanceFilters"),
             };
-            AwsNativeEc2InstanceConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AwsNativeEc2InstanceConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AwsNativeEc2InstanceConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AwsNativeEc2Instances(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAwsNativeEc2Instances",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AwsNativeEc2InstanceSortFields,$sortOrder: SortOrder,$descendantTypeFilter: [HierarchyObjectTypeEnum!],$ec2InstanceFilters: AwsNativeEc2InstanceFilters)",
-                fieldSpecDoc,
                 "AwsNativeEc2InstanceConnection"
-            );
+                );
+            AwsNativeEc2InstanceConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AwsNativeEc2InstanceConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.AwsNativeEc2Instances(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1831,24 +1955,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("ebsVolumeName", "String!"),
             };
-            AwsNativeEbsVolumeConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AwsNativeEbsVolumeConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AwsNativeEbsVolumeConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AwsNativeEbsVolumesByName(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAwsNativeEbsVolumesByName",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AwsNativeEbsVolumeSortFields,$sortOrder: SortOrder,$ebsVolumeName: String!)",
-                fieldSpecDoc,
                 "AwsNativeEbsVolumeConnection"
-            );
+                );
+            AwsNativeEbsVolumeConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AwsNativeEbsVolumeConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.AwsNativeEbsVolumesByName(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1872,24 +1992,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("ebsVolumeFilters", "AwsNativeEbsVolumeFilters"),
             };
-            AwsNativeEbsVolumeConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AwsNativeEbsVolumeConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AwsNativeEbsVolumeConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AwsNativeEbsVolumes(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAwsNativeEbsVolumes",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AwsNativeEbsVolumeSortFields,$sortOrder: SortOrder,$ebsVolumeFilters: AwsNativeEbsVolumeFilters)",
-                fieldSpecDoc,
                 "AwsNativeEbsVolumeConnection"
-            );
+                );
+            AwsNativeEbsVolumeConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AwsNativeEbsVolumeConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.AwsNativeEbsVolumes(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1900,24 +2016,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("awsAccountRubrikId", "UUID!"),
                 Tuple.Create("region", "AwsNativeRegion!"),
             };
-            List<AwsVpc>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (List<AwsVpc>)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (List<AwsVpc>)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AllVpcsByRegionFromAws(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAllVpcsByRegionFromAws",
                 "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!)",
-                fieldSpecDoc,
                 "List<AwsVpc>"
-            );
+                );
+            List<AwsVpc>? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (List<AwsVpc>)this.Field;
+            }
+            string fieldSpecDoc = Query.AllVpcsByRegionFromAws(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1927,24 +2039,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("awsAccountRubrikId", "UUID"),
             };
-            List<AwsVpc>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (List<AwsVpc>)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (List<AwsVpc>)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AllVpcsFromAws(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAllVpcsFromAws",
                 "($awsAccountRubrikId: UUID)",
-                fieldSpecDoc,
                 "List<AwsVpc>"
-            );
+                );
+            List<AwsVpc>? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (List<AwsVpc>)this.Field;
+            }
+            string fieldSpecDoc = Query.AllVpcsFromAws(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1954,24 +2062,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("snapshotId", "String!"),
             };
-            IsVolumeSnapshotRestorableReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (IsVolumeSnapshotRestorableReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (IsVolumeSnapshotRestorableReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.IsAwsNativeEbsVolumeSnapshotRestorable(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryIsAwsNativeEbsVolumeSnapshotRestorable",
                 "($snapshotId: String!)",
-                fieldSpecDoc,
                 "IsVolumeSnapshotRestorableReply"
-            );
+                );
+            IsVolumeSnapshotRestorableReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (IsVolumeSnapshotRestorableReply)this.Field;
+            }
+            string fieldSpecDoc = Query.IsAwsNativeEbsVolumeSnapshotRestorable(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -1982,24 +2086,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("awsAccountRubrikId", "UUID!"),
                 Tuple.Create("region", "AwsNativeRegion!"),
             };
-            List<System.String>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (List<System.String>)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (List<System.String>)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AllAvailabilityZonesByRegionFromAws(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAllAvailabilityZonesByRegionFromAws",
                 "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!)",
-                fieldSpecDoc,
                 "List<System.String>"
-            );
+                );
+            List<System.String>? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (List<System.String>)this.Field;
+            }
+            string fieldSpecDoc = Query.AllAvailabilityZonesByRegionFromAws(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2010,24 +2110,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("awsAccountRubrikId", "UUID!"),
                 Tuple.Create("region", "AwsNativeRegion!"),
             };
-            List<KmsEncryptionKey>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (List<KmsEncryptionKey>)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (List<KmsEncryptionKey>)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AllKmsEncryptionKeysByRegionFromAws(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAllKmsEncryptionKeysByRegionFromAws",
                 "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!)",
-                fieldSpecDoc,
                 "List<KmsEncryptionKey>"
-            );
+                );
+            List<KmsEncryptionKey>? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (List<KmsEncryptionKey>)this.Field;
+            }
+            string fieldSpecDoc = Query.AllKmsEncryptionKeysByRegionFromAws(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2038,24 +2134,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("bucketName", "String!"),
                 Tuple.Create("awsAccountRubrikId", "UUID!"),
             };
-            System.Boolean? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (System.Boolean)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (System.Boolean)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.IsAwsS3BucketNameAvailable(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryIsAwsS3BucketNameAvailable",
                 "($bucketName: String!,$awsAccountRubrikId: UUID!)",
-                fieldSpecDoc,
                 "System.Boolean"
-            );
+                );
+            System.Boolean? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (System.Boolean)this.Field;
+            }
+            string fieldSpecDoc = Query.IsAwsS3BucketNameAvailable(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2065,24 +2157,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("awsAccountRubrikId", "UUID!"),
             };
-            List<System.String>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (List<System.String>)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (List<System.String>)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AllS3BucketsFromAws(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAllS3BucketsFromAws",
                 "($awsAccountRubrikId: UUID!)",
-                fieldSpecDoc,
                 "List<System.String>"
-            );
+                );
+            List<System.String>? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (List<System.String>)this.Field;
+            }
+            string fieldSpecDoc = Query.AllS3BucketsFromAws(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2093,24 +2181,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("awsAccountRubrikId", "UUID!"),
                 Tuple.Create("region", "AwsNativeRegion"),
             };
-            List<S3BucketDetails>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (List<S3BucketDetails>)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (List<S3BucketDetails>)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AllS3BucketsDetailsFromAws(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAllS3BucketsDetailsFromAws",
                 "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion)",
-                fieldSpecDoc,
                 "List<S3BucketDetails>"
-            );
+                );
+            List<S3BucketDetails>? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (List<S3BucketDetails>)this.Field;
+            }
+            string fieldSpecDoc = Query.AllS3BucketsDetailsFromAws(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2120,24 +2204,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("rdsInstanceRubrikId", "UUID!"),
             };
-            AwsNativeRdsInstance? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AwsNativeRdsInstance)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AwsNativeRdsInstance)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AwsNativeRdsInstance(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAwsNativeRdsInstance",
                 "($rdsInstanceRubrikId: UUID!)",
-                fieldSpecDoc,
                 "AwsNativeRdsInstance"
-            );
+                );
+            AwsNativeRdsInstance? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AwsNativeRdsInstance)this.Field;
+            }
+            string fieldSpecDoc = Query.AwsNativeRdsInstance(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2161,24 +2241,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("rdsInstanceFilters", "AwsNativeRdsInstanceFilters"),
             };
-            AwsNativeRdsInstanceConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AwsNativeRdsInstanceConnection)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AwsNativeRdsInstanceConnection)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AwsNativeRdsInstances(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAwsNativeRdsInstances",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AwsNativeRdsInstanceSortFields,$sortOrder: SortOrder,$rdsInstanceFilters: AwsNativeRdsInstanceFilters)",
-                fieldSpecDoc,
                 "AwsNativeRdsInstanceConnection"
-            );
+                );
+            AwsNativeRdsInstanceConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AwsNativeRdsInstanceConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.AwsNativeRdsInstances(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2196,24 +2272,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("rdsInstanceName", "String!"),
                 Tuple.Create("rdsDatabaseRubrikId", "UUID"),
             };
-            AwsNativeRdsPointInTimeRestoreWindow? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AwsNativeRdsPointInTimeRestoreWindow)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AwsNativeRdsPointInTimeRestoreWindow)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AwsNativeRdsPointInTimeRestoreWindow(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAwsNativeRdsPointInTimeRestoreWindow",
                 "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$rdsInstanceName: String!,$rdsDatabaseRubrikId: UUID)",
-                fieldSpecDoc,
                 "AwsNativeRdsPointInTimeRestoreWindow"
-            );
+                );
+            AwsNativeRdsPointInTimeRestoreWindow? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AwsNativeRdsPointInTimeRestoreWindow)this.Field;
+            }
+            string fieldSpecDoc = Query.AwsNativeRdsPointInTimeRestoreWindow(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2231,24 +2303,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("rdsInstanceName", "String!"),
                 Tuple.Create("rdsDatabaseRubrikId", "UUID"),
             };
-            RdsInstanceDetailsFromAws? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (RdsInstanceDetailsFromAws)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (RdsInstanceDetailsFromAws)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.RdsInstanceDetailsFromAws(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryRdsInstanceDetailsFromAws",
                 "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$rdsInstanceName: String!,$rdsDatabaseRubrikId: UUID)",
-                fieldSpecDoc,
                 "RdsInstanceDetailsFromAws"
-            );
+                );
+            RdsInstanceDetailsFromAws? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (RdsInstanceDetailsFromAws)this.Field;
+            }
+            string fieldSpecDoc = Query.RdsInstanceDetailsFromAws(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2280,24 +2348,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("kmsKeyId", "String"),
                 Tuple.Create("iops", "Int"),
             };
-            System.Boolean? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (System.Boolean)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (System.Boolean)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.IsAwsNativeRdsInstanceLaunchConfigurationValid(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryIsAwsNativeRdsInstanceLaunchConfigurationValid",
                 "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$dbEngine: AwsNativeRdsDbEngine!,$dbEngineVersion: String!,$dbClass: AwsNativeRdsDbInstanceClass!,$databaseInstanceClass: String,$primaryAz: String,$storageType: AwsNativeRdsStorageType,$isMultiAz: Boolean!,$kmsKeyId: String,$iops: Int)",
-                fieldSpecDoc,
                 "System.Boolean"
-            );
+                );
+            System.Boolean? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (System.Boolean)this.Field;
+            }
+            string fieldSpecDoc = Query.IsAwsNativeRdsInstanceLaunchConfigurationValid(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2317,24 +2381,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("dbEngineVersion", "String!"),
                 Tuple.Create("majorEngineVersion", "String!"),
             };
-            List<OptionGroup>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (List<OptionGroup>)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (List<OptionGroup>)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AllOptionGroupsByRegionFromAws(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAllOptionGroupsByRegionFromAws",
                 "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$dbEngine: AwsNativeRdsDbEngine!,$dbEngineVersion: String!,$majorEngineVersion: String!)",
-                fieldSpecDoc,
                 "List<OptionGroup>"
-            );
+                );
+            List<OptionGroup>? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (List<OptionGroup>)this.Field;
+            }
+            string fieldSpecDoc = Query.AllOptionGroupsByRegionFromAws(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2354,24 +2414,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("dbEngineVersion", "String!"),
                 Tuple.Create("rdsType", "AwsNativeRdsType"),
             };
-            List<DbParameterGroup>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (List<DbParameterGroup>)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (List<DbParameterGroup>)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AllDbParameterGroupsByRegionFromAws(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAllDbParameterGroupsByRegionFromAws",
                 "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$dbEngine: AwsNativeRdsDbEngine!,$dbEngineVersion: String!,$rdsType: AwsNativeRdsType)",
-                fieldSpecDoc,
                 "List<DbParameterGroup>"
-            );
+                );
+            List<DbParameterGroup>? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (List<DbParameterGroup>)this.Field;
+            }
+            string fieldSpecDoc = Query.AllDbParameterGroupsByRegionFromAws(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2382,24 +2438,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("awsAccountRubrikId", "UUID!"),
                 Tuple.Create("region", "AwsNativeRegion!"),
             };
-            List<SubnetGroup>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (List<SubnetGroup>)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (List<SubnetGroup>)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AllDbSubnetGroupsByRegionFromAws(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAllDbSubnetGroupsByRegionFromAws",
                 "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!)",
-                fieldSpecDoc,
                 "List<SubnetGroup>"
-            );
+                );
+            List<SubnetGroup>? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (List<SubnetGroup>)this.Field;
+            }
+            string fieldSpecDoc = Query.AllDbSubnetGroupsByRegionFromAws(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2411,24 +2463,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("region", "AwsNativeRegion!"),
                 Tuple.Create("rdsInstanceName", "String!"),
             };
-            ValidateAwsNativeRdsInstanceNameForExportReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (ValidateAwsNativeRdsInstanceNameForExportReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (ValidateAwsNativeRdsInstanceNameForExportReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.ValidateAwsNativeRdsInstanceNameForExport(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryValidateAwsNativeRdsInstanceNameForExport",
                 "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$rdsInstanceName: String!)",
-                fieldSpecDoc,
                 "ValidateAwsNativeRdsInstanceNameForExportReply"
-            );
+                );
+            ValidateAwsNativeRdsInstanceNameForExportReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (ValidateAwsNativeRdsInstanceNameForExportReply)this.Field;
+            }
+            string fieldSpecDoc = Query.ValidateAwsNativeRdsInstanceNameForExport(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2440,24 +2488,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("region", "AwsNativeRegion!"),
                 Tuple.Create("rdsClusterName", "String!"),
             };
-            ValidateAwsNativeRdsClusterNameForExportReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (ValidateAwsNativeRdsClusterNameForExportReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (ValidateAwsNativeRdsClusterNameForExportReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.ValidateAwsNativeRdsClusterNameForExport(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryValidateAwsNativeRdsClusterNameForExport",
                 "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$rdsClusterName: String!)",
-                fieldSpecDoc,
                 "ValidateAwsNativeRdsClusterNameForExportReply"
-            );
+                );
+            ValidateAwsNativeRdsClusterNameForExportReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (ValidateAwsNativeRdsClusterNameForExportReply)this.Field;
+            }
+            string fieldSpecDoc = Query.ValidateAwsNativeRdsClusterNameForExport(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2469,24 +2513,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("snapshotId", "String"),
                 Tuple.Create("isPointInTime", "Boolean!"),
             };
-            RdsInstanceExportDefaults? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (RdsInstanceExportDefaults)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (RdsInstanceExportDefaults)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AwsNativeRdsExportDefaults(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAwsNativeRdsExportDefaults",
                 "($rdsInstanceRubrikId: UUID!,$snapshotId: String,$isPointInTime: Boolean!)",
-                fieldSpecDoc,
                 "RdsInstanceExportDefaults"
-            );
+                );
+            RdsInstanceExportDefaults? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (RdsInstanceExportDefaults)this.Field;
+            }
+            string fieldSpecDoc = Query.AwsNativeRdsExportDefaults(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2497,24 +2537,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("awsAccountRubrikId", "UUID!"),
                 Tuple.Create("region", "AwsNativeRegion!"),
             };
-            List<System.String>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (List<System.String>)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (List<System.String>)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AllEc2KeyPairsByRegionFromAws(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAllEc2KeyPairsByRegionFromAws",
                 "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!)",
-                fieldSpecDoc,
                 "List<System.String>"
-            );
+                );
+            List<System.String>? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (List<System.String>)this.Field;
+            }
+            string fieldSpecDoc = Query.AllEc2KeyPairsByRegionFromAws(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2524,24 +2560,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "AmiTypeForAwsNativeArchivedSnapshotExportInput!"),
             };
-            AmiTypeForAwsNativeArchivedSnapshotExportReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AmiTypeForAwsNativeArchivedSnapshotExportReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AmiTypeForAwsNativeArchivedSnapshotExportReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AmiTypeForAwsNativeArchivedSnapshotExport(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAmiTypeForAwsNativeArchivedSnapshotExport",
                 "($input: AmiTypeForAwsNativeArchivedSnapshotExportInput!)",
-                fieldSpecDoc,
                 "AmiTypeForAwsNativeArchivedSnapshotExportReply"
-            );
+                );
+            AmiTypeForAwsNativeArchivedSnapshotExportReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AmiTypeForAwsNativeArchivedSnapshotExportReply)this.Field;
+            }
+            string fieldSpecDoc = Query.AmiTypeForAwsNativeArchivedSnapshotExport(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2550,24 +2582,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         {
             Tuple<string, string>[] argDefs = {
             };
-            AwsNativeRdsAuroraInstanceClassesReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AwsNativeRdsAuroraInstanceClassesReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AwsNativeRdsAuroraInstanceClassesReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AllAwsRdsAuroraInstanceClasses(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAllAwsRdsAuroraInstanceClasses",
                 "",
-                fieldSpecDoc,
                 "AwsNativeRdsAuroraInstanceClassesReply"
-            );
+                );
+            AwsNativeRdsAuroraInstanceClassesReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AwsNativeRdsAuroraInstanceClassesReply)this.Field;
+            }
+            string fieldSpecDoc = Query.AllAwsRdsAuroraInstanceClasses(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2585,24 +2613,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("dbEngine", "AwsNativeRdsDbEngine!"),
                 Tuple.Create("dbEngineVersion", "String"),
             };
-            List<System.String>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (List<System.String>)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (List<System.String>)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AllSupportedAwsRdsDatabaseInstanceClasses(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAllSupportedAwsRdsDatabaseInstanceClasses",
                 "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$dbEngine: AwsNativeRdsDbEngine!,$dbEngineVersion: String)",
-                fieldSpecDoc,
                 "List<System.String>"
-            );
+                );
+            List<System.String>? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (List<System.String>)this.Field;
+            }
+            string fieldSpecDoc = Query.AllSupportedAwsRdsDatabaseInstanceClasses(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2612,24 +2636,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("computeSettingId", "UUID!"),
             };
-            AwsComputeSettings? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AwsComputeSettings)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AwsComputeSettings)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AwsComputeSettings(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAwsComputeSettings",
                 "($computeSettingId: UUID!)",
-                fieldSpecDoc,
                 "AwsComputeSettings"
-            );
+                );
+            AwsComputeSettings? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AwsComputeSettings)this.Field;
+            }
+            string fieldSpecDoc = Query.AwsComputeSettings(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2647,24 +2667,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("filter", "[AwsCloudComputeSettingFilterInput!]"),
                 Tuple.Create("contextFilter", "ContextFilterTypeEnum"),
             };
-            List<AwsComputeSettings>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (List<AwsComputeSettings>)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (List<AwsComputeSettings>)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AllAwsComputeSettings(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAllAwsComputeSettings",
                 "($sortBy: AwsCloudComputeSettingQuerySortByField,$sortOrder: SortOrder,$filter: [AwsCloudComputeSettingFilterInput!],$contextFilter: ContextFilterTypeEnum)",
-                fieldSpecDoc,
                 "List<AwsComputeSettings>"
-            );
+                );
+            List<AwsComputeSettings>? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (List<AwsComputeSettings>)this.Field;
+            }
+            string fieldSpecDoc = Query.AllAwsComputeSettings(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2674,24 +2690,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("awsCloudAccountsArg", "AwsCloudAccountsWithFeaturesInput!"),
             };
-            List<AwsCloudAccountWithFeatures>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (List<AwsCloudAccountWithFeatures>)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (List<AwsCloudAccountWithFeatures>)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AllAwsCloudAccountsWithFeatures(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAllAwsCloudAccountsWithFeatures",
                 "($awsCloudAccountsArg: AwsCloudAccountsWithFeaturesInput!)",
-                fieldSpecDoc,
                 "List<AwsCloudAccountWithFeatures>"
-            );
+                );
+            List<AwsCloudAccountWithFeatures>? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (List<AwsCloudAccountWithFeatures>)this.Field;
+            }
+            string fieldSpecDoc = Query.AllAwsCloudAccountsWithFeatures(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2701,24 +2713,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("awsCloudAccountsArg", "AwsCloudAccountsWithFeaturesInput!"),
             };
-            List<AwsCloudAccountFeaturesWithExoConfigs>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (List<AwsCloudAccountFeaturesWithExoConfigs>)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (List<AwsCloudAccountFeaturesWithExoConfigs>)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AllAwsCloudAccountsFeaturesWithExoConfigs(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAllAwsCloudAccountsFeaturesWithExoConfigs",
                 "($awsCloudAccountsArg: AwsCloudAccountsWithFeaturesInput!)",
-                fieldSpecDoc,
                 "List<AwsCloudAccountFeaturesWithExoConfigs>"
-            );
+                );
+            List<AwsCloudAccountFeaturesWithExoConfigs>? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (List<AwsCloudAccountFeaturesWithExoConfigs>)this.Field;
+            }
+            string fieldSpecDoc = Query.AllAwsCloudAccountsFeaturesWithExoConfigs(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2729,24 +2737,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("cloudAccountId", "UUID!"),
                 Tuple.Create("awsCloudAccountArg", "AwsCloudAccountWithFeaturesInput!"),
             };
-            AwsCloudAccountWithFeatures? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AwsCloudAccountWithFeatures)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AwsCloudAccountWithFeatures)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AwsCloudAccountWithFeatures(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAwsCloudAccountWithFeatures",
                 "($cloudAccountId: UUID!,$awsCloudAccountArg: AwsCloudAccountWithFeaturesInput!)",
-                fieldSpecDoc,
                 "AwsCloudAccountWithFeatures"
-            );
+                );
+            AwsCloudAccountWithFeatures? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AwsCloudAccountWithFeatures)this.Field;
+            }
+            string fieldSpecDoc = Query.AwsCloudAccountWithFeatures(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2758,24 +2762,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("feature", "CloudAccountFeature!"),
                 Tuple.Create("region", "AwsRegion!"),
             };
-            AwsCloudAccountListVpcResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AwsCloudAccountListVpcResponse)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AwsCloudAccountListVpcResponse)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AwsCloudAccountListVpcs(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAwsCloudAccountListVpcs",
                 "($cloudAccountUuid: UUID!,$feature: CloudAccountFeature!,$region: AwsRegion!)",
-                fieldSpecDoc,
                 "AwsCloudAccountListVpcResponse"
-            );
+                );
+            AwsCloudAccountListVpcResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AwsCloudAccountListVpcResponse)this.Field;
+            }
+            string fieldSpecDoc = Query.AwsCloudAccountListVpcs(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2793,24 +2793,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("region", "AwsRegion!"),
                 Tuple.Create("vpcID", "String!"),
             };
-            AwsCloudAccountListSubnetsResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AwsCloudAccountListSubnetsResponse)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AwsCloudAccountListSubnetsResponse)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AwsCloudAccountListSubnets(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAwsCloudAccountListSubnets",
                 "($cloudAccountUuid: UUID!,$feature: CloudAccountFeature!,$region: AwsRegion!,$vpcID: String!)",
-                fieldSpecDoc,
                 "AwsCloudAccountListSubnetsResponse"
-            );
+                );
+            AwsCloudAccountListSubnetsResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AwsCloudAccountListSubnetsResponse)this.Field;
+            }
+            string fieldSpecDoc = Query.AwsCloudAccountListSubnets(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2828,24 +2824,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("region", "AwsRegion!"),
                 Tuple.Create("vpcID", "String!"),
             };
-            AwsCloudAccountListSecurityGroupsResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AwsCloudAccountListSecurityGroupsResponse)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AwsCloudAccountListSecurityGroupsResponse)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AwsCloudAccountListSecurityGroups(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAwsCloudAccountListSecurityGroups",
                 "($cloudAccountUuid: UUID!,$feature: CloudAccountFeature!,$region: AwsRegion!,$vpcID: String!)",
-                fieldSpecDoc,
                 "AwsCloudAccountListSecurityGroupsResponse"
-            );
+                );
+            AwsCloudAccountListSecurityGroupsResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AwsCloudAccountListSecurityGroupsResponse)this.Field;
+            }
+            string fieldSpecDoc = Query.AwsCloudAccountListSecurityGroups(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2857,24 +2849,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("feature", "CloudAccountFeature!"),
                 Tuple.Create("region", "AwsRegion!"),
             };
-            AwsCloudAccountListKmsKeysResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AwsCloudAccountListKmsKeysResponse)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AwsCloudAccountListKmsKeysResponse)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AwsCloudAccountListKmsKeys(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAwsCloudAccountListKmsKeys",
                 "($cloudAccountUuid: UUID!,$feature: CloudAccountFeature!,$region: AwsRegion!)",
-                fieldSpecDoc,
                 "AwsCloudAccountListKmsKeysResponse"
-            );
+                );
+            AwsCloudAccountListKmsKeysResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AwsCloudAccountListKmsKeysResponse)this.Field;
+            }
+            string fieldSpecDoc = Query.AwsCloudAccountListKmsKeys(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2884,24 +2872,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("awsNativeAccountIdOrNamePrefix", "String!"),
             };
-            List<AwsExocomputeConfig>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (List<AwsExocomputeConfig>)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (List<AwsExocomputeConfig>)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AllAwsExocomputeConfigs(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAllAwsExocomputeConfigs",
                 "($awsNativeAccountIdOrNamePrefix: String!)",
-                fieldSpecDoc,
                 "List<AwsExocomputeConfig>"
-            );
+                );
+            List<AwsExocomputeConfig>? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (List<AwsExocomputeConfig>)this.Field;
+            }
+            string fieldSpecDoc = Query.AllAwsExocomputeConfigs(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2911,24 +2895,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("awsCloudAccountsArg", "AwsCloudAccountConfigsInput!"),
             };
-            List<AwsFeatureConfig>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (List<AwsFeatureConfig>)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (List<AwsFeatureConfig>)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AllAwsCloudAccountConfigs(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAllAwsCloudAccountConfigs",
                 "($awsCloudAccountsArg: AwsCloudAccountConfigsInput!)",
-                fieldSpecDoc,
                 "List<AwsFeatureConfig>"
-            );
+                );
+            List<AwsFeatureConfig>? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (List<AwsFeatureConfig>)this.Field;
+            }
+            string fieldSpecDoc = Query.AllAwsCloudAccountConfigs(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2938,24 +2918,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "AwsTrustPolicyInput!"),
             };
-            AwsTrustPolicy? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AwsTrustPolicy)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AwsTrustPolicy)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AwsTrustPolicy(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAwsTrustPolicy",
                 "($input: AwsTrustPolicyInput!)",
-                fieldSpecDoc,
                 "AwsTrustPolicy"
-            );
+                );
+            AwsTrustPolicy? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AwsTrustPolicy)this.Field;
+            }
+            string fieldSpecDoc = Query.AwsTrustPolicy(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2965,24 +2941,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "AwsGetPermissionPoliciesInput!"),
             };
-            List<PermissionPolicy>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (List<PermissionPolicy>)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (List<PermissionPolicy>)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AllAwsPermissionPolicies(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAllAwsPermissionPolicies",
                 "($input: AwsGetPermissionPoliciesInput!)",
-                fieldSpecDoc,
                 "List<PermissionPolicy>"
-            );
+                );
+            List<PermissionPolicy>? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (List<PermissionPolicy>)this.Field;
+            }
+            string fieldSpecDoc = Query.AllAwsPermissionPolicies(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -2992,24 +2964,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "AwsArtifactsToDeleteInput!"),
             };
-            AwsArtifactsToDelete? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AwsArtifactsToDelete)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AwsArtifactsToDelete)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AwsArtifactsToDelete(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAwsArtifactsToDelete",
                 "($input: AwsArtifactsToDeleteInput!)",
-                fieldSpecDoc,
                 "AwsArtifactsToDelete"
-            );
+                );
+            AwsArtifactsToDelete? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AwsArtifactsToDelete)this.Field;
+            }
+            string fieldSpecDoc = Query.AwsArtifactsToDelete(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -3019,24 +2987,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("cloudAccountId", "String!"),
             };
-            List<AwsCloudAccountRegion>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (List<AwsCloudAccountRegion>)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (List<AwsCloudAccountRegion>)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AllAwsRegions(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAllAwsRegions",
                 "($cloudAccountId: String!)",
-                fieldSpecDoc,
                 "List<AwsCloudAccountRegion>"
-            );
+                );
+            List<AwsCloudAccountRegion>? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (List<AwsCloudAccountRegion>)this.Field;
+            }
+            string fieldSpecDoc = Query.AllAwsRegions(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -3046,24 +3010,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "AwsCdmVersionRequest!"),
             };
-            List<AwsCdmVersion>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (List<AwsCdmVersion>)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (List<AwsCdmVersion>)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AllAwsCdmVersions(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAllAwsCdmVersions",
                 "($input: AwsCdmVersionRequest!)",
-                fieldSpecDoc,
                 "List<AwsCdmVersion>"
-            );
+                );
+            List<AwsCdmVersion>? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (List<AwsCdmVersion>)this.Field;
+            }
+            string fieldSpecDoc = Query.AllAwsCdmVersions(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -3074,24 +3034,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("cloudAccountId", "String!"),
                 Tuple.Create("region", "String!"),
             };
-            List<System.String>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (List<System.String>)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (List<System.String>)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AllAwsInstanceProfileNames(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAllAwsInstanceProfileNames",
                 "($cloudAccountId: String!,$region: String!)",
-                fieldSpecDoc,
                 "List<System.String>"
-            );
+                );
+            List<System.String>? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (List<System.String>)this.Field;
+            }
+            string fieldSpecDoc = Query.AllAwsInstanceProfileNames(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
 

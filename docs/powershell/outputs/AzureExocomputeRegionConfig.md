@@ -9,3 +9,5 @@ Represents an Azure Exocompute Configuration for a specific region. The Azure Ex
   - Specifies whether Exocompute is managed by Rubrik or not.
 - podSubnetNativeId: System.String
   - Native ID of the subnet, configured for usage in this region for the Exocompute pods.
+- podOverlayNetworkCidr: System.String
+  - The CIDR range assigned for pods when launching Exocompute with the CNI overlay network plugin mode.

@@ -9,7 +9,7 @@ BeforeAll {
 Describe -Name "Test field specs for interface fields" -Fixture {
 
     It -Name 'Field spec exploration' -Test {
-        Connect-Rsc # TODO: SPARK-225839 Don't require connection if cmdlet called with -GetInputs
+        Connect-Rsc # TODO: SPARK-225839 Don't require connection if cmdlet called with -GetInput
 
         # Retrieve all interfaces
         $interfaces = (Get-RscType -ListAvailable -Interfaces)
@@ -22,7 +22,7 @@ Describe -Name "Test field specs for interface fields" -Fixture {
         Write-Host "Found $($impls.Count) implementations of interface $inf"
         # Build exploration field spec for 
         # Invoke-RscQueryMssql -TopLevelDescendant invokes
-        $fieldSpecString = (Invoke-RscQueryMssql -TopLevelDescendant -GetInputs).Field.AsFieldSpec()
+        $fieldSpecString = (Invoke-RscQueryMssql -TopLevelDescendant -GetInput).Field.AsFieldSpec()
         # The built up field spec should have an inline fragment
         # for each implementation of the interface
         $inlineFragments = [regex]::Matches($fieldSpecString, '\.\.\. on (\w+)')

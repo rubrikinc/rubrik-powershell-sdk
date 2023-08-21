@@ -10,7 +10,7 @@ a trivial operation that returns 2 booleans.
 BeforeAll {
     & "$PSScriptRoot\..\..\Utils\import.ps1"
 
-    $script:QueryAccountSettings_CustomFileName = (Get-RscHelp -CustomOperations).CustomOperationsDir + "/QueryAccountSettings.gql"
+    $script:QueryAccountSettings_CustomFileName = (Get-RscHelp -Locations).CustomDir + "/QueryAccountSettings.gql"
     # Temporarily save the custom file if it exists
     if ( $script:QueryAccountSettings_CustomFileName | Test-Path ) {
         $script:QueryAccountSettings_CustomFileName | Copy-Item -Destination "$script:QueryAccountSettings_CustomFileName.bak"
@@ -48,7 +48,7 @@ Describe -Name "Test custom input profile" -Fixture {
     It -Name 'AccountSettings custom operation' -Test {
         $gqlRequest = Invoke-RscQueryAccount -Settings -GetGqlRequest
         $gqlRequest.GetType().Name | Should -Be "RscGqlRequest"
-        $gqlRequest.QueryFileName() | Should -Be $script:QueryAccountSettings_CustomFileName 
+        $gqlRequest.DefaultQueryFileName | Should -Be $script:QueryAccountSettings_CustomFileName 
 
         $script:QueryAccountSettings_CustomFileName | Should -Not -Exist
         $gqlRequest.SaveQueryToFile()

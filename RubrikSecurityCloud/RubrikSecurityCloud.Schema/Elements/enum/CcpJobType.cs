@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLUSTER_DELETE")]
         CLUSTER_DELETE,
 
+        [EnumMember(Value = "CLUSTER_OPS")]
+        CLUSTER_OPS,
+
         [EnumMember(Value = "CLUSTER_RECOVER")]
         CLUSTER_RECOVER,
 

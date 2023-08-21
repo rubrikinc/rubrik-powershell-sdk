@@ -68,7 +68,7 @@ Supported in v5.2+
 Retrieve the details of pending SLA Domain assignments on the given managed objects. For objects with pending assignments, return the SLA Domain that is pending. For objects without pending assignments, return the current SLA Domain information. Explicitly list invalid object IDs.
 
 - There is a single argument of type GetPendingSlaAssignmentsInput.
-- Returns PendingSlaOperations.
+- Returns GetPendingSlaAssignmentsReply.
 ### pause
 Pause or resume SLA Domain on the given Rubrik clusters.
 

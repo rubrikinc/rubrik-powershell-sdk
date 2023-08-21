@@ -13,29 +13,33 @@ function Remove-NullProperties {
     Retrieves all clusters in the Rubrik cluster and removes null properties.
     #>
     param(
-        [Parameter(Mandatory=$true, ValueFromPipeline=$true)]
-        [PSObject]$Object
+        [Parameter(Mandatory=$false, ValueFromPipeline=$true)]
+        [PSObject]$Object,
+        [Parameter(Mandatory=$false)]
+        [switch]$NoRecurse
     )
-
     Process {
-        if ($Object -is [System.Collections.IList]) {
-            foreach ($item in $Object) {
-                $item | Remove-NullProperties
-            }
+        # If the input object is null, return immediately
+        if ($null -eq $Object) {
+            return
         }
-        elseif ($Object -is [pscustomobject]) {
-            $properties = $Object.PSObject.Properties | Where-Object { $null -ne $_.Value }
-            $newObject = New-Object -Type pscustomobject
-            foreach ($property in $properties) {
-                $value = $property.Value
-                if ($value -is [pscustomobject] -or $value -is [System.Collections.IList]) {
-                    Add-Member -InputObject $newObject -MemberType NoteProperty -Name $property.Name -Value ($value | Remove-NullProperties)
-                } else {
-                    Add-Member -InputObject $newObject -MemberType NoteProperty -Name $property.Name -Value $value
+        $properties = $Object.PSObject.Properties | Where-Object { $null -ne $_.Value }
+        $newObject = New-Object -Type pscustomobject
+        foreach ($property in $properties) {
+            $value = $property.Value
+            if ( $NoRecurse -eq $false -and
+                 $value -is [System.Collections.IList]) {
+                $newList = New-Object 'System.Collections.ArrayList' 
+                # recurse on each item in the list:
+                foreach ($item in $value) {
+                    $item = Remove-NullProperties -Object $item -NoRecurse
+                    [void]$newList.Add($item)
                 }
+                $value = $newList
             }
-            return $newObject
+            Add-Member -InputObject $newObject -MemberType NoteProperty -Name $property.Name -Value $value
         }
+        return $newObject
     }
 }
 

@@ -16,3 +16,6 @@ All valid table views.
 - THREAT_MONITORING_LIST_TABLE - Table displaying a list of workloads where files were matched by IOC rules.
 - SLA_AUDIT_LIST_TABLE - Table displaying a list of latest audits for each SLA Domain.
 - SLA_AUDIT_DETAIL_TABLE - Table displaying a list of audits for the single SLA Domain.
+- OBJECT_AUDIT_LIST_TABLE - Table displaying a list of latest protection audits for each protected workload.
+- OBJECT_AUDIT_DETAIL_TABLE - Table displaying a list of protection audits for the single protected workload.
+- COMPLIANCE_ALL_TABLE - Main table for the compliance report.

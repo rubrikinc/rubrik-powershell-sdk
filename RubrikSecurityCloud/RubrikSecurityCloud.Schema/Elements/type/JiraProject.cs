@@ -106,10 +106,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("effectiveSlaSourceObject")]
         public PathNode? EffectiveSlaSourceObject { get; set; }
 
-        //      C# -> JiraUser? Lead
-        // GraphQL -> lead: JiraUser! (type)
+        //      C# -> AtlassianUser? Lead
+        // GraphQL -> lead: AtlassianUser! (type)
         [JsonProperty("lead")]
-        public JiraUser? Lead { get; set; }
+        public AtlassianUser? Lead { get; set; }
 
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)
@@ -188,7 +188,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? SlaPauseStatus = null,
         List<Org>? AllOrgs = null,
         PathNode? EffectiveSlaSourceObject = null,
-        JiraUser? Lead = null,
+        AtlassianUser? Lead = null,
         List<PathNode>? LogicalPath = null,
         PolarisSnapshot? NewestIndexedSnapshot = null,
         PolarisSnapshot? NewestSnapshot = null,
@@ -395,8 +395,8 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "effectiveSlaSourceObject {\n" + fspec + ind + "}\n" ;
             }
         }
-        //      C# -> JiraUser? Lead
-        // GraphQL -> lead: JiraUser! (type)
+        //      C# -> AtlassianUser? Lead
+        // GraphQL -> lead: AtlassianUser! (type)
         if (this.Lead != null) {
             var fspec = this.Lead.AsFieldSpec(indent+1);
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
@@ -601,11 +601,11 @@ namespace RubrikSecurityCloud.Types
             this.EffectiveSlaSourceObject = new PathNode();
             this.EffectiveSlaSourceObject.ApplyExploratoryFieldSpec(parent + ".effectiveSlaSourceObject");
         }
-        //      C# -> JiraUser? Lead
-        // GraphQL -> lead: JiraUser! (type)
+        //      C# -> AtlassianUser? Lead
+        // GraphQL -> lead: AtlassianUser! (type)
         if (this.Lead == null && Exploration.Includes(parent + ".lead"))
         {
-            this.Lead = new JiraUser();
+            this.Lead = new AtlassianUser();
             this.Lead.ApplyExploratoryFieldSpec(parent + ".lead");
         }
         //      C# -> List<PathNode>? LogicalPath

@@ -18,6 +18,27 @@ using RubrikSecurityCloud.PowerShell.Private;
 
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
+    /// <summary>
+    /// Cassandra mutations
+    /// </summary>
+    /// <description>
+    /// Invoke-RscMutateCassandra is a master cmdlet for Cassandra work that can invoke any of the following subcommands: RecoverSource, CreateSource, UpdateSource, DeleteSource, BulkDeleteSources.
+    /// </description>
+    /// <example>
+    /// <code>Invoke-RscMutateCassandra -RecoverSource [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateCassandra -CreateSource [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateCassandra -UpdateSource [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateCassandra -DeleteSource [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateCassandra -BulkDeleteSources [-Arg ..] [-Field ..]</code>
+    /// </example>
     [Cmdlet(
         "Invoke",
         "RscMutateCassandra",
@@ -203,24 +224,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "MosaicRestoreDataInput!"),
             };
-            MosaicAsyncResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (MosaicAsyncResponse)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (MosaicAsyncResponse)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.RecoverCassandraSource(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationRecoverCassandraSource",
                 "($input: MosaicRestoreDataInput!)",
-                fieldSpecDoc,
                 "MosaicAsyncResponse"
-            );
+                );
+            MosaicAsyncResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (MosaicAsyncResponse)this.Field;
+            }
+            string fieldSpecDoc = Mutation.RecoverCassandraSource(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -230,24 +247,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "AddMosaicSourceInput!"),
             };
-            MosaicAsyncResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (MosaicAsyncResponse)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (MosaicAsyncResponse)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.CreateCassandraSource(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationCreateCassandraSource",
                 "($input: AddMosaicSourceInput!)",
-                fieldSpecDoc,
                 "MosaicAsyncResponse"
-            );
+                );
+            MosaicAsyncResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (MosaicAsyncResponse)this.Field;
+            }
+            string fieldSpecDoc = Mutation.CreateCassandraSource(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -257,24 +270,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "ModifyMosaicSourceInput!"),
             };
-            MosaicAsyncResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (MosaicAsyncResponse)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (MosaicAsyncResponse)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.UpdateCassandraSource(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationUpdateCassandraSource",
                 "($input: ModifyMosaicSourceInput!)",
-                fieldSpecDoc,
                 "MosaicAsyncResponse"
-            );
+                );
+            MosaicAsyncResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (MosaicAsyncResponse)this.Field;
+            }
+            string fieldSpecDoc = Mutation.UpdateCassandraSource(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -284,24 +293,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteMosaicSourceInput!"),
             };
-            MosaicAsyncResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (MosaicAsyncResponse)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (MosaicAsyncResponse)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.DeleteCassandraSource(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationDeleteCassandraSource",
                 "($input: DeleteMosaicSourceInput!)",
-                fieldSpecDoc,
                 "MosaicAsyncResponse"
-            );
+                );
+            MosaicAsyncResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (MosaicAsyncResponse)this.Field;
+            }
+            string fieldSpecDoc = Mutation.DeleteCassandraSource(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -311,24 +316,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "BulkDeleteMosaicSourcesInput!"),
             };
-            MosaicAsyncResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (MosaicAsyncResponse)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (MosaicAsyncResponse)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.BulkDeleteCassandraSources(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationBulkDeleteCassandraSources",
                 "($input: BulkDeleteMosaicSourcesInput!)",
-                fieldSpecDoc,
                 "MosaicAsyncResponse"
-            );
+                );
+            MosaicAsyncResponse? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (MosaicAsyncResponse)this.Field;
+            }
+            string fieldSpecDoc = Mutation.BulkDeleteCassandraSources(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
 

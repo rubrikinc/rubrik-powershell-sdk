@@ -46,3 +46,5 @@ TODO: SPARK-150447 - Deprecate this enum to use managed object type
 - HYPERV_SCVMM - Represents HyperV SCVMM.
 - HYPERV_SERVER - Represents HyperV Server.
 - VMWARE_RESOURCE_POOL - Represents VMware resource pool.
+- MSSQL_DATABASE - Represents MSSQL Database.
+- MSSQL_ROOT - Represents MSSQL Root.

@@ -18,6 +18,27 @@ using RubrikSecurityCloud.PowerShell.Private;
 
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
+    /// <summary>
+    /// Account queries
+    /// </summary>
+    /// <description>
+    /// Invoke-RscQueryAccount is a master cmdlet for Account work that can invoke any of the following subcommands: Settings, SWithExocomputeMappings, Products, Id, Owners.
+    /// </description>
+    /// <example>
+    /// <code>Invoke-RscQueryAccount -Settings [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAccount -SWithExocomputeMappings [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAccount -Products [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAccount -Id [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAccount -Owners [-Arg ..] [-Field ..]</code>
+    /// </example>
     [Cmdlet(
         "Invoke",
         "RscQueryAccount",
@@ -202,24 +223,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         {
             Tuple<string, string>[] argDefs = {
             };
-            AccountSetting? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AccountSetting)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AccountSetting)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AccountSettings(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAccountSettings",
                 "",
-                fieldSpecDoc,
                 "AccountSetting"
-            );
+                );
+            AccountSetting? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AccountSetting)this.Field;
+            }
+            string fieldSpecDoc = Query.AccountSettings(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -231,24 +248,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("features", "[CloudAccountFeature!]!"),
                 Tuple.Create("exocomputeAccountIdsFilter", "[UUID!]!"),
             };
-            List<CloudAccountWithExocomputeMapping>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (List<CloudAccountWithExocomputeMapping>)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (List<CloudAccountWithExocomputeMapping>)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AllAccountsWithExocomputeMappings(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAllAccountsWithExocomputeMappings",
                 "($cloudVendor: CloudVendor!,$features: [CloudAccountFeature!]!,$exocomputeAccountIdsFilter: [UUID!]!)",
-                fieldSpecDoc,
                 "List<CloudAccountWithExocomputeMapping>"
-            );
+                );
+            List<CloudAccountWithExocomputeMapping>? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (List<CloudAccountWithExocomputeMapping>)this.Field;
+            }
+            string fieldSpecDoc = Query.AllAccountsWithExocomputeMappings(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -268,24 +281,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("startDateArg", "DateTime"),
                 Tuple.Create("endDateArg", "DateTime"),
             };
-            List<AccountProduct>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (List<AccountProduct>)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (List<AccountProduct>)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AllAccountProducts(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAllAccountProducts",
                 "($nameFilter: [ProductName!]!,$typeFilter: [ProductType!]!,$stateFilter: [ProductState!]!,$startDateArg: DateTime,$endDateArg: DateTime)",
-                fieldSpecDoc,
                 "List<AccountProduct>"
-            );
+                );
+            List<AccountProduct>? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (List<AccountProduct>)this.Field;
+            }
+            string fieldSpecDoc = Query.AllAccountProducts(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -294,24 +303,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         {
             Tuple<string, string>[] argDefs = {
             };
-            System.String? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (System.String)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (System.String)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AccountId(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAccountId",
                 "",
-                fieldSpecDoc,
                 "System.String"
-            );
+                );
+            System.String? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (System.String)this.Field;
+            }
+            string fieldSpecDoc = Query.AccountId(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Query:
@@ -320,24 +325,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         {
             Tuple<string, string>[] argDefs = {
             };
-            List<User>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (List<User>)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (List<User>)this.Field;
-                }
-            }
-            string fieldSpecDoc = Query.AllAccountOwners(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "query",
                 "QueryAllAccountOwners",
                 "",
-                fieldSpecDoc,
                 "List<User>"
-            );
+                );
+            List<User>? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (List<User>)this.Field;
+            }
+            string fieldSpecDoc = Query.AllAccountOwners(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
 

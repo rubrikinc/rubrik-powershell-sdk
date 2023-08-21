@@ -30,10 +30,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("objectId")]
         public System.String? ObjectId { get; set; }
 
-        //      C# -> Object? Object
-        // GraphQL -> object: Object! (type)
-        [JsonProperty("object")]
-        public Object? Object { get; set; }
+        //      C# -> AzureAdObjects? AzureAdObjects
+        // GraphQL -> azureAdObjects: AzureAdObjects! (type)
+        [JsonProperty("azureAdObjects")]
+        public AzureAdObjects? AzureAdObjects { get; set; }
 
 
         #endregion
@@ -47,7 +47,7 @@ namespace RubrikSecurityCloud.Types
     public AzureAdObject Set(
         AzureAdObjectType? Type = null,
         System.String? ObjectId = null,
-        Object? Object = null
+        AzureAdObjects? AzureAdObjects = null
     ) 
     {
         if ( Type != null ) {
@@ -56,8 +56,8 @@ namespace RubrikSecurityCloud.Types
         if ( ObjectId != null ) {
             this.ObjectId = ObjectId;
         }
-        if ( Object != null ) {
-            this.Object = Object;
+        if ( AzureAdObjects != null ) {
+            this.AzureAdObjects = AzureAdObjects;
         }
         return this;
     }
@@ -79,12 +79,12 @@ namespace RubrikSecurityCloud.Types
         if (this.ObjectId != null) {
             s += ind + "objectId\n" ;
         }
-        //      C# -> Object? Object
-        // GraphQL -> object: Object! (type)
-        if (this.Object != null) {
-            var fspec = this.Object.AsFieldSpec(indent+1);
+        //      C# -> AzureAdObjects? AzureAdObjects
+        // GraphQL -> azureAdObjects: AzureAdObjects! (type)
+        if (this.AzureAdObjects != null) {
+            var fspec = this.AzureAdObjects.AsFieldSpec(indent+1);
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "object {\n" + fspec + ind + "}\n" ;
+                s += ind + "azureAdObjects {\n" + fspec + ind + "}\n" ;
             }
         }
         return s;
@@ -107,12 +107,12 @@ namespace RubrikSecurityCloud.Types
         {
             this.ObjectId = "FETCH";
         }
-        //      C# -> Object? Object
-        // GraphQL -> object: Object! (type)
-        if (this.Object == null && Exploration.Includes(parent + ".object"))
+        //      C# -> AzureAdObjects? AzureAdObjects
+        // GraphQL -> azureAdObjects: AzureAdObjects! (type)
+        if (this.AzureAdObjects == null && Exploration.Includes(parent + ".azureAdObjects"))
         {
-            this.Object = new Object();
-            this.Object.ApplyExploratoryFieldSpec(parent + ".object");
+            this.AzureAdObjects = new AzureAdObjects();
+            this.AzureAdObjects.ApplyExploratoryFieldSpec(parent + ".azureAdObjects");
         }
     }
 

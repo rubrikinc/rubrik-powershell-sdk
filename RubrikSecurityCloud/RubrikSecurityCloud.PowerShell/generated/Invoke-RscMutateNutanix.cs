@@ -18,6 +18,90 @@ using RubrikSecurityCloud.PowerShell.Private;
 
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
+    /// <summary>
+    /// Nutanix mutations
+    /// </summary>
+    /// <description>
+    /// Invoke-RscMutateNutanix is a master cmdlet for Nutanix work that can invoke any of the following subcommands: CreateCluster, RefreshCluster, UpdateCluster, DeleteCluster, RegisterAgentVm, UpdateVm, CreateOnDemandBackup, DeleteSnapshots, MountSnapshotV1, PatchMountV1, DeleteMountV1, MigrateMountV1, DeleteSnapshot, RestoreFilesSnapshot, DownloadFilesSnapshot, ExportSnapshot, DownloadSnapshot, BatchExportVm, BatchMountVm, DownloadVmFromLocation, CreatePrismCentral, UpdatePrismCentral, DeletePrismCentral, RefreshPrismCentral, PrismCentralAsyncRequestStatus, BulkOnDemandSnapshotVm.
+    /// </description>
+    /// <example>
+    /// <code>Invoke-RscMutateNutanix -CreateCluster [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateNutanix -RefreshCluster [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateNutanix -UpdateCluster [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateNutanix -DeleteCluster [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateNutanix -RegisterAgentVm [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateNutanix -UpdateVm [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateNutanix -CreateOnDemandBackup [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateNutanix -DeleteSnapshots [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateNutanix -MountSnapshotV1 [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateNutanix -PatchMountV1 [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateNutanix -DeleteMountV1 [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateNutanix -MigrateMountV1 [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateNutanix -DeleteSnapshot [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateNutanix -RestoreFilesSnapshot [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateNutanix -DownloadFilesSnapshot [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateNutanix -ExportSnapshot [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateNutanix -DownloadSnapshot [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateNutanix -BatchExportVm [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateNutanix -BatchMountVm [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateNutanix -DownloadVmFromLocation [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateNutanix -CreatePrismCentral [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateNutanix -UpdatePrismCentral [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateNutanix -DeletePrismCentral [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateNutanix -RefreshPrismCentral [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateNutanix -PrismCentralAsyncRequestStatus [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateNutanix -BulkOnDemandSnapshotVm [-Arg ..] [-Field ..]</code>
+    /// </example>
     [Cmdlet(
         "Invoke",
         "RscMutateNutanix",
@@ -927,24 +1011,20 @@ Take bulk backups for multiple Nutanix virtual machines.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CreateNutanixClusterInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.CreateNutanixCluster(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationCreateNutanixCluster",
                 "($input: CreateNutanixClusterInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.CreateNutanixCluster(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -954,24 +1034,20 @@ Take bulk backups for multiple Nutanix virtual machines.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RefreshNutanixClusterInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.RefreshNutanixCluster(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationRefreshNutanixCluster",
                 "($input: RefreshNutanixClusterInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.RefreshNutanixCluster(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -981,24 +1057,20 @@ Take bulk backups for multiple Nutanix virtual machines.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpdateNutanixClusterInput!"),
             };
-            UpdateNutanixClusterReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (UpdateNutanixClusterReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (UpdateNutanixClusterReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.UpdateNutanixCluster(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationUpdateNutanixCluster",
                 "($input: UpdateNutanixClusterInput!)",
-                fieldSpecDoc,
                 "UpdateNutanixClusterReply"
-            );
+                );
+            UpdateNutanixClusterReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (UpdateNutanixClusterReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.UpdateNutanixCluster(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1008,24 +1080,20 @@ Take bulk backups for multiple Nutanix virtual machines.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteNutanixClusterInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.DeleteNutanixCluster(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationDeleteNutanixCluster",
                 "($input: DeleteNutanixClusterInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.DeleteNutanixCluster(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1035,24 +1103,20 @@ Take bulk backups for multiple Nutanix virtual machines.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RegisterAgentNutanixVmInput!"),
             };
-            RequestSuccess? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (RequestSuccess)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (RequestSuccess)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.RegisterAgentNutanixVm(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationRegisterAgentNutanixVm",
                 "($input: RegisterAgentNutanixVmInput!)",
-                fieldSpecDoc,
                 "RequestSuccess"
-            );
+                );
+            RequestSuccess? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (RequestSuccess)this.Field;
+            }
+            string fieldSpecDoc = Mutation.RegisterAgentNutanixVm(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1062,24 +1126,20 @@ Take bulk backups for multiple Nutanix virtual machines.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpdateNutanixVmInput!"),
             };
-            System.String? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (System.String)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (System.String)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.UpdateNutanixVm(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationUpdateNutanixVm",
                 "($input: UpdateNutanixVmInput!)",
-                fieldSpecDoc,
                 "System.String"
-            );
+                );
+            System.String? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (System.String)this.Field;
+            }
+            string fieldSpecDoc = Mutation.UpdateNutanixVm(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1089,24 +1149,20 @@ Take bulk backups for multiple Nutanix virtual machines.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CreateOnDemandNutanixBackupInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.CreateOnDemandNutanixBackup(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationCreateOnDemandNutanixBackup",
                 "($input: CreateOnDemandNutanixBackupInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.CreateOnDemandNutanixBackup(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1116,24 +1172,20 @@ Take bulk backups for multiple Nutanix virtual machines.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteNutanixSnapshotsInput!"),
             };
-            RequestSuccess? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (RequestSuccess)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (RequestSuccess)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.DeleteNutanixSnapshots(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationDeleteNutanixSnapshots",
                 "($input: DeleteNutanixSnapshotsInput!)",
-                fieldSpecDoc,
                 "RequestSuccess"
-            );
+                );
+            RequestSuccess? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (RequestSuccess)this.Field;
+            }
+            string fieldSpecDoc = Mutation.DeleteNutanixSnapshots(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1143,24 +1195,20 @@ Take bulk backups for multiple Nutanix virtual machines.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "MountNutanixSnapshotV1Input!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.MountNutanixSnapshotV1(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationMountNutanixSnapshotV1",
                 "($input: MountNutanixSnapshotV1Input!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.MountNutanixSnapshotV1(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1170,24 +1218,20 @@ Take bulk backups for multiple Nutanix virtual machines.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "PatchNutanixMountV1Input!"),
             };
-            PatchNutanixMountV1Reply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (PatchNutanixMountV1Reply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (PatchNutanixMountV1Reply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.PatchNutanixMountV1(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationPatchNutanixMountV1",
                 "($input: PatchNutanixMountV1Input!)",
-                fieldSpecDoc,
                 "PatchNutanixMountV1Reply"
-            );
+                );
+            PatchNutanixMountV1Reply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (PatchNutanixMountV1Reply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.PatchNutanixMountV1(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1197,24 +1241,20 @@ Take bulk backups for multiple Nutanix virtual machines.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteNutanixMountV1Input!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.DeleteNutanixMountV1(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationDeleteNutanixMountV1",
                 "($input: DeleteNutanixMountV1Input!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.DeleteNutanixMountV1(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1224,24 +1264,20 @@ Take bulk backups for multiple Nutanix virtual machines.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "MigrateNutanixMountV1Input!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.MigrateNutanixMountV1(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationMigrateNutanixMountV1",
                 "($input: MigrateNutanixMountV1Input!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.MigrateNutanixMountV1(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1251,24 +1287,20 @@ Take bulk backups for multiple Nutanix virtual machines.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteNutanixSnapshotInput!"),
             };
-            RequestSuccess? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (RequestSuccess)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (RequestSuccess)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.DeleteNutanixSnapshot(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationDeleteNutanixSnapshot",
                 "($input: DeleteNutanixSnapshotInput!)",
-                fieldSpecDoc,
                 "RequestSuccess"
-            );
+                );
+            RequestSuccess? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (RequestSuccess)this.Field;
+            }
+            string fieldSpecDoc = Mutation.DeleteNutanixSnapshot(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1278,24 +1310,20 @@ Take bulk backups for multiple Nutanix virtual machines.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RestoreFilesNutanixSnapshotInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.RestoreFilesNutanixSnapshot(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationRestoreFilesNutanixSnapshot",
                 "($input: RestoreFilesNutanixSnapshotInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.RestoreFilesNutanixSnapshot(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1305,24 +1333,20 @@ Take bulk backups for multiple Nutanix virtual machines.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DownloadFilesNutanixSnapshotInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.DownloadFilesNutanixSnapshot(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationDownloadFilesNutanixSnapshot",
                 "($input: DownloadFilesNutanixSnapshotInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.DownloadFilesNutanixSnapshot(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1332,24 +1356,20 @@ Take bulk backups for multiple Nutanix virtual machines.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "ExportNutanixSnapshotInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.ExportNutanixSnapshot(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationExportNutanixSnapshot",
                 "($input: ExportNutanixSnapshotInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.ExportNutanixSnapshot(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1359,24 +1379,20 @@ Take bulk backups for multiple Nutanix virtual machines.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DownloadNutanixSnapshotInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.DownloadNutanixSnapshot(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationDownloadNutanixSnapshot",
                 "($input: DownloadNutanixSnapshotInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.DownloadNutanixSnapshot(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1386,24 +1402,20 @@ Take bulk backups for multiple Nutanix virtual machines.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "BatchExportNutanixVmInput!"),
             };
-            BatchExportNutanixVmReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (BatchExportNutanixVmReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (BatchExportNutanixVmReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.BatchExportNutanixVm(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationBatchExportNutanixVm",
                 "($input: BatchExportNutanixVmInput!)",
-                fieldSpecDoc,
                 "BatchExportNutanixVmReply"
-            );
+                );
+            BatchExportNutanixVmReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (BatchExportNutanixVmReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.BatchExportNutanixVm(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1413,24 +1425,20 @@ Take bulk backups for multiple Nutanix virtual machines.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "BatchMountNutanixVmInput!"),
             };
-            BatchMountNutanixVmReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (BatchMountNutanixVmReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (BatchMountNutanixVmReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.BatchMountNutanixVm(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationBatchMountNutanixVm",
                 "($input: BatchMountNutanixVmInput!)",
-                fieldSpecDoc,
                 "BatchMountNutanixVmReply"
-            );
+                );
+            BatchMountNutanixVmReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (BatchMountNutanixVmReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.BatchMountNutanixVm(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1440,24 +1448,20 @@ Take bulk backups for multiple Nutanix virtual machines.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DownloadNutanixVmFromLocationInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.DownloadNutanixVmFromLocation(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationDownloadNutanixVmFromLocation",
                 "($input: DownloadNutanixVmFromLocationInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.DownloadNutanixVmFromLocation(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1467,24 +1471,20 @@ Take bulk backups for multiple Nutanix virtual machines.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CreateNutanixPrismCentralInput!"),
             };
-            BatchAsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (BatchAsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (BatchAsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.CreateNutanixPrismCentral(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationCreateNutanixPrismCentral",
                 "($input: CreateNutanixPrismCentralInput!)",
-                fieldSpecDoc,
                 "BatchAsyncRequestStatus"
-            );
+                );
+            BatchAsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (BatchAsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.CreateNutanixPrismCentral(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1494,24 +1494,20 @@ Take bulk backups for multiple Nutanix virtual machines.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "UpdateNutanixPrismCentralInput!"),
             };
-            UpdateNutanixPrismCentralReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (UpdateNutanixPrismCentralReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (UpdateNutanixPrismCentralReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.UpdateNutanixPrismCentral(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationUpdateNutanixPrismCentral",
                 "($input: UpdateNutanixPrismCentralInput!)",
-                fieldSpecDoc,
                 "UpdateNutanixPrismCentralReply"
-            );
+                );
+            UpdateNutanixPrismCentralReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (UpdateNutanixPrismCentralReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.UpdateNutanixPrismCentral(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1521,24 +1517,20 @@ Take bulk backups for multiple Nutanix virtual machines.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "DeleteNutanixPrismCentralInput!"),
             };
-            BatchAsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (BatchAsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (BatchAsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.DeleteNutanixPrismCentral(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationDeleteNutanixPrismCentral",
                 "($input: DeleteNutanixPrismCentralInput!)",
-                fieldSpecDoc,
                 "BatchAsyncRequestStatus"
-            );
+                );
+            BatchAsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (BatchAsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.DeleteNutanixPrismCentral(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1548,24 +1540,20 @@ Take bulk backups for multiple Nutanix virtual machines.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "RefreshNutanixPrismCentralInput!"),
             };
-            BatchAsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (BatchAsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (BatchAsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.RefreshNutanixPrismCentral(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationRefreshNutanixPrismCentral",
                 "($input: RefreshNutanixPrismCentralInput!)",
-                fieldSpecDoc,
                 "BatchAsyncRequestStatus"
-            );
+                );
+            BatchAsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (BatchAsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.RefreshNutanixPrismCentral(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1575,24 +1563,20 @@ Take bulk backups for multiple Nutanix virtual machines.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "NutanixPrismCentralAsyncRequestStatusInput!"),
             };
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (AsyncRequestStatus)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (AsyncRequestStatus)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.NutanixPrismCentralAsyncRequestStatus(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationNutanixPrismCentralAsyncRequestStatus",
                 "($input: NutanixPrismCentralAsyncRequestStatusInput!)",
-                fieldSpecDoc,
                 "AsyncRequestStatus"
-            );
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Mutation.NutanixPrismCentralAsyncRequestStatus(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
@@ -1602,24 +1586,20 @@ Take bulk backups for multiple Nutanix virtual machines.
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "BulkOnDemandSnapshotNutanixVmInput!"),
             };
-            BulkOnDemandSnapshotNutanixVmReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (BulkOnDemandSnapshotNutanixVmReply)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (BulkOnDemandSnapshotNutanixVmReply)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.BulkOnDemandSnapshotNutanixVm(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationBulkOnDemandSnapshotNutanixVm",
                 "($input: BulkOnDemandSnapshotNutanixVmInput!)",
-                fieldSpecDoc,
                 "BulkOnDemandSnapshotNutanixVmReply"
-            );
+                );
+            BulkOnDemandSnapshotNutanixVmReply? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (BulkOnDemandSnapshotNutanixVmReply)this.Field;
+            }
+            string fieldSpecDoc = Mutation.BulkOnDemandSnapshotNutanixVm(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
 

@@ -50,8 +50,8 @@ namespace RubrikSecurityCloud.PowerShell.Private
         protected override void BeginProcessing()
         {
             base.BeginProcessing();
-            this._logger.Debug("GetInputs=" + this.GetInputs+" GetGqlRequest="+this.GetGqlRequest + " _hasConnection="+_hasConnection);
-            _hasConnection = ! ( this.GetInputs || this.GetGqlRequest );
+            this._logger.Debug("GetInput=" + this.GetInput+" GetGqlRequest="+this.GetGqlRequest + " _hasConnection="+_hasConnection);
+            _hasConnection = ! ( this.GetInput || this.GetGqlRequest );
             if (_hasConnection)
             {
                 RetrieveConnection();
@@ -64,10 +64,17 @@ namespace RubrikSecurityCloud.PowerShell.Private
             if (_gqlRequest != null &&_hasConnection)
             {
                 this._logger.Debug($"Sending request {_opName} -> {_opReturnType}");
-                var result = this._rbkClient.Invoke(
-                    _gqlRequest, _gqlVars, _opReturnType, this._logger,
-                    GetMetricTags());
-                WriteObject(result, true);
+                try
+                {
+                    var result = this._rbkClient.Invoke(
+                        _gqlRequest, _gqlVars, _opReturnType, this._logger,
+                        GetMetricTags());
+                    WriteObject(result, true);
+                }
+                catch ( Exception ex)
+                {
+                    ThrowTerminatingException(ex);
+                }
             }
         }
 

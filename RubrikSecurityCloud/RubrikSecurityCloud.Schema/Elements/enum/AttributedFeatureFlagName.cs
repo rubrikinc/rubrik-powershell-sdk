@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         ROLLING_UPGRADE,
 
         [EnumMember(Value = "SAMPLE_FLAG_WITH_ATTRIBUTES")]
-        SAMPLE_FLAG_WITH_ATTRIBUTES
+        SAMPLE_FLAG_WITH_ATTRIBUTES,
+
+        [EnumMember(Value = "SONAR_PHASED_ANALYSIS")]
+        SONAR_PHASED_ANALYSIS
 
 
     } // enum AttributedFeatureFlagName

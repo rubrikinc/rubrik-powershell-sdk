@@ -18,6 +18,15 @@ using RubrikSecurityCloud.PowerShell.Private;
 
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
+    /// <summary>
+    /// AzureO365 mutations
+    /// </summary>
+    /// <description>
+    /// Invoke-RscMutateAzureO365 is a master cmdlet for AzureO365 work that can invoke any of the following subcommands: SetupExocompute.
+    /// </description>
+    /// <example>
+    /// <code>Invoke-RscMutateAzureO365 -SetupExocompute [-Arg ..] [-Field ..]</code>
+    /// </example>
     [Cmdlet(
         "Invoke",
         "RscMutateAzureO365",
@@ -85,24 +94,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("subscriptionId", "UUID!"),
                 Tuple.Create("exocomputeConfig", "AzureO365ExocomputeConfig!"),
             };
-            SetupAzureO365ExocomputeResp? fieldSpecObj = null ;
-            if (this.Field != null) {
-                if (this.Field is PSObject psObject) {
-                    fieldSpecObj = (SetupAzureO365ExocomputeResp)psObject.BaseObject;
-                } else {
-                    fieldSpecObj = (SetupAzureO365ExocomputeResp)this.Field;
-                }
-            }
-            string fieldSpecDoc = Mutation.SetupAzureO365Exocompute(ref fieldSpecObj);
             Initialize(
                 argDefs,
-                fieldSpecObj,
                 "mutation",
                 "MutationSetupAzureO365Exocompute",
                 "($tenantId: String!,$subscriptionId: UUID!,$exocomputeConfig: AzureO365ExocomputeConfig!)",
-                fieldSpecDoc,
                 "SetupAzureO365ExocomputeResp"
-            );
+                );
+            SetupAzureO365ExocomputeResp? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (SetupAzureO365ExocomputeResp)this.Field;
+            }
+            string fieldSpecDoc = Mutation.SetupAzureO365Exocompute(ref fieldSpecObj);
+            BuildInput(fieldSpecObj);
+            BuildRequest(fieldSpecDoc);
         }
 
 
