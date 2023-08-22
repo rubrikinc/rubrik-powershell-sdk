@@ -88,7 +88,7 @@ function Get-RscMssqlDatabaseFiles
       }
     }
 
-    $inputs.Arg["input"] = $inputValues
+    $inputs.Var["input"] = $inputValues
 
     # -5- Define the desired fields to be included in the response
     $fields = Get-RscType -Name V1MssqlGetRestoreFilesV1Response -InitialProperties @(
@@ -99,7 +99,7 @@ function Get-RscMssqlDatabaseFiles
       "items.originalPath"
       )
 
-    return $(Invoke-RscQueryMssql -Op $operation -Arg $inputs.Arg -Field $fields).Items
+    return $(Invoke-RscQueryMssql -Op $operation -Var $inputs.Var -Field $fields).Items
 
   } # End of process
 } # End of function

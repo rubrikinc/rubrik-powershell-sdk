@@ -1,5 +1,19 @@
 # Changelog
 
+## Version 0.12-beta
+
+New Features:
+
+- RscCmdletInput has 2 new methods, `VarInfo()` and `Info()`
+
+Fixes:
+
+- Fix bug in API server error reporting
+
+Deprecations:
+
+Breaking Changes:
+
 ## Version 0.11-beta
 
 New Features:

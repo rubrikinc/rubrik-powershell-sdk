@@ -130,11 +130,11 @@ function Get-RscCluster {
 
         # -4- Customize input objects:
         if ( $Id ) {
-            $in.Arg.clusterUuid = $Id
+            $in.Var.clusterUuid = $Id
         }
         else {
             if ( $First -gt 0 ) {
-                $in.Arg.first = $First
+                $in.Var.first = $First
             }
         }
 

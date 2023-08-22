@@ -387,7 +387,7 @@ parameters it takes?
 
 In GraphQL, a given operation needs to be given a set of _arguments_, and
 a _field specification_ that determines what fields are returned. In the
-context of the SDK, we call the arguments `Arg` and the field specification
+context of the SDK, we call the arguments `Var` and the field specification
 `Field` (because PowerShell has the convention to use singular nouns).
 
 You can see the arguments and fields for a given cmdlet by using the
@@ -396,7 +396,7 @@ You can see the arguments and fields for a given cmdlet by using the
 ```powershell
 PS> Invoke-RscQueryCluster -List -GetInput
 
-Op   Arg                                             Field
+Op   Var                                             Field
 --   ---                                             -----
 List {[before, ], [filter, ], [after, ], [first, ]…} ClusterConnection
 ```
@@ -419,8 +419,8 @@ pass the `first` argument like this:
 
 ```powershell
 $inputs=(Invoke-RscQueryCluster -List -GetInput)
-$inputs.Arg["first"]=3
-Invoke-RscQueryCluster -List -Arg $inputs.Arg
+$inputs.Var["first"]=3
+Invoke-RscQueryCluster -List -Var $inputs.Var
 ```
 
 If the field specification is not given, the SDK fills it in automatically
@@ -429,7 +429,7 @@ with sensible defaults, but you can also specify it yourself:
 Let's look at what the default field spec looks like for the `Nodes` field:
 
 ```powershell
-PS> (Invoke-RscQueryCluster -List -Arg $inputs.Arg).Nodes[0]
+PS> (Invoke-RscQueryCluster -List -Var $inputs.Var).Nodes[0]
 
 PauseStatus                     : NOT_PAUSED
 Status                          : DISCONNECTED
@@ -473,7 +473,7 @@ Here we set it to `"fetch"` but anything would work.
 Now let's run the command again, with the new field spec:
 
 ```powershell
-PS> (Invoke-RscQueryCluster -List -Arg $inputs.Arg -Field $inputs.Field).Nodes[0]
+PS> (Invoke-RscQueryCluster -List -Var $inputs.Var -Field $inputs.Field).Nodes[0]
 
 PauseStatus                     : NOT_PAUSED
 Status                          : DISCONNECTED

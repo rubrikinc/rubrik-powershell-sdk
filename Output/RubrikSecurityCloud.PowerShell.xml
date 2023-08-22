@@ -7990,7 +7990,7 @@
         <member name="P:RubrikSecurityCloud.PowerShell.Private.RscGqlPSCmdlet.Input">
             <summary>
             Specifies the inputs to the GraphQL operation.
-            Any other -Op, -Arg, or -Field parameter
+            Any other -Op, -Var, or -Field parameter
             will override what is given in -Input.
             </summary>
         </member>
@@ -8033,7 +8033,7 @@
         </member>
         <member name="P:RubrikSecurityCloud.PowerShell.Private.RscGqlPSCmdlet.GetInput">
             <summary>
-            Returns an object that contains the Op, Arg and Field inputs
+            Returns an object that contains the Op, Var and Field inputs
             that would be used to run the operation.
             </summary>
         </member>
@@ -8187,9 +8187,29 @@
             The name of the underlying GQL operation.
             </summary>
         </member>
+        <member name="M:RubrikSecurityCloud.RscCmdletInput.FieldInfo">
+            <summary>
+            Return documentation links for the Field object.
+            </summary>
+        </member>
+        <member name="M:RubrikSecurityCloud.RscCmdletInput.VarInfo">
+            <summary>
+            Return documentation links for the variables.
+            </summary>
+        </member>
+        <member name="M:RubrikSecurityCloud.RscCmdletInput.Info">
+            <summary>
+            Return documentation links for variables and Field object.
+            </summary>
+        </member>
         <member name="M:RubrikSecurityCloud.RscCmdletInput.ToString">
             <summary>
              String representation of this object.
+            </summary>
+        </member>
+        <member name="T:RubrikSecurityCloud.RscGqlOperation">
+            <summary>
+             A GraphQL Operation.
             </summary>
         </member>
         <member name="M:RubrikSecurityCloud.RscGqlOperation.#ctor(System.String,System.String,System.String,System.String,System.String)">
@@ -8244,6 +8264,11 @@
             if false, throw on missing required variables.
             </param>
             <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:RubrikSecurityCloud.RscGqlVars.Info">
+            <summary>
+            Return documentation links for the variables.
+            </summary>
         </member>
         <member name="M:RubrikSecurityCloud.RscGqlVars.conformToVarDefs(RubrikSecurityCloud.GetOverrideValueForVarDelegate,System.Boolean)">
             <summary>

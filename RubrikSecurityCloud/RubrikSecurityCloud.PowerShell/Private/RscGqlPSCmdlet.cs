@@ -23,7 +23,7 @@ namespace RubrikSecurityCloud.PowerShell.Private
     {
         /// <summary>
         /// Specifies the inputs to the GraphQL operation.
-        /// Any other -Op, -Arg, or -Field parameter
+        /// Any other -Op, -Var, or -Field parameter
         /// will override what is given in -Input.
         /// </summary>
         [Parameter(
@@ -99,7 +99,7 @@ namespace RubrikSecurityCloud.PowerShell.Private
         public string[] PatchFile { get; set; }
 
         /// <summary>
-        /// Returns an object that contains the Op, Arg and Field inputs
+        /// Returns an object that contains the Op, Var and Field inputs
         /// that would be used to run the operation.
         /// </summary>
         [Parameter(
@@ -185,7 +185,7 @@ namespace RubrikSecurityCloud.PowerShell.Private
             if (this.Input != null)
             {
                 this.Op = this.Input.Op;
-                this.Arg = this.Input.Arg;
+                this.Arg = this.Input.Var;
                 this.Field = this.Input.Field;
                 this.InputProfile = Exploration.Profile.EMPTY;
             }
@@ -354,7 +354,7 @@ namespace RubrikSecurityCloud.PowerShell.Private
             _gqlVars = new OperationVariableSet();
             if (!string.IsNullOrEmpty(_opArgs))
             {
-                _gqlVars.Variables = this._input.Arg.ToDict();
+                _gqlVars.Variables = this._input.Var.ToDict();
             }
         }
 

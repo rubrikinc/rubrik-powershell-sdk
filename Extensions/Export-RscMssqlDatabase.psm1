@@ -148,7 +148,7 @@ function Export-RscMssqlDatabase
         "config" = $config
     }
 
-    $inputs.Arg["input"] = $inputConf
+    $inputs.Var["input"] = $inputConf
     
     $fields = Get-RscType -Name AsyncRequestStatus -InitialProperties @(
         "endTime",
@@ -162,7 +162,7 @@ function Export-RscMssqlDatabase
     $fields.Progress = 0;
 
     # -5- Invoke GraphQL operation:
-    $result = Invoke-RscMutateMssql -Op $operation -Field $fields -Arg $inputs.Arg
+    $result = Invoke-RscMutateMssql -Op $operation -Field $fields -Var $inputs.Var
 
     $result
   }

@@ -156,5 +156,28 @@ namespace RubrikSecurityCloud
 
             return result.ToString();
         }
+
+        /// <summary>
+        /// Return documentation links for a GQL type name.
+        /// </summary>
+        /// <param name="gqlType">
+        /// Type name, can be null or empty, can have ! or [].
+        /// e.g. "[ClusterConnection!]!" returns
+        /// https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/clusterconnection.doc.html
+        /// </param>
+        public static string DocLinkForGqlType(string gqlType)
+        {
+            var url = "https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/";
+            if (string.IsNullOrEmpty(gqlType))
+            {
+                return url;
+            }
+            var t = gqlType.Replace("!", "").Replace("[", "").Replace("]", "").ToLower();
+            if (t == "int" || t == "string" || t == "boolean" || t == "bool" || t == "float" || t == "double" || t == "id" || t == "datetime")
+            {
+                return gqlType;
+            }
+            return url + t + ".doc.html";
+        }
     }
 }

@@ -56,7 +56,7 @@ function ___VERB___-Rsc___NOUN___ {
         #
         # Customize input:
         #
-        # $in.Arg.clusterUuid = $Id
+        # $in.Var.clusterUuid = $Id
         #
         # Invoke GraphQL operation:
         #

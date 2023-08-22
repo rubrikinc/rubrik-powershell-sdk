@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud
     public class RscCmdletInput
     {
         public String Op { get; set; }
-        public RscGqlVars Arg { get; set; }
+        public RscGqlVars Var { get; set; }
         public System.Object Field { get; set; }
         internal RscGqlOperation _gqlOperation = null;
 
@@ -26,12 +26,12 @@ namespace RubrikSecurityCloud
         /// </summary>
         public RscCmdletInput(
             string op,
-            RscGqlVars arg,
+            RscGqlVars vars,
             System.Object field,
             RscGqlOperation gqlOperation)
         {
             this.Op = op;
-            this.Arg = arg;
+            this.Var = vars;
             this.Field = field;
             this._gqlOperation = gqlOperation;
         }
@@ -44,16 +44,30 @@ namespace RubrikSecurityCloud
             return _gqlOperation;
         }
 
+        /// <summary>
+        /// Return documentation links for the Field object.
+        /// </summary>
         public string FieldInfo()
         {
-            if (string.IsNullOrEmpty(this._gqlOperation.ReturnType))
-            {
-                return "";
-            }
-            // example:
-            // https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/clusterconnection.doc.html
-            var gqlTypeName = this._gqlOperation.ReturnType.Replace("!", "").Replace("[", "").Replace("]", "").ToLower();
-            return "https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/" + gqlTypeName + ".doc.html";
+            return StringUtils.DocLinkForGqlType(this._gqlOperation.ReturnType);
+        }
+
+        /// <summary>
+        /// Return documentation links for the variables.
+        /// </summary>
+        public Hashtable VarInfo()
+        {
+            return this.Var.Info();
+        }
+
+        /// <summary>
+        /// Return documentation links for variables and Field object.
+        /// </summary>
+        public Hashtable Info()
+        {
+            var info = this.Var.Info();
+            info[this.Field.GetType().Name] = this.FieldInfo();
+            return info;
         }
 
         /// <summary>
@@ -67,7 +81,7 @@ namespace RubrikSecurityCloud
                 FieldStr = ((IFieldSpec)this.Field).AsFieldSpec()
                     .Replace("\n", " ");
             }
-            return $"RscCmdletInput(Op: {this.Op}, Arg: {this.Arg}, Field: {FieldStr})";
+            return $"RscCmdletInput(Op: {this.Op}, Var: {this.Var}, Field: {FieldStr})";
         }
     }
 }

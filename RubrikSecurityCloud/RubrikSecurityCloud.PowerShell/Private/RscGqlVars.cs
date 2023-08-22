@@ -14,7 +14,10 @@ using RubrikSecurityCloud.PowerShell.Private;
 // and is visible to the user
 namespace RubrikSecurityCloud
 {
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
     public delegate object GetOverrideValueForVarDelegate(string varName);
+#pragma warning restore 1591
 
     /// <summary>
     /// Variables to be used in a GraphQL query.
@@ -43,7 +46,7 @@ namespace RubrikSecurityCloud
         public RscGqlVars(
             System.Object obj,
             Tuple<String, String>[] varDefs = null,
-            GetOverrideValueForVarDelegate? getOverrideValueForVar = null,
+            GetOverrideValueForVarDelegate getOverrideValueForVar = null,
             bool ignoreRequired = false)
                 : this()
         {
@@ -84,7 +87,7 @@ namespace RubrikSecurityCloud
         public void Set(
             System.Object obj,
             Tuple<String, String>[] varDefs = null,
-            GetOverrideValueForVarDelegate? getOverrideValueForVar = null,
+            GetOverrideValueForVarDelegate getOverrideValueForVar = null,
             bool ignoreRequired = false)
         {
             if (varDefs != null && varDefs.Length > 0)
@@ -167,13 +170,29 @@ namespace RubrikSecurityCloud
         }
 
         /// <summary>
+        /// Return documentation links for the variables.
+        /// </summary>
+        public Hashtable Info()
+        {
+            var info = new Hashtable(StringComparer.OrdinalIgnoreCase);
+            foreach (DictionaryEntry varDef in _varDefs)
+            {
+                string varName = (string)varDef.Key;
+                string varType = (string)varDef.Value;
+                var v = StringUtils.DocLinkForGqlType(varType);
+                info.Add(varName, v);
+            }
+            return info;
+        }
+
+        /// <summary>
         /// Variable definitions modify the variables in 3 ways:
         /// - look up overrides from the cmdlet's parameters
         /// - throw on missing required variables
         /// - for basic types, convert the value to the correct type
         /// </summary>
         internal void conformToVarDefs(
-            GetOverrideValueForVarDelegate? getOverrideValueForVar = null,
+            GetOverrideValueForVarDelegate getOverrideValueForVar = null,
             bool ignoreRequired = false)
         {
 

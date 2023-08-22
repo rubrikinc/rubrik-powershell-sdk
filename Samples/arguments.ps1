@@ -24,7 +24,7 @@ Write-Code -Pause "Get-RscAccount -Setting -Reply `$reply"
 Get-RscAccount -Setting -Reply $settings
 
 Write-Message @"
-2. Queries that take a single argument will have a parameter called -Arg that
+2. Queries that take a single argument will have a parameter called -Var that
    expects an object/variable of the argument's type.
 "@
 

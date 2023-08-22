@@ -94,8 +94,8 @@ function Backup-SlaDomain
       "userNote" = $UserNote
     }
 
-    $inputs.Arg.input = $inputValues
+    $inputs.Var.input = $inputValues
 
-    return Invoke-RscMutateSla -Op $operation -Arg $inputs.Arg -Field $inputs.Field
+    return Invoke-RscMutateSla -Input $inputs
   }
 }

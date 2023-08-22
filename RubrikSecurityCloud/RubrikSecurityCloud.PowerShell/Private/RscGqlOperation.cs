@@ -14,6 +14,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 // and is visible to the user
 namespace RubrikSecurityCloud
 {
+    /// <summary>
+    ///  A GraphQL Operation.
+    /// </summary>
     public class RscGqlOperation
     {
         public string Kind { get; set; }

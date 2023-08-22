@@ -133,17 +133,17 @@ function Get-RscEventSeries {
       # -4- Customize input objects:
       if ( $Id ) {
           $activitySeriesInput = Get-RscType -Name "ActivitySeriesInput" -InitialValues @{"activitySeriesId"=$Id}
-          $inputs.Arg.input = $activitySeriesInput
+          $inputs.Var.input = $activitySeriesInput
       }
       else {
           if ( $First -gt 0 ) {
-              $inputs.Arg.first = $First
+              $inputs.Var.first = $First
           }
           $inputs.Field.Nodes[0].ActivitySeriesId = ""
       }
 
       # -5- Invoke GraphQL operation:
-      $result = Invoke-RscQueryActivitySeries -Op $operation -Field $inputs.Field -Arg $inputs.Arg
+      $result = Invoke-RscQueryActivitySeries -Op $operation -Field $inputs.Field -Var $inputs.Var
 
       # -6- Filter results:
       if ( $PSCmdlet.ParameterSetName -eq "List" ) {

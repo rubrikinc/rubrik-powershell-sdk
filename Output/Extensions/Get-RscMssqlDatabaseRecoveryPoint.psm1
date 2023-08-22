@@ -74,10 +74,10 @@ function Get-RscMssqlDatabaseRecoveryPoint {
     )
     if ($PSBoundParameters.ContainsKey('Latest')) {
         $inputs = Invoke-RscQueryMssql -RecoverableRange -GetInput
-        $inputs.Arg["input"] = @{"id"=$id}
+        $inputs.Var["input"] = @{"id"=$id}
 
         $recoveryRangeFields = Get-RscType -Name MssqlRecoverableRangeListResponse -InitialProperties @("data.begintime", "data.endtime")
-        $LatestRecoveryRange = $(Invoke-RscQueryMssql -RecoverableRange -Input $inputs.Arg.input -Field $recoveryRangeFields).Data[$_.Count -1]
+        $LatestRecoveryRange = $(Invoke-RscQueryMssql -RecoverableRange -Input $inputs.Var.input -Field $recoveryRangeFields).Data[$_.Count -1]
         $RecoveryDateTime = $LatestRecoveryRange.EndTime.ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ss.fffZ')
     }
     if ($PSBoundParameters.ContainsKey('LastFull')) {

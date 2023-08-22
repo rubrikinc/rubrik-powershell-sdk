@@ -142,8 +142,8 @@ function Write-SlaDomain
       "isRetentionLockedSla" = $IsRetentionLockedSla
     }
 
-    $inputs.Arg.input = $inputValues
+    $inputs.Var.input = $inputValues
 
-    return Invoke-RscMutateSla -Op $operation -Arg $inputs.Arg -Field $inputs.Field
+    return Invoke-RscMutateSla -Op $operation -Var $inputs.Var -Field $inputs.Field
   }
 }

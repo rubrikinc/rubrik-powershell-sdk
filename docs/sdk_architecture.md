@@ -49,11 +49,11 @@ Example: Query-RscCluster command
         - Fields = Fields in the response.
 - Using -GetInput switch
     - Example: `Query-RscCluster -List -GetInput` returns
-      an object with three fields: Arg, Field, and Op
+      an object with three fields: Var, Field, and Op
 - Modifying inputs
     - Typically, you don't set `Op` since it's already
       set to the operation you're calling.
-    - Set the value of `Arg` and `Field` and then call the query
+    - Set the value of `Var` and `Field` and then call the query
 - Workflow: Define inputs using variables ahead of calling the query
     - Call -GetInput
     - Modify the inputs
