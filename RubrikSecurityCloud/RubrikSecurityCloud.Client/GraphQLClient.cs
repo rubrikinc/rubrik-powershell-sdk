@@ -302,7 +302,7 @@ namespace RubrikSecurityCloud.NetSDK.Client
                 throw;
             }
             logger?.Debug(this.GraphQLResponseToString<T>(response));
-            if (response.Data == null)
+            if (response.Errors != null)
             {
                 var httpResp = response as GraphQLHttpResponse<T>;
                 throw new Exception(

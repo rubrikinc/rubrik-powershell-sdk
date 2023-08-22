@@ -2901,6 +2901,14 @@ type Query {
 
   # Status of the federated login.
   federatedLoginStatus: FederatedLoginStatus!
+
+  # Get details about an async request
+  # 
+  # Supported in v5.0+
+  # Get details about a fileset related async request.
+  filesetRequestStatus(
+    # Input for V1GetFilesetAsyncRequestStatus.
+    input: GetFilesetAsyncRequestStatusInput!): AsyncRequestStatus!
   filesetSnapshot(
     # ID of snapshot.
     id: String!,
@@ -42835,6 +42843,14 @@ input GetDefaultDbPropertiesV1Input {
 input GetDefaultGatewayInput {
   # Required. UUID used to identify the cluster the request goes to.
   clusterUuid: String!
+}
+# Input for retrieving details about a fileset-related async request.
+input GetFilesetAsyncRequestStatusInput {
+  # Required. UUID used to identify the cluster the request goes to.
+  clusterUuid: String!
+
+  # Required. ID of the request.
+  id: String!
 }
 # Input for retrieving the health monitor policy status.
 input GetHealthMonitorPolicyStatusInput {
