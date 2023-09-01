@@ -7,6 +7,8 @@ Supported in v9.0+
       Container registry URL for storing Rubrik container images.
 - distribution: System.String
   - Distribution of the Kubernetes cluster to be added.
+- k8SAwsConfig: K8sAwsConfigInput
+  - The AWS config for the EKS Kubernetes cluster to be added.
 - region: System.String
   - Region of the Kubernetes cluster to be added.
 - kubeconfig: System.String

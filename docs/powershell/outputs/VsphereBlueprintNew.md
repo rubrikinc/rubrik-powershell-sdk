@@ -83,3 +83,5 @@
   - Details of the local blueprint RPO lag.
 - remoteRpoLagInfo: RpoLagInfo
   - Information about the remote RPO lag for the Blueprint.
+- blueprintSchedule: Schedule
+  - Recovery schedule for this blueprint.

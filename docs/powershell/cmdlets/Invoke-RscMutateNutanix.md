@@ -154,14 +154,6 @@ Changes the power status of a mounted Nutanix virtual machine.
 
 - There is a single argument of type PatchNutanixMountV1Input.
 - Returns PatchNutanixMountV1Reply.
-### prismcentralasyncrequeststatus
-Get Nutanix Prism Central async request status
-
-Supported in v9.0+
-Get details about a Nutanix pc-related async request.
-
-- There is a single argument of type NutanixPrismCentralAsyncRequestStatusInput.
-- Returns AsyncRequestStatus.
 ### refreshcluster
 Refresh Nutanix cluster metadata
 

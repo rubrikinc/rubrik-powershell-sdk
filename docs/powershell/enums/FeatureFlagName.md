@@ -6,6 +6,7 @@ Feature flag names.
 - MINUTE_LEVEL_SLA_FREQUENCY_ENABLED - Determines whether Minute level SLA frequency configuration is allowed.
 - NOTES_ENABLED
 - CLASSIFICATION_LOGIN_ENABLED
+- AUTH0_REPLACEMENT_SSO_WIZARD_ENABLED - Determines whether the Auth0 replacement SSO wizard is enabled.
 - KUPR_GA_ENABLED
 - MANDATORY_TOTP_ENABLED - Determines whether TOTP is mandatory for the account.
 - O365_TEAMS_EXPORT_ENABLED - Determines whether O365 Teams Export is enabled.
@@ -49,6 +50,7 @@ Feature flag names.
 - M365_SHAREPOINTDRIVE_RANSOMWARE_INVESTIGATION_ENABLED - Determines whether Ransomware Investigation for M365 SharePointDrive is enabled.
 - RADAR_RANSOMWARE_MODEL_B_SHADOW_ENABLED - Determines if model-b is enabled in shadow mode for stage 2.
 - AzureCrossRegionReplicationEnabled
+- AWS_S3_V2_ENABLED - Determines if AWS S3 V2 is enabled.
 - APPFLOWS_SCHEDULE_RECOVERIES_ENABLED - Determines whether the AppFlows Schedule Recoveries feature is enabled.
 - DSCC_DASHBOARD_ENABLED - Determines whether the Data Security Command Center dashboard is enabled.
 - AWS_MULTI_ACCOUNT_ADDITION_ENABLED - Determines whether multiple cloud account addition is enabled for AWS.
@@ -151,6 +153,7 @@ Feature flag names.
 - SAAS_ROOM_ENABLED - Specifies whether the SaaS App Protection room is enabled in the room switcher.
 - MODAL_DARK_MODE_ALLOWED - Specifies whether dark mode is allowed in modals.
 - UAPermissionsTabEnabled
+- ENABLE_MY_REPORTS - Specifies whether to show the My Reports switch on ReportListActionBar.
 - MSSQL_SNAPSHOT_MANAGEMENT_ENABLED - Determines if Snapshot Management is enabled for MSSQL.
 - CAPACITY_OVERTIME_REPORT_ENABLED - Determines whether the Capacity Overtime Report is enabled.
 - AWS_SHARED_EXOCOMPUTE_ENABLED - Determines whether AWS shared Exocompute settings are enabled.
@@ -180,6 +183,7 @@ Feature flag names.
 - MULTITENANCY_TENANT_SLA_SELF_SERVICE_ENABLED - Specifies whether self-service of SLA Domains is enabled for multitenant organizations.
 - PASSWORD_COMPLEXITY_POLICY_ENABLED - Specifies whether the Password Complexity Policy feature is enabled.
 - DATA_DISCOVERY_BATCHED_SYNC_ENABLED - Determines whether batched policy sync to Rubrik CDM is enabled for Data Discovery.
+- LLM_CHAT_ENABLED - Specifies whether LLM Chat is enabled.
 - VSPHERE_DUPLICATE_VM_ENABLED - Determines whether the vSphere duplicate virtual machine is enabled.
 - APPFLOWS_CYBER_RECOVERY_EXPORT_ENABLED - Determines if Export support for Cyber Recovery is enabled.
 - APPFLOWS_RECOVERY_PLANS_ENABLED - Determines whether recovery plans is enabled for Appflows.
@@ -202,6 +206,7 @@ Feature flag names.
 - O365OnedriveGAOrgSlaAssigmnentEnabled
 - RADAR_FOR_NAS_CD_ENABLED - Determines whether Rubrik Ransomware Investigation is enabled for NAS Cloud Direct.
 - RCV_GSLA_REVAMP_ENABLED - Determines whether Rubrik Cloud Vault (RCV) locations are allowed as archival target for SLA Domain revamp.
+- INDEXING_REPORT_ENABLED - Determines whether indexing report is enabled.
 - EnforceMoatOnAPIsEnabled
 - CloudNativeGCPEnabled
 - SNAPMIRROR_FEATURE_ENABLEMENT_ENABLED - Determines if Snapmirror features can be toggled.
@@ -226,9 +231,11 @@ Feature flag names.
 - CLOUD_CLUSTER_ES_BETA - Enables the Cloud Cluster ES beta changes.
 - O365DashboardEnabled
 - SELF_HELP_ENABLED - Determines if the Self-help feature of Rubrik Security Cloud is enabled.
+- DATE_TIME_PREFERENCES_ENABLED - Determines whether date and time preferences are enabled for the user.
 - LdapEnabled
 - SonarObjectFilesEnabled
 - SONAR_EU_DEFAULT_POLICIES_ENABLED - Determines if EU Default policies are enabled in Sonar.
+- KEEP_CCES_RESOURCES_ON_FAILURE - Specifies whether Rubrik is allowed to retain resources in case of Rubrik Cloud Cluster operation failure.
 - DB2_HADR_ENABLED
 - HyperVHierarchyEnabled
 - APPFLOWS_EXCHANGE_BULK_RECOVERY_ENABLED - Specifies whether the appflows bulk recovery workflow for Exchange is enabled.
@@ -298,6 +305,7 @@ Feature flag names.
 - SsoEnabled
 - CUSTOMER_SPECIFIC_SNS_TOPIC_ENABLED - Determines if your account must use a customer-specific Amazon Simple Notification Service (Amazon SNS) topic.
 - GlobalSLAGPSEnabled
+- AWS_MANUAL_CLOUD_ACCOUNTS_SETUP_ENABLED - Determines whether the user can set up a cloud account manually.
 - AzureFileIndexingEnabled
 - DatagovNasAuditEnabled
 - PRODUCT_ENTITLEMENT_ANOMALY_KORGJOB_ENABLED - Determines if product-entitlement-anomaly korg job should be enabled.
@@ -416,6 +424,7 @@ Feature flag names.
 - INVENTORY_SWITCHER_ENABLED - Enables the inventory switcher in the global header navbar.
 - MS_EXCHANGE_INVENTORY_ENABLED - Determines if MS Exchange is enabled.
 - M365_SKIPPED_ITEM_VISIBILITY_ENABLED - Determines whether Microsoft 365 skipped item visibility is enabled.
+- RSC_UPGRADES_CIAM_INTEGRATION - Specifies whether the SalesForceDotCom service account will be used for retrieving CDM tarballs by the CDM upgrade service.
 - SapHanaOnGcpEnabled
 - ORG_REPORT_ASSIGNMENT_ENABLED - Specifies whether tenant organizations can be assigned reports.
 - ObjectTypeSLAEnhancementEnabled

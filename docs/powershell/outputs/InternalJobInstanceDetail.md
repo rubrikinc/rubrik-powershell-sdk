@@ -40,3 +40,6 @@ Supported in v5.0+
 - opentracingContext: System.String
   - Supported in v8.1+
   Trace id of the job instance.
+- eventSeriesId: System.String
+  - Supported in v9.1
+  The associated event series ID of the job.

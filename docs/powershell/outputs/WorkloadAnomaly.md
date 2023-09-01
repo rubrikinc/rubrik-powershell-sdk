@@ -10,7 +10,7 @@ A workload that has a snapshot or children with anomalous activity.
 - anomalousSnapshotFid: System.String
   - The FID of the snapshot which was determined to have anomalous activity.
 - anomalousSnapshotId: System.String
-  - The Rubrik CDM ID of the snapshot determined to have anomalous activity.
+  - The Rubrik cluster ID of the snapshot determined to have anomalous activity.
 - createdFileCount: System.Int64
   - The number of files created within the snapshot.
 - deletedFileCount: System.Int64

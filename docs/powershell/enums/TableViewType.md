@@ -19,3 +19,7 @@ All valid table views.
 - OBJECT_AUDIT_LIST_TABLE - Table displaying a list of latest protection audits for each protected workload.
 - OBJECT_AUDIT_DETAIL_TABLE - Table displaying a list of protection audits for the single protected workload.
 - COMPLIANCE_ALL_TABLE - Main table for the compliance report.
+- INDEXING_REPORT_ALL_TABLE - Main table for the indexing report.
+- INDEXING_REPORT_BY_SLA_TABLE - Table displaying indexing statistics for each SLA Domain.
+- INDEXING_REPORT_BY_OBJECT_TYPE_TABLE - Table displaying indexing statistics for each Object Type.
+- INDEXING_REPORT_BY_LOCATION_TABLE - Table displaying indexing statistics for each Location.

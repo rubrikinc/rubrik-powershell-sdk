@@ -27,3 +27,5 @@ Details for creating a new organization.
   - Existing SSO groups to be authorized for this tenant organization.
 - newSsoGroups: list of NewSsoGroupInputs
   - New SSO groups to be authorized for this tenant organization.
+- isServiceAccountEnabled: System.Boolean
+  - Specifies if service accounts are enabled for this organization.

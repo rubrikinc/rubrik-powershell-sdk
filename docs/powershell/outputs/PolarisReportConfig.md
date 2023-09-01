@@ -9,6 +9,8 @@ The saved configurations of a report.
   - Report name.
 - reportViewType: PolarisReportViewType
   - Type of report.
+- reportRoom: ReportRoomType
+  - Room of report.
 - charts: list of ChartViewTypes
   - A list of selected charts in the report.
 - table: TableViewType

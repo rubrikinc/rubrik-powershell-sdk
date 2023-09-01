@@ -2,7 +2,7 @@
 App item type with their cascading impact.
 
 - appItemTypeToken: System.String
-  - Token specifying the type of the item. The token should exactly match with the token retrieved from query graphql field response.
+  - Token specifying the type of the item. The token should exactly match the token retrieved from query graphql field response.
 - appItemTypeDisplayName: System.String
   - Display name to be used for the item type.
 - count: System.Int32

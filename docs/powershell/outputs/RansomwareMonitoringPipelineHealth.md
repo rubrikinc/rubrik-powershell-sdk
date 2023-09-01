@@ -9,3 +9,7 @@ Specifies the pipeline health metric for Threat Monitoring,Threat Hunt, and Rans
   - Number of hunts which had matches.
 - activeHunts: System.Int64
   - Number of hunts which are active.
+- successfulBackups: System.Int64
+  - Number of successful backups.
+- failedBackups: System.Int64
+  - Number of failed backups.

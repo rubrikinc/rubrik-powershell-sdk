@@ -20,3 +20,4 @@ Name of product.
 - RADAR_NAS - Ransomware Investigation on NAS.
 - SONAR_NAS - Sensitive Data Discovery on NAS.
 - USER_ACCESS - User Access.
+- SONAR_O365 - Sensitive Data Discovery on Microsoft Office 365.

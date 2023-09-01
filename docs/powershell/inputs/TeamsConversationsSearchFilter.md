@@ -11,3 +11,5 @@ Parameters for teams conversations search.
 - includeArchived: System.Boolean
 - fetchAllPostSenders: System.String
   - Describes whether to send post senders(shouldn't be called by UI).
+- skipPostsAttachments: System.Boolean
+  - Describes whether to skip attachments(shouldn't be called by UI).

@@ -5,8 +5,8 @@ Atlassian site.
   - The count of Jira projects under the Atlassian site.
 - storageRegion: StorageRegion
   - The RSC storage region for the Atlassian site.
-- licenseDetails: AtlassianSiteLicenseDetails
-  - The RSC license details for the Atlassian site.
+- siteURL: System.String
+  - The URL of the Atlassian site.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
 - id: System.String

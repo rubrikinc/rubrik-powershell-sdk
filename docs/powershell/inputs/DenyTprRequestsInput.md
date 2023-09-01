@@ -1,7 +1,7 @@
 ### DenyTprRequestsInput
 Deny TPR requests with optional comments.
 
-- ids: list of System.Strings
-  - Specifies a list of TPR request IDs to deny.
+- requestIds: list of System.Strings
+  - IDs of the TPR requests to deny.
 - comment: System.String
-  - Comment to include when denying the requests.
+  - Comment to include with the requests.

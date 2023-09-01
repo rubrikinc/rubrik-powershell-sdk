@@ -2,7 +2,7 @@
 Schedule information.
 
 - startRunTime: DateTime
-  - Start run time.
+  - Initial run time.
 - timezone: System.String
   - User's time zone.
 - frequency: ScheduleFrequency
@@ -10,4 +10,4 @@ Schedule information.
 - recoveryConfig: RecoveryConfig
   - Recovery configuration.
 - recipients: list of System.Strings
-  - Recipients of the recovery report.
+  - Recovery report recipients.

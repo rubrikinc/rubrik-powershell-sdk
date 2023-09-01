@@ -1,7 +1,7 @@
 ### TprRoleEligibilityType
-TPR role assignment eligibility response.
+TPR role assignment eligibility reply.
 
 - isTprRoleEligible: System.Boolean
-  - Whether a TPR role can be assigned.
+  - Result if the user is eligible.
 - reason: System.String
-  - Reason TPR role can or cannot be assigned.
+  - Reason of the eligibility status.

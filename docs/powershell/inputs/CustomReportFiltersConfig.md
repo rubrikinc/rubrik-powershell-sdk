@@ -44,3 +44,7 @@
 - policyId: list of System.Strings
   - List of policy IDs to filter on.
 - sonarObjectTypes: list of HierarchyObjectTypeEnums
+- shouldApplyWhitelists: System.Boolean
+  - Whether to apply whitelists for the report.
+- date: DateTime
+  - The date for the report.

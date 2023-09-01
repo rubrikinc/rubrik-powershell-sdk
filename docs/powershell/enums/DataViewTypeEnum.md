@@ -30,3 +30,5 @@ All reporting table schemas.
 - SLA_AUDIT_DETAIL_NG - Specifies all audit information for the single SLA Domain.
 - OBJECT_PROTECTION_AUDIT_LIST - Specifies the latest protection audit information for each protected workload.
 - OBJECT_PROTECTION_AUDIT_DETAIL - Specifies all protection audit information for the single protected workload.
+- QAUTH_OBJECTS - Specifies the database schema for QAuth objects.
+- QAUTH_ROLES -  Specifies the database schema for QAuth roles.

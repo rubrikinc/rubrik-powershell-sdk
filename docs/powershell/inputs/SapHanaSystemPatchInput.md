@@ -3,8 +3,8 @@ Supported in v5.3+
 
 - configuredSlaDomainId: System.String
   - Supported in v5.3+
-      v5.3-v9.0: The ID of the SLA Domain that is configured for the SAP HANA system.
-      v9.1: Deprecated. Make sure to use the SLA APIs for updating the SLA Domain of the SAP HANA database.
+      v5.3-v8.1: The ID of the SLA Domain that is configured for the SAP HANA system.
+      v9.0+: Deprecated. Make sure to use the SLA APIs for updating the SLA Domain of the SAP HANA database.
 - hostIds: list of System.Strings
   - Supported in v5.3+
       The SAP HANA system hosts.
@@ -24,4 +24,5 @@ Supported in v5.3+
   - Supported in v7.0+
       Information required to connect to SAP HANA database over SSL.
 - authTypeSpec: SapHanaSystemAuthTypeSpecInput
-  - Specifies the authentication type for the SAP HANA system.
+  - Supported in v9.0+
+      Specifies the authentication type for the SAP HANA system.

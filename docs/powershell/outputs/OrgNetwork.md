@@ -2,7 +2,7 @@
 Organization network details.
 
 - orgNetworkName: System.String
-  - Name of the Organization network.
+  - Name of the organization network.
 - orgNetworkId: System.String
   - Organization network ID.
 - org: Org

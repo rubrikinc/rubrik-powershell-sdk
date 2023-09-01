@@ -8,4 +8,5 @@ Supported in v5.3+
   - Required. Supported in v5.3+
   Indicates whether the SAP HANA system has replication enabled.
 - authTypeSpec: SapHanaSystemAuthTypeSpec
-  - Specifies the authentication type for the SAP HANA system.
+  - Supported in v9.0+
+  Specifies the authentication type for the SAP HANA system.

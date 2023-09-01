@@ -7,3 +7,5 @@ User count for different risk categories.
   - Number of Medium-risk principals.
 - lowRiskCount: SummaryCount
   - Number of Low-risk principals.
+- totalCount: SummaryCount
+  - Number of principals.

@@ -125,6 +125,7 @@ All supported managed objects.
 - NUTANIX_CATEGORY_VALUE - Nutanix Category Value.
 - K8S_CLUSTER - On-prem Kubernetes Cluster
 - K8S_RESOURCE_SET - On-prem Kubernetes Resource Set
+- VSPHERE_DATACENTER_FOLDER - VMware vSphere datacenter folder.
 - UNKNOWN_MANAGED_OBJECT_TYPE - Unsupported managed object type
  NB: ideally we should use 0, but we missed it.
  using 10000 to make coding and debugging easier with number in logs.

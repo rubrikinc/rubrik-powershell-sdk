@@ -9,7 +9,7 @@ Response for getting the TPR Policy detail.
   - The time at which the TPR policy was created.
 - createdBy: UserSummary
   - The user who created the TPR policy.
-- exemptServiceAccounts: list of System.Strings
+- exemptServiceAccounts: list of ServiceAccountClients
   - Service accounts exempt from the TPR policy.
 - policyId: System.String
   - ID of the TPR policy.

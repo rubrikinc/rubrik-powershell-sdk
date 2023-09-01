@@ -5,6 +5,8 @@ Used in bulk query for TPR requests.
   - User making the TPR request.
 - orgId: System.String
   - ID of the org.
+- orgName: System.String
+  - Name of the org.
 - status: TprReqStatus
   - Status of the request.
 - updatedAt: DateTime
@@ -13,3 +15,5 @@ Used in bulk query for TPR requests.
   - Highest priority rule triggered by the request.
 - requestId: System.String
   - TPR Request ID.
+- operations: AuthorizedOps
+  - Authorized operations.

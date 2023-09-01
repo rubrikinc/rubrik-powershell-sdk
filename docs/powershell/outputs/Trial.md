@@ -13,6 +13,8 @@ A trial offered within Rubrik Security Cloud.
   - Specifies if any user has completed the trial onboarding.
 - isIgnored: System.Boolean
   - Specifies if the user has ignored the trial.
+- wasExplicitlyInvited: System.Boolean
+  - Specifies if the user was invited to the trial by another user.
 - type: TrialType
   - The type of the trial.
 - params: TrialSpecificParams

@@ -2,6 +2,7 @@
 User audit object type.
 
 - ArchivalLocation - Archival location type.
+- TPR_POLICY - TPR policy type.
 - ACTIVE_DIRECTORY_DOMAIN - Active Directory domain type.
 - K8S_CLUSTER - Kubernetes Cluster type.
 - OracleRac - Oracle RAC type.
@@ -19,6 +20,7 @@ User audit object type.
 - GcpNativeProject - GCP native project type.
 - AwsNativeRdsInstance - AWS native RDS instance type.
 - O365Organization - Office 365 organization type.
+- TPR_REQUEST - TPR request type.
 - VolumeGroup - Volume group type.
 - MONGO_COLLECTION - MongoDB Collection type.
 - O365Group - Office 365 Group type.
@@ -68,6 +70,7 @@ User audit object type.
 - AwsNativeEbsVolume - AWS native EBS volume type.
 - ACTIVE_DIRECTORY_DOMAIN_CONTROLLER - Active Directory domain controller type.
 - UserActionAudit - User action audit type.
+- TPR_CONFIG - TPR configuration type.
 - CASSANDRA_COLUMN_FAMILY - Cassandra column family type.
 - EXCHANGE_SERVER - Exchange Server type.
 - ENCRYPTION_MANAGEMENT - Encryption Management type.
