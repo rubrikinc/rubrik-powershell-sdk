@@ -5,14 +5,21 @@
 New Features:
 
 - RscCmdletInput has 2 new methods, `VarInfo()` and `Info()`
+- new (advanced) documentation: `docs/graphql_model.md`
+- `Fetch()` method on schema types.
 
 Fixes:
 
 - Fix bug in API server error reporting
+- The term "Op" or "Operation" was used in the SDK where it was
+  really referring to a *GraphQL Root Field*. This has been fixed.
 
 Deprecations:
 
 Breaking Changes:
+
+- Assemblies are no longer installed at the root of the output
+  directory, but instead in a platform subdirectory: `net472` or `net6.0`
 
 ## Version 0.11-beta
 

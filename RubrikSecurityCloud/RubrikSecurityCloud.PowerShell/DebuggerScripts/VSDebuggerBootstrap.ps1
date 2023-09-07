@@ -15,13 +15,16 @@
 
 param(
 	[switch] $UseServiceAccountFile=$true,
+	[switch] $VerboseLogging=$false,
 	[string] $EnvName
 )
+
+$psd1_path = ".\bin\Debug\RubrikSecurityCloud.psd1"
 
 try{
 	Write-Output ([String]::Format("Using environment: {0}", $envName))
 	
-	$debugConfig = Get-Content DebuggerScripts\debugconfig.json | ConvertFrom-Json
+	$debugConfig = Get-Content .\DebuggerScripts\debugconfig.json | ConvertFrom-Json
 
 	if ($null -eq $debugConfig)
 	{
@@ -37,12 +40,58 @@ try{
 
 	if ($UseServiceAccountFile)
 	{
-		$sa_file = $envConfig.filePath
-		Import-Module '.\bin\Debug\net6.0\RubrikSecurityCloud.psd1'
-		Write-Output("Connecting to Rubrik Security Cloud using `"Connect-Rsc`"...")
-		Set-RscServiceAccountFile -InputFilePath $sa_file
-		Connect-Rsc
-		Set-Location \
+		try{
+			$sa_profile_dir = Join-Path (Split-Path $PROFILE) -ChildPath "rubrik-powershell-sdk"
+
+			$sa_file_full_path = $envConfig.filePath
+			$sa_file_name = Split-Path $sa_file_full_path -Leaf
+			$sa_file_extension = Split-Path $sa_file_full_path -Extension
+	
+			$sa_enc_file_name = "$(Split-Path $sa_file_name -LeafBase).xml"
+			$sa_enc_file_full_path = Join-Path $sa_profile_dir -ChildPath $sa_enc_file_name
+		}
+		catch{
+			Throw "Unable to get or set serivce account file paths: $_"
+		}
+
+		if ($VerboseLogging){
+			Write-Output("=== ENVIRONMENT SETTINGS ===")
+			Write-Output('$sa_profile_dir: ' + $sa_profile_dir)
+			Write-Output('$sa_file_full_path: ' + $sa_file_full_path)
+			Write-Output('$sa_file_name: ' + $sa_file_name)
+			Write-Output('$sa_file_extension: ' + $sa_file_extension)
+			Write-Output('$sa_enc_file_name: ' + $sa_enc_file_name)
+			Write-Output('$sa_enc_file_full_path: ' + $sa_enc_file_full_path)
+		}
+
+		try{
+			# Import the RSC module from the debug build
+			Import-Module $psd1_path
+		}
+		catch{
+			Throw "Unable to import Rubrik Security Cloud Module: $_"
+		}
+		
+
+		try{
+			#Check if the encrypted SA file exists and if not, create it.
+			if (-Not (Test-Path $sa_enc_file_full_path)){
+				Set-RscServiceAccountFile -InputFilePath $sa_file_full_path -OutputFilePath $sa_enc_file_full_path
+			}
+		}
+		catch{
+			Throw "Unable to encrypt and save service account file: $_"
+		}
+
+		try{
+			Write-Output("Connecting to Rubrik Security Cloud using `"Connect-Rsc`"...")
+
+			Connect-Rsc -ServiceAccountFile $sa_enc_file_full_path
+			Set-Location \
+		}
+		catch{
+			Throw "Unable to connect to Rubtik Security Cloud: $_"
+		}
 	} 
 	else
 	{
@@ -50,14 +99,14 @@ try{
 		$sa_secret = $envConfig.$sa_secret
 		$sa_url = $envConfig.$sa_url
 
-		Import-Module '.\bin\Debug\net6.0\RubrikSecurityCloud.psd1'
+		Import-Module $psd1_path
 		Write-Output("Connecting to Rubrik Security Cloud using `"Connect-Rsc`"...")
 		Connect-Rsc -Server $sa_url -ClientId $sa_id -ClientSecret $sa_secret
 		Set-Location \
 	}
 }
 catch{
-	Write-Error("Unable to connecto to Rubrik Security Cloud: "+$_)
+	Write-Error($_)
 	exit 1
 }
 

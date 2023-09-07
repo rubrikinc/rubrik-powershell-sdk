@@ -2245,10 +2245,10 @@ type Query {
     # The path under which you want your search to run.
     path: String!,
 
-    # Id of the snapshot to be searched/browsed
+    # ID of the snapshot to be searched or browsed.
     snapshotFid: UUID!,
 
-    # Name prefix for searching for files within a snapshot.
+    # Name prefix to search for files within a snapshot.
     searchPrefix: String): SnapshotFileConnection!
 
   # Returns the script to setup backup for a SQL Server database.
@@ -13730,6 +13730,17 @@ type ArchiveK8sClusterReply {
   # UUID of the archived Kubernetes cluster.
   clusterId: UUID!
 }
+# Specifies the level at which an ARM template should be deployed.
+enum ArmTemplateDeploymentLevel {
+  # Unspecified deployment level.
+  DEPLOYMENT_LEVEL_UNSPECIFIED
+
+  # Resource group level.
+  RESOURCE_GROUP
+
+  # Subscription level.
+  SUBSCRIPTION
+}
 # Represents the trust policy for a role.
 type ArtifactPolicy {
   # The role for the trust policy.
@@ -18822,13 +18833,19 @@ type AzureArmTemplateByFeature {
 
   # Policy permission version to be used for adding and upgrading the subscription.
   version: Int!
+
+  # Policy permissions groups versions to be used for adding and upgrading the subscription.
+  permissionsGroupVersions: [PermissionsGroupWithVersion!]!
+
+  # The level at which the template should be deployed.
+  deploymentLevel: ArmTemplateDeploymentLevel!
 }
 # Input for retrieving ARM templates for custom roles.
 input AzureArmTemplatesByFeatureInput {
   # Domain name of the customer's Azure Tenant.
   customerTenantDomainName: String!
 
-  # Features to be enabled for the Azure Cloud Account.
+  # Deprecated, use featuresToInclude instead. Features to be enabled for the Azure cloud account.
   features: [CloudAccountFeature!]!
 
   # Azure cloud account operation type.
@@ -18836,6 +18853,9 @@ input AzureArmTemplatesByFeatureInput {
 
   # Azure cloud type.
   cloudType: AzureCloudType!
+
+  # Features and permissions groups used to determine the permissions to include in the templates.
+  featuresToInclude: [AzureRoleArmTemplateFeature!]
 }
 # SLA Domain configuration for Azure Blob.
 type AzureBlobConfig {
@@ -21622,6 +21642,14 @@ type AzureRole {
 
   # Specifies whether role is created by Rubrik via OAuth flow or manually by the customer without OAuth flow.
   isRubrikManaged: Boolean!
+}
+# Azure cloud account feature and permissions groups to use when determining the required role permissions.
+input AzureRoleArmTemplateFeature {
+  # The permissions groups to include for the feature. If the list is empty, all permission groups will be included.
+  permissionsGroups: [PermissionsGroup!] = []
+
+  # The cloud account feature.
+  featureType: CloudAccountFeature!
 }
 type AzureRoleBasedAccount implements CloudAccount {
   # The subscription info with feature details.
@@ -38774,6 +38802,9 @@ input ExportSnapshotJobConfigV2Input {
   # ID of the virtual machine folder to export the new virtual machine to.
   folderId: String
 
+  # Specifies whether Export converts the recovered virtual machine to a template.
+  shouldConvertToTemplate: Boolean
+
   # Required. Supported in v5.1+
   # ID of the datastore to assign to the exported virtual machine.
   datastoreId: String!
@@ -38819,6 +38850,9 @@ input ExportSnapshotJobConfigV3Input {
 
   # ID of the virtual machine folder to export the new virtual machine to.
   folderId: String
+
+  # Specifies whether Export converts the recovered virtual machine to a template.
+  shouldConvertToTemplate: Boolean
 }
 # Supported in v5.0+
 input ExportSnapshotToStandaloneHostRequestInput {
@@ -70978,6 +71012,14 @@ enum PermissionsGroup {
   # SQL DB and SQL MI features.
   RECOVERY
 }
+# Azure permissions group with accompanying version number.
+type PermissionsGroupWithVersion {
+  # Azure cloud account permissions group.
+  permissionsGroup: PermissionsGroup!
+
+  # Version of the permissions group.
+  version: Int!
+}
 # Persistent storage configured for storing backups.
 type PersistentStorage {
   # ID of the configured storage setting.
@@ -72420,6 +72462,9 @@ enum ProductName {
 
   # O365.
   O365
+
+  # On-premise Active Directory Protection.
+  ONPREM_AD
 
   # Radar.
   RADAR

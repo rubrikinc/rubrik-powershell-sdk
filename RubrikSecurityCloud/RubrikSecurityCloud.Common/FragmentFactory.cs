@@ -274,7 +274,7 @@ namespace RubrikSecurityCloud
 
             if (propType == typeof(string))
             {
-                return new string("FETCH");
+                return "FETCH";
             }
             else if (propType == typeof(bool) ||
                 propType == typeof(Boolean) ||

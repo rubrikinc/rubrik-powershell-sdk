@@ -263,9 +263,11 @@ namespace RubrikSecurityCloud.NetSDK.Client
 
             apiClient.DefaultRequestHeaders.Accept.Clear();
             apiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            apiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _clientToken.AccessToken);            
-            if (metricsTags != null) {
-                foreach (var header in metricsTags) {
+            apiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _clientToken.AccessToken);
+            if (metricsTags != null)
+            {
+                foreach (var header in metricsTags)
+                {
                     apiClient
                         .DefaultRequestHeaders
                         .Add(header.Key, header.Value);
@@ -304,11 +306,18 @@ namespace RubrikSecurityCloud.NetSDK.Client
             logger?.Debug(this.GraphQLResponseToString<T>(response));
             if (response.Errors != null)
             {
+                // concatenate all errors in response.Errors
+                var errors = string.Join("\n", response.Errors.Select(e =>
+                    ((e.Extensions != null && e.Extensions.ContainsKey("code")) ?
+                        e.Extensions["code"] : "") + " " +
+                        e.Message + " " + (e.Path != null ? string.Join(".", e.Path) : "" ) ));
+
                 var httpResp = response as GraphQLHttpResponse<T>;
                 throw new Exception(
-                    $"API Server error: {httpResp.StatusCode}\n" +
+                    $"API Server status: {httpResp.StatusCode}\n" +
                     $"  Query: {Request.Query}\n" +
-                    $"  Variables: {Request.Variables}\n\n" +
+                    $"  Variables: {Request.Variables}\n" +
+                    $"  Errors: {errors}\n\n" +
                     loggingHandler.Message);
             }
             return response.Data;

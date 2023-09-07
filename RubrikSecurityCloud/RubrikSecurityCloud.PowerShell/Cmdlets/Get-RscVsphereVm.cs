@@ -191,7 +191,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         if (Fields == null)
                         {
                             detailFields = new VsphereVm();
-                            detailFields.ApplyExploratoryFieldSpec();
+                            detailFields.Fetch();
                             detailFields.Cluster = new Cluster
                             {
                                 Id = "FETCH",

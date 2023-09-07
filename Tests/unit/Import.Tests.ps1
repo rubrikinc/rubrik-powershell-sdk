@@ -4,7 +4,7 @@
 Describe -Name 'Verify correct import' -Fixture {
     It "should be version 6.0.0" {
         $module = Get-Module -Name RubrikSecurityCloud
-        $expectedVersion = New-Object System.Version(6, 0, 0)
+        $expectedVersion = New-Object System.Version(5, 0, 0)
         $module.PowerShellVersion | Should -Be $expectedVersion
     }
     It -Name 'Connect-Rsc exists' -Test {

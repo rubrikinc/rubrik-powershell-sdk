@@ -52,6 +52,20 @@ namespace RubrikSecurityCloud
             return StringUtils.DocLinkForGqlType(this._gqlOperation.ReturnType);
         }
 
+        public void FieldDetails()
+        {
+            List<string> fields =
+                ReflectionUtils
+                    .FlattenField(
+                        this._gqlOperation.ReturnType
+                    );
+
+            foreach (string field in fields)
+            {
+                Console.WriteLine(field);
+            }
+        }
+
         /// <summary>
         /// Return documentation links for the variables.
         /// </summary>
@@ -68,6 +82,11 @@ namespace RubrikSecurityCloud
             var info = this.Var.Info();
             info[this.Field.GetType().Name] = this.FieldInfo();
             return info;
+        }
+
+        public void VarTemplate()
+        {
+            Console.WriteLine(this.Var.Example());
         }
 
         /// <summary>

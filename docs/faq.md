@@ -51,7 +51,7 @@ Cluster        :
 
 ### FAQ2 Explanation
 
-The SDK works with PowerShell native objects. In the example above, we 
+The SDK works with PowerShell native objects. In the example above, we
 retrieved a `VsphereVm` object. We only requested `id` and `name`, and
 we can see these fields populated in the output. However, the object
 also contains other fields, which are populated with null values.
@@ -71,3 +71,28 @@ PS> (Invoke-Rsc -Query "query GetVsphereVmList{vSphereVmNewConnection{nodes{id n
 Id             : 0024d4d1-631b-b47d-f610df4b052b
 Name           : rubrik-vmware-01
 ```
+
+## FAQ3 Nulls in response for fields I requested
+
+I understand FAQ2, but I still get nulls in the response for fields
+I requested. Why?
+
+Example:
+
+```powershell
+Invoke-Rsc -Query "query {clusterConnection{nodes{name, defaultAddress}}}" | Select -ExpandProperty Nodes
+
+Name : ABCDEFGHIJ
+DefaultAddress :
+... <more fields> ...
+```
+
+### FAQ3 Explanation
+
+The API server returned a null value for the field you requested.
+If you only look at the response without knowing what was requested,
+it is impossible to tell if the field was requested or not.
+
+### FAQ3 Resolution
+
+Cross-reference with the request and only inspect fields that were requested.

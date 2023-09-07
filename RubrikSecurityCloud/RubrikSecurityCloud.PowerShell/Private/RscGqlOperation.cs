@@ -3,11 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Management.Automation;
 using System.Reflection;
-using Newtonsoft.Json.Linq;
-using RubrikSecurityCloud.Types;
-using RubrikSecurityCloud.PowerShell.Private;
 
 // namespace is RubrikSecurityCloud (and not private)
 // because this class is used by the public cmdlets
@@ -19,6 +15,7 @@ namespace RubrikSecurityCloud
     /// </summary>
     public class RscGqlOperation
     {
+        
         public string Kind { get; set; }
         public string Name { get; set; }
         public string Args { get; set; }
@@ -48,6 +45,9 @@ namespace RubrikSecurityCloud
             this.FieldSpec = fieldSpec;
         }
 
+        /// <summary>
+        /// Return the query for the API server.
+        /// </summary>
         public string Query()
         {
             var spec = this.FieldSpec;

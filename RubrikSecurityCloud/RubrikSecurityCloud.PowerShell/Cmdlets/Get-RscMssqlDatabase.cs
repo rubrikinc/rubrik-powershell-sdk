@@ -90,7 +90,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     listFields = new MssqlDatabaseConnection();
                     listFields.Nodes = new List<MssqlDatabase>();
                     MssqlDatabase fieldsObject = new MssqlDatabase();
-                    fieldsObject.ApplyExploratoryFieldSpec();
+                    fieldsObject.Fetch();
                     listFields.Nodes.Add(fieldsObject);
                 }
 
@@ -161,7 +161,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         if (Fields == null)
                         {
                             detailFields = new MssqlDatabase();
-                            detailFields.ApplyExploratoryFieldSpec();
+                            detailFields.Fetch();
                         }
                         else
                         {
