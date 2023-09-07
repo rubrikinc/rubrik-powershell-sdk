@@ -887,7 +887,21 @@ Initiates a job to download a snapshot from the specified location when the snap
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.RegisterHypervScvmm(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	scvmm = @{
+		# REQUIRED
+		hostname = <System.String>
+		# REQUIRED
+		runAsAccount = <System.String>
+		# REQUIRED
+		shouldDeployAgent = <System.Boolean>
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -910,7 +924,23 @@ Initiates a job to download a snapshot from the specified location when the snap
                 fieldSpecObj = (HypervScvmmUpdateReply)this.Field;
             }
             string fieldSpecDoc = Mutation.HypervScvmmUpdate(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+	# REQUIRED
+	updateProperties = @{
+		# OPTIONAL
+		configuredSlaDomainId = <System.String>
+		# OPTIONAL
+		hostname = <System.String>
+		# OPTIONAL
+		runAsAccount = <System.String>
+		# OPTIONAL
+		shouldDeployAgent = <System.Boolean>
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -933,7 +963,12 @@ Initiates a job to download a snapshot from the specified location when the snap
                 fieldSpecObj = (ResponseSuccess)this.Field;
             }
             string fieldSpecDoc = Mutation.HypervScvmmDelete(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -956,7 +991,12 @@ Initiates a job to download a snapshot from the specified location when the snap
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.RefreshHypervScvmm(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -979,7 +1019,19 @@ Initiates a job to download a snapshot from the specified location when the snap
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.HypervOnDemandSnapshot(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	config = @{
+		# OPTIONAL
+		slaId = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+	# OPTIONAL
+	userNote = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1002,7 +1054,12 @@ Initiates a job to download a snapshot from the specified location when the snap
                 fieldSpecObj = (RequestSuccess)this.Field;
             }
             string fieldSpecDoc = Mutation.HypervDeleteAllSnapshots(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1025,7 +1082,27 @@ Initiates a job to download a snapshot from the specified location when the snap
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.ExportHypervVirtualMachine(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		disableNetwork = <System.Boolean>
+		# OPTIONAL
+		hostId = <System.String>
+		# OPTIONAL
+		powerOn = <System.Boolean>
+		# OPTIONAL
+		removeNetworkDevices = <System.Boolean>
+		# OPTIONAL
+		vmName = <System.String>
+		# REQUIRED
+		path = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1048,7 +1125,26 @@ Initiates a job to download a snapshot from the specified location when the snap
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.DownloadHypervVirtualMachineSnapshotFiles(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		legalHoldDownloadConfig = @{
+			# REQUIRED
+			isLegalHoldDownload = <System.Boolean>
+		}
+		# REQUIRED
+		paths = @(
+			<System.String>
+		)
+	}
+	# REQUIRED
+	id = <System.String>
+	# OPTIONAL
+	userNote = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1071,7 +1167,19 @@ Initiates a job to download a snapshot from the specified location when the snap
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.InstantRecoverHypervVirtualMachineSnapshot(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		hostId = <System.String>
+		# OPTIONAL
+		vmName = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1094,7 +1202,26 @@ Initiates a job to download a snapshot from the specified location when the snap
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.RestoreHypervVirtualMachineSnapshotFiles(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		targetVirtualMachineId = <System.String>
+		# REQUIRED
+		restoreConfig = @(
+			@{
+				# REQUIRED
+				path = <System.String>
+				# REQUIRED
+				restorePath = <System.String>
+			}
+		)
+	}
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1117,7 +1244,12 @@ Initiates a job to download a snapshot from the specified location when the snap
                 fieldSpecObj = (RequestSuccess)this.Field;
             }
             string fieldSpecDoc = Mutation.RegisterAgentHypervVirtualMachine(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1140,7 +1272,14 @@ Initiates a job to download a snapshot from the specified location when the snap
                 fieldSpecObj = (RequestSuccess)this.Field;
             }
             string fieldSpecDoc = Mutation.DeleteHypervVirtualMachineSnapshot(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	location = <InternalDeleteHypervVirtualMachineSnapshotRequestLocation> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.InternalDeleteHypervVirtualMachineSnapshotRequestLocation]) for enum values.
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1163,7 +1302,12 @@ Initiates a job to download a snapshot from the specified location when the snap
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.DownloadHypervVirtualMachineSnapshot(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1186,7 +1330,25 @@ Initiates a job to download a snapshot from the specified location when the snap
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.CreateHypervVirtualMachineSnapshotMount(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	config = @{
+		# OPTIONAL
+		disableNetwork = <System.Boolean>
+		# OPTIONAL
+		hostId = <System.String>
+		# OPTIONAL
+		powerOn = <System.Boolean>
+		# OPTIONAL
+		removeNetworkDevices = <System.Boolean>
+		# OPTIONAL
+		vmName = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1209,7 +1371,17 @@ Initiates a job to download a snapshot from the specified location when the snap
                 fieldSpecObj = (UpdateHypervVirtualMachineSnapshotMountReply)this.Field;
             }
             string fieldSpecDoc = Mutation.UpdateHypervVirtualMachineSnapshotMount(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		powerStatus = <System.Boolean>
+	}
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1232,7 +1404,14 @@ Initiates a job to download a snapshot from the specified location when the snap
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.DeleteHypervVirtualMachineSnapshotMount(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	force = <System.Boolean>
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1255,7 +1434,12 @@ Initiates a job to download a snapshot from the specified location when the snap
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.RefreshHypervServer(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1278,7 +1462,27 @@ Initiates a job to download a snapshot from the specified location when the snap
                 fieldSpecObj = (BatchOnDemandBackupHypervVmReply)this.Field;
             }
             string fieldSpecDoc = Mutation.BatchOnDemandBackupHypervVm(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	userNote = <System.String>
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		vms = @(
+			@{
+				# OPTIONAL
+				backupConfig = @{
+					# OPTIONAL
+					slaId = <System.String>
+				}
+				# OPTIONAL
+				vmId = <System.String>
+			}
+		)
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1301,7 +1505,45 @@ Initiates a job to download a snapshot from the specified location when the snap
                 fieldSpecObj = (BatchExportHypervVmReply)this.Field;
             }
             string fieldSpecDoc = Mutation.BatchExportHypervVm(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		snapshots = @(
+			@{
+				# OPTIONAL
+				snapshotAfterDate = <DateTime>
+				# OPTIONAL
+				snapshotBeforeDate = <DateTime>
+				# OPTIONAL
+				snapshotId = <System.String>
+				# OPTIONAL
+				vmNamePrefix = <System.String>
+				# REQUIRED
+				exportConfig = @{
+					# OPTIONAL
+					disableNetwork = <System.Boolean>
+					# OPTIONAL
+					hostId = <System.String>
+					# OPTIONAL
+					powerOn = <System.Boolean>
+					# OPTIONAL
+					removeNetworkDevices = <System.Boolean>
+					# OPTIONAL
+					vmName = <System.String>
+					# REQUIRED
+					path = <System.String>
+				}
+				# REQUIRED
+				vmId = <System.String>
+			}
+		)
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1324,7 +1566,43 @@ Initiates a job to download a snapshot from the specified location when the snap
                 fieldSpecObj = (BatchMountHypervVmReply)this.Field;
             }
             string fieldSpecDoc = Mutation.BatchMountHypervVm(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		snapshots = @(
+			@{
+				# OPTIONAL
+				snapshotAfterDate = <DateTime>
+				# OPTIONAL
+				snapshotBeforeDate = <DateTime>
+				# OPTIONAL
+				snapshotId = <System.String>
+				# OPTIONAL
+				vmNamePrefix = <System.String>
+				# REQUIRED
+				mountConfig = @{
+					# OPTIONAL
+					disableNetwork = <System.Boolean>
+					# OPTIONAL
+					hostId = <System.String>
+					# OPTIONAL
+					powerOn = <System.Boolean>
+					# OPTIONAL
+					removeNetworkDevices = <System.Boolean>
+					# OPTIONAL
+					vmName = <System.String>
+				}
+				# REQUIRED
+				vmId = <System.String>
+			}
+		)
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1347,7 +1625,35 @@ Initiates a job to download a snapshot from the specified location when the snap
                 fieldSpecObj = (BatchInstantRecoverHypervVmReply)this.Field;
             }
             string fieldSpecDoc = Mutation.BatchInstantRecoverHypervVm(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		snapshots = @(
+			@{
+				# OPTIONAL
+				snapshotAfterDate = <DateTime>
+				# OPTIONAL
+				snapshotBeforeDate = <DateTime>
+				# OPTIONAL
+				snapshotId = <System.String>
+				# REQUIRED
+				instantRecoveryConfig = @{
+					# OPTIONAL
+					hostId = <System.String>
+					# OPTIONAL
+					vmName = <System.String>
+				}
+				# REQUIRED
+				vmId = <System.String>
+			}
+		)
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1370,7 +1676,26 @@ Initiates a job to download a snapshot from the specified location when the snap
                 fieldSpecObj = (UpdateHypervVirtualMachineReply)this.Field;
             }
             string fieldSpecDoc = Mutation.UpdateHypervVirtualMachine(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+	# REQUIRED
+	vmUpdateProperties = @{
+		# OPTIONAL
+		cloudInstantiationSpec = @{
+			# REQUIRED
+			imageRetentionInSeconds = <System.Int64>
+		}
+		# OPTIONAL
+		configuredSlaDomainId = <System.String>
+		# OPTIONAL
+		virtualDiskIdsExcludedFromSnapshot = @(
+			<System.String>
+		)
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1393,7 +1718,19 @@ Initiates a job to download a snapshot from the specified location when the snap
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.DownloadHypervSnapshotFromLocation(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	locationId = <System.String>
+	# REQUIRED
+	snapshotId = <System.String>
+	# REQUIRED
+	downloadConfig = @{
+		# OPTIONAL
+		slaId = <System.String>
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 

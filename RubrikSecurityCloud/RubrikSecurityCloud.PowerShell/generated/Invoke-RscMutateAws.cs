@@ -1622,7 +1622,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (BatchAsyncJobStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.StartAwsNativeEc2InstanceSnapshotsJob(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	ec2InstanceIds = @(
+		<System.String>
+	)
+	# OPTIONAL
+	retentionSlaId = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1645,7 +1654,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AsyncJobStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.StartRestoreAwsNativeEc2InstanceSnapshotJob(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	snapshotId = <System.String>
+	# REQUIRED
+	shouldPowerOn = <System.Boolean>
+	# REQUIRED
+	shouldRestoreTags = <System.Boolean>
+	# OPTIONAL
+	snapshotTypeToUseIfSourceExpired = <SnapshotTypeToUseIfSourceExpired> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotTypeToUseIfSourceExpired]) for enum values.
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1668,7 +1688,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (BatchAsyncJobStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.StartRefreshAwsNativeAccountsJob(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	awsAccountRubrikIds = @(
+		<System.String>
+	)
+	# REQUIRED
+	awsNativeProtectionFeatures = @(
+		<AwsNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+	)
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1691,7 +1722,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (BatchAsyncJobStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.StartCreateAwsNativeEbsVolumeSnapshotsJob(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	ebsVolumeIds = @(
+		<System.String>
+	)
+	# OPTIONAL
+	retentionSlaId = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1714,7 +1754,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AsyncJobStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.StartAwsNativeAccountDisableJob(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	awsAccountRubrikId = <System.String>
+	# REQUIRED
+	shouldDeleteNativeSnapshots = <System.Boolean>
+	# REQUIRED
+	awsNativeProtectionFeature = <AwsNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1737,7 +1786,34 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AsyncJobStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.StartExportAwsNativeEbsVolumeSnapshotJob(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	snapshotId = <System.String>
+	# REQUIRED
+	destinationAwsAccountRubrikId = <System.String>
+	# REQUIRED
+	destinationRegionNativeId = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
+	# REQUIRED
+	volumeName = <System.String>
+	# REQUIRED
+	volumeSize = <System.Int32>
+	# REQUIRED
+	volumeType = <AwsNativeEbsVolumeType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeEbsVolumeType]) for enum values.
+	# REQUIRED
+	availabilityZone = <System.String>
+	# REQUIRED
+	iops = <System.Int32>
+	# REQUIRED
+	shouldCopyTags = <System.Boolean>
+	# REQUIRED
+	shouldReplaceAttached = <System.Boolean>
+	# OPTIONAL
+	kmsKeyId = <System.String>
+	# OPTIONAL
+	snapshotType = <SnapshotType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotType]) for enum values.
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1760,7 +1836,21 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (System.String)this.Field;
             }
             string fieldSpecDoc = Mutation.ExcludeAwsNativeEbsVolumesFromSnapshot(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	awsNativeEc2InstanceId = <System.String>
+	# REQUIRED
+	volumeIdExclusions = @(
+		@{
+			# REQUIRED
+			volumeId = <System.String>
+			# REQUIRED
+			isExcluded = <System.Boolean>
+		}
+	)
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1783,7 +1873,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (BatchAsyncJobStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.StartAwsNativeRdsInstanceSnapshotsJob(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	rdsInstanceIds = @(
+		<System.String>
+	)
+	# OPTIONAL
+	retentionSlaId = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1806,7 +1905,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (CloudAccount)this.Field;
             }
             string fieldSpecDoc = Mutation.CreateAwsAccount(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	name = <System.String>
+	# OPTIONAL
+	description = <System.String>
+	# REQUIRED
+	accessKey = <System.String>
+	# REQUIRED
+	secretKey = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1829,7 +1939,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (CloudAccount)this.Field;
             }
             string fieldSpecDoc = Mutation.UpdateAwsAccount(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+	# REQUIRED
+	name = <System.String>
+	# OPTIONAL
+	description = <System.String>
+	# REQUIRED
+	accessKey = <System.String>
+	# REQUIRED
+	secretKey = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1852,7 +1975,45 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (TargetMapping)this.Field;
             }
             string fieldSpecDoc = Mutation.CreateAutomaticAwsTargetMapping(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	name = <System.String>
+	# REQUIRED
+	cloudAccountId = <System.String>
+	# REQUIRED
+	bucketPrefix = <System.String>
+	# REQUIRED
+	storageClass = <AwsStorageClass> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsStorageClass]) for enum values.
+	# REQUIRED
+	region = <AwsRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRegion]) for enum values.
+	# OPTIONAL
+	kmsMasterKeyId = <System.String>
+	# OPTIONAL
+	rsaKey = <System.String>
+	# REQUIRED
+	isConsolidationEnabled = <System.Boolean>
+	# OPTIONAL
+	proxySettings = @{
+		# OPTIONAL
+		proxyServer = <System.String>
+		# OPTIONAL
+		portNumber = <System.Int32>
+		# OPTIONAL
+		username = <System.String>
+		# OPTIONAL
+		password = <System.String>
+		# OPTIONAL
+		protocol = <System.String>
+	}
+	# OPTIONAL
+	clusterUuidList = @(
+		<System.String>
+	)
+	# OPTIONAL
+	awsComputeSettingsId = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1875,7 +2036,36 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (CreateCloudNativeAwsStorageSettingReply)this.Field;
             }
             string fieldSpecDoc = Mutation.CreateCloudNativeAwsStorageSetting(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	name = <System.String>
+	# REQUIRED
+	cloudAccountId = <System.String>
+	# REQUIRED
+	bucketPrefix = <System.String>
+	# REQUIRED
+	storageClass = <AwsStorageClass> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsStorageClass]) for enum values.
+	# OPTIONAL
+	region = <AwsRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRegion]) for enum values.
+	# OPTIONAL
+	kmsMasterKeyId = <System.String>
+	# REQUIRED
+	cloudNativeLocTemplateType = <CloudNativeLocTemplateType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeLocTemplateType]) for enum values.
+	# OPTIONAL
+	bucketTags = @{
+		# REQUIRED
+		tagList = @(
+			@{
+				# REQUIRED
+				key = <System.String>
+				# REQUIRED
+				value = <System.String>
+			}
+		)
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1898,7 +2088,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (TargetMapping)this.Field;
             }
             string fieldSpecDoc = Mutation.UpdateAutomaticAwsTargetMapping(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+	# OPTIONAL
+	name = <System.String>
+	# OPTIONAL
+	cloudAccountId = <System.String>
+	# OPTIONAL
+	storageClass = <AwsStorageClass> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsStorageClass]) for enum values.
+	# OPTIONAL
+	isConsolidationEnabled = <System.Boolean>
+	# OPTIONAL
+	proxySettings = @{
+		# OPTIONAL
+		proxyServer = <System.String>
+		# OPTIONAL
+		portNumber = <System.Int32>
+		# OPTIONAL
+		username = <System.String>
+		# OPTIONAL
+		password = <System.String>
+		# OPTIONAL
+		protocol = <System.String>
+	}
+	# OPTIONAL
+	clusterUuidList = @(
+		<System.String>
+	)
+	# OPTIONAL
+	awsComputeSettingsId = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1921,7 +2143,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (UpdateCloudNativeAwsStorageSettingReply)this.Field;
             }
             string fieldSpecDoc = Mutation.UpdateCloudNativeAwsStorageSetting(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+	# OPTIONAL
+	name = <System.String>
+	# OPTIONAL
+	storageClass = <AwsStorageClass> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsStorageClass]) for enum values.
+	# OPTIONAL
+	kmsMasterKeyId = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1944,7 +2177,93 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (Target)this.Field;
             }
             string fieldSpecDoc = Mutation.CreateAwsTarget(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	name = <System.String>
+	# REQUIRED
+	cloudAccountId = <System.String>
+	# REQUIRED
+	bucketName = <System.String>
+	# REQUIRED
+	storageClass = <AwsStorageClass> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsStorageClass]) for enum values.
+	# REQUIRED
+	region = <AwsRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRegion]) for enum values.
+	# OPTIONAL
+	kmsMasterKeyId = <System.String>
+	# OPTIONAL
+	rsaKey = <System.String>
+	# OPTIONAL
+	encryptionPassword = <System.String>
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	isConsolidationEnabled = <System.Boolean>
+	# OPTIONAL
+	proxySettings = @{
+		# OPTIONAL
+		proxyServer = <System.String>
+		# OPTIONAL
+		portNumber = <System.Int32>
+		# OPTIONAL
+		username = <System.String>
+		# OPTIONAL
+		password = <System.String>
+		# OPTIONAL
+		protocol = <System.String>
+	}
+	# OPTIONAL
+	awsComputeSettingsId = <System.String>
+	# OPTIONAL
+	cloudComputeSettings = @{
+		# OPTIONAL
+		subnetId = <System.String>
+		# OPTIONAL
+		vpcId = <System.String>
+		# OPTIONAL
+		securityGroupId = <System.String>
+		# OPTIONAL
+		computeProxySettings = @{
+			# OPTIONAL
+			proxyServer = <System.String>
+			# OPTIONAL
+			portNumber = <System.Int32>
+			# OPTIONAL
+			username = <System.String>
+			# OPTIONAL
+			password = <System.String>
+			# OPTIONAL
+			protocol = <System.String>
+		}
+	}
+	# OPTIONAL
+	computeProxySettings = @{
+		# OPTIONAL
+		proxyServer = <System.String>
+		# OPTIONAL
+		portNumber = <System.Int32>
+		# OPTIONAL
+		username = <System.String>
+		# OPTIONAL
+		password = <System.String>
+		# OPTIONAL
+		protocol = <System.String>
+	}
+	# OPTIONAL
+	awsRetrievalTier = <AwsRetrievalTier> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRetrievalTier]) for enum values.
+	# OPTIONAL
+	immutabilitySettings = @{
+		# OPTIONAL
+		lockDurationDays = <System.Int32>
+	}
+	# OPTIONAL
+	s3Endpoint = <System.String>
+	# OPTIONAL
+	kmsEndpoint = <System.String>
+	# REQUIRED
+	bypassProxy = <System.Boolean>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1967,7 +2286,83 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (Target)this.Field;
             }
             string fieldSpecDoc = Mutation.UpdateAwsTarget(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+	# OPTIONAL
+	name = <System.String>
+	# OPTIONAL
+	cloudAccountId = <System.String>
+	# OPTIONAL
+	storageClass = <AwsStorageClass> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsStorageClass]) for enum values.
+	# OPTIONAL
+	isConsolidationEnabled = <System.Boolean>
+	# OPTIONAL
+	proxySettings = @{
+		# OPTIONAL
+		proxyServer = <System.String>
+		# OPTIONAL
+		portNumber = <System.Int32>
+		# OPTIONAL
+		username = <System.String>
+		# OPTIONAL
+		password = <System.String>
+		# OPTIONAL
+		protocol = <System.String>
+	}
+	# OPTIONAL
+	awsComputeSettingsId = <System.String>
+	# OPTIONAL
+	cloudComputeSettings = @{
+		# OPTIONAL
+		subnetId = <System.String>
+		# OPTIONAL
+		vpcId = <System.String>
+		# OPTIONAL
+		securityGroupId = <System.String>
+		# OPTIONAL
+		computeProxySettings = @{
+			# OPTIONAL
+			proxyServer = <System.String>
+			# OPTIONAL
+			portNumber = <System.Int32>
+			# OPTIONAL
+			username = <System.String>
+			# OPTIONAL
+			password = <System.String>
+			# OPTIONAL
+			protocol = <System.String>
+		}
+	}
+	# OPTIONAL
+	computeProxySettings = @{
+		# OPTIONAL
+		proxyServer = <System.String>
+		# OPTIONAL
+		portNumber = <System.Int32>
+		# OPTIONAL
+		username = <System.String>
+		# OPTIONAL
+		password = <System.String>
+		# OPTIONAL
+		protocol = <System.String>
+	}
+	# OPTIONAL
+	awsRetrievalTier = <AwsRetrievalTier> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRetrievalTier]) for enum values.
+	# OPTIONAL
+	immutabilitySettings = @{
+		# OPTIONAL
+		lockDurationDays = <System.Int32>
+	}
+	# OPTIONAL
+	s3Endpoint = <System.String>
+	# OPTIONAL
+	kmsEndpoint = <System.String>
+	# OPTIONAL
+	bypassProxy = <System.Boolean>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1990,7 +2385,90 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (Target)this.Field;
             }
             string fieldSpecDoc = Mutation.CreateAwsReaderTarget(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	name = <System.String>
+	# REQUIRED
+	cloudAccountId = <System.String>
+	# REQUIRED
+	bucketName = <System.String>
+	# REQUIRED
+	storageClass = <AwsStorageClass> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsStorageClass]) for enum values.
+	# REQUIRED
+	region = <AwsRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRegion]) for enum values.
+	# OPTIONAL
+	kmsMasterKeyId = <System.String>
+	# OPTIONAL
+	rsaKey = <System.String>
+	# OPTIONAL
+	encryptionPassword = <System.String>
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	isConsolidationEnabled = <System.Boolean>
+	# OPTIONAL
+	proxySettings = @{
+		# OPTIONAL
+		proxyServer = <System.String>
+		# OPTIONAL
+		portNumber = <System.Int32>
+		# OPTIONAL
+		username = <System.String>
+		# OPTIONAL
+		password = <System.String>
+		# OPTIONAL
+		protocol = <System.String>
+	}
+	# OPTIONAL
+	awsComputeSettingsId = <System.String>
+	# OPTIONAL
+	cloudComputeSettings = @{
+		# OPTIONAL
+		subnetId = <System.String>
+		# OPTIONAL
+		vpcId = <System.String>
+		# OPTIONAL
+		securityGroupId = <System.String>
+		# OPTIONAL
+		computeProxySettings = @{
+			# OPTIONAL
+			proxyServer = <System.String>
+			# OPTIONAL
+			portNumber = <System.Int32>
+			# OPTIONAL
+			username = <System.String>
+			# OPTIONAL
+			password = <System.String>
+			# OPTIONAL
+			protocol = <System.String>
+		}
+	}
+	# OPTIONAL
+	awsRetrievalTier = <AwsRetrievalTier> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRetrievalTier]) for enum values.
+	# REQUIRED
+	readerRetrievalMethod = <ReaderRetrievalMethod> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReaderRetrievalMethod]) for enum values.
+	# OPTIONAL
+	s3Endpoint = <System.String>
+	# OPTIONAL
+	kmsEndpoint = <System.String>
+	# OPTIONAL
+	computeProxySettings = @{
+		# OPTIONAL
+		proxyServer = <System.String>
+		# OPTIONAL
+		portNumber = <System.Int32>
+		# OPTIONAL
+		username = <System.String>
+		# OPTIONAL
+		password = <System.String>
+		# OPTIONAL
+		protocol = <System.String>
+	}
+	# REQUIRED
+	bypassProxy = <System.Boolean>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2013,7 +2491,44 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AwsComputeSettings)this.Field;
             }
             string fieldSpecDoc = Mutation.CreateAwsComputeSetting(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	name = <System.String>
+	# OPTIONAL
+	subnetId = <System.String>
+	# OPTIONAL
+	vpcId = <System.String>
+	# OPTIONAL
+	securityGroupId = <System.String>
+	# OPTIONAL
+	cloudAccountId = <System.String>
+	# OPTIONAL
+	region = <AwsRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRegion]) for enum values.
+	# OPTIONAL
+	isSecurityGroupPolarisManaged = <System.Boolean>
+	# OPTIONAL
+	clusterInterfaceCidrs = @(
+		@{
+			# OPTIONAL
+			clusterName = <System.String>
+			# OPTIONAL
+			clusterId = <System.String>
+			# OPTIONAL
+			interfaceCidr = @(
+				@{
+					# OPTIONAL
+					interfaceType = <InterfaceType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.InterfaceType]) for enum values.
+					# OPTIONAL
+					cidr = <System.String>
+					# OPTIONAL
+					selected = <System.Boolean>
+				}
+			)
+		}
+	)
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2036,7 +2551,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AwsComputeSettings)this.Field;
             }
             string fieldSpecDoc = Mutation.UpdateAwsComputeSetting(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	id = <System.String>
+	# OPTIONAL
+	name = <System.String>
+	# OPTIONAL
+	subnetId = <System.String>
+	# OPTIONAL
+	vpcId = <System.String>
+	# OPTIONAL
+	securityGroupId = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2059,7 +2587,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (System.String)this.Field;
             }
             string fieldSpecDoc = Mutation.DeleteAwsComputeSetting(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2082,7 +2615,42 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AwsCloudAccountValidateResponse)this.Field;
             }
             string fieldSpecDoc = Mutation.AwsCloudAccountValidate(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.awsCloudAccountValidateArg = @{
+	# REQUIRED
+	features = @(
+		<CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+	)
+	# OPTIONAL
+	awsAdminAccount = @{
+		# OPTIONAL
+		id = <System.String>
+		# OPTIONAL
+		nativeId = <System.String>
+		# OPTIONAL
+		accountName = <System.String>
+		# OPTIONAL
+		seamlessFlowEnabled = <System.Boolean>
+		# OPTIONAL
+		cloudType = <AwsCloudType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
+	}
+	# REQUIRED
+	awsChildAccounts = @(
+		@{
+			# OPTIONAL
+			id = <System.String>
+			# OPTIONAL
+			nativeId = <System.String>
+			# OPTIONAL
+			accountName = <System.String>
+			# OPTIONAL
+			seamlessFlowEnabled = <System.Boolean>
+			# OPTIONAL
+			cloudType = <AwsCloudType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
+		}
+	)
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2105,7 +2673,44 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AwsCloudAccountCreateResponse)this.Field;
             }
             string fieldSpecDoc = Mutation.AwsCloudAccountInitiate(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.awsCloudAccountInitiateArg = @{
+	# REQUIRED
+	action = <CloudAccountAction> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountAction]) for enum values.
+	# REQUIRED
+	features = @(
+		<CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+	)
+	# OPTIONAL
+	awsAdminAccount = @{
+		# OPTIONAL
+		id = <System.String>
+		# OPTIONAL
+		nativeId = <System.String>
+		# OPTIONAL
+		accountName = <System.String>
+		# OPTIONAL
+		seamlessFlowEnabled = <System.Boolean>
+		# OPTIONAL
+		cloudType = <AwsCloudType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
+	}
+	# REQUIRED
+	awsChildAccounts = @(
+		@{
+			# OPTIONAL
+			id = <System.String>
+			# OPTIONAL
+			nativeId = <System.String>
+			# OPTIONAL
+			accountName = <System.String>
+			# OPTIONAL
+			seamlessFlowEnabled = <System.Boolean>
+			# OPTIONAL
+			cloudType = <AwsCloudType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
+		}
+	)
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2128,7 +2733,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AwsNativeProtectionAccountAddResponse)this.Field;
             }
             string fieldSpecDoc = Mutation.AwsNativeProtectionAccountAdd(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.awsNativeProtectionAccountAddArg = @{
+	# REQUIRED
+	accountId = <System.String>
+	# REQUIRED
+	name = <System.String>
+	# REQUIRED
+	regions = @(
+		<System.String>
+	)
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2151,7 +2767,65 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (ValidateAndCreateAwsCloudAccountReply)this.Field;
             }
             string fieldSpecDoc = Mutation.ValidateAndCreateAwsCloudAccount(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	action = <CloudAccountAction> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountAction]) for enum values.
+	# REQUIRED
+	features = @(
+		<CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+	)
+	# OPTIONAL
+	awsAdminAccount = @{
+		# OPTIONAL
+		id = <System.String>
+		# OPTIONAL
+		nativeId = <System.String>
+		# OPTIONAL
+		accountName = <System.String>
+		# OPTIONAL
+		seamlessFlowEnabled = <System.Boolean>
+		# OPTIONAL
+		cloudType = <AwsCloudType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
+	}
+	# REQUIRED
+	awsChildAccounts = @(
+		@{
+			# OPTIONAL
+			id = <System.String>
+			# OPTIONAL
+			nativeId = <System.String>
+			# OPTIONAL
+			accountName = <System.String>
+			# OPTIONAL
+			seamlessFlowEnabled = <System.Boolean>
+			# OPTIONAL
+			cloudType = <AwsCloudType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
+		}
+	)
+	# OPTIONAL
+	awsRoleCustomization = @{
+		# OPTIONAL
+		crossAccountRoleName = <System.String>
+		# OPTIONAL
+		crossAccountRolePath = <System.String>
+		# OPTIONAL
+		masterRoleName = <System.String>
+		# OPTIONAL
+		masterRolePath = <System.String>
+		# OPTIONAL
+		workerRoleName = <System.String>
+		# OPTIONAL
+		workerRolePath = <System.String>
+		# OPTIONAL
+		instanceProfileName = <System.String>
+		# OPTIONAL
+		instanceProfilePath = <System.String>
+		# OPTIONAL
+		ec2RecoveryRolePath = <System.String>
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2174,7 +2848,63 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (FinalizeAwsCloudAccountProtectionReply)this.Field;
             }
             string fieldSpecDoc = Mutation.FinalizeAwsCloudAccountProtection(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	action = <CloudAccountAction> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountAction]) for enum values.
+	# REQUIRED
+	features = @(
+		<CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+	)
+	# OPTIONAL
+	awsAdminAccount = @{
+		# OPTIONAL
+		id = <System.String>
+		# OPTIONAL
+		nativeId = <System.String>
+		# OPTIONAL
+		accountName = <System.String>
+		# OPTIONAL
+		seamlessFlowEnabled = <System.Boolean>
+		# OPTIONAL
+		cloudType = <AwsCloudType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
+	}
+	# REQUIRED
+	awsChildAccounts = @(
+		@{
+			# OPTIONAL
+			id = <System.String>
+			# OPTIONAL
+			nativeId = <System.String>
+			# OPTIONAL
+			accountName = <System.String>
+			# OPTIONAL
+			seamlessFlowEnabled = <System.Boolean>
+			# OPTIONAL
+			cloudType = <AwsCloudType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
+		}
+	)
+	# OPTIONAL
+	awsRegions = @(
+		<AwsCloudAccountRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountRegion]) for enum values.
+	)
+	# OPTIONAL
+	stackName = <System.String>
+	# OPTIONAL
+	stackSetName = <System.String>
+	# OPTIONAL
+	externalId = <System.String>
+	# OPTIONAL
+	featureVersion = @(
+		@{
+			# REQUIRED
+			feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+			# REQUIRED
+			version = <System.Int32>
+		}
+	)
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2197,7 +2927,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (PrepareAwsCloudAccountDeletionReply)this.Field;
             }
             string fieldSpecDoc = Mutation.PrepareAwsCloudAccountDeletion(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	cloudAccountId = <System.String>
+	# REQUIRED
+	feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2220,7 +2957,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (FinalizeAwsCloudAccountDeletionReply)this.Field;
             }
             string fieldSpecDoc = Mutation.FinalizeAwsCloudAccountDeletion(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	cloudAccountId = <System.String>
+	# REQUIRED
+	feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2243,7 +2987,26 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (UpdateAwsCloudAccountFeatureReply)this.Field;
             }
             string fieldSpecDoc = Mutation.UpdateAwsCloudAccountFeature(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	cloudAccountId = <System.String>
+	# REQUIRED
+	action = <CloudAccountAction> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountAction]) for enum values.
+	# REQUIRED
+	feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+	# OPTIONAL
+	awsRegions = @(
+		<AwsCloudAccountRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountRegion]) for enum values.
+	)
+	# OPTIONAL
+	roleArn = <System.String>
+	# OPTIONAL
+	stackArn = <System.String>
+	# OPTIONAL
+	awsAccountName = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2266,7 +3029,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (System.String)this.Field;
             }
             string fieldSpecDoc = Mutation.UpdateAwsCloudAccount(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	cloudAccountId = <System.String>
+	# OPTIONAL
+	awsAccountName = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2289,7 +3059,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (PrepareFeatureUpdateForAwsCloudAccountReply)this.Field;
             }
             string fieldSpecDoc = Mutation.PrepareFeatureUpdateForAwsCloudAccount(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	cloudAccountId = <System.String>
+	# REQUIRED
+	features = @(
+		<CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+	)
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2313,7 +3092,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AwsCloudAccountUpdateFeatureResponse)this.Field;
             }
             string fieldSpecDoc = Mutation.AwsCloudAccountUpdateFeature(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.cloudAccountUuid = <System.String>
+# REQUIRED
+$inputs.Var.features = @(
+	<CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+)";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2336,7 +3121,38 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (CreateAwsExocomputeConfigsReply)this.Field;
             }
             string fieldSpecDoc = Mutation.CreateAwsExocomputeConfigs(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	cloudAccountId = <System.String>
+	# REQUIRED
+	configs = @(
+		@{
+			# REQUIRED
+			region = <AwsCloudAccountRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountRegion]) for enum values.
+			# OPTIONAL
+			clusterSecurityGroupId = <System.String>
+			# REQUIRED
+			vpcId = <System.String>
+			# OPTIONAL
+			nodeSecurityGroupId = <System.String>
+			# REQUIRED
+			subnets = @(
+				@{
+					# REQUIRED
+					subnetId = <System.String>
+					# REQUIRED
+					availabilityZone = <System.String>
+				}
+			)
+			# REQUIRED
+			isRscManaged = <System.Boolean>
+		}
+	)
+	# OPTIONAL
+	triggerHealthCheck = <System.Boolean>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2359,7 +3175,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (DeleteAwsExocomputeConfigsReply)this.Field;
             }
             string fieldSpecDoc = Mutation.DeleteAwsExocomputeConfigs(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	configIdsToBeDeleted = @(
+		<System.String>
+	)
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2382,7 +3205,38 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (UpdateAwsExocomputeConfigsReply)this.Field;
             }
             string fieldSpecDoc = Mutation.UpdateAwsExocomputeConfigs(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	cloudAccountId = <System.String>
+	# REQUIRED
+	configs = @(
+		@{
+			# REQUIRED
+			region = <AwsCloudAccountRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountRegion]) for enum values.
+			# OPTIONAL
+			clusterSecurityGroupId = <System.String>
+			# REQUIRED
+			vpcId = <System.String>
+			# OPTIONAL
+			nodeSecurityGroupId = <System.String>
+			# REQUIRED
+			subnets = @(
+				@{
+					# REQUIRED
+					subnetId = <System.String>
+					# REQUIRED
+					availabilityZone = <System.String>
+				}
+			)
+			# REQUIRED
+			isRscManaged = <System.Boolean>
+		}
+	)
+	# OPTIONAL
+	triggerHealthCheck = <System.Boolean>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2405,7 +3259,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AsyncJobStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.StartAwsExocomputeDisableJob(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	cloudAccountId = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2428,7 +3287,30 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AddAwsIamUserBasedCloudAccountReply)this.Field;
             }
             string fieldSpecDoc = Mutation.AddAwsIamUserBasedCloudAccount(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	features = @(
+		<CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+	)
+	# OPTIONAL
+	accessKey = <System.String>
+	# OPTIONAL
+	secretKey = <System.String>
+	# REQUIRED
+	nativeId = <System.String>
+	# REQUIRED
+	cloudAccountName = <System.String>
+	# OPTIONAL
+	cloudType = <AwsCloudType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
+	# OPTIONAL
+	awsRegions = @(
+		<AwsCloudAccountRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountRegion]) for enum values.
+	)
+	# OPTIONAL
+	roleArn = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2451,7 +3333,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (DeleteAwsIamUserBasedCloudAccountReply)this.Field;
             }
             string fieldSpecDoc = Mutation.DeleteAwsIamUserBasedCloudAccount(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	awsCloudAccountId = <System.String>
+	# REQUIRED
+	feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2474,7 +3363,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (DeleteAwsCloudAccountWithoutCftReply)this.Field;
             }
             string fieldSpecDoc = Mutation.DeleteAwsCloudAccountWithoutCft(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	awsCloudAccountId = <System.String>
+	# REQUIRED
+	feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2497,7 +3393,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (System.Boolean)this.Field;
             }
             string fieldSpecDoc = Mutation.UpgradeAwsIamUserBasedCloudAccountPermissions(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	awsCloudAccountId = <System.String>
+	# REQUIRED
+	features = @(
+		<CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+	)
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2520,7 +3425,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (System.Boolean)this.Field;
             }
             string fieldSpecDoc = Mutation.UpgradeAwsCloudAccountFeaturesWithoutCft(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	awsCloudAccountId = <System.String>
+	# REQUIRED
+	features = @(
+		<CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+	)
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2543,7 +3457,45 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AddAwsAuthenticationServerBasedCloudAccountReply)this.Field;
             }
             string fieldSpecDoc = Mutation.AddAwsAuthenticationServerBasedCloudAccount(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	cloudType = <AwsCloudType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
+	# REQUIRED
+	awsAccountName = <System.String>
+	# OPTIONAL
+	awsRegions = @(
+		<AwsAuthServerBasedCloudAccountRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsAuthServerBasedCloudAccountRegion]) for enum values.
+	)
+	# REQUIRED
+	features = @(
+		<CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+	)
+	# OPTIONAL
+	nativeId = <System.String>
+	# OPTIONAL
+	agencyName = <System.String>
+	# OPTIONAL
+	roleName = <System.String>
+	# OPTIONAL
+	authServerHostName = <System.String>
+	# OPTIONAL
+	authServerUserClientCertId = @{
+		# REQUIRED
+		id = <System.Int64>
+	}
+	# OPTIONAL
+	authServerCaCertId = @{
+		# REQUIRED
+		id = <System.Int64>
+	}
+	# OPTIONAL
+	awsCaCertId = @{
+		# REQUIRED
+		id = <System.Int64>
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2566,7 +3518,36 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (System.Boolean)this.Field;
             }
             string fieldSpecDoc = Mutation.PatchAwsAuthenticationServerBasedCloudAccount(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	awsCloudAccountId = <System.String>
+	# REQUIRED
+	feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+	# OPTIONAL
+	awsRegions = @{
+		# REQUIRED
+		regions = @(
+			<AwsAuthServerBasedCloudAccountRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsAuthServerBasedCloudAccountRegion]) for enum values.
+		)
+	}
+	# OPTIONAL
+	roleName = @{
+		# REQUIRED
+		name = <System.String>
+	}
+	# OPTIONAL
+	authServerUserClientCertId = @{
+		# REQUIRED
+		id = <System.Int64>
+	}
+	# OPTIONAL
+	authServerCaCertId = @{
+		# REQUIRED
+		id = <System.Int64>
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2589,7 +3570,33 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (System.Boolean)this.Field;
             }
             string fieldSpecDoc = Mutation.PatchAwsIamUserBasedCloudAccount(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	awsCloudAccountId = <System.String>
+	# REQUIRED
+	feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+	# OPTIONAL
+	awsRegions = @{
+		# REQUIRED
+		regions = @(
+			<AwsCloudAccountRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountRegion]) for enum values.
+		)
+	}
+	# OPTIONAL
+	awsUserKeys = @{
+		# REQUIRED
+		accessKey = <System.String>
+		# REQUIRED
+		secretKey = <System.String>
+	}
+	# OPTIONAL
+	awsRoleArn = @{
+		# REQUIRED
+		roleArn = <System.String>
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2612,7 +3619,32 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (RegisterAwsFeatureArtifactsReply)this.Field;
             }
             string fieldSpecDoc = Mutation.RegisterAwsFeatureArtifacts(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	awsArtifacts = @(
+		@{
+			# REQUIRED
+			awsNativeId = <System.String>
+			# REQUIRED
+			externalArtifacts = @(
+				@{
+					# REQUIRED
+					externalArtifactValue = <System.String>
+					# OPTIONAL
+					externalArtifactKey = <AwsCloudExternalArtifact> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudExternalArtifact]) for enum values.
+				}
+			)
+			# REQUIRED
+			features = @(
+				<CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+			)
+		}
+	)
+	# OPTIONAL
+	cloudType = <AwsCloudType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2635,7 +3667,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (BulkDeleteAwsCloudAccountWithoutCftReply)this.Field;
             }
             string fieldSpecDoc = Mutation.BulkDeleteAwsCloudAccountWithoutCft(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	awsNativeId = <System.String>
+	# OPTIONAL
+	features = @(
+		<CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+	)
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2658,7 +3699,94 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (CcProvisionJobReply)this.Field;
             }
             string fieldSpecDoc = Mutation.CreateAwsCluster(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	cloudAccountId = <System.String>
+	# OPTIONAL
+	isEsType = <System.Boolean>
+	# OPTIONAL
+	keepClusterOnFailure = <System.Boolean>
+	# OPTIONAL
+	region = <System.String>
+	# OPTIONAL
+	disableApiTermination = <System.Boolean>
+	# OPTIONAL
+	clusterConfig = @{
+		# OPTIONAL
+		userEmail = <System.String>
+		# OPTIONAL
+		adminPassword = <System.String>
+		# OPTIONAL
+		clusterName = <System.String>
+		# OPTIONAL
+		numNodes = <System.Int32>
+		# OPTIONAL
+		dnsSearchDomains = @(
+			<System.String>
+		)
+		# OPTIONAL
+		dnsNameServers = @(
+			<System.String>
+		)
+		# OPTIONAL
+		ntpServers = @(
+			<System.String>
+		)
+		# OPTIONAL
+		azureEsConfig = @{
+			# OPTIONAL
+			storageAccount = <System.String>
+			# OPTIONAL
+			resourceGroup = <System.String>
+			# OPTIONAL
+			storageSecret = <System.String>
+			# OPTIONAL
+			containerName = <System.String>
+			# OPTIONAL
+			shouldCreateContainer = <System.Boolean>
+			# OPTIONAL
+			enableImmutability = <System.Boolean>
+		}
+		# OPTIONAL
+		awsEsConfig = @{
+			# OPTIONAL
+			bucketName = <System.String>
+			# OPTIONAL
+			shouldCreateBucket = <System.Boolean>
+			# OPTIONAL
+			enableObjectLock = <System.Boolean>
+			# OPTIONAL
+			enableImmutability = <System.Boolean>
+		}
+	}
+	# OPTIONAL
+	vmConfig = @{
+		# OPTIONAL
+		cdmVersion = <System.String>
+		# OPTIONAL
+		nodeSizeGb = <System.Int32>
+		# OPTIONAL
+		subnet = <System.String>
+		# OPTIONAL
+		tags = <System.String>
+		# OPTIONAL
+		imageId = <System.String>
+		# OPTIONAL
+		instanceProfileName = <System.String>
+		# OPTIONAL
+		cdmProduct = <System.String>
+		# OPTIONAL
+		vmType = <VmType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VmType]) for enum values.
+		# OPTIONAL
+		securityGroups = @(
+			<System.String>
+		)
+		# OPTIONAL
+		instanceType = <AwsInstanceType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsInstanceType]) for enum values.
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2681,7 +3809,26 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (CcProvisionJobReply)this.Field;
             }
             string fieldSpecDoc = Mutation.DeleteAwsCluster(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	cloudAccountId = <System.String>
+	# OPTIONAL
+	clusterName = <System.String>
+	# OPTIONAL
+	numNodes = <System.Int32>
+	# OPTIONAL
+	isEsType = <System.Boolean>
+	# OPTIONAL
+	bucketName = <System.String>
+	# OPTIONAL
+	isNewContainer = <System.Boolean>
+	# OPTIONAL
+	clusterUuid = <System.String>
+	# OPTIONAL
+	region = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 

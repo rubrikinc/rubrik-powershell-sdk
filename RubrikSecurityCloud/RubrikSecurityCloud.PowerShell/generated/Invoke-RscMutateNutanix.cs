@@ -22,7 +22,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Nutanix mutations
     /// </summary>
     /// <description>
-    /// Invoke-RscMutateNutanix is a master cmdlet for Nutanix work that can invoke any of the following subcommands: CreateCluster, RefreshCluster, UpdateCluster, DeleteCluster, RegisterAgentVm, UpdateVm, CreateOnDemandBackup, DeleteSnapshots, MountSnapshotV1, PatchMountV1, DeleteMountV1, MigrateMountV1, DeleteSnapshot, RestoreFilesSnapshot, DownloadFilesSnapshot, ExportSnapshot, DownloadSnapshot, BatchExportVm, BatchMountVm, DownloadVmFromLocation, CreatePrismCentral, UpdatePrismCentral, DeletePrismCentral, RefreshPrismCentral, PrismCentralAsyncRequestStatus, BulkOnDemandSnapshotVm.
+    /// Invoke-RscMutateNutanix is a master cmdlet for Nutanix work that can invoke any of the following subcommands: CreateCluster, RefreshCluster, UpdateCluster, DeleteCluster, RegisterAgentVm, UpdateVm, CreateOnDemandBackup, DeleteSnapshots, MountSnapshotV1, PatchMountV1, DeleteMountV1, MigrateMountV1, DeleteSnapshot, RestoreFilesSnapshot, DownloadFilesSnapshot, ExportSnapshot, DownloadSnapshot, BatchExportVm, BatchMountVm, DownloadVmFromLocation, CreatePrismCentral, UpdatePrismCentral, DeletePrismCentral, RefreshPrismCentral, BulkOnDemandSnapshotVm.
     /// </description>
     /// <example>
     /// <code>Invoke-RscMutateNutanix -CreateCluster [-Arg ..] [-Field ..]</code>
@@ -95,9 +95,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     /// <example>
     /// <code>Invoke-RscMutateNutanix -RefreshPrismCentral [-Arg ..] [-Field ..]</code>
-    /// </example>
-    /// <example>
-    /// <code>Invoke-RscMutateNutanix -PrismCentralAsyncRequestStatus [-Arg ..] [-Field ..]</code>
     /// </example>
     /// <example>
     /// <code>Invoke-RscMutateNutanix -BulkOnDemandSnapshotVm [-Arg ..] [-Field ..]</code>
@@ -631,27 +628,6 @@ Initiates a job to refresh the metadata for the specified Nutanix Prism Central 
 
         
         /// <summary>
-        /// PrismCentralAsyncRequestStatus parameter set
-        ///
-        /// [GraphQL: nutanixPrismCentralAsyncRequestStatus]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "PrismCentralAsyncRequestStatus",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Get Nutanix Prism Central async request status
-
-Supported in v9.0+
-Get details about a Nutanix pc-related async request.
-[GraphQL: nutanixPrismCentralAsyncRequestStatus]",
-            Position = 0
-        )]
-        public SwitchParameter PrismCentralAsyncRequestStatus { get; set; }
-
-        
-        /// <summary>
         /// BulkOnDemandSnapshotVm parameter set
         ///
         /// [GraphQL: bulkOnDemandSnapshotNutanixVm]
@@ -751,9 +727,6 @@ Take bulk backups for multiple Nutanix virtual machines.
                         break;
                     case "RefreshPrismCentral":
                         this.ProcessRecord_RefreshPrismCentral();
-                        break;
-                    case "PrismCentralAsyncRequestStatus":
-                        this.ProcessRecord_PrismCentralAsyncRequestStatus();
                         break;
                     case "BulkOnDemandSnapshotVm":
                         this.ProcessRecord_BulkOnDemandSnapshotVm();
@@ -986,15 +959,6 @@ Take bulk backups for multiple Nutanix virtual machines.
         }
 
         // This parameter set invokes a single graphql operation:
-        // nutanixPrismCentralAsyncRequestStatus.
-        internal void ProcessRecord_PrismCentralAsyncRequestStatus()
-        {
-            this._logger.name += " -PrismCentralAsyncRequestStatus";
-            // Invoke graphql operation nutanixPrismCentralAsyncRequestStatus
-            InvokeMutationNutanixPrismCentralAsyncRequestStatus();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // bulkOnDemandSnapshotNutanixVm.
         internal void ProcessRecord_BulkOnDemandSnapshotVm()
         {
@@ -1023,7 +987,25 @@ Take bulk backups for multiple Nutanix virtual machines.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.CreateNutanixCluster(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	nutanixClusterConfig = @{
+		# REQUIRED
+		caCerts = <System.String>
+		# REQUIRED
+		hostname = <System.String>
+		# REQUIRED
+		nutanixClusterUuid = <System.String>
+		# REQUIRED
+		password = <System.String>
+		# REQUIRED
+		username = <System.String>
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1046,7 +1028,12 @@ Take bulk backups for multiple Nutanix virtual machines.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.RefreshNutanixCluster(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1069,7 +1056,25 @@ Take bulk backups for multiple Nutanix virtual machines.
                 fieldSpecObj = (UpdateNutanixClusterReply)this.Field;
             }
             string fieldSpecDoc = Mutation.UpdateNutanixCluster(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+	# REQUIRED
+	patchProperties = @{
+		# OPTIONAL
+		caCerts = <System.String>
+		# OPTIONAL
+		configuredSlaDomainId = <System.String>
+		# OPTIONAL
+		hostname = <System.String>
+		# OPTIONAL
+		password = <System.String>
+		# OPTIONAL
+		username = <System.String>
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1092,7 +1097,12 @@ Take bulk backups for multiple Nutanix virtual machines.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.DeleteNutanixCluster(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1115,7 +1125,12 @@ Take bulk backups for multiple Nutanix virtual machines.
                 fieldSpecObj = (RequestSuccess)this.Field;
             }
             string fieldSpecDoc = Mutation.RegisterAgentNutanixVm(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1138,7 +1153,52 @@ Take bulk backups for multiple Nutanix virtual machines.
                 fieldSpecObj = (System.String)this.Field;
             }
             string fieldSpecDoc = Mutation.UpdateNutanixVm(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+	# REQUIRED
+	vmPatchProperties = @{
+		# OPTIONAL
+		configuredSlaDomainId = <System.String>
+		# OPTIONAL
+		excludedDiskIds = @(
+			<System.String>
+		)
+		# OPTIONAL
+		isPaused = <System.Boolean>
+		# OPTIONAL
+		postBackupScript = @{
+			# REQUIRED
+			failureHandling = <NutanixVirtualMachineScriptDetailFailureHandling> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NutanixVirtualMachineScriptDetailFailureHandling]) for enum values.
+			# REQUIRED
+			scriptPath = <System.String>
+			# REQUIRED
+			timeoutMs = <System.Int64>
+		}
+		# OPTIONAL
+		postSnapScript = @{
+			# REQUIRED
+			failureHandling = <NutanixVirtualMachineScriptDetailFailureHandling> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NutanixVirtualMachineScriptDetailFailureHandling]) for enum values.
+			# REQUIRED
+			scriptPath = <System.String>
+			# REQUIRED
+			timeoutMs = <System.Int64>
+		}
+		# OPTIONAL
+		preBackupScript = @{
+			# REQUIRED
+			failureHandling = <NutanixVirtualMachineScriptDetailFailureHandling> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NutanixVirtualMachineScriptDetailFailureHandling]) for enum values.
+			# REQUIRED
+			scriptPath = <System.String>
+			# REQUIRED
+			timeoutMs = <System.Int64>
+		}
+		# OPTIONAL
+		snapshotConsistencyMandate = <CdmNutanixSnapshotConsistencyMandate> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CdmNutanixSnapshotConsistencyMandate]) for enum values.
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1161,7 +1221,19 @@ Take bulk backups for multiple Nutanix virtual machines.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.CreateOnDemandNutanixBackup(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	config = @{
+		# OPTIONAL
+		slaId = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+	# OPTIONAL
+	userNote = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1184,7 +1256,12 @@ Take bulk backups for multiple Nutanix virtual machines.
                 fieldSpecObj = (RequestSuccess)this.Field;
             }
             string fieldSpecDoc = Mutation.DeleteNutanixSnapshots(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1207,7 +1284,37 @@ Take bulk backups for multiple Nutanix virtual machines.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.MountNutanixSnapshotV1(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		containerNaturalId = <System.String>
+		# OPTIONAL
+		nutanixClusterId = <System.String>
+		# OPTIONAL
+		shouldMigrateImmediately = <System.Boolean>
+		# OPTIONAL
+		shouldPowerOn = <System.Boolean>
+		# OPTIONAL
+		shouldRemoveNetwork = <System.Boolean>
+		# OPTIONAL
+		targetNetwork = <System.String>
+		# OPTIONAL
+		vmName = <System.String>
+		# OPTIONAL
+		keepMacAddresses = <System.Boolean>
+		# OPTIONAL
+		nicNetworkUuids = @(
+			<System.String>
+		)
+		# REQUIRED
+		shouldDisableMigration = <System.Boolean>
+	}
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1230,7 +1337,17 @@ Take bulk backups for multiple Nutanix virtual machines.
                 fieldSpecObj = (PatchNutanixMountV1Reply)this.Field;
             }
             string fieldSpecDoc = Mutation.PatchNutanixMountV1(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		shouldPowerOn = <System.Boolean>
+	}
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1253,7 +1370,12 @@ Take bulk backups for multiple Nutanix virtual machines.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.DeleteNutanixMountV1(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1276,7 +1398,12 @@ Take bulk backups for multiple Nutanix virtual machines.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.MigrateNutanixMountV1(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1299,7 +1426,14 @@ Take bulk backups for multiple Nutanix virtual machines.
                 fieldSpecObj = (RequestSuccess)this.Field;
             }
             string fieldSpecDoc = Mutation.DeleteNutanixSnapshot(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	location = <InternalDeleteNutanixSnapshotRequestLocation> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.InternalDeleteNutanixSnapshotRequestLocation]) for enum values.
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1322,7 +1456,26 @@ Take bulk backups for multiple Nutanix virtual machines.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.RestoreFilesNutanixSnapshot(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		targetVirtualMachineId = <System.String>
+		# REQUIRED
+		restoreConfig = @(
+			@{
+				# REQUIRED
+				path = <System.String>
+				# REQUIRED
+				restorePath = <System.String>
+			}
+		)
+	}
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1345,7 +1498,26 @@ Take bulk backups for multiple Nutanix virtual machines.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.DownloadFilesNutanixSnapshot(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		legalHoldDownloadConfig = @{
+			# REQUIRED
+			isLegalHoldDownload = <System.Boolean>
+		}
+		# REQUIRED
+		paths = @(
+			<System.String>
+		)
+	}
+	# REQUIRED
+	id = <System.String>
+	# OPTIONAL
+	userNote = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1368,7 +1540,31 @@ Take bulk backups for multiple Nutanix virtual machines.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.ExportNutanixSnapshot(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		nutanixClusterId = <System.String>
+		# OPTIONAL
+		powerOn = <System.Boolean>
+		# OPTIONAL
+		removeNetworkDevices = <System.Boolean>
+		# OPTIONAL
+		vmName = <System.String>
+		# OPTIONAL
+		keepMacAddresses = <System.Boolean>
+		# OPTIONAL
+		nicNetworkUuids = @(
+			<System.String>
+		)
+		# REQUIRED
+		containerNaturalId = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1391,7 +1587,12 @@ Take bulk backups for multiple Nutanix virtual machines.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.DownloadNutanixSnapshot(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1414,7 +1615,47 @@ Take bulk backups for multiple Nutanix virtual machines.
                 fieldSpecObj = (BatchExportNutanixVmReply)this.Field;
             }
             string fieldSpecDoc = Mutation.BatchExportNutanixVm(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		snapshots = @(
+			@{
+				# OPTIONAL
+				snapshotAfterDate = <DateTime>
+				# OPTIONAL
+				snapshotBeforeDate = <DateTime>
+				# OPTIONAL
+				snapshotId = <System.String>
+				# OPTIONAL
+				vmNamePrefix = <System.String>
+				# REQUIRED
+				exportConfig = @{
+					# OPTIONAL
+					nutanixClusterId = <System.String>
+					# OPTIONAL
+					powerOn = <System.Boolean>
+					# OPTIONAL
+					removeNetworkDevices = <System.Boolean>
+					# OPTIONAL
+					vmName = <System.String>
+					# OPTIONAL
+					keepMacAddresses = <System.Boolean>
+					# OPTIONAL
+					nicNetworkUuids = @(
+						<System.String>
+					)
+					# REQUIRED
+					containerNaturalId = <System.String>
+				}
+				# REQUIRED
+				vmId = <System.String>
+			}
+		)
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1437,7 +1678,53 @@ Take bulk backups for multiple Nutanix virtual machines.
                 fieldSpecObj = (BatchMountNutanixVmReply)this.Field;
             }
             string fieldSpecDoc = Mutation.BatchMountNutanixVm(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		snapshots = @(
+			@{
+				# OPTIONAL
+				snapshotAfterDate = <DateTime>
+				# OPTIONAL
+				snapshotBeforeDate = <DateTime>
+				# OPTIONAL
+				snapshotId = <System.String>
+				# OPTIONAL
+				vmNamePrefix = <System.String>
+				# REQUIRED
+				mountConfig = @{
+					# OPTIONAL
+					containerNaturalId = <System.String>
+					# OPTIONAL
+					nutanixClusterId = <System.String>
+					# OPTIONAL
+					shouldMigrateImmediately = <System.Boolean>
+					# OPTIONAL
+					shouldPowerOn = <System.Boolean>
+					# OPTIONAL
+					shouldRemoveNetwork = <System.Boolean>
+					# OPTIONAL
+					targetNetwork = <System.String>
+					# OPTIONAL
+					vmName = <System.String>
+					# OPTIONAL
+					keepMacAddresses = <System.Boolean>
+					# OPTIONAL
+					nicNetworkUuids = @(
+						<System.String>
+					)
+					# REQUIRED
+					shouldDisableMigration = <System.Boolean>
+				}
+				# REQUIRED
+				vmId = <System.String>
+			}
+		)
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1460,7 +1747,19 @@ Take bulk backups for multiple Nutanix virtual machines.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.DownloadNutanixVmFromLocation(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	downloadConfig = @{
+		# OPTIONAL
+		slaId = <System.String>
+	}
+	# REQUIRED
+	locationId = <System.String>
+	# REQUIRED
+	snapshotId = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1483,7 +1782,30 @@ Take bulk backups for multiple Nutanix virtual machines.
                 fieldSpecObj = (BatchAsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.CreateNutanixPrismCentral(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	prismCentralConfig = @{
+		# REQUIRED
+		caCerts = <System.String>
+		# REQUIRED
+		hostname = <System.String>
+		# REQUIRED
+		password = <System.String>
+		# REQUIRED
+		username = <System.String>
+	}
+	# REQUIRED
+	prismElementCdmTuple = @(
+		@{
+			# REQUIRED
+			nutanixClusterId = <System.String>
+			# REQUIRED
+			cdmClusterId = <System.String>
+		}
+	)
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1506,7 +1828,25 @@ Take bulk backups for multiple Nutanix virtual machines.
                 fieldSpecObj = (UpdateNutanixPrismCentralReply)this.Field;
             }
             string fieldSpecDoc = Mutation.UpdateNutanixPrismCentral(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+	# REQUIRED
+	patchProperties = @{
+		# OPTIONAL
+		caCerts = <System.String>
+		# OPTIONAL
+		configuredSlaDomainId = <System.String>
+		# OPTIONAL
+		hostname = <System.String>
+		# OPTIONAL
+		password = <System.String>
+		# OPTIONAL
+		username = <System.String>
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1529,7 +1869,12 @@ Take bulk backups for multiple Nutanix virtual machines.
                 fieldSpecObj = (BatchAsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.DeleteNutanixPrismCentral(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1552,30 +1897,12 @@ Take bulk backups for multiple Nutanix virtual machines.
                 fieldSpecObj = (BatchAsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.RefreshNutanixPrismCentral(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
-            BuildRequest(fieldSpecDoc);
-        }
-
-        // Invoke GraphQL Mutation:
-        // nutanixPrismCentralAsyncRequestStatus(input: NutanixPrismCentralAsyncRequestStatusInput!): AsyncRequestStatus!
-        internal void InvokeMutationNutanixPrismCentralAsyncRequestStatus()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "NutanixPrismCentralAsyncRequestStatusInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationNutanixPrismCentralAsyncRequestStatus",
-                "($input: NutanixPrismCentralAsyncRequestStatusInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.NutanixPrismCentralAsyncRequestStatus(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1598,7 +1925,27 @@ Take bulk backups for multiple Nutanix virtual machines.
                 fieldSpecObj = (BulkOnDemandSnapshotNutanixVmReply)this.Field;
             }
             string fieldSpecDoc = Mutation.BulkOnDemandSnapshotNutanixVm(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		vms = @(
+			@{
+				# REQUIRED
+				backupConfig = @{
+					# OPTIONAL
+					slaId = <System.String>
+				}
+				# REQUIRED
+				vmId = <System.String>
+			}
+		)
+	}
+	# OPTIONAL
+	userNote = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 

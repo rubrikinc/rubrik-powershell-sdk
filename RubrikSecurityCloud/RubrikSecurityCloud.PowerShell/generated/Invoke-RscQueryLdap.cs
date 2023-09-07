@@ -182,7 +182,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (LdapIntegrationConnection)this.Field;
             }
             string fieldSpecDoc = Query.LdapIntegrationConnection(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.last = <System.Int32>
+# OPTIONAL
+$inputs.Var.before = <System.String>
+# OPTIONAL
+$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$inputs.Var.sortBy = <LdapIntegrationFieldEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LdapIntegrationFieldEnum]) for enum values.";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -221,7 +233,23 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (PrincipalConnection)this.Field;
             }
             string fieldSpecDoc = Query.LdapPrincipalConnection(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.last = <System.Int32>
+# OPTIONAL
+$inputs.Var.before = <System.String>
+# OPTIONAL
+$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$inputs.Var.sortBy = <LdapPrincipalFieldEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LdapPrincipalFieldEnum]) for enum values.
+# REQUIRED
+$inputs.Var.id = <System.String>
+# REQUIRED
+$inputs.Var.searchText = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -260,7 +288,25 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AuthorizedPrincipalConnection)this.Field;
             }
             string fieldSpecDoc = Query.LdapAuthorizedPrincipalConnection(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.last = <System.Int32>
+# OPTIONAL
+$inputs.Var.before = <System.String>
+# OPTIONAL
+$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$inputs.Var.sortBy = <LdapAuthorizedPrincipalFieldEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LdapAuthorizedPrincipalFieldEnum]) for enum values.
+# REQUIRED
+$inputs.Var.searchText = <System.String>
+# OPTIONAL
+$inputs.Var.roleIds = @(
+	<System.String>
+)";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 

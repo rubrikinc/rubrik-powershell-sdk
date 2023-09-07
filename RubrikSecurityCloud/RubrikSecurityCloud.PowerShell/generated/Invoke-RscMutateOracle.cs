@@ -720,7 +720,66 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
                 fieldSpecObj = (BulkUpdateOracleHostsReply)this.Field;
             }
             string fieldSpecDoc = Mutation.BulkUpdateOracleHosts(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	bulkUpdateProperties = @{
+		# OPTIONAL
+		oracleUpdate = @{
+			# OPTIONAL
+			configuredSlaDomainId = <System.String>
+			# OPTIONAL
+			hostMount = <System.String>
+			# OPTIONAL
+			logBackupFrequencyInMinutes = <System.Int32>
+			# OPTIONAL
+			logRetentionHours = <System.Int32>
+			# OPTIONAL
+			numChannels = <System.Int32>
+			# OPTIONAL
+			hostLogRetentionHours = <System.Int32>
+			# OPTIONAL
+			configuredSlaDomainIdDeprecated = <System.String>
+			# OPTIONAL
+			nodeOrder = @(
+				@{
+					# REQUIRED
+					nodeName = <System.String>
+					# REQUIRED
+					order = <System.Int32>
+				}
+			)
+			# OPTIONAL
+			shouldDistributeBackupsAutomatically = <System.Boolean>
+			# OPTIONAL
+			oracleUpdateCommon = @{
+				# OPTIONAL
+				hostLogRetentionHours = <System.Int32>
+				# OPTIONAL
+				hostMount = <System.String>
+				# OPTIONAL
+				logBackupFrequencyInMinutes = <System.Int32>
+				# OPTIONAL
+				logRetentionHours = <System.Int32>
+				# OPTIONAL
+				numChannels = <System.Int32>
+				# OPTIONAL
+				hasLogConfigFromSla = <System.Boolean>
+				# OPTIONAL
+				shouldEnableHighFileCountSupport = <System.Boolean>
+				# OPTIONAL
+				shouldUseSecureThriftForDataTransfer = <System.Boolean>
+				# OPTIONAL
+				sectionSizeInGb = <System.Int32>
+			}
+		}
+		# REQUIRED
+		ids = @(
+			<System.String>
+		)
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -743,7 +802,12 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.RefreshOracleDatabase(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -766,7 +830,42 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
                 fieldSpecObj = (OracleDbDetail)this.Field;
             }
             string fieldSpecDoc = Mutation.UpdateOracleDataGuardGroup(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+	# REQUIRED
+	updateProperties = @{
+		# OPTIONAL
+		preferredDgMemberUniqueNames = @(
+			<System.String>
+		)
+		# OPTIONAL
+		shouldBackupFromPrimaryOnly = <System.Boolean>
+		# OPTIONAL
+		oracleUpdateCommon = @{
+			# OPTIONAL
+			hostLogRetentionHours = <System.Int32>
+			# OPTIONAL
+			hostMount = <System.String>
+			# OPTIONAL
+			logBackupFrequencyInMinutes = <System.Int32>
+			# OPTIONAL
+			logRetentionHours = <System.Int32>
+			# OPTIONAL
+			numChannels = <System.Int32>
+			# OPTIONAL
+			hasLogConfigFromSla = <System.Boolean>
+			# OPTIONAL
+			shouldEnableHighFileCountSupport = <System.Boolean>
+			# OPTIONAL
+			shouldUseSecureThriftForDataTransfer = <System.Boolean>
+			# OPTIONAL
+			sectionSizeInGb = <System.Int32>
+		}
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -789,7 +888,12 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
                 fieldSpecObj = (System.String)this.Field;
             }
             string fieldSpecDoc = Mutation.DeleteAllOracleDatabaseSnapshots(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -812,7 +916,24 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.TakeOnDemandOracleDatabaseSnapshot(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		forceFullSnapshot = <System.Boolean>
+		# OPTIONAL
+		baseOnDemandSnapshotConfig = @{
+			# OPTIONAL
+			slaId = <System.String>
+		}
+	}
+	# REQUIRED
+	id = <System.String>
+	# OPTIONAL
+	userNote = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -835,7 +956,12 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.TakeOnDemandOracleLogSnapshot(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -858,7 +984,66 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
                 fieldSpecObj = (BulkUpdateOracleRacsReply)this.Field;
             }
             string fieldSpecDoc = Mutation.BulkUpdateOracleRacs(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	bulkUpdateProperties = @{
+		# OPTIONAL
+		oracleUpdate = @{
+			# OPTIONAL
+			configuredSlaDomainId = <System.String>
+			# OPTIONAL
+			hostMount = <System.String>
+			# OPTIONAL
+			logBackupFrequencyInMinutes = <System.Int32>
+			# OPTIONAL
+			logRetentionHours = <System.Int32>
+			# OPTIONAL
+			numChannels = <System.Int32>
+			# OPTIONAL
+			hostLogRetentionHours = <System.Int32>
+			# OPTIONAL
+			configuredSlaDomainIdDeprecated = <System.String>
+			# OPTIONAL
+			nodeOrder = @(
+				@{
+					# REQUIRED
+					nodeName = <System.String>
+					# REQUIRED
+					order = <System.Int32>
+				}
+			)
+			# OPTIONAL
+			shouldDistributeBackupsAutomatically = <System.Boolean>
+			# OPTIONAL
+			oracleUpdateCommon = @{
+				# OPTIONAL
+				hostLogRetentionHours = <System.Int32>
+				# OPTIONAL
+				hostMount = <System.String>
+				# OPTIONAL
+				logBackupFrequencyInMinutes = <System.Int32>
+				# OPTIONAL
+				logRetentionHours = <System.Int32>
+				# OPTIONAL
+				numChannels = <System.Int32>
+				# OPTIONAL
+				hasLogConfigFromSla = <System.Boolean>
+				# OPTIONAL
+				shouldEnableHighFileCountSupport = <System.Boolean>
+				# OPTIONAL
+				shouldUseSecureThriftForDataTransfer = <System.Boolean>
+				# OPTIONAL
+				sectionSizeInGb = <System.Int32>
+			}
+		}
+		# REQUIRED
+		ids = @(
+			<System.String>
+		)
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -881,7 +1066,28 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.ExportOracleTablespace(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		exposeAllLogs = <System.Boolean>
+		# REQUIRED
+		auxiliaryDestinationPath = <System.String>
+		# REQUIRED
+		recoveryPoint = @{
+			# OPTIONAL
+			snapshotId = <System.String>
+			# OPTIONAL
+			timestampMs = <System.Int64>
+		}
+		# REQUIRED
+		tablespaceName = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -904,7 +1110,18 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
                 fieldSpecObj = (ValidateOracleAcoFileReply)this.Field;
             }
             string fieldSpecDoc = Mutation.ValidateOracleAcoFile(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	acoContentsBase64 = <System.String>
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	isLiveMount = <System.Boolean>
+	# REQUIRED
+	dbId = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -927,7 +1144,32 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.ValidateOracleDatabaseBackups(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		numChannels = <System.Int32>
+		# OPTIONAL
+		sgaMaxSizeInMb = <System.Int64>
+		# OPTIONAL
+		targetMountPath = <System.String>
+		# OPTIONAL
+		targetOracleHome = <System.String>
+		# REQUIRED
+		recoveryPoint = @{
+			# OPTIONAL
+			snapshotId = <System.String>
+			# OPTIONAL
+			timestampMs = <System.Int64>
+		}
+		# REQUIRED
+		targetOracleHostOrRacId = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -950,7 +1192,66 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
                 fieldSpecObj = (BulkUpdateOracleDatabasesReply)this.Field;
             }
             string fieldSpecDoc = Mutation.BulkUpdateOracleDatabases(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	bulkUpdateProperties = @{
+		# OPTIONAL
+		oracleUpdate = @{
+			# OPTIONAL
+			configuredSlaDomainId = <System.String>
+			# OPTIONAL
+			hostMount = <System.String>
+			# OPTIONAL
+			logBackupFrequencyInMinutes = <System.Int32>
+			# OPTIONAL
+			logRetentionHours = <System.Int32>
+			# OPTIONAL
+			numChannels = <System.Int32>
+			# OPTIONAL
+			hostLogRetentionHours = <System.Int32>
+			# OPTIONAL
+			configuredSlaDomainIdDeprecated = <System.String>
+			# OPTIONAL
+			nodeOrder = @(
+				@{
+					# REQUIRED
+					nodeName = <System.String>
+					# REQUIRED
+					order = <System.Int32>
+				}
+			)
+			# OPTIONAL
+			shouldDistributeBackupsAutomatically = <System.Boolean>
+			# OPTIONAL
+			oracleUpdateCommon = @{
+				# OPTIONAL
+				hostLogRetentionHours = <System.Int32>
+				# OPTIONAL
+				hostMount = <System.String>
+				# OPTIONAL
+				logBackupFrequencyInMinutes = <System.Int32>
+				# OPTIONAL
+				logRetentionHours = <System.Int32>
+				# OPTIONAL
+				numChannels = <System.Int32>
+				# OPTIONAL
+				hasLogConfigFromSla = <System.Boolean>
+				# OPTIONAL
+				shouldEnableHighFileCountSupport = <System.Boolean>
+				# OPTIONAL
+				shouldUseSecureThriftForDataTransfer = <System.Boolean>
+				# OPTIONAL
+				sectionSizeInGb = <System.Int32>
+			}
+		}
+		# REQUIRED
+		ids = @(
+			<System.String>
+		)
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -973,7 +1274,24 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.InstantRecoverOracleSnapshot(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		numChannels = <System.Int32>
+		# REQUIRED
+		recoveryPoint = @{
+			# OPTIONAL
+			snapshotId = <System.String>
+			# OPTIONAL
+			timestampMs = <System.Int64>
+		}
+	}
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -996,7 +1314,66 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.MountOracleDatabase(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	request = @{
+		# REQUIRED
+		config = @{
+			# OPTIONAL
+			shouldMountFilesOnly = <System.Boolean>
+			# OPTIONAL
+			targetMountPath = <System.String>
+			# OPTIONAL
+			advancedRecoveryConfigBase64 = <System.String>
+			# OPTIONAL
+			customPfilePath = <System.String>
+			# OPTIONAL
+			numChannels = <System.Int32>
+			# OPTIONAL
+			postScriptPath = <System.String>
+			# OPTIONAL
+			preScriptPath = <System.String>
+			# OPTIONAL
+			shouldStopRecoveryOnPreScriptFailure = <System.Boolean>
+			# OPTIONAL
+			pdbsToLiveMount = @(
+				<System.String>
+			)
+			# OPTIONAL
+			targetRacHostIds = @(
+				<System.String>
+			)
+			# OPTIONAL
+			lmDbName = <System.String>
+			# OPTIONAL
+			targetRacPrimaryHostId = <System.String>
+			# OPTIONAL
+			shouldAllowRenameToSource = <System.Boolean>
+			# REQUIRED
+			recoveryPoint = @{
+				# OPTIONAL
+				snapshotId = <System.String>
+				# OPTIONAL
+				timestampMs = <System.Int64>
+			}
+			# REQUIRED
+			targetOracleHostOrRacId = <System.String>
+		}
+		# REQUIRED
+		id = <System.String>
+	}
+	# OPTIONAL
+	advancedRecoveryConfigMap = @(
+		@{
+			# OPTIONAL
+			key = <System.String>
+			# OPTIONAL
+			value = <System.String>
+		}
+	)
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1019,7 +1396,66 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.ExportOracleDatabase(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	request = @{
+		# REQUIRED
+		config = @{
+			# OPTIONAL
+			restoreFilesPath = <System.String>
+			# OPTIONAL
+			shouldRestoreFilesOnly = <System.Boolean>
+			# OPTIONAL
+			targetMountPath = <System.String>
+			# OPTIONAL
+			advancedRecoveryConfigBase64 = <System.String>
+			# OPTIONAL
+			archiveLogPath = <System.String>
+			# OPTIONAL
+			cloneDbName = <System.String>
+			# OPTIONAL
+			customPfilePath = <System.String>
+			# OPTIONAL
+			numChannels = <System.Int32>
+			# OPTIONAL
+			postScriptPath = <System.String>
+			# OPTIONAL
+			preScriptPath = <System.String>
+			# OPTIONAL
+			shouldStopRecoveryOnPreScriptFailure = <System.Boolean>
+			# OPTIONAL
+			pdbsToClone = @(
+				<System.String>
+			)
+			# OPTIONAL
+			shouldSkipDropDbInUndo = <System.Boolean>
+			# OPTIONAL
+			shouldAllowRenameToSource = <System.Boolean>
+			# REQUIRED
+			recoveryPoint = @{
+				# OPTIONAL
+				snapshotId = <System.String>
+				# OPTIONAL
+				timestampMs = <System.Int64>
+			}
+			# REQUIRED
+			targetOracleHostOrRacId = <System.String>
+		}
+		# REQUIRED
+		id = <System.String>
+	}
+	# OPTIONAL
+	advancedRecoveryConfigMap = @(
+		@{
+			# OPTIONAL
+			key = <System.String>
+			# OPTIONAL
+			value = <System.String>
+		}
+	)
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1042,7 +1478,26 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.CreateOraclePdbRestore(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		pdbsToRestore = @(
+			<System.String>
+		)
+		# REQUIRED
+		recoveryPoint = @{
+			# OPTIONAL
+			snapshotId = <System.String>
+			# OPTIONAL
+			timestampMs = <System.Int64>
+		}
+	}
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1065,7 +1520,12 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.DownloadOracleDatabaseSnapshot(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	snapshotId = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1088,7 +1548,14 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.DeleteOracleMount(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	force = <System.Boolean>
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1111,7 +1578,31 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.RestoreOracleLogs(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		targetMountPath = <System.String>
+		# REQUIRED
+		oracleLogRecoveryRange = @{
+			# OPTIONAL
+			oracleTimeRange = @{
+				# OPTIONAL
+				endTime = <DateTime>
+				# OPTIONAL
+				startTime = <DateTime>
+			}
+		}
+		# REQUIRED
+		shouldMountFilesOnly = <System.Boolean>
+		# REQUIRED
+		targetOracleHostOrRacId = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 

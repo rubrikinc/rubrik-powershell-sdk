@@ -326,7 +326,19 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
                 fieldSpecObj = (VsphereAsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.VsphereCreateVcenter(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.clusterUuid = <System.String>
+# REQUIRED
+$inputs.Var.hostname = <System.String>
+# REQUIRED
+$inputs.Var.username = <System.String>
+# REQUIRED
+$inputs.Var.password = <System.String>
+# REQUIRED
+$inputs.Var.conflictResolutionAuthz = <ConflictResolutionAuthzEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ConflictResolutionAuthzEnum]) for enum values.
+# OPTIONAL
+$inputs.Var.caCert = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -349,7 +361,12 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.VsphereDeleteVcenter(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -384,7 +401,19 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
                 fieldSpecObj = (RequestSuccess)this.Field;
             }
             string fieldSpecDoc = Mutation.VsphereEditVcenter(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.vcenterId = <System.String>
+# REQUIRED
+$inputs.Var.hostname = <System.String>
+# REQUIRED
+$inputs.Var.username = <System.String>
+# REQUIRED
+$inputs.Var.password = <System.String>
+# REQUIRED
+$inputs.Var.conflictResolutionAuthz = <ConflictResolutionAuthzEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ConflictResolutionAuthzEnum]) for enum values.
+# OPTIONAL
+$inputs.Var.caCert = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -407,7 +436,9 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
                 fieldSpecObj = (VsphereAsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.VsphereRefreshVcenter(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.vcenterId = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -430,7 +461,40 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
                 fieldSpecObj = (UpdateVcenterReply)this.Field;
             }
             string fieldSpecDoc = Mutation.UpdateVcenter(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+	# REQUIRED
+	updateProperties = @{
+		# OPTIONAL
+		caCerts = <System.String>
+		# OPTIONAL
+		computeVisibilityFilter = @(
+			@{
+				# OPTIONAL
+				isVmwareMetroStorageCluster = <System.Boolean>
+				# REQUIRED
+				hostGroupFilter = @(
+					<System.String>
+				)
+				# REQUIRED
+				id = <System.String>
+			}
+		)
+		# OPTIONAL
+		shouldEnableHotAddProxyForOnPrem = <System.Boolean>
+		# OPTIONAL
+		conflictResolutionAuthz = <VcenterConfigConflictResolutionAuthz> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
+		# REQUIRED
+		hostname = <System.String>
+		# REQUIRED
+		password = <System.String>
+		# REQUIRED
+		username = <System.String>
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -453,7 +517,32 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
                 fieldSpecObj = (RequestSuccess)this.Field;
             }
             string fieldSpecDoc = Mutation.UpdateVcenterHotAddNetwork(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	hotAddNetworkInfo = @{
+		# OPTIONAL
+		staticIpInfo = @{
+			# OPTIONAL
+			dnsServers = @(
+				<System.String>
+			)
+			# OPTIONAL
+			gateway = <System.String>
+			# REQUIRED
+			ipAddresses = @(
+				<System.String>
+			)
+			# REQUIRED
+			subnetMask = <System.String>
+		}
+		# REQUIRED
+		networkId = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -476,7 +565,19 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
                 fieldSpecObj = (RequestSuccess)this.Field;
             }
             string fieldSpecDoc = Mutation.UpdateVcenterHotAddBandwidth(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	hotAddBandwidthInfo = @{
+		# REQUIRED
+		exportLimit = <System.Int32>
+		# REQUIRED
+		ingestLimit = <System.Int32>
+	}
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 

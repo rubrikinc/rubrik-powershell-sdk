@@ -1720,7 +1720,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AwsNativeRoot)this.Field;
             }
             string fieldSpecDoc = Query.AwsNativeRoot(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1744,7 +1745,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AwsNativeAccount)this.Field;
             }
             string fieldSpecDoc = Query.AwsNativeAccount(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.awsNativeAccountRubrikId = <System.String>
+# REQUIRED
+$inputs.Var.awsNativeProtectionFeature = <AwsNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1767,7 +1772,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AwsNativeEc2Instance)this.Field;
             }
             string fieldSpecDoc = Query.AwsNativeEc2Instance(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.ec2InstanceRubrikId = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1790,7 +1797,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AwsNativeEbsVolume)this.Field;
             }
             string fieldSpecDoc = Query.AwsNativeEbsVolume(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.ebsVolumeRubrikId = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1813,7 +1822,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AwsNativeS3Bucket)this.Field;
             }
             string fieldSpecDoc = Query.AwsNativeS3Bucket(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.s3BucketRubrikId = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1854,7 +1865,45 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AwsNativeAccountConnection)this.Field;
             }
             string fieldSpecDoc = Query.AwsNativeAccounts(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.last = <System.Int32>
+# OPTIONAL
+$inputs.Var.before = <System.String>
+# OPTIONAL
+$inputs.Var.sortBy = <AwsNativeAccountSortFields> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeAccountSortFields]) for enum values.
+# OPTIONAL
+$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$inputs.Var.accountFilters = @{
+	# OPTIONAL
+	nameSubstringFilter = @{
+		# REQUIRED
+		nameSubstring = <System.String>
+	}
+	# OPTIONAL
+	effectiveSlaFilter = @{
+		# REQUIRED
+		effectiveSlaIds = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	cloudTypeFilter = @{
+		# REQUIRED
+		cloudTypes = @(
+			<AwsCloudType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
+		)
+	}
+}
+# OPTIONAL
+$inputs.Var.authorizedOperationFilter = <Operation> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Operation]) for enum values.
+# REQUIRED
+$inputs.Var.awsNativeProtectionFeature = <AwsNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1891,7 +1940,21 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AwsNativeEc2InstanceConnection)this.Field;
             }
             string fieldSpecDoc = Query.AwsNativeEc2InstancesByName(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.last = <System.Int32>
+# OPTIONAL
+$inputs.Var.before = <System.String>
+# OPTIONAL
+$inputs.Var.sortBy = <AwsNativeEc2InstanceSortFields> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeEc2InstanceSortFields]) for enum values.
+# OPTIONAL
+$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# REQUIRED
+$inputs.Var.ec2InstanceName = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1930,7 +1993,109 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AwsNativeEc2InstanceConnection)this.Field;
             }
             string fieldSpecDoc = Query.AwsNativeEc2Instances(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.last = <System.Int32>
+# OPTIONAL
+$inputs.Var.before = <System.String>
+# OPTIONAL
+$inputs.Var.sortBy = <AwsNativeEc2InstanceSortFields> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeEc2InstanceSortFields]) for enum values.
+# OPTIONAL
+$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$inputs.Var.descendantTypeFilter = @(
+	<HierarchyObjectTypeEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]) for enum values.
+)
+# OPTIONAL
+$inputs.Var.ec2InstanceFilters = @{
+	# OPTIONAL
+	nameOrIdSubstringFilter = @{
+		# REQUIRED
+		nameOrIdSubstring = <System.String>
+	}
+	# OPTIONAL
+	effectiveSlaFilter = @{
+		# REQUIRED
+		effectiveSlaIds = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	accountFilter = @{
+		# REQUIRED
+		accountIds = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	fileRecoveryStatusFilter = @{
+		# REQUIRED
+		statuses = @(
+			<AwsNativeFileRecoveryStatus> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeFileRecoveryStatus]) for enum values.
+		)
+	}
+	# OPTIONAL
+	regionFilter = @{
+		# REQUIRED
+		regions = @(
+			<AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
+		)
+	}
+	# OPTIONAL
+	typeFilter = @{
+		# REQUIRED
+		ec2InstanceTypes = @(
+			<AwsNativeEc2InstanceType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeEc2InstanceType]) for enum values.
+		)
+	}
+	# OPTIONAL
+	vpcFilter = @{
+		# REQUIRED
+		vpcIds = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	relicFilter = @{
+		# REQUIRED
+		relic = <System.Boolean>
+	}
+	# OPTIONAL
+	tagFilter = @{
+		# REQUIRED
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+	}
+	# OPTIONAL
+	appProtectionStatusFilter = @{
+		# REQUIRED
+		isProtectionSetup = <System.Boolean>
+	}
+	# OPTIONAL
+	rbsStatusFilter = @{
+		# REQUIRED
+		status = <CloudInstanceRbsConnectionStatus> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudInstanceRbsConnectionStatus]) for enum values.
+	}
+	# OPTIONAL
+	orgFilter = @{
+		# REQUIRED
+		orgIds = @(
+			<System.String>
+		)
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1967,7 +2132,21 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AwsNativeEbsVolumeConnection)this.Field;
             }
             string fieldSpecDoc = Query.AwsNativeEbsVolumesByName(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.last = <System.Int32>
+# OPTIONAL
+$inputs.Var.before = <System.String>
+# OPTIONAL
+$inputs.Var.sortBy = <AwsNativeEbsVolumeSortFields> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeEbsVolumeSortFields]) for enum values.
+# OPTIONAL
+$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# REQUIRED
+$inputs.Var.ebsVolumeName = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2004,7 +2183,95 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AwsNativeEbsVolumeConnection)this.Field;
             }
             string fieldSpecDoc = Query.AwsNativeEbsVolumes(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.last = <System.Int32>
+# OPTIONAL
+$inputs.Var.before = <System.String>
+# OPTIONAL
+$inputs.Var.sortBy = <AwsNativeEbsVolumeSortFields> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeEbsVolumeSortFields]) for enum values.
+# OPTIONAL
+$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$inputs.Var.ebsVolumeFilters = @{
+	# OPTIONAL
+	nameOrIdSubstringFilter = @{
+		# REQUIRED
+		nameOrIdSubstring = <System.String>
+	}
+	# OPTIONAL
+	fileRecoveryStatusFilter = @{
+		# REQUIRED
+		statuses = @(
+			<AwsNativeFileRecoveryStatus> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeFileRecoveryStatus]) for enum values.
+		)
+	}
+	# OPTIONAL
+	typeFilter = @{
+		# REQUIRED
+		ebsVolumeTypes = @(
+			<AwsNativeEbsVolumeType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeEbsVolumeType]) for enum values.
+		)
+	}
+	# OPTIONAL
+	attachedInstanceFilter = @{
+		# REQUIRED
+		ec2InstanceIds = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	effectiveSlaFilter = @{
+		# REQUIRED
+		effectiveSlaIds = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	accountFilter = @{
+		# REQUIRED
+		accountIds = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	regionFilter = @{
+		# REQUIRED
+		regions = @(
+			<AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
+		)
+	}
+	# OPTIONAL
+	relicFilter = @{
+		# REQUIRED
+		relic = <System.Boolean>
+	}
+	# OPTIONAL
+	tagFilter = @{
+		# REQUIRED
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+	}
+	# OPTIONAL
+	orgFilter = @{
+		# REQUIRED
+		orgIds = @(
+			<System.String>
+		)
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2028,7 +2295,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<AwsVpc>)this.Field;
             }
             string fieldSpecDoc = Query.AllVpcsByRegionFromAws(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.awsAccountRubrikId = <System.String>
+# REQUIRED
+$inputs.Var.region = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2051,7 +2322,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<AwsVpc>)this.Field;
             }
             string fieldSpecDoc = Query.AllVpcsFromAws(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.awsAccountRubrikId = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2074,7 +2347,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (IsVolumeSnapshotRestorableReply)this.Field;
             }
             string fieldSpecDoc = Query.IsAwsNativeEbsVolumeSnapshotRestorable(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.snapshotId = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2098,7 +2373,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<System.String>)this.Field;
             }
             string fieldSpecDoc = Query.AllAvailabilityZonesByRegionFromAws(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.awsAccountRubrikId = <System.String>
+# REQUIRED
+$inputs.Var.region = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2122,7 +2401,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<KmsEncryptionKey>)this.Field;
             }
             string fieldSpecDoc = Query.AllKmsEncryptionKeysByRegionFromAws(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.awsAccountRubrikId = <System.String>
+# REQUIRED
+$inputs.Var.region = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2146,7 +2429,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (System.Boolean)this.Field;
             }
             string fieldSpecDoc = Query.IsAwsS3BucketNameAvailable(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.bucketName = <System.String>
+# REQUIRED
+$inputs.Var.awsAccountRubrikId = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2169,7 +2456,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<System.String>)this.Field;
             }
             string fieldSpecDoc = Query.AllS3BucketsFromAws(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.awsAccountRubrikId = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2193,7 +2482,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<S3BucketDetails>)this.Field;
             }
             string fieldSpecDoc = Query.AllS3BucketsDetailsFromAws(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.awsAccountRubrikId = <System.String>
+# OPTIONAL
+$inputs.Var.region = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2216,7 +2509,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AwsNativeRdsInstance)this.Field;
             }
             string fieldSpecDoc = Query.AwsNativeRdsInstance(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.rdsInstanceRubrikId = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2253,7 +2548,95 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AwsNativeRdsInstanceConnection)this.Field;
             }
             string fieldSpecDoc = Query.AwsNativeRdsInstances(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.last = <System.Int32>
+# OPTIONAL
+$inputs.Var.before = <System.String>
+# OPTIONAL
+$inputs.Var.sortBy = <AwsNativeRdsInstanceSortFields> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRdsInstanceSortFields]) for enum values.
+# OPTIONAL
+$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$inputs.Var.rdsInstanceFilters = @{
+	# OPTIONAL
+	nameSubstringFilter = @{
+		# REQUIRED
+		nameSubstring = <System.String>
+	}
+	# OPTIONAL
+	effectiveSlaFilter = @{
+		# REQUIRED
+		effectiveSlaIds = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	accountFilter = @{
+		# REQUIRED
+		accountIds = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	vpcFilter = @{
+		# REQUIRED
+		vpcIds = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	relicFilter = @{
+		# REQUIRED
+		relic = <System.Boolean>
+	}
+	# OPTIONAL
+	tagFilter = @{
+		# REQUIRED
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+	}
+	# OPTIONAL
+	regionFilter = @{
+		# REQUIRED
+		regions = @(
+			<AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
+		)
+	}
+	# OPTIONAL
+	dbEngineFilter = @{
+		# REQUIRED
+		dbEngines = @(
+			<AwsNativeRdsDbEngine> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRdsDbEngine]) for enum values.
+		)
+	}
+	# OPTIONAL
+	dbInstanceClassFilter = @{
+		# REQUIRED
+		dbInstanceClasses = @(
+			<AwsNativeRdsDbInstanceClass> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRdsDbInstanceClass]) for enum values.
+		)
+	}
+	# OPTIONAL
+	orgFilter = @{
+		# REQUIRED
+		orgIds = @(
+			<System.String>
+		)
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2284,7 +2667,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AwsNativeRdsPointInTimeRestoreWindow)this.Field;
             }
             string fieldSpecDoc = Query.AwsNativeRdsPointInTimeRestoreWindow(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.awsAccountRubrikId = <System.String>
+# REQUIRED
+$inputs.Var.region = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
+# REQUIRED
+$inputs.Var.rdsInstanceName = <System.String>
+# OPTIONAL
+$inputs.Var.rdsDatabaseRubrikId = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2315,7 +2706,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (RdsInstanceDetailsFromAws)this.Field;
             }
             string fieldSpecDoc = Query.RdsInstanceDetailsFromAws(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.awsAccountRubrikId = <System.String>
+# REQUIRED
+$inputs.Var.region = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
+# REQUIRED
+$inputs.Var.rdsInstanceName = <System.String>
+# OPTIONAL
+$inputs.Var.rdsDatabaseRubrikId = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2360,7 +2759,29 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (System.Boolean)this.Field;
             }
             string fieldSpecDoc = Query.IsAwsNativeRdsInstanceLaunchConfigurationValid(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.awsAccountRubrikId = <System.String>
+# REQUIRED
+$inputs.Var.region = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
+# REQUIRED
+$inputs.Var.dbEngine = <AwsNativeRdsDbEngine> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRdsDbEngine]) for enum values.
+# REQUIRED
+$inputs.Var.dbEngineVersion = <System.String>
+# REQUIRED
+$inputs.Var.dbClass = <AwsNativeRdsDbInstanceClass> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRdsDbInstanceClass]) for enum values.
+# OPTIONAL
+$inputs.Var.databaseInstanceClass = <System.String>
+# OPTIONAL
+$inputs.Var.primaryAz = <System.String>
+# OPTIONAL
+$inputs.Var.storageType = <AwsNativeRdsStorageType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRdsStorageType]) for enum values.
+# REQUIRED
+$inputs.Var.isMultiAz = <System.Boolean>
+# OPTIONAL
+$inputs.Var.kmsKeyId = <System.String>
+# OPTIONAL
+$inputs.Var.iops = <System.Int32>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2393,7 +2814,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<OptionGroup>)this.Field;
             }
             string fieldSpecDoc = Query.AllOptionGroupsByRegionFromAws(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.awsAccountRubrikId = <System.String>
+# REQUIRED
+$inputs.Var.region = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
+# REQUIRED
+$inputs.Var.dbEngine = <AwsNativeRdsDbEngine> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRdsDbEngine]) for enum values.
+# REQUIRED
+$inputs.Var.dbEngineVersion = <System.String>
+# REQUIRED
+$inputs.Var.majorEngineVersion = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2426,7 +2857,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<DbParameterGroup>)this.Field;
             }
             string fieldSpecDoc = Query.AllDbParameterGroupsByRegionFromAws(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.awsAccountRubrikId = <System.String>
+# REQUIRED
+$inputs.Var.region = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
+# REQUIRED
+$inputs.Var.dbEngine = <AwsNativeRdsDbEngine> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRdsDbEngine]) for enum values.
+# REQUIRED
+$inputs.Var.dbEngineVersion = <System.String>
+# OPTIONAL
+$inputs.Var.rdsType = <AwsNativeRdsType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRdsType]) for enum values.";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2450,7 +2891,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<SubnetGroup>)this.Field;
             }
             string fieldSpecDoc = Query.AllDbSubnetGroupsByRegionFromAws(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.awsAccountRubrikId = <System.String>
+# REQUIRED
+$inputs.Var.region = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2475,7 +2920,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (ValidateAwsNativeRdsInstanceNameForExportReply)this.Field;
             }
             string fieldSpecDoc = Query.ValidateAwsNativeRdsInstanceNameForExport(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.awsAccountRubrikId = <System.String>
+# REQUIRED
+$inputs.Var.region = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
+# REQUIRED
+$inputs.Var.rdsInstanceName = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2500,7 +2951,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (ValidateAwsNativeRdsClusterNameForExportReply)this.Field;
             }
             string fieldSpecDoc = Query.ValidateAwsNativeRdsClusterNameForExport(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.awsAccountRubrikId = <System.String>
+# REQUIRED
+$inputs.Var.region = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
+# REQUIRED
+$inputs.Var.rdsClusterName = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2525,7 +2982,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (RdsInstanceExportDefaults)this.Field;
             }
             string fieldSpecDoc = Query.AwsNativeRdsExportDefaults(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.rdsInstanceRubrikId = <System.String>
+# OPTIONAL
+$inputs.Var.snapshotId = <System.String>
+# REQUIRED
+$inputs.Var.isPointInTime = <System.Boolean>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2549,7 +3012,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<System.String>)this.Field;
             }
             string fieldSpecDoc = Query.AllEc2KeyPairsByRegionFromAws(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.awsAccountRubrikId = <System.String>
+# REQUIRED
+$inputs.Var.region = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2572,7 +3039,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AmiTypeForAwsNativeArchivedSnapshotExportReply)this.Field;
             }
             string fieldSpecDoc = Query.AmiTypeForAwsNativeArchivedSnapshotExport(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	snapshotId = <System.String>
+	# REQUIRED
+	destinationRegionId = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
+	# REQUIRED
+	destinationAwsAccountRubrikId = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2594,7 +3070,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AwsNativeRdsAuroraInstanceClassesReply)this.Field;
             }
             string fieldSpecDoc = Query.AllAwsRdsAuroraInstanceClasses(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2625,7 +3102,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<System.String>)this.Field;
             }
             string fieldSpecDoc = Query.AllSupportedAwsRdsDatabaseInstanceClasses(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.awsAccountRubrikId = <System.String>
+# REQUIRED
+$inputs.Var.region = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
+# REQUIRED
+$inputs.Var.dbEngine = <AwsNativeRdsDbEngine> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRdsDbEngine]) for enum values.
+# OPTIONAL
+$inputs.Var.dbEngineVersion = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2648,7 +3133,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AwsComputeSettings)this.Field;
             }
             string fieldSpecDoc = Query.AwsComputeSettings(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.computeSettingId = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2679,7 +3166,22 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<AwsComputeSettings>)this.Field;
             }
             string fieldSpecDoc = Query.AllAwsComputeSettings(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.sortBy = <AwsCloudComputeSettingQuerySortByField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudComputeSettingQuerySortByField]) for enum values.
+# OPTIONAL
+$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$inputs.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = <AwsCloudComputeSettingFilterField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudComputeSettingFilterField]) for enum values.
+		# OPTIONAL
+		text = <System.String>
+}
+)
+# OPTIONAL
+$inputs.Var.contextFilter = <ContextFilterTypeEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ContextFilterTypeEnum]) for enum values.";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2702,7 +3204,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<AwsCloudAccountWithFeatures>)this.Field;
             }
             string fieldSpecDoc = Query.AllAwsCloudAccountsWithFeatures(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.awsCloudAccountsArg = @{
+	# REQUIRED
+	feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+	# REQUIRED
+	statusFilters = @(
+		<CloudAccountStatus> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountStatus]) for enum values.
+	)
+	# OPTIONAL
+	awsAdminAccountFilter = <System.String>
+	# OPTIONAL
+	columnSearchFilter = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2725,7 +3240,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<AwsCloudAccountFeaturesWithExoConfigs>)this.Field;
             }
             string fieldSpecDoc = Query.AllAwsCloudAccountsFeaturesWithExoConfigs(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.awsCloudAccountsArg = @{
+	# REQUIRED
+	feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+	# REQUIRED
+	statusFilters = @(
+		<CloudAccountStatus> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountStatus]) for enum values.
+	)
+	# OPTIONAL
+	awsAdminAccountFilter = <System.String>
+	# OPTIONAL
+	columnSearchFilter = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2749,7 +3277,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AwsCloudAccountWithFeatures)this.Field;
             }
             string fieldSpecDoc = Query.AwsCloudAccountWithFeatures(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.cloudAccountId = <System.String>
+# REQUIRED
+$inputs.Var.awsCloudAccountArg = @{
+	# REQUIRED
+	features = @(
+		<CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+	)
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2774,7 +3311,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AwsCloudAccountListVpcResponse)this.Field;
             }
             string fieldSpecDoc = Query.AwsCloudAccountListVpcs(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.cloudAccountUuid = <System.String>
+# REQUIRED
+$inputs.Var.feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+# REQUIRED
+$inputs.Var.region = <AwsRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRegion]) for enum values.";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2805,7 +3348,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AwsCloudAccountListSubnetsResponse)this.Field;
             }
             string fieldSpecDoc = Query.AwsCloudAccountListSubnets(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.cloudAccountUuid = <System.String>
+# REQUIRED
+$inputs.Var.feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+# REQUIRED
+$inputs.Var.region = <AwsRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRegion]) for enum values.
+# REQUIRED
+$inputs.Var.vpcID = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2836,7 +3387,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AwsCloudAccountListSecurityGroupsResponse)this.Field;
             }
             string fieldSpecDoc = Query.AwsCloudAccountListSecurityGroups(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.cloudAccountUuid = <System.String>
+# REQUIRED
+$inputs.Var.feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+# REQUIRED
+$inputs.Var.region = <AwsRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRegion]) for enum values.
+# REQUIRED
+$inputs.Var.vpcID = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2861,7 +3420,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AwsCloudAccountListKmsKeysResponse)this.Field;
             }
             string fieldSpecDoc = Query.AwsCloudAccountListKmsKeys(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.cloudAccountUuid = <System.String>
+# REQUIRED
+$inputs.Var.feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+# REQUIRED
+$inputs.Var.region = <AwsRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRegion]) for enum values.";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2884,7 +3449,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<AwsExocomputeConfig>)this.Field;
             }
             string fieldSpecDoc = Query.AllAwsExocomputeConfigs(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.awsNativeAccountIdOrNamePrefix = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2907,7 +3474,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<AwsFeatureConfig>)this.Field;
             }
             string fieldSpecDoc = Query.AllAwsCloudAccountConfigs(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.awsCloudAccountsArg = @{
+	# REQUIRED
+	feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+	# REQUIRED
+	statusFilters = @(
+		<CloudAccountStatus> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountStatus]) for enum values.
+	)
+	# OPTIONAL
+	awsAdminAccountFilter = <System.String>
+	# OPTIONAL
+	columnSearchFilter = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2930,7 +3510,25 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AwsTrustPolicy)this.Field;
             }
             string fieldSpecDoc = Query.AwsTrustPolicy(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	cloudType = <AwsCloudType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
+	# REQUIRED
+	features = @(
+		<CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+	)
+	# REQUIRED
+	awsNativeAccounts = @(
+		@{
+			# OPTIONAL
+			externalId = <System.String>
+			# REQUIRED
+			id = <System.String>
+		}
+	)
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2953,7 +3551,21 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<PermissionPolicy>)this.Field;
             }
             string fieldSpecDoc = Query.AllAwsPermissionPolicies(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	cloudType = <AwsCloudType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
+	# REQUIRED
+	features = @(
+		<CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+	)
+	# OPTIONAL
+	featureSpecificDetails = @{
+		# OPTIONAL
+		ec2RecoveryRolePath = <System.String>
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2976,7 +3588,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AwsArtifactsToDelete)this.Field;
             }
             string fieldSpecDoc = Query.AwsArtifactsToDelete(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	awsNativeId = <System.String>
+	# REQUIRED
+	features = @(
+		<CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+	)
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2999,7 +3620,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<AwsCloudAccountRegion>)this.Field;
             }
             string fieldSpecDoc = Query.AllAwsRegions(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.cloudAccountId = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -3022,7 +3645,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<AwsCdmVersion>)this.Field;
             }
             string fieldSpecDoc = Query.AllAwsCdmVersions(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	cloudAccountId = <System.String>
+	# OPTIONAL
+	region = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -3046,7 +3676,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<System.String>)this.Field;
             }
             string fieldSpecDoc = Query.AllAwsInstanceProfileNames(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.cloudAccountId = <System.String>
+# REQUIRED
+$inputs.Var.region = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 

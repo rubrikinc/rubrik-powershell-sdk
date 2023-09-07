@@ -228,7 +228,7 @@ Assigns SLA Domain to the given MongoDB collection objects.
             HelpMessage =
 @"Take an on-demand snapshot for a MongoDB database
 
-Supported in v9.1
+Supported in v9.0+
 Initiates a job to take an on-demand, full or incremental snapshot of the specified MongoDB database.
 [GraphQL: createOnDemandMongoDatabaseBackup]",
             Position = 0
@@ -525,7 +525,44 @@ Supported in m3.2.0-m4.2.0.
                 fieldSpecObj = (AddMongoSourceReply)this.Field;
             }
             string fieldSpecDoc = Mutation.AddMongoSource(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	mongoSourceAddRequestConfig = @{
+		# OPTIONAL
+		caCertfilePath = <System.String>
+		# OPTIONAL
+		ignoreSecondaries = @(
+			<System.String>
+		)
+		# OPTIONAL
+		sourceDriverPassword = <System.String>
+		# OPTIONAL
+		sourceDriverUser = <System.String>
+		# OPTIONAL
+		sslKeyfilePath = <System.String>
+		# OPTIONAL
+		sslCertfilePath = <System.String>
+		# REQUIRED
+		mongoType = <MongoType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoType]) for enum values.
+		# OPTIONAL
+		sslCertificateRequired = <MongoSslCertificateRequirement> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoSslCertificateRequirement]) for enum values.
+		# REQUIRED
+		mongoClientHosts = @(
+			@{
+				# REQUIRED
+				configurationPort = <System.Int32>
+				# REQUIRED
+				hostId = <System.String>
+			}
+		)
+		# REQUIRED
+		sourceName = <System.String>
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -548,7 +585,12 @@ Supported in m3.2.0-m4.2.0.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.DeleteMongoSource(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -571,7 +613,12 @@ Supported in m3.2.0-m4.2.0.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.DiscoverMongoSource(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -594,7 +641,31 @@ Supported in m3.2.0-m4.2.0.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.PatchMongoSource(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+	# REQUIRED
+	mongoSourcePatchRequestConfig = @{
+		# OPTIONAL
+		caCertfilePath = <System.String>
+		# OPTIONAL
+		ignoreSecondaries = @(
+			<System.String>
+		)
+		# OPTIONAL
+		sourceDriverPassword = <System.String>
+		# OPTIONAL
+		sourceDriverUser = <System.String>
+		# OPTIONAL
+		sslKeyfilePath = <System.String>
+		# OPTIONAL
+		sslCertfilePath = <System.String>
+		# OPTIONAL
+		sslCertificateRequired = <MongoSslCertificateRequirement> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoSslCertificateRequirement]) for enum values.
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -617,7 +688,44 @@ Supported in m3.2.0-m4.2.0.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.RetryAddMongoSource(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+	# REQUIRED
+	mongoSourceRequestConfig = @{
+		# OPTIONAL
+		caCertfilePath = <System.String>
+		# OPTIONAL
+		ignoreSecondaries = @(
+			<System.String>
+		)
+		# OPTIONAL
+		sourceDriverPassword = <System.String>
+		# OPTIONAL
+		sourceDriverUser = <System.String>
+		# OPTIONAL
+		sslKeyfilePath = <System.String>
+		# OPTIONAL
+		sslCertfilePath = <System.String>
+		# REQUIRED
+		mongoType = <MongoType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoType]) for enum values.
+		# OPTIONAL
+		sslCertificateRequired = <MongoSslCertificateRequirement> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoSslCertificateRequirement]) for enum values.
+		# REQUIRED
+		mongoClientHosts = @(
+			@{
+				# REQUIRED
+				configurationPort = <System.Int32>
+				# REQUIRED
+				hostId = <System.String>
+			}
+		)
+		# REQUIRED
+		sourceName = <System.String>
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -640,7 +748,19 @@ Supported in m3.2.0-m4.2.0.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.AssignSlaToMongoDbCollection(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	input = @{
+		# REQUIRED
+		ids = @(
+			<System.String>
+		)
+		# REQUIRED
+		slaId = <System.String>
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -663,22 +783,55 @@ Supported in m3.2.0-m4.2.0.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.RecoverMongoSource(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	input = @{
+		# OPTIONAL
+		prefix = <System.String>
+		# OPTIONAL
+		restoreDbPassword = <System.String>
+		# OPTIONAL
+		restoreDbUsername = <System.String>
+		# OPTIONAL
+		shouldDropExistingCollection = <System.Boolean>
+		# OPTIONAL
+		sourceCollectionIds = @(
+			<System.String>
+		)
+		# OPTIONAL
+		sourceDatabaseIds = @(
+			<System.String>
+		)
+		# OPTIONAL
+		targetCollectionName = <System.String>
+		# OPTIONAL
+		targetDatabaseName = <System.String>
+		# OPTIONAL
+		versionTime = <DateTime>
+		# REQUIRED
+		sourceMongoClusterId = <System.String>
+		# REQUIRED
+		targetMongoClusterId = <System.String>
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
         // Invoke GraphQL Mutation:
-        // createOnDemandMongoDatabaseBackup(input: CreateOnDemandMongoDatabaseSnapshotInput!): AsyncRequestStatus!
+        // createOnDemandMongoDatabaseBackup(input: CreateOnDemandMongoDatabaseSnapshotInput!, attributes: [FeatureFlagAttributeInput!]!): AsyncRequestStatus!
         internal void InvokeMutationCreateOnDemandMongoDatabaseBackup()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("input", "CreateOnDemandMongoDatabaseSnapshotInput!"),
+                Tuple.Create("attributes", "[FeatureFlagAttributeInput!]!"),
             };
             Initialize(
                 argDefs,
                 "mutation",
                 "MutationCreateOnDemandMongoDatabaseBackup",
-                "($input: CreateOnDemandMongoDatabaseSnapshotInput!)",
+                "($input: CreateOnDemandMongoDatabaseSnapshotInput!,$attributes: [FeatureFlagAttributeInput!]!)",
                 "AsyncRequestStatus"
                 );
             AsyncRequestStatus? fieldSpecObj = null ;
@@ -686,7 +839,28 @@ Supported in m3.2.0-m4.2.0.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.CreateOnDemandMongoDatabaseBackup(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		isFullbackup = <System.Boolean>
+		# REQUIRED
+		slaId = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+}
+# REQUIRED
+$inputs.Var.attributes = @(
+	@{
+		# REQUIRED
+		value = <System.String>
+		# REQUIRED
+		attribute = <FlagAttribute> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FlagAttribute]) for enum values.
+}
+)";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -709,7 +883,77 @@ Supported in m3.2.0-m4.2.0.
                 fieldSpecObj = (MosaicAsyncResponse)this.Field;
             }
             string fieldSpecDoc = Mutation.CreateMongodbSource(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	sourceData = @{
+		# OPTIONAL
+		async = <System.Boolean>
+		# OPTIONAL
+		cassandraYaml = @(
+			<System.String>
+		)
+		# OPTIONAL
+		dseYaml = @(
+			<System.String>
+		)
+		# OPTIONAL
+		enableSsl = <System.Boolean>
+		# OPTIONAL
+		httpsCertificate = <System.String>
+		# OPTIONAL
+		ignoreSecondaries = @(
+			<System.String>
+		)
+		# OPTIONAL
+		jmxPassword = <System.String>
+		# OPTIONAL
+		jmxUser = <System.String>
+		# OPTIONAL
+		parameterEncoded = <System.Boolean>
+		# OPTIONAL
+		sourceAuthKey = <System.String>
+		# OPTIONAL
+		sourceAuthKeyfile = <System.String>
+		# OPTIONAL
+		sourceAuthPassphrase = <System.String>
+		# OPTIONAL
+		sourceDriverPassword = <System.String>
+		# OPTIONAL
+		sourceDriverUser = <System.String>
+		# OPTIONAL
+		sourceHttpsPort = <System.String>
+		# OPTIONAL
+		sourcePassword = <System.String>
+		# OPTIONAL
+		sourcePort = <System.String>
+		# OPTIONAL
+		sourceRpcPort = <System.String>
+		# OPTIONAL
+		sourceSshPort = <System.String>
+		# OPTIONAL
+		sourceUser = <System.String>
+		# OPTIONAL
+		sslCaCerts = <System.String>
+		# OPTIONAL
+		sslCertfile = <System.String>
+		# OPTIONAL
+		sslKeyfile = <System.String>
+		# REQUIRED
+		sourceType = <SourceSourceType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SourceSourceType]) for enum values.
+		# OPTIONAL
+		sslCertReqs = <SourceSslCertReqs> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SourceSslCertReqs]) for enum values.
+		# REQUIRED
+		sourceIp = @(
+			<System.String>
+		)
+		# REQUIRED
+		sourceName = <System.String>
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -732,7 +976,77 @@ Supported in m3.2.0-m4.2.0.
                 fieldSpecObj = (MosaicAsyncResponse)this.Field;
             }
             string fieldSpecDoc = Mutation.UpdateMongodbSource(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	sourceData = @{
+		# OPTIONAL
+		async = <System.Boolean>
+		# OPTIONAL
+		cassandraYaml = @(
+			<System.String>
+		)
+		# OPTIONAL
+		dseYaml = @(
+			<System.String>
+		)
+		# OPTIONAL
+		enableSsl = <System.Boolean>
+		# OPTIONAL
+		httpsCertificate = <System.String>
+		# OPTIONAL
+		ignoreSecondaries = @(
+			<System.String>
+		)
+		# OPTIONAL
+		jmxPassword = <System.String>
+		# OPTIONAL
+		jmxUser = <System.String>
+		# OPTIONAL
+		parameterEncoded = <System.Boolean>
+		# OPTIONAL
+		sourceAuthKey = <System.String>
+		# OPTIONAL
+		sourceAuthKeyfile = <System.String>
+		# OPTIONAL
+		sourceAuthPassphrase = <System.String>
+		# OPTIONAL
+		sourceDriverPassword = <System.String>
+		# OPTIONAL
+		sourceDriverUser = <System.String>
+		# OPTIONAL
+		sourceHttpsPort = <System.String>
+		# OPTIONAL
+		sourcePassword = <System.String>
+		# OPTIONAL
+		sourcePort = <System.String>
+		# OPTIONAL
+		sourceRpcPort = <System.String>
+		# OPTIONAL
+		sourceSshPort = <System.String>
+		# OPTIONAL
+		sourceUser = <System.String>
+		# OPTIONAL
+		sslCaCerts = <System.String>
+		# OPTIONAL
+		sslCertfile = <System.String>
+		# OPTIONAL
+		sslKeyfile = <System.String>
+		# REQUIRED
+		sourceType = <SourceSourceType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SourceSourceType]) for enum values.
+		# OPTIONAL
+		sslCertReqs = <SourceSslCertReqs> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SourceSslCertReqs]) for enum values.
+		# REQUIRED
+		sourceIp = @(
+			<System.String>
+		)
+		# REQUIRED
+		sourceName = <System.String>
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -755,7 +1069,16 @@ Supported in m3.2.0-m4.2.0.
                 fieldSpecObj = (MosaicAsyncResponse)this.Field;
             }
             string fieldSpecDoc = Mutation.DeleteMongodbSource(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	sourceType = <V2DeleteMosaicSourceRequestSourceType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V2DeleteMosaicSourceRequestSourceType]) for enum values.
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	sourceName = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -778,7 +1101,23 @@ Supported in m3.2.0-m4.2.0.
                 fieldSpecObj = (MosaicAsyncResponse)this.Field;
             }
             string fieldSpecDoc = Mutation.BulkDeleteMongodbSources(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	sourceType = <V2BulkDeleteMosaicSourcesRequestSourceType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V2BulkDeleteMosaicSourcesRequestSourceType]) for enum values.
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	sourceData = @{
+		# OPTIONAL
+		async = <System.Boolean>
+		# REQUIRED
+		sourceNames = @(
+			<System.String>
+		)
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -801,7 +1140,69 @@ Supported in m3.2.0-m4.2.0.
                 fieldSpecObj = (MosaicAsyncResponse)this.Field;
             }
             string fieldSpecDoc = Mutation.RecoverMongodbSource(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	recoveryData = @{
+		# OPTIONAL
+		destinationManagementObjects = @{
+			# OPTIONAL
+			databases = @(
+				@{
+					# OPTIONAL
+					dbName = <System.String>
+					# OPTIONAL
+					tables = @(
+						<System.String>
+					)
+				}
+			)
+		}
+		# OPTIONAL
+		destinationSourceName = <System.String>
+		# OPTIONAL
+		keyspaceConfig = <System.String>
+		# OPTIONAL
+		maxDiskUsage = <System.String>
+		# OPTIONAL
+		restoreDbUserPwd = <System.String>
+		# OPTIONAL
+		restoreDbUsername = <System.String>
+		# OPTIONAL
+		startTimestamp = <System.Int32>
+		# OPTIONAL
+		targetEncryptionKey = <System.String>
+		# OPTIONAL
+		targetQuery = <System.String>
+		# OPTIONAL
+		sourceType = <MosaicRetrieveRequestSourceType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MosaicRetrieveRequestSourceType]) for enum values.
+		# REQUIRED
+		destinationPath = <System.String>
+		# REQUIRED
+		managementObjects = @{
+			# OPTIONAL
+			databases = @(
+				@{
+					# OPTIONAL
+					dbName = <System.String>
+					# OPTIONAL
+					tables = @(
+						<System.String>
+					)
+				}
+			)
+		}
+		# REQUIRED
+		parameterEncoded = <System.Boolean>
+		# REQUIRED
+		sourceName = <System.String>
+		# REQUIRED
+		versionTime = <System.Int32>
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 

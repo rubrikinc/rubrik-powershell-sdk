@@ -170,7 +170,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (ActivitySeries)this.Field;
             }
             string fieldSpecDoc = Query.ActivitySeries(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	activitySeriesId = <System.String>
+	# OPTIONAL
+	clusterUuid = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -207,7 +214,68 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (ActivitySeriesConnection)this.Field;
             }
             string fieldSpecDoc = Query.ActivitySeriesConnection(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.last = <System.Int32>
+# OPTIONAL
+$inputs.Var.before = <System.String>
+# OPTIONAL
+$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$inputs.Var.sortBy = <ActivitySeriesSortField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActivitySeriesSortField]) for enum values.
+# OPTIONAL
+$inputs.Var.filters = @{
+	# OPTIONAL
+	lastActivityStatus = @(
+		<EventStatus> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventStatus]) for enum values.
+	)
+	# OPTIONAL
+	lastActivityType = @(
+		<EventType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventType]) for enum values.
+	)
+	# OPTIONAL
+	severity = @(
+		<EventSeverity> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventSeverity]) for enum values.
+	)
+	# OPTIONAL
+	objectName = <System.String>
+	# OPTIONAL
+	objectType = @(
+		<EventObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventObjectType]) for enum values.
+	)
+	# OPTIONAL
+	startTimeGt = <DateTime>
+	# OPTIONAL
+	startTimeLt = <DateTime>
+	# OPTIONAL
+	lastUpdatedTimeGt = <DateTime>
+	# OPTIONAL
+	lastUpdatedTimeLt = <DateTime>
+	# OPTIONAL
+	clusterId = @(
+		<System.String>
+	)
+	# OPTIONAL
+	clusterType = @(
+		<EventClusterType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventClusterType]) for enum values.
+	)
+	# OPTIONAL
+	objectFid = @(
+		<System.String>
+	)
+	# OPTIONAL
+	ancestorId = <System.String>
+	# OPTIONAL
+	searchTerm = <System.String>
+	# OPTIONAL
+	orgIds = @(
+		<System.String>
+	)
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -244,7 +312,67 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (ActivitySeriesGroupByConnection)this.Field;
             }
             string fieldSpecDoc = Query.ActivitySeriesGroupByConnection(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.last = <System.Int32>
+# OPTIONAL
+$inputs.Var.before = <System.String>
+# REQUIRED
+$inputs.Var.groupBy = <ActivitySeriesGroupByEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActivitySeriesGroupByEnum]) for enum values.
+# OPTIONAL
+$inputs.Var.filters = @{
+	# OPTIONAL
+	lastActivityStatus = @(
+		<ActivityStatusEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActivityStatusEnum]) for enum values.
+	)
+	# OPTIONAL
+	lastActivityType = @(
+		<ActivityTypeEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActivityTypeEnum]) for enum values.
+	)
+	# OPTIONAL
+	severity = @(
+		<ActivitySeverityEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActivitySeverityEnum]) for enum values.
+	)
+	# OPTIONAL
+	objectName = <System.String>
+	# OPTIONAL
+	objectType = @(
+		<ActivityObjectTypeEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActivityObjectTypeEnum]) for enum values.
+	)
+	# OPTIONAL
+	startTimeGt = <DateTime>
+	# OPTIONAL
+	startTimeLt = <DateTime>
+	# OPTIONAL
+	lastUpdatedGt = <DateTime>
+	# OPTIONAL
+	lastUpdatedLt = <DateTime>
+	# OPTIONAL
+	cluster = @{
+		# OPTIONAL
+		id = @(
+			<System.String>
+		)
+		# OPTIONAL
+		type = @(
+			<ClusterTypeEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterTypeEnum]) for enum values.
+		)
+	}
+	# OPTIONAL
+	objectFids = @(
+		<System.String>
+	)
+	# OPTIONAL
+	ancestorId = <System.String>
+	# OPTIONAL
+	searchTerm = <System.String>
+}
+# OPTIONAL
+$inputs.Var.timezoneOffset = <System.Single>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 

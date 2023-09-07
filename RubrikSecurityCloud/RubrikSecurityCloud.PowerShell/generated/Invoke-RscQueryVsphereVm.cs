@@ -269,7 +269,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (VsphereVm)this.Field;
             }
             string fieldSpecDoc = Query.VsphereVmNew(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.fid = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -302,7 +304,57 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (VsphereVmConnection)this.Field;
             }
             string fieldSpecDoc = Query.VsphereVmNewConnection(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.sortBy = <HierarchySortByField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+# OPTIONAL
+$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$inputs.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+		)
+}
+)";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -326,7 +378,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Query.VsphereVmAsyncRequestStatus(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.clusterUuid = <System.String>
+# REQUIRED
+$inputs.Var.id = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -351,7 +407,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (RecoverableRangeResponse)this.Field;
             }
             string fieldSpecDoc = Query.VsphereVmRecoverableRange(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.snappableFid = <System.String>
+# OPTIONAL
+$inputs.Var.beforeTime = <DateTime>
+# OPTIONAL
+$inputs.Var.afterTime = <DateTime>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -374,7 +436,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (BatchVmwareVmRecoverableRanges)this.Field;
             }
             string fieldSpecDoc = Query.VsphereVmRecoverableRangeInBatch(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.requestInfo = @{
+	# OPTIONAL
+	afterTime = <DateTime>
+	# OPTIONAL
+	beforeTime = <DateTime>
+	# REQUIRED
+	vmIds = @(
+		<System.String>
+	)
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -399,7 +472,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (RecoverableRangeResponse)this.Field;
             }
             string fieldSpecDoc = Query.VsphereVmMissedRecoverableRange(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.snappableFid = <System.String>
+# OPTIONAL
+$inputs.Var.beforeTime = <DateTime>
+# OPTIONAL
+$inputs.Var.afterTime = <DateTime>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 

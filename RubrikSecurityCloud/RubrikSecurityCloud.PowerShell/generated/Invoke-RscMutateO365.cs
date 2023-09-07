@@ -1159,7 +1159,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (O365SaasSetupKickoffReply)this.Field;
             }
             string fieldSpecDoc = Mutation.O365SaaSsetupKickoff(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1182,7 +1183,21 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (O365PdlGroupsReply)this.Field;
             }
             string fieldSpecDoc = Mutation.O365PdlGroups(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	orgId = <System.String>
+	# REQUIRED
+	pdlAndWorkloadPairs = @(
+		@{
+			# REQUIRED
+			pdl = <System.String>
+			# REQUIRED
+			workload = <WorkloadLevelHierarchy> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
+		}
+	)
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1205,7 +1220,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AddO365OrgResponse)this.Field;
             }
             string fieldSpecDoc = Mutation.O365SaasSetupComplete(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	tenantId = <System.String>
+	# REQUIRED
+	regionName = <System.String>
+	# REQUIRED
+	stateToken = <System.String>
+	# REQUIRED
+	appTypes = @(
+		<System.String>
+	)
+	# OPTIONAL
+	kmsSpec = @{
+		# OPTIONAL
+		cloudType = <O365AzureCloudType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365AzureCloudType]) for enum values.
+		# OPTIONAL
+		tenantId = <System.String>
+		# OPTIONAL
+		kmsId = <System.String>
+		# OPTIONAL
+		appId = <System.String>
+		# OPTIONAL
+		appSecret = <System.String>
+		# OPTIONAL
+		keyName = <System.String>
+		# OPTIONAL
+		kekNameColossus = <System.String>
+	}
+	# REQUIRED
+	storeBackupInSameRegionAsData = <System.Boolean>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1227,7 +1274,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (O365SetupKickoffResp)this.Field;
             }
             string fieldSpecDoc = Mutation.O365SetupKickoff(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1250,7 +1298,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AddO365OrgResponse)this.Field;
             }
             string fieldSpecDoc = Mutation.AddO365Org(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	tenantId = <System.String>
+	# REQUIRED
+	stateToken = <System.String>
+	# REQUIRED
+	exocomputeClusterId = <System.String>
+	# REQUIRED
+	appTypes = @(
+		<System.String>
+	)
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1273,7 +1334,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (O365OauthConsentKickoffReply)this.Field;
             }
             string fieldSpecDoc = Mutation.O365OauthConsentKickoff(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	orgId = <System.String>
+	# REQUIRED
+	appType = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1296,7 +1364,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (O365OauthConsentCompleteReply)this.Field;
             }
             string fieldSpecDoc = Mutation.O365OauthConsentComplete(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	tenantId = <System.String>
+	# REQUIRED
+	code = <System.String>
+	# REQUIRED
+	stateToken = <System.String>
+	# REQUIRED
+	redirectUrl = <System.String>
+	# REQUIRED
+	resourceNaturalId = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1319,7 +1400,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (CreateO365AppKickoffResp)this.Field;
             }
             string fieldSpecDoc = Mutation.CreateO365AppKickoff(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	orgId = <System.String>
+	# REQUIRED
+	appType = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1342,7 +1430,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (RequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.CreateO365AppComplete(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	appClientId = <System.String>
+	# REQUIRED
+	stateToken = <System.String>
+	# REQUIRED
+	tenantId = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1365,7 +1462,22 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (RequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.InsertCustomerO365App(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	appType = <System.String>
+	# REQUIRED
+	appClientId = <System.String>
+	# REQUIRED
+	appClientSecret = <System.String>
+	# REQUIRED
+	subscriptionId = <System.String>
+	# OPTIONAL
+	base64AppCertificate = <System.String>
+	# OPTIONAL
+	base64AppPrivateKey = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1388,7 +1500,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (UpdateO365AppAuthStatusReply)this.Field;
             }
             string fieldSpecDoc = Mutation.UpdateO365AppAuthStatus(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	o365OrgId = <System.String>
+	# REQUIRED
+	o365AppId = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1411,7 +1530,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (System.String)this.Field;
             }
             string fieldSpecDoc = Mutation.UpdateO365AppPermissions(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	o365AppType = <O365AppType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365AppType]) for enum values.
+	# REQUIRED
+	o365AppId = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1435,7 +1561,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (RequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.DeleteO365AzureApp(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.o365AppClientId = <System.String>
+# REQUIRED
+$inputs.Var.o365AppType = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1458,7 +1588,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (BatchAsyncJobStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.BackupO365Mailbox(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.mailboxIds = @(
+	<System.String>
+)";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1481,7 +1615,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (BatchAsyncJobStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.BackupO365Onedrive(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	snappableUuids = @(
+		<System.String>
+	)
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1504,7 +1645,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (BatchAsyncJobStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.BackupO365SharepointDrive(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	snappableUuids = @(
+		<System.String>
+	)
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1527,7 +1675,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (CreateOnDemandJobReply)this.Field;
             }
             string fieldSpecDoc = Mutation.BackupO365SharepointList(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	snappableUuid = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1550,7 +1703,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (CreateOnDemandJobReply)this.Field;
             }
             string fieldSpecDoc = Mutation.BackupO365SharePointSite(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	siteFid = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1573,7 +1731,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (BatchAsyncJobStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.BackupO365Team(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	snappableUuids = @(
+		<System.String>
+	)
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1596,7 +1761,100 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (CreateOnDemandJobReply)this.Field;
             }
             string fieldSpecDoc = Mutation.RestoreO365TeamsFiles(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	filesToRestore = @(
+		@{
+			# REQUIRED
+			fileId = <System.String>
+			# REQUIRED
+			fileName = <System.String>
+			# REQUIRED
+			fileSnapshotsToRestore = @(
+				@{
+					# REQUIRED
+					snapshotId = <System.String>
+					# REQUIRED
+					snapshotNum = <System.Int32>
+					# REQUIRED
+					fileSize = <System.Int64>
+				}
+			)
+			# OPTIONAL
+			channelInfo = @{
+				# REQUIRED
+				TeamID = <System.String>
+				# OPTIONAL
+				ChannelID = <System.String>
+				# OPTIONAL
+				ChannelName = <System.String>
+				# OPTIONAL
+				ChannelFolderName = <System.String>
+				# OPTIONAL
+				ChannelNaturalId = <System.String>
+				# REQUIRED
+				channelMembershipType = <ChannelMembershipType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
+			}
+		}
+	)
+	# REQUIRED
+	foldersToRestore = @(
+		@{
+			# REQUIRED
+			folderId = <System.String>
+			# REQUIRED
+			folderName = <System.String>
+			# REQUIRED
+			folderSize = <System.Int64>
+			# REQUIRED
+			snapshotId = <System.String>
+			# REQUIRED
+			snapshotNum = <System.Int32>
+			# OPTIONAL
+			channelInfo = @{
+				# REQUIRED
+				TeamID = <System.String>
+				# OPTIONAL
+				ChannelID = <System.String>
+				# OPTIONAL
+				ChannelName = <System.String>
+				# OPTIONAL
+				ChannelFolderName = <System.String>
+				# OPTIONAL
+				ChannelNaturalId = <System.String>
+				# REQUIRED
+				channelMembershipType = <ChannelMembershipType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
+			}
+		}
+	)
+	# OPTIONAL
+	destTeamsChannelInfo = @{
+		# REQUIRED
+		TeamID = <System.String>
+		# OPTIONAL
+		ChannelID = <System.String>
+		# OPTIONAL
+		ChannelName = <System.String>
+		# OPTIONAL
+		ChannelFolderName = <System.String>
+		# OPTIONAL
+		ChannelNaturalId = <System.String>
+		# REQUIRED
+		channelMembershipType = <ChannelMembershipType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
+	}
+	# REQUIRED
+	shouldCreateDestChannel = <System.Boolean>
+	# REQUIRED
+	actionType = <O365RestoreActionType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365RestoreActionType]) for enum values.
+	# REQUIRED
+	channelRecoveryType = <ChannelMembershipType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
+	# REQUIRED
+	recoverWithLatestPermissions = <System.Boolean>
+	# REQUIRED
+	snapshotSequenceNum = <System.Int32>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1619,7 +1877,100 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (CreateOnDemandJobReply)this.Field;
             }
             string fieldSpecDoc = Mutation.ExportO365TeamsFiles(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	filesToRestore = @(
+		@{
+			# REQUIRED
+			fileId = <System.String>
+			# REQUIRED
+			fileName = <System.String>
+			# REQUIRED
+			fileSnapshotsToRestore = @(
+				@{
+					# REQUIRED
+					snapshotId = <System.String>
+					# REQUIRED
+					snapshotNum = <System.Int32>
+					# REQUIRED
+					fileSize = <System.Int64>
+				}
+			)
+			# OPTIONAL
+			channelInfo = @{
+				# REQUIRED
+				TeamID = <System.String>
+				# OPTIONAL
+				ChannelID = <System.String>
+				# OPTIONAL
+				ChannelName = <System.String>
+				# OPTIONAL
+				ChannelFolderName = <System.String>
+				# OPTIONAL
+				ChannelNaturalId = <System.String>
+				# REQUIRED
+				channelMembershipType = <ChannelMembershipType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
+			}
+		}
+	)
+	# REQUIRED
+	foldersToRestore = @(
+		@{
+			# REQUIRED
+			folderId = <System.String>
+			# REQUIRED
+			folderName = <System.String>
+			# REQUIRED
+			folderSize = <System.Int64>
+			# REQUIRED
+			snapshotId = <System.String>
+			# REQUIRED
+			snapshotNum = <System.Int32>
+			# OPTIONAL
+			channelInfo = @{
+				# REQUIRED
+				TeamID = <System.String>
+				# OPTIONAL
+				ChannelID = <System.String>
+				# OPTIONAL
+				ChannelName = <System.String>
+				# OPTIONAL
+				ChannelFolderName = <System.String>
+				# OPTIONAL
+				ChannelNaturalId = <System.String>
+				# REQUIRED
+				channelMembershipType = <ChannelMembershipType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
+			}
+		}
+	)
+	# OPTIONAL
+	destTeamsChannelInfo = @{
+		# REQUIRED
+		TeamID = <System.String>
+		# OPTIONAL
+		ChannelID = <System.String>
+		# OPTIONAL
+		ChannelName = <System.String>
+		# OPTIONAL
+		ChannelFolderName = <System.String>
+		# OPTIONAL
+		ChannelNaturalId = <System.String>
+		# REQUIRED
+		channelMembershipType = <ChannelMembershipType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
+	}
+	# REQUIRED
+	shouldCreateDestChannel = <System.Boolean>
+	# REQUIRED
+	actionType = <O365RestoreActionType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365RestoreActionType]) for enum values.
+	# REQUIRED
+	channelRecoveryType = <ChannelMembershipType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
+	# REQUIRED
+	recoverWithLatestPermissions = <System.Boolean>
+	# REQUIRED
+	snapshotSequenceNum = <System.Int32>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1642,7 +1993,93 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (CreateOnDemandJobReply)this.Field;
             }
             string fieldSpecDoc = Mutation.RestoreO365TeamsConversations(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	teamUuid = <System.String>
+	# OPTIONAL
+	destTeamsChannelInfo = @{
+		# REQUIRED
+		TeamID = <System.String>
+		# OPTIONAL
+		ChannelID = <System.String>
+		# OPTIONAL
+		ChannelName = <System.String>
+		# OPTIONAL
+		ChannelFolderName = <System.String>
+		# OPTIONAL
+		ChannelNaturalId = <System.String>
+		# REQUIRED
+		channelMembershipType = <ChannelMembershipType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
+	}
+	# REQUIRED
+	shouldCreateDestChannel = <System.Boolean>
+	# OPTIONAL
+	channelInfoForFullRestore = @{
+		# REQUIRED
+		naturalId = <System.String>
+		# REQUIRED
+		name = <System.String>
+		# REQUIRED
+		folderId = <System.String>
+		# REQUIRED
+		membershipType = <ChannelMembershipType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
+	}
+	# REQUIRED
+	shouldRestoreFileAttachments = <System.Boolean>
+	# REQUIRED
+	teamChannels = @(
+		@{
+			# REQUIRED
+			naturalId = <System.String>
+			# REQUIRED
+			name = <System.String>
+			# REQUIRED
+			folderId = <System.String>
+			# REQUIRED
+			membershipType = <ChannelMembershipType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
+		}
+	)
+	# OPTIONAL
+	teamsConversationsSearchFilter = @{
+		# OPTIONAL
+		postedTime = @{
+			# OPTIONAL
+			fromTime = <DateTime>
+			# OPTIONAL
+			untilTime = <DateTime>
+		}
+		# OPTIONAL
+		channelNaturalId = <System.String>
+		# OPTIONAL
+		postedBy = <System.String>
+		# OPTIONAL
+		snapshotId = <System.String>
+		# OPTIONAL
+		parentId = <System.String>
+		# OPTIONAL
+		convId = <System.String>
+		# OPTIONAL
+		snapshotNum = <System.Int32>
+		# OPTIONAL
+		includeArchived = <System.Boolean>
+		# OPTIONAL
+		fetchAllPostSenders = <System.String>
+		# OPTIONAL
+		skipPostsAttachments = <System.Boolean>
+	}
+	# REQUIRED
+	refreshTokenEncrypted = <System.String>
+	# REQUIRED
+	o365AppId = <System.String>
+	# REQUIRED
+	channelRecoveryType = <ChannelMembershipType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
+	# REQUIRED
+	recoverWithLatestPermissions = <System.Boolean>
+	# REQUIRED
+	snapshotSequenceNum = <System.Int32>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1665,7 +2102,565 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (CreateOnDemandJobReply)this.Field;
             }
             string fieldSpecDoc = Mutation.RestoreO365Snappable(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	snappableType = <SnappableType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnappableType]) for enum values.
+	# REQUIRED
+	sourceSnappableUuid = <System.String>
+	# REQUIRED
+	destinationSnappableUuid = <System.String>
+	# REQUIRED
+	restoreConfig = @{
+		# OPTIONAL
+		SharePointDriveRestoreConfig = @{
+			# REQUIRED
+			driveRestoreConfig = @{
+				# REQUIRED
+				filesToRestore = @(
+					@{
+						# REQUIRED
+						fileId = <System.String>
+						# REQUIRED
+						fileName = <System.String>
+						# REQUIRED
+						fileSnapshotsToRestore = @(
+							@{
+								# REQUIRED
+								snapshotId = <System.String>
+								# REQUIRED
+								snapshotNum = <System.Int32>
+								# REQUIRED
+								fileSize = <System.Int64>
+							}
+						)
+						# OPTIONAL
+						channelInfo = @{
+							# REQUIRED
+							TeamID = <System.String>
+							# OPTIONAL
+							ChannelID = <System.String>
+							# OPTIONAL
+							ChannelName = <System.String>
+							# OPTIONAL
+							ChannelFolderName = <System.String>
+							# OPTIONAL
+							ChannelNaturalId = <System.String>
+							# REQUIRED
+							channelMembershipType = <ChannelMembershipType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
+						}
+					}
+				)
+				# REQUIRED
+				foldersToRestore = @(
+					@{
+						# REQUIRED
+						folderId = <System.String>
+						# REQUIRED
+						folderName = <System.String>
+						# REQUIRED
+						folderSize = <System.Int64>
+						# REQUIRED
+						snapshotId = <System.String>
+						# REQUIRED
+						snapshotNum = <System.Int32>
+						# OPTIONAL
+						channelInfo = @{
+							# REQUIRED
+							TeamID = <System.String>
+							# OPTIONAL
+							ChannelID = <System.String>
+							# OPTIONAL
+							ChannelName = <System.String>
+							# OPTIONAL
+							ChannelFolderName = <System.String>
+							# OPTIONAL
+							ChannelNaturalId = <System.String>
+							# REQUIRED
+							channelMembershipType = <ChannelMembershipType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
+						}
+					}
+				)
+				# REQUIRED
+				restoreFolderPath = <System.String>
+			}
+			# OPTIONAL
+			docLibName = <System.String>
+			# OPTIONAL
+			parentSiteUuid = <System.String>
+		}
+		# OPTIONAL
+		sharePointListRestoreConfig = @{
+			# REQUIRED
+			itemsToRestore = @(
+				@{
+					# REQUIRED
+					itemId = <System.String>
+					# REQUIRED
+					itemName = <System.String>
+					# REQUIRED
+					itemSnapshotsToRestore = @(
+						@{
+							# REQUIRED
+							snapshotId = <System.String>
+							# REQUIRED
+							snapshotNum = <System.Int32>
+						}
+					)
+				}
+			)
+			# REQUIRED
+			foldersToRestore = @(
+				@{
+					# REQUIRED
+					folderId = <System.String>
+					# REQUIRED
+					folderName = <System.String>
+					# REQUIRED
+					folderSize = <System.Int64>
+					# REQUIRED
+					snapshotId = <System.String>
+					# REQUIRED
+					snapshotNum = <System.Int32>
+					# OPTIONAL
+					channelInfo = @{
+						# REQUIRED
+						TeamID = <System.String>
+						# OPTIONAL
+						ChannelID = <System.String>
+						# OPTIONAL
+						ChannelName = <System.String>
+						# OPTIONAL
+						ChannelFolderName = <System.String>
+						# OPTIONAL
+						ChannelNaturalId = <System.String>
+						# REQUIRED
+						channelMembershipType = <ChannelMembershipType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
+					}
+				}
+			)
+			# REQUIRED
+			restoreFolderPath = <System.String>
+			# OPTIONAL
+			listName = <System.String>
+			# OPTIONAL
+			parentSiteUuid = <System.String>
+		}
+		# OPTIONAL
+		sharePointFullRestoreConfig = @{
+			# OPTIONAL
+			spObjectToRestore = @{
+				# REQUIRED
+				objectSharepointId = <System.String>
+				# REQUIRED
+				objectName = <System.String>
+				# OPTIONAL
+				objectType = <SnappableType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnappableType]) for enum values.
+				# REQUIRED
+				snapshotId = <System.String>
+				# REQUIRED
+				snapshotNum = <System.Int32>
+			}
+			# OPTIONAL
+			spItemsToRestore = @{
+				# REQUIRED
+				sharepointId = <System.String>
+				# OPTIONAL
+				snappableType = <SnappableType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnappableType]) for enum values.
+				# REQUIRED
+				listItems = @(
+					@{
+						# REQUIRED
+						itemId = <System.String>
+						# REQUIRED
+						itemName = <System.String>
+						# REQUIRED
+						itemSnapshotsToRestore = @(
+							@{
+								# REQUIRED
+								snapshotId = <System.String>
+								# REQUIRED
+								snapshotNum = <System.Int32>
+							}
+						)
+					}
+				)
+				# REQUIRED
+				folderItems = @(
+					@{
+						# REQUIRED
+						folderId = <System.String>
+						# REQUIRED
+						folderName = <System.String>
+						# REQUIRED
+						folderSize = <System.Int64>
+						# REQUIRED
+						snapshotId = <System.String>
+						# REQUIRED
+						snapshotNum = <System.Int32>
+						# OPTIONAL
+						channelInfo = @{
+							# REQUIRED
+							TeamID = <System.String>
+							# OPTIONAL
+							ChannelID = <System.String>
+							# OPTIONAL
+							ChannelName = <System.String>
+							# OPTIONAL
+							ChannelFolderName = <System.String>
+							# OPTIONAL
+							ChannelNaturalId = <System.String>
+							# REQUIRED
+							channelMembershipType = <ChannelMembershipType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
+						}
+					}
+				)
+				# REQUIRED
+				fileItems = @(
+					@{
+						# REQUIRED
+						fileId = <System.String>
+						# REQUIRED
+						fileName = <System.String>
+						# REQUIRED
+						fileSnapshotsToRestore = @(
+							@{
+								# REQUIRED
+								snapshotId = <System.String>
+								# REQUIRED
+								snapshotNum = <System.Int32>
+								# REQUIRED
+								fileSize = <System.Int64>
+							}
+						)
+						# OPTIONAL
+						channelInfo = @{
+							# REQUIRED
+							TeamID = <System.String>
+							# OPTIONAL
+							ChannelID = <System.String>
+							# OPTIONAL
+							ChannelName = <System.String>
+							# OPTIONAL
+							ChannelFolderName = <System.String>
+							# OPTIONAL
+							ChannelNaturalId = <System.String>
+							# REQUIRED
+							channelMembershipType = <ChannelMembershipType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
+						}
+					}
+				)
+				# REQUIRED
+				arePageLibraryItems = <System.Boolean>
+			}
+			# OPTIONAL
+			targetObjectUuid = <System.String>
+			# OPTIONAL
+			targetObjectType = <SnappableType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnappableType]) for enum values.
+			# REQUIRED
+			shouldCreateNewObject = <System.Boolean>
+			# OPTIONAL
+			newObjectType = <SnappableType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnappableType]) for enum values.
+			# OPTIONAL
+			newObjectName = <System.String>
+		}
+		# OPTIONAL
+		OneDriveRestoreConfig = @{
+			# REQUIRED
+			filesToRestore = @(
+				@{
+					# REQUIRED
+					fileId = <System.String>
+					# REQUIRED
+					fileName = <System.String>
+					# REQUIRED
+					fileSnapshotsToRestore = @(
+						@{
+							# REQUIRED
+							snapshotId = <System.String>
+							# REQUIRED
+							snapshotNum = <System.Int32>
+							# REQUIRED
+							fileSize = <System.Int64>
+						}
+					)
+					# OPTIONAL
+					channelInfo = @{
+						# REQUIRED
+						TeamID = <System.String>
+						# OPTIONAL
+						ChannelID = <System.String>
+						# OPTIONAL
+						ChannelName = <System.String>
+						# OPTIONAL
+						ChannelFolderName = <System.String>
+						# OPTIONAL
+						ChannelNaturalId = <System.String>
+						# REQUIRED
+						channelMembershipType = <ChannelMembershipType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
+					}
+				}
+			)
+			# REQUIRED
+			foldersToRestore = @(
+				@{
+					# REQUIRED
+					folderId = <System.String>
+					# REQUIRED
+					folderName = <System.String>
+					# REQUIRED
+					folderSize = <System.Int64>
+					# REQUIRED
+					snapshotId = <System.String>
+					# REQUIRED
+					snapshotNum = <System.Int32>
+					# OPTIONAL
+					channelInfo = @{
+						# REQUIRED
+						TeamID = <System.String>
+						# OPTIONAL
+						ChannelID = <System.String>
+						# OPTIONAL
+						ChannelName = <System.String>
+						# OPTIONAL
+						ChannelFolderName = <System.String>
+						# OPTIONAL
+						ChannelNaturalId = <System.String>
+						# REQUIRED
+						channelMembershipType = <ChannelMembershipType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
+					}
+				}
+			)
+			# REQUIRED
+			restoreFolderPath = <System.String>
+		}
+		# OPTIONAL
+		TeamsRestoreConfig = @{
+			# OPTIONAL
+			filesRestoreConfig = @{
+				# REQUIRED
+				filesToRestore = @(
+					@{
+						# REQUIRED
+						fileId = <System.String>
+						# REQUIRED
+						fileName = <System.String>
+						# REQUIRED
+						fileSnapshotsToRestore = @(
+							@{
+								# REQUIRED
+								snapshotId = <System.String>
+								# REQUIRED
+								snapshotNum = <System.Int32>
+								# REQUIRED
+								fileSize = <System.Int64>
+							}
+						)
+						# OPTIONAL
+						channelInfo = @{
+							# REQUIRED
+							TeamID = <System.String>
+							# OPTIONAL
+							ChannelID = <System.String>
+							# OPTIONAL
+							ChannelName = <System.String>
+							# OPTIONAL
+							ChannelFolderName = <System.String>
+							# OPTIONAL
+							ChannelNaturalId = <System.String>
+							# REQUIRED
+							channelMembershipType = <ChannelMembershipType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
+						}
+					}
+				)
+				# REQUIRED
+				foldersToRestore = @(
+					@{
+						# REQUIRED
+						folderId = <System.String>
+						# REQUIRED
+						folderName = <System.String>
+						# REQUIRED
+						folderSize = <System.Int64>
+						# REQUIRED
+						snapshotId = <System.String>
+						# REQUIRED
+						snapshotNum = <System.Int32>
+						# OPTIONAL
+						channelInfo = @{
+							# REQUIRED
+							TeamID = <System.String>
+							# OPTIONAL
+							ChannelID = <System.String>
+							# OPTIONAL
+							ChannelName = <System.String>
+							# OPTIONAL
+							ChannelFolderName = <System.String>
+							# OPTIONAL
+							ChannelNaturalId = <System.String>
+							# REQUIRED
+							channelMembershipType = <ChannelMembershipType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
+						}
+					}
+				)
+				# REQUIRED
+				restoreFolderPath = <System.String>
+			}
+			# OPTIONAL
+			conversationsRestoreConfig = @{
+				# OPTIONAL
+				SearchFilter = @{
+					# OPTIONAL
+					PostedTime = @{
+						# OPTIONAL
+						FromTime = <System.Int64>
+						# OPTIONAL
+						UntilTime = <System.Int64>
+					}
+					# OPTIONAL
+					PostedBy = <System.String>
+					# OPTIONAL
+					SnapshotId = <System.String>
+				}
+				# OPTIONAL
+				ChannelInfoForFullRestore = @{
+					# REQUIRED
+					TeamID = <System.String>
+					# OPTIONAL
+					ChannelID = <System.String>
+					# OPTIONAL
+					ChannelName = <System.String>
+					# OPTIONAL
+					ChannelFolderName = <System.String>
+					# OPTIONAL
+					ChannelFolderId = <System.String>
+					# OPTIONAL
+					ChannelNaturalId = <System.String>
+				}
+				# REQUIRED
+				RefreshTokenEncrypted = <System.String>
+				# REQUIRED
+				O365AppID = <System.String>
+				# REQUIRED
+				ChannelsToRestore = @(
+					@{
+						# REQUIRED
+						TeamID = <System.String>
+						# OPTIONAL
+						ChannelID = <System.String>
+						# OPTIONAL
+						ChannelName = <System.String>
+						# OPTIONAL
+						ChannelFolderName = <System.String>
+						# OPTIONAL
+						ChannelFolderId = <System.String>
+						# OPTIONAL
+						ChannelNaturalId = <System.String>
+					}
+				)
+				# REQUIRED
+				ShouldRestoreFileAttachments = <System.Boolean>
+			}
+			# OPTIONAL
+			destChannelInfo = @{
+				# REQUIRED
+				TeamID = <System.String>
+				# OPTIONAL
+				ChannelID = <System.String>
+				# OPTIONAL
+				ChannelName = <System.String>
+				# OPTIONAL
+				ChannelFolderName = <System.String>
+				# OPTIONAL
+				ChannelNaturalId = <System.String>
+				# REQUIRED
+				channelMembershipType = <ChannelMembershipType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
+			}
+			# REQUIRED
+			shouldCreateDestChannel = <System.Boolean>
+			# REQUIRED
+			channelType = <ChannelMembershipType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
+			# REQUIRED
+			restoreLatestPermissions = <System.Boolean>
+			# REQUIRED
+			snapshotSequenceNum = <System.Int32>
+		}
+		# OPTIONAL
+		MailboxRestoreConfig = @{
+			# OPTIONAL
+			SnapshotUUID = <System.String>
+			# REQUIRED
+			RestoreConfigs = @(
+				@{
+					# REQUIRED
+					SnapshotUUID = <System.String>
+					# OPTIONAL
+					EmailID = <System.String>
+					# OPTIONAL
+					FolderID = <System.String>
+				}
+			)
+		}
+		# OPTIONAL
+		calendarRestoreConfig = @{
+			# REQUIRED
+			eventsToRestore = @(
+				@{
+					# REQUIRED
+					eventId = <System.String>
+					# REQUIRED
+					snapshotId = <System.String>
+				}
+			)
+			# REQUIRED
+			calendarsToRestore = @(
+				@{
+					# REQUIRED
+					calendarId = <System.String>
+					# REQUIRED
+					snapshotId = <System.String>
+				}
+			)
+			# REQUIRED
+			calendarGroupsToRestore = @(
+				@{
+					# REQUIRED
+					calendarGroupId = <System.String>
+					# REQUIRED
+					snapshotId = <System.String>
+				}
+			)
+		}
+		# OPTIONAL
+		contactsRestoreConfig = @{
+			# REQUIRED
+			contactsToRestore = @(
+				@{
+					# REQUIRED
+					contactId = <System.String>
+					# REQUIRED
+					snapshotId = <System.String>
+					# REQUIRED
+					snapshotNum = <System.Int32>
+				}
+			)
+			# REQUIRED
+			contactFoldersToRestore = @(
+				@{
+					# REQUIRED
+					contactFolderId = <System.String>
+					# REQUIRED
+					snapshotId = <System.String>
+					# REQUIRED
+					snapshotNum = <System.Int32>
+				}
+			)
+		}
+	}
+	# REQUIRED
+	actionType = <O365RestoreActionType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365RestoreActionType]) for enum values.
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1688,7 +2683,565 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (CreateOnDemandJobReply)this.Field;
             }
             string fieldSpecDoc = Mutation.ExportO365Workload(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	snappableType = <SnappableType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnappableType]) for enum values.
+	# REQUIRED
+	sourceSnappableUuid = <System.String>
+	# REQUIRED
+	destinationSnappableUuid = <System.String>
+	# REQUIRED
+	restoreConfig = @{
+		# OPTIONAL
+		SharePointDriveRestoreConfig = @{
+			# REQUIRED
+			driveRestoreConfig = @{
+				# REQUIRED
+				filesToRestore = @(
+					@{
+						# REQUIRED
+						fileId = <System.String>
+						# REQUIRED
+						fileName = <System.String>
+						# REQUIRED
+						fileSnapshotsToRestore = @(
+							@{
+								# REQUIRED
+								snapshotId = <System.String>
+								# REQUIRED
+								snapshotNum = <System.Int32>
+								# REQUIRED
+								fileSize = <System.Int64>
+							}
+						)
+						# OPTIONAL
+						channelInfo = @{
+							# REQUIRED
+							TeamID = <System.String>
+							# OPTIONAL
+							ChannelID = <System.String>
+							# OPTIONAL
+							ChannelName = <System.String>
+							# OPTIONAL
+							ChannelFolderName = <System.String>
+							# OPTIONAL
+							ChannelNaturalId = <System.String>
+							# REQUIRED
+							channelMembershipType = <ChannelMembershipType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
+						}
+					}
+				)
+				# REQUIRED
+				foldersToRestore = @(
+					@{
+						# REQUIRED
+						folderId = <System.String>
+						# REQUIRED
+						folderName = <System.String>
+						# REQUIRED
+						folderSize = <System.Int64>
+						# REQUIRED
+						snapshotId = <System.String>
+						# REQUIRED
+						snapshotNum = <System.Int32>
+						# OPTIONAL
+						channelInfo = @{
+							# REQUIRED
+							TeamID = <System.String>
+							# OPTIONAL
+							ChannelID = <System.String>
+							# OPTIONAL
+							ChannelName = <System.String>
+							# OPTIONAL
+							ChannelFolderName = <System.String>
+							# OPTIONAL
+							ChannelNaturalId = <System.String>
+							# REQUIRED
+							channelMembershipType = <ChannelMembershipType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
+						}
+					}
+				)
+				# REQUIRED
+				restoreFolderPath = <System.String>
+			}
+			# OPTIONAL
+			docLibName = <System.String>
+			# OPTIONAL
+			parentSiteUuid = <System.String>
+		}
+		# OPTIONAL
+		sharePointListRestoreConfig = @{
+			# REQUIRED
+			itemsToRestore = @(
+				@{
+					# REQUIRED
+					itemId = <System.String>
+					# REQUIRED
+					itemName = <System.String>
+					# REQUIRED
+					itemSnapshotsToRestore = @(
+						@{
+							# REQUIRED
+							snapshotId = <System.String>
+							# REQUIRED
+							snapshotNum = <System.Int32>
+						}
+					)
+				}
+			)
+			# REQUIRED
+			foldersToRestore = @(
+				@{
+					# REQUIRED
+					folderId = <System.String>
+					# REQUIRED
+					folderName = <System.String>
+					# REQUIRED
+					folderSize = <System.Int64>
+					# REQUIRED
+					snapshotId = <System.String>
+					# REQUIRED
+					snapshotNum = <System.Int32>
+					# OPTIONAL
+					channelInfo = @{
+						# REQUIRED
+						TeamID = <System.String>
+						# OPTIONAL
+						ChannelID = <System.String>
+						# OPTIONAL
+						ChannelName = <System.String>
+						# OPTIONAL
+						ChannelFolderName = <System.String>
+						# OPTIONAL
+						ChannelNaturalId = <System.String>
+						# REQUIRED
+						channelMembershipType = <ChannelMembershipType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
+					}
+				}
+			)
+			# REQUIRED
+			restoreFolderPath = <System.String>
+			# OPTIONAL
+			listName = <System.String>
+			# OPTIONAL
+			parentSiteUuid = <System.String>
+		}
+		# OPTIONAL
+		sharePointFullRestoreConfig = @{
+			# OPTIONAL
+			spObjectToRestore = @{
+				# REQUIRED
+				objectSharepointId = <System.String>
+				# REQUIRED
+				objectName = <System.String>
+				# OPTIONAL
+				objectType = <SnappableType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnappableType]) for enum values.
+				# REQUIRED
+				snapshotId = <System.String>
+				# REQUIRED
+				snapshotNum = <System.Int32>
+			}
+			# OPTIONAL
+			spItemsToRestore = @{
+				# REQUIRED
+				sharepointId = <System.String>
+				# OPTIONAL
+				snappableType = <SnappableType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnappableType]) for enum values.
+				# REQUIRED
+				listItems = @(
+					@{
+						# REQUIRED
+						itemId = <System.String>
+						# REQUIRED
+						itemName = <System.String>
+						# REQUIRED
+						itemSnapshotsToRestore = @(
+							@{
+								# REQUIRED
+								snapshotId = <System.String>
+								# REQUIRED
+								snapshotNum = <System.Int32>
+							}
+						)
+					}
+				)
+				# REQUIRED
+				folderItems = @(
+					@{
+						# REQUIRED
+						folderId = <System.String>
+						# REQUIRED
+						folderName = <System.String>
+						# REQUIRED
+						folderSize = <System.Int64>
+						# REQUIRED
+						snapshotId = <System.String>
+						# REQUIRED
+						snapshotNum = <System.Int32>
+						# OPTIONAL
+						channelInfo = @{
+							# REQUIRED
+							TeamID = <System.String>
+							# OPTIONAL
+							ChannelID = <System.String>
+							# OPTIONAL
+							ChannelName = <System.String>
+							# OPTIONAL
+							ChannelFolderName = <System.String>
+							# OPTIONAL
+							ChannelNaturalId = <System.String>
+							# REQUIRED
+							channelMembershipType = <ChannelMembershipType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
+						}
+					}
+				)
+				# REQUIRED
+				fileItems = @(
+					@{
+						# REQUIRED
+						fileId = <System.String>
+						# REQUIRED
+						fileName = <System.String>
+						# REQUIRED
+						fileSnapshotsToRestore = @(
+							@{
+								# REQUIRED
+								snapshotId = <System.String>
+								# REQUIRED
+								snapshotNum = <System.Int32>
+								# REQUIRED
+								fileSize = <System.Int64>
+							}
+						)
+						# OPTIONAL
+						channelInfo = @{
+							# REQUIRED
+							TeamID = <System.String>
+							# OPTIONAL
+							ChannelID = <System.String>
+							# OPTIONAL
+							ChannelName = <System.String>
+							# OPTIONAL
+							ChannelFolderName = <System.String>
+							# OPTIONAL
+							ChannelNaturalId = <System.String>
+							# REQUIRED
+							channelMembershipType = <ChannelMembershipType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
+						}
+					}
+				)
+				# REQUIRED
+				arePageLibraryItems = <System.Boolean>
+			}
+			# OPTIONAL
+			targetObjectUuid = <System.String>
+			# OPTIONAL
+			targetObjectType = <SnappableType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnappableType]) for enum values.
+			# REQUIRED
+			shouldCreateNewObject = <System.Boolean>
+			# OPTIONAL
+			newObjectType = <SnappableType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnappableType]) for enum values.
+			# OPTIONAL
+			newObjectName = <System.String>
+		}
+		# OPTIONAL
+		OneDriveRestoreConfig = @{
+			# REQUIRED
+			filesToRestore = @(
+				@{
+					# REQUIRED
+					fileId = <System.String>
+					# REQUIRED
+					fileName = <System.String>
+					# REQUIRED
+					fileSnapshotsToRestore = @(
+						@{
+							# REQUIRED
+							snapshotId = <System.String>
+							# REQUIRED
+							snapshotNum = <System.Int32>
+							# REQUIRED
+							fileSize = <System.Int64>
+						}
+					)
+					# OPTIONAL
+					channelInfo = @{
+						# REQUIRED
+						TeamID = <System.String>
+						# OPTIONAL
+						ChannelID = <System.String>
+						# OPTIONAL
+						ChannelName = <System.String>
+						# OPTIONAL
+						ChannelFolderName = <System.String>
+						# OPTIONAL
+						ChannelNaturalId = <System.String>
+						# REQUIRED
+						channelMembershipType = <ChannelMembershipType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
+					}
+				}
+			)
+			# REQUIRED
+			foldersToRestore = @(
+				@{
+					# REQUIRED
+					folderId = <System.String>
+					# REQUIRED
+					folderName = <System.String>
+					# REQUIRED
+					folderSize = <System.Int64>
+					# REQUIRED
+					snapshotId = <System.String>
+					# REQUIRED
+					snapshotNum = <System.Int32>
+					# OPTIONAL
+					channelInfo = @{
+						# REQUIRED
+						TeamID = <System.String>
+						# OPTIONAL
+						ChannelID = <System.String>
+						# OPTIONAL
+						ChannelName = <System.String>
+						# OPTIONAL
+						ChannelFolderName = <System.String>
+						# OPTIONAL
+						ChannelNaturalId = <System.String>
+						# REQUIRED
+						channelMembershipType = <ChannelMembershipType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
+					}
+				}
+			)
+			# REQUIRED
+			restoreFolderPath = <System.String>
+		}
+		# OPTIONAL
+		TeamsRestoreConfig = @{
+			# OPTIONAL
+			filesRestoreConfig = @{
+				# REQUIRED
+				filesToRestore = @(
+					@{
+						# REQUIRED
+						fileId = <System.String>
+						# REQUIRED
+						fileName = <System.String>
+						# REQUIRED
+						fileSnapshotsToRestore = @(
+							@{
+								# REQUIRED
+								snapshotId = <System.String>
+								# REQUIRED
+								snapshotNum = <System.Int32>
+								# REQUIRED
+								fileSize = <System.Int64>
+							}
+						)
+						# OPTIONAL
+						channelInfo = @{
+							# REQUIRED
+							TeamID = <System.String>
+							# OPTIONAL
+							ChannelID = <System.String>
+							# OPTIONAL
+							ChannelName = <System.String>
+							# OPTIONAL
+							ChannelFolderName = <System.String>
+							# OPTIONAL
+							ChannelNaturalId = <System.String>
+							# REQUIRED
+							channelMembershipType = <ChannelMembershipType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
+						}
+					}
+				)
+				# REQUIRED
+				foldersToRestore = @(
+					@{
+						# REQUIRED
+						folderId = <System.String>
+						# REQUIRED
+						folderName = <System.String>
+						# REQUIRED
+						folderSize = <System.Int64>
+						# REQUIRED
+						snapshotId = <System.String>
+						# REQUIRED
+						snapshotNum = <System.Int32>
+						# OPTIONAL
+						channelInfo = @{
+							# REQUIRED
+							TeamID = <System.String>
+							# OPTIONAL
+							ChannelID = <System.String>
+							# OPTIONAL
+							ChannelName = <System.String>
+							# OPTIONAL
+							ChannelFolderName = <System.String>
+							# OPTIONAL
+							ChannelNaturalId = <System.String>
+							# REQUIRED
+							channelMembershipType = <ChannelMembershipType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
+						}
+					}
+				)
+				# REQUIRED
+				restoreFolderPath = <System.String>
+			}
+			# OPTIONAL
+			conversationsRestoreConfig = @{
+				# OPTIONAL
+				SearchFilter = @{
+					# OPTIONAL
+					PostedTime = @{
+						# OPTIONAL
+						FromTime = <System.Int64>
+						# OPTIONAL
+						UntilTime = <System.Int64>
+					}
+					# OPTIONAL
+					PostedBy = <System.String>
+					# OPTIONAL
+					SnapshotId = <System.String>
+				}
+				# OPTIONAL
+				ChannelInfoForFullRestore = @{
+					# REQUIRED
+					TeamID = <System.String>
+					# OPTIONAL
+					ChannelID = <System.String>
+					# OPTIONAL
+					ChannelName = <System.String>
+					# OPTIONAL
+					ChannelFolderName = <System.String>
+					# OPTIONAL
+					ChannelFolderId = <System.String>
+					# OPTIONAL
+					ChannelNaturalId = <System.String>
+				}
+				# REQUIRED
+				RefreshTokenEncrypted = <System.String>
+				# REQUIRED
+				O365AppID = <System.String>
+				# REQUIRED
+				ChannelsToRestore = @(
+					@{
+						# REQUIRED
+						TeamID = <System.String>
+						# OPTIONAL
+						ChannelID = <System.String>
+						# OPTIONAL
+						ChannelName = <System.String>
+						# OPTIONAL
+						ChannelFolderName = <System.String>
+						# OPTIONAL
+						ChannelFolderId = <System.String>
+						# OPTIONAL
+						ChannelNaturalId = <System.String>
+					}
+				)
+				# REQUIRED
+				ShouldRestoreFileAttachments = <System.Boolean>
+			}
+			# OPTIONAL
+			destChannelInfo = @{
+				# REQUIRED
+				TeamID = <System.String>
+				# OPTIONAL
+				ChannelID = <System.String>
+				# OPTIONAL
+				ChannelName = <System.String>
+				# OPTIONAL
+				ChannelFolderName = <System.String>
+				# OPTIONAL
+				ChannelNaturalId = <System.String>
+				# REQUIRED
+				channelMembershipType = <ChannelMembershipType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
+			}
+			# REQUIRED
+			shouldCreateDestChannel = <System.Boolean>
+			# REQUIRED
+			channelType = <ChannelMembershipType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
+			# REQUIRED
+			restoreLatestPermissions = <System.Boolean>
+			# REQUIRED
+			snapshotSequenceNum = <System.Int32>
+		}
+		# OPTIONAL
+		MailboxRestoreConfig = @{
+			# OPTIONAL
+			SnapshotUUID = <System.String>
+			# REQUIRED
+			RestoreConfigs = @(
+				@{
+					# REQUIRED
+					SnapshotUUID = <System.String>
+					# OPTIONAL
+					EmailID = <System.String>
+					# OPTIONAL
+					FolderID = <System.String>
+				}
+			)
+		}
+		# OPTIONAL
+		calendarRestoreConfig = @{
+			# REQUIRED
+			eventsToRestore = @(
+				@{
+					# REQUIRED
+					eventId = <System.String>
+					# REQUIRED
+					snapshotId = <System.String>
+				}
+			)
+			# REQUIRED
+			calendarsToRestore = @(
+				@{
+					# REQUIRED
+					calendarId = <System.String>
+					# REQUIRED
+					snapshotId = <System.String>
+				}
+			)
+			# REQUIRED
+			calendarGroupsToRestore = @(
+				@{
+					# REQUIRED
+					calendarGroupId = <System.String>
+					# REQUIRED
+					snapshotId = <System.String>
+				}
+			)
+		}
+		# OPTIONAL
+		contactsRestoreConfig = @{
+			# REQUIRED
+			contactsToRestore = @(
+				@{
+					# REQUIRED
+					contactId = <System.String>
+					# REQUIRED
+					snapshotId = <System.String>
+					# REQUIRED
+					snapshotNum = <System.Int32>
+				}
+			)
+			# REQUIRED
+			contactFoldersToRestore = @(
+				@{
+					# REQUIRED
+					contactFolderId = <System.String>
+					# REQUIRED
+					snapshotId = <System.String>
+					# REQUIRED
+					snapshotNum = <System.Int32>
+				}
+			)
+		}
+	}
+	# REQUIRED
+	actionType = <O365RestoreActionType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365RestoreActionType]) for enum values.
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1711,7 +3264,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (CreateOnDemandJobReply)this.Field;
             }
             string fieldSpecDoc = Mutation.RefreshO365Org(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.orgId = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1734,7 +3289,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (CreateOnDemandJobReply)this.Field;
             }
             string fieldSpecDoc = Mutation.DeleteO365Org(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.orgId = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1757,7 +3314,29 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (CreateOnDemandJobReply)this.Field;
             }
             string fieldSpecDoc = Mutation.RestoreO365Mailbox(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.restoreConfig = @{
+	# OPTIONAL
+	orgUuid = <System.String>
+	# REQUIRED
+	mailboxUuid = <System.String>
+	# OPTIONAL
+	snapshotUuid = <System.String>
+	# REQUIRED
+	restoreConfigs = @(
+		@{
+			# REQUIRED
+			SnapshotUUID = <System.String>
+			# OPTIONAL
+			EmailID = <System.String>
+			# OPTIONAL
+			FolderID = <System.String>
+		}
+	)
+	# REQUIRED
+	actionType = <O365RestoreActionType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365RestoreActionType]) for enum values.
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1780,7 +3359,29 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (CreateOnDemandJobReply)this.Field;
             }
             string fieldSpecDoc = Mutation.ExportO365Mailbox(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.exportConfig = @{
+	# OPTIONAL
+	orgUuid = <System.String>
+	# REQUIRED
+	fromMailboxUuid = <System.String>
+	# REQUIRED
+	toMailboxUuid = <System.String>
+	# OPTIONAL
+	snapshotUuid = <System.String>
+	# REQUIRED
+	exportConfigs = @(
+		@{
+			# REQUIRED
+			SnapshotUUID = <System.String>
+			# OPTIONAL
+			EmailID = <System.String>
+			# OPTIONAL
+			FolderID = <System.String>
+		}
+	)
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1805,7 +3406,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (RequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.SetO365ServiceAccount(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.username = <System.String>
+# REQUIRED
+$inputs.Var.appPassword = <System.String>
+# REQUIRED
+$inputs.Var.orgId = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1828,7 +3435,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (RequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.EnableO365SharePoint(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	exocomputeClusterId = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1851,7 +3463,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (RequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.EnableO365Teams(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.exocomputeClusterId = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1874,7 +3488,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (RequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.DeleteO365ServiceAccount(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.orgId = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1897,7 +3513,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (UpdateO365OrgCustomNameReply)this.Field;
             }
             string fieldSpecDoc = Mutation.UpdateO365OrgCustomName(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	orgUuid = <System.String>
+	# REQUIRED
+	customName = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 

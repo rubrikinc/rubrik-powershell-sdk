@@ -473,7 +473,481 @@ Export a managed volume snapshot as a share and mount it on a given host.
                 fieldSpecObj = (GlobalSlaReply)this.Field;
             }
             string fieldSpecDoc = Mutation.CreateGlobalSla(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	name = <System.String>
+	# OPTIONAL
+	description = <System.String>
+	# OPTIONAL
+	snapshotSchedule = @{
+		# OPTIONAL
+		minute = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+		}
+		# OPTIONAL
+		hourly = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+		}
+		# OPTIONAL
+		daily = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+		}
+		# OPTIONAL
+		weekly = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			dayOfWeek = <DayOfWeek> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+		}
+		# OPTIONAL
+		monthly = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			dayOfMonth = <DayOfMonth> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfMonth]) for enum values.
+		}
+		# OPTIONAL
+		quarterly = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			dayOfQuarter = <DayOfQuarter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfQuarter]) for enum values.
+			# OPTIONAL
+			quarterStartMonth = <Month> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+		}
+		# OPTIONAL
+		yearly = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			dayOfYear = <DayOfYear> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfYear]) for enum values.
+			# OPTIONAL
+			yearStartMonth = <Month> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+		}
+	}
+	# OPTIONAL
+	replicationSpecInput = @{
+		# OPTIONAL
+		replicationType = <ReplicationType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReplicationType]) for enum values.
+		# OPTIONAL
+		specificReplicationSpecInput = @{
+			# OPTIONAL
+			unidirectionalSpecInput = @{
+				# OPTIONAL
+				replicationTargetId = <System.String>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			bidirectionalSpecInput = @{
+				# OPTIONAL
+				replicationSpec1 = @{
+					# OPTIONAL
+					replicationTargetId = <System.String>
+					# OPTIONAL
+					retention = <System.Int32>
+					# OPTIONAL
+					retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+				}
+				# OPTIONAL
+				replicationSpec2 = @{
+					# OPTIONAL
+					replicationTargetId = <System.String>
+					# OPTIONAL
+					retention = <System.Int32>
+					# OPTIONAL
+					retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+				}
+			}
+			# OPTIONAL
+			cloudRegionSpecInput = @{
+				# OPTIONAL
+				replicationTargetRegion = <System.String>
+				# OPTIONAL
+				cloudProvider = <CloudProvider> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudProvider]) for enum values.
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			cloudLocationSpecInput = @{
+				# OPTIONAL
+				replicationTargetId = <System.String>
+				# OPTIONAL
+				cloudProvider = <CloudProvider> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudProvider]) for enum values.
+				# OPTIONAL
+				retentionDuration = @{
+					# OPTIONAL
+					duration = <System.Int32>
+					# OPTIONAL
+					unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+				}
+			}
+		}
+	}
+	# OPTIONAL
+	localRetentionLimit = @{
+		# OPTIONAL
+		duration = <System.Int32>
+		# OPTIONAL
+		unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+	}
+	# OPTIONAL
+	firstFullBackupWindows = @(
+		@{
+			# OPTIONAL
+			durationInHours = <System.Int32>
+			# OPTIONAL
+			startTimeAttributes = @{
+				# OPTIONAL
+				dayOfWeek = @{
+					# OPTIONAL
+					day = <DayOfWeek> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+				}
+				# OPTIONAL
+				hour = <System.Int32>
+				# OPTIONAL
+				minute = <System.Int32>
+			}
+		}
+	)
+	# OPTIONAL
+	backupWindows = @(
+		@{
+			# OPTIONAL
+			durationInHours = <System.Int32>
+			# OPTIONAL
+			startTimeAttributes = @{
+				# OPTIONAL
+				dayOfWeek = @{
+					# OPTIONAL
+					day = <DayOfWeek> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+				}
+				# OPTIONAL
+				hour = <System.Int32>
+				# OPTIONAL
+				minute = <System.Int32>
+			}
+		}
+	)
+	# OPTIONAL
+	logConfig = @{
+		# OPTIONAL
+		slaLogFrequencyConfig = @{
+			# OPTIONAL
+			retention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+		}
+	}
+	# OPTIONAL
+	objectSpecificConfigsInput = @{
+		# OPTIONAL
+		sapHanaConfigInput = @{
+			# OPTIONAL
+			incrementalFrequency = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			logRetention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			differentialFrequency = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+		}
+		# OPTIONAL
+		awsRdsConfigInput = @{
+			# OPTIONAL
+			logRetention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+		}
+		# OPTIONAL
+		vmwareVmConfigInput = @{
+			# OPTIONAL
+			logRetentionSeconds = <System.Int64>
+		}
+		# OPTIONAL
+		azureSqlDatabaseDbConfigInput = @{
+			# OPTIONAL
+			logRetentionInDays = <System.Int32>
+		}
+		# OPTIONAL
+		azureSqlManagedInstanceDbConfigInput = @{
+			# OPTIONAL
+			logRetentionInDays = <System.Int32>
+		}
+		# OPTIONAL
+		db2ConfigInput = @{
+			# OPTIONAL
+			incrementalFrequency = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			logRetention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			differentialFrequency = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+		}
+		# OPTIONAL
+		mssqlConfigInput = @{
+			# OPTIONAL
+			frequency = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			logRetention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+		}
+		# OPTIONAL
+		oracleConfigInput = @{
+			# OPTIONAL
+			frequency = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			logRetention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			hostLogRetention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+		}
+		# OPTIONAL
+		mongoConfigInput = @{
+			# OPTIONAL
+			logFrequency = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			logRetention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+		}
+		# OPTIONAL
+		azureBlobConfigInput = @{
+			# OPTIONAL
+			continuousBackupRetentionInDays = <System.Int32>
+		}
+		# OPTIONAL
+		awsNativeS3SlaConfigInput = @{
+			# OPTIONAL
+			archivalLocationId = <System.String>
+			# OPTIONAL
+			continuousBackupRetentionInDays = <System.Int32>
+		}
+	}
+	# OPTIONAL
+	archivalSpecs = @(
+		@{
+			# OPTIONAL
+			archivalGroupId = <System.String>
+			# OPTIONAL
+			threshold = <System.Int32>
+			# OPTIONAL
+			thresholdUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			# OPTIONAL
+			archivalTieringSpecInput = @{
+				# OPTIONAL
+				isInstantTieringEnabled = <System.Boolean>
+				# OPTIONAL
+				minAccessibleDurationInSeconds = <System.Int64>
+				# OPTIONAL
+				coldStorageClass = <ColdStorageClass> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ColdStorageClass]) for enum values.
+				# OPTIONAL
+				shouldTierExistingSnapshots = <System.Boolean>
+			}
+			# OPTIONAL
+			frequencies = @(
+				<RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			)
+			# OPTIONAL
+			archivalLocationToClusterMapping = @(
+				@{
+					# OPTIONAL
+					clusterUuid = <System.String>
+					# OPTIONAL
+					locationId = <System.String>
+				}
+			)
+		}
+	)
+	# OPTIONAL
+	replicationSpecsV2 = @(
+		@{
+			# OPTIONAL
+			clusterUuid = <System.String>
+			# OPTIONAL
+			storageSettingId = <System.String>
+			# OPTIONAL
+			retentionDuration = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			awsAccount = <System.String>
+			# OPTIONAL
+			azureSubscription = <System.String>
+			# OPTIONAL
+			replicationLocalRetentionDuration = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			cascadingArchivalSpecs = @(
+				@{
+					# OPTIONAL
+					archivalLocationId = <System.String>
+					# OPTIONAL
+					archivalThreshold = @{
+						# OPTIONAL
+						duration = <System.Int32>
+						# OPTIONAL
+						unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+					# OPTIONAL
+					archivalTieringSpecInput = @{
+						# OPTIONAL
+						isInstantTieringEnabled = <System.Boolean>
+						# OPTIONAL
+						minAccessibleDurationInSeconds = <System.Int64>
+						# OPTIONAL
+						coldStorageClass = <ColdStorageClass> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ColdStorageClass]) for enum values.
+						# OPTIONAL
+						shouldTierExistingSnapshots = <System.Boolean>
+					}
+					# OPTIONAL
+					frequency = @(
+						<RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					)
+				}
+			)
+			# OPTIONAL
+			awsRegion = <AwsNativeRegionForReplication> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegionForReplication]) for enum values.
+			# OPTIONAL
+			azureRegion = <AzureNativeRegionForReplication> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegionForReplication]) for enum values.
+		}
+	)
+	# OPTIONAL
+	objectTypes = @(
+		<SlaObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SlaObjectType]) for enum values.
+	)
+	# OPTIONAL
+	isRetentionLockedSla = <System.Boolean>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -496,7 +970,629 @@ Export a managed volume snapshot as a share and mount it on a given host.
                 fieldSpecObj = (GlobalSlaReply)this.Field;
             }
             string fieldSpecDoc = Mutation.EditGlobalSla(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.globalSlaEditRequest = @{
+	# OPTIONAL
+	id = <System.String>
+	# OPTIONAL
+	name = <System.String>
+	# OPTIONAL
+	description = <System.String>
+	# OPTIONAL
+	snapshotSchedule = @{
+		# OPTIONAL
+		minute = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+		}
+		# OPTIONAL
+		hourly = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+		}
+		# OPTIONAL
+		daily = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+		}
+		# OPTIONAL
+		weekly = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			dayOfWeek = <DayOfWeek> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+		}
+		# OPTIONAL
+		monthly = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			dayOfMonth = <DayOfMonth> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfMonth]) for enum values.
+		}
+		# OPTIONAL
+		quarterly = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			dayOfQuarter = <DayOfQuarter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfQuarter]) for enum values.
+			# OPTIONAL
+			quarterStartMonth = <Month> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+		}
+		# OPTIONAL
+		yearly = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			dayOfYear = <DayOfYear> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfYear]) for enum values.
+			# OPTIONAL
+			yearStartMonth = <Month> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+		}
+	}
+	# OPTIONAL
+	archivalSpecInput = @{
+		# OPTIONAL
+		archivalGroupId = <System.String>
+		# OPTIONAL
+		threshold = <System.Int32>
+		# OPTIONAL
+		thresholdUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+		# OPTIONAL
+		archivalTieringSpecInput = @{
+			# OPTIONAL
+			isInstantTieringEnabled = <System.Boolean>
+			# OPTIONAL
+			minAccessibleDurationInSeconds = <System.Int64>
+			# OPTIONAL
+			coldStorageClass = <ColdStorageClass> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ColdStorageClass]) for enum values.
+			# OPTIONAL
+			shouldTierExistingSnapshots = <System.Boolean>
+		}
+		# OPTIONAL
+		frequencies = @(
+			<RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+		)
+		# OPTIONAL
+		archivalLocationToClusterMapping = @(
+			@{
+				# OPTIONAL
+				clusterUuid = <System.String>
+				# OPTIONAL
+				locationId = <System.String>
+			}
+		)
+	}
+	# OPTIONAL
+	stateVersion = <System.Int64>
+	# OPTIONAL
+	replicationSpecInput = @{
+		# OPTIONAL
+		replicationType = <ReplicationType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReplicationType]) for enum values.
+		# OPTIONAL
+		specificReplicationSpecInput = @{
+			# OPTIONAL
+			unidirectionalSpecInput = @{
+				# OPTIONAL
+				replicationTargetId = <System.String>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			bidirectionalSpecInput = @{
+				# OPTIONAL
+				replicationSpec1 = @{
+					# OPTIONAL
+					replicationTargetId = <System.String>
+					# OPTIONAL
+					retention = <System.Int32>
+					# OPTIONAL
+					retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+				}
+				# OPTIONAL
+				replicationSpec2 = @{
+					# OPTIONAL
+					replicationTargetId = <System.String>
+					# OPTIONAL
+					retention = <System.Int32>
+					# OPTIONAL
+					retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+				}
+			}
+			# OPTIONAL
+			cloudRegionSpecInput = @{
+				# OPTIONAL
+				replicationTargetRegion = <System.String>
+				# OPTIONAL
+				cloudProvider = <CloudProvider> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudProvider]) for enum values.
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			cloudLocationSpecInput = @{
+				# OPTIONAL
+				replicationTargetId = <System.String>
+				# OPTIONAL
+				cloudProvider = <CloudProvider> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudProvider]) for enum values.
+				# OPTIONAL
+				retentionDuration = @{
+					# OPTIONAL
+					duration = <System.Int32>
+					# OPTIONAL
+					unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+				}
+			}
+		}
+	}
+	# OPTIONAL
+	localRetentionLimit = @{
+		# OPTIONAL
+		duration = <System.Int32>
+		# OPTIONAL
+		unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+	}
+	# OPTIONAL
+	firstFullBackupWindows = @(
+		@{
+			# OPTIONAL
+			durationInHours = <System.Int32>
+			# OPTIONAL
+			startTimeAttributes = @{
+				# OPTIONAL
+				dayOfWeek = @{
+					# OPTIONAL
+					day = <DayOfWeek> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+				}
+				# OPTIONAL
+				hour = <System.Int32>
+				# OPTIONAL
+				minute = <System.Int32>
+			}
+		}
+	)
+	# OPTIONAL
+	backupWindows = @(
+		@{
+			# OPTIONAL
+			durationInHours = <System.Int32>
+			# OPTIONAL
+			startTimeAttributes = @{
+				# OPTIONAL
+				dayOfWeek = @{
+					# OPTIONAL
+					day = <DayOfWeek> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+				}
+				# OPTIONAL
+				hour = <System.Int32>
+				# OPTIONAL
+				minute = <System.Int32>
+			}
+		}
+	)
+	# OPTIONAL
+	logConfig = @{
+		# OPTIONAL
+		slaLogFrequencyConfig = @{
+			# OPTIONAL
+			retention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+		}
+	}
+	# OPTIONAL
+	objectSpecificConfigsInput = @{
+		# OPTIONAL
+		sapHanaConfigInput = @{
+			# OPTIONAL
+			incrementalFrequency = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			logRetention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			differentialFrequency = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+		}
+		# OPTIONAL
+		awsRdsConfigInput = @{
+			# OPTIONAL
+			logRetention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+		}
+		# OPTIONAL
+		vmwareVmConfigInput = @{
+			# OPTIONAL
+			logRetentionSeconds = <System.Int64>
+		}
+		# OPTIONAL
+		azureSqlDatabaseDbConfigInput = @{
+			# OPTIONAL
+			logRetentionInDays = <System.Int32>
+		}
+		# OPTIONAL
+		azureSqlManagedInstanceDbConfigInput = @{
+			# OPTIONAL
+			logRetentionInDays = <System.Int32>
+		}
+		# OPTIONAL
+		db2ConfigInput = @{
+			# OPTIONAL
+			incrementalFrequency = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			logRetention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			differentialFrequency = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+		}
+		# OPTIONAL
+		mssqlConfigInput = @{
+			# OPTIONAL
+			frequency = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			logRetention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+		}
+		# OPTIONAL
+		oracleConfigInput = @{
+			# OPTIONAL
+			frequency = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			logRetention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			hostLogRetention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+		}
+		# OPTIONAL
+		mongoConfigInput = @{
+			# OPTIONAL
+			logFrequency = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			logRetention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+		}
+		# OPTIONAL
+		azureBlobConfigInput = @{
+			# OPTIONAL
+			continuousBackupRetentionInDays = <System.Int32>
+		}
+		# OPTIONAL
+		awsNativeS3SlaConfigInput = @{
+			# OPTIONAL
+			archivalLocationId = <System.String>
+			# OPTIONAL
+			continuousBackupRetentionInDays = <System.Int32>
+		}
+	}
+	# OPTIONAL
+	objectTypeList = @(
+		<SlaObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SlaObjectType]) for enum values.
+	)
+	# OPTIONAL
+	replicationSpecV2List = @(
+		@{
+			# OPTIONAL
+			clusterUuid = <System.String>
+			# OPTIONAL
+			storageSettingId = <System.String>
+			# OPTIONAL
+			retentionDuration = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			awsAccount = <System.String>
+			# OPTIONAL
+			azureSubscription = <System.String>
+			# OPTIONAL
+			replicationLocalRetentionDuration = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			cascadingArchivalSpecs = @(
+				@{
+					# OPTIONAL
+					archivalLocationId = <System.String>
+					# OPTIONAL
+					archivalThreshold = @{
+						# OPTIONAL
+						duration = <System.Int32>
+						# OPTIONAL
+						unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+					# OPTIONAL
+					archivalTieringSpecInput = @{
+						# OPTIONAL
+						isInstantTieringEnabled = <System.Boolean>
+						# OPTIONAL
+						minAccessibleDurationInSeconds = <System.Int64>
+						# OPTIONAL
+						coldStorageClass = <ColdStorageClass> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ColdStorageClass]) for enum values.
+						# OPTIONAL
+						shouldTierExistingSnapshots = <System.Boolean>
+					}
+					# OPTIONAL
+					frequency = @(
+						<RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					)
+				}
+			)
+			# OPTIONAL
+			awsRegion = <AwsNativeRegionForReplication> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegionForReplication]) for enum values.
+			# OPTIONAL
+			azureRegion = <AzureNativeRegionForReplication> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegionForReplication]) for enum values.
+		}
+	)
+	# OPTIONAL
+	archivalSpecInputs = @(
+		@{
+			# OPTIONAL
+			archivalGroupId = <System.String>
+			# OPTIONAL
+			threshold = <System.Int32>
+			# OPTIONAL
+			thresholdUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			# OPTIONAL
+			archivalTieringSpecInput = @{
+				# OPTIONAL
+				isInstantTieringEnabled = <System.Boolean>
+				# OPTIONAL
+				minAccessibleDurationInSeconds = <System.Int64>
+				# OPTIONAL
+				coldStorageClass = <ColdStorageClass> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ColdStorageClass]) for enum values.
+				# OPTIONAL
+				shouldTierExistingSnapshots = <System.Boolean>
+			}
+			# OPTIONAL
+			frequencies = @(
+				<RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			)
+			# OPTIONAL
+			archivalLocationToClusterMapping = @(
+				@{
+					# OPTIONAL
+					clusterUuid = <System.String>
+					# OPTIONAL
+					locationId = <System.String>
+				}
+			)
+		}
+	)
+	# OPTIONAL
+	shouldApplyToExistingSnapshots = @{
+		# OPTIONAL
+		value = <System.Boolean>
+	}
+	# OPTIONAL
+	shouldApplyToNonPolicySnapshots = @{
+		# OPTIONAL
+		value = <System.Boolean>
+	}
+	# OPTIONAL
+	userNote = <System.String>
+	# OPTIONAL
+	archivalSpecs = @(
+		@{
+			# OPTIONAL
+			archivalGroupId = <System.String>
+			# OPTIONAL
+			threshold = <System.Int32>
+			# OPTIONAL
+			thresholdUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			# OPTIONAL
+			archivalTieringSpecInput = @{
+				# OPTIONAL
+				isInstantTieringEnabled = <System.Boolean>
+				# OPTIONAL
+				minAccessibleDurationInSeconds = <System.Int64>
+				# OPTIONAL
+				coldStorageClass = <ColdStorageClass> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ColdStorageClass]) for enum values.
+				# OPTIONAL
+				shouldTierExistingSnapshots = <System.Boolean>
+			}
+			# OPTIONAL
+			frequencies = @(
+				<RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			)
+			# OPTIONAL
+			archivalLocationToClusterMapping = @(
+				@{
+					# OPTIONAL
+					clusterUuid = <System.String>
+					# OPTIONAL
+					locationId = <System.String>
+				}
+			)
+		}
+	)
+	# OPTIONAL
+	replicationSpecsV2 = @(
+		@{
+			# OPTIONAL
+			clusterUuid = <System.String>
+			# OPTIONAL
+			storageSettingId = <System.String>
+			# OPTIONAL
+			retentionDuration = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			awsAccount = <System.String>
+			# OPTIONAL
+			azureSubscription = <System.String>
+			# OPTIONAL
+			replicationLocalRetentionDuration = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			cascadingArchivalSpecs = @(
+				@{
+					# OPTIONAL
+					archivalLocationId = <System.String>
+					# OPTIONAL
+					archivalThreshold = @{
+						# OPTIONAL
+						duration = <System.Int32>
+						# OPTIONAL
+						unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+					# OPTIONAL
+					archivalTieringSpecInput = @{
+						# OPTIONAL
+						isInstantTieringEnabled = <System.Boolean>
+						# OPTIONAL
+						minAccessibleDurationInSeconds = <System.Int64>
+						# OPTIONAL
+						coldStorageClass = <ColdStorageClass> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ColdStorageClass]) for enum values.
+						# OPTIONAL
+						shouldTierExistingSnapshots = <System.Boolean>
+					}
+					# OPTIONAL
+					frequency = @(
+						<RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					)
+				}
+			)
+			# OPTIONAL
+			awsRegion = <AwsNativeRegionForReplication> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegionForReplication]) for enum values.
+			# OPTIONAL
+			azureRegion = <AzureNativeRegionForReplication> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegionForReplication]) for enum values.
+		}
+	)
+	# OPTIONAL
+	objectTypes = @(
+		<SlaObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SlaObjectType]) for enum values.
+	)
+	# OPTIONAL
+	isRetentionLockedSla = <System.Boolean>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -519,7 +1615,497 @@ Export a managed volume snapshot as a share and mount it on a given host.
                 fieldSpecObj = (GlobalSlaReply)this.Field;
             }
             string fieldSpecDoc = Mutation.UpdateGlobalSla(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	id = <System.String>
+	# OPTIONAL
+	name = <System.String>
+	# OPTIONAL
+	description = <System.String>
+	# OPTIONAL
+	snapshotSchedule = @{
+		# OPTIONAL
+		minute = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+		}
+		# OPTIONAL
+		hourly = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+		}
+		# OPTIONAL
+		daily = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+		}
+		# OPTIONAL
+		weekly = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			dayOfWeek = <DayOfWeek> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+		}
+		# OPTIONAL
+		monthly = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			dayOfMonth = <DayOfMonth> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfMonth]) for enum values.
+		}
+		# OPTIONAL
+		quarterly = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			dayOfQuarter = <DayOfQuarter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfQuarter]) for enum values.
+			# OPTIONAL
+			quarterStartMonth = <Month> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+		}
+		# OPTIONAL
+		yearly = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			dayOfYear = <DayOfYear> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfYear]) for enum values.
+			# OPTIONAL
+			yearStartMonth = <Month> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+		}
+	}
+	# OPTIONAL
+	stateVersion = <System.Int64>
+	# OPTIONAL
+	replicationSpecInput = @{
+		# OPTIONAL
+		replicationType = <ReplicationType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReplicationType]) for enum values.
+		# OPTIONAL
+		specificReplicationSpecInput = @{
+			# OPTIONAL
+			unidirectionalSpecInput = @{
+				# OPTIONAL
+				replicationTargetId = <System.String>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			bidirectionalSpecInput = @{
+				# OPTIONAL
+				replicationSpec1 = @{
+					# OPTIONAL
+					replicationTargetId = <System.String>
+					# OPTIONAL
+					retention = <System.Int32>
+					# OPTIONAL
+					retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+				}
+				# OPTIONAL
+				replicationSpec2 = @{
+					# OPTIONAL
+					replicationTargetId = <System.String>
+					# OPTIONAL
+					retention = <System.Int32>
+					# OPTIONAL
+					retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+				}
+			}
+			# OPTIONAL
+			cloudRegionSpecInput = @{
+				# OPTIONAL
+				replicationTargetRegion = <System.String>
+				# OPTIONAL
+				cloudProvider = <CloudProvider> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudProvider]) for enum values.
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			cloudLocationSpecInput = @{
+				# OPTIONAL
+				replicationTargetId = <System.String>
+				# OPTIONAL
+				cloudProvider = <CloudProvider> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudProvider]) for enum values.
+				# OPTIONAL
+				retentionDuration = @{
+					# OPTIONAL
+					duration = <System.Int32>
+					# OPTIONAL
+					unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+				}
+			}
+		}
+	}
+	# OPTIONAL
+	localRetentionLimit = @{
+		# OPTIONAL
+		duration = <System.Int32>
+		# OPTIONAL
+		unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+	}
+	# OPTIONAL
+	firstFullBackupWindows = @(
+		@{
+			# OPTIONAL
+			durationInHours = <System.Int32>
+			# OPTIONAL
+			startTimeAttributes = @{
+				# OPTIONAL
+				dayOfWeek = @{
+					# OPTIONAL
+					day = <DayOfWeek> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+				}
+				# OPTIONAL
+				hour = <System.Int32>
+				# OPTIONAL
+				minute = <System.Int32>
+			}
+		}
+	)
+	# OPTIONAL
+	backupWindows = @(
+		@{
+			# OPTIONAL
+			durationInHours = <System.Int32>
+			# OPTIONAL
+			startTimeAttributes = @{
+				# OPTIONAL
+				dayOfWeek = @{
+					# OPTIONAL
+					day = <DayOfWeek> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+				}
+				# OPTIONAL
+				hour = <System.Int32>
+				# OPTIONAL
+				minute = <System.Int32>
+			}
+		}
+	)
+	# OPTIONAL
+	logConfig = @{
+		# OPTIONAL
+		slaLogFrequencyConfig = @{
+			# OPTIONAL
+			retention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+		}
+	}
+	# OPTIONAL
+	objectSpecificConfigsInput = @{
+		# OPTIONAL
+		sapHanaConfigInput = @{
+			# OPTIONAL
+			incrementalFrequency = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			logRetention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			differentialFrequency = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+		}
+		# OPTIONAL
+		awsRdsConfigInput = @{
+			# OPTIONAL
+			logRetention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+		}
+		# OPTIONAL
+		vmwareVmConfigInput = @{
+			# OPTIONAL
+			logRetentionSeconds = <System.Int64>
+		}
+		# OPTIONAL
+		azureSqlDatabaseDbConfigInput = @{
+			# OPTIONAL
+			logRetentionInDays = <System.Int32>
+		}
+		# OPTIONAL
+		azureSqlManagedInstanceDbConfigInput = @{
+			# OPTIONAL
+			logRetentionInDays = <System.Int32>
+		}
+		# OPTIONAL
+		db2ConfigInput = @{
+			# OPTIONAL
+			incrementalFrequency = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			logRetention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			differentialFrequency = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+		}
+		# OPTIONAL
+		mssqlConfigInput = @{
+			# OPTIONAL
+			frequency = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			logRetention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+		}
+		# OPTIONAL
+		oracleConfigInput = @{
+			# OPTIONAL
+			frequency = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			logRetention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			hostLogRetention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+		}
+		# OPTIONAL
+		mongoConfigInput = @{
+			# OPTIONAL
+			logFrequency = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			logRetention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+		}
+		# OPTIONAL
+		azureBlobConfigInput = @{
+			# OPTIONAL
+			continuousBackupRetentionInDays = <System.Int32>
+		}
+		# OPTIONAL
+		awsNativeS3SlaConfigInput = @{
+			# OPTIONAL
+			archivalLocationId = <System.String>
+			# OPTIONAL
+			continuousBackupRetentionInDays = <System.Int32>
+		}
+	}
+	# OPTIONAL
+	shouldApplyToExistingSnapshots = @{
+		# OPTIONAL
+		value = <System.Boolean>
+	}
+	# OPTIONAL
+	shouldApplyToNonPolicySnapshots = @{
+		# OPTIONAL
+		value = <System.Boolean>
+	}
+	# OPTIONAL
+	userNote = <System.String>
+	# OPTIONAL
+	archivalSpecs = @(
+		@{
+			# OPTIONAL
+			archivalGroupId = <System.String>
+			# OPTIONAL
+			threshold = <System.Int32>
+			# OPTIONAL
+			thresholdUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			# OPTIONAL
+			archivalTieringSpecInput = @{
+				# OPTIONAL
+				isInstantTieringEnabled = <System.Boolean>
+				# OPTIONAL
+				minAccessibleDurationInSeconds = <System.Int64>
+				# OPTIONAL
+				coldStorageClass = <ColdStorageClass> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ColdStorageClass]) for enum values.
+				# OPTIONAL
+				shouldTierExistingSnapshots = <System.Boolean>
+			}
+			# OPTIONAL
+			frequencies = @(
+				<RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			)
+			# OPTIONAL
+			archivalLocationToClusterMapping = @(
+				@{
+					# OPTIONAL
+					clusterUuid = <System.String>
+					# OPTIONAL
+					locationId = <System.String>
+				}
+			)
+		}
+	)
+	# OPTIONAL
+	replicationSpecsV2 = @(
+		@{
+			# OPTIONAL
+			clusterUuid = <System.String>
+			# OPTIONAL
+			storageSettingId = <System.String>
+			# OPTIONAL
+			retentionDuration = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			awsAccount = <System.String>
+			# OPTIONAL
+			azureSubscription = <System.String>
+			# OPTIONAL
+			replicationLocalRetentionDuration = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			cascadingArchivalSpecs = @(
+				@{
+					# OPTIONAL
+					archivalLocationId = <System.String>
+					# OPTIONAL
+					archivalThreshold = @{
+						# OPTIONAL
+						duration = <System.Int32>
+						# OPTIONAL
+						unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					}
+					# OPTIONAL
+					archivalTieringSpecInput = @{
+						# OPTIONAL
+						isInstantTieringEnabled = <System.Boolean>
+						# OPTIONAL
+						minAccessibleDurationInSeconds = <System.Int64>
+						# OPTIONAL
+						coldStorageClass = <ColdStorageClass> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ColdStorageClass]) for enum values.
+						# OPTIONAL
+						shouldTierExistingSnapshots = <System.Boolean>
+					}
+					# OPTIONAL
+					frequency = @(
+						<RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+					)
+				}
+			)
+			# OPTIONAL
+			awsRegion = <AwsNativeRegionForReplication> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegionForReplication]) for enum values.
+			# OPTIONAL
+			azureRegion = <AzureNativeRegionForReplication> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegionForReplication]) for enum values.
+		}
+	)
+	# OPTIONAL
+	objectTypes = @(
+		<SlaObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SlaObjectType]) for enum values.
+	)
+	# OPTIONAL
+	isRetentionLockedSla = <System.Boolean>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -543,7 +2129,11 @@ Export a managed volume snapshot as a share and mount it on a given host.
                 fieldSpecObj = (SlaResult)this.Field;
             }
             string fieldSpecDoc = Mutation.DeleteGlobalSla(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.id = <System.String>
+# OPTIONAL
+$inputs.Var.userNote = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -566,7 +2156,28 @@ Export a managed volume snapshot as a share and mount it on a given host.
                 fieldSpecObj = (SlaAssignResult)this.Field;
             }
             string fieldSpecDoc = Mutation.AssignSla(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	slaDomainAssignType = <SlaAssignTypeEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SlaAssignTypeEnum]) for enum values.
+	# OPTIONAL
+	slaOptionalId = <System.String>
+	# REQUIRED
+	objectIds = @(
+		<System.String>
+	)
+	# OPTIONAL
+	applicableWorkloadType = <WorkloadLevelHierarchy> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
+	# OPTIONAL
+	shouldApplyToExistingSnapshots = <System.Boolean>
+	# OPTIONAL
+	shouldApplyToNonPolicySnapshots = <System.Boolean>
+	# OPTIONAL
+	existingSnapshotRetention = <GlobalExistingSnapshotRetention> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GlobalExistingSnapshotRetention]) for enum values.
+	# OPTIONAL
+	userNote = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -605,7 +2216,27 @@ Export a managed volume snapshot as a share and mount it on a given host.
                 fieldSpecObj = (List<SlaAssignResult>)this.Field;
             }
             string fieldSpecDoc = Mutation.AssignSlasForSnappableHierarchies(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.globalSlaOptionalFid = <System.String>
+# REQUIRED
+$inputs.Var.globalSlaAssignType = <SlaAssignTypeEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SlaAssignTypeEnum]) for enum values.
+# REQUIRED
+$inputs.Var.objectIds = @(
+	<System.String>
+)
+# OPTIONAL
+$inputs.Var.applicableSnappableTypes = @(
+	<WorkloadLevelHierarchy> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
+)
+# OPTIONAL
+$inputs.Var.shouldApplyToExistingSnapshots = <System.Boolean>
+# OPTIONAL
+$inputs.Var.shouldApplyToNonPolicySnapshots = <System.Boolean>
+# OPTIONAL
+$inputs.Var.globalExistingSnapshotRetention = <GlobalExistingSnapshotRetention> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GlobalExistingSnapshotRetention]) for enum values.
+# OPTIONAL
+$inputs.Var.userNote = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -640,7 +2271,21 @@ Export a managed volume snapshot as a share and mount it on a given host.
                 fieldSpecObj = (SlaAssignResult)this.Field;
             }
             string fieldSpecDoc = Mutation.AssignRetentionSlaToSnappables(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.globalSlaOptionalFid = <System.String>
+# REQUIRED
+$inputs.Var.globalSlaAssignType = <SlaAssignTypeEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SlaAssignTypeEnum]) for enum values.
+# REQUIRED
+$inputs.Var.objectIds = @(
+	<System.String>
+)
+# OPTIONAL
+$inputs.Var.applicableSnappableType = <WorkloadLevelHierarchy> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
+# OPTIONAL
+$inputs.Var.shouldApplyToNonPolicySnapshots = <System.Boolean>
+# OPTIONAL
+$inputs.Var.userNote = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -671,7 +2316,17 @@ Export a managed volume snapshot as a share and mount it on a given host.
                 fieldSpecObj = (SlaAssignResult)this.Field;
             }
             string fieldSpecDoc = Mutation.AssignRetentionSlaToSnapshots(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.globalSlaOptionalFid = <System.String>
+# REQUIRED
+$inputs.Var.globalSlaAssignType = <SlaAssignTypeEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SlaAssignTypeEnum]) for enum values.
+# REQUIRED
+$inputs.Var.snapshotFids = @(
+	<System.String>
+)
+# OPTIONAL
+$inputs.Var.userNote = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -694,7 +2349,18 @@ Export a managed volume snapshot as a share and mount it on a given host.
                 fieldSpecObj = (PauseSlaReply)this.Field;
             }
             string fieldSpecDoc = Mutation.PauseSla(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	slaId = <System.String>
+	# REQUIRED
+	clusterUuids = @(
+		<System.String>
+	)
+	# REQUIRED
+	pauseSla = <System.Boolean>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -717,7 +2383,14 @@ Export a managed volume snapshot as a share and mount it on a given host.
                 fieldSpecObj = (UpgradeSlasReply)this.Field;
             }
             string fieldSpecDoc = Mutation.UpgradeSlas(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	slaIds = @(
+		<System.String>
+	)
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -740,7 +2413,17 @@ Export a managed volume snapshot as a share and mount it on a given host.
                 fieldSpecObj = (GetPendingSlaAssignmentsReply)this.Field;
             }
             string fieldSpecDoc = Mutation.GetPendingSlaAssignments(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	pendingAssignmentsRequest = @{
+		# REQUIRED
+		objectIds = @(
+			<System.String>
+		)
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -763,7 +2446,54 @@ Export a managed volume snapshot as a share and mount it on a given host.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.ExportSlaManagedVolumeSnapshot(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+	# OPTIONAL
+	params = @{
+		# OPTIONAL
+		shouldDownloadToLocal = <System.Boolean>
+		# OPTIONAL
+		managedVolumeSlaExportConfig = @{
+			# OPTIONAL
+			managedVolumeExportConfig = @{
+				# OPTIONAL
+				subnet = <System.String>
+				# OPTIONAL
+				managedVolumePatchConfig = @{
+					# OPTIONAL
+					hostPatterns = @(
+						<System.String>
+					)
+					# OPTIONAL
+					nodeHint = @(
+						<System.String>
+					)
+					# OPTIONAL
+					smbDomainName = <System.String>
+					# OPTIONAL
+					smbValidIps = @(
+						<System.String>
+					)
+					# OPTIONAL
+					smbValidUsers = @(
+						<System.String>
+					)
+				}
+				# OPTIONAL
+				shareType = <ManagedVolumeShareType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedVolumeShareType]) for enum values.
+			}
+			# REQUIRED
+			hostId = <System.String>
+			# REQUIRED
+			hostMountPaths = @(
+				<System.String>
+			)
+		}
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 

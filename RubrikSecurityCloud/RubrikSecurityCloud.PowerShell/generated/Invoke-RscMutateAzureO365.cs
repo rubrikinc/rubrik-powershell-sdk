@@ -106,7 +106,71 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (SetupAzureO365ExocomputeResp)this.Field;
             }
             string fieldSpecDoc = Mutation.SetupAzureO365Exocompute(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.tenantId = <System.String>
+# REQUIRED
+$inputs.Var.subscriptionId = <System.String>
+# REQUIRED
+$inputs.Var.exocomputeConfig = @{
+	# REQUIRED
+	regionName = <System.String>
+	# OPTIONAL
+	newGroupConfig = @{
+		# OPTIONAL
+		name = <System.String>
+	}
+	# OPTIONAL
+	existingGroupConfig = @{
+		# OPTIONAL
+		name = <System.String>
+	}
+	# OPTIONAL
+	newComputeConfig = @{
+		# OPTIONAL
+		vnetName = <System.String>
+		# OPTIONAL
+		subnetName = <System.String>
+		# OPTIONAL
+		securityGroupName = <System.String>
+	}
+	# OPTIONAL
+	existingComputeConfig = @{
+		# OPTIONAL
+		vnetId = <System.String>
+		# OPTIONAL
+		subnetId = <System.String>
+	}
+	# OPTIONAL
+	newStorageAccountConfig = @{
+		# OPTIONAL
+		name = <System.String>
+		# OPTIONAL
+		tier = <StorageAccountTier> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.StorageAccountTier]) for enum values.
+		# OPTIONAL
+		sku = <StorageAccountSku> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.StorageAccountSku]) for enum values.
+		# OPTIONAL
+		storages = @(
+			@{
+				# OPTIONAL
+				name = <System.String>
+				# OPTIONAL
+				tier = <StorageAccountTier> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.StorageAccountTier]) for enum values.
+				# OPTIONAL
+				sku = <StorageAccountSku> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.StorageAccountSku]) for enum values.
+				# OPTIONAL
+				containerImmutabilityStatus = <ColossusStorageContainerImmutabilityStatus> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ColossusStorageContainerImmutabilityStatus]) for enum values.
+				# OPTIONAL
+				versioningEnabled = <System.Boolean>
+			}
+		)
+	}
+	# OPTIONAL
+	existingStorageAccountConfig = @{
+		# OPTIONAL
+		id = <System.String>
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 

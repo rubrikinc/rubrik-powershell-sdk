@@ -629,7 +629,61 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
                 fieldSpecObj = (OracleTopLevelDescendantTypeConnection)this.Field;
             }
             string fieldSpecDoc = Query.OracleTopLevelDescendants(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.sortBy = <HierarchySortByField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+# OPTIONAL
+$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$inputs.Var.typeFilter = @(
+	<HierarchyObjectTypeEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]) for enum values.
+)
+# OPTIONAL
+$inputs.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+		)
+}
+)";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -662,7 +716,57 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
                 fieldSpecObj = (OracleDatabaseConnection)this.Field;
             }
             string fieldSpecDoc = Query.OracleDatabases(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.sortBy = <HierarchySortByField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+# OPTIONAL
+$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$inputs.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+		)
+}
+)";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -685,7 +789,9 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
                 fieldSpecObj = (OracleHost)this.Field;
             }
             string fieldSpecDoc = Query.OracleHost(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.fid = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -708,7 +814,9 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
                 fieldSpecObj = (OracleRac)this.Field;
             }
             string fieldSpecDoc = Query.OracleRac(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.fid = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -731,7 +839,9 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
                 fieldSpecObj = (OracleDataGuardGroup)this.Field;
             }
             string fieldSpecDoc = Query.OracleDataGuardGroup(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.fid = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -754,7 +864,9 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
                 fieldSpecObj = (OracleDatabase)this.Field;
             }
             string fieldSpecDoc = Query.OracleDatabase(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.fid = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -785,7 +897,29 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
                 fieldSpecObj = (OracleLiveMountConnection)this.Field;
             }
             string fieldSpecDoc = Query.OracleLiveMounts(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.filters = @(
+	@{
+		# OPTIONAL
+		field = <OracleLiveMountFilterField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.OracleLiveMountFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+}
+)
+# OPTIONAL
+$inputs.Var.sortBy = @{
+	# OPTIONAL
+	field = <OracleLiveMountSortByField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.OracleLiveMountSortByField]) for enum values.
+	# OPTIONAL
+	sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -808,7 +942,14 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
                 fieldSpecObj = (OracleAcoParameterList)this.Field;
             }
             string fieldSpecDoc = Query.OracleAcoParameters(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	dbId = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -831,7 +972,18 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
                 fieldSpecObj = (OracleRecoverableRangeListResponse)this.Field;
             }
             string fieldSpecDoc = Query.OracleRecoverableRanges(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	afterTime = <DateTime>
+	# OPTIONAL
+	beforeTime = <DateTime>
+	# OPTIONAL
+	shouldIncludeDbSnapshotSummaries = <System.Boolean>
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -854,7 +1006,16 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
                 fieldSpecObj = (OracleMissedRecoverableRangeListResponse)this.Field;
             }
             string fieldSpecDoc = Query.OracleMissedRecoverableRanges(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	afterTime = <DateTime>
+	# OPTIONAL
+	beforeTime = <DateTime>
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -877,7 +1038,16 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
                 fieldSpecObj = (MissedSnapshotListResponse)this.Field;
             }
             string fieldSpecDoc = Query.OracleMissedSnapshots(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	afterTime = <DateTime>
+	# OPTIONAL
+	beforeTime = <DateTime>
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -900,7 +1070,14 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
                 fieldSpecObj = (OracleFileDownloadLink)this.Field;
             }
             string fieldSpecDoc = Query.OracleAcoExampleDownloadLink(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	dbId = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -923,7 +1100,22 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
                 fieldSpecObj = (OraclePdbDetails)this.Field;
             }
             string fieldSpecDoc = Query.OraclePdbDetails(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+	# REQUIRED
+	pdbDetailsRequest = @{
+		# REQUIRED
+		recoveryPoint = @{
+			# OPTIONAL
+			snapshotId = <System.String>
+			# OPTIONAL
+			timestampMs = <System.Int64>
+		}
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -946,7 +1138,12 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
                 fieldSpecObj = (OracleLogBackupConfig)this.Field;
             }
             string fieldSpecDoc = Query.OracleHostLogBackupConfig(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -969,7 +1166,12 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
                 fieldSpecObj = (OracleLogBackupConfig)this.Field;
             }
             string fieldSpecDoc = Query.OracleDatabaseLogBackupConfig(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -992,7 +1194,12 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
                 fieldSpecObj = (OracleLogBackupConfig)this.Field;
             }
             string fieldSpecDoc = Query.OracleRacLogBackupConfig(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 

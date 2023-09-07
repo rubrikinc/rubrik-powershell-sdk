@@ -22,7 +22,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Azure queries
     /// </summary>
     /// <description>
-    /// Invoke-RscQueryAzure is a master cmdlet for Azure work that can invoke any of the following subcommands: NativeRoot, NativeSubscription, NativeSubscriptions, NativeResourceGroup, NativeResourceGroups, NativeVirtualMachine, NativeVirtualMachines, NativeManagedDisk, NativeManagedDisks, AllNativeVirtualNetworks, AllNativeSubnetsByRegionFromAzure, AllNativeSecurityGroupsByRegionFromAzure, AllDiskEncryptionSetsByRegion, AllNativeAvailabilitySetsByRegionFromAzure, AllNativeExportCompatibleVmSizesByRegionFromAzure, AllNativeExportCompatibleDiskTypesByRegionFromAzure, AllNativeVirtualMachineSizes, IsNativeManagedDiskSnapshotRestorable, IsStorageAccountNameAvailable, AllNativeStorageAccountsFromAzure, SqlDatabase, SqlDatabases, SqlDatabaseServer, SqlDatabaseServers, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceServer, SqlManagedInstanceServers, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, ValidateNativeSqlDatabaseDbNameForExport, ValidateNativeSqlManagedInstanceDbNameForExport, AllSqlDatabaseServerElasticPools, IsNativeSqlDatabaseSnapshotPersistent, NativeLiveMountDisks, AllKeyVaultsByRegion, AllEncryptionKeys, CloudAccountTenant, CloudAccountTenantWithExoConfigs, AllCloudAccountTenantsWithExoConfigs, AllCloudAccountTenants, CloudAccountSubscriptionWithFeatures, AllCloudAccountSubscriptionsByFeature, AllSubscriptionWithExocomputeMappings, AllResourceGroupsFrom, DoesNativeResourceGroupExist, AllNativeResourceGroupsInfoIfExist, AllCloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountGrantedPermissionsGroups, CloudAccountGrantedPermissionsGroupsForRecovery, CloudAccountCheckRefreshTokenExistsForRecovery, AllExocomputeConfigsInAccount, AllCloudAccountSubnetsByRegion, ValidateCloudAccountExocomputeConfigurations, AllArmTemplatesByFeature, CheckPersistentStorageSubscriptionCanUnmap, Subscriptions, Regions, ResourceGroups, VNets, Subnets, StorageAccounts, AllHostedRegions, AllResourceGroups, AllVnets, AllSubnets, AllCdmVersions, AllRegions, AllNsgs, AllStorageAccounts, AllManagedIdentities, AdDirectories, AdDirectory, AdObjectsByType.
+    /// Invoke-RscQueryAzure is a master cmdlet for Azure work that can invoke any of the following subcommands: NativeRoot, NativeSubscription, NativeSubscriptions, NativeResourceGroup, NativeResourceGroups, NativeVirtualMachine, NativeVirtualMachines, NativeManagedDisk, NativeManagedDisks, AllNativeVirtualNetworks, AllNativeSubnetsByRegionFromAzure, AllNativeSecurityGroupsByRegionFromAzure, AllDiskEncryptionSetsByRegion, AllNativeAvailabilitySetsByRegionFromAzure, AllNativeExportCompatibleVmSizesByRegionFromAzure, AllNativeExportCompatibleDiskTypesByRegionFromAzure, AllNativeVirtualMachineSizes, IsNativeManagedDiskSnapshotRestorable, IsStorageAccountNameAvailable, AllNativeStorageAccountsFromAzure, SqlDatabase, SqlDatabases, SqlDatabaseServer, SqlDatabaseServers, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceServer, SqlManagedInstanceServers, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, ValidateNativeSqlDatabaseDbNameForExport, ValidateNativeSqlManagedInstanceDbNameForExport, AllSqlDatabaseServerElasticPools, IsNativeSqlDatabaseSnapshotPersistent, NativeLiveMountDisks, AllKeyVaultsByRegion, AllEncryptionKeys, CloudAccountTenant, CloudAccountTenantWithExoConfigs, AllCloudAccountTenantsWithExoConfigs, AllCloudAccountTenants, CloudAccountSubscriptionWithFeatures, AllCloudAccountSubscriptionsByFeature, AllSubscriptionWithExocomputeMappings, AllResourceGroupsFrom, DoesNativeResourceGroupExist, AllNativeResourceGroupsInfoIfExist, AllCloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountGrantedPermissionsGroups, CloudAccountGrantedPermissionsGroupsForRecovery, CloudAccountCheckRefreshTokenExistsForRecovery, AllExocomputeConfigsInAccount, AllCloudAccountSubnetsByRegion, ValidateCloudAccountExocomputeConfigurations, AllArmTemplatesByFeature, CheckPersistentStorageSubscriptionCanUnmap, Subscriptions, Regions, ResourceGroups, VNets, Subnets, StorageAccounts, AllHostedRegions, AllResourceGroups, AllVnets, AllSubnets, AllCdmVersions, AllRegions, AllNsgs, AllStorageAccounts, AllManagedIdentities, AdDirectories, AdDirectory, AdObjectsByType, SearchAdSnapshot.
     /// </description>
     /// <example>
     /// <code>Invoke-RscQueryAzure -NativeRoot [-Arg ..] [-Field ..]</code>
@@ -248,6 +248,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     /// <example>
     /// <code>Invoke-RscQueryAzure -AdObjectsByType [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryAzure -SearchAdSnapshot [-Arg ..] [-Field ..]</code>
     /// </example>
     [Cmdlet(
         "Invoke",
@@ -1606,6 +1609,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         )]
         public SwitchParameter AdObjectsByType { get; set; }
 
+        
+        /// <summary>
+        /// SearchAdSnapshot parameter set
+        ///
+        /// [GraphQL: searchAzureAdSnapshot]
+        /// </summary>
+        [Parameter(
+            ParameterSetName = "SearchAdSnapshot",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Search azureAdObjects within a snapshot.
+[GraphQL: searchAzureAdSnapshot]",
+            Position = 0
+        )]
+        public SwitchParameter SearchAdSnapshot { get; set; }
+
 
 // ignore warning 'Missing XML comment'
 #pragma warning disable 1591
@@ -1839,6 +1860,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "AdObjectsByType":
                         this.ProcessRecord_AdObjectsByType();
+                        break;
+                    case "SearchAdSnapshot":
+                        this.ProcessRecord_SearchAdSnapshot();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -2526,6 +2550,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             InvokeQueryAzureAdObjectsByType();
         }
 
+        // This parameter set invokes a single graphql operation:
+        // searchAzureAdSnapshot.
+        internal void ProcessRecord_SearchAdSnapshot()
+        {
+            this._logger.name += " -SearchAdSnapshot";
+            // Invoke graphql operation searchAzureAdSnapshot
+            InvokeQuerySearchAzureAdSnapshot();
+        }
+
 
         // Invoke GraphQL Query:
         // azureNativeRoot: AzureNativeRoot!
@@ -2545,7 +2578,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AzureNativeRoot)this.Field;
             }
             string fieldSpecDoc = Query.AzureNativeRoot(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2568,7 +2602,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AzureNativeSubscription)this.Field;
             }
             string fieldSpecDoc = Query.AzureNativeSubscription(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.azureSubscriptionRubrikId = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2611,7 +2647,40 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AzureNativeSubscriptionConnection)this.Field;
             }
             string fieldSpecDoc = Query.AzureNativeSubscriptions(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.last = <System.Int32>
+# OPTIONAL
+$inputs.Var.before = <System.String>
+# OPTIONAL
+$inputs.Var.sortBy = <AzureNativeSubscriptionSortFields> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeSubscriptionSortFields]) for enum values.
+# OPTIONAL
+$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$inputs.Var.subscriptionFilters = @{
+	# OPTIONAL
+	nameSubstringFilter = @{
+		# REQUIRED
+		nameSubstring = <System.String>
+	}
+	# OPTIONAL
+	effectiveSlaFilter = @{
+		# REQUIRED
+		effectiveSlaIds = @(
+			<System.String>
+		)
+	}
+}
+# OPTIONAL
+$inputs.Var.authorizedOperationFilter = <Operation> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Operation]) for enum values.
+# OPTIONAL
+$inputs.Var.workloadHierarchy = <WorkloadLevelHierarchy> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
+# OPTIONAL
+$inputs.Var.azureNativeProtectionFeature = <AzureNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2634,7 +2703,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AzureNativeResourceGroup)this.Field;
             }
             string fieldSpecDoc = Query.AzureNativeResourceGroup(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.resourceGroupId = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2675,7 +2746,56 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AzureNativeResourceGroupConnection)this.Field;
             }
             string fieldSpecDoc = Query.AzureNativeResourceGroups(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.last = <System.Int32>
+# OPTIONAL
+$inputs.Var.before = <System.String>
+# OPTIONAL
+$inputs.Var.sortBy = <AzureNativeCommonResourceGroupSortFields> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeCommonResourceGroupSortFields]) for enum values.
+# OPTIONAL
+$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$inputs.Var.commonResourceGroupFilters = @{
+	# OPTIONAL
+	nameSubstringFilter = @{
+		# REQUIRED
+		nameSubstring = <System.String>
+	}
+	# OPTIONAL
+	subscriptionFilter = @{
+		# REQUIRED
+		subscriptionIds = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	regionFilter = @{
+		# REQUIRED
+		regions = @(
+			<AzureNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
+		)
+	}
+	# OPTIONAL
+	effectiveSlaFilter = @{
+		# REQUIRED
+		effectiveSlaIds = @(
+			<System.String>
+		)
+	}
+}
+# OPTIONAL
+$inputs.Var.protectedObjectTypes = @(
+	<WorkloadLevelHierarchy> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
+)
+# OPTIONAL
+$inputs.Var.azureNativeProtectionFeatures = @(
+	<AzureNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+)";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2698,7 +2818,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AzureNativeVirtualMachine)this.Field;
             }
             string fieldSpecDoc = Query.AzureNativeVirtualMachine(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.azureVirtualMachineRubrikId = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2737,7 +2859,114 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AzureNativeVirtualMachineConnection)this.Field;
             }
             string fieldSpecDoc = Query.AzureNativeVirtualMachines(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.last = <System.Int32>
+# OPTIONAL
+$inputs.Var.before = <System.String>
+# OPTIONAL
+$inputs.Var.sortBy = <AzureNativeVirtualMachineSortFields> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeVirtualMachineSortFields]) for enum values.
+# OPTIONAL
+$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$inputs.Var.descendantTypeFilter = @(
+	<HierarchyObjectTypeEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]) for enum values.
+)
+# OPTIONAL
+$inputs.Var.virtualMachineFilters = @{
+	# OPTIONAL
+	nameSubstringFilter = @{
+		# REQUIRED
+		nameSubstring = <System.String>
+	}
+	# OPTIONAL
+	effectiveSlaFilter = @{
+		# REQUIRED
+		effectiveSlaIds = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	resourceGroupFilter = @{
+		# REQUIRED
+		resourceGroupNames = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	subscriptionFilter = @{
+		# REQUIRED
+		subscriptionIds = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	regionFilter = @{
+		# REQUIRED
+		regions = @(
+			<AzureNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
+		)
+	}
+	# OPTIONAL
+	vmSizeFilter = @{
+		# REQUIRED
+		vmSizes = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	vnetFilter = @{
+		# REQUIRED
+		vnetNames = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	relicFilter = @{
+		# REQUIRED
+		relic = <System.Boolean>
+	}
+	# OPTIONAL
+	tagFilter = @{
+		# REQUIRED
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+	}
+	# OPTIONAL
+	exocomputeConnectedFilter = @{
+		# REQUIRED
+		isConnected = <System.Boolean>
+	}
+	# OPTIONAL
+	fileIndexingFilter = @{
+		# REQUIRED
+		statuses = @(
+			<AzureNativeFileIndexingStatus> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeFileIndexingStatus]) for enum values.
+		)
+	}
+	# OPTIONAL
+	appProtectionStatusFilter = @{
+		# REQUIRED
+		isProtectionSetup = <System.Boolean>
+	}
+	# OPTIONAL
+	rbsStatusFilter = @{
+		# REQUIRED
+		status = <CloudInstanceRbsConnectionStatus> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudInstanceRbsConnectionStatus]) for enum values.
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2760,7 +2989,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AzureNativeManagedDisk)this.Field;
             }
             string fieldSpecDoc = Query.AzureNativeManagedDisk(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.azureManagedDiskRubrikId = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2797,7 +3028,100 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AzureNativeManagedDiskConnection)this.Field;
             }
             string fieldSpecDoc = Query.AzureNativeManagedDisks(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.last = <System.Int32>
+# OPTIONAL
+$inputs.Var.before = <System.String>
+# OPTIONAL
+$inputs.Var.sortBy = <AzureNativeDiskSortFields> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeDiskSortFields]) for enum values.
+# OPTIONAL
+$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$inputs.Var.diskFilters = @{
+	# OPTIONAL
+	nameSubstringFilter = @{
+		# REQUIRED
+		nameSubstring = <System.String>
+	}
+	# OPTIONAL
+	effectiveSlaFilter = @{
+		# REQUIRED
+		effectiveSlaIds = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	resourceGroupFilter = @{
+		# REQUIRED
+		resourceGroupNames = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	subscriptionFilter = @{
+		# REQUIRED
+		subscriptionIds = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	regionFilter = @{
+		# REQUIRED
+		regions = @(
+			<AzureNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
+		)
+	}
+	# OPTIONAL
+	diskTypeFilter = @{
+		# REQUIRED
+		diskTypes = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	attachedVmFilter = @{
+		# REQUIRED
+		virtualMachineIds = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	relicFilter = @{
+		# REQUIRED
+		relic = <System.Boolean>
+	}
+	# OPTIONAL
+	tagFilter = @{
+		# REQUIRED
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+	}
+	# OPTIONAL
+	exocomputeConnectedFilter = @{
+		# REQUIRED
+		isConnected = <System.Boolean>
+	}
+	# OPTIONAL
+	fileIndexingFilter = @{
+		# REQUIRED
+		statuses = @(
+			<AzureNativeFileIndexingStatus> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeFileIndexingStatus]) for enum values.
+		)
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2820,7 +3144,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<AzureNativeVirtualNetwork>)this.Field;
             }
             string fieldSpecDoc = Query.AllAzureNativeVirtualNetworks(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.azureSubscriptionRubrikId = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2844,7 +3170,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<AzureNativeSubnet>)this.Field;
             }
             string fieldSpecDoc = Query.AllAzureNativeSubnetsByRegionFromAzure(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.azureSubscriptionRubrikId = <System.String>
+# REQUIRED
+$inputs.Var.region = <AzureNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2868,7 +3198,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<AzureNativeSecurityGroup>)this.Field;
             }
             string fieldSpecDoc = Query.AllAzureNativeSecurityGroupsByRegionFromAzure(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.azureSubscriptionRubrikId = <System.String>
+# REQUIRED
+$inputs.Var.region = <AzureNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2892,7 +3226,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<AzureNativeDiskEncryptionSet>)this.Field;
             }
             string fieldSpecDoc = Query.AllAzureDiskEncryptionSetsByRegion(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.azureSubscriptionRubrikId = <System.String>
+# REQUIRED
+$inputs.Var.region = <AzureNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2917,7 +3255,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<AzureNativeAvailabilitySet>)this.Field;
             }
             string fieldSpecDoc = Query.AllAzureNativeAvailabilitySetsByRegionFromAzure(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.azureSubscriptionRubrikId = <System.String>
+# REQUIRED
+$inputs.Var.resourceGroupName = <System.String>
+# REQUIRED
+$inputs.Var.region = <AzureNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2942,7 +3286,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<AzureNativeExportCompatibleVmSizes>)this.Field;
             }
             string fieldSpecDoc = Query.AllAzureNativeExportCompatibleVmSizesByRegionFromAzure(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.azureSubscriptionRubrikId = <System.String>
+# REQUIRED
+$inputs.Var.region = <AzureNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
+# REQUIRED
+$inputs.Var.vmSnapshotId = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2966,7 +3316,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<AzureNativeExportCompatibleDiskTypes>)this.Field;
             }
             string fieldSpecDoc = Query.AllAzureNativeExportCompatibleDiskTypesByRegionFromAzure(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.azureSubscriptionRubrikId = <System.String>
+# REQUIRED
+$inputs.Var.region = <AzureNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2989,7 +3343,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<System.String>)this.Field;
             }
             string fieldSpecDoc = Query.AllAzureNativeVirtualMachineSizes(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.azureSubscriptionRubrikId = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -3013,7 +3369,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (System.Boolean)this.Field;
             }
             string fieldSpecDoc = Query.IsAzureNativeManagedDiskSnapshotRestorable(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.azureSubscriptionRubrikId = <System.String>
+# REQUIRED
+$inputs.Var.diskSnapshotId = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -3037,7 +3397,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (System.Boolean)this.Field;
             }
             string fieldSpecDoc = Query.IsAzureStorageAccountNameAvailable(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.azureSubscriptionRubrikId = <System.String>
+# REQUIRED
+$inputs.Var.storageAccountName = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -3060,7 +3424,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<AzureNativeStorageAccount>)this.Field;
             }
             string fieldSpecDoc = Query.AllAzureNativeStorageAccountsFromAzure(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.azureSubscriptionRubrikId = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -3083,7 +3449,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AzureSqlDatabaseDb)this.Field;
             }
             string fieldSpecDoc = Query.AzureSqlDatabase(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.azureSqlDatabaseRubrikId = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -3120,7 +3488,81 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AzureSqlDatabaseDbConnection)this.Field;
             }
             string fieldSpecDoc = Query.AzureSqlDatabases(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.last = <System.Int32>
+# OPTIONAL
+$inputs.Var.before = <System.String>
+# OPTIONAL
+$inputs.Var.sortBy = <AzureSqlDatabaseSortFields> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureSqlDatabaseSortFields]) for enum values.
+# OPTIONAL
+$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$inputs.Var.azureSqlDatabaseFilters = @{
+	# OPTIONAL
+	nameSubstringFilter = @{
+		# REQUIRED
+		nameSubstring = <System.String>
+	}
+	# OPTIONAL
+	effectiveSlaFilter = @{
+		# REQUIRED
+		effectiveSlaIds = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	resourceGroupFilter = @{
+		# REQUIRED
+		resourceGroupNames = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	subscriptionFilter = @{
+		# REQUIRED
+		subscriptionIds = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	regionFilter = @{
+		# REQUIRED
+		regions = @(
+			<AzureNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
+		)
+	}
+	# OPTIONAL
+	relicFilter = @{
+		# REQUIRED
+		relic = <System.Boolean>
+	}
+	# OPTIONAL
+	tagFilter = @{
+		# REQUIRED
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+	}
+	# OPTIONAL
+	serverFilter = @{
+		# REQUIRED
+		serverNames = @(
+			<System.String>
+		)
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -3143,7 +3585,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AzureSqlDatabaseServer)this.Field;
             }
             string fieldSpecDoc = Query.AzureSqlDatabaseServer(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.azureSqlDatabaseServerRubrikId = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -3180,7 +3624,55 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AzureSqlDatabaseServerConnection)this.Field;
             }
             string fieldSpecDoc = Query.AzureSqlDatabaseServers(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.last = <System.Int32>
+# OPTIONAL
+$inputs.Var.before = <System.String>
+# OPTIONAL
+$inputs.Var.sortBy = <AzureSqlDatabaseServerSortFields> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureSqlDatabaseServerSortFields]) for enum values.
+# OPTIONAL
+$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$inputs.Var.azureSqlDatabaseServerFilters = @{
+	# OPTIONAL
+	nameSubstringFilter = @{
+		# REQUIRED
+		nameSubstring = <System.String>
+	}
+	# OPTIONAL
+	effectiveSlaFilter = @{
+		# REQUIRED
+		effectiveSlaIds = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	resourceGroupFilter = @{
+		# REQUIRED
+		resourceGroupNames = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	subscriptionFilter = @{
+		# REQUIRED
+		subscriptionIds = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	regionFilter = @{
+		# REQUIRED
+		regions = @(
+			<AzureNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
+		)
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -3203,7 +3695,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AzureSqlManagedInstanceDatabase)this.Field;
             }
             string fieldSpecDoc = Query.AzureSqlManagedInstanceDatabase(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.azureSqlManagedInstanceDatabaseRubrikId = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -3240,7 +3734,67 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AzureSqlManagedInstanceDatabaseConnection)this.Field;
             }
             string fieldSpecDoc = Query.AzureSqlManagedInstanceDatabases(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.last = <System.Int32>
+# OPTIONAL
+$inputs.Var.before = <System.String>
+# OPTIONAL
+$inputs.Var.sortBy = <AzureSqlManagedInstanceDatabaseSortFields> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureSqlManagedInstanceDatabaseSortFields]) for enum values.
+# OPTIONAL
+$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$inputs.Var.azureSqlManagedInstanceDatabaseFilters = @{
+	# OPTIONAL
+	nameSubstringFilter = @{
+		# REQUIRED
+		nameSubstring = <System.String>
+	}
+	# OPTIONAL
+	effectiveSlaFilter = @{
+		# REQUIRED
+		effectiveSlaIds = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	resourceGroupFilter = @{
+		# REQUIRED
+		resourceGroupNames = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	subscriptionFilter = @{
+		# REQUIRED
+		subscriptionIds = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	regionFilter = @{
+		# REQUIRED
+		regions = @(
+			<AzureNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
+		)
+	}
+	# OPTIONAL
+	relicFilter = @{
+		# REQUIRED
+		relic = <System.Boolean>
+	}
+	# OPTIONAL
+	serverFilter = @{
+		# REQUIRED
+		serverNames = @(
+			<System.String>
+		)
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -3263,7 +3817,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AzureSqlManagedInstanceServer)this.Field;
             }
             string fieldSpecDoc = Query.AzureSqlManagedInstanceServer(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.azureSqlManagedInstanceServerRubrikId = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -3300,7 +3856,69 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AzureSqlManagedInstanceServerConnection)this.Field;
             }
             string fieldSpecDoc = Query.AzureSqlManagedInstanceServers(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.last = <System.Int32>
+# OPTIONAL
+$inputs.Var.before = <System.String>
+# OPTIONAL
+$inputs.Var.sortBy = <AzureSqlManagedInstanceServerSortFields> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureSqlManagedInstanceServerSortFields]) for enum values.
+# OPTIONAL
+$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$inputs.Var.azureSqlManagedInstanceServerFilters = @{
+	# OPTIONAL
+	nameSubstringFilter = @{
+		# REQUIRED
+		nameSubstring = <System.String>
+	}
+	# OPTIONAL
+	effectiveSlaFilter = @{
+		# REQUIRED
+		effectiveSlaIds = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	resourceGroupFilter = @{
+		# REQUIRED
+		resourceGroupNames = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	subscriptionFilter = @{
+		# REQUIRED
+		subscriptionIds = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	regionFilter = @{
+		# REQUIRED
+		regions = @(
+			<AzureNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
+		)
+	}
+	# OPTIONAL
+	tagFilter = @{
+		# REQUIRED
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -3331,7 +3949,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AzureNativeSqlDatabasePointInTimeRestoreWindow)this.Field;
             }
             string fieldSpecDoc = Query.AzureSqlDatabaseDbPointInTimeRestoreWindowFromAzure(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.subscriptionId = <System.String>
+# REQUIRED
+$inputs.Var.resourceGroupName = <System.String>
+# REQUIRED
+$inputs.Var.azureSqlDatabaseServerName = <System.String>
+# REQUIRED
+$inputs.Var.azureSqlDatabaseName = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -3362,7 +3988,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AzureNativeSqlDatabasePointInTimeRestoreWindow)this.Field;
             }
             string fieldSpecDoc = Query.AzureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.subscriptionId = <System.String>
+# REQUIRED
+$inputs.Var.resourceGroupName = <System.String>
+# REQUIRED
+$inputs.Var.azureSqlManagedInstanceName = <System.String>
+# REQUIRED
+$inputs.Var.azureSqlDatabaseName = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -3386,7 +4020,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (ValidateAzureNativeSqlDatabaseDbNameForExportReply)this.Field;
             }
             string fieldSpecDoc = Query.ValidateAzureNativeSqlDatabaseDbNameForExport(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.azureSqlDatabaseName = <System.String>
+# REQUIRED
+$inputs.Var.azureSqlDatabaseServerRubrikId = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -3410,7 +4048,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (ValidateAzureNativeSqlManagedInstanceDbNameForExportReply)this.Field;
             }
             string fieldSpecDoc = Query.ValidateAzureNativeSqlManagedInstanceDbNameForExport(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.azureSqlDatabaseName = <System.String>
+# REQUIRED
+$inputs.Var.azureSqlManagedInstanceServerRubrikId = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -3441,7 +4083,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<AzureSqlDatabaseServerElasticPool>)this.Field;
             }
             string fieldSpecDoc = Query.AllAzureSqlDatabaseServerElasticPools(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.subscriptionId = <System.String>
+# REQUIRED
+$inputs.Var.resourceGroupName = <System.String>
+# REQUIRED
+$inputs.Var.azureSqlDatabaseServerName = <System.String>
+# REQUIRED
+$inputs.Var.azureSqlDatabaseServerRubrikId = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -3464,7 +4114,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (System.Boolean)this.Field;
             }
             string fieldSpecDoc = Query.IsAzureNativeSqlDatabaseSnapshotPersistent(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.snapshotId = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -3503,7 +4155,32 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (LiveMountDetailsConnection)this.Field;
             }
             string fieldSpecDoc = Query.AzureNativeLiveMountDisks(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.last = <System.Int32>
+# OPTIONAL
+$inputs.Var.before = <System.String>
+# REQUIRED
+$inputs.Var.cloudNativeObjectType = <CloudNativeObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeObjectType]) for enum values.
+# OPTIONAL
+$inputs.Var.liveMountFilters = @(
+	@{
+		# OPTIONAL
+		mountField = <LiveMountsFilterMountField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LiveMountsFilterMountField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+}
+)
+# OPTIONAL
+$inputs.Var.sortBy = <CloudNativeLiveMountSortByFields> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeLiveMountSortByFields]) for enum values.
+# OPTIONAL
+$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -3526,7 +4203,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<AzureKeyVault>)this.Field;
             }
             string fieldSpecDoc = Query.AllAzureKeyVaultsByRegion(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.azureKeyVaultsInput = @{
+	# REQUIRED
+	cloudAccountId = <System.String>
+	# REQUIRED
+	region = <AzureRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureRegion]) for enum values.
+	# OPTIONAL
+	userAssignedManagedIdentityPrincipalId = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -3549,7 +4235,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<AzureEncryptionKey>)this.Field;
             }
             string fieldSpecDoc = Query.AllAzureEncryptionKeys(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.azureEncryptionKeysInput = @{
+	# REQUIRED
+	cloudAccountId = <System.String>
+	# REQUIRED
+	keyVaultName = <System.String>
+	# REQUIRED
+	resourceGroupName = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -3582,7 +4277,21 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AzureCloudAccountTenant)this.Field;
             }
             string fieldSpecDoc = Query.AzureCloudAccountTenant(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.tenantId = <System.String>
+# REQUIRED
+$inputs.Var.feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+# REQUIRED
+$inputs.Var.subscriptionStatusFilters = @(
+	<CloudAccountStatus> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountStatus]) for enum values.
+)
+# REQUIRED
+$inputs.Var.subscriptionSearchText = <System.String>
+# OPTIONAL
+$inputs.Var.subscriptionIdsFilter = @(
+	<System.String>
+)";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -3615,7 +4324,21 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AzureCloudAccountTenantWithExoConfigs)this.Field;
             }
             string fieldSpecDoc = Query.AzureCloudAccountTenantWithExoConfigs(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.tenantId = <System.String>
+# REQUIRED
+$inputs.Var.feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+# REQUIRED
+$inputs.Var.subscriptionStatusFilters = @(
+	<CloudAccountStatus> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountStatus]) for enum values.
+)
+# REQUIRED
+$inputs.Var.subscriptionSearchText = <System.String>
+# OPTIONAL
+$inputs.Var.subscriptionIdsFilter = @(
+	<System.String>
+)";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -3638,7 +4361,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<AzureCloudAccountTenantWithExoConfigs>)this.Field;
             }
             string fieldSpecDoc = Query.AllAzureCloudAccountTenantsWithExoConfigs(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.features = @(
+	<CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+)";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -3663,7 +4390,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<AzureCloudAccountTenant>)this.Field;
             }
             string fieldSpecDoc = Query.AllAzureCloudAccountTenants(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.features = @(
+	<CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+)
+# REQUIRED
+$inputs.Var.feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+# REQUIRED
+$inputs.Var.includeSubscriptionDetails = <System.Boolean>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -3686,7 +4421,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AzureCloudAccountSubscriptionWithFeatures)this.Field;
             }
             string fieldSpecDoc = Query.AzureCloudAccountSubscriptionWithFeatures(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.cloudAccountId = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -3710,7 +4447,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<AzureSubscriptionWithFeaturesType>)this.Field;
             }
             string fieldSpecDoc = Query.AllAzureCloudAccountSubscriptionsByFeature(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+# REQUIRED
+$inputs.Var.subscriptionStatusFilters = @(
+	<CloudAccountStatus> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountStatus]) for enum values.
+)";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -3734,7 +4477,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<AzureSubscriptionWithExocomputeMapping>)this.Field;
             }
             string fieldSpecDoc = Query.AllAzureSubscriptionWithExocomputeMappings(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.features = @(
+	<CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+)
+# OPTIONAL
+$inputs.Var.exocomputeSubscriptionIdsFilter = @(
+	<System.String>
+)";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -3759,7 +4510,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<AzureResourceGroup>)this.Field;
             }
             string fieldSpecDoc = Query.AllResourceGroupsFromAzure(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.cloudAccountId = <System.String>
+# REQUIRED
+$inputs.Var.azureSubscriptionNativeId = <System.String>
+# REQUIRED
+$inputs.Var.feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -3790,7 +4547,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (System.Boolean)this.Field;
             }
             string fieldSpecDoc = Query.DoesAzureNativeResourceGroupExist(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.cloudAccountId = <System.String>
+# REQUIRED
+$inputs.Var.azureSubscriptionNativeId = <System.String>
+# REQUIRED
+$inputs.Var.resourceGroupName = <System.String>
+# REQUIRED
+$inputs.Var.feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -3813,7 +4578,21 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<AzureResourceGroupInfo>)this.Field;
             }
             string fieldSpecDoc = Query.AllAzureNativeResourceGroupsInfoIfExist(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	sessionId = <System.String>
+	# REQUIRED
+	resourceGroupInputs = @(
+		@{
+			# REQUIRED
+			subscriptionNativeId = <System.String>
+			# REQUIRED
+			resourceGroupName = <System.String>
+		}
+	)
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -3838,7 +4617,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<AzureSubscriptionMissingPermissions>)this.Field;
             }
             string fieldSpecDoc = Query.AllAzureCloudAccountMissingPermissions(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.sessionId = <System.String>
+# REQUIRED
+$inputs.Var.subscriptionIds = @(
+	<System.String>
+)
+# REQUIRED
+$inputs.Var.cloudAccountAction = <CloudAccountAction> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountAction]) for enum values.";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -3861,7 +4648,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AzureCloudAccountPermissionConfigResponse)this.Field;
             }
             string fieldSpecDoc = Query.AzureCloudAccountPermissionConfig(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -3885,7 +4674,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AzureCloudAccountGrantedPermissionsGroupsReply)this.Field;
             }
             string fieldSpecDoc = Query.AzureCloudAccountGrantedPermissionsGroups(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.cloudAccountId = <System.String>
+# REQUIRED
+$inputs.Var.feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -3910,7 +4703,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AzureCloudAccountGrantedPermissionsGroupsReply)this.Field;
             }
             string fieldSpecDoc = Query.AzureCloudAccountGrantedPermissionsGroupsForRecovery(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.cloudAccountId = <System.String>
+# REQUIRED
+$inputs.Var.azureNativeSubscriptionId = <System.String>
+# REQUIRED
+$inputs.Var.feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -3934,7 +4733,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AzureCloudAccountCheckRefreshTokenExistsReply)this.Field;
             }
             string fieldSpecDoc = Query.AzureCloudAccountCheckRefreshTokenExistsForRecovery(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.cloudAccountId = <System.String>
+# REQUIRED
+$inputs.Var.azureNativeSubscriptionId = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -3958,7 +4761,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<AzureExocomputeConfigsInAccount>)this.Field;
             }
             string fieldSpecDoc = Query.AllAzureExocomputeConfigsInAccount(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.azureExocomputeSearchQuery = <System.String>
+# OPTIONAL
+$inputs.Var.cloudAccountIDs = @(
+	<System.String>
+)";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -3982,7 +4791,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<AzureNativeSubnet>)this.Field;
             }
             string fieldSpecDoc = Query.AllAzureCloudAccountSubnetsByRegion(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.cloudAccountId = <System.String>
+# REQUIRED
+$inputs.Var.region = <AzureCloudAccountRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -4005,7 +4818,25 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (ValidateAzureSubnetsForCloudAccountExocomputeReply)this.Field;
             }
             string fieldSpecDoc = Query.ValidateAzureCloudAccountExocomputeConfigurations(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	cloudAccountId = <System.String>
+	# REQUIRED
+	azureExocomputeRegionConfigs = @(
+		@{
+			# REQUIRED
+			region = <AzureCloudAccountRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
+			# REQUIRED
+			subnetNativeId = <System.String>
+			# REQUIRED
+			isRscManaged = <System.Boolean>
+			# OPTIONAL
+			podSubnetNativeId = <System.String>
+		}
+	)
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -4028,7 +4859,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<AzureArmTemplateByFeature>)this.Field;
             }
             string fieldSpecDoc = Query.AllAzureArmTemplatesByFeature(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	customerTenantDomainName = <System.String>
+	# REQUIRED
+	features = @(
+		<CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+	)
+	# REQUIRED
+	operationType = <CloudAccountOperation> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountOperation]) for enum values.
+	# REQUIRED
+	cloudType = <AzureCloudType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudType]) for enum values.
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -4053,7 +4897,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (CheckAzurePersistentStorageSubscriptionCanUnmapReply)this.Field;
             }
             string fieldSpecDoc = Query.CheckAzurePersistentStorageSubscriptionCanUnmap(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.cloudAccountId = <System.String>
+# REQUIRED
+$inputs.Var.feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+# REQUIRED
+$inputs.Var.unmappingValidationType = <UnmappingValidationType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmappingValidationType]) for enum values.";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -4076,7 +4926,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AzureSubscriptionConnection)this.Field;
             }
             string fieldSpecDoc = Query.AzureSubscriptions(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.tenantId = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -4100,7 +4952,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (RegionConnection)this.Field;
             }
             string fieldSpecDoc = Query.AzureRegions(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.tenantId = <System.String>
+# REQUIRED
+$inputs.Var.subscriptionId = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -4124,7 +4980,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (ResourceGroupConnection)this.Field;
             }
             string fieldSpecDoc = Query.AzureResourceGroups(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.tenantId = <System.String>
+# REQUIRED
+$inputs.Var.subscriptionId = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -4149,7 +5009,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (VnetConnection)this.Field;
             }
             string fieldSpecDoc = Query.AzureVnets(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.tenantId = <System.String>
+# REQUIRED
+$inputs.Var.subscriptionId = <System.String>
+# REQUIRED
+$inputs.Var.regionName = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -4174,7 +5040,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (SubnetConnection)this.Field;
             }
             string fieldSpecDoc = Query.AzureSubnets(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.tenantId = <System.String>
+# REQUIRED
+$inputs.Var.subscriptionId = <System.String>
+# REQUIRED
+$inputs.Var.vNetId = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -4199,7 +5071,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (StorageAccountConnection)this.Field;
             }
             string fieldSpecDoc = Query.AzureStorageAccounts(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.tenantId = <System.String>
+# REQUIRED
+$inputs.Var.subscriptionId = <System.String>
+# REQUIRED
+$inputs.Var.regionName = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -4221,7 +5099,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AzureRegionsResp)this.Field;
             }
             string fieldSpecDoc = Query.AllHostedAzureRegions(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -4245,7 +5124,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<System.String>)this.Field;
             }
             string fieldSpecDoc = Query.AllAzureResourceGroups(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.cloudAccountId = <System.String>
+# REQUIRED
+$inputs.Var.azureRegion = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -4268,7 +5151,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<System.String>)this.Field;
             }
             string fieldSpecDoc = Query.AllAzureVnets(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.vnetRequest = @{
+	# OPTIONAL
+	cloudAccountId = <System.String>
+	# OPTIONAL
+	resourceGroup = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -4291,7 +5181,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<System.String>)this.Field;
             }
             string fieldSpecDoc = Query.AllAzureSubnets(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.subnetRequest = @{
+	# OPTIONAL
+	cloudAccountId = <System.String>
+	# OPTIONAL
+	resourceGroup = <System.String>
+	# OPTIONAL
+	vnetName = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -4314,7 +5213,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<AzureCdmVersion>)this.Field;
             }
             string fieldSpecDoc = Query.AllAzureCdmVersions(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.cdmVersionRequest = @{
+	# OPTIONAL
+	cloudAccountId = <System.String>
+	# OPTIONAL
+	location = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -4337,7 +5243,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<AzureCloudAccountRegion>)this.Field;
             }
             string fieldSpecDoc = Query.AllAzureRegions(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.cloudAccountId = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -4360,7 +5268,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<System.String>)this.Field;
             }
             string fieldSpecDoc = Query.AllAzureNsgs(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.nsgRequest = @{
+	# OPTIONAL
+	cloudAccountId = <System.String>
+	# OPTIONAL
+	resourceGroup = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -4383,7 +5298,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<System.String>)this.Field;
             }
             string fieldSpecDoc = Query.AllAzureStorageAccounts(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.storageAccountsRequest = @{
+	# OPTIONAL
+	cloudAccountId = <System.String>
+	# OPTIONAL
+	resourceGroup = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -4406,7 +5328,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<AzureManagedIdentity>)this.Field;
             }
             string fieldSpecDoc = Query.AllAzureManagedIdentities(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.managedIdentitiesRequest = @{
+	# REQUIRED
+	cloudAccountId = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -4439,7 +5366,57 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AzureAdDirectoryConnection)this.Field;
             }
             string fieldSpecDoc = Query.AzureAdDirectories(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.sortBy = <HierarchySortByField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+# OPTIONAL
+$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$inputs.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+		)
+}
+)";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -4462,7 +5439,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AzureAdDirectory)this.Field;
             }
             string fieldSpecDoc = Query.AzureAdDirectory(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.workloadFid = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -4495,7 +5474,64 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AzureAdObjectConnection)this.Field;
             }
             string fieldSpecDoc = Query.AzureAdObjectsByType(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.sortByOption = @(
+	<AzureAdObjectSearchType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectSearchType]) for enum values.
+)
+# OPTIONAL
+$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	snapshotId = <System.String>
+	# REQUIRED
+	azureAdObjectType = <AzureAdObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectType]) for enum values.
+}";
+            BuildInput(fieldSpecObj, inputExample);
+            BuildRequest(fieldSpecDoc);
+        }
+
+        // Invoke GraphQL Query:
+        // searchAzureAdSnapshot(first: Int, after: String, input: SearchAzureAdSnapshotInput!): AzureAdObjectConnection!
+        internal void InvokeQuerySearchAzureAdSnapshot()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("input", "SearchAzureAdSnapshotInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QuerySearchAzureAdSnapshot",
+                "($first: Int,$after: String,$input: SearchAzureAdSnapshotInput!)",
+                "AzureAdObjectConnection"
+                );
+            AzureAdObjectConnection? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AzureAdObjectConnection)this.Field;
+            }
+            string fieldSpecDoc = Query.SearchAzureAdSnapshot(ref fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	snapshotId = <System.String>
+	# REQUIRED
+	azureAdSearchKeyword = <System.String>
+	# REQUIRED
+	azureAdObjectType = <AzureAdObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectType]) for enum values.
+	# REQUIRED
+	azureAdSearchKeywordType = <AzureAdObjectSearchType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectSearchType]) for enum values.
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 

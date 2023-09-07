@@ -1557,7 +1557,9 @@ v6.0+: Get the database log backup delay information.
                 fieldSpecObj = (List<CcWithCloudInfo>)this.Field;
             }
             string fieldSpecDoc = Query.AllCloudClusters(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.cloudVendorType = <CcpVendorType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CcpVendorType]) for enum values.";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1580,7 +1582,12 @@ v6.0+: Get the database log backup delay information.
                 fieldSpecObj = (NodeStatusListResponse)this.Field;
             }
             string fieldSpecDoc = Query.ClusterNodes(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1617,7 +1624,87 @@ v6.0+: Get the database log backup delay information.
                 fieldSpecObj = (ClusterConnection)this.Field;
             }
             string fieldSpecDoc = Query.ClusterConnection(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.last = <System.Int32>
+# OPTIONAL
+$inputs.Var.before = <System.String>
+# OPTIONAL
+$inputs.Var.filter = @{
+	# OPTIONAL
+	id = @(
+		<System.String>
+	)
+	# OPTIONAL
+	name = @(
+		<System.String>
+	)
+	# OPTIONAL
+	type = @(
+		<ClusterTypeEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterTypeEnum]) for enum values.
+	)
+	# OPTIONAL
+	objectType = @(
+		<ObjectTypeEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ObjectTypeEnum]) for enum values.
+	)
+	# OPTIONAL
+	registrationTime_gt = <DateTime>
+	# OPTIONAL
+	registrationTime_lt = <DateTime>
+	# OPTIONAL
+	minSoftwareVersion = <System.String>
+	# OPTIONAL
+	clusterLocation = @(
+		<System.String>
+	)
+	# OPTIONAL
+	excludeEmptyCluster = <System.Boolean>
+	# OPTIONAL
+	productType = @(
+		<ClusterProductEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterProductEnum]) for enum values.
+	)
+	# OPTIONAL
+	registeredMode = @(
+		<ClusterRegistrationMode> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterRegistrationMode]) for enum values.
+	)
+	# OPTIONAL
+	product = <Product> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Product]) for enum values.
+	# OPTIONAL
+	orgId = @(
+		<System.String>
+	)
+	# OPTIONAL
+	productFilters = @(
+		@{
+			# REQUIRED
+			productType = <ClusterProductEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterProductEnum]) for enum values.
+			# OPTIONAL
+			minSoftwareVersion = <System.String>
+		}
+	)
+	# OPTIONAL
+	excludeId = @(
+		<System.String>
+	)
+	# OPTIONAL
+	systemStatus = @(
+		<ClusterSystemStatus> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterSystemStatus]) for enum values.
+	)
+	# OPTIONAL
+	connectionState = @(
+		<ClusterStatus> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterStatus]) for enum values.
+	)
+	# OPTIONAL
+	isInFatalOrDisconnectedState = <System.Boolean>
+}
+# OPTIONAL
+$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$inputs.Var.sortBy = <ClusterSortByEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterSortByEnum]) for enum values.";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1640,7 +1727,9 @@ v6.0+: Get the database log backup delay information.
                 fieldSpecObj = (Cluster)this.Field;
             }
             string fieldSpecDoc = Query.Cluster(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.clusterUuid = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1677,7 +1766,74 @@ v6.0+: Get the database log backup delay information.
                 fieldSpecObj = (ClusterConnection)this.Field;
             }
             string fieldSpecDoc = Query.ClusterWithUpgradesInfo(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.last = <System.Int32>
+# OPTIONAL
+$inputs.Var.before = <System.String>
+# OPTIONAL
+$inputs.Var.upgradeFilter = @{
+	# OPTIONAL
+	id = @(
+		<System.String>
+	)
+	# OPTIONAL
+	name = @(
+		<System.String>
+	)
+	# OPTIONAL
+	type = @(
+		<ClusterTypeEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterTypeEnum]) for enum values.
+	)
+	# OPTIONAL
+	registrationTime_gt = <DateTime>
+	# OPTIONAL
+	registrationTime_lt = <DateTime>
+	# OPTIONAL
+	minSoftwareVersion = <System.String>
+	# OPTIONAL
+	downloadedVersion = @(
+		<System.String>
+	)
+	# OPTIONAL
+	installedVersion = @(
+		<System.String>
+	)
+	# OPTIONAL
+	upgradeJobStatus = @(
+		<ClusterJobStatusTypeEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterJobStatusTypeEnum]) for enum values.
+	)
+	# OPTIONAL
+	clusterLocation = @(
+		<System.String>
+	)
+	# OPTIONAL
+	versionStatus = @(
+		<VersionStatus> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VersionStatus]) for enum values.
+	)
+	# OPTIONAL
+	prechecksStatus = @(
+		<PrechecksStatusTypeEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PrechecksStatusTypeEnum]) for enum values.
+	)
+	# OPTIONAL
+	connectionState = @(
+		<ClusterStatus> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterStatus]) for enum values.
+	)
+	# OPTIONAL
+	upgradeScheduled = <System.Boolean>
+	# OPTIONAL
+	productType = @(
+		<ClusterProductEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterProductEnum]) for enum values.
+	)
+}
+# OPTIONAL
+$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$inputs.Var.sortBy = <UpgradeInfoSortByEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UpgradeInfoSortByEnum]) for enum values.";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1700,7 +1856,9 @@ v6.0+: Get the database log backup delay information.
                 fieldSpecObj = (ClusterDnsReply)this.Field;
             }
             string fieldSpecDoc = Query.ClusterDns(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.clusterUuid = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1723,7 +1881,9 @@ v6.0+: Get the database log backup delay information.
                 fieldSpecObj = (ClusterProxyReply)this.Field;
             }
             string fieldSpecDoc = Query.ClusterProxy(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.clusterUuid = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1746,7 +1906,12 @@ v6.0+: Get the database log backup delay information.
                 fieldSpecObj = (NtpServerConfigurationListResponse)this.Field;
             }
             string fieldSpecDoc = Query.ClusterNtpServers(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1769,7 +1934,14 @@ v6.0+: Get the database log backup delay information.
                 fieldSpecObj = (NetworkInterfaceListResponse)this.Field;
             }
             string fieldSpecDoc = Query.ClusterNetworkInterfaces(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	interface = <System.String>
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1792,7 +1964,12 @@ v6.0+: Get the database log backup delay information.
                 fieldSpecObj = (InternalGetClusterIpsResponse)this.Field;
             }
             string fieldSpecDoc = Query.ClusterFloatingIps(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1815,7 +1992,14 @@ v6.0+: Get the database log backup delay information.
                 fieldSpecObj = (VlanConfigListResponse)this.Field;
             }
             string fieldSpecDoc = Query.ClusterVlans(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	vlan = <System.Int32>
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1838,7 +2022,12 @@ v6.0+: Get the database log backup delay information.
                 fieldSpecObj = (InternalGetDefaultGatewayResponse)this.Field;
             }
             string fieldSpecDoc = Query.ClusterDefaultGateway(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1861,7 +2050,12 @@ v6.0+: Get the database log backup delay information.
                 fieldSpecObj = (ClusterWebSignedCertificateReply)this.Field;
             }
             string fieldSpecDoc = Query.ClusterWebSignedCertificate(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1884,7 +2078,12 @@ v6.0+: Get the database log backup delay information.
                 fieldSpecObj = (ModifyIpmiReply)this.Field;
             }
             string fieldSpecDoc = Query.ClusterIpmi(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1907,7 +2106,28 @@ v6.0+: Get the database log backup delay information.
                 fieldSpecObj = (CertificateSummaryListResponse)this.Field;
             }
             string fieldSpecDoc = Query.ClusterCertificates(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	description = <System.String>
+	# OPTIONAL
+	expiration = <System.String>
+	# OPTIONAL
+	hasKey = <System.Boolean>
+	# OPTIONAL
+	includeExpired = <System.Boolean>
+	# OPTIONAL
+	isTrusted = <System.Boolean>
+	# OPTIONAL
+	name = <System.String>
+	# OPTIONAL
+	sortBy = <V1QueryCertificatesRequestSortBy> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V1QueryCertificatesRequestSortBy]) for enum values.
+	# OPTIONAL
+	sortOrder = <V1QueryCertificatesRequestSortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V1QueryCertificatesRequestSortOrder]) for enum values.
+	# REQUIRED
+	clusterUuid = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1930,7 +2150,14 @@ v6.0+: Get the database log backup delay information.
                 fieldSpecObj = (List<ClusterWebCertAndIpmi>)this.Field;
             }
             string fieldSpecDoc = Query.AllClusterWebCertsAndIpmis(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	clusterUuids = @(
+		<System.String>
+	)
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1953,7 +2180,14 @@ v6.0+: Get the database log backup delay information.
                 fieldSpecObj = (ClusterOperationJobProgress)this.Field;
             }
             string fieldSpecDoc = Query.ClusterOperationJobProgress(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	clusterUuid = <System.String>
+	# REQUIRED
+	jobType = <CcpJobType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CcpJobType]) for enum values.
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1976,7 +2210,12 @@ v6.0+: Get the database log backup delay information.
                 fieldSpecObj = (ClusterIpv6ModeReply)this.Field;
             }
             string fieldSpecDoc = Query.ClusterIpv6Mode(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1999,7 +2238,12 @@ v6.0+: Get the database log backup delay information.
                 fieldSpecObj = (ClusterCsr)this.Field;
             }
             string fieldSpecDoc = Query.ClusterCsr(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2021,7 +2265,8 @@ v6.0+: Get the database log backup delay information.
                 fieldSpecObj = (List<GroupCount>)this.Field;
             }
             string fieldSpecDoc = Query.ClusterTypeList(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2058,7 +2303,87 @@ v6.0+: Get the database log backup delay information.
                 fieldSpecObj = (ClusterGroupByConnection)this.Field;
             }
             string fieldSpecDoc = Query.ClusterGroupByConnection(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.last = <System.Int32>
+# OPTIONAL
+$inputs.Var.before = <System.String>
+# REQUIRED
+$inputs.Var.groupBy = <ClusterGroupByEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterGroupByEnum]) for enum values.
+# OPTIONAL
+$inputs.Var.filter = @{
+	# OPTIONAL
+	id = @(
+		<System.String>
+	)
+	# OPTIONAL
+	name = @(
+		<System.String>
+	)
+	# OPTIONAL
+	type = @(
+		<ClusterTypeEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterTypeEnum]) for enum values.
+	)
+	# OPTIONAL
+	objectType = @(
+		<ObjectTypeEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ObjectTypeEnum]) for enum values.
+	)
+	# OPTIONAL
+	registrationTime_gt = <DateTime>
+	# OPTIONAL
+	registrationTime_lt = <DateTime>
+	# OPTIONAL
+	minSoftwareVersion = <System.String>
+	# OPTIONAL
+	clusterLocation = @(
+		<System.String>
+	)
+	# OPTIONAL
+	excludeEmptyCluster = <System.Boolean>
+	# OPTIONAL
+	productType = @(
+		<ClusterProductEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterProductEnum]) for enum values.
+	)
+	# OPTIONAL
+	registeredMode = @(
+		<ClusterRegistrationMode> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterRegistrationMode]) for enum values.
+	)
+	# OPTIONAL
+	product = <Product> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Product]) for enum values.
+	# OPTIONAL
+	orgId = @(
+		<System.String>
+	)
+	# OPTIONAL
+	productFilters = @(
+		@{
+			# REQUIRED
+			productType = <ClusterProductEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterProductEnum]) for enum values.
+			# OPTIONAL
+			minSoftwareVersion = <System.String>
+		}
+	)
+	# OPTIONAL
+	excludeId = @(
+		<System.String>
+	)
+	# OPTIONAL
+	systemStatus = @(
+		<ClusterSystemStatus> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterSystemStatus]) for enum values.
+	)
+	# OPTIONAL
+	connectionState = @(
+		<ClusterStatus> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterStatus]) for enum values.
+	)
+	# OPTIONAL
+	isInFatalOrDisconnectedState = <System.Boolean>
+}
+# OPTIONAL
+$inputs.Var.timezoneOffset = <System.Single>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2095,7 +2420,52 @@ v6.0+: Get the database log backup delay information.
                 fieldSpecObj = (ClusterConnection)this.Field;
             }
             string fieldSpecDoc = Query.ClusterWithConfigProtectionInfo(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.last = <System.Int32>
+# OPTIONAL
+$inputs.Var.before = <System.String>
+# OPTIONAL
+$inputs.Var.configProtectionFilter = @{
+	# OPTIONAL
+	id = @(
+		<System.String>
+	)
+	# OPTIONAL
+	name = @(
+		<System.String>
+	)
+	# OPTIONAL
+	type = @(
+		<ClusterTypeEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterTypeEnum]) for enum values.
+	)
+	# OPTIONAL
+	minSoftwareVersion = <System.String>
+	# OPTIONAL
+	clusterLocation = @(
+		<System.String>
+	)
+	# OPTIONAL
+	connectionState = @(
+		<ClusterStatus> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterStatus]) for enum values.
+	)
+	# OPTIONAL
+	productType = @(
+		<ClusterProductEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterProductEnum]) for enum values.
+	)
+	# OPTIONAL
+	configProtectionStatus = @(
+		<ConfigProtectionStatus> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ConfigProtectionStatus]) for enum values.
+	)
+}
+# OPTIONAL
+$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$inputs.Var.sortBy = <ConfigProtectionInfoSortBy> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ConfigProtectionInfoSortBy]) for enum values.";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2118,7 +2488,12 @@ v6.0+: Get the database log backup delay information.
                 fieldSpecObj = (DbLogReportProperties)this.Field;
             }
             string fieldSpecDoc = Query.DatabaseLogReportingPropertiesForCluster(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2141,7 +2516,30 @@ v6.0+: Get the database log backup delay information.
                 fieldSpecObj = (DbLogReportSummaryListReply)this.Field;
             }
             string fieldSpecDoc = Query.DatabaseLogReportForCluster(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	name = <System.String>
+	# OPTIONAL
+	logBackupDelay = <System.Int32>
+	# OPTIONAL
+	limit = <System.Int32>
+	# OPTIONAL
+	offset = <System.Int32>
+	# OPTIONAL
+	effectiveSlaDomainId = <System.String>
+	# OPTIONAL
+	databaseType = <System.String>
+	# OPTIONAL
+	location = <System.String>
+	# OPTIONAL
+	sortBy = <V1QueryLogReportRequestSortBy> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V1QueryLogReportRequestSortBy]) for enum values.
+	# OPTIONAL
+	sortOrder = <V1QueryLogReportRequestSortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V1QueryLogReportRequestSortOrder]) for enum values.
+	# REQUIRED
+	clusterUuid = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2176,7 +2574,19 @@ v6.0+: Get the database log backup delay information.
                 fieldSpecObj = (RcvLocationBasicInfoConnection)this.Field;
             }
             string fieldSpecDoc = Query.ClusterRcvLocations(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.last = <System.Int32>
+# OPTIONAL
+$inputs.Var.before = <System.String>
+# OPTIONAL
+$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# REQUIRED
+$inputs.Var.cdmClusterUUID = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2199,7 +2609,9 @@ v6.0+: Get the database log backup delay information.
                 fieldSpecObj = (List<DataLocationSupportedCluster>)this.Field;
             }
             string fieldSpecDoc = Query.AllConnectedClusters(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.clusterFilterArg = <ClusterTypeEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterTypeEnum]) for enum values.";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2222,7 +2634,9 @@ v6.0+: Get the database log backup delay information.
                 fieldSpecObj = (List<ClusterReplicationTarget>)this.Field;
             }
             string fieldSpecDoc = Query.AllClusterReplicationTargets(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.clusterUuid = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2265,7 +2679,35 @@ v6.0+: Get the database log backup delay information.
                 fieldSpecObj = (ClusterEncryptionInfoConnection)this.Field;
             }
             string fieldSpecDoc = Query.ClusterEncryptionInfo(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.last = <System.Int32>
+# OPTIONAL
+$inputs.Var.before = <System.String>
+# OPTIONAL
+$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$inputs.Var.clusterName = <System.String>
+# REQUIRED
+$inputs.Var.encryptionStatusFilter = @(
+	<ClusterEncryptionStatusFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterEncryptionStatusFilter]) for enum values.
+)
+# REQUIRED
+$inputs.Var.keyProtection = @(
+	<ClusterKeyProtection> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterKeyProtection]) for enum values.
+)
+# REQUIRED
+$inputs.Var.clusters = @(
+	<System.String>
+)
+# REQUIRED
+$inputs.Var.encryptionTypes = @(
+	<ClusterEncryptionType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterEncryptionType]) for enum values.
+)";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2288,7 +2730,9 @@ v6.0+: Get the database log backup delay information.
                 fieldSpecObj = (HostFailoverCluster)this.Field;
             }
             string fieldSpecDoc = Query.HostFailoverCluster(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.fid = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2312,7 +2756,13 @@ v6.0+: Get the database log backup delay information.
                 fieldSpecObj = (GlobalFileSearchReplyType)this.Field;
             }
             string fieldSpecDoc = Query.AllGlobalFileSearchMultipleClusters(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.clusters = @(
+	<System.String>
+)
+# REQUIRED
+$inputs.Var.regex = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2345,7 +2795,57 @@ v6.0+: Get the database log backup delay information.
                 fieldSpecObj = (KubernetesClusterConnection)this.Field;
             }
             string fieldSpecDoc = Query.KubernetesClusters(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.sortBy = <HierarchySortByField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+# OPTIONAL
+$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$inputs.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+		)
+}
+)";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2378,7 +2878,57 @@ v6.0+: Get the database log backup delay information.
                 fieldSpecObj = (K8sClusterConnection)this.Field;
             }
             string fieldSpecDoc = Query.K8sClusters(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.sortBy = <HierarchySortByField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+# OPTIONAL
+$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$inputs.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+		)
+}
+)";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2401,7 +2951,9 @@ v6.0+: Get the database log backup delay information.
                 fieldSpecObj = (WindowsCluster)this.Field;
             }
             string fieldSpecDoc = Query.WindowsCluster(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.fid = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2436,7 +2988,21 @@ v6.0+: Get the database log backup delay information.
                 fieldSpecObj = (ReportMigrationStatusConnection)this.Field;
             }
             string fieldSpecDoc = Query.ClusterReportMigrationStatus(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.clusterUuid = <System.String>
+# REQUIRED
+$inputs.Var.status = @(
+	<CdmReportMigrationStatus> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CdmReportMigrationStatus]) for enum values.
+)
+# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.last = <System.Int32>
+# OPTIONAL
+$inputs.Var.before = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2460,7 +3026,13 @@ v6.0+: Get the database log backup delay information.
                 fieldSpecObj = (ReportsMigrationCount)this.Field;
             }
             string fieldSpecDoc = Query.ClusterReportMigrationCount(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.clusterUuid = <System.String>
+# REQUIRED
+$inputs.Var.status = @(
+	<CdmReportMigrationStatus> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CdmReportMigrationStatus]) for enum values.
+)";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2483,7 +3055,9 @@ v6.0+: Get the database log backup delay information.
                 fieldSpecObj = (ClusterReportMigrationJobStatus)this.Field;
             }
             string fieldSpecDoc = Query.ClusterReportMigrationJobStatus(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.clusterUuid = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2514,7 +3088,15 @@ v6.0+: Get the database log backup delay information.
                 fieldSpecObj = (ClusterSlaDomainConnection)this.Field;
             }
             string fieldSpecDoc = Query.ClusterSlaDomains(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.last = <System.Int32>
+# OPTIONAL
+$inputs.Var.before = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2545,7 +3127,15 @@ v6.0+: Get the database log backup delay information.
                 fieldSpecObj = (ClusterSlaDomainForFilterConnection)this.Field;
             }
             string fieldSpecDoc = Query.ClusterSlaDomainFilterConnection(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.last = <System.Int32>
+# OPTIONAL
+$inputs.Var.before = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2569,7 +3159,11 @@ v6.0+: Get the database log backup delay information.
                 fieldSpecObj = (VerifySlaWithReplicationToClusterResponse)this.Field;
             }
             string fieldSpecDoc = Query.VerifySlaWithReplicationToCluster(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.cdmClusterUUID = <System.String>
+# REQUIRED
+$inputs.Var.includeArchived = <System.Boolean>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2592,7 +3186,9 @@ v6.0+: Get the database log backup delay information.
                 fieldSpecObj = (List<SlaInfo>)this.Field;
             }
             string fieldSpecDoc = Query.AllClusterGlobalSlas(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.cdmClusterUUID = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2614,7 +3210,8 @@ v6.0+: Get the database log backup delay information.
                 fieldSpecObj = (ClusterRegistrationProductInfoType)this.Field;
             }
             string fieldSpecDoc = Query.ClusterRegistrationProductInfo(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2637,7 +3234,20 @@ v6.0+: Get the database log backup delay information.
                 fieldSpecObj = (VcdClusterSummaryListResponse)this.Field;
             }
             string fieldSpecDoc = Query.VcdClusters(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	name = <System.String>
+	# OPTIONAL
+	sortBy = <QueryVcdClusterRequestSortBy> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.QueryVcdClusterRequestSortBy]) for enum values.
+	# OPTIONAL
+	sortOrder = <QueryVcdClusterRequestSortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.QueryVcdClusterRequestSortOrder]) for enum values.
+	# OPTIONAL
+	status = <QueryVcdClusterRequestStatus> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.QueryVcdClusterRequestStatus]) for enum values.
+	# REQUIRED
+	clusterUuid = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2660,7 +3270,9 @@ v6.0+: Get the database log backup delay information.
                 fieldSpecObj = (System.Boolean)this.Field;
             }
             string fieldSpecDoc = Query.IsTotpAckNecessaryForCluster(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.clusterUuid = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -2683,7 +3295,11 @@ v6.0+: Get the database log backup delay information.
                 fieldSpecObj = (List<System.Boolean>)this.Field;
             }
             string fieldSpecDoc = Query.AllClustersTotpAckStatus(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.listClusterUuid = @(
+	<System.String>
+)";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 

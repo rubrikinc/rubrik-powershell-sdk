@@ -1049,7 +1049,44 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 fieldSpecObj = (VsphereAsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.VsphereVmRecoverFiles(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	snapshotFid = <System.String>
+	# REQUIRED
+	restoreConfig = @{
+		# OPTIONAL
+		restoreFilesConfig = @(
+			@{
+				# OPTIONAL
+				path = <System.String>
+				# OPTIONAL
+				restorePath = <System.String>
+			}
+		)
+		# OPTIONAL
+		domainName = <System.String>
+		# OPTIONAL
+		username = <System.String>
+		# OPTIONAL
+		password = <System.String>
+		# OPTIONAL
+		shouldIgnoreErrors = <System.Boolean>
+		# OPTIONAL
+		shouldSaveCredentials = <System.Boolean>
+		# OPTIONAL
+		shouldUseAgent = <System.Boolean>
+		# OPTIONAL
+		shouldRestoreXAttrs = <System.Boolean>
+		# OPTIONAL
+		deltaTypeFilter = @(
+			<DeltaType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DeltaType]) for enum values.
+		)
+		# OPTIONAL
+		nextSnapshotFid = <System.String>
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1072,7 +1109,56 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.VsphereVmRecoverFilesNew(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		domainName = <System.String>
+		# OPTIONAL
+		ignoreErrors = <System.Boolean>
+		# OPTIONAL
+		password = <System.String>
+		# OPTIONAL
+		shouldSaveCredentials = <System.Boolean>
+		# OPTIONAL
+		username = <System.String>
+		# OPTIONAL
+		destObjectId = <System.String>
+		# OPTIONAL
+		shouldRestoreXAttrs = <System.Boolean>
+		# OPTIONAL
+		shouldUseAgent = <System.Boolean>
+		# OPTIONAL
+		guestCredentialId = <System.String>
+		# REQUIRED
+		restoreConfig = @(
+			@{
+				# OPTIONAL
+				restorePathPair = @{
+					# OPTIONAL
+					restorePath = <System.String>
+					# REQUIRED
+					path = <System.String>
+				}
+			}
+		)
+	}
+	# OPTIONAL
+	deltaRequest = @{
+		# REQUIRED
+		nextSnapshotFid = <System.String>
+		# REQUIRED
+		deltaTypeFilter = @(
+			<DeltaType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DeltaType]) for enum values.
+		)
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1095,7 +1181,12 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 fieldSpecObj = (RequestSuccess)this.Field;
             }
             string fieldSpecDoc = Mutation.VsphereVmRegisterAgent(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1118,7 +1209,12 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.VsphereVmDownloadSnapshot(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1161,7 +1257,27 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 fieldSpecObj = (VsphereAsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.VsphereVmExportSnapshot(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.snapshotFid = <System.String>
+# OPTIONAL
+$inputs.Var.vmName = <System.String>
+# OPTIONAL
+$inputs.Var.disableNetwork = <System.Boolean>
+# OPTIONAL
+$inputs.Var.removeNetworkDevices = <System.Boolean>
+# OPTIONAL
+$inputs.Var.powerOn = <System.Boolean>
+# OPTIONAL
+$inputs.Var.keepMacAddresses = <System.Boolean>
+# OPTIONAL
+$inputs.Var.hostID = <System.String>
+# REQUIRED
+$inputs.Var.datastoreId = <System.String>
+# OPTIONAL
+$inputs.Var.unregsiterVm = <System.Boolean>
+# OPTIONAL
+$inputs.Var.shouldRecoverTags = <System.Boolean>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1184,7 +1300,70 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.VsphereVmExportSnapshotV2(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		hostId = <System.String>
+		# OPTIONAL
+		shouldRecoverTags = <System.Boolean>
+		# OPTIONAL
+		unregisterVm = <System.Boolean>
+		# OPTIONAL
+		clusterId = <System.String>
+		# OPTIONAL
+		resourcePoolId = <System.String>
+		# OPTIONAL
+		vNicBindings = @(
+			@{
+				# REQUIRED
+				backingNetworkInfo = @{
+					# REQUIRED
+					moid = <System.String>
+					# REQUIRED
+					name = <System.String>
+				}
+				# REQUIRED
+				networkDeviceInfo = @{
+					# REQUIRED
+					key = <System.Int32>
+					# REQUIRED
+					name = <System.String>
+				}
+			}
+		)
+		# OPTIONAL
+		shouldUseHotAddProxy = <System.Boolean>
+		# OPTIONAL
+		mountExportSnapshotJobCommonOptionsV2 = @{
+			# OPTIONAL
+			disableNetwork = <System.Boolean>
+			# OPTIONAL
+			keepMacAddresses = <System.Boolean>
+			# OPTIONAL
+			powerOn = <System.Boolean>
+			# OPTIONAL
+			removeNetworkDevices = <System.Boolean>
+			# OPTIONAL
+			vmName = <System.String>
+		}
+		# OPTIONAL
+		requiredRecoveryParameters = @{
+			# OPTIONAL
+			recoveryPoint = <DateTime>
+			# OPTIONAL
+			snapshotId = <System.String>
+		}
+		# OPTIONAL
+		folderId = <System.String>
+		# REQUIRED
+		datastoreId = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1207,7 +1386,79 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.VsphereVmExportSnapshotV3(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		clusterId = <System.String>
+		# OPTIONAL
+		diskDeviceKeyToStorageId = @(
+			@{
+				# OPTIONAL
+				storageLocationId = <System.String>
+				# REQUIRED
+				deviceKey = <System.Int32>
+			}
+		)
+		# OPTIONAL
+		hostId = <System.String>
+		# OPTIONAL
+		resourcePoolId = <System.String>
+		# OPTIONAL
+		shouldRecoverTags = <System.Boolean>
+		# OPTIONAL
+		shouldUseHotAddProxy = <System.Boolean>
+		# OPTIONAL
+		storageLocationId = <System.String>
+		# OPTIONAL
+		unregisterVm = <System.Boolean>
+		# OPTIONAL
+		vNicBindings = @(
+			@{
+				# REQUIRED
+				backingNetworkInfo = @{
+					# REQUIRED
+					moid = <System.String>
+					# REQUIRED
+					name = <System.String>
+				}
+				# REQUIRED
+				networkDeviceInfo = @{
+					# REQUIRED
+					key = <System.Int32>
+					# REQUIRED
+					name = <System.String>
+				}
+			}
+		)
+		# OPTIONAL
+		mountExportSnapshotJobCommonOptionsV2 = @{
+			# OPTIONAL
+			disableNetwork = <System.Boolean>
+			# OPTIONAL
+			keepMacAddresses = <System.Boolean>
+			# OPTIONAL
+			powerOn = <System.Boolean>
+			# OPTIONAL
+			removeNetworkDevices = <System.Boolean>
+			# OPTIONAL
+			vmName = <System.String>
+		}
+		# OPTIONAL
+		requiredRecoveryParameters = @{
+			# OPTIONAL
+			recoveryPoint = <DateTime>
+			# OPTIONAL
+			snapshotId = <System.String>
+		}
+		# OPTIONAL
+		folderId = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1230,7 +1481,88 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 fieldSpecObj = (BatchAsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.VsphereVmBatchExport(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		snapshots = @(
+			@{
+				# OPTIONAL
+				snapshotAfterDate = <DateTime>
+				# OPTIONAL
+				snapshotBeforeDate = <DateTime>
+				# OPTIONAL
+				snapshotId = <System.String>
+				# OPTIONAL
+				vmNamePrefix = <System.String>
+				# REQUIRED
+				config = @{
+					# OPTIONAL
+					hostId = <System.String>
+					# OPTIONAL
+					shouldRecoverTags = <System.Boolean>
+					# OPTIONAL
+					unregisterVm = <System.Boolean>
+					# OPTIONAL
+					clusterId = <System.String>
+					# OPTIONAL
+					resourcePoolId = <System.String>
+					# OPTIONAL
+					vNicBindings = @(
+						@{
+							# REQUIRED
+							backingNetworkInfo = @{
+								# REQUIRED
+								moid = <System.String>
+								# REQUIRED
+								name = <System.String>
+							}
+							# REQUIRED
+							networkDeviceInfo = @{
+								# REQUIRED
+								key = <System.Int32>
+								# REQUIRED
+								name = <System.String>
+							}
+						}
+					)
+					# OPTIONAL
+					shouldUseHotAddProxy = <System.Boolean>
+					# OPTIONAL
+					mountExportSnapshotJobCommonOptionsV2 = @{
+						# OPTIONAL
+						disableNetwork = <System.Boolean>
+						# OPTIONAL
+						keepMacAddresses = <System.Boolean>
+						# OPTIONAL
+						powerOn = <System.Boolean>
+						# OPTIONAL
+						removeNetworkDevices = <System.Boolean>
+						# OPTIONAL
+						vmName = <System.String>
+					}
+					# OPTIONAL
+					requiredRecoveryParameters = @{
+						# OPTIONAL
+						recoveryPoint = <DateTime>
+						# OPTIONAL
+						snapshotId = <System.String>
+					}
+					# OPTIONAL
+					folderId = <System.String>
+					# REQUIRED
+					datastoreId = <System.String>
+				}
+				# REQUIRED
+				vmId = <System.String>
+			}
+		)
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1253,7 +1585,97 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 fieldSpecObj = (BatchAsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.VsphereVmBatchExportV3(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		snapshots = @(
+			@{
+				# OPTIONAL
+				snapshotAfterDate = <DateTime>
+				# OPTIONAL
+				snapshotBeforeDate = <DateTime>
+				# OPTIONAL
+				snapshotId = <System.String>
+				# OPTIONAL
+				vmNamePrefix = <System.String>
+				# REQUIRED
+				config = @{
+					# OPTIONAL
+					clusterId = <System.String>
+					# OPTIONAL
+					diskDeviceKeyToStorageId = @(
+						@{
+							# OPTIONAL
+							storageLocationId = <System.String>
+							# REQUIRED
+							deviceKey = <System.Int32>
+						}
+					)
+					# OPTIONAL
+					hostId = <System.String>
+					# OPTIONAL
+					resourcePoolId = <System.String>
+					# OPTIONAL
+					shouldRecoverTags = <System.Boolean>
+					# OPTIONAL
+					shouldUseHotAddProxy = <System.Boolean>
+					# OPTIONAL
+					storageLocationId = <System.String>
+					# OPTIONAL
+					unregisterVm = <System.Boolean>
+					# OPTIONAL
+					vNicBindings = @(
+						@{
+							# REQUIRED
+							backingNetworkInfo = @{
+								# REQUIRED
+								moid = <System.String>
+								# REQUIRED
+								name = <System.String>
+							}
+							# REQUIRED
+							networkDeviceInfo = @{
+								# REQUIRED
+								key = <System.Int32>
+								# REQUIRED
+								name = <System.String>
+							}
+						}
+					)
+					# OPTIONAL
+					mountExportSnapshotJobCommonOptionsV2 = @{
+						# OPTIONAL
+						disableNetwork = <System.Boolean>
+						# OPTIONAL
+						keepMacAddresses = <System.Boolean>
+						# OPTIONAL
+						powerOn = <System.Boolean>
+						# OPTIONAL
+						removeNetworkDevices = <System.Boolean>
+						# OPTIONAL
+						vmName = <System.String>
+					}
+					# OPTIONAL
+					requiredRecoveryParameters = @{
+						# OPTIONAL
+						recoveryPoint = <DateTime>
+						# OPTIONAL
+						snapshotId = <System.String>
+					}
+					# OPTIONAL
+					folderId = <System.String>
+				}
+				# REQUIRED
+				vmId = <System.String>
+			}
+		)
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1276,7 +1698,24 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.VsphereVmInitiateInPlaceRecovery(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		shouldKeepVsphereSnapshotAfterRecovery = <System.Boolean>
+		# OPTIONAL
+		requiredRecoveryParameters = @{
+			# OPTIONAL
+			recoveryPoint = <DateTime>
+			# OPTIONAL
+			snapshotId = <System.String>
+		}
+	}
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1299,7 +1738,70 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.VsphereVmExportSnapshotWithDownloadFromCloud(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		hostId = <System.String>
+		# OPTIONAL
+		shouldRecoverTags = <System.Boolean>
+		# OPTIONAL
+		unregisterVm = <System.Boolean>
+		# OPTIONAL
+		clusterId = <System.String>
+		# OPTIONAL
+		resourcePoolId = <System.String>
+		# OPTIONAL
+		vNicBindings = @(
+			@{
+				# REQUIRED
+				backingNetworkInfo = @{
+					# REQUIRED
+					moid = <System.String>
+					# REQUIRED
+					name = <System.String>
+				}
+				# REQUIRED
+				networkDeviceInfo = @{
+					# REQUIRED
+					key = <System.Int32>
+					# REQUIRED
+					name = <System.String>
+				}
+			}
+		)
+		# OPTIONAL
+		shouldUseHotAddProxy = <System.Boolean>
+		# OPTIONAL
+		mountExportSnapshotJobCommonOptionsV2 = @{
+			# OPTIONAL
+			disableNetwork = <System.Boolean>
+			# OPTIONAL
+			keepMacAddresses = <System.Boolean>
+			# OPTIONAL
+			powerOn = <System.Boolean>
+			# OPTIONAL
+			removeNetworkDevices = <System.Boolean>
+			# OPTIONAL
+			vmName = <System.String>
+		}
+		# OPTIONAL
+		requiredRecoveryParameters = @{
+			# OPTIONAL
+			recoveryPoint = <DateTime>
+			# OPTIONAL
+			snapshotId = <System.String>
+		}
+		# OPTIONAL
+		folderId = <System.String>
+		# REQUIRED
+		datastoreId = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1322,7 +1824,40 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 fieldSpecObj = (BatchAsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.VsphereVmBatchInPlaceRecovery(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		snapshots = @(
+			@{
+				# OPTIONAL
+				snapshotAfterDate = <DateTime>
+				# OPTIONAL
+				snapshotBeforeDate = <DateTime>
+				# OPTIONAL
+				snapshotId = <System.String>
+				# REQUIRED
+				config = @{
+					# OPTIONAL
+					shouldKeepVsphereSnapshotAfterRecovery = <System.Boolean>
+					# OPTIONAL
+					requiredRecoveryParameters = @{
+						# OPTIONAL
+						recoveryPoint = <DateTime>
+						# OPTIONAL
+						snapshotId = <System.String>
+					}
+				}
+				# REQUIRED
+				vmId = <System.String>
+			}
+		)
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1345,7 +1880,14 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 fieldSpecObj = (System.String)this.Field;
             }
             string fieldSpecDoc = Mutation.VsphereVmDeleteSnapshot(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	location = <DeleteVmwareSnapshotRequestLocation> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DeleteVmwareSnapshotRequestLocation]) for enum values.
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1380,7 +1922,40 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 fieldSpecObj = (RequestSuccess)this.Field;
             }
             string fieldSpecDoc = Mutation.VsphereVmUpdate(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.snappableFid = <System.String>
+# OPTIONAL
+$inputs.Var.snapshotConsistencyMandate = <System.String>
+# OPTIONAL
+$inputs.Var.preBackupScript = @{
+	# OPTIONAL
+	scriptPath = <System.String>
+	# OPTIONAL
+	timeoutInMs = <System.Int64>
+	# OPTIONAL
+	failureHandling = <System.String>
+}
+# OPTIONAL
+$inputs.Var.postBackupScript = @{
+	# OPTIONAL
+	scriptPath = <System.String>
+	# OPTIONAL
+	timeoutInMs = <System.Int64>
+	# OPTIONAL
+	failureHandling = <System.String>
+}
+# OPTIONAL
+$inputs.Var.postSnapScript = @{
+	# OPTIONAL
+	scriptPath = <System.String>
+	# OPTIONAL
+	timeoutInMs = <System.Int64>
+	# OPTIONAL
+	failureHandling = <System.String>
+}
+# OPTIONAL
+$inputs.Var.isArrayIntegrationEnabled = <System.Boolean>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1423,7 +1998,27 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 fieldSpecObj = (VsphereAsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.VsphereVmInitiateInstantRecovery(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.snapshotFid = <System.String>
+# OPTIONAL
+$inputs.Var.vmName = <System.String>
+# OPTIONAL
+$inputs.Var.disableNetwork = <System.Boolean>
+# OPTIONAL
+$inputs.Var.removeNetworkDevices = <System.Boolean>
+# OPTIONAL
+$inputs.Var.powerOn = <System.Boolean>
+# OPTIONAL
+$inputs.Var.keepMacAddresses = <System.Boolean>
+# OPTIONAL
+$inputs.Var.hostID = <System.String>
+# OPTIONAL
+$inputs.Var.preserveMOID = <System.Boolean>
+# OPTIONAL
+$inputs.Var.vlan = <System.Int32>
+# OPTIONAL
+$inputs.Var.shouldRecoverTags = <System.Boolean>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1446,7 +2041,97 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.VsphereVmInitiateInstantRecoveryV2(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		hostId = <System.String>
+		# OPTIONAL
+		preserveMoid = <System.Boolean>
+		# OPTIONAL
+		shouldRecoverTags = <System.Boolean>
+		# OPTIONAL
+		vlan = <System.Int32>
+		# OPTIONAL
+		clusterId = <System.String>
+		# OPTIONAL
+		resourcePoolId = <System.String>
+		# OPTIONAL
+		vNicBindings = @(
+			@{
+				# REQUIRED
+				backingNetworkInfo = @{
+					# REQUIRED
+					moid = <System.String>
+					# REQUIRED
+					name = <System.String>
+				}
+				# REQUIRED
+				networkDeviceInfo = @{
+					# REQUIRED
+					key = <System.Int32>
+					# REQUIRED
+					name = <System.String>
+				}
+			}
+		)
+		# OPTIONAL
+		mountExportSnapshotJobCommonOptionsV2 = @{
+			# OPTIONAL
+			disableNetwork = <System.Boolean>
+			# OPTIONAL
+			keepMacAddresses = <System.Boolean>
+			# OPTIONAL
+			powerOn = <System.Boolean>
+			# OPTIONAL
+			removeNetworkDevices = <System.Boolean>
+			# OPTIONAL
+			vmName = <System.String>
+		}
+		# OPTIONAL
+		requiredRecoveryParameters = @{
+			# OPTIONAL
+			recoveryPoint = <DateTime>
+			# OPTIONAL
+			snapshotId = <System.String>
+		}
+		# OPTIONAL
+		migrationConfig = @{
+			# OPTIONAL
+			diskDeviceKeyToStorageId = @(
+				@{
+					# OPTIONAL
+					storageLocationId = <System.String>
+					# REQUIRED
+					deviceKey = <System.Int32>
+				}
+			)
+			# OPTIONAL
+			storageLocationId = <System.String>
+			# OPTIONAL
+			computeClusterId = <System.String>
+			# OPTIONAL
+			hostId = <System.String>
+			# OPTIONAL
+			networkDeviceKeyToNetworkName = @(
+				@{
+					# REQUIRED
+					deviceKey = <System.Int32>
+					# REQUIRED
+					networkName = <System.String>
+				}
+			)
+			# OPTIONAL
+			resourcePoolId = <System.String>
+		}
+		# OPTIONAL
+		shouldMigrateImmediately = <System.Boolean>
+	}
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1469,7 +2154,113 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 fieldSpecObj = (BatchAsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.VsphereVmInitiateBatchInstantRecovery(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		snapshots = @(
+			@{
+				# OPTIONAL
+				snapshotAfterDate = <DateTime>
+				# OPTIONAL
+				snapshotBeforeDate = <DateTime>
+				# OPTIONAL
+				snapshotId = <System.String>
+				# REQUIRED
+				config = @{
+					# OPTIONAL
+					hostId = <System.String>
+					# OPTIONAL
+					preserveMoid = <System.Boolean>
+					# OPTIONAL
+					shouldRecoverTags = <System.Boolean>
+					# OPTIONAL
+					vlan = <System.Int32>
+					# OPTIONAL
+					clusterId = <System.String>
+					# OPTIONAL
+					resourcePoolId = <System.String>
+					# OPTIONAL
+					vNicBindings = @(
+						@{
+							# REQUIRED
+							backingNetworkInfo = @{
+								# REQUIRED
+								moid = <System.String>
+								# REQUIRED
+								name = <System.String>
+							}
+							# REQUIRED
+							networkDeviceInfo = @{
+								# REQUIRED
+								key = <System.Int32>
+								# REQUIRED
+								name = <System.String>
+							}
+						}
+					)
+					# OPTIONAL
+					mountExportSnapshotJobCommonOptionsV2 = @{
+						# OPTIONAL
+						disableNetwork = <System.Boolean>
+						# OPTIONAL
+						keepMacAddresses = <System.Boolean>
+						# OPTIONAL
+						powerOn = <System.Boolean>
+						# OPTIONAL
+						removeNetworkDevices = <System.Boolean>
+						# OPTIONAL
+						vmName = <System.String>
+					}
+					# OPTIONAL
+					requiredRecoveryParameters = @{
+						# OPTIONAL
+						recoveryPoint = <DateTime>
+						# OPTIONAL
+						snapshotId = <System.String>
+					}
+					# OPTIONAL
+					migrationConfig = @{
+						# OPTIONAL
+						diskDeviceKeyToStorageId = @(
+							@{
+								# OPTIONAL
+								storageLocationId = <System.String>
+								# REQUIRED
+								deviceKey = <System.Int32>
+							}
+						)
+						# OPTIONAL
+						storageLocationId = <System.String>
+						# OPTIONAL
+						computeClusterId = <System.String>
+						# OPTIONAL
+						hostId = <System.String>
+						# OPTIONAL
+						networkDeviceKeyToNetworkName = @(
+							@{
+								# REQUIRED
+								deviceKey = <System.Int32>
+								# REQUIRED
+								networkName = <System.String>
+							}
+						)
+						# OPTIONAL
+						resourcePoolId = <System.String>
+					}
+					# OPTIONAL
+					shouldMigrateImmediately = <System.Boolean>
+				}
+				# REQUIRED
+				vmId = <System.String>
+			}
+		)
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1492,7 +2283,23 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.VsphereVmInitiateDiskMount(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		targetVmId = <System.String>
+		# OPTIONAL
+		vlan = <System.Int32>
+		# OPTIONAL
+		vmdkIds = @(
+			<System.String>
+		)
+	}
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1537,7 +2344,29 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 fieldSpecObj = (VsphereAsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.VsphereVmInitiateLiveMount(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.snapshotFid = <System.String>
+# OPTIONAL
+$inputs.Var.vmName = <System.String>
+# OPTIONAL
+$inputs.Var.disableNetwork = <System.Boolean>
+# OPTIONAL
+$inputs.Var.removeNetworkDevices = <System.Boolean>
+# OPTIONAL
+$inputs.Var.powerOn = <System.Boolean>
+# OPTIONAL
+$inputs.Var.keepMacAddresses = <System.Boolean>
+# OPTIONAL
+$inputs.Var.hostID = <System.String>
+# OPTIONAL
+$inputs.Var.datastoreName = <System.String>
+# OPTIONAL
+$inputs.Var.createDatastoreOnly = <System.Boolean>
+# OPTIONAL
+$inputs.Var.vlan = <System.Int32>
+# OPTIONAL
+$inputs.Var.shouldRecoverTags = <System.Boolean>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1560,7 +2389,101 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.VsphereVmInitiateLiveMountV2(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	config = @{
+		# OPTIONAL
+		createDatastoreOnly = <System.Boolean>
+		# OPTIONAL
+		dataStoreName = <System.String>
+		# OPTIONAL
+		hostId = <System.String>
+		# OPTIONAL
+		shouldRecoverTags = <System.Boolean>
+		# OPTIONAL
+		vlan = <System.Int32>
+		# OPTIONAL
+		clusterId = <System.String>
+		# OPTIONAL
+		resourcePoolId = <System.String>
+		# OPTIONAL
+		vNicBindings = @(
+			@{
+				# REQUIRED
+				backingNetworkInfo = @{
+					# REQUIRED
+					moid = <System.String>
+					# REQUIRED
+					name = <System.String>
+				}
+				# REQUIRED
+				networkDeviceInfo = @{
+					# REQUIRED
+					key = <System.Int32>
+					# REQUIRED
+					name = <System.String>
+				}
+			}
+		)
+		# OPTIONAL
+		migrationConfig = @{
+			# OPTIONAL
+			diskDeviceKeyToStorageId = @(
+				@{
+					# OPTIONAL
+					storageLocationId = <System.String>
+					# REQUIRED
+					deviceKey = <System.Int32>
+				}
+			)
+			# OPTIONAL
+			storageLocationId = <System.String>
+			# OPTIONAL
+			computeClusterId = <System.String>
+			# OPTIONAL
+			hostId = <System.String>
+			# OPTIONAL
+			networkDeviceKeyToNetworkName = @(
+				@{
+					# REQUIRED
+					deviceKey = <System.Int32>
+					# REQUIRED
+					networkName = <System.String>
+				}
+			)
+			# OPTIONAL
+			resourcePoolId = <System.String>
+		}
+		# OPTIONAL
+		shouldMigrateImmediately = <System.Boolean>
+		# OPTIONAL
+		mountExportSnapshotJobCommonOptionsV2 = @{
+			# OPTIONAL
+			disableNetwork = <System.Boolean>
+			# OPTIONAL
+			keepMacAddresses = <System.Boolean>
+			# OPTIONAL
+			powerOn = <System.Boolean>
+			# OPTIONAL
+			removeNetworkDevices = <System.Boolean>
+			# OPTIONAL
+			vmName = <System.String>
+		}
+		# OPTIONAL
+		requiredRecoveryParameters = @{
+			# OPTIONAL
+			recoveryPoint = <DateTime>
+			# OPTIONAL
+			snapshotId = <System.String>
+		}
+		# OPTIONAL
+		folderId = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1584,7 +2507,51 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 fieldSpecObj = (BatchAsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.VsphereVmBatchLiveMount(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.clusterUuid = <System.String>
+# REQUIRED
+$inputs.Var.config = @{
+	# REQUIRED
+	snapshots = @(
+		@{
+			# OPTIONAL
+			snapshotAfterDate = <DateTime>
+			# OPTIONAL
+			snapshotBeforeDate = <DateTime>
+			# OPTIONAL
+			snapshotId = <System.String>
+			# REQUIRED
+			config = @{
+				# OPTIONAL
+				createDatastoreOnly = <System.Boolean>
+				# OPTIONAL
+				dataStoreName = <System.String>
+				# OPTIONAL
+				hostId = <System.String>
+				# OPTIONAL
+				shouldRecoverTags = <System.Boolean>
+				# OPTIONAL
+				vlan = <System.Int32>
+				# OPTIONAL
+				mountExportSnapshotJobCommonOptions = @{
+					# OPTIONAL
+					disableNetwork = <System.Boolean>
+					# OPTIONAL
+					keepMacAddresses = <System.Boolean>
+					# OPTIONAL
+					powerOn = <System.Boolean>
+					# OPTIONAL
+					removeNetworkDevices = <System.Boolean>
+					# OPTIONAL
+					vmName = <System.String>
+				}
+			}
+			# REQUIRED
+			vmId = <System.String>
+		}
+	)
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1607,7 +2574,119 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 fieldSpecObj = (BatchAsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.VsphereVmInitiateBatchLiveMountV2(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		snapshots = @(
+			@{
+				# OPTIONAL
+				snapshotAfterDate = <DateTime>
+				# OPTIONAL
+				snapshotBeforeDate = <DateTime>
+				# OPTIONAL
+				snapshotId = <System.String>
+				# OPTIONAL
+				vmNamePrefix = <System.String>
+				# REQUIRED
+				config = @{
+					# OPTIONAL
+					createDatastoreOnly = <System.Boolean>
+					# OPTIONAL
+					dataStoreName = <System.String>
+					# OPTIONAL
+					hostId = <System.String>
+					# OPTIONAL
+					shouldRecoverTags = <System.Boolean>
+					# OPTIONAL
+					vlan = <System.Int32>
+					# OPTIONAL
+					clusterId = <System.String>
+					# OPTIONAL
+					resourcePoolId = <System.String>
+					# OPTIONAL
+					vNicBindings = @(
+						@{
+							# REQUIRED
+							backingNetworkInfo = @{
+								# REQUIRED
+								moid = <System.String>
+								# REQUIRED
+								name = <System.String>
+							}
+							# REQUIRED
+							networkDeviceInfo = @{
+								# REQUIRED
+								key = <System.Int32>
+								# REQUIRED
+								name = <System.String>
+							}
+						}
+					)
+					# OPTIONAL
+					migrationConfig = @{
+						# OPTIONAL
+						diskDeviceKeyToStorageId = @(
+							@{
+								# OPTIONAL
+								storageLocationId = <System.String>
+								# REQUIRED
+								deviceKey = <System.Int32>
+							}
+						)
+						# OPTIONAL
+						storageLocationId = <System.String>
+						# OPTIONAL
+						computeClusterId = <System.String>
+						# OPTIONAL
+						hostId = <System.String>
+						# OPTIONAL
+						networkDeviceKeyToNetworkName = @(
+							@{
+								# REQUIRED
+								deviceKey = <System.Int32>
+								# REQUIRED
+								networkName = <System.String>
+							}
+						)
+						# OPTIONAL
+						resourcePoolId = <System.String>
+					}
+					# OPTIONAL
+					shouldMigrateImmediately = <System.Boolean>
+					# OPTIONAL
+					mountExportSnapshotJobCommonOptionsV2 = @{
+						# OPTIONAL
+						disableNetwork = <System.Boolean>
+						# OPTIONAL
+						keepMacAddresses = <System.Boolean>
+						# OPTIONAL
+						powerOn = <System.Boolean>
+						# OPTIONAL
+						removeNetworkDevices = <System.Boolean>
+						# OPTIONAL
+						vmName = <System.String>
+					}
+					# OPTIONAL
+					requiredRecoveryParameters = @{
+						# OPTIONAL
+						recoveryPoint = <DateTime>
+						# OPTIONAL
+						snapshotId = <System.String>
+					}
+					# OPTIONAL
+					folderId = <System.String>
+				}
+				# REQUIRED
+				vmId = <System.String>
+			}
+		)
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1630,7 +2709,19 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 fieldSpecObj = (VsphereVmPowerOnOffLiveMountReply)this.Field;
             }
             string fieldSpecDoc = Mutation.VsphereVmPowerOnOffLiveMount(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		shouldForce = <System.Boolean>
+		# REQUIRED
+		powerStatus = <System.Boolean>
+	}
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1654,7 +2745,11 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 fieldSpecObj = (VsphereAsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.VsphereVmDeleteLiveMount(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.livemountId = <System.String>
+# OPTIONAL
+$inputs.Var.force = <System.Boolean>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1677,7 +2772,21 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 fieldSpecObj = (VsphereVmListEsxiDatastoresReply)this.Field;
             }
             string fieldSpecDoc = Mutation.VsphereVmListEsxiDatastores(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	loginInfo = @{
+		# REQUIRED
+		ip = <System.String>
+		# REQUIRED
+		password = <System.String>
+		# REQUIRED
+		username = <System.String>
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1700,7 +2809,17 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.VsphereVmMountRelocate(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		datastoreId = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1723,7 +2842,41 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.VsphereVmMountRelocateV2(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		diskDeviceKeyToStorageId = @(
+			@{
+				# OPTIONAL
+				storageLocationId = <System.String>
+				# REQUIRED
+				deviceKey = <System.Int32>
+			}
+		)
+		# OPTIONAL
+		storageLocationId = <System.String>
+		# OPTIONAL
+		computeClusterId = <System.String>
+		# OPTIONAL
+		hostId = <System.String>
+		# OPTIONAL
+		networkDeviceKeyToNetworkName = @(
+			@{
+				# REQUIRED
+				deviceKey = <System.Int32>
+				# REQUIRED
+				networkName = <System.String>
+			}
+		)
+		# OPTIONAL
+		resourcePoolId = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1746,7 +2899,16 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 fieldSpecObj = (RequestSuccess)this.Field;
             }
             string fieldSpecDoc = Mutation.VsphereExcludeVmDisks(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @(
+	@{
+		# REQUIRED
+		virtualDiskFid = <System.String>
+		# OPTIONAL
+		excludeFromSnapshots = <System.Boolean>
+}
+)";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1769,7 +2931,26 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.VsphereVmDownloadSnapshotFiles(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	snapshotFid = <System.String>
+	# REQUIRED
+	paths = @(
+		<System.String>
+	)
+	# OPTIONAL
+	deltaTypeFilter = @(
+		<DeltaType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DeltaType]) for enum values.
+	)
+	# OPTIONAL
+	nextSnapshotFid = <System.String>
+	# OPTIONAL
+	isLegalHoldDownload = <System.Boolean>
+	# OPTIONAL
+	userNote = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 

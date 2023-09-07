@@ -797,7 +797,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<ComputeClusterIofilterStatus>)this.Field;
             }
             string fieldSpecDoc = Query.AllSlaIofilterStatuses(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.fid = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -820,7 +822,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<System.String>)this.Field;
             }
             string fieldSpecDoc = Query.AllCdpSlaVmNames(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.fid = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -871,7 +875,57 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (SlaDomainConnection)this.Field;
             }
             string fieldSpecDoc = Query.SlaDomains(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.last = <System.Int32>
+# OPTIONAL
+$inputs.Var.before = <System.String>
+# OPTIONAL
+$inputs.Var.sortBy = <SlaQuerySortByField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SlaQuerySortByField]) for enum values.
+# OPTIONAL
+$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$inputs.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = <GlobalSlaQueryFilterInputField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GlobalSlaQueryFilterInputField]) for enum values.
+		# OPTIONAL
+		text = <System.String>
+		# OPTIONAL
+		objectTypeList = @(
+			<SlaObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SlaObjectType]) for enum values.
+		)
+		# OPTIONAL
+		textList = @(
+			<System.String>
+		)
+}
+)
+# OPTIONAL
+$inputs.Var.contextFilter = <ContextFilterTypeEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ContextFilterTypeEnum]) for enum values.
+# OPTIONAL
+$inputs.Var.contextFilterInput = @(
+	@{
+		# REQUIRED
+		field = <System.String>
+		# REQUIRED
+		text = <System.String>
+}
+)
+# OPTIONAL
+$inputs.Var.shouldShowSyncStatus = <System.Boolean>
+# OPTIONAL
+$inputs.Var.shouldShowProtectedObjectCount = <System.Boolean>
+# OPTIONAL
+$inputs.Var.shouldShowUpgradeInfo = <System.Boolean>
+# OPTIONAL
+$inputs.Var.showRemoteSlas = <System.Boolean>
+# OPTIONAL
+$inputs.Var.shouldShowPausedClusters = <System.Boolean>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -918,7 +972,52 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<SlaDomainWithWarnings>)this.Field;
             }
             string fieldSpecDoc = Query.SlaDomainWithWarningsList(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.last = <System.Int32>
+# OPTIONAL
+$inputs.Var.before = <System.String>
+# OPTIONAL
+$inputs.Var.sortBy = <SlaQuerySortByField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SlaQuerySortByField]) for enum values.
+# OPTIONAL
+$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$inputs.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = <GlobalSlaQueryFilterInputField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GlobalSlaQueryFilterInputField]) for enum values.
+		# OPTIONAL
+		text = <System.String>
+		# OPTIONAL
+		objectTypeList = @(
+			<SlaObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SlaObjectType]) for enum values.
+		)
+		# OPTIONAL
+		textList = @(
+			<System.String>
+		)
+}
+)
+# OPTIONAL
+$inputs.Var.contextFilter = <ContextFilterTypeEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ContextFilterTypeEnum]) for enum values.
+# OPTIONAL
+$inputs.Var.objectIds = @(
+	<System.String>
+)
+# OPTIONAL
+$inputs.Var.applicableSnappableTypes = @(
+	<WorkloadLevelHierarchy> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
+)
+# OPTIONAL
+$inputs.Var.snapshotIds = @(
+	<System.String>
+)
+# OPTIONAL
+$inputs.Var.operation = <SlaWarningsOperation> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SlaWarningsOperation]) for enum values.";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -969,7 +1068,57 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (GlobalSlaForFilterConnection)this.Field;
             }
             string fieldSpecDoc = Query.GlobalSlaFilterConnection(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.last = <System.Int32>
+# OPTIONAL
+$inputs.Var.before = <System.String>
+# OPTIONAL
+$inputs.Var.sortBy = <SlaQuerySortByField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SlaQuerySortByField]) for enum values.
+# OPTIONAL
+$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$inputs.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = <GlobalSlaQueryFilterInputField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GlobalSlaQueryFilterInputField]) for enum values.
+		# OPTIONAL
+		text = <System.String>
+		# OPTIONAL
+		objectTypeList = @(
+			<SlaObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SlaObjectType]) for enum values.
+		)
+		# OPTIONAL
+		textList = @(
+			<System.String>
+		)
+}
+)
+# OPTIONAL
+$inputs.Var.contextFilter = <ContextFilterTypeEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ContextFilterTypeEnum]) for enum values.
+# OPTIONAL
+$inputs.Var.contextFilterInput = @(
+	@{
+		# REQUIRED
+		field = <System.String>
+		# REQUIRED
+		text = <System.String>
+}
+)
+# OPTIONAL
+$inputs.Var.shouldShowSyncStatus = <System.Boolean>
+# OPTIONAL
+$inputs.Var.shouldShowProtectedObjectCount = <System.Boolean>
+# OPTIONAL
+$inputs.Var.shouldShowUpgradeInfo = <System.Boolean>
+# OPTIONAL
+$inputs.Var.showRemoteSlas = <System.Boolean>
+# OPTIONAL
+$inputs.Var.shouldShowPausedClusters = <System.Boolean>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1000,7 +1149,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (SlaDomain)this.Field;
             }
             string fieldSpecDoc = Query.SlaDomain(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.id = <System.String>
+# OPTIONAL
+$inputs.Var.shouldShowSyncStatus = <System.Boolean>
+# OPTIONAL
+$inputs.Var.shouldShowUpgradeInfo = <System.Boolean>
+# OPTIONAL
+$inputs.Var.shouldShowPausedClusters = <System.Boolean>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1025,7 +1182,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (SlaDomainWithWarnings)this.Field;
             }
             string fieldSpecDoc = Query.SlaDomainWithWarnings(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.id = <System.String>
+# REQUIRED
+$inputs.Var.objectIds = @(
+	<System.String>
+)
+# OPTIONAL
+$inputs.Var.applicableSnappableTypes = @(
+	<WorkloadLevelHierarchy> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
+)";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1048,7 +1215,128 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (SlaArchivalValidationWithWarnings)this.Field;
             }
             string fieldSpecDoc = Query.SlaArchivalValidationWarnings(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	snapshotSchedule = @{
+		# OPTIONAL
+		minute = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+		}
+		# OPTIONAL
+		hourly = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+		}
+		# OPTIONAL
+		daily = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+		}
+		# OPTIONAL
+		weekly = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			dayOfWeek = <DayOfWeek> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+		}
+		# OPTIONAL
+		monthly = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			dayOfMonth = <DayOfMonth> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfMonth]) for enum values.
+		}
+		# OPTIONAL
+		quarterly = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			dayOfQuarter = <DayOfQuarter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfQuarter]) for enum values.
+			# OPTIONAL
+			quarterStartMonth = <Month> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+		}
+		# OPTIONAL
+		yearly = @{
+			# OPTIONAL
+			basicSchedule = @{
+				# OPTIONAL
+				frequency = <System.Int32>
+				# OPTIONAL
+				retention = <System.Int32>
+				# OPTIONAL
+				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			dayOfYear = <DayOfYear> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfYear]) for enum values.
+			# OPTIONAL
+			yearStartMonth = <Month> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+		}
+	}
+	# OPTIONAL
+	archivalThreshold = <System.Int32>
+	# OPTIONAL
+	archivalThresholdUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+	# OPTIONAL
+	archivalGroupId = <System.String>
+	# OPTIONAL
+	archivalLocationToClusterMapping = @(
+		@{
+			# OPTIONAL
+			clusterUuid = <System.String>
+			# OPTIONAL
+			locationId = <System.String>
+		}
+	)
+	# OPTIONAL
+	frequencies = @(
+		<RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+	)
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1079,7 +1367,59 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (CountOfObjectsProtectedBySlAsResult)this.Field;
             }
             string fieldSpecDoc = Query.CountOfObjectsProtectedBySlas(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.rootOptionalFid = <System.String>
+# REQUIRED
+$inputs.Var.slaIds = @(
+	<System.String>
+)
+# OPTIONAL
+$inputs.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+		)
+}
+)
+# OPTIONAL
+$inputs.Var.typeFilter = @(
+	<HierarchyObjectTypeEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]) for enum values.
+)";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1116,7 +1456,28 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<SlaAuditDetail>)this.Field;
             }
             string fieldSpecDoc = Query.SlaAuditDetail(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.last = <System.Int32>
+# OPTIONAL
+$inputs.Var.before = <System.String>
+# REQUIRED
+$inputs.Var.SlaId = <System.String>
+# OPTIONAL
+$inputs.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = <SLAAuditDetailFilterFieldEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SLAAuditDetailFilterFieldEnum]) for enum values.
+		# OPTIONAL
+		text = <System.String>
+}
+)
+# OPTIONAL
+$inputs.Var.timezone = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1139,7 +1500,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<SlaDomain>)this.Field;
             }
             string fieldSpecDoc = Query.AllSlaSummariesByIds(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.slaIds = @(
+	<System.String>
+)";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1174,7 +1539,26 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (GlobalSlaStatusConnection)this.Field;
             }
             string fieldSpecDoc = Query.GlobalSlaStatuses(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.last = <System.Int32>
+# OPTIONAL
+$inputs.Var.before = <System.String>
+# OPTIONAL
+$inputs.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = <SlaStatusFilterField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SlaStatusFilterField]) for enum values.
+		# OPTIONAL
+		text = <System.String>
+}
+)
+# REQUIRED
+$inputs.Var.SlaId = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1207,7 +1591,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (ClusterConnection)this.Field;
             }
             string fieldSpecDoc = Query.ProtectedClustersForGlobalSla(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.last = <System.Int32>
+# OPTIONAL
+$inputs.Var.before = <System.String>
+# REQUIRED
+$inputs.Var.slaId = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1230,7 +1624,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<HierarchyObject>)this.Field;
             }
             string fieldSpecDoc = Query.SlaConflictObjects(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.fids = @(
+	<System.String>
+)";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1263,7 +1661,57 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (ManagedVolumeConnection)this.Field;
             }
             string fieldSpecDoc = Query.SlaManagedVolumes(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.sortBy = <HierarchySortByField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+# OPTIONAL
+$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$inputs.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+		)
+}
+)";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1286,7 +1734,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (ManagedVolume)this.Field;
             }
             string fieldSpecDoc = Query.SlaManagedVolume(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.fid = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1317,7 +1767,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (ClusterSlaDomainConnection)this.Field;
             }
             string fieldSpecDoc = Query.ClusterSlaDomains(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.last = <System.Int32>
+# OPTIONAL
+$inputs.Var.before = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1348,7 +1806,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (ClusterSlaDomainForFilterConnection)this.Field;
             }
             string fieldSpecDoc = Query.ClusterSlaDomainFilterConnection(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.last = <System.Int32>
+# OPTIONAL
+$inputs.Var.before = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1372,7 +1838,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (VerifySlaWithReplicationToClusterResponse)this.Field;
             }
             string fieldSpecDoc = Query.VerifySlaWithReplicationToCluster(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.cdmClusterUUID = <System.String>
+# REQUIRED
+$inputs.Var.includeArchived = <System.Boolean>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1396,7 +1866,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (DownloadSlaWithReplicationCsvReply)this.Field;
             }
             string fieldSpecDoc = Query.DownloadSlaWithReplicationCsv(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.cdmClusterUUID = <System.String>
+# REQUIRED
+$inputs.Var.includeArchived = <System.Boolean>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1419,7 +1893,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<SlaInfo>)this.Field;
             }
             string fieldSpecDoc = Query.AllClusterGlobalSlas(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.cdmClusterUUID = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1442,7 +1918,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (List<NcdSlaComplianceData>)this.Field;
             }
             string fieldSpecDoc = Query.AllNcdSlaComplianceData(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.clusters = @(
+	<System.String>
+)";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
