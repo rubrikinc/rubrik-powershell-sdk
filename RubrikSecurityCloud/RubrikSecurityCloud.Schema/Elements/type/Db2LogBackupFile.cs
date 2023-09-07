@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? BackupFileSizeInBytes
         // GraphQL -> backupFileSizeInBytes: Long (scalar)
-        if (this.BackupFileSizeInBytes == null && Exploration.Includes(parent + ".backupFileSizeInBytes", true))
+        if (this.BackupFileSizeInBytes == null && ec.Includes("backupFileSizeInBytes",true))
         {
             this.BackupFileSizeInBytes = new System.Int64();
         }
         //      C# -> System.String? BackupId
         // GraphQL -> backupId: String (scalar)
-        if (this.BackupId == null && Exploration.Includes(parent + ".backupId", true))
+        if (this.BackupId == null && ec.Includes("backupId",true))
         {
             this.BackupId = "FETCH";
         }
         //      C# -> System.String? DestinationPath
         // GraphQL -> destinationPath: String (scalar)
-        if (this.DestinationPath == null && Exploration.Includes(parent + ".destinationPath", true))
+        if (this.DestinationPath == null && ec.Includes("destinationPath",true))
         {
             this.DestinationPath = "FETCH";
         }
         //      C# -> DateTime? EndTime
         // GraphQL -> endTime: DateTime (scalar)
-        if (this.EndTime == null && Exploration.Includes(parent + ".endTime", true))
+        if (this.EndTime == null && ec.Includes("endTime",true))
         {
             this.EndTime = new DateTime();
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<Db2LogBackupFile> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new Db2LogBackupFile());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<Db2LogBackupFile> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

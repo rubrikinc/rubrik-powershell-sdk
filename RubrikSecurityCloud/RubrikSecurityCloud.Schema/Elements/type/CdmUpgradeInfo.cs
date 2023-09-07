@@ -398,157 +398,156 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ClusterJobStatusTypeEnum? ClusterJobStatus
         // GraphQL -> clusterJobStatus: ClusterJobStatusTypeEnum (enum)
-        if (this.ClusterJobStatus == null && Exploration.Includes(parent + ".clusterJobStatus", true))
+        if (this.ClusterJobStatus == null && ec.Includes("clusterJobStatus",true))
         {
             this.ClusterJobStatus = new ClusterJobStatusTypeEnum();
         }
         //      C# -> VersionStatus? VersionStatus
         // GraphQL -> versionStatus: VersionStatus (enum)
-        if (this.VersionStatus == null && Exploration.Includes(parent + ".versionStatus", true))
+        if (this.VersionStatus == null && ec.Includes("versionStatus",true))
         {
             this.VersionStatus = new VersionStatus();
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
-        if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
+        if (this.ClusterUuid == null && ec.Includes("clusterUuid",true))
         {
             this.ClusterUuid = "FETCH";
         }
         //      C# -> System.Single? CurrentStateProgress
         // GraphQL -> currentStateProgress: Float (scalar)
-        if (this.CurrentStateProgress == null && Exploration.Includes(parent + ".currentStateProgress", true))
+        if (this.CurrentStateProgress == null && ec.Includes("currentStateProgress",true))
         {
             this.CurrentStateProgress = new System.Single();
         }
         //      C# -> System.String? DownloadedVersion
         // GraphQL -> downloadedVersion: String (scalar)
-        if (this.DownloadedVersion == null && Exploration.Includes(parent + ".downloadedVersion", true))
+        if (this.DownloadedVersion == null && ec.Includes("downloadedVersion",true))
         {
             this.DownloadedVersion = "FETCH";
         }
         //      C# -> System.Boolean? FastUpgradePreferred
         // GraphQL -> fastUpgradePreferred: Boolean (scalar)
-        if (this.FastUpgradePreferred == null && Exploration.Includes(parent + ".fastUpgradePreferred", true))
+        if (this.FastUpgradePreferred == null && ec.Includes("fastUpgradePreferred",true))
         {
             this.FastUpgradePreferred = true;
         }
         //      C# -> System.String? FinishedStates
         // GraphQL -> finishedStates: String (scalar)
-        if (this.FinishedStates == null && Exploration.Includes(parent + ".finishedStates", true))
+        if (this.FinishedStates == null && ec.Includes("finishedStates",true))
         {
             this.FinishedStates = "FETCH";
         }
         //      C# -> System.Single? OverallProgress
         // GraphQL -> overallProgress: Float (scalar)
-        if (this.OverallProgress == null && Exploration.Includes(parent + ".overallProgress", true))
+        if (this.OverallProgress == null && ec.Includes("overallProgress",true))
         {
             this.OverallProgress = new System.Single();
         }
         //      C# -> System.String? PendingStates
         // GraphQL -> pendingStates: String (scalar)
-        if (this.PendingStates == null && Exploration.Includes(parent + ".pendingStates", true))
+        if (this.PendingStates == null && ec.Includes("pendingStates",true))
         {
             this.PendingStates = "FETCH";
         }
         //      C# -> System.String? PreviousVersion
         // GraphQL -> previousVersion: String (scalar)
-        if (this.PreviousVersion == null && Exploration.Includes(parent + ".previousVersion", true))
+        if (this.PreviousVersion == null && ec.Includes("previousVersion",true))
         {
             this.PreviousVersion = "FETCH";
         }
         //      C# -> System.String? ScheduleUpgradeAction
         // GraphQL -> scheduleUpgradeAction: String (scalar)
-        if (this.ScheduleUpgradeAction == null && Exploration.Includes(parent + ".scheduleUpgradeAction", true))
+        if (this.ScheduleUpgradeAction == null && ec.Includes("scheduleUpgradeAction",true))
         {
             this.ScheduleUpgradeAction = "FETCH";
         }
         //      C# -> DateTime? ScheduleUpgradeAt
         // GraphQL -> scheduleUpgradeAt: DateTime (scalar)
-        if (this.ScheduleUpgradeAt == null && Exploration.Includes(parent + ".scheduleUpgradeAt", true))
+        if (this.ScheduleUpgradeAt == null && ec.Includes("scheduleUpgradeAt",true))
         {
             this.ScheduleUpgradeAt = new DateTime();
         }
         //      C# -> System.String? ScheduleUpgradeMode
         // GraphQL -> scheduleUpgradeMode: String (scalar)
-        if (this.ScheduleUpgradeMode == null && Exploration.Includes(parent + ".scheduleUpgradeMode", true))
+        if (this.ScheduleUpgradeMode == null && ec.Includes("scheduleUpgradeMode",true))
         {
             this.ScheduleUpgradeMode = "FETCH";
         }
         //      C# -> System.String? StateMachineStatus
         // GraphQL -> stateMachineStatus: String (scalar)
-        if (this.StateMachineStatus == null && Exploration.Includes(parent + ".stateMachineStatus", true))
+        if (this.StateMachineStatus == null && ec.Includes("stateMachineStatus",true))
         {
             this.StateMachineStatus = "FETCH";
         }
         //      C# -> DateTime? StateMachineStatusAt
         // GraphQL -> stateMachineStatusAt: DateTime (scalar)
-        if (this.StateMachineStatusAt == null && Exploration.Includes(parent + ".stateMachineStatusAt", true))
+        if (this.StateMachineStatusAt == null && ec.Includes("stateMachineStatusAt",true))
         {
             this.StateMachineStatusAt = new DateTime();
         }
         //      C# -> DateTime? UpgradeEndAt
         // GraphQL -> upgradeEndAt: DateTime (scalar)
-        if (this.UpgradeEndAt == null && Exploration.Includes(parent + ".upgradeEndAt", true))
+        if (this.UpgradeEndAt == null && ec.Includes("upgradeEndAt",true))
         {
             this.UpgradeEndAt = new DateTime();
         }
         //      C# -> System.String? UpgradeEventSeriesId
         // GraphQL -> upgradeEventSeriesId: String (scalar)
-        if (this.UpgradeEventSeriesId == null && Exploration.Includes(parent + ".upgradeEventSeriesId", true))
+        if (this.UpgradeEventSeriesId == null && ec.Includes("upgradeEventSeriesId",true))
         {
             this.UpgradeEventSeriesId = "FETCH";
         }
         //      C# -> DateTime? UpgradeStartAt
         // GraphQL -> upgradeStartAt: DateTime (scalar)
-        if (this.UpgradeStartAt == null && Exploration.Includes(parent + ".upgradeStartAt", true))
+        if (this.UpgradeStartAt == null && ec.Includes("upgradeStartAt",true))
         {
             this.UpgradeStartAt = new DateTime();
         }
         //      C# -> System.String? Version
         // GraphQL -> version: String! (scalar)
-        if (this.Version == null && Exploration.Includes(parent + ".version", true))
+        if (this.Version == null && ec.Includes("version",true))
         {
             this.Version = "FETCH";
         }
         //      C# -> AuthorizedOperations? AuthorizedOperations
         // GraphQL -> authorizedOperations: AuthorizedOperations! (type)
-        if (this.AuthorizedOperations == null && Exploration.Includes(parent + ".authorizedOperations"))
+        if (this.AuthorizedOperations == null && ec.Includes("authorizedOperations",false))
         {
             this.AuthorizedOperations = new AuthorizedOperations();
-            this.AuthorizedOperations.ApplyExploratoryFieldSpec(parent + ".authorizedOperations");
+            this.AuthorizedOperations.ApplyExploratoryFieldSpec(ec.NewChild("authorizedOperations"));
         }
         //      C# -> List<CdmNodeDetail>? CdmClusterNodeDetails
         // GraphQL -> cdmClusterNodeDetails: [CdmNodeDetail!]! (type)
-        if (this.CdmClusterNodeDetails == null && Exploration.Includes(parent + ".cdmClusterNodeDetails"))
+        if (this.CdmClusterNodeDetails == null && ec.Includes("cdmClusterNodeDetails",false))
         {
             this.CdmClusterNodeDetails = new List<CdmNodeDetail>();
-            this.CdmClusterNodeDetails.ApplyExploratoryFieldSpec(parent + ".cdmClusterNodeDetails");
+            this.CdmClusterNodeDetails.ApplyExploratoryFieldSpec(ec.NewChild("cdmClusterNodeDetails"));
         }
         //      C# -> CdmClusterStatus? ClusterStatus
         // GraphQL -> clusterStatus: CdmClusterStatus (type)
-        if (this.ClusterStatus == null && Exploration.Includes(parent + ".clusterStatus"))
+        if (this.ClusterStatus == null && ec.Includes("clusterStatus",false))
         {
             this.ClusterStatus = new CdmClusterStatus();
-            this.ClusterStatus.ApplyExploratoryFieldSpec(parent + ".clusterStatus");
+            this.ClusterStatus.ApplyExploratoryFieldSpec(ec.NewChild("clusterStatus"));
         }
         //      C# -> UpgradeDurationReply? LastUpgradeDuration
         // GraphQL -> lastUpgradeDuration: UpgradeDurationReply (type)
-        if (this.LastUpgradeDuration == null && Exploration.Includes(parent + ".lastUpgradeDuration"))
+        if (this.LastUpgradeDuration == null && ec.Includes("lastUpgradeDuration",false))
         {
             this.LastUpgradeDuration = new UpgradeDurationReply();
-            this.LastUpgradeDuration.ApplyExploratoryFieldSpec(parent + ".lastUpgradeDuration");
+            this.LastUpgradeDuration.ApplyExploratoryFieldSpec(ec.NewChild("lastUpgradeDuration"));
         }
         //      C# -> UpgradeRecommendationInfo? UpgradeRecommendationInfo
         // GraphQL -> upgradeRecommendationInfo: UpgradeRecommendationInfo (type)
-        if (this.UpgradeRecommendationInfo == null && Exploration.Includes(parent + ".upgradeRecommendationInfo"))
+        if (this.UpgradeRecommendationInfo == null && ec.Includes("upgradeRecommendationInfo",false))
         {
             this.UpgradeRecommendationInfo = new UpgradeRecommendationInfo();
-            this.UpgradeRecommendationInfo.ApplyExploratoryFieldSpec(parent + ".upgradeRecommendationInfo");
+            this.UpgradeRecommendationInfo.ApplyExploratoryFieldSpec(ec.NewChild("upgradeRecommendationInfo"));
         }
     }
 
@@ -582,12 +581,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CdmUpgradeInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CdmUpgradeInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CdmUpgradeInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> CdmJobStatus? JobStatus
         // GraphQL -> jobStatus: CdmJobStatus! (enum)
-        if (this.JobStatus == null && Exploration.Includes(parent + ".jobStatus", true))
+        if (this.JobStatus == null && ec.Includes("jobStatus",true))
         {
             this.JobStatus = new CdmJobStatus();
         }
         //      C# -> CcpJobType? JobType
         // GraphQL -> jobType: CcpJobType! (enum)
-        if (this.JobType == null && Exploration.Includes(parent + ".jobType", true))
+        if (this.JobType == null && ec.Includes("jobType",true))
         {
             this.JobType = new CcpJobType();
         }
         //      C# -> System.Int32? JobProgress
         // GraphQL -> jobProgress: Int! (scalar)
-        if (this.JobProgress == null && Exploration.Includes(parent + ".jobProgress", true))
+        if (this.JobProgress == null && ec.Includes("jobProgress",true))
         {
             this.JobProgress = Int32.MinValue;
         }
         //      C# -> System.String? Message
         // GraphQL -> message: String! (scalar)
-        if (this.Message == null && Exploration.Includes(parent + ".message", true))
+        if (this.Message == null && ec.Includes("message",true))
         {
             this.Message = "FETCH";
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<DeleteFailedClusterOperationJobDataReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new DeleteFailedClusterOperationJobDataReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<DeleteFailedClusterOperationJobDataReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -98,29 +98,28 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ClusterConnection? ClusterConnection
         // GraphQL -> clusterConnection: ClusterConnection! (type)
-        if (this.ClusterConnection == null && Exploration.Includes(parent + ".clusterConnection"))
+        if (this.ClusterConnection == null && ec.Includes("clusterConnection",false))
         {
             this.ClusterConnection = new ClusterConnection();
-            this.ClusterConnection.ApplyExploratoryFieldSpec(parent + ".clusterConnection");
+            this.ClusterConnection.ApplyExploratoryFieldSpec(ec.NewChild("clusterConnection"));
         }
         //      C# -> List<ClusterGroupBy>? ClusterGroupByField
         // GraphQL -> clusterGroupBy: [ClusterGroupBy!]! (type)
-        if (this.ClusterGroupByField == null && Exploration.Includes(parent + ".clusterGroupBy"))
+        if (this.ClusterGroupByField == null && ec.Includes("clusterGroupBy",false))
         {
             this.ClusterGroupByField = new List<ClusterGroupBy>();
-            this.ClusterGroupByField.ApplyExploratoryFieldSpec(parent + ".clusterGroupBy");
+            this.ClusterGroupByField.ApplyExploratoryFieldSpec(ec.NewChild("clusterGroupBy"));
         }
         //      C# -> ClusterGroupByInfo? GroupByInfo
         // GraphQL -> groupByInfo: ClusterGroupByInfo! (union)
-        if (this.GroupByInfo == null && Exploration.Includes(parent + ".groupByInfo"))
+        if (this.GroupByInfo == null && ec.Includes("groupByInfo",false))
         {
             var impls = new List<ClusterGroupByInfo>();
-            impls.ApplyExploratoryFieldSpec(parent + ".groupByInfo");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
             this.GroupByInfo = (ClusterGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
         }
     }
@@ -155,12 +154,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ClusterGroupBy> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ClusterGroupBy());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ClusterGroupBy> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

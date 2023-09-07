@@ -98,29 +98,28 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<CloudDirectClusterRansomwareInvestigationEnablement>? CloudDirectClusters
         // GraphQL -> cloudDirectClusters: [CloudDirectClusterRansomwareInvestigationEnablement!] (type)
-        if (this.CloudDirectClusters == null && Exploration.Includes(parent + ".cloudDirectClusters"))
+        if (this.CloudDirectClusters == null && ec.Includes("cloudDirectClusters",false))
         {
             this.CloudDirectClusters = new List<CloudDirectClusterRansomwareInvestigationEnablement>();
-            this.CloudDirectClusters.ApplyExploratoryFieldSpec(parent + ".cloudDirectClusters");
+            this.CloudDirectClusters.ApplyExploratoryFieldSpec(ec.NewChild("cloudDirectClusters"));
         }
         //      C# -> List<Microsoft365RansomwareInvestigationEnablement>? Microsoft365Subscriptions
         // GraphQL -> microsoft365Subscriptions: [Microsoft365RansomwareInvestigationEnablement!] (type)
-        if (this.Microsoft365Subscriptions == null && Exploration.Includes(parent + ".microsoft365Subscriptions"))
+        if (this.Microsoft365Subscriptions == null && ec.Includes("microsoft365Subscriptions",false))
         {
             this.Microsoft365Subscriptions = new List<Microsoft365RansomwareInvestigationEnablement>();
-            this.Microsoft365Subscriptions.ApplyExploratoryFieldSpec(parent + ".microsoft365Subscriptions");
+            this.Microsoft365Subscriptions.ApplyExploratoryFieldSpec(ec.NewChild("microsoft365Subscriptions"));
         }
         //      C# -> List<RubrikCloudVaultRansomwareInvestigationEnablement>? RubrikCloudVaultLocations
         // GraphQL -> rubrikCloudVaultLocations: [RubrikCloudVaultRansomwareInvestigationEnablement!] (type)
-        if (this.RubrikCloudVaultLocations == null && Exploration.Includes(parent + ".rubrikCloudVaultLocations"))
+        if (this.RubrikCloudVaultLocations == null && ec.Includes("rubrikCloudVaultLocations",false))
         {
             this.RubrikCloudVaultLocations = new List<RubrikCloudVaultRansomwareInvestigationEnablement>();
-            this.RubrikCloudVaultLocations.ApplyExploratoryFieldSpec(parent + ".rubrikCloudVaultLocations");
+            this.RubrikCloudVaultLocations.ApplyExploratoryFieldSpec(ec.NewChild("rubrikCloudVaultLocations"));
         }
     }
 
@@ -154,12 +153,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RansomwareInvestigationEnablementReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RansomwareInvestigationEnablementReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<RansomwareInvestigationEnablementReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

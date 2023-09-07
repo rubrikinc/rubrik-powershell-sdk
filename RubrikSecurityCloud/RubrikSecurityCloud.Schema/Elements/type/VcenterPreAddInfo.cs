@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<ClusterHostGroupInfo>? ClusterHostGroupInfo
         // GraphQL -> clusterHostGroupInfo: [ClusterHostGroupInfo!]! (type)
-        if (this.ClusterHostGroupInfo == null && Exploration.Includes(parent + ".clusterHostGroupInfo"))
+        if (this.ClusterHostGroupInfo == null && ec.Includes("clusterHostGroupInfo",false))
         {
             this.ClusterHostGroupInfo = new List<ClusterHostGroupInfo>();
-            this.ClusterHostGroupInfo.ApplyExploratoryFieldSpec(parent + ".clusterHostGroupInfo");
+            this.ClusterHostGroupInfo.ApplyExploratoryFieldSpec(ec.NewChild("clusterHostGroupInfo"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VcenterPreAddInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VcenterPreAddInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VcenterPreAddInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

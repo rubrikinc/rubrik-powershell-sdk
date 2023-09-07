@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? NodeName
         // GraphQL -> nodeName: String! (scalar)
-        if (this.NodeName == null && Exploration.Includes(parent + ".nodeName", true))
+        if (this.NodeName == null && ec.Includes("nodeName",true))
         {
             this.NodeName = "FETCH";
         }
         //      C# -> RollingUpgradeNodeInfo? RuNodeInfo
         // GraphQL -> ruNodeInfo: RollingUpgradeNodeInfo (type)
-        if (this.RuNodeInfo == null && Exploration.Includes(parent + ".ruNodeInfo"))
+        if (this.RuNodeInfo == null && ec.Includes("ruNodeInfo",false))
         {
             this.RuNodeInfo = new RollingUpgradeNodeInfo();
-            this.RuNodeInfo.ApplyExploratoryFieldSpec(parent + ".ruNodeInfo");
+            this.RuNodeInfo.ApplyExploratoryFieldSpec(ec.NewChild("ruNodeInfo"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RollingUpgradeNodeInfoEntry> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RollingUpgradeNodeInfoEntry());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<RollingUpgradeNodeInfoEntry> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

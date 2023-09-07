@@ -92,27 +92,26 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> SlaArchivalWarning? Code
         // GraphQL -> code: SlaArchivalWarning! (enum)
-        if (this.Code == null && Exploration.Includes(parent + ".code", true))
+        if (this.Code == null && ec.Includes("code",true))
         {
             this.Code = new SlaArchivalWarning();
         }
         //      C# -> WarningSeverityEnum? Severity
         // GraphQL -> severity: WarningSeverityEnum! (enum)
-        if (this.Severity == null && Exploration.Includes(parent + ".severity", true))
+        if (this.Severity == null && ec.Includes("severity",true))
         {
             this.Severity = new WarningSeverityEnum();
         }
         //      C# -> SlaArchivalWarningsDetails? WarningDetails
         // GraphQL -> warningDetails: SlaArchivalWarningsDetails (interface)
-        if (this.WarningDetails == null && Exploration.Includes(parent + ".warningDetails"))
+        if (this.WarningDetails == null && ec.Includes("warningDetails",false))
         {
             var impls = new List<SlaArchivalWarningsDetails>();
-            impls.ApplyExploratoryFieldSpec(parent + ".warningDetails");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("warningDetails"));
             this.WarningDetails = (SlaArchivalWarningsDetails)InterfaceHelper.MakeCompositeFromList(impls);
         }
     }
@@ -147,12 +146,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SlaArchivalValidationWithWarnings> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SlaArchivalValidationWithWarnings());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SlaArchivalValidationWithWarnings> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

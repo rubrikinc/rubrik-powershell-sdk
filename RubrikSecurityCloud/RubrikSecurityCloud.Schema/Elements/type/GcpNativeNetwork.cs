@@ -109,34 +109,33 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? NativeProjectId
         // GraphQL -> nativeProjectId: String! (scalar)
-        if (this.NativeProjectId == null && Exploration.Includes(parent + ".nativeProjectId", true))
+        if (this.NativeProjectId == null && ec.Includes("nativeProjectId",true))
         {
             this.NativeProjectId = "FETCH";
         }
         //      C# -> List<GcpNativeFirewallRule>? FirewallRules
         // GraphQL -> firewallRules: [GcpNativeFirewallRule!]! (type)
-        if (this.FirewallRules == null && Exploration.Includes(parent + ".firewallRules"))
+        if (this.FirewallRules == null && ec.Includes("firewallRules",false))
         {
             this.FirewallRules = new List<GcpNativeFirewallRule>();
-            this.FirewallRules.ApplyExploratoryFieldSpec(parent + ".firewallRules");
+            this.FirewallRules.ApplyExploratoryFieldSpec(ec.NewChild("firewallRules"));
         }
         //      C# -> List<GcpNativeSubnetwork>? Subnetworks
         // GraphQL -> subnetworks: [GcpNativeSubnetwork!]! (type)
-        if (this.Subnetworks == null && Exploration.Includes(parent + ".subnetworks"))
+        if (this.Subnetworks == null && ec.Includes("subnetworks",false))
         {
             this.Subnetworks = new List<GcpNativeSubnetwork>();
-            this.Subnetworks.ApplyExploratoryFieldSpec(parent + ".subnetworks");
+            this.Subnetworks.ApplyExploratoryFieldSpec(ec.NewChild("subnetworks"));
         }
     }
 
@@ -170,12 +169,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GcpNativeNetwork> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GcpNativeNetwork());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<GcpNativeNetwork> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

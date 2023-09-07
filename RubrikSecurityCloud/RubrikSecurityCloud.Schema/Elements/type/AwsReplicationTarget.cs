@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> AwsNativeRegionForReplication? Region
         // GraphQL -> region: AwsNativeRegionForReplication! (enum)
-        if (this.Region == null && Exploration.Includes(parent + ".region", true))
+        if (this.Region == null && ec.Includes("region",true))
         {
             this.Region = new AwsNativeRegionForReplication();
         }
         //      C# -> System.String? AccountId
         // GraphQL -> accountId: String! (scalar)
-        if (this.AccountId == null && Exploration.Includes(parent + ".accountId", true))
+        if (this.AccountId == null && ec.Includes("accountId",true))
         {
             this.AccountId = "FETCH";
         }
         //      C# -> System.String? AccountName
         // GraphQL -> accountName: String! (scalar)
-        if (this.AccountName == null && Exploration.Includes(parent + ".accountName", true))
+        if (this.AccountName == null && ec.Includes("accountName",true))
         {
             this.AccountName = "FETCH";
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AwsReplicationTarget> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AwsReplicationTarget());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AwsReplicationTarget> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

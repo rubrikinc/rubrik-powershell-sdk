@@ -92,27 +92,26 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? BackupFileSizeInBytes
         // GraphQL -> backupFileSizeInBytes: Long! (scalar)
-        if (this.BackupFileSizeInBytes == null && Exploration.Includes(parent + ".backupFileSizeInBytes", true))
+        if (this.BackupFileSizeInBytes == null && ec.Includes("backupFileSizeInBytes",true))
         {
             this.BackupFileSizeInBytes = new System.Int64();
         }
         //      C# -> System.String? DestinationPath
         // GraphQL -> destinationPath: String! (scalar)
-        if (this.DestinationPath == null && Exploration.Includes(parent + ".destinationPath", true))
+        if (this.DestinationPath == null && ec.Includes("destinationPath",true))
         {
             this.DestinationPath = "FETCH";
         }
         //      C# -> Db2WorkloadDataBackupFile? Db2BackupFile
         // GraphQL -> db2BackupFile: Db2WorkloadDataBackupFile! (type)
-        if (this.Db2BackupFile == null && Exploration.Includes(parent + ".db2BackupFile"))
+        if (this.Db2BackupFile == null && ec.Includes("db2BackupFile",false))
         {
             this.Db2BackupFile = new Db2WorkloadDataBackupFile();
-            this.Db2BackupFile.ApplyExploratoryFieldSpec(parent + ".db2BackupFile");
+            this.Db2BackupFile.ApplyExploratoryFieldSpec(ec.NewChild("db2BackupFile"));
         }
     }
 
@@ -146,12 +145,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<Db2DataBackupFile> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new Db2DataBackupFile());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<Db2DataBackupFile> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

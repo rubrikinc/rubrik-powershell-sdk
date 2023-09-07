@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> FileSystemType? FileSystemType
         // GraphQL -> fileSystemType: FileSystemType! (enum)
-        if (this.FileSystemType == null && Exploration.Includes(parent + ".fileSystemType", true))
+        if (this.FileSystemType == null && ec.Includes("fileSystemType",true))
         {
             this.FileSystemType = new FileSystemType();
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> List<System.String>? MountPoints
         // GraphQL -> mountPoints: [String!]! (scalar)
-        if (this.MountPoints == null && Exploration.Includes(parent + ".mountPoints", true))
+        if (this.MountPoints == null && ec.Includes("mountPoints",true))
         {
             this.MountPoints = new List<System.String>();
         }
         //      C# -> System.Int64? Size
         // GraphQL -> size: Long! (scalar)
-        if (this.Size == null && Exploration.Includes(parent + ".size", true))
+        if (this.Size == null && ec.Includes("size",true))
         {
             this.Size = new System.Int64();
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VolumeGroupSnapshotVolumeSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VolumeGroupSnapshotVolumeSummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VolumeGroupSnapshotVolumeSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

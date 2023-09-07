@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<HostConnectivitySummary>? Connectivity
         // GraphQL -> connectivity: [HostConnectivitySummary!]! (type)
-        if (this.Connectivity == null && Exploration.Includes(parent + ".connectivity"))
+        if (this.Connectivity == null && ec.Includes("connectivity",false))
         {
             this.Connectivity = new List<HostConnectivitySummary>();
-            this.Connectivity.ApplyExploratoryFieldSpec(parent + ".connectivity");
+            this.Connectivity.ApplyExploratoryFieldSpec(ec.NewChild("connectivity"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<HostDiagnosisSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new HostDiagnosisSummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<HostDiagnosisSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

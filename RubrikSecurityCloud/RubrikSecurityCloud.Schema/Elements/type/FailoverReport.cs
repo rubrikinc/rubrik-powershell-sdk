@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> AppflowsBlueprintFailoverReportStatusEnum? Status
         // GraphQL -> status: AppflowsBlueprintFailoverReportStatusEnum! (enum)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = new AppflowsBlueprintFailoverReportStatusEnum();
         }
         //      C# -> DateTime? ExpireTime
         // GraphQL -> expireTime: DateTime! (scalar)
-        if (this.ExpireTime == null && Exploration.Includes(parent + ".expireTime", true))
+        if (this.ExpireTime == null && ec.Includes("expireTime",true))
         {
             this.ExpireTime = new DateTime();
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.String? ReportUrl
         // GraphQL -> reportUrl: String (scalar)
-        if (this.ReportUrl == null && Exploration.Includes(parent + ".reportUrl", true))
+        if (this.ReportUrl == null && ec.Includes("reportUrl",true))
         {
             this.ReportUrl = "FETCH";
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<FailoverReport> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new FailoverReport());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<FailoverReport> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

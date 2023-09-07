@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> RiskLevelType? Risk
         // GraphQL -> risk: RiskLevelType! (enum)
-        if (this.Risk == null && Exploration.Includes(parent + ".risk", true))
+        if (this.Risk == null && ec.Includes("risk",true))
         {
             this.Risk = new RiskLevelType();
         }
         //      C# -> System.String? AnalyzerId
         // GraphQL -> analyzerId: String! (scalar)
-        if (this.AnalyzerId == null && Exploration.Includes(parent + ".analyzerId", true))
+        if (this.AnalyzerId == null && ec.Includes("analyzerId",true))
         {
             this.AnalyzerId = "FETCH";
         }
         //      C# -> System.Int32? RiskVersion
         // GraphQL -> riskVersion: Int! (scalar)
-        if (this.RiskVersion == null && Exploration.Includes(parent + ".riskVersion", true))
+        if (this.RiskVersion == null && ec.Includes("riskVersion",true))
         {
             this.RiskVersion = Int32.MinValue;
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AnalyzerRiskInstance> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AnalyzerRiskInstance());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AnalyzerRiskInstance> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

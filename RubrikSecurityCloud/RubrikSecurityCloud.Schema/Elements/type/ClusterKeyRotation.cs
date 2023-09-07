@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ClusterKeyProtection? ProtectionType
         // GraphQL -> protectionType: ClusterKeyProtection! (enum)
-        if (this.ProtectionType == null && Exploration.Includes(parent + ".protectionType", true))
+        if (this.ProtectionType == null && ec.Includes("protectionType",true))
         {
             this.ProtectionType = new ClusterKeyProtection();
         }
         //      C# -> ClusterKeyRotationState? State
         // GraphQL -> state: ClusterKeyRotationState! (enum)
-        if (this.State == null && Exploration.Includes(parent + ".state", true))
+        if (this.State == null && ec.Includes("state",true))
         {
             this.State = new ClusterKeyRotationState();
         }
         //      C# -> DateTime? CompletedAt
         // GraphQL -> completedAt: DateTime (scalar)
-        if (this.CompletedAt == null && Exploration.Includes(parent + ".completedAt", true))
+        if (this.CompletedAt == null && ec.Includes("completedAt",true))
         {
             this.CompletedAt = new DateTime();
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ClusterKeyRotation> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ClusterKeyRotation());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ClusterKeyRotation> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

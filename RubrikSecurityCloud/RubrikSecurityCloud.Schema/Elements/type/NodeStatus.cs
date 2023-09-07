@@ -148,51 +148,50 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? BrikId
         // GraphQL -> brikId: String! (scalar)
-        if (this.BrikId == null && Exploration.Includes(parent + ".brikId", true))
+        if (this.BrikId == null && ec.Includes("brikId",true))
         {
             this.BrikId = "FETCH";
         }
         //      C# -> System.Boolean? HasUnavailableDisks
         // GraphQL -> hasUnavailableDisks: Boolean (scalar)
-        if (this.HasUnavailableDisks == null && Exploration.Includes(parent + ".hasUnavailableDisks", true))
+        if (this.HasUnavailableDisks == null && ec.Includes("hasUnavailableDisks",true))
         {
             this.HasUnavailableDisks = true;
         }
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String (scalar)
-        if (this.Hostname == null && Exploration.Includes(parent + ".hostname", true))
+        if (this.Hostname == null && ec.Includes("hostname",true))
         {
             this.Hostname = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.String? IpAddress
         // GraphQL -> ipAddress: String (scalar)
-        if (this.IpAddress == null && Exploration.Includes(parent + ".ipAddress", true))
+        if (this.IpAddress == null && ec.Includes("ipAddress",true))
         {
             this.IpAddress = "FETCH";
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = "FETCH";
         }
         //      C# -> SupportTunnelInfo? SupportTunnel
         // GraphQL -> supportTunnel: SupportTunnelInfo (type)
-        if (this.SupportTunnel == null && Exploration.Includes(parent + ".supportTunnel"))
+        if (this.SupportTunnel == null && ec.Includes("supportTunnel",false))
         {
             this.SupportTunnel = new SupportTunnelInfo();
-            this.SupportTunnel.ApplyExploratoryFieldSpec(parent + ".supportTunnel");
+            this.SupportTunnel.ApplyExploratoryFieldSpec(ec.NewChild("supportTunnel"));
         }
     }
 
@@ -226,12 +225,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<NodeStatus> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new NodeStatus());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<NodeStatus> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

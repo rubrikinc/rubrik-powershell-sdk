@@ -145,48 +145,47 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> SapHanaEncryptionProvider? EncryptionProvider
         // GraphQL -> encryptionProvider: SapHanaEncryptionProvider! (enum)
-        if (this.EncryptionProvider == null && Exploration.Includes(parent + ".encryptionProvider", true))
+        if (this.EncryptionProvider == null && ec.Includes("encryptionProvider",true))
         {
             this.EncryptionProvider = new SapHanaEncryptionProvider();
         }
         //      C# -> System.String? CryptoLibPath
         // GraphQL -> cryptoLibPath: String! (scalar)
-        if (this.CryptoLibPath == null && Exploration.Includes(parent + ".cryptoLibPath", true))
+        if (this.CryptoLibPath == null && ec.Includes("cryptoLibPath",true))
         {
             this.CryptoLibPath = "FETCH";
         }
         //      C# -> System.String? HostNameInCertificate
         // GraphQL -> hostNameInCertificate: String! (scalar)
-        if (this.HostNameInCertificate == null && Exploration.Includes(parent + ".hostNameInCertificate", true))
+        if (this.HostNameInCertificate == null && ec.Includes("hostNameInCertificate",true))
         {
             this.HostNameInCertificate = "FETCH";
         }
         //      C# -> System.String? KeyStorePath
         // GraphQL -> keyStorePath: String! (scalar)
-        if (this.KeyStorePath == null && Exploration.Includes(parent + ".keyStorePath", true))
+        if (this.KeyStorePath == null && ec.Includes("keyStorePath",true))
         {
             this.KeyStorePath = "FETCH";
         }
         //      C# -> System.Boolean? ShouldEncrypt
         // GraphQL -> shouldEncrypt: Boolean! (scalar)
-        if (this.ShouldEncrypt == null && Exploration.Includes(parent + ".shouldEncrypt", true))
+        if (this.ShouldEncrypt == null && ec.Includes("shouldEncrypt",true))
         {
             this.ShouldEncrypt = true;
         }
         //      C# -> System.Boolean? ShouldValidateCertificate
         // GraphQL -> shouldValidateCertificate: Boolean! (scalar)
-        if (this.ShouldValidateCertificate == null && Exploration.Includes(parent + ".shouldValidateCertificate", true))
+        if (this.ShouldValidateCertificate == null && ec.Includes("shouldValidateCertificate",true))
         {
             this.ShouldValidateCertificate = true;
         }
         //      C# -> System.String? TrustStorePath
         // GraphQL -> trustStorePath: String! (scalar)
-        if (this.TrustStorePath == null && Exploration.Includes(parent + ".trustStorePath", true))
+        if (this.TrustStorePath == null && ec.Includes("trustStorePath",true))
         {
             this.TrustStorePath = "FETCH";
         }
@@ -222,12 +221,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SapHanaSslInformation> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SapHanaSslInformation());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SapHanaSslInformation> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

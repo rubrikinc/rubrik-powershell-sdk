@@ -112,35 +112,34 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<System.String>? ExcludedVmdks
         // GraphQL -> excludedVmdks: [String!]! (scalar)
-        if (this.ExcludedVmdks == null && Exploration.Includes(parent + ".excludedVmdks", true))
+        if (this.ExcludedVmdks == null && ec.Includes("excludedVmdks",true))
         {
             this.ExcludedVmdks = new List<System.String>();
         }
         //      C# -> VirtualMachineScriptDetail? PostBackupScript
         // GraphQL -> postBackupScript: VirtualMachineScriptDetail (type)
-        if (this.PostBackupScript == null && Exploration.Includes(parent + ".postBackupScript"))
+        if (this.PostBackupScript == null && ec.Includes("postBackupScript",false))
         {
             this.PostBackupScript = new VirtualMachineScriptDetail();
-            this.PostBackupScript.ApplyExploratoryFieldSpec(parent + ".postBackupScript");
+            this.PostBackupScript.ApplyExploratoryFieldSpec(ec.NewChild("postBackupScript"));
         }
         //      C# -> VirtualMachineScriptDetail? PostSnapScript
         // GraphQL -> postSnapScript: VirtualMachineScriptDetail (type)
-        if (this.PostSnapScript == null && Exploration.Includes(parent + ".postSnapScript"))
+        if (this.PostSnapScript == null && ec.Includes("postSnapScript",false))
         {
             this.PostSnapScript = new VirtualMachineScriptDetail();
-            this.PostSnapScript.ApplyExploratoryFieldSpec(parent + ".postSnapScript");
+            this.PostSnapScript.ApplyExploratoryFieldSpec(ec.NewChild("postSnapScript"));
         }
         //      C# -> VirtualMachineScriptDetail? PreBackupScript
         // GraphQL -> preBackupScript: VirtualMachineScriptDetail (type)
-        if (this.PreBackupScript == null && Exploration.Includes(parent + ".preBackupScript"))
+        if (this.PreBackupScript == null && ec.Includes("preBackupScript",false))
         {
             this.PreBackupScript = new VirtualMachineScriptDetail();
-            this.PreBackupScript.ApplyExploratoryFieldSpec(parent + ".preBackupScript");
+            this.PreBackupScript.ApplyExploratoryFieldSpec(ec.NewChild("preBackupScript"));
         }
     }
 
@@ -174,12 +173,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AdvancedVirtualMachineSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AdvancedVirtualMachineSummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AdvancedVirtualMachineSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

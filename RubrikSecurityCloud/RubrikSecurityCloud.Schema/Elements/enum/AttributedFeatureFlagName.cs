@@ -18,6 +18,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AZURE_BLOB_LEVEL_IMMUTABILITY_ENABLED")]
         AZURE_BLOB_LEVEL_IMMUTABILITY_ENABLED,
 
+        [EnumMember(Value = "MONGO_ON_DEMAND_SNAPSHOT_ENABLED")]
+        MONGO_ON_DEMAND_SNAPSHOT_ENABLED,
+
         [EnumMember(Value = "RESTORE_TO_TARGET_VM_ENABLED")]
         RESTORE_TO_TARGET_VM_ENABLED,
 

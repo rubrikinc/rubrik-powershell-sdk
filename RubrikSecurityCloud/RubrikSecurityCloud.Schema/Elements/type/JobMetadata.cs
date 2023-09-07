@@ -327,126 +327,125 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> LogLevel? LogLevel
         // GraphQL -> logLevel: LogLevel! (enum)
-        if (this.LogLevel == null && Exploration.Includes(parent + ".logLevel", true))
+        if (this.LogLevel == null && ec.Includes("logLevel",true))
         {
             this.LogLevel = new LogLevel();
         }
         //      C# -> DateTime? CreatedAt
         // GraphQL -> createdAt: DateTime (scalar)
-        if (this.CreatedAt == null && Exploration.Includes(parent + ".createdAt", true))
+        if (this.CreatedAt == null && ec.Includes("createdAt",true))
         {
             this.CreatedAt = new DateTime();
         }
         //      C# -> System.Int32? CurrentInstance
         // GraphQL -> currentInstance: Int! (scalar)
-        if (this.CurrentInstance == null && Exploration.Includes(parent + ".currentInstance", true))
+        if (this.CurrentInstance == null && ec.Includes("currentInstance",true))
         {
             this.CurrentInstance = Int32.MinValue;
         }
         //      C# -> System.Int64? Id
         // GraphQL -> id: Long! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = new System.Int64();
         }
         //      C# -> System.String? Info
         // GraphQL -> info: String! (scalar)
-        if (this.Info == null && Exploration.Includes(parent + ".info", true))
+        if (this.Info == null && ec.Includes("info",true))
         {
             this.Info = "FETCH";
         }
         //      C# -> System.String? JobType
         // GraphQL -> jobType: String! (scalar)
-        if (this.JobType == null && Exploration.Includes(parent + ".jobType", true))
+        if (this.JobType == null && ec.Includes("jobType",true))
         {
             this.JobType = "FETCH";
         }
         //      C# -> DateTime? LastFailure
         // GraphQL -> lastFailure: DateTime (scalar)
-        if (this.LastFailure == null && Exploration.Includes(parent + ".lastFailure", true))
+        if (this.LastFailure == null && ec.Includes("lastFailure",true))
         {
             this.LastFailure = new DateTime();
         }
         //      C# -> System.String? LastOwner
         // GraphQL -> lastOwner: String! (scalar)
-        if (this.LastOwner == null && Exploration.Includes(parent + ".lastOwner", true))
+        if (this.LastOwner == null && ec.Includes("lastOwner",true))
         {
             this.LastOwner = "FETCH";
         }
         //      C# -> DateTime? LastSkipped
         // GraphQL -> lastSkipped: DateTime (scalar)
-        if (this.LastSkipped == null && Exploration.Includes(parent + ".lastSkipped", true))
+        if (this.LastSkipped == null && ec.Includes("lastSkipped",true))
         {
             this.LastSkipped = new DateTime();
         }
         //      C# -> DateTime? LastSuccess
         // GraphQL -> lastSuccess: DateTime (scalar)
-        if (this.LastSuccess == null && Exploration.Includes(parent + ".lastSuccess", true))
+        if (this.LastSuccess == null && ec.Includes("lastSuccess",true))
         {
             this.LastSuccess = new DateTime();
         }
         //      C# -> System.Int32? NumScheduledRuns
         // GraphQL -> numScheduledRuns: Int! (scalar)
-        if (this.NumScheduledRuns == null && Exploration.Includes(parent + ".numScheduledRuns", true))
+        if (this.NumScheduledRuns == null && ec.Includes("numScheduledRuns",true))
         {
             this.NumScheduledRuns = Int32.MinValue;
         }
         //      C# -> System.Int32? NumSuccessfulRuns
         // GraphQL -> numSuccessfulRuns: Int! (scalar)
-        if (this.NumSuccessfulRuns == null && Exploration.Includes(parent + ".numSuccessfulRuns", true))
+        if (this.NumSuccessfulRuns == null && ec.Includes("numSuccessfulRuns",true))
         {
             this.NumSuccessfulRuns = Int32.MinValue;
         }
         //      C# -> System.String? Owner
         // GraphQL -> owner: String! (scalar)
-        if (this.Owner == null && Exploration.Includes(parent + ".owner", true))
+        if (this.Owner == null && ec.Includes("owner",true))
         {
             this.Owner = "FETCH";
         }
         //      C# -> System.String? Progress
         // GraphQL -> progress: String! (scalar)
-        if (this.Progress == null && Exploration.Includes(parent + ".progress", true))
+        if (this.Progress == null && ec.Includes("progress",true))
         {
             this.Progress = "FETCH";
         }
         //      C# -> DateTime? ProgressedAt
         // GraphQL -> progressedAt: DateTime (scalar)
-        if (this.ProgressedAt == null && Exploration.Includes(parent + ".progressedAt", true))
+        if (this.ProgressedAt == null && ec.Includes("progressedAt",true))
         {
             this.ProgressedAt = new DateTime();
         }
         //      C# -> System.Int32? RetryAttempts
         // GraphQL -> retryAttempts: Int! (scalar)
-        if (this.RetryAttempts == null && Exploration.Includes(parent + ".retryAttempts", true))
+        if (this.RetryAttempts == null && ec.Includes("retryAttempts",true))
         {
             this.RetryAttempts = Int32.MinValue;
         }
         //      C# -> DateTime? StartTime
         // GraphQL -> startTime: DateTime (scalar)
-        if (this.StartTime == null && Exploration.Includes(parent + ".startTime", true))
+        if (this.StartTime == null && ec.Includes("startTime",true))
         {
             this.StartTime = new DateTime();
         }
         //      C# -> DateTime? StartedAt
         // GraphQL -> startedAt: DateTime (scalar)
-        if (this.StartedAt == null && Exploration.Includes(parent + ".startedAt", true))
+        if (this.StartedAt == null && ec.Includes("startedAt",true))
         {
             this.StartedAt = new DateTime();
         }
         //      C# -> System.String? State
         // GraphQL -> state: String! (scalar)
-        if (this.State == null && Exploration.Includes(parent + ".state", true))
+        if (this.State == null && ec.Includes("state",true))
         {
             this.State = "FETCH";
         }
         //      C# -> DateTime? UpdatedAt
         // GraphQL -> updatedAt: DateTime (scalar)
-        if (this.UpdatedAt == null && Exploration.Includes(parent + ".updatedAt", true))
+        if (this.UpdatedAt == null && ec.Includes("updatedAt",true))
         {
             this.UpdatedAt = new DateTime();
         }
@@ -482,12 +481,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<JobMetadata> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new JobMetadata());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<JobMetadata> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

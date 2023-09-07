@@ -92,27 +92,26 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> SnapshotSearchError? Error
         // GraphQL -> error: SnapshotSearchError (enum)
-        if (this.Error == null && Exploration.Includes(parent + ".error", true))
+        if (this.Error == null && ec.Includes("error",true))
         {
             this.Error = new SnapshotSearchError();
         }
         //      C# -> System.String? SnappableId
         // GraphQL -> snappableId: String! (scalar)
-        if (this.SnappableId == null && Exploration.Includes(parent + ".snappableId", true))
+        if (this.SnappableId == null && ec.Includes("snappableId",true))
         {
             this.SnappableId = "FETCH";
         }
         //      C# -> ClosestSnapshotDetail? Snapshot
         // GraphQL -> snapshot: ClosestSnapshotDetail (type)
-        if (this.Snapshot == null && Exploration.Includes(parent + ".snapshot"))
+        if (this.Snapshot == null && ec.Includes("snapshot",false))
         {
             this.Snapshot = new ClosestSnapshotDetail();
-            this.Snapshot.ApplyExploratoryFieldSpec(parent + ".snapshot");
+            this.Snapshot.ApplyExploratoryFieldSpec(ec.NewChild("snapshot"));
         }
     }
 
@@ -146,12 +145,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ClosestSnapshotSearchResult> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ClosestSnapshotSearchResult());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ClosestSnapshotSearchResult> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

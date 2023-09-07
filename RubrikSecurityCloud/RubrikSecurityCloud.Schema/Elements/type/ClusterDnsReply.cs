@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<System.String>? Domains
         // GraphQL -> domains: [String!]! (scalar)
-        if (this.Domains == null && Exploration.Includes(parent + ".domains", true))
+        if (this.Domains == null && ec.Includes("domains",true))
         {
             this.Domains = new List<System.String>();
         }
         //      C# -> List<System.String>? Servers
         // GraphQL -> servers: [String!]! (scalar)
-        if (this.Servers == null && Exploration.Includes(parent + ".servers", true))
+        if (this.Servers == null && ec.Includes("servers",true))
         {
             this.Servers = new List<System.String>();
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ClusterDnsReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ClusterDnsReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ClusterDnsReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -145,48 +145,47 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> Product? Product
         // GraphQL -> product: Product! (enum)
-        if (this.Product == null && Exploration.Includes(parent + ".product", true))
+        if (this.Product == null && ec.Includes("product",true))
         {
             this.Product = new Product();
         }
         //      C# -> ClusterLicenseInfoType? Type
         // GraphQL -> type: ClusterLicenseInfoType! (enum)
-        if (this.Type == null && Exploration.Includes(parent + ".type", true))
+        if (this.Type == null && ec.Includes("type",true))
         {
             this.Type = new ClusterLicenseInfoType();
         }
         //      C# -> DateTime? MaxTermEndDate
         // GraphQL -> maxTermEndDate: DateTime (scalar)
-        if (this.MaxTermEndDate == null && Exploration.Includes(parent + ".maxTermEndDate", true))
+        if (this.MaxTermEndDate == null && ec.Includes("maxTermEndDate",true))
         {
             this.MaxTermEndDate = new DateTime();
         }
         //      C# -> System.Single? RequestedCapacityBytes
         // GraphQL -> requestedCapacityBytes: Float! (scalar)
-        if (this.RequestedCapacityBytes == null && Exploration.Includes(parent + ".requestedCapacityBytes", true))
+        if (this.RequestedCapacityBytes == null && ec.Includes("requestedCapacityBytes",true))
         {
             this.RequestedCapacityBytes = new System.Single();
         }
         //      C# -> System.Single? TotalCapacityBytes
         // GraphQL -> totalCapacityBytes: Float! (scalar)
-        if (this.TotalCapacityBytes == null && Exploration.Includes(parent + ".totalCapacityBytes", true))
+        if (this.TotalCapacityBytes == null && ec.Includes("totalCapacityBytes",true))
         {
             this.TotalCapacityBytes = new System.Single();
         }
         //      C# -> System.Single? UsableCapacityBytes
         // GraphQL -> usableCapacityBytes: Float! (scalar)
-        if (this.UsableCapacityBytes == null && Exploration.Includes(parent + ".usableCapacityBytes", true))
+        if (this.UsableCapacityBytes == null && ec.Includes("usableCapacityBytes",true))
         {
             this.UsableCapacityBytes = new System.Single();
         }
         //      C# -> System.Single? UsedCapacityBytes
         // GraphQL -> usedCapacityBytes: Float! (scalar)
-        if (this.UsedCapacityBytes == null && Exploration.Includes(parent + ".usedCapacityBytes", true))
+        if (this.UsedCapacityBytes == null && ec.Includes("usedCapacityBytes",true))
         {
             this.UsedCapacityBytes = new System.Single();
         }
@@ -222,12 +221,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ClusterLicenseInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ClusterLicenseInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ClusterLicenseInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

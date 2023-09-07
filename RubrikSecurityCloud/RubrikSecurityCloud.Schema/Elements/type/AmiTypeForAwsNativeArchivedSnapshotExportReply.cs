@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> AmiType? AmiType
         // GraphQL -> amiType: AmiType! (enum)
-        if (this.AmiType == null && Exploration.Includes(parent + ".amiType", true))
+        if (this.AmiType == null && ec.Includes("amiType",true))
         {
             this.AmiType = new AmiType();
         }
         //      C# -> AwsNativeRegion? RegionNativeId
         // GraphQL -> regionNativeId: AwsNativeRegion! (enum)
-        if (this.RegionNativeId == null && Exploration.Includes(parent + ".regionNativeId", true))
+        if (this.RegionNativeId == null && ec.Includes("regionNativeId",true))
         {
             this.RegionNativeId = new AwsNativeRegion();
         }
         //      C# -> System.String? AmiId
         // GraphQL -> amiId: String! (scalar)
-        if (this.AmiId == null && Exploration.Includes(parent + ".amiId", true))
+        if (this.AmiId == null && ec.Includes("amiId",true))
         {
             this.AmiId = "FETCH";
         }
         //      C# -> System.String? AwsAccountRubrikId
         // GraphQL -> awsAccountRubrikId: String! (scalar)
-        if (this.AwsAccountRubrikId == null && Exploration.Includes(parent + ".awsAccountRubrikId", true))
+        if (this.AwsAccountRubrikId == null && ec.Includes("awsAccountRubrikId",true))
         {
             this.AwsAccountRubrikId = "FETCH";
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AmiTypeForAwsNativeArchivedSnapshotExportReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AmiTypeForAwsNativeArchivedSnapshotExportReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AmiTypeForAwsNativeArchivedSnapshotExportReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

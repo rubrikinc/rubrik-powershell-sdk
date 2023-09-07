@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int32? PermissionVersion
         // GraphQL -> permissionVersion: Int! (scalar)
-        if (this.PermissionVersion == null && Exploration.Includes(parent + ".permissionVersion", true))
+        if (this.PermissionVersion == null && ec.Includes("permissionVersion",true))
         {
             this.PermissionVersion = Int32.MinValue;
         }
         //      C# -> List<AzureCloudAccountRolePermission>? RolePermissions
         // GraphQL -> rolePermissions: [AzureCloudAccountRolePermission!]! (type)
-        if (this.RolePermissions == null && Exploration.Includes(parent + ".rolePermissions"))
+        if (this.RolePermissions == null && ec.Includes("rolePermissions",false))
         {
             this.RolePermissions = new List<AzureCloudAccountRolePermission>();
-            this.RolePermissions.ApplyExploratoryFieldSpec(parent + ".rolePermissions");
+            this.RolePermissions.ApplyExploratoryFieldSpec(ec.NewChild("rolePermissions"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AzureCloudAccountPermissionConfigResponse> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AzureCloudAccountPermissionConfigResponse());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AzureCloudAccountPermissionConfigResponse> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

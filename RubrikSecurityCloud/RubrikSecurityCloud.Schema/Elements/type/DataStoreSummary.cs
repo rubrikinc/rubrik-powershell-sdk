@@ -131,42 +131,41 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? Capacity
         // GraphQL -> capacity: Long (scalar)
-        if (this.Capacity == null && Exploration.Includes(parent + ".capacity", true))
+        if (this.Capacity == null && ec.Includes("capacity",true))
         {
             this.Capacity = new System.Int64();
         }
         //      C# -> System.String? DataCenterName
         // GraphQL -> dataCenterName: String (scalar)
-        if (this.DataCenterName == null && Exploration.Includes(parent + ".dataCenterName", true))
+        if (this.DataCenterName == null && ec.Includes("dataCenterName",true))
         {
             this.DataCenterName = "FETCH";
         }
         //      C# -> System.String? DataStoreType
         // GraphQL -> dataStoreType: String (scalar)
-        if (this.DataStoreType == null && Exploration.Includes(parent + ".dataStoreType", true))
+        if (this.DataStoreType == null && ec.Includes("dataStoreType",true))
         {
             this.DataStoreType = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsLocal
         // GraphQL -> isLocal: Boolean (scalar)
-        if (this.IsLocal == null && Exploration.Includes(parent + ".isLocal", true))
+        if (this.IsLocal == null && ec.Includes("isLocal",true))
         {
             this.IsLocal = true;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
@@ -202,12 +201,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<DataStoreSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new DataStoreSummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<DataStoreSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

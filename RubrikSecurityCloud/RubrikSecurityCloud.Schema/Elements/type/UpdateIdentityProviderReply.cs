@@ -117,36 +117,35 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? EntityId
         // GraphQL -> entityId: String! (scalar)
-        if (this.EntityId == null && Exploration.Includes(parent + ".entityId", true))
+        if (this.EntityId == null && ec.Includes("entityId",true))
         {
             this.EntityId = "FETCH";
         }
         //      C# -> DateTime? ExpirationDate
         // GraphQL -> expirationDate: DateTime (scalar)
-        if (this.ExpirationDate == null && Exploration.Includes(parent + ".expirationDate", true))
+        if (this.ExpirationDate == null && ec.Includes("expirationDate",true))
         {
             this.ExpirationDate = new DateTime();
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? OwnerOrgId
         // GraphQL -> ownerOrgId: String! (scalar)
-        if (this.OwnerOrgId == null && Exploration.Includes(parent + ".ownerOrgId", true))
+        if (this.OwnerOrgId == null && ec.Includes("ownerOrgId",true))
         {
             this.OwnerOrgId = "FETCH";
         }
         //      C# -> System.String? SignInUrl
         // GraphQL -> signInUrl: URL! (scalar)
-        if (this.SignInUrl == null && Exploration.Includes(parent + ".signInUrl", true))
+        if (this.SignInUrl == null && ec.Includes("signInUrl",true))
         {
             this.SignInUrl = "FETCH";
         }
@@ -182,12 +181,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<UpdateIdentityProviderReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new UpdateIdentityProviderReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<UpdateIdentityProviderReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

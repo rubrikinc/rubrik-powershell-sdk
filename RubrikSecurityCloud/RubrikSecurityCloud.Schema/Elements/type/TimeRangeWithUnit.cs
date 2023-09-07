@@ -90,24 +90,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> TimeUnitEnum? Unit
         // GraphQL -> unit: TimeUnitEnum! (enum)
-        if (this.Unit == null && Exploration.Includes(parent + ".unit", true))
+        if (this.Unit == null && ec.Includes("unit",true))
         {
             this.Unit = new TimeUnitEnum();
         }
         //      C# -> DateTime? End
         // GraphQL -> end: DateTime! (scalar)
-        if (this.End == null && Exploration.Includes(parent + ".end", true))
+        if (this.End == null && ec.Includes("end",true))
         {
             this.End = new DateTime();
         }
         //      C# -> DateTime? Start
         // GraphQL -> start: DateTime! (scalar)
-        if (this.Start == null && Exploration.Includes(parent + ".start", true))
+        if (this.Start == null && ec.Includes("start",true))
         {
             this.Start = new DateTime();
         }
@@ -143,12 +142,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<TimeRangeWithUnit> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new TimeRangeWithUnit());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<TimeRangeWithUnit> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

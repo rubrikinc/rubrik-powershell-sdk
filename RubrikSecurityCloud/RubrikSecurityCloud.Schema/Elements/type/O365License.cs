@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> O365LicenseDetails? LicenseDetails
         // GraphQL -> licenseDetails: O365LicenseDetails (type)
-        if (this.LicenseDetails == null && Exploration.Includes(parent + ".licenseDetails"))
+        if (this.LicenseDetails == null && ec.Includes("licenseDetails",false))
         {
             this.LicenseDetails = new O365LicenseDetails();
-            this.LicenseDetails.ApplyExploratoryFieldSpec(parent + ".licenseDetails");
+            this.LicenseDetails.ApplyExploratoryFieldSpec(ec.NewChild("licenseDetails"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<O365License> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new O365License());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<O365License> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

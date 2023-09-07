@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? DownloadId
         // GraphQL -> downloadId: Long! (scalar)
-        if (this.DownloadId == null && Exploration.Includes(parent + ".downloadId", true))
+        if (this.DownloadId == null && ec.Includes("downloadId",true))
         {
             this.DownloadId = new System.Int64();
         }
         //      C# -> System.Int64? JobId
         // GraphQL -> jobId: Long! (scalar)
-        if (this.JobId == null && Exploration.Includes(parent + ".jobId", true))
+        if (this.JobId == null && ec.Includes("jobId",true))
         {
             this.JobId = new System.Int64();
         }
         //      C# -> System.String? ReferenceId
         // GraphQL -> referenceId: String! (scalar)
-        if (this.ReferenceId == null && Exploration.Includes(parent + ".referenceId", true))
+        if (this.ReferenceId == null && ec.Includes("referenceId",true))
         {
             this.ReferenceId = "FETCH";
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AsyncDownloadReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AsyncDownloadReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AsyncDownloadReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

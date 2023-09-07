@@ -131,42 +131,41 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> CaCertProviderType? CaCertProvider
         // GraphQL -> caCertProvider: CaCertProviderType (enum)
-        if (this.CaCertProvider == null && Exploration.Includes(parent + ".caCertProvider", true))
+        if (this.CaCertProvider == null && ec.Includes("caCertProvider",true))
         {
             this.CaCertProvider = new CaCertProviderType();
         }
         //      C# -> UploadLocationType? UploadLocationType
         // GraphQL -> uploadLocationType: UploadLocationType (enum)
-        if (this.UploadLocationType == null && Exploration.Includes(parent + ".uploadLocationType", true))
+        if (this.UploadLocationType == null && ec.Includes("uploadLocationType",true))
         {
             this.UploadLocationType = new UploadLocationType();
         }
         //      C# -> System.String? CaCertName
         // GraphQL -> caCertName: String (scalar)
-        if (this.CaCertName == null && Exploration.Includes(parent + ".caCertName", true))
+        if (this.CaCertName == null && ec.Includes("caCertName",true))
         {
             this.CaCertName = "FETCH";
         }
         //      C# -> System.String? CaCertUuid
         // GraphQL -> caCertUuid: UUID (scalar)
-        if (this.CaCertUuid == null && Exploration.Includes(parent + ".caCertUuid", true))
+        if (this.CaCertUuid == null && ec.Includes("caCertUuid",true))
         {
             this.CaCertUuid = "FETCH";
         }
         //      C# -> System.String? ReplicationTargetName
         // GraphQL -> replicationTargetName: String (scalar)
-        if (this.ReplicationTargetName == null && Exploration.Includes(parent + ".replicationTargetName", true))
+        if (this.ReplicationTargetName == null && ec.Includes("replicationTargetName",true))
         {
             this.ReplicationTargetName = "FETCH";
         }
         //      C# -> System.String? ReplicationTargetUuid
         // GraphQL -> replicationTargetUuid: UUID (scalar)
-        if (this.ReplicationTargetUuid == null && Exploration.Includes(parent + ".replicationTargetUuid", true))
+        if (this.ReplicationTargetUuid == null && ec.Includes("replicationTargetUuid",true))
         {
             this.ReplicationTargetUuid = "FETCH";
         }
@@ -202,12 +201,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ConfigProtectionSetupInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ConfigProtectionSetupInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ConfigProtectionSetupInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

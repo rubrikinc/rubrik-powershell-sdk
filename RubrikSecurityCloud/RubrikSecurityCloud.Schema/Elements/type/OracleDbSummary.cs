@@ -496,199 +496,198 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> CdmDataGuardType? DataGuardType
         // GraphQL -> dataGuardType: CdmDataGuardType (enum)
-        if (this.DataGuardType == null && Exploration.Includes(parent + ".dataGuardType", true))
+        if (this.DataGuardType == null && ec.Includes("dataGuardType",true))
         {
             this.DataGuardType = new CdmDataGuardType();
         }
         //      C# -> List<System.String>? ArchiveLogDestinations
         // GraphQL -> archiveLogDestinations: [String!]! (scalar)
-        if (this.ArchiveLogDestinations == null && Exploration.Includes(parent + ".archiveLogDestinations", true))
+        if (this.ArchiveLogDestinations == null && ec.Includes("archiveLogDestinations",true))
         {
             this.ArchiveLogDestinations = new List<System.String>();
         }
         //      C# -> System.String? DataGuardGroupId
         // GraphQL -> dataGuardGroupId: String (scalar)
-        if (this.DataGuardGroupId == null && Exploration.Includes(parent + ".dataGuardGroupId", true))
+        if (this.DataGuardGroupId == null && ec.Includes("dataGuardGroupId",true))
         {
             this.DataGuardGroupId = "FETCH";
         }
         //      C# -> System.String? DataGuardGroupName
         // GraphQL -> dataGuardGroupName: String (scalar)
-        if (this.DataGuardGroupName == null && Exploration.Includes(parent + ".dataGuardGroupName", true))
+        if (this.DataGuardGroupName == null && ec.Includes("dataGuardGroupName",true))
         {
             this.DataGuardGroupName = "FETCH";
         }
         //      C# -> System.String? DatabaseRole
         // GraphQL -> databaseRole: String (scalar)
-        if (this.DatabaseRole == null && Exploration.Includes(parent + ".databaseRole", true))
+        if (this.DatabaseRole == null && ec.Includes("databaseRole",true))
         {
             this.DatabaseRole = "FETCH";
         }
         //      C# -> System.String? DbUniqueName
         // GraphQL -> dbUniqueName: String (scalar)
-        if (this.DbUniqueName == null && Exploration.Includes(parent + ".dbUniqueName", true))
+        if (this.DbUniqueName == null && ec.Includes("dbUniqueName",true))
         {
             this.DbUniqueName = "FETCH";
         }
         //      C# -> System.Boolean? HasLogConfigFromSla
         // GraphQL -> hasLogConfigFromSla: Boolean (scalar)
-        if (this.HasLogConfigFromSla == null && Exploration.Includes(parent + ".hasLogConfigFromSla", true))
+        if (this.HasLogConfigFromSla == null && ec.Includes("hasLogConfigFromSla",true))
         {
             this.HasLogConfigFromSla = true;
         }
         //      C# -> System.Int32? HostLogRetentionHours
         // GraphQL -> hostLogRetentionHours: Int (scalar)
-        if (this.HostLogRetentionHours == null && Exploration.Includes(parent + ".hostLogRetentionHours", true))
+        if (this.HostLogRetentionHours == null && ec.Includes("hostLogRetentionHours",true))
         {
             this.HostLogRetentionHours = Int32.MinValue;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IncludeBackupTaskInfo
         // GraphQL -> includeBackupTaskInfo: Boolean (scalar)
-        if (this.IncludeBackupTaskInfo == null && Exploration.Includes(parent + ".includeBackupTaskInfo", true))
+        if (this.IncludeBackupTaskInfo == null && ec.Includes("includeBackupTaskInfo",true))
         {
             this.IncludeBackupTaskInfo = true;
         }
         //      C# -> System.Boolean? IsArchiveLogModeEnabled
         // GraphQL -> isArchiveLogModeEnabled: Boolean (scalar)
-        if (this.IsArchiveLogModeEnabled == null && Exploration.Includes(parent + ".isArchiveLogModeEnabled", true))
+        if (this.IsArchiveLogModeEnabled == null && ec.Includes("isArchiveLogModeEnabled",true))
         {
             this.IsArchiveLogModeEnabled = true;
         }
         //      C# -> System.Boolean? IsDbLocalToTheCluster
         // GraphQL -> isDbLocalToTheCluster: Boolean (scalar)
-        if (this.IsDbLocalToTheCluster == null && Exploration.Includes(parent + ".isDbLocalToTheCluster", true))
+        if (this.IsDbLocalToTheCluster == null && ec.Includes("isDbLocalToTheCluster",true))
         {
             this.IsDbLocalToTheCluster = true;
         }
         //      C# -> System.Boolean? IsPrimary
         // GraphQL -> isPrimary: Boolean (scalar)
-        if (this.IsPrimary == null && Exploration.Includes(parent + ".isPrimary", true))
+        if (this.IsPrimary == null && ec.Includes("isPrimary",true))
         {
             this.IsPrimary = true;
         }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
-        if (this.IsRelic == null && Exploration.Includes(parent + ".isRelic", true))
+        if (this.IsRelic == null && ec.Includes("isRelic",true))
         {
             this.IsRelic = true;
         }
         //      C# -> DateTime? LastSnapshotTime
         // GraphQL -> lastSnapshotTime: DateTime (scalar)
-        if (this.LastSnapshotTime == null && Exploration.Includes(parent + ".lastSnapshotTime", true))
+        if (this.LastSnapshotTime == null && ec.Includes("lastSnapshotTime",true))
         {
             this.LastSnapshotTime = new DateTime();
         }
         //      C# -> System.Int32? LogBackupFrequencyInMinutes
         // GraphQL -> logBackupFrequencyInMinutes: Int (scalar)
-        if (this.LogBackupFrequencyInMinutes == null && Exploration.Includes(parent + ".logBackupFrequencyInMinutes", true))
+        if (this.LogBackupFrequencyInMinutes == null && ec.Includes("logBackupFrequencyInMinutes",true))
         {
             this.LogBackupFrequencyInMinutes = Int32.MinValue;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.Int32? NumInstances
         // GraphQL -> numInstances: Int (scalar)
-        if (this.NumInstances == null && Exploration.Includes(parent + ".numInstances", true))
+        if (this.NumInstances == null && ec.Includes("numInstances",true))
         {
             this.NumInstances = Int32.MinValue;
         }
         //      C# -> System.Int32? NumMissedSnapshot
         // GraphQL -> numMissedSnapshot: Int (scalar)
-        if (this.NumMissedSnapshot == null && Exploration.Includes(parent + ".numMissedSnapshot", true))
+        if (this.NumMissedSnapshot == null && ec.Includes("numMissedSnapshot",true))
         {
             this.NumMissedSnapshot = Int32.MinValue;
         }
         //      C# -> System.Int32? NumTablespaces
         // GraphQL -> numTablespaces: Int! (scalar)
-        if (this.NumTablespaces == null && Exploration.Includes(parent + ".numTablespaces", true))
+        if (this.NumTablespaces == null && ec.Includes("numTablespaces",true))
         {
             this.NumTablespaces = Int32.MinValue;
         }
         //      C# -> System.String? PrimaryClusterId
         // GraphQL -> primaryClusterId: String! (scalar)
-        if (this.PrimaryClusterId == null && Exploration.Includes(parent + ".primaryClusterId", true))
+        if (this.PrimaryClusterId == null && ec.Includes("primaryClusterId",true))
         {
             this.PrimaryClusterId = "FETCH";
         }
         //      C# -> System.String? RacId
         // GraphQL -> racId: String (scalar)
-        if (this.RacId == null && Exploration.Includes(parent + ".racId", true))
+        if (this.RacId == null && ec.Includes("racId",true))
         {
             this.RacId = "FETCH";
         }
         //      C# -> System.String? RacName
         // GraphQL -> racName: String (scalar)
-        if (this.RacName == null && Exploration.Includes(parent + ".racName", true))
+        if (this.RacName == null && ec.Includes("racName",true))
         {
             this.RacName = "FETCH";
         }
         //      C# -> System.String? Sid
         // GraphQL -> sid: String (scalar)
-        if (this.Sid == null && Exploration.Includes(parent + ".sid", true))
+        if (this.Sid == null && ec.Includes("sid",true))
         {
             this.Sid = "FETCH";
         }
         //      C# -> System.String? StandaloneHostId
         // GraphQL -> standaloneHostId: String (scalar)
-        if (this.StandaloneHostId == null && Exploration.Includes(parent + ".standaloneHostId", true))
+        if (this.StandaloneHostId == null && ec.Includes("standaloneHostId",true))
         {
             this.StandaloneHostId = "FETCH";
         }
         //      C# -> System.String? StandaloneHostName
         // GraphQL -> standaloneHostName: String (scalar)
-        if (this.StandaloneHostName == null && Exploration.Includes(parent + ".standaloneHostName", true))
+        if (this.StandaloneHostName == null && ec.Includes("standaloneHostName",true))
         {
             this.StandaloneHostName = "FETCH";
         }
         //      C# -> BackupTaskDiagnosticInfo? CurrentBackupTaskInfo
         // GraphQL -> currentBackupTaskInfo: BackupTaskDiagnosticInfo (type)
-        if (this.CurrentBackupTaskInfo == null && Exploration.Includes(parent + ".currentBackupTaskInfo"))
+        if (this.CurrentBackupTaskInfo == null && ec.Includes("currentBackupTaskInfo",false))
         {
             this.CurrentBackupTaskInfo = new BackupTaskDiagnosticInfo();
-            this.CurrentBackupTaskInfo.ApplyExploratoryFieldSpec(parent + ".currentBackupTaskInfo");
+            this.CurrentBackupTaskInfo.ApplyExploratoryFieldSpec(ec.NewChild("currentBackupTaskInfo"));
         }
         //      C# -> List<DataGuardGroupMember>? DataGuardGroupMembers
         // GraphQL -> dataGuardGroupMembers: [DataGuardGroupMember!]! (type)
-        if (this.DataGuardGroupMembers == null && Exploration.Includes(parent + ".dataGuardGroupMembers"))
+        if (this.DataGuardGroupMembers == null && ec.Includes("dataGuardGroupMembers",false))
         {
             this.DataGuardGroupMembers = new List<DataGuardGroupMember>();
-            this.DataGuardGroupMembers.ApplyExploratoryFieldSpec(parent + ".dataGuardGroupMembers");
+            this.DataGuardGroupMembers.ApplyExploratoryFieldSpec(ec.NewChild("dataGuardGroupMembers"));
         }
         //      C# -> List<ManagedHierarchyObjectAncestor>? InfraPath
         // GraphQL -> infraPath: [ManagedHierarchyObjectAncestor!]! (type)
-        if (this.InfraPath == null && Exploration.Includes(parent + ".infraPath"))
+        if (this.InfraPath == null && ec.Includes("infraPath",false))
         {
             this.InfraPath = new List<ManagedHierarchyObjectAncestor>();
-            this.InfraPath.ApplyExploratoryFieldSpec(parent + ".infraPath");
+            this.InfraPath.ApplyExploratoryFieldSpec(ec.NewChild("infraPath"));
         }
         //      C# -> List<OracleInstanceProperties>? Instances
         // GraphQL -> instances: [OracleInstanceProperties!]! (type)
-        if (this.Instances == null && Exploration.Includes(parent + ".instances"))
+        if (this.Instances == null && ec.Includes("instances",false))
         {
             this.Instances = new List<OracleInstanceProperties>();
-            this.Instances.ApplyExploratoryFieldSpec(parent + ".instances");
+            this.Instances.ApplyExploratoryFieldSpec(ec.NewChild("instances"));
         }
         //      C# -> CdmWorkload? Snappable
         // GraphQL -> snappable: CdmWorkload (type)
-        if (this.Snappable == null && Exploration.Includes(parent + ".snappable"))
+        if (this.Snappable == null && ec.Includes("snappable",false))
         {
             this.Snappable = new CdmWorkload();
-            this.Snappable.ApplyExploratoryFieldSpec(parent + ".snappable");
+            this.Snappable.ApplyExploratoryFieldSpec(ec.NewChild("snappable"));
         }
     }
 
@@ -722,12 +721,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<OracleDbSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new OracleDbSummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<OracleDbSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

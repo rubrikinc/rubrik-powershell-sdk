@@ -215,78 +215,77 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> HypervVirtualMachineMountSummaryPowerStatus? PowerStatus
         // GraphQL -> powerStatus: HypervVirtualMachineMountSummaryPowerStatus! (enum)
-        if (this.PowerStatus == null && Exploration.Includes(parent + ".powerStatus", true))
+        if (this.PowerStatus == null && ec.Includes("powerStatus",true))
         {
             this.PowerStatus = new HypervVirtualMachineMountSummaryPowerStatus();
         }
         //      C# -> System.String? HostId
         // GraphQL -> hostId: String (scalar)
-        if (this.HostId == null && Exploration.Includes(parent + ".hostId", true))
+        if (this.HostId == null && ec.Includes("hostId",true))
         {
             this.HostId = "FETCH";
         }
         //      C# -> System.String? HostName
         // GraphQL -> hostName: String (scalar)
-        if (this.HostName == null && Exploration.Includes(parent + ".hostName", true))
+        if (this.HostName == null && ec.Includes("hostName",true))
         {
             this.HostName = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsReady
         // GraphQL -> isReady: Boolean! (scalar)
-        if (this.IsReady == null && Exploration.Includes(parent + ".isReady", true))
+        if (this.IsReady == null && ec.Includes("isReady",true))
         {
             this.IsReady = true;
         }
         //      C# -> System.String? MountRequestId
         // GraphQL -> mountRequestId: String (scalar)
-        if (this.MountRequestId == null && Exploration.Includes(parent + ".mountRequestId", true))
+        if (this.MountRequestId == null && ec.Includes("mountRequestId",true))
         {
             this.MountRequestId = "FETCH";
         }
         //      C# -> System.String? MountedVmId
         // GraphQL -> mountedVmId: String (scalar)
-        if (this.MountedVmId == null && Exploration.Includes(parent + ".mountedVmId", true))
+        if (this.MountedVmId == null && ec.Includes("mountedVmId",true))
         {
             this.MountedVmId = "FETCH";
         }
         //      C# -> System.String? MountedVmName
         // GraphQL -> mountedVmName: String (scalar)
-        if (this.MountedVmName == null && Exploration.Includes(parent + ".mountedVmName", true))
+        if (this.MountedVmName == null && ec.Includes("mountedVmName",true))
         {
             this.MountedVmName = "FETCH";
         }
         //      C# -> DateTime? SnapshotDate
         // GraphQL -> snapshotDate: DateTime (scalar)
-        if (this.SnapshotDate == null && Exploration.Includes(parent + ".snapshotDate", true))
+        if (this.SnapshotDate == null && ec.Includes("snapshotDate",true))
         {
             this.SnapshotDate = new DateTime();
         }
         //      C# -> System.String? UnmountRequestId
         // GraphQL -> unmountRequestId: String (scalar)
-        if (this.UnmountRequestId == null && Exploration.Includes(parent + ".unmountRequestId", true))
+        if (this.UnmountRequestId == null && ec.Includes("unmountRequestId",true))
         {
             this.UnmountRequestId = "FETCH";
         }
         //      C# -> System.String? VmId
         // GraphQL -> vmId: String! (scalar)
-        if (this.VmId == null && Exploration.Includes(parent + ".vmId", true))
+        if (this.VmId == null && ec.Includes("vmId",true))
         {
             this.VmId = "FETCH";
         }
         //      C# -> System.String? VmName
         // GraphQL -> vmName: String! (scalar)
-        if (this.VmName == null && Exploration.Includes(parent + ".vmName", true))
+        if (this.VmName == null && ec.Includes("vmName",true))
         {
             this.VmName = "FETCH";
         }
@@ -322,12 +321,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<HypervVirtualMachineMountSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new HypervVirtualMachineMountSummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<HypervVirtualMachineMountSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

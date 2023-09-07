@@ -148,51 +148,50 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<System.String>? CompletedStates
         // GraphQL -> completedStates: [String!]! (scalar)
-        if (this.CompletedStates == null && Exploration.Includes(parent + ".completedStates", true))
+        if (this.CompletedStates == null && ec.Includes("completedStates",true))
         {
             this.CompletedStates = new List<System.String>();
         }
         //      C# -> System.String? CurrentState
         // GraphQL -> currentState: String! (scalar)
-        if (this.CurrentState == null && Exploration.Includes(parent + ".currentState", true))
+        if (this.CurrentState == null && ec.Includes("currentState",true))
         {
             this.CurrentState = "FETCH";
         }
         //      C# -> System.String? CurrentTaskIndex
         // GraphQL -> currentTaskIndex: String! (scalar)
-        if (this.CurrentTaskIndex == null && Exploration.Includes(parent + ".currentTaskIndex", true))
+        if (this.CurrentTaskIndex == null && ec.Includes("currentTaskIndex",true))
         {
             this.CurrentTaskIndex = "FETCH";
         }
         //      C# -> System.String? CurrentTaskName
         // GraphQL -> currentTaskName: String! (scalar)
-        if (this.CurrentTaskName == null && Exploration.Includes(parent + ".currentTaskName", true))
+        if (this.CurrentTaskName == null && ec.Includes("currentTaskName",true))
         {
             this.CurrentTaskName = "FETCH";
         }
         //      C# -> List<System.String>? PendingStates
         // GraphQL -> pendingStates: [String!]! (scalar)
-        if (this.PendingStates == null && Exploration.Includes(parent + ".pendingStates", true))
+        if (this.PendingStates == null && ec.Includes("pendingStates",true))
         {
             this.PendingStates = new List<System.String>();
         }
         //      C# -> System.String? Result
         // GraphQL -> result: String! (scalar)
-        if (this.Result == null && Exploration.Includes(parent + ".result", true))
+        if (this.Result == null && ec.Includes("result",true))
         {
             this.Result = "FETCH";
         }
         //      C# -> StatusResponse? Status
         // GraphQL -> status: StatusResponse (type)
-        if (this.Status == null && Exploration.Includes(parent + ".status"))
+        if (this.Status == null && ec.Includes("status",false))
         {
             this.Status = new StatusResponse();
-            this.Status.ApplyExploratoryFieldSpec(parent + ".status");
+            this.Status.ApplyExploratoryFieldSpec(ec.NewChild("status"));
         }
     }
 
@@ -226,12 +225,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CurrentStateInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CurrentStateInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CurrentStateInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

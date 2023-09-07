@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Expiration
         // GraphQL -> expiration: String! (scalar)
-        if (this.Expiration == null && Exploration.Includes(parent + ".expiration", true))
+        if (this.Expiration == null && ec.Includes("expiration",true))
         {
             this.Expiration = "FETCH";
         }
         //      C# -> System.String? TenantNetworkId
         // GraphQL -> tenantNetworkId: String! (scalar)
-        if (this.TenantNetworkId == null && Exploration.Includes(parent + ".tenantNetworkId", true))
+        if (this.TenantNetworkId == null && ec.Includes("tenantNetworkId",true))
         {
             this.TenantNetworkId = "FETCH";
         }
         //      C# -> System.String? Token
         // GraphQL -> token: String! (scalar)
-        if (this.Token == null && Exploration.Includes(parent + ".token", true))
+        if (this.Token == null && ec.Includes("token",true))
         {
             this.Token = "FETCH";
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<EnvoyRegistrationToken> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new EnvoyRegistrationToken());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<EnvoyRegistrationToken> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

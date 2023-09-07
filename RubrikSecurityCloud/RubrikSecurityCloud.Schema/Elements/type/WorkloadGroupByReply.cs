@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<WorkloadGroupByPrimaryGroupByItem>? PrimaryGroupBys
         // GraphQL -> primaryGroupBys: [WorkloadGroupByPrimaryGroupByItem!]! (type)
-        if (this.PrimaryGroupBys == null && Exploration.Includes(parent + ".primaryGroupBys"))
+        if (this.PrimaryGroupBys == null && ec.Includes("primaryGroupBys",false))
         {
             this.PrimaryGroupBys = new List<WorkloadGroupByPrimaryGroupByItem>();
-            this.PrimaryGroupBys.ApplyExploratoryFieldSpec(parent + ".primaryGroupBys");
+            this.PrimaryGroupBys.ApplyExploratoryFieldSpec(ec.NewChild("primaryGroupBys"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<WorkloadGroupByReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new WorkloadGroupByReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<WorkloadGroupByReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -98,29 +98,28 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> RcvEntitlement? ArchiveEntitlement
         // GraphQL -> archiveEntitlement: RcvEntitlement (type)
-        if (this.ArchiveEntitlement == null && Exploration.Includes(parent + ".archiveEntitlement"))
+        if (this.ArchiveEntitlement == null && ec.Includes("archiveEntitlement",false))
         {
             this.ArchiveEntitlement = new RcvEntitlement();
-            this.ArchiveEntitlement.ApplyExploratoryFieldSpec(parent + ".archiveEntitlement");
+            this.ArchiveEntitlement.ApplyExploratoryFieldSpec(ec.NewChild("archiveEntitlement"));
         }
         //      C# -> RcvEntitlement? BackupEntitlement
         // GraphQL -> backupEntitlement: RcvEntitlement (type)
-        if (this.BackupEntitlement == null && Exploration.Includes(parent + ".backupEntitlement"))
+        if (this.BackupEntitlement == null && ec.Includes("backupEntitlement",false))
         {
             this.BackupEntitlement = new RcvEntitlement();
-            this.BackupEntitlement.ApplyExploratoryFieldSpec(parent + ".backupEntitlement");
+            this.BackupEntitlement.ApplyExploratoryFieldSpec(ec.NewChild("backupEntitlement"));
         }
         //      C# -> List<RcvEntitlementsUsageDetails>? Entitlements
         // GraphQL -> entitlements: [RcvEntitlementsUsageDetails!]! (type)
-        if (this.Entitlements == null && Exploration.Includes(parent + ".entitlements"))
+        if (this.Entitlements == null && ec.Includes("entitlements",false))
         {
             this.Entitlements = new List<RcvEntitlementsUsageDetails>();
-            this.Entitlements.ApplyExploratoryFieldSpec(parent + ".entitlements");
+            this.Entitlements.ApplyExploratoryFieldSpec(ec.NewChild("entitlements"));
         }
     }
 
@@ -154,12 +153,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RcvAccountEntitlement> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RcvAccountEntitlement());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<RcvAccountEntitlement> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -131,42 +131,41 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> DhrcMetric? Metric
         // GraphQL -> metric: DhrcMetric! (enum)
-        if (this.Metric == null && Exploration.Includes(parent + ".metric", true))
+        if (this.Metric == null && ec.Includes("metric",true))
         {
             this.Metric = new DhrcMetric();
         }
         //      C# -> System.Single? Impact
         // GraphQL -> impact: Float! (scalar)
-        if (this.Impact == null && Exploration.Includes(parent + ".impact", true))
+        if (this.Impact == null && ec.Includes("impact",true))
         {
             this.Impact = new System.Single();
         }
         //      C# -> System.Single? MaxValue
         // GraphQL -> maxValue: Float! (scalar)
-        if (this.MaxValue == null && Exploration.Includes(parent + ".maxValue", true))
+        if (this.MaxValue == null && ec.Includes("maxValue",true))
         {
             this.MaxValue = new System.Single();
         }
         //      C# -> System.Single? Value
         // GraphQL -> value: Float! (scalar)
-        if (this.Value == null && Exploration.Includes(parent + ".value", true))
+        if (this.Value == null && ec.Includes("value",true))
         {
             this.Value = new System.Single();
         }
         //      C# -> System.Int32? Version
         // GraphQL -> version: Int! (scalar)
-        if (this.Version == null && Exploration.Includes(parent + ".version", true))
+        if (this.Version == null && ec.Includes("version",true))
         {
             this.Version = Int32.MinValue;
         }
         //      C# -> System.Single? Weight
         // GraphQL -> weight: Float! (scalar)
-        if (this.Weight == null && Exploration.Includes(parent + ".weight", true))
+        if (this.Weight == null && ec.Includes("weight",true))
         {
             this.Weight = new System.Single();
         }
@@ -202,12 +201,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<DhrcScoreMetric> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new DhrcScoreMetric());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<DhrcScoreMetric> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

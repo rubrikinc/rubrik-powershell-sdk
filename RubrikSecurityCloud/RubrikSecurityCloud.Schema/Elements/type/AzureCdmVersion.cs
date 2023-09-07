@@ -120,39 +120,38 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<AzureInstanceType>? SupportedInstanceTypes
         // GraphQL -> supportedInstanceTypes: [AzureInstanceType!]! (enum)
-        if (this.SupportedInstanceTypes == null && Exploration.Includes(parent + ".supportedInstanceTypes", true))
+        if (this.SupportedInstanceTypes == null && ec.Includes("supportedInstanceTypes",true))
         {
             this.SupportedInstanceTypes = new List<AzureInstanceType>();
         }
         //      C# -> System.String? CdmVersion
         // GraphQL -> cdmVersion: String! (scalar)
-        if (this.CdmVersion == null && Exploration.Includes(parent + ".cdmVersion", true))
+        if (this.CdmVersion == null && ec.Includes("cdmVersion",true))
         {
             this.CdmVersion = "FETCH";
         }
         //      C# -> System.String? Sku
         // GraphQL -> sku: String! (scalar)
-        if (this.Sku == null && Exploration.Includes(parent + ".sku", true))
+        if (this.Sku == null && ec.Includes("sku",true))
         {
             this.Sku = "FETCH";
         }
         //      C# -> System.String? Version
         // GraphQL -> version: String! (scalar)
-        if (this.Version == null && Exploration.Includes(parent + ".version", true))
+        if (this.Version == null && ec.Includes("version",true))
         {
             this.Version = "FETCH";
         }
         //      C# -> List<AzureCdmVersionTag>? Tags
         // GraphQL -> tags: [AzureCdmVersionTag!]! (type)
-        if (this.Tags == null && Exploration.Includes(parent + ".tags"))
+        if (this.Tags == null && ec.Includes("tags",false))
         {
             this.Tags = new List<AzureCdmVersionTag>();
-            this.Tags.ApplyExploratoryFieldSpec(parent + ".tags");
+            this.Tags.ApplyExploratoryFieldSpec(ec.NewChild("tags"));
         }
     }
 
@@ -186,12 +185,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AzureCdmVersion> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AzureCdmVersion());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AzureCdmVersion> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Message
         // GraphQL -> message: String! (scalar)
-        if (this.Message == null && Exploration.Includes(parent + ".message", true))
+        if (this.Message == null && ec.Includes("message",true))
         {
             this.Message = "FETCH";
         }
         //      C# -> List<UrlMap>? UrlTextMap
         // GraphQL -> urlTextMap: [UrlMap!] (type)
-        if (this.UrlTextMap == null && Exploration.Includes(parent + ".urlTextMap"))
+        if (this.UrlTextMap == null && ec.Includes("urlTextMap",false))
         {
             this.UrlTextMap = new List<UrlMap>();
-            this.UrlTextMap.ApplyExploratoryFieldSpec(parent + ".urlTextMap");
+            this.UrlTextMap.ApplyExploratoryFieldSpec(ec.NewChild("urlTextMap"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PrecheckMessage> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PrecheckMessage());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<PrecheckMessage> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

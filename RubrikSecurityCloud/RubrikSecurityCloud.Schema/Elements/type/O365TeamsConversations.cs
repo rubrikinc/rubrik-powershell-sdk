@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? ChannelId
         // GraphQL -> channelId: String! (scalar)
-        if (this.ChannelId == null && Exploration.Includes(parent + ".channelId", true))
+        if (this.ChannelId == null && ec.Includes("channelId",true))
         {
             this.ChannelId = "FETCH";
         }
         //      C# -> System.String? ChannelName
         // GraphQL -> channelName: String (scalar)
-        if (this.ChannelName == null && Exploration.Includes(parent + ".channelName", true))
+        if (this.ChannelName == null && ec.Includes("channelName",true))
         {
             this.ChannelName = "FETCH";
         }
         //      C# -> System.Int32? ChannelPostCount
         // GraphQL -> channelPostCount: Int! (scalar)
-        if (this.ChannelPostCount == null && Exploration.Includes(parent + ".channelPostCount", true))
+        if (this.ChannelPostCount == null && ec.Includes("channelPostCount",true))
         {
             this.ChannelPostCount = Int32.MinValue;
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<O365TeamsConversations> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new O365TeamsConversations());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<O365TeamsConversations> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

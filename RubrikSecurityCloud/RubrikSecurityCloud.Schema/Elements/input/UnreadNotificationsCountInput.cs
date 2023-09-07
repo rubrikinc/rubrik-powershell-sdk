@@ -20,9 +20,7 @@ namespace RubrikSecurityCloud.Types
         #region members
 
         //      C# -> DateTime? AfterTime
-        // GraphQL -> afterTime: DateTime! (scalar)
-        [Required]
-        [JsonRequired]
+        // GraphQL -> afterTime: DateTime (scalar)
         [JsonProperty("afterTime")]
         public DateTime? AfterTime { get; set; }
 

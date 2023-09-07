@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<AzureExocomputeConfigValidationInfo>? ValidationInfo
         // GraphQL -> validationInfo: [AzureExocomputeConfigValidationInfo!]! (type)
-        if (this.ValidationInfo == null && Exploration.Includes(parent + ".validationInfo"))
+        if (this.ValidationInfo == null && ec.Includes("validationInfo",false))
         {
             this.ValidationInfo = new List<AzureExocomputeConfigValidationInfo>();
-            this.ValidationInfo.ApplyExploratoryFieldSpec(parent + ".validationInfo");
+            this.ValidationInfo.ApplyExploratoryFieldSpec(ec.NewChild("validationInfo"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ValidateAzureSubnetsForCloudAccountExocomputeReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ValidateAzureSubnetsForCloudAccountExocomputeReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ValidateAzureSubnetsForCloudAccountExocomputeReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

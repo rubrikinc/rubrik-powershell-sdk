@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> Operation? Operation
         // GraphQL -> operation: Operation! (enum)
-        if (this.Operation == null && Exploration.Includes(parent + ".operation", true))
+        if (this.Operation == null && ec.Includes("operation",true))
         {
             this.Operation = new Operation();
         }
         //      C# -> List<ObjectIdsForHierarchyType>? ObjectsForHierarchyTypes
         // GraphQL -> objectsForHierarchyTypes: [ObjectIdsForHierarchyType!]! (type)
-        if (this.ObjectsForHierarchyTypes == null && Exploration.Includes(parent + ".objectsForHierarchyTypes"))
+        if (this.ObjectsForHierarchyTypes == null && ec.Includes("objectsForHierarchyTypes",false))
         {
             this.ObjectsForHierarchyTypes = new List<ObjectIdsForHierarchyType>();
-            this.ObjectsForHierarchyTypes.ApplyExploratoryFieldSpec(parent + ".objectsForHierarchyTypes");
+            this.ObjectsForHierarchyTypes.ApplyExploratoryFieldSpec(ec.NewChild("objectsForHierarchyTypes"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<Permission> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new Permission());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<Permission> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

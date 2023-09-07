@@ -115,36 +115,35 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<SnapshotDelta>? ChildrenDeltas
         // GraphQL -> childrenDeltas: [SnapshotDelta!]! (type)
-        if (this.ChildrenDeltas == null && Exploration.Includes(parent + ".childrenDeltas"))
+        if (this.ChildrenDeltas == null && ec.Includes("childrenDeltas",false))
         {
             this.ChildrenDeltas = new List<SnapshotDelta>();
-            this.ChildrenDeltas.ApplyExploratoryFieldSpec(parent + ".childrenDeltas");
+            this.ChildrenDeltas.ApplyExploratoryFieldSpec(ec.NewChild("childrenDeltas"));
         }
         //      C# -> SnapshotFile? File
         // GraphQL -> file: SnapshotFile! (type)
-        if (this.File == null && Exploration.Includes(parent + ".file"))
+        if (this.File == null && ec.Includes("file",false))
         {
             this.File = new SnapshotFile();
-            this.File.ApplyExploratoryFieldSpec(parent + ".file");
+            this.File.ApplyExploratoryFieldSpec(ec.NewChild("file"));
         }
         //      C# -> QuarantineInfo? PreviousSnapshotQuarantineInfo
         // GraphQL -> previousSnapshotQuarantineInfo: QuarantineInfo (type)
-        if (this.PreviousSnapshotQuarantineInfo == null && Exploration.Includes(parent + ".previousSnapshotQuarantineInfo"))
+        if (this.PreviousSnapshotQuarantineInfo == null && ec.Includes("previousSnapshotQuarantineInfo",false))
         {
             this.PreviousSnapshotQuarantineInfo = new QuarantineInfo();
-            this.PreviousSnapshotQuarantineInfo.ApplyExploratoryFieldSpec(parent + ".previousSnapshotQuarantineInfo");
+            this.PreviousSnapshotQuarantineInfo.ApplyExploratoryFieldSpec(ec.NewChild("previousSnapshotQuarantineInfo"));
         }
         //      C# -> List<SnapshotDelta>? SelfDeltas
         // GraphQL -> selfDeltas: [SnapshotDelta!]! (type)
-        if (this.SelfDeltas == null && Exploration.Includes(parent + ".selfDeltas"))
+        if (this.SelfDeltas == null && ec.Includes("selfDeltas",false))
         {
             this.SelfDeltas = new List<SnapshotDelta>();
-            this.SelfDeltas.ApplyExploratoryFieldSpec(parent + ".selfDeltas");
+            this.SelfDeltas.ApplyExploratoryFieldSpec(ec.NewChild("selfDeltas"));
         }
     }
 
@@ -178,12 +177,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SnapshotFileDeltaV2> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SnapshotFileDeltaV2());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SnapshotFileDeltaV2> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

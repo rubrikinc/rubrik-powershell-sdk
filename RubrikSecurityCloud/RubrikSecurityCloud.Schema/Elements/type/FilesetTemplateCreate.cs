@@ -246,93 +246,92 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> FilesetTemplateCreateOperatingSystemType? OperatingSystemType
         // GraphQL -> operatingSystemType: FilesetTemplateCreateOperatingSystemType (enum)
-        if (this.OperatingSystemType == null && Exploration.Includes(parent + ".operatingSystemType", true))
+        if (this.OperatingSystemType == null && ec.Includes("operatingSystemType",true))
         {
             this.OperatingSystemType = new FilesetTemplateCreateOperatingSystemType();
         }
         //      C# -> FilesetTemplateCreateShareType? ShareType
         // GraphQL -> shareType: FilesetTemplateCreateShareType (enum)
-        if (this.ShareType == null && Exploration.Includes(parent + ".shareType", true))
+        if (this.ShareType == null && ec.Includes("shareType",true))
         {
             this.ShareType = new FilesetTemplateCreateShareType();
         }
         //      C# -> System.String? BackupScriptErrorHandling
         // GraphQL -> backupScriptErrorHandling: String (scalar)
-        if (this.BackupScriptErrorHandling == null && Exploration.Includes(parent + ".backupScriptErrorHandling", true))
+        if (this.BackupScriptErrorHandling == null && ec.Includes("backupScriptErrorHandling",true))
         {
             this.BackupScriptErrorHandling = "FETCH";
         }
         //      C# -> System.Int64? BackupScriptTimeout
         // GraphQL -> backupScriptTimeout: Long (scalar)
-        if (this.BackupScriptTimeout == null && Exploration.Includes(parent + ".backupScriptTimeout", true))
+        if (this.BackupScriptTimeout == null && ec.Includes("backupScriptTimeout",true))
         {
             this.BackupScriptTimeout = new System.Int64();
         }
         //      C# -> List<System.String>? Exceptions
         // GraphQL -> exceptions: [String!]! (scalar)
-        if (this.Exceptions == null && Exploration.Includes(parent + ".exceptions", true))
+        if (this.Exceptions == null && ec.Includes("exceptions",true))
         {
             this.Exceptions = new List<System.String>();
         }
         //      C# -> List<System.String>? Excludes
         // GraphQL -> excludes: [String!]! (scalar)
-        if (this.Excludes == null && Exploration.Includes(parent + ".excludes", true))
+        if (this.Excludes == null && ec.Includes("excludes",true))
         {
             this.Excludes = new List<System.String>();
         }
         //      C# -> List<System.String>? Includes
         // GraphQL -> includes: [String!]! (scalar)
-        if (this.Includes == null && Exploration.Includes(parent + ".includes", true))
+        if (this.Includes == null && ec.Includes("includes",true))
         {
             this.Includes = new List<System.String>();
         }
         //      C# -> System.Boolean? IsArrayEnabled
         // GraphQL -> isArrayEnabled: Boolean (scalar)
-        if (this.IsArrayEnabled == null && Exploration.Includes(parent + ".isArrayEnabled", true))
+        if (this.IsArrayEnabled == null && ec.Includes("isArrayEnabled",true))
         {
             this.IsArrayEnabled = true;
         }
         //      C# -> System.Boolean? IsCreatedByKupr
         // GraphQL -> isCreatedByKupr: Boolean (scalar)
-        if (this.IsCreatedByKupr == null && Exploration.Includes(parent + ".isCreatedByKupr", true))
+        if (this.IsCreatedByKupr == null && ec.Includes("isCreatedByKupr",true))
         {
             this.IsCreatedByKupr = true;
         }
         //      C# -> System.Boolean? IsCreatedByPolarisNas
         // GraphQL -> isCreatedByPolarisNas: Boolean (scalar)
-        if (this.IsCreatedByPolarisNas == null && Exploration.Includes(parent + ".isCreatedByPolarisNas", true))
+        if (this.IsCreatedByPolarisNas == null && ec.Includes("isCreatedByPolarisNas",true))
         {
             this.IsCreatedByPolarisNas = true;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? PostBackupScript
         // GraphQL -> postBackupScript: String (scalar)
-        if (this.PostBackupScript == null && Exploration.Includes(parent + ".postBackupScript", true))
+        if (this.PostBackupScript == null && ec.Includes("postBackupScript",true))
         {
             this.PostBackupScript = "FETCH";
         }
         //      C# -> System.String? PreBackupScript
         // GraphQL -> preBackupScript: String (scalar)
-        if (this.PreBackupScript == null && Exploration.Includes(parent + ".preBackupScript", true))
+        if (this.PreBackupScript == null && ec.Includes("preBackupScript",true))
         {
             this.PreBackupScript = "FETCH";
         }
         //      C# -> FilesetOptions? FilesetOptions
         // GraphQL -> filesetOptions: FilesetOptions (type)
-        if (this.FilesetOptions == null && Exploration.Includes(parent + ".filesetOptions"))
+        if (this.FilesetOptions == null && ec.Includes("filesetOptions",false))
         {
             this.FilesetOptions = new FilesetOptions();
-            this.FilesetOptions.ApplyExploratoryFieldSpec(parent + ".filesetOptions");
+            this.FilesetOptions.ApplyExploratoryFieldSpec(ec.NewChild("filesetOptions"));
         }
     }
 
@@ -366,12 +365,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<FilesetTemplateCreate> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new FilesetTemplateCreate());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<FilesetTemplateCreate> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

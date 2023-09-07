@@ -160,56 +160,55 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> RequestedChangesTemplate? RequestedChangesTemplate
         // GraphQL -> requestedChangesTemplate: RequestedChangesTemplate! (interface)
-        if (this.RequestedChangesTemplate == null && Exploration.Includes(parent + ".requestedChangesTemplate"))
+        if (this.RequestedChangesTemplate == null && ec.Includes("requestedChangesTemplate",false))
         {
             var impls = new List<RequestedChangesTemplate>();
-            impls.ApplyExploratoryFieldSpec(parent + ".requestedChangesTemplate");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("requestedChangesTemplate"));
             this.RequestedChangesTemplate = (RequestedChangesTemplate)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String (scalar)
-        if (this.Description == null && Exploration.Includes(parent + ".description", true))
+        if (this.Description == null && ec.Includes("description",true))
         {
             this.Description = "FETCH";
         }
         //      C# -> System.String? EditedPolicy
         // GraphQL -> editedPolicy: String (scalar)
-        if (this.EditedPolicy == null && Exploration.Includes(parent + ".editedPolicy", true))
+        if (this.EditedPolicy == null && ec.Includes("editedPolicy",true))
         {
             this.EditedPolicy = "FETCH";
         }
         //      C# -> List<ClusterSummary>? Clusters
         // GraphQL -> clusters: [ClusterSummary!]! (type)
-        if (this.Clusters == null && Exploration.Includes(parent + ".clusters"))
+        if (this.Clusters == null && ec.Includes("clusters",false))
         {
             this.Clusters = new List<ClusterSummary>();
-            this.Clusters.ApplyExploratoryFieldSpec(parent + ".clusters");
+            this.Clusters.ApplyExploratoryFieldSpec(ec.NewChild("clusters"));
         }
         //      C# -> List<ManagedObjectSummary>? InventoryObjects
         // GraphQL -> inventoryObjects: [ManagedObjectSummary!]! (type)
-        if (this.InventoryObjects == null && Exploration.Includes(parent + ".inventoryObjects"))
+        if (this.InventoryObjects == null && ec.Includes("inventoryObjects",false))
         {
             this.InventoryObjects = new List<ManagedObjectSummary>();
-            this.InventoryObjects.ApplyExploratoryFieldSpec(parent + ".inventoryObjects");
+            this.InventoryObjects.ApplyExploratoryFieldSpec(ec.NewChild("inventoryObjects"));
         }
         //      C# -> SlaDomainSummary? SlaDomain
         // GraphQL -> slaDomain: SlaDomainSummary (type)
-        if (this.SlaDomain == null && Exploration.Includes(parent + ".slaDomain"))
+        if (this.SlaDomain == null && ec.Includes("slaDomain",false))
         {
             this.SlaDomain = new SlaDomainSummary();
-            this.SlaDomain.ApplyExploratoryFieldSpec(parent + ".slaDomain");
+            this.SlaDomain.ApplyExploratoryFieldSpec(ec.NewChild("slaDomain"));
         }
         //      C# -> SlaDomainSummary? TargetSlaDomain
         // GraphQL -> targetSlaDomain: SlaDomainSummary (type)
-        if (this.TargetSlaDomain == null && Exploration.Includes(parent + ".targetSlaDomain"))
+        if (this.TargetSlaDomain == null && ec.Includes("targetSlaDomain",false))
         {
             this.TargetSlaDomain = new SlaDomainSummary();
-            this.TargetSlaDomain.ApplyExploratoryFieldSpec(parent + ".targetSlaDomain");
+            this.TargetSlaDomain.ApplyExploratoryFieldSpec(ec.NewChild("targetSlaDomain"));
         }
     }
 
@@ -243,12 +242,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<TprRequestDetail> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new TprRequestDetail());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<TprRequestDetail> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

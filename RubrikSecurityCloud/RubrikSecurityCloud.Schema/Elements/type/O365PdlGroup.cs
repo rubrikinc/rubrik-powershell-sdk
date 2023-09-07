@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? GroupId
         // GraphQL -> groupId: UUID! (scalar)
-        if (this.GroupId == null && Exploration.Includes(parent + ".groupId", true))
+        if (this.GroupId == null && ec.Includes("groupId",true))
         {
             this.GroupId = "FETCH";
         }
         //      C# -> O365PdlAndWorkloadPair? PdlAndWorkload
         // GraphQL -> pdlAndWorkload: O365PdlAndWorkloadPair! (type)
-        if (this.PdlAndWorkload == null && Exploration.Includes(parent + ".pdlAndWorkload"))
+        if (this.PdlAndWorkload == null && ec.Includes("pdlAndWorkload",false))
         {
             this.PdlAndWorkload = new O365PdlAndWorkloadPair();
-            this.PdlAndWorkload.ApplyExploratoryFieldSpec(parent + ".pdlAndWorkload");
+            this.PdlAndWorkload.ApplyExploratoryFieldSpec(ec.NewChild("pdlAndWorkload"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<O365PdlGroup> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new O365PdlGroup());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<O365PdlGroup> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

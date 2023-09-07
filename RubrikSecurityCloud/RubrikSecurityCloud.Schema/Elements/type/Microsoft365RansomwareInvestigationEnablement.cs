@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? Enabled
         // GraphQL -> enabled: Boolean! (scalar)
-        if (this.Enabled == null && Exploration.Includes(parent + ".enabled", true))
+        if (this.Enabled == null && ec.Includes("enabled",true))
         {
             this.Enabled = true;
         }
         //      C# -> HierarchyObjectCommon? Subscription
         // GraphQL -> subscription: HierarchyObjectCommon! (type)
-        if (this.Subscription == null && Exploration.Includes(parent + ".subscription"))
+        if (this.Subscription == null && ec.Includes("subscription",false))
         {
             this.Subscription = new HierarchyObjectCommon();
-            this.Subscription.ApplyExploratoryFieldSpec(parent + ".subscription");
+            this.Subscription.ApplyExploratoryFieldSpec(ec.NewChild("subscription"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<Microsoft365RansomwareInvestigationEnablement> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new Microsoft365RansomwareInvestigationEnablement());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<Microsoft365RansomwareInvestigationEnablement> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -176,63 +176,62 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<System.String>? CassandraYaml
         // GraphQL -> cassandraYaml: [String!]! (scalar)
-        if (this.CassandraYaml == null && Exploration.Includes(parent + ".cassandraYaml", true))
+        if (this.CassandraYaml == null && ec.Includes("cassandraYaml",true))
         {
             this.CassandraYaml = new List<System.String>();
         }
         //      C# -> List<System.String>? DseYaml
         // GraphQL -> dseYaml: [String!]! (scalar)
-        if (this.DseYaml == null && Exploration.Includes(parent + ".dseYaml", true))
+        if (this.DseYaml == null && ec.Includes("dseYaml",true))
         {
             this.DseYaml = new List<System.String>();
         }
         //      C# -> System.String? HttpsCertificate
         // GraphQL -> httpsCertificate: String! (scalar)
-        if (this.HttpsCertificate == null && Exploration.Includes(parent + ".httpsCertificate", true))
+        if (this.HttpsCertificate == null && ec.Includes("httpsCertificate",true))
         {
             this.HttpsCertificate = "FETCH";
         }
         //      C# -> System.String? JmxUser
         // GraphQL -> jmxUser: String! (scalar)
-        if (this.JmxUser == null && Exploration.Includes(parent + ".jmxUser", true))
+        if (this.JmxUser == null && ec.Includes("jmxUser",true))
         {
             this.JmxUser = "FETCH";
         }
         //      C# -> System.String? SourceDbUser
         // GraphQL -> sourceDbUser: String! (scalar)
-        if (this.SourceDbUser == null && Exploration.Includes(parent + ".sourceDbUser", true))
+        if (this.SourceDbUser == null && ec.Includes("sourceDbUser",true))
         {
             this.SourceDbUser = "FETCH";
         }
         //      C# -> System.Int32? SourceHttpsPort
         // GraphQL -> sourceHttpsPort: Int! (scalar)
-        if (this.SourceHttpsPort == null && Exploration.Includes(parent + ".sourceHttpsPort", true))
+        if (this.SourceHttpsPort == null && ec.Includes("sourceHttpsPort",true))
         {
             this.SourceHttpsPort = Int32.MinValue;
         }
         //      C# -> System.Int32? SourcePort
         // GraphQL -> sourcePort: Int! (scalar)
-        if (this.SourcePort == null && Exploration.Includes(parent + ".sourcePort", true))
+        if (this.SourcePort == null && ec.Includes("sourcePort",true))
         {
             this.SourcePort = Int32.MinValue;
         }
         //      C# -> System.Int32? SourceRpcPort
         // GraphQL -> sourceRpcPort: Int! (scalar)
-        if (this.SourceRpcPort == null && Exploration.Includes(parent + ".sourceRpcPort", true))
+        if (this.SourceRpcPort == null && ec.Includes("sourceRpcPort",true))
         {
             this.SourceRpcPort = Int32.MinValue;
         }
         //      C# -> CassandraSslOptions? SslOptions
         // GraphQL -> sslOptions: CassandraSslOptions (type)
-        if (this.SslOptions == null && Exploration.Includes(parent + ".sslOptions"))
+        if (this.SslOptions == null && ec.Includes("sslOptions",false))
         {
             this.SslOptions = new CassandraSslOptions();
-            this.SslOptions.ApplyExploratoryFieldSpec(parent + ".sslOptions");
+            this.SslOptions.ApplyExploratoryFieldSpec(ec.NewChild("sslOptions"));
         }
     }
 
@@ -266,12 +265,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SourceConfigParams> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SourceConfigParams());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SourceConfigParams> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

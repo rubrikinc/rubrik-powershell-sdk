@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> WhitelistModeEnum? Mode
         // GraphQL -> mode: WhitelistModeEnum! (enum)
-        if (this.Mode == null && Exploration.Includes(parent + ".mode", true))
+        if (this.Mode == null && ec.Includes("mode",true))
         {
             this.Mode = new WhitelistModeEnum();
         }
         //      C# -> System.Boolean? Enabled
         // GraphQL -> enabled: Boolean! (scalar)
-        if (this.Enabled == null && Exploration.Includes(parent + ".enabled", true))
+        if (this.Enabled == null && ec.Includes("enabled",true))
         {
             this.Enabled = true;
         }
         //      C# -> List<System.String>? IpCidrs
         // GraphQL -> ipCidrs: [String!]! (scalar)
-        if (this.IpCidrs == null && Exploration.Includes(parent + ".ipCidrs", true))
+        if (this.IpCidrs == null && ec.Includes("ipCidrs",true))
         {
             this.IpCidrs = new List<System.String>();
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GetWhitelistReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GetWhitelistReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<GetWhitelistReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

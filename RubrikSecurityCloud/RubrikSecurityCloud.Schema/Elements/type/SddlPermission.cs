@@ -131,42 +131,41 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> AceQualifier? AccessType
         // GraphQL -> accessType: AceQualifier! (enum)
-        if (this.AccessType == null && Exploration.Includes(parent + ".accessType", true))
+        if (this.AccessType == null && ec.Includes("accessType",true))
         {
             this.AccessType = new AceQualifier();
         }
         //      C# -> List<AceFlags>? Flags
         // GraphQL -> flags: [AceFlags!]! (enum)
-        if (this.Flags == null && Exploration.Includes(parent + ".flags", true))
+        if (this.Flags == null && ec.Includes("flags",true))
         {
             this.Flags = new List<AceFlags>();
         }
         //      C# -> ResolutionType? ResolutionType
         // GraphQL -> resolutionType: ResolutionType! (enum)
-        if (this.ResolutionType == null && Exploration.Includes(parent + ".resolutionType", true))
+        if (this.ResolutionType == null && ec.Includes("resolutionType",true))
         {
             this.ResolutionType = new ResolutionType();
         }
         //      C# -> System.String? Access
         // GraphQL -> access: String! (scalar)
-        if (this.Access == null && Exploration.Includes(parent + ".access", true))
+        if (this.Access == null && ec.Includes("access",true))
         {
             this.Access = "FETCH";
         }
         //      C# -> System.String? Cn
         // GraphQL -> cn: String! (scalar)
-        if (this.Cn == null && Exploration.Includes(parent + ".cn", true))
+        if (this.Cn == null && ec.Includes("cn",true))
         {
             this.Cn = "FETCH";
         }
         //      C# -> System.String? Dn
         // GraphQL -> dn: String! (scalar)
-        if (this.Dn == null && Exploration.Includes(parent + ".dn", true))
+        if (this.Dn == null && ec.Includes("dn",true))
         {
             this.Dn = "FETCH";
         }
@@ -202,12 +201,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SddlPermission> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SddlPermission());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SddlPermission> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

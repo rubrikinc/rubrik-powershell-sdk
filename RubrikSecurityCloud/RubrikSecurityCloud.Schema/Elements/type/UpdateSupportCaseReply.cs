@@ -92,27 +92,26 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? CaseId
         // GraphQL -> caseId: String! (scalar)
-        if (this.CaseId == null && Exploration.Includes(parent + ".caseId", true))
+        if (this.CaseId == null && ec.Includes("caseId",true))
         {
             this.CaseId = "FETCH";
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID (scalar)
-        if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
+        if (this.ClusterUuid == null && ec.Includes("clusterUuid",true))
         {
             this.ClusterUuid = "FETCH";
         }
         //      C# -> List<SupportCaseAttachmentResponse>? Attachments
         // GraphQL -> attachments: [SupportCaseAttachmentResponse!]! (type)
-        if (this.Attachments == null && Exploration.Includes(parent + ".attachments"))
+        if (this.Attachments == null && ec.Includes("attachments",false))
         {
             this.Attachments = new List<SupportCaseAttachmentResponse>();
-            this.Attachments.ApplyExploratoryFieldSpec(parent + ".attachments");
+            this.Attachments.ApplyExploratoryFieldSpec(ec.NewChild("attachments"));
         }
     }
 
@@ -146,12 +145,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<UpdateSupportCaseReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new UpdateSupportCaseReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<UpdateSupportCaseReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

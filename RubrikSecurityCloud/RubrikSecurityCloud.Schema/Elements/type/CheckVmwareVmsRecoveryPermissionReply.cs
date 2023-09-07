@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> VmwareRecoveryType? VmwareRecoveryType
         // GraphQL -> vmwareRecoveryType: VmwareRecoveryType! (enum)
-        if (this.VmwareRecoveryType == null && Exploration.Includes(parent + ".vmwareRecoveryType", true))
+        if (this.VmwareRecoveryType == null && ec.Includes("vmwareRecoveryType",true))
         {
             this.VmwareRecoveryType = new VmwareRecoveryType();
         }
         //      C# -> List<VmwareVmRecoveryAccess>? Result
         // GraphQL -> result: [VmwareVmRecoveryAccess!]! (type)
-        if (this.Result == null && Exploration.Includes(parent + ".result"))
+        if (this.Result == null && ec.Includes("result",false))
         {
             this.Result = new List<VmwareVmRecoveryAccess>();
-            this.Result.ApplyExploratoryFieldSpec(parent + ".result");
+            this.Result.ApplyExploratoryFieldSpec(ec.NewChild("result"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CheckVmwareVmsRecoveryPermissionReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CheckVmwareVmsRecoveryPermissionReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CheckVmwareVmsRecoveryPermissionReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

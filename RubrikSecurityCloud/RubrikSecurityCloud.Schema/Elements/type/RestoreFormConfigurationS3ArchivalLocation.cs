@@ -165,58 +165,57 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Bucket
         // GraphQL -> bucket: String (scalar)
-        if (this.Bucket == null && Exploration.Includes(parent + ".bucket", true))
+        if (this.Bucket == null && ec.Includes("bucket",true))
         {
             this.Bucket = "FETCH";
         }
         //      C# -> System.String? CloudRehydrationSpeed
         // GraphQL -> cloudRehydrationSpeed: String (scalar)
-        if (this.CloudRehydrationSpeed == null && Exploration.Includes(parent + ".cloudRehydrationSpeed", true))
+        if (this.CloudRehydrationSpeed == null && ec.Includes("cloudRehydrationSpeed",true))
         {
             this.CloudRehydrationSpeed = "FETCH";
         }
         //      C# -> System.String? DefaultRegion
         // GraphQL -> defaultRegion: String (scalar)
-        if (this.DefaultRegion == null && Exploration.Includes(parent + ".defaultRegion", true))
+        if (this.DefaultRegion == null && ec.Includes("defaultRegion",true))
         {
             this.DefaultRegion = "FETCH";
         }
         //      C# -> System.String? EncryptionType
         // GraphQL -> encryptionType: String (scalar)
-        if (this.EncryptionType == null && Exploration.Includes(parent + ".encryptionType", true))
+        if (this.EncryptionType == null && ec.Includes("encryptionType",true))
         {
             this.EncryptionType = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? StorageClass
         // GraphQL -> storageClass: String (scalar)
-        if (this.StorageClass == null && Exploration.Includes(parent + ".storageClass", true))
+        if (this.StorageClass == null && ec.Includes("storageClass",true))
         {
             this.StorageClass = "FETCH";
         }
         //      C# -> RestoreFormArchivalProxyConfig? ArchivalProxyConfig
         // GraphQL -> archivalProxyConfig: RestoreFormArchivalProxyConfig (type)
-        if (this.ArchivalProxyConfig == null && Exploration.Includes(parent + ".archivalProxyConfig"))
+        if (this.ArchivalProxyConfig == null && ec.Includes("archivalProxyConfig",false))
         {
             this.ArchivalProxyConfig = new RestoreFormArchivalProxyConfig();
-            this.ArchivalProxyConfig.ApplyExploratoryFieldSpec(parent + ".archivalProxyConfig");
+            this.ArchivalProxyConfig.ApplyExploratoryFieldSpec(ec.NewChild("archivalProxyConfig"));
         }
         //      C# -> RestoreFormComputeProxyConfig? ComputeProxyConfig
         // GraphQL -> computeProxyConfig: RestoreFormComputeProxyConfig (type)
-        if (this.ComputeProxyConfig == null && Exploration.Includes(parent + ".computeProxyConfig"))
+        if (this.ComputeProxyConfig == null && ec.Includes("computeProxyConfig",false))
         {
             this.ComputeProxyConfig = new RestoreFormComputeProxyConfig();
-            this.ComputeProxyConfig.ApplyExploratoryFieldSpec(parent + ".computeProxyConfig");
+            this.ComputeProxyConfig.ApplyExploratoryFieldSpec(ec.NewChild("computeProxyConfig"));
         }
     }
 
@@ -250,12 +249,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RestoreFormConfigurationS3ArchivalLocation> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RestoreFormConfigurationS3ArchivalLocation());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<RestoreFormConfigurationS3ArchivalLocation> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -134,45 +134,44 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Availability
         // GraphQL -> availability: String! (scalar)
-        if (this.Availability == null && Exploration.Includes(parent + ".availability", true))
+        if (this.Availability == null && ec.Includes("availability",true))
         {
             this.Availability = "FETCH";
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
-        if (this.Description == null && Exploration.Includes(parent + ".description", true))
+        if (this.Description == null && ec.Includes("description",true))
         {
             this.Description = "FETCH";
         }
         //      C# -> System.String? Md5Sum
         // GraphQL -> md5Sum: String! (scalar)
-        if (this.Md5Sum == null && Exploration.Includes(parent + ".md5Sum", true))
+        if (this.Md5Sum == null && ec.Includes("md5Sum",true))
         {
             this.Md5Sum = "FETCH";
         }
         //      C# -> System.Int64? Size
         // GraphQL -> size: Long! (scalar)
-        if (this.Size == null && Exploration.Includes(parent + ".size", true))
+        if (this.Size == null && ec.Includes("size",true))
         {
             this.Size = new System.Int64();
         }
         //      C# -> System.String? Version
         // GraphQL -> version: String! (scalar)
-        if (this.Version == null && Exploration.Includes(parent + ".version", true))
+        if (this.Version == null && ec.Includes("version",true))
         {
             this.Version = "FETCH";
         }
         //      C# -> DownloadJobInfo? DownloadJobInfo
         // GraphQL -> downloadJobInfo: DownloadJobInfo (type)
-        if (this.DownloadJobInfo == null && Exploration.Includes(parent + ".downloadJobInfo"))
+        if (this.DownloadJobInfo == null && ec.Includes("downloadJobInfo",false))
         {
             this.DownloadJobInfo = new DownloadJobInfo();
-            this.DownloadJobInfo.ApplyExploratoryFieldSpec(parent + ".downloadJobInfo");
+            this.DownloadJobInfo.ApplyExploratoryFieldSpec(ec.NewChild("downloadJobInfo"));
         }
     }
 
@@ -206,12 +205,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<DownloadPackageStatusReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new DownloadPackageStatusReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<DownloadPackageStatusReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

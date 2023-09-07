@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? AuthorizationUrl
         // GraphQL -> authorizationUrl: URL! (scalar)
-        if (this.AuthorizationUrl == null && Exploration.Includes(parent + ".authorizationUrl", true))
+        if (this.AuthorizationUrl == null && ec.Includes("authorizationUrl",true))
         {
             this.AuthorizationUrl = "FETCH";
         }
         //      C# -> System.String? SessionId
         // GraphQL -> sessionId: String! (scalar)
-        if (this.SessionId == null && Exploration.Includes(parent + ".sessionId", true))
+        if (this.SessionId == null && ec.Includes("sessionId",true))
         {
             this.SessionId = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<StartAtlassianAuthConsentReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new StartAtlassianAuthConsentReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<StartAtlassianAuthConsentReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -120,39 +120,38 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> GuestOs? InstanceOs
         // GraphQL -> instanceOs: GuestOS! (enum)
-        if (this.InstanceOs == null && Exploration.Includes(parent + ".instanceOs", true))
+        if (this.InstanceOs == null && ec.Includes("instanceOs",true))
         {
             this.InstanceOs = new GuestOs();
         }
         //      C# -> System.String? ErrorMessage
         // GraphQL -> errorMessage: String! (scalar)
-        if (this.ErrorMessage == null && Exploration.Includes(parent + ".errorMessage", true))
+        if (this.ErrorMessage == null && ec.Includes("errorMessage",true))
         {
             this.ErrorMessage = "FETCH";
         }
         //      C# -> System.String? InstanceId
         // GraphQL -> instanceId: String! (scalar)
-        if (this.InstanceId == null && Exploration.Includes(parent + ".instanceId", true))
+        if (this.InstanceId == null && ec.Includes("instanceId",true))
         {
             this.InstanceId = "FETCH";
         }
         //      C# -> System.String? InstanceType
         // GraphQL -> instanceType: String! (scalar)
-        if (this.InstanceType == null && Exploration.Includes(parent + ".instanceType", true))
+        if (this.InstanceType == null && ec.Includes("instanceType",true))
         {
             this.InstanceType = "FETCH";
         }
         //      C# -> VsphereVm? Instance
         // GraphQL -> instance: VsphereVm! (type)
-        if (this.Instance == null && Exploration.Includes(parent + ".instance"))
+        if (this.Instance == null && ec.Includes("instance",false))
         {
             this.Instance = new VsphereVm();
-            this.Instance.ApplyExploratoryFieldSpec(parent + ".instance");
+            this.Instance.ApplyExploratoryFieldSpec(ec.NewChild("instance"));
         }
     }
 
@@ -186,12 +185,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CheckGuestOsResult> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CheckGuestOsResult());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CheckGuestOsResult> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

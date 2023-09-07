@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> CloudAccountFeature? Feature
         // GraphQL -> feature: CloudAccountFeature! (enum)
-        if (this.Feature == null && Exploration.Includes(parent + ".feature", true))
+        if (this.Feature == null && ec.Includes("feature",true))
         {
             this.Feature = new CloudAccountFeature();
         }
         //      C# -> System.String? RoleDefinitionAssignmentTemplate
         // GraphQL -> roleDefinitionAssignmentTemplate: String! (scalar)
-        if (this.RoleDefinitionAssignmentTemplate == null && Exploration.Includes(parent + ".roleDefinitionAssignmentTemplate", true))
+        if (this.RoleDefinitionAssignmentTemplate == null && ec.Includes("roleDefinitionAssignmentTemplate",true))
         {
             this.RoleDefinitionAssignmentTemplate = "FETCH";
         }
         //      C# -> System.Int32? Version
         // GraphQL -> version: Int! (scalar)
-        if (this.Version == null && Exploration.Includes(parent + ".version", true))
+        if (this.Version == null && ec.Includes("version",true))
         {
             this.Version = Int32.MinValue;
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AzureArmTemplateByFeature> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AzureArmTemplateByFeature());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AzureArmTemplateByFeature> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

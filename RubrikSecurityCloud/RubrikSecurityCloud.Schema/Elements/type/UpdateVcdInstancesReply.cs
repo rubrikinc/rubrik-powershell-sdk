@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<VcdInstanceDetailType>? VcdInstances
         // GraphQL -> vcdInstances: [VcdInstanceDetailType!]! (type)
-        if (this.VcdInstances == null && Exploration.Includes(parent + ".vcdInstances"))
+        if (this.VcdInstances == null && ec.Includes("vcdInstances",false))
         {
             this.VcdInstances = new List<VcdInstanceDetailType>();
-            this.VcdInstances.ApplyExploratoryFieldSpec(parent + ".vcdInstances");
+            this.VcdInstances.ApplyExploratoryFieldSpec(ec.NewChild("vcdInstances"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<UpdateVcdInstancesReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new UpdateVcdInstancesReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<UpdateVcdInstancesReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

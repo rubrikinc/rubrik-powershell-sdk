@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? EventId
         // GraphQL -> eventId: String! (scalar)
-        if (this.EventId == null && Exploration.Includes(parent + ".eventId", true))
+        if (this.EventId == null && ec.Includes("eventId",true))
         {
             this.EventId = "FETCH";
         }
         //      C# -> System.Boolean? IsSuccess
         // GraphQL -> isSuccess: Boolean! (scalar)
-        if (this.IsSuccess == null && Exploration.Includes(parent + ".isSuccess", true))
+        if (this.IsSuccess == null && ec.Includes("isSuccess",true))
         {
             this.IsSuccess = true;
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: String (scalar)
-        if (this.SnapshotId == null && Exploration.Includes(parent + ".snapshotId", true))
+        if (this.SnapshotId == null && ec.Includes("snapshotId",true))
         {
             this.SnapshotId = "FETCH";
         }
         //      C# -> DateTime? TimestampMs
         // GraphQL -> timestampMs: DateTime (scalar)
-        if (this.TimestampMs == null && Exploration.Includes(parent + ".timestampMs", true))
+        if (this.TimestampMs == null && ec.Includes("timestampMs",true))
         {
             this.TimestampMs = new DateTime();
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<OracleDatabaseLastValidationStatus> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new OracleDatabaseLastValidationStatus());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<OracleDatabaseLastValidationStatus> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -144,6 +144,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("blueprintRecoveryCount")]
         BlueprintRecoveryCount? BlueprintRecoveryCount { get; set; }
 
+        //      C# -> Schedule? BlueprintSchedule
+        // GraphQL -> blueprintSchedule: Schedule (type)
+        [JsonProperty("blueprintSchedule")]
+        Schedule? BlueprintSchedule { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         [JsonProperty("id")]
@@ -261,19 +266,24 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<BlueprintNew> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 InterfaceHelper
                     .AddInstancesOfImplementingTypes<BlueprintNew>(
                         ref list, 
-                        instance => instance.ApplyExploratoryFieldSpec(parent));
+                        instance => instance.ApplyExploratoryFieldSpec(ec));
             } else {
                 foreach (BlueprintNew item in list) {
-                    item.ApplyExploratoryFieldSpec(parent);
+                    item.ApplyExploratoryFieldSpec(ec);
                 }
             }
 
+        }
+
+        public static void Fetch(this List<BlueprintNew> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

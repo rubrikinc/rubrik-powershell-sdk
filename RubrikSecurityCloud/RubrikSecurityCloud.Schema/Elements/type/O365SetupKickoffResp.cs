@@ -92,27 +92,26 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? AppClientId
         // GraphQL -> appClientId: String! (scalar)
-        if (this.AppClientId == null && Exploration.Includes(parent + ".appClientId", true))
+        if (this.AppClientId == null && ec.Includes("appClientId",true))
         {
             this.AppClientId = "FETCH";
         }
         //      C# -> System.String? CsrfToken
         // GraphQL -> csrfToken: String! (scalar)
-        if (this.CsrfToken == null && Exploration.Includes(parent + ".csrfToken", true))
+        if (this.CsrfToken == null && ec.Includes("csrfToken",true))
         {
             this.CsrfToken = "FETCH";
         }
         //      C# -> List<AppIdForType>? AppClientIdsPerType
         // GraphQL -> appClientIdsPerType: [AppIdForType!]! (type)
-        if (this.AppClientIdsPerType == null && Exploration.Includes(parent + ".appClientIdsPerType"))
+        if (this.AppClientIdsPerType == null && ec.Includes("appClientIdsPerType",false))
         {
             this.AppClientIdsPerType = new List<AppIdForType>();
-            this.AppClientIdsPerType.ApplyExploratoryFieldSpec(parent + ".appClientIdsPerType");
+            this.AppClientIdsPerType.ApplyExploratoryFieldSpec(ec.NewChild("appClientIdsPerType"));
         }
     }
 
@@ -146,12 +145,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<O365SetupKickoffResp> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new O365SetupKickoffResp());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<O365SetupKickoffResp> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

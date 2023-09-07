@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<SlaTaskchainInfo>? SlasTaskchainInfo
         // GraphQL -> slasTaskchainInfo: [SlaTaskchainInfo!]! (type)
-        if (this.SlasTaskchainInfo == null && Exploration.Includes(parent + ".slasTaskchainInfo"))
+        if (this.SlasTaskchainInfo == null && ec.Includes("slasTaskchainInfo",false))
         {
             this.SlasTaskchainInfo = new List<SlaTaskchainInfo>();
-            this.SlasTaskchainInfo.ApplyExploratoryFieldSpec(parent + ".slasTaskchainInfo");
+            this.SlasTaskchainInfo.ApplyExploratoryFieldSpec(ec.NewChild("slasTaskchainInfo"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<UpgradeSlasReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new UpgradeSlasReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<UpgradeSlasReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

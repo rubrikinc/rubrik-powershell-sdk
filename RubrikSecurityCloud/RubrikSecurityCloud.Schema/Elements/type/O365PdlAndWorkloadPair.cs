@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> WorkloadLevelHierarchy? Workload
         // GraphQL -> workload: WorkloadLevelHierarchy! (enum)
-        if (this.Workload == null && Exploration.Includes(parent + ".workload", true))
+        if (this.Workload == null && ec.Includes("workload",true))
         {
             this.Workload = new WorkloadLevelHierarchy();
         }
         //      C# -> System.String? Pdl
         // GraphQL -> pdl: String! (scalar)
-        if (this.Pdl == null && Exploration.Includes(parent + ".pdl", true))
+        if (this.Pdl == null && ec.Includes("pdl",true))
         {
             this.Pdl = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<O365PdlAndWorkloadPair> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new O365PdlAndWorkloadPair());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<O365PdlAndWorkloadPair> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

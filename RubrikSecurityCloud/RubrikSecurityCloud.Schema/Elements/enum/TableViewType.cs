@@ -18,6 +18,18 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "COMPLIANCE_ALL_TABLE")]
         COMPLIANCE_ALL_TABLE,
 
+        [EnumMember(Value = "INDEXING_REPORT_ALL_TABLE")]
+        INDEXING_REPORT_ALL_TABLE,
+
+        [EnumMember(Value = "INDEXING_REPORT_BY_LOCATION_TABLE")]
+        INDEXING_REPORT_BY_LOCATION_TABLE,
+
+        [EnumMember(Value = "INDEXING_REPORT_BY_OBJECT_TYPE_TABLE")]
+        INDEXING_REPORT_BY_OBJECT_TYPE_TABLE,
+
+        [EnumMember(Value = "INDEXING_REPORT_BY_SLA_TABLE")]
+        INDEXING_REPORT_BY_SLA_TABLE,
+
         [EnumMember(Value = "OBJECT_AUDIT_DETAIL_TABLE")]
         OBJECT_AUDIT_DETAIL_TABLE,
 

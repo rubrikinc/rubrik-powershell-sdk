@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> TrialStep? Step
         // GraphQL -> step: TrialStep! (enum)
-        if (this.Step == null && Exploration.Includes(parent + ".step", true))
+        if (this.Step == null && ec.Includes("step",true))
         {
             this.Step = new TrialStep();
         }
         //      C# -> DateTime? CompletedAt
         // GraphQL -> completedAt: DateTime (scalar)
-        if (this.CompletedAt == null && Exploration.Includes(parent + ".completedAt", true))
+        if (this.CompletedAt == null && ec.Includes("completedAt",true))
         {
             this.CompletedAt = new DateTime();
         }
         //      C# -> System.Boolean? IsCompleted
         // GraphQL -> isCompleted: Boolean! (scalar)
-        if (this.IsCompleted == null && Exploration.Includes(parent + ".isCompleted", true))
+        if (this.IsCompleted == null && ec.Includes("isCompleted",true))
         {
             this.IsCompleted = true;
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<TrialTask> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new TrialTask());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<TrialTask> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

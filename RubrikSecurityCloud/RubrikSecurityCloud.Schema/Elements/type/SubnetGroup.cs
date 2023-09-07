@@ -106,33 +106,32 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Arn
         // GraphQL -> arn: String! (scalar)
-        if (this.Arn == null && Exploration.Includes(parent + ".arn", true))
+        if (this.Arn == null && ec.Includes("arn",true))
         {
             this.Arn = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? VpcId
         // GraphQL -> vpcId: String! (scalar)
-        if (this.VpcId == null && Exploration.Includes(parent + ".vpcId", true))
+        if (this.VpcId == null && ec.Includes("vpcId",true))
         {
             this.VpcId = "FETCH";
         }
         //      C# -> List<AwsNativeSubnet>? Subnets
         // GraphQL -> subnets: [AwsNativeSubnet!]! (type)
-        if (this.Subnets == null && Exploration.Includes(parent + ".subnets"))
+        if (this.Subnets == null && ec.Includes("subnets",false))
         {
             this.Subnets = new List<AwsNativeSubnet>();
-            this.Subnets.ApplyExploratoryFieldSpec(parent + ".subnets");
+            this.Subnets.ApplyExploratoryFieldSpec(ec.NewChild("subnets"));
         }
     }
 
@@ -166,12 +165,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SubnetGroup> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SubnetGroup());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SubnetGroup> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

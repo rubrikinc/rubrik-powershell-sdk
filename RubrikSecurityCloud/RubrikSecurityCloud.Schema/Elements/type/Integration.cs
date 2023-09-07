@@ -134,45 +134,44 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> IntegrationType? IntegrationType
         // GraphQL -> integrationType: IntegrationType! (enum)
-        if (this.IntegrationType == null && Exploration.Includes(parent + ".integrationType", true))
+        if (this.IntegrationType == null && ec.Includes("integrationType",true))
         {
             this.IntegrationType = new IntegrationType();
         }
         //      C# -> DateTime? CreatedAt
         // GraphQL -> createdAt: DateTime! (scalar)
-        if (this.CreatedAt == null && Exploration.Includes(parent + ".createdAt", true))
+        if (this.CreatedAt == null && ec.Includes("createdAt",true))
         {
             this.CreatedAt = new DateTime();
         }
         //      C# -> System.Int64? Id
         // GraphQL -> id: Long! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = new System.Int64();
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> DateTime? UpdatedAt
         // GraphQL -> updatedAt: DateTime! (scalar)
-        if (this.UpdatedAt == null && Exploration.Includes(parent + ".updatedAt", true))
+        if (this.UpdatedAt == null && ec.Includes("updatedAt",true))
         {
             this.UpdatedAt = new DateTime();
         }
         //      C# -> IntegrationConfig? Config
         // GraphQL -> config: IntegrationConfig! (type)
-        if (this.Config == null && Exploration.Includes(parent + ".config"))
+        if (this.Config == null && ec.Includes("config",false))
         {
             this.Config = new IntegrationConfig();
-            this.Config.ApplyExploratoryFieldSpec(parent + ".config");
+            this.Config.ApplyExploratoryFieldSpec(ec.NewChild("config"));
         }
     }
 
@@ -206,12 +205,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<Integration> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new Integration());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<Integration> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

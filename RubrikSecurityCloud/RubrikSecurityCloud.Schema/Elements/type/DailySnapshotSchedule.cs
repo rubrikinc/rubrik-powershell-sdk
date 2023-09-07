@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> BasicSnapshotSchedule? BasicSchedule
         // GraphQL -> basicSchedule: BasicSnapshotSchedule (type)
-        if (this.BasicSchedule == null && Exploration.Includes(parent + ".basicSchedule"))
+        if (this.BasicSchedule == null && ec.Includes("basicSchedule",false))
         {
             this.BasicSchedule = new BasicSnapshotSchedule();
-            this.BasicSchedule.ApplyExploratoryFieldSpec(parent + ".basicSchedule");
+            this.BasicSchedule.ApplyExploratoryFieldSpec(ec.NewChild("basicSchedule"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<DailySnapshotSchedule> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new DailySnapshotSchedule());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<DailySnapshotSchedule> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -64,6 +64,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("fetchAllPostSenders")]
         public System.String? FetchAllPostSenders { get; set; }
 
+        //      C# -> System.Boolean? SkipPostsAttachments
+        // GraphQL -> skipPostsAttachments: Boolean (scalar)
+        [JsonProperty("skipPostsAttachments")]
+        public System.Boolean? SkipPostsAttachments { get; set; }
+
 
         #endregion
 

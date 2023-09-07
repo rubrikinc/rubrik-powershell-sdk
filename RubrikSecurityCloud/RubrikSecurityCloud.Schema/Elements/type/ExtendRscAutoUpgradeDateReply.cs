@@ -61,12 +61,11 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> DateTime? AutoUpgradeDate
         // GraphQL -> autoUpgradeDate: DateTime (scalar)
-        if (this.AutoUpgradeDate == null && Exploration.Includes(parent + ".autoUpgradeDate", true))
+        if (this.AutoUpgradeDate == null && ec.Includes("autoUpgradeDate",true))
         {
             this.AutoUpgradeDate = new DateTime();
         }
@@ -102,12 +101,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ExtendRscAutoUpgradeDateReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ExtendRscAutoUpgradeDateReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ExtendRscAutoUpgradeDateReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

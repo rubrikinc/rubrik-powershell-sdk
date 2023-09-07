@@ -117,36 +117,35 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ActivityAccessType? AccessType
         // GraphQL -> accessType: ActivityAccessType! (enum)
-        if (this.AccessType == null && Exploration.Includes(parent + ".accessType", true))
+        if (this.AccessType == null && ec.Includes("accessType",true))
         {
             this.AccessType = new ActivityAccessType();
         }
         //      C# -> System.String? Directory
         // GraphQL -> directory: String! (scalar)
-        if (this.Directory == null && Exploration.Includes(parent + ".directory", true))
+        if (this.Directory == null && ec.Includes("directory",true))
         {
             this.Directory = "FETCH";
         }
         //      C# -> System.String? Filename
         // GraphQL -> filename: String! (scalar)
-        if (this.Filename == null && Exploration.Includes(parent + ".filename", true))
+        if (this.Filename == null && ec.Includes("filename",true))
         {
             this.Filename = "FETCH";
         }
         //      C# -> System.String? NativePath
         // GraphQL -> nativePath: String! (scalar)
-        if (this.NativePath == null && Exploration.Includes(parent + ".nativePath", true))
+        if (this.NativePath == null && ec.Includes("nativePath",true))
         {
             this.NativePath = "FETCH";
         }
         //      C# -> System.Int32? NumAccesses
         // GraphQL -> numAccesses: Int! (scalar)
-        if (this.NumAccesses == null && Exploration.Includes(parent + ".numAccesses", true))
+        if (this.NumAccesses == null && ec.Includes("numAccesses",true))
         {
             this.NumAccesses = Int32.MinValue;
         }
@@ -182,12 +181,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<FileAccessResult> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new FileAccessResult());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<FileAccessResult> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -117,36 +117,35 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? ClientId
         // GraphQL -> clientId: String! (scalar)
-        if (this.ClientId == null && Exploration.Includes(parent + ".clientId", true))
+        if (this.ClientId == null && ec.Includes("clientId",true))
         {
             this.ClientId = "FETCH";
         }
         //      C# -> System.String? Code
         // GraphQL -> code: String! (scalar)
-        if (this.Code == null && Exploration.Includes(parent + ".code", true))
+        if (this.Code == null && ec.Includes("code",true))
         {
             this.Code = "FETCH";
         }
         //      C# -> System.String? CodeVerifier
         // GraphQL -> codeVerifier: String! (scalar)
-        if (this.CodeVerifier == null && Exploration.Includes(parent + ".codeVerifier", true))
+        if (this.CodeVerifier == null && ec.Includes("codeVerifier",true))
         {
             this.CodeVerifier = "FETCH";
         }
         //      C# -> System.String? ExpiryTime
         // GraphQL -> expiryTime: String! (scalar)
-        if (this.ExpiryTime == null && Exploration.Includes(parent + ".expiryTime", true))
+        if (this.ExpiryTime == null && ec.Includes("expiryTime",true))
         {
             this.ExpiryTime = "FETCH";
         }
         //      C# -> System.String? RedirectUri
         // GraphQL -> redirectUri: String! (scalar)
-        if (this.RedirectUri == null && Exploration.Includes(parent + ".redirectUri", true))
+        if (this.RedirectUri == null && ec.Includes("redirectUri",true))
         {
             this.RedirectUri = "FETCH";
         }
@@ -182,12 +181,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<OauthAccessToken> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new OauthAccessToken());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<OauthAccessToken> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

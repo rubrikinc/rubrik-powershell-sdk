@@ -81,22 +81,21 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> SlaArchivalCluster? Cluster
         // GraphQL -> cluster: SlaArchivalCluster (type)
-        if (this.Cluster == null && Exploration.Includes(parent + ".cluster"))
+        if (this.Cluster == null && ec.Includes("cluster",false))
         {
             this.Cluster = new SlaArchivalCluster();
-            this.Cluster.ApplyExploratoryFieldSpec(parent + ".cluster");
+            this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
         }
         //      C# -> DlsArchivalLocation? Location
         // GraphQL -> location: DlsArchivalLocation (type)
-        if (this.Location == null && Exploration.Includes(parent + ".location"))
+        if (this.Location == null && ec.Includes("location",false))
         {
             this.Location = new DlsArchivalLocation();
-            this.Location.ApplyExploratoryFieldSpec(parent + ".location");
+            this.Location.ApplyExploratoryFieldSpec(ec.NewChild("location"));
         }
     }
 
@@ -130,12 +129,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ArchivalLocationToClusterMapping> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ArchivalLocationToClusterMapping());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ArchivalLocationToClusterMapping> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -145,48 +145,47 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> SnapshotFrequency? SnapshotFrequency
         // GraphQL -> snapshotFrequency: SnapshotFrequency! (enum)
-        if (this.SnapshotFrequency == null && Exploration.Includes(parent + ".snapshotFrequency", true))
+        if (this.SnapshotFrequency == null && ec.Includes("snapshotFrequency",true))
         {
             this.SnapshotFrequency = new SnapshotFrequency();
         }
         //      C# -> DateTime? ExpirationTime
         // GraphQL -> expirationTime: DateTime (scalar)
-        if (this.ExpirationTime == null && Exploration.Includes(parent + ".expirationTime", true))
+        if (this.ExpirationTime == null && ec.Includes("expirationTime",true))
         {
             this.ExpirationTime = new DateTime();
         }
         //      C# -> System.Boolean? IsExpirationDateCalculated
         // GraphQL -> isExpirationDateCalculated: Boolean! (scalar)
-        if (this.IsExpirationDateCalculated == null && Exploration.Includes(parent + ".isExpirationDateCalculated", true))
+        if (this.IsExpirationDateCalculated == null && ec.Includes("isExpirationDateCalculated",true))
         {
             this.IsExpirationDateCalculated = true;
         }
         //      C# -> System.Boolean? IsExpirationInformationUnavailable
         // GraphQL -> isExpirationInformationUnavailable: Boolean! (scalar)
-        if (this.IsExpirationInformationUnavailable == null && Exploration.Includes(parent + ".isExpirationInformationUnavailable", true))
+        if (this.IsExpirationInformationUnavailable == null && ec.Includes("isExpirationInformationUnavailable",true))
         {
             this.IsExpirationInformationUnavailable = true;
         }
         //      C# -> System.Boolean? IsSnapshotPresent
         // GraphQL -> isSnapshotPresent: Boolean! (scalar)
-        if (this.IsSnapshotPresent == null && Exploration.Includes(parent + ".isSnapshotPresent", true))
+        if (this.IsSnapshotPresent == null && ec.Includes("isSnapshotPresent",true))
         {
             this.IsSnapshotPresent = true;
         }
         //      C# -> System.String? LocationId
         // GraphQL -> locationId: String! (scalar)
-        if (this.LocationId == null && Exploration.Includes(parent + ".locationId", true))
+        if (this.LocationId == null && ec.Includes("locationId",true))
         {
             this.LocationId = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
@@ -222,12 +221,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CdmSnapshotLocationRetentionInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CdmSnapshotLocationRetentionInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CdmSnapshotLocationRetentionInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

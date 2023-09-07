@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> RcsConsumptionMetricOutputNameType? MetricName
         // GraphQL -> metricName: RcsConsumptionMetricOutputNameType! (enum)
-        if (this.MetricName == null && Exploration.Includes(parent + ".metricName", true))
+        if (this.MetricName == null && ec.Includes("metricName",true))
         {
             this.MetricName = new RcsConsumptionMetricOutputNameType();
         }
         //      C# -> RcsTierEnumType? Tier
         // GraphQL -> tier: RcsTierEnumType! (enum)
-        if (this.Tier == null && Exploration.Includes(parent + ".tier", true))
+        if (this.Tier == null && ec.Includes("tier",true))
         {
             this.Tier = new RcsTierEnumType();
         }
         //      C# -> System.Single? MetricValue
         // GraphQL -> metricValue: Float! (scalar)
-        if (this.MetricValue == null && Exploration.Includes(parent + ".metricValue", true))
+        if (this.MetricValue == null && ec.Includes("metricValue",true))
         {
             this.MetricValue = new System.Single();
         }
         //      C# -> System.String? Timestamp
         // GraphQL -> timestamp: String! (scalar)
-        if (this.Timestamp == null && Exploration.Includes(parent + ".timestamp", true))
+        if (this.Timestamp == null && ec.Includes("timestamp",true))
         {
             this.Timestamp = "FETCH";
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RcsArchivalLocationStatsRecord> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RcsArchivalLocationStatsRecord());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<RcsArchivalLocationStatsRecord> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

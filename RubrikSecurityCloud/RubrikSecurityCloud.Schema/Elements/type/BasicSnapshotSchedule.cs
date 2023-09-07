@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> RetentionUnit? RetentionUnit
         // GraphQL -> retentionUnit: RetentionUnit! (enum)
-        if (this.RetentionUnit == null && Exploration.Includes(parent + ".retentionUnit", true))
+        if (this.RetentionUnit == null && ec.Includes("retentionUnit",true))
         {
             this.RetentionUnit = new RetentionUnit();
         }
         //      C# -> System.Int32? Frequency
         // GraphQL -> frequency: Int! (scalar)
-        if (this.Frequency == null && Exploration.Includes(parent + ".frequency", true))
+        if (this.Frequency == null && ec.Includes("frequency",true))
         {
             this.Frequency = Int32.MinValue;
         }
         //      C# -> System.Int32? Retention
         // GraphQL -> retention: Int! (scalar)
-        if (this.Retention == null && Exploration.Includes(parent + ".retention", true))
+        if (this.Retention == null && ec.Includes("retention",true))
         {
             this.Retention = Int32.MinValue;
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<BasicSnapshotSchedule> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new BasicSnapshotSchedule());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<BasicSnapshotSchedule> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

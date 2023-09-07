@@ -98,29 +98,28 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> FailoverConnection? FailoverConnection
         // GraphQL -> failoverConnection: FailoverConnection! (type)
-        if (this.FailoverConnection == null && Exploration.Includes(parent + ".failoverConnection"))
+        if (this.FailoverConnection == null && ec.Includes("failoverConnection",false))
         {
             this.FailoverConnection = new FailoverConnection();
-            this.FailoverConnection.ApplyExploratoryFieldSpec(parent + ".failoverConnection");
+            this.FailoverConnection.ApplyExploratoryFieldSpec(ec.NewChild("failoverConnection"));
         }
         //      C# -> List<FailoverGroupBy>? FailoverGroupByField
         // GraphQL -> failoverGroupBy: [FailoverGroupBy!]! (type)
-        if (this.FailoverGroupByField == null && Exploration.Includes(parent + ".failoverGroupBy"))
+        if (this.FailoverGroupByField == null && ec.Includes("failoverGroupBy",false))
         {
             this.FailoverGroupByField = new List<FailoverGroupBy>();
-            this.FailoverGroupByField.ApplyExploratoryFieldSpec(parent + ".failoverGroupBy");
+            this.FailoverGroupByField.ApplyExploratoryFieldSpec(ec.NewChild("failoverGroupBy"));
         }
         //      C# -> FailoverGroupByInfo? GroupByInfo
         // GraphQL -> groupByInfo: FailoverGroupByInfo! (union)
-        if (this.GroupByInfo == null && Exploration.Includes(parent + ".groupByInfo"))
+        if (this.GroupByInfo == null && ec.Includes("groupByInfo",false))
         {
             var impls = new List<FailoverGroupByInfo>();
-            impls.ApplyExploratoryFieldSpec(parent + ".groupByInfo");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
             this.GroupByInfo = (FailoverGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
         }
     }
@@ -155,12 +154,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<FailoverGroupBy> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new FailoverGroupBy());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<FailoverGroupBy> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

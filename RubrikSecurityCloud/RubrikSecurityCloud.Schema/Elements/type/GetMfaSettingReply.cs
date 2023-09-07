@@ -131,42 +131,41 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? IsTotpEnforcedGlobal
         // GraphQL -> isTotpEnforcedGlobal: Boolean! (scalar)
-        if (this.IsTotpEnforcedGlobal == null && Exploration.Includes(parent + ".isTotpEnforcedGlobal", true))
+        if (this.IsTotpEnforcedGlobal == null && ec.Includes("isTotpEnforcedGlobal",true))
         {
             this.IsTotpEnforcedGlobal = true;
         }
         //      C# -> System.Boolean? IsTotpGlobalEnforceLocked
         // GraphQL -> isTotpGlobalEnforceLocked: Boolean! (scalar)
-        if (this.IsTotpGlobalEnforceLocked == null && Exploration.Includes(parent + ".isTotpGlobalEnforceLocked", true))
+        if (this.IsTotpGlobalEnforceLocked == null && ec.Includes("isTotpGlobalEnforceLocked",true))
         {
             this.IsTotpGlobalEnforceLocked = true;
         }
         //      C# -> System.Boolean? IsTotpMandatory
         // GraphQL -> isTotpMandatory: Boolean! (scalar)
-        if (this.IsTotpMandatory == null && Exploration.Includes(parent + ".isTotpMandatory", true))
+        if (this.IsTotpMandatory == null && ec.Includes("isTotpMandatory",true))
         {
             this.IsTotpMandatory = true;
         }
         //      C# -> DateTime? MandatoryTotpEnforcementDate
         // GraphQL -> mandatoryTotpEnforcementDate: DateTime (scalar)
-        if (this.MandatoryTotpEnforcementDate == null && Exploration.Includes(parent + ".mandatoryTotpEnforcementDate", true))
+        if (this.MandatoryTotpEnforcementDate == null && ec.Includes("mandatoryTotpEnforcementDate",true))
         {
             this.MandatoryTotpEnforcementDate = new DateTime();
         }
         //      C# -> System.Int32? MfaRememberHours
         // GraphQL -> mfaRememberHours: Int! (scalar)
-        if (this.MfaRememberHours == null && Exploration.Includes(parent + ".mfaRememberHours", true))
+        if (this.MfaRememberHours == null && ec.Includes("mfaRememberHours",true))
         {
             this.MfaRememberHours = Int32.MinValue;
         }
         //      C# -> System.Int32? TotpReminderHours
         // GraphQL -> totpReminderHours: Int! (scalar)
-        if (this.TotpReminderHours == null && Exploration.Includes(parent + ".totpReminderHours", true))
+        if (this.TotpReminderHours == null && ec.Includes("totpReminderHours",true))
         {
             this.TotpReminderHours = Int32.MinValue;
         }
@@ -202,12 +201,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GetMfaSettingReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GetMfaSettingReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<GetMfaSettingReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

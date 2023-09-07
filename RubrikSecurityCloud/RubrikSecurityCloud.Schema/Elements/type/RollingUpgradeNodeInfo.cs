@@ -92,27 +92,26 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? RuEndTs
         // GraphQL -> ruEndTs: String! (scalar)
-        if (this.RuEndTs == null && Exploration.Includes(parent + ".ruEndTs", true))
+        if (this.RuEndTs == null && ec.Includes("ruEndTs",true))
         {
             this.RuEndTs = "FETCH";
         }
         //      C# -> System.String? RuStartTs
         // GraphQL -> ruStartTs: String! (scalar)
-        if (this.RuStartTs == null && Exploration.Includes(parent + ".ruStartTs", true))
+        if (this.RuStartTs == null && ec.Includes("ruStartTs",true))
         {
             this.RuStartTs = "FETCH";
         }
         //      C# -> CurrentStateInfo? CurrentStateInfo
         // GraphQL -> currentStateInfo: CurrentStateInfo (type)
-        if (this.CurrentStateInfo == null && Exploration.Includes(parent + ".currentStateInfo"))
+        if (this.CurrentStateInfo == null && ec.Includes("currentStateInfo",false))
         {
             this.CurrentStateInfo = new CurrentStateInfo();
-            this.CurrentStateInfo.ApplyExploratoryFieldSpec(parent + ".currentStateInfo");
+            this.CurrentStateInfo.ApplyExploratoryFieldSpec(ec.NewChild("currentStateInfo"));
         }
     }
 
@@ -146,12 +145,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RollingUpgradeNodeInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RollingUpgradeNodeInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<RollingUpgradeNodeInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

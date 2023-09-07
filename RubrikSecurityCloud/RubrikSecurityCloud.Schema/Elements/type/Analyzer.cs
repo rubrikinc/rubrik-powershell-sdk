@@ -162,57 +162,56 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> AnalyzerTypeEnum? AnalyzerType
         // GraphQL -> analyzerType: AnalyzerTypeEnum! (enum)
-        if (this.AnalyzerType == null && Exploration.Includes(parent + ".analyzerType", true))
+        if (this.AnalyzerType == null && ec.Includes("analyzerType",true))
         {
             this.AnalyzerType = new AnalyzerTypeEnum();
         }
         //      C# -> RiskLevelType? Risk
         // GraphQL -> risk: RiskLevelType! (enum)
-        if (this.Risk == null && Exploration.Includes(parent + ".risk", true))
+        if (this.Risk == null && ec.Includes("risk",true))
         {
             this.Risk = new RiskLevelType();
         }
         //      C# -> List<System.String>? Dictionary
         // GraphQL -> dictionary: [String!]! (scalar)
-        if (this.Dictionary == null && Exploration.Includes(parent + ".dictionary", true))
+        if (this.Dictionary == null && ec.Includes("dictionary",true))
         {
             this.Dictionary = new List<System.String>();
         }
         //      C# -> System.String? DictionaryCsv
         // GraphQL -> dictionaryCsv: String! (scalar)
-        if (this.DictionaryCsv == null && Exploration.Includes(parent + ".dictionaryCsv", true))
+        if (this.DictionaryCsv == null && ec.Includes("dictionaryCsv",true))
         {
             this.DictionaryCsv = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? Regex
         // GraphQL -> regex: String! (scalar)
-        if (this.Regex == null && Exploration.Includes(parent + ".regex", true))
+        if (this.Regex == null && ec.Includes("regex",true))
         {
             this.Regex = "FETCH";
         }
         //      C# -> AnalyzerRiskInstance? AnalyzerRiskInstance
         // GraphQL -> analyzerRiskInstance: AnalyzerRiskInstance (type)
-        if (this.AnalyzerRiskInstance == null && Exploration.Includes(parent + ".analyzerRiskInstance"))
+        if (this.AnalyzerRiskInstance == null && ec.Includes("analyzerRiskInstance",false))
         {
             this.AnalyzerRiskInstance = new AnalyzerRiskInstance();
-            this.AnalyzerRiskInstance.ApplyExploratoryFieldSpec(parent + ".analyzerRiskInstance");
+            this.AnalyzerRiskInstance.ApplyExploratoryFieldSpec(ec.NewChild("analyzerRiskInstance"));
         }
     }
 
@@ -246,12 +245,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<Analyzer> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new Analyzer());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<Analyzer> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

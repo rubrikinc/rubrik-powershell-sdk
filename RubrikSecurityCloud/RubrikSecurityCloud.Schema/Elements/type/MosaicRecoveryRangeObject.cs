@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? EarliestTimestamp
         // GraphQL -> earliestTimestamp: String (scalar)
-        if (this.EarliestTimestamp == null && Exploration.Includes(parent + ".earliestTimestamp", true))
+        if (this.EarliestTimestamp == null && ec.Includes("earliestTimestamp",true))
         {
             this.EarliestTimestamp = "FETCH";
         }
         //      C# -> System.String? LatestTimestamp
         // GraphQL -> latestTimestamp: String (scalar)
-        if (this.LatestTimestamp == null && Exploration.Includes(parent + ".latestTimestamp", true))
+        if (this.LatestTimestamp == null && ec.Includes("latestTimestamp",true))
         {
             this.LatestTimestamp = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<MosaicRecoveryRangeObject> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new MosaicRecoveryRangeObject());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<MosaicRecoveryRangeObject> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ChartViewType? ChartViewType
         // GraphQL -> chartViewType: ChartViewType! (enum)
-        if (this.ChartViewType == null && Exploration.Includes(parent + ".chartViewType", true))
+        if (this.ChartViewType == null && ec.Includes("chartViewType",true))
         {
             this.ChartViewType = new ChartViewType();
         }
         //      C# -> System.String? ChartName
         // GraphQL -> chartName: String! (scalar)
-        if (this.ChartName == null && Exploration.Includes(parent + ".chartName", true))
+        if (this.ChartName == null && ec.Includes("chartName",true))
         {
             this.ChartName = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ChartViewWithName> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ChartViewWithName());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ChartViewWithName> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

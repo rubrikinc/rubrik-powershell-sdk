@@ -92,27 +92,26 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<System.String>? BundleFeatures
         // GraphQL -> bundleFeatures: [String!]! (scalar)
-        if (this.BundleFeatures == null && Exploration.Includes(parent + ".bundleFeatures", true))
+        if (this.BundleFeatures == null && ec.Includes("bundleFeatures",true))
         {
             this.BundleFeatures = new List<System.String>();
         }
         //      C# -> System.String? ProductType
         // GraphQL -> productType: String! (scalar)
-        if (this.ProductType == null && Exploration.Includes(parent + ".productType", true))
+        if (this.ProductType == null && ec.Includes("productType",true))
         {
             this.ProductType = "FETCH";
         }
         //      C# -> List<License>? Licenses
         // GraphQL -> licenses: [License!]! (type)
-        if (this.Licenses == null && Exploration.Includes(parent + ".licenses"))
+        if (this.Licenses == null && ec.Includes("licenses",false))
         {
             this.Licenses = new List<License>();
-            this.Licenses.ApplyExploratoryFieldSpec(parent + ".licenses");
+            this.Licenses.ApplyExploratoryFieldSpec(ec.NewChild("licenses"));
         }
     }
 
@@ -146,12 +145,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ProductTypeInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ProductTypeInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ProductTypeInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

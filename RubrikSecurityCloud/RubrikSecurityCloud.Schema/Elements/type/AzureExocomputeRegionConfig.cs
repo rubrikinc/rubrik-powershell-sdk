@@ -117,36 +117,35 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> AzureCloudAccountRegion? Region
         // GraphQL -> region: AzureCloudAccountRegion! (enum)
-        if (this.Region == null && Exploration.Includes(parent + ".region", true))
+        if (this.Region == null && ec.Includes("region",true))
         {
             this.Region = new AzureCloudAccountRegion();
         }
         //      C# -> System.Boolean? IsRscManaged
         // GraphQL -> isRscManaged: Boolean! (scalar)
-        if (this.IsRscManaged == null && Exploration.Includes(parent + ".isRscManaged", true))
+        if (this.IsRscManaged == null && ec.Includes("isRscManaged",true))
         {
             this.IsRscManaged = true;
         }
         //      C# -> System.String? PodOverlayNetworkCidr
         // GraphQL -> podOverlayNetworkCidr: String! (scalar)
-        if (this.PodOverlayNetworkCidr == null && Exploration.Includes(parent + ".podOverlayNetworkCidr", true))
+        if (this.PodOverlayNetworkCidr == null && ec.Includes("podOverlayNetworkCidr",true))
         {
             this.PodOverlayNetworkCidr = "FETCH";
         }
         //      C# -> System.String? PodSubnetNativeId
         // GraphQL -> podSubnetNativeId: String! (scalar)
-        if (this.PodSubnetNativeId == null && Exploration.Includes(parent + ".podSubnetNativeId", true))
+        if (this.PodSubnetNativeId == null && ec.Includes("podSubnetNativeId",true))
         {
             this.PodSubnetNativeId = "FETCH";
         }
         //      C# -> System.String? SubnetNativeId
         // GraphQL -> subnetNativeId: String! (scalar)
-        if (this.SubnetNativeId == null && Exploration.Includes(parent + ".subnetNativeId", true))
+        if (this.SubnetNativeId == null && ec.Includes("subnetNativeId",true))
         {
             this.SubnetNativeId = "FETCH";
         }
@@ -182,12 +181,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AzureExocomputeRegionConfig> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AzureExocomputeRegionConfig());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AzureExocomputeRegionConfig> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

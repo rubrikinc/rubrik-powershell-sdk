@@ -196,71 +196,70 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> AwsCloudAccountRegion? Region
         // GraphQL -> region: AwsCloudAccountRegion! (enum)
-        if (this.Region == null && Exploration.Includes(parent + ".region", true))
+        if (this.Region == null && ec.Includes("region",true))
         {
             this.Region = new AwsCloudAccountRegion();
         }
         //      C# -> System.Boolean? AreSecurityGroupsRscManaged
         // GraphQL -> areSecurityGroupsRscManaged: Boolean! (scalar)
-        if (this.AreSecurityGroupsRscManaged == null && Exploration.Includes(parent + ".areSecurityGroupsRscManaged", true))
+        if (this.AreSecurityGroupsRscManaged == null && ec.Includes("areSecurityGroupsRscManaged",true))
         {
             this.AreSecurityGroupsRscManaged = true;
         }
         //      C# -> System.String? ClusterSecurityGroupId
         // GraphQL -> clusterSecurityGroupId: String! (scalar)
-        if (this.ClusterSecurityGroupId == null && Exploration.Includes(parent + ".clusterSecurityGroupId", true))
+        if (this.ClusterSecurityGroupId == null && ec.Includes("clusterSecurityGroupId",true))
         {
             this.ClusterSecurityGroupId = "FETCH";
         }
         //      C# -> System.String? ConfigUuid
         // GraphQL -> configUuid: String! (scalar)
-        if (this.ConfigUuid == null && Exploration.Includes(parent + ".configUuid", true))
+        if (this.ConfigUuid == null && ec.Includes("configUuid",true))
         {
             this.ConfigUuid = "FETCH";
         }
         //      C# -> System.String? Message
         // GraphQL -> message: String! (scalar)
-        if (this.Message == null && Exploration.Includes(parent + ".message", true))
+        if (this.Message == null && ec.Includes("message",true))
         {
             this.Message = "FETCH";
         }
         //      C# -> System.String? NodeSecurityGroupId
         // GraphQL -> nodeSecurityGroupId: String! (scalar)
-        if (this.NodeSecurityGroupId == null && Exploration.Includes(parent + ".nodeSecurityGroupId", true))
+        if (this.NodeSecurityGroupId == null && ec.Includes("nodeSecurityGroupId",true))
         {
             this.NodeSecurityGroupId = "FETCH";
         }
         //      C# -> System.String? VpcId
         // GraphQL -> vpcId: String! (scalar)
-        if (this.VpcId == null && Exploration.Includes(parent + ".vpcId", true))
+        if (this.VpcId == null && ec.Includes("vpcId",true))
         {
             this.VpcId = "FETCH";
         }
         //      C# -> ExocomputeHealthCheckStatus? HealthCheckStatus
         // GraphQL -> healthCheckStatus: ExocomputeHealthCheckStatus! (type)
-        if (this.HealthCheckStatus == null && Exploration.Includes(parent + ".healthCheckStatus"))
+        if (this.HealthCheckStatus == null && ec.Includes("healthCheckStatus",false))
         {
             this.HealthCheckStatus = new ExocomputeHealthCheckStatus();
-            this.HealthCheckStatus.ApplyExploratoryFieldSpec(parent + ".healthCheckStatus");
+            this.HealthCheckStatus.ApplyExploratoryFieldSpec(ec.NewChild("healthCheckStatus"));
         }
         //      C# -> AwsExocomputeSubnetType? Subnet1
         // GraphQL -> subnet1: AwsExocomputeSubnetType! (type)
-        if (this.Subnet1 == null && Exploration.Includes(parent + ".subnet1"))
+        if (this.Subnet1 == null && ec.Includes("subnet1",false))
         {
             this.Subnet1 = new AwsExocomputeSubnetType();
-            this.Subnet1.ApplyExploratoryFieldSpec(parent + ".subnet1");
+            this.Subnet1.ApplyExploratoryFieldSpec(ec.NewChild("subnet1"));
         }
         //      C# -> AwsExocomputeSubnetType? Subnet2
         // GraphQL -> subnet2: AwsExocomputeSubnetType! (type)
-        if (this.Subnet2 == null && Exploration.Includes(parent + ".subnet2"))
+        if (this.Subnet2 == null && ec.Includes("subnet2",false))
         {
             this.Subnet2 = new AwsExocomputeSubnetType();
-            this.Subnet2.ApplyExploratoryFieldSpec(parent + ".subnet2");
+            this.Subnet2.ApplyExploratoryFieldSpec(ec.NewChild("subnet2"));
         }
     }
 
@@ -294,12 +293,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AwsExocomputeGetConfigResponse> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AwsExocomputeGetConfigResponse());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AwsExocomputeGetConfigResponse> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

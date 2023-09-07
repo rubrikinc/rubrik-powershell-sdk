@@ -228,85 +228,84 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> CloudNativeLocTemplateType? CloudNativeLocTemplateType
         // GraphQL -> cloudNativeLocTemplateType: CloudNativeLocTemplateType! (enum)
-        if (this.CloudNativeLocTemplateType == null && Exploration.Includes(parent + ".cloudNativeLocTemplateType", true))
+        if (this.CloudNativeLocTemplateType == null && ec.Includes("cloudNativeLocTemplateType",true))
         {
             this.CloudNativeLocTemplateType = new CloudNativeLocTemplateType();
         }
         //      C# -> TargetEncryptionTypeEnum? EncryptionType
         // GraphQL -> encryptionType: TargetEncryptionTypeEnum! (enum)
-        if (this.EncryptionType == null && Exploration.Includes(parent + ".encryptionType", true))
+        if (this.EncryptionType == null && ec.Includes("encryptionType",true))
         {
             this.EncryptionType = new TargetEncryptionTypeEnum();
         }
         //      C# -> AwsRegion? Region
         // GraphQL -> region: AwsRegion! (enum)
-        if (this.Region == null && Exploration.Includes(parent + ".region", true))
+        if (this.Region == null && ec.Includes("region",true))
         {
             this.Region = new AwsRegion();
         }
         //      C# -> AwsStorageClass? StorageClass
         // GraphQL -> storageClass: AwsStorageClass! (enum)
-        if (this.StorageClass == null && Exploration.Includes(parent + ".storageClass", true))
+        if (this.StorageClass == null && ec.Includes("storageClass",true))
         {
             this.StorageClass = new AwsStorageClass();
         }
         //      C# -> TargetType? TargetType
         // GraphQL -> targetType: TargetType! (enum)
-        if (this.TargetType == null && Exploration.Includes(parent + ".targetType", true))
+        if (this.TargetType == null && ec.Includes("targetType",true))
         {
             this.TargetType = new TargetType();
         }
         //      C# -> CloudAccount? CloudAccount
         // GraphQL -> cloudAccount: CloudAccount! (interface)
-        if (this.CloudAccount == null && Exploration.Includes(parent + ".cloudAccount"))
+        if (this.CloudAccount == null && ec.Includes("cloudAccount",false))
         {
             var impls = new List<CloudAccount>();
-            impls.ApplyExploratoryFieldSpec(parent + ".cloudAccount");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("cloudAccount"));
             this.CloudAccount = (CloudAccount)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> System.String? BucketPrefix
         // GraphQL -> bucketPrefix: String! (scalar)
-        if (this.BucketPrefix == null && Exploration.Includes(parent + ".bucketPrefix", true))
+        if (this.BucketPrefix == null && ec.Includes("bucketPrefix",true))
         {
             this.BucketPrefix = "FETCH";
         }
         //      C# -> System.Boolean? IsConsolidationEnabled
         // GraphQL -> isConsolidationEnabled: Boolean! (scalar)
-        if (this.IsConsolidationEnabled == null && Exploration.Includes(parent + ".isConsolidationEnabled", true))
+        if (this.IsConsolidationEnabled == null && ec.Includes("isConsolidationEnabled",true))
         {
             this.IsConsolidationEnabled = true;
         }
         //      C# -> System.String? KmsMasterKeyId
         // GraphQL -> kmsMasterKeyId: String (scalar)
-        if (this.KmsMasterKeyId == null && Exploration.Includes(parent + ".kmsMasterKeyId", true))
+        if (this.KmsMasterKeyId == null && ec.Includes("kmsMasterKeyId",true))
         {
             this.KmsMasterKeyId = "FETCH";
         }
         //      C# -> List<TagObject>? BucketTags
         // GraphQL -> bucketTags: [TagObject!]! (type)
-        if (this.BucketTags == null && Exploration.Includes(parent + ".bucketTags"))
+        if (this.BucketTags == null && ec.Includes("bucketTags",false))
         {
             this.BucketTags = new List<TagObject>();
-            this.BucketTags.ApplyExploratoryFieldSpec(parent + ".bucketTags");
+            this.BucketTags.ApplyExploratoryFieldSpec(ec.NewChild("bucketTags"));
         }
         //      C# -> AwsComputeSettings? ComputeSettings
         // GraphQL -> computeSettings: AwsComputeSettings (type)
-        if (this.ComputeSettings == null && Exploration.Includes(parent + ".computeSettings"))
+        if (this.ComputeSettings == null && ec.Includes("computeSettings",false))
         {
             this.ComputeSettings = new AwsComputeSettings();
-            this.ComputeSettings.ApplyExploratoryFieldSpec(parent + ".computeSettings");
+            this.ComputeSettings.ApplyExploratoryFieldSpec(ec.NewChild("computeSettings"));
         }
         //      C# -> ProxySettings? ProxySettings
         // GraphQL -> proxySettings: ProxySettings (type)
-        if (this.ProxySettings == null && Exploration.Includes(parent + ".proxySettings"))
+        if (this.ProxySettings == null && ec.Includes("proxySettings",false))
         {
             this.ProxySettings = new ProxySettings();
-            this.ProxySettings.ApplyExploratoryFieldSpec(parent + ".proxySettings");
+            this.ProxySettings.ApplyExploratoryFieldSpec(ec.NewChild("proxySettings"));
         }
     }
 
@@ -340,12 +339,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AwsTargetTemplate> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AwsTargetTemplate());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AwsTargetTemplate> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? IsExplicit
         // GraphQL -> isExplicit: Boolean! (scalar)
-        if (this.IsExplicit == null && Exploration.Includes(parent + ".isExplicit", true))
+        if (this.IsExplicit == null && ec.Includes("isExplicit",true))
         {
             this.IsExplicit = true;
         }
         //      C# -> System.String? WhitelistedAnalyzerId
         // GraphQL -> whitelistedAnalyzerId: String! (scalar)
-        if (this.WhitelistedAnalyzerId == null && Exploration.Includes(parent + ".whitelistedAnalyzerId", true))
+        if (this.WhitelistedAnalyzerId == null && ec.Includes("whitelistedAnalyzerId",true))
         {
             this.WhitelistedAnalyzerId = "FETCH";
         }
         //      C# -> System.String? WhitelistedPath
         // GraphQL -> whitelistedPath: String! (scalar)
-        if (this.WhitelistedPath == null && Exploration.Includes(parent + ".whitelistedPath", true))
+        if (this.WhitelistedPath == null && ec.Includes("whitelistedPath",true))
         {
             this.WhitelistedPath = "FETCH";
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<WhitelistedAnalyzer> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new WhitelistedAnalyzer());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<WhitelistedAnalyzer> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

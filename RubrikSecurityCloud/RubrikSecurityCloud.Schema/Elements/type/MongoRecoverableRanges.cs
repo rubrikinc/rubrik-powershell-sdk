@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<MongoRecoverableRange>? RecoverableRanges
         // GraphQL -> recoverableRanges: [MongoRecoverableRange!]! (type)
-        if (this.RecoverableRanges == null && Exploration.Includes(parent + ".recoverableRanges"))
+        if (this.RecoverableRanges == null && ec.Includes("recoverableRanges",false))
         {
             this.RecoverableRanges = new List<MongoRecoverableRange>();
-            this.RecoverableRanges.ApplyExploratoryFieldSpec(parent + ".recoverableRanges");
+            this.RecoverableRanges.ApplyExploratoryFieldSpec(ec.NewChild("recoverableRanges"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<MongoRecoverableRanges> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new MongoRecoverableRanges());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<MongoRecoverableRanges> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

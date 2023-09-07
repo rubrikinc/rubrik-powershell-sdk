@@ -95,28 +95,27 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<System.String>? InvalidIds
         // GraphQL -> invalidIds: [String!]! (scalar)
-        if (this.InvalidIds == null && Exploration.Includes(parent + ".invalidIds", true))
+        if (this.InvalidIds == null && ec.Includes("invalidIds",true))
         {
             this.InvalidIds = new List<System.String>();
         }
         //      C# -> List<ManagedObjectSlaInfo>? ObjectsWithNoOp
         // GraphQL -> objectsWithNoOp: [ManagedObjectSlaInfo!]! (type)
-        if (this.ObjectsWithNoOp == null && Exploration.Includes(parent + ".objectsWithNoOp"))
+        if (this.ObjectsWithNoOp == null && ec.Includes("objectsWithNoOp",false))
         {
             this.ObjectsWithNoOp = new List<ManagedObjectSlaInfo>();
-            this.ObjectsWithNoOp.ApplyExploratoryFieldSpec(parent + ".objectsWithNoOp");
+            this.ObjectsWithNoOp.ApplyExploratoryFieldSpec(ec.NewChild("objectsWithNoOp"));
         }
         //      C# -> List<ManagedObjectPendingSlaInfo>? ObjectsWithPendingOp
         // GraphQL -> objectsWithPendingOp: [ManagedObjectPendingSlaInfo!]! (type)
-        if (this.ObjectsWithPendingOp == null && Exploration.Includes(parent + ".objectsWithPendingOp"))
+        if (this.ObjectsWithPendingOp == null && ec.Includes("objectsWithPendingOp",false))
         {
             this.ObjectsWithPendingOp = new List<ManagedObjectPendingSlaInfo>();
-            this.ObjectsWithPendingOp.ApplyExploratoryFieldSpec(parent + ".objectsWithPendingOp");
+            this.ObjectsWithPendingOp.ApplyExploratoryFieldSpec(ec.NewChild("objectsWithPendingOp"));
         }
     }
 
@@ -150,12 +149,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GetPendingSlaAssignmentsReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GetPendingSlaAssignmentsReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<GetPendingSlaAssignmentsReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

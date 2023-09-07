@@ -115,36 +115,35 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<VmwareRecoverableRange>? MissedRecoverableRanges
         // GraphQL -> missedRecoverableRanges: [VmwareRecoverableRange!]! (type)
-        if (this.MissedRecoverableRanges == null && Exploration.Includes(parent + ".missedRecoverableRanges"))
+        if (this.MissedRecoverableRanges == null && ec.Includes("missedRecoverableRanges",false))
         {
             this.MissedRecoverableRanges = new List<VmwareRecoverableRange>();
-            this.MissedRecoverableRanges.ApplyExploratoryFieldSpec(parent + ".missedRecoverableRanges");
+            this.MissedRecoverableRanges.ApplyExploratoryFieldSpec(ec.NewChild("missedRecoverableRanges"));
         }
         //      C# -> List<VmwareRecoverableRange>? RecoverableRanges
         // GraphQL -> recoverableRanges: [VmwareRecoverableRange!]! (type)
-        if (this.RecoverableRanges == null && Exploration.Includes(parent + ".recoverableRanges"))
+        if (this.RecoverableRanges == null && ec.Includes("recoverableRanges",false))
         {
             this.RecoverableRanges = new List<VmwareRecoverableRange>();
-            this.RecoverableRanges.ApplyExploratoryFieldSpec(parent + ".recoverableRanges");
+            this.RecoverableRanges.ApplyExploratoryFieldSpec(ec.NewChild("recoverableRanges"));
         }
         //      C# -> VmwareRecoveryPoints? RecoveryPoints
         // GraphQL -> recoveryPoints: VmwareRecoveryPoints! (type)
-        if (this.RecoveryPoints == null && Exploration.Includes(parent + ".recoveryPoints"))
+        if (this.RecoveryPoints == null && ec.Includes("recoveryPoints",false))
         {
             this.RecoveryPoints = new VmwareRecoveryPoints();
-            this.RecoveryPoints.ApplyExploratoryFieldSpec(parent + ".recoveryPoints");
+            this.RecoveryPoints.ApplyExploratoryFieldSpec(ec.NewChild("recoveryPoints"));
         }
         //      C# -> VmwareRecoveryState? RecoveryState
         // GraphQL -> recoveryState: VmwareRecoveryState! (type)
-        if (this.RecoveryState == null && Exploration.Includes(parent + ".recoveryState"))
+        if (this.RecoveryState == null && ec.Includes("recoveryState",false))
         {
             this.RecoveryState = new VmwareRecoveryState();
-            this.RecoveryState.ApplyExploratoryFieldSpec(parent + ".recoveryState");
+            this.RecoveryState.ApplyExploratoryFieldSpec(ec.NewChild("recoveryState"));
         }
     }
 
@@ -178,12 +177,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ChildVmRecoveryInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ChildVmRecoveryInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ChildVmRecoveryInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Domain
         // GraphQL -> domain: String! (scalar)
-        if (this.Domain == null && Exploration.Includes(parent + ".domain", true))
+        if (this.Domain == null && ec.Includes("domain",true))
         {
             this.Domain = "FETCH";
         }
         //      C# -> System.String? EmailId
         // GraphQL -> emailId: String! (scalar)
-        if (this.EmailId == null && Exploration.Includes(parent + ".emailId", true))
+        if (this.EmailId == null && ec.Includes("emailId",true))
         {
             this.EmailId = "FETCH";
         }
         //      C# -> System.String? FirstName
         // GraphQL -> firstName: String! (scalar)
-        if (this.FirstName == null && Exploration.Includes(parent + ".firstName", true))
+        if (this.FirstName == null && ec.Includes("firstName",true))
         {
             this.FirstName = "FETCH";
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GcpOauthUserInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GcpOauthUserInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<GcpOauthUserInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

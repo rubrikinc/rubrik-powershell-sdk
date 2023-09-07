@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> WorkloadGroupByEnum? GroupByField
         // GraphQL -> groupByField: WorkloadGroupByEnum! (enum)
-        if (this.GroupByField == null && Exploration.Includes(parent + ".groupByField", true))
+        if (this.GroupByField == null && ec.Includes("groupByField",true))
         {
             this.GroupByField = new WorkloadGroupByEnum();
         }
         //      C# -> System.String? GroupByValue
         // GraphQL -> groupByValue: String! (scalar)
-        if (this.GroupByValue == null && Exploration.Includes(parent + ".groupByValue", true))
+        if (this.GroupByValue == null && ec.Includes("groupByValue",true))
         {
             this.GroupByValue = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<WorkloadGroupByInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new WorkloadGroupByInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<WorkloadGroupByInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

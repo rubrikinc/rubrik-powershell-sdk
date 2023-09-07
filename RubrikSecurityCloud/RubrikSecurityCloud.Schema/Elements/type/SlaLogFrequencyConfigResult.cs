@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> Duration? Retention
         // GraphQL -> retention: Duration (type)
-        if (this.Retention == null && Exploration.Includes(parent + ".retention"))
+        if (this.Retention == null && ec.Includes("retention",false))
         {
             this.Retention = new Duration();
-            this.Retention.ApplyExploratoryFieldSpec(parent + ".retention");
+            this.Retention.ApplyExploratoryFieldSpec(ec.NewChild("retention"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SlaLogFrequencyConfigResult> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SlaLogFrequencyConfigResult());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SlaLogFrequencyConfigResult> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -159,54 +159,53 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? FilesetName
         // GraphQL -> filesetName: String! (scalar)
-        if (this.FilesetName == null && Exploration.Includes(parent + ".filesetName", true))
+        if (this.FilesetName == null && ec.Includes("filesetName",true))
         {
             this.FilesetName = "FETCH";
         }
         //      C# -> System.String? NewExceptionRule
         // GraphQL -> newExceptionRule: String! (scalar)
-        if (this.NewExceptionRule == null && Exploration.Includes(parent + ".newExceptionRule", true))
+        if (this.NewExceptionRule == null && ec.Includes("newExceptionRule",true))
         {
             this.NewExceptionRule = "FETCH";
         }
         //      C# -> System.String? NewExcludeRules
         // GraphQL -> newExcludeRules: String! (scalar)
-        if (this.NewExcludeRules == null && Exploration.Includes(parent + ".newExcludeRules", true))
+        if (this.NewExcludeRules == null && ec.Includes("newExcludeRules",true))
         {
             this.NewExcludeRules = "FETCH";
         }
         //      C# -> System.String? NewFilesetTemplateFid
         // GraphQL -> newFilesetTemplateFid: String! (scalar)
-        if (this.NewFilesetTemplateFid == null && Exploration.Includes(parent + ".newFilesetTemplateFid", true))
+        if (this.NewFilesetTemplateFid == null && ec.Includes("newFilesetTemplateFid",true))
         {
             this.NewFilesetTemplateFid = "FETCH";
         }
         //      C# -> System.String? NewIncludeRules
         // GraphQL -> newIncludeRules: String! (scalar)
-        if (this.NewIncludeRules == null && Exploration.Includes(parent + ".newIncludeRules", true))
+        if (this.NewIncludeRules == null && ec.Includes("newIncludeRules",true))
         {
             this.NewIncludeRules = "FETCH";
         }
         //      C# -> System.String? OldFilesetTemplateCdmId
         // GraphQL -> oldFilesetTemplateCdmId: String! (scalar)
-        if (this.OldFilesetTemplateCdmId == null && Exploration.Includes(parent + ".oldFilesetTemplateCdmId", true))
+        if (this.OldFilesetTemplateCdmId == null && ec.Includes("oldFilesetTemplateCdmId",true))
         {
             this.OldFilesetTemplateCdmId = "FETCH";
         }
         //      C# -> System.String? OldFilesetTemplateFid
         // GraphQL -> oldFilesetTemplateFid: String! (scalar)
-        if (this.OldFilesetTemplateFid == null && Exploration.Includes(parent + ".oldFilesetTemplateFid", true))
+        if (this.OldFilesetTemplateFid == null && ec.Includes("oldFilesetTemplateFid",true))
         {
             this.OldFilesetTemplateFid = "FETCH";
         }
         //      C# -> System.String? ProtectionType
         // GraphQL -> protectionType: String! (scalar)
-        if (this.ProtectionType == null && Exploration.Includes(parent + ".protectionType", true))
+        if (this.ProtectionType == null && ec.Includes("protectionType",true))
         {
             this.ProtectionType = "FETCH";
         }
@@ -242,12 +241,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<NasMigrationFilesetDetail> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new NasMigrationFilesetDetail());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<NasMigrationFilesetDetail> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

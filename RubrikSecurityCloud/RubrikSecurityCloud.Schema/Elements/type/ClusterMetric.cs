@@ -201,72 +201,71 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? AvailableCapacity
         // GraphQL -> availableCapacity: Long! (scalar)
-        if (this.AvailableCapacity == null && Exploration.Includes(parent + ".availableCapacity", true))
+        if (this.AvailableCapacity == null && ec.Includes("availableCapacity",true))
         {
             this.AvailableCapacity = new System.Int64();
         }
         //      C# -> System.Int64? IngestedArchivalStorage
         // GraphQL -> ingestedArchivalStorage: Long! (scalar)
-        if (this.IngestedArchivalStorage == null && Exploration.Includes(parent + ".ingestedArchivalStorage", true))
+        if (this.IngestedArchivalStorage == null && ec.Includes("ingestedArchivalStorage",true))
         {
             this.IngestedArchivalStorage = new System.Int64();
         }
         //      C# -> System.Int64? IngestedSnapshotStorage
         // GraphQL -> ingestedSnapshotStorage: Long! (scalar)
-        if (this.IngestedSnapshotStorage == null && Exploration.Includes(parent + ".ingestedSnapshotStorage", true))
+        if (this.IngestedSnapshotStorage == null && ec.Includes("ingestedSnapshotStorage",true))
         {
             this.IngestedSnapshotStorage = new System.Int64();
         }
         //      C# -> DateTime? LastUpdateTime
         // GraphQL -> lastUpdateTime: DateTime! (scalar)
-        if (this.LastUpdateTime == null && Exploration.Includes(parent + ".lastUpdateTime", true))
+        if (this.LastUpdateTime == null && ec.Includes("lastUpdateTime",true))
         {
             this.LastUpdateTime = new DateTime();
         }
         //      C# -> System.Int64? LiveMountCapacity
         // GraphQL -> liveMountCapacity: Long! (scalar)
-        if (this.LiveMountCapacity == null && Exploration.Includes(parent + ".liveMountCapacity", true))
+        if (this.LiveMountCapacity == null && ec.Includes("liveMountCapacity",true))
         {
             this.LiveMountCapacity = new System.Int64();
         }
         //      C# -> System.Int64? MiscellaneousCapacity
         // GraphQL -> miscellaneousCapacity: Long! (scalar)
-        if (this.MiscellaneousCapacity == null && Exploration.Includes(parent + ".miscellaneousCapacity", true))
+        if (this.MiscellaneousCapacity == null && ec.Includes("miscellaneousCapacity",true))
         {
             this.MiscellaneousCapacity = new System.Int64();
         }
         //      C# -> System.Int64? PhysicalArchivalStorage
         // GraphQL -> physicalArchivalStorage: Long! (scalar)
-        if (this.PhysicalArchivalStorage == null && Exploration.Includes(parent + ".physicalArchivalStorage", true))
+        if (this.PhysicalArchivalStorage == null && ec.Includes("physicalArchivalStorage",true))
         {
             this.PhysicalArchivalStorage = new System.Int64();
         }
         //      C# -> System.Int64? PhysicalSnapshotStorage
         // GraphQL -> physicalSnapshotStorage: Long! (scalar)
-        if (this.PhysicalSnapshotStorage == null && Exploration.Includes(parent + ".physicalSnapshotStorage", true))
+        if (this.PhysicalSnapshotStorage == null && ec.Includes("physicalSnapshotStorage",true))
         {
             this.PhysicalSnapshotStorage = new System.Int64();
         }
         //      C# -> System.Int64? SnapshotCapacity
         // GraphQL -> snapshotCapacity: Long! (scalar)
-        if (this.SnapshotCapacity == null && Exploration.Includes(parent + ".snapshotCapacity", true))
+        if (this.SnapshotCapacity == null && ec.Includes("snapshotCapacity",true))
         {
             this.SnapshotCapacity = new System.Int64();
         }
         //      C# -> System.Int64? TotalCapacity
         // GraphQL -> totalCapacity: Long! (scalar)
-        if (this.TotalCapacity == null && Exploration.Includes(parent + ".totalCapacity", true))
+        if (this.TotalCapacity == null && ec.Includes("totalCapacity",true))
         {
             this.TotalCapacity = new System.Int64();
         }
         //      C# -> System.Int64? UsedCapacity
         // GraphQL -> usedCapacity: Long! (scalar)
-        if (this.UsedCapacity == null && Exploration.Includes(parent + ".usedCapacity", true))
+        if (this.UsedCapacity == null && ec.Includes("usedCapacity",true))
         {
             this.UsedCapacity = new System.Int64();
         }
@@ -302,12 +301,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ClusterMetric> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ClusterMetric());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ClusterMetric> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

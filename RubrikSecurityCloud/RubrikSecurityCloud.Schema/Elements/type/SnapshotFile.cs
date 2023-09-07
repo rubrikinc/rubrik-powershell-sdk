@@ -193,70 +193,69 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> FileModeEnum? FileMode
         // GraphQL -> fileMode: FileModeEnum! (enum)
-        if (this.FileMode == null && Exploration.Includes(parent + ".fileMode", true))
+        if (this.FileMode == null && ec.Includes("fileMode",true))
         {
             this.FileMode = new FileModeEnum();
         }
         //      C# -> System.String? AbsolutePath
         // GraphQL -> absolutePath: String! (scalar)
-        if (this.AbsolutePath == null && Exploration.Includes(parent + ".absolutePath", true))
+        if (this.AbsolutePath == null && ec.Includes("absolutePath",true))
         {
             this.AbsolutePath = "FETCH";
         }
         //      C# -> System.String? DisplayPath
         // GraphQL -> displayPath: String! (scalar)
-        if (this.DisplayPath == null && Exploration.Includes(parent + ".displayPath", true))
+        if (this.DisplayPath == null && ec.Includes("displayPath",true))
         {
             this.DisplayPath = "FETCH";
         }
         //      C# -> System.String? Filename
         // GraphQL -> filename: String! (scalar)
-        if (this.Filename == null && Exploration.Includes(parent + ".filename", true))
+        if (this.Filename == null && ec.Includes("filename",true))
         {
             this.Filename = "FETCH";
         }
         //      C# -> DateTime? LastModified
         // GraphQL -> lastModified: DateTime! (scalar)
-        if (this.LastModified == null && Exploration.Includes(parent + ".lastModified", true))
+        if (this.LastModified == null && ec.Includes("lastModified",true))
         {
             this.LastModified = new DateTime();
         }
         //      C# -> System.String? Path
         // GraphQL -> path: String! (scalar)
-        if (this.Path == null && Exploration.Includes(parent + ".path", true))
+        if (this.Path == null && ec.Includes("path",true))
         {
             this.Path = "FETCH";
         }
         //      C# -> System.Int64? Size
         // GraphQL -> size: Long! (scalar)
-        if (this.Size == null && Exploration.Includes(parent + ".size", true))
+        if (this.Size == null && ec.Includes("size",true))
         {
             this.Size = new System.Int64();
         }
         //      C# -> System.String? StatusMessage
         // GraphQL -> statusMessage: String! (scalar)
-        if (this.StatusMessage == null && Exploration.Includes(parent + ".statusMessage", true))
+        if (this.StatusMessage == null && ec.Includes("statusMessage",true))
         {
             this.StatusMessage = "FETCH";
         }
         //      C# -> QuarantineInfo? QuarantineInfo
         // GraphQL -> quarantineInfo: QuarantineInfo (type)
-        if (this.QuarantineInfo == null && Exploration.Includes(parent + ".quarantineInfo"))
+        if (this.QuarantineInfo == null && ec.Includes("quarantineInfo",false))
         {
             this.QuarantineInfo = new QuarantineInfo();
-            this.QuarantineInfo.ApplyExploratoryFieldSpec(parent + ".quarantineInfo");
+            this.QuarantineInfo.ApplyExploratoryFieldSpec(ec.NewChild("quarantineInfo"));
         }
         //      C# -> WorkloadFields? WorkloadFields
         // GraphQL -> workloadFields: WorkloadFields (type)
-        if (this.WorkloadFields == null && Exploration.Includes(parent + ".workloadFields"))
+        if (this.WorkloadFields == null && ec.Includes("workloadFields",false))
         {
             this.WorkloadFields = new WorkloadFields();
-            this.WorkloadFields.ApplyExploratoryFieldSpec(parent + ".workloadFields");
+            this.WorkloadFields.ApplyExploratoryFieldSpec(ec.NewChild("workloadFields"));
         }
     }
 
@@ -290,12 +289,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SnapshotFile> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SnapshotFile());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SnapshotFile> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

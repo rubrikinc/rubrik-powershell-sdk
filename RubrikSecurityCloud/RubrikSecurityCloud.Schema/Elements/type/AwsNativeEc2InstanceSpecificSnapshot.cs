@@ -191,69 +191,68 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> SnapshotServiceConsistencyLevel? ConsistencyLevel
         // GraphQL -> consistencyLevel: SnapshotServiceConsistencyLevel! (enum)
-        if (this.ConsistencyLevel == null && Exploration.Includes(parent + ".consistencyLevel", true))
+        if (this.ConsistencyLevel == null && ec.Includes("consistencyLevel",true))
         {
             this.ConsistencyLevel = new SnapshotServiceConsistencyLevel();
         }
         //      C# -> System.String? AwsNativeAccountId
         // GraphQL -> awsNativeAccountId: String! (scalar)
-        if (this.AwsNativeAccountId == null && Exploration.Includes(parent + ".awsNativeAccountId", true))
+        if (this.AwsNativeAccountId == null && ec.Includes("awsNativeAccountId",true))
         {
             this.AwsNativeAccountId = "FETCH";
         }
         //      C# -> System.String? IamInstanceProfileArn
         // GraphQL -> iamInstanceProfileArn: String! (scalar)
-        if (this.IamInstanceProfileArn == null && Exploration.Includes(parent + ".iamInstanceProfileArn", true))
+        if (this.IamInstanceProfileArn == null && ec.Includes("iamInstanceProfileArn",true))
         {
             this.IamInstanceProfileArn = "FETCH";
         }
         //      C# -> System.String? InstanceType
         // GraphQL -> instanceType: String! (scalar)
-        if (this.InstanceType == null && Exploration.Includes(parent + ".instanceType", true))
+        if (this.InstanceType == null && ec.Includes("instanceType",true))
         {
             this.InstanceType = "FETCH";
         }
         //      C# -> System.String? NativeId
         // GraphQL -> nativeId: String! (scalar)
-        if (this.NativeId == null && Exploration.Includes(parent + ".nativeId", true))
+        if (this.NativeId == null && ec.Includes("nativeId",true))
         {
             this.NativeId = "FETCH";
         }
         //      C# -> System.String? NativeName
         // GraphQL -> nativeName: String! (scalar)
-        if (this.NativeName == null && Exploration.Includes(parent + ".nativeName", true))
+        if (this.NativeName == null && ec.Includes("nativeName",true))
         {
             this.NativeName = "FETCH";
         }
         //      C# -> System.String? Region
         // GraphQL -> region: String! (scalar)
-        if (this.Region == null && Exploration.Includes(parent + ".region", true))
+        if (this.Region == null && ec.Includes("region",true))
         {
             this.Region = "FETCH";
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: UUID! (scalar)
-        if (this.SnapshotId == null && Exploration.Includes(parent + ".snapshotId", true))
+        if (this.SnapshotId == null && ec.Includes("snapshotId",true))
         {
             this.SnapshotId = "FETCH";
         }
         //      C# -> List<System.String>? VolumeSnapshotsToExclude
         // GraphQL -> volumeSnapshotsToExclude: [String!]! (scalar)
-        if (this.VolumeSnapshotsToExclude == null && Exploration.Includes(parent + ".volumeSnapshotsToExclude", true))
+        if (this.VolumeSnapshotsToExclude == null && ec.Includes("volumeSnapshotsToExclude",true))
         {
             this.VolumeSnapshotsToExclude = new List<System.String>();
         }
         //      C# -> DevicePathToVolumeSnapshotIdMap? DevicePathToVolumeSnapshotIdMap
         // GraphQL -> devicePathToVolumeSnapshotIdMap: DevicePathToVolumeSnapshotIdMap! (type)
-        if (this.DevicePathToVolumeSnapshotIdMap == null && Exploration.Includes(parent + ".devicePathToVolumeSnapshotIdMap"))
+        if (this.DevicePathToVolumeSnapshotIdMap == null && ec.Includes("devicePathToVolumeSnapshotIdMap",false))
         {
             this.DevicePathToVolumeSnapshotIdMap = new DevicePathToVolumeSnapshotIdMap();
-            this.DevicePathToVolumeSnapshotIdMap.ApplyExploratoryFieldSpec(parent + ".devicePathToVolumeSnapshotIdMap");
+            this.DevicePathToVolumeSnapshotIdMap.ApplyExploratoryFieldSpec(ec.NewChild("devicePathToVolumeSnapshotIdMap"));
         }
     }
 
@@ -287,12 +286,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AwsNativeEc2InstanceSpecificSnapshot> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AwsNativeEc2InstanceSpecificSnapshot());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AwsNativeEc2InstanceSpecificSnapshot> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

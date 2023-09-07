@@ -92,27 +92,26 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> AwsCloudExternalArtifact? ExternalArtifactKey
         // GraphQL -> externalArtifactKey: AwsCloudExternalArtifact! (enum)
-        if (this.ExternalArtifactKey == null && Exploration.Includes(parent + ".externalArtifactKey", true))
+        if (this.ExternalArtifactKey == null && ec.Includes("externalArtifactKey",true))
         {
             this.ExternalArtifactKey = new AwsCloudExternalArtifact();
         }
         //      C# -> List<System.String>? AwsManagedPolicies
         // GraphQL -> awsManagedPolicies: [String!]! (scalar)
-        if (this.AwsManagedPolicies == null && Exploration.Includes(parent + ".awsManagedPolicies", true))
+        if (this.AwsManagedPolicies == null && ec.Includes("awsManagedPolicies",true))
         {
             this.AwsManagedPolicies = new List<System.String>();
         }
         //      C# -> List<CustomerManagedPolicy>? CustomerManagedPolicies
         // GraphQL -> customerManagedPolicies: [CustomerManagedPolicy!]! (type)
-        if (this.CustomerManagedPolicies == null && Exploration.Includes(parent + ".customerManagedPolicies"))
+        if (this.CustomerManagedPolicies == null && ec.Includes("customerManagedPolicies",false))
         {
             this.CustomerManagedPolicies = new List<CustomerManagedPolicy>();
-            this.CustomerManagedPolicies.ApplyExploratoryFieldSpec(parent + ".customerManagedPolicies");
+            this.CustomerManagedPolicies.ApplyExploratoryFieldSpec(ec.NewChild("customerManagedPolicies"));
         }
     }
 
@@ -146,12 +145,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PermissionPolicy> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PermissionPolicy());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<PermissionPolicy> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

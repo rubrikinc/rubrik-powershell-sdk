@@ -92,27 +92,26 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int32? NumApps
         // GraphQL -> numApps: Int! (scalar)
-        if (this.NumApps == null && Exploration.Includes(parent + ".numApps", true))
+        if (this.NumApps == null && ec.Includes("numApps",true))
         {
             this.NumApps = Int32.MinValue;
         }
         //      C# -> System.Int32? NumNodes
         // GraphQL -> numNodes: Int! (scalar)
-        if (this.NumNodes == null && Exploration.Includes(parent + ".numNodes", true))
+        if (this.NumNodes == null && ec.Includes("numNodes",true))
         {
             this.NumNodes = Int32.MinValue;
         }
         //      C# -> FailoverClusterSummary? FailoverClusterSummary
         // GraphQL -> failoverClusterSummary: FailoverClusterSummary (type)
-        if (this.FailoverClusterSummary == null && Exploration.Includes(parent + ".failoverClusterSummary"))
+        if (this.FailoverClusterSummary == null && ec.Includes("failoverClusterSummary",false))
         {
             this.FailoverClusterSummary = new FailoverClusterSummary();
-            this.FailoverClusterSummary.ApplyExploratoryFieldSpec(parent + ".failoverClusterSummary");
+            this.FailoverClusterSummary.ApplyExploratoryFieldSpec(ec.NewChild("failoverClusterSummary"));
         }
     }
 
@@ -146,12 +145,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<FailoverClusterDetail> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new FailoverClusterDetail());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<FailoverClusterDetail> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

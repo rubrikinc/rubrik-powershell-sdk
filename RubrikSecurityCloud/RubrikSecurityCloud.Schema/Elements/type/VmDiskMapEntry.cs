@@ -148,51 +148,50 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? SourceVmDiskId
         // GraphQL -> sourceVmDiskId: String! (scalar)
-        if (this.SourceVmDiskId == null && Exploration.Includes(parent + ".sourceVmDiskId", true))
+        if (this.SourceVmDiskId == null && ec.Includes("sourceVmDiskId",true))
         {
             this.SourceVmDiskId = "FETCH";
         }
         //      C# -> System.String? TargetDiskId
         // GraphQL -> targetDiskId: String! (scalar)
-        if (this.TargetDiskId == null && Exploration.Includes(parent + ".targetDiskId", true))
+        if (this.TargetDiskId == null && ec.Includes("targetDiskId",true))
         {
             this.TargetDiskId = "FETCH";
         }
         //      C# -> System.String? TargetDiskNativeId
         // GraphQL -> targetDiskNativeId: String! (scalar)
-        if (this.TargetDiskNativeId == null && Exploration.Includes(parent + ".targetDiskNativeId", true))
+        if (this.TargetDiskNativeId == null && ec.Includes("targetDiskNativeId",true))
         {
             this.TargetDiskNativeId = "FETCH";
         }
         //      C# -> System.Boolean? TargetIsOsDisk
         // GraphQL -> targetIsOsDisk: Boolean! (scalar)
-        if (this.TargetIsOsDisk == null && Exploration.Includes(parent + ".targetIsOsDisk", true))
+        if (this.TargetIsOsDisk == null && ec.Includes("targetIsOsDisk",true))
         {
             this.TargetIsOsDisk = true;
         }
         //      C# -> System.Int64? TargetLogicalSize
         // GraphQL -> targetLogicalSize: Long! (scalar)
-        if (this.TargetLogicalSize == null && Exploration.Includes(parent + ".targetLogicalSize", true))
+        if (this.TargetLogicalSize == null && ec.Includes("targetLogicalSize",true))
         {
             this.TargetLogicalSize = new System.Int64();
         }
         //      C# -> System.String? TargetSnapshotId
         // GraphQL -> targetSnapshotId: String! (scalar)
-        if (this.TargetSnapshotId == null && Exploration.Includes(parent + ".targetSnapshotId", true))
+        if (this.TargetSnapshotId == null && ec.Includes("targetSnapshotId",true))
         {
             this.TargetSnapshotId = "FETCH";
         }
         //      C# -> VmDatastore? SourceDatastore
         // GraphQL -> sourceDatastore: VmDatastore (type)
-        if (this.SourceDatastore == null && Exploration.Includes(parent + ".sourceDatastore"))
+        if (this.SourceDatastore == null && ec.Includes("sourceDatastore",false))
         {
             this.SourceDatastore = new VmDatastore();
-            this.SourceDatastore.ApplyExploratoryFieldSpec(parent + ".sourceDatastore");
+            this.SourceDatastore.ApplyExploratoryFieldSpec(ec.NewChild("sourceDatastore"));
         }
     }
 
@@ -226,12 +225,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VmDiskMapEntry> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VmDiskMapEntry());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VmDiskMapEntry> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

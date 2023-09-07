@@ -117,36 +117,35 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? CustomAttributes
         // GraphQL -> customAttributes: String! (scalar)
-        if (this.CustomAttributes == null && Exploration.Includes(parent + ".customAttributes", true))
+        if (this.CustomAttributes == null && ec.Includes("customAttributes",true))
         {
             this.CustomAttributes = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> DateTime? LastInteracted
         // GraphQL -> lastInteracted: DateTime (scalar)
-        if (this.LastInteracted == null && Exploration.Includes(parent + ".lastInteracted", true))
+        if (this.LastInteracted == null && ec.Includes("lastInteracted",true))
         {
             this.LastInteracted = new DateTime();
         }
         //      C# -> System.String? Link
         // GraphQL -> link: String! (scalar)
-        if (this.Link == null && Exploration.Includes(parent + ".link", true))
+        if (this.Link == null && ec.Includes("link",true))
         {
             this.Link = "FETCH";
         }
         //      C# -> System.String? Title
         // GraphQL -> title: String! (scalar)
-        if (this.Title == null && Exploration.Includes(parent + ".title", true))
+        if (this.Title == null && ec.Includes("title",true))
         {
             this.Title = "FETCH";
         }
@@ -182,12 +181,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RecentlyViewedItem> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RecentlyViewedItem());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<RecentlyViewedItem> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

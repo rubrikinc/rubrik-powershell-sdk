@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> KuprClusterPortsType? PortRangeType
         // GraphQL -> portRangeType: KuprClusterPortsType! (enum)
-        if (this.PortRangeType == null && Exploration.Includes(parent + ".portRangeType", true))
+        if (this.PortRangeType == null && ec.Includes("portRangeType",true))
         {
             this.PortRangeType = new KuprClusterPortsType();
         }
         //      C# -> System.String? KuprClusterUuid
         // GraphQL -> kuprClusterUuid: UUID! (scalar)
-        if (this.KuprClusterUuid == null && Exploration.Includes(parent + ".kuprClusterUuid", true))
+        if (this.KuprClusterUuid == null && ec.Includes("kuprClusterUuid",true))
         {
             this.KuprClusterUuid = "FETCH";
         }
         //      C# -> System.Int32? MaxPort
         // GraphQL -> maxPort: Int! (scalar)
-        if (this.MaxPort == null && Exploration.Includes(parent + ".maxPort", true))
+        if (this.MaxPort == null && ec.Includes("maxPort",true))
         {
             this.MaxPort = Int32.MinValue;
         }
         //      C# -> System.Int32? MinPort
         // GraphQL -> minPort: Int! (scalar)
-        if (this.MinPort == null && Exploration.Includes(parent + ".minPort", true))
+        if (this.MinPort == null && ec.Includes("minPort",true))
         {
             this.MinPort = Int32.MinValue;
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<K8sClusterPortsInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new K8sClusterPortsInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<K8sClusterPortsInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -98,29 +98,28 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> Duration? DifferentialFrequency
         // GraphQL -> differentialFrequency: Duration (type)
-        if (this.DifferentialFrequency == null && Exploration.Includes(parent + ".differentialFrequency"))
+        if (this.DifferentialFrequency == null && ec.Includes("differentialFrequency",false))
         {
             this.DifferentialFrequency = new Duration();
-            this.DifferentialFrequency.ApplyExploratoryFieldSpec(parent + ".differentialFrequency");
+            this.DifferentialFrequency.ApplyExploratoryFieldSpec(ec.NewChild("differentialFrequency"));
         }
         //      C# -> Duration? IncrementalFrequency
         // GraphQL -> incrementalFrequency: Duration (type)
-        if (this.IncrementalFrequency == null && Exploration.Includes(parent + ".incrementalFrequency"))
+        if (this.IncrementalFrequency == null && ec.Includes("incrementalFrequency",false))
         {
             this.IncrementalFrequency = new Duration();
-            this.IncrementalFrequency.ApplyExploratoryFieldSpec(parent + ".incrementalFrequency");
+            this.IncrementalFrequency.ApplyExploratoryFieldSpec(ec.NewChild("incrementalFrequency"));
         }
         //      C# -> Duration? LogRetention
         // GraphQL -> logRetention: Duration (type)
-        if (this.LogRetention == null && Exploration.Includes(parent + ".logRetention"))
+        if (this.LogRetention == null && ec.Includes("logRetention",false))
         {
             this.LogRetention = new Duration();
-            this.LogRetention.ApplyExploratoryFieldSpec(parent + ".logRetention");
+            this.LogRetention.ApplyExploratoryFieldSpec(ec.NewChild("logRetention"));
         }
     }
 
@@ -154,12 +153,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SapHanaConfig> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SapHanaConfig());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SapHanaConfig> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? ProductType
         // GraphQL -> productType: String! (scalar)
-        if (this.ProductType == null && Exploration.Includes(parent + ".productType", true))
+        if (this.ProductType == null && ec.Includes("productType",true))
         {
             this.ProductType = "FETCH";
         }
         //      C# -> System.String? Pubkey
         // GraphQL -> pubkey: String! (scalar)
-        if (this.Pubkey == null && Exploration.Includes(parent + ".pubkey", true))
+        if (this.Pubkey == null && ec.Includes("pubkey",true))
         {
             this.Pubkey = "FETCH";
         }
         //      C# -> System.String? Token
         // GraphQL -> token: String! (scalar)
-        if (this.Token == null && Exploration.Includes(parent + ".token", true))
+        if (this.Token == null && ec.Includes("token",true))
         {
             this.Token = "FETCH";
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ClusterRegistrationToken> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ClusterRegistrationToken());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ClusterRegistrationToken> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<ClassificationPolicyDetail>? Policies
         // GraphQL -> policies: [ClassificationPolicyDetail!]! (type)
-        if (this.Policies == null && Exploration.Includes(parent + ".policies"))
+        if (this.Policies == null && ec.Includes("policies",false))
         {
             this.Policies = new List<ClassificationPolicyDetail>();
-            this.Policies.ApplyExploratoryFieldSpec(parent + ".policies");
+            this.Policies.ApplyExploratoryFieldSpec(ec.NewChild("policies"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SeedEnabledPoliciesReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SeedEnabledPoliciesReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SeedEnabledPoliciesReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

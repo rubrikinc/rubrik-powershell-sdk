@@ -246,93 +246,92 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? EffectiveSlaDomainId
         // GraphQL -> effectiveSlaDomainId: String (scalar)
-        if (this.EffectiveSlaDomainId == null && Exploration.Includes(parent + ".effectiveSlaDomainId", true))
+        if (this.EffectiveSlaDomainId == null && ec.Includes("effectiveSlaDomainId",true))
         {
             this.EffectiveSlaDomainId = "FETCH";
         }
         //      C# -> System.String? EffectiveSlaDomainName
         // GraphQL -> effectiveSlaDomainName: String (scalar)
-        if (this.EffectiveSlaDomainName == null && Exploration.Includes(parent + ".effectiveSlaDomainName", true))
+        if (this.EffectiveSlaDomainName == null && ec.Includes("effectiveSlaDomainName",true))
         {
             this.EffectiveSlaDomainName = "FETCH";
         }
         //      C# -> System.String? EffectiveSlaDomainPolarisManagedId
         // GraphQL -> effectiveSlaDomainPolarisManagedId: String (scalar)
-        if (this.EffectiveSlaDomainPolarisManagedId == null && Exploration.Includes(parent + ".effectiveSlaDomainPolarisManagedId", true))
+        if (this.EffectiveSlaDomainPolarisManagedId == null && ec.Includes("effectiveSlaDomainPolarisManagedId",true))
         {
             this.EffectiveSlaDomainPolarisManagedId = "FETCH";
         }
         //      C# -> System.Boolean? IsEffectiveSlaDomainRetentionLocked
         // GraphQL -> isEffectiveSlaDomainRetentionLocked: Boolean (scalar)
-        if (this.IsEffectiveSlaDomainRetentionLocked == null && Exploration.Includes(parent + ".isEffectiveSlaDomainRetentionLocked", true))
+        if (this.IsEffectiveSlaDomainRetentionLocked == null && ec.Includes("isEffectiveSlaDomainRetentionLocked",true))
         {
             this.IsEffectiveSlaDomainRetentionLocked = true;
         }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
-        if (this.IsRelic == null && Exploration.Includes(parent + ".isRelic", true))
+        if (this.IsRelic == null && ec.Includes("isRelic",true))
         {
             this.IsRelic = true;
         }
         //      C# -> System.String? NasNamespaceId
         // GraphQL -> nasNamespaceId: String! (scalar)
-        if (this.NasNamespaceId == null && Exploration.Includes(parent + ".nasNamespaceId", true))
+        if (this.NasNamespaceId == null && ec.Includes("nasNamespaceId",true))
         {
             this.NasNamespaceId = "FETCH";
         }
         //      C# -> System.String? NasNamespaceName
         // GraphQL -> nasNamespaceName: String! (scalar)
-        if (this.NasNamespaceName == null && Exploration.Includes(parent + ".nasNamespaceName", true))
+        if (this.NasNamespaceName == null && ec.Includes("nasNamespaceName",true))
         {
             this.NasNamespaceName = "FETCH";
         }
         //      C# -> System.String? NasSystemId
         // GraphQL -> nasSystemId: String! (scalar)
-        if (this.NasSystemId == null && Exploration.Includes(parent + ".nasSystemId", true))
+        if (this.NasSystemId == null && ec.Includes("nasSystemId",true))
         {
             this.NasSystemId = "FETCH";
         }
         //      C# -> System.String? NasSystemName
         // GraphQL -> nasSystemName: String! (scalar)
-        if (this.NasSystemName == null && Exploration.Includes(parent + ".nasSystemName", true))
+        if (this.NasSystemName == null && ec.Includes("nasSystemName",true))
         {
             this.NasSystemName = "FETCH";
         }
         //      C# -> System.String? NasVolumeId
         // GraphQL -> nasVolumeId: String! (scalar)
-        if (this.NasVolumeId == null && Exploration.Includes(parent + ".nasVolumeId", true))
+        if (this.NasVolumeId == null && ec.Includes("nasVolumeId",true))
         {
             this.NasVolumeId = "FETCH";
         }
         //      C# -> System.String? NasVolumeName
         // GraphQL -> nasVolumeName: String! (scalar)
-        if (this.NasVolumeName == null && Exploration.Includes(parent + ".nasVolumeName", true))
+        if (this.NasVolumeName == null && ec.Includes("nasVolumeName",true))
         {
             this.NasVolumeName = "FETCH";
         }
         //      C# -> System.String? RelationshipUuid
         // GraphQL -> relationshipUuid: String (scalar)
-        if (this.RelationshipUuid == null && Exploration.Includes(parent + ".relationshipUuid", true))
+        if (this.RelationshipUuid == null && ec.Includes("relationshipUuid",true))
         {
             this.RelationshipUuid = "FETCH";
         }
         //      C# -> System.String? SnapMirrorLabel
         // GraphQL -> snapMirrorLabel: String (scalar)
-        if (this.SnapMirrorLabel == null && Exploration.Includes(parent + ".snapMirrorLabel", true))
+        if (this.SnapMirrorLabel == null && ec.Includes("snapMirrorLabel",true))
         {
             this.SnapMirrorLabel = "FETCH";
         }
         //      C# -> SlaAssignable? SlaAssignable
         // GraphQL -> slaAssignable: SlaAssignable (type)
-        if (this.SlaAssignable == null && Exploration.Includes(parent + ".slaAssignable"))
+        if (this.SlaAssignable == null && ec.Includes("slaAssignable",false))
         {
             this.SlaAssignable = new SlaAssignable();
-            this.SlaAssignable.ApplyExploratoryFieldSpec(parent + ".slaAssignable");
+            this.SlaAssignable.ApplyExploratoryFieldSpec(ec.NewChild("slaAssignable"));
         }
     }
 
@@ -366,12 +365,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CreateSnapMirrorCloudReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CreateSnapMirrorCloudReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CreateSnapMirrorCloudReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

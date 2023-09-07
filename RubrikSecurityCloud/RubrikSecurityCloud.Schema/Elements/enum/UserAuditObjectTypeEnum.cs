@@ -294,6 +294,15 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "SystemPreference")]
         SYSTEM_PREFERENCE,
 
+        [EnumMember(Value = "TPR_CONFIG")]
+        TPR_CONFIG,
+
+        [EnumMember(Value = "TPR_POLICY")]
+        TPR_POLICY,
+
+        [EnumMember(Value = "TPR_REQUEST")]
+        TPR_REQUEST,
+
         [EnumMember(Value = "Unknown")]
         UNKNOWN,
 

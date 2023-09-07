@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? ClusterId
         // GraphQL -> clusterId: String! (scalar)
-        if (this.ClusterId == null && Exploration.Includes(parent + ".clusterId", true))
+        if (this.ClusterId == null && ec.Includes("clusterId",true))
         {
             this.ClusterId = "FETCH";
         }
         //      C# -> System.String? YamlUrl
         // GraphQL -> yamlUrl: String! (scalar)
-        if (this.YamlUrl == null && Exploration.Includes(parent + ".yamlUrl", true))
+        if (this.YamlUrl == null && ec.Includes("yamlUrl",true))
         {
             this.YamlUrl = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CreateK8sClusterReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CreateK8sClusterReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CreateK8sClusterReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

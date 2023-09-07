@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? CloudFormationUrl
         // GraphQL -> cloudFormationUrl: String! (scalar)
-        if (this.CloudFormationUrl == null && Exploration.Includes(parent + ".cloudFormationUrl", true))
+        if (this.CloudFormationUrl == null && ec.Includes("cloudFormationUrl",true))
         {
             this.CloudFormationUrl = "FETCH";
         }
         //      C# -> System.String? TemplateUrl
         // GraphQL -> templateUrl: String! (scalar)
-        if (this.TemplateUrl == null && Exploration.Includes(parent + ".templateUrl", true))
+        if (this.TemplateUrl == null && ec.Includes("templateUrl",true))
         {
             this.TemplateUrl = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PrepareFeatureUpdateForAwsCloudAccountReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PrepareFeatureUpdateForAwsCloudAccountReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<PrepareFeatureUpdateForAwsCloudAccountReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

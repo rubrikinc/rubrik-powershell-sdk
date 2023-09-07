@@ -187,66 +187,65 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? ElapsedTime
         // GraphQL -> elapsedTime: Long! (scalar)
-        if (this.ElapsedTime == null && Exploration.Includes(parent + ".elapsedTime", true))
+        if (this.ElapsedTime == null && ec.Includes("elapsedTime",true))
         {
             this.ElapsedTime = new System.Int64();
         }
         //      C# -> System.Int64? EndTime
         // GraphQL -> endTime: Long (scalar)
-        if (this.EndTime == null && Exploration.Includes(parent + ".endTime", true))
+        if (this.EndTime == null && ec.Includes("endTime",true))
         {
             this.EndTime = new System.Int64();
         }
         //      C# -> System.Int32? Failed
         // GraphQL -> failed: Int (scalar)
-        if (this.Failed == null && Exploration.Includes(parent + ".failed", true))
+        if (this.Failed == null && ec.Includes("failed",true))
         {
             this.Failed = Int32.MinValue;
         }
         //      C# -> System.Int32? InProgress
         // GraphQL -> inProgress: Int (scalar)
-        if (this.InProgress == null && Exploration.Includes(parent + ".inProgress", true))
+        if (this.InProgress == null && ec.Includes("inProgress",true))
         {
             this.InProgress = Int32.MinValue;
         }
         //      C# -> System.String? Message
         // GraphQL -> message: String! (scalar)
-        if (this.Message == null && Exploration.Includes(parent + ".message", true))
+        if (this.Message == null && ec.Includes("message",true))
         {
             this.Message = "FETCH";
         }
         //      C# -> System.Int32? ObjectsWithoutSnapshot
         // GraphQL -> objectsWithoutSnapshot: Int (scalar)
-        if (this.ObjectsWithoutSnapshot == null && Exploration.Includes(parent + ".objectsWithoutSnapshot", true))
+        if (this.ObjectsWithoutSnapshot == null && ec.Includes("objectsWithoutSnapshot",true))
         {
             this.ObjectsWithoutSnapshot = Int32.MinValue;
         }
         //      C# -> System.Int32? Seq
         // GraphQL -> seq: Int! (scalar)
-        if (this.Seq == null && Exploration.Includes(parent + ".seq", true))
+        if (this.Seq == null && ec.Includes("seq",true))
         {
             this.Seq = Int32.MinValue;
         }
         //      C# -> System.Int64? StartTime
         // GraphQL -> startTime: Long (scalar)
-        if (this.StartTime == null && Exploration.Includes(parent + ".startTime", true))
+        if (this.StartTime == null && ec.Includes("startTime",true))
         {
             this.StartTime = new System.Int64();
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = "FETCH";
         }
         //      C# -> System.Int32? Total
         // GraphQL -> total: Int (scalar)
-        if (this.Total == null && Exploration.Includes(parent + ".total", true))
+        if (this.Total == null && ec.Includes("total",true))
         {
             this.Total = Int32.MinValue;
         }
@@ -282,12 +281,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SelectorStepEvent> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SelectorStepEvent());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SelectorStepEvent> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

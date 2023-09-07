@@ -252,95 +252,94 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> AuthenticationType? AuthType
         // GraphQL -> authType: AuthenticationType! (enum)
-        if (this.AuthType == null && Exploration.Includes(parent + ".authType", true))
+        if (this.AuthType == null && ec.Includes("authType",true))
         {
             this.AuthType = new AuthenticationType();
         }
         //      C# -> ProviderType? ProviderType
         // GraphQL -> providerType: ProviderType! (enum)
-        if (this.ProviderType == null && Exploration.Includes(parent + ".providerType", true))
+        if (this.ProviderType == null && ec.Includes("providerType",true))
         {
             this.ProviderType = new ProviderType();
         }
         //      C# -> WebhookStatus? Status
         // GraphQL -> status: WebhookStatus! (enum)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = new WebhookStatus();
         }
         //      C# -> DateTime? CreatedAt
         // GraphQL -> createdAt: DateTime (scalar)
-        if (this.CreatedAt == null && Exploration.Includes(parent + ".createdAt", true))
+        if (this.CreatedAt == null && ec.Includes("createdAt",true))
         {
             this.CreatedAt = new DateTime();
         }
         //      C# -> System.String? CreatedBy
         // GraphQL -> createdBy: String! (scalar)
-        if (this.CreatedBy == null && Exploration.Includes(parent + ".createdBy", true))
+        if (this.CreatedBy == null && ec.Includes("createdBy",true))
         {
             this.CreatedBy = "FETCH";
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String (scalar)
-        if (this.Description == null && Exploration.Includes(parent + ".description", true))
+        if (this.Description == null && ec.Includes("description",true))
         {
             this.Description = "FETCH";
         }
         //      C# -> System.Int32? Id
         // GraphQL -> id: Int! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = Int32.MinValue;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? ServerCertificate
         // GraphQL -> serverCertificate: String (scalar)
-        if (this.ServerCertificate == null && Exploration.Includes(parent + ".serverCertificate", true))
+        if (this.ServerCertificate == null && ec.Includes("serverCertificate",true))
         {
             this.ServerCertificate = "FETCH";
         }
         //      C# -> DateTime? UpdatedAt
         // GraphQL -> updatedAt: DateTime (scalar)
-        if (this.UpdatedAt == null && Exploration.Includes(parent + ".updatedAt", true))
+        if (this.UpdatedAt == null && ec.Includes("updatedAt",true))
         {
             this.UpdatedAt = new DateTime();
         }
         //      C# -> System.String? Url
         // GraphQL -> url: URL! (scalar)
-        if (this.Url == null && Exploration.Includes(parent + ".url", true))
+        if (this.Url == null && ec.Includes("url",true))
         {
             this.Url = "FETCH";
         }
         //      C# -> ErrorInfo? LastFailedErrorInfo
         // GraphQL -> lastFailedErrorInfo: ErrorInfo (type)
-        if (this.LastFailedErrorInfo == null && Exploration.Includes(parent + ".lastFailedErrorInfo"))
+        if (this.LastFailedErrorInfo == null && ec.Includes("lastFailedErrorInfo",false))
         {
             this.LastFailedErrorInfo = new ErrorInfo();
-            this.LastFailedErrorInfo.ApplyExploratoryFieldSpec(parent + ".lastFailedErrorInfo");
+            this.LastFailedErrorInfo.ApplyExploratoryFieldSpec(ec.NewChild("lastFailedErrorInfo"));
         }
         //      C# -> SubscriptionSeverity? SubscriptionSeverity
         // GraphQL -> subscriptionSeverity: SubscriptionSeverity! (type)
-        if (this.SubscriptionSeverity == null && Exploration.Includes(parent + ".subscriptionSeverity"))
+        if (this.SubscriptionSeverity == null && ec.Includes("subscriptionSeverity",false))
         {
             this.SubscriptionSeverity = new SubscriptionSeverity();
-            this.SubscriptionSeverity.ApplyExploratoryFieldSpec(parent + ".subscriptionSeverity");
+            this.SubscriptionSeverity.ApplyExploratoryFieldSpec(ec.NewChild("subscriptionSeverity"));
         }
         //      C# -> SubscriptionType? SubscriptionType
         // GraphQL -> subscriptionType: SubscriptionType! (type)
-        if (this.SubscriptionType == null && Exploration.Includes(parent + ".subscriptionType"))
+        if (this.SubscriptionType == null && ec.Includes("subscriptionType",false))
         {
             this.SubscriptionType = new SubscriptionType();
-            this.SubscriptionType.ApplyExploratoryFieldSpec(parent + ".subscriptionType");
+            this.SubscriptionType.ApplyExploratoryFieldSpec(ec.NewChild("subscriptionType"));
         }
     }
 
@@ -374,12 +373,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<Webhook> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new Webhook());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<Webhook> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

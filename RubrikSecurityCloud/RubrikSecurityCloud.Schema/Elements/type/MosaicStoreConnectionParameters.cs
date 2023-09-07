@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? NfsServer
         // GraphQL -> nfsServer: String! (scalar)
-        if (this.NfsServer == null && Exploration.Includes(parent + ".nfsServer", true))
+        if (this.NfsServer == null && ec.Includes("nfsServer",true))
         {
             this.NfsServer = "FETCH";
         }
         //      C# -> System.String? NfsServerMountPath
         // GraphQL -> nfsServerMountPath: String! (scalar)
-        if (this.NfsServerMountPath == null && Exploration.Includes(parent + ".nfsServerMountPath", true))
+        if (this.NfsServerMountPath == null && ec.Includes("nfsServerMountPath",true))
         {
             this.NfsServerMountPath = "FETCH";
         }
         //      C# -> System.String? StoreUrl
         // GraphQL -> storeUrl: String! (scalar)
-        if (this.StoreUrl == null && Exploration.Includes(parent + ".storeUrl", true))
+        if (this.StoreUrl == null && ec.Includes("storeUrl",true))
         {
             this.StoreUrl = "FETCH";
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<MosaicStoreConnectionParameters> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new MosaicStoreConnectionParameters());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<MosaicStoreConnectionParameters> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

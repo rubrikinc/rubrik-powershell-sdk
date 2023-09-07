@@ -162,57 +162,56 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? HostCdmId
         // GraphQL -> hostCdmId: String! (scalar)
-        if (this.HostCdmId == null && Exploration.Includes(parent + ".hostCdmId", true))
+        if (this.HostCdmId == null && ec.Includes("hostCdmId",true))
         {
             this.HostCdmId = "FETCH";
         }
         //      C# -> System.String? HostFid
         // GraphQL -> hostFid: String! (scalar)
-        if (this.HostFid == null && Exploration.Includes(parent + ".hostFid", true))
+        if (this.HostFid == null && ec.Includes("hostFid",true))
         {
             this.HostFid = "FETCH";
         }
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String! (scalar)
-        if (this.Hostname == null && Exploration.Includes(parent + ".hostname", true))
+        if (this.Hostname == null && ec.Includes("hostname",true))
         {
             this.Hostname = "FETCH";
         }
         //      C# -> System.String? MappedDataSourceCdmId
         // GraphQL -> mappedDataSourceCdmId: String! (scalar)
-        if (this.MappedDataSourceCdmId == null && Exploration.Includes(parent + ".mappedDataSourceCdmId", true))
+        if (this.MappedDataSourceCdmId == null && ec.Includes("mappedDataSourceCdmId",true))
         {
             this.MappedDataSourceCdmId = "FETCH";
         }
         //      C# -> System.String? MappedDataSourceFid
         // GraphQL -> mappedDataSourceFid: String! (scalar)
-        if (this.MappedDataSourceFid == null && Exploration.Includes(parent + ".mappedDataSourceFid", true))
+        if (this.MappedDataSourceFid == null && ec.Includes("mappedDataSourceFid",true))
         {
             this.MappedDataSourceFid = "FETCH";
         }
         //      C# -> System.String? MappedDataSourceName
         // GraphQL -> mappedDataSourceName: String! (scalar)
-        if (this.MappedDataSourceName == null && Exploration.Includes(parent + ".mappedDataSourceName", true))
+        if (this.MappedDataSourceName == null && ec.Includes("mappedDataSourceName",true))
         {
             this.MappedDataSourceName = "FETCH";
         }
         //      C# -> System.String? MappedDataSourceType
         // GraphQL -> mappedDataSourceType: String! (scalar)
-        if (this.MappedDataSourceType == null && Exploration.Includes(parent + ".mappedDataSourceType", true))
+        if (this.MappedDataSourceType == null && ec.Includes("mappedDataSourceType",true))
         {
             this.MappedDataSourceType = "FETCH";
         }
         //      C# -> List<NasMigrationShareDetail>? Shares
         // GraphQL -> shares: [NasMigrationShareDetail!]! (type)
-        if (this.Shares == null && Exploration.Includes(parent + ".shares"))
+        if (this.Shares == null && ec.Includes("shares",false))
         {
             this.Shares = new List<NasMigrationShareDetail>();
-            this.Shares.ApplyExploratoryFieldSpec(parent + ".shares");
+            this.Shares.ApplyExploratoryFieldSpec(ec.NewChild("shares"));
         }
     }
 
@@ -246,12 +245,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<NasMigrationHostDetail> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new NasMigrationHostDetail());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<NasMigrationHostDetail> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

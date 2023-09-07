@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int32? PartitionNum
         // GraphQL -> partitionNum: Int! (scalar)
-        if (this.PartitionNum == null && Exploration.Includes(parent + ".partitionNum", true))
+        if (this.PartitionNum == null && ec.Includes("partitionNum",true))
         {
             this.PartitionNum = Int32.MinValue;
         }
         //      C# -> System.Int32? SequenceNum
         // GraphQL -> sequenceNum: Int! (scalar)
-        if (this.SequenceNum == null && Exploration.Includes(parent + ".sequenceNum", true))
+        if (this.SequenceNum == null && ec.Includes("sequenceNum",true))
         {
             this.SequenceNum = Int32.MinValue;
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<Db2WorkloadDataBackupFile> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new Db2WorkloadDataBackupFile());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<Db2WorkloadDataBackupFile> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

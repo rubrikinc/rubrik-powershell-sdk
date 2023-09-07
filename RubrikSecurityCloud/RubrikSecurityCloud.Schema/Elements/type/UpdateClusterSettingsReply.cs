@@ -193,70 +193,69 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> RegisteredMode? RegisteredMode
         // GraphQL -> registeredMode: RegisteredMode! (enum)
-        if (this.RegisteredMode == null && Exploration.Includes(parent + ".registeredMode", true))
+        if (this.RegisteredMode == null && ec.Includes("registeredMode",true))
         {
             this.RegisteredMode = new RegisteredMode();
         }
         //      C# -> System.String? AcceptedEulaVersion
         // GraphQL -> acceptedEulaVersion: String! (scalar)
-        if (this.AcceptedEulaVersion == null && Exploration.Includes(parent + ".acceptedEulaVersion", true))
+        if (this.AcceptedEulaVersion == null && ec.Includes("acceptedEulaVersion",true))
         {
             this.AcceptedEulaVersion = "FETCH";
         }
         //      C# -> System.String? ApiVersion
         // GraphQL -> apiVersion: String! (scalar)
-        if (this.ApiVersion == null && Exploration.Includes(parent + ".apiVersion", true))
+        if (this.ApiVersion == null && ec.Includes("apiVersion",true))
         {
             this.ApiVersion = "FETCH";
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
-        if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
+        if (this.ClusterUuid == null && ec.Includes("clusterUuid",true))
         {
             this.ClusterUuid = "FETCH";
         }
         //      C# -> System.String? LatestEulaVersion
         // GraphQL -> latestEulaVersion: String! (scalar)
-        if (this.LatestEulaVersion == null && Exploration.Includes(parent + ".latestEulaVersion", true))
+        if (this.LatestEulaVersion == null && ec.Includes("latestEulaVersion",true))
         {
             this.LatestEulaVersion = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? RubrikUrl
         // GraphQL -> rubrikUrl: URL! (scalar)
-        if (this.RubrikUrl == null && Exploration.Includes(parent + ".rubrikUrl", true))
+        if (this.RubrikUrl == null && ec.Includes("rubrikUrl",true))
         {
             this.RubrikUrl = "FETCH";
         }
         //      C# -> System.String? Version
         // GraphQL -> version: String! (scalar)
-        if (this.Version == null && Exploration.Includes(parent + ".version", true))
+        if (this.Version == null && ec.Includes("version",true))
         {
             this.Version = "FETCH";
         }
         //      C# -> ClusterGeolocation? Geolocation
         // GraphQL -> geolocation: ClusterGeolocation (type)
-        if (this.Geolocation == null && Exploration.Includes(parent + ".geolocation"))
+        if (this.Geolocation == null && ec.Includes("geolocation",false))
         {
             this.Geolocation = new ClusterGeolocation();
-            this.Geolocation.ApplyExploratoryFieldSpec(parent + ".geolocation");
+            this.Geolocation.ApplyExploratoryFieldSpec(ec.NewChild("geolocation"));
         }
         //      C# -> ClusterTimezone? Timezone
         // GraphQL -> timezone: ClusterTimezone (type)
-        if (this.Timezone == null && Exploration.Includes(parent + ".timezone"))
+        if (this.Timezone == null && ec.Includes("timezone",false))
         {
             this.Timezone = new ClusterTimezone();
-            this.Timezone.ApplyExploratoryFieldSpec(parent + ".timezone");
+            this.Timezone.ApplyExploratoryFieldSpec(ec.NewChild("timezone"));
         }
     }
 
@@ -290,12 +289,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<UpdateClusterSettingsReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new UpdateClusterSettingsReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<UpdateClusterSettingsReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

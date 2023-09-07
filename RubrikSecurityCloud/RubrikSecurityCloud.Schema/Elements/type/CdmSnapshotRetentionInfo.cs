@@ -112,35 +112,34 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? IsCustomRetentionApplied
         // GraphQL -> isCustomRetentionApplied: Boolean! (scalar)
-        if (this.IsCustomRetentionApplied == null && Exploration.Includes(parent + ".isCustomRetentionApplied", true))
+        if (this.IsCustomRetentionApplied == null && ec.Includes("isCustomRetentionApplied",true))
         {
             this.IsCustomRetentionApplied = true;
         }
         //      C# -> List<CdmSnapshotLocationRetentionInfo>? ArchivalInfos
         // GraphQL -> archivalInfos: [CdmSnapshotLocationRetentionInfo!] (type)
-        if (this.ArchivalInfos == null && Exploration.Includes(parent + ".archivalInfos"))
+        if (this.ArchivalInfos == null && ec.Includes("archivalInfos",false))
         {
             this.ArchivalInfos = new List<CdmSnapshotLocationRetentionInfo>();
-            this.ArchivalInfos.ApplyExploratoryFieldSpec(parent + ".archivalInfos");
+            this.ArchivalInfos.ApplyExploratoryFieldSpec(ec.NewChild("archivalInfos"));
         }
         //      C# -> CdmSnapshotLocationRetentionInfo? LocalInfo
         // GraphQL -> localInfo: CdmSnapshotLocationRetentionInfo (type)
-        if (this.LocalInfo == null && Exploration.Includes(parent + ".localInfo"))
+        if (this.LocalInfo == null && ec.Includes("localInfo",false))
         {
             this.LocalInfo = new CdmSnapshotLocationRetentionInfo();
-            this.LocalInfo.ApplyExploratoryFieldSpec(parent + ".localInfo");
+            this.LocalInfo.ApplyExploratoryFieldSpec(ec.NewChild("localInfo"));
         }
         //      C# -> List<CdmSnapshotLocationRetentionInfo>? ReplicationInfos
         // GraphQL -> replicationInfos: [CdmSnapshotLocationRetentionInfo!] (type)
-        if (this.ReplicationInfos == null && Exploration.Includes(parent + ".replicationInfos"))
+        if (this.ReplicationInfos == null && ec.Includes("replicationInfos",false))
         {
             this.ReplicationInfos = new List<CdmSnapshotLocationRetentionInfo>();
-            this.ReplicationInfos.ApplyExploratoryFieldSpec(parent + ".replicationInfos");
+            this.ReplicationInfos.ApplyExploratoryFieldSpec(ec.NewChild("replicationInfos"));
         }
     }
 
@@ -174,12 +173,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CdmSnapshotRetentionInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CdmSnapshotRetentionInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CdmSnapshotRetentionInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

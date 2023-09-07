@@ -115,36 +115,35 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<ChartViewWithName>? Charts
         // GraphQL -> charts: [ChartViewWithName!]! (type)
-        if (this.Charts == null && Exploration.Includes(parent + ".charts"))
+        if (this.Charts == null && ec.Includes("charts",false))
         {
             this.Charts = new List<ChartViewWithName>();
-            this.Charts.ApplyExploratoryFieldSpec(parent + ".charts");
+            this.Charts.ApplyExploratoryFieldSpec(ec.NewChild("charts"));
         }
         //      C# -> PolarisReportSchemaConfig? Config
         // GraphQL -> config: PolarisReportSchemaConfig! (type)
-        if (this.Config == null && Exploration.Includes(parent + ".config"))
+        if (this.Config == null && ec.Includes("config",false))
         {
             this.Config = new PolarisReportSchemaConfig();
-            this.Config.ApplyExploratoryFieldSpec(parent + ".config");
+            this.Config.ApplyExploratoryFieldSpec(ec.NewChild("config"));
         }
         //      C# -> List<PolarisReportFilter>? Filters
         // GraphQL -> filters: [PolarisReportFilter!]! (type)
-        if (this.Filters == null && Exploration.Includes(parent + ".filters"))
+        if (this.Filters == null && ec.Includes("filters",false))
         {
             this.Filters = new List<PolarisReportFilter>();
-            this.Filters.ApplyExploratoryFieldSpec(parent + ".filters");
+            this.Filters.ApplyExploratoryFieldSpec(ec.NewChild("filters"));
         }
         //      C# -> List<TableViewWithName>? Tables
         // GraphQL -> tables: [TableViewWithName!]! (type)
-        if (this.Tables == null && Exploration.Includes(parent + ".tables"))
+        if (this.Tables == null && ec.Includes("tables",false))
         {
             this.Tables = new List<TableViewWithName>();
-            this.Tables.ApplyExploratoryFieldSpec(parent + ".tables");
+            this.Tables.ApplyExploratoryFieldSpec(ec.NewChild("tables"));
         }
     }
 
@@ -178,12 +177,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PolarisReportSchema> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PolarisReportSchema());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<PolarisReportSchema> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

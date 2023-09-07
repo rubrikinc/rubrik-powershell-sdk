@@ -255,96 +255,95 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> SapHanaSystemSummaryContainerType? ContainerType
         // GraphQL -> containerType: SapHanaSystemSummaryContainerType (enum)
-        if (this.ContainerType == null && Exploration.Includes(parent + ".containerType", true))
+        if (this.ContainerType == null && ec.Includes("containerType",true))
         {
             this.ContainerType = new SapHanaSystemSummaryContainerType();
         }
         //      C# -> SapHanaSystemSummaryStatus? Status
         // GraphQL -> status: SapHanaSystemSummaryStatus! (enum)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = new SapHanaSystemSummaryStatus();
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.String? InstanceNumber
         // GraphQL -> instanceNumber: String! (scalar)
-        if (this.InstanceNumber == null && Exploration.Includes(parent + ".instanceNumber", true))
+        if (this.InstanceNumber == null && ec.Includes("instanceNumber",true))
         {
             this.InstanceNumber = "FETCH";
         }
         //      C# -> System.Boolean? IsArchived
         // GraphQL -> isArchived: Boolean (scalar)
-        if (this.IsArchived == null && Exploration.Includes(parent + ".isArchived", true))
+        if (this.IsArchived == null && ec.Includes("isArchived",true))
         {
             this.IsArchived = true;
         }
         //      C# -> DateTime? LastRefreshTime
         // GraphQL -> lastRefreshTime: DateTime (scalar)
-        if (this.LastRefreshTime == null && Exploration.Includes(parent + ".lastRefreshTime", true))
+        if (this.LastRefreshTime == null && ec.Includes("lastRefreshTime",true))
         {
             this.LastRefreshTime = new DateTime();
         }
         //      C# -> System.Int32? NumDbs
         // GraphQL -> numDbs: Int! (scalar)
-        if (this.NumDbs == null && Exploration.Includes(parent + ".numDbs", true))
+        if (this.NumDbs == null && ec.Includes("numDbs",true))
         {
             this.NumDbs = Int32.MinValue;
         }
         //      C# -> System.String? Sid
         // GraphQL -> sid: String! (scalar)
-        if (this.Sid == null && Exploration.Includes(parent + ".sid", true))
+        if (this.Sid == null && ec.Includes("sid",true))
         {
             this.Sid = "FETCH";
         }
         //      C# -> System.String? StatusMessage
         // GraphQL -> statusMessage: String (scalar)
-        if (this.StatusMessage == null && Exploration.Includes(parent + ".statusMessage", true))
+        if (this.StatusMessage == null && ec.Includes("statusMessage",true))
         {
             this.StatusMessage = "FETCH";
         }
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)
-        if (this.Username == null && Exploration.Includes(parent + ".username", true))
+        if (this.Username == null && ec.Includes("username",true))
         {
             this.Username = "FETCH";
         }
         //      C# -> List<SapHanaHost>? Hosts
         // GraphQL -> hosts: [SapHanaHost!]! (type)
-        if (this.Hosts == null && Exploration.Includes(parent + ".hosts"))
+        if (this.Hosts == null && ec.Includes("hosts",false))
         {
             this.Hosts = new List<SapHanaHost>();
-            this.Hosts.ApplyExploratoryFieldSpec(parent + ".hosts");
+            this.Hosts.ApplyExploratoryFieldSpec(ec.NewChild("hosts"));
         }
         //      C# -> SlaAssignable? SlaAssignable
         // GraphQL -> slaAssignable: SlaAssignable (type)
-        if (this.SlaAssignable == null && Exploration.Includes(parent + ".slaAssignable"))
+        if (this.SlaAssignable == null && ec.Includes("slaAssignable",false))
         {
             this.SlaAssignable = new SlaAssignable();
-            this.SlaAssignable.ApplyExploratoryFieldSpec(parent + ".slaAssignable");
+            this.SlaAssignable.ApplyExploratoryFieldSpec(ec.NewChild("slaAssignable"));
         }
         //      C# -> SapHanaSslInfo? SslInfo
         // GraphQL -> sslInfo: SapHanaSslInfo (type)
-        if (this.SslInfo == null && Exploration.Includes(parent + ".sslInfo"))
+        if (this.SslInfo == null && ec.Includes("sslInfo",false))
         {
             this.SslInfo = new SapHanaSslInfo();
-            this.SslInfo.ApplyExploratoryFieldSpec(parent + ".sslInfo");
+            this.SslInfo.ApplyExploratoryFieldSpec(ec.NewChild("sslInfo"));
         }
         //      C# -> SapHanaSystemInfo? SystemInfo
         // GraphQL -> systemInfo: SapHanaSystemInfo (type)
-        if (this.SystemInfo == null && Exploration.Includes(parent + ".systemInfo"))
+        if (this.SystemInfo == null && ec.Includes("systemInfo",false))
         {
             this.SystemInfo = new SapHanaSystemInfo();
-            this.SystemInfo.ApplyExploratoryFieldSpec(parent + ".systemInfo");
+            this.SystemInfo.ApplyExploratoryFieldSpec(ec.NewChild("systemInfo"));
         }
     }
 
@@ -378,12 +377,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SapHanaSystemSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SapHanaSystemSummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SapHanaSystemSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? NodeName
         // GraphQL -> nodeName: String! (scalar)
-        if (this.NodeName == null && Exploration.Includes(parent + ".nodeName", true))
+        if (this.NodeName == null && ec.Includes("nodeName",true))
         {
             this.NodeName = "FETCH";
         }
         //      C# -> System.Int32? Order
         // GraphQL -> order: Int! (scalar)
-        if (this.Order == null && Exploration.Includes(parent + ".order", true))
+        if (this.Order == null && ec.Includes("order",true))
         {
             this.Order = Int32.MinValue;
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<OracleNodeOrder> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new OracleNodeOrder());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<OracleNodeOrder> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

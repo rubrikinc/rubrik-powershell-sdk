@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Uuid
         // GraphQL -> uuid: String! (scalar)
-        if (this.Uuid == null && Exploration.Includes(parent + ".uuid", true))
+        if (this.Uuid == null && ec.Includes("uuid",true))
         {
             this.Uuid = "FETCH";
         }
         //      C# -> UpgradeJobReply? UpgradeJobReply
         // GraphQL -> upgradeJobReply: UpgradeJobReply! (type)
-        if (this.UpgradeJobReply == null && Exploration.Includes(parent + ".upgradeJobReply"))
+        if (this.UpgradeJobReply == null && ec.Includes("upgradeJobReply",false))
         {
             this.UpgradeJobReply = new UpgradeJobReply();
-            this.UpgradeJobReply.ApplyExploratoryFieldSpec(parent + ".upgradeJobReply");
+            this.UpgradeJobReply.ApplyExploratoryFieldSpec(ec.NewChild("upgradeJobReply"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<UpgradeJobReplyWithUuid> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new UpgradeJobReplyWithUuid());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<UpgradeJobReplyWithUuid> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

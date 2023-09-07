@@ -120,39 +120,38 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? ClientId
         // GraphQL -> clientId: String! (scalar)
-        if (this.ClientId == null && Exploration.Includes(parent + ".clientId", true))
+        if (this.ClientId == null && ec.Includes("clientId",true))
         {
             this.ClientId = "FETCH";
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
-        if (this.Description == null && Exploration.Includes(parent + ".description", true))
+        if (this.Description == null && ec.Includes("description",true))
         {
             this.Description = "FETCH";
         }
         //      C# -> DateTime? LastLogin
         // GraphQL -> lastLogin: DateTime (scalar)
-        if (this.LastLogin == null && Exploration.Includes(parent + ".lastLogin", true))
+        if (this.LastLogin == null && ec.Includes("lastLogin",true))
         {
             this.LastLogin = new DateTime();
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> List<Role>? Roles
         // GraphQL -> roles: [Role!]! (type)
-        if (this.Roles == null && Exploration.Includes(parent + ".roles"))
+        if (this.Roles == null && ec.Includes("roles",false))
         {
             this.Roles = new List<Role>();
-            this.Roles.ApplyExploratoryFieldSpec(parent + ".roles");
+            this.Roles.ApplyExploratoryFieldSpec(ec.NewChild("roles"));
         }
     }
 
@@ -186,12 +185,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ServiceAccount> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ServiceAccount());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ServiceAccount> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

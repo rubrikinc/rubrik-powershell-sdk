@@ -98,29 +98,28 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> TimelineEntry? HighRiskFiles
         // GraphQL -> highRiskFiles: TimelineEntry (type)
-        if (this.HighRiskFiles == null && Exploration.Includes(parent + ".highRiskFiles"))
+        if (this.HighRiskFiles == null && ec.Includes("highRiskFiles",false))
         {
             this.HighRiskFiles = new TimelineEntry();
-            this.HighRiskFiles.ApplyExploratoryFieldSpec(parent + ".highRiskFiles");
+            this.HighRiskFiles.ApplyExploratoryFieldSpec(ec.NewChild("highRiskFiles"));
         }
         //      C# -> TimelineEntry? LowRiskFiles
         // GraphQL -> lowRiskFiles: TimelineEntry (type)
-        if (this.LowRiskFiles == null && Exploration.Includes(parent + ".lowRiskFiles"))
+        if (this.LowRiskFiles == null && ec.Includes("lowRiskFiles",false))
         {
             this.LowRiskFiles = new TimelineEntry();
-            this.LowRiskFiles.ApplyExploratoryFieldSpec(parent + ".lowRiskFiles");
+            this.LowRiskFiles.ApplyExploratoryFieldSpec(ec.NewChild("lowRiskFiles"));
         }
         //      C# -> ClassificationPolicySummary? Summary
         // GraphQL -> summary: ClassificationPolicySummary (type)
-        if (this.Summary == null && Exploration.Includes(parent + ".summary"))
+        if (this.Summary == null && ec.Includes("summary",false))
         {
             this.Summary = new ClassificationPolicySummary();
-            this.Summary.ApplyExploratoryFieldSpec(parent + ".summary");
+            this.Summary.ApplyExploratoryFieldSpec(ec.NewChild("summary"));
         }
     }
 
@@ -154,12 +153,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PolicySummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PolicySummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<PolicySummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

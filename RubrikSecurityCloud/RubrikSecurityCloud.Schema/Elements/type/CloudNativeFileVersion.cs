@@ -106,33 +106,32 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> FileModeEnum? FileMode
         // GraphQL -> fileMode: FileModeEnum! (enum)
-        if (this.FileMode == null && Exploration.Includes(parent + ".fileMode", true))
+        if (this.FileMode == null && ec.Includes("fileMode",true))
         {
             this.FileMode = new FileModeEnum();
         }
         //      C# -> DateTime? LastModified
         // GraphQL -> lastModified: DateTime! (scalar)
-        if (this.LastModified == null && Exploration.Includes(parent + ".lastModified", true))
+        if (this.LastModified == null && ec.Includes("lastModified",true))
         {
             this.LastModified = new DateTime();
         }
         //      C# -> System.Int64? SizeInBytes
         // GraphQL -> sizeInBytes: Long! (scalar)
-        if (this.SizeInBytes == null && Exploration.Includes(parent + ".sizeInBytes", true))
+        if (this.SizeInBytes == null && ec.Includes("sizeInBytes",true))
         {
             this.SizeInBytes = new System.Int64();
         }
         //      C# -> CloudNativeSnapshotInfo? Snapshot
         // GraphQL -> snapshot: CloudNativeSnapshotInfo! (type)
-        if (this.Snapshot == null && Exploration.Includes(parent + ".snapshot"))
+        if (this.Snapshot == null && ec.Includes("snapshot",false))
         {
             this.Snapshot = new CloudNativeSnapshotInfo();
-            this.Snapshot.ApplyExploratoryFieldSpec(parent + ".snapshot");
+            this.Snapshot.ApplyExploratoryFieldSpec(ec.NewChild("snapshot"));
         }
     }
 
@@ -166,12 +165,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CloudNativeFileVersion> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CloudNativeFileVersion());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CloudNativeFileVersion> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

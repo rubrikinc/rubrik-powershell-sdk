@@ -81,22 +81,21 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
-        if (this.Cluster == null && Exploration.Includes(parent + ".cluster"))
+        if (this.Cluster == null && ec.Includes("cluster",false))
         {
             this.Cluster = new Cluster();
-            this.Cluster.ApplyExploratoryFieldSpec(parent + ".cluster");
+            this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
         }
         //      C# -> HotAddProxyVmInfoListResponse? ProxyVmInfo
         // GraphQL -> proxyVmInfo: HotAddProxyVmInfoListResponse! (type)
-        if (this.ProxyVmInfo == null && Exploration.Includes(parent + ".proxyVmInfo"))
+        if (this.ProxyVmInfo == null && ec.Includes("proxyVmInfo",false))
         {
             this.ProxyVmInfo = new HotAddProxyVmInfoListResponse();
-            this.ProxyVmInfo.ApplyExploratoryFieldSpec(parent + ".proxyVmInfo");
+            this.ProxyVmInfo.ApplyExploratoryFieldSpec(ec.NewChild("proxyVmInfo"));
         }
     }
 
@@ -130,12 +129,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VcenterHotAddProxyVmInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VcenterHotAddProxyVmInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VcenterHotAddProxyVmInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

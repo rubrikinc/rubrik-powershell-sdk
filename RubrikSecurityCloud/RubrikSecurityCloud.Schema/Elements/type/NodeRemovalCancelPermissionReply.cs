@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? EventSeriesId
         // GraphQL -> eventSeriesId: String! (scalar)
-        if (this.EventSeriesId == null && Exploration.Includes(parent + ".eventSeriesId", true))
+        if (this.EventSeriesId == null && ec.Includes("eventSeriesId",true))
         {
             this.EventSeriesId = "FETCH";
         }
         //      C# -> System.Boolean? IsCancelable
         // GraphQL -> isCancelable: Boolean! (scalar)
-        if (this.IsCancelable == null && Exploration.Includes(parent + ".isCancelable", true))
+        if (this.IsCancelable == null && ec.Includes("isCancelable",true))
         {
             this.IsCancelable = true;
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<NodeRemovalCancelPermissionReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new NodeRemovalCancelPermissionReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<NodeRemovalCancelPermissionReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

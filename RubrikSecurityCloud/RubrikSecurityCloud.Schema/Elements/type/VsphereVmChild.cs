@@ -223,82 +223,81 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ObjectTypeEnum? SnappableType
         // GraphQL -> snappableType: ObjectTypeEnum! (enum)
-        if (this.SnappableType == null && Exploration.Includes(parent + ".snappableType", true))
+        if (this.SnappableType == null && ec.Includes("snappableType",true))
         {
             this.SnappableType = new ObjectTypeEnum();
         }
         //      C# -> RecoverySpec? RecoverySpec
         // GraphQL -> recoverySpec: RecoverySpec (interface)
-        if (this.RecoverySpec == null && Exploration.Includes(parent + ".recoverySpec"))
+        if (this.RecoverySpec == null && ec.Includes("recoverySpec",false))
         {
             var impls = new List<RecoverySpec>();
-            impls.ApplyExploratoryFieldSpec(parent + ".recoverySpec");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("recoverySpec"));
             this.RecoverySpec = (RecoverySpec)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> System.Int32? BootPriority
         // GraphQL -> bootPriority: Int! (scalar)
-        if (this.BootPriority == null && Exploration.Includes(parent + ".bootPriority", true))
+        if (this.BootPriority == null && ec.Includes("bootPriority",true))
         {
             this.BootPriority = Int32.MinValue;
         }
         //      C# -> System.String? Fid
         // GraphQL -> fid: UUID! (scalar)
-        if (this.Fid == null && Exploration.Includes(parent + ".fid", true))
+        if (this.Fid == null && ec.Includes("fid",true))
         {
             this.Fid = "FETCH";
         }
         //      C# -> System.Int64? LastRecoveryPoint
         // GraphQL -> lastRecoveryPoint: Long (scalar)
-        if (this.LastRecoveryPoint == null && Exploration.Includes(parent + ".lastRecoveryPoint", true))
+        if (this.LastRecoveryPoint == null && ec.Includes("lastRecoveryPoint",true))
         {
             this.LastRecoveryPoint = new System.Int64();
         }
         //      C# -> VsphereBlueprintChildFailoverInstance? FailoverInstance
         // GraphQL -> failoverInstance: VsphereBlueprintChildFailoverInstance (type)
-        if (this.FailoverInstance == null && Exploration.Includes(parent + ".failoverInstance"))
+        if (this.FailoverInstance == null && ec.Includes("failoverInstance",false))
         {
             this.FailoverInstance = new VsphereBlueprintChildFailoverInstance();
-            this.FailoverInstance.ApplyExploratoryFieldSpec(parent + ".failoverInstance");
+            this.FailoverInstance.ApplyExploratoryFieldSpec(ec.NewChild("failoverInstance"));
         }
         //      C# -> RpoLagInfo? LocalRpoLagInfo
         // GraphQL -> localRpoLagInfo: RpoLagInfo (type)
-        if (this.LocalRpoLagInfo == null && Exploration.Includes(parent + ".localRpoLagInfo"))
+        if (this.LocalRpoLagInfo == null && ec.Includes("localRpoLagInfo",false))
         {
             this.LocalRpoLagInfo = new RpoLagInfo();
-            this.LocalRpoLagInfo.ApplyExploratoryFieldSpec(parent + ".localRpoLagInfo");
+            this.LocalRpoLagInfo.ApplyExploratoryFieldSpec(ec.NewChild("localRpoLagInfo"));
         }
         //      C# -> ChildVmRecoveryInfo? RecoveryInfo
         // GraphQL -> recoveryInfo: ChildVmRecoveryInfo (type)
-        if (this.RecoveryInfo == null && Exploration.Includes(parent + ".recoveryInfo"))
+        if (this.RecoveryInfo == null && ec.Includes("recoveryInfo",false))
         {
             this.RecoveryInfo = new ChildVmRecoveryInfo();
-            this.RecoveryInfo.ApplyExploratoryFieldSpec(parent + ".recoveryInfo");
+            this.RecoveryInfo.ApplyExploratoryFieldSpec(ec.NewChild("recoveryInfo"));
         }
         //      C# -> RpoLagInfo? RemoteRpoLagInfo
         // GraphQL -> remoteRpoLagInfo: RpoLagInfo (type)
-        if (this.RemoteRpoLagInfo == null && Exploration.Includes(parent + ".remoteRpoLagInfo"))
+        if (this.RemoteRpoLagInfo == null && ec.Includes("remoteRpoLagInfo",false))
         {
             this.RemoteRpoLagInfo = new RpoLagInfo();
-            this.RemoteRpoLagInfo.ApplyExploratoryFieldSpec(parent + ".remoteRpoLagInfo");
+            this.RemoteRpoLagInfo.ApplyExploratoryFieldSpec(ec.NewChild("remoteRpoLagInfo"));
         }
         //      C# -> VmwareResourceSpec? ResourceSpec
         // GraphQL -> resourceSpec: VmwareResourceSpec (type)
-        if (this.ResourceSpec == null && Exploration.Includes(parent + ".resourceSpec"))
+        if (this.ResourceSpec == null && ec.Includes("resourceSpec",false))
         {
             this.ResourceSpec = new VmwareResourceSpec();
-            this.ResourceSpec.ApplyExploratoryFieldSpec(parent + ".resourceSpec");
+            this.ResourceSpec.ApplyExploratoryFieldSpec(ec.NewChild("resourceSpec"));
         }
         //      C# -> VsphereVm? Snappable
         // GraphQL -> snappable: VsphereVm (type)
-        if (this.Snappable == null && Exploration.Includes(parent + ".snappable"))
+        if (this.Snappable == null && ec.Includes("snappable",false))
         {
             this.Snappable = new VsphereVm();
-            this.Snappable.ApplyExploratoryFieldSpec(parent + ".snappable");
+            this.Snappable.ApplyExploratoryFieldSpec(ec.NewChild("snappable"));
         }
     }
 
@@ -332,12 +331,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VsphereVmChild> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VsphereVmChild());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VsphereVmChild> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

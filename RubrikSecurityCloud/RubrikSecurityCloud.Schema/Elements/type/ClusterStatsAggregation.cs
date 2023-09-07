@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? IngestedArchivalStorage
         // GraphQL -> ingestedArchivalStorage: Long! (scalar)
-        if (this.IngestedArchivalStorage == null && Exploration.Includes(parent + ".ingestedArchivalStorage", true))
+        if (this.IngestedArchivalStorage == null && ec.Includes("ingestedArchivalStorage",true))
         {
             this.IngestedArchivalStorage = new System.Int64();
         }
         //      C# -> System.Int64? IngestedSnapshotStorage
         // GraphQL -> ingestedSnapshotStorage: Long! (scalar)
-        if (this.IngestedSnapshotStorage == null && Exploration.Includes(parent + ".ingestedSnapshotStorage", true))
+        if (this.IngestedSnapshotStorage == null && ec.Includes("ingestedSnapshotStorage",true))
         {
             this.IngestedSnapshotStorage = new System.Int64();
         }
         //      C# -> System.Int64? PhysicalArchivalStorage
         // GraphQL -> physicalArchivalStorage: Long! (scalar)
-        if (this.PhysicalArchivalStorage == null && Exploration.Includes(parent + ".physicalArchivalStorage", true))
+        if (this.PhysicalArchivalStorage == null && ec.Includes("physicalArchivalStorage",true))
         {
             this.PhysicalArchivalStorage = new System.Int64();
         }
         //      C# -> System.Int64? PhysicalSnapshotStorage
         // GraphQL -> physicalSnapshotStorage: Long! (scalar)
-        if (this.PhysicalSnapshotStorage == null && Exploration.Includes(parent + ".physicalSnapshotStorage", true))
+        if (this.PhysicalSnapshotStorage == null && ec.Includes("physicalSnapshotStorage",true))
         {
             this.PhysicalSnapshotStorage = new System.Int64();
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ClusterStatsAggregation> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ClusterStatsAggregation());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ClusterStatsAggregation> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

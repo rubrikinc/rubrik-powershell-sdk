@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Key
         // GraphQL -> key: String! (scalar)
-        if (this.Key == null && Exploration.Includes(parent + ".key", true))
+        if (this.Key == null && ec.Includes("key",true))
         {
             this.Key = "FETCH";
         }
         //      C# -> System.Int32? KeyId
         // GraphQL -> keyId: Int! (scalar)
-        if (this.KeyId == null && Exploration.Includes(parent + ".keyId", true))
+        if (this.KeyId == null && ec.Includes("keyId",true))
         {
             this.KeyId = Int32.MinValue;
         }
         //      C# -> System.String? KeyType
         // GraphQL -> keyType: String! (scalar)
-        if (this.KeyType == null && Exploration.Includes(parent + ".keyType", true))
+        if (this.KeyType == null && ec.Includes("keyType",true))
         {
             this.KeyType = "FETCH";
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<NtpSymmKeyConfiguration> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new NtpSymmKeyConfiguration());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<NtpSymmKeyConfiguration> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

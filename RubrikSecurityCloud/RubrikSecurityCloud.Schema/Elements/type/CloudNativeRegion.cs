@@ -92,27 +92,26 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> AwsNativeRegion? AwsRegion
         // GraphQL -> awsRegion: AwsNativeRegion (enum)
-        if (this.AwsRegion == null && Exploration.Includes(parent + ".awsRegion", true))
+        if (this.AwsRegion == null && ec.Includes("awsRegion",true))
         {
             this.AwsRegion = new AwsNativeRegion();
         }
         //      C# -> AzureNativeRegion? AzureRegion
         // GraphQL -> azureRegion: AzureNativeRegion (enum)
-        if (this.AzureRegion == null && Exploration.Includes(parent + ".azureRegion", true))
+        if (this.AzureRegion == null && ec.Includes("azureRegion",true))
         {
             this.AzureRegion = new AzureNativeRegion();
         }
         //      C# -> GcpNativeRegion? GcpRegion
         // GraphQL -> gcpRegion: GcpNativeRegion (type)
-        if (this.GcpRegion == null && Exploration.Includes(parent + ".gcpRegion"))
+        if (this.GcpRegion == null && ec.Includes("gcpRegion",false))
         {
             this.GcpRegion = new GcpNativeRegion();
-            this.GcpRegion.ApplyExploratoryFieldSpec(parent + ".gcpRegion");
+            this.GcpRegion.ApplyExploratoryFieldSpec(ec.NewChild("gcpRegion"));
         }
     }
 
@@ -146,12 +145,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CloudNativeRegion> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CloudNativeRegion());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CloudNativeRegion> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

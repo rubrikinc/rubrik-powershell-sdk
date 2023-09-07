@@ -92,27 +92,26 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> PauseStatus? PauseStatus
         // GraphQL -> pauseStatus: PauseStatus! (enum)
-        if (this.PauseStatus == null && Exploration.Includes(parent + ".pauseStatus", true))
+        if (this.PauseStatus == null && ec.Includes("pauseStatus",true))
         {
             this.PauseStatus = new PauseStatus();
         }
         //      C# -> SlaSyncStatus? SyncStatus
         // GraphQL -> syncStatus: SlaSyncStatus! (enum)
-        if (this.SyncStatus == null && Exploration.Includes(parent + ".syncStatus", true))
+        if (this.SyncStatus == null && ec.Includes("syncStatus",true))
         {
             this.SyncStatus = new SlaSyncStatus();
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster (type)
-        if (this.Cluster == null && Exploration.Includes(parent + ".cluster"))
+        if (this.Cluster == null && ec.Includes("cluster",false))
         {
             this.Cluster = new Cluster();
-            this.Cluster.ApplyExploratoryFieldSpec(parent + ".cluster");
+            this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
         }
     }
 
@@ -146,12 +145,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GlobalSlaStatus> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GlobalSlaStatus());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<GlobalSlaStatus> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

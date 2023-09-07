@@ -98,29 +98,28 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> VappTemplateExportOptions? AdvancedExportOptions
         // GraphQL -> advancedExportOptions: VappTemplateExportOptions (type)
-        if (this.AdvancedExportOptions == null && Exploration.Includes(parent + ".advancedExportOptions"))
+        if (this.AdvancedExportOptions == null && ec.Includes("advancedExportOptions",false))
         {
             this.AdvancedExportOptions = new VappTemplateExportOptions();
-            this.AdvancedExportOptions.ApplyExploratoryFieldSpec(parent + ".advancedExportOptions");
+            this.AdvancedExportOptions.ApplyExploratoryFieldSpec(ec.NewChild("advancedExportOptions"));
         }
         //      C# -> VappTemplateExportOptions? DefaultCatalogExportOptions
         // GraphQL -> defaultCatalogExportOptions: VappTemplateExportOptions (type)
-        if (this.DefaultCatalogExportOptions == null && Exploration.Includes(parent + ".defaultCatalogExportOptions"))
+        if (this.DefaultCatalogExportOptions == null && ec.Includes("defaultCatalogExportOptions",false))
         {
             this.DefaultCatalogExportOptions = new VappTemplateExportOptions();
-            this.DefaultCatalogExportOptions.ApplyExploratoryFieldSpec(parent + ".defaultCatalogExportOptions");
+            this.DefaultCatalogExportOptions.ApplyExploratoryFieldSpec(ec.NewChild("defaultCatalogExportOptions"));
         }
         //      C# -> VappTemplateExportOptions? OriginalVdcExportOptions
         // GraphQL -> originalVdcExportOptions: VappTemplateExportOptions (type)
-        if (this.OriginalVdcExportOptions == null && Exploration.Includes(parent + ".originalVdcExportOptions"))
+        if (this.OriginalVdcExportOptions == null && ec.Includes("originalVdcExportOptions",false))
         {
             this.OriginalVdcExportOptions = new VappTemplateExportOptions();
-            this.OriginalVdcExportOptions.ApplyExploratoryFieldSpec(parent + ".originalVdcExportOptions");
+            this.OriginalVdcExportOptions.ApplyExploratoryFieldSpec(ec.NewChild("originalVdcExportOptions"));
         }
     }
 
@@ -154,12 +153,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VappTemplateExportOptionsUnion> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VappTemplateExportOptionsUnion());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VappTemplateExportOptionsUnion> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

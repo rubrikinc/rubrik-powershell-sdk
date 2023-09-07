@@ -120,39 +120,38 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? CommunityString
         // GraphQL -> communityString: String (scalar)
-        if (this.CommunityString == null && Exploration.Includes(parent + ".communityString", true))
+        if (this.CommunityString == null && ec.Includes("communityString",true))
         {
             this.CommunityString = "FETCH";
         }
         //      C# -> System.Boolean? IsEnabled
         // GraphQL -> isEnabled: Boolean! (scalar)
-        if (this.IsEnabled == null && Exploration.Includes(parent + ".isEnabled", true))
+        if (this.IsEnabled == null && ec.Includes("isEnabled",true))
         {
             this.IsEnabled = true;
         }
         //      C# -> System.Int32? SnmpAgentPort
         // GraphQL -> snmpAgentPort: Int! (scalar)
-        if (this.SnmpAgentPort == null && Exploration.Includes(parent + ".snmpAgentPort", true))
+        if (this.SnmpAgentPort == null && ec.Includes("snmpAgentPort",true))
         {
             this.SnmpAgentPort = Int32.MinValue;
         }
         //      C# -> List<System.String>? Users
         // GraphQL -> users: [String!]! (scalar)
-        if (this.Users == null && Exploration.Includes(parent + ".users", true))
+        if (this.Users == null && ec.Includes("users",true))
         {
             this.Users = new List<System.String>();
         }
         //      C# -> List<SnmpTrapReceiverConfig>? TrapReceiverConfigs
         // GraphQL -> trapReceiverConfigs: [SnmpTrapReceiverConfig!]! (type)
-        if (this.TrapReceiverConfigs == null && Exploration.Includes(parent + ".trapReceiverConfigs"))
+        if (this.TrapReceiverConfigs == null && ec.Includes("trapReceiverConfigs",false))
         {
             this.TrapReceiverConfigs = new List<SnmpTrapReceiverConfig>();
-            this.TrapReceiverConfigs.ApplyExploratoryFieldSpec(parent + ".trapReceiverConfigs");
+            this.TrapReceiverConfigs.ApplyExploratoryFieldSpec(ec.NewChild("trapReceiverConfigs"));
         }
     }
 
@@ -186,12 +185,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SnmpConfiguration> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SnmpConfiguration());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SnmpConfiguration> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

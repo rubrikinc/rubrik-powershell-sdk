@@ -81,22 +81,21 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> AnalyzerResult? AnalyzerResult
         // GraphQL -> analyzerResult: AnalyzerResult! (type)
-        if (this.AnalyzerResult == null && Exploration.Includes(parent + ".analyzerResult"))
+        if (this.AnalyzerResult == null && ec.Includes("analyzerResult",false))
         {
             this.AnalyzerResult = new AnalyzerResult();
-            this.AnalyzerResult.ApplyExploratoryFieldSpec(parent + ".analyzerResult");
+            this.AnalyzerResult.ApplyExploratoryFieldSpec(ec.NewChild("analyzerResult"));
         }
         //      C# -> List<AnalyzerGroup>? Groups
         // GraphQL -> groups: [AnalyzerGroup!]! (type)
-        if (this.Groups == null && Exploration.Includes(parent + ".groups"))
+        if (this.Groups == null && ec.Includes("groups",false))
         {
             this.Groups = new List<AnalyzerGroup>();
-            this.Groups.ApplyExploratoryFieldSpec(parent + ".groups");
+            this.Groups.ApplyExploratoryFieldSpec(ec.NewChild("groups"));
         }
     }
 
@@ -130,12 +129,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AnalyzerMapping> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AnalyzerMapping());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AnalyzerMapping> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

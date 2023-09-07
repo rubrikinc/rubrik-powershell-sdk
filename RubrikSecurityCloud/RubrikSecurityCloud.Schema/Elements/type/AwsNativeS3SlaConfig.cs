@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? ArchivalLocationId
+        // GraphQL -> archivalLocationId: String! (scalar)
+        [JsonProperty("archivalLocationId")]
+        public System.String? ArchivalLocationId { get; set; }
+
         //      C# -> System.Int32? ContinuousBackupRetentionInDays
         // GraphQL -> continuousBackupRetentionInDays: Int! (scalar)
         [JsonProperty("continuousBackupRetentionInDays")]
@@ -35,9 +40,13 @@ namespace RubrikSecurityCloud.Types
     }
 
     public AwsNativeS3SlaConfig Set(
+        System.String? ArchivalLocationId = null,
         System.Int32? ContinuousBackupRetentionInDays = null
     ) 
     {
+        if ( ArchivalLocationId != null ) {
+            this.ArchivalLocationId = ArchivalLocationId;
+        }
         if ( ContinuousBackupRetentionInDays != null ) {
             this.ContinuousBackupRetentionInDays = ContinuousBackupRetentionInDays;
         }
@@ -51,6 +60,11 @@ namespace RubrikSecurityCloud.Types
     {
         string ind = new string(' ', indent*2);
         string s = "";
+        //      C# -> System.String? ArchivalLocationId
+        // GraphQL -> archivalLocationId: String! (scalar)
+        if (this.ArchivalLocationId != null) {
+            s += ind + "archivalLocationId\n" ;
+        }
         //      C# -> System.Int32? ContinuousBackupRetentionInDays
         // GraphQL -> continuousBackupRetentionInDays: Int! (scalar)
         if (this.ContinuousBackupRetentionInDays != null) {
@@ -61,12 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> System.String? ArchivalLocationId
+        // GraphQL -> archivalLocationId: String! (scalar)
+        if (this.ArchivalLocationId == null && ec.Includes("archivalLocationId",true))
+        {
+            this.ArchivalLocationId = "FETCH";
+        }
         //      C# -> System.Int32? ContinuousBackupRetentionInDays
         // GraphQL -> continuousBackupRetentionInDays: Int! (scalar)
-        if (this.ContinuousBackupRetentionInDays == null && Exploration.Includes(parent + ".continuousBackupRetentionInDays", true))
+        if (this.ContinuousBackupRetentionInDays == null && ec.Includes("continuousBackupRetentionInDays",true))
         {
             this.ContinuousBackupRetentionInDays = Int32.MinValue;
         }
@@ -102,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AwsNativeS3SlaConfig> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AwsNativeS3SlaConfig());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AwsNativeS3SlaConfig> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

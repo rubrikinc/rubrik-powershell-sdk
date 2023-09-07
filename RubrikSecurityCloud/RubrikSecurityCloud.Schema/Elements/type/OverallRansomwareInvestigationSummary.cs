@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? AnalysisFailureCount
         // GraphQL -> analysisFailureCount: Long! (scalar)
-        if (this.AnalysisFailureCount == null && Exploration.Includes(parent + ".analysisFailureCount", true))
+        if (this.AnalysisFailureCount == null && ec.Includes("analysisFailureCount",true))
         {
             this.AnalysisFailureCount = new System.Int64();
         }
         //      C# -> System.Int64? AnalysisSuccessCount
         // GraphQL -> analysisSuccessCount: Long! (scalar)
-        if (this.AnalysisSuccessCount == null && Exploration.Includes(parent + ".analysisSuccessCount", true))
+        if (this.AnalysisSuccessCount == null && ec.Includes("analysisSuccessCount",true))
         {
             this.AnalysisSuccessCount = new System.Int64();
         }
         //      C# -> System.Int64? AnomaliesCount
         // GraphQL -> anomaliesCount: Long! (scalar)
-        if (this.AnomaliesCount == null && Exploration.Includes(parent + ".anomaliesCount", true))
+        if (this.AnomaliesCount == null && ec.Includes("anomaliesCount",true))
         {
             this.AnomaliesCount = new System.Int64();
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<OverallRansomwareInvestigationSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new OverallRansomwareInvestigationSummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<OverallRansomwareInvestigationSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

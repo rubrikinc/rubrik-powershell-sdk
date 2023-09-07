@@ -81,22 +81,21 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> AsyncRequestStatus? NasDiscoverJobStatus
         // GraphQL -> nasDiscoverJobStatus: AsyncRequestStatus (type)
-        if (this.NasDiscoverJobStatus == null && Exploration.Includes(parent + ".nasDiscoverJobStatus"))
+        if (this.NasDiscoverJobStatus == null && ec.Includes("nasDiscoverJobStatus",false))
         {
             this.NasDiscoverJobStatus = new AsyncRequestStatus();
-            this.NasDiscoverJobStatus.ApplyExploratoryFieldSpec(parent + ".nasDiscoverJobStatus");
+            this.NasDiscoverJobStatus.ApplyExploratoryFieldSpec(ec.NewChild("nasDiscoverJobStatus"));
         }
         //      C# -> UpdateNasSystemReply? NasSystemSummary
         // GraphQL -> nasSystemSummary: UpdateNasSystemReply (type)
-        if (this.NasSystemSummary == null && Exploration.Includes(parent + ".nasSystemSummary"))
+        if (this.NasSystemSummary == null && ec.Includes("nasSystemSummary",false))
         {
             this.NasSystemSummary = new UpdateNasSystemReply();
-            this.NasSystemSummary.ApplyExploratoryFieldSpec(parent + ".nasSystemSummary");
+            this.NasSystemSummary.ApplyExploratoryFieldSpec(ec.NewChild("nasSystemSummary"));
         }
     }
 
@@ -130,12 +129,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RegisterNasSystemReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RegisterNasSystemReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<RegisterNasSystemReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

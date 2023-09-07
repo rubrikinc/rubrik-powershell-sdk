@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int32? BackupParallelism
         // GraphQL -> backupParallelism: Int (scalar)
-        if (this.BackupParallelism == null && Exploration.Includes(parent + ".backupParallelism", true))
+        if (this.BackupParallelism == null && ec.Includes("backupParallelism",true))
         {
             this.BackupParallelism = Int32.MinValue;
         }
         //      C# -> System.Int32? BackupSessions
         // GraphQL -> backupSessions: Int (scalar)
-        if (this.BackupSessions == null && Exploration.Includes(parent + ".backupSessions", true))
+        if (this.BackupSessions == null && ec.Includes("backupSessions",true))
         {
             this.BackupSessions = Int32.MinValue;
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PatchDb2DatabaseReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PatchDb2DatabaseReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<PatchDb2DatabaseReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

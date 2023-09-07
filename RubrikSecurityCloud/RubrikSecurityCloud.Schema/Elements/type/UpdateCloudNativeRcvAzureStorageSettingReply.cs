@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> TargetMapping? TargetMapping
         // GraphQL -> targetMapping: TargetMapping! (type)
-        if (this.TargetMapping == null && Exploration.Includes(parent + ".targetMapping"))
+        if (this.TargetMapping == null && ec.Includes("targetMapping",false))
         {
             this.TargetMapping = new TargetMapping();
-            this.TargetMapping.ApplyExploratoryFieldSpec(parent + ".targetMapping");
+            this.TargetMapping.ApplyExploratoryFieldSpec(ec.NewChild("targetMapping"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<UpdateCloudNativeRcvAzureStorageSettingReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new UpdateCloudNativeRcvAzureStorageSettingReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<UpdateCloudNativeRcvAzureStorageSettingReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

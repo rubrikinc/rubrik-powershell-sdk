@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int32? RecoveryCount
         // GraphQL -> recoveryCount: Int! (scalar)
-        if (this.RecoveryCount == null && Exploration.Includes(parent + ".recoveryCount", true))
+        if (this.RecoveryCount == null && ec.Includes("recoveryCount",true))
         {
             this.RecoveryCount = Int32.MinValue;
         }
         //      C# -> List<System.String>? RecoveryIds
         // GraphQL -> recoveryIds: [String!]! (scalar)
-        if (this.RecoveryIds == null && Exploration.Includes(parent + ".recoveryIds", true))
+        if (this.RecoveryIds == null && ec.Includes("recoveryIds",true))
         {
             this.RecoveryIds = new List<System.String>();
         }
         //      C# -> System.String? RecoveryType
         // GraphQL -> recoveryType: String! (scalar)
-        if (this.RecoveryType == null && Exploration.Includes(parent + ".recoveryType", true))
+        if (this.RecoveryType == null && ec.Includes("recoveryType",true))
         {
             this.RecoveryType = "FETCH";
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RecoveryInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RecoveryInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<RecoveryInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

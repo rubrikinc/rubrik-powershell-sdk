@@ -173,60 +173,59 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> UploadLocationType? UploadLocationType
         // GraphQL -> uploadLocationType: UploadLocationType (enum)
-        if (this.UploadLocationType == null && Exploration.Includes(parent + ".uploadLocationType", true))
+        if (this.UploadLocationType == null && ec.Includes("uploadLocationType",true))
         {
             this.UploadLocationType = new UploadLocationType();
         }
         //      C# -> System.String? BackupClusterVersion
         // GraphQL -> backupClusterVersion: String! (scalar)
-        if (this.BackupClusterVersion == null && Exploration.Includes(parent + ".backupClusterVersion", true))
+        if (this.BackupClusterVersion == null && ec.Includes("backupClusterVersion",true))
         {
             this.BackupClusterVersion = "FETCH";
         }
         //      C# -> System.String? BackupFileName
         // GraphQL -> backupFileName: String! (scalar)
-        if (this.BackupFileName == null && Exploration.Includes(parent + ".backupFileName", true))
+        if (this.BackupFileName == null && ec.Includes("backupFileName",true))
         {
             this.BackupFileName = "FETCH";
         }
         //      C# -> System.Int64? BackupSizeInBytes
         // GraphQL -> backupSizeInBytes: Long! (scalar)
-        if (this.BackupSizeInBytes == null && Exploration.Includes(parent + ".backupSizeInBytes", true))
+        if (this.BackupSizeInBytes == null && ec.Includes("backupSizeInBytes",true))
         {
             this.BackupSizeInBytes = new System.Int64();
         }
         //      C# -> DateTime? BackupTimestamp
         // GraphQL -> backupTimestamp: DateTime! (scalar)
-        if (this.BackupTimestamp == null && Exploration.Includes(parent + ".backupTimestamp", true))
+        if (this.BackupTimestamp == null && ec.Includes("backupTimestamp",true))
         {
             this.BackupTimestamp = new DateTime();
         }
         //      C# -> System.String? ClusterName
         // GraphQL -> clusterName: String! (scalar)
-        if (this.ClusterName == null && Exploration.Includes(parent + ".clusterName", true))
+        if (this.ClusterName == null && ec.Includes("clusterName",true))
         {
             this.ClusterName = "FETCH";
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
-        if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
+        if (this.ClusterUuid == null && ec.Includes("clusterUuid",true))
         {
             this.ClusterUuid = "FETCH";
         }
         //      C# -> System.String? ReplicationTargetName
         // GraphQL -> replicationTargetName: String (scalar)
-        if (this.ReplicationTargetName == null && Exploration.Includes(parent + ".replicationTargetName", true))
+        if (this.ReplicationTargetName == null && ec.Includes("replicationTargetName",true))
         {
             this.ReplicationTargetName = "FETCH";
         }
         //      C# -> System.String? ReplicationTargetUuid
         // GraphQL -> replicationTargetUuid: String (scalar)
-        if (this.ReplicationTargetUuid == null && Exploration.Includes(parent + ".replicationTargetUuid", true))
+        if (this.ReplicationTargetUuid == null && ec.Includes("replicationTargetUuid",true))
         {
             this.ReplicationTargetUuid = "FETCH";
         }
@@ -262,12 +261,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ConfigProtectionBackups> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ConfigProtectionBackups());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ConfigProtectionBackups> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

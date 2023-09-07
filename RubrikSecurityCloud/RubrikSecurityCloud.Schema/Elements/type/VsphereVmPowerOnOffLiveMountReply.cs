@@ -92,27 +92,26 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? NasIp
         // GraphQL -> nasIp: String (scalar)
-        if (this.NasIp == null && Exploration.Includes(parent + ".nasIp", true))
+        if (this.NasIp == null && ec.Includes("nasIp",true))
         {
             this.NasIp = "FETCH";
         }
         //      C# -> System.String? PowerStatus
         // GraphQL -> powerStatus: String (scalar)
-        if (this.PowerStatus == null && Exploration.Includes(parent + ".powerStatus", true))
+        if (this.PowerStatus == null && ec.Includes("powerStatus",true))
         {
             this.PowerStatus = "FETCH";
         }
         //      C# -> VmwareVmMountSummaryV1? VmwareVmMountSummaryV1
         // GraphQL -> vmwareVmMountSummaryV1: VmwareVmMountSummaryV1 (type)
-        if (this.VmwareVmMountSummaryV1 == null && Exploration.Includes(parent + ".vmwareVmMountSummaryV1"))
+        if (this.VmwareVmMountSummaryV1 == null && ec.Includes("vmwareVmMountSummaryV1",false))
         {
             this.VmwareVmMountSummaryV1 = new VmwareVmMountSummaryV1();
-            this.VmwareVmMountSummaryV1.ApplyExploratoryFieldSpec(parent + ".vmwareVmMountSummaryV1");
+            this.VmwareVmMountSummaryV1.ApplyExploratoryFieldSpec(ec.NewChild("vmwareVmMountSummaryV1"));
         }
     }
 
@@ -146,12 +145,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VsphereVmPowerOnOffLiveMountReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VsphereVmPowerOnOffLiveMountReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VsphereVmPowerOnOffLiveMountReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

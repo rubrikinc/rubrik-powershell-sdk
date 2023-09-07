@@ -92,27 +92,26 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? HuntId
         // GraphQL -> huntId: String! (scalar)
-        if (this.HuntId == null && Exploration.Includes(parent + ".huntId", true))
+        if (this.HuntId == null && ec.Includes("huntId",true))
         {
             this.HuntId = "FETCH";
         }
         //      C# -> System.Boolean? IsSyncSuccessful
         // GraphQL -> isSyncSuccessful: Boolean! (scalar)
-        if (this.IsSyncSuccessful == null && Exploration.Includes(parent + ".isSyncSuccessful", true))
+        if (this.IsSyncSuccessful == null && ec.Includes("isSyncSuccessful",true))
         {
             this.IsSyncSuccessful = true;
         }
         //      C# -> AsyncRequestStatus? HuntStatus
         // GraphQL -> huntStatus: AsyncRequestStatus (type)
-        if (this.HuntStatus == null && Exploration.Includes(parent + ".huntStatus"))
+        if (this.HuntStatus == null && ec.Includes("huntStatus",false))
         {
             this.HuntStatus = new AsyncRequestStatus();
-            this.HuntStatus.ApplyExploratoryFieldSpec(parent + ".huntStatus");
+            this.HuntStatus.ApplyExploratoryFieldSpec(ec.NewChild("huntStatus"));
         }
     }
 
@@ -146,12 +145,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<StartThreatHuntReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new StartThreatHuntReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<StartThreatHuntReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

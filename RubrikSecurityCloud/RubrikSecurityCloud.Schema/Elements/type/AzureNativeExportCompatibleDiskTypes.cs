@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<AzureNativeManagedDiskType>? DiskTypes
         // GraphQL -> diskTypes: [AzureNativeManagedDiskType!]! (enum)
-        if (this.DiskTypes == null && Exploration.Includes(parent + ".diskTypes", true))
+        if (this.DiskTypes == null && ec.Includes("diskTypes",true))
         {
             this.DiskTypes = new List<AzureNativeManagedDiskType>();
         }
         //      C# -> System.String? AvailabilityZone
         // GraphQL -> availabilityZone: String! (scalar)
-        if (this.AvailabilityZone == null && Exploration.Includes(parent + ".availabilityZone", true))
+        if (this.AvailabilityZone == null && ec.Includes("availabilityZone",true))
         {
             this.AvailabilityZone = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AzureNativeExportCompatibleDiskTypes> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AzureNativeExportCompatibleDiskTypes());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AzureNativeExportCompatibleDiskTypes> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

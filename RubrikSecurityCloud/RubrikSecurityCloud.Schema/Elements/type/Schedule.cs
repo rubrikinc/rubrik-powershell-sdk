@@ -20,6 +20,16 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? BlueprintId
+        // GraphQL -> blueprintId: String! (scalar)
+        [JsonProperty("blueprintId")]
+        public System.String? BlueprintId { get; set; }
+
+        //      C# -> DateTime? NextRunTime
+        // GraphQL -> nextRunTime: DateTime (scalar)
+        [JsonProperty("nextRunTime")]
+        public DateTime? NextRunTime { get; set; }
+
         //      C# -> ScheduleInfo? Info
         // GraphQL -> info: ScheduleInfo (type)
         [JsonProperty("info")]
@@ -35,9 +45,17 @@ namespace RubrikSecurityCloud.Types
     }
 
     public Schedule Set(
+        System.String? BlueprintId = null,
+        DateTime? NextRunTime = null,
         ScheduleInfo? Info = null
     ) 
     {
+        if ( BlueprintId != null ) {
+            this.BlueprintId = BlueprintId;
+        }
+        if ( NextRunTime != null ) {
+            this.NextRunTime = NextRunTime;
+        }
         if ( Info != null ) {
             this.Info = Info;
         }
@@ -51,6 +69,16 @@ namespace RubrikSecurityCloud.Types
     {
         string ind = new string(' ', indent*2);
         string s = "";
+        //      C# -> System.String? BlueprintId
+        // GraphQL -> blueprintId: String! (scalar)
+        if (this.BlueprintId != null) {
+            s += ind + "blueprintId\n" ;
+        }
+        //      C# -> DateTime? NextRunTime
+        // GraphQL -> nextRunTime: DateTime (scalar)
+        if (this.NextRunTime != null) {
+            s += ind + "nextRunTime\n" ;
+        }
         //      C# -> ScheduleInfo? Info
         // GraphQL -> info: ScheduleInfo (type)
         if (this.Info != null) {
@@ -64,15 +92,26 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> System.String? BlueprintId
+        // GraphQL -> blueprintId: String! (scalar)
+        if (this.BlueprintId == null && ec.Includes("blueprintId",true))
+        {
+            this.BlueprintId = "FETCH";
+        }
+        //      C# -> DateTime? NextRunTime
+        // GraphQL -> nextRunTime: DateTime (scalar)
+        if (this.NextRunTime == null && ec.Includes("nextRunTime",true))
+        {
+            this.NextRunTime = new DateTime();
+        }
         //      C# -> ScheduleInfo? Info
         // GraphQL -> info: ScheduleInfo (type)
-        if (this.Info == null && Exploration.Includes(parent + ".info"))
+        if (this.Info == null && ec.Includes("info",false))
         {
             this.Info = new ScheduleInfo();
-            this.Info.ApplyExploratoryFieldSpec(parent + ".info");
+            this.Info.ApplyExploratoryFieldSpec(ec.NewChild("info"));
         }
     }
 
@@ -106,12 +145,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<Schedule> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new Schedule());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<Schedule> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -106,33 +106,32 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? DatacenterName
         // GraphQL -> datacenterName: String! (scalar)
-        if (this.DatacenterName == null && Exploration.Includes(parent + ".datacenterName", true))
+        if (this.DatacenterName == null && ec.Includes("datacenterName",true))
         {
             this.DatacenterName = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> List<HostGroupInfo>? HostGroups
         // GraphQL -> hostGroups: [HostGroupInfo!]! (type)
-        if (this.HostGroups == null && Exploration.Includes(parent + ".hostGroups"))
+        if (this.HostGroups == null && ec.Includes("hostGroups",false))
         {
             this.HostGroups = new List<HostGroupInfo>();
-            this.HostGroups.ApplyExploratoryFieldSpec(parent + ".hostGroups");
+            this.HostGroups.ApplyExploratoryFieldSpec(ec.NewChild("hostGroups"));
         }
     }
 
@@ -166,12 +165,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ClusterHostGroupInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ClusterHostGroupInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ClusterHostGroupInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

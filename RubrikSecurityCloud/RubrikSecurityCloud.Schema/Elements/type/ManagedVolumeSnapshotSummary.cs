@@ -95,28 +95,27 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? IsQueuedSnapshot
         // GraphQL -> isQueuedSnapshot: Boolean (scalar)
-        if (this.IsQueuedSnapshot == null && Exploration.Includes(parent + ".isQueuedSnapshot", true))
+        if (this.IsQueuedSnapshot == null && ec.Includes("isQueuedSnapshot",true))
         {
             this.IsQueuedSnapshot = true;
         }
         //      C# -> BaseSnapshotSummary? BaseSnapshotSummary
         // GraphQL -> baseSnapshotSummary: BaseSnapshotSummary (type)
-        if (this.BaseSnapshotSummary == null && Exploration.Includes(parent + ".baseSnapshotSummary"))
+        if (this.BaseSnapshotSummary == null && ec.Includes("baseSnapshotSummary",false))
         {
             this.BaseSnapshotSummary = new BaseSnapshotSummary();
-            this.BaseSnapshotSummary.ApplyExploratoryFieldSpec(parent + ".baseSnapshotSummary");
+            this.BaseSnapshotSummary.ApplyExploratoryFieldSpec(ec.NewChild("baseSnapshotSummary"));
         }
         //      C# -> ManagedVolumeSnapshotLinks? Links
         // GraphQL -> links: ManagedVolumeSnapshotLinks (type)
-        if (this.Links == null && Exploration.Includes(parent + ".links"))
+        if (this.Links == null && ec.Includes("links",false))
         {
             this.Links = new ManagedVolumeSnapshotLinks();
-            this.Links.ApplyExploratoryFieldSpec(parent + ".links");
+            this.Links.ApplyExploratoryFieldSpec(ec.NewChild("links"));
         }
     }
 
@@ -150,12 +149,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ManagedVolumeSnapshotSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ManagedVolumeSnapshotSummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ManagedVolumeSnapshotSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

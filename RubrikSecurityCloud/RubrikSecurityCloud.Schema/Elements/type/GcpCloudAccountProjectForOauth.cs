@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<System.String>? MissingPermissions
         // GraphQL -> missingPermissions: [String!] (scalar)
-        if (this.MissingPermissions == null && Exploration.Includes(parent + ".missingPermissions", true))
+        if (this.MissingPermissions == null && ec.Includes("missingPermissions",true))
         {
             this.MissingPermissions = new List<System.String>();
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? ProjectId
         // GraphQL -> projectId: String! (scalar)
-        if (this.ProjectId == null && Exploration.Includes(parent + ".projectId", true))
+        if (this.ProjectId == null && ec.Includes("projectId",true))
         {
             this.ProjectId = "FETCH";
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GcpCloudAccountProjectForOauth> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GcpCloudAccountProjectForOauth());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<GcpCloudAccountProjectForOauth> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

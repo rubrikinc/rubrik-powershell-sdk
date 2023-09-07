@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<AzureExocomputeConfigDetails>? Configs
         // GraphQL -> configs: [AzureExocomputeConfigDetails!]! (type)
-        if (this.Configs == null && Exploration.Includes(parent + ".configs"))
+        if (this.Configs == null && ec.Includes("configs",false))
         {
             this.Configs = new List<AzureExocomputeConfigDetails>();
-            this.Configs.ApplyExploratoryFieldSpec(parent + ".configs");
+            this.Configs.ApplyExploratoryFieldSpec(ec.NewChild("configs"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AddAzureCloudAccountExocomputeConfigurationsReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AddAzureCloudAccountExocomputeConfigurationsReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AddAzureCloudAccountExocomputeConfigurationsReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

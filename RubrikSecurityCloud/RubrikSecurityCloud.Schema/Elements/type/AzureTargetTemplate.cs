@@ -186,67 +186,66 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> InstanceTypeEnum? InstanceType
         // GraphQL -> instanceType: InstanceTypeEnum! (enum)
-        if (this.InstanceType == null && Exploration.Includes(parent + ".instanceType", true))
+        if (this.InstanceType == null && ec.Includes("instanceType",true))
         {
             this.InstanceType = new InstanceTypeEnum();
         }
         //      C# -> TargetType? TargetType
         // GraphQL -> targetType: TargetType! (enum)
-        if (this.TargetType == null && Exploration.Includes(parent + ".targetType", true))
+        if (this.TargetType == null && ec.Includes("targetType",true))
         {
             this.TargetType = new TargetType();
         }
         //      C# -> CloudAccount? CloudAccount
         // GraphQL -> cloudAccount: CloudAccount! (interface)
-        if (this.CloudAccount == null && Exploration.Includes(parent + ".cloudAccount"))
+        if (this.CloudAccount == null && ec.Includes("cloudAccount",false))
         {
             var impls = new List<CloudAccount>();
-            impls.ApplyExploratoryFieldSpec(parent + ".cloudAccount");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("cloudAccount"));
             this.CloudAccount = (CloudAccount)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> System.String? ContainerNamePrefix
         // GraphQL -> containerNamePrefix: String! (scalar)
-        if (this.ContainerNamePrefix == null && Exploration.Includes(parent + ".containerNamePrefix", true))
+        if (this.ContainerNamePrefix == null && ec.Includes("containerNamePrefix",true))
         {
             this.ContainerNamePrefix = "FETCH";
         }
         //      C# -> System.Boolean? IsConsolidationEnabled
         // GraphQL -> isConsolidationEnabled: Boolean! (scalar)
-        if (this.IsConsolidationEnabled == null && Exploration.Includes(parent + ".isConsolidationEnabled", true))
+        if (this.IsConsolidationEnabled == null && ec.Includes("isConsolidationEnabled",true))
         {
             this.IsConsolidationEnabled = true;
         }
         //      C# -> System.String? StorageAccountName
         // GraphQL -> storageAccountName: String! (scalar)
-        if (this.StorageAccountName == null && Exploration.Includes(parent + ".storageAccountName", true))
+        if (this.StorageAccountName == null && ec.Includes("storageAccountName",true))
         {
             this.StorageAccountName = "FETCH";
         }
         //      C# -> AzureCloudNativeTargetCompanion? CloudNativeCompanion
         // GraphQL -> cloudNativeCompanion: AzureCloudNativeTargetCompanion (type)
-        if (this.CloudNativeCompanion == null && Exploration.Includes(parent + ".cloudNativeCompanion"))
+        if (this.CloudNativeCompanion == null && ec.Includes("cloudNativeCompanion",false))
         {
             this.CloudNativeCompanion = new AzureCloudNativeTargetCompanion();
-            this.CloudNativeCompanion.ApplyExploratoryFieldSpec(parent + ".cloudNativeCompanion");
+            this.CloudNativeCompanion.ApplyExploratoryFieldSpec(ec.NewChild("cloudNativeCompanion"));
         }
         //      C# -> AzureComputeSettings? ComputeSettings
         // GraphQL -> computeSettings: AzureComputeSettings (type)
-        if (this.ComputeSettings == null && Exploration.Includes(parent + ".computeSettings"))
+        if (this.ComputeSettings == null && ec.Includes("computeSettings",false))
         {
             this.ComputeSettings = new AzureComputeSettings();
-            this.ComputeSettings.ApplyExploratoryFieldSpec(parent + ".computeSettings");
+            this.ComputeSettings.ApplyExploratoryFieldSpec(ec.NewChild("computeSettings"));
         }
         //      C# -> ProxySettings? ProxySettings
         // GraphQL -> proxySettings: ProxySettings (type)
-        if (this.ProxySettings == null && Exploration.Includes(parent + ".proxySettings"))
+        if (this.ProxySettings == null && ec.Includes("proxySettings",false))
         {
             this.ProxySettings = new ProxySettings();
-            this.ProxySettings.ApplyExploratoryFieldSpec(parent + ".proxySettings");
+            this.ProxySettings.ApplyExploratoryFieldSpec(ec.NewChild("proxySettings"));
         }
     }
 
@@ -280,12 +279,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AzureTargetTemplate> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AzureTargetTemplate());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AzureTargetTemplate> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

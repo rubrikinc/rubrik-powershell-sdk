@@ -131,42 +131,41 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ComponentEnum? Component
         // GraphQL -> component: ComponentEnum! (enum)
-        if (this.Component == null && Exploration.Includes(parent + ".component", true))
+        if (this.Component == null && ec.Includes("component",true))
         {
             this.Component = new ComponentEnum();
         }
         //      C# -> System.String? Account
         // GraphQL -> account: String! (scalar)
-        if (this.Account == null && Exploration.Includes(parent + ".account", true))
+        if (this.Account == null && ec.Includes("account",true))
         {
             this.Account = "FETCH";
         }
         //      C# -> System.String? ExpirationDate
         // GraphQL -> expirationDate: String! (scalar)
-        if (this.ExpirationDate == null && Exploration.Includes(parent + ".expirationDate", true))
+        if (this.ExpirationDate == null && ec.Includes("expirationDate",true))
         {
             this.ExpirationDate = "FETCH";
         }
         //      C# -> System.String? JiraTicket
         // GraphQL -> jiraTicket: String! (scalar)
-        if (this.JiraTicket == null && Exploration.Includes(parent + ".jiraTicket", true))
+        if (this.JiraTicket == null && ec.Includes("jiraTicket",true))
         {
             this.JiraTicket = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? TargetId
         // GraphQL -> targetId: String! (scalar)
-        if (this.TargetId == null && Exploration.Includes(parent + ".targetId", true))
+        if (this.TargetId == null && ec.Includes("targetId",true))
         {
             this.TargetId = "FETCH";
         }
@@ -202,12 +201,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AspKey> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AspKey());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AspKey> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

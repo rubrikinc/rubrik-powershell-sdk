@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Host
         // GraphQL -> host: String! (scalar)
-        if (this.Host == null && Exploration.Includes(parent + ".host", true))
+        if (this.Host == null && ec.Includes("host",true))
         {
             this.Host = "FETCH";
         }
         //      C# -> System.String? HostFid
         // GraphQL -> hostFid: UUID! (scalar)
-        if (this.HostFid == null && Exploration.Includes(parent + ".hostFid", true))
+        if (this.HostFid == null && ec.Includes("hostFid",true))
         {
             this.HostFid = "FETCH";
         }
         //      C# -> System.Int32? Port
         // GraphQL -> port: Int! (scalar)
-        if (this.Port == null && Exploration.Includes(parent + ".port", true))
+        if (this.Port == null && ec.Includes("port",true))
         {
             this.Port = Int32.MinValue;
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CdmMongoNode> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CdmMongoNode());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CdmMongoNode> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

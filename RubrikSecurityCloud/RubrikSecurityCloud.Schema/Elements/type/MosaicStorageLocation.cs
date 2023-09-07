@@ -190,69 +190,68 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> MosaicStoreConnectionStatus? StoreConnectionStatus
         // GraphQL -> storeConnectionStatus: MosaicStoreConnectionStatus! (enum)
-        if (this.StoreConnectionStatus == null && Exploration.Includes(parent + ".storeConnectionStatus", true))
+        if (this.StoreConnectionStatus == null && ec.Includes("storeConnectionStatus",true))
         {
             this.StoreConnectionStatus = new MosaicStoreConnectionStatus();
         }
         //      C# -> MosaicStoreType? StoreType
         // GraphQL -> storeType: MosaicStoreType! (enum)
-        if (this.StoreType == null && Exploration.Includes(parent + ".storeType", true))
+        if (this.StoreType == null && ec.Includes("storeType",true))
         {
             this.StoreType = new MosaicStoreType();
         }
         //      C# -> System.Int32? BackupCount
         // GraphQL -> backupCount: Int! (scalar)
-        if (this.BackupCount == null && Exploration.Includes(parent + ".backupCount", true))
+        if (this.BackupCount == null && ec.Includes("backupCount",true))
         {
             this.BackupCount = Int32.MinValue;
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: String! (scalar)
-        if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
+        if (this.ClusterUuid == null && ec.Includes("clusterUuid",true))
         {
             this.ClusterUuid = "FETCH";
         }
         //      C# -> System.String? Fid
         // GraphQL -> fid: String! (scalar)
-        if (this.Fid == null && Exploration.Includes(parent + ".fid", true))
+        if (this.Fid == null && ec.Includes("fid",true))
         {
             this.Fid = "FETCH";
         }
         //      C# -> System.String? GeographicLocation
         // GraphQL -> geographicLocation: String! (scalar)
-        if (this.GeographicLocation == null && Exploration.Includes(parent + ".geographicLocation", true))
+        if (this.GeographicLocation == null && ec.Includes("geographicLocation",true))
         {
             this.GeographicLocation = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.Int64? SpaceConsumedBytes
         // GraphQL -> spaceConsumedBytes: Long! (scalar)
-        if (this.SpaceConsumedBytes == null && Exploration.Includes(parent + ".spaceConsumedBytes", true))
+        if (this.SpaceConsumedBytes == null && ec.Includes("spaceConsumedBytes",true))
         {
             this.SpaceConsumedBytes = new System.Int64();
         }
         //      C# -> System.String? StorageLocationName
         // GraphQL -> storageLocationName: String! (scalar)
-        if (this.StorageLocationName == null && Exploration.Includes(parent + ".storageLocationName", true))
+        if (this.StorageLocationName == null && ec.Includes("storageLocationName",true))
         {
             this.StorageLocationName = "FETCH";
         }
         //      C# -> MosaicStoreConnectionParameters? ConnectionParameters
         // GraphQL -> connectionParameters: MosaicStoreConnectionParameters (type)
-        if (this.ConnectionParameters == null && Exploration.Includes(parent + ".connectionParameters"))
+        if (this.ConnectionParameters == null && ec.Includes("connectionParameters",false))
         {
             this.ConnectionParameters = new MosaicStoreConnectionParameters();
-            this.ConnectionParameters.ApplyExploratoryFieldSpec(parent + ".connectionParameters");
+            this.ConnectionParameters.ApplyExploratoryFieldSpec(ec.NewChild("connectionParameters"));
         }
     }
 
@@ -286,12 +285,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<MosaicStorageLocation> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new MosaicStorageLocation());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<MosaicStorageLocation> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

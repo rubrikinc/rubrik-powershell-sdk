@@ -162,57 +162,56 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> PlanName? PlanType
         // GraphQL -> planType: PlanName! (enum)
-        if (this.PlanType == null && Exploration.Includes(parent + ".planType", true))
+        if (this.PlanType == null && ec.Includes("planType",true))
         {
             this.PlanType = new PlanName();
         }
         //      C# -> ResourceSpecType? ResourceSpecType
         // GraphQL -> resourceSpecType: ResourceSpecType (enum)
-        if (this.ResourceSpecType == null && Exploration.Includes(parent + ".resourceSpecType", true))
+        if (this.ResourceSpecType == null && ec.Includes("resourceSpecType",true))
         {
             this.ResourceSpecType = new ResourceSpecType();
         }
         //      C# -> System.String? FailoverId
         // GraphQL -> failoverId: UUID (scalar)
-        if (this.FailoverId == null && Exploration.Includes(parent + ".failoverId", true))
+        if (this.FailoverId == null && ec.Includes("failoverId",true))
         {
             this.FailoverId = "FETCH";
         }
         //      C# -> System.Boolean? IsPending
         // GraphQL -> isPending: Boolean! (scalar)
-        if (this.IsPending == null && Exploration.Includes(parent + ".isPending", true))
+        if (this.IsPending == null && ec.Includes("isPending",true))
         {
             this.IsPending = true;
         }
         //      C# -> System.String? RecoverySpecId
         // GraphQL -> recoverySpecId: UUID! (scalar)
-        if (this.RecoverySpecId == null && Exploration.Includes(parent + ".recoverySpecId", true))
+        if (this.RecoverySpecId == null && ec.Includes("recoverySpecId",true))
         {
             this.RecoverySpecId = "FETCH";
         }
         //      C# -> System.String? UserData
         // GraphQL -> userData: String (scalar)
-        if (this.UserData == null && Exploration.Includes(parent + ".userData", true))
+        if (this.UserData == null && ec.Includes("userData",true))
         {
             this.UserData = "FETCH";
         }
         //      C# -> System.Int64? Version
         // GraphQL -> version: Long! (scalar)
-        if (this.Version == null && Exploration.Includes(parent + ".version", true))
+        if (this.Version == null && ec.Includes("version",true))
         {
             this.Version = new System.Int64();
         }
         //      C# -> List<ChildRecoverySpecMap>? ChildRecoverySpecs
         // GraphQL -> childRecoverySpecs: [ChildRecoverySpecMap!]! (type)
-        if (this.ChildRecoverySpecs == null && Exploration.Includes(parent + ".childRecoverySpecs"))
+        if (this.ChildRecoverySpecs == null && ec.Includes("childRecoverySpecs",false))
         {
             this.ChildRecoverySpecs = new List<ChildRecoverySpecMap>();
-            this.ChildRecoverySpecs.ApplyExploratoryFieldSpec(parent + ".childRecoverySpecs");
+            this.ChildRecoverySpecs.ApplyExploratoryFieldSpec(ec.NewChild("childRecoverySpecs"));
         }
     }
 
@@ -246,12 +245,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<BlueprintRecoverySpec> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new BlueprintRecoverySpec());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<BlueprintRecoverySpec> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

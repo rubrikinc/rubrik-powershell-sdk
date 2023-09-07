@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? TenantId
         // GraphQL -> tenantId: String! (scalar)
-        if (this.TenantId == null && Exploration.Includes(parent + ".tenantId", true))
+        if (this.TenantId == null && ec.Includes("tenantId",true))
         {
             this.TenantId = "FETCH";
         }
         //      C# -> List<AddAzureCloudAccountStatus>? Status
         // GraphQL -> status: [AddAzureCloudAccountStatus!]! (type)
-        if (this.Status == null && Exploration.Includes(parent + ".status"))
+        if (this.Status == null && ec.Includes("status",false))
         {
             this.Status = new List<AddAzureCloudAccountStatus>();
-            this.Status.ApplyExploratoryFieldSpec(parent + ".status");
+            this.Status.ApplyExploratoryFieldSpec(ec.NewChild("status"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AddAzureCloudAccountWithoutOauthReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AddAzureCloudAccountWithoutOauthReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AddAzureCloudAccountWithoutOauthReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

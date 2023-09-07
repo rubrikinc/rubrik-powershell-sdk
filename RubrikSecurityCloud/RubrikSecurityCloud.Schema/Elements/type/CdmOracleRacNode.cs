@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> HostConnectivityStatusEnum? Status
         // GraphQL -> status: HostConnectivityStatusEnum! (enum)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = new HostConnectivityStatusEnum();
         }
         //      C# -> System.String? HostFid
         // GraphQL -> hostFid: String (scalar)
-        if (this.HostFid == null && Exploration.Includes(parent + ".hostFid", true))
+        if (this.HostFid == null && ec.Includes("hostFid",true))
         {
             this.HostFid = "FETCH";
         }
         //      C# -> System.String? NodeName
         // GraphQL -> nodeName: String! (scalar)
-        if (this.NodeName == null && Exploration.Includes(parent + ".nodeName", true))
+        if (this.NodeName == null && ec.Includes("nodeName",true))
         {
             this.NodeName = "FETCH";
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CdmOracleRacNode> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CdmOracleRacNode());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CdmOracleRacNode> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -92,27 +92,26 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? ChildObjectId
         // GraphQL -> childObjectId: String! (scalar)
-        if (this.ChildObjectId == null && Exploration.Includes(parent + ".childObjectId", true))
+        if (this.ChildObjectId == null && ec.Includes("childObjectId",true))
         {
             this.ChildObjectId = "FETCH";
         }
         //      C# -> System.String? ChildObjectName
         // GraphQL -> childObjectName: String! (scalar)
-        if (this.ChildObjectName == null && Exploration.Includes(parent + ".childObjectName", true))
+        if (this.ChildObjectName == null && ec.Includes("childObjectName",true))
         {
             this.ChildObjectName = "FETCH";
         }
         //      C# -> SearchResultResponse? SearchResponse
         // GraphQL -> searchResponse: SearchResultResponse (type)
-        if (this.SearchResponse == null && Exploration.Includes(parent + ".searchResponse"))
+        if (this.SearchResponse == null && ec.Includes("searchResponse",false))
         {
             this.SearchResponse = new SearchResultResponse();
-            this.SearchResponse.ApplyExploratoryFieldSpec(parent + ".searchResponse");
+            this.SearchResponse.ApplyExploratoryFieldSpec(ec.NewChild("searchResponse"));
         }
     }
 
@@ -146,12 +145,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AppSearchResponse> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AppSearchResponse());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AppSearchResponse> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

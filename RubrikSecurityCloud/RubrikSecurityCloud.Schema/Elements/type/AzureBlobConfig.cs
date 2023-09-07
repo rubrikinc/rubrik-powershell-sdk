@@ -61,12 +61,11 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int32? ContinuousBackupRetentionInDays
         // GraphQL -> continuousBackupRetentionInDays: Int! (scalar)
-        if (this.ContinuousBackupRetentionInDays == null && Exploration.Includes(parent + ".continuousBackupRetentionInDays", true))
+        if (this.ContinuousBackupRetentionInDays == null && ec.Includes("continuousBackupRetentionInDays",true))
         {
             this.ContinuousBackupRetentionInDays = Int32.MinValue;
         }
@@ -102,12 +101,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AzureBlobConfig> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AzureBlobConfig());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AzureBlobConfig> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

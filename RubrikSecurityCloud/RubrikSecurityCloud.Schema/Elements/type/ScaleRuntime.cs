@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> DateTime? Deadline
         // GraphQL -> deadline: DateTime (scalar)
-        if (this.Deadline == null && Exploration.Includes(parent + ".deadline", true))
+        if (this.Deadline == null && ec.Includes("deadline",true))
         {
             this.Deadline = new DateTime();
         }
         //      C# -> System.Int32? NewCount
         // GraphQL -> newCount: Int! (scalar)
-        if (this.NewCount == null && Exploration.Includes(parent + ".newCount", true))
+        if (this.NewCount == null && ec.Includes("newCount",true))
         {
             this.NewCount = Int32.MinValue;
         }
         //      C# -> System.Int32? OldCount
         // GraphQL -> oldCount: Int! (scalar)
-        if (this.OldCount == null && Exploration.Includes(parent + ".oldCount", true))
+        if (this.OldCount == null && ec.Includes("oldCount",true))
         {
             this.OldCount = Int32.MinValue;
         }
         //      C# -> System.String? TaskchainUuid
         // GraphQL -> taskchainUuid: String! (scalar)
-        if (this.TaskchainUuid == null && Exploration.Includes(parent + ".taskchainUuid", true))
+        if (this.TaskchainUuid == null && ec.Includes("taskchainUuid",true))
         {
             this.TaskchainUuid = "FETCH";
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ScaleRuntime> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ScaleRuntime());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ScaleRuntime> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

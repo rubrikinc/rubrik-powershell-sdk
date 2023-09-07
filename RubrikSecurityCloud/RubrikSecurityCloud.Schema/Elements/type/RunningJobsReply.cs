@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<ClusterMetadata>? RunningJobs
         // GraphQL -> runningJobs: [ClusterMetadata!]! (type)
-        if (this.RunningJobs == null && Exploration.Includes(parent + ".runningJobs"))
+        if (this.RunningJobs == null && ec.Includes("runningJobs",false))
         {
             this.RunningJobs = new List<ClusterMetadata>();
-            this.RunningJobs.ApplyExploratoryFieldSpec(parent + ".runningJobs");
+            this.RunningJobs.ApplyExploratoryFieldSpec(ec.NewChild("runningJobs"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RunningJobsReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RunningJobsReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<RunningJobsReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

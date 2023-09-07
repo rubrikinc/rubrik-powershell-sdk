@@ -145,48 +145,47 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> O365AzureCloudType? CloudType
         // GraphQL -> cloudType: O365AzureCloudType! (enum)
-        if (this.CloudType == null && Exploration.Includes(parent + ".cloudType", true))
+        if (this.CloudType == null && ec.Includes("cloudType",true))
         {
             this.CloudType = new O365AzureCloudType();
         }
         //      C# -> System.String? AppId
         // GraphQL -> appId: String! (scalar)
-        if (this.AppId == null && Exploration.Includes(parent + ".appId", true))
+        if (this.AppId == null && ec.Includes("appId",true))
         {
             this.AppId = "FETCH";
         }
         //      C# -> System.String? AppSecret
         // GraphQL -> appSecret: String! (scalar)
-        if (this.AppSecret == null && Exploration.Includes(parent + ".appSecret", true))
+        if (this.AppSecret == null && ec.Includes("appSecret",true))
         {
             this.AppSecret = "FETCH";
         }
         //      C# -> System.String? KekNameColossus
         // GraphQL -> kekNameColossus: String! (scalar)
-        if (this.KekNameColossus == null && Exploration.Includes(parent + ".kekNameColossus", true))
+        if (this.KekNameColossus == null && ec.Includes("kekNameColossus",true))
         {
             this.KekNameColossus = "FETCH";
         }
         //      C# -> System.String? KeyName
         // GraphQL -> keyName: String! (scalar)
-        if (this.KeyName == null && Exploration.Includes(parent + ".keyName", true))
+        if (this.KeyName == null && ec.Includes("keyName",true))
         {
             this.KeyName = "FETCH";
         }
         //      C# -> System.String? KmsId
         // GraphQL -> kmsId: String! (scalar)
-        if (this.KmsId == null && Exploration.Includes(parent + ".kmsId", true))
+        if (this.KmsId == null && ec.Includes("kmsId",true))
         {
             this.KmsId = "FETCH";
         }
         //      C# -> System.String? TenantId
         // GraphQL -> tenantId: String! (scalar)
-        if (this.TenantId == null && Exploration.Includes(parent + ".tenantId", true))
+        if (this.TenantId == null && ec.Includes("tenantId",true))
         {
             this.TenantId = "FETCH";
         }
@@ -222,12 +221,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<KmsSpec> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new KmsSpec());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<KmsSpec> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

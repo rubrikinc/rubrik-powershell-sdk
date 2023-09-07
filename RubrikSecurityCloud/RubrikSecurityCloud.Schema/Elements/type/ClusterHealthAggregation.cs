@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? Fatal
         // GraphQL -> fatal: Long! (scalar)
-        if (this.Fatal == null && Exploration.Includes(parent + ".fatal", true))
+        if (this.Fatal == null && ec.Includes("fatal",true))
         {
             this.Fatal = new System.Int64();
         }
         //      C# -> System.Int64? Ok
         // GraphQL -> ok: Long! (scalar)
-        if (this.Ok == null && Exploration.Includes(parent + ".ok", true))
+        if (this.Ok == null && ec.Includes("ok",true))
         {
             this.Ok = new System.Int64();
         }
         //      C# -> System.Int64? Warning
         // GraphQL -> warning: Long! (scalar)
-        if (this.Warning == null && Exploration.Includes(parent + ".warning", true))
+        if (this.Warning == null && ec.Includes("warning",true))
         {
             this.Warning = new System.Int64();
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ClusterHealthAggregation> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ClusterHealthAggregation());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ClusterHealthAggregation> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

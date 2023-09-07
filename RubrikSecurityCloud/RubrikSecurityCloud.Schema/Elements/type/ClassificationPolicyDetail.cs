@@ -320,123 +320,122 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ClassificationPolicyColor? ColorEnum
         // GraphQL -> colorEnum: ClassificationPolicyColor! (enum)
-        if (this.ColorEnum == null && Exploration.Includes(parent + ".colorEnum", true))
+        if (this.ColorEnum == null && ec.Includes("colorEnum",true))
         {
             this.ColorEnum = new ClassificationPolicyColor();
         }
         //      C# -> ClassificationPolicyMode? Mode
         // GraphQL -> mode: ClassificationPolicyMode! (enum)
-        if (this.Mode == null && Exploration.Includes(parent + ".mode", true))
+        if (this.Mode == null && ec.Includes("mode",true))
         {
             this.Mode = new ClassificationPolicyMode();
         }
         //      C# -> List<HierarchyObject>? HierarchyObjects
         // GraphQL -> hierarchyObjects: [HierarchyObject]! (interface)
-        if (this.HierarchyObjects == null && Exploration.Includes(parent + ".hierarchyObjects"))
+        if (this.HierarchyObjects == null && ec.Includes("hierarchyObjects",false))
         {
             this.HierarchyObjects = new List<HierarchyObject>();
-            this.HierarchyObjects.ApplyExploratoryFieldSpec(parent + ".hierarchyObjects");
+            this.HierarchyObjects.ApplyExploratoryFieldSpec(ec.NewChild("hierarchyObjects"));
         }
         //      C# -> System.Int64? CreatedTime
         // GraphQL -> createdTime: Long! (scalar)
-        if (this.CreatedTime == null && Exploration.Includes(parent + ".createdTime", true))
+        if (this.CreatedTime == null && ec.Includes("createdTime",true))
         {
             this.CreatedTime = new System.Int64();
         }
         //      C# -> System.Boolean? Deletable
         // GraphQL -> deletable: Boolean! (scalar)
-        if (this.Deletable == null && Exploration.Includes(parent + ".deletable", true))
+        if (this.Deletable == null && ec.Includes("deletable",true))
         {
             this.Deletable = true;
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
-        if (this.Description == null && Exploration.Includes(parent + ".description", true))
+        if (this.Description == null && ec.Includes("description",true))
         {
             this.Description = "FETCH";
         }
         //      C# -> List<System.String>? HierarchyObjectIds
         // GraphQL -> hierarchyObjectIds: [String!]! (scalar)
-        if (this.HierarchyObjectIds == null && Exploration.Includes(parent + ".hierarchyObjectIds", true))
+        if (this.HierarchyObjectIds == null && ec.Includes("hierarchyObjectIds",true))
         {
             this.HierarchyObjectIds = new List<System.String>();
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.Int64? LastUpdatedTime
         // GraphQL -> lastUpdatedTime: Long! (scalar)
-        if (this.LastUpdatedTime == null && Exploration.Includes(parent + ".lastUpdatedTime", true))
+        if (this.LastUpdatedTime == null && ec.Includes("lastUpdatedTime",true))
         {
             this.LastUpdatedTime = new System.Int64();
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.Int32? NumAnalyzers
         // GraphQL -> numAnalyzers: Int! (scalar)
-        if (this.NumAnalyzers == null && Exploration.Includes(parent + ".numAnalyzers", true))
+        if (this.NumAnalyzers == null && ec.Includes("numAnalyzers",true))
         {
             this.NumAnalyzers = Int32.MinValue;
         }
         //      C# -> System.Int32? TotalObjects
         // GraphQL -> totalObjects: Int! (scalar)
-        if (this.TotalObjects == null && Exploration.Includes(parent + ".totalObjects", true))
+        if (this.TotalObjects == null && ec.Includes("totalObjects",true))
         {
             this.TotalObjects = Int32.MinValue;
         }
         //      C# -> List<Analyzer>? Analyzers
         // GraphQL -> analyzers: [Analyzer!]! (type)
-        if (this.Analyzers == null && Exploration.Includes(parent + ".analyzers"))
+        if (this.Analyzers == null && ec.Includes("analyzers",false))
         {
             this.Analyzers = new List<Analyzer>();
-            this.Analyzers.ApplyExploratoryFieldSpec(parent + ".analyzers");
+            this.Analyzers.ApplyExploratoryFieldSpec(ec.NewChild("analyzers"));
         }
         //      C# -> AssignmentResourceDetailsConnection? AssignmentResources
         // GraphQL -> assignmentResources: AssignmentResourceDetailsConnection! (type)
-        if (this.AssignmentResources == null && Exploration.Includes(parent + ".assignmentResources"))
+        if (this.AssignmentResources == null && ec.Includes("assignmentResources",false))
         {
             this.AssignmentResources = new AssignmentResourceDetailsConnection();
-            this.AssignmentResources.ApplyExploratoryFieldSpec(parent + ".assignmentResources");
+            this.AssignmentResources.ApplyExploratoryFieldSpec(ec.NewChild("assignmentResources"));
         }
         //      C# -> User? Creator
         // GraphQL -> creator: User (type)
-        if (this.Creator == null && Exploration.Includes(parent + ".creator"))
+        if (this.Creator == null && ec.Includes("creator",false))
         {
             this.Creator = new User();
-            this.Creator.ApplyExploratoryFieldSpec(parent + ".creator");
+            this.Creator.ApplyExploratoryFieldSpec(ec.NewChild("creator"));
         }
         //      C# -> HierarchyObjectConnection? HierarchyObjectConnection
         // GraphQL -> hierarchyObjectConnection: HierarchyObjectConnection! (type)
-        if (this.HierarchyObjectConnection == null && Exploration.Includes(parent + ".hierarchyObjectConnection"))
+        if (this.HierarchyObjectConnection == null && ec.Includes("hierarchyObjectConnection",false))
         {
             this.HierarchyObjectConnection = new HierarchyObjectConnection();
-            this.HierarchyObjectConnection.ApplyExploratoryFieldSpec(parent + ".hierarchyObjectConnection");
+            this.HierarchyObjectConnection.ApplyExploratoryFieldSpec(ec.NewChild("hierarchyObjectConnection"));
         }
         //      C# -> List<ObjectStatus>? ObjectStatuses
         // GraphQL -> objectStatuses: [ObjectStatus!]! (type)
-        if (this.ObjectStatuses == null && Exploration.Includes(parent + ".objectStatuses"))
+        if (this.ObjectStatuses == null && ec.Includes("objectStatuses",false))
         {
             this.ObjectStatuses = new List<ObjectStatus>();
-            this.ObjectStatuses.ApplyExploratoryFieldSpec(parent + ".objectStatuses");
+            this.ObjectStatuses.ApplyExploratoryFieldSpec(ec.NewChild("objectStatuses"));
         }
         //      C# -> List<ClassificationPolicyWhitelistDetailedEntry>? Whitelists
         // GraphQL -> whitelists: [ClassificationPolicyWhitelistDetailedEntry!]! (type)
-        if (this.Whitelists == null && Exploration.Includes(parent + ".whitelists"))
+        if (this.Whitelists == null && ec.Includes("whitelists",false))
         {
             this.Whitelists = new List<ClassificationPolicyWhitelistDetailedEntry>();
-            this.Whitelists.ApplyExploratoryFieldSpec(parent + ".whitelists");
+            this.Whitelists.ApplyExploratoryFieldSpec(ec.NewChild("whitelists"));
         }
     }
 
@@ -470,12 +469,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ClassificationPolicyDetail> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ClassificationPolicyDetail());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ClassificationPolicyDetail> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

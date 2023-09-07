@@ -190,69 +190,68 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? BackupId
         // GraphQL -> backupId: Long (scalar)
-        if (this.BackupId == null && Exploration.Includes(parent + ".backupId", true))
+        if (this.BackupId == null && ec.Includes("backupId",true))
         {
             this.BackupId = new System.Int64();
         }
         //      C# -> System.Int64? BackupSizeInBytes
         // GraphQL -> backupSizeInBytes: Long (scalar)
-        if (this.BackupSizeInBytes == null && Exploration.Includes(parent + ".backupSizeInBytes", true))
+        if (this.BackupSizeInBytes == null && ec.Includes("backupSizeInBytes",true))
         {
             this.BackupSizeInBytes = new System.Int64();
         }
         //      C# -> System.String? DestinationPath
         // GraphQL -> destinationPath: String (scalar)
-        if (this.DestinationPath == null && Exploration.Includes(parent + ".destinationPath", true))
+        if (this.DestinationPath == null && ec.Includes("destinationPath",true))
         {
             this.DestinationPath = "FETCH";
         }
         //      C# -> System.String? DestinationType
         // GraphQL -> destinationType: String (scalar)
-        if (this.DestinationType == null && Exploration.Includes(parent + ".destinationType", true))
+        if (this.DestinationType == null && ec.Includes("destinationType",true))
         {
             this.DestinationType = "FETCH";
         }
         //      C# -> System.String? ExternalBackupId
         // GraphQL -> externalBackupId: String (scalar)
-        if (this.ExternalBackupId == null && Exploration.Includes(parent + ".externalBackupId", true))
+        if (this.ExternalBackupId == null && ec.Includes("externalBackupId",true))
         {
             this.ExternalBackupId = "FETCH";
         }
         //      C# -> System.String? HostName
         // GraphQL -> hostName: String (scalar)
-        if (this.HostName == null && Exploration.Includes(parent + ".hostName", true))
+        if (this.HostName == null && ec.Includes("hostName",true))
         {
             this.HostName = "FETCH";
         }
         //      C# -> System.String? ServiceTypeName
         // GraphQL -> serviceTypeName: String (scalar)
-        if (this.ServiceTypeName == null && Exploration.Includes(parent + ".serviceTypeName", true))
+        if (this.ServiceTypeName == null && ec.Includes("serviceTypeName",true))
         {
             this.ServiceTypeName = "FETCH";
         }
         //      C# -> System.Int64? SourceId
         // GraphQL -> sourceId: Long (scalar)
-        if (this.SourceId == null && Exploration.Includes(parent + ".sourceId", true))
+        if (this.SourceId == null && ec.Includes("sourceId",true))
         {
             this.SourceId = new System.Int64();
         }
         //      C# -> System.String? SourceTypeName
         // GraphQL -> sourceTypeName: String (scalar)
-        if (this.SourceTypeName == null && Exploration.Includes(parent + ".sourceTypeName", true))
+        if (this.SourceTypeName == null && ec.Includes("sourceTypeName",true))
         {
             this.SourceTypeName = "FETCH";
         }
         //      C# -> SapHanaLogPositionInterval? LogPositionInterval
         // GraphQL -> logPositionInterval: SapHanaLogPositionInterval (type)
-        if (this.LogPositionInterval == null && Exploration.Includes(parent + ".logPositionInterval"))
+        if (this.LogPositionInterval == null && ec.Includes("logPositionInterval",false))
         {
             this.LogPositionInterval = new SapHanaLogPositionInterval();
-            this.LogPositionInterval.ApplyExploratoryFieldSpec(parent + ".logPositionInterval");
+            this.LogPositionInterval.ApplyExploratoryFieldSpec(ec.NewChild("logPositionInterval"));
         }
     }
 
@@ -286,12 +285,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SapHanaLogBackupFiles> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SapHanaLogBackupFiles());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SapHanaLogBackupFiles> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

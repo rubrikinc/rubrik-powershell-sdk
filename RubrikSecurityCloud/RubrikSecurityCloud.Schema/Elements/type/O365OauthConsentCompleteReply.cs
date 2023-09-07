@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? AppId
         // GraphQL -> appId: String! (scalar)
-        if (this.AppId == null && Exploration.Includes(parent + ".appId", true))
+        if (this.AppId == null && ec.Includes("appId",true))
         {
             this.AppId = "FETCH";
         }
         //      C# -> System.String? EncryptedRefreshToken
         // GraphQL -> encryptedRefreshToken: String! (scalar)
-        if (this.EncryptedRefreshToken == null && Exploration.Includes(parent + ".encryptedRefreshToken", true))
+        if (this.EncryptedRefreshToken == null && ec.Includes("encryptedRefreshToken",true))
         {
             this.EncryptedRefreshToken = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<O365OauthConsentCompleteReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new O365OauthConsentCompleteReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<O365OauthConsentCompleteReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

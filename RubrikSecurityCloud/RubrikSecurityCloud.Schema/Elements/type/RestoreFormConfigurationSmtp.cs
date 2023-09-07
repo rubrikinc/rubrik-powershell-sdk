@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? FromEmailId
         // GraphQL -> fromEmailId: String! (scalar)
-        if (this.FromEmailId == null && Exploration.Includes(parent + ".fromEmailId", true))
+        if (this.FromEmailId == null && ec.Includes("fromEmailId",true))
         {
             this.FromEmailId = "FETCH";
         }
         //      C# -> System.String? SmtpHostname
         // GraphQL -> smtpHostname: String! (scalar)
-        if (this.SmtpHostname == null && Exploration.Includes(parent + ".smtpHostname", true))
+        if (this.SmtpHostname == null && ec.Includes("smtpHostname",true))
         {
             this.SmtpHostname = "FETCH";
         }
         //      C# -> System.Int64? SmtpPort
         // GraphQL -> smtpPort: Long! (scalar)
-        if (this.SmtpPort == null && Exploration.Includes(parent + ".smtpPort", true))
+        if (this.SmtpPort == null && ec.Includes("smtpPort",true))
         {
             this.SmtpPort = new System.Int64();
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RestoreFormConfigurationSmtp> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RestoreFormConfigurationSmtp());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<RestoreFormConfigurationSmtp> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

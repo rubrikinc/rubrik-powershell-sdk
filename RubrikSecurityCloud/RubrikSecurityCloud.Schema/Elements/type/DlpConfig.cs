@@ -26,14 +26,29 @@ namespace RubrikSecurityCloud.Types
         public DlpConfigTargetType? TargetType { get; set; }
 
         //      C# -> List<System.String>? Policies
-        // GraphQL -> policies: [String!]! (scalar)
+        // GraphQL -> policies: [String!] (scalar)
         [JsonProperty("policies")]
         public List<System.String>? Policies { get; set; }
+
+        //      C# -> System.String? ServiceAccountId
+        // GraphQL -> serviceAccountId: String (scalar)
+        [JsonProperty("serviceAccountId")]
+        public System.String? ServiceAccountId { get; set; }
+
+        //      C# -> System.String? ServiceAccountName
+        // GraphQL -> serviceAccountName: String (scalar)
+        [JsonProperty("serviceAccountName")]
+        public System.String? ServiceAccountName { get; set; }
 
         //      C# -> DlpConfigGenericNas? GenericNas
         // GraphQL -> genericNas: DlpConfigGenericNas (type)
         [JsonProperty("genericNas")]
         public DlpConfigGenericNas? GenericNas { get; set; }
+
+        //      C# -> DlpStatus? Status
+        // GraphQL -> status: DlpStatus! (type)
+        [JsonProperty("status")]
+        public DlpStatus? Status { get; set; }
 
         //      C# -> DlpConfigVmwareVm? VmwareVm
         // GraphQL -> vmwareVm: DlpConfigVmwareVm (type)
@@ -52,7 +67,10 @@ namespace RubrikSecurityCloud.Types
     public DlpConfig Set(
         DlpConfigTargetType? TargetType = null,
         List<System.String>? Policies = null,
+        System.String? ServiceAccountId = null,
+        System.String? ServiceAccountName = null,
         DlpConfigGenericNas? GenericNas = null,
+        DlpStatus? Status = null,
         DlpConfigVmwareVm? VmwareVm = null
     ) 
     {
@@ -62,8 +80,17 @@ namespace RubrikSecurityCloud.Types
         if ( Policies != null ) {
             this.Policies = Policies;
         }
+        if ( ServiceAccountId != null ) {
+            this.ServiceAccountId = ServiceAccountId;
+        }
+        if ( ServiceAccountName != null ) {
+            this.ServiceAccountName = ServiceAccountName;
+        }
         if ( GenericNas != null ) {
             this.GenericNas = GenericNas;
+        }
+        if ( Status != null ) {
+            this.Status = Status;
         }
         if ( VmwareVm != null ) {
             this.VmwareVm = VmwareVm;
@@ -84,9 +111,19 @@ namespace RubrikSecurityCloud.Types
             s += ind + "targetType\n" ;
         }
         //      C# -> List<System.String>? Policies
-        // GraphQL -> policies: [String!]! (scalar)
+        // GraphQL -> policies: [String!] (scalar)
         if (this.Policies != null) {
             s += ind + "policies\n" ;
+        }
+        //      C# -> System.String? ServiceAccountId
+        // GraphQL -> serviceAccountId: String (scalar)
+        if (this.ServiceAccountId != null) {
+            s += ind + "serviceAccountId\n" ;
+        }
+        //      C# -> System.String? ServiceAccountName
+        // GraphQL -> serviceAccountName: String (scalar)
+        if (this.ServiceAccountName != null) {
+            s += ind + "serviceAccountName\n" ;
         }
         //      C# -> DlpConfigGenericNas? GenericNas
         // GraphQL -> genericNas: DlpConfigGenericNas (type)
@@ -94,6 +131,14 @@ namespace RubrikSecurityCloud.Types
             var fspec = this.GenericNas.AsFieldSpec(indent+1);
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
                 s += ind + "genericNas {\n" + fspec + ind + "}\n" ;
+            }
+        }
+        //      C# -> DlpStatus? Status
+        // GraphQL -> status: DlpStatus! (type)
+        if (this.Status != null) {
+            var fspec = this.Status.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "status {\n" + fspec + ind + "}\n" ;
             }
         }
         //      C# -> DlpConfigVmwareVm? VmwareVm
@@ -109,34 +154,52 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> DlpConfigTargetType? TargetType
         // GraphQL -> targetType: DlpConfigTargetType! (enum)
-        if (this.TargetType == null && Exploration.Includes(parent + ".targetType", true))
+        if (this.TargetType == null && ec.Includes("targetType",true))
         {
             this.TargetType = new DlpConfigTargetType();
         }
         //      C# -> List<System.String>? Policies
-        // GraphQL -> policies: [String!]! (scalar)
-        if (this.Policies == null && Exploration.Includes(parent + ".policies", true))
+        // GraphQL -> policies: [String!] (scalar)
+        if (this.Policies == null && ec.Includes("policies",true))
         {
             this.Policies = new List<System.String>();
         }
+        //      C# -> System.String? ServiceAccountId
+        // GraphQL -> serviceAccountId: String (scalar)
+        if (this.ServiceAccountId == null && ec.Includes("serviceAccountId",true))
+        {
+            this.ServiceAccountId = "FETCH";
+        }
+        //      C# -> System.String? ServiceAccountName
+        // GraphQL -> serviceAccountName: String (scalar)
+        if (this.ServiceAccountName == null && ec.Includes("serviceAccountName",true))
+        {
+            this.ServiceAccountName = "FETCH";
+        }
         //      C# -> DlpConfigGenericNas? GenericNas
         // GraphQL -> genericNas: DlpConfigGenericNas (type)
-        if (this.GenericNas == null && Exploration.Includes(parent + ".genericNas"))
+        if (this.GenericNas == null && ec.Includes("genericNas",false))
         {
             this.GenericNas = new DlpConfigGenericNas();
-            this.GenericNas.ApplyExploratoryFieldSpec(parent + ".genericNas");
+            this.GenericNas.ApplyExploratoryFieldSpec(ec.NewChild("genericNas"));
+        }
+        //      C# -> DlpStatus? Status
+        // GraphQL -> status: DlpStatus! (type)
+        if (this.Status == null && ec.Includes("status",false))
+        {
+            this.Status = new DlpStatus();
+            this.Status.ApplyExploratoryFieldSpec(ec.NewChild("status"));
         }
         //      C# -> DlpConfigVmwareVm? VmwareVm
         // GraphQL -> vmwareVm: DlpConfigVmwareVm (type)
-        if (this.VmwareVm == null && Exploration.Includes(parent + ".vmwareVm"))
+        if (this.VmwareVm == null && ec.Includes("vmwareVm",false))
         {
             this.VmwareVm = new DlpConfigVmwareVm();
-            this.VmwareVm.ApplyExploratoryFieldSpec(parent + ".vmwareVm");
+            this.VmwareVm.ApplyExploratoryFieldSpec(ec.NewChild("vmwareVm"));
         }
     }
 
@@ -170,12 +233,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<DlpConfig> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new DlpConfig());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<DlpConfig> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

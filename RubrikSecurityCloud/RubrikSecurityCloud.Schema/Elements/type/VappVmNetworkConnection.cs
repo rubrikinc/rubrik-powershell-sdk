@@ -162,57 +162,56 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> VappVmIpAddressingMode? AddressingMode
         // GraphQL -> addressingMode: VappVmIpAddressingMode! (enum)
-        if (this.AddressingMode == null && Exploration.Includes(parent + ".addressingMode", true))
+        if (this.AddressingMode == null && ec.Includes("addressingMode",true))
         {
             this.AddressingMode = new VappVmIpAddressingMode();
         }
         //      C# -> System.String? IpAddress
         // GraphQL -> ipAddress: String (scalar)
-        if (this.IpAddress == null && Exploration.Includes(parent + ".ipAddress", true))
+        if (this.IpAddress == null && ec.Includes("ipAddress",true))
         {
             this.IpAddress = "FETCH";
         }
         //      C# -> System.Boolean? IsConnected
         // GraphQL -> isConnected: Boolean! (scalar)
-        if (this.IsConnected == null && Exploration.Includes(parent + ".isConnected", true))
+        if (this.IsConnected == null && ec.Includes("isConnected",true))
         {
             this.IsConnected = true;
         }
         //      C# -> System.String? MacAddress
         // GraphQL -> macAddress: String (scalar)
-        if (this.MacAddress == null && Exploration.Includes(parent + ".macAddress", true))
+        if (this.MacAddress == null && ec.Includes("macAddress",true))
         {
             this.MacAddress = "FETCH";
         }
         //      C# -> System.String? NetworkAdapterType
         // GraphQL -> networkAdapterType: String (scalar)
-        if (this.NetworkAdapterType == null && Exploration.Includes(parent + ".networkAdapterType", true))
+        if (this.NetworkAdapterType == null && ec.Includes("networkAdapterType",true))
         {
             this.NetworkAdapterType = "FETCH";
         }
         //      C# -> System.Int32? NicIndex
         // GraphQL -> nicIndex: Int! (scalar)
-        if (this.NicIndex == null && Exploration.Includes(parent + ".nicIndex", true))
+        if (this.NicIndex == null && ec.Includes("nicIndex",true))
         {
             this.NicIndex = Int32.MinValue;
         }
         //      C# -> System.String? VappNetworkName
         // GraphQL -> vappNetworkName: String (scalar)
-        if (this.VappNetworkName == null && Exploration.Includes(parent + ".vappNetworkName", true))
+        if (this.VappNetworkName == null && ec.Includes("vappNetworkName",true))
         {
             this.VappNetworkName = "FETCH";
         }
         //      C# -> PageInfo? PageInfo
         // GraphQL -> pageInfo: PageInfo! (type)
-        if (this.PageInfo == null && Exploration.Includes(parent + ".pageInfo"))
+        if (this.PageInfo == null && ec.Includes("pageInfo",false))
         {
             this.PageInfo = new PageInfo();
-            this.PageInfo.ApplyExploratoryFieldSpec(parent + ".pageInfo");
+            this.PageInfo.ApplyExploratoryFieldSpec(ec.NewChild("pageInfo"));
         }
     }
 
@@ -246,12 +245,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VappVmNetworkConnection> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VappVmNetworkConnection());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VappVmNetworkConnection> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

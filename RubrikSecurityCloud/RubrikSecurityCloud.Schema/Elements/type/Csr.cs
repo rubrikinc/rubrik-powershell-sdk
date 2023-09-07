@@ -257,96 +257,95 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? City
         // GraphQL -> city: String! (scalar)
-        if (this.City == null && Exploration.Includes(parent + ".city", true))
+        if (this.City == null && ec.Includes("city",true))
         {
             this.City = "FETCH";
         }
         //      C# -> System.String? Country
         // GraphQL -> country: String! (scalar)
-        if (this.Country == null && Exploration.Includes(parent + ".country", true))
+        if (this.Country == null && ec.Includes("country",true))
         {
             this.Country = "FETCH";
         }
         //      C# -> DateTime? CreatedAt
         // GraphQL -> createdAt: DateTime (scalar)
-        if (this.CreatedAt == null && Exploration.Includes(parent + ".createdAt", true))
+        if (this.CreatedAt == null && ec.Includes("createdAt",true))
         {
             this.CreatedAt = new DateTime();
         }
         //      C# -> System.String? CreatorEmail
         // GraphQL -> creatorEmail: String! (scalar)
-        if (this.CreatorEmail == null && Exploration.Includes(parent + ".creatorEmail", true))
+        if (this.CreatorEmail == null && ec.Includes("creatorEmail",true))
         {
             this.CreatorEmail = "FETCH";
         }
         //      C# -> System.String? CsrField
         // GraphQL -> csr: String! (scalar)
-        if (this.CsrField == null && Exploration.Includes(parent + ".csr", true))
+        if (this.CsrField == null && ec.Includes("csr",true))
         {
             this.CsrField = "FETCH";
         }
         //      C# -> System.String? CsrFid
         // GraphQL -> csrFid: UUID! (scalar)
-        if (this.CsrFid == null && Exploration.Includes(parent + ".csrFid", true))
+        if (this.CsrFid == null && ec.Includes("csrFid",true))
         {
             this.CsrFid = "FETCH";
         }
         //      C# -> System.Int64? CsrId
         // GraphQL -> csrId: Long! (scalar)
-        if (this.CsrId == null && Exploration.Includes(parent + ".csrId", true))
+        if (this.CsrId == null && ec.Includes("csrId",true))
         {
             this.CsrId = new System.Int64();
         }
         //      C# -> System.String? Email
         // GraphQL -> email: String! (scalar)
-        if (this.Email == null && Exploration.Includes(parent + ".email", true))
+        if (this.Email == null && ec.Includes("email",true))
         {
             this.Email = "FETCH";
         }
         //      C# -> List<System.String>? Hostnames
         // GraphQL -> hostnames: [String!]! (scalar)
-        if (this.Hostnames == null && Exploration.Includes(parent + ".hostnames", true))
+        if (this.Hostnames == null && ec.Includes("hostnames",true))
         {
             this.Hostnames = new List<System.String>();
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? Organization
         // GraphQL -> organization: String! (scalar)
-        if (this.Organization == null && Exploration.Includes(parent + ".organization", true))
+        if (this.Organization == null && ec.Includes("organization",true))
         {
             this.Organization = "FETCH";
         }
         //      C# -> System.String? OrganizationUnit
         // GraphQL -> organizationUnit: String! (scalar)
-        if (this.OrganizationUnit == null && Exploration.Includes(parent + ".organizationUnit", true))
+        if (this.OrganizationUnit == null && ec.Includes("organizationUnit",true))
         {
             this.OrganizationUnit = "FETCH";
         }
         //      C# -> System.String? State
         // GraphQL -> state: String! (scalar)
-        if (this.State == null && Exploration.Includes(parent + ".state", true))
+        if (this.State == null && ec.Includes("state",true))
         {
             this.State = "FETCH";
         }
         //      C# -> System.String? Surname
         // GraphQL -> surname: String! (scalar)
-        if (this.Surname == null && Exploration.Includes(parent + ".surname", true))
+        if (this.Surname == null && ec.Includes("surname",true))
         {
             this.Surname = "FETCH";
         }
         //      C# -> System.String? UserId
         // GraphQL -> userId: String! (scalar)
-        if (this.UserId == null && Exploration.Includes(parent + ".userId", true))
+        if (this.UserId == null && ec.Includes("userId",true))
         {
             this.UserId = "FETCH";
         }
@@ -382,12 +381,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<Csr> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new Csr());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<Csr> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

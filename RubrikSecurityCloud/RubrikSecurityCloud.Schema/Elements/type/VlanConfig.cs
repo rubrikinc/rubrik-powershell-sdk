@@ -92,27 +92,26 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Netmask
         // GraphQL -> netmask: String! (scalar)
-        if (this.Netmask == null && Exploration.Includes(parent + ".netmask", true))
+        if (this.Netmask == null && ec.Includes("netmask",true))
         {
             this.Netmask = "FETCH";
         }
         //      C# -> System.Int32? Vlan
         // GraphQL -> vlan: Int! (scalar)
-        if (this.Vlan == null && Exploration.Includes(parent + ".vlan", true))
+        if (this.Vlan == null && ec.Includes("vlan",true))
         {
             this.Vlan = Int32.MinValue;
         }
         //      C# -> List<NodeIp>? Interfaces
         // GraphQL -> interfaces: [NodeIp!]! (type)
-        if (this.Interfaces == null && Exploration.Includes(parent + ".interfaces"))
+        if (this.Interfaces == null && ec.Includes("interfaces",false))
         {
             this.Interfaces = new List<NodeIp>();
-            this.Interfaces.ApplyExploratoryFieldSpec(parent + ".interfaces");
+            this.Interfaces.ApplyExploratoryFieldSpec(ec.NewChild("interfaces"));
         }
     }
 
@@ -146,12 +145,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VlanConfig> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VlanConfig());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VlanConfig> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

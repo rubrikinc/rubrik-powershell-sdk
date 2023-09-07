@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<UserSetting>? Settings
         // GraphQL -> settings: [UserSetting!]! (type)
-        if (this.Settings == null && Exploration.Includes(parent + ".settings"))
+        if (this.Settings == null && ec.Includes("settings",false))
         {
             this.Settings = new List<UserSetting>();
-            this.Settings.ApplyExploratoryFieldSpec(parent + ".settings");
+            this.Settings.ApplyExploratoryFieldSpec(ec.NewChild("settings"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<UserSettings> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new UserSettings());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<UserSettings> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

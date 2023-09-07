@@ -131,42 +131,41 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? FileSystemType
         // GraphQL -> fileSystemType: String! (scalar)
-        if (this.FileSystemType == null && Exploration.Includes(parent + ".fileSystemType", true))
+        if (this.FileSystemType == null && ec.Includes("fileSystemType",true))
         {
             this.FileSystemType = "FETCH";
         }
         //      C# -> System.String? HostMountPath
         // GraphQL -> hostMountPath: String (scalar)
-        if (this.HostMountPath == null && Exploration.Includes(parent + ".hostMountPath", true))
+        if (this.HostMountPath == null && ec.Includes("hostMountPath",true))
         {
             this.HostMountPath = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> List<System.String>? OriginalMountPoints
         // GraphQL -> originalMountPoints: [String!]! (scalar)
-        if (this.OriginalMountPoints == null && Exploration.Includes(parent + ".originalMountPoints", true))
+        if (this.OriginalMountPoints == null && ec.Includes("originalMountPoints",true))
         {
             this.OriginalMountPoints = new List<System.String>();
         }
         //      C# -> System.Int64? Size
         // GraphQL -> size: Long! (scalar)
-        if (this.Size == null && Exploration.Includes(parent + ".size", true))
+        if (this.Size == null && ec.Includes("size",true))
         {
             this.Size = new System.Int64();
         }
         //      C# -> System.String? SmbPath
         // GraphQL -> smbPath: String (scalar)
-        if (this.SmbPath == null && Exploration.Includes(parent + ".smbPath", true))
+        if (this.SmbPath == null && ec.Includes("smbPath",true))
         {
             this.SmbPath = "FETCH";
         }
@@ -202,12 +201,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<MountedVolume> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new MountedVolume());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<MountedVolume> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

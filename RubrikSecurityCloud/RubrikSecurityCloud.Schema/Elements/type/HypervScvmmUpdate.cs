@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? ConfiguredSlaDomainId
         // GraphQL -> configuredSlaDomainId: String (scalar)
-        if (this.ConfiguredSlaDomainId == null && Exploration.Includes(parent + ".configuredSlaDomainId", true))
+        if (this.ConfiguredSlaDomainId == null && ec.Includes("configuredSlaDomainId",true))
         {
             this.ConfiguredSlaDomainId = "FETCH";
         }
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String (scalar)
-        if (this.Hostname == null && Exploration.Includes(parent + ".hostname", true))
+        if (this.Hostname == null && ec.Includes("hostname",true))
         {
             this.Hostname = "FETCH";
         }
         //      C# -> System.String? RunAsAccount
         // GraphQL -> runAsAccount: String (scalar)
-        if (this.RunAsAccount == null && Exploration.Includes(parent + ".runAsAccount", true))
+        if (this.RunAsAccount == null && ec.Includes("runAsAccount",true))
         {
             this.RunAsAccount = "FETCH";
         }
         //      C# -> System.Boolean? ShouldDeployAgent
         // GraphQL -> shouldDeployAgent: Boolean (scalar)
-        if (this.ShouldDeployAgent == null && Exploration.Includes(parent + ".shouldDeployAgent", true))
+        if (this.ShouldDeployAgent == null && ec.Includes("shouldDeployAgent",true))
         {
             this.ShouldDeployAgent = true;
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<HypervScvmmUpdate> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new HypervScvmmUpdate());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<HypervScvmmUpdate> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

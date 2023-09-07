@@ -843,341 +843,340 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<Product>? LicensedProducts
         // GraphQL -> licensedProducts: [Product!]! (enum)
-        if (this.LicensedProducts == null && Exploration.Includes(parent + ".licensedProducts", true))
+        if (this.LicensedProducts == null && ec.Includes("licensedProducts",true))
         {
             this.LicensedProducts = new List<Product>();
         }
         //      C# -> ClusterPauseStatus? PauseStatus
         // GraphQL -> pauseStatus: ClusterPauseStatus (enum)
-        if (this.PauseStatus == null && Exploration.Includes(parent + ".pauseStatus", true))
+        if (this.PauseStatus == null && ec.Includes("pauseStatus",true))
         {
             this.PauseStatus = new ClusterPauseStatus();
         }
         //      C# -> ClusterProductEnum? ProductType
         // GraphQL -> productType: ClusterProductEnum (enum)
-        if (this.ProductType == null && Exploration.Includes(parent + ".productType", true))
+        if (this.ProductType == null && ec.Includes("productType",true))
         {
             this.ProductType = new ClusterProductEnum();
         }
         //      C# -> ClusterRegistrationMode? RegisteredMode
         // GraphQL -> registeredMode: ClusterRegistrationMode (enum)
-        if (this.RegisteredMode == null && Exploration.Includes(parent + ".registeredMode", true))
+        if (this.RegisteredMode == null && ec.Includes("registeredMode",true))
         {
             this.RegisteredMode = new ClusterRegistrationMode();
         }
         //      C# -> ClusterStatus? Status
         // GraphQL -> status: ClusterStatus! (enum)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = new ClusterStatus();
         }
         //      C# -> ClusterSubStatus? SubStatus
         // GraphQL -> subStatus: ClusterSubStatus! (enum)
-        if (this.SubStatus == null && Exploration.Includes(parent + ".subStatus", true))
+        if (this.SubStatus == null && ec.Includes("subStatus",true))
         {
             this.SubStatus = new ClusterSubStatus();
         }
         //      C# -> ClusterSystemStatus? SystemStatus
         // GraphQL -> systemStatus: ClusterSystemStatus (enum)
-        if (this.SystemStatus == null && Exploration.Includes(parent + ".systemStatus", true))
+        if (this.SystemStatus == null && ec.Includes("systemStatus",true))
         {
             this.SystemStatus = new ClusterSystemStatus();
         }
         //      C# -> ClusterTypeEnum? Type
         // GraphQL -> type: ClusterTypeEnum! (enum)
-        if (this.Type == null && Exploration.Includes(parent + ".type", true))
+        if (this.Type == null && ec.Includes("type",true))
         {
             this.Type = new ClusterTypeEnum();
         }
         //      C# -> DateTime? ConnectivityLastUpdated
         // GraphQL -> connectivityLastUpdated: DateTime (scalar)
-        if (this.ConnectivityLastUpdated == null && Exploration.Includes(parent + ".connectivityLastUpdated", true))
+        if (this.ConnectivityLastUpdated == null && ec.Includes("connectivityLastUpdated",true))
         {
             this.ConnectivityLastUpdated = new DateTime();
         }
         //      C# -> System.String? DefaultAddress
         // GraphQL -> defaultAddress: String (scalar)
-        if (this.DefaultAddress == null && Exploration.Includes(parent + ".defaultAddress", true))
+        if (this.DefaultAddress == null && ec.Includes("defaultAddress",true))
         {
             this.DefaultAddress = "FETCH";
         }
         //      C# -> System.Int32? DefaultPort
         // GraphQL -> defaultPort: Int (scalar)
-        if (this.DefaultPort == null && Exploration.Includes(parent + ".defaultPort", true))
+        if (this.DefaultPort == null && ec.Includes("defaultPort",true))
         {
             this.DefaultPort = Int32.MinValue;
         }
         //      C# -> System.Boolean? EncryptionEnabled
         // GraphQL -> encryptionEnabled: Boolean! (scalar)
-        if (this.EncryptionEnabled == null && Exploration.Includes(parent + ".encryptionEnabled", true))
+        if (this.EncryptionEnabled == null && ec.Includes("encryptionEnabled",true))
         {
             this.EncryptionEnabled = true;
         }
         //      C# -> System.Int64? EstimatedRunway
         // GraphQL -> estimatedRunway: Long! (scalar)
-        if (this.EstimatedRunway == null && Exploration.Includes(parent + ".estimatedRunway", true))
+        if (this.EstimatedRunway == null && ec.Includes("estimatedRunway",true))
         {
             this.EstimatedRunway = new System.Int64();
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsHealthy
         // GraphQL -> isHealthy: Boolean! (scalar)
-        if (this.IsHealthy == null && Exploration.Includes(parent + ".isHealthy", true))
+        if (this.IsHealthy == null && ec.Includes("isHealthy",true))
         {
             this.IsHealthy = true;
         }
         //      C# -> DateTime? LastConnectionTime
         // GraphQL -> lastConnectionTime: DateTime (scalar)
-        if (this.LastConnectionTime == null && Exploration.Includes(parent + ".lastConnectionTime", true))
+        if (this.LastConnectionTime == null && ec.Includes("lastConnectionTime",true))
         {
             this.LastConnectionTime = new DateTime();
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.Int32? NoSqlWorkloadCount
         // GraphQL -> noSqlWorkloadCount: Int! (scalar)
-        if (this.NoSqlWorkloadCount == null && Exploration.Includes(parent + ".noSqlWorkloadCount", true))
+        if (this.NoSqlWorkloadCount == null && ec.Includes("noSqlWorkloadCount",true))
         {
             this.NoSqlWorkloadCount = Int32.MinValue;
         }
         //      C# -> System.Boolean? PassesConnectivityCheck
         // GraphQL -> passesConnectivityCheck: Boolean (scalar)
-        if (this.PassesConnectivityCheck == null && Exploration.Includes(parent + ".passesConnectivityCheck", true))
+        if (this.PassesConnectivityCheck == null && ec.Includes("passesConnectivityCheck",true))
         {
             this.PassesConnectivityCheck = true;
         }
         //      C# -> DateTime? RegistrationTime
         // GraphQL -> registrationTime: DateTime! (scalar)
-        if (this.RegistrationTime == null && Exploration.Includes(parent + ".registrationTime", true))
+        if (this.RegistrationTime == null && ec.Includes("registrationTime",true))
         {
             this.RegistrationTime = new DateTime();
         }
         //      C# -> System.Int64? SnapshotCount
         // GraphQL -> snapshotCount: Long! (scalar)
-        if (this.SnapshotCount == null && Exploration.Includes(parent + ".snapshotCount", true))
+        if (this.SnapshotCount == null && ec.Includes("snapshotCount",true))
         {
             this.SnapshotCount = new System.Int64();
         }
         //      C# -> System.String? SystemStatusMessage
         // GraphQL -> systemStatusMessage: String (scalar)
-        if (this.SystemStatusMessage == null && Exploration.Includes(parent + ".systemStatusMessage", true))
+        if (this.SystemStatusMessage == null && ec.Includes("systemStatusMessage",true))
         {
             this.SystemStatusMessage = "FETCH";
         }
         //      C# -> System.String? Timezone
         // GraphQL -> timezone: String (scalar)
-        if (this.Timezone == null && Exploration.Includes(parent + ".timezone", true))
+        if (this.Timezone == null && ec.Includes("timezone",true))
         {
             this.Timezone = "FETCH";
         }
         //      C# -> System.String? Version
         // GraphQL -> version: String (scalar)
-        if (this.Version == null && Exploration.Includes(parent + ".version", true))
+        if (this.Version == null && ec.Includes("version",true))
         {
             this.Version = "FETCH";
         }
         //      C# -> ActivitySeriesConnection? ActivitySeriesConnection
         // GraphQL -> activitySeriesConnection: ActivitySeriesConnection! (type)
-        if (this.ActivitySeriesConnection == null && Exploration.Includes(parent + ".activitySeriesConnection"))
+        if (this.ActivitySeriesConnection == null && ec.Includes("activitySeriesConnection",false))
         {
             this.ActivitySeriesConnection = new ActivitySeriesConnection();
-            this.ActivitySeriesConnection.ApplyExploratoryFieldSpec(parent + ".activitySeriesConnection");
+            this.ActivitySeriesConnection.ApplyExploratoryFieldSpec(ec.NewChild("activitySeriesConnection"));
         }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
-        if (this.AllOrgs == null && Exploration.Includes(parent + ".allOrgs"))
+        if (this.AllOrgs == null && ec.Includes("allOrgs",false))
         {
             this.AllOrgs = new List<Org>();
-            this.AllOrgs.ApplyExploratoryFieldSpec(parent + ".allOrgs");
+            this.AllOrgs.ApplyExploratoryFieldSpec(ec.NewChild("allOrgs"));
         }
         //      C# -> AuthorizedOperations? AuthorizedOperations
         // GraphQL -> authorizedOperations: AuthorizedOperations! (type)
-        if (this.AuthorizedOperations == null && Exploration.Includes(parent + ".authorizedOperations"))
+        if (this.AuthorizedOperations == null && ec.Includes("authorizedOperations",false))
         {
             this.AuthorizedOperations = new AuthorizedOperations();
-            this.AuthorizedOperations.ApplyExploratoryFieldSpec(parent + ".authorizedOperations");
+            this.AuthorizedOperations.ApplyExploratoryFieldSpec(ec.NewChild("authorizedOperations"));
         }
         //      C# -> CcprovisionInfo? CcprovisionInfo
         // GraphQL -> ccprovisionInfo: CcprovisionInfo (type)
-        if (this.CcprovisionInfo == null && Exploration.Includes(parent + ".ccprovisionInfo"))
+        if (this.CcprovisionInfo == null && ec.Includes("ccprovisionInfo",false))
         {
             this.CcprovisionInfo = new CcprovisionInfo();
-            this.CcprovisionInfo.ApplyExploratoryFieldSpec(parent + ".ccprovisionInfo");
+            this.CcprovisionInfo.ApplyExploratoryFieldSpec(ec.NewChild("ccprovisionInfo"));
         }
         //      C# -> List<CdmNodeDetail>? CdmClusterNodeDetails
         // GraphQL -> cdmClusterNodeDetails: [CdmNodeDetail!]! (type)
-        if (this.CdmClusterNodeDetails == null && Exploration.Includes(parent + ".cdmClusterNodeDetails"))
+        if (this.CdmClusterNodeDetails == null && ec.Includes("cdmClusterNodeDetails",false))
         {
             this.CdmClusterNodeDetails = new List<CdmNodeDetail>();
-            this.CdmClusterNodeDetails.ApplyExploratoryFieldSpec(parent + ".cdmClusterNodeDetails");
+            this.CdmClusterNodeDetails.ApplyExploratoryFieldSpec(ec.NewChild("cdmClusterNodeDetails"));
         }
         //      C# -> NotificationSettingSummaryListResponse? CdmNotificationSettings
         // GraphQL -> cdmNotificationSettings: NotificationSettingSummaryListResponse! (type)
-        if (this.CdmNotificationSettings == null && Exploration.Includes(parent + ".cdmNotificationSettings"))
+        if (this.CdmNotificationSettings == null && ec.Includes("cdmNotificationSettings",false))
         {
             this.CdmNotificationSettings = new NotificationSettingSummaryListResponse();
-            this.CdmNotificationSettings.ApplyExploratoryFieldSpec(parent + ".cdmNotificationSettings");
+            this.CdmNotificationSettings.ApplyExploratoryFieldSpec(ec.NewChild("cdmNotificationSettings"));
         }
         //      C# -> CdmUpgradeInfo? CdmUpgradeInfo
         // GraphQL -> cdmUpgradeInfo: CdmUpgradeInfo (type)
-        if (this.CdmUpgradeInfo == null && Exploration.Includes(parent + ".cdmUpgradeInfo"))
+        if (this.CdmUpgradeInfo == null && ec.Includes("cdmUpgradeInfo",false))
         {
             this.CdmUpgradeInfo = new CdmUpgradeInfo();
-            this.CdmUpgradeInfo.ApplyExploratoryFieldSpec(parent + ".cdmUpgradeInfo");
+            this.CdmUpgradeInfo.ApplyExploratoryFieldSpec(ec.NewChild("cdmUpgradeInfo"));
         }
         //      C# -> CcWithCloudInfo? CloudInfo
         // GraphQL -> cloudInfo: CcWithCloudInfo (type)
-        if (this.CloudInfo == null && Exploration.Includes(parent + ".cloudInfo"))
+        if (this.CloudInfo == null && ec.Includes("cloudInfo",false))
         {
             this.CloudInfo = new CcWithCloudInfo();
-            this.CloudInfo.ApplyExploratoryFieldSpec(parent + ".cloudInfo");
+            this.CloudInfo.ApplyExploratoryFieldSpec(ec.NewChild("cloudInfo"));
         }
         //      C# -> ClusterDiskConnection? ClusterDiskConnection
         // GraphQL -> clusterDiskConnection: ClusterDiskConnection! (type)
-        if (this.ClusterDiskConnection == null && Exploration.Includes(parent + ".clusterDiskConnection"))
+        if (this.ClusterDiskConnection == null && ec.Includes("clusterDiskConnection",false))
         {
             this.ClusterDiskConnection = new ClusterDiskConnection();
-            this.ClusterDiskConnection.ApplyExploratoryFieldSpec(parent + ".clusterDiskConnection");
+            this.ClusterDiskConnection.ApplyExploratoryFieldSpec(ec.NewChild("clusterDiskConnection"));
         }
         //      C# -> ClusterNodeConnection? ClusterNodeConnection
         // GraphQL -> clusterNodeConnection: ClusterNodeConnection! (type)
-        if (this.ClusterNodeConnection == null && Exploration.Includes(parent + ".clusterNodeConnection"))
+        if (this.ClusterNodeConnection == null && ec.Includes("clusterNodeConnection",false))
         {
             this.ClusterNodeConnection = new ClusterNodeConnection();
-            this.ClusterNodeConnection.ApplyExploratoryFieldSpec(parent + ".clusterNodeConnection");
+            this.ClusterNodeConnection.ApplyExploratoryFieldSpec(ec.NewChild("clusterNodeConnection"));
         }
         //      C# -> List<ClusterNodeStats>? ClusterNodeStats
         // GraphQL -> clusterNodeStats: [ClusterNodeStats!]! (type)
-        if (this.ClusterNodeStats == null && Exploration.Includes(parent + ".clusterNodeStats"))
+        if (this.ClusterNodeStats == null && ec.Includes("clusterNodeStats",false))
         {
             this.ClusterNodeStats = new List<ClusterNodeStats>();
-            this.ClusterNodeStats.ApplyExploratoryFieldSpec(parent + ".clusterNodeStats");
+            this.ClusterNodeStats.ApplyExploratoryFieldSpec(ec.NewChild("clusterNodeStats"));
         }
         //      C# -> ConfigProtectionInfo? ConfigProtectionInfo
         // GraphQL -> configProtectionInfo: ConfigProtectionInfo (type)
-        if (this.ConfigProtectionInfo == null && Exploration.Includes(parent + ".configProtectionInfo"))
+        if (this.ConfigProtectionInfo == null && ec.Includes("configProtectionInfo",false))
         {
             this.ConfigProtectionInfo = new ConfigProtectionInfo();
-            this.ConfigProtectionInfo.ApplyExploratoryFieldSpec(parent + ".configProtectionInfo");
+            this.ConfigProtectionInfo.ApplyExploratoryFieldSpec(ec.NewChild("configProtectionInfo"));
         }
         //      C# -> AutoEnablePolicyClusterConfigReply? DatagovAutoEnablePolicyConfig
         // GraphQL -> datagovAutoEnablePolicyConfig: AutoEnablePolicyClusterConfigReply! (type)
-        if (this.DatagovAutoEnablePolicyConfig == null && Exploration.Includes(parent + ".datagovAutoEnablePolicyConfig"))
+        if (this.DatagovAutoEnablePolicyConfig == null && ec.Includes("datagovAutoEnablePolicyConfig",false))
         {
             this.DatagovAutoEnablePolicyConfig = new AutoEnablePolicyClusterConfigReply();
-            this.DatagovAutoEnablePolicyConfig.ApplyExploratoryFieldSpec(parent + ".datagovAutoEnablePolicyConfig");
+            this.DatagovAutoEnablePolicyConfig.ApplyExploratoryFieldSpec(ec.NewChild("datagovAutoEnablePolicyConfig"));
         }
         //      C# -> PreviewerClusterConfig? DatagovPreviewerConfig
         // GraphQL -> datagovPreviewerConfig: PreviewerClusterConfig! (type)
-        if (this.DatagovPreviewerConfig == null && Exploration.Includes(parent + ".datagovPreviewerConfig"))
+        if (this.DatagovPreviewerConfig == null && ec.Includes("datagovPreviewerConfig",false))
         {
             this.DatagovPreviewerConfig = new PreviewerClusterConfig();
-            this.DatagovPreviewerConfig.ApplyExploratoryFieldSpec(parent + ".datagovPreviewerConfig");
+            this.DatagovPreviewerConfig.ApplyExploratoryFieldSpec(ec.NewChild("datagovPreviewerConfig"));
         }
         //      C# -> GeoLocation? GeoLocation
         // GraphQL -> geoLocation: GeoLocation (type)
-        if (this.GeoLocation == null && Exploration.Includes(parent + ".geoLocation"))
+        if (this.GeoLocation == null && ec.Includes("geoLocation",false))
         {
             this.GeoLocation = new GeoLocation();
-            this.GeoLocation.ApplyExploratoryFieldSpec(parent + ".geoLocation");
+            this.GeoLocation.ApplyExploratoryFieldSpec(ec.NewChild("geoLocation"));
         }
         //      C# -> GlobalManagerConnectivity? GlobalManagerConnectivityStatus
         // GraphQL -> globalManagerConnectivityStatus: GlobalManagerConnectivity (type)
-        if (this.GlobalManagerConnectivityStatus == null && Exploration.Includes(parent + ".globalManagerConnectivityStatus"))
+        if (this.GlobalManagerConnectivityStatus == null && ec.Includes("globalManagerConnectivityStatus",false))
         {
             this.GlobalManagerConnectivityStatus = new GlobalManagerConnectivity();
-            this.GlobalManagerConnectivityStatus.ApplyExploratoryFieldSpec(parent + ".globalManagerConnectivityStatus");
+            this.GlobalManagerConnectivityStatus.ApplyExploratoryFieldSpec(ec.NewChild("globalManagerConnectivityStatus"));
         }
         //      C# -> GetLambdaConfigReply? LambdaConfig
         // GraphQL -> lambdaConfig: GetLambdaConfigReply (type)
-        if (this.LambdaConfig == null && Exploration.Includes(parent + ".lambdaConfig"))
+        if (this.LambdaConfig == null && ec.Includes("lambdaConfig",false))
         {
             this.LambdaConfig = new GetLambdaConfigReply();
-            this.LambdaConfig.ApplyExploratoryFieldSpec(parent + ".lambdaConfig");
+            this.LambdaConfig.ApplyExploratoryFieldSpec(ec.NewChild("lambdaConfig"));
         }
         //      C# -> LambdaFeatureHistory? LambdaFeatureHistory
         // GraphQL -> lambdaFeatureHistory: LambdaFeatureHistory (type)
-        if (this.LambdaFeatureHistory == null && Exploration.Includes(parent + ".lambdaFeatureHistory"))
+        if (this.LambdaFeatureHistory == null && ec.Includes("lambdaFeatureHistory",false))
         {
             this.LambdaFeatureHistory = new LambdaFeatureHistory();
-            this.LambdaFeatureHistory.ApplyExploratoryFieldSpec(parent + ".lambdaFeatureHistory");
+            this.LambdaFeatureHistory.ApplyExploratoryFieldSpec(ec.NewChild("lambdaFeatureHistory"));
         }
         //      C# -> JobsReply? MetadataPullScheduler
         // GraphQL -> metadataPullScheduler: JobsReply (type)
-        if (this.MetadataPullScheduler == null && Exploration.Includes(parent + ".metadataPullScheduler"))
+        if (this.MetadataPullScheduler == null && ec.Includes("metadataPullScheduler",false))
         {
             this.MetadataPullScheduler = new JobsReply();
-            this.MetadataPullScheduler.ApplyExploratoryFieldSpec(parent + ".metadataPullScheduler");
+            this.MetadataPullScheduler.ApplyExploratoryFieldSpec(ec.NewChild("metadataPullScheduler"));
         }
         //      C# -> ClusterMetric? Metric
         // GraphQL -> metric: ClusterMetric (type)
-        if (this.Metric == null && Exploration.Includes(parent + ".metric"))
+        if (this.Metric == null && ec.Includes("metric",false))
         {
             this.Metric = new ClusterMetric();
-            this.Metric.ApplyExploratoryFieldSpec(parent + ".metric");
+            this.Metric.ApplyExploratoryFieldSpec(ec.NewChild("metric"));
         }
         //      C# -> List<MetricTimeSeries>? MetricTimeSeries
         // GraphQL -> metricTimeSeries: [metricTimeSeries!]! (type)
-        if (this.MetricTimeSeries == null && Exploration.Includes(parent + ".metricTimeSeries"))
+        if (this.MetricTimeSeries == null && ec.Includes("metricTimeSeries",false))
         {
             this.MetricTimeSeries = new List<MetricTimeSeries>();
-            this.MetricTimeSeries.ApplyExploratoryFieldSpec(parent + ".metricTimeSeries");
+            this.MetricTimeSeries.ApplyExploratoryFieldSpec(ec.NewChild("metricTimeSeries"));
         }
         //      C# -> List<ReplicationSource>? ReplicationSources
         // GraphQL -> replicationSources: [ReplicationSource!]! (type)
-        if (this.ReplicationSources == null && Exploration.Includes(parent + ".replicationSources"))
+        if (this.ReplicationSources == null && ec.Includes("replicationSources",false))
         {
             this.ReplicationSources = new List<ReplicationSource>();
-            this.ReplicationSources.ApplyExploratoryFieldSpec(parent + ".replicationSources");
+            this.ReplicationSources.ApplyExploratoryFieldSpec(ec.NewChild("replicationSources"));
         }
         //      C# -> List<ReplicationTarget>? ReplicationTargets
         // GraphQL -> replicationTargets: [ReplicationTarget!]! (type)
-        if (this.ReplicationTargets == null && Exploration.Includes(parent + ".replicationTargets"))
+        if (this.ReplicationTargets == null && ec.Includes("replicationTargets",false))
         {
             this.ReplicationTargets = new List<ReplicationTarget>();
-            this.ReplicationTargets.ApplyExploratoryFieldSpec(parent + ".replicationTargets");
+            this.ReplicationTargets.ApplyExploratoryFieldSpec(ec.NewChild("replicationTargets"));
         }
         //      C# -> RubrikSyncStatus? RubrikSyncStatus
         // GraphQL -> rubrikSyncStatus: RubrikSyncStatus! (type)
-        if (this.RubrikSyncStatus == null && Exploration.Includes(parent + ".rubrikSyncStatus"))
+        if (this.RubrikSyncStatus == null && ec.Includes("rubrikSyncStatus",false))
         {
             this.RubrikSyncStatus = new RubrikSyncStatus();
-            this.RubrikSyncStatus.ApplyExploratoryFieldSpec(parent + ".rubrikSyncStatus");
+            this.RubrikSyncStatus.ApplyExploratoryFieldSpec(ec.NewChild("rubrikSyncStatus"));
         }
         //      C# -> SnappableConnection? SnappableConnection
         // GraphQL -> snappableConnection: SnappableConnection! (type)
-        if (this.SnappableConnection == null && Exploration.Includes(parent + ".snappableConnection"))
+        if (this.SnappableConnection == null && ec.Includes("snappableConnection",false))
         {
             this.SnappableConnection = new SnappableConnection();
-            this.SnappableConnection.ApplyExploratoryFieldSpec(parent + ".snappableConnection");
+            this.SnappableConnection.ApplyExploratoryFieldSpec(ec.NewChild("snappableConnection"));
         }
         //      C# -> ClusterState? State
         // GraphQL -> state: clusterState! (type)
-        if (this.State == null && Exploration.Includes(parent + ".state"))
+        if (this.State == null && ec.Includes("state",false))
         {
             this.State = new ClusterState();
-            this.State.ApplyExploratoryFieldSpec(parent + ".state");
+            this.State.ApplyExploratoryFieldSpec(ec.NewChild("state"));
         }
         //      C# -> List<ClusterNode>? SystemStatusAffectedNodes
         // GraphQL -> systemStatusAffectedNodes: [ClusterNode!] (type)
-        if (this.SystemStatusAffectedNodes == null && Exploration.Includes(parent + ".systemStatusAffectedNodes"))
+        if (this.SystemStatusAffectedNodes == null && ec.Includes("systemStatusAffectedNodes",false))
         {
             this.SystemStatusAffectedNodes = new List<ClusterNode>();
-            this.SystemStatusAffectedNodes.ApplyExploratoryFieldSpec(parent + ".systemStatusAffectedNodes");
+            this.SystemStatusAffectedNodes.ApplyExploratoryFieldSpec(ec.NewChild("systemStatusAffectedNodes"));
         }
     }
 
@@ -1211,12 +1210,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<Cluster> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new Cluster());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<Cluster> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

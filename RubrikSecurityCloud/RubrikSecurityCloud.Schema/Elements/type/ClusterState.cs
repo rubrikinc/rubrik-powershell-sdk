@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ClusterRemovalState? ClusterRemovalState
         // GraphQL -> clusterRemovalState: ClusterRemovalState! (enum)
-        if (this.ClusterRemovalState == null && Exploration.Includes(parent + ".clusterRemovalState", true))
+        if (this.ClusterRemovalState == null && ec.Includes("clusterRemovalState",true))
         {
             this.ClusterRemovalState = new ClusterRemovalState();
         }
         //      C# -> ClusterStatus? ConnectedState
         // GraphQL -> connectedState: ClusterStatus! (enum)
-        if (this.ConnectedState == null && Exploration.Includes(parent + ".connectedState", true))
+        if (this.ConnectedState == null && ec.Includes("connectedState",true))
         {
             this.ConnectedState = new ClusterStatus();
         }
         //      C# -> DateTime? ClusterRemovalCreatedAt
         // GraphQL -> clusterRemovalCreatedAt: DateTime (scalar)
-        if (this.ClusterRemovalCreatedAt == null && Exploration.Includes(parent + ".clusterRemovalCreatedAt", true))
+        if (this.ClusterRemovalCreatedAt == null && ec.Includes("clusterRemovalCreatedAt",true))
         {
             this.ClusterRemovalCreatedAt = new DateTime();
         }
         //      C# -> DateTime? ClusterRemovalUpdatedAt
         // GraphQL -> clusterRemovalUpdatedAt: DateTime (scalar)
-        if (this.ClusterRemovalUpdatedAt == null && Exploration.Includes(parent + ".clusterRemovalUpdatedAt", true))
+        if (this.ClusterRemovalUpdatedAt == null && ec.Includes("clusterRemovalUpdatedAt",true))
         {
             this.ClusterRemovalUpdatedAt = new DateTime();
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ClusterState> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ClusterState());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ClusterState> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? DeviceLabel
         // GraphQL -> deviceLabel: String! (scalar)
-        if (this.DeviceLabel == null && Exploration.Includes(parent + ".deviceLabel", true))
+        if (this.DeviceLabel == null && ec.Includes("deviceLabel",true))
         {
             this.DeviceLabel = "FETCH";
         }
         //      C# -> System.Int32? Key
         // GraphQL -> key: Int! (scalar)
-        if (this.Key == null && Exploration.Includes(parent + ".key", true))
+        if (this.Key == null && ec.Includes("key",true))
         {
             this.Key = Int32.MinValue;
         }
         //      C# -> System.String? NetworkLabel
         // GraphQL -> networkLabel: String! (scalar)
-        if (this.NetworkLabel == null && Exploration.Includes(parent + ".networkLabel", true))
+        if (this.NetworkLabel == null && ec.Includes("networkLabel",true))
         {
             this.NetworkLabel = "FETCH";
         }
         //      C# -> List<System.String>? V4Addresses
         // GraphQL -> v4Addresses: [String!]! (scalar)
-        if (this.V4Addresses == null && Exploration.Includes(parent + ".v4Addresses", true))
+        if (this.V4Addresses == null && ec.Includes("v4Addresses",true))
         {
             this.V4Addresses = new List<System.String>();
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VmwareVirtualMachineNic> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VmwareVirtualMachineNic());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VmwareVirtualMachineNic> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

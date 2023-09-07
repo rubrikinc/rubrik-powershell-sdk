@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<RetryBackupClusterResp>? ClusterResp
         // GraphQL -> clusterResp: [RetryBackupClusterResp!]! (type)
-        if (this.ClusterResp == null && Exploration.Includes(parent + ".clusterResp"))
+        if (this.ClusterResp == null && ec.Includes("clusterResp",false))
         {
             this.ClusterResp = new List<RetryBackupClusterResp>();
-            this.ClusterResp.ApplyExploratoryFieldSpec(parent + ".clusterResp");
+            this.ClusterResp.ApplyExploratoryFieldSpec(ec.NewChild("clusterResp"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RetryBackupResp> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RetryBackupResp());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<RetryBackupResp> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

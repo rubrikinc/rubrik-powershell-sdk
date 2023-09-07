@@ -81,22 +81,21 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> Duration? RetentionDuration
         // GraphQL -> retentionDuration: Duration (type)
-        if (this.RetentionDuration == null && Exploration.Includes(parent + ".retentionDuration"))
+        if (this.RetentionDuration == null && ec.Includes("retentionDuration",false))
         {
             this.RetentionDuration = new Duration();
-            this.RetentionDuration.ApplyExploratoryFieldSpec(parent + ".retentionDuration");
+            this.RetentionDuration.ApplyExploratoryFieldSpec(ec.NewChild("retentionDuration"));
         }
         //      C# -> TargetMapping? TargetMapping
         // GraphQL -> targetMapping: TargetMapping (type)
-        if (this.TargetMapping == null && Exploration.Includes(parent + ".targetMapping"))
+        if (this.TargetMapping == null && ec.Includes("targetMapping",false))
         {
             this.TargetMapping = new TargetMapping();
-            this.TargetMapping.ApplyExploratoryFieldSpec(parent + ".targetMapping");
+            this.TargetMapping.ApplyExploratoryFieldSpec(ec.NewChild("targetMapping"));
         }
     }
 
@@ -130,12 +129,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ReplicationToCloudLocationSpec> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ReplicationToCloudLocationSpec());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ReplicationToCloudLocationSpec> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

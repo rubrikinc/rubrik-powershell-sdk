@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int32? DurationInHours
         // GraphQL -> durationInHours: Int! (scalar)
-        if (this.DurationInHours == null && Exploration.Includes(parent + ".durationInHours", true))
+        if (this.DurationInHours == null && ec.Includes("durationInHours",true))
         {
             this.DurationInHours = Int32.MinValue;
         }
         //      C# -> StartTimeAttributes? StartTimeAttributes
         // GraphQL -> startTimeAttributes: StartTimeAttributes (type)
-        if (this.StartTimeAttributes == null && Exploration.Includes(parent + ".startTimeAttributes"))
+        if (this.StartTimeAttributes == null && ec.Includes("startTimeAttributes",false))
         {
             this.StartTimeAttributes = new StartTimeAttributes();
-            this.StartTimeAttributes.ApplyExploratoryFieldSpec(parent + ".startTimeAttributes");
+            this.StartTimeAttributes.ApplyExploratoryFieldSpec(ec.NewChild("startTimeAttributes"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<BackupWindow> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new BackupWindow());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<BackupWindow> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -134,45 +134,44 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> UnmanagedSnapshotType? SnapshotType
         // GraphQL -> snapshotType: UnmanagedSnapshotType! (enum)
-        if (this.SnapshotType == null && Exploration.Includes(parent + ".snapshotType", true))
+        if (this.SnapshotType == null && ec.Includes("snapshotType",true))
         {
             this.SnapshotType = new UnmanagedSnapshotType();
         }
         //      C# -> DateTime? Date
         // GraphQL -> date: DateTime (scalar)
-        if (this.Date == null && Exploration.Includes(parent + ".date", true))
+        if (this.Date == null && ec.Includes("date",true))
         {
             this.Date = new DateTime();
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsCustomRetentionApplied
         // GraphQL -> isCustomRetentionApplied: Boolean! (scalar)
-        if (this.IsCustomRetentionApplied == null && Exploration.Includes(parent + ".isCustomRetentionApplied", true))
+        if (this.IsCustomRetentionApplied == null && ec.Includes("isCustomRetentionApplied",true))
         {
             this.IsCustomRetentionApplied = true;
         }
         //      C# -> System.Boolean? IsRetentionLockApplied
         // GraphQL -> isRetentionLockApplied: Boolean! (scalar)
-        if (this.IsRetentionLockApplied == null && Exploration.Includes(parent + ".isRetentionLockApplied", true))
+        if (this.IsRetentionLockApplied == null && ec.Includes("isRetentionLockApplied",true))
         {
             this.IsRetentionLockApplied = true;
         }
         //      C# -> SnapshotRetentionInfo? SnapshotRetentionInfo
         // GraphQL -> snapshotRetentionInfo: SnapshotRetentionInfo (type)
-        if (this.SnapshotRetentionInfo == null && Exploration.Includes(parent + ".snapshotRetentionInfo"))
+        if (this.SnapshotRetentionInfo == null && ec.Includes("snapshotRetentionInfo",false))
         {
             this.SnapshotRetentionInfo = new SnapshotRetentionInfo();
-            this.SnapshotRetentionInfo.ApplyExploratoryFieldSpec(parent + ".snapshotRetentionInfo");
+            this.SnapshotRetentionInfo.ApplyExploratoryFieldSpec(ec.NewChild("snapshotRetentionInfo"));
         }
     }
 
@@ -206,12 +205,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SnapshotSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SnapshotSummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SnapshotSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

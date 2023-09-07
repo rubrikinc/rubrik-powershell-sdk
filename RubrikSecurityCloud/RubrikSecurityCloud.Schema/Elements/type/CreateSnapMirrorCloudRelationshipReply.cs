@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? CloudTargetId
         // GraphQL -> cloudTargetId: String! (scalar)
-        if (this.CloudTargetId == null && Exploration.Includes(parent + ".cloudTargetId", true))
+        if (this.CloudTargetId == null && ec.Includes("cloudTargetId",true))
         {
             this.CloudTargetId = "FETCH";
         }
         //      C# -> System.String? PolicyId
         // GraphQL -> policyId: String! (scalar)
-        if (this.PolicyId == null && Exploration.Includes(parent + ".policyId", true))
+        if (this.PolicyId == null && ec.Includes("policyId",true))
         {
             this.PolicyId = "FETCH";
         }
         //      C# -> System.String? RelationshipId
         // GraphQL -> relationshipId: String! (scalar)
-        if (this.RelationshipId == null && Exploration.Includes(parent + ".relationshipId", true))
+        if (this.RelationshipId == null && ec.Includes("relationshipId",true))
         {
             this.RelationshipId = "FETCH";
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CreateSnapMirrorCloudRelationshipReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CreateSnapMirrorCloudRelationshipReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CreateSnapMirrorCloudRelationshipReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

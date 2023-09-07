@@ -120,39 +120,38 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? ErrorsCollected
         // GraphQL -> errorsCollected: Long (scalar)
-        if (this.ErrorsCollected == null && Exploration.Includes(parent + ".errorsCollected", true))
+        if (this.ErrorsCollected == null && ec.Includes("errorsCollected",true))
         {
             this.ErrorsCollected = new System.Int64();
         }
         //      C# -> System.Int64? FileCount
         // GraphQL -> fileCount: Long (scalar)
-        if (this.FileCount == null && Exploration.Includes(parent + ".fileCount", true))
+        if (this.FileCount == null && ec.Includes("fileCount",true))
         {
             this.FileCount = new System.Int64();
         }
         //      C# -> System.String? FilesetName
         // GraphQL -> filesetName: String! (scalar)
-        if (this.FilesetName == null && Exploration.Includes(parent + ".filesetName", true))
+        if (this.FilesetName == null && ec.Includes("filesetName",true))
         {
             this.FilesetName = "FETCH";
         }
         //      C# -> System.Boolean? SnapdiffUsed
         // GraphQL -> snapdiffUsed: Boolean (scalar)
-        if (this.SnapdiffUsed == null && Exploration.Includes(parent + ".snapdiffUsed", true))
+        if (this.SnapdiffUsed == null && ec.Includes("snapdiffUsed",true))
         {
             this.SnapdiffUsed = true;
         }
         //      C# -> BaseSnapshotSummary? BaseSnapshotSummary
         // GraphQL -> baseSnapshotSummary: BaseSnapshotSummary (type)
-        if (this.BaseSnapshotSummary == null && Exploration.Includes(parent + ".baseSnapshotSummary"))
+        if (this.BaseSnapshotSummary == null && ec.Includes("baseSnapshotSummary",false))
         {
             this.BaseSnapshotSummary = new BaseSnapshotSummary();
-            this.BaseSnapshotSummary.ApplyExploratoryFieldSpec(parent + ".baseSnapshotSummary");
+            this.BaseSnapshotSummary.ApplyExploratoryFieldSpec(ec.NewChild("baseSnapshotSummary"));
         }
     }
 
@@ -186,12 +185,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<FilesetSnapshotSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new FilesetSnapshotSummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<FilesetSnapshotSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

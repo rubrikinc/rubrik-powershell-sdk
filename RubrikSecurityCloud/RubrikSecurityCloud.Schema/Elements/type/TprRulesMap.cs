@@ -131,42 +131,41 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<TprRule>? DataManagementByCluster
         // GraphQL -> dataManagementByCluster: [TprRule!]! (enum)
-        if (this.DataManagementByCluster == null && Exploration.Includes(parent + ".dataManagementByCluster", true))
+        if (this.DataManagementByCluster == null && ec.Includes("dataManagementByCluster",true))
         {
             this.DataManagementByCluster = new List<TprRule>();
         }
         //      C# -> List<TprRule>? DataManagementByObject
         // GraphQL -> dataManagementByObject: [TprRule!]! (enum)
-        if (this.DataManagementByObject == null && Exploration.Includes(parent + ".dataManagementByObject", true))
+        if (this.DataManagementByObject == null && ec.Includes("dataManagementByObject",true))
         {
             this.DataManagementByObject = new List<TprRule>();
         }
         //      C# -> List<InventorySubHierarchyRootEnum>? DataManagementByObjectWorkloads
         // GraphQL -> dataManagementByObjectWorkloads: [InventorySubHierarchyRootEnum!]! (enum)
-        if (this.DataManagementByObjectWorkloads == null && Exploration.Includes(parent + ".dataManagementByObjectWorkloads", true))
+        if (this.DataManagementByObjectWorkloads == null && ec.Includes("dataManagementByObjectWorkloads",true))
         {
             this.DataManagementByObjectWorkloads = new List<InventorySubHierarchyRootEnum>();
         }
         //      C# -> List<TprRule>? DataManagementBySlaDomain
         // GraphQL -> dataManagementBySlaDomain: [TprRule!]! (enum)
-        if (this.DataManagementBySlaDomain == null && Exploration.Includes(parent + ".dataManagementBySlaDomain", true))
+        if (this.DataManagementBySlaDomain == null && ec.Includes("dataManagementBySlaDomain",true))
         {
             this.DataManagementBySlaDomain = new List<TprRule>();
         }
         //      C# -> List<TprRule>? SystemConfigurationCluster
         // GraphQL -> systemConfigurationCluster: [TprRule!]! (enum)
-        if (this.SystemConfigurationCluster == null && Exploration.Includes(parent + ".systemConfigurationCluster", true))
+        if (this.SystemConfigurationCluster == null && ec.Includes("systemConfigurationCluster",true))
         {
             this.SystemConfigurationCluster = new List<TprRule>();
         }
         //      C# -> List<TprRule>? SystemConfigurationGlobal
         // GraphQL -> systemConfigurationGlobal: [TprRule!]! (enum)
-        if (this.SystemConfigurationGlobal == null && Exploration.Includes(parent + ".systemConfigurationGlobal", true))
+        if (this.SystemConfigurationGlobal == null && ec.Includes("systemConfigurationGlobal",true))
         {
             this.SystemConfigurationGlobal = new List<TprRule>();
         }
@@ -202,12 +201,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<TprRulesMap> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new TprRulesMap());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<TprRulesMap> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -61,12 +61,11 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? DisallowWeakerPolicy
         // GraphQL -> disallowWeakerPolicy: Boolean! (scalar)
-        if (this.DisallowWeakerPolicy == null && Exploration.Includes(parent + ".disallowWeakerPolicy", true))
+        if (this.DisallowWeakerPolicy == null && ec.Includes("disallowWeakerPolicy",true))
         {
             this.DisallowWeakerPolicy = true;
         }
@@ -102,12 +101,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<OrgSecurityPolicy> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new OrgSecurityPolicy());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<OrgSecurityPolicy> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

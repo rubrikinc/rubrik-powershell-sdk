@@ -235,88 +235,87 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> HypervMountedVmStatusType? MountedVmStatus
         // GraphQL -> mountedVmStatus: HypervMountedVmStatusType! (enum)
-        if (this.MountedVmStatus == null && Exploration.Includes(parent + ".mountedVmStatus", true))
+        if (this.MountedVmStatus == null && ec.Includes("mountedVmStatus",true))
         {
             this.MountedVmStatus = new HypervMountedVmStatusType();
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsVmReady
         // GraphQL -> isVmReady: Boolean! (scalar)
-        if (this.IsVmReady == null && Exploration.Includes(parent + ".isVmReady", true))
+        if (this.IsVmReady == null && ec.Includes("isVmReady",true))
         {
             this.IsVmReady = true;
         }
         //      C# -> System.String? MountSpec
         // GraphQL -> mountSpec: String! (scalar)
-        if (this.MountSpec == null && Exploration.Includes(parent + ".mountSpec", true))
+        if (this.MountSpec == null && ec.Includes("mountSpec",true))
         {
             this.MountSpec = "FETCH";
         }
         //      C# -> DateTime? MountTime
         // GraphQL -> mountTime: DateTime (scalar)
-        if (this.MountTime == null && Exploration.Includes(parent + ".mountTime", true))
+        if (this.MountTime == null && ec.Includes("mountTime",true))
         {
             this.MountTime = new DateTime();
         }
         //      C# -> System.String? MountedVmFid
         // GraphQL -> mountedVmFid: UUID! (scalar)
-        if (this.MountedVmFid == null && Exploration.Includes(parent + ".mountedVmFid", true))
+        if (this.MountedVmFid == null && ec.Includes("mountedVmFid",true))
         {
             this.MountedVmFid = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? ServerFid
         // GraphQL -> serverFid: UUID! (scalar)
-        if (this.ServerFid == null && Exploration.Includes(parent + ".serverFid", true))
+        if (this.ServerFid == null && ec.Includes("serverFid",true))
         {
             this.ServerFid = "FETCH";
         }
         //      C# -> System.String? ServerName
         // GraphQL -> serverName: String! (scalar)
-        if (this.ServerName == null && Exploration.Includes(parent + ".serverName", true))
+        if (this.ServerName == null && ec.Includes("serverName",true))
         {
             this.ServerName = "FETCH";
         }
         //      C# -> System.String? SourceVm
         // GraphQL -> sourceVm: String! (scalar)
-        if (this.SourceVm == null && Exploration.Includes(parent + ".sourceVm", true))
+        if (this.SourceVm == null && ec.Includes("sourceVm",true))
         {
             this.SourceVm = "FETCH";
         }
         //      C# -> System.String? SourceVmFid
         // GraphQL -> sourceVmFid: UUID! (scalar)
-        if (this.SourceVmFid == null && Exploration.Includes(parent + ".sourceVmFid", true))
+        if (this.SourceVmFid == null && ec.Includes("sourceVmFid",true))
         {
             this.SourceVmFid = "FETCH";
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
-        if (this.Cluster == null && Exploration.Includes(parent + ".cluster"))
+        if (this.Cluster == null && ec.Includes("cluster",false))
         {
             this.Cluster = new Cluster();
-            this.Cluster.ApplyExploratoryFieldSpec(parent + ".cluster");
+            this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
         }
         //      C# -> CdmSnapshot? SourceSnapshot
         // GraphQL -> sourceSnapshot: CdmSnapshot (type)
-        if (this.SourceSnapshot == null && Exploration.Includes(parent + ".sourceSnapshot"))
+        if (this.SourceSnapshot == null && ec.Includes("sourceSnapshot",false))
         {
             this.SourceSnapshot = new CdmSnapshot();
-            this.SourceSnapshot.ApplyExploratoryFieldSpec(parent + ".sourceSnapshot");
+            this.SourceSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("sourceSnapshot"));
         }
     }
 
@@ -350,12 +349,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<HyperVliveMount> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new HyperVliveMount());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<HyperVliveMount> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

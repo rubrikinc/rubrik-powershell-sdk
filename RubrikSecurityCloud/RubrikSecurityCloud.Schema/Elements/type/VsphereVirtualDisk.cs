@@ -204,75 +204,74 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
-        if (this.CdmId == null && Exploration.Includes(parent + ".cdmId", true))
+        if (this.CdmId == null && ec.Includes("cdmId",true))
         {
             this.CdmId = "FETCH";
         }
         //      C# -> System.String? CdmVersion
         // GraphQL -> cdmVersion: String! (scalar)
-        if (this.CdmVersion == null && Exploration.Includes(parent + ".cdmVersion", true))
+        if (this.CdmVersion == null && ec.Includes("cdmVersion",true))
         {
             this.CdmVersion = "FETCH";
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
-        if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
+        if (this.ClusterUuid == null && ec.Includes("clusterUuid",true))
         {
             this.ClusterUuid = "FETCH";
         }
         //      C# -> System.String? DatastoreFid
         // GraphQL -> datastoreFid: String (scalar)
-        if (this.DatastoreFid == null && Exploration.Includes(parent + ".datastoreFid", true))
+        if (this.DatastoreFid == null && ec.Includes("datastoreFid",true))
         {
             this.DatastoreFid = "FETCH";
         }
         //      C# -> System.Int32? DeviceKey
         // GraphQL -> deviceKey: Int (scalar)
-        if (this.DeviceKey == null && Exploration.Includes(parent + ".deviceKey", true))
+        if (this.DeviceKey == null && ec.Includes("deviceKey",true))
         {
             this.DeviceKey = Int32.MinValue;
         }
         //      C# -> System.Boolean? ExcludeFromSnapshots
         // GraphQL -> excludeFromSnapshots: Boolean! (scalar)
-        if (this.ExcludeFromSnapshots == null && Exploration.Includes(parent + ".excludeFromSnapshots", true))
+        if (this.ExcludeFromSnapshots == null && ec.Includes("excludeFromSnapshots",true))
         {
             this.ExcludeFromSnapshots = true;
         }
         //      C# -> System.String? Fid
         // GraphQL -> fid: UUID! (scalar)
-        if (this.Fid == null && Exploration.Includes(parent + ".fid", true))
+        if (this.Fid == null && ec.Includes("fid",true))
         {
             this.Fid = "FETCH";
         }
         //      C# -> System.String? FileName
         // GraphQL -> fileName: String! (scalar)
-        if (this.FileName == null && Exploration.Includes(parent + ".fileName", true))
+        if (this.FileName == null && ec.Includes("fileName",true))
         {
             this.FileName = "FETCH";
         }
         //      C# -> System.Int64? Size
         // GraphQL -> size: Long (scalar)
-        if (this.Size == null && Exploration.Includes(parent + ".size", true))
+        if (this.Size == null && ec.Includes("size",true))
         {
             this.Size = new System.Int64();
         }
         //      C# -> System.String? VirtualMachineId
         // GraphQL -> virtualMachineId: String! (scalar)
-        if (this.VirtualMachineId == null && Exploration.Includes(parent + ".virtualMachineId", true))
+        if (this.VirtualMachineId == null && ec.Includes("virtualMachineId",true))
         {
             this.VirtualMachineId = "FETCH";
         }
         //      C# -> VsphereDatastore? Datastore
         // GraphQL -> datastore: VsphereDatastore (type)
-        if (this.Datastore == null && Exploration.Includes(parent + ".datastore"))
+        if (this.Datastore == null && ec.Includes("datastore",false))
         {
             this.Datastore = new VsphereDatastore();
-            this.Datastore.ApplyExploratoryFieldSpec(parent + ".datastore");
+            this.Datastore.ApplyExploratoryFieldSpec(ec.NewChild("datastore"));
         }
     }
 
@@ -306,12 +305,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VsphereVirtualDisk> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VsphereVirtualDisk());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VsphereVirtualDisk> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

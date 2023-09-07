@@ -173,60 +173,59 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Definition
         // GraphQL -> definition: String! (scalar)
-        if (this.Definition == null && Exploration.Includes(parent + ".definition", true))
+        if (this.Definition == null && ec.Includes("definition",true))
         {
             this.Definition = "FETCH";
         }
         //      C# -> List<System.String>? HookConfigs
         // GraphQL -> hookConfigs: [String!]! (scalar)
-        if (this.HookConfigs == null && Exploration.Includes(parent + ".hookConfigs", true))
+        if (this.HookConfigs == null && ec.Includes("hookConfigs",true))
         {
             this.HookConfigs = new List<System.String>();
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.String? K8SclusterUuid
         // GraphQL -> k8SClusterUuid: String (scalar)
-        if (this.K8SclusterUuid == null && Exploration.Includes(parent + ".k8SClusterUuid", true))
+        if (this.K8SclusterUuid == null && ec.Includes("k8SClusterUuid",true))
         {
             this.K8SclusterUuid = "FETCH";
         }
         //      C# -> System.String? K8Snamespace
         // GraphQL -> k8SNamespace: String (scalar)
-        if (this.K8Snamespace == null && Exploration.Includes(parent + ".k8SNamespace", true))
+        if (this.K8Snamespace == null && ec.Includes("k8SNamespace",true))
         {
             this.K8Snamespace = "FETCH";
         }
         //      C# -> System.String? KubernetesClusterUuid
         // GraphQL -> kubernetesClusterUuid: String (scalar)
-        if (this.KubernetesClusterUuid == null && Exploration.Includes(parent + ".kubernetesClusterUuid", true))
+        if (this.KubernetesClusterUuid == null && ec.Includes("kubernetesClusterUuid",true))
         {
             this.KubernetesClusterUuid = "FETCH";
         }
         //      C# -> System.String? KubernetesNamespace
         // GraphQL -> kubernetesNamespace: String (scalar)
-        if (this.KubernetesNamespace == null && Exploration.Includes(parent + ".kubernetesNamespace", true))
+        if (this.KubernetesNamespace == null && ec.Includes("kubernetesNamespace",true))
         {
             this.KubernetesNamespace = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? RsType
         // GraphQL -> rsType: String! (scalar)
-        if (this.RsType == null && Exploration.Includes(parent + ".rsType", true))
+        if (this.RsType == null && ec.Includes("rsType",true))
         {
             this.RsType = "FETCH";
         }
@@ -262,12 +261,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<K8sResourceSetSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new K8sResourceSetSummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<K8sResourceSetSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -224,83 +224,82 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? DomainControllerId
         // GraphQL -> domainControllerId: String! (scalar)
-        if (this.DomainControllerId == null && Exploration.Includes(parent + ".domainControllerId", true))
+        if (this.DomainControllerId == null && ec.Includes("domainControllerId",true))
         {
             this.DomainControllerId = "FETCH";
         }
         //      C# -> System.String? DomainControllerName
         // GraphQL -> domainControllerName: String! (scalar)
-        if (this.DomainControllerName == null && Exploration.Includes(parent + ".domainControllerName", true))
+        if (this.DomainControllerName == null && ec.Includes("domainControllerName",true))
         {
             this.DomainControllerName = "FETCH";
         }
         //      C# -> System.String? FloatingIp
         // GraphQL -> floatingIp: String (scalar)
-        if (this.FloatingIp == null && Exploration.Includes(parent + ".floatingIp", true))
+        if (this.FloatingIp == null && ec.Includes("floatingIp",true))
         {
             this.FloatingIp = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.Int64? InternalTimestamp
         // GraphQL -> internalTimestamp: Long! (scalar)
-        if (this.InternalTimestamp == null && Exploration.Includes(parent + ".internalTimestamp", true))
+        if (this.InternalTimestamp == null && ec.Includes("internalTimestamp",true))
         {
             this.InternalTimestamp = new System.Int64();
         }
         //      C# -> System.Boolean? IsActive
         // GraphQL -> isActive: Boolean! (scalar)
-        if (this.IsActive == null && Exploration.Includes(parent + ".isActive", true))
+        if (this.IsActive == null && ec.Includes("isActive",true))
         {
             this.IsActive = true;
         }
         //      C# -> System.Boolean? IsUserVisible
         // GraphQL -> isUserVisible: Boolean! (scalar)
-        if (this.IsUserVisible == null && Exploration.Includes(parent + ".isUserVisible", true))
+        if (this.IsUserVisible == null && ec.Includes("isUserVisible",true))
         {
             this.IsUserVisible = true;
         }
         //      C# -> System.String? MountDir
         // GraphQL -> mountDir: String! (scalar)
-        if (this.MountDir == null && Exploration.Includes(parent + ".mountDir", true))
+        if (this.MountDir == null && ec.Includes("mountDir",true))
         {
             this.MountDir = "FETCH";
         }
         //      C# -> List<System.String>? SmbValidIps
         // GraphQL -> smbValidIps: [String!]! (scalar)
-        if (this.SmbValidIps == null && Exploration.Includes(parent + ".smbValidIps", true))
+        if (this.SmbValidIps == null && ec.Includes("smbValidIps",true))
         {
             this.SmbValidIps = new List<System.String>();
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
-        if (this.Cluster == null && Exploration.Includes(parent + ".cluster"))
+        if (this.Cluster == null && ec.Includes("cluster",false))
         {
             this.Cluster = new Cluster();
-            this.Cluster.ApplyExploratoryFieldSpec(parent + ".cluster");
+            this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
         }
         //      C# -> ClusterNode? Node
         // GraphQL -> node: ClusterNode (type)
-        if (this.Node == null && Exploration.Includes(parent + ".node"))
+        if (this.Node == null && ec.Includes("node",false))
         {
             this.Node = new ClusterNode();
-            this.Node.ApplyExploratoryFieldSpec(parent + ".node");
+            this.Node.ApplyExploratoryFieldSpec(ec.NewChild("node"));
         }
         //      C# -> CdmSnapshot? SourceSnapshot
         // GraphQL -> sourceSnapshot: CdmSnapshot! (type)
-        if (this.SourceSnapshot == null && Exploration.Includes(parent + ".sourceSnapshot"))
+        if (this.SourceSnapshot == null && ec.Includes("sourceSnapshot",false))
         {
             this.SourceSnapshot = new CdmSnapshot();
-            this.SourceSnapshot.ApplyExploratoryFieldSpec(parent + ".sourceSnapshot");
+            this.SourceSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("sourceSnapshot"));
         }
     }
 
@@ -334,12 +333,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AdVolumeExport> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AdVolumeExport());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AdVolumeExport> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

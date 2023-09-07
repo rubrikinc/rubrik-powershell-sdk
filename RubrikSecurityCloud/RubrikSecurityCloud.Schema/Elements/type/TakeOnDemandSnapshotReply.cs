@@ -81,22 +81,21 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<TakeOnDemandSnapshotError>? Errors
         // GraphQL -> errors: [TakeOnDemandSnapshotError!]! (type)
-        if (this.Errors == null && Exploration.Includes(parent + ".errors"))
+        if (this.Errors == null && ec.Includes("errors",false))
         {
             this.Errors = new List<TakeOnDemandSnapshotError>();
-            this.Errors.ApplyExploratoryFieldSpec(parent + ".errors");
+            this.Errors.ApplyExploratoryFieldSpec(ec.NewChild("errors"));
         }
         //      C# -> List<TakeOnDemandSnapshotTaskchainUuid>? TaskchainUuids
         // GraphQL -> taskchainUuids: [TakeOnDemandSnapshotTaskchainUuid!]! (type)
-        if (this.TaskchainUuids == null && Exploration.Includes(parent + ".taskchainUuids"))
+        if (this.TaskchainUuids == null && ec.Includes("taskchainUuids",false))
         {
             this.TaskchainUuids = new List<TakeOnDemandSnapshotTaskchainUuid>();
-            this.TaskchainUuids.ApplyExploratoryFieldSpec(parent + ".taskchainUuids");
+            this.TaskchainUuids.ApplyExploratoryFieldSpec(ec.NewChild("taskchainUuids"));
         }
     }
 
@@ -130,12 +129,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<TakeOnDemandSnapshotReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new TakeOnDemandSnapshotReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<TakeOnDemandSnapshotReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

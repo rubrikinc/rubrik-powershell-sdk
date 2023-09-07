@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<StrainInfo>? StrainAnalysisInfo
         // GraphQL -> strainAnalysisInfo: [StrainInfo!]! (type)
-        if (this.StrainAnalysisInfo == null && Exploration.Includes(parent + ".strainAnalysisInfo"))
+        if (this.StrainAnalysisInfo == null && ec.Includes("strainAnalysisInfo",false))
         {
             this.StrainAnalysisInfo = new List<StrainInfo>();
-            this.StrainAnalysisInfo.ApplyExploratoryFieldSpec(parent + ".strainAnalysisInfo");
+            this.StrainAnalysisInfo.ApplyExploratoryFieldSpec(ec.NewChild("strainAnalysisInfo"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AnomalyInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AnomalyInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AnomalyInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

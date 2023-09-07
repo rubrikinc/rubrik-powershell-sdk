@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? ExocomputeSetupTaskchainId
         // GraphQL -> exocomputeSetupTaskchainId: String! (scalar)
-        if (this.ExocomputeSetupTaskchainId == null && Exploration.Includes(parent + ".exocomputeSetupTaskchainId", true))
+        if (this.ExocomputeSetupTaskchainId == null && ec.Includes("exocomputeSetupTaskchainId",true))
         {
             this.ExocomputeSetupTaskchainId = "FETCH";
         }
         //      C# -> System.String? OrgId
         // GraphQL -> orgId: String! (scalar)
-        if (this.OrgId == null && Exploration.Includes(parent + ".orgId", true))
+        if (this.OrgId == null && ec.Includes("orgId",true))
         {
             this.OrgId = "FETCH";
         }
         //      C# -> System.String? RefreshTaskchainId
         // GraphQL -> refreshTaskchainId: String! (scalar)
-        if (this.RefreshTaskchainId == null && Exploration.Includes(parent + ".refreshTaskchainId", true))
+        if (this.RefreshTaskchainId == null && ec.Includes("refreshTaskchainId",true))
         {
             this.RefreshTaskchainId = "FETCH";
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SetupAtlassianSiteReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SetupAtlassianSiteReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SetupAtlassianSiteReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

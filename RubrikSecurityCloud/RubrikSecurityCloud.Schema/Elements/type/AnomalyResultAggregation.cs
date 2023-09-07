@@ -131,42 +131,41 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? BytesAdded
         // GraphQL -> bytesAdded: Long! (scalar)
-        if (this.BytesAdded == null && Exploration.Includes(parent + ".bytesAdded", true))
+        if (this.BytesAdded == null && ec.Includes("bytesAdded",true))
         {
             this.BytesAdded = new System.Int64();
         }
         //      C# -> System.Int64? BytesDeleted
         // GraphQL -> bytesDeleted: Long! (scalar)
-        if (this.BytesDeleted == null && Exploration.Includes(parent + ".bytesDeleted", true))
+        if (this.BytesDeleted == null && ec.Includes("bytesDeleted",true))
         {
             this.BytesDeleted = new System.Int64();
         }
         //      C# -> System.Int64? BytesModified
         // GraphQL -> bytesModified: Long! (scalar)
-        if (this.BytesModified == null && Exploration.Includes(parent + ".bytesModified", true))
+        if (this.BytesModified == null && ec.Includes("bytesModified",true))
         {
             this.BytesModified = new System.Int64();
         }
         //      C# -> System.Int64? FilesAdded
         // GraphQL -> filesAdded: Long! (scalar)
-        if (this.FilesAdded == null && Exploration.Includes(parent + ".filesAdded", true))
+        if (this.FilesAdded == null && ec.Includes("filesAdded",true))
         {
             this.FilesAdded = new System.Int64();
         }
         //      C# -> System.Int64? FilesDeleted
         // GraphQL -> filesDeleted: Long! (scalar)
-        if (this.FilesDeleted == null && Exploration.Includes(parent + ".filesDeleted", true))
+        if (this.FilesDeleted == null && ec.Includes("filesDeleted",true))
         {
             this.FilesDeleted = new System.Int64();
         }
         //      C# -> System.Int64? FilesModified
         // GraphQL -> filesModified: Long! (scalar)
-        if (this.FilesModified == null && Exploration.Includes(parent + ".filesModified", true))
+        if (this.FilesModified == null && ec.Includes("filesModified",true))
         {
             this.FilesModified = new System.Int64();
         }
@@ -202,12 +201,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AnomalyResultAggregation> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AnomalyResultAggregation());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AnomalyResultAggregation> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

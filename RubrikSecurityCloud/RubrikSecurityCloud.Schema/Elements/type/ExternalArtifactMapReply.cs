@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> AwsCloudExternalArtifact? ExternalArtifactKey
         // GraphQL -> externalArtifactKey: AwsCloudExternalArtifact! (enum)
-        if (this.ExternalArtifactKey == null && Exploration.Includes(parent + ".externalArtifactKey", true))
+        if (this.ExternalArtifactKey == null && ec.Includes("externalArtifactKey",true))
         {
             this.ExternalArtifactKey = new AwsCloudExternalArtifact();
         }
         //      C# -> System.String? ExternalArtifactValue
         // GraphQL -> externalArtifactValue: String! (scalar)
-        if (this.ExternalArtifactValue == null && Exploration.Includes(parent + ".externalArtifactValue", true))
+        if (this.ExternalArtifactValue == null && ec.Includes("externalArtifactValue",true))
         {
             this.ExternalArtifactValue = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ExternalArtifactMapReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ExternalArtifactMapReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ExternalArtifactMapReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

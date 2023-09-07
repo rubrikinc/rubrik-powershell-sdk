@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> DayOfMonth? DayOfMonth
         // GraphQL -> dayOfMonth: DayOfMonth! (enum)
-        if (this.DayOfMonth == null && Exploration.Includes(parent + ".dayOfMonth", true))
+        if (this.DayOfMonth == null && ec.Includes("dayOfMonth",true))
         {
             this.DayOfMonth = new DayOfMonth();
         }
         //      C# -> BasicSnapshotSchedule? BasicSchedule
         // GraphQL -> basicSchedule: BasicSnapshotSchedule (type)
-        if (this.BasicSchedule == null && Exploration.Includes(parent + ".basicSchedule"))
+        if (this.BasicSchedule == null && ec.Includes("basicSchedule",false))
         {
             this.BasicSchedule = new BasicSnapshotSchedule();
-            this.BasicSchedule.ApplyExploratoryFieldSpec(parent + ".basicSchedule");
+            this.BasicSchedule.ApplyExploratoryFieldSpec(ec.NewChild("basicSchedule"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<MonthlySnapshotSchedule> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new MonthlySnapshotSchedule());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<MonthlySnapshotSchedule> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -95,28 +95,27 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int32? Count
         // GraphQL -> count: Int! (scalar)
-        if (this.Count == null && Exploration.Includes(parent + ".count", true))
+        if (this.Count == null && ec.Includes("count",true))
         {
             this.Count = Int32.MinValue;
         }
         //      C# -> CdmSnapshotConnection? CdmSnapshots
         // GraphQL -> cdmSnapshots: CdmSnapshotConnection! (type)
-        if (this.CdmSnapshots == null && Exploration.Includes(parent + ".cdmSnapshots"))
+        if (this.CdmSnapshots == null && ec.Includes("cdmSnapshots",false))
         {
             this.CdmSnapshots = new CdmSnapshotConnection();
-            this.CdmSnapshots.ApplyExploratoryFieldSpec(parent + ".cdmSnapshots");
+            this.CdmSnapshots.ApplyExploratoryFieldSpec(ec.NewChild("cdmSnapshots"));
         }
         //      C# -> TimeRangeWithUnit? GroupByInfo
         // GraphQL -> groupByInfo: TimeRangeWithUnit! (type)
-        if (this.GroupByInfo == null && Exploration.Includes(parent + ".groupByInfo"))
+        if (this.GroupByInfo == null && ec.Includes("groupByInfo",false))
         {
             this.GroupByInfo = new TimeRangeWithUnit();
-            this.GroupByInfo.ApplyExploratoryFieldSpec(parent + ".groupByInfo");
+            this.GroupByInfo.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
         }
     }
 
@@ -150,12 +149,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CdmSnapshotGroupBySummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CdmSnapshotGroupBySummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CdmSnapshotGroupBySummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

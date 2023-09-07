@@ -117,36 +117,35 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? AuthorizingUserEmail
         // GraphQL -> authorizingUserEmail: String! (scalar)
-        if (this.AuthorizingUserEmail == null && Exploration.Includes(parent + ".authorizingUserEmail", true))
+        if (this.AuthorizingUserEmail == null && ec.Includes("authorizingUserEmail",true))
         {
             this.AuthorizingUserEmail = "FETCH";
         }
         //      C# -> System.String? AuthorizingUserName
         // GraphQL -> authorizingUserName: String! (scalar)
-        if (this.AuthorizingUserName == null && Exploration.Includes(parent + ".authorizingUserName", true))
+        if (this.AuthorizingUserName == null && ec.Includes("authorizingUserName",true))
         {
             this.AuthorizingUserName = "FETCH";
         }
         //      C# -> System.String? SiteId
         // GraphQL -> siteId: String! (scalar)
-        if (this.SiteId == null && Exploration.Includes(parent + ".siteId", true))
+        if (this.SiteId == null && ec.Includes("siteId",true))
         {
             this.SiteId = "FETCH";
         }
         //      C# -> System.String? SiteName
         // GraphQL -> siteName: String! (scalar)
-        if (this.SiteName == null && Exploration.Includes(parent + ".siteName", true))
+        if (this.SiteName == null && ec.Includes("siteName",true))
         {
             this.SiteName = "FETCH";
         }
         //      C# -> System.String? SiteUrl
         // GraphQL -> siteUrl: URL! (scalar)
-        if (this.SiteUrl == null && Exploration.Includes(parent + ".siteUrl", true))
+        if (this.SiteUrl == null && ec.Includes("siteUrl",true))
         {
             this.SiteUrl = "FETCH";
         }
@@ -182,12 +181,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CompleteAtlassianAuthConsentReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CompleteAtlassianAuthConsentReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CompleteAtlassianAuthConsentReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

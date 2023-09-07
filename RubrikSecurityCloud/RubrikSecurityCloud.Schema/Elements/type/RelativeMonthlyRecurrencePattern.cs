@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? DayOfWeekIndex
         // GraphQL -> dayOfWeekIndex: String! (scalar)
-        if (this.DayOfWeekIndex == null && Exploration.Includes(parent + ".dayOfWeekIndex", true))
+        if (this.DayOfWeekIndex == null && ec.Includes("dayOfWeekIndex",true))
         {
             this.DayOfWeekIndex = "FETCH";
         }
         //      C# -> List<System.String>? DaysOfWeek
         // GraphQL -> daysOfWeek: [String!]! (scalar)
-        if (this.DaysOfWeek == null && Exploration.Includes(parent + ".daysOfWeek", true))
+        if (this.DaysOfWeek == null && ec.Includes("daysOfWeek",true))
         {
             this.DaysOfWeek = new List<System.String>();
         }
         //      C# -> System.Int32? Interval
         // GraphQL -> interval: Int! (scalar)
-        if (this.Interval == null && Exploration.Includes(parent + ".interval", true))
+        if (this.Interval == null && ec.Includes("interval",true))
         {
             this.Interval = Int32.MinValue;
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RelativeMonthlyRecurrencePattern> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RelativeMonthlyRecurrencePattern());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<RelativeMonthlyRecurrencePattern> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

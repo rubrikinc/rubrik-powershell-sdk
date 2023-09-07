@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<ArtifactsToDelete>? ArtifactsToDelete
         // GraphQL -> artifactsToDelete: [ArtifactsToDelete!]! (type)
-        if (this.ArtifactsToDelete == null && Exploration.Includes(parent + ".artifactsToDelete"))
+        if (this.ArtifactsToDelete == null && ec.Includes("artifactsToDelete",false))
         {
             this.ArtifactsToDelete = new List<ArtifactsToDelete>();
-            this.ArtifactsToDelete.ApplyExploratoryFieldSpec(parent + ".artifactsToDelete");
+            this.ArtifactsToDelete.ApplyExploratoryFieldSpec(ec.NewChild("artifactsToDelete"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AwsArtifactsToDelete> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AwsArtifactsToDelete());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AwsArtifactsToDelete> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

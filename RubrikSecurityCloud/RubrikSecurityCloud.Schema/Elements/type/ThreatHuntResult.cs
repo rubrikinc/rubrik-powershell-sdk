@@ -126,41 +126,40 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ThreatHuntStatus? Status
         // GraphQL -> status: ThreatHuntStatus! (enum)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = new ThreatHuntStatus();
         }
         //      C# -> System.String? HuntId
         // GraphQL -> huntId: String! (scalar)
-        if (this.HuntId == null && Exploration.Includes(parent + ".huntId", true))
+        if (this.HuntId == null && ec.Includes("huntId",true))
         {
             this.HuntId = "FETCH";
         }
         //      C# -> ThreatHuntConfig? Config
         // GraphQL -> config: ThreatHuntConfig! (type)
-        if (this.Config == null && Exploration.Includes(parent + ".config"))
+        if (this.Config == null && ec.Includes("config",false))
         {
             this.Config = new ThreatHuntConfig();
-            this.Config.ApplyExploratoryFieldSpec(parent + ".config");
+            this.Config.ApplyExploratoryFieldSpec(ec.NewChild("config"));
         }
         //      C# -> List<MalwareScanResult>? Results
         // GraphQL -> results: [MalwareScanResult!]! (type)
-        if (this.Results == null && Exploration.Includes(parent + ".results"))
+        if (this.Results == null && ec.Includes("results",false))
         {
             this.Results = new List<MalwareScanResult>();
-            this.Results.ApplyExploratoryFieldSpec(parent + ".results");
+            this.Results.ApplyExploratoryFieldSpec(ec.NewChild("results"));
         }
         //      C# -> ThreatHuntStats? Stats
         // GraphQL -> stats: ThreatHuntStats (type)
-        if (this.Stats == null && Exploration.Includes(parent + ".stats"))
+        if (this.Stats == null && ec.Includes("stats",false))
         {
             this.Stats = new ThreatHuntStats();
-            this.Stats.ApplyExploratoryFieldSpec(parent + ".stats");
+            this.Stats.ApplyExploratoryFieldSpec(ec.NewChild("stats"));
         }
     }
 
@@ -194,12 +193,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ThreatHuntResult> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ThreatHuntResult());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ThreatHuntResult> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

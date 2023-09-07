@@ -117,36 +117,35 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.Int64? OnDemandCount
         // GraphQL -> onDemandCount: Long! (scalar)
-        if (this.OnDemandCount == null && Exploration.Includes(parent + ".onDemandCount", true))
+        if (this.OnDemandCount == null && ec.Includes("onDemandCount",true))
         {
             this.OnDemandCount = new System.Int64();
         }
         //      C# -> System.Int64? RetrievedCount
         // GraphQL -> retrievedCount: Long! (scalar)
-        if (this.RetrievedCount == null && Exploration.Includes(parent + ".retrievedCount", true))
+        if (this.RetrievedCount == null && ec.Includes("retrievedCount",true))
         {
             this.RetrievedCount = new System.Int64();
         }
         //      C# -> System.Int64? ScheduledCount
         // GraphQL -> scheduledCount: Long! (scalar)
-        if (this.ScheduledCount == null && Exploration.Includes(parent + ".scheduledCount", true))
+        if (this.ScheduledCount == null && ec.Includes("scheduledCount",true))
         {
             this.ScheduledCount = new System.Int64();
         }
         //      C# -> System.Int64? TotalCount
         // GraphQL -> totalCount: Long! (scalar)
-        if (this.TotalCount == null && Exploration.Includes(parent + ".totalCount", true))
+        if (this.TotalCount == null && ec.Includes("totalCount",true))
         {
             this.TotalCount = new System.Int64();
         }
@@ -182,12 +181,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SnapshotDistribution> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SnapshotDistribution());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SnapshotDistribution> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

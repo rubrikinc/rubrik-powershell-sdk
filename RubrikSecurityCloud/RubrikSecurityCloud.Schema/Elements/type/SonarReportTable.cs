@@ -132,42 +132,41 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ReportFocusEnum? Focus
         // GraphQL -> focus: ReportFocusEnum! (enum)
-        if (this.Focus == null && Exploration.Includes(parent + ".focus", true))
+        if (this.Focus == null && ec.Includes("focus",true))
         {
             this.Focus = new ReportFocusEnum();
         }
         //      C# -> List<DiscoveryReportGroupBy>? GroupBy
         // GraphQL -> groupBy: [DiscoveryReportGroupBy!] (enum)
-        if (this.GroupBy == null && Exploration.Includes(parent + ".groupBy", true))
+        if (this.GroupBy == null && ec.Includes("groupBy",true))
         {
             this.GroupBy = new List<DiscoveryReportGroupBy>();
         }
         //      C# -> List<SonarReportTableColumnEnum>? SelectedColumns
         // GraphQL -> selectedColumns: [SonarReportTableColumnEnum!]! (enum)
-        if (this.SelectedColumns == null && Exploration.Includes(parent + ".selectedColumns", true))
+        if (this.SelectedColumns == null && ec.Includes("selectedColumns",true))
         {
             this.SelectedColumns = new List<SonarReportTableColumnEnum>();
         }
         //      C# -> DiscoveryReportSortBy? SortBy
         // GraphQL -> sortBy: DiscoveryReportSortBy (enum)
-        if (this.SortBy == null && Exploration.Includes(parent + ".sortBy", true))
+        if (this.SortBy == null && ec.Includes("sortBy",true))
         {
             this.SortBy = new DiscoveryReportSortBy();
         }
         //      C# -> SortOrder? SortOrder
         // GraphQL -> sortOrder: SortOrder (enum)
-        if (this.SortOrder == null && Exploration.Includes(parent + ".sortOrder", true))
+        if (this.SortOrder == null && ec.Includes("sortOrder",true))
         {
             this.SortOrder = new SortOrder();
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
@@ -203,12 +202,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SonarReportTable> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SonarReportTable());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SonarReportTable> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

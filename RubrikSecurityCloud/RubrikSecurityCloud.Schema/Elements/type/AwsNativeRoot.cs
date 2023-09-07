@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> AwsNativeHierarchyObjectConnection? ObjectTypeDescendantConnection
         // GraphQL -> objectTypeDescendantConnection: AwsNativeHierarchyObjectConnection! (type)
-        if (this.ObjectTypeDescendantConnection == null && Exploration.Includes(parent + ".objectTypeDescendantConnection"))
+        if (this.ObjectTypeDescendantConnection == null && ec.Includes("objectTypeDescendantConnection",false))
         {
             this.ObjectTypeDescendantConnection = new AwsNativeHierarchyObjectConnection();
-            this.ObjectTypeDescendantConnection.ApplyExploratoryFieldSpec(parent + ".objectTypeDescendantConnection");
+            this.ObjectTypeDescendantConnection.ApplyExploratoryFieldSpec(ec.NewChild("objectTypeDescendantConnection"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AwsNativeRoot> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AwsNativeRoot());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AwsNativeRoot> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

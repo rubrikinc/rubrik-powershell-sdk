@@ -131,42 +131,41 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> AccountState? AccountState
         // GraphQL -> accountState: AccountState! (enum)
-        if (this.AccountState == null && Exploration.Includes(parent + ".accountState", true))
+        if (this.AccountState == null && ec.Includes("accountState",true))
         {
             this.AccountState = new AccountState();
         }
         //      C# -> AccountType? AccountType
         // GraphQL -> accountType: AccountType! (enum)
-        if (this.AccountType == null && Exploration.Includes(parent + ".accountType", true))
+        if (this.AccountType == null && ec.Includes("accountType",true))
         {
             this.AccountType = new AccountType();
         }
         //      C# -> DateTime? AccountExpiryDate
         // GraphQL -> accountExpiryDate: DateTime (scalar)
-        if (this.AccountExpiryDate == null && Exploration.Includes(parent + ".accountExpiryDate", true))
+        if (this.AccountExpiryDate == null && ec.Includes("accountExpiryDate",true))
         {
             this.AccountExpiryDate = new DateTime();
         }
         //      C# -> System.Int64? AccountHoldLength
         // GraphQL -> accountHoldLength: Long! (scalar)
-        if (this.AccountHoldLength == null && Exploration.Includes(parent + ".accountHoldLength", true))
+        if (this.AccountHoldLength == null && ec.Includes("accountHoldLength",true))
         {
             this.AccountHoldLength = new System.Int64();
         }
         //      C# -> DateTime? AccountStateUpdatedAt
         // GraphQL -> accountStateUpdatedAt: DateTime (scalar)
-        if (this.AccountStateUpdatedAt == null && Exploration.Includes(parent + ".accountStateUpdatedAt", true))
+        if (this.AccountStateUpdatedAt == null && ec.Includes("accountStateUpdatedAt",true))
         {
             this.AccountStateUpdatedAt = new DateTime();
         }
         //      C# -> System.Int64? HoldWarningLength
         // GraphQL -> holdWarningLength: Long! (scalar)
-        if (this.HoldWarningLength == null && Exploration.Includes(parent + ".holdWarningLength", true))
+        if (this.HoldWarningLength == null && ec.Includes("holdWarningLength",true))
         {
             this.HoldWarningLength = new System.Int64();
         }
@@ -202,12 +201,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<LookupAccountReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new LookupAccountReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<LookupAccountReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

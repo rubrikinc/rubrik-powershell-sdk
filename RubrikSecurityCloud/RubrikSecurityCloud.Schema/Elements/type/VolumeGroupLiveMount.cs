@@ -328,127 +328,126 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsReady
         // GraphQL -> isReady: Boolean! (scalar)
-        if (this.IsReady == null && Exploration.Includes(parent + ".isReady", true))
+        if (this.IsReady == null && ec.Includes("isReady",true))
         {
             this.IsReady = true;
         }
         //      C# -> System.String? MountPath
         // GraphQL -> mountPath: String (scalar)
-        if (this.MountPath == null && Exploration.Includes(parent + ".mountPath", true))
+        if (this.MountPath == null && ec.Includes("mountPath",true))
         {
             this.MountPath = "FETCH";
         }
         //      C# -> System.String? MountRequestId
         // GraphQL -> mountRequestId: String (scalar)
-        if (this.MountRequestId == null && Exploration.Includes(parent + ".mountRequestId", true))
+        if (this.MountRequestId == null && ec.Includes("mountRequestId",true))
         {
             this.MountRequestId = "FETCH";
         }
         //      C# -> DateTime? MountTimestamp
         // GraphQL -> mountTimestamp: DateTime (scalar)
-        if (this.MountTimestamp == null && Exploration.Includes(parent + ".mountTimestamp", true))
+        if (this.MountTimestamp == null && ec.Includes("mountTimestamp",true))
         {
             this.MountTimestamp = new DateTime();
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? NodeCompositeId
         // GraphQL -> nodeCompositeId: String (scalar)
-        if (this.NodeCompositeId == null && Exploration.Includes(parent + ".nodeCompositeId", true))
+        if (this.NodeCompositeId == null && ec.Includes("nodeCompositeId",true))
         {
             this.NodeCompositeId = "FETCH";
         }
         //      C# -> System.String? NodeIp
         // GraphQL -> nodeIp: String (scalar)
-        if (this.NodeIp == null && Exploration.Includes(parent + ".nodeIp", true))
+        if (this.NodeIp == null && ec.Includes("nodeIp",true))
         {
             this.NodeIp = "FETCH";
         }
         //      C# -> System.String? RestoreScriptPath
         // GraphQL -> restoreScriptPath: String (scalar)
-        if (this.RestoreScriptPath == null && Exploration.Includes(parent + ".restoreScriptPath", true))
+        if (this.RestoreScriptPath == null && ec.Includes("restoreScriptPath",true))
         {
             this.RestoreScriptPath = "FETCH";
         }
         //      C# -> System.String? SmbShareName
         // GraphQL -> smbShareName: String (scalar)
-        if (this.SmbShareName == null && Exploration.Includes(parent + ".smbShareName", true))
+        if (this.SmbShareName == null && ec.Includes("smbShareName",true))
         {
             this.SmbShareName = "FETCH";
         }
         //      C# -> System.String? SourceVolumeGroupId
         // GraphQL -> sourceVolumeGroupId: String! (scalar)
-        if (this.SourceVolumeGroupId == null && Exploration.Includes(parent + ".sourceVolumeGroupId", true))
+        if (this.SourceVolumeGroupId == null && ec.Includes("sourceVolumeGroupId",true))
         {
             this.SourceVolumeGroupId = "FETCH";
         }
         //      C# -> System.String? TargetHostId
         // GraphQL -> targetHostId: String (scalar)
-        if (this.TargetHostId == null && Exploration.Includes(parent + ".targetHostId", true))
+        if (this.TargetHostId == null && ec.Includes("targetHostId",true))
         {
             this.TargetHostId = "FETCH";
         }
         //      C# -> System.String? TargetHostName
         // GraphQL -> targetHostName: String (scalar)
-        if (this.TargetHostName == null && Exploration.Includes(parent + ".targetHostName", true))
+        if (this.TargetHostName == null && ec.Includes("targetHostName",true))
         {
             this.TargetHostName = "FETCH";
         }
         //      C# -> System.String? UnmountRequestId
         // GraphQL -> unmountRequestId: String (scalar)
-        if (this.UnmountRequestId == null && Exploration.Includes(parent + ".unmountRequestId", true))
+        if (this.UnmountRequestId == null && ec.Includes("unmountRequestId",true))
         {
             this.UnmountRequestId = "FETCH";
         }
         //      C# -> AuthorizedOperations? AuthorizedOperations
         // GraphQL -> authorizedOperations: AuthorizedOperations! (type)
-        if (this.AuthorizedOperations == null && Exploration.Includes(parent + ".authorizedOperations"))
+        if (this.AuthorizedOperations == null && ec.Includes("authorizedOperations",false))
         {
             this.AuthorizedOperations = new AuthorizedOperations();
-            this.AuthorizedOperations.ApplyExploratoryFieldSpec(parent + ".authorizedOperations");
+            this.AuthorizedOperations.ApplyExploratoryFieldSpec(ec.NewChild("authorizedOperations"));
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
-        if (this.Cluster == null && Exploration.Includes(parent + ".cluster"))
+        if (this.Cluster == null && ec.Includes("cluster",false))
         {
             this.Cluster = new Cluster();
-            this.Cluster.ApplyExploratoryFieldSpec(parent + ".cluster");
+            this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
         }
         //      C# -> List<MountedVolume>? MountedVolumes
         // GraphQL -> mountedVolumes: [MountedVolume!]! (type)
-        if (this.MountedVolumes == null && Exploration.Includes(parent + ".mountedVolumes"))
+        if (this.MountedVolumes == null && ec.Includes("mountedVolumes",false))
         {
             this.MountedVolumes = new List<MountedVolume>();
-            this.MountedVolumes.ApplyExploratoryFieldSpec(parent + ".mountedVolumes");
+            this.MountedVolumes.ApplyExploratoryFieldSpec(ec.NewChild("mountedVolumes"));
         }
         //      C# -> PhysicalHost? SourceHost
         // GraphQL -> sourceHost: PhysicalHost! (type)
-        if (this.SourceHost == null && Exploration.Includes(parent + ".sourceHost"))
+        if (this.SourceHost == null && ec.Includes("sourceHost",false))
         {
             this.SourceHost = new PhysicalHost();
-            this.SourceHost.ApplyExploratoryFieldSpec(parent + ".sourceHost");
+            this.SourceHost.ApplyExploratoryFieldSpec(ec.NewChild("sourceHost"));
         }
         //      C# -> CdmSnapshot? SourceSnapshot
         // GraphQL -> sourceSnapshot: CdmSnapshot! (type)
-        if (this.SourceSnapshot == null && Exploration.Includes(parent + ".sourceSnapshot"))
+        if (this.SourceSnapshot == null && ec.Includes("sourceSnapshot",false))
         {
             this.SourceSnapshot = new CdmSnapshot();
-            this.SourceSnapshot.ApplyExploratoryFieldSpec(parent + ".sourceSnapshot");
+            this.SourceSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("sourceSnapshot"));
         }
     }
 
@@ -482,12 +481,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VolumeGroupLiveMount> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VolumeGroupLiveMount());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VolumeGroupLiveMount> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

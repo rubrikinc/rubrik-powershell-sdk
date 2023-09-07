@@ -162,57 +162,56 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<AwsCloudAccountRegion>? AwsRegions
         // GraphQL -> awsRegions: [AwsCloudAccountRegion!] (enum)
-        if (this.AwsRegions == null && Exploration.Includes(parent + ".awsRegions", true))
+        if (this.AwsRegions == null && ec.Includes("awsRegions",true))
         {
             this.AwsRegions = new List<AwsCloudAccountRegion>();
         }
         //      C# -> System.String? CloudFormationUrl
         // GraphQL -> cloudFormationUrl: String! (scalar)
-        if (this.CloudFormationUrl == null && Exploration.Includes(parent + ".cloudFormationUrl", true))
+        if (this.CloudFormationUrl == null && ec.Includes("cloudFormationUrl",true))
         {
             this.CloudFormationUrl = "FETCH";
         }
         //      C# -> System.String? ExternalId
         // GraphQL -> externalId: String! (scalar)
-        if (this.ExternalId == null && Exploration.Includes(parent + ".externalId", true))
+        if (this.ExternalId == null && ec.Includes("externalId",true))
         {
             this.ExternalId = "FETCH";
         }
         //      C# -> System.String? RoleArn
         // GraphQL -> roleArn: String! (scalar)
-        if (this.RoleArn == null && Exploration.Includes(parent + ".roleArn", true))
+        if (this.RoleArn == null && ec.Includes("roleArn",true))
         {
             this.RoleArn = "FETCH";
         }
         //      C# -> System.String? StackName
         // GraphQL -> stackName: String (scalar)
-        if (this.StackName == null && Exploration.Includes(parent + ".stackName", true))
+        if (this.StackName == null && ec.Includes("stackName",true))
         {
             this.StackName = "FETCH";
         }
         //      C# -> System.String? StackSetName
         // GraphQL -> stackSetName: String (scalar)
-        if (this.StackSetName == null && Exploration.Includes(parent + ".stackSetName", true))
+        if (this.StackSetName == null && ec.Includes("stackSetName",true))
         {
             this.StackSetName = "FETCH";
         }
         //      C# -> System.String? TemplateUrl
         // GraphQL -> templateUrl: String! (scalar)
-        if (this.TemplateUrl == null && Exploration.Includes(parent + ".templateUrl", true))
+        if (this.TemplateUrl == null && ec.Includes("templateUrl",true))
         {
             this.TemplateUrl = "FETCH";
         }
         //      C# -> List<AwsCloudAccountFeatureVersion>? FeatureVersions
         // GraphQL -> featureVersions: [AwsCloudAccountFeatureVersion!]! (type)
-        if (this.FeatureVersions == null && Exploration.Includes(parent + ".featureVersions"))
+        if (this.FeatureVersions == null && ec.Includes("featureVersions",false))
         {
             this.FeatureVersions = new List<AwsCloudAccountFeatureVersion>();
-            this.FeatureVersions.ApplyExploratoryFieldSpec(parent + ".featureVersions");
+            this.FeatureVersions.ApplyExploratoryFieldSpec(ec.NewChild("featureVersions"));
         }
     }
 
@@ -246,12 +245,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AwsCloudAccountCreateResponse> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AwsCloudAccountCreateResponse());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AwsCloudAccountCreateResponse> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

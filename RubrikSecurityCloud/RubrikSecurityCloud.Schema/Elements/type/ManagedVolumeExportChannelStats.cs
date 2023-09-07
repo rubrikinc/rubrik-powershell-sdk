@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? TotalSize
         // GraphQL -> totalSize: Long! (scalar)
-        if (this.TotalSize == null && Exploration.Includes(parent + ".totalSize", true))
+        if (this.TotalSize == null && ec.Includes("totalSize",true))
         {
             this.TotalSize = new System.Int64();
         }
         //      C# -> System.Int64? UsedSize
         // GraphQL -> usedSize: Long! (scalar)
-        if (this.UsedSize == null && Exploration.Includes(parent + ".usedSize", true))
+        if (this.UsedSize == null && ec.Includes("usedSize",true))
         {
             this.UsedSize = new System.Int64();
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ManagedVolumeExportChannelStats> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ManagedVolumeExportChannelStats());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ManagedVolumeExportChannelStats> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

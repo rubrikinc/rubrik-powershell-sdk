@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> AgentConnectionStatus? AgentStatusField
         // GraphQL -> agentStatus: AgentConnectionStatus! (enum)
-        if (this.AgentStatusField == null && Exploration.Includes(parent + ".agentStatus", true))
+        if (this.AgentStatusField == null && ec.Includes("agentStatus",true))
         {
             this.AgentStatusField = new AgentConnectionStatus();
         }
         //      C# -> System.String? DisconnectReason
         // GraphQL -> disconnectReason: String (scalar)
-        if (this.DisconnectReason == null && Exploration.Includes(parent + ".disconnectReason", true))
+        if (this.DisconnectReason == null && ec.Includes("disconnectReason",true))
         {
             this.DisconnectReason = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AgentStatus> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AgentStatus());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AgentStatus> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

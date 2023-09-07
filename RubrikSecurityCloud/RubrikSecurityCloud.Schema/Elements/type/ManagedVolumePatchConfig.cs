@@ -117,36 +117,35 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<System.String>? HostPatterns
         // GraphQL -> hostPatterns: [String!]! (scalar)
-        if (this.HostPatterns == null && Exploration.Includes(parent + ".hostPatterns", true))
+        if (this.HostPatterns == null && ec.Includes("hostPatterns",true))
         {
             this.HostPatterns = new List<System.String>();
         }
         //      C# -> List<System.String>? NodeHint
         // GraphQL -> nodeHint: [String!]! (scalar)
-        if (this.NodeHint == null && Exploration.Includes(parent + ".nodeHint", true))
+        if (this.NodeHint == null && ec.Includes("nodeHint",true))
         {
             this.NodeHint = new List<System.String>();
         }
         //      C# -> System.String? SmbDomainName
         // GraphQL -> smbDomainName: String (scalar)
-        if (this.SmbDomainName == null && Exploration.Includes(parent + ".smbDomainName", true))
+        if (this.SmbDomainName == null && ec.Includes("smbDomainName",true))
         {
             this.SmbDomainName = "FETCH";
         }
         //      C# -> List<System.String>? SmbValidIps
         // GraphQL -> smbValidIps: [String!]! (scalar)
-        if (this.SmbValidIps == null && Exploration.Includes(parent + ".smbValidIps", true))
+        if (this.SmbValidIps == null && ec.Includes("smbValidIps",true))
         {
             this.SmbValidIps = new List<System.String>();
         }
         //      C# -> List<System.String>? SmbValidUsers
         // GraphQL -> smbValidUsers: [String!]! (scalar)
-        if (this.SmbValidUsers == null && Exploration.Includes(parent + ".smbValidUsers", true))
+        if (this.SmbValidUsers == null && ec.Includes("smbValidUsers",true))
         {
             this.SmbValidUsers = new List<System.String>();
         }
@@ -182,12 +181,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ManagedVolumePatchConfig> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ManagedVolumePatchConfig());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ManagedVolumePatchConfig> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

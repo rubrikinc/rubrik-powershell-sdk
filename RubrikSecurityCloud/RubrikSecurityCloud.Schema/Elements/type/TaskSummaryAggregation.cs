@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int32? NumOfCanceled
         // GraphQL -> NumOfCanceled: Int! (scalar)
-        if (this.NumOfCanceled == null && Exploration.Includes(parent + ".NumOfCanceled", true))
+        if (this.NumOfCanceled == null && ec.Includes("NumOfCanceled",true))
         {
             this.NumOfCanceled = Int32.MinValue;
         }
         //      C# -> System.Int32? NumOfExpected
         // GraphQL -> NumOfExpected: Int! (scalar)
-        if (this.NumOfExpected == null && Exploration.Includes(parent + ".NumOfExpected", true))
+        if (this.NumOfExpected == null && ec.Includes("NumOfExpected",true))
         {
             this.NumOfExpected = Int32.MinValue;
         }
         //      C# -> System.Int32? NumOfFailed
         // GraphQL -> NumOfFailed: Int! (scalar)
-        if (this.NumOfFailed == null && Exploration.Includes(parent + ".NumOfFailed", true))
+        if (this.NumOfFailed == null && ec.Includes("NumOfFailed",true))
         {
             this.NumOfFailed = Int32.MinValue;
         }
         //      C# -> System.Int32? NumOfSucceeded
         // GraphQL -> NumOfSucceeded: Int! (scalar)
-        if (this.NumOfSucceeded == null && Exploration.Includes(parent + ".NumOfSucceeded", true))
+        if (this.NumOfSucceeded == null && ec.Includes("NumOfSucceeded",true))
         {
             this.NumOfSucceeded = Int32.MinValue;
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<TaskSummaryAggregation> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new TaskSummaryAggregation());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<TaskSummaryAggregation> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

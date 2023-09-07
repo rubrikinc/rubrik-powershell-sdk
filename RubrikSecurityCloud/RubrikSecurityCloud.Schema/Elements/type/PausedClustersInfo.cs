@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int32? PausedClustersCount
         // GraphQL -> pausedClustersCount: Int! (scalar)
-        if (this.PausedClustersCount == null && Exploration.Includes(parent + ".pausedClustersCount", true))
+        if (this.PausedClustersCount == null && ec.Includes("pausedClustersCount",true))
         {
             this.PausedClustersCount = Int32.MinValue;
         }
         //      C# -> List<Cluster>? PausedClusters
         // GraphQL -> pausedClusters: [Cluster!] (type)
-        if (this.PausedClusters == null && Exploration.Includes(parent + ".pausedClusters"))
+        if (this.PausedClusters == null && ec.Includes("pausedClusters",false))
         {
             this.PausedClusters = new List<Cluster>();
-            this.PausedClusters.ApplyExploratoryFieldSpec(parent + ".pausedClusters");
+            this.PausedClusters.ApplyExploratoryFieldSpec(ec.NewChild("pausedClusters"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PausedClustersInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PausedClustersInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<PausedClustersInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -134,45 +134,44 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<AwsInstanceType>? SupportedInstanceTypes
         // GraphQL -> supportedInstanceTypes: [AwsInstanceType!]! (enum)
-        if (this.SupportedInstanceTypes == null && Exploration.Includes(parent + ".supportedInstanceTypes", true))
+        if (this.SupportedInstanceTypes == null && ec.Includes("supportedInstanceTypes",true))
         {
             this.SupportedInstanceTypes = new List<AwsInstanceType>();
         }
         //      C# -> System.String? ImageId
         // GraphQL -> imageId: String! (scalar)
-        if (this.ImageId == null && Exploration.Includes(parent + ".imageId", true))
+        if (this.ImageId == null && ec.Includes("imageId",true))
         {
             this.ImageId = "FETCH";
         }
         //      C# -> System.Boolean? IsLatest
         // GraphQL -> isLatest: Boolean! (scalar)
-        if (this.IsLatest == null && Exploration.Includes(parent + ".isLatest", true))
+        if (this.IsLatest == null && ec.Includes("isLatest",true))
         {
             this.IsLatest = true;
         }
         //      C# -> List<System.String>? ProductCodes
         // GraphQL -> productCodes: [String!]! (scalar)
-        if (this.ProductCodes == null && Exploration.Includes(parent + ".productCodes", true))
+        if (this.ProductCodes == null && ec.Includes("productCodes",true))
         {
             this.ProductCodes = new List<System.String>();
         }
         //      C# -> System.String? Version
         // GraphQL -> version: String! (scalar)
-        if (this.Version == null && Exploration.Includes(parent + ".version", true))
+        if (this.Version == null && ec.Includes("version",true))
         {
             this.Version = "FETCH";
         }
         //      C# -> List<AwsCdmVersionTag>? Tags
         // GraphQL -> tags: [AwsCdmVersionTag!]! (type)
-        if (this.Tags == null && Exploration.Includes(parent + ".tags"))
+        if (this.Tags == null && ec.Includes("tags",false))
         {
             this.Tags = new List<AwsCdmVersionTag>();
-            this.Tags.ApplyExploratoryFieldSpec(parent + ".tags");
+            this.Tags.ApplyExploratoryFieldSpec(ec.NewChild("tags"));
         }
     }
 
@@ -206,12 +205,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AwsCdmVersion> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AwsCdmVersion());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AwsCdmVersion> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

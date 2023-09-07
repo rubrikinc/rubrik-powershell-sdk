@@ -106,33 +106,32 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ValidationStatus? ValidationStatus
         // GraphQL -> validationStatus: ValidationStatus! (enum)
-        if (this.ValidationStatus == null && Exploration.Includes(parent + ".validationStatus", true))
+        if (this.ValidationStatus == null && ec.Includes("validationStatus",true))
         {
             this.ValidationStatus = new ValidationStatus();
         }
         //      C# -> List<System.String>? FailureReasons
         // GraphQL -> failureReasons: [String!]! (scalar)
-        if (this.FailureReasons == null && Exploration.Includes(parent + ".failureReasons", true))
+        if (this.FailureReasons == null && ec.Includes("failureReasons",true))
         {
             this.FailureReasons = new List<System.String>();
         }
         //      C# -> List<System.String>? WarningReasons
         // GraphQL -> warningReasons: [String!]! (scalar)
-        if (this.WarningReasons == null && Exploration.Includes(parent + ".warningReasons", true))
+        if (this.WarningReasons == null && ec.Includes("warningReasons",true))
         {
             this.WarningReasons = new List<System.String>();
         }
         //      C# -> ResourceInfo? ResourceInfo
         // GraphQL -> resourceInfo: ResourceInfo (type)
-        if (this.ResourceInfo == null && Exploration.Includes(parent + ".resourceInfo"))
+        if (this.ResourceInfo == null && ec.Includes("resourceInfo",false))
         {
             this.ResourceInfo = new ResourceInfo();
-            this.ResourceInfo.ApplyExploratoryFieldSpec(parent + ".resourceInfo");
+            this.ResourceInfo.ApplyExploratoryFieldSpec(ec.NewChild("resourceInfo"));
         }
     }
 
@@ -166,12 +165,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ValidationStatusInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ValidationStatusInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ValidationStatusInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

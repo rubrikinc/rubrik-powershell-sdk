@@ -145,48 +145,47 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> DownloadIdentifierEnum? Identifier
         // GraphQL -> identifier: DownloadIdentifierEnum! (enum)
-        if (this.Identifier == null && Exploration.Includes(parent + ".identifier", true))
+        if (this.Identifier == null && ec.Includes("identifier",true))
         {
             this.Identifier = new DownloadIdentifierEnum();
         }
         //      C# -> DownloadStatusEnum? Status
         // GraphQL -> status: DownloadStatusEnum! (enum)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = new DownloadStatusEnum();
         }
         //      C# -> System.String? CompleteTime
         // GraphQL -> completeTime: String! (scalar)
-        if (this.CompleteTime == null && Exploration.Includes(parent + ".completeTime", true))
+        if (this.CompleteTime == null && ec.Includes("completeTime",true))
         {
             this.CompleteTime = "FETCH";
         }
         //      C# -> System.String? CreateTime
         // GraphQL -> createTime: String! (scalar)
-        if (this.CreateTime == null && Exploration.Includes(parent + ".createTime", true))
+        if (this.CreateTime == null && ec.Includes("createTime",true))
         {
             this.CreateTime = "FETCH";
         }
         //      C# -> System.Int64? Id
         // GraphQL -> id: Long! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = new System.Int64();
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.Int32? Progress
         // GraphQL -> progress: Int! (scalar)
-        if (this.Progress == null && Exploration.Includes(parent + ".progress", true))
+        if (this.Progress == null && ec.Includes("progress",true))
         {
             this.Progress = Int32.MinValue;
         }
@@ -222,12 +221,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<UserDownload> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new UserDownload());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<UserDownload> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

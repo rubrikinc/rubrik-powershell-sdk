@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? IsSuccess
         // GraphQL -> isSuccess: Boolean! (scalar)
-        if (this.IsSuccess == null && Exploration.Includes(parent + ".isSuccess", true))
+        if (this.IsSuccess == null && ec.Includes("isSuccess",true))
         {
             this.IsSuccess = true;
         }
         //      C# -> List<AzureCloudAccountSubscription>? Subscriptions
         // GraphQL -> subscriptions: [AzureCloudAccountSubscription!]! (type)
-        if (this.Subscriptions == null && Exploration.Includes(parent + ".subscriptions"))
+        if (this.Subscriptions == null && ec.Includes("subscriptions",false))
         {
             this.Subscriptions = new List<AzureCloudAccountSubscription>();
-            this.Subscriptions.ApplyExploratoryFieldSpec(parent + ".subscriptions");
+            this.Subscriptions.ApplyExploratoryFieldSpec(ec.NewChild("subscriptions"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CompleteAzureCloudAccountOauthReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CompleteAzureCloudAccountOauthReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CompleteAzureCloudAccountOauthReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

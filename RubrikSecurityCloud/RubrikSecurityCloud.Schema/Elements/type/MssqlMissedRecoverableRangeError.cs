@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? EventMessage
         // GraphQL -> eventMessage: String (scalar)
-        if (this.EventMessage == null && Exploration.Includes(parent + ".eventMessage", true))
+        if (this.EventMessage == null && ec.Includes("eventMessage",true))
         {
             this.EventMessage = "FETCH";
         }
         //      C# -> System.String? EventSeriesId
         // GraphQL -> eventSeriesId: String (scalar)
-        if (this.EventSeriesId == null && Exploration.Includes(parent + ".eventSeriesId", true))
+        if (this.EventSeriesId == null && ec.Includes("eventSeriesId",true))
         {
             this.EventSeriesId = "FETCH";
         }
         //      C# -> DateTime? Time
         // GraphQL -> time: DateTime (scalar)
-        if (this.Time == null && Exploration.Includes(parent + ".time", true))
+        if (this.Time == null && ec.Includes("time",true))
         {
             this.Time = new DateTime();
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<MssqlMissedRecoverableRangeError> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new MssqlMissedRecoverableRangeError());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<MssqlMissedRecoverableRangeError> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

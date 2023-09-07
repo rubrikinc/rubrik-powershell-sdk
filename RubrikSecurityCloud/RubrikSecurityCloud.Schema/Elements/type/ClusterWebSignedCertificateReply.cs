@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? WebServerConfiguredWithCaSignedCertificate
         // GraphQL -> webServerConfiguredWithCaSignedCertificate: Boolean! (scalar)
-        if (this.WebServerConfiguredWithCaSignedCertificate == null && Exploration.Includes(parent + ".webServerConfiguredWithCaSignedCertificate", true))
+        if (this.WebServerConfiguredWithCaSignedCertificate == null && ec.Includes("webServerConfiguredWithCaSignedCertificate",true))
         {
             this.WebServerConfiguredWithCaSignedCertificate = true;
         }
         //      C# -> AddClusterCertificateReply? Cert
         // GraphQL -> cert: AddClusterCertificateReply (type)
-        if (this.Cert == null && Exploration.Includes(parent + ".cert"))
+        if (this.Cert == null && ec.Includes("cert",false))
         {
             this.Cert = new AddClusterCertificateReply();
-            this.Cert.ApplyExploratoryFieldSpec(parent + ".cert");
+            this.Cert.ApplyExploratoryFieldSpec(ec.NewChild("cert"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ClusterWebSignedCertificateReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ClusterWebSignedCertificateReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ClusterWebSignedCertificateReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

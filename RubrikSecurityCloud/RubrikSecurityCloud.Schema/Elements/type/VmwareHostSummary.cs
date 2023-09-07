@@ -252,95 +252,94 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> HostFilterStatus? IoFilterStatus
         // GraphQL -> ioFilterStatus: HostFilterStatus (enum)
-        if (this.IoFilterStatus == null && Exploration.Includes(parent + ".ioFilterStatus", true))
+        if (this.IoFilterStatus == null && ec.Includes("ioFilterStatus",true))
         {
             this.IoFilterStatus = new HostFilterStatus();
         }
         //      C# -> HostUiFilterStatus? IoFilterUiStatus
         // GraphQL -> ioFilterUiStatus: HostUiFilterStatus (enum)
-        if (this.IoFilterUiStatus == null && Exploration.Includes(parent + ".ioFilterUiStatus", true))
+        if (this.IoFilterUiStatus == null && ec.Includes("ioFilterUiStatus",true))
         {
             this.IoFilterUiStatus = new HostUiFilterStatus();
         }
         //      C# -> System.String? ComputeClusterId
         // GraphQL -> computeClusterId: String (scalar)
-        if (this.ComputeClusterId == null && Exploration.Includes(parent + ".computeClusterId", true))
+        if (this.ComputeClusterId == null && ec.Includes("computeClusterId",true))
         {
             this.ComputeClusterId = "FETCH";
         }
         //      C# -> System.String? DatacenterId
         // GraphQL -> datacenterId: String (scalar)
-        if (this.DatacenterId == null && Exploration.Includes(parent + ".datacenterId", true))
+        if (this.DatacenterId == null && ec.Includes("datacenterId",true))
         {
             this.DatacenterId = "FETCH";
         }
         //      C# -> System.String? EffectiveSlaDomainId
         // GraphQL -> effectiveSlaDomainId: String (scalar)
-        if (this.EffectiveSlaDomainId == null && Exploration.Includes(parent + ".effectiveSlaDomainId", true))
+        if (this.EffectiveSlaDomainId == null && ec.Includes("effectiveSlaDomainId",true))
         {
             this.EffectiveSlaDomainId = "FETCH";
         }
         //      C# -> System.String? EffectiveSlaDomainName
         // GraphQL -> effectiveSlaDomainName: String (scalar)
-        if (this.EffectiveSlaDomainName == null && Exploration.Includes(parent + ".effectiveSlaDomainName", true))
+        if (this.EffectiveSlaDomainName == null && ec.Includes("effectiveSlaDomainName",true))
         {
             this.EffectiveSlaDomainName = "FETCH";
         }
         //      C# -> System.String? EffectiveSlaDomainPolarisManagedId
         // GraphQL -> effectiveSlaDomainPolarisManagedId: String (scalar)
-        if (this.EffectiveSlaDomainPolarisManagedId == null && Exploration.Includes(parent + ".effectiveSlaDomainPolarisManagedId", true))
+        if (this.EffectiveSlaDomainPolarisManagedId == null && ec.Includes("effectiveSlaDomainPolarisManagedId",true))
         {
             this.EffectiveSlaDomainPolarisManagedId = "FETCH";
         }
         //      C# -> System.String? EffectiveSlaSourceObjectId
         // GraphQL -> effectiveSlaSourceObjectId: String (scalar)
-        if (this.EffectiveSlaSourceObjectId == null && Exploration.Includes(parent + ".effectiveSlaSourceObjectId", true))
+        if (this.EffectiveSlaSourceObjectId == null && ec.Includes("effectiveSlaSourceObjectId",true))
         {
             this.EffectiveSlaSourceObjectId = "FETCH";
         }
         //      C# -> System.String? EffectiveSlaSourceObjectName
         // GraphQL -> effectiveSlaSourceObjectName: String (scalar)
-        if (this.EffectiveSlaSourceObjectName == null && Exploration.Includes(parent + ".effectiveSlaSourceObjectName", true))
+        if (this.EffectiveSlaSourceObjectName == null && ec.Includes("effectiveSlaSourceObjectName",true))
         {
             this.EffectiveSlaSourceObjectName = "FETCH";
         }
         //      C# -> System.String? EsxiVersion
         // GraphQL -> esxiVersion: String (scalar)
-        if (this.EsxiVersion == null && Exploration.Includes(parent + ".esxiVersion", true))
+        if (this.EsxiVersion == null && ec.Includes("esxiVersion",true))
         {
             this.EsxiVersion = "FETCH";
         }
         //      C# -> System.Boolean? IsInVmc
         // GraphQL -> isInVmc: Boolean (scalar)
-        if (this.IsInVmc == null && Exploration.Includes(parent + ".isInVmc", true))
+        if (this.IsInVmc == null && ec.Includes("isInVmc",true))
         {
             this.IsInVmc = true;
         }
         //      C# -> List<DataStoreSummary>? Datastores
         // GraphQL -> datastores: [DataStoreSummary!]! (type)
-        if (this.Datastores == null && Exploration.Includes(parent + ".datastores"))
+        if (this.Datastores == null && ec.Includes("datastores",false))
         {
             this.Datastores = new List<DataStoreSummary>();
-            this.Datastores.ApplyExploratoryFieldSpec(parent + ".datastores");
+            this.Datastores.ApplyExploratoryFieldSpec(ec.NewChild("datastores"));
         }
         //      C# -> EffectiveSlaHolder? EffectiveSlaHolder
         // GraphQL -> effectiveSlaHolder: EffectiveSlaHolder (type)
-        if (this.EffectiveSlaHolder == null && Exploration.Includes(parent + ".effectiveSlaHolder"))
+        if (this.EffectiveSlaHolder == null && ec.Includes("effectiveSlaHolder",false))
         {
             this.EffectiveSlaHolder = new EffectiveSlaHolder();
-            this.EffectiveSlaHolder.ApplyExploratoryFieldSpec(parent + ".effectiveSlaHolder");
+            this.EffectiveSlaHolder.ApplyExploratoryFieldSpec(ec.NewChild("effectiveSlaHolder"));
         }
         //      C# -> SlaAssignable? SlaAssignable
         // GraphQL -> slaAssignable: SlaAssignable (type)
-        if (this.SlaAssignable == null && Exploration.Includes(parent + ".slaAssignable"))
+        if (this.SlaAssignable == null && ec.Includes("slaAssignable",false))
         {
             this.SlaAssignable = new SlaAssignable();
-            this.SlaAssignable.ApplyExploratoryFieldSpec(parent + ".slaAssignable");
+            this.SlaAssignable.ApplyExploratoryFieldSpec(ec.NewChild("slaAssignable"));
         }
     }
 
@@ -374,12 +373,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VmwareHostSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VmwareHostSummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VmwareHostSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

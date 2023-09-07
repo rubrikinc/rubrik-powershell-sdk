@@ -145,48 +145,47 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> NetworkInterfaceType? InterfaceType
         // GraphQL -> interfaceType: NetworkInterfaceType! (enum)
-        if (this.InterfaceType == null && Exploration.Includes(parent + ".interfaceType", true))
+        if (this.InterfaceType == null && ec.Includes("interfaceType",true))
         {
             this.InterfaceType = new NetworkInterfaceType();
         }
         //      C# -> System.String? InterfaceName
         // GraphQL -> interfaceName: String! (scalar)
-        if (this.InterfaceName == null && Exploration.Includes(parent + ".interfaceName", true))
+        if (this.InterfaceName == null && ec.Includes("interfaceName",true))
         {
             this.InterfaceName = "FETCH";
         }
         //      C# -> List<System.String>? IpAddresses
         // GraphQL -> ipAddresses: [String!]! (scalar)
-        if (this.IpAddresses == null && Exploration.Includes(parent + ".ipAddresses", true))
+        if (this.IpAddresses == null && ec.Includes("ipAddresses",true))
         {
             this.IpAddresses = new List<System.String>();
         }
         //      C# -> System.String? Netmask
         // GraphQL -> netmask: String! (scalar)
-        if (this.Netmask == null && Exploration.Includes(parent + ".netmask", true))
+        if (this.Netmask == null && ec.Includes("netmask",true))
         {
             this.Netmask = "FETCH";
         }
         //      C# -> System.String? Node
         // GraphQL -> node: String (scalar)
-        if (this.Node == null && Exploration.Includes(parent + ".node", true))
+        if (this.Node == null && ec.Includes("node",true))
         {
             this.Node = "FETCH";
         }
         //      C# -> System.String? NodeId
         // GraphQL -> nodeId: String (scalar)
-        if (this.NodeId == null && Exploration.Includes(parent + ".nodeId", true))
+        if (this.NodeId == null && ec.Includes("nodeId",true))
         {
             this.NodeId = "FETCH";
         }
         //      C# -> System.String? NodeName
         // GraphQL -> nodeName: String (scalar)
-        if (this.NodeName == null && Exploration.Includes(parent + ".nodeName", true))
+        if (this.NodeName == null && ec.Includes("nodeName",true))
         {
             this.NodeName = "FETCH";
         }
@@ -222,12 +221,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<NetworkInterface> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new NetworkInterface());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<NetworkInterface> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

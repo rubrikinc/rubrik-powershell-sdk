@@ -300,115 +300,114 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> WorkloadLastFailoverStatus? LastRecoveryStatus
         // GraphQL -> lastRecoveryStatus: WorkloadLastFailoverStatus! (enum)
-        if (this.LastRecoveryStatus == null && Exploration.Includes(parent + ".lastRecoveryStatus", true))
+        if (this.LastRecoveryStatus == null && ec.Includes("lastRecoveryStatus",true))
         {
             this.LastRecoveryStatus = new WorkloadLastFailoverStatus();
         }
         //      C# -> RecoveryPlanType? LastRecoveryType
         // GraphQL -> lastRecoveryType: RecoveryPlanType! (enum)
-        if (this.LastRecoveryType == null && Exploration.Includes(parent + ".lastRecoveryType", true))
+        if (this.LastRecoveryType == null && ec.Includes("lastRecoveryType",true))
         {
             this.LastRecoveryType = new RecoveryPlanType();
         }
         //      C# -> System.String? ClusterId
         // GraphQL -> clusterId: UUID! (scalar)
-        if (this.ClusterId == null && Exploration.Includes(parent + ".clusterId", true))
+        if (this.ClusterId == null && ec.Includes("clusterId",true))
         {
             this.ClusterId = "FETCH";
         }
         //      C# -> System.String? ClusterName
         // GraphQL -> clusterName: String! (scalar)
-        if (this.ClusterName == null && Exploration.Includes(parent + ".clusterName", true))
+        if (this.ClusterName == null && ec.Includes("clusterName",true))
         {
             this.ClusterName = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.String? LastRecoveryFailoverId
         // GraphQL -> lastRecoveryFailoverId: UUID (scalar)
-        if (this.LastRecoveryFailoverId == null && Exploration.Includes(parent + ".lastRecoveryFailoverId", true))
+        if (this.LastRecoveryFailoverId == null && ec.Includes("lastRecoveryFailoverId",true))
         {
             this.LastRecoveryFailoverId = "FETCH";
         }
         //      C# -> System.Int64? LastRecoveryMilliSec
         // GraphQL -> lastRecoveryMilliSec: Long! (scalar)
-        if (this.LastRecoveryMilliSec == null && Exploration.Includes(parent + ".lastRecoveryMilliSec", true))
+        if (this.LastRecoveryMilliSec == null && ec.Includes("lastRecoveryMilliSec",true))
         {
             this.LastRecoveryMilliSec = new System.Int64();
         }
         //      C# -> System.String? LastRecoveryRecoveryPlanId
         // GraphQL -> lastRecoveryRecoveryPlanId: UUID (scalar)
-        if (this.LastRecoveryRecoveryPlanId == null && Exploration.Includes(parent + ".lastRecoveryRecoveryPlanId", true))
+        if (this.LastRecoveryRecoveryPlanId == null && ec.Includes("lastRecoveryRecoveryPlanId",true))
         {
             this.LastRecoveryRecoveryPlanId = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> List<System.String>? RecoveryPlanIds
         // GraphQL -> recoveryPlanIds: [UUID!]! (scalar)
-        if (this.RecoveryPlanIds == null && Exploration.Includes(parent + ".recoveryPlanIds", true))
+        if (this.RecoveryPlanIds == null && ec.Includes("recoveryPlanIds",true))
         {
             this.RecoveryPlanIds = new List<System.String>();
         }
         //      C# -> System.String? RetentionSlaDomainId
         // GraphQL -> retentionSlaDomainId: String! (scalar)
-        if (this.RetentionSlaDomainId == null && Exploration.Includes(parent + ".retentionSlaDomainId", true))
+        if (this.RetentionSlaDomainId == null && ec.Includes("retentionSlaDomainId",true))
         {
             this.RetentionSlaDomainId = "FETCH";
         }
         //      C# -> System.String? RetentionSlaDomainName
         // GraphQL -> retentionSlaDomainName: String! (scalar)
-        if (this.RetentionSlaDomainName == null && Exploration.Includes(parent + ".retentionSlaDomainName", true))
+        if (this.RetentionSlaDomainName == null && ec.Includes("retentionSlaDomainName",true))
         {
             this.RetentionSlaDomainName = "FETCH";
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster (type)
-        if (this.Cluster == null && Exploration.Includes(parent + ".cluster"))
+        if (this.Cluster == null && ec.Includes("cluster",false))
         {
             this.Cluster = new Cluster();
-            this.Cluster.ApplyExploratoryFieldSpec(parent + ".cluster");
+            this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
         }
         //      C# -> List<CyberRecoveryLocationPathPoint>? PhysicalLocation
         // GraphQL -> physicalLocation: [CyberRecoveryLocationPathPoint!]! (type)
-        if (this.PhysicalLocation == null && Exploration.Includes(parent + ".physicalLocation"))
+        if (this.PhysicalLocation == null && ec.Includes("physicalLocation",false))
         {
             this.PhysicalLocation = new List<CyberRecoveryLocationPathPoint>();
-            this.PhysicalLocation.ApplyExploratoryFieldSpec(parent + ".physicalLocation");
+            this.PhysicalLocation.ApplyExploratoryFieldSpec(ec.NewChild("physicalLocation"));
         }
         //      C# -> List<RecoveryInfo>? RecoveryInfos
         // GraphQL -> recoveryInfos: [RecoveryInfo!]! (type)
-        if (this.RecoveryInfos == null && Exploration.Includes(parent + ".recoveryInfos"))
+        if (this.RecoveryInfos == null && ec.Includes("recoveryInfos",false))
         {
             this.RecoveryInfos = new List<RecoveryInfo>();
-            this.RecoveryInfos.ApplyExploratoryFieldSpec(parent + ".recoveryInfos");
+            this.RecoveryInfos.ApplyExploratoryFieldSpec(ec.NewChild("recoveryInfos"));
         }
         //      C# -> List<RecoveryPlanDetails>? RecoveryPlansInfo
         // GraphQL -> recoveryPlansInfo: [RecoveryPlanDetails!]! (type)
-        if (this.RecoveryPlansInfo == null && Exploration.Includes(parent + ".recoveryPlansInfo"))
+        if (this.RecoveryPlansInfo == null && ec.Includes("recoveryPlansInfo",false))
         {
             this.RecoveryPlansInfo = new List<RecoveryPlanDetails>();
-            this.RecoveryPlansInfo.ApplyExploratoryFieldSpec(parent + ".recoveryPlansInfo");
+            this.RecoveryPlansInfo.ApplyExploratoryFieldSpec(ec.NewChild("recoveryPlansInfo"));
         }
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
-        if (this.SnapshotDistribution == null && Exploration.Includes(parent + ".snapshotDistribution"))
+        if (this.SnapshotDistribution == null && ec.Includes("snapshotDistribution",false))
         {
             this.SnapshotDistribution = new SnapshotDistribution();
-            this.SnapshotDistribution.ApplyExploratoryFieldSpec(parent + ".snapshotDistribution");
+            this.SnapshotDistribution.ApplyExploratoryFieldSpec(ec.NewChild("snapshotDistribution"));
         }
     }
 
@@ -442,12 +441,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CyberRecoveryObject> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CyberRecoveryObject());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CyberRecoveryObject> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

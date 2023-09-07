@@ -81,22 +81,21 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<AwsExocomputeGetConfigResponse>? Configs
         // GraphQL -> configs: [AwsExocomputeGetConfigResponse!]! (type)
-        if (this.Configs == null && Exploration.Includes(parent + ".configs"))
+        if (this.Configs == null && ec.Includes("configs",false))
         {
             this.Configs = new List<AwsExocomputeGetConfigResponse>();
-            this.Configs.ApplyExploratoryFieldSpec(parent + ".configs");
+            this.Configs.ApplyExploratoryFieldSpec(ec.NewChild("configs"));
         }
         //      C# -> List<AwsExocomputeConfigsDeletionStatusType>? DeleteStatus
         // GraphQL -> deleteStatus: [AwsExocomputeConfigsDeletionStatusType!]! (type)
-        if (this.DeleteStatus == null && Exploration.Includes(parent + ".deleteStatus"))
+        if (this.DeleteStatus == null && ec.Includes("deleteStatus",false))
         {
             this.DeleteStatus = new List<AwsExocomputeConfigsDeletionStatusType>();
-            this.DeleteStatus.ApplyExploratoryFieldSpec(parent + ".deleteStatus");
+            this.DeleteStatus.ApplyExploratoryFieldSpec(ec.NewChild("deleteStatus"));
         }
     }
 
@@ -130,12 +129,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<UpdateAwsExocomputeConfigsReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new UpdateAwsExocomputeConfigsReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<UpdateAwsExocomputeConfigsReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

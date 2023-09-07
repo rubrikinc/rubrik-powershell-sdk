@@ -151,52 +151,51 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> RecoverySpec? RecoverySpec
         // GraphQL -> recoverySpec: RecoverySpec! (interface)
-        if (this.RecoverySpec == null && Exploration.Includes(parent + ".recoverySpec"))
+        if (this.RecoverySpec == null && ec.Includes("recoverySpec",false))
         {
             var impls = new List<RecoverySpec>();
-            impls.ApplyExploratoryFieldSpec(parent + ".recoverySpec");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("recoverySpec"));
             this.RecoverySpec = (RecoverySpec)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> SlaDomain? Sla
         // GraphQL -> sla: SlaDomain (interface)
-        if (this.Sla == null && Exploration.Includes(parent + ".sla"))
+        if (this.Sla == null && ec.Includes("sla",false))
         {
             var impls = new List<SlaDomain>();
-            impls.ApplyExploratoryFieldSpec(parent + ".sla");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("sla"));
             this.Sla = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> System.Int64? RecoveryPoint
         // GraphQL -> recoveryPoint: Long (scalar)
-        if (this.RecoveryPoint == null && Exploration.Includes(parent + ".recoveryPoint", true))
+        if (this.RecoveryPoint == null && ec.Includes("recoveryPoint",true))
         {
             this.RecoveryPoint = new System.Int64();
         }
         //      C# -> System.String? RecoverySpecFid
         // GraphQL -> recoverySpecFid: String! (scalar)
-        if (this.RecoverySpecFid == null && Exploration.Includes(parent + ".recoverySpecFid", true))
+        if (this.RecoverySpecFid == null && ec.Includes("recoverySpecFid",true))
         {
             this.RecoverySpecFid = "FETCH";
         }
         //      C# -> System.String? SlaId
         // GraphQL -> slaId: String (scalar)
-        if (this.SlaId == null && Exploration.Includes(parent + ".slaId", true))
+        if (this.SlaId == null && ec.Includes("slaId",true))
         {
             this.SlaId = "FETCH";
         }
         //      C# -> System.String? SnappableFid
         // GraphQL -> snappableFid: String! (scalar)
-        if (this.SnappableFid == null && Exploration.Includes(parent + ".snappableFid", true))
+        if (this.SnappableFid == null && ec.Includes("snappableFid",true))
         {
             this.SnappableFid = "FETCH";
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: String (scalar)
-        if (this.SnapshotId == null && Exploration.Includes(parent + ".snapshotId", true))
+        if (this.SnapshotId == null && ec.Includes("snapshotId",true))
         {
             this.SnapshotId = "FETCH";
         }
@@ -232,12 +231,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ChildRecoverySpecMap> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ChildRecoverySpecMap());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ChildRecoverySpecMap> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -140,47 +140,46 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? SourceDbUser
         // GraphQL -> sourceDbUser: String! (scalar)
-        if (this.SourceDbUser == null && Exploration.Includes(parent + ".sourceDbUser", true))
+        if (this.SourceDbUser == null && ec.Includes("sourceDbUser",true))
         {
             this.SourceDbUser = "FETCH";
         }
         //      C# -> System.String? SourceNodeUser
         // GraphQL -> sourceNodeUser: String! (scalar)
-        if (this.SourceNodeUser == null && Exploration.Includes(parent + ".sourceNodeUser", true))
+        if (this.SourceNodeUser == null && ec.Includes("sourceNodeUser",true))
         {
             this.SourceNodeUser = "FETCH";
         }
         //      C# -> System.Int32? SourceSshPort
         // GraphQL -> sourceSshPort: Int! (scalar)
-        if (this.SourceSshPort == null && Exploration.Includes(parent + ".sourceSshPort", true))
+        if (this.SourceSshPort == null && ec.Includes("sourceSshPort",true))
         {
             this.SourceSshPort = Int32.MinValue;
         }
         //      C# -> List<MongodbHost>? IgnoreSecondaries
         // GraphQL -> ignoreSecondaries: [MongodbHost!]! (type)
-        if (this.IgnoreSecondaries == null && Exploration.Includes(parent + ".ignoreSecondaries"))
+        if (this.IgnoreSecondaries == null && ec.Includes("ignoreSecondaries",false))
         {
             this.IgnoreSecondaries = new List<MongodbHost>();
-            this.IgnoreSecondaries.ApplyExploratoryFieldSpec(parent + ".ignoreSecondaries");
+            this.IgnoreSecondaries.ApplyExploratoryFieldSpec(ec.NewChild("ignoreSecondaries"));
         }
         //      C# -> List<MongodbHost>? MongodbHosts
         // GraphQL -> mongodbHosts: [MongodbHost!]! (type)
-        if (this.MongodbHosts == null && Exploration.Includes(parent + ".mongodbHosts"))
+        if (this.MongodbHosts == null && ec.Includes("mongodbHosts",false))
         {
             this.MongodbHosts = new List<MongodbHost>();
-            this.MongodbHosts.ApplyExploratoryFieldSpec(parent + ".mongodbHosts");
+            this.MongodbHosts.ApplyExploratoryFieldSpec(ec.NewChild("mongodbHosts"));
         }
         //      C# -> MongodbSslOptions? SslOptions
         // GraphQL -> sslOptions: MongodbSslOptions (type)
-        if (this.SslOptions == null && Exploration.Includes(parent + ".sslOptions"))
+        if (this.SslOptions == null && ec.Includes("sslOptions",false))
         {
             this.SslOptions = new MongodbSslOptions();
-            this.SslOptions.ApplyExploratoryFieldSpec(parent + ".sslOptions");
+            this.SslOptions.ApplyExploratoryFieldSpec(ec.NewChild("sslOptions"));
         }
     }
 
@@ -214,12 +213,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<MongodbSourceConfigParams> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new MongodbSourceConfigParams());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<MongodbSourceConfigParams> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

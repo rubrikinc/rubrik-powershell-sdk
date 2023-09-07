@@ -145,48 +145,47 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> MssqlBackupType? BackupType
         // GraphQL -> backupType: MssqlBackupType! (enum)
-        if (this.BackupType == null && Exploration.Includes(parent + ".backupType", true))
+        if (this.BackupType == null && ec.Includes("backupType",true))
         {
             this.BackupType = new MssqlBackupType();
         }
         //      C# -> System.String? BackupId
         // GraphQL -> backupId: String! (scalar)
-        if (this.BackupId == null && Exploration.Includes(parent + ".backupId", true))
+        if (this.BackupId == null && ec.Includes("backupId",true))
         {
             this.BackupId = "FETCH";
         }
         //      C# -> System.Int64? BackupSize
         // GraphQL -> backupSize: Long! (scalar)
-        if (this.BackupSize == null && Exploration.Includes(parent + ".backupSize", true))
+        if (this.BackupSize == null && ec.Includes("backupSize",true))
         {
             this.BackupSize = new System.Int64();
         }
         //      C# -> DateTime? Date
         // GraphQL -> date: DateTime (scalar)
-        if (this.Date == null && Exploration.Includes(parent + ".date", true))
+        if (this.Date == null && ec.Includes("date",true))
         {
             this.Date = new DateTime();
         }
         //      C# -> System.String? Lsn
         // GraphQL -> lsn: String! (scalar)
-        if (this.Lsn == null && Exploration.Includes(parent + ".lsn", true))
+        if (this.Lsn == null && ec.Includes("lsn",true))
         {
             this.Lsn = "FETCH";
         }
         //      C# -> System.String? Path
         // GraphQL -> path: String! (scalar)
-        if (this.Path == null && Exploration.Includes(parent + ".path", true))
+        if (this.Path == null && ec.Includes("path",true))
         {
             this.Path = "FETCH";
         }
         //      C# -> System.String? RecoveryForkGuid
         // GraphQL -> recoveryForkGuid: String! (scalar)
-        if (this.RecoveryForkGuid == null && Exploration.Includes(parent + ".recoveryForkGuid", true))
+        if (this.RecoveryForkGuid == null && ec.Includes("recoveryForkGuid",true))
         {
             this.RecoveryForkGuid = "FETCH";
         }
@@ -222,12 +221,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<MssqlBackup> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new MssqlBackup());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<MssqlBackup> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

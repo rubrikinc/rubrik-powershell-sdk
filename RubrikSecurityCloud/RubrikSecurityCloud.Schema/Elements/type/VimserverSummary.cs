@@ -148,51 +148,50 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String! (scalar)
-        if (this.Hostname == null && Exploration.Includes(parent + ".hostname", true))
+        if (this.Hostname == null && ec.Includes("hostname",true))
         {
             this.Hostname = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? VcdClusterId
         // GraphQL -> vcdClusterId: String! (scalar)
-        if (this.VcdClusterId == null && Exploration.Includes(parent + ".vcdClusterId", true))
+        if (this.VcdClusterId == null && ec.Includes("vcdClusterId",true))
         {
             this.VcdClusterId = "FETCH";
         }
         //      C# -> System.String? VcdClusterName
         // GraphQL -> vcdClusterName: String! (scalar)
-        if (this.VcdClusterName == null && Exploration.Includes(parent + ".vcdClusterName", true))
+        if (this.VcdClusterName == null && ec.Includes("vcdClusterName",true))
         {
             this.VcdClusterName = "FETCH";
         }
         //      C# -> System.String? VcenterId
         // GraphQL -> vcenterId: String (scalar)
-        if (this.VcenterId == null && Exploration.Includes(parent + ".vcenterId", true))
+        if (this.VcenterId == null && ec.Includes("vcenterId",true))
         {
             this.VcenterId = "FETCH";
         }
         //      C# -> VcdConnectionStatus? ConnectionStatus
         // GraphQL -> connectionStatus: VcdConnectionStatus (type)
-        if (this.ConnectionStatus == null && Exploration.Includes(parent + ".connectionStatus"))
+        if (this.ConnectionStatus == null && ec.Includes("connectionStatus",false))
         {
             this.ConnectionStatus = new VcdConnectionStatus();
-            this.ConnectionStatus.ApplyExploratoryFieldSpec(parent + ".connectionStatus");
+            this.ConnectionStatus.ApplyExploratoryFieldSpec(ec.NewChild("connectionStatus"));
         }
     }
 
@@ -226,12 +225,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VimserverSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VimserverSummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VimserverSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

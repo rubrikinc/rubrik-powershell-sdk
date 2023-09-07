@@ -126,41 +126,40 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? GroupId
         // GraphQL -> groupId: String! (scalar)
-        if (this.GroupId == null && Exploration.Includes(parent + ".groupId", true))
+        if (this.GroupId == null && ec.Includes("groupId",true))
         {
             this.GroupId = "FETCH";
         }
         //      C# -> System.String? GroupName
         // GraphQL -> groupName: String! (scalar)
-        if (this.GroupName == null && Exploration.Includes(parent + ".groupName", true))
+        if (this.GroupName == null && ec.Includes("groupName",true))
         {
             this.GroupName = "FETCH";
         }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
-        if (this.AllOrgs == null && Exploration.Includes(parent + ".allOrgs"))
+        if (this.AllOrgs == null && ec.Includes("allOrgs",false))
         {
             this.AllOrgs = new List<Org>();
-            this.AllOrgs.ApplyExploratoryFieldSpec(parent + ".allOrgs");
+            this.AllOrgs.ApplyExploratoryFieldSpec(ec.NewChild("allOrgs"));
         }
         //      C# -> List<Role>? Roles
         // GraphQL -> roles: [Role!]! (type)
-        if (this.Roles == null && Exploration.Includes(parent + ".roles"))
+        if (this.Roles == null && ec.Includes("roles",false))
         {
             this.Roles = new List<Role>();
-            this.Roles.ApplyExploratoryFieldSpec(parent + ".roles");
+            this.Roles.ApplyExploratoryFieldSpec(ec.NewChild("roles"));
         }
         //      C# -> List<User>? Users
         // GraphQL -> users: [User!]! (type)
-        if (this.Users == null && Exploration.Includes(parent + ".users"))
+        if (this.Users == null && ec.Includes("users",false))
         {
             this.Users = new List<User>();
-            this.Users.ApplyExploratoryFieldSpec(parent + ".users");
+            this.Users.ApplyExploratoryFieldSpec(ec.NewChild("users"));
         }
     }
 
@@ -194,12 +193,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<Group> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new Group());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<Group> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

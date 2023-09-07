@@ -79,21 +79,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? TemplateName
         // GraphQL -> templateName: String! (scalar)
-        if (this.TemplateName == null && Exploration.Includes(parent + ".templateName", true))
+        if (this.TemplateName == null && ec.Includes("templateName",true))
         {
             this.TemplateName = "FETCH";
         }
         //      C# -> List<CategorizedTprRequestedChangeEntry>? Entries
         // GraphQL -> entries: [CategorizedTprRequestedChangeEntry!]! (type)
-        if (this.Entries == null && Exploration.Includes(parent + ".entries"))
+        if (this.Entries == null && ec.Includes("entries",false))
         {
             this.Entries = new List<CategorizedTprRequestedChangeEntry>();
-            this.Entries.ApplyExploratoryFieldSpec(parent + ".entries");
+            this.Entries.ApplyExploratoryFieldSpec(ec.NewChild("entries"));
         }
     }
 
@@ -127,12 +126,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CategorizedTprReqChangesTemplate> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CategorizedTprReqChangesTemplate());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CategorizedTprReqChangesTemplate> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

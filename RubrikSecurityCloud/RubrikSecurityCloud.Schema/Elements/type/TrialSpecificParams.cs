@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> TrialParams? Params
         // GraphQL -> params: TrialParams (union)
-        if (this.Params == null && Exploration.Includes(parent + ".params"))
+        if (this.Params == null && ec.Includes("params",false))
         {
             var impls = new List<TrialParams>();
-            impls.ApplyExploratoryFieldSpec(parent + ".params");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("params"));
             this.Params = (TrialParams)InterfaceHelper.MakeCompositeFromList(impls);
         }
     }
@@ -107,12 +106,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<TrialSpecificParams> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new TrialSpecificParams());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<TrialSpecificParams> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

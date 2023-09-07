@@ -145,48 +145,47 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> DiscoveryReportTablePolicyStatus? PolicyStatus
         // GraphQL -> policyStatus: DiscoveryReportTablePolicyStatus! (enum)
-        if (this.PolicyStatus == null && Exploration.Includes(parent + ".policyStatus", true))
+        if (this.PolicyStatus == null && ec.Includes("policyStatus",true))
         {
             this.PolicyStatus = new DiscoveryReportTablePolicyStatus();
         }
         //      C# -> System.Int32? NumHighRiskLocations
         // GraphQL -> numHighRiskLocations: Int! (scalar)
-        if (this.NumHighRiskLocations == null && Exploration.Includes(parent + ".numHighRiskLocations", true))
+        if (this.NumHighRiskLocations == null && ec.Includes("numHighRiskLocations",true))
         {
             this.NumHighRiskLocations = Int32.MinValue;
         }
         //      C# -> System.Int32? NumObjects
         // GraphQL -> numObjects: Int! (scalar)
-        if (this.NumObjects == null && Exploration.Includes(parent + ".numObjects", true))
+        if (this.NumObjects == null && ec.Includes("numObjects",true))
         {
             this.NumObjects = Int32.MinValue;
         }
         //      C# -> System.Int32? NumViolatedFiles
         // GraphQL -> numViolatedFiles: Int! (scalar)
-        if (this.NumViolatedFiles == null && Exploration.Includes(parent + ".numViolatedFiles", true))
+        if (this.NumViolatedFiles == null && ec.Includes("numViolatedFiles",true))
         {
             this.NumViolatedFiles = Int32.MinValue;
         }
         //      C# -> System.String? PolicyId
         // GraphQL -> policyId: String! (scalar)
-        if (this.PolicyId == null && Exploration.Includes(parent + ".policyId", true))
+        if (this.PolicyId == null && ec.Includes("policyId",true))
         {
             this.PolicyId = "FETCH";
         }
         //      C# -> System.String? PolicyName
         // GraphQL -> policyName: String! (scalar)
-        if (this.PolicyName == null && Exploration.Includes(parent + ".policyName", true))
+        if (this.PolicyName == null && ec.Includes("policyName",true))
         {
             this.PolicyName = "FETCH";
         }
         //      C# -> System.Int32? Violations
         // GraphQL -> violations: Int! (scalar)
-        if (this.Violations == null && Exploration.Includes(parent + ".violations", true))
+        if (this.Violations == null && ec.Includes("violations",true))
         {
             this.Violations = Int32.MinValue;
         }
@@ -222,12 +221,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SonarReportRow> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SonarReportRow());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SonarReportRow> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

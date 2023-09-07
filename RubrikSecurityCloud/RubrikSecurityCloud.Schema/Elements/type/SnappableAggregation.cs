@@ -159,54 +159,53 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? ArchiveStorage
         // GraphQL -> archiveStorage: Long! (scalar)
-        if (this.ArchiveStorage == null && Exploration.Includes(parent + ".archiveStorage", true))
+        if (this.ArchiveStorage == null && ec.Includes("archiveStorage",true))
         {
             this.ArchiveStorage = new System.Int64();
         }
         //      C# -> System.Int64? LastSnapshotLogicalBytes
         // GraphQL -> lastSnapshotLogicalBytes: Long! (scalar)
-        if (this.LastSnapshotLogicalBytes == null && Exploration.Includes(parent + ".lastSnapshotLogicalBytes", true))
+        if (this.LastSnapshotLogicalBytes == null && ec.Includes("lastSnapshotLogicalBytes",true))
         {
             this.LastSnapshotLogicalBytes = new System.Int64();
         }
         //      C# -> System.Int64? LogicalBytes
         // GraphQL -> logicalBytes: Long! (scalar)
-        if (this.LogicalBytes == null && Exploration.Includes(parent + ".logicalBytes", true))
+        if (this.LogicalBytes == null && ec.Includes("logicalBytes",true))
         {
             this.LogicalBytes = new System.Int64();
         }
         //      C# -> System.Int32? MissedSnapshots
         // GraphQL -> missedSnapshots: Int! (scalar)
-        if (this.MissedSnapshots == null && Exploration.Includes(parent + ".missedSnapshots", true))
+        if (this.MissedSnapshots == null && ec.Includes("missedSnapshots",true))
         {
             this.MissedSnapshots = Int32.MinValue;
         }
         //      C# -> System.Int64? PhysicalBytes
         // GraphQL -> physicalBytes: Long! (scalar)
-        if (this.PhysicalBytes == null && Exploration.Includes(parent + ".physicalBytes", true))
+        if (this.PhysicalBytes == null && ec.Includes("physicalBytes",true))
         {
             this.PhysicalBytes = new System.Int64();
         }
         //      C# -> System.Int64? ReplicaStorage
         // GraphQL -> replicaStorage: Long! (scalar)
-        if (this.ReplicaStorage == null && Exploration.Includes(parent + ".replicaStorage", true))
+        if (this.ReplicaStorage == null && ec.Includes("replicaStorage",true))
         {
             this.ReplicaStorage = new System.Int64();
         }
         //      C# -> System.Int32? TotalSnapshots
         // GraphQL -> totalSnapshots: Int! (scalar)
-        if (this.TotalSnapshots == null && Exploration.Includes(parent + ".totalSnapshots", true))
+        if (this.TotalSnapshots == null && ec.Includes("totalSnapshots",true))
         {
             this.TotalSnapshots = Int32.MinValue;
         }
         //      C# -> System.Int64? TransferredBytes
         // GraphQL -> transferredBytes: Long! (scalar)
-        if (this.TransferredBytes == null && Exploration.Includes(parent + ".transferredBytes", true))
+        if (this.TransferredBytes == null && ec.Includes("transferredBytes",true))
         {
             this.TransferredBytes = new System.Int64();
         }
@@ -242,12 +241,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SnappableAggregation> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SnappableAggregation());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SnappableAggregation> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

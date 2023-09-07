@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<SourceChildRecoverySpecMap>? ChildRecoverySpecs
         // GraphQL -> childRecoverySpecs: [SourceChildRecoverySpecMap!]! (type)
-        if (this.ChildRecoverySpecs == null && Exploration.Includes(parent + ".childRecoverySpecs"))
+        if (this.ChildRecoverySpecs == null && ec.Includes("childRecoverySpecs",false))
         {
             this.ChildRecoverySpecs = new List<SourceChildRecoverySpecMap>();
-            this.ChildRecoverySpecs.ApplyExploratoryFieldSpec(parent + ".childRecoverySpecs");
+            this.ChildRecoverySpecs.ApplyExploratoryFieldSpec(ec.NewChild("childRecoverySpecs"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SourceRecoverySpecsReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SourceRecoverySpecsReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SourceRecoverySpecsReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -92,27 +92,26 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> AzureAdObjectType? Type
         // GraphQL -> type: AzureAdObjectType! (enum)
-        if (this.Type == null && Exploration.Includes(parent + ".type", true))
+        if (this.Type == null && ec.Includes("type",true))
         {
             this.Type = new AzureAdObjectType();
         }
         //      C# -> System.String? ObjectId
         // GraphQL -> objectId: String! (scalar)
-        if (this.ObjectId == null && Exploration.Includes(parent + ".objectId", true))
+        if (this.ObjectId == null && ec.Includes("objectId",true))
         {
             this.ObjectId = "FETCH";
         }
         //      C# -> AzureAdObjects? AzureAdObjects
         // GraphQL -> azureAdObjects: AzureAdObjects! (type)
-        if (this.AzureAdObjects == null && Exploration.Includes(parent + ".azureAdObjects"))
+        if (this.AzureAdObjects == null && ec.Includes("azureAdObjects",false))
         {
             this.AzureAdObjects = new AzureAdObjects();
-            this.AzureAdObjects.ApplyExploratoryFieldSpec(parent + ".azureAdObjects");
+            this.AzureAdObjects.ApplyExploratoryFieldSpec(ec.NewChild("azureAdObjects"));
         }
     }
 
@@ -146,12 +145,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AzureAdObject> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AzureAdObject());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AzureAdObject> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

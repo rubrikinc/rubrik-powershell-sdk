@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<VmwareNetworkDeviceInfo>? Nics
         // GraphQL -> nics: [VmwareNetworkDeviceInfo!]! (type)
-        if (this.Nics == null && Exploration.Includes(parent + ".nics"))
+        if (this.Nics == null && ec.Includes("nics",false))
         {
             this.Nics = new List<VmwareNetworkDeviceInfo>();
-            this.Nics.ApplyExploratoryFieldSpec(parent + ".nics");
+            this.Nics.ApplyExploratoryFieldSpec(ec.NewChild("nics"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VmwareNetworkConfig> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VmwareNetworkConfig());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VmwareNetworkConfig> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

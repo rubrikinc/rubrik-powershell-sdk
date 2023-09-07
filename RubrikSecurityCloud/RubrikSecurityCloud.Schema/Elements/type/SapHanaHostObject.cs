@@ -151,52 +151,51 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
-        if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
+        if (this.ClusterUuid == null && ec.Includes("clusterUuid",true))
         {
             this.ClusterUuid = "FETCH";
         }
         //      C# -> System.String? HostName
         // GraphQL -> hostName: String! (scalar)
-        if (this.HostName == null && Exploration.Includes(parent + ".hostName", true))
+        if (this.HostName == null && ec.Includes("hostName",true))
         {
             this.HostName = "FETCH";
         }
         //      C# -> System.String? HostType
         // GraphQL -> hostType: String! (scalar)
-        if (this.HostType == null && Exploration.Includes(parent + ".hostType", true))
+        if (this.HostType == null && ec.Includes("hostType",true))
         {
             this.HostType = "FETCH";
         }
         //      C# -> System.String? HostUuid
         // GraphQL -> hostUuid: String! (scalar)
-        if (this.HostUuid == null && Exploration.Includes(parent + ".hostUuid", true))
+        if (this.HostUuid == null && ec.Includes("hostUuid",true))
         {
             this.HostUuid = "FETCH";
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = "FETCH";
         }
         //      C# -> PhysicalHost? Host
         // GraphQL -> host: PhysicalHost! (type)
-        if (this.Host == null && Exploration.Includes(parent + ".host"))
+        if (this.Host == null && ec.Includes("host",false))
         {
             this.Host = new PhysicalHost();
-            this.Host.ApplyExploratoryFieldSpec(parent + ".host");
+            this.Host.ApplyExploratoryFieldSpec(ec.NewChild("host"));
         }
         //      C# -> PhysicalHost? SystemHost
         // GraphQL -> systemHost: PhysicalHost (type)
-        if (this.SystemHost == null && Exploration.Includes(parent + ".systemHost"))
+        if (this.SystemHost == null && ec.Includes("systemHost",false))
         {
             this.SystemHost = new PhysicalHost();
-            this.SystemHost.ApplyExploratoryFieldSpec(parent + ".systemHost");
+            this.SystemHost.ApplyExploratoryFieldSpec(ec.NewChild("systemHost"));
         }
     }
 
@@ -230,12 +229,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SapHanaHostObject> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SapHanaHostObject());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SapHanaHostObject> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

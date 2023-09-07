@@ -98,29 +98,28 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> Duration? Frequency
         // GraphQL -> frequency: Duration (type)
-        if (this.Frequency == null && Exploration.Includes(parent + ".frequency"))
+        if (this.Frequency == null && ec.Includes("frequency",false))
         {
             this.Frequency = new Duration();
-            this.Frequency.ApplyExploratoryFieldSpec(parent + ".frequency");
+            this.Frequency.ApplyExploratoryFieldSpec(ec.NewChild("frequency"));
         }
         //      C# -> Duration? HostLogRetention
         // GraphQL -> hostLogRetention: Duration (type)
-        if (this.HostLogRetention == null && Exploration.Includes(parent + ".hostLogRetention"))
+        if (this.HostLogRetention == null && ec.Includes("hostLogRetention",false))
         {
             this.HostLogRetention = new Duration();
-            this.HostLogRetention.ApplyExploratoryFieldSpec(parent + ".hostLogRetention");
+            this.HostLogRetention.ApplyExploratoryFieldSpec(ec.NewChild("hostLogRetention"));
         }
         //      C# -> Duration? LogRetention
         // GraphQL -> logRetention: Duration (type)
-        if (this.LogRetention == null && Exploration.Includes(parent + ".logRetention"))
+        if (this.LogRetention == null && ec.Includes("logRetention",false))
         {
             this.LogRetention = new Duration();
-            this.LogRetention.ApplyExploratoryFieldSpec(parent + ".logRetention");
+            this.LogRetention.ApplyExploratoryFieldSpec(ec.NewChild("logRetention"));
         }
     }
 
@@ -154,12 +153,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<OracleConfig> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new OracleConfig());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<OracleConfig> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

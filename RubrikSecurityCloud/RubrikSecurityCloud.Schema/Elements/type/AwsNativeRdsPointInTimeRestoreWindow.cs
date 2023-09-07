@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> DateTime? EarliestTime
         // GraphQL -> earliestTime: DateTime (scalar)
-        if (this.EarliestTime == null && Exploration.Includes(parent + ".earliestTime", true))
+        if (this.EarliestTime == null && ec.Includes("earliestTime",true))
         {
             this.EarliestTime = new DateTime();
         }
         //      C# -> DateTime? LatestTime
         // GraphQL -> latestTime: DateTime (scalar)
-        if (this.LatestTime == null && Exploration.Includes(parent + ".latestTime", true))
+        if (this.LatestTime == null && ec.Includes("latestTime",true))
         {
             this.LatestTime = new DateTime();
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AwsNativeRdsPointInTimeRestoreWindow> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AwsNativeRdsPointInTimeRestoreWindow());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AwsNativeRdsPointInTimeRestoreWindow> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> FileRecoveryFeasibility? FileRecoveryFeasibility
         // GraphQL -> fileRecoveryFeasibility: FileRecoveryFeasibility! (enum)
-        if (this.FileRecoveryFeasibility == null && Exploration.Includes(parent + ".fileRecoveryFeasibility", true))
+        if (this.FileRecoveryFeasibility == null && ec.Includes("fileRecoveryFeasibility",true))
         {
             this.FileRecoveryFeasibility = new FileRecoveryFeasibility();
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: String! (scalar)
-        if (this.SnapshotId == null && Exploration.Includes(parent + ".snapshotId", true))
+        if (this.SnapshotId == null && ec.Includes("snapshotId",true))
         {
             this.SnapshotId = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CloudNativeFileRecoveryFeasibility> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CloudNativeFileRecoveryFeasibility());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CloudNativeFileRecoveryFeasibility> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

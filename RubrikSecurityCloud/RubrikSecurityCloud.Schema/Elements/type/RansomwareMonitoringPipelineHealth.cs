@@ -30,10 +30,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("anomaliesFound")]
         public System.Int64? AnomaliesFound { get; set; }
 
+        //      C# -> System.Int64? FailedBackups
+        // GraphQL -> failedBackups: Long! (scalar)
+        [JsonProperty("failedBackups")]
+        public System.Int64? FailedBackups { get; set; }
+
         //      C# -> System.Int64? MatchedHunts
         // GraphQL -> matchedHunts: Long! (scalar)
         [JsonProperty("matchedHunts")]
         public System.Int64? MatchedHunts { get; set; }
+
+        //      C# -> System.Int64? SuccessfulBackups
+        // GraphQL -> successfulBackups: Long! (scalar)
+        [JsonProperty("successfulBackups")]
+        public System.Int64? SuccessfulBackups { get; set; }
 
         //      C# -> System.Int64? ThreatsFound
         // GraphQL -> threatsFound: Long! (scalar)
@@ -52,7 +62,9 @@ namespace RubrikSecurityCloud.Types
     public RansomwareMonitoringPipelineHealth Set(
         System.Int64? ActiveHunts = null,
         System.Int64? AnomaliesFound = null,
+        System.Int64? FailedBackups = null,
         System.Int64? MatchedHunts = null,
+        System.Int64? SuccessfulBackups = null,
         System.Int64? ThreatsFound = null
     ) 
     {
@@ -62,8 +74,14 @@ namespace RubrikSecurityCloud.Types
         if ( AnomaliesFound != null ) {
             this.AnomaliesFound = AnomaliesFound;
         }
+        if ( FailedBackups != null ) {
+            this.FailedBackups = FailedBackups;
+        }
         if ( MatchedHunts != null ) {
             this.MatchedHunts = MatchedHunts;
+        }
+        if ( SuccessfulBackups != null ) {
+            this.SuccessfulBackups = SuccessfulBackups;
         }
         if ( ThreatsFound != null ) {
             this.ThreatsFound = ThreatsFound;
@@ -88,10 +106,20 @@ namespace RubrikSecurityCloud.Types
         if (this.AnomaliesFound != null) {
             s += ind + "anomaliesFound\n" ;
         }
+        //      C# -> System.Int64? FailedBackups
+        // GraphQL -> failedBackups: Long! (scalar)
+        if (this.FailedBackups != null) {
+            s += ind + "failedBackups\n" ;
+        }
         //      C# -> System.Int64? MatchedHunts
         // GraphQL -> matchedHunts: Long! (scalar)
         if (this.MatchedHunts != null) {
             s += ind + "matchedHunts\n" ;
+        }
+        //      C# -> System.Int64? SuccessfulBackups
+        // GraphQL -> successfulBackups: Long! (scalar)
+        if (this.SuccessfulBackups != null) {
+            s += ind + "successfulBackups\n" ;
         }
         //      C# -> System.Int64? ThreatsFound
         // GraphQL -> threatsFound: Long! (scalar)
@@ -103,30 +131,41 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? ActiveHunts
         // GraphQL -> activeHunts: Long! (scalar)
-        if (this.ActiveHunts == null && Exploration.Includes(parent + ".activeHunts", true))
+        if (this.ActiveHunts == null && ec.Includes("activeHunts",true))
         {
             this.ActiveHunts = new System.Int64();
         }
         //      C# -> System.Int64? AnomaliesFound
         // GraphQL -> anomaliesFound: Long! (scalar)
-        if (this.AnomaliesFound == null && Exploration.Includes(parent + ".anomaliesFound", true))
+        if (this.AnomaliesFound == null && ec.Includes("anomaliesFound",true))
         {
             this.AnomaliesFound = new System.Int64();
         }
+        //      C# -> System.Int64? FailedBackups
+        // GraphQL -> failedBackups: Long! (scalar)
+        if (this.FailedBackups == null && ec.Includes("failedBackups",true))
+        {
+            this.FailedBackups = new System.Int64();
+        }
         //      C# -> System.Int64? MatchedHunts
         // GraphQL -> matchedHunts: Long! (scalar)
-        if (this.MatchedHunts == null && Exploration.Includes(parent + ".matchedHunts", true))
+        if (this.MatchedHunts == null && ec.Includes("matchedHunts",true))
         {
             this.MatchedHunts = new System.Int64();
         }
+        //      C# -> System.Int64? SuccessfulBackups
+        // GraphQL -> successfulBackups: Long! (scalar)
+        if (this.SuccessfulBackups == null && ec.Includes("successfulBackups",true))
+        {
+            this.SuccessfulBackups = new System.Int64();
+        }
         //      C# -> System.Int64? ThreatsFound
         // GraphQL -> threatsFound: Long! (scalar)
-        if (this.ThreatsFound == null && Exploration.Includes(parent + ".threatsFound", true))
+        if (this.ThreatsFound == null && ec.Includes("threatsFound",true))
         {
             this.ThreatsFound = new System.Int64();
         }
@@ -162,12 +201,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RansomwareMonitoringPipelineHealth> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RansomwareMonitoringPipelineHealth());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<RansomwareMonitoringPipelineHealth> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

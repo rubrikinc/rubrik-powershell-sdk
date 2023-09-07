@@ -120,39 +120,38 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? ApiToken
         // GraphQL -> apiToken: String (scalar)
-        if (this.ApiToken == null && Exploration.Includes(parent + ".apiToken", true))
+        if (this.ApiToken == null && ec.Includes("apiToken",true))
         {
             this.ApiToken = "FETCH";
         }
         //      C# -> System.String? KerberosTicket
         // GraphQL -> kerberosTicket: String (scalar)
-        if (this.KerberosTicket == null && Exploration.Includes(parent + ".kerberosTicket", true))
+        if (this.KerberosTicket == null && ec.Includes("kerberosTicket",true))
         {
             this.KerberosTicket = "FETCH";
         }
         //      C# -> System.String? Nameservices
         // GraphQL -> nameservices: String (scalar)
-        if (this.Nameservices == null && Exploration.Includes(parent + ".nameservices", true))
+        if (this.Nameservices == null && ec.Includes("nameservices",true))
         {
             this.Nameservices = "FETCH";
         }
         //      C# -> System.String? Username
         // GraphQL -> username: String (scalar)
-        if (this.Username == null && Exploration.Includes(parent + ".username", true))
+        if (this.Username == null && ec.Includes("username",true))
         {
             this.Username = "FETCH";
         }
         //      C# -> List<HdfsHost>? Hosts
         // GraphQL -> hosts: [HdfsHost!]! (type)
-        if (this.Hosts == null && Exploration.Includes(parent + ".hosts"))
+        if (this.Hosts == null && ec.Includes("hosts",false))
         {
             this.Hosts = new List<HdfsHost>();
-            this.Hosts.ApplyExploratoryFieldSpec(parent + ".hosts");
+            this.Hosts.ApplyExploratoryFieldSpec(ec.NewChild("hosts"));
         }
     }
 
@@ -186,12 +185,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<HdfsBaseConfig> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new HdfsBaseConfig());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<HdfsBaseConfig> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

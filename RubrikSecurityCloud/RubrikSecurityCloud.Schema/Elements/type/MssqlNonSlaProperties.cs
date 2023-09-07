@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? CopyOnly
         // GraphQL -> copyOnly: Boolean (scalar)
-        if (this.CopyOnly == null && Exploration.Includes(parent + ".copyOnly", true))
+        if (this.CopyOnly == null && ec.Includes("copyOnly",true))
         {
             this.CopyOnly = true;
         }
         //      C# -> System.Int32? LogBackupFrequencyInSeconds
         // GraphQL -> logBackupFrequencyInSeconds: Int (scalar)
-        if (this.LogBackupFrequencyInSeconds == null && Exploration.Includes(parent + ".logBackupFrequencyInSeconds", true))
+        if (this.LogBackupFrequencyInSeconds == null && ec.Includes("logBackupFrequencyInSeconds",true))
         {
             this.LogBackupFrequencyInSeconds = Int32.MinValue;
         }
         //      C# -> System.Int32? LogRetentionHours
         // GraphQL -> logRetentionHours: Int (scalar)
-        if (this.LogRetentionHours == null && Exploration.Includes(parent + ".logRetentionHours", true))
+        if (this.LogRetentionHours == null && ec.Includes("logRetentionHours",true))
         {
             this.LogRetentionHours = Int32.MinValue;
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<MssqlNonSlaProperties> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new MssqlNonSlaProperties());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<MssqlNonSlaProperties> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

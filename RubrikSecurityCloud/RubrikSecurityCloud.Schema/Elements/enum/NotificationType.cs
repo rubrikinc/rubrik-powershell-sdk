@@ -21,8 +21,8 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "INFO")]
         INFO,
 
-        [EnumMember(Value = "NOTIFICATION_TYPE_UNSPECIFIED")]
-        NOTIFICATION_TYPE_UNSPECIFIED,
+        [EnumMember(Value = "TYPE_UNSPECIFIED")]
+        TYPE_UNSPECIFIED,
 
         [EnumMember(Value = "WARNING")]
         WARNING

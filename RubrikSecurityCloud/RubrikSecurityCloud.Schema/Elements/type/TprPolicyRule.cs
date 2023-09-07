@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<TprRule>? TprRules
         // GraphQL -> tprRules: [TprRule!]! (enum)
-        if (this.TprRules == null && Exploration.Includes(parent + ".tprRules", true))
+        if (this.TprRules == null && ec.Includes("tprRules",true))
         {
             this.TprRules = new List<TprRule>();
         }
         //      C# -> TprPolicyObject? TprPolicyObject
         // GraphQL -> tprPolicyObject: TprPolicyObject (type)
-        if (this.TprPolicyObject == null && Exploration.Includes(parent + ".tprPolicyObject"))
+        if (this.TprPolicyObject == null && ec.Includes("tprPolicyObject",false))
         {
             this.TprPolicyObject = new TprPolicyObject();
-            this.TprPolicyObject.ApplyExploratoryFieldSpec(parent + ".tprPolicyObject");
+            this.TprPolicyObject.ApplyExploratoryFieldSpec(ec.NewChild("tprPolicyObject"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<TprPolicyRule> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new TprPolicyRule());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<TprPolicyRule> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -274,105 +274,104 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? BlueprintId
         // GraphQL -> blueprintId: UUID! (scalar)
-        if (this.BlueprintId == null && Exploration.Includes(parent + ".blueprintId", true))
+        if (this.BlueprintId == null && ec.Includes("blueprintId",true))
         {
             this.BlueprintId = "FETCH";
         }
         //      C# -> System.String? BlueprintName
         // GraphQL -> blueprintName: String! (scalar)
-        if (this.BlueprintName == null && Exploration.Includes(parent + ".blueprintName", true))
+        if (this.BlueprintName == null && ec.Includes("blueprintName",true))
         {
             this.BlueprintName = "FETCH";
         }
         //      C# -> System.String? DataTransferType
         // GraphQL -> dataTransferType: String! (scalar)
-        if (this.DataTransferType == null && Exploration.Includes(parent + ".dataTransferType", true))
+        if (this.DataTransferType == null && ec.Includes("dataTransferType",true))
         {
             this.DataTransferType = "FETCH";
         }
         //      C# -> System.Int64? ElapsedTime
         // GraphQL -> elapsedTime: Long! (scalar)
-        if (this.ElapsedTime == null && Exploration.Includes(parent + ".elapsedTime", true))
+        if (this.ElapsedTime == null && ec.Includes("elapsedTime",true))
         {
             this.ElapsedTime = new System.Int64();
         }
         //      C# -> System.Int64? EndTime
         // GraphQL -> endTime: Long! (scalar)
-        if (this.EndTime == null && Exploration.Includes(parent + ".endTime", true))
+        if (this.EndTime == null && ec.Includes("endTime",true))
         {
             this.EndTime = new System.Int64();
         }
         //      C# -> System.Boolean? IsArchived
         // GraphQL -> isArchived: Boolean! (scalar)
-        if (this.IsArchived == null && Exploration.Includes(parent + ".isArchived", true))
+        if (this.IsArchived == null && ec.Includes("isArchived",true))
         {
             this.IsArchived = true;
         }
         //      C# -> System.Boolean? IsBlueprintVisible
         // GraphQL -> isBlueprintVisible: Boolean! (scalar)
-        if (this.IsBlueprintVisible == null && Exploration.Includes(parent + ".isBlueprintVisible", true))
+        if (this.IsBlueprintVisible == null && ec.Includes("isBlueprintVisible",true))
         {
             this.IsBlueprintVisible = true;
         }
         //      C# -> System.String? JobId
         // GraphQL -> jobId: String! (scalar)
-        if (this.JobId == null && Exploration.Includes(parent + ".jobId", true))
+        if (this.JobId == null && ec.Includes("jobId",true))
         {
             this.JobId = "FETCH";
         }
         //      C# -> System.String? JobType
         // GraphQL -> jobType: String! (scalar)
-        if (this.JobType == null && Exploration.Includes(parent + ".jobType", true))
+        if (this.JobType == null && ec.Includes("jobType",true))
         {
             this.JobType = "FETCH";
         }
         //      C# -> List<System.String>? ObjectIds
         // GraphQL -> objectIds: [String!]! (scalar)
-        if (this.ObjectIds == null && Exploration.Includes(parent + ".objectIds", true))
+        if (this.ObjectIds == null && ec.Includes("objectIds",true))
         {
             this.ObjectIds = new List<System.String>();
         }
         //      C# -> System.Single? Progress
         // GraphQL -> progress: Float! (scalar)
-        if (this.Progress == null && Exploration.Includes(parent + ".progress", true))
+        if (this.Progress == null && ec.Includes("progress",true))
         {
             this.Progress = new System.Single();
         }
         //      C# -> System.String? RecoveryName
         // GraphQL -> recoveryName: String! (scalar)
-        if (this.RecoveryName == null && Exploration.Includes(parent + ".recoveryName", true))
+        if (this.RecoveryName == null && ec.Includes("recoveryName",true))
         {
             this.RecoveryName = "FETCH";
         }
         //      C# -> System.String? RecoveryPlanName
         // GraphQL -> recoveryPlanName: String! (scalar)
-        if (this.RecoveryPlanName == null && Exploration.Includes(parent + ".recoveryPlanName", true))
+        if (this.RecoveryPlanName == null && ec.Includes("recoveryPlanName",true))
         {
             this.RecoveryPlanName = "FETCH";
         }
         //      C# -> System.Int64? StartTime
         // GraphQL -> startTime: Long! (scalar)
-        if (this.StartTime == null && Exploration.Includes(parent + ".startTime", true))
+        if (this.StartTime == null && ec.Includes("startTime",true))
         {
             this.StartTime = new System.Int64();
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = "FETCH";
         }
         //      C# -> List<FailoverStep>? Steps
         // GraphQL -> steps: [FailoverStep!]! (type)
-        if (this.Steps == null && Exploration.Includes(parent + ".steps"))
+        if (this.Steps == null && ec.Includes("steps",false))
         {
             this.Steps = new List<FailoverStep>();
-            this.Steps.ApplyExploratoryFieldSpec(parent + ".steps");
+            this.Steps.ApplyExploratoryFieldSpec(ec.NewChild("steps"));
         }
     }
 
@@ -406,12 +405,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<FailoverJobReport> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new FailoverJobReport());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<FailoverJobReport> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -106,33 +106,32 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? StoragePolicyId
         // GraphQL -> storagePolicyId: String (scalar)
-        if (this.StoragePolicyId == null && Exploration.Includes(parent + ".storagePolicyId", true))
+        if (this.StoragePolicyId == null && ec.Includes("storagePolicyId",true))
         {
             this.StoragePolicyId = "FETCH";
         }
         //      C# -> System.String? VcdMoid
         // GraphQL -> vcdMoid: String! (scalar)
-        if (this.VcdMoid == null && Exploration.Includes(parent + ".vcdMoid", true))
+        if (this.VcdMoid == null && ec.Includes("vcdMoid",true))
         {
             this.VcdMoid = "FETCH";
         }
         //      C# -> List<VappVmNetworkConnection>? NetworkConnections
         // GraphQL -> networkConnections: [VappVmNetworkConnection!]! (type)
-        if (this.NetworkConnections == null && Exploration.Includes(parent + ".networkConnections"))
+        if (this.NetworkConnections == null && ec.Includes("networkConnections",false))
         {
             this.NetworkConnections = new List<VappVmNetworkConnection>();
-            this.NetworkConnections.ApplyExploratoryFieldSpec(parent + ".networkConnections");
+            this.NetworkConnections.ApplyExploratoryFieldSpec(ec.NewChild("networkConnections"));
         }
     }
 
@@ -166,12 +165,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VappVmRestoreSpec> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VappVmRestoreSpec());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VappVmRestoreSpec> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

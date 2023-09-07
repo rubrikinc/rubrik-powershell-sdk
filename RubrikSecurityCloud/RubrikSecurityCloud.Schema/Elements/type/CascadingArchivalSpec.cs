@@ -112,36 +112,35 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<RetentionUnit>? Frequency
         // GraphQL -> frequency: [RetentionUnit!]! (enum)
-        if (this.Frequency == null && Exploration.Includes(parent + ".frequency", true))
+        if (this.Frequency == null && ec.Includes("frequency",true))
         {
             this.Frequency = new List<RetentionUnit>();
         }
         //      C# -> Target? ArchivalLocation
         // GraphQL -> archivalLocation: Target (interface)
-        if (this.ArchivalLocation == null && Exploration.Includes(parent + ".archivalLocation"))
+        if (this.ArchivalLocation == null && ec.Includes("archivalLocation",false))
         {
             var impls = new List<Target>();
-            impls.ApplyExploratoryFieldSpec(parent + ".archivalLocation");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("archivalLocation"));
             this.ArchivalLocation = (Target)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> Duration? ArchivalThreshold
         // GraphQL -> archivalThreshold: Duration (type)
-        if (this.ArchivalThreshold == null && Exploration.Includes(parent + ".archivalThreshold"))
+        if (this.ArchivalThreshold == null && ec.Includes("archivalThreshold",false))
         {
             this.ArchivalThreshold = new Duration();
-            this.ArchivalThreshold.ApplyExploratoryFieldSpec(parent + ".archivalThreshold");
+            this.ArchivalThreshold.ApplyExploratoryFieldSpec(ec.NewChild("archivalThreshold"));
         }
         //      C# -> ArchivalTieringSpec? ArchivalTieringSpec
         // GraphQL -> archivalTieringSpec: ArchivalTieringSpec (type)
-        if (this.ArchivalTieringSpec == null && Exploration.Includes(parent + ".archivalTieringSpec"))
+        if (this.ArchivalTieringSpec == null && ec.Includes("archivalTieringSpec",false))
         {
             this.ArchivalTieringSpec = new ArchivalTieringSpec();
-            this.ArchivalTieringSpec.ApplyExploratoryFieldSpec(parent + ".archivalTieringSpec");
+            this.ArchivalTieringSpec.ApplyExploratoryFieldSpec(ec.NewChild("archivalTieringSpec"));
         }
     }
 
@@ -175,12 +174,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CascadingArchivalSpec> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CascadingArchivalSpec());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CascadingArchivalSpec> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -534,215 +534,214 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ConnectionStatusType? ConnectionStatus
         // GraphQL -> connectionStatus: ConnectionStatusType! (enum)
-        if (this.ConnectionStatus == null && Exploration.Includes(parent + ".connectionStatus", true))
+        if (this.ConnectionStatus == null && ec.Includes("connectionStatus",true))
         {
             this.ConnectionStatus = new ConnectionStatusType();
         }
         //      C# -> InstanceTypeEnum? InstanceType
         // GraphQL -> instanceType: InstanceTypeEnum! (enum)
-        if (this.InstanceType == null && Exploration.Includes(parent + ".instanceType", true))
+        if (this.InstanceType == null && ec.Includes("instanceType",true))
         {
             this.InstanceType = new InstanceTypeEnum();
         }
         //      C# -> ConnectionStatusType? LocationConnectionStatus
         // GraphQL -> locationConnectionStatus: ConnectionStatusType! (enum)
-        if (this.LocationConnectionStatus == null && Exploration.Includes(parent + ".locationConnectionStatus", true))
+        if (this.LocationConnectionStatus == null && ec.Includes("locationConnectionStatus",true))
         {
             this.LocationConnectionStatus = new ConnectionStatusType();
         }
         //      C# -> LocationScope? LocationScope
         // GraphQL -> locationScope: LocationScope! (enum)
-        if (this.LocationScope == null && Exploration.Includes(parent + ".locationScope", true))
+        if (this.LocationScope == null && ec.Includes("locationScope",true))
         {
             this.LocationScope = new LocationScope();
         }
         //      C# -> ReaderRetrievalMethod? ReaderRetrievalMethod
         // GraphQL -> readerRetrievalMethod: ReaderRetrievalMethod (enum)
-        if (this.ReaderRetrievalMethod == null && Exploration.Includes(parent + ".readerRetrievalMethod", true))
+        if (this.ReaderRetrievalMethod == null && ec.Includes("readerRetrievalMethod",true))
         {
             this.ReaderRetrievalMethod = new ReaderRetrievalMethod();
         }
         //      C# -> AzureRetrievalTier? RetrievalTier
         // GraphQL -> retrievalTier: AzureRetrievalTier! (enum)
-        if (this.RetrievalTier == null && Exploration.Includes(parent + ".retrievalTier", true))
+        if (this.RetrievalTier == null && ec.Includes("retrievalTier",true))
         {
             this.RetrievalTier = new AzureRetrievalTier();
         }
         //      C# -> ArchivalLocationStatus? Status
         // GraphQL -> status: ArchivalLocationStatus! (enum)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = new ArchivalLocationStatus();
         }
         //      C# -> TargetSyncStatus? SyncStatus
         // GraphQL -> syncStatus: TargetSyncStatus! (enum)
-        if (this.SyncStatus == null && Exploration.Includes(parent + ".syncStatus", true))
+        if (this.SyncStatus == null && ec.Includes("syncStatus",true))
         {
             this.SyncStatus = new TargetSyncStatus();
         }
         //      C# -> TargetType? TargetType
         // GraphQL -> targetType: TargetType! (enum)
-        if (this.TargetType == null && Exploration.Includes(parent + ".targetType", true))
+        if (this.TargetType == null && ec.Includes("targetType",true))
         {
             this.TargetType = new TargetType();
         }
         //      C# -> UpgradeStatus? UpgradeStatus
         // GraphQL -> upgradeStatus: UpgradeStatus! (enum)
-        if (this.UpgradeStatus == null && Exploration.Includes(parent + ".upgradeStatus", true))
+        if (this.UpgradeStatus == null && ec.Includes("upgradeStatus",true))
         {
             this.UpgradeStatus = new UpgradeStatus();
         }
         //      C# -> CloudAccount? CloudAccount
         // GraphQL -> cloudAccount: CloudAccount! (interface)
-        if (this.CloudAccount == null && Exploration.Includes(parent + ".cloudAccount"))
+        if (this.CloudAccount == null && ec.Includes("cloudAccount",false))
         {
             var impls = new List<CloudAccount>();
-            impls.ApplyExploratoryFieldSpec(parent + ".cloudAccount");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("cloudAccount"));
             this.CloudAccount = (CloudAccount)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> System.String? AccessKey
         // GraphQL -> accessKey: String (scalar)
-        if (this.AccessKey == null && Exploration.Includes(parent + ".accessKey", true))
+        if (this.AccessKey == null && ec.Includes("accessKey",true))
         {
             this.AccessKey = "FETCH";
         }
         //      C# -> System.Boolean? BypassProxy
         // GraphQL -> bypassProxy: Boolean! (scalar)
-        if (this.BypassProxy == null && Exploration.Includes(parent + ".bypassProxy", true))
+        if (this.BypassProxy == null && ec.Includes("bypassProxy",true))
         {
             this.BypassProxy = true;
         }
         //      C# -> System.String? ClusterName
         // GraphQL -> clusterName: String (scalar)
-        if (this.ClusterName == null && Exploration.Includes(parent + ".clusterName", true))
+        if (this.ClusterName == null && ec.Includes("clusterName",true))
         {
             this.ClusterName = "FETCH";
         }
         //      C# -> System.Int64? ConsumedBytes
         // GraphQL -> consumedBytes: Long (scalar)
-        if (this.ConsumedBytes == null && Exploration.Includes(parent + ".consumedBytes", true))
+        if (this.ConsumedBytes == null && ec.Includes("consumedBytes",true))
         {
             this.ConsumedBytes = new System.Int64();
         }
         //      C# -> System.String? ContainerName
         // GraphQL -> containerName: String! (scalar)
-        if (this.ContainerName == null && Exploration.Includes(parent + ".containerName", true))
+        if (this.ContainerName == null && ec.Includes("containerName",true))
         {
             this.ContainerName = "FETCH";
         }
         //      C# -> System.Int32? FailedTasks
         // GraphQL -> failedTasks: Int (scalar)
-        if (this.FailedTasks == null && Exploration.Includes(parent + ".failedTasks", true))
+        if (this.FailedTasks == null && ec.Includes("failedTasks",true))
         {
             this.FailedTasks = Int32.MinValue;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsActive
         // GraphQL -> isActive: Boolean! (scalar)
-        if (this.IsActive == null && Exploration.Includes(parent + ".isActive", true))
+        if (this.IsActive == null && ec.Includes("isActive",true))
         {
             this.IsActive = true;
         }
         //      C# -> System.Boolean? IsArchived
         // GraphQL -> isArchived: Boolean! (scalar)
-        if (this.IsArchived == null && Exploration.Includes(parent + ".isArchived", true))
+        if (this.IsArchived == null && ec.Includes("isArchived",true))
         {
             this.IsArchived = true;
         }
         //      C# -> System.Boolean? IsAzureTieringSupported
         // GraphQL -> isAzureTieringSupported: Boolean (scalar)
-        if (this.IsAzureTieringSupported == null && Exploration.Includes(parent + ".isAzureTieringSupported", true))
+        if (this.IsAzureTieringSupported == null && ec.Includes("isAzureTieringSupported",true))
         {
             this.IsAzureTieringSupported = true;
         }
         //      C# -> System.Boolean? IsConsolidationEnabled
         // GraphQL -> isConsolidationEnabled: Boolean! (scalar)
-        if (this.IsConsolidationEnabled == null && Exploration.Includes(parent + ".isConsolidationEnabled", true))
+        if (this.IsConsolidationEnabled == null && ec.Includes("isConsolidationEnabled",true))
         {
             this.IsConsolidationEnabled = true;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.Int32? RunningTasks
         // GraphQL -> runningTasks: Int (scalar)
-        if (this.RunningTasks == null && Exploration.Includes(parent + ".runningTasks", true))
+        if (this.RunningTasks == null && ec.Includes("runningTasks",true))
         {
             this.RunningTasks = Int32.MinValue;
         }
         //      C# -> System.String? StorageAccountName
         // GraphQL -> storageAccountName: String! (scalar)
-        if (this.StorageAccountName == null && Exploration.Includes(parent + ".storageAccountName", true))
+        if (this.StorageAccountName == null && ec.Includes("storageAccountName",true))
         {
             this.StorageAccountName = "FETCH";
         }
         //      C# -> System.String? SyncFailureReason
         // GraphQL -> syncFailureReason: String! (scalar)
-        if (this.SyncFailureReason == null && Exploration.Includes(parent + ".syncFailureReason", true))
+        if (this.SyncFailureReason == null && ec.Includes("syncFailureReason",true))
         {
             this.SyncFailureReason = "FETCH";
         }
         //      C# -> AzureCloudNativeTargetCompanion? CloudNativeCompanion
         // GraphQL -> cloudNativeCompanion: AzureCloudNativeTargetCompanion (type)
-        if (this.CloudNativeCompanion == null && Exploration.Includes(parent + ".cloudNativeCompanion"))
+        if (this.CloudNativeCompanion == null && ec.Includes("cloudNativeCompanion",false))
         {
             this.CloudNativeCompanion = new AzureCloudNativeTargetCompanion();
-            this.CloudNativeCompanion.ApplyExploratoryFieldSpec(parent + ".cloudNativeCompanion");
+            this.CloudNativeCompanion.ApplyExploratoryFieldSpec(ec.NewChild("cloudNativeCompanion"));
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
-        if (this.Cluster == null && Exploration.Includes(parent + ".cluster"))
+        if (this.Cluster == null && ec.Includes("cluster",false))
         {
             this.Cluster = new Cluster();
-            this.Cluster.ApplyExploratoryFieldSpec(parent + ".cluster");
+            this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
         }
         //      C# -> AzureComputeSettings? ComputeSettings
         // GraphQL -> computeSettings: AzureComputeSettings (type)
-        if (this.ComputeSettings == null && Exploration.Includes(parent + ".computeSettings"))
+        if (this.ComputeSettings == null && ec.Includes("computeSettings",false))
         {
             this.ComputeSettings = new AzureComputeSettings();
-            this.ComputeSettings.ApplyExploratoryFieldSpec(parent + ".computeSettings");
+            this.ComputeSettings.ApplyExploratoryFieldSpec(ec.NewChild("computeSettings"));
         }
         //      C# -> AzureImmutabilitySettingsType? ImmutabilitySettings
         // GraphQL -> immutabilitySettings: AzureImmutabilitySettingsType (type)
-        if (this.ImmutabilitySettings == null && Exploration.Includes(parent + ".immutabilitySettings"))
+        if (this.ImmutabilitySettings == null && ec.Includes("immutabilitySettings",false))
         {
             this.ImmutabilitySettings = new AzureImmutabilitySettingsType();
-            this.ImmutabilitySettings.ApplyExploratoryFieldSpec(parent + ".immutabilitySettings");
+            this.ImmutabilitySettings.ApplyExploratoryFieldSpec(ec.NewChild("immutabilitySettings"));
         }
         //      C# -> ProxySettings? ProxySettings
         // GraphQL -> proxySettings: ProxySettings (type)
-        if (this.ProxySettings == null && Exploration.Includes(parent + ".proxySettings"))
+        if (this.ProxySettings == null && ec.Includes("proxySettings",false))
         {
             this.ProxySettings = new ProxySettings();
-            this.ProxySettings.ApplyExploratoryFieldSpec(parent + ".proxySettings");
+            this.ProxySettings.ApplyExploratoryFieldSpec(ec.NewChild("proxySettings"));
         }
         //      C# -> TargetMappingBasic? TargetMapping
         // GraphQL -> targetMapping: TargetMappingBasic (type)
-        if (this.TargetMapping == null && Exploration.Includes(parent + ".targetMapping"))
+        if (this.TargetMapping == null && ec.Includes("targetMapping",false))
         {
             this.TargetMapping = new TargetMappingBasic();
-            this.TargetMapping.ApplyExploratoryFieldSpec(parent + ".targetMapping");
+            this.TargetMapping.ApplyExploratoryFieldSpec(ec.NewChild("targetMapping"));
         }
         //      C# -> List<TargetMappingBasic>? TargetMappingBasic
         // GraphQL -> targetMappingBasic: [TargetMappingBasic!] (type)
-        if (this.TargetMappingBasic == null && Exploration.Includes(parent + ".targetMappingBasic"))
+        if (this.TargetMappingBasic == null && ec.Includes("targetMappingBasic",false))
         {
             this.TargetMappingBasic = new List<TargetMappingBasic>();
-            this.TargetMappingBasic.ApplyExploratoryFieldSpec(parent + ".targetMappingBasic");
+            this.TargetMappingBasic.ApplyExploratoryFieldSpec(ec.NewChild("targetMappingBasic"));
         }
     }
 
@@ -776,12 +775,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RubrikManagedAzureTarget> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RubrikManagedAzureTarget());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<RubrikManagedAzureTarget> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? DoesSlaExists
         // GraphQL -> doesSlaExists: Boolean! (scalar)
-        if (this.DoesSlaExists == null && Exploration.Includes(parent + ".doesSlaExists", true))
+        if (this.DoesSlaExists == null && ec.Includes("doesSlaExists",true))
         {
             this.DoesSlaExists = true;
         }
         //      C# -> System.Boolean? IsDownloadSuccessful
         // GraphQL -> isDownloadSuccessful: Boolean! (scalar)
-        if (this.IsDownloadSuccessful == null && Exploration.Includes(parent + ".isDownloadSuccessful", true))
+        if (this.IsDownloadSuccessful == null && ec.Includes("isDownloadSuccessful",true))
         {
             this.IsDownloadSuccessful = true;
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<DownloadSlaWithReplicationCsvReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new DownloadSlaWithReplicationCsvReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<DownloadSlaWithReplicationCsvReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

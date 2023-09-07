@@ -92,27 +92,26 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? ImageSizeOpt
         // GraphQL -> imageSizeOpt: Long (scalar)
-        if (this.ImageSizeOpt == null && Exploration.Includes(parent + ".imageSizeOpt", true))
+        if (this.ImageSizeOpt == null && ec.Includes("imageSizeOpt",true))
         {
             this.ImageSizeOpt = new System.Int64();
         }
         //      C# -> System.String? MountDir
         // GraphQL -> mountDir: String! (scalar)
-        if (this.MountDir == null && Exploration.Includes(parent + ".mountDir", true))
+        if (this.MountDir == null && ec.Includes("mountDir",true))
         {
             this.MountDir = "FETCH";
         }
         //      C# -> ClusterNode? Node
         // GraphQL -> node: ClusterNode (type)
-        if (this.Node == null && Exploration.Includes(parent + ".node"))
+        if (this.Node == null && ec.Includes("node",false))
         {
             this.Node = new ClusterNode();
-            this.Node.ApplyExploratoryFieldSpec(parent + ".node");
+            this.Node.ApplyExploratoryFieldSpec(ec.NewChild("node"));
         }
     }
 
@@ -146,12 +145,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ManagedVolumeMountSpec> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ManagedVolumeMountSpec());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ManagedVolumeMountSpec> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

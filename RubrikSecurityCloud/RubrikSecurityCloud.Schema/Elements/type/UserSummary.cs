@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> UserDomain? Domain
         // GraphQL -> domain: UserDomain! (enum)
-        if (this.Domain == null && Exploration.Includes(parent + ".domain", true))
+        if (this.Domain == null && ec.Includes("domain",true))
         {
             this.Domain = new UserDomain();
         }
         //      C# -> System.String? Email
         // GraphQL -> email: String! (scalar)
-        if (this.Email == null && Exploration.Includes(parent + ".email", true))
+        if (this.Email == null && ec.Includes("email",true))
         {
             this.Email = "FETCH";
         }
         //      C# -> System.String? UserId
         // GraphQL -> userId: String! (scalar)
-        if (this.UserId == null && Exploration.Includes(parent + ".userId", true))
+        if (this.UserId == null && ec.Includes("userId",true))
         {
             this.UserId = "FETCH";
         }
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)
-        if (this.Username == null && Exploration.Includes(parent + ".username", true))
+        if (this.Username == null && ec.Includes("username",true))
         {
             this.Username = "FETCH";
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<UserSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new UserSummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<UserSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

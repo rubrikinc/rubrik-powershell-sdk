@@ -92,27 +92,26 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Address
         // GraphQL -> address: String! (scalar)
-        if (this.Address == null && Exploration.Includes(parent + ".address", true))
+        if (this.Address == null && ec.Includes("address",true))
         {
             this.Address = "FETCH";
         }
         //      C# -> System.Int32? Port
         // GraphQL -> port: Int! (scalar)
-        if (this.Port == null && Exploration.Includes(parent + ".port", true))
+        if (this.Port == null && ec.Includes("port",true))
         {
             this.Port = Int32.MinValue;
         }
         //      C# -> List<CdmKmipServerInfo>? Clusters
         // GraphQL -> clusters: [CdmKmipServerInfo!]! (type)
-        if (this.Clusters == null && Exploration.Includes(parent + ".clusters"))
+        if (this.Clusters == null && ec.Includes("clusters",false))
         {
             this.Clusters = new List<CdmKmipServerInfo>();
-            this.Clusters.ApplyExploratoryFieldSpec(parent + ".clusters");
+            this.Clusters.ApplyExploratoryFieldSpec(ec.NewChild("clusters"));
         }
     }
 
@@ -146,12 +145,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<KmipServer> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new KmipServer());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<KmipServer> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

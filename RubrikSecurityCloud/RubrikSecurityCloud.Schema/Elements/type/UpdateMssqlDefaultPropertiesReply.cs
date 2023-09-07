@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? CbtStatus
         // GraphQL -> cbtStatus: Boolean! (scalar)
-        if (this.CbtStatus == null && Exploration.Includes(parent + ".cbtStatus", true))
+        if (this.CbtStatus == null && ec.Includes("cbtStatus",true))
         {
             this.CbtStatus = true;
         }
         //      C# -> System.Int64? LogBackupFrequencyInSeconds
         // GraphQL -> logBackupFrequencyInSeconds: Long! (scalar)
-        if (this.LogBackupFrequencyInSeconds == null && Exploration.Includes(parent + ".logBackupFrequencyInSeconds", true))
+        if (this.LogBackupFrequencyInSeconds == null && ec.Includes("logBackupFrequencyInSeconds",true))
         {
             this.LogBackupFrequencyInSeconds = new System.Int64();
         }
         //      C# -> System.Int32? LogRetentionTimeInHours
         // GraphQL -> logRetentionTimeInHours: Int (scalar)
-        if (this.LogRetentionTimeInHours == null && Exploration.Includes(parent + ".logRetentionTimeInHours", true))
+        if (this.LogRetentionTimeInHours == null && ec.Includes("logRetentionTimeInHours",true))
         {
             this.LogRetentionTimeInHours = Int32.MinValue;
         }
         //      C# -> System.Boolean? ShouldUseDefaultBackupLocation
         // GraphQL -> shouldUseDefaultBackupLocation: Boolean (scalar)
-        if (this.ShouldUseDefaultBackupLocation == null && Exploration.Includes(parent + ".shouldUseDefaultBackupLocation", true))
+        if (this.ShouldUseDefaultBackupLocation == null && ec.Includes("shouldUseDefaultBackupLocation",true))
         {
             this.ShouldUseDefaultBackupLocation = true;
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<UpdateMssqlDefaultPropertiesReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new UpdateMssqlDefaultPropertiesReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<UpdateMssqlDefaultPropertiesReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

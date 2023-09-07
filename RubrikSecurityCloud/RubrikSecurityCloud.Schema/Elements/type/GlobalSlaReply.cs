@@ -533,211 +533,210 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<SlaObjectType>? ObjectTypes
         // GraphQL -> objectTypes: [SlaObjectType!]! (enum)
-        if (this.ObjectTypes == null && Exploration.Includes(parent + ".objectTypes", true))
+        if (this.ObjectTypes == null && ec.Includes("objectTypes",true))
         {
             this.ObjectTypes = new List<SlaObjectType>();
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: String! (scalar)
-        if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
+        if (this.ClusterUuid == null && ec.Includes("clusterUuid",true))
         {
             this.ClusterUuid = "FETCH";
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
-        if (this.Description == null && Exploration.Includes(parent + ".description", true))
+        if (this.Description == null && ec.Includes("description",true))
         {
             this.Description = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsArchived
         // GraphQL -> isArchived: Boolean! (scalar)
-        if (this.IsArchived == null && Exploration.Includes(parent + ".isArchived", true))
+        if (this.IsArchived == null && ec.Includes("isArchived",true))
         {
             this.IsArchived = true;
         }
         //      C# -> System.Boolean? IsDefault
         // GraphQL -> isDefault: Boolean! (scalar)
-        if (this.IsDefault == null && Exploration.Includes(parent + ".isDefault", true))
+        if (this.IsDefault == null && ec.Includes("isDefault",true))
         {
             this.IsDefault = true;
         }
         //      C# -> System.Boolean? IsRetentionLockedSla
         // GraphQL -> isRetentionLockedSla: Boolean! (scalar)
-        if (this.IsRetentionLockedSla == null && Exploration.Includes(parent + ".isRetentionLockedSla", true))
+        if (this.IsRetentionLockedSla == null && ec.Includes("isRetentionLockedSla",true))
         {
             this.IsRetentionLockedSla = true;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? OwnerOrgName
         // GraphQL -> ownerOrgName: String! (scalar)
-        if (this.OwnerOrgName == null && Exploration.Includes(parent + ".ownerOrgName", true))
+        if (this.OwnerOrgName == null && ec.Includes("ownerOrgName",true))
         {
             this.OwnerOrgName = "FETCH";
         }
         //      C# -> System.Int32? ProtectedObjectCount
         // GraphQL -> protectedObjectCount: Int! (scalar)
-        if (this.ProtectedObjectCount == null && Exploration.Includes(parent + ".protectedObjectCount", true))
+        if (this.ProtectedObjectCount == null && ec.Includes("protectedObjectCount",true))
         {
             this.ProtectedObjectCount = Int32.MinValue;
         }
         //      C# -> DateTime? SnapshotScheduleLastUpdatedAt
         // GraphQL -> snapshotScheduleLastUpdatedAt: DateTime (scalar)
-        if (this.SnapshotScheduleLastUpdatedAt == null && Exploration.Includes(parent + ".snapshotScheduleLastUpdatedAt", true))
+        if (this.SnapshotScheduleLastUpdatedAt == null && ec.Includes("snapshotScheduleLastUpdatedAt",true))
         {
             this.SnapshotScheduleLastUpdatedAt = new DateTime();
         }
         //      C# -> System.Int64? StateVersion
         // GraphQL -> stateVersion: Long! (scalar)
-        if (this.StateVersion == null && Exploration.Includes(parent + ".stateVersion", true))
+        if (this.StateVersion == null && ec.Includes("stateVersion",true))
         {
             this.StateVersion = new System.Int64();
         }
         //      C# -> System.String? UiColor
         // GraphQL -> uiColor: String! (scalar)
-        if (this.UiColor == null && Exploration.Includes(parent + ".uiColor", true))
+        if (this.UiColor == null && ec.Includes("uiColor",true))
         {
             this.UiColor = "FETCH";
         }
         //      C# -> System.String? Version
         // GraphQL -> version: String (scalar)
-        if (this.Version == null && Exploration.Includes(parent + ".version", true))
+        if (this.Version == null && ec.Includes("version",true))
         {
             this.Version = "FETCH";
         }
         //      C# -> List<SlaAssociatedOrganization>? AllOrgsHavingAccess
         // GraphQL -> allOrgsHavingAccess: [SlaAssociatedOrganization!]! (type)
-        if (this.AllOrgsHavingAccess == null && Exploration.Includes(parent + ".allOrgsHavingAccess"))
+        if (this.AllOrgsHavingAccess == null && ec.Includes("allOrgsHavingAccess",false))
         {
             this.AllOrgsHavingAccess = new List<SlaAssociatedOrganization>();
-            this.AllOrgsHavingAccess.ApplyExploratoryFieldSpec(parent + ".allOrgsHavingAccess");
+            this.AllOrgsHavingAccess.ApplyExploratoryFieldSpec(ec.NewChild("allOrgsHavingAccess"));
         }
         //      C# -> List<Org>? AllOrgsWithAccess
         // GraphQL -> allOrgsWithAccess: [Org!]! (type)
-        if (this.AllOrgsWithAccess == null && Exploration.Includes(parent + ".allOrgsWithAccess"))
+        if (this.AllOrgsWithAccess == null && ec.Includes("allOrgsWithAccess",false))
         {
             this.AllOrgsWithAccess = new List<Org>();
-            this.AllOrgsWithAccess.ApplyExploratoryFieldSpec(parent + ".allOrgsWithAccess");
+            this.AllOrgsWithAccess.ApplyExploratoryFieldSpec(ec.NewChild("allOrgsWithAccess"));
         }
         //      C# -> ArchivalSpec? ArchivalSpec
         // GraphQL -> archivalSpec: ArchivalSpec (type)
-        if (this.ArchivalSpec == null && Exploration.Includes(parent + ".archivalSpec"))
+        if (this.ArchivalSpec == null && ec.Includes("archivalSpec",false))
         {
             this.ArchivalSpec = new ArchivalSpec();
-            this.ArchivalSpec.ApplyExploratoryFieldSpec(parent + ".archivalSpec");
+            this.ArchivalSpec.ApplyExploratoryFieldSpec(ec.NewChild("archivalSpec"));
         }
         //      C# -> List<ArchivalSpec>? ArchivalSpecs
         // GraphQL -> archivalSpecs: [ArchivalSpec!]! (type)
-        if (this.ArchivalSpecs == null && Exploration.Includes(parent + ".archivalSpecs"))
+        if (this.ArchivalSpecs == null && ec.Includes("archivalSpecs",false))
         {
             this.ArchivalSpecs = new List<ArchivalSpec>();
-            this.ArchivalSpecs.ApplyExploratoryFieldSpec(parent + ".archivalSpecs");
+            this.ArchivalSpecs.ApplyExploratoryFieldSpec(ec.NewChild("archivalSpecs"));
         }
         //      C# -> List<BackupWindow>? BackupWindows
         // GraphQL -> backupWindows: [BackupWindow!]! (type)
-        if (this.BackupWindows == null && Exploration.Includes(parent + ".backupWindows"))
+        if (this.BackupWindows == null && ec.Includes("backupWindows",false))
         {
             this.BackupWindows = new List<BackupWindow>();
-            this.BackupWindows.ApplyExploratoryFieldSpec(parent + ".backupWindows");
+            this.BackupWindows.ApplyExploratoryFieldSpec(ec.NewChild("backupWindows"));
         }
         //      C# -> Duration? BaseFrequency
         // GraphQL -> baseFrequency: Duration (type)
-        if (this.BaseFrequency == null && Exploration.Includes(parent + ".baseFrequency"))
+        if (this.BaseFrequency == null && ec.Includes("baseFrequency",false))
         {
             this.BaseFrequency = new Duration();
-            this.BaseFrequency.ApplyExploratoryFieldSpec(parent + ".baseFrequency");
+            this.BaseFrequency.ApplyExploratoryFieldSpec(ec.NewChild("baseFrequency"));
         }
         //      C# -> List<GlobalSlaSyncStatus>? ClusterToSyncStatusMap
         // GraphQL -> clusterToSyncStatusMap: [GlobalSlaSyncStatus!]! (type)
-        if (this.ClusterToSyncStatusMap == null && Exploration.Includes(parent + ".clusterToSyncStatusMap"))
+        if (this.ClusterToSyncStatusMap == null && ec.Includes("clusterToSyncStatusMap",false))
         {
             this.ClusterToSyncStatusMap = new List<GlobalSlaSyncStatus>();
-            this.ClusterToSyncStatusMap.ApplyExploratoryFieldSpec(parent + ".clusterToSyncStatusMap");
+            this.ClusterToSyncStatusMap.ApplyExploratoryFieldSpec(ec.NewChild("clusterToSyncStatusMap"));
         }
         //      C# -> List<BackupWindow>? FirstFullBackupWindows
         // GraphQL -> firstFullBackupWindows: [BackupWindow!]! (type)
-        if (this.FirstFullBackupWindows == null && Exploration.Includes(parent + ".firstFullBackupWindows"))
+        if (this.FirstFullBackupWindows == null && ec.Includes("firstFullBackupWindows",false))
         {
             this.FirstFullBackupWindows = new List<BackupWindow>();
-            this.FirstFullBackupWindows.ApplyExploratoryFieldSpec(parent + ".firstFullBackupWindows");
+            this.FirstFullBackupWindows.ApplyExploratoryFieldSpec(ec.NewChild("firstFullBackupWindows"));
         }
         //      C# -> Duration? LocalRetentionLimit
         // GraphQL -> localRetentionLimit: Duration (type)
-        if (this.LocalRetentionLimit == null && Exploration.Includes(parent + ".localRetentionLimit"))
+        if (this.LocalRetentionLimit == null && ec.Includes("localRetentionLimit",false))
         {
             this.LocalRetentionLimit = new Duration();
-            this.LocalRetentionLimit.ApplyExploratoryFieldSpec(parent + ".localRetentionLimit");
+            this.LocalRetentionLimit.ApplyExploratoryFieldSpec(ec.NewChild("localRetentionLimit"));
         }
         //      C# -> LogConfigResult? LogConfig
         // GraphQL -> logConfig: LogConfigResult (type)
-        if (this.LogConfig == null && Exploration.Includes(parent + ".logConfig"))
+        if (this.LogConfig == null && ec.Includes("logConfig",false))
         {
             this.LogConfig = new LogConfigResult();
-            this.LogConfig.ApplyExploratoryFieldSpec(parent + ".logConfig");
+            this.LogConfig.ApplyExploratoryFieldSpec(ec.NewChild("logConfig"));
         }
         //      C# -> ObjectSpecificConfigs? ObjectSpecificConfigs
         // GraphQL -> objectSpecificConfigs: ObjectSpecificConfigs (type)
-        if (this.ObjectSpecificConfigs == null && Exploration.Includes(parent + ".objectSpecificConfigs"))
+        if (this.ObjectSpecificConfigs == null && ec.Includes("objectSpecificConfigs",false))
         {
             this.ObjectSpecificConfigs = new ObjectSpecificConfigs();
-            this.ObjectSpecificConfigs.ApplyExploratoryFieldSpec(parent + ".objectSpecificConfigs");
+            this.ObjectSpecificConfigs.ApplyExploratoryFieldSpec(ec.NewChild("objectSpecificConfigs"));
         }
         //      C# -> SlaAssociatedOrganization? OwnerOrg
         // GraphQL -> ownerOrg: SlaAssociatedOrganization! (type)
-        if (this.OwnerOrg == null && Exploration.Includes(parent + ".ownerOrg"))
+        if (this.OwnerOrg == null && ec.Includes("ownerOrg",false))
         {
             this.OwnerOrg = new SlaAssociatedOrganization();
-            this.OwnerOrg.ApplyExploratoryFieldSpec(parent + ".ownerOrg");
+            this.OwnerOrg.ApplyExploratoryFieldSpec(ec.NewChild("ownerOrg"));
         }
         //      C# -> PausedClustersInfo? PausedClustersInfo
         // GraphQL -> pausedClustersInfo: PausedClustersInfo (type)
-        if (this.PausedClustersInfo == null && Exploration.Includes(parent + ".pausedClustersInfo"))
+        if (this.PausedClustersInfo == null && ec.Includes("pausedClustersInfo",false))
         {
             this.PausedClustersInfo = new PausedClustersInfo();
-            this.PausedClustersInfo.ApplyExploratoryFieldSpec(parent + ".pausedClustersInfo");
+            this.PausedClustersInfo.ApplyExploratoryFieldSpec(ec.NewChild("pausedClustersInfo"));
         }
         //      C# -> ReplicationSpec? ReplicationSpec
         // GraphQL -> replicationSpec: ReplicationSpec (type)
-        if (this.ReplicationSpec == null && Exploration.Includes(parent + ".replicationSpec"))
+        if (this.ReplicationSpec == null && ec.Includes("replicationSpec",false))
         {
             this.ReplicationSpec = new ReplicationSpec();
-            this.ReplicationSpec.ApplyExploratoryFieldSpec(parent + ".replicationSpec");
+            this.ReplicationSpec.ApplyExploratoryFieldSpec(ec.NewChild("replicationSpec"));
         }
         //      C# -> List<ReplicationSpecV2>? ReplicationSpecsV2
         // GraphQL -> replicationSpecsV2: [ReplicationSpecV2!]! (type)
-        if (this.ReplicationSpecsV2 == null && Exploration.Includes(parent + ".replicationSpecsV2"))
+        if (this.ReplicationSpecsV2 == null && ec.Includes("replicationSpecsV2",false))
         {
             this.ReplicationSpecsV2 = new List<ReplicationSpecV2>();
-            this.ReplicationSpecsV2.ApplyExploratoryFieldSpec(parent + ".replicationSpecsV2");
+            this.ReplicationSpecsV2.ApplyExploratoryFieldSpec(ec.NewChild("replicationSpecsV2"));
         }
         //      C# -> SnapshotSchedule? SnapshotSchedule
         // GraphQL -> snapshotSchedule: SnapshotSchedule (type)
-        if (this.SnapshotSchedule == null && Exploration.Includes(parent + ".snapshotSchedule"))
+        if (this.SnapshotSchedule == null && ec.Includes("snapshotSchedule",false))
         {
             this.SnapshotSchedule = new SnapshotSchedule();
-            this.SnapshotSchedule.ApplyExploratoryFieldSpec(parent + ".snapshotSchedule");
+            this.SnapshotSchedule.ApplyExploratoryFieldSpec(ec.NewChild("snapshotSchedule"));
         }
         //      C# -> SlaUpgradeInfo? UpgradeInfo
         // GraphQL -> upgradeInfo: SlaUpgradeInfo (type)
-        if (this.UpgradeInfo == null && Exploration.Includes(parent + ".upgradeInfo"))
+        if (this.UpgradeInfo == null && ec.Includes("upgradeInfo",false))
         {
             this.UpgradeInfo = new SlaUpgradeInfo();
-            this.UpgradeInfo.ApplyExploratoryFieldSpec(parent + ".upgradeInfo");
+            this.UpgradeInfo.ApplyExploratoryFieldSpec(ec.NewChild("upgradeInfo"));
         }
     }
 
@@ -771,12 +770,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GlobalSlaReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GlobalSlaReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<GlobalSlaReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

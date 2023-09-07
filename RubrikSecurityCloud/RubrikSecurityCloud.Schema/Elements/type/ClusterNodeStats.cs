@@ -201,72 +201,71 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? ClusterId
         // GraphQL -> clusterId: UUID! (scalar)
-        if (this.ClusterId == null && Exploration.Includes(parent + ".clusterId", true))
+        if (this.ClusterId == null && ec.Includes("clusterId",true))
         {
             this.ClusterId = "FETCH";
         }
         //      C# -> System.Int64? CpuStat
         // GraphQL -> cpuStat: Long! (scalar)
-        if (this.CpuStat == null && Exploration.Includes(parent + ".cpuStat", true))
+        if (this.CpuStat == null && ec.Includes("cpuStat",true))
         {
             this.CpuStat = new System.Int64();
         }
         //      C# -> System.Int64? IopsReadsPerSecond
         // GraphQL -> iopsReadsPerSecond: Long! (scalar)
-        if (this.IopsReadsPerSecond == null && Exploration.Includes(parent + ".iopsReadsPerSecond", true))
+        if (this.IopsReadsPerSecond == null && ec.Includes("iopsReadsPerSecond",true))
         {
             this.IopsReadsPerSecond = new System.Int64();
         }
         //      C# -> System.Int64? IopsWritesPerSecond
         // GraphQL -> iopsWritesPerSecond: Long! (scalar)
-        if (this.IopsWritesPerSecond == null && Exploration.Includes(parent + ".iopsWritesPerSecond", true))
+        if (this.IopsWritesPerSecond == null && ec.Includes("iopsWritesPerSecond",true))
         {
             this.IopsWritesPerSecond = new System.Int64();
         }
         //      C# -> System.Int64? NetworkBytesReceived
         // GraphQL -> networkBytesReceived: Long! (scalar)
-        if (this.NetworkBytesReceived == null && Exploration.Includes(parent + ".networkBytesReceived", true))
+        if (this.NetworkBytesReceived == null && ec.Includes("networkBytesReceived",true))
         {
             this.NetworkBytesReceived = new System.Int64();
         }
         //      C# -> System.Int64? NetworkBytesTransmitted
         // GraphQL -> networkBytesTransmitted: Long! (scalar)
-        if (this.NetworkBytesTransmitted == null && Exploration.Includes(parent + ".networkBytesTransmitted", true))
+        if (this.NetworkBytesTransmitted == null && ec.Includes("networkBytesTransmitted",true))
         {
             this.NetworkBytesTransmitted = new System.Int64();
         }
         //      C# -> System.String? NodeId
         // GraphQL -> nodeId: String! (scalar)
-        if (this.NodeId == null && Exploration.Includes(parent + ".nodeId", true))
+        if (this.NodeId == null && ec.Includes("nodeId",true))
         {
             this.NodeId = "FETCH";
         }
         //      C# -> System.Int64? ReadThroughputBytesPerSecond
         // GraphQL -> readThroughputBytesPerSecond: Long! (scalar)
-        if (this.ReadThroughputBytesPerSecond == null && Exploration.Includes(parent + ".readThroughputBytesPerSecond", true))
+        if (this.ReadThroughputBytesPerSecond == null && ec.Includes("readThroughputBytesPerSecond",true))
         {
             this.ReadThroughputBytesPerSecond = new System.Int64();
         }
         //      C# -> DateTime? Time
         // GraphQL -> time: DateTime! (scalar)
-        if (this.Time == null && Exploration.Includes(parent + ".time", true))
+        if (this.Time == null && ec.Includes("time",true))
         {
             this.Time = new DateTime();
         }
         //      C# -> System.Int32? UsedMemoryStat
         // GraphQL -> usedMemoryStat: Int! (scalar)
-        if (this.UsedMemoryStat == null && Exploration.Includes(parent + ".usedMemoryStat", true))
+        if (this.UsedMemoryStat == null && ec.Includes("usedMemoryStat",true))
         {
             this.UsedMemoryStat = Int32.MinValue;
         }
         //      C# -> System.Int64? WriteThroughputBytesPerSecond
         // GraphQL -> writeThroughputBytesPerSecond: Long! (scalar)
-        if (this.WriteThroughputBytesPerSecond == null && Exploration.Includes(parent + ".writeThroughputBytesPerSecond", true))
+        if (this.WriteThroughputBytesPerSecond == null && ec.Includes("writeThroughputBytesPerSecond",true))
         {
             this.WriteThroughputBytesPerSecond = new System.Int64();
         }
@@ -302,12 +301,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ClusterNodeStats> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ClusterNodeStats());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ClusterNodeStats> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

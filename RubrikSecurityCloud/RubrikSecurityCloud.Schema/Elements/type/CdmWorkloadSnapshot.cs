@@ -336,131 +336,130 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
-        if (this.CdmId == null && Exploration.Includes(parent + ".cdmId", true))
+        if (this.CdmId == null && ec.Includes("cdmId",true))
         {
             this.CdmId = "FETCH";
         }
         //      C# -> System.String? CdmVersion
         // GraphQL -> cdmVersion: String! (scalar)
-        if (this.CdmVersion == null && Exploration.Includes(parent + ".cdmVersion", true))
+        if (this.CdmVersion == null && ec.Includes("cdmVersion",true))
         {
             this.CdmVersion = "FETCH";
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: String! (scalar)
-        if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
+        if (this.ClusterUuid == null && ec.Includes("clusterUuid",true))
         {
             this.ClusterUuid = "FETCH";
         }
         //      C# -> System.String? Date
         // GraphQL -> date: String! (scalar)
-        if (this.Date == null && Exploration.Includes(parent + ".date", true))
+        if (this.Date == null && ec.Includes("date",true))
         {
             this.Date = "FETCH";
         }
         //      C# -> DateTime? ExpirationDate
         // GraphQL -> expirationDate: DateTime (scalar)
-        if (this.ExpirationDate == null && Exploration.Includes(parent + ".expirationDate", true))
+        if (this.ExpirationDate == null && ec.Includes("expirationDate",true))
         {
             this.ExpirationDate = new DateTime();
         }
         //      C# -> System.Boolean? ExpiryHint
         // GraphQL -> expiryHint: Boolean! (scalar)
-        if (this.ExpiryHint == null && Exploration.Includes(parent + ".expiryHint", true))
+        if (this.ExpiryHint == null && ec.Includes("expiryHint",true))
         {
             this.ExpiryHint = true;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.Int64? IndexingAttempts
         // GraphQL -> indexingAttempts: Long! (scalar)
-        if (this.IndexingAttempts == null && Exploration.Includes(parent + ".indexingAttempts", true))
+        if (this.IndexingAttempts == null && ec.Includes("indexingAttempts",true))
         {
             this.IndexingAttempts = new System.Int64();
         }
         //      C# -> System.Boolean? IsCorrupted
         // GraphQL -> isCorrupted: Boolean! (scalar)
-        if (this.IsCorrupted == null && Exploration.Includes(parent + ".isCorrupted", true))
+        if (this.IsCorrupted == null && ec.Includes("isCorrupted",true))
         {
             this.IsCorrupted = true;
         }
         //      C# -> System.Boolean? IsDownloadedSnapshot
         // GraphQL -> isDownloadedSnapshot: Boolean! (scalar)
-        if (this.IsDownloadedSnapshot == null && Exploration.Includes(parent + ".isDownloadedSnapshot", true))
+        if (this.IsDownloadedSnapshot == null && ec.Includes("isDownloadedSnapshot",true))
         {
             this.IsDownloadedSnapshot = true;
         }
         //      C# -> System.Boolean? IsExpired
         // GraphQL -> isExpired: Boolean! (scalar)
-        if (this.IsExpired == null && Exploration.Includes(parent + ".isExpired", true))
+        if (this.IsExpired == null && ec.Includes("isExpired",true))
         {
             this.IsExpired = true;
         }
         //      C# -> System.Boolean? IsIndexed
         // GraphQL -> isIndexed: Boolean! (scalar)
-        if (this.IsIndexed == null && Exploration.Includes(parent + ".isIndexed", true))
+        if (this.IsIndexed == null && ec.Includes("isIndexed",true))
         {
             this.IsIndexed = true;
         }
         //      C# -> System.Boolean? IsOnDemandSnapshot
         // GraphQL -> isOnDemandSnapshot: Boolean! (scalar)
-        if (this.IsOnDemandSnapshot == null && Exploration.Includes(parent + ".isOnDemandSnapshot", true))
+        if (this.IsOnDemandSnapshot == null && ec.Includes("isOnDemandSnapshot",true))
         {
             this.IsOnDemandSnapshot = true;
         }
         //      C# -> System.Boolean? IsUnindexable
         // GraphQL -> isUnindexable: Boolean! (scalar)
-        if (this.IsUnindexable == null && Exploration.Includes(parent + ".isUnindexable", true))
+        if (this.IsUnindexable == null && ec.Includes("isUnindexable",true))
         {
             this.IsUnindexable = true;
         }
         //      C# -> System.String? RetentionInfo
         // GraphQL -> retentionInfo: String! (scalar)
-        if (this.RetentionInfo == null && Exploration.Includes(parent + ".retentionInfo", true))
+        if (this.RetentionInfo == null && ec.Includes("retentionInfo",true))
         {
             this.RetentionInfo = "FETCH";
         }
         //      C# -> System.String? WorkloadId
         // GraphQL -> workloadId: String! (scalar)
-        if (this.WorkloadId == null && Exploration.Includes(parent + ".workloadId", true))
+        if (this.WorkloadId == null && ec.Includes("workloadId",true))
         {
             this.WorkloadId = "FETCH";
         }
         //      C# -> System.String? WorkloadType
         // GraphQL -> workloadType: String! (scalar)
-        if (this.WorkloadType == null && Exploration.Includes(parent + ".workloadType", true))
+        if (this.WorkloadType == null && ec.Includes("workloadType",true))
         {
             this.WorkloadType = "FETCH";
         }
         //      C# -> LatestUserNote? LatestUserNote
         // GraphQL -> latestUserNote: LatestUserNote (type)
-        if (this.LatestUserNote == null && Exploration.Includes(parent + ".latestUserNote"))
+        if (this.LatestUserNote == null && ec.Includes("latestUserNote",false))
         {
             this.LatestUserNote = new LatestUserNote();
-            this.LatestUserNote.ApplyExploratoryFieldSpec(parent + ".latestUserNote");
+            this.LatestUserNote.ApplyExploratoryFieldSpec(ec.NewChild("latestUserNote"));
         }
         //      C# -> SlaConfig? SlaDomain
         // GraphQL -> slaDomain: SlaConfig (type)
-        if (this.SlaDomain == null && Exploration.Includes(parent + ".slaDomain"))
+        if (this.SlaDomain == null && ec.Includes("slaDomain",false))
         {
             this.SlaDomain = new SlaConfig();
-            this.SlaDomain.ApplyExploratoryFieldSpec(parent + ".slaDomain");
+            this.SlaDomain.ApplyExploratoryFieldSpec(ec.NewChild("slaDomain"));
         }
         //      C# -> List<SnapshotSubObject>? SubObjs
         // GraphQL -> subObjs: [SnapshotSubObject!]! (type)
-        if (this.SubObjs == null && Exploration.Includes(parent + ".subObjs"))
+        if (this.SubObjs == null && ec.Includes("subObjs",false))
         {
             this.SubObjs = new List<SnapshotSubObject>();
-            this.SubObjs.ApplyExploratoryFieldSpec(parent + ".subObjs");
+            this.SubObjs.ApplyExploratoryFieldSpec(ec.NewChild("subObjs"));
         }
     }
 
@@ -494,12 +493,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CdmWorkloadSnapshot> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CdmWorkloadSnapshot());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CdmWorkloadSnapshot> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

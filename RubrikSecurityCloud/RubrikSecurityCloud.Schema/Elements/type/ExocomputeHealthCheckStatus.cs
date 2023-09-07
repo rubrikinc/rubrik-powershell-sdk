@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ExocomputeHealthCheckStatusValue? Status
         // GraphQL -> status: ExocomputeHealthCheckStatusValue! (enum)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = new ExocomputeHealthCheckStatusValue();
         }
         //      C# -> System.String? FailureReason
         // GraphQL -> failureReason: String! (scalar)
-        if (this.FailureReason == null && Exploration.Includes(parent + ".failureReason", true))
+        if (this.FailureReason == null && ec.Includes("failureReason",true))
         {
             this.FailureReason = "FETCH";
         }
         //      C# -> DateTime? LastUpdatedAt
         // GraphQL -> lastUpdatedAt: DateTime (scalar)
-        if (this.LastUpdatedAt == null && Exploration.Includes(parent + ".lastUpdatedAt", true))
+        if (this.LastUpdatedAt == null && ec.Includes("lastUpdatedAt",true))
         {
             this.LastUpdatedAt = new DateTime();
         }
         //      C# -> System.String? TaskchainId
         // GraphQL -> taskchainId: String! (scalar)
-        if (this.TaskchainId == null && Exploration.Includes(parent + ".taskchainId", true))
+        if (this.TaskchainId == null && ec.Includes("taskchainId",true))
         {
             this.TaskchainId = "FETCH";
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ExocomputeHealthCheckStatus> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ExocomputeHealthCheckStatus());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ExocomputeHealthCheckStatus> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

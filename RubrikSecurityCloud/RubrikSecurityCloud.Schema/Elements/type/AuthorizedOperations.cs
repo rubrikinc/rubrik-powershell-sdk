@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<Operation>? Operations
         // GraphQL -> operations: [Operation!]! (enum)
-        if (this.Operations == null && Exploration.Includes(parent + ".operations", true))
+        if (this.Operations == null && ec.Includes("operations",true))
         {
             this.Operations = new List<Operation>();
         }
         //      C# -> WorkloadLevelHierarchy? WorkloadHierarchy
         // GraphQL -> workloadHierarchy: WorkloadLevelHierarchy (enum)
-        if (this.WorkloadHierarchy == null && Exploration.Includes(parent + ".workloadHierarchy", true))
+        if (this.WorkloadHierarchy == null && ec.Includes("workloadHierarchy",true))
         {
             this.WorkloadHierarchy = new WorkloadLevelHierarchy();
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AuthorizedOperations> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AuthorizedOperations());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AuthorizedOperations> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

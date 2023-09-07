@@ -642,263 +642,262 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ComplianceStatusEnum? ArchivalComplianceStatus
         // GraphQL -> archivalComplianceStatus: ComplianceStatusEnum (enum)
-        if (this.ArchivalComplianceStatus == null && Exploration.Includes(parent + ".archivalComplianceStatus", true))
+        if (this.ArchivalComplianceStatus == null && ec.Includes("archivalComplianceStatus",true))
         {
             this.ArchivalComplianceStatus = new ComplianceStatusEnum();
         }
         //      C# -> ComplianceStatusEnum? ComplianceStatus
         // GraphQL -> complianceStatus: ComplianceStatusEnum (enum)
-        if (this.ComplianceStatus == null && Exploration.Includes(parent + ".complianceStatus", true))
+        if (this.ComplianceStatus == null && ec.Includes("complianceStatus",true))
         {
             this.ComplianceStatus = new ComplianceStatusEnum();
         }
         //      C# -> ObjectTypeEnum? ObjectType
         // GraphQL -> objectType: ObjectTypeEnum! (enum)
-        if (this.ObjectType == null && Exploration.Includes(parent + ".objectType", true))
+        if (this.ObjectType == null && ec.Includes("objectType",true))
         {
             this.ObjectType = new ObjectTypeEnum();
         }
         //      C# -> ProtectionStatusEnum? ProtectionStatus
         // GraphQL -> protectionStatus: ProtectionStatusEnum! (enum)
-        if (this.ProtectionStatus == null && Exploration.Includes(parent + ".protectionStatus", true))
+        if (this.ProtectionStatus == null && ec.Includes("protectionStatus",true))
         {
             this.ProtectionStatus = new ProtectionStatusEnum();
         }
         //      C# -> ComplianceStatusEnum? ReplicationComplianceStatus
         // GraphQL -> replicationComplianceStatus: ComplianceStatusEnum (enum)
-        if (this.ReplicationComplianceStatus == null && Exploration.Includes(parent + ".replicationComplianceStatus", true))
+        if (this.ReplicationComplianceStatus == null && ec.Includes("replicationComplianceStatus",true))
         {
             this.ReplicationComplianceStatus = new ComplianceStatusEnum();
         }
         //      C# -> SlaDomain? SlaDomain
         // GraphQL -> slaDomain: SlaDomain (interface)
-        if (this.SlaDomain == null && Exploration.Includes(parent + ".slaDomain"))
+        if (this.SlaDomain == null && ec.Includes("slaDomain",false))
         {
             var impls = new List<SlaDomain>();
-            impls.ApplyExploratoryFieldSpec(parent + ".slaDomain");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("slaDomain"));
             this.SlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> System.Int32? ArchivalSnapshotLag
         // GraphQL -> archivalSnapshotLag: Int (scalar)
-        if (this.ArchivalSnapshotLag == null && Exploration.Includes(parent + ".archivalSnapshotLag", true))
+        if (this.ArchivalSnapshotLag == null && ec.Includes("archivalSnapshotLag",true))
         {
             this.ArchivalSnapshotLag = Int32.MinValue;
         }
         //      C# -> System.Int32? ArchiveSnapshots
         // GraphQL -> archiveSnapshots: Int (scalar)
-        if (this.ArchiveSnapshots == null && Exploration.Includes(parent + ".archiveSnapshots", true))
+        if (this.ArchiveSnapshots == null && ec.Includes("archiveSnapshots",true))
         {
             this.ArchiveSnapshots = Int32.MinValue;
         }
         //      C# -> System.Int64? ArchiveStorage
         // GraphQL -> archiveStorage: Long (scalar)
-        if (this.ArchiveStorage == null && Exploration.Includes(parent + ".archiveStorage", true))
+        if (this.ArchiveStorage == null && ec.Includes("archiveStorage",true))
         {
             this.ArchiveStorage = new System.Int64();
         }
         //      C# -> System.Boolean? AwaitingFirstFull
         // GraphQL -> awaitingFirstFull: Boolean (scalar)
-        if (this.AwaitingFirstFull == null && Exploration.Includes(parent + ".awaitingFirstFull", true))
+        if (this.AwaitingFirstFull == null && ec.Includes("awaitingFirstFull",true))
         {
             this.AwaitingFirstFull = true;
         }
         //      C# -> System.Single? DataReduction
         // GraphQL -> dataReduction: Float (scalar)
-        if (this.DataReduction == null && Exploration.Includes(parent + ".dataReduction", true))
+        if (this.DataReduction == null && ec.Includes("dataReduction",true))
         {
             this.DataReduction = new System.Single();
         }
         //      C# -> System.String? Fid
         // GraphQL -> fid: UUID (scalar)
-        if (this.Fid == null && Exploration.Includes(parent + ".fid", true))
+        if (this.Fid == null && ec.Includes("fid",true))
         {
             this.Fid = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> DateTime? LastSnapshot
         // GraphQL -> lastSnapshot: DateTime (scalar)
-        if (this.LastSnapshot == null && Exploration.Includes(parent + ".lastSnapshot", true))
+        if (this.LastSnapshot == null && ec.Includes("lastSnapshot",true))
         {
             this.LastSnapshot = new DateTime();
         }
         //      C# -> System.Int64? LastSnapshotLogicalBytes
         // GraphQL -> lastSnapshotLogicalBytes: Long (scalar)
-        if (this.LastSnapshotLogicalBytes == null && Exploration.Includes(parent + ".lastSnapshotLogicalBytes", true))
+        if (this.LastSnapshotLogicalBytes == null && ec.Includes("lastSnapshotLogicalBytes",true))
         {
             this.LastSnapshotLogicalBytes = new System.Int64();
         }
         //      C# -> DateTime? LatestArchivalSnapshot
         // GraphQL -> latestArchivalSnapshot: DateTime (scalar)
-        if (this.LatestArchivalSnapshot == null && Exploration.Includes(parent + ".latestArchivalSnapshot", true))
+        if (this.LatestArchivalSnapshot == null && ec.Includes("latestArchivalSnapshot",true))
         {
             this.LatestArchivalSnapshot = new DateTime();
         }
         //      C# -> DateTime? LatestReplicationSnapshot
         // GraphQL -> latestReplicationSnapshot: DateTime (scalar)
-        if (this.LatestReplicationSnapshot == null && Exploration.Includes(parent + ".latestReplicationSnapshot", true))
+        if (this.LatestReplicationSnapshot == null && ec.Includes("latestReplicationSnapshot",true))
         {
             this.LatestReplicationSnapshot = new DateTime();
         }
         //      C# -> System.Int64? LocalEffectiveStorage
         // GraphQL -> localEffectiveStorage: Long (scalar)
-        if (this.LocalEffectiveStorage == null && Exploration.Includes(parent + ".localEffectiveStorage", true))
+        if (this.LocalEffectiveStorage == null && ec.Includes("localEffectiveStorage",true))
         {
             this.LocalEffectiveStorage = new System.Int64();
         }
         //      C# -> System.Int64? LocalMeteredData
         // GraphQL -> localMeteredData: Long (scalar)
-        if (this.LocalMeteredData == null && Exploration.Includes(parent + ".localMeteredData", true))
+        if (this.LocalMeteredData == null && ec.Includes("localMeteredData",true))
         {
             this.LocalMeteredData = new System.Int64();
         }
         //      C# -> System.Int32? LocalOnDemandSnapshots
         // GraphQL -> localOnDemandSnapshots: Int (scalar)
-        if (this.LocalOnDemandSnapshots == null && Exploration.Includes(parent + ".localOnDemandSnapshots", true))
+        if (this.LocalOnDemandSnapshots == null && ec.Includes("localOnDemandSnapshots",true))
         {
             this.LocalOnDemandSnapshots = Int32.MinValue;
         }
         //      C# -> System.Int64? LocalProtectedData
         // GraphQL -> localProtectedData: Long (scalar)
-        if (this.LocalProtectedData == null && Exploration.Includes(parent + ".localProtectedData", true))
+        if (this.LocalProtectedData == null && ec.Includes("localProtectedData",true))
         {
             this.LocalProtectedData = new System.Int64();
         }
         //      C# -> System.Int32? LocalSlaSnapshots
         // GraphQL -> localSlaSnapshots: Int (scalar)
-        if (this.LocalSlaSnapshots == null && Exploration.Includes(parent + ".localSlaSnapshots", true))
+        if (this.LocalSlaSnapshots == null && ec.Includes("localSlaSnapshots",true))
         {
             this.LocalSlaSnapshots = Int32.MinValue;
         }
         //      C# -> System.Int32? LocalSnapshots
         // GraphQL -> localSnapshots: Int (scalar)
-        if (this.LocalSnapshots == null && Exploration.Includes(parent + ".localSnapshots", true))
+        if (this.LocalSnapshots == null && ec.Includes("localSnapshots",true))
         {
             this.LocalSnapshots = Int32.MinValue;
         }
         //      C# -> System.Int64? LocalStorage
         // GraphQL -> localStorage: Long (scalar)
-        if (this.LocalStorage == null && Exploration.Includes(parent + ".localStorage", true))
+        if (this.LocalStorage == null && ec.Includes("localStorage",true))
         {
             this.LocalStorage = new System.Int64();
         }
         //      C# -> System.String? Location
         // GraphQL -> location: String! (scalar)
-        if (this.Location == null && Exploration.Includes(parent + ".location", true))
+        if (this.Location == null && ec.Includes("location",true))
         {
             this.Location = "FETCH";
         }
         //      C# -> System.Int64? LogicalBytes
         // GraphQL -> logicalBytes: Long (scalar)
-        if (this.LogicalBytes == null && Exploration.Includes(parent + ".logicalBytes", true))
+        if (this.LogicalBytes == null && ec.Includes("logicalBytes",true))
         {
             this.LogicalBytes = new System.Int64();
         }
         //      C# -> System.Single? LogicalDataReduction
         // GraphQL -> logicalDataReduction: Float (scalar)
-        if (this.LogicalDataReduction == null && Exploration.Includes(parent + ".logicalDataReduction", true))
+        if (this.LogicalDataReduction == null && ec.Includes("logicalDataReduction",true))
         {
             this.LogicalDataReduction = new System.Single();
         }
         //      C# -> System.Int32? MissedSnapshots
         // GraphQL -> missedSnapshots: Int (scalar)
-        if (this.MissedSnapshots == null && Exploration.Includes(parent + ".missedSnapshots", true))
+        if (this.MissedSnapshots == null && ec.Includes("missedSnapshots",true))
         {
             this.MissedSnapshots = Int32.MinValue;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? OrgId
         // GraphQL -> orgId: UUID (scalar)
-        if (this.OrgId == null && Exploration.Includes(parent + ".orgId", true))
+        if (this.OrgId == null && ec.Includes("orgId",true))
         {
             this.OrgId = "FETCH";
         }
         //      C# -> System.String? OrgName
         // GraphQL -> orgName: String (scalar)
-        if (this.OrgName == null && Exploration.Includes(parent + ".orgName", true))
+        if (this.OrgName == null && ec.Includes("orgName",true))
         {
             this.OrgName = "FETCH";
         }
         //      C# -> System.Int64? PhysicalBytes
         // GraphQL -> physicalBytes: Long (scalar)
-        if (this.PhysicalBytes == null && Exploration.Includes(parent + ".physicalBytes", true))
+        if (this.PhysicalBytes == null && ec.Includes("physicalBytes",true))
         {
             this.PhysicalBytes = new System.Int64();
         }
         //      C# -> DateTime? ProtectedOn
         // GraphQL -> protectedOn: DateTime (scalar)
-        if (this.ProtectedOn == null && Exploration.Includes(parent + ".protectedOn", true))
+        if (this.ProtectedOn == null && ec.Includes("protectedOn",true))
         {
             this.ProtectedOn = new DateTime();
         }
         //      C# -> System.Int64? ProvisionedBytes
         // GraphQL -> provisionedBytes: Long (scalar)
-        if (this.ProvisionedBytes == null && Exploration.Includes(parent + ".provisionedBytes", true))
+        if (this.ProvisionedBytes == null && ec.Includes("provisionedBytes",true))
         {
             this.ProvisionedBytes = new System.Int64();
         }
         //      C# -> DateTime? PullTime
         // GraphQL -> pullTime: DateTime! (scalar)
-        if (this.PullTime == null && Exploration.Includes(parent + ".pullTime", true))
+        if (this.PullTime == null && ec.Includes("pullTime",true))
         {
             this.PullTime = new DateTime();
         }
         //      C# -> System.Int32? ReplicaSnapshots
         // GraphQL -> replicaSnapshots: Int (scalar)
-        if (this.ReplicaSnapshots == null && Exploration.Includes(parent + ".replicaSnapshots", true))
+        if (this.ReplicaSnapshots == null && ec.Includes("replicaSnapshots",true))
         {
             this.ReplicaSnapshots = Int32.MinValue;
         }
         //      C# -> System.Int64? ReplicaStorage
         // GraphQL -> replicaStorage: Long (scalar)
-        if (this.ReplicaStorage == null && Exploration.Includes(parent + ".replicaStorage", true))
+        if (this.ReplicaStorage == null && ec.Includes("replicaStorage",true))
         {
             this.ReplicaStorage = new System.Int64();
         }
         //      C# -> System.Int32? ReplicationSnapshotLag
         // GraphQL -> replicationSnapshotLag: Int (scalar)
-        if (this.ReplicationSnapshotLag == null && Exploration.Includes(parent + ".replicationSnapshotLag", true))
+        if (this.ReplicationSnapshotLag == null && ec.Includes("replicationSnapshotLag",true))
         {
             this.ReplicationSnapshotLag = Int32.MinValue;
         }
         //      C# -> System.Int32? TotalSnapshots
         // GraphQL -> totalSnapshots: Int (scalar)
-        if (this.TotalSnapshots == null && Exploration.Includes(parent + ".totalSnapshots", true))
+        if (this.TotalSnapshots == null && ec.Includes("totalSnapshots",true))
         {
             this.TotalSnapshots = Int32.MinValue;
         }
         //      C# -> System.Int64? TransferredBytes
         // GraphQL -> transferredBytes: Long (scalar)
-        if (this.TransferredBytes == null && Exploration.Includes(parent + ".transferredBytes", true))
+        if (this.TransferredBytes == null && ec.Includes("transferredBytes",true))
         {
             this.TransferredBytes = new System.Int64();
         }
         //      C# -> System.Int64? UsedBytes
         // GraphQL -> usedBytes: Long (scalar)
-        if (this.UsedBytes == null && Exploration.Includes(parent + ".usedBytes", true))
+        if (this.UsedBytes == null && ec.Includes("usedBytes",true))
         {
             this.UsedBytes = new System.Int64();
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster (type)
-        if (this.Cluster == null && Exploration.Includes(parent + ".cluster"))
+        if (this.Cluster == null && ec.Includes("cluster",false))
         {
             this.Cluster = new Cluster();
-            this.Cluster.ApplyExploratoryFieldSpec(parent + ".cluster");
+            this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
         }
     }
 
@@ -932,12 +931,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<Snappable> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new Snappable());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<Snappable> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -137,44 +137,43 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> DataTypeEnum? DataType
         // GraphQL -> dataType: DataTypeEnum! (enum)
-        if (this.DataType == null && Exploration.Includes(parent + ".dataType", true))
+        if (this.DataType == null && ec.Includes("dataType",true))
         {
             this.DataType = new DataTypeEnum();
         }
         //      C# -> FilterTypeEnum? Type
         // GraphQL -> type: FilterTypeEnum! (enum)
-        if (this.Type == null && Exploration.Includes(parent + ".type", true))
+        if (this.Type == null && ec.Includes("type",true))
         {
             this.Type = new FilterTypeEnum();
         }
         //      C# -> List<DisplayableValue>? DefaultValues
         // GraphQL -> defaultValues: [DisplayableValue!]! (interface)
-        if (this.DefaultValues == null && Exploration.Includes(parent + ".defaultValues"))
+        if (this.DefaultValues == null && ec.Includes("defaultValues",false))
         {
             this.DefaultValues = new List<DisplayableValue>();
-            this.DefaultValues.ApplyExploratoryFieldSpec(parent + ".defaultValues");
+            this.DefaultValues.ApplyExploratoryFieldSpec(ec.NewChild("defaultValues"));
         }
         //      C# -> List<DisplayableValue>? Values
         // GraphQL -> values: [DisplayableValue!]! (interface)
-        if (this.Values == null && Exploration.Includes(parent + ".values"))
+        if (this.Values == null && ec.Includes("values",false))
         {
             this.Values = new List<DisplayableValue>();
-            this.Values.ApplyExploratoryFieldSpec(parent + ".values");
+            this.Values.ApplyExploratoryFieldSpec(ec.NewChild("values"));
         }
         //      C# -> System.String? DisplayName
         // GraphQL -> displayName: String! (scalar)
-        if (this.DisplayName == null && Exploration.Includes(parent + ".displayName", true))
+        if (this.DisplayName == null && ec.Includes("displayName",true))
         {
             this.DisplayName = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
@@ -210,12 +209,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ReportFilterDetail> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ReportFilterDetail());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ReportFilterDetail> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

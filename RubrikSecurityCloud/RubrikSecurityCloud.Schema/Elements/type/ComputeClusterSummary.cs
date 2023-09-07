@@ -221,82 +221,81 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> IoFilterStatus? IoFilterStatus
         // GraphQL -> ioFilterStatus: IoFilterStatus (enum)
-        if (this.IoFilterStatus == null && Exploration.Includes(parent + ".ioFilterStatus", true))
+        if (this.IoFilterStatus == null && ec.Includes("ioFilterStatus",true))
         {
             this.IoFilterStatus = new IoFilterStatus();
         }
         //      C# -> System.String? DatacenterId
         // GraphQL -> datacenterId: String! (scalar)
-        if (this.DatacenterId == null && Exploration.Includes(parent + ".datacenterId", true))
+        if (this.DatacenterId == null && ec.Includes("datacenterId",true))
         {
             this.DatacenterId = "FETCH";
         }
         //      C# -> System.Boolean? DrsStatus
         // GraphQL -> drsStatus: Boolean (scalar)
-        if (this.DrsStatus == null && Exploration.Includes(parent + ".drsStatus", true))
+        if (this.DrsStatus == null && ec.Includes("drsStatus",true))
         {
             this.DrsStatus = true;
         }
         //      C# -> System.String? EffectiveSlaDomainId
         // GraphQL -> effectiveSlaDomainId: String (scalar)
-        if (this.EffectiveSlaDomainId == null && Exploration.Includes(parent + ".effectiveSlaDomainId", true))
+        if (this.EffectiveSlaDomainId == null && ec.Includes("effectiveSlaDomainId",true))
         {
             this.EffectiveSlaDomainId = "FETCH";
         }
         //      C# -> System.String? EffectiveSlaDomainName
         // GraphQL -> effectiveSlaDomainName: String (scalar)
-        if (this.EffectiveSlaDomainName == null && Exploration.Includes(parent + ".effectiveSlaDomainName", true))
+        if (this.EffectiveSlaDomainName == null && ec.Includes("effectiveSlaDomainName",true))
         {
             this.EffectiveSlaDomainName = "FETCH";
         }
         //      C# -> System.String? EffectiveSlaDomainPolarisManagedId
         // GraphQL -> effectiveSlaDomainPolarisManagedId: String (scalar)
-        if (this.EffectiveSlaDomainPolarisManagedId == null && Exploration.Includes(parent + ".effectiveSlaDomainPolarisManagedId", true))
+        if (this.EffectiveSlaDomainPolarisManagedId == null && ec.Includes("effectiveSlaDomainPolarisManagedId",true))
         {
             this.EffectiveSlaDomainPolarisManagedId = "FETCH";
         }
         //      C# -> System.String? EffectiveSlaSourceObjectId
         // GraphQL -> effectiveSlaSourceObjectId: String (scalar)
-        if (this.EffectiveSlaSourceObjectId == null && Exploration.Includes(parent + ".effectiveSlaSourceObjectId", true))
+        if (this.EffectiveSlaSourceObjectId == null && ec.Includes("effectiveSlaSourceObjectId",true))
         {
             this.EffectiveSlaSourceObjectId = "FETCH";
         }
         //      C# -> System.String? EffectiveSlaSourceObjectName
         // GraphQL -> effectiveSlaSourceObjectName: String (scalar)
-        if (this.EffectiveSlaSourceObjectName == null && Exploration.Includes(parent + ".effectiveSlaSourceObjectName", true))
+        if (this.EffectiveSlaSourceObjectName == null && ec.Includes("effectiveSlaSourceObjectName",true))
         {
             this.EffectiveSlaSourceObjectName = "FETCH";
         }
         //      C# -> List<System.String>? HostVersions
         // GraphQL -> hostVersions: [String!]! (scalar)
-        if (this.HostVersions == null && Exploration.Includes(parent + ".hostVersions", true))
+        if (this.HostVersions == null && ec.Includes("hostVersions",true))
         {
             this.HostVersions = new List<System.String>();
         }
         //      C# -> System.String? LastUsedFqdn
         // GraphQL -> lastUsedFqdn: String (scalar)
-        if (this.LastUsedFqdn == null && Exploration.Includes(parent + ".lastUsedFqdn", true))
+        if (this.LastUsedFqdn == null && ec.Includes("lastUsedFqdn",true))
         {
             this.LastUsedFqdn = "FETCH";
         }
         //      C# -> EffectiveSlaHolder? EffectiveSlaHolder
         // GraphQL -> effectiveSlaHolder: EffectiveSlaHolder (type)
-        if (this.EffectiveSlaHolder == null && Exploration.Includes(parent + ".effectiveSlaHolder"))
+        if (this.EffectiveSlaHolder == null && ec.Includes("effectiveSlaHolder",false))
         {
             this.EffectiveSlaHolder = new EffectiveSlaHolder();
-            this.EffectiveSlaHolder.ApplyExploratoryFieldSpec(parent + ".effectiveSlaHolder");
+            this.EffectiveSlaHolder.ApplyExploratoryFieldSpec(ec.NewChild("effectiveSlaHolder"));
         }
         //      C# -> SlaAssignable? SlaAssignable
         // GraphQL -> slaAssignable: SlaAssignable (type)
-        if (this.SlaAssignable == null && Exploration.Includes(parent + ".slaAssignable"))
+        if (this.SlaAssignable == null && ec.Includes("slaAssignable",false))
         {
             this.SlaAssignable = new SlaAssignable();
-            this.SlaAssignable.ApplyExploratoryFieldSpec(parent + ".slaAssignable");
+            this.SlaAssignable.ApplyExploratoryFieldSpec(ec.NewChild("slaAssignable"));
         }
     }
 
@@ -330,12 +329,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ComputeClusterSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ComputeClusterSummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ComputeClusterSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

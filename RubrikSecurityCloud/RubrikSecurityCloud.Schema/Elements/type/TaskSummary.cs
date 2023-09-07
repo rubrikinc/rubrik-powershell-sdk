@@ -215,78 +215,77 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ObjectTypeEnum? ObjectType
         // GraphQL -> objectType: ObjectTypeEnum! (enum)
-        if (this.ObjectType == null && Exploration.Includes(parent + ".objectType", true))
+        if (this.ObjectType == null && ec.Includes("objectType",true))
         {
             this.ObjectType = new ObjectTypeEnum();
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
-        if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
+        if (this.ClusterUuid == null && ec.Includes("clusterUuid",true))
         {
             this.ClusterUuid = "FETCH";
         }
         //      C# -> DateTime? Date
         // GraphQL -> date: DateTime! (scalar)
-        if (this.Date == null && Exploration.Includes(parent + ".date", true))
+        if (this.Date == null && ec.Includes("date",true))
         {
             this.Date = new DateTime();
         }
         //      C# -> System.String? Location
         // GraphQL -> location: String (scalar)
-        if (this.Location == null && Exploration.Includes(parent + ".location", true))
+        if (this.Location == null && ec.Includes("location",true))
         {
             this.Location = "FETCH";
         }
         //      C# -> System.Int32? NumCanceled
         // GraphQL -> numCanceled: Int! (scalar)
-        if (this.NumCanceled == null && Exploration.Includes(parent + ".numCanceled", true))
+        if (this.NumCanceled == null && ec.Includes("numCanceled",true))
         {
             this.NumCanceled = Int32.MinValue;
         }
         //      C# -> System.Int32? NumExpected
         // GraphQL -> numExpected: Int! (scalar)
-        if (this.NumExpected == null && Exploration.Includes(parent + ".numExpected", true))
+        if (this.NumExpected == null && ec.Includes("numExpected",true))
         {
             this.NumExpected = Int32.MinValue;
         }
         //      C# -> System.Int32? NumFailed
         // GraphQL -> numFailed: Int! (scalar)
-        if (this.NumFailed == null && Exploration.Includes(parent + ".numFailed", true))
+        if (this.NumFailed == null && ec.Includes("numFailed",true))
         {
             this.NumFailed = Int32.MinValue;
         }
         //      C# -> System.Int32? NumSucceeded
         // GraphQL -> numSucceeded: Int! (scalar)
-        if (this.NumSucceeded == null && Exploration.Includes(parent + ".numSucceeded", true))
+        if (this.NumSucceeded == null && ec.Includes("numSucceeded",true))
         {
             this.NumSucceeded = Int32.MinValue;
         }
         //      C# -> System.String? ObjectName
         // GraphQL -> objectName: String! (scalar)
-        if (this.ObjectName == null && Exploration.Includes(parent + ".objectName", true))
+        if (this.ObjectName == null && ec.Includes("objectName",true))
         {
             this.ObjectName = "FETCH";
         }
         //      C# -> System.String? SlaDomainId
         // GraphQL -> slaDomainId: String! (scalar)
-        if (this.SlaDomainId == null && Exploration.Includes(parent + ".slaDomainId", true))
+        if (this.SlaDomainId == null && ec.Includes("slaDomainId",true))
         {
             this.SlaDomainId = "FETCH";
         }
         //      C# -> System.String? SlaDomainName
         // GraphQL -> slaDomainName: String! (scalar)
-        if (this.SlaDomainName == null && Exploration.Includes(parent + ".slaDomainName", true))
+        if (this.SlaDomainName == null && ec.Includes("slaDomainName",true))
         {
             this.SlaDomainName = "FETCH";
         }
         //      C# -> System.String? SnappbleId
         // GraphQL -> snappbleId: UUID! (scalar)
-        if (this.SnappbleId == null && Exploration.Includes(parent + ".snappbleId", true))
+        if (this.SnappbleId == null && ec.Includes("snappbleId",true))
         {
             this.SnappbleId = "FETCH";
         }
@@ -322,12 +321,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<TaskSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new TaskSummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<TaskSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

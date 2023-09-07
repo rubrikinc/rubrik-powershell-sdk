@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ClusterConnectionStatus? SourceAndRubrik
         // GraphQL -> sourceAndRubrik: ClusterConnectionStatus! (enum)
-        if (this.SourceAndRubrik == null && Exploration.Includes(parent + ".sourceAndRubrik", true))
+        if (this.SourceAndRubrik == null && ec.Includes("sourceAndRubrik",true))
         {
             this.SourceAndRubrik = new ClusterConnectionStatus();
         }
         //      C# -> ConnectionStatusType? SourceAndTarget
         // GraphQL -> sourceAndTarget: ConnectionStatusType! (enum)
-        if (this.SourceAndTarget == null && Exploration.Includes(parent + ".sourceAndTarget", true))
+        if (this.SourceAndTarget == null && ec.Includes("sourceAndTarget",true))
         {
             this.SourceAndTarget = new ConnectionStatusType();
         }
         //      C# -> ClusterConnectionStatus? TargetAndRubrik
         // GraphQL -> targetAndRubrik: ClusterConnectionStatus! (enum)
-        if (this.TargetAndRubrik == null && Exploration.Includes(parent + ".targetAndRubrik", true))
+        if (this.TargetAndRubrik == null && ec.Includes("targetAndRubrik",true))
         {
             this.TargetAndRubrik = new ClusterConnectionStatus();
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ConnectionStatusDetails> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ConnectionStatusDetails());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ConnectionStatusDetails> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

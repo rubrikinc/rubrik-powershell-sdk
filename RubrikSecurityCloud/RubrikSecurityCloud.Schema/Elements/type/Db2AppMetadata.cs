@@ -235,88 +235,87 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> Db2SnapshotType? BaseSnapshotType
         // GraphQL -> baseSnapshotType: Db2SnapshotType (enum)
-        if (this.BaseSnapshotType == null && Exploration.Includes(parent + ".baseSnapshotType", true))
+        if (this.BaseSnapshotType == null && ec.Includes("baseSnapshotType",true))
         {
             this.BaseSnapshotType = new Db2SnapshotType();
         }
         //      C# -> Db2SnapshotType? SnapshotType
         // GraphQL -> snapshotType: Db2SnapshotType (enum)
-        if (this.SnapshotType == null && Exploration.Includes(parent + ".snapshotType", true))
+        if (this.SnapshotType == null && ec.Includes("snapshotType",true))
         {
             this.SnapshotType = new Db2SnapshotType();
         }
         //      C# -> System.Int64? ApproximateDbSizeBytes
         // GraphQL -> approximateDbSizeBytes: Long (scalar)
-        if (this.ApproximateDbSizeBytes == null && Exploration.Includes(parent + ".approximateDbSizeBytes", true))
+        if (this.ApproximateDbSizeBytes == null && ec.Includes("approximateDbSizeBytes",true))
         {
             this.ApproximateDbSizeBytes = new System.Int64();
         }
         //      C# -> System.String? BackupId
         // GraphQL -> backupId: String (scalar)
-        if (this.BackupId == null && Exploration.Includes(parent + ".backupId", true))
+        if (this.BackupId == null && ec.Includes("backupId",true))
         {
             this.BackupId = "FETCH";
         }
         //      C# -> System.String? BaseBackupId
         // GraphQL -> baseBackupId: String (scalar)
-        if (this.BaseBackupId == null && Exploration.Includes(parent + ".baseBackupId", true))
+        if (this.BaseBackupId == null && ec.Includes("baseBackupId",true))
         {
             this.BaseBackupId = "FETCH";
         }
         //      C# -> System.String? BaseSnapshotId
         // GraphQL -> baseSnapshotId: String (scalar)
-        if (this.BaseSnapshotId == null && Exploration.Includes(parent + ".baseSnapshotId", true))
+        if (this.BaseSnapshotId == null && ec.Includes("baseSnapshotId",true))
         {
             this.BaseSnapshotId = "FETCH";
         }
         //      C# -> DateTime? EndTime
         // GraphQL -> endTime: DateTime (scalar)
-        if (this.EndTime == null && Exploration.Includes(parent + ".endTime", true))
+        if (this.EndTime == null && ec.Includes("endTime",true))
         {
             this.EndTime = new DateTime();
         }
         //      C# -> System.Boolean? IsExternalBackup
         // GraphQL -> isExternalBackup: Boolean! (scalar)
-        if (this.IsExternalBackup == null && Exploration.Includes(parent + ".isExternalBackup", true))
+        if (this.IsExternalBackup == null && ec.Includes("isExternalBackup",true))
         {
             this.IsExternalBackup = true;
         }
         //      C# -> System.Boolean? IsRubrikTriggeredOnDemandBackup
         // GraphQL -> isRubrikTriggeredOnDemandBackup: Boolean! (scalar)
-        if (this.IsRubrikTriggeredOnDemandBackup == null && Exploration.Includes(parent + ".isRubrikTriggeredOnDemandBackup", true))
+        if (this.IsRubrikTriggeredOnDemandBackup == null && ec.Includes("isRubrikTriggeredOnDemandBackup",true))
         {
             this.IsRubrikTriggeredOnDemandBackup = true;
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: String (scalar)
-        if (this.SnapshotId == null && Exploration.Includes(parent + ".snapshotId", true))
+        if (this.SnapshotId == null && ec.Includes("snapshotId",true))
         {
             this.SnapshotId = "FETCH";
         }
         //      C# -> DateTime? StartTime
         // GraphQL -> startTime: DateTime (scalar)
-        if (this.StartTime == null && Exploration.Includes(parent + ".startTime", true))
+        if (this.StartTime == null && ec.Includes("startTime",true))
         {
             this.StartTime = new DateTime();
         }
         //      C# -> Db2WorkloadDataSnapshotMetadata? Db2SnapshotMetadata
         // GraphQL -> db2SnapshotMetadata: Db2WorkloadDataSnapshotMetadata (type)
-        if (this.Db2SnapshotMetadata == null && Exploration.Includes(parent + ".db2SnapshotMetadata"))
+        if (this.Db2SnapshotMetadata == null && ec.Includes("db2SnapshotMetadata",false))
         {
             this.Db2SnapshotMetadata = new Db2WorkloadDataSnapshotMetadata();
-            this.Db2SnapshotMetadata.ApplyExploratoryFieldSpec(parent + ".db2SnapshotMetadata");
+            this.Db2SnapshotMetadata.ApplyExploratoryFieldSpec(ec.NewChild("db2SnapshotMetadata"));
         }
         //      C# -> List<Db2DataBackupFile>? Files
         // GraphQL -> files: [Db2DataBackupFile!]! (type)
-        if (this.Files == null && Exploration.Includes(parent + ".files"))
+        if (this.Files == null && ec.Includes("files",false))
         {
             this.Files = new List<Db2DataBackupFile>();
-            this.Files.ApplyExploratoryFieldSpec(parent + ".files");
+            this.Files.ApplyExploratoryFieldSpec(ec.NewChild("files"));
         }
     }
 
@@ -350,12 +349,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<Db2AppMetadata> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new Db2AppMetadata());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<Db2AppMetadata> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

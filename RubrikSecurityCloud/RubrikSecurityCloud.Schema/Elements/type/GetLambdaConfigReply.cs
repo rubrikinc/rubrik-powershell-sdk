@@ -145,48 +145,47 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? AccountId
         // GraphQL -> accountId: String! (scalar)
-        if (this.AccountId == null && Exploration.Includes(parent + ".accountId", true))
+        if (this.AccountId == null && ec.Includes("accountId",true))
         {
             this.AccountId = "FETCH";
         }
         //      C# -> System.String? ClusterId
         // GraphQL -> clusterId: String! (scalar)
-        if (this.ClusterId == null && Exploration.Includes(parent + ".clusterId", true))
+        if (this.ClusterId == null && ec.Includes("clusterId",true))
         {
             this.ClusterId = "FETCH";
         }
         //      C# -> System.String? DefaultDiffFmdUploadPrefix
         // GraphQL -> defaultDiffFmdUploadPrefix: String! (scalar)
-        if (this.DefaultDiffFmdUploadPrefix == null && Exploration.Includes(parent + ".defaultDiffFmdUploadPrefix", true))
+        if (this.DefaultDiffFmdUploadPrefix == null && ec.Includes("defaultDiffFmdUploadPrefix",true))
         {
             this.DefaultDiffFmdUploadPrefix = "FETCH";
         }
         //      C# -> System.Boolean? EnableAutomaticFmdUpload
         // GraphQL -> enableAutomaticFmdUpload: Boolean! (scalar)
-        if (this.EnableAutomaticFmdUpload == null && Exploration.Includes(parent + ".enableAutomaticFmdUpload", true))
+        if (this.EnableAutomaticFmdUpload == null && ec.Includes("enableAutomaticFmdUpload",true))
         {
             this.EnableAutomaticFmdUpload = true;
         }
         //      C# -> System.Boolean? EnableFmdUploadForAllResources
         // GraphQL -> enableFmdUploadForAllResources: Boolean! (scalar)
-        if (this.EnableFmdUploadForAllResources == null && Exploration.Includes(parent + ".enableFmdUploadForAllResources", true))
+        if (this.EnableFmdUploadForAllResources == null && ec.Includes("enableFmdUploadForAllResources",true))
         {
             this.EnableFmdUploadForAllResources = true;
         }
         //      C# -> System.Boolean? IsThreatMonitoringEnabled
         // GraphQL -> isThreatMonitoringEnabled: Boolean! (scalar)
-        if (this.IsThreatMonitoringEnabled == null && Exploration.Includes(parent + ".isThreatMonitoringEnabled", true))
+        if (this.IsThreatMonitoringEnabled == null && ec.Includes("isThreatMonitoringEnabled",true))
         {
             this.IsThreatMonitoringEnabled = true;
         }
         //      C# -> System.Int32? MaxSnapshotsToUploadAutomatically
         // GraphQL -> maxSnapshotsToUploadAutomatically: Int! (scalar)
-        if (this.MaxSnapshotsToUploadAutomatically == null && Exploration.Includes(parent + ".maxSnapshotsToUploadAutomatically", true))
+        if (this.MaxSnapshotsToUploadAutomatically == null && ec.Includes("maxSnapshotsToUploadAutomatically",true))
         {
             this.MaxSnapshotsToUploadAutomatically = Int32.MinValue;
         }
@@ -222,12 +221,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GetLambdaConfigReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GetLambdaConfigReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<GetLambdaConfigReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

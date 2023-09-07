@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<System.String>? FailedWorkloadIds
         // GraphQL -> failedWorkloadIds: [UUID!]! (scalar)
-        if (this.FailedWorkloadIds == null && Exploration.Includes(parent + ".failedWorkloadIds", true))
+        if (this.FailedWorkloadIds == null && ec.Includes("failedWorkloadIds",true))
         {
             this.FailedWorkloadIds = new List<System.String>();
         }
         //      C# -> List<System.String>? SuccessWorkloadIds
         // GraphQL -> successWorkloadIds: [UUID!]! (scalar)
-        if (this.SuccessWorkloadIds == null && Exploration.Includes(parent + ".successWorkloadIds", true))
+        if (this.SuccessWorkloadIds == null && ec.Includes("successWorkloadIds",true))
         {
             this.SuccessWorkloadIds = new List<System.String>();
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<EnableDisableAppConsistencyReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new EnableDisableAppConsistencyReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<EnableDisableAppConsistencyReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

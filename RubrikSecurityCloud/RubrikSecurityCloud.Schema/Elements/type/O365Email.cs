@@ -174,60 +174,59 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? From
         // GraphQL -> from: String (scalar)
-        if (this.From == null && Exploration.Includes(parent + ".from", true))
+        if (this.From == null && ec.Includes("from",true))
         {
             this.From = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.String? ParentFolderId
         // GraphQL -> parentFolderId: String (scalar)
-        if (this.ParentFolderId == null && Exploration.Includes(parent + ".parentFolderId", true))
+        if (this.ParentFolderId == null && ec.Includes("parentFolderId",true))
         {
             this.ParentFolderId = "FETCH";
         }
         //      C# -> DateTime? ReceivedDateTime
         // GraphQL -> receivedDateTime: DateTime (scalar)
-        if (this.ReceivedDateTime == null && Exploration.Includes(parent + ".receivedDateTime", true))
+        if (this.ReceivedDateTime == null && ec.Includes("receivedDateTime",true))
         {
             this.ReceivedDateTime = new DateTime();
         }
         //      C# -> DateTime? SentDateTime
         // GraphQL -> sentDateTime: DateTime (scalar)
-        if (this.SentDateTime == null && Exploration.Includes(parent + ".sentDateTime", true))
+        if (this.SentDateTime == null && ec.Includes("sentDateTime",true))
         {
             this.SentDateTime = new DateTime();
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: UUID (scalar)
-        if (this.SnapshotId == null && Exploration.Includes(parent + ".snapshotId", true))
+        if (this.SnapshotId == null && ec.Includes("snapshotId",true))
         {
             this.SnapshotId = "FETCH";
         }
         //      C# -> System.Int32? SnapshotNum
         // GraphQL -> snapshotNum: Int (scalar)
-        if (this.SnapshotNum == null && Exploration.Includes(parent + ".snapshotNum", true))
+        if (this.SnapshotNum == null && ec.Includes("snapshotNum",true))
         {
             this.SnapshotNum = Int32.MinValue;
         }
         //      C# -> System.String? Subject
         // GraphQL -> subject: String (scalar)
-        if (this.Subject == null && Exploration.Includes(parent + ".subject", true))
+        if (this.Subject == null && ec.Includes("subject",true))
         {
             this.Subject = "FETCH";
         }
         //      C# -> List<System.String>? ToRecipients
         // GraphQL -> toRecipients: [String!]! (scalar)
-        if (this.ToRecipients == null && Exploration.Includes(parent + ".toRecipients", true))
+        if (this.ToRecipients == null && ec.Includes("toRecipients",true))
         {
             this.ToRecipients = new List<System.String>();
         }
@@ -263,12 +262,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<O365Email> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new O365Email());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<O365Email> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -93,6 +93,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ARCHIVAL_LOCATION_DETAIL_ENABLED")]
         ARCHIVAL_LOCATION_DETAIL_ENABLED,
 
+        [EnumMember(Value = "AUTH0_REPLACEMENT_SSO_WIZARD_ENABLED")]
+        AUTH0_REPLACEMENT_SSO_WIZARD_ENABLED,
+
         [EnumMember(Value = "AWSAutoProtectByTagsEnabled")]
         AWS_AUTO_PROTECT_BY_TAGS_ENABLED,
 
@@ -120,6 +123,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AWS_EXPORT_IAM_INSTANCE_PROFILE_ENABLED")]
         AWS_EXPORT_IAM_INSTANCE_PROFILE_ENABLED,
 
+        [EnumMember(Value = "AWS_MANUAL_CLOUD_ACCOUNTS_SETUP_ENABLED")]
+        AWS_MANUAL_CLOUD_ACCOUNTS_SETUP_ENABLED,
+
         [EnumMember(Value = "AWS_MULTI_ACCOUNT_ADDITION_ENABLED")]
         AWS_MULTI_ACCOUNT_ADDITION_ENABLED,
 
@@ -131,6 +137,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "AWS_RDS_USE_MANUAL_SNAPSHOT_ENABLED")]
         AWS_RDS_USE_MANUAL_SNAPSHOT_ENABLED,
+
+        [EnumMember(Value = "AWS_S3_V2_ENABLED")]
+        AWS_S3_V2_ENABLED,
 
         [EnumMember(Value = "AWS_SHARED_EXOCOMPUTE_ENABLED")]
         AWS_SHARED_EXOCOMPUTE_ENABLED,
@@ -507,6 +516,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "DATA_SYNC_THROUGH_RSC_PROXY_ENABLED")]
         DATA_SYNC_THROUGH_RSC_PROXY_ENABLED,
 
+        [EnumMember(Value = "DATE_TIME_PREFERENCES_ENABLED")]
+        DATE_TIME_PREFERENCES_ENABLED,
+
         [EnumMember(Value = "DB2_ARCHIVAL_ENABLED")]
         DB2_ARCHIVAL_ENABLED,
 
@@ -578,6 +590,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "ENABLE_AWS_MANAGED_POLICIES")]
         ENABLE_AWS_MANAGED_POLICIES,
+
+        [EnumMember(Value = "ENABLE_MY_REPORTS")]
+        ENABLE_MY_REPORTS,
 
         [EnumMember(Value = "ENABLE_RSC_PROXY_BASED_UPGRADES")]
         ENABLE_RSC_PROXY_BASED_UPGRADES,
@@ -693,6 +708,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "IBM_COS_ENABLED")]
         IBM_COS_ENABLED,
 
+        [EnumMember(Value = "INDEXING_REPORT_ENABLED")]
+        INDEXING_REPORT_ENABLED,
+
         [EnumMember(Value = "INFINITY_K8S_ENABLED")]
         INFINITY_K8S_ENABLED,
 
@@ -716,6 +734,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "JobMonitoringUIEnabled")]
         JOB_MONITORING_UI_ENABLED,
+
+        [EnumMember(Value = "KEEP_CCES_RESOURCES_ON_FAILURE")]
+        KEEP_CCES_RESOURCES_ON_FAILURE,
 
         [EnumMember(Value = "KUBERNETES_SSF_ENABLED")]
         KUBERNETES_SSF_ENABLED,
@@ -743,6 +764,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "LIST_AND_FILTERS_V2_ENABLED")]
         LIST_AND_FILTERS_V2_ENABLED,
+
+        [EnumMember(Value = "LLM_CHAT_ENABLED")]
+        LLM_CHAT_ENABLED,
 
         [EnumMember(Value = "LOG_SLA_OVERRIDE_MSSQL_ENABLED")]
         LOG_SLA_OVERRIDE_MSSQL_ENABLED,
@@ -1220,6 +1244,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "RSC_TO_CDM_USER_CTX_ENABLED")]
         RSC_TO_CDM_USER_CTX_ENABLED,
+
+        [EnumMember(Value = "RSC_UPGRADES_CIAM_INTEGRATION")]
+        RSC_UPGRADES_CIAM_INTEGRATION,
 
         [EnumMember(Value = "RSDD_ON_O365_SHAREPOINT_DRIVE_ENABLED")]
         RSDD_ON_O365_SHAREPOINT_DRIVE_ENABLED,

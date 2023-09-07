@@ -169,6 +169,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("sonarObjectTypes")]
         public List<HierarchyObjectTypeEnum>? SonarObjectTypes { get; set; }
 
+        //      C# -> System.Boolean? ShouldApplyWhitelists
+        // GraphQL -> shouldApplyWhitelists: Boolean (scalar)
+        [JsonProperty("shouldApplyWhitelists")]
+        public System.Boolean? ShouldApplyWhitelists { get; set; }
+
+        //      C# -> DateTime? Date
+        // GraphQL -> date: DateTime (scalar)
+        [JsonProperty("date")]
+        public DateTime? Date { get; set; }
+
 
         #endregion
 

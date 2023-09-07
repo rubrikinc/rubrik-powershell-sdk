@@ -78,20 +78,19 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> RecoverySpec? RecoverySpec
         // GraphQL -> recoverySpec: RecoverySpec! (interface)
-        if (this.RecoverySpec == null && Exploration.Includes(parent + ".recoverySpec"))
+        if (this.RecoverySpec == null && ec.Includes("recoverySpec",false))
         {
             var impls = new List<RecoverySpec>();
-            impls.ApplyExploratoryFieldSpec(parent + ".recoverySpec");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("recoverySpec"));
             this.RecoverySpec = (RecoverySpec)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> System.String? WorkloadId
         // GraphQL -> workloadId: UUID! (scalar)
-        if (this.WorkloadId == null && Exploration.Includes(parent + ".workloadId", true))
+        if (this.WorkloadId == null && ec.Includes("workloadId",true))
         {
             this.WorkloadId = "FETCH";
         }
@@ -127,12 +126,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SourceChildRecoverySpecMap> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SourceChildRecoverySpecMap());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SourceChildRecoverySpecMap> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

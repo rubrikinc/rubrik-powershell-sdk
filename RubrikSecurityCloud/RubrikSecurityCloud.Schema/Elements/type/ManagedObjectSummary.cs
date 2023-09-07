@@ -120,39 +120,38 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ManagedObjectType? ObjectType
         // GraphQL -> objectType: ManagedObjectType! (enum)
-        if (this.ObjectType == null && Exploration.Includes(parent + ".objectType", true))
+        if (this.ObjectType == null && ec.Includes("objectType",true))
         {
             this.ObjectType = new ManagedObjectType();
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? SlaDomainName
         // GraphQL -> slaDomainName: String! (scalar)
-        if (this.SlaDomainName == null && Exploration.Includes(parent + ".slaDomainName", true))
+        if (this.SlaDomainName == null && ec.Includes("slaDomainName",true))
         {
             this.SlaDomainName = "FETCH";
         }
         //      C# -> List<SnapshotDetails>? SnapshotsDetails
         // GraphQL -> snapshotsDetails: [SnapshotDetails!]! (type)
-        if (this.SnapshotsDetails == null && Exploration.Includes(parent + ".snapshotsDetails"))
+        if (this.SnapshotsDetails == null && ec.Includes("snapshotsDetails",false))
         {
             this.SnapshotsDetails = new List<SnapshotDetails>();
-            this.SnapshotsDetails.ApplyExploratoryFieldSpec(parent + ".snapshotsDetails");
+            this.SnapshotsDetails.ApplyExploratoryFieldSpec(ec.NewChild("snapshotsDetails"));
         }
     }
 
@@ -186,12 +185,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ManagedObjectSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ManagedObjectSummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ManagedObjectSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<ConfigurationTypes>? ConfigurationTypes
         // GraphQL -> configurationTypes: [ConfigurationTypes!]! (enum)
-        if (this.ConfigurationTypes == null && Exploration.Includes(parent + ".configurationTypes", true))
+        if (this.ConfigurationTypes == null && ec.Includes("configurationTypes",true))
         {
             this.ConfigurationTypes = new List<ConfigurationTypes>();
         }
         //      C# -> RestoreFormConfigurations? Configurations
         // GraphQL -> configurations: RestoreFormConfigurations (type)
-        if (this.Configurations == null && Exploration.Includes(parent + ".configurations"))
+        if (this.Configurations == null && ec.Includes("configurations",false))
         {
             this.Configurations = new RestoreFormConfigurations();
-            this.Configurations.ApplyExploratoryFieldSpec(parent + ".configurations");
+            this.Configurations.ApplyExploratoryFieldSpec(ec.NewChild("configurations"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GenerateConfigProtectionRestoreFormReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GenerateConfigProtectionRestoreFormReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<GenerateConfigProtectionRestoreFormReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

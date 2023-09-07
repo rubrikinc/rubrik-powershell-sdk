@@ -92,27 +92,26 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? PreviousSnapshotDate
         // GraphQL -> previousSnapshotDate: Long! (scalar)
-        if (this.PreviousSnapshotDate == null && Exploration.Includes(parent + ".previousSnapshotDate", true))
+        if (this.PreviousSnapshotDate == null && ec.Includes("previousSnapshotDate",true))
         {
             this.PreviousSnapshotDate = new System.Int64();
         }
         //      C# -> System.String? PreviousSnapshotId
         // GraphQL -> previousSnapshotId: String! (scalar)
-        if (this.PreviousSnapshotId == null && Exploration.Includes(parent + ".previousSnapshotId", true))
+        if (this.PreviousSnapshotId == null && ec.Includes("previousSnapshotId",true))
         {
             this.PreviousSnapshotId = "FETCH";
         }
         //      C# -> List<DiffData>? Data
         // GraphQL -> data: [DiffData!]! (type)
-        if (this.Data == null && Exploration.Includes(parent + ".data"))
+        if (this.Data == null && ec.Includes("data",false))
         {
             this.Data = new List<DiffData>();
-            this.Data.ApplyExploratoryFieldSpec(parent + ".data");
+            this.Data.ApplyExploratoryFieldSpec(ec.NewChild("data"));
         }
     }
 
@@ -146,12 +145,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<DiffResult> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new DiffResult());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<DiffResult> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

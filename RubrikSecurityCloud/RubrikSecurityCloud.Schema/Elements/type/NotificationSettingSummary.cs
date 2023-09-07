@@ -145,48 +145,47 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<System.String>? EmailAddresses
         // GraphQL -> emailAddresses: [String!]! (scalar)
-        if (this.EmailAddresses == null && Exploration.Includes(parent + ".emailAddresses", true))
+        if (this.EmailAddresses == null && ec.Includes("emailAddresses",true))
         {
             this.EmailAddresses = new List<System.String>();
         }
         //      C# -> List<System.String>? EventTypes
         // GraphQL -> eventTypes: [String!]! (scalar)
-        if (this.EventTypes == null && Exploration.Includes(parent + ".eventTypes", true))
+        if (this.EventTypes == null && ec.Includes("eventTypes",true))
         {
             this.EventTypes = new List<System.String>();
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> List<System.String>? ObjectTypes
         // GraphQL -> objectTypes: [String!]! (scalar)
-        if (this.ObjectTypes == null && Exploration.Includes(parent + ".objectTypes", true))
+        if (this.ObjectTypes == null && ec.Includes("objectTypes",true))
         {
             this.ObjectTypes = new List<System.String>();
         }
         //      C# -> List<System.String>? Severity
         // GraphQL -> severity: [String!]! (scalar)
-        if (this.Severity == null && Exploration.Includes(parent + ".severity", true))
+        if (this.Severity == null && ec.Includes("severity",true))
         {
             this.Severity = new List<System.String>();
         }
         //      C# -> System.Boolean? ShouldSendToSyslog
         // GraphQL -> shouldSendToSyslog: Boolean! (scalar)
-        if (this.ShouldSendToSyslog == null && Exploration.Includes(parent + ".shouldSendToSyslog", true))
+        if (this.ShouldSendToSyslog == null && ec.Includes("shouldSendToSyslog",true))
         {
             this.ShouldSendToSyslog = true;
         }
         //      C# -> List<System.String>? SnmpAddresses
         // GraphQL -> snmpAddresses: [String!]! (scalar)
-        if (this.SnmpAddresses == null && Exploration.Includes(parent + ".snmpAddresses", true))
+        if (this.SnmpAddresses == null && ec.Includes("snmpAddresses",true))
         {
             this.SnmpAddresses = new List<System.String>();
         }
@@ -222,12 +221,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<NotificationSettingSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new NotificationSettingSummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<NotificationSettingSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

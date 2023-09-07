@@ -106,33 +106,32 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? IsCurrentlyPresentOnSystem
         // GraphQL -> isCurrentlyPresentOnSystem: Boolean! (scalar)
-        if (this.IsCurrentlyPresentOnSystem == null && Exploration.Includes(parent + ".isCurrentlyPresentOnSystem", true))
+        if (this.IsCurrentlyPresentOnSystem == null && ec.Includes("isCurrentlyPresentOnSystem",true))
         {
             this.IsCurrentlyPresentOnSystem = true;
         }
         //      C# -> System.String? NaturalId
         // GraphQL -> naturalId: String! (scalar)
-        if (this.NaturalId == null && Exploration.Includes(parent + ".naturalId", true))
+        if (this.NaturalId == null && ec.Includes("naturalId",true))
         {
             this.NaturalId = "FETCH";
         }
         //      C# -> System.String? VolumeGroupId
         // GraphQL -> volumeGroupId: String (scalar)
-        if (this.VolumeGroupId == null && Exploration.Includes(parent + ".volumeGroupId", true))
+        if (this.VolumeGroupId == null && ec.Includes("volumeGroupId",true))
         {
             this.VolumeGroupId = "FETCH";
         }
         //      C# -> VolumeGroupSnapshotVolumeSummary? VolumeGroupSnapshotVolumeSummary
         // GraphQL -> volumeGroupSnapshotVolumeSummary: VolumeGroupSnapshotVolumeSummary (type)
-        if (this.VolumeGroupSnapshotVolumeSummary == null && Exploration.Includes(parent + ".volumeGroupSnapshotVolumeSummary"))
+        if (this.VolumeGroupSnapshotVolumeSummary == null && ec.Includes("volumeGroupSnapshotVolumeSummary",false))
         {
             this.VolumeGroupSnapshotVolumeSummary = new VolumeGroupSnapshotVolumeSummary();
-            this.VolumeGroupSnapshotVolumeSummary.ApplyExploratoryFieldSpec(parent + ".volumeGroupSnapshotVolumeSummary");
+            this.VolumeGroupSnapshotVolumeSummary.ApplyExploratoryFieldSpec(ec.NewChild("volumeGroupSnapshotVolumeSummary"));
         }
     }
 
@@ -166,12 +165,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<HostVolumeSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new HostVolumeSummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<HostVolumeSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

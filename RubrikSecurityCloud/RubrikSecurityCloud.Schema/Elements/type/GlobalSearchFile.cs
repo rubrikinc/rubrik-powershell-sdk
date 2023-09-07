@@ -173,60 +173,59 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<System.String>? Dirs
         // GraphQL -> dirs: [String!]! (scalar)
-        if (this.Dirs == null && Exploration.Includes(parent + ".dirs", true))
+        if (this.Dirs == null && ec.Includes("dirs",true))
         {
             this.Dirs = new List<System.String>();
         }
         //      C# -> System.String? Filename
         // GraphQL -> filename: String! (scalar)
-        if (this.Filename == null && Exploration.Includes(parent + ".filename", true))
+        if (this.Filename == null && ec.Includes("filename",true))
         {
             this.Filename = "FETCH";
         }
         //      C# -> System.Boolean? IsFile
         // GraphQL -> isFile: Boolean! (scalar)
-        if (this.IsFile == null && Exploration.Includes(parent + ".isFile", true))
+        if (this.IsFile == null && ec.Includes("isFile",true))
         {
             this.IsFile = true;
         }
         //      C# -> System.Int64? ModifiedTime
         // GraphQL -> modifiedTime: Long (scalar)
-        if (this.ModifiedTime == null && Exploration.Includes(parent + ".modifiedTime", true))
+        if (this.ModifiedTime == null && ec.Includes("modifiedTime",true))
         {
             this.ModifiedTime = new System.Int64();
         }
         //      C# -> System.Int32? NumSnapshots
         // GraphQL -> numSnapshots: Int (scalar)
-        if (this.NumSnapshots == null && Exploration.Includes(parent + ".numSnapshots", true))
+        if (this.NumSnapshots == null && ec.Includes("numSnapshots",true))
         {
             this.NumSnapshots = Int32.MinValue;
         }
         //      C# -> System.Int64? SizeInBytes
         // GraphQL -> sizeInBytes: Long (scalar)
-        if (this.SizeInBytes == null && Exploration.Includes(parent + ".sizeInBytes", true))
+        if (this.SizeInBytes == null && ec.Includes("sizeInBytes",true))
         {
             this.SizeInBytes = new System.Int64();
         }
         //      C# -> System.String? SnappableId
         // GraphQL -> snappableId: String! (scalar)
-        if (this.SnappableId == null && Exploration.Includes(parent + ".snappableId", true))
+        if (this.SnappableId == null && ec.Includes("snappableId",true))
         {
             this.SnappableId = "FETCH";
         }
         //      C# -> System.String? SnappableName
         // GraphQL -> snappableName: String! (scalar)
-        if (this.SnappableName == null && Exploration.Includes(parent + ".snappableName", true))
+        if (this.SnappableName == null && ec.Includes("snappableName",true))
         {
             this.SnappableName = "FETCH";
         }
         //      C# -> System.Int64? SnapshotTime
         // GraphQL -> snapshotTime: Long (scalar)
-        if (this.SnapshotTime == null && Exploration.Includes(parent + ".snapshotTime", true))
+        if (this.SnapshotTime == null && ec.Includes("snapshotTime",true))
         {
             this.SnapshotTime = new System.Int64();
         }
@@ -262,12 +261,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GlobalSearchFile> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GlobalSearchFile());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<GlobalSearchFile> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

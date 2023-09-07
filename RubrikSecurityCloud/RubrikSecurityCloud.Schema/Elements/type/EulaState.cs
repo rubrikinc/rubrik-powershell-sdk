@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? IsAccepted
         // GraphQL -> isAccepted: Boolean! (scalar)
-        if (this.IsAccepted == null && Exploration.Includes(parent + ".isAccepted", true))
+        if (this.IsAccepted == null && ec.Includes("isAccepted",true))
         {
             this.IsAccepted = true;
         }
         //      C# -> System.Boolean? IsPactsafeEnabled
         // GraphQL -> isPactsafeEnabled: Boolean! (scalar)
-        if (this.IsPactsafeEnabled == null && Exploration.Includes(parent + ".isPactsafeEnabled", true))
+        if (this.IsPactsafeEnabled == null && ec.Includes("isPactsafeEnabled",true))
         {
             this.IsPactsafeEnabled = true;
         }
         //      C# -> System.Boolean? IsPactsafeV2Enabled
         // GraphQL -> isPactsafeV2Enabled: Boolean! (scalar)
-        if (this.IsPactsafeV2Enabled == null && Exploration.Includes(parent + ".isPactsafeV2Enabled", true))
+        if (this.IsPactsafeV2Enabled == null && ec.Includes("isPactsafeV2Enabled",true))
         {
             this.IsPactsafeV2Enabled = true;
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<EulaState> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new EulaState());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<EulaState> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

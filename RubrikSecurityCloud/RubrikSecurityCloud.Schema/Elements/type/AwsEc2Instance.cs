@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? ImageId
         // GraphQL -> imageId: String! (scalar)
-        if (this.ImageId == null && Exploration.Includes(parent + ".imageId", true))
+        if (this.ImageId == null && ec.Includes("imageId",true))
         {
             this.ImageId = "FETCH";
         }
         //      C# -> System.String? InstanceId
         // GraphQL -> instanceId: String! (scalar)
-        if (this.InstanceId == null && Exploration.Includes(parent + ".instanceId", true))
+        if (this.InstanceId == null && ec.Includes("instanceId",true))
         {
             this.InstanceId = "FETCH";
         }
         //      C# -> System.String? InstanceName
         // GraphQL -> instanceName: String! (scalar)
-        if (this.InstanceName == null && Exploration.Includes(parent + ".instanceName", true))
+        if (this.InstanceName == null && ec.Includes("instanceName",true))
         {
             this.InstanceName = "FETCH";
         }
         //      C# -> System.String? InstanceType
         // GraphQL -> instanceType: String! (scalar)
-        if (this.InstanceType == null && Exploration.Includes(parent + ".instanceType", true))
+        if (this.InstanceType == null && ec.Includes("instanceType",true))
         {
             this.InstanceType = "FETCH";
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AwsEc2Instance> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AwsEc2Instance());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AwsEc2Instance> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

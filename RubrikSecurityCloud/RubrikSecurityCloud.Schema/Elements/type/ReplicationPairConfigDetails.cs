@@ -95,28 +95,27 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? SetupType
         // GraphQL -> setupType: String! (scalar)
-        if (this.SetupType == null && Exploration.Includes(parent + ".setupType", true))
+        if (this.SetupType == null && ec.Includes("setupType",true))
         {
             this.SetupType = "FETCH";
         }
         //      C# -> GatewayInfo? SourceGateway
         // GraphQL -> sourceGateway: GatewayInfo (type)
-        if (this.SourceGateway == null && Exploration.Includes(parent + ".sourceGateway"))
+        if (this.SourceGateway == null && ec.Includes("sourceGateway",false))
         {
             this.SourceGateway = new GatewayInfo();
-            this.SourceGateway.ApplyExploratoryFieldSpec(parent + ".sourceGateway");
+            this.SourceGateway.ApplyExploratoryFieldSpec(ec.NewChild("sourceGateway"));
         }
         //      C# -> GatewayInfo? TargetGateway
         // GraphQL -> targetGateway: GatewayInfo (type)
-        if (this.TargetGateway == null && Exploration.Includes(parent + ".targetGateway"))
+        if (this.TargetGateway == null && ec.Includes("targetGateway",false))
         {
             this.TargetGateway = new GatewayInfo();
-            this.TargetGateway.ApplyExploratoryFieldSpec(parent + ".targetGateway");
+            this.TargetGateway.ApplyExploratoryFieldSpec(ec.NewChild("targetGateway"));
         }
     }
 
@@ -150,12 +149,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ReplicationPairConfigDetails> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ReplicationPairConfigDetails());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ReplicationPairConfigDetails> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

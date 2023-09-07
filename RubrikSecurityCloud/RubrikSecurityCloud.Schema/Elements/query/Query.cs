@@ -31,7 +31,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = new List<Operation>() ;
             }
-            return new string("allAllowedOrgAdminOperations" + args + "\n");
+            return "allAllowedOrgAdminOperations" + args + "\n";
         }
 
         //      C# -> List<Operation>? AllAuthorizationsForGlobalResource
@@ -46,7 +46,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = new List<Operation>() ;
             }
-            return new string("allAuthorizationsForGlobalResource" + args + "\n");
+            return "allAuthorizationsForGlobalResource" + args + "\n";
         }
 
         //      C# -> List<Operation>? AllAuthorizationsForObject
@@ -61,7 +61,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = new List<Operation>() ;
             }
-            return new string("allAuthorizationsForObject" + args + "\n");
+            return "allAuthorizationsForObject" + args + "\n";
         }
 
         //      C# -> List<AwsCloudAccountRegion>? AllAwsRegions
@@ -76,7 +76,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = new List<AwsCloudAccountRegion>() ;
             }
-            return new string("allAwsRegions" + args + "\n");
+            return "allAwsRegions" + args + "\n";
         }
 
         //      C# -> List<AzureCloudAccountRegion>? AllAzureRegions
@@ -91,7 +91,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = new List<AzureCloudAccountRegion>() ;
             }
-            return new string("allAzureRegions" + args + "\n");
+            return "allAzureRegions" + args + "\n";
         }
 
         //      C# -> List<InventoryCard>? AllInventoryWorkloads
@@ -106,7 +106,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = new List<InventoryCard>() ;
             }
-            return new string("allInventoryWorkloads" + args + "\n");
+            return "allInventoryWorkloads" + args + "\n";
         }
 
         //      C# -> List<ManagedObjectType>? AllUnmanagedObjectsSupportedTypes
@@ -121,7 +121,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = new List<ManagedObjectType>() ;
             }
-            return new string("allUnmanagedObjectsSupportedTypes" + args + "\n");
+            return "allUnmanagedObjectsSupportedTypes" + args + "\n";
         }
 
         //      C# -> TenantAuthDomainConfig? CurrentOrgAuthDomainConfig
@@ -136,7 +136,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = new TenantAuthDomainConfig() ;
             }
-            return new string("currentOrgAuthDomainConfig" + args + "\n");
+            return "currentOrgAuthDomainConfig" + args + "\n";
         }
 
         //      C# -> List<FeatureName>? ToggleableFeaturesEnabled
@@ -151,7 +151,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = new List<FeatureName>() ;
             }
-            return new string("toggleableFeaturesEnabled" + args + "\n");
+            return "toggleableFeaturesEnabled" + args + "\n";
         }
 
         //      C# -> List<ResourceSpec>? AllBlueprintResourceSpecs
@@ -164,12 +164,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<ResourceSpec>();
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allBlueprintResourceSpecs" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allBlueprintResourceSpecs" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<CloudAccount>? AllCloudAccounts
@@ -182,12 +181,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<CloudAccount>();
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allCloudAccounts" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allCloudAccounts" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<SlaDomain>? AllSlaSummariesByIds
@@ -200,12 +198,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<SlaDomain>();
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allSlaSummariesByIds" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allSlaSummariesByIds" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<ResourceSpec>? AllSnappableResourceSpecs
@@ -218,12 +215,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<ResourceSpec>();
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allSnappableResourceSpecs" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allSnappableResourceSpecs" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<Target>? AllTargets
@@ -236,12 +232,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<Target>();
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allTargets" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allTargets" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> Blueprint? Blueprint
@@ -254,17 +249,16 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 var list = new List<Blueprint>();
-                list.ApplyExploratoryFieldSpec();
+                list.ApplyExploratoryFieldSpec(new ExplorationContext());
                 fieldSpec = (Blueprint?)InterfaceHelper.MakeCompositeFromList(list);
                 if (fieldSpec == null)
                 {
                     throw new InvalidOperationException("Could not create Blueprint? composite object");
                 }
             }
-            return new string(
-                "blueprint" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "blueprint" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> BlueprintNew? BlueprintNew
@@ -277,17 +271,16 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 var list = new List<BlueprintNew>();
-                list.ApplyExploratoryFieldSpec();
+                list.ApplyExploratoryFieldSpec(new ExplorationContext());
                 fieldSpec = (BlueprintNew?)InterfaceHelper.MakeCompositeFromList(list);
                 if (fieldSpec == null)
                 {
                     throw new InvalidOperationException("Could not create BlueprintNew? composite object");
                 }
             }
-            return new string(
-                "blueprintNew" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "blueprintNew" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> CdmHierarchySnappableNew? CdmHierarchySnappableNew
@@ -300,17 +293,16 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 var list = new List<CdmHierarchySnappableNew>();
-                list.ApplyExploratoryFieldSpec();
+                list.ApplyExploratoryFieldSpec(new ExplorationContext());
                 fieldSpec = (CdmHierarchySnappableNew?)InterfaceHelper.MakeCompositeFromList(list);
                 if (fieldSpec == null)
                 {
                     throw new InvalidOperationException("Could not create CdmHierarchySnappableNew? composite object");
                 }
             }
-            return new string(
-                "cdmHierarchySnappableNew" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "cdmHierarchySnappableNew" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<CdmHierarchySnappableNew>? CdmHierarchySnappablesNew
@@ -323,12 +315,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<CdmHierarchySnappableNew>();
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "cdmHierarchySnappablesNew" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "cdmHierarchySnappablesNew" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> CloudAccount? CloudAccount
@@ -341,17 +332,16 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 var list = new List<CloudAccount>();
-                list.ApplyExploratoryFieldSpec();
+                list.ApplyExploratoryFieldSpec(new ExplorationContext());
                 fieldSpec = (CloudAccount?)InterfaceHelper.MakeCompositeFromList(list);
                 if (fieldSpec == null)
                 {
                     throw new InvalidOperationException("Could not create CloudAccount? composite object");
                 }
             }
-            return new string(
-                "cloudAccount" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "cloudAccount" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> HierarchyObject? HierarchyObject
@@ -364,17 +354,16 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 var list = new List<HierarchyObject>();
-                list.ApplyExploratoryFieldSpec();
+                list.ApplyExploratoryFieldSpec(new ExplorationContext());
                 fieldSpec = (HierarchyObject?)InterfaceHelper.MakeCompositeFromList(list);
                 if (fieldSpec == null)
                 {
                     throw new InvalidOperationException("Could not create HierarchyObject? composite object");
                 }
             }
-            return new string(
-                "hierarchyObject" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "hierarchyObject" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<HierarchyObject>? HierarchyObjects
@@ -387,12 +376,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<HierarchyObject>();
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "hierarchyObjects" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "hierarchyObjects" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<HierarchyObject>? SlaConflictObjects
@@ -405,12 +393,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<HierarchyObject>();
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "slaConflictObjects" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "slaConflictObjects" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> SlaDomain? SlaDomain
@@ -423,17 +410,16 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 var list = new List<SlaDomain>();
-                list.ApplyExploratoryFieldSpec();
+                list.ApplyExploratoryFieldSpec(new ExplorationContext());
                 fieldSpec = (SlaDomain?)InterfaceHelper.MakeCompositeFromList(list);
                 if (fieldSpec == null)
                 {
                     throw new InvalidOperationException("Could not create SlaDomain? composite object");
                 }
             }
-            return new string(
-                "slaDomain" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "slaDomain" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> Target? Target
@@ -446,17 +432,16 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 var list = new List<Target>();
-                list.ApplyExploratoryFieldSpec();
+                list.ApplyExploratoryFieldSpec(new ExplorationContext());
                 fieldSpec = (Target?)InterfaceHelper.MakeCompositeFromList(list);
                 if (fieldSpec == null)
                 {
                     throw new InvalidOperationException("Could not create Target? composite object");
                 }
             }
-            return new string(
-                "target" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "target" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> System.String? AccountId
@@ -471,7 +456,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = "FETCH" ;
             }
-            return new string("accountId" + args + "\n");
+            return "accountId" + args + "\n";
         }
 
         //      C# -> List<System.String>? AllAvailabilityZonesByRegionFromAws
@@ -486,7 +471,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = new List<System.String>() ;
             }
-            return new string("allAvailabilityZonesByRegionFromAws" + args + "\n");
+            return "allAvailabilityZonesByRegionFromAws" + args + "\n";
         }
 
         //      C# -> List<System.String>? AllAwsInstanceProfileNames
@@ -501,7 +486,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = new List<System.String>() ;
             }
-            return new string("allAwsInstanceProfileNames" + args + "\n");
+            return "allAwsInstanceProfileNames" + args + "\n";
         }
 
         //      C# -> List<System.String>? AllAzureNativeVirtualMachineSizes
@@ -516,7 +501,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = new List<System.String>() ;
             }
-            return new string("allAzureNativeVirtualMachineSizes" + args + "\n");
+            return "allAzureNativeVirtualMachineSizes" + args + "\n";
         }
 
         //      C# -> List<System.String>? AllAzureNsgs
@@ -531,7 +516,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = new List<System.String>() ;
             }
-            return new string("allAzureNsgs" + args + "\n");
+            return "allAzureNsgs" + args + "\n";
         }
 
         //      C# -> List<System.String>? AllAzureResourceGroups
@@ -546,7 +531,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = new List<System.String>() ;
             }
-            return new string("allAzureResourceGroups" + args + "\n");
+            return "allAzureResourceGroups" + args + "\n";
         }
 
         //      C# -> List<System.String>? AllAzureStorageAccounts
@@ -561,7 +546,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = new List<System.String>() ;
             }
-            return new string("allAzureStorageAccounts" + args + "\n");
+            return "allAzureStorageAccounts" + args + "\n";
         }
 
         //      C# -> List<System.String>? AllAzureSubnets
@@ -576,7 +561,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = new List<System.String>() ;
             }
-            return new string("allAzureSubnets" + args + "\n");
+            return "allAzureSubnets" + args + "\n";
         }
 
         //      C# -> List<System.String>? AllAzureVnets
@@ -591,7 +576,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = new List<System.String>() ;
             }
-            return new string("allAzureVnets" + args + "\n");
+            return "allAzureVnets" + args + "\n";
         }
 
         //      C# -> List<System.String>? AllCdpSlaVmNames
@@ -606,7 +591,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = new List<System.String>() ;
             }
-            return new string("allCdpSlaVmNames" + args + "\n");
+            return "allCdpSlaVmNames" + args + "\n";
         }
 
         //      C# -> List<System.String>? AllCloudNativeFileRecoveryEligibleSnapshots
@@ -621,7 +606,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = new List<System.String>() ;
             }
-            return new string("allCloudNativeFileRecoveryEligibleSnapshots" + args + "\n");
+            return "allCloudNativeFileRecoveryEligibleSnapshots" + args + "\n";
         }
 
         //      C# -> List<System.String>? AllCloudNativeLabelKeys
@@ -636,7 +621,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = new List<System.String>() ;
             }
-            return new string("allCloudNativeLabelKeys" + args + "\n");
+            return "allCloudNativeLabelKeys" + args + "\n";
         }
 
         //      C# -> List<System.String>? AllCloudNativeLabelValues
@@ -651,7 +636,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = new List<System.String>() ;
             }
-            return new string("allCloudNativeLabelValues" + args + "\n");
+            return "allCloudNativeLabelValues" + args + "\n";
         }
 
         //      C# -> List<System.String>? AllCloudNativeTagKeys
@@ -666,7 +651,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = new List<System.String>() ;
             }
-            return new string("allCloudNativeTagKeys" + args + "\n");
+            return "allCloudNativeTagKeys" + args + "\n";
         }
 
         //      C# -> List<System.String>? AllCloudNativeTagValues
@@ -681,7 +666,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = new List<System.String>() ;
             }
-            return new string("allCloudNativeTagValues" + args + "\n");
+            return "allCloudNativeTagValues" + args + "\n";
         }
 
         //      C# -> List<System.Boolean>? AllClustersTotpAckStatus
@@ -696,7 +681,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = new List<System.Boolean>() ;
             }
-            return new string("allClustersTotpAckStatus" + args + "\n");
+            return "allClustersTotpAckStatus" + args + "\n";
         }
 
         //      C# -> List<System.String>? AllDeploymentIpAddresses
@@ -711,7 +696,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = new List<System.String>() ;
             }
-            return new string("allDeploymentIpAddresses" + args + "\n");
+            return "allDeploymentIpAddresses" + args + "\n";
         }
 
         //      C# -> List<System.String>? AllEc2KeyPairsByRegionFromAws
@@ -726,7 +711,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = new List<System.String>() ;
             }
-            return new string("allEc2KeyPairsByRegionFromAws" + args + "\n");
+            return "allEc2KeyPairsByRegionFromAws" + args + "\n";
         }
 
         //      C# -> List<System.String>? AllGcpNativeCompatibleMachineTypes
@@ -741,7 +726,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = new List<System.String>() ;
             }
-            return new string("allGcpNativeCompatibleMachineTypes" + args + "\n");
+            return "allGcpNativeCompatibleMachineTypes" + args + "\n";
         }
 
         //      C# -> List<System.String>? AllGcpNativeStoredMachineTypes
@@ -756,7 +741,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = new List<System.String>() ;
             }
-            return new string("allGcpNativeStoredMachineTypes" + args + "\n");
+            return "allGcpNativeStoredMachineTypes" + args + "\n";
         }
 
         //      C# -> List<System.String>? AllGcpNativeStoredMachineTypesInProject
@@ -771,7 +756,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = new List<System.String>() ;
             }
-            return new string("allGcpNativeStoredMachineTypesInProject" + args + "\n");
+            return "allGcpNativeStoredMachineTypesInProject" + args + "\n";
         }
 
         //      C# -> List<System.String>? AllGcpNativeStoredNetworkNames
@@ -786,7 +771,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = new List<System.String>() ;
             }
-            return new string("allGcpNativeStoredNetworkNames" + args + "\n");
+            return "allGcpNativeStoredNetworkNames" + args + "\n";
         }
 
         //      C# -> List<System.String>? AllGcpNativeStoredNetworkNamesInProject
@@ -801,7 +786,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = new List<System.String>() ;
             }
-            return new string("allGcpNativeStoredNetworkNamesInProject" + args + "\n");
+            return "allGcpNativeStoredNetworkNamesInProject" + args + "\n";
         }
 
         //      C# -> List<System.String>? AllGcpNativeStoredRegions
@@ -816,7 +801,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = new List<System.String>() ;
             }
-            return new string("allGcpNativeStoredRegions" + args + "\n");
+            return "allGcpNativeStoredRegions" + args + "\n";
         }
 
         //      C# -> List<System.String>? AllGcpNativeStoredRegionsInProject
@@ -831,7 +816,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = new List<System.String>() ;
             }
-            return new string("allGcpNativeStoredRegionsInProject" + args + "\n");
+            return "allGcpNativeStoredRegionsInProject" + args + "\n";
         }
 
         //      C# -> List<System.String>? AllIssuesJobIds
@@ -846,7 +831,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = new List<System.String>() ;
             }
-            return new string("allIssuesJobIds" + args + "\n");
+            return "allIssuesJobIds" + args + "\n";
         }
 
         //      C# -> List<System.String>? AllS3BucketsFromAws
@@ -861,7 +846,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = new List<System.String>() ;
             }
-            return new string("allS3BucketsFromAws" + args + "\n");
+            return "allS3BucketsFromAws" + args + "\n";
         }
 
         //      C# -> List<System.String>? AllSupportedAwsRdsDatabaseInstanceClasses
@@ -876,7 +861,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = new List<System.String>() ;
             }
-            return new string("allSupportedAwsRdsDatabaseInstanceClasses" + args + "\n");
+            return "allSupportedAwsRdsDatabaseInstanceClasses" + args + "\n";
         }
 
         //      C# -> System.Boolean? AreClusterAlertsPaused
@@ -891,7 +876,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = true ;
             }
-            return new string("areClusterAlertsPaused" + args + "\n");
+            return "areClusterAlertsPaused" + args + "\n";
         }
 
         //      C# -> System.Boolean? AreMultiGeoBackupsEnabled
@@ -906,7 +891,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = true ;
             }
-            return new string("areMultiGeoBackupsEnabled" + args + "\n");
+            return "areMultiGeoBackupsEnabled" + args + "\n";
         }
 
         //      C# -> System.Boolean? CloudNativeCheckRequiredPermissionsForFeature
@@ -921,7 +906,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = true ;
             }
-            return new string("cloudNativeCheckRequiredPermissionsForFeature" + args + "\n");
+            return "cloudNativeCheckRequiredPermissionsForFeature" + args + "\n";
         }
 
         //      C# -> System.String? CurrentIpAddress
@@ -936,7 +921,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = "FETCH" ;
             }
-            return new string("currentIpAddress" + args + "\n");
+            return "currentIpAddress" + args + "\n";
         }
 
         //      C# -> System.String? DeploymentVersion
@@ -951,7 +936,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = "FETCH" ;
             }
-            return new string("deploymentVersion" + args + "\n");
+            return "deploymentVersion" + args + "\n";
         }
 
         //      C# -> System.Boolean? DoesAzureNativeResourceGroupExist
@@ -966,7 +951,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = true ;
             }
-            return new string("doesAzureNativeResourceGroupExist" + args + "\n");
+            return "doesAzureNativeResourceGroupExist" + args + "\n";
         }
 
         //      C# -> System.Boolean? DummyFieldWithAdminOnlyTag
@@ -981,7 +966,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = true ;
             }
-            return new string("dummyFieldWithAdminOnlyTag" + args + "\n");
+            return "dummyFieldWithAdminOnlyTag" + args + "\n";
         }
 
         //      C# -> System.String? ExternalDeploymentName
@@ -996,7 +981,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = "FETCH" ;
             }
-            return new string("externalDeploymentName" + args + "\n");
+            return "externalDeploymentName" + args + "\n";
         }
 
         //      C# -> List<System.String>? FeatureFlagNames
@@ -1011,7 +996,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = new List<System.String>() ;
             }
-            return new string("featureFlagNames" + args + "\n");
+            return "featureFlagNames" + args + "\n";
         }
 
         //      C# -> List<System.String>? FlagrFeatureFlagNames
@@ -1026,7 +1011,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = new List<System.String>() ;
             }
-            return new string("flagrFeatureFlagNames" + args + "\n");
+            return "flagrFeatureFlagNames" + args + "\n";
         }
 
         //      C# -> System.String? GcpGetDefaultCredentialsServiceAccount
@@ -1041,7 +1026,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = "FETCH" ;
             }
-            return new string("gcpGetDefaultCredentialsServiceAccount" + args + "\n");
+            return "gcpGetDefaultCredentialsServiceAccount" + args + "\n";
         }
 
         //      C# -> List<System.String>? GetDns
@@ -1056,7 +1041,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = new List<System.String>() ;
             }
-            return new string("getDns" + args + "\n");
+            return "getDns" + args + "\n";
         }
 
         //      C# -> List<System.String>? GetNtp
@@ -1071,7 +1056,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = new List<System.String>() ;
             }
-            return new string("getNtp" + args + "\n");
+            return "getNtp" + args + "\n";
         }
 
         //      C# -> System.Boolean? HasIdpConfigured
@@ -1086,7 +1071,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = true ;
             }
-            return new string("hasIdpConfigured" + args + "\n");
+            return "hasIdpConfigured" + args + "\n";
         }
 
         //      C# -> System.Int32? HostVolumesCount
@@ -1101,7 +1086,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = Int32.MinValue ;
             }
-            return new string("hostVolumesCount" + args + "\n");
+            return "hostVolumesCount" + args + "\n";
         }
 
         //      C# -> System.Boolean? IsAwsNativeRdsInstanceLaunchConfigurationValid
@@ -1116,7 +1101,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = true ;
             }
-            return new string("isAwsNativeRdsInstanceLaunchConfigurationValid" + args + "\n");
+            return "isAwsNativeRdsInstanceLaunchConfigurationValid" + args + "\n";
         }
 
         //      C# -> System.Boolean? IsAwsS3BucketNameAvailable
@@ -1131,7 +1116,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = true ;
             }
-            return new string("isAwsS3BucketNameAvailable" + args + "\n");
+            return "isAwsS3BucketNameAvailable" + args + "\n";
         }
 
         //      C# -> System.Boolean? IsAzureNativeManagedDiskSnapshotRestorable
@@ -1146,7 +1131,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = true ;
             }
-            return new string("isAzureNativeManagedDiskSnapshotRestorable" + args + "\n");
+            return "isAzureNativeManagedDiskSnapshotRestorable" + args + "\n";
         }
 
         //      C# -> System.Boolean? IsAzureNativeSqlDatabaseSnapshotPersistent
@@ -1161,7 +1146,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = true ;
             }
-            return new string("isAzureNativeSqlDatabaseSnapshotPersistent" + args + "\n");
+            return "isAzureNativeSqlDatabaseSnapshotPersistent" + args + "\n";
         }
 
         //      C# -> System.Boolean? IsAzureStorageAccountNameAvailable
@@ -1176,7 +1161,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = true ;
             }
-            return new string("isAzureStorageAccountNameAvailable" + args + "\n");
+            return "isAzureStorageAccountNameAvailable" + args + "\n";
         }
 
         //      C# -> System.Boolean? IsSfdcReachable
@@ -1191,7 +1176,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = true ;
             }
-            return new string("isSfdcReachable" + args + "\n");
+            return "isSfdcReachable" + args + "\n";
         }
 
         //      C# -> System.Boolean? IsTotpAckNecessaryForCluster
@@ -1206,7 +1191,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = true ;
             }
-            return new string("isTotpAckNecessaryForCluster" + args + "\n");
+            return "isTotpAckNecessaryForCluster" + args + "\n";
         }
 
         //      C# -> System.Boolean? IsTotpMandatoryInTargetVersion
@@ -1221,7 +1206,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = true ;
             }
-            return new string("isTotpMandatoryInTargetVersion" + args + "\n");
+            return "isTotpMandatoryInTargetVersion" + args + "\n";
         }
 
         //      C# -> System.Boolean? IsVmwareManagementEnabled
@@ -1236,7 +1221,22 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = true ;
             }
-            return new string("isVMwareManagementEnabled" + args + "\n");
+            return "isVMwareManagementEnabled" + args + "\n";
+        }
+
+        //      C# -> System.Boolean? IsValidTprPolicyName
+        // GraphQL -> isValidTprPolicyName: Boolean! (scalar)
+        public static string IsValidTprPolicyName(
+            ref System.Boolean? fieldSpec
+        )
+        {
+            string args = "\n(\ntprPolicyName: $tprPolicyName\n)";
+            if ( fieldSpec == null ) {
+                // there is no field spec for scalar types, but we still
+                // populate the fieldSpec so that caller can see the type 
+                fieldSpec = true ;
+            }
+            return "isValidTprPolicyName" + args + "\n";
         }
 
         //      C# -> System.String? K8sObjectFid
@@ -1251,7 +1251,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = "FETCH" ;
             }
-            return new string("k8sObjectFid" + args + "\n");
+            return "k8sObjectFid" + args + "\n";
         }
 
         //      C# -> System.String? K8sObjectInternalId
@@ -1266,7 +1266,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = "FETCH" ;
             }
-            return new string("k8sObjectInternalId" + args + "\n");
+            return "k8sObjectInternalId" + args + "\n";
         }
 
         //      C# -> System.Int32? MaxProtectedAppsCount
@@ -1281,7 +1281,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = Int32.MinValue ;
             }
-            return new string("maxProtectedAppsCount" + args + "\n");
+            return "maxProtectedAppsCount" + args + "\n";
         }
 
         //      C# -> System.String? O365TeamConversationsFolderId
@@ -1296,7 +1296,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = "FETCH" ;
             }
-            return new string("o365TeamConversationsFolderID" + args + "\n");
+            return "o365TeamConversationsFolderID" + args + "\n";
         }
 
         //      C# -> System.Boolean? TeamChannelNameAvailable
@@ -1311,7 +1311,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = true ;
             }
-            return new string("teamChannelNameAvailable" + args + "\n");
+            return "teamChannelNameAvailable" + args + "\n";
         }
 
         //      C# -> System.Int32? UniqueHypervServersCount
@@ -1326,7 +1326,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = Int32.MinValue ;
             }
-            return new string("uniqueHypervServersCount" + args + "\n");
+            return "uniqueHypervServersCount" + args + "\n";
         }
 
         //      C# -> System.Int32? UniqueVsphereVcenterCount
@@ -1341,7 +1341,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = Int32.MinValue ;
             }
-            return new string("uniqueVSphereVCenterCount" + args + "\n");
+            return "uniqueVSphereVCenterCount" + args + "\n";
         }
 
         //      C# -> System.Int32? UniqueVcdCount
@@ -1356,7 +1356,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = Int32.MinValue ;
             }
-            return new string("uniqueVcdCount" + args + "\n");
+            return "uniqueVcdCount" + args + "\n";
         }
 
         //      C# -> System.Int32? UnreadNotificationsCount
@@ -1371,7 +1371,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = Int32.MinValue ;
             }
-            return new string("unreadNotificationsCount" + args + "\n");
+            return "unreadNotificationsCount" + args + "\n";
         }
 
         //      C# -> System.Int32? VcenterNumProxiesNeeded
@@ -1386,7 +1386,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = Int32.MinValue ;
             }
-            return new string("vCenterNumProxiesNeeded" + args + "\n");
+            return "vCenterNumProxiesNeeded" + args + "\n";
         }
 
         //      C# -> System.Boolean? VerifyVappTemplateName
@@ -1401,7 +1401,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = true ;
             }
-            return new string("verifyVappTemplateName" + args + "\n");
+            return "verifyVappTemplateName" + args + "\n";
         }
 
         //      C# -> AwsCloudAccountListKmsKeysResponse? AwsCloudAccountListKmsKeys
@@ -1414,12 +1414,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AwsCloudAccountListKmsKeysResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "AwsCloudAccountListKMSKeys" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "AwsCloudAccountListKMSKeys" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GetMountDetailsReply? GetMountDetails
@@ -1432,12 +1431,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GetMountDetailsReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "GetMountDetails" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "GetMountDetails" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AccountSetting? AccountSettings
@@ -1450,12 +1448,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AccountSetting() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "accountSettings" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "accountSettings" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AnalyzerConnection? ActiveCustomAnalyzers
@@ -1468,12 +1465,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AnalyzerConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "activeCustomAnalyzers" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "activeCustomAnalyzers" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AsyncRequestStatus? ActiveDirectoryAsyncRequestStatus
@@ -1486,12 +1482,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AsyncRequestStatus() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "activeDirectoryAsyncRequestStatus" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "activeDirectoryAsyncRequestStatus" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ActiveDirectoryDomain? ActiveDirectoryDomain
@@ -1504,12 +1499,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ActiveDirectoryDomain() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "activeDirectoryDomain" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "activeDirectoryDomain" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ActiveDirectoryDomainController? ActiveDirectoryDomainController
@@ -1522,12 +1516,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ActiveDirectoryDomainController() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "activeDirectoryDomainController" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "activeDirectoryDomainController" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ActiveDirectoryDomainControllerConnection? ActiveDirectoryDomainControllers
@@ -1540,12 +1533,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ActiveDirectoryDomainControllerConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "activeDirectoryDomainControllers" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "activeDirectoryDomainControllers" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ActiveDirectoryDomainConnection? ActiveDirectoryDomains
@@ -1558,12 +1550,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ActiveDirectoryDomainConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "activeDirectoryDomains" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "activeDirectoryDomains" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ActiveInsightConnection? ActiveInsights
@@ -1576,12 +1567,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ActiveInsightConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "activeInsights" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "activeInsights" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ActivitySeries? ActivitySeries
@@ -1594,12 +1584,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ActivitySeries() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "activitySeries" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "activitySeries" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ActivitySeriesConnection? ActivitySeriesConnection
@@ -1612,12 +1601,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ActivitySeriesConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "activitySeriesConnection" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "activitySeriesConnection" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ActivitySeriesGroupByConnection? ActivitySeriesGroupByConnection
@@ -1630,12 +1618,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ActivitySeriesGroupByConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "activitySeriesGroupByConnection" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "activitySeriesGroupByConnection" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AdVolumeExportConnection? AdVolumeExports
@@ -1648,12 +1635,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AdVolumeExportConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "adVolumeExports" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "adVolumeExports" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<User>? AllAccountOwners
@@ -1666,12 +1652,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<User>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allAccountOwners" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allAccountOwners" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<AccountProduct>? AllAccountProducts
@@ -1684,12 +1669,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<AccountProduct>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allAccountProducts" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allAccountProducts" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<CloudAccountWithExocomputeMapping>? AllAccountsWithExocomputeMappings
@@ -1702,12 +1686,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<CloudAccountWithExocomputeMapping>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allAccountsWithExocomputeMappings" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allAccountsWithExocomputeMappings" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<AuthorizedOperations>? AllAuthorizationsForObjects
@@ -1720,12 +1703,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<AuthorizedOperations>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allAuthorizationsForObjects" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allAuthorizationsForObjects" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<AwsCdmVersion>? AllAwsCdmVersions
@@ -1738,12 +1720,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<AwsCdmVersion>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allAwsCdmVersions" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allAwsCdmVersions" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<AwsFeatureConfig>? AllAwsCloudAccountConfigs
@@ -1756,12 +1737,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<AwsFeatureConfig>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allAwsCloudAccountConfigs" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allAwsCloudAccountConfigs" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<AwsCloudAccountFeaturesWithExoConfigs>? AllAwsCloudAccountsFeaturesWithExoConfigs
@@ -1774,12 +1754,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<AwsCloudAccountFeaturesWithExoConfigs>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allAwsCloudAccountsFeaturesWithExoConfigs" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allAwsCloudAccountsFeaturesWithExoConfigs" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<AwsCloudAccountWithFeatures>? AllAwsCloudAccountsWithFeatures
@@ -1792,12 +1771,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<AwsCloudAccountWithFeatures>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allAwsCloudAccountsWithFeatures" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allAwsCloudAccountsWithFeatures" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<AwsComputeSettings>? AllAwsComputeSettings
@@ -1810,12 +1788,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<AwsComputeSettings>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allAwsComputeSettings" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allAwsComputeSettings" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<AwsExocomputeConfig>? AllAwsExocomputeConfigs
@@ -1828,12 +1805,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<AwsExocomputeConfig>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allAwsExocomputeConfigs" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allAwsExocomputeConfigs" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<PermissionPolicy>? AllAwsPermissionPolicies
@@ -1846,12 +1822,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<PermissionPolicy>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allAwsPermissionPolicies" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allAwsPermissionPolicies" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AwsNativeRdsAuroraInstanceClassesReply? AllAwsRdsAuroraInstanceClasses
@@ -1864,12 +1839,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AwsNativeRdsAuroraInstanceClassesReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allAwsRdsAuroraInstanceClasses" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allAwsRdsAuroraInstanceClasses" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<AzureArmTemplateByFeature>? AllAzureArmTemplatesByFeature
@@ -1882,12 +1856,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<AzureArmTemplateByFeature>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allAzureArmTemplatesByFeature" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allAzureArmTemplatesByFeature" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<AzureCdmVersion>? AllAzureCdmVersions
@@ -1900,12 +1873,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<AzureCdmVersion>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allAzureCdmVersions" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allAzureCdmVersions" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<AzureSubscriptionMissingPermissions>? AllAzureCloudAccountMissingPermissions
@@ -1918,12 +1890,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<AzureSubscriptionMissingPermissions>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allAzureCloudAccountMissingPermissions" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allAzureCloudAccountMissingPermissions" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<AzureNativeSubnet>? AllAzureCloudAccountSubnetsByRegion
@@ -1936,12 +1907,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<AzureNativeSubnet>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allAzureCloudAccountSubnetsByRegion" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allAzureCloudAccountSubnetsByRegion" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<AzureSubscriptionWithFeaturesType>? AllAzureCloudAccountSubscriptionsByFeature
@@ -1954,12 +1924,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<AzureSubscriptionWithFeaturesType>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allAzureCloudAccountSubscriptionsByFeature" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allAzureCloudAccountSubscriptionsByFeature" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<AzureCloudAccountTenant>? AllAzureCloudAccountTenants
@@ -1972,12 +1941,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<AzureCloudAccountTenant>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allAzureCloudAccountTenants" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allAzureCloudAccountTenants" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<AzureCloudAccountTenantWithExoConfigs>? AllAzureCloudAccountTenantsWithExoConfigs
@@ -1990,12 +1958,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<AzureCloudAccountTenantWithExoConfigs>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allAzureCloudAccountTenantsWithExoConfigs" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allAzureCloudAccountTenantsWithExoConfigs" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<AzureNativeDiskEncryptionSet>? AllAzureDiskEncryptionSetsByRegion
@@ -2008,12 +1975,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<AzureNativeDiskEncryptionSet>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allAzureDiskEncryptionSetsByRegion" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allAzureDiskEncryptionSetsByRegion" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<AzureEncryptionKey>? AllAzureEncryptionKeys
@@ -2026,12 +1992,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<AzureEncryptionKey>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allAzureEncryptionKeys" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allAzureEncryptionKeys" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<AzureExocomputeConfigsInAccount>? AllAzureExocomputeConfigsInAccount
@@ -2044,12 +2009,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<AzureExocomputeConfigsInAccount>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allAzureExocomputeConfigsInAccount" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allAzureExocomputeConfigsInAccount" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<AzureKeyVault>? AllAzureKeyVaultsByRegion
@@ -2062,12 +2026,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<AzureKeyVault>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allAzureKeyVaultsByRegion" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allAzureKeyVaultsByRegion" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<AzureManagedIdentity>? AllAzureManagedIdentities
@@ -2080,12 +2043,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<AzureManagedIdentity>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allAzureManagedIdentities" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allAzureManagedIdentities" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<AzureNativeAvailabilitySet>? AllAzureNativeAvailabilitySetsByRegionFromAzure
@@ -2098,12 +2060,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<AzureNativeAvailabilitySet>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allAzureNativeAvailabilitySetsByRegionFromAzure" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allAzureNativeAvailabilitySetsByRegionFromAzure" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<AzureNativeExportCompatibleDiskTypes>? AllAzureNativeExportCompatibleDiskTypesByRegionFromAzure
@@ -2116,12 +2077,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<AzureNativeExportCompatibleDiskTypes>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allAzureNativeExportCompatibleDiskTypesByRegionFromAzure" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allAzureNativeExportCompatibleDiskTypesByRegionFromAzure" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<AzureNativeExportCompatibleVmSizes>? AllAzureNativeExportCompatibleVmSizesByRegionFromAzure
@@ -2134,12 +2094,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<AzureNativeExportCompatibleVmSizes>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allAzureNativeExportCompatibleVmSizesByRegionFromAzure" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allAzureNativeExportCompatibleVmSizesByRegionFromAzure" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<AzureResourceGroupInfo>? AllAzureNativeResourceGroupsInfoIfExist
@@ -2152,12 +2111,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<AzureResourceGroupInfo>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allAzureNativeResourceGroupsInfoIfExist" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allAzureNativeResourceGroupsInfoIfExist" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<AzureNativeSecurityGroup>? AllAzureNativeSecurityGroupsByRegionFromAzure
@@ -2170,12 +2128,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<AzureNativeSecurityGroup>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allAzureNativeSecurityGroupsByRegionFromAzure" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allAzureNativeSecurityGroupsByRegionFromAzure" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<AzureNativeStorageAccount>? AllAzureNativeStorageAccountsFromAzure
@@ -2188,12 +2145,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<AzureNativeStorageAccount>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allAzureNativeStorageAccountsFromAzure" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allAzureNativeStorageAccountsFromAzure" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<AzureNativeSubnet>? AllAzureNativeSubnetsByRegionFromAzure
@@ -2206,12 +2162,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<AzureNativeSubnet>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allAzureNativeSubnetsByRegionFromAzure" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allAzureNativeSubnetsByRegionFromAzure" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<AzureNativeVirtualNetwork>? AllAzureNativeVirtualNetworks
@@ -2224,12 +2179,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<AzureNativeVirtualNetwork>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allAzureNativeVirtualNetworks" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allAzureNativeVirtualNetworks" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<AzureSqlDatabaseServerElasticPool>? AllAzureSqlDatabaseServerElasticPools
@@ -2242,12 +2196,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<AzureSqlDatabaseServerElasticPool>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allAzureSqlDatabaseServerElasticPools" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allAzureSqlDatabaseServerElasticPools" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<AzureSubscriptionWithExocomputeMapping>? AllAzureSubscriptionWithExocomputeMappings
@@ -2260,12 +2213,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<AzureSubscriptionWithExocomputeMapping>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allAzureSubscriptionWithExocomputeMappings" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allAzureSubscriptionWithExocomputeMappings" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> BlueprintNewConnection? AllBlueprints
@@ -2278,12 +2230,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new BlueprintNewConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allBlueprints" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allBlueprints" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<CdmGuestCredential>? AllCdmGuestCredentials
@@ -2296,12 +2247,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<CdmGuestCredential>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allCdmGuestCredentials" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allCdmGuestCredentials" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<CdmOvaDetail>? AllCdmOvaDetails
@@ -2314,12 +2264,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<CdmOvaDetail>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allCdmOvaDetails" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allCdmOvaDetails" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> CdpVmInfoConnection? AllCdpVmsInfos
@@ -2332,12 +2281,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new CdpVmInfoConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allCdpVmsInfos" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allCdpVmsInfos" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<CloudAccountsExocomputeAccountMapping>? AllCloudAccountExocomputeMappings
@@ -2350,12 +2298,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<CloudAccountsExocomputeAccountMapping>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allCloudAccountExocomputeMappings" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allCloudAccountExocomputeMappings" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<CcWithCloudInfo>? AllCloudClusters
@@ -2368,12 +2315,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<CcWithCloudInfo>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allCloudClusters" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allCloudClusters" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<ShareExportIdPair>? AllCloudDirectShares
@@ -2386,12 +2332,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<ShareExportIdPair>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allCloudDirectShares" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allCloudDirectShares" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<CloudDirectSite>? AllCloudDirectSites
@@ -2404,12 +2349,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<CloudDirectSite>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allCloudDirectSites" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allCloudDirectSites" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ClusterConnection? AllClusterConnection
@@ -2422,12 +2366,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ClusterConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allClusterConnection" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allClusterConnection" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<SlaInfo>? AllClusterGlobalSlas
@@ -2440,12 +2383,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<SlaInfo>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allClusterGlobalSlas" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allClusterGlobalSlas" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<ClusterReplicationTarget>? AllClusterReplicationTargets
@@ -2458,12 +2400,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<ClusterReplicationTarget>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allClusterReplicationTargets" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allClusterReplicationTargets" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<ClusterWebCertAndIpmi>? AllClusterWebCertsAndIpmis
@@ -2476,12 +2417,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<ClusterWebCertAndIpmi>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allClusterWebCertsAndIpmis" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allClusterWebCertsAndIpmis" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ItemDiffBetweenSnapshotAndLiveEnvironment? AllComparisonsBetweenSaasAppSnapshotAndLive
@@ -2494,12 +2434,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ItemDiffBetweenSnapshotAndLiveEnvironment() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allComparisonsBetweenSaasAppSnapshotAndLive" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allComparisonsBetweenSaasAppSnapshotAndLive" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<DailyComplianceStats>? AllComplianceTimeSeries
@@ -2512,12 +2451,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<DailyComplianceStats>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allComplianceTimeSeries" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allComplianceTimeSeries" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ConfigProtectionBackupsConnection? AllConfigProtectionBackups
@@ -2530,12 +2468,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ConfigProtectionBackupsConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allConfigProtectionBackups" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allConfigProtectionBackups" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<DataLocationSupportedCluster>? AllConnectedClusters
@@ -2548,12 +2485,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<DataLocationSupportedCluster>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allConnectedClusters" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allConnectedClusters" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<CloudAccountFeaturePermission>? AllCurrentFeaturePermissionsForCloudAccounts
@@ -2566,12 +2502,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<CloudAccountFeaturePermission>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allCurrentFeaturePermissionsForCloudAccounts" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allCurrentFeaturePermissionsForCloudAccounts" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<IdentityProvider>? AllCurrentOrgIdentityProviders
@@ -2584,12 +2519,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<IdentityProvider>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allCurrentOrgIdentityProviders" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allCurrentOrgIdentityProviders" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<DbParameterGroup>? AllDbParameterGroupsByRegionFromAws
@@ -2602,12 +2536,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<DbParameterGroup>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allDbParameterGroupsByRegionFromAws" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allDbParameterGroupsByRegionFromAws" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<SubnetGroup>? AllDbSubnetGroupsByRegionFromAws
@@ -2620,12 +2553,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<SubnetGroup>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allDbSubnetGroupsByRegionFromAws" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allDbSubnetGroupsByRegionFromAws" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<DhrcActiveRecommendation>? AllDhrcActiveRecommendations
@@ -2638,12 +2570,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<DhrcActiveRecommendation>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allDhrcActiveRecommendations" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allDhrcActiveRecommendations" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<DhrcCollectedMetric>? AllDhrcLatestMetrics
@@ -2656,12 +2587,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<DhrcCollectedMetric>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allDhrcLatestMetrics" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allDhrcLatestMetrics" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<DhrcScore>? AllDhrcScores
@@ -2674,12 +2604,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<DhrcScore>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allDhrcScores" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allDhrcScores" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<RbacPermission>? AllEffectiveRbacPermissions
@@ -2692,12 +2621,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<RbacPermission>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allEffectiveRbacPermissions" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allEffectiveRbacPermissions" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AllEnabledFeaturesForAccountReply? AllEnabledFeaturesForAccount
@@ -2710,12 +2638,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AllEnabledFeaturesForAccountReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allEnabledFeaturesForAccount" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allEnabledFeaturesForAccount" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<EventDigest>? AllEventDigests
@@ -2728,12 +2655,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<EventDigest>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allEventDigests" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allEventDigests" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<FailoverJobReport>? AllFailoverJobReports
@@ -2746,12 +2672,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<FailoverJobReport>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allFailoverJobReports" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allFailoverJobReports" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<GcpPermission>? AllFeaturePermissionsForGcpCloudAccount
@@ -2764,12 +2689,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<GcpPermission>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allFeaturePermissionsForGcpCloudAccount" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allFeaturePermissionsForGcpCloudAccount" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> UserActivityResultConnection? AllFileActivities
@@ -2782,12 +2706,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new UserActivityResultConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allFileActivities" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allFileActivities" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<GcpCloudAccountMissingPermissionsForAddition>? AllGcpCloudAccountMissingPermissionsForAddition
@@ -2800,12 +2723,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<GcpCloudAccountMissingPermissionsForAddition>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allGcpCloudAccountMissingPermissionsForAddition" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allGcpCloudAccountMissingPermissionsForAddition" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<GcpCloudAccountProjectDetail>? AllGcpCloudAccountProjectsByFeature
@@ -2818,12 +2740,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<GcpCloudAccountProjectDetail>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allGcpCloudAccountProjectsByFeature" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allGcpCloudAccountProjectsByFeature" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<GcpCloudAccountProjectForOauth>? AllGcpCloudAccountProjectsForOauth
@@ -2836,12 +2757,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<GcpCloudAccountProjectForOauth>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allGcpCloudAccountProjectsForOauth" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allGcpCloudAccountProjectsForOauth" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<GcpNativeKmsCryptoKey>? AllGcpNativeAvailableKmsCryptoKeys
@@ -2854,12 +2774,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<GcpNativeKmsCryptoKey>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allGcpNativeAvailableKmsCryptoKeys" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allGcpNativeAvailableKmsCryptoKeys" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<GcpNativeNetwork>? AllGcpNativeNetworks
@@ -2872,12 +2791,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<GcpNativeNetwork>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allGcpNativeNetworks" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allGcpNativeNetworks" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<NetworkHostProject>? AllGcpNativeProjectsWithAccessibleNetworks
@@ -2890,12 +2808,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<NetworkHostProject>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allGcpNativeProjectsWithAccessibleNetworks" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allGcpNativeProjectsWithAccessibleNetworks" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<GcpNativeRegion>? AllGcpNativeRegions
@@ -2908,12 +2825,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<GcpNativeRegion>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allGcpNativeRegions" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allGcpNativeRegions" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GlobalFileSearchReplyType? AllGlobalFileSearchMultipleClusters
@@ -2926,12 +2842,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GlobalFileSearchReplyType() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allGlobalFileSearchMultipleClusters" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allGlobalFileSearchMultipleClusters" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AzureRegionsResp? AllHostedAzureRegions
@@ -2944,12 +2859,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AzureRegionsResp() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allHostedAzureRegions" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allHostedAzureRegions" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ListIntegrationsReply? AllIntegrations
@@ -2962,12 +2876,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ListIntegrationsReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allIntegrations" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allIntegrations" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<JiraIssueType>? AllJiraIssueTypes
@@ -2980,12 +2893,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<JiraIssueType>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allJiraIssueTypes" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allJiraIssueTypes" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<ReplicatedSnapshotInfo>? AllK8sReplicaSnapshotInfos
@@ -2998,12 +2910,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<ReplicatedSnapshotInfo>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allK8sReplicaSnapshotInfos" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allK8sReplicaSnapshotInfos" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<KmsEncryptionKey>? AllKmsEncryptionKeysByRegionFromAws
@@ -3016,12 +2927,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<KmsEncryptionKey>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allKmsEncryptionKeysByRegionFromAws" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allKmsEncryptionKeysByRegionFromAws" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<LatestConfigProtectionBackups>? AllLatestConfigProtectionBackupsByVersion
@@ -3034,12 +2944,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<LatestConfigProtectionBackups>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allLatestConfigProtectionBackupsByVersion" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allLatestConfigProtectionBackupsByVersion" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<CloudAccountFeaturePermission>? AllLatestFeaturePermissionsForCloudAccounts
@@ -3052,12 +2961,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<CloudAccountFeaturePermission>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allLatestFeaturePermissionsForCloudAccounts" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allLatestFeaturePermissionsForCloudAccounts" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GetLicensedProductsInfoReply? AllLicensedProducts
@@ -3070,12 +2978,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GetLicensedProductsInfoReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allLicensedProducts" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allLicensedProducts" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<MigrationMetadata>? AllMigrationMetadata
@@ -3088,12 +2995,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<MigrationMetadata>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allMigrationMetadata" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allMigrationMetadata" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<Prechecks>? AllMigrationPrechecks
@@ -3106,12 +3012,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<Prechecks>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allMigrationPrechecks" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allMigrationPrechecks" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> V1MssqlGetRestoreFilesV1Response? AllMssqlDatabaseRestoreFiles
@@ -3124,12 +3029,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new V1MssqlGetRestoreFilesV1Response() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allMssqlDatabaseRestoreFiles" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allMssqlDatabaseRestoreFiles" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<NcdObjectsOverTimeData>? AllNcdObjectsOverTimeData
@@ -3142,12 +3046,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<NcdObjectsOverTimeData>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allNcdObjectsOverTimeData" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allNcdObjectsOverTimeData" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<NcdSlaComplianceData>? AllNcdSlaComplianceData
@@ -3160,12 +3063,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<NcdSlaComplianceData>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allNcdSlaComplianceData" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allNcdSlaComplianceData" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<NcdTaskData>? AllNcdTaskData
@@ -3178,12 +3080,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<NcdTaskData>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allNcdTaskData" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allNcdTaskData" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<NcdUsageOverTimeData>? AllNcdUsageOverTimeData
@@ -3196,12 +3097,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<NcdUsageOverTimeData>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allNcdUsageOverTimeData" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allNcdUsageOverTimeData" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<MosaicStorageLocation>? AllNosqlStorageLocations
@@ -3214,12 +3114,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<MosaicStorageLocation>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allNosqlStorageLocations" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allNosqlStorageLocations" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<AdGroup>? AllO365AdGroups
@@ -3232,12 +3131,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<AdGroup>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allO365AdGroups" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allO365AdGroups" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<O365OrgInfo>? AllO365OrgStatuses
@@ -3250,12 +3148,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<O365OrgInfo>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allO365OrgStatuses" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allO365OrgStatuses" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<O365SubscriptionAppTypeCounts>? AllO365SubscriptionsAppTypeCounts
@@ -3268,12 +3165,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<O365SubscriptionAppTypeCounts>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allO365SubscriptionsAppTypeCounts" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allO365SubscriptionsAppTypeCounts" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<ObjectIdsForHierarchyType>? AllObjectsAlreadyAssignedToOrgs
@@ -3286,12 +3182,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<ObjectIdsForHierarchyType>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allObjectsAlreadyAssignedToOrgs" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allObjectsAlreadyAssignedToOrgs" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<OptionGroup>? AllOptionGroupsByRegionFromAws
@@ -3304,12 +3199,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<OptionGroup>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allOptionGroupsByRegionFromAws" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allOptionGroupsByRegionFromAws" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<Org>? AllOrgsByIds
@@ -3322,12 +3216,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<Org>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allOrgsByIds" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allOrgsByIds" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<PendingAction>? AllPendingActions
@@ -3340,12 +3233,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<PendingAction>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allPendingActions" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allPendingActions" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<PolicyRiskSummary>? AllPolicyRiskSummaries
@@ -3358,12 +3250,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<PolicyRiskSummary>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allPolicyRiskSummaries" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allPolicyRiskSummaries" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GetPrincipalRiskSummaryReply? AllPrincipalRiskSummaries
@@ -3376,12 +3267,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GetPrincipalRiskSummaryReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allPrincipalRiskSummaries" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allPrincipalRiskSummaries" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<QuarantineSpec>? AllQuarantinedDetailsForSnapshots
@@ -3394,12 +3284,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<QuarantineSpec>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allQuarantinedDetailsForSnapshots" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allQuarantinedDetailsForSnapshots" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<QuarantineSpec>? AllQuarantinedDetailsForWorkload
@@ -3412,12 +3301,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<QuarantineSpec>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allQuarantinedDetailsForWorkload" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allQuarantinedDetailsForWorkload" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<ReportConfig>? AllReportConfigs
@@ -3426,16 +3314,15 @@ namespace RubrikSecurityCloud.Types
             ref List<ReportConfig>? fieldSpec
         )
         {
-            string args = "\n(\ndataView: $dataView\nsearchTerm: $searchTerm\n)";
+            string args = "\n(\ndataView: $dataView\nsearchTerm: $searchTerm\ncreatedBy: $createdBy\n)";
             if (fieldSpec == null)
             {
                 fieldSpec = new List<ReportConfig>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allReportConfigs" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allReportConfigs" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<ReportMetadata>? AllReportMetadata
@@ -3448,12 +3335,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<ReportMetadata>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allReportMetadata" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allReportMetadata" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<AzureResourceGroup>? AllResourceGroupsFromAzure
@@ -3466,12 +3352,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<AzureResourceGroup>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allResourceGroupsFromAzure" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allResourceGroupsFromAzure" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<PolarisReportConfig>? AllRscReportConfigs
@@ -3480,16 +3365,15 @@ namespace RubrikSecurityCloud.Types
             ref List<PolarisReportConfig>? fieldSpec
         )
         {
-            string args = "\n(\nreportView: $reportView\nsearchTerm: $searchTerm\n)";
+            string args = "\n(\nreportView: $reportView\nsearchTerm: $searchTerm\npolarisReportsFilters: $polarisReportsFilters\n)";
             if (fieldSpec == null)
             {
                 fieldSpec = new List<PolarisReportConfig>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allRscReportConfigs" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allRscReportConfigs" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<S3BucketDetails>? AllS3BucketsDetailsFromAws
@@ -3502,12 +3386,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<S3BucketDetails>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allS3BucketsDetailsFromAws" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allS3BucketsDetailsFromAws" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<FullSpSiteExclusions>? AllSharepointSiteExclusions
@@ -3520,12 +3403,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<FullSpSiteExclusions>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allSharepointSiteExclusions" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allSharepointSiteExclusions" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<ComputeClusterIofilterStatus>? AllSlaIofilterStatuses
@@ -3538,12 +3420,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<ComputeClusterIofilterStatus>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allSlaIofilterStatuses" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allSlaIofilterStatuses" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<PvcInformation>? AllSnapshotPvcs
@@ -3556,12 +3437,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<PvcInformation>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allSnapshotPvcs" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allSnapshotPvcs" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<ClosestSnapshotSearchResult>? AllSnapshotsClosestToPointInTime
@@ -3574,12 +3454,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<ClosestSnapshotSearchResult>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allSnapshotsClosestToPointInTime" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allSnapshotsClosestToPointInTime" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<SourceRecoverySpecsReply>? AllSourceRecoverySpecs
@@ -3592,12 +3471,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<SourceRecoverySpecsReply>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allSourceRecoverySpecs" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allSourceRecoverySpecs" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AllStorageArraysReply? AllStorageArrays
@@ -3610,12 +3488,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AllStorageArraysReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allStorageArrays" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allStorageArrays" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<TargetMapping>? AllTargetMappings
@@ -3628,12 +3505,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<TargetMapping>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allTargetMappings" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allTargetMappings" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<PolicySummary>? AllTopRiskPolicySummaries
@@ -3646,12 +3522,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<PolicySummary>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allTopRiskPolicySummaries" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allTopRiskPolicySummaries" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<Trial>? AllTrials
@@ -3664,12 +3539,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<Trial>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allTrials" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allTrials" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<UnifiedFeatureFlag>? AllUnifiedFeatureFlags
@@ -3682,12 +3556,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<UnifiedFeatureFlag>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allUnifiedFeatureFlags" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allUnifiedFeatureFlags" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<User>? AllUsersOnAccount
@@ -3700,12 +3573,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<User>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allUsersOnAccount" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allUsersOnAccount" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> UserConnection? AllUsersOnAccountConnection
@@ -3718,12 +3590,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new UserConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allUsersOnAccountConnection" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allUsersOnAccountConnection" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ValidReplicationTargetConnection? AllValidReplicationTargets
@@ -3736,12 +3607,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ValidReplicationTargetConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allValidReplicationTargets" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allValidReplicationTargets" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<VcenterHotAddProxyVmInfo>? AllVcenterHotAddProxyVms
@@ -3754,12 +3624,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<VcenterHotAddProxyVmInfo>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allVcenterHotAddProxyVms" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allVcenterHotAddProxyVms" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> VirtualMachineFilesReply? AllVirtualMachineFiles
@@ -3772,12 +3641,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new VirtualMachineFilesReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allVirtualMachineFiles" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allVirtualMachineFiles" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<ComputeClusterIofilterStatus>? AllVmIofilterStatuses
@@ -3790,12 +3658,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<ComputeClusterIofilterStatus>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allVmIofilterStatuses" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allVmIofilterStatuses" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<VmRecoveryJobInfo>? AllVmRecoveryJobsInfo
@@ -3808,12 +3675,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<VmRecoveryJobInfo>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allVmRecoveryJobsInfo" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allVmRecoveryJobsInfo" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<VmwareCdpStateInfo>? AllVmwareCdpStateInfos
@@ -3826,12 +3692,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<VmwareCdpStateInfo>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allVmwareCdpStateInfos" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allVmwareCdpStateInfos" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<AwsVpc>? AllVpcsByRegionFromAws
@@ -3844,12 +3709,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<AwsVpc>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allVpcsByRegionFromAws" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allVpcsByRegionFromAws" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<AwsVpc>? AllVpcsFromAws
@@ -3862,12 +3726,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<AwsVpc>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allVpcsFromAws" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allVpcsFromAws" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> WebhookConnection? AllWebhooks
@@ -3880,12 +3743,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new WebhookConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "allWebhooks" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "allWebhooks" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AmiTypeForAwsNativeArchivedSnapshotExportReply? AmiTypeForAwsNativeArchivedSnapshotExport
@@ -3898,12 +3760,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AmiTypeForAwsNativeArchivedSnapshotExportReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "amiTypeForAwsNativeArchivedSnapshotExport" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "amiTypeForAwsNativeArchivedSnapshotExport" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AnalyzerGroupConnection? AnalyzerGroups
@@ -3916,12 +3777,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AnalyzerGroupConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "analyzerGroups" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "analyzerGroups" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AnalyzerUsageConnection? AnalyzerUsages
@@ -3934,12 +3794,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AnalyzerUsageConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "analyzerUsages" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "analyzerUsages" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GetAnomalyDetailsReply? AnomalyResultOpt
@@ -3952,12 +3811,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GetAnomalyDetailsReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "anomalyResultOpt" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "anomalyResultOpt" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AnomalyResultConnection? AnomalyResults
@@ -3970,12 +3828,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AnomalyResultConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "anomalyResults" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "anomalyResults" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AnomalyResultGroupedDataConnection? AnomalyResultsGrouped
@@ -3988,12 +3845,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AnomalyResultGroupedDataConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "anomalyResultsGrouped" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "anomalyResultsGrouped" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AppflowsSummary? AppflowsSummary
@@ -4006,12 +3862,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AppflowsSummary() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "appflowsSummary" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "appflowsSummary" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ArchivalEntityConnection? ArchivalEntities
@@ -4024,12 +3879,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ArchivalEntityConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "archivalEntities" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "archivalEntities" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<ArchivalStorageUsage>? ArchivalStorageUsage
@@ -4042,12 +3896,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<ArchivalStorageUsage>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "archivalStorageUsage" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "archivalStorageUsage" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GlobalCertificateConnection? AssignableGlobalCertificates
@@ -4060,12 +3913,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GlobalCertificateConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "assignableGlobalCertificates" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "assignableGlobalCertificates" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AtlassianSite? AtlassianSite
@@ -4078,12 +3930,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AtlassianSite() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "atlassianSite" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "atlassianSite" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AtlassianSiteConnection? AtlassianSites
@@ -4096,12 +3947,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AtlassianSiteConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "atlassianSites" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "atlassianSites" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AttributedFeatureFlag? AttributedFeatureFlag
@@ -4114,12 +3964,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AttributedFeatureFlag() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "attributedFeatureFlag" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "attributedFeatureFlag" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AwsArtifactsToDelete? AwsArtifactsToDelete
@@ -4132,12 +3981,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AwsArtifactsToDelete() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "awsArtifactsToDelete" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "awsArtifactsToDelete" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AwsCloudAccountListSecurityGroupsResponse? AwsCloudAccountListSecurityGroups
@@ -4150,12 +3998,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AwsCloudAccountListSecurityGroupsResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "awsCloudAccountListSecurityGroups" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "awsCloudAccountListSecurityGroups" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AwsCloudAccountListSubnetsResponse? AwsCloudAccountListSubnets
@@ -4168,12 +4015,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AwsCloudAccountListSubnetsResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "awsCloudAccountListSubnets" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "awsCloudAccountListSubnets" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AwsCloudAccountListVpcResponse? AwsCloudAccountListVpcs
@@ -4186,12 +4032,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AwsCloudAccountListVpcResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "awsCloudAccountListVpcs" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "awsCloudAccountListVpcs" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AwsCloudAccountWithFeatures? AwsCloudAccountWithFeatures
@@ -4204,12 +4049,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AwsCloudAccountWithFeatures() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "awsCloudAccountWithFeatures" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "awsCloudAccountWithFeatures" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AwsComputeSettings? AwsComputeSettings
@@ -4222,12 +4066,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AwsComputeSettings() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "awsComputeSettings" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "awsComputeSettings" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AwsNativeAccount? AwsNativeAccount
@@ -4240,12 +4083,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AwsNativeAccount() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "awsNativeAccount" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "awsNativeAccount" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AwsNativeAccountConnection? AwsNativeAccounts
@@ -4258,12 +4100,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AwsNativeAccountConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "awsNativeAccounts" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "awsNativeAccounts" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AwsNativeEbsVolume? AwsNativeEbsVolume
@@ -4276,12 +4117,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AwsNativeEbsVolume() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "awsNativeEbsVolume" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "awsNativeEbsVolume" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AwsNativeEbsVolumeConnection? AwsNativeEbsVolumes
@@ -4294,12 +4134,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AwsNativeEbsVolumeConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "awsNativeEbsVolumes" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "awsNativeEbsVolumes" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AwsNativeEbsVolumeConnection? AwsNativeEbsVolumesByName
@@ -4312,12 +4151,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AwsNativeEbsVolumeConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "awsNativeEbsVolumesByName" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "awsNativeEbsVolumesByName" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AwsNativeEc2Instance? AwsNativeEc2Instance
@@ -4330,12 +4168,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AwsNativeEc2Instance() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "awsNativeEc2Instance" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "awsNativeEc2Instance" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AwsNativeEc2InstanceConnection? AwsNativeEc2Instances
@@ -4348,12 +4185,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AwsNativeEc2InstanceConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "awsNativeEc2Instances" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "awsNativeEc2Instances" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AwsNativeEc2InstanceConnection? AwsNativeEc2InstancesByName
@@ -4366,12 +4202,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AwsNativeEc2InstanceConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "awsNativeEc2InstancesByName" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "awsNativeEc2InstancesByName" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> RdsInstanceExportDefaults? AwsNativeRdsExportDefaults
@@ -4384,12 +4219,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new RdsInstanceExportDefaults() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "awsNativeRdsExportDefaults" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "awsNativeRdsExportDefaults" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AwsNativeRdsInstance? AwsNativeRdsInstance
@@ -4402,12 +4236,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AwsNativeRdsInstance() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "awsNativeRdsInstance" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "awsNativeRdsInstance" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AwsNativeRdsInstanceConnection? AwsNativeRdsInstances
@@ -4420,12 +4253,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AwsNativeRdsInstanceConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "awsNativeRdsInstances" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "awsNativeRdsInstances" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AwsNativeRdsPointInTimeRestoreWindow? AwsNativeRdsPointInTimeRestoreWindow
@@ -4438,12 +4270,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AwsNativeRdsPointInTimeRestoreWindow() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "awsNativeRdsPointInTimeRestoreWindow" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "awsNativeRdsPointInTimeRestoreWindow" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AwsNativeRoot? AwsNativeRoot
@@ -4456,12 +4287,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AwsNativeRoot() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "awsNativeRoot" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "awsNativeRoot" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AwsNativeS3Bucket? AwsNativeS3Bucket
@@ -4474,12 +4304,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AwsNativeS3Bucket() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "awsNativeS3Bucket" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "awsNativeS3Bucket" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AwsTrustPolicy? AwsTrustPolicy
@@ -4492,12 +4321,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AwsTrustPolicy() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "awsTrustPolicy" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "awsTrustPolicy" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AzureAdDirectoryConnection? AzureAdDirectories
@@ -4510,12 +4338,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AzureAdDirectoryConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "azureAdDirectories" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "azureAdDirectories" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AzureAdDirectory? AzureAdDirectory
@@ -4528,12 +4355,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AzureAdDirectory() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "azureAdDirectory" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "azureAdDirectory" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AzureAdObjectConnection? AzureAdObjectsByType
@@ -4546,12 +4372,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AzureAdObjectConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "azureAdObjectsByType" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "azureAdObjectsByType" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AzureCloudAccountCheckRefreshTokenExistsReply? AzureCloudAccountCheckRefreshTokenExistsForRecovery
@@ -4564,12 +4389,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AzureCloudAccountCheckRefreshTokenExistsReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "azureCloudAccountCheckRefreshTokenExistsForRecovery" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "azureCloudAccountCheckRefreshTokenExistsForRecovery" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AzureCloudAccountGrantedPermissionsGroupsReply? AzureCloudAccountGrantedPermissionsGroups
@@ -4582,12 +4406,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AzureCloudAccountGrantedPermissionsGroupsReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "azureCloudAccountGrantedPermissionsGroups" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "azureCloudAccountGrantedPermissionsGroups" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AzureCloudAccountGrantedPermissionsGroupsReply? AzureCloudAccountGrantedPermissionsGroupsForRecovery
@@ -4600,12 +4423,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AzureCloudAccountGrantedPermissionsGroupsReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "azureCloudAccountGrantedPermissionsGroupsForRecovery" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "azureCloudAccountGrantedPermissionsGroupsForRecovery" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AzureCloudAccountPermissionConfigResponse? AzureCloudAccountPermissionConfig
@@ -4618,12 +4440,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AzureCloudAccountPermissionConfigResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "azureCloudAccountPermissionConfig" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "azureCloudAccountPermissionConfig" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AzureCloudAccountSubscriptionWithFeatures? AzureCloudAccountSubscriptionWithFeatures
@@ -4636,12 +4457,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AzureCloudAccountSubscriptionWithFeatures() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "azureCloudAccountSubscriptionWithFeatures" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "azureCloudAccountSubscriptionWithFeatures" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AzureCloudAccountTenant? AzureCloudAccountTenant
@@ -4654,12 +4474,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AzureCloudAccountTenant() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "azureCloudAccountTenant" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "azureCloudAccountTenant" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AzureCloudAccountTenantWithExoConfigs? AzureCloudAccountTenantWithExoConfigs
@@ -4672,12 +4491,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AzureCloudAccountTenantWithExoConfigs() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "azureCloudAccountTenantWithExoConfigs" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "azureCloudAccountTenantWithExoConfigs" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> LiveMountDetailsConnection? AzureNativeLiveMountDisks
@@ -4690,12 +4508,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new LiveMountDetailsConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "azureNativeLiveMountDisks" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "azureNativeLiveMountDisks" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AzureNativeManagedDisk? AzureNativeManagedDisk
@@ -4708,12 +4525,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AzureNativeManagedDisk() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "azureNativeManagedDisk" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "azureNativeManagedDisk" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AzureNativeManagedDiskConnection? AzureNativeManagedDisks
@@ -4726,12 +4542,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AzureNativeManagedDiskConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "azureNativeManagedDisks" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "azureNativeManagedDisks" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AzureNativeResourceGroup? AzureNativeResourceGroup
@@ -4744,12 +4559,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AzureNativeResourceGroup() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "azureNativeResourceGroup" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "azureNativeResourceGroup" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AzureNativeResourceGroupConnection? AzureNativeResourceGroups
@@ -4762,12 +4576,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AzureNativeResourceGroupConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "azureNativeResourceGroups" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "azureNativeResourceGroups" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AzureNativeRoot? AzureNativeRoot
@@ -4780,12 +4593,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AzureNativeRoot() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "azureNativeRoot" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "azureNativeRoot" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AzureNativeSubscription? AzureNativeSubscription
@@ -4798,12 +4610,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AzureNativeSubscription() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "azureNativeSubscription" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "azureNativeSubscription" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AzureNativeSubscriptionConnection? AzureNativeSubscriptions
@@ -4816,12 +4627,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AzureNativeSubscriptionConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "azureNativeSubscriptions" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "azureNativeSubscriptions" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AzureNativeVirtualMachine? AzureNativeVirtualMachine
@@ -4834,12 +4644,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AzureNativeVirtualMachine() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "azureNativeVirtualMachine" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "azureNativeVirtualMachine" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AzureNativeVirtualMachineConnection? AzureNativeVirtualMachines
@@ -4852,12 +4661,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AzureNativeVirtualMachineConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "azureNativeVirtualMachines" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "azureNativeVirtualMachines" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AzureNetworkSecurityGroupResp? AzureO365CheckNsgOutboundRules
@@ -4870,12 +4678,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AzureNetworkSecurityGroupResp() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "azureO365CheckNSGOutboundRules" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "azureO365CheckNSGOutboundRules" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AzureNetworkSubnetResp? AzureO365CheckNetworkSubnet
@@ -4888,12 +4695,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AzureNetworkSubnetResp() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "azureO365CheckNetworkSubnet" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "azureO365CheckNetworkSubnet" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AzureResourceAvailabilityResp? AzureO365CheckResourceGroupName
@@ -4906,12 +4712,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AzureResourceAvailabilityResp() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "azureO365CheckResourceGroupName" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "azureO365CheckResourceGroupName" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AzureResourceAvailabilityResp? AzureO365CheckStorageAccountAccessibility
@@ -4924,12 +4729,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AzureResourceAvailabilityResp() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "azureO365CheckStorageAccountAccessibility" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "azureO365CheckStorageAccountAccessibility" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AzureResourceAvailabilityResp? AzureO365CheckStorageAccountName
@@ -4942,12 +4746,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AzureResourceAvailabilityResp() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "azureO365CheckStorageAccountName" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "azureO365CheckStorageAccountName" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AzureResourceAvailabilityResp? AzureO365CheckSubscriptionQuota
@@ -4960,12 +4763,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AzureResourceAvailabilityResp() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "azureO365CheckSubscriptionQuota" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "azureO365CheckSubscriptionQuota" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AzureResourceAvailabilityResp? AzureO365CheckVirtualNetworkName
@@ -4978,12 +4780,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AzureResourceAvailabilityResp() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "azureO365CheckVirtualNetworkName" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "azureO365CheckVirtualNetworkName" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GetAzureO365ExocomputeResp? AzureO365Exocompute
@@ -4996,12 +4797,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GetAzureO365ExocomputeResp() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "azureO365Exocompute" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "azureO365Exocompute" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GetAzureHostTypeResp? AzureO365GetAzureHostType
@@ -5014,12 +4814,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GetAzureHostTypeResp() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "azureO365GetAzureHostType" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "azureO365GetAzureHostType" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AzureNetworkSubnetUnusedAddrResp? AzureO365GetNetworkSubnetUnusedAddr
@@ -5032,12 +4831,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AzureNetworkSubnetUnusedAddrResp() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "azureO365GetNetworkSubnetUnusedAddr" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "azureO365GetNetworkSubnetUnusedAddr" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AzureUserRoleResp? AzureO365ValidateUserRoles
@@ -5050,12 +4848,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AzureUserRoleResp() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "azureO365ValidateUserRoles" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "azureO365ValidateUserRoles" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> RegionConnection? AzureRegions
@@ -5068,12 +4865,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new RegionConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "azureRegions" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "azureRegions" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ResourceGroupConnection? AzureResourceGroups
@@ -5086,12 +4882,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ResourceGroupConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "azureResourceGroups" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "azureResourceGroups" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AzureSqlDatabaseDb? AzureSqlDatabase
@@ -5104,12 +4899,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AzureSqlDatabaseDb() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "azureSqlDatabase" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "azureSqlDatabase" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AzureNativeSqlDatabasePointInTimeRestoreWindow? AzureSqlDatabaseDbPointInTimeRestoreWindowFromAzure
@@ -5122,12 +4916,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AzureNativeSqlDatabasePointInTimeRestoreWindow() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "azureSqlDatabaseDbPointInTimeRestoreWindowFromAzure" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "azureSqlDatabaseDbPointInTimeRestoreWindowFromAzure" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AzureSqlDatabaseServer? AzureSqlDatabaseServer
@@ -5140,12 +4933,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AzureSqlDatabaseServer() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "azureSqlDatabaseServer" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "azureSqlDatabaseServer" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AzureSqlDatabaseServerConnection? AzureSqlDatabaseServers
@@ -5158,12 +4950,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AzureSqlDatabaseServerConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "azureSqlDatabaseServers" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "azureSqlDatabaseServers" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AzureSqlDatabaseDbConnection? AzureSqlDatabases
@@ -5176,12 +4967,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AzureSqlDatabaseDbConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "azureSqlDatabases" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "azureSqlDatabases" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AzureSqlManagedInstanceDatabase? AzureSqlManagedInstanceDatabase
@@ -5194,12 +4984,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AzureSqlManagedInstanceDatabase() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "azureSqlManagedInstanceDatabase" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "azureSqlManagedInstanceDatabase" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AzureSqlManagedInstanceDatabaseConnection? AzureSqlManagedInstanceDatabases
@@ -5212,12 +5001,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AzureSqlManagedInstanceDatabaseConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "azureSqlManagedInstanceDatabases" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "azureSqlManagedInstanceDatabases" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AzureNativeSqlDatabasePointInTimeRestoreWindow? AzureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure
@@ -5230,12 +5018,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AzureNativeSqlDatabasePointInTimeRestoreWindow() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "azureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "azureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AzureSqlManagedInstanceServer? AzureSqlManagedInstanceServer
@@ -5248,12 +5035,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AzureSqlManagedInstanceServer() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "azureSqlManagedInstanceServer" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "azureSqlManagedInstanceServer" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AzureSqlManagedInstanceServerConnection? AzureSqlManagedInstanceServers
@@ -5266,12 +5052,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AzureSqlManagedInstanceServerConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "azureSqlManagedInstanceServers" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "azureSqlManagedInstanceServers" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> StorageAccountConnection? AzureStorageAccounts
@@ -5284,12 +5069,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new StorageAccountConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "azureStorageAccounts" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "azureStorageAccounts" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> SubnetConnection? AzureSubnets
@@ -5302,12 +5086,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new SubnetConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "azureSubnets" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "azureSubnets" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AzureSubscriptionConnection? AzureSubscriptions
@@ -5320,12 +5103,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AzureSubscriptionConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "azureSubscriptions" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "azureSubscriptions" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> VnetConnection? AzureVnets
@@ -5338,12 +5120,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new VnetConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "azureVNets" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "azureVNets" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> BlueprintConnection? BlueprintConnection
@@ -5356,12 +5137,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new BlueprintConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "blueprintConnection" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "blueprintConnection" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> BlueprintRecoverySpecs? BlueprintRecoverySpecs
@@ -5374,12 +5154,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new BlueprintRecoverySpecs() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "blueprintRecoverySpecs" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "blueprintRecoverySpecs" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365ExchangeObjectConnection? BrowseCalendar
@@ -5392,12 +5171,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365ExchangeObjectConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "browseCalendar" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "browseCalendar" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365ExchangeObjectConnection? BrowseContacts
@@ -5410,12 +5188,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365ExchangeObjectConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "browseContacts" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "browseContacts" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365ExchangeObjectConnection? BrowseFolder
@@ -5428,12 +5205,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365ExchangeObjectConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "browseFolder" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "browseFolder" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365TeamConvChannelConnection? BrowseO365TeamConvChannels
@@ -5446,12 +5222,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365TeamConvChannelConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "browseO365TeamConvChannels" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "browseO365TeamConvChannels" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365OnedriveObjectConnection? BrowseOnedrive
@@ -5464,12 +5239,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365OnedriveObjectConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "browseOnedrive" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "browseOnedrive" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365OnedriveObjectConnection? BrowseSharepointDrive
@@ -5482,12 +5256,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365OnedriveObjectConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "browseSharepointDrive" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "browseSharepointDrive" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365OnedriveObjectConnection? BrowseSharepointList
@@ -5500,12 +5273,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365OnedriveObjectConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "browseSharepointList" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "browseSharepointList" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> SnapshotFileConnection? BrowseSnapshotFileConnection
@@ -5518,12 +5290,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new SnapshotFileConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "browseSnapshotFileConnection" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "browseSnapshotFileConnection" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365TeamsChannelConnection? BrowseTeamsChannels
@@ -5536,12 +5307,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365TeamsChannelConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "browseTeamsChannels" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "browseTeamsChannels" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365OnedriveObjectConnection? BrowseTeamsDrive
@@ -5554,12 +5324,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365OnedriveObjectConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "browseTeamsDrive" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "browseTeamsDrive" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> BulkRecoveryProgressReply? BulkRecoveryProgress
@@ -5572,12 +5341,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new BulkRecoveryProgressReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "bulkRecoveryProgress" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "bulkRecoveryProgress" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> CassandraColumnFamilyConnection? CassandraColumnFamilies
@@ -5590,12 +5358,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new CassandraColumnFamilyConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "cassandraColumnFamilies" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "cassandraColumnFamilies" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> CassandraColumnFamily? CassandraColumnFamily
@@ -5608,12 +5375,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new CassandraColumnFamily() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "cassandraColumnFamily" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "cassandraColumnFamily" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GetMosaicRecoverableRangeResponse? CassandraColumnFamilyRecoverableRange
@@ -5626,12 +5392,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GetMosaicRecoverableRangeResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "cassandraColumnFamilyRecoverableRange" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "cassandraColumnFamilyRecoverableRange" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GetSchemaResponse? CassandraColumnFamilySchema
@@ -5644,12 +5409,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GetSchemaResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "cassandraColumnFamilySchema" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "cassandraColumnFamilySchema" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> CassandraKeyspace? CassandraKeyspace
@@ -5662,12 +5426,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new CassandraKeyspace() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "cassandraKeyspace" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "cassandraKeyspace" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> CassandraKeyspaceConnection? CassandraKeyspaces
@@ -5680,12 +5443,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new CassandraKeyspaceConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "cassandraKeyspaces" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "cassandraKeyspaces" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> CassandraSource? CassandraSource
@@ -5698,12 +5460,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new CassandraSource() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "cassandraSource" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "cassandraSource" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> CassandraSourceConnection? CassandraSources
@@ -5716,12 +5477,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new CassandraSourceConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "cassandraSources" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "cassandraSources" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> CdmInventorySubHierarchyRoot? CdmInventorySubHierarchyRoot
@@ -5734,12 +5494,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new CdmInventorySubHierarchyRoot() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "cdmInventorySubHierarchyRoot" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "cdmInventorySubHierarchyRoot" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> MssqlLogShippingTarget? CdmMssqlLogShippingTarget
@@ -5752,12 +5511,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new MssqlLogShippingTarget() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "cdmMssqlLogShippingTarget" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "cdmMssqlLogShippingTarget" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> MssqlLogShippingTargetConnection? CdmMssqlLogShippingTargets
@@ -5770,12 +5528,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new MssqlLogShippingTargetConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "cdmMssqlLogShippingTargets" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "cdmMssqlLogShippingTargets" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> FeatureCdmVersionReply? CdmVersionCheck
@@ -5788,12 +5545,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new FeatureCdmVersionReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "cdmVersionCheck" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "cdmVersionCheck" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GetCertificateInfoReply? CertificateInfo
@@ -5806,12 +5562,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GetCertificateInfoReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "certificateInfo" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "certificateInfo" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> Csr? CertificateSigningRequest
@@ -5824,12 +5579,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new Csr() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "certificateSigningRequest" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "certificateSigningRequest" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> CsrConnection? CertificateSigningRequests
@@ -5842,12 +5596,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new CsrConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "certificateSigningRequests" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "certificateSigningRequests" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> CertificateConnection? Certificates
@@ -5860,12 +5613,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new CertificateConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "certificates" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "certificates" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> CertificateConnection? CertificatesWithKey
@@ -5878,12 +5630,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new CertificateConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "certificatesWithKey" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "certificatesWithKey" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> CheckAzurePersistentStorageSubscriptionCanUnmapReply? CheckAzurePersistentStorageSubscriptionCanUnmap
@@ -5896,12 +5647,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new CheckAzurePersistentStorageSubscriptionCanUnmapReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "checkAzurePersistentStorageSubscriptionCanUnmap" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "checkAzurePersistentStorageSubscriptionCanUnmap" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AsyncRequestStatus? CheckCloudComputeConnectivityJobProgress
@@ -5914,12 +5664,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AsyncRequestStatus() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "checkCloudComputeConnectivityJobProgress" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "checkCloudComputeConnectivityJobProgress" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> IsCloudNativeTagRuleNameUniqueReply? CheckCloudNativeLabelRuleNameUniqueness
@@ -5932,12 +5681,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new IsCloudNativeTagRuleNameUniqueReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "checkCloudNativeLabelRuleNameUniqueness" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "checkCloudNativeLabelRuleNameUniqueness" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> IsCloudNativeTagRuleNameUniqueReply? CheckCloudNativeTagRuleNameUniqueness
@@ -5950,12 +5698,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new IsCloudNativeTagRuleNameUniqueReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "checkCloudNativeTagRuleNameUniqueness" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "checkCloudNativeTagRuleNameUniqueness" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> CheckGuestOsReply? CheckGuestOsForAppBlueprint
@@ -5968,12 +5715,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new CheckGuestOsReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "checkGuestOsForAppBlueprint" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "checkGuestOsForAppBlueprint" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ClassificationBannerSettings? ClassificationBannerSettings
@@ -5986,12 +5732,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ClassificationBannerSettings() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "classificationBannerSettings" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "classificationBannerSettings" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ClassificationLoginSettings? ClassificationLoginSettings
@@ -6004,12 +5749,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ClassificationLoginSettings() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "classificationLoginSettings" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "classificationLoginSettings" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> CloudDirectNasExport? CloudDirectNasExport
@@ -6022,12 +5766,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new CloudDirectNasExport() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "cloudDirectNasExport" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "cloudDirectNasExport" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> CloudDirectSnapshot? CloudDirectSnapshot
@@ -6040,12 +5783,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new CloudDirectSnapshot() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "cloudDirectSnapshot" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "cloudDirectSnapshot" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> CloudDirectSnapshotConnection? CloudDirectSnapshots
@@ -6058,12 +5800,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new CloudDirectSnapshotConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "cloudDirectSnapshots" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "cloudDirectSnapshots" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> CloudDirectSystems? CloudDirectSystems
@@ -6076,12 +5817,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new CloudDirectSystems() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "cloudDirectSystems" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "cloudDirectSystems" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> CheckArchivedSnapshotsLockedReply? CloudNativeCheckArchivedSnapshotsLocked
@@ -6094,12 +5834,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new CheckArchivedSnapshotsLockedReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "cloudNativeCheckArchivedSnapshotsLocked" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "cloudNativeCheckArchivedSnapshotsLocked" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> CloudNativeCustomerTagsReply? CloudNativeCustomerTags
@@ -6112,12 +5851,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new CloudNativeCustomerTagsReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "cloudNativeCustomerTags" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "cloudNativeCustomerTags" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GetCloudNativeLabelRulesReply? CloudNativeLabelRules
@@ -6130,12 +5868,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GetCloudNativeLabelRulesReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "cloudNativeLabelRules" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "cloudNativeLabelRules" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> RbaInstallerUrls? CloudNativeRbaInstallers
@@ -6148,12 +5885,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new RbaInstallerUrls() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "cloudNativeRbaInstallers" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "cloudNativeRbaInstallers" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> CloudNativeSnapshotDetailsForRecoveryReply? CloudNativeSnapshotDetailsForRecovery
@@ -6166,12 +5902,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new CloudNativeSnapshotDetailsForRecoveryReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "cloudNativeSnapshotDetailsForRecovery" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "cloudNativeSnapshotDetailsForRecovery" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> SnapshotFileConnection? CloudNativeSnapshots
@@ -6184,12 +5919,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new SnapshotFileConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "cloudNativeSnapshots" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "cloudNativeSnapshots" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> CloudNativeSqlServerSetupScript? CloudNativeSqlServerSetupScript
@@ -6202,12 +5936,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new CloudNativeSqlServerSetupScript() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "cloudNativeSqlServerSetupScript" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "cloudNativeSqlServerSetupScript" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GetCloudNativeTagRulesReply? CloudNativeTagRules
@@ -6220,12 +5953,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GetCloudNativeTagRulesReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "cloudNativeTagRules" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "cloudNativeTagRules" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> CloudNativeVersionedFileConnection? CloudNativeWorkloadVersionedFiles
@@ -6238,12 +5970,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new CloudNativeVersionedFileConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "cloudNativeWorkloadVersionedFiles" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "cloudNativeWorkloadVersionedFiles" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> Cluster? Cluster
@@ -6256,12 +5987,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new Cluster() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "cluster" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "cluster" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> CertificateSummaryListResponse? ClusterCertificates
@@ -6274,12 +6004,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new CertificateSummaryListResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "clusterCertificates" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "clusterCertificates" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ClusterConnection? ClusterConnection
@@ -6292,12 +6021,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ClusterConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "clusterConnection" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "clusterConnection" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ClusterCsr? ClusterCsr
@@ -6310,12 +6038,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ClusterCsr() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "clusterCsr" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "clusterCsr" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> InternalGetDefaultGatewayResponse? ClusterDefaultGateway
@@ -6328,12 +6055,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new InternalGetDefaultGatewayResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "clusterDefaultGateway" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "clusterDefaultGateway" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ClusterDnsReply? ClusterDns
@@ -6346,12 +6072,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ClusterDnsReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "clusterDns" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "clusterDns" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ClusterEncryptionInfoConnection? ClusterEncryptionInfo
@@ -6364,12 +6089,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ClusterEncryptionInfoConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "clusterEncryptionInfo" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "clusterEncryptionInfo" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> InternalGetClusterIpsResponse? ClusterFloatingIps
@@ -6382,12 +6106,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new InternalGetClusterIpsResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "clusterFloatingIps" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "clusterFloatingIps" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ClusterGroupByConnection? ClusterGroupByConnection
@@ -6400,12 +6123,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ClusterGroupByConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "clusterGroupByConnection" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "clusterGroupByConnection" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ModifyIpmiReply? ClusterIpmi
@@ -6418,12 +6140,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ModifyIpmiReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "clusterIpmi" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "clusterIpmi" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ClusterIpv6ModeReply? ClusterIpv6Mode
@@ -6436,12 +6157,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ClusterIpv6ModeReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "clusterIpv6Mode" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "clusterIpv6Mode" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> NetworkInterfaceListResponse? ClusterNetworkInterfaces
@@ -6454,12 +6174,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new NetworkInterfaceListResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "clusterNetworkInterfaces" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "clusterNetworkInterfaces" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> NodeStatusListResponse? ClusterNodes
@@ -6472,12 +6191,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new NodeStatusListResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "clusterNodes" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "clusterNodes" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> NtpServerConfigurationListResponse? ClusterNtpServers
@@ -6490,12 +6208,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new NtpServerConfigurationListResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "clusterNtpServers" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "clusterNtpServers" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ClusterOperationJobProgress? ClusterOperationJobProgress
@@ -6508,12 +6225,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ClusterOperationJobProgress() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "clusterOperationJobProgress" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "clusterOperationJobProgress" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ClusterProxyReply? ClusterProxy
@@ -6526,12 +6242,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ClusterProxyReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "clusterProxy" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "clusterProxy" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> RcvLocationBasicInfoConnection? ClusterRcvLocations
@@ -6544,12 +6259,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new RcvLocationBasicInfoConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "clusterRcvLocations" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "clusterRcvLocations" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ClusterRegistrationProductInfoType? ClusterRegistrationProductInfo
@@ -6562,12 +6276,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ClusterRegistrationProductInfoType() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "clusterRegistrationProductInfo" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "clusterRegistrationProductInfo" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ReportsMigrationCount? ClusterReportMigrationCount
@@ -6580,12 +6293,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ReportsMigrationCount() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "clusterReportMigrationCount" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "clusterReportMigrationCount" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ClusterReportMigrationJobStatus? ClusterReportMigrationJobStatus
@@ -6598,12 +6310,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ClusterReportMigrationJobStatus() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "clusterReportMigrationJobStatus" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "clusterReportMigrationJobStatus" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ReportMigrationStatusConnection? ClusterReportMigrationStatus
@@ -6616,12 +6327,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ReportMigrationStatusConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "clusterReportMigrationStatus" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "clusterReportMigrationStatus" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ClusterSlaDomainForFilterConnection? ClusterSlaDomainFilterConnection
@@ -6634,12 +6344,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ClusterSlaDomainForFilterConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "clusterSlaDomainFilterConnection" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "clusterSlaDomainFilterConnection" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ClusterSlaDomainConnection? ClusterSlaDomains
@@ -6652,12 +6361,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ClusterSlaDomainConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "clusterSlaDomains" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "clusterSlaDomains" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<GroupCount>? ClusterTypeList
@@ -6670,12 +6378,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<GroupCount>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "clusterTypeList" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "clusterTypeList" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> VlanConfigListResponse? ClusterVlans
@@ -6688,12 +6395,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new VlanConfigListResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "clusterVlans" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "clusterVlans" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ClusterWebSignedCertificateReply? ClusterWebSignedCertificate
@@ -6706,12 +6412,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ClusterWebSignedCertificateReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "clusterWebSignedCertificate" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "clusterWebSignedCertificate" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ClusterConnection? ClusterWithConfigProtectionInfo
@@ -6724,12 +6429,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ClusterConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "clusterWithConfigProtectionInfo" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "clusterWithConfigProtectionInfo" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ClusterConnection? ClusterWithUpgradesInfo
@@ -6742,12 +6446,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ClusterConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "clusterWithUpgradesInfo" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "clusterWithUpgradesInfo" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ComputeClusterDetail? ComputeClusterStatus
@@ -6760,12 +6463,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ComputeClusterDetail() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "computeClusterStatus" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "computeClusterStatus" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ConfigProtectionSetupInfo? ConfigProtectionSetupInfo
@@ -6778,12 +6480,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ConfigProtectionSetupInfo() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "configProtectionSetupInfo" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "configProtectionSetupInfo" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365ConfiguredGroupMemberConnection? ConfiguredGroupMembers
@@ -6796,12 +6497,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365ConfiguredGroupMemberConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "configuredGroupMembers" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "configuredGroupMembers" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> CountOfObjectsProtectedBySlAsResult? CountOfObjectsProtectedBySlas
@@ -6814,12 +6514,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new CountOfObjectsProtectedBySlAsResult() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "countOfObjectsProtectedBySlas" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "countOfObjectsProtectedBySlas" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> Crawl? Crawl
@@ -6832,12 +6531,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new Crawl() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "crawl" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "crawl" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> CrawlConnection? Crawls
@@ -6850,12 +6548,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new CrawlConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "crawls" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "crawls" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> Org? CurrentOrg
@@ -6868,12 +6565,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new Org() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "currentOrg" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "currentOrg" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> User? CurrentUser
@@ -6886,12 +6582,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new User() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "currentUser" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "currentUser" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> UserLoginContext? CurrentUserLoginContext
@@ -6904,12 +6599,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new UserLoginContext() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "currentUserLoginContext" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "currentUserLoginContext" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> Analyzer? CustomAnalyzer
@@ -6922,12 +6616,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new Analyzer() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "customAnalyzer" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "customAnalyzer" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> CustomTprPolicyConnection? CustomTprPolicies
@@ -6940,12 +6633,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new CustomTprPolicyConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "customTprPolicies" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "customTprPolicies" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> CyberRecoveryObjectConnection? CyberRecoveryObjects
@@ -6958,12 +6650,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new CyberRecoveryObjectConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "cyberRecoveryObjects" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "cyberRecoveryObjects" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GetDashboardSummaryReply? DashboardSummary
@@ -6976,12 +6667,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GetDashboardSummaryReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "dashboardSummary" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "dashboardSummary" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> DataDiscoveryObjectsCount? DataDiscoveryObjectsCount
@@ -6994,12 +6684,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new DataDiscoveryObjectsCount() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "dataDiscoveryObjectsCount" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "dataDiscoveryObjectsCount" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<DataViewMetadata>? DataViewMetadata
@@ -7012,12 +6701,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<DataViewMetadata>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "dataViewMetadata" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "dataViewMetadata" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> DbLogReportSummaryListReply? DatabaseLogReportForCluster
@@ -7030,12 +6718,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new DbLogReportSummaryListReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "databaseLogReportForCluster" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "databaseLogReportForCluster" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> DbLogReportProperties? DatabaseLogReportingPropertiesForCluster
@@ -7048,12 +6735,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new DbLogReportProperties() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "databaseLogReportingPropertiesForCluster" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "databaseLogReportingPropertiesForCluster" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> QuerySddlReply? DatagovSecDesc
@@ -7066,12 +6752,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new QuerySddlReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "datagovSecDesc" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "datagovSecDesc" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> Db2Database? Db2Database
@@ -7084,12 +6769,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new Db2Database() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "db2Database" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "db2Database" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> Db2DatabaseConnection? Db2Databases
@@ -7102,12 +6786,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new Db2DatabaseConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "db2Databases" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "db2Databases" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> Db2Instance? Db2Instance
@@ -7120,12 +6803,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new Db2Instance() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "db2Instance" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "db2Instance" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> Db2InstanceConnection? Db2Instances
@@ -7138,12 +6820,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new Db2InstanceConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "db2Instances" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "db2Instances" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> Db2LogSnapshot? Db2LogSnapshot
@@ -7156,12 +6837,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new Db2LogSnapshot() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "db2LogSnapshot" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "db2LogSnapshot" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> Db2LogSnapshotConnection? Db2LogSnapshots
@@ -7174,12 +6854,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new Db2LogSnapshotConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "db2LogSnapshots" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "db2LogSnapshots" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> Db2RecoverableRange? Db2RecoverableRange
@@ -7192,12 +6871,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new Db2RecoverableRange() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "db2RecoverableRange" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "db2RecoverableRange" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> Db2RecoverableRangeConnection? Db2RecoverableRanges
@@ -7210,12 +6888,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new Db2RecoverableRangeConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "db2RecoverableRanges" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "db2RecoverableRanges" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ExportUrlSpecs? DecryptExportUrl
@@ -7228,12 +6905,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ExportUrlSpecs() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "decryptExportUrl" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "decryptExportUrl" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> DiffResult? DiffFmd
@@ -7246,12 +6922,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new DiffResult() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "diffFmd" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "diffFmd" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> BootstrappableNodeInfoListResponse? DiscoverNodes
@@ -7264,12 +6939,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new BootstrappableNodeInfoListResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "discoverNodes" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "discoverNodes" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GetPoliciesTimelineReply? DiscoveryTimeline
@@ -7282,12 +6956,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GetPoliciesTimelineReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "discoveryTimeline" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "discoveryTimeline" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> DownloadCdmUpgradesPdfReply? DownloadCdmUpgradesPdf
@@ -7300,12 +6973,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new DownloadCdmUpgradesPdfReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "downloadCdmUpgradesPdf" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "downloadCdmUpgradesPdf" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> DownloadPackageStatusReply? DownloadPackageStatus
@@ -7318,12 +6990,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new DownloadPackageStatusReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "downloadPackageStatus" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "downloadPackageStatus" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> DownloadLink? DownloadReportLink
@@ -7336,12 +7007,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new DownloadLink() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "downloadReportLink" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "downloadReportLink" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> DownloadLink? DownloadReportPdfLink
@@ -7354,12 +7024,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new DownloadLink() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "downloadReportPdfLink" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "downloadReportPdfLink" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> DownloadSlaWithReplicationCsvReply? DownloadSlaWithReplicationCsv
@@ -7372,12 +7041,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new DownloadSlaWithReplicationCsvReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "downloadSlaWithReplicationCsv" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "downloadSlaWithReplicationCsv" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<GroupCount>? DownloadedVersionList
@@ -7390,12 +7058,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<GroupCount>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "downloadedVersionList" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "downloadedVersionList" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> EdgeWindowsToolLink? EdgeWindowsToolLink
@@ -7408,12 +7075,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new EdgeWindowsToolLink() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "edgeWindowsToolLink" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "edgeWindowsToolLink" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> EnvoyRegistrationToken? EnvoyRegistrationToken
@@ -7426,12 +7092,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new EnvoyRegistrationToken() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "envoyRegistrationToken" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "envoyRegistrationToken" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ExchangeDag? ExchangeDag
@@ -7444,12 +7109,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ExchangeDag() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "exchangeDag" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "exchangeDag" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ExchangeDagConnection? ExchangeDags
@@ -7462,12 +7126,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ExchangeDagConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "exchangeDags" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "exchangeDags" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ExchangeDatabase? ExchangeDatabase
@@ -7480,12 +7143,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ExchangeDatabase() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "exchangeDatabase" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "exchangeDatabase" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ExchangeDatabaseConnection? ExchangeDatabases
@@ -7498,12 +7160,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ExchangeDatabaseConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "exchangeDatabases" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "exchangeDatabases" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ExchangeLiveMountConnection? ExchangeLiveMounts
@@ -7516,12 +7177,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ExchangeLiveMountConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "exchangeLiveMounts" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "exchangeLiveMounts" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ExchangeServer? ExchangeServer
@@ -7534,12 +7194,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ExchangeServer() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "exchangeServer" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "exchangeServer" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ExchangeServerConnection? ExchangeServers
@@ -7552,12 +7211,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ExchangeServerConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "exchangeServers" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "exchangeServers" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> Failover? Failover
@@ -7570,12 +7228,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new Failover() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "failover" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "failover" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> FailoverSourceConnection? FailoverAllSourceConnection
@@ -7588,12 +7245,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new FailoverSourceConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "failoverAllSourceConnection" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "failoverAllSourceConnection" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> FailoverTargetSiteConnection? FailoverAllTargetSiteConnection
@@ -7606,12 +7262,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new FailoverTargetSiteConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "failoverAllTargetSiteConnection" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "failoverAllTargetSiteConnection" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> FailoverClusterApp? FailoverClusterApp
@@ -7624,12 +7279,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new FailoverClusterApp() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "failoverClusterApp" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "failoverClusterApp" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> FailoverClusterAppConnection? FailoverClusterApps
@@ -7642,12 +7296,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new FailoverClusterAppConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "failoverClusterApps" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "failoverClusterApps" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> FailoverClusterTopLevelDescendantTypeConnection? FailoverClusterTopLevelDescendants
@@ -7660,12 +7313,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new FailoverClusterTopLevelDescendantTypeConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "failoverClusterTopLevelDescendants" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "failoverClusterTopLevelDescendants" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> FailoverConnection? FailoverConnection
@@ -7678,12 +7330,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new FailoverConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "failoverConnection" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "failoverConnection" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> FailoverGroupByConnection? FailoverGroupByConnection
@@ -7696,12 +7347,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new FailoverGroupByConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "failoverGroupByConnection" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "failoverGroupByConnection" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> FailoverJobReportConnection? FailoverJobReports
@@ -7714,12 +7364,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new FailoverJobReportConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "failoverJobReports" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "failoverJobReports" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> FailoverReport? FailoverReport
@@ -7732,12 +7381,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new FailoverReport() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "failoverReport" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "failoverReport" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> FeatureFlag? FeatureFlag
@@ -7750,12 +7398,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new FeatureFlag() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "featureFlag" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "featureFlag" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> FeatureFlagAll? FeatureFlagAll
@@ -7768,12 +7415,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new FeatureFlagAll() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "featureFlagAll" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "featureFlagAll" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> FederatedLoginStatus? FederatedLoginStatus
@@ -7786,12 +7432,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new FederatedLoginStatus() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "federatedLoginStatus" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "federatedLoginStatus" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> FakeDataConnection? FetchFakeData
@@ -7804,12 +7449,28 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new FakeDataConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "fetchFakeData" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "fetchFakeData" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
+        }
+
+        //      C# -> AsyncRequestStatus? FilesetRequestStatus
+        // GraphQL -> filesetRequestStatus: AsyncRequestStatus! (type)
+        public static string FilesetRequestStatus(
+            ref AsyncRequestStatus? fieldSpec
+        )
+        {
+            string args = "\n(\ninput: $input\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new AsyncRequestStatus() ;
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
+            }
+            return "filesetRequestStatus" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> FilesetSnapshotDetail? FilesetSnapshot
@@ -7822,12 +7483,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new FilesetSnapshotDetail() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "filesetSnapshot" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "filesetSnapshot" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> BrowseResponseListResponse? FilesetSnapshotFiles
@@ -7840,12 +7500,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new BrowseResponseListResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "filesetSnapshotFiles" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "filesetSnapshotFiles" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> FilesetTemplate? FilesetTemplate
@@ -7858,12 +7517,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new FilesetTemplate() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "filesetTemplate" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "filesetTemplate" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> FilesetTemplateConnection? FilesetTemplates
@@ -7876,12 +7534,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new FilesetTemplateConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "filesetTemplates" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "filesetTemplates" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GcpNativeDisk? GcpNativeDisk
@@ -7894,12 +7551,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GcpNativeDisk() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "gcpNativeDisk" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "gcpNativeDisk" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GcpNativeDiskConnection? GcpNativeDisks
@@ -7912,12 +7568,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GcpNativeDiskConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "gcpNativeDisks" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "gcpNativeDisks" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GcpNativeGceInstance? GcpNativeGceInstance
@@ -7930,12 +7585,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GcpNativeGceInstance() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "gcpNativeGceInstance" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "gcpNativeGceInstance" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GcpNativeGceInstanceConnection? GcpNativeGceInstances
@@ -7948,12 +7602,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GcpNativeGceInstanceConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "gcpNativeGceInstances" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "gcpNativeGceInstances" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GcpNativeProject? GcpNativeProject
@@ -7966,12 +7619,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GcpNativeProject() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "gcpNativeProject" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "gcpNativeProject" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GcpNativeProjectConnection? GcpNativeProjects
@@ -7984,12 +7636,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GcpNativeProjectConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "gcpNativeProjects" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "gcpNativeProjects" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ListStoredDiskLocationsReply? GcpNativeStoredDiskLocations
@@ -8002,12 +7653,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ListStoredDiskLocationsReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "gcpNativeStoredDiskLocations" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "gcpNativeStoredDiskLocations" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> NasMigrationHostDetailConnection? GenerateNasMigrationReport
@@ -8020,12 +7670,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new NasMigrationHostDetailConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "generateNasMigrationReport" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "generateNasMigrationReport" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<GroupCount>? GeoLocationList
@@ -8038,12 +7687,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<GroupCount>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "geoLocationList" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "geoLocationList" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AspValue? GetAccountSettingValue
@@ -8056,12 +7704,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AspValue() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "getAccountSettingValue" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "getAccountSettingValue" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> RoleConnection? GetAllRolesInOrgConnection
@@ -8074,12 +7721,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new RoleConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "getAllRolesInOrgConnection" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "getAllRolesInOrgConnection" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> CdmUpgradeReleaseDetailsFromSupportPortalReply? GetCdmReleaseDetailsForClusterFromSupportPortal
@@ -8092,12 +7738,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new CdmUpgradeReleaseDetailsFromSupportPortalReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "getCdmReleaseDetailsForClusterFromSupportPortal" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "getCdmReleaseDetailsForClusterFromSupportPortal" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> CdmUpgradeReleaseDetailsFromSupportPortalReply? GetCdmReleaseDetailsForVersionFromSupportPortal
@@ -8110,12 +7755,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new CdmUpgradeReleaseDetailsFromSupportPortalReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "getCdmReleaseDetailsForVersionFromSupportPortal" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "getCdmReleaseDetailsForVersionFromSupportPortal" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> CdmUpgradeReleaseDetailsFromSupportPortalReply? GetCdmReleaseDetailsFromSupportPortal
@@ -8128,12 +7772,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new CdmUpgradeReleaseDetailsFromSupportPortalReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "getCdmReleaseDetailsFromSupportPortal" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "getCdmReleaseDetailsFromSupportPortal" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GroupCountListWithTotal? GetGroupCountByCdmClusterStatus
@@ -8146,12 +7789,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GroupCountListWithTotal() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "getGroupCountByCdmClusterStatus" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "getGroupCountByCdmClusterStatus" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<GroupCount>? GetGroupCountByPrechecksStatus
@@ -8164,12 +7806,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<GroupCount>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "getGroupCountByPrechecksStatus" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "getGroupCountByPrechecksStatus" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<GroupCount>? GetGroupCountByUpgradeJobStatus
@@ -8182,12 +7823,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<GroupCount>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "getGroupCountByUpgradeJobStatus" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "getGroupCountByUpgradeJobStatus" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<GroupCount>? GetGroupCountByVersionStatus
@@ -8200,12 +7840,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<GroupCount>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "getGroupCountByVersionStatus" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "getGroupCountByVersionStatus" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GetTaskchainStatusReply? GetKorgTaskchainStatus
@@ -8218,12 +7857,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GetTaskchainStatusReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "getKorgTaskchainStatus" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "getKorgTaskchainStatus" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<Permission>? GetPermissions
@@ -8236,12 +7874,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<Permission>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "getPermissions" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "getPermissions" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<Role>? GetRolesByIds
@@ -8254,12 +7891,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<Role>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "getRolesByIds" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "getRolesByIds" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<UserDownload>? GetUserDownloads
@@ -8272,12 +7908,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<UserDownload>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "getUserDownloads" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "getUserDownloads" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GlobalCertificate? GlobalCertificate
@@ -8290,12 +7925,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GlobalCertificate() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "globalCertificate" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "globalCertificate" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GlobalCertificateConnection? GlobalCertificates
@@ -8308,12 +7942,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GlobalCertificateConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "globalCertificates" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "globalCertificates" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GlobalFileSearchReply? GlobalFileSearch
@@ -8326,12 +7959,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GlobalFileSearchReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "globalFileSearch" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "globalFileSearch" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> LockoutConfig? GlobalLockoutConfig
@@ -8344,12 +7976,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new LockoutConfig() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "globalLockoutConfig" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "globalLockoutConfig" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GetMfaSettingReply? GlobalMfaSetting
@@ -8362,12 +7993,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GetMfaSettingReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "globalMfaSetting" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "globalMfaSetting" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> HierarchyObjectConnection? GlobalSearchResults
@@ -8380,12 +8010,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new HierarchyObjectConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "globalSearchResults" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "globalSearchResults" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GlobalSlaForFilterConnection? GlobalSlaFilterConnection
@@ -8398,12 +8027,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GlobalSlaForFilterConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "globalSlaFilterConnection" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "globalSlaFilterConnection" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GlobalSlaStatusConnection? GlobalSlaStatuses
@@ -8416,12 +8044,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GlobalSlaStatusConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "globalSlaStatuses" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "globalSlaStatuses" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GroupedReleaseNoteConnection? GroupedReleasesNotes
@@ -8434,12 +8061,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GroupedReleaseNoteConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "groupedReleasesNotes" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "groupedReleasesNotes" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GroupConnection? GroupsInCurrentAndDescendantOrganization
@@ -8452,12 +8078,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GroupConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "groupsInCurrentAndDescendantOrganization" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "groupsInCurrentAndDescendantOrganization" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GuestCredentialDetailListResponse? GuestCredentials
@@ -8470,12 +8095,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GuestCredentialDetailListResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "guestCredentials" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "guestCredentials" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> HelpContentSnippetConnection? HelpContentSnippets
@@ -8488,12 +8112,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new HelpContentSnippetConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "helpContentSnippets" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "helpContentSnippets" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> HierarchySnappableConnection? HierarchySnappables
@@ -8506,12 +8129,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new HierarchySnappableConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "hierarchySnappables" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "hierarchySnappables" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> HostDiagnosisSummary? HostDiagnosis
@@ -8524,12 +8146,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new HostDiagnosisSummary() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "hostDiagnosis" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "hostDiagnosis" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> HostFailoverCluster? HostFailoverCluster
@@ -8542,12 +8163,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new HostFailoverCluster() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "hostFailoverCluster" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "hostFailoverCluster" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> HostFailoverClusterConnection? HostFailoverClusters
@@ -8560,12 +8180,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new HostFailoverClusterConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "hostFailoverClusters" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "hostFailoverClusters" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> HostShare? HostShare
@@ -8578,12 +8197,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new HostShare() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "hostShare" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "hostShare" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> HostShareConnection? HostShares
@@ -8596,12 +8214,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new HostShareConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "hostShares" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "hostShares" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> HyperVcluster? HypervCluster
@@ -8614,12 +8231,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new HyperVcluster() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "hypervCluster" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "hypervCluster" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AsyncRequestStatus? HypervHostAsyncRequestStatus
@@ -8632,12 +8248,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AsyncRequestStatus() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "hypervHostAsyncRequestStatus" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "hypervHostAsyncRequestStatus" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> HyperVliveMountConnection? HypervMounts
@@ -8650,12 +8265,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new HyperVliveMountConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "hypervMounts" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "hypervMounts" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> HyperVscvmm? HypervScvmm
@@ -8668,12 +8282,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new HyperVscvmm() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "hypervScvmm" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "hypervScvmm" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AsyncRequestStatus? HypervScvmmAsyncRequestStatus
@@ -8686,12 +8299,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AsyncRequestStatus() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "hypervScvmmAsyncRequestStatus" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "hypervScvmmAsyncRequestStatus" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> HyperVscvmmConnection? HypervScvmms
@@ -8704,12 +8316,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new HyperVscvmmConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "hypervScvmms" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "hypervScvmms" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> HypervServer? HypervServer
@@ -8722,12 +8333,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new HypervServer() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "hypervServer" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "hypervServer" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> HypervHostSummaryListResponse? HypervServers
@@ -8740,12 +8350,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new HypervHostSummaryListResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "hypervServers" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "hypervServers" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> HypervTopLevelDescendantTypeConnection? HypervTopLevelDescendants
@@ -8758,12 +8367,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new HypervTopLevelDescendantTypeConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "hypervTopLevelDescendants" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "hypervTopLevelDescendants" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> HyperVvirtualMachine? HypervVirtualMachine
@@ -8776,12 +8384,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new HyperVvirtualMachine() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "hypervVirtualMachine" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "hypervVirtualMachine" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AsyncRequestStatus? HypervVirtualMachineAsyncRequestStatus
@@ -8794,12 +8401,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AsyncRequestStatus() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "hypervVirtualMachineAsyncRequestStatus" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "hypervVirtualMachineAsyncRequestStatus" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> HyperVvirtualMachineConnection? HypervVirtualMachines
@@ -8812,12 +8418,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new HyperVvirtualMachineConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "hypervVirtualMachines" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "hypervVirtualMachines" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> HypervVirtualMachineDetail? HypervVmDetail
@@ -8830,12 +8435,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new HypervVirtualMachineDetail() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "hypervVmDetail" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "hypervVmDetail" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<InstalledVersionGroupCount>? InstalledVersionList
@@ -8848,12 +8452,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<InstalledVersionGroupCount>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "installedVersionList" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "installedVersionList" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ReadIntegrationReply? Integration
@@ -8866,12 +8469,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ReadIntegrationReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "integration" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "integration" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> InventoryRoot? InventoryRoot
@@ -8884,12 +8486,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new InventoryRoot() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "inventoryRoot" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "inventoryRoot" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> InventorySubHierarchyRoot? InventorySubHierarchyRoot
@@ -8902,12 +8503,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new InventorySubHierarchyRoot() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "inventorySubHierarchyRoot" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "inventorySubHierarchyRoot" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> InvestigationCsvDownloadLinkReply? InvestigationCsvDownloadLink
@@ -8920,12 +8520,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new InvestigationCsvDownloadLinkReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "investigationCsvDownloadLink" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "investigationCsvDownloadLink" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GetWhitelistReply? IpWhitelist
@@ -8938,12 +8537,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GetWhitelistReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "ipWhitelist" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "ipWhitelist" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> IsVolumeSnapshotRestorableReply? IsAwsNativeEbsVolumeSnapshotRestorable
@@ -8956,12 +8554,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new IsVolumeSnapshotRestorableReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "isAwsNativeEbsVolumeSnapshotRestorable" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "isAwsNativeEbsVolumeSnapshotRestorable" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ValidateCloudNativeFileRecoveryFeasibilityReply? IsCloudNativeFileRecoveryFeasible
@@ -8974,12 +8571,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ValidateCloudNativeFileRecoveryFeasibilityReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "isCloudNativeFileRecoveryFeasible" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "isCloudNativeFileRecoveryFeasible" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> SupportPortalStatusReply? IsLoggedIntoRubrikSupportPortal
@@ -8992,12 +8588,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new SupportPortalStatusReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "isLoggedIntoRubrikSupportPortal" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "isLoggedIntoRubrikSupportPortal" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> CdmUpgradeAvailabilityReply? IsUpgradeAvailable
@@ -9010,12 +8605,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new CdmUpgradeAvailabilityReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "isUpgradeAvailable" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "isUpgradeAvailable" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> CdmUpgradeRecommendationReply? IsUpgradeRecommended
@@ -9028,12 +8622,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new CdmUpgradeRecommendationReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "isUpgradeRecommended" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "isUpgradeRecommended" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ZrsAvailabilityReply? IsZrsAvailableForLocation
@@ -9046,12 +8639,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ZrsAvailabilityReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "isZrsAvailableForLocation" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "isZrsAvailableForLocation" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> Issue? Issue
@@ -9064,12 +8656,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new Issue() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "issue" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "issue" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> IssueConnection? Issues
@@ -9082,12 +8673,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new IssueConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "issues" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "issues" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ChangeSummary? JiraChangeSummary
@@ -9100,12 +8690,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ChangeSummary() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "jiraChangeSummary" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "jiraChangeSummary" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AtlassianUserConnection? JiraIssueAssignees
@@ -9118,12 +8707,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AtlassianUserConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "jiraIssueAssignees" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "jiraIssueAssignees" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> JiraIssueConnection? JiraIssues
@@ -9136,12 +8724,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new JiraIssueConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "jiraIssues" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "jiraIssues" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AtlassianUserConnection? JiraProjectLeads
@@ -9154,12 +8741,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AtlassianUserConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "jiraProjectLeads" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "jiraProjectLeads" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> JiraProjectConnection? JiraProjects
@@ -9172,12 +8758,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new JiraProjectConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "jiraProjects" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "jiraProjects" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> JiraSettingsConnection? JiraSettings
@@ -9190,12 +8775,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new JiraSettingsConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "jiraSettings" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "jiraSettings" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> InternalJobInstanceDetail? JobInstance
@@ -9208,12 +8792,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new InternalJobInstanceDetail() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "jobInstance" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "jobInstance" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> K8sAppManifest? K8sAppManifest
@@ -9226,12 +8809,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new K8sAppManifest() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "k8sAppManifest" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "k8sAppManifest" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> K8sCluster? K8sCluster
@@ -9244,12 +8826,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new K8sCluster() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "k8sCluster" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "k8sCluster" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> K8sClusterConnection? K8sClusters
@@ -9262,12 +8843,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new K8sClusterConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "k8sClusters" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "k8sClusters" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> K8sNamespace? K8sNamespace
@@ -9280,12 +8860,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new K8sNamespace() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "k8sNamespace" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "k8sNamespace" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> K8sNamespaceConnection? K8sNamespaces
@@ -9298,12 +8877,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new K8sNamespaceConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "k8sNamespaces" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "k8sNamespaces" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> K8sSnapshotSummaryListResponse? K8sResourceSetSnapshots
@@ -9316,12 +8894,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new K8sSnapshotSummaryListResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "k8sResourceSetSnapshots" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "k8sResourceSetSnapshots" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> K8sSnapshotInfo? K8sSnapshotInfo
@@ -9334,12 +8911,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new K8sSnapshotInfo() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "k8sSnapshotInfo" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "k8sSnapshotInfo" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> KmipServerConnection? KmipServerConnection
@@ -9352,12 +8928,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new KmipServerConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "kmipServerConnection" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "kmipServerConnection" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> KnowledgeBaseArticle? KnowledgeBaseArticle
@@ -9370,12 +8945,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new KnowledgeBaseArticle() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "knowledgeBaseArticle" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "knowledgeBaseArticle" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> KubernetesCluster? KubernetesCluster
@@ -9388,12 +8962,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new KubernetesCluster() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "kubernetesCluster" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "kubernetesCluster" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> KubernetesClusterConnection? KubernetesClusters
@@ -9406,12 +8979,45 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new KubernetesClusterConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "kubernetesClusters" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "kubernetesClusters" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
+        }
+
+        //      C# -> KubernetesProtectionSet? KubernetesProtectionSet
+        // GraphQL -> kubernetesProtectionSet: KubernetesProtectionSet! (type)
+        public static string KubernetesProtectionSet(
+            ref KubernetesProtectionSet? fieldSpec
+        )
+        {
+            string args = "\n(\nfid: $fid\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new KubernetesProtectionSet() ;
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
+            }
+            return "kubernetesProtectionSet" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
+        }
+
+        //      C# -> KubernetesProtectionSetConnection? KubernetesProtectionSets
+        // GraphQL -> kubernetesProtectionSets: KubernetesProtectionSetConnection! (type)
+        public static string KubernetesProtectionSets(
+            ref KubernetesProtectionSetConnection? fieldSpec
+        )
+        {
+            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\nk8sClusterOptionalId: $k8sClusterOptionalId\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new KubernetesProtectionSetConnection() ;
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
+            }
+            return "kubernetesProtectionSets" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> KubernetesResourceSet? KubernetesResourceSet
@@ -9424,12 +9030,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new KubernetesResourceSet() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "kubernetesResourceSet" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "kubernetesResourceSet" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> KubernetesResourceSetConnection? KubernetesResourceSets
@@ -9442,12 +9047,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new KubernetesResourceSetConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "kubernetesResourceSets" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "kubernetesResourceSets" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> LambdaSettings? LambdaSettings
@@ -9460,12 +9064,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new LambdaSettings() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "lambdaSettings" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "lambdaSettings" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GetLastInsightSyncReply? LatestInsightSync
@@ -9478,12 +9081,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GetLastInsightSyncReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "latestInsightSync" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "latestInsightSync" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AuthorizedPrincipalConnection? LdapAuthorizedPrincipalConnection
@@ -9496,12 +9098,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AuthorizedPrincipalConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "ldapAuthorizedPrincipalConnection" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "ldapAuthorizedPrincipalConnection" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> LdapIntegrationConnection? LdapIntegrationConnection
@@ -9514,12 +9115,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new LdapIntegrationConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "ldapIntegrationConnection" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "ldapIntegrationConnection" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> PrincipalConnection? LdapPrincipalConnection
@@ -9532,12 +9132,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new PrincipalConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "ldapPrincipalConnection" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "ldapPrincipalConnection" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> LegalHoldSnapshotDetailConnection? LegalHoldSnapshotsForSnappable
@@ -9550,12 +9149,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new LegalHoldSnapshotDetailConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "legalHoldSnapshotsForSnappable" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "legalHoldSnapshotsForSnappable" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> LicensesForClusterProductReply? LicensesForClusterProductSummary
@@ -9568,12 +9166,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new LicensesForClusterProductReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "licensesForClusterProductSummary" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "licensesForClusterProductSummary" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> LinuxFileset? LinuxFileset
@@ -9586,12 +9183,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new LinuxFileset() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "linuxFileset" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "linuxFileset" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365AppConnection? ListO365Apps
@@ -9604,12 +9200,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365AppConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "listO365Apps" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "listO365Apps" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> LockoutConfig? LockoutConfig
@@ -9622,12 +9217,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new LockoutConfig() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "lockoutConfig" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "lockoutConfig" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> LookupAccountReply? LookupAccount
@@ -9640,12 +9234,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new LookupAccountReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "lookupAccount" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "lookupAccount" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> M365RegionsResp? M365Regions
@@ -9658,12 +9251,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new M365RegionsResp() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "m365Regions" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "m365Regions" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> MalwareScanResults? MalwareDetectionTaskResult
@@ -9676,12 +9268,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new MalwareScanResults() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "malwareDetectionTaskResult" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "malwareDetectionTaskResult" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AsyncRequestStatus? MalwareDetectionTaskStatus
@@ -9694,12 +9285,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AsyncRequestStatus() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "malwareDetectionTaskStatus" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "malwareDetectionTaskStatus" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GetLambdaMalwareScanDetailReply? MalwareScanDetail
@@ -9712,12 +9302,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GetLambdaMalwareScanDetailReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "malwareScanDetail" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "malwareScanDetail" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> MalwareScanDetailListResponse? MalwareScans
@@ -9730,12 +9319,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new MalwareScanDetailListResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "malwareScans" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "malwareScans" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ManagedVolume? ManagedVolume
@@ -9748,12 +9336,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ManagedVolume() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "managedVolume" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "managedVolume" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ManagedVolumeInventoryStats? ManagedVolumeInventoryStats
@@ -9766,12 +9353,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ManagedVolumeInventoryStats() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "managedVolumeInventoryStats" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "managedVolumeInventoryStats" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ManagedVolumeMountConnection? ManagedVolumeLiveMounts
@@ -9784,12 +9370,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ManagedVolumeMountConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "managedVolumeLiveMounts" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "managedVolumeLiveMounts" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ManagedVolumeConnection? ManagedVolumes
@@ -9802,12 +9387,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ManagedVolumeConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "managedVolumes" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "managedVolumes" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> MandatoryTotpGracePeriod? MandatoryTotpGracePeriod
@@ -9820,12 +9404,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new MandatoryTotpGracePeriod() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "mandatoryTotpGracePeriod" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "mandatoryTotpGracePeriod" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GetMfaSettingReply? MfaSetting
@@ -9838,12 +9421,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GetMfaSettingReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "mfaSetting" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "mfaSetting" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> FeatureListMinimumCdmVersionReply? MinimumCdmVersionForFeatureSet
@@ -9856,12 +9438,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new FeatureListMinimumCdmVersionReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "minimumCdmVersionForFeatureSet" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "minimumCdmVersionForFeatureSet" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> MongoRecoverableRanges? MongoBulkRecoverableRanges
@@ -9874,12 +9455,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new MongoRecoverableRanges() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "mongoBulkRecoverableRanges" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "mongoBulkRecoverableRanges" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> MongoCollection? MongoCollection
@@ -9892,12 +9472,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new MongoCollection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "mongoCollection" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "mongoCollection" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> MongoCollectionConnection? MongoCollections
@@ -9910,12 +9489,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new MongoCollectionConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "mongoCollections" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "mongoCollections" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> MongoDatabase? MongoDatabase
@@ -9928,12 +9506,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new MongoDatabase() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "mongoDatabase" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "mongoDatabase" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> MongoDatabaseConnection? MongoDatabases
@@ -9946,12 +9523,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new MongoDatabaseConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "mongoDatabases" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "mongoDatabases" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> MongoRecoverableRanges? MongoRecoverableRanges
@@ -9964,12 +9540,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new MongoRecoverableRanges() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "mongoRecoverableRanges" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "mongoRecoverableRanges" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> MongoSource? MongoSource
@@ -9982,12 +9557,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new MongoSource() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "mongoSource" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "mongoSource" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> MongoSourceConnection? MongoSources
@@ -10000,12 +9574,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new MongoSourceConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "mongoSources" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "mongoSources" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> MosaicRecoveryRangeResponse? MongodbBulkRecoverableRange
@@ -10018,12 +9591,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new MosaicRecoveryRangeResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "mongodbBulkRecoverableRange" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "mongodbBulkRecoverableRange" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> MongodbCollection? MongodbCollection
@@ -10036,12 +9608,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new MongodbCollection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "mongodbCollection" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "mongodbCollection" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GetMosaicRecoverableRangeResponse? MongodbCollectionRecoverableRange
@@ -10054,12 +9625,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GetMosaicRecoverableRangeResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "mongodbCollectionRecoverableRange" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "mongodbCollectionRecoverableRange" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> MongodbCollectionConnection? MongodbCollections
@@ -10072,12 +9642,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new MongodbCollectionConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "mongodbCollections" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "mongodbCollections" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> MongodbDatabase? MongodbDatabase
@@ -10090,12 +9659,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new MongodbDatabase() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "mongodbDatabase" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "mongodbDatabase" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> MongodbDatabaseConnection? MongodbDatabases
@@ -10108,12 +9676,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new MongodbDatabaseConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "mongodbDatabases" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "mongodbDatabases" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> MongodbSource? MongodbSource
@@ -10126,12 +9693,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new MongodbSource() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "mongodbSource" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "mongodbSource" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> MongodbSourceConnection? MongodbSources
@@ -10144,12 +9710,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new MongodbSourceConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "mongodbSources" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "mongodbSources" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> MosaicRecoveryRangeResponse? MosaicBulkRecoveryRange
@@ -10162,12 +9727,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new MosaicRecoveryRangeResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "mosaicBulkRecoveryRange" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "mosaicBulkRecoveryRange" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ListVersionResponse? MosaicSnapshots
@@ -10180,12 +9744,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ListVersionResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "mosaicSnapshots" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "mosaicSnapshots" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ListStoreResponse? MosaicStores
@@ -10198,12 +9761,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ListStoreResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "mosaicStores" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "mosaicStores" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ListVersionResponse? MosaicVersions
@@ -10216,12 +9778,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ListVersionResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "mosaicVersions" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "mosaicVersions" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> MssqlAvailabilityGroup? MssqlAvailabilityGroup
@@ -10234,12 +9795,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new MssqlAvailabilityGroup() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "mssqlAvailabilityGroup" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "mssqlAvailabilityGroup" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> MssqlInstanceSummaryListResponse? MssqlCompatibleInstances
@@ -10252,12 +9812,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new MssqlInstanceSummaryListResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "mssqlCompatibleInstances" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "mssqlCompatibleInstances" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> MssqlDatabase? MssqlDatabase
@@ -10270,12 +9829,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new MssqlDatabase() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "mssqlDatabase" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "mssqlDatabase" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> MssqlDatabaseLiveMountConnection? MssqlDatabaseLiveMounts
@@ -10288,12 +9846,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new MssqlDatabaseLiveMountConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "mssqlDatabaseLiveMounts" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "mssqlDatabaseLiveMounts" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> MssqlMissedRecoverableRangeListResponse? MssqlDatabaseMissedRecoverableRanges
@@ -10306,12 +9863,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new MssqlMissedRecoverableRangeListResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "mssqlDatabaseMissedRecoverableRanges" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "mssqlDatabaseMissedRecoverableRanges" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> MissedSnapshotListResponse? MssqlDatabaseMissedSnapshots
@@ -10324,12 +9880,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new MissedSnapshotListResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "mssqlDatabaseMissedSnapshots" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "mssqlDatabaseMissedSnapshots" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> MssqlRestoreEstimateResult? MssqlDatabaseRestoreEstimate
@@ -10342,12 +9897,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new MssqlRestoreEstimateResult() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "mssqlDatabaseRestoreEstimate" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "mssqlDatabaseRestoreEstimate" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> MssqlDatabaseConnection? MssqlDatabases
@@ -10360,12 +9914,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new MssqlDatabaseConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "mssqlDatabases" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "mssqlDatabases" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> UpdateMssqlDefaultPropertiesReply? MssqlDefaultProperties
@@ -10378,12 +9931,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new UpdateMssqlDefaultPropertiesReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "mssqlDefaultProperties" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "mssqlDefaultProperties" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> MssqlInstance? MssqlInstance
@@ -10396,12 +9948,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new MssqlInstance() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "mssqlInstance" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "mssqlInstance" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> MssqlLogShippingSummaryV2ListResponse? MssqlLogShippingTargets
@@ -10414,12 +9965,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new MssqlLogShippingSummaryV2ListResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "mssqlLogShippingTargets" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "mssqlLogShippingTargets" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> MssqlRecoverableRangeListResponse? MssqlRecoverableRanges
@@ -10432,12 +9982,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new MssqlRecoverableRangeListResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "mssqlRecoverableRanges" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "mssqlRecoverableRanges" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> MssqlTopLevelDescendantTypeConnection? MssqlTopLevelDescendants
@@ -10450,12 +9999,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new MssqlTopLevelDescendantTypeConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "mssqlTopLevelDescendants" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "mssqlTopLevelDescendants" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> NasFileset? NasFileset
@@ -10468,12 +10016,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new NasFileset() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "nasFileset" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "nasFileset" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> NasNamespace? NasNamespace
@@ -10486,12 +10033,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new NasNamespace() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "nasNamespace" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "nasNamespace" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> NasNamespaceConnection? NasNamespaces
@@ -10504,12 +10050,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new NasNamespaceConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "nasNamespaces" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "nasNamespaces" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> NasShare? NasShare
@@ -10522,12 +10067,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new NasShare() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "nasShare" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "nasShare" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> NasSystem? NasSystem
@@ -10540,12 +10084,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new NasSystem() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "nasSystem" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "nasSystem" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> NasSystemConnection? NasSystems
@@ -10558,12 +10101,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new NasSystemConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "nasSystems" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "nasSystems" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> CdmHierarchyObjectConnection? NasTopLevelDescendants
@@ -10576,12 +10118,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new CdmHierarchyObjectConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "nasTopLevelDescendants" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "nasTopLevelDescendants" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> NasVolume? NasVolume
@@ -10594,12 +10135,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new NasVolume() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "nasVolume" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "nasVolume" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> NcdBackEndCapacity? NcdBackEndCapacity
@@ -10612,12 +10152,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new NcdBackEndCapacity() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "ncdBackEndCapacity" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "ncdBackEndCapacity" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> NcdFrontEndCapacity? NcdFrontEndCapacity
@@ -10630,12 +10169,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new NcdFrontEndCapacity() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "ncdFrontEndCapacity" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "ncdFrontEndCapacity" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> NcdObjectProtectionStatus? NcdObjectProtectionStatus
@@ -10648,12 +10186,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new NcdObjectProtectionStatus() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "ncdObjectProtectionStatus" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "ncdObjectProtectionStatus" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> NetworkThrottleSummaryListResponse? NetworkThrottle
@@ -10666,12 +10203,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new NetworkThrottleSummaryListResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "networkThrottle" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "networkThrottle" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> NfAnomalyResultConnection? NfAnomalyResults
@@ -10684,12 +10220,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new NfAnomalyResultConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "nfAnomalyResults" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "nfAnomalyResults" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> NfAnomalyResultGroupedDataConnection? NfAnomalyResultsGrouped
@@ -10702,12 +10237,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new NfAnomalyResultGroupedDataConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "nfAnomalyResultsGrouped" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "nfAnomalyResultsGrouped" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> NodeKeyRotationConnection? NodeKeyRotation
@@ -10720,12 +10254,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new NodeKeyRotationConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "nodeKeyRotation" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "nodeKeyRotation" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> NodeRemovalCancelPermissionReply? NodeRemovalCancelPermission
@@ -10738,12 +10271,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new NodeRemovalCancelPermissionReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "nodeRemovalCancelPermission" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "nodeRemovalCancelPermission" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> NodeToReplaceReply? NodeToReplace
@@ -10756,12 +10288,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new NodeToReplaceReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "nodeToReplace" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "nodeToReplace" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> NotificationConnection? Notifications
@@ -10774,12 +10305,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new NotificationConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "notifications" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "notifications" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> BrowseResponseListResponse? NutanixBrowseSnapshot
@@ -10792,12 +10322,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new BrowseResponseListResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "nutanixBrowseSnapshot" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "nutanixBrowseSnapshot" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> NutanixCategory? NutanixCategory
@@ -10810,12 +10339,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new NutanixCategory() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "nutanixCategory" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "nutanixCategory" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> NutanixCategoryValue? NutanixCategoryValue
@@ -10828,12 +10356,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new NutanixCategoryValue() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "nutanixCategoryValue" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "nutanixCategoryValue" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> NutanixCluster? NutanixCluster
@@ -10846,12 +10373,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new NutanixCluster() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "nutanixCluster" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "nutanixCluster" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AsyncRequestStatus? NutanixClusterAsyncRequestStatus
@@ -10864,12 +10390,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AsyncRequestStatus() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "nutanixClusterAsyncRequestStatus" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "nutanixClusterAsyncRequestStatus" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> NutanixContainerListResponse? NutanixClusterContainers
@@ -10882,12 +10407,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new NutanixContainerListResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "nutanixClusterContainers" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "nutanixClusterContainers" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> NutanixNetworkListResponse? NutanixClusterNetworks
@@ -10900,12 +10424,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new NutanixNetworkListResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "nutanixClusterNetworks" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "nutanixClusterNetworks" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> NutanixClusterConnection? NutanixClusters
@@ -10918,12 +10441,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new NutanixClusterConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "nutanixClusters" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "nutanixClusters" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> NutanixLiveMountConnection? NutanixMounts
@@ -10936,12 +10458,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new NutanixLiveMountConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "nutanixMounts" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "nutanixMounts" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> NutanixPrismCentral? NutanixPrismCentral
@@ -10954,12 +10475,28 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new NutanixPrismCentral() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "nutanixPrismCentral" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "nutanixPrismCentral" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
+        }
+
+        //      C# -> AsyncRequestStatus? NutanixPrismCentralAsyncRequestStatus
+        // GraphQL -> nutanixPrismCentralAsyncRequestStatus: AsyncRequestStatus! (type)
+        public static string NutanixPrismCentralAsyncRequestStatus(
+            ref AsyncRequestStatus? fieldSpec
+        )
+        {
+            string args = "\n(\ninput: $input\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new AsyncRequestStatus() ;
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
+            }
+            return "nutanixPrismCentralAsyncRequestStatus" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> NutanixPrismCentralConnection? NutanixPrismCentrals
@@ -10972,12 +10509,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new NutanixPrismCentralConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "nutanixPrismCentrals" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "nutanixPrismCentrals" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> NutanixVmSnapshotDetail? NutanixSnapshotDetail
@@ -10990,12 +10526,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new NutanixVmSnapshotDetail() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "nutanixSnapshotDetail" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "nutanixSnapshotDetail" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> CdmHierarchyObjectConnection? NutanixTopLevelDescendants
@@ -11008,12 +10543,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new CdmHierarchyObjectConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "nutanixTopLevelDescendants" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "nutanixTopLevelDescendants" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> NutanixVm? NutanixVm
@@ -11026,12 +10560,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new NutanixVm() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "nutanixVm" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "nutanixVm" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AsyncRequestStatus? NutanixVmAsyncRequestStatus
@@ -11044,12 +10577,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AsyncRequestStatus() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "nutanixVmAsyncRequestStatus" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "nutanixVmAsyncRequestStatus" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> MissedSnapshotListResponse? NutanixVmMissedSnapshots
@@ -11062,12 +10594,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new MissedSnapshotListResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "nutanixVmMissedSnapshots" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "nutanixVmMissedSnapshots" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> NutanixVmConnection? NutanixVms
@@ -11080,12 +10611,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new NutanixVmConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "nutanixVms" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "nutanixVms" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365Calendar? O365Calendar
@@ -11098,12 +10628,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365Calendar() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "o365Calendar" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "o365Calendar" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365GroupConnection? O365Groups
@@ -11116,12 +10645,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365GroupConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "o365Groups" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "o365Groups" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365License? O365License
@@ -11134,12 +10662,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365License() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "o365License" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "o365License" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365Mailbox? O365Mailbox
@@ -11152,12 +10679,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365Mailbox() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "o365Mailbox" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "o365Mailbox" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365MailboxConnection? O365Mailboxes
@@ -11170,12 +10696,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365MailboxConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "o365Mailboxes" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "o365Mailboxes" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GetImplicitlyAuthorizedAncestorSummariesResponse? O365ObjectAncestors
@@ -11188,12 +10713,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GetImplicitlyAuthorizedAncestorSummariesResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "o365ObjectAncestors" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "o365ObjectAncestors" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365Onedrive? O365Onedrive
@@ -11206,12 +10730,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365Onedrive() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "o365Onedrive" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "o365Onedrive" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365OnedriveConnection? O365Onedrives
@@ -11224,12 +10747,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365OnedriveConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "o365Onedrives" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "o365Onedrives" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365Org? O365Org
@@ -11242,12 +10764,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365Org() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "o365Org" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "o365Org" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365Org? O365OrgAtSnappableLevel
@@ -11260,12 +10781,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365Org() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "o365OrgAtSnappableLevel" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "o365OrgAtSnappableLevel" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GetImplicitlyAuthorizedObjectSummariesResponse? O365OrgSummaries
@@ -11278,12 +10798,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GetImplicitlyAuthorizedObjectSummariesResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "o365OrgSummaries" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "o365OrgSummaries" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365OrgConnection? O365Orgs
@@ -11296,12 +10815,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365OrgConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "o365Orgs" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "o365Orgs" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365ServiceAccountStatusResp? O365ServiceAccount
@@ -11314,12 +10832,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365ServiceAccountStatusResp() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "o365ServiceAccount" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "o365ServiceAccount" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GetO365ServiceStatusResp? O365ServiceStatus
@@ -11332,12 +10849,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GetO365ServiceStatusResp() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "o365ServiceStatus" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "o365ServiceStatus" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365SharepointDrive? O365SharepointDrive
@@ -11350,12 +10866,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365SharepointDrive() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "o365SharepointDrive" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "o365SharepointDrive" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365SharepointDriveConnection? O365SharepointDrives
@@ -11368,12 +10883,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365SharepointDriveConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "o365SharepointDrives" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "o365SharepointDrives" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365SharepointList? O365SharepointList
@@ -11386,12 +10900,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365SharepointList() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "o365SharepointList" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "o365SharepointList" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365SharepointListConnection? O365SharepointLists
@@ -11404,12 +10917,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365SharepointListConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "o365SharepointLists" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "o365SharepointLists" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365SharepointObjectConnection? O365SharepointObjectList
@@ -11422,12 +10934,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365SharepointObjectConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "o365SharepointObjectList" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "o365SharepointObjectList" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365SharepointObjectConnection? O365SharepointObjects
@@ -11440,12 +10951,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365SharepointObjectConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "o365SharepointObjects" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "o365SharepointObjects" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365Site? O365SharepointSite
@@ -11458,12 +10968,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365Site() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "o365SharepointSite" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "o365SharepointSite" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365SiteConnection? O365SharepointSites
@@ -11476,12 +10985,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365SiteConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "o365SharepointSites" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "o365SharepointSites" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365Site? O365Site
@@ -11494,12 +11002,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365Site() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "o365Site" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "o365Site" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365SiteConnection? O365Sites
@@ -11512,12 +11019,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365SiteConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "o365Sites" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "o365Sites" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GetO365StorageStatsResp? O365StorageStats
@@ -11530,12 +11036,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GetO365StorageStatsResp() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "o365StorageStats" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "o365StorageStats" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365Teams? O365Team
@@ -11548,12 +11053,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365Teams() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "o365Team" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "o365Team" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365TeamsChannelConnection? O365TeamChannels
@@ -11566,12 +11070,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365TeamsChannelConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "o365TeamChannels" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "o365TeamChannels" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365TeamConversationsSenderConnection? O365TeamPostedBy
@@ -11584,12 +11087,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365TeamConversationsSenderConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "o365TeamPostedBy" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "o365TeamPostedBy" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365TeamsConnection? O365Teams
@@ -11602,12 +11104,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365TeamsConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "o365Teams" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "o365Teams" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365User? O365User
@@ -11620,12 +11121,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365User() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "o365User" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "o365User" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365UserDescendantMetadataConnection? O365UserObjects
@@ -11638,12 +11138,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365UserDescendantMetadataConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "o365UserObjects" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "o365UserObjects" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> OauthCodesForEdgeRegReply? OauthCodesForEdgeReg
@@ -11656,12 +11155,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new OauthCodesForEdgeRegReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "oauthCodesForEdgeReg" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "oauthCodesForEdgeReg" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> FileResultConnection? ObjectFiles
@@ -11674,12 +11172,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new FileResultConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "objectFiles" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "objectFiles" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> OracleFileDownloadLink? OracleAcoExampleDownloadLink
@@ -11692,12 +11189,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new OracleFileDownloadLink() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "oracleAcoExampleDownloadLink" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "oracleAcoExampleDownloadLink" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> OracleAcoParameterList? OracleAcoParameters
@@ -11710,12 +11206,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new OracleAcoParameterList() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "oracleAcoParameters" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "oracleAcoParameters" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> OracleDataGuardGroup? OracleDataGuardGroup
@@ -11728,12 +11223,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new OracleDataGuardGroup() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "oracleDataGuardGroup" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "oracleDataGuardGroup" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> OracleDatabase? OracleDatabase
@@ -11746,12 +11240,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new OracleDatabase() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "oracleDatabase" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "oracleDatabase" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> OracleLogBackupConfig? OracleDatabaseLogBackupConfig
@@ -11764,12 +11257,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new OracleLogBackupConfig() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "oracleDatabaseLogBackupConfig" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "oracleDatabaseLogBackupConfig" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> OracleDatabaseConnection? OracleDatabases
@@ -11782,12 +11274,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new OracleDatabaseConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "oracleDatabases" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "oracleDatabases" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> OracleHost? OracleHost
@@ -11800,12 +11291,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new OracleHost() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "oracleHost" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "oracleHost" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> OracleLogBackupConfig? OracleHostLogBackupConfig
@@ -11818,12 +11308,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new OracleLogBackupConfig() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "oracleHostLogBackupConfig" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "oracleHostLogBackupConfig" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> OracleLiveMountConnection? OracleLiveMounts
@@ -11836,12 +11325,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new OracleLiveMountConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "oracleLiveMounts" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "oracleLiveMounts" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> OracleMissedRecoverableRangeListResponse? OracleMissedRecoverableRanges
@@ -11854,12 +11342,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new OracleMissedRecoverableRangeListResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "oracleMissedRecoverableRanges" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "oracleMissedRecoverableRanges" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> MissedSnapshotListResponse? OracleMissedSnapshots
@@ -11872,12 +11359,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new MissedSnapshotListResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "oracleMissedSnapshots" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "oracleMissedSnapshots" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> OraclePdbDetails? OraclePdbDetails
@@ -11890,12 +11376,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new OraclePdbDetails() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "oraclePdbDetails" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "oraclePdbDetails" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> OracleRac? OracleRac
@@ -11908,12 +11393,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new OracleRac() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "oracleRac" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "oracleRac" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> OracleLogBackupConfig? OracleRacLogBackupConfig
@@ -11926,12 +11410,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new OracleLogBackupConfig() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "oracleRacLogBackupConfig" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "oracleRacLogBackupConfig" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> OracleRecoverableRangeListResponse? OracleRecoverableRanges
@@ -11944,12 +11427,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new OracleRecoverableRangeListResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "oracleRecoverableRanges" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "oracleRecoverableRanges" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> OracleTopLevelDescendantTypeConnection? OracleTopLevelDescendants
@@ -11962,12 +11444,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new OracleTopLevelDescendantTypeConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "oracleTopLevelDescendants" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "oracleTopLevelDescendants" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> Org? Org
@@ -11980,12 +11461,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new Org() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "org" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "org" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> OrgNetwork? OrgNetwork
@@ -11998,12 +11478,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new OrgNetwork() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "orgNetwork" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "orgNetwork" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> OrgNetworkConnection? OrgNetworks
@@ -12016,12 +11495,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new OrgNetworkConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "orgNetworks" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "orgNetworks" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> OrgSecurityPolicy? OrgSecurityPolicy
@@ -12034,12 +11512,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new OrgSecurityPolicy() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "orgSecurityPolicy" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "orgSecurityPolicy" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> OrgConnection? Orgs
@@ -12052,12 +11529,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new OrgConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "orgs" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "orgs" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> OrgsForPrincipalReply? OrgsForPrincipal
@@ -12070,12 +11546,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new OrgsForPrincipalReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "orgsForPrincipal" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "orgsForPrincipal" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> OverallRansomwareInvestigationSummary? OverallRansomwareInvestigationSummary
@@ -12088,12 +11563,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new OverallRansomwareInvestigationSummary() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "overallRansomwareInvestigationSummary" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "overallRansomwareInvestigationSummary" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> PactsafeContract? PactsafeContract
@@ -12106,12 +11580,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new PactsafeContract() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "pactsafeContract" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "pactsafeContract" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> PactsafeEulaState? PactsafeEulaState
@@ -12124,12 +11597,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new PactsafeEulaState() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "pactsafeEulaState" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "pactsafeEulaState" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> PasswordComplexityPolicy? PasswordComplexityPolicy
@@ -12142,12 +11614,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new PasswordComplexityPolicy() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "passwordComplexityPolicy" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "passwordComplexityPolicy" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> PendingAction? PendingAction
@@ -12160,12 +11631,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new PendingAction() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "pendingAction" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "pendingAction" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> PendingEvaluationResultsReply? PendingRansomwareInvestigationResultsCount
@@ -12178,12 +11648,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new PendingEvaluationResultsReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "pendingRansomwareInvestigationResultsCount" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "pendingRansomwareInvestigationResultsCount" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> PhoenixRolloutProgress? PhoenixRolloutProgress
@@ -12196,12 +11665,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new PhoenixRolloutProgress() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "phoenixRolloutProgress" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "phoenixRolloutProgress" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> PhysicalHost? PhysicalHost
@@ -12214,12 +11682,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new PhysicalHost() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "physicalHost" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "physicalHost" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> PhysicalHostConnection? PhysicalHosts
@@ -12232,12 +11699,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new PhysicalHostConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "physicalHosts" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "physicalHosts" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GetPipelineHealthReply? PipelineHealthForTimeRange
@@ -12250,12 +11716,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GetPipelineHealthReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "pipelineHealthForTimeRange" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "pipelineHealthForTimeRange" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> PolarisInventorySubHierarchyRoot? PolarisInventorySubHierarchyRoot
@@ -12268,12 +11733,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new PolarisInventorySubHierarchyRoot() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "polarisInventorySubHierarchyRoot" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "polarisInventorySubHierarchyRoot" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> PolarisReportConfig? PolarisReportConfig
@@ -12286,12 +11750,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new PolarisReportConfig() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "polarisReportConfig" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "polarisReportConfig" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> PolarisReportSchema? PolarisReportSchema
@@ -12300,16 +11763,15 @@ namespace RubrikSecurityCloud.Types
             ref PolarisReportSchema? fieldSpec
         )
         {
-            string args = "\n(\npolarisReportViewType: $polarisReportViewType\ntimezone: $timezone\n)";
+            string args = "\n(\npolarisReportViewType: $polarisReportViewType\nreportRoom: $reportRoom\n)";
             if (fieldSpec == null)
             {
                 fieldSpec = new PolarisReportSchema() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "polarisReportSchema" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "polarisReportSchema" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> PolarisReportTableIntrospection? PolarisReportTableIntrospection
@@ -12318,16 +11780,15 @@ namespace RubrikSecurityCloud.Types
             ref PolarisReportTableIntrospection? fieldSpec
         )
         {
-            string args = "\n(\ntableView: $tableView\n)";
+            string args = "\n(\ntableView: $tableView\nreportRoom: $reportRoom\n)";
             if (fieldSpec == null)
             {
                 fieldSpec = new PolarisReportTableIntrospection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "polarisReportTableIntrospection" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "polarisReportTableIntrospection" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> PolarisSnapshot? PolarisSnapshot
@@ -12340,12 +11801,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new PolarisSnapshot() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "polarisSnapshot" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "polarisSnapshot" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ClassificationPolicyDetailConnection? Policies
@@ -12358,12 +11818,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ClassificationPolicyDetailConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "policies" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "policies" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ClassificationPolicyDetail? Policy
@@ -12376,12 +11835,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ClassificationPolicyDetail() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "policy" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "policy" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> PolicyDetailConnection? PolicyDetails
@@ -12394,12 +11852,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new PolicyDetailConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "policyDetails" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "policyDetails" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> PolicyObj? PolicyObj
@@ -12412,12 +11869,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new PolicyObj() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "policyObj" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "policyObj" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> PolicyObj? PolicyObjOpt
@@ -12430,12 +11886,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new PolicyObj() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "policyObjOpt" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "policyObjOpt" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> PolicyObjectUsageConnection? PolicyObjectUsages
@@ -12448,12 +11903,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new PolicyObjectUsageConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "policyObjectUsages" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "policyObjectUsages" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> PolicyObjConnection? PolicyObjs
@@ -12466,12 +11920,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new PolicyObjConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "policyObjs" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "policyObjs" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> PrechecksStatusReply? PrechecksStatus
@@ -12484,12 +11937,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new PrechecksStatusReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "prechecksStatus" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "prechecksStatus" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> PrechecksStatusReply? PrechecksStatusWithNextJobInfo
@@ -12502,12 +11954,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new PrechecksStatusReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "prechecksStatusWithNextJobInfo" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "prechecksStatusWithNextJobInfo" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> PrincipalDetails? PrincipalDetails
@@ -12520,12 +11971,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new PrincipalDetails() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "principalDetails" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "principalDetails" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> PrincipalObjectSummaryConnection? PrincipalObjectSummaries
@@ -12538,12 +11988,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new PrincipalObjectSummaryConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "principalObjectSummaries" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "principalObjectSummaries" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GetPrincipalRiskChangesReply? PrincipalRiskChanges
@@ -12556,12 +12005,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GetPrincipalRiskChangesReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "principalRiskChanges" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "principalRiskChanges" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GetPrincipalRiskTrendReply? PrincipalRiskTrend
@@ -12574,12 +12022,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GetPrincipalRiskTrendReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "principalRiskTrend" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "principalRiskTrend" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> PrincipalSummaryConnection? PrincipalSummaries
@@ -12592,12 +12039,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new PrincipalSummaryConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "principalSummaries" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "principalSummaries" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ProcessedRansomwareInvestigationWorkloadCountReply? ProcessedRansomwareInvestigationWorkloadCount
@@ -12610,12 +12056,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ProcessedRansomwareInvestigationWorkloadCountReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "processedRansomwareInvestigationWorkloadCount" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "processedRansomwareInvestigationWorkloadCount" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ProductDocumentation? ProductDocumentation
@@ -12628,12 +12073,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ProductDocumentation() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "productDocumentation" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "productDocumentation" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ClusterConnection? ProtectedClustersForGlobalSla
@@ -12646,12 +12090,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ClusterConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "protectedClustersForGlobalSla" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "protectedClustersForGlobalSla" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ProtectedObjectsConnection? ProtectedObjectsConnection
@@ -12664,12 +12107,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ProtectedObjectsConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "protectedObjectsConnection" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "protectedObjectsConnection" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ProtectedRansomwareInvestigationWorkloadCountReply? ProtectedRansomwareInvestigationWorkloadCount
@@ -12682,12 +12124,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ProtectedRansomwareInvestigationWorkloadCountReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "protectedRansomwareInvestigationWorkloadCount" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "protectedRansomwareInvestigationWorkloadCount" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> QueryDatastoreFreespaceThresholdsReply? QueryDatastoreFreespaceThresholds
@@ -12700,12 +12141,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new QueryDatastoreFreespaceThresholdsReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "queryDatastoreFreespaceThresholds" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "queryDatastoreFreespaceThresholds" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ClusterConnection? RadarClusterConnection
@@ -12718,12 +12158,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ClusterConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "radarClusterConnection" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "radarClusterConnection" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ListLocationsReply? RansomwareDetectionWorkloadLocations
@@ -12736,12 +12175,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ListLocationsReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "ransomwareDetectionWorkloadLocations" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "ransomwareDetectionWorkloadLocations" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> RansomwareInvestigationAnalysisSummaryReply? RansomwareInvestigationAnalysisSummary
@@ -12754,12 +12192,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new RansomwareInvestigationAnalysisSummaryReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "ransomwareInvestigationAnalysisSummary" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "ransomwareInvestigationAnalysisSummary" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> RansomwareInvestigationEnablementReply? RansomwareInvestigationEnablement
@@ -12772,12 +12209,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new RansomwareInvestigationEnablementReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "ransomwareInvestigationEnablement" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "ransomwareInvestigationEnablement" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> RansomwareInvestigationObjectsReply? RansomwareInvestigationObjects
@@ -12790,12 +12226,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new RansomwareInvestigationObjectsReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "ransomwareInvestigationObjects" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "ransomwareInvestigationObjects" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> RansomwareInvestigationWorkloadScannedCountReply? RansomwareInvestigationWorkloadScannedCount
@@ -12808,12 +12243,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new RansomwareInvestigationWorkloadScannedCountReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "ransomwareInvestigationWorkloadScannedCount" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "ransomwareInvestigationWorkloadScannedCount" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> RansomwareMonitoringPipelineHealth? RansomwareMonitoringPipelineHealth
@@ -12826,12 +12260,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new RansomwareMonitoringPipelineHealth() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "ransomwareMonitoringPipelineHealth" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "ransomwareMonitoringPipelineHealth" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> RansomwareMonitoringTimelineAnalysis? RansomwareMonitoringTimelineAnalysis
@@ -12844,12 +12277,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new RansomwareMonitoringTimelineAnalysis() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "ransomwareMonitoringTimelineAnalysis" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "ransomwareMonitoringTimelineAnalysis" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> RansomwareResult? RansomwareResult
@@ -12862,12 +12294,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new RansomwareResult() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "ransomwareResult" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "ransomwareResult" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> RansomwareResult? RansomwareResultOpt
@@ -12880,12 +12311,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new RansomwareResult() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "ransomwareResultOpt" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "ransomwareResultOpt" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> RansomwareResultConnection? RansomwareResults
@@ -12898,12 +12328,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new RansomwareResultConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "ransomwareResults" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "ransomwareResults" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> RansomwareResultGroupedDataConnection? RansomwareResultsGrouped
@@ -12916,12 +12345,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new RansomwareResultGroupedDataConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "ransomwareResultsGrouped" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "ransomwareResultsGrouped" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> RcsAzureArchivalLocationsConsumptionStatsOutput? RcsArchivalLocationsConsumptionStats
@@ -12934,12 +12362,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new RcsAzureArchivalLocationsConsumptionStatsOutput() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "rcsArchivalLocationsConsumptionStats" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "rcsArchivalLocationsConsumptionStats" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> RcvAccountEntitlement? RcvAccountEntitlement
@@ -12952,12 +12379,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new RcvAccountEntitlement() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "rcvAccountEntitlement" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "rcvAccountEntitlement" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> RdsInstanceDetailsFromAws? RdsInstanceDetailsFromAws
@@ -12970,12 +12396,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new RdsInstanceDetailsFromAws() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "rdsInstanceDetailsFromAws" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "rdsInstanceDetailsFromAws" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> RecoveryPermissionCheckReply? RecoveryPermissionCheck
@@ -12988,12 +12413,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new RecoveryPermissionCheckReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "recoveryPermissionCheck" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "recoveryPermissionCheck" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> RecoveryPlanPermissionCheckReply? RecoveryPlanPermissionCheck
@@ -13006,12 +12430,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new RecoveryPlanPermissionCheckReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "recoveryPlanPermissionCheck" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "recoveryPlanPermissionCheck" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> Schedule? RecoverySchedule
@@ -13024,12 +12447,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new Schedule() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "recoverySchedule" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "recoverySchedule" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ReleaseNoteConnection? ReleasesNotes
@@ -13042,12 +12464,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ReleaseNoteConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "releasesNotes" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "releasesNotes" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> InternalReplicationBandwidthIncomingResponse? ReplicationIncomingStats
@@ -13060,12 +12481,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new InternalReplicationBandwidthIncomingResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "replicationIncomingStats" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "replicationIncomingStats" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> InternalReplicationBandwidthOutgoingResponse? ReplicationOutgoingStats
@@ -13078,12 +12498,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new InternalReplicationBandwidthOutgoingResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "replicationOutgoingStats" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "replicationOutgoingStats" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ReplicationPairConnection? ReplicationPairs
@@ -13096,12 +12515,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ReplicationPairConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "replicationPairs" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "replicationPairs" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> CustomReport? Report
@@ -13114,12 +12532,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new CustomReport() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "report" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "report" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ChartDataResult? ReportChartData
@@ -13128,16 +12545,15 @@ namespace RubrikSecurityCloud.Types
             ref ChartDataResult? fieldSpec
         )
         {
-            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nchartView: $chartView\nfilters: $filters\ntimezone: $timezone\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nchartView: $chartView\nreportRoom: $reportRoom\nfilters: $filters\ntimezone: $timezone\n)";
             if (fieldSpec == null)
             {
                 fieldSpec = new ChartDataResult() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "reportChartData" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "reportChartData" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ReportConfig? ReportConfig
@@ -13150,12 +12566,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ReportConfig() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "reportConfig" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "reportConfig" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> CustomReportConnection? ReportConnection
@@ -13168,12 +12583,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new CustomReportConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "reportConnection" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "reportConnection" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> RowConnection? ReportData
@@ -13186,12 +12600,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new RowConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "reportData" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "reportData" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> CustomReport? ReportFromConfig
@@ -13204,12 +12617,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new CustomReport() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "reportFromConfig" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "reportFromConfig" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> CustomReportGroupByConnection? ReportGroupByConnection
@@ -13222,12 +12634,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new CustomReportGroupByConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "reportGroupByConnection" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "reportGroupByConnection" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ReportSchema? ReportSchema
@@ -13240,12 +12651,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ReportSchema() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "reportSchema" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "reportSchema" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> RowConnection? ReportTableData
@@ -13254,16 +12664,15 @@ namespace RubrikSecurityCloud.Types
             ref RowConnection? fieldSpec
         )
         {
-            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\ntableView: $tableView\nfilters: $filters\nsortBy: $sortBy\nsortOrder: $sortOrder\ntimezone: $timezone\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\ntableView: $tableView\nreportRoom: $reportRoom\nfilters: $filters\nsortBy: $sortBy\nsortOrder: $sortOrder\ntimezone: $timezone\n)";
             if (fieldSpec == null)
             {
                 fieldSpec = new RowConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "reportTableData" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "reportTableData" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ReportVersion? ReportVersion
@@ -13276,12 +12685,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ReportVersion() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "reportVersion" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "reportVersion" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> RoleTemplateConnection? RoleTemplates
@@ -13294,12 +12702,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new RoleTemplateConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "roleTemplates" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "roleTemplates" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> RscAutoUpgradeInfo? RscAutoUpgradeInfo
@@ -13312,12 +12719,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new RscAutoUpgradeInfo() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "rscAutoUpgradeInfo" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "rscAutoUpgradeInfo" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> RunningJobsReply? RunningJobsStatus
@@ -13330,12 +12736,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new RunningJobsReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "runningJobsStatus" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "runningJobsStatus" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GetS3BucketStateForRecoveryReply? S3BucketStateForRecovery
@@ -13348,12 +12753,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GetS3BucketStateForRecoveryReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "s3BucketStateForRecovery" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "s3BucketStateForRecovery" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<AppItemWithCascadingImpact>? SaasAppCascadingImpact
@@ -13366,12 +12770,28 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<AppItemWithCascadingImpact>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "saasAppCascadingImpact" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "saasAppCascadingImpact" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
+        }
+
+        //      C# -> SaasAppSnapshotConnection? SaasAppItemIndividualSnapshots
+        // GraphQL -> saasAppItemIndividualSnapshots: SaasAppSnapshotConnection! (type)
+        public static string SaasAppItemIndividualSnapshots(
+            ref SaasAppSnapshotConnection? fieldSpec
+        )
+        {
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nworkloadId: $workloadId\nitemId: $itemId\nsaasAppType: $saasAppType\nappItemTypeToken: $appItemTypeToken\ntimeFilter: $timeFilter\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new SaasAppSnapshotConnection() ;
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
+            }
+            return "saasAppItemIndividualSnapshots" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> SaasAppSnapshotConnection? SaasAppItemOverlappingSnapshots
@@ -13380,16 +12800,32 @@ namespace RubrikSecurityCloud.Types
             ref SaasAppSnapshotConnection? fieldSpec
         )
         {
-            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nworkloadId: $workloadId\nitemIds: $itemIds\nappItemTypeToken: $appItemTypeToken\ntimeFilter: $timeFilter\nsortBy: $sortBy\nsortOrder: $sortOrder\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nworkloadId: $workloadId\nitemIds: $itemIds\nappItemTypeToken: $appItemTypeToken\nsaasAppType: $saasAppType\ntimeFilter: $timeFilter\nsortBy: $sortBy\nsortOrder: $sortOrder\n)";
             if (fieldSpec == null)
             {
                 fieldSpec = new SaasAppSnapshotConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "saasAppItemOverlappingSnapshots" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "saasAppItemOverlappingSnapshots" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
+        }
+
+        //      C# -> List<ItemSnapshot>? SaasAppLatestSnapshotsForItems
+        // GraphQL -> saasAppLatestSnapshotsForItems: [ItemSnapshot!]! (type)
+        public static string SaasAppLatestSnapshotsForItems(
+            ref List<ItemSnapshot>? fieldSpec
+        )
+        {
+            string args = "\n(\nworkloadId: $workloadId\nitemIds: $itemIds\nsaasAppType: $saasAppType\nappItemTypeToken: $appItemTypeToken\ntimeFilter: $timeFilter\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new List<ItemSnapshot>() ;
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
+            }
+            return "saasAppLatestSnapshotsForItems" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> OrgBackupJobInformation? SaasBackupJobInformation
@@ -13398,16 +12834,15 @@ namespace RubrikSecurityCloud.Types
             ref OrgBackupJobInformation? fieldSpec
         )
         {
-            string args = "\n(\norgId: $orgId\ntimezoneOffset: $timezoneOffset\nduration: $duration\n)";
+            string args = "\n(\norgId: $orgId\ntimezoneOffset: $timezoneOffset\nduration: $duration\nsaasAppType: $saasAppType\n)";
             if (fieldSpec == null)
             {
                 fieldSpec = new OrgBackupJobInformation() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "saasBackupJobInformation" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "saasBackupJobInformation" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ConnectionStatus? SaasConnectionStatus
@@ -13416,16 +12851,32 @@ namespace RubrikSecurityCloud.Types
             ref ConnectionStatus? fieldSpec
         )
         {
-            string args = "\n(\norgId: $orgId\n)";
+            string args = "\n(\norgId: $orgId\nsaasAppType: $saasAppType\n)";
             if (fieldSpec == null)
             {
                 fieldSpec = new ConnectionStatus() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "saasConnectionStatus" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "saasConnectionStatus" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
+        }
+
+        //      C# -> SaasLicenseDetails? SaasLicenseDetails
+        // GraphQL -> saasLicenseDetails: SaasLicenseDetails! (type)
+        public static string SaasLicenseDetails(
+            ref SaasLicenseDetails? fieldSpec
+        )
+        {
+            string args = "\n(\norgId: $orgId\nsaasAppType: $saasAppType\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new SaasLicenseDetails() ;
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
+            }
+            return "saasLicenseDetails" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> SapHanaDatabase? SapHanaDatabase
@@ -13438,12 +12889,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new SapHanaDatabase() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "sapHanaDatabase" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "sapHanaDatabase" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> SapHanaDatabaseConnection? SapHanaDatabases
@@ -13456,12 +12906,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new SapHanaDatabaseConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "sapHanaDatabases" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "sapHanaDatabases" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> SapHanaLogSnapshot? SapHanaLogSnapshot
@@ -13474,12 +12923,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new SapHanaLogSnapshot() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "sapHanaLogSnapshot" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "sapHanaLogSnapshot" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> SapHanaLogSnapshotConnection? SapHanaLogSnapshots
@@ -13492,12 +12940,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new SapHanaLogSnapshotConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "sapHanaLogSnapshots" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "sapHanaLogSnapshots" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> SapHanaRecoverableRange? SapHanaRecoverableRange
@@ -13510,12 +12957,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new SapHanaRecoverableRange() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "sapHanaRecoverableRange" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "sapHanaRecoverableRange" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> SapHanaRecoverableRangeConnection? SapHanaRecoverableRanges
@@ -13528,12 +12974,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new SapHanaRecoverableRangeConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "sapHanaRecoverableRanges" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "sapHanaRecoverableRanges" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> SapHanaSystem? SapHanaSystem
@@ -13546,12 +12991,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new SapHanaSystem() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "sapHanaSystem" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "sapHanaSystem" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> SapHanaSystemConnection? SapHanaSystems
@@ -13564,12 +13008,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new SapHanaSystemConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "sapHanaSystems" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "sapHanaSystems" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ScheduledReport? ScheduledReport
@@ -13582,12 +13025,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ScheduledReport() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "scheduledReport" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "scheduledReport" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ScheduledReportConnection? ScheduledReports
@@ -13600,12 +13042,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ScheduledReportConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "scheduledReports" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "scheduledReports" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> TakeScreenshotReply? ScreenshotReport
@@ -13618,12 +13059,28 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new TakeScreenshotReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "screenshotReport" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "screenshotReport" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
+        }
+
+        //      C# -> AzureAdObjectConnection? SearchAzureAdSnapshot
+        // GraphQL -> searchAzureAdSnapshot: AzureAdObjectConnection! (type)
+        public static string SearchAzureAdSnapshot(
+            ref AzureAdObjectConnection? fieldSpec
+        )
+        {
+            string args = "\n(\nfirst: $first\nafter: $after\ninput: $input\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new AzureAdObjectConnection() ;
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
+            }
+            return "searchAzureAdSnapshot" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> DiffResult? SearchFileByPrefix
@@ -13636,12 +13093,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new DiffResult() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "searchFileByPrefix" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "searchFileByPrefix" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> SearchResponseListResponse? SearchHost
@@ -13654,12 +13110,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new SearchResponseListResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "searchHost" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "searchHost" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> SearchResponseListResponse? SearchNutanixVm
@@ -13672,12 +13127,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new SearchResponseListResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "searchNutanixVm" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "searchNutanixVm" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> SearchResponseListResponse? SearchSnapMirrorCloud
@@ -13690,12 +13144,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new SearchResponseListResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "searchSnapMirrorCloud" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "searchSnapMirrorCloud" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> SnappableConnection? SearchSnappableConnection
@@ -13708,12 +13161,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new SnappableConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "searchSnappableConnection" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "searchSnappableConnection" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> VersionedFileConnection? SearchSnappableVersionedFiles
@@ -13726,12 +13178,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new VersionedFileConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "searchSnappableVersionedFiles" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "searchSnappableVersionedFiles" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AppSearchResponseConnection? SearchVappFiles
@@ -13744,12 +13195,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AppSearchResponseConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "searchVappFiles" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "searchVappFiles" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ServiceAccountConnection? ServiceAccounts
@@ -13762,12 +13212,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ServiceAccountConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "serviceAccounts" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "serviceAccounts" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GetSpExplicitReply? ServiceProviderMetadataFields
@@ -13780,12 +13229,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GetSpExplicitReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "serviceProviderMetadataFields" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "serviceProviderMetadataFields" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ShareFileset? ShareFileset
@@ -13798,12 +13246,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ShareFileset() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "shareFileset" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "shareFileset" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365FullSpObjectConnection? SharepointSiteDescendants
@@ -13816,12 +13263,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365FullSpObjectConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "sharepointSiteDescendants" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "sharepointSiteDescendants" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365FullSpObjectConnection? SharepointSiteSearch
@@ -13834,12 +13280,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365FullSpObjectConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "sharepointSiteSearch" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "sharepointSiteSearch" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> SidsPolicyHitsSummaries? SidsPolicyHitsSummary
@@ -13852,12 +13297,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new SidsPolicyHitsSummaries() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "sidsPolicyHitsSummary" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "sidsPolicyHitsSummary" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> UnifiedFeatureFlag? SingleUnifiedFeatureFlag
@@ -13870,30 +13314,28 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new UnifiedFeatureFlag() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "singleUnifiedFeatureFlag" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "singleUnifiedFeatureFlag" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
-        //      C# -> M365SkippedItemInfo? SkippedItemInfo
-        // GraphQL -> skippedItemInfo: M365SkippedItemInfo! (type)
+        //      C# -> SkippedItemInfoResponse? SkippedItemInfo
+        // GraphQL -> skippedItemInfo: SkippedItemInfoResponse! (type)
         public static string SkippedItemInfo(
-            ref M365SkippedItemInfo? fieldSpec
+            ref SkippedItemInfoResponse? fieldSpec
         )
         {
             string args = "\n(\nworkloadFid: $workloadFid\nsnapshotFid: $snapshotFid\n)";
             if (fieldSpec == null)
             {
-                fieldSpec = new M365SkippedItemInfo() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec = new SkippedItemInfoResponse() ;
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "skippedItemInfo" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "skippedItemInfo" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> SlaArchivalValidationWithWarnings? SlaArchivalValidationWarnings
@@ -13906,12 +13348,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new SlaArchivalValidationWithWarnings() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "slaArchivalValidationWarnings" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "slaArchivalValidationWarnings" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<SlaAuditDetail>? SlaAuditDetail
@@ -13924,12 +13365,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<SlaAuditDetail>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "slaAuditDetail" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "slaAuditDetail" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> SlaDomainWithWarnings? SlaDomainWithWarnings
@@ -13942,12 +13382,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new SlaDomainWithWarnings() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "slaDomainWithWarnings" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "slaDomainWithWarnings" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<SlaDomainWithWarnings>? SlaDomainWithWarningsList
@@ -13960,12 +13399,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<SlaDomainWithWarnings>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "slaDomainWithWarningsList" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "slaDomainWithWarningsList" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> SlaDomainConnection? SlaDomains
@@ -13978,12 +13416,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new SlaDomainConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "slaDomains" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "slaDomains" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ManagedVolume? SlaManagedVolume
@@ -13996,12 +13433,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ManagedVolume() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "slaManagedVolume" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "slaManagedVolume" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ManagedVolumeConnection? SlaManagedVolumes
@@ -14014,12 +13450,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ManagedVolumeConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "slaManagedVolumes" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "slaManagedVolumes" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GetSmbConfigurationReply? SmbConfiguration
@@ -14032,12 +13467,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GetSmbConfigurationReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "smbConfiguration" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "smbConfiguration" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> SmbDomainConnection? SmbDomains
@@ -14050,12 +13484,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new SmbDomainConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "smbDomains" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "smbDomains" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GetSmtpConfigurationReply? SmtpConfiguration
@@ -14068,12 +13501,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GetSmtpConfigurationReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "smtpConfiguration" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "smtpConfiguration" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> SnapMirrorCloud? SnapMirrorCloud
@@ -14086,12 +13518,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new SnapMirrorCloud() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "snapMirrorCloud" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "snapMirrorCloud" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> BrowseResponseListResponse? SnapMirrorCloudSnapshotFiles
@@ -14104,12 +13535,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new BrowseResponseListResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "snapMirrorCloudSnapshotFiles" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "snapMirrorCloudSnapshotFiles" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> SnappableConnection? SnappableConnection
@@ -14122,12 +13552,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new SnappableConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "snappableConnection" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "snappableConnection" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365ExchangeObjectConnection? SnappableContactSearch
@@ -14140,12 +13569,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365ExchangeObjectConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "snappableContactSearch" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "snappableContactSearch" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365ExchangeObjectConnection? SnappableEmailSearch
@@ -14158,12 +13586,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365ExchangeObjectConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "snappableEmailSearch" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "snappableEmailSearch" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365ExchangeObjectConnection? SnappableEventSearch
@@ -14176,12 +13603,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365ExchangeObjectConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "snappableEventSearch" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "snappableEventSearch" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> SnappableGroupByAtSpecifiedTimeConnection? SnappableGroupByAtSpecifiedTimeConnection
@@ -14194,12 +13620,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new SnappableGroupByAtSpecifiedTimeConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "snappableGroupByAtSpecifiedTimeConnection" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "snappableGroupByAtSpecifiedTimeConnection" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> SnappableGroupByConnection? SnappableGroupByConnection
@@ -14212,12 +13637,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new SnappableGroupByConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "snappableGroupByConnection" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "snappableGroupByConnection" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365OnedriveObjectConnection? SnappableOnedriveSearch
@@ -14230,12 +13654,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365OnedriveObjectConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "snappableOnedriveSearch" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "snappableOnedriveSearch" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365OnedriveObjectConnection? SnappableSharepointDriveSearch
@@ -14248,12 +13671,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365OnedriveObjectConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "snappableSharepointDriveSearch" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "snappableSharepointDriveSearch" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365OnedriveObjectConnection? SnappableSharepointListSearch
@@ -14266,12 +13688,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365OnedriveObjectConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "snappableSharepointListSearch" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "snappableSharepointListSearch" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365TeamsConversationsConnection? SnappableTeamsConversationsSearch
@@ -14284,12 +13705,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365TeamsConversationsConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "snappableTeamsConversationsSearch" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "snappableTeamsConversationsSearch" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365OnedriveObjectConnection? SnappableTeamsDriveSearch
@@ -14302,12 +13722,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365OnedriveObjectConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "snappableTeamsDriveSearch" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "snappableTeamsDriveSearch" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> LegalHoldSnappableDetailConnection? SnappablesWithLegalHoldSnapshotsSummary
@@ -14320,12 +13739,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new LegalHoldSnappableDetailConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "snappablesWithLegalHoldSnapshotsSummary" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "snappablesWithLegalHoldSnapshotsSummary" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> CdmSnapshot? Snapshot
@@ -14338,12 +13756,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new CdmSnapshot() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "snapshot" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "snapshot" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365ExchangeObjectConnection? SnapshotEmailSearch
@@ -14356,12 +13773,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365ExchangeObjectConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "snapshotEmailSearch" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "snapshotEmailSearch" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365ExchangeObjectConnection? SnapshotEventSearch
@@ -14374,12 +13790,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365ExchangeObjectConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "snapshotEventSearch" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "snapshotEventSearch" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> SnapshotFileDeltaConnection? SnapshotFilesDelta
@@ -14392,12 +13807,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new SnapshotFileDeltaConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "snapshotFilesDelta" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "snapshotFilesDelta" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> SnapshotFileDeltaV2Connection? SnapshotFilesDeltaV2
@@ -14410,12 +13824,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new SnapshotFileDeltaV2Connection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "snapshotFilesDeltaV2" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "snapshotFilesDeltaV2" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GenericSnapshotConnection? SnapshotOfAsnappableConnection
@@ -14428,12 +13841,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GenericSnapshotConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "snapshotOfASnappableConnection" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "snapshotOfASnappableConnection" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GenericSnapshotConnection? SnapshotOfSnappablesConnection
@@ -14446,12 +13858,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GenericSnapshotConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "snapshotOfSnappablesConnection" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "snapshotOfSnappablesConnection" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365OnedriveObjectConnection? SnapshotOnedriveSearch
@@ -14464,12 +13875,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365OnedriveObjectConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "snapshotOnedriveSearch" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "snapshotOnedriveSearch" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> SnapshotResultConnection? SnapshotResults
@@ -14482,12 +13892,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new SnapshotResultConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "snapshotResults" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "snapshotResults" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> O365OnedriveObjectConnection? SnapshotSharepointDriveSearch
@@ -14500,12 +13909,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new O365OnedriveObjectConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "snapshotSharepointDriveSearch" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "snapshotSharepointDriveSearch" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> SnapshotsMalwareInfoReply? SnapshotsAnomalyInfo
@@ -14518,12 +13926,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new SnapshotsMalwareInfoReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "snapshotsAnomalyInfo" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "snapshotsAnomalyInfo" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> SnapshotSummaryConnection? SnapshotsForUnmanagedObject
@@ -14536,12 +13943,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new SnapshotSummaryConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "snapshotsForUnmanagedObject" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "snapshotsForUnmanagedObject" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> SnapshotsMalwareInfoReply? SnapshotsMalwareInfo
@@ -14554,12 +13960,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new SnapshotsMalwareInfoReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "snapshotsMalwareInfo" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "snapshotsMalwareInfo" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> SnmpConfiguration? SnmpConfigurations
@@ -14572,12 +13977,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new SnmpConfiguration() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "snmpConfigurations" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "snmpConfigurations" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> SonarContentReportConnection? SonarContentReport
@@ -14590,12 +13994,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new SonarContentReportConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "sonarContentReport" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "sonarContentReport" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> SonarReportConnection? SonarReport
@@ -14608,12 +14011,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new SonarReportConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "sonarReport" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "sonarReport" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> SonarReportRowConnection? SonarReportRow
@@ -14626,12 +14028,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new SonarReportRowConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "sonarReportRow" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "sonarReportRow" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AccessGroupConnection? SonarUserGroups
@@ -14644,12 +14045,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AccessGroupConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "sonarUserGroups" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "sonarUserGroups" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AccessUserConnection? SonarUsers
@@ -14662,12 +14062,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AccessUserConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "sonarUsers" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "sonarUsers" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> SourceBlueprintInfo? SourceBlueprintInfo
@@ -14680,12 +14079,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new SourceBlueprintInfo() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "sourceBlueprintInfo" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "sourceBlueprintInfo" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AsyncRequestStatus? SupportBundle
@@ -14698,12 +14096,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AsyncRequestStatus() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "supportBundle" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "supportBundle" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> SupportPortalRole? SupportPortalRole
@@ -14716,12 +14113,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new SupportPortalRole() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "supportPortalRole" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "supportPortalRole" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> SupportUserAccessConnection? SupportUserAccesses
@@ -14734,12 +14130,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new SupportUserAccessConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "supportUserAccesses" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "supportUserAccesses" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GetSyslogConfigurationReply? SyslogConfiguration
@@ -14752,12 +14147,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GetSyslogConfigurationReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "syslogConfiguration" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "syslogConfiguration" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> SyslogExportRuleSummaryListResponse? SyslogExportRules
@@ -14770,12 +14164,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new SyslogExportRuleSummaryListResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "syslogExportRules" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "syslogExportRules" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> TableFilters? TableFilters
@@ -14788,12 +14181,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new TableFilters() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "tableFilters" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "tableFilters" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> TargetMapping? TargetMapping
@@ -14806,12 +14198,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new TargetMapping() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "targetMapping" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "targetMapping" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> TargetConnection? Targets
@@ -14824,12 +14215,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new TargetConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "targets" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "targets" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> TaskDetailConnection? TaskDetailConnection
@@ -14842,12 +14232,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new TaskDetailConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "taskDetailConnection" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "taskDetailConnection" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> TaskDetailGroupByConnection? TaskDetailGroupByConnection
@@ -14860,12 +14249,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new TaskDetailGroupByConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "taskDetailGroupByConnection" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "taskDetailGroupByConnection" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> TaskSummaryConnection? TaskSummaryConnection
@@ -14878,12 +14266,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new TaskSummaryConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "taskSummaryConnection" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "taskSummaryConnection" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> TaskSummaryGroupByConnection? TaskSummaryGroupByConnection
@@ -14896,12 +14283,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new TaskSummaryGroupByConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "taskSummaryGroupByConnection" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "taskSummaryGroupByConnection" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> TaskchainInfoReply? TaskchainInfo
@@ -14914,12 +14300,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new TaskchainInfoReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "taskchainInfo" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "taskchainInfo" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ThreatHunt? ThreatHuntDetail
@@ -14932,12 +14317,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ThreatHunt() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "threatHuntDetail" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "threatHuntDetail" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ThreatHuntResult? ThreatHuntResult
@@ -14950,12 +14334,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ThreatHuntResult() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "threatHuntResult" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "threatHuntResult" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AsyncRequestStatus? ThreatHuntStatus
@@ -14968,12 +14351,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AsyncRequestStatus() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "threatHuntStatus" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "threatHuntStatus" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ThreatHuntSummaryReply? ThreatHuntSummary
@@ -14986,12 +14368,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ThreatHuntSummaryReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "threatHuntSummary" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "threatHuntSummary" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ThreatHuntConnection? ThreatHunts
@@ -15004,12 +14385,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ThreatHuntConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "threatHunts" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "threatHunts" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ThreatMonitoringFileMatchDetailsReply? ThreatMonitoringMatchedFileDetails
@@ -15022,12 +14402,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ThreatMonitoringFileMatchDetailsReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "threatMonitoringMatchedFileDetails" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "threatMonitoringMatchedFileDetails" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> FileMatchConnection? ThreatMonitoringMatchedFiles
@@ -15040,12 +14419,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new FileMatchConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "threatMonitoringMatchedFiles" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "threatMonitoringMatchedFiles" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ThreatMonitoringMatchedObjectConnection? ThreatMonitoringMatchedObjects
@@ -15058,12 +14436,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ThreatMonitoringMatchedObjectConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "threatMonitoringMatchedObjects" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "threatMonitoringMatchedObjects" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> TopRiskPrincipalsReply? TopRiskPrincipals
@@ -15076,12 +14453,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new TopRiskPrincipalsReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "topRiskPrincipals" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "topRiskPrincipals" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GetTotpStatusReply? TotpConfigStatus
@@ -15094,12 +14470,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GetTotpStatusReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "totpConfigStatus" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "totpConfigStatus" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GetTprConfigurationReply? TprConfiguration
@@ -15112,12 +14487,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GetTprConfigurationReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "tprConfiguration" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "tprConfiguration" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> TprPolicyDetail? TprPolicyDetail
@@ -15130,12 +14504,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new TprPolicyDetail() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "tprPolicyDetail" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "tprPolicyDetail" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> TprRequestDetailReply? TprRequestDetail
@@ -15148,12 +14521,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new TprRequestDetailReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "tprRequestDetail" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "tprRequestDetail" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> TprRequestSummaryConnection? TprRequestSummaries
@@ -15166,12 +14538,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new TprRequestSummaryConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "tprRequestSummaries" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "tprRequestSummaries" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> TprRoleEligibilityType? TprRoleEligibility
@@ -15184,12 +14555,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new TprRoleEligibilityType() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "tprRoleEligibility" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "tprRoleEligibility" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> TprRulesMap? TprRulesMap
@@ -15202,12 +14572,28 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new TprRulesMap() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "tprRulesMap" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "tprRulesMap" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
+        }
+
+        //      C# -> TrialReport? TrialReport
+        // GraphQL -> trialReport: TrialReport! (type)
+        public static string TrialReport(
+            ref TrialReport? fieldSpec
+        )
+        {
+            string args = "\n(\ntrialId: $trialId\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new TrialReport() ;
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
+            }
+            return "trialReport" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> SupportTunnelInfo? TunnelStatus
@@ -15220,12 +14606,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new SupportTunnelInfo() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "tunnelStatus" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "tunnelStatus" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> UnmanagedObjectDetailConnection? UnmanagedObjects
@@ -15238,12 +14623,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new UnmanagedObjectDetailConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "unmanagedObjects" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "unmanagedObjects" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> UpgradeStatusReply? UpgradeStatus
@@ -15256,12 +14640,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new UpgradeStatusReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "upgradeStatus" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "upgradeStatus" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> PrincipalInsightConnection? UserAccessInsights
@@ -15274,12 +14657,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new PrincipalInsightConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "userAccessInsights" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "userAccessInsights" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> FileResultConnection? UserActivities
@@ -15292,12 +14674,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new FileResultConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "userActivities" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "userActivities" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ActivityTimelineResultConnection? UserActivityTimeline
@@ -15310,12 +14691,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ActivityTimelineResultConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "userActivityTimeline" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "userActivityTimeline" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AnalyzerAccessUsageConnection? UserAnalyzerAccess
@@ -15328,12 +14708,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AnalyzerAccessUsageConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "userAnalyzerAccess" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "userAnalyzerAccess" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> UserAuditConnection? UserAuditConnection
@@ -15346,12 +14725,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new UserAuditConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "userAuditConnection" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "userAuditConnection" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> UserAuditGroupByInfoConnection? UserAuditGroupByConnection
@@ -15364,12 +14742,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new UserAuditGroupByInfoConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "userAuditGroupByConnection" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "userAuditGroupByConnection" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GetUserDetailReply? UserDetail
@@ -15382,12 +14759,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GetUserDetailReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "userDetail" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "userDetail" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ActivityTimelineResultConnection? UserFileActivityTimeline
@@ -15400,12 +14776,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ActivityTimelineResultConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "userFileActivityTimeline" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "userFileActivityTimeline" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<Group>? UserGroups
@@ -15418,12 +14793,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<Group>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "userGroups" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "userGroups" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> UserNotifications? UserNotifications
@@ -15436,12 +14810,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new UserNotifications() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "userNotifications" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "userNotifications" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GetUserSessionManagementConfigReply? UserSessionManagementConfig
@@ -15454,12 +14827,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GetUserSessionManagementConfigReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "userSessionManagementConfig" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "userSessionManagementConfig" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> UserSettings? UserSettings
@@ -15472,12 +14844,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new UserSettings() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "userSettings" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "userSettings" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> UserConnection? UsersInCurrentAndDescendantOrganization
@@ -15490,12 +14861,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new UserConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "usersInCurrentAndDescendantOrganization" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "usersInCurrentAndDescendantOrganization" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GetUsersSummaryReply? UsersSummary
@@ -15508,12 +14878,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GetUsersSummaryReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "usersSummary" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "usersSummary" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> VcenterAdvancedTagPreviewReply? VcenterAdvancedTagPreview
@@ -15526,12 +14895,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new VcenterAdvancedTagPreviewReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vCenterAdvancedTagPreview" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vCenterAdvancedTagPreview" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> HotAddBandwidthInfo? VcenterHotAddBandwidth
@@ -15544,12 +14912,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new HotAddBandwidthInfo() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vCenterHotAddBandwidth" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vCenterHotAddBandwidth" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> HotAddNetworkConfigWithName? VcenterHotAddNetwork
@@ -15562,12 +14929,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new HotAddNetworkConfigWithName() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vCenterHotAddNetwork" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vCenterHotAddNetwork" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> NetworkInfoListResponse? VcenterNetworks
@@ -15580,12 +14946,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new NetworkInfoListResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vCenterNetworks" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vCenterNetworks" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> VcenterPreAddInfo? VcenterPreAddInfo
@@ -15598,12 +14963,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new VcenterPreAddInfo() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vCenterPreAddInfo" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vCenterPreAddInfo" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> VsphereBlueprint? VsphereBlueprint
@@ -15616,12 +14980,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new VsphereBlueprint() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vSphereBlueprint" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vSphereBlueprint" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> VsphereComputeCluster? VsphereComputeCluster
@@ -15634,12 +14997,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new VsphereComputeCluster() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vSphereComputeCluster" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vSphereComputeCluster" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> VsphereComputeClusterConnection? VsphereComputeClusters
@@ -15652,12 +15014,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new VsphereComputeClusterConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vSphereComputeClusters" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vSphereComputeClusters" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> VsphereDatacenter? VsphereDatacenter
@@ -15670,12 +15031,28 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new VsphereDatacenter() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vSphereDatacenter" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vSphereDatacenter" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
+        }
+
+        //      C# -> VsphereDatacenterFolder? VsphereDatacenterFolder
+        // GraphQL -> vSphereDatacenterFolder: VsphereDatacenterFolder! (type)
+        public static string VsphereDatacenterFolder(
+            ref VsphereDatacenterFolder? fieldSpec
+        )
+        {
+            string args = "\n(\nfid: $fid\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new VsphereDatacenterFolder() ;
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
+            }
+            return "vSphereDatacenterFolder" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> VsphereDatastore? VsphereDatastore
@@ -15688,12 +15065,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new VsphereDatastore() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vSphereDatastore" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vSphereDatastore" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> VsphereDatastoreCluster? VsphereDatastoreCluster
@@ -15706,12 +15082,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new VsphereDatastoreCluster() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vSphereDatastoreCluster" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vSphereDatastoreCluster" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> VsphereDatastoreClusterConnection? VsphereDatastoreClusters
@@ -15724,12 +15099,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new VsphereDatastoreClusterConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vSphereDatastoreClusters" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vSphereDatastoreClusters" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> VsphereDatastoreConnection? VsphereDatastoreConnection
@@ -15742,12 +15116,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new VsphereDatastoreConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vSphereDatastoreConnection" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vSphereDatastoreConnection" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> VsphereFolder? VsphereFolder
@@ -15760,12 +15133,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new VsphereFolder() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vSphereFolder" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vSphereFolder" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> VsphereFolderConnection? VsphereFolders
@@ -15778,12 +15150,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new VsphereFolderConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vSphereFolders" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vSphereFolders" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> VsphereHost? VsphereHost
@@ -15796,12 +15167,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new VsphereHost() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vSphereHost" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vSphereHost" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> VsphereHostConnection? VsphereHostConnection
@@ -15814,12 +15184,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new VsphereHostConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vSphereHostConnection" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vSphereHostConnection" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> VmwareHostDetail? VsphereHostDetails
@@ -15832,12 +15201,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new VmwareHostDetail() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vSphereHostDetails" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vSphereHostDetails" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> List<VsphereHost>? VsphereHostsByFids
@@ -15850,12 +15218,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new List<VsphereHost>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vSphereHostsByFids" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vSphereHostsByFids" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> VsphereLiveMountConnection? VsphereLiveMounts
@@ -15868,12 +15235,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new VsphereLiveMountConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vSphereLiveMounts" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vSphereLiveMounts" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> VsphereMount? VsphereMount
@@ -15886,12 +15252,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new VsphereMount() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vSphereMount" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vSphereMount" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> VsphereMountConnection? VsphereMountConnection
@@ -15904,12 +15269,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new VsphereMountConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vSphereMountConnection" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vSphereMountConnection" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> VsphereNetwork? VsphereNetwork
@@ -15922,12 +15286,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new VsphereNetwork() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vSphereNetwork" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vSphereNetwork" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> VsphereResourcePool? VsphereResourcePool
@@ -15940,12 +15303,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new VsphereResourcePool() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vSphereResourcePool" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vSphereResourcePool" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> CdmHierarchyObjectConnection? VsphereRootRecoveryHierarchy
@@ -15958,12 +15320,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new CdmHierarchyObjectConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vSphereRootRecoveryHierarchy" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vSphereRootRecoveryHierarchy" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> VsphereTag? VsphereTag
@@ -15976,12 +15337,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new VsphereTag() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vSphereTag" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vSphereTag" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> VsphereTagCategory? VsphereTagCategory
@@ -15994,12 +15354,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new VsphereTagCategory() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vSphereTagCategory" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vSphereTagCategory" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> CdmHierarchyObjectConnection? VsphereTopLevelDescendantsConnection
@@ -16012,12 +15371,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new CdmHierarchyObjectConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vSphereTopLevelDescendantsConnection" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vSphereTopLevelDescendantsConnection" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> VsphereVcenter? VsphereVcenter
@@ -16030,12 +15388,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new VsphereVcenter() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vSphereVCenter" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vSphereVCenter" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> VsphereVcenterConnection? VsphereVcenterConnection
@@ -16048,12 +15405,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new VsphereVcenterConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vSphereVCenterConnection" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vSphereVCenterConnection" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> AsyncRequestStatus? VsphereVmAsyncRequestStatus
@@ -16066,12 +15422,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new AsyncRequestStatus() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vSphereVMAsyncRequestStatus" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vSphereVMAsyncRequestStatus" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> VsphereVm? VsphereVmNew
@@ -16084,12 +15439,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new VsphereVm() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vSphereVmNew" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vSphereVmNew" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> VsphereVmConnection? VsphereVmNewConnection
@@ -16102,12 +15456,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new VsphereVmConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vSphereVmNewConnection" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vSphereVmNewConnection" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ValidateAwsNativeRdsClusterNameForExportReply? ValidateAwsNativeRdsClusterNameForExport
@@ -16120,12 +15473,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ValidateAwsNativeRdsClusterNameForExportReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "validateAwsNativeRdsClusterNameForExport" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "validateAwsNativeRdsClusterNameForExport" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ValidateAwsNativeRdsInstanceNameForExportReply? ValidateAwsNativeRdsInstanceNameForExport
@@ -16138,12 +15490,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ValidateAwsNativeRdsInstanceNameForExportReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "validateAwsNativeRdsInstanceNameForExport" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "validateAwsNativeRdsInstanceNameForExport" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ValidateAzureSubnetsForCloudAccountExocomputeReply? ValidateAzureCloudAccountExocomputeConfigurations
@@ -16156,12 +15507,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ValidateAzureSubnetsForCloudAccountExocomputeReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "validateAzureCloudAccountExocomputeConfigurations" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "validateAzureCloudAccountExocomputeConfigurations" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ValidateAzureNativeSqlDatabaseDbNameForExportReply? ValidateAzureNativeSqlDatabaseDbNameForExport
@@ -16174,12 +15524,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ValidateAzureNativeSqlDatabaseDbNameForExportReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "validateAzureNativeSqlDatabaseDbNameForExport" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "validateAzureNativeSqlDatabaseDbNameForExport" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ValidateAzureNativeSqlManagedInstanceDbNameForExportReply? ValidateAzureNativeSqlManagedInstanceDbNameForExport
@@ -16192,12 +15541,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ValidateAzureNativeSqlManagedInstanceDbNameForExportReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "validateAzureNativeSqlManagedInstanceDbNameForExport" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "validateAzureNativeSqlManagedInstanceDbNameForExport" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ValidateCertificateReply? ValidateCertificate
@@ -16210,12 +15558,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ValidateCertificateReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "validateCertificate" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "validateCertificate" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ClusterLicenseCapacityValidations? ValidateClusterLicenseCapacity
@@ -16228,12 +15575,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ClusterLicenseCapacityValidations() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "validateClusterLicenseCapacity" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "validateClusterLicenseCapacity" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> ValidateOrgNameReply? ValidateOrgName
@@ -16246,12 +15592,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new ValidateOrgNameReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "validateOrgName" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "validateOrgName" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> VappExportOptions? VappSnapshotExportOptions
@@ -16264,12 +15609,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new VappExportOptions() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vappSnapshotExportOptions" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vappSnapshotExportOptions" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> VappInstantRecoveryOptions? VappSnapshotInstantRecoveryOptions
@@ -16282,12 +15626,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new VappInstantRecoveryOptions() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vappSnapshotInstantRecoveryOptions" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vappSnapshotInstantRecoveryOptions" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> VappTemplateExportOptionsUnion? VappTemplateSnapshotExportOptions
@@ -16300,12 +15643,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new VappTemplateExportOptionsUnion() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vappTemplateSnapshotExportOptions" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vappTemplateSnapshotExportOptions" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> Vcd? Vcd
@@ -16318,12 +15660,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new Vcd() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vcd" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vcd" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> VcdCatalog? VcdCatalog
@@ -16336,12 +15677,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new VcdCatalog() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vcdCatalog" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vcdCatalog" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> VcdClusterSummaryListResponse? VcdClusters
@@ -16354,12 +15694,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new VcdClusterSummaryListResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vcdClusters" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vcdClusters" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> VcdOrg? VcdOrg
@@ -16372,12 +15711,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new VcdOrg() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vcdOrg" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vcdOrg" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> VcdOrgVdc? VcdOrgVdc
@@ -16390,12 +15728,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new VcdOrgVdc() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vcdOrgVdc" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vcdOrgVdc" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> VcdOrgConnection? VcdOrgs
@@ -16408,12 +15745,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new VcdOrgConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vcdOrgs" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vcdOrgs" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> VcdTopLevelDescendantTypeConnection? VcdTopLevelDescendants
@@ -16426,12 +15762,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new VcdTopLevelDescendantTypeConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vcdTopLevelDescendants" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vcdTopLevelDescendants" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> VcdVapp? VcdVapp
@@ -16444,12 +15779,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new VcdVapp() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vcdVapp" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vcdVapp" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> VsphereVmConnection? VcdVappVms
@@ -16462,12 +15796,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new VsphereVmConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vcdVappVms" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vcdVappVms" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> VcdVappConnection? VcdVapps
@@ -16480,12 +15813,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new VcdVappConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vcdVapps" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vcdVapps" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> VcdVimServer? VcdVimServer
@@ -16498,12 +15830,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new VcdVimServer() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vcdVimServer" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vcdVimServer" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> VimserverSummaryListResponse? VcdVimServers
@@ -16516,12 +15847,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new VimserverSummaryListResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vcdVimServers" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vcdVimServers" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> VerifySlaWithReplicationToClusterResponse? VerifySlaWithReplicationToCluster
@@ -16534,12 +15864,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new VerifySlaWithReplicationToClusterResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "verifySlaWithReplicationToCluster" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "verifySlaWithReplicationToCluster" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> CheckVmwareVmsRecoveryPermissionReply? VmwareVmsRecoveryPermissionCheck
@@ -16552,12 +15881,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new CheckVmwareVmsRecoveryPermissionReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vmwareVmsRecoveryPermissionCheck" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vmwareVmsRecoveryPermissionCheck" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> VolumeGroup? VolumeGroup
@@ -16570,12 +15898,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new VolumeGroup() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "volumeGroup" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "volumeGroup" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> VolumeGroupConnection? VolumeGroupConnection
@@ -16588,12 +15915,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new VolumeGroupConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "volumeGroupConnection" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "volumeGroupConnection" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> VolumeGroupLiveMountConnection? VolumeGroupMounts
@@ -16606,12 +15932,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new VolumeGroupLiveMountConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "volumeGroupMounts" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "volumeGroupMounts" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> RecoverableRangeResponse? VsphereVmMissedRecoverableRange
@@ -16624,12 +15949,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new RecoverableRangeResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vsphereVMMissedRecoverableRange" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vsphereVMMissedRecoverableRange" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> RecoverableRangeResponse? VsphereVmRecoverableRange
@@ -16642,12 +15966,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new RecoverableRangeResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vsphereVMRecoverableRange" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vsphereVMRecoverableRange" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> BatchVmwareVmRecoverableRanges? VsphereVmRecoverableRangeInBatch
@@ -16660,12 +15983,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new BatchVmwareVmRecoverableRanges() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vsphereVMRecoverableRangeInBatch" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vsphereVMRecoverableRangeInBatch" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> BatchVmwareCdpLiveInfo? VsphereVmwareCdpLiveInfo
@@ -16678,12 +16000,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new BatchVmwareCdpLiveInfo() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "vsphereVmwareCdpLiveInfo" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "vsphereVmwareCdpLiveInfo" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> WindowsCluster? WindowsCluster
@@ -16696,12 +16017,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new WindowsCluster() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "windowsCluster" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "windowsCluster" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> WindowsFileset? WindowsFileset
@@ -16714,12 +16034,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new WindowsFileset() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "windowsFileset" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "windowsFileset" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> GetWorkloadAlertSettingReply? WorkloadAlertSetting
@@ -16732,12 +16051,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new GetWorkloadAlertSettingReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "workloadAlertSetting" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "workloadAlertSetting" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> WorkloadAnomalyConnection? WorkloadAnomalies
@@ -16750,12 +16068,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new WorkloadAnomalyConnection() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "workloadAnomalies" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "workloadAnomalies" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> WorkloadGroupByReply? WorkloadGroupByAtSpecifiedTime
@@ -16768,12 +16085,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new WorkloadGroupByReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "workloadGroupByAtSpecifiedTime" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "workloadGroupByAtSpecifiedTime" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         //      C# -> CertificateInfo? WwwTlsCert
@@ -16786,12 +16102,11 @@ namespace RubrikSecurityCloud.Types
             if (fieldSpec == null)
             {
                 fieldSpec = new CertificateInfo() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
+                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
-            return new string(
-                "wwwTlsCert" + args + "\n{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
+            return "wwwTlsCert" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
         }
 
         #endregion

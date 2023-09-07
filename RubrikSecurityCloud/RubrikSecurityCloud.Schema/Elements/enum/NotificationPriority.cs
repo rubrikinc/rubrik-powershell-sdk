@@ -27,8 +27,8 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MEDIUM")]
         MEDIUM,
 
-        [EnumMember(Value = "NOTIFICATION_PRIORITY_UNSPECIFIED")]
-        NOTIFICATION_PRIORITY_UNSPECIFIED
+        [EnumMember(Value = "PRIORITY_UNSPECIFIED")]
+        PRIORITY_UNSPECIFIED
 
 
     } // enum NotificationPriority

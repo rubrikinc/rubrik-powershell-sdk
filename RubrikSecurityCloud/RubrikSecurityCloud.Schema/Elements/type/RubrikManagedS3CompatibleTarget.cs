@@ -514,206 +514,205 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ConnectionStatusType? ConnectionStatus
         // GraphQL -> connectionStatus: ConnectionStatusType! (enum)
-        if (this.ConnectionStatus == null && Exploration.Includes(parent + ".connectionStatus", true))
+        if (this.ConnectionStatus == null && ec.Includes("connectionStatus",true))
         {
             this.ConnectionStatus = new ConnectionStatusType();
         }
         //      C# -> TargetEncryptionTypeEnum? EncryptionType
         // GraphQL -> encryptionType: TargetEncryptionTypeEnum! (enum)
-        if (this.EncryptionType == null && Exploration.Includes(parent + ".encryptionType", true))
+        if (this.EncryptionType == null && ec.Includes("encryptionType",true))
         {
             this.EncryptionType = new TargetEncryptionTypeEnum();
         }
         //      C# -> ConnectionStatusType? LocationConnectionStatus
         // GraphQL -> locationConnectionStatus: ConnectionStatusType! (enum)
-        if (this.LocationConnectionStatus == null && Exploration.Includes(parent + ".locationConnectionStatus", true))
+        if (this.LocationConnectionStatus == null && ec.Includes("locationConnectionStatus",true))
         {
             this.LocationConnectionStatus = new ConnectionStatusType();
         }
         //      C# -> LocationScope? LocationScope
         // GraphQL -> locationScope: LocationScope! (enum)
-        if (this.LocationScope == null && Exploration.Includes(parent + ".locationScope", true))
+        if (this.LocationScope == null && ec.Includes("locationScope",true))
         {
             this.LocationScope = new LocationScope();
         }
         //      C# -> ReaderRetrievalMethod? ReaderRetrievalMethod
         // GraphQL -> readerRetrievalMethod: ReaderRetrievalMethod (enum)
-        if (this.ReaderRetrievalMethod == null && Exploration.Includes(parent + ".readerRetrievalMethod", true))
+        if (this.ReaderRetrievalMethod == null && ec.Includes("readerRetrievalMethod",true))
         {
             this.ReaderRetrievalMethod = new ReaderRetrievalMethod();
         }
         //      C# -> ArchivalLocationStatus? Status
         // GraphQL -> status: ArchivalLocationStatus! (enum)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = new ArchivalLocationStatus();
         }
         //      C# -> S3CompatibleSubType? SubType
         // GraphQL -> subType: S3CompatibleSubType! (enum)
-        if (this.SubType == null && Exploration.Includes(parent + ".subType", true))
+        if (this.SubType == null && ec.Includes("subType",true))
         {
             this.SubType = new S3CompatibleSubType();
         }
         //      C# -> TargetSyncStatus? SyncStatus
         // GraphQL -> syncStatus: TargetSyncStatus! (enum)
-        if (this.SyncStatus == null && Exploration.Includes(parent + ".syncStatus", true))
+        if (this.SyncStatus == null && ec.Includes("syncStatus",true))
         {
             this.SyncStatus = new TargetSyncStatus();
         }
         //      C# -> TargetType? TargetType
         // GraphQL -> targetType: TargetType! (enum)
-        if (this.TargetType == null && Exploration.Includes(parent + ".targetType", true))
+        if (this.TargetType == null && ec.Includes("targetType",true))
         {
             this.TargetType = new TargetType();
         }
         //      C# -> UpgradeStatus? UpgradeStatus
         // GraphQL -> upgradeStatus: UpgradeStatus! (enum)
-        if (this.UpgradeStatus == null && Exploration.Includes(parent + ".upgradeStatus", true))
+        if (this.UpgradeStatus == null && ec.Includes("upgradeStatus",true))
         {
             this.UpgradeStatus = new UpgradeStatus();
         }
         //      C# -> System.String? AccessKey
         // GraphQL -> accessKey: String! (scalar)
-        if (this.AccessKey == null && Exploration.Includes(parent + ".accessKey", true))
+        if (this.AccessKey == null && ec.Includes("accessKey",true))
         {
             this.AccessKey = "FETCH";
         }
         //      C# -> System.String? BucketPrefix
         // GraphQL -> bucketPrefix: String! (scalar)
-        if (this.BucketPrefix == null && Exploration.Includes(parent + ".bucketPrefix", true))
+        if (this.BucketPrefix == null && ec.Includes("bucketPrefix",true))
         {
             this.BucketPrefix = "FETCH";
         }
         //      C# -> System.String? ClusterName
         // GraphQL -> clusterName: String (scalar)
-        if (this.ClusterName == null && Exploration.Includes(parent + ".clusterName", true))
+        if (this.ClusterName == null && ec.Includes("clusterName",true))
         {
             this.ClusterName = "FETCH";
         }
         //      C# -> System.Int64? ConsumedBytes
         // GraphQL -> consumedBytes: Long (scalar)
-        if (this.ConsumedBytes == null && Exploration.Includes(parent + ".consumedBytes", true))
+        if (this.ConsumedBytes == null && ec.Includes("consumedBytes",true))
         {
             this.ConsumedBytes = new System.Int64();
         }
         //      C# -> System.String? Endpoint
         // GraphQL -> endpoint: String! (scalar)
-        if (this.Endpoint == null && Exploration.Includes(parent + ".endpoint", true))
+        if (this.Endpoint == null && ec.Includes("endpoint",true))
         {
             this.Endpoint = "FETCH";
         }
         //      C# -> System.Int32? FailedTasks
         // GraphQL -> failedTasks: Int (scalar)
-        if (this.FailedTasks == null && Exploration.Includes(parent + ".failedTasks", true))
+        if (this.FailedTasks == null && ec.Includes("failedTasks",true))
         {
             this.FailedTasks = Int32.MinValue;
         }
         //      C# -> System.String? IbmDetails
         // GraphQL -> ibmDetails: String! (scalar)
-        if (this.IbmDetails == null && Exploration.Includes(parent + ".ibmDetails", true))
+        if (this.IbmDetails == null && ec.Includes("ibmDetails",true))
         {
             this.IbmDetails = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsActive
         // GraphQL -> isActive: Boolean! (scalar)
-        if (this.IsActive == null && Exploration.Includes(parent + ".isActive", true))
+        if (this.IsActive == null && ec.Includes("isActive",true))
         {
             this.IsActive = true;
         }
         //      C# -> System.Boolean? IsArchived
         // GraphQL -> isArchived: Boolean! (scalar)
-        if (this.IsArchived == null && Exploration.Includes(parent + ".isArchived", true))
+        if (this.IsArchived == null && ec.Includes("isArchived",true))
         {
             this.IsArchived = true;
         }
         //      C# -> System.Boolean? IsConsolidationEnabled
         // GraphQL -> isConsolidationEnabled: Boolean! (scalar)
-        if (this.IsConsolidationEnabled == null && Exploration.Includes(parent + ".isConsolidationEnabled", true))
+        if (this.IsConsolidationEnabled == null && ec.Includes("isConsolidationEnabled",true))
         {
             this.IsConsolidationEnabled = true;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.Int32? NumberOfBuckets
         // GraphQL -> numberOfBuckets: Int! (scalar)
-        if (this.NumberOfBuckets == null && Exploration.Includes(parent + ".numberOfBuckets", true))
+        if (this.NumberOfBuckets == null && ec.Includes("numberOfBuckets",true))
         {
             this.NumberOfBuckets = Int32.MinValue;
         }
         //      C# -> System.Int32? RunningTasks
         // GraphQL -> runningTasks: Int (scalar)
-        if (this.RunningTasks == null && Exploration.Includes(parent + ".runningTasks", true))
+        if (this.RunningTasks == null && ec.Includes("runningTasks",true))
         {
             this.RunningTasks = Int32.MinValue;
         }
         //      C# -> System.String? SyncFailureReason
         // GraphQL -> syncFailureReason: String! (scalar)
-        if (this.SyncFailureReason == null && Exploration.Includes(parent + ".syncFailureReason", true))
+        if (this.SyncFailureReason == null && ec.Includes("syncFailureReason",true))
         {
             this.SyncFailureReason = "FETCH";
         }
         //      C# -> System.Boolean? UseSystemProxy
         // GraphQL -> useSystemProxy: Boolean! (scalar)
-        if (this.UseSystemProxy == null && Exploration.Includes(parent + ".useSystemProxy", true))
+        if (this.UseSystemProxy == null && ec.Includes("useSystemProxy",true))
         {
             this.UseSystemProxy = true;
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
-        if (this.Cluster == null && Exploration.Includes(parent + ".cluster"))
+        if (this.Cluster == null && ec.Includes("cluster",false))
         {
             this.Cluster = new Cluster();
-            this.Cluster.ApplyExploratoryFieldSpec(parent + ".cluster");
+            this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
         }
         //      C# -> IbmCosDetailsType? IbmDetail
         // GraphQL -> ibmDetail: IbmCosDetailsType (type)
-        if (this.IbmDetail == null && Exploration.Includes(parent + ".ibmDetail"))
+        if (this.IbmDetail == null && ec.Includes("ibmDetail",false))
         {
             this.IbmDetail = new IbmCosDetailsType();
-            this.IbmDetail.ApplyExploratoryFieldSpec(parent + ".ibmDetail");
+            this.IbmDetail.ApplyExploratoryFieldSpec(ec.NewChild("ibmDetail"));
         }
         //      C# -> LocationImmutabilityType? ImmutabilitySetting
         // GraphQL -> immutabilitySetting: LocationImmutabilityType (type)
-        if (this.ImmutabilitySetting == null && Exploration.Includes(parent + ".immutabilitySetting"))
+        if (this.ImmutabilitySetting == null && ec.Includes("immutabilitySetting",false))
         {
             this.ImmutabilitySetting = new LocationImmutabilityType();
-            this.ImmutabilitySetting.ApplyExploratoryFieldSpec(parent + ".immutabilitySetting");
+            this.ImmutabilitySetting.ApplyExploratoryFieldSpec(ec.NewChild("immutabilitySetting"));
         }
         //      C# -> LocationImmutabilityType? ImmutabilitySettings
         // GraphQL -> immutabilitySettings: LocationImmutabilityType! (type)
-        if (this.ImmutabilitySettings == null && Exploration.Includes(parent + ".immutabilitySettings"))
+        if (this.ImmutabilitySettings == null && ec.Includes("immutabilitySettings",false))
         {
             this.ImmutabilitySettings = new LocationImmutabilityType();
-            this.ImmutabilitySettings.ApplyExploratoryFieldSpec(parent + ".immutabilitySettings");
+            this.ImmutabilitySettings.ApplyExploratoryFieldSpec(ec.NewChild("immutabilitySettings"));
         }
         //      C# -> TargetMappingBasic? TargetMapping
         // GraphQL -> targetMapping: TargetMappingBasic (type)
-        if (this.TargetMapping == null && Exploration.Includes(parent + ".targetMapping"))
+        if (this.TargetMapping == null && ec.Includes("targetMapping",false))
         {
             this.TargetMapping = new TargetMappingBasic();
-            this.TargetMapping.ApplyExploratoryFieldSpec(parent + ".targetMapping");
+            this.TargetMapping.ApplyExploratoryFieldSpec(ec.NewChild("targetMapping"));
         }
         //      C# -> List<TargetMappingBasic>? TargetMappingBasic
         // GraphQL -> targetMappingBasic: [TargetMappingBasic!] (type)
-        if (this.TargetMappingBasic == null && Exploration.Includes(parent + ".targetMappingBasic"))
+        if (this.TargetMappingBasic == null && ec.Includes("targetMappingBasic",false))
         {
             this.TargetMappingBasic = new List<TargetMappingBasic>();
-            this.TargetMappingBasic.ApplyExploratoryFieldSpec(parent + ".targetMappingBasic");
+            this.TargetMappingBasic.ApplyExploratoryFieldSpec(ec.NewChild("targetMappingBasic"));
         }
     }
 
@@ -747,12 +746,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RubrikManagedS3CompatibleTarget> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RubrikManagedS3CompatibleTarget());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<RubrikManagedS3CompatibleTarget> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

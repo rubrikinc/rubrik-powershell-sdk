@@ -35,11 +35,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("description")]
         public System.String? Description { get; set; }
 
-        //      C# -> List<System.String>? ExemptServiceAccounts
-        // GraphQL -> exemptServiceAccounts: [String!]! (scalar)
-        [JsonProperty("exemptServiceAccounts")]
-        public List<System.String>? ExemptServiceAccounts { get; set; }
-
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
@@ -54,6 +49,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> createdBy: UserSummary (type)
         [JsonProperty("createdBy")]
         public UserSummary? CreatedBy { get; set; }
+
+        //      C# -> List<ServiceAccountClient>? ExemptServiceAccounts
+        // GraphQL -> exemptServiceAccounts: [ServiceAccountClient!]! (type)
+        [JsonProperty("exemptServiceAccounts")]
+        public List<ServiceAccountClient>? ExemptServiceAccounts { get; set; }
 
         //      C# -> List<TprPolicyRule>? PolicyRules
         // GraphQL -> policyRules: [TprPolicyRule!]! (type)
@@ -73,10 +73,10 @@ namespace RubrikSecurityCloud.Types
         TprPolicyScope? PolicyScope = null,
         DateTime? CreatedAt = null,
         System.String? Description = null,
-        List<System.String>? ExemptServiceAccounts = null,
         System.String? Name = null,
         System.String? PolicyId = null,
         UserSummary? CreatedBy = null,
+        List<ServiceAccountClient>? ExemptServiceAccounts = null,
         List<TprPolicyRule>? PolicyRules = null
     ) 
     {
@@ -89,9 +89,6 @@ namespace RubrikSecurityCloud.Types
         if ( Description != null ) {
             this.Description = Description;
         }
-        if ( ExemptServiceAccounts != null ) {
-            this.ExemptServiceAccounts = ExemptServiceAccounts;
-        }
         if ( Name != null ) {
             this.Name = Name;
         }
@@ -100,6 +97,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( CreatedBy != null ) {
             this.CreatedBy = CreatedBy;
+        }
+        if ( ExemptServiceAccounts != null ) {
+            this.ExemptServiceAccounts = ExemptServiceAccounts;
         }
         if ( PolicyRules != null ) {
             this.PolicyRules = PolicyRules;
@@ -129,11 +129,6 @@ namespace RubrikSecurityCloud.Types
         if (this.Description != null) {
             s += ind + "description\n" ;
         }
-        //      C# -> List<System.String>? ExemptServiceAccounts
-        // GraphQL -> exemptServiceAccounts: [String!]! (scalar)
-        if (this.ExemptServiceAccounts != null) {
-            s += ind + "exemptServiceAccounts\n" ;
-        }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
@@ -152,6 +147,14 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "createdBy {\n" + fspec + ind + "}\n" ;
             }
         }
+        //      C# -> List<ServiceAccountClient>? ExemptServiceAccounts
+        // GraphQL -> exemptServiceAccounts: [ServiceAccountClient!]! (type)
+        if (this.ExemptServiceAccounts != null) {
+            var fspec = this.ExemptServiceAccounts.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "exemptServiceAccounts {\n" + fspec + ind + "}\n" ;
+            }
+        }
         //      C# -> List<TprPolicyRule>? PolicyRules
         // GraphQL -> policyRules: [TprPolicyRule!]! (type)
         if (this.PolicyRules != null) {
@@ -165,58 +168,58 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> TprPolicyScope? PolicyScope
         // GraphQL -> policyScope: TprPolicyScope! (enum)
-        if (this.PolicyScope == null && Exploration.Includes(parent + ".policyScope", true))
+        if (this.PolicyScope == null && ec.Includes("policyScope",true))
         {
             this.PolicyScope = new TprPolicyScope();
         }
         //      C# -> DateTime? CreatedAt
         // GraphQL -> createdAt: DateTime (scalar)
-        if (this.CreatedAt == null && Exploration.Includes(parent + ".createdAt", true))
+        if (this.CreatedAt == null && ec.Includes("createdAt",true))
         {
             this.CreatedAt = new DateTime();
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
-        if (this.Description == null && Exploration.Includes(parent + ".description", true))
+        if (this.Description == null && ec.Includes("description",true))
         {
             this.Description = "FETCH";
         }
-        //      C# -> List<System.String>? ExemptServiceAccounts
-        // GraphQL -> exemptServiceAccounts: [String!]! (scalar)
-        if (this.ExemptServiceAccounts == null && Exploration.Includes(parent + ".exemptServiceAccounts", true))
-        {
-            this.ExemptServiceAccounts = new List<System.String>();
-        }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? PolicyId
         // GraphQL -> policyId: UUID! (scalar)
-        if (this.PolicyId == null && Exploration.Includes(parent + ".policyId", true))
+        if (this.PolicyId == null && ec.Includes("policyId",true))
         {
             this.PolicyId = "FETCH";
         }
         //      C# -> UserSummary? CreatedBy
         // GraphQL -> createdBy: UserSummary (type)
-        if (this.CreatedBy == null && Exploration.Includes(parent + ".createdBy"))
+        if (this.CreatedBy == null && ec.Includes("createdBy",false))
         {
             this.CreatedBy = new UserSummary();
-            this.CreatedBy.ApplyExploratoryFieldSpec(parent + ".createdBy");
+            this.CreatedBy.ApplyExploratoryFieldSpec(ec.NewChild("createdBy"));
+        }
+        //      C# -> List<ServiceAccountClient>? ExemptServiceAccounts
+        // GraphQL -> exemptServiceAccounts: [ServiceAccountClient!]! (type)
+        if (this.ExemptServiceAccounts == null && ec.Includes("exemptServiceAccounts",false))
+        {
+            this.ExemptServiceAccounts = new List<ServiceAccountClient>();
+            this.ExemptServiceAccounts.ApplyExploratoryFieldSpec(ec.NewChild("exemptServiceAccounts"));
         }
         //      C# -> List<TprPolicyRule>? PolicyRules
         // GraphQL -> policyRules: [TprPolicyRule!]! (type)
-        if (this.PolicyRules == null && Exploration.Includes(parent + ".policyRules"))
+        if (this.PolicyRules == null && ec.Includes("policyRules",false))
         {
             this.PolicyRules = new List<TprPolicyRule>();
-            this.PolicyRules.ApplyExploratoryFieldSpec(parent + ".policyRules");
+            this.PolicyRules.ApplyExploratoryFieldSpec(ec.NewChild("policyRules"));
         }
     }
 
@@ -250,12 +253,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<TprPolicyDetail> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new TprPolicyDetail());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<TprPolicyDetail> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

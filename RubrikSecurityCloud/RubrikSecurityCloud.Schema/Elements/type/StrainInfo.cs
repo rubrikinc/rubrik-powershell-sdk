@@ -151,52 +151,51 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<System.String>? SampleAffectedFiles
         // GraphQL -> sampleAffectedFiles: [String!]! (scalar)
-        if (this.SampleAffectedFiles == null && Exploration.Includes(parent + ".sampleAffectedFiles", true))
+        if (this.SampleAffectedFiles == null && ec.Includes("sampleAffectedFiles",true))
         {
             this.SampleAffectedFiles = new List<System.String>();
         }
         //      C# -> List<System.String>? SampleRansomwareNotes
         // GraphQL -> sampleRansomwareNotes: [String!]! (scalar)
-        if (this.SampleRansomwareNotes == null && Exploration.Includes(parent + ".sampleRansomwareNotes", true))
+        if (this.SampleRansomwareNotes == null && ec.Includes("sampleRansomwareNotes",true))
         {
             this.SampleRansomwareNotes = new List<System.String>();
         }
         //      C# -> System.String? StrainId
         // GraphQL -> strainId: String! (scalar)
-        if (this.StrainId == null && Exploration.Includes(parent + ".strainId", true))
+        if (this.StrainId == null && ec.Includes("strainId",true))
         {
             this.StrainId = "FETCH";
         }
         //      C# -> System.Int64? TotalAffectedFiles
         // GraphQL -> totalAffectedFiles: Long! (scalar)
-        if (this.TotalAffectedFiles == null && Exploration.Includes(parent + ".totalAffectedFiles", true))
+        if (this.TotalAffectedFiles == null && ec.Includes("totalAffectedFiles",true))
         {
             this.TotalAffectedFiles = new System.Int64();
         }
         //      C# -> System.Int64? TotalRansomwareNotes
         // GraphQL -> totalRansomwareNotes: Long! (scalar)
-        if (this.TotalRansomwareNotes == null && Exploration.Includes(parent + ".totalRansomwareNotes", true))
+        if (this.TotalRansomwareNotes == null && ec.Includes("totalRansomwareNotes",true))
         {
             this.TotalRansomwareNotes = new System.Int64();
         }
         //      C# -> List<SuspiciousFileInfo>? SampleAffectedFilesInfo
         // GraphQL -> sampleAffectedFilesInfo: [SuspiciousFileInfo!]! (type)
-        if (this.SampleAffectedFilesInfo == null && Exploration.Includes(parent + ".sampleAffectedFilesInfo"))
+        if (this.SampleAffectedFilesInfo == null && ec.Includes("sampleAffectedFilesInfo",false))
         {
             this.SampleAffectedFilesInfo = new List<SuspiciousFileInfo>();
-            this.SampleAffectedFilesInfo.ApplyExploratoryFieldSpec(parent + ".sampleAffectedFilesInfo");
+            this.SampleAffectedFilesInfo.ApplyExploratoryFieldSpec(ec.NewChild("sampleAffectedFilesInfo"));
         }
         //      C# -> List<SuspiciousFileInfo>? SampleRansomwareNoteFilesInfo
         // GraphQL -> sampleRansomwareNoteFilesInfo: [SuspiciousFileInfo!]! (type)
-        if (this.SampleRansomwareNoteFilesInfo == null && Exploration.Includes(parent + ".sampleRansomwareNoteFilesInfo"))
+        if (this.SampleRansomwareNoteFilesInfo == null && ec.Includes("sampleRansomwareNoteFilesInfo",false))
         {
             this.SampleRansomwareNoteFilesInfo = new List<SuspiciousFileInfo>();
-            this.SampleRansomwareNoteFilesInfo.ApplyExploratoryFieldSpec(parent + ".sampleRansomwareNoteFilesInfo");
+            this.SampleRansomwareNoteFilesInfo.ApplyExploratoryFieldSpec(ec.NewChild("sampleRansomwareNoteFilesInfo"));
         }
     }
 
@@ -230,12 +229,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<StrainInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new StrainInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<StrainInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

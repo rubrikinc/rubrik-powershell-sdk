@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ColdStorageClass? ColdStorageClass
         // GraphQL -> coldStorageClass: ColdStorageClass! (enum)
-        if (this.ColdStorageClass == null && Exploration.Includes(parent + ".coldStorageClass", true))
+        if (this.ColdStorageClass == null && ec.Includes("coldStorageClass",true))
         {
             this.ColdStorageClass = new ColdStorageClass();
         }
         //      C# -> System.Boolean? IsInstantTieringEnabled
         // GraphQL -> isInstantTieringEnabled: Boolean! (scalar)
-        if (this.IsInstantTieringEnabled == null && Exploration.Includes(parent + ".isInstantTieringEnabled", true))
+        if (this.IsInstantTieringEnabled == null && ec.Includes("isInstantTieringEnabled",true))
         {
             this.IsInstantTieringEnabled = true;
         }
         //      C# -> System.Int64? MinAccessibleDurationInSeconds
         // GraphQL -> minAccessibleDurationInSeconds: Long! (scalar)
-        if (this.MinAccessibleDurationInSeconds == null && Exploration.Includes(parent + ".minAccessibleDurationInSeconds", true))
+        if (this.MinAccessibleDurationInSeconds == null && ec.Includes("minAccessibleDurationInSeconds",true))
         {
             this.MinAccessibleDurationInSeconds = new System.Int64();
         }
         //      C# -> System.Boolean? ShouldTierExistingSnapshots
         // GraphQL -> shouldTierExistingSnapshots: Boolean! (scalar)
-        if (this.ShouldTierExistingSnapshots == null && Exploration.Includes(parent + ".shouldTierExistingSnapshots", true))
+        if (this.ShouldTierExistingSnapshots == null && ec.Includes("shouldTierExistingSnapshots",true))
         {
             this.ShouldTierExistingSnapshots = true;
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ArchivalTieringSpec> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ArchivalTieringSpec());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ArchivalTieringSpec> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

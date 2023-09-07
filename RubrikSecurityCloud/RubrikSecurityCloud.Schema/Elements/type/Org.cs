@@ -300,115 +300,114 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> TenantAuthDomainConfig? AuthDomainConfig
         // GraphQL -> authDomainConfig: TenantAuthDomainConfig! (enum)
-        if (this.AuthDomainConfig == null && Exploration.Includes(parent + ".authDomainConfig", true))
+        if (this.AuthDomainConfig == null && ec.Includes("authDomainConfig",true))
         {
             this.AuthDomainConfig = new TenantAuthDomainConfig();
         }
         //      C# -> TenantNetworkHealth? TenantNetworkHealth
         // GraphQL -> tenantNetworkHealth: TenantNetworkHealth! (enum)
-        if (this.TenantNetworkHealth == null && Exploration.Includes(parent + ".tenantNetworkHealth", true))
+        if (this.TenantNetworkHealth == null && ec.Includes("tenantNetworkHealth",true))
         {
             this.TenantNetworkHealth = new TenantNetworkHealth();
         }
         //      C# -> List<System.String>? AllUrls
         // GraphQL -> allUrls: [String!]! (scalar)
-        if (this.AllUrls == null && Exploration.Includes(parent + ".allUrls", true))
+        if (this.AllUrls == null && ec.Includes("allUrls",true))
         {
             this.AllUrls = new List<System.String>();
         }
         //      C# -> List<System.String>? AllowedClusters
         // GraphQL -> allowedClusters: [String!]! (scalar)
-        if (this.AllowedClusters == null && Exploration.Includes(parent + ".allowedClusters", true))
+        if (this.AllowedClusters == null && ec.Includes("allowedClusters",true))
         {
             this.AllowedClusters = new List<System.String>();
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
-        if (this.Description == null && Exploration.Includes(parent + ".description", true))
+        if (this.Description == null && ec.Includes("description",true))
         {
             this.Description = "FETCH";
         }
         //      C# -> System.String? FullName
         // GraphQL -> fullName: String! (scalar)
-        if (this.FullName == null && Exploration.Includes(parent + ".fullName", true))
+        if (this.FullName == null && ec.Includes("fullName",true))
         {
             this.FullName = "FETCH";
         }
         //      C# -> System.Boolean? HasOwnIdpConfigured
         // GraphQL -> hasOwnIdpConfigured: Boolean! (scalar)
-        if (this.HasOwnIdpConfigured == null && Exploration.Includes(parent + ".hasOwnIdpConfigured", true))
+        if (this.HasOwnIdpConfigured == null && ec.Includes("hasOwnIdpConfigured",true))
         {
             this.HasOwnIdpConfigured = true;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsEnvoyRequired
         // GraphQL -> isEnvoyRequired: Boolean! (scalar)
-        if (this.IsEnvoyRequired == null && Exploration.Includes(parent + ".isEnvoyRequired", true))
+        if (this.IsEnvoyRequired == null && ec.Includes("isEnvoyRequired",true))
         {
             this.IsEnvoyRequired = true;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.Int64? PhysicalStorageUsed
         // GraphQL -> physicalStorageUsed: Long! (scalar)
-        if (this.PhysicalStorageUsed == null && Exploration.Includes(parent + ".physicalStorageUsed", true))
+        if (this.PhysicalStorageUsed == null && ec.Includes("physicalStorageUsed",true))
         {
             this.PhysicalStorageUsed = new System.Int64();
         }
         //      C# -> System.Boolean? ShouldEnforceMfaForAll
         // GraphQL -> shouldEnforceMfaForAll: Boolean! (scalar)
-        if (this.ShouldEnforceMfaForAll == null && Exploration.Includes(parent + ".shouldEnforceMfaForAll", true))
+        if (this.ShouldEnforceMfaForAll == null && ec.Includes("shouldEnforceMfaForAll",true))
         {
             this.ShouldEnforceMfaForAll = true;
         }
         //      C# -> Role? OrgAdminRole
         // GraphQL -> orgAdminRole: Role! (type)
-        if (this.OrgAdminRole == null && Exploration.Includes(parent + ".orgAdminRole"))
+        if (this.OrgAdminRole == null && ec.Includes("orgAdminRole",false))
         {
             this.OrgAdminRole = new Role();
-            this.OrgAdminRole.ApplyExploratoryFieldSpec(parent + ".orgAdminRole");
+            this.OrgAdminRole.ApplyExploratoryFieldSpec(ec.NewChild("orgAdminRole"));
         }
         //      C# -> List<Permission>? Permissions
         // GraphQL -> permissions: [Permission!]! (type)
-        if (this.Permissions == null && Exploration.Includes(parent + ".permissions"))
+        if (this.Permissions == null && ec.Includes("permissions",false))
         {
             this.Permissions = new List<Permission>();
-            this.Permissions.ApplyExploratoryFieldSpec(parent + ".permissions");
+            this.Permissions.ApplyExploratoryFieldSpec(ec.NewChild("permissions"));
         }
         //      C# -> List<SelfServicePermission>? SelfServicePermissions
         // GraphQL -> selfServicePermissions: [SelfServicePermission!]! (type)
-        if (this.SelfServicePermissions == null && Exploration.Includes(parent + ".selfServicePermissions"))
+        if (this.SelfServicePermissions == null && ec.Includes("selfServicePermissions",false))
         {
             this.SelfServicePermissions = new List<SelfServicePermission>();
-            this.SelfServicePermissions.ApplyExploratoryFieldSpec(parent + ".selfServicePermissions");
+            this.SelfServicePermissions.ApplyExploratoryFieldSpec(ec.NewChild("selfServicePermissions"));
         }
         //      C# -> List<SsoGroup>? SsoGroups
         // GraphQL -> ssoGroups: [SsoGroup!]! (type)
-        if (this.SsoGroups == null && Exploration.Includes(parent + ".ssoGroups"))
+        if (this.SsoGroups == null && ec.Includes("ssoGroups",false))
         {
             this.SsoGroups = new List<SsoGroup>();
-            this.SsoGroups.ApplyExploratoryFieldSpec(parent + ".ssoGroups");
+            this.SsoGroups.ApplyExploratoryFieldSpec(ec.NewChild("ssoGroups"));
         }
         //      C# -> List<ExistingUser>? Users
         // GraphQL -> users: [ExistingUser!]! (type)
-        if (this.Users == null && Exploration.Includes(parent + ".users"))
+        if (this.Users == null && ec.Includes("users",false))
         {
             this.Users = new List<ExistingUser>();
-            this.Users.ApplyExploratoryFieldSpec(parent + ".users");
+            this.Users.ApplyExploratoryFieldSpec(ec.NewChild("users"));
         }
     }
 
@@ -442,12 +441,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<Org> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new Org());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<Org> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

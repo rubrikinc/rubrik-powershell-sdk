@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> InventorySubHierarchyRootEnum? InventoryRoot
         // GraphQL -> inventoryRoot: InventorySubHierarchyRootEnum! (enum)
-        if (this.InventoryRoot == null && Exploration.Includes(parent + ".inventoryRoot", true))
+        if (this.InventoryRoot == null && ec.Includes("inventoryRoot",true))
         {
             this.InventoryRoot = new InventorySubHierarchyRootEnum();
         }
         //      C# -> WorkloadLevelHierarchy? InventoryWorkloadType
         // GraphQL -> inventoryWorkloadType: WorkloadLevelHierarchy! (enum)
-        if (this.InventoryWorkloadType == null && Exploration.Includes(parent + ".inventoryWorkloadType", true))
+        if (this.InventoryWorkloadType == null && ec.Includes("inventoryWorkloadType",true))
         {
             this.InventoryWorkloadType = new WorkloadLevelHierarchy();
         }
         //      C# -> List<Operation>? Operations
         // GraphQL -> operations: [Operation!]! (enum)
-        if (this.Operations == null && Exploration.Includes(parent + ".operations", true))
+        if (this.Operations == null && ec.Includes("operations",true))
         {
             this.Operations = new List<Operation>();
         }
         //      C# -> System.String? HierarchyRoot
         // GraphQL -> hierarchyRoot: String! (scalar)
-        if (this.HierarchyRoot == null && Exploration.Includes(parent + ".hierarchyRoot", true))
+        if (this.HierarchyRoot == null && ec.Includes("hierarchyRoot",true))
         {
             this.HierarchyRoot = "FETCH";
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SelfServicePermission> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SelfServicePermission());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SelfServicePermission> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

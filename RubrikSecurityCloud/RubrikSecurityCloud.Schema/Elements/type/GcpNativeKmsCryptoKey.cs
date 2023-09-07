@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Key
         // GraphQL -> key: String! (scalar)
-        if (this.Key == null && Exploration.Includes(parent + ".key", true))
+        if (this.Key == null && ec.Includes("key",true))
         {
             this.Key = "FETCH";
         }
         //      C# -> System.String? KeyRing
         // GraphQL -> keyRing: String! (scalar)
-        if (this.KeyRing == null && Exploration.Includes(parent + ".keyRing", true))
+        if (this.KeyRing == null && ec.Includes("keyRing",true))
         {
             this.KeyRing = "FETCH";
         }
         //      C# -> System.String? Location
         // GraphQL -> location: String! (scalar)
-        if (this.Location == null && Exploration.Includes(parent + ".location", true))
+        if (this.Location == null && ec.Includes("location",true))
         {
             this.Location = "FETCH";
         }
         //      C# -> System.String? ProjectNativeId
         // GraphQL -> projectNativeId: String! (scalar)
-        if (this.ProjectNativeId == null && Exploration.Includes(parent + ".projectNativeId", true))
+        if (this.ProjectNativeId == null && ec.Includes("projectNativeId",true))
         {
             this.ProjectNativeId = "FETCH";
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GcpNativeKmsCryptoKey> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GcpNativeKmsCryptoKey());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<GcpNativeKmsCryptoKey> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

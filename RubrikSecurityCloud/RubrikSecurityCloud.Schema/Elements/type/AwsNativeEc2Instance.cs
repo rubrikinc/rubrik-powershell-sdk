@@ -811,332 +811,331 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<PolarisSnappableAuthorizedOperationsEnum>? AuthorizedOperations
         // GraphQL -> authorizedOperations: [PolarisSnappableAuthorizedOperationsEnum!]! (enum)
-        if (this.AuthorizedOperations == null && Exploration.Includes(parent + ".authorizedOperations", true))
+        if (this.AuthorizedOperations == null && ec.Includes("authorizedOperations",true))
         {
             this.AuthorizedOperations = new List<PolarisSnappableAuthorizedOperationsEnum>();
         }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
-        if (this.ObjectType == null && Exploration.Includes(parent + ".objectType", true))
+        if (this.ObjectType == null && ec.Includes("objectType",true))
         {
             this.ObjectType = new HierarchyObjectTypeEnum();
         }
         //      C# -> OsType? OsType
         // GraphQL -> osType: OsType! (enum)
-        if (this.OsType == null && Exploration.Includes(parent + ".osType", true))
+        if (this.OsType == null && ec.Includes("osType",true))
         {
             this.OsType = new OsType();
         }
         //      C# -> AwsNativeRegion? Region
         // GraphQL -> region: AwsNativeRegion! (enum)
-        if (this.Region == null && Exploration.Includes(parent + ".region", true))
+        if (this.Region == null && ec.Includes("region",true))
         {
             this.Region = new AwsNativeRegion();
         }
         //      C# -> SlaAssignmentTypeEnum? SlaAssignment
         // GraphQL -> slaAssignment: SlaAssignmentTypeEnum! (enum)
-        if (this.SlaAssignment == null && Exploration.Includes(parent + ".slaAssignment", true))
+        if (this.SlaAssignment == null && ec.Includes("slaAssignment",true))
         {
             this.SlaAssignment = new SlaAssignmentTypeEnum();
         }
         //      C# -> SlaDomain? ConfiguredSlaDomain
         // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
-        if (this.ConfiguredSlaDomain == null && Exploration.Includes(parent + ".configuredSlaDomain"))
+        if (this.ConfiguredSlaDomain == null && ec.Includes("configuredSlaDomain",false))
         {
             var impls = new List<SlaDomain>();
-            impls.ApplyExploratoryFieldSpec(parent + ".configuredSlaDomain");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("configuredSlaDomain"));
             this.ConfiguredSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> SlaDomain? EffectiveRetentionSlaDomain
         // GraphQL -> effectiveRetentionSlaDomain: SlaDomain (interface)
-        if (this.EffectiveRetentionSlaDomain == null && Exploration.Includes(parent + ".effectiveRetentionSlaDomain"))
+        if (this.EffectiveRetentionSlaDomain == null && ec.Includes("effectiveRetentionSlaDomain",false))
         {
             var impls = new List<SlaDomain>();
-            impls.ApplyExploratoryFieldSpec(parent + ".effectiveRetentionSlaDomain");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("effectiveRetentionSlaDomain"));
             this.EffectiveRetentionSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> SlaDomain? EffectiveSlaDomain
         // GraphQL -> effectiveSlaDomain: SlaDomain! (interface)
-        if (this.EffectiveSlaDomain == null && Exploration.Includes(parent + ".effectiveSlaDomain"))
+        if (this.EffectiveSlaDomain == null && ec.Includes("effectiveSlaDomain",false))
         {
             var impls = new List<SlaDomain>();
-            impls.ApplyExploratoryFieldSpec(parent + ".effectiveSlaDomain");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("effectiveSlaDomain"));
             this.EffectiveSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> System.String? AvailabilityZone
         // GraphQL -> availabilityZone: String! (scalar)
-        if (this.AvailabilityZone == null && Exploration.Includes(parent + ".availabilityZone", true))
+        if (this.AvailabilityZone == null && ec.Includes("availabilityZone",true))
         {
             this.AvailabilityZone = "FETCH";
         }
         //      C# -> System.String? AwsAccountRubrikId
         // GraphQL -> awsAccountRubrikId: String! (scalar)
-        if (this.AwsAccountRubrikId == null && Exploration.Includes(parent + ".awsAccountRubrikId", true))
+        if (this.AwsAccountRubrikId == null && ec.Includes("awsAccountRubrikId",true))
         {
             this.AwsAccountRubrikId = "FETCH";
         }
         //      C# -> System.String? AwsNativeAccountName
         // GraphQL -> awsNativeAccountName: String! (scalar)
-        if (this.AwsNativeAccountName == null && Exploration.Includes(parent + ".awsNativeAccountName", true))
+        if (this.AwsNativeAccountName == null && ec.Includes("awsNativeAccountName",true))
         {
             this.AwsNativeAccountName = "FETCH";
         }
         //      C# -> System.String? CloudNativeId
         // GraphQL -> cloudNativeId: String! (scalar)
-        if (this.CloudNativeId == null && Exploration.Includes(parent + ".cloudNativeId", true))
+        if (this.CloudNativeId == null && ec.Includes("cloudNativeId",true))
         {
             this.CloudNativeId = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.String? InstanceName
         // GraphQL -> instanceName: String! (scalar)
-        if (this.InstanceName == null && Exploration.Includes(parent + ".instanceName", true))
+        if (this.InstanceName == null && ec.Includes("instanceName",true))
         {
             this.InstanceName = "FETCH";
         }
         //      C# -> System.String? InstanceNativeId
         // GraphQL -> instanceNativeId: String! (scalar)
-        if (this.InstanceNativeId == null && Exploration.Includes(parent + ".instanceNativeId", true))
+        if (this.InstanceNativeId == null && ec.Includes("instanceNativeId",true))
         {
             this.InstanceNativeId = "FETCH";
         }
         //      C# -> System.String? InstanceType
         // GraphQL -> instanceType: String! (scalar)
-        if (this.InstanceType == null && Exploration.Includes(parent + ".instanceType", true))
+        if (this.InstanceType == null && ec.Includes("instanceType",true))
         {
             this.InstanceType = "FETCH";
         }
         //      C# -> System.Boolean? IsAppConsistencyEnabled
         // GraphQL -> isAppConsistencyEnabled: Boolean! (scalar)
-        if (this.IsAppConsistencyEnabled == null && Exploration.Includes(parent + ".isAppConsistencyEnabled", true))
+        if (this.IsAppConsistencyEnabled == null && ec.Includes("isAppConsistencyEnabled",true))
         {
             this.IsAppConsistencyEnabled = true;
         }
         //      C# -> System.Boolean? IsExocomputeConfigured
         // GraphQL -> isExocomputeConfigured: Boolean! (scalar)
-        if (this.IsExocomputeConfigured == null && Exploration.Includes(parent + ".isExocomputeConfigured", true))
+        if (this.IsExocomputeConfigured == null && ec.Includes("isExocomputeConfigured",true))
         {
             this.IsExocomputeConfigured = true;
         }
         //      C# -> System.Boolean? IsIndexingEnabled
         // GraphQL -> isIndexingEnabled: Boolean! (scalar)
-        if (this.IsIndexingEnabled == null && Exploration.Includes(parent + ".isIndexingEnabled", true))
+        if (this.IsIndexingEnabled == null && ec.Includes("isIndexingEnabled",true))
         {
             this.IsIndexingEnabled = true;
         }
         //      C# -> System.Boolean? IsMarketplace
         // GraphQL -> isMarketplace: Boolean! (scalar)
-        if (this.IsMarketplace == null && Exploration.Includes(parent + ".isMarketplace", true))
+        if (this.IsMarketplace == null && ec.Includes("isMarketplace",true))
         {
             this.IsMarketplace = true;
         }
         //      C# -> System.Boolean? IsPreOrPostScriptEnabled
         // GraphQL -> isPreOrPostScriptEnabled: Boolean! (scalar)
-        if (this.IsPreOrPostScriptEnabled == null && Exploration.Includes(parent + ".isPreOrPostScriptEnabled", true))
+        if (this.IsPreOrPostScriptEnabled == null && ec.Includes("isPreOrPostScriptEnabled",true))
         {
             this.IsPreOrPostScriptEnabled = true;
         }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
-        if (this.IsRelic == null && Exploration.Includes(parent + ".isRelic", true))
+        if (this.IsRelic == null && ec.Includes("isRelic",true))
         {
             this.IsRelic = true;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? NativeName
         // GraphQL -> nativeName: String! (scalar)
-        if (this.NativeName == null && Exploration.Includes(parent + ".nativeName", true))
+        if (this.NativeName == null && ec.Includes("nativeName",true))
         {
             this.NativeName = "FETCH";
         }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
-        if (this.NumWorkloadDescendants == null && Exploration.Includes(parent + ".numWorkloadDescendants", true))
+        if (this.NumWorkloadDescendants == null && ec.Includes("numWorkloadDescendants",true))
         {
             this.NumWorkloadDescendants = Int32.MinValue;
         }
         //      C# -> System.Int32? OnDemandSnapshotCount
         // GraphQL -> onDemandSnapshotCount: Int! (scalar)
-        if (this.OnDemandSnapshotCount == null && Exploration.Includes(parent + ".onDemandSnapshotCount", true))
+        if (this.OnDemandSnapshotCount == null && ec.Includes("onDemandSnapshotCount",true))
         {
             this.OnDemandSnapshotCount = Int32.MinValue;
         }
         //      C# -> System.String? PrivateIp
         // GraphQL -> privateIp: String! (scalar)
-        if (this.PrivateIp == null && Exploration.Includes(parent + ".privateIp", true))
+        if (this.PrivateIp == null && ec.Includes("privateIp",true))
         {
             this.PrivateIp = "FETCH";
         }
         //      C# -> System.String? PublicIp
         // GraphQL -> publicIp: String! (scalar)
-        if (this.PublicIp == null && Exploration.Includes(parent + ".publicIp", true))
+        if (this.PublicIp == null && ec.Includes("publicIp",true))
         {
             this.PublicIp = "FETCH";
         }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
-        if (this.SlaPauseStatus == null && Exploration.Includes(parent + ".slaPauseStatus", true))
+        if (this.SlaPauseStatus == null && ec.Includes("slaPauseStatus",true))
         {
             this.SlaPauseStatus = true;
         }
         //      C# -> System.String? SshKeyPairName
         // GraphQL -> sshKeyPairName: String! (scalar)
-        if (this.SshKeyPairName == null && Exploration.Includes(parent + ".sshKeyPairName", true))
+        if (this.SshKeyPairName == null && ec.Includes("sshKeyPairName",true))
         {
             this.SshKeyPairName = "FETCH";
         }
         //      C# -> System.String? VpcId
         // GraphQL -> vpcId: String! (scalar)
-        if (this.VpcId == null && Exploration.Includes(parent + ".vpcId", true))
+        if (this.VpcId == null && ec.Includes("vpcId",true))
         {
             this.VpcId = "FETCH";
         }
         //      C# -> System.String? VpcName
         // GraphQL -> vpcName: String! (scalar)
-        if (this.VpcName == null && Exploration.Includes(parent + ".vpcName", true))
+        if (this.VpcName == null && ec.Includes("vpcName",true))
         {
             this.VpcName = "FETCH";
         }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
-        if (this.AllOrgs == null && Exploration.Includes(parent + ".allOrgs"))
+        if (this.AllOrgs == null && ec.Includes("allOrgs",false))
         {
             this.AllOrgs = new List<Org>();
-            this.AllOrgs.ApplyExploratoryFieldSpec(parent + ".allOrgs");
+            this.AllOrgs.ApplyExploratoryFieldSpec(ec.NewChild("allOrgs"));
         }
         //      C# -> List<AwsNativeEbsVolume>? AttachedEbsVolumes
         // GraphQL -> attachedEbsVolumes: [AwsNativeEbsVolume!]! (type)
-        if (this.AttachedEbsVolumes == null && Exploration.Includes(parent + ".attachedEbsVolumes"))
+        if (this.AttachedEbsVolumes == null && ec.Includes("attachedEbsVolumes",false))
         {
             this.AttachedEbsVolumes = new List<AwsNativeEbsVolume>();
-            this.AttachedEbsVolumes.ApplyExploratoryFieldSpec(parent + ".attachedEbsVolumes");
+            this.AttachedEbsVolumes.ApplyExploratoryFieldSpec(ec.NewChild("attachedEbsVolumes"));
         }
         //      C# -> List<AttachmentSpecForEc2Instance>? AttachmentSpecs
         // GraphQL -> attachmentSpecs: [AttachmentSpecForEc2Instance!]! (type)
-        if (this.AttachmentSpecs == null && Exploration.Includes(parent + ".attachmentSpecs"))
+        if (this.AttachmentSpecs == null && ec.Includes("attachmentSpecs",false))
         {
             this.AttachmentSpecs = new List<AttachmentSpecForEc2Instance>();
-            this.AttachmentSpecs.ApplyExploratoryFieldSpec(parent + ".attachmentSpecs");
+            this.AttachmentSpecs.ApplyExploratoryFieldSpec(ec.NewChild("attachmentSpecs"));
         }
         //      C# -> AwsNativeAccount? AwsNativeAccount
         // GraphQL -> awsNativeAccount: AwsNativeAccount! (type)
-        if (this.AwsNativeAccount == null && Exploration.Includes(parent + ".awsNativeAccount"))
+        if (this.AwsNativeAccount == null && ec.Includes("awsNativeAccount",false))
         {
             this.AwsNativeAccount = new AwsNativeAccount();
-            this.AwsNativeAccount.ApplyExploratoryFieldSpec(parent + ".awsNativeAccount");
+            this.AwsNativeAccount.ApplyExploratoryFieldSpec(ec.NewChild("awsNativeAccount"));
         }
         //      C# -> PathNode? EffectiveSlaSourceObject
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)
-        if (this.EffectiveSlaSourceObject == null && Exploration.Includes(parent + ".effectiveSlaSourceObject"))
+        if (this.EffectiveSlaSourceObject == null && ec.Includes("effectiveSlaSourceObject",false))
         {
             this.EffectiveSlaSourceObject = new PathNode();
-            this.EffectiveSlaSourceObject.ApplyExploratoryFieldSpec(parent + ".effectiveSlaSourceObject");
+            this.EffectiveSlaSourceObject.ApplyExploratoryFieldSpec(ec.NewChild("effectiveSlaSourceObject"));
         }
         //      C# -> PhysicalHost? HostInfo
         // GraphQL -> hostInfo: PhysicalHost (type)
-        if (this.HostInfo == null && Exploration.Includes(parent + ".hostInfo"))
+        if (this.HostInfo == null && ec.Includes("hostInfo",false))
         {
             this.HostInfo = new PhysicalHost();
-            this.HostInfo.ApplyExploratoryFieldSpec(parent + ".hostInfo");
+            this.HostInfo.ApplyExploratoryFieldSpec(ec.NewChild("hostInfo"));
         }
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)
-        if (this.LogicalPath == null && Exploration.Includes(parent + ".logicalPath"))
+        if (this.LogicalPath == null && ec.Includes("logicalPath",false))
         {
             this.LogicalPath = new List<PathNode>();
-            this.LogicalPath.ApplyExploratoryFieldSpec(parent + ".logicalPath");
+            this.LogicalPath.ApplyExploratoryFieldSpec(ec.NewChild("logicalPath"));
         }
         //      C# -> PolarisSnapshot? NewestIndexedSnapshot
         // GraphQL -> newestIndexedSnapshot: PolarisSnapshot (type)
-        if (this.NewestIndexedSnapshot == null && Exploration.Includes(parent + ".newestIndexedSnapshot"))
+        if (this.NewestIndexedSnapshot == null && ec.Includes("newestIndexedSnapshot",false))
         {
             this.NewestIndexedSnapshot = new PolarisSnapshot();
-            this.NewestIndexedSnapshot.ApplyExploratoryFieldSpec(parent + ".newestIndexedSnapshot");
+            this.NewestIndexedSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("newestIndexedSnapshot"));
         }
         //      C# -> PolarisSnapshot? NewestSnapshot
         // GraphQL -> newestSnapshot: PolarisSnapshot (type)
-        if (this.NewestSnapshot == null && Exploration.Includes(parent + ".newestSnapshot"))
+        if (this.NewestSnapshot == null && ec.Includes("newestSnapshot",false))
         {
             this.NewestSnapshot = new PolarisSnapshot();
-            this.NewestSnapshot.ApplyExploratoryFieldSpec(parent + ".newestSnapshot");
+            this.NewestSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("newestSnapshot"));
         }
         //      C# -> PolarisSnapshot? OldestSnapshot
         // GraphQL -> oldestSnapshot: PolarisSnapshot (type)
-        if (this.OldestSnapshot == null && Exploration.Includes(parent + ".oldestSnapshot"))
+        if (this.OldestSnapshot == null && ec.Includes("oldestSnapshot",false))
         {
             this.OldestSnapshot = new PolarisSnapshot();
-            this.OldestSnapshot.ApplyExploratoryFieldSpec(parent + ".oldestSnapshot");
+            this.OldestSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("oldestSnapshot"));
         }
         //      C# -> List<PathNode>? PhysicalPath
         // GraphQL -> physicalPath: [PathNode!]! (type)
-        if (this.PhysicalPath == null && Exploration.Includes(parent + ".physicalPath"))
+        if (this.PhysicalPath == null && ec.Includes("physicalPath",false))
         {
             this.PhysicalPath = new List<PathNode>();
-            this.PhysicalPath.ApplyExploratoryFieldSpec(parent + ".physicalPath");
+            this.PhysicalPath.ApplyExploratoryFieldSpec(ec.NewChild("physicalPath"));
         }
         //      C# -> PolarisSnapshotConnection? SnapshotConnection
         // GraphQL -> snapshotConnection: PolarisSnapshotConnection (type)
-        if (this.SnapshotConnection == null && Exploration.Includes(parent + ".snapshotConnection"))
+        if (this.SnapshotConnection == null && ec.Includes("snapshotConnection",false))
         {
             this.SnapshotConnection = new PolarisSnapshotConnection();
-            this.SnapshotConnection.ApplyExploratoryFieldSpec(parent + ".snapshotConnection");
+            this.SnapshotConnection.ApplyExploratoryFieldSpec(ec.NewChild("snapshotConnection"));
         }
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
-        if (this.SnapshotDistribution == null && Exploration.Includes(parent + ".snapshotDistribution"))
+        if (this.SnapshotDistribution == null && ec.Includes("snapshotDistribution",false))
         {
             this.SnapshotDistribution = new SnapshotDistribution();
-            this.SnapshotDistribution.ApplyExploratoryFieldSpec(parent + ".snapshotDistribution");
+            this.SnapshotDistribution.ApplyExploratoryFieldSpec(ec.NewChild("snapshotDistribution"));
         }
         //      C# -> PolarisSnapshotGroupByConnection? SnapshotGroupByConnection
         // GraphQL -> snapshotGroupByConnection: PolarisSnapshotGroupByConnection (type)
-        if (this.SnapshotGroupByConnection == null && Exploration.Includes(parent + ".snapshotGroupByConnection"))
+        if (this.SnapshotGroupByConnection == null && ec.Includes("snapshotGroupByConnection",false))
         {
             this.SnapshotGroupByConnection = new PolarisSnapshotGroupByConnection();
-            this.SnapshotGroupByConnection.ApplyExploratoryFieldSpec(parent + ".snapshotGroupByConnection");
+            this.SnapshotGroupByConnection.ApplyExploratoryFieldSpec(ec.NewChild("snapshotGroupByConnection"));
         }
         //      C# -> PolarisSnapshotGroupByNewConnection? SnapshotGroupByNewConnection
         // GraphQL -> snapshotGroupByNewConnection: PolarisSnapshotGroupByNewConnection (type)
-        if (this.SnapshotGroupByNewConnection == null && Exploration.Includes(parent + ".snapshotGroupByNewConnection"))
+        if (this.SnapshotGroupByNewConnection == null && ec.Includes("snapshotGroupByNewConnection",false))
         {
             this.SnapshotGroupByNewConnection = new PolarisSnapshotGroupByNewConnection();
-            this.SnapshotGroupByNewConnection.ApplyExploratoryFieldSpec(parent + ".snapshotGroupByNewConnection");
+            this.SnapshotGroupByNewConnection.ApplyExploratoryFieldSpec(ec.NewChild("snapshotGroupByNewConnection"));
         }
         //      C# -> List<Tag>? Tags
         // GraphQL -> tags: [Tag!]! (type)
-        if (this.Tags == null && Exploration.Includes(parent + ".tags"))
+        if (this.Tags == null && ec.Includes("tags",false))
         {
             this.Tags = new List<Tag>();
-            this.Tags.ApplyExploratoryFieldSpec(parent + ".tags");
+            this.Tags.ApplyExploratoryFieldSpec(ec.NewChild("tags"));
         }
         //      C# -> VmAppConsistentSpecsInternal? VmAppConsistentSpecs
         // GraphQL -> vmAppConsistentSpecs: VmAppConsistentSpecsInternal (type)
-        if (this.VmAppConsistentSpecs == null && Exploration.Includes(parent + ".vmAppConsistentSpecs"))
+        if (this.VmAppConsistentSpecs == null && ec.Includes("vmAppConsistentSpecs",false))
         {
             this.VmAppConsistentSpecs = new VmAppConsistentSpecsInternal();
-            this.VmAppConsistentSpecs.ApplyExploratoryFieldSpec(parent + ".vmAppConsistentSpecs");
+            this.VmAppConsistentSpecs.ApplyExploratoryFieldSpec(ec.NewChild("vmAppConsistentSpecs"));
         }
         //      C# -> GenericSnapshotConnection? WorkloadSnapshotConnection
         // GraphQL -> workloadSnapshotConnection: GenericSnapshotConnection (type)
-        if (this.WorkloadSnapshotConnection == null && Exploration.Includes(parent + ".workloadSnapshotConnection"))
+        if (this.WorkloadSnapshotConnection == null && ec.Includes("workloadSnapshotConnection",false))
         {
             this.WorkloadSnapshotConnection = new GenericSnapshotConnection();
-            this.WorkloadSnapshotConnection.ApplyExploratoryFieldSpec(parent + ".workloadSnapshotConnection");
+            this.WorkloadSnapshotConnection.ApplyExploratoryFieldSpec(ec.NewChild("workloadSnapshotConnection"));
         }
     }
 
@@ -1170,12 +1169,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AwsNativeEc2Instance> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AwsNativeEc2Instance());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AwsNativeEc2Instance> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

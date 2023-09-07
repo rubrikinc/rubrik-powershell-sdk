@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> DefaultActionType? DefaultAction
         // GraphQL -> defaultAction: DefaultActionType! (enum)
-        if (this.DefaultAction == null && Exploration.Includes(parent + ".defaultAction", true))
+        if (this.DefaultAction == null && ec.Includes("defaultAction",true))
         {
             this.DefaultAction = new DefaultActionType();
         }
         //      C# -> List<IpRule>? IpRules
         // GraphQL -> ipRules: [IpRule!]! (type)
-        if (this.IpRules == null && Exploration.Includes(parent + ".ipRules"))
+        if (this.IpRules == null && ec.Includes("ipRules",false))
         {
             this.IpRules = new List<IpRule>();
-            this.IpRules.ApplyExploratoryFieldSpec(parent + ".ipRules");
+            this.IpRules.ApplyExploratoryFieldSpec(ec.NewChild("ipRules"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<NetworkRuleSet> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new NetworkRuleSet());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<NetworkRuleSet> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

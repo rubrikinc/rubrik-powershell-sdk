@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> Product? Product
         // GraphQL -> product: Product! (enum)
-        if (this.Product == null && Exploration.Includes(parent + ".product", true))
+        if (this.Product == null && ec.Includes("product",true))
         {
             this.Product = new Product();
         }
         //      C# -> System.Single? Quantity
         // GraphQL -> quantity: Float! (scalar)
-        if (this.Quantity == null && Exploration.Includes(parent + ".quantity", true))
+        if (this.Quantity == null && ec.Includes("quantity",true))
         {
             this.Quantity = new System.Single();
         }
         //      C# -> DateTime? TermEndDate
         // GraphQL -> termEndDate: DateTime (scalar)
-        if (this.TermEndDate == null && Exploration.Includes(parent + ".termEndDate", true))
+        if (this.TermEndDate == null && ec.Includes("termEndDate",true))
         {
             this.TermEndDate = new DateTime();
         }
         //      C# -> DateTime? TermStartDate
         // GraphQL -> termStartDate: DateTime (scalar)
-        if (this.TermStartDate == null && Exploration.Includes(parent + ".termStartDate", true))
+        if (this.TermStartDate == null && ec.Includes("termStartDate",true))
         {
             this.TermStartDate = new DateTime();
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<License> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new License());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<License> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? EnableDelayNotification
         // GraphQL -> enableDelayNotification: Boolean! (scalar)
-        if (this.EnableDelayNotification == null && Exploration.Includes(parent + ".enableDelayNotification", true))
+        if (this.EnableDelayNotification == null && ec.Includes("enableDelayNotification",true))
         {
             this.EnableDelayNotification = true;
         }
         //      C# -> System.Int64? LogDelayNotificationFrequencyInMin
         // GraphQL -> logDelayNotificationFrequencyInMin: Long! (scalar)
-        if (this.LogDelayNotificationFrequencyInMin == null && Exploration.Includes(parent + ".logDelayNotificationFrequencyInMin", true))
+        if (this.LogDelayNotificationFrequencyInMin == null && ec.Includes("logDelayNotificationFrequencyInMin",true))
         {
             this.LogDelayNotificationFrequencyInMin = new System.Int64();
         }
         //      C# -> System.Int64? LogDelayThresholdInMin
         // GraphQL -> logDelayThresholdInMin: Long! (scalar)
-        if (this.LogDelayThresholdInMin == null && Exploration.Includes(parent + ".logDelayThresholdInMin", true))
+        if (this.LogDelayThresholdInMin == null && ec.Includes("logDelayThresholdInMin",true))
         {
             this.LogDelayThresholdInMin = new System.Int64();
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<DbLogReportProperties> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new DbLogReportProperties());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<DbLogReportProperties> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

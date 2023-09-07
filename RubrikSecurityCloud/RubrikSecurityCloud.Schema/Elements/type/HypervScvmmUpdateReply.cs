@@ -81,22 +81,21 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> HypervScvmmSummary? HypervScvmmSummary
         // GraphQL -> hypervScvmmSummary: HypervScvmmSummary (type)
-        if (this.HypervScvmmSummary == null && Exploration.Includes(parent + ".hypervScvmmSummary"))
+        if (this.HypervScvmmSummary == null && ec.Includes("hypervScvmmSummary",false))
         {
             this.HypervScvmmSummary = new HypervScvmmSummary();
-            this.HypervScvmmSummary.ApplyExploratoryFieldSpec(parent + ".hypervScvmmSummary");
+            this.HypervScvmmSummary.ApplyExploratoryFieldSpec(ec.NewChild("hypervScvmmSummary"));
         }
         //      C# -> HypervScvmmUpdate? HypervScvmmUpdate
         // GraphQL -> hypervScvmmUpdate: HypervScvmmUpdate (type)
-        if (this.HypervScvmmUpdate == null && Exploration.Includes(parent + ".hypervScvmmUpdate"))
+        if (this.HypervScvmmUpdate == null && ec.Includes("hypervScvmmUpdate",false))
         {
             this.HypervScvmmUpdate = new HypervScvmmUpdate();
-            this.HypervScvmmUpdate.ApplyExploratoryFieldSpec(parent + ".hypervScvmmUpdate");
+            this.HypervScvmmUpdate.ApplyExploratoryFieldSpec(ec.NewChild("hypervScvmmUpdate"));
         }
     }
 
@@ -130,12 +129,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<HypervScvmmUpdateReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new HypervScvmmUpdateReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<HypervScvmmUpdateReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

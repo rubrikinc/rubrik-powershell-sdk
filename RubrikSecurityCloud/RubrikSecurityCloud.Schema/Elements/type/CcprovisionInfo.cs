@@ -117,36 +117,35 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> CcpJobStatus? JobStatus
         // GraphQL -> jobStatus: CcpJobStatus! (enum)
-        if (this.JobStatus == null && Exploration.Includes(parent + ".jobStatus", true))
+        if (this.JobStatus == null && ec.Includes("jobStatus",true))
         {
             this.JobStatus = new CcpJobStatus();
         }
         //      C# -> CcpJobType? JobType
         // GraphQL -> jobType: CcpJobType! (enum)
-        if (this.JobType == null && Exploration.Includes(parent + ".jobType", true))
+        if (this.JobType == null && ec.Includes("jobType",true))
         {
             this.JobType = new CcpJobType();
         }
         //      C# -> CcpVendorType? Vendor
         // GraphQL -> vendor: CcpVendorType! (enum)
-        if (this.Vendor == null && Exploration.Includes(parent + ".vendor", true))
+        if (this.Vendor == null && ec.Includes("vendor",true))
         {
             this.Vendor = new CcpVendorType();
         }
         //      C# -> System.String? MarshaledConfig
         // GraphQL -> marshaledConfig: String! (scalar)
-        if (this.MarshaledConfig == null && Exploration.Includes(parent + ".marshaledConfig", true))
+        if (this.MarshaledConfig == null && ec.Includes("marshaledConfig",true))
         {
             this.MarshaledConfig = "FETCH";
         }
         //      C# -> System.Int32? Progress
         // GraphQL -> progress: Int! (scalar)
-        if (this.Progress == null && Exploration.Includes(parent + ".progress", true))
+        if (this.Progress == null && ec.Includes("progress",true))
         {
             this.Progress = Int32.MinValue;
         }
@@ -182,12 +181,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CcprovisionInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CcprovisionInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CcprovisionInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

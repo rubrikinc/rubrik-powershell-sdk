@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? Available
         // GraphQL -> available: Boolean! (scalar)
-        if (this.Available == null && Exploration.Includes(parent + ".available", true))
+        if (this.Available == null && ec.Includes("available",true))
         {
             this.Available = true;
         }
         //      C# -> System.String? Reason
         // GraphQL -> reason: String! (scalar)
-        if (this.Reason == null && Exploration.Includes(parent + ".reason", true))
+        if (this.Reason == null && ec.Includes("reason",true))
         {
             this.Reason = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AzureResourceAvailabilityResp> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AzureResourceAvailabilityResp());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AzureResourceAvailabilityResp> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

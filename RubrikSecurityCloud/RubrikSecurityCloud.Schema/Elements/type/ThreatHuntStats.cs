@@ -131,42 +131,41 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? TotalAffectedObjects
         // GraphQL -> totalAffectedObjects: Long! (scalar)
-        if (this.TotalAffectedObjects == null && Exploration.Includes(parent + ".totalAffectedObjects", true))
+        if (this.TotalAffectedObjects == null && ec.Includes("totalAffectedObjects",true))
         {
             this.TotalAffectedObjects = new System.Int64();
         }
         //      C# -> System.Int64? TotalAffectedSnapshots
         // GraphQL -> totalAffectedSnapshots: Long! (scalar)
-        if (this.TotalAffectedSnapshots == null && Exploration.Includes(parent + ".totalAffectedSnapshots", true))
+        if (this.TotalAffectedSnapshots == null && ec.Includes("totalAffectedSnapshots",true))
         {
             this.TotalAffectedSnapshots = new System.Int64();
         }
         //      C# -> System.Int64? TotalSnapshotsScanned
         // GraphQL -> totalSnapshotsScanned: Long! (scalar)
-        if (this.TotalSnapshotsScanned == null && Exploration.Includes(parent + ".totalSnapshotsScanned", true))
+        if (this.TotalSnapshotsScanned == null && ec.Includes("totalSnapshotsScanned",true))
         {
             this.TotalSnapshotsScanned = new System.Int64();
         }
         //      C# -> System.Int64? TotalSucceededScans
         // GraphQL -> totalSucceededScans: Long! (scalar)
-        if (this.TotalSucceededScans == null && Exploration.Includes(parent + ".totalSucceededScans", true))
+        if (this.TotalSucceededScans == null && ec.Includes("totalSucceededScans",true))
         {
             this.TotalSucceededScans = new System.Int64();
         }
         //      C# -> System.Int64? TotalUniqueMatchedPaths
         // GraphQL -> totalUniqueMatchedPaths: Long! (scalar)
-        if (this.TotalUniqueMatchedPaths == null && Exploration.Includes(parent + ".totalUniqueMatchedPaths", true))
+        if (this.TotalUniqueMatchedPaths == null && ec.Includes("totalUniqueMatchedPaths",true))
         {
             this.TotalUniqueMatchedPaths = new System.Int64();
         }
         //      C# -> System.Int64? TotalUniqueQuarantinedPaths
         // GraphQL -> totalUniqueQuarantinedPaths: Long! (scalar)
-        if (this.TotalUniqueQuarantinedPaths == null && Exploration.Includes(parent + ".totalUniqueQuarantinedPaths", true))
+        if (this.TotalUniqueQuarantinedPaths == null && ec.Includes("totalUniqueQuarantinedPaths",true))
         {
             this.TotalUniqueQuarantinedPaths = new System.Int64();
         }
@@ -202,12 +201,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ThreatHuntStats> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ThreatHuntStats());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ThreatHuntStats> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

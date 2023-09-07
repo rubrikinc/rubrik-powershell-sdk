@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? IsGlobalBlackoutActive
         // GraphQL -> isGlobalBlackoutActive: Boolean! (scalar)
-        if (this.IsGlobalBlackoutActive == null && Exploration.Includes(parent + ".isGlobalBlackoutActive", true))
+        if (this.IsGlobalBlackoutActive == null && ec.Includes("isGlobalBlackoutActive",true))
         {
             this.IsGlobalBlackoutActive = true;
         }
         //      C# -> System.Boolean? IsSnappableBlackoutActive
         // GraphQL -> isSnappableBlackoutActive: Boolean (scalar)
-        if (this.IsSnappableBlackoutActive == null && Exploration.Includes(parent + ".isSnappableBlackoutActive", true))
+        if (this.IsSnappableBlackoutActive == null && ec.Includes("isSnappableBlackoutActive",true))
         {
             this.IsSnappableBlackoutActive = true;
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<BlackoutWindowStatus> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new BlackoutWindowStatus());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<BlackoutWindowStatus> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("orgId")]
         public System.String? OrgId { get; set; }
 
+        //      C# -> System.String? OrgName
+        // GraphQL -> orgName: String! (scalar)
+        [JsonProperty("orgName")]
+        public System.String? OrgName { get; set; }
+
         //      C# -> System.String? RequestId
         // GraphQL -> requestId: UUID! (scalar)
         [JsonProperty("requestId")]
@@ -44,6 +49,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updatedAt: DateTime (scalar)
         [JsonProperty("updatedAt")]
         public DateTime? UpdatedAt { get; set; }
+
+        //      C# -> AuthorizedOps? Operations
+        // GraphQL -> operations: AuthorizedOps! (type)
+        [JsonProperty("operations")]
+        public AuthorizedOps? Operations { get; set; }
 
         //      C# -> UserSummary? Requester
         // GraphQL -> requester: UserSummary! (type)
@@ -63,8 +73,10 @@ namespace RubrikSecurityCloud.Types
         TprReqStatus? Status = null,
         TprRule? TriggeredTprRule = null,
         System.String? OrgId = null,
+        System.String? OrgName = null,
         System.String? RequestId = null,
         DateTime? UpdatedAt = null,
+        AuthorizedOps? Operations = null,
         UserSummary? Requester = null
     ) 
     {
@@ -77,11 +89,17 @@ namespace RubrikSecurityCloud.Types
         if ( OrgId != null ) {
             this.OrgId = OrgId;
         }
+        if ( OrgName != null ) {
+            this.OrgName = OrgName;
+        }
         if ( RequestId != null ) {
             this.RequestId = RequestId;
         }
         if ( UpdatedAt != null ) {
             this.UpdatedAt = UpdatedAt;
+        }
+        if ( Operations != null ) {
+            this.Operations = Operations;
         }
         if ( Requester != null ) {
             this.Requester = Requester;
@@ -111,6 +129,11 @@ namespace RubrikSecurityCloud.Types
         if (this.OrgId != null) {
             s += ind + "orgId\n" ;
         }
+        //      C# -> System.String? OrgName
+        // GraphQL -> orgName: String! (scalar)
+        if (this.OrgName != null) {
+            s += ind + "orgName\n" ;
+        }
         //      C# -> System.String? RequestId
         // GraphQL -> requestId: UUID! (scalar)
         if (this.RequestId != null) {
@@ -120,6 +143,14 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updatedAt: DateTime (scalar)
         if (this.UpdatedAt != null) {
             s += ind + "updatedAt\n" ;
+        }
+        //      C# -> AuthorizedOps? Operations
+        // GraphQL -> operations: AuthorizedOps! (type)
+        if (this.Operations != null) {
+            var fspec = this.Operations.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "operations {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> UserSummary? Requester
         // GraphQL -> requester: UserSummary! (type)
@@ -134,45 +165,57 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> TprReqStatus? Status
         // GraphQL -> status: TprReqStatus! (enum)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = new TprReqStatus();
         }
         //      C# -> TprRule? TriggeredTprRule
         // GraphQL -> triggeredTprRule: TprRule! (enum)
-        if (this.TriggeredTprRule == null && Exploration.Includes(parent + ".triggeredTprRule", true))
+        if (this.TriggeredTprRule == null && ec.Includes("triggeredTprRule",true))
         {
             this.TriggeredTprRule = new TprRule();
         }
         //      C# -> System.String? OrgId
         // GraphQL -> orgId: String! (scalar)
-        if (this.OrgId == null && Exploration.Includes(parent + ".orgId", true))
+        if (this.OrgId == null && ec.Includes("orgId",true))
         {
             this.OrgId = "FETCH";
         }
+        //      C# -> System.String? OrgName
+        // GraphQL -> orgName: String! (scalar)
+        if (this.OrgName == null && ec.Includes("orgName",true))
+        {
+            this.OrgName = "FETCH";
+        }
         //      C# -> System.String? RequestId
         // GraphQL -> requestId: UUID! (scalar)
-        if (this.RequestId == null && Exploration.Includes(parent + ".requestId", true))
+        if (this.RequestId == null && ec.Includes("requestId",true))
         {
             this.RequestId = "FETCH";
         }
         //      C# -> DateTime? UpdatedAt
         // GraphQL -> updatedAt: DateTime (scalar)
-        if (this.UpdatedAt == null && Exploration.Includes(parent + ".updatedAt", true))
+        if (this.UpdatedAt == null && ec.Includes("updatedAt",true))
         {
             this.UpdatedAt = new DateTime();
         }
+        //      C# -> AuthorizedOps? Operations
+        // GraphQL -> operations: AuthorizedOps! (type)
+        if (this.Operations == null && ec.Includes("operations",false))
+        {
+            this.Operations = new AuthorizedOps();
+            this.Operations.ApplyExploratoryFieldSpec(ec.NewChild("operations"));
+        }
         //      C# -> UserSummary? Requester
         // GraphQL -> requester: UserSummary! (type)
-        if (this.Requester == null && Exploration.Includes(parent + ".requester"))
+        if (this.Requester == null && ec.Includes("requester",false))
         {
             this.Requester = new UserSummary();
-            this.Requester.ApplyExploratoryFieldSpec(parent + ".requester");
+            this.Requester.ApplyExploratoryFieldSpec(ec.NewChild("requester"));
         }
     }
 
@@ -206,12 +249,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<TprRequestSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new TprRequestSummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<TprRequestSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

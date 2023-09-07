@@ -131,42 +131,41 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ConfigProtectionStatus? ConfigProtectionStatus
         // GraphQL -> configProtectionStatus: ConfigProtectionStatus! (enum)
-        if (this.ConfigProtectionStatus == null && Exploration.Includes(parent + ".configProtectionStatus", true))
+        if (this.ConfigProtectionStatus == null && ec.Includes("configProtectionStatus",true))
         {
             this.ConfigProtectionStatus = new ConfigProtectionStatus();
         }
         //      C# -> UploadLocationType? UploadLocation
         // GraphQL -> uploadLocation: UploadLocationType! (enum)
-        if (this.UploadLocation == null && Exploration.Includes(parent + ".uploadLocation", true))
+        if (this.UploadLocation == null && ec.Includes("uploadLocation",true))
         {
             this.UploadLocation = new UploadLocationType();
         }
         //      C# -> System.String? CaCertUuid
         // GraphQL -> caCertUuid: UUID (scalar)
-        if (this.CaCertUuid == null && Exploration.Includes(parent + ".caCertUuid", true))
+        if (this.CaCertUuid == null && ec.Includes("caCertUuid",true))
         {
             this.CaCertUuid = "FETCH";
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
-        if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
+        if (this.ClusterUuid == null && ec.Includes("clusterUuid",true))
         {
             this.ClusterUuid = "FETCH";
         }
         //      C# -> DateTime? LastSuccessfulBackupTime
         // GraphQL -> lastSuccessfulBackupTime: DateTime (scalar)
-        if (this.LastSuccessfulBackupTime == null && Exploration.Includes(parent + ".lastSuccessfulBackupTime", true))
+        if (this.LastSuccessfulBackupTime == null && ec.Includes("lastSuccessfulBackupTime",true))
         {
             this.LastSuccessfulBackupTime = new DateTime();
         }
         //      C# -> System.String? ReplicationTargetName
         // GraphQL -> replicationTargetName: String (scalar)
-        if (this.ReplicationTargetName == null && Exploration.Includes(parent + ".replicationTargetName", true))
+        if (this.ReplicationTargetName == null && ec.Includes("replicationTargetName",true))
         {
             this.ReplicationTargetName = "FETCH";
         }
@@ -202,12 +201,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ConfigProtectionInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ConfigProtectionInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ConfigProtectionInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

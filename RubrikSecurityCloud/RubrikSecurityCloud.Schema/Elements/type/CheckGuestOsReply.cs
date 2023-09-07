@@ -92,27 +92,26 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<GuestOs>? SupportedOs
         // GraphQL -> supportedOs: [GuestOS!]! (enum)
-        if (this.SupportedOs == null && Exploration.Includes(parent + ".supportedOs", true))
+        if (this.SupportedOs == null && ec.Includes("supportedOs",true))
         {
             this.SupportedOs = new List<GuestOs>();
         }
         //      C# -> System.Boolean? Success
         // GraphQL -> success: Boolean! (scalar)
-        if (this.Success == null && Exploration.Includes(parent + ".success", true))
+        if (this.Success == null && ec.Includes("success",true))
         {
             this.Success = true;
         }
         //      C# -> List<CheckGuestOsResult>? ValidationResult
         // GraphQL -> validationResult: [CheckGuestOsResult!]! (type)
-        if (this.ValidationResult == null && Exploration.Includes(parent + ".validationResult"))
+        if (this.ValidationResult == null && ec.Includes("validationResult",false))
         {
             this.ValidationResult = new List<CheckGuestOsResult>();
-            this.ValidationResult.ApplyExploratoryFieldSpec(parent + ".validationResult");
+            this.ValidationResult.ApplyExploratoryFieldSpec(ec.NewChild("validationResult"));
         }
     }
 
@@ -146,12 +145,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CheckGuestOsReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CheckGuestOsReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CheckGuestOsReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

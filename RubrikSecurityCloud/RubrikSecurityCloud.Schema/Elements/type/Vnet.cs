@@ -106,33 +106,32 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? RegionName
         // GraphQL -> regionName: String! (scalar)
-        if (this.RegionName == null && Exploration.Includes(parent + ".regionName", true))
+        if (this.RegionName == null && ec.Includes("regionName",true))
         {
             this.RegionName = "FETCH";
         }
         //      C# -> ResourceGroup? ResourceGroup
         // GraphQL -> resourceGroup: ResourceGroup (type)
-        if (this.ResourceGroup == null && Exploration.Includes(parent + ".resourceGroup"))
+        if (this.ResourceGroup == null && ec.Includes("resourceGroup",false))
         {
             this.ResourceGroup = new ResourceGroup();
-            this.ResourceGroup.ApplyExploratoryFieldSpec(parent + ".resourceGroup");
+            this.ResourceGroup.ApplyExploratoryFieldSpec(ec.NewChild("resourceGroup"));
         }
     }
 
@@ -166,12 +165,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<Vnet> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new Vnet());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<Vnet> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

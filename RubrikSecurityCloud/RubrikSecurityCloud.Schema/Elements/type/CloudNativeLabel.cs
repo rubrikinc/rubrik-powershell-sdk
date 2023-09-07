@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? LabelKey
         // GraphQL -> labelKey: String! (scalar)
-        if (this.LabelKey == null && Exploration.Includes(parent + ".labelKey", true))
+        if (this.LabelKey == null && ec.Includes("labelKey",true))
         {
             this.LabelKey = "FETCH";
         }
         //      C# -> System.String? LabelValue
         // GraphQL -> labelValue: String! (scalar)
-        if (this.LabelValue == null && Exploration.Includes(parent + ".labelValue", true))
+        if (this.LabelValue == null && ec.Includes("labelValue",true))
         {
             this.LabelValue = "FETCH";
         }
         //      C# -> System.Boolean? MatchAllValues
         // GraphQL -> matchAllValues: Boolean! (scalar)
-        if (this.MatchAllValues == null && Exploration.Includes(parent + ".matchAllValues", true))
+        if (this.MatchAllValues == null && ec.Includes("matchAllValues",true))
         {
             this.MatchAllValues = true;
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CloudNativeLabel> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CloudNativeLabel());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CloudNativeLabel> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

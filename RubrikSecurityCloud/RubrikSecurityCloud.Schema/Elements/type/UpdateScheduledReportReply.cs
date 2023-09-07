@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ScheduledReport? ScheduledReport
         // GraphQL -> scheduledReport: ScheduledReport! (type)
-        if (this.ScheduledReport == null && Exploration.Includes(parent + ".scheduledReport"))
+        if (this.ScheduledReport == null && ec.Includes("scheduledReport",false))
         {
             this.ScheduledReport = new ScheduledReport();
-            this.ScheduledReport.ApplyExploratoryFieldSpec(parent + ".scheduledReport");
+            this.ScheduledReport.ApplyExploratoryFieldSpec(ec.NewChild("scheduledReport"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<UpdateScheduledReportReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new UpdateScheduledReportReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<UpdateScheduledReportReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

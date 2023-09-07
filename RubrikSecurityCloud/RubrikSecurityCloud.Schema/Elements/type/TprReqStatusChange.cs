@@ -117,36 +117,35 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> TprReqOperation? Operation
         // GraphQL -> operation: TprReqOperation! (enum)
-        if (this.Operation == null && Exploration.Includes(parent + ".operation", true))
+        if (this.Operation == null && ec.Includes("operation",true))
         {
             this.Operation = new TprReqOperation();
         }
         //      C# -> System.String? AuthorId
         // GraphQL -> authorId: String! (scalar)
-        if (this.AuthorId == null && Exploration.Includes(parent + ".authorId", true))
+        if (this.AuthorId == null && ec.Includes("authorId",true))
         {
             this.AuthorId = "FETCH";
         }
         //      C# -> System.String? AuthorName
         // GraphQL -> authorName: String! (scalar)
-        if (this.AuthorName == null && Exploration.Includes(parent + ".authorName", true))
+        if (this.AuthorName == null && ec.Includes("authorName",true))
         {
             this.AuthorName = "FETCH";
         }
         //      C# -> System.String? Comment
         // GraphQL -> comment: String! (scalar)
-        if (this.Comment == null && Exploration.Includes(parent + ".comment", true))
+        if (this.Comment == null && ec.Includes("comment",true))
         {
             this.Comment = "FETCH";
         }
         //      C# -> DateTime? Timestamp
         // GraphQL -> timestamp: DateTime (scalar)
-        if (this.Timestamp == null && Exploration.Includes(parent + ".timestamp", true))
+        if (this.Timestamp == null && ec.Includes("timestamp",true))
         {
             this.Timestamp = new DateTime();
         }
@@ -182,12 +181,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<TprReqStatusChange> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new TprReqStatusChange());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<TprReqStatusChange> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

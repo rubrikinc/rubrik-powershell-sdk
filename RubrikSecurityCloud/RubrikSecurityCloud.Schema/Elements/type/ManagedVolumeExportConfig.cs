@@ -92,27 +92,26 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ManagedVolumeShareType? ShareType
         // GraphQL -> shareType: ManagedVolumeShareType (enum)
-        if (this.ShareType == null && Exploration.Includes(parent + ".shareType", true))
+        if (this.ShareType == null && ec.Includes("shareType",true))
         {
             this.ShareType = new ManagedVolumeShareType();
         }
         //      C# -> System.String? Subnet
         // GraphQL -> subnet: String (scalar)
-        if (this.Subnet == null && Exploration.Includes(parent + ".subnet", true))
+        if (this.Subnet == null && ec.Includes("subnet",true))
         {
             this.Subnet = "FETCH";
         }
         //      C# -> ManagedVolumePatchConfig? ManagedVolumePatchConfig
         // GraphQL -> managedVolumePatchConfig: ManagedVolumePatchConfig (type)
-        if (this.ManagedVolumePatchConfig == null && Exploration.Includes(parent + ".managedVolumePatchConfig"))
+        if (this.ManagedVolumePatchConfig == null && ec.Includes("managedVolumePatchConfig",false))
         {
             this.ManagedVolumePatchConfig = new ManagedVolumePatchConfig();
-            this.ManagedVolumePatchConfig.ApplyExploratoryFieldSpec(parent + ".managedVolumePatchConfig");
+            this.ManagedVolumePatchConfig.ApplyExploratoryFieldSpec(ec.NewChild("managedVolumePatchConfig"));
         }
     }
 
@@ -146,12 +145,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ManagedVolumeExportConfig> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ManagedVolumeExportConfig());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ManagedVolumeExportConfig> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

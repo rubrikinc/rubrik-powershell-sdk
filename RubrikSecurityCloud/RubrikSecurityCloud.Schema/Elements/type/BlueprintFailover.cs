@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> FailoverTypeEnum? FailoverType
         // GraphQL -> failoverType: FailoverTypeEnum! (enum)
-        if (this.FailoverType == null && Exploration.Includes(parent + ".failoverType", true))
+        if (this.FailoverType == null && ec.Includes("failoverType",true))
         {
             this.FailoverType = new FailoverTypeEnum();
         }
         //      C# -> FailoverStatusEnum? Status
         // GraphQL -> status: FailoverStatusEnum! (enum)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = new FailoverStatusEnum();
         }
         //      C# -> System.String? FailoverId
         // GraphQL -> failoverId: String! (scalar)
-        if (this.FailoverId == null && Exploration.Includes(parent + ".failoverId", true))
+        if (this.FailoverId == null && ec.Includes("failoverId",true))
         {
             this.FailoverId = "FETCH";
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<BlueprintFailover> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new BlueprintFailover());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<BlueprintFailover> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

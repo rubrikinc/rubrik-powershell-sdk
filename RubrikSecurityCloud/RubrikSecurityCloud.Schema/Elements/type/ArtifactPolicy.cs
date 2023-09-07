@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> AwsCloudExternalArtifact? ExternalArtifactKey
         // GraphQL -> externalArtifactKey: AwsCloudExternalArtifact! (enum)
-        if (this.ExternalArtifactKey == null && Exploration.Includes(parent + ".externalArtifactKey", true))
+        if (this.ExternalArtifactKey == null && ec.Includes("externalArtifactKey",true))
         {
             this.ExternalArtifactKey = new AwsCloudExternalArtifact();
         }
         //      C# -> System.String? ErrorMessage
         // GraphQL -> errorMessage: String! (scalar)
-        if (this.ErrorMessage == null && Exploration.Includes(parent + ".errorMessage", true))
+        if (this.ErrorMessage == null && ec.Includes("errorMessage",true))
         {
             this.ErrorMessage = "FETCH";
         }
         //      C# -> System.String? TrustPolicyDoc
         // GraphQL -> trustPolicyDoc: String! (scalar)
-        if (this.TrustPolicyDoc == null && Exploration.Includes(parent + ".trustPolicyDoc", true))
+        if (this.TrustPolicyDoc == null && ec.Includes("trustPolicyDoc",true))
         {
             this.TrustPolicyDoc = "FETCH";
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ArtifactPolicy> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ArtifactPolicy());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ArtifactPolicy> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

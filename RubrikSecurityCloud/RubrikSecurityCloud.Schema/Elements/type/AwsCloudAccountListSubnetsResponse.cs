@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<CloudAccountSubnet>? Result
         // GraphQL -> result: [CloudAccountSubnet!]! (type)
-        if (this.Result == null && Exploration.Includes(parent + ".result"))
+        if (this.Result == null && ec.Includes("result",false))
         {
             this.Result = new List<CloudAccountSubnet>();
-            this.Result.ApplyExploratoryFieldSpec(parent + ".result");
+            this.Result.ApplyExploratoryFieldSpec(ec.NewChild("result"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AwsCloudAccountListSubnetsResponse> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AwsCloudAccountListSubnetsResponse());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AwsCloudAccountListSubnetsResponse> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

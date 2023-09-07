@@ -193,70 +193,69 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: String! (scalar)
-        if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
+        if (this.ClusterUuid == null && ec.Includes("clusterUuid",true))
         {
             this.ClusterUuid = "FETCH";
         }
         //      C# -> System.Boolean? HasPermissions
         // GraphQL -> hasPermissions: Boolean! (scalar)
-        if (this.HasPermissions == null && Exploration.Includes(parent + ".hasPermissions", true))
+        if (this.HasPermissions == null && ec.Includes("hasPermissions",true))
         {
             this.HasPermissions = true;
         }
         //      C# -> System.String? InstanceRootId
         // GraphQL -> instanceRootId: String! (scalar)
-        if (this.InstanceRootId == null && Exploration.Includes(parent + ".instanceRootId", true))
+        if (this.InstanceRootId == null && ec.Includes("instanceRootId",true))
         {
             this.InstanceRootId = "FETCH";
         }
         //      C# -> System.Boolean? IsArchived
         // GraphQL -> isArchived: Boolean! (scalar)
-        if (this.IsArchived == null && Exploration.Includes(parent + ".isArchived", true))
+        if (this.IsArchived == null && ec.Includes("isArchived",true))
         {
             this.IsArchived = true;
         }
         //      C# -> System.Boolean? IsStandBy
         // GraphQL -> isStandBy: Boolean! (scalar)
-        if (this.IsStandBy == null && Exploration.Includes(parent + ".isStandBy", true))
+        if (this.IsStandBy == null && ec.Includes("isStandBy",true))
         {
             this.IsStandBy = true;
         }
         //      C# -> System.String? RecoveryModel
         // GraphQL -> recoveryModel: String! (scalar)
-        if (this.RecoveryModel == null && Exploration.Includes(parent + ".recoveryModel", true))
+        if (this.RecoveryModel == null && ec.Includes("recoveryModel",true))
         {
             this.RecoveryModel = "FETCH";
         }
         //      C# -> System.Boolean? SnapshotNeeded
         // GraphQL -> snapshotNeeded: Boolean! (scalar)
-        if (this.SnapshotNeeded == null && Exploration.Includes(parent + ".snapshotNeeded", true))
+        if (this.SnapshotNeeded == null && ec.Includes("snapshotNeeded",true))
         {
             this.SnapshotNeeded = true;
         }
         //      C# -> System.String? State
         // GraphQL -> state: String! (scalar)
-        if (this.State == null && Exploration.Includes(parent + ".state", true))
+        if (this.State == null && ec.Includes("state",true))
         {
             this.State = "FETCH";
         }
         //      C# -> CdmMssqlDbReplicaAvailabilityInfo? AvailabilityInfo
         // GraphQL -> availabilityInfo: CdmMssqlDbReplicaAvailabilityInfo (type)
-        if (this.AvailabilityInfo == null && Exploration.Includes(parent + ".availabilityInfo"))
+        if (this.AvailabilityInfo == null && ec.Includes("availabilityInfo",false))
         {
             this.AvailabilityInfo = new CdmMssqlDbReplicaAvailabilityInfo();
-            this.AvailabilityInfo.ApplyExploratoryFieldSpec(parent + ".availabilityInfo");
+            this.AvailabilityInfo.ApplyExploratoryFieldSpec(ec.NewChild("availabilityInfo"));
         }
         //      C# -> MssqlInstance? Instance
         // GraphQL -> instance: MssqlInstance (type)
-        if (this.Instance == null && Exploration.Includes(parent + ".instance"))
+        if (this.Instance == null && ec.Includes("instance",false))
         {
             this.Instance = new MssqlInstance();
-            this.Instance.ApplyExploratoryFieldSpec(parent + ".instance");
+            this.Instance.ApplyExploratoryFieldSpec(ec.NewChild("instance"));
         }
     }
 
@@ -290,12 +289,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CdmMssqlDbReplica> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CdmMssqlDbReplica());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CdmMssqlDbReplica> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

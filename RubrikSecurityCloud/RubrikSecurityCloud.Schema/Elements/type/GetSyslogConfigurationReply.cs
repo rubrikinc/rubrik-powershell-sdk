@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<SyslogConfig>? Conf
         // GraphQL -> conf: [SyslogConfig!]! (type)
-        if (this.Conf == null && Exploration.Includes(parent + ".conf"))
+        if (this.Conf == null && ec.Includes("conf",false))
         {
             this.Conf = new List<SyslogConfig>();
-            this.Conf.ApplyExploratoryFieldSpec(parent + ".conf");
+            this.Conf.ApplyExploratoryFieldSpec(ec.NewChild("conf"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GetSyslogConfigurationReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GetSyslogConfigurationReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<GetSyslogConfigurationReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

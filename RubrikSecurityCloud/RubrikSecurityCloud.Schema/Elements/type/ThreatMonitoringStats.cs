@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? ObjectsWithMatches
         // GraphQL -> objectsWithMatches: Long! (scalar)
-        if (this.ObjectsWithMatches == null && Exploration.Includes(parent + ".objectsWithMatches", true))
+        if (this.ObjectsWithMatches == null && ec.Includes("objectsWithMatches",true))
         {
             this.ObjectsWithMatches = new System.Int64();
         }
         //      C# -> System.Int64? ObjectsWithNoMatches
         // GraphQL -> objectsWithNoMatches: Long! (scalar)
-        if (this.ObjectsWithNoMatches == null && Exploration.Includes(parent + ".objectsWithNoMatches", true))
+        if (this.ObjectsWithNoMatches == null && ec.Includes("objectsWithNoMatches",true))
         {
             this.ObjectsWithNoMatches = new System.Int64();
         }
         //      C# -> System.Int64? TotalObjectsScanned
         // GraphQL -> totalObjectsScanned: Long! (scalar)
-        if (this.TotalObjectsScanned == null && Exploration.Includes(parent + ".totalObjectsScanned", true))
+        if (this.TotalObjectsScanned == null && ec.Includes("totalObjectsScanned",true))
         {
             this.TotalObjectsScanned = new System.Int64();
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ThreatMonitoringStats> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ThreatMonitoringStats());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ThreatMonitoringStats> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

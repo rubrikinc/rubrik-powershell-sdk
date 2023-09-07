@@ -107,33 +107,32 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> RcsRegionEnumType? Region
         // GraphQL -> region: RcsRegionEnumType! (enum)
-        if (this.Region == null && Exploration.Includes(parent + ".region", true))
+        if (this.Region == null && ec.Includes("region",true))
         {
             this.Region = new RcsRegionEnumType();
         }
         //      C# -> TargetType? TargetType
         // GraphQL -> targetType: TargetType! (enum)
-        if (this.TargetType == null && Exploration.Includes(parent + ".targetType", true))
+        if (this.TargetType == null && ec.Includes("targetType",true))
         {
             this.TargetType = new TargetType();
         }
         //      C# -> RcsTierEnumType? Tier
         // GraphQL -> tier: RcsTierEnumType! (enum)
-        if (this.Tier == null && Exploration.Includes(parent + ".tier", true))
+        if (this.Tier == null && ec.Includes("tier",true))
         {
             this.Tier = new RcsTierEnumType();
         }
         //      C# -> RcsImmutabilitySettings? ImmutabilitySettings
         // GraphQL -> immutabilitySettings: RcsImmutabilitySettings! (type)
-        if (this.ImmutabilitySettings == null && Exploration.Includes(parent + ".immutabilitySettings"))
+        if (this.ImmutabilitySettings == null && ec.Includes("immutabilitySettings",false))
         {
             this.ImmutabilitySettings = new RcsImmutabilitySettings();
-            this.ImmutabilitySettings.ApplyExploratoryFieldSpec(parent + ".immutabilitySettings");
+            this.ImmutabilitySettings.ApplyExploratoryFieldSpec(ec.NewChild("immutabilitySettings"));
         }
     }
 
@@ -167,12 +166,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RcsAzureTargetTemplate> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RcsAzureTargetTemplate());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<RcsAzureTargetTemplate> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

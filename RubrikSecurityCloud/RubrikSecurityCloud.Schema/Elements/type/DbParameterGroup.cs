@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> AwsNativeRdsType? RdsType
         // GraphQL -> rdsType: AwsNativeRdsType! (enum)
-        if (this.RdsType == null && Exploration.Includes(parent + ".rdsType", true))
+        if (this.RdsType == null && ec.Includes("rdsType",true))
         {
             this.RdsType = new AwsNativeRdsType();
         }
         //      C# -> System.String? Arn
         // GraphQL -> arn: String! (scalar)
-        if (this.Arn == null && Exploration.Includes(parent + ".arn", true))
+        if (this.Arn == null && ec.Includes("arn",true))
         {
             this.Arn = "FETCH";
         }
         //      C# -> System.String? Family
         // GraphQL -> family: String! (scalar)
-        if (this.Family == null && Exploration.Includes(parent + ".family", true))
+        if (this.Family == null && ec.Includes("family",true))
         {
             this.Family = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<DbParameterGroup> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new DbParameterGroup());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<DbParameterGroup> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

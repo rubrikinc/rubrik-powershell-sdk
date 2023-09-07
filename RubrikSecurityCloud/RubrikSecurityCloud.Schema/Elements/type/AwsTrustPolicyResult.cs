@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? AwsNativeId
         // GraphQL -> awsNativeId: String! (scalar)
-        if (this.AwsNativeId == null && Exploration.Includes(parent + ".awsNativeId", true))
+        if (this.AwsNativeId == null && ec.Includes("awsNativeId",true))
         {
             this.AwsNativeId = "FETCH";
         }
         //      C# -> List<ArtifactPolicy>? Artifacts
         // GraphQL -> artifacts: [ArtifactPolicy!]! (type)
-        if (this.Artifacts == null && Exploration.Includes(parent + ".artifacts"))
+        if (this.Artifacts == null && ec.Includes("artifacts",false))
         {
             this.Artifacts = new List<ArtifactPolicy>();
-            this.Artifacts.ApplyExploratoryFieldSpec(parent + ".artifacts");
+            this.Artifacts.ApplyExploratoryFieldSpec(ec.NewChild("artifacts"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AwsTrustPolicyResult> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AwsTrustPolicyResult());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AwsTrustPolicyResult> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

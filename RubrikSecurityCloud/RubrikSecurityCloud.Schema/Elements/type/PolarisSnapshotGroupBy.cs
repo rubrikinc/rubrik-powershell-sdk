@@ -98,29 +98,28 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> PolarisSnapshotConnection? PolarisSnapshotConnection
         // GraphQL -> polarisSnapshotConnection: PolarisSnapshotConnection! (type)
-        if (this.PolarisSnapshotConnection == null && Exploration.Includes(parent + ".polarisSnapshotConnection"))
+        if (this.PolarisSnapshotConnection == null && ec.Includes("polarisSnapshotConnection",false))
         {
             this.PolarisSnapshotConnection = new PolarisSnapshotConnection();
-            this.PolarisSnapshotConnection.ApplyExploratoryFieldSpec(parent + ".polarisSnapshotConnection");
+            this.PolarisSnapshotConnection.ApplyExploratoryFieldSpec(ec.NewChild("polarisSnapshotConnection"));
         }
         //      C# -> List<PolarisSnapshotGroupBy>? PolarisSnapshotGroupByField
         // GraphQL -> polarisSnapshotGroupBy: [PolarisSnapshotGroupBy!]! (type)
-        if (this.PolarisSnapshotGroupByField == null && Exploration.Includes(parent + ".polarisSnapshotGroupBy"))
+        if (this.PolarisSnapshotGroupByField == null && ec.Includes("polarisSnapshotGroupBy",false))
         {
             this.PolarisSnapshotGroupByField = new List<PolarisSnapshotGroupBy>();
-            this.PolarisSnapshotGroupByField.ApplyExploratoryFieldSpec(parent + ".polarisSnapshotGroupBy");
+            this.PolarisSnapshotGroupByField.ApplyExploratoryFieldSpec(ec.NewChild("polarisSnapshotGroupBy"));
         }
         //      C# -> PolarisSnapshotGroupByInfo? GroupByInfo
         // GraphQL -> groupByInfo: PolarisSnapshotGroupByInfo! (union)
-        if (this.GroupByInfo == null && Exploration.Includes(parent + ".groupByInfo"))
+        if (this.GroupByInfo == null && ec.Includes("groupByInfo",false))
         {
             var impls = new List<PolarisSnapshotGroupByInfo>();
-            impls.ApplyExploratoryFieldSpec(parent + ".groupByInfo");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
             this.GroupByInfo = (PolarisSnapshotGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
         }
     }
@@ -155,12 +154,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PolarisSnapshotGroupBy> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PolarisSnapshotGroupBy());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<PolarisSnapshotGroupBy> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

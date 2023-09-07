@@ -176,63 +176,62 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> HotAddProxyVmStatusType? Status
         // GraphQL -> status: HotAddProxyVmStatusType! (enum)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = new HotAddProxyVmStatusType();
         }
         //      C# -> System.String? ComputeClusterName
         // GraphQL -> computeClusterName: String (scalar)
-        if (this.ComputeClusterName == null && Exploration.Includes(parent + ".computeClusterName", true))
+        if (this.ComputeClusterName == null && ec.Includes("computeClusterName",true))
         {
             this.ComputeClusterName = "FETCH";
         }
         //      C# -> System.String? DatastoreName
         // GraphQL -> datastoreName: String! (scalar)
-        if (this.DatastoreName == null && Exploration.Includes(parent + ".datastoreName", true))
+        if (this.DatastoreName == null && ec.Includes("datastoreName",true))
         {
             this.DatastoreName = "FETCH";
         }
         //      C# -> System.String? HostName
         // GraphQL -> hostName: String (scalar)
-        if (this.HostName == null && Exploration.Includes(parent + ".hostName", true))
+        if (this.HostName == null && ec.Includes("hostName",true))
         {
             this.HostName = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.Int32? UsedPortCount
         // GraphQL -> usedPortCount: Int! (scalar)
-        if (this.UsedPortCount == null && Exploration.Includes(parent + ".usedPortCount", true))
+        if (this.UsedPortCount == null && ec.Includes("usedPortCount",true))
         {
             this.UsedPortCount = Int32.MinValue;
         }
         //      C# -> System.String? VcenterName
         // GraphQL -> vcenterName: String! (scalar)
-        if (this.VcenterName == null && Exploration.Includes(parent + ".vcenterName", true))
+        if (this.VcenterName == null && ec.Includes("vcenterName",true))
         {
             this.VcenterName = "FETCH";
         }
         //      C# -> HotAddNetworkConfigWithName? ProxyNetworkInfo
         // GraphQL -> proxyNetworkInfo: HotAddNetworkConfigWithName (type)
-        if (this.ProxyNetworkInfo == null && Exploration.Includes(parent + ".proxyNetworkInfo"))
+        if (this.ProxyNetworkInfo == null && ec.Includes("proxyNetworkInfo",false))
         {
             this.ProxyNetworkInfo = new HotAddNetworkConfigWithName();
-            this.ProxyNetworkInfo.ApplyExploratoryFieldSpec(parent + ".proxyNetworkInfo");
+            this.ProxyNetworkInfo.ApplyExploratoryFieldSpec(ec.NewChild("proxyNetworkInfo"));
         }
     }
 
@@ -266,12 +265,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<HotAddProxyVmInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new HotAddProxyVmInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<HotAddProxyVmInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

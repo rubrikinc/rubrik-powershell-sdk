@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? LatestProductType
         // GraphQL -> latestProductType: String! (scalar)
-        if (this.LatestProductType == null && Exploration.Includes(parent + ".latestProductType", true))
+        if (this.LatestProductType == null && ec.Includes("latestProductType",true))
         {
             this.LatestProductType = "FETCH";
         }
         //      C# -> List<System.String>? ProductTypes
         // GraphQL -> productTypes: [String!]! (scalar)
-        if (this.ProductTypes == null && Exploration.Includes(parent + ".productTypes", true))
+        if (this.ProductTypes == null && ec.Includes("productTypes",true))
         {
             this.ProductTypes = new List<System.String>();
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ClusterRegistrationProductInfoType> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ClusterRegistrationProductInfoType());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ClusterRegistrationProductInfoType> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

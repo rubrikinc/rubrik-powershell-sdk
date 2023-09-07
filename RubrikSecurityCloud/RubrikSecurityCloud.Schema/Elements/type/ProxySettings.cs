@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int32? PortNumber
         // GraphQL -> portNumber: Int! (scalar)
-        if (this.PortNumber == null && Exploration.Includes(parent + ".portNumber", true))
+        if (this.PortNumber == null && ec.Includes("portNumber",true))
         {
             this.PortNumber = Int32.MinValue;
         }
         //      C# -> System.String? Protocol
         // GraphQL -> protocol: String! (scalar)
-        if (this.Protocol == null && Exploration.Includes(parent + ".protocol", true))
+        if (this.Protocol == null && ec.Includes("protocol",true))
         {
             this.Protocol = "FETCH";
         }
         //      C# -> System.String? ProxyServer
         // GraphQL -> proxyServer: String! (scalar)
-        if (this.ProxyServer == null && Exploration.Includes(parent + ".proxyServer", true))
+        if (this.ProxyServer == null && ec.Includes("proxyServer",true))
         {
             this.ProxyServer = "FETCH";
         }
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)
-        if (this.Username == null && Exploration.Includes(parent + ".username", true))
+        if (this.Username == null && ec.Includes("username",true))
         {
             this.Username = "FETCH";
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ProxySettings> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ProxySettings());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ProxySettings> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

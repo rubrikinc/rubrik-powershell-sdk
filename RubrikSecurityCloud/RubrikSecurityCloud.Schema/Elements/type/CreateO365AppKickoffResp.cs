@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? AppClientId
         // GraphQL -> appClientId: String! (scalar)
-        if (this.AppClientId == null && Exploration.Includes(parent + ".appClientId", true))
+        if (this.AppClientId == null && ec.Includes("appClientId",true))
         {
             this.AppClientId = "FETCH";
         }
         //      C# -> System.String? CsrfToken
         // GraphQL -> csrfToken: String! (scalar)
-        if (this.CsrfToken == null && Exploration.Includes(parent + ".csrfToken", true))
+        if (this.CsrfToken == null && ec.Includes("csrfToken",true))
         {
             this.CsrfToken = "FETCH";
         }
         //      C# -> System.String? O365TenantId
         // GraphQL -> o365TenantId: String! (scalar)
-        if (this.O365TenantId == null && Exploration.Includes(parent + ".o365TenantId", true))
+        if (this.O365TenantId == null && ec.Includes("o365TenantId",true))
         {
             this.O365TenantId = "FETCH";
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CreateO365AppKickoffResp> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CreateO365AppKickoffResp());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CreateO365AppKickoffResp> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

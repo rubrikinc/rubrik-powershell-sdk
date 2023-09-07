@@ -162,57 +162,56 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ObjectTypeEnum? ObjectType
         // GraphQL -> objectType: ObjectTypeEnum! (enum)
-        if (this.ObjectType == null && Exploration.Includes(parent + ".objectType", true))
+        if (this.ObjectType == null && ec.Includes("objectType",true))
         {
             this.ObjectType = new ObjectTypeEnum();
         }
         //      C# -> System.String? AnomalyId
         // GraphQL -> anomalyId: String! (scalar)
-        if (this.AnomalyId == null && Exploration.Includes(parent + ".anomalyId", true))
+        if (this.AnomalyId == null && ec.Includes("anomalyId",true))
         {
             this.AnomalyId = "FETCH";
         }
         //      C# -> DateTime? DetectionTime
         // GraphQL -> detectionTime: DateTime! (scalar)
-        if (this.DetectionTime == null && Exploration.Includes(parent + ".detectionTime", true))
+        if (this.DetectionTime == null && ec.Includes("detectionTime",true))
         {
             this.DetectionTime = new DateTime();
         }
         //      C# -> System.Boolean? IsAnomaly
         // GraphQL -> isAnomaly: Boolean! (scalar)
-        if (this.IsAnomaly == null && Exploration.Includes(parent + ".isAnomaly", true))
+        if (this.IsAnomaly == null && ec.Includes("isAnomaly",true))
         {
             this.IsAnomaly = true;
         }
         //      C# -> System.String? Location
         // GraphQL -> location: String! (scalar)
-        if (this.Location == null && Exploration.Includes(parent + ".location", true))
+        if (this.Location == null && ec.Includes("location",true))
         {
             this.Location = "FETCH";
         }
         //      C# -> System.String? WorkloadFid
         // GraphQL -> workloadFid: UUID! (scalar)
-        if (this.WorkloadFid == null && Exploration.Includes(parent + ".workloadFid", true))
+        if (this.WorkloadFid == null && ec.Includes("workloadFid",true))
         {
             this.WorkloadFid = "FETCH";
         }
         //      C# -> System.String? WorkloadName
         // GraphQL -> workloadName: String! (scalar)
-        if (this.WorkloadName == null && Exploration.Includes(parent + ".workloadName", true))
+        if (this.WorkloadName == null && ec.Includes("workloadName",true))
         {
             this.WorkloadName = "FETCH";
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
-        if (this.Cluster == null && Exploration.Includes(parent + ".cluster"))
+        if (this.Cluster == null && ec.Includes("cluster",false))
         {
             this.Cluster = new Cluster();
-            this.Cluster.ApplyExploratoryFieldSpec(parent + ".cluster");
+            this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
         }
     }
 
@@ -246,12 +245,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<NfAnomalyResult> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new NfAnomalyResult());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<NfAnomalyResult> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

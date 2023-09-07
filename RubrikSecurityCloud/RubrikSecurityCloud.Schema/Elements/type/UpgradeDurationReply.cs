@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? FastUpgradeDuration
         // GraphQL -> fastUpgradeDuration: Long! (scalar)
-        if (this.FastUpgradeDuration == null && Exploration.Includes(parent + ".fastUpgradeDuration", true))
+        if (this.FastUpgradeDuration == null && ec.Includes("fastUpgradeDuration",true))
         {
             this.FastUpgradeDuration = new System.Int64();
         }
         //      C# -> System.Int64? RollingUpgradeDuration
         // GraphQL -> rollingUpgradeDuration: Long! (scalar)
-        if (this.RollingUpgradeDuration == null && Exploration.Includes(parent + ".rollingUpgradeDuration", true))
+        if (this.RollingUpgradeDuration == null && ec.Includes("rollingUpgradeDuration",true))
         {
             this.RollingUpgradeDuration = new System.Int64();
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<UpgradeDurationReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new UpgradeDurationReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<UpgradeDurationReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

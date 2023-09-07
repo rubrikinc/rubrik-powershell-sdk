@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? FilterCondition
         // GraphQL -> filterCondition: String! (scalar)
-        if (this.FilterCondition == null && Exploration.Includes(parent + ".filterCondition", true))
+        if (this.FilterCondition == null && ec.Includes("filterCondition",true))
         {
             this.FilterCondition = "FETCH";
         }
         //      C# -> VirtualMachineSummary? VirtualMachineSummary
         // GraphQL -> virtualMachineSummary: VirtualMachineSummary (type)
-        if (this.VirtualMachineSummary == null && Exploration.Includes(parent + ".virtualMachineSummary"))
+        if (this.VirtualMachineSummary == null && ec.Includes("virtualMachineSummary",false))
         {
             this.VirtualMachineSummary = new VirtualMachineSummary();
-            this.VirtualMachineSummary.ApplyExploratoryFieldSpec(parent + ".virtualMachineSummary");
+            this.VirtualMachineSummary.ApplyExploratoryFieldSpec(ec.NewChild("virtualMachineSummary"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<FilterPreviewResult> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new FilterPreviewResult());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<FilterPreviewResult> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

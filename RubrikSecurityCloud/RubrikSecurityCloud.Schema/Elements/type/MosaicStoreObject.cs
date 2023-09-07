@@ -134,45 +134,44 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> MosaicStoreObjectStoreType? StoreType
         // GraphQL -> storeType: MosaicStoreObjectStoreType! (enum)
-        if (this.StoreType == null && Exploration.Includes(parent + ".storeType", true))
+        if (this.StoreType == null && ec.Includes("storeType",true))
         {
             this.StoreType = new MosaicStoreObjectStoreType();
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.String? StoreName
         // GraphQL -> storeName: String! (scalar)
-        if (this.StoreName == null && Exploration.Includes(parent + ".storeName", true))
+        if (this.StoreName == null && ec.Includes("storeName",true))
         {
             this.StoreName = "FETCH";
         }
         //      C# -> System.String? StoreUrl
         // GraphQL -> storeUrl: String! (scalar)
-        if (this.StoreUrl == null && Exploration.Includes(parent + ".storeUrl", true))
+        if (this.StoreUrl == null && ec.Includes("storeUrl",true))
         {
             this.StoreUrl = "FETCH";
         }
         //      C# -> System.String? SurlNfs
         // GraphQL -> surlNfs: String (scalar)
-        if (this.SurlNfs == null && Exploration.Includes(parent + ".surlNfs", true))
+        if (this.SurlNfs == null && ec.Includes("surlNfs",true))
         {
             this.SurlNfs = "FETCH";
         }
         //      C# -> StoreMetadata? StoreMetadata
         // GraphQL -> storeMetadata: StoreMetadata (type)
-        if (this.StoreMetadata == null && Exploration.Includes(parent + ".storeMetadata"))
+        if (this.StoreMetadata == null && ec.Includes("storeMetadata",false))
         {
             this.StoreMetadata = new StoreMetadata();
-            this.StoreMetadata.ApplyExploratoryFieldSpec(parent + ".storeMetadata");
+            this.StoreMetadata.ApplyExploratoryFieldSpec(ec.NewChild("storeMetadata"));
         }
     }
 
@@ -206,12 +205,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<MosaicStoreObject> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new MosaicStoreObject());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<MosaicStoreObject> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

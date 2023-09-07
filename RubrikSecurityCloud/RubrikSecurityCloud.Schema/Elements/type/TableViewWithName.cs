@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> TableViewType? TableViewType
         // GraphQL -> tableViewType: TableViewType! (enum)
-        if (this.TableViewType == null && Exploration.Includes(parent + ".tableViewType", true))
+        if (this.TableViewType == null && ec.Includes("tableViewType",true))
         {
             this.TableViewType = new TableViewType();
         }
         //      C# -> System.String? TableName
         // GraphQL -> tableName: String! (scalar)
-        if (this.TableName == null && Exploration.Includes(parent + ".tableName", true))
+        if (this.TableName == null && ec.Includes("tableName",true))
         {
             this.TableName = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<TableViewWithName> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new TableViewWithName());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<TableViewWithName> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

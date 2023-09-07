@@ -81,22 +81,21 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> AwsCloudAccount? AwsCloudAccount
         // GraphQL -> awsCloudAccount: AwsCloudAccount (type)
-        if (this.AwsCloudAccount == null && Exploration.Includes(parent + ".awsCloudAccount"))
+        if (this.AwsCloudAccount == null && ec.Includes("awsCloudAccount",false))
         {
             this.AwsCloudAccount = new AwsCloudAccount();
-            this.AwsCloudAccount.ApplyExploratoryFieldSpec(parent + ".awsCloudAccount");
+            this.AwsCloudAccount.ApplyExploratoryFieldSpec(ec.NewChild("awsCloudAccount"));
         }
         //      C# -> List<FeatureDetail>? FeatureDetails
         // GraphQL -> featureDetails: [FeatureDetail!]! (type)
-        if (this.FeatureDetails == null && Exploration.Includes(parent + ".featureDetails"))
+        if (this.FeatureDetails == null && ec.Includes("featureDetails",false))
         {
             this.FeatureDetails = new List<FeatureDetail>();
-            this.FeatureDetails.ApplyExploratoryFieldSpec(parent + ".featureDetails");
+            this.FeatureDetails.ApplyExploratoryFieldSpec(ec.NewChild("featureDetails"));
         }
     }
 
@@ -130,12 +129,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AwsCloudAccountWithFeatures> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AwsCloudAccountWithFeatures());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AwsCloudAccountWithFeatures> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

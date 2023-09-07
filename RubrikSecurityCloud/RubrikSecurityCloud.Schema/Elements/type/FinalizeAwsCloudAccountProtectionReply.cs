@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Message
         // GraphQL -> message: String (scalar)
-        if (this.Message == null && Exploration.Includes(parent + ".message", true))
+        if (this.Message == null && ec.Includes("message",true))
         {
             this.Message = "FETCH";
         }
         //      C# -> List<AwsCloudAccount>? AwsChildAccounts
         // GraphQL -> awsChildAccounts: [AwsCloudAccount!]! (type)
-        if (this.AwsChildAccounts == null && Exploration.Includes(parent + ".awsChildAccounts"))
+        if (this.AwsChildAccounts == null && ec.Includes("awsChildAccounts",false))
         {
             this.AwsChildAccounts = new List<AwsCloudAccount>();
-            this.AwsChildAccounts.ApplyExploratoryFieldSpec(parent + ".awsChildAccounts");
+            this.AwsChildAccounts.ApplyExploratoryFieldSpec(ec.NewChild("awsChildAccounts"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<FinalizeAwsCloudAccountProtectionReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new FinalizeAwsCloudAccountProtectionReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<FinalizeAwsCloudAccountProtectionReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

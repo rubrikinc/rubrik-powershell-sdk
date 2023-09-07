@@ -162,57 +162,56 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<AwsCloudAccountRegion>? AwsRegions
         // GraphQL -> awsRegions: [AwsCloudAccountRegion!]! (enum)
-        if (this.AwsRegions == null && Exploration.Includes(parent + ".awsRegions", true))
+        if (this.AwsRegions == null && ec.Includes("awsRegions",true))
         {
             this.AwsRegions = new List<AwsCloudAccountRegion>();
         }
         //      C# -> CloudAccountFeature? Feature
         // GraphQL -> feature: CloudAccountFeature! (enum)
-        if (this.Feature == null && Exploration.Includes(parent + ".feature", true))
+        if (this.Feature == null && ec.Includes("feature",true))
         {
             this.Feature = new CloudAccountFeature();
         }
         //      C# -> CloudAccountStatus? Status
         // GraphQL -> status: CloudAccountStatus! (enum)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = new CloudAccountStatus();
         }
         //      C# -> System.String? AccessKey
         // GraphQL -> accessKey: String (scalar)
-        if (this.AccessKey == null && Exploration.Includes(parent + ".accessKey", true))
+        if (this.AccessKey == null && ec.Includes("accessKey",true))
         {
             this.AccessKey = "FETCH";
         }
         //      C# -> System.String? RoleArn
         // GraphQL -> roleArn: String! (scalar)
-        if (this.RoleArn == null && Exploration.Includes(parent + ".roleArn", true))
+        if (this.RoleArn == null && ec.Includes("roleArn",true))
         {
             this.RoleArn = "FETCH";
         }
         //      C# -> System.String? StackArn
         // GraphQL -> stackArn: String! (scalar)
-        if (this.StackArn == null && Exploration.Includes(parent + ".stackArn", true))
+        if (this.StackArn == null && ec.Includes("stackArn",true))
         {
             this.StackArn = "FETCH";
         }
         //      C# -> System.String? UserArn
         // GraphQL -> userArn: String (scalar)
-        if (this.UserArn == null && Exploration.Includes(parent + ".userArn", true))
+        if (this.UserArn == null && ec.Includes("userArn",true))
         {
             this.UserArn = "FETCH";
         }
         //      C# -> AwsAuthServerDetail? AuthServerDetail
         // GraphQL -> authServerDetail: AwsAuthServerDetail (type)
-        if (this.AuthServerDetail == null && Exploration.Includes(parent + ".authServerDetail"))
+        if (this.AuthServerDetail == null && ec.Includes("authServerDetail",false))
         {
             this.AuthServerDetail = new AwsAuthServerDetail();
-            this.AuthServerDetail.ApplyExploratoryFieldSpec(parent + ".authServerDetail");
+            this.AuthServerDetail.ApplyExploratoryFieldSpec(ec.NewChild("authServerDetail"));
         }
     }
 
@@ -246,12 +245,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<FeatureDetail> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new FeatureDetail());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<FeatureDetail> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

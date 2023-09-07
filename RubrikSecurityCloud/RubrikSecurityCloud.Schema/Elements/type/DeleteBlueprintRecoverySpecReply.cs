@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<RecoverySpecId>? RecoverySpecIds
         // GraphQL -> recoverySpecIds: [RecoverySpecId!]! (type)
-        if (this.RecoverySpecIds == null && Exploration.Includes(parent + ".recoverySpecIds"))
+        if (this.RecoverySpecIds == null && ec.Includes("recoverySpecIds",false))
         {
             this.RecoverySpecIds = new List<RecoverySpecId>();
-            this.RecoverySpecIds.ApplyExploratoryFieldSpec(parent + ".recoverySpecIds");
+            this.RecoverySpecIds.ApplyExploratoryFieldSpec(ec.NewChild("recoverySpecIds"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<DeleteBlueprintRecoverySpecReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new DeleteBlueprintRecoverySpecReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<DeleteBlueprintRecoverySpecReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

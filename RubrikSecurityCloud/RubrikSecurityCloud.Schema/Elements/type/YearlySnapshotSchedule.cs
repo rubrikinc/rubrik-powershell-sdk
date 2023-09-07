@@ -92,27 +92,26 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> DayOfYear? DayOfYear
         // GraphQL -> dayOfYear: DayOfYear! (enum)
-        if (this.DayOfYear == null && Exploration.Includes(parent + ".dayOfYear", true))
+        if (this.DayOfYear == null && ec.Includes("dayOfYear",true))
         {
             this.DayOfYear = new DayOfYear();
         }
         //      C# -> Month? YearStartMonth
         // GraphQL -> yearStartMonth: Month! (enum)
-        if (this.YearStartMonth == null && Exploration.Includes(parent + ".yearStartMonth", true))
+        if (this.YearStartMonth == null && ec.Includes("yearStartMonth",true))
         {
             this.YearStartMonth = new Month();
         }
         //      C# -> BasicSnapshotSchedule? BasicSchedule
         // GraphQL -> basicSchedule: BasicSnapshotSchedule (type)
-        if (this.BasicSchedule == null && Exploration.Includes(parent + ".basicSchedule"))
+        if (this.BasicSchedule == null && ec.Includes("basicSchedule",false))
         {
             this.BasicSchedule = new BasicSnapshotSchedule();
-            this.BasicSchedule.ApplyExploratoryFieldSpec(parent + ".basicSchedule");
+            this.BasicSchedule.ApplyExploratoryFieldSpec(ec.NewChild("basicSchedule"));
         }
     }
 
@@ -146,12 +145,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<YearlySnapshotSchedule> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new YearlySnapshotSchedule());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<YearlySnapshotSchedule> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

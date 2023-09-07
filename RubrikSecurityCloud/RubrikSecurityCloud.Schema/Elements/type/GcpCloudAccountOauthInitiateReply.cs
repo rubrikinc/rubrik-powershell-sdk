@@ -117,36 +117,35 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? ClientId
         // GraphQL -> clientId: String! (scalar)
-        if (this.ClientId == null && Exploration.Includes(parent + ".clientId", true))
+        if (this.ClientId == null && ec.Includes("clientId",true))
         {
             this.ClientId = "FETCH";
         }
         //      C# -> System.String? RedirectUrl
         // GraphQL -> redirectUrl: String! (scalar)
-        if (this.RedirectUrl == null && Exploration.Includes(parent + ".redirectUrl", true))
+        if (this.RedirectUrl == null && ec.Includes("redirectUrl",true))
         {
             this.RedirectUrl = "FETCH";
         }
         //      C# -> List<System.String>? Scope
         // GraphQL -> scope: [String!]! (scalar)
-        if (this.Scope == null && Exploration.Includes(parent + ".scope", true))
+        if (this.Scope == null && ec.Includes("scope",true))
         {
             this.Scope = new List<System.String>();
         }
         //      C# -> System.String? SessionId
         // GraphQL -> sessionId: String! (scalar)
-        if (this.SessionId == null && Exploration.Includes(parent + ".sessionId", true))
+        if (this.SessionId == null && ec.Includes("sessionId",true))
         {
             this.SessionId = "FETCH";
         }
         //      C# -> System.String? State
         // GraphQL -> state: String! (scalar)
-        if (this.State == null && Exploration.Includes(parent + ".state", true))
+        if (this.State == null && ec.Includes("state",true))
         {
             this.State = "FETCH";
         }
@@ -182,12 +181,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GcpCloudAccountOauthInitiateReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GcpCloudAccountOauthInitiateReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<GcpCloudAccountOauthInitiateReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

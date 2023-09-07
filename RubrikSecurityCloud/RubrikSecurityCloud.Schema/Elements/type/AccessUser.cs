@@ -145,48 +145,47 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? ActivityDelta
         // GraphQL -> activityDelta: Long! (scalar)
-        if (this.ActivityDelta == null && Exploration.Includes(parent + ".activityDelta", true))
+        if (this.ActivityDelta == null && ec.Includes("activityDelta",true))
         {
             this.ActivityDelta = new System.Int64();
         }
         //      C# -> System.String? Email
         // GraphQL -> email: String! (scalar)
-        if (this.Email == null && Exploration.Includes(parent + ".email", true))
+        if (this.Email == null && ec.Includes("email",true))
         {
             this.Email = "FETCH";
         }
         //      C# -> System.Int64? LastAccessTime
         // GraphQL -> lastAccessTime: Long! (scalar)
-        if (this.LastAccessTime == null && Exploration.Includes(parent + ".lastAccessTime", true))
+        if (this.LastAccessTime == null && ec.Includes("lastAccessTime",true))
         {
             this.LastAccessTime = new System.Int64();
         }
         //      C# -> System.Int64? NumActivities
         // GraphQL -> numActivities: Long! (scalar)
-        if (this.NumActivities == null && Exploration.Includes(parent + ".numActivities", true))
+        if (this.NumActivities == null && ec.Includes("numActivities",true))
         {
             this.NumActivities = new System.Int64();
         }
         //      C# -> System.String? SubjectName
         // GraphQL -> subjectName: String! (scalar)
-        if (this.SubjectName == null && Exploration.Includes(parent + ".subjectName", true))
+        if (this.SubjectName == null && ec.Includes("subjectName",true))
         {
             this.SubjectName = "FETCH";
         }
         //      C# -> System.String? UserSid
         // GraphQL -> userSid: String! (scalar)
-        if (this.UserSid == null && Exploration.Includes(parent + ".userSid", true))
+        if (this.UserSid == null && ec.Includes("userSid",true))
         {
             this.UserSid = "FETCH";
         }
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)
-        if (this.Username == null && Exploration.Includes(parent + ".username", true))
+        if (this.Username == null && ec.Includes("username",true))
         {
             this.Username = "FETCH";
         }
@@ -222,12 +221,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AccessUser> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AccessUser());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AccessUser> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

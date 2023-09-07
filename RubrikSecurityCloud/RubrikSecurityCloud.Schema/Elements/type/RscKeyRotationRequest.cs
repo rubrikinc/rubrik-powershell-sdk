@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
-        if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
+        if (this.ClusterUuid == null && ec.Includes("clusterUuid",true))
         {
             this.ClusterUuid = "FETCH";
         }
         //      C# -> System.Boolean? DidKeyRotationJobFail
         // GraphQL -> didKeyRotationJobFail: Boolean! (scalar)
-        if (this.DidKeyRotationJobFail == null && Exploration.Includes(parent + ".didKeyRotationJobFail", true))
+        if (this.DidKeyRotationJobFail == null && ec.Includes("didKeyRotationJobFail",true))
         {
             this.DidKeyRotationJobFail = true;
         }
         //      C# -> DateTime? RequestedAt
         // GraphQL -> requestedAt: DateTime (scalar)
-        if (this.RequestedAt == null && Exploration.Includes(parent + ".requestedAt", true))
+        if (this.RequestedAt == null && ec.Includes("requestedAt",true))
         {
             this.RequestedAt = new DateTime();
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RscKeyRotationRequest> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RscKeyRotationRequest());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<RscKeyRotationRequest> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

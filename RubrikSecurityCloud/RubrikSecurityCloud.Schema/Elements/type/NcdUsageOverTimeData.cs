@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? ChangeInBytes
         // GraphQL -> changeInBytes: Long! (scalar)
-        if (this.ChangeInBytes == null && Exploration.Includes(parent + ".changeInBytes", true))
+        if (this.ChangeInBytes == null && ec.Includes("changeInBytes",true))
         {
             this.ChangeInBytes = new System.Int64();
         }
         //      C# -> System.Int64? NewInBytes
         // GraphQL -> newInBytes: Long! (scalar)
-        if (this.NewInBytes == null && Exploration.Includes(parent + ".newInBytes", true))
+        if (this.NewInBytes == null && ec.Includes("newInBytes",true))
         {
             this.NewInBytes = new System.Int64();
         }
         //      C# -> DateTime? Timestamp
         // GraphQL -> timestamp: DateTime (scalar)
-        if (this.Timestamp == null && Exploration.Includes(parent + ".timestamp", true))
+        if (this.Timestamp == null && ec.Includes("timestamp",true))
         {
             this.Timestamp = new DateTime();
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<NcdUsageOverTimeData> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new NcdUsageOverTimeData());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<NcdUsageOverTimeData> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? ClusterId
         // GraphQL -> clusterId: UUID! (scalar)
-        if (this.ClusterId == null && Exploration.Includes(parent + ".clusterId", true))
+        if (this.ClusterId == null && ec.Includes("clusterId",true))
         {
             this.ClusterId = "FETCH";
         }
         //      C# -> System.String? DataIpAddress
         // GraphQL -> dataIpAddress: String! (scalar)
-        if (this.DataIpAddress == null && Exploration.Includes(parent + ".dataIpAddress", true))
+        if (this.DataIpAddress == null && ec.Includes("dataIpAddress",true))
         {
             this.DataIpAddress = "FETCH";
         }
         //      C# -> System.String? IpmiIpAddress
         // GraphQL -> ipmiIpAddress: String (scalar)
-        if (this.IpmiIpAddress == null && Exploration.Includes(parent + ".ipmiIpAddress", true))
+        if (this.IpmiIpAddress == null && ec.Includes("ipmiIpAddress",true))
         {
             this.IpmiIpAddress = "FETCH";
         }
         //      C# -> System.String? NodeId
         // GraphQL -> nodeId: String! (scalar)
-        if (this.NodeId == null && Exploration.Includes(parent + ".nodeId", true))
+        if (this.NodeId == null && ec.Includes("nodeId",true))
         {
             this.NodeId = "FETCH";
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CdmNodeDetail> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CdmNodeDetail());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CdmNodeDetail> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

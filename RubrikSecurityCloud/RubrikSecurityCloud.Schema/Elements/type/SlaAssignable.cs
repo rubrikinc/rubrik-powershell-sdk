@@ -159,54 +159,53 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ConfiguredSlaType? ConfiguredSlaDomainType
         // GraphQL -> configuredSlaDomainType: ConfiguredSlaType (enum)
-        if (this.ConfiguredSlaDomainType == null && Exploration.Includes(parent + ".configuredSlaDomainType", true))
+        if (this.ConfiguredSlaDomainType == null && ec.Includes("configuredSlaDomainType",true))
         {
             this.ConfiguredSlaDomainType = new ConfiguredSlaType();
         }
         //      C# -> System.String? ConfiguredSlaDomainId
         // GraphQL -> configuredSlaDomainId: String! (scalar)
-        if (this.ConfiguredSlaDomainId == null && Exploration.Includes(parent + ".configuredSlaDomainId", true))
+        if (this.ConfiguredSlaDomainId == null && ec.Includes("configuredSlaDomainId",true))
         {
             this.ConfiguredSlaDomainId = "FETCH";
         }
         //      C# -> System.String? ConfiguredSlaDomainName
         // GraphQL -> configuredSlaDomainName: String! (scalar)
-        if (this.ConfiguredSlaDomainName == null && Exploration.Includes(parent + ".configuredSlaDomainName", true))
+        if (this.ConfiguredSlaDomainName == null && ec.Includes("configuredSlaDomainName",true))
         {
             this.ConfiguredSlaDomainName = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsConfiguredSlaDomainRetentionLocked
         // GraphQL -> isConfiguredSlaDomainRetentionLocked: Boolean (scalar)
-        if (this.IsConfiguredSlaDomainRetentionLocked == null && Exploration.Includes(parent + ".isConfiguredSlaDomainRetentionLocked", true))
+        if (this.IsConfiguredSlaDomainRetentionLocked == null && ec.Includes("isConfiguredSlaDomainRetentionLocked",true))
         {
             this.IsConfiguredSlaDomainRetentionLocked = true;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? PrimaryClusterId
         // GraphQL -> primaryClusterId: String! (scalar)
-        if (this.PrimaryClusterId == null && Exploration.Includes(parent + ".primaryClusterId", true))
+        if (this.PrimaryClusterId == null && ec.Includes("primaryClusterId",true))
         {
             this.PrimaryClusterId = "FETCH";
         }
         //      C# -> DateTime? SlaLastUpdateTime
         // GraphQL -> slaLastUpdateTime: DateTime (scalar)
-        if (this.SlaLastUpdateTime == null && Exploration.Includes(parent + ".slaLastUpdateTime", true))
+        if (this.SlaLastUpdateTime == null && ec.Includes("slaLastUpdateTime",true))
         {
             this.SlaLastUpdateTime = new DateTime();
         }
@@ -242,12 +241,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SlaAssignable> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SlaAssignable());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SlaAssignable> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

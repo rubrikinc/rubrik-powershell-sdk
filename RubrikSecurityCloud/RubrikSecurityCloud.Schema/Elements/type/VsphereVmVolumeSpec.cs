@@ -131,42 +131,41 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? DataStoreCdmId
         // GraphQL -> dataStoreCdmId: String! (scalar)
-        if (this.DataStoreCdmId == null && Exploration.Includes(parent + ".dataStoreCdmId", true))
+        if (this.DataStoreCdmId == null && ec.Includes("dataStoreCdmId",true))
         {
             this.DataStoreCdmId = "FETCH";
         }
         //      C# -> System.String? DataStoreId
         // GraphQL -> dataStoreId: String! (scalar)
-        if (this.DataStoreId == null && Exploration.Includes(parent + ".dataStoreId", true))
+        if (this.DataStoreId == null && ec.Includes("dataStoreId",true))
         {
             this.DataStoreId = "FETCH";
         }
         //      C# -> System.String? DatastoreClusterId
         // GraphQL -> datastoreClusterId: String! (scalar)
-        if (this.DatastoreClusterId == null && Exploration.Includes(parent + ".datastoreClusterId", true))
+        if (this.DatastoreClusterId == null && ec.Includes("datastoreClusterId",true))
         {
             this.DatastoreClusterId = "FETCH";
         }
         //      C# -> System.String? Key
         // GraphQL -> key: String! (scalar)
-        if (this.Key == null && Exploration.Includes(parent + ".key", true))
+        if (this.Key == null && ec.Includes("key",true))
         {
             this.Key = "FETCH";
         }
         //      C# -> System.String? Label
         // GraphQL -> label: String! (scalar)
-        if (this.Label == null && Exploration.Includes(parent + ".label", true))
+        if (this.Label == null && ec.Includes("label",true))
         {
             this.Label = "FETCH";
         }
         //      C# -> System.Single? SizeGbs
         // GraphQL -> sizeGbs: Float! (scalar)
-        if (this.SizeGbs == null && Exploration.Includes(parent + ".sizeGbs", true))
+        if (this.SizeGbs == null && ec.Includes("sizeGbs",true))
         {
             this.SizeGbs = new System.Single();
         }
@@ -202,12 +201,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VsphereVmVolumeSpec> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VsphereVmVolumeSpec());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VsphereVmVolumeSpec> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

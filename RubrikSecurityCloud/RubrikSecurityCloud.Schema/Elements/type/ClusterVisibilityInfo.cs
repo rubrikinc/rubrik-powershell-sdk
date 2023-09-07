@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> ClusterVisibilityConfig? ClusterVisibilityConfig
         // GraphQL -> clusterVisibilityConfig: ClusterVisibilityConfig (type)
-        if (this.ClusterVisibilityConfig == null && Exploration.Includes(parent + ".clusterVisibilityConfig"))
+        if (this.ClusterVisibilityConfig == null && ec.Includes("clusterVisibilityConfig",false))
         {
             this.ClusterVisibilityConfig = new ClusterVisibilityConfig();
-            this.ClusterVisibilityConfig.ApplyExploratoryFieldSpec(parent + ".clusterVisibilityConfig");
+            this.ClusterVisibilityConfig.ApplyExploratoryFieldSpec(ec.NewChild("clusterVisibilityConfig"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ClusterVisibilityInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ClusterVisibilityInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ClusterVisibilityInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

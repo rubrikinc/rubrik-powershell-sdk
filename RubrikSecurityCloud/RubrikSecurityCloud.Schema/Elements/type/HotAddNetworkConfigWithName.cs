@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? NetworkName
         // GraphQL -> networkName: String (scalar)
-        if (this.NetworkName == null && Exploration.Includes(parent + ".networkName", true))
+        if (this.NetworkName == null && ec.Includes("networkName",true))
         {
             this.NetworkName = "FETCH";
         }
         //      C# -> StaticIpInfo? StaticIpConfig
         // GraphQL -> staticIpConfig: StaticIpInfo (type)
-        if (this.StaticIpConfig == null && Exploration.Includes(parent + ".staticIpConfig"))
+        if (this.StaticIpConfig == null && ec.Includes("staticIpConfig",false))
         {
             this.StaticIpConfig = new StaticIpInfo();
-            this.StaticIpConfig.ApplyExploratoryFieldSpec(parent + ".staticIpConfig");
+            this.StaticIpConfig.ApplyExploratoryFieldSpec(ec.NewChild("staticIpConfig"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<HotAddNetworkConfigWithName> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new HotAddNetworkConfigWithName());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<HotAddNetworkConfigWithName> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

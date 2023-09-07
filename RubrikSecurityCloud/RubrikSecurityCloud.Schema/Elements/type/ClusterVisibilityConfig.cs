@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<System.String>? HostGroupFilter
         // GraphQL -> hostGroupFilter: [String!]! (scalar)
-        if (this.HostGroupFilter == null && Exploration.Includes(parent + ".hostGroupFilter", true))
+        if (this.HostGroupFilter == null && ec.Includes("hostGroupFilter",true))
         {
             this.HostGroupFilter = new List<System.String>();
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsVmwareMetroStorageCluster
         // GraphQL -> isVmwareMetroStorageCluster: Boolean (scalar)
-        if (this.IsVmwareMetroStorageCluster == null && Exploration.Includes(parent + ".isVmwareMetroStorageCluster", true))
+        if (this.IsVmwareMetroStorageCluster == null && ec.Includes("isVmwareMetroStorageCluster",true))
         {
             this.IsVmwareMetroStorageCluster = true;
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ClusterVisibilityConfig> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ClusterVisibilityConfig());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ClusterVisibilityConfig> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

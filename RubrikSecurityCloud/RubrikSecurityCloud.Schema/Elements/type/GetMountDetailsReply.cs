@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<LiveMountDetails>? MountDetails
         // GraphQL -> mountDetails: [LiveMountDetails!]! (type)
-        if (this.MountDetails == null && Exploration.Includes(parent + ".mountDetails"))
+        if (this.MountDetails == null && ec.Includes("mountDetails",false))
         {
             this.MountDetails = new List<LiveMountDetails>();
-            this.MountDetails.ApplyExploratoryFieldSpec(parent + ".mountDetails");
+            this.MountDetails.ApplyExploratoryFieldSpec(ec.NewChild("mountDetails"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GetMountDetailsReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GetMountDetailsReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<GetMountDetailsReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

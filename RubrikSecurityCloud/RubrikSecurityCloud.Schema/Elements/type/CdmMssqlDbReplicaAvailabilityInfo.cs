@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? AvailabilityMode
         // GraphQL -> availabilityMode: String! (scalar)
-        if (this.AvailabilityMode == null && Exploration.Includes(parent + ".availabilityMode", true))
+        if (this.AvailabilityMode == null && ec.Includes("availabilityMode",true))
         {
             this.AvailabilityMode = "FETCH";
         }
         //      C# -> System.String? ReplicaId
         // GraphQL -> replicaId: String! (scalar)
-        if (this.ReplicaId == null && Exploration.Includes(parent + ".replicaId", true))
+        if (this.ReplicaId == null && ec.Includes("replicaId",true))
         {
             this.ReplicaId = "FETCH";
         }
         //      C# -> System.String? Role
         // GraphQL -> role: String! (scalar)
-        if (this.Role == null && Exploration.Includes(parent + ".role", true))
+        if (this.Role == null && ec.Includes("role",true))
         {
             this.Role = "FETCH";
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CdmMssqlDbReplicaAvailabilityInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CdmMssqlDbReplicaAvailabilityInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CdmMssqlDbReplicaAvailabilityInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

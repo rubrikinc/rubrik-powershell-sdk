@@ -243,90 +243,89 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? CompletedNodes
         // GraphQL -> completedNodes: String (scalar)
-        if (this.CompletedNodes == null && Exploration.Includes(parent + ".completedNodes", true))
+        if (this.CompletedNodes == null && ec.Includes("completedNodes",true))
         {
             this.CompletedNodes = "FETCH";
         }
         //      C# -> System.String? CurrentNode
         // GraphQL -> currentNode: String (scalar)
-        if (this.CurrentNode == null && Exploration.Includes(parent + ".currentNode", true))
+        if (this.CurrentNode == null && ec.Includes("currentNode",true))
         {
             this.CurrentNode = "FETCH";
         }
         //      C# -> System.String? CurrentNodeState
         // GraphQL -> currentNodeState: String (scalar)
-        if (this.CurrentNodeState == null && Exploration.Includes(parent + ".currentNodeState", true))
+        if (this.CurrentNodeState == null && ec.Includes("currentNodeState",true))
         {
             this.CurrentNodeState = "FETCH";
         }
         //      C# -> System.String? CurrentState
         // GraphQL -> currentState: String (scalar)
-        if (this.CurrentState == null && Exploration.Includes(parent + ".currentState", true))
+        if (this.CurrentState == null && ec.Includes("currentState",true))
         {
             this.CurrentState = "FETCH";
         }
         //      C# -> System.String? CurrentStateProgress
         // GraphQL -> currentStateProgress: String (scalar)
-        if (this.CurrentStateProgress == null && Exploration.Includes(parent + ".currentStateProgress", true))
+        if (this.CurrentStateProgress == null && ec.Includes("currentStateProgress",true))
         {
             this.CurrentStateProgress = "FETCH";
         }
         //      C# -> System.String? CurrentTask
         // GraphQL -> currentTask: String (scalar)
-        if (this.CurrentTask == null && Exploration.Includes(parent + ".currentTask", true))
+        if (this.CurrentTask == null && ec.Includes("currentTask",true))
         {
             this.CurrentTask = "FETCH";
         }
         //      C# -> System.String? DownloadJobStatus
         // GraphQL -> downloadJobStatus: String (scalar)
-        if (this.DownloadJobStatus == null && Exploration.Includes(parent + ".downloadJobStatus", true))
+        if (this.DownloadJobStatus == null && ec.Includes("downloadJobStatus",true))
         {
             this.DownloadJobStatus = "FETCH";
         }
         //      C# -> System.String? DownloadProgress
         // GraphQL -> downloadProgress: String (scalar)
-        if (this.DownloadProgress == null && Exploration.Includes(parent + ".downloadProgress", true))
+        if (this.DownloadProgress == null && ec.Includes("downloadProgress",true))
         {
             this.DownloadProgress = "FETCH";
         }
         //      C# -> System.String? DownloadRemainingTimeEstimateInSeconds
         // GraphQL -> downloadRemainingTimeEstimateInSeconds: String (scalar)
-        if (this.DownloadRemainingTimeEstimateInSeconds == null && Exploration.Includes(parent + ".downloadRemainingTimeEstimateInSeconds", true))
+        if (this.DownloadRemainingTimeEstimateInSeconds == null && ec.Includes("downloadRemainingTimeEstimateInSeconds",true))
         {
             this.DownloadRemainingTimeEstimateInSeconds = "FETCH";
         }
         //      C# -> System.String? DownloadVersion
         // GraphQL -> downloadVersion: String (scalar)
-        if (this.DownloadVersion == null && Exploration.Includes(parent + ".downloadVersion", true))
+        if (this.DownloadVersion == null && ec.Includes("downloadVersion",true))
         {
             this.DownloadVersion = "FETCH";
         }
         //      C# -> System.String? FinishedStates
         // GraphQL -> finishedStates: String (scalar)
-        if (this.FinishedStates == null && Exploration.Includes(parent + ".finishedStates", true))
+        if (this.FinishedStates == null && ec.Includes("finishedStates",true))
         {
             this.FinishedStates = "FETCH";
         }
         //      C# -> System.String? OverallProgress
         // GraphQL -> overallProgress: String (scalar)
-        if (this.OverallProgress == null && Exploration.Includes(parent + ".overallProgress", true))
+        if (this.OverallProgress == null && ec.Includes("overallProgress",true))
         {
             this.OverallProgress = "FETCH";
         }
         //      C# -> System.String? PendingStates
         // GraphQL -> pendingStates: String (scalar)
-        if (this.PendingStates == null && Exploration.Includes(parent + ".pendingStates", true))
+        if (this.PendingStates == null && ec.Includes("pendingStates",true))
         {
             this.PendingStates = "FETCH";
         }
         //      C# -> System.String? TotalNodes
         // GraphQL -> totalNodes: String (scalar)
-        if (this.TotalNodes == null && Exploration.Includes(parent + ".totalNodes", true))
+        if (this.TotalNodes == null && ec.Includes("totalNodes",true))
         {
             this.TotalNodes = "FETCH";
         }
@@ -362,12 +361,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CdmClusterStatusInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CdmClusterStatusInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CdmClusterStatusInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

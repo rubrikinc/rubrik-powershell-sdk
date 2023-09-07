@@ -112,35 +112,34 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> InventorySubHierarchyRootEnum? RootEnum
         // GraphQL -> rootEnum: InventorySubHierarchyRootEnum! (enum)
-        if (this.RootEnum == null && Exploration.Includes(parent + ".rootEnum", true))
+        if (this.RootEnum == null && ec.Includes("rootEnum",true))
         {
             this.RootEnum = new InventorySubHierarchyRootEnum();
         }
         //      C# -> CdmHierarchyObjectConnection? ChildConnection
         // GraphQL -> childConnection: CdmHierarchyObjectConnection! (type)
-        if (this.ChildConnection == null && Exploration.Includes(parent + ".childConnection"))
+        if (this.ChildConnection == null && ec.Includes("childConnection",false))
         {
             this.ChildConnection = new CdmHierarchyObjectConnection();
-            this.ChildConnection.ApplyExploratoryFieldSpec(parent + ".childConnection");
+            this.ChildConnection.ApplyExploratoryFieldSpec(ec.NewChild("childConnection"));
         }
         //      C# -> CdmHierarchyObjectConnection? DescendantConnection
         // GraphQL -> descendantConnection: CdmHierarchyObjectConnection! (type)
-        if (this.DescendantConnection == null && Exploration.Includes(parent + ".descendantConnection"))
+        if (this.DescendantConnection == null && ec.Includes("descendantConnection",false))
         {
             this.DescendantConnection = new CdmHierarchyObjectConnection();
-            this.DescendantConnection.ApplyExploratoryFieldSpec(parent + ".descendantConnection");
+            this.DescendantConnection.ApplyExploratoryFieldSpec(ec.NewChild("descendantConnection"));
         }
         //      C# -> CdmHierarchyObjectConnection? TopLevelDescendantConnection
         // GraphQL -> topLevelDescendantConnection: CdmHierarchyObjectConnection! (type)
-        if (this.TopLevelDescendantConnection == null && Exploration.Includes(parent + ".topLevelDescendantConnection"))
+        if (this.TopLevelDescendantConnection == null && ec.Includes("topLevelDescendantConnection",false))
         {
             this.TopLevelDescendantConnection = new CdmHierarchyObjectConnection();
-            this.TopLevelDescendantConnection.ApplyExploratoryFieldSpec(parent + ".topLevelDescendantConnection");
+            this.TopLevelDescendantConnection.ApplyExploratoryFieldSpec(ec.NewChild("topLevelDescendantConnection"));
         }
     }
 
@@ -174,12 +173,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CdmInventorySubHierarchyRoot> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CdmInventorySubHierarchyRoot());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CdmInventorySubHierarchyRoot> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

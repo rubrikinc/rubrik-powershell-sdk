@@ -117,36 +117,35 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? ConfiguredSlaDomainId
         // GraphQL -> configuredSlaDomainId: String (scalar)
-        if (this.ConfiguredSlaDomainId == null && Exploration.Includes(parent + ".configuredSlaDomainId", true))
+        if (this.ConfiguredSlaDomainId == null && ec.Includes("configuredSlaDomainId",true))
         {
             this.ConfiguredSlaDomainId = "FETCH";
         }
         //      C# -> System.Boolean? ForceFull
         // GraphQL -> forceFull: Boolean (scalar)
-        if (this.ForceFull == null && Exploration.Includes(parent + ".forceFull", true))
+        if (this.ForceFull == null && ec.Includes("forceFull",true))
         {
             this.ForceFull = true;
         }
         //      C# -> List<System.Int32>? ForceFullPartitionIds
         // GraphQL -> forceFullPartitionIds: [Int!]! (scalar)
-        if (this.ForceFullPartitionIds == null && Exploration.Includes(parent + ".forceFullPartitionIds", true))
+        if (this.ForceFullPartitionIds == null && ec.Includes("forceFullPartitionIds",true))
         {
             this.ForceFullPartitionIds = new List<System.Int32>();
         }
         //      C# -> System.String? SnapMirrorLabelForFullBackup
         // GraphQL -> snapMirrorLabelForFullBackup: String (scalar)
-        if (this.SnapMirrorLabelForFullBackup == null && Exploration.Includes(parent + ".snapMirrorLabelForFullBackup", true))
+        if (this.SnapMirrorLabelForFullBackup == null && ec.Includes("snapMirrorLabelForFullBackup",true))
         {
             this.SnapMirrorLabelForFullBackup = "FETCH";
         }
         //      C# -> System.String? SnapMirrorLabelForIncrementalBackup
         // GraphQL -> snapMirrorLabelForIncrementalBackup: String (scalar)
-        if (this.SnapMirrorLabelForIncrementalBackup == null && Exploration.Includes(parent + ".snapMirrorLabelForIncrementalBackup", true))
+        if (this.SnapMirrorLabelForIncrementalBackup == null && ec.Includes("snapMirrorLabelForIncrementalBackup",true))
         {
             this.SnapMirrorLabelForIncrementalBackup = "FETCH";
         }
@@ -182,12 +181,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<FilesetUpdate> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new FilesetUpdate());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<FilesetUpdate> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

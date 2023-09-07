@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> SnapshotServiceBackupStatus? Status
         // GraphQL -> status: SnapshotServiceBackupStatus! (enum)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = new SnapshotServiceBackupStatus();
         }
         //      C# -> System.Int64? SkippedItemCount
         // GraphQL -> skippedItemCount: Long! (scalar)
-        if (this.SkippedItemCount == null && Exploration.Includes(parent + ".skippedItemCount", true))
+        if (this.SkippedItemCount == null && ec.Includes("skippedItemCount",true))
         {
             this.SkippedItemCount = new System.Int64();
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<BackupEventStatus> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new BackupEventStatus());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<BackupEventStatus> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

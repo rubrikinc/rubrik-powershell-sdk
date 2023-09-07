@@ -61,12 +61,11 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? HealthCheckJobId
         // GraphQL -> healthCheckJobId: String! (scalar)
-        if (this.HealthCheckJobId == null && Exploration.Includes(parent + ".healthCheckJobId", true))
+        if (this.HealthCheckJobId == null && ec.Includes("healthCheckJobId",true))
         {
             this.HealthCheckJobId = "FETCH";
         }
@@ -102,12 +101,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<TriggerExocomputeHealthCheckReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new TriggerExocomputeHealthCheckReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<TriggerExocomputeHealthCheckReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

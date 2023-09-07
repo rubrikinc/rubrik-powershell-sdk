@@ -146,49 +146,48 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> AzureCommonRegion? Region
         // GraphQL -> region: AzureCommonRegion! (enum)
-        if (this.Region == null && Exploration.Includes(parent + ".region", true))
+        if (this.Region == null && ec.Includes("region",true))
         {
             this.Region = new AzureCommonRegion();
         }
         //      C# -> List<AzureDiskDetails>? DiskDetails
         // GraphQL -> diskDetails: [AzureDiskDetails!]! (type)
-        if (this.DiskDetails == null && Exploration.Includes(parent + ".diskDetails"))
+        if (this.DiskDetails == null && ec.Includes("diskDetails",false))
         {
             this.DiskDetails = new List<AzureDiskDetails>();
-            this.DiskDetails.ApplyExploratoryFieldSpec(parent + ".diskDetails");
+            this.DiskDetails.ApplyExploratoryFieldSpec(ec.NewChild("diskDetails"));
         }
         //      C# -> ResourceGroupDetails? ResourceGroup
         // GraphQL -> resourceGroup: ResourceGroupDetails (type)
-        if (this.ResourceGroup == null && Exploration.Includes(parent + ".resourceGroup"))
+        if (this.ResourceGroup == null && ec.Includes("resourceGroup",false))
         {
             this.ResourceGroup = new ResourceGroupDetails();
-            this.ResourceGroup.ApplyExploratoryFieldSpec(parent + ".resourceGroup");
+            this.ResourceGroup.ApplyExploratoryFieldSpec(ec.NewChild("resourceGroup"));
         }
         //      C# -> VirtualMachineDetails? SourceVm
         // GraphQL -> sourceVm: VirtualMachineDetails (type)
-        if (this.SourceVm == null && Exploration.Includes(parent + ".sourceVm"))
+        if (this.SourceVm == null && ec.Includes("sourceVm",false))
         {
             this.SourceVm = new VirtualMachineDetails();
-            this.SourceVm.ApplyExploratoryFieldSpec(parent + ".sourceVm");
+            this.SourceVm.ApplyExploratoryFieldSpec(ec.NewChild("sourceVm"));
         }
         //      C# -> SubscriptionDetails? TargetSubscription
         // GraphQL -> targetSubscription: SubscriptionDetails (type)
-        if (this.TargetSubscription == null && Exploration.Includes(parent + ".targetSubscription"))
+        if (this.TargetSubscription == null && ec.Includes("targetSubscription",false))
         {
             this.TargetSubscription = new SubscriptionDetails();
-            this.TargetSubscription.ApplyExploratoryFieldSpec(parent + ".targetSubscription");
+            this.TargetSubscription.ApplyExploratoryFieldSpec(ec.NewChild("targetSubscription"));
         }
         //      C# -> VirtualMachineDetails? TargetVm
         // GraphQL -> targetVm: VirtualMachineDetails (type)
-        if (this.TargetVm == null && Exploration.Includes(parent + ".targetVm"))
+        if (this.TargetVm == null && ec.Includes("targetVm",false))
         {
             this.TargetVm = new VirtualMachineDetails();
-            this.TargetVm.ApplyExploratoryFieldSpec(parent + ".targetVm");
+            this.TargetVm.ApplyExploratoryFieldSpec(ec.NewChild("targetVm"));
         }
     }
 
@@ -222,12 +221,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AzureLiveMountDetails> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AzureLiveMountDetails());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AzureLiveMountDetails> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -126,41 +126,40 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> RiskLevelType? RiskLevel
         // GraphQL -> riskLevel: RiskLevelType! (enum)
-        if (this.RiskLevel == null && Exploration.Includes(parent + ".riskLevel", true))
+        if (this.RiskLevel == null && ec.Includes("riskLevel",true))
         {
             this.RiskLevel = new RiskLevelType();
         }
         //      C# -> System.Int64? Date
         // GraphQL -> date: Long! (scalar)
-        if (this.Date == null && Exploration.Includes(parent + ".date", true))
+        if (this.Date == null && ec.Includes("date",true))
         {
             this.Date = new System.Int64();
         }
         //      C# -> AnalyzerHits? AnalyzerHits
         // GraphQL -> analyzerHits: AnalyzerHits (type)
-        if (this.AnalyzerHits == null && Exploration.Includes(parent + ".analyzerHits"))
+        if (this.AnalyzerHits == null && ec.Includes("analyzerHits",false))
         {
             this.AnalyzerHits = new AnalyzerHits();
-            this.AnalyzerHits.ApplyExploratoryFieldSpec(parent + ".analyzerHits");
+            this.AnalyzerHits.ApplyExploratoryFieldSpec(ec.NewChild("analyzerHits"));
         }
         //      C# -> SensitiveFiles? SensitiveFiles
         // GraphQL -> sensitiveFiles: SensitiveFiles (type)
-        if (this.SensitiveFiles == null && Exploration.Includes(parent + ".sensitiveFiles"))
+        if (this.SensitiveFiles == null && ec.Includes("sensitiveFiles",false))
         {
             this.SensitiveFiles = new SensitiveFiles();
-            this.SensitiveFiles.ApplyExploratoryFieldSpec(parent + ".sensitiveFiles");
+            this.SensitiveFiles.ApplyExploratoryFieldSpec(ec.NewChild("sensitiveFiles"));
         }
         //      C# -> SensitiveHits? SensitiveHits
         // GraphQL -> sensitiveHits: SensitiveHits (type)
-        if (this.SensitiveHits == null && Exploration.Includes(parent + ".sensitiveHits"))
+        if (this.SensitiveHits == null && ec.Includes("sensitiveHits",false))
         {
             this.SensitiveHits = new SensitiveHits();
-            this.SensitiveHits.ApplyExploratoryFieldSpec(parent + ".sensitiveHits");
+            this.SensitiveHits.ApplyExploratoryFieldSpec(ec.NewChild("sensitiveHits"));
         }
     }
 
@@ -194,12 +193,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PrincipalRisk> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PrincipalRisk());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<PrincipalRisk> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

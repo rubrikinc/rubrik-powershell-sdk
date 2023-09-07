@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? DataDiscoveryAssignedCount
         // GraphQL -> dataDiscoveryAssignedCount: Long! (scalar)
-        if (this.DataDiscoveryAssignedCount == null && Exploration.Includes(parent + ".dataDiscoveryAssignedCount", true))
+        if (this.DataDiscoveryAssignedCount == null && ec.Includes("dataDiscoveryAssignedCount",true))
         {
             this.DataDiscoveryAssignedCount = new System.Int64();
         }
         //      C# -> System.Int64? DataDiscoveryNotAssignedCount
         // GraphQL -> dataDiscoveryNotAssignedCount: Long! (scalar)
-        if (this.DataDiscoveryNotAssignedCount == null && Exploration.Includes(parent + ".dataDiscoveryNotAssignedCount", true))
+        if (this.DataDiscoveryNotAssignedCount == null && ec.Includes("dataDiscoveryNotAssignedCount",true))
         {
             this.DataDiscoveryNotAssignedCount = new System.Int64();
         }
         //      C# -> System.Int64? DataDiscoveryNotSupportedCount
         // GraphQL -> dataDiscoveryNotSupportedCount: Long! (scalar)
-        if (this.DataDiscoveryNotSupportedCount == null && Exploration.Includes(parent + ".dataDiscoveryNotSupportedCount", true))
+        if (this.DataDiscoveryNotSupportedCount == null && ec.Includes("dataDiscoveryNotSupportedCount",true))
         {
             this.DataDiscoveryNotSupportedCount = new System.Int64();
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<DataDiscoveryObjectsCount> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new DataDiscoveryObjectsCount());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<DataDiscoveryObjectsCount> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

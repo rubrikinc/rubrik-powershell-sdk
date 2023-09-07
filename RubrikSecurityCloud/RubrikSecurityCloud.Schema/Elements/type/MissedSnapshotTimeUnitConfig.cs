@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> MissedSnapshotDayOfTimeUnit? DayOfTime
         // GraphQL -> dayOfTime: MissedSnapshotDayOfTimeUnit (enum)
-        if (this.DayOfTime == null && Exploration.Includes(parent + ".dayOfTime", true))
+        if (this.DayOfTime == null && ec.Includes("dayOfTime",true))
         {
             this.DayOfTime = new MissedSnapshotDayOfTimeUnit();
         }
         //      C# -> SlaTimeUnit? TimeUnit
         // GraphQL -> timeUnit: SlaTimeUnit! (enum)
-        if (this.TimeUnit == null && Exploration.Includes(parent + ".timeUnit", true))
+        if (this.TimeUnit == null && ec.Includes("timeUnit",true))
         {
             this.TimeUnit = new SlaTimeUnit();
         }
         //      C# -> System.Int32? Frequency
         // GraphQL -> frequency: Int! (scalar)
-        if (this.Frequency == null && Exploration.Includes(parent + ".frequency", true))
+        if (this.Frequency == null && ec.Includes("frequency",true))
         {
             this.Frequency = Int32.MinValue;
         }
         //      C# -> System.Int32? Retention
         // GraphQL -> retention: Int! (scalar)
-        if (this.Retention == null && Exploration.Includes(parent + ".retention", true))
+        if (this.Retention == null && ec.Includes("retention",true))
         {
             this.Retention = Int32.MinValue;
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<MissedSnapshotTimeUnitConfig> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new MissedSnapshotTimeUnitConfig());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<MissedSnapshotTimeUnitConfig> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

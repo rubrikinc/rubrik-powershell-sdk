@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? WasRansomwareInvestigationEverEnabled
         // GraphQL -> wasRansomwareInvestigationEverEnabled: Boolean! (scalar)
-        if (this.WasRansomwareInvestigationEverEnabled == null && Exploration.Includes(parent + ".wasRansomwareInvestigationEverEnabled", true))
+        if (this.WasRansomwareInvestigationEverEnabled == null && ec.Includes("wasRansomwareInvestigationEverEnabled",true))
         {
             this.WasRansomwareInvestigationEverEnabled = true;
         }
         //      C# -> System.Boolean? WasSensitiveDataDiscoveryEverEnabled
         // GraphQL -> wasSensitiveDataDiscoveryEverEnabled: Boolean! (scalar)
-        if (this.WasSensitiveDataDiscoveryEverEnabled == null && Exploration.Includes(parent + ".wasSensitiveDataDiscoveryEverEnabled", true))
+        if (this.WasSensitiveDataDiscoveryEverEnabled == null && ec.Includes("wasSensitiveDataDiscoveryEverEnabled",true))
         {
             this.WasSensitiveDataDiscoveryEverEnabled = true;
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<LambdaFeatureHistory> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new LambdaFeatureHistory());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<LambdaFeatureHistory> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

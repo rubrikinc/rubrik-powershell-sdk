@@ -171,60 +171,59 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<System.String>? ChannelHostMountPaths
         // GraphQL -> channelHostMountPaths: [String!]! (scalar)
-        if (this.ChannelHostMountPaths == null && Exploration.Includes(parent + ".channelHostMountPaths", true))
+        if (this.ChannelHostMountPaths == null && ec.Includes("channelHostMountPaths",true))
         {
             this.ChannelHostMountPaths = new List<System.String>();
         }
         //      C# -> System.String? HostId
         // GraphQL -> hostId: String! (scalar)
-        if (this.HostId == null && Exploration.Includes(parent + ".hostId", true))
+        if (this.HostId == null && ec.Includes("hostId",true))
         {
             this.HostId = "FETCH";
         }
         //      C# -> System.Boolean? ShouldCancelBackupOnPreBackupScriptFailure
         // GraphQL -> shouldCancelBackupOnPreBackupScriptFailure: Boolean! (scalar)
-        if (this.ShouldCancelBackupOnPreBackupScriptFailure == null && Exploration.Includes(parent + ".shouldCancelBackupOnPreBackupScriptFailure", true))
+        if (this.ShouldCancelBackupOnPreBackupScriptFailure == null && ec.Includes("shouldCancelBackupOnPreBackupScriptFailure",true))
         {
             this.ShouldCancelBackupOnPreBackupScriptFailure = true;
         }
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)
-        if (this.Username == null && Exploration.Includes(parent + ".username", true))
+        if (this.Username == null && ec.Includes("username",true))
         {
             this.Username = "FETCH";
         }
         //      C# -> ManagedVolumeSlaScriptConfig? BackupScript
         // GraphQL -> backupScript: ManagedVolumeSlaScriptConfig! (type)
-        if (this.BackupScript == null && Exploration.Includes(parent + ".backupScript"))
+        if (this.BackupScript == null && ec.Includes("backupScript",false))
         {
             this.BackupScript = new ManagedVolumeSlaScriptConfig();
-            this.BackupScript.ApplyExploratoryFieldSpec(parent + ".backupScript");
+            this.BackupScript.ApplyExploratoryFieldSpec(ec.NewChild("backupScript"));
         }
         //      C# -> ManagedVolumeSlaScriptConfig? FailedPostBackupScript
         // GraphQL -> failedPostBackupScript: ManagedVolumeSlaScriptConfig (type)
-        if (this.FailedPostBackupScript == null && Exploration.Includes(parent + ".failedPostBackupScript"))
+        if (this.FailedPostBackupScript == null && ec.Includes("failedPostBackupScript",false))
         {
             this.FailedPostBackupScript = new ManagedVolumeSlaScriptConfig();
-            this.FailedPostBackupScript.ApplyExploratoryFieldSpec(parent + ".failedPostBackupScript");
+            this.FailedPostBackupScript.ApplyExploratoryFieldSpec(ec.NewChild("failedPostBackupScript"));
         }
         //      C# -> ManagedVolumeSlaScriptConfig? PreBackupScript
         // GraphQL -> preBackupScript: ManagedVolumeSlaScriptConfig (type)
-        if (this.PreBackupScript == null && Exploration.Includes(parent + ".preBackupScript"))
+        if (this.PreBackupScript == null && ec.Includes("preBackupScript",false))
         {
             this.PreBackupScript = new ManagedVolumeSlaScriptConfig();
-            this.PreBackupScript.ApplyExploratoryFieldSpec(parent + ".preBackupScript");
+            this.PreBackupScript.ApplyExploratoryFieldSpec(ec.NewChild("preBackupScript"));
         }
         //      C# -> ManagedVolumeSlaScriptConfig? SuccessfulPostBackupScript
         // GraphQL -> successfulPostBackupScript: ManagedVolumeSlaScriptConfig (type)
-        if (this.SuccessfulPostBackupScript == null && Exploration.Includes(parent + ".successfulPostBackupScript"))
+        if (this.SuccessfulPostBackupScript == null && ec.Includes("successfulPostBackupScript",false))
         {
             this.SuccessfulPostBackupScript = new ManagedVolumeSlaScriptConfig();
-            this.SuccessfulPostBackupScript.ApplyExploratoryFieldSpec(parent + ".successfulPostBackupScript");
+            this.SuccessfulPostBackupScript.ApplyExploratoryFieldSpec(ec.NewChild("successfulPostBackupScript"));
         }
     }
 
@@ -258,12 +257,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ManagedVolumeSlaClientConfig> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ManagedVolumeSlaClientConfig());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ManagedVolumeSlaClientConfig> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

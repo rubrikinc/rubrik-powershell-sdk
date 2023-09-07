@@ -81,23 +81,22 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> HierarchyObject? HierarchyObject
         // GraphQL -> hierarchyObject: HierarchyObject! (interface)
-        if (this.HierarchyObject == null && Exploration.Includes(parent + ".hierarchyObject"))
+        if (this.HierarchyObject == null && ec.Includes("hierarchyObject",false))
         {
             var impls = new List<HierarchyObject>();
-            impls.ApplyExploratoryFieldSpec(parent + ".hierarchyObject");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("hierarchyObject"));
             this.HierarchyObject = (HierarchyObject)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> List<ClassificationPolicySummary>? Policies
         // GraphQL -> policies: [ClassificationPolicySummary!]! (type)
-        if (this.Policies == null && Exploration.Includes(parent + ".policies"))
+        if (this.Policies == null && ec.Includes("policies",false))
         {
             this.Policies = new List<ClassificationPolicySummary>();
-            this.Policies.ApplyExploratoryFieldSpec(parent + ".policies");
+            this.Policies.ApplyExploratoryFieldSpec(ec.NewChild("policies"));
         }
     }
 
@@ -131,12 +130,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PolicyObjectUsage> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PolicyObjectUsage());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<PolicyObjectUsage> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

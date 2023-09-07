@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? IsObjectAclEnabled
         // GraphQL -> isObjectAclEnabled: Boolean! (scalar)
-        if (this.IsObjectAclEnabled == null && Exploration.Includes(parent + ".isObjectAclEnabled", true))
+        if (this.IsObjectAclEnabled == null && ec.Includes("isObjectAclEnabled",true))
         {
             this.IsObjectAclEnabled = true;
         }
         //      C# -> System.Boolean? IsVersioningEnabled
         // GraphQL -> isVersioningEnabled: Boolean! (scalar)
-        if (this.IsVersioningEnabled == null && Exploration.Includes(parent + ".isVersioningEnabled", true))
+        if (this.IsVersioningEnabled == null && ec.Includes("isVersioningEnabled",true))
         {
             this.IsVersioningEnabled = true;
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GetS3BucketStateForRecoveryReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GetS3BucketStateForRecoveryReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<GetS3BucketStateForRecoveryReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

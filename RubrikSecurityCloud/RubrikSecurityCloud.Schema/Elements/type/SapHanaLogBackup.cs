@@ -134,45 +134,44 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? BackupId
         // GraphQL -> backupId: Long (scalar)
-        if (this.BackupId == null && Exploration.Includes(parent + ".backupId", true))
+        if (this.BackupId == null && ec.Includes("backupId",true))
         {
             this.BackupId = new System.Int64();
         }
         //      C# -> System.Int64? BytesTransferred
         // GraphQL -> bytesTransferred: Long (scalar)
-        if (this.BytesTransferred == null && Exploration.Includes(parent + ".bytesTransferred", true))
+        if (this.BytesTransferred == null && ec.Includes("bytesTransferred",true))
         {
             this.BytesTransferred = new System.Int64();
         }
         //      C# -> System.Boolean? DoesContainCatalogFile
         // GraphQL -> doesContainCatalogFile: Boolean (scalar)
-        if (this.DoesContainCatalogFile == null && Exploration.Includes(parent + ".doesContainCatalogFile", true))
+        if (this.DoesContainCatalogFile == null && ec.Includes("doesContainCatalogFile",true))
         {
             this.DoesContainCatalogFile = true;
         }
         //      C# -> DateTime? EndTime
         // GraphQL -> endTime: DateTime (scalar)
-        if (this.EndTime == null && Exploration.Includes(parent + ".endTime", true))
+        if (this.EndTime == null && ec.Includes("endTime",true))
         {
             this.EndTime = new DateTime();
         }
         //      C# -> DateTime? StartTime
         // GraphQL -> startTime: DateTime (scalar)
-        if (this.StartTime == null && Exploration.Includes(parent + ".startTime", true))
+        if (this.StartTime == null && ec.Includes("startTime",true))
         {
             this.StartTime = new DateTime();
         }
         //      C# -> List<SapHanaLogBackupFiles>? Files
         // GraphQL -> files: [SapHanaLogBackupFiles!] (type)
-        if (this.Files == null && Exploration.Includes(parent + ".files"))
+        if (this.Files == null && ec.Includes("files",false))
         {
             this.Files = new List<SapHanaLogBackupFiles>();
-            this.Files.ApplyExploratoryFieldSpec(parent + ".files");
+            this.Files.ApplyExploratoryFieldSpec(ec.NewChild("files"));
         }
     }
 
@@ -206,12 +205,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SapHanaLogBackup> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SapHanaLogBackup());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SapHanaLogBackup> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

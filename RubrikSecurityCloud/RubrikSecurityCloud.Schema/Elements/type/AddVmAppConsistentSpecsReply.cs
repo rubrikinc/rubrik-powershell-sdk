@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<System.String>? FailedSnappableIds
         // GraphQL -> failedSnappableIds: [String!]! (scalar)
-        if (this.FailedSnappableIds == null && Exploration.Includes(parent + ".failedSnappableIds", true))
+        if (this.FailedSnappableIds == null && ec.Includes("failedSnappableIds",true))
         {
             this.FailedSnappableIds = new List<System.String>();
         }
         //      C# -> List<System.String>? SuccessSnappableIds
         // GraphQL -> successSnappableIds: [String!]! (scalar)
-        if (this.SuccessSnappableIds == null && Exploration.Includes(parent + ".successSnappableIds", true))
+        if (this.SuccessSnappableIds == null && ec.Includes("successSnappableIds",true))
         {
             this.SuccessSnappableIds = new List<System.String>();
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AddVmAppConsistentSpecsReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AddVmAppConsistentSpecsReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AddVmAppConsistentSpecsReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

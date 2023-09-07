@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> RiskSummary? RiskSummary
         // GraphQL -> riskSummary: RiskSummary (type)
-        if (this.RiskSummary == null && Exploration.Includes(parent + ".riskSummary"))
+        if (this.RiskSummary == null && ec.Includes("riskSummary",false))
         {
             this.RiskSummary = new RiskSummary();
-            this.RiskSummary.ApplyExploratoryFieldSpec(parent + ".riskSummary");
+            this.RiskSummary.ApplyExploratoryFieldSpec(ec.NewChild("riskSummary"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GetPrincipalRiskSummaryReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GetPrincipalRiskSummaryReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<GetPrincipalRiskSummaryReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -126,41 +126,40 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> DateTime? ReleaseDate
         // GraphQL -> releaseDate: DateTime (scalar)
-        if (this.ReleaseDate == null && Exploration.Includes(parent + ".releaseDate", true))
+        if (this.ReleaseDate == null && ec.Includes("releaseDate",true))
         {
             this.ReleaseDate = new DateTime();
         }
         //      C# -> List<ReleaseNote>? BugFixes
         // GraphQL -> bugFixes: [ReleaseNote!]! (type)
-        if (this.BugFixes == null && Exploration.Includes(parent + ".bugFixes"))
+        if (this.BugFixes == null && ec.Includes("bugFixes",false))
         {
             this.BugFixes = new List<ReleaseNote>();
-            this.BugFixes.ApplyExploratoryFieldSpec(parent + ".bugFixes");
+            this.BugFixes.ApplyExploratoryFieldSpec(ec.NewChild("bugFixes"));
         }
         //      C# -> List<ReleaseNote>? NewFeatures
         // GraphQL -> newFeatures: [ReleaseNote!]! (type)
-        if (this.NewFeatures == null && Exploration.Includes(parent + ".newFeatures"))
+        if (this.NewFeatures == null && ec.Includes("newFeatures",false))
         {
             this.NewFeatures = new List<ReleaseNote>();
-            this.NewFeatures.ApplyExploratoryFieldSpec(parent + ".newFeatures");
+            this.NewFeatures.ApplyExploratoryFieldSpec(ec.NewChild("newFeatures"));
         }
         //      C# -> List<ReleaseNote>? ProductChanges
         // GraphQL -> productChanges: [ReleaseNote!]! (type)
-        if (this.ProductChanges == null && Exploration.Includes(parent + ".productChanges"))
+        if (this.ProductChanges == null && ec.Includes("productChanges",false))
         {
             this.ProductChanges = new List<ReleaseNote>();
-            this.ProductChanges.ApplyExploratoryFieldSpec(parent + ".productChanges");
+            this.ProductChanges.ApplyExploratoryFieldSpec(ec.NewChild("productChanges"));
         }
     }
 
@@ -194,12 +193,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GroupedReleaseNote> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GroupedReleaseNote());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<GroupedReleaseNote> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

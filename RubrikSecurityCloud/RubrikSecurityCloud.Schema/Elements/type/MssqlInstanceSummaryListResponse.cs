@@ -92,27 +92,26 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? HasMore
         // GraphQL -> hasMore: Boolean (scalar)
-        if (this.HasMore == null && Exploration.Includes(parent + ".hasMore", true))
+        if (this.HasMore == null && ec.Includes("hasMore",true))
         {
             this.HasMore = true;
         }
         //      C# -> System.Int64? Total
         // GraphQL -> total: Long (scalar)
-        if (this.Total == null && Exploration.Includes(parent + ".total", true))
+        if (this.Total == null && ec.Includes("total",true))
         {
             this.Total = new System.Int64();
         }
         //      C# -> List<MssqlInstanceSummary>? Data
         // GraphQL -> data: [MssqlInstanceSummary!]! (type)
-        if (this.Data == null && Exploration.Includes(parent + ".data"))
+        if (this.Data == null && ec.Includes("data",false))
         {
             this.Data = new List<MssqlInstanceSummary>();
-            this.Data.ApplyExploratoryFieldSpec(parent + ".data");
+            this.Data.ApplyExploratoryFieldSpec(ec.NewChild("data"));
         }
     }
 
@@ -146,12 +145,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<MssqlInstanceSummaryListResponse> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new MssqlInstanceSummaryListResponse());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<MssqlInstanceSummaryListResponse> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -540,219 +540,218 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<Operation>? AuthorizedOperations
         // GraphQL -> authorizedOperations: [Operation!]! (enum)
-        if (this.AuthorizedOperations == null && Exploration.Includes(parent + ".authorizedOperations", true))
+        if (this.AuthorizedOperations == null && ec.Includes("authorizedOperations",true))
         {
             this.AuthorizedOperations = new List<Operation>();
         }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
-        if (this.ObjectType == null && Exploration.Includes(parent + ".objectType", true))
+        if (this.ObjectType == null && ec.Includes("objectType",true))
         {
             this.ObjectType = new HierarchyObjectTypeEnum();
         }
         //      C# -> SlaAssignmentTypeEnum? SlaAssignment
         // GraphQL -> slaAssignment: SlaAssignmentTypeEnum! (enum)
-        if (this.SlaAssignment == null && Exploration.Includes(parent + ".slaAssignment", true))
+        if (this.SlaAssignment == null && ec.Includes("slaAssignment",true))
         {
             this.SlaAssignment = new SlaAssignmentTypeEnum();
         }
         //      C# -> OrgStatus? Status
         // GraphQL -> status: OrgStatus! (enum)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = new OrgStatus();
         }
         //      C# -> SlaDomain? ConfiguredSlaDomain
         // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
-        if (this.ConfiguredSlaDomain == null && Exploration.Includes(parent + ".configuredSlaDomain"))
+        if (this.ConfiguredSlaDomain == null && ec.Includes("configuredSlaDomain",false))
         {
             var impls = new List<SlaDomain>();
-            impls.ApplyExploratoryFieldSpec(parent + ".configuredSlaDomain");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("configuredSlaDomain"));
             this.ConfiguredSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> SlaDomain? EffectiveRetentionSlaDomain
         // GraphQL -> effectiveRetentionSlaDomain: SlaDomain (interface)
-        if (this.EffectiveRetentionSlaDomain == null && Exploration.Includes(parent + ".effectiveRetentionSlaDomain"))
+        if (this.EffectiveRetentionSlaDomain == null && ec.Includes("effectiveRetentionSlaDomain",false))
         {
             var impls = new List<SlaDomain>();
-            impls.ApplyExploratoryFieldSpec(parent + ".effectiveRetentionSlaDomain");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("effectiveRetentionSlaDomain"));
             this.EffectiveRetentionSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> SlaDomain? EffectiveSlaDomain
         // GraphQL -> effectiveSlaDomain: SlaDomain! (interface)
-        if (this.EffectiveSlaDomain == null && Exploration.Includes(parent + ".effectiveSlaDomain"))
+        if (this.EffectiveSlaDomain == null && ec.Includes("effectiveSlaDomain",false))
         {
             var impls = new List<SlaDomain>();
-            impls.ApplyExploratoryFieldSpec(parent + ".effectiveSlaDomain");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("effectiveSlaDomain"));
             this.EffectiveSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> System.String? ExocomputeId
         // GraphQL -> exocomputeId: String! (scalar)
-        if (this.ExocomputeId == null && Exploration.Includes(parent + ".exocomputeId", true))
+        if (this.ExocomputeId == null && ec.Includes("exocomputeId",true))
         {
             this.ExocomputeId = "FETCH";
         }
         //      C# -> System.Boolean? HasSharePointLegacySnapshots
         // GraphQL -> hasSharePointLegacySnapshots: Boolean! (scalar)
-        if (this.HasSharePointLegacySnapshots == null && Exploration.Includes(parent + ".hasSharePointLegacySnapshots", true))
+        if (this.HasSharePointLegacySnapshots == null && ec.Includes("hasSharePointLegacySnapshots",true))
         {
             this.HasSharePointLegacySnapshots = true;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
-        if (this.NumWorkloadDescendants == null && Exploration.Includes(parent + ".numWorkloadDescendants", true))
+        if (this.NumWorkloadDescendants == null && ec.Includes("numWorkloadDescendants",true))
         {
             this.NumWorkloadDescendants = Int32.MinValue;
         }
         //      C# -> System.Int32? Past1DayMailboxComplianceCount
         // GraphQL -> past1DayMailboxComplianceCount: Int! (scalar)
-        if (this.Past1DayMailboxComplianceCount == null && Exploration.Includes(parent + ".past1DayMailboxComplianceCount", true))
+        if (this.Past1DayMailboxComplianceCount == null && ec.Includes("past1DayMailboxComplianceCount",true))
         {
             this.Past1DayMailboxComplianceCount = Int32.MinValue;
         }
         //      C# -> System.Int32? Past1DayMailboxOutOfComplianceCount
         // GraphQL -> past1DayMailboxOutOfComplianceCount: Int! (scalar)
-        if (this.Past1DayMailboxOutOfComplianceCount == null && Exploration.Includes(parent + ".past1DayMailboxOutOfComplianceCount", true))
+        if (this.Past1DayMailboxOutOfComplianceCount == null && ec.Includes("past1DayMailboxOutOfComplianceCount",true))
         {
             this.Past1DayMailboxOutOfComplianceCount = Int32.MinValue;
         }
         //      C# -> System.Int32? Past1DayOnedriveComplianceCount
         // GraphQL -> past1DayOnedriveComplianceCount: Int! (scalar)
-        if (this.Past1DayOnedriveComplianceCount == null && Exploration.Includes(parent + ".past1DayOnedriveComplianceCount", true))
+        if (this.Past1DayOnedriveComplianceCount == null && ec.Includes("past1DayOnedriveComplianceCount",true))
         {
             this.Past1DayOnedriveComplianceCount = Int32.MinValue;
         }
         //      C# -> System.Int32? Past1DayOnedriveOutOfComplianceCount
         // GraphQL -> past1DayOnedriveOutOfComplianceCount: Int! (scalar)
-        if (this.Past1DayOnedriveOutOfComplianceCount == null && Exploration.Includes(parent + ".past1DayOnedriveOutOfComplianceCount", true))
+        if (this.Past1DayOnedriveOutOfComplianceCount == null && ec.Includes("past1DayOnedriveOutOfComplianceCount",true))
         {
             this.Past1DayOnedriveOutOfComplianceCount = Int32.MinValue;
         }
         //      C# -> System.Int32? Past1DaySharepointComplianceCount
         // GraphQL -> past1DaySharepointComplianceCount: Int! (scalar)
-        if (this.Past1DaySharepointComplianceCount == null && Exploration.Includes(parent + ".past1DaySharepointComplianceCount", true))
+        if (this.Past1DaySharepointComplianceCount == null && ec.Includes("past1DaySharepointComplianceCount",true))
         {
             this.Past1DaySharepointComplianceCount = Int32.MinValue;
         }
         //      C# -> System.Int32? Past1DaySharepointOutOfComplianceCount
         // GraphQL -> past1DaySharepointOutOfComplianceCount: Int! (scalar)
-        if (this.Past1DaySharepointOutOfComplianceCount == null && Exploration.Includes(parent + ".past1DaySharepointOutOfComplianceCount", true))
+        if (this.Past1DaySharepointOutOfComplianceCount == null && ec.Includes("past1DaySharepointOutOfComplianceCount",true))
         {
             this.Past1DaySharepointOutOfComplianceCount = Int32.MinValue;
         }
         //      C# -> System.Int32? Past1DaySpListComplianceCount
         // GraphQL -> past1DaySpListComplianceCount: Int! (scalar)
-        if (this.Past1DaySpListComplianceCount == null && Exploration.Includes(parent + ".past1DaySpListComplianceCount", true))
+        if (this.Past1DaySpListComplianceCount == null && ec.Includes("past1DaySpListComplianceCount",true))
         {
             this.Past1DaySpListComplianceCount = Int32.MinValue;
         }
         //      C# -> System.Int32? Past1DaySpListOutOfComplianceCount
         // GraphQL -> past1DaySpListOutOfComplianceCount: Int! (scalar)
-        if (this.Past1DaySpListOutOfComplianceCount == null && Exploration.Includes(parent + ".past1DaySpListOutOfComplianceCount", true))
+        if (this.Past1DaySpListOutOfComplianceCount == null && ec.Includes("past1DaySpListOutOfComplianceCount",true))
         {
             this.Past1DaySpListOutOfComplianceCount = Int32.MinValue;
         }
         //      C# -> System.Int32? Past1DaySpSiteCollectionComplianceCount
         // GraphQL -> past1DaySpSiteCollectionComplianceCount: Int! (scalar)
-        if (this.Past1DaySpSiteCollectionComplianceCount == null && Exploration.Includes(parent + ".past1DaySpSiteCollectionComplianceCount", true))
+        if (this.Past1DaySpSiteCollectionComplianceCount == null && ec.Includes("past1DaySpSiteCollectionComplianceCount",true))
         {
             this.Past1DaySpSiteCollectionComplianceCount = Int32.MinValue;
         }
         //      C# -> System.Int32? Past1DaySpSiteCollectionOutOfComplianceCount
         // GraphQL -> past1DaySpSiteCollectionOutOfComplianceCount: Int! (scalar)
-        if (this.Past1DaySpSiteCollectionOutOfComplianceCount == null && Exploration.Includes(parent + ".past1DaySpSiteCollectionOutOfComplianceCount", true))
+        if (this.Past1DaySpSiteCollectionOutOfComplianceCount == null && ec.Includes("past1DaySpSiteCollectionOutOfComplianceCount",true))
         {
             this.Past1DaySpSiteCollectionOutOfComplianceCount = Int32.MinValue;
         }
         //      C# -> System.Int32? Past1DayTeamsComplianceCount
         // GraphQL -> past1DayTeamsComplianceCount: Int! (scalar)
-        if (this.Past1DayTeamsComplianceCount == null && Exploration.Includes(parent + ".past1DayTeamsComplianceCount", true))
+        if (this.Past1DayTeamsComplianceCount == null && ec.Includes("past1DayTeamsComplianceCount",true))
         {
             this.Past1DayTeamsComplianceCount = Int32.MinValue;
         }
         //      C# -> System.Int32? Past1DayTeamsOutOfComplianceCount
         // GraphQL -> past1DayTeamsOutOfComplianceCount: Int! (scalar)
-        if (this.Past1DayTeamsOutOfComplianceCount == null && Exploration.Includes(parent + ".past1DayTeamsOutOfComplianceCount", true))
+        if (this.Past1DayTeamsOutOfComplianceCount == null && ec.Includes("past1DayTeamsOutOfComplianceCount",true))
         {
             this.Past1DayTeamsOutOfComplianceCount = Int32.MinValue;
         }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
-        if (this.SlaPauseStatus == null && Exploration.Includes(parent + ".slaPauseStatus", true))
+        if (this.SlaPauseStatus == null && ec.Includes("slaPauseStatus",true))
         {
             this.SlaPauseStatus = true;
         }
         //      C# -> System.Int32? UnprotectedUsersCount
         // GraphQL -> unprotectedUsersCount: Int! (scalar)
-        if (this.UnprotectedUsersCount == null && Exploration.Includes(parent + ".unprotectedUsersCount", true))
+        if (this.UnprotectedUsersCount == null && ec.Includes("unprotectedUsersCount",true))
         {
             this.UnprotectedUsersCount = Int32.MinValue;
         }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
-        if (this.AllOrgs == null && Exploration.Includes(parent + ".allOrgs"))
+        if (this.AllOrgs == null && ec.Includes("allOrgs",false))
         {
             this.AllOrgs = new List<Org>();
-            this.AllOrgs.ApplyExploratoryFieldSpec(parent + ".allOrgs");
+            this.AllOrgs.ApplyExploratoryFieldSpec(ec.NewChild("allOrgs"));
         }
         //      C# -> O365UserConnection? ChildConnection
         // GraphQL -> childConnection: O365UserConnection! (type)
-        if (this.ChildConnection == null && Exploration.Includes(parent + ".childConnection"))
+        if (this.ChildConnection == null && ec.Includes("childConnection",false))
         {
             this.ChildConnection = new O365UserConnection();
-            this.ChildConnection.ApplyExploratoryFieldSpec(parent + ".childConnection");
+            this.ChildConnection.ApplyExploratoryFieldSpec(ec.NewChild("childConnection"));
         }
         //      C# -> PathNode? EffectiveSlaSourceObject
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)
-        if (this.EffectiveSlaSourceObject == null && Exploration.Includes(parent + ".effectiveSlaSourceObject"))
+        if (this.EffectiveSlaSourceObject == null && ec.Includes("effectiveSlaSourceObject",false))
         {
             this.EffectiveSlaSourceObject = new PathNode();
-            this.EffectiveSlaSourceObject.ApplyExploratoryFieldSpec(parent + ".effectiveSlaSourceObject");
+            this.EffectiveSlaSourceObject.ApplyExploratoryFieldSpec(ec.NewChild("effectiveSlaSourceObject"));
         }
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)
-        if (this.LogicalPath == null && Exploration.Includes(parent + ".logicalPath"))
+        if (this.LogicalPath == null && ec.Includes("logicalPath",false))
         {
             this.LogicalPath = new List<PathNode>();
-            this.LogicalPath.ApplyExploratoryFieldSpec(parent + ".logicalPath");
+            this.LogicalPath.ApplyExploratoryFieldSpec(ec.NewChild("logicalPath"));
         }
         //      C# -> List<PathNode>? PhysicalPath
         // GraphQL -> physicalPath: [PathNode!]! (type)
-        if (this.PhysicalPath == null && Exploration.Includes(parent + ".physicalPath"))
+        if (this.PhysicalPath == null && ec.Includes("physicalPath",false))
         {
             this.PhysicalPath = new List<PathNode>();
-            this.PhysicalPath.ApplyExploratoryFieldSpec(parent + ".physicalPath");
+            this.PhysicalPath.ApplyExploratoryFieldSpec(ec.NewChild("physicalPath"));
         }
         //      C# -> O365OrgDescendantConnection? SearchDescendantConnection
         // GraphQL -> searchDescendantConnection: O365OrgDescendantConnection! (type)
-        if (this.SearchDescendantConnection == null && Exploration.Includes(parent + ".searchDescendantConnection"))
+        if (this.SearchDescendantConnection == null && ec.Includes("searchDescendantConnection",false))
         {
             this.SearchDescendantConnection = new O365OrgDescendantConnection();
-            this.SearchDescendantConnection.ApplyExploratoryFieldSpec(parent + ".searchDescendantConnection");
+            this.SearchDescendantConnection.ApplyExploratoryFieldSpec(ec.NewChild("searchDescendantConnection"));
         }
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
-        if (this.SnapshotDistribution == null && Exploration.Includes(parent + ".snapshotDistribution"))
+        if (this.SnapshotDistribution == null && ec.Includes("snapshotDistribution",false))
         {
             this.SnapshotDistribution = new SnapshotDistribution();
-            this.SnapshotDistribution.ApplyExploratoryFieldSpec(parent + ".snapshotDistribution");
+            this.SnapshotDistribution.ApplyExploratoryFieldSpec(ec.NewChild("snapshotDistribution"));
         }
     }
 
@@ -786,12 +785,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<O365Org> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new O365Org());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<O365Org> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

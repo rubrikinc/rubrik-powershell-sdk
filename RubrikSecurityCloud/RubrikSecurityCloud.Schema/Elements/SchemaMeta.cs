@@ -12,8 +12,14 @@ namespace RubrikSecurityCloud.Types
 {
     public static class SchemaMeta
     {
-        public static string GraphqlSchemaVersion = "v20230809-35" ;
+        /// <summary>
+        /// The version of the schema used to generate the SDK.
+        /// </summary>
+        public static string GraphqlSchemaVersion = "v20230823-17" ;
 
+        /// <summary>
+        /// Given the name of an interface type, return the names of the types that implement it.
+        /// </summary>
         public static HashSet<string> InterfaceImpls( string interfaceName )
         {
             var InterfaceImplsDict = new Dictionary<string, HashSet<string>> {
@@ -138,6 +144,7 @@ namespace RubrikSecurityCloud.Types
                     "HypervServer",
                     "HyperVvirtualMachine",
                     "KubernetesCluster",
+                    "KubernetesProtectionSet",
                     "KubernetesResourceSet",
                     "LinuxFileset",
                     "ManagedVolume",
@@ -178,6 +185,7 @@ namespace RubrikSecurityCloud.Types
                     "VsphereBlueprint",
                     "VsphereComputeCluster",
                     "VsphereDatacenter",
+                    "VsphereDatacenterFolder",
                     "VsphereDatastore",
                     "VsphereDatastoreCluster",
                     "VsphereFolder",
@@ -199,6 +207,7 @@ namespace RubrikSecurityCloud.Types
                     "Db2Database",
                     "ExchangeDatabase",
                     "HyperVvirtualMachine",
+                    "KubernetesProtectionSet",
                     "KubernetesResourceSet",
                     "LinuxFileset",
                     "ManagedVolume",
@@ -390,6 +399,7 @@ namespace RubrikSecurityCloud.Types
                     "K8sCluster",
                     "K8sNamespace",
                     "KubernetesCluster",
+                    "KubernetesProtectionSet",
                     "KubernetesResourceSet",
                     "LinuxFileset",
                     "ManagedVolume",
@@ -444,6 +454,7 @@ namespace RubrikSecurityCloud.Types
                     "VsphereBlueprintNew",
                     "VsphereComputeCluster",
                     "VsphereDatacenter",
+                    "VsphereDatacenterFolder",
                     "VsphereDatastore",
                     "VsphereDatastoreCluster",
                     "VsphereFolder",
@@ -465,6 +476,7 @@ namespace RubrikSecurityCloud.Types
                     "AzureAdDirectory",
                     "JiraProject",
                     "K8sNamespace",
+                    "KubernetesProtectionSet",
                     "KubernetesResourceSet",
                     "LinuxFileset",
                     "NasFileset",
@@ -579,6 +591,7 @@ namespace RubrikSecurityCloud.Types
                     "KubernetesClusterDescendant",
                     new HashSet<string> {
                     "KubernetesClusterDescendant",
+                    "KubernetesProtectionSet",
                     "KubernetesResourceSet",
                     }
                 },
@@ -1095,8 +1108,14 @@ namespace RubrikSecurityCloud.Types
                     "RequestedChangesTemplate",
                     new HashSet<string> {
                     "CategorizedTprReqChangesTemplate",
+                    "ManageUserTprReqChangesTemplate",
+                    "MutateRoleReqChangesTemplate",
                     "RequestedChangesTemplate",
                     "StandardTprReqChangesTemplate",
+                    "UpdateTprPolicyDataMangementClusterReqChangesTemplate",
+                    "UpdateTprPolicyDataMangementObjectReqChangesTemplate",
+                    "UpdateTprPolicyDataMangementSlaReqChangesTemplate",
+                    "UpdateTprPolicySystemConfigReqChangesTemplate",
                     }
                 },
                 {
@@ -1305,6 +1324,24 @@ namespace RubrikSecurityCloud.Types
                     }
                 },
                 {
+                    "VsphereDatacenterFolderDescendantType",
+                    new HashSet<string> {
+                    "VsphereDatacenter",
+                    "VsphereDatacenterFolder",
+                    "VsphereFolder",
+                    "VsphereVm",
+                    }
+                },
+                {
+                    "VsphereDatacenterFolderLogicalChildType",
+                    new HashSet<string> {
+                    "VsphereDatacenter",
+                    "VsphereDatacenterFolder",
+                    "VsphereDatacenterFolderLogicalChildType",
+                    "VsphereFolder",
+                    }
+                },
+                {
                     "VsphereDatacenterLogicalChildType",
                     new HashSet<string> {
                     "VsphereDatacenterLogicalChildType",
@@ -1334,7 +1371,6 @@ namespace RubrikSecurityCloud.Types
                 {
                     "VsphereFolderDescendantType",
                     new HashSet<string> {
-                    "VsphereDatacenter",
                     "VsphereFolder",
                     "VsphereVm",
                     }
@@ -1342,7 +1378,6 @@ namespace RubrikSecurityCloud.Types
                 {
                     "VsphereFolderLogicalChildType",
                     new HashSet<string> {
-                    "VsphereDatacenter",
                     "VsphereFolder",
                     "VsphereVm",
                     }
@@ -1411,6 +1446,7 @@ namespace RubrikSecurityCloud.Types
                     new HashSet<string> {
                     "VsphereComputeCluster",
                     "VsphereDatacenter",
+                    "VsphereDatacenterFolder",
                     "VsphereDatastore",
                     "VsphereDatastoreCluster",
                     "VsphereFolder",
@@ -1426,6 +1462,7 @@ namespace RubrikSecurityCloud.Types
                     "VsphereVcenterLogicalChildType",
                     new HashSet<string> {
                     "VsphereDatacenter",
+                    "VsphereDatacenterFolder",
                     "VsphereFolder",
                     }
                 },
@@ -1466,6 +1503,9 @@ namespace RubrikSecurityCloud.Types
             return new HashSet<string>();
         }
         
+        /// <summary>
+        /// Given the name of a type, return the names of the unions that include it.
+        /// </summary>
         public static HashSet<string> UnionMembership( string typeName )
         {
             var UnionMembershipDict = new Dictionary<string, HashSet<string>> {
@@ -1793,7 +1833,10 @@ namespace RubrikSecurityCloud.Types
             return new HashSet<string>();
         }
 
-        public enum GqlOperationName
+        /// <summary>
+        /// All GraphQL root field names (for both queries and mutations).
+        /// </summary>
+        public enum GqlRootFieldName
         {
             Unknown,
             AwsCloudAccountListKMSKeys,
@@ -2333,6 +2376,7 @@ namespace RubrikSecurityCloud.Types
             restoreO365TeamsFiles,
             restoreOracleLogs,
             retryAddMongoSource,
+            searchAzureAdSnapshot,
             searchNutanixVm,
             setAzureCloudAccountCustomerAppCredentials,
             setLdapMfaSetting,
@@ -2424,6 +2468,7 @@ namespace RubrikSecurityCloud.Types
             vSphereComputeCluster,
             vSphereComputeClusters,
             vSphereDatacenter,
+            vSphereDatacenterFolder,
             vSphereDatastore,
             vSphereDatastoreCluster,
             vSphereDatastoreClusters,
@@ -2502,2831 +2547,10774 @@ namespace RubrikSecurityCloud.Types
             windowsCluster,
         }
 
-        public static string OperationLookup( GqlOperationName gqlOpName)
+        /// <summary>
+        /// Given a GraphQL root field name, return the corresponding RSC operation.
+        /// </summary>
+        public static RscOp RscOpLookupByGqlRootField(
+            GqlRootFieldName rootField)
         {
-            var OperationLookupDict = new Dictionary<GqlOperationName, string> {
-                {
-                    GqlOperationName.AwsCloudAccountListKMSKeys,
-                    "Invoke-RscQueryAws -CloudAccountListKMSKeys"
-                },
-                {
-                    GqlOperationName.accountId,
-                    "Invoke-RscQueryAccount -Id"
-                },
-                {
-                    GqlOperationName.accountSettings,
-                    "Invoke-RscQueryAccount -Settings"
-                },
-                {
-                    GqlOperationName.activitySeries,
-                    "Invoke-RscQueryActivitySeries -ActivitySeries"
-                },
-                {
-                    GqlOperationName.activitySeriesConnection,
-                    "Invoke-RscQueryActivitySeries -List"
-                },
-                {
-                    GqlOperationName.activitySeriesGroupByConnection,
-                    "Invoke-RscQueryActivitySeries -GroupByList"
-                },
-                {
-                    GqlOperationName.addAwsAuthenticationServerBasedCloudAccount,
-                    "Invoke-RscMutateAws -AddAuthenticationServerBasedCloudAccount"
-                },
-                {
-                    GqlOperationName.addAwsIamUserBasedCloudAccount,
-                    "Invoke-RscMutateAws -AddIamUserBasedCloudAccount"
-                },
-                {
-                    GqlOperationName.addAzureCloudAccount,
-                    "Invoke-RscMutateAzure -AddCloudAccount"
-                },
-                {
-                    GqlOperationName.addAzureCloudAccountExocomputeConfigurations,
-                    "Invoke-RscMutateAzure -AddCloudAccountExocomputeConfigurations"
-                },
-                {
-                    GqlOperationName.addAzureCloudAccountWithoutOauth,
-                    "Invoke-RscMutateAzure -AddCloudAccountWithoutOauth"
+            var lookupDict = new Dictionary<GqlRootFieldName, RscOp> {
+                {
+                    GqlRootFieldName.AwsCloudAccountListKMSKeys,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletSwitchName = "CloudAccountListKMSKeys",
+                        GqlRootFieldName = "AwsCloudAccountListKMSKeys"
+                    }
                 },
-                {
-                    GqlOperationName.addDb2Instance,
-                    "Invoke-RscMutateDb2 -AddInstance"
+                {
+                    GqlRootFieldName.accountId,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAccount",
+                        CmdletSwitchName = "Id",
+                        GqlRootFieldName = "accountId"
+                    }
                 },
-                {
-                    GqlOperationName.addK8sCluster,
-                    "Invoke-RscMutateCluster -AddK8s"
+                {
+                    GqlRootFieldName.accountSettings,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAccount",
+                        CmdletSwitchName = "Settings",
+                        GqlRootFieldName = "accountSettings"
+                    }
                 },
-                {
-                    GqlOperationName.addMongoSource,
-                    "Invoke-RscMutateMongo -AddSource"
+                {
+                    GqlRootFieldName.activitySeries,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryActivitySeries",
+                        CmdletSwitchName = "ActivitySeries",
+                        GqlRootFieldName = "activitySeries"
+                    }
                 },
-                {
-                    GqlOperationName.addNodesToCloudCluster,
-                    "Invoke-RscMutateCluster -AddNodesToCloud"
+                {
+                    GqlRootFieldName.activitySeriesConnection,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryActivitySeries",
+                        CmdletSwitchName = "List",
+                        GqlRootFieldName = "activitySeriesConnection"
+                    }
                 },
-                {
-                    GqlOperationName.addO365Org,
-                    "Invoke-RscMutateO365 -AddOrg"
+                {
+                    GqlRootFieldName.activitySeriesGroupByConnection,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryActivitySeries",
+                        CmdletSwitchName = "GroupByList",
+                        GqlRootFieldName = "activitySeriesGroupByConnection"
+                    }
                 },
-                {
-                    GqlOperationName.allAccountOwners,
-                    "Invoke-RscQueryAccount -Owners"
+                {
+                    GqlRootFieldName.addAwsAuthenticationServerBasedCloudAccount,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletSwitchName = "AddAuthenticationServerBasedCloudAccount",
+                        GqlRootFieldName = "addAwsAuthenticationServerBasedCloudAccount"
+                    }
                 },
-                {
-                    GqlOperationName.allAccountProducts,
-                    "Invoke-RscQueryAccount -Products"
+                {
+                    GqlRootFieldName.addAwsIamUserBasedCloudAccount,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletSwitchName = "AddIamUserBasedCloudAccount",
+                        GqlRootFieldName = "addAwsIamUserBasedCloudAccount"
+                    }
                 },
-                {
-                    GqlOperationName.allAccountsWithExocomputeMappings,
-                    "Invoke-RscQueryAccount -SWithExocomputeMappings"
+                {
+                    GqlRootFieldName.addAzureCloudAccount,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletSwitchName = "AddCloudAccount",
+                        GqlRootFieldName = "addAzureCloudAccount"
+                    }
                 },
-                {
-                    GqlOperationName.allAvailabilityZonesByRegionFromAws,
-                    "Invoke-RscQueryAws -AllAvailabilityZonesByRegion"
+                {
+                    GqlRootFieldName.addAzureCloudAccountExocomputeConfigurations,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletSwitchName = "AddCloudAccountExocomputeConfigurations",
+                        GqlRootFieldName = "addAzureCloudAccountExocomputeConfigurations"
+                    }
                 },
-                {
-                    GqlOperationName.allAwsCdmVersions,
-                    "Invoke-RscQueryAws -AllCdmVersions"
+                {
+                    GqlRootFieldName.addAzureCloudAccountWithoutOauth,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletSwitchName = "AddCloudAccountWithoutOauth",
+                        GqlRootFieldName = "addAzureCloudAccountWithoutOauth"
+                    }
                 },
-                {
-                    GqlOperationName.allAwsCloudAccountConfigs,
-                    "Invoke-RscQueryAws -AllCloudAccountConfigs"
+                {
+                    GqlRootFieldName.addDb2Instance,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateDb2",
+                        CmdletSwitchName = "AddInstance",
+                        GqlRootFieldName = "addDb2Instance"
+                    }
                 },
-                {
-                    GqlOperationName.allAwsCloudAccountsFeaturesWithExoConfigs,
-                    "Invoke-RscQueryAws -AllCloudAccountsFeaturesWithExoConfigs"
+                {
+                    GqlRootFieldName.addK8sCluster,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateCluster",
+                        CmdletSwitchName = "AddK8s",
+                        GqlRootFieldName = "addK8sCluster"
+                    }
                 },
-                {
-                    GqlOperationName.allAwsCloudAccountsWithFeatures,
-                    "Invoke-RscQueryAws -AllCloudAccountsWithFeatures"
+                {
+                    GqlRootFieldName.addMongoSource,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateMongo",
+                        CmdletSwitchName = "AddSource",
+                        GqlRootFieldName = "addMongoSource"
+                    }
                 },
-                {
-                    GqlOperationName.allAwsComputeSettings,
-                    "Invoke-RscQueryAws -AllComputeSettings"
+                {
+                    GqlRootFieldName.addNodesToCloudCluster,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateCluster",
+                        CmdletSwitchName = "AddNodesToCloud",
+                        GqlRootFieldName = "addNodesToCloudCluster"
+                    }
                 },
-                {
-                    GqlOperationName.allAwsExocomputeConfigs,
-                    "Invoke-RscQueryAws -AllExocomputeConfigs"
+                {
+                    GqlRootFieldName.addO365Org,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletSwitchName = "AddOrg",
+                        GqlRootFieldName = "addO365Org"
+                    }
                 },
-                {
-                    GqlOperationName.allAwsInstanceProfileNames,
-                    "Invoke-RscQueryAws -AllInstanceProfileNames"
+                {
+                    GqlRootFieldName.allAccountOwners,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAccount",
+                        CmdletSwitchName = "Owners",
+                        GqlRootFieldName = "allAccountOwners"
+                    }
                 },
-                {
-                    GqlOperationName.allAwsPermissionPolicies,
-                    "Invoke-RscQueryAws -AllPermissionPolicies"
+                {
+                    GqlRootFieldName.allAccountProducts,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAccount",
+                        CmdletSwitchName = "Products",
+                        GqlRootFieldName = "allAccountProducts"
+                    }
                 },
-                {
-                    GqlOperationName.allAwsRdsAuroraInstanceClasses,
-                    "Invoke-RscQueryAws -AllRdsAuroraInstanceClasses"
+                {
+                    GqlRootFieldName.allAccountsWithExocomputeMappings,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAccount",
+                        CmdletSwitchName = "SWithExocomputeMappings",
+                        GqlRootFieldName = "allAccountsWithExocomputeMappings"
+                    }
                 },
-                {
-                    GqlOperationName.allAwsRegions,
-                    "Invoke-RscQueryAws -AllRegions"
+                {
+                    GqlRootFieldName.allAvailabilityZonesByRegionFromAws,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletSwitchName = "AllAvailabilityZonesByRegion",
+                        GqlRootFieldName = "allAvailabilityZonesByRegionFromAws"
+                    }
                 },
-                {
-                    GqlOperationName.allAzureArmTemplatesByFeature,
-                    "Invoke-RscQueryAzure -AllArmTemplatesByFeature"
+                {
+                    GqlRootFieldName.allAwsCdmVersions,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletSwitchName = "AllCdmVersions",
+                        GqlRootFieldName = "allAwsCdmVersions"
+                    }
                 },
-                {
-                    GqlOperationName.allAzureCdmVersions,
-                    "Invoke-RscQueryAzure -AllCdmVersions"
+                {
+                    GqlRootFieldName.allAwsCloudAccountConfigs,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletSwitchName = "AllCloudAccountConfigs",
+                        GqlRootFieldName = "allAwsCloudAccountConfigs"
+                    }
                 },
-                {
-                    GqlOperationName.allAzureCloudAccountMissingPermissions,
-                    "Invoke-RscQueryAzure -AllCloudAccountMissingPermissions"
+                {
+                    GqlRootFieldName.allAwsCloudAccountsFeaturesWithExoConfigs,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletSwitchName = "AllCloudAccountsFeaturesWithExoConfigs",
+                        GqlRootFieldName = "allAwsCloudAccountsFeaturesWithExoConfigs"
+                    }
                 },
-                {
-                    GqlOperationName.allAzureCloudAccountSubnetsByRegion,
-                    "Invoke-RscQueryAzure -AllCloudAccountSubnetsByRegion"
+                {
+                    GqlRootFieldName.allAwsCloudAccountsWithFeatures,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletSwitchName = "AllCloudAccountsWithFeatures",
+                        GqlRootFieldName = "allAwsCloudAccountsWithFeatures"
+                    }
                 },
-                {
-                    GqlOperationName.allAzureCloudAccountSubscriptionsByFeature,
-                    "Invoke-RscQueryAzure -AllCloudAccountSubscriptionsByFeature"
+                {
+                    GqlRootFieldName.allAwsComputeSettings,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletSwitchName = "AllComputeSettings",
+                        GqlRootFieldName = "allAwsComputeSettings"
+                    }
                 },
-                {
-                    GqlOperationName.allAzureCloudAccountTenants,
-                    "Invoke-RscQueryAzure -AllCloudAccountTenants"
+                {
+                    GqlRootFieldName.allAwsExocomputeConfigs,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletSwitchName = "AllExocomputeConfigs",
+                        GqlRootFieldName = "allAwsExocomputeConfigs"
+                    }
                 },
-                {
-                    GqlOperationName.allAzureCloudAccountTenantsWithExoConfigs,
-                    "Invoke-RscQueryAzure -AllCloudAccountTenantsWithExoConfigs"
+                {
+                    GqlRootFieldName.allAwsInstanceProfileNames,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletSwitchName = "AllInstanceProfileNames",
+                        GqlRootFieldName = "allAwsInstanceProfileNames"
+                    }
                 },
-                {
-                    GqlOperationName.allAzureDiskEncryptionSetsByRegion,
-                    "Invoke-RscQueryAzure -AllDiskEncryptionSetsByRegion"
+                {
+                    GqlRootFieldName.allAwsPermissionPolicies,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletSwitchName = "AllPermissionPolicies",
+                        GqlRootFieldName = "allAwsPermissionPolicies"
+                    }
                 },
-                {
-                    GqlOperationName.allAzureEncryptionKeys,
-                    "Invoke-RscQueryAzure -AllEncryptionKeys"
+                {
+                    GqlRootFieldName.allAwsRdsAuroraInstanceClasses,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletSwitchName = "AllRdsAuroraInstanceClasses",
+                        GqlRootFieldName = "allAwsRdsAuroraInstanceClasses"
+                    }
                 },
-                {
-                    GqlOperationName.allAzureExocomputeConfigsInAccount,
-                    "Invoke-RscQueryAzure -AllExocomputeConfigsInAccount"
+                {
+                    GqlRootFieldName.allAwsRegions,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletSwitchName = "AllRegions",
+                        GqlRootFieldName = "allAwsRegions"
+                    }
                 },
-                {
-                    GqlOperationName.allAzureKeyVaultsByRegion,
-                    "Invoke-RscQueryAzure -AllKeyVaultsByRegion"
+                {
+                    GqlRootFieldName.allAzureArmTemplatesByFeature,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "AllArmTemplatesByFeature",
+                        GqlRootFieldName = "allAzureArmTemplatesByFeature"
+                    }
                 },
-                {
-                    GqlOperationName.allAzureManagedIdentities,
-                    "Invoke-RscQueryAzure -AllManagedIdentities"
+                {
+                    GqlRootFieldName.allAzureCdmVersions,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "AllCdmVersions",
+                        GqlRootFieldName = "allAzureCdmVersions"
+                    }
                 },
-                {
-                    GqlOperationName.allAzureNativeAvailabilitySetsByRegionFromAzure,
-                    "Invoke-RscQueryAzure -AllNativeAvailabilitySetsByRegionFromAzure"
+                {
+                    GqlRootFieldName.allAzureCloudAccountMissingPermissions,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "AllCloudAccountMissingPermissions",
+                        GqlRootFieldName = "allAzureCloudAccountMissingPermissions"
+                    }
                 },
-                {
-                    GqlOperationName.allAzureNativeExportCompatibleDiskTypesByRegionFromAzure,
-                    "Invoke-RscQueryAzure -AllNativeExportCompatibleDiskTypesByRegionFromAzure"
+                {
+                    GqlRootFieldName.allAzureCloudAccountSubnetsByRegion,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "AllCloudAccountSubnetsByRegion",
+                        GqlRootFieldName = "allAzureCloudAccountSubnetsByRegion"
+                    }
                 },
-                {
-                    GqlOperationName.allAzureNativeExportCompatibleVmSizesByRegionFromAzure,
-                    "Invoke-RscQueryAzure -AllNativeExportCompatibleVmSizesByRegionFromAzure"
+                {
+                    GqlRootFieldName.allAzureCloudAccountSubscriptionsByFeature,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "AllCloudAccountSubscriptionsByFeature",
+                        GqlRootFieldName = "allAzureCloudAccountSubscriptionsByFeature"
+                    }
                 },
-                {
-                    GqlOperationName.allAzureNativeResourceGroupsInfoIfExist,
-                    "Invoke-RscQueryAzure -AllNativeResourceGroupsInfoIfExist"
+                {
+                    GqlRootFieldName.allAzureCloudAccountTenants,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "AllCloudAccountTenants",
+                        GqlRootFieldName = "allAzureCloudAccountTenants"
+                    }
                 },
-                {
-                    GqlOperationName.allAzureNativeSecurityGroupsByRegionFromAzure,
-                    "Invoke-RscQueryAzure -AllNativeSecurityGroupsByRegionFromAzure"
+                {
+                    GqlRootFieldName.allAzureCloudAccountTenantsWithExoConfigs,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "AllCloudAccountTenantsWithExoConfigs",
+                        GqlRootFieldName = "allAzureCloudAccountTenantsWithExoConfigs"
+                    }
                 },
-                {
-                    GqlOperationName.allAzureNativeStorageAccountsFromAzure,
-                    "Invoke-RscQueryAzure -AllNativeStorageAccountsFromAzure"
+                {
+                    GqlRootFieldName.allAzureDiskEncryptionSetsByRegion,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "AllDiskEncryptionSetsByRegion",
+                        GqlRootFieldName = "allAzureDiskEncryptionSetsByRegion"
+                    }
                 },
-                {
-                    GqlOperationName.allAzureNativeSubnetsByRegionFromAzure,
-                    "Invoke-RscQueryAzure -AllNativeSubnetsByRegionFromAzure"
+                {
+                    GqlRootFieldName.allAzureEncryptionKeys,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "AllEncryptionKeys",
+                        GqlRootFieldName = "allAzureEncryptionKeys"
+                    }
                 },
-                {
-                    GqlOperationName.allAzureNativeVirtualMachineSizes,
-                    "Invoke-RscQueryAzure -AllNativeVirtualMachineSizes"
+                {
+                    GqlRootFieldName.allAzureExocomputeConfigsInAccount,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "AllExocomputeConfigsInAccount",
+                        GqlRootFieldName = "allAzureExocomputeConfigsInAccount"
+                    }
                 },
-                {
-                    GqlOperationName.allAzureNativeVirtualNetworks,
-                    "Invoke-RscQueryAzure -AllNativeVirtualNetworks"
+                {
+                    GqlRootFieldName.allAzureKeyVaultsByRegion,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "AllKeyVaultsByRegion",
+                        GqlRootFieldName = "allAzureKeyVaultsByRegion"
+                    }
                 },
-                {
-                    GqlOperationName.allAzureNsgs,
-                    "Invoke-RscQueryAzure -AllNsgs"
+                {
+                    GqlRootFieldName.allAzureManagedIdentities,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "AllManagedIdentities",
+                        GqlRootFieldName = "allAzureManagedIdentities"
+                    }
                 },
-                {
-                    GqlOperationName.allAzureRegions,
-                    "Invoke-RscQueryAzure -AllRegions"
+                {
+                    GqlRootFieldName.allAzureNativeAvailabilitySetsByRegionFromAzure,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "AllNativeAvailabilitySetsByRegionFromAzure",
+                        GqlRootFieldName = "allAzureNativeAvailabilitySetsByRegionFromAzure"
+                    }
                 },
-                {
-                    GqlOperationName.allAzureResourceGroups,
-                    "Invoke-RscQueryAzure -AllResourceGroups"
+                {
+                    GqlRootFieldName.allAzureNativeExportCompatibleDiskTypesByRegionFromAzure,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "AllNativeExportCompatibleDiskTypesByRegionFromAzure",
+                        GqlRootFieldName = "allAzureNativeExportCompatibleDiskTypesByRegionFromAzure"
+                    }
                 },
-                {
-                    GqlOperationName.allAzureSqlDatabaseServerElasticPools,
-                    "Invoke-RscQueryAzure -AllSqlDatabaseServerElasticPools"
+                {
+                    GqlRootFieldName.allAzureNativeExportCompatibleVmSizesByRegionFromAzure,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "AllNativeExportCompatibleVmSizesByRegionFromAzure",
+                        GqlRootFieldName = "allAzureNativeExportCompatibleVmSizesByRegionFromAzure"
+                    }
                 },
-                {
-                    GqlOperationName.allAzureStorageAccounts,
-                    "Invoke-RscQueryAzure -AllStorageAccounts"
+                {
+                    GqlRootFieldName.allAzureNativeResourceGroupsInfoIfExist,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "AllNativeResourceGroupsInfoIfExist",
+                        GqlRootFieldName = "allAzureNativeResourceGroupsInfoIfExist"
+                    }
                 },
-                {
-                    GqlOperationName.allAzureSubnets,
-                    "Invoke-RscQueryAzure -AllSubnets"
+                {
+                    GqlRootFieldName.allAzureNativeSecurityGroupsByRegionFromAzure,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "AllNativeSecurityGroupsByRegionFromAzure",
+                        GqlRootFieldName = "allAzureNativeSecurityGroupsByRegionFromAzure"
+                    }
                 },
-                {
-                    GqlOperationName.allAzureSubscriptionWithExocomputeMappings,
-                    "Invoke-RscQueryAzure -AllSubscriptionWithExocomputeMappings"
+                {
+                    GqlRootFieldName.allAzureNativeStorageAccountsFromAzure,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "AllNativeStorageAccountsFromAzure",
+                        GqlRootFieldName = "allAzureNativeStorageAccountsFromAzure"
+                    }
                 },
-                {
-                    GqlOperationName.allAzureVnets,
-                    "Invoke-RscQueryAzure -AllVnets"
+                {
+                    GqlRootFieldName.allAzureNativeSubnetsByRegionFromAzure,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "AllNativeSubnetsByRegionFromAzure",
+                        GqlRootFieldName = "allAzureNativeSubnetsByRegionFromAzure"
+                    }
                 },
-                {
-                    GqlOperationName.allCdpSlaVmNames,
-                    "Invoke-RscQuerySla -AllCdpVmNames"
+                {
+                    GqlRootFieldName.allAzureNativeVirtualMachineSizes,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "AllNativeVirtualMachineSizes",
+                        GqlRootFieldName = "allAzureNativeVirtualMachineSizes"
+                    }
                 },
-                {
-                    GqlOperationName.allCloudClusters,
-                    "Invoke-RscQueryCluster -Cloud"
+                {
+                    GqlRootFieldName.allAzureNativeVirtualNetworks,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "AllNativeVirtualNetworks",
+                        GqlRootFieldName = "allAzureNativeVirtualNetworks"
+                    }
                 },
-                {
-                    GqlOperationName.allClusterGlobalSlas,
-                    "Invoke-RscQuerySla -AllClusterGlobals"
+                {
+                    GqlRootFieldName.allAzureNsgs,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "AllNsgs",
+                        GqlRootFieldName = "allAzureNsgs"
+                    }
                 },
-                {
-                    GqlOperationName.allClusterReplicationTargets,
-                    "Invoke-RscQueryCluster -ReplicationTargets"
+                {
+                    GqlRootFieldName.allAzureRegions,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "AllRegions",
+                        GqlRootFieldName = "allAzureRegions"
+                    }
                 },
-                {
-                    GqlOperationName.allClusterWebCertsAndIpmis,
-                    "Invoke-RscQueryCluster -WebCertsAndIpmis"
+                {
+                    GqlRootFieldName.allAzureResourceGroups,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "AllResourceGroups",
+                        GqlRootFieldName = "allAzureResourceGroups"
+                    }
                 },
-                {
-                    GqlOperationName.allClustersTotpAckStatus,
-                    "Invoke-RscQueryCluster -TotpAckStatus"
+                {
+                    GqlRootFieldName.allAzureSqlDatabaseServerElasticPools,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "AllSqlDatabaseServerElasticPools",
+                        GqlRootFieldName = "allAzureSqlDatabaseServerElasticPools"
+                    }
                 },
-                {
-                    GqlOperationName.allConnectedClusters,
-                    "Invoke-RscQueryCluster -Connected"
+                {
+                    GqlRootFieldName.allAzureStorageAccounts,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "AllStorageAccounts",
+                        GqlRootFieldName = "allAzureStorageAccounts"
+                    }
                 },
-                {
-                    GqlOperationName.allDbParameterGroupsByRegionFromAws,
-                    "Invoke-RscQueryAws -AllDbParameterGroupsByRegion"
+                {
+                    GqlRootFieldName.allAzureSubnets,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "AllSubnets",
+                        GqlRootFieldName = "allAzureSubnets"
+                    }
                 },
-                {
-                    GqlOperationName.allDbSubnetGroupsByRegionFromAws,
-                    "Invoke-RscQueryAws -AllDbSubnetGroupsByRegion"
+                {
+                    GqlRootFieldName.allAzureSubscriptionWithExocomputeMappings,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "AllSubscriptionWithExocomputeMappings",
+                        GqlRootFieldName = "allAzureSubscriptionWithExocomputeMappings"
+                    }
                 },
-                {
-                    GqlOperationName.allEc2KeyPairsByRegionFromAws,
-                    "Invoke-RscQueryAws -AllEc2KeyPairsByRegion"
+                {
+                    GqlRootFieldName.allAzureVnets,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "AllVnets",
+                        GqlRootFieldName = "allAzureVnets"
+                    }
                 },
-                {
-                    GqlOperationName.allGlobalFileSearchMultipleClusters,
-                    "Invoke-RscQueryCluster -GlobalFileSearchMultiple"
+                {
+                    GqlRootFieldName.allCdpSlaVmNames,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQuerySla",
+                        CmdletSwitchName = "AllCdpVmNames",
+                        GqlRootFieldName = "allCdpSlaVmNames"
+                    }
                 },
-                {
-                    GqlOperationName.allHostedAzureRegions,
-                    "Invoke-RscQueryAzure -AllHostedRegions"
+                {
+                    GqlRootFieldName.allCloudClusters,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletSwitchName = "Cloud",
+                        GqlRootFieldName = "allCloudClusters"
+                    }
                 },
-                {
-                    GqlOperationName.allKmsEncryptionKeysByRegionFromAws,
-                    "Invoke-RscQueryAws -AllKmsEncryptionKeysByRegion"
+                {
+                    GqlRootFieldName.allClusterGlobalSlas,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQuerySla",
+                        CmdletSwitchName = "AllClusterGlobals",
+                        GqlRootFieldName = "allClusterGlobalSlas"
+                    }
                 },
-                {
-                    GqlOperationName.allMssqlDatabaseRestoreFiles,
-                    "Invoke-RscQueryMssql -AllDatabaseRestoreFiles"
+                {
+                    GqlRootFieldName.allClusterReplicationTargets,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletSwitchName = "ReplicationTargets",
+                        GqlRootFieldName = "allClusterReplicationTargets"
+                    }
                 },
-                {
-                    GqlOperationName.allNcdSlaComplianceData,
-                    "Invoke-RscQuerySla -AllNcdComplianceData"
+                {
+                    GqlRootFieldName.allClusterWebCertsAndIpmis,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletSwitchName = "WebCertsAndIpmis",
+                        GqlRootFieldName = "allClusterWebCertsAndIpmis"
+                    }
                 },
-                {
-                    GqlOperationName.allO365AdGroups,
-                    "Invoke-RscQueryO365 -AllAdGroups"
+                {
+                    GqlRootFieldName.allClustersTotpAckStatus,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletSwitchName = "TotpAckStatus",
+                        GqlRootFieldName = "allClustersTotpAckStatus"
+                    }
                 },
-                {
-                    GqlOperationName.allO365OrgStatuses,
-                    "Invoke-RscQueryO365 -AllOrgStatuses"
+                {
+                    GqlRootFieldName.allConnectedClusters,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletSwitchName = "Connected",
+                        GqlRootFieldName = "allConnectedClusters"
+                    }
                 },
-                {
-                    GqlOperationName.allO365SubscriptionsAppTypeCounts,
-                    "Invoke-RscQueryO365 -AllSubscriptionsAppTypeCounts"
+                {
+                    GqlRootFieldName.allDbParameterGroupsByRegionFromAws,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletSwitchName = "AllDbParameterGroupsByRegion",
+                        GqlRootFieldName = "allDbParameterGroupsByRegionFromAws"
+                    }
                 },
-                {
-                    GqlOperationName.allOptionGroupsByRegionFromAws,
-                    "Invoke-RscQueryAws -AllOptionGroupsByRegion"
+                {
+                    GqlRootFieldName.allDbSubnetGroupsByRegionFromAws,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletSwitchName = "AllDbSubnetGroupsByRegion",
+                        GqlRootFieldName = "allDbSubnetGroupsByRegionFromAws"
+                    }
                 },
-                {
-                    GqlOperationName.allResourceGroupsFromAzure,
-                    "Invoke-RscQueryAzure -AllResourceGroupsFrom"
+                {
+                    GqlRootFieldName.allEc2KeyPairsByRegionFromAws,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletSwitchName = "AllEc2KeyPairsByRegion",
+                        GqlRootFieldName = "allEc2KeyPairsByRegionFromAws"
+                    }
                 },
-                {
-                    GqlOperationName.allS3BucketsDetailsFromAws,
-                    "Invoke-RscQueryAws -AllS3BucketsDetails"
+                {
+                    GqlRootFieldName.allGlobalFileSearchMultipleClusters,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletSwitchName = "GlobalFileSearchMultiple",
+                        GqlRootFieldName = "allGlobalFileSearchMultipleClusters"
+                    }
                 },
-                {
-                    GqlOperationName.allS3BucketsFromAws,
-                    "Invoke-RscQueryAws -AllS3Buckets"
+                {
+                    GqlRootFieldName.allHostedAzureRegions,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "AllHostedRegions",
+                        GqlRootFieldName = "allHostedAzureRegions"
+                    }
                 },
-                {
-                    GqlOperationName.allSlaIofilterStatuses,
-                    "Invoke-RscQuerySla -AllIofilterStatuses"
+                {
+                    GqlRootFieldName.allKmsEncryptionKeysByRegionFromAws,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletSwitchName = "AllKmsEncryptionKeysByRegion",
+                        GqlRootFieldName = "allKmsEncryptionKeysByRegionFromAws"
+                    }
                 },
-                {
-                    GqlOperationName.allSlaSummariesByIds,
-                    "Invoke-RscQuerySla -AllSummariesByIds"
+                {
+                    GqlRootFieldName.allMssqlDatabaseRestoreFiles,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryMssql",
+                        CmdletSwitchName = "AllDatabaseRestoreFiles",
+                        GqlRootFieldName = "allMssqlDatabaseRestoreFiles"
+                    }
                 },
-                {
-                    GqlOperationName.allSupportedAwsRdsDatabaseInstanceClasses,
-                    "Invoke-RscQueryAws -AllSupportedRdsDatabaseInstanceClasses"
+                {
+                    GqlRootFieldName.allNcdSlaComplianceData,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQuerySla",
+                        CmdletSwitchName = "AllNcdComplianceData",
+                        GqlRootFieldName = "allNcdSlaComplianceData"
+                    }
                 },
-                {
-                    GqlOperationName.allVcenterHotAddProxyVms,
-                    "Invoke-RscQueryVcenter -HotAddProxy"
+                {
+                    GqlRootFieldName.allO365AdGroups,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletSwitchName = "AllAdGroups",
+                        GqlRootFieldName = "allO365AdGroups"
+                    }
                 },
-                {
-                    GqlOperationName.allVpcsByRegionFromAws,
-                    "Invoke-RscQueryAws -AllVpcsByRegion"
+                {
+                    GqlRootFieldName.allO365OrgStatuses,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletSwitchName = "AllOrgStatuses",
+                        GqlRootFieldName = "allO365OrgStatuses"
+                    }
                 },
-                {
-                    GqlOperationName.allVpcsFromAws,
-                    "Invoke-RscQueryAws -AllVpcs"
+                {
+                    GqlRootFieldName.allO365SubscriptionsAppTypeCounts,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletSwitchName = "AllSubscriptionsAppTypeCounts",
+                        GqlRootFieldName = "allO365SubscriptionsAppTypeCounts"
+                    }
                 },
-                {
-                    GqlOperationName.amiTypeForAwsNativeArchivedSnapshotExport,
-                    "Invoke-RscQueryAws -AmiTypeForNativeArchivedSnapshotExport"
+                {
+                    GqlRootFieldName.allOptionGroupsByRegionFromAws,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletSwitchName = "AllOptionGroupsByRegion",
+                        GqlRootFieldName = "allOptionGroupsByRegionFromAws"
+                    }
                 },
-                {
-                    GqlOperationName.archiveK8sCluster,
-                    "Invoke-RscMutateCluster -ArchiveK8s"
+                {
+                    GqlRootFieldName.allResourceGroupsFromAzure,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "AllResourceGroupsFrom",
+                        GqlRootFieldName = "allResourceGroupsFromAzure"
+                    }
                 },
-                {
-                    GqlOperationName.assignMssqlSlaDomainProperties,
-                    "Invoke-RscMutateMssql -AssignSlaDomainProperties"
+                {
+                    GqlRootFieldName.allS3BucketsDetailsFromAws,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletSwitchName = "AllS3BucketsDetails",
+                        GqlRootFieldName = "allS3BucketsDetailsFromAws"
+                    }
                 },
-                {
-                    GqlOperationName.assignMssqlSlaDomainPropertiesAsync,
-                    "Invoke-RscMutateMssql -AssignSlaDomainPropertiesAsync"
+                {
+                    GqlRootFieldName.allS3BucketsFromAws,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletSwitchName = "AllS3Buckets",
+                        GqlRootFieldName = "allS3BucketsFromAws"
+                    }
                 },
-                {
-                    GqlOperationName.assignRetentionSLAToSnappables,
-                    "Invoke-RscMutateSla -AssignRetentionToSnappables"
+                {
+                    GqlRootFieldName.allSlaIofilterStatuses,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQuerySla",
+                        CmdletSwitchName = "AllIofilterStatuses",
+                        GqlRootFieldName = "allSlaIofilterStatuses"
+                    }
                 },
-                {
-                    GqlOperationName.assignRetentionSLAToSnapshots,
-                    "Invoke-RscMutateSla -AssignRetentionToSnapshots"
+                {
+                    GqlRootFieldName.allSlaSummariesByIds,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQuerySla",
+                        CmdletSwitchName = "AllSummariesByIds",
+                        GqlRootFieldName = "allSlaSummariesByIds"
+                    }
                 },
-                {
-                    GqlOperationName.assignSla,
-                    "Invoke-RscMutateSla -Assign"
+                {
+                    GqlRootFieldName.allSupportedAwsRdsDatabaseInstanceClasses,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletSwitchName = "AllSupportedRdsDatabaseInstanceClasses",
+                        GqlRootFieldName = "allSupportedAwsRdsDatabaseInstanceClasses"
+                    }
                 },
-                {
-                    GqlOperationName.assignSlaToMongoDbCollection,
-                    "Invoke-RscMutateMongo -AssignSlaToDbCollection"
+                {
+                    GqlRootFieldName.allVcenterHotAddProxyVms,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryVcenter",
+                        CmdletSwitchName = "HotAddProxy",
+                        GqlRootFieldName = "allVcenterHotAddProxyVms"
+                    }
                 },
-                {
-                    GqlOperationName.assignSlasForSnappableHierarchies,
-                    "Invoke-RscMutateSla -AssignsForSnappableHierarchies"
+                {
+                    GqlRootFieldName.allVpcsByRegionFromAws,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletSwitchName = "AllVpcsByRegion",
+                        GqlRootFieldName = "allVpcsByRegionFromAws"
+                    }
                 },
-                {
-                    GqlOperationName.awsArtifactsToDelete,
-                    "Invoke-RscQueryAws -ArtifactsToDelete"
+                {
+                    GqlRootFieldName.allVpcsFromAws,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletSwitchName = "AllVpcs",
+                        GqlRootFieldName = "allVpcsFromAws"
+                    }
                 },
-                {
-                    GqlOperationName.awsCloudAccountInitiate,
-                    "Invoke-RscMutateAws -CloudAccountInitiate"
+                {
+                    GqlRootFieldName.amiTypeForAwsNativeArchivedSnapshotExport,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletSwitchName = "AmiTypeForNativeArchivedSnapshotExport",
+                        GqlRootFieldName = "amiTypeForAwsNativeArchivedSnapshotExport"
+                    }
                 },
-                {
-                    GqlOperationName.awsCloudAccountListSecurityGroups,
-                    "Invoke-RscQueryAws -CloudAccountListSecurityGroups"
+                {
+                    GqlRootFieldName.archiveK8sCluster,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateCluster",
+                        CmdletSwitchName = "ArchiveK8s",
+                        GqlRootFieldName = "archiveK8sCluster"
+                    }
                 },
-                {
-                    GqlOperationName.awsCloudAccountListSubnets,
-                    "Invoke-RscQueryAws -CloudAccountListSubnets"
+                {
+                    GqlRootFieldName.assignMssqlSlaDomainProperties,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateMssql",
+                        CmdletSwitchName = "AssignSlaDomainProperties",
+                        GqlRootFieldName = "assignMssqlSlaDomainProperties"
+                    }
                 },
-                {
-                    GqlOperationName.awsCloudAccountListVpcs,
-                    "Invoke-RscQueryAws -CloudAccountListVpcs"
+                {
+                    GqlRootFieldName.assignMssqlSlaDomainPropertiesAsync,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateMssql",
+                        CmdletSwitchName = "AssignSlaDomainPropertiesAsync",
+                        GqlRootFieldName = "assignMssqlSlaDomainPropertiesAsync"
+                    }
                 },
-                {
-                    GqlOperationName.awsCloudAccountUpdateFeature,
-                    "Invoke-RscMutateAws -CloudAccountUpdateFeature"
+                {
+                    GqlRootFieldName.assignRetentionSLAToSnappables,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateSla",
+                        CmdletSwitchName = "AssignRetentionToSnappables",
+                        GqlRootFieldName = "assignRetentionSLAToSnappables"
+                    }
                 },
-                {
-                    GqlOperationName.awsCloudAccountValidate,
-                    "Invoke-RscMutateAws -CloudAccountValidate"
+                {
+                    GqlRootFieldName.assignRetentionSLAToSnapshots,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateSla",
+                        CmdletSwitchName = "AssignRetentionToSnapshots",
+                        GqlRootFieldName = "assignRetentionSLAToSnapshots"
+                    }
                 },
-                {
-                    GqlOperationName.awsCloudAccountWithFeatures,
-                    "Invoke-RscQueryAws -CloudAccountWithFeatures"
+                {
+                    GqlRootFieldName.assignSla,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateSla",
+                        CmdletSwitchName = "Assign",
+                        GqlRootFieldName = "assignSla"
+                    }
                 },
-                {
-                    GqlOperationName.awsComputeSettings,
-                    "Invoke-RscQueryAws -ComputeSettings"
+                {
+                    GqlRootFieldName.assignSlaToMongoDbCollection,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateMongo",
+                        CmdletSwitchName = "AssignSlaToDbCollection",
+                        GqlRootFieldName = "assignSlaToMongoDbCollection"
+                    }
                 },
-                {
-                    GqlOperationName.awsNativeAccount,
-                    "Invoke-RscQueryAws -NativeAccount"
+                {
+                    GqlRootFieldName.assignSlasForSnappableHierarchies,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateSla",
+                        CmdletSwitchName = "AssignsForSnappableHierarchies",
+                        GqlRootFieldName = "assignSlasForSnappableHierarchies"
+                    }
                 },
-                {
-                    GqlOperationName.awsNativeAccounts,
-                    "Invoke-RscQueryAws -NativeAccounts"
+                {
+                    GqlRootFieldName.awsArtifactsToDelete,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletSwitchName = "ArtifactsToDelete",
+                        GqlRootFieldName = "awsArtifactsToDelete"
+                    }
                 },
-                {
-                    GqlOperationName.awsNativeEbsVolume,
-                    "Invoke-RscQueryAws -NativeEbsVolume"
+                {
+                    GqlRootFieldName.awsCloudAccountInitiate,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletSwitchName = "CloudAccountInitiate",
+                        GqlRootFieldName = "awsCloudAccountInitiate"
+                    }
                 },
-                {
-                    GqlOperationName.awsNativeEbsVolumes,
-                    "Invoke-RscQueryAws -NativeEbsVolumes"
+                {
+                    GqlRootFieldName.awsCloudAccountListSecurityGroups,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletSwitchName = "CloudAccountListSecurityGroups",
+                        GqlRootFieldName = "awsCloudAccountListSecurityGroups"
+                    }
                 },
-                {
-                    GqlOperationName.awsNativeEbsVolumesByName,
-                    "Invoke-RscQueryAws -NativeEbsVolumesByName"
+                {
+                    GqlRootFieldName.awsCloudAccountListSubnets,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletSwitchName = "CloudAccountListSubnets",
+                        GqlRootFieldName = "awsCloudAccountListSubnets"
+                    }
                 },
-                {
-                    GqlOperationName.awsNativeEc2Instance,
-                    "Invoke-RscQueryAws -NativeEc2Instance"
+                {
+                    GqlRootFieldName.awsCloudAccountListVpcs,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletSwitchName = "CloudAccountListVpcs",
+                        GqlRootFieldName = "awsCloudAccountListVpcs"
+                    }
                 },
-                {
-                    GqlOperationName.awsNativeEc2Instances,
-                    "Invoke-RscQueryAws -NativeEc2Instances"
+                {
+                    GqlRootFieldName.awsCloudAccountUpdateFeature,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletSwitchName = "CloudAccountUpdateFeature",
+                        GqlRootFieldName = "awsCloudAccountUpdateFeature"
+                    }
                 },
-                {
-                    GqlOperationName.awsNativeEc2InstancesByName,
-                    "Invoke-RscQueryAws -NativeEc2InstancesByName"
+                {
+                    GqlRootFieldName.awsCloudAccountValidate,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletSwitchName = "CloudAccountValidate",
+                        GqlRootFieldName = "awsCloudAccountValidate"
+                    }
                 },
-                {
-                    GqlOperationName.awsNativeProtectionAccountAdd,
-                    "Invoke-RscMutateAws -NativeProtectionAccountAdd"
+                {
+                    GqlRootFieldName.awsCloudAccountWithFeatures,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletSwitchName = "CloudAccountWithFeatures",
+                        GqlRootFieldName = "awsCloudAccountWithFeatures"
+                    }
                 },
-                {
-                    GqlOperationName.awsNativeRdsExportDefaults,
-                    "Invoke-RscQueryAws -NativeRdsExportDefaults"
+                {
+                    GqlRootFieldName.awsComputeSettings,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletSwitchName = "ComputeSettings",
+                        GqlRootFieldName = "awsComputeSettings"
+                    }
                 },
-                {
-                    GqlOperationName.awsNativeRdsInstance,
-                    "Invoke-RscQueryAws -NativeRdsInstance"
+                {
+                    GqlRootFieldName.awsNativeAccount,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletSwitchName = "NativeAccount",
+                        GqlRootFieldName = "awsNativeAccount"
+                    }
                 },
-                {
-                    GqlOperationName.awsNativeRdsInstances,
-                    "Invoke-RscQueryAws -NativeRdsInstances"
+                {
+                    GqlRootFieldName.awsNativeAccounts,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletSwitchName = "NativeAccounts",
+                        GqlRootFieldName = "awsNativeAccounts"
+                    }
                 },
-                {
-                    GqlOperationName.awsNativeRdsPointInTimeRestoreWindow,
-                    "Invoke-RscQueryAws -NativeRdsPointInTimeRestoreWindow"
+                {
+                    GqlRootFieldName.awsNativeEbsVolume,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletSwitchName = "NativeEbsVolume",
+                        GqlRootFieldName = "awsNativeEbsVolume"
+                    }
                 },
-                {
-                    GqlOperationName.awsNativeRoot,
-                    "Invoke-RscQueryAws -NativeRoot"
+                {
+                    GqlRootFieldName.awsNativeEbsVolumes,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletSwitchName = "NativeEbsVolumes",
+                        GqlRootFieldName = "awsNativeEbsVolumes"
+                    }
                 },
-                {
-                    GqlOperationName.awsNativeS3Bucket,
-                    "Invoke-RscQueryAws -NativeS3Bucket"
+                {
+                    GqlRootFieldName.awsNativeEbsVolumesByName,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletSwitchName = "NativeEbsVolumesByName",
+                        GqlRootFieldName = "awsNativeEbsVolumesByName"
+                    }
                 },
-                {
-                    GqlOperationName.awsTrustPolicy,
-                    "Invoke-RscQueryAws -TrustPolicy"
+                {
+                    GqlRootFieldName.awsNativeEc2Instance,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletSwitchName = "NativeEc2Instance",
+                        GqlRootFieldName = "awsNativeEc2Instance"
+                    }
                 },
-                {
-                    GqlOperationName.azureAdDirectories,
-                    "Invoke-RscQueryAzure -AdDirectories"
+                {
+                    GqlRootFieldName.awsNativeEc2Instances,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletSwitchName = "NativeEc2Instances",
+                        GqlRootFieldName = "awsNativeEc2Instances"
+                    }
                 },
-                {
-                    GqlOperationName.azureAdDirectory,
-                    "Invoke-RscQueryAzure -AdDirectory"
+                {
+                    GqlRootFieldName.awsNativeEc2InstancesByName,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletSwitchName = "NativeEc2InstancesByName",
+                        GqlRootFieldName = "awsNativeEc2InstancesByName"
+                    }
                 },
-                {
-                    GqlOperationName.azureAdObjectsByType,
-                    "Invoke-RscQueryAzure -AdObjectsByType"
+                {
+                    GqlRootFieldName.awsNativeProtectionAccountAdd,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletSwitchName = "NativeProtectionAccountAdd",
+                        GqlRootFieldName = "awsNativeProtectionAccountAdd"
+                    }
                 },
-                {
-                    GqlOperationName.azureCloudAccountCheckRefreshTokenExistsForRecovery,
-                    "Invoke-RscQueryAzure -CloudAccountCheckRefreshTokenExistsForRecovery"
+                {
+                    GqlRootFieldName.awsNativeRdsExportDefaults,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletSwitchName = "NativeRdsExportDefaults",
+                        GqlRootFieldName = "awsNativeRdsExportDefaults"
+                    }
                 },
-                {
-                    GqlOperationName.azureCloudAccountGrantedPermissionsGroups,
-                    "Invoke-RscQueryAzure -CloudAccountGrantedPermissionsGroups"
+                {
+                    GqlRootFieldName.awsNativeRdsInstance,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletSwitchName = "NativeRdsInstance",
+                        GqlRootFieldName = "awsNativeRdsInstance"
+                    }
                 },
-                {
-                    GqlOperationName.azureCloudAccountGrantedPermissionsGroupsForRecovery,
-                    "Invoke-RscQueryAzure -CloudAccountGrantedPermissionsGroupsForRecovery"
+                {
+                    GqlRootFieldName.awsNativeRdsInstances,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletSwitchName = "NativeRdsInstances",
+                        GqlRootFieldName = "awsNativeRdsInstances"
+                    }
                 },
-                {
-                    GqlOperationName.azureCloudAccountPermissionConfig,
-                    "Invoke-RscQueryAzure -CloudAccountPermissionConfig"
+                {
+                    GqlRootFieldName.awsNativeRdsPointInTimeRestoreWindow,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletSwitchName = "NativeRdsPointInTimeRestoreWindow",
+                        GqlRootFieldName = "awsNativeRdsPointInTimeRestoreWindow"
+                    }
                 },
-                {
-                    GqlOperationName.azureCloudAccountSubscriptionWithFeatures,
-                    "Invoke-RscQueryAzure -CloudAccountSubscriptionWithFeatures"
+                {
+                    GqlRootFieldName.awsNativeRoot,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletSwitchName = "NativeRoot",
+                        GqlRootFieldName = "awsNativeRoot"
+                    }
                 },
-                {
-                    GqlOperationName.azureCloudAccountTenant,
-                    "Invoke-RscQueryAzure -CloudAccountTenant"
+                {
+                    GqlRootFieldName.awsNativeS3Bucket,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletSwitchName = "NativeS3Bucket",
+                        GqlRootFieldName = "awsNativeS3Bucket"
+                    }
                 },
-                {
-                    GqlOperationName.azureCloudAccountTenantWithExoConfigs,
-                    "Invoke-RscQueryAzure -CloudAccountTenantWithExoConfigs"
+                {
+                    GqlRootFieldName.awsTrustPolicy,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletSwitchName = "TrustPolicy",
+                        GqlRootFieldName = "awsTrustPolicy"
+                    }
                 },
-                {
-                    GqlOperationName.azureNativeLiveMountDisks,
-                    "Invoke-RscQueryAzure -NativeLiveMountDisks"
+                {
+                    GqlRootFieldName.azureAdDirectories,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "AdDirectories",
+                        GqlRootFieldName = "azureAdDirectories"
+                    }
                 },
-                {
-                    GqlOperationName.azureNativeManagedDisk,
-                    "Invoke-RscQueryAzure -NativeManagedDisk"
+                {
+                    GqlRootFieldName.azureAdDirectory,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "AdDirectory",
+                        GqlRootFieldName = "azureAdDirectory"
+                    }
                 },
-                {
-                    GqlOperationName.azureNativeManagedDisks,
-                    "Invoke-RscQueryAzure -NativeManagedDisks"
+                {
+                    GqlRootFieldName.azureAdObjectsByType,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "AdObjectsByType",
+                        GqlRootFieldName = "azureAdObjectsByType"
+                    }
                 },
-                {
-                    GqlOperationName.azureNativeResourceGroup,
-                    "Invoke-RscQueryAzure -NativeResourceGroup"
+                {
+                    GqlRootFieldName.azureCloudAccountCheckRefreshTokenExistsForRecovery,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "CloudAccountCheckRefreshTokenExistsForRecovery",
+                        GqlRootFieldName = "azureCloudAccountCheckRefreshTokenExistsForRecovery"
+                    }
                 },
-                {
-                    GqlOperationName.azureNativeResourceGroups,
-                    "Invoke-RscQueryAzure -NativeResourceGroups"
+                {
+                    GqlRootFieldName.azureCloudAccountGrantedPermissionsGroups,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "CloudAccountGrantedPermissionsGroups",
+                        GqlRootFieldName = "azureCloudAccountGrantedPermissionsGroups"
+                    }
                 },
-                {
-                    GqlOperationName.azureNativeRoot,
-                    "Invoke-RscQueryAzure -NativeRoot"
+                {
+                    GqlRootFieldName.azureCloudAccountGrantedPermissionsGroupsForRecovery,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "CloudAccountGrantedPermissionsGroupsForRecovery",
+                        GqlRootFieldName = "azureCloudAccountGrantedPermissionsGroupsForRecovery"
+                    }
                 },
-                {
-                    GqlOperationName.azureNativeSubscription,
-                    "Invoke-RscQueryAzure -NativeSubscription"
+                {
+                    GqlRootFieldName.azureCloudAccountPermissionConfig,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "CloudAccountPermissionConfig",
+                        GqlRootFieldName = "azureCloudAccountPermissionConfig"
+                    }
                 },
-                {
-                    GqlOperationName.azureNativeSubscriptions,
-                    "Invoke-RscQueryAzure -NativeSubscriptions"
+                {
+                    GqlRootFieldName.azureCloudAccountSubscriptionWithFeatures,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "CloudAccountSubscriptionWithFeatures",
+                        GqlRootFieldName = "azureCloudAccountSubscriptionWithFeatures"
+                    }
                 },
-                {
-                    GqlOperationName.azureNativeVirtualMachine,
-                    "Invoke-RscQueryAzure -NativeVirtualMachine"
+                {
+                    GqlRootFieldName.azureCloudAccountTenant,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "CloudAccountTenant",
+                        GqlRootFieldName = "azureCloudAccountTenant"
+                    }
                 },
-                {
-                    GqlOperationName.azureNativeVirtualMachines,
-                    "Invoke-RscQueryAzure -NativeVirtualMachines"
+                {
+                    GqlRootFieldName.azureCloudAccountTenantWithExoConfigs,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "CloudAccountTenantWithExoConfigs",
+                        GqlRootFieldName = "azureCloudAccountTenantWithExoConfigs"
+                    }
                 },
-                {
-                    GqlOperationName.azureO365CheckNSGOutboundRules,
-                    "Invoke-RscQueryAzureO365 -CheckNSGOutboundRules"
+                {
+                    GqlRootFieldName.azureNativeLiveMountDisks,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "NativeLiveMountDisks",
+                        GqlRootFieldName = "azureNativeLiveMountDisks"
+                    }
                 },
-                {
-                    GqlOperationName.azureO365CheckNetworkSubnet,
-                    "Invoke-RscQueryAzureO365 -CheckNetworkSubnet"
+                {
+                    GqlRootFieldName.azureNativeManagedDisk,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "NativeManagedDisk",
+                        GqlRootFieldName = "azureNativeManagedDisk"
+                    }
                 },
-                {
-                    GqlOperationName.azureO365CheckResourceGroupName,
-                    "Invoke-RscQueryAzureO365 -CheckResourceGroupName"
+                {
+                    GqlRootFieldName.azureNativeManagedDisks,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "NativeManagedDisks",
+                        GqlRootFieldName = "azureNativeManagedDisks"
+                    }
                 },
-                {
-                    GqlOperationName.azureO365CheckStorageAccountAccessibility,
-                    "Invoke-RscQueryAzureO365 -CheckStorageAccountAccessibility"
+                {
+                    GqlRootFieldName.azureNativeResourceGroup,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "NativeResourceGroup",
+                        GqlRootFieldName = "azureNativeResourceGroup"
+                    }
                 },
-                {
-                    GqlOperationName.azureO365CheckStorageAccountName,
-                    "Invoke-RscQueryAzureO365 -CheckStorageAccountName"
+                {
+                    GqlRootFieldName.azureNativeResourceGroups,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "NativeResourceGroups",
+                        GqlRootFieldName = "azureNativeResourceGroups"
+                    }
                 },
-                {
-                    GqlOperationName.azureO365CheckSubscriptionQuota,
-                    "Invoke-RscQueryAzureO365 -CheckSubscriptionQuota"
+                {
+                    GqlRootFieldName.azureNativeRoot,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "NativeRoot",
+                        GqlRootFieldName = "azureNativeRoot"
+                    }
                 },
-                {
-                    GqlOperationName.azureO365CheckVirtualNetworkName,
-                    "Invoke-RscQueryAzureO365 -CheckVirtualNetworkName"
+                {
+                    GqlRootFieldName.azureNativeSubscription,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "NativeSubscription",
+                        GqlRootFieldName = "azureNativeSubscription"
+                    }
                 },
-                {
-                    GqlOperationName.azureO365Exocompute,
-                    "Invoke-RscQueryAzureO365 -Exocompute"
+                {
+                    GqlRootFieldName.azureNativeSubscriptions,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "NativeSubscriptions",
+                        GqlRootFieldName = "azureNativeSubscriptions"
+                    }
                 },
-                {
-                    GqlOperationName.azureO365GetAzureHostType,
-                    "Invoke-RscQueryAzureO365 -GetAzureHostType"
+                {
+                    GqlRootFieldName.azureNativeVirtualMachine,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "NativeVirtualMachine",
+                        GqlRootFieldName = "azureNativeVirtualMachine"
+                    }
                 },
-                {
-                    GqlOperationName.azureO365GetNetworkSubnetUnusedAddr,
-                    "Invoke-RscQueryAzureO365 -GetNetworkSubnetUnusedAddr"
+                {
+                    GqlRootFieldName.azureNativeVirtualMachines,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "NativeVirtualMachines",
+                        GqlRootFieldName = "azureNativeVirtualMachines"
+                    }
                 },
-                {
-                    GqlOperationName.azureO365ValidateUserRoles,
-                    "Invoke-RscQueryAzureO365 -ValidateUserRoles"
+                {
+                    GqlRootFieldName.azureO365CheckNSGOutboundRules,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzureO365",
+                        CmdletSwitchName = "CheckNSGOutboundRules",
+                        GqlRootFieldName = "azureO365CheckNSGOutboundRules"
+                    }
                 },
-                {
-                    GqlOperationName.azureOauthConsentComplete,
-                    "Invoke-RscMutateAzure -OauthConsentComplete"
+                {
+                    GqlRootFieldName.azureO365CheckNetworkSubnet,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzureO365",
+                        CmdletSwitchName = "CheckNetworkSubnet",
+                        GqlRootFieldName = "azureO365CheckNetworkSubnet"
+                    }
                 },
-                {
-                    GqlOperationName.azureOauthConsentKickoff,
-                    "Invoke-RscMutateAzure -OauthConsentKickoff"
+                {
+                    GqlRootFieldName.azureO365CheckResourceGroupName,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzureO365",
+                        CmdletSwitchName = "CheckResourceGroupName",
+                        GqlRootFieldName = "azureO365CheckResourceGroupName"
+                    }
                 },
-                {
-                    GqlOperationName.azureRegions,
-                    "Invoke-RscQueryAzure -Regions"
+                {
+                    GqlRootFieldName.azureO365CheckStorageAccountAccessibility,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzureO365",
+                        CmdletSwitchName = "CheckStorageAccountAccessibility",
+                        GqlRootFieldName = "azureO365CheckStorageAccountAccessibility"
+                    }
                 },
-                {
-                    GqlOperationName.azureResourceGroups,
-                    "Invoke-RscQueryAzure -ResourceGroups"
+                {
+                    GqlRootFieldName.azureO365CheckStorageAccountName,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzureO365",
+                        CmdletSwitchName = "CheckStorageAccountName",
+                        GqlRootFieldName = "azureO365CheckStorageAccountName"
+                    }
                 },
-                {
-                    GqlOperationName.azureSqlDatabase,
-                    "Invoke-RscQueryAzure -SqlDatabase"
+                {
+                    GqlRootFieldName.azureO365CheckSubscriptionQuota,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzureO365",
+                        CmdletSwitchName = "CheckSubscriptionQuota",
+                        GqlRootFieldName = "azureO365CheckSubscriptionQuota"
+                    }
                 },
-                {
-                    GqlOperationName.azureSqlDatabaseDbPointInTimeRestoreWindowFromAzure,
-                    "Invoke-RscQueryAzure -SqlDatabaseDbPointInTimeRestoreWindowFromAzure"
+                {
+                    GqlRootFieldName.azureO365CheckVirtualNetworkName,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzureO365",
+                        CmdletSwitchName = "CheckVirtualNetworkName",
+                        GqlRootFieldName = "azureO365CheckVirtualNetworkName"
+                    }
                 },
-                {
-                    GqlOperationName.azureSqlDatabaseServer,
-                    "Invoke-RscQueryAzure -SqlDatabaseServer"
+                {
+                    GqlRootFieldName.azureO365Exocompute,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzureO365",
+                        CmdletSwitchName = "Exocompute",
+                        GqlRootFieldName = "azureO365Exocompute"
+                    }
                 },
-                {
-                    GqlOperationName.azureSqlDatabaseServers,
-                    "Invoke-RscQueryAzure -SqlDatabaseServers"
+                {
+                    GqlRootFieldName.azureO365GetAzureHostType,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzureO365",
+                        CmdletSwitchName = "GetAzureHostType",
+                        GqlRootFieldName = "azureO365GetAzureHostType"
+                    }
                 },
-                {
-                    GqlOperationName.azureSqlDatabases,
-                    "Invoke-RscQueryAzure -SqlDatabases"
+                {
+                    GqlRootFieldName.azureO365GetNetworkSubnetUnusedAddr,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzureO365",
+                        CmdletSwitchName = "GetNetworkSubnetUnusedAddr",
+                        GqlRootFieldName = "azureO365GetNetworkSubnetUnusedAddr"
+                    }
                 },
-                {
-                    GqlOperationName.azureSqlManagedInstanceDatabase,
-                    "Invoke-RscQueryAzure -SqlManagedInstanceDatabase"
+                {
+                    GqlRootFieldName.azureO365ValidateUserRoles,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzureO365",
+                        CmdletSwitchName = "ValidateUserRoles",
+                        GqlRootFieldName = "azureO365ValidateUserRoles"
+                    }
                 },
-                {
-                    GqlOperationName.azureSqlManagedInstanceDatabases,
-                    "Invoke-RscQueryAzure -SqlManagedInstanceDatabases"
+                {
+                    GqlRootFieldName.azureOauthConsentComplete,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletSwitchName = "OauthConsentComplete",
+                        GqlRootFieldName = "azureOauthConsentComplete"
+                    }
                 },
-                {
-                    GqlOperationName.azureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure,
-                    "Invoke-RscQueryAzure -SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure"
+                {
+                    GqlRootFieldName.azureOauthConsentKickoff,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletSwitchName = "OauthConsentKickoff",
+                        GqlRootFieldName = "azureOauthConsentKickoff"
+                    }
                 },
-                {
-                    GqlOperationName.azureSqlManagedInstanceServer,
-                    "Invoke-RscQueryAzure -SqlManagedInstanceServer"
+                {
+                    GqlRootFieldName.azureRegions,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "Regions",
+                        GqlRootFieldName = "azureRegions"
+                    }
                 },
-                {
-                    GqlOperationName.azureSqlManagedInstanceServers,
-                    "Invoke-RscQueryAzure -SqlManagedInstanceServers"
+                {
+                    GqlRootFieldName.azureResourceGroups,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "ResourceGroups",
+                        GqlRootFieldName = "azureResourceGroups"
+                    }
                 },
-                {
-                    GqlOperationName.azureStorageAccounts,
-                    "Invoke-RscQueryAzure -StorageAccounts"
+                {
+                    GqlRootFieldName.azureSqlDatabase,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "SqlDatabase",
+                        GqlRootFieldName = "azureSqlDatabase"
+                    }
                 },
-                {
-                    GqlOperationName.azureSubnets,
-                    "Invoke-RscQueryAzure -Subnets"
+                {
+                    GqlRootFieldName.azureSqlDatabaseDbPointInTimeRestoreWindowFromAzure,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "SqlDatabaseDbPointInTimeRestoreWindowFromAzure",
+                        GqlRootFieldName = "azureSqlDatabaseDbPointInTimeRestoreWindowFromAzure"
+                    }
                 },
-                {
-                    GqlOperationName.azureSubscriptions,
-                    "Invoke-RscQueryAzure -Subscriptions"
+                {
+                    GqlRootFieldName.azureSqlDatabaseServer,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "SqlDatabaseServer",
+                        GqlRootFieldName = "azureSqlDatabaseServer"
+                    }
                 },
-                {
-                    GqlOperationName.azureVNets,
-                    "Invoke-RscQueryAzure -VNets"
+                {
+                    GqlRootFieldName.azureSqlDatabaseServers,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "SqlDatabaseServers",
+                        GqlRootFieldName = "azureSqlDatabaseServers"
+                    }
                 },
-                {
-                    GqlOperationName.backupAzureAdDirectory,
-                    "Invoke-RscMutateAzure -BackupAdDirectory"
+                {
+                    GqlRootFieldName.azureSqlDatabases,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "SqlDatabases",
+                        GqlRootFieldName = "azureSqlDatabases"
+                    }
                 },
-                {
-                    GqlOperationName.backupO365Mailbox,
-                    "Invoke-RscMutateO365 -BackupMailbox"
+                {
+                    GqlRootFieldName.azureSqlManagedInstanceDatabase,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "SqlManagedInstanceDatabase",
+                        GqlRootFieldName = "azureSqlManagedInstanceDatabase"
+                    }
                 },
-                {
-                    GqlOperationName.backupO365Onedrive,
-                    "Invoke-RscMutateO365 -BackupOnedrive"
+                {
+                    GqlRootFieldName.azureSqlManagedInstanceDatabases,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "SqlManagedInstanceDatabases",
+                        GqlRootFieldName = "azureSqlManagedInstanceDatabases"
+                    }
                 },
-                {
-                    GqlOperationName.backupO365SharePointSite,
-                    "Invoke-RscMutateO365 -BackupSharePointSite"
+                {
+                    GqlRootFieldName.azureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure",
+                        GqlRootFieldName = "azureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure"
+                    }
                 },
-                {
-                    GqlOperationName.backupO365SharepointDrive,
-                    "Invoke-RscMutateO365 -BackupSharepointDrive"
+                {
+                    GqlRootFieldName.azureSqlManagedInstanceServer,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "SqlManagedInstanceServer",
+                        GqlRootFieldName = "azureSqlManagedInstanceServer"
+                    }
                 },
-                {
-                    GqlOperationName.backupO365SharepointList,
-                    "Invoke-RscMutateO365 -BackupSharepointList"
+                {
+                    GqlRootFieldName.azureSqlManagedInstanceServers,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "SqlManagedInstanceServers",
+                        GqlRootFieldName = "azureSqlManagedInstanceServers"
+                    }
                 },
-                {
-                    GqlOperationName.backupO365Team,
-                    "Invoke-RscMutateO365 -BackupTeam"
+                {
+                    GqlRootFieldName.azureStorageAccounts,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "StorageAccounts",
+                        GqlRootFieldName = "azureStorageAccounts"
+                    }
                 },
-                {
-                    GqlOperationName.batchExportHypervVm,
-                    "Invoke-RscMutateHyperv -BatchExportVm"
+                {
+                    GqlRootFieldName.azureSubnets,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "Subnets",
+                        GqlRootFieldName = "azureSubnets"
+                    }
                 },
-                {
-                    GqlOperationName.batchExportNutanixVm,
-                    "Invoke-RscMutateNutanix -BatchExportVm"
+                {
+                    GqlRootFieldName.azureSubscriptions,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "Subscriptions",
+                        GqlRootFieldName = "azureSubscriptions"
+                    }
                 },
-                {
-                    GqlOperationName.batchInstantRecoverHypervVm,
-                    "Invoke-RscMutateHyperv -BatchInstantRecoverVm"
+                {
+                    GqlRootFieldName.azureVNets,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "VNets",
+                        GqlRootFieldName = "azureVNets"
+                    }
                 },
-                {
-                    GqlOperationName.batchMountHypervVm,
-                    "Invoke-RscMutateHyperv -BatchMountVm"
+                {
+                    GqlRootFieldName.backupAzureAdDirectory,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletSwitchName = "BackupAdDirectory",
+                        GqlRootFieldName = "backupAzureAdDirectory"
+                    }
                 },
-                {
-                    GqlOperationName.batchMountNutanixVm,
-                    "Invoke-RscMutateNutanix -BatchMountVm"
+                {
+                    GqlRootFieldName.backupO365Mailbox,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletSwitchName = "BackupMailbox",
+                        GqlRootFieldName = "backupO365Mailbox"
+                    }
                 },
-                {
-                    GqlOperationName.batchOnDemandBackupHypervVm,
-                    "Invoke-RscMutateHyperv -BatchOnDemandBackupVm"
+                {
+                    GqlRootFieldName.backupO365Onedrive,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletSwitchName = "BackupOnedrive",
+                        GqlRootFieldName = "backupO365Onedrive"
+                    }
                 },
-                {
-                    GqlOperationName.browseMssqlDatabaseSnapshot,
-                    "Invoke-RscMutateMssql -BrowseDatabaseSnapshot"
+                {
+                    GqlRootFieldName.backupO365SharePointSite,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletSwitchName = "BackupSharePointSite",
+                        GqlRootFieldName = "backupO365SharePointSite"
+                    }
                 },
-                {
-                    GqlOperationName.browseO365TeamConvChannels,
-                    "Invoke-RscQueryO365 -BrowseTeamConvChannels"
+                {
+                    GqlRootFieldName.backupO365SharepointDrive,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletSwitchName = "BackupSharepointDrive",
+                        GqlRootFieldName = "backupO365SharepointDrive"
+                    }
                 },
-                {
-                    GqlOperationName.bulkCreateOnDemandMssqlBackup,
-                    "Invoke-RscMutateMssql -BulkCreateOnDemandBackup"
+                {
+                    GqlRootFieldName.backupO365SharepointList,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletSwitchName = "BackupSharepointList",
+                        GqlRootFieldName = "backupO365SharepointList"
+                    }
                 },
-                {
-                    GqlOperationName.bulkDeleteAwsCloudAccountWithoutCft,
-                    "Invoke-RscMutateAws -BulkDeleteCloudAccountWithoutCft"
+                {
+                    GqlRootFieldName.backupO365Team,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletSwitchName = "BackupTeam",
+                        GqlRootFieldName = "backupO365Team"
+                    }
                 },
-                {
-                    GqlOperationName.bulkDeleteCassandraSources,
-                    "Invoke-RscMutateCassandra -BulkDeleteSources"
+                {
+                    GqlRootFieldName.batchExportHypervVm,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateHyperv",
+                        CmdletSwitchName = "BatchExportVm",
+                        GqlRootFieldName = "batchExportHypervVm"
+                    }
                 },
-                {
-                    GqlOperationName.bulkDeleteFailoverCluster,
-                    "Invoke-RscMutateCluster -BulkDeleteFailover"
+                {
+                    GqlRootFieldName.batchExportNutanixVm,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateNutanix",
+                        CmdletSwitchName = "BatchExportVm",
+                        GqlRootFieldName = "batchExportNutanixVm"
+                    }
                 },
-                {
-                    GqlOperationName.bulkDeleteMongodbSources,
-                    "Invoke-RscMutateMongo -BulkDeletedbSources"
+                {
+                    GqlRootFieldName.batchInstantRecoverHypervVm,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateHyperv",
+                        CmdletSwitchName = "BatchInstantRecoverVm",
+                        GqlRootFieldName = "batchInstantRecoverHypervVm"
+                    }
                 },
-                {
-                    GqlOperationName.bulkOnDemandSnapshotNutanixVm,
-                    "Invoke-RscMutateNutanix -BulkOnDemandSnapshotVm"
+                {
+                    GqlRootFieldName.batchMountHypervVm,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateHyperv",
+                        CmdletSwitchName = "BatchMountVm",
+                        GqlRootFieldName = "batchMountHypervVm"
+                    }
                 },
-                {
-                    GqlOperationName.bulkUpdateMssqlDbs,
-                    "Invoke-RscMutateMssql -BulkUpdateDbs"
+                {
+                    GqlRootFieldName.batchMountNutanixVm,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateNutanix",
+                        CmdletSwitchName = "BatchMountVm",
+                        GqlRootFieldName = "batchMountNutanixVm"
+                    }
                 },
-                {
-                    GqlOperationName.bulkUpdateOracleDatabases,
-                    "Invoke-RscMutateOracle -BulkUpdateDatabases"
+                {
+                    GqlRootFieldName.batchOnDemandBackupHypervVm,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateHyperv",
+                        CmdletSwitchName = "BatchOnDemandBackupVm",
+                        GqlRootFieldName = "batchOnDemandBackupHypervVm"
+                    }
                 },
-                {
-                    GqlOperationName.bulkUpdateOracleHosts,
-                    "Invoke-RscMutateOracle -BulkUpdateHosts"
+                {
+                    GqlRootFieldName.browseMssqlDatabaseSnapshot,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateMssql",
+                        CmdletSwitchName = "BrowseDatabaseSnapshot",
+                        GqlRootFieldName = "browseMssqlDatabaseSnapshot"
+                    }
                 },
-                {
-                    GqlOperationName.bulkUpdateOracleRacs,
-                    "Invoke-RscMutateOracle -BulkUpdateRacs"
+                {
+                    GqlRootFieldName.browseO365TeamConvChannels,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletSwitchName = "BrowseTeamConvChannels",
+                        GqlRootFieldName = "browseO365TeamConvChannels"
+                    }
                 },
-                {
-                    GqlOperationName.cancelActivitySeries,
-                    "Invoke-RscMutateActivitySeries -Cancel"
+                {
+                    GqlRootFieldName.bulkCreateOnDemandMssqlBackup,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateMssql",
+                        CmdletSwitchName = "BulkCreateOnDemandBackup",
+                        GqlRootFieldName = "bulkCreateOnDemandMssqlBackup"
+                    }
                 },
-                {
-                    GqlOperationName.cassandraColumnFamilies,
-                    "Invoke-RscQueryCassandra -ColumnFamilies"
+                {
+                    GqlRootFieldName.bulkDeleteAwsCloudAccountWithoutCft,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletSwitchName = "BulkDeleteCloudAccountWithoutCft",
+                        GqlRootFieldName = "bulkDeleteAwsCloudAccountWithoutCft"
+                    }
                 },
-                {
-                    GqlOperationName.cassandraColumnFamily,
-                    "Invoke-RscQueryCassandra -ColumnFamily"
+                {
+                    GqlRootFieldName.bulkDeleteCassandraSources,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateCassandra",
+                        CmdletSwitchName = "BulkDeleteSources",
+                        GqlRootFieldName = "bulkDeleteCassandraSources"
+                    }
                 },
-                {
-                    GqlOperationName.cassandraColumnFamilyRecoverableRange,
-                    "Invoke-RscQueryCassandra -ColumnFamilyRecoverableRange"
+                {
+                    GqlRootFieldName.bulkDeleteFailoverCluster,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateCluster",
+                        CmdletSwitchName = "BulkDeleteFailover",
+                        GqlRootFieldName = "bulkDeleteFailoverCluster"
+                    }
                 },
-                {
-                    GqlOperationName.cassandraColumnFamilySchema,
-                    "Invoke-RscQueryCassandra -ColumnFamilySchema"
+                {
+                    GqlRootFieldName.bulkDeleteMongodbSources,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateMongo",
+                        CmdletSwitchName = "BulkDeletedbSources",
+                        GqlRootFieldName = "bulkDeleteMongodbSources"
+                    }
                 },
-                {
-                    GqlOperationName.cassandraKeyspace,
-                    "Invoke-RscQueryCassandra -Keyspace"
+                {
+                    GqlRootFieldName.bulkOnDemandSnapshotNutanixVm,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateNutanix",
+                        CmdletSwitchName = "BulkOnDemandSnapshotVm",
+                        GqlRootFieldName = "bulkOnDemandSnapshotNutanixVm"
+                    }
                 },
-                {
-                    GqlOperationName.cassandraKeyspaces,
-                    "Invoke-RscQueryCassandra -Keyspaces"
+                {
+                    GqlRootFieldName.bulkUpdateMssqlDbs,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateMssql",
+                        CmdletSwitchName = "BulkUpdateDbs",
+                        GqlRootFieldName = "bulkUpdateMssqlDbs"
+                    }
                 },
-                {
-                    GqlOperationName.cassandraSource,
-                    "Invoke-RscQueryCassandra -Source"
+                {
+                    GqlRootFieldName.bulkUpdateOracleDatabases,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateOracle",
+                        CmdletSwitchName = "BulkUpdateDatabases",
+                        GqlRootFieldName = "bulkUpdateOracleDatabases"
+                    }
                 },
-                {
-                    GqlOperationName.cassandraSources,
-                    "Invoke-RscQueryCassandra -Sources"
+                {
+                    GqlRootFieldName.bulkUpdateOracleHosts,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateOracle",
+                        CmdletSwitchName = "BulkUpdateHosts",
+                        GqlRootFieldName = "bulkUpdateOracleHosts"
+                    }
                 },
-                {
-                    GqlOperationName.cdmMssqlLogShippingTarget,
-                    "Invoke-RscQueryMssql -CdmLogShippingTarget"
+                {
+                    GqlRootFieldName.bulkUpdateOracleRacs,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateOracle",
+                        CmdletSwitchName = "BulkUpdateRacs",
+                        GqlRootFieldName = "bulkUpdateOracleRacs"
+                    }
                 },
-                {
-                    GqlOperationName.cdmMssqlLogShippingTargets,
-                    "Invoke-RscQueryMssql -CdmLogShippingTargets"
+                {
+                    GqlRootFieldName.cancelActivitySeries,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateActivitySeries",
+                        CmdletSwitchName = "Cancel",
+                        GqlRootFieldName = "cancelActivitySeries"
+                    }
                 },
-                {
-                    GqlOperationName.checkAzurePersistentStorageSubscriptionCanUnmap,
-                    "Invoke-RscQueryAzure -CheckPersistentStorageSubscriptionCanUnmap"
+                {
+                    GqlRootFieldName.cassandraColumnFamilies,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryCassandra",
+                        CmdletSwitchName = "ColumnFamilies",
+                        GqlRootFieldName = "cassandraColumnFamilies"
+                    }
                 },
-                {
-                    GqlOperationName.cluster,
-                    "Invoke-RscQueryCluster -Cluster"
+                {
+                    GqlRootFieldName.cassandraColumnFamily,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryCassandra",
+                        CmdletSwitchName = "ColumnFamily",
+                        GqlRootFieldName = "cassandraColumnFamily"
+                    }
                 },
-                {
-                    GqlOperationName.clusterCertificates,
-                    "Invoke-RscQueryCluster -Certificates"
+                {
+                    GqlRootFieldName.cassandraColumnFamilyRecoverableRange,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryCassandra",
+                        CmdletSwitchName = "ColumnFamilyRecoverableRange",
+                        GqlRootFieldName = "cassandraColumnFamilyRecoverableRange"
+                    }
                 },
-                {
-                    GqlOperationName.clusterConnection,
-                    "Invoke-RscQueryCluster -List"
+                {
+                    GqlRootFieldName.cassandraColumnFamilySchema,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryCassandra",
+                        CmdletSwitchName = "ColumnFamilySchema",
+                        GqlRootFieldName = "cassandraColumnFamilySchema"
+                    }
                 },
-                {
-                    GqlOperationName.clusterCsr,
-                    "Invoke-RscQueryCluster -Csr"
+                {
+                    GqlRootFieldName.cassandraKeyspace,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryCassandra",
+                        CmdletSwitchName = "Keyspace",
+                        GqlRootFieldName = "cassandraKeyspace"
+                    }
                 },
-                {
-                    GqlOperationName.clusterDefaultGateway,
-                    "Invoke-RscQueryCluster -DefaultGateway"
+                {
+                    GqlRootFieldName.cassandraKeyspaces,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryCassandra",
+                        CmdletSwitchName = "Keyspaces",
+                        GqlRootFieldName = "cassandraKeyspaces"
+                    }
                 },
-                {
-                    GqlOperationName.clusterDns,
-                    "Invoke-RscQueryCluster -Dns"
+                {
+                    GqlRootFieldName.cassandraSource,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryCassandra",
+                        CmdletSwitchName = "Source",
+                        GqlRootFieldName = "cassandraSource"
+                    }
                 },
-                {
-                    GqlOperationName.clusterEncryptionInfo,
-                    "Invoke-RscQueryCluster -EncryptionInfo"
+                {
+                    GqlRootFieldName.cassandraSources,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryCassandra",
+                        CmdletSwitchName = "Sources",
+                        GqlRootFieldName = "cassandraSources"
+                    }
                 },
-                {
-                    GqlOperationName.clusterFloatingIps,
-                    "Invoke-RscQueryCluster -FloatingIps"
+                {
+                    GqlRootFieldName.cdmMssqlLogShippingTarget,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryMssql",
+                        CmdletSwitchName = "CdmLogShippingTarget",
+                        GqlRootFieldName = "cdmMssqlLogShippingTarget"
+                    }
                 },
-                {
-                    GqlOperationName.clusterGroupByConnection,
-                    "Invoke-RscQueryCluster -GroupByList"
+                {
+                    GqlRootFieldName.cdmMssqlLogShippingTargets,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryMssql",
+                        CmdletSwitchName = "CdmLogShippingTargets",
+                        GqlRootFieldName = "cdmMssqlLogShippingTargets"
+                    }
                 },
-                {
-                    GqlOperationName.clusterIpmi,
-                    "Invoke-RscQueryCluster -Ipmi"
+                {
+                    GqlRootFieldName.checkAzurePersistentStorageSubscriptionCanUnmap,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "CheckPersistentStorageSubscriptionCanUnmap",
+                        GqlRootFieldName = "checkAzurePersistentStorageSubscriptionCanUnmap"
+                    }
                 },
-                {
-                    GqlOperationName.clusterIpv6Mode,
-                    "Invoke-RscQueryCluster -Ipv6Mode"
+                {
+                    GqlRootFieldName.cluster,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletSwitchName = "Cluster",
+                        GqlRootFieldName = "cluster"
+                    }
                 },
-                {
-                    GqlOperationName.clusterNetworkInterfaces,
-                    "Invoke-RscQueryCluster -NetworkInterfaces"
+                {
+                    GqlRootFieldName.clusterCertificates,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletSwitchName = "Certificates",
+                        GqlRootFieldName = "clusterCertificates"
+                    }
                 },
-                {
-                    GqlOperationName.clusterNodes,
-                    "Invoke-RscQueryCluster -Nodes"
+                {
+                    GqlRootFieldName.clusterConnection,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletSwitchName = "List",
+                        GqlRootFieldName = "clusterConnection"
+                    }
                 },
-                {
-                    GqlOperationName.clusterNtpServers,
-                    "Invoke-RscQueryCluster -NtpServers"
+                {
+                    GqlRootFieldName.clusterCsr,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletSwitchName = "Csr",
+                        GqlRootFieldName = "clusterCsr"
+                    }
                 },
-                {
-                    GqlOperationName.clusterOperationJobProgress,
-                    "Invoke-RscQueryCluster -OperationJobProgress"
+                {
+                    GqlRootFieldName.clusterDefaultGateway,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletSwitchName = "DefaultGateway",
+                        GqlRootFieldName = "clusterDefaultGateway"
+                    }
                 },
-                {
-                    GqlOperationName.clusterProxy,
-                    "Invoke-RscQueryCluster -Proxy"
+                {
+                    GqlRootFieldName.clusterDns,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletSwitchName = "Dns",
+                        GqlRootFieldName = "clusterDns"
+                    }
                 },
-                {
-                    GqlOperationName.clusterRcvLocations,
-                    "Invoke-RscQueryCluster -RcvLocations"
+                {
+                    GqlRootFieldName.clusterEncryptionInfo,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletSwitchName = "EncryptionInfo",
+                        GqlRootFieldName = "clusterEncryptionInfo"
+                    }
                 },
-                {
-                    GqlOperationName.clusterRegistrationProductInfo,
-                    "Invoke-RscQueryCluster -RegistrationProductInfo"
+                {
+                    GqlRootFieldName.clusterFloatingIps,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletSwitchName = "FloatingIps",
+                        GqlRootFieldName = "clusterFloatingIps"
+                    }
                 },
-                {
-                    GqlOperationName.clusterReportMigrationCount,
-                    "Invoke-RscQueryCluster -ReportMigrationCount"
+                {
+                    GqlRootFieldName.clusterGroupByConnection,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletSwitchName = "GroupByList",
+                        GqlRootFieldName = "clusterGroupByConnection"
+                    }
                 },
-                {
-                    GqlOperationName.clusterReportMigrationJobStatus,
-                    "Invoke-RscQueryCluster -ReportMigrationJobStatus"
+                {
+                    GqlRootFieldName.clusterIpmi,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletSwitchName = "Ipmi",
+                        GqlRootFieldName = "clusterIpmi"
+                    }
                 },
-                {
-                    GqlOperationName.clusterReportMigrationStatus,
-                    "Invoke-RscQueryCluster -ReportMigrationStatus"
+                {
+                    GqlRootFieldName.clusterIpv6Mode,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletSwitchName = "Ipv6Mode",
+                        GqlRootFieldName = "clusterIpv6Mode"
+                    }
                 },
-                {
-                    GqlOperationName.clusterSlaDomainFilterConnection,
-                    "Invoke-RscQuerySla -ClusterDomainFilterList"
+                {
+                    GqlRootFieldName.clusterNetworkInterfaces,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletSwitchName = "NetworkInterfaces",
+                        GqlRootFieldName = "clusterNetworkInterfaces"
+                    }
                 },
-                {
-                    GqlOperationName.clusterSlaDomains,
-                    "Invoke-RscQuerySla -ClusterDomains"
+                {
+                    GqlRootFieldName.clusterNodes,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletSwitchName = "Nodes",
+                        GqlRootFieldName = "clusterNodes"
+                    }
                 },
-                {
-                    GqlOperationName.clusterTypeList,
-                    "Invoke-RscQueryCluster -TypeList"
+                {
+                    GqlRootFieldName.clusterNtpServers,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletSwitchName = "NtpServers",
+                        GqlRootFieldName = "clusterNtpServers"
+                    }
                 },
-                {
-                    GqlOperationName.clusterVlans,
-                    "Invoke-RscQueryCluster -Vlans"
+                {
+                    GqlRootFieldName.clusterOperationJobProgress,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletSwitchName = "OperationJobProgress",
+                        GqlRootFieldName = "clusterOperationJobProgress"
+                    }
                 },
-                {
-                    GqlOperationName.clusterWebSignedCertificate,
-                    "Invoke-RscQueryCluster -WebSignedCertificate"
+                {
+                    GqlRootFieldName.clusterProxy,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletSwitchName = "Proxy",
+                        GqlRootFieldName = "clusterProxy"
+                    }
                 },
-                {
-                    GqlOperationName.clusterWithConfigProtectionInfo,
-                    "Invoke-RscQueryCluster -WithConfigProtectionInfo"
+                {
+                    GqlRootFieldName.clusterRcvLocations,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletSwitchName = "RcvLocations",
+                        GqlRootFieldName = "clusterRcvLocations"
+                    }
                 },
-                {
-                    GqlOperationName.clusterWithUpgradesInfo,
-                    "Invoke-RscQueryCluster -WithUpgradesInfo"
+                {
+                    GqlRootFieldName.clusterRegistrationProductInfo,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletSwitchName = "RegistrationProductInfo",
+                        GqlRootFieldName = "clusterRegistrationProductInfo"
+                    }
                 },
-                {
-                    GqlOperationName.completeAzureAdAppSetup,
-                    "Invoke-RscMutateAzure -CompleteAdAppSetup"
+                {
+                    GqlRootFieldName.clusterReportMigrationCount,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletSwitchName = "ReportMigrationCount",
+                        GqlRootFieldName = "clusterReportMigrationCount"
+                    }
                 },
-                {
-                    GqlOperationName.completeAzureAdAppUpdate,
-                    "Invoke-RscMutateAzure -CompleteAdAppUpdate"
+                {
+                    GqlRootFieldName.clusterReportMigrationJobStatus,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletSwitchName = "ReportMigrationJobStatus",
+                        GqlRootFieldName = "clusterReportMigrationJobStatus"
+                    }
                 },
-                {
-                    GqlOperationName.completeAzureCloudAccountOauth,
-                    "Invoke-RscMutateAzure -CompleteCloudAccountOauth"
+                {
+                    GqlRootFieldName.clusterReportMigrationStatus,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletSwitchName = "ReportMigrationStatus",
+                        GqlRootFieldName = "clusterReportMigrationStatus"
+                    }
                 },
-                {
-                    GqlOperationName.countOfObjectsProtectedBySlas,
-                    "Invoke-RscQuerySla -CountOfObjectsProtected"
+                {
+                    GqlRootFieldName.clusterSlaDomainFilterConnection,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQuerySla",
+                        CmdletSwitchName = "ClusterDomainFilterList",
+                        GqlRootFieldName = "clusterSlaDomainFilterConnection"
+                    }
                 },
-                {
-                    GqlOperationName.createAutomaticAwsTargetMapping,
-                    "Invoke-RscMutateAws -CreateAutomaticTargetMapping"
+                {
+                    GqlRootFieldName.clusterSlaDomains,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQuerySla",
+                        CmdletSwitchName = "ClusterDomains",
+                        GqlRootFieldName = "clusterSlaDomains"
+                    }
                 },
-                {
-                    GqlOperationName.createAutomaticAzureTargetMapping,
-                    "Invoke-RscMutateAzure -CreateAutomaticTargetMapping"
+                {
+                    GqlRootFieldName.clusterTypeList,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletSwitchName = "TypeList",
+                        GqlRootFieldName = "clusterTypeList"
+                    }
                 },
-                {
-                    GqlOperationName.createAwsAccount,
-                    "Invoke-RscMutateAws -CreateAccount"
+                {
+                    GqlRootFieldName.clusterVlans,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletSwitchName = "Vlans",
+                        GqlRootFieldName = "clusterVlans"
+                    }
                 },
-                {
-                    GqlOperationName.createAwsCluster,
-                    "Invoke-RscMutateAws -CreateCluster"
+                {
+                    GqlRootFieldName.clusterWebSignedCertificate,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletSwitchName = "WebSignedCertificate",
+                        GqlRootFieldName = "clusterWebSignedCertificate"
+                    }
                 },
-                {
-                    GqlOperationName.createAwsComputeSetting,
-                    "Invoke-RscMutateAws -CreateComputeSetting"
+                {
+                    GqlRootFieldName.clusterWithConfigProtectionInfo,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletSwitchName = "WithConfigProtectionInfo",
+                        GqlRootFieldName = "clusterWithConfigProtectionInfo"
+                    }
                 },
-                {
-                    GqlOperationName.createAwsExocomputeConfigs,
-                    "Invoke-RscMutateAws -CreateExocomputeConfigs"
+                {
+                    GqlRootFieldName.clusterWithUpgradesInfo,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletSwitchName = "WithUpgradesInfo",
+                        GqlRootFieldName = "clusterWithUpgradesInfo"
+                    }
                 },
-                {
-                    GqlOperationName.createAwsReaderTarget,
-                    "Invoke-RscMutateAws -CreateReaderTarget"
+                {
+                    GqlRootFieldName.completeAzureAdAppSetup,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletSwitchName = "CompleteAdAppSetup",
+                        GqlRootFieldName = "completeAzureAdAppSetup"
+                    }
                 },
-                {
-                    GqlOperationName.createAwsTarget,
-                    "Invoke-RscMutateAws -CreateTarget"
+                {
+                    GqlRootFieldName.completeAzureAdAppUpdate,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletSwitchName = "CompleteAdAppUpdate",
+                        GqlRootFieldName = "completeAzureAdAppUpdate"
+                    }
                 },
-                {
-                    GqlOperationName.createAzureAccount,
-                    "Invoke-RscMutateAzure -CreateAccount"
+                {
+                    GqlRootFieldName.completeAzureCloudAccountOauth,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletSwitchName = "CompleteCloudAccountOauth",
+                        GqlRootFieldName = "completeAzureCloudAccountOauth"
+                    }
                 },
-                {
-                    GqlOperationName.createAzureCluster,
-                    "Invoke-RscMutateAzure -CreateCluster"
+                {
+                    GqlRootFieldName.countOfObjectsProtectedBySlas,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQuerySla",
+                        CmdletSwitchName = "CountOfObjectsProtected",
+                        GqlRootFieldName = "countOfObjectsProtectedBySlas"
+                    }
                 },
-                {
-                    GqlOperationName.createAzureReaderTarget,
-                    "Invoke-RscMutateAzure -CreateReaderTarget"
+                {
+                    GqlRootFieldName.createAutomaticAwsTargetMapping,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletSwitchName = "CreateAutomaticTargetMapping",
+                        GqlRootFieldName = "createAutomaticAwsTargetMapping"
+                    }
                 },
-                {
-                    GqlOperationName.createAzureSaasAppAad,
-                    "Invoke-RscMutateAzure -CreateSaasAppAad"
+                {
+                    GqlRootFieldName.createAutomaticAzureTargetMapping,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletSwitchName = "CreateAutomaticTargetMapping",
+                        GqlRootFieldName = "createAutomaticAzureTargetMapping"
+                    }
                 },
-                {
-                    GqlOperationName.createAzureTarget,
-                    "Invoke-RscMutateAzure -CreateTarget"
+                {
+                    GqlRootFieldName.createAwsAccount,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletSwitchName = "CreateAccount",
+                        GqlRootFieldName = "createAwsAccount"
+                    }
                 },
-                {
-                    GqlOperationName.createCassandraSource,
-                    "Invoke-RscMutateCassandra -CreateSource"
+                {
+                    GqlRootFieldName.createAwsCluster,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletSwitchName = "CreateCluster",
+                        GqlRootFieldName = "createAwsCluster"
+                    }
                 },
-                {
-                    GqlOperationName.createCloudNativeAwsStorageSetting,
-                    "Invoke-RscMutateAws -CreateCloudNativeStorageSetting"
+                {
+                    GqlRootFieldName.createAwsComputeSetting,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletSwitchName = "CreateComputeSetting",
+                        GqlRootFieldName = "createAwsComputeSetting"
+                    }
                 },
-                {
-                    GqlOperationName.createCloudNativeAzureStorageSetting,
-                    "Invoke-RscMutateAzure -CreateCloudNativeStorageSetting"
+                {
+                    GqlRootFieldName.createAwsExocomputeConfigs,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletSwitchName = "CreateExocomputeConfigs",
+                        GqlRootFieldName = "createAwsExocomputeConfigs"
+                    }
                 },
-                {
-                    GqlOperationName.createCloudNativeRcvAzureStorageSetting,
-                    "Invoke-RscMutateAzure -CreateCloudNativeRcvStorageSetting"
+                {
+                    GqlRootFieldName.createAwsReaderTarget,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletSwitchName = "CreateReaderTarget",
+                        GqlRootFieldName = "createAwsReaderTarget"
+                    }
                 },
-                {
-                    GqlOperationName.createFailoverCluster,
-                    "Invoke-RscMutateCluster -CreateFailover"
+                {
+                    GqlRootFieldName.createAwsTarget,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletSwitchName = "CreateTarget",
+                        GqlRootFieldName = "createAwsTarget"
+                    }
                 },
-                {
-                    GqlOperationName.createGlobalSla,
-                    "Invoke-RscMutateSla -CreateGlobal"
+                {
+                    GqlRootFieldName.createAzureAccount,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletSwitchName = "CreateAccount",
+                        GqlRootFieldName = "createAzureAccount"
+                    }
                 },
-                {
-                    GqlOperationName.createHypervVirtualMachineSnapshotMount,
-                    "Invoke-RscMutateHyperv -CreateVirtualMachineSnapshotMount"
+                {
+                    GqlRootFieldName.createAzureCluster,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletSwitchName = "CreateCluster",
+                        GqlRootFieldName = "createAzureCluster"
+                    }
                 },
-                {
-                    GqlOperationName.createK8sCluster,
-                    "Invoke-RscMutateCluster -CreateK8s"
+                {
+                    GqlRootFieldName.createAzureReaderTarget,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletSwitchName = "CreateReaderTarget",
+                        GqlRootFieldName = "createAzureReaderTarget"
+                    }
                 },
-                {
-                    GqlOperationName.createMongodbSource,
-                    "Invoke-RscMutateMongo -CreatedbSource"
+                {
+                    GqlRootFieldName.createAzureSaasAppAad,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletSwitchName = "CreateSaasAppAad",
+                        GqlRootFieldName = "createAzureSaasAppAad"
+                    }
                 },
-                {
-                    GqlOperationName.createMssqlLiveMount,
-                    "Invoke-RscMutateMssql -CreateLiveMount"
+                {
+                    GqlRootFieldName.createAzureTarget,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletSwitchName = "CreateTarget",
+                        GqlRootFieldName = "createAzureTarget"
+                    }
                 },
-                {
-                    GqlOperationName.createMssqlLogShippingConfiguration,
-                    "Invoke-RscMutateMssql -CreateLogShippingConfiguration"
+                {
+                    GqlRootFieldName.createCassandraSource,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateCassandra",
+                        CmdletSwitchName = "CreateSource",
+                        GqlRootFieldName = "createCassandraSource"
+                    }
                 },
-                {
-                    GqlOperationName.createNutanixCluster,
-                    "Invoke-RscMutateNutanix -CreateCluster"
+                {
+                    GqlRootFieldName.createCloudNativeAwsStorageSetting,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletSwitchName = "CreateCloudNativeStorageSetting",
+                        GqlRootFieldName = "createCloudNativeAwsStorageSetting"
+                    }
                 },
-                {
-                    GqlOperationName.createNutanixPrismCentral,
-                    "Invoke-RscMutateNutanix -CreatePrismCentral"
+                {
+                    GqlRootFieldName.createCloudNativeAzureStorageSetting,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletSwitchName = "CreateCloudNativeStorageSetting",
+                        GqlRootFieldName = "createCloudNativeAzureStorageSetting"
+                    }
                 },
-                {
-                    GqlOperationName.createO365AppComplete,
-                    "Invoke-RscMutateO365 -CreateAppComplete"
+                {
+                    GqlRootFieldName.createCloudNativeRcvAzureStorageSetting,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletSwitchName = "CreateCloudNativeRcvStorageSetting",
+                        GqlRootFieldName = "createCloudNativeRcvAzureStorageSetting"
+                    }
                 },
-                {
-                    GqlOperationName.createO365AppKickoff,
-                    "Invoke-RscMutateO365 -CreateAppKickoff"
+                {
+                    GqlRootFieldName.createFailoverCluster,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateCluster",
+                        CmdletSwitchName = "CreateFailover",
+                        GqlRootFieldName = "createFailoverCluster"
+                    }
                 },
-                {
-                    GqlOperationName.createOnDemandDb2Backup,
-                    "Invoke-RscMutateDb2 -CreateOnDemandBackup"
+                {
+                    GqlRootFieldName.createGlobalSla,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateSla",
+                        CmdletSwitchName = "CreateGlobal",
+                        GqlRootFieldName = "createGlobalSla"
+                    }
                 },
-                {
-                    GqlOperationName.createOnDemandMongoDatabaseBackup,
-                    "Invoke-RscMutateMongo -CreateOnDemandDatabaseBackup"
+                {
+                    GqlRootFieldName.createHypervVirtualMachineSnapshotMount,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateHyperv",
+                        CmdletSwitchName = "CreateVirtualMachineSnapshotMount",
+                        GqlRootFieldName = "createHypervVirtualMachineSnapshotMount"
+                    }
                 },
-                {
-                    GqlOperationName.createOnDemandMssqlBackup,
-                    "Invoke-RscMutateMssql -CreateOnDemandBackup"
+                {
+                    GqlRootFieldName.createK8sCluster,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateCluster",
+                        CmdletSwitchName = "CreateK8s",
+                        GqlRootFieldName = "createK8sCluster"
+                    }
                 },
-                {
-                    GqlOperationName.createOnDemandNutanixBackup,
-                    "Invoke-RscMutateNutanix -CreateOnDemandBackup"
+                {
+                    GqlRootFieldName.createMongodbSource,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateMongo",
+                        CmdletSwitchName = "CreatedbSource",
+                        GqlRootFieldName = "createMongodbSource"
+                    }
                 },
-                {
-                    GqlOperationName.createOraclePdbRestore,
-                    "Invoke-RscMutateOracle -CreatePdbRestore"
+                {
+                    GqlRootFieldName.createMssqlLiveMount,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateMssql",
+                        CmdletSwitchName = "CreateLiveMount",
+                        GqlRootFieldName = "createMssqlLiveMount"
+                    }
                 },
-                {
-                    GqlOperationName.createVsphereAdvancedTag,
-                    "Invoke-RscMutateVsphere -CreateAdvancedTag"
+                {
+                    GqlRootFieldName.createMssqlLogShippingConfiguration,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateMssql",
+                        CmdletSwitchName = "CreateLogShippingConfiguration",
+                        GqlRootFieldName = "createMssqlLogShippingConfiguration"
+                    }
                 },
-                {
-                    GqlOperationName.databaseLogReportForCluster,
-                    "Invoke-RscQueryCluster -DatabaseLogReport"
+                {
+                    GqlRootFieldName.createNutanixCluster,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateNutanix",
+                        CmdletSwitchName = "CreateCluster",
+                        GqlRootFieldName = "createNutanixCluster"
+                    }
                 },
-                {
-                    GqlOperationName.databaseLogReportingPropertiesForCluster,
-                    "Invoke-RscQueryCluster -DatabaseLogReportingProperties"
+                {
+                    GqlRootFieldName.createNutanixPrismCentral,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateNutanix",
+                        CmdletSwitchName = "CreatePrismCentral",
+                        GqlRootFieldName = "createNutanixPrismCentral"
+                    }
                 },
-                {
-                    GqlOperationName.db2Database,
-                    "Invoke-RscQueryDb2 -Database"
+                {
+                    GqlRootFieldName.createO365AppComplete,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletSwitchName = "CreateAppComplete",
+                        GqlRootFieldName = "createO365AppComplete"
+                    }
                 },
-                {
-                    GqlOperationName.db2Databases,
-                    "Invoke-RscQueryDb2 -Databases"
+                {
+                    GqlRootFieldName.createO365AppKickoff,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletSwitchName = "CreateAppKickoff",
+                        GqlRootFieldName = "createO365AppKickoff"
+                    }
                 },
-                {
-                    GqlOperationName.db2Instance,
-                    "Invoke-RscQueryDb2 -Instance"
+                {
+                    GqlRootFieldName.createOnDemandDb2Backup,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateDb2",
+                        CmdletSwitchName = "CreateOnDemandBackup",
+                        GqlRootFieldName = "createOnDemandDb2Backup"
+                    }
                 },
-                {
-                    GqlOperationName.db2Instances,
-                    "Invoke-RscQueryDb2 -Instances"
+                {
+                    GqlRootFieldName.createOnDemandMongoDatabaseBackup,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateMongo",
+                        CmdletSwitchName = "CreateOnDemandDatabaseBackup",
+                        GqlRootFieldName = "createOnDemandMongoDatabaseBackup"
+                    }
                 },
-                {
-                    GqlOperationName.db2LogSnapshot,
-                    "Invoke-RscQueryDb2 -LogSnapshot"
+                {
+                    GqlRootFieldName.createOnDemandMssqlBackup,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateMssql",
+                        CmdletSwitchName = "CreateOnDemandBackup",
+                        GqlRootFieldName = "createOnDemandMssqlBackup"
+                    }
                 },
-                {
-                    GqlOperationName.db2LogSnapshots,
-                    "Invoke-RscQueryDb2 -LogSnapshots"
+                {
+                    GqlRootFieldName.createOnDemandNutanixBackup,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateNutanix",
+                        CmdletSwitchName = "CreateOnDemandBackup",
+                        GqlRootFieldName = "createOnDemandNutanixBackup"
+                    }
                 },
-                {
-                    GqlOperationName.db2RecoverableRange,
-                    "Invoke-RscQueryDb2 -RecoverableRange"
+                {
+                    GqlRootFieldName.createOraclePdbRestore,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateOracle",
+                        CmdletSwitchName = "CreatePdbRestore",
+                        GqlRootFieldName = "createOraclePdbRestore"
+                    }
                 },
-                {
-                    GqlOperationName.db2RecoverableRanges,
-                    "Invoke-RscQueryDb2 -RecoverableRanges"
+                {
+                    GqlRootFieldName.createVsphereAdvancedTag,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateVsphere",
+                        CmdletSwitchName = "CreateAdvancedTag",
+                        GqlRootFieldName = "createVsphereAdvancedTag"
+                    }
                 },
-                {
-                    GqlOperationName.deleteAllOracleDatabaseSnapshots,
-                    "Invoke-RscMutateOracle -DeleteAllDatabaseSnapshots"
+                {
+                    GqlRootFieldName.databaseLogReportForCluster,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletSwitchName = "DatabaseLogReport",
+                        GqlRootFieldName = "databaseLogReportForCluster"
+                    }
                 },
-                {
-                    GqlOperationName.deleteAwsCloudAccountWithoutCft,
-                    "Invoke-RscMutateAws -DeleteCloudAccountWithoutCft"
+                {
+                    GqlRootFieldName.databaseLogReportingPropertiesForCluster,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletSwitchName = "DatabaseLogReportingProperties",
+                        GqlRootFieldName = "databaseLogReportingPropertiesForCluster"
+                    }
                 },
-                {
-                    GqlOperationName.deleteAwsCluster,
-                    "Invoke-RscMutateAws -DeleteCluster"
+                {
+                    GqlRootFieldName.db2Database,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryDb2",
+                        CmdletSwitchName = "Database",
+                        GqlRootFieldName = "db2Database"
+                    }
                 },
-                {
-                    GqlOperationName.deleteAwsComputeSetting,
-                    "Invoke-RscMutateAws -DeleteComputeSetting"
+                {
+                    GqlRootFieldName.db2Databases,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryDb2",
+                        CmdletSwitchName = "Databases",
+                        GqlRootFieldName = "db2Databases"
+                    }
                 },
-                {
-                    GqlOperationName.deleteAwsExocomputeConfigs,
-                    "Invoke-RscMutateAws -DeleteExocomputeConfigs"
+                {
+                    GqlRootFieldName.db2Instance,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryDb2",
+                        CmdletSwitchName = "Instance",
+                        GqlRootFieldName = "db2Instance"
+                    }
                 },
-                {
-                    GqlOperationName.deleteAwsIamUserBasedCloudAccount,
-                    "Invoke-RscMutateAws -DeleteIamUserBasedCloudAccount"
+                {
+                    GqlRootFieldName.db2Instances,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryDb2",
+                        CmdletSwitchName = "Instances",
+                        GqlRootFieldName = "db2Instances"
+                    }
                 },
-                {
-                    GqlOperationName.deleteAzureAdDirectory,
-                    "Invoke-RscMutateAzure -DeleteAdDirectory"
+                {
+                    GqlRootFieldName.db2LogSnapshot,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryDb2",
+                        CmdletSwitchName = "LogSnapshot",
+                        GqlRootFieldName = "db2LogSnapshot"
+                    }
                 },
-                {
-                    GqlOperationName.deleteAzureCloudAccount,
-                    "Invoke-RscMutateAzure -DeleteCloudAccount"
+                {
+                    GqlRootFieldName.db2LogSnapshots,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryDb2",
+                        CmdletSwitchName = "LogSnapshots",
+                        GqlRootFieldName = "db2LogSnapshots"
+                    }
                 },
-                {
-                    GqlOperationName.deleteAzureCloudAccountExocomputeConfigurations,
-                    "Invoke-RscMutateAzure -DeleteCloudAccountExocomputeConfigurations"
+                {
+                    GqlRootFieldName.db2RecoverableRange,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryDb2",
+                        CmdletSwitchName = "RecoverableRange",
+                        GqlRootFieldName = "db2RecoverableRange"
+                    }
                 },
-                {
-                    GqlOperationName.deleteAzureCloudAccountWithoutOauth,
-                    "Invoke-RscMutateAzure -DeleteCloudAccountWithoutOauth"
+                {
+                    GqlRootFieldName.db2RecoverableRanges,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryDb2",
+                        CmdletSwitchName = "RecoverableRanges",
+                        GqlRootFieldName = "db2RecoverableRanges"
+                    }
                 },
-                {
-                    GqlOperationName.deleteAzureCluster,
-                    "Invoke-RscMutateAzure -DeleteCluster"
+                {
+                    GqlRootFieldName.deleteAllOracleDatabaseSnapshots,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateOracle",
+                        CmdletSwitchName = "DeleteAllDatabaseSnapshots",
+                        GqlRootFieldName = "deleteAllOracleDatabaseSnapshots"
+                    }
                 },
-                {
-                    GqlOperationName.deleteCassandraSource,
-                    "Invoke-RscMutateCassandra -DeleteSource"
+                {
+                    GqlRootFieldName.deleteAwsCloudAccountWithoutCft,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletSwitchName = "DeleteCloudAccountWithoutCft",
+                        GqlRootFieldName = "deleteAwsCloudAccountWithoutCft"
+                    }
                 },
-                {
-                    GqlOperationName.deleteDb2Database,
-                    "Invoke-RscMutateDb2 -DeleteDatabase"
+                {
+                    GqlRootFieldName.deleteAwsCluster,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletSwitchName = "DeleteCluster",
+                        GqlRootFieldName = "deleteAwsCluster"
+                    }
                 },
-                {
-                    GqlOperationName.deleteDb2Instance,
-                    "Invoke-RscMutateDb2 -DeleteInstance"
+                {
+                    GqlRootFieldName.deleteAwsComputeSetting,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletSwitchName = "DeleteComputeSetting",
+                        GqlRootFieldName = "deleteAwsComputeSetting"
+                    }
                 },
-                {
-                    GqlOperationName.deleteFailoverCluster,
-                    "Invoke-RscMutateCluster -DeleteFailover"
+                {
+                    GqlRootFieldName.deleteAwsExocomputeConfigs,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletSwitchName = "DeleteExocomputeConfigs",
+                        GqlRootFieldName = "deleteAwsExocomputeConfigs"
+                    }
                 },
-                {
-                    GqlOperationName.deleteGlobalSla,
-                    "Invoke-RscMutateSla -DeleteGlobal"
+                {
+                    GqlRootFieldName.deleteAwsIamUserBasedCloudAccount,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletSwitchName = "DeleteIamUserBasedCloudAccount",
+                        GqlRootFieldName = "deleteAwsIamUserBasedCloudAccount"
+                    }
                 },
-                {
-                    GqlOperationName.deleteHypervVirtualMachineSnapshot,
-                    "Invoke-RscMutateHyperv -DeleteVirtualMachineSnapshot"
+                {
+                    GqlRootFieldName.deleteAzureAdDirectory,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletSwitchName = "DeleteAdDirectory",
+                        GqlRootFieldName = "deleteAzureAdDirectory"
+                    }
                 },
-                {
-                    GqlOperationName.deleteHypervVirtualMachineSnapshotMount,
-                    "Invoke-RscMutateHyperv -DeleteVirtualMachineSnapshotMount"
+                {
+                    GqlRootFieldName.deleteAzureCloudAccount,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletSwitchName = "DeleteCloudAccount",
+                        GqlRootFieldName = "deleteAzureCloudAccount"
+                    }
                 },
-                {
-                    GqlOperationName.deleteK8sCluster,
-                    "Invoke-RscMutateCluster -DeleteK8s"
+                {
+                    GqlRootFieldName.deleteAzureCloudAccountExocomputeConfigurations,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletSwitchName = "DeleteCloudAccountExocomputeConfigurations",
+                        GqlRootFieldName = "deleteAzureCloudAccountExocomputeConfigurations"
+                    }
                 },
-                {
-                    GqlOperationName.deleteLdapPrincipals,
-                    "Invoke-RscMutateLdap -DeletePrincipals"
+                {
+                    GqlRootFieldName.deleteAzureCloudAccountWithoutOauth,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletSwitchName = "DeleteCloudAccountWithoutOauth",
+                        GqlRootFieldName = "deleteAzureCloudAccountWithoutOauth"
+                    }
                 },
-                {
-                    GqlOperationName.deleteMongoSource,
-                    "Invoke-RscMutateMongo -DeleteSource"
+                {
+                    GqlRootFieldName.deleteAzureCluster,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletSwitchName = "DeleteCluster",
+                        GqlRootFieldName = "deleteAzureCluster"
+                    }
                 },
-                {
-                    GqlOperationName.deleteMongodbSource,
-                    "Invoke-RscMutateMongo -DeletedbSource"
+                {
+                    GqlRootFieldName.deleteCassandraSource,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateCassandra",
+                        CmdletSwitchName = "DeleteSource",
+                        GqlRootFieldName = "deleteCassandraSource"
+                    }
                 },
-                {
-                    GqlOperationName.deleteMssqlDbSnapshots,
-                    "Invoke-RscMutateMssql -DeleteDbSnapshots"
+                {
+                    GqlRootFieldName.deleteDb2Database,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateDb2",
+                        CmdletSwitchName = "DeleteDatabase",
+                        GqlRootFieldName = "deleteDb2Database"
+                    }
                 },
-                {
-                    GqlOperationName.deleteMssqlLiveMount,
-                    "Invoke-RscMutateMssql -DeleteLiveMount"
+                {
+                    GqlRootFieldName.deleteDb2Instance,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateDb2",
+                        CmdletSwitchName = "DeleteInstance",
+                        GqlRootFieldName = "deleteDb2Instance"
+                    }
                 },
-                {
-                    GqlOperationName.deleteNutanixCluster,
-                    "Invoke-RscMutateNutanix -DeleteCluster"
+                {
+                    GqlRootFieldName.deleteFailoverCluster,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateCluster",
+                        CmdletSwitchName = "DeleteFailover",
+                        GqlRootFieldName = "deleteFailoverCluster"
+                    }
                 },
-                {
-                    GqlOperationName.deleteNutanixMountV1,
-                    "Invoke-RscMutateNutanix -DeleteMountV1"
+                {
+                    GqlRootFieldName.deleteGlobalSla,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateSla",
+                        CmdletSwitchName = "DeleteGlobal",
+                        GqlRootFieldName = "deleteGlobalSla"
+                    }
                 },
-                {
-                    GqlOperationName.deleteNutanixPrismCentral,
-                    "Invoke-RscMutateNutanix -DeletePrismCentral"
+                {
+                    GqlRootFieldName.deleteHypervVirtualMachineSnapshot,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateHyperv",
+                        CmdletSwitchName = "DeleteVirtualMachineSnapshot",
+                        GqlRootFieldName = "deleteHypervVirtualMachineSnapshot"
+                    }
                 },
-                {
-                    GqlOperationName.deleteNutanixSnapshot,
-                    "Invoke-RscMutateNutanix -DeleteSnapshot"
+                {
+                    GqlRootFieldName.deleteHypervVirtualMachineSnapshotMount,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateHyperv",
+                        CmdletSwitchName = "DeleteVirtualMachineSnapshotMount",
+                        GqlRootFieldName = "deleteHypervVirtualMachineSnapshotMount"
+                    }
                 },
-                {
-                    GqlOperationName.deleteNutanixSnapshots,
-                    "Invoke-RscMutateNutanix -DeleteSnapshots"
+                {
+                    GqlRootFieldName.deleteK8sCluster,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateCluster",
+                        CmdletSwitchName = "DeleteK8s",
+                        GqlRootFieldName = "deleteK8sCluster"
+                    }
                 },
-                {
-                    GqlOperationName.deleteO365AzureApp,
-                    "Invoke-RscMutateO365 -DeleteAzureApp"
+                {
+                    GqlRootFieldName.deleteLdapPrincipals,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateLdap",
+                        CmdletSwitchName = "DeletePrincipals",
+                        GqlRootFieldName = "deleteLdapPrincipals"
+                    }
                 },
-                {
-                    GqlOperationName.deleteO365Org,
-                    "Invoke-RscMutateO365 -DeleteOrg"
+                {
+                    GqlRootFieldName.deleteMongoSource,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateMongo",
+                        CmdletSwitchName = "DeleteSource",
+                        GqlRootFieldName = "deleteMongoSource"
+                    }
                 },
-                {
-                    GqlOperationName.deleteO365ServiceAccount,
-                    "Invoke-RscMutateO365 -DeleteServiceAccount"
+                {
+                    GqlRootFieldName.deleteMongodbSource,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateMongo",
+                        CmdletSwitchName = "DeletedbSource",
+                        GqlRootFieldName = "deleteMongodbSource"
+                    }
                 },
-                {
-                    GqlOperationName.deleteOracleMount,
-                    "Invoke-RscMutateOracle -DeleteMount"
+                {
+                    GqlRootFieldName.deleteMssqlDbSnapshots,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateMssql",
+                        CmdletSwitchName = "DeleteDbSnapshots",
+                        GqlRootFieldName = "deleteMssqlDbSnapshots"
+                    }
                 },
-                {
-                    GqlOperationName.deleteVsphereAdvancedTag,
-                    "Invoke-RscMutateVsphere -DeleteAdvancedTag"
+                {
+                    GqlRootFieldName.deleteMssqlLiveMount,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateMssql",
+                        CmdletSwitchName = "DeleteLiveMount",
+                        GqlRootFieldName = "deleteMssqlLiveMount"
+                    }
                 },
-                {
-                    GqlOperationName.deleteVsphereLiveMount,
-                    "Invoke-RscMutateVsphere -DeleteLiveMount"
+                {
+                    GqlRootFieldName.deleteNutanixCluster,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateNutanix",
+                        CmdletSwitchName = "DeleteCluster",
+                        GqlRootFieldName = "deleteNutanixCluster"
+                    }
                 },
-                {
-                    GqlOperationName.discoverDb2Instance,
-                    "Invoke-RscMutateDb2 -DiscoverInstance"
+                {
+                    GqlRootFieldName.deleteNutanixMountV1,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateNutanix",
+                        CmdletSwitchName = "DeleteMountV1",
+                        GqlRootFieldName = "deleteNutanixMountV1"
+                    }
                 },
-                {
-                    GqlOperationName.discoverMongoSource,
-                    "Invoke-RscMutateMongo -DiscoverSource"
+                {
+                    GqlRootFieldName.deleteNutanixPrismCentral,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateNutanix",
+                        CmdletSwitchName = "DeletePrismCentral",
+                        GqlRootFieldName = "deleteNutanixPrismCentral"
+                    }
                 },
-                {
-                    GqlOperationName.doesAzureNativeResourceGroupExist,
-                    "Invoke-RscQueryAzure -DoesNativeResourceGroupExist"
+                {
+                    GqlRootFieldName.deleteNutanixSnapshot,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateNutanix",
+                        CmdletSwitchName = "DeleteSnapshot",
+                        GqlRootFieldName = "deleteNutanixSnapshot"
+                    }
                 },
-                {
-                    GqlOperationName.downloadDb2Snapshot,
-                    "Invoke-RscMutateDb2 -DownloadSnapshot"
+                {
+                    GqlRootFieldName.deleteNutanixSnapshots,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateNutanix",
+                        CmdletSwitchName = "DeleteSnapshots",
+                        GqlRootFieldName = "deleteNutanixSnapshots"
+                    }
                 },
-                {
-                    GqlOperationName.downloadDb2SnapshotsForPointInTimeRecovery,
-                    "Invoke-RscMutateDb2 -DownloadSnapshotsForPointInTimeRecovery"
+                {
+                    GqlRootFieldName.deleteO365AzureApp,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletSwitchName = "DeleteAzureApp",
+                        GqlRootFieldName = "deleteO365AzureApp"
+                    }
                 },
-                {
-                    GqlOperationName.downloadFilesNutanixSnapshot,
-                    "Invoke-RscMutateNutanix -DownloadFilesSnapshot"
+                {
+                    GqlRootFieldName.deleteO365Org,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletSwitchName = "DeleteOrg",
+                        GqlRootFieldName = "deleteO365Org"
+                    }
                 },
-                {
-                    GqlOperationName.downloadHypervSnapshotFromLocation,
-                    "Invoke-RscMutateHyperv -DownloadSnapshotFromLocation"
+                {
+                    GqlRootFieldName.deleteO365ServiceAccount,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletSwitchName = "DeleteServiceAccount",
+                        GqlRootFieldName = "deleteO365ServiceAccount"
+                    }
                 },
-                {
-                    GqlOperationName.downloadHypervVirtualMachineSnapshot,
-                    "Invoke-RscMutateHyperv -DownloadVirtualMachineSnapshot"
+                {
+                    GqlRootFieldName.deleteOracleMount,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateOracle",
+                        CmdletSwitchName = "DeleteMount",
+                        GqlRootFieldName = "deleteOracleMount"
+                    }
                 },
-                {
-                    GqlOperationName.downloadHypervVirtualMachineSnapshotFiles,
-                    "Invoke-RscMutateHyperv -DownloadVirtualMachineSnapshotFiles"
+                {
+                    GqlRootFieldName.deleteVsphereAdvancedTag,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateVsphere",
+                        CmdletSwitchName = "DeleteAdvancedTag",
+                        GqlRootFieldName = "deleteVsphereAdvancedTag"
+                    }
                 },
-                {
-                    GqlOperationName.downloadMssqlDatabaseBackupFiles,
-                    "Invoke-RscMutateMssql -DownloadDatabaseBackupFiles"
+                {
+                    GqlRootFieldName.deleteVsphereLiveMount,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateVsphere",
+                        CmdletSwitchName = "DeleteLiveMount",
+                        GqlRootFieldName = "deleteVsphereLiveMount"
+                    }
                 },
-                {
-                    GqlOperationName.downloadMssqlDatabaseFilesFromArchivalLocation,
-                    "Invoke-RscMutateMssql -DownloadDatabaseFilesFromArchivalLocation"
+                {
+                    GqlRootFieldName.discoverDb2Instance,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateDb2",
+                        CmdletSwitchName = "DiscoverInstance",
+                        GqlRootFieldName = "discoverDb2Instance"
+                    }
                 },
-                {
-                    GqlOperationName.downloadNutanixSnapshot,
-                    "Invoke-RscMutateNutanix -DownloadSnapshot"
+                {
+                    GqlRootFieldName.discoverMongoSource,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateMongo",
+                        CmdletSwitchName = "DiscoverSource",
+                        GqlRootFieldName = "discoverMongoSource"
+                    }
                 },
-                {
-                    GqlOperationName.downloadNutanixVmFromLocation,
-                    "Invoke-RscMutateNutanix -DownloadVmFromLocation"
+                {
+                    GqlRootFieldName.doesAzureNativeResourceGroupExist,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "DoesNativeResourceGroupExist",
+                        GqlRootFieldName = "doesAzureNativeResourceGroupExist"
+                    }
                 },
-                {
-                    GqlOperationName.downloadOracleDatabaseSnapshot,
-                    "Invoke-RscMutateOracle -DownloadDatabaseSnapshot"
+                {
+                    GqlRootFieldName.downloadDb2Snapshot,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateDb2",
+                        CmdletSwitchName = "DownloadSnapshot",
+                        GqlRootFieldName = "downloadDb2Snapshot"
+                    }
                 },
-                {
-                    GqlOperationName.downloadSlaWithReplicationCsv,
-                    "Invoke-RscQuerySla -DownloadWithReplicationCsv"
+                {
+                    GqlRootFieldName.downloadDb2SnapshotsForPointInTimeRecovery,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateDb2",
+                        CmdletSwitchName = "DownloadSnapshotsForPointInTimeRecovery",
+                        GqlRootFieldName = "downloadDb2SnapshotsForPointInTimeRecovery"
+                    }
                 },
-                {
-                    GqlOperationName.downloadVsphereVirtualMachineFiles,
-                    "Invoke-RscMutateVsphere -DownloadVirtualMachineFiles"
+                {
+                    GqlRootFieldName.downloadFilesNutanixSnapshot,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateNutanix",
+                        CmdletSwitchName = "DownloadFilesSnapshot",
+                        GqlRootFieldName = "downloadFilesNutanixSnapshot"
+                    }
                 },
-                {
-                    GqlOperationName.editGlobalSla,
-                    "Invoke-RscMutateSla -EditGlobal"
+                {
+                    GqlRootFieldName.downloadHypervSnapshotFromLocation,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateHyperv",
+                        CmdletSwitchName = "DownloadSnapshotFromLocation",
+                        GqlRootFieldName = "downloadHypervSnapshotFromLocation"
+                    }
                 },
-                {
-                    GqlOperationName.enableO365SharePoint,
-                    "Invoke-RscMutateO365 -EnableSharePoint"
+                {
+                    GqlRootFieldName.downloadHypervVirtualMachineSnapshot,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateHyperv",
+                        CmdletSwitchName = "DownloadVirtualMachineSnapshot",
+                        GqlRootFieldName = "downloadHypervVirtualMachineSnapshot"
+                    }
                 },
-                {
-                    GqlOperationName.enableO365Teams,
-                    "Invoke-RscMutateO365 -EnableTeams"
+                {
+                    GqlRootFieldName.downloadHypervVirtualMachineSnapshotFiles,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateHyperv",
+                        CmdletSwitchName = "DownloadVirtualMachineSnapshotFiles",
+                        GqlRootFieldName = "downloadHypervVirtualMachineSnapshotFiles"
+                    }
                 },
-                {
-                    GqlOperationName.excludeAwsNativeEbsVolumesFromSnapshot,
-                    "Invoke-RscMutateAws -ExcludeNativeEbsVolumesFromSnapshot"
+                {
+                    GqlRootFieldName.downloadMssqlDatabaseBackupFiles,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateMssql",
+                        CmdletSwitchName = "DownloadDatabaseBackupFiles",
+                        GqlRootFieldName = "downloadMssqlDatabaseBackupFiles"
+                    }
                 },
-                {
-                    GqlOperationName.excludeAzureNativeManagedDisksFromSnapshot,
-                    "Invoke-RscMutateAzure -ExcludeNativeManagedDisksFromSnapshot"
+                {
+                    GqlRootFieldName.downloadMssqlDatabaseFilesFromArchivalLocation,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateMssql",
+                        CmdletSwitchName = "DownloadDatabaseFilesFromArchivalLocation",
+                        GqlRootFieldName = "downloadMssqlDatabaseFilesFromArchivalLocation"
+                    }
                 },
-                {
-                    GqlOperationName.expireDownloadedDb2Snapshots,
-                    "Invoke-RscMutateDb2 -ExpireDownloadedSnapshots"
+                {
+                    GqlRootFieldName.downloadNutanixSnapshot,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateNutanix",
+                        CmdletSwitchName = "DownloadSnapshot",
+                        GqlRootFieldName = "downloadNutanixSnapshot"
+                    }
                 },
-                {
-                    GqlOperationName.exportHypervVirtualMachine,
-                    "Invoke-RscMutateHyperv -ExportVirtualMachine"
+                {
+                    GqlRootFieldName.downloadNutanixVmFromLocation,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateNutanix",
+                        CmdletSwitchName = "DownloadVmFromLocation",
+                        GqlRootFieldName = "downloadNutanixVmFromLocation"
+                    }
                 },
-                {
-                    GqlOperationName.exportMssqlDatabase,
-                    "Invoke-RscMutateMssql -ExportDatabase"
+                {
+                    GqlRootFieldName.downloadOracleDatabaseSnapshot,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateOracle",
+                        CmdletSwitchName = "DownloadDatabaseSnapshot",
+                        GqlRootFieldName = "downloadOracleDatabaseSnapshot"
+                    }
                 },
-                {
-                    GqlOperationName.exportNutanixSnapshot,
-                    "Invoke-RscMutateNutanix -ExportSnapshot"
+                {
+                    GqlRootFieldName.downloadSlaWithReplicationCsv,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQuerySla",
+                        CmdletSwitchName = "DownloadWithReplicationCsv",
+                        GqlRootFieldName = "downloadSlaWithReplicationCsv"
+                    }
                 },
-                {
-                    GqlOperationName.exportO365Mailbox,
-                    "Invoke-RscMutateO365 -ExportMailbox"
+                {
+                    GqlRootFieldName.downloadVsphereVirtualMachineFiles,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateVsphere",
+                        CmdletSwitchName = "DownloadVirtualMachineFiles",
+                        GqlRootFieldName = "downloadVsphereVirtualMachineFiles"
+                    }
                 },
-                {
-                    GqlOperationName.exportO365TeamsFiles,
-                    "Invoke-RscMutateO365 -ExportTeamsFiles"
+                {
+                    GqlRootFieldName.editGlobalSla,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateSla",
+                        CmdletSwitchName = "EditGlobal",
+                        GqlRootFieldName = "editGlobalSla"
+                    }
                 },
-                {
-                    GqlOperationName.exportO365Workload,
-                    "Invoke-RscMutateO365 -ExportWorkload"
+                {
+                    GqlRootFieldName.enableO365SharePoint,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletSwitchName = "EnableSharePoint",
+                        GqlRootFieldName = "enableO365SharePoint"
+                    }
                 },
-                {
-                    GqlOperationName.exportOracleDatabase,
-                    "Invoke-RscMutateOracle -ExportDatabase"
+                {
+                    GqlRootFieldName.enableO365Teams,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletSwitchName = "EnableTeams",
+                        GqlRootFieldName = "enableO365Teams"
+                    }
                 },
-                {
-                    GqlOperationName.exportOracleTablespace,
-                    "Invoke-RscMutateOracle -ExportTablespace"
+                {
+                    GqlRootFieldName.excludeAwsNativeEbsVolumesFromSnapshot,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletSwitchName = "ExcludeNativeEbsVolumesFromSnapshot",
+                        GqlRootFieldName = "excludeAwsNativeEbsVolumesFromSnapshot"
+                    }
                 },
-                {
-                    GqlOperationName.exportSlaManagedVolumeSnapshot,
-                    "Invoke-RscMutateSla -ExportManagedVolumeSnapshot"
+                {
+                    GqlRootFieldName.excludeAzureNativeManagedDisksFromSnapshot,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletSwitchName = "ExcludeNativeManagedDisksFromSnapshot",
+                        GqlRootFieldName = "excludeAzureNativeManagedDisksFromSnapshot"
+                    }
                 },
-                {
-                    GqlOperationName.finalizeAwsCloudAccountDeletion,
-                    "Invoke-RscMutateAws -FinalizeCloudAccountDeletion"
+                {
+                    GqlRootFieldName.expireDownloadedDb2Snapshots,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateDb2",
+                        CmdletSwitchName = "ExpireDownloadedSnapshots",
+                        GqlRootFieldName = "expireDownloadedDb2Snapshots"
+                    }
                 },
-                {
-                    GqlOperationName.finalizeAwsCloudAccountProtection,
-                    "Invoke-RscMutateAws -FinalizeCloudAccountProtection"
+                {
+                    GqlRootFieldName.exportHypervVirtualMachine,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateHyperv",
+                        CmdletSwitchName = "ExportVirtualMachine",
+                        GqlRootFieldName = "exportHypervVirtualMachine"
+                    }
                 },
-                {
-                    GqlOperationName.getPendingSlaAssignments,
-                    "Invoke-RscMutateSla -GetPendingAssignments"
+                {
+                    GqlRootFieldName.exportMssqlDatabase,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateMssql",
+                        CmdletSwitchName = "ExportDatabase",
+                        GqlRootFieldName = "exportMssqlDatabase"
+                    }
                 },
-                {
-                    GqlOperationName.globalSlaFilterConnection,
-                    "Invoke-RscQuerySla -GlobalFilterList"
+                {
+                    GqlRootFieldName.exportNutanixSnapshot,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateNutanix",
+                        CmdletSwitchName = "ExportSnapshot",
+                        GqlRootFieldName = "exportNutanixSnapshot"
+                    }
                 },
-                {
-                    GqlOperationName.globalSlaStatuses,
-                    "Invoke-RscQuerySla -GlobalStatuses"
+                {
+                    GqlRootFieldName.exportO365Mailbox,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletSwitchName = "ExportMailbox",
+                        GqlRootFieldName = "exportO365Mailbox"
+                    }
                 },
-                {
-                    GqlOperationName.hostFailoverCluster,
-                    "Invoke-RscQueryCluster -HostFailover"
+                {
+                    GqlRootFieldName.exportO365TeamsFiles,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletSwitchName = "ExportTeamsFiles",
+                        GqlRootFieldName = "exportO365TeamsFiles"
+                    }
                 },
-                {
-                    GqlOperationName.hypervCluster,
-                    "Invoke-RscQueryHyperv -Cluster"
+                {
+                    GqlRootFieldName.exportO365Workload,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletSwitchName = "ExportWorkload",
+                        GqlRootFieldName = "exportO365Workload"
+                    }
                 },
-                {
-                    GqlOperationName.hypervDeleteAllSnapshots,
-                    "Invoke-RscMutateHyperv -DeleteAllSnapshots"
+                {
+                    GqlRootFieldName.exportOracleDatabase,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateOracle",
+                        CmdletSwitchName = "ExportDatabase",
+                        GqlRootFieldName = "exportOracleDatabase"
+                    }
                 },
-                {
-                    GqlOperationName.hypervHostAsyncRequestStatus,
-                    "Invoke-RscQueryHyperv -HostAsyncRequestStatus"
+                {
+                    GqlRootFieldName.exportOracleTablespace,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateOracle",
+                        CmdletSwitchName = "ExportTablespace",
+                        GqlRootFieldName = "exportOracleTablespace"
+                    }
                 },
-                {
-                    GqlOperationName.hypervMounts,
-                    "Invoke-RscQueryHyperv -Mounts"
+                {
+                    GqlRootFieldName.exportSlaManagedVolumeSnapshot,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateSla",
+                        CmdletSwitchName = "ExportManagedVolumeSnapshot",
+                        GqlRootFieldName = "exportSlaManagedVolumeSnapshot"
+                    }
                 },
-                {
-                    GqlOperationName.hypervOnDemandSnapshot,
-                    "Invoke-RscMutateHyperv -OnDemandSnapshot"
+                {
+                    GqlRootFieldName.finalizeAwsCloudAccountDeletion,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletSwitchName = "FinalizeCloudAccountDeletion",
+                        GqlRootFieldName = "finalizeAwsCloudAccountDeletion"
+                    }
                 },
-                {
-                    GqlOperationName.hypervScvmm,
-                    "Invoke-RscQueryHyperv -Scvmm"
+                {
+                    GqlRootFieldName.finalizeAwsCloudAccountProtection,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletSwitchName = "FinalizeCloudAccountProtection",
+                        GqlRootFieldName = "finalizeAwsCloudAccountProtection"
+                    }
                 },
-                {
-                    GqlOperationName.hypervScvmmAsyncRequestStatus,
-                    "Invoke-RscQueryHyperv -ScvmmAsyncRequestStatus"
+                {
+                    GqlRootFieldName.getPendingSlaAssignments,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateSla",
+                        CmdletSwitchName = "GetPendingAssignments",
+                        GqlRootFieldName = "getPendingSlaAssignments"
+                    }
                 },
-                {
-                    GqlOperationName.hypervScvmmDelete,
-                    "Invoke-RscMutateHyperv -ScvmmDelete"
+                {
+                    GqlRootFieldName.globalSlaFilterConnection,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQuerySla",
+                        CmdletSwitchName = "GlobalFilterList",
+                        GqlRootFieldName = "globalSlaFilterConnection"
+                    }
                 },
-                {
-                    GqlOperationName.hypervScvmmUpdate,
-                    "Invoke-RscMutateHyperv -ScvmmUpdate"
+                {
+                    GqlRootFieldName.globalSlaStatuses,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQuerySla",
+                        CmdletSwitchName = "GlobalStatuses",
+                        GqlRootFieldName = "globalSlaStatuses"
+                    }
                 },
-                {
-                    GqlOperationName.hypervScvmms,
-                    "Invoke-RscQueryHyperv -Scvmms"
+                {
+                    GqlRootFieldName.hostFailoverCluster,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletSwitchName = "HostFailover",
+                        GqlRootFieldName = "hostFailoverCluster"
+                    }
                 },
-                {
-                    GqlOperationName.hypervServer,
-                    "Invoke-RscQueryHyperv -Server"
+                {
+                    GqlRootFieldName.hypervCluster,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryHyperv",
+                        CmdletSwitchName = "Cluster",
+                        GqlRootFieldName = "hypervCluster"
+                    }
                 },
-                {
-                    GqlOperationName.hypervServers,
-                    "Invoke-RscQueryHyperv -Servers"
+                {
+                    GqlRootFieldName.hypervDeleteAllSnapshots,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateHyperv",
+                        CmdletSwitchName = "DeleteAllSnapshots",
+                        GqlRootFieldName = "hypervDeleteAllSnapshots"
+                    }
                 },
-                {
-                    GqlOperationName.hypervTopLevelDescendants,
-                    "Invoke-RscQueryHyperv -TopLevelDescendants"
+                {
+                    GqlRootFieldName.hypervHostAsyncRequestStatus,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryHyperv",
+                        CmdletSwitchName = "HostAsyncRequestStatus",
+                        GqlRootFieldName = "hypervHostAsyncRequestStatus"
+                    }
                 },
-                {
-                    GqlOperationName.hypervVirtualMachine,
-                    "Invoke-RscQueryHyperv -VirtualMachine"
+                {
+                    GqlRootFieldName.hypervMounts,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryHyperv",
+                        CmdletSwitchName = "Mounts",
+                        GqlRootFieldName = "hypervMounts"
+                    }
                 },
-                {
-                    GqlOperationName.hypervVirtualMachineAsyncRequestStatus,
-                    "Invoke-RscQueryHyperv -VirtualMachineAsyncRequestStatus"
+                {
+                    GqlRootFieldName.hypervOnDemandSnapshot,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateHyperv",
+                        CmdletSwitchName = "OnDemandSnapshot",
+                        GqlRootFieldName = "hypervOnDemandSnapshot"
+                    }
                 },
-                {
-                    GqlOperationName.hypervVirtualMachines,
-                    "Invoke-RscQueryHyperv -VirtualMachines"
+                {
+                    GqlRootFieldName.hypervScvmm,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryHyperv",
+                        CmdletSwitchName = "Scvmm",
+                        GqlRootFieldName = "hypervScvmm"
+                    }
                 },
-                {
-                    GqlOperationName.hypervVmDetail,
-                    "Invoke-RscQueryHyperv -VmDetail"
+                {
+                    GqlRootFieldName.hypervScvmmAsyncRequestStatus,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryHyperv",
+                        CmdletSwitchName = "ScvmmAsyncRequestStatus",
+                        GqlRootFieldName = "hypervScvmmAsyncRequestStatus"
+                    }
                 },
-                {
-                    GqlOperationName.initiateAzureAdAppUpdate,
-                    "Invoke-RscMutateAzure -InitiateAdAppUpdate"
+                {
+                    GqlRootFieldName.hypervScvmmDelete,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateHyperv",
+                        CmdletSwitchName = "ScvmmDelete",
+                        GqlRootFieldName = "hypervScvmmDelete"
+                    }
                 },
-                {
-                    GqlOperationName.insertCustomerO365App,
-                    "Invoke-RscMutateO365 -InsertCustomerApp"
+                {
+                    GqlRootFieldName.hypervScvmmUpdate,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateHyperv",
+                        CmdletSwitchName = "ScvmmUpdate",
+                        GqlRootFieldName = "hypervScvmmUpdate"
+                    }
                 },
-                {
-                    GqlOperationName.instantRecoverHypervVirtualMachineSnapshot,
-                    "Invoke-RscMutateHyperv -InstantRecoverVirtualMachineSnapshot"
+                {
+                    GqlRootFieldName.hypervScvmms,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryHyperv",
+                        CmdletSwitchName = "Scvmms",
+                        GqlRootFieldName = "hypervScvmms"
+                    }
                 },
-                {
-                    GqlOperationName.instantRecoverOracleSnapshot,
-                    "Invoke-RscMutateOracle -InstantRecoverSnapshot"
+                {
+                    GqlRootFieldName.hypervServer,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryHyperv",
+                        CmdletSwitchName = "Server",
+                        GqlRootFieldName = "hypervServer"
+                    }
                 },
-                {
-                    GqlOperationName.isAwsNativeEbsVolumeSnapshotRestorable,
-                    "Invoke-RscQueryAws -IsNativeEbsVolumeSnapshotRestorable"
+                {
+                    GqlRootFieldName.hypervServers,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryHyperv",
+                        CmdletSwitchName = "Servers",
+                        GqlRootFieldName = "hypervServers"
+                    }
                 },
-                {
-                    GqlOperationName.isAwsNativeRdsInstanceLaunchConfigurationValid,
-                    "Invoke-RscQueryAws -IsNativeRdsInstanceLaunchConfigurationValid"
+                {
+                    GqlRootFieldName.hypervTopLevelDescendants,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryHyperv",
+                        CmdletSwitchName = "TopLevelDescendants",
+                        GqlRootFieldName = "hypervTopLevelDescendants"
+                    }
                 },
-                {
-                    GqlOperationName.isAwsS3BucketNameAvailable,
-                    "Invoke-RscQueryAws -IsS3BucketNameAvailable"
+                {
+                    GqlRootFieldName.hypervVirtualMachine,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryHyperv",
+                        CmdletSwitchName = "VirtualMachine",
+                        GqlRootFieldName = "hypervVirtualMachine"
+                    }
                 },
-                {
-                    GqlOperationName.isAzureNativeManagedDiskSnapshotRestorable,
-                    "Invoke-RscQueryAzure -IsNativeManagedDiskSnapshotRestorable"
+                {
+                    GqlRootFieldName.hypervVirtualMachineAsyncRequestStatus,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryHyperv",
+                        CmdletSwitchName = "VirtualMachineAsyncRequestStatus",
+                        GqlRootFieldName = "hypervVirtualMachineAsyncRequestStatus"
+                    }
                 },
-                {
-                    GqlOperationName.isAzureNativeSqlDatabaseSnapshotPersistent,
-                    "Invoke-RscQueryAzure -IsNativeSqlDatabaseSnapshotPersistent"
+                {
+                    GqlRootFieldName.hypervVirtualMachines,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryHyperv",
+                        CmdletSwitchName = "VirtualMachines",
+                        GqlRootFieldName = "hypervVirtualMachines"
+                    }
                 },
-                {
-                    GqlOperationName.isAzureStorageAccountNameAvailable,
-                    "Invoke-RscQueryAzure -IsStorageAccountNameAvailable"
+                {
+                    GqlRootFieldName.hypervVmDetail,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryHyperv",
+                        CmdletSwitchName = "VmDetail",
+                        GqlRootFieldName = "hypervVmDetail"
+                    }
                 },
-                {
-                    GqlOperationName.isTotpAckNecessaryForCluster,
-                    "Invoke-RscQueryCluster -IsTotpAckNecessary"
+                {
+                    GqlRootFieldName.initiateAzureAdAppUpdate,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletSwitchName = "InitiateAdAppUpdate",
+                        GqlRootFieldName = "initiateAzureAdAppUpdate"
+                    }
                 },
-                {
-                    GqlOperationName.k8sClusters,
-                    "Invoke-RscQueryCluster -K8s"
+                {
+                    GqlRootFieldName.insertCustomerO365App,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletSwitchName = "InsertCustomerApp",
+                        GqlRootFieldName = "insertCustomerO365App"
+                    }
                 },
-                {
-                    GqlOperationName.kickoffAzureAdAppSetup,
-                    "Invoke-RscMutateAzure -KickoffAdAppSetup"
+                {
+                    GqlRootFieldName.instantRecoverHypervVirtualMachineSnapshot,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateHyperv",
+                        CmdletSwitchName = "InstantRecoverVirtualMachineSnapshot",
+                        GqlRootFieldName = "instantRecoverHypervVirtualMachineSnapshot"
+                    }
                 },
-                {
-                    GqlOperationName.kubernetesClusters,
-                    "Invoke-RscQueryCluster -Kubernetes"
+                {
+                    GqlRootFieldName.instantRecoverOracleSnapshot,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateOracle",
+                        CmdletSwitchName = "InstantRecoverSnapshot",
+                        GqlRootFieldName = "instantRecoverOracleSnapshot"
+                    }
                 },
-                {
-                    GqlOperationName.ldapAuthorizedPrincipalConnection,
-                    "Invoke-RscQueryLdap -AuthorizedPrincipalList"
+                {
+                    GqlRootFieldName.isAwsNativeEbsVolumeSnapshotRestorable,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletSwitchName = "IsNativeEbsVolumeSnapshotRestorable",
+                        GqlRootFieldName = "isAwsNativeEbsVolumeSnapshotRestorable"
+                    }
                 },
-                {
-                    GqlOperationName.ldapIntegrationConnection,
-                    "Invoke-RscQueryLdap -IntegrationList"
+                {
+                    GqlRootFieldName.isAwsNativeRdsInstanceLaunchConfigurationValid,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletSwitchName = "IsNativeRdsInstanceLaunchConfigurationValid",
+                        GqlRootFieldName = "isAwsNativeRdsInstanceLaunchConfigurationValid"
+                    }
                 },
-                {
-                    GqlOperationName.ldapPrincipalConnection,
-                    "Invoke-RscQueryLdap -PrincipalList"
+                {
+                    GqlRootFieldName.isAwsS3BucketNameAvailable,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletSwitchName = "IsS3BucketNameAvailable",
+                        GqlRootFieldName = "isAwsS3BucketNameAvailable"
+                    }
                 },
-                {
-                    GqlOperationName.listO365Apps,
-                    "Invoke-RscQueryO365 -ListApps"
+                {
+                    GqlRootFieldName.isAzureNativeManagedDiskSnapshotRestorable,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "IsNativeManagedDiskSnapshotRestorable",
+                        GqlRootFieldName = "isAzureNativeManagedDiskSnapshotRestorable"
+                    }
                 },
-                {
-                    GqlOperationName.mapAzureCloudAccountExocomputeSubscription,
-                    "Invoke-RscMutateAzure -MapCloudAccountExocomputeSubscription"
+                {
+                    GqlRootFieldName.isAzureNativeSqlDatabaseSnapshotPersistent,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "IsNativeSqlDatabaseSnapshotPersistent",
+                        GqlRootFieldName = "isAzureNativeSqlDatabaseSnapshotPersistent"
+                    }
                 },
-                {
-                    GqlOperationName.mapAzureCloudAccountToPersistentStorageLocation,
-                    "Invoke-RscMutateAzure -MapCloudAccountToPersistentStorageLocation"
+                {
+                    GqlRootFieldName.isAzureStorageAccountNameAvailable,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "IsStorageAccountNameAvailable",
+                        GqlRootFieldName = "isAzureStorageAccountNameAvailable"
+                    }
                 },
-                {
-                    GqlOperationName.migrateNutanixMountV1,
-                    "Invoke-RscMutateNutanix -MigrateMountV1"
+                {
+                    GqlRootFieldName.isTotpAckNecessaryForCluster,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletSwitchName = "IsTotpAckNecessary",
+                        GqlRootFieldName = "isTotpAckNecessaryForCluster"
+                    }
                 },
-                {
-                    GqlOperationName.mongoBulkRecoverableRanges,
-                    "Invoke-RscQueryMongo -BulkRecoverableRanges"
+                {
+                    GqlRootFieldName.k8sClusters,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletSwitchName = "K8s",
+                        GqlRootFieldName = "k8sClusters"
+                    }
                 },
-                {
-                    GqlOperationName.mongoCollection,
-                    "Invoke-RscQueryMongo -Collection"
+                {
+                    GqlRootFieldName.kickoffAzureAdAppSetup,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletSwitchName = "KickoffAdAppSetup",
+                        GqlRootFieldName = "kickoffAzureAdAppSetup"
+                    }
                 },
-                {
-                    GqlOperationName.mongoCollections,
-                    "Invoke-RscQueryMongo -Collections"
+                {
+                    GqlRootFieldName.kubernetesClusters,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletSwitchName = "Kubernetes",
+                        GqlRootFieldName = "kubernetesClusters"
+                    }
                 },
-                {
-                    GqlOperationName.mongoDatabase,
-                    "Invoke-RscQueryMongo -Database"
+                {
+                    GqlRootFieldName.ldapAuthorizedPrincipalConnection,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryLdap",
+                        CmdletSwitchName = "AuthorizedPrincipalList",
+                        GqlRootFieldName = "ldapAuthorizedPrincipalConnection"
+                    }
                 },
-                {
-                    GqlOperationName.mongoDatabases,
-                    "Invoke-RscQueryMongo -Databases"
+                {
+                    GqlRootFieldName.ldapIntegrationConnection,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryLdap",
+                        CmdletSwitchName = "IntegrationList",
+                        GqlRootFieldName = "ldapIntegrationConnection"
+                    }
                 },
-                {
-                    GqlOperationName.mongoRecoverableRanges,
-                    "Invoke-RscQueryMongo -RecoverableRanges"
+                {
+                    GqlRootFieldName.ldapPrincipalConnection,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryLdap",
+                        CmdletSwitchName = "PrincipalList",
+                        GqlRootFieldName = "ldapPrincipalConnection"
+                    }
                 },
-                {
-                    GqlOperationName.mongoSource,
-                    "Invoke-RscQueryMongo -Source"
+                {
+                    GqlRootFieldName.listO365Apps,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletSwitchName = "ListApps",
+                        GqlRootFieldName = "listO365Apps"
+                    }
                 },
-                {
-                    GqlOperationName.mongoSources,
-                    "Invoke-RscQueryMongo -Sources"
+                {
+                    GqlRootFieldName.mapAzureCloudAccountExocomputeSubscription,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletSwitchName = "MapCloudAccountExocomputeSubscription",
+                        GqlRootFieldName = "mapAzureCloudAccountExocomputeSubscription"
+                    }
                 },
-                {
-                    GqlOperationName.mongodbBulkRecoverableRange,
-                    "Invoke-RscQueryMongo -DbBulkRecoverableRange"
+                {
+                    GqlRootFieldName.mapAzureCloudAccountToPersistentStorageLocation,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletSwitchName = "MapCloudAccountToPersistentStorageLocation",
+                        GqlRootFieldName = "mapAzureCloudAccountToPersistentStorageLocation"
+                    }
                 },
-                {
-                    GqlOperationName.mongodbCollection,
-                    "Invoke-RscQueryMongo -DbCollection"
+                {
+                    GqlRootFieldName.migrateNutanixMountV1,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateNutanix",
+                        CmdletSwitchName = "MigrateMountV1",
+                        GqlRootFieldName = "migrateNutanixMountV1"
+                    }
                 },
-                {
-                    GqlOperationName.mongodbCollectionRecoverableRange,
-                    "Invoke-RscQueryMongo -DbCollectionRecoverableRange"
+                {
+                    GqlRootFieldName.mongoBulkRecoverableRanges,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryMongo",
+                        CmdletSwitchName = "BulkRecoverableRanges",
+                        GqlRootFieldName = "mongoBulkRecoverableRanges"
+                    }
                 },
-                {
-                    GqlOperationName.mongodbCollections,
-                    "Invoke-RscQueryMongo -DbCollections"
+                {
+                    GqlRootFieldName.mongoCollection,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryMongo",
+                        CmdletSwitchName = "Collection",
+                        GqlRootFieldName = "mongoCollection"
+                    }
                 },
-                {
-                    GqlOperationName.mongodbDatabase,
-                    "Invoke-RscQueryMongo -DbDatabase"
+                {
+                    GqlRootFieldName.mongoCollections,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryMongo",
+                        CmdletSwitchName = "Collections",
+                        GqlRootFieldName = "mongoCollections"
+                    }
                 },
-                {
-                    GqlOperationName.mongodbDatabases,
-                    "Invoke-RscQueryMongo -DbDatabases"
+                {
+                    GqlRootFieldName.mongoDatabase,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryMongo",
+                        CmdletSwitchName = "Database",
+                        GqlRootFieldName = "mongoDatabase"
+                    }
                 },
-                {
-                    GqlOperationName.mongodbSource,
-                    "Invoke-RscQueryMongo -DbSource"
+                {
+                    GqlRootFieldName.mongoDatabases,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryMongo",
+                        CmdletSwitchName = "Databases",
+                        GqlRootFieldName = "mongoDatabases"
+                    }
                 },
-                {
-                    GqlOperationName.mongodbSources,
-                    "Invoke-RscQueryMongo -DbSources"
+                {
+                    GqlRootFieldName.mongoRecoverableRanges,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryMongo",
+                        CmdletSwitchName = "RecoverableRanges",
+                        GqlRootFieldName = "mongoRecoverableRanges"
+                    }
                 },
-                {
-                    GqlOperationName.mountNutanixSnapshotV1,
-                    "Invoke-RscMutateNutanix -MountSnapshotV1"
+                {
+                    GqlRootFieldName.mongoSource,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryMongo",
+                        CmdletSwitchName = "Source",
+                        GqlRootFieldName = "mongoSource"
+                    }
                 },
-                {
-                    GqlOperationName.mountOracleDatabase,
-                    "Invoke-RscMutateOracle -MountDatabase"
+                {
+                    GqlRootFieldName.mongoSources,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryMongo",
+                        CmdletSwitchName = "Sources",
+                        GqlRootFieldName = "mongoSources"
+                    }
                 },
-                {
-                    GqlOperationName.mssqlAvailabilityGroup,
-                    "Invoke-RscQueryMssql -AvailabilityGroup"
+                {
+                    GqlRootFieldName.mongodbBulkRecoverableRange,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryMongo",
+                        CmdletSwitchName = "DbBulkRecoverableRange",
+                        GqlRootFieldName = "mongodbBulkRecoverableRange"
+                    }
                 },
-                {
-                    GqlOperationName.mssqlCompatibleInstances,
-                    "Invoke-RscQueryMssql -CompatibleInstances"
+                {
+                    GqlRootFieldName.mongodbCollection,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryMongo",
+                        CmdletSwitchName = "DbCollection",
+                        GqlRootFieldName = "mongodbCollection"
+                    }
                 },
-                {
-                    GqlOperationName.mssqlDatabase,
-                    "Invoke-RscQueryMssql -Database"
+                {
+                    GqlRootFieldName.mongodbCollectionRecoverableRange,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryMongo",
+                        CmdletSwitchName = "DbCollectionRecoverableRange",
+                        GqlRootFieldName = "mongodbCollectionRecoverableRange"
+                    }
                 },
-                {
-                    GqlOperationName.mssqlDatabaseLiveMounts,
-                    "Invoke-RscQueryMssql -DatabaseLiveMounts"
+                {
+                    GqlRootFieldName.mongodbCollections,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryMongo",
+                        CmdletSwitchName = "DbCollections",
+                        GqlRootFieldName = "mongodbCollections"
+                    }
                 },
-                {
-                    GqlOperationName.mssqlDatabaseMissedRecoverableRanges,
-                    "Invoke-RscQueryMssql -DatabaseMissedRecoverableRanges"
+                {
+                    GqlRootFieldName.mongodbDatabase,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryMongo",
+                        CmdletSwitchName = "DbDatabase",
+                        GqlRootFieldName = "mongodbDatabase"
+                    }
                 },
-                {
-                    GqlOperationName.mssqlDatabaseMissedSnapshots,
-                    "Invoke-RscQueryMssql -DatabaseMissedSnapshots"
+                {
+                    GqlRootFieldName.mongodbDatabases,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryMongo",
+                        CmdletSwitchName = "DbDatabases",
+                        GqlRootFieldName = "mongodbDatabases"
+                    }
                 },
-                {
-                    GqlOperationName.mssqlDatabaseRestoreEstimate,
-                    "Invoke-RscQueryMssql -DatabaseRestoreEstimate"
+                {
+                    GqlRootFieldName.mongodbSource,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryMongo",
+                        CmdletSwitchName = "DbSource",
+                        GqlRootFieldName = "mongodbSource"
+                    }
                 },
-                {
-                    GqlOperationName.mssqlDatabases,
-                    "Invoke-RscQueryMssql -Databases"
+                {
+                    GqlRootFieldName.mongodbSources,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryMongo",
+                        CmdletSwitchName = "DbSources",
+                        GqlRootFieldName = "mongodbSources"
+                    }
                 },
-                {
-                    GqlOperationName.mssqlDefaultProperties,
-                    "Invoke-RscQueryMssql -DefaultProperties"
+                {
+                    GqlRootFieldName.mountNutanixSnapshotV1,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateNutanix",
+                        CmdletSwitchName = "MountSnapshotV1",
+                        GqlRootFieldName = "mountNutanixSnapshotV1"
+                    }
                 },
-                {
-                    GqlOperationName.mssqlInstance,
-                    "Invoke-RscQueryMssql -Instance"
+                {
+                    GqlRootFieldName.mountOracleDatabase,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateOracle",
+                        CmdletSwitchName = "MountDatabase",
+                        GqlRootFieldName = "mountOracleDatabase"
+                    }
                 },
-                {
-                    GqlOperationName.mssqlLogShippingTargets,
-                    "Invoke-RscQueryMssql -LogShippingTargets"
+                {
+                    GqlRootFieldName.mssqlAvailabilityGroup,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryMssql",
+                        CmdletSwitchName = "AvailabilityGroup",
+                        GqlRootFieldName = "mssqlAvailabilityGroup"
+                    }
                 },
-                {
-                    GqlOperationName.mssqlRecoverableRanges,
-                    "Invoke-RscQueryMssql -RecoverableRanges"
+                {
+                    GqlRootFieldName.mssqlCompatibleInstances,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryMssql",
+                        CmdletSwitchName = "CompatibleInstances",
+                        GqlRootFieldName = "mssqlCompatibleInstances"
+                    }
                 },
-                {
-                    GqlOperationName.mssqlTopLevelDescendants,
-                    "Invoke-RscQueryMssql -TopLevelDescendants"
+                {
+                    GqlRootFieldName.mssqlDatabase,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryMssql",
+                        CmdletSwitchName = "Database",
+                        GqlRootFieldName = "mssqlDatabase"
+                    }
                 },
-                {
-                    GqlOperationName.nutanixBrowseSnapshot,
-                    "Invoke-RscQueryNutanix -BrowseSnapshot"
+                {
+                    GqlRootFieldName.mssqlDatabaseLiveMounts,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryMssql",
+                        CmdletSwitchName = "DatabaseLiveMounts",
+                        GqlRootFieldName = "mssqlDatabaseLiveMounts"
+                    }
                 },
-                {
-                    GqlOperationName.nutanixCategory,
-                    "Invoke-RscQueryNutanix -Category"
+                {
+                    GqlRootFieldName.mssqlDatabaseMissedRecoverableRanges,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryMssql",
+                        CmdletSwitchName = "DatabaseMissedRecoverableRanges",
+                        GqlRootFieldName = "mssqlDatabaseMissedRecoverableRanges"
+                    }
                 },
-                {
-                    GqlOperationName.nutanixCategoryValue,
-                    "Invoke-RscQueryNutanix -CategoryValue"
+                {
+                    GqlRootFieldName.mssqlDatabaseMissedSnapshots,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryMssql",
+                        CmdletSwitchName = "DatabaseMissedSnapshots",
+                        GqlRootFieldName = "mssqlDatabaseMissedSnapshots"
+                    }
                 },
-                {
-                    GqlOperationName.nutanixCluster,
-                    "Invoke-RscQueryNutanix -Cluster"
+                {
+                    GqlRootFieldName.mssqlDatabaseRestoreEstimate,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryMssql",
+                        CmdletSwitchName = "DatabaseRestoreEstimate",
+                        GqlRootFieldName = "mssqlDatabaseRestoreEstimate"
+                    }
                 },
-                {
-                    GqlOperationName.nutanixClusterAsyncRequestStatus,
-                    "Invoke-RscQueryNutanix -ClusterAsyncRequestStatus"
+                {
+                    GqlRootFieldName.mssqlDatabases,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryMssql",
+                        CmdletSwitchName = "Databases",
+                        GqlRootFieldName = "mssqlDatabases"
+                    }
                 },
-                {
-                    GqlOperationName.nutanixClusterContainers,
-                    "Invoke-RscQueryNutanix -ClusterContainers"
+                {
+                    GqlRootFieldName.mssqlDefaultProperties,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryMssql",
+                        CmdletSwitchName = "DefaultProperties",
+                        GqlRootFieldName = "mssqlDefaultProperties"
+                    }
                 },
-                {
-                    GqlOperationName.nutanixClusterNetworks,
-                    "Invoke-RscQueryNutanix -ClusterNetworks"
+                {
+                    GqlRootFieldName.mssqlInstance,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryMssql",
+                        CmdletSwitchName = "Instance",
+                        GqlRootFieldName = "mssqlInstance"
+                    }
                 },
-                {
-                    GqlOperationName.nutanixClusters,
-                    "Invoke-RscQueryNutanix -Clusters"
+                {
+                    GqlRootFieldName.mssqlLogShippingTargets,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryMssql",
+                        CmdletSwitchName = "LogShippingTargets",
+                        GqlRootFieldName = "mssqlLogShippingTargets"
+                    }
                 },
-                {
-                    GqlOperationName.nutanixMounts,
-                    "Invoke-RscQueryNutanix -Mounts"
+                {
+                    GqlRootFieldName.mssqlRecoverableRanges,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryMssql",
+                        CmdletSwitchName = "RecoverableRanges",
+                        GqlRootFieldName = "mssqlRecoverableRanges"
+                    }
                 },
-                {
-                    GqlOperationName.nutanixPrismCentral,
-                    "Invoke-RscQueryNutanix -PrismCentral"
+                {
+                    GqlRootFieldName.mssqlTopLevelDescendants,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryMssql",
+                        CmdletSwitchName = "TopLevelDescendants",
+                        GqlRootFieldName = "mssqlTopLevelDescendants"
+                    }
                 },
-                {
-                    GqlOperationName.nutanixPrismCentralAsyncRequestStatus,
-                    "Invoke-RscMutateNutanix -PrismCentralAsyncRequestStatus"
+                {
+                    GqlRootFieldName.nutanixBrowseSnapshot,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryNutanix",
+                        CmdletSwitchName = "BrowseSnapshot",
+                        GqlRootFieldName = "nutanixBrowseSnapshot"
+                    }
                 },
-                {
-                    GqlOperationName.nutanixPrismCentrals,
-                    "Invoke-RscQueryNutanix -PrismCentrals"
+                {
+                    GqlRootFieldName.nutanixCategory,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryNutanix",
+                        CmdletSwitchName = "Category",
+                        GqlRootFieldName = "nutanixCategory"
+                    }
                 },
-                {
-                    GqlOperationName.nutanixSnapshotDetail,
-                    "Invoke-RscQueryNutanix -SnapshotDetail"
+                {
+                    GqlRootFieldName.nutanixCategoryValue,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryNutanix",
+                        CmdletSwitchName = "CategoryValue",
+                        GqlRootFieldName = "nutanixCategoryValue"
+                    }
                 },
-                {
-                    GqlOperationName.nutanixTopLevelDescendants,
-                    "Invoke-RscQueryNutanix -TopLevelDescendants"
+                {
+                    GqlRootFieldName.nutanixCluster,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryNutanix",
+                        CmdletSwitchName = "Cluster",
+                        GqlRootFieldName = "nutanixCluster"
+                    }
                 },
-                {
-                    GqlOperationName.nutanixVm,
-                    "Invoke-RscQueryNutanix -Vm"
+                {
+                    GqlRootFieldName.nutanixClusterAsyncRequestStatus,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryNutanix",
+                        CmdletSwitchName = "ClusterAsyncRequestStatus",
+                        GqlRootFieldName = "nutanixClusterAsyncRequestStatus"
+                    }
                 },
-                {
-                    GqlOperationName.nutanixVmAsyncRequestStatus,
-                    "Invoke-RscQueryNutanix -VmAsyncRequestStatus"
+                {
+                    GqlRootFieldName.nutanixClusterContainers,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryNutanix",
+                        CmdletSwitchName = "ClusterContainers",
+                        GqlRootFieldName = "nutanixClusterContainers"
+                    }
                 },
-                {
-                    GqlOperationName.nutanixVmMissedSnapshots,
-                    "Invoke-RscQueryNutanix -VmMissedSnapshots"
+                {
+                    GqlRootFieldName.nutanixClusterNetworks,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryNutanix",
+                        CmdletSwitchName = "ClusterNetworks",
+                        GqlRootFieldName = "nutanixClusterNetworks"
+                    }
                 },
-                {
-                    GqlOperationName.nutanixVms,
-                    "Invoke-RscQueryNutanix -Vms"
+                {
+                    GqlRootFieldName.nutanixClusters,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryNutanix",
+                        CmdletSwitchName = "Clusters",
+                        GqlRootFieldName = "nutanixClusters"
+                    }
                 },
-                {
-                    GqlOperationName.o365Calendar,
-                    "Invoke-RscQueryO365 -Calendar"
+                {
+                    GqlRootFieldName.nutanixMounts,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryNutanix",
+                        CmdletSwitchName = "Mounts",
+                        GqlRootFieldName = "nutanixMounts"
+                    }
                 },
-                {
-                    GqlOperationName.o365Groups,
-                    "Invoke-RscQueryO365 -Groups"
+                {
+                    GqlRootFieldName.nutanixPrismCentral,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryNutanix",
+                        CmdletSwitchName = "PrismCentral",
+                        GqlRootFieldName = "nutanixPrismCentral"
+                    }
                 },
-                {
-                    GqlOperationName.o365License,
-                    "Invoke-RscQueryO365 -License"
+                {
+                    GqlRootFieldName.nutanixPrismCentralAsyncRequestStatus,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryNutanix",
+                        CmdletSwitchName = "PrismCentralAsyncRequestStatus",
+                        GqlRootFieldName = "nutanixPrismCentralAsyncRequestStatus"
+                    }
                 },
-                {
-                    GqlOperationName.o365Mailbox,
-                    "Invoke-RscQueryO365 -Mailbox"
+                {
+                    GqlRootFieldName.nutanixPrismCentrals,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryNutanix",
+                        CmdletSwitchName = "PrismCentrals",
+                        GqlRootFieldName = "nutanixPrismCentrals"
+                    }
                 },
-                {
-                    GqlOperationName.o365Mailboxes,
-                    "Invoke-RscQueryO365 -Mailboxes"
+                {
+                    GqlRootFieldName.nutanixSnapshotDetail,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryNutanix",
+                        CmdletSwitchName = "SnapshotDetail",
+                        GqlRootFieldName = "nutanixSnapshotDetail"
+                    }
                 },
-                {
-                    GqlOperationName.o365OauthConsentComplete,
-                    "Invoke-RscMutateO365 -OauthConsentComplete"
+                {
+                    GqlRootFieldName.nutanixTopLevelDescendants,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryNutanix",
+                        CmdletSwitchName = "TopLevelDescendants",
+                        GqlRootFieldName = "nutanixTopLevelDescendants"
+                    }
                 },
-                {
-                    GqlOperationName.o365OauthConsentKickoff,
-                    "Invoke-RscMutateO365 -OauthConsentKickoff"
+                {
+                    GqlRootFieldName.nutanixVm,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryNutanix",
+                        CmdletSwitchName = "Vm",
+                        GqlRootFieldName = "nutanixVm"
+                    }
                 },
-                {
-                    GqlOperationName.o365ObjectAncestors,
-                    "Invoke-RscQueryO365 -ObjectAncestors"
+                {
+                    GqlRootFieldName.nutanixVmAsyncRequestStatus,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryNutanix",
+                        CmdletSwitchName = "VmAsyncRequestStatus",
+                        GqlRootFieldName = "nutanixVmAsyncRequestStatus"
+                    }
                 },
-                {
-                    GqlOperationName.o365Onedrive,
-                    "Invoke-RscQueryO365 -Onedrive"
+                {
+                    GqlRootFieldName.nutanixVmMissedSnapshots,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryNutanix",
+                        CmdletSwitchName = "VmMissedSnapshots",
+                        GqlRootFieldName = "nutanixVmMissedSnapshots"
+                    }
                 },
-                {
-                    GqlOperationName.o365Onedrives,
-                    "Invoke-RscQueryO365 -Onedrives"
+                {
+                    GqlRootFieldName.nutanixVms,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryNutanix",
+                        CmdletSwitchName = "Vms",
+                        GqlRootFieldName = "nutanixVms"
+                    }
                 },
-                {
-                    GqlOperationName.o365Org,
-                    "Invoke-RscQueryO365 -Org"
+                {
+                    GqlRootFieldName.o365Calendar,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletSwitchName = "Calendar",
+                        GqlRootFieldName = "o365Calendar"
+                    }
                 },
-                {
-                    GqlOperationName.o365OrgAtSnappableLevel,
-                    "Invoke-RscQueryO365 -OrgAtSnappableLevel"
+                {
+                    GqlRootFieldName.o365Groups,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletSwitchName = "Groups",
+                        GqlRootFieldName = "o365Groups"
+                    }
                 },
-                {
-                    GqlOperationName.o365OrgSummaries,
-                    "Invoke-RscQueryO365 -OrgSummaries"
+                {
+                    GqlRootFieldName.o365License,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletSwitchName = "License",
+                        GqlRootFieldName = "o365License"
+                    }
                 },
-                {
-                    GqlOperationName.o365Orgs,
-                    "Invoke-RscQueryO365 -Orgs"
+                {
+                    GqlRootFieldName.o365Mailbox,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletSwitchName = "Mailbox",
+                        GqlRootFieldName = "o365Mailbox"
+                    }
                 },
-                {
-                    GqlOperationName.o365PdlGroups,
-                    "Invoke-RscMutateO365 -PdlGroups"
+                {
+                    GqlRootFieldName.o365Mailboxes,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletSwitchName = "Mailboxes",
+                        GqlRootFieldName = "o365Mailboxes"
+                    }
                 },
-                {
-                    GqlOperationName.o365SaaSSetupKickoff,
-                    "Invoke-RscMutateO365 -SaaSSetupKickoff"
+                {
+                    GqlRootFieldName.o365OauthConsentComplete,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletSwitchName = "OauthConsentComplete",
+                        GqlRootFieldName = "o365OauthConsentComplete"
+                    }
                 },
-                {
-                    GqlOperationName.o365SaasSetupComplete,
-                    "Invoke-RscMutateO365 -SaasSetupComplete"
+                {
+                    GqlRootFieldName.o365OauthConsentKickoff,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletSwitchName = "OauthConsentKickoff",
+                        GqlRootFieldName = "o365OauthConsentKickoff"
+                    }
                 },
-                {
-                    GqlOperationName.o365ServiceAccount,
-                    "Invoke-RscQueryO365 -ServiceAccount"
+                {
+                    GqlRootFieldName.o365ObjectAncestors,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletSwitchName = "ObjectAncestors",
+                        GqlRootFieldName = "o365ObjectAncestors"
+                    }
                 },
-                {
-                    GqlOperationName.o365ServiceStatus,
-                    "Invoke-RscQueryO365 -ServiceStatus"
+                {
+                    GqlRootFieldName.o365Onedrive,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletSwitchName = "Onedrive",
+                        GqlRootFieldName = "o365Onedrive"
+                    }
                 },
-                {
-                    GqlOperationName.o365SetupKickoff,
-                    "Invoke-RscMutateO365 -SetupKickoff"
+                {
+                    GqlRootFieldName.o365Onedrives,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletSwitchName = "Onedrives",
+                        GqlRootFieldName = "o365Onedrives"
+                    }
                 },
-                {
-                    GqlOperationName.o365SharepointDrive,
-                    "Invoke-RscQueryO365 -SharepointDrive"
+                {
+                    GqlRootFieldName.o365Org,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletSwitchName = "Org",
+                        GqlRootFieldName = "o365Org"
+                    }
                 },
-                {
-                    GqlOperationName.o365SharepointDrives,
-                    "Invoke-RscQueryO365 -SharepointDrives"
+                {
+                    GqlRootFieldName.o365OrgAtSnappableLevel,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletSwitchName = "OrgAtSnappableLevel",
+                        GqlRootFieldName = "o365OrgAtSnappableLevel"
+                    }
                 },
-                {
-                    GqlOperationName.o365SharepointList,
-                    "Invoke-RscQueryO365 -SharepointList"
+                {
+                    GqlRootFieldName.o365OrgSummaries,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletSwitchName = "OrgSummaries",
+                        GqlRootFieldName = "o365OrgSummaries"
+                    }
                 },
-                {
-                    GqlOperationName.o365SharepointLists,
-                    "Invoke-RscQueryO365 -SharepointLists"
+                {
+                    GqlRootFieldName.o365Orgs,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletSwitchName = "Orgs",
+                        GqlRootFieldName = "o365Orgs"
+                    }
                 },
-                {
-                    GqlOperationName.o365SharepointObjectList,
-                    "Invoke-RscQueryO365 -SharepointObjectList"
+                {
+                    GqlRootFieldName.o365PdlGroups,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletSwitchName = "PdlGroups",
+                        GqlRootFieldName = "o365PdlGroups"
+                    }
                 },
-                {
-                    GqlOperationName.o365SharepointObjects,
-                    "Invoke-RscQueryO365 -SharepointObjects"
+                {
+                    GqlRootFieldName.o365SaaSSetupKickoff,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletSwitchName = "SaaSSetupKickoff",
+                        GqlRootFieldName = "o365SaaSSetupKickoff"
+                    }
                 },
-                {
-                    GqlOperationName.o365SharepointSite,
-                    "Invoke-RscQueryO365 -SharepointSite"
+                {
+                    GqlRootFieldName.o365SaasSetupComplete,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletSwitchName = "SaasSetupComplete",
+                        GqlRootFieldName = "o365SaasSetupComplete"
+                    }
                 },
-                {
-                    GqlOperationName.o365SharepointSites,
-                    "Invoke-RscQueryO365 -SharepointSites"
+                {
+                    GqlRootFieldName.o365ServiceAccount,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletSwitchName = "ServiceAccount",
+                        GqlRootFieldName = "o365ServiceAccount"
+                    }
                 },
-                {
-                    GqlOperationName.o365Site,
-                    "Invoke-RscQueryO365 -Site"
+                {
+                    GqlRootFieldName.o365ServiceStatus,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletSwitchName = "ServiceStatus",
+                        GqlRootFieldName = "o365ServiceStatus"
+                    }
                 },
-                {
-                    GqlOperationName.o365Sites,
-                    "Invoke-RscQueryO365 -Sites"
+                {
+                    GqlRootFieldName.o365SetupKickoff,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletSwitchName = "SetupKickoff",
+                        GqlRootFieldName = "o365SetupKickoff"
+                    }
                 },
-                {
-                    GqlOperationName.o365StorageStats,
-                    "Invoke-RscQueryO365 -StorageStats"
+                {
+                    GqlRootFieldName.o365SharepointDrive,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletSwitchName = "SharepointDrive",
+                        GqlRootFieldName = "o365SharepointDrive"
+                    }
                 },
-                {
-                    GqlOperationName.o365Team,
-                    "Invoke-RscQueryO365 -Team"
+                {
+                    GqlRootFieldName.o365SharepointDrives,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletSwitchName = "SharepointDrives",
+                        GqlRootFieldName = "o365SharepointDrives"
+                    }
                 },
-                {
-                    GqlOperationName.o365TeamChannels,
-                    "Invoke-RscQueryO365 -TeamChannels"
+                {
+                    GqlRootFieldName.o365SharepointList,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletSwitchName = "SharepointList",
+                        GqlRootFieldName = "o365SharepointList"
+                    }
                 },
-                {
-                    GqlOperationName.o365TeamConversationsFolderID,
-                    "Invoke-RscQueryO365 -TeamConversationsFolderID"
+                {
+                    GqlRootFieldName.o365SharepointLists,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletSwitchName = "SharepointLists",
+                        GqlRootFieldName = "o365SharepointLists"
+                    }
                 },
-                {
-                    GqlOperationName.o365TeamPostedBy,
-                    "Invoke-RscQueryO365 -TeamPostedBy"
+                {
+                    GqlRootFieldName.o365SharepointObjectList,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletSwitchName = "SharepointObjectList",
+                        GqlRootFieldName = "o365SharepointObjectList"
+                    }
                 },
-                {
-                    GqlOperationName.o365Teams,
-                    "Invoke-RscQueryO365 -Teams"
+                {
+                    GqlRootFieldName.o365SharepointObjects,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletSwitchName = "SharepointObjects",
+                        GqlRootFieldName = "o365SharepointObjects"
+                    }
                 },
-                {
-                    GqlOperationName.o365User,
-                    "Invoke-RscQueryO365 -User"
+                {
+                    GqlRootFieldName.o365SharepointSite,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletSwitchName = "SharepointSite",
+                        GqlRootFieldName = "o365SharepointSite"
+                    }
                 },
-                {
-                    GqlOperationName.o365UserObjects,
-                    "Invoke-RscQueryO365 -UserObjects"
+                {
+                    GqlRootFieldName.o365SharepointSites,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletSwitchName = "SharepointSites",
+                        GqlRootFieldName = "o365SharepointSites"
+                    }
                 },
-                {
-                    GqlOperationName.oracleAcoExampleDownloadLink,
-                    "Invoke-RscQueryOracle -AcoExampleDownloadLink"
+                {
+                    GqlRootFieldName.o365Site,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletSwitchName = "Site",
+                        GqlRootFieldName = "o365Site"
+                    }
                 },
-                {
-                    GqlOperationName.oracleAcoParameters,
-                    "Invoke-RscQueryOracle -AcoParameters"
+                {
+                    GqlRootFieldName.o365Sites,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletSwitchName = "Sites",
+                        GqlRootFieldName = "o365Sites"
+                    }
                 },
-                {
-                    GqlOperationName.oracleDataGuardGroup,
-                    "Invoke-RscQueryOracle -DataGuardGroup"
+                {
+                    GqlRootFieldName.o365StorageStats,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletSwitchName = "StorageStats",
+                        GqlRootFieldName = "o365StorageStats"
+                    }
                 },
-                {
-                    GqlOperationName.oracleDatabase,
-                    "Invoke-RscQueryOracle -Database"
+                {
+                    GqlRootFieldName.o365Team,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletSwitchName = "Team",
+                        GqlRootFieldName = "o365Team"
+                    }
                 },
-                {
-                    GqlOperationName.oracleDatabaseLogBackupConfig,
-                    "Invoke-RscQueryOracle -DatabaseLogBackupConfig"
+                {
+                    GqlRootFieldName.o365TeamChannels,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletSwitchName = "TeamChannels",
+                        GqlRootFieldName = "o365TeamChannels"
+                    }
                 },
-                {
-                    GqlOperationName.oracleDatabases,
-                    "Invoke-RscQueryOracle -Databases"
+                {
+                    GqlRootFieldName.o365TeamConversationsFolderID,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletSwitchName = "TeamConversationsFolderID",
+                        GqlRootFieldName = "o365TeamConversationsFolderID"
+                    }
                 },
-                {
-                    GqlOperationName.oracleHost,
-                    "Invoke-RscQueryOracle -Host"
+                {
+                    GqlRootFieldName.o365TeamPostedBy,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletSwitchName = "TeamPostedBy",
+                        GqlRootFieldName = "o365TeamPostedBy"
+                    }
                 },
-                {
-                    GqlOperationName.oracleHostLogBackupConfig,
-                    "Invoke-RscQueryOracle -HostLogBackupConfig"
+                {
+                    GqlRootFieldName.o365Teams,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletSwitchName = "Teams",
+                        GqlRootFieldName = "o365Teams"
+                    }
                 },
-                {
-                    GqlOperationName.oracleLiveMounts,
-                    "Invoke-RscQueryOracle -LiveMounts"
+                {
+                    GqlRootFieldName.o365User,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletSwitchName = "User",
+                        GqlRootFieldName = "o365User"
+                    }
                 },
-                {
-                    GqlOperationName.oracleMissedRecoverableRanges,
-                    "Invoke-RscQueryOracle -MissedRecoverableRanges"
+                {
+                    GqlRootFieldName.o365UserObjects,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletSwitchName = "UserObjects",
+                        GqlRootFieldName = "o365UserObjects"
+                    }
                 },
-                {
-                    GqlOperationName.oracleMissedSnapshots,
-                    "Invoke-RscQueryOracle -MissedSnapshots"
+                {
+                    GqlRootFieldName.oracleAcoExampleDownloadLink,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryOracle",
+                        CmdletSwitchName = "AcoExampleDownloadLink",
+                        GqlRootFieldName = "oracleAcoExampleDownloadLink"
+                    }
                 },
-                {
-                    GqlOperationName.oraclePdbDetails,
-                    "Invoke-RscQueryOracle -PdbDetails"
+                {
+                    GqlRootFieldName.oracleAcoParameters,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryOracle",
+                        CmdletSwitchName = "AcoParameters",
+                        GqlRootFieldName = "oracleAcoParameters"
+                    }
                 },
-                {
-                    GqlOperationName.oracleRac,
-                    "Invoke-RscQueryOracle -Rac"
+                {
+                    GqlRootFieldName.oracleDataGuardGroup,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryOracle",
+                        CmdletSwitchName = "DataGuardGroup",
+                        GqlRootFieldName = "oracleDataGuardGroup"
+                    }
                 },
-                {
-                    GqlOperationName.oracleRacLogBackupConfig,
-                    "Invoke-RscQueryOracle -RacLogBackupConfig"
+                {
+                    GqlRootFieldName.oracleDatabase,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryOracle",
+                        CmdletSwitchName = "Database",
+                        GqlRootFieldName = "oracleDatabase"
+                    }
                 },
-                {
-                    GqlOperationName.oracleRecoverableRanges,
-                    "Invoke-RscQueryOracle -RecoverableRanges"
+                {
+                    GqlRootFieldName.oracleDatabaseLogBackupConfig,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryOracle",
+                        CmdletSwitchName = "DatabaseLogBackupConfig",
+                        GqlRootFieldName = "oracleDatabaseLogBackupConfig"
+                    }
                 },
-                {
-                    GqlOperationName.oracleTopLevelDescendants,
-                    "Invoke-RscQueryOracle -TopLevelDescendants"
+                {
+                    GqlRootFieldName.oracleDatabases,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryOracle",
+                        CmdletSwitchName = "Databases",
+                        GqlRootFieldName = "oracleDatabases"
+                    }
                 },
-                {
-                    GqlOperationName.patchAwsAuthenticationServerBasedCloudAccount,
-                    "Invoke-RscMutateAws -PatchAuthenticationServerBasedCloudAccount"
+                {
+                    GqlRootFieldName.oracleHost,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryOracle",
+                        CmdletSwitchName = "Host",
+                        GqlRootFieldName = "oracleHost"
+                    }
                 },
-                {
-                    GqlOperationName.patchAwsIamUserBasedCloudAccount,
-                    "Invoke-RscMutateAws -PatchIamUserBasedCloudAccount"
+                {
+                    GqlRootFieldName.oracleHostLogBackupConfig,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryOracle",
+                        CmdletSwitchName = "HostLogBackupConfig",
+                        GqlRootFieldName = "oracleHostLogBackupConfig"
+                    }
                 },
-                {
-                    GqlOperationName.patchDb2Database,
-                    "Invoke-RscMutateDb2 -PatchDatabase"
+                {
+                    GqlRootFieldName.oracleLiveMounts,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryOracle",
+                        CmdletSwitchName = "LiveMounts",
+                        GqlRootFieldName = "oracleLiveMounts"
+                    }
                 },
-                {
-                    GqlOperationName.patchDb2Instance,
-                    "Invoke-RscMutateDb2 -PatchInstance"
+                {
+                    GqlRootFieldName.oracleMissedRecoverableRanges,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryOracle",
+                        CmdletSwitchName = "MissedRecoverableRanges",
+                        GqlRootFieldName = "oracleMissedRecoverableRanges"
+                    }
                 },
-                {
-                    GqlOperationName.patchMongoSource,
-                    "Invoke-RscMutateMongo -PatchSource"
+                {
+                    GqlRootFieldName.oracleMissedSnapshots,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryOracle",
+                        CmdletSwitchName = "MissedSnapshots",
+                        GqlRootFieldName = "oracleMissedSnapshots"
+                    }
                 },
-                {
-                    GqlOperationName.patchNutanixMountV1,
-                    "Invoke-RscMutateNutanix -PatchMountV1"
+                {
+                    GqlRootFieldName.oraclePdbDetails,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryOracle",
+                        CmdletSwitchName = "PdbDetails",
+                        GqlRootFieldName = "oraclePdbDetails"
+                    }
                 },
-                {
-                    GqlOperationName.pauseSla,
-                    "Invoke-RscMutateSla -Pause"
+                {
+                    GqlRootFieldName.oracleRac,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryOracle",
+                        CmdletSwitchName = "Rac",
+                        GqlRootFieldName = "oracleRac"
+                    }
                 },
-                {
-                    GqlOperationName.prepareAwsCloudAccountDeletion,
-                    "Invoke-RscMutateAws -PrepareCloudAccountDeletion"
+                {
+                    GqlRootFieldName.oracleRacLogBackupConfig,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryOracle",
+                        CmdletSwitchName = "RacLogBackupConfig",
+                        GqlRootFieldName = "oracleRacLogBackupConfig"
+                    }
                 },
-                {
-                    GqlOperationName.prepareFeatureUpdateForAwsCloudAccount,
-                    "Invoke-RscMutateAws -PrepareFeatureUpdateForCloudAccount"
+                {
+                    GqlRootFieldName.oracleRecoverableRanges,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryOracle",
+                        CmdletSwitchName = "RecoverableRanges",
+                        GqlRootFieldName = "oracleRecoverableRanges"
+                    }
                 },
-                {
-                    GqlOperationName.protectedClustersForGlobalSla,
-                    "Invoke-RscQuerySla -ProtectedClustersForGlobal"
+                {
+                    GqlRootFieldName.oracleTopLevelDescendants,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryOracle",
+                        CmdletSwitchName = "TopLevelDescendants",
+                        GqlRootFieldName = "oracleTopLevelDescendants"
+                    }
                 },
-                {
-                    GqlOperationName.rdsInstanceDetailsFromAws,
-                    "Invoke-RscQueryAws -RdsInstanceDetails"
+                {
+                    GqlRootFieldName.patchAwsAuthenticationServerBasedCloudAccount,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletSwitchName = "PatchAuthenticationServerBasedCloudAccount",
+                        GqlRootFieldName = "patchAwsAuthenticationServerBasedCloudAccount"
+                    }
                 },
-                {
-                    GqlOperationName.recoverCassandraSource,
-                    "Invoke-RscMutateCassandra -RecoverSource"
+                {
+                    GqlRootFieldName.patchAwsIamUserBasedCloudAccount,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletSwitchName = "PatchIamUserBasedCloudAccount",
+                        GqlRootFieldName = "patchAwsIamUserBasedCloudAccount"
+                    }
                 },
-                {
-                    GqlOperationName.recoverCloudCluster,
-                    "Invoke-RscMutateCluster -RecoverCloud"
+                {
+                    GqlRootFieldName.patchDb2Database,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateDb2",
+                        CmdletSwitchName = "PatchDatabase",
+                        GqlRootFieldName = "patchDb2Database"
+                    }
                 },
-                {
-                    GqlOperationName.recoverMongoSource,
-                    "Invoke-RscMutateMongo -RecoverSource"
+                {
+                    GqlRootFieldName.patchDb2Instance,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateDb2",
+                        CmdletSwitchName = "PatchInstance",
+                        GqlRootFieldName = "patchDb2Instance"
+                    }
                 },
-                {
-                    GqlOperationName.recoverMongodbSource,
-                    "Invoke-RscMutateMongo -RecoverdbSource"
+                {
+                    GqlRootFieldName.patchMongoSource,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateMongo",
+                        CmdletSwitchName = "PatchSource",
+                        GqlRootFieldName = "patchMongoSource"
+                    }
                 },
-                {
-                    GqlOperationName.refreshDb2Database,
-                    "Invoke-RscMutateDb2 -RefreshDatabase"
+                {
+                    GqlRootFieldName.patchNutanixMountV1,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateNutanix",
+                        CmdletSwitchName = "PatchMountV1",
+                        GqlRootFieldName = "patchNutanixMountV1"
+                    }
                 },
-                {
-                    GqlOperationName.refreshHypervScvmm,
-                    "Invoke-RscMutateHyperv -RefreshScvmm"
+                {
+                    GqlRootFieldName.pauseSla,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateSla",
+                        CmdletSwitchName = "Pause",
+                        GqlRootFieldName = "pauseSla"
+                    }
                 },
-                {
-                    GqlOperationName.refreshHypervServer,
-                    "Invoke-RscMutateHyperv -RefreshServer"
+                {
+                    GqlRootFieldName.prepareAwsCloudAccountDeletion,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletSwitchName = "PrepareCloudAccountDeletion",
+                        GqlRootFieldName = "prepareAwsCloudAccountDeletion"
+                    }
                 },
-                {
-                    GqlOperationName.refreshK8sCluster,
-                    "Invoke-RscMutateCluster -RefreshK8s"
+                {
+                    GqlRootFieldName.prepareFeatureUpdateForAwsCloudAccount,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletSwitchName = "PrepareFeatureUpdateForCloudAccount",
+                        GqlRootFieldName = "prepareFeatureUpdateForAwsCloudAccount"
+                    }
                 },
-                {
-                    GqlOperationName.refreshK8sV2Cluster,
-                    "Invoke-RscMutateCluster -RefreshK8sV2"
+                {
+                    GqlRootFieldName.protectedClustersForGlobalSla,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQuerySla",
+                        CmdletSwitchName = "ProtectedClustersForGlobal",
+                        GqlRootFieldName = "protectedClustersForGlobalSla"
+                    }
                 },
-                {
-                    GqlOperationName.refreshNutanixCluster,
-                    "Invoke-RscMutateNutanix -RefreshCluster"
+                {
+                    GqlRootFieldName.rdsInstanceDetailsFromAws,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletSwitchName = "RdsInstanceDetails",
+                        GqlRootFieldName = "rdsInstanceDetailsFromAws"
+                    }
                 },
-                {
-                    GqlOperationName.refreshNutanixPrismCentral,
-                    "Invoke-RscMutateNutanix -RefreshPrismCentral"
+                {
+                    GqlRootFieldName.recoverCassandraSource,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateCassandra",
+                        CmdletSwitchName = "RecoverSource",
+                        GqlRootFieldName = "recoverCassandraSource"
+                    }
                 },
-                {
-                    GqlOperationName.refreshO365Org,
-                    "Invoke-RscMutateO365 -RefreshOrg"
+                {
+                    GqlRootFieldName.recoverCloudCluster,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateCluster",
+                        CmdletSwitchName = "RecoverCloud",
+                        GqlRootFieldName = "recoverCloudCluster"
+                    }
                 },
-                {
-                    GqlOperationName.refreshOracleDatabase,
-                    "Invoke-RscMutateOracle -RefreshDatabase"
+                {
+                    GqlRootFieldName.recoverMongoSource,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateMongo",
+                        CmdletSwitchName = "RecoverSource",
+                        GqlRootFieldName = "recoverMongoSource"
+                    }
                 },
-                {
-                    GqlOperationName.registerAgentHypervVirtualMachine,
-                    "Invoke-RscMutateHyperv -RegisterAgentVirtualMachine"
+                {
+                    GqlRootFieldName.recoverMongodbSource,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateMongo",
+                        CmdletSwitchName = "RecoverdbSource",
+                        GqlRootFieldName = "recoverMongodbSource"
+                    }
                 },
-                {
-                    GqlOperationName.registerAgentNutanixVm,
-                    "Invoke-RscMutateNutanix -RegisterAgentVm"
+                {
+                    GqlRootFieldName.refreshDb2Database,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateDb2",
+                        CmdletSwitchName = "RefreshDatabase",
+                        GqlRootFieldName = "refreshDb2Database"
+                    }
                 },
-                {
-                    GqlOperationName.registerAwsFeatureArtifacts,
-                    "Invoke-RscMutateAws -RegisterFeatureArtifacts"
+                {
+                    GqlRootFieldName.refreshHypervScvmm,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateHyperv",
+                        CmdletSwitchName = "RefreshScvmm",
+                        GqlRootFieldName = "refreshHypervScvmm"
+                    }
                 },
-                {
-                    GqlOperationName.registerCloudCluster,
-                    "Invoke-RscMutateCluster -RegisterCloud"
+                {
+                    GqlRootFieldName.refreshHypervServer,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateHyperv",
+                        CmdletSwitchName = "RefreshServer",
+                        GqlRootFieldName = "refreshHypervServer"
+                    }
                 },
-                {
-                    GqlOperationName.registerHypervScvmm,
-                    "Invoke-RscMutateHyperv -RegisterScvmm"
+                {
+                    GqlRootFieldName.refreshK8sCluster,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateCluster",
+                        CmdletSwitchName = "RefreshK8s",
+                        GqlRootFieldName = "refreshK8sCluster"
+                    }
                 },
-                {
-                    GqlOperationName.removeCdmCluster,
-                    "Invoke-RscMutateCluster -RemoveCdm"
+                {
+                    GqlRootFieldName.refreshK8sV2Cluster,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateCluster",
+                        CmdletSwitchName = "RefreshK8sV2",
+                        GqlRootFieldName = "refreshK8sV2Cluster"
+                    }
                 },
-                {
-                    GqlOperationName.removeLdapIntegration,
-                    "Invoke-RscMutateLdap -RemoveIntegration"
+                {
+                    GqlRootFieldName.refreshNutanixCluster,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateNutanix",
+                        CmdletSwitchName = "RefreshCluster",
+                        GqlRootFieldName = "refreshNutanixCluster"
+                    }
                 },
-                {
-                    GqlOperationName.restoreAzureAdObjectsWithPassword,
-                    "Invoke-RscMutateAzure -RestoreAdObjectsWithPassword"
+                {
+                    GqlRootFieldName.refreshNutanixPrismCentral,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateNutanix",
+                        CmdletSwitchName = "RefreshPrismCentral",
+                        GqlRootFieldName = "refreshNutanixPrismCentral"
+                    }
                 },
-                {
-                    GqlOperationName.restoreFilesNutanixSnapshot,
-                    "Invoke-RscMutateNutanix -RestoreFilesSnapshot"
+                {
+                    GqlRootFieldName.refreshO365Org,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletSwitchName = "RefreshOrg",
+                        GqlRootFieldName = "refreshO365Org"
+                    }
                 },
-                {
-                    GqlOperationName.restoreHypervVirtualMachineSnapshotFiles,
-                    "Invoke-RscMutateHyperv -RestoreVirtualMachineSnapshotFiles"
+                {
+                    GqlRootFieldName.refreshOracleDatabase,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateOracle",
+                        CmdletSwitchName = "RefreshDatabase",
+                        GqlRootFieldName = "refreshOracleDatabase"
+                    }
                 },
-                {
-                    GqlOperationName.restoreMssqlDatabase,
-                    "Invoke-RscMutateMssql -RestoreDatabase"
+                {
+                    GqlRootFieldName.registerAgentHypervVirtualMachine,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateHyperv",
+                        CmdletSwitchName = "RegisterAgentVirtualMachine",
+                        GqlRootFieldName = "registerAgentHypervVirtualMachine"
+                    }
                 },
-                {
-                    GqlOperationName.restoreO365Mailbox,
-                    "Invoke-RscMutateO365 -RestoreMailbox"
+                {
+                    GqlRootFieldName.registerAgentNutanixVm,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateNutanix",
+                        CmdletSwitchName = "RegisterAgentVm",
+                        GqlRootFieldName = "registerAgentNutanixVm"
+                    }
                 },
-                {
-                    GqlOperationName.restoreO365Snappable,
-                    "Invoke-RscMutateO365 -RestoreSnappable"
+                {
+                    GqlRootFieldName.registerAwsFeatureArtifacts,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletSwitchName = "RegisterFeatureArtifacts",
+                        GqlRootFieldName = "registerAwsFeatureArtifacts"
+                    }
                 },
-                {
-                    GqlOperationName.restoreO365TeamsConversations,
-                    "Invoke-RscMutateO365 -RestoreTeamsConversations"
+                {
+                    GqlRootFieldName.registerCloudCluster,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateCluster",
+                        CmdletSwitchName = "RegisterCloud",
+                        GqlRootFieldName = "registerCloudCluster"
+                    }
                 },
-                {
-                    GqlOperationName.restoreO365TeamsFiles,
-                    "Invoke-RscMutateO365 -RestoreTeamsFiles"
+                {
+                    GqlRootFieldName.registerHypervScvmm,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateHyperv",
+                        CmdletSwitchName = "RegisterScvmm",
+                        GqlRootFieldName = "registerHypervScvmm"
+                    }
                 },
-                {
-                    GqlOperationName.restoreOracleLogs,
-                    "Invoke-RscMutateOracle -RestoreLogs"
+                {
+                    GqlRootFieldName.removeCdmCluster,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateCluster",
+                        CmdletSwitchName = "RemoveCdm",
+                        GqlRootFieldName = "removeCdmCluster"
+                    }
                 },
-                {
-                    GqlOperationName.retryAddMongoSource,
-                    "Invoke-RscMutateMongo -RetryAddSource"
+                {
+                    GqlRootFieldName.removeLdapIntegration,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateLdap",
+                        CmdletSwitchName = "RemoveIntegration",
+                        GqlRootFieldName = "removeLdapIntegration"
+                    }
                 },
-                {
-                    GqlOperationName.searchNutanixVm,
-                    "Invoke-RscQueryNutanix -SearchVm"
+                {
+                    GqlRootFieldName.restoreAzureAdObjectsWithPassword,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletSwitchName = "RestoreAdObjectsWithPassword",
+                        GqlRootFieldName = "restoreAzureAdObjectsWithPassword"
+                    }
                 },
-                {
-                    GqlOperationName.setAzureCloudAccountCustomerAppCredentials,
-                    "Invoke-RscMutateAzure -SetCloudAccountCustomerAppCredentials"
+                {
+                    GqlRootFieldName.restoreFilesNutanixSnapshot,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateNutanix",
+                        CmdletSwitchName = "RestoreFilesSnapshot",
+                        GqlRootFieldName = "restoreFilesNutanixSnapshot"
+                    }
                 },
-                {
-                    GqlOperationName.setLdapMfaSetting,
-                    "Invoke-RscMutateLdap -SetMfaSetting"
+                {
+                    GqlRootFieldName.restoreHypervVirtualMachineSnapshotFiles,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateHyperv",
+                        CmdletSwitchName = "RestoreVirtualMachineSnapshotFiles",
+                        GqlRootFieldName = "restoreHypervVirtualMachineSnapshotFiles"
+                    }
                 },
-                {
-                    GqlOperationName.setO365ServiceAccount,
-                    "Invoke-RscMutateO365 -SetServiceAccount"
+                {
+                    GqlRootFieldName.restoreMssqlDatabase,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateMssql",
+                        CmdletSwitchName = "RestoreDatabase",
+                        GqlRootFieldName = "restoreMssqlDatabase"
+                    }
                 },
-                {
-                    GqlOperationName.setupAzureO365Exocompute,
-                    "Invoke-RscMutateAzureO365 -SetupExocompute"
+                {
+                    GqlRootFieldName.restoreO365Mailbox,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletSwitchName = "RestoreMailbox",
+                        GqlRootFieldName = "restoreO365Mailbox"
+                    }
                 },
-                {
-                    GqlOperationName.slaArchivalValidationWarnings,
-                    "Invoke-RscQuerySla -ArchivalValidationWarnings"
+                {
+                    GqlRootFieldName.restoreO365Snappable,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletSwitchName = "RestoreSnappable",
+                        GqlRootFieldName = "restoreO365Snappable"
+                    }
                 },
-                {
-                    GqlOperationName.slaAuditDetail,
-                    "Invoke-RscQuerySla -AuditDetail"
+                {
+                    GqlRootFieldName.restoreO365TeamsConversations,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletSwitchName = "RestoreTeamsConversations",
+                        GqlRootFieldName = "restoreO365TeamsConversations"
+                    }
                 },
-                {
-                    GqlOperationName.slaConflictObjects,
-                    "Invoke-RscQuerySla -ConflictObjects"
+                {
+                    GqlRootFieldName.restoreO365TeamsFiles,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletSwitchName = "RestoreTeamsFiles",
+                        GqlRootFieldName = "restoreO365TeamsFiles"
+                    }
                 },
-                {
-                    GqlOperationName.slaDomain,
-                    "Invoke-RscQuerySla -Domain"
+                {
+                    GqlRootFieldName.restoreOracleLogs,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateOracle",
+                        CmdletSwitchName = "RestoreLogs",
+                        GqlRootFieldName = "restoreOracleLogs"
+                    }
                 },
-                {
-                    GqlOperationName.slaDomainWithWarnings,
-                    "Invoke-RscQuerySla -DomainWithWarnings"
+                {
+                    GqlRootFieldName.retryAddMongoSource,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateMongo",
+                        CmdletSwitchName = "RetryAddSource",
+                        GqlRootFieldName = "retryAddMongoSource"
+                    }
                 },
-                {
-                    GqlOperationName.slaDomainWithWarningsList,
-                    "Invoke-RscQuerySla -DomainWithWarningsList"
+                {
+                    GqlRootFieldName.searchAzureAdSnapshot,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "SearchAdSnapshot",
+                        GqlRootFieldName = "searchAzureAdSnapshot"
+                    }
                 },
-                {
-                    GqlOperationName.slaDomains,
-                    "Invoke-RscQuerySla -Domains"
+                {
+                    GqlRootFieldName.searchNutanixVm,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryNutanix",
+                        CmdletSwitchName = "SearchVm",
+                        GqlRootFieldName = "searchNutanixVm"
+                    }
                 },
-                {
-                    GqlOperationName.slaManagedVolume,
-                    "Invoke-RscQuerySla -ManagedVolume"
+                {
+                    GqlRootFieldName.setAzureCloudAccountCustomerAppCredentials,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletSwitchName = "SetCloudAccountCustomerAppCredentials",
+                        GqlRootFieldName = "setAzureCloudAccountCustomerAppCredentials"
+                    }
                 },
-                {
-                    GqlOperationName.slaManagedVolumes,
-                    "Invoke-RscQuerySla -ManagedVolumes"
+                {
+                    GqlRootFieldName.setLdapMfaSetting,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateLdap",
+                        CmdletSwitchName = "SetMfaSetting",
+                        GqlRootFieldName = "setLdapMfaSetting"
+                    }
                 },
-                {
-                    GqlOperationName.startAwsExocomputeDisableJob,
-                    "Invoke-RscMutateAws -StartExocomputeDisableJob"
+                {
+                    GqlRootFieldName.setO365ServiceAccount,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletSwitchName = "SetServiceAccount",
+                        GqlRootFieldName = "setO365ServiceAccount"
+                    }
                 },
-                {
-                    GqlOperationName.startAwsNativeAccountDisableJob,
-                    "Invoke-RscMutateAws -StartNativeAccountDisableJob"
+                {
+                    GqlRootFieldName.setupAzureO365Exocompute,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzureO365",
+                        CmdletSwitchName = "SetupExocompute",
+                        GqlRootFieldName = "setupAzureO365Exocompute"
+                    }
                 },
-                {
-                    GqlOperationName.startAwsNativeEc2InstanceSnapshotsJob,
-                    "Invoke-RscMutateAws -StartNativeEc2InstanceSnapshotsJob"
+                {
+                    GqlRootFieldName.slaArchivalValidationWarnings,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQuerySla",
+                        CmdletSwitchName = "ArchivalValidationWarnings",
+                        GqlRootFieldName = "slaArchivalValidationWarnings"
+                    }
                 },
-                {
-                    GqlOperationName.startAwsNativeRdsInstanceSnapshotsJob,
-                    "Invoke-RscMutateAws -StartNativeRdsInstanceSnapshotsJob"
+                {
+                    GqlRootFieldName.slaAuditDetail,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQuerySla",
+                        CmdletSwitchName = "AuditDetail",
+                        GqlRootFieldName = "slaAuditDetail"
+                    }
                 },
-                {
-                    GqlOperationName.startAzureCloudAccountOauth,
-                    "Invoke-RscMutateAzure -StartCloudAccountOauth"
+                {
+                    GqlRootFieldName.slaConflictObjects,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQuerySla",
+                        CmdletSwitchName = "ConflictObjects",
+                        GqlRootFieldName = "slaConflictObjects"
+                    }
                 },
-                {
-                    GqlOperationName.startCreateAwsNativeEbsVolumeSnapshotsJob,
-                    "Invoke-RscMutateAws -StartCreateNativeEbsVolumeSnapshotsJob"
+                {
+                    GqlRootFieldName.slaDomain,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQuerySla",
+                        CmdletSwitchName = "Domain",
+                        GqlRootFieldName = "slaDomain"
+                    }
                 },
-                {
-                    GqlOperationName.startCreateAzureNativeManagedDiskSnapshotsJob,
-                    "Invoke-RscMutateAzure -StartCreateNativeManagedDiskSnapshotsJob"
+                {
+                    GqlRootFieldName.slaDomainWithWarnings,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQuerySla",
+                        CmdletSwitchName = "DomainWithWarnings",
+                        GqlRootFieldName = "slaDomainWithWarnings"
+                    }
                 },
-                {
-                    GqlOperationName.startCreateAzureNativeVirtualMachineSnapshotsJob,
-                    "Invoke-RscMutateAzure -StartCreateNativeVirtualMachineSnapshotsJob"
+                {
+                    GqlRootFieldName.slaDomainWithWarningsList,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQuerySla",
+                        CmdletSwitchName = "DomainWithWarningsList",
+                        GqlRootFieldName = "slaDomainWithWarningsList"
+                    }
                 },
-                {
-                    GqlOperationName.startDisableAzureCloudAccountJob,
-                    "Invoke-RscMutateAzure -StartDisableCloudAccountJob"
+                {
+                    GqlRootFieldName.slaDomains,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQuerySla",
+                        CmdletSwitchName = "Domains",
+                        GqlRootFieldName = "slaDomains"
+                    }
                 },
-                {
-                    GqlOperationName.startDisableAzureNativeSubscriptionProtectionJob,
-                    "Invoke-RscMutateAzure -StartDisableNativeSubscriptionProtectionJob"
+                {
+                    GqlRootFieldName.slaManagedVolume,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQuerySla",
+                        CmdletSwitchName = "ManagedVolume",
+                        GqlRootFieldName = "slaManagedVolume"
+                    }
                 },
-                {
-                    GqlOperationName.startExportAwsNativeEbsVolumeSnapshotJob,
-                    "Invoke-RscMutateAws -StartExportNativeEbsVolumeSnapshotJob"
+                {
+                    GqlRootFieldName.slaManagedVolumes,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQuerySla",
+                        CmdletSwitchName = "ManagedVolumes",
+                        GqlRootFieldName = "slaManagedVolumes"
+                    }
                 },
-                {
-                    GqlOperationName.startExportAzureNativeManagedDiskJob,
-                    "Invoke-RscMutateAzure -StartExportNativeManagedDiskJob"
+                {
+                    GqlRootFieldName.startAwsExocomputeDisableJob,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletSwitchName = "StartExocomputeDisableJob",
+                        GqlRootFieldName = "startAwsExocomputeDisableJob"
+                    }
                 },
-                {
-                    GqlOperationName.startExportAzureNativeVirtualMachineJob,
-                    "Invoke-RscMutateAzure -StartExportNativeVirtualMachineJob"
+                {
+                    GqlRootFieldName.startAwsNativeAccountDisableJob,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletSwitchName = "StartNativeAccountDisableJob",
+                        GqlRootFieldName = "startAwsNativeAccountDisableJob"
+                    }
                 },
-                {
-                    GqlOperationName.startExportAzureSqlDatabaseDbJob,
-                    "Invoke-RscMutateAzure -StartExportSqlDatabaseDbJob"
+                {
+                    GqlRootFieldName.startAwsNativeEc2InstanceSnapshotsJob,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletSwitchName = "StartNativeEc2InstanceSnapshotsJob",
+                        GqlRootFieldName = "startAwsNativeEc2InstanceSnapshotsJob"
+                    }
                 },
-                {
-                    GqlOperationName.startExportAzureSqlManagedInstanceDbJob,
-                    "Invoke-RscMutateAzure -StartExportSqlManagedInstanceDbJob"
+                {
+                    GqlRootFieldName.startAwsNativeRdsInstanceSnapshotsJob,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletSwitchName = "StartNativeRdsInstanceSnapshotsJob",
+                        GqlRootFieldName = "startAwsNativeRdsInstanceSnapshotsJob"
+                    }
                 },
-                {
-                    GqlOperationName.startRefreshAwsNativeAccountsJob,
-                    "Invoke-RscMutateAws -StartRefreshNativeAccountsJob"
+                {
+                    GqlRootFieldName.startAzureCloudAccountOauth,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletSwitchName = "StartCloudAccountOauth",
+                        GqlRootFieldName = "startAzureCloudAccountOauth"
+                    }
                 },
-                {
-                    GqlOperationName.startRefreshAzureNativeSubscriptionsJob,
-                    "Invoke-RscMutateAzure -StartRefreshNativeSubscriptionsJob"
+                {
+                    GqlRootFieldName.startCreateAwsNativeEbsVolumeSnapshotsJob,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletSwitchName = "StartCreateNativeEbsVolumeSnapshotsJob",
+                        GqlRootFieldName = "startCreateAwsNativeEbsVolumeSnapshotsJob"
+                    }
                 },
-                {
-                    GqlOperationName.startRestoreAwsNativeEc2InstanceSnapshotJob,
-                    "Invoke-RscMutateAws -StartRestoreNativeEc2InstanceSnapshotJob"
+                {
+                    GqlRootFieldName.startCreateAzureNativeManagedDiskSnapshotsJob,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletSwitchName = "StartCreateNativeManagedDiskSnapshotsJob",
+                        GqlRootFieldName = "startCreateAzureNativeManagedDiskSnapshotsJob"
+                    }
                 },
-                {
-                    GqlOperationName.startRestoreAzureNativeVirtualMachineJob,
-                    "Invoke-RscMutateAzure -StartRestoreNativeVirtualMachineJob"
+                {
+                    GqlRootFieldName.startCreateAzureNativeVirtualMachineSnapshotsJob,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletSwitchName = "StartCreateNativeVirtualMachineSnapshotsJob",
+                        GqlRootFieldName = "startCreateAzureNativeVirtualMachineSnapshotsJob"
+                    }
                 },
-                {
-                    GqlOperationName.takeMssqlLogBackup,
-                    "Invoke-RscMutateMssql -TakeLogBackup"
+                {
+                    GqlRootFieldName.startDisableAzureCloudAccountJob,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletSwitchName = "StartDisableCloudAccountJob",
+                        GqlRootFieldName = "startDisableAzureCloudAccountJob"
+                    }
                 },
-                {
-                    GqlOperationName.takeOnDemandOracleDatabaseSnapshot,
-                    "Invoke-RscMutateOracle -TakeOnDemandDatabaseSnapshot"
+                {
+                    GqlRootFieldName.startDisableAzureNativeSubscriptionProtectionJob,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletSwitchName = "StartDisableNativeSubscriptionProtectionJob",
+                        GqlRootFieldName = "startDisableAzureNativeSubscriptionProtectionJob"
+                    }
                 },
-                {
-                    GqlOperationName.takeOnDemandOracleLogSnapshot,
-                    "Invoke-RscMutateOracle -TakeOnDemandLogSnapshot"
+                {
+                    GqlRootFieldName.startExportAwsNativeEbsVolumeSnapshotJob,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletSwitchName = "StartExportNativeEbsVolumeSnapshotJob",
+                        GqlRootFieldName = "startExportAwsNativeEbsVolumeSnapshotJob"
+                    }
                 },
-                {
-                    GqlOperationName.uniqueHypervServersCount,
-                    "Invoke-RscQueryHyperv -UniqueServersCount"
+                {
+                    GqlRootFieldName.startExportAzureNativeManagedDiskJob,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletSwitchName = "StartExportNativeManagedDiskJob",
+                        GqlRootFieldName = "startExportAzureNativeManagedDiskJob"
+                    }
                 },
-                {
-                    GqlOperationName.uniqueVSphereVCenterCount,
-                    "Invoke-RscQueryVcenter -UniqueCount"
+                {
+                    GqlRootFieldName.startExportAzureNativeVirtualMachineJob,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletSwitchName = "StartExportNativeVirtualMachineJob",
+                        GqlRootFieldName = "startExportAzureNativeVirtualMachineJob"
+                    }
                 },
-                {
-                    GqlOperationName.unmapAzureCloudAccountExocomputeSubscription,
-                    "Invoke-RscMutateAzure -UnmapCloudAccountExocomputeSubscription"
+                {
+                    GqlRootFieldName.startExportAzureSqlDatabaseDbJob,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletSwitchName = "StartExportSqlDatabaseDbJob",
+                        GqlRootFieldName = "startExportAzureSqlDatabaseDbJob"
+                    }
                 },
-                {
-                    GqlOperationName.unmapAzurePersistentStorageSubscription,
-                    "Invoke-RscMutateAzure -UnmapPersistentStorageSubscription"
+                {
+                    GqlRootFieldName.startExportAzureSqlManagedInstanceDbJob,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletSwitchName = "StartExportSqlManagedInstanceDbJob",
+                        GqlRootFieldName = "startExportAzureSqlManagedInstanceDbJob"
+                    }
                 },
-                {
-                    GqlOperationName.updateAutomaticAwsTargetMapping,
-                    "Invoke-RscMutateAws -UpdateAutomaticTargetMapping"
+                {
+                    GqlRootFieldName.startRefreshAwsNativeAccountsJob,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletSwitchName = "StartRefreshNativeAccountsJob",
+                        GqlRootFieldName = "startRefreshAwsNativeAccountsJob"
+                    }
                 },
-                {
-                    GqlOperationName.updateAutomaticAzureTargetMapping,
-                    "Invoke-RscMutateAzure -UpdateAutomaticTargetMapping"
+                {
+                    GqlRootFieldName.startRefreshAzureNativeSubscriptionsJob,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletSwitchName = "StartRefreshNativeSubscriptionsJob",
+                        GqlRootFieldName = "startRefreshAzureNativeSubscriptionsJob"
+                    }
                 },
-                {
-                    GqlOperationName.updateAwsAccount,
-                    "Invoke-RscMutateAws -UpdateAccount"
+                {
+                    GqlRootFieldName.startRestoreAwsNativeEc2InstanceSnapshotJob,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletSwitchName = "StartRestoreNativeEc2InstanceSnapshotJob",
+                        GqlRootFieldName = "startRestoreAwsNativeEc2InstanceSnapshotJob"
+                    }
                 },
-                {
-                    GqlOperationName.updateAwsCloudAccount,
-                    "Invoke-RscMutateAws -UpdateCloudAccount"
+                {
+                    GqlRootFieldName.startRestoreAzureNativeVirtualMachineJob,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletSwitchName = "StartRestoreNativeVirtualMachineJob",
+                        GqlRootFieldName = "startRestoreAzureNativeVirtualMachineJob"
+                    }
                 },
-                {
-                    GqlOperationName.updateAwsCloudAccountFeature,
-                    "Invoke-RscMutateAws -UpdateCloudAccountFeature"
+                {
+                    GqlRootFieldName.takeMssqlLogBackup,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateMssql",
+                        CmdletSwitchName = "TakeLogBackup",
+                        GqlRootFieldName = "takeMssqlLogBackup"
+                    }
                 },
-                {
-                    GqlOperationName.updateAwsComputeSetting,
-                    "Invoke-RscMutateAws -UpdateComputeSetting"
+                {
+                    GqlRootFieldName.takeOnDemandOracleDatabaseSnapshot,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateOracle",
+                        CmdletSwitchName = "TakeOnDemandDatabaseSnapshot",
+                        GqlRootFieldName = "takeOnDemandOracleDatabaseSnapshot"
+                    }
                 },
-                {
-                    GqlOperationName.updateAwsExocomputeConfigs,
-                    "Invoke-RscMutateAws -UpdateExocomputeConfigs"
+                {
+                    GqlRootFieldName.takeOnDemandOracleLogSnapshot,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateOracle",
+                        CmdletSwitchName = "TakeOnDemandLogSnapshot",
+                        GqlRootFieldName = "takeOnDemandOracleLogSnapshot"
+                    }
                 },
-                {
-                    GqlOperationName.updateAwsTarget,
-                    "Invoke-RscMutateAws -UpdateTarget"
+                {
+                    GqlRootFieldName.uniqueHypervServersCount,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryHyperv",
+                        CmdletSwitchName = "UniqueServersCount",
+                        GqlRootFieldName = "uniqueHypervServersCount"
+                    }
                 },
-                {
-                    GqlOperationName.updateAzureAccount,
-                    "Invoke-RscMutateAzure -UpdateAccount"
+                {
+                    GqlRootFieldName.uniqueVSphereVCenterCount,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryVcenter",
+                        CmdletSwitchName = "UniqueCount",
+                        GqlRootFieldName = "uniqueVSphereVCenterCount"
+                    }
                 },
-                {
-                    GqlOperationName.updateAzureCloudAccount,
-                    "Invoke-RscMutateAzure -UpdateCloudAccount"
+                {
+                    GqlRootFieldName.unmapAzureCloudAccountExocomputeSubscription,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletSwitchName = "UnmapCloudAccountExocomputeSubscription",
+                        GqlRootFieldName = "unmapAzureCloudAccountExocomputeSubscription"
+                    }
                 },
-                {
-                    GqlOperationName.updateAzureTarget,
-                    "Invoke-RscMutateAzure -UpdateTarget"
+                {
+                    GqlRootFieldName.unmapAzurePersistentStorageSubscription,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletSwitchName = "UnmapPersistentStorageSubscription",
+                        GqlRootFieldName = "unmapAzurePersistentStorageSubscription"
+                    }
                 },
-                {
-                    GqlOperationName.updateCassandraSource,
-                    "Invoke-RscMutateCassandra -UpdateSource"
+                {
+                    GqlRootFieldName.updateAutomaticAwsTargetMapping,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletSwitchName = "UpdateAutomaticTargetMapping",
+                        GqlRootFieldName = "updateAutomaticAwsTargetMapping"
+                    }
                 },
-                {
-                    GqlOperationName.updateCloudNativeAwsStorageSetting,
-                    "Invoke-RscMutateAws -UpdateCloudNativeStorageSetting"
+                {
+                    GqlRootFieldName.updateAutomaticAzureTargetMapping,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletSwitchName = "UpdateAutomaticTargetMapping",
+                        GqlRootFieldName = "updateAutomaticAzureTargetMapping"
+                    }
                 },
-                {
-                    GqlOperationName.updateCloudNativeAzureStorageSetting,
-                    "Invoke-RscMutateAzure -UpdateCloudNativeStorageSetting"
+                {
+                    GqlRootFieldName.updateAwsAccount,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletSwitchName = "UpdateAccount",
+                        GqlRootFieldName = "updateAwsAccount"
+                    }
                 },
-                {
-                    GqlOperationName.updateCloudNativeRcvAzureStorageSetting,
-                    "Invoke-RscMutateAzure -UpdateCloudNativeRcvStorageSetting"
+                {
+                    GqlRootFieldName.updateAwsCloudAccount,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletSwitchName = "UpdateCloudAccount",
+                        GqlRootFieldName = "updateAwsCloudAccount"
+                    }
                 },
-                {
-                    GqlOperationName.updateCustomerAppPermissionForAzureSql,
-                    "Invoke-RscMutateAzure -UpdateCustomerAppPermissionForSql"
+                {
+                    GqlRootFieldName.updateAwsCloudAccountFeature,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletSwitchName = "UpdateCloudAccountFeature",
+                        GqlRootFieldName = "updateAwsCloudAccountFeature"
+                    }
                 },
-                {
-                    GqlOperationName.updateDatabaseLogReportingPropertiesForCluster,
-                    "Invoke-RscMutateCluster -UpdateDatabaseLogReportingProperties"
+                {
+                    GqlRootFieldName.updateAwsComputeSetting,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletSwitchName = "UpdateComputeSetting",
+                        GqlRootFieldName = "updateAwsComputeSetting"
+                    }
                 },
-                {
-                    GqlOperationName.updateFailoverCluster,
-                    "Invoke-RscMutateCluster -UpdateFailover"
+                {
+                    GqlRootFieldName.updateAwsExocomputeConfigs,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletSwitchName = "UpdateExocomputeConfigs",
+                        GqlRootFieldName = "updateAwsExocomputeConfigs"
+                    }
                 },
-                {
-                    GqlOperationName.updateGlobalSla,
-                    "Invoke-RscMutateSla -UpdateGlobal"
+                {
+                    GqlRootFieldName.updateAwsTarget,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletSwitchName = "UpdateTarget",
+                        GqlRootFieldName = "updateAwsTarget"
+                    }
                 },
-                {
-                    GqlOperationName.updateHypervVirtualMachine,
-                    "Invoke-RscMutateHyperv -UpdateVirtualMachine"
+                {
+                    GqlRootFieldName.updateAzureAccount,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletSwitchName = "UpdateAccount",
+                        GqlRootFieldName = "updateAzureAccount"
+                    }
                 },
-                {
-                    GqlOperationName.updateHypervVirtualMachineSnapshotMount,
-                    "Invoke-RscMutateHyperv -UpdateVirtualMachineSnapshotMount"
+                {
+                    GqlRootFieldName.updateAzureCloudAccount,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletSwitchName = "UpdateCloudAccount",
+                        GqlRootFieldName = "updateAzureCloudAccount"
+                    }
                 },
-                {
-                    GqlOperationName.updateLdapIntegration,
-                    "Invoke-RscMutateLdap -UpdateIntegration"
+                {
+                    GqlRootFieldName.updateAzureTarget,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletSwitchName = "UpdateTarget",
+                        GqlRootFieldName = "updateAzureTarget"
+                    }
                 },
-                {
-                    GqlOperationName.updateMongodbSource,
-                    "Invoke-RscMutateMongo -UpdatedbSource"
+                {
+                    GqlRootFieldName.updateCassandraSource,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateCassandra",
+                        CmdletSwitchName = "UpdateSource",
+                        GqlRootFieldName = "updateCassandraSource"
+                    }
                 },
-                {
-                    GqlOperationName.updateMssqlDefaultProperties,
-                    "Invoke-RscMutateMssql -UpdateDefaultProperties"
+                {
+                    GqlRootFieldName.updateCloudNativeAwsStorageSetting,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletSwitchName = "UpdateCloudNativeStorageSetting",
+                        GqlRootFieldName = "updateCloudNativeAwsStorageSetting"
+                    }
                 },
-                {
-                    GqlOperationName.updateMssqlLogShippingConfiguration,
-                    "Invoke-RscMutateMssql -UpdateLogShippingConfiguration"
+                {
+                    GqlRootFieldName.updateCloudNativeAzureStorageSetting,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletSwitchName = "UpdateCloudNativeStorageSetting",
+                        GqlRootFieldName = "updateCloudNativeAzureStorageSetting"
+                    }
                 },
-                {
-                    GqlOperationName.updateNutanixCluster,
-                    "Invoke-RscMutateNutanix -UpdateCluster"
+                {
+                    GqlRootFieldName.updateCloudNativeRcvAzureStorageSetting,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletSwitchName = "UpdateCloudNativeRcvStorageSetting",
+                        GqlRootFieldName = "updateCloudNativeRcvAzureStorageSetting"
+                    }
                 },
-                {
-                    GqlOperationName.updateNutanixPrismCentral,
-                    "Invoke-RscMutateNutanix -UpdatePrismCentral"
+                {
+                    GqlRootFieldName.updateCustomerAppPermissionForAzureSql,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletSwitchName = "UpdateCustomerAppPermissionForSql",
+                        GqlRootFieldName = "updateCustomerAppPermissionForAzureSql"
+                    }
                 },
-                {
-                    GqlOperationName.updateNutanixVm,
-                    "Invoke-RscMutateNutanix -UpdateVm"
+                {
+                    GqlRootFieldName.updateDatabaseLogReportingPropertiesForCluster,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateCluster",
+                        CmdletSwitchName = "UpdateDatabaseLogReportingProperties",
+                        GqlRootFieldName = "updateDatabaseLogReportingPropertiesForCluster"
+                    }
                 },
-                {
-                    GqlOperationName.updateO365AppAuthStatus,
-                    "Invoke-RscMutateO365 -UpdateAppAuthStatus"
+                {
+                    GqlRootFieldName.updateFailoverCluster,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateCluster",
+                        CmdletSwitchName = "UpdateFailover",
+                        GqlRootFieldName = "updateFailoverCluster"
+                    }
                 },
-                {
-                    GqlOperationName.updateO365AppPermissions,
-                    "Invoke-RscMutateO365 -UpdateAppPermissions"
+                {
+                    GqlRootFieldName.updateGlobalSla,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateSla",
+                        CmdletSwitchName = "UpdateGlobal",
+                        GqlRootFieldName = "updateGlobalSla"
+                    }
                 },
-                {
-                    GqlOperationName.updateO365OrgCustomName,
-                    "Invoke-RscMutateO365 -UpdateOrgCustomName"
+                {
+                    GqlRootFieldName.updateHypervVirtualMachine,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateHyperv",
+                        CmdletSwitchName = "UpdateVirtualMachine",
+                        GqlRootFieldName = "updateHypervVirtualMachine"
+                    }
                 },
-                {
-                    GqlOperationName.updateOracleDataGuardGroup,
-                    "Invoke-RscMutateOracle -UpdateDataGuardGroup"
+                {
+                    GqlRootFieldName.updateHypervVirtualMachineSnapshotMount,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateHyperv",
+                        CmdletSwitchName = "UpdateVirtualMachineSnapshotMount",
+                        GqlRootFieldName = "updateHypervVirtualMachineSnapshotMount"
+                    }
                 },
-                {
-                    GqlOperationName.updateVcenter,
-                    "Invoke-RscMutateVcenter -Update"
+                {
+                    GqlRootFieldName.updateLdapIntegration,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateLdap",
+                        CmdletSwitchName = "UpdateIntegration",
+                        GqlRootFieldName = "updateLdapIntegration"
+                    }
                 },
-                {
-                    GqlOperationName.updateVcenterHotAddBandwidth,
-                    "Invoke-RscMutateVcenter -UpdateHotAddBandwidth"
+                {
+                    GqlRootFieldName.updateMongodbSource,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateMongo",
+                        CmdletSwitchName = "UpdatedbSource",
+                        GqlRootFieldName = "updateMongodbSource"
+                    }
                 },
-                {
-                    GqlOperationName.updateVcenterHotAddNetwork,
-                    "Invoke-RscMutateVcenter -UpdateHotAddNetwork"
+                {
+                    GqlRootFieldName.updateMssqlDefaultProperties,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateMssql",
+                        CmdletSwitchName = "UpdateDefaultProperties",
+                        GqlRootFieldName = "updateMssqlDefaultProperties"
+                    }
                 },
-                {
-                    GqlOperationName.updateVsphereAdvancedTag,
-                    "Invoke-RscMutateVsphere -UpdateAdvancedTag"
+                {
+                    GqlRootFieldName.updateMssqlLogShippingConfiguration,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateMssql",
+                        CmdletSwitchName = "UpdateLogShippingConfiguration",
+                        GqlRootFieldName = "updateMssqlLogShippingConfiguration"
+                    }
                 },
-                {
-                    GqlOperationName.upgradeAwsCloudAccountFeaturesWithoutCft,
-                    "Invoke-RscMutateAws -UpgradeCloudAccountFeaturesWithoutCft"
+                {
+                    GqlRootFieldName.updateNutanixCluster,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateNutanix",
+                        CmdletSwitchName = "UpdateCluster",
+                        GqlRootFieldName = "updateNutanixCluster"
+                    }
                 },
-                {
-                    GqlOperationName.upgradeAwsIamUserBasedCloudAccountPermissions,
-                    "Invoke-RscMutateAws -UpgradeIamUserBasedCloudAccountPermissions"
+                {
+                    GqlRootFieldName.updateNutanixPrismCentral,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateNutanix",
+                        CmdletSwitchName = "UpdatePrismCentral",
+                        GqlRootFieldName = "updateNutanixPrismCentral"
+                    }
                 },
-                {
-                    GqlOperationName.upgradeAzureCloudAccount,
-                    "Invoke-RscMutateAzure -UpgradeCloudAccount"
+                {
+                    GqlRootFieldName.updateNutanixVm,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateNutanix",
+                        CmdletSwitchName = "UpdateVm",
+                        GqlRootFieldName = "updateNutanixVm"
+                    }
                 },
-                {
-                    GqlOperationName.upgradeAzureCloudAccountPermissionsWithoutOauth,
-                    "Invoke-RscMutateAzure -UpgradeCloudAccountPermissionsWithoutOauth"
+                {
+                    GqlRootFieldName.updateO365AppAuthStatus,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletSwitchName = "UpdateAppAuthStatus",
+                        GqlRootFieldName = "updateO365AppAuthStatus"
+                    }
                 },
-                {
-                    GqlOperationName.upgradeSlas,
-                    "Invoke-RscMutateSla -Upgrades"
+                {
+                    GqlRootFieldName.updateO365AppPermissions,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletSwitchName = "UpdateAppPermissions",
+                        GqlRootFieldName = "updateO365AppPermissions"
+                    }
                 },
-                {
-                    GqlOperationName.vCenterAdvancedTagPreview,
-                    "Invoke-RscQueryVcenter -AdvancedTagPreview"
+                {
+                    GqlRootFieldName.updateO365OrgCustomName,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletSwitchName = "UpdateOrgCustomName",
+                        GqlRootFieldName = "updateO365OrgCustomName"
+                    }
                 },
-                {
-                    GqlOperationName.vCenterHotAddBandwidth,
-                    "Invoke-RscQueryVcenter -HotAddBandwidth"
+                {
+                    GqlRootFieldName.updateOracleDataGuardGroup,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateOracle",
+                        CmdletSwitchName = "UpdateDataGuardGroup",
+                        GqlRootFieldName = "updateOracleDataGuardGroup"
+                    }
                 },
-                {
-                    GqlOperationName.vCenterHotAddNetwork,
-                    "Invoke-RscQueryVcenter -HotAddNetwork"
+                {
+                    GqlRootFieldName.updateVcenter,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateVcenter",
+                        CmdletSwitchName = "Update",
+                        GqlRootFieldName = "updateVcenter"
+                    }
                 },
-                {
-                    GqlOperationName.vCenterNetworks,
-                    "Invoke-RscQueryVcenter -Networks"
+                {
+                    GqlRootFieldName.updateVcenterHotAddBandwidth,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateVcenter",
+                        CmdletSwitchName = "UpdateHotAddBandwidth",
+                        GqlRootFieldName = "updateVcenterHotAddBandwidth"
+                    }
                 },
-                {
-                    GqlOperationName.vCenterNumProxiesNeeded,
-                    "Invoke-RscQueryVcenter -NumProxiesNeeded"
+                {
+                    GqlRootFieldName.updateVcenterHotAddNetwork,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateVcenter",
+                        CmdletSwitchName = "UpdateHotAddNetwork",
+                        GqlRootFieldName = "updateVcenterHotAddNetwork"
+                    }
                 },
-                {
-                    GqlOperationName.vCenterPreAddInfo,
-                    "Invoke-RscQueryVcenter -PreAddInfo"
+                {
+                    GqlRootFieldName.updateVsphereAdvancedTag,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateVsphere",
+                        CmdletSwitchName = "UpdateAdvancedTag",
+                        GqlRootFieldName = "updateVsphereAdvancedTag"
+                    }
                 },
-                {
-                    GqlOperationName.vSphereBlueprint,
-                    "Invoke-RscQueryVsphere -Blueprint"
+                {
+                    GqlRootFieldName.upgradeAwsCloudAccountFeaturesWithoutCft,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletSwitchName = "UpgradeCloudAccountFeaturesWithoutCft",
+                        GqlRootFieldName = "upgradeAwsCloudAccountFeaturesWithoutCft"
+                    }
                 },
-                {
-                    GqlOperationName.vSphereComputeCluster,
-                    "Invoke-RscQueryVsphere -ComputeCluster"
+                {
+                    GqlRootFieldName.upgradeAwsIamUserBasedCloudAccountPermissions,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletSwitchName = "UpgradeIamUserBasedCloudAccountPermissions",
+                        GqlRootFieldName = "upgradeAwsIamUserBasedCloudAccountPermissions"
+                    }
                 },
-                {
-                    GqlOperationName.vSphereComputeClusters,
-                    "Invoke-RscQueryVsphere -ComputeClusters"
+                {
+                    GqlRootFieldName.upgradeAzureCloudAccount,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletSwitchName = "UpgradeCloudAccount",
+                        GqlRootFieldName = "upgradeAzureCloudAccount"
+                    }
                 },
-                {
-                    GqlOperationName.vSphereDatacenter,
-                    "Invoke-RscQueryVsphere -Datacenter"
+                {
+                    GqlRootFieldName.upgradeAzureCloudAccountPermissionsWithoutOauth,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletSwitchName = "UpgradeCloudAccountPermissionsWithoutOauth",
+                        GqlRootFieldName = "upgradeAzureCloudAccountPermissionsWithoutOauth"
+                    }
                 },
-                {
-                    GqlOperationName.vSphereDatastore,
-                    "Invoke-RscQueryVsphere -Datastore"
+                {
+                    GqlRootFieldName.upgradeSlas,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateSla",
+                        CmdletSwitchName = "Upgrades",
+                        GqlRootFieldName = "upgradeSlas"
+                    }
                 },
-                {
-                    GqlOperationName.vSphereDatastoreCluster,
-                    "Invoke-RscQueryVsphere -DatastoreCluster"
+                {
+                    GqlRootFieldName.vCenterAdvancedTagPreview,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryVcenter",
+                        CmdletSwitchName = "AdvancedTagPreview",
+                        GqlRootFieldName = "vCenterAdvancedTagPreview"
+                    }
                 },
-                {
-                    GqlOperationName.vSphereDatastoreClusters,
-                    "Invoke-RscQueryVsphere -DatastoreClusters"
+                {
+                    GqlRootFieldName.vCenterHotAddBandwidth,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryVcenter",
+                        CmdletSwitchName = "HotAddBandwidth",
+                        GqlRootFieldName = "vCenterHotAddBandwidth"
+                    }
                 },
-                {
-                    GqlOperationName.vSphereDatastoreConnection,
-                    "Invoke-RscQueryVsphere -DatastoreList"
+                {
+                    GqlRootFieldName.vCenterHotAddNetwork,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryVcenter",
+                        CmdletSwitchName = "HotAddNetwork",
+                        GqlRootFieldName = "vCenterHotAddNetwork"
+                    }
                 },
-                {
-                    GqlOperationName.vSphereFolder,
-                    "Invoke-RscQueryVsphere -Folder"
+                {
+                    GqlRootFieldName.vCenterNetworks,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryVcenter",
+                        CmdletSwitchName = "Networks",
+                        GqlRootFieldName = "vCenterNetworks"
+                    }
                 },
-                {
-                    GqlOperationName.vSphereFolders,
-                    "Invoke-RscQueryVsphere -Folders"
+                {
+                    GqlRootFieldName.vCenterNumProxiesNeeded,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryVcenter",
+                        CmdletSwitchName = "NumProxiesNeeded",
+                        GqlRootFieldName = "vCenterNumProxiesNeeded"
+                    }
                 },
-                {
-                    GqlOperationName.vSphereHost,
-                    "Invoke-RscQueryVsphere -Host"
+                {
+                    GqlRootFieldName.vCenterPreAddInfo,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryVcenter",
+                        CmdletSwitchName = "PreAddInfo",
+                        GqlRootFieldName = "vCenterPreAddInfo"
+                    }
                 },
-                {
-                    GqlOperationName.vSphereHostConnection,
-                    "Invoke-RscQueryVsphere -HostList"
+                {
+                    GqlRootFieldName.vSphereBlueprint,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryVsphere",
+                        CmdletSwitchName = "Blueprint",
+                        GqlRootFieldName = "vSphereBlueprint"
+                    }
                 },
-                {
-                    GqlOperationName.vSphereHostDetails,
-                    "Invoke-RscQueryVsphere -HostDetails"
+                {
+                    GqlRootFieldName.vSphereComputeCluster,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryVsphere",
+                        CmdletSwitchName = "ComputeCluster",
+                        GqlRootFieldName = "vSphereComputeCluster"
+                    }
                 },
-                {
-                    GqlOperationName.vSphereHostsByFids,
-                    "Invoke-RscQueryVsphere -HostsByFids"
+                {
+                    GqlRootFieldName.vSphereComputeClusters,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryVsphere",
+                        CmdletSwitchName = "ComputeClusters",
+                        GqlRootFieldName = "vSphereComputeClusters"
+                    }
                 },
-                {
-                    GqlOperationName.vSphereLiveMounts,
-                    "Invoke-RscQueryVsphere -LiveMounts"
+                {
+                    GqlRootFieldName.vSphereDatacenter,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryVsphere",
+                        CmdletSwitchName = "Datacenter",
+                        GqlRootFieldName = "vSphereDatacenter"
+                    }
                 },
-                {
-                    GqlOperationName.vSphereMount,
-                    "Invoke-RscQueryVsphere -Mount"
+                {
+                    GqlRootFieldName.vSphereDatacenterFolder,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryVsphere",
+                        CmdletSwitchName = "DatacenterFolder",
+                        GqlRootFieldName = "vSphereDatacenterFolder"
+                    }
                 },
-                {
-                    GqlOperationName.vSphereMountConnection,
-                    "Invoke-RscQueryVsphere -MountList"
+                {
+                    GqlRootFieldName.vSphereDatastore,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryVsphere",
+                        CmdletSwitchName = "Datastore",
+                        GqlRootFieldName = "vSphereDatastore"
+                    }
                 },
-                {
-                    GqlOperationName.vSphereNetwork,
-                    "Invoke-RscQueryVsphere -Network"
+                {
+                    GqlRootFieldName.vSphereDatastoreCluster,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryVsphere",
+                        CmdletSwitchName = "DatastoreCluster",
+                        GqlRootFieldName = "vSphereDatastoreCluster"
+                    }
                 },
-                {
-                    GqlOperationName.vSphereResourcePool,
-                    "Invoke-RscQueryVsphere -ResourcePool"
+                {
+                    GqlRootFieldName.vSphereDatastoreClusters,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryVsphere",
+                        CmdletSwitchName = "DatastoreClusters",
+                        GqlRootFieldName = "vSphereDatastoreClusters"
+                    }
                 },
-                {
-                    GqlOperationName.vSphereRootRecoveryHierarchy,
-                    "Invoke-RscQueryVsphere -RootRecoveryHierarchy"
+                {
+                    GqlRootFieldName.vSphereDatastoreConnection,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryVsphere",
+                        CmdletSwitchName = "DatastoreList",
+                        GqlRootFieldName = "vSphereDatastoreConnection"
+                    }
                 },
-                {
-                    GqlOperationName.vSphereTag,
-                    "Invoke-RscQueryVsphere -Tag"
+                {
+                    GqlRootFieldName.vSphereFolder,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryVsphere",
+                        CmdletSwitchName = "Folder",
+                        GqlRootFieldName = "vSphereFolder"
+                    }
                 },
-                {
-                    GqlOperationName.vSphereTagCategory,
-                    "Invoke-RscQueryVsphere -TagCategory"
+                {
+                    GqlRootFieldName.vSphereFolders,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryVsphere",
+                        CmdletSwitchName = "Folders",
+                        GqlRootFieldName = "vSphereFolders"
+                    }
                 },
-                {
-                    GqlOperationName.vSphereTopLevelDescendantsConnection,
-                    "Invoke-RscQueryVsphere -TopLevelDescendantsList"
+                {
+                    GqlRootFieldName.vSphereHost,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryVsphere",
+                        CmdletSwitchName = "Host",
+                        GqlRootFieldName = "vSphereHost"
+                    }
                 },
-                {
-                    GqlOperationName.vSphereVCenter,
-                    "Invoke-RscQueryVcenter -Vcenter"
+                {
+                    GqlRootFieldName.vSphereHostConnection,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryVsphere",
+                        CmdletSwitchName = "HostList",
+                        GqlRootFieldName = "vSphereHostConnection"
+                    }
                 },
-                {
-                    GqlOperationName.vSphereVCenterConnection,
-                    "Invoke-RscQueryVcenter -List"
+                {
+                    GqlRootFieldName.vSphereHostDetails,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryVsphere",
+                        CmdletSwitchName = "HostDetails",
+                        GqlRootFieldName = "vSphereHostDetails"
+                    }
                 },
-                {
-                    GqlOperationName.vSphereVMAsyncRequestStatus,
-                    "Invoke-RscQueryVsphereVm -AsyncRequestStatus"
+                {
+                    GqlRootFieldName.vSphereHostsByFids,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryVsphere",
+                        CmdletSwitchName = "HostsByFids",
+                        GqlRootFieldName = "vSphereHostsByFids"
+                    }
                 },
-                {
-                    GqlOperationName.vSphereVMBatchLiveMount,
-                    "Invoke-RscMutateVsphereVm -BatchLiveMount"
+                {
+                    GqlRootFieldName.vSphereLiveMounts,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryVsphere",
+                        CmdletSwitchName = "LiveMounts",
+                        GqlRootFieldName = "vSphereLiveMounts"
+                    }
                 },
-                {
-                    GqlOperationName.vSphereVmNew,
-                    "Invoke-RscQueryVsphereVm -New"
+                {
+                    GqlRootFieldName.vSphereMount,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryVsphere",
+                        CmdletSwitchName = "Mount",
+                        GqlRootFieldName = "vSphereMount"
+                    }
                 },
-                {
-                    GqlOperationName.vSphereVmNewConnection,
-                    "Invoke-RscQueryVsphereVm -NewList"
+                {
+                    GqlRootFieldName.vSphereMountConnection,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryVsphere",
+                        CmdletSwitchName = "MountList",
+                        GqlRootFieldName = "vSphereMountConnection"
+                    }
                 },
-                {
-                    GqlOperationName.validateAndCreateAwsCloudAccount,
-                    "Invoke-RscMutateAws -ValidateAndCreateCloudAccount"
+                {
+                    GqlRootFieldName.vSphereNetwork,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryVsphere",
+                        CmdletSwitchName = "Network",
+                        GqlRootFieldName = "vSphereNetwork"
+                    }
                 },
-                {
-                    GqlOperationName.validateAwsNativeRdsClusterNameForExport,
-                    "Invoke-RscQueryAws -ValidateNativeRdsClusterNameForExport"
+                {
+                    GqlRootFieldName.vSphereResourcePool,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryVsphere",
+                        CmdletSwitchName = "ResourcePool",
+                        GqlRootFieldName = "vSphereResourcePool"
+                    }
                 },
-                {
-                    GqlOperationName.validateAwsNativeRdsInstanceNameForExport,
-                    "Invoke-RscQueryAws -ValidateNativeRdsInstanceNameForExport"
+                {
+                    GqlRootFieldName.vSphereRootRecoveryHierarchy,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryVsphere",
+                        CmdletSwitchName = "RootRecoveryHierarchy",
+                        GqlRootFieldName = "vSphereRootRecoveryHierarchy"
+                    }
                 },
-                {
-                    GqlOperationName.validateAzureCloudAccountExocomputeConfigurations,
-                    "Invoke-RscQueryAzure -ValidateCloudAccountExocomputeConfigurations"
+                {
+                    GqlRootFieldName.vSphereTag,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryVsphere",
+                        CmdletSwitchName = "Tag",
+                        GqlRootFieldName = "vSphereTag"
+                    }
                 },
-                {
-                    GqlOperationName.validateAzureNativeSqlDatabaseDbNameForExport,
-                    "Invoke-RscQueryAzure -ValidateNativeSqlDatabaseDbNameForExport"
+                {
+                    GqlRootFieldName.vSphereTagCategory,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryVsphere",
+                        CmdletSwitchName = "TagCategory",
+                        GqlRootFieldName = "vSphereTagCategory"
+                    }
                 },
-                {
-                    GqlOperationName.validateAzureNativeSqlManagedInstanceDbNameForExport,
-                    "Invoke-RscQueryAzure -ValidateNativeSqlManagedInstanceDbNameForExport"
+                {
+                    GqlRootFieldName.vSphereTopLevelDescendantsConnection,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryVsphere",
+                        CmdletSwitchName = "TopLevelDescendantsList",
+                        GqlRootFieldName = "vSphereTopLevelDescendantsConnection"
+                    }
                 },
-                {
-                    GqlOperationName.validateOracleAcoFile,
-                    "Invoke-RscMutateOracle -ValidateAcoFile"
+                {
+                    GqlRootFieldName.vSphereVCenter,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryVcenter",
+                        CmdletSwitchName = "Vcenter",
+                        GqlRootFieldName = "vSphereVCenter"
+                    }
                 },
-                {
-                    GqlOperationName.validateOracleDatabaseBackups,
-                    "Invoke-RscMutateOracle -ValidateDatabaseBackups"
+                {
+                    GqlRootFieldName.vSphereVCenterConnection,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryVcenter",
+                        CmdletSwitchName = "List",
+                        GqlRootFieldName = "vSphereVCenterConnection"
+                    }
                 },
-                {
-                    GqlOperationName.vcdClusters,
-                    "Invoke-RscQueryCluster -Vcd"
+                {
+                    GqlRootFieldName.vSphereVMAsyncRequestStatus,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryVsphereVm",
+                        CmdletSwitchName = "AsyncRequestStatus",
+                        GqlRootFieldName = "vSphereVMAsyncRequestStatus"
+                    }
                 },
-                {
-                    GqlOperationName.verifySlaWithReplicationToCluster,
-                    "Invoke-RscQuerySla -VerifyWithReplicationToCluster"
+                {
+                    GqlRootFieldName.vSphereVMBatchLiveMount,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletSwitchName = "BatchLiveMount",
+                        GqlRootFieldName = "vSphereVMBatchLiveMount"
+                    }
                 },
-                {
-                    GqlOperationName.vsphereBulkOnDemandSnapshot,
-                    "Invoke-RscMutateVsphere -BulkOnDemandSnapshot"
+                {
+                    GqlRootFieldName.vSphereVmNew,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryVsphereVm",
+                        CmdletSwitchName = "New",
+                        GqlRootFieldName = "vSphereVmNew"
+                    }
                 },
-                {
-                    GqlOperationName.vsphereCreateVCenter,
-                    "Invoke-RscMutateVcenter -Create"
+                {
+                    GqlRootFieldName.vSphereVmNewConnection,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryVsphereVm",
+                        CmdletSwitchName = "NewList",
+                        GqlRootFieldName = "vSphereVmNewConnection"
+                    }
                 },
-                {
-                    GqlOperationName.vsphereDeleteVcenter,
-                    "Invoke-RscMutateVcenter -Delete"
+                {
+                    GqlRootFieldName.validateAndCreateAwsCloudAccount,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletSwitchName = "ValidateAndCreateCloudAccount",
+                        GqlRootFieldName = "validateAndCreateAwsCloudAccount"
+                    }
                 },
-                {
-                    GqlOperationName.vsphereEditVCenter,
-                    "Invoke-RscMutateVcenter -Edit"
+                {
+                    GqlRootFieldName.validateAwsNativeRdsClusterNameForExport,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletSwitchName = "ValidateNativeRdsClusterNameForExport",
+                        GqlRootFieldName = "validateAwsNativeRdsClusterNameForExport"
+                    }
                 },
-                {
-                    GqlOperationName.vsphereExcludeVmDisks,
-                    "Invoke-RscMutateVsphereVm -ExcludeVmDisks"
+                {
+                    GqlRootFieldName.validateAwsNativeRdsInstanceNameForExport,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletSwitchName = "ValidateNativeRdsInstanceNameForExport",
+                        GqlRootFieldName = "validateAwsNativeRdsInstanceNameForExport"
+                    }
                 },
-                {
-                    GqlOperationName.vsphereExportSnapshotToStandaloneHost,
-                    "Invoke-RscMutateVsphere -ExportSnapshotToStandaloneHost"
+                {
+                    GqlRootFieldName.validateAzureCloudAccountExocomputeConfigurations,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "ValidateCloudAccountExocomputeConfigurations",
+                        GqlRootFieldName = "validateAzureCloudAccountExocomputeConfigurations"
+                    }
                 },
-                {
-                    GqlOperationName.vsphereExportSnapshotToStandaloneHostV2,
-                    "Invoke-RscMutateVsphere -ExportSnapshotToStandaloneHostV2"
+                {
+                    GqlRootFieldName.validateAzureNativeSqlDatabaseDbNameForExport,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "ValidateNativeSqlDatabaseDbNameForExport",
+                        GqlRootFieldName = "validateAzureNativeSqlDatabaseDbNameForExport"
+                    }
                 },
-                {
-                    GqlOperationName.vsphereOnDemandSnapshot,
-                    "Invoke-RscMutateVsphere -OnDemandSnapshot"
+                {
+                    GqlRootFieldName.validateAzureNativeSqlManagedInstanceDbNameForExport,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletSwitchName = "ValidateNativeSqlManagedInstanceDbNameForExport",
+                        GqlRootFieldName = "validateAzureNativeSqlManagedInstanceDbNameForExport"
+                    }
                 },
-                {
-                    GqlOperationName.vsphereRefreshVCenter,
-                    "Invoke-RscMutateVcenter -Refresh"
+                {
+                    GqlRootFieldName.validateOracleAcoFile,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateOracle",
+                        CmdletSwitchName = "ValidateAcoFile",
+                        GqlRootFieldName = "validateOracleAcoFile"
+                    }
                 },
-                {
-                    GqlOperationName.vsphereVMDeleteLiveMount,
-                    "Invoke-RscMutateVsphereVm -DeleteLiveMount"
+                {
+                    GqlRootFieldName.validateOracleDatabaseBackups,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateOracle",
+                        CmdletSwitchName = "ValidateDatabaseBackups",
+                        GqlRootFieldName = "validateOracleDatabaseBackups"
+                    }
                 },
-                {
-                    GqlOperationName.vsphereVMExportSnapshot,
-                    "Invoke-RscMutateVsphereVm -ExportSnapshot"
+                {
+                    GqlRootFieldName.vcdClusters,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletSwitchName = "Vcd",
+                        GqlRootFieldName = "vcdClusters"
+                    }
                 },
-                {
-                    GqlOperationName.vsphereVMInitiateInstantRecovery,
-                    "Invoke-RscMutateVsphereVm -InitiateInstantRecovery"
+                {
+                    GqlRootFieldName.verifySlaWithReplicationToCluster,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQuerySla",
+                        CmdletSwitchName = "VerifyWithReplicationToCluster",
+                        GqlRootFieldName = "verifySlaWithReplicationToCluster"
+                    }
                 },
-                {
-                    GqlOperationName.vsphereVMInitiateLiveMount,
-                    "Invoke-RscMutateVsphereVm -InitiateLiveMount"
+                {
+                    GqlRootFieldName.vsphereBulkOnDemandSnapshot,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateVsphere",
+                        CmdletSwitchName = "BulkOnDemandSnapshot",
+                        GqlRootFieldName = "vsphereBulkOnDemandSnapshot"
+                    }
                 },
-                {
-                    GqlOperationName.vsphereVMMissedRecoverableRange,
-                    "Invoke-RscQueryVsphereVm -MissedRecoverableRange"
+                {
+                    GqlRootFieldName.vsphereCreateVCenter,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateVcenter",
+                        CmdletSwitchName = "Create",
+                        GqlRootFieldName = "vsphereCreateVCenter"
+                    }
                 },
-                {
-                    GqlOperationName.vsphereVMRecoverableRange,
-                    "Invoke-RscQueryVsphereVm -RecoverableRange"
+                {
+                    GqlRootFieldName.vsphereDeleteVcenter,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateVcenter",
+                        CmdletSwitchName = "Delete",
+                        GqlRootFieldName = "vsphereDeleteVcenter"
+                    }
                 },
-                {
-                    GqlOperationName.vsphereVMRecoverableRangeInBatch,
-                    "Invoke-RscQueryVsphereVm -RecoverableRangeInBatch"
+                {
+                    GqlRootFieldName.vsphereEditVCenter,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateVcenter",
+                        CmdletSwitchName = "Edit",
+                        GqlRootFieldName = "vsphereEditVCenter"
+                    }
                 },
-                {
-                    GqlOperationName.vsphereVMUpdate,
-                    "Invoke-RscMutateVsphereVm -Update"
+                {
+                    GqlRootFieldName.vsphereExcludeVmDisks,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletSwitchName = "ExcludeVmDisks",
+                        GqlRootFieldName = "vsphereExcludeVmDisks"
+                    }
                 },
-                {
-                    GqlOperationName.vsphereVmBatchExport,
-                    "Invoke-RscMutateVsphereVm -BatchExport"
+                {
+                    GqlRootFieldName.vsphereExportSnapshotToStandaloneHost,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateVsphere",
+                        CmdletSwitchName = "ExportSnapshotToStandaloneHost",
+                        GqlRootFieldName = "vsphereExportSnapshotToStandaloneHost"
+                    }
                 },
-                {
-                    GqlOperationName.vsphereVmBatchExportV3,
-                    "Invoke-RscMutateVsphereVm -BatchExportV3"
+                {
+                    GqlRootFieldName.vsphereExportSnapshotToStandaloneHostV2,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateVsphere",
+                        CmdletSwitchName = "ExportSnapshotToStandaloneHostV2",
+                        GqlRootFieldName = "vsphereExportSnapshotToStandaloneHostV2"
+                    }
                 },
-                {
-                    GqlOperationName.vsphereVmBatchInPlaceRecovery,
-                    "Invoke-RscMutateVsphereVm -BatchInPlaceRecovery"
+                {
+                    GqlRootFieldName.vsphereOnDemandSnapshot,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateVsphere",
+                        CmdletSwitchName = "OnDemandSnapshot",
+                        GqlRootFieldName = "vsphereOnDemandSnapshot"
+                    }
                 },
-                {
-                    GqlOperationName.vsphereVmDeleteSnapshot,
-                    "Invoke-RscMutateVsphereVm -DeleteSnapshot"
+                {
+                    GqlRootFieldName.vsphereRefreshVCenter,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateVcenter",
+                        CmdletSwitchName = "Refresh",
+                        GqlRootFieldName = "vsphereRefreshVCenter"
+                    }
                 },
-                {
-                    GqlOperationName.vsphereVmDownloadSnapshot,
-                    "Invoke-RscMutateVsphereVm -DownloadSnapshot"
+                {
+                    GqlRootFieldName.vsphereVMDeleteLiveMount,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletSwitchName = "DeleteLiveMount",
+                        GqlRootFieldName = "vsphereVMDeleteLiveMount"
+                    }
                 },
-                {
-                    GqlOperationName.vsphereVmDownloadSnapshotFiles,
-                    "Invoke-RscMutateVsphereVm -DownloadSnapshotFiles"
+                {
+                    GqlRootFieldName.vsphereVMExportSnapshot,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletSwitchName = "ExportSnapshot",
+                        GqlRootFieldName = "vsphereVMExportSnapshot"
+                    }
                 },
-                {
-                    GqlOperationName.vsphereVmExportSnapshotV2,
-                    "Invoke-RscMutateVsphereVm -ExportSnapshotV2"
+                {
+                    GqlRootFieldName.vsphereVMInitiateInstantRecovery,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletSwitchName = "InitiateInstantRecovery",
+                        GqlRootFieldName = "vsphereVMInitiateInstantRecovery"
+                    }
                 },
-                {
-                    GqlOperationName.vsphereVmExportSnapshotV3,
-                    "Invoke-RscMutateVsphereVm -ExportSnapshotV3"
+                {
+                    GqlRootFieldName.vsphereVMInitiateLiveMount,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletSwitchName = "InitiateLiveMount",
+                        GqlRootFieldName = "vsphereVMInitiateLiveMount"
+                    }
                 },
-                {
-                    GqlOperationName.vsphereVmExportSnapshotWithDownloadFromCloud,
-                    "Invoke-RscMutateVsphereVm -ExportSnapshotWithDownloadFromCloud"
+                {
+                    GqlRootFieldName.vsphereVMMissedRecoverableRange,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryVsphereVm",
+                        CmdletSwitchName = "MissedRecoverableRange",
+                        GqlRootFieldName = "vsphereVMMissedRecoverableRange"
+                    }
                 },
-                {
-                    GqlOperationName.vsphereVmInitiateBatchInstantRecovery,
-                    "Invoke-RscMutateVsphereVm -InitiateBatchInstantRecovery"
+                {
+                    GqlRootFieldName.vsphereVMRecoverableRange,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryVsphereVm",
+                        CmdletSwitchName = "RecoverableRange",
+                        GqlRootFieldName = "vsphereVMRecoverableRange"
+                    }
                 },
-                {
-                    GqlOperationName.vsphereVmInitiateBatchLiveMountV2,
-                    "Invoke-RscMutateVsphereVm -InitiateBatchLiveMountV2"
+                {
+                    GqlRootFieldName.vsphereVMRecoverableRangeInBatch,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryVsphereVm",
+                        CmdletSwitchName = "RecoverableRangeInBatch",
+                        GqlRootFieldName = "vsphereVMRecoverableRangeInBatch"
+                    }
                 },
-                {
-                    GqlOperationName.vsphereVmInitiateDiskMount,
-                    "Invoke-RscMutateVsphereVm -InitiateDiskMount"
+                {
+                    GqlRootFieldName.vsphereVMUpdate,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletSwitchName = "Update",
+                        GqlRootFieldName = "vsphereVMUpdate"
+                    }
                 },
-                {
-                    GqlOperationName.vsphereVmInitiateInPlaceRecovery,
-                    "Invoke-RscMutateVsphereVm -InitiateInPlaceRecovery"
+                {
+                    GqlRootFieldName.vsphereVmBatchExport,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletSwitchName = "BatchExport",
+                        GqlRootFieldName = "vsphereVmBatchExport"
+                    }
                 },
-                {
-                    GqlOperationName.vsphereVmInitiateInstantRecoveryV2,
-                    "Invoke-RscMutateVsphereVm -InitiateInstantRecoveryV2"
+                {
+                    GqlRootFieldName.vsphereVmBatchExportV3,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletSwitchName = "BatchExportV3",
+                        GqlRootFieldName = "vsphereVmBatchExportV3"
+                    }
                 },
-                {
-                    GqlOperationName.vsphereVmInitiateLiveMountV2,
-                    "Invoke-RscMutateVsphereVm -InitiateLiveMountV2"
+                {
+                    GqlRootFieldName.vsphereVmBatchInPlaceRecovery,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletSwitchName = "BatchInPlaceRecovery",
+                        GqlRootFieldName = "vsphereVmBatchInPlaceRecovery"
+                    }
                 },
-                {
-                    GqlOperationName.vsphereVmListEsxiDatastores,
-                    "Invoke-RscMutateVsphereVm -ListEsxiDatastores"
+                {
+                    GqlRootFieldName.vsphereVmDeleteSnapshot,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletSwitchName = "DeleteSnapshot",
+                        GqlRootFieldName = "vsphereVmDeleteSnapshot"
+                    }
                 },
-                {
-                    GqlOperationName.vsphereVmMountRelocate,
-                    "Invoke-RscMutateVsphereVm -MountRelocate"
+                {
+                    GqlRootFieldName.vsphereVmDownloadSnapshot,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletSwitchName = "DownloadSnapshot",
+                        GqlRootFieldName = "vsphereVmDownloadSnapshot"
+                    }
                 },
-                {
-                    GqlOperationName.vsphereVmMountRelocateV2,
-                    "Invoke-RscMutateVsphereVm -MountRelocateV2"
+                {
+                    GqlRootFieldName.vsphereVmDownloadSnapshotFiles,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletSwitchName = "DownloadSnapshotFiles",
+                        GqlRootFieldName = "vsphereVmDownloadSnapshotFiles"
+                    }
                 },
-                {
-                    GqlOperationName.vsphereVmPowerOnOffLiveMount,
-                    "Invoke-RscMutateVsphereVm -PowerOnOffLiveMount"
+                {
+                    GqlRootFieldName.vsphereVmExportSnapshotV2,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletSwitchName = "ExportSnapshotV2",
+                        GqlRootFieldName = "vsphereVmExportSnapshotV2"
+                    }
                 },
-                {
-                    GqlOperationName.vsphereVmRecoverFiles,
-                    "Invoke-RscMutateVsphereVm -RecoverFiles"
+                {
+                    GqlRootFieldName.vsphereVmExportSnapshotV3,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletSwitchName = "ExportSnapshotV3",
+                        GqlRootFieldName = "vsphereVmExportSnapshotV3"
+                    }
                 },
-                {
-                    GqlOperationName.vsphereVmRecoverFilesNew,
-                    "Invoke-RscMutateVsphereVm -RecoverFilesNew"
+                {
+                    GqlRootFieldName.vsphereVmExportSnapshotWithDownloadFromCloud,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletSwitchName = "ExportSnapshotWithDownloadFromCloud",
+                        GqlRootFieldName = "vsphereVmExportSnapshotWithDownloadFromCloud"
+                    }
                 },
-                {
-                    GqlOperationName.vsphereVmRegisterAgent,
-                    "Invoke-RscMutateVsphereVm -RegisterAgent"
+                {
+                    GqlRootFieldName.vsphereVmInitiateBatchInstantRecovery,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletSwitchName = "InitiateBatchInstantRecovery",
+                        GqlRootFieldName = "vsphereVmInitiateBatchInstantRecovery"
+                    }
                 },
-                {
-                    GqlOperationName.vsphereVmwareCdpLiveInfo,
-                    "Invoke-RscQueryVsphere -VmwareCdpLiveInfo"
+                {
+                    GqlRootFieldName.vsphereVmInitiateBatchLiveMountV2,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletSwitchName = "InitiateBatchLiveMountV2",
+                        GqlRootFieldName = "vsphereVmInitiateBatchLiveMountV2"
+                    }
                 },
-                {
-                    GqlOperationName.windowsCluster,
-                    "Invoke-RscQueryCluster -Windows"
+                {
+                    GqlRootFieldName.vsphereVmInitiateDiskMount,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletSwitchName = "InitiateDiskMount",
+                        GqlRootFieldName = "vsphereVmInitiateDiskMount"
+                    }
+                },
+                {
+                    GqlRootFieldName.vsphereVmInitiateInPlaceRecovery,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletSwitchName = "InitiateInPlaceRecovery",
+                        GqlRootFieldName = "vsphereVmInitiateInPlaceRecovery"
+                    }
+                },
+                {
+                    GqlRootFieldName.vsphereVmInitiateInstantRecoveryV2,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletSwitchName = "InitiateInstantRecoveryV2",
+                        GqlRootFieldName = "vsphereVmInitiateInstantRecoveryV2"
+                    }
+                },
+                {
+                    GqlRootFieldName.vsphereVmInitiateLiveMountV2,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletSwitchName = "InitiateLiveMountV2",
+                        GqlRootFieldName = "vsphereVmInitiateLiveMountV2"
+                    }
+                },
+                {
+                    GqlRootFieldName.vsphereVmListEsxiDatastores,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletSwitchName = "ListEsxiDatastores",
+                        GqlRootFieldName = "vsphereVmListEsxiDatastores"
+                    }
+                },
+                {
+                    GqlRootFieldName.vsphereVmMountRelocate,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletSwitchName = "MountRelocate",
+                        GqlRootFieldName = "vsphereVmMountRelocate"
+                    }
+                },
+                {
+                    GqlRootFieldName.vsphereVmMountRelocateV2,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletSwitchName = "MountRelocateV2",
+                        GqlRootFieldName = "vsphereVmMountRelocateV2"
+                    }
+                },
+                {
+                    GqlRootFieldName.vsphereVmPowerOnOffLiveMount,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletSwitchName = "PowerOnOffLiveMount",
+                        GqlRootFieldName = "vsphereVmPowerOnOffLiveMount"
+                    }
+                },
+                {
+                    GqlRootFieldName.vsphereVmRecoverFiles,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletSwitchName = "RecoverFiles",
+                        GqlRootFieldName = "vsphereVmRecoverFiles"
+                    }
+                },
+                {
+                    GqlRootFieldName.vsphereVmRecoverFilesNew,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletSwitchName = "RecoverFilesNew",
+                        GqlRootFieldName = "vsphereVmRecoverFilesNew"
+                    }
+                },
+                {
+                    GqlRootFieldName.vsphereVmRegisterAgent,
+                    new RscOp {
+                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletSwitchName = "RegisterAgent",
+                        GqlRootFieldName = "vsphereVmRegisterAgent"
+                    }
+                },
+                {
+                    GqlRootFieldName.vsphereVmwareCdpLiveInfo,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryVsphere",
+                        CmdletSwitchName = "VmwareCdpLiveInfo",
+                        GqlRootFieldName = "vsphereVmwareCdpLiveInfo"
+                    }
+                },
+                {
+                    GqlRootFieldName.windowsCluster,
+                    new RscOp {
+                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletSwitchName = "Windows",
+                        GqlRootFieldName = "windowsCluster"
+                    }
                 },
             };
-            if (OperationLookupDict.TryGetValue(gqlOpName, out var cmdName))
+            if (lookupDict.TryGetValue(rootField, out var rscOp))
             {
-                return cmdName;
+                return rscOp;
             }
-            return "Invoke-Rsc -Op " + gqlOpName;
+            return new RscOp{
+                GqlRootFieldName = rootField.ToString()
+            };
+        }
+
+        /// <summary>
+        /// Given a GraphQL root field name, return the corresponding RSC operation.
+        /// </summary>
+        public static RscOp RscOpLookupByGqlRootField(string rootField)
+        {
+            if (Enum.TryParse<GqlRootFieldName>(rootField, out GqlRootFieldName rootFieldEnumVal))
+            {
+                // The provided operation is a valid enum member.
+                return RscOpLookupByGqlRootField(rootFieldEnumVal);
+            }
+            return new RscOp{
+                GqlRootFieldName = rootField
+            };
+        }
+
+        /// <summary>
+        /// Given a GraphQL return type, return the list of root field names that return that type.
+        /// </summary>
+        public static List<string> GqlRootFieldLookupByReturnType(
+            string returnTypeName
+        )
+        {
+            var lookupDict = new Dictionary<string, List<string>> {
+                {   "ASPValue", new List<string> {
+                        "getAccountSettingValue",
+                        "setAccountSettingValue",
+                    }
+                },
+                {   "AccessGroupConnection", new List<string> {
+                        "sonarUserGroups",
+                    }
+                },
+                {   "AccessUserConnection", new List<string> {
+                        "sonarUsers",
+                    }
+                },
+                {   "AccountSetting", new List<string> {
+                        "accountSettings",
+                        "updateAccountSettings",
+                    }
+                },
+                {   "ActivateTrialAsyncReply", new List<string> {
+                        "activateTrialAsync",
+                    }
+                },
+                {   "ActiveDirectoryDomain", new List<string> {
+                        "activeDirectoryDomain",
+                    }
+                },
+                {   "ActiveDirectoryDomainConnection", new List<string> {
+                        "activeDirectoryDomains",
+                    }
+                },
+                {   "ActiveDirectoryDomainController", new List<string> {
+                        "activeDirectoryDomainController",
+                    }
+                },
+                {   "ActiveDirectoryDomainControllerConnection", new List<string> {
+                        "activeDirectoryDomainControllers",
+                    }
+                },
+                {   "ActiveInsightConnection", new List<string> {
+                        "activeInsights",
+                    }
+                },
+                {   "ActivitySeries", new List<string> {
+                        "activitySeries",
+                    }
+                },
+                {   "ActivitySeriesConnection", new List<string> {
+                        "activitySeriesConnection",
+                    }
+                },
+                {   "ActivitySeriesGroupByConnection", new List<string> {
+                        "activitySeriesGroupByConnection",
+                    }
+                },
+                {   "ActivityTimelineResultConnection", new List<string> {
+                        "userActivityTimeline",
+                        "userFileActivityTimeline",
+                    }
+                },
+                {   "AdVolumeExportConnection", new List<string> {
+                        "adVolumeExports",
+                    }
+                },
+                {   "AddAndJoinSmbDomainReply", new List<string> {
+                        "addAndJoinSmbDomain",
+                    }
+                },
+                {   "AddAwsAuthenticationServerBasedCloudAccountReply", new List<string> {
+                        "addAwsAuthenticationServerBasedCloudAccount",
+                    }
+                },
+                {   "AddAwsIamUserBasedCloudAccountReply", new List<string> {
+                        "addAwsIamUserBasedCloudAccount",
+                    }
+                },
+                {   "AddAzureCloudAccountExocomputeConfigurationsReply", new List<string> {
+                        "addAzureCloudAccountExocomputeConfigurations",
+                    }
+                },
+                {   "AddAzureCloudAccountReply", new List<string> {
+                        "addAzureCloudAccount",
+                    }
+                },
+                {   "AddAzureCloudAccountWithoutOauthReply", new List<string> {
+                        "addAzureCloudAccountWithoutOauth",
+                    }
+                },
+                {   "AddCloudNativeSqlServerBackupCredentialsReply", new List<string> {
+                        "addCloudNativeSqlServerBackupCredentials",
+                    }
+                },
+                {   "AddClusterCertificateReply", new List<string> {
+                        "addClusterCertificate",
+                    }
+                },
+                {   "AddClusterNodesReply", new List<string> {
+                        "addClusterNodes",
+                    }
+                },
+                {   "AddConfiguredGroupToHierarchyReply", new List<string> {
+                        "addConfiguredGroupToHierarchy",
+                    }
+                },
+                {   "AddDb2InstanceReply", new List<string> {
+                        "addDb2Instance",
+                    }
+                },
+                {   "AddGlobalCertificateReply", new List<string> {
+                        "addGlobalCertificate",
+                    }
+                },
+                {   "AddManagedVolumeReply", new List<string> {
+                        "addManagedVolume",
+                    }
+                },
+                {   "AddMongoSourceReply", new List<string> {
+                        "addMongoSource",
+                    }
+                },
+                {   "AddO365OrgResponse", new List<string> {
+                        "addO365Org",
+                        "o365SaasSetupComplete",
+                    }
+                },
+                {   "AddSapHanaSystemReply", new List<string> {
+                        "addSapHanaSystem",
+                    }
+                },
+                {   "AddStorageArraysReply", new List<string> {
+                        "addStorageArrays",
+                    }
+                },
+                {   "AddSyslogExportRuleReply", new List<string> {
+                        "addSyslogExportRule",
+                    }
+                },
+                {   "AddVcdInstancesReply", new List<string> {
+                        "addVcdInstances",
+                    }
+                },
+                {   "AddVmAppConsistentSpecsReply", new List<string> {
+                        "addVmAppConsistentSpecs",
+                    }
+                },
+                {   "AllEnabledFeaturesForAccountReply", new List<string> {
+                        "allEnabledFeaturesForAccount",
+                    }
+                },
+                {   "AllStorageArraysReply", new List<string> {
+                        "allStorageArrays",
+                    }
+                },
+                {   "AmiTypeForAwsNativeArchivedSnapshotExportReply", new List<string> {
+                        "amiTypeForAwsNativeArchivedSnapshotExport",
+                    }
+                },
+                {   "Analyzer", new List<string> {
+                        "createCustomAnalyzer",
+                        "customAnalyzer",
+                        "updateCustomAnalyzer",
+                    }
+                },
+                {   "AnalyzerAccessUsageConnection", new List<string> {
+                        "userAnalyzerAccess",
+                    }
+                },
+                {   "AnalyzerConnection", new List<string> {
+                        "activeCustomAnalyzers",
+                    }
+                },
+                {   "AnalyzerGroupConnection", new List<string> {
+                        "analyzerGroups",
+                    }
+                },
+                {   "AnalyzerUsageConnection", new List<string> {
+                        "analyzerUsages",
+                    }
+                },
+                {   "AnomalyResultConnection", new List<string> {
+                        "anomalyResults",
+                    }
+                },
+                {   "AnomalyResultGroupedDataConnection", new List<string> {
+                        "anomalyResultsGrouped",
+                    }
+                },
+                {   "AppSearchResponseConnection", new List<string> {
+                        "searchVappFiles",
+                    }
+                },
+                {   "AppflowsSummary", new List<string> {
+                        "appflowsSummary",
+                    }
+                },
+                {   "ArchivalEntityConnection", new List<string> {
+                        "archivalEntities",
+                    }
+                },
+                {   "ArchiveK8sClusterReply", new List<string> {
+                        "archiveK8sCluster",
+                    }
+                },
+                {   "AssignMssqlSlaDomainPropertiesAsyncReply", new List<string> {
+                        "assignMssqlSlaDomainPropertiesAsync",
+                    }
+                },
+                {   "AsyncDownloadReply", new List<string> {
+                        "downloadAuditLogCsvAsync",
+                        "downloadFile",
+                        "downloadReportCsvAsync",
+                        "downloadReportPdfAsync",
+                        "sendScheduledReportAsync",
+                    }
+                },
+                {   "AsyncJobStatus", new List<string> {
+                        "createConfigProtectionSetup",
+                        "gcpNativeDisableProject",
+                        "gcpNativeExportDisk",
+                        "gcpNativeExportGceInstance",
+                        "gcpNativeRestoreGceInstance",
+                        "mountDisk",
+                        "restoreConfigProtectionBackup",
+                        "startAwsExocomputeDisableJob",
+                        "startAwsNativeAccountDisableJob",
+                        "startDisableAzureNativeSubscriptionProtectionJob",
+                        "startEc2InstanceSnapshotExportJob",
+                        "startExportAwsNativeEbsVolumeSnapshotJob",
+                        "startExportAzureNativeManagedDiskJob",
+                        "startExportAzureNativeVirtualMachineJob",
+                        "startExportAzureSqlDatabaseDbJob",
+                        "startExportAzureSqlManagedInstanceDbJob",
+                        "startExportRdsInstanceJob",
+                        "startRecoverS3SnapshotJob",
+                        "startRestoreAwsNativeEc2InstanceSnapshotJob",
+                        "startRestoreAzureNativeVirtualMachineJob",
+                        "unmountDisk",
+                        "updateConfigProtectionSetup",
+                        "uploadDatabaseSnapshotToBlobstore",
+                    }
+                },
+                {   "AsyncRequestStatus", new List<string> {
+                        "activeDirectoryAsyncRequestStatus",
+                        "assignSlaToMongoDbCollection",
+                        "bulkCreateOnDemandMssqlBackup",
+                        "bulkTierExistingSnapshots",
+                        "checkCloudComputeConnectivityJobProgress",
+                        "configureLogExport",
+                        "configureSapHanaRestore",
+                        "createActiveDirectoryLiveMount",
+                        "createActiveDirectoryUnmount",
+                        "createDomainControllerSnapshot",
+                        "createDownloadSnapshotForVolumeGroup",
+                        "createExchangeMount",
+                        "createFilesetSnapshot",
+                        "createHypervVirtualMachineSnapshotMount",
+                        "createK8sResourceSetSnapshot",
+                        "createMssqlLiveMount",
+                        "createMssqlLogShippingConfiguration",
+                        "createNutanixCluster",
+                        "createOnDemandDb2Backup",
+                        "createOnDemandExchangeBackup",
+                        "createOnDemandMongoDatabaseBackup",
+                        "createOnDemandMssqlBackup",
+                        "createOnDemandNutanixBackup",
+                        "createOnDemandSapHanaBackup",
+                        "createOnDemandVolumeGroupBackup",
+                        "createOraclePdbRestore",
+                        "createSapHanaSystemRefresh",
+                        "createSnapMirrorCloudRestoreJob",
+                        "createSnapMirrorCloudSnapshot",
+                        "createVappTemplateSnapshotExport",
+                        "deleteDb2Database",
+                        "deleteDb2Instance",
+                        "deleteExchangeSnapshotMount",
+                        "deleteHypervVirtualMachineSnapshotMount",
+                        "deleteK8sCluster",
+                        "deleteLogShipping",
+                        "deleteManagedVolumeSnapshotExport",
+                        "deleteMongoSource",
+                        "deleteMssqlLiveMount",
+                        "deleteNasSystem",
+                        "deleteNutanixCluster",
+                        "deleteNutanixMountV1",
+                        "deleteOracleMount",
+                        "deleteSapHanaSystem",
+                        "deleteVolumeGroupMount",
+                        "deleteVsphereLiveMount",
+                        "discoverDb2Instance",
+                        "discoverMongoSource",
+                        "downloadDb2Snapshot",
+                        "downloadDb2SnapshotsForPointInTimeRecovery",
+                        "downloadExchangeSnapshot",
+                        "downloadFilesetSnapshot",
+                        "downloadFilesetSnapshotFromLocation",
+                        "downloadFilesNutanixSnapshot",
+                        "downloadHypervSnapshotFromLocation",
+                        "downloadHypervVirtualMachineSnapshot",
+                        "downloadHypervVirtualMachineSnapshotFiles",
+                        "downloadManagedVolumeFiles",
+                        "downloadManagedVolumeFromLocation",
+                        "downloadMssqlDatabaseBackupFiles",
+                        "downloadMssqlDatabaseFilesFromArchivalLocation",
+                        "downloadNutanixSnapshot",
+                        "downloadNutanixVmFromLocation",
+                        "downloadOracleDatabaseSnapshot",
+                        "downloadSapHanaSnapshot",
+                        "downloadSapHanaSnapshotFromLocation",
+                        "downloadSapHanaSnapshotsForPointInTimeRecovery",
+                        "downloadVcdVappSnapshotFromLocation",
+                        "downloadVolumeGroupSnapshotFiles",
+                        "downloadVolumeGroupSnapshotFromLocation",
+                        "downloadVsphereVirtualMachineFiles",
+                        "expireDownloadedDb2Snapshots",
+                        "expireDownloadedSapHanaSnapshots",
+                        "exportHypervVirtualMachine",
+                        "exportK8sResourceSetSnapshot",
+                        "exportManagedVolumeSnapshot",
+                        "exportMssqlDatabase",
+                        "exportNutanixSnapshot",
+                        "exportOracleDatabase",
+                        "exportOracleTablespace",
+                        "exportSlaManagedVolumeSnapshot",
+                        "filesetDownloadSnapshotFiles",
+                        "filesetExportSnapshotFiles",
+                        "filesetRecoverFiles",
+                        "filesetRequestStatus",
+                        "generateSupportBundle",
+                        "hypervHostAsyncRequestStatus",
+                        "hypervOnDemandSnapshot",
+                        "hypervScvmmAsyncRequestStatus",
+                        "hypervVirtualMachineAsyncRequestStatus",
+                        "instantRecoverHypervVirtualMachineSnapshot",
+                        "instantRecoverOracleSnapshot",
+                        "malwareDetectionTaskStatus",
+                        "migrateNutanixMountV1",
+                        "modifyActiveDirectoryLiveMount",
+                        "mountNutanixSnapshotV1",
+                        "mountOracleDatabase",
+                        "nutanixClusterAsyncRequestStatus",
+                        "nutanixPrismCentralAsyncRequestStatus",
+                        "nutanixVmAsyncRequestStatus",
+                        "patchMongoSource",
+                        "recoverCloudDirectMultiPaths",
+                        "recoverCloudDirectPath",
+                        "recoverMongoSource",
+                        "refreshDb2Database",
+                        "refreshHypervScvmm",
+                        "refreshHypervServer",
+                        "refreshK8sV2Cluster",
+                        "refreshNutanixCluster",
+                        "refreshOracleDatabase",
+                        "refreshVsphereVcenter",
+                        "registerHypervScvmm",
+                        "reseedLogShippingSecondary",
+                        "resizeManagedVolume",
+                        "restoreDomainControllerSnapshot",
+                        "restoreFilesNutanixSnapshot",
+                        "restoreHypervVirtualMachineSnapshotFiles",
+                        "restoreMssqlDatabase",
+                        "restoreOracleLogs",
+                        "restoreVolumeGroupSnapshotFiles",
+                        "retryAddMongoSource",
+                        "setKmipClient",
+                        "setWebSignedCertificate",
+                        "startMalwareDetection",
+                        "startVolumeGroupMount",
+                        "supportBundle",
+                        "takeManagedVolumeOnDemandSnapshot",
+                        "takeMssqlLogBackup",
+                        "takeOnDemandOracleDatabaseSnapshot",
+                        "takeOnDemandOracleLogSnapshot",
+                        "threatHuntStatus",
+                        "triggerCloudComputeConnectivityCheck",
+                        "unconfigureSapHanaRestore",
+                        "validateOracleDatabaseBackups",
+                        "vmwareDownloadSnapshotFromLocation",
+                        "vsphereDeleteVcenter",
+                        "vsphereExportSnapshotToStandaloneHostV2",
+                        "vsphereOnDemandSnapshot",
+                        "vSphereVMAsyncRequestStatus",
+                        "vsphereVmDownloadSnapshot",
+                        "vsphereVmDownloadSnapshotFiles",
+                        "vsphereVmExportSnapshotV2",
+                        "vsphereVmExportSnapshotV3",
+                        "vsphereVmExportSnapshotWithDownloadFromCloud",
+                        "vsphereVmInitiateDiskMount",
+                        "vsphereVmInitiateInPlaceRecovery",
+                        "vsphereVmInitiateInstantRecoveryV2",
+                        "vsphereVmInitiateLiveMountV2",
+                        "vsphereVmMountRelocate",
+                        "vsphereVmMountRelocateV2",
+                        "vsphereVmRecoverFilesNew",
+                    }
+                },
+                {   "AtlassianSite", new List<string> {
+                        "atlassianSite",
+                    }
+                },
+                {   "AtlassianSiteConnection", new List<string> {
+                        "atlassianSites",
+                    }
+                },
+                {   "AtlassianUserConnection", new List<string> {
+                        "jiraIssueAssignees",
+                        "jiraProjectLeads",
+                    }
+                },
+                {   "AttributedFeatureFlag", new List<string> {
+                        "attributedFeatureFlag",
+                    }
+                },
+                {   "AuthorizedPrincipalConnection", new List<string> {
+                        "ldapAuthorizedPrincipalConnection",
+                    }
+                },
+                {   "AwsArtifactsToDelete", new List<string> {
+                        "awsArtifactsToDelete",
+                    }
+                },
+                {   "AwsCloudAccountCreateResponse", new List<string> {
+                        "awsCloudAccountInitiate",
+                    }
+                },
+                {   "AwsCloudAccountListKMSKeysResponse", new List<string> {
+                        "AwsCloudAccountListKMSKeys",
+                    }
+                },
+                {   "AwsCloudAccountListSecurityGroupsResponse", new List<string> {
+                        "awsCloudAccountListSecurityGroups",
+                    }
+                },
+                {   "AwsCloudAccountListSubnetsResponse", new List<string> {
+                        "awsCloudAccountListSubnets",
+                    }
+                },
+                {   "AwsCloudAccountListVpcResponse", new List<string> {
+                        "awsCloudAccountListVpcs",
+                    }
+                },
+                {   "AwsCloudAccountUpdateFeatureResponse", new List<string> {
+                        "awsCloudAccountUpdateFeature",
+                    }
+                },
+                {   "AwsCloudAccountValidateResponse", new List<string> {
+                        "awsCloudAccountValidate",
+                    }
+                },
+                {   "AwsCloudAccountWithFeatures", new List<string> {
+                        "awsCloudAccountWithFeatures",
+                    }
+                },
+                {   "AwsComputeSettings", new List<string> {
+                        "awsComputeSettings",
+                        "createAwsComputeSetting",
+                        "updateAwsComputeSetting",
+                    }
+                },
+                {   "AwsNativeAccount", new List<string> {
+                        "awsNativeAccount",
+                    }
+                },
+                {   "AwsNativeAccountConnection", new List<string> {
+                        "awsNativeAccounts",
+                    }
+                },
+                {   "AwsNativeEbsVolume", new List<string> {
+                        "awsNativeEbsVolume",
+                    }
+                },
+                {   "AwsNativeEbsVolumeConnection", new List<string> {
+                        "awsNativeEbsVolumes",
+                        "awsNativeEbsVolumesByName",
+                    }
+                },
+                {   "AwsNativeEc2Instance", new List<string> {
+                        "awsNativeEc2Instance",
+                    }
+                },
+                {   "AwsNativeEc2InstanceConnection", new List<string> {
+                        "awsNativeEc2Instances",
+                        "awsNativeEc2InstancesByName",
+                    }
+                },
+                {   "AwsNativeProtectionAccountAddResponse", new List<string> {
+                        "awsNativeProtectionAccountAdd",
+                    }
+                },
+                {   "AwsNativeRdsAuroraInstanceClassesReply", new List<string> {
+                        "allAwsRdsAuroraInstanceClasses",
+                    }
+                },
+                {   "AwsNativeRdsInstance", new List<string> {
+                        "awsNativeRdsInstance",
+                    }
+                },
+                {   "AwsNativeRdsInstanceConnection", new List<string> {
+                        "awsNativeRdsInstances",
+                    }
+                },
+                {   "AwsNativeRdsPointInTimeRestoreWindow", new List<string> {
+                        "awsNativeRdsPointInTimeRestoreWindow",
+                    }
+                },
+                {   "AwsNativeRoot", new List<string> {
+                        "awsNativeRoot",
+                    }
+                },
+                {   "AwsNativeS3Bucket", new List<string> {
+                        "awsNativeS3Bucket",
+                    }
+                },
+                {   "AwsTrustPolicy", new List<string> {
+                        "awsTrustPolicy",
+                    }
+                },
+                {   "AzureAdDirectory", new List<string> {
+                        "azureAdDirectory",
+                    }
+                },
+                {   "AzureAdDirectoryConnection", new List<string> {
+                        "azureAdDirectories",
+                    }
+                },
+                {   "AzureAdObjectConnection", new List<string> {
+                        "azureAdObjectsByType",
+                        "searchAzureAdSnapshot",
+                    }
+                },
+                {   "AzureCloudAccountCheckRefreshTokenExistsReply", new List<string> {
+                        "azureCloudAccountCheckRefreshTokenExistsForRecovery",
+                    }
+                },
+                {   "AzureCloudAccountGrantedPermissionsGroupsReply", new List<string> {
+                        "azureCloudAccountGrantedPermissionsGroups",
+                        "azureCloudAccountGrantedPermissionsGroupsForRecovery",
+                    }
+                },
+                {   "AzureCloudAccountPermissionConfigResponse", new List<string> {
+                        "azureCloudAccountPermissionConfig",
+                    }
+                },
+                {   "AzureCloudAccountSubscriptionWithFeatures", new List<string> {
+                        "azureCloudAccountSubscriptionWithFeatures",
+                    }
+                },
+                {   "AzureCloudAccountTenant", new List<string> {
+                        "azureCloudAccountTenant",
+                    }
+                },
+                {   "AzureCloudAccountTenantWithExoConfigs", new List<string> {
+                        "azureCloudAccountTenantWithExoConfigs",
+                    }
+                },
+                {   "AzureNativeManagedDisk", new List<string> {
+                        "azureNativeManagedDisk",
+                    }
+                },
+                {   "AzureNativeManagedDiskConnection", new List<string> {
+                        "azureNativeManagedDisks",
+                    }
+                },
+                {   "AzureNativeResourceGroup", new List<string> {
+                        "azureNativeResourceGroup",
+                    }
+                },
+                {   "AzureNativeResourceGroupConnection", new List<string> {
+                        "azureNativeResourceGroups",
+                    }
+                },
+                {   "AzureNativeRoot", new List<string> {
+                        "azureNativeRoot",
+                    }
+                },
+                {   "AzureNativeSqlDatabasePointInTimeRestoreWindow", new List<string> {
+                        "azureSqlDatabaseDbPointInTimeRestoreWindowFromAzure",
+                        "azureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure",
+                    }
+                },
+                {   "AzureNativeSubscription", new List<string> {
+                        "azureNativeSubscription",
+                    }
+                },
+                {   "AzureNativeSubscriptionConnection", new List<string> {
+                        "azureNativeSubscriptions",
+                    }
+                },
+                {   "AzureNativeVirtualMachine", new List<string> {
+                        "azureNativeVirtualMachine",
+                    }
+                },
+                {   "AzureNativeVirtualMachineConnection", new List<string> {
+                        "azureNativeVirtualMachines",
+                    }
+                },
+                {   "AzureNetworkSecurityGroupResp", new List<string> {
+                        "azureO365CheckNSGOutboundRules",
+                    }
+                },
+                {   "AzureNetworkSubnetResp", new List<string> {
+                        "azureO365CheckNetworkSubnet",
+                    }
+                },
+                {   "AzureNetworkSubnetUnusedAddrResp", new List<string> {
+                        "azureO365GetNetworkSubnetUnusedAddr",
+                    }
+                },
+                {   "AzureOauthConsentKickoffReply", new List<string> {
+                        "azureOauthConsentKickoff",
+                    }
+                },
+                {   "AzureRegionsResp", new List<string> {
+                        "allHostedAzureRegions",
+                    }
+                },
+                {   "AzureResourceAvailabilityResp", new List<string> {
+                        "azureO365CheckResourceGroupName",
+                        "azureO365CheckStorageAccountAccessibility",
+                        "azureO365CheckStorageAccountName",
+                        "azureO365CheckSubscriptionQuota",
+                        "azureO365CheckVirtualNetworkName",
+                    }
+                },
+                {   "AzureSqlDatabaseDb", new List<string> {
+                        "azureSqlDatabase",
+                    }
+                },
+                {   "AzureSqlDatabaseDbConnection", new List<string> {
+                        "azureSqlDatabases",
+                    }
+                },
+                {   "AzureSqlDatabaseServer", new List<string> {
+                        "azureSqlDatabaseServer",
+                    }
+                },
+                {   "AzureSqlDatabaseServerConnection", new List<string> {
+                        "azureSqlDatabaseServers",
+                    }
+                },
+                {   "AzureSqlManagedInstanceDatabase", new List<string> {
+                        "azureSqlManagedInstanceDatabase",
+                    }
+                },
+                {   "AzureSqlManagedInstanceDatabaseConnection", new List<string> {
+                        "azureSqlManagedInstanceDatabases",
+                    }
+                },
+                {   "AzureSqlManagedInstanceServer", new List<string> {
+                        "azureSqlManagedInstanceServer",
+                    }
+                },
+                {   "AzureSqlManagedInstanceServerConnection", new List<string> {
+                        "azureSqlManagedInstanceServers",
+                    }
+                },
+                {   "AzureSubscriptionConnection", new List<string> {
+                        "azureSubscriptions",
+                    }
+                },
+                {   "AzureUserRoleResp", new List<string> {
+                        "azureO365ValidateUserRoles",
+                    }
+                },
+                {   "BatchAsyncJobStatus", new List<string> {
+                        "backupO365Mailbox",
+                        "backupO365Onedrive",
+                        "backupO365SharepointDrive",
+                        "backupO365Team",
+                        "createConfigProtectionBackup",
+                        "gcpNativeRefreshProjects",
+                        "runPrechecks",
+                        "setupCloudNativeSqlServerBackup",
+                        "startAwsNativeEc2InstanceSnapshotsJob",
+                        "startAwsNativeRdsInstanceSnapshotsJob",
+                        "startCloudNativeSnapshotsIndexJob",
+                        "startCreateAwsNativeEbsVolumeSnapshotsJob",
+                        "startCreateAzureNativeManagedDiskSnapshotsJob",
+                        "startCreateAzureNativeVirtualMachineSnapshotsJob",
+                        "startDisableAzureCloudAccountJob",
+                        "startRefreshAwsNativeAccountsJob",
+                        "startRefreshAzureNativeSubscriptionsJob",
+                        "takeSaasOnDemandSnapshot",
+                    }
+                },
+                {   "BatchAsyncRequestStatus", new List<string> {
+                        "bulkDeleteNasSystems",
+                        "createNutanixPrismCentral",
+                        "deleteNutanixPrismCentral",
+                        "refreshNutanixPrismCentral",
+                        "vsphereBulkOnDemandSnapshot",
+                        "vsphereVmBatchExport",
+                        "vsphereVmBatchExportV3",
+                        "vsphereVmBatchInPlaceRecovery",
+                        "vSphereVMBatchLiveMount",
+                        "vsphereVmInitiateBatchInstantRecovery",
+                        "vsphereVmInitiateBatchLiveMountV2",
+                    }
+                },
+                {   "BatchExportHypervVmReply", new List<string> {
+                        "batchExportHypervVm",
+                    }
+                },
+                {   "BatchExportNutanixVmReply", new List<string> {
+                        "batchExportNutanixVm",
+                    }
+                },
+                {   "BatchInstantRecoverHypervVmReply", new List<string> {
+                        "batchInstantRecoverHypervVm",
+                    }
+                },
+                {   "BatchMountHypervVmReply", new List<string> {
+                        "batchMountHypervVm",
+                    }
+                },
+                {   "BatchMountNutanixVmReply", new List<string> {
+                        "batchMountNutanixVm",
+                    }
+                },
+                {   "BatchOnDemandBackupHypervVmReply", new List<string> {
+                        "batchOnDemandBackupHypervVm",
+                    }
+                },
+                {   "BatchQuarantineSnapshotReply", new List<string> {
+                        "batchQuarantineSnapshot",
+                    }
+                },
+                {   "BatchReleaseFromQuarantineSnapshotReply", new List<string> {
+                        "batchReleaseFromQuarantineSnapshot",
+                    }
+                },
+                {   "BatchVmwareCdpLiveInfo", new List<string> {
+                        "vsphereVmwareCdpLiveInfo",
+                    }
+                },
+                {   "BatchVmwareVmRecoverableRanges", new List<string> {
+                        "vsphereVMRecoverableRangeInBatch",
+                    }
+                },
+                {   "BeginManagedVolumeSnapshotReply", new List<string> {
+                        "beginManagedVolumeSnapshot",
+                    }
+                },
+                {   "Blueprint", new List<string> {
+                        "blueprint",
+                    }
+                },
+                {   "BlueprintConnection", new List<string> {
+                        "blueprintConnection",
+                    }
+                },
+                {   "BlueprintNew", new List<string> {
+                        "blueprintNew",
+                        "createBlueprint",
+                        "updateBlueprint",
+                    }
+                },
+                {   "BlueprintNewConnection", new List<string> {
+                        "allBlueprints",
+                    }
+                },
+                {   "BlueprintRecoverySpecs", new List<string> {
+                        "blueprintRecoverySpecs",
+                    }
+                },
+                {   "Boolean", new List<string> {
+                        "addInventoryWorkloads",
+                        "addRoleAssignments",
+                        "addSyslogConfiguration",
+                        "areClusterAlertsPaused",
+                        "areMultiGeoBackupsEnabled",
+                        "batchDeassignRoleFromUserGroups",
+                        "cancelActivitySeries",
+                        "changePassword",
+                        "cloudNativeCheckRequiredPermissionsForFeature",
+                        "configureDns",
+                        "configureNtp",
+                        "deleteAccountSettingValue",
+                        "deleteBlueprint",
+                        "deleteBlueprints",
+                        "deleteCertificate",
+                        "deleteCloudWorkloadSnapshot",
+                        "deleteGuestCredentialById",
+                        "deleteLdapPrincipals",
+                        "deleteOrg",
+                        "deleteReport",
+                        "deleteRole",
+                        "deleteServiceAccountsFromAccount",
+                        "deleteSmtpConfiguration",
+                        "deleteSyslogConfiguration",
+                        "deleteTotpConfig",
+                        "deleteTotpConfigs",
+                        "deleteUsersFromAccount",
+                        "doesAzureNativeResourceGroupExist",
+                        "dummyFieldWithAdminOnlyTag",
+                        "enableTprOrg",
+                        "gcpCloudAccountAddManualAuthProject",
+                        "gcpSetDefaultServiceAccountJwtConfig",
+                        "hasIdpConfigured",
+                        "inviteSsoGroup",
+                        "isAwsNativeRdsInstanceLaunchConfigurationValid",
+                        "isAwsS3BucketNameAvailable",
+                        "isAzureNativeManagedDiskSnapshotRestorable",
+                        "isAzureNativeSqlDatabaseSnapshotPersistent",
+                        "isAzureStorageAccountNameAvailable",
+                        "isSfdcReachable",
+                        "isTotpAckNecessaryForCluster",
+                        "isTotpMandatoryInTargetVersion",
+                        "isValidTprPolicyName",
+                        "isVMwareManagementEnabled",
+                        "lockIsolatedRecovery",
+                        "patchAwsAuthenticationServerBasedCloudAccount",
+                        "patchAwsIamUserBasedCloudAccount",
+                        "removeCdmCluster",
+                        "removeInventoryWorkloads",
+                        "removeLdapIntegration",
+                        "sendScheduledReport",
+                        "sendTestSmtpEmail",
+                        "sendTestSyslog",
+                        "setAzureCloudAccountCustomerAppCredentials",
+                        "setFederatedLoginStatus",
+                        "setIpWhitelistEnabled",
+                        "setLdapMfaSetting",
+                        "setMfaSetting",
+                        "setSmtpConfiguration",
+                        "setTotpConfig",
+                        "setUserLevelTotpEnforcement",
+                        "setWwwTlsCert",
+                        "teamChannelNameAvailable",
+                        "toggleFeatureEnabled",
+                        "toggleVMwareManagementEnabled",
+                        "updateAccountOwner",
+                        "updateCertificate",
+                        "updateClassificationBannerEnabled",
+                        "updateClassificationBannerSettings",
+                        "updateClassificationLoginEnabled",
+                        "updateClassificationLoginSettings",
+                        "updateEulaAccepted",
+                        "updateIpWhitelist",
+                        "updateReport",
+                        "updateRole",
+                        "updateRoleAssignments",
+                        "upgradeAwsCloudAccountFeaturesWithoutCft",
+                        "upgradeAwsIamUserBasedCloudAccountPermissions",
+                        "verifyVappTemplateName",
+                        "warmCloudNativeIndexCache",
+                        "warmSearchCache",
+                    }
+                },
+                {   "BootstrappableNodeInfoListResponse", new List<string> {
+                        "discoverNodes",
+                    }
+                },
+                {   "BrowseMssqlDatabaseSnapshotReply", new List<string> {
+                        "browseMssqlDatabaseSnapshot",
+                    }
+                },
+                {   "BrowseResponseListResponse", new List<string> {
+                        "filesetSnapshotFiles",
+                        "nutanixBrowseSnapshot",
+                        "snapMirrorCloudSnapshotFiles",
+                    }
+                },
+                {   "BulkAddKmipServerReply", new List<string> {
+                        "bulkAddKmipServer",
+                    }
+                },
+                {   "BulkCreateFilesetTemplatesReply", new List<string> {
+                        "bulkCreateFilesetTemplates",
+                    }
+                },
+                {   "BulkCreateFilesetsReply", new List<string> {
+                        "bulkCreateFilesets",
+                    }
+                },
+                {   "BulkCreateNasFilesetsReply", new List<string> {
+                        "bulkCreateNasFilesets",
+                    }
+                },
+                {   "BulkDeleteAwsCloudAccountWithoutCftReply", new List<string> {
+                        "bulkDeleteAwsCloudAccountWithoutCft",
+                    }
+                },
+                {   "BulkOnDemandSnapshotNutanixVmReply", new List<string> {
+                        "bulkOnDemandSnapshotNutanixVm",
+                    }
+                },
+                {   "BulkRecoveryProgressReply", new List<string> {
+                        "bulkRecoveryProgress",
+                    }
+                },
+                {   "BulkRefreshHostsReply", new List<string> {
+                        "bulkRefreshHosts",
+                    }
+                },
+                {   "BulkRegisterHostReply", new List<string> {
+                        "bulkRegisterHost",
+                    }
+                },
+                {   "BulkRotateClusterEncryptionKeyReply", new List<string> {
+                        "bulkRotateClusterEncryptionKey",
+                    }
+                },
+                {   "BulkUpdateFilesetTemplateReply", new List<string> {
+                        "bulkUpdateFilesetTemplate",
+                    }
+                },
+                {   "BulkUpdateHostReply", new List<string> {
+                        "bulkUpdateHost",
+                    }
+                },
+                {   "BulkUpdateMssqlDbsReply", new List<string> {
+                        "bulkUpdateMssqlDbs",
+                    }
+                },
+                {   "BulkUpdateOracleDatabasesReply", new List<string> {
+                        "bulkUpdateOracleDatabases",
+                    }
+                },
+                {   "BulkUpdateOracleHostsReply", new List<string> {
+                        "bulkUpdateOracleHosts",
+                    }
+                },
+                {   "BulkUpdateOracleRacsReply", new List<string> {
+                        "bulkUpdateOracleRacs",
+                    }
+                },
+                {   "BulkUpdateSnapMirrorCloudReply", new List<string> {
+                        "bulkUpdateSnapMirrorCloud",
+                    }
+                },
+                {   "CancelBulkRecoveryReply", new List<string> {
+                        "cancelBulkRecovery",
+                    }
+                },
+                {   "CancelJobReply", new List<string> {
+                        "cancelDownloadPackage",
+                        "cancelScheduledUpgrade",
+                    }
+                },
+                {   "CassandraColumnFamily", new List<string> {
+                        "cassandraColumnFamily",
+                    }
+                },
+                {   "CassandraColumnFamilyConnection", new List<string> {
+                        "cassandraColumnFamilies",
+                    }
+                },
+                {   "CassandraKeyspace", new List<string> {
+                        "cassandraKeyspace",
+                    }
+                },
+                {   "CassandraKeyspaceConnection", new List<string> {
+                        "cassandraKeyspaces",
+                    }
+                },
+                {   "CassandraSource", new List<string> {
+                        "cassandraSource",
+                    }
+                },
+                {   "CassandraSourceConnection", new List<string> {
+                        "cassandraSources",
+                    }
+                },
+                {   "CcProvisionJobReply", new List<string> {
+                        "addNodesToCloudCluster",
+                        "createAwsCluster",
+                        "createAzureCluster",
+                        "deleteAwsCluster",
+                        "deleteAzureCluster",
+                        "recoverCloudCluster",
+                        "removeCloudClusterNodes",
+                        "removeClusterNodes",
+                    }
+                },
+                {   "CdmHierarchyObjectConnection", new List<string> {
+                        "nasTopLevelDescendants",
+                        "nutanixTopLevelDescendants",
+                        "vSphereRootRecoveryHierarchy",
+                        "vSphereTopLevelDescendantsConnection",
+                    }
+                },
+                {   "CdmHierarchySnappableNew", new List<string> {
+                        "cdmHierarchySnappableNew",
+                    }
+                },
+                {   "CdmInventorySubHierarchyRoot", new List<string> {
+                        "cdmInventorySubHierarchyRoot",
+                    }
+                },
+                {   "CdmSnapshot", new List<string> {
+                        "snapshot",
+                    }
+                },
+                {   "CdmUpgradeAvailabilityReply", new List<string> {
+                        "isUpgradeAvailable",
+                    }
+                },
+                {   "CdmUpgradeRecommendationReply", new List<string> {
+                        "isUpgradeRecommended",
+                    }
+                },
+                {   "CdmUpgradeReleaseDetailsFromSupportPortalReply", new List<string> {
+                        "getCdmReleaseDetailsForClusterFromSupportPortal",
+                        "getCdmReleaseDetailsForVersionFromSupportPortal",
+                        "getCdmReleaseDetailsFromSupportPortal",
+                    }
+                },
+                {   "CdpVmInfoConnection", new List<string> {
+                        "allCdpVmsInfos",
+                    }
+                },
+                {   "CertificateConnection", new List<string> {
+                        "certificates",
+                        "certificatesWithKey",
+                    }
+                },
+                {   "CertificateInfo", new List<string> {
+                        "wwwTlsCert",
+                    }
+                },
+                {   "CertificateSummaryListResponse", new List<string> {
+                        "clusterCertificates",
+                    }
+                },
+                {   "ChangeSummary", new List<string> {
+                        "jiraChangeSummary",
+                    }
+                },
+                {   "ChangeVfdOnHostReply", new List<string> {
+                        "changeVfdOnHost",
+                    }
+                },
+                {   "ChartDataResult", new List<string> {
+                        "reportChartData",
+                    }
+                },
+                {   "ChatReply", new List<string> {
+                        "testChat",
+                    }
+                },
+                {   "CheckArchivedSnapshotsLockedReply", new List<string> {
+                        "cloudNativeCheckArchivedSnapshotsLocked",
+                    }
+                },
+                {   "CheckAzurePersistentStorageSubscriptionCanUnmapReply", new List<string> {
+                        "checkAzurePersistentStorageSubscriptionCanUnmap",
+                    }
+                },
+                {   "CheckGuestOsReply", new List<string> {
+                        "checkGuestOsForAppBlueprint",
+                    }
+                },
+                {   "CheckVmwareVmsRecoveryPermissionReply", new List<string> {
+                        "vmwareVmsRecoveryPermissionCheck",
+                    }
+                },
+                {   "ClassificationBannerSettings", new List<string> {
+                        "classificationBannerSettings",
+                    }
+                },
+                {   "ClassificationLoginSettings", new List<string> {
+                        "classificationLoginSettings",
+                    }
+                },
+                {   "ClassificationPolicyDetail", new List<string> {
+                        "createPolicy",
+                        "policy",
+                        "updatePolicy",
+                    }
+                },
+                {   "ClassificationPolicyDetailConnection", new List<string> {
+                        "policies",
+                    }
+                },
+                {   "ClearCloudNativeSqlServerBackupCredentialsReply", new List<string> {
+                        "clearCloudNativeSqlServerBackupCredentials",
+                    }
+                },
+                {   "CloudAccount", new List<string> {
+                        "cloudAccount",
+                        "createAwsAccount",
+                        "createAzureAccount",
+                        "updateAwsAccount",
+                        "updateAzureAccount",
+                    }
+                },
+                {   "CloudDirectNasExport", new List<string> {
+                        "cloudDirectNasExport",
+                    }
+                },
+                {   "CloudDirectSnapshot", new List<string> {
+                        "cloudDirectSnapshot",
+                    }
+                },
+                {   "CloudDirectSnapshotConnection", new List<string> {
+                        "cloudDirectSnapshots",
+                    }
+                },
+                {   "CloudDirectSystems", new List<string> {
+                        "cloudDirectSystems",
+                    }
+                },
+                {   "CloudNativeCheckRbaConnectivityReply", new List<string> {
+                        "cloudNativeCheckRbaConnectivity",
+                    }
+                },
+                {   "CloudNativeCustomerTagsReply", new List<string> {
+                        "cloudNativeCustomerTags",
+                    }
+                },
+                {   "CloudNativeSnapshotDetailsForRecoveryReply", new List<string> {
+                        "cloudNativeSnapshotDetailsForRecovery",
+                    }
+                },
+                {   "CloudNativeSqlServerSetupScript", new List<string> {
+                        "cloudNativeSqlServerSetupScript",
+                    }
+                },
+                {   "CloudNativeVersionedFileConnection", new List<string> {
+                        "cloudNativeWorkloadVersionedFiles",
+                    }
+                },
+                {   "Cluster", new List<string> {
+                        "cluster",
+                        "updateClusterLocation",
+                        "updatePreviewerClusterConfig",
+                    }
+                },
+                {   "ClusterConnection", new List<string> {
+                        "allClusterConnection",
+                        "clusterConnection",
+                        "clusterWithConfigProtectionInfo",
+                        "clusterWithUpgradesInfo",
+                        "protectedClustersForGlobalSla",
+                        "radarClusterConnection",
+                    }
+                },
+                {   "ClusterCsr", new List<string> {
+                        "clusterCsr",
+                    }
+                },
+                {   "ClusterDnsReply", new List<string> {
+                        "clusterDns",
+                    }
+                },
+                {   "ClusterEncryptionInfoConnection", new List<string> {
+                        "clusterEncryptionInfo",
+                    }
+                },
+                {   "ClusterGroupByConnection", new List<string> {
+                        "clusterGroupByConnection",
+                    }
+                },
+                {   "ClusterIpv6ModeReply", new List<string> {
+                        "clusterIpv6Mode",
+                    }
+                },
+                {   "ClusterLicenseCapacityValidations", new List<string> {
+                        "validateClusterLicenseCapacity",
+                    }
+                },
+                {   "ClusterOperationJobProgress", new List<string> {
+                        "clusterOperationJobProgress",
+                    }
+                },
+                {   "ClusterProxyReply", new List<string> {
+                        "clusterProxy",
+                    }
+                },
+                {   "ClusterRegistrationProductInfoType", new List<string> {
+                        "clusterRegistrationProductInfo",
+                    }
+                },
+                {   "ClusterRegistrationToken", new List<string> {
+                        "generateClusterRegistrationToken",
+                    }
+                },
+                {   "ClusterReportMigrationJobStatus", new List<string> {
+                        "clusterReportMigrationJobStatus",
+                    }
+                },
+                {   "ClusterSlaDomainConnection", new List<string> {
+                        "clusterSlaDomains",
+                    }
+                },
+                {   "ClusterSlaDomainForFilterConnection", new List<string> {
+                        "clusterSlaDomainFilterConnection",
+                    }
+                },
+                {   "ClusterWebSignedCertificateReply", new List<string> {
+                        "clusterWebSignedCertificate",
+                    }
+                },
+                {   "CompleteAtlassianAuthConsentReply", new List<string> {
+                        "completeAtlassianAuthConsent",
+                    }
+                },
+                {   "CompleteAzureAdAppSetupReply", new List<string> {
+                        "completeAzureAdAppSetup",
+                    }
+                },
+                {   "CompleteAzureCloudAccountOauthReply", new List<string> {
+                        "completeAzureCloudAccountOauth",
+                    }
+                },
+                {   "ComputeBucketImmutabilityLockDurationReply", new List<string> {
+                        "computeBucketImmutabilityLockDuration",
+                    }
+                },
+                {   "ComputeClusterDetail", new List<string> {
+                        "computeClusterStatus",
+                    }
+                },
+                {   "ConfigProtectionBackupsConnection", new List<string> {
+                        "allConfigProtectionBackups",
+                    }
+                },
+                {   "ConfigProtectionSetupInfo", new List<string> {
+                        "configProtectionSetupInfo",
+                    }
+                },
+                {   "ConnectionStatus", new List<string> {
+                        "saasConnectionStatus",
+                    }
+                },
+                {   "CountOfObjectsProtectedBySLAsResult", new List<string> {
+                        "countOfObjectsProtectedBySlas",
+                    }
+                },
+                {   "Crawl", new List<string> {
+                        "crawl",
+                    }
+                },
+                {   "CrawlConnection", new List<string> {
+                        "crawls",
+                    }
+                },
+                {   "CreateAwsExocomputeConfigsReply", new List<string> {
+                        "createAwsExocomputeConfigs",
+                    }
+                },
+                {   "CreateAzureSaasAppAadReply", new List<string> {
+                        "createAzureSaasAppAad",
+                    }
+                },
+                {   "CreateCloudNativeAwsStorageSettingReply", new List<string> {
+                        "createCloudNativeAwsStorageSetting",
+                    }
+                },
+                {   "CreateCloudNativeAzureStorageSettingReply", new List<string> {
+                        "createCloudNativeAzureStorageSetting",
+                    }
+                },
+                {   "CreateCloudNativeLabelRuleReply", new List<string> {
+                        "createCloudNativeLabelRule",
+                    }
+                },
+                {   "CreateCloudNativeRcvAzureStorageSettingReply", new List<string> {
+                        "createCloudNativeRcvAzureStorageSetting",
+                    }
+                },
+                {   "CreateCloudNativeTagRuleReply", new List<string> {
+                        "createCloudNativeTagRule",
+                    }
+                },
+                {   "CreateCustomReportReply", new List<string> {
+                        "createCustomReport",
+                    }
+                },
+                {   "CreateFailoverClusterAppReply", new List<string> {
+                        "createFailoverClusterApp",
+                    }
+                },
+                {   "CreateFailoverClusterReply", new List<string> {
+                        "createFailoverCluster",
+                    }
+                },
+                {   "CreateGuestCredentialReply", new List<string> {
+                        "createGuestCredential",
+                    }
+                },
+                {   "CreateIntegrationReply", new List<string> {
+                        "createIntegration",
+                    }
+                },
+                {   "CreateIntegrationsReply", new List<string> {
+                        "createIntegrations",
+                    }
+                },
+                {   "CreateK8sAgentManifestReply", new List<string> {
+                        "createK8sAgentManifest",
+                    }
+                },
+                {   "CreateK8sClusterReply", new List<string> {
+                        "createK8sCluster",
+                    }
+                },
+                {   "CreateLegalHoldReply", new List<string> {
+                        "createLegalHold",
+                    }
+                },
+                {   "CreateO365AppKickoffResp", new List<string> {
+                        "createO365AppKickoff",
+                    }
+                },
+                {   "CreateOnDemandJobReply", new List<string> {
+                        "backupO365SharepointList",
+                        "backupO365SharePointSite",
+                        "blueprintFailoverReportGenerate",
+                        "cleanupBlueprintFailover",
+                        "cleanupIsolatedRecovery",
+                        "deleteAzureAdDirectory",
+                        "deleteO365Org",
+                        "exportK8sNamespace",
+                        "exportO365Mailbox",
+                        "exportO365TeamsFiles",
+                        "exportO365Workload",
+                        "promoteRecovery",
+                        "refreshK8sCluster",
+                        "refreshO365Org",
+                        "restoreK8sNamespace",
+                        "restoreO365Mailbox",
+                        "restoreO365Snappable",
+                        "restoreO365TeamsConversations",
+                        "restoreO365TeamsFiles",
+                        "startBlueprintFailover",
+                        "startCyberRecovery",
+                    }
+                },
+                {   "CreateOrgNetworkReply", new List<string> {
+                        "createOrgNetwork",
+                    }
+                },
+                {   "CreateOrgReply", new List<string> {
+                        "createOrg",
+                    }
+                },
+                {   "CreateOrgSwitchSessionReply", new List<string> {
+                        "createOrgSwitchSession",
+                    }
+                },
+                {   "CreatePolarisReportReply", new List<string> {
+                        "createPolarisReport",
+                    }
+                },
+                {   "CreateRcvPrivateEndpointApprovalRequestReply", new List<string> {
+                        "createRcvPrivateEndpointApprovalRequest",
+                    }
+                },
+                {   "CreateScheduleReply", new List<string> {
+                        "createRecoverySchedule",
+                    }
+                },
+                {   "CreateScheduledReportReply", new List<string> {
+                        "createScheduledReport",
+                    }
+                },
+                {   "CreateServiceAccountReply", new List<string> {
+                        "createServiceAccount",
+                    }
+                },
+                {   "CreateSnapMirrorCloudRelationshipReply", new List<string> {
+                        "createSnapMirrorCloudRelationship",
+                    }
+                },
+                {   "CreateSnapMirrorCloudReply", new List<string> {
+                        "createSnapMirrorCloud",
+                    }
+                },
+                {   "CreateSupportCaseReply", new List<string> {
+                        "createSupportCase",
+                    }
+                },
+                {   "CreateTprPolicyReply", new List<string> {
+                        "createTprPolicy",
+                    }
+                },
+                {   "CreateVappSnapshotsReply", new List<string> {
+                        "createVappSnapshots",
+                    }
+                },
+                {   "CreateVappsInstantRecoveryReply", new List<string> {
+                        "createVappsInstantRecovery",
+                    }
+                },
+                {   "CreateVsphereAdvancedTagReply", new List<string> {
+                        "createVsphereAdvancedTag",
+                    }
+                },
+                {   "CreateVsphereVcenterReply", new List<string> {
+                        "createVsphereVcenter",
+                    }
+                },
+                {   "CreateWebhookReply", new List<string> {
+                        "createWebhook",
+                    }
+                },
+                {   "Csr", new List<string> {
+                        "certificateSigningRequest",
+                        "generateCsr",
+                    }
+                },
+                {   "CsrConnection", new List<string> {
+                        "certificateSigningRequests",
+                    }
+                },
+                {   "CustomReport", new List<string> {
+                        "report",
+                        "reportFromConfig",
+                    }
+                },
+                {   "CustomReportConnection", new List<string> {
+                        "reportConnection",
+                    }
+                },
+                {   "CustomReportGroupByConnection", new List<string> {
+                        "reportGroupByConnection",
+                    }
+                },
+                {   "CustomTprPolicyConnection", new List<string> {
+                        "customTprPolicies",
+                    }
+                },
+                {   "CyberRecoveryObjectConnection", new List<string> {
+                        "cyberRecoveryObjects",
+                    }
+                },
+                {   "DataDiscoveryObjectsCount", new List<string> {
+                        "dataDiscoveryObjectsCount",
+                    }
+                },
+                {   "DatastoresListResponse", new List<string> {
+                        "vsphereVMListESXiDatastores",
+                    }
+                },
+                {   "Db2Database", new List<string> {
+                        "db2Database",
+                    }
+                },
+                {   "Db2DatabaseConnection", new List<string> {
+                        "db2Databases",
+                    }
+                },
+                {   "Db2Instance", new List<string> {
+                        "db2Instance",
+                    }
+                },
+                {   "Db2InstanceConnection", new List<string> {
+                        "db2Instances",
+                    }
+                },
+                {   "Db2LogSnapshot", new List<string> {
+                        "db2LogSnapshot",
+                    }
+                },
+                {   "Db2LogSnapshotConnection", new List<string> {
+                        "db2LogSnapshots",
+                    }
+                },
+                {   "Db2RecoverableRange", new List<string> {
+                        "db2RecoverableRange",
+                    }
+                },
+                {   "Db2RecoverableRangeConnection", new List<string> {
+                        "db2RecoverableRanges",
+                    }
+                },
+                {   "DbLogReportProperties", new List<string> {
+                        "databaseLogReportingPropertiesForCluster",
+                        "updateDatabaseLogReportingPropertiesForCluster",
+                    }
+                },
+                {   "DbLogReportSummaryListReply", new List<string> {
+                        "databaseLogReportForCluster",
+                    }
+                },
+                {   "DeleteAwsCloudAccountWithoutCftReply", new List<string> {
+                        "deleteAwsCloudAccountWithoutCft",
+                    }
+                },
+                {   "DeleteAwsExocomputeConfigsReply", new List<string> {
+                        "deleteAwsExocomputeConfigs",
+                    }
+                },
+                {   "DeleteAwsIamUserBasedCloudAccountReply", new List<string> {
+                        "deleteAwsIamUserBasedCloudAccount",
+                    }
+                },
+                {   "DeleteAzureCloudAccountExocomputeConfigurationsReply", new List<string> {
+                        "deleteAzureCloudAccountExocomputeConfigurations",
+                    }
+                },
+                {   "DeleteAzureCloudAccountReply", new List<string> {
+                        "deleteAzureCloudAccount",
+                    }
+                },
+                {   "DeleteAzureCloudAccountWithoutOauthReply", new List<string> {
+                        "deleteAzureCloudAccountWithoutOauth",
+                    }
+                },
+                {   "DeleteBlueprintRecoverySpecReply", new List<string> {
+                        "deleteRecoverySpec",
+                    }
+                },
+                {   "DeleteFailedClusterOperationJobDataReply", new List<string> {
+                        "deleteFailedClusterOperationJobData",
+                    }
+                },
+                {   "DeleteGlobalCertificateReply", new List<string> {
+                        "deleteGlobalCertificate",
+                    }
+                },
+                {   "DeleteKmipServerReply", new List<string> {
+                        "deleteKmipServer",
+                    }
+                },
+                {   "DeleteManagedVolumeReply", new List<string> {
+                        "deleteManagedVolume",
+                    }
+                },
+                {   "DeleteStorageArraysReply", new List<string> {
+                        "deleteStorageArrays",
+                    }
+                },
+                {   "DeleteVappSnapshotsReply", new List<string> {
+                        "deleteVappSnapshots",
+                    }
+                },
+                {   "DeleteVcdInstancesReply", new List<string> {
+                        "deleteVcdInstances",
+                    }
+                },
+                {   "DiffResult", new List<string> {
+                        "diffFmd",
+                        "searchFileByPrefix",
+                    }
+                },
+                {   "DisableTargetReply", new List<string> {
+                        "disableTarget",
+                    }
+                },
+                {   "DiskInfo", new List<string> {
+                        "setupDisk",
+                    }
+                },
+                {   "DissolveLegalHoldReply", new List<string> {
+                        "dissolveLegalHold",
+                    }
+                },
+                {   "DownloadCdmUpgradesPdfReply", new List<string> {
+                        "downloadCdmUpgradesPdf",
+                    }
+                },
+                {   "DownloadCsvReply", new List<string> {
+                        "downloadObjectFilesCsv",
+                        "downloadObjectsListCsv",
+                        "downloadSnapshotResultsCsv",
+                        "downloadUserActivityCsv",
+                        "downloadUserFileActivityCsv",
+                    }
+                },
+                {   "DownloadFilesReply", new List<string> {
+                        "cloudNativeDownloadFiles",
+                    }
+                },
+                {   "DownloadLink", new List<string> {
+                        "downloadReportLink",
+                        "downloadReportPdfLink",
+                    }
+                },
+                {   "DownloadPackageReply", new List<string> {
+                        "retryDownloadPackageJob",
+                    }
+                },
+                {   "DownloadPackageStatusReply", new List<string> {
+                        "downloadPackageStatus",
+                    }
+                },
+                {   "DownloadResultsCsvReply", new List<string> {
+                        "downloadResultsCsv",
+                    }
+                },
+                {   "DownloadSlaWithReplicationCsvReply", new List<string> {
+                        "downloadSlaWithReplicationCsv",
+                    }
+                },
+                {   "DownloadThreatHuntCsvReply", new List<string> {
+                        "downloadThreatHuntCsv",
+                    }
+                },
+                {   "EdgeWindowsToolLink", new List<string> {
+                        "edgeWindowsToolLink",
+                    }
+                },
+                {   "EnableAutomaticFmdUploadReply", new List<string> {
+                        "enableAutomaticFmdUpload",
+                    }
+                },
+                {   "EnableDisableAppConsistencyReply", new List<string> {
+                        "enableDisableAppConsistency",
+                    }
+                },
+                {   "EnableLambdaForSnappableReply", new List<string> {
+                        "enableLambdaForWorkload",
+                    }
+                },
+                {   "EnableTargetReply", new List<string> {
+                        "enableTarget",
+                    }
+                },
+                {   "EndManagedVolumeSnapshotReply", new List<string> {
+                        "endManagedVolumeSnapshot",
+                    }
+                },
+                {   "EnvoyRegistrationToken", new List<string> {
+                        "envoyRegistrationToken",
+                    }
+                },
+                {   "ExchangeDag", new List<string> {
+                        "exchangeDag",
+                    }
+                },
+                {   "ExchangeDagConnection", new List<string> {
+                        "exchangeDags",
+                    }
+                },
+                {   "ExchangeDatabase", new List<string> {
+                        "exchangeDatabase",
+                    }
+                },
+                {   "ExchangeDatabaseConnection", new List<string> {
+                        "exchangeDatabases",
+                    }
+                },
+                {   "ExchangeLiveMountConnection", new List<string> {
+                        "exchangeLiveMounts",
+                    }
+                },
+                {   "ExchangeServer", new List<string> {
+                        "exchangeServer",
+                    }
+                },
+                {   "ExchangeServerConnection", new List<string> {
+                        "exchangeServers",
+                    }
+                },
+                {   "ExportUrlSpecs", new List<string> {
+                        "decryptExportUrl",
+                    }
+                },
+                {   "ExtendRscAutoUpgradeDateReply", new List<string> {
+                        "extendRscAutoUpgradeDate",
+                    }
+                },
+                {   "Failover", new List<string> {
+                        "failover",
+                    }
+                },
+                {   "FailoverClusterApp", new List<string> {
+                        "failoverClusterApp",
+                    }
+                },
+                {   "FailoverClusterAppConnection", new List<string> {
+                        "failoverClusterApps",
+                    }
+                },
+                {   "FailoverClusterTopLevelDescendantTypeConnection", new List<string> {
+                        "failoverClusterTopLevelDescendants",
+                    }
+                },
+                {   "FailoverConnection", new List<string> {
+                        "failoverConnection",
+                    }
+                },
+                {   "FailoverGroupByConnection", new List<string> {
+                        "failoverGroupByConnection",
+                    }
+                },
+                {   "FailoverJobReportConnection", new List<string> {
+                        "failoverJobReports",
+                    }
+                },
+                {   "FailoverReport", new List<string> {
+                        "failoverReport",
+                    }
+                },
+                {   "FailoverSourceConnection", new List<string> {
+                        "failoverAllSourceConnection",
+                    }
+                },
+                {   "FailoverTargetSiteConnection", new List<string> {
+                        "failoverAllTargetSiteConnection",
+                    }
+                },
+                {   "FakeDataConnection", new List<string> {
+                        "fetchFakeData",
+                    }
+                },
+                {   "FeatureCdmVersionReply", new List<string> {
+                        "cdmVersionCheck",
+                    }
+                },
+                {   "FeatureFlag", new List<string> {
+                        "featureFlag",
+                    }
+                },
+                {   "FeatureFlagAll", new List<string> {
+                        "featureFlagAll",
+                    }
+                },
+                {   "FeatureListMinimumCdmVersionReply", new List<string> {
+                        "minimumCdmVersionForFeatureSet",
+                    }
+                },
+                {   "FederatedLoginStatus", new List<string> {
+                        "federatedLoginStatus",
+                    }
+                },
+                {   "FileMatchConnection", new List<string> {
+                        "threatMonitoringMatchedFiles",
+                    }
+                },
+                {   "FileResultConnection", new List<string> {
+                        "objectFiles",
+                        "userActivities",
+                    }
+                },
+                {   "FilesetSnapshotDetail", new List<string> {
+                        "filesetSnapshot",
+                    }
+                },
+                {   "FilesetTemplate", new List<string> {
+                        "filesetTemplate",
+                    }
+                },
+                {   "FilesetTemplateConnection", new List<string> {
+                        "filesetTemplates",
+                    }
+                },
+                {   "FinalizeAwsCloudAccountDeletionReply", new List<string> {
+                        "finalizeAwsCloudAccountDeletion",
+                    }
+                },
+                {   "FinalizeAwsCloudAccountProtectionReply", new List<string> {
+                        "finalizeAwsCloudAccountProtection",
+                    }
+                },
+                {   "GcpCloudAccountAddProjectsReply", new List<string> {
+                        "gcpCloudAccountAddProjects",
+                    }
+                },
+                {   "GcpCloudAccountDeleteProjectsReply", new List<string> {
+                        "gcpCloudAccountDeleteProjects",
+                    }
+                },
+                {   "GcpCloudAccountOauthCompleteReply", new List<string> {
+                        "gcpCloudAccountOauthComplete",
+                    }
+                },
+                {   "GcpCloudAccountOauthInitiateReply", new List<string> {
+                        "gcpCloudAccountOauthInitiate",
+                    }
+                },
+                {   "GcpCloudAccountUpgradeProjectsReply", new List<string> {
+                        "gcpCloudAccountUpgradeProjects",
+                    }
+                },
+                {   "GcpNativeDisk", new List<string> {
+                        "gcpNativeDisk",
+                    }
+                },
+                {   "GcpNativeDiskConnection", new List<string> {
+                        "gcpNativeDisks",
+                    }
+                },
+                {   "GcpNativeGceInstance", new List<string> {
+                        "gcpNativeGceInstance",
+                    }
+                },
+                {   "GcpNativeGceInstanceConnection", new List<string> {
+                        "gcpNativeGceInstances",
+                    }
+                },
+                {   "GcpNativeProject", new List<string> {
+                        "gcpNativeProject",
+                    }
+                },
+                {   "GcpNativeProjectConnection", new List<string> {
+                        "gcpNativeProjects",
+                    }
+                },
+                {   "GenerateConfigProtectionRestoreFormReply", new List<string> {
+                        "generateConfigProtectionRestoreForm",
+                    }
+                },
+                {   "GenerateTotpSecretReply", new List<string> {
+                        "generateTotpSecret",
+                    }
+                },
+                {   "GenericSnapshotConnection", new List<string> {
+                        "snapshotOfASnappableConnection",
+                        "snapshotOfSnappablesConnection",
+                    }
+                },
+                {   "GetAnomalyDetailsReply", new List<string> {
+                        "anomalyResultOpt",
+                    }
+                },
+                {   "GetAzureHostTypeResp", new List<string> {
+                        "azureO365GetAzureHostType",
+                    }
+                },
+                {   "GetAzureO365ExocomputeResp", new List<string> {
+                        "azureO365Exocompute",
+                    }
+                },
+                {   "GetCertificateInfoReply", new List<string> {
+                        "certificateInfo",
+                    }
+                },
+                {   "GetCloudNativeLabelRulesReply", new List<string> {
+                        "cloudNativeLabelRules",
+                    }
+                },
+                {   "GetCloudNativeTagRulesReply", new List<string> {
+                        "cloudNativeTagRules",
+                    }
+                },
+                {   "GetDashboardSummaryReply", new List<string> {
+                        "dashboardSummary",
+                    }
+                },
+                {   "GetHealthMonitorPolicyStatusReply", new List<string> {
+                        "getHealthMonitorPolicyStatus",
+                    }
+                },
+                {   "GetImplicitlyAuthorizedAncestorSummariesResponse", new List<string> {
+                        "o365ObjectAncestors",
+                    }
+                },
+                {   "GetImplicitlyAuthorizedObjectSummariesResponse", new List<string> {
+                        "o365OrgSummaries",
+                    }
+                },
+                {   "GetLambdaMalwareScanDetailReply", new List<string> {
+                        "malwareScanDetail",
+                    }
+                },
+                {   "GetLastInsightSyncReply", new List<string> {
+                        "latestInsightSync",
+                    }
+                },
+                {   "GetLicensedProductsInfoReply", new List<string> {
+                        "allLicensedProducts",
+                    }
+                },
+                {   "GetMfaSettingReply", new List<string> {
+                        "globalMfaSetting",
+                        "mfaSetting",
+                    }
+                },
+                {   "GetMosaicRecoverableRangeResponse", new List<string> {
+                        "cassandraColumnFamilyRecoverableRange",
+                        "mongodbCollectionRecoverableRange",
+                    }
+                },
+                {   "GetMountDetailsReply", new List<string> {
+                        "GetMountDetails",
+                    }
+                },
+                {   "GetO365ServiceStatusResp", new List<string> {
+                        "o365ServiceStatus",
+                    }
+                },
+                {   "GetO365StorageStatsResp", new List<string> {
+                        "o365StorageStats",
+                    }
+                },
+                {   "GetPendingSlaAssignmentsReply", new List<string> {
+                        "getPendingSlaAssignments",
+                    }
+                },
+                {   "GetPipelineHealthReply", new List<string> {
+                        "pipelineHealthForTimeRange",
+                    }
+                },
+                {   "GetPoliciesTimelineReply", new List<string> {
+                        "discoveryTimeline",
+                    }
+                },
+                {   "GetPrincipalRiskChangesReply", new List<string> {
+                        "principalRiskChanges",
+                    }
+                },
+                {   "GetPrincipalRiskSummaryReply", new List<string> {
+                        "allPrincipalRiskSummaries",
+                    }
+                },
+                {   "GetPrincipalRiskTrendReply", new List<string> {
+                        "principalRiskTrend",
+                    }
+                },
+                {   "GetS3BucketStateForRecoveryReply", new List<string> {
+                        "s3BucketStateForRecovery",
+                    }
+                },
+                {   "GetSMTPConfigurationReply", new List<string> {
+                        "smtpConfiguration",
+                    }
+                },
+                {   "GetSPExplicitReply", new List<string> {
+                        "serviceProviderMetadataFields",
+                    }
+                },
+                {   "GetSchemaResponse", new List<string> {
+                        "cassandraColumnFamilySchema",
+                    }
+                },
+                {   "GetSmbConfigurationReply", new List<string> {
+                        "smbConfiguration",
+                    }
+                },
+                {   "GetSyslogConfigurationReply", new List<string> {
+                        "syslogConfiguration",
+                    }
+                },
+                {   "GetTaskchainStatusReply", new List<string> {
+                        "getKorgTaskchainStatus",
+                    }
+                },
+                {   "GetTotpStatusReply", new List<string> {
+                        "totpConfigStatus",
+                    }
+                },
+                {   "GetTprConfigurationReply", new List<string> {
+                        "tprConfiguration",
+                    }
+                },
+                {   "GetUserDetailReply", new List<string> {
+                        "userDetail",
+                    }
+                },
+                {   "GetUserSessionManagementConfigReply", new List<string> {
+                        "userSessionManagementConfig",
+                    }
+                },
+                {   "GetUsersSummaryReply", new List<string> {
+                        "usersSummary",
+                    }
+                },
+                {   "GetWhitelistReply", new List<string> {
+                        "ipWhitelist",
+                    }
+                },
+                {   "GetWorkloadAlertSettingReply", new List<string> {
+                        "workloadAlertSetting",
+                    }
+                },
+                {   "GlobalCertificate", new List<string> {
+                        "globalCertificate",
+                    }
+                },
+                {   "GlobalCertificateConnection", new List<string> {
+                        "assignableGlobalCertificates",
+                        "globalCertificates",
+                    }
+                },
+                {   "GlobalFileSearchReply", new List<string> {
+                        "globalFileSearch",
+                    }
+                },
+                {   "GlobalFileSearchReplyType", new List<string> {
+                        "allGlobalFileSearchMultipleClusters",
+                    }
+                },
+                {   "GlobalManagerConnectivity", new List<string> {
+                        "refreshGlobalManagerConnectivityStatus",
+                    }
+                },
+                {   "GlobalSlaForFilterConnection", new List<string> {
+                        "globalSlaFilterConnection",
+                    }
+                },
+                {   "GlobalSlaReply", new List<string> {
+                        "createGlobalSla",
+                        "editGlobalSla",
+                        "updateGlobalSla",
+                    }
+                },
+                {   "GlobalSlaStatusConnection", new List<string> {
+                        "globalSlaStatuses",
+                    }
+                },
+                {   "GroupConnection", new List<string> {
+                        "groupsInCurrentAndDescendantOrganization",
+                    }
+                },
+                {   "GroupCountListWithTotal", new List<string> {
+                        "getGroupCountByCdmClusterStatus",
+                    }
+                },
+                {   "GroupedReleaseNoteConnection", new List<string> {
+                        "groupedReleasesNotes",
+                    }
+                },
+                {   "GuestCredentialDetailListResponse", new List<string> {
+                        "guestCredentials",
+                    }
+                },
+                {   "HelpContentSnippetConnection", new List<string> {
+                        "helpContentSnippets",
+                    }
+                },
+                {   "HierarchyObject", new List<string> {
+                        "hierarchyObject",
+                    }
+                },
+                {   "HierarchyObjectConnection", new List<string> {
+                        "globalSearchResults",
+                    }
+                },
+                {   "HierarchySnappableConnection", new List<string> {
+                        "hierarchySnappables",
+                    }
+                },
+                {   "HostDiagnosisSummary", new List<string> {
+                        "hostDiagnosis",
+                    }
+                },
+                {   "HostFailoverCluster", new List<string> {
+                        "hostFailoverCluster",
+                    }
+                },
+                {   "HostFailoverClusterConnection", new List<string> {
+                        "hostFailoverClusters",
+                    }
+                },
+                {   "HostShare", new List<string> {
+                        "hostShare",
+                    }
+                },
+                {   "HostShareConnection", new List<string> {
+                        "hostShares",
+                    }
+                },
+                {   "HotAddBandwidthInfo", new List<string> {
+                        "vCenterHotAddBandwidth",
+                    }
+                },
+                {   "HotAddNetworkConfigWithName", new List<string> {
+                        "vCenterHotAddNetwork",
+                    }
+                },
+                {   "HyperVCluster", new List<string> {
+                        "hypervCluster",
+                    }
+                },
+                {   "HyperVLiveMountConnection", new List<string> {
+                        "hypervMounts",
+                    }
+                },
+                {   "HyperVSCVMM", new List<string> {
+                        "hypervScvmm",
+                    }
+                },
+                {   "HyperVSCVMMConnection", new List<string> {
+                        "hypervScvmms",
+                    }
+                },
+                {   "HyperVVirtualMachine", new List<string> {
+                        "hypervVirtualMachine",
+                    }
+                },
+                {   "HyperVVirtualMachineConnection", new List<string> {
+                        "hypervVirtualMachines",
+                    }
+                },
+                {   "HypervHostSummaryListResponse", new List<string> {
+                        "hypervServers",
+                    }
+                },
+                {   "HypervScvmmUpdateReply", new List<string> {
+                        "hypervScvmmUpdate",
+                    }
+                },
+                {   "HypervServer", new List<string> {
+                        "hypervServer",
+                    }
+                },
+                {   "HypervTopLevelDescendantTypeConnection", new List<string> {
+                        "hypervTopLevelDescendants",
+                    }
+                },
+                {   "HypervVirtualMachineDetail", new List<string> {
+                        "hypervVmDetail",
+                    }
+                },
+                {   "IdentityProvider", new List<string> {
+                        "deleteIdentityProvider",
+                        "setIdentityProvider",
+                    }
+                },
+                {   "InitiateAzureAdAppUpdateReply", new List<string> {
+                        "initiateAzureAdAppUpdate",
+                    }
+                },
+                {   "Int", new List<string> {
+                        "createReport",
+                        "hostVolumesCount",
+                        "maxProtectedAppsCount",
+                        "uniqueHypervServersCount",
+                        "uniqueVcdCount",
+                        "uniqueVSphereVCenterCount",
+                        "unreadNotificationsCount",
+                        "vCenterNumProxiesNeeded",
+                    }
+                },
+                {   "InternalGetClusterIpsResponse", new List<string> {
+                        "clusterFloatingIps",
+                    }
+                },
+                {   "InternalGetDefaultGatewayResponse", new List<string> {
+                        "clusterDefaultGateway",
+                    }
+                },
+                {   "InternalJobInstanceDetail", new List<string> {
+                        "jobInstance",
+                    }
+                },
+                {   "InternalReplicationBandwidthIncomingResponse", new List<string> {
+                        "replicationIncomingStats",
+                    }
+                },
+                {   "InternalReplicationBandwidthOutgoingResponse", new List<string> {
+                        "replicationOutgoingStats",
+                    }
+                },
+                {   "InventoryRoot", new List<string> {
+                        "inventoryRoot",
+                    }
+                },
+                {   "InventorySubHierarchyRoot", new List<string> {
+                        "inventorySubHierarchyRoot",
+                    }
+                },
+                {   "InvestigationCsvDownloadLinkReply", new List<string> {
+                        "investigationCsvDownloadLink",
+                    }
+                },
+                {   "InviteUsersToTrialReply", new List<string> {
+                        "inviteUsersToTrial",
+                    }
+                },
+                {   "IsCloudNativeTagRuleNameUniqueReply", new List<string> {
+                        "checkCloudNativeLabelRuleNameUniqueness",
+                        "checkCloudNativeTagRuleNameUniqueness",
+                    }
+                },
+                {   "IsVolumeSnapshotRestorableReply", new List<string> {
+                        "isAwsNativeEbsVolumeSnapshotRestorable",
+                    }
+                },
+                {   "Issue", new List<string> {
+                        "issue",
+                    }
+                },
+                {   "IssueConnection", new List<string> {
+                        "issues",
+                    }
+                },
+                {   "ItemDiffBetweenSnapshotAndLiveEnvironment", new List<string> {
+                        "allComparisonsBetweenSaasAppSnapshotAndLive",
+                    }
+                },
+                {   "JiraIssueConnection", new List<string> {
+                        "jiraIssues",
+                    }
+                },
+                {   "JiraProjectConnection", new List<string> {
+                        "jiraProjects",
+                    }
+                },
+                {   "JiraSettingsConnection", new List<string> {
+                        "jiraSettings",
+                    }
+                },
+                {   "K8sAppManifest", new List<string> {
+                        "k8sAppManifest",
+                    }
+                },
+                {   "K8sCluster", new List<string> {
+                        "k8sCluster",
+                    }
+                },
+                {   "K8sClusterConnection", new List<string> {
+                        "k8sClusters",
+                    }
+                },
+                {   "K8sClusterSummary", new List<string> {
+                        "addK8sCluster",
+                    }
+                },
+                {   "K8sNamespace", new List<string> {
+                        "k8sNamespace",
+                    }
+                },
+                {   "K8sNamespaceConnection", new List<string> {
+                        "k8sNamespaces",
+                    }
+                },
+                {   "K8sResourceSetSummary", new List<string> {
+                        "addK8sResourceSet",
+                    }
+                },
+                {   "K8sSnapshotInfo", new List<string> {
+                        "k8sSnapshotInfo",
+                    }
+                },
+                {   "K8sSnapshotSummaryListResponse", new List<string> {
+                        "k8sResourceSetSnapshots",
+                    }
+                },
+                {   "KickoffAzureAdAppSetupReply", new List<string> {
+                        "kickoffAzureAdAppSetup",
+                    }
+                },
+                {   "KmipServerConnection", new List<string> {
+                        "kmipServerConnection",
+                    }
+                },
+                {   "KnowledgeBaseArticle", new List<string> {
+                        "knowledgeBaseArticle",
+                    }
+                },
+                {   "KubernetesCluster", new List<string> {
+                        "kubernetesCluster",
+                    }
+                },
+                {   "KubernetesClusterConnection", new List<string> {
+                        "kubernetesClusters",
+                    }
+                },
+                {   "KubernetesProtectionSet", new List<string> {
+                        "kubernetesProtectionSet",
+                    }
+                },
+                {   "KubernetesProtectionSetConnection", new List<string> {
+                        "kubernetesProtectionSets",
+                    }
+                },
+                {   "KubernetesResourceSet", new List<string> {
+                        "kubernetesResourceSet",
+                    }
+                },
+                {   "KubernetesResourceSetConnection", new List<string> {
+                        "kubernetesResourceSets",
+                    }
+                },
+                {   "LambdaSettings", new List<string> {
+                        "lambdaSettings",
+                        "updateLambdaSettings",
+                    }
+                },
+                {   "LdapIntegrationConnection", new List<string> {
+                        "ldapIntegrationConnection",
+                    }
+                },
+                {   "LegalHoldSnappableDetailConnection", new List<string> {
+                        "snappablesWithLegalHoldSnapshotsSummary",
+                    }
+                },
+                {   "LegalHoldSnapshotDetailConnection", new List<string> {
+                        "legalHoldSnapshotsForSnappable",
+                    }
+                },
+                {   "LicensesForClusterProductReply", new List<string> {
+                        "licensesForClusterProductSummary",
+                    }
+                },
+                {   "LinuxFileset", new List<string> {
+                        "linuxFileset",
+                    }
+                },
+                {   "ListCidrsForComputeSettingReply", new List<string> {
+                        "listCidrsForComputeSetting",
+                    }
+                },
+                {   "ListIntegrationsReply", new List<string> {
+                        "allIntegrations",
+                    }
+                },
+                {   "ListLocationsReply", new List<string> {
+                        "ransomwareDetectionWorkloadLocations",
+                    }
+                },
+                {   "ListStoreResponse", new List<string> {
+                        "mosaicStores",
+                    }
+                },
+                {   "ListStoredDiskLocationsReply", new List<string> {
+                        "gcpNativeStoredDiskLocations",
+                    }
+                },
+                {   "ListVersionResponse", new List<string> {
+                        "mosaicSnapshots",
+                        "mosaicVersions",
+                    }
+                },
+                {   "LiveMountDetailsConnection", new List<string> {
+                        "azureNativeLiveMountDisks",
+                    }
+                },
+                {   "LockoutConfig", new List<string> {
+                        "globalLockoutConfig",
+                        "lockoutConfig",
+                    }
+                },
+                {   "Long", new List<string> {
+                        "addCertificate",
+                    }
+                },
+                {   "LookupAccountReply", new List<string> {
+                        "lookupAccount",
+                    }
+                },
+                {   "M365RegionsResp", new List<string> {
+                        "m365Regions",
+                    }
+                },
+                {   "MalwareScanDetailListResponse", new List<string> {
+                        "malwareScans",
+                    }
+                },
+                {   "MalwareScanResults", new List<string> {
+                        "malwareDetectionTaskResult",
+                    }
+                },
+                {   "ManagedVolume", new List<string> {
+                        "managedVolume",
+                        "slaManagedVolume",
+                    }
+                },
+                {   "ManagedVolumeConnection", new List<string> {
+                        "managedVolumes",
+                        "slaManagedVolumes",
+                    }
+                },
+                {   "ManagedVolumeInventoryStats", new List<string> {
+                        "managedVolumeInventoryStats",
+                    }
+                },
+                {   "ManagedVolumeMountConnection", new List<string> {
+                        "managedVolumeLiveMounts",
+                    }
+                },
+                {   "MapAzureCloudAccountExocomputeSubscriptionReply", new List<string> {
+                        "mapAzureCloudAccountExocomputeSubscription",
+                    }
+                },
+                {   "MapAzureCloudAccountToPersistentStorageLocationReply", new List<string> {
+                        "mapAzureCloudAccountToPersistentStorageLocation",
+                    }
+                },
+                {   "MapCloudAccountExocomputeAccountReply", new List<string> {
+                        "mapCloudAccountExocomputeAccount",
+                    }
+                },
+                {   "MarkNotificationsAsReadReply", new List<string> {
+                        "markNotificationsAsRead",
+                    }
+                },
+                {   "MigrateLegacyNasHostFilesetsReply", new List<string> {
+                        "migrateLegacyNasHostFilesets",
+                    }
+                },
+                {   "MissedSnapshotListResponse", new List<string> {
+                        "mssqlDatabaseMissedSnapshots",
+                        "nutanixVmMissedSnapshots",
+                        "oracleMissedSnapshots",
+                    }
+                },
+                {   "ModifyIpmiReply", new List<string> {
+                        "clusterIpmi",
+                        "modifyIpmi",
+                    }
+                },
+                {   "MongoCollection", new List<string> {
+                        "mongoCollection",
+                    }
+                },
+                {   "MongoCollectionConnection", new List<string> {
+                        "mongoCollections",
+                    }
+                },
+                {   "MongoDatabase", new List<string> {
+                        "mongoDatabase",
+                    }
+                },
+                {   "MongoDatabaseConnection", new List<string> {
+                        "mongoDatabases",
+                    }
+                },
+                {   "MongoRecoverableRanges", new List<string> {
+                        "mongoBulkRecoverableRanges",
+                        "mongoRecoverableRanges",
+                    }
+                },
+                {   "MongoSource", new List<string> {
+                        "mongoSource",
+                    }
+                },
+                {   "MongoSourceConnection", new List<string> {
+                        "mongoSources",
+                    }
+                },
+                {   "MongodbCollection", new List<string> {
+                        "mongodbCollection",
+                    }
+                },
+                {   "MongodbCollectionConnection", new List<string> {
+                        "mongodbCollections",
+                    }
+                },
+                {   "MongodbDatabase", new List<string> {
+                        "mongodbDatabase",
+                    }
+                },
+                {   "MongodbDatabaseConnection", new List<string> {
+                        "mongodbDatabases",
+                    }
+                },
+                {   "MongodbSource", new List<string> {
+                        "mongodbSource",
+                    }
+                },
+                {   "MongodbSourceConnection", new List<string> {
+                        "mongodbSources",
+                    }
+                },
+                {   "MosaicAsyncResponse", new List<string> {
+                        "addMosaicStore",
+                        "bulkDeleteCassandraSources",
+                        "bulkDeleteMongodbSources",
+                        "createCassandraSource",
+                        "createMongodbSource",
+                        "deleteCassandraSource",
+                        "deleteMongodbSource",
+                        "deleteMosaicStore",
+                        "recoverCassandraSource",
+                        "recoverMongodbSource",
+                        "updateCassandraSource",
+                        "updateMongodbSource",
+                        "updateMosaicStore",
+                    }
+                },
+                {   "MosaicRecoveryRangeResponse", new List<string> {
+                        "mongodbBulkRecoverableRange",
+                        "mosaicBulkRecoveryRange",
+                    }
+                },
+                {   "MssqlAvailabilityGroup", new List<string> {
+                        "mssqlAvailabilityGroup",
+                    }
+                },
+                {   "MssqlDatabase", new List<string> {
+                        "mssqlDatabase",
+                    }
+                },
+                {   "MssqlDatabaseConnection", new List<string> {
+                        "mssqlDatabases",
+                    }
+                },
+                {   "MssqlDatabaseLiveMountConnection", new List<string> {
+                        "mssqlDatabaseLiveMounts",
+                    }
+                },
+                {   "MssqlInstance", new List<string> {
+                        "mssqlInstance",
+                    }
+                },
+                {   "MssqlInstanceSummaryListResponse", new List<string> {
+                        "mssqlCompatibleInstances",
+                    }
+                },
+                {   "MssqlLogShippingSummaryV2ListResponse", new List<string> {
+                        "mssqlLogShippingTargets",
+                    }
+                },
+                {   "MssqlLogShippingTarget", new List<string> {
+                        "cdmMssqlLogShippingTarget",
+                    }
+                },
+                {   "MssqlLogShippingTargetConnection", new List<string> {
+                        "cdmMssqlLogShippingTargets",
+                    }
+                },
+                {   "MssqlMissedRecoverableRangeListResponse", new List<string> {
+                        "mssqlDatabaseMissedRecoverableRanges",
+                    }
+                },
+                {   "MssqlRecoverableRangeListResponse", new List<string> {
+                        "mssqlRecoverableRanges",
+                    }
+                },
+                {   "MssqlRestoreEstimateResult", new List<string> {
+                        "mssqlDatabaseRestoreEstimate",
+                    }
+                },
+                {   "MssqlTopLevelDescendantTypeConnection", new List<string> {
+                        "mssqlTopLevelDescendants",
+                    }
+                },
+                {   "NasFileset", new List<string> {
+                        "nasFileset",
+                    }
+                },
+                {   "NasMigrationHostDetailConnection", new List<string> {
+                        "generateNasMigrationReport",
+                    }
+                },
+                {   "NasNamespace", new List<string> {
+                        "nasNamespace",
+                    }
+                },
+                {   "NasNamespaceConnection", new List<string> {
+                        "nasNamespaces",
+                    }
+                },
+                {   "NasShare", new List<string> {
+                        "nasShare",
+                    }
+                },
+                {   "NasSystem", new List<string> {
+                        "nasSystem",
+                    }
+                },
+                {   "NasSystemConnection", new List<string> {
+                        "nasSystems",
+                    }
+                },
+                {   "NasVolume", new List<string> {
+                        "nasVolume",
+                    }
+                },
+                {   "NcdBackEndCapacity", new List<string> {
+                        "ncdBackEndCapacity",
+                    }
+                },
+                {   "NcdFrontEndCapacity", new List<string> {
+                        "ncdFrontEndCapacity",
+                    }
+                },
+                {   "NcdObjectProtectionStatus", new List<string> {
+                        "ncdObjectProtectionStatus",
+                    }
+                },
+                {   "NetworkInfoListResponse", new List<string> {
+                        "vCenterNetworks",
+                    }
+                },
+                {   "NetworkInterfaceListResponse", new List<string> {
+                        "clusterNetworkInterfaces",
+                    }
+                },
+                {   "NetworkThrottleSummaryListResponse", new List<string> {
+                        "networkThrottle",
+                    }
+                },
+                {   "NfAnomalyResultConnection", new List<string> {
+                        "nfAnomalyResults",
+                    }
+                },
+                {   "NfAnomalyResultGroupedDataConnection", new List<string> {
+                        "nfAnomalyResultsGrouped",
+                    }
+                },
+                {   "NodeKeyRotationConnection", new List<string> {
+                        "nodeKeyRotation",
+                    }
+                },
+                {   "NodeRemovalCancelPermissionReply", new List<string> {
+                        "nodeRemovalCancelPermission",
+                    }
+                },
+                {   "NodeStatusListResponse", new List<string> {
+                        "clusterNodes",
+                    }
+                },
+                {   "NodeToReplaceReply", new List<string> {
+                        "nodeToReplace",
+                    }
+                },
+                {   "NotificationConnection", new List<string> {
+                        "notifications",
+                    }
+                },
+                {   "NotificationForGetLicenseReply", new List<string> {
+                        "notificationForGetLicense",
+                    }
+                },
+                {   "NtpServerConfigurationListResponse", new List<string> {
+                        "clusterNtpServers",
+                    }
+                },
+                {   "NutanixCategory", new List<string> {
+                        "nutanixCategory",
+                    }
+                },
+                {   "NutanixCategoryValue", new List<string> {
+                        "nutanixCategoryValue",
+                    }
+                },
+                {   "NutanixCluster", new List<string> {
+                        "nutanixCluster",
+                    }
+                },
+                {   "NutanixClusterConnection", new List<string> {
+                        "nutanixClusters",
+                    }
+                },
+                {   "NutanixContainerListResponse", new List<string> {
+                        "nutanixClusterContainers",
+                    }
+                },
+                {   "NutanixLiveMountConnection", new List<string> {
+                        "nutanixMounts",
+                    }
+                },
+                {   "NutanixNetworkListResponse", new List<string> {
+                        "nutanixClusterNetworks",
+                    }
+                },
+                {   "NutanixPrismCentral", new List<string> {
+                        "nutanixPrismCentral",
+                    }
+                },
+                {   "NutanixPrismCentralConnection", new List<string> {
+                        "nutanixPrismCentrals",
+                    }
+                },
+                {   "NutanixVm", new List<string> {
+                        "nutanixVm",
+                    }
+                },
+                {   "NutanixVmConnection", new List<string> {
+                        "nutanixVms",
+                    }
+                },
+                {   "NutanixVmSnapshotDetail", new List<string> {
+                        "nutanixSnapshotDetail",
+                    }
+                },
+                {   "O365AppConnection", new List<string> {
+                        "listO365Apps",
+                    }
+                },
+                {   "O365Calendar", new List<string> {
+                        "o365Calendar",
+                    }
+                },
+                {   "O365ConfiguredGroupMemberConnection", new List<string> {
+                        "configuredGroupMembers",
+                    }
+                },
+                {   "O365ExchangeObjectConnection", new List<string> {
+                        "browseCalendar",
+                        "browseContacts",
+                        "browseFolder",
+                        "snappableContactSearch",
+                        "snappableEmailSearch",
+                        "snappableEventSearch",
+                        "snapshotEmailSearch",
+                        "snapshotEventSearch",
+                    }
+                },
+                {   "O365FullSpObjectConnection", new List<string> {
+                        "sharepointSiteDescendants",
+                        "sharepointSiteSearch",
+                    }
+                },
+                {   "O365GroupConnection", new List<string> {
+                        "o365Groups",
+                    }
+                },
+                {   "O365License", new List<string> {
+                        "o365License",
+                    }
+                },
+                {   "O365Mailbox", new List<string> {
+                        "o365Mailbox",
+                    }
+                },
+                {   "O365MailboxConnection", new List<string> {
+                        "o365Mailboxes",
+                    }
+                },
+                {   "O365OauthConsentCompleteReply", new List<string> {
+                        "o365OauthConsentComplete",
+                    }
+                },
+                {   "O365OauthConsentKickoffReply", new List<string> {
+                        "o365OauthConsentKickoff",
+                    }
+                },
+                {   "O365Onedrive", new List<string> {
+                        "o365Onedrive",
+                    }
+                },
+                {   "O365OnedriveConnection", new List<string> {
+                        "o365Onedrives",
+                    }
+                },
+                {   "O365OnedriveObjectConnection", new List<string> {
+                        "browseOnedrive",
+                        "browseSharepointDrive",
+                        "browseSharepointList",
+                        "browseTeamsDrive",
+                        "snappableOnedriveSearch",
+                        "snappableSharepointDriveSearch",
+                        "snappableSharepointListSearch",
+                        "snappableTeamsDriveSearch",
+                        "snapshotOnedriveSearch",
+                        "snapshotSharepointDriveSearch",
+                    }
+                },
+                {   "O365Org", new List<string> {
+                        "o365Org",
+                        "o365OrgAtSnappableLevel",
+                    }
+                },
+                {   "O365OrgConnection", new List<string> {
+                        "o365Orgs",
+                    }
+                },
+                {   "O365PdlGroupsReply", new List<string> {
+                        "o365PdlGroups",
+                    }
+                },
+                {   "O365SaasSetupKickoffReply", new List<string> {
+                        "o365SaaSSetupKickoff",
+                    }
+                },
+                {   "O365ServiceAccountStatusResp", new List<string> {
+                        "o365ServiceAccount",
+                    }
+                },
+                {   "O365SetupKickoffResp", new List<string> {
+                        "o365SetupKickoff",
+                    }
+                },
+                {   "O365SharepointDrive", new List<string> {
+                        "o365SharepointDrive",
+                    }
+                },
+                {   "O365SharepointDriveConnection", new List<string> {
+                        "o365SharepointDrives",
+                    }
+                },
+                {   "O365SharepointList", new List<string> {
+                        "o365SharepointList",
+                    }
+                },
+                {   "O365SharepointListConnection", new List<string> {
+                        "o365SharepointLists",
+                    }
+                },
+                {   "O365SharepointObjectConnection", new List<string> {
+                        "o365SharepointObjectList",
+                        "o365SharepointObjects",
+                    }
+                },
+                {   "O365Site", new List<string> {
+                        "o365SharepointSite",
+                        "o365Site",
+                    }
+                },
+                {   "O365SiteConnection", new List<string> {
+                        "o365SharepointSites",
+                        "o365Sites",
+                    }
+                },
+                {   "O365TeamConvChannelConnection", new List<string> {
+                        "browseO365TeamConvChannels",
+                    }
+                },
+                {   "O365TeamConversationsSenderConnection", new List<string> {
+                        "o365TeamPostedBy",
+                    }
+                },
+                {   "O365Teams", new List<string> {
+                        "o365Team",
+                    }
+                },
+                {   "O365TeamsChannelConnection", new List<string> {
+                        "browseTeamsChannels",
+                        "o365TeamChannels",
+                    }
+                },
+                {   "O365TeamsConnection", new List<string> {
+                        "o365Teams",
+                    }
+                },
+                {   "O365TeamsConversationsConnection", new List<string> {
+                        "snappableTeamsConversationsSearch",
+                    }
+                },
+                {   "O365User", new List<string> {
+                        "o365User",
+                    }
+                },
+                {   "O365UserDescendantMetadataConnection", new List<string> {
+                        "o365UserObjects",
+                    }
+                },
+                {   "OauthCodesForEdgeRegReply", new List<string> {
+                        "oauthCodesForEdgeReg",
+                    }
+                },
+                {   "OracleAcoParameterList", new List<string> {
+                        "oracleAcoParameters",
+                    }
+                },
+                {   "OracleDataGuardGroup", new List<string> {
+                        "oracleDataGuardGroup",
+                    }
+                },
+                {   "OracleDatabase", new List<string> {
+                        "oracleDatabase",
+                    }
+                },
+                {   "OracleDatabaseConnection", new List<string> {
+                        "oracleDatabases",
+                    }
+                },
+                {   "OracleDbDetail", new List<string> {
+                        "updateOracleDataGuardGroup",
+                    }
+                },
+                {   "OracleFileDownloadLink", new List<string> {
+                        "oracleAcoExampleDownloadLink",
+                    }
+                },
+                {   "OracleHost", new List<string> {
+                        "oracleHost",
+                    }
+                },
+                {   "OracleLiveMountConnection", new List<string> {
+                        "oracleLiveMounts",
+                    }
+                },
+                {   "OracleLogBackupConfig", new List<string> {
+                        "oracleDatabaseLogBackupConfig",
+                        "oracleHostLogBackupConfig",
+                        "oracleRacLogBackupConfig",
+                    }
+                },
+                {   "OracleMissedRecoverableRangeListResponse", new List<string> {
+                        "oracleMissedRecoverableRanges",
+                    }
+                },
+                {   "OraclePdbDetails", new List<string> {
+                        "oraclePdbDetails",
+                    }
+                },
+                {   "OracleRac", new List<string> {
+                        "oracleRac",
+                    }
+                },
+                {   "OracleRecoverableRangeListResponse", new List<string> {
+                        "oracleRecoverableRanges",
+                    }
+                },
+                {   "OracleTopLevelDescendantTypeConnection", new List<string> {
+                        "oracleTopLevelDescendants",
+                    }
+                },
+                {   "Org", new List<string> {
+                        "currentOrg",
+                        "org",
+                    }
+                },
+                {   "OrgBackupJobInformation", new List<string> {
+                        "saasBackupJobInformation",
+                    }
+                },
+                {   "OrgConnection", new List<string> {
+                        "orgs",
+                    }
+                },
+                {   "OrgNetwork", new List<string> {
+                        "orgNetwork",
+                    }
+                },
+                {   "OrgNetworkConnection", new List<string> {
+                        "orgNetworks",
+                    }
+                },
+                {   "OrgSecurityPolicy", new List<string> {
+                        "orgSecurityPolicy",
+                    }
+                },
+                {   "OrgsForPrincipalReply", new List<string> {
+                        "orgsForPrincipal",
+                    }
+                },
+                {   "OverallRansomwareInvestigationSummary", new List<string> {
+                        "overallRansomwareInvestigationSummary",
+                    }
+                },
+                {   "PactsafeContract", new List<string> {
+                        "pactsafeContract",
+                    }
+                },
+                {   "PactsafeEulaState", new List<string> {
+                        "pactsafeEulaState",
+                    }
+                },
+                {   "PasswordComplexityPolicy", new List<string> {
+                        "passwordComplexityPolicy",
+                    }
+                },
+                {   "PatchDb2DatabaseReply", new List<string> {
+                        "patchDb2Database",
+                    }
+                },
+                {   "PatchDb2InstanceReply", new List<string> {
+                        "patchDb2Instance",
+                    }
+                },
+                {   "PatchNutanixMountV1Reply", new List<string> {
+                        "patchNutanixMountV1",
+                    }
+                },
+                {   "PatchSapHanaSystemReply", new List<string> {
+                        "patchSapHanaSystem",
+                    }
+                },
+                {   "PauseSlaReply", new List<string> {
+                        "pauseSla",
+                    }
+                },
+                {   "PauseTargetReply", new List<string> {
+                        "pauseTarget",
+                    }
+                },
+                {   "PendingEvaluationResultsReply", new List<string> {
+                        "pendingRansomwareInvestigationResultsCount",
+                    }
+                },
+                {   "PhoenixRolloutProgress", new List<string> {
+                        "phoenixRolloutProgress",
+                    }
+                },
+                {   "PhysicalHost", new List<string> {
+                        "physicalHost",
+                    }
+                },
+                {   "PhysicalHostConnection", new List<string> {
+                        "physicalHosts",
+                    }
+                },
+                {   "PolarisInventorySubHierarchyRoot", new List<string> {
+                        "polarisInventorySubHierarchyRoot",
+                    }
+                },
+                {   "PolarisReportConfig", new List<string> {
+                        "polarisReportConfig",
+                    }
+                },
+                {   "PolarisReportSchema", new List<string> {
+                        "polarisReportSchema",
+                    }
+                },
+                {   "PolarisReportTableIntrospection", new List<string> {
+                        "polarisReportTableIntrospection",
+                    }
+                },
+                {   "PolarisSnapshot", new List<string> {
+                        "polarisSnapshot",
+                    }
+                },
+                {   "PolicyDetailConnection", new List<string> {
+                        "policyDetails",
+                    }
+                },
+                {   "PolicyObj", new List<string> {
+                        "policyObj",
+                        "policyObjOpt",
+                    }
+                },
+                {   "PolicyObjConnection", new List<string> {
+                        "policyObjs",
+                    }
+                },
+                {   "PolicyObjectUsageConnection", new List<string> {
+                        "policyObjectUsages",
+                    }
+                },
+                {   "PrechecksJobReply", new List<string> {
+                        "startPeriodicUpgradePrechecksOnDemandJob",
+                    }
+                },
+                {   "PrechecksStatusReply", new List<string> {
+                        "prechecksStatus",
+                        "prechecksStatusWithNextJobInfo",
+                    }
+                },
+                {   "PrepareAwsCloudAccountDeletionReply", new List<string> {
+                        "prepareAwsCloudAccountDeletion",
+                    }
+                },
+                {   "PrepareFeatureUpdateForAwsCloudAccountReply", new List<string> {
+                        "prepareFeatureUpdateForAwsCloudAccount",
+                    }
+                },
+                {   "PrincipalConnection", new List<string> {
+                        "ldapPrincipalConnection",
+                    }
+                },
+                {   "PrincipalDetails", new List<string> {
+                        "principalDetails",
+                    }
+                },
+                {   "PrincipalInsightConnection", new List<string> {
+                        "userAccessInsights",
+                    }
+                },
+                {   "PrincipalObjectSummaryConnection", new List<string> {
+                        "principalObjectSummaries",
+                    }
+                },
+                {   "PrincipalSummaryConnection", new List<string> {
+                        "principalSummaries",
+                    }
+                },
+                {   "ProcessedRansomwareInvestigationWorkloadCountReply", new List<string> {
+                        "processedRansomwareInvestigationWorkloadCount",
+                    }
+                },
+                {   "ProductDocumentation", new List<string> {
+                        "productDocumentation",
+                    }
+                },
+                {   "ProtectedObjectsConnection", new List<string> {
+                        "protectedObjectsConnection",
+                    }
+                },
+                {   "ProtectedRansomwareInvestigationWorkloadCountReply", new List<string> {
+                        "protectedRansomwareInvestigationWorkloadCount",
+                    }
+                },
+                {   "PutSmbConfigurationReply", new List<string> {
+                        "putSmbConfiguration",
+                    }
+                },
+                {   "QuarantineThreatHuntMatchesReply", new List<string> {
+                        "quarantineThreatHuntMatches",
+                    }
+                },
+                {   "QueryDatastoreFreespaceThresholdsReply", new List<string> {
+                        "queryDatastoreFreespaceThresholds",
+                    }
+                },
+                {   "QuerySDDLReply", new List<string> {
+                        "datagovSecDesc",
+                    }
+                },
+                {   "RansomwareInvestigationAnalysisSummaryReply", new List<string> {
+                        "ransomwareInvestigationAnalysisSummary",
+                    }
+                },
+                {   "RansomwareInvestigationEnablementReply", new List<string> {
+                        "ransomwareInvestigationEnablement",
+                    }
+                },
+                {   "RansomwareInvestigationObjectsReply", new List<string> {
+                        "ransomwareInvestigationObjects",
+                    }
+                },
+                {   "RansomwareInvestigationWorkloadScannedCountReply", new List<string> {
+                        "ransomwareInvestigationWorkloadScannedCount",
+                    }
+                },
+                {   "RansomwareMonitoringPipelineHealth", new List<string> {
+                        "ransomwareMonitoringPipelineHealth",
+                    }
+                },
+                {   "RansomwareMonitoringTimelineAnalysis", new List<string> {
+                        "ransomwareMonitoringTimelineAnalysis",
+                    }
+                },
+                {   "RansomwareResult", new List<string> {
+                        "ransomwareResult",
+                        "ransomwareResultOpt",
+                    }
+                },
+                {   "RansomwareResultConnection", new List<string> {
+                        "ransomwareResults",
+                    }
+                },
+                {   "RansomwareResultGroupedDataConnection", new List<string> {
+                        "ransomwareResultsGrouped",
+                    }
+                },
+                {   "RbaInstallerUrls", new List<string> {
+                        "cloudNativeRbaInstallers",
+                    }
+                },
+                {   "RcsAzureArchivalLocationsConsumptionStatsOutput", new List<string> {
+                        "rcsArchivalLocationsConsumptionStats",
+                    }
+                },
+                {   "RcvAccountEntitlement", new List<string> {
+                        "rcvAccountEntitlement",
+                    }
+                },
+                {   "RcvLocationBasicInfoConnection", new List<string> {
+                        "clusterRcvLocations",
+                    }
+                },
+                {   "RdsInstanceDetailsFromAws", new List<string> {
+                        "rdsInstanceDetailsFromAws",
+                    }
+                },
+                {   "RdsInstanceExportDefaults", new List<string> {
+                        "awsNativeRdsExportDefaults",
+                    }
+                },
+                {   "ReadIntegrationReply", new List<string> {
+                        "integration",
+                    }
+                },
+                {   "RecentlyViewedItem", new List<string> {
+                        "listRecentlyViewed",
+                    }
+                },
+                {   "RecoverableRangeResponse", new List<string> {
+                        "vsphereVMMissedRecoverableRange",
+                        "vsphereVMRecoverableRange",
+                    }
+                },
+                {   "RecoveryPermissionCheckReply", new List<string> {
+                        "recoveryPermissionCheck",
+                    }
+                },
+                {   "RecoveryPlanPermissionCheckReply", new List<string> {
+                        "recoveryPlanPermissionCheck",
+                    }
+                },
+                {   "RefreshHostReply", new List<string> {
+                        "refreshHost",
+                    }
+                },
+                {   "RefreshNasSystemsReply", new List<string> {
+                        "refreshNasSystems",
+                    }
+                },
+                {   "RefreshStorageArraysReply", new List<string> {
+                        "refreshStorageArrays",
+                    }
+                },
+                {   "RefreshVcdInstancesReply", new List<string> {
+                        "refreshVcdInstances",
+                    }
+                },
+                {   "RegionConnection", new List<string> {
+                        "azureRegions",
+                    }
+                },
+                {   "RegisterAwsFeatureArtifactsReply", new List<string> {
+                        "registerAwsFeatureArtifacts",
+                    }
+                },
+                {   "RegisterCloudClusterReply", new List<string> {
+                        "registerCloudCluster",
+                    }
+                },
+                {   "RegisterNasSystemReply", new List<string> {
+                        "registerNasSystem",
+                    }
+                },
+                {   "ReleaseNoteConnection", new List<string> {
+                        "releasesNotes",
+                    }
+                },
+                {   "ReleaseThreatHuntMatchesFromQuarantineReply", new List<string> {
+                        "releaseThreatHuntMatchesFromQuarantine",
+                    }
+                },
+                {   "RemoveNodeForReplacementReply", new List<string> {
+                        "removeNodeForReplacement",
+                    }
+                },
+                {   "RemoveVlansReply", new List<string> {
+                        "removeVlans",
+                    }
+                },
+                {   "ReplaceClusterNodeReply", new List<string> {
+                        "replaceClusterNode",
+                    }
+                },
+                {   "ReplicationPairConnection", new List<string> {
+                        "replicationPairs",
+                    }
+                },
+                {   "ReportConfig", new List<string> {
+                        "reportConfig",
+                    }
+                },
+                {   "ReportMigrationStatusConnection", new List<string> {
+                        "clusterReportMigrationStatus",
+                    }
+                },
+                {   "ReportSchema", new List<string> {
+                        "reportSchema",
+                    }
+                },
+                {   "ReportVersion", new List<string> {
+                        "reportVersion",
+                    }
+                },
+                {   "ReportsMigrationCount", new List<string> {
+                        "clusterReportMigrationCount",
+                    }
+                },
+                {   "RequestStatus", new List<string> {
+                        "addAdGroupsToHierarchy",
+                        "azureOauthConsentComplete",
+                        "cancelTaskchain",
+                        "createO365AppComplete",
+                        "deleteAdGroupsFromHierarchy",
+                        "deleteO365AzureApp",
+                        "deleteO365ServiceAccount",
+                        "enableO365SharePoint",
+                        "enableO365Teams",
+                        "insertCustomerO365App",
+                        "setO365ServiceAccount",
+                    }
+                },
+                {   "RequestSuccess", new List<string> {
+                        "deleteHypervVirtualMachineSnapshot",
+                        "deleteNutanixSnapshot",
+                        "deleteNutanixSnapshots",
+                        "deleteSnapshotsOfUnmanagedObjects",
+                        "deleteUnmanagedSnapshots",
+                        "deleteVsphereAdvancedTag",
+                        "excludeVmDisks",
+                        "hypervDeleteAllSnapshots",
+                        "installIoFilter",
+                        "registerAgentHypervVirtualMachine",
+                        "registerAgentNutanixVm",
+                        "resolveVolumeGroupsConflict",
+                        "uninstallIoFilter",
+                        "updateVcenterHotAddBandwidth",
+                        "updateVcenterHotAddNetwork",
+                        "updateVsphereVm",
+                        "upgradeIoFilter",
+                        "vsphereEditVCenter",
+                        "vsphereExcludeVmDisks",
+                        "vsphereVmRegisterAgent",
+                        "vsphereVMUpdate",
+                    }
+                },
+                {   "ResourceGroupConnection", new List<string> {
+                        "azureResourceGroups",
+                    }
+                },
+                {   "ResponseSuccess", new List<string> {
+                        "addVlan",
+                        "assignMssqlSlaDomainProperties",
+                        "bulkDeleteFailoverCluster",
+                        "bulkDeleteFailoverClusterApp",
+                        "bulkDeleteFileset",
+                        "bulkDeleteFilesetTemplate",
+                        "bulkDeleteHost",
+                        "deleteAllSnapMirrorCloudSnapshots",
+                        "deleteFailoverCluster",
+                        "deleteFailoverClusterApp",
+                        "deleteFilesetSnapshots",
+                        "deleteK8sResourceSet",
+                        "deleteMssqlDbSnapshots",
+                        "deleteSapHanaDbSnapshot",
+                        "deleteSnapMirrorCloud",
+                        "deleteSnapMirrorCloudRelationship",
+                        "deleteSnapMirrorCloudSnapshot",
+                        "disableReplicationPause",
+                        "enableReplicationPause",
+                        "hideRevealNasShares",
+                        "hypervScvmmDelete",
+                        "removeDisk",
+                        "removeProxyConfig",
+                        "resizeDisk",
+                        "setLiveMountIps",
+                        "updateClusterNtpServers",
+                        "updateDnsServersAndSearchDomains",
+                    }
+                },
+                {   "Result", new List<string> {
+                        "cancelBlueprintFailover",
+                    }
+                },
+                {   "ResumeTargetReply", new List<string> {
+                        "resumeTarget",
+                    }
+                },
+                {   "RetryBackupResp", new List<string> {
+                        "retryBackup",
+                    }
+                },
+                {   "RoleConnection", new List<string> {
+                        "getAllRolesInOrgConnection",
+                    }
+                },
+                {   "RoleTemplateConnection", new List<string> {
+                        "roleTemplates",
+                    }
+                },
+                {   "RotateServiceAccountSecretReply", new List<string> {
+                        "rotateServiceAccountSecret",
+                    }
+                },
+                {   "RowConnection", new List<string> {
+                        "reportData",
+                        "reportTableData",
+                    }
+                },
+                {   "RscAutoUpgradeInfo", new List<string> {
+                        "rscAutoUpgradeInfo",
+                    }
+                },
+                {   "RunCustomAnalyzerReply", new List<string> {
+                        "runCustomAnalyzer",
+                    }
+                },
+                {   "RunningJobsReply", new List<string> {
+                        "runningJobsStatus",
+                    }
+                },
+                {   "SaasAppSnapshotConnection", new List<string> {
+                        "saasAppItemIndividualSnapshots",
+                        "saasAppItemOverlappingSnapshots",
+                    }
+                },
+                {   "SaasLicenseDetails", new List<string> {
+                        "saasLicenseDetails",
+                    }
+                },
+                {   "SapHanaDatabase", new List<string> {
+                        "sapHanaDatabase",
+                    }
+                },
+                {   "SapHanaDatabaseConnection", new List<string> {
+                        "sapHanaDatabases",
+                    }
+                },
+                {   "SapHanaLogSnapshot", new List<string> {
+                        "sapHanaLogSnapshot",
+                    }
+                },
+                {   "SapHanaLogSnapshotConnection", new List<string> {
+                        "sapHanaLogSnapshots",
+                    }
+                },
+                {   "SapHanaRecoverableRange", new List<string> {
+                        "sapHanaRecoverableRange",
+                    }
+                },
+                {   "SapHanaRecoverableRangeConnection", new List<string> {
+                        "sapHanaRecoverableRanges",
+                    }
+                },
+                {   "SapHanaSystem", new List<string> {
+                        "sapHanaSystem",
+                    }
+                },
+                {   "SapHanaSystemConnection", new List<string> {
+                        "sapHanaSystems",
+                    }
+                },
+                {   "Schedule", new List<string> {
+                        "recoverySchedule",
+                    }
+                },
+                {   "ScheduledReport", new List<string> {
+                        "scheduledReport",
+                    }
+                },
+                {   "ScheduledReportConnection", new List<string> {
+                        "scheduledReports",
+                    }
+                },
+                {   "SearchResponseListResponse", new List<string> {
+                        "searchHost",
+                        "searchNutanixVm",
+                        "searchSnapMirrorCloud",
+                    }
+                },
+                {   "SeedEnabledPoliciesReply", new List<string> {
+                        "seedEnabledPolicies",
+                    }
+                },
+                {   "SeedInitialPoliciesReply", new List<string> {
+                        "seedInitialPolicies",
+                    }
+                },
+                {   "SendPdfReportReply", new List<string> {
+                        "sendPdfReport",
+                    }
+                },
+                {   "ServiceAccountConnection", new List<string> {
+                        "serviceAccounts",
+                    }
+                },
+                {   "SetAnalyzerRisksReply", new List<string> {
+                        "setAnalyzerRisks",
+                    }
+                },
+                {   "SetDatastoreFreespaceThresholdsReply", new List<string> {
+                        "setDatastoreFreespaceThresholds",
+                    }
+                },
+                {   "SetMigrationStatusReply", new List<string> {
+                        "setMigrationStatus",
+                    }
+                },
+                {   "SetUpgradeTypeReply", new List<string> {
+                        "setUpgradeType",
+                    }
+                },
+                {   "SetUserSessionManagementConfigReply", new List<string> {
+                        "setUserSessionManagementConfig",
+                    }
+                },
+                {   "SetWorkloadAlertSettingReply", new List<string> {
+                        "setWorkloadAlertSetting",
+                    }
+                },
+                {   "SetupAtlassianSiteReply", new List<string> {
+                        "setupAtlassianSite",
+                    }
+                },
+                {   "SetupAzureO365ExocomputeResp", new List<string> {
+                        "setupAzureO365Exocompute",
+                    }
+                },
+                {   "ShareFileset", new List<string> {
+                        "shareFileset",
+                    }
+                },
+                {   "SidsPolicyHitsSummaries", new List<string> {
+                        "sidsPolicyHitsSummary",
+                    }
+                },
+                {   "SkippedItemInfoResponse", new List<string> {
+                        "skippedItemInfo",
+                    }
+                },
+                {   "SlaArchivalValidationWithWarnings", new List<string> {
+                        "slaArchivalValidationWarnings",
+                    }
+                },
+                {   "SlaAssignResult", new List<string> {
+                        "assignProtection",
+                        "assignRetentionSLAToSnappables",
+                        "assignRetentionSLAToSnapshots",
+                        "assignSla",
+                    }
+                },
+                {   "SlaDomain", new List<string> {
+                        "slaDomain",
+                    }
+                },
+                {   "SlaDomainConnection", new List<string> {
+                        "slaDomains",
+                    }
+                },
+                {   "SlaDomainWithWarnings", new List<string> {
+                        "slaDomainWithWarnings",
+                    }
+                },
+                {   "SlaResult", new List<string> {
+                        "deleteGlobalSla",
+                    }
+                },
+                {   "SmbDomainConnection", new List<string> {
+                        "smbDomains",
+                    }
+                },
+                {   "SnapMirrorCloud", new List<string> {
+                        "snapMirrorCloud",
+                    }
+                },
+                {   "SnappableConnection", new List<string> {
+                        "searchSnappableConnection",
+                        "snappableConnection",
+                    }
+                },
+                {   "SnappableGroupByAtSpecifiedTimeConnection", new List<string> {
+                        "snappableGroupByAtSpecifiedTimeConnection",
+                    }
+                },
+                {   "SnappableGroupByConnection", new List<string> {
+                        "snappableGroupByConnection",
+                    }
+                },
+                {   "SnapshotFileConnection", new List<string> {
+                        "browseSnapshotFileConnection",
+                        "cloudNativeSnapshots",
+                    }
+                },
+                {   "SnapshotFileDeltaConnection", new List<string> {
+                        "snapshotFilesDelta",
+                    }
+                },
+                {   "SnapshotFileDeltaV2Connection", new List<string> {
+                        "snapshotFilesDeltaV2",
+                    }
+                },
+                {   "SnapshotResultConnection", new List<string> {
+                        "snapshotResults",
+                    }
+                },
+                {   "SnapshotSummaryConnection", new List<string> {
+                        "snapshotsForUnmanagedObject",
+                    }
+                },
+                {   "SnapshotsMalwareInfoReply", new List<string> {
+                        "snapshotsAnomalyInfo",
+                        "snapshotsMalwareInfo",
+                    }
+                },
+                {   "SnmpConfiguration", new List<string> {
+                        "snmpConfigurations",
+                    }
+                },
+                {   "SonarContentReportConnection", new List<string> {
+                        "sonarContentReport",
+                    }
+                },
+                {   "SonarReportConnection", new List<string> {
+                        "sonarReport",
+                    }
+                },
+                {   "SonarReportRowConnection", new List<string> {
+                        "sonarReportRow",
+                    }
+                },
+                {   "SourceBlueprintInfo", new List<string> {
+                        "sourceBlueprintInfo",
+                    }
+                },
+                {   "StartAtlassianAuthConsentReply", new List<string> {
+                        "startAtlassianAuthConsent",
+                    }
+                },
+                {   "StartAzureCloudAccountOauthReply", new List<string> {
+                        "startAzureCloudAccountOauth",
+                    }
+                },
+                {   "StartBulkRecoveryReply", new List<string> {
+                        "startBulkRecovery",
+                    }
+                },
+                {   "StartClusterReportMigrationJobReply", new List<string> {
+                        "startClusterReportMigrationJob",
+                    }
+                },
+                {   "StartCrawlReply", new List<string> {
+                        "startCrawl",
+                    }
+                },
+                {   "StartThreatHuntReply", new List<string> {
+                        "startThreatHunt",
+                    }
+                },
+                {   "StopJobInstanceReply", new List<string> {
+                        "stopJobInstance",
+                    }
+                },
+                {   "StorageAccountConnection", new List<string> {
+                        "azureStorageAccounts",
+                    }
+                },
+                {   "String", new List<string> {
+                        "accountId",
+                        "addPolicyObjects",
+                        "archiveCrawl",
+                        "createUser",
+                        "createUserWithPassword",
+                        "currentIpAddress",
+                        "deactivateCustomAnalyzer",
+                        "deploymentVersion",
+                        "externalDeploymentName",
+                        "gcpGetDefaultCredentialsServiceAccount",
+                        "o365TeamConversationsFolderID",
+                        "syncRotateClusterEncryptionKey",
+                        "updateLdapIntegration",
+                        "updateWhitelistedAnalyzers",
+                    }
+                },
+                {   "SubnetConnection", new List<string> {
+                        "azureSubnets",
+                    }
+                },
+                {   "SupportPortalLoginReply", new List<string> {
+                        "supportPortalLogin",
+                    }
+                },
+                {   "SupportPortalLogoutReply", new List<string> {
+                        "logoutFromRubrikSupportPortal",
+                    }
+                },
+                {   "SupportPortalRole", new List<string> {
+                        "supportPortalRole",
+                    }
+                },
+                {   "SupportPortalStatusReply", new List<string> {
+                        "isLoggedIntoRubrikSupportPortal",
+                    }
+                },
+                {   "SupportTunnelInfo", new List<string> {
+                        "tunnelStatus",
+                    }
+                },
+                {   "SupportUserAccessConnection", new List<string> {
+                        "supportUserAccesses",
+                    }
+                },
+                {   "SyslogExportRuleSummaryListResponse", new List<string> {
+                        "syslogExportRules",
+                    }
+                },
+                {   "TableFilters", new List<string> {
+                        "tableFilters",
+                    }
+                },
+                {   "TakeOnDemandSnapshotReply", new List<string> {
+                        "takeOnDemandSnapshot",
+                    }
+                },
+                {   "TakeScreenshotReply", new List<string> {
+                        "screenshotReport",
+                    }
+                },
+                {   "Target", new List<string> {
+                        "createAwsReaderTarget",
+                        "createAwsTarget",
+                        "createAzureReaderTarget",
+                        "createAzureTarget",
+                        "createGcpReaderTarget",
+                        "createGcpTarget",
+                        "createGlacierReaderTarget",
+                        "createNfsReaderTarget",
+                        "createNfsTarget",
+                        "createRcsReaderTarget",
+                        "createRcsTarget",
+                        "createS3CompatibleReaderTarget",
+                        "createS3CompatibleTarget",
+                        "createTapeReaderTarget",
+                        "createTapeTarget",
+                        "target",
+                        "updateAwsTarget",
+                        "updateAzureTarget",
+                        "updateGcpTarget",
+                        "updateGlacierTarget",
+                        "updateNfsTarget",
+                        "updateRcvTarget",
+                        "updateS3CompatibleTarget",
+                        "updateTapeTarget",
+                    }
+                },
+                {   "TargetConnection", new List<string> {
+                        "targets",
+                    }
+                },
+                {   "TargetMapping", new List<string> {
+                        "createAutomaticAwsTargetMapping",
+                        "createAutomaticAzureTargetMapping",
+                        "createAutomaticRcsTargetMapping",
+                        "createManualTargetMapping",
+                        "targetMapping",
+                        "updateAutomaticAwsTargetMapping",
+                        "updateAutomaticAzureTargetMapping",
+                        "updateManualTargetMapping",
+                        "updateRcsAutomaticTargetMapping",
+                    }
+                },
+                {   "TaskDetailConnection", new List<string> {
+                        "taskDetailConnection",
+                    }
+                },
+                {   "TaskDetailGroupByConnection", new List<string> {
+                        "taskDetailGroupByConnection",
+                    }
+                },
+                {   "TaskSummaryConnection", new List<string> {
+                        "taskSummaryConnection",
+                    }
+                },
+                {   "TaskSummaryGroupByConnection", new List<string> {
+                        "taskSummaryGroupByConnection",
+                    }
+                },
+                {   "TaskchainInfoReply", new List<string> {
+                        "taskchainInfo",
+                    }
+                },
+                {   "TenantAuthDomainConfig", new List<string> {
+                        "currentOrgAuthDomainConfig",
+                    }
+                },
+                {   "TestExistingWebhookReply", new List<string> {
+                        "testExistingWebhook",
+                    }
+                },
+                {   "TestSyslogExportRuleReply", new List<string> {
+                        "testSyslogExportRule",
+                    }
+                },
+                {   "TestWebhookReply", new List<string> {
+                        "testWebhook",
+                    }
+                },
+                {   "ThreatHunt", new List<string> {
+                        "threatHuntDetail",
+                    }
+                },
+                {   "ThreatHuntConnection", new List<string> {
+                        "threatHunts",
+                    }
+                },
+                {   "ThreatHuntResult", new List<string> {
+                        "threatHuntResult",
+                    }
+                },
+                {   "ThreatHuntSummaryReply", new List<string> {
+                        "threatHuntSummary",
+                    }
+                },
+                {   "ThreatMonitoringFileMatchDetailsReply", new List<string> {
+                        "threatMonitoringMatchedFileDetails",
+                    }
+                },
+                {   "ThreatMonitoringMatchedObjectConnection", new List<string> {
+                        "threatMonitoringMatchedObjects",
+                    }
+                },
+                {   "TopRiskPrincipalsReply", new List<string> {
+                        "topRiskPrincipals",
+                    }
+                },
+                {   "TprPolicyDetail", new List<string> {
+                        "tprPolicyDetail",
+                    }
+                },
+                {   "TprRequestDetailReply", new List<string> {
+                        "tprRequestDetail",
+                    }
+                },
+                {   "TprRequestSummaryConnection", new List<string> {
+                        "tprRequestSummaries",
+                    }
+                },
+                {   "TprRoleEligibilityType", new List<string> {
+                        "tprRoleEligibility",
+                    }
+                },
+                {   "TprRulesMap", new List<string> {
+                        "tprRulesMap",
+                    }
+                },
+                {   "TrialReport", new List<string> {
+                        "trialReport",
+                    }
+                },
+                {   "TriggerExocomputeHealthCheckReply", new List<string> {
+                        "triggerExocomputeHealthCheck",
+                    }
+                },
+                {   "TriggerRansomwareDetectionReply", new List<string> {
+                        "triggerRansomwareDetection",
+                    }
+                },
+                {   "UUID", new List<string> {
+                        "createRole",
+                        "k8sObjectFid",
+                        "k8sObjectInternalId",
+                        "mutateRole",
+                    }
+                },
+                {   "UnifiedFeatureFlag", new List<string> {
+                        "singleUnifiedFeatureFlag",
+                    }
+                },
+                {   "UnmanagedObjectDetailConnection", new List<string> {
+                        "unmanagedObjects",
+                    }
+                },
+                {   "UnmapAzureCloudAccountExocomputeSubscriptionReply", new List<string> {
+                        "unmapAzureCloudAccountExocomputeSubscription",
+                    }
+                },
+                {   "UnmapCloudAccountExocomputeAccountReply", new List<string> {
+                        "unmapCloudAccountExocomputeAccount",
+                    }
+                },
+                {   "UpdateAutoEnablePolicyClusterConfigReply", new List<string> {
+                        "updateAutoEnablePolicyClusterConfig",
+                    }
+                },
+                {   "UpdateAwsCloudAccountFeatureReply", new List<string> {
+                        "updateAwsCloudAccountFeature",
+                    }
+                },
+                {   "UpdateAwsExocomputeConfigsReply", new List<string> {
+                        "updateAwsExocomputeConfigs",
+                    }
+                },
+                {   "UpdateAzureCloudAccountReply", new List<string> {
+                        "updateAzureCloudAccount",
+                    }
+                },
+                {   "UpdateBadDiskLedStatusReply", new List<string> {
+                        "updateBadDiskLedStatus",
+                    }
+                },
+                {   "UpdateCertificateHostReply", new List<string> {
+                        "updateCertificateHost",
+                    }
+                },
+                {   "UpdateCloudNativeAwsStorageSettingReply", new List<string> {
+                        "updateCloudNativeAwsStorageSetting",
+                    }
+                },
+                {   "UpdateCloudNativeAzureStorageSettingReply", new List<string> {
+                        "updateCloudNativeAzureStorageSetting",
+                    }
+                },
+                {   "UpdateCloudNativeIndexingStatusReply", new List<string> {
+                        "updateCloudNativeIndexingStatus",
+                    }
+                },
+                {   "UpdateCloudNativeRcvAzureStorageSettingReply", new List<string> {
+                        "updateCloudNativeRcvAzureStorageSetting",
+                    }
+                },
+                {   "UpdateClusterDefaultAddressReply", new List<string> {
+                        "updateClusterDefaultAddress",
+                    }
+                },
+                {   "UpdateClusterPauseStatusReply", new List<string> {
+                        "updateClusterPauseStatus",
+                    }
+                },
+                {   "UpdateClusterRegisteredModeReply", new List<string> {
+                        "updateClusterRegisteredMode",
+                    }
+                },
+                {   "UpdateClusterSettingsReply", new List<string> {
+                        "updateClusterSettings",
+                    }
+                },
+                {   "UpdateCustomReportReply", new List<string> {
+                        "updateCustomReport",
+                    }
+                },
+                {   "UpdateEventDigestReply", new List<string> {
+                        "updateEventDigest",
+                    }
+                },
+                {   "UpdateFailoverClusterAppReply", new List<string> {
+                        "updateFailoverClusterApp",
+                    }
+                },
+                {   "UpdateFailoverClusterReply", new List<string> {
+                        "updateFailoverCluster",
+                    }
+                },
+                {   "UpdateFloatingIpsReply", new List<string> {
+                        "updateFloatingIps",
+                    }
+                },
+                {   "UpdateGlobalCertificateReply", new List<string> {
+                        "updateGlobalCertificate",
+                    }
+                },
+                {   "UpdateGuestCredentialReply", new List<string> {
+                        "updateGuestCredential",
+                    }
+                },
+                {   "UpdateHealthMonitorPolicyStatusReply", new List<string> {
+                        "updateHealthMonitorPolicyStatus",
+                    }
+                },
+                {   "UpdateHypervVirtualMachineReply", new List<string> {
+                        "updateHypervVirtualMachine",
+                    }
+                },
+                {   "UpdateHypervVirtualMachineSnapshotMountReply", new List<string> {
+                        "updateHypervVirtualMachineSnapshotMount",
+                    }
+                },
+                {   "UpdateIdentityProviderReply", new List<string> {
+                        "updateIdentityProvider",
+                    }
+                },
+                {   "UpdateInsightStateReply", new List<string> {
+                        "updateInsightState",
+                    }
+                },
+                {   "UpdateKmipServerReply", new List<string> {
+                        "updateKmipServer",
+                    }
+                },
+                {   "UpdateLockoutConfigReply", new List<string> {
+                        "updateLockoutConfig",
+                    }
+                },
+                {   "UpdateManagedVolumeReply", new List<string> {
+                        "updateManagedVolume",
+                    }
+                },
+                {   "UpdateMssqlDefaultPropertiesReply", new List<string> {
+                        "mssqlDefaultProperties",
+                        "updateMssqlDefaultProperties",
+                    }
+                },
+                {   "UpdateMssqlLogShippingConfigurationReply", new List<string> {
+                        "updateMssqlLogShippingConfiguration",
+                    }
+                },
+                {   "UpdateNasSystemReply", new List<string> {
+                        "updateNasSystem",
+                    }
+                },
+                {   "UpdateNetworkThrottleReply", new List<string> {
+                        "updateNetworkThrottle",
+                    }
+                },
+                {   "UpdateNutanixClusterReply", new List<string> {
+                        "updateNutanixCluster",
+                    }
+                },
+                {   "UpdateNutanixPrismCentralReply", new List<string> {
+                        "updateNutanixPrismCentral",
+                    }
+                },
+                {   "UpdateO365AppAuthStatusReply", new List<string> {
+                        "updateO365AppAuthStatus",
+                    }
+                },
+                {   "UpdateO365OrgCustomNameReply", new List<string> {
+                        "updateO365OrgCustomName",
+                    }
+                },
+                {   "UpdateOrgReply", new List<string> {
+                        "updateOrg",
+                    }
+                },
+                {   "UpdatePactsafeEulaAcceptedReply", new List<string> {
+                        "updatePactsafeEulaAccepted",
+                    }
+                },
+                {   "UpdatePactsafeEulaSeenReply", new List<string> {
+                        "updatePactsafeEulaSeen",
+                    }
+                },
+                {   "UpdateProxyConfigReply", new List<string> {
+                        "updateProxyConfig",
+                    }
+                },
+                {   "UpdateScheduledReportReply", new List<string> {
+                        "updateScheduledReport",
+                    }
+                },
+                {   "UpdateServiceAccountReply", new List<string> {
+                        "updateServiceAccount",
+                    }
+                },
+                {   "UpdateSnapMirrorCloudReply", new List<string> {
+                        "updateSnapMirrorCloud",
+                    }
+                },
+                {   "UpdateSnmpConfigReply", new List<string> {
+                        "updateSnmpConfig",
+                    }
+                },
+                {   "UpdateStorageArraysReply", new List<string> {
+                        "updateStorageArrays",
+                    }
+                },
+                {   "UpdateSupportCaseReply", new List<string> {
+                        "updateSupportCase",
+                    }
+                },
+                {   "UpdateSyslogExportRuleReply", new List<string> {
+                        "updateSyslogExportRule",
+                    }
+                },
+                {   "UpdateTunnelStatusReply", new List<string> {
+                        "updateTunnelStatus",
+                    }
+                },
+                {   "UpdateVcdInstancesReply", new List<string> {
+                        "updateVcdInstances",
+                    }
+                },
+                {   "UpdateVcenterReply", new List<string> {
+                        "updateVcenter",
+                    }
+                },
+                {   "UpdateVolumeGroupReply", new List<string> {
+                        "updateVolumeGroup",
+                    }
+                },
+                {   "UpdateVsphereAdvancedTagReply", new List<string> {
+                        "updateVsphereAdvancedTag",
+                    }
+                },
+                {   "UpdateWebhookReply", new List<string> {
+                        "updateWebhook",
+                    }
+                },
+                {   "UpgradeAzureCloudAccountPermissionsWithoutOauthReply", new List<string> {
+                        "upgradeAzureCloudAccountPermissionsWithoutOauth",
+                    }
+                },
+                {   "UpgradeAzureCloudAccountReply", new List<string> {
+                        "upgradeAzureCloudAccount",
+                    }
+                },
+                {   "UpgradeGcpCloudAccountPermissionsWithoutOauthReply", new List<string> {
+                        "upgradeGcpCloudAccountPermissionsWithoutOauth",
+                    }
+                },
+                {   "UpgradeSlasReply", new List<string> {
+                        "upgradeSlas",
+                    }
+                },
+                {   "UpgradeStatusReply", new List<string> {
+                        "upgradeStatus",
+                    }
+                },
+                {   "User", new List<string> {
+                        "currentUser",
+                    }
+                },
+                {   "UserActivityResultConnection", new List<string> {
+                        "allFileActivities",
+                    }
+                },
+                {   "UserAuditConnection", new List<string> {
+                        "userAuditConnection",
+                    }
+                },
+                {   "UserAuditGroupByInfoConnection", new List<string> {
+                        "userAuditGroupByConnection",
+                    }
+                },
+                {   "UserConnection", new List<string> {
+                        "allUsersOnAccountConnection",
+                        "usersInCurrentAndDescendantOrganization",
+                    }
+                },
+                {   "UserDownloadUrl", new List<string> {
+                        "getDownloadUrl",
+                    }
+                },
+                {   "UserLoginContext", new List<string> {
+                        "currentUserLoginContext",
+                    }
+                },
+                {   "UserNotifications", new List<string> {
+                        "userNotifications",
+                    }
+                },
+                {   "UserSetting", new List<string> {
+                        "setUserSetting",
+                    }
+                },
+                {   "UserSettings", new List<string> {
+                        "userSettings",
+                    }
+                },
+                {   "V1BulkUpdateExchangeDagResponse", new List<string> {
+                        "bulkUpdateExchangeDag",
+                    }
+                },
+                {   "V1MssqlGetRestoreFilesV1Response", new List<string> {
+                        "allMssqlDatabaseRestoreFiles",
+                    }
+                },
+                {   "VSphereBlueprint", new List<string> {
+                        "vSphereBlueprint",
+                    }
+                },
+                {   "ValidReplicationTargetConnection", new List<string> {
+                        "allValidReplicationTargets",
+                    }
+                },
+                {   "ValidateAndCreateAwsCloudAccountReply", new List<string> {
+                        "validateAndCreateAwsCloudAccount",
+                    }
+                },
+                {   "ValidateAndSaveCustomerKmsInfoReply", new List<string> {
+                        "validateAndSaveCustomerKmsInfo",
+                    }
+                },
+                {   "ValidateAwsNativeRdsClusterNameForExportReply", new List<string> {
+                        "validateAwsNativeRdsClusterNameForExport",
+                    }
+                },
+                {   "ValidateAwsNativeRdsInstanceNameForExportReply", new List<string> {
+                        "validateAwsNativeRdsInstanceNameForExport",
+                    }
+                },
+                {   "ValidateAzureNativeSqlDatabaseDbNameForExportReply", new List<string> {
+                        "validateAzureNativeSqlDatabaseDbNameForExport",
+                    }
+                },
+                {   "ValidateAzureNativeSqlManagedInstanceDbNameForExportReply", new List<string> {
+                        "validateAzureNativeSqlManagedInstanceDbNameForExport",
+                    }
+                },
+                {   "ValidateAzureSubnetsForCloudAccountExocomputeReply", new List<string> {
+                        "validateAzureCloudAccountExocomputeConfigurations",
+                    }
+                },
+                {   "ValidateBlueprintRecoverySpecReply", new List<string> {
+                        "validateBlueprintRecoverySpec",
+                    }
+                },
+                {   "ValidateBlueprintReply", new List<string> {
+                        "validateBlueprint",
+                    }
+                },
+                {   "ValidateBlueprintsReply", new List<string> {
+                        "validateBlueprints",
+                    }
+                },
+                {   "ValidateCertificateReply", new List<string> {
+                        "validateCertificate",
+                    }
+                },
+                {   "ValidateCloudNativeFileRecoveryFeasibilityReply", new List<string> {
+                        "isCloudNativeFileRecoveryFeasible",
+                    }
+                },
+                {   "ValidateOracleAcoFileReply", new List<string> {
+                        "validateOracleAcoFile",
+                    }
+                },
+                {   "ValidateOrgNameReply", new List<string> {
+                        "validateOrgName",
+                    }
+                },
+                {   "VappExportOptions", new List<string> {
+                        "vappSnapshotExportOptions",
+                    }
+                },
+                {   "VappInstantRecoveryOptions", new List<string> {
+                        "vappSnapshotInstantRecoveryOptions",
+                    }
+                },
+                {   "VappTemplateExportOptionsUnion", new List<string> {
+                        "vappTemplateSnapshotExportOptions",
+                    }
+                },
+                {   "Vcd", new List<string> {
+                        "vcd",
+                    }
+                },
+                {   "VcdCatalog", new List<string> {
+                        "vcdCatalog",
+                    }
+                },
+                {   "VcdClusterSummaryListResponse", new List<string> {
+                        "vcdClusters",
+                    }
+                },
+                {   "VcdOrg", new List<string> {
+                        "vcdOrg",
+                    }
+                },
+                {   "VcdOrgConnection", new List<string> {
+                        "vcdOrgs",
+                    }
+                },
+                {   "VcdOrgVdc", new List<string> {
+                        "vcdOrgVdc",
+                    }
+                },
+                {   "VcdTopLevelDescendantTypeConnection", new List<string> {
+                        "vcdTopLevelDescendants",
+                    }
+                },
+                {   "VcdVapp", new List<string> {
+                        "vcdVapp",
+                    }
+                },
+                {   "VcdVappConnection", new List<string> {
+                        "vcdVapps",
+                    }
+                },
+                {   "VcdVimServer", new List<string> {
+                        "vcdVimServer",
+                    }
+                },
+                {   "VcenterAdvancedTagPreviewReply", new List<string> {
+                        "vCenterAdvancedTagPreview",
+                    }
+                },
+                {   "VcenterPreAddInfo", new List<string> {
+                        "vCenterPreAddInfo",
+                    }
+                },
+                {   "VerifySlaWithReplicationToClusterResponse", new List<string> {
+                        "verifySlaWithReplicationToCluster",
+                    }
+                },
+                {   "VersionedFileConnection", new List<string> {
+                        "searchSnappableVersionedFiles",
+                    }
+                },
+                {   "VimserverSummaryListResponse", new List<string> {
+                        "vcdVimServers",
+                    }
+                },
+                {   "VirtualMachineFilesReply", new List<string> {
+                        "allVirtualMachineFiles",
+                    }
+                },
+                {   "VlanConfigListResponse", new List<string> {
+                        "clusterVlans",
+                    }
+                },
+                {   "VmwareHostDetail", new List<string> {
+                        "vSphereHostDetails",
+                    }
+                },
+                {   "VnetConnection", new List<string> {
+                        "azureVNets",
+                    }
+                },
+                {   "Void", new List<string> {
+                        "approveTprRequest",
+                        "bulkCancelFailovers",
+                        "cancelThreatHunt",
+                        "cancelTprRequest",
+                        "completeAzureAdAppUpdate",
+                        "completeTrialOnboarding",
+                        "completeTrialTask",
+                        "createPasskey",
+                        "createReplicationPair",
+                        "deleteAllOracleDatabaseSnapshots",
+                        "deleteAwsComputeSetting",
+                        "deleteCloudNativeLabelRule",
+                        "deleteCloudNativeTagRule",
+                        "deleteCsr",
+                        "deleteCustomReport",
+                        "deleteEventDigest",
+                        "deleteIntegration",
+                        "deleteIntegrations",
+                        "deleteOrgNetwork",
+                        "deleteRecoverySchedule",
+                        "deleteReplicationPair",
+                        "deleteScheduledReport",
+                        "deleteSmbDomain",
+                        "deleteSyslogExportRule",
+                        "deleteTarget",
+                        "deleteTargetMapping",
+                        "deleteTprPolicy",
+                        "deleteWebhook",
+                        "denyTprRequests",
+                        "disableSupportUserAccess",
+                        "disableTprOrg",
+                        "enableSupportUserAccess",
+                        "enableThreatMonitoring",
+                        "excludeAwsNativeEbsVolumesFromSnapshot",
+                        "excludeAzureNativeManagedDisksFromSnapshot",
+                        "excludeSharepointObjectsFromProtection",
+                        "executeTprRequests",
+                        "gcpNativeExcludeDisksFromInstanceSnapshot",
+                        "hideRevealNasNamespaces",
+                        "ignoreTrial",
+                        "joinSmbDomain",
+                        "lockUsersByAdmin",
+                        "pauseClusterAlerts",
+                        "promoteReaderTarget",
+                        "refreshReaderTarget",
+                        "removePrivateEndpointConnection",
+                        "resetPasskeys",
+                        "resetUsersPasswordsWithUserIds",
+                        "revokeAllOrgRoles",
+                        "sendPactsafeEvent",
+                        "setCustomerTags",
+                        "setPasswordComplexityPolicy",
+                        "setRansomwareInvestigationEnabled",
+                        "setSsoCertificate",
+                        "snoozeEula",
+                        "stopJobInstanceFromEventSeries",
+                        "submitTprRequest",
+                        "unlockUsersByAdmin",
+                        "unmapAzurePersistentStorageSubscription",
+                        "unpauseClusterAlerts",
+                        "updateAuthDomainUsersHiddenStatus",
+                        "updateAwsCloudAccount",
+                        "updateCloudNativeLabelRule",
+                        "updateCloudNativeTagRule",
+                        "updateConfiguredGroup",
+                        "updateCustomerAppPermissionForAzureSql",
+                        "updateIntegration",
+                        "updateIntegrations",
+                        "updateNasShares",
+                        "updateNutanixVm",
+                        "updateO365AppPermissions",
+                        "updateOrgNetwork",
+                        "updateOrgSecurityPolicy",
+                        "updatePolarisReport",
+                        "updateRecoverySchedule",
+                        "updateReplicationTarget",
+                        "updateSupportUserAccess",
+                        "updateTprConfiguration",
+                        "updateTprPolicy",
+                        "updateVcdVapp",
+                        "upgradeCdmManagedTarget",
+                        "upgradeToRsc",
+                        "vsphereVmDeleteSnapshot",
+                    }
+                },
+                {   "VolumeGroup", new List<string> {
+                        "volumeGroup",
+                    }
+                },
+                {   "VolumeGroupConnection", new List<string> {
+                        "volumeGroupConnection",
+                    }
+                },
+                {   "VolumeGroupLiveMountConnection", new List<string> {
+                        "volumeGroupMounts",
+                    }
+                },
+                {   "VsphereAsyncRequestStatus", new List<string> {
+                        "vpshereVMRecoveryPointMount",
+                        "vsphereCreateVCenter",
+                        "vsphereExportSnapshotToStandaloneHost",
+                        "vsphereRefreshVCenter",
+                        "vsphereVMDeleteLiveMount",
+                        "vsphereVMExportSnapshot",
+                        "vsphereVMInitiateInstantRecovery",
+                        "vsphereVMInitiateLiveMount",
+                        "vsphereVmRecoverFiles",
+                    }
+                },
+                {   "VsphereComputeCluster", new List<string> {
+                        "vSphereComputeCluster",
+                    }
+                },
+                {   "VsphereComputeClusterConnection", new List<string> {
+                        "vSphereComputeClusters",
+                    }
+                },
+                {   "VsphereDatacenter", new List<string> {
+                        "vSphereDatacenter",
+                    }
+                },
+                {   "VsphereDatacenterFolder", new List<string> {
+                        "vSphereDatacenterFolder",
+                    }
+                },
+                {   "VsphereDatastore", new List<string> {
+                        "vSphereDatastore",
+                    }
+                },
+                {   "VsphereDatastoreCluster", new List<string> {
+                        "vSphereDatastoreCluster",
+                    }
+                },
+                {   "VsphereDatastoreClusterConnection", new List<string> {
+                        "vSphereDatastoreClusters",
+                    }
+                },
+                {   "VsphereDatastoreConnection", new List<string> {
+                        "vSphereDatastoreConnection",
+                    }
+                },
+                {   "VsphereFolder", new List<string> {
+                        "vSphereFolder",
+                    }
+                },
+                {   "VsphereFolderConnection", new List<string> {
+                        "vSphereFolders",
+                    }
+                },
+                {   "VsphereHost", new List<string> {
+                        "vSphereHost",
+                    }
+                },
+                {   "VsphereHostConnection", new List<string> {
+                        "vSphereHostConnection",
+                    }
+                },
+                {   "VsphereLiveMountConnection", new List<string> {
+                        "vSphereLiveMounts",
+                    }
+                },
+                {   "VsphereMount", new List<string> {
+                        "vSphereMount",
+                    }
+                },
+                {   "VsphereMountConnection", new List<string> {
+                        "vSphereMountConnection",
+                    }
+                },
+                {   "VsphereNetwork", new List<string> {
+                        "vSphereNetwork",
+                    }
+                },
+                {   "VsphereResourcePool", new List<string> {
+                        "vSphereResourcePool",
+                    }
+                },
+                {   "VsphereTag", new List<string> {
+                        "vSphereTag",
+                    }
+                },
+                {   "VsphereTagCategory", new List<string> {
+                        "vSphereTagCategory",
+                    }
+                },
+                {   "VsphereVcenter", new List<string> {
+                        "vSphereVCenter",
+                    }
+                },
+                {   "VsphereVcenterConnection", new List<string> {
+                        "vSphereVCenterConnection",
+                    }
+                },
+                {   "VsphereVm", new List<string> {
+                        "vSphereVmNew",
+                    }
+                },
+                {   "VsphereVmConnection", new List<string> {
+                        "vcdVappVms",
+                        "vSphereVmNewConnection",
+                    }
+                },
+                {   "VsphereVmListEsxiDatastoresReply", new List<string> {
+                        "vsphereVmListEsxiDatastores",
+                    }
+                },
+                {   "VsphereVmPowerOnOffLiveMountReply", new List<string> {
+                        "vsphereVmPowerOnOffLiveMount",
+                    }
+                },
+                {   "WebhookConnection", new List<string> {
+                        "allWebhooks",
+                    }
+                },
+                {   "WindowsCluster", new List<string> {
+                        "windowsCluster",
+                    }
+                },
+                {   "WindowsFileset", new List<string> {
+                        "windowsFileset",
+                    }
+                },
+                {   "WorkloadAnomalyConnection", new List<string> {
+                        "workloadAnomalies",
+                    }
+                },
+                {   "WorkloadGroupByReply", new List<string> {
+                        "workloadGroupByAtSpecifiedTime",
+                    }
+                },
+                {   "ZrsAvailabilityReply", new List<string> {
+                        "isZrsAvailableForLocation",
+                    }
+                },
+                {   "[AccountProduct]", new List<string> {
+                        "allAccountProducts",
+                    }
+                },
+                {   "[AdGroup]", new List<string> {
+                        "allO365AdGroups",
+                    }
+                },
+                {   "[AppItemWithCascadingImpact]", new List<string> {
+                        "saasAppCascadingImpact",
+                    }
+                },
+                {   "[ArchivalStorageUsage]", new List<string> {
+                        "archivalStorageUsage",
+                    }
+                },
+                {   "[AsyncRequestStatus]", new List<string> {
+                        "createVappExport",
+                    }
+                },
+                {   "[AuthorizedOperations]", new List<string> {
+                        "allAuthorizationsForObjects",
+                    }
+                },
+                {   "[AwsCdmVersion]", new List<string> {
+                        "allAwsCdmVersions",
+                    }
+                },
+                {   "[AwsCloudAccountFeaturesWithExoConfigs]", new List<string> {
+                        "allAwsCloudAccountsFeaturesWithExoConfigs",
+                    }
+                },
+                {   "[AwsCloudAccountRegion]", new List<string> {
+                        "allAwsRegions",
+                    }
+                },
+                {   "[AwsCloudAccountWithFeatures]", new List<string> {
+                        "allAwsCloudAccountsWithFeatures",
+                    }
+                },
+                {   "[AwsComputeSettings]", new List<string> {
+                        "allAwsComputeSettings",
+                    }
+                },
+                {   "[AwsExocomputeConfig]", new List<string> {
+                        "allAwsExocomputeConfigs",
+                    }
+                },
+                {   "[AwsFeatureConfig]", new List<string> {
+                        "allAwsCloudAccountConfigs",
+                    }
+                },
+                {   "[AwsVpc]", new List<string> {
+                        "allVpcsByRegionFromAws",
+                        "allVpcsFromAws",
+                    }
+                },
+                {   "[AzureArmTemplateByFeature]", new List<string> {
+                        "allAzureArmTemplatesByFeature",
+                    }
+                },
+                {   "[AzureCdmVersion]", new List<string> {
+                        "allAzureCdmVersions",
+                    }
+                },
+                {   "[AzureCloudAccountRegion]", new List<string> {
+                        "allAzureRegions",
+                    }
+                },
+                {   "[AzureCloudAccountTenantWithExoConfigs]", new List<string> {
+                        "allAzureCloudAccountTenantsWithExoConfigs",
+                    }
+                },
+                {   "[AzureCloudAccountTenant]", new List<string> {
+                        "allAzureCloudAccountTenants",
+                    }
+                },
+                {   "[AzureEncryptionKey]", new List<string> {
+                        "allAzureEncryptionKeys",
+                    }
+                },
+                {   "[AzureExocomputeConfigsInAccount]", new List<string> {
+                        "allAzureExocomputeConfigsInAccount",
+                    }
+                },
+                {   "[AzureKeyVault]", new List<string> {
+                        "allAzureKeyVaultsByRegion",
+                    }
+                },
+                {   "[AzureManagedIdentity]", new List<string> {
+                        "allAzureManagedIdentities",
+                    }
+                },
+                {   "[AzureNativeAvailabilitySet]", new List<string> {
+                        "allAzureNativeAvailabilitySetsByRegionFromAzure",
+                    }
+                },
+                {   "[AzureNativeDiskEncryptionSet]", new List<string> {
+                        "allAzureDiskEncryptionSetsByRegion",
+                    }
+                },
+                {   "[AzureNativeExportCompatibleDiskTypes]", new List<string> {
+                        "allAzureNativeExportCompatibleDiskTypesByRegionFromAzure",
+                    }
+                },
+                {   "[AzureNativeExportCompatibleVmSizes]", new List<string> {
+                        "allAzureNativeExportCompatibleVmSizesByRegionFromAzure",
+                    }
+                },
+                {   "[AzureNativeSecurityGroup]", new List<string> {
+                        "allAzureNativeSecurityGroupsByRegionFromAzure",
+                    }
+                },
+                {   "[AzureNativeStorageAccount]", new List<string> {
+                        "allAzureNativeStorageAccountsFromAzure",
+                    }
+                },
+                {   "[AzureNativeSubnet]", new List<string> {
+                        "allAzureCloudAccountSubnetsByRegion",
+                        "allAzureNativeSubnetsByRegionFromAzure",
+                    }
+                },
+                {   "[AzureNativeVirtualNetwork]", new List<string> {
+                        "allAzureNativeVirtualNetworks",
+                    }
+                },
+                {   "[AzureResourceGroupInfo]", new List<string> {
+                        "allAzureNativeResourceGroupsInfoIfExist",
+                    }
+                },
+                {   "[AzureResourceGroup]", new List<string> {
+                        "allResourceGroupsFromAzure",
+                    }
+                },
+                {   "[AzureSqlDatabaseServerElasticPool]", new List<string> {
+                        "allAzureSqlDatabaseServerElasticPools",
+                    }
+                },
+                {   "[AzureSubscriptionMissingPermissions]", new List<string> {
+                        "allAzureCloudAccountMissingPermissions",
+                    }
+                },
+                {   "[AzureSubscriptionWithExocomputeMapping]", new List<string> {
+                        "allAzureSubscriptionWithExocomputeMappings",
+                    }
+                },
+                {   "[AzureSubscriptionWithFeaturesType]", new List<string> {
+                        "allAzureCloudAccountSubscriptionsByFeature",
+                    }
+                },
+                {   "[BlueprintRecoverySpec]", new List<string> {
+                        "createBlueprintRecoverySpec",
+                    }
+                },
+                {   "[Boolean]", new List<string> {
+                        "allClustersTotpAckStatus",
+                    }
+                },
+                {   "[CcWithCloudInfo]", new List<string> {
+                        "allCloudClusters",
+                    }
+                },
+                {   "[CdmGuestCredential]", new List<string> {
+                        "allCdmGuestCredentials",
+                    }
+                },
+                {   "[CdmHierarchySnappableNew]", new List<string> {
+                        "cdmHierarchySnappablesNew",
+                    }
+                },
+                {   "[CdmOvaDetail]", new List<string> {
+                        "allCdmOvaDetails",
+                    }
+                },
+                {   "[ClosestSnapshotSearchResult]", new List<string> {
+                        "allSnapshotsClosestToPointInTime",
+                    }
+                },
+                {   "[CloudAccountFeaturePermission]", new List<string> {
+                        "allCurrentFeaturePermissionsForCloudAccounts",
+                        "allLatestFeaturePermissionsForCloudAccounts",
+                    }
+                },
+                {   "[CloudAccountWithExocomputeMapping]", new List<string> {
+                        "allAccountsWithExocomputeMappings",
+                    }
+                },
+                {   "[CloudAccount]", new List<string> {
+                        "allCloudAccounts",
+                    }
+                },
+                {   "[CloudAccountsExocomputeAccountMapping]", new List<string> {
+                        "allCloudAccountExocomputeMappings",
+                    }
+                },
+                {   "[CloudDirectSite]", new List<string> {
+                        "allCloudDirectSites",
+                    }
+                },
+                {   "[ClusterReplicationTarget]", new List<string> {
+                        "allClusterReplicationTargets",
+                    }
+                },
+                {   "[ClusterWebCertAndIpmi]", new List<string> {
+                        "allClusterWebCertsAndIpmis",
+                    }
+                },
+                {   "[ComputeClusterIofilterStatus]", new List<string> {
+                        "allSlaIofilterStatuses",
+                        "allVmIofilterStatuses",
+                    }
+                },
+                {   "[CreateOnDemandJobReply]", new List<string> {
+                        "backupAzureAdDirectory",
+                        "backupM365Mailbox",
+                        "backupM365Onedrive",
+                        "backupM365SharepointDrive",
+                        "backupM365Team",
+                        "cleanupIsolatedRecoveries",
+                        "createK8sNamespaceSnapshots",
+                        "restoreAzureAdObjectsWithPassword",
+                        "startBlueprintsFailover",
+                    }
+                },
+                {   "[DailyComplianceStats]", new List<string> {
+                        "allComplianceTimeSeries",
+                    }
+                },
+                {   "[DataLocationSupportedCluster]", new List<string> {
+                        "allConnectedClusters",
+                    }
+                },
+                {   "[DbParameterGroup]", new List<string> {
+                        "allDbParameterGroupsByRegionFromAws",
+                    }
+                },
+                {   "[DhrcActiveRecommendation]", new List<string> {
+                        "allDhrcActiveRecommendations",
+                    }
+                },
+                {   "[DhrcCollectedMetric]", new List<string> {
+                        "allDhrcLatestMetrics",
+                    }
+                },
+                {   "[DhrcScore]", new List<string> {
+                        "allDhrcScores",
+                    }
+                },
+                {   "[DownloadPackageReplyWithUuid]", new List<string> {
+                        "startDownloadPackageBatchJob",
+                    }
+                },
+                {   "[EventDigest]", new List<string> {
+                        "allEventDigests",
+                    }
+                },
+                {   "[FailoverJobReport]", new List<string> {
+                        "allFailoverJobReports",
+                    }
+                },
+                {   "[FeatureName]", new List<string> {
+                        "toggleableFeaturesEnabled",
+                    }
+                },
+                {   "[FullSpSiteExclusions]", new List<string> {
+                        "allSharepointSiteExclusions",
+                    }
+                },
+                {   "[GcpCloudAccountMissingPermissionsForAddition]", new List<string> {
+                        "allGcpCloudAccountMissingPermissionsForAddition",
+                    }
+                },
+                {   "[GcpCloudAccountProjectDetail]", new List<string> {
+                        "allGcpCloudAccountProjectsByFeature",
+                    }
+                },
+                {   "[GcpCloudAccountProjectForOauth]", new List<string> {
+                        "allGcpCloudAccountProjectsForOauth",
+                    }
+                },
+                {   "[GcpNativeKmsCryptoKey]", new List<string> {
+                        "allGcpNativeAvailableKmsCryptoKeys",
+                    }
+                },
+                {   "[GcpNativeNetwork]", new List<string> {
+                        "allGcpNativeNetworks",
+                    }
+                },
+                {   "[GcpNativeRegion]", new List<string> {
+                        "allGcpNativeRegions",
+                    }
+                },
+                {   "[GcpPermission]", new List<string> {
+                        "allFeaturePermissionsForGcpCloudAccount",
+                    }
+                },
+                {   "[GroupCount]", new List<string> {
+                        "clusterTypeList",
+                        "downloadedVersionList",
+                        "geoLocationList",
+                        "getGroupCountByPrechecksStatus",
+                        "getGroupCountByUpgradeJobStatus",
+                        "getGroupCountByVersionStatus",
+                    }
+                },
+                {   "[Group]", new List<string> {
+                        "userGroups",
+                    }
+                },
+                {   "[HierarchyObject]", new List<string> {
+                        "hierarchyObjects",
+                        "slaConflictObjects",
+                    }
+                },
+                {   "[IdentityProvider]", new List<string> {
+                        "allCurrentOrgIdentityProviders",
+                    }
+                },
+                {   "[InstalledVersionGroupCount]", new List<string> {
+                        "installedVersionList",
+                    }
+                },
+                {   "[InventoryCard]", new List<string> {
+                        "allInventoryWorkloads",
+                    }
+                },
+                {   "[ItemSnapshot]", new List<string> {
+                        "saasAppLatestSnapshotsForItems",
+                    }
+                },
+                {   "[JiraIssueType]", new List<string> {
+                        "allJiraIssueTypes",
+                    }
+                },
+                {   "[KmsEncryptionKey]", new List<string> {
+                        "allKmsEncryptionKeysByRegionFromAws",
+                    }
+                },
+                {   "[LatestConfigProtectionBackups]", new List<string> {
+                        "allLatestConfigProtectionBackupsByVersion",
+                    }
+                },
+                {   "[ManagedObjectType]", new List<string> {
+                        "allUnmanagedObjectsSupportedTypes",
+                    }
+                },
+                {   "[MigrationMetadata]", new List<string> {
+                        "allMigrationMetadata",
+                    }
+                },
+                {   "[MosaicStorageLocation]", new List<string> {
+                        "allNosqlStorageLocations",
+                    }
+                },
+                {   "[NcdObjectsOverTimeData]", new List<string> {
+                        "allNcdObjectsOverTimeData",
+                    }
+                },
+                {   "[NcdSlaComplianceData]", new List<string> {
+                        "allNcdSlaComplianceData",
+                    }
+                },
+                {   "[NcdTaskData]", new List<string> {
+                        "allNcdTaskData",
+                    }
+                },
+                {   "[NcdUsageOverTimeData]", new List<string> {
+                        "allNcdUsageOverTimeData",
+                    }
+                },
+                {   "[NetworkHostProject]", new List<string> {
+                        "allGcpNativeProjectsWithAccessibleNetworks",
+                    }
+                },
+                {   "[O365OrgInfo]", new List<string> {
+                        "allO365OrgStatuses",
+                    }
+                },
+                {   "[O365SubscriptionAppTypeCounts]", new List<string> {
+                        "allO365SubscriptionsAppTypeCounts",
+                    }
+                },
+                {   "[ObjectIdsForHierarchyType]", new List<string> {
+                        "allObjectsAlreadyAssignedToOrgs",
+                    }
+                },
+                {   "[Operation]", new List<string> {
+                        "allAllowedOrgAdminOperations",
+                        "allAuthorizationsForGlobalResource",
+                        "allAuthorizationsForObject",
+                    }
+                },
+                {   "[OptionGroup]", new List<string> {
+                        "allOptionGroupsByRegionFromAws",
+                    }
+                },
+                {   "[Org]", new List<string> {
+                        "allOrgsByIds",
+                    }
+                },
+                {   "[PermissionPolicy]", new List<string> {
+                        "allAwsPermissionPolicies",
+                    }
+                },
+                {   "[Permission]", new List<string> {
+                        "getPermissions",
+                    }
+                },
+                {   "[PolarisReportConfig]", new List<string> {
+                        "allRscReportConfigs",
+                    }
+                },
+                {   "[PolicyRiskSummary]", new List<string> {
+                        "allPolicyRiskSummaries",
+                    }
+                },
+                {   "[PolicySummary]", new List<string> {
+                        "allTopRiskPolicySummaries",
+                    }
+                },
+                {   "[Prechecks]", new List<string> {
+                        "allMigrationPrechecks",
+                    }
+                },
+                {   "[PvcInformation]", new List<string> {
+                        "allSnapshotPvcs",
+                    }
+                },
+                {   "[QuarantineSpec]", new List<string> {
+                        "allQuarantinedDetailsForSnapshots",
+                        "allQuarantinedDetailsForWorkload",
+                    }
+                },
+                {   "[RbacPermission]", new List<string> {
+                        "allEffectiveRbacPermissions",
+                    }
+                },
+                {   "[ReplicatedSnapshotInfo]", new List<string> {
+                        "allK8sReplicaSnapshotInfos",
+                    }
+                },
+                {   "[ReportConfig]", new List<string> {
+                        "allReportConfigs",
+                    }
+                },
+                {   "[ReportMetadata]", new List<string> {
+                        "allReportMetadata",
+                    }
+                },
+                {   "[ResourceSpec]", new List<string> {
+                        "allBlueprintResourceSpecs",
+                        "allSnappableResourceSpecs",
+                    }
+                },
+                {   "[Role]", new List<string> {
+                        "getRolesByIds",
+                    }
+                },
+                {   "[S3BucketDetails]", new List<string> {
+                        "allS3BucketsDetailsFromAws",
+                    }
+                },
+                {   "[ShareExportIdPair]", new List<string> {
+                        "allCloudDirectShares",
+                    }
+                },
+                {   "[SlaAssignResult]", new List<string> {
+                        "assignSlasForSnappableHierarchies",
+                    }
+                },
+                {   "[SlaAuditDetail]", new List<string> {
+                        "slaAuditDetail",
+                    }
+                },
+                {   "[SlaDomainWithWarnings]", new List<string> {
+                        "slaDomainWithWarningsList",
+                    }
+                },
+                {   "[SlaDomain]", new List<string> {
+                        "allSlaSummariesByIds",
+                    }
+                },
+                {   "[SlaInfo]", new List<string> {
+                        "allClusterGlobalSlas",
+                    }
+                },
+                {   "[SourceRecoverySpecsReply]", new List<string> {
+                        "allSourceRecoverySpecs",
+                    }
+                },
+                {   "[String]", new List<string> {
+                        "allAvailabilityZonesByRegionFromAws",
+                        "allAwsInstanceProfileNames",
+                        "allAzureNativeVirtualMachineSizes",
+                        "allAzureNsgs",
+                        "allAzureResourceGroups",
+                        "allAzureStorageAccounts",
+                        "allAzureSubnets",
+                        "allAzureVnets",
+                        "allCdpSlaVmNames",
+                        "allCloudNativeFileRecoveryEligibleSnapshots",
+                        "allCloudNativeLabelKeys",
+                        "allCloudNativeLabelValues",
+                        "allCloudNativeTagKeys",
+                        "allCloudNativeTagValues",
+                        "allDeploymentIpAddresses",
+                        "allEc2KeyPairsByRegionFromAws",
+                        "allGcpNativeCompatibleMachineTypes",
+                        "allGcpNativeStoredMachineTypes",
+                        "allGcpNativeStoredMachineTypesInProject",
+                        "allGcpNativeStoredNetworkNames",
+                        "allGcpNativeStoredNetworkNamesInProject",
+                        "allGcpNativeStoredRegions",
+                        "allGcpNativeStoredRegionsInProject",
+                        "allIssuesJobIds",
+                        "allS3BucketsFromAws",
+                        "allSupportedAwsRdsDatabaseInstanceClasses",
+                        "deactivatePolicy",
+                        "featureFlagNames",
+                        "flagrFeatureFlagNames",
+                        "getDns",
+                        "getNtp",
+                        "removePolicyObjects",
+                    }
+                },
+                {   "[SubnetGroup]", new List<string> {
+                        "allDbSubnetGroupsByRegionFromAws",
+                    }
+                },
+                {   "[TargetMapping]", new List<string> {
+                        "allTargetMappings",
+                    }
+                },
+                {   "[Target]", new List<string> {
+                        "allTargets",
+                        "createRcvLocationsFromTemplate",
+                    }
+                },
+                {   "[Trial]", new List<string> {
+                        "allTrials",
+                    }
+                },
+                {   "[UnifiedFeatureFlag]", new List<string> {
+                        "allUnifiedFeatureFlags",
+                    }
+                },
+                {   "[UpgradeJobReplyWithUuid]", new List<string> {
+                        "scheduleUpgradeBatchJob",
+                        "startUpgradeBatchJob",
+                    }
+                },
+                {   "[UserDownload]", new List<string> {
+                        "getUserDownloads",
+                    }
+                },
+                {   "[User]", new List<string> {
+                        "allAccountOwners",
+                        "allUsersOnAccount",
+                    }
+                },
+                {   "[VcenterHotAddProxyVmInfo]", new List<string> {
+                        "allVcenterHotAddProxyVms",
+                    }
+                },
+                {   "[VmRecoveryJobInfo]", new List<string> {
+                        "allVmRecoveryJobsInfo",
+                    }
+                },
+                {   "[VmwareCdpStateInfo]", new List<string> {
+                        "allVmwareCdpStateInfos",
+                    }
+                },
+                {   "[VsphereHost]", new List<string> {
+                        "vSphereHostsByFids",
+                    }
+                },
+                {   "[dataViewMetadata]", new List<string> {
+                        "dataViewMetadata",
+                    }
+                },
+                {   "[pendingAction]", new List<string> {
+                        "allPendingActions",
+                    }
+                },
+                {   "mandatoryTotpGracePeriod", new List<string> {
+                        "mandatoryTotpGracePeriod",
+                    }
+                },
+                {   "pendingAction", new List<string> {
+                        "pendingAction",
+                    }
+                },
+                {   "reportGenerateReply", new List<string> {
+                        "sendEmailNow",
+                    }
+                },
+            };
+            if (lookupDict.TryGetValue(returnTypeName, out var rootFieldNames))
+            {
+                return rootFieldNames;
+            }
+            return new List<string>();
         }
     }
 }

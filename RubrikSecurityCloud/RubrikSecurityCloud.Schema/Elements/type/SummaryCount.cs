@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? TotalCount
         // GraphQL -> totalCount: Long! (scalar)
-        if (this.TotalCount == null && Exploration.Includes(parent + ".totalCount", true))
+        if (this.TotalCount == null && ec.Includes("totalCount",true))
         {
             this.TotalCount = new System.Int64();
         }
         //      C# -> System.Int64? ViolatedCount
         // GraphQL -> violatedCount: Long! (scalar)
-        if (this.ViolatedCount == null && Exploration.Includes(parent + ".violatedCount", true))
+        if (this.ViolatedCount == null && ec.Includes("violatedCount",true))
         {
             this.ViolatedCount = new System.Int64();
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SummaryCount> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SummaryCount());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SummaryCount> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

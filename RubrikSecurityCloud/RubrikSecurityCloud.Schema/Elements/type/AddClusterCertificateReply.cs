@@ -159,54 +159,53 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? CertId
         // GraphQL -> certId: String! (scalar)
-        if (this.CertId == null && Exploration.Includes(parent + ".certId", true))
+        if (this.CertId == null && ec.Includes("certId",true))
         {
             this.CertId = "FETCH";
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String (scalar)
-        if (this.Description == null && Exploration.Includes(parent + ".description", true))
+        if (this.Description == null && ec.Includes("description",true))
         {
             this.Description = "FETCH";
         }
         //      C# -> DateTime? Expiration
         // GraphQL -> expiration: DateTime (scalar)
-        if (this.Expiration == null && Exploration.Includes(parent + ".expiration", true))
+        if (this.Expiration == null && ec.Includes("expiration",true))
         {
             this.Expiration = new DateTime();
         }
         //      C# -> System.Boolean? HasKey
         // GraphQL -> hasKey: Boolean! (scalar)
-        if (this.HasKey == null && Exploration.Includes(parent + ".hasKey", true))
+        if (this.HasKey == null && ec.Includes("hasKey",true))
         {
             this.HasKey = true;
         }
         //      C# -> System.Boolean? IsTrusted
         // GraphQL -> isTrusted: Boolean (scalar)
-        if (this.IsTrusted == null && Exploration.Includes(parent + ".isTrusted", true))
+        if (this.IsTrusted == null && ec.Includes("isTrusted",true))
         {
             this.IsTrusted = true;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? PemFile
         // GraphQL -> pemFile: String! (scalar)
-        if (this.PemFile == null && Exploration.Includes(parent + ".pemFile", true))
+        if (this.PemFile == null && ec.Includes("pemFile",true))
         {
             this.PemFile = "FETCH";
         }
         //      C# -> System.String? UsedBy
         // GraphQL -> usedBy: String! (scalar)
-        if (this.UsedBy == null && Exploration.Includes(parent + ".usedBy", true))
+        if (this.UsedBy == null && ec.Includes("usedBy",true))
         {
             this.UsedBy = "FETCH";
         }
@@ -242,12 +241,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AddClusterCertificateReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AddClusterCertificateReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AddClusterCertificateReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

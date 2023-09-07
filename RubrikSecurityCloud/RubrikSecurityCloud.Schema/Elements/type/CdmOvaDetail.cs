@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? CdmVersion
         // GraphQL -> cdmVersion: String! (scalar)
-        if (this.CdmVersion == null && Exploration.Includes(parent + ".cdmVersion", true))
+        if (this.CdmVersion == null && ec.Includes("cdmVersion",true))
         {
             this.CdmVersion = "FETCH";
         }
         //      C# -> System.String? OvaDownloadLink
         // GraphQL -> ovaDownloadLink: String! (scalar)
-        if (this.OvaDownloadLink == null && Exploration.Includes(parent + ".ovaDownloadLink", true))
+        if (this.OvaDownloadLink == null && ec.Includes("ovaDownloadLink",true))
         {
             this.OvaDownloadLink = "FETCH";
         }
         //      C# -> System.String? OvaSize
         // GraphQL -> ovaSize: String! (scalar)
-        if (this.OvaSize == null && Exploration.Includes(parent + ".ovaSize", true))
+        if (this.OvaSize == null && ec.Includes("ovaSize",true))
         {
             this.OvaSize = "FETCH";
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CdmOvaDetail> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CdmOvaDetail());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CdmOvaDetail> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

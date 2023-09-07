@@ -187,66 +187,65 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> DateTime? ClusterSyncLastSuccessTime
         // GraphQL -> clusterSyncLastSuccessTime: DateTime (scalar)
-        if (this.ClusterSyncLastSuccessTime == null && Exploration.Includes(parent + ".clusterSyncLastSuccessTime", true))
+        if (this.ClusterSyncLastSuccessTime == null && ec.Includes("clusterSyncLastSuccessTime",true))
         {
             this.ClusterSyncLastSuccessTime = new DateTime();
         }
         //      C# -> DateTime? EventsSyncLastSuccessTime
         // GraphQL -> eventsSyncLastSuccessTime: DateTime (scalar)
-        if (this.EventsSyncLastSuccessTime == null && Exploration.Includes(parent + ".eventsSyncLastSuccessTime", true))
+        if (this.EventsSyncLastSuccessTime == null && ec.Includes("eventsSyncLastSuccessTime",true))
         {
             this.EventsSyncLastSuccessTime = new DateTime();
         }
         //      C# -> System.Boolean? IsClusterSyncHealthy
         // GraphQL -> isClusterSyncHealthy: Boolean! (scalar)
-        if (this.IsClusterSyncHealthy == null && Exploration.Includes(parent + ".isClusterSyncHealthy", true))
+        if (this.IsClusterSyncHealthy == null && ec.Includes("isClusterSyncHealthy",true))
         {
             this.IsClusterSyncHealthy = true;
         }
         //      C# -> System.Boolean? IsEventsSyncHealthy
         // GraphQL -> isEventsSyncHealthy: Boolean! (scalar)
-        if (this.IsEventsSyncHealthy == null && Exploration.Includes(parent + ".isEventsSyncHealthy", true))
+        if (this.IsEventsSyncHealthy == null && ec.Includes("isEventsSyncHealthy",true))
         {
             this.IsEventsSyncHealthy = true;
         }
         //      C# -> System.Boolean? IsJobMonitoringSyncHealthy
         // GraphQL -> isJobMonitoringSyncHealthy: Boolean! (scalar)
-        if (this.IsJobMonitoringSyncHealthy == null && Exploration.Includes(parent + ".isJobMonitoringSyncHealthy", true))
+        if (this.IsJobMonitoringSyncHealthy == null && ec.Includes("isJobMonitoringSyncHealthy",true))
         {
             this.IsJobMonitoringSyncHealthy = true;
         }
         //      C# -> System.Boolean? IsMetadataSyncHealthy
         // GraphQL -> isMetadataSyncHealthy: Boolean! (scalar)
-        if (this.IsMetadataSyncHealthy == null && Exploration.Includes(parent + ".isMetadataSyncHealthy", true))
+        if (this.IsMetadataSyncHealthy == null && ec.Includes("isMetadataSyncHealthy",true))
         {
             this.IsMetadataSyncHealthy = true;
         }
         //      C# -> System.Boolean? IsReportsSyncHealthy
         // GraphQL -> isReportsSyncHealthy: Boolean! (scalar)
-        if (this.IsReportsSyncHealthy == null && Exploration.Includes(parent + ".isReportsSyncHealthy", true))
+        if (this.IsReportsSyncHealthy == null && ec.Includes("isReportsSyncHealthy",true))
         {
             this.IsReportsSyncHealthy = true;
         }
         //      C# -> DateTime? JobMonitoringSyncLastSuccessTime
         // GraphQL -> jobMonitoringSyncLastSuccessTime: DateTime (scalar)
-        if (this.JobMonitoringSyncLastSuccessTime == null && Exploration.Includes(parent + ".jobMonitoringSyncLastSuccessTime", true))
+        if (this.JobMonitoringSyncLastSuccessTime == null && ec.Includes("jobMonitoringSyncLastSuccessTime",true))
         {
             this.JobMonitoringSyncLastSuccessTime = new DateTime();
         }
         //      C# -> DateTime? ObjectMetadataSyncLastSuccessTime
         // GraphQL -> objectMetadataSyncLastSuccessTime: DateTime (scalar)
-        if (this.ObjectMetadataSyncLastSuccessTime == null && Exploration.Includes(parent + ".objectMetadataSyncLastSuccessTime", true))
+        if (this.ObjectMetadataSyncLastSuccessTime == null && ec.Includes("objectMetadataSyncLastSuccessTime",true))
         {
             this.ObjectMetadataSyncLastSuccessTime = new DateTime();
         }
         //      C# -> DateTime? ReportsSyncLastSuccessTime
         // GraphQL -> reportsSyncLastSuccessTime: DateTime (scalar)
-        if (this.ReportsSyncLastSuccessTime == null && Exploration.Includes(parent + ".reportsSyncLastSuccessTime", true))
+        if (this.ReportsSyncLastSuccessTime == null && ec.Includes("reportsSyncLastSuccessTime",true))
         {
             this.ReportsSyncLastSuccessTime = new DateTime();
         }
@@ -282,12 +281,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RubrikSyncStatus> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RubrikSyncStatus());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<RubrikSyncStatus> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

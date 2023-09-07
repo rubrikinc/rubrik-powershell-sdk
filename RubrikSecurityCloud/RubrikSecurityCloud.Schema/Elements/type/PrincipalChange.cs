@@ -123,40 +123,39 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? FullName
         // GraphQL -> fullName: String! (scalar)
-        if (this.FullName == null && Exploration.Includes(parent + ".fullName", true))
+        if (this.FullName == null && ec.Includes("fullName",true))
         {
             this.FullName = "FETCH";
         }
         //      C# -> System.String? PrincipalId
         // GraphQL -> principalId: String! (scalar)
-        if (this.PrincipalId == null && Exploration.Includes(parent + ".principalId", true))
+        if (this.PrincipalId == null && ec.Includes("principalId",true))
         {
             this.PrincipalId = "FETCH";
         }
         //      C# -> DateTime? Time
         // GraphQL -> time: DateTime! (scalar)
-        if (this.Time == null && Exploration.Includes(parent + ".time", true))
+        if (this.Time == null && ec.Includes("time",true))
         {
             this.Time = new DateTime();
         }
         //      C# -> CountChange? CountChange
         // GraphQL -> countChange: CountChange (type)
-        if (this.CountChange == null && Exploration.Includes(parent + ".countChange"))
+        if (this.CountChange == null && ec.Includes("countChange",false))
         {
             this.CountChange = new CountChange();
-            this.CountChange.ApplyExploratoryFieldSpec(parent + ".countChange");
+            this.CountChange.ApplyExploratoryFieldSpec(ec.NewChild("countChange"));
         }
         //      C# -> RiskLevelChange? RiskLevelChange
         // GraphQL -> riskLevelChange: RiskLevelChange (type)
-        if (this.RiskLevelChange == null && Exploration.Includes(parent + ".riskLevelChange"))
+        if (this.RiskLevelChange == null && ec.Includes("riskLevelChange",false))
         {
             this.RiskLevelChange = new RiskLevelChange();
-            this.RiskLevelChange.ApplyExploratoryFieldSpec(parent + ".riskLevelChange");
+            this.RiskLevelChange.ApplyExploratoryFieldSpec(ec.NewChild("riskLevelChange"));
         }
     }
 
@@ -190,12 +189,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PrincipalChange> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PrincipalChange());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<PrincipalChange> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

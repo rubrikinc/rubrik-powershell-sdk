@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<CloudAccountVpc>? Result
         // GraphQL -> result: [CloudAccountVpc!]! (type)
-        if (this.Result == null && Exploration.Includes(parent + ".result"))
+        if (this.Result == null && ec.Includes("result",false))
         {
             this.Result = new List<CloudAccountVpc>();
-            this.Result.ApplyExploratoryFieldSpec(parent + ".result");
+            this.Result.ApplyExploratoryFieldSpec(ec.NewChild("result"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AwsCloudAccountListVpcResponse> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AwsCloudAccountListVpcResponse());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AwsCloudAccountListVpcResponse> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

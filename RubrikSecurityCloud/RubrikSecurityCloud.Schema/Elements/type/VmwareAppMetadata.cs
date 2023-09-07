@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> VmwareSnapshotVmConfig? VmConfig
         // GraphQL -> vmConfig: VmwareSnapshotVmConfig (type)
-        if (this.VmConfig == null && Exploration.Includes(parent + ".vmConfig"))
+        if (this.VmConfig == null && ec.Includes("vmConfig",false))
         {
             this.VmConfig = new VmwareSnapshotVmConfig();
-            this.VmConfig.ApplyExploratoryFieldSpec(parent + ".vmConfig");
+            this.VmConfig.ApplyExploratoryFieldSpec(ec.NewChild("vmConfig"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VmwareAppMetadata> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VmwareAppMetadata());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VmwareAppMetadata> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

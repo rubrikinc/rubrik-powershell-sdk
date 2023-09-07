@@ -306,117 +306,116 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> UserDomainEnum? Domain
         // GraphQL -> domain: UserDomainEnum! (enum)
-        if (this.Domain == null && Exploration.Includes(parent + ".domain", true))
+        if (this.Domain == null && ec.Includes("domain",true))
         {
             this.Domain = new UserDomainEnum();
         }
         //      C# -> UserStatus? Status
         // GraphQL -> status: UserStatus! (enum)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = new UserStatus();
         }
         //      C# -> System.String? Email
         // GraphQL -> email: String! (scalar)
-        if (this.Email == null && Exploration.Includes(parent + ".email", true))
+        if (this.Email == null && ec.Includes("email",true))
         {
             this.Email = "FETCH";
         }
         //      C# -> List<System.String>? Groups
         // GraphQL -> groups: [String!]! (scalar)
-        if (this.Groups == null && Exploration.Includes(parent + ".groups", true))
+        if (this.Groups == null && ec.Includes("groups",true))
         {
             this.Groups = new List<System.String>();
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsAccountOwner
         // GraphQL -> isAccountOwner: Boolean! (scalar)
-        if (this.IsAccountOwner == null && Exploration.Includes(parent + ".isAccountOwner", true))
+        if (this.IsAccountOwner == null && ec.Includes("isAccountOwner",true))
         {
             this.IsAccountOwner = true;
         }
         //      C# -> System.Boolean? IsHidden
         // GraphQL -> isHidden: Boolean! (scalar)
-        if (this.IsHidden == null && Exploration.Includes(parent + ".isHidden", true))
+        if (this.IsHidden == null && ec.Includes("isHidden",true))
         {
             this.IsHidden = true;
         }
         //      C# -> DateTime? LastLogin
         // GraphQL -> lastLogin: DateTime (scalar)
-        if (this.LastLogin == null && Exploration.Includes(parent + ".lastLogin", true))
+        if (this.LastLogin == null && ec.Includes("lastLogin",true))
         {
             this.LastLogin = new DateTime();
         }
         //      C# -> System.Int64? UnreadCount
         // GraphQL -> unreadCount: Long! (scalar)
-        if (this.UnreadCount == null && Exploration.Includes(parent + ".unreadCount", true))
+        if (this.UnreadCount == null && ec.Includes("unreadCount",true))
         {
             this.UnreadCount = new System.Int64();
         }
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)
-        if (this.Username == null && Exploration.Includes(parent + ".username", true))
+        if (this.Username == null && ec.Includes("username",true))
         {
             this.Username = "FETCH";
         }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
-        if (this.AllOrgs == null && Exploration.Includes(parent + ".allOrgs"))
+        if (this.AllOrgs == null && ec.Includes("allOrgs",false))
         {
             this.AllOrgs = new List<Org>();
-            this.AllOrgs.ApplyExploratoryFieldSpec(parent + ".allOrgs");
+            this.AllOrgs.ApplyExploratoryFieldSpec(ec.NewChild("allOrgs"));
         }
         //      C# -> List<EventDigest>? EmailConfig
         // GraphQL -> emailConfig: [EventDigest!]! (type)
-        if (this.EmailConfig == null && Exploration.Includes(parent + ".emailConfig"))
+        if (this.EmailConfig == null && ec.Includes("emailConfig",false))
         {
             this.EmailConfig = new List<EventDigest>();
-            this.EmailConfig.ApplyExploratoryFieldSpec(parent + ".emailConfig");
+            this.EmailConfig.ApplyExploratoryFieldSpec(ec.NewChild("emailConfig"));
         }
         //      C# -> EulaState? EulaState
         // GraphQL -> eulaState: EulaState! (type)
-        if (this.EulaState == null && Exploration.Includes(parent + ".eulaState"))
+        if (this.EulaState == null && ec.Includes("eulaState",false))
         {
             this.EulaState = new EulaState();
-            this.EulaState.ApplyExploratoryFieldSpec(parent + ".eulaState");
+            this.EulaState.ApplyExploratoryFieldSpec(ec.NewChild("eulaState"));
         }
         //      C# -> LockoutState? LockoutState
         // GraphQL -> lockoutState: LockoutState! (type)
-        if (this.LockoutState == null && Exploration.Includes(parent + ".lockoutState"))
+        if (this.LockoutState == null && ec.Includes("lockoutState",false))
         {
             this.LockoutState = new LockoutState();
-            this.LockoutState.ApplyExploratoryFieldSpec(parent + ".lockoutState");
+            this.LockoutState.ApplyExploratoryFieldSpec(ec.NewChild("lockoutState"));
         }
         //      C# -> PasskeyMetadata? PasskeyMetadata
         // GraphQL -> passkeyMetadata: PasskeyMetadata! (type)
-        if (this.PasskeyMetadata == null && Exploration.Includes(parent + ".passkeyMetadata"))
+        if (this.PasskeyMetadata == null && ec.Includes("passkeyMetadata",false))
         {
             this.PasskeyMetadata = new PasskeyMetadata();
-            this.PasskeyMetadata.ApplyExploratoryFieldSpec(parent + ".passkeyMetadata");
+            this.PasskeyMetadata.ApplyExploratoryFieldSpec(ec.NewChild("passkeyMetadata"));
         }
         //      C# -> List<Role>? Roles
         // GraphQL -> roles: [Role!]! (type)
-        if (this.Roles == null && Exploration.Includes(parent + ".roles"))
+        if (this.Roles == null && ec.Includes("roles",false))
         {
             this.Roles = new List<Role>();
-            this.Roles.ApplyExploratoryFieldSpec(parent + ".roles");
+            this.Roles.ApplyExploratoryFieldSpec(ec.NewChild("roles"));
         }
         //      C# -> TotpStatus? TotpStatus
         // GraphQL -> totpStatus: TotpStatus! (type)
-        if (this.TotpStatus == null && Exploration.Includes(parent + ".totpStatus"))
+        if (this.TotpStatus == null && ec.Includes("totpStatus",false))
         {
             this.TotpStatus = new TotpStatus();
-            this.TotpStatus.ApplyExploratoryFieldSpec(parent + ".totpStatus");
+            this.TotpStatus.ApplyExploratoryFieldSpec(ec.NewChild("totpStatus"));
         }
     }
 
@@ -450,12 +449,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<User> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new User());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<User> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

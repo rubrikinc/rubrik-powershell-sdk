@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<FieldDiffAgainstLive>? Comparisons
         // GraphQL -> comparisons: [FieldDiffAgainstLive!]! (type)
-        if (this.Comparisons == null && Exploration.Includes(parent + ".comparisons"))
+        if (this.Comparisons == null && ec.Includes("comparisons",false))
         {
             this.Comparisons = new List<FieldDiffAgainstLive>();
-            this.Comparisons.ApplyExploratoryFieldSpec(parent + ".comparisons");
+            this.Comparisons.ApplyExploratoryFieldSpec(ec.NewChild("comparisons"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ItemDiffBetweenSnapshotAndLiveEnvironment> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ItemDiffBetweenSnapshotAndLiveEnvironment());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ItemDiffBetweenSnapshotAndLiveEnvironment> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

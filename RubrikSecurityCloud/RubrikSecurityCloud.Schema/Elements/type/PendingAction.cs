@@ -176,63 +176,62 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> PendingActionStatus? Status
         // GraphQL -> status: PendingActionStatus! (enum)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = new PendingActionStatus();
         }
         //      C# -> System.String? ActionTypeStr
         // GraphQL -> actionTypeStr: String! (scalar)
-        if (this.ActionTypeStr == null && Exploration.Includes(parent + ".actionTypeStr", true))
+        if (this.ActionTypeStr == null && ec.Includes("actionTypeStr",true))
         {
             this.ActionTypeStr = "FETCH";
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: String! (scalar)
-        if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
+        if (this.ClusterUuid == null && ec.Includes("clusterUuid",true))
         {
             this.ClusterUuid = "FETCH";
         }
         //      C# -> DateTime? CreatedAt
         // GraphQL -> createdAt: DateTime (scalar)
-        if (this.CreatedAt == null && Exploration.Includes(parent + ".createdAt", true))
+        if (this.CreatedAt == null && ec.Includes("createdAt",true))
         {
             this.CreatedAt = new DateTime();
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
-        if (this.Description == null && Exploration.Includes(parent + ".description", true))
+        if (this.Description == null && ec.Includes("description",true))
         {
             this.Description = "FETCH";
         }
         //      C# -> System.String? Info
         // GraphQL -> info: String! (scalar)
-        if (this.Info == null && Exploration.Includes(parent + ".info", true))
+        if (this.Info == null && ec.Includes("info",true))
         {
             this.Info = "FETCH";
         }
         //      C# -> System.String? PendingActionId
         // GraphQL -> pendingActionId: String! (scalar)
-        if (this.PendingActionId == null && Exploration.Includes(parent + ".pendingActionId", true))
+        if (this.PendingActionId == null && ec.Includes("pendingActionId",true))
         {
             this.PendingActionId = "FETCH";
         }
         //      C# -> DateTime? UpdatedAt
         // GraphQL -> updatedAt: DateTime (scalar)
-        if (this.UpdatedAt == null && Exploration.Includes(parent + ".updatedAt", true))
+        if (this.UpdatedAt == null && ec.Includes("updatedAt",true))
         {
             this.UpdatedAt = new DateTime();
         }
         //      C# -> PendingActionType? ActionType
         // GraphQL -> actionType: PendingActionType (type)
-        if (this.ActionType == null && Exploration.Includes(parent + ".actionType"))
+        if (this.ActionType == null && ec.Includes("actionType",false))
         {
             this.ActionType = new PendingActionType();
-            this.ActionType.ApplyExploratoryFieldSpec(parent + ".actionType");
+            this.ActionType.ApplyExploratoryFieldSpec(ec.NewChild("actionType"));
         }
     }
 
@@ -266,12 +265,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PendingAction> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PendingAction());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<PendingAction> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

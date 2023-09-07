@@ -120,39 +120,38 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? ArchiveStorage
         // GraphQL -> archiveStorage: Long (scalar)
-        if (this.ArchiveStorage == null && Exploration.Includes(parent + ".archiveStorage", true))
+        if (this.ArchiveStorage == null && ec.Includes("archiveStorage",true))
         {
             this.ArchiveStorage = new System.Int64();
         }
         //      C# -> System.Int64? LocalStorage
         // GraphQL -> localStorage: Long (scalar)
-        if (this.LocalStorage == null && Exploration.Includes(parent + ".localStorage", true))
+        if (this.LocalStorage == null && ec.Includes("localStorage",true))
         {
             this.LocalStorage = new System.Int64();
         }
         //      C# -> DateTime? ProtectionDate
         // GraphQL -> protectionDate: DateTime (scalar)
-        if (this.ProtectionDate == null && Exploration.Includes(parent + ".protectionDate", true))
+        if (this.ProtectionDate == null && ec.Includes("protectionDate",true))
         {
             this.ProtectionDate = new DateTime();
         }
         //      C# -> System.Int32? SnapshotCount
         // GraphQL -> snapshotCount: Int (scalar)
-        if (this.SnapshotCount == null && Exploration.Includes(parent + ".snapshotCount", true))
+        if (this.SnapshotCount == null && ec.Includes("snapshotCount",true))
         {
             this.SnapshotCount = Int32.MinValue;
         }
         //      C# -> CreateSnapMirrorCloudReply? SnapMirrorCloudSummary
         // GraphQL -> snapMirrorCloudSummary: CreateSnapMirrorCloudReply (type)
-        if (this.SnapMirrorCloudSummary == null && Exploration.Includes(parent + ".snapMirrorCloudSummary"))
+        if (this.SnapMirrorCloudSummary == null && ec.Includes("snapMirrorCloudSummary",false))
         {
             this.SnapMirrorCloudSummary = new CreateSnapMirrorCloudReply();
-            this.SnapMirrorCloudSummary.ApplyExploratoryFieldSpec(parent + ".snapMirrorCloudSummary");
+            this.SnapMirrorCloudSummary.ApplyExploratoryFieldSpec(ec.NewChild("snapMirrorCloudSummary"));
         }
     }
 
@@ -186,12 +185,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<UpdateSnapMirrorCloudReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new UpdateSnapMirrorCloudReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<UpdateSnapMirrorCloudReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

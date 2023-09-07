@@ -92,27 +92,26 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? HanaVersion
         // GraphQL -> hanaVersion: String! (scalar)
-        if (this.HanaVersion == null && Exploration.Includes(parent + ".hanaVersion", true))
+        if (this.HanaVersion == null && ec.Includes("hanaVersion",true))
         {
             this.HanaVersion = "FETCH";
         }
         //      C# -> System.Boolean? IsSystemReplicationEnabled
         // GraphQL -> isSystemReplicationEnabled: Boolean! (scalar)
-        if (this.IsSystemReplicationEnabled == null && Exploration.Includes(parent + ".isSystemReplicationEnabled", true))
+        if (this.IsSystemReplicationEnabled == null && ec.Includes("isSystemReplicationEnabled",true))
         {
             this.IsSystemReplicationEnabled = true;
         }
         //      C# -> SapHanaSystemAuthTypeSpec? AuthTypeSpec
         // GraphQL -> authTypeSpec: SapHanaSystemAuthTypeSpec (type)
-        if (this.AuthTypeSpec == null && Exploration.Includes(parent + ".authTypeSpec"))
+        if (this.AuthTypeSpec == null && ec.Includes("authTypeSpec",false))
         {
             this.AuthTypeSpec = new SapHanaSystemAuthTypeSpec();
-            this.AuthTypeSpec.ApplyExploratoryFieldSpec(parent + ".authTypeSpec");
+            this.AuthTypeSpec.ApplyExploratoryFieldSpec(ec.NewChild("authTypeSpec"));
         }
     }
 
@@ -146,12 +145,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SapHanaSystemInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SapHanaSystemInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SapHanaSystemInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

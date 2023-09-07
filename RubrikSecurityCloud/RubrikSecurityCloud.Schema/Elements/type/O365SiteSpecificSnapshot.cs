@@ -90,24 +90,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> SnapshotServiceBackupStatus? BackupStatus
         // GraphQL -> backupStatus: SnapshotServiceBackupStatus! (enum)
-        if (this.BackupStatus == null && Exploration.Includes(parent + ".backupStatus", true))
+        if (this.BackupStatus == null && ec.Includes("backupStatus",true))
         {
             this.BackupStatus = new SnapshotServiceBackupStatus();
         }
         //      C# -> System.Int32? PercentOfObjectsSkipped
         // GraphQL -> percentOfObjectsSkipped: Int! (scalar)
-        if (this.PercentOfObjectsSkipped == null && Exploration.Includes(parent + ".percentOfObjectsSkipped", true))
+        if (this.PercentOfObjectsSkipped == null && ec.Includes("percentOfObjectsSkipped",true))
         {
             this.PercentOfObjectsSkipped = Int32.MinValue;
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: UUID! (scalar)
-        if (this.SnapshotId == null && Exploration.Includes(parent + ".snapshotId", true))
+        if (this.SnapshotId == null && ec.Includes("snapshotId",true))
         {
             this.SnapshotId = "FETCH";
         }
@@ -143,12 +142,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<O365SiteSpecificSnapshot> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new O365SiteSpecificSnapshot());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<O365SiteSpecificSnapshot> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

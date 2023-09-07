@@ -98,29 +98,28 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ManagedVolumeQueuedSnapshotConnection? ManagedVolumeQueuedSnapshotConnection
         // GraphQL -> managedVolumeQueuedSnapshotConnection: ManagedVolumeQueuedSnapshotConnection! (type)
-        if (this.ManagedVolumeQueuedSnapshotConnection == null && Exploration.Includes(parent + ".managedVolumeQueuedSnapshotConnection"))
+        if (this.ManagedVolumeQueuedSnapshotConnection == null && ec.Includes("managedVolumeQueuedSnapshotConnection",false))
         {
             this.ManagedVolumeQueuedSnapshotConnection = new ManagedVolumeQueuedSnapshotConnection();
-            this.ManagedVolumeQueuedSnapshotConnection.ApplyExploratoryFieldSpec(parent + ".managedVolumeQueuedSnapshotConnection");
+            this.ManagedVolumeQueuedSnapshotConnection.ApplyExploratoryFieldSpec(ec.NewChild("managedVolumeQueuedSnapshotConnection"));
         }
         //      C# -> List<ManagedVolumeQueuedSnapshotGroupBy>? ManagedVolumeQueuedSnapshotGroupByField
         // GraphQL -> managedVolumeQueuedSnapshotGroupBy: [ManagedVolumeQueuedSnapshotGroupBy!]! (type)
-        if (this.ManagedVolumeQueuedSnapshotGroupByField == null && Exploration.Includes(parent + ".managedVolumeQueuedSnapshotGroupBy"))
+        if (this.ManagedVolumeQueuedSnapshotGroupByField == null && ec.Includes("managedVolumeQueuedSnapshotGroupBy",false))
         {
             this.ManagedVolumeQueuedSnapshotGroupByField = new List<ManagedVolumeQueuedSnapshotGroupBy>();
-            this.ManagedVolumeQueuedSnapshotGroupByField.ApplyExploratoryFieldSpec(parent + ".managedVolumeQueuedSnapshotGroupBy");
+            this.ManagedVolumeQueuedSnapshotGroupByField.ApplyExploratoryFieldSpec(ec.NewChild("managedVolumeQueuedSnapshotGroupBy"));
         }
         //      C# -> ManagedVolumeQueuedSnapshotGroupByInfo? GroupByInfo
         // GraphQL -> groupByInfo: ManagedVolumeQueuedSnapshotGroupByInfo! (union)
-        if (this.GroupByInfo == null && Exploration.Includes(parent + ".groupByInfo"))
+        if (this.GroupByInfo == null && ec.Includes("groupByInfo",false))
         {
             var impls = new List<ManagedVolumeQueuedSnapshotGroupByInfo>();
-            impls.ApplyExploratoryFieldSpec(parent + ".groupByInfo");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
             this.GroupByInfo = (ManagedVolumeQueuedSnapshotGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
         }
     }
@@ -155,12 +154,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ManagedVolumeQueuedSnapshotGroupBy> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ManagedVolumeQueuedSnapshotGroupBy());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ManagedVolumeQueuedSnapshotGroupBy> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

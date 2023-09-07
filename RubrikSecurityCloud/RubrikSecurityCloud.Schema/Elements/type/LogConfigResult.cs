@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> SlaLogFrequencyConfigResult? SlaLogFrequencyConfig
         // GraphQL -> slaLogFrequencyConfig: SlaLogFrequencyConfigResult (type)
-        if (this.SlaLogFrequencyConfig == null && Exploration.Includes(parent + ".slaLogFrequencyConfig"))
+        if (this.SlaLogFrequencyConfig == null && ec.Includes("slaLogFrequencyConfig",false))
         {
             this.SlaLogFrequencyConfig = new SlaLogFrequencyConfigResult();
-            this.SlaLogFrequencyConfig.ApplyExploratoryFieldSpec(parent + ".slaLogFrequencyConfig");
+            this.SlaLogFrequencyConfig.ApplyExploratoryFieldSpec(ec.NewChild("slaLogFrequencyConfig"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<LogConfigResult> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new LogConfigResult());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<LogConfigResult> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

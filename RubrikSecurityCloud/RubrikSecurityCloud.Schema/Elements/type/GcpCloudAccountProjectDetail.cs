@@ -81,22 +81,21 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> GcpCloudAccountFeatureDetail? FeatureDetail
         // GraphQL -> featureDetail: GcpCloudAccountFeatureDetail (type)
-        if (this.FeatureDetail == null && Exploration.Includes(parent + ".featureDetail"))
+        if (this.FeatureDetail == null && ec.Includes("featureDetail",false))
         {
             this.FeatureDetail = new GcpCloudAccountFeatureDetail();
-            this.FeatureDetail.ApplyExploratoryFieldSpec(parent + ".featureDetail");
+            this.FeatureDetail.ApplyExploratoryFieldSpec(ec.NewChild("featureDetail"));
         }
         //      C# -> GcpCloudAccountProject? Project
         // GraphQL -> project: GcpCloudAccountProject (type)
-        if (this.Project == null && Exploration.Includes(parent + ".project"))
+        if (this.Project == null && ec.Includes("project",false))
         {
             this.Project = new GcpCloudAccountProject();
-            this.Project.ApplyExploratoryFieldSpec(parent + ".project");
+            this.Project.ApplyExploratoryFieldSpec(ec.NewChild("project"));
         }
     }
 
@@ -130,12 +129,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GcpCloudAccountProjectDetail> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GcpCloudAccountProjectDetail());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<GcpCloudAccountProjectDetail> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

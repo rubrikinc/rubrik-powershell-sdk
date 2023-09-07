@@ -95,28 +95,27 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> SnapshotResult? LatestSnapshotResult
         // GraphQL -> latestSnapshotResult: SnapshotResult (type)
-        if (this.LatestSnapshotResult == null && Exploration.Includes(parent + ".latestSnapshotResult"))
+        if (this.LatestSnapshotResult == null && ec.Includes("latestSnapshotResult",false))
         {
             this.LatestSnapshotResult = new SnapshotResult();
-            this.LatestSnapshotResult.ApplyExploratoryFieldSpec(parent + ".latestSnapshotResult");
+            this.LatestSnapshotResult.ApplyExploratoryFieldSpec(ec.NewChild("latestSnapshotResult"));
         }
         //      C# -> List<PolicyStatus>? PolicyStatuses
         // GraphQL -> policyStatuses: [PolicyStatus!]! (type)
-        if (this.PolicyStatuses == null && Exploration.Includes(parent + ".policyStatuses"))
+        if (this.PolicyStatuses == null && ec.Includes("policyStatuses",false))
         {
             this.PolicyStatuses = new List<PolicyStatus>();
-            this.PolicyStatuses.ApplyExploratoryFieldSpec(parent + ".policyStatuses");
+            this.PolicyStatuses.ApplyExploratoryFieldSpec(ec.NewChild("policyStatuses"));
         }
     }
 
@@ -150,12 +149,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ObjectStatus> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ObjectStatus());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ObjectStatus> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

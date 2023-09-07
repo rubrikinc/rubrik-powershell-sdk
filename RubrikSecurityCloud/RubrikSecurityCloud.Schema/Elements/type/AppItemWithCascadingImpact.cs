@@ -120,39 +120,38 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? AppItemTypeDisplayName
         // GraphQL -> appItemTypeDisplayName: String! (scalar)
-        if (this.AppItemTypeDisplayName == null && Exploration.Includes(parent + ".appItemTypeDisplayName", true))
+        if (this.AppItemTypeDisplayName == null && ec.Includes("appItemTypeDisplayName",true))
         {
             this.AppItemTypeDisplayName = "FETCH";
         }
         //      C# -> System.String? AppItemTypeToken
         // GraphQL -> appItemTypeToken: String! (scalar)
-        if (this.AppItemTypeToken == null && Exploration.Includes(parent + ".appItemTypeToken", true))
+        if (this.AppItemTypeToken == null && ec.Includes("appItemTypeToken",true))
         {
             this.AppItemTypeToken = "FETCH";
         }
         //      C# -> System.Int32? Count
         // GraphQL -> count: Int! (scalar)
-        if (this.Count == null && Exploration.Includes(parent + ".count", true))
+        if (this.Count == null && ec.Includes("count",true))
         {
             this.Count = Int32.MinValue;
         }
         //      C# -> System.Boolean? IsOptionalToRestore
         // GraphQL -> isOptionalToRestore: Boolean! (scalar)
-        if (this.IsOptionalToRestore == null && Exploration.Includes(parent + ".isOptionalToRestore", true))
+        if (this.IsOptionalToRestore == null && ec.Includes("isOptionalToRestore",true))
         {
             this.IsOptionalToRestore = true;
         }
         //      C# -> List<AppItemWithCascadingImpact>? CascadedItems
         // GraphQL -> cascadedItems: [AppItemWithCascadingImpact!]! (type)
-        if (this.CascadedItems == null && Exploration.Includes(parent + ".cascadedItems"))
+        if (this.CascadedItems == null && ec.Includes("cascadedItems",false))
         {
             this.CascadedItems = new List<AppItemWithCascadingImpact>();
-            this.CascadedItems.ApplyExploratoryFieldSpec(parent + ".cascadedItems");
+            this.CascadedItems.ApplyExploratoryFieldSpec(ec.NewChild("cascadedItems"));
         }
     }
 
@@ -186,12 +185,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AppItemWithCascadingImpact> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AppItemWithCascadingImpact());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AppItemWithCascadingImpact> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

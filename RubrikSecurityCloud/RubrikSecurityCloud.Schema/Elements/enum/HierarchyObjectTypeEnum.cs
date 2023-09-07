@@ -321,6 +321,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "StorageArrayVolumeGroup")]
         STORAGE_ARRAY_VOLUME_GROUP,
 
+        [EnumMember(Value = "VSPHERE_DATACENTER_FOLDER")]
+        VSPHERE_DATACENTER_FOLDER,
+
         [EnumMember(Value = "VSPHERE_DATASTORE_CLUSTER")]
         VSPHERE_DATASTORE_CLUSTER,
 

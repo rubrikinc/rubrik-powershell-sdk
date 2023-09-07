@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> AssignSlaWarningsEnum? Code
         // GraphQL -> code: AssignSLAWarningsEnum! (enum)
-        if (this.Code == null && Exploration.Includes(parent + ".code", true))
+        if (this.Code == null && ec.Includes("code",true))
         {
             this.Code = new AssignSlaWarningsEnum();
         }
         //      C# -> WarningSeverityEnum? Severity
         // GraphQL -> severity: WarningSeverityEnum! (enum)
-        if (this.Severity == null && Exploration.Includes(parent + ".severity", true))
+        if (this.Severity == null && ec.Includes("severity",true))
         {
             this.Severity = new WarningSeverityEnum();
         }
         //      C# -> List<System.String>? ObjectIds
         // GraphQL -> objectIds: [String!]! (scalar)
-        if (this.ObjectIds == null && Exploration.Includes(parent + ".objectIds", true))
+        if (this.ObjectIds == null && ec.Includes("objectIds",true))
         {
             this.ObjectIds = new List<System.String>();
         }
         //      C# -> List<System.String>? SnapshotIds
         // GraphQL -> snapshotIds: [String!]! (scalar)
-        if (this.SnapshotIds == null && Exploration.Includes(parent + ".snapshotIds", true))
+        if (this.SnapshotIds == null && ec.Includes("snapshotIds",true))
         {
             this.SnapshotIds = new List<System.String>();
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SlaWarning> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SlaWarning());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SlaWarning> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

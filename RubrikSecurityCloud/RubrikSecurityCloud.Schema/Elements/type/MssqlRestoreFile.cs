@@ -117,36 +117,35 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> MssqlDatabaseFileType? FileType
         // GraphQL -> fileType: MssqlDatabaseFileType! (enum)
-        if (this.FileType == null && Exploration.Includes(parent + ".fileType", true))
+        if (this.FileType == null && ec.Includes("fileType",true))
         {
             this.FileType = new MssqlDatabaseFileType();
         }
         //      C# -> System.Int64? FileId
         // GraphQL -> fileId: Long! (scalar)
-        if (this.FileId == null && Exploration.Includes(parent + ".fileId", true))
+        if (this.FileId == null && ec.Includes("fileId",true))
         {
             this.FileId = new System.Int64();
         }
         //      C# -> System.String? LogicalName
         // GraphQL -> logicalName: String! (scalar)
-        if (this.LogicalName == null && Exploration.Includes(parent + ".logicalName", true))
+        if (this.LogicalName == null && ec.Includes("logicalName",true))
         {
             this.LogicalName = "FETCH";
         }
         //      C# -> System.String? OriginalName
         // GraphQL -> originalName: String! (scalar)
-        if (this.OriginalName == null && Exploration.Includes(parent + ".originalName", true))
+        if (this.OriginalName == null && ec.Includes("originalName",true))
         {
             this.OriginalName = "FETCH";
         }
         //      C# -> System.String? OriginalPath
         // GraphQL -> originalPath: String! (scalar)
-        if (this.OriginalPath == null && Exploration.Includes(parent + ".originalPath", true))
+        if (this.OriginalPath == null && ec.Includes("originalPath",true))
         {
             this.OriginalPath = "FETCH";
         }
@@ -182,12 +181,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<MssqlRestoreFile> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new MssqlRestoreFile());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<MssqlRestoreFile> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

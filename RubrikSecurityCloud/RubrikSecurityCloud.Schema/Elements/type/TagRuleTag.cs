@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? MatchAllValues
         // GraphQL -> matchAllValues: Boolean! (scalar)
-        if (this.MatchAllValues == null && Exploration.Includes(parent + ".matchAllValues", true))
+        if (this.MatchAllValues == null && ec.Includes("matchAllValues",true))
         {
             this.MatchAllValues = true;
         }
         //      C# -> System.String? TagKey
         // GraphQL -> tagKey: String! (scalar)
-        if (this.TagKey == null && Exploration.Includes(parent + ".tagKey", true))
+        if (this.TagKey == null && ec.Includes("tagKey",true))
         {
             this.TagKey = "FETCH";
         }
         //      C# -> System.String? TagValue
         // GraphQL -> tagValue: String! (scalar)
-        if (this.TagValue == null && Exploration.Includes(parent + ".tagValue", true))
+        if (this.TagValue == null && ec.Includes("tagValue",true))
         {
             this.TagValue = "FETCH";
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<TagRuleTag> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new TagRuleTag());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<TagRuleTag> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

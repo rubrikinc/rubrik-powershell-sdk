@@ -98,29 +98,28 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> PrincipalRiskCount? HighRiskPrincipals
         // GraphQL -> highRiskPrincipals: PrincipalRiskCount (type)
-        if (this.HighRiskPrincipals == null && Exploration.Includes(parent + ".highRiskPrincipals"))
+        if (this.HighRiskPrincipals == null && ec.Includes("highRiskPrincipals",false))
         {
             this.HighRiskPrincipals = new PrincipalRiskCount();
-            this.HighRiskPrincipals.ApplyExploratoryFieldSpec(parent + ".highRiskPrincipals");
+            this.HighRiskPrincipals.ApplyExploratoryFieldSpec(ec.NewChild("highRiskPrincipals"));
         }
         //      C# -> PrincipalRiskCount? LowRiskPrincipals
         // GraphQL -> lowRiskPrincipals: PrincipalRiskCount (type)
-        if (this.LowRiskPrincipals == null && Exploration.Includes(parent + ".lowRiskPrincipals"))
+        if (this.LowRiskPrincipals == null && ec.Includes("lowRiskPrincipals",false))
         {
             this.LowRiskPrincipals = new PrincipalRiskCount();
-            this.LowRiskPrincipals.ApplyExploratoryFieldSpec(parent + ".lowRiskPrincipals");
+            this.LowRiskPrincipals.ApplyExploratoryFieldSpec(ec.NewChild("lowRiskPrincipals"));
         }
         //      C# -> PrincipalRiskCount? MediumRiskPrincipals
         // GraphQL -> mediumRiskPrincipals: PrincipalRiskCount (type)
-        if (this.MediumRiskPrincipals == null && Exploration.Includes(parent + ".mediumRiskPrincipals"))
+        if (this.MediumRiskPrincipals == null && ec.Includes("mediumRiskPrincipals",false))
         {
             this.MediumRiskPrincipals = new PrincipalRiskCount();
-            this.MediumRiskPrincipals.ApplyExploratoryFieldSpec(parent + ".mediumRiskPrincipals");
+            this.MediumRiskPrincipals.ApplyExploratoryFieldSpec(ec.NewChild("mediumRiskPrincipals"));
         }
     }
 
@@ -154,12 +153,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RiskSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RiskSummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<RiskSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ChartType? ChartType
         // GraphQL -> chartType: ChartType! (enum)
-        if (this.ChartType == null && Exploration.Includes(parent + ".chartType", true))
+        if (this.ChartType == null && ec.Includes("chartType",true))
         {
             this.ChartType = new ChartType();
         }
         //      C# -> List<ChartPrimaryGroupBy>? ChartData
         // GraphQL -> chartData: [ChartPrimaryGroupBy!]! (type)
-        if (this.ChartData == null && Exploration.Includes(parent + ".chartData"))
+        if (this.ChartData == null && ec.Includes("chartData",false))
         {
             this.ChartData = new List<ChartPrimaryGroupBy>();
-            this.ChartData.ApplyExploratoryFieldSpec(parent + ".chartData");
+            this.ChartData.ApplyExploratoryFieldSpec(ec.NewChild("chartData"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ChartDataResult> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ChartDataResult());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ChartDataResult> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

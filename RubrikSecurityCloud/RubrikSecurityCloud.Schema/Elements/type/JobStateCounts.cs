@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> SaasWorkloadType? SnappableType
         // GraphQL -> snappableType: SaasWorkloadType! (enum)
-        if (this.SnappableType == null && Exploration.Includes(parent + ".snappableType", true))
+        if (this.SnappableType == null && ec.Includes("snappableType",true))
         {
             this.SnappableType = new SaasWorkloadType();
         }
         //      C# -> System.Int32? Failed
         // GraphQL -> failed: Int! (scalar)
-        if (this.Failed == null && Exploration.Includes(parent + ".failed", true))
+        if (this.Failed == null && ec.Includes("failed",true))
         {
             this.Failed = Int32.MinValue;
         }
         //      C# -> System.Int32? Success
         // GraphQL -> success: Int! (scalar)
-        if (this.Success == null && Exploration.Includes(parent + ".success", true))
+        if (this.Success == null && ec.Includes("success",true))
         {
             this.Success = Int32.MinValue;
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<JobStateCounts> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new JobStateCounts());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<JobStateCounts> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

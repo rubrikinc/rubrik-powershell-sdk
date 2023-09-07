@@ -120,39 +120,38 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> MountStatusEnum? MountStatus
         // GraphQL -> mountStatus: MountStatusEnum! (enum)
-        if (this.MountStatus == null && Exploration.Includes(parent + ".mountStatus", true))
+        if (this.MountStatus == null && ec.Includes("mountStatus",true))
         {
             this.MountStatus = new MountStatusEnum();
         }
         //      C# -> DateTime? MountTime
         // GraphQL -> mountTime: DateTime (scalar)
-        if (this.MountTime == null && Exploration.Includes(parent + ".mountTime", true))
+        if (this.MountTime == null && ec.Includes("mountTime",true))
         {
             this.MountTime = new DateTime();
         }
         //      C# -> System.Int32? MountedDisksCount
         // GraphQL -> mountedDisksCount: Int! (scalar)
-        if (this.MountedDisksCount == null && Exploration.Includes(parent + ".mountedDisksCount", true))
+        if (this.MountedDisksCount == null && ec.Includes("mountedDisksCount",true))
         {
             this.MountedDisksCount = Int32.MinValue;
         }
         //      C# -> DateTime? SnapshotTime
         // GraphQL -> snapshotTime: DateTime (scalar)
-        if (this.SnapshotTime == null && Exploration.Includes(parent + ".snapshotTime", true))
+        if (this.SnapshotTime == null && ec.Includes("snapshotTime",true))
         {
             this.SnapshotTime = new DateTime();
         }
         //      C# -> SpecificMountDetails? SpecificMountDetails
         // GraphQL -> specificMountDetails: SpecificMountDetails! (type)
-        if (this.SpecificMountDetails == null && Exploration.Includes(parent + ".specificMountDetails"))
+        if (this.SpecificMountDetails == null && ec.Includes("specificMountDetails",false))
         {
             this.SpecificMountDetails = new SpecificMountDetails();
-            this.SpecificMountDetails.ApplyExploratoryFieldSpec(parent + ".specificMountDetails");
+            this.SpecificMountDetails.ApplyExploratoryFieldSpec(ec.NewChild("specificMountDetails"));
         }
     }
 
@@ -186,12 +185,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<LiveMountDetails> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new LiveMountDetails());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<LiveMountDetails> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

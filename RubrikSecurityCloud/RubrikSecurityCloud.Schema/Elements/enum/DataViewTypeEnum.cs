@@ -78,6 +78,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "PROTECTION_TASK_DETAILS")]
         PROTECTION_TASK_DETAILS,
 
+        [EnumMember(Value = "QAUTH_OBJECTS")]
+        QAUTH_OBJECTS,
+
+        [EnumMember(Value = "QAUTH_ROLES")]
+        QAUTH_ROLES,
+
         [EnumMember(Value = "SLA_AUDIT_DETAIL")]
         SLA_AUDIT_DETAIL,
 

@@ -159,54 +159,53 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Certificate
         // GraphQL -> certificate: String! (scalar)
-        if (this.Certificate == null && Exploration.Includes(parent + ".certificate", true))
+        if (this.Certificate == null && ec.Includes("certificate",true))
         {
             this.Certificate = "FETCH";
         }
         //      C# -> DateTime? ExpiringAt
         // GraphQL -> expiringAt: DateTime (scalar)
-        if (this.ExpiringAt == null && Exploration.Includes(parent + ".expiringAt", true))
+        if (this.ExpiringAt == null && ec.Includes("expiringAt",true))
         {
             this.ExpiringAt = new DateTime();
         }
         //      C# -> System.String? IssuedBy
         // GraphQL -> issuedBy: String! (scalar)
-        if (this.IssuedBy == null && Exploration.Includes(parent + ".issuedBy", true))
+        if (this.IssuedBy == null && ec.Includes("issuedBy",true))
         {
             this.IssuedBy = "FETCH";
         }
         //      C# -> DateTime? IssuedOn
         // GraphQL -> issuedOn: DateTime (scalar)
-        if (this.IssuedOn == null && Exploration.Includes(parent + ".issuedOn", true))
+        if (this.IssuedOn == null && ec.Includes("issuedOn",true))
         {
             this.IssuedOn = new DateTime();
         }
         //      C# -> System.String? IssuedTo
         // GraphQL -> issuedTo: String! (scalar)
-        if (this.IssuedTo == null && Exploration.Includes(parent + ".issuedTo", true))
+        if (this.IssuedTo == null && ec.Includes("issuedTo",true))
         {
             this.IssuedTo = "FETCH";
         }
         //      C# -> System.String? SerialNumber
         // GraphQL -> serialNumber: String! (scalar)
-        if (this.SerialNumber == null && Exploration.Includes(parent + ".serialNumber", true))
+        if (this.SerialNumber == null && ec.Includes("serialNumber",true))
         {
             this.SerialNumber = "FETCH";
         }
         //      C# -> System.String? Sha1Fingerprint
         // GraphQL -> sha1Fingerprint: String! (scalar)
-        if (this.Sha1Fingerprint == null && Exploration.Includes(parent + ".sha1Fingerprint", true))
+        if (this.Sha1Fingerprint == null && ec.Includes("sha1Fingerprint",true))
         {
             this.Sha1Fingerprint = "FETCH";
         }
         //      C# -> System.String? Sha256Fingerprint
         // GraphQL -> sha256Fingerprint: String! (scalar)
-        if (this.Sha256Fingerprint == null && Exploration.Includes(parent + ".sha256Fingerprint", true))
+        if (this.Sha256Fingerprint == null && ec.Includes("sha256Fingerprint",true))
         {
             this.Sha256Fingerprint = "FETCH";
         }
@@ -242,12 +241,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GetCertificateInfoReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GetCertificateInfoReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<GetCertificateInfoReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

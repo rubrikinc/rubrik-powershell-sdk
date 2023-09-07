@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<UserAuditSeverityEnum>? AuditSeverities
         // GraphQL -> auditSeverities: [UserAuditSeverityEnum!]! (enum)
-        if (this.AuditSeverities == null && Exploration.Includes(parent + ".auditSeverities", true))
+        if (this.AuditSeverities == null && ec.Includes("auditSeverities",true))
         {
             this.AuditSeverities = new List<UserAuditSeverityEnum>();
         }
         //      C# -> List<ActivitySeverityEnum>? EventSeverities
         // GraphQL -> eventSeverities: [ActivitySeverityEnum!]! (enum)
-        if (this.EventSeverities == null && Exploration.Includes(parent + ".eventSeverities", true))
+        if (this.EventSeverities == null && ec.Includes("eventSeverities",true))
         {
             this.EventSeverities = new List<ActivitySeverityEnum>();
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SubscriptionSeverity> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SubscriptionSeverity());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SubscriptionSeverity> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

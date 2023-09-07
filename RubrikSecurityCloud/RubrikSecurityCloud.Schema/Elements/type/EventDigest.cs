@@ -187,66 +187,65 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Account
         // GraphQL -> account: String! (scalar)
-        if (this.Account == null && Exploration.Includes(parent + ".account", true))
+        if (this.Account == null && ec.Includes("account",true))
         {
             this.Account = "FETCH";
         }
         //      C# -> List<System.String>? ClusterUuids
         // GraphQL -> clusterUuids: [UUID!]! (scalar)
-        if (this.ClusterUuids == null && Exploration.Includes(parent + ".clusterUuids", true))
+        if (this.ClusterUuids == null && ec.Includes("clusterUuids",true))
         {
             this.ClusterUuids = new List<System.String>();
         }
         //      C# -> System.Int32? DigestId
         // GraphQL -> digestId: Int! (scalar)
-        if (this.DigestId == null && Exploration.Includes(parent + ".digestId", true))
+        if (this.DigestId == null && ec.Includes("digestId",true))
         {
             this.DigestId = Int32.MinValue;
         }
         //      C# -> System.String? DigestName
         // GraphQL -> digestName: String! (scalar)
-        if (this.DigestName == null && Exploration.Includes(parent + ".digestName", true))
+        if (this.DigestName == null && ec.Includes("digestName",true))
         {
             this.DigestName = "FETCH";
         }
         //      C# -> System.String? EventDigestConfigJson
         // GraphQL -> eventDigestConfigJson: String! (scalar)
-        if (this.EventDigestConfigJson == null && Exploration.Includes(parent + ".eventDigestConfigJson", true))
+        if (this.EventDigestConfigJson == null && ec.Includes("eventDigestConfigJson",true))
         {
             this.EventDigestConfigJson = "FETCH";
         }
         //      C# -> System.Int32? Frequency
         // GraphQL -> frequency: Int! (scalar)
-        if (this.Frequency == null && Exploration.Includes(parent + ".frequency", true))
+        if (this.Frequency == null && ec.Includes("frequency",true))
         {
             this.Frequency = Int32.MinValue;
         }
         //      C# -> System.Boolean? IncludeAudits
         // GraphQL -> includeAudits: Boolean! (scalar)
-        if (this.IncludeAudits == null && Exploration.Includes(parent + ".includeAudits", true))
+        if (this.IncludeAudits == null && ec.Includes("includeAudits",true))
         {
             this.IncludeAudits = true;
         }
         //      C# -> System.Boolean? IncludeEvents
         // GraphQL -> includeEvents: Boolean! (scalar)
-        if (this.IncludeEvents == null && Exploration.Includes(parent + ".includeEvents", true))
+        if (this.IncludeEvents == null && ec.Includes("includeEvents",true))
         {
             this.IncludeEvents = true;
         }
         //      C# -> System.Boolean? IsImmediate
         // GraphQL -> isImmediate: Boolean! (scalar)
-        if (this.IsImmediate == null && Exploration.Includes(parent + ".isImmediate", true))
+        if (this.IsImmediate == null && ec.Includes("isImmediate",true))
         {
             this.IsImmediate = true;
         }
         //      C# -> System.String? RecipientUserId
         // GraphQL -> recipientUserId: String! (scalar)
-        if (this.RecipientUserId == null && Exploration.Includes(parent + ".recipientUserId", true))
+        if (this.RecipientUserId == null && ec.Includes("recipientUserId",true))
         {
             this.RecipientUserId = "FETCH";
         }
@@ -282,12 +281,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<EventDigest> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new EventDigest());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<EventDigest> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

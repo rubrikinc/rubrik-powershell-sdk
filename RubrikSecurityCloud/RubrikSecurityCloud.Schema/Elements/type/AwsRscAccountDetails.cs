@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? AwsCloudAccountId
         // GraphQL -> awsCloudAccountId: String! (scalar)
-        if (this.AwsCloudAccountId == null && Exploration.Includes(parent + ".awsCloudAccountId", true))
+        if (this.AwsCloudAccountId == null && ec.Includes("awsCloudAccountId",true))
         {
             this.AwsCloudAccountId = "FETCH";
         }
         //      C# -> System.String? AwsNativeId
         // GraphQL -> awsNativeId: String! (scalar)
-        if (this.AwsNativeId == null && Exploration.Includes(parent + ".awsNativeId", true))
+        if (this.AwsNativeId == null && ec.Includes("awsNativeId",true))
         {
             this.AwsNativeId = "FETCH";
         }
         //      C# -> System.String? Message
         // GraphQL -> message: String! (scalar)
-        if (this.Message == null && Exploration.Includes(parent + ".message", true))
+        if (this.Message == null && ec.Includes("message",true))
         {
             this.Message = "FETCH";
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AwsRscAccountDetails> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AwsRscAccountDetails());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AwsRscAccountDetails> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

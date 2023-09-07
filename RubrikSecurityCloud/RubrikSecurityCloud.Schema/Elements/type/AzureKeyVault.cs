@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? IsAccessibleByUserAssignedManagedIdentity
         // GraphQL -> isAccessibleByUserAssignedManagedIdentity: Boolean! (scalar)
-        if (this.IsAccessibleByUserAssignedManagedIdentity == null && Exploration.Includes(parent + ".isAccessibleByUserAssignedManagedIdentity", true))
+        if (this.IsAccessibleByUserAssignedManagedIdentity == null && ec.Includes("isAccessibleByUserAssignedManagedIdentity",true))
         {
             this.IsAccessibleByUserAssignedManagedIdentity = true;
         }
         //      C# -> System.String? KeyVaultName
         // GraphQL -> keyVaultName: String! (scalar)
-        if (this.KeyVaultName == null && Exploration.Includes(parent + ".keyVaultName", true))
+        if (this.KeyVaultName == null && ec.Includes("keyVaultName",true))
         {
             this.KeyVaultName = "FETCH";
         }
         //      C# -> System.String? ResourceGroupName
         // GraphQL -> resourceGroupName: String! (scalar)
-        if (this.ResourceGroupName == null && Exploration.Includes(parent + ".resourceGroupName", true))
+        if (this.ResourceGroupName == null && ec.Includes("resourceGroupName",true))
         {
             this.ResourceGroupName = "FETCH";
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AzureKeyVault> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AzureKeyVault());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AzureKeyVault> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

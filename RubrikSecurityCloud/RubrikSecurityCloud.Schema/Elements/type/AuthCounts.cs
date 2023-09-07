@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int32? Authenticated
         // GraphQL -> authenticated: Int! (scalar)
-        if (this.Authenticated == null && Exploration.Includes(parent + ".authenticated", true))
+        if (this.Authenticated == null && ec.Includes("authenticated",true))
         {
             this.Authenticated = Int32.MinValue;
         }
         //      C# -> System.Int32? PartiallyAuthenticated
         // GraphQL -> partiallyAuthenticated: Int! (scalar)
-        if (this.PartiallyAuthenticated == null && Exploration.Includes(parent + ".partiallyAuthenticated", true))
+        if (this.PartiallyAuthenticated == null && ec.Includes("partiallyAuthenticated",true))
         {
             this.PartiallyAuthenticated = Int32.MinValue;
         }
         //      C# -> System.Int32? Unauthenticated
         // GraphQL -> unauthenticated: Int! (scalar)
-        if (this.Unauthenticated == null && Exploration.Includes(parent + ".unauthenticated", true))
+        if (this.Unauthenticated == null && ec.Includes("unauthenticated",true))
         {
             this.Unauthenticated = Int32.MinValue;
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AuthCounts> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AuthCounts());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AuthCounts> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Href
         // GraphQL -> href: String! (scalar)
-        if (this.Href == null && Exploration.Includes(parent + ".href", true))
+        if (this.Href == null && ec.Includes("href",true))
         {
             this.Href = "FETCH";
         }
         //      C# -> System.String? Rel
         // GraphQL -> rel: String! (scalar)
-        if (this.Rel == null && Exploration.Includes(parent + ".rel", true))
+        if (this.Rel == null && ec.Includes("rel",true))
         {
             this.Rel = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VsphereLink> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VsphereLink());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VsphereLink> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

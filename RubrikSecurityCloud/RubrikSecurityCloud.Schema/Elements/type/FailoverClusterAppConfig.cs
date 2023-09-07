@@ -120,39 +120,38 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> FailoverClusterType? FailoverClusterType
         // GraphQL -> failoverClusterType: FailoverClusterType! (enum)
-        if (this.FailoverClusterType == null && Exploration.Includes(parent + ".failoverClusterType", true))
+        if (this.FailoverClusterType == null && ec.Includes("failoverClusterType",true))
         {
             this.FailoverClusterType = new FailoverClusterType();
         }
         //      C# -> System.String? ConfiguredSlaDomainId
         // GraphQL -> configuredSlaDomainId: String (scalar)
-        if (this.ConfiguredSlaDomainId == null && Exploration.Includes(parent + ".configuredSlaDomainId", true))
+        if (this.ConfiguredSlaDomainId == null && ec.Includes("configuredSlaDomainId",true))
         {
             this.ConfiguredSlaDomainId = "FETCH";
         }
         //      C# -> System.String? FailoverClusterId
         // GraphQL -> failoverClusterId: String! (scalar)
-        if (this.FailoverClusterId == null && Exploration.Includes(parent + ".failoverClusterId", true))
+        if (this.FailoverClusterId == null && ec.Includes("failoverClusterId",true))
         {
             this.FailoverClusterId = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> FailoverClusterAppSource? FailoverClusterAppSource
         // GraphQL -> failoverClusterAppSource: FailoverClusterAppSource (type)
-        if (this.FailoverClusterAppSource == null && Exploration.Includes(parent + ".failoverClusterAppSource"))
+        if (this.FailoverClusterAppSource == null && ec.Includes("failoverClusterAppSource",false))
         {
             this.FailoverClusterAppSource = new FailoverClusterAppSource();
-            this.FailoverClusterAppSource.ApplyExploratoryFieldSpec(parent + ".failoverClusterAppSource");
+            this.FailoverClusterAppSource.ApplyExploratoryFieldSpec(ec.NewChild("failoverClusterAppSource"));
         }
     }
 
@@ -186,12 +185,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<FailoverClusterAppConfig> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new FailoverClusterAppConfig());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<FailoverClusterAppConfig> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

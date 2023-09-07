@@ -211,6 +211,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("blueprintRecoveryCount")]
         public BlueprintRecoveryCount? BlueprintRecoveryCount { get; set; }
 
+        //      C# -> Schedule? BlueprintSchedule
+        // GraphQL -> blueprintSchedule: Schedule (type)
+        [JsonProperty("blueprintSchedule")]
+        public Schedule? BlueprintSchedule { get; set; }
+
         //      C# -> BlueprintChildConnection? ChildConnection
         // GraphQL -> childConnection: BlueprintChildConnection! (type)
         [JsonProperty("childConnection")]
@@ -304,6 +309,7 @@ namespace RubrikSecurityCloud.Types
         System.Int32? Version = null,
         List<Org>? AllOrgs = null,
         BlueprintRecoveryCount? BlueprintRecoveryCount = null,
+        Schedule? BlueprintSchedule = null,
         BlueprintChildConnection? ChildConnection = null,
         PathNode? EffectiveSlaSourceObject = null,
         BlueprintFailover? LatestFailover = null,
@@ -428,6 +434,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( BlueprintRecoveryCount != null ) {
             this.BlueprintRecoveryCount = BlueprintRecoveryCount;
+        }
+        if ( BlueprintSchedule != null ) {
+            this.BlueprintSchedule = BlueprintSchedule;
         }
         if ( ChildConnection != null ) {
             this.ChildConnection = ChildConnection;
@@ -680,6 +689,14 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "blueprintRecoveryCount {\n" + fspec + ind + "}\n" ;
             }
         }
+        //      C# -> Schedule? BlueprintSchedule
+        // GraphQL -> blueprintSchedule: Schedule (type)
+        if (this.BlueprintSchedule != null) {
+            var fspec = this.BlueprintSchedule.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "blueprintSchedule {\n" + fspec + ind + "}\n" ;
+            }
+        }
         //      C# -> BlueprintChildConnection? ChildConnection
         // GraphQL -> childConnection: BlueprintChildConnection! (type)
         if (this.ChildConnection != null) {
@@ -757,312 +774,318 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<Operation>? AuthorizedOperations
         // GraphQL -> authorizedOperations: [Operation!]! (enum)
-        if (this.AuthorizedOperations == null && Exploration.Includes(parent + ".authorizedOperations", true))
+        if (this.AuthorizedOperations == null && ec.Includes("authorizedOperations",true))
         {
             this.AuthorizedOperations = new List<Operation>();
         }
         //      C# -> BlueprintRecoveryType? BlueprintRecoveryType
         // GraphQL -> blueprintRecoveryType: BlueprintRecoveryType (enum)
-        if (this.BlueprintRecoveryType == null && Exploration.Includes(parent + ".blueprintRecoveryType", true))
+        if (this.BlueprintRecoveryType == null && ec.Includes("blueprintRecoveryType",true))
         {
             this.BlueprintRecoveryType = new BlueprintRecoveryType();
         }
         //      C# -> BlueprintFailoverStatus? LastFailoverStatus
         // GraphQL -> lastFailoverStatus: BlueprintFailoverStatus! (enum)
-        if (this.LastFailoverStatus == null && Exploration.Includes(parent + ".lastFailoverStatus", true))
+        if (this.LastFailoverStatus == null && ec.Includes("lastFailoverStatus",true))
         {
             this.LastFailoverStatus = new BlueprintFailoverStatus();
         }
         //      C# -> BlueprintFailoverStatus? LastIsolatedRecoveryStatus
         // GraphQL -> lastIsolatedRecoveryStatus: BlueprintFailoverStatus! (enum)
-        if (this.LastIsolatedRecoveryStatus == null && Exploration.Includes(parent + ".lastIsolatedRecoveryStatus", true))
+        if (this.LastIsolatedRecoveryStatus == null && ec.Includes("lastIsolatedRecoveryStatus",true))
         {
             this.LastIsolatedRecoveryStatus = new BlueprintFailoverStatus();
         }
         //      C# -> BlueprintFailoverStatus? LastLocalRecoveryStatus
         // GraphQL -> lastLocalRecoveryStatus: BlueprintFailoverStatus! (enum)
-        if (this.LastLocalRecoveryStatus == null && Exploration.Includes(parent + ".lastLocalRecoveryStatus", true))
+        if (this.LastLocalRecoveryStatus == null && ec.Includes("lastLocalRecoveryStatus",true))
         {
             this.LastLocalRecoveryStatus = new BlueprintFailoverStatus();
         }
         //      C# -> BlueprintFailoverStatus? LastTestFailoverStatus
         // GraphQL -> lastTestFailoverStatus: BlueprintFailoverStatus! (enum)
-        if (this.LastTestFailoverStatus == null && Exploration.Includes(parent + ".lastTestFailoverStatus", true))
+        if (this.LastTestFailoverStatus == null && ec.Includes("lastTestFailoverStatus",true))
         {
             this.LastTestFailoverStatus = new BlueprintFailoverStatus();
         }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
-        if (this.ObjectType == null && Exploration.Includes(parent + ".objectType", true))
+        if (this.ObjectType == null && ec.Includes("objectType",true))
         {
             this.ObjectType = new HierarchyObjectTypeEnum();
         }
         //      C# -> BlueprintPlatform? Platform
         // GraphQL -> platform: BlueprintPlatform! (enum)
-        if (this.Platform == null && Exploration.Includes(parent + ".platform", true))
+        if (this.Platform == null && ec.Includes("platform",true))
         {
             this.Platform = new BlueprintPlatform();
         }
         //      C# -> SlaAssignmentTypeEnum? SlaAssignment
         // GraphQL -> slaAssignment: SlaAssignmentTypeEnum! (enum)
-        if (this.SlaAssignment == null && Exploration.Includes(parent + ".slaAssignment", true))
+        if (this.SlaAssignment == null && ec.Includes("slaAssignment",true))
         {
             this.SlaAssignment = new SlaAssignmentTypeEnum();
         }
         //      C# -> BlueprintStatus? Status
         // GraphQL -> status: BlueprintStatus! (enum)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = new BlueprintStatus();
         }
         //      C# -> List<BlueprintChild>? Children
         // GraphQL -> children: [BlueprintChild!]! (interface)
-        if (this.Children == null && Exploration.Includes(parent + ".children"))
+        if (this.Children == null && ec.Includes("children",false))
         {
             this.Children = new List<BlueprintChild>();
-            this.Children.ApplyExploratoryFieldSpec(parent + ".children");
+            this.Children.ApplyExploratoryFieldSpec(ec.NewChild("children"));
         }
         //      C# -> SlaDomain? ConfiguredSlaDomain
         // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
-        if (this.ConfiguredSlaDomain == null && Exploration.Includes(parent + ".configuredSlaDomain"))
+        if (this.ConfiguredSlaDomain == null && ec.Includes("configuredSlaDomain",false))
         {
             var impls = new List<SlaDomain>();
-            impls.ApplyExploratoryFieldSpec(parent + ".configuredSlaDomain");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("configuredSlaDomain"));
             this.ConfiguredSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> SlaDomain? EffectiveRetentionSlaDomain
         // GraphQL -> effectiveRetentionSlaDomain: SlaDomain (interface)
-        if (this.EffectiveRetentionSlaDomain == null && Exploration.Includes(parent + ".effectiveRetentionSlaDomain"))
+        if (this.EffectiveRetentionSlaDomain == null && ec.Includes("effectiveRetentionSlaDomain",false))
         {
             var impls = new List<SlaDomain>();
-            impls.ApplyExploratoryFieldSpec(parent + ".effectiveRetentionSlaDomain");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("effectiveRetentionSlaDomain"));
             this.EffectiveRetentionSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> SlaDomain? EffectiveSlaDomain
         // GraphQL -> effectiveSlaDomain: SlaDomain! (interface)
-        if (this.EffectiveSlaDomain == null && Exploration.Includes(parent + ".effectiveSlaDomain"))
+        if (this.EffectiveSlaDomain == null && ec.Includes("effectiveSlaDomain",false))
         {
             var impls = new List<SlaDomain>();
-            impls.ApplyExploratoryFieldSpec(parent + ".effectiveSlaDomain");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("effectiveSlaDomain"));
             this.EffectiveSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> BlueprintLocation? SourceLocation
         // GraphQL -> sourceLocation: BlueprintLocation (interface)
-        if (this.SourceLocation == null && Exploration.Includes(parent + ".sourceLocation"))
+        if (this.SourceLocation == null && ec.Includes("sourceLocation",false))
         {
             var impls = new List<BlueprintLocation>();
-            impls.ApplyExploratoryFieldSpec(parent + ".sourceLocation");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("sourceLocation"));
             this.SourceLocation = (BlueprintLocation)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> BlueprintLocation? TargetLocation
         // GraphQL -> targetLocation: BlueprintLocation (interface)
-        if (this.TargetLocation == null && Exploration.Includes(parent + ".targetLocation"))
+        if (this.TargetLocation == null && ec.Includes("targetLocation",false))
         {
             var impls = new List<BlueprintLocation>();
-            impls.ApplyExploratoryFieldSpec(parent + ".targetLocation");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("targetLocation"));
             this.TargetLocation = (BlueprintLocation)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> System.Boolean? EnableHydrationOpt
         // GraphQL -> enableHydrationOpt: Boolean (scalar)
-        if (this.EnableHydrationOpt == null && Exploration.Includes(parent + ".enableHydrationOpt", true))
+        if (this.EnableHydrationOpt == null && ec.Includes("enableHydrationOpt",true))
         {
             this.EnableHydrationOpt = true;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsArchived
         // GraphQL -> isArchived: Boolean! (scalar)
-        if (this.IsArchived == null && Exploration.Includes(parent + ".isArchived", true))
+        if (this.IsArchived == null && ec.Includes("isArchived",true))
         {
             this.IsArchived = true;
         }
         //      C# -> System.Boolean? IsBlueprintVisible
         // GraphQL -> isBlueprintVisible: Boolean (scalar)
-        if (this.IsBlueprintVisible == null && Exploration.Includes(parent + ".isBlueprintVisible", true))
+        if (this.IsBlueprintVisible == null && ec.Includes("isBlueprintVisible",true))
         {
             this.IsBlueprintVisible = true;
         }
         //      C# -> System.Boolean? IsHydrationEnabled
         // GraphQL -> isHydrationEnabled: Boolean (scalar)
-        if (this.IsHydrationEnabled == null && Exploration.Includes(parent + ".isHydrationEnabled", true))
+        if (this.IsHydrationEnabled == null && ec.Includes("isHydrationEnabled",true))
         {
             this.IsHydrationEnabled = true;
         }
         //      C# -> System.String? LastFailoverSource
         // GraphQL -> lastFailoverSource: String (scalar)
-        if (this.LastFailoverSource == null && Exploration.Includes(parent + ".lastFailoverSource", true))
+        if (this.LastFailoverSource == null && ec.Includes("lastFailoverSource",true))
         {
             this.LastFailoverSource = "FETCH";
         }
         //      C# -> DateTime? LastFailoverTime
         // GraphQL -> lastFailoverTime: DateTime (scalar)
-        if (this.LastFailoverTime == null && Exploration.Includes(parent + ".lastFailoverTime", true))
+        if (this.LastFailoverTime == null && ec.Includes("lastFailoverTime",true))
         {
             this.LastFailoverTime = new DateTime();
         }
         //      C# -> DateTime? LastFailoverTimeOpt
         // GraphQL -> lastFailoverTimeOpt: DateTime (scalar)
-        if (this.LastFailoverTimeOpt == null && Exploration.Includes(parent + ".lastFailoverTimeOpt", true))
+        if (this.LastFailoverTimeOpt == null && ec.Includes("lastFailoverTimeOpt",true))
         {
             this.LastFailoverTimeOpt = new DateTime();
         }
         //      C# -> DateTime? LastIsolatedRecoveryTime
         // GraphQL -> lastIsolatedRecoveryTime: DateTime (scalar)
-        if (this.LastIsolatedRecoveryTime == null && Exploration.Includes(parent + ".lastIsolatedRecoveryTime", true))
+        if (this.LastIsolatedRecoveryTime == null && ec.Includes("lastIsolatedRecoveryTime",true))
         {
             this.LastIsolatedRecoveryTime = new DateTime();
         }
         //      C# -> DateTime? LastIsolatedRecoveryTimeOpt
         // GraphQL -> lastIsolatedRecoveryTimeOpt: DateTime (scalar)
-        if (this.LastIsolatedRecoveryTimeOpt == null && Exploration.Includes(parent + ".lastIsolatedRecoveryTimeOpt", true))
+        if (this.LastIsolatedRecoveryTimeOpt == null && ec.Includes("lastIsolatedRecoveryTimeOpt",true))
         {
             this.LastIsolatedRecoveryTimeOpt = new DateTime();
         }
         //      C# -> DateTime? LastLocalRecoveryTime
         // GraphQL -> lastLocalRecoveryTime: DateTime (scalar)
-        if (this.LastLocalRecoveryTime == null && Exploration.Includes(parent + ".lastLocalRecoveryTime", true))
+        if (this.LastLocalRecoveryTime == null && ec.Includes("lastLocalRecoveryTime",true))
         {
             this.LastLocalRecoveryTime = new DateTime();
         }
         //      C# -> DateTime? LastLocalRecoveryTimeOpt
         // GraphQL -> lastLocalRecoveryTimeOpt: DateTime (scalar)
-        if (this.LastLocalRecoveryTimeOpt == null && Exploration.Includes(parent + ".lastLocalRecoveryTimeOpt", true))
+        if (this.LastLocalRecoveryTimeOpt == null && ec.Includes("lastLocalRecoveryTimeOpt",true))
         {
             this.LastLocalRecoveryTimeOpt = new DateTime();
         }
         //      C# -> DateTime? LastTestFailoverTime
         // GraphQL -> lastTestFailoverTime: DateTime (scalar)
-        if (this.LastTestFailoverTime == null && Exploration.Includes(parent + ".lastTestFailoverTime", true))
+        if (this.LastTestFailoverTime == null && ec.Includes("lastTestFailoverTime",true))
         {
             this.LastTestFailoverTime = new DateTime();
         }
         //      C# -> DateTime? LastTestFailoverTimeOpt
         // GraphQL -> lastTestFailoverTimeOpt: DateTime (scalar)
-        if (this.LastTestFailoverTimeOpt == null && Exploration.Includes(parent + ".lastTestFailoverTimeOpt", true))
+        if (this.LastTestFailoverTimeOpt == null && ec.Includes("lastTestFailoverTimeOpt",true))
         {
             this.LastTestFailoverTimeOpt = new DateTime();
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.Int32? NumChildren
         // GraphQL -> numChildren: Int! (scalar)
-        if (this.NumChildren == null && Exploration.Includes(parent + ".numChildren", true))
+        if (this.NumChildren == null && ec.Includes("numChildren",true))
         {
             this.NumChildren = Int32.MinValue;
         }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
-        if (this.NumWorkloadDescendants == null && Exploration.Includes(parent + ".numWorkloadDescendants", true))
+        if (this.NumWorkloadDescendants == null && ec.Includes("numWorkloadDescendants",true))
         {
             this.NumWorkloadDescendants = Int32.MinValue;
         }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
-        if (this.SlaPauseStatus == null && Exploration.Includes(parent + ".slaPauseStatus", true))
+        if (this.SlaPauseStatus == null && ec.Includes("slaPauseStatus",true))
         {
             this.SlaPauseStatus = true;
         }
         //      C# -> List<System.Int64>? TimeoutBetweenPriorityGroups
         // GraphQL -> timeoutBetweenPriorityGroups: [Long!] (scalar)
-        if (this.TimeoutBetweenPriorityGroups == null && Exploration.Includes(parent + ".timeoutBetweenPriorityGroups", true))
+        if (this.TimeoutBetweenPriorityGroups == null && ec.Includes("timeoutBetweenPriorityGroups",true))
         {
             this.TimeoutBetweenPriorityGroups = new List<System.Int64>();
         }
         //      C# -> System.Int32? Version
         // GraphQL -> version: Int! (scalar)
-        if (this.Version == null && Exploration.Includes(parent + ".version", true))
+        if (this.Version == null && ec.Includes("version",true))
         {
             this.Version = Int32.MinValue;
         }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
-        if (this.AllOrgs == null && Exploration.Includes(parent + ".allOrgs"))
+        if (this.AllOrgs == null && ec.Includes("allOrgs",false))
         {
             this.AllOrgs = new List<Org>();
-            this.AllOrgs.ApplyExploratoryFieldSpec(parent + ".allOrgs");
+            this.AllOrgs.ApplyExploratoryFieldSpec(ec.NewChild("allOrgs"));
         }
         //      C# -> BlueprintRecoveryCount? BlueprintRecoveryCount
         // GraphQL -> blueprintRecoveryCount: BlueprintRecoveryCount (type)
-        if (this.BlueprintRecoveryCount == null && Exploration.Includes(parent + ".blueprintRecoveryCount"))
+        if (this.BlueprintRecoveryCount == null && ec.Includes("blueprintRecoveryCount",false))
         {
             this.BlueprintRecoveryCount = new BlueprintRecoveryCount();
-            this.BlueprintRecoveryCount.ApplyExploratoryFieldSpec(parent + ".blueprintRecoveryCount");
+            this.BlueprintRecoveryCount.ApplyExploratoryFieldSpec(ec.NewChild("blueprintRecoveryCount"));
+        }
+        //      C# -> Schedule? BlueprintSchedule
+        // GraphQL -> blueprintSchedule: Schedule (type)
+        if (this.BlueprintSchedule == null && ec.Includes("blueprintSchedule",false))
+        {
+            this.BlueprintSchedule = new Schedule();
+            this.BlueprintSchedule.ApplyExploratoryFieldSpec(ec.NewChild("blueprintSchedule"));
         }
         //      C# -> BlueprintChildConnection? ChildConnection
         // GraphQL -> childConnection: BlueprintChildConnection! (type)
-        if (this.ChildConnection == null && Exploration.Includes(parent + ".childConnection"))
+        if (this.ChildConnection == null && ec.Includes("childConnection",false))
         {
             this.ChildConnection = new BlueprintChildConnection();
-            this.ChildConnection.ApplyExploratoryFieldSpec(parent + ".childConnection");
+            this.ChildConnection.ApplyExploratoryFieldSpec(ec.NewChild("childConnection"));
         }
         //      C# -> PathNode? EffectiveSlaSourceObject
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)
-        if (this.EffectiveSlaSourceObject == null && Exploration.Includes(parent + ".effectiveSlaSourceObject"))
+        if (this.EffectiveSlaSourceObject == null && ec.Includes("effectiveSlaSourceObject",false))
         {
             this.EffectiveSlaSourceObject = new PathNode();
-            this.EffectiveSlaSourceObject.ApplyExploratoryFieldSpec(parent + ".effectiveSlaSourceObject");
+            this.EffectiveSlaSourceObject.ApplyExploratoryFieldSpec(ec.NewChild("effectiveSlaSourceObject"));
         }
         //      C# -> BlueprintFailover? LatestFailover
         // GraphQL -> latestFailover: BlueprintFailover (type)
-        if (this.LatestFailover == null && Exploration.Includes(parent + ".latestFailover"))
+        if (this.LatestFailover == null && ec.Includes("latestFailover",false))
         {
             this.LatestFailover = new BlueprintFailover();
-            this.LatestFailover.ApplyExploratoryFieldSpec(parent + ".latestFailover");
+            this.LatestFailover.ApplyExploratoryFieldSpec(ec.NewChild("latestFailover"));
         }
         //      C# -> RpoLagInfo? LocalRpoLagInfo
         // GraphQL -> localRpoLagInfo: RpoLagInfo (type)
-        if (this.LocalRpoLagInfo == null && Exploration.Includes(parent + ".localRpoLagInfo"))
+        if (this.LocalRpoLagInfo == null && ec.Includes("localRpoLagInfo",false))
         {
             this.LocalRpoLagInfo = new RpoLagInfo();
-            this.LocalRpoLagInfo.ApplyExploratoryFieldSpec(parent + ".localRpoLagInfo");
+            this.LocalRpoLagInfo.ApplyExploratoryFieldSpec(ec.NewChild("localRpoLagInfo"));
         }
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)
-        if (this.LogicalPath == null && Exploration.Includes(parent + ".logicalPath"))
+        if (this.LogicalPath == null && ec.Includes("logicalPath",false))
         {
             this.LogicalPath = new List<PathNode>();
-            this.LogicalPath.ApplyExploratoryFieldSpec(parent + ".logicalPath");
+            this.LogicalPath.ApplyExploratoryFieldSpec(ec.NewChild("logicalPath"));
         }
         //      C# -> List<PathNode>? PhysicalPath
         // GraphQL -> physicalPath: [PathNode!]! (type)
-        if (this.PhysicalPath == null && Exploration.Includes(parent + ".physicalPath"))
+        if (this.PhysicalPath == null && ec.Includes("physicalPath",false))
         {
             this.PhysicalPath = new List<PathNode>();
-            this.PhysicalPath.ApplyExploratoryFieldSpec(parent + ".physicalPath");
+            this.PhysicalPath.ApplyExploratoryFieldSpec(ec.NewChild("physicalPath"));
         }
         //      C# -> BlueprintRecoveryRanges? RecoveryInfo
         // GraphQL -> recoveryInfo: BlueprintRecoveryRanges (type)
-        if (this.RecoveryInfo == null && Exploration.Includes(parent + ".recoveryInfo"))
+        if (this.RecoveryInfo == null && ec.Includes("recoveryInfo",false))
         {
             this.RecoveryInfo = new BlueprintRecoveryRanges();
-            this.RecoveryInfo.ApplyExploratoryFieldSpec(parent + ".recoveryInfo");
+            this.RecoveryInfo.ApplyExploratoryFieldSpec(ec.NewChild("recoveryInfo"));
         }
         //      C# -> RpoLagInfo? RemoteRpoLagInfo
         // GraphQL -> remoteRpoLagInfo: RpoLagInfo (type)
-        if (this.RemoteRpoLagInfo == null && Exploration.Includes(parent + ".remoteRpoLagInfo"))
+        if (this.RemoteRpoLagInfo == null && ec.Includes("remoteRpoLagInfo",false))
         {
             this.RemoteRpoLagInfo = new RpoLagInfo();
-            this.RemoteRpoLagInfo.ApplyExploratoryFieldSpec(parent + ".remoteRpoLagInfo");
+            this.RemoteRpoLagInfo.ApplyExploratoryFieldSpec(ec.NewChild("remoteRpoLagInfo"));
         }
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
-        if (this.SnapshotDistribution == null && Exploration.Includes(parent + ".snapshotDistribution"))
+        if (this.SnapshotDistribution == null && ec.Includes("snapshotDistribution",false))
         {
             this.SnapshotDistribution = new SnapshotDistribution();
-            this.SnapshotDistribution.ApplyExploratoryFieldSpec(parent + ".snapshotDistribution");
+            this.SnapshotDistribution.ApplyExploratoryFieldSpec(ec.NewChild("snapshotDistribution"));
         }
     }
 
@@ -1096,12 +1119,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VsphereBlueprintNew> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VsphereBlueprintNew());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VsphereBlueprintNew> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -174,60 +174,59 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> AppAuthStatus? AppAuthStatus
         // GraphQL -> appAuthStatus: AppAuthStatus! (enum)
-        if (this.AppAuthStatus == null && Exploration.Includes(parent + ".appAuthStatus", true))
+        if (this.AppAuthStatus == null && ec.Includes("appAuthStatus",true))
         {
             this.AppAuthStatus = new AppAuthStatus();
         }
         //      C# -> DateTime? AddedAt
         // GraphQL -> addedAt: DateTime! (scalar)
-        if (this.AddedAt == null && Exploration.Includes(parent + ".addedAt", true))
+        if (this.AddedAt == null && ec.Includes("addedAt",true))
         {
             this.AddedAt = new DateTime();
         }
         //      C# -> System.Int32? AppAuthVersion
         // GraphQL -> appAuthVersion: Int! (scalar)
-        if (this.AppAuthVersion == null && Exploration.Includes(parent + ".appAuthVersion", true))
+        if (this.AppAuthVersion == null && ec.Includes("appAuthVersion",true))
         {
             this.AppAuthVersion = Int32.MinValue;
         }
         //      C# -> System.String? AppId
         // GraphQL -> appId: String! (scalar)
-        if (this.AppId == null && Exploration.Includes(parent + ".appId", true))
+        if (this.AppId == null && ec.Includes("appId",true))
         {
             this.AppId = "FETCH";
         }
         //      C# -> System.String? AppOwner
         // GraphQL -> appOwner: String! (scalar)
-        if (this.AppOwner == null && Exploration.Includes(parent + ".appOwner", true))
+        if (this.AppOwner == null && ec.Includes("appOwner",true))
         {
             this.AppOwner = "FETCH";
         }
         //      C# -> System.String? AppType
         // GraphQL -> appType: String! (scalar)
-        if (this.AppType == null && Exploration.Includes(parent + ".appType", true))
+        if (this.AppType == null && ec.Includes("appType",true))
         {
             this.AppType = "FETCH";
         }
         //      C# -> System.Boolean? IsAuthenticated
         // GraphQL -> isAuthenticated: Boolean! (scalar)
-        if (this.IsAuthenticated == null && Exploration.Includes(parent + ".isAuthenticated", true))
+        if (this.IsAuthenticated == null && ec.Includes("isAuthenticated",true))
         {
             this.IsAuthenticated = true;
         }
         //      C# -> System.String? Subscription
         // GraphQL -> subscription: String! (scalar)
-        if (this.Subscription == null && Exploration.Includes(parent + ".subscription", true))
+        if (this.Subscription == null && ec.Includes("subscription",true))
         {
             this.Subscription = "FETCH";
         }
         //      C# -> System.String? SubscriptionId
         // GraphQL -> subscriptionId: String! (scalar)
-        if (this.SubscriptionId == null && Exploration.Includes(parent + ".subscriptionId", true))
+        if (this.SubscriptionId == null && ec.Includes("subscriptionId",true))
         {
             this.SubscriptionId = "FETCH";
         }
@@ -263,12 +262,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<O365App> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new O365App());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<O365App> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

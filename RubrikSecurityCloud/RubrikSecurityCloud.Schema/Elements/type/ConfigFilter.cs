@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<System.String>? FilterHeader
         // GraphQL -> filterHeader: [String!]! (scalar)
-        if (this.FilterHeader == null && Exploration.Includes(parent + ".filterHeader", true))
+        if (this.FilterHeader == null && ec.Includes("filterHeader",true))
         {
             this.FilterHeader = new List<System.String>();
         }
         //      C# -> ReportFilter? Filter
         // GraphQL -> filter: ReportFilter! (type)
-        if (this.Filter == null && Exploration.Includes(parent + ".filter"))
+        if (this.Filter == null && ec.Includes("filter",false))
         {
             this.Filter = new ReportFilter();
-            this.Filter.ApplyExploratoryFieldSpec(parent + ".filter");
+            this.Filter.ApplyExploratoryFieldSpec(ec.NewChild("filter"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ConfigFilter> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ConfigFilter());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ConfigFilter> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

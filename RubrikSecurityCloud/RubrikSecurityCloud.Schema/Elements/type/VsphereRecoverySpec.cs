@@ -211,77 +211,76 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? EnableMacPreserveOnly
         // GraphQL -> enableMacPreserveOnly: Boolean (scalar)
-        if (this.EnableMacPreserveOnly == null && Exploration.Includes(parent + ".enableMacPreserveOnly", true))
+        if (this.EnableMacPreserveOnly == null && ec.Includes("enableMacPreserveOnly",true))
         {
             this.EnableMacPreserveOnly = true;
         }
         //      C# -> System.Boolean? EnableNetworkDisconnect
         // GraphQL -> enableNetworkDisconnect: Boolean! (scalar)
-        if (this.EnableNetworkDisconnect == null && Exploration.Includes(parent + ".enableNetworkDisconnect", true))
+        if (this.EnableNetworkDisconnect == null && ec.Includes("enableNetworkDisconnect",true))
         {
             this.EnableNetworkDisconnect = true;
         }
         //      C# -> System.Boolean? EnableNetworkPreserve
         // GraphQL -> enableNetworkPreserve: Boolean (scalar)
-        if (this.EnableNetworkPreserve == null && Exploration.Includes(parent + ".enableNetworkPreserve", true))
+        if (this.EnableNetworkPreserve == null && ec.Includes("enableNetworkPreserve",true))
         {
             this.EnableNetworkPreserve = true;
         }
         //      C# -> System.Int32? MemoryMbs
         // GraphQL -> memoryMbs: Int! (scalar)
-        if (this.MemoryMbs == null && Exploration.Includes(parent + ".memoryMbs", true))
+        if (this.MemoryMbs == null && ec.Includes("memoryMbs",true))
         {
             this.MemoryMbs = Int32.MinValue;
         }
         //      C# -> System.Int64? RecoveryPointOpt
         // GraphQL -> recoveryPointOpt: Long (scalar)
-        if (this.RecoveryPointOpt == null && Exploration.Includes(parent + ".recoveryPointOpt", true))
+        if (this.RecoveryPointOpt == null && ec.Includes("recoveryPointOpt",true))
         {
             this.RecoveryPointOpt = new System.Int64();
         }
         //      C# -> System.String? UserData
         // GraphQL -> userData: String (scalar)
-        if (this.UserData == null && Exploration.Includes(parent + ".userData", true))
+        if (this.UserData == null && ec.Includes("userData",true))
         {
             this.UserData = "FETCH";
         }
         //      C# -> System.Int32? Vcpus
         // GraphQL -> vCpus: Int! (scalar)
-        if (this.Vcpus == null && Exploration.Includes(parent + ".vCpus", true))
+        if (this.Vcpus == null && ec.Includes("vCpus",true))
         {
             this.Vcpus = Int32.MinValue;
         }
         //      C# -> System.Int64? Version
         // GraphQL -> version: Long! (scalar)
-        if (this.Version == null && Exploration.Includes(parent + ".version", true))
+        if (this.Version == null && ec.Includes("version",true))
         {
             this.Version = new System.Int64();
         }
         //      C# -> VsphereRecoveryComputeTarget? Target
         // GraphQL -> target: VsphereRecoveryComputeTarget! (type)
-        if (this.Target == null && Exploration.Includes(parent + ".target"))
+        if (this.Target == null && ec.Includes("target",false))
         {
             this.Target = new VsphereRecoveryComputeTarget();
-            this.Target.ApplyExploratoryFieldSpec(parent + ".target");
+            this.Target.ApplyExploratoryFieldSpec(ec.NewChild("target"));
         }
         //      C# -> List<VsphereVmNicSpec>? VsphereNicSpecs
         // GraphQL -> vSphereNicSpecs: [VSphereVMNicSpec!]! (type)
-        if (this.VsphereNicSpecs == null && Exploration.Includes(parent + ".vSphereNicSpecs"))
+        if (this.VsphereNicSpecs == null && ec.Includes("vSphereNicSpecs",false))
         {
             this.VsphereNicSpecs = new List<VsphereVmNicSpec>();
-            this.VsphereNicSpecs.ApplyExploratoryFieldSpec(parent + ".vSphereNicSpecs");
+            this.VsphereNicSpecs.ApplyExploratoryFieldSpec(ec.NewChild("vSphereNicSpecs"));
         }
         //      C# -> List<VsphereVmVolumeSpec>? VsphereVolumeSpecs
         // GraphQL -> vSphereVolumeSpecs: [VSphereVMVolumeSpec!]! (type)
-        if (this.VsphereVolumeSpecs == null && Exploration.Includes(parent + ".vSphereVolumeSpecs"))
+        if (this.VsphereVolumeSpecs == null && ec.Includes("vSphereVolumeSpecs",false))
         {
             this.VsphereVolumeSpecs = new List<VsphereVmVolumeSpec>();
-            this.VsphereVolumeSpecs.ApplyExploratoryFieldSpec(parent + ".vSphereVolumeSpecs");
+            this.VsphereVolumeSpecs.ApplyExploratoryFieldSpec(ec.NewChild("vSphereVolumeSpecs"));
         }
     }
 
@@ -315,12 +314,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VsphereRecoverySpec> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VsphereRecoverySpec());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VsphereRecoverySpec> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

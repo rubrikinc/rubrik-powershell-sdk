@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int32? DayOfMonth
         // GraphQL -> dayOfMonth: Int! (scalar)
-        if (this.DayOfMonth == null && Exploration.Includes(parent + ".dayOfMonth", true))
+        if (this.DayOfMonth == null && ec.Includes("dayOfMonth",true))
         {
             this.DayOfMonth = Int32.MinValue;
         }
         //      C# -> System.Int32? Interval
         // GraphQL -> interval: Int! (scalar)
-        if (this.Interval == null && Exploration.Includes(parent + ".interval", true))
+        if (this.Interval == null && ec.Includes("interval",true))
         {
             this.Interval = Int32.MinValue;
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AbsoluteMonthlyRecurrencePattern> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AbsoluteMonthlyRecurrencePattern());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AbsoluteMonthlyRecurrencePattern> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

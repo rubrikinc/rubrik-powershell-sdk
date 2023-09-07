@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? Protected
         // GraphQL -> protected: Long! (scalar)
-        if (this.Protected == null && Exploration.Includes(parent + ".protected", true))
+        if (this.Protected == null && ec.Includes("protected",true))
         {
             this.Protected = new System.Int64();
         }
         //      C# -> System.Int64? TotalSizeInBytes
         // GraphQL -> totalSizeInBytes: Long! (scalar)
-        if (this.TotalSizeInBytes == null && Exploration.Includes(parent + ".totalSizeInBytes", true))
+        if (this.TotalSizeInBytes == null && ec.Includes("totalSizeInBytes",true))
         {
             this.TotalSizeInBytes = new System.Int64();
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<NcdFilesObjectProtectionStatusData> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new NcdFilesObjectProtectionStatusData());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<NcdFilesObjectProtectionStatusData> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

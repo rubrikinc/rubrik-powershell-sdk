@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? FailoverRecoveryCount
         // GraphQL -> failoverRecoveryCount: Long! (scalar)
-        if (this.FailoverRecoveryCount == null && Exploration.Includes(parent + ".failoverRecoveryCount", true))
+        if (this.FailoverRecoveryCount == null && ec.Includes("failoverRecoveryCount",true))
         {
             this.FailoverRecoveryCount = new System.Int64();
         }
         //      C# -> System.Int64? IsolatedRecoveryCount
         // GraphQL -> isolatedRecoveryCount: Long! (scalar)
-        if (this.IsolatedRecoveryCount == null && Exploration.Includes(parent + ".isolatedRecoveryCount", true))
+        if (this.IsolatedRecoveryCount == null && ec.Includes("isolatedRecoveryCount",true))
         {
             this.IsolatedRecoveryCount = new System.Int64();
         }
         //      C# -> System.Int64? LocalRecoveryCount
         // GraphQL -> localRecoveryCount: Long! (scalar)
-        if (this.LocalRecoveryCount == null && Exploration.Includes(parent + ".localRecoveryCount", true))
+        if (this.LocalRecoveryCount == null && ec.Includes("localRecoveryCount",true))
         {
             this.LocalRecoveryCount = new System.Int64();
         }
         //      C# -> System.Int64? TestFailoverRecoveryCount
         // GraphQL -> testFailoverRecoveryCount: Long! (scalar)
-        if (this.TestFailoverRecoveryCount == null && Exploration.Includes(parent + ".testFailoverRecoveryCount", true))
+        if (this.TestFailoverRecoveryCount == null && ec.Includes("testFailoverRecoveryCount",true))
         {
             this.TestFailoverRecoveryCount = new System.Int64();
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<BlueprintRecoveryCount> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new BlueprintRecoveryCount());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<BlueprintRecoveryCount> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

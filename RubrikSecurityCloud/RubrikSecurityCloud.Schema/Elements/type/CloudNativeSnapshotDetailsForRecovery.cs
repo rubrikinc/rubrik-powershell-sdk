@@ -123,40 +123,39 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> CloudProviderType? CloudType
         // GraphQL -> cloudType: CloudProviderType! (enum)
-        if (this.CloudType == null && Exploration.Includes(parent + ".cloudType", true))
+        if (this.CloudType == null && ec.Includes("cloudType",true))
         {
             this.CloudType = new CloudProviderType();
         }
         //      C# -> FileRecoveryFeasibility? FileRecoveryFeasibility
         // GraphQL -> fileRecoveryFeasibility: FileRecoveryFeasibility! (enum)
-        if (this.FileRecoveryFeasibility == null && Exploration.Includes(parent + ".fileRecoveryFeasibility", true))
+        if (this.FileRecoveryFeasibility == null && ec.Includes("fileRecoveryFeasibility",true))
         {
             this.FileRecoveryFeasibility = new FileRecoveryFeasibility();
         }
         //      C# -> SnapshotType? SnapshotType
         // GraphQL -> snapshotType: SnapshotType! (enum)
-        if (this.SnapshotType == null && Exploration.Includes(parent + ".snapshotType", true))
+        if (this.SnapshotType == null && ec.Includes("snapshotType",true))
         {
             this.SnapshotType = new SnapshotType();
         }
         //      C# -> CloudNativeAccountIdWithName? CloudNativeAccountId
         // GraphQL -> cloudNativeAccountId: CloudNativeAccountIdWithName (type)
-        if (this.CloudNativeAccountId == null && Exploration.Includes(parent + ".cloudNativeAccountId"))
+        if (this.CloudNativeAccountId == null && ec.Includes("cloudNativeAccountId",false))
         {
             this.CloudNativeAccountId = new CloudNativeAccountIdWithName();
-            this.CloudNativeAccountId.ApplyExploratoryFieldSpec(parent + ".cloudNativeAccountId");
+            this.CloudNativeAccountId.ApplyExploratoryFieldSpec(ec.NewChild("cloudNativeAccountId"));
         }
         //      C# -> CloudNativeRegion? SnapshotRegion
         // GraphQL -> snapshotRegion: CloudNativeRegion! (type)
-        if (this.SnapshotRegion == null && Exploration.Includes(parent + ".snapshotRegion"))
+        if (this.SnapshotRegion == null && ec.Includes("snapshotRegion",false))
         {
             this.SnapshotRegion = new CloudNativeRegion();
-            this.SnapshotRegion.ApplyExploratoryFieldSpec(parent + ".snapshotRegion");
+            this.SnapshotRegion.ApplyExploratoryFieldSpec(ec.NewChild("snapshotRegion"));
         }
     }
 
@@ -190,12 +189,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CloudNativeSnapshotDetailsForRecovery> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CloudNativeSnapshotDetailsForRecovery());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CloudNativeSnapshotDetailsForRecovery> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -272,103 +272,102 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> VsphereLiveMountStatus? VmStatus
         // GraphQL -> vmStatus: VsphereLiveMountStatus! (enum)
-        if (this.VmStatus == null && Exploration.Includes(parent + ".vmStatus", true))
+        if (this.VmStatus == null && ec.Includes("vmStatus",true))
         {
             this.VmStatus = new VsphereLiveMountStatus();
         }
         //      C# -> System.Int32? AttachingDiskCount
         // GraphQL -> attachingDiskCount: Int! (scalar)
-        if (this.AttachingDiskCount == null && Exploration.Includes(parent + ".attachingDiskCount", true))
+        if (this.AttachingDiskCount == null && ec.Includes("attachingDiskCount",true))
         {
             this.AttachingDiskCount = Int32.MinValue;
         }
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
-        if (this.CdmId == null && Exploration.Includes(parent + ".cdmId", true))
+        if (this.CdmId == null && ec.Includes("cdmId",true))
         {
             this.CdmId = "FETCH";
         }
         //      C# -> System.Boolean? HasAttachingDisk
         // GraphQL -> hasAttachingDisk: Boolean! (scalar)
-        if (this.HasAttachingDisk == null && Exploration.Includes(parent + ".hasAttachingDisk", true))
+        if (this.HasAttachingDisk == null && ec.Includes("hasAttachingDisk",true))
         {
             this.HasAttachingDisk = true;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsReady
         // GraphQL -> isReady: Boolean! (scalar)
-        if (this.IsReady == null && Exploration.Includes(parent + ".isReady", true))
+        if (this.IsReady == null && ec.Includes("isReady",true))
         {
             this.IsReady = true;
         }
         //      C# -> System.String? MigrateDatastoreRequestId
         // GraphQL -> migrateDatastoreRequestId: String! (scalar)
-        if (this.MigrateDatastoreRequestId == null && Exploration.Includes(parent + ".migrateDatastoreRequestId", true))
+        if (this.MigrateDatastoreRequestId == null && ec.Includes("migrateDatastoreRequestId",true))
         {
             this.MigrateDatastoreRequestId = "FETCH";
         }
         //      C# -> DateTime? MountTimestamp
         // GraphQL -> mountTimestamp: DateTime (scalar)
-        if (this.MountTimestamp == null && Exploration.Includes(parent + ".mountTimestamp", true))
+        if (this.MountTimestamp == null && ec.Includes("mountTimestamp",true))
         {
             this.MountTimestamp = new DateTime();
         }
         //      C# -> System.String? NewVmName
         // GraphQL -> newVmName: String (scalar)
-        if (this.NewVmName == null && Exploration.Includes(parent + ".newVmName", true))
+        if (this.NewVmName == null && ec.Includes("newVmName",true))
         {
             this.NewVmName = "FETCH";
         }
         //      C# -> System.String? VcenterId
         // GraphQL -> vcenterId: String! (scalar)
-        if (this.VcenterId == null && Exploration.Includes(parent + ".vcenterId", true))
+        if (this.VcenterId == null && ec.Includes("vcenterId",true))
         {
             this.VcenterId = "FETCH";
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
-        if (this.Cluster == null && Exploration.Includes(parent + ".cluster"))
+        if (this.Cluster == null && ec.Includes("cluster",false))
         {
             this.Cluster = new Cluster();
-            this.Cluster.ApplyExploratoryFieldSpec(parent + ".cluster");
+            this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
         }
         //      C# -> VsphereHost? Host
         // GraphQL -> host: VsphereHost (type)
-        if (this.Host == null && Exploration.Includes(parent + ".host"))
+        if (this.Host == null && ec.Includes("host",false))
         {
             this.Host = new VsphereHost();
-            this.Host.ApplyExploratoryFieldSpec(parent + ".host");
+            this.Host.ApplyExploratoryFieldSpec(ec.NewChild("host"));
         }
         //      C# -> VsphereVm? MountedVm
         // GraphQL -> mountedVm: VsphereVm (type)
-        if (this.MountedVm == null && Exploration.Includes(parent + ".mountedVm"))
+        if (this.MountedVm == null && ec.Includes("mountedVm",false))
         {
             this.MountedVm = new VsphereVm();
-            this.MountedVm.ApplyExploratoryFieldSpec(parent + ".mountedVm");
+            this.MountedVm.ApplyExploratoryFieldSpec(ec.NewChild("mountedVm"));
         }
         //      C# -> CdmSnapshot? SourceSnapshot
         // GraphQL -> sourceSnapshot: CdmSnapshot (type)
-        if (this.SourceSnapshot == null && Exploration.Includes(parent + ".sourceSnapshot"))
+        if (this.SourceSnapshot == null && ec.Includes("sourceSnapshot",false))
         {
             this.SourceSnapshot = new CdmSnapshot();
-            this.SourceSnapshot.ApplyExploratoryFieldSpec(parent + ".sourceSnapshot");
+            this.SourceSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("sourceSnapshot"));
         }
         //      C# -> VsphereVm? SourceVm
         // GraphQL -> sourceVm: VsphereVm (type)
-        if (this.SourceVm == null && Exploration.Includes(parent + ".sourceVm"))
+        if (this.SourceVm == null && ec.Includes("sourceVm",false))
         {
             this.SourceVm = new VsphereVm();
-            this.SourceVm.ApplyExploratoryFieldSpec(parent + ".sourceVm");
+            this.SourceVm.ApplyExploratoryFieldSpec(ec.NewChild("sourceVm"));
         }
     }
 
@@ -402,12 +401,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VsphereLiveMount> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VsphereLiveMount());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VsphereLiveMount> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

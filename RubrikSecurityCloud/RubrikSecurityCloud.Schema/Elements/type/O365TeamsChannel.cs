@@ -132,42 +132,41 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ChannelMembershipType? MembershipType
         // GraphQL -> membershipType: ChannelMembershipType (enum)
-        if (this.MembershipType == null && Exploration.Includes(parent + ".membershipType", true))
+        if (this.MembershipType == null && ec.Includes("membershipType",true))
         {
             this.MembershipType = new ChannelMembershipType();
         }
         //      C# -> System.String? FolderId
         // GraphQL -> folderId: String (scalar)
-        if (this.FolderId == null && Exploration.Includes(parent + ".folderId", true))
+        if (this.FolderId == null && ec.Includes("folderId",true))
         {
             this.FolderId = "FETCH";
         }
         //      C# -> System.String? FolderName
         // GraphQL -> folderName: String (scalar)
-        if (this.FolderName == null && Exploration.Includes(parent + ".folderName", true))
+        if (this.FolderName == null && ec.Includes("folderName",true))
         {
             this.FolderName = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? NaturalId
         // GraphQL -> naturalId: String (scalar)
-        if (this.NaturalId == null && Exploration.Includes(parent + ".naturalId", true))
+        if (this.NaturalId == null && ec.Includes("naturalId",true))
         {
             this.NaturalId = "FETCH";
         }
@@ -203,12 +202,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<O365TeamsChannel> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new O365TeamsChannel());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<O365TeamsChannel> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> VirtualMachineFileType? FileType
         // GraphQL -> fileType: VirtualMachineFileType! (enum)
-        if (this.FileType == null && Exploration.Includes(parent + ".fileType", true))
+        if (this.FileType == null && ec.Includes("fileType",true))
         {
             this.FileType = new VirtualMachineFileType();
         }
         //      C# -> System.String? FileName
         // GraphQL -> fileName: String! (scalar)
-        if (this.FileName == null && Exploration.Includes(parent + ".fileName", true))
+        if (this.FileName == null && ec.Includes("fileName",true))
         {
             this.FileName = "FETCH";
         }
         //      C# -> System.Int64? SizeInBytes
         // GraphQL -> sizeInBytes: Long! (scalar)
-        if (this.SizeInBytes == null && Exploration.Includes(parent + ".sizeInBytes", true))
+        if (this.SizeInBytes == null && ec.Includes("sizeInBytes",true))
         {
             this.SizeInBytes = new System.Int64();
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VirtualMachineFileInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VirtualMachineFileInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VirtualMachineFileInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

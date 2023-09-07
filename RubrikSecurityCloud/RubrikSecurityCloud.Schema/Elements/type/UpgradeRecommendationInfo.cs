@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? NextReleaseRecommendation
         // GraphQL -> nextReleaseRecommendation: String! (scalar)
-        if (this.NextReleaseRecommendation == null && Exploration.Includes(parent + ".nextReleaseRecommendation", true))
+        if (this.NextReleaseRecommendation == null && ec.Includes("nextReleaseRecommendation",true))
         {
             this.NextReleaseRecommendation = "FETCH";
         }
         //      C# -> System.String? Recommendation
         // GraphQL -> recommendation: String! (scalar)
-        if (this.Recommendation == null && Exploration.Includes(parent + ".recommendation", true))
+        if (this.Recommendation == null && ec.Includes("recommendation",true))
         {
             this.Recommendation = "FETCH";
         }
         //      C# -> List<System.String>? Upgradability
         // GraphQL -> upgradability: [String!]! (scalar)
-        if (this.Upgradability == null && Exploration.Includes(parent + ".upgradability", true))
+        if (this.Upgradability == null && ec.Includes("upgradability",true))
         {
             this.Upgradability = new List<System.String>();
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<UpgradeRecommendationInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new UpgradeRecommendationInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<UpgradeRecommendationInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

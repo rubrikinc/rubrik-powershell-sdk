@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? IsExcludedFromSnapshot
         // GraphQL -> isExcludedFromSnapshot: Boolean! (scalar)
-        if (this.IsExcludedFromSnapshot == null && Exploration.Includes(parent + ".isExcludedFromSnapshot", true))
+        if (this.IsExcludedFromSnapshot == null && ec.Includes("isExcludedFromSnapshot",true))
         {
             this.IsExcludedFromSnapshot = true;
         }
         //      C# -> System.Boolean? IsOsDisk
         // GraphQL -> isOsDisk: Boolean! (scalar)
-        if (this.IsOsDisk == null && Exploration.Includes(parent + ".isOsDisk", true))
+        if (this.IsOsDisk == null && ec.Includes("isOsDisk",true))
         {
             this.IsOsDisk = true;
         }
         //      C# -> System.Int32? Lun
         // GraphQL -> lun: Int! (scalar)
-        if (this.Lun == null && Exploration.Includes(parent + ".lun", true))
+        if (this.Lun == null && ec.Includes("lun",true))
         {
             this.Lun = Int32.MinValue;
         }
         //      C# -> System.String? ManagedDiskId
         // GraphQL -> managedDiskId: String! (scalar)
-        if (this.ManagedDiskId == null && Exploration.Includes(parent + ".managedDiskId", true))
+        if (this.ManagedDiskId == null && ec.Includes("managedDiskId",true))
         {
             this.ManagedDiskId = "FETCH";
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AttachmentSpecsForVirtualMachine> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AttachmentSpecsForVirtualMachine());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AttachmentSpecsForVirtualMachine> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

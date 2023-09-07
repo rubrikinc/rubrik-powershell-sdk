@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> AwsCloudAccount? AwsAccount
         // GraphQL -> awsAccount: AwsCloudAccount (type)
-        if (this.AwsAccount == null && Exploration.Includes(parent + ".awsAccount"))
+        if (this.AwsAccount == null && ec.Includes("awsAccount",false))
         {
             this.AwsAccount = new AwsCloudAccount();
-            this.AwsAccount.ApplyExploratoryFieldSpec(parent + ".awsAccount");
+            this.AwsAccount.ApplyExploratoryFieldSpec(ec.NewChild("awsAccount"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AddAwsIamUserBasedCloudAccountReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AddAwsIamUserBasedCloudAccountReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AddAwsIamUserBasedCloudAccountReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

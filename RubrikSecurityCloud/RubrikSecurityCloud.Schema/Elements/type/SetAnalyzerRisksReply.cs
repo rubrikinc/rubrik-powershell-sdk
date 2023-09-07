@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<Analyzer>? Analyzers
         // GraphQL -> analyzers: [Analyzer!]! (type)
-        if (this.Analyzers == null && Exploration.Includes(parent + ".analyzers"))
+        if (this.Analyzers == null && ec.Includes("analyzers",false))
         {
             this.Analyzers = new List<Analyzer>();
-            this.Analyzers.ApplyExploratoryFieldSpec(parent + ".analyzers");
+            this.Analyzers.ApplyExploratoryFieldSpec(ec.NewChild("analyzers"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SetAnalyzerRisksReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SetAnalyzerRisksReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SetAnalyzerRisksReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

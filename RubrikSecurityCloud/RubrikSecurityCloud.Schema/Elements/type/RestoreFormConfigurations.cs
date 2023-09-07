@@ -319,120 +319,119 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<RestoreFormConfigurationGuestOs>? GuestOsCredentials
         // GraphQL -> guestOsCredentials: [RestoreFormConfigurationGuestOs!]! (type)
-        if (this.GuestOsCredentials == null && Exploration.Includes(parent + ".guestOsCredentials"))
+        if (this.GuestOsCredentials == null && ec.Includes("guestOsCredentials",false))
         {
             this.GuestOsCredentials = new List<RestoreFormConfigurationGuestOs>();
-            this.GuestOsCredentials.ApplyExploratoryFieldSpec(parent + ".guestOsCredentials");
+            this.GuestOsCredentials.ApplyExploratoryFieldSpec(ec.NewChild("guestOsCredentials"));
         }
         //      C# -> List<RestoreFormConfigurationKmipServer>? KmipServers
         // GraphQL -> kmipServers: [RestoreFormConfigurationKmipServer!]! (type)
-        if (this.KmipServers == null && Exploration.Includes(parent + ".kmipServers"))
+        if (this.KmipServers == null && ec.Includes("kmipServers",false))
         {
             this.KmipServers = new List<RestoreFormConfigurationKmipServer>();
-            this.KmipServers.ApplyExploratoryFieldSpec(parent + ".kmipServers");
+            this.KmipServers.ApplyExploratoryFieldSpec(ec.NewChild("kmipServers"));
         }
         //      C# -> List<RestoreFormConfigurationLdapServer>? LdapServers
         // GraphQL -> ldapServers: [RestoreFormConfigurationLdapServer!]! (type)
-        if (this.LdapServers == null && Exploration.Includes(parent + ".ldapServers"))
+        if (this.LdapServers == null && ec.Includes("ldapServers",false))
         {
             this.LdapServers = new List<RestoreFormConfigurationLdapServer>();
-            this.LdapServers.ApplyExploratoryFieldSpec(parent + ".ldapServers");
+            this.LdapServers.ApplyExploratoryFieldSpec(ec.NewChild("ldapServers"));
         }
         //      C# -> List<RestoreFormConfigurationNasHost>? NasHosts
         // GraphQL -> nasHosts: [RestoreFormConfigurationNasHost!]! (type)
-        if (this.NasHosts == null && Exploration.Includes(parent + ".nasHosts"))
+        if (this.NasHosts == null && ec.Includes("nasHosts",false))
         {
             this.NasHosts = new List<RestoreFormConfigurationNasHost>();
-            this.NasHosts.ApplyExploratoryFieldSpec(parent + ".nasHosts");
+            this.NasHosts.ApplyExploratoryFieldSpec(ec.NewChild("nasHosts"));
         }
         //      C# -> List<RestoreFormConfigurationObjectStoreArchivalLocation>? ObjectStoreArchivalLocations
         // GraphQL -> objectStoreArchivalLocations: [RestoreFormConfigurationObjectStoreArchivalLocation!]! (type)
-        if (this.ObjectStoreArchivalLocations == null && Exploration.Includes(parent + ".objectStoreArchivalLocations"))
+        if (this.ObjectStoreArchivalLocations == null && ec.Includes("objectStoreArchivalLocations",false))
         {
             this.ObjectStoreArchivalLocations = new List<RestoreFormConfigurationObjectStoreArchivalLocation>();
-            this.ObjectStoreArchivalLocations.ApplyExploratoryFieldSpec(parent + ".objectStoreArchivalLocations");
+            this.ObjectStoreArchivalLocations.ApplyExploratoryFieldSpec(ec.NewChild("objectStoreArchivalLocations"));
         }
         //      C# -> List<RestoreFormConfigurationOrganization>? Organizations
         // GraphQL -> organizations: [RestoreFormConfigurationOrganization!]! (type)
-        if (this.Organizations == null && Exploration.Includes(parent + ".organizations"))
+        if (this.Organizations == null && ec.Includes("organizations",false))
         {
             this.Organizations = new List<RestoreFormConfigurationOrganization>();
-            this.Organizations.ApplyExploratoryFieldSpec(parent + ".organizations");
+            this.Organizations.ApplyExploratoryFieldSpec(ec.NewChild("organizations"));
         }
         //      C# -> List<RestoreFormConfigurationReplicationTarget>? ReplicationTargets
         // GraphQL -> replicationTargets: [RestoreFormConfigurationReplicationTarget!]! (type)
-        if (this.ReplicationTargets == null && Exploration.Includes(parent + ".replicationTargets"))
+        if (this.ReplicationTargets == null && ec.Includes("replicationTargets",false))
         {
             this.ReplicationTargets = new List<RestoreFormConfigurationReplicationTarget>();
-            this.ReplicationTargets.ApplyExploratoryFieldSpec(parent + ".replicationTargets");
+            this.ReplicationTargets.ApplyExploratoryFieldSpec(ec.NewChild("replicationTargets"));
         }
         //      C# -> List<RestoreFormConfigurationReport>? Reports
         // GraphQL -> reports: [RestoreFormConfigurationReport!]! (type)
-        if (this.Reports == null && Exploration.Includes(parent + ".reports"))
+        if (this.Reports == null && ec.Includes("reports",false))
         {
             this.Reports = new List<RestoreFormConfigurationReport>();
-            this.Reports.ApplyExploratoryFieldSpec(parent + ".reports");
+            this.Reports.ApplyExploratoryFieldSpec(ec.NewChild("reports"));
         }
         //      C# -> List<RestoreFormConfigurationRole>? Roles
         // GraphQL -> roles: [RestoreFormConfigurationRole!]! (type)
-        if (this.Roles == null && Exploration.Includes(parent + ".roles"))
+        if (this.Roles == null && ec.Includes("roles",false))
         {
             this.Roles = new List<RestoreFormConfigurationRole>();
-            this.Roles.ApplyExploratoryFieldSpec(parent + ".roles");
+            this.Roles.ApplyExploratoryFieldSpec(ec.NewChild("roles"));
         }
         //      C# -> List<RestoreFormConfigurationS3ArchivalLocation>? S3ArchivalLocations
         // GraphQL -> s3ArchivalLocations: [RestoreFormConfigurationS3ArchivalLocation!]! (type)
-        if (this.S3ArchivalLocations == null && Exploration.Includes(parent + ".s3ArchivalLocations"))
+        if (this.S3ArchivalLocations == null && ec.Includes("s3ArchivalLocations",false))
         {
             this.S3ArchivalLocations = new List<RestoreFormConfigurationS3ArchivalLocation>();
-            this.S3ArchivalLocations.ApplyExploratoryFieldSpec(parent + ".s3ArchivalLocations");
+            this.S3ArchivalLocations.ApplyExploratoryFieldSpec(ec.NewChild("s3ArchivalLocations"));
         }
         //      C# -> List<RestoreFormConfigurationSlaDomain>? SlaDomains
         // GraphQL -> slaDomains: [RestoreFormConfigurationSlaDomain!]! (type)
-        if (this.SlaDomains == null && Exploration.Includes(parent + ".slaDomains"))
+        if (this.SlaDomains == null && ec.Includes("slaDomains",false))
         {
             this.SlaDomains = new List<RestoreFormConfigurationSlaDomain>();
-            this.SlaDomains.ApplyExploratoryFieldSpec(parent + ".slaDomains");
+            this.SlaDomains.ApplyExploratoryFieldSpec(ec.NewChild("slaDomains"));
         }
         //      C# -> List<RestoreFormConfigurationSmtp>? SmtpSettings
         // GraphQL -> smtpSettings: [RestoreFormConfigurationSmtp!]! (type)
-        if (this.SmtpSettings == null && Exploration.Includes(parent + ".smtpSettings"))
+        if (this.SmtpSettings == null && ec.Includes("smtpSettings",false))
         {
             this.SmtpSettings = new List<RestoreFormConfigurationSmtp>();
-            this.SmtpSettings.ApplyExploratoryFieldSpec(parent + ".smtpSettings");
+            this.SmtpSettings.ApplyExploratoryFieldSpec(ec.NewChild("smtpSettings"));
         }
         //      C# -> List<RestoreFormConfigurationSnmp>? SnmpSettings
         // GraphQL -> snmpSettings: [RestoreFormConfigurationSnmp!]! (type)
-        if (this.SnmpSettings == null && Exploration.Includes(parent + ".snmpSettings"))
+        if (this.SnmpSettings == null && ec.Includes("snmpSettings",false))
         {
             this.SnmpSettings = new List<RestoreFormConfigurationSnmp>();
-            this.SnmpSettings.ApplyExploratoryFieldSpec(parent + ".snmpSettings");
+            this.SnmpSettings.ApplyExploratoryFieldSpec(ec.NewChild("snmpSettings"));
         }
         //      C# -> List<RestoreFormConfigurationUser>? Users
         // GraphQL -> users: [RestoreFormConfigurationUser!]! (type)
-        if (this.Users == null && Exploration.Includes(parent + ".users"))
+        if (this.Users == null && ec.Includes("users",false))
         {
             this.Users = new List<RestoreFormConfigurationUser>();
-            this.Users.ApplyExploratoryFieldSpec(parent + ".users");
+            this.Users.ApplyExploratoryFieldSpec(ec.NewChild("users"));
         }
         //      C# -> List<RestoreFormConfigurationVcenterServer>? VcenterServers
         // GraphQL -> vcenterServers: [RestoreFormConfigurationVcenterServer!]! (type)
-        if (this.VcenterServers == null && Exploration.Includes(parent + ".vcenterServers"))
+        if (this.VcenterServers == null && ec.Includes("vcenterServers",false))
         {
             this.VcenterServers = new List<RestoreFormConfigurationVcenterServer>();
-            this.VcenterServers.ApplyExploratoryFieldSpec(parent + ".vcenterServers");
+            this.VcenterServers.ApplyExploratoryFieldSpec(ec.NewChild("vcenterServers"));
         }
         //      C# -> List<RestoreFormConfigurationWinAndUnixHost>? WinAndUnixHosts
         // GraphQL -> winAndUnixHosts: [RestoreFormConfigurationWinAndUnixHost!]! (type)
-        if (this.WinAndUnixHosts == null && Exploration.Includes(parent + ".winAndUnixHosts"))
+        if (this.WinAndUnixHosts == null && ec.Includes("winAndUnixHosts",false))
         {
             this.WinAndUnixHosts = new List<RestoreFormConfigurationWinAndUnixHost>();
-            this.WinAndUnixHosts.ApplyExploratoryFieldSpec(parent + ".winAndUnixHosts");
+            this.WinAndUnixHosts.ApplyExploratoryFieldSpec(ec.NewChild("winAndUnixHosts"));
         }
     }
 
@@ -466,12 +465,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RestoreFormConfigurations> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RestoreFormConfigurations());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<RestoreFormConfigurations> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

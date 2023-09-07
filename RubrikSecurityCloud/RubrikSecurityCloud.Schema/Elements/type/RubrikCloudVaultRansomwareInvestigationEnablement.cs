@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? Enabled
         // GraphQL -> enabled: Boolean! (scalar)
-        if (this.Enabled == null && Exploration.Includes(parent + ".enabled", true))
+        if (this.Enabled == null && ec.Includes("enabled",true))
         {
             this.Enabled = true;
         }
         //      C# -> RubrikCloudVaultLocation? Location
         // GraphQL -> location: RubrikCloudVaultLocation! (type)
-        if (this.Location == null && Exploration.Includes(parent + ".location"))
+        if (this.Location == null && ec.Includes("location",false))
         {
             this.Location = new RubrikCloudVaultLocation();
-            this.Location.ApplyExploratoryFieldSpec(parent + ".location");
+            this.Location.ApplyExploratoryFieldSpec(ec.NewChild("location"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RubrikCloudVaultRansomwareInvestigationEnablement> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RubrikCloudVaultRansomwareInvestigationEnablement());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<RubrikCloudVaultRansomwareInvestigationEnablement> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

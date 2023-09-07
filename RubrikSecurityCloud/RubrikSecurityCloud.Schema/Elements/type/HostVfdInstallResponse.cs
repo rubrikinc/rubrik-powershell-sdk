@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> HostVfdState? HostVfdDriverState
         // GraphQL -> hostVfdDriverState: HostVfdState! (enum)
-        if (this.HostVfdDriverState == null && Exploration.Includes(parent + ".hostVfdDriverState", true))
+        if (this.HostVfdDriverState == null && ec.Includes("hostVfdDriverState",true))
         {
             this.HostVfdDriverState = new HostVfdState();
         }
         //      C# -> System.String? ErrorInfo
         // GraphQL -> errorInfo: String (scalar)
-        if (this.ErrorInfo == null && Exploration.Includes(parent + ".errorInfo", true))
+        if (this.ErrorInfo == null && ec.Includes("errorInfo",true))
         {
             this.ErrorInfo = "FETCH";
         }
         //      C# -> System.String? HostId
         // GraphQL -> hostId: String! (scalar)
-        if (this.HostId == null && Exploration.Includes(parent + ".hostId", true))
+        if (this.HostId == null && ec.Includes("hostId",true))
         {
             this.HostId = "FETCH";
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<HostVfdInstallResponse> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new HostVfdInstallResponse());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<HostVfdInstallResponse> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

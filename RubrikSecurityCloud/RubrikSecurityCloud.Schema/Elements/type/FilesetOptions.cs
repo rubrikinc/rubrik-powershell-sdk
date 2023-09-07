@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? AllowBackupHiddenFoldersInNetworkMounts
         // GraphQL -> allowBackupHiddenFoldersInNetworkMounts: Boolean (scalar)
-        if (this.AllowBackupHiddenFoldersInNetworkMounts == null && Exploration.Includes(parent + ".allowBackupHiddenFoldersInNetworkMounts", true))
+        if (this.AllowBackupHiddenFoldersInNetworkMounts == null && ec.Includes("allowBackupHiddenFoldersInNetworkMounts",true))
         {
             this.AllowBackupHiddenFoldersInNetworkMounts = true;
         }
         //      C# -> System.Boolean? AllowBackupNetworkMounts
         // GraphQL -> allowBackupNetworkMounts: Boolean (scalar)
-        if (this.AllowBackupNetworkMounts == null && Exploration.Includes(parent + ".allowBackupNetworkMounts", true))
+        if (this.AllowBackupNetworkMounts == null && ec.Includes("allowBackupNetworkMounts",true))
         {
             this.AllowBackupNetworkMounts = true;
         }
         //      C# -> System.Boolean? UseWindowsVss
         // GraphQL -> useWindowsVss: Boolean (scalar)
-        if (this.UseWindowsVss == null && Exploration.Includes(parent + ".useWindowsVss", true))
+        if (this.UseWindowsVss == null && ec.Includes("useWindowsVss",true))
         {
             this.UseWindowsVss = true;
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<FilesetOptions> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new FilesetOptions());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<FilesetOptions> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

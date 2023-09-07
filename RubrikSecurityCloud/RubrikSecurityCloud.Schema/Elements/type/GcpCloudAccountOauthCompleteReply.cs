@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> GcpOauthUserInfo? UserInfo
         // GraphQL -> userInfo: GcpOauthUserInfo (type)
-        if (this.UserInfo == null && Exploration.Includes(parent + ".userInfo"))
+        if (this.UserInfo == null && ec.Includes("userInfo",false))
         {
             this.UserInfo = new GcpOauthUserInfo();
-            this.UserInfo.ApplyExploratoryFieldSpec(parent + ".userInfo");
+            this.UserInfo.ApplyExploratoryFieldSpec(ec.NewChild("userInfo"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GcpCloudAccountOauthCompleteReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GcpCloudAccountOauthCompleteReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<GcpCloudAccountOauthCompleteReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

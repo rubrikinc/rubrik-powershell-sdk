@@ -120,39 +120,38 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ScheduleFrequency? Frequency
         // GraphQL -> frequency: ScheduleFrequency! (enum)
-        if (this.Frequency == null && Exploration.Includes(parent + ".frequency", true))
+        if (this.Frequency == null && ec.Includes("frequency",true))
         {
             this.Frequency = new ScheduleFrequency();
         }
         //      C# -> List<System.String>? Recipients
         // GraphQL -> recipients: [String!]! (scalar)
-        if (this.Recipients == null && Exploration.Includes(parent + ".recipients", true))
+        if (this.Recipients == null && ec.Includes("recipients",true))
         {
             this.Recipients = new List<System.String>();
         }
         //      C# -> DateTime? StartRunTime
         // GraphQL -> startRunTime: DateTime (scalar)
-        if (this.StartRunTime == null && Exploration.Includes(parent + ".startRunTime", true))
+        if (this.StartRunTime == null && ec.Includes("startRunTime",true))
         {
             this.StartRunTime = new DateTime();
         }
         //      C# -> System.String? Timezone
         // GraphQL -> timezone: String! (scalar)
-        if (this.Timezone == null && Exploration.Includes(parent + ".timezone", true))
+        if (this.Timezone == null && ec.Includes("timezone",true))
         {
             this.Timezone = "FETCH";
         }
         //      C# -> RecoveryConfig? RecoveryConfig
         // GraphQL -> recoveryConfig: RecoveryConfig (type)
-        if (this.RecoveryConfig == null && Exploration.Includes(parent + ".recoveryConfig"))
+        if (this.RecoveryConfig == null && ec.Includes("recoveryConfig",false))
         {
             this.RecoveryConfig = new RecoveryConfig();
-            this.RecoveryConfig.ApplyExploratoryFieldSpec(parent + ".recoveryConfig");
+            this.RecoveryConfig.ApplyExploratoryFieldSpec(ec.NewChild("recoveryConfig"));
         }
     }
 
@@ -186,12 +185,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ScheduleInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ScheduleInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ScheduleInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

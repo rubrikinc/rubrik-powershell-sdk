@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? HashType
         // GraphQL -> hashType: String! (scalar)
-        if (this.HashType == null && Exploration.Includes(parent + ".hashType", true))
+        if (this.HashType == null && ec.Includes("hashType",true))
         {
             this.HashType = "FETCH";
         }
         //      C# -> System.String? HashValue
         // GraphQL -> hashValue: String! (scalar)
-        if (this.HashValue == null && Exploration.Includes(parent + ".hashValue", true))
+        if (this.HashValue == null && ec.Includes("hashValue",true))
         {
             this.HashValue = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<HashDetail> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new HashDetail());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<HashDetail> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

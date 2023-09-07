@@ -173,60 +173,59 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? DeviceName
         // GraphQL -> deviceName: String! (scalar)
-        if (this.DeviceName == null && Exploration.Includes(parent + ".deviceName", true))
+        if (this.DeviceName == null && ec.Includes("deviceName",true))
         {
             this.DeviceName = "FETCH";
         }
         //      C# -> System.String? DiskId
         // GraphQL -> diskId: String! (scalar)
-        if (this.DiskId == null && Exploration.Includes(parent + ".diskId", true))
+        if (this.DiskId == null && ec.Includes("diskId",true))
         {
             this.DiskId = "FETCH";
         }
         //      C# -> System.String? DiskName
         // GraphQL -> diskName: String! (scalar)
-        if (this.DiskName == null && Exploration.Includes(parent + ".diskName", true))
+        if (this.DiskName == null && ec.Includes("diskName",true))
         {
             this.DiskName = "FETCH";
         }
         //      C# -> System.String? InstanceId
         // GraphQL -> instanceId: String! (scalar)
-        if (this.InstanceId == null && Exploration.Includes(parent + ".instanceId", true))
+        if (this.InstanceId == null && ec.Includes("instanceId",true))
         {
             this.InstanceId = "FETCH";
         }
         //      C# -> System.String? InstanceName
         // GraphQL -> instanceName: String! (scalar)
-        if (this.InstanceName == null && Exploration.Includes(parent + ".instanceName", true))
+        if (this.InstanceName == null && ec.Includes("instanceName",true))
         {
             this.InstanceName = "FETCH";
         }
         //      C# -> System.String? InstanceZone
         // GraphQL -> instanceZone: String! (scalar)
-        if (this.InstanceZone == null && Exploration.Includes(parent + ".instanceZone", true))
+        if (this.InstanceZone == null && ec.Includes("instanceZone",true))
         {
             this.InstanceZone = "FETCH";
         }
         //      C# -> System.Boolean? IsBootDisk
         // GraphQL -> isBootDisk: Boolean! (scalar)
-        if (this.IsBootDisk == null && Exploration.Includes(parent + ".isBootDisk", true))
+        if (this.IsBootDisk == null && ec.Includes("isBootDisk",true))
         {
             this.IsBootDisk = true;
         }
         //      C# -> System.Boolean? IsExcluded
         // GraphQL -> isExcluded: Boolean! (scalar)
-        if (this.IsExcluded == null && Exploration.Includes(parent + ".isExcluded", true))
+        if (this.IsExcluded == null && ec.Includes("isExcluded",true))
         {
             this.IsExcluded = true;
         }
         //      C# -> System.Int32? SizeInGiBs
         // GraphQL -> sizeInGiBs: Int! (scalar)
-        if (this.SizeInGiBs == null && Exploration.Includes(parent + ".sizeInGiBs", true))
+        if (this.SizeInGiBs == null && ec.Includes("sizeInGiBs",true))
         {
             this.SizeInGiBs = Int32.MinValue;
         }
@@ -262,12 +261,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GcpNativeAttachmentDetails> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GcpNativeAttachmentDetails());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<GcpNativeAttachmentDetails> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

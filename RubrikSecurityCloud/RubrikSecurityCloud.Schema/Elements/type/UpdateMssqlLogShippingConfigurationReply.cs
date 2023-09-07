@@ -95,28 +95,27 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? ShouldDisconnectStandbyUsers
         // GraphQL -> shouldDisconnectStandbyUsers: Boolean (scalar)
-        if (this.ShouldDisconnectStandbyUsers == null && Exploration.Includes(parent + ".shouldDisconnectStandbyUsers", true))
+        if (this.ShouldDisconnectStandbyUsers == null && ec.Includes("shouldDisconnectStandbyUsers",true))
         {
             this.ShouldDisconnectStandbyUsers = true;
         }
         //      C# -> MssqlLogShippingLinks? Links
         // GraphQL -> links: MssqlLogShippingLinks (type)
-        if (this.Links == null && Exploration.Includes(parent + ".links"))
+        if (this.Links == null && ec.Includes("links",false))
         {
             this.Links = new MssqlLogShippingLinks();
-            this.Links.ApplyExploratoryFieldSpec(parent + ".links");
+            this.Links.ApplyExploratoryFieldSpec(ec.NewChild("links"));
         }
         //      C# -> MssqlLogShippingSummaryV2? MssqlLogShippingSummaryV2
         // GraphQL -> mssqlLogShippingSummaryV2: MssqlLogShippingSummaryV2 (type)
-        if (this.MssqlLogShippingSummaryV2 == null && Exploration.Includes(parent + ".mssqlLogShippingSummaryV2"))
+        if (this.MssqlLogShippingSummaryV2 == null && ec.Includes("mssqlLogShippingSummaryV2",false))
         {
             this.MssqlLogShippingSummaryV2 = new MssqlLogShippingSummaryV2();
-            this.MssqlLogShippingSummaryV2.ApplyExploratoryFieldSpec(parent + ".mssqlLogShippingSummaryV2");
+            this.MssqlLogShippingSummaryV2.ApplyExploratoryFieldSpec(ec.NewChild("mssqlLogShippingSummaryV2"));
         }
     }
 
@@ -150,12 +149,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<UpdateMssqlLogShippingConfigurationReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new UpdateMssqlLogShippingConfigurationReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<UpdateMssqlLogShippingConfigurationReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

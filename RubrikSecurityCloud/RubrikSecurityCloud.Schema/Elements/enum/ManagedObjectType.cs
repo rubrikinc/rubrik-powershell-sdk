@@ -351,6 +351,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "VSPHERE_DATACENTER")]
         VSPHERE_DATACENTER,
 
+        [EnumMember(Value = "VSPHERE_DATACENTER_FOLDER")]
+        VSPHERE_DATACENTER_FOLDER,
+
         [EnumMember(Value = "VSPHERE_DATASTORE")]
         VSPHERE_DATASTORE,
 

@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<SapHanaLogBackup>? Backups
         // GraphQL -> backups: [SapHanaLogBackup!] (type)
-        if (this.Backups == null && Exploration.Includes(parent + ".backups"))
+        if (this.Backups == null && ec.Includes("backups",false))
         {
             this.Backups = new List<SapHanaLogBackup>();
-            this.Backups.ApplyExploratoryFieldSpec(parent + ".backups");
+            this.Backups.ApplyExploratoryFieldSpec(ec.NewChild("backups"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SapHanaLogSnapshotAppMetadata> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SapHanaLogSnapshotAppMetadata());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SapHanaLogSnapshotAppMetadata> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? ChartTitle
         // GraphQL -> chartTitle: String! (scalar)
-        if (this.ChartTitle == null && Exploration.Includes(parent + ".chartTitle", true))
+        if (this.ChartTitle == null && ec.Includes("chartTitle",true))
         {
             this.ChartTitle = "FETCH";
         }
         //      C# -> System.String? DefaultName
         // GraphQL -> defaultName: String! (scalar)
-        if (this.DefaultName == null && Exploration.Includes(parent + ".defaultName", true))
+        if (this.DefaultName == null && ec.Includes("defaultName",true))
         {
             this.DefaultName = "FETCH";
         }
         //      C# -> System.String? TableTitle
         // GraphQL -> tableTitle: String! (scalar)
-        if (this.TableTitle == null && Exploration.Includes(parent + ".tableTitle", true))
+        if (this.TableTitle == null && ec.Includes("tableTitle",true))
         {
             this.TableTitle = "FETCH";
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PolarisReportSchemaConfig> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PolarisReportSchemaConfig());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<PolarisReportSchemaConfig> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

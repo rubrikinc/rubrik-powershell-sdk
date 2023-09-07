@@ -247,92 +247,91 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> RiskLevelType? RiskLevel
         // GraphQL -> riskLevel: RiskLevelType! (enum)
-        if (this.RiskLevel == null && Exploration.Includes(parent + ".riskLevel", true))
+        if (this.RiskLevel == null && ec.Includes("riskLevel",true))
         {
             this.RiskLevel = new RiskLevelType();
         }
         //      C# -> System.String? DomainId
         // GraphQL -> domainId: String! (scalar)
-        if (this.DomainId == null && Exploration.Includes(parent + ".domainId", true))
+        if (this.DomainId == null && ec.Includes("domainId",true))
         {
             this.DomainId = "FETCH";
         }
         //      C# -> System.String? DomainName
         // GraphQL -> domainName: String! (scalar)
-        if (this.DomainName == null && Exploration.Includes(parent + ".domainName", true))
+        if (this.DomainName == null && ec.Includes("domainName",true))
         {
             this.DomainName = "FETCH";
         }
         //      C# -> System.String? FullName
         // GraphQL -> fullName: String! (scalar)
-        if (this.FullName == null && Exploration.Includes(parent + ".fullName", true))
+        if (this.FullName == null && ec.Includes("fullName",true))
         {
             this.FullName = "FETCH";
         }
         //      C# -> System.Int32? NumDescendants
         // GraphQL -> numDescendants: Int! (scalar)
-        if (this.NumDescendants == null && Exploration.Includes(parent + ".numDescendants", true))
+        if (this.NumDescendants == null && ec.Includes("numDescendants",true))
         {
             this.NumDescendants = Int32.MinValue;
         }
         //      C# -> System.String? PrincipalId
         // GraphQL -> principalId: String! (scalar)
-        if (this.PrincipalId == null && Exploration.Includes(parent + ".principalId", true))
+        if (this.PrincipalId == null && ec.Includes("principalId",true))
         {
             this.PrincipalId = "FETCH";
         }
         //      C# -> System.String? Upn
         // GraphQL -> upn: String! (scalar)
-        if (this.Upn == null && Exploration.Includes(parent + ".upn", true))
+        if (this.Upn == null && ec.Includes("upn",true))
         {
             this.Upn = "FETCH";
         }
         //      C# -> SensitiveFiles? DeltaSensitiveFiles
         // GraphQL -> deltaSensitiveFiles: SensitiveFiles (type)
-        if (this.DeltaSensitiveFiles == null && Exploration.Includes(parent + ".deltaSensitiveFiles"))
+        if (this.DeltaSensitiveFiles == null && ec.Includes("deltaSensitiveFiles",false))
         {
             this.DeltaSensitiveFiles = new SensitiveFiles();
-            this.DeltaSensitiveFiles.ApplyExploratoryFieldSpec(parent + ".deltaSensitiveFiles");
+            this.DeltaSensitiveFiles.ApplyExploratoryFieldSpec(ec.NewChild("deltaSensitiveFiles"));
         }
         //      C# -> SummaryHits? DeltaSensitiveHits
         // GraphQL -> deltaSensitiveHits: SummaryHits (type)
-        if (this.DeltaSensitiveHits == null && Exploration.Includes(parent + ".deltaSensitiveHits"))
+        if (this.DeltaSensitiveHits == null && ec.Includes("deltaSensitiveHits",false))
         {
             this.DeltaSensitiveHits = new SummaryHits();
-            this.DeltaSensitiveHits.ApplyExploratoryFieldSpec(parent + ".deltaSensitiveHits");
+            this.DeltaSensitiveHits.ApplyExploratoryFieldSpec(ec.NewChild("deltaSensitiveHits"));
         }
         //      C# -> PrincipalRiskReasons? RiskReasons
         // GraphQL -> riskReasons: PrincipalRiskReasons (type)
-        if (this.RiskReasons == null && Exploration.Includes(parent + ".riskReasons"))
+        if (this.RiskReasons == null && ec.Includes("riskReasons",false))
         {
             this.RiskReasons = new PrincipalRiskReasons();
-            this.RiskReasons.ApplyExploratoryFieldSpec(parent + ".riskReasons");
+            this.RiskReasons.ApplyExploratoryFieldSpec(ec.NewChild("riskReasons"));
         }
         //      C# -> SensitiveFiles? SensitiveFiles
         // GraphQL -> sensitiveFiles: SensitiveFiles (type)
-        if (this.SensitiveFiles == null && Exploration.Includes(parent + ".sensitiveFiles"))
+        if (this.SensitiveFiles == null && ec.Includes("sensitiveFiles",false))
         {
             this.SensitiveFiles = new SensitiveFiles();
-            this.SensitiveFiles.ApplyExploratoryFieldSpec(parent + ".sensitiveFiles");
+            this.SensitiveFiles.ApplyExploratoryFieldSpec(ec.NewChild("sensitiveFiles"));
         }
         //      C# -> SummaryCount? SensitiveObjectCount
         // GraphQL -> sensitiveObjectCount: SummaryCount (type)
-        if (this.SensitiveObjectCount == null && Exploration.Includes(parent + ".sensitiveObjectCount"))
+        if (this.SensitiveObjectCount == null && ec.Includes("sensitiveObjectCount",false))
         {
             this.SensitiveObjectCount = new SummaryCount();
-            this.SensitiveObjectCount.ApplyExploratoryFieldSpec(parent + ".sensitiveObjectCount");
+            this.SensitiveObjectCount.ApplyExploratoryFieldSpec(ec.NewChild("sensitiveObjectCount"));
         }
         //      C# -> SummaryHits? TotalSensitiveHits
         // GraphQL -> totalSensitiveHits: SummaryHits (type)
-        if (this.TotalSensitiveHits == null && Exploration.Includes(parent + ".totalSensitiveHits"))
+        if (this.TotalSensitiveHits == null && ec.Includes("totalSensitiveHits",false))
         {
             this.TotalSensitiveHits = new SummaryHits();
-            this.TotalSensitiveHits.ApplyExploratoryFieldSpec(parent + ".totalSensitiveHits");
+            this.TotalSensitiveHits.ApplyExploratoryFieldSpec(ec.NewChild("totalSensitiveHits"));
         }
     }
 
@@ -366,12 +365,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PrincipalSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PrincipalSummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<PrincipalSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -81,22 +81,21 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> BlackoutWindowStatus? BlackoutWindowStatus
         // GraphQL -> blackoutWindowStatus: BlackoutWindowStatus (type)
-        if (this.BlackoutWindowStatus == null && Exploration.Includes(parent + ".blackoutWindowStatus"))
+        if (this.BlackoutWindowStatus == null && ec.Includes("blackoutWindowStatus",false))
         {
             this.BlackoutWindowStatus = new BlackoutWindowStatus();
-            this.BlackoutWindowStatus.ApplyExploratoryFieldSpec(parent + ".blackoutWindowStatus");
+            this.BlackoutWindowStatus.ApplyExploratoryFieldSpec(ec.NewChild("blackoutWindowStatus"));
         }
         //      C# -> BlackoutWindows? BlackoutWindows
         // GraphQL -> blackoutWindows: BlackoutWindows (type)
-        if (this.BlackoutWindows == null && Exploration.Includes(parent + ".blackoutWindows"))
+        if (this.BlackoutWindows == null && ec.Includes("blackoutWindows",false))
         {
             this.BlackoutWindows = new BlackoutWindows();
-            this.BlackoutWindows.ApplyExploratoryFieldSpec(parent + ".blackoutWindows");
+            this.BlackoutWindows.ApplyExploratoryFieldSpec(ec.NewChild("blackoutWindows"));
         }
     }
 
@@ -130,12 +129,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<BlackoutWindowResponseInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new BlackoutWindowResponseInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<BlackoutWindowResponseInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

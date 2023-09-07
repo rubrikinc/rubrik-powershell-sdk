@@ -81,22 +81,21 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> AsyncRequestStatus? AsyncRequestStatus
         // GraphQL -> asyncRequestStatus: AsyncRequestStatus (type)
-        if (this.AsyncRequestStatus == null && Exploration.Includes(parent + ".asyncRequestStatus"))
+        if (this.AsyncRequestStatus == null && ec.Includes("asyncRequestStatus",false))
         {
             this.AsyncRequestStatus = new AsyncRequestStatus();
-            this.AsyncRequestStatus.ApplyExploratoryFieldSpec(parent + ".asyncRequestStatus");
+            this.AsyncRequestStatus.ApplyExploratoryFieldSpec(ec.NewChild("asyncRequestStatus"));
         }
         //      C# -> Db2InstanceSummary? Db2InstanceSummary
         // GraphQL -> db2InstanceSummary: Db2InstanceSummary (type)
-        if (this.Db2InstanceSummary == null && Exploration.Includes(parent + ".db2InstanceSummary"))
+        if (this.Db2InstanceSummary == null && ec.Includes("db2InstanceSummary",false))
         {
             this.Db2InstanceSummary = new Db2InstanceSummary();
-            this.Db2InstanceSummary.ApplyExploratoryFieldSpec(parent + ".db2InstanceSummary");
+            this.Db2InstanceSummary.ApplyExploratoryFieldSpec(ec.NewChild("db2InstanceSummary"));
         }
     }
 
@@ -130,12 +129,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PatchDb2InstanceReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PatchDb2InstanceReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<PatchDb2InstanceReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

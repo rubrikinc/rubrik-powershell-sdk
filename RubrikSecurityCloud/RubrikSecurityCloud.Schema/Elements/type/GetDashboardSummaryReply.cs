@@ -81,22 +81,21 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<AnalyzerResult>? AnalyzerResults
         // GraphQL -> analyzerResults: [AnalyzerResult!]! (type)
-        if (this.AnalyzerResults == null && Exploration.Includes(parent + ".analyzerResults"))
+        if (this.AnalyzerResults == null && ec.Includes("analyzerResults",false))
         {
             this.AnalyzerResults = new List<AnalyzerResult>();
-            this.AnalyzerResults.ApplyExploratoryFieldSpec(parent + ".analyzerResults");
+            this.AnalyzerResults.ApplyExploratoryFieldSpec(ec.NewChild("analyzerResults"));
         }
         //      C# -> List<AnalyzerGroupResult>? PolicyResults
         // GraphQL -> policyResults: [AnalyzerGroupResult!]! (type)
-        if (this.PolicyResults == null && Exploration.Includes(parent + ".policyResults"))
+        if (this.PolicyResults == null && ec.Includes("policyResults",false))
         {
             this.PolicyResults = new List<AnalyzerGroupResult>();
-            this.PolicyResults.ApplyExploratoryFieldSpec(parent + ".policyResults");
+            this.PolicyResults.ApplyExploratoryFieldSpec(ec.NewChild("policyResults"));
         }
     }
 
@@ -130,12 +129,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GetDashboardSummaryReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GetDashboardSummaryReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<GetDashboardSummaryReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -162,57 +162,56 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int32? Analyzers
         // GraphQL -> analyzers: Int! (scalar)
-        if (this.Analyzers == null && Exploration.Includes(parent + ".analyzers", true))
+        if (this.Analyzers == null && ec.Includes("analyzers",true))
         {
             this.Analyzers = Int32.MinValue;
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
-        if (this.Description == null && Exploration.Includes(parent + ".description", true))
+        if (this.Description == null && ec.Includes("description",true))
         {
             this.Description = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.Int64? LastUpdatedTime
         // GraphQL -> lastUpdatedTime: Long! (scalar)
-        if (this.LastUpdatedTime == null && Exploration.Includes(parent + ".lastUpdatedTime", true))
+        if (this.LastUpdatedTime == null && ec.Includes("lastUpdatedTime",true))
         {
             this.LastUpdatedTime = new System.Int64();
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.Int32? PendingAnalysisObjects
         // GraphQL -> pendingAnalysisObjects: Int! (scalar)
-        if (this.PendingAnalysisObjects == null && Exploration.Includes(parent + ".pendingAnalysisObjects", true))
+        if (this.PendingAnalysisObjects == null && ec.Includes("pendingAnalysisObjects",true))
         {
             this.PendingAnalysisObjects = Int32.MinValue;
         }
         //      C# -> System.Int32? TotalObjects
         // GraphQL -> totalObjects: Int! (scalar)
-        if (this.TotalObjects == null && Exploration.Includes(parent + ".totalObjects", true))
+        if (this.TotalObjects == null && ec.Includes("totalObjects",true))
         {
             this.TotalObjects = Int32.MinValue;
         }
         //      C# -> User? Creator
         // GraphQL -> creator: User (type)
-        if (this.Creator == null && Exploration.Includes(parent + ".creator"))
+        if (this.Creator == null && ec.Includes("creator",false))
         {
             this.Creator = new User();
-            this.Creator.ApplyExploratoryFieldSpec(parent + ".creator");
+            this.Creator.ApplyExploratoryFieldSpec(ec.NewChild("creator"));
         }
     }
 
@@ -246,12 +245,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PolicyDetail> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PolicyDetail());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<PolicyDetail> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

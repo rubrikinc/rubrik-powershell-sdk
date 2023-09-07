@@ -109,34 +109,33 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
-        if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
+        if (this.ClusterUuid == null && ec.Includes("clusterUuid",true))
         {
             this.ClusterUuid = "FETCH";
         }
         //      C# -> System.String? Error
         // GraphQL -> error: String! (scalar)
-        if (this.Error == null && Exploration.Includes(parent + ".error", true))
+        if (this.Error == null && ec.Includes("error",true))
         {
             this.Error = "FETCH";
         }
         //      C# -> ClusterWebSignedCertificateReply? CertInfo
         // GraphQL -> certInfo: ClusterWebSignedCertificateReply (type)
-        if (this.CertInfo == null && Exploration.Includes(parent + ".certInfo"))
+        if (this.CertInfo == null && ec.Includes("certInfo",false))
         {
             this.CertInfo = new ClusterWebSignedCertificateReply();
-            this.CertInfo.ApplyExploratoryFieldSpec(parent + ".certInfo");
+            this.CertInfo.ApplyExploratoryFieldSpec(ec.NewChild("certInfo"));
         }
         //      C# -> ModifyIpmiReply? IpmiInfo
         // GraphQL -> ipmiInfo: ModifyIpmiReply (type)
-        if (this.IpmiInfo == null && Exploration.Includes(parent + ".ipmiInfo"))
+        if (this.IpmiInfo == null && ec.Includes("ipmiInfo",false))
         {
             this.IpmiInfo = new ModifyIpmiReply();
-            this.IpmiInfo.ApplyExploratoryFieldSpec(parent + ".ipmiInfo");
+            this.IpmiInfo.ApplyExploratoryFieldSpec(ec.NewChild("ipmiInfo"));
         }
     }
 
@@ -170,12 +169,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ClusterWebCertAndIpmi> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ClusterWebCertAndIpmi());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ClusterWebCertAndIpmi> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -61,12 +61,11 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> RegisteredMode? NewRegisteredMode
         // GraphQL -> newRegisteredMode: RegisteredMode! (enum)
-        if (this.NewRegisteredMode == null && Exploration.Includes(parent + ".newRegisteredMode", true))
+        if (this.NewRegisteredMode == null && ec.Includes("newRegisteredMode",true))
         {
             this.NewRegisteredMode = new RegisteredMode();
         }
@@ -102,12 +101,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<UpdateClusterRegisteredModeReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new UpdateClusterRegisteredModeReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<UpdateClusterRegisteredModeReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

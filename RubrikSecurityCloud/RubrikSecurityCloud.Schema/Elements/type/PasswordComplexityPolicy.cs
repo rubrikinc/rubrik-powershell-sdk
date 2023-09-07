@@ -166,57 +166,56 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> PasswordComplexityPolicyTemplate? LengthPolicy
         // GraphQL -> lengthPolicy: PasswordComplexityPolicyTemplate (type)
-        if (this.LengthPolicy == null && Exploration.Includes(parent + ".lengthPolicy"))
+        if (this.LengthPolicy == null && ec.Includes("lengthPolicy",false))
         {
             this.LengthPolicy = new PasswordComplexityPolicyTemplate();
-            this.LengthPolicy.ApplyExploratoryFieldSpec(parent + ".lengthPolicy");
+            this.LengthPolicy.ApplyExploratoryFieldSpec(ec.NewChild("lengthPolicy"));
         }
         //      C# -> PasswordComplexityPolicyTemplate? LowercasePolicy
         // GraphQL -> lowercasePolicy: PasswordComplexityPolicyTemplate (type)
-        if (this.LowercasePolicy == null && Exploration.Includes(parent + ".lowercasePolicy"))
+        if (this.LowercasePolicy == null && ec.Includes("lowercasePolicy",false))
         {
             this.LowercasePolicy = new PasswordComplexityPolicyTemplate();
-            this.LowercasePolicy.ApplyExploratoryFieldSpec(parent + ".lowercasePolicy");
+            this.LowercasePolicy.ApplyExploratoryFieldSpec(ec.NewChild("lowercasePolicy"));
         }
         //      C# -> PasswordComplexityPolicyTemplate? NumericPolicy
         // GraphQL -> numericPolicy: PasswordComplexityPolicyTemplate (type)
-        if (this.NumericPolicy == null && Exploration.Includes(parent + ".numericPolicy"))
+        if (this.NumericPolicy == null && ec.Includes("numericPolicy",false))
         {
             this.NumericPolicy = new PasswordComplexityPolicyTemplate();
-            this.NumericPolicy.ApplyExploratoryFieldSpec(parent + ".numericPolicy");
+            this.NumericPolicy.ApplyExploratoryFieldSpec(ec.NewChild("numericPolicy"));
         }
         //      C# -> PasswordComplexityPolicyTemplate? PasswordExpirationPolicy
         // GraphQL -> passwordExpirationPolicy: PasswordComplexityPolicyTemplate (type)
-        if (this.PasswordExpirationPolicy == null && Exploration.Includes(parent + ".passwordExpirationPolicy"))
+        if (this.PasswordExpirationPolicy == null && ec.Includes("passwordExpirationPolicy",false))
         {
             this.PasswordExpirationPolicy = new PasswordComplexityPolicyTemplate();
-            this.PasswordExpirationPolicy.ApplyExploratoryFieldSpec(parent + ".passwordExpirationPolicy");
+            this.PasswordExpirationPolicy.ApplyExploratoryFieldSpec(ec.NewChild("passwordExpirationPolicy"));
         }
         //      C# -> PasswordComplexityPolicyTemplate? PasswordReusePolicy
         // GraphQL -> passwordReusePolicy: PasswordComplexityPolicyTemplate (type)
-        if (this.PasswordReusePolicy == null && Exploration.Includes(parent + ".passwordReusePolicy"))
+        if (this.PasswordReusePolicy == null && ec.Includes("passwordReusePolicy",false))
         {
             this.PasswordReusePolicy = new PasswordComplexityPolicyTemplate();
-            this.PasswordReusePolicy.ApplyExploratoryFieldSpec(parent + ".passwordReusePolicy");
+            this.PasswordReusePolicy.ApplyExploratoryFieldSpec(ec.NewChild("passwordReusePolicy"));
         }
         //      C# -> PasswordComplexityPolicyTemplate? SpecialCharsPolicy
         // GraphQL -> specialCharsPolicy: PasswordComplexityPolicyTemplate (type)
-        if (this.SpecialCharsPolicy == null && Exploration.Includes(parent + ".specialCharsPolicy"))
+        if (this.SpecialCharsPolicy == null && ec.Includes("specialCharsPolicy",false))
         {
             this.SpecialCharsPolicy = new PasswordComplexityPolicyTemplate();
-            this.SpecialCharsPolicy.ApplyExploratoryFieldSpec(parent + ".specialCharsPolicy");
+            this.SpecialCharsPolicy.ApplyExploratoryFieldSpec(ec.NewChild("specialCharsPolicy"));
         }
         //      C# -> PasswordComplexityPolicyTemplate? UppercasePolicy
         // GraphQL -> uppercasePolicy: PasswordComplexityPolicyTemplate (type)
-        if (this.UppercasePolicy == null && Exploration.Includes(parent + ".uppercasePolicy"))
+        if (this.UppercasePolicy == null && ec.Includes("uppercasePolicy",false))
         {
             this.UppercasePolicy = new PasswordComplexityPolicyTemplate();
-            this.UppercasePolicy.ApplyExploratoryFieldSpec(parent + ".uppercasePolicy");
+            this.UppercasePolicy.ApplyExploratoryFieldSpec(ec.NewChild("uppercasePolicy"));
         }
     }
 
@@ -250,12 +249,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PasswordComplexityPolicy> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PasswordComplexityPolicy());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<PasswordComplexityPolicy> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

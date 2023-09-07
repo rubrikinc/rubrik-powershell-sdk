@@ -117,36 +117,35 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Arn
         // GraphQL -> arn: String! (scalar)
-        if (this.Arn == null && Exploration.Includes(parent + ".arn", true))
+        if (this.Arn == null && ec.Includes("arn",true))
         {
             this.Arn = "FETCH";
         }
         //      C# -> System.String? Engine
         // GraphQL -> engine: String! (scalar)
-        if (this.Engine == null && Exploration.Includes(parent + ".engine", true))
+        if (this.Engine == null && ec.Includes("engine",true))
         {
             this.Engine = "FETCH";
         }
         //      C# -> System.String? MajorEngineVersion
         // GraphQL -> majorEngineVersion: String! (scalar)
-        if (this.MajorEngineVersion == null && Exploration.Includes(parent + ".majorEngineVersion", true))
+        if (this.MajorEngineVersion == null && ec.Includes("majorEngineVersion",true))
         {
             this.MajorEngineVersion = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? VpcId
         // GraphQL -> vpcId: String! (scalar)
-        if (this.VpcId == null && Exploration.Includes(parent + ".vpcId", true))
+        if (this.VpcId == null && ec.Includes("vpcId",true))
         {
             this.VpcId = "FETCH";
         }
@@ -182,12 +181,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<OptionGroup> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new OptionGroup());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<OptionGroup> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

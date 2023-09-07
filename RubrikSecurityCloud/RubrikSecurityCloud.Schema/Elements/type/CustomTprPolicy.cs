@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> List<TprRule>? Actions
+        // GraphQL -> actions: [TprRule!]! (enum)
+        [JsonProperty("actions")]
+        public List<TprRule>? Actions { get; set; }
+
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
         [JsonProperty("description")]
@@ -65,6 +70,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public CustomTprPolicy Set(
+        List<TprRule>? Actions = null,
         System.String? Description = null,
         System.Int32? NumberOfActions = null,
         System.Int32? NumberOfObjectTypes = null,
@@ -74,6 +80,9 @@ namespace RubrikSecurityCloud.Types
         System.String? PolicyName = null
     ) 
     {
+        if ( Actions != null ) {
+            this.Actions = Actions;
+        }
         if ( Description != null ) {
             this.Description = Description;
         }
@@ -105,6 +114,11 @@ namespace RubrikSecurityCloud.Types
     {
         string ind = new string(' ', indent*2);
         string s = "";
+        //      C# -> List<TprRule>? Actions
+        // GraphQL -> actions: [TprRule!]! (enum)
+        if (this.Actions != null) {
+            s += ind + "actions\n" ;
+        }
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
         if (this.Description != null) {
@@ -145,48 +159,53 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> List<TprRule>? Actions
+        // GraphQL -> actions: [TprRule!]! (enum)
+        if (this.Actions == null && ec.Includes("actions",true))
+        {
+            this.Actions = new List<TprRule>();
+        }
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
-        if (this.Description == null && Exploration.Includes(parent + ".description", true))
+        if (this.Description == null && ec.Includes("description",true))
         {
             this.Description = "FETCH";
         }
         //      C# -> System.Int32? NumberOfActions
         // GraphQL -> numberOfActions: Int! (scalar)
-        if (this.NumberOfActions == null && Exploration.Includes(parent + ".numberOfActions", true))
+        if (this.NumberOfActions == null && ec.Includes("numberOfActions",true))
         {
             this.NumberOfActions = Int32.MinValue;
         }
         //      C# -> System.Int32? NumberOfObjectTypes
         // GraphQL -> numberOfObjectTypes: Int! (scalar)
-        if (this.NumberOfObjectTypes == null && Exploration.Includes(parent + ".numberOfObjectTypes", true))
+        if (this.NumberOfObjectTypes == null && ec.Includes("numberOfObjectTypes",true))
         {
             this.NumberOfObjectTypes = Int32.MinValue;
         }
         //      C# -> System.Int32? NumberOfProtectableObjects
         // GraphQL -> numberOfProtectableObjects: Int! (scalar)
-        if (this.NumberOfProtectableObjects == null && Exploration.Includes(parent + ".numberOfProtectableObjects", true))
+        if (this.NumberOfProtectableObjects == null && ec.Includes("numberOfProtectableObjects",true))
         {
             this.NumberOfProtectableObjects = Int32.MinValue;
         }
         //      C# -> System.String? OrgId
         // GraphQL -> orgId: UUID! (scalar)
-        if (this.OrgId == null && Exploration.Includes(parent + ".orgId", true))
+        if (this.OrgId == null && ec.Includes("orgId",true))
         {
             this.OrgId = "FETCH";
         }
         //      C# -> System.String? PolicyId
         // GraphQL -> policyId: UUID! (scalar)
-        if (this.PolicyId == null && Exploration.Includes(parent + ".policyId", true))
+        if (this.PolicyId == null && ec.Includes("policyId",true))
         {
             this.PolicyId = "FETCH";
         }
         //      C# -> System.String? PolicyName
         // GraphQL -> policyName: String! (scalar)
-        if (this.PolicyName == null && Exploration.Includes(parent + ".policyName", true))
+        if (this.PolicyName == null && ec.Includes("policyName",true))
         {
             this.PolicyName = "FETCH";
         }
@@ -222,12 +241,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CustomTprPolicy> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CustomTprPolicy());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CustomTprPolicy> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<System.String>? InvalidSnapshotIds
         // GraphQL -> invalidSnapshotIds: [String!]! (scalar)
-        if (this.InvalidSnapshotIds == null && Exploration.Includes(parent + ".invalidSnapshotIds", true))
+        if (this.InvalidSnapshotIds == null && ec.Includes("invalidSnapshotIds",true))
         {
             this.InvalidSnapshotIds = new List<System.String>();
         }
         //      C# -> List<System.String>? LockedSnapshotIds
         // GraphQL -> lockedSnapshotIds: [String!]! (scalar)
-        if (this.LockedSnapshotIds == null && Exploration.Includes(parent + ".lockedSnapshotIds", true))
+        if (this.LockedSnapshotIds == null && ec.Includes("lockedSnapshotIds",true))
         {
             this.LockedSnapshotIds = new List<System.String>();
         }
         //      C# -> List<System.String>? UnlockedSnapshotIds
         // GraphQL -> unlockedSnapshotIds: [String!]! (scalar)
-        if (this.UnlockedSnapshotIds == null && Exploration.Includes(parent + ".unlockedSnapshotIds", true))
+        if (this.UnlockedSnapshotIds == null && ec.Includes("unlockedSnapshotIds",true))
         {
             this.UnlockedSnapshotIds = new List<System.String>();
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CheckArchivedSnapshotsLockedReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CheckArchivedSnapshotsLockedReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CheckArchivedSnapshotsLockedReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

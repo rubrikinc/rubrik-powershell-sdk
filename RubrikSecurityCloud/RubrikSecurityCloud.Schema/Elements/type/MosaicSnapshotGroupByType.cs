@@ -98,29 +98,28 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<MosaicSnapshotGroupByType>? AllSnapshotGroupBys
         // GraphQL -> allSnapshotGroupBys: [MosaicSnapshotGroupByType!]! (type)
-        if (this.AllSnapshotGroupBys == null && Exploration.Includes(parent + ".allSnapshotGroupBys"))
+        if (this.AllSnapshotGroupBys == null && ec.Includes("allSnapshotGroupBys",false))
         {
             this.AllSnapshotGroupBys = new List<MosaicSnapshotGroupByType>();
-            this.AllSnapshotGroupBys.ApplyExploratoryFieldSpec(parent + ".allSnapshotGroupBys");
+            this.AllSnapshotGroupBys.ApplyExploratoryFieldSpec(ec.NewChild("allSnapshotGroupBys"));
         }
         //      C# -> MosaicSnapshotConnection? Snapshots
         // GraphQL -> snapshots: MosaicSnapshotConnection! (type)
-        if (this.Snapshots == null && Exploration.Includes(parent + ".snapshots"))
+        if (this.Snapshots == null && ec.Includes("snapshots",false))
         {
             this.Snapshots = new MosaicSnapshotConnection();
-            this.Snapshots.ApplyExploratoryFieldSpec(parent + ".snapshots");
+            this.Snapshots.ApplyExploratoryFieldSpec(ec.NewChild("snapshots"));
         }
         //      C# -> MosaicSnapshotGroupByInfo? GroupByInfo
         // GraphQL -> groupByInfo: MosaicSnapshotGroupByInfo! (union)
-        if (this.GroupByInfo == null && Exploration.Includes(parent + ".groupByInfo"))
+        if (this.GroupByInfo == null && ec.Includes("groupByInfo",false))
         {
             var impls = new List<MosaicSnapshotGroupByInfo>();
-            impls.ApplyExploratoryFieldSpec(parent + ".groupByInfo");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
             this.GroupByInfo = (MosaicSnapshotGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
         }
     }
@@ -155,12 +154,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<MosaicSnapshotGroupByType> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new MosaicSnapshotGroupByType());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<MosaicSnapshotGroupByType> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

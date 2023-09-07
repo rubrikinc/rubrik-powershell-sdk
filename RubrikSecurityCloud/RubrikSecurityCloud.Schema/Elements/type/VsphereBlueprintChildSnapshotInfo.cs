@@ -168,59 +168,58 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int32? MemoryMbs
         // GraphQL -> memoryMbs: Int! (scalar)
-        if (this.MemoryMbs == null && Exploration.Includes(parent + ".memoryMbs", true))
+        if (this.MemoryMbs == null && ec.Includes("memoryMbs",true))
         {
             this.MemoryMbs = Int32.MinValue;
         }
         //      C# -> System.String? OsType
         // GraphQL -> osType: String! (scalar)
-        if (this.OsType == null && Exploration.Includes(parent + ".osType", true))
+        if (this.OsType == null && ec.Includes("osType",true))
         {
             this.OsType = "FETCH";
         }
         //      C# -> System.String? SnapshotAppMetadata
         // GraphQL -> snapshotAppMetadata: String! (scalar)
-        if (this.SnapshotAppMetadata == null && Exploration.Includes(parent + ".snapshotAppMetadata", true))
+        if (this.SnapshotAppMetadata == null && ec.Includes("snapshotAppMetadata",true))
         {
             this.SnapshotAppMetadata = "FETCH";
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: String! (scalar)
-        if (this.SnapshotId == null && Exploration.Includes(parent + ".snapshotId", true))
+        if (this.SnapshotId == null && ec.Includes("snapshotId",true))
         {
             this.SnapshotId = "FETCH";
         }
         //      C# -> System.Int32? Vcpus
         // GraphQL -> vcpus: Int! (scalar)
-        if (this.Vcpus == null && Exploration.Includes(parent + ".vcpus", true))
+        if (this.Vcpus == null && ec.Includes("vcpus",true))
         {
             this.Vcpus = Int32.MinValue;
         }
         //      C# -> VmHost? Host
         // GraphQL -> host: VmHost (type)
-        if (this.Host == null && Exploration.Includes(parent + ".host"))
+        if (this.Host == null && ec.Includes("host",false))
         {
             this.Host = new VmHost();
-            this.Host.ApplyExploratoryFieldSpec(parent + ".host");
+            this.Host.ApplyExploratoryFieldSpec(ec.NewChild("host"));
         }
         //      C# -> List<VmNicMapEntry>? NicMap
         // GraphQL -> nicMap: [VmNicMapEntry!]! (type)
-        if (this.NicMap == null && Exploration.Includes(parent + ".nicMap"))
+        if (this.NicMap == null && ec.Includes("nicMap",false))
         {
             this.NicMap = new List<VmNicMapEntry>();
-            this.NicMap.ApplyExploratoryFieldSpec(parent + ".nicMap");
+            this.NicMap.ApplyExploratoryFieldSpec(ec.NewChild("nicMap"));
         }
         //      C# -> List<VmDiskMapEntry>? VolumeMap
         // GraphQL -> volumeMap: [VmDiskMapEntry!]! (type)
-        if (this.VolumeMap == null && Exploration.Includes(parent + ".volumeMap"))
+        if (this.VolumeMap == null && ec.Includes("volumeMap",false))
         {
             this.VolumeMap = new List<VmDiskMapEntry>();
-            this.VolumeMap.ApplyExploratoryFieldSpec(parent + ".volumeMap");
+            this.VolumeMap.ApplyExploratoryFieldSpec(ec.NewChild("volumeMap"));
         }
     }
 
@@ -254,12 +253,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VsphereBlueprintChildSnapshotInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VsphereBlueprintChildSnapshotInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VsphereBlueprintChildSnapshotInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

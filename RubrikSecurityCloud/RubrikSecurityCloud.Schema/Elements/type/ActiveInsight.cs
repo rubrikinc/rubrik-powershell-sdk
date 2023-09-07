@@ -190,69 +190,68 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> InsightCategory? Category
         // GraphQL -> category: InsightCategory! (enum)
-        if (this.Category == null && Exploration.Includes(parent + ".category", true))
+        if (this.Category == null && ec.Includes("category",true))
         {
             this.Category = new InsightCategory();
         }
         //      C# -> InsightSeverity? Severity
         // GraphQL -> severity: InsightSeverity! (enum)
-        if (this.Severity == null && Exploration.Includes(parent + ".severity", true))
+        if (this.Severity == null && ec.Includes("severity",true))
         {
             this.Severity = new InsightSeverity();
         }
         //      C# -> InsightType? Type
         // GraphQL -> type: InsightType! (enum)
-        if (this.Type == null && Exploration.Includes(parent + ".type", true))
+        if (this.Type == null && ec.Includes("type",true))
         {
             this.Type = new InsightType();
         }
         //      C# -> System.String? AutomatedCaseId
         // GraphQL -> automatedCaseId: String (scalar)
-        if (this.AutomatedCaseId == null && Exploration.Includes(parent + ".automatedCaseId", true))
+        if (this.AutomatedCaseId == null && ec.Includes("automatedCaseId",true))
         {
             this.AutomatedCaseId = "FETCH";
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
-        if (this.Description == null && Exploration.Includes(parent + ".description", true))
+        if (this.Description == null && ec.Includes("description",true))
         {
             this.Description = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> List<System.String>? Labels
         // GraphQL -> labels: [String!]! (scalar)
-        if (this.Labels == null && Exploration.Includes(parent + ".labels", true))
+        if (this.Labels == null && ec.Includes("labels",true))
         {
             this.Labels = new List<System.String>();
         }
         //      C# -> System.String? Resolution
         // GraphQL -> resolution: String! (scalar)
-        if (this.Resolution == null && Exploration.Includes(parent + ".resolution", true))
+        if (this.Resolution == null && ec.Includes("resolution",true))
         {
             this.Resolution = "FETCH";
         }
         //      C# -> System.String? Title
         // GraphQL -> title: String! (scalar)
-        if (this.Title == null && Exploration.Includes(parent + ".title", true))
+        if (this.Title == null && ec.Includes("title",true))
         {
             this.Title = "FETCH";
         }
         //      C# -> List<ActiveInsightClusterMetadata>? Clusters
         // GraphQL -> clusters: [ActiveInsightClusterMetadata!]! (type)
-        if (this.Clusters == null && Exploration.Includes(parent + ".clusters"))
+        if (this.Clusters == null && ec.Includes("clusters",false))
         {
             this.Clusters = new List<ActiveInsightClusterMetadata>();
-            this.Clusters.ApplyExploratoryFieldSpec(parent + ".clusters");
+            this.Clusters.ApplyExploratoryFieldSpec(ec.NewChild("clusters"));
         }
     }
 
@@ -286,12 +285,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ActiveInsight> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ActiveInsight());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ActiveInsight> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

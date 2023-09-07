@@ -145,48 +145,47 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int32? AccountAutoUnlockDurationInMins
         // GraphQL -> accountAutoUnlockDurationInMins: Int! (scalar)
-        if (this.AccountAutoUnlockDurationInMins == null && Exploration.Includes(parent + ".accountAutoUnlockDurationInMins", true))
+        if (this.AccountAutoUnlockDurationInMins == null && ec.Includes("accountAutoUnlockDurationInMins",true))
         {
             this.AccountAutoUnlockDurationInMins = Int32.MinValue;
         }
         //      C# -> System.Boolean? IsAutoUnlockFeatureEnabled
         // GraphQL -> isAutoUnlockFeatureEnabled: Boolean! (scalar)
-        if (this.IsAutoUnlockFeatureEnabled == null && Exploration.Includes(parent + ".isAutoUnlockFeatureEnabled", true))
+        if (this.IsAutoUnlockFeatureEnabled == null && ec.Includes("isAutoUnlockFeatureEnabled",true))
         {
             this.IsAutoUnlockFeatureEnabled = true;
         }
         //      C# -> System.Boolean? IsBruteForceLockoutEnabled
         // GraphQL -> isBruteForceLockoutEnabled: Boolean! (scalar)
-        if (this.IsBruteForceLockoutEnabled == null && Exploration.Includes(parent + ".isBruteForceLockoutEnabled", true))
+        if (this.IsBruteForceLockoutEnabled == null && ec.Includes("isBruteForceLockoutEnabled",true))
         {
             this.IsBruteForceLockoutEnabled = true;
         }
         //      C# -> System.Boolean? IsSelfServiceEnabled
         // GraphQL -> isSelfServiceEnabled: Boolean! (scalar)
-        if (this.IsSelfServiceEnabled == null && Exploration.Includes(parent + ".isSelfServiceEnabled", true))
+        if (this.IsSelfServiceEnabled == null && ec.Includes("isSelfServiceEnabled",true))
         {
             this.IsSelfServiceEnabled = true;
         }
         //      C# -> System.Int32? LoginAttemptsLimit
         // GraphQL -> loginAttemptsLimit: Int! (scalar)
-        if (this.LoginAttemptsLimit == null && Exploration.Includes(parent + ".loginAttemptsLimit", true))
+        if (this.LoginAttemptsLimit == null && ec.Includes("loginAttemptsLimit",true))
         {
             this.LoginAttemptsLimit = Int32.MinValue;
         }
         //      C# -> System.Int32? SelfServiceAttemptsLimit
         // GraphQL -> selfServiceAttemptsLimit: Int! (scalar)
-        if (this.SelfServiceAttemptsLimit == null && Exploration.Includes(parent + ".selfServiceAttemptsLimit", true))
+        if (this.SelfServiceAttemptsLimit == null && ec.Includes("selfServiceAttemptsLimit",true))
         {
             this.SelfServiceAttemptsLimit = Int32.MinValue;
         }
         //      C# -> System.Int32? SelfServiceTokenValidityInMins
         // GraphQL -> selfServiceTokenValidityInMins: Int! (scalar)
-        if (this.SelfServiceTokenValidityInMins == null && Exploration.Includes(parent + ".selfServiceTokenValidityInMins", true))
+        if (this.SelfServiceTokenValidityInMins == null && ec.Includes("selfServiceTokenValidityInMins",true))
         {
             this.SelfServiceTokenValidityInMins = Int32.MinValue;
         }
@@ -222,12 +221,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<LockoutConfig> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new LockoutConfig());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<LockoutConfig> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

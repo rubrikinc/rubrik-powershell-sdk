@@ -109,34 +109,33 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ThreatHuntStatus? Status
         // GraphQL -> status: ThreatHuntStatus! (enum)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = new ThreatHuntStatus();
         }
         //      C# -> System.String? HuntId
         // GraphQL -> huntId: String! (scalar)
-        if (this.HuntId == null && Exploration.Includes(parent + ".huntId", true))
+        if (this.HuntId == null && ec.Includes("huntId",true))
         {
             this.HuntId = "FETCH";
         }
         //      C# -> ThreatHuntDetails? HuntDetails
         // GraphQL -> huntDetails: ThreatHuntDetails! (type)
-        if (this.HuntDetails == null && Exploration.Includes(parent + ".huntDetails"))
+        if (this.HuntDetails == null && ec.Includes("huntDetails",false))
         {
             this.HuntDetails = new ThreatHuntDetails();
-            this.HuntDetails.ApplyExploratoryFieldSpec(parent + ".huntDetails");
+            this.HuntDetails.ApplyExploratoryFieldSpec(ec.NewChild("huntDetails"));
         }
         //      C# -> ThreatHuntStats? Stats
         // GraphQL -> stats: ThreatHuntStats (type)
-        if (this.Stats == null && Exploration.Includes(parent + ".stats"))
+        if (this.Stats == null && ec.Includes("stats",false))
         {
             this.Stats = new ThreatHuntStats();
-            this.Stats.ApplyExploratoryFieldSpec(parent + ".stats");
+            this.Stats.ApplyExploratoryFieldSpec(ec.NewChild("stats"));
         }
     }
 
@@ -170,12 +169,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ThreatHunt> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ThreatHunt());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ThreatHunt> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

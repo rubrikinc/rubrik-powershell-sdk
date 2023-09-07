@@ -159,54 +159,53 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? ContractFile
         // GraphQL -> contractFile: String! (scalar)
-        if (this.ContractFile == null && Exploration.Includes(parent + ".contractFile", true))
+        if (this.ContractFile == null && ec.Includes("contractFile",true))
         {
             this.ContractFile = "FETCH";
         }
         //      C# -> System.String? ContractId
         // GraphQL -> contractId: String! (scalar)
-        if (this.ContractId == null && Exploration.Includes(parent + ".contractId", true))
+        if (this.ContractId == null && ec.Includes("contractId",true))
         {
             this.ContractId = "FETCH";
         }
         //      C# -> System.String? DownloadEndpoint
         // GraphQL -> downloadEndpoint: URL! (scalar)
-        if (this.DownloadEndpoint == null && Exploration.Includes(parent + ".downloadEndpoint", true))
+        if (this.DownloadEndpoint == null && ec.Includes("downloadEndpoint",true))
         {
             this.DownloadEndpoint = "FETCH";
         }
         //      C# -> DateTime? EffectiveDate
         // GraphQL -> effectiveDate: DateTime! (scalar)
-        if (this.EffectiveDate == null && Exploration.Includes(parent + ".effectiveDate", true))
+        if (this.EffectiveDate == null && ec.Includes("effectiveDate",true))
         {
             this.EffectiveDate = new DateTime();
         }
         //      C# -> System.Boolean? IsAccepted
         // GraphQL -> isAccepted: Boolean! (scalar)
-        if (this.IsAccepted == null && Exploration.Includes(parent + ".isAccepted", true))
+        if (this.IsAccepted == null && ec.Includes("isAccepted",true))
         {
             this.IsAccepted = true;
         }
         //      C# -> System.String? MajorVersionId
         // GraphQL -> majorVersionId: String! (scalar)
-        if (this.MajorVersionId == null && Exploration.Includes(parent + ".majorVersionId", true))
+        if (this.MajorVersionId == null && ec.Includes("majorVersionId",true))
         {
             this.MajorVersionId = "FETCH";
         }
         //      C# -> System.String? PublishedVersionId
         // GraphQL -> publishedVersionId: String! (scalar)
-        if (this.PublishedVersionId == null && Exploration.Includes(parent + ".publishedVersionId", true))
+        if (this.PublishedVersionId == null && ec.Includes("publishedVersionId",true))
         {
             this.PublishedVersionId = "FETCH";
         }
         //      C# -> System.String? Title
         // GraphQL -> title: String! (scalar)
-        if (this.Title == null && Exploration.Includes(parent + ".title", true))
+        if (this.Title == null && ec.Includes("title",true))
         {
             this.Title = "FETCH";
         }
@@ -242,12 +241,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PactsafeContract> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PactsafeContract());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<PactsafeContract> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -81,22 +81,21 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> SlaUpgradeEligibility? Eligibility
         // GraphQL -> eligibility: SlaUpgradeEligibility (type)
-        if (this.Eligibility == null && Exploration.Includes(parent + ".eligibility"))
+        if (this.Eligibility == null && ec.Includes("eligibility",false))
         {
             this.Eligibility = new SlaUpgradeEligibility();
-            this.Eligibility.ApplyExploratoryFieldSpec(parent + ".eligibility");
+            this.Eligibility.ApplyExploratoryFieldSpec(ec.NewChild("eligibility"));
         }
         //      C# -> SlaUpgrade? LatestUpgrade
         // GraphQL -> latestUpgrade: SlaUpgrade (type)
-        if (this.LatestUpgrade == null && Exploration.Includes(parent + ".latestUpgrade"))
+        if (this.LatestUpgrade == null && ec.Includes("latestUpgrade",false))
         {
             this.LatestUpgrade = new SlaUpgrade();
-            this.LatestUpgrade.ApplyExploratoryFieldSpec(parent + ".latestUpgrade");
+            this.LatestUpgrade.ApplyExploratoryFieldSpec(ec.NewChild("latestUpgrade"));
         }
     }
 
@@ -130,12 +129,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SlaUpgradeInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SlaUpgradeInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SlaUpgradeInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

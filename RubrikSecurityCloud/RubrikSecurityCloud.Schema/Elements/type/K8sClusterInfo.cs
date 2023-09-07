@@ -120,39 +120,38 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> K8sClusterType? Type
         // GraphQL -> type: K8sClusterType! (enum)
-        if (this.Type == null && Exploration.Includes(parent + ".type", true))
+        if (this.Type == null && ec.Includes("type",true))
         {
             this.Type = new K8sClusterType();
         }
         //      C# -> System.String? K8sVersion
         // GraphQL -> k8sVersion: String (scalar)
-        if (this.K8sVersion == null && Exploration.Includes(parent + ".k8sVersion", true))
+        if (this.K8sVersion == null && ec.Includes("k8sVersion",true))
         {
             this.K8sVersion = "FETCH";
         }
         //      C# -> System.String? KuprClusterUuid
         // GraphQL -> kuprClusterUuid: UUID! (scalar)
-        if (this.KuprClusterUuid == null && Exploration.Includes(parent + ".kuprClusterUuid", true))
+        if (this.KuprClusterUuid == null && ec.Includes("kuprClusterUuid",true))
         {
             this.KuprClusterUuid = "FETCH";
         }
         //      C# -> System.Int32? Port
         // GraphQL -> port: Int! (scalar)
-        if (this.Port == null && Exploration.Includes(parent + ".port", true))
+        if (this.Port == null && ec.Includes("port",true))
         {
             this.Port = Int32.MinValue;
         }
         //      C# -> Cluster? AssociatedCdm
         // GraphQL -> associatedCdm: Cluster (type)
-        if (this.AssociatedCdm == null && Exploration.Includes(parent + ".associatedCdm"))
+        if (this.AssociatedCdm == null && ec.Includes("associatedCdm",false))
         {
             this.AssociatedCdm = new Cluster();
-            this.AssociatedCdm.ApplyExploratoryFieldSpec(parent + ".associatedCdm");
+            this.AssociatedCdm.ApplyExploratoryFieldSpec(ec.NewChild("associatedCdm"));
         }
     }
 
@@ -186,12 +185,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<K8sClusterInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new K8sClusterInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<K8sClusterInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> AzureHostType? HostType
         // GraphQL -> hostType: AzureHostType! (enum)
-        if (this.HostType == null && Exploration.Includes(parent + ".hostType", true))
+        if (this.HostType == null && ec.Includes("hostType",true))
         {
             this.HostType = new AzureHostType();
         }
         //      C# -> System.Int64? Fetb
         // GraphQL -> fetb: Long! (scalar)
-        if (this.Fetb == null && Exploration.Includes(parent + ".fetb", true))
+        if (this.Fetb == null && ec.Includes("fetb",true))
         {
             this.Fetb = new System.Int64();
         }
         //      C# -> System.Int32? UserCount
         // GraphQL -> userCount: Int! (scalar)
-        if (this.UserCount == null && Exploration.Includes(parent + ".userCount", true))
+        if (this.UserCount == null && ec.Includes("userCount",true))
         {
             this.UserCount = Int32.MinValue;
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<M365LicenseParams> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new M365LicenseParams());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<M365LicenseParams> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

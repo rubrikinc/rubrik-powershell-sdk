@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> SnapshotSubObj? SubObj
         // GraphQL -> subObj: SnapshotSubObj! (type)
-        if (this.SubObj == null && Exploration.Includes(parent + ".subObj"))
+        if (this.SubObj == null && ec.Includes("subObj",false))
         {
             this.SubObj = new SnapshotSubObj();
-            this.SubObj.ApplyExploratoryFieldSpec(parent + ".subObj");
+            this.SubObj.ApplyExploratoryFieldSpec(ec.NewChild("subObj"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SnapshotSubObject> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SnapshotSubObject());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SnapshotSubObject> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

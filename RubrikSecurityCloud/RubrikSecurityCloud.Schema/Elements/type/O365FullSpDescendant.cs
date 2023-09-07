@@ -174,60 +174,59 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> SharePointDescendantType? ObjectType
         // GraphQL -> objectType: SharePointDescendantType! (enum)
-        if (this.ObjectType == null && Exploration.Includes(parent + ".objectType", true))
+        if (this.ObjectType == null && ec.Includes("objectType",true))
         {
             this.ObjectType = new SharePointDescendantType();
         }
         //      C# -> DateTime? CreateTime
         // GraphQL -> createTime: DateTime (scalar)
-        if (this.CreateTime == null && Exploration.Includes(parent + ".createTime", true))
+        if (this.CreateTime == null && ec.Includes("createTime",true))
         {
             this.CreateTime = new DateTime();
         }
         //      C# -> System.String? Fid
         // GraphQL -> fid: String! (scalar)
-        if (this.Fid == null && Exploration.Includes(parent + ".fid", true))
+        if (this.Fid == null && ec.Includes("fid",true))
         {
             this.Fid = "FETCH";
         }
         //      C# -> DateTime? ModifiedTime
         // GraphQL -> modifiedTime: DateTime (scalar)
-        if (this.ModifiedTime == null && Exploration.Includes(parent + ".modifiedTime", true))
+        if (this.ModifiedTime == null && ec.Includes("modifiedTime",true))
         {
             this.ModifiedTime = new DateTime();
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? ParentId
         // GraphQL -> parentId: String (scalar)
-        if (this.ParentId == null && Exploration.Includes(parent + ".parentId", true))
+        if (this.ParentId == null && ec.Includes("parentId",true))
         {
             this.ParentId = "FETCH";
         }
         //      C# -> System.String? SharepointId
         // GraphQL -> sharepointId: String! (scalar)
-        if (this.SharepointId == null && Exploration.Includes(parent + ".sharepointId", true))
+        if (this.SharepointId == null && ec.Includes("sharepointId",true))
         {
             this.SharepointId = "FETCH";
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: UUID (scalar)
-        if (this.SnapshotId == null && Exploration.Includes(parent + ".snapshotId", true))
+        if (this.SnapshotId == null && ec.Includes("snapshotId",true))
         {
             this.SnapshotId = "FETCH";
         }
         //      C# -> System.Int32? SnapshotNum
         // GraphQL -> snapshotNum: Int (scalar)
-        if (this.SnapshotNum == null && Exploration.Includes(parent + ".snapshotNum", true))
+        if (this.SnapshotNum == null && ec.Includes("snapshotNum",true))
         {
             this.SnapshotNum = Int32.MinValue;
         }
@@ -263,12 +262,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<O365FullSpDescendant> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new O365FullSpDescendant());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<O365FullSpDescendant> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? BlobName
         // GraphQL -> blobName: String! (scalar)
-        if (this.BlobName == null && Exploration.Includes(parent + ".blobName", true))
+        if (this.BlobName == null && ec.Includes("blobName",true))
         {
             this.BlobName = "FETCH";
         }
         //      C# -> System.String? BlobSasUri
         // GraphQL -> blobSasUri: String! (scalar)
-        if (this.BlobSasUri == null && Exploration.Includes(parent + ".blobSasUri", true))
+        if (this.BlobSasUri == null && ec.Includes("blobSasUri",true))
         {
             this.BlobSasUri = "FETCH";
         }
         //      C# -> System.String? PolarisAccount
         // GraphQL -> polarisAccount: String! (scalar)
-        if (this.PolarisAccount == null && Exploration.Includes(parent + ".polarisAccount", true))
+        if (this.PolarisAccount == null && ec.Includes("polarisAccount",true))
         {
             this.PolarisAccount = "FETCH";
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ExportUrlSpecs> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ExportUrlSpecs());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ExportUrlSpecs> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

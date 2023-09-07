@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> IbmDeploymentType? DeploymentType
         // GraphQL -> deploymentType: IbmDeploymentType! (enum)
-        if (this.DeploymentType == null && Exploration.Includes(parent + ".deploymentType", true))
+        if (this.DeploymentType == null && ec.Includes("deploymentType",true))
         {
             this.DeploymentType = new IbmDeploymentType();
         }
         //      C# -> System.String? ProvisioningCode
         // GraphQL -> provisioningCode: String! (scalar)
-        if (this.ProvisioningCode == null && Exploration.Includes(parent + ".provisioningCode", true))
+        if (this.ProvisioningCode == null && ec.Includes("provisioningCode",true))
         {
             this.ProvisioningCode = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<IbmCosDetailsType> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new IbmCosDetailsType());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<IbmCosDetailsType> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

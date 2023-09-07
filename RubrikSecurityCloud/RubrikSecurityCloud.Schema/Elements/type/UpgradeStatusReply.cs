@@ -263,100 +263,99 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? CurrentState
         // GraphQL -> currentState: String! (scalar)
-        if (this.CurrentState == null && Exploration.Includes(parent + ".currentState", true))
+        if (this.CurrentState == null && ec.Includes("currentState",true))
         {
             this.CurrentState = "FETCH";
         }
         //      C# -> System.String? CurrentStateName
         // GraphQL -> currentStateName: String! (scalar)
-        if (this.CurrentStateName == null && Exploration.Includes(parent + ".currentStateName", true))
+        if (this.CurrentStateName == null && ec.Includes("currentStateName",true))
         {
             this.CurrentStateName = "FETCH";
         }
         //      C# -> System.String? CurrentStateProgress
         // GraphQL -> currentStateProgress: String! (scalar)
-        if (this.CurrentStateProgress == null && Exploration.Includes(parent + ".currentStateProgress", true))
+        if (this.CurrentStateProgress == null && ec.Includes("currentStateProgress",true))
         {
             this.CurrentStateProgress = "FETCH";
         }
         //      C# -> System.String? FinishedStates
         // GraphQL -> finishedStates: String! (scalar)
-        if (this.FinishedStates == null && Exploration.Includes(parent + ".finishedStates", true))
+        if (this.FinishedStates == null && ec.Includes("finishedStates",true))
         {
             this.FinishedStates = "FETCH";
         }
         //      C# -> System.String? Mode
         // GraphQL -> mode: String! (scalar)
-        if (this.Mode == null && Exploration.Includes(parent + ".mode", true))
+        if (this.Mode == null && ec.Includes("mode",true))
         {
             this.Mode = "FETCH";
         }
         //      C# -> System.String? NodeName
         // GraphQL -> nodeName: String! (scalar)
-        if (this.NodeName == null && Exploration.Includes(parent + ".nodeName", true))
+        if (this.NodeName == null && ec.Includes("nodeName",true))
         {
             this.NodeName = "FETCH";
         }
         //      C# -> System.String? PendingStates
         // GraphQL -> pendingStates: String! (scalar)
-        if (this.PendingStates == null && Exploration.Includes(parent + ".pendingStates", true))
+        if (this.PendingStates == null && ec.Includes("pendingStates",true))
         {
             this.PendingStates = "FETCH";
         }
         //      C# -> System.String? Progress
         // GraphQL -> progress: String! (scalar)
-        if (this.Progress == null && Exploration.Includes(parent + ".progress", true))
+        if (this.Progress == null && ec.Includes("progress",true))
         {
             this.Progress = "FETCH";
         }
         //      C# -> System.String? TarballName
         // GraphQL -> tarballName: String! (scalar)
-        if (this.TarballName == null && Exploration.Includes(parent + ".tarballName", true))
+        if (this.TarballName == null && ec.Includes("tarballName",true))
         {
             this.TarballName = "FETCH";
         }
         //      C# -> System.String? UpgradeProgressPercentage
         // GraphQL -> upgradeProgressPercentage: String! (scalar)
-        if (this.UpgradeProgressPercentage == null && Exploration.Includes(parent + ".upgradeProgressPercentage", true))
+        if (this.UpgradeProgressPercentage == null && ec.Includes("upgradeProgressPercentage",true))
         {
             this.UpgradeProgressPercentage = "FETCH";
         }
         //      C# -> System.String? UpgradeTimeLeftSecs
         // GraphQL -> upgradeTimeLeftSecs: String! (scalar)
-        if (this.UpgradeTimeLeftSecs == null && Exploration.Includes(parent + ".upgradeTimeLeftSecs", true))
+        if (this.UpgradeTimeLeftSecs == null && ec.Includes("upgradeTimeLeftSecs",true))
         {
             this.UpgradeTimeLeftSecs = "FETCH";
         }
         //      C# -> System.String? UpgradeTimestamp
         // GraphQL -> upgradeTimestamp: String! (scalar)
-        if (this.UpgradeTimestamp == null && Exploration.Includes(parent + ".upgradeTimestamp", true))
+        if (this.UpgradeTimestamp == null && ec.Includes("upgradeTimestamp",true))
         {
             this.UpgradeTimestamp = "FETCH";
         }
         //      C# -> System.String? UserSurfacedTaskName
         // GraphQL -> userSurfacedTaskName: String! (scalar)
-        if (this.UserSurfacedTaskName == null && Exploration.Includes(parent + ".userSurfacedTaskName", true))
+        if (this.UserSurfacedTaskName == null && ec.Includes("userSurfacedTaskName",true))
         {
             this.UserSurfacedTaskName = "FETCH";
         }
         //      C# -> RollingUpgradeInfo? RuInfo
         // GraphQL -> ruInfo: RollingUpgradeInfo (type)
-        if (this.RuInfo == null && Exploration.Includes(parent + ".ruInfo"))
+        if (this.RuInfo == null && ec.Includes("ruInfo",false))
         {
             this.RuInfo = new RollingUpgradeInfo();
-            this.RuInfo.ApplyExploratoryFieldSpec(parent + ".ruInfo");
+            this.RuInfo.ApplyExploratoryFieldSpec(ec.NewChild("ruInfo"));
         }
         //      C# -> StatusResponse? UpgradeStatus
         // GraphQL -> upgradeStatus: StatusResponse (type)
-        if (this.UpgradeStatus == null && Exploration.Includes(parent + ".upgradeStatus"))
+        if (this.UpgradeStatus == null && ec.Includes("upgradeStatus",false))
         {
             this.UpgradeStatus = new StatusResponse();
-            this.UpgradeStatus.ApplyExploratoryFieldSpec(parent + ".upgradeStatus");
+            this.UpgradeStatus.ApplyExploratoryFieldSpec(ec.NewChild("upgradeStatus"));
         }
     }
 
@@ -390,12 +389,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<UpgradeStatusReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new UpgradeStatusReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<UpgradeStatusReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

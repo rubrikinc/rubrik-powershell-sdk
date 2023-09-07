@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<EventDigest>? EventDigests
         // GraphQL -> eventDigests: [EventDigest!]! (type)
-        if (this.EventDigests == null && Exploration.Includes(parent + ".eventDigests"))
+        if (this.EventDigests == null && ec.Includes("eventDigests",false))
         {
             this.EventDigests = new List<EventDigest>();
-            this.EventDigests.ApplyExploratoryFieldSpec(parent + ".eventDigests");
+            this.EventDigests.ApplyExploratoryFieldSpec(ec.NewChild("eventDigests"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<UpdateEventDigestReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new UpdateEventDigestReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<UpdateEventDigestReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

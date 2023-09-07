@@ -106,33 +106,32 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Message
         // GraphQL -> message: String (scalar)
-        if (this.Message == null && Exploration.Includes(parent + ".message", true))
+        if (this.Message == null && ec.Includes("message",true))
         {
             this.Message = "FETCH";
         }
         //      C# -> System.Int64? ReturnCode
         // GraphQL -> returnCode: Long (scalar)
-        if (this.ReturnCode == null && Exploration.Includes(parent + ".returnCode", true))
+        if (this.ReturnCode == null && ec.Includes("returnCode",true))
         {
             this.ReturnCode = new System.Int64();
         }
         //      C# -> System.Boolean? Status
         // GraphQL -> status: Boolean (scalar)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = true;
         }
         //      C# -> List<MosaicVersionObject>? Data
         // GraphQL -> data: [MosaicVersionObject!]! (type)
-        if (this.Data == null && Exploration.Includes(parent + ".data"))
+        if (this.Data == null && ec.Includes("data",false))
         {
             this.Data = new List<MosaicVersionObject>();
-            this.Data.ApplyExploratoryFieldSpec(parent + ".data");
+            this.Data.ApplyExploratoryFieldSpec(ec.NewChild("data"));
         }
     }
 
@@ -166,12 +165,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ListVersionResponse> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ListVersionResponse());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ListVersionResponse> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

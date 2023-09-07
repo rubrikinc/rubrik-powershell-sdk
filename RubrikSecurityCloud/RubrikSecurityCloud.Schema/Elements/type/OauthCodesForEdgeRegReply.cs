@@ -92,27 +92,26 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? CdmOvaLink
         // GraphQL -> cdmOvaLink: String! (scalar)
-        if (this.CdmOvaLink == null && Exploration.Includes(parent + ".cdmOvaLink", true))
+        if (this.CdmOvaLink == null && ec.Includes("cdmOvaLink",true))
         {
             this.CdmOvaLink = "FETCH";
         }
         //      C# -> System.String? WindowsToolLink
         // GraphQL -> windowsToolLink: String! (scalar)
-        if (this.WindowsToolLink == null && Exploration.Includes(parent + ".windowsToolLink", true))
+        if (this.WindowsToolLink == null && ec.Includes("windowsToolLink",true))
         {
             this.WindowsToolLink = "FETCH";
         }
         //      C# -> List<OauthAccessToken>? RegistrationCodes
         // GraphQL -> registrationCodes: [OauthAccessToken!]! (type)
-        if (this.RegistrationCodes == null && Exploration.Includes(parent + ".registrationCodes"))
+        if (this.RegistrationCodes == null && ec.Includes("registrationCodes",false))
         {
             this.RegistrationCodes = new List<OauthAccessToken>();
-            this.RegistrationCodes.ApplyExploratoryFieldSpec(parent + ".registrationCodes");
+            this.RegistrationCodes.ApplyExploratoryFieldSpec(ec.NewChild("registrationCodes"));
         }
     }
 
@@ -146,12 +145,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<OauthCodesForEdgeRegReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new OauthCodesForEdgeRegReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<OauthCodesForEdgeRegReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -232,87 +232,86 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> HostVfdState? HostVfdDriverState
         // GraphQL -> hostVfdDriverState: HostVfdState! (enum)
-        if (this.HostVfdDriverState == null && Exploration.Includes(parent + ".hostVfdDriverState", true))
+        if (this.HostVfdDriverState == null && ec.Includes("hostVfdDriverState",true))
         {
             this.HostVfdDriverState = new HostVfdState();
         }
         //      C# -> HostVfdInstallConfig? HostVfdEnabled
         // GraphQL -> hostVfdEnabled: HostVfdInstallConfig (enum)
-        if (this.HostVfdEnabled == null && Exploration.Includes(parent + ".hostVfdEnabled", true))
+        if (this.HostVfdEnabled == null && ec.Includes("hostVfdEnabled",true))
         {
             this.HostVfdEnabled = new HostVfdInstallConfig();
         }
         //      C# -> System.String? AgentId
         // GraphQL -> agentId: String (scalar)
-        if (this.AgentId == null && Exploration.Includes(parent + ".agentId", true))
+        if (this.AgentId == null && ec.Includes("agentId",true))
         {
             this.AgentId = "FETCH";
         }
         //      C# -> System.Boolean? CompressionEnabled
         // GraphQL -> compressionEnabled: Boolean (scalar)
-        if (this.CompressionEnabled == null && Exploration.Includes(parent + ".compressionEnabled", true))
+        if (this.CompressionEnabled == null && ec.Includes("compressionEnabled",true))
         {
             this.CompressionEnabled = true;
         }
         //      C# -> System.String? HostDomainId
         // GraphQL -> hostDomainId: String (scalar)
-        if (this.HostDomainId == null && Exploration.Includes(parent + ".hostDomainId", true))
+        if (this.HostDomainId == null && ec.Includes("hostDomainId",true))
         {
             this.HostDomainId = "FETCH";
         }
         //      C# -> System.String? HostDomainName
         // GraphQL -> hostDomainName: String (scalar)
-        if (this.HostDomainName == null && Exploration.Includes(parent + ".hostDomainName", true))
+        if (this.HostDomainName == null && ec.Includes("hostDomainName",true))
         {
             this.HostDomainName = "FETCH";
         }
         //      C# -> System.Boolean? IsOracleHost
         // GraphQL -> isOracleHost: Boolean (scalar)
-        if (this.IsOracleHost == null && Exploration.Includes(parent + ".isOracleHost", true))
+        if (this.IsOracleHost == null && ec.Includes("isOracleHost",true))
         {
             this.IsOracleHost = true;
         }
         //      C# -> System.Boolean? IsRefreshPaused
         // GraphQL -> isRefreshPaused: Boolean (scalar)
-        if (this.IsRefreshPaused == null && Exploration.Includes(parent + ".isRefreshPaused", true))
+        if (this.IsRefreshPaused == null && ec.Includes("isRefreshPaused",true))
         {
             this.IsRefreshPaused = true;
         }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
-        if (this.IsRelic == null && Exploration.Includes(parent + ".isRelic", true))
+        if (this.IsRelic == null && ec.Includes("isRelic",true))
         {
             this.IsRelic = true;
         }
         //      C# -> System.Boolean? MssqlCbtDriverInstalled
         // GraphQL -> mssqlCbtDriverInstalled: Boolean! (scalar)
-        if (this.MssqlCbtDriverInstalled == null && Exploration.Includes(parent + ".mssqlCbtDriverInstalled", true))
+        if (this.MssqlCbtDriverInstalled == null && ec.Includes("mssqlCbtDriverInstalled",true))
         {
             this.MssqlCbtDriverInstalled = true;
         }
         //      C# -> System.String? OracleQueryUser
         // GraphQL -> oracleQueryUser: String (scalar)
-        if (this.OracleQueryUser == null && Exploration.Includes(parent + ".oracleQueryUser", true))
+        if (this.OracleQueryUser == null && ec.Includes("oracleQueryUser",true))
         {
             this.OracleQueryUser = "FETCH";
         }
         //      C# -> System.String? OracleSysDbaUser
         // GraphQL -> oracleSysDbaUser: String (scalar)
-        if (this.OracleSysDbaUser == null && Exploration.Includes(parent + ".oracleSysDbaUser", true))
+        if (this.OracleSysDbaUser == null && ec.Includes("oracleSysDbaUser",true))
         {
             this.OracleSysDbaUser = "FETCH";
         }
         //      C# -> HostSummary? HostSummary
         // GraphQL -> hostSummary: HostSummary (type)
-        if (this.HostSummary == null && Exploration.Includes(parent + ".hostSummary"))
+        if (this.HostSummary == null && ec.Includes("hostSummary",false))
         {
             this.HostSummary = new HostSummary();
-            this.HostSummary.ApplyExploratoryFieldSpec(parent + ".hostSummary");
+            this.HostSummary.ApplyExploratoryFieldSpec(ec.NewChild("hostSummary"));
         }
     }
 
@@ -346,12 +345,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<HostDetail> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new HostDetail());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<HostDetail> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

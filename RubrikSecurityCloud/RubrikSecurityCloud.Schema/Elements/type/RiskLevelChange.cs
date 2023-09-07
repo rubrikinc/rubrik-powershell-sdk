@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> RiskLevelType? From
         // GraphQL -> from: RiskLevelType! (enum)
-        if (this.From == null && Exploration.Includes(parent + ".from", true))
+        if (this.From == null && ec.Includes("from",true))
         {
             this.From = new RiskLevelType();
         }
         //      C# -> RiskLevelType? To
         // GraphQL -> to: RiskLevelType! (enum)
-        if (this.To == null && Exploration.Includes(parent + ".to", true))
+        if (this.To == null && ec.Includes("to",true))
         {
             this.To = new RiskLevelType();
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RiskLevelChange> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RiskLevelChange());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<RiskLevelChange> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

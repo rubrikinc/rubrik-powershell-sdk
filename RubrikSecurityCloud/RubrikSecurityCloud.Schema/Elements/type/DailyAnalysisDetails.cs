@@ -187,66 +187,65 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? AnomalyEventCount
         // GraphQL -> anomalyEventCount: Long! (scalar)
-        if (this.AnomalyEventCount == null && Exploration.Includes(parent + ".anomalyEventCount", true))
+        if (this.AnomalyEventCount == null && ec.Includes("anomalyEventCount",true))
         {
             this.AnomalyEventCount = new System.Int64();
         }
         //      C# -> System.Int64? CreatedDataBytes
         // GraphQL -> createdDataBytes: Long! (scalar)
-        if (this.CreatedDataBytes == null && Exploration.Includes(parent + ".createdDataBytes", true))
+        if (this.CreatedDataBytes == null && ec.Includes("createdDataBytes",true))
         {
             this.CreatedDataBytes = new System.Int64();
         }
         //      C# -> System.Int64? CreatedFileCount
         // GraphQL -> createdFileCount: Long! (scalar)
-        if (this.CreatedFileCount == null && Exploration.Includes(parent + ".createdFileCount", true))
+        if (this.CreatedFileCount == null && ec.Includes("createdFileCount",true))
         {
             this.CreatedFileCount = new System.Int64();
         }
         //      C# -> System.String? Day
         // GraphQL -> day: String! (scalar)
-        if (this.Day == null && Exploration.Includes(parent + ".day", true))
+        if (this.Day == null && ec.Includes("day",true))
         {
             this.Day = "FETCH";
         }
         //      C# -> System.Int64? DeletedDataBytes
         // GraphQL -> deletedDataBytes: Long! (scalar)
-        if (this.DeletedDataBytes == null && Exploration.Includes(parent + ".deletedDataBytes", true))
+        if (this.DeletedDataBytes == null && ec.Includes("deletedDataBytes",true))
         {
             this.DeletedDataBytes = new System.Int64();
         }
         //      C# -> System.Int64? DeletedFileCount
         // GraphQL -> deletedFileCount: Long! (scalar)
-        if (this.DeletedFileCount == null && Exploration.Includes(parent + ".deletedFileCount", true))
+        if (this.DeletedFileCount == null && ec.Includes("deletedFileCount",true))
         {
             this.DeletedFileCount = new System.Int64();
         }
         //      C# -> System.Int64? ModifiedDataBytes
         // GraphQL -> modifiedDataBytes: Long! (scalar)
-        if (this.ModifiedDataBytes == null && Exploration.Includes(parent + ".modifiedDataBytes", true))
+        if (this.ModifiedDataBytes == null && ec.Includes("modifiedDataBytes",true))
         {
             this.ModifiedDataBytes = new System.Int64();
         }
         //      C# -> System.Int64? ModifiedFileCount
         // GraphQL -> modifiedFileCount: Long! (scalar)
-        if (this.ModifiedFileCount == null && Exploration.Includes(parent + ".modifiedFileCount", true))
+        if (this.ModifiedFileCount == null && ec.Includes("modifiedFileCount",true))
         {
             this.ModifiedFileCount = new System.Int64();
         }
         //      C# -> System.Int64? SuspiciousDataBytes
         // GraphQL -> suspiciousDataBytes: Long! (scalar)
-        if (this.SuspiciousDataBytes == null && Exploration.Includes(parent + ".suspiciousDataBytes", true))
+        if (this.SuspiciousDataBytes == null && ec.Includes("suspiciousDataBytes",true))
         {
             this.SuspiciousDataBytes = new System.Int64();
         }
         //      C# -> System.Int64? SuspiciousFileCount
         // GraphQL -> suspiciousFileCount: Long! (scalar)
-        if (this.SuspiciousFileCount == null && Exploration.Includes(parent + ".suspiciousFileCount", true))
+        if (this.SuspiciousFileCount == null && ec.Includes("suspiciousFileCount",true))
         {
             this.SuspiciousFileCount = new System.Int64();
         }
@@ -282,12 +281,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<DailyAnalysisDetails> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new DailyAnalysisDetails());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<DailyAnalysisDetails> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> DlpConfig? DataLossPrevention
         // GraphQL -> dataLossPrevention: DlpConfig (type)
-        if (this.DataLossPrevention == null && Exploration.Includes(parent + ".dataLossPrevention"))
+        if (this.DataLossPrevention == null && ec.Includes("dataLossPrevention",false))
         {
             this.DataLossPrevention = new DlpConfig();
-            this.DataLossPrevention.ApplyExploratoryFieldSpec(parent + ".dataLossPrevention");
+            this.DataLossPrevention.ApplyExploratoryFieldSpec(ec.NewChild("dataLossPrevention"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<IntegrationConfig> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new IntegrationConfig());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<IntegrationConfig> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

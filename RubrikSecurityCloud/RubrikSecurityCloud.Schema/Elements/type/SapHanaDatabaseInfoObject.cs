@@ -173,60 +173,59 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? ApproxDbSizeInMb
         // GraphQL -> approxDbSizeInMb: Long! (scalar)
-        if (this.ApproxDbSizeInMb == null && Exploration.Includes(parent + ".approxDbSizeInMb", true))
+        if (this.ApproxDbSizeInMb == null && ec.Includes("approxDbSizeInMb",true))
         {
             this.ApproxDbSizeInMb = new System.Int64();
         }
         //      C# -> System.String? BackintPath
         // GraphQL -> backintPath: String! (scalar)
-        if (this.BackintPath == null && Exploration.Includes(parent + ".backintPath", true))
+        if (this.BackintPath == null && ec.Includes("backintPath",true))
         {
             this.BackintPath = "FETCH";
         }
         //      C# -> System.String? DatabaseType
         // GraphQL -> databaseType: String! (scalar)
-        if (this.DatabaseType == null && Exploration.Includes(parent + ".databaseType", true))
+        if (this.DatabaseType == null && ec.Includes("databaseType",true))
         {
             this.DatabaseType = "FETCH";
         }
         //      C# -> System.Int32? LogBackupIntervalSecs
         // GraphQL -> logBackupIntervalSecs: Int! (scalar)
-        if (this.LogBackupIntervalSecs == null && Exploration.Includes(parent + ".logBackupIntervalSecs", true))
+        if (this.LogBackupIntervalSecs == null && ec.Includes("logBackupIntervalSecs",true))
         {
             this.LogBackupIntervalSecs = Int32.MinValue;
         }
         //      C# -> System.String? LogMode
         // GraphQL -> logMode: String! (scalar)
-        if (this.LogMode == null && Exploration.Includes(parent + ".logMode", true))
+        if (this.LogMode == null && ec.Includes("logMode",true))
         {
             this.LogMode = "FETCH";
         }
         //      C# -> System.Int32? NumChannels
         // GraphQL -> numChannels: Int! (scalar)
-        if (this.NumChannels == null && Exploration.Includes(parent + ".numChannels", true))
+        if (this.NumChannels == null && ec.Includes("numChannels",true))
         {
             this.NumChannels = Int32.MinValue;
         }
         //      C# -> System.String? ParamFilePath
         // GraphQL -> paramFilePath: String! (scalar)
-        if (this.ParamFilePath == null && Exploration.Includes(parent + ".paramFilePath", true))
+        if (this.ParamFilePath == null && ec.Includes("paramFilePath",true))
         {
             this.ParamFilePath = "FETCH";
         }
         //      C# -> System.String? RestoreConfiguredSrcDatabaseId
         // GraphQL -> restoreConfiguredSrcDatabaseId: String! (scalar)
-        if (this.RestoreConfiguredSrcDatabaseId == null && Exploration.Includes(parent + ".restoreConfiguredSrcDatabaseId", true))
+        if (this.RestoreConfiguredSrcDatabaseId == null && ec.Includes("restoreConfiguredSrcDatabaseId",true))
         {
             this.RestoreConfiguredSrcDatabaseId = "FETCH";
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = "FETCH";
         }
@@ -262,12 +261,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SapHanaDatabaseInfoObject> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SapHanaDatabaseInfoObject());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SapHanaDatabaseInfoObject> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

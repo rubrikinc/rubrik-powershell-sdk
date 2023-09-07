@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int32? ExportId
         // GraphQL -> exportId: Int! (scalar)
-        if (this.ExportId == null && Exploration.Includes(parent + ".exportId", true))
+        if (this.ExportId == null && ec.Includes("exportId",true))
         {
             this.ExportId = Int32.MinValue;
         }
         //      C# -> System.String? Share
         // GraphQL -> share: String! (scalar)
-        if (this.Share == null && Exploration.Includes(parent + ".share", true))
+        if (this.Share == null && ec.Includes("share",true))
         {
             this.Share = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ShareExportIdPair> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ShareExportIdPair());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ShareExportIdPair> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

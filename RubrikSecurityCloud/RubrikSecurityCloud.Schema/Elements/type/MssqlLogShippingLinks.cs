@@ -115,36 +115,35 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> Link? PrimaryDatabase
         // GraphQL -> primaryDatabase: Link (type)
-        if (this.PrimaryDatabase == null && Exploration.Includes(parent + ".primaryDatabase"))
+        if (this.PrimaryDatabase == null && ec.Includes("primaryDatabase",false))
         {
             this.PrimaryDatabase = new Link();
-            this.PrimaryDatabase.ApplyExploratoryFieldSpec(parent + ".primaryDatabase");
+            this.PrimaryDatabase.ApplyExploratoryFieldSpec(ec.NewChild("primaryDatabase"));
         }
         //      C# -> Link? SecondaryDatabase
         // GraphQL -> secondaryDatabase: Link (type)
-        if (this.SecondaryDatabase == null && Exploration.Includes(parent + ".secondaryDatabase"))
+        if (this.SecondaryDatabase == null && ec.Includes("secondaryDatabase",false))
         {
             this.SecondaryDatabase = new Link();
-            this.SecondaryDatabase.ApplyExploratoryFieldSpec(parent + ".secondaryDatabase");
+            this.SecondaryDatabase.ApplyExploratoryFieldSpec(ec.NewChild("secondaryDatabase"));
         }
         //      C# -> Link? SecondaryInstance
         // GraphQL -> secondaryInstance: Link (type)
-        if (this.SecondaryInstance == null && Exploration.Includes(parent + ".secondaryInstance"))
+        if (this.SecondaryInstance == null && ec.Includes("secondaryInstance",false))
         {
             this.SecondaryInstance = new Link();
-            this.SecondaryInstance.ApplyExploratoryFieldSpec(parent + ".secondaryInstance");
+            this.SecondaryInstance.ApplyExploratoryFieldSpec(ec.NewChild("secondaryInstance"));
         }
         //      C# -> Link? SeedRequest
         // GraphQL -> seedRequest: Link (type)
-        if (this.SeedRequest == null && Exploration.Includes(parent + ".seedRequest"))
+        if (this.SeedRequest == null && ec.Includes("seedRequest",false))
         {
             this.SeedRequest = new Link();
-            this.SeedRequest.ApplyExploratoryFieldSpec(parent + ".seedRequest");
+            this.SeedRequest.ApplyExploratoryFieldSpec(ec.NewChild("seedRequest"));
         }
     }
 
@@ -178,12 +177,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<MssqlLogShippingLinks> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new MssqlLogShippingLinks());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<MssqlLogShippingLinks> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

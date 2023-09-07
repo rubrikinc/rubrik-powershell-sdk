@@ -179,64 +179,63 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> PrincipalTypeEnum? PrincipalType
         // GraphQL -> principalType: PrincipalTypeEnum! (enum)
-        if (this.PrincipalType == null && Exploration.Includes(parent + ".principalType", true))
+        if (this.PrincipalType == null && ec.Includes("principalType",true))
         {
             this.PrincipalType = new PrincipalTypeEnum();
         }
         //      C# -> System.String? AuthDomainId
         // GraphQL -> authDomainId: String! (scalar)
-        if (this.AuthDomainId == null && Exploration.Includes(parent + ".authDomainId", true))
+        if (this.AuthDomainId == null && ec.Includes("authDomainId",true))
         {
             this.AuthDomainId = "FETCH";
         }
         //      C# -> System.String? AuthDomainName
         // GraphQL -> authDomainName: String! (scalar)
-        if (this.AuthDomainName == null && Exploration.Includes(parent + ".authDomainName", true))
+        if (this.AuthDomainName == null && ec.Includes("authDomainName",true))
         {
             this.AuthDomainName = "FETCH";
         }
         //      C# -> System.String? Email
         // GraphQL -> email: String (scalar)
-        if (this.Email == null && Exploration.Includes(parent + ".email", true))
+        if (this.Email == null && ec.Includes("email",true))
         {
             this.Email = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> DateTime? LastLogin
         // GraphQL -> lastLogin: DateTime (scalar)
-        if (this.LastLogin == null && Exploration.Includes(parent + ".lastLogin", true))
+        if (this.LastLogin == null && ec.Includes("lastLogin",true))
         {
             this.LastLogin = new DateTime();
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> List<Role>? Roles
         // GraphQL -> roles: [Role!]! (type)
-        if (this.Roles == null && Exploration.Includes(parent + ".roles"))
+        if (this.Roles == null && ec.Includes("roles",false))
         {
             this.Roles = new List<Role>();
-            this.Roles.ApplyExploratoryFieldSpec(parent + ".roles");
+            this.Roles.ApplyExploratoryFieldSpec(ec.NewChild("roles"));
         }
         //      C# -> LdapTotpStatus? TotpStatus
         // GraphQL -> totpStatus: LdapTotpStatus (type)
-        if (this.TotpStatus == null && Exploration.Includes(parent + ".totpStatus"))
+        if (this.TotpStatus == null && ec.Includes("totpStatus",false))
         {
             this.TotpStatus = new LdapTotpStatus();
-            this.TotpStatus.ApplyExploratoryFieldSpec(parent + ".totpStatus");
+            this.TotpStatus.ApplyExploratoryFieldSpec(ec.NewChild("totpStatus"));
         }
     }
 
@@ -270,12 +269,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AuthorizedPrincipal> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AuthorizedPrincipal());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AuthorizedPrincipal> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

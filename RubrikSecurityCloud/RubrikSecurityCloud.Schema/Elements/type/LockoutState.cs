@@ -117,36 +117,35 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> LockMethod? LockMethod
         // GraphQL -> lockMethod: LockMethod! (enum)
-        if (this.LockMethod == null && Exploration.Includes(parent + ".lockMethod", true))
+        if (this.LockMethod == null && ec.Includes("lockMethod",true))
         {
             this.LockMethod = new LockMethod();
         }
         //      C# -> UnlockMethod? UnlockMethod
         // GraphQL -> unlockMethod: UnlockMethod! (enum)
-        if (this.UnlockMethod == null && Exploration.Includes(parent + ".unlockMethod", true))
+        if (this.UnlockMethod == null && ec.Includes("unlockMethod",true))
         {
             this.UnlockMethod = new UnlockMethod();
         }
         //      C# -> System.Boolean? IsLocked
         // GraphQL -> isLocked: Boolean! (scalar)
-        if (this.IsLocked == null && Exploration.Includes(parent + ".isLocked", true))
+        if (this.IsLocked == null && ec.Includes("isLocked",true))
         {
             this.IsLocked = true;
         }
         //      C# -> DateTime? LockedAt
         // GraphQL -> lockedAt: DateTime (scalar)
-        if (this.LockedAt == null && Exploration.Includes(parent + ".lockedAt", true))
+        if (this.LockedAt == null && ec.Includes("lockedAt",true))
         {
             this.LockedAt = new DateTime();
         }
         //      C# -> DateTime? UnlockedAt
         // GraphQL -> unlockedAt: DateTime (scalar)
-        if (this.UnlockedAt == null && Exploration.Includes(parent + ".unlockedAt", true))
+        if (this.UnlockedAt == null && ec.Includes("unlockedAt",true))
         {
             this.UnlockedAt = new DateTime();
         }
@@ -182,12 +181,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<LockoutState> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new LockoutState());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<LockoutState> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

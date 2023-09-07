@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<System.String>? ClusterUuids
         // GraphQL -> clusterUuids: [UUID!]! (scalar)
-        if (this.ClusterUuids == null && Exploration.Includes(parent + ".clusterUuids", true))
+        if (this.ClusterUuids == null && ec.Includes("clusterUuids",true))
         {
             this.ClusterUuids = new List<System.String>();
         }
         //      C# -> List<CertificateClusterOperationError>? ClusterErrors
         // GraphQL -> clusterErrors: [CertificateClusterOperationError!]! (type)
-        if (this.ClusterErrors == null && Exploration.Includes(parent + ".clusterErrors"))
+        if (this.ClusterErrors == null && ec.Includes("clusterErrors",false))
         {
             this.ClusterErrors = new List<CertificateClusterOperationError>();
-            this.ClusterErrors.ApplyExploratoryFieldSpec(parent + ".clusterErrors");
+            this.ClusterErrors.ApplyExploratoryFieldSpec(ec.NewChild("clusterErrors"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<DeleteGlobalCertificateReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new DeleteGlobalCertificateReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<DeleteGlobalCertificateReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

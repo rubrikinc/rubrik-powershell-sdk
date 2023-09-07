@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("objectType")]
         public HierarchyObjectTypeEnum? ObjectType { get; set; }
 
+        //      C# -> System.String? AnalyzedSnapshotFid
+        // GraphQL -> analyzedSnapshotFid: UUID! (scalar)
+        [JsonProperty("analyzedSnapshotFid")]
+        public System.String? AnalyzedSnapshotFid { get; set; }
+
         //      C# -> DateTime? DetectedTime
         // GraphQL -> detectedTime: DateTime (scalar)
         [JsonProperty("detectedTime")]
@@ -55,6 +60,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("firstMatchedSnapshotDate")]
         public DateTime? FirstMatchedSnapshotDate { get; set; }
 
+        //      C# -> System.String? FirstMatchedSnapshotFid
+        // GraphQL -> firstMatchedSnapshotFid: UUID! (scalar)
+        [JsonProperty("firstMatchedSnapshotFid")]
+        public System.String? FirstMatchedSnapshotFid { get; set; }
+
+        //      C# -> System.Boolean? IsFirstMatchedSnapshotExpired
+        // GraphQL -> isFirstMatchedSnapshotExpired: Boolean! (scalar)
+        [JsonProperty("isFirstMatchedSnapshotExpired")]
+        public System.Boolean? IsFirstMatchedSnapshotExpired { get; set; }
+
         //      C# -> System.Boolean? IsQuarantined
         // GraphQL -> isQuarantined: Boolean! (scalar)
         [JsonProperty("isQuarantined")]
@@ -75,11 +90,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("objectName")]
         public System.String? ObjectName { get; set; }
 
-        //      C# -> System.String? SnapshotFid
-        // GraphQL -> snapshotFid: UUID! (scalar)
-        [JsonProperty("snapshotFid")]
-        public System.String? SnapshotFid { get; set; }
-
 
         #endregion
 
@@ -92,16 +102,18 @@ namespace RubrikSecurityCloud.Types
     public FileMatch Set(
         IndicatorOfCompromiseKind? MatchType = null,
         HierarchyObjectTypeEnum? ObjectType = null,
+        System.String? AnalyzedSnapshotFid = null,
         DateTime? DetectedTime = null,
         System.String? FileName = null,
         System.Int64? FileSize = null,
         System.String? Filepath = null,
         DateTime? FirstMatchedSnapshotDate = null,
+        System.String? FirstMatchedSnapshotFid = null,
+        System.Boolean? IsFirstMatchedSnapshotExpired = null,
         System.Boolean? IsQuarantined = null,
         System.Int64? MatchId = null,
         System.String? ObjectFid = null,
-        System.String? ObjectName = null,
-        System.String? SnapshotFid = null
+        System.String? ObjectName = null
     ) 
     {
         if ( MatchType != null ) {
@@ -109,6 +121,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ObjectType != null ) {
             this.ObjectType = ObjectType;
+        }
+        if ( AnalyzedSnapshotFid != null ) {
+            this.AnalyzedSnapshotFid = AnalyzedSnapshotFid;
         }
         if ( DetectedTime != null ) {
             this.DetectedTime = DetectedTime;
@@ -125,6 +140,12 @@ namespace RubrikSecurityCloud.Types
         if ( FirstMatchedSnapshotDate != null ) {
             this.FirstMatchedSnapshotDate = FirstMatchedSnapshotDate;
         }
+        if ( FirstMatchedSnapshotFid != null ) {
+            this.FirstMatchedSnapshotFid = FirstMatchedSnapshotFid;
+        }
+        if ( IsFirstMatchedSnapshotExpired != null ) {
+            this.IsFirstMatchedSnapshotExpired = IsFirstMatchedSnapshotExpired;
+        }
         if ( IsQuarantined != null ) {
             this.IsQuarantined = IsQuarantined;
         }
@@ -136,9 +157,6 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ObjectName != null ) {
             this.ObjectName = ObjectName;
-        }
-        if ( SnapshotFid != null ) {
-            this.SnapshotFid = SnapshotFid;
         }
         return this;
     }
@@ -159,6 +177,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> objectType: HierarchyObjectTypeEnum (enum)
         if (this.ObjectType != null) {
             s += ind + "objectType\n" ;
+        }
+        //      C# -> System.String? AnalyzedSnapshotFid
+        // GraphQL -> analyzedSnapshotFid: UUID! (scalar)
+        if (this.AnalyzedSnapshotFid != null) {
+            s += ind + "analyzedSnapshotFid\n" ;
         }
         //      C# -> DateTime? DetectedTime
         // GraphQL -> detectedTime: DateTime (scalar)
@@ -185,6 +208,16 @@ namespace RubrikSecurityCloud.Types
         if (this.FirstMatchedSnapshotDate != null) {
             s += ind + "firstMatchedSnapshotDate\n" ;
         }
+        //      C# -> System.String? FirstMatchedSnapshotFid
+        // GraphQL -> firstMatchedSnapshotFid: UUID! (scalar)
+        if (this.FirstMatchedSnapshotFid != null) {
+            s += ind + "firstMatchedSnapshotFid\n" ;
+        }
+        //      C# -> System.Boolean? IsFirstMatchedSnapshotExpired
+        // GraphQL -> isFirstMatchedSnapshotExpired: Boolean! (scalar)
+        if (this.IsFirstMatchedSnapshotExpired != null) {
+            s += ind + "isFirstMatchedSnapshotExpired\n" ;
+        }
         //      C# -> System.Boolean? IsQuarantined
         // GraphQL -> isQuarantined: Boolean! (scalar)
         if (this.IsQuarantined != null) {
@@ -205,90 +238,96 @@ namespace RubrikSecurityCloud.Types
         if (this.ObjectName != null) {
             s += ind + "objectName\n" ;
         }
-        //      C# -> System.String? SnapshotFid
-        // GraphQL -> snapshotFid: UUID! (scalar)
-        if (this.SnapshotFid != null) {
-            s += ind + "snapshotFid\n" ;
-        }
         return s;
     }
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> IndicatorOfCompromiseKind? MatchType
         // GraphQL -> matchType: IndicatorOfCompromiseKind! (enum)
-        if (this.MatchType == null && Exploration.Includes(parent + ".matchType", true))
+        if (this.MatchType == null && ec.Includes("matchType",true))
         {
             this.MatchType = new IndicatorOfCompromiseKind();
         }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum (enum)
-        if (this.ObjectType == null && Exploration.Includes(parent + ".objectType", true))
+        if (this.ObjectType == null && ec.Includes("objectType",true))
         {
             this.ObjectType = new HierarchyObjectTypeEnum();
         }
+        //      C# -> System.String? AnalyzedSnapshotFid
+        // GraphQL -> analyzedSnapshotFid: UUID! (scalar)
+        if (this.AnalyzedSnapshotFid == null && ec.Includes("analyzedSnapshotFid",true))
+        {
+            this.AnalyzedSnapshotFid = "FETCH";
+        }
         //      C# -> DateTime? DetectedTime
         // GraphQL -> detectedTime: DateTime (scalar)
-        if (this.DetectedTime == null && Exploration.Includes(parent + ".detectedTime", true))
+        if (this.DetectedTime == null && ec.Includes("detectedTime",true))
         {
             this.DetectedTime = new DateTime();
         }
         //      C# -> System.String? FileName
         // GraphQL -> fileName: String! (scalar)
-        if (this.FileName == null && Exploration.Includes(parent + ".fileName", true))
+        if (this.FileName == null && ec.Includes("fileName",true))
         {
             this.FileName = "FETCH";
         }
         //      C# -> System.Int64? FileSize
         // GraphQL -> fileSize: Long! (scalar)
-        if (this.FileSize == null && Exploration.Includes(parent + ".fileSize", true))
+        if (this.FileSize == null && ec.Includes("fileSize",true))
         {
             this.FileSize = new System.Int64();
         }
         //      C# -> System.String? Filepath
         // GraphQL -> filepath: String! (scalar)
-        if (this.Filepath == null && Exploration.Includes(parent + ".filepath", true))
+        if (this.Filepath == null && ec.Includes("filepath",true))
         {
             this.Filepath = "FETCH";
         }
         //      C# -> DateTime? FirstMatchedSnapshotDate
         // GraphQL -> firstMatchedSnapshotDate: DateTime (scalar)
-        if (this.FirstMatchedSnapshotDate == null && Exploration.Includes(parent + ".firstMatchedSnapshotDate", true))
+        if (this.FirstMatchedSnapshotDate == null && ec.Includes("firstMatchedSnapshotDate",true))
         {
             this.FirstMatchedSnapshotDate = new DateTime();
         }
+        //      C# -> System.String? FirstMatchedSnapshotFid
+        // GraphQL -> firstMatchedSnapshotFid: UUID! (scalar)
+        if (this.FirstMatchedSnapshotFid == null && ec.Includes("firstMatchedSnapshotFid",true))
+        {
+            this.FirstMatchedSnapshotFid = "FETCH";
+        }
+        //      C# -> System.Boolean? IsFirstMatchedSnapshotExpired
+        // GraphQL -> isFirstMatchedSnapshotExpired: Boolean! (scalar)
+        if (this.IsFirstMatchedSnapshotExpired == null && ec.Includes("isFirstMatchedSnapshotExpired",true))
+        {
+            this.IsFirstMatchedSnapshotExpired = true;
+        }
         //      C# -> System.Boolean? IsQuarantined
         // GraphQL -> isQuarantined: Boolean! (scalar)
-        if (this.IsQuarantined == null && Exploration.Includes(parent + ".isQuarantined", true))
+        if (this.IsQuarantined == null && ec.Includes("isQuarantined",true))
         {
             this.IsQuarantined = true;
         }
         //      C# -> System.Int64? MatchId
         // GraphQL -> matchId: Long! (scalar)
-        if (this.MatchId == null && Exploration.Includes(parent + ".matchId", true))
+        if (this.MatchId == null && ec.Includes("matchId",true))
         {
             this.MatchId = new System.Int64();
         }
         //      C# -> System.String? ObjectFid
         // GraphQL -> objectFid: UUID! (scalar)
-        if (this.ObjectFid == null && Exploration.Includes(parent + ".objectFid", true))
+        if (this.ObjectFid == null && ec.Includes("objectFid",true))
         {
             this.ObjectFid = "FETCH";
         }
         //      C# -> System.String? ObjectName
         // GraphQL -> objectName: String! (scalar)
-        if (this.ObjectName == null && Exploration.Includes(parent + ".objectName", true))
+        if (this.ObjectName == null && ec.Includes("objectName",true))
         {
             this.ObjectName = "FETCH";
-        }
-        //      C# -> System.String? SnapshotFid
-        // GraphQL -> snapshotFid: UUID! (scalar)
-        if (this.SnapshotFid == null && Exploration.Includes(parent + ".snapshotFid", true))
-        {
-            this.SnapshotFid = "FETCH";
         }
     }
 
@@ -322,12 +361,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<FileMatch> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new FileMatch());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<FileMatch> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

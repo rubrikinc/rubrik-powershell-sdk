@@ -146,51 +146,50 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> GenericSnapshot? CurrentSnapshot
         // GraphQL -> currentSnapshot: GenericSnapshot! (interface)
-        if (this.CurrentSnapshot == null && Exploration.Includes(parent + ".currentSnapshot"))
+        if (this.CurrentSnapshot == null && ec.Includes("currentSnapshot",false))
         {
             var impls = new List<GenericSnapshot>();
-            impls.ApplyExploratoryFieldSpec(parent + ".currentSnapshot");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("currentSnapshot"));
             this.CurrentSnapshot = (GenericSnapshot)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> GenericSnapshot? PreviousSnapshot
         // GraphQL -> previousSnapshot: GenericSnapshot (interface)
-        if (this.PreviousSnapshot == null && Exploration.Includes(parent + ".previousSnapshot"))
+        if (this.PreviousSnapshot == null && ec.Includes("previousSnapshot",false))
         {
             var impls = new List<GenericSnapshot>();
-            impls.ApplyExploratoryFieldSpec(parent + ".previousSnapshot");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("previousSnapshot"));
             this.PreviousSnapshot = (GenericSnapshot)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> System.Int32? Count
         // GraphQL -> count: Int! (scalar)
-        if (this.Count == null && Exploration.Includes(parent + ".count", true))
+        if (this.Count == null && ec.Includes("count",true))
         {
             this.Count = Int32.MinValue;
         }
         //      C# -> List<SnapshotFileDeltaV2Edge>? Edges
         // GraphQL -> edges: [SnapshotFileDeltaV2Edge!]! (type)
-        if (this.Edges == null && Exploration.Includes(parent + ".edges"))
+        if (this.Edges == null && ec.Includes("edges",false))
         {
             this.Edges = new List<SnapshotFileDeltaV2Edge>();
-            this.Edges.ApplyExploratoryFieldSpec(parent + ".edges");
+            this.Edges.ApplyExploratoryFieldSpec(ec.NewChild("edges"));
         }
         //      C# -> List<SnapshotFileDeltaV2>? Nodes
         // GraphQL -> nodes: [SnapshotFileDeltaV2!]! (type)
-        if (this.Nodes == null && Exploration.Includes(parent + ".nodes"))
+        if (this.Nodes == null && ec.Includes("nodes",false))
         {
             this.Nodes = new List<SnapshotFileDeltaV2>();
-            this.Nodes.ApplyExploratoryFieldSpec(parent + ".nodes");
+            this.Nodes.ApplyExploratoryFieldSpec(ec.NewChild("nodes"));
         }
         //      C# -> PageInfo? PageInfo
         // GraphQL -> pageInfo: PageInfo! (type)
-        if (this.PageInfo == null && Exploration.Includes(parent + ".pageInfo"))
+        if (this.PageInfo == null && ec.Includes("pageInfo",false))
         {
             this.PageInfo = new PageInfo();
-            this.PageInfo.ApplyExploratoryFieldSpec(parent + ".pageInfo");
+            this.PageInfo.ApplyExploratoryFieldSpec(ec.NewChild("pageInfo"));
         }
     }
 
@@ -224,12 +223,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SnapshotFileDeltaV2Connection> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SnapshotFileDeltaV2Connection());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SnapshotFileDeltaV2Connection> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

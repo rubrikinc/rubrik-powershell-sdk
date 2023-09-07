@@ -249,94 +249,93 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ClusterEncryptionType? EncryptionType
         // GraphQL -> encryptionType: ClusterEncryptionType! (enum)
-        if (this.EncryptionType == null && Exploration.Includes(parent + ".encryptionType", true))
+        if (this.EncryptionType == null && ec.Includes("encryptionType",true))
         {
             this.EncryptionType = new ClusterEncryptionType();
         }
         //      C# -> List<ClusterKeyProtection>? SupportedKeyTypes
         // GraphQL -> supportedKeyTypes: [ClusterKeyProtection!]! (enum)
-        if (this.SupportedKeyTypes == null && Exploration.Includes(parent + ".supportedKeyTypes", true))
+        if (this.SupportedKeyTypes == null && ec.Includes("supportedKeyTypes",true))
         {
             this.SupportedKeyTypes = new List<ClusterKeyProtection>();
         }
         //      C# -> System.Boolean? CanUserManageCluster
         // GraphQL -> canUserManageCluster: Boolean! (scalar)
-        if (this.CanUserManageCluster == null && Exploration.Includes(parent + ".canUserManageCluster", true))
+        if (this.CanUserManageCluster == null && ec.Includes("canUserManageCluster",true))
         {
             this.CanUserManageCluster = true;
         }
         //      C# -> System.String? Cipher
         // GraphQL -> cipher: String! (scalar)
-        if (this.Cipher == null && Exploration.Includes(parent + ".cipher", true))
+        if (this.Cipher == null && ec.Includes("cipher",true))
         {
             this.Cipher = "FETCH";
         }
         //      C# -> System.Boolean? IsConnected
         // GraphQL -> isConnected: Boolean! (scalar)
-        if (this.IsConnected == null && Exploration.Includes(parent + ".isConnected", true))
+        if (this.IsConnected == null && ec.Includes("isConnected",true))
         {
             this.IsConnected = true;
         }
         //      C# -> System.Boolean? IsEncrypted
         // GraphQL -> isEncrypted: Boolean! (scalar)
-        if (this.IsEncrypted == null && Exploration.Includes(parent + ".isEncrypted", true))
+        if (this.IsEncrypted == null && ec.Includes("isEncrypted",true))
         {
             this.IsEncrypted = true;
         }
         //      C# -> System.Boolean? IsOnCloud
         // GraphQL -> isOnCloud: Boolean! (scalar)
-        if (this.IsOnCloud == null && Exploration.Includes(parent + ".isOnCloud", true))
+        if (this.IsOnCloud == null && ec.Includes("isOnCloud",true))
         {
             this.IsOnCloud = true;
         }
         //      C# -> System.String? KmipClientUsername
         // GraphQL -> kmipClientUsername: String! (scalar)
-        if (this.KmipClientUsername == null && Exploration.Includes(parent + ".kmipClientUsername", true))
+        if (this.KmipClientUsername == null && ec.Includes("kmipClientUsername",true))
         {
             this.KmipClientUsername = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? SoftwareVersion
         // GraphQL -> softwareVersion: String! (scalar)
-        if (this.SoftwareVersion == null && Exploration.Includes(parent + ".softwareVersion", true))
+        if (this.SoftwareVersion == null && ec.Includes("softwareVersion",true))
         {
             this.SoftwareVersion = "FETCH";
         }
         //      C# -> System.Int64? TotalKmipServers
         // GraphQL -> totalKmipServers: Long! (scalar)
-        if (this.TotalKmipServers == null && Exploration.Includes(parent + ".totalKmipServers", true))
+        if (this.TotalKmipServers == null && ec.Includes("totalKmipServers",true))
         {
             this.TotalKmipServers = new System.Int64();
         }
         //      C# -> System.String? Uuid
         // GraphQL -> uuid: UUID! (scalar)
-        if (this.Uuid == null && Exploration.Includes(parent + ".uuid", true))
+        if (this.Uuid == null && ec.Includes("uuid",true))
         {
             this.Uuid = "FETCH";
         }
         //      C# -> ClusterKeyRotation? LatestRotationCompletedInfo
         // GraphQL -> latestRotationCompletedInfo: ClusterKeyRotation (type)
-        if (this.LatestRotationCompletedInfo == null && Exploration.Includes(parent + ".latestRotationCompletedInfo"))
+        if (this.LatestRotationCompletedInfo == null && ec.Includes("latestRotationCompletedInfo",false))
         {
             this.LatestRotationCompletedInfo = new ClusterKeyRotation();
-            this.LatestRotationCompletedInfo.ApplyExploratoryFieldSpec(parent + ".latestRotationCompletedInfo");
+            this.LatestRotationCompletedInfo.ApplyExploratoryFieldSpec(ec.NewChild("latestRotationCompletedInfo"));
         }
         //      C# -> RscKeyRotationRequest? MostRecentRscRequest
         // GraphQL -> mostRecentRscRequest: RscKeyRotationRequest (type)
-        if (this.MostRecentRscRequest == null && Exploration.Includes(parent + ".mostRecentRscRequest"))
+        if (this.MostRecentRscRequest == null && ec.Includes("mostRecentRscRequest",false))
         {
             this.MostRecentRscRequest = new RscKeyRotationRequest();
-            this.MostRecentRscRequest.ApplyExploratoryFieldSpec(parent + ".mostRecentRscRequest");
+            this.MostRecentRscRequest.ApplyExploratoryFieldSpec(ec.NewChild("mostRecentRscRequest"));
         }
     }
 
@@ -370,12 +369,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ClusterEncryptionInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ClusterEncryptionInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ClusterEncryptionInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

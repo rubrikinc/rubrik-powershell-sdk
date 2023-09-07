@@ -187,66 +187,65 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int32? CreateSnapshotNum
         // GraphQL -> createSnapshotNum: Int! (scalar)
-        if (this.CreateSnapshotNum == null && Exploration.Includes(parent + ".createSnapshotNum", true))
+        if (this.CreateSnapshotNum == null && ec.Includes("createSnapshotNum",true))
         {
             this.CreateSnapshotNum = Int32.MinValue;
         }
         //      C# -> System.Int64? CreateTimeInMillis
         // GraphQL -> createTimeInMillis: Long! (scalar)
-        if (this.CreateTimeInMillis == null && Exploration.Includes(parent + ".createTimeInMillis", true))
+        if (this.CreateTimeInMillis == null && ec.Includes("createTimeInMillis",true))
         {
             this.CreateTimeInMillis = new System.Int64();
         }
         //      C# -> System.String? ErrorMsg
         // GraphQL -> errorMsg: String! (scalar)
-        if (this.ErrorMsg == null && Exploration.Includes(parent + ".errorMsg", true))
+        if (this.ErrorMsg == null && ec.Includes("errorMsg",true))
         {
             this.ErrorMsg = "FETCH";
         }
         //      C# -> System.String? ErrorType
         // GraphQL -> errorType: String! (scalar)
-        if (this.ErrorType == null && Exploration.Includes(parent + ".errorType", true))
+        if (this.ErrorType == null && ec.Includes("errorType",true))
         {
             this.ErrorType = "FETCH";
         }
         //      C# -> System.Boolean? IsDeleted
         // GraphQL -> isDeleted: Boolean! (scalar)
-        if (this.IsDeleted == null && Exploration.Includes(parent + ".isDeleted", true))
+        if (this.IsDeleted == null && ec.Includes("isDeleted",true))
         {
             this.IsDeleted = true;
         }
         //      C# -> System.String? ItemId
         // GraphQL -> itemId: String! (scalar)
-        if (this.ItemId == null && Exploration.Includes(parent + ".itemId", true))
+        if (this.ItemId == null && ec.Includes("itemId",true))
         {
             this.ItemId = "FETCH";
         }
         //      C# -> System.String? ItemMetadata
         // GraphQL -> itemMetadata: String! (scalar)
-        if (this.ItemMetadata == null && Exploration.Includes(parent + ".itemMetadata", true))
+        if (this.ItemMetadata == null && ec.Includes("itemMetadata",true))
         {
             this.ItemMetadata = "FETCH";
         }
         //      C# -> System.String? ItemName
         // GraphQL -> itemName: String! (scalar)
-        if (this.ItemName == null && Exploration.Includes(parent + ".itemName", true))
+        if (this.ItemName == null && ec.Includes("itemName",true))
         {
             this.ItemName = "FETCH";
         }
         //      C# -> System.String? ItemType
         // GraphQL -> itemType: String! (scalar)
-        if (this.ItemType == null && Exploration.Includes(parent + ".itemType", true))
+        if (this.ItemType == null && ec.Includes("itemType",true))
         {
             this.ItemType = "FETCH";
         }
         //      C# -> System.Int64? SizeInBytes
         // GraphQL -> sizeInBytes: Long! (scalar)
-        if (this.SizeInBytes == null && Exploration.Includes(parent + ".sizeInBytes", true))
+        if (this.SizeInBytes == null && ec.Includes("sizeInBytes",true))
         {
             this.SizeInBytes = new System.Int64();
         }
@@ -282,12 +281,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SkippedItemInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SkippedItemInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SkippedItemInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

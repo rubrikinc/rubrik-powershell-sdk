@@ -145,48 +145,47 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? OrganizationName
         // GraphQL -> organizationName: String! (scalar)
-        if (this.OrganizationName == null && Exploration.Includes(parent + ".organizationName", true))
+        if (this.OrganizationName == null && ec.Includes("organizationName",true))
         {
             this.OrganizationName = "FETCH";
         }
         //      C# -> System.String? ProjectId
         // GraphQL -> projectId: String! (scalar)
-        if (this.ProjectId == null && Exploration.Includes(parent + ".projectId", true))
+        if (this.ProjectId == null && ec.Includes("projectId",true))
         {
             this.ProjectId = "FETCH";
         }
         //      C# -> System.Int64? ProjectNumber
         // GraphQL -> projectNumber: Long! (scalar)
-        if (this.ProjectNumber == null && Exploration.Includes(parent + ".projectNumber", true))
+        if (this.ProjectNumber == null && ec.Includes("projectNumber",true))
         {
             this.ProjectNumber = new System.Int64();
         }
         //      C# -> System.String? RoleId
         // GraphQL -> roleId: String! (scalar)
-        if (this.RoleId == null && Exploration.Includes(parent + ".roleId", true))
+        if (this.RoleId == null && ec.Includes("roleId",true))
         {
             this.RoleId = "FETCH";
         }
         //      C# -> System.Boolean? UsesGlobalConfig
         // GraphQL -> usesGlobalConfig: Boolean! (scalar)
-        if (this.UsesGlobalConfig == null && Exploration.Includes(parent + ".usesGlobalConfig", true))
+        if (this.UsesGlobalConfig == null && ec.Includes("usesGlobalConfig",true))
         {
             this.UsesGlobalConfig = true;
         }
@@ -222,12 +221,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GcpCloudAccountProject> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GcpCloudAccountProject());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<GcpCloudAccountProject> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 
