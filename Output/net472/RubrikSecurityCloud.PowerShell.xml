@@ -8258,7 +8258,7 @@
             Create a new RscGqlVars object.
             </summary>
         </member>
-        <member name="M:RubrikSecurityCloud.RscGqlVars.#ctor(System.Object,System.Tuple{System.String,System.String}[],RubrikSecurityCloud.GetOverrideValueForVarDelegate,System.Boolean)">
+        <member name="M:RubrikSecurityCloud.RscGqlVars.#ctor(System.Object,System.Tuple{System.String,System.String}[],RubrikSecurityCloud.GetOverrideValueForVarDelegate,System.Boolean,System.String)">
             <summary>
             Create a new RscGqlVars object.
             </summary>
@@ -8293,6 +8293,11 @@
         <member name="M:RubrikSecurityCloud.RscGqlVars.Info">
             <summary>
             Return documentation links for the variables.
+            </summary>
+        </member>
+        <member name="M:RubrikSecurityCloud.RscGqlVars.Example">
+            <summary>
+            Return an example of how the variables can be initialized.
             </summary>
         </member>
         <member name="M:RubrikSecurityCloud.RscGqlVars.conformToVarDefs(RubrikSecurityCloud.GetOverrideValueForVarDelegate,System.Boolean)">
