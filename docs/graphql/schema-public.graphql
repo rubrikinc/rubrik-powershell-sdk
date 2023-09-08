@@ -12068,6 +12068,9 @@ input AddAwsIamUserBasedCloudAccountInput {
 
   # AWS Role ARN with native protection policy on AWS cloud account. Role name must start with 'rubrik-polaris-'. Role ARN is required only while adding new AWS cloud account.
   roleArn: String
+
+  # Key value pair for external artifacts associated with an AWS account.
+  externalArtifactMap: [ExternalArtifacts!]
 }
 # Response for the request to add IAM user-based AWS cloud accounts.
 type AddAwsIamUserBasedCloudAccountReply {
@@ -38885,7 +38888,7 @@ type ExportUrlSpecs {
   # Polaris account of the user.
   polarisAccount: String!
 }
-# Key Value pair for external artifacts for AWS account.
+# Key value pair for external artifacts associated with an AWS account.
 input ExternalArtifactMap {
   # AWS unique identifier of the external artifact.
   externalArtifactValue: String!
@@ -38900,6 +38903,14 @@ type ExternalArtifactMapReply {
 
   # AWS unique identifier of the external artifact.
   externalArtifactValue: String!
+}
+# Key value pair for external artifacts associated with an AWS account.
+input ExternalArtifacts {
+  # Keyword for external artifacts.
+  externalArtifactKey: AwsCloudExternalArtifact
+
+  # AWS unique identifier of the external artifact.
+  externalArtifactValue: String
 }
 type FailoverChart {
   name: String!
@@ -44663,6 +44674,9 @@ enum HierarchyFilterField {
 
   # Filter hosts based on CBT status.
   HOST_CBT_STATUS
+
+  # Filter hosts based on the domain controller FID.
+  HOST_DOMAIN_CONTROLLER_FID
 
   # Filter according to the migration status of the physical hosts.
   HOST_MIGRATION_STATUS
@@ -70628,6 +70642,9 @@ input PatchAwsIamUserBasedCloudAccountInput {
 
   # AWS role ARN for native protection.
   awsRoleArn: AwsRoleArnInput
+
+  # Key value pair for external artifacts associated with an AWS account.
+  externalArtifactMap: [ExternalArtifacts!]
 }
 # Input for patching Db2 database.
 input PatchDb2DatabaseInput {
@@ -94398,6 +94415,9 @@ type VsphereVm implements CdmHierarchyObject , CdmHierarchySnappableNew , Hierar
 
   # ID of guest credential assigned to the virtual machine.
   guestCredentialId: String!
+
+  # Specifies whether the virtual machine is a template or not.
+  isTemplate: Boolean!
 
   # Parent ID of this workload.
   parentWorkloadIdOpt: UUID

@@ -320,23 +320,21 @@ namespace RubrikSecurityCloud.PowerShell.Private
 
         protected void BuildInput(System.Object fieldSpecObj, string example)
         {
-            var vars = new RscGqlVars(
+            _input = new RscCmdletInput(
+                this.Op,
+                new RscGqlVars(
                     this.Arg,
                     _opArgDefs,
                     this.GetValueFromParameterSet,
                     this.IsIntrospective(),
-                    example);
-            var gqlOp = new RscGqlOperation(
+                    example),
+                fieldSpecObj,
+                new RscGqlOperation(
                     _opKind,
                     _opName,
                     _opArgs,
                     _opReturnType
-                );
-            _input = new RscCmdletInput(
-                this.Op,
-                vars,
-                fieldSpecObj,
-                gqlOp
+                )
             );
             _logger.Debug($"Input: {this._input}");
         }

@@ -27,16 +27,6 @@
     <PackageReference Include="GraphQL" Version="7.2.2" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Elements\enum\*.cs" />
-    <Folder Include="Elements\input\*.cs" />
-    <Folder Include="Elements\interface\*.cs" />
-    <Folder Include="Elements\operation\*.cs" />
-    <Folder Include="Elements\type\*.cs" />
-    <Folder Include="Elements\union\*.cs" />
-    <Folder Include="Elements\query\" />
-    <Folder Include="Elements\mutation\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\RubrikSecurityCloud.Common\RubrikSecurityCloud.Common.csproj" />
   </ItemGroup>
 </Project>
