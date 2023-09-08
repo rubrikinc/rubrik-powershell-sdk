@@ -243,90 +243,89 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> MosaicVersionObjectVersionState? VersionState
         // GraphQL -> versionState: MosaicVersionObjectVersionState (enum)
-        if (this.VersionState == null && Exploration.Includes(parent + ".versionState", true))
+        if (this.VersionState == null && ec.Includes("versionState",true))
         {
             this.VersionState = new MosaicVersionObjectVersionState();
         }
         //      C# -> System.String? DbInfo
         // GraphQL -> dbInfo: String (scalar)
-        if (this.DbInfo == null && Exploration.Includes(parent + ".dbInfo", true))
+        if (this.DbInfo == null && ec.Includes("dbInfo",true))
         {
             this.DbInfo = "FETCH";
         }
         //      C# -> System.Int32? ExpirationTime
         // GraphQL -> expirationTime: Int (scalar)
-        if (this.ExpirationTime == null && Exploration.Includes(parent + ".expirationTime", true))
+        if (this.ExpirationTime == null && ec.Includes("expirationTime",true))
         {
             this.ExpirationTime = Int32.MinValue;
         }
         //      C# -> System.String? GroupPolicyId
         // GraphQL -> groupPolicyId: String (scalar)
-        if (this.GroupPolicyId == null && Exploration.Includes(parent + ".groupPolicyId", true))
+        if (this.GroupPolicyId == null && ec.Includes("groupPolicyId",true))
         {
             this.GroupPolicyId = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.Int32? IntervalType
         // GraphQL -> intervalType: Int (scalar)
-        if (this.IntervalType == null && Exploration.Includes(parent + ".intervalType", true))
+        if (this.IntervalType == null && ec.Includes("intervalType",true))
         {
             this.IntervalType = Int32.MinValue;
         }
         //      C# -> System.Int32? JobDuration
         // GraphQL -> jobDuration: Int (scalar)
-        if (this.JobDuration == null && Exploration.Includes(parent + ".jobDuration", true))
+        if (this.JobDuration == null && ec.Includes("jobDuration",true))
         {
             this.JobDuration = Int32.MinValue;
         }
         //      C# -> System.String? NeedSstableLoaderStr
         // GraphQL -> needSstableLoaderStr: String (scalar)
-        if (this.NeedSstableLoaderStr == null && Exploration.Includes(parent + ".needSstableLoaderStr", true))
+        if (this.NeedSstableLoaderStr == null && ec.Includes("needSstableLoaderStr",true))
         {
             this.NeedSstableLoaderStr = "FETCH";
         }
         //      C# -> System.String? RsList
         // GraphQL -> rsList: String (scalar)
-        if (this.RsList == null && Exploration.Includes(parent + ".rsList", true))
+        if (this.RsList == null && ec.Includes("rsList",true))
         {
             this.RsList = "FETCH";
         }
         //      C# -> System.String? SourceMgmtObj
         // GraphQL -> sourceMgmtObj: String (scalar)
-        if (this.SourceMgmtObj == null && Exploration.Includes(parent + ".sourceMgmtObj", true))
+        if (this.SourceMgmtObj == null && ec.Includes("sourceMgmtObj",true))
         {
             this.SourceMgmtObj = "FETCH";
         }
         //      C# -> System.String? SourceName
         // GraphQL -> sourceName: String (scalar)
-        if (this.SourceName == null && Exploration.Includes(parent + ".sourceName", true))
+        if (this.SourceName == null && ec.Includes("sourceName",true))
         {
             this.SourceName = "FETCH";
         }
         //      C# -> System.String? SourceType
         // GraphQL -> sourceType: String (scalar)
-        if (this.SourceType == null && Exploration.Includes(parent + ".sourceType", true))
+        if (this.SourceType == null && ec.Includes("sourceType",true))
         {
             this.SourceType = "FETCH";
         }
         //      C# -> System.String? SystemPolicyId
         // GraphQL -> systemPolicyId: String (scalar)
-        if (this.SystemPolicyId == null && Exploration.Includes(parent + ".systemPolicyId", true))
+        if (this.SystemPolicyId == null && ec.Includes("systemPolicyId",true))
         {
             this.SystemPolicyId = "FETCH";
         }
         //      C# -> System.Int32? Timestamp
         // GraphQL -> timestamp: Int (scalar)
-        if (this.Timestamp == null && Exploration.Includes(parent + ".timestamp", true))
+        if (this.Timestamp == null && ec.Includes("timestamp",true))
         {
             this.Timestamp = Int32.MinValue;
         }
@@ -362,12 +361,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<MosaicVersionObject> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new MosaicVersionObject());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<MosaicVersionObject> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -2245,10 +2245,10 @@ type Query {
     # The path under which you want your search to run.
     path: String!,
 
-    # Id of the snapshot to be searched/browsed
+    # ID of the snapshot to be searched or browsed.
     snapshotFid: UUID!,
 
-    # Name prefix for searching for files within a snapshot.
+    # Name prefix to search for files within a snapshot.
     searchPrefix: String): SnapshotFileConnection!
 
   # Returns the script to setup backup for a SQL Server database.
@@ -3279,6 +3279,20 @@ type Query {
     # Input for InternalQueryGuestCredential.
     input: QueryGuestCredentialInput!): GuestCredentialDetailListResponse!
 
+  # Get Guest OS credentials.
+  guestCredentialsV2(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Filter for Guest OS credentials.
+    filter: [GuestOsCredentialFilterInput!],
+
+    # Sort Guest OS credentials.
+    sortBy: GuestOsCredentialSortBy): GuestOsCredentialConnection!
+
   # Determine whether the current organization has configured identity providers.
   hasIdpConfigured: Boolean!
 
@@ -3813,6 +3827,8 @@ type Query {
   licensesForClusterProductSummary(
     # Input required for getting the licenses at product type level.
     input: LicensesForClusterProductSummaryInput!): LicensesForClusterProductReply!
+
+  # Information about a Linux fileset.
   linuxFileset(
     # The Rubrik UUID for the object.
     fid: UUID!): LinuxFileset!
@@ -5749,6 +5765,8 @@ type Query {
 
     # Assigned role IDs for service account.
     roleIds: [UUID!]): ServiceAccountConnection!
+
+  # Information about a NAS share fileset.
   shareFileset(
     # The Rubrik UUID for the object.
     fid: UUID!): ShareFileset!
@@ -5815,6 +5833,8 @@ type Query {
 
     # Timezone.
     timezone: String): [SlaAuditDetail!]!
+
+  # Conflicting objects for an SLA Domain assignment.
   slaConflictObjects(
     # The Rubrik UUIDs for the objects.
     fids: [UUID!]!): [HierarchyObject!]!
@@ -7107,6 +7127,8 @@ type Query {
   windowsCluster(
     # The Rubrik UUID for the object.
     fid: UUID!): WindowsCluster!
+
+  # Information about a Windows fileset.
   windowsFileset(
     # The Rubrik UUID for the object.
     fid: UUID!): WindowsFileset!
@@ -7853,7 +7875,10 @@ type Mutation {
   createCustomAnalyzer(input: CreateCustomAnalyzerInput!): Analyzer!
 
   # Create a custom report.
-  createCustomReport(input: CreateCustomReportInput!): CreateCustomReportReply!
+  createCustomReport(input: CreateCustomReportInput!,
+
+    # Room of the report.
+    reportRoom: String): CreateCustomReportReply!
 
   # Creates a download from archival request
   # 
@@ -8265,11 +8290,6 @@ type Mutation {
   deleteExchangeSnapshotMount(
     # Input for V1DeleteExchangeSnapshotMount.
     input: DeleteExchangeSnapshotMountInput!): AsyncRequestStatus!
-
-  # Delete the metadata of a failed Rubrik cluster operation job.
-  deleteFailedClusterOperationJobData(
-    # Input for deleting the metadata of a failed Rubrik cluster operation job.
-    input: DeleteFailedClusterOperationJobDataInput!): DeleteFailedClusterOperationJobDataReply!
 
   # Delete a failover cluster
   # 
@@ -9244,7 +9264,7 @@ type Mutation {
   # Mount disks to the given workload.
   mountDisk(
     # Input required to mount disks.
-    input: MountDiskInput!): AsyncJobStatus!
+    input: MountDiskInput!): MountDiskReply!
 
   # Initiate a Live Mount of a Nutanix virtual machine snapshot
   # 
@@ -9606,6 +9626,9 @@ type Mutation {
   reseedLogShippingSecondary(
     # Input for V1ReseedSecondary.
     input: ReseedLogShippingSecondaryInput!): AsyncRequestStatus!
+
+  # Used by the administrator to reset passwords for all users in the organization.
+  resetAllOrgUsersPasswords: Void
 
   # Used by the administrator to reset passwords for selected users in the organization.
   resetUsersPasswordsWithUserIds(
@@ -10152,7 +10175,7 @@ type Mutation {
   # Unmount selected disks.
   unmountDisk(
     # Input required to unmount disks.
-    input: UnmountDiskInput!): AsyncJobStatus!
+    input: UnmountDiskInput!): Void
   updateAccountOwner(
     # Specifies the user ID.
     userId: String!): Boolean!
@@ -11561,6 +11584,9 @@ type ActivitySeries {
   # The ID of the object associated with the activity series.
   objectId: String!
 
+  # The forever ID of the object associated with the activity series.
+  fid: UUID!
+
   # The name of the object associated with the activity series.
   objectName: String
 
@@ -11602,9 +11628,6 @@ type ActivitySeries {
 
   # Logical size (if applicable), in bytes.
   logicalSize: Long
-
-  # The forever ID of the object associated with the activity series.
-  fid: UUID
 
   # The ID of the activity series.
   activitySeriesId: UUID!
@@ -12433,12 +12456,12 @@ input AddSapHanaSystemInput {
 # Supported in v5.3+
 type AddSapHanaSystemReply {
   # Required. Supported in v5.3+
-  # Status of the job scheduled to refresh the system.
-  asyncRequestStatus: AsyncRequestStatus
-
-  # Required. Supported in v5.3+
   # The ID of the added SAP HANA system.
   id: String!
+
+  # Required. Supported in v5.3+
+  # Status of the job scheduled to refresh the system.
+  asyncRequestStatus: AsyncRequestStatus
 }
 # Storage array to add in a cluster.
 input AddStorageArrayInput {
@@ -13707,6 +13730,17 @@ type ArchiveK8sClusterReply {
   # UUID of the archived Kubernetes cluster.
   clusterId: UUID!
 }
+# Specifies the level at which an ARM template should be deployed.
+enum ArmTemplateDeploymentLevel {
+  # Unspecified deployment level.
+  DEPLOYMENT_LEVEL_UNSPECIFIED
+
+  # Resource group level.
+  RESOURCE_GROUP
+
+  # Subscription level.
+  SUBSCRIPTION
+}
 # Represents the trust policy for a role.
 type ArtifactPolicy {
   # The role for the trust policy.
@@ -13857,10 +13891,6 @@ type AsyncRequestStatus {
   # The end time of the request.
   endTime: DateTime
 
-  # Supported in v5.0+
-  # Any errors encountered.
-  error: RequestErrorInfo
-
   # Required. Supported in v5.0+
   # v5.0: The ID of the request object. Use it to poll the status.
   # v5.1+: The ID of the request object used to poll the status.
@@ -13887,6 +13917,10 @@ type AsyncRequestStatus {
   # v5.0: Status of the id.
   # v5.1+: Status of the ID.
   status: String!
+
+  # Supported in v5.0+
+  # Any errors encountered.
+  error: RequestErrorInfo
 }
 # Host AWS EC2 instance specifications for AWS EBS volume.
 type AttachmentSpecForEbsVolume {
@@ -17465,6 +17499,27 @@ enum AwsNativeRdsDbInstanceClass {
   # DB class is db.r5.xlarge.
   DB_R5_XLARGE
 
+  # DB class is db.r6gd.12xlarge.
+  DB_R6GD_12XLARGE
+
+  # DB class is db.r6gd.16xlarge.
+  DB_R6GD_16XLARGE
+
+  # DB class is db.r6gd.2xlarge.
+  DB_R6GD_2XLARGE
+
+  # DB class is db.r6gd.4xlarge.
+  DB_R6GD_4XLARGE
+
+  # DB class is db.r6gd.8xlarge.
+  DB_R6GD_8XLARGE
+
+  # DB class is db.r6gd.large.
+  DB_R6GD_LARGE
+
+  # DB class is db.r6gd.xlarge.
+  DB_R6GD_XLARGE
+
   # DB class is db.r6g.12xlarge.
   DB_R6G_12XLARGE
 
@@ -18778,13 +18833,19 @@ type AzureArmTemplateByFeature {
 
   # Policy permission version to be used for adding and upgrading the subscription.
   version: Int!
+
+  # Policy permissions groups versions to be used for adding and upgrading the subscription.
+  permissionsGroupVersions: [PermissionsGroupWithVersion!]!
+
+  # The level at which the template should be deployed.
+  deploymentLevel: ArmTemplateDeploymentLevel!
 }
 # Input for retrieving ARM templates for custom roles.
 input AzureArmTemplatesByFeatureInput {
   # Domain name of the customer's Azure Tenant.
   customerTenantDomainName: String!
 
-  # Features to be enabled for the Azure Cloud Account.
+  # Deprecated, use featuresToInclude instead. Features to be enabled for the Azure cloud account.
   features: [CloudAccountFeature!]!
 
   # Azure cloud account operation type.
@@ -18792,6 +18853,9 @@ input AzureArmTemplatesByFeatureInput {
 
   # Azure cloud type.
   cloudType: AzureCloudType!
+
+  # Features and permissions groups used to determine the permissions to include in the templates.
+  featuresToInclude: [AzureRoleArmTemplateFeature!]
 }
 # SLA Domain configuration for Azure Blob.
 type AzureBlobConfig {
@@ -21579,6 +21643,14 @@ type AzureRole {
   # Specifies whether role is created by Rubrik via OAuth flow or manually by the customer without OAuth flow.
   isRubrikManaged: Boolean!
 }
+# Azure cloud account feature and permissions groups to use when determining the required role permissions.
+input AzureRoleArmTemplateFeature {
+  # The permissions groups to include for the feature. If the list is empty, all permission groups will be included.
+  permissionsGroups: [PermissionsGroup!] = []
+
+  # The cloud account feature.
+  featureType: CloudAccountFeature!
+}
 type AzureRoleBasedAccount implements CloudAccount {
   # The subscription info with feature details.
   subscriptionWithFeatures: AzureSubscriptionWithFeaturesType!
@@ -23178,6 +23250,7 @@ type BaseSnapshotSummary {
   # Supported in v5.2+
   # ID of the parent snapshot if the current snapshot is a child snapshot. Child snapshots are snapshots of objects that are part of an app, either a vCloud Director vApp or an AppBlueprint. Snapshots of the app are parent snapshots.
   parentSnapshotId: String
+  cloudStorageTier: SnapshotCloudStorageTier
 
   # Supported in v5.2+
   # Snapshot retention related information for local, archival and replication locations.
@@ -23186,7 +23259,6 @@ type BaseSnapshotSummary {
   # Supported in v8.0+
   # A list of those archival location entries where cloudStorageTier is applicable.
   cloudStorageTiers: [PerLocationCloudStorageTier!]!
-  cloudStorageTier: SnapshotCloudStorageTier
 }
 # Basic snapshot schedule.
 type BasicSnapshotSchedule {
@@ -26840,9 +26912,9 @@ type CdmWorkload {
   # Supported in v5.2+
   # The ID of the SLA Domain whose retention policy is in use.
   retentionSlaDomainId: String
-  effectiveSlaHolder: EffectiveSlaHolder
   slaAssignable: SlaAssignable
   slaAssignment: SnappableSlaAssignment!
+  effectiveSlaHolder: EffectiveSlaHolder
 }
 # Snapshot of a Rubrik CDM workload.
 type CdmWorkloadSnapshot {
@@ -27459,6 +27531,9 @@ enum CloudAccountFeature {
   # Cloud account feature is GCP Shared VPC Host.
   GCP_SHARED_VPC_HOST
 
+  # Cloud account feature is Kubernetes Protection.
+  KUBERNETES_PROTECTION
+
   # Cloud account feature is RDS Protection.
   RDS_PROTECTION
 
@@ -28011,6 +28086,41 @@ enum CloudNativeLocTemplateType {
 
   # Specifies that target archival location should be in a specified region irrespective of the region of the source workloads.
   SPECIFIC_REGION
+}
+# Cloud native object type enum.
+enum CloudNativeObjectType {
+  # AWS EBS VOLUME.
+  AWS_EBS_VOLUME
+
+  # AWS EC2 INSTANCE.
+  AWS_EC2_INSTANCE
+
+  # AWS RDS INSTANCE.
+  AWS_RDS_INSTANCE
+
+  # AWS S3 BUCKET.
+  AWS_S3_BUCKET
+
+  # AZURE MANAGED DISK.
+  AZURE_MANAGED_DISK
+
+  # AZURE SQL DATABASE DB.
+  AZURE_SQL_DATABASE_DB
+
+  # AZURE SQL DATABASE SERVER.
+  AZURE_SQL_DATABASE_SERVER
+
+  # AZURE SQL MANAGED INSTANCE SERVER.
+  AZURE_SQL_MANAGED_INSTANCE_SERVER
+
+  # AZURE VIRTUAL MACHINE.
+  AZURE_VIRTUAL_MACHINE
+
+  # GCP DISK.
+  GCP_DISK
+
+  # GCP GCE INSTANCE.
+  GCP_GCE_INSTANCE
 }
 # Cloud-native Rubrik Backup Service(RBS) status.
 enum CloudNativeRbaStatusType {
@@ -30608,13 +30718,13 @@ input ClusterWebSignedCertificateInput {
 }
 # Supported in v5.2+
 type ClusterWebSignedCertificateReply {
-  # Supported in v5.2+
-  # Signed certificate of the web server.
-  cert: AddClusterCertificateReply
-
   # Required. Supported in v5.2+
   # A Boolean value that indicates if the web server is configured to use a certificate signed by an external CA.
   webServerConfiguredWithCaSignedCertificate: Boolean!
+
+  # Supported in v5.2+
+  # Signed certificate of the web server.
+  cert: AddClusterCertificateReply
 }
 # Available cold storage class options for tiering.
 enum ColdStorageClass {
@@ -30736,14 +30846,14 @@ enum ComplianceStatusEnum {
 # Supported in v5.0+
 type ComputeClusterDetail {
   # Required. Supported in v5.0+
+  moid: String!
+  computeClusterSummary: ComputeClusterSummary
+
+  # Required. Supported in v5.0+
   hosts: [VmwareHostSummary!]!
 
   # Required. Supported in v5.0+
-  moid: String!
-
-  # Required. Supported in v5.0+
   virtualMachines: [VirtualMachineSummary!]!
-  computeClusterSummary: ComputeClusterSummary
 }
 # Supported in v5.0+
 type ComputeClusterSummary {
@@ -30772,8 +30882,8 @@ type ComputeClusterSummary {
 
   # Name of the object from which the effective SLA domain is inherited
   effectiveSlaSourceObjectName: String
-  slaAssignable: SlaAssignable
   ioFilterStatus: IoFilterStatus
+  slaAssignable: SlaAssignable
 }
 # Configuration protection information.
 type ConfigProtectionInfo {
@@ -31775,6 +31885,9 @@ type CreateCustomReportReply {
   # Time the report was last viewed or opened.
   viewedAt: DateTime!
 
+  # Room of the report.
+  room: String
+
   # The list of charts in the custom report.
   charts: [ReportChartType!]!
 
@@ -32754,9 +32867,6 @@ input CreateVsphereVcenterInput {
 # Supported in v5.3+
 type CreateVsphereVcenterReply {
   # Required. Supported in v5.3+
-  asyncRequestStatus: AsyncRequestStatus
-
-  # Required. Supported in v5.3+
   # The ID of the vCenter server that controls the management of the virtual machine whose metadata will be refreshed.
   id: String!
 
@@ -32765,6 +32875,9 @@ type CreateVsphereVcenterReply {
 
   # Supported in v7.0+ An optional field that specifies whether HotAdd transport mode is enabled for On-Premise vCenter. When this value is `true`, HotAdd transport mode is enabled for this vCenter. When this value is `false`, HotAdd transport mode is not enabled for this vCenter. When this value is not specified, it indicates that this is an VMC vCenter.
   isHotAddProxyEnabledForOnPremVcenter: Boolean
+
+  # Required. Supported in v5.3+
+  asyncRequestStatus: AsyncRequestStatus
 }
 # Webhook configuration to add to an account.
 input CreateWebhookInput {
@@ -32980,6 +33093,12 @@ type CustomReportFilters {
   # List of policy IDs to filter on.
   policyId: [String!]
   sonarObjectTypes: [HierarchyObjectTypeEnum!]
+
+  # Whether to apply whitelists for the report.
+  shouldApplyWhitelists: Boolean!
+
+  # The date for the report.
+  date: DateTime
   slaDomain: [SlaDomain!]
 }
 input CustomReportFiltersConfig {
@@ -33043,6 +33162,12 @@ input CustomReportFiltersConfig {
   # List of policy IDs to filter on.
   policyId: [String!]
   sonarObjectTypes: [HierarchyObjectTypeEnum!]
+
+  # Whether to apply whitelists for the report.
+  shouldApplyWhitelists: Boolean
+
+  # The date for the report.
+  date: DateTime
 }
 # AWS customer created permission policy details.
 type CustomerManagedPolicy {
@@ -33250,6 +33375,9 @@ enum DataGovObjectType {
 
   # Represent VMWARE compute cluster.
   VSPHERE_COMPUTE_CLUSTER
+
+  # Represents VMWARE VSPHERE_DATACENTER_FOLDER.
+  VSPHERE_DATACENTER_FOLDER
 
   # Represents VMWARE VSPHERE_FOLDER.
   VSPHERE_FOLDER
@@ -33473,6 +33601,9 @@ enum DataViewTypeEnum {
 
   # Specifies the latest protection audit information for each protected workload.
   OBJECT_PROTECTION_AUDIT_LIST
+
+  # Specifies the protection audit information for all protected workloads.
+  OBJECT_PROTECTION_AUDIT_LIST_EXPORT
   PROTECTION_TASK_DETAILS
 
   # Specifies the database schema for QAuth objects.
@@ -34986,28 +35117,6 @@ input DeleteExchangeSnapshotMountInput {
 
   # Required. ID of the mount to remove.
   id: String!
-}
-# Request parameters for deleting the metadata of a failed cluster operation job.
-input DeleteFailedClusterOperationJobDataInput {
-  # Cluster UUID.
-  clusterUuid: UUID!
-
-  # Job type.
-  jobType: CcpJobType!
-}
-# Status and progress of a Rubrik cluster operation job. 
-type DeleteFailedClusterOperationJobDataReply {
-  # Job progress.
-  jobProgress: Int!
-
-  # Job progess detail.
-  message: String!
-
-  # Job status.
-  jobStatus: CdmJobStatus!
-
-  # Job type.
-  jobType: CcpJobType!
 }
 # Input for V1BulkDeleteFailoverClusterApp.
 input DeleteFailoverClusterAppInput {
@@ -38693,6 +38802,9 @@ input ExportSnapshotJobConfigV2Input {
   # ID of the virtual machine folder to export the new virtual machine to.
   folderId: String
 
+  # Specifies whether Export converts the recovered virtual machine to a template.
+  shouldConvertToTemplate: Boolean
+
   # Required. Supported in v5.1+
   # ID of the datastore to assign to the exported virtual machine.
   datastoreId: String!
@@ -38738,6 +38850,9 @@ input ExportSnapshotJobConfigV3Input {
 
   # ID of the virtual machine folder to export the new virtual machine to.
   folderId: String
+
+  # Specifies whether Export converts the recovered virtual machine to a template.
+  shouldConvertToTemplate: Boolean
 }
 # Supported in v5.0+
 input ExportSnapshotToStandaloneHostRequestInput {
@@ -39216,10 +39331,10 @@ type FailoverClusterAppSummary {
   failoverClusterName: String
   effectiveSlaHolder: EffectiveSlaHolder
   failoverClusterAppConfig: FailoverClusterAppConfig
-  slaAssignable: SlaAssignable
   connectionStatus: FailoverClusterAppConnectionStatus!
   operatingSystemType: FailoverClusterOsType
   slaAssignment: SlaAssignment
+  slaAssignable: SlaAssignable
 }
 # Supported in v5.2+
 input FailoverClusterConfigInput {
@@ -39364,10 +39479,10 @@ type FailoverClusterSummary {
   # Required. Supported in v5.2+
   primaryClusterId: String!
   effectiveSlaHolder: EffectiveSlaHolder
-  slaAssignable: SlaAssignable
   connectionStatus: FailoverClusterConnectionStatus!
   operatingSystemType: FailoverClusterOsType
   slaAssignment: SlaAssignment
+  slaAssignable: SlaAssignable
 }
 # The top level descendent of failover cluster.
 interface FailoverClusterTopLevelDescendantType {
@@ -43229,10 +43344,6 @@ type GetS3BucketStateForRecoveryReply {
 # Schema Response Object carrying details of schema for the table and request status details.
 type GetSchemaResponse {
   # Supported in m3.2.0-m4.2.0
-  # Object with schema details.
-  data: CassandraSchemaObject
-
-  # Supported in m3.2.0-m4.2.0
   # Response Message string.
   message: String
 
@@ -43243,6 +43354,10 @@ type GetSchemaResponse {
   # Supported in m3.2.0-m4.2.0
   # Status of the request.
   status: Boolean
+
+  # Supported in m3.2.0-m4.2.0
+  # Object with schema details.
+  data: CassandraSchemaObject
 }
 input GetSmbConfigurationInput {
   # Required. UUID used to identify the cluster the request goes to.
@@ -43839,6 +43954,80 @@ type GuestCredentialDetailListResponse {
   # Supported in v5.0+
   # Total list responses.
   total: Long
+}
+# Guest OS Credential.
+type GuestOsCredential {
+  # ID of the Guest OS credential.
+  id: String!
+
+  # Username of the Guest OS credential.
+  username: String!
+
+  # Domain name of the Guest OS credential.
+  domain: String!
+
+  # Cluster of the Guest OS credential.
+  cluster: Cluster!
+}
+# Paginated list of GuestOsCredential objects. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
+type GuestOsCredentialConnection {
+  # List of GuestOsCredential objects with additional pagination information. Use `nodes` if per-object cursors are not needed.
+  edges: [GuestOsCredentialEdge!]!
+
+  # List of GuestOsCredential objects.
+  nodes: [GuestOsCredential!]!
+
+  # General information about this page of results.
+  pageInfo: PageInfo!
+
+  # Total number of GuestOsCredential objects matching the request arguments.
+  count: Int!
+}
+# Wrapper around the GuestOsCredential object. This wrapper is used for pagination.
+type GuestOsCredentialEdge {
+  # String used to identify this edge.
+  cursor: String!
+
+  # The actual GuestOsCredential object wrapped by this edge.
+  node: GuestOsCredential!
+}
+# Filter for Guest OS credential results.
+enum GuestOsCredentialFilterField {
+  # Cluster UUID filter for Guest OS credential results.
+  CLUSTER_UUID
+
+  # A filter has not been specified, and any provided filter text will not be taken into consideration.
+  FIELD_UNSPECIFIED
+
+  # Username filter for Guest OS credential results.
+  USER_NAME
+}
+# Filter for Guest OS credential results.
+input GuestOsCredentialFilterInput {
+  # Type of filter.
+  field: GuestOsCredentialFilterField = FIELD_UNSPECIFIED
+
+  # Values for the filter type.
+  texts: [String!] = []
+}
+# Sort Guest OS credential results.
+input GuestOsCredentialSortBy {
+  # Field to sort Guest OS credentials.
+  field: GuestOsCredentialSortByField = FIELD_UNSPECIFIED
+
+  # Sort order for Guest OS credential.
+  sortOrder: SortOrder = ASC
+}
+# Sort by the field for Guest OS credential results.
+enum GuestOsCredentialSortByField {
+  # Sort by the cluster name.
+  CLUSTER_NAME
+
+  # A filter has not been specified, and any provided filter text will not be taken into consideration.
+  FIELD_UNSPECIFIED
+
+  # Sort by username.
+  USER_NAME
 }
 # The guest operating system.
 enum GuestOsType {
@@ -44555,6 +44744,9 @@ enum HierarchyFilterField {
   # Filter by the Jira project type.
   JIRA_PROJECT_TYPE
 
+  # Filter based on Kubernetes cluster name.
+  K8S_CLUSTER_NAME
+
   # Filter Kubernetes clusters based on associated Rubrik cluster.
   # Since the Kubernetes cluster is natively managed by Rubrik SaaS, a separate filter is used.
   KUPR_CDM_CLUSTER_ID
@@ -44729,6 +44921,9 @@ enum HierarchyFilterField {
 
   # Filter by the name by a given regex expression.
   REGEX
+
+  # Filter by objects with at least one snapshot.
+  RUBRIK_NATIVE_HAS_AT_LEAST_ONE_SNAPSHOT
 
   # Filter by whether Rubrik SaaS native workload object
   # has an unindexed snapshot or it has a snapshot that is expired
@@ -45018,6 +45213,9 @@ enum HierarchyObjectTypeEnum {
   ShareFileset
   SnapMirrorCloud
   StorageArrayVolumeGroup
+
+  # VSphere datacenter folder.
+  VSPHERE_DATACENTER_FOLDER
 
   # VSphere Datastore cluster.
   VSPHERE_DATASTORE_CLUSTER
@@ -45351,6 +45549,9 @@ enum HierarchySortByField {
 
   # Sort by ID of managed object.
   ID
+
+  # Sort based on Kubernetes cluster name.
+  K8S_CLUSTER_NAME
 
   # Sort MSSQL availability groups by copy only.
   MSSQL_AVAILABILITY_GROUP_COPY_ONLY
@@ -46286,9 +46487,6 @@ type HostSummary {
   name: String
 
   # Supported in v5.0+
-  nasBaseConfig: NasBaseConfig
-
-  # Supported in v5.0+
   # v5.0-v5.2:
   # v5.3+: Operating system of the host. One of Windows, Linux, AIX, HPUX, and SunOS.
   operatingSystem: String
@@ -46332,6 +46530,9 @@ type HostSummary {
   lastRefreshTimeStamp: Long
   mssqlCbtEffectiveStatus: MssqlCbtEffectiveStatusType
   mssqlCbtEnabled: MssqlCbtStatusType
+
+  # Supported in v5.0+
+  nasBaseConfig: NasBaseConfig
 }
 # Supported in v5.1+
 # Status of Rubrik Io Filter on ESX Host.
@@ -50551,6 +50752,9 @@ type LinuxFileset implements CdmHierarchyObject , CdmHierarchySnappableNew , Hie
   # Host of the linux fileset.
   host: PhysicalHost
 
+  # Fileset template of the Linux fileset.
+  filesetTemplate: FilesetTemplate
+
   # Failover cluster app.
   failoverClusterApp: FailoverClusterApp
 
@@ -51253,12 +51457,12 @@ type MalwareScanSnapshotLimit {
   maxSnapshotsPerObject: Int
 
   # Supported in v6.0+
-  # A array of object ID and list of snapshots of that object to scan. If this field is specified, none of the other `MalwareScanSnapshotLimit` fields may be specified.
-  snapshotsToScanPerObject: [ObjectIdToSnapshotIds!]!
-
-  # Supported in v6.0+
   # Minimum snapshot time.  Any snapshots taken before this time will be elided.
   startTime: DateTime
+
+  # Supported in v6.0+
+  # A array of object ID and list of snapshots of that object to scan. If this field is specified, none of the other `MalwareScanSnapshotLimit` fields may be specified.
+  snapshotsToScanPerObject: [ObjectIdToSnapshotIds!]!
 }
 # Supported in v6.0+
 input MalwareScanSnapshotLimitInput {
@@ -51711,6 +51915,9 @@ enum ManagedObjectType {
 
   # VMware vSphere datacenter.
   VSPHERE_DATACENTER
+
+  # VMware vSphere datacenter folder.
+  VSPHERE_DATACENTER_FOLDER
 
   # VMware vSphere datastore.
   VSPHERE_DATASTORE
@@ -53125,6 +53332,16 @@ type ManagedVolumeSlaClientConfig {
 
   # Host ID for the channels.
   hostId: String!
+}
+# SLA Domain configuration for Managed Volume.
+type ManagedVolumeSlaConfig {
+  # Specifies the duration for which the Managed Volume logs will be retained.
+  logRetention: Duration
+}
+# Input to configure the SLA Domain for Managed Volume logs.
+input ManagedVolumeSlaConfigInput {
+  # Specifies the duration for which the Managed Volume logs will be retained.
+  logRetention: SlaDurationInput
 }
 # Supported in v5.3+
 # v5.3-v8.0:
@@ -54628,6 +54845,12 @@ input MongoRecoveryRequestConfigInput {
   # Required. Supported in v9.0+
   # Timestamp of the snapshot version to be used for restore.
   versionTime: DateTime
+
+  # Rate limit restore data ingestion on target MongoDB cluster.
+  restoreThrottleInBytesPerSecond: Long
+
+  # Boolean flag to restore MongoDB collections with index.
+  isRestoreWithIndex: Boolean
 
   # Required. Supported in v9.0+
   # ID of the MongoDB source cluster.
@@ -56561,10 +56784,6 @@ type MosaicStoreObject {
   # UUID of the store.
   id: String!
 
-  # Supported in m3.2.0-m4.2.0
-  # Metadata information for store.
-  storeMetadata: StoreMetadata
-
   # Required. Supported in m3.2.0-m4.2.0
   # Name of the store.
   storeName: String!
@@ -56577,6 +56796,10 @@ type MosaicStoreObject {
   # Url for nfs server.
   surlNfs: String
   storeType: MosaicStoreObjectStoreType!
+
+  # Supported in m3.2.0-m4.2.0
+  # Metadata information for store.
+  storeMetadata: StoreMetadata
 }
 enum MosaicStoreObjectStoreType {
   MOSAIC_STORE_OBJECT_STORE_TYPE_AZURE_STORE
@@ -56669,9 +56892,6 @@ enum MosaicVersionObjectVersionState {
 }
 # Input required to mount disks.
 input MountDiskInput {
-  # Customer account name.
-  accountId: String!
-
   # Snapshot ID from which disk will be mounted.
   snapshotId: UUID!
 
@@ -56679,10 +56899,13 @@ input MountDiskInput {
   targetWorkloadId: UUID!
 
   # Snapshot types.
-  snapshotType: SnapshotType
+  snapshotType: SnapshotType!
 
   # List of disk IDs that would be mounted.
   mountDiskIds: [UUID!]!
+
+  # Workload type.
+  workloadType: CloudNativeObjectType!
 }
 # Supported in v5.0+
 input MountDiskJobConfigInput {
@@ -56697,6 +56920,11 @@ input MountDiskJobConfigInput {
   # Supported in v5.0+
   # The VMDK files to attach to the existing virtual machine. By default, this value is empty, which attaches all of the VMDKs in the snapshot to the target virtual machine.
   vmdkIds: [String!] = []
+}
+# Contains the information about taskchain ID of the mount job if succeeded.
+type MountDiskReply {
+  # Taskchain ID of the mount job.
+  taskchainUuid: UUID!
 }
 # Supported in v5.0+
 input MountExportSnapshotJobCommonOptionsInput {
@@ -58099,7 +58327,6 @@ type MssqlDbSummary {
   # Supported in v9.0+
   # Specifies the interval, in seconds, the Rubrik cluster waits before the next log backup job deletes MSSQL log files whose 'nextTime' field specifies a time longer than this interval. To specify a wait interval, enter a positive integer. To immediately delete log files regardless of age, specify an interval of -1. To preserve all log files, specify an interval of -2.
   hostLogRetention: Int
-  snappable: CdmWorkload
 
   # A list of reasons that a SQL Server database cannot be protected by Rubrik.
   unprotectableReasonsV50: [MssqlUnprotectableReason!]!
@@ -58131,6 +58358,7 @@ type MssqlDbSummary {
   # A list of reasons that a SQL Server database cannot be protected by the Rubrik CDM.
   unprotectableReasonsV91: [String!]!
   recoveryModel: MssqlDbSummaryRecoveryModel
+  snappable: CdmWorkload
 }
 enum MssqlDbSummaryRecoveryModel {
   MSSQL_DB_SUMMARY_RECOVERY_MODEL_BULK_LOGGED
@@ -61836,12 +62064,12 @@ type NutanixAsyncRequestFailureSummary {
 # Supported in v7.0+
 type NutanixAsyncRequestSuccessSummary {
   # Required. Supported in v7.0+
-  # Information for tracking the status of asynchronous requests.
-  asyncRequestStatus: AsyncRequestStatus
-
-  # Required. Supported in v7.0+
   # ID of the Nutanix virtual machine.
   vmId: String!
+
+  # Required. Supported in v7.0+
+  # Information for tracking the status of asynchronous requests.
+  asyncRequestStatus: AsyncRequestStatus
 }
 # Backup script configuration.
 type NutanixBackupScript {
@@ -62895,11 +63123,11 @@ type NutanixClusterSummary {
 
   # Required. Supported in v5.0+
   username: String!
+  slaAssignable: SlaAssignable
 
   # Supported in v5.3+
   # Describes any pending SLA Domain assignment on this object.
   pendingSlaDomain: ManagedObjectPendingSlaInfo
-  slaAssignable: SlaAssignable
 }
 # Supported in v5.0+
 type NutanixContainer {
@@ -64141,6 +64369,9 @@ type NutanixVmMountSummary {
   # Supported in v7.0+
   # The status of the migration job for the mounted virtual machine. Valid values are 'REQUESTED', 'RUNNING', 'SUCCEEDED', and 'FAILED'. An unspecified value indicates that no migration job has been initiated for the mounted virtual machine.
   migrationStatus: String
+
+  # Specifies the Live Mount status.
+  mountStatus: String
 }
 # Supported in v5.0+
 input NutanixVmPatchInput {
@@ -65749,6 +65980,12 @@ type O365OrgInfo {
 
   # Sharepoint Lists not compliant.
   past1DaySpListOutOfComplianceCount: Int!
+
+  # Compliance count for SharePoint site collections.
+  past1DaySpSiteCollectionComplianceCount: Int!
+
+  # Out of compliance count for SharePoint site collections.
+  past1DaySpSiteCollectionOutOfComplianceCount: Int!
 }
 # Pairing of a preferred data location (PDL) and the workload corresponding to the PDL group.
 type O365PdlAndWorkloadPair {
@@ -65796,12 +66033,15 @@ type O365ReplyFields {
   # Microsoft Office 365 SharePointDrive data returned by browse or search delta response.
   spDriveItem: O365SharePointDrive
 }
-# Recover task type i.e Restore/Export.
+# Recover operation type, Restore/Export/Inplace.
 enum O365RestoreActionType {
-  # Used for export task.
+  # Used for export operation.
   EXPORT_SNAPPABLE
 
-  # Used for restore task.
+  # Used for in-place restore operation.
+  INPLACE_RESTORE_SNAPPABLE
+
+  # Used for restore operation.
   RESTORE_SNAPPABLE
 }
 # Configuration for the setup of a Rubrik-hosted subscription.
@@ -67177,6 +67417,9 @@ type ObjectSpecificConfigs {
 
   # SLA Domain configuration for AWS S3 bucket.
   awsNativeS3SlaConfig: AwsNativeS3SlaConfig
+
+  # SLA Domain configuration for Managed Volume object.
+  managedVolumeSlaConfig: ManagedVolumeSlaConfig
 }
 # Object-specific configurations.
 input ObjectSpecificConfigsInput {
@@ -67212,6 +67455,9 @@ input ObjectSpecificConfigsInput {
 
   # Input to configure the SLA Domain configuration for AWS S3 bucket.
   awsNativeS3SlaConfigInput: AwsNativeS3SlaConfigInput
+
+  # Input to configure the SLA Domain for Managed Volume.
+  managedVolumeSlaConfigInput: ManagedVolumeSlaConfigInput
 }
 type ObjectStatus {
   id: String!
@@ -68507,16 +68753,8 @@ type OracleDbDetail {
   tablespaces: [String!]!
 
   # Supported in v5.3+
-  # An array that contains the host info for each instance.
-  hostsInfo: [HostInfo!]!
-
-  # Supported in v5.3+
   # General information about last validation job.
   lastValidationResult: OracleLastValidationResult
-
-  # Supported in v5.3+
-  # Describes any pending SLA Domain assignment on this object.
-  pendingSlaDomain: ManagedObjectPendingSlaInfo
 
   # Supported in v6.0+
   # Ordered list of database unique names to use for backup in a Data Guard group.
@@ -68594,6 +68832,14 @@ type OracleDbDetail {
 
   # The time stamp of the most recent recovery point for this database.
   latestRecoveryPointV91: DateTime
+
+  # Supported in v5.3+
+  # An array that contains the host info for each instance.
+  hostsInfo: [HostInfo!]!
+
+  # Supported in v5.3+
+  # Describes any pending SLA Domain assignment on this object.
+  pendingSlaDomain: ManagedObjectPendingSlaInfo
 }
 # Input for retrieving Oracle database.
 input OracleDbInput {
@@ -68629,10 +68875,6 @@ type OracleDbSummary {
   # Required. Supported in v5.0+
   # ID assigned to the Oracle database.
   id: String!
-
-  # Required. Supported in v5.0+
-  # An array that contains information about the objects in the infrastructure path of a specified Oracle database.
-  infraPath: [ManagedHierarchyObjectAncestor!]!
 
   # Supported in v5.0+
   # Details of the instances of the Oracle database.
@@ -68684,10 +68926,6 @@ type OracleDbSummary {
   standaloneHostName: String
 
   # Supported in v5.1+
-  # Information about the current backup task.
-  currentBackupTaskInfo: BackupTaskDiagnosticInfo
-
-  # Supported in v5.1+
   # True/false value indicating if backup task information is included in the response.
   includeBackupTaskInfo: Boolean
 
@@ -68725,10 +68963,6 @@ type OracleDbSummary {
   dataGuardGroupId: String
 
   # Supported in v6.0+
-  # List of Data Guard group members.
-  dataGuardGroupMembers: [DataGuardGroupMember!]!
-
-  # Supported in v6.0+
   # Name of the Data Guard group to which this database belongs.
   dataGuardGroupName: String
 
@@ -68745,6 +68979,18 @@ type OracleDbSummary {
   hasLogConfigFromSla: Boolean
   snappable: CdmWorkload
   dataGuardType: CdmDataGuardType
+
+  # Required. Supported in v5.0+
+  # An array that contains information about the objects in the infrastructure path of a specified Oracle database.
+  infraPath: [ManagedHierarchyObjectAncestor!]!
+
+  # Supported in v5.1+
+  # Information about the current backup task.
+  currentBackupTaskInfo: BackupTaskDiagnosticInfo
+
+  # Supported in v6.0+
+  # List of Data Guard group members.
+  dataGuardGroupMembers: [DataGuardGroupMember!]!
 }
 # The directory paths of the Oracle database.
 type OracleDirectoryPaths {
@@ -69083,10 +69329,6 @@ type OracleHostSummary {
   id: String!
 
   # Required. Supported in v5.0+
-  # An array that contains information about the objects in the infrastructure path of a specified Oracle database.
-  infraPath: [ManagedHierarchyObjectAncestor!]!
-
-  # Required. Supported in v5.0+
   # Hostname of the standalone Oracle host.
   name: String!
 
@@ -69109,6 +69351,10 @@ type OracleHostSummary {
   # ID assigned to the host.
   hostId: String
   slaAssignable: SlaAssignable
+
+  # Required. Supported in v5.0+
+  # An array that contains information about the objects in the infrastructure path of a specified Oracle database.
+  infraPath: [ManagedHierarchyObjectAncestor!]!
 }
 # Supported in v5.0+
 type OracleInstanceProperties {
@@ -70451,12 +70697,12 @@ input PatchSapHanaSystemInput {
 # Supported in v5.3+
 type PatchSapHanaSystemReply {
   # Required. Supported in v5.3+
-  # Status of the job scheduled to refresh the SAP HANA system.
-  asyncRequestStatus: AsyncRequestStatus
-
-  # Required. Supported in v5.3+
   # Summary of the updated SAP HANA system object.
   systemSummary: SapHanaSystemSummary
+
+  # Required. Supported in v5.3+
+  # Status of the job scheduled to refresh the SAP HANA system.
+  asyncRequestStatus: AsyncRequestStatus
 }
 # Supported in v6.0+
 type PathInfo {
@@ -70476,13 +70722,13 @@ type PathInfo {
   # File path that matched the malware Indicator of Compromise.
   path: String!
 
-  # Supported in v6.0+
-  # Hash algorithm and hash values.
-  requestedHashDetails: [HashDetail!]!
-
   # Required. Supported in v6.0+
   # Details about the matching YARA rule(s).
   yaraMatchDetails: [YARAMatchDetail!]!
+
+  # Supported in v6.0+
+  # Hash algorithm and hash values.
+  requestedHashDetails: [HashDetail!]!
 }
 type PathNode {
   fid: UUID!
@@ -70765,6 +71011,14 @@ enum PermissionsGroup {
   # operations. These permissions are applicable to the cloud native
   # SQL DB and SQL MI features.
   RECOVERY
+}
+# Azure permissions group with accompanying version number.
+type PermissionsGroupWithVersion {
+  # Azure cloud account permissions group.
+  permissionsGroup: PermissionsGroup!
+
+  # Version of the permissions group.
+  version: Int!
 }
 # Persistent storage configured for storing backups.
 type PersistentStorage {
@@ -71444,6 +71698,7 @@ enum PolarisSnappableAuthorizedOperationsEnum {
   DOWNLOAD
   EXPORT_SNAPSHOTS
   MANAGE_PROTECTION
+  MOUNT
   RESTORE_TO_ORIGIN
   TAKE_ON_DEMAND_SNAPSHOT
   VIEW_INVENTORY
@@ -72184,6 +72439,9 @@ enum ProductDocumentationType {
 }
 # Name of product.
 enum ProductName {
+  # Azure Active Directory protection.
+  AAD
+
   # AppFlows.
   APPFLOWS
 
@@ -72204,6 +72462,9 @@ enum ProductName {
 
   # O365.
   O365
+
+  # On-premise Active Directory Protection.
+  ONPREM_AD
 
   # Radar.
   RADAR
@@ -72421,6 +72682,9 @@ type ProtectionTaskDetailsTableFilter {
 enum ProviderType {
   # A generic endpoint receives the webhook.
   CUSTOM
+
+  # A Microsoft Sentinel endpoint receives the webhook.
+  MICROSOFT_SENTINEL
 
   # A PagerDuty endpoint receives the webhook.
   PAGERDUTY
@@ -73293,6 +73557,9 @@ type RdsInstanceDetailsFromAws {
 
   # Port used to connect to the RDS Instance.
   port: Long!
+
+  # Version of the database engine.
+  dbEngineVersion: String!
 }
 # RDS Export defaults from AWS.
 type RdsInstanceExportDefaults {
@@ -73661,12 +73928,12 @@ input RegisterNasSystemInput {
 # v8.1+: Response for register NAS system operation.
 type RegisterNasSystemReply {
   # Required. Supported in v7.0+
-  # The asynchronous request status of the job that registers the NAS system.
-  nasDiscoverJobStatus: AsyncRequestStatus
-
-  # Required. Supported in v7.0+
   # A summary of the NAS system being registered.
   nasSystemSummary: UpdateNasSystemReply
+
+  # Required. Supported in v7.0+
+  # The asynchronous request status of the job that registers the NAS system.
+  nasDiscoverJobStatus: AsyncRequestStatus
 }
 # Registered mode.
 enum RegisteredMode {
@@ -75041,7 +75308,7 @@ input RestoreO365TeamsFilesInput {
   # Specifies whether destination channel should be created.
   shouldCreateDestChannel: Boolean!
 
-  # Recovery task - Restore or Export.
+  # Recovery action type for the job.
   actionType: O365RestoreActionType!
 
   # Indicates whether the channel being restored is STANDARD or PRIVATE.
@@ -77835,14 +78102,14 @@ enum SearchObjectType {
 # Supported in v5.0+
 type SearchResponse {
   # Supported in v5.0+
-  fileVersions: [FileVersion!]!
-
-  # Supported in v5.0+
   # Just the filename without the whole path.
   filename: String
 
   # Supported in v5.0+
   path: String
+
+  # Supported in v5.0+
+  fileVersions: [FileVersion!]!
 }
 # Supported in v5.0+
 type SearchResponseListResponse {
@@ -83933,8 +84200,11 @@ type UnmanagedObjectDetail {
   # Any of the snapshots are retained by a SLA.
   hasSnapshotsWithPolicy: Boolean!
 
-  # Workload ID.
+  # Object ID.
   id: String!
+
+  # Workload ID.
+  workloadId: String!
 
   # Whether the object is remote or local.
   isRemote: Boolean
@@ -84109,14 +84379,14 @@ enum UnmappingValidationType {
 }
 # Input required to unmount disks.
 input UnmountDiskInput {
-  # Customer account name.
-  accountId: String!
+  # Live Mount ID for which disk must be unmounted.
+  liveMountId: Long!
 
-  # Mount ID for which disk must be unmounted.
-  mountId: UUID!
+  # List of Mount IDs to be unmounted.
+  mountIds: [Long!]!
 
-  # List of mounted disk IDs to be unmounted.
-  mountDiskIds: [UUID!]!
+  # Target Workload ID for which disk must be unmounted.
+  targetWorkloadId: UUID!
 }
 # Specifies the information about the auth domain users to be hidden or unhidden.
 input UpdateAuthDomainUsersHiddenStatusInput {
@@ -84669,6 +84939,9 @@ type UpdateCustomReportReply {
   # Time the report was last viewed or opened.
   viewedAt: DateTime!
 
+  # Room of the report.
+  room: String
+
   # The list of charts in the custom report.
   charts: [ReportChartType!]!
 
@@ -85143,13 +85416,6 @@ type UpdateManagedVolumeReply {
   # Describes any pending SLA Domain assignment on this object.
   pendingSlaDomain: ManagedObjectPendingSlaInfo
 
-  # Supported in v5.3+
-  # The additional details specific to SLA Managed Volumes.
-  slaManagedVolumeDetails: SlaManagedVolumeDetail
-
-  # The base workload object.
-  snappable: CdmWorkload
-
   # Application whose data this Managed Volume will store. For example, Oracle, SAP HANA, MSSQL, etc.
   applicationTag: ManagedVolumeApplicationTag
 
@@ -85165,6 +85431,13 @@ type UpdateManagedVolumeReply {
   # v7.0: State of the Managed Volume. For example, exported, resetting etc.
   # v8.0+: State of the Managed Volume. For example, exported, resetting etc.,.
   state: ManagedVolumeState!
+
+  # Supported in v5.3+
+  # The additional details specific to SLA Managed Volumes.
+  slaManagedVolumeDetails: SlaManagedVolumeDetail
+
+  # The base workload object.
+  snappable: CdmWorkload
 }
 # Input to edit manual target mapping.
 input UpdateManualTargetMappingInput {
@@ -85366,16 +85639,16 @@ type UpdateNutanixPrismCentralReply {
   # Hostname for the Nutanix Prism Central that we use for all the cluster connections.
   hostname: String!
 
-  # Supported in v9.0+
-  # Describes any pending SLA Domain assignment on this object.
-  pendingSlaDomain: ManagedObjectPendingSlaInfo
-
   # Details of the SLA Domain assigned to Nutanix Prism Central.
   slaAssignable: SlaAssignable
 
   # Required. Supported in v9.0+
   # Username for the Nutanix Prism Central that we use for all the cluster connections.
   username: String!
+
+  # Supported in v9.0+
+  # Describes any pending SLA Domain assignment on this object.
+  pendingSlaDomain: ManagedObjectPendingSlaInfo
 }
 # Input for patching a Nutanix virtual machine.
 input UpdateNutanixVmInput {
@@ -85857,6 +86130,9 @@ type UpdateVolumeGroupReply {
   # v5.3+: Indicates whether backup, archival, and replication are paused for this Volume Group.
   isPaused: Boolean!
 
+  # Summary information about a volume group.
+  volumeGroupSummary: VolumeGroupSummary
+
   # Required. Supported in v5.0+
   # v5.0-v5.2:
   # v5.3+: Configuration details for the volumes in the Volume Group.
@@ -85868,9 +86144,6 @@ type UpdateVolumeGroupReply {
 
   # Blackout window information.
   blackoutWindowResponseInfo: BlackoutWindowResponseInfo
-
-  # Summary information about a volume group.
-  volumeGroupSummary: VolumeGroupSummary
 }
 input UpdateVsphereAdvancedTagInput {
   # Required. ID of the multi-tag filter.
@@ -85952,13 +86225,24 @@ input UpgradeAwsIamUserBasedCloudAccountPermissionsInput {
   # Cloud native features to be upgraded.
   features: [CloudAccountFeature!]!
 }
+# Input to upgrade a feature for an Azure cloud account.
+input UpgradeAzureCloudAccountFeatureInput {
+  # Feature to be upgraded.
+  featureType: CloudAccountFeature!
+
+  # Specifies a list of permission groups for upgrading the feature. If the list is empty, existing permission groups are upgraded if they are available.
+  permissionsGroups: [PermissionsGroup!]!
+}
 # Input for upgrading an Azure Cloud Account.
 input UpgradeAzureCloudAccountInput {
   # Session ID of the current OAuth session.
   sessionId: String!
 
-  # Features enabled on the Azure Cloud Account.
+  # Deprecated, use featuresToUpgrade instead. Features enabled on the Azure Cloud Account.
   features: [CloudAccountFeature!]!
+
+  # Features enabled on the Azure Cloud Account.
+  featuresToUpgrade: [UpgradeAzureCloudAccountFeatureInput!]
 
   # Rubrik IDs of the subscriptions to be upgraded.
   azureSubscriptionRubrikIds: [UUID!]!
@@ -85968,8 +86252,11 @@ input UpgradeAzureCloudAccountPermissionsWithoutOauthInput {
   # Rubrik ID of the cloud accounts to upgrade permissions.
   cloudAccountId: UUID!
 
-  # Feature enabled on the Azure Cloud Account, which is currently in Update Permissions state.
+  # Deprecated, use featureToUpgrade instead. Feature enabled on the Azure Cloud Account, which is currently in Update Permissions state.
   feature: CloudAccountFeature!
+
+  # Feature enabled on the Azure Cloud Account, which is currently in Update Permissions state.
+  featureToUpgrade: UpgradeAzureCloudAccountFeatureInput
 }
 # Response of the operation to set Azure cloud account feature status to connected, when in update permissions state.
 type UpgradeAzureCloudAccountPermissionsWithoutOauthReply {
@@ -89257,10 +89544,6 @@ type VcenterSummary {
   # Indicates if the vCenter is a VMC instance.
   isVmc: Boolean
 
-  # Supported in v6.0+
-  # Compute clusters that are visible to this Rubrik Cluster. All other compute resources are hidden. If 'computeVisibilityFilter' is not specified, all resources are visible. If 'hostGroupFilter' is not specified for a compute cluster, all compute resources in the compute cluster are visible. If a 'hostGroupFilter' is specified for a compute cluster, only vms that currently reside on these hosts are visible.
-  computeVisibilityFilter: [ClusterVisibilityInfo!]!
-
   # Supported in v7.0+
   # An optional field that specifies whether HotAdd transport mode is enabled for On-Premise vCenter. When this value is `true`, HotAdd transport mode is enabled for this vCenter. When this value is `false`, HotAdd transport mode is disabled for this vCenter. When this value is not specified, it indicates that this is an VMC vCenter.
   isHotAddProxyEnabledForOnPremVcenter: Boolean
@@ -89272,6 +89555,10 @@ type VcenterSummary {
   slaAssignable: SlaAssignable
   vcenterPatch: VcenterPatch
   conflictResolutionAuthz: VcenterSummaryConflictResolutionAuthz
+
+  # Supported in v6.0+
+  # Compute clusters that are visible to this Rubrik Cluster. All other compute resources are hidden. If 'computeVisibilityFilter' is not specified, all resources are visible. If 'hostGroupFilter' is not specified for a compute cluster, all compute resources in the compute cluster are visible. If a 'hostGroupFilter' is specified for a compute cluster, only vms that currently reside on these hosts are visible.
+  computeVisibilityFilter: [ClusterVisibilityInfo!]!
 }
 enum VcenterSummaryConflictResolutionAuthz {
   VCENTER_SUMMARY_CONFLICT_RESOLUTION_AUTHZ_ALLOW_AUTO_CONFLICT_RESOLUTION
@@ -89436,14 +89723,6 @@ input VirtualMachineScriptDetailInput {
 # Supported in v5.0+
 type VirtualMachineSummary {
   # Supported in v5.0+
-  # The status of the Rubrik Backup Service agent for virtual machines.
-  agentStatus: CdmAgentStatus
-
-  # Supported in v5.0+
-  # Cloud instantiation specification for the selected virtual machine.
-  cloudInstantiationSpec: CloudInstantiationSpec
-
-  # Supported in v5.0+
   clusterName: String
 
   # Required. Supported in v5.0+
@@ -89499,13 +89778,21 @@ type VirtualMachineSummary {
   # Required. Supported in v5.0+
   vmwareToolsInstalled: Boolean!
 
-  # Supported in v7.0+
-  advancedSummary: AdvancedVirtualMachineSummary
-
   # Supported in v8.0+
   instanceUuid: String
   snappable: CdmWorkload
   snapshotConsistencyMandate: VirtualMachineSummarySnapshotConsistencyMandate!
+
+  # Supported in v5.0+
+  # The status of the Rubrik Backup Service agent for virtual machines.
+  agentStatus: CdmAgentStatus
+
+  # Supported in v5.0+
+  # Cloud instantiation specification for the selected virtual machine.
+  cloudInstantiationSpec: CloudInstantiationSpec
+
+  # Supported in v7.0+
+  advancedSummary: AdvancedVirtualMachineSummary
 }
 enum VirtualMachineSummarySnapshotConsistencyMandate {
   VIRTUAL_MACHINE_SUMMARY_SNAPSHOT_CONSISTENCY_MANDATE_APP_CONSISTENT
@@ -89845,18 +90132,18 @@ type VmwareHostDetail {
   computeClusterId: String
 
   # Supported in v5.0+
-  datacenter: DataCenterSummary
-
-  # Supported in v5.0+
-  datastores: [DataStoreSummary!]!
-
-  # Supported in v5.0+
   moid: String
 
   # Supported in v5.0+
   virtualMachines: [VirtualMachineSummary!]!
   vmwareHostSummary: VmwareHostSummary
   vmwareHostUpdate: VmwareHostUpdate
+
+  # Supported in v5.0+
+  datacenter: DataCenterSummary
+
+  # Supported in v5.0+
+  datastores: [DataStoreSummary!]!
 }
 # Supported in v5.0+
 type VmwareHostSummary {
@@ -89865,9 +90152,6 @@ type VmwareHostSummary {
 
   # Supported in v5.0+
   datacenterId: String
-
-  # Supported in v5.0+
-  datastores: [DataStoreSummary!]!
 
   # Supported in v5.0
   effectiveSlaDomainId: String
@@ -89893,10 +90177,13 @@ type VmwareHostSummary {
 
   # Supported in v5.3+
   isInVmc: Boolean
-  effectiveSlaHolder: EffectiveSlaHolder
   slaAssignable: SlaAssignable
   ioFilterStatus: HostFilterStatus
   ioFilterUiStatus: HostUiFilterStatus
+
+  # Supported in v5.0+
+  datastores: [DataStoreSummary!]!
+  effectiveSlaHolder: EffectiveSlaHolder
 }
 # Supported in v5.0+
 type VmwareHostUpdate {
@@ -90400,6 +90687,9 @@ type VsphereComputeCluster implements CdmHierarchyObject , HierarchyObject , Vsp
   # This vsphere computer cluster's IOFilter status can be Uninstalled or Installed.
   ioFilterStatus: String!
 
+  # Current Drs status of the cluster.
+  drsStatus: Boolean!
+
   # List of descendants.
   descendantConnection(
     # Returns the first n elements from the list.
@@ -90712,7 +91002,7 @@ type VsphereComputeClusterPhysicalChildTypeEdge {
   # The actual VsphereComputeClusterPhysicalChildType object wrapped by this edge.
   node: VsphereComputeClusterPhysicalChildType!
 }
-type VsphereDatacenter implements CdmHierarchyObject , HierarchyObject , VsphereVcenterLogicalChildType , VsphereVcenterPhysicalChildType , VsphereVcenterDescendantType , VsphereFolderLogicalChildType , VsphereFolderDescendantType {
+type VsphereDatacenter implements CdmHierarchyObject , HierarchyObject , VsphereVcenterLogicalChildType , VsphereVcenterPhysicalChildType , VsphereVcenterDescendantType , VsphereDatacenterFolderLogicalChildType , VsphereDatacenterFolderDescendantType {
   # List of descendants.
   descendantConnection(
     # Returns the first n elements from the list.
@@ -90936,6 +91226,142 @@ type VsphereDatacenterDescendantTypeEdge {
 
   # The actual VsphereDatacenterDescendantType object wrapped by this edge.
   node: VsphereDatacenterDescendantType!
+}
+# Vsphere datacenter folder descendant type information.
+interface VsphereDatacenterFolderDescendantType {
+  # Rubrik cluster where this object originated.
+  cluster: Cluster!
+
+  # The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+  primaryClusterLocation: DataLocation!
+
+  # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
+  pendingSla: SlaDomain
+
+  # Mapping from objectID to pending object deletion status.
+  pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
+
+  # Objects either replicated by this object or related to this object by replication.
+  replicatedObjects: [CdmHierarchyObject!]!
+
+  # Latest User note information.
+  latestUserNote: LatestUserNote
+
+  # The number of objects either replicated by this object or related to this object by replication.
+  replicatedObjectCount: Int!
+
+  # The authorized operations on the object.
+  authorizedOperations: [Operation!]!
+
+  # The FID of the hierarchy object.
+  id: UUID!
+
+  # The name of the hierarchy object.
+  name: String!
+
+  # The type of this object.
+  objectType: HierarchyObjectTypeEnum!
+
+  # The SLA Domain assignment type for this object.
+  slaAssignment: SlaAssignmentTypeEnum!
+
+  # The effective SLA Domain of the hierarchy object.
+  effectiveSlaDomain: SlaDomain!
+
+  # The pause status of the effective SLA Domain of the hierarchy object.
+  slaPauseStatus: Boolean!
+
+  # The distribution of the snapshots of the hierarchy object.
+  snapshotDistribution: SnapshotDistribution!
+
+  # The effective retention of the SLA Domain of the hierarchy object.
+  effectiveRetentionSlaDomain: SlaDomain
+
+  # The SLA Domain configured for the hierarchy object.
+  configuredSlaDomain: SlaDomain!
+
+  # The path node of the effective SLA Domain source.
+  effectiveSlaSourceObject: PathNode
+
+  # A sequential list of this object's logical ancestors.
+  logicalPath: [PathNode!]!
+
+  # A sequential list of this object's physical ancestors.
+  physicalPath: [PathNode!]!
+
+  # The number of descendant workloads of this object.
+  numWorkloadDescendants: Int!
+
+  # The organizations to which this hierarchy object belongs.
+  allOrgs: [Org!]!
+}
+# Vsphere datacenter folder logical child type information.
+interface VsphereDatacenterFolderLogicalChildType {
+  # Rubrik cluster where this object originated.
+  cluster: Cluster!
+
+  # The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+  primaryClusterLocation: DataLocation!
+
+  # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
+  pendingSla: SlaDomain
+
+  # Mapping from objectID to pending object deletion status.
+  pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
+
+  # Objects either replicated by this object or related to this object by replication.
+  replicatedObjects: [CdmHierarchyObject!]!
+
+  # Latest User note information.
+  latestUserNote: LatestUserNote
+
+  # The number of objects either replicated by this object or related to this object by replication.
+  replicatedObjectCount: Int!
+
+  # The authorized operations on the object.
+  authorizedOperations: [Operation!]!
+
+  # The FID of the hierarchy object.
+  id: UUID!
+
+  # The name of the hierarchy object.
+  name: String!
+
+  # The type of this object.
+  objectType: HierarchyObjectTypeEnum!
+
+  # The SLA Domain assignment type for this object.
+  slaAssignment: SlaAssignmentTypeEnum!
+
+  # The effective SLA Domain of the hierarchy object.
+  effectiveSlaDomain: SlaDomain!
+
+  # The pause status of the effective SLA Domain of the hierarchy object.
+  slaPauseStatus: Boolean!
+
+  # The distribution of the snapshots of the hierarchy object.
+  snapshotDistribution: SnapshotDistribution!
+
+  # The effective retention of the SLA Domain of the hierarchy object.
+  effectiveRetentionSlaDomain: SlaDomain
+
+  # The SLA Domain configured for the hierarchy object.
+  configuredSlaDomain: SlaDomain!
+
+  # The path node of the effective SLA Domain source.
+  effectiveSlaSourceObject: PathNode
+
+  # A sequential list of this object's logical ancestors.
+  logicalPath: [PathNode!]!
+
+  # A sequential list of this object's physical ancestors.
+  physicalPath: [PathNode!]!
+
+  # The number of descendant workloads of this object.
+  numWorkloadDescendants: Int!
+
+  # The organizations to which this hierarchy object belongs.
+  allOrgs: [Org!]!
 }
 interface VsphereDatacenterLogicalChildType {
   # Rubrik cluster where this object originated.
@@ -91566,7 +91992,7 @@ input VsphereExportSnapshotToStandaloneHostV2Input {
   # Required. ID of snapshot.
   id: String!
 }
-type VsphereFolder implements CdmHierarchyObject , HierarchyObject , VsphereVcenterLogicalChildType , VsphereVcenterDescendantType , VsphereDatacenterLogicalChildType , VsphereDatacenterDescendantType , VsphereFolderLogicalChildType , VsphereFolderDescendantType {
+type VsphereFolder implements CdmHierarchyObject , HierarchyObject , VsphereVcenterLogicalChildType , VsphereVcenterDescendantType , VsphereDatacenterFolderLogicalChildType , VsphereDatacenterFolderDescendantType , VsphereDatacenterLogicalChildType , VsphereDatacenterDescendantType , VsphereFolderLogicalChildType , VsphereFolderDescendantType {
   # Vsphere folder CDM ID.
   cdmId: String!
 
@@ -93947,7 +94373,7 @@ enum VsphereVirtualDiskSortBy {
   # Sort by size.
   SIZE
 }
-type VsphereVm implements CdmHierarchyObject , CdmHierarchySnappableNew , HierarchyObject , HierarchySnappable , VsphereComputeClusterDescendantType , VsphereDatacenterDescendantType , VsphereFolderLogicalChildType , VsphereFolderDescendantType , VsphereHostPhysicalChildType , VsphereHostDescendantType , VsphereVcenterDescendantType , VsphereTagTagChildType , VsphereTagDescendantType , VsphereTagCategoryDescendantType , VcdDescendantType , VcdLogicalChildType , VcdOrgDescendantType , VcdOrgLogicalChildType , VcdOrgVdcDescendantType , VcdOrgVdcLogicalChildType , VcdVappDescendantType , VcdVappLogicalChildType , VcdTopLevelDescendantType {
+type VsphereVm implements CdmHierarchyObject , CdmHierarchySnappableNew , HierarchyObject , HierarchySnappable , VsphereComputeClusterDescendantType , VsphereDatacenterDescendantType , VsphereDatacenterFolderDescendantType , VsphereFolderLogicalChildType , VsphereFolderDescendantType , VsphereHostPhysicalChildType , VsphereHostDescendantType , VsphereVcenterDescendantType , VsphereTagTagChildType , VsphereTagDescendantType , VsphereTagCategoryDescendantType , VcdDescendantType , VcdLogicalChildType , VcdOrgDescendantType , VcdOrgLogicalChildType , VcdOrgVdcDescendantType , VcdOrgVdcLogicalChildType , VcdVappDescendantType , VcdVappLogicalChildType , VcdTopLevelDescendantType {
   cdmId: String!
   isRelic: Boolean!
   guestOsName: String!
@@ -94963,6 +95389,9 @@ type WindowsFileset implements CdmHierarchyObject , CdmHierarchySnappableNew , H
 
   # Host of Windows fileset.
   host: PhysicalHost
+
+  # Fileset template of the Windows fileset.
+  filesetTemplate: FilesetTemplate
 
   # Failover Rubrik cluster app.
   failoverClusterApp: FailoverClusterApp

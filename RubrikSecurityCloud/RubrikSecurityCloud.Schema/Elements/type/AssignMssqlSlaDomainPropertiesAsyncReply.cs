@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<ManagedObjectPendingSlaInfo>? Items
         // GraphQL -> items: [ManagedObjectPendingSlaInfo!]! (type)
-        if (this.Items == null && Exploration.Includes(parent + ".items"))
+        if (this.Items == null && ec.Includes("items",false))
         {
             this.Items = new List<ManagedObjectPendingSlaInfo>();
-            this.Items.ApplyExploratoryFieldSpec(parent + ".items");
+            this.Items.ApplyExploratoryFieldSpec(ec.NewChild("items"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AssignMssqlSlaDomainPropertiesAsyncReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AssignMssqlSlaDomainPropertiesAsyncReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AssignMssqlSlaDomainPropertiesAsyncReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

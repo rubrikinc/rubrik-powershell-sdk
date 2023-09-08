@@ -126,6 +126,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("logicalPath")]
         public List<PathNode>? LogicalPath { get; set; }
 
+        //      C# -> O365GroupMetadata? Metadata
+        // GraphQL -> metadata: O365GroupMetadata (type)
+        [JsonProperty("metadata")]
+        public O365GroupMetadata? Metadata { get; set; }
+
         //      C# -> List<PathNode>? PhysicalPath
         // GraphQL -> physicalPath: [PathNode!]! (type)
         [JsonProperty("physicalPath")]
@@ -167,6 +172,7 @@ namespace RubrikSecurityCloud.Types
         O365ConfiguredGroupSpec? ConfiguredGroupSpecification = null,
         PathNode? EffectiveSlaSourceObject = null,
         List<PathNode>? LogicalPath = null,
+        O365GroupMetadata? Metadata = null,
         List<PathNode>? PhysicalPath = null,
         SnapshotDistribution? SnapshotDistribution = null
     ) 
@@ -233,6 +239,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( LogicalPath != null ) {
             this.LogicalPath = LogicalPath;
+        }
+        if ( Metadata != null ) {
+            this.Metadata = Metadata;
         }
         if ( PhysicalPath != null ) {
             this.PhysicalPath = PhysicalPath;
@@ -376,6 +385,14 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "logicalPath {\n" + fspec + ind + "}\n" ;
             }
         }
+        //      C# -> O365GroupMetadata? Metadata
+        // GraphQL -> metadata: O365GroupMetadata (type)
+        if (this.Metadata != null) {
+            var fspec = this.Metadata.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "metadata {\n" + fspec + ind + "}\n" ;
+            }
+        }
         //      C# -> List<PathNode>? PhysicalPath
         // GraphQL -> physicalPath: [PathNode!]! (type)
         if (this.PhysicalPath != null) {
@@ -397,158 +414,164 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<Operation>? AuthorizedOperations
         // GraphQL -> authorizedOperations: [Operation!]! (enum)
-        if (this.AuthorizedOperations == null && Exploration.Includes(parent + ".authorizedOperations", true))
+        if (this.AuthorizedOperations == null && ec.Includes("authorizedOperations",true))
         {
             this.AuthorizedOperations = new List<Operation>();
         }
         //      C# -> O365GroupType? GroupType
         // GraphQL -> groupType: O365GroupType! (enum)
-        if (this.GroupType == null && Exploration.Includes(parent + ".groupType", true))
+        if (this.GroupType == null && ec.Includes("groupType",true))
         {
             this.GroupType = new O365GroupType();
         }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
-        if (this.ObjectType == null && Exploration.Includes(parent + ".objectType", true))
+        if (this.ObjectType == null && ec.Includes("objectType",true))
         {
             this.ObjectType = new HierarchyObjectTypeEnum();
         }
         //      C# -> SlaAssignmentTypeEnum? SlaAssignment
         // GraphQL -> slaAssignment: SlaAssignmentTypeEnum! (enum)
-        if (this.SlaAssignment == null && Exploration.Includes(parent + ".slaAssignment", true))
+        if (this.SlaAssignment == null && ec.Includes("slaAssignment",true))
         {
             this.SlaAssignment = new SlaAssignmentTypeEnum();
         }
         //      C# -> SlaDomain? ConfiguredSlaDomain
         // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
-        if (this.ConfiguredSlaDomain == null && Exploration.Includes(parent + ".configuredSlaDomain"))
+        if (this.ConfiguredSlaDomain == null && ec.Includes("configuredSlaDomain",false))
         {
             var impls = new List<SlaDomain>();
-            impls.ApplyExploratoryFieldSpec(parent + ".configuredSlaDomain");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("configuredSlaDomain"));
             this.ConfiguredSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> SlaDomain? EffectiveRetentionSlaDomain
         // GraphQL -> effectiveRetentionSlaDomain: SlaDomain (interface)
-        if (this.EffectiveRetentionSlaDomain == null && Exploration.Includes(parent + ".effectiveRetentionSlaDomain"))
+        if (this.EffectiveRetentionSlaDomain == null && ec.Includes("effectiveRetentionSlaDomain",false))
         {
             var impls = new List<SlaDomain>();
-            impls.ApplyExploratoryFieldSpec(parent + ".effectiveRetentionSlaDomain");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("effectiveRetentionSlaDomain"));
             this.EffectiveRetentionSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> SlaDomain? EffectiveSlaDomain
         // GraphQL -> effectiveSlaDomain: SlaDomain! (interface)
-        if (this.EffectiveSlaDomain == null && Exploration.Includes(parent + ".effectiveSlaDomain"))
+        if (this.EffectiveSlaDomain == null && ec.Includes("effectiveSlaDomain",false))
         {
             var impls = new List<SlaDomain>();
-            impls.ApplyExploratoryFieldSpec(parent + ".effectiveSlaDomain");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("effectiveSlaDomain"));
             this.EffectiveSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> System.String? ConfiguredGroupSpec
         // GraphQL -> configuredGroupSpec: String! (scalar)
-        if (this.ConfiguredGroupSpec == null && Exploration.Includes(parent + ".configuredGroupSpec", true))
+        if (this.ConfiguredGroupSpec == null && ec.Includes("configuredGroupSpec",true))
         {
             this.ConfiguredGroupSpec = "FETCH";
         }
         //      C# -> System.Boolean? DeletedInAzure
         // GraphQL -> deletedInAzure: Boolean! (scalar)
-        if (this.DeletedInAzure == null && Exploration.Includes(parent + ".deletedInAzure", true))
+        if (this.DeletedInAzure == null && ec.Includes("deletedInAzure",true))
         {
             this.DeletedInAzure = true;
         }
         //      C# -> System.String? DisplayName
         // GraphQL -> displayName: String! (scalar)
-        if (this.DisplayName == null && Exploration.Includes(parent + ".displayName", true))
+        if (this.DisplayName == null && ec.Includes("displayName",true))
         {
             this.DisplayName = "FETCH";
         }
         //      C# -> System.String? GroupId
         // GraphQL -> groupID: String! (scalar)
-        if (this.GroupId == null && Exploration.Includes(parent + ".groupID", true))
+        if (this.GroupId == null && ec.Includes("groupID",true))
         {
             this.GroupId = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? NaturalId
         // GraphQL -> naturalID: String! (scalar)
-        if (this.NaturalId == null && Exploration.Includes(parent + ".naturalID", true))
+        if (this.NaturalId == null && ec.Includes("naturalID",true))
         {
             this.NaturalId = "FETCH";
         }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
-        if (this.NumWorkloadDescendants == null && Exploration.Includes(parent + ".numWorkloadDescendants", true))
+        if (this.NumWorkloadDescendants == null && ec.Includes("numWorkloadDescendants",true))
         {
             this.NumWorkloadDescendants = Int32.MinValue;
         }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
-        if (this.SlaPauseStatus == null && Exploration.Includes(parent + ".slaPauseStatus", true))
+        if (this.SlaPauseStatus == null && ec.Includes("slaPauseStatus",true))
         {
             this.SlaPauseStatus = true;
         }
         //      C# -> System.Int64? UserCount
         // GraphQL -> userCount: Long! (scalar)
-        if (this.UserCount == null && Exploration.Includes(parent + ".userCount", true))
+        if (this.UserCount == null && ec.Includes("userCount",true))
         {
             this.UserCount = new System.Int64();
         }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
-        if (this.AllOrgs == null && Exploration.Includes(parent + ".allOrgs"))
+        if (this.AllOrgs == null && ec.Includes("allOrgs",false))
         {
             this.AllOrgs = new List<Org>();
-            this.AllOrgs.ApplyExploratoryFieldSpec(parent + ".allOrgs");
+            this.AllOrgs.ApplyExploratoryFieldSpec(ec.NewChild("allOrgs"));
         }
         //      C# -> O365ConfiguredGroupSpec? ConfiguredGroupSpecification
         // GraphQL -> configuredGroupSpecification: O365ConfiguredGroupSpec! (type)
-        if (this.ConfiguredGroupSpecification == null && Exploration.Includes(parent + ".configuredGroupSpecification"))
+        if (this.ConfiguredGroupSpecification == null && ec.Includes("configuredGroupSpecification",false))
         {
             this.ConfiguredGroupSpecification = new O365ConfiguredGroupSpec();
-            this.ConfiguredGroupSpecification.ApplyExploratoryFieldSpec(parent + ".configuredGroupSpecification");
+            this.ConfiguredGroupSpecification.ApplyExploratoryFieldSpec(ec.NewChild("configuredGroupSpecification"));
         }
         //      C# -> PathNode? EffectiveSlaSourceObject
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)
-        if (this.EffectiveSlaSourceObject == null && Exploration.Includes(parent + ".effectiveSlaSourceObject"))
+        if (this.EffectiveSlaSourceObject == null && ec.Includes("effectiveSlaSourceObject",false))
         {
             this.EffectiveSlaSourceObject = new PathNode();
-            this.EffectiveSlaSourceObject.ApplyExploratoryFieldSpec(parent + ".effectiveSlaSourceObject");
+            this.EffectiveSlaSourceObject.ApplyExploratoryFieldSpec(ec.NewChild("effectiveSlaSourceObject"));
         }
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)
-        if (this.LogicalPath == null && Exploration.Includes(parent + ".logicalPath"))
+        if (this.LogicalPath == null && ec.Includes("logicalPath",false))
         {
             this.LogicalPath = new List<PathNode>();
-            this.LogicalPath.ApplyExploratoryFieldSpec(parent + ".logicalPath");
+            this.LogicalPath.ApplyExploratoryFieldSpec(ec.NewChild("logicalPath"));
+        }
+        //      C# -> O365GroupMetadata? Metadata
+        // GraphQL -> metadata: O365GroupMetadata (type)
+        if (this.Metadata == null && ec.Includes("metadata",false))
+        {
+            this.Metadata = new O365GroupMetadata();
+            this.Metadata.ApplyExploratoryFieldSpec(ec.NewChild("metadata"));
         }
         //      C# -> List<PathNode>? PhysicalPath
         // GraphQL -> physicalPath: [PathNode!]! (type)
-        if (this.PhysicalPath == null && Exploration.Includes(parent + ".physicalPath"))
+        if (this.PhysicalPath == null && ec.Includes("physicalPath",false))
         {
             this.PhysicalPath = new List<PathNode>();
-            this.PhysicalPath.ApplyExploratoryFieldSpec(parent + ".physicalPath");
+            this.PhysicalPath.ApplyExploratoryFieldSpec(ec.NewChild("physicalPath"));
         }
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
-        if (this.SnapshotDistribution == null && Exploration.Includes(parent + ".snapshotDistribution"))
+        if (this.SnapshotDistribution == null && ec.Includes("snapshotDistribution",false))
         {
             this.SnapshotDistribution = new SnapshotDistribution();
-            this.SnapshotDistribution.ApplyExploratoryFieldSpec(parent + ".snapshotDistribution");
+            this.SnapshotDistribution.ApplyExploratoryFieldSpec(ec.NewChild("snapshotDistribution"));
         }
     }
 
@@ -582,12 +605,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<O365Group> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new O365Group());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<O365Group> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

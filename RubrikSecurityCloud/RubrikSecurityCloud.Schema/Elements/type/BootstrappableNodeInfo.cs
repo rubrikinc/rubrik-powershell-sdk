@@ -229,84 +229,83 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? CapacityInBytes
         // GraphQL -> capacityInBytes: Long (scalar)
-        if (this.CapacityInBytes == null && Exploration.Includes(parent + ".capacityInBytes", true))
+        if (this.CapacityInBytes == null && ec.Includes("capacityInBytes",true))
         {
             this.CapacityInBytes = new System.Int64();
         }
         //      C# -> System.String? ChassisId
         // GraphQL -> chassisId: String (scalar)
-        if (this.ChassisId == null && Exploration.Includes(parent + ".chassisId", true))
+        if (this.ChassisId == null && ec.Includes("chassisId",true))
         {
             this.ChassisId = "FETCH";
         }
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String! (scalar)
-        if (this.Hostname == null && Exploration.Includes(parent + ".hostname", true))
+        if (this.Hostname == null && ec.Includes("hostname",true))
         {
             this.Hostname = "FETCH";
         }
         //      C# -> System.String? Ipv6
         // GraphQL -> ipv6: String! (scalar)
-        if (this.Ipv6 == null && Exploration.Includes(parent + ".ipv6", true))
+        if (this.Ipv6 == null && ec.Includes("ipv6",true))
         {
             this.Ipv6 = "FETCH";
         }
         //      C# -> System.Boolean? IsAllCopper
         // GraphQL -> isAllCopper: Boolean (scalar)
-        if (this.IsAllCopper == null && Exploration.Includes(parent + ".isAllCopper", true))
+        if (this.IsAllCopper == null && ec.Includes("isAllCopper",true))
         {
             this.IsAllCopper = true;
         }
         //      C# -> System.Boolean? IsBond0Eth0Enabled
         // GraphQL -> isBond0Eth0Enabled: Boolean (scalar)
-        if (this.IsBond0Eth0Enabled == null && Exploration.Includes(parent + ".isBond0Eth0Enabled", true))
+        if (this.IsBond0Eth0Enabled == null && ec.Includes("isBond0Eth0Enabled",true))
         {
             this.IsBond0Eth0Enabled = true;
         }
         //      C# -> System.Boolean? IsBond0Eth1Enabled
         // GraphQL -> isBond0Eth1Enabled: Boolean (scalar)
-        if (this.IsBond0Eth1Enabled == null && Exploration.Includes(parent + ".isBond0Eth1Enabled", true))
+        if (this.IsBond0Eth1Enabled == null && ec.Includes("isBond0Eth1Enabled",true))
         {
             this.IsBond0Eth1Enabled = true;
         }
         //      C# -> System.Boolean? IsBond0Reachable
         // GraphQL -> isBond0Reachable: Boolean (scalar)
-        if (this.IsBond0Reachable == null && Exploration.Includes(parent + ".isBond0Reachable", true))
+        if (this.IsBond0Reachable == null && ec.Includes("isBond0Reachable",true))
         {
             this.IsBond0Reachable = true;
         }
         //      C# -> System.Boolean? IsBond1Eth2Enabled
         // GraphQL -> isBond1Eth2Enabled: Boolean (scalar)
-        if (this.IsBond1Eth2Enabled == null && Exploration.Includes(parent + ".isBond1Eth2Enabled", true))
+        if (this.IsBond1Eth2Enabled == null && ec.Includes("isBond1Eth2Enabled",true))
         {
             this.IsBond1Eth2Enabled = true;
         }
         //      C# -> System.Boolean? IsBond1Eth3Enabled
         // GraphQL -> isBond1Eth3Enabled: Boolean (scalar)
-        if (this.IsBond1Eth3Enabled == null && Exploration.Includes(parent + ".isBond1Eth3Enabled", true))
+        if (this.IsBond1Eth3Enabled == null && ec.Includes("isBond1Eth3Enabled",true))
         {
             this.IsBond1Eth3Enabled = true;
         }
         //      C# -> System.String? NodePosition
         // GraphQL -> nodePosition: String (scalar)
-        if (this.NodePosition == null && Exploration.Includes(parent + ".nodePosition", true))
+        if (this.NodePosition == null && ec.Includes("nodePosition",true))
         {
             this.NodePosition = "FETCH";
         }
         //      C# -> System.String? PlatformName
         // GraphQL -> platformName: String (scalar)
-        if (this.PlatformName == null && Exploration.Includes(parent + ".platformName", true))
+        if (this.PlatformName == null && ec.Includes("platformName",true))
         {
             this.PlatformName = "FETCH";
         }
         //      C# -> System.String? Version
         // GraphQL -> version: String (scalar)
-        if (this.Version == null && Exploration.Includes(parent + ".version", true))
+        if (this.Version == null && ec.Includes("version",true))
         {
             this.Version = "FETCH";
         }
@@ -342,12 +341,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<BootstrappableNodeInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new BootstrappableNodeInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<BootstrappableNodeInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

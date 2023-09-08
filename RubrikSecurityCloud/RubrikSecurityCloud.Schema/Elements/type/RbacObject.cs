@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> WorkloadLevelHierarchy? WorkloadHierarchy
         // GraphQL -> workloadHierarchy: WorkloadLevelHierarchy! (enum)
-        if (this.WorkloadHierarchy == null && Exploration.Includes(parent + ".workloadHierarchy", true))
+        if (this.WorkloadHierarchy == null && ec.Includes("workloadHierarchy",true))
         {
             this.WorkloadHierarchy = new WorkloadLevelHierarchy();
         }
         //      C# -> System.String? ClusterId
         // GraphQL -> clusterId: String! (scalar)
-        if (this.ClusterId == null && Exploration.Includes(parent + ".clusterId", true))
+        if (this.ClusterId == null && ec.Includes("clusterId",true))
         {
             this.ClusterId = "FETCH";
         }
         //      C# -> System.String? ObjectId
         // GraphQL -> objectId: String! (scalar)
-        if (this.ObjectId == null && Exploration.Includes(parent + ".objectId", true))
+        if (this.ObjectId == null && ec.Includes("objectId",true))
         {
             this.ObjectId = "FETCH";
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RbacObject> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RbacObject());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<RbacObject> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

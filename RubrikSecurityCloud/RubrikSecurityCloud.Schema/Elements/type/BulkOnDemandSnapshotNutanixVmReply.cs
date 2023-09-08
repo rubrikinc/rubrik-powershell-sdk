@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> NutanixBatchAsyncApiResponse? Output
         // GraphQL -> output: NutanixBatchAsyncApiResponse (type)
-        if (this.Output == null && Exploration.Includes(parent + ".output"))
+        if (this.Output == null && ec.Includes("output",false))
         {
             this.Output = new NutanixBatchAsyncApiResponse();
-            this.Output.ApplyExploratoryFieldSpec(parent + ".output");
+            this.Output.ApplyExploratoryFieldSpec(ec.NewChild("output"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<BulkOnDemandSnapshotNutanixVmReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new BulkOnDemandSnapshotNutanixVmReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<BulkOnDemandSnapshotNutanixVmReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

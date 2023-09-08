@@ -95,28 +95,27 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<System.String>? AcoParameterErrors
         // GraphQL -> acoParameterErrors: [String!]! (scalar)
-        if (this.AcoParameterErrors == null && Exploration.Includes(parent + ".acoParameterErrors", true))
+        if (this.AcoParameterErrors == null && ec.Includes("acoParameterErrors",true))
         {
             this.AcoParameterErrors = new List<System.String>();
         }
         //      C# -> List<OracleAcoParameterDetail>? AcoMap
         // GraphQL -> acoMap: [OracleAcoParameterDetail!]! (type)
-        if (this.AcoMap == null && Exploration.Includes(parent + ".acoMap"))
+        if (this.AcoMap == null && ec.Includes("acoMap",false))
         {
             this.AcoMap = new List<OracleAcoParameterDetail>();
-            this.AcoMap.ApplyExploratoryFieldSpec(parent + ".acoMap");
+            this.AcoMap.ApplyExploratoryFieldSpec(ec.NewChild("acoMap"));
         }
         //      C# -> List<OracleAcoValueErrorDetail>? AcoValueValidationErrors
         // GraphQL -> acoValueValidationErrors: [OracleAcoValueErrorDetail!]! (type)
-        if (this.AcoValueValidationErrors == null && Exploration.Includes(parent + ".acoValueValidationErrors"))
+        if (this.AcoValueValidationErrors == null && ec.Includes("acoValueValidationErrors",false))
         {
             this.AcoValueValidationErrors = new List<OracleAcoValueErrorDetail>();
-            this.AcoValueValidationErrors.ApplyExploratoryFieldSpec(parent + ".acoValueValidationErrors");
+            this.AcoValueValidationErrors.ApplyExploratoryFieldSpec(ec.NewChild("acoValueValidationErrors"));
         }
     }
 
@@ -150,12 +149,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ValidateOracleAcoFileReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ValidateOracleAcoFileReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ValidateOracleAcoFileReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

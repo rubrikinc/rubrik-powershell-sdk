@@ -166,57 +166,56 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> DailySnapshotSchedule? Daily
         // GraphQL -> daily: DailySnapshotSchedule (type)
-        if (this.Daily == null && Exploration.Includes(parent + ".daily"))
+        if (this.Daily == null && ec.Includes("daily",false))
         {
             this.Daily = new DailySnapshotSchedule();
-            this.Daily.ApplyExploratoryFieldSpec(parent + ".daily");
+            this.Daily.ApplyExploratoryFieldSpec(ec.NewChild("daily"));
         }
         //      C# -> HourlySnapshotSchedule? Hourly
         // GraphQL -> hourly: HourlySnapshotSchedule (type)
-        if (this.Hourly == null && Exploration.Includes(parent + ".hourly"))
+        if (this.Hourly == null && ec.Includes("hourly",false))
         {
             this.Hourly = new HourlySnapshotSchedule();
-            this.Hourly.ApplyExploratoryFieldSpec(parent + ".hourly");
+            this.Hourly.ApplyExploratoryFieldSpec(ec.NewChild("hourly"));
         }
         //      C# -> MinuteSnapshotSchedule? Minute
         // GraphQL -> minute: MinuteSnapshotSchedule (type)
-        if (this.Minute == null && Exploration.Includes(parent + ".minute"))
+        if (this.Minute == null && ec.Includes("minute",false))
         {
             this.Minute = new MinuteSnapshotSchedule();
-            this.Minute.ApplyExploratoryFieldSpec(parent + ".minute");
+            this.Minute.ApplyExploratoryFieldSpec(ec.NewChild("minute"));
         }
         //      C# -> MonthlySnapshotSchedule? Monthly
         // GraphQL -> monthly: MonthlySnapshotSchedule (type)
-        if (this.Monthly == null && Exploration.Includes(parent + ".monthly"))
+        if (this.Monthly == null && ec.Includes("monthly",false))
         {
             this.Monthly = new MonthlySnapshotSchedule();
-            this.Monthly.ApplyExploratoryFieldSpec(parent + ".monthly");
+            this.Monthly.ApplyExploratoryFieldSpec(ec.NewChild("monthly"));
         }
         //      C# -> QuarterlySnapshotSchedule? Quarterly
         // GraphQL -> quarterly: QuarterlySnapshotSchedule (type)
-        if (this.Quarterly == null && Exploration.Includes(parent + ".quarterly"))
+        if (this.Quarterly == null && ec.Includes("quarterly",false))
         {
             this.Quarterly = new QuarterlySnapshotSchedule();
-            this.Quarterly.ApplyExploratoryFieldSpec(parent + ".quarterly");
+            this.Quarterly.ApplyExploratoryFieldSpec(ec.NewChild("quarterly"));
         }
         //      C# -> WeeklySnapshotSchedule? Weekly
         // GraphQL -> weekly: WeeklySnapshotSchedule (type)
-        if (this.Weekly == null && Exploration.Includes(parent + ".weekly"))
+        if (this.Weekly == null && ec.Includes("weekly",false))
         {
             this.Weekly = new WeeklySnapshotSchedule();
-            this.Weekly.ApplyExploratoryFieldSpec(parent + ".weekly");
+            this.Weekly.ApplyExploratoryFieldSpec(ec.NewChild("weekly"));
         }
         //      C# -> YearlySnapshotSchedule? Yearly
         // GraphQL -> yearly: YearlySnapshotSchedule (type)
-        if (this.Yearly == null && Exploration.Includes(parent + ".yearly"))
+        if (this.Yearly == null && ec.Includes("yearly",false))
         {
             this.Yearly = new YearlySnapshotSchedule();
-            this.Yearly.ApplyExploratoryFieldSpec(parent + ".yearly");
+            this.Yearly.ApplyExploratoryFieldSpec(ec.NewChild("yearly"));
         }
     }
 
@@ -250,12 +249,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SnapshotSchedule> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SnapshotSchedule());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SnapshotSchedule> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

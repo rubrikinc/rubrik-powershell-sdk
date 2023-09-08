@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> DataGovObjectType? ResourceType
         // GraphQL -> resourceType: DataGovObjectType! (enum)
-        if (this.ResourceType == null && Exploration.Includes(parent + ".resourceType", true))
+        if (this.ResourceType == null && ec.Includes("resourceType",true))
         {
             this.ResourceType = new DataGovObjectType();
         }
         //      C# -> System.Boolean? IsHigherLevelResource
         // GraphQL -> isHigherLevelResource: Boolean! (scalar)
-        if (this.IsHigherLevelResource == null && Exploration.Includes(parent + ".isHigherLevelResource", true))
+        if (this.IsHigherLevelResource == null && ec.Includes("isHigherLevelResource",true))
         {
             this.IsHigherLevelResource = true;
         }
         //      C# -> System.String? ResourceId
         // GraphQL -> resourceId: String! (scalar)
-        if (this.ResourceId == null && Exploration.Includes(parent + ".resourceId", true))
+        if (this.ResourceId == null && ec.Includes("resourceId",true))
         {
             this.ResourceId = "FETCH";
         }
         //      C# -> System.String? ResourceName
         // GraphQL -> resourceName: String! (scalar)
-        if (this.ResourceName == null && Exploration.Includes(parent + ".resourceName", true))
+        if (this.ResourceName == null && ec.Includes("resourceName",true))
         {
             this.ResourceName = "FETCH";
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AssignmentResourceDetails> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AssignmentResourceDetails());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AssignmentResourceDetails> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

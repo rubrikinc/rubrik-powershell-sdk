@@ -92,27 +92,26 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Owner
         // GraphQL -> owner: String! (scalar)
-        if (this.Owner == null && Exploration.Includes(parent + ".owner", true))
+        if (this.Owner == null && ec.Includes("owner",true))
         {
             this.Owner = "FETCH";
         }
         //      C# -> System.String? Path
         // GraphQL -> path: String! (scalar)
-        if (this.Path == null && Exploration.Includes(parent + ".path", true))
+        if (this.Path == null && ec.Includes("path",true))
         {
             this.Path = "FETCH";
         }
         //      C# -> List<SddlPermission>? Permissions
         // GraphQL -> permissions: [SDDLPermission!]! (type)
-        if (this.Permissions == null && Exploration.Includes(parent + ".permissions"))
+        if (this.Permissions == null && ec.Includes("permissions",false))
         {
             this.Permissions = new List<SddlPermission>();
-            this.Permissions.ApplyExploratoryFieldSpec(parent + ".permissions");
+            this.Permissions.ApplyExploratoryFieldSpec(ec.NewChild("permissions"));
         }
     }
 
@@ -146,12 +145,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PathSecInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PathSecInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<PathSecInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

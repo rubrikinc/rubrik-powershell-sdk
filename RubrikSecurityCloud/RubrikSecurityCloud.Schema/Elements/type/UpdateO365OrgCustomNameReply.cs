@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? CustomName
         // GraphQL -> customName: String! (scalar)
-        if (this.CustomName == null && Exploration.Includes(parent + ".customName", true))
+        if (this.CustomName == null && ec.Includes("customName",true))
         {
             this.CustomName = "FETCH";
         }
         //      C# -> System.String? OrgUuid
         // GraphQL -> orgUuid: UUID! (scalar)
-        if (this.OrgUuid == null && Exploration.Includes(parent + ".orgUuid", true))
+        if (this.OrgUuid == null && ec.Includes("orgUuid",true))
         {
             this.OrgUuid = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<UpdateO365OrgCustomNameReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new UpdateO365OrgCustomNameReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<UpdateO365OrgCustomNameReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

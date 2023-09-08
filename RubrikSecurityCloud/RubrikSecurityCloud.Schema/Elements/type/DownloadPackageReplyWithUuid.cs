@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? JobId
         // GraphQL -> jobId: String! (scalar)
-        if (this.JobId == null && Exploration.Includes(parent + ".jobId", true))
+        if (this.JobId == null && ec.Includes("jobId",true))
         {
             this.JobId = "FETCH";
         }
         //      C# -> System.String? Uuid
         // GraphQL -> uuid: String! (scalar)
-        if (this.Uuid == null && Exploration.Includes(parent + ".uuid", true))
+        if (this.Uuid == null && ec.Includes("uuid",true))
         {
             this.Uuid = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<DownloadPackageReplyWithUuid> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new DownloadPackageReplyWithUuid());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<DownloadPackageReplyWithUuid> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

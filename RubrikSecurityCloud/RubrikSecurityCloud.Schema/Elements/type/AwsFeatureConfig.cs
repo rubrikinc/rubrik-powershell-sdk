@@ -115,36 +115,35 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> AwsCloudAccount? AwsCloudAccount
         // GraphQL -> awsCloudAccount: AwsCloudAccount! (type)
-        if (this.AwsCloudAccount == null && Exploration.Includes(parent + ".awsCloudAccount"))
+        if (this.AwsCloudAccount == null && ec.Includes("awsCloudAccount",false))
         {
             this.AwsCloudAccount = new AwsCloudAccount();
-            this.AwsCloudAccount.ApplyExploratoryFieldSpec(parent + ".awsCloudAccount");
+            this.AwsCloudAccount.ApplyExploratoryFieldSpec(ec.NewChild("awsCloudAccount"));
         }
         //      C# -> List<AwsExocomputeGetConfigResponse>? ExocomputeConfigs
         // GraphQL -> exocomputeConfigs: [AwsExocomputeGetConfigResponse!]! (type)
-        if (this.ExocomputeConfigs == null && Exploration.Includes(parent + ".exocomputeConfigs"))
+        if (this.ExocomputeConfigs == null && ec.Includes("exocomputeConfigs",false))
         {
             this.ExocomputeConfigs = new List<AwsExocomputeGetConfigResponse>();
-            this.ExocomputeConfigs.ApplyExploratoryFieldSpec(parent + ".exocomputeConfigs");
+            this.ExocomputeConfigs.ApplyExploratoryFieldSpec(ec.NewChild("exocomputeConfigs"));
         }
         //      C# -> FeatureDetail? FeatureDetail
         // GraphQL -> featureDetail: FeatureDetail! (type)
-        if (this.FeatureDetail == null && Exploration.Includes(parent + ".featureDetail"))
+        if (this.FeatureDetail == null && ec.Includes("featureDetail",false))
         {
             this.FeatureDetail = new FeatureDetail();
-            this.FeatureDetail.ApplyExploratoryFieldSpec(parent + ".featureDetail");
+            this.FeatureDetail.ApplyExploratoryFieldSpec(ec.NewChild("featureDetail"));
         }
         //      C# -> CloudAccountDetails? MappedExocomputeAccount
         // GraphQL -> mappedExocomputeAccount: CloudAccountDetails (type)
-        if (this.MappedExocomputeAccount == null && Exploration.Includes(parent + ".mappedExocomputeAccount"))
+        if (this.MappedExocomputeAccount == null && ec.Includes("mappedExocomputeAccount",false))
         {
             this.MappedExocomputeAccount = new CloudAccountDetails();
-            this.MappedExocomputeAccount.ApplyExploratoryFieldSpec(parent + ".mappedExocomputeAccount");
+            this.MappedExocomputeAccount.ApplyExploratoryFieldSpec(ec.NewChild("mappedExocomputeAccount"));
         }
     }
 
@@ -178,12 +177,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AwsFeatureConfig> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AwsFeatureConfig());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AwsFeatureConfig> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

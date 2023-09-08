@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> UserAccessInsightType? Type
         // GraphQL -> type: UserAccessInsightType! (enum)
-        if (this.Type == null && Exploration.Includes(parent + ".type", true))
+        if (this.Type == null && ec.Includes("type",true))
         {
             this.Type = new UserAccessInsightType();
         }
         //      C# -> System.String? Message
         // GraphQL -> message: String! (scalar)
-        if (this.Message == null && Exploration.Includes(parent + ".message", true))
+        if (this.Message == null && ec.Includes("message",true))
         {
             this.Message = "FETCH";
         }
         //      C# -> DateTime? Time
         // GraphQL -> time: DateTime! (scalar)
-        if (this.Time == null && Exploration.Includes(parent + ".time", true))
+        if (this.Time == null && ec.Includes("time",true))
         {
             this.Time = new DateTime();
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PrincipalInsight> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PrincipalInsight());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<PrincipalInsight> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

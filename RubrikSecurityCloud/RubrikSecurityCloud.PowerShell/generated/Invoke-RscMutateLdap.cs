@@ -229,7 +229,42 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (System.String)this.Field;
             }
             string fieldSpecDoc = Mutation.UpdateLdapIntegration(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.id = <System.String>
+# REQUIRED
+$inputs.Var.name = <System.String>
+# REQUIRED
+$inputs.Var.bindUserName = <System.String>
+# REQUIRED
+$inputs.Var.bindUserPassword = <System.String>
+# OPTIONAL
+$inputs.Var.baseDn = <System.String>
+# OPTIONAL
+$inputs.Var.trustedCerts = <System.String>
+# OPTIONAL
+$inputs.Var.dynamicDnsName = <System.String>
+# OPTIONAL
+$inputs.Var.ldapServers = @(
+	@{
+		# OPTIONAL
+		hostname = <System.String>
+		# OPTIONAL
+		port = <System.Int32>
+		# OPTIONAL
+		useTls = <System.Boolean>
+}
+)
+# OPTIONAL
+$inputs.Var.userSearchFilter = <System.String>
+# OPTIONAL
+$inputs.Var.userNameAttr = <System.String>
+# OPTIONAL
+$inputs.Var.groupMembershipAttr = <System.String>
+# OPTIONAL
+$inputs.Var.groupSearchFilter = <System.String>
+# OPTIONAL
+$inputs.Var.groupMemberAttr = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -252,7 +287,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (System.Boolean)this.Field;
             }
             string fieldSpecDoc = Mutation.RemoveLdapIntegration(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.id = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -275,7 +312,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (System.Boolean)this.Field;
             }
             string fieldSpecDoc = Mutation.DeleteLdapPrincipals(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.principalIds = @(
+	<System.String>
+)";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -298,7 +339,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (System.Boolean)this.Field;
             }
             string fieldSpecDoc = Mutation.SetLdapMfaSetting(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	ldapId = <System.String>
+	# OPTIONAL
+	isTotpEnforced = <System.Boolean>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 

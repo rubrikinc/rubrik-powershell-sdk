@@ -411,6 +411,14 @@ Gets the Azure resource groups for the given subscription.
     - tenantId - System.String
     - subscriptionId - System.String
 - Returns ResourceGroupConnection.
+### searchadsnapshot
+Search azureAdObjects within a snapshot.
+
+- There are 3 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - input - SearchAzureAdSnapshotInput: The input for searchAzureAdSnapshot API
+- Returns AzureAdObjectConnection.
 ### sqldatabase
 Retrieves an Azure SQL Database. Refers to the fully managed SQL database built for the cloud. For more information, see https://azure.microsoft.com/en-us/products/azure-sql/database/.
 

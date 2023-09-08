@@ -117,36 +117,35 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> PrecheckIdentifier? PrecheckIdentifier
         // GraphQL -> precheckIdentifier: PrecheckIdentifier! (enum)
-        if (this.PrecheckIdentifier == null && Exploration.Includes(parent + ".precheckIdentifier", true))
+        if (this.PrecheckIdentifier == null && ec.Includes("precheckIdentifier",true))
         {
             this.PrecheckIdentifier = new PrecheckIdentifier();
         }
         //      C# -> System.String? Cause
         // GraphQL -> cause: String! (scalar)
-        if (this.Cause == null && Exploration.Includes(parent + ".cause", true))
+        if (this.Cause == null && ec.Includes("cause",true))
         {
             this.Cause = "FETCH";
         }
         //      C# -> System.String? PrecheckName
         // GraphQL -> precheckName: String! (scalar)
-        if (this.PrecheckName == null && Exploration.Includes(parent + ".precheckName", true))
+        if (this.PrecheckName == null && ec.Includes("precheckName",true))
         {
             this.PrecheckName = "FETCH";
         }
         //      C# -> System.String? Remedy
         // GraphQL -> remedy: String! (scalar)
-        if (this.Remedy == null && Exploration.Includes(parent + ".remedy", true))
+        if (this.Remedy == null && ec.Includes("remedy",true))
         {
             this.Remedy = "FETCH";
         }
         //      C# -> System.Boolean? UpgradeBlocker
         // GraphQL -> upgradeBlocker: Boolean! (scalar)
-        if (this.UpgradeBlocker == null && Exploration.Includes(parent + ".upgradeBlocker", true))
+        if (this.UpgradeBlocker == null && ec.Includes("upgradeBlocker",true))
         {
             this.UpgradeBlocker = true;
         }
@@ -182,12 +181,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PrecheckFailure> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PrecheckFailure());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<PrecheckFailure> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

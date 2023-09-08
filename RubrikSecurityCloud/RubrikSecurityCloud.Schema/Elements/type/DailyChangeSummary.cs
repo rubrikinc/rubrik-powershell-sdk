@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> DateTime? StartTime
         // GraphQL -> startTime: DateTime (scalar)
-        if (this.StartTime == null && Exploration.Includes(parent + ".startTime", true))
+        if (this.StartTime == null && ec.Includes("startTime",true))
         {
             this.StartTime = new DateTime();
         }
         //      C# -> ChangeCounts? Counts
         // GraphQL -> counts: ChangeCounts (type)
-        if (this.Counts == null && Exploration.Includes(parent + ".counts"))
+        if (this.Counts == null && ec.Includes("counts",false))
         {
             this.Counts = new ChangeCounts();
-            this.Counts.ApplyExploratoryFieldSpec(parent + ".counts");
+            this.Counts.ApplyExploratoryFieldSpec(ec.NewChild("counts"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<DailyChangeSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new DailyChangeSummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<DailyChangeSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

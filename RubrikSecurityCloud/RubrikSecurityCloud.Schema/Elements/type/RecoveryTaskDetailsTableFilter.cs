@@ -166,57 +166,56 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<FilterOption>? ClusterLocation
         // GraphQL -> cluster_location: [FilterOption!]! (type)
-        if (this.ClusterLocation == null && Exploration.Includes(parent + ".cluster_location"))
+        if (this.ClusterLocation == null && ec.Includes("cluster_location",false))
         {
             this.ClusterLocation = new List<FilterOption>();
-            this.ClusterLocation.ApplyExploratoryFieldSpec(parent + ".cluster_location");
+            this.ClusterLocation.ApplyExploratoryFieldSpec(ec.NewChild("cluster_location"));
         }
         //      C# -> List<FilterOption>? ClusterType
         // GraphQL -> cluster_type: [FilterOption!]! (type)
-        if (this.ClusterType == null && Exploration.Includes(parent + ".cluster_type"))
+        if (this.ClusterType == null && ec.Includes("cluster_type",false))
         {
             this.ClusterType = new List<FilterOption>();
-            this.ClusterType.ApplyExploratoryFieldSpec(parent + ".cluster_type");
+            this.ClusterType.ApplyExploratoryFieldSpec(ec.NewChild("cluster_type"));
         }
         //      C# -> List<FilterOption>? ObjectType
         // GraphQL -> object_type: [FilterOption!]! (type)
-        if (this.ObjectType == null && Exploration.Includes(parent + ".object_type"))
+        if (this.ObjectType == null && ec.Includes("object_type",false))
         {
             this.ObjectType = new List<FilterOption>();
-            this.ObjectType.ApplyExploratoryFieldSpec(parent + ".object_type");
+            this.ObjectType.ApplyExploratoryFieldSpec(ec.NewChild("object_type"));
         }
         //      C# -> List<FilterOption>? ReplicationSource
         // GraphQL -> replication_source: [FilterOption!]! (type)
-        if (this.ReplicationSource == null && Exploration.Includes(parent + ".replication_source"))
+        if (this.ReplicationSource == null && ec.Includes("replication_source",false))
         {
             this.ReplicationSource = new List<FilterOption>();
-            this.ReplicationSource.ApplyExploratoryFieldSpec(parent + ".replication_source");
+            this.ReplicationSource.ApplyExploratoryFieldSpec(ec.NewChild("replication_source"));
         }
         //      C# -> List<FilterOption>? Status
         // GraphQL -> status: [FilterOption!]! (type)
-        if (this.Status == null && Exploration.Includes(parent + ".status"))
+        if (this.Status == null && ec.Includes("status",false))
         {
             this.Status = new List<FilterOption>();
-            this.Status.ApplyExploratoryFieldSpec(parent + ".status");
+            this.Status.ApplyExploratoryFieldSpec(ec.NewChild("status"));
         }
         //      C# -> List<FilterOption>? TaskCategory
         // GraphQL -> task_category: [FilterOption!]! (type)
-        if (this.TaskCategory == null && Exploration.Includes(parent + ".task_category"))
+        if (this.TaskCategory == null && ec.Includes("task_category",false))
         {
             this.TaskCategory = new List<FilterOption>();
-            this.TaskCategory.ApplyExploratoryFieldSpec(parent + ".task_category");
+            this.TaskCategory.ApplyExploratoryFieldSpec(ec.NewChild("task_category"));
         }
         //      C# -> List<FilterOption>? TaskType
         // GraphQL -> task_type: [FilterOption!]! (type)
-        if (this.TaskType == null && Exploration.Includes(parent + ".task_type"))
+        if (this.TaskType == null && ec.Includes("task_type",false))
         {
             this.TaskType = new List<FilterOption>();
-            this.TaskType.ApplyExploratoryFieldSpec(parent + ".task_type");
+            this.TaskType.ApplyExploratoryFieldSpec(ec.NewChild("task_type"));
         }
     }
 
@@ -250,12 +249,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RecoveryTaskDetailsTableFilter> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RecoveryTaskDetailsTableFilter());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<RecoveryTaskDetailsTableFilter> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -229,84 +229,83 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int32? NumBlueprintsReady
         // GraphQL -> numBlueprintsReady: Int! (scalar)
-        if (this.NumBlueprintsReady == null && Exploration.Includes(parent + ".numBlueprintsReady", true))
+        if (this.NumBlueprintsReady == null && ec.Includes("numBlueprintsReady",true))
         {
             this.NumBlueprintsReady = Int32.MinValue;
         }
         //      C# -> System.Int32? NumBlueprintsWithIssues
         // GraphQL -> numBlueprintsWithIssues: Int! (scalar)
-        if (this.NumBlueprintsWithIssues == null && Exploration.Includes(parent + ".numBlueprintsWithIssues", true))
+        if (this.NumBlueprintsWithIssues == null && ec.Includes("numBlueprintsWithIssues",true))
         {
             this.NumBlueprintsWithIssues = Int32.MinValue;
         }
         //      C# -> System.Int32? NumBpFailedLastFailover
         // GraphQL -> numBpFailedLastFailover: Int! (scalar)
-        if (this.NumBpFailedLastFailover == null && Exploration.Includes(parent + ".numBpFailedLastFailover", true))
+        if (this.NumBpFailedLastFailover == null && ec.Includes("numBpFailedLastFailover",true))
         {
             this.NumBpFailedLastFailover = Int32.MinValue;
         }
         //      C# -> System.Int32? NumBpFailedLastTestFailover
         // GraphQL -> numBpFailedLastTestFailover: Int! (scalar)
-        if (this.NumBpFailedLastTestFailover == null && Exploration.Includes(parent + ".numBpFailedLastTestFailover", true))
+        if (this.NumBpFailedLastTestFailover == null && ec.Includes("numBpFailedLastTestFailover",true))
         {
             this.NumBpFailedLastTestFailover = Int32.MinValue;
         }
         //      C# -> System.Int32? NumBpFailedTestFailoverLastQuarter
         // GraphQL -> numBpFailedTestFailoverLastQuarter: Int! (scalar)
-        if (this.NumBpFailedTestFailoverLastQuarter == null && Exploration.Includes(parent + ".numBpFailedTestFailoverLastQuarter", true))
+        if (this.NumBpFailedTestFailoverLastQuarter == null && ec.Includes("numBpFailedTestFailoverLastQuarter",true))
         {
             this.NumBpFailedTestFailoverLastQuarter = Int32.MinValue;
         }
         //      C# -> System.Int32? NumBpPassedLastFailover
         // GraphQL -> numBpPassedLastFailover: Int! (scalar)
-        if (this.NumBpPassedLastFailover == null && Exploration.Includes(parent + ".numBpPassedLastFailover", true))
+        if (this.NumBpPassedLastFailover == null && ec.Includes("numBpPassedLastFailover",true))
         {
             this.NumBpPassedLastFailover = Int32.MinValue;
         }
         //      C# -> System.Int32? NumBpPassedLastTestFailover
         // GraphQL -> numBpPassedLastTestFailover: Int! (scalar)
-        if (this.NumBpPassedLastTestFailover == null && Exploration.Includes(parent + ".numBpPassedLastTestFailover", true))
+        if (this.NumBpPassedLastTestFailover == null && ec.Includes("numBpPassedLastTestFailover",true))
         {
             this.NumBpPassedLastTestFailover = Int32.MinValue;
         }
         //      C# -> System.Int32? NumDrPlansReady
         // GraphQL -> numDrPlansReady: Int! (scalar)
-        if (this.NumDrPlansReady == null && Exploration.Includes(parent + ".numDrPlansReady", true))
+        if (this.NumDrPlansReady == null && ec.Includes("numDrPlansReady",true))
         {
             this.NumDrPlansReady = Int32.MinValue;
         }
         //      C# -> System.Int32? NumDrPlansWithIssues
         // GraphQL -> numDrPlansWithIssues: Int! (scalar)
-        if (this.NumDrPlansWithIssues == null && Exploration.Includes(parent + ".numDrPlansWithIssues", true))
+        if (this.NumDrPlansWithIssues == null && ec.Includes("numDrPlansWithIssues",true))
         {
             this.NumDrPlansWithIssues = Int32.MinValue;
         }
         //      C# -> System.Int32? NumVmwareVmsProtected
         // GraphQL -> numVmwareVmsProtected: Int! (scalar)
-        if (this.NumVmwareVmsProtected == null && Exploration.Includes(parent + ".numVmwareVmsProtected", true))
+        if (this.NumVmwareVmsProtected == null && ec.Includes("numVmwareVmsProtected",true))
         {
             this.NumVmwareVmsProtected = Int32.MinValue;
         }
         //      C# -> System.Int32? TotalBlueprints
         // GraphQL -> totalBlueprints: Int! (scalar)
-        if (this.TotalBlueprints == null && Exploration.Includes(parent + ".totalBlueprints", true))
+        if (this.TotalBlueprints == null && ec.Includes("totalBlueprints",true))
         {
             this.TotalBlueprints = Int32.MinValue;
         }
         //      C# -> System.Int32? TotalDrPlans
         // GraphQL -> totalDrPlans: Int! (scalar)
-        if (this.TotalDrPlans == null && Exploration.Includes(parent + ".totalDrPlans", true))
+        if (this.TotalDrPlans == null && ec.Includes("totalDrPlans",true))
         {
             this.TotalDrPlans = Int32.MinValue;
         }
         //      C# -> System.Int32? TotalVmwareVms
         // GraphQL -> totalVmwareVms: Int! (scalar)
-        if (this.TotalVmwareVms == null && Exploration.Includes(parent + ".totalVmwareVms", true))
+        if (this.TotalVmwareVms == null && ec.Includes("totalVmwareVms",true))
         {
             this.TotalVmwareVms = Int32.MinValue;
         }
@@ -342,12 +341,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AppflowsSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AppflowsSummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AppflowsSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

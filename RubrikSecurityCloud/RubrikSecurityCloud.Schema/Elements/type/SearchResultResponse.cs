@@ -92,27 +92,26 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Filename
         // GraphQL -> filename: String (scalar)
-        if (this.Filename == null && Exploration.Includes(parent + ".filename", true))
+        if (this.Filename == null && ec.Includes("filename",true))
         {
             this.Filename = "FETCH";
         }
         //      C# -> System.String? Path
         // GraphQL -> path: String (scalar)
-        if (this.Path == null && Exploration.Includes(parent + ".path", true))
+        if (this.Path == null && ec.Includes("path",true))
         {
             this.Path = "FETCH";
         }
         //      C# -> List<VappFileVersion>? FileVersions
         // GraphQL -> fileVersions: [VappFileVersion!]! (type)
-        if (this.FileVersions == null && Exploration.Includes(parent + ".fileVersions"))
+        if (this.FileVersions == null && ec.Includes("fileVersions",false))
         {
             this.FileVersions = new List<VappFileVersion>();
-            this.FileVersions.ApplyExploratoryFieldSpec(parent + ".fileVersions");
+            this.FileVersions.ApplyExploratoryFieldSpec(ec.NewChild("fileVersions"));
         }
     }
 
@@ -146,12 +145,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SearchResultResponse> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SearchResultResponse());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SearchResultResponse> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

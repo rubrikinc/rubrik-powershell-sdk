@@ -140,47 +140,46 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int32? Count
         // GraphQL -> count: Int! (scalar)
-        if (this.Count == null && Exploration.Includes(parent + ".count", true))
+        if (this.Count == null && ec.Includes("count",true))
         {
             this.Count = Int32.MinValue;
         }
         //      C# -> System.Boolean? HasLatestData
         // GraphQL -> hasLatestData: Boolean! (scalar)
-        if (this.HasLatestData == null && Exploration.Includes(parent + ".hasLatestData", true))
+        if (this.HasLatestData == null && ec.Includes("hasLatestData",true))
         {
             this.HasLatestData = true;
         }
         //      C# -> System.Int32? IndexingVersion
         // GraphQL -> indexingVersion: Int! (scalar)
-        if (this.IndexingVersion == null && Exploration.Includes(parent + ".indexingVersion", true))
+        if (this.IndexingVersion == null && ec.Includes("indexingVersion",true))
         {
             this.IndexingVersion = Int32.MinValue;
         }
         //      C# -> List<FileResultEdge>? Edges
         // GraphQL -> edges: [FileResultEdge!]! (type)
-        if (this.Edges == null && Exploration.Includes(parent + ".edges"))
+        if (this.Edges == null && ec.Includes("edges",false))
         {
             this.Edges = new List<FileResultEdge>();
-            this.Edges.ApplyExploratoryFieldSpec(parent + ".edges");
+            this.Edges.ApplyExploratoryFieldSpec(ec.NewChild("edges"));
         }
         //      C# -> List<FileResult>? Nodes
         // GraphQL -> nodes: [FileResult!]! (type)
-        if (this.Nodes == null && Exploration.Includes(parent + ".nodes"))
+        if (this.Nodes == null && ec.Includes("nodes",false))
         {
             this.Nodes = new List<FileResult>();
-            this.Nodes.ApplyExploratoryFieldSpec(parent + ".nodes");
+            this.Nodes.ApplyExploratoryFieldSpec(ec.NewChild("nodes"));
         }
         //      C# -> PageInfo? PageInfo
         // GraphQL -> pageInfo: PageInfo! (type)
-        if (this.PageInfo == null && Exploration.Includes(parent + ".pageInfo"))
+        if (this.PageInfo == null && ec.Includes("pageInfo",false))
         {
             this.PageInfo = new PageInfo();
-            this.PageInfo.ApplyExploratoryFieldSpec(parent + ".pageInfo");
+            this.PageInfo.ApplyExploratoryFieldSpec(ec.NewChild("pageInfo"));
         }
     }
 
@@ -214,12 +213,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<FileResultConnection> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new FileResultConnection());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<FileResultConnection> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

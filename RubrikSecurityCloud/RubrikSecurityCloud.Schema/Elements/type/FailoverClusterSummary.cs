@@ -182,65 +182,64 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> FailoverClusterConnectionStatus? ConnectionStatus
         // GraphQL -> connectionStatus: FailoverClusterConnectionStatus! (enum)
-        if (this.ConnectionStatus == null && Exploration.Includes(parent + ".connectionStatus", true))
+        if (this.ConnectionStatus == null && ec.Includes("connectionStatus",true))
         {
             this.ConnectionStatus = new FailoverClusterConnectionStatus();
         }
         //      C# -> FailoverClusterOsType? OperatingSystemType
         // GraphQL -> operatingSystemType: FailoverClusterOsType (enum)
-        if (this.OperatingSystemType == null && Exploration.Includes(parent + ".operatingSystemType", true))
+        if (this.OperatingSystemType == null && ec.Includes("operatingSystemType",true))
         {
             this.OperatingSystemType = new FailoverClusterOsType();
         }
         //      C# -> SlaAssignment? SlaAssignment
         // GraphQL -> slaAssignment: SlaAssignment (enum)
-        if (this.SlaAssignment == null && Exploration.Includes(parent + ".slaAssignment", true))
+        if (this.SlaAssignment == null && ec.Includes("slaAssignment",true))
         {
             this.SlaAssignment = new SlaAssignment();
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? PrimaryClusterId
         // GraphQL -> primaryClusterId: String! (scalar)
-        if (this.PrimaryClusterId == null && Exploration.Includes(parent + ".primaryClusterId", true))
+        if (this.PrimaryClusterId == null && ec.Includes("primaryClusterId",true))
         {
             this.PrimaryClusterId = "FETCH";
         }
         //      C# -> EffectiveSlaHolder? EffectiveSlaHolder
         // GraphQL -> effectiveSlaHolder: EffectiveSlaHolder (type)
-        if (this.EffectiveSlaHolder == null && Exploration.Includes(parent + ".effectiveSlaHolder"))
+        if (this.EffectiveSlaHolder == null && ec.Includes("effectiveSlaHolder",false))
         {
             this.EffectiveSlaHolder = new EffectiveSlaHolder();
-            this.EffectiveSlaHolder.ApplyExploratoryFieldSpec(parent + ".effectiveSlaHolder");
+            this.EffectiveSlaHolder.ApplyExploratoryFieldSpec(ec.NewChild("effectiveSlaHolder"));
         }
         //      C# -> List<FailoverClusterNode>? Nodes
         // GraphQL -> nodes: [FailoverClusterNode!]! (type)
-        if (this.Nodes == null && Exploration.Includes(parent + ".nodes"))
+        if (this.Nodes == null && ec.Includes("nodes",false))
         {
             this.Nodes = new List<FailoverClusterNode>();
-            this.Nodes.ApplyExploratoryFieldSpec(parent + ".nodes");
+            this.Nodes.ApplyExploratoryFieldSpec(ec.NewChild("nodes"));
         }
         //      C# -> SlaAssignable? SlaAssignable
         // GraphQL -> slaAssignable: SlaAssignable (type)
-        if (this.SlaAssignable == null && Exploration.Includes(parent + ".slaAssignable"))
+        if (this.SlaAssignable == null && ec.Includes("slaAssignable",false))
         {
             this.SlaAssignable = new SlaAssignable();
-            this.SlaAssignable.ApplyExploratoryFieldSpec(parent + ".slaAssignable");
+            this.SlaAssignable.ApplyExploratoryFieldSpec(ec.NewChild("slaAssignable"));
         }
     }
 
@@ -274,12 +273,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<FailoverClusterSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new FailoverClusterSummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<FailoverClusterSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

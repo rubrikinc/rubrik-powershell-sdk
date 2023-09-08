@@ -131,42 +131,41 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? FailedAnalysis
         // GraphQL -> failedAnalysis: Long! (scalar)
-        if (this.FailedAnalysis == null && Exploration.Includes(parent + ".failedAnalysis", true))
+        if (this.FailedAnalysis == null && ec.Includes("failedAnalysis",true))
         {
             this.FailedAnalysis = new System.Int64();
         }
         //      C# -> System.Int64? FailedBackup
         // GraphQL -> failedBackup: Long! (scalar)
-        if (this.FailedBackup == null && Exploration.Includes(parent + ".failedBackup", true))
+        if (this.FailedBackup == null && ec.Includes("failedBackup",true))
         {
             this.FailedBackup = new System.Int64();
         }
         //      C# -> System.Int64? FailedIndexing
         // GraphQL -> failedIndexing: Long! (scalar)
-        if (this.FailedIndexing == null && Exploration.Includes(parent + ".failedIndexing", true))
+        if (this.FailedIndexing == null && ec.Includes("failedIndexing",true))
         {
             this.FailedIndexing = new System.Int64();
         }
         //      C# -> System.Int64? TotalAnalysis
         // GraphQL -> totalAnalysis: Long! (scalar)
-        if (this.TotalAnalysis == null && Exploration.Includes(parent + ".totalAnalysis", true))
+        if (this.TotalAnalysis == null && ec.Includes("totalAnalysis",true))
         {
             this.TotalAnalysis = new System.Int64();
         }
         //      C# -> System.Int64? TotalBackup
         // GraphQL -> totalBackup: Long! (scalar)
-        if (this.TotalBackup == null && Exploration.Includes(parent + ".totalBackup", true))
+        if (this.TotalBackup == null && ec.Includes("totalBackup",true))
         {
             this.TotalBackup = new System.Int64();
         }
         //      C# -> System.Int64? TotalIndexing
         // GraphQL -> totalIndexing: Long! (scalar)
-        if (this.TotalIndexing == null && Exploration.Includes(parent + ".totalIndexing", true))
+        if (this.TotalIndexing == null && ec.Includes("totalIndexing",true))
         {
             this.TotalIndexing = new System.Int64();
         }
@@ -202,12 +201,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GetPipelineHealthReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GetPipelineHealthReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<GetPipelineHealthReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

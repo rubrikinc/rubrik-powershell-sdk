@@ -7,3 +7,4 @@ Filter custom reports data.
 - creationTime_gt: DateTime
 - creationTime_lt: DateTime
 - searchTerm: System.String
+- createdBy: System.String

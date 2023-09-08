@@ -93,27 +93,26 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> BlueprintLocationType? Type
         // GraphQL -> type: BlueprintLocationType! (enum)
-        if (this.Type == null && Exploration.Includes(parent + ".type", true))
+        if (this.Type == null && ec.Includes("type",true))
         {
             this.Type = new BlueprintLocationType();
         }
         //      C# -> System.String? LocationId
         // GraphQL -> locationId: String! (scalar)
-        if (this.LocationId == null && Exploration.Includes(parent + ".locationId", true))
+        if (this.LocationId == null && ec.Includes("locationId",true))
         {
             this.LocationId = "FETCH";
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster (type)
-        if (this.Cluster == null && Exploration.Includes(parent + ".cluster"))
+        if (this.Cluster == null && ec.Includes("cluster",false))
         {
             this.Cluster = new Cluster();
-            this.Cluster.ApplyExploratoryFieldSpec(parent + ".cluster");
+            this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
         }
     }
 
@@ -147,12 +146,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<BlueprintCdmLocation> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new BlueprintCdmLocation());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<BlueprintCdmLocation> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

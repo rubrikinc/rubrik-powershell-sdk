@@ -638,7 +638,64 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
                 fieldSpecObj = (BrowseMssqlDatabaseSnapshotReply)this.Field;
             }
             string fieldSpecDoc = Mutation.BrowseMssqlDatabaseSnapshot(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		endPoint = @{
+			# OPTIONAL
+			lsnPoint = @{
+				# OPTIONAL
+				recoveryForkGuid = <System.String>
+				# REQUIRED
+				lsn = <System.String>
+			}
+			# OPTIONAL
+			timestampMs = <System.Int64>
+			# OPTIONAL
+			date = <DateTime>
+		}
+		# OPTIONAL
+		legalHoldDownloadConfig = @{
+			# REQUIRED
+			isLegalHoldDownload = <System.Boolean>
+		}
+		# OPTIONAL
+		recoveryPoint = @{
+			# OPTIONAL
+			lsnPoint = @{
+				# OPTIONAL
+				recoveryForkGuid = <System.String>
+				# REQUIRED
+				lsn = <System.String>
+			}
+			# OPTIONAL
+			timestampMs = <System.Int64>
+			# OPTIONAL
+			date = <DateTime>
+		}
+		# OPTIONAL
+		startPoint = @{
+			# OPTIONAL
+			lsnPoint = @{
+				# OPTIONAL
+				recoveryForkGuid = <System.String>
+				# REQUIRED
+				lsn = <System.String>
+			}
+			# OPTIONAL
+			timestampMs = <System.Int64>
+			# OPTIONAL
+			date = <DateTime>
+		}
+		# OPTIONAL
+		backupType = <MssqlBackupType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlBackupType]) for enum values.
+	}
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -661,7 +718,56 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.ExportMssqlDatabase(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		allowOverwrite = <System.Boolean>
+		# OPTIONAL
+		finishRecovery = <System.Boolean>
+		# OPTIONAL
+		maxDataStreams = <System.Int32>
+		# OPTIONAL
+		targetDataFilePath = <System.String>
+		# OPTIONAL
+		targetFilePaths = @(
+			@{
+				# OPTIONAL
+				newFilename = <System.String>
+				# OPTIONAL
+				newLogicalName = <System.String>
+				# REQUIRED
+				exportPath = <System.String>
+				# REQUIRED
+				logicalName = <System.String>
+			}
+		)
+		# OPTIONAL
+		targetLogFilePath = <System.String>
+		# REQUIRED
+		recoveryPoint = @{
+			# OPTIONAL
+			lsnPoint = @{
+				# OPTIONAL
+				recoveryForkGuid = <System.String>
+				# REQUIRED
+				lsn = <System.String>
+			}
+			# OPTIONAL
+			timestampMs = <System.Int64>
+			# OPTIONAL
+			date = <DateTime>
+		}
+		# REQUIRED
+		targetDatabaseName = <System.String>
+		# REQUIRED
+		targetInstanceId = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -684,7 +790,33 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.RestoreMssqlDatabase(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		finishRecovery = <System.Boolean>
+		# OPTIONAL
+		maxDataStreams = <System.Int32>
+		# REQUIRED
+		recoveryPoint = @{
+			# OPTIONAL
+			lsnPoint = @{
+				# OPTIONAL
+				recoveryForkGuid = <System.String>
+				# REQUIRED
+				lsn = <System.String>
+			}
+			# OPTIONAL
+			timestampMs = <System.Int64>
+			# OPTIONAL
+			date = <DateTime>
+		}
+	}
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -707,7 +839,90 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
                 fieldSpecObj = (BulkUpdateMssqlDbsReply)this.Field;
             }
             string fieldSpecDoc = Mutation.BulkUpdateMssqlDbs(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	dbsUpdateProperties = @(
+		@{
+			# REQUIRED
+			databaseId = <System.String>
+			# REQUIRED
+			updateProperties = @{
+				# OPTIONAL
+				configuredSlaDomainId = <System.String>
+				# OPTIONAL
+				maxDataStreams = <System.Int32>
+				# OPTIONAL
+				postBackupScript = @{
+					# REQUIRED
+					scriptErrorAction = <ScriptErrorAction> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ScriptErrorAction]) for enum values.
+					# REQUIRED
+					scriptPath = <System.String>
+					# REQUIRED
+					timeoutMs = <System.Int64>
+				}
+				# OPTIONAL
+				preBackupScript = @{
+					# REQUIRED
+					scriptErrorAction = <ScriptErrorAction> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ScriptErrorAction]) for enum values.
+					# REQUIRED
+					scriptPath = <System.String>
+					# REQUIRED
+					timeoutMs = <System.Int64>
+				}
+				# OPTIONAL
+				isPaused = <System.Boolean>
+				# OPTIONAL
+				shouldForceFull = <System.Boolean>
+				# OPTIONAL
+				mssqlNonSlaProperties = @{
+					# OPTIONAL
+					copyOnly = <System.Boolean>
+					# OPTIONAL
+					logBackupFrequencyInSeconds = <System.Int32>
+					# OPTIONAL
+					logRetentionHours = <System.Int32>
+				}
+				# OPTIONAL
+				mssqlSlaPatchProperties = @{
+					# OPTIONAL
+					configuredSlaDomainId = <System.String>
+					# OPTIONAL
+					useConfiguredDefaultLogRetention = <System.Boolean>
+					# OPTIONAL
+					mssqlSlaRelatedProperties = @{
+						# OPTIONAL
+						copyOnly = <System.Boolean>
+						# OPTIONAL
+						logBackupFrequencyInSeconds = <System.Int32>
+						# OPTIONAL
+						logRetentionHours = <System.Int32>
+						# OPTIONAL
+						hasLogConfigFromSla = <System.Boolean>
+						# OPTIONAL
+						hostLogRetention = <System.Int32>
+					}
+				}
+				# OPTIONAL
+				mssqlSlaRelatedProperties = @{
+					# OPTIONAL
+					copyOnly = <System.Boolean>
+					# OPTIONAL
+					logBackupFrequencyInSeconds = <System.Int32>
+					# OPTIONAL
+					logRetentionHours = <System.Int32>
+					# OPTIONAL
+					hasLogConfigFromSla = <System.Boolean>
+					# OPTIONAL
+					hostLogRetention = <System.Int32>
+				}
+			}
+		}
+	)
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -730,7 +945,12 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.TakeMssqlLogBackup(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -753,7 +973,24 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.CreateOnDemandMssqlBackup(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		forceFullSnapshot = <System.Boolean>
+		# OPTIONAL
+		baseOnDemandSnapshotConfig = @{
+			# OPTIONAL
+			slaId = <System.String>
+		}
+	}
+	# REQUIRED
+	id = <System.String>
+	# OPTIONAL
+	userNote = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -776,7 +1013,12 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
                 fieldSpecObj = (ResponseSuccess)this.Field;
             }
             string fieldSpecDoc = Mutation.DeleteMssqlDbSnapshots(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -799,7 +1041,14 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.DeleteMssqlLiveMount(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	force = <System.Boolean>
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -822,7 +1071,42 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.BulkCreateOnDemandMssqlBackup(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		availabilityGroupIds = @(
+			<System.String>
+		)
+		# OPTIONAL
+		databaseIds = @(
+			<System.String>
+		)
+		# OPTIONAL
+		forceFullSnapshot = <System.Boolean>
+		# OPTIONAL
+		hostIds = @(
+			<System.String>
+		)
+		# OPTIONAL
+		instanceIds = @(
+			<System.String>
+		)
+		# OPTIONAL
+		windowsClusterIds = @(
+			<System.String>
+		)
+		# OPTIONAL
+		baseOnDemandSnapshotConfig = @{
+			# OPTIONAL
+			slaId = <System.String>
+		}
+	}
+	# OPTIONAL
+	userNote = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -845,7 +1129,35 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.CreateMssqlLiveMount(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		targetInstanceId = <System.String>
+		# OPTIONAL
+		recoveryModel = <MssqlDatabaseRecoveryModel> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlDatabaseRecoveryModel]) for enum values.
+		# REQUIRED
+		mountedDatabaseName = <System.String>
+		# REQUIRED
+		recoveryPoint = @{
+			# OPTIONAL
+			lsnPoint = @{
+				# OPTIONAL
+				recoveryForkGuid = <System.String>
+				# REQUIRED
+				lsn = <System.String>
+			}
+			# OPTIONAL
+			timestampMs = <System.Int64>
+			# OPTIONAL
+			date = <DateTime>
+		}
+	}
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -868,7 +1180,19 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
                 fieldSpecObj = (UpdateMssqlLogShippingConfigurationReply)this.Field;
             }
             string fieldSpecDoc = Mutation.UpdateMssqlLogShippingConfiguration(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		makeupReseedLimit = <System.Int32>
+	}
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -891,7 +1215,29 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.DownloadMssqlDatabaseFilesFromArchivalLocation(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		recoveryPoint = @{
+			# OPTIONAL
+			lsnPoint = @{
+				# OPTIONAL
+				recoveryForkGuid = <System.String>
+				# REQUIRED
+				lsn = <System.String>
+			}
+			# OPTIONAL
+			timestampMs = <System.Int64>
+			# OPTIONAL
+			date = <DateTime>
+		}
+	}
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -914,7 +1260,26 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.DownloadMssqlDatabaseBackupFiles(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		legalHoldDownloadConfig = @{
+			# REQUIRED
+			isLegalHoldDownload = <System.Boolean>
+		}
+		# REQUIRED
+		items = @(
+			<System.String>
+		)
+	}
+	# REQUIRED
+	id = <System.String>
+	# OPTIONAL
+	userNote = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -937,7 +1302,43 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
                 fieldSpecObj = (ResponseSuccess)this.Field;
             }
             string fieldSpecDoc = Mutation.AssignMssqlSlaDomainProperties(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	updateInfo = @{
+		# OPTIONAL
+		shouldApplyToExistingSnapshots = <System.Boolean>
+		# OPTIONAL
+		shouldApplyToNonPolicySnapshots = <System.Boolean>
+		# OPTIONAL
+		mssqlSlaPatchProperties = @{
+			# OPTIONAL
+			configuredSlaDomainId = <System.String>
+			# OPTIONAL
+			useConfiguredDefaultLogRetention = <System.Boolean>
+			# OPTIONAL
+			mssqlSlaRelatedProperties = @{
+				# OPTIONAL
+				copyOnly = <System.Boolean>
+				# OPTIONAL
+				logBackupFrequencyInSeconds = <System.Int32>
+				# OPTIONAL
+				logRetentionHours = <System.Int32>
+				# OPTIONAL
+				hasLogConfigFromSla = <System.Boolean>
+				# OPTIONAL
+				hostLogRetention = <System.Int32>
+			}
+		}
+		# OPTIONAL
+		existingSnapshotRetention = <ExistingSnapshotRetention> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ExistingSnapshotRetention]) for enum values.
+		# REQUIRED
+		ids = @(
+			<System.String>
+		)
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -960,7 +1361,23 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
                 fieldSpecObj = (UpdateMssqlDefaultPropertiesReply)this.Field;
             }
             string fieldSpecDoc = Mutation.UpdateMssqlDefaultProperties(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	defaultProperties = @{
+		# OPTIONAL
+		cbtStatus = <System.Boolean>
+		# OPTIONAL
+		logBackupFrequencyInSeconds = <System.Int64>
+		# OPTIONAL
+		logRetentionTimeInHours = <System.Int32>
+		# OPTIONAL
+		shouldUseDefaultBackupLocation = <System.Boolean>
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -983,7 +1400,52 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.CreateMssqlLogShippingConfiguration(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		makeupReseedLimit = <System.Int32>
+		# OPTIONAL
+		mssqlLogShippingCreateConfig = @{
+			# OPTIONAL
+			maxDataStreams = <System.Int32>
+			# OPTIONAL
+			targetDataFilePath = <System.String>
+			# OPTIONAL
+			targetFilePaths = @(
+				@{
+					# OPTIONAL
+					newFilename = <System.String>
+					# OPTIONAL
+					newLogicalName = <System.String>
+					# REQUIRED
+					exportPath = <System.String>
+					# REQUIRED
+					logicalName = <System.String>
+				}
+			)
+			# OPTIONAL
+			targetLogFilePath = <System.String>
+			# OPTIONAL
+			mssqlLogShippingTargetStateOptions = @{
+				# OPTIONAL
+				shouldDisconnectStandbyUsers = <System.Boolean>
+				# REQUIRED
+				state = <MssqlLogShippingOkState> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlLogShippingOkState]) for enum values.
+			}
+			# REQUIRED
+			targetDatabaseName = <System.String>
+			# REQUIRED
+			targetInstanceId = <System.String>
+		}
+	}
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1006,7 +1468,45 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
                 fieldSpecObj = (AssignMssqlSlaDomainPropertiesAsyncReply)this.Field;
             }
             string fieldSpecDoc = Mutation.AssignMssqlSlaDomainPropertiesAsync(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	updateInfo = @{
+		# OPTIONAL
+		shouldApplyToExistingSnapshots = <System.Boolean>
+		# OPTIONAL
+		shouldApplyToNonPolicySnapshots = <System.Boolean>
+		# OPTIONAL
+		mssqlSlaPatchProperties = @{
+			# OPTIONAL
+			configuredSlaDomainId = <System.String>
+			# OPTIONAL
+			useConfiguredDefaultLogRetention = <System.Boolean>
+			# OPTIONAL
+			mssqlSlaRelatedProperties = @{
+				# OPTIONAL
+				copyOnly = <System.Boolean>
+				# OPTIONAL
+				logBackupFrequencyInSeconds = <System.Int32>
+				# OPTIONAL
+				logRetentionHours = <System.Int32>
+				# OPTIONAL
+				hasLogConfigFromSla = <System.Boolean>
+				# OPTIONAL
+				hostLogRetention = <System.Int32>
+			}
+		}
+		# OPTIONAL
+		existingSnapshotRetention = <ExistingSnapshotRetention> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ExistingSnapshotRetention]) for enum values.
+		# REQUIRED
+		ids = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	userNote = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 

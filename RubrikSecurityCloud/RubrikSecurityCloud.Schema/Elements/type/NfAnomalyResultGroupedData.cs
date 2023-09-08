@@ -98,29 +98,28 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<NfAnomalyResultGroupedData>? NfAnomalyResultGroupedDataField
         // GraphQL -> nfAnomalyResultGroupedData: [NfAnomalyResultGroupedData!]! (type)
-        if (this.NfAnomalyResultGroupedDataField == null && Exploration.Includes(parent + ".nfAnomalyResultGroupedData"))
+        if (this.NfAnomalyResultGroupedDataField == null && ec.Includes("nfAnomalyResultGroupedData",false))
         {
             this.NfAnomalyResultGroupedDataField = new List<NfAnomalyResultGroupedData>();
-            this.NfAnomalyResultGroupedDataField.ApplyExploratoryFieldSpec(parent + ".nfAnomalyResultGroupedData");
+            this.NfAnomalyResultGroupedDataField.ApplyExploratoryFieldSpec(ec.NewChild("nfAnomalyResultGroupedData"));
         }
         //      C# -> NfAnomalyResultConnection? NfAnomalyResults
         // GraphQL -> nfAnomalyResults: NfAnomalyResultConnection! (type)
-        if (this.NfAnomalyResults == null && Exploration.Includes(parent + ".nfAnomalyResults"))
+        if (this.NfAnomalyResults == null && ec.Includes("nfAnomalyResults",false))
         {
             this.NfAnomalyResults = new NfAnomalyResultConnection();
-            this.NfAnomalyResults.ApplyExploratoryFieldSpec(parent + ".nfAnomalyResults");
+            this.NfAnomalyResults.ApplyExploratoryFieldSpec(ec.NewChild("nfAnomalyResults"));
         }
         //      C# -> NfAnomalyResultGroupByInfo? GroupByInfo
         // GraphQL -> groupByInfo: NfAnomalyResultGroupByInfo! (union)
-        if (this.GroupByInfo == null && Exploration.Includes(parent + ".groupByInfo"))
+        if (this.GroupByInfo == null && ec.Includes("groupByInfo",false))
         {
             var impls = new List<NfAnomalyResultGroupByInfo>();
-            impls.ApplyExploratoryFieldSpec(parent + ".groupByInfo");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
             this.GroupByInfo = (NfAnomalyResultGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
         }
     }
@@ -155,12 +154,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<NfAnomalyResultGroupedData> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new NfAnomalyResultGroupedData());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<NfAnomalyResultGroupedData> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

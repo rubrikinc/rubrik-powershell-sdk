@@ -61,12 +61,11 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> DateTime? LastSuccessfulSync
         // GraphQL -> lastSuccessfulSync: DateTime (scalar)
-        if (this.LastSuccessfulSync == null && Exploration.Includes(parent + ".lastSuccessfulSync", true))
+        if (this.LastSuccessfulSync == null && ec.Includes("lastSuccessfulSync",true))
         {
             this.LastSuccessfulSync = new DateTime();
         }
@@ -102,12 +101,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GetLastInsightSyncReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GetLastInsightSyncReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<GetLastInsightSyncReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

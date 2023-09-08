@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? HostId
         // GraphQL -> hostId: String! (scalar)
-        if (this.HostId == null && Exploration.Includes(parent + ".hostId", true))
+        if (this.HostId == null && ec.Includes("hostId",true))
         {
             this.HostId = "FETCH";
         }
         //      C# -> System.String? HostName
         // GraphQL -> hostName: String! (scalar)
-        if (this.HostName == null && Exploration.Includes(parent + ".hostName", true))
+        if (this.HostName == null && ec.Includes("hostName",true))
         {
             this.HostName = "FETCH";
         }
         //      C# -> System.String? OperatingSystemType
         // GraphQL -> operatingSystemType: String! (scalar)
-        if (this.OperatingSystemType == null && Exploration.Includes(parent + ".operatingSystemType", true))
+        if (this.OperatingSystemType == null && ec.Includes("operatingSystemType",true))
         {
             this.OperatingSystemType = "FETCH";
         }
         //      C# -> System.String? RubrikBackupServiceStatus
         // GraphQL -> rubrikBackupServiceStatus: String! (scalar)
-        if (this.RubrikBackupServiceStatus == null && Exploration.Includes(parent + ".rubrikBackupServiceStatus", true))
+        if (this.RubrikBackupServiceStatus == null && ec.Includes("rubrikBackupServiceStatus",true))
         {
             this.RubrikBackupServiceStatus = "FETCH";
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SlaManagedVolumeHostSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SlaManagedVolumeHostSummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SlaManagedVolumeHostSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

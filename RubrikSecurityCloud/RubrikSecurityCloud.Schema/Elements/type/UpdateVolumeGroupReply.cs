@@ -143,48 +143,47 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? ConfiguredSlaDomainId
         // GraphQL -> configuredSlaDomainId: String! (scalar)
-        if (this.ConfiguredSlaDomainId == null && Exploration.Includes(parent + ".configuredSlaDomainId", true))
+        if (this.ConfiguredSlaDomainId == null && ec.Includes("configuredSlaDomainId",true))
         {
             this.ConfiguredSlaDomainId = "FETCH";
         }
         //      C# -> System.Boolean? IsPaused
         // GraphQL -> isPaused: Boolean! (scalar)
-        if (this.IsPaused == null && Exploration.Includes(parent + ".isPaused", true))
+        if (this.IsPaused == null && ec.Includes("isPaused",true))
         {
             this.IsPaused = true;
         }
         //      C# -> BlackoutWindowResponseInfo? BlackoutWindowResponseInfo
         // GraphQL -> blackoutWindowResponseInfo: BlackoutWindowResponseInfo (type)
-        if (this.BlackoutWindowResponseInfo == null && Exploration.Includes(parent + ".blackoutWindowResponseInfo"))
+        if (this.BlackoutWindowResponseInfo == null && ec.Includes("blackoutWindowResponseInfo",false))
         {
             this.BlackoutWindowResponseInfo = new BlackoutWindowResponseInfo();
-            this.BlackoutWindowResponseInfo.ApplyExploratoryFieldSpec(parent + ".blackoutWindowResponseInfo");
+            this.BlackoutWindowResponseInfo.ApplyExploratoryFieldSpec(ec.NewChild("blackoutWindowResponseInfo"));
         }
         //      C# -> ManagedObjectPendingSlaInfo? PendingSlaDomain
         // GraphQL -> pendingSlaDomain: ManagedObjectPendingSlaInfo (type)
-        if (this.PendingSlaDomain == null && Exploration.Includes(parent + ".pendingSlaDomain"))
+        if (this.PendingSlaDomain == null && ec.Includes("pendingSlaDomain",false))
         {
             this.PendingSlaDomain = new ManagedObjectPendingSlaInfo();
-            this.PendingSlaDomain.ApplyExploratoryFieldSpec(parent + ".pendingSlaDomain");
+            this.PendingSlaDomain.ApplyExploratoryFieldSpec(ec.NewChild("pendingSlaDomain"));
         }
         //      C# -> VolumeGroupSummary? VolumeGroupSummary
         // GraphQL -> volumeGroupSummary: VolumeGroupSummary (type)
-        if (this.VolumeGroupSummary == null && Exploration.Includes(parent + ".volumeGroupSummary"))
+        if (this.VolumeGroupSummary == null && ec.Includes("volumeGroupSummary",false))
         {
             this.VolumeGroupSummary = new VolumeGroupSummary();
-            this.VolumeGroupSummary.ApplyExploratoryFieldSpec(parent + ".volumeGroupSummary");
+            this.VolumeGroupSummary.ApplyExploratoryFieldSpec(ec.NewChild("volumeGroupSummary"));
         }
         //      C# -> List<HostVolumeSummary>? Volumes
         // GraphQL -> volumes: [HostVolumeSummary!]! (type)
-        if (this.Volumes == null && Exploration.Includes(parent + ".volumes"))
+        if (this.Volumes == null && ec.Includes("volumes",false))
         {
             this.Volumes = new List<HostVolumeSummary>();
-            this.Volumes.ApplyExploratoryFieldSpec(parent + ".volumes");
+            this.Volumes.ApplyExploratoryFieldSpec(ec.NewChild("volumes"));
         }
     }
 
@@ -218,12 +217,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<UpdateVolumeGroupReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new UpdateVolumeGroupReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<UpdateVolumeGroupReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

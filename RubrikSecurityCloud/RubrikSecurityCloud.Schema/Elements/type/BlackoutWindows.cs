@@ -81,22 +81,21 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<BlackoutWindow>? GlobalBlackoutWindows
         // GraphQL -> globalBlackoutWindows: [BlackoutWindow!]! (type)
-        if (this.GlobalBlackoutWindows == null && Exploration.Includes(parent + ".globalBlackoutWindows"))
+        if (this.GlobalBlackoutWindows == null && ec.Includes("globalBlackoutWindows",false))
         {
             this.GlobalBlackoutWindows = new List<BlackoutWindow>();
-            this.GlobalBlackoutWindows.ApplyExploratoryFieldSpec(parent + ".globalBlackoutWindows");
+            this.GlobalBlackoutWindows.ApplyExploratoryFieldSpec(ec.NewChild("globalBlackoutWindows"));
         }
         //      C# -> List<BlackoutWindow>? SnappableBlackoutWindows
         // GraphQL -> snappableBlackoutWindows: [BlackoutWindow!]! (type)
-        if (this.SnappableBlackoutWindows == null && Exploration.Includes(parent + ".snappableBlackoutWindows"))
+        if (this.SnappableBlackoutWindows == null && ec.Includes("snappableBlackoutWindows",false))
         {
             this.SnappableBlackoutWindows = new List<BlackoutWindow>();
-            this.SnappableBlackoutWindows.ApplyExploratoryFieldSpec(parent + ".snappableBlackoutWindows");
+            this.SnappableBlackoutWindows.ApplyExploratoryFieldSpec(ec.NewChild("snappableBlackoutWindows"));
         }
     }
 
@@ -130,12 +129,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<BlackoutWindows> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new BlackoutWindows());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<BlackoutWindows> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

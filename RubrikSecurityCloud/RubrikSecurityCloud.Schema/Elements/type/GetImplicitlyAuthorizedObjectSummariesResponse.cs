@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<ObjectSummary>? ObjectSummaries
         // GraphQL -> objectSummaries: [ObjectSummary!]! (type)
-        if (this.ObjectSummaries == null && Exploration.Includes(parent + ".objectSummaries"))
+        if (this.ObjectSummaries == null && ec.Includes("objectSummaries",false))
         {
             this.ObjectSummaries = new List<ObjectSummary>();
-            this.ObjectSummaries.ApplyExploratoryFieldSpec(parent + ".objectSummaries");
+            this.ObjectSummaries.ApplyExploratoryFieldSpec(ec.NewChild("objectSummaries"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GetImplicitlyAuthorizedObjectSummariesResponse> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GetImplicitlyAuthorizedObjectSummariesResponse());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<GetImplicitlyAuthorizedObjectSummariesResponse> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

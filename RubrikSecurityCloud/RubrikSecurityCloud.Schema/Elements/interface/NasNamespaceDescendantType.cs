@@ -176,19 +176,24 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<NasNamespaceDescendantType> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 InterfaceHelper
                     .AddInstancesOfImplementingTypes<NasNamespaceDescendantType>(
                         ref list, 
-                        instance => instance.ApplyExploratoryFieldSpec(parent));
+                        instance => instance.ApplyExploratoryFieldSpec(ec));
             } else {
                 foreach (NasNamespaceDescendantType item in list) {
-                    item.ApplyExploratoryFieldSpec(parent);
+                    item.ApplyExploratoryFieldSpec(ec);
                 }
             }
 
+        }
+
+        public static void Fetch(this List<NasNamespaceDescendantType> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

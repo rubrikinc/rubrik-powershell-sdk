@@ -81,22 +81,21 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<Failure>? Failures
         // GraphQL -> failures: [Failure!]! (type)
-        if (this.Failures == null && Exploration.Includes(parent + ".failures"))
+        if (this.Failures == null && ec.Includes("failures",false))
         {
             this.Failures = new List<Failure>();
-            this.Failures.ApplyExploratoryFieldSpec(parent + ".failures");
+            this.Failures.ApplyExploratoryFieldSpec(ec.NewChild("failures"));
         }
         //      C# -> List<Success>? Successes
         // GraphQL -> successes: [Success!]! (type)
-        if (this.Successes == null && Exploration.Includes(parent + ".successes"))
+        if (this.Successes == null && ec.Includes("successes",false))
         {
             this.Successes = new List<Success>();
-            this.Successes.ApplyExploratoryFieldSpec(parent + ".successes");
+            this.Successes.ApplyExploratoryFieldSpec(ec.NewChild("successes"));
         }
     }
 
@@ -130,12 +129,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CloudNativeCheckRbaConnectivityReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CloudNativeCheckRbaConnectivityReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CloudNativeCheckRbaConnectivityReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

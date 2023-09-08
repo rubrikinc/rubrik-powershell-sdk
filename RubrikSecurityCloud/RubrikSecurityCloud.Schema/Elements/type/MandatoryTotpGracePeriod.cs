@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> DateTime? MandatoryTotpEnforcementDate
         // GraphQL -> mandatoryTotpEnforcementDate: DateTime (scalar)
-        if (this.MandatoryTotpEnforcementDate == null && Exploration.Includes(parent + ".mandatoryTotpEnforcementDate", true))
+        if (this.MandatoryTotpEnforcementDate == null && ec.Includes("mandatoryTotpEnforcementDate",true))
         {
             this.MandatoryTotpEnforcementDate = new DateTime();
         }
         //      C# -> System.Boolean? ShouldHideMandatoryTotpGracePeriodWarning
         // GraphQL -> shouldHideMandatoryTotpGracePeriodWarning: Boolean! (scalar)
-        if (this.ShouldHideMandatoryTotpGracePeriodWarning == null && Exploration.Includes(parent + ".shouldHideMandatoryTotpGracePeriodWarning", true))
+        if (this.ShouldHideMandatoryTotpGracePeriodWarning == null && ec.Includes("shouldHideMandatoryTotpGracePeriodWarning",true))
         {
             this.ShouldHideMandatoryTotpGracePeriodWarning = true;
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<MandatoryTotpGracePeriod> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new MandatoryTotpGracePeriod());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<MandatoryTotpGracePeriod> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

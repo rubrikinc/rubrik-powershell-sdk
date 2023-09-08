@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> WorkloadLevelHierarchy? SnappableType
         // GraphQL -> snappableType: WorkloadLevelHierarchy! (enum)
-        if (this.SnappableType == null && Exploration.Includes(parent + ".snappableType", true))
+        if (this.SnappableType == null && ec.Includes("snappableType",true))
         {
             this.SnappableType = new WorkloadLevelHierarchy();
         }
         //      C# -> List<System.String>? ObjectIds
         // GraphQL -> objectIds: [String!]! (scalar)
-        if (this.ObjectIds == null && Exploration.Includes(parent + ".objectIds", true))
+        if (this.ObjectIds == null && ec.Includes("objectIds",true))
         {
             this.ObjectIds = new List<System.String>();
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ObjectIdsForHierarchyType> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ObjectIdsForHierarchyType());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ObjectIdsForHierarchyType> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -61,12 +61,11 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? UnusedAddr
         // GraphQL -> unusedAddr: Long! (scalar)
-        if (this.UnusedAddr == null && Exploration.Includes(parent + ".unusedAddr", true))
+        if (this.UnusedAddr == null && ec.Includes("unusedAddr",true))
         {
             this.UnusedAddr = new System.Int64();
         }
@@ -102,12 +101,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AzureNetworkSubnetUnusedAddrResp> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AzureNetworkSubnetUnusedAddrResp());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AzureNetworkSubnetUnusedAddrResp> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

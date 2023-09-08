@@ -131,42 +131,41 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> CloudNativeRbaStatusType? RbaStatus
         // GraphQL -> rbaStatus: CloudNativeRbaStatusType! (enum)
-        if (this.RbaStatus == null && Exploration.Includes(parent + ".rbaStatus", true))
+        if (this.RbaStatus == null && ec.Includes("rbaStatus",true))
         {
             this.RbaStatus = new CloudNativeRbaStatusType();
         }
         //      C# -> System.Boolean? CancelBackupIfPreScriptFails
         // GraphQL -> cancelBackupIfPreScriptFails: Boolean! (scalar)
-        if (this.CancelBackupIfPreScriptFails == null && Exploration.Includes(parent + ".cancelBackupIfPreScriptFails", true))
+        if (this.CancelBackupIfPreScriptFails == null && ec.Includes("cancelBackupIfPreScriptFails",true))
         {
             this.CancelBackupIfPreScriptFails = true;
         }
         //      C# -> System.Int32? PostScriptTimeoutInSeconds
         // GraphQL -> postScriptTimeoutInSeconds: Int! (scalar)
-        if (this.PostScriptTimeoutInSeconds == null && Exploration.Includes(parent + ".postScriptTimeoutInSeconds", true))
+        if (this.PostScriptTimeoutInSeconds == null && ec.Includes("postScriptTimeoutInSeconds",true))
         {
             this.PostScriptTimeoutInSeconds = Int32.MinValue;
         }
         //      C# -> System.String? PostSnapshotScriptPath
         // GraphQL -> postSnapshotScriptPath: String! (scalar)
-        if (this.PostSnapshotScriptPath == null && Exploration.Includes(parent + ".postSnapshotScriptPath", true))
+        if (this.PostSnapshotScriptPath == null && ec.Includes("postSnapshotScriptPath",true))
         {
             this.PostSnapshotScriptPath = "FETCH";
         }
         //      C# -> System.Int32? PreScriptTimeoutInSeconds
         // GraphQL -> preScriptTimeoutInSeconds: Int! (scalar)
-        if (this.PreScriptTimeoutInSeconds == null && Exploration.Includes(parent + ".preScriptTimeoutInSeconds", true))
+        if (this.PreScriptTimeoutInSeconds == null && ec.Includes("preScriptTimeoutInSeconds",true))
         {
             this.PreScriptTimeoutInSeconds = Int32.MinValue;
         }
         //      C# -> System.String? PreSnapshotScriptPath
         // GraphQL -> preSnapshotScriptPath: String! (scalar)
-        if (this.PreSnapshotScriptPath == null && Exploration.Includes(parent + ".preSnapshotScriptPath", true))
+        if (this.PreSnapshotScriptPath == null && ec.Includes("preSnapshotScriptPath",true))
         {
             this.PreSnapshotScriptPath = "FETCH";
         }
@@ -202,12 +201,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VmAppConsistentSpecsInternal> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VmAppConsistentSpecsInternal());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VmAppConsistentSpecsInternal> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

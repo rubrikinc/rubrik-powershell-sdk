@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Host
         // GraphQL -> host: String! (scalar)
-        if (this.Host == null && Exploration.Includes(parent + ".host", true))
+        if (this.Host == null && ec.Includes("host",true))
         {
             this.Host = "FETCH";
         }
         //      C# -> System.Int32? Port
         // GraphQL -> port: Int (scalar)
-        if (this.Port == null && Exploration.Includes(parent + ".port", true))
+        if (this.Port == null && ec.Includes("port",true))
         {
             this.Port = Int32.MinValue;
         }
         //      C# -> System.String? Protocol
         // GraphQL -> protocol: String! (scalar)
-        if (this.Protocol == null && Exploration.Includes(parent + ".protocol", true))
+        if (this.Protocol == null && ec.Includes("protocol",true))
         {
             this.Protocol = "FETCH";
         }
         //      C# -> System.String? Username
         // GraphQL -> username: String (scalar)
-        if (this.Username == null && Exploration.Includes(parent + ".username", true))
+        if (this.Username == null && ec.Includes("username",true))
         {
             this.Username = "FETCH";
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<UpdateProxyConfigReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new UpdateProxyConfigReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<UpdateProxyConfigReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

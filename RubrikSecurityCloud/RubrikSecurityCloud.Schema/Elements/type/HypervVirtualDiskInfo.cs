@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? Path
         // GraphQL -> path: String! (scalar)
-        if (this.Path == null && Exploration.Includes(parent + ".path", true))
+        if (this.Path == null && ec.Includes("path",true))
         {
             this.Path = "FETCH";
         }
         //      C# -> System.Int64? Size
         // GraphQL -> size: Long (scalar)
-        if (this.Size == null && Exploration.Includes(parent + ".size", true))
+        if (this.Size == null && ec.Includes("size",true))
         {
             this.Size = new System.Int64();
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<HypervVirtualDiskInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new HypervVirtualDiskInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<HypervVirtualDiskInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

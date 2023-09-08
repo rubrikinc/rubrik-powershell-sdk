@@ -204,75 +204,74 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.Int64? LagTime
         // GraphQL -> lagTime: Long (scalar)
-        if (this.LagTime == null && Exploration.Includes(parent + ".lagTime", true))
+        if (this.LagTime == null && ec.Includes("lagTime",true))
         {
             this.LagTime = new System.Int64();
         }
         //      C# -> DateTime? LastAppliedPoint
         // GraphQL -> lastAppliedPoint: DateTime (scalar)
-        if (this.LastAppliedPoint == null && Exploration.Includes(parent + ".lastAppliedPoint", true))
+        if (this.LastAppliedPoint == null && ec.Includes("lastAppliedPoint",true))
         {
             this.LastAppliedPoint = new DateTime();
         }
         //      C# -> System.String? Location
         // GraphQL -> location: String! (scalar)
-        if (this.Location == null && Exploration.Includes(parent + ".location", true))
+        if (this.Location == null && ec.Includes("location",true))
         {
             this.Location = "FETCH";
         }
         //      C# -> System.String? PrimaryDatabaseId
         // GraphQL -> primaryDatabaseId: String! (scalar)
-        if (this.PrimaryDatabaseId == null && Exploration.Includes(parent + ".primaryDatabaseId", true))
+        if (this.PrimaryDatabaseId == null && ec.Includes("primaryDatabaseId",true))
         {
             this.PrimaryDatabaseId = "FETCH";
         }
         //      C# -> System.Int64? PrimaryDatabaseLogBackupFrequency
         // GraphQL -> primaryDatabaseLogBackupFrequency: Long (scalar)
-        if (this.PrimaryDatabaseLogBackupFrequency == null && Exploration.Includes(parent + ".primaryDatabaseLogBackupFrequency", true))
+        if (this.PrimaryDatabaseLogBackupFrequency == null && ec.Includes("primaryDatabaseLogBackupFrequency",true))
         {
             this.PrimaryDatabaseLogBackupFrequency = new System.Int64();
         }
         //      C# -> System.String? PrimaryDatabaseName
         // GraphQL -> primaryDatabaseName: String! (scalar)
-        if (this.PrimaryDatabaseName == null && Exploration.Includes(parent + ".primaryDatabaseName", true))
+        if (this.PrimaryDatabaseName == null && ec.Includes("primaryDatabaseName",true))
         {
             this.PrimaryDatabaseName = "FETCH";
         }
         //      C# -> System.String? SecondaryDatabaseId
         // GraphQL -> secondaryDatabaseId: String (scalar)
-        if (this.SecondaryDatabaseId == null && Exploration.Includes(parent + ".secondaryDatabaseId", true))
+        if (this.SecondaryDatabaseId == null && ec.Includes("secondaryDatabaseId",true))
         {
             this.SecondaryDatabaseId = "FETCH";
         }
         //      C# -> System.String? SecondaryDatabaseName
         // GraphQL -> secondaryDatabaseName: String! (scalar)
-        if (this.SecondaryDatabaseName == null && Exploration.Includes(parent + ".secondaryDatabaseName", true))
+        if (this.SecondaryDatabaseName == null && ec.Includes("secondaryDatabaseName",true))
         {
             this.SecondaryDatabaseName = "FETCH";
         }
         //      C# -> System.String? State
         // GraphQL -> state: String (scalar)
-        if (this.State == null && Exploration.Includes(parent + ".state", true))
+        if (this.State == null && ec.Includes("state",true))
         {
             this.State = "FETCH";
         }
         //      C# -> MssqlLogShippingStatusInfo? Status
         // GraphQL -> status: MssqlLogShippingStatusInfo (type)
-        if (this.Status == null && Exploration.Includes(parent + ".status"))
+        if (this.Status == null && ec.Includes("status",false))
         {
             this.Status = new MssqlLogShippingStatusInfo();
-            this.Status.ApplyExploratoryFieldSpec(parent + ".status");
+            this.Status.ApplyExploratoryFieldSpec(ec.NewChild("status"));
         }
     }
 
@@ -306,12 +305,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<MssqlLogShippingSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new MssqlLogShippingSummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<MssqlLogShippingSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

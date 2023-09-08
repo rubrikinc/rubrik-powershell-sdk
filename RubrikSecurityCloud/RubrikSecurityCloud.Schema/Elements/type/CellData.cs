@@ -81,23 +81,22 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> DisplayableValue? DisplayableValue
         // GraphQL -> displayableValue: DisplayableValue (interface)
-        if (this.DisplayableValue == null && Exploration.Includes(parent + ".displayableValue"))
+        if (this.DisplayableValue == null && ec.Includes("displayableValue",false))
         {
             var impls = new List<DisplayableValue>();
-            impls.ApplyExploratoryFieldSpec(parent + ".displayableValue");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("displayableValue"));
             this.DisplayableValue = (DisplayableValue)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> List<Metadata>? Metadata
         // GraphQL -> metadata: [Metadata!]! (type)
-        if (this.Metadata == null && Exploration.Includes(parent + ".metadata"))
+        if (this.Metadata == null && ec.Includes("metadata",false))
         {
             this.Metadata = new List<Metadata>();
-            this.Metadata.ApplyExploratoryFieldSpec(parent + ".metadata");
+            this.Metadata.ApplyExploratoryFieldSpec(ec.NewChild("metadata"));
         }
     }
 
@@ -131,12 +130,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CellData> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CellData());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CellData> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

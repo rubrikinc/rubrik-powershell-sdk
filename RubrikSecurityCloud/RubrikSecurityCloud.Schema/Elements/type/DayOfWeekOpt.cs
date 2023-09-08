@@ -61,12 +61,11 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> DayOfWeek? Day
         // GraphQL -> day: DayOfWeek! (enum)
-        if (this.Day == null && Exploration.Includes(parent + ".day", true))
+        if (this.Day == null && ec.Includes("day",true))
         {
             this.Day = new DayOfWeek();
         }
@@ -102,12 +101,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<DayOfWeekOpt> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new DayOfWeekOpt());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<DayOfWeekOpt> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

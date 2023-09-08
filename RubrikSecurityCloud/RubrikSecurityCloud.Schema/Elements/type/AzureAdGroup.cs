@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? DisplayName
         // GraphQL -> displayName: String! (scalar)
-        if (this.DisplayName == null && Exploration.Includes(parent + ".displayName", true))
+        if (this.DisplayName == null && ec.Includes("displayName",true))
         {
             this.DisplayName = "FETCH";
         }
         //      C# -> System.String? GroupType
         // GraphQL -> groupType: String! (scalar)
-        if (this.GroupType == null && Exploration.Includes(parent + ".groupType", true))
+        if (this.GroupType == null && ec.Includes("groupType",true))
         {
             this.GroupType = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AzureAdGroup> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AzureAdGroup());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AzureAdGroup> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

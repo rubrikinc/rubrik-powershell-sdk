@@ -61,12 +61,11 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? CrawlId
         // GraphQL -> crawlId: String! (scalar)
-        if (this.CrawlId == null && Exploration.Includes(parent + ".crawlId", true))
+        if (this.CrawlId == null && ec.Includes("crawlId",true))
         {
             this.CrawlId = "FETCH";
         }
@@ -102,12 +101,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<StartCrawlReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new StartCrawlReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<StartCrawlReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

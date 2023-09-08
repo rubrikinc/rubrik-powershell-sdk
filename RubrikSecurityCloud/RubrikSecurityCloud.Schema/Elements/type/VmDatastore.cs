@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? DatastoreId
         // GraphQL -> datastoreId: String! (scalar)
-        if (this.DatastoreId == null && Exploration.Includes(parent + ".datastoreId", true))
+        if (this.DatastoreId == null && ec.Includes("datastoreId",true))
         {
             this.DatastoreId = "FETCH";
         }
         //      C# -> System.String? DatastoreName
         // GraphQL -> datastoreName: String! (scalar)
-        if (this.DatastoreName == null && Exploration.Includes(parent + ".datastoreName", true))
+        if (this.DatastoreName == null && ec.Includes("datastoreName",true))
         {
             this.DatastoreName = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VmDatastore> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VmDatastore());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VmDatastore> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -148,51 +148,50 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ReportTemplate? ReportTemplate
         // GraphQL -> reportTemplate: ReportTemplate! (enum)
-        if (this.ReportTemplate == null && Exploration.Includes(parent + ".reportTemplate", true))
+        if (this.ReportTemplate == null && ec.Includes("reportTemplate",true))
         {
             this.ReportTemplate = new ReportTemplate();
         }
         //      C# -> CdmReportMigrationStatus? Status
         // GraphQL -> status: CdmReportMigrationStatus! (enum)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = new CdmReportMigrationStatus();
         }
         //      C# -> System.String? Details
         // GraphQL -> details: String! (scalar)
-        if (this.Details == null && Exploration.Includes(parent + ".details", true))
+        if (this.Details == null && ec.Includes("details",true))
         {
             this.Details = "FETCH";
         }
         //      C# -> System.String? ReportId
         // GraphQL -> reportId: String! (scalar)
-        if (this.ReportId == null && Exploration.Includes(parent + ".reportId", true))
+        if (this.ReportId == null && ec.Includes("reportId",true))
         {
             this.ReportId = "FETCH";
         }
         //      C# -> System.String? ReportName
         // GraphQL -> reportName: String! (scalar)
-        if (this.ReportName == null && Exploration.Includes(parent + ".reportName", true))
+        if (this.ReportName == null && ec.Includes("reportName",true))
         {
             this.ReportName = "FETCH";
         }
         //      C# -> System.Int64? RscReportId
         // GraphQL -> rscReportId: Long! (scalar)
-        if (this.RscReportId == null && Exploration.Includes(parent + ".rscReportId", true))
+        if (this.RscReportId == null && ec.Includes("rscReportId",true))
         {
             this.RscReportId = new System.Int64();
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster (type)
-        if (this.Cluster == null && Exploration.Includes(parent + ".cluster"))
+        if (this.Cluster == null && ec.Includes("cluster",false))
         {
             this.Cluster = new Cluster();
-            this.Cluster.ApplyExploratoryFieldSpec(parent + ".cluster");
+            this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
         }
     }
 
@@ -226,12 +225,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ReportMigrationStatus> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ReportMigrationStatus());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ReportMigrationStatus> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

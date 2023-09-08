@@ -98,29 +98,28 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<RansomwareResultGroupedData>? RansomwareResultGroupedDataField
         // GraphQL -> ransomwareResultGroupedData: [RansomwareResultGroupedData!]! (type)
-        if (this.RansomwareResultGroupedDataField == null && Exploration.Includes(parent + ".ransomwareResultGroupedData"))
+        if (this.RansomwareResultGroupedDataField == null && ec.Includes("ransomwareResultGroupedData",false))
         {
             this.RansomwareResultGroupedDataField = new List<RansomwareResultGroupedData>();
-            this.RansomwareResultGroupedDataField.ApplyExploratoryFieldSpec(parent + ".ransomwareResultGroupedData");
+            this.RansomwareResultGroupedDataField.ApplyExploratoryFieldSpec(ec.NewChild("ransomwareResultGroupedData"));
         }
         //      C# -> RansomwareResultConnection? RansomwareResults
         // GraphQL -> ransomwareResults: RansomwareResultConnection! (type)
-        if (this.RansomwareResults == null && Exploration.Includes(parent + ".ransomwareResults"))
+        if (this.RansomwareResults == null && ec.Includes("ransomwareResults",false))
         {
             this.RansomwareResults = new RansomwareResultConnection();
-            this.RansomwareResults.ApplyExploratoryFieldSpec(parent + ".ransomwareResults");
+            this.RansomwareResults.ApplyExploratoryFieldSpec(ec.NewChild("ransomwareResults"));
         }
         //      C# -> RansomwareResultGroupByInfo? GroupByInfo
         // GraphQL -> groupByInfo: RansomwareResultGroupByInfo! (union)
-        if (this.GroupByInfo == null && Exploration.Includes(parent + ".groupByInfo"))
+        if (this.GroupByInfo == null && ec.Includes("groupByInfo",false))
         {
             var impls = new List<RansomwareResultGroupByInfo>();
-            impls.ApplyExploratoryFieldSpec(parent + ".groupByInfo");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
             this.GroupByInfo = (RansomwareResultGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
         }
     }
@@ -155,12 +154,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RansomwareResultGroupedData> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RansomwareResultGroupedData());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<RansomwareResultGroupedData> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

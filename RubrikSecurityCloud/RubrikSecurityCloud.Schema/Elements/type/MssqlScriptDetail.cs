@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ScriptErrorAction? ScriptErrorAction
         // GraphQL -> scriptErrorAction: ScriptErrorAction! (enum)
-        if (this.ScriptErrorAction == null && Exploration.Includes(parent + ".scriptErrorAction", true))
+        if (this.ScriptErrorAction == null && ec.Includes("scriptErrorAction",true))
         {
             this.ScriptErrorAction = new ScriptErrorAction();
         }
         //      C# -> System.String? ScriptPath
         // GraphQL -> scriptPath: String! (scalar)
-        if (this.ScriptPath == null && Exploration.Includes(parent + ".scriptPath", true))
+        if (this.ScriptPath == null && ec.Includes("scriptPath",true))
         {
             this.ScriptPath = "FETCH";
         }
         //      C# -> System.Int64? TimeoutMs
         // GraphQL -> timeoutMs: Long! (scalar)
-        if (this.TimeoutMs == null && Exploration.Includes(parent + ".timeoutMs", true))
+        if (this.TimeoutMs == null && ec.Includes("timeoutMs",true))
         {
             this.TimeoutMs = new System.Int64();
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<MssqlScriptDetail> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new MssqlScriptDetail());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<MssqlScriptDetail> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

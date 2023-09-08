@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? CdmCertUuid
         // GraphQL -> cdmCertUuid: UUID! (scalar)
-        if (this.CdmCertUuid == null && Exploration.Includes(parent + ".cdmCertUuid", true))
+        if (this.CdmCertUuid == null && ec.Includes("cdmCertUuid",true))
         {
             this.CdmCertUuid = "FETCH";
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
-        if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
+        if (this.ClusterUuid == null && ec.Includes("clusterUuid",true))
         {
             this.ClusterUuid = "FETCH";
         }
         //      C# -> System.Boolean? IsTrusted
         // GraphQL -> isTrusted: Boolean! (scalar)
-        if (this.IsTrusted == null && Exploration.Includes(parent + ".isTrusted", true))
+        if (this.IsTrusted == null && ec.Includes("isTrusted",true))
         {
             this.IsTrusted = true;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CertificateClusterInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CertificateClusterInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CertificateClusterInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

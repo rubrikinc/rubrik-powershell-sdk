@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? AppId
         // GraphQL -> appId: String! (scalar)
-        if (this.AppId == null && Exploration.Includes(parent + ".appId", true))
+        if (this.AppId == null && ec.Includes("appId",true))
         {
             this.AppId = "FETCH";
         }
         //      C# -> System.String? CsrfToken
         // GraphQL -> csrfToken: String! (scalar)
-        if (this.CsrfToken == null && Exploration.Includes(parent + ".csrfToken", true))
+        if (this.CsrfToken == null && ec.Includes("csrfToken",true))
         {
             this.CsrfToken = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<KickoffAzureAdAppSetupReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new KickoffAzureAdAppSetupReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<KickoffAzureAdAppSetupReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

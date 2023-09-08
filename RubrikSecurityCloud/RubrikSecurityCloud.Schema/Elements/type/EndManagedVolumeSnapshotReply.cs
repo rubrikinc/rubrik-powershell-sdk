@@ -81,22 +81,21 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> AsyncRequestStatus? AsyncRequestStatus
         // GraphQL -> asyncRequestStatus: AsyncRequestStatus (type)
-        if (this.AsyncRequestStatus == null && Exploration.Includes(parent + ".asyncRequestStatus"))
+        if (this.AsyncRequestStatus == null && ec.Includes("asyncRequestStatus",false))
         {
             this.AsyncRequestStatus = new AsyncRequestStatus();
-            this.AsyncRequestStatus.ApplyExploratoryFieldSpec(parent + ".asyncRequestStatus");
+            this.AsyncRequestStatus.ApplyExploratoryFieldSpec(ec.NewChild("asyncRequestStatus"));
         }
         //      C# -> ManagedVolumeSnapshotSummary? ManagedVolumeSnapshotSummary
         // GraphQL -> managedVolumeSnapshotSummary: ManagedVolumeSnapshotSummary (type)
-        if (this.ManagedVolumeSnapshotSummary == null && Exploration.Includes(parent + ".managedVolumeSnapshotSummary"))
+        if (this.ManagedVolumeSnapshotSummary == null && ec.Includes("managedVolumeSnapshotSummary",false))
         {
             this.ManagedVolumeSnapshotSummary = new ManagedVolumeSnapshotSummary();
-            this.ManagedVolumeSnapshotSummary.ApplyExploratoryFieldSpec(parent + ".managedVolumeSnapshotSummary");
+            this.ManagedVolumeSnapshotSummary.ApplyExploratoryFieldSpec(ec.NewChild("managedVolumeSnapshotSummary"));
         }
     }
 
@@ -130,12 +129,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<EndManagedVolumeSnapshotReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new EndManagedVolumeSnapshotReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<EndManagedVolumeSnapshotReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

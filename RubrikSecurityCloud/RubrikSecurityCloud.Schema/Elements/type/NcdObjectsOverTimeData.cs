@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int32? Directories
         // GraphQL -> directories: Int! (scalar)
-        if (this.Directories == null && Exploration.Includes(parent + ".directories", true))
+        if (this.Directories == null && ec.Includes("directories",true))
         {
             this.Directories = Int32.MinValue;
         }
         //      C# -> System.Int32? Files
         // GraphQL -> files: Int! (scalar)
-        if (this.Files == null && Exploration.Includes(parent + ".files", true))
+        if (this.Files == null && ec.Includes("files",true))
         {
             this.Files = Int32.MinValue;
         }
         //      C# -> System.Int32? Links
         // GraphQL -> links: Int! (scalar)
-        if (this.Links == null && Exploration.Includes(parent + ".links", true))
+        if (this.Links == null && ec.Includes("links",true))
         {
             this.Links = Int32.MinValue;
         }
         //      C# -> DateTime? Timestamp
         // GraphQL -> timestamp: DateTime (scalar)
-        if (this.Timestamp == null && Exploration.Includes(parent + ".timestamp", true))
+        if (this.Timestamp == null && ec.Includes("timestamp",true))
         {
             this.Timestamp = new DateTime();
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<NcdObjectsOverTimeData> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new NcdObjectsOverTimeData());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<NcdObjectsOverTimeData> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

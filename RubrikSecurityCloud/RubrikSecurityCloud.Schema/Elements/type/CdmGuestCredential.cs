@@ -81,22 +81,21 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
-        if (this.Cluster == null && Exploration.Includes(parent + ".cluster"))
+        if (this.Cluster == null && ec.Includes("cluster",false))
         {
             this.Cluster = new Cluster();
-            this.Cluster.ApplyExploratoryFieldSpec(parent + ".cluster");
+            this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
         }
         //      C# -> CreateGuestCredentialReply? Detail
         // GraphQL -> detail: CreateGuestCredentialReply! (type)
-        if (this.Detail == null && Exploration.Includes(parent + ".detail"))
+        if (this.Detail == null && ec.Includes("detail",false))
         {
             this.Detail = new CreateGuestCredentialReply();
-            this.Detail.ApplyExploratoryFieldSpec(parent + ".detail");
+            this.Detail.ApplyExploratoryFieldSpec(ec.NewChild("detail"));
         }
     }
 
@@ -130,12 +129,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CdmGuestCredential> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CdmGuestCredential());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CdmGuestCredential> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

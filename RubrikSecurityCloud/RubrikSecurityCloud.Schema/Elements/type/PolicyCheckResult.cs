@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? CheckOutput
         // GraphQL -> checkOutput: String (scalar)
-        if (this.CheckOutput == null && Exploration.Includes(parent + ".checkOutput", true))
+        if (this.CheckOutput == null && ec.Includes("checkOutput",true))
         {
             this.CheckOutput = "FETCH";
         }
         //      C# -> System.Boolean? IsCheckPassed
         // GraphQL -> isCheckPassed: Boolean! (scalar)
-        if (this.IsCheckPassed == null && Exploration.Includes(parent + ".isCheckPassed", true))
+        if (this.IsCheckPassed == null && ec.Includes("isCheckPassed",true))
         {
             this.IsCheckPassed = true;
         }
         //      C# -> System.String? NodeId
         // GraphQL -> nodeId: String! (scalar)
-        if (this.NodeId == null && Exploration.Includes(parent + ".nodeId", true))
+        if (this.NodeId == null && ec.Includes("nodeId",true))
         {
             this.NodeId = "FETCH";
         }
         //      C# -> System.String? PolicyId
         // GraphQL -> policyId: String! (scalar)
-        if (this.PolicyId == null && Exploration.Includes(parent + ".policyId", true))
+        if (this.PolicyId == null && ec.Includes("policyId",true))
         {
             this.PolicyId = "FETCH";
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PolicyCheckResult> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PolicyCheckResult());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<PolicyCheckResult> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

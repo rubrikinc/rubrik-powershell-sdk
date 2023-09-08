@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Id
         // GraphQL -> id: String (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsProtectedThruHierarchy
         // GraphQL -> isProtectedThruHierarchy: Boolean! (scalar)
-        if (this.IsProtectedThruHierarchy == null && Exploration.Includes(parent + ".isProtectedThruHierarchy", true))
+        if (this.IsProtectedThruHierarchy == null && ec.Includes("isProtectedThruHierarchy",true))
         {
             this.IsProtectedThruHierarchy = true;
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ParentAppInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ParentAppInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ParentAppInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

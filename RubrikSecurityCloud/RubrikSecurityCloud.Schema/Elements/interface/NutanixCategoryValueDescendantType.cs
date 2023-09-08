@@ -176,19 +176,24 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<NutanixCategoryValueDescendantType> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 InterfaceHelper
                     .AddInstancesOfImplementingTypes<NutanixCategoryValueDescendantType>(
                         ref list, 
-                        instance => instance.ApplyExploratoryFieldSpec(parent));
+                        instance => instance.ApplyExploratoryFieldSpec(ec));
             } else {
                 foreach (NutanixCategoryValueDescendantType item in list) {
-                    item.ApplyExploratoryFieldSpec(parent);
+                    item.ApplyExploratoryFieldSpec(ec);
                 }
             }
 
+        }
+
+        public static void Fetch(this List<NutanixCategoryValueDescendantType> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

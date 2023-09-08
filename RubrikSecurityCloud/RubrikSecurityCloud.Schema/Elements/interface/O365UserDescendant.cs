@@ -141,19 +141,24 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<O365UserDescendant> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 InterfaceHelper
                     .AddInstancesOfImplementingTypes<O365UserDescendant>(
                         ref list, 
-                        instance => instance.ApplyExploratoryFieldSpec(parent));
+                        instance => instance.ApplyExploratoryFieldSpec(ec));
             } else {
                 foreach (O365UserDescendant item in list) {
-                    item.ApplyExploratoryFieldSpec(parent);
+                    item.ApplyExploratoryFieldSpec(ec);
                 }
             }
 
+        }
+
+        public static void Fetch(this List<O365UserDescendant> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

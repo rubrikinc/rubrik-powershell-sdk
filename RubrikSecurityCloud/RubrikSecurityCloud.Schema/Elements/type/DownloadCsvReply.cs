@@ -61,12 +61,11 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? IsSuccessful
         // GraphQL -> isSuccessful: Boolean! (scalar)
-        if (this.IsSuccessful == null && Exploration.Includes(parent + ".isSuccessful", true))
+        if (this.IsSuccessful == null && ec.Includes("isSuccessful",true))
         {
             this.IsSuccessful = true;
         }
@@ -102,12 +101,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<DownloadCsvReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new DownloadCsvReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<DownloadCsvReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

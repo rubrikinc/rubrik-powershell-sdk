@@ -176,19 +176,24 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<HostSharePhysicalChildType> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 InterfaceHelper
                     .AddInstancesOfImplementingTypes<HostSharePhysicalChildType>(
                         ref list, 
-                        instance => instance.ApplyExploratoryFieldSpec(parent));
+                        instance => instance.ApplyExploratoryFieldSpec(ec));
             } else {
                 foreach (HostSharePhysicalChildType item in list) {
-                    item.ApplyExploratoryFieldSpec(parent);
+                    item.ApplyExploratoryFieldSpec(ec);
                 }
             }
 
+        }
+
+        public static void Fetch(this List<HostSharePhysicalChildType> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

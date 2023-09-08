@@ -180,63 +180,62 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> SortOrder? SortOrder
         // GraphQL -> sortOrder: SortOrder! (enum)
-        if (this.SortOrder == null && Exploration.Includes(parent + ".sortOrder", true))
+        if (this.SortOrder == null && ec.Includes("sortOrder",true))
         {
             this.SortOrder = new SortOrder();
         }
         //      C# -> List<Column>? AggregateColumns
         // GraphQL -> aggregateColumns: [Column!]! (type)
-        if (this.AggregateColumns == null && Exploration.Includes(parent + ".aggregateColumns"))
+        if (this.AggregateColumns == null && ec.Includes("aggregateColumns",false))
         {
             this.AggregateColumns = new List<Column>();
-            this.AggregateColumns.ApplyExploratoryFieldSpec(parent + ".aggregateColumns");
+            this.AggregateColumns.ApplyExploratoryFieldSpec(ec.NewChild("aggregateColumns"));
         }
         //      C# -> List<Column>? AllColumns
         // GraphQL -> allColumns: [Column!]! (type)
-        if (this.AllColumns == null && Exploration.Includes(parent + ".allColumns"))
+        if (this.AllColumns == null && ec.Includes("allColumns",false))
         {
             this.AllColumns = new List<Column>();
-            this.AllColumns.ApplyExploratoryFieldSpec(parent + ".allColumns");
+            this.AllColumns.ApplyExploratoryFieldSpec(ec.NewChild("allColumns"));
         }
         //      C# -> List<ChartConfig>? ChartConfigs
         // GraphQL -> chartConfigs: [ChartConfig!]! (type)
-        if (this.ChartConfigs == null && Exploration.Includes(parent + ".chartConfigs"))
+        if (this.ChartConfigs == null && ec.Includes("chartConfigs",false))
         {
             this.ChartConfigs = new List<ChartConfig>();
-            this.ChartConfigs.ApplyExploratoryFieldSpec(parent + ".chartConfigs");
+            this.ChartConfigs.ApplyExploratoryFieldSpec(ec.NewChild("chartConfigs"));
         }
         //      C# -> List<ReportFilterDetail>? Filters
         // GraphQL -> filters: [ReportFilterDetail!]! (type)
-        if (this.Filters == null && Exploration.Includes(parent + ".filters"))
+        if (this.Filters == null && ec.Includes("filters",false))
         {
             this.Filters = new List<ReportFilterDetail>();
-            this.Filters.ApplyExploratoryFieldSpec(parent + ".filters");
+            this.Filters.ApplyExploratoryFieldSpec(ec.NewChild("filters"));
         }
         //      C# -> List<ReportGroupByDetail>? GroupBys
         // GraphQL -> groupBys: [ReportGroupByDetail!]! (type)
-        if (this.GroupBys == null && Exploration.Includes(parent + ".groupBys"))
+        if (this.GroupBys == null && ec.Includes("groupBys",false))
         {
             this.GroupBys = new List<ReportGroupByDetail>();
-            this.GroupBys.ApplyExploratoryFieldSpec(parent + ".groupBys");
+            this.GroupBys.ApplyExploratoryFieldSpec(ec.NewChild("groupBys"));
         }
         //      C# -> Column? SortBy
         // GraphQL -> sortBy: Column! (type)
-        if (this.SortBy == null && Exploration.Includes(parent + ".sortBy"))
+        if (this.SortBy == null && ec.Includes("sortBy",false))
         {
             this.SortBy = new Column();
-            this.SortBy.ApplyExploratoryFieldSpec(parent + ".sortBy");
+            this.SortBy.ApplyExploratoryFieldSpec(ec.NewChild("sortBy"));
         }
         //      C# -> List<Column>? TableColumns
         // GraphQL -> tableColumns: [Column!]! (type)
-        if (this.TableColumns == null && Exploration.Includes(parent + ".tableColumns"))
+        if (this.TableColumns == null && ec.Includes("tableColumns",false))
         {
             this.TableColumns = new List<Column>();
-            this.TableColumns.ApplyExploratoryFieldSpec(parent + ".tableColumns");
+            this.TableColumns.ApplyExploratoryFieldSpec(ec.NewChild("tableColumns"));
         }
     }
 
@@ -270,12 +269,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ReportSchema> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ReportSchema());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ReportSchema> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> SharePointDescendantType? ObjectType
         // GraphQL -> objectType: SharePointDescendantType! (enum)
-        if (this.ObjectType == null && Exploration.Includes(parent + ".objectType", true))
+        if (this.ObjectType == null && ec.Includes("objectType",true))
         {
             this.ObjectType = new SharePointDescendantType();
         }
         //      C# -> System.String? Fid
         // GraphQL -> fid: String! (scalar)
-        if (this.Fid == null && Exploration.Includes(parent + ".fid", true))
+        if (this.Fid == null && ec.Includes("fid",true))
         {
             this.Fid = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? Url
         // GraphQL -> url: URL! (scalar)
-        if (this.Url == null && Exploration.Includes(parent + ".url", true))
+        if (this.Url == null && ec.Includes("url",true))
         {
             this.Url = "FETCH";
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<FullSpObjectExclusion> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new FullSpObjectExclusion());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<FullSpObjectExclusion> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

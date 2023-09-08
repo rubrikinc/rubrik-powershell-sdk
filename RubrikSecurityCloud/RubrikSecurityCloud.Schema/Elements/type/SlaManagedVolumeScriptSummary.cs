@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? RunAsUser
         // GraphQL -> runAsUser: String! (scalar)
-        if (this.RunAsUser == null && Exploration.Includes(parent + ".runAsUser", true))
+        if (this.RunAsUser == null && ec.Includes("runAsUser",true))
         {
             this.RunAsUser = "FETCH";
         }
         //      C# -> System.String? ScriptCommand
         // GraphQL -> scriptCommand: String! (scalar)
-        if (this.ScriptCommand == null && Exploration.Includes(parent + ".scriptCommand", true))
+        if (this.ScriptCommand == null && ec.Includes("scriptCommand",true))
         {
             this.ScriptCommand = "FETCH";
         }
         //      C# -> System.Int64? Timeout
         // GraphQL -> timeout: Long (scalar)
-        if (this.Timeout == null && Exploration.Includes(parent + ".timeout", true))
+        if (this.Timeout == null && ec.Includes("timeout",true))
         {
             this.Timeout = new System.Int64();
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SlaManagedVolumeScriptSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SlaManagedVolumeScriptSummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SlaManagedVolumeScriptSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

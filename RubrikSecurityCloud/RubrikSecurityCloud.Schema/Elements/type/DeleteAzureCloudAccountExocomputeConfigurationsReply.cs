@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<System.String>? DeletionFailedIds
         // GraphQL -> deletionFailedIds: [String!]! (scalar)
-        if (this.DeletionFailedIds == null && Exploration.Includes(parent + ".deletionFailedIds", true))
+        if (this.DeletionFailedIds == null && ec.Includes("deletionFailedIds",true))
         {
             this.DeletionFailedIds = new List<System.String>();
         }
         //      C# -> List<System.String>? DeletionSuccessIds
         // GraphQL -> deletionSuccessIds: [String!]! (scalar)
-        if (this.DeletionSuccessIds == null && Exploration.Includes(parent + ".deletionSuccessIds", true))
+        if (this.DeletionSuccessIds == null && ec.Includes("deletionSuccessIds",true))
         {
             this.DeletionSuccessIds = new List<System.String>();
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<DeleteAzureCloudAccountExocomputeConfigurationsReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new DeleteAzureCloudAccountExocomputeConfigurationsReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<DeleteAzureCloudAccountExocomputeConfigurationsReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

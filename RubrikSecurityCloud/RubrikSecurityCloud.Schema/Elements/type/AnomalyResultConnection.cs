@@ -129,42 +129,41 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int32? Count
         // GraphQL -> count: Int! (scalar)
-        if (this.Count == null && Exploration.Includes(parent + ".count", true))
+        if (this.Count == null && ec.Includes("count",true))
         {
             this.Count = Int32.MinValue;
         }
         //      C# -> AnomalyResultAggregation? Aggregation
         // GraphQL -> aggregation: AnomalyResultAggregation! (type)
-        if (this.Aggregation == null && Exploration.Includes(parent + ".aggregation"))
+        if (this.Aggregation == null && ec.Includes("aggregation",false))
         {
             this.Aggregation = new AnomalyResultAggregation();
-            this.Aggregation.ApplyExploratoryFieldSpec(parent + ".aggregation");
+            this.Aggregation.ApplyExploratoryFieldSpec(ec.NewChild("aggregation"));
         }
         //      C# -> List<AnomalyResultEdge>? Edges
         // GraphQL -> edges: [AnomalyResultEdge!]! (type)
-        if (this.Edges == null && Exploration.Includes(parent + ".edges"))
+        if (this.Edges == null && ec.Includes("edges",false))
         {
             this.Edges = new List<AnomalyResultEdge>();
-            this.Edges.ApplyExploratoryFieldSpec(parent + ".edges");
+            this.Edges.ApplyExploratoryFieldSpec(ec.NewChild("edges"));
         }
         //      C# -> List<AnomalyResult>? Nodes
         // GraphQL -> nodes: [AnomalyResult!]! (type)
-        if (this.Nodes == null && Exploration.Includes(parent + ".nodes"))
+        if (this.Nodes == null && ec.Includes("nodes",false))
         {
             this.Nodes = new List<AnomalyResult>();
-            this.Nodes.ApplyExploratoryFieldSpec(parent + ".nodes");
+            this.Nodes.ApplyExploratoryFieldSpec(ec.NewChild("nodes"));
         }
         //      C# -> PageInfo? PageInfo
         // GraphQL -> pageInfo: PageInfo! (type)
-        if (this.PageInfo == null && Exploration.Includes(parent + ".pageInfo"))
+        if (this.PageInfo == null && ec.Includes("pageInfo",false))
         {
             this.PageInfo = new PageInfo();
-            this.PageInfo.ApplyExploratoryFieldSpec(parent + ".pageInfo");
+            this.PageInfo.ApplyExploratoryFieldSpec(ec.NewChild("pageInfo"));
         }
     }
 
@@ -198,12 +197,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AnomalyResultConnection> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AnomalyResultConnection());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AnomalyResultConnection> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

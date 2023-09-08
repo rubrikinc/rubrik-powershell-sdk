@@ -243,90 +243,89 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ClusterDiskType? DiskType
         // GraphQL -> diskType: ClusterDiskType! (enum)
-        if (this.DiskType == null && Exploration.Includes(parent + ".diskType", true))
+        if (this.DiskType == null && ec.Includes("diskType",true))
         {
             this.DiskType = new ClusterDiskType();
         }
         //      C# -> ClusterDiskStatus? Status
         // GraphQL -> status: ClusterDiskStatus! (enum)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = new ClusterDiskStatus();
         }
         //      C# -> System.Int64? CapacityBytes
         // GraphQL -> capacityBytes: Long! (scalar)
-        if (this.CapacityBytes == null && Exploration.Includes(parent + ".capacityBytes", true))
+        if (this.CapacityBytes == null && ec.Includes("capacityBytes",true))
         {
             this.CapacityBytes = new System.Int64();
         }
         //      C# -> System.String? ClusterId
         // GraphQL -> clusterId: UUID! (scalar)
-        if (this.ClusterId == null && Exploration.Includes(parent + ".clusterId", true))
+        if (this.ClusterId == null && ec.Includes("clusterId",true))
         {
             this.ClusterId = "FETCH";
         }
         //      C# -> System.String? DiskId
         // GraphQL -> diskId: String! (scalar)
-        if (this.DiskId == null && Exploration.Includes(parent + ".diskId", true))
+        if (this.DiskId == null && ec.Includes("diskId",true))
         {
             this.DiskId = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsEncrypted
         // GraphQL -> isEncrypted: Boolean! (scalar)
-        if (this.IsEncrypted == null && Exploration.Includes(parent + ".isEncrypted", true))
+        if (this.IsEncrypted == null && ec.Includes("isEncrypted",true))
         {
             this.IsEncrypted = true;
         }
         //      C# -> System.Boolean? IsResizable
         // GraphQL -> isResizable: Boolean! (scalar)
-        if (this.IsResizable == null && Exploration.Includes(parent + ".isResizable", true))
+        if (this.IsResizable == null && ec.Includes("isResizable",true))
         {
             this.IsResizable = true;
         }
         //      C# -> System.Boolean? LedStatus
         // GraphQL -> ledStatus: Boolean (scalar)
-        if (this.LedStatus == null && Exploration.Includes(parent + ".ledStatus", true))
+        if (this.LedStatus == null && ec.Includes("ledStatus",true))
         {
             this.LedStatus = true;
         }
         //      C# -> System.String? NodeId
         // GraphQL -> nodeId: String (scalar)
-        if (this.NodeId == null && Exploration.Includes(parent + ".nodeId", true))
+        if (this.NodeId == null && ec.Includes("nodeId",true))
         {
             this.NodeId = "FETCH";
         }
         //      C# -> System.String? Path
         // GraphQL -> path: String! (scalar)
-        if (this.Path == null && Exploration.Includes(parent + ".path", true))
+        if (this.Path == null && ec.Includes("path",true))
         {
             this.Path = "FETCH";
         }
         //      C# -> System.String? Serial
         // GraphQL -> serial: String (scalar)
-        if (this.Serial == null && Exploration.Includes(parent + ".serial", true))
+        if (this.Serial == null && ec.Includes("serial",true))
         {
             this.Serial = "FETCH";
         }
         //      C# -> System.Int64? UnallocatedBytes
         // GraphQL -> unallocatedBytes: Long (scalar)
-        if (this.UnallocatedBytes == null && Exploration.Includes(parent + ".unallocatedBytes", true))
+        if (this.UnallocatedBytes == null && ec.Includes("unallocatedBytes",true))
         {
             this.UnallocatedBytes = new System.Int64();
         }
         //      C# -> System.Int64? UsableBytes
         // GraphQL -> usableBytes: Long (scalar)
-        if (this.UsableBytes == null && Exploration.Includes(parent + ".usableBytes", true))
+        if (this.UsableBytes == null && ec.Includes("usableBytes",true))
         {
             this.UsableBytes = new System.Int64();
         }
@@ -362,12 +361,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ClusterDisk> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ClusterDisk());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ClusterDisk> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

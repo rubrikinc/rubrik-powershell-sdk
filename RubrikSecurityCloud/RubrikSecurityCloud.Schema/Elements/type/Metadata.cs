@@ -78,20 +78,19 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> Value? Value
         // GraphQL -> value: Value (interface)
-        if (this.Value == null && Exploration.Includes(parent + ".value"))
+        if (this.Value == null && ec.Includes("value",false))
         {
             var impls = new List<Value>();
-            impls.ApplyExploratoryFieldSpec(parent + ".value");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("value"));
             this.Value = (Value)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> System.String? Key
         // GraphQL -> key: String! (scalar)
-        if (this.Key == null && Exploration.Includes(parent + ".key", true))
+        if (this.Key == null && ec.Includes("key",true))
         {
             this.Key = "FETCH";
         }
@@ -127,12 +126,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<Metadata> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new Metadata());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<Metadata> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

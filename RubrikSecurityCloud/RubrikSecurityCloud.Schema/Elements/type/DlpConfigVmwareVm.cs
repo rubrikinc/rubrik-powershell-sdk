@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> DlpConfigOsType? OsType
         // GraphQL -> osType: DlpConfigOsType! (enum)
-        if (this.OsType == null && Exploration.Includes(parent + ".osType", true))
+        if (this.OsType == null && ec.Includes("osType",true))
         {
             this.OsType = new DlpConfigOsType();
         }
         //      C# -> System.String? Path
         // GraphQL -> path: String! (scalar)
-        if (this.Path == null && Exploration.Includes(parent + ".path", true))
+        if (this.Path == null && ec.Includes("path",true))
         {
             this.Path = "FETCH";
         }
         //      C# -> System.String? WorkloadId
         // GraphQL -> workloadId: UUID! (scalar)
-        if (this.WorkloadId == null && Exploration.Includes(parent + ".workloadId", true))
+        if (this.WorkloadId == null && ec.Includes("workloadId",true))
         {
             this.WorkloadId = "FETCH";
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<DlpConfigVmwareVm> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new DlpConfigVmwareVm());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<DlpConfigVmwareVm> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -81,22 +81,21 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> TimeRange? AbsoluteTimeRange
         // GraphQL -> absoluteTimeRange: TimeRange (type)
-        if (this.AbsoluteTimeRange == null && Exploration.Includes(parent + ".absoluteTimeRange"))
+        if (this.AbsoluteTimeRange == null && ec.Includes("absoluteTimeRange",false))
         {
             this.AbsoluteTimeRange = new TimeRange();
-            this.AbsoluteTimeRange.ApplyExploratoryFieldSpec(parent + ".absoluteTimeRange");
+            this.AbsoluteTimeRange.ApplyExploratoryFieldSpec(ec.NewChild("absoluteTimeRange"));
         }
         //      C# -> RelativeTimeRange? RelativeTimeRange
         // GraphQL -> relativeTimeRange: RelativeTimeRange (type)
-        if (this.RelativeTimeRange == null && Exploration.Includes(parent + ".relativeTimeRange"))
+        if (this.RelativeTimeRange == null && ec.Includes("relativeTimeRange",false))
         {
             this.RelativeTimeRange = new RelativeTimeRange();
-            this.RelativeTimeRange.ApplyExploratoryFieldSpec(parent + ".relativeTimeRange");
+            this.RelativeTimeRange.ApplyExploratoryFieldSpec(ec.NewChild("relativeTimeRange"));
         }
     }
 
@@ -130,12 +129,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GenericTimeRange> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GenericTimeRange());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<GenericTimeRange> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? NewestLogPosition
         // GraphQL -> newestLogPosition: Long (scalar)
-        if (this.NewestLogPosition == null && Exploration.Includes(parent + ".newestLogPosition", true))
+        if (this.NewestLogPosition == null && ec.Includes("newestLogPosition",true))
         {
             this.NewestLogPosition = new System.Int64();
         }
         //      C# -> System.Int64? OldestLogPosition
         // GraphQL -> oldestLogPosition: Long (scalar)
-        if (this.OldestLogPosition == null && Exploration.Includes(parent + ".oldestLogPosition", true))
+        if (this.OldestLogPosition == null && ec.Includes("oldestLogPosition",true))
         {
             this.OldestLogPosition = new System.Int64();
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SapHanaLogPositionInterval> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SapHanaLogPositionInterval());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SapHanaLogPositionInterval> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

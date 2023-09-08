@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? EndTime
         // GraphQL -> endTime: String (scalar)
-        if (this.EndTime == null && Exploration.Includes(parent + ".endTime", true))
+        if (this.EndTime == null && ec.Includes("endTime",true))
         {
             this.EndTime = "FETCH";
         }
         //      C# -> System.String? StartTime
         // GraphQL -> startTime: String! (scalar)
-        if (this.StartTime == null && Exploration.Includes(parent + ".startTime", true))
+        if (this.StartTime == null && ec.Includes("startTime",true))
         {
             this.StartTime = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<BlackoutWindow> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new BlackoutWindow());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<BlackoutWindow> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

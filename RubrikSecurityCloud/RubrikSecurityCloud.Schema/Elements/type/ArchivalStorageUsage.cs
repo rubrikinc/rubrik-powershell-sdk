@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> DateTime? LogTimestamp
         // GraphQL -> logTimestamp: DateTime! (scalar)
-        if (this.LogTimestamp == null && Exploration.Includes(parent + ".logTimestamp", true))
+        if (this.LogTimestamp == null && ec.Includes("logTimestamp",true))
         {
             this.LogTimestamp = new DateTime();
         }
         //      C# -> System.Int64? StorageUsage
         // GraphQL -> storageUsage: Long! (scalar)
-        if (this.StorageUsage == null && Exploration.Includes(parent + ".storageUsage", true))
+        if (this.StorageUsage == null && ec.Includes("storageUsage",true))
         {
             this.StorageUsage = new System.Int64();
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ArchivalStorageUsage> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ArchivalStorageUsage());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ArchivalStorageUsage> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

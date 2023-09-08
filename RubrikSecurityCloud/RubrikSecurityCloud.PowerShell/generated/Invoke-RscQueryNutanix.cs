@@ -22,7 +22,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Nutanix queries
     /// </summary>
     /// <description>
-    /// Invoke-RscQueryNutanix is a master cmdlet for Nutanix work that can invoke any of the following subcommands: TopLevelDescendants, Cluster, Clusters, PrismCentrals, PrismCentral, Category, CategoryValue, Vm, Vms, Mounts, ClusterContainers, ClusterNetworks, ClusterAsyncRequestStatus, VmAsyncRequestStatus, SearchVm, VmMissedSnapshots, BrowseSnapshot, SnapshotDetail.
+    /// Invoke-RscQueryNutanix is a master cmdlet for Nutanix work that can invoke any of the following subcommands: TopLevelDescendants, Cluster, Clusters, PrismCentrals, PrismCentral, Category, CategoryValue, Vm, Vms, Mounts, ClusterContainers, ClusterNetworks, ClusterAsyncRequestStatus, VmAsyncRequestStatus, SearchVm, VmMissedSnapshots, BrowseSnapshot, SnapshotDetail, PrismCentralAsyncRequestStatus.
     /// </description>
     /// <example>
     /// <code>Invoke-RscQueryNutanix -TopLevelDescendants [-Arg ..] [-Field ..]</code>
@@ -77,6 +77,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     /// <example>
     /// <code>Invoke-RscQueryNutanix -SnapshotDetail [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscQueryNutanix -PrismCentralAsyncRequestStatus [-Arg ..] [-Field ..]</code>
     /// </example>
     [Cmdlet(
         "Invoke",
@@ -437,6 +440,28 @@ Lists all files and directories in a given path.
         )]
         public SwitchParameter SnapshotDetail { get; set; }
 
+        
+        /// <summary>
+        /// PrismCentralAsyncRequestStatus parameter set
+        ///
+        /// [GraphQL: nutanixPrismCentralAsyncRequestStatus]
+        /// </summary>
+        [Parameter(
+            ParameterSetName = "PrismCentralAsyncRequestStatus",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Get Nutanix Prism Central async request status
+
+Supported in v9.0+
+v9.0: Get details about a Nutanix pc-related async request.
+v9.1: Retrieve the status for the Nutanix Prism Central async request.
+[GraphQL: nutanixPrismCentralAsyncRequestStatus]",
+            Position = 0
+        )]
+        public SwitchParameter PrismCentralAsyncRequestStatus { get; set; }
+
 
 // ignore warning 'Missing XML comment'
 #pragma warning disable 1591
@@ -499,6 +524,9 @@ Lists all files and directories in a given path.
                         break;
                     case "SnapshotDetail":
                         this.ProcessRecord_SnapshotDetail();
+                        break;
+                    case "PrismCentralAsyncRequestStatus":
+                        this.ProcessRecord_PrismCentralAsyncRequestStatus();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -673,6 +701,15 @@ Lists all files and directories in a given path.
             InvokeQueryNutanixSnapshotDetail();
         }
 
+        // This parameter set invokes a single graphql operation:
+        // nutanixPrismCentralAsyncRequestStatus.
+        internal void ProcessRecord_PrismCentralAsyncRequestStatus()
+        {
+            this._logger.name += " -PrismCentralAsyncRequestStatus";
+            // Invoke graphql operation nutanixPrismCentralAsyncRequestStatus
+            InvokeQueryNutanixPrismCentralAsyncRequestStatus();
+        }
+
 
         // Invoke GraphQL Query:
         // nutanixTopLevelDescendants(
@@ -705,7 +742,61 @@ Lists all files and directories in a given path.
                 fieldSpecObj = (CdmHierarchyObjectConnection)this.Field;
             }
             string fieldSpecDoc = Query.NutanixTopLevelDescendants(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.sortBy = <HierarchySortByField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+# OPTIONAL
+$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$inputs.Var.typeFilter = @(
+	<HierarchyObjectTypeEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]) for enum values.
+)
+# OPTIONAL
+$inputs.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+		)
+}
+)";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -728,7 +819,9 @@ Lists all files and directories in a given path.
                 fieldSpecObj = (NutanixCluster)this.Field;
             }
             string fieldSpecDoc = Query.NutanixCluster(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.fid = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -761,7 +854,57 @@ Lists all files and directories in a given path.
                 fieldSpecObj = (NutanixClusterConnection)this.Field;
             }
             string fieldSpecDoc = Query.NutanixClusters(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.sortBy = <HierarchySortByField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+# OPTIONAL
+$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$inputs.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+		)
+}
+)";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -794,7 +937,57 @@ Lists all files and directories in a given path.
                 fieldSpecObj = (NutanixPrismCentralConnection)this.Field;
             }
             string fieldSpecDoc = Query.NutanixPrismCentrals(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.sortBy = <HierarchySortByField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+# OPTIONAL
+$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$inputs.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+		)
+}
+)";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -817,7 +1010,9 @@ Lists all files and directories in a given path.
                 fieldSpecObj = (NutanixPrismCentral)this.Field;
             }
             string fieldSpecDoc = Query.NutanixPrismCentral(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.fid = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -840,7 +1035,9 @@ Lists all files and directories in a given path.
                 fieldSpecObj = (NutanixCategory)this.Field;
             }
             string fieldSpecDoc = Query.NutanixCategory(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.fid = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -863,7 +1060,9 @@ Lists all files and directories in a given path.
                 fieldSpecObj = (NutanixCategoryValue)this.Field;
             }
             string fieldSpecDoc = Query.NutanixCategoryValue(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.fid = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -886,7 +1085,9 @@ Lists all files and directories in a given path.
                 fieldSpecObj = (NutanixVm)this.Field;
             }
             string fieldSpecDoc = Query.NutanixVm(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.fid = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -919,7 +1120,57 @@ Lists all files and directories in a given path.
                 fieldSpecObj = (NutanixVmConnection)this.Field;
             }
             string fieldSpecDoc = Query.NutanixVms(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.sortBy = <HierarchySortByField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+# OPTIONAL
+$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$inputs.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+		)
+}
+)";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -950,7 +1201,29 @@ Lists all files and directories in a given path.
                 fieldSpecObj = (NutanixLiveMountConnection)this.Field;
             }
             string fieldSpecDoc = Query.NutanixMounts(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.filters = @(
+	@{
+		# OPTIONAL
+		field = <NutanixLiveMountFilterField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NutanixLiveMountFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+}
+)
+# OPTIONAL
+$inputs.Var.sortBy = @{
+	# OPTIONAL
+	field = <NutanixLiveMountSortByField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NutanixLiveMountSortByField]) for enum values.
+	# OPTIONAL
+	sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -973,7 +1246,12 @@ Lists all files and directories in a given path.
                 fieldSpecObj = (NutanixContainerListResponse)this.Field;
             }
             string fieldSpecDoc = Query.NutanixClusterContainers(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -996,7 +1274,12 @@ Lists all files and directories in a given path.
                 fieldSpecObj = (NutanixNetworkListResponse)this.Field;
             }
             string fieldSpecDoc = Query.NutanixClusterNetworks(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1019,7 +1302,14 @@ Lists all files and directories in a given path.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Query.NutanixClusterAsyncRequestStatus(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1042,7 +1332,14 @@ Lists all files and directories in a given path.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Query.NutanixVmAsyncRequestStatus(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1065,7 +1362,18 @@ Lists all files and directories in a given path.
                 fieldSpecObj = (SearchResponseListResponse)this.Field;
             }
             string fieldSpecDoc = Query.SearchNutanixVm(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	cursor = <System.String>
+	# OPTIONAL
+	limit = <System.Int32>
+	# REQUIRED
+	id = <System.String>
+	# REQUIRED
+	path = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1088,7 +1396,12 @@ Lists all files and directories in a given path.
                 fieldSpecObj = (MissedSnapshotListResponse)this.Field;
             }
             string fieldSpecDoc = Query.NutanixVmMissedSnapshots(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1111,7 +1424,18 @@ Lists all files and directories in a given path.
                 fieldSpecObj = (BrowseResponseListResponse)this.Field;
             }
             string fieldSpecDoc = Query.NutanixBrowseSnapshot(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	limit = <System.Int32>
+	# OPTIONAL
+	offset = <System.Int32>
+	# REQUIRED
+	id = <System.String>
+	# REQUIRED
+	path = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -1134,7 +1458,42 @@ Lists all files and directories in a given path.
                 fieldSpecObj = (NutanixVmSnapshotDetail)this.Field;
             }
             string fieldSpecDoc = Query.NutanixSnapshotDetail(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
+            BuildRequest(fieldSpecDoc);
+        }
+
+        // Invoke GraphQL Query:
+        // nutanixPrismCentralAsyncRequestStatus(input: GetNutanixPrismCentralAsyncRequestStatusInput!): AsyncRequestStatus!
+        internal void InvokeQueryNutanixPrismCentralAsyncRequestStatus()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "GetNutanixPrismCentralAsyncRequestStatusInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryNutanixPrismCentralAsyncRequestStatus",
+                "($input: GetNutanixPrismCentralAsyncRequestStatusInput!)",
+                "AsyncRequestStatus"
+                );
+            AsyncRequestStatus? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
+            }
+            string fieldSpecDoc = Query.NutanixPrismCentralAsyncRequestStatus(ref fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 

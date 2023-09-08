@@ -106,33 +106,32 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: UUID! (scalar)
-        if (this.SnapshotId == null && Exploration.Includes(parent + ".snapshotId", true))
+        if (this.SnapshotId == null && ec.Includes("snapshotId",true))
         {
             this.SnapshotId = "FETCH";
         }
         //      C# -> System.String? VcdVmMoid
         // GraphQL -> vcdVmMoid: String! (scalar)
-        if (this.VcdVmMoid == null && Exploration.Includes(parent + ".vcdVmMoid", true))
+        if (this.VcdVmMoid == null && ec.Includes("vcdVmMoid",true))
         {
             this.VcdVmMoid = "FETCH";
         }
         //      C# -> System.String? VmName
         // GraphQL -> vmName: String! (scalar)
-        if (this.VmName == null && Exploration.Includes(parent + ".vmName", true))
+        if (this.VmName == null && ec.Includes("vmName",true))
         {
             this.VmName = "FETCH";
         }
         //      C# -> List<VmNetworkConnection>? NetworkConnections
         // GraphQL -> networkConnections: [VmNetworkConnection!]! (type)
-        if (this.NetworkConnections == null && Exploration.Includes(parent + ".networkConnections"))
+        if (this.NetworkConnections == null && ec.Includes("networkConnections",false))
         {
             this.NetworkConnections = new List<VmNetworkConnection>();
-            this.NetworkConnections.ApplyExploratoryFieldSpec(parent + ".networkConnections");
+            this.NetworkConnections.ApplyExploratoryFieldSpec(ec.NewChild("networkConnections"));
         }
     }
 
@@ -166,12 +165,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VappAppMetadata> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VappAppMetadata());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VappAppMetadata> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

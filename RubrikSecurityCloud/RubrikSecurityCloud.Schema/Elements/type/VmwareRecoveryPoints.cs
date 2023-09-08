@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> DateTime? LocalRecoveryPoint
         // GraphQL -> localRecoveryPoint: DateTime (scalar)
-        if (this.LocalRecoveryPoint == null && Exploration.Includes(parent + ".localRecoveryPoint", true))
+        if (this.LocalRecoveryPoint == null && ec.Includes("localRecoveryPoint",true))
         {
             this.LocalRecoveryPoint = new DateTime();
         }
         //      C# -> DateTime? RemoteRecoveryPoint
         // GraphQL -> remoteRecoveryPoint: DateTime (scalar)
-        if (this.RemoteRecoveryPoint == null && Exploration.Includes(parent + ".remoteRecoveryPoint", true))
+        if (this.RemoteRecoveryPoint == null && ec.Includes("remoteRecoveryPoint",true))
         {
             this.RemoteRecoveryPoint = new DateTime();
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VmwareRecoveryPoints> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VmwareRecoveryPoints());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VmwareRecoveryPoints> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

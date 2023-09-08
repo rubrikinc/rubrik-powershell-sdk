@@ -109,34 +109,33 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int32? Count
         // GraphQL -> count: Int! (scalar)
-        if (this.Count == null && Exploration.Includes(parent + ".count", true))
+        if (this.Count == null && ec.Includes("count",true))
         {
             this.Count = Int32.MinValue;
         }
         //      C# -> System.Int32? CountDelta
         // GraphQL -> countDelta: Int! (scalar)
-        if (this.CountDelta == null && Exploration.Includes(parent + ".countDelta", true))
+        if (this.CountDelta == null && ec.Includes("countDelta",true))
         {
             this.CountDelta = Int32.MinValue;
         }
         //      C# -> Analyzer? Analyzer
         // GraphQL -> analyzer: Analyzer (type)
-        if (this.Analyzer == null && Exploration.Includes(parent + ".analyzer"))
+        if (this.Analyzer == null && ec.Includes("analyzer",false))
         {
             this.Analyzer = new Analyzer();
-            this.Analyzer.ApplyExploratoryFieldSpec(parent + ".analyzer");
+            this.Analyzer.ApplyExploratoryFieldSpec(ec.NewChild("analyzer"));
         }
         //      C# -> List<FileAccessResult>? TopFiles
         // GraphQL -> topFiles: [FileAccessResult!]! (type)
-        if (this.TopFiles == null && Exploration.Includes(parent + ".topFiles"))
+        if (this.TopFiles == null && ec.Includes("topFiles",false))
         {
             this.TopFiles = new List<FileAccessResult>();
-            this.TopFiles.ApplyExploratoryFieldSpec(parent + ".topFiles");
+            this.TopFiles.ApplyExploratoryFieldSpec(ec.NewChild("topFiles"));
         }
     }
 
@@ -170,12 +169,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AnalyzerAccessUsage> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AnalyzerAccessUsage());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AnalyzerAccessUsage> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> AttributedFeatureFlagName? Name
         // GraphQL -> name: AttributedFeatureFlagName! (enum)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = new AttributedFeatureFlagName();
         }
         //      C# -> System.String? Variant
         // GraphQL -> variant: String! (scalar)
-        if (this.Variant == null && Exploration.Includes(parent + ".variant", true))
+        if (this.Variant == null && ec.Includes("variant",true))
         {
             this.Variant = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AttributedFeatureFlag> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AttributedFeatureFlag());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AttributedFeatureFlag> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

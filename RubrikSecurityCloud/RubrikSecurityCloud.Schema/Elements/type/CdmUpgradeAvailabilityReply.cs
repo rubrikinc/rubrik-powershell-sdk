@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? IsAvailable
         // GraphQL -> isAvailable: Boolean! (scalar)
-        if (this.IsAvailable == null && Exploration.Includes(parent + ".isAvailable", true))
+        if (this.IsAvailable == null && ec.Includes("isAvailable",true))
         {
             this.IsAvailable = true;
         }
         //      C# -> StatusResponse? Status
         // GraphQL -> status: StatusResponse (type)
-        if (this.Status == null && Exploration.Includes(parent + ".status"))
+        if (this.Status == null && ec.Includes("status",false))
         {
             this.Status = new StatusResponse();
-            this.Status.ApplyExploratoryFieldSpec(parent + ".status");
+            this.Status.ApplyExploratoryFieldSpec(ec.NewChild("status"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CdmUpgradeAvailabilityReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CdmUpgradeAvailabilityReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CdmUpgradeAvailabilityReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

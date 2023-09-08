@@ -117,36 +117,35 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Bucket
         // GraphQL -> bucket: String (scalar)
-        if (this.Bucket == null && Exploration.Includes(parent + ".bucket", true))
+        if (this.Bucket == null && ec.Includes("bucket",true))
         {
             this.Bucket = "FETCH";
         }
         //      C# -> System.String? EncryptionType
         // GraphQL -> encryptionType: String (scalar)
-        if (this.EncryptionType == null && Exploration.Includes(parent + ".encryptionType", true))
+        if (this.EncryptionType == null && ec.Includes("encryptionType",true))
         {
             this.EncryptionType = "FETCH";
         }
         //      C# -> System.String? Endpoint
         // GraphQL -> endpoint: String (scalar)
-        if (this.Endpoint == null && Exploration.Includes(parent + ".endpoint", true))
+        if (this.Endpoint == null && ec.Includes("endpoint",true))
         {
             this.Endpoint = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.Int64? NumBuckets
         // GraphQL -> numBuckets: Long (scalar)
-        if (this.NumBuckets == null && Exploration.Includes(parent + ".numBuckets", true))
+        if (this.NumBuckets == null && ec.Includes("numBuckets",true))
         {
             this.NumBuckets = new System.Int64();
         }
@@ -182,12 +181,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RestoreFormConfigurationObjectStoreArchivalLocation> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RestoreFormConfigurationObjectStoreArchivalLocation());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<RestoreFormConfigurationObjectStoreArchivalLocation> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

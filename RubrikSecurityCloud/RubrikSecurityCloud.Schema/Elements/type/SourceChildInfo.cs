@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? FailoverChildId
         // GraphQL -> failoverChildId: String! (scalar)
-        if (this.FailoverChildId == null && Exploration.Includes(parent + ".failoverChildId", true))
+        if (this.FailoverChildId == null && ec.Includes("failoverChildId",true))
         {
             this.FailoverChildId = "FETCH";
         }
         //      C# -> ChildInfo? ChildInfo
         // GraphQL -> childInfo: ChildInfo! (type)
-        if (this.ChildInfo == null && Exploration.Includes(parent + ".childInfo"))
+        if (this.ChildInfo == null && ec.Includes("childInfo",false))
         {
             this.ChildInfo = new ChildInfo();
-            this.ChildInfo.ApplyExploratoryFieldSpec(parent + ".childInfo");
+            this.ChildInfo.ApplyExploratoryFieldSpec(ec.NewChild("childInfo"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SourceChildInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SourceChildInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SourceChildInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

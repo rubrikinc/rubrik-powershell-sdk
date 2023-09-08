@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? CapacityKbs
         // GraphQL -> capacityKbs: Long! (scalar)
-        if (this.CapacityKbs == null && Exploration.Includes(parent + ".capacityKbs", true))
+        if (this.CapacityKbs == null && ec.Includes("capacityKbs",true))
         {
             this.CapacityKbs = new System.Int64();
         }
         //      C# -> System.Int32? Key
         // GraphQL -> key: Int! (scalar)
-        if (this.Key == null && Exploration.Includes(parent + ".key", true))
+        if (this.Key == null && ec.Includes("key",true))
         {
             this.Key = Int32.MinValue;
         }
         //      C# -> System.String? Label
         // GraphQL -> label: String! (scalar)
-        if (this.Label == null && Exploration.Includes(parent + ".label", true))
+        if (this.Label == null && ec.Includes("label",true))
         {
             this.Label = "FETCH";
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VmwareVirtualMachineVolume> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VmwareVirtualMachineVolume());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VmwareVirtualMachineVolume> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

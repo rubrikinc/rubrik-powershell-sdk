@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? S3Bucket
         // GraphQL -> s3Bucket: String (scalar)
-        if (this.S3Bucket == null && Exploration.Includes(parent + ".s3Bucket", true))
+        if (this.S3Bucket == null && ec.Includes("s3Bucket",true))
         {
             this.S3Bucket = "FETCH";
         }
         //      C# -> System.String? S3Region
         // GraphQL -> s3Region: String (scalar)
-        if (this.S3Region == null && Exploration.Includes(parent + ".s3Region", true))
+        if (this.S3Region == null && ec.Includes("s3Region",true))
         {
             this.S3Region = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<StoreMetadata> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new StoreMetadata());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<StoreMetadata> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

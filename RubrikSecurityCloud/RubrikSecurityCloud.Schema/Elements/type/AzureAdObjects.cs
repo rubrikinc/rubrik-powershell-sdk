@@ -81,22 +81,21 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> AzureAdGroup? AzureAdGroup
         // GraphQL -> azureAdGroup: AzureAdGroup (type)
-        if (this.AzureAdGroup == null && Exploration.Includes(parent + ".azureAdGroup"))
+        if (this.AzureAdGroup == null && ec.Includes("azureAdGroup",false))
         {
             this.AzureAdGroup = new AzureAdGroup();
-            this.AzureAdGroup.ApplyExploratoryFieldSpec(parent + ".azureAdGroup");
+            this.AzureAdGroup.ApplyExploratoryFieldSpec(ec.NewChild("azureAdGroup"));
         }
         //      C# -> AzureAdUser? AzureAdUser
         // GraphQL -> azureAdUser: AzureAdUser (type)
-        if (this.AzureAdUser == null && Exploration.Includes(parent + ".azureAdUser"))
+        if (this.AzureAdUser == null && ec.Includes("azureAdUser",false))
         {
             this.AzureAdUser = new AzureAdUser();
-            this.AzureAdUser.ApplyExploratoryFieldSpec(parent + ".azureAdUser");
+            this.AzureAdUser.ApplyExploratoryFieldSpec(ec.NewChild("azureAdUser"));
         }
     }
 
@@ -130,12 +129,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AzureAdObjects> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AzureAdObjects());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AzureAdObjects> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

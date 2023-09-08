@@ -19,6 +19,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> List<System.String>? Policies
+        // GraphQL -> policies: [String!] (scalar)
+        [JsonProperty("policies")]
+        public List<System.String>? Policies { get; set; }
+
         //      C# -> DlpConfigGenericNasInput? GenericNas
         // GraphQL -> genericNas: DlpConfigGenericNasInput (input)
         [JsonProperty("genericNas")]
@@ -29,12 +34,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("vmwareVm")]
         public DlpConfigVmwareVmInput? VmwareVm { get; set; }
 
-        //      C# -> List<System.String>? Policies
-        // GraphQL -> policies: [String!]! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("policies")]
-        public List<System.String>? Policies { get; set; }
+        //      C# -> System.String? ServiceAccountId
+        // GraphQL -> serviceAccountId: String (scalar)
+        [JsonProperty("serviceAccountId")]
+        public System.String? ServiceAccountId { get; set; }
+
+        //      C# -> System.String? ServiceAccountName
+        // GraphQL -> serviceAccountName: String (scalar)
+        [JsonProperty("serviceAccountName")]
+        public System.String? ServiceAccountName { get; set; }
+
+        //      C# -> DlpStatusInput? Status
+        // GraphQL -> status: DlpStatusInput (input)
+        [JsonProperty("status")]
+        public DlpStatusInput? Status { get; set; }
 
         //      C# -> DlpConfigTargetType? TargetType
         // GraphQL -> targetType: DlpConfigTargetType! (enum)

@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<System.String>? FailedObjectIds
         // GraphQL -> failedObjectIds: [UUID!]! (scalar)
-        if (this.FailedObjectIds == null && Exploration.Includes(parent + ".failedObjectIds", true))
+        if (this.FailedObjectIds == null && ec.Includes("failedObjectIds",true))
         {
             this.FailedObjectIds = new List<System.String>();
         }
         //      C# -> List<System.String>? SuccessObjectIds
         // GraphQL -> successObjectIds: [UUID!]! (scalar)
-        if (this.SuccessObjectIds == null && Exploration.Includes(parent + ".successObjectIds", true))
+        if (this.SuccessObjectIds == null && ec.Includes("successObjectIds",true))
         {
             this.SuccessObjectIds = new List<System.String>();
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AddCloudNativeSqlServerBackupCredentialsReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AddCloudNativeSqlServerBackupCredentialsReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AddCloudNativeSqlServerBackupCredentialsReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

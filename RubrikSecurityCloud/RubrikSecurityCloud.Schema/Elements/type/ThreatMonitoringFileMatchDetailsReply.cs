@@ -201,72 +201,71 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> IndicatorOfCompromiseKind? MatchType
         // GraphQL -> matchType: IndicatorOfCompromiseKind! (enum)
-        if (this.MatchType == null && Exploration.Includes(parent + ".matchType", true))
+        if (this.MatchType == null && ec.Includes("matchType",true))
         {
             this.MatchType = new IndicatorOfCompromiseKind();
         }
         //      C# -> DateTime? DetectedSnapshotDate
         // GraphQL -> detectedSnapshotDate: DateTime (scalar)
-        if (this.DetectedSnapshotDate == null && Exploration.Includes(parent + ".detectedSnapshotDate", true))
+        if (this.DetectedSnapshotDate == null && ec.Includes("detectedSnapshotDate",true))
         {
             this.DetectedSnapshotDate = new DateTime();
         }
         //      C# -> System.String? FirstDetectedSnapshotFid
         // GraphQL -> firstDetectedSnapshotFid: String! (scalar)
-        if (this.FirstDetectedSnapshotFid == null && Exploration.Includes(parent + ".firstDetectedSnapshotFid", true))
+        if (this.FirstDetectedSnapshotFid == null && ec.Includes("firstDetectedSnapshotFid",true))
         {
             this.FirstDetectedSnapshotFid = "FETCH";
         }
         //      C# -> System.String? IntelSource
         // GraphQL -> intelSource: String! (scalar)
-        if (this.IntelSource == null && Exploration.Includes(parent + ".intelSource", true))
+        if (this.IntelSource == null && ec.Includes("intelSource",true))
         {
             this.IntelSource = "FETCH";
         }
         //      C# -> System.String? IocRuleAuthor
         // GraphQL -> iocRuleAuthor: String! (scalar)
-        if (this.IocRuleAuthor == null && Exploration.Includes(parent + ".iocRuleAuthor", true))
+        if (this.IocRuleAuthor == null && ec.Includes("iocRuleAuthor",true))
         {
             this.IocRuleAuthor = "FETCH";
         }
         //      C# -> System.String? IocRuleDescription
         // GraphQL -> iocRuleDescription: String! (scalar)
-        if (this.IocRuleDescription == null && Exploration.Includes(parent + ".iocRuleDescription", true))
+        if (this.IocRuleDescription == null && ec.Includes("iocRuleDescription",true))
         {
             this.IocRuleDescription = "FETCH";
         }
         //      C# -> System.String? IocRuleName
         // GraphQL -> iocRuleName: String! (scalar)
-        if (this.IocRuleName == null && Exploration.Includes(parent + ".iocRuleName", true))
+        if (this.IocRuleName == null && ec.Includes("iocRuleName",true))
         {
             this.IocRuleName = "FETCH";
         }
         //      C# -> System.Boolean? IsQuarantined
         // GraphQL -> isQuarantined: Boolean! (scalar)
-        if (this.IsQuarantined == null && Exploration.Includes(parent + ".isQuarantined", true))
+        if (this.IsQuarantined == null && ec.Includes("isQuarantined",true))
         {
             this.IsQuarantined = true;
         }
         //      C# -> System.String? MatchedFileMd5
         // GraphQL -> matchedFileMd5: String! (scalar)
-        if (this.MatchedFileMd5 == null && Exploration.Includes(parent + ".matchedFileMd5", true))
+        if (this.MatchedFileMd5 == null && ec.Includes("matchedFileMd5",true))
         {
             this.MatchedFileMd5 = "FETCH";
         }
         //      C# -> System.String? MatchedFileSha1
         // GraphQL -> matchedFileSha1: String! (scalar)
-        if (this.MatchedFileSha1 == null && Exploration.Includes(parent + ".matchedFileSha1", true))
+        if (this.MatchedFileSha1 == null && ec.Includes("matchedFileSha1",true))
         {
             this.MatchedFileSha1 = "FETCH";
         }
         //      C# -> System.String? MatchedFileSha256
         // GraphQL -> matchedFileSha256: String! (scalar)
-        if (this.MatchedFileSha256 == null && Exploration.Includes(parent + ".matchedFileSha256", true))
+        if (this.MatchedFileSha256 == null && ec.Includes("matchedFileSha256",true))
         {
             this.MatchedFileSha256 = "FETCH";
         }
@@ -302,12 +301,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ThreatMonitoringFileMatchDetailsReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ThreatMonitoringFileMatchDetailsReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ThreatMonitoringFileMatchDetailsReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

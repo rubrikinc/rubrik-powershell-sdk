@@ -19,6 +19,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? ArchivalLocationId
+        // GraphQL -> archivalLocationId: String (scalar)
+        [JsonProperty("archivalLocationId")]
+        public System.String? ArchivalLocationId { get; set; }
+
         //      C# -> System.Int32? ContinuousBackupRetentionInDays
         // GraphQL -> continuousBackupRetentionInDays: Int (scalar)
         [JsonProperty("continuousBackupRetentionInDays")]

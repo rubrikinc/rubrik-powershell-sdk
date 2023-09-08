@@ -81,22 +81,21 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<Metadata>? Metadata
         // GraphQL -> metadata: [Metadata!]! (type)
-        if (this.Metadata == null && Exploration.Includes(parent + ".metadata"))
+        if (this.Metadata == null && ec.Includes("metadata",false))
         {
             this.Metadata = new List<Metadata>();
-            this.Metadata.ApplyExploratoryFieldSpec(parent + ".metadata");
+            this.Metadata.ApplyExploratoryFieldSpec(ec.NewChild("metadata"));
         }
         //      C# -> List<CellData>? Values
         // GraphQL -> values: [CellData!]! (type)
-        if (this.Values == null && Exploration.Includes(parent + ".values"))
+        if (this.Values == null && ec.Includes("values",false))
         {
             this.Values = new List<CellData>();
-            this.Values.ApplyExploratoryFieldSpec(parent + ".values");
+            this.Values.ApplyExploratoryFieldSpec(ec.NewChild("values"));
         }
     }
 
@@ -130,12 +129,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<Row> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new Row());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<Row> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

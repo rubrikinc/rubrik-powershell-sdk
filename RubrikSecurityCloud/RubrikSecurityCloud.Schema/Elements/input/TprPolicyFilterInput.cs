@@ -20,11 +20,14 @@ namespace RubrikSecurityCloud.Types
         #region members
 
         //      C# -> System.String? PolicyName
-        // GraphQL -> policyName: String! (scalar)
-        [Required]
-        [JsonRequired]
+        // GraphQL -> policyName: String (scalar)
         [JsonProperty("policyName")]
         public System.String? PolicyName { get; set; }
+
+        //      C# -> List<System.String>? PolicyIds
+        // GraphQL -> policyIds: [UUID!] (scalar)
+        [JsonProperty("policyIds")]
+        public List<System.String>? PolicyIds { get; set; }
 
 
         #endregion

@@ -92,27 +92,26 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? IsValidationSucceeded
         // GraphQL -> isValidationSucceeded: Boolean! (scalar)
-        if (this.IsValidationSucceeded == null && Exploration.Includes(parent + ".isValidationSucceeded", true))
+        if (this.IsValidationSucceeded == null && ec.Includes("isValidationSucceeded",true))
         {
             this.IsValidationSucceeded = true;
         }
         //      C# -> System.String? BlueprintId
         // GraphQL -> blueprintId: id (type)
-        if (this.BlueprintId == null && Exploration.Includes(parent + ".blueprintId", true))
+        if (this.BlueprintId == null && ec.Includes("blueprintId",true))
         {
             this.BlueprintId = "FETCH";
         }
         //      C# -> List<ValidationStatusInfo>? StatusInfos
         // GraphQL -> statusInfos: [ValidationStatusInfo!]! (type)
-        if (this.StatusInfos == null && Exploration.Includes(parent + ".statusInfos"))
+        if (this.StatusInfos == null && ec.Includes("statusInfos",false))
         {
             this.StatusInfos = new List<ValidationStatusInfo>();
-            this.StatusInfos.ApplyExploratoryFieldSpec(parent + ".statusInfos");
+            this.StatusInfos.ApplyExploratoryFieldSpec(ec.NewChild("statusInfos"));
         }
     }
 
@@ -146,12 +145,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ValidateBlueprintReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ValidateBlueprintReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ValidateBlueprintReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

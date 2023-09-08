@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> PendingActionStatus? Status
         // GraphQL -> status: PendingActionStatus! (enum)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = new PendingActionStatus();
         }
         //      C# -> System.String? ObjectFid
         // GraphQL -> objectFid: UUID! (scalar)
-        if (this.ObjectFid == null && Exploration.Includes(parent + ".objectFid", true))
+        if (this.ObjectFid == null && ec.Includes("objectFid",true))
         {
             this.ObjectFid = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PendingSnapshotsOfObjectDeletion> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PendingSnapshotsOfObjectDeletion());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<PendingSnapshotsOfObjectDeletion> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

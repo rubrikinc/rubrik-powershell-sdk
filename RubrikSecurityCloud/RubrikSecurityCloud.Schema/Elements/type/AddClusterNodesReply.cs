@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? JobId
         // GraphQL -> jobId: String! (scalar)
-        if (this.JobId == null && Exploration.Includes(parent + ".jobId", true))
+        if (this.JobId == null && ec.Includes("jobId",true))
         {
             this.JobId = "FETCH";
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AddClusterNodesReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AddClusterNodesReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AddClusterNodesReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

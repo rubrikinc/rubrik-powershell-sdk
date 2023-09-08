@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int32? HostLogRetentionHours
         // GraphQL -> hostLogRetentionHours: Int! (scalar)
-        if (this.HostLogRetentionHours == null && Exploration.Includes(parent + ".hostLogRetentionHours", true))
+        if (this.HostLogRetentionHours == null && ec.Includes("hostLogRetentionHours",true))
         {
             this.HostLogRetentionHours = Int32.MinValue;
         }
         //      C# -> System.Int32? LogBackupFrequencyMin
         // GraphQL -> logBackupFrequencyMin: Int! (scalar)
-        if (this.LogBackupFrequencyMin == null && Exploration.Includes(parent + ".logBackupFrequencyMin", true))
+        if (this.LogBackupFrequencyMin == null && ec.Includes("logBackupFrequencyMin",true))
         {
             this.LogBackupFrequencyMin = Int32.MinValue;
         }
         //      C# -> System.Int32? LogRetentionHours
         // GraphQL -> logRetentionHours: Int! (scalar)
-        if (this.LogRetentionHours == null && Exploration.Includes(parent + ".logRetentionHours", true))
+        if (this.LogRetentionHours == null && ec.Includes("logRetentionHours",true))
         {
             this.LogRetentionHours = Int32.MinValue;
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<OracleLogBackupConfig> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new OracleLogBackupConfig());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<OracleLogBackupConfig> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -120,39 +120,38 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Single? CurrentThrottleLimit
         // GraphQL -> currentThrottleLimit: Float! (scalar)
-        if (this.CurrentThrottleLimit == null && Exploration.Includes(parent + ".currentThrottleLimit", true))
+        if (this.CurrentThrottleLimit == null && ec.Includes("currentThrottleLimit",true))
         {
             this.CurrentThrottleLimit = new System.Single();
         }
         //      C# -> System.Single? DefaultThrottleLimit
         // GraphQL -> defaultThrottleLimit: Float! (scalar)
-        if (this.DefaultThrottleLimit == null && Exploration.Includes(parent + ".defaultThrottleLimit", true))
+        if (this.DefaultThrottleLimit == null && ec.Includes("defaultThrottleLimit",true))
         {
             this.DefaultThrottleLimit = new System.Single();
         }
         //      C# -> System.Boolean? IsEnabled
         // GraphQL -> isEnabled: Boolean! (scalar)
-        if (this.IsEnabled == null && Exploration.Includes(parent + ".isEnabled", true))
+        if (this.IsEnabled == null && ec.Includes("isEnabled",true))
         {
             this.IsEnabled = true;
         }
         //      C# -> System.String? NetworkInterface
         // GraphQL -> networkInterface: String! (scalar)
-        if (this.NetworkInterface == null && Exploration.Includes(parent + ".networkInterface", true))
+        if (this.NetworkInterface == null && ec.Includes("networkInterface",true))
         {
             this.NetworkInterface = "FETCH";
         }
         //      C# -> List<NetworkThrottleSchedule>? ScheduledThrottles
         // GraphQL -> scheduledThrottles: [NetworkThrottleSchedule!]! (type)
-        if (this.ScheduledThrottles == null && Exploration.Includes(parent + ".scheduledThrottles"))
+        if (this.ScheduledThrottles == null && ec.Includes("scheduledThrottles",false))
         {
             this.ScheduledThrottles = new List<NetworkThrottleSchedule>();
-            this.ScheduledThrottles.ApplyExploratoryFieldSpec(parent + ".scheduledThrottles");
+            this.ScheduledThrottles.ApplyExploratoryFieldSpec(ec.NewChild("scheduledThrottles"));
         }
     }
 
@@ -186,12 +185,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<NetworkThrottle> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new NetworkThrottle());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<NetworkThrottle> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

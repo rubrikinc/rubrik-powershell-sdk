@@ -117,36 +117,35 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> DateTime? AutoUpgradeDate
         // GraphQL -> autoUpgradeDate: DateTime (scalar)
-        if (this.AutoUpgradeDate == null && Exploration.Includes(parent + ".autoUpgradeDate", true))
+        if (this.AutoUpgradeDate == null && ec.Includes("autoUpgradeDate",true))
         {
             this.AutoUpgradeDate = new DateTime();
         }
         //      C# -> DateTime? FinalAutoUpgradeDate
         // GraphQL -> finalAutoUpgradeDate: DateTime (scalar)
-        if (this.FinalAutoUpgradeDate == null && Exploration.Includes(parent + ".finalAutoUpgradeDate", true))
+        if (this.FinalAutoUpgradeDate == null && ec.Includes("finalAutoUpgradeDate",true))
         {
             this.FinalAutoUpgradeDate = new DateTime();
         }
         //      C# -> System.Boolean? IsAutoUpgradeEnabled
         // GraphQL -> isAutoUpgradeEnabled: Boolean! (scalar)
-        if (this.IsAutoUpgradeEnabled == null && Exploration.Includes(parent + ".isAutoUpgradeEnabled", true))
+        if (this.IsAutoUpgradeEnabled == null && ec.Includes("isAutoUpgradeEnabled",true))
         {
             this.IsAutoUpgradeEnabled = true;
         }
         //      C# -> System.Boolean? IsUpgradeDateExtendable
         // GraphQL -> isUpgradeDateExtendable: Boolean! (scalar)
-        if (this.IsUpgradeDateExtendable == null && Exploration.Includes(parent + ".isUpgradeDateExtendable", true))
+        if (this.IsUpgradeDateExtendable == null && ec.Includes("isUpgradeDateExtendable",true))
         {
             this.IsUpgradeDateExtendable = true;
         }
         //      C# -> System.Int32? RemainingDays
         // GraphQL -> remainingDays: Int! (scalar)
-        if (this.RemainingDays == null && Exploration.Includes(parent + ".remainingDays", true))
+        if (this.RemainingDays == null && ec.Includes("remainingDays",true))
         {
             this.RemainingDays = Int32.MinValue;
         }
@@ -182,12 +181,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RscAutoUpgradeInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RscAutoUpgradeInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<RscAutoUpgradeInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

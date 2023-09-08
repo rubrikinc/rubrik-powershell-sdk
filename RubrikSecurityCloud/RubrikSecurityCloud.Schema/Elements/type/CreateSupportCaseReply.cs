@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? CaseId
         // GraphQL -> caseId: String! (scalar)
-        if (this.CaseId == null && Exploration.Includes(parent + ".caseId", true))
+        if (this.CaseId == null && ec.Includes("caseId",true))
         {
             this.CaseId = "FETCH";
         }
         //      C# -> System.String? CaseLink
         // GraphQL -> caseLink: URL! (scalar)
-        if (this.CaseLink == null && Exploration.Includes(parent + ".caseLink", true))
+        if (this.CaseLink == null && ec.Includes("caseLink",true))
         {
             this.CaseLink = "FETCH";
         }
         //      C# -> System.String? CaseNumber
         // GraphQL -> caseNumber: String! (scalar)
-        if (this.CaseNumber == null && Exploration.Includes(parent + ".caseNumber", true))
+        if (this.CaseNumber == null && ec.Includes("caseNumber",true))
         {
             this.CaseNumber = "FETCH";
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CreateSupportCaseReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CreateSupportCaseReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CreateSupportCaseReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

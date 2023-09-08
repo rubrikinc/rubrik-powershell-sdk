@@ -117,36 +117,35 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? EventId
         // GraphQL -> eventId: String! (scalar)
-        if (this.EventId == null && Exploration.Includes(parent + ".eventId", true))
+        if (this.EventId == null && ec.Includes("eventId",true))
         {
             this.EventId = "FETCH";
         }
         //      C# -> System.String? JobInstanceId
         // GraphQL -> jobInstanceId: String! (scalar)
-        if (this.JobInstanceId == null && Exploration.Includes(parent + ".jobInstanceId", true))
+        if (this.JobInstanceId == null && ec.Includes("jobInstanceId",true))
         {
             this.JobInstanceId = "FETCH";
         }
         //      C# -> System.Single? Progress
         // GraphQL -> progress: Float! (scalar)
-        if (this.Progress == null && Exploration.Includes(parent + ".progress", true))
+        if (this.Progress == null && ec.Includes("progress",true))
         {
             this.Progress = new System.Single();
         }
         //      C# -> System.Int64? RemainingTimeEstimateInSeconds
         // GraphQL -> remainingTimeEstimateInSeconds: Long! (scalar)
-        if (this.RemainingTimeEstimateInSeconds == null && Exploration.Includes(parent + ".remainingTimeEstimateInSeconds", true))
+        if (this.RemainingTimeEstimateInSeconds == null && ec.Includes("remainingTimeEstimateInSeconds",true))
         {
             this.RemainingTimeEstimateInSeconds = new System.Int64();
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = "FETCH";
         }
@@ -182,12 +181,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<DownloadJobInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new DownloadJobInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<DownloadJobInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

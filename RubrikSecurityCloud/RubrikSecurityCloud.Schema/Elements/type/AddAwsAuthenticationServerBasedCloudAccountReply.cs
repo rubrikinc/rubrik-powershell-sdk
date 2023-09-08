@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Message
         // GraphQL -> message: String (scalar)
-        if (this.Message == null && Exploration.Includes(parent + ".message", true))
+        if (this.Message == null && ec.Includes("message",true))
         {
             this.Message = "FETCH";
         }
         //      C# -> AwsCloudAccount? AwsAccount
         // GraphQL -> awsAccount: AwsCloudAccount (type)
-        if (this.AwsAccount == null && Exploration.Includes(parent + ".awsAccount"))
+        if (this.AwsAccount == null && ec.Includes("awsAccount",false))
         {
             this.AwsAccount = new AwsCloudAccount();
-            this.AwsAccount.ApplyExploratoryFieldSpec(parent + ".awsAccount");
+            this.AwsAccount.ApplyExploratoryFieldSpec(ec.NewChild("awsAccount"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AddAwsAuthenticationServerBasedCloudAccountReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AddAwsAuthenticationServerBasedCloudAccountReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AddAwsAuthenticationServerBasedCloudAccountReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

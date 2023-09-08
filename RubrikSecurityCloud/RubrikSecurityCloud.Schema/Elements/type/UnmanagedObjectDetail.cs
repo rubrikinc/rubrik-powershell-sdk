@@ -314,123 +314,122 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ManagedObjectType? ObjectType
         // GraphQL -> objectType: ManagedObjectType! (enum)
-        if (this.ObjectType == null && Exploration.Includes(parent + ".objectType", true))
+        if (this.ObjectType == null && ec.Includes("objectType",true))
         {
             this.ObjectType = new ManagedObjectType();
         }
         //      C# -> UnmanagedObjectAvailabilityFilter? UnmanagedStatus
         // GraphQL -> unmanagedStatus: UnmanagedObjectAvailabilityFilter! (enum)
-        if (this.UnmanagedStatus == null && Exploration.Includes(parent + ".unmanagedStatus", true))
+        if (this.UnmanagedStatus == null && ec.Includes("unmanagedStatus",true))
         {
             this.UnmanagedStatus = new UnmanagedObjectAvailabilityFilter();
         }
         //      C# -> SlaDomain? EffectiveSlaDomain
         // GraphQL -> effectiveSlaDomain: SlaDomain! (interface)
-        if (this.EffectiveSlaDomain == null && Exploration.Includes(parent + ".effectiveSlaDomain"))
+        if (this.EffectiveSlaDomain == null && ec.Includes("effectiveSlaDomain",false))
         {
             var impls = new List<SlaDomain>();
-            impls.ApplyExploratoryFieldSpec(parent + ".effectiveSlaDomain");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("effectiveSlaDomain"));
             this.EffectiveSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> SlaDomain? PendingSla
         // GraphQL -> pendingSla: SlaDomain (interface)
-        if (this.PendingSla == null && Exploration.Includes(parent + ".pendingSla"))
+        if (this.PendingSla == null && ec.Includes("pendingSla",false))
         {
             var impls = new List<SlaDomain>();
-            impls.ApplyExploratoryFieldSpec(parent + ".pendingSla");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("pendingSla"));
             this.PendingSla = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> System.Int64? ArchiveStorage
         // GraphQL -> archiveStorage: Long! (scalar)
-        if (this.ArchiveStorage == null && Exploration.Includes(parent + ".archiveStorage", true))
+        if (this.ArchiveStorage == null && ec.Includes("archiveStorage",true))
         {
             this.ArchiveStorage = new System.Int64();
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
-        if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
+        if (this.ClusterUuid == null && ec.Includes("clusterUuid",true))
         {
             this.ClusterUuid = "FETCH";
         }
         //      C# -> System.Boolean? HasSnapshotsWithPolicy
         // GraphQL -> hasSnapshotsWithPolicy: Boolean! (scalar)
-        if (this.HasSnapshotsWithPolicy == null && Exploration.Includes(parent + ".hasSnapshotsWithPolicy", true))
+        if (this.HasSnapshotsWithPolicy == null && ec.Includes("hasSnapshotsWithPolicy",true))
         {
             this.HasSnapshotsWithPolicy = true;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsRemote
         // GraphQL -> isRemote: Boolean (scalar)
-        if (this.IsRemote == null && Exploration.Includes(parent + ".isRemote", true))
+        if (this.IsRemote == null && ec.Includes("isRemote",true))
         {
             this.IsRemote = true;
         }
         //      C# -> System.Int64? LocalStorage
         // GraphQL -> localStorage: Long! (scalar)
-        if (this.LocalStorage == null && Exploration.Includes(parent + ".localStorage", true))
+        if (this.LocalStorage == null && ec.Includes("localStorage",true))
         {
             this.LocalStorage = new System.Int64();
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? RetentionSlaDomainId
         // GraphQL -> retentionSlaDomainId: String! (scalar)
-        if (this.RetentionSlaDomainId == null && Exploration.Includes(parent + ".retentionSlaDomainId", true))
+        if (this.RetentionSlaDomainId == null && ec.Includes("retentionSlaDomainId",true))
         {
             this.RetentionSlaDomainId = "FETCH";
         }
         //      C# -> System.String? RetentionSlaDomainName
         // GraphQL -> retentionSlaDomainName: String! (scalar)
-        if (this.RetentionSlaDomainName == null && Exploration.Includes(parent + ".retentionSlaDomainName", true))
+        if (this.RetentionSlaDomainName == null && ec.Includes("retentionSlaDomainName",true))
         {
             this.RetentionSlaDomainName = "FETCH";
         }
         //      C# -> System.String? RetentionSlaDomainRscManagedId
         // GraphQL -> retentionSlaDomainRscManagedId: String (scalar)
-        if (this.RetentionSlaDomainRscManagedId == null && Exploration.Includes(parent + ".retentionSlaDomainRscManagedId", true))
+        if (this.RetentionSlaDomainRscManagedId == null && ec.Includes("retentionSlaDomainRscManagedId",true))
         {
             this.RetentionSlaDomainRscManagedId = "FETCH";
         }
         //      C# -> System.Int64? SnapshotCount
         // GraphQL -> snapshotCount: Long! (scalar)
-        if (this.SnapshotCount == null && Exploration.Includes(parent + ".snapshotCount", true))
+        if (this.SnapshotCount == null && ec.Includes("snapshotCount",true))
         {
             this.SnapshotCount = new System.Int64();
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
-        if (this.Cluster == null && Exploration.Includes(parent + ".cluster"))
+        if (this.Cluster == null && ec.Includes("cluster",false))
         {
             this.Cluster = new Cluster();
-            this.Cluster.ApplyExploratoryFieldSpec(parent + ".cluster");
+            this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
         }
         //      C# -> List<LocationPathPoint>? PhysicalLocation
         // GraphQL -> physicalLocation: [LocationPathPoint!]! (type)
-        if (this.PhysicalLocation == null && Exploration.Includes(parent + ".physicalLocation"))
+        if (this.PhysicalLocation == null && ec.Includes("physicalLocation",false))
         {
             this.PhysicalLocation = new List<LocationPathPoint>();
-            this.PhysicalLocation.ApplyExploratoryFieldSpec(parent + ".physicalLocation");
+            this.PhysicalLocation.ApplyExploratoryFieldSpec(ec.NewChild("physicalLocation"));
         }
         //      C# -> WorkloadRecoveryInfo? RecoveryInfo
         // GraphQL -> recoveryInfo: WorkloadRecoveryInfo (type)
-        if (this.RecoveryInfo == null && Exploration.Includes(parent + ".recoveryInfo"))
+        if (this.RecoveryInfo == null && ec.Includes("recoveryInfo",false))
         {
             this.RecoveryInfo = new WorkloadRecoveryInfo();
-            this.RecoveryInfo.ApplyExploratoryFieldSpec(parent + ".recoveryInfo");
+            this.RecoveryInfo.ApplyExploratoryFieldSpec(ec.NewChild("recoveryInfo"));
         }
     }
 
@@ -464,12 +463,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<UnmanagedObjectDetail> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new UnmanagedObjectDetail());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<UnmanagedObjectDetail> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

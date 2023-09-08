@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> K8sAgentManifestInfo? Info
         // GraphQL -> info: K8sAgentManifestInfo! (type)
-        if (this.Info == null && Exploration.Includes(parent + ".info"))
+        if (this.Info == null && ec.Includes("info",false))
         {
             this.Info = new K8sAgentManifestInfo();
-            this.Info.ApplyExploratoryFieldSpec(parent + ".info");
+            this.Info.ApplyExploratoryFieldSpec(ec.NewChild("info"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CreateK8sAgentManifestReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CreateK8sAgentManifestReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CreateK8sAgentManifestReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

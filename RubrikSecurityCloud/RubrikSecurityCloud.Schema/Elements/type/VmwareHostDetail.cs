@@ -160,55 +160,54 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? ComputeClusterId
         // GraphQL -> computeClusterId: String (scalar)
-        if (this.ComputeClusterId == null && Exploration.Includes(parent + ".computeClusterId", true))
+        if (this.ComputeClusterId == null && ec.Includes("computeClusterId",true))
         {
             this.ComputeClusterId = "FETCH";
         }
         //      C# -> System.String? Moid
         // GraphQL -> moid: String (scalar)
-        if (this.Moid == null && Exploration.Includes(parent + ".moid", true))
+        if (this.Moid == null && ec.Includes("moid",true))
         {
             this.Moid = "FETCH";
         }
         //      C# -> DataCenterSummary? Datacenter
         // GraphQL -> datacenter: DataCenterSummary (type)
-        if (this.Datacenter == null && Exploration.Includes(parent + ".datacenter"))
+        if (this.Datacenter == null && ec.Includes("datacenter",false))
         {
             this.Datacenter = new DataCenterSummary();
-            this.Datacenter.ApplyExploratoryFieldSpec(parent + ".datacenter");
+            this.Datacenter.ApplyExploratoryFieldSpec(ec.NewChild("datacenter"));
         }
         //      C# -> List<DataStoreSummary>? Datastores
         // GraphQL -> datastores: [DataStoreSummary!]! (type)
-        if (this.Datastores == null && Exploration.Includes(parent + ".datastores"))
+        if (this.Datastores == null && ec.Includes("datastores",false))
         {
             this.Datastores = new List<DataStoreSummary>();
-            this.Datastores.ApplyExploratoryFieldSpec(parent + ".datastores");
+            this.Datastores.ApplyExploratoryFieldSpec(ec.NewChild("datastores"));
         }
         //      C# -> List<VirtualMachineSummary>? VirtualMachines
         // GraphQL -> virtualMachines: [VirtualMachineSummary!]! (type)
-        if (this.VirtualMachines == null && Exploration.Includes(parent + ".virtualMachines"))
+        if (this.VirtualMachines == null && ec.Includes("virtualMachines",false))
         {
             this.VirtualMachines = new List<VirtualMachineSummary>();
-            this.VirtualMachines.ApplyExploratoryFieldSpec(parent + ".virtualMachines");
+            this.VirtualMachines.ApplyExploratoryFieldSpec(ec.NewChild("virtualMachines"));
         }
         //      C# -> VmwareHostSummary? VmwareHostSummary
         // GraphQL -> vmwareHostSummary: VmwareHostSummary (type)
-        if (this.VmwareHostSummary == null && Exploration.Includes(parent + ".vmwareHostSummary"))
+        if (this.VmwareHostSummary == null && ec.Includes("vmwareHostSummary",false))
         {
             this.VmwareHostSummary = new VmwareHostSummary();
-            this.VmwareHostSummary.ApplyExploratoryFieldSpec(parent + ".vmwareHostSummary");
+            this.VmwareHostSummary.ApplyExploratoryFieldSpec(ec.NewChild("vmwareHostSummary"));
         }
         //      C# -> VmwareHostUpdate? VmwareHostUpdate
         // GraphQL -> vmwareHostUpdate: VmwareHostUpdate (type)
-        if (this.VmwareHostUpdate == null && Exploration.Includes(parent + ".vmwareHostUpdate"))
+        if (this.VmwareHostUpdate == null && ec.Includes("vmwareHostUpdate",false))
         {
             this.VmwareHostUpdate = new VmwareHostUpdate();
-            this.VmwareHostUpdate.ApplyExploratoryFieldSpec(parent + ".vmwareHostUpdate");
+            this.VmwareHostUpdate.ApplyExploratoryFieldSpec(ec.NewChild("vmwareHostUpdate"));
         }
     }
 
@@ -242,12 +241,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VmwareHostDetail> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VmwareHostDetail());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VmwareHostDetail> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

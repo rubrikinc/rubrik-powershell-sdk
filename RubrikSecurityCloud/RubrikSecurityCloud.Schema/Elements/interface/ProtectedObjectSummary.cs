@@ -91,19 +91,24 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ProtectedObjectSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 InterfaceHelper
                     .AddInstancesOfImplementingTypes<ProtectedObjectSummary>(
                         ref list, 
-                        instance => instance.ApplyExploratoryFieldSpec(parent));
+                        instance => instance.ApplyExploratoryFieldSpec(ec));
             } else {
                 foreach (ProtectedObjectSummary item in list) {
-                    item.ApplyExploratoryFieldSpec(parent);
+                    item.ApplyExploratoryFieldSpec(ec);
                 }
             }
 
+        }
+
+        public static void Fetch(this List<ProtectedObjectSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

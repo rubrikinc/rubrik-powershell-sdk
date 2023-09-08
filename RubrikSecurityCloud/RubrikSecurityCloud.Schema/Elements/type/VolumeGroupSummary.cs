@@ -162,57 +162,56 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? ForceFull
         // GraphQL -> forceFull: Boolean (scalar)
-        if (this.ForceFull == null && Exploration.Includes(parent + ".forceFull", true))
+        if (this.ForceFull == null && ec.Includes("forceFull",true))
         {
             this.ForceFull = true;
         }
         //      C# -> System.String? HostId
         // GraphQL -> hostId: String (scalar)
-        if (this.HostId == null && Exploration.Includes(parent + ".hostId", true))
+        if (this.HostId == null && ec.Includes("hostId",true))
         {
             this.HostId = "FETCH";
         }
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String (scalar)
-        if (this.Hostname == null && Exploration.Includes(parent + ".hostname", true))
+        if (this.Hostname == null && ec.Includes("hostname",true))
         {
             this.Hostname = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
-        if (this.IsRelic == null && Exploration.Includes(parent + ".isRelic", true))
+        if (this.IsRelic == null && ec.Includes("isRelic",true))
         {
             this.IsRelic = true;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.Boolean? NeedsMigration
         // GraphQL -> needsMigration: Boolean (scalar)
-        if (this.NeedsMigration == null && Exploration.Includes(parent + ".needsMigration", true))
+        if (this.NeedsMigration == null && ec.Includes("needsMigration",true))
         {
             this.NeedsMigration = true;
         }
         //      C# -> CdmWorkload? Snappable
         // GraphQL -> snappable: CdmWorkload (type)
-        if (this.Snappable == null && Exploration.Includes(parent + ".snappable"))
+        if (this.Snappable == null && ec.Includes("snappable",false))
         {
             this.Snappable = new CdmWorkload();
-            this.Snappable.ApplyExploratoryFieldSpec(parent + ".snappable");
+            this.Snappable.ApplyExploratoryFieldSpec(ec.NewChild("snappable"));
         }
     }
 
@@ -246,12 +245,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VolumeGroupSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VolumeGroupSummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VolumeGroupSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

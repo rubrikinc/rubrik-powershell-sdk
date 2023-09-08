@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> PlanName? PlanName
         // GraphQL -> planName: PlanName! (enum)
-        if (this.PlanName == null && Exploration.Includes(parent + ".planName", true))
+        if (this.PlanName == null && ec.Includes("planName",true))
         {
             this.PlanName = new PlanName();
         }
         //      C# -> System.String? FailureReason
         // GraphQL -> failureReason: String! (scalar)
-        if (this.FailureReason == null && Exploration.Includes(parent + ".failureReason", true))
+        if (this.FailureReason == null && ec.Includes("failureReason",true))
         {
             this.FailureReason = "FETCH";
         }
         //      C# -> System.String? SnappableId
         // GraphQL -> snappableId: String! (scalar)
-        if (this.SnappableId == null && Exploration.Includes(parent + ".snappableId", true))
+        if (this.SnappableId == null && ec.Includes("snappableId",true))
         {
             this.SnappableId = "FETCH";
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: String! (scalar)
-        if (this.SnapshotId == null && Exploration.Includes(parent + ".snapshotId", true))
+        if (this.SnapshotId == null && ec.Includes("snapshotId",true))
         {
             this.SnapshotId = "FETCH";
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ValidateFailureReason> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ValidateFailureReason());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ValidateFailureReason> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

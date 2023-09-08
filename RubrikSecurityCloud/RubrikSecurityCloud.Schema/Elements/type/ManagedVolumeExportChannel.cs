@@ -137,46 +137,45 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> DateTime? ExportDate
         // GraphQL -> exportDate: DateTime! (scalar)
-        if (this.ExportDate == null && Exploration.Includes(parent + ".exportDate", true))
+        if (this.ExportDate == null && ec.Includes("exportDate",true))
         {
             this.ExportDate = new DateTime();
         }
         //      C# -> System.String? FloatingIpAddress
         // GraphQL -> floatingIpAddress: String! (scalar)
-        if (this.FloatingIpAddress == null && Exploration.Includes(parent + ".floatingIpAddress", true))
+        if (this.FloatingIpAddress == null && ec.Includes("floatingIpAddress",true))
         {
             this.FloatingIpAddress = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.String? MountPath
         // GraphQL -> mountPath: String! (scalar)
-        if (this.MountPath == null && Exploration.Includes(parent + ".mountPath", true))
+        if (this.MountPath == null && ec.Includes("mountPath",true))
         {
             this.MountPath = "FETCH";
         }
         //      C# -> ManagedVolumeExportChannelStats? ChannelStats
         // GraphQL -> channelStats: ManagedVolumeExportChannelStats! (type)
-        if (this.ChannelStats == null && Exploration.Includes(parent + ".channelStats"))
+        if (this.ChannelStats == null && ec.Includes("channelStats",false))
         {
             this.ChannelStats = new ManagedVolumeExportChannelStats();
-            this.ChannelStats.ApplyExploratoryFieldSpec(parent + ".channelStats");
+            this.ChannelStats.ApplyExploratoryFieldSpec(ec.NewChild("channelStats"));
         }
         //      C# -> ManagedVolumeMountSpec? MountSpec
         // GraphQL -> mountSpec: ManagedVolumeMountSpec! (type)
-        if (this.MountSpec == null && Exploration.Includes(parent + ".mountSpec"))
+        if (this.MountSpec == null && ec.Includes("mountSpec",false))
         {
             this.MountSpec = new ManagedVolumeMountSpec();
-            this.MountSpec.ApplyExploratoryFieldSpec(parent + ".mountSpec");
+            this.MountSpec.ApplyExploratoryFieldSpec(ec.NewChild("mountSpec"));
         }
     }
 
@@ -210,12 +209,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ManagedVolumeExportChannel> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ManagedVolumeExportChannel());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ManagedVolumeExportChannel> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

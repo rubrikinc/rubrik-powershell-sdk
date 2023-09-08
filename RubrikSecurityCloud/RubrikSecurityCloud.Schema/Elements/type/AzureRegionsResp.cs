@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<Region>? Regions
         // GraphQL -> regions: [Region!]! (type)
-        if (this.Regions == null && Exploration.Includes(parent + ".regions"))
+        if (this.Regions == null && ec.Includes("regions",false))
         {
             this.Regions = new List<Region>();
-            this.Regions.ApplyExploratoryFieldSpec(parent + ".regions");
+            this.Regions.ApplyExploratoryFieldSpec(ec.NewChild("regions"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AzureRegionsResp> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AzureRegionsResp());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AzureRegionsResp> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

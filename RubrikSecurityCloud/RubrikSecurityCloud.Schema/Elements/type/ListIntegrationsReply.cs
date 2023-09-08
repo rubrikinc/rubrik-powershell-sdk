@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<Integration>? Integrations
         // GraphQL -> integrations: [Integration!]! (type)
-        if (this.Integrations == null && Exploration.Includes(parent + ".integrations"))
+        if (this.Integrations == null && ec.Includes("integrations",false))
         {
             this.Integrations = new List<Integration>();
-            this.Integrations.ApplyExploratoryFieldSpec(parent + ".integrations");
+            this.Integrations.ApplyExploratoryFieldSpec(ec.NewChild("integrations"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ListIntegrationsReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ListIntegrationsReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ListIntegrationsReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

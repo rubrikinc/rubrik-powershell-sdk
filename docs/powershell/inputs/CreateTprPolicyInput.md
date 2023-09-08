@@ -10,4 +10,4 @@ Create a TPR policy.
 - policyRules: list of TprPolicyRuleInputs
   - Rules of the TPR policy.
 - exemptServiceAccounts: list of System.Strings
-  - Service accounts exempt from the TPR policy.
+  - IDs of service accounts exempt from the TPR policy.

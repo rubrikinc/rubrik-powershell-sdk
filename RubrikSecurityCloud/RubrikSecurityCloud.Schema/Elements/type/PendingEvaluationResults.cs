@@ -201,72 +201,71 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: String! (scalar)
-        if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
+        if (this.ClusterUuid == null && ec.Includes("clusterUuid",true))
         {
             this.ClusterUuid = "FETCH";
         }
         //      C# -> DateTime? CreatedAt
         // GraphQL -> createdAt: DateTime (scalar)
-        if (this.CreatedAt == null && Exploration.Includes(parent + ".createdAt", true))
+        if (this.CreatedAt == null && ec.Includes("createdAt",true))
         {
             this.CreatedAt = new DateTime();
         }
         //      C# -> System.String? Info
         // GraphQL -> info: String! (scalar)
-        if (this.Info == null && Exploration.Includes(parent + ".info", true))
+        if (this.Info == null && ec.Includes("info",true))
         {
             this.Info = "FETCH";
         }
         //      C# -> System.Boolean? IsCompleted
         // GraphQL -> isCompleted: Boolean! (scalar)
-        if (this.IsCompleted == null && Exploration.Includes(parent + ".isCompleted", true))
+        if (this.IsCompleted == null && ec.Includes("isCompleted",true))
         {
             this.IsCompleted = true;
         }
         //      C# -> System.String? ManagedId
         // GraphQL -> managedId: String! (scalar)
-        if (this.ManagedId == null && Exploration.Includes(parent + ".managedId", true))
+        if (this.ManagedId == null && ec.Includes("managedId",true))
         {
             this.ManagedId = "FETCH";
         }
         //      C# -> DateTime? SnapshotDate
         // GraphQL -> snapshotDate: DateTime (scalar)
-        if (this.SnapshotDate == null && Exploration.Includes(parent + ".snapshotDate", true))
+        if (this.SnapshotDate == null && ec.Includes("snapshotDate",true))
         {
             this.SnapshotDate = new DateTime();
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: String! (scalar)
-        if (this.SnapshotId == null && Exploration.Includes(parent + ".snapshotId", true))
+        if (this.SnapshotId == null && ec.Includes("snapshotId",true))
         {
             this.SnapshotId = "FETCH";
         }
         //      C# -> DateTime? UpdatedAt
         // GraphQL -> updatedAt: DateTime (scalar)
-        if (this.UpdatedAt == null && Exploration.Includes(parent + ".updatedAt", true))
+        if (this.UpdatedAt == null && ec.Includes("updatedAt",true))
         {
             this.UpdatedAt = new DateTime();
         }
         //      C# -> System.String? WorkloadId
         // GraphQL -> workloadId: String! (scalar)
-        if (this.WorkloadId == null && Exploration.Includes(parent + ".workloadId", true))
+        if (this.WorkloadId == null && ec.Includes("workloadId",true))
         {
             this.WorkloadId = "FETCH";
         }
         //      C# -> System.String? WorkloadName
         // GraphQL -> workloadName: String! (scalar)
-        if (this.WorkloadName == null && Exploration.Includes(parent + ".workloadName", true))
+        if (this.WorkloadName == null && ec.Includes("workloadName",true))
         {
             this.WorkloadName = "FETCH";
         }
         //      C# -> System.String? WorkloadType
         // GraphQL -> workloadType: String! (scalar)
-        if (this.WorkloadType == null && Exploration.Includes(parent + ".workloadType", true))
+        if (this.WorkloadType == null && ec.Includes("workloadType",true))
         {
             this.WorkloadType = "FETCH";
         }
@@ -302,12 +301,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PendingEvaluationResults> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PendingEvaluationResults());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<PendingEvaluationResults> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

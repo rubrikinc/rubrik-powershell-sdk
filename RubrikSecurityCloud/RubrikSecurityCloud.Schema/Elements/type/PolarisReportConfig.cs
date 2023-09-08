@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("charts")]
         public List<ChartViewType>? Charts { get; set; }
 
+        //      C# -> ReportRoomType? ReportRoom
+        // GraphQL -> reportRoom: ReportRoomType! (enum)
+        [JsonProperty("reportRoom")]
+        public ReportRoomType? ReportRoom { get; set; }
+
         //      C# -> PolarisReportViewType? ReportViewType
         // GraphQL -> reportViewType: PolarisReportViewType! (enum)
         [JsonProperty("reportViewType")]
@@ -76,6 +81,7 @@ namespace RubrikSecurityCloud.Types
 
     public PolarisReportConfig Set(
         List<ChartViewType>? Charts = null,
+        ReportRoomType? ReportRoom = null,
         PolarisReportViewType? ReportViewType = null,
         SortOrder? SortOrder = null,
         TableViewType? Table = null,
@@ -88,6 +94,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( Charts != null ) {
             this.Charts = Charts;
+        }
+        if ( ReportRoom != null ) {
+            this.ReportRoom = ReportRoom;
         }
         if ( ReportViewType != null ) {
             this.ReportViewType = ReportViewType;
@@ -127,6 +136,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> charts: [ChartViewType!]! (enum)
         if (this.Charts != null) {
             s += ind + "charts\n" ;
+        }
+        //      C# -> ReportRoomType? ReportRoom
+        // GraphQL -> reportRoom: ReportRoomType! (enum)
+        if (this.ReportRoom != null) {
+            s += ind + "reportRoom\n" ;
         }
         //      C# -> PolarisReportViewType? ReportViewType
         // GraphQL -> reportViewType: PolarisReportViewType! (enum)
@@ -176,63 +190,68 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<ChartViewType>? Charts
         // GraphQL -> charts: [ChartViewType!]! (enum)
-        if (this.Charts == null && Exploration.Includes(parent + ".charts", true))
+        if (this.Charts == null && ec.Includes("charts",true))
         {
             this.Charts = new List<ChartViewType>();
         }
+        //      C# -> ReportRoomType? ReportRoom
+        // GraphQL -> reportRoom: ReportRoomType! (enum)
+        if (this.ReportRoom == null && ec.Includes("reportRoom",true))
+        {
+            this.ReportRoom = new ReportRoomType();
+        }
         //      C# -> PolarisReportViewType? ReportViewType
         // GraphQL -> reportViewType: PolarisReportViewType! (enum)
-        if (this.ReportViewType == null && Exploration.Includes(parent + ".reportViewType", true))
+        if (this.ReportViewType == null && ec.Includes("reportViewType",true))
         {
             this.ReportViewType = new PolarisReportViewType();
         }
         //      C# -> SortOrder? SortOrder
         // GraphQL -> sortOrder: SortOrder (enum)
-        if (this.SortOrder == null && Exploration.Includes(parent + ".sortOrder", true))
+        if (this.SortOrder == null && ec.Includes("sortOrder",true))
         {
             this.SortOrder = new SortOrder();
         }
         //      C# -> TableViewType? Table
         // GraphQL -> table: TableViewType! (enum)
-        if (this.Table == null && Exploration.Includes(parent + ".table", true))
+        if (this.Table == null && ec.Includes("table",true))
         {
             this.Table = new TableViewType();
         }
         //      C# -> System.String? Fid
         // GraphQL -> fid: UUID! (scalar)
-        if (this.Fid == null && Exploration.Includes(parent + ".fid", true))
+        if (this.Fid == null && ec.Includes("fid",true))
         {
             this.Fid = "FETCH";
         }
         //      C# -> System.Int64? Id
         // GraphQL -> id: Long! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = new System.Int64();
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? SortBy
         // GraphQL -> sortBy: String! (scalar)
-        if (this.SortBy == null && Exploration.Includes(parent + ".sortBy", true))
+        if (this.SortBy == null && ec.Includes("sortBy",true))
         {
             this.SortBy = "FETCH";
         }
         //      C# -> List<ReportFilter>? Filters
         // GraphQL -> filters: [ReportFilter!]! (type)
-        if (this.Filters == null && Exploration.Includes(parent + ".filters"))
+        if (this.Filters == null && ec.Includes("filters",false))
         {
             this.Filters = new List<ReportFilter>();
-            this.Filters.ApplyExploratoryFieldSpec(parent + ".filters");
+            this.Filters.ApplyExploratoryFieldSpec(ec.NewChild("filters"));
         }
     }
 
@@ -266,12 +285,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PolarisReportConfig> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PolarisReportConfig());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<PolarisReportConfig> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

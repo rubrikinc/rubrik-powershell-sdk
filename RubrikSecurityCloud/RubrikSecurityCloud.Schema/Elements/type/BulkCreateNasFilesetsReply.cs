@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<FilesetDetail>? FilesetDetails
         // GraphQL -> filesetDetails: [FilesetDetail!]! (type)
-        if (this.FilesetDetails == null && Exploration.Includes(parent + ".filesetDetails"))
+        if (this.FilesetDetails == null && ec.Includes("filesetDetails",false))
         {
             this.FilesetDetails = new List<FilesetDetail>();
-            this.FilesetDetails.ApplyExploratoryFieldSpec(parent + ".filesetDetails");
+            this.FilesetDetails.ApplyExploratoryFieldSpec(ec.NewChild("filesetDetails"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<BulkCreateNasFilesetsReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new BulkCreateNasFilesetsReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<BulkCreateNasFilesetsReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

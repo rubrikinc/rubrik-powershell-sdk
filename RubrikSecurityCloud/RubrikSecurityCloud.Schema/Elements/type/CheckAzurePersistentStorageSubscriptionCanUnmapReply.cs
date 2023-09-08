@@ -61,12 +61,11 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? CanUnmap
         // GraphQL -> canUnmap: Boolean! (scalar)
-        if (this.CanUnmap == null && Exploration.Includes(parent + ".canUnmap", true))
+        if (this.CanUnmap == null && ec.Includes("canUnmap",true))
         {
             this.CanUnmap = true;
         }
@@ -102,12 +101,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CheckAzurePersistentStorageSubscriptionCanUnmapReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CheckAzurePersistentStorageSubscriptionCanUnmapReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CheckAzurePersistentStorageSubscriptionCanUnmapReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -62,12 +62,11 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ActivityObjectTypeEnum? EnumValue
         // GraphQL -> enumValue: ActivityObjectTypeEnum! (enum)
-        if (this.EnumValue == null && Exploration.Includes(parent + ".enumValue", true))
+        if (this.EnumValue == null && ec.Includes("enumValue",true))
         {
             this.EnumValue = new ActivityObjectTypeEnum();
         }
@@ -103,12 +102,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ActivityObjectType> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ActivityObjectType());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ActivityObjectType> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

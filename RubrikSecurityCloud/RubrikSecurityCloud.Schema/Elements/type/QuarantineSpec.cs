@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: String! (scalar)
-        if (this.SnapshotId == null && Exploration.Includes(parent + ".snapshotId", true))
+        if (this.SnapshotId == null && ec.Includes("snapshotId",true))
         {
             this.SnapshotId = "FETCH";
         }
         //      C# -> List<FileDetails>? FilesDetails
         // GraphQL -> filesDetails: [FileDetails!]! (type)
-        if (this.FilesDetails == null && Exploration.Includes(parent + ".filesDetails"))
+        if (this.FilesDetails == null && ec.Includes("filesDetails",false))
         {
             this.FilesDetails = new List<FileDetails>();
-            this.FilesDetails.ApplyExploratoryFieldSpec(parent + ".filesDetails");
+            this.FilesDetails.ApplyExploratoryFieldSpec(ec.NewChild("filesDetails"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<QuarantineSpec> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new QuarantineSpec());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<QuarantineSpec> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ActivityAccessType? AccessType
         // GraphQL -> accessType: ActivityAccessType! (enum)
-        if (this.AccessType == null && Exploration.Includes(parent + ".accessType", true))
+        if (this.AccessType == null && ec.Includes("accessType",true))
         {
             this.AccessType = new ActivityAccessType();
         }
         //      C# -> System.Int64? Count
         // GraphQL -> count: Long! (scalar)
-        if (this.Count == null && Exploration.Includes(parent + ".count", true))
+        if (this.Count == null && ec.Includes("count",true))
         {
             this.Count = new System.Int64();
         }
         //      C# -> System.Int64? CountDelta
         // GraphQL -> countDelta: Long! (scalar)
-        if (this.CountDelta == null && Exploration.Includes(parent + ".countDelta", true))
+        if (this.CountDelta == null && ec.Includes("countDelta",true))
         {
             this.CountDelta = new System.Int64();
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ActivityResult> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ActivityResult());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ActivityResult> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

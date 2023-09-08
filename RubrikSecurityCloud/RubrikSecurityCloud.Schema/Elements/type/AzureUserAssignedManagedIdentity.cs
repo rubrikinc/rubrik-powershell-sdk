@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? NativeId
         // GraphQL -> nativeId: String! (scalar)
-        if (this.NativeId == null && Exploration.Includes(parent + ".nativeId", true))
+        if (this.NativeId == null && ec.Includes("nativeId",true))
         {
             this.NativeId = "FETCH";
         }
         //      C# -> System.String? PrincipalId
         // GraphQL -> principalId: String! (scalar)
-        if (this.PrincipalId == null && Exploration.Includes(parent + ".principalId", true))
+        if (this.PrincipalId == null && ec.Includes("principalId",true))
         {
             this.PrincipalId = "FETCH";
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AzureUserAssignedManagedIdentity> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AzureUserAssignedManagedIdentity());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AzureUserAssignedManagedIdentity> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

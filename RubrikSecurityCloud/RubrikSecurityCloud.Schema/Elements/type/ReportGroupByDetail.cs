@@ -151,50 +151,49 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<DisplayableValue>? Aggregations
         // GraphQL -> aggregations: [DisplayableValue!]! (interface)
-        if (this.Aggregations == null && Exploration.Includes(parent + ".aggregations"))
+        if (this.Aggregations == null && ec.Includes("aggregations",false))
         {
             this.Aggregations = new List<DisplayableValue>();
-            this.Aggregations.ApplyExploratoryFieldSpec(parent + ".aggregations");
+            this.Aggregations.ApplyExploratoryFieldSpec(ec.NewChild("aggregations"));
         }
         //      C# -> List<DisplayableValue>? AllValues
         // GraphQL -> allValues: [DisplayableValue!]! (interface)
-        if (this.AllValues == null && Exploration.Includes(parent + ".allValues"))
+        if (this.AllValues == null && ec.Includes("allValues",false))
         {
             this.AllValues = new List<DisplayableValue>();
-            this.AllValues.ApplyExploratoryFieldSpec(parent + ".allValues");
+            this.AllValues.ApplyExploratoryFieldSpec(ec.NewChild("allValues"));
         }
         //      C# -> System.String? DisplayName
         // GraphQL -> displayName: String! (scalar)
-        if (this.DisplayName == null && Exploration.Includes(parent + ".displayName", true))
+        if (this.DisplayName == null && ec.Includes("displayName",true))
         {
             this.DisplayName = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? PrimaryGroupBy
         // GraphQL -> primaryGroupBy: String! (scalar)
-        if (this.PrimaryGroupBy == null && Exploration.Includes(parent + ".primaryGroupBy", true))
+        if (this.PrimaryGroupBy == null && ec.Includes("primaryGroupBy",true))
         {
             this.PrimaryGroupBy = "FETCH";
         }
         //      C# -> System.String? SecondaryAggregation
         // GraphQL -> secondaryAggregation: String (scalar)
-        if (this.SecondaryAggregation == null && Exploration.Includes(parent + ".secondaryAggregation", true))
+        if (this.SecondaryAggregation == null && ec.Includes("secondaryAggregation",true))
         {
             this.SecondaryAggregation = "FETCH";
         }
         //      C# -> System.String? SecondaryGroupBy
         // GraphQL -> secondaryGroupBy: String (scalar)
-        if (this.SecondaryGroupBy == null && Exploration.Includes(parent + ".secondaryGroupBy", true))
+        if (this.SecondaryGroupBy == null && ec.Includes("secondaryGroupBy",true))
         {
             this.SecondaryGroupBy = "FETCH";
         }
@@ -230,12 +229,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ReportGroupByDetail> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ReportGroupByDetail());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ReportGroupByDetail> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

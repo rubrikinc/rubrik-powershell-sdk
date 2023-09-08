@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<AwsExocomputeConfigsDeletionStatusType>? DeletionStatus
         // GraphQL -> deletionStatus: [AwsExocomputeConfigsDeletionStatusType!]! (type)
-        if (this.DeletionStatus == null && Exploration.Includes(parent + ".deletionStatus"))
+        if (this.DeletionStatus == null && ec.Includes("deletionStatus",false))
         {
             this.DeletionStatus = new List<AwsExocomputeConfigsDeletionStatusType>();
-            this.DeletionStatus.ApplyExploratoryFieldSpec(parent + ".deletionStatus");
+            this.DeletionStatus.ApplyExploratoryFieldSpec(ec.NewChild("deletionStatus"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<DeleteAwsExocomputeConfigsReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new DeleteAwsExocomputeConfigsReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<DeleteAwsExocomputeConfigsReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

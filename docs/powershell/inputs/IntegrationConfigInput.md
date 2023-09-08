@@ -4,4 +4,4 @@ Holds the configuration of a single integration. Note that IntegrationConfig
  with IntegrationType will be considered.
 
 - dataLossPrevention: DlpConfigInput
-  - The DataLossPrevention configuration.
+  - The Data Loss Prevention configuration.

@@ -78,20 +78,19 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> NasSystemDescendantType? Node
         // GraphQL -> node: NasSystemDescendantType! (interface)
-        if (this.Node == null && Exploration.Includes(parent + ".node"))
+        if (this.Node == null && ec.Includes("node",false))
         {
             var impls = new List<NasSystemDescendantType>();
-            impls.ApplyExploratoryFieldSpec(parent + ".node");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
             this.Node = (NasSystemDescendantType)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> System.String? Cursor
         // GraphQL -> cursor: String! (scalar)
-        if (this.Cursor == null && Exploration.Includes(parent + ".cursor", true))
+        if (this.Cursor == null && ec.Includes("cursor",true))
         {
             this.Cursor = "FETCH";
         }
@@ -127,12 +126,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<NasSystemDescendantTypeEdge> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new NasSystemDescendantTypeEdge());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<NasSystemDescendantTypeEdge> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

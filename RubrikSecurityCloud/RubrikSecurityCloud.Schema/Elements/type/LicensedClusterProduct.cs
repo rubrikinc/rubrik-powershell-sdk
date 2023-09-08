@@ -162,57 +162,56 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> Product? Product
         // GraphQL -> product: Product! (enum)
-        if (this.Product == null && Exploration.Includes(parent + ".product", true))
+        if (this.Product == null && ec.Includes("product",true))
         {
             this.Product = new Product();
         }
         //      C# -> System.Single? NextExpiringBytes
         // GraphQL -> nextExpiringBytes: Float! (scalar)
-        if (this.NextExpiringBytes == null && Exploration.Includes(parent + ".nextExpiringBytes", true))
+        if (this.NextExpiringBytes == null && ec.Includes("nextExpiringBytes",true))
         {
             this.NextExpiringBytes = new System.Single();
         }
         //      C# -> DateTime? NextExpiringTime
         // GraphQL -> nextExpiringTime: DateTime (scalar)
-        if (this.NextExpiringTime == null && Exploration.Includes(parent + ".nextExpiringTime", true))
+        if (this.NextExpiringTime == null && ec.Includes("nextExpiringTime",true))
         {
             this.NextExpiringTime = new DateTime();
         }
         //      C# -> System.Int32? NumClusters
         // GraphQL -> numClusters: Int! (scalar)
-        if (this.NumClusters == null && Exploration.Includes(parent + ".numClusters", true))
+        if (this.NumClusters == null && ec.Includes("numClusters",true))
         {
             this.NumClusters = Int32.MinValue;
         }
         //      C# -> List<System.String>? ProductTypes
         // GraphQL -> productTypes: [String!]! (scalar)
-        if (this.ProductTypes == null && Exploration.Includes(parent + ".productTypes", true))
+        if (this.ProductTypes == null && ec.Includes("productTypes",true))
         {
             this.ProductTypes = new List<System.String>();
         }
         //      C# -> System.Single? PurchasedCapacityBytes
         // GraphQL -> purchasedCapacityBytes: Float! (scalar)
-        if (this.PurchasedCapacityBytes == null && Exploration.Includes(parent + ".purchasedCapacityBytes", true))
+        if (this.PurchasedCapacityBytes == null && ec.Includes("purchasedCapacityBytes",true))
         {
             this.PurchasedCapacityBytes = new System.Single();
         }
         //      C# -> System.Single? RegisteredCapacityBytes
         // GraphQL -> registeredCapacityBytes: Float! (scalar)
-        if (this.RegisteredCapacityBytes == null && Exploration.Includes(parent + ".registeredCapacityBytes", true))
+        if (this.RegisteredCapacityBytes == null && ec.Includes("registeredCapacityBytes",true))
         {
             this.RegisteredCapacityBytes = new System.Single();
         }
         //      C# -> List<CapacityContribution>? Contributions
         // GraphQL -> contributions: [CapacityContribution!]! (type)
-        if (this.Contributions == null && Exploration.Includes(parent + ".contributions"))
+        if (this.Contributions == null && ec.Includes("contributions",false))
         {
             this.Contributions = new List<CapacityContribution>();
-            this.Contributions.ApplyExploratoryFieldSpec(parent + ".contributions");
+            this.Contributions.ApplyExploratoryFieldSpec(ec.NewChild("contributions"));
         }
     }
 
@@ -246,12 +245,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<LicensedClusterProduct> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new LicensedClusterProduct());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<LicensedClusterProduct> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

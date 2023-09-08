@@ -213,78 +213,77 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> MigrationPrecheckType? MigrationPrecheckType
         // GraphQL -> migrationPrecheckType: MigrationPrecheckType! (enum)
-        if (this.MigrationPrecheckType == null && Exploration.Includes(parent + ".migrationPrecheckType", true))
+        if (this.MigrationPrecheckType == null && ec.Includes("migrationPrecheckType",true))
         {
             this.MigrationPrecheckType = new MigrationPrecheckType();
         }
         //      C# -> MigrationStatus? MigrationStatus
         // GraphQL -> migrationStatus: MigrationStatus! (enum)
-        if (this.MigrationStatus == null && Exploration.Includes(parent + ".migrationStatus", true))
+        if (this.MigrationStatus == null && ec.Includes("migrationStatus",true))
         {
             this.MigrationStatus = new MigrationStatus();
         }
         //      C# -> PrecheckName? PrecheckName
         // GraphQL -> precheckName: PrecheckName! (enum)
-        if (this.PrecheckName == null && Exploration.Includes(parent + ".precheckName", true))
+        if (this.PrecheckName == null && ec.Includes("precheckName",true))
         {
             this.PrecheckName = new PrecheckName();
         }
         //      C# -> PrecheckStatus? PrecheckStatus
         // GraphQL -> precheckStatus: PrecheckStatus! (enum)
-        if (this.PrecheckStatus == null && Exploration.Includes(parent + ".precheckStatus", true))
+        if (this.PrecheckStatus == null && ec.Includes("precheckStatus",true))
         {
             this.PrecheckStatus = new PrecheckStatus();
         }
         //      C# -> PrecheckType? PrecheckType
         // GraphQL -> precheckType: PrecheckType! (enum)
-        if (this.PrecheckType == null && Exploration.Includes(parent + ".precheckType", true))
+        if (this.PrecheckType == null && ec.Includes("precheckType",true))
         {
             this.PrecheckType = new PrecheckType();
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
-        if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
+        if (this.ClusterUuid == null && ec.Includes("clusterUuid",true))
         {
             this.ClusterUuid = "FETCH";
         }
         //      C# -> DateTime? LastRunTimestamp
         // GraphQL -> lastRunTimestamp: DateTime (scalar)
-        if (this.LastRunTimestamp == null && Exploration.Includes(parent + ".lastRunTimestamp", true))
+        if (this.LastRunTimestamp == null && ec.Includes("lastRunTimestamp",true))
         {
             this.LastRunTimestamp = new DateTime();
         }
         //      C# -> PrecheckMessage? Cause
         // GraphQL -> cause: PrecheckMessage (type)
-        if (this.Cause == null && Exploration.Includes(parent + ".cause"))
+        if (this.Cause == null && ec.Includes("cause",false))
         {
             this.Cause = new PrecheckMessage();
-            this.Cause.ApplyExploratoryFieldSpec(parent + ".cause");
+            this.Cause.ApplyExploratoryFieldSpec(ec.NewChild("cause"));
         }
         //      C# -> PrecheckMessage? Consequence
         // GraphQL -> consequence: PrecheckMessage (type)
-        if (this.Consequence == null && Exploration.Includes(parent + ".consequence"))
+        if (this.Consequence == null && ec.Includes("consequence",false))
         {
             this.Consequence = new PrecheckMessage();
-            this.Consequence.ApplyExploratoryFieldSpec(parent + ".consequence");
+            this.Consequence.ApplyExploratoryFieldSpec(ec.NewChild("consequence"));
         }
         //      C# -> PrecheckMessage? Remedy
         // GraphQL -> remedy: PrecheckMessage (type)
-        if (this.Remedy == null && Exploration.Includes(parent + ".remedy"))
+        if (this.Remedy == null && ec.Includes("remedy",false))
         {
             this.Remedy = new PrecheckMessage();
-            this.Remedy.ApplyExploratoryFieldSpec(parent + ".remedy");
+            this.Remedy.ApplyExploratoryFieldSpec(ec.NewChild("remedy"));
         }
         //      C# -> PrecheckMessage? Summary
         // GraphQL -> summary: PrecheckMessage (type)
-        if (this.Summary == null && Exploration.Includes(parent + ".summary"))
+        if (this.Summary == null && ec.Includes("summary",false))
         {
             this.Summary = new PrecheckMessage();
-            this.Summary.ApplyExploratoryFieldSpec(parent + ".summary");
+            this.Summary.ApplyExploratoryFieldSpec(ec.NewChild("summary"));
         }
     }
 
@@ -318,12 +317,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<Prechecks> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new Prechecks());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<Prechecks> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -81,23 +81,22 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> SlaDomain? SlaDomain
         // GraphQL -> slaDomain: SlaDomain! (interface)
-        if (this.SlaDomain == null && Exploration.Includes(parent + ".slaDomain"))
+        if (this.SlaDomain == null && ec.Includes("slaDomain",false))
         {
             var impls = new List<SlaDomain>();
-            impls.ApplyExploratoryFieldSpec(parent + ".slaDomain");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("slaDomain"));
             this.SlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> List<SlaWarning>? Warnings
         // GraphQL -> warnings: [SlaWarning!]! (type)
-        if (this.Warnings == null && Exploration.Includes(parent + ".warnings"))
+        if (this.Warnings == null && ec.Includes("warnings",false))
         {
             this.Warnings = new List<SlaWarning>();
-            this.Warnings.ApplyExploratoryFieldSpec(parent + ".warnings");
+            this.Warnings.ApplyExploratoryFieldSpec(ec.NewChild("warnings"));
         }
     }
 
@@ -131,12 +130,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SlaDomainWithWarnings> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SlaDomainWithWarnings());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SlaDomainWithWarnings> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

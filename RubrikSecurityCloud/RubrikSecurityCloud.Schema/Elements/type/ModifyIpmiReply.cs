@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? IsAvailable
         // GraphQL -> isAvailable: Boolean! (scalar)
-        if (this.IsAvailable == null && Exploration.Includes(parent + ".isAvailable", true))
+        if (this.IsAvailable == null && ec.Includes("isAvailable",true))
         {
             this.IsAvailable = true;
         }
         //      C# -> IpmiAccess? Access
         // GraphQL -> access: IpmiAccess (type)
-        if (this.Access == null && Exploration.Includes(parent + ".access"))
+        if (this.Access == null && ec.Includes("access",false))
         {
             this.Access = new IpmiAccess();
-            this.Access.ApplyExploratoryFieldSpec(parent + ".access");
+            this.Access.ApplyExploratoryFieldSpec(ec.NewChild("access"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ModifyIpmiReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ModifyIpmiReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ModifyIpmiReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

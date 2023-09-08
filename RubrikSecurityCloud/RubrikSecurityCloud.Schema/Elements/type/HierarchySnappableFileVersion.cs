@@ -151,52 +151,51 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> FileModeEnum? FileMode
         // GraphQL -> fileMode: FileModeEnum! (enum)
-        if (this.FileMode == null && Exploration.Includes(parent + ".fileMode", true))
+        if (this.FileMode == null && ec.Includes("fileMode",true))
         {
             this.FileMode = new FileModeEnum();
         }
         //      C# -> FileVersionSourceEnum? Source
         // GraphQL -> source: FileVersionSourceEnum! (enum)
-        if (this.Source == null && Exploration.Includes(parent + ".source", true))
+        if (this.Source == null && ec.Includes("source",true))
         {
             this.Source = new FileVersionSourceEnum();
         }
         //      C# -> DateTime? LastModified
         // GraphQL -> lastModified: DateTime! (scalar)
-        if (this.LastModified == null && Exploration.Includes(parent + ".lastModified", true))
+        if (this.LastModified == null && ec.Includes("lastModified",true))
         {
             this.LastModified = new DateTime();
         }
         //      C# -> System.Int64? Size
         // GraphQL -> size: Long! (scalar)
-        if (this.Size == null && Exploration.Includes(parent + ".size", true))
+        if (this.Size == null && ec.Includes("size",true))
         {
             this.Size = new System.Int64();
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: String! (scalar)
-        if (this.SnapshotId == null && Exploration.Includes(parent + ".snapshotId", true))
+        if (this.SnapshotId == null && ec.Includes("snapshotId",true))
         {
             this.SnapshotId = "FETCH";
         }
         //      C# -> QuarantineInfo? QuarantineInfo
         // GraphQL -> quarantineInfo: QuarantineInfo (type)
-        if (this.QuarantineInfo == null && Exploration.Includes(parent + ".quarantineInfo"))
+        if (this.QuarantineInfo == null && ec.Includes("quarantineInfo",false))
         {
             this.QuarantineInfo = new QuarantineInfo();
-            this.QuarantineInfo.ApplyExploratoryFieldSpec(parent + ".quarantineInfo");
+            this.QuarantineInfo.ApplyExploratoryFieldSpec(ec.NewChild("quarantineInfo"));
         }
         //      C# -> CdmSnapshot? Snapshot
         // GraphQL -> snapshot: CdmSnapshot (type)
-        if (this.Snapshot == null && Exploration.Includes(parent + ".snapshot"))
+        if (this.Snapshot == null && ec.Includes("snapshot",false))
         {
             this.Snapshot = new CdmSnapshot();
-            this.Snapshot.ApplyExploratoryFieldSpec(parent + ".snapshot");
+            this.Snapshot.ApplyExploratoryFieldSpec(ec.NewChild("snapshot"));
         }
     }
 
@@ -230,12 +229,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<HierarchySnappableFileVersion> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new HierarchySnappableFileVersion());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<HierarchySnappableFileVersion> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

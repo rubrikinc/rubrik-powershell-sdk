@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Error
         // GraphQL -> error: String! (scalar)
-        if (this.Error == null && Exploration.Includes(parent + ".error", true))
+        if (this.Error == null && ec.Includes("error",true))
         {
             this.Error = "FETCH";
         }
         //      C# -> System.Boolean? IsValid
         // GraphQL -> isValid: Boolean! (scalar)
-        if (this.IsValid == null && Exploration.Includes(parent + ".isValid", true))
+        if (this.IsValid == null && ec.Includes("isValid",true))
         {
             this.IsValid = true;
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ValidateAzureNativeSqlDatabaseDbNameForExportReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ValidateAzureNativeSqlDatabaseDbNameForExportReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ValidateAzureNativeSqlDatabaseDbNameForExportReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -98,29 +98,28 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> SnappableConnection? SnappableConnection
         // GraphQL -> snappableConnection: SnappableConnection! (type)
-        if (this.SnappableConnection == null && Exploration.Includes(parent + ".snappableConnection"))
+        if (this.SnappableConnection == null && ec.Includes("snappableConnection",false))
         {
             this.SnappableConnection = new SnappableConnection();
-            this.SnappableConnection.ApplyExploratoryFieldSpec(parent + ".snappableConnection");
+            this.SnappableConnection.ApplyExploratoryFieldSpec(ec.NewChild("snappableConnection"));
         }
         //      C# -> List<SnappableGroupBy>? SnappableGroupByField
         // GraphQL -> snappableGroupBy: [SnappableGroupBy!]! (type)
-        if (this.SnappableGroupByField == null && Exploration.Includes(parent + ".snappableGroupBy"))
+        if (this.SnappableGroupByField == null && ec.Includes("snappableGroupBy",false))
         {
             this.SnappableGroupByField = new List<SnappableGroupBy>();
-            this.SnappableGroupByField.ApplyExploratoryFieldSpec(parent + ".snappableGroupBy");
+            this.SnappableGroupByField.ApplyExploratoryFieldSpec(ec.NewChild("snappableGroupBy"));
         }
         //      C# -> SnappableGroupByInfo? GroupByInfo
         // GraphQL -> groupByInfo: SnappableGroupByInfo! (union)
-        if (this.GroupByInfo == null && Exploration.Includes(parent + ".groupByInfo"))
+        if (this.GroupByInfo == null && ec.Includes("groupByInfo",false))
         {
             var impls = new List<SnappableGroupByInfo>();
-            impls.ApplyExploratoryFieldSpec(parent + ".groupByInfo");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
             this.GroupByInfo = (SnappableGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
         }
     }
@@ -155,12 +154,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SnappableGroupBy> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SnappableGroupBy());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SnappableGroupBy> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

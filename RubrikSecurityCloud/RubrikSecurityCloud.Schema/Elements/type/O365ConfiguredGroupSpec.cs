@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<System.String>? Pdls
         // GraphQL -> pdls: [String!]! (scalar)
-        if (this.Pdls == null && Exploration.Includes(parent + ".pdls", true))
+        if (this.Pdls == null && ec.Includes("pdls",true))
         {
             this.Pdls = new List<System.String>();
         }
         //      C# -> System.String? Wildcard
         // GraphQL -> wildcard: String! (scalar)
-        if (this.Wildcard == null && Exploration.Includes(parent + ".wildcard", true))
+        if (this.Wildcard == null && ec.Includes("wildcard",true))
         {
             this.Wildcard = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<O365ConfiguredGroupSpec> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new O365ConfiguredGroupSpec());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<O365ConfiguredGroupSpec> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

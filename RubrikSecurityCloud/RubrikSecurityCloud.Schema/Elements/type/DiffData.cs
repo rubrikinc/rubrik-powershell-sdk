@@ -246,93 +246,92 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? BytesCreated
         // GraphQL -> bytesCreated: Long! (scalar)
-        if (this.BytesCreated == null && Exploration.Includes(parent + ".bytesCreated", true))
+        if (this.BytesCreated == null && ec.Includes("bytesCreated",true))
         {
             this.BytesCreated = new System.Int64();
         }
         //      C# -> System.Int64? BytesDeleted
         // GraphQL -> bytesDeleted: Long! (scalar)
-        if (this.BytesDeleted == null && Exploration.Includes(parent + ".bytesDeleted", true))
+        if (this.BytesDeleted == null && ec.Includes("bytesDeleted",true))
         {
             this.BytesDeleted = new System.Int64();
         }
         //      C# -> System.Int64? BytesModified
         // GraphQL -> bytesModified: Long! (scalar)
-        if (this.BytesModified == null && Exploration.Includes(parent + ".bytesModified", true))
+        if (this.BytesModified == null && ec.Includes("bytesModified",true))
         {
             this.BytesModified = new System.Int64();
         }
         //      C# -> System.Int64? FilesCreated
         // GraphQL -> filesCreated: Long! (scalar)
-        if (this.FilesCreated == null && Exploration.Includes(parent + ".filesCreated", true))
+        if (this.FilesCreated == null && ec.Includes("filesCreated",true))
         {
             this.FilesCreated = new System.Int64();
         }
         //      C# -> System.Int64? FilesDeleted
         // GraphQL -> filesDeleted: Long! (scalar)
-        if (this.FilesDeleted == null && Exploration.Includes(parent + ".filesDeleted", true))
+        if (this.FilesDeleted == null && ec.Includes("filesDeleted",true))
         {
             this.FilesDeleted = new System.Int64();
         }
         //      C# -> System.Int64? FilesModified
         // GraphQL -> filesModified: Long! (scalar)
-        if (this.FilesModified == null && Exploration.Includes(parent + ".filesModified", true))
+        if (this.FilesModified == null && ec.Includes("filesModified",true))
         {
             this.FilesModified = new System.Int64();
         }
         //      C# -> System.Boolean? IsDeleted
         // GraphQL -> isDeleted: Boolean! (scalar)
-        if (this.IsDeleted == null && Exploration.Includes(parent + ".isDeleted", true))
+        if (this.IsDeleted == null && ec.Includes("isDeleted",true))
         {
             this.IsDeleted = true;
         }
         //      C# -> System.Boolean? IsFolder
         // GraphQL -> isFolder: Boolean! (scalar)
-        if (this.IsFolder == null && Exploration.Includes(parent + ".isFolder", true))
+        if (this.IsFolder == null && ec.Includes("isFolder",true))
         {
             this.IsFolder = true;
         }
         //      C# -> System.Int64? LastModifiedTime
         // GraphQL -> lastModifiedTime: Long! (scalar)
-        if (this.LastModifiedTime == null && Exploration.Includes(parent + ".lastModifiedTime", true))
+        if (this.LastModifiedTime == null && ec.Includes("lastModifiedTime",true))
         {
             this.LastModifiedTime = new System.Int64();
         }
         //      C# -> System.Int32? Mode
         // GraphQL -> mode: Int! (scalar)
-        if (this.Mode == null && Exploration.Includes(parent + ".mode", true))
+        if (this.Mode == null && ec.Includes("mode",true))
         {
             this.Mode = Int32.MinValue;
         }
         //      C# -> System.String? Path
         // GraphQL -> path: String! (scalar)
-        if (this.Path == null && Exploration.Includes(parent + ".path", true))
+        if (this.Path == null && ec.Includes("path",true))
         {
             this.Path = "FETCH";
         }
         //      C# -> System.Int64? SuspiciousFilesAdded
         // GraphQL -> suspiciousFilesAdded: Long! (scalar)
-        if (this.SuspiciousFilesAdded == null && Exploration.Includes(parent + ".suspiciousFilesAdded", true))
+        if (this.SuspiciousFilesAdded == null && ec.Includes("suspiciousFilesAdded",true))
         {
             this.SuspiciousFilesAdded = new System.Int64();
         }
         //      C# -> System.Int64? TotalSize
         // GraphQL -> totalSize: Long! (scalar)
-        if (this.TotalSize == null && Exploration.Includes(parent + ".totalSize", true))
+        if (this.TotalSize == null && ec.Includes("totalSize",true))
         {
             this.TotalSize = new System.Int64();
         }
         //      C# -> AnomalyInfo? AnomalyInfo
         // GraphQL -> anomalyInfo: AnomalyInfo (type)
-        if (this.AnomalyInfo == null && Exploration.Includes(parent + ".anomalyInfo"))
+        if (this.AnomalyInfo == null && ec.Includes("anomalyInfo",false))
         {
             this.AnomalyInfo = new AnomalyInfo();
-            this.AnomalyInfo.ApplyExploratoryFieldSpec(parent + ".anomalyInfo");
+            this.AnomalyInfo.ApplyExploratoryFieldSpec(ec.NewChild("anomalyInfo"));
         }
     }
 
@@ -366,12 +365,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<DiffData> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new DiffData());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<DiffData> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -173,60 +173,59 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> DateTime? ExpirationTime
         // GraphQL -> expirationTime: DateTime (scalar)
-        if (this.ExpirationTime == null && Exploration.Includes(parent + ".expirationTime", true))
+        if (this.ExpirationTime == null && ec.Includes("expirationTime",true))
         {
             this.ExpirationTime = new DateTime();
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsExpirationDateCalculated
         // GraphQL -> isExpirationDateCalculated: Boolean (scalar)
-        if (this.IsExpirationDateCalculated == null && Exploration.Includes(parent + ".isExpirationDateCalculated", true))
+        if (this.IsExpirationDateCalculated == null && ec.Includes("isExpirationDateCalculated",true))
         {
             this.IsExpirationDateCalculated = true;
         }
         //      C# -> System.Boolean? IsExpirationInformationUnavailable
         // GraphQL -> isExpirationInformationUnavailable: Boolean (scalar)
-        if (this.IsExpirationInformationUnavailable == null && Exploration.Includes(parent + ".isExpirationInformationUnavailable", true))
+        if (this.IsExpirationInformationUnavailable == null && ec.Includes("isExpirationInformationUnavailable",true))
         {
             this.IsExpirationInformationUnavailable = true;
         }
         //      C# -> System.Boolean? IsRetainedForSecurity
         // GraphQL -> isRetainedForSecurity: Boolean (scalar)
-        if (this.IsRetainedForSecurity == null && Exploration.Includes(parent + ".isRetainedForSecurity", true))
+        if (this.IsRetainedForSecurity == null && ec.Includes("isRetainedForSecurity",true))
         {
             this.IsRetainedForSecurity = true;
         }
         //      C# -> System.Boolean? IsSnapshotOnLegalHold
         // GraphQL -> isSnapshotOnLegalHold: Boolean (scalar)
-        if (this.IsSnapshotOnLegalHold == null && Exploration.Includes(parent + ".isSnapshotOnLegalHold", true))
+        if (this.IsSnapshotOnLegalHold == null && ec.Includes("isSnapshotOnLegalHold",true))
         {
             this.IsSnapshotOnLegalHold = true;
         }
         //      C# -> System.Boolean? IsSnapshotPresent
         // GraphQL -> isSnapshotPresent: Boolean! (scalar)
-        if (this.IsSnapshotPresent == null && Exploration.Includes(parent + ".isSnapshotPresent", true))
+        if (this.IsSnapshotPresent == null && ec.Includes("isSnapshotPresent",true))
         {
             this.IsSnapshotPresent = true;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? SnapshotFrequency
         // GraphQL -> snapshotFrequency: String (scalar)
-        if (this.SnapshotFrequency == null && Exploration.Includes(parent + ".snapshotFrequency", true))
+        if (this.SnapshotFrequency == null && ec.Includes("snapshotFrequency",true))
         {
             this.SnapshotFrequency = "FETCH";
         }
@@ -262,12 +261,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SnapshotLocationRetentionInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SnapshotLocationRetentionInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SnapshotLocationRetentionInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

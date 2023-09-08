@@ -204,10 +204,6 @@ namespace RubrikSecurityCloud.PowerShell.Private
             {
                 this.InputProfile = Exploration.Profile.DEFAULT;
             }
-            if (this.Field == null && this.InputProfile == Exploration.Profile.EMPTY)
-            {
-                this.InputProfile = Exploration.Profile.DEFAULT;
-            }
             Exploration.Init(this.InputProfile);
             if (this.Field != null)
             {
@@ -232,6 +228,15 @@ namespace RubrikSecurityCloud.PowerShell.Private
                 {
                     Exploration.ReadPatchFromString(patch);
                 }
+            }
+
+            // if no Field is given, and no patch is given,
+            // profile can't be empty:
+            if (this.Field == null && !Exploration.HasPatch() && 
+            this.InputProfile == Exploration.Profile.EMPTY)
+            {
+                this.InputProfile = Exploration.Profile.DEFAULT;
+                Exploration.GlobalProfile = Exploration.Profile.DEFAULT;
             }
         }
 
@@ -313,22 +318,25 @@ namespace RubrikSecurityCloud.PowerShell.Private
             }
         }
 
-        protected void BuildInput(System.Object fieldSpecObj)
+        protected void BuildInput(System.Object fieldSpecObj, string example)
         {
-            _input = new RscCmdletInput(
-                this.Op,
-                new RscGqlVars(
+            var vars = new RscGqlVars(
                     this.Arg,
                     _opArgDefs,
                     this.GetValueFromParameterSet,
-                    this.IsIntrospective()),
-                fieldSpecObj,
-                new RscGqlOperation(
+                    this.IsIntrospective(),
+                    example);
+            var gqlOp = new RscGqlOperation(
                     _opKind,
                     _opName,
                     _opArgs,
                     _opReturnType
-                )
+                );
+            _input = new RscCmdletInput(
+                this.Op,
+                vars,
+                fieldSpecObj,
+                gqlOp
             );
             _logger.Debug($"Input: {this._input}");
         }

@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int32? Count
         // GraphQL -> count: Int! (scalar)
-        if (this.Count == null && Exploration.Includes(parent + ".count", true))
+        if (this.Count == null && ec.Includes("count",true))
         {
             this.Count = Int32.MinValue;
         }
         //      C# -> System.String? Group
         // GraphQL -> group: String! (scalar)
-        if (this.Group == null && Exploration.Includes(parent + ".group", true))
+        if (this.Group == null && ec.Includes("group",true))
         {
             this.Group = "FETCH";
         }
         //      C# -> System.Boolean? IsUpgradeRecommended
         // GraphQL -> isUpgradeRecommended: Boolean! (scalar)
-        if (this.IsUpgradeRecommended == null && Exploration.Includes(parent + ".isUpgradeRecommended", true))
+        if (this.IsUpgradeRecommended == null && ec.Includes("isUpgradeRecommended",true))
         {
             this.IsUpgradeRecommended = true;
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<InstalledVersionGroupCount> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new InstalledVersionGroupCount());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<InstalledVersionGroupCount> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> NutanixBackupScriptFailureHandling? FailureHandling
         // GraphQL -> failureHandling: NutanixBackupScriptFailureHandling! (enum)
-        if (this.FailureHandling == null && Exploration.Includes(parent + ".failureHandling", true))
+        if (this.FailureHandling == null && ec.Includes("failureHandling",true))
         {
             this.FailureHandling = new NutanixBackupScriptFailureHandling();
         }
         //      C# -> System.String? ScriptPath
         // GraphQL -> scriptPath: String (scalar)
-        if (this.ScriptPath == null && Exploration.Includes(parent + ".scriptPath", true))
+        if (this.ScriptPath == null && ec.Includes("scriptPath",true))
         {
             this.ScriptPath = "FETCH";
         }
         //      C# -> System.Int64? TimeoutMs
         // GraphQL -> timeoutMs: Long! (scalar)
-        if (this.TimeoutMs == null && Exploration.Includes(parent + ".timeoutMs", true))
+        if (this.TimeoutMs == null && ec.Includes("timeoutMs",true))
         {
             this.TimeoutMs = new System.Int64();
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<NutanixBackupScript> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new NutanixBackupScript());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<NutanixBackupScript> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

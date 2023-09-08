@@ -419,7 +419,9 @@ Preview list of virtual machines of a proposed filter condition. The result migh
                 fieldSpecObj = (VsphereVcenter)this.Field;
             }
             string fieldSpecDoc = Query.VsphereVcenter(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.fid = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -452,7 +454,57 @@ Preview list of virtual machines of a proposed filter condition. The result migh
                 fieldSpecObj = (VsphereVcenterConnection)this.Field;
             }
             string fieldSpecDoc = Query.VsphereVcenterConnection(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.sortBy = <HierarchySortByField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+# OPTIONAL
+$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$inputs.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+		)
+}
+)";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -475,7 +527,49 @@ Preview list of virtual machines of a proposed filter condition. The result migh
                 fieldSpecObj = (System.Int32)this.Field;
             }
             string fieldSpecDoc = Query.UniqueVsphereVcenterCount(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+		)
+}
+)";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -498,7 +592,28 @@ Preview list of virtual machines of a proposed filter condition. The result migh
                 fieldSpecObj = (VcenterPreAddInfo)this.Field;
             }
             string fieldSpecDoc = Query.VcenterPreAddInfo(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	vcenterConfig = @{
+		# OPTIONAL
+		connectionConfig = @{
+			# OPTIONAL
+			caCerts = <System.String>
+			# REQUIRED
+			hostname = <System.String>
+			# REQUIRED
+			password = <System.String>
+			# REQUIRED
+			username = <System.String>
+		}
+		# OPTIONAL
+		id = <System.String>
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -521,7 +636,12 @@ Preview list of virtual machines of a proposed filter condition. The result migh
                 fieldSpecObj = (NetworkInfoListResponse)this.Field;
             }
             string fieldSpecDoc = Query.VcenterNetworks(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -544,7 +664,12 @@ Preview list of virtual machines of a proposed filter condition. The result migh
                 fieldSpecObj = (HotAddNetworkConfigWithName)this.Field;
             }
             string fieldSpecDoc = Query.VcenterHotAddNetwork(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -567,7 +692,12 @@ Preview list of virtual machines of a proposed filter condition. The result migh
                 fieldSpecObj = (System.Int32)this.Field;
             }
             string fieldSpecDoc = Query.VcenterNumProxiesNeeded(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -590,7 +720,11 @@ Preview list of virtual machines of a proposed filter condition. The result migh
                 fieldSpecObj = (List<VcenterHotAddProxyVmInfo>)this.Field;
             }
             string fieldSpecDoc = Query.AllVcenterHotAddProxyVms(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.clusterUuids = @(
+	<System.String>
+)";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -613,7 +747,12 @@ Preview list of virtual machines of a proposed filter condition. The result migh
                 fieldSpecObj = (HotAddBandwidthInfo)this.Field;
             }
             string fieldSpecDoc = Query.VcenterHotAddBandwidth(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -636,7 +775,18 @@ Preview list of virtual machines of a proposed filter condition. The result migh
                 fieldSpecObj = (VcenterAdvancedTagPreviewReply)this.Field;
             }
             string fieldSpecDoc = Query.VcenterAdvancedTagPreview(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	limit = <System.Int32>
+	# OPTIONAL
+	offset = <System.Int32>
+	# REQUIRED
+	filterCondition = <System.String>
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 

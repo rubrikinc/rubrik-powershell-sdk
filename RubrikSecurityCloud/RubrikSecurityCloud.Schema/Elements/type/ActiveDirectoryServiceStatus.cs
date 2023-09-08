@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ServiceStatus? ServiceStatus
         // GraphQL -> serviceStatus: ServiceStatus! (enum)
-        if (this.ServiceStatus == null && Exploration.Includes(parent + ".serviceStatus", true))
+        if (this.ServiceStatus == null && ec.Includes("serviceStatus",true))
         {
             this.ServiceStatus = new ServiceStatus();
         }
         //      C# -> DateTime? TimestampMillis
         // GraphQL -> timestampMillis: DateTime (scalar)
-        if (this.TimestampMillis == null && Exploration.Includes(parent + ".timestampMillis", true))
+        if (this.TimestampMillis == null && ec.Includes("timestampMillis",true))
         {
             this.TimestampMillis = new DateTime();
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ActiveDirectoryServiceStatus> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ActiveDirectoryServiceStatus());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ActiveDirectoryServiceStatus> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

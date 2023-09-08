@@ -112,35 +112,34 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> VcdConnectionStatus? ConnectionStatus
         // GraphQL -> connectionStatus: VcdConnectionStatus (type)
-        if (this.ConnectionStatus == null && Exploration.Includes(parent + ".connectionStatus"))
+        if (this.ConnectionStatus == null && ec.Includes("connectionStatus",false))
         {
             this.ConnectionStatus = new VcdConnectionStatus();
-            this.ConnectionStatus.ApplyExploratoryFieldSpec(parent + ".connectionStatus");
+            this.ConnectionStatus.ApplyExploratoryFieldSpec(ec.NewChild("connectionStatus"));
         }
         //      C# -> SlaAssignable? SlaAssignable
         // GraphQL -> slaAssignable: SlaAssignable (type)
-        if (this.SlaAssignable == null && Exploration.Includes(parent + ".slaAssignable"))
+        if (this.SlaAssignable == null && ec.Includes("slaAssignable",false))
         {
             this.SlaAssignable = new SlaAssignable();
-            this.SlaAssignable.ApplyExploratoryFieldSpec(parent + ".slaAssignable");
+            this.SlaAssignable.ApplyExploratoryFieldSpec(ec.NewChild("slaAssignable"));
         }
         //      C# -> VcdClusterBaseConfig? VcdClusterBaseConfig
         // GraphQL -> vcdClusterBaseConfig: VcdClusterBaseConfig (type)
-        if (this.VcdClusterBaseConfig == null && Exploration.Includes(parent + ".vcdClusterBaseConfig"))
+        if (this.VcdClusterBaseConfig == null && ec.Includes("vcdClusterBaseConfig",false))
         {
             this.VcdClusterBaseConfig = new VcdClusterBaseConfig();
-            this.VcdClusterBaseConfig.ApplyExploratoryFieldSpec(parent + ".vcdClusterBaseConfig");
+            this.VcdClusterBaseConfig.ApplyExploratoryFieldSpec(ec.NewChild("vcdClusterBaseConfig"));
         }
     }
 
@@ -174,12 +173,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VcdClusterSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VcdClusterSummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VcdClusterSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

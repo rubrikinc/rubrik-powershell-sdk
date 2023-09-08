@@ -146,48 +146,47 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ManagedObjectType? ObjectType
         // GraphQL -> objectType: ManagedObjectType (enum)
-        if (this.ObjectType == null && Exploration.Includes(parent + ".objectType", true))
+        if (this.ObjectType == null && ec.Includes("objectType",true))
         {
             this.ObjectType = new ManagedObjectType();
         }
         //      C# -> System.String? EffectiveSlaOpt
         // GraphQL -> effectiveSlaOpt: String (scalar)
-        if (this.EffectiveSlaOpt == null && Exploration.Includes(parent + ".effectiveSlaOpt", true))
+        if (this.EffectiveSlaOpt == null && ec.Includes("effectiveSlaOpt",true))
         {
             this.EffectiveSlaOpt = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsArchived
         // GraphQL -> isArchived: Boolean! (scalar)
-        if (this.IsArchived == null && Exploration.Includes(parent + ".isArchived", true))
+        if (this.IsArchived == null && ec.Includes("isArchived",true))
         {
             this.IsArchived = true;
         }
         //      C# -> System.Boolean? IsUnprotected
         // GraphQL -> isUnprotected: Boolean! (scalar)
-        if (this.IsUnprotected == null && Exploration.Includes(parent + ".isUnprotected", true))
+        if (this.IsUnprotected == null && ec.Includes("isUnprotected",true))
         {
             this.IsUnprotected = true;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean (scalar)
-        if (this.SlaPauseStatus == null && Exploration.Includes(parent + ".slaPauseStatus", true))
+        if (this.SlaPauseStatus == null && ec.Includes("slaPauseStatus",true))
         {
             this.SlaPauseStatus = true;
         }
@@ -223,12 +222,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ProtectedObjects> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ProtectedObjects());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ProtectedObjects> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

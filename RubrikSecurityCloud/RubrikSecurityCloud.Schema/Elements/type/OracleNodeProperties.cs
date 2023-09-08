@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? HostId
         // GraphQL -> hostId: String (scalar)
-        if (this.HostId == null && Exploration.Includes(parent + ".hostId", true))
+        if (this.HostId == null && ec.Includes("hostId",true))
         {
             this.HostId = "FETCH";
         }
         //      C# -> System.String? NodeName
         // GraphQL -> nodeName: String! (scalar)
-        if (this.NodeName == null && Exploration.Includes(parent + ".nodeName", true))
+        if (this.NodeName == null && ec.Includes("nodeName",true))
         {
             this.NodeName = "FETCH";
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = "FETCH";
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<OracleNodeProperties> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new OracleNodeProperties());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<OracleNodeProperties> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

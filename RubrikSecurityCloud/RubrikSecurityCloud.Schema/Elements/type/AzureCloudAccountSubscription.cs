@@ -131,42 +131,41 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> AzureCloudType? CloudType
         // GraphQL -> cloudType: AzureCloudType! (enum)
-        if (this.CloudType == null && Exploration.Includes(parent + ".cloudType", true))
+        if (this.CloudType == null && ec.Includes("cloudType",true))
         {
             this.CloudType = new AzureCloudType();
         }
         //      C# -> System.String? CustomerSubscriptionId
         // GraphQL -> customerSubscriptionId: String! (scalar)
-        if (this.CustomerSubscriptionId == null && Exploration.Includes(parent + ".customerSubscriptionId", true))
+        if (this.CustomerSubscriptionId == null && ec.Includes("customerSubscriptionId",true))
         {
             this.CustomerSubscriptionId = "FETCH";
         }
         //      C# -> System.String? CustomerTenantId
         // GraphQL -> customerTenantId: String! (scalar)
-        if (this.CustomerTenantId == null && Exploration.Includes(parent + ".customerTenantId", true))
+        if (this.CustomerTenantId == null && ec.Includes("customerTenantId",true))
         {
             this.CustomerTenantId = "FETCH";
         }
         //      C# -> System.Boolean? IsAuthorized
         // GraphQL -> isAuthorized: Boolean! (scalar)
-        if (this.IsAuthorized == null && Exploration.Includes(parent + ".isAuthorized", true))
+        if (this.IsAuthorized == null && ec.Includes("isAuthorized",true))
         {
             this.IsAuthorized = true;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? NativeId
         // GraphQL -> nativeId: String! (scalar)
-        if (this.NativeId == null && Exploration.Includes(parent + ".nativeId", true))
+        if (this.NativeId == null && ec.Includes("nativeId",true))
         {
             this.NativeId = "FETCH";
         }
@@ -202,12 +201,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AzureCloudAccountSubscription> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AzureCloudAccountSubscription());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AzureCloudAccountSubscription> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

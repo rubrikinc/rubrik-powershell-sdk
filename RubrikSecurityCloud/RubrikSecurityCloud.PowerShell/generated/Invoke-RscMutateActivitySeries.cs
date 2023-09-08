@@ -104,7 +104,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (System.Boolean)this.Field;
             }
             string fieldSpecDoc = Mutation.CancelActivitySeries(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	activitySeriesId = <System.String>
+	# REQUIRED
+	clusterUuid = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 

@@ -81,22 +81,21 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
-        if (this.Cluster == null && Exploration.Includes(parent + ".cluster"))
+        if (this.Cluster == null && ec.Includes("cluster",false))
         {
             this.Cluster = new Cluster();
-            this.Cluster.ApplyExploratoryFieldSpec(parent + ".cluster");
+            this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
         }
         //      C# -> VmwareDatastoreFreespaceThreshold? DatastoreFreespaceThreshold
         // GraphQL -> datastoreFreespaceThreshold: VmwareDatastoreFreespaceThreshold! (type)
-        if (this.DatastoreFreespaceThreshold == null && Exploration.Includes(parent + ".datastoreFreespaceThreshold"))
+        if (this.DatastoreFreespaceThreshold == null && ec.Includes("datastoreFreespaceThreshold",false))
         {
             this.DatastoreFreespaceThreshold = new VmwareDatastoreFreespaceThreshold();
-            this.DatastoreFreespaceThreshold.ApplyExploratoryFieldSpec(parent + ".datastoreFreespaceThreshold");
+            this.DatastoreFreespaceThreshold.ApplyExploratoryFieldSpec(ec.NewChild("datastoreFreespaceThreshold"));
         }
     }
 
@@ -130,12 +129,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<DatastoreFreespaceThresholdType> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new DatastoreFreespaceThresholdType());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<DatastoreFreespaceThresholdType> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

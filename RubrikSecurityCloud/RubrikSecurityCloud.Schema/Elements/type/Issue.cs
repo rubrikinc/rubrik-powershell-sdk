@@ -185,66 +185,65 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.Int64? OpenTime
         // GraphQL -> openTime: Long! (scalar)
-        if (this.OpenTime == null && Exploration.Includes(parent + ".openTime", true))
+        if (this.OpenTime == null && ec.Includes("openTime",true))
         {
             this.OpenTime = new System.Int64();
         }
         //      C# -> System.String? PaginationId
         // GraphQL -> paginationId: String! (scalar)
-        if (this.PaginationId == null && Exploration.Includes(parent + ".paginationId", true))
+        if (this.PaginationId == null && ec.Includes("paginationId",true))
         {
             this.PaginationId = "FETCH";
         }
         //      C# -> System.Int64? ResolvedTime
         // GraphQL -> resolvedTime: Long! (scalar)
-        if (this.ResolvedTime == null && Exploration.Includes(parent + ".resolvedTime", true))
+        if (this.ResolvedTime == null && ec.Includes("resolvedTime",true))
         {
             this.ResolvedTime = new System.Int64();
         }
         //      C# -> System.Int32? Violations
         // GraphQL -> violations: Int! (scalar)
-        if (this.Violations == null && Exploration.Includes(parent + ".violations", true))
+        if (this.Violations == null && ec.Includes("violations",true))
         {
             this.Violations = Int32.MinValue;
         }
         //      C# -> List<IssueEvent>? Events
         // GraphQL -> events: [IssueEvent!]! (type)
-        if (this.Events == null && Exploration.Includes(parent + ".events"))
+        if (this.Events == null && ec.Includes("events",false))
         {
             this.Events = new List<IssueEvent>();
-            this.Events.ApplyExploratoryFieldSpec(parent + ".events");
+            this.Events.ApplyExploratoryFieldSpec(ec.NewChild("events"));
         }
         //      C# -> FileResult? FileResult
         // GraphQL -> fileResult: FileResult! (type)
-        if (this.FileResult == null && Exploration.Includes(parent + ".fileResult"))
+        if (this.FileResult == null && ec.Includes("fileResult",false))
         {
             this.FileResult = new FileResult();
-            this.FileResult.ApplyExploratoryFieldSpec(parent + ".fileResult");
+            this.FileResult.ApplyExploratoryFieldSpec(ec.NewChild("fileResult"));
         }
         //      C# -> PolicyObj? LatestPolicyObj
         // GraphQL -> latestPolicyObj: PolicyObj! (type)
-        if (this.LatestPolicyObj == null && Exploration.Includes(parent + ".latestPolicyObj"))
+        if (this.LatestPolicyObj == null && ec.Includes("latestPolicyObj",false))
         {
             this.LatestPolicyObj = new PolicyObj();
-            this.LatestPolicyObj.ApplyExploratoryFieldSpec(parent + ".latestPolicyObj");
+            this.LatestPolicyObj.ApplyExploratoryFieldSpec(ec.NewChild("latestPolicyObj"));
         }
         //      C# -> List<ClassificationPolicySummary>? Policies
         // GraphQL -> policies: [ClassificationPolicySummary!]! (type)
-        if (this.Policies == null && Exploration.Includes(parent + ".policies"))
+        if (this.Policies == null && ec.Includes("policies",false))
         {
             this.Policies = new List<ClassificationPolicySummary>();
-            this.Policies.ApplyExploratoryFieldSpec(parent + ".policies");
+            this.Policies.ApplyExploratoryFieldSpec(ec.NewChild("policies"));
         }
     }
 
@@ -278,12 +277,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<Issue> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new Issue());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<Issue> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

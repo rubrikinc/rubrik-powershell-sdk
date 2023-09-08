@@ -117,36 +117,35 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? IsRefreshInProgressOpt
         // GraphQL -> isRefreshInProgressOpt: Boolean (scalar)
-        if (this.IsRefreshInProgressOpt == null && Exploration.Includes(parent + ".isRefreshInProgressOpt", true))
+        if (this.IsRefreshInProgressOpt == null && ec.Includes("isRefreshInProgressOpt",true))
         {
             this.IsRefreshInProgressOpt = true;
         }
         //      C# -> DateTime? LastUpdatedTimeOpt
         // GraphQL -> lastUpdatedTimeOpt: DateTime (scalar)
-        if (this.LastUpdatedTimeOpt == null && Exploration.Includes(parent + ".lastUpdatedTimeOpt", true))
+        if (this.LastUpdatedTimeOpt == null && ec.Includes("lastUpdatedTimeOpt",true))
         {
             this.LastUpdatedTimeOpt = new DateTime();
         }
         //      C# -> System.String? LocationId
         // GraphQL -> locationId: String! (scalar)
-        if (this.LocationId == null && Exploration.Includes(parent + ".locationId", true))
+        if (this.LocationId == null && ec.Includes("locationId",true))
         {
             this.LocationId = "FETCH";
         }
         //      C# -> System.String? NewWorkloadId
         // GraphQL -> newWorkloadId: String! (scalar)
-        if (this.NewWorkloadId == null && Exploration.Includes(parent + ".newWorkloadId", true))
+        if (this.NewWorkloadId == null && ec.Includes("newWorkloadId",true))
         {
             this.NewWorkloadId = "FETCH";
         }
         //      C# -> System.String? OldWorkloadId
         // GraphQL -> oldWorkloadId: String! (scalar)
-        if (this.OldWorkloadId == null && Exploration.Includes(parent + ".oldWorkloadId", true))
+        if (this.OldWorkloadId == null && ec.Includes("oldWorkloadId",true))
         {
             this.OldWorkloadId = "FETCH";
         }
@@ -182,12 +181,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<WorkloadRecoveryInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new WorkloadRecoveryInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<WorkloadRecoveryInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

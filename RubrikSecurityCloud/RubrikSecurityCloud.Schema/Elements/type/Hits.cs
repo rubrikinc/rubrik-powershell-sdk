@@ -131,42 +131,41 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int32? PermittedHits
         // GraphQL -> permittedHits: Int! (scalar)
-        if (this.PermittedHits == null && Exploration.Includes(parent + ".permittedHits", true))
+        if (this.PermittedHits == null && ec.Includes("permittedHits",true))
         {
             this.PermittedHits = Int32.MinValue;
         }
         //      C# -> System.Int32? PermittedHitsDelta
         // GraphQL -> permittedHitsDelta: Int! (scalar)
-        if (this.PermittedHitsDelta == null && Exploration.Includes(parent + ".permittedHitsDelta", true))
+        if (this.PermittedHitsDelta == null && ec.Includes("permittedHitsDelta",true))
         {
             this.PermittedHitsDelta = Int32.MinValue;
         }
         //      C# -> System.Int32? TotalHits
         // GraphQL -> totalHits: Int! (scalar)
-        if (this.TotalHits == null && Exploration.Includes(parent + ".totalHits", true))
+        if (this.TotalHits == null && ec.Includes("totalHits",true))
         {
             this.TotalHits = Int32.MinValue;
         }
         //      C# -> System.Int32? TotalHitsDelta
         // GraphQL -> totalHitsDelta: Int! (scalar)
-        if (this.TotalHitsDelta == null && Exploration.Includes(parent + ".totalHitsDelta", true))
+        if (this.TotalHitsDelta == null && ec.Includes("totalHitsDelta",true))
         {
             this.TotalHitsDelta = Int32.MinValue;
         }
         //      C# -> System.Int32? Violations
         // GraphQL -> violations: Int! (scalar)
-        if (this.Violations == null && Exploration.Includes(parent + ".violations", true))
+        if (this.Violations == null && ec.Includes("violations",true))
         {
             this.Violations = Int32.MinValue;
         }
         //      C# -> System.Int32? ViolationsDelta
         // GraphQL -> violationsDelta: Int! (scalar)
-        if (this.ViolationsDelta == null && Exploration.Includes(parent + ".violationsDelta", true))
+        if (this.ViolationsDelta == null && ec.Includes("violationsDelta",true))
         {
             this.ViolationsDelta = Int32.MinValue;
         }
@@ -202,12 +201,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<Hits> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new Hits());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<Hits> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

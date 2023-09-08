@@ -131,42 +131,41 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> AwsCloudType? CloudType
         // GraphQL -> cloudType: AwsCloudType! (enum)
-        if (this.CloudType == null && Exploration.Includes(parent + ".cloudType", true))
+        if (this.CloudType == null && ec.Includes("cloudType",true))
         {
             this.CloudType = new AwsCloudType();
         }
         //      C# -> System.String? AccountName
         // GraphQL -> accountName: String! (scalar)
-        if (this.AccountName == null && Exploration.Includes(parent + ".accountName", true))
+        if (this.AccountName == null && ec.Includes("accountName",true))
         {
             this.AccountName = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.String? Message
         // GraphQL -> message: String! (scalar)
-        if (this.Message == null && Exploration.Includes(parent + ".message", true))
+        if (this.Message == null && ec.Includes("message",true))
         {
             this.Message = "FETCH";
         }
         //      C# -> System.String? NativeId
         // GraphQL -> nativeId: String! (scalar)
-        if (this.NativeId == null && Exploration.Includes(parent + ".nativeId", true))
+        if (this.NativeId == null && ec.Includes("nativeId",true))
         {
             this.NativeId = "FETCH";
         }
         //      C# -> System.Boolean? SeamlessFlowEnabled
         // GraphQL -> seamlessFlowEnabled: Boolean! (scalar)
-        if (this.SeamlessFlowEnabled == null && Exploration.Includes(parent + ".seamlessFlowEnabled", true))
+        if (this.SeamlessFlowEnabled == null && ec.Includes("seamlessFlowEnabled",true))
         {
             this.SeamlessFlowEnabled = true;
         }
@@ -202,12 +201,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AwsCloudAccount> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AwsCloudAccount());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AwsCloudAccount> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

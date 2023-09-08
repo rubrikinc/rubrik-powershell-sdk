@@ -496,29 +496,6 @@ Timezone                        :
 Version                         : 8.0.2-p2-22662
 ```
 
-## How the SDK works with GraphQL under the covers
-
-This section is for advanced users who want to understand how the SDK
-works under the covers.
-
-### Limitations
-
-The SDK is not a full GraphQL client, it only supports a subset of
-GraphQL features. In particular, it does not support:
-
-- aliases. For example, the label `objects` in the following will not work:
-
-  ```graphql
-  query getSLADomainByName($slaName: String!) {
-    objects: slaDomains(filter: {field: NAME, text: $slaName}) {
-      nodes { name id }
-    }
-  }
-  ```
-
-  If you need to run a field more than once (with different arguments),
-  you'll need to run the query multiple times.
-
 ## SDK Architecture
 
 see [SDK Architecture](./sdk_architecture.md)

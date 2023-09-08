@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<System.Int32>? DaysOfWeek
         // GraphQL -> daysOfWeek: [Int!]! (scalar)
-        if (this.DaysOfWeek == null && Exploration.Includes(parent + ".daysOfWeek", true))
+        if (this.DaysOfWeek == null && ec.Includes("daysOfWeek",true))
         {
             this.DaysOfWeek = new List<System.Int32>();
         }
         //      C# -> System.Int64? EndTime
         // GraphQL -> endTime: Long! (scalar)
-        if (this.EndTime == null && Exploration.Includes(parent + ".endTime", true))
+        if (this.EndTime == null && ec.Includes("endTime",true))
         {
             this.EndTime = new System.Int64();
         }
         //      C# -> System.Int64? StartTime
         // GraphQL -> startTime: Long! (scalar)
-        if (this.StartTime == null && Exploration.Includes(parent + ".startTime", true))
+        if (this.StartTime == null && ec.Includes("startTime",true))
         {
             this.StartTime = new System.Int64();
         }
         //      C# -> System.Single? ThrottleLimit
         // GraphQL -> throttleLimit: Float! (scalar)
-        if (this.ThrottleLimit == null && Exploration.Includes(parent + ".throttleLimit", true))
+        if (this.ThrottleLimit == null && ec.Includes("throttleLimit",true))
         {
             this.ThrottleLimit = new System.Single();
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<NetworkThrottleScheduleSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new NetworkThrottleScheduleSummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<NetworkThrottleScheduleSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -79,21 +79,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ArchivalEntityUseCaseType? UseCaseType
         // GraphQL -> useCaseType: ArchivalEntityUseCaseType! (enum)
-        if (this.UseCaseType == null && Exploration.Includes(parent + ".useCaseType", true))
+        if (this.UseCaseType == null && ec.Includes("useCaseType",true))
         {
             this.UseCaseType = new ArchivalEntityUseCaseType();
         }
         //      C# -> Target? Target
         // GraphQL -> target: Target! (interface)
-        if (this.Target == null && Exploration.Includes(parent + ".target"))
+        if (this.Target == null && ec.Includes("target",false))
         {
             var impls = new List<Target>();
-            impls.ApplyExploratoryFieldSpec(parent + ".target");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("target"));
             this.Target = (Target)InterfaceHelper.MakeCompositeFromList(impls);
         }
     }
@@ -128,12 +127,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ArchivalEntityTarget> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ArchivalEntityTarget());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ArchivalEntityTarget> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

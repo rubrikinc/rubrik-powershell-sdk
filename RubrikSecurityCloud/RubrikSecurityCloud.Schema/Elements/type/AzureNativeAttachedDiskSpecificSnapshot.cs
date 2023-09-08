@@ -145,48 +145,47 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? DiskName
         // GraphQL -> diskName: String! (scalar)
-        if (this.DiskName == null && Exploration.Includes(parent + ".diskName", true))
+        if (this.DiskName == null && ec.Includes("diskName",true))
         {
             this.DiskName = "FETCH";
         }
         //      C# -> System.String? DiskResourceGroupName
         // GraphQL -> diskResourceGroupName: String! (scalar)
-        if (this.DiskResourceGroupName == null && Exploration.Includes(parent + ".diskResourceGroupName", true))
+        if (this.DiskResourceGroupName == null && ec.Includes("diskResourceGroupName",true))
         {
             this.DiskResourceGroupName = "FETCH";
         }
         //      C# -> System.String? DiskStorageTier
         // GraphQL -> diskStorageTier: String! (scalar)
-        if (this.DiskStorageTier == null && Exploration.Includes(parent + ".diskStorageTier", true))
+        if (this.DiskStorageTier == null && ec.Includes("diskStorageTier",true))
         {
             this.DiskStorageTier = "FETCH";
         }
         //      C# -> System.Boolean? IsOsDisk
         // GraphQL -> isOsDisk: Boolean! (scalar)
-        if (this.IsOsDisk == null && Exploration.Includes(parent + ".isOsDisk", true))
+        if (this.IsOsDisk == null && ec.Includes("isOsDisk",true))
         {
             this.IsOsDisk = true;
         }
         //      C# -> System.Int32? Lun
         // GraphQL -> lun: Int! (scalar)
-        if (this.Lun == null && Exploration.Includes(parent + ".lun", true))
+        if (this.Lun == null && ec.Includes("lun",true))
         {
             this.Lun = Int32.MinValue;
         }
         //      C# -> System.String? SnapshotNativeId
         // GraphQL -> snapshotNativeId: String! (scalar)
-        if (this.SnapshotNativeId == null && Exploration.Includes(parent + ".snapshotNativeId", true))
+        if (this.SnapshotNativeId == null && ec.Includes("snapshotNativeId",true))
         {
             this.SnapshotNativeId = "FETCH";
         }
         //      C# -> System.String? SourceDiskUniqueNativeId
         // GraphQL -> sourceDiskUniqueNativeId: String! (scalar)
-        if (this.SourceDiskUniqueNativeId == null && Exploration.Includes(parent + ".sourceDiskUniqueNativeId", true))
+        if (this.SourceDiskUniqueNativeId == null && ec.Includes("sourceDiskUniqueNativeId",true))
         {
             this.SourceDiskUniqueNativeId = "FETCH";
         }
@@ -222,12 +221,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AzureNativeAttachedDiskSpecificSnapshot> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AzureNativeAttachedDiskSpecificSnapshot());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AzureNativeAttachedDiskSpecificSnapshot> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

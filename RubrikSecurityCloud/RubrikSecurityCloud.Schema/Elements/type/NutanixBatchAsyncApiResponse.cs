@@ -81,22 +81,21 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<NutanixAsyncRequestFailureSummary>? FailedRequests
         // GraphQL -> failedRequests: [NutanixAsyncRequestFailureSummary!]! (type)
-        if (this.FailedRequests == null && Exploration.Includes(parent + ".failedRequests"))
+        if (this.FailedRequests == null && ec.Includes("failedRequests",false))
         {
             this.FailedRequests = new List<NutanixAsyncRequestFailureSummary>();
-            this.FailedRequests.ApplyExploratoryFieldSpec(parent + ".failedRequests");
+            this.FailedRequests.ApplyExploratoryFieldSpec(ec.NewChild("failedRequests"));
         }
         //      C# -> List<NutanixAsyncRequestSuccessSummary>? SuccessfulRequests
         // GraphQL -> successfulRequests: [NutanixAsyncRequestSuccessSummary!]! (type)
-        if (this.SuccessfulRequests == null && Exploration.Includes(parent + ".successfulRequests"))
+        if (this.SuccessfulRequests == null && ec.Includes("successfulRequests",false))
         {
             this.SuccessfulRequests = new List<NutanixAsyncRequestSuccessSummary>();
-            this.SuccessfulRequests.ApplyExploratoryFieldSpec(parent + ".successfulRequests");
+            this.SuccessfulRequests.ApplyExploratoryFieldSpec(ec.NewChild("successfulRequests"));
         }
     }
 
@@ -130,12 +129,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<NutanixBatchAsyncApiResponse> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new NutanixBatchAsyncApiResponse());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<NutanixBatchAsyncApiResponse> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

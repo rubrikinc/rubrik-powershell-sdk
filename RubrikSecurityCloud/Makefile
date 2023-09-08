@@ -10,7 +10,7 @@ DOTNET_SCHEMA_DIR = RubrikSecurityCloud.Schema
 DOTNET_COMMON_DIR = RubrikSecurityCloud.Common
 DOTNET_COMMON_TESTS_DIR = RubrikSecurityCloud.Common.Tests
 DOTNET_CMDLETS_DIR = RubrikSecurityCloud.PowerShell
-DOTNET_CMDLETS_RELEASE_BUILD_DIR = $(DOTNET_CMDLETS_DIR)/bin/Release/net6.0
+DOTNET_CMDLETS_RELEASE_BUILD_DIR = $(DOTNET_CMDLETS_DIR)/bin/Release/
 SDK_VERSION = $(shell pwsh -Command "(Import-PowerShellDataFile $(DOTNET_CMDLETS_DIR)/RubrikSecurityCloud.psd1).ModuleVersion")
 PSGALLERY_PUBLISH_DIR = $(PSGALLERY_ROOT)/RubrikSecurityCloud/$(SDK_VERSION)
 
@@ -18,29 +18,34 @@ build: build-common build-client build-schema build-cmdlets
 
 build-common:
 	dotnet build $(DOTNET_COMMON_DIR)/*.csproj
-	mkdir -p $(OUTPUT)
-	cp -a $(DOTNET_COMMON_DIR)/bin/Debug/netstandard2.1/* $(OUTPUT)
+	mkdir -p $(OUTPUT)/net6.0 $(OUTPUT)/net472
+	cp -a $(DOTNET_COMMON_DIR)/bin/Debug/netstandard2.0/* $(OUTPUT)/net6.0
+	cp -a $(DOTNET_COMMON_DIR)/bin/Debug/netstandard2.0/* $(OUTPUT)/net472
 
 build-client:
 	dotnet build $(DOTNET_CLIENT_DIR)/*.csproj
-	mkdir -p $(OUTPUT)
-	cp -a $(DOTNET_CLIENT_DIR)/bin/Debug/netstandard2.1/* $(OUTPUT)
+	mkdir -p $(OUTPUT)/net6.0 $(OUTPUT)/net472
+	cp -a $(DOTNET_CLIENT_DIR)/bin/Debug/netstandard2.0/* $(OUTPUT)/net6.0
+	cp -a $(DOTNET_CLIENT_DIR)/bin/Debug/netstandard2.0/* $(OUTPUT)/net472
 
 build-schema:
 	dotnet build $(DOTNET_SCHEMA_DIR)/*.csproj
-	mkdir -p $(OUTPUT)
-	cp -a $(DOTNET_SCHEMA_DIR)/bin/Debug/netstandard2.1/* $(OUTPUT)
+	mkdir -p $(OUTPUT)/net6.0 $(OUTPUT)/net472
+	cp -a $(DOTNET_SCHEMA_DIR)/bin/Debug/netstandard2.0/* $(OUTPUT)/net6.0
+	cp -a $(DOTNET_SCHEMA_DIR)/bin/Debug/netstandard2.0/* $(OUTPUT)/net472
 
 build-cmdlets:
 	dotnet build $(DOTNET_CMDLETS_DIR)/*.csproj
-	mkdir -p $(OUTPUT)
-	cp -a $(DOTNET_CMDLETS_DIR)/bin/Debug/net6.0/* $(OUTPUT)
+	mkdir -p $(OUTPUT)/net6.0 $(OUTPUT)/net472
+	cp -a $(DOTNET_CMDLETS_DIR)/bin/Debug/* $(OUTPUT)
+	cp -v $(OUTPUT)/net6.0/RubrikSecurityCloud.PowerShell.dll-Help.xml $(OUTPUT)/net472
 	cp -v $(DOTNET_CMDLETS_DIR)/RubrikSecurityCloud.psd1 $(OUTPUT)
 
 build-release:
 	dotnet build $(DOTNET_CMDLETS_DIR)/*.csproj --configuration Release
 	mkdir -p $(PSGALLERY_PUBLISH_DIR)
 	cp -a $(DOTNET_CMDLETS_RELEASE_BUILD_DIR)/* $(PSGALLERY_PUBLISH_DIR)
+	cp -v $(DOTNET_CMDLETS_RELEASE_BUILD_DIR)/net6.0/RubrikSecurityCloud.PowerShell.dll-Help.xml $(PSGALLERY_PUBLISH_DIR)/net472
 
 clean:
 	rm -rf $(OUTPUT)

@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<CreateVappSnapshotReply>? Responses
         // GraphQL -> responses: [CreateVappSnapshotReply!]! (type)
-        if (this.Responses == null && Exploration.Includes(parent + ".responses"))
+        if (this.Responses == null && ec.Includes("responses",false))
         {
             this.Responses = new List<CreateVappSnapshotReply>();
-            this.Responses.ApplyExploratoryFieldSpec(parent + ".responses");
+            this.Responses.ApplyExploratoryFieldSpec(ec.NewChild("responses"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CreateVappSnapshotsReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CreateVappSnapshotsReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CreateVappSnapshotsReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

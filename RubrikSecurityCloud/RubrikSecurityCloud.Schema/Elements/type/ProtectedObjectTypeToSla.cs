@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> WorkloadLevelHierarchy? ProtectedObjectType
         // GraphQL -> protectedObjectType: WorkloadLevelHierarchy! (enum)
-        if (this.ProtectedObjectType == null && Exploration.Includes(parent + ".protectedObjectType", true))
+        if (this.ProtectedObjectType == null && ec.Includes("protectedObjectType",true))
         {
             this.ProtectedObjectType = new WorkloadLevelHierarchy();
         }
         //      C# -> AzureNativeResourceGroupSlaAssignment? SlaAssignment
         // GraphQL -> slaAssignment: AzureNativeResourceGroupSlaAssignment! (type)
-        if (this.SlaAssignment == null && Exploration.Includes(parent + ".slaAssignment"))
+        if (this.SlaAssignment == null && ec.Includes("slaAssignment",false))
         {
             this.SlaAssignment = new AzureNativeResourceGroupSlaAssignment();
-            this.SlaAssignment.ApplyExploratoryFieldSpec(parent + ".slaAssignment");
+            this.SlaAssignment.ApplyExploratoryFieldSpec(ec.NewChild("slaAssignment"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ProtectedObjectTypeToSla> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ProtectedObjectTypeToSla());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ProtectedObjectTypeToSla> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

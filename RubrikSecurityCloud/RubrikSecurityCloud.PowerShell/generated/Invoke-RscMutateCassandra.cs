@@ -236,7 +236,69 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (MosaicAsyncResponse)this.Field;
             }
             string fieldSpecDoc = Mutation.RecoverCassandraSource(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	recoveryData = @{
+		# OPTIONAL
+		destinationManagementObjects = @{
+			# OPTIONAL
+			databases = @(
+				@{
+					# OPTIONAL
+					dbName = <System.String>
+					# OPTIONAL
+					tables = @(
+						<System.String>
+					)
+				}
+			)
+		}
+		# OPTIONAL
+		destinationSourceName = <System.String>
+		# OPTIONAL
+		keyspaceConfig = <System.String>
+		# OPTIONAL
+		maxDiskUsage = <System.String>
+		# OPTIONAL
+		restoreDbUserPwd = <System.String>
+		# OPTIONAL
+		restoreDbUsername = <System.String>
+		# OPTIONAL
+		startTimestamp = <System.Int32>
+		# OPTIONAL
+		targetEncryptionKey = <System.String>
+		# OPTIONAL
+		targetQuery = <System.String>
+		# OPTIONAL
+		sourceType = <MosaicRetrieveRequestSourceType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MosaicRetrieveRequestSourceType]) for enum values.
+		# REQUIRED
+		destinationPath = <System.String>
+		# REQUIRED
+		managementObjects = @{
+			# OPTIONAL
+			databases = @(
+				@{
+					# OPTIONAL
+					dbName = <System.String>
+					# OPTIONAL
+					tables = @(
+						<System.String>
+					)
+				}
+			)
+		}
+		# REQUIRED
+		parameterEncoded = <System.Boolean>
+		# REQUIRED
+		sourceName = <System.String>
+		# REQUIRED
+		versionTime = <System.Int32>
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -259,7 +321,77 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (MosaicAsyncResponse)this.Field;
             }
             string fieldSpecDoc = Mutation.CreateCassandraSource(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	sourceData = @{
+		# OPTIONAL
+		async = <System.Boolean>
+		# OPTIONAL
+		cassandraYaml = @(
+			<System.String>
+		)
+		# OPTIONAL
+		dseYaml = @(
+			<System.String>
+		)
+		# OPTIONAL
+		enableSsl = <System.Boolean>
+		# OPTIONAL
+		httpsCertificate = <System.String>
+		# OPTIONAL
+		ignoreSecondaries = @(
+			<System.String>
+		)
+		# OPTIONAL
+		jmxPassword = <System.String>
+		# OPTIONAL
+		jmxUser = <System.String>
+		# OPTIONAL
+		parameterEncoded = <System.Boolean>
+		# OPTIONAL
+		sourceAuthKey = <System.String>
+		# OPTIONAL
+		sourceAuthKeyfile = <System.String>
+		# OPTIONAL
+		sourceAuthPassphrase = <System.String>
+		# OPTIONAL
+		sourceDriverPassword = <System.String>
+		# OPTIONAL
+		sourceDriverUser = <System.String>
+		# OPTIONAL
+		sourceHttpsPort = <System.String>
+		# OPTIONAL
+		sourcePassword = <System.String>
+		# OPTIONAL
+		sourcePort = <System.String>
+		# OPTIONAL
+		sourceRpcPort = <System.String>
+		# OPTIONAL
+		sourceSshPort = <System.String>
+		# OPTIONAL
+		sourceUser = <System.String>
+		# OPTIONAL
+		sslCaCerts = <System.String>
+		# OPTIONAL
+		sslCertfile = <System.String>
+		# OPTIONAL
+		sslKeyfile = <System.String>
+		# REQUIRED
+		sourceType = <SourceSourceType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SourceSourceType]) for enum values.
+		# OPTIONAL
+		sslCertReqs = <SourceSslCertReqs> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SourceSslCertReqs]) for enum values.
+		# REQUIRED
+		sourceIp = @(
+			<System.String>
+		)
+		# REQUIRED
+		sourceName = <System.String>
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -282,7 +414,77 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (MosaicAsyncResponse)this.Field;
             }
             string fieldSpecDoc = Mutation.UpdateCassandraSource(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	sourceData = @{
+		# OPTIONAL
+		async = <System.Boolean>
+		# OPTIONAL
+		cassandraYaml = @(
+			<System.String>
+		)
+		# OPTIONAL
+		dseYaml = @(
+			<System.String>
+		)
+		# OPTIONAL
+		enableSsl = <System.Boolean>
+		# OPTIONAL
+		httpsCertificate = <System.String>
+		# OPTIONAL
+		ignoreSecondaries = @(
+			<System.String>
+		)
+		# OPTIONAL
+		jmxPassword = <System.String>
+		# OPTIONAL
+		jmxUser = <System.String>
+		# OPTIONAL
+		parameterEncoded = <System.Boolean>
+		# OPTIONAL
+		sourceAuthKey = <System.String>
+		# OPTIONAL
+		sourceAuthKeyfile = <System.String>
+		# OPTIONAL
+		sourceAuthPassphrase = <System.String>
+		# OPTIONAL
+		sourceDriverPassword = <System.String>
+		# OPTIONAL
+		sourceDriverUser = <System.String>
+		# OPTIONAL
+		sourceHttpsPort = <System.String>
+		# OPTIONAL
+		sourcePassword = <System.String>
+		# OPTIONAL
+		sourcePort = <System.String>
+		# OPTIONAL
+		sourceRpcPort = <System.String>
+		# OPTIONAL
+		sourceSshPort = <System.String>
+		# OPTIONAL
+		sourceUser = <System.String>
+		# OPTIONAL
+		sslCaCerts = <System.String>
+		# OPTIONAL
+		sslCertfile = <System.String>
+		# OPTIONAL
+		sslKeyfile = <System.String>
+		# REQUIRED
+		sourceType = <SourceSourceType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SourceSourceType]) for enum values.
+		# OPTIONAL
+		sslCertReqs = <SourceSslCertReqs> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SourceSslCertReqs]) for enum values.
+		# REQUIRED
+		sourceIp = @(
+			<System.String>
+		)
+		# REQUIRED
+		sourceName = <System.String>
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -305,7 +507,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (MosaicAsyncResponse)this.Field;
             }
             string fieldSpecDoc = Mutation.DeleteCassandraSource(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	sourceType = <V2DeleteMosaicSourceRequestSourceType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V2DeleteMosaicSourceRequestSourceType]) for enum values.
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	sourceName = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -328,7 +539,23 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (MosaicAsyncResponse)this.Field;
             }
             string fieldSpecDoc = Mutation.BulkDeleteCassandraSources(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	sourceType = <V2BulkDeleteMosaicSourcesRequestSourceType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V2BulkDeleteMosaicSourcesRequestSourceType]) for enum values.
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	sourceData = @{
+		# OPTIONAL
+		async = <System.Boolean>
+		# REQUIRED
+		sourceNames = @(
+			<System.String>
+		)
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 

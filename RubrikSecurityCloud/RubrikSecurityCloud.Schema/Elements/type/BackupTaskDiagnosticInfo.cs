@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> DiagnosticTaskStatus? TaskStatus
         // GraphQL -> taskStatus: DiagnosticTaskStatus! (enum)
-        if (this.TaskStatus == null && Exploration.Includes(parent + ".taskStatus", true))
+        if (this.TaskStatus == null && ec.Includes("taskStatus",true))
         {
             this.TaskStatus = new DiagnosticTaskStatus();
         }
         //      C# -> DateTime? ExpectedEndTime
         // GraphQL -> expectedEndTime: DateTime (scalar)
-        if (this.ExpectedEndTime == null && Exploration.Includes(parent + ".expectedEndTime", true))
+        if (this.ExpectedEndTime == null && ec.Includes("expectedEndTime",true))
         {
             this.ExpectedEndTime = new DateTime();
         }
         //      C# -> DateTime? QueueTime
         // GraphQL -> queueTime: DateTime (scalar)
-        if (this.QueueTime == null && Exploration.Includes(parent + ".queueTime", true))
+        if (this.QueueTime == null && ec.Includes("queueTime",true))
         {
             this.QueueTime = new DateTime();
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<BackupTaskDiagnosticInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new BackupTaskDiagnosticInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<BackupTaskDiagnosticInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<CustomAnalyzerMatch>? Matches
         // GraphQL -> matches: [CustomAnalyzerMatch!]! (type)
-        if (this.Matches == null && Exploration.Includes(parent + ".matches"))
+        if (this.Matches == null && ec.Includes("matches",false))
         {
             this.Matches = new List<CustomAnalyzerMatch>();
-            this.Matches.ApplyExploratoryFieldSpec(parent + ".matches");
+            this.Matches.ApplyExploratoryFieldSpec(ec.NewChild("matches"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RunCustomAnalyzerReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RunCustomAnalyzerReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<RunCustomAnalyzerReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

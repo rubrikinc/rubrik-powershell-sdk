@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? IsExcludedFromSnapshot
         // GraphQL -> isExcludedFromSnapshot: Boolean! (scalar)
-        if (this.IsExcludedFromSnapshot == null && Exploration.Includes(parent + ".isExcludedFromSnapshot", true))
+        if (this.IsExcludedFromSnapshot == null && ec.Includes("isExcludedFromSnapshot",true))
         {
             this.IsExcludedFromSnapshot = true;
         }
         //      C# -> System.String? VcdVmMoid
         // GraphQL -> vcdVmMoid: String! (scalar)
-        if (this.VcdVmMoid == null && Exploration.Includes(parent + ".vcdVmMoid", true))
+        if (this.VcdVmMoid == null && ec.Includes("vcdVmMoid",true))
         {
             this.VcdVmMoid = "FETCH";
         }
         //      C# -> System.String? VcdVmName
         // GraphQL -> vcdVmName: String! (scalar)
-        if (this.VcdVmName == null && Exploration.Includes(parent + ".vcdVmName", true))
+        if (this.VcdVmName == null && ec.Includes("vcdVmName",true))
         {
             this.VcdVmName = "FETCH";
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VcdVmInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VcdVmInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VcdVmInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Message
         // GraphQL -> message: String! (scalar)
-        if (this.Message == null && Exploration.Includes(parent + ".message", true))
+        if (this.Message == null && ec.Includes("message",true))
         {
             this.Message = "FETCH";
         }
         //      C# -> System.Int32? Seq
         // GraphQL -> seq: Int! (scalar)
-        if (this.Seq == null && Exploration.Includes(parent + ".seq", true))
+        if (this.Seq == null && ec.Includes("seq",true))
         {
             this.Seq = Int32.MinValue;
         }
         //      C# -> System.Int64? StartTime
         // GraphQL -> startTime: Long! (scalar)
-        if (this.StartTime == null && Exploration.Includes(parent + ".startTime", true))
+        if (this.StartTime == null && ec.Includes("startTime",true))
         {
             this.StartTime = new System.Int64();
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = "FETCH";
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<FailoverEvent> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new FailoverEvent());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<FailoverEvent> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

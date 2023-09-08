@@ -117,36 +117,35 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> O365ConfiguredGroupMemberType? ObjectType
         // GraphQL -> objectType: O365ConfiguredGroupMemberType! (enum)
-        if (this.ObjectType == null && Exploration.Includes(parent + ".objectType", true))
+        if (this.ObjectType == null && ec.Includes("objectType",true))
         {
             this.ObjectType = new O365ConfiguredGroupMemberType();
         }
         //      C# -> System.String? DisplayName
         // GraphQL -> displayName: String! (scalar)
-        if (this.DisplayName == null && Exploration.Includes(parent + ".displayName", true))
+        if (this.DisplayName == null && ec.Includes("displayName",true))
         {
             this.DisplayName = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.String? Pdl
         // GraphQL -> pdl: String! (scalar)
-        if (this.Pdl == null && Exploration.Includes(parent + ".pdl", true))
+        if (this.Pdl == null && ec.Includes("pdl",true))
         {
             this.Pdl = "FETCH";
         }
         //      C# -> System.String? Url
         // GraphQL -> url: String! (scalar)
-        if (this.Url == null && Exploration.Includes(parent + ".url", true))
+        if (this.Url == null && ec.Includes("url",true))
         {
             this.Url = "FETCH";
         }
@@ -182,12 +181,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<O365ConfiguredGroupMember> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new O365ConfiguredGroupMember());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<O365ConfiguredGroupMember> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

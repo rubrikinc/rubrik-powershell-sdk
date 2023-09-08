@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<System.String>? RegularPdbs
         // GraphQL -> regularPdbs: [String!]! (scalar)
-        if (this.RegularPdbs == null && Exploration.Includes(parent + ".regularPdbs", true))
+        if (this.RegularPdbs == null && ec.Includes("regularPdbs",true))
         {
             this.RegularPdbs = new List<System.String>();
         }
         //      C# -> List<OraclePdbApplicationContainer>? ApplicationContainers
         // GraphQL -> applicationContainers: [OraclePdbApplicationContainer!]! (type)
-        if (this.ApplicationContainers == null && Exploration.Includes(parent + ".applicationContainers"))
+        if (this.ApplicationContainers == null && ec.Includes("applicationContainers",false))
         {
             this.ApplicationContainers = new List<OraclePdbApplicationContainer>();
-            this.ApplicationContainers.ApplyExploratoryFieldSpec(parent + ".applicationContainers");
+            this.ApplicationContainers.ApplyExploratoryFieldSpec(ec.NewChild("applicationContainers"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<OraclePdbDetails> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new OraclePdbDetails());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<OraclePdbDetails> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

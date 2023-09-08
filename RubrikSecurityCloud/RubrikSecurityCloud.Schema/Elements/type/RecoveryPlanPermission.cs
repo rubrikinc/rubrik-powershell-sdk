@@ -117,36 +117,35 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<VmwareRecoveryType>? AllowedRecoveryTypes
         // GraphQL -> allowedRecoveryTypes: [VmwareRecoveryType!]! (enum)
-        if (this.AllowedRecoveryTypes == null && Exploration.Includes(parent + ".allowedRecoveryTypes", true))
+        if (this.AllowedRecoveryTypes == null && ec.Includes("allowedRecoveryTypes",true))
         {
             this.AllowedRecoveryTypes = new List<VmwareRecoveryType>();
         }
         //      C# -> System.Boolean? IsRecoverable
         // GraphQL -> isRecoverable: Boolean! (scalar)
-        if (this.IsRecoverable == null && Exploration.Includes(parent + ".isRecoverable", true))
+        if (this.IsRecoverable == null && ec.Includes("isRecoverable",true))
         {
             this.IsRecoverable = true;
         }
         //      C# -> System.Boolean? IsViewable
         // GraphQL -> isViewable: Boolean! (scalar)
-        if (this.IsViewable == null && Exploration.Includes(parent + ".isViewable", true))
+        if (this.IsViewable == null && ec.Includes("isViewable",true))
         {
             this.IsViewable = true;
         }
         //      C# -> System.String? RecoveryPlanFid
         // GraphQL -> recoveryPlanFid: UUID! (scalar)
-        if (this.RecoveryPlanFid == null && Exploration.Includes(parent + ".recoveryPlanFid", true))
+        if (this.RecoveryPlanFid == null && ec.Includes("recoveryPlanFid",true))
         {
             this.RecoveryPlanFid = "FETCH";
         }
         //      C# -> System.String? RecoveryPlanName
         // GraphQL -> recoveryPlanName: String! (scalar)
-        if (this.RecoveryPlanName == null && Exploration.Includes(parent + ".recoveryPlanName", true))
+        if (this.RecoveryPlanName == null && ec.Includes("recoveryPlanName",true))
         {
             this.RecoveryPlanName = "FETCH";
         }
@@ -182,12 +181,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RecoveryPlanPermission> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RecoveryPlanPermission());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<RecoveryPlanPermission> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

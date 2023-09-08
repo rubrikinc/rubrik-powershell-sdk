@@ -61,12 +61,11 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> SapHanaSystemAuthTypeSpecAuthType? AuthType
         // GraphQL -> authType: SapHanaSystemAuthTypeSpecAuthType! (enum)
-        if (this.AuthType == null && Exploration.Includes(parent + ".authType", true))
+        if (this.AuthType == null && ec.Includes("authType",true))
         {
             this.AuthType = new SapHanaSystemAuthTypeSpecAuthType();
         }
@@ -102,12 +101,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SapHanaSystemAuthTypeSpec> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SapHanaSystemAuthTypeSpec());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SapHanaSystemAuthTypeSpec> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -115,38 +115,37 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> DisplayableValue? Name
         // GraphQL -> name: DisplayableValue (interface)
-        if (this.Name == null && Exploration.Includes(parent + ".name"))
+        if (this.Name == null && ec.Includes("name",false))
         {
             var impls = new List<DisplayableValue>();
-            impls.ApplyExploratoryFieldSpec(parent + ".name");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("name"));
             this.Name = (DisplayableValue)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> DisplayableValue? Value
         // GraphQL -> value: DisplayableValue (interface)
-        if (this.Value == null && Exploration.Includes(parent + ".value"))
+        if (this.Value == null && ec.Includes("value",false))
         {
             var impls = new List<DisplayableValue>();
-            impls.ApplyExploratoryFieldSpec(parent + ".value");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("value"));
             this.Value = (DisplayableValue)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> List<Metadata>? Metadata
         // GraphQL -> metadata: [Metadata!]! (type)
-        if (this.Metadata == null && Exploration.Includes(parent + ".metadata"))
+        if (this.Metadata == null && ec.Includes("metadata",false))
         {
             this.Metadata = new List<Metadata>();
-            this.Metadata.ApplyExploratoryFieldSpec(parent + ".metadata");
+            this.Metadata.ApplyExploratoryFieldSpec(ec.NewChild("metadata"));
         }
         //      C# -> List<ChartSecondaryGroupBy>? SecondaryGroupBy
         // GraphQL -> secondaryGroupBy: [ChartSecondaryGroupBy!]! (type)
-        if (this.SecondaryGroupBy == null && Exploration.Includes(parent + ".secondaryGroupBy"))
+        if (this.SecondaryGroupBy == null && ec.Includes("secondaryGroupBy",false))
         {
             this.SecondaryGroupBy = new List<ChartSecondaryGroupBy>();
-            this.SecondaryGroupBy.ApplyExploratoryFieldSpec(parent + ".secondaryGroupBy");
+            this.SecondaryGroupBy.ApplyExploratoryFieldSpec(ec.NewChild("secondaryGroupBy"));
         }
     }
 
@@ -180,12 +179,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ChartPrimaryGroupBy> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ChartPrimaryGroupBy());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ChartPrimaryGroupBy> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

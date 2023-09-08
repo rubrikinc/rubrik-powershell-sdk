@@ -134,45 +134,44 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int32? ColumnWidth
         // GraphQL -> columnWidth: Int! (scalar)
-        if (this.ColumnWidth == null && Exploration.Includes(parent + ".columnWidth", true))
+        if (this.ColumnWidth == null && ec.Includes("columnWidth",true))
         {
             this.ColumnWidth = Int32.MinValue;
         }
         //      C# -> System.Boolean? Default
         // GraphQL -> default: Boolean! (scalar)
-        if (this.Default == null && Exploration.Includes(parent + ".default", true))
+        if (this.Default == null && ec.Includes("default",true))
         {
             this.Default = true;
         }
         //      C# -> System.String? DisplayName
         // GraphQL -> displayName: String! (scalar)
-        if (this.DisplayName == null && Exploration.Includes(parent + ".displayName", true))
+        if (this.DisplayName == null && ec.Includes("displayName",true))
         {
             this.DisplayName = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.Boolean? Sortable
         // GraphQL -> sortable: Boolean! (scalar)
-        if (this.Sortable == null && Exploration.Includes(parent + ".sortable", true))
+        if (this.Sortable == null && ec.Includes("sortable",true))
         {
             this.Sortable = true;
         }
         //      C# -> List<Metadata>? Metadata
         // GraphQL -> metadata: [Metadata!]! (type)
-        if (this.Metadata == null && Exploration.Includes(parent + ".metadata"))
+        if (this.Metadata == null && ec.Includes("metadata",false))
         {
             this.Metadata = new List<Metadata>();
-            this.Metadata.ApplyExploratoryFieldSpec(parent + ".metadata");
+            this.Metadata.ApplyExploratoryFieldSpec(ec.NewChild("metadata"));
         }
     }
 
@@ -206,12 +205,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PolarisReportColumn> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PolarisReportColumn());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<PolarisReportColumn> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

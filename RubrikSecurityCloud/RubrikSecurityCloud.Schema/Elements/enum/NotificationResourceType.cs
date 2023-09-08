@@ -15,14 +15,8 @@ namespace RubrikSecurityCloud.Types
 {
     public enum NotificationResourceType
     {
-        [EnumMember(Value = "EVENTS")]
-        EVENTS,
-
         [EnumMember(Value = "RESOURCE_TYPE_UNSPECIFIED")]
-        RESOURCE_TYPE_UNSPECIFIED,
-
-        [EnumMember(Value = "TPR")]
-        TPR
+        RESOURCE_TYPE_UNSPECIFIED
 
 
     } // enum NotificationResourceType

@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<CloudNativeSnapshotDetailsForRecovery>? SnapshotDetails
         // GraphQL -> snapshotDetails: [CloudNativeSnapshotDetailsForRecovery!]! (type)
-        if (this.SnapshotDetails == null && Exploration.Includes(parent + ".snapshotDetails"))
+        if (this.SnapshotDetails == null && ec.Includes("snapshotDetails",false))
         {
             this.SnapshotDetails = new List<CloudNativeSnapshotDetailsForRecovery>();
-            this.SnapshotDetails.ApplyExploratoryFieldSpec(parent + ".snapshotDetails");
+            this.SnapshotDetails.ApplyExploratoryFieldSpec(ec.NewChild("snapshotDetails"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CloudNativeSnapshotDetailsForRecoveryReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CloudNativeSnapshotDetailsForRecoveryReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CloudNativeSnapshotDetailsForRecoveryReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

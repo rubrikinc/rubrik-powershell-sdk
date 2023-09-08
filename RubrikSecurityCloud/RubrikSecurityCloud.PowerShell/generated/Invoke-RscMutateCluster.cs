@@ -590,7 +590,20 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
                 fieldSpecObj = (CcProvisionJobReply)this.Field;
             }
             string fieldSpecDoc = Mutation.AddNodesToCloudCluster(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	numberOfNodes = <System.Int32>
+	# OPTIONAL
+	shouldKeepResourcesOnFailure = <System.Boolean>
+	# REQUIRED
+	cloudAccountId = <System.String>
+	# REQUIRED
+	vendor = <CcpVendorType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CcpVendorType]) for enum values.
+	# REQUIRED
+	clusterUuid = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -613,7 +626,12 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
                 fieldSpecObj = (RegisterCloudClusterReply)this.Field;
             }
             string fieldSpecDoc = Mutation.RegisterCloudCluster(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	clusterUuid = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -636,7 +654,21 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
                 fieldSpecObj = (DbLogReportProperties)this.Field;
             }
             string fieldSpecDoc = Mutation.UpdateDatabaseLogReportingPropertiesForCluster(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	properties = @{
+		# OPTIONAL
+		enableDelayNotification = <System.Boolean>
+		# OPTIONAL
+		logDelayThresholdInMin = <System.Int64>
+		# OPTIONAL
+		logDelayNotificationFrequencyInMin = <System.Int64>
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -659,7 +691,23 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
                 fieldSpecObj = (CreateFailoverClusterReply)this.Field;
             }
             string fieldSpecDoc = Mutation.CreateFailoverCluster(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		configuredSlaDomainId = <System.String>
+		# REQUIRED
+		hostIds = @(
+			<System.String>
+		)
+		# REQUIRED
+		name = <System.String>
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -682,7 +730,23 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
                 fieldSpecObj = (UpdateFailoverClusterReply)this.Field;
             }
             string fieldSpecDoc = Mutation.UpdateFailoverCluster(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+	# REQUIRED
+	updateProperties = @{
+		# OPTIONAL
+		configuredSlaDomainId = <System.String>
+		# REQUIRED
+		hostIds = @(
+			<System.String>
+		)
+		# REQUIRED
+		name = <System.String>
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -705,7 +769,14 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
                 fieldSpecObj = (ResponseSuccess)this.Field;
             }
             string fieldSpecDoc = Mutation.DeleteFailoverCluster(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	preserveSnapshots = <System.Boolean>
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -728,7 +799,16 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
                 fieldSpecObj = (ResponseSuccess)this.Field;
             }
             string fieldSpecDoc = Mutation.BulkDeleteFailoverCluster(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	preserveSnapshots = <System.Boolean>
+	# REQUIRED
+	ids = @(
+		<System.String>
+	)
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -751,7 +831,32 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
                 fieldSpecObj = (K8sClusterSummary)this.Field;
             }
             string fieldSpecDoc = Mutation.AddK8sCluster(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		registry = <System.String>
+		# OPTIONAL
+		distribution = <System.String>
+		# OPTIONAL
+		k8SAwsConfig = @{
+			# REQUIRED
+			cloudAccountId = <System.String>
+			# REQUIRED
+			eksClusterArn = <System.String>
+		}
+		# OPTIONAL
+		region = <System.String>
+		# REQUIRED
+		kubeconfig = <System.String>
+		# REQUIRED
+		name = <System.String>
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -774,7 +879,14 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.DeleteK8sCluster(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	preserveSnapshots = <System.Boolean>
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -797,7 +909,14 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.RefreshK8sV2Cluster(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -820,7 +939,42 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
                 fieldSpecObj = (CreateK8sClusterReply)this.Field;
             }
             string fieldSpecDoc = Mutation.CreateK8sCluster(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	cdmClusterId = <System.String>
+	# REQUIRED
+	hostList = @(
+		<System.String>
+	)
+	# REQUIRED
+	name = <System.String>
+	# REQUIRED
+	port = <System.Int32>
+	# REQUIRED
+	rbsPortRanges = @(
+		@{
+			# OPTIONAL
+			portMin = <System.Int32>
+			# OPTIONAL
+			portMax = <System.Int32>
+		}
+	)
+	# OPTIONAL
+	userDrivenPortRanges = @(
+		@{
+			# OPTIONAL
+			portMin = <System.Int32>
+			# OPTIONAL
+			portMax = <System.Int32>
+		}
+	)
+	# REQUIRED
+	type = <K8sClusterProtoType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.K8sClusterProtoType]) for enum values.
+	# OPTIONAL
+	proxyUrl = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -843,7 +997,12 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
                 fieldSpecObj = (CreateOnDemandJobReply)this.Field;
             }
             string fieldSpecDoc = Mutation.RefreshK8sCluster(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	k8sClusterId = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -866,7 +1025,12 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
                 fieldSpecObj = (ArchiveK8sClusterReply)this.Field;
             }
             string fieldSpecDoc = Mutation.ArchiveK8sCluster(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	clusterId = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -891,7 +1055,13 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
                 fieldSpecObj = (System.Boolean)this.Field;
             }
             string fieldSpecDoc = Mutation.RemoveCdmCluster(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.clusterUUID = <System.String>
+# REQUIRED
+$inputs.Var.isForce = <System.Boolean>
+# OPTIONAL
+$inputs.Var.expireInDays = <System.Int64>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -914,7 +1084,88 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
                 fieldSpecObj = (CcProvisionJobReply)this.Field;
             }
             string fieldSpecDoc = Mutation.RecoverCloudCluster(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	adminPassword = <System.String>
+	# OPTIONAL
+	userEmail = <System.String>
+	# REQUIRED
+	cloudAccountId = <System.String>
+	# REQUIRED
+	clusterUuid = <System.String>
+	# OPTIONAL
+	azureEsResourceGroup = <System.String>
+	# OPTIONAL
+	azureVmConfig = @{
+		# OPTIONAL
+		resourceGroup = <System.String>
+		# OPTIONAL
+		cdmVersion = <System.String>
+		# OPTIONAL
+		location = <System.String>
+		# OPTIONAL
+		nodeSizeGb = <System.Int32>
+		# OPTIONAL
+		networkResourceGroup = <System.String>
+		# OPTIONAL
+		vnetResourceGroup = <System.String>
+		# OPTIONAL
+		networkSecurityGroup = <System.String>
+		# OPTIONAL
+		networkSecurityResourceGroup = <System.String>
+		# OPTIONAL
+		vnet = <System.String>
+		# OPTIONAL
+		subnet = <System.String>
+		# OPTIONAL
+		tags = <System.String>
+		# OPTIONAL
+		vmImage = <System.String>
+		# OPTIONAL
+		cdmProduct = <System.String>
+		# OPTIONAL
+		vmType = <VmType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VmType]) for enum values.
+		# OPTIONAL
+		instanceType = <AzureInstanceType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureInstanceType]) for enum values.
+	}
+	# OPTIONAL
+	awsVmConfig = @{
+		# OPTIONAL
+		cdmVersion = <System.String>
+		# OPTIONAL
+		nodeSizeGb = <System.Int32>
+		# OPTIONAL
+		subnet = <System.String>
+		# OPTIONAL
+		tags = <System.String>
+		# OPTIONAL
+		imageId = <System.String>
+		# OPTIONAL
+		instanceProfileName = <System.String>
+		# OPTIONAL
+		cdmProduct = <System.String>
+		# OPTIONAL
+		vmType = <VmType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VmType]) for enum values.
+		# OPTIONAL
+		securityGroups = @(
+			<System.String>
+		)
+		# OPTIONAL
+		instanceType = <AwsInstanceType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsInstanceType]) for enum values.
+	}
+	# OPTIONAL
+	awsRegion = <System.String>
+	# REQUIRED
+	shouldDisableAwsApiTermination = <System.Boolean>
+	# REQUIRED
+	shouldKeepClusterOnFailure = <System.Boolean>
+	# OPTIONAL
+	ntpServers = @(
+		<System.String>
+	)
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 

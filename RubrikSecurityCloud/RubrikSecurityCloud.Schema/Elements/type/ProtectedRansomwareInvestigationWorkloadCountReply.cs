@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<ProtectedRansomwareInvestigationWorkload>? WorkloadCounts
         // GraphQL -> workloadCounts: [ProtectedRansomwareInvestigationWorkload!]! (type)
-        if (this.WorkloadCounts == null && Exploration.Includes(parent + ".workloadCounts"))
+        if (this.WorkloadCounts == null && ec.Includes("workloadCounts",false))
         {
             this.WorkloadCounts = new List<ProtectedRansomwareInvestigationWorkload>();
-            this.WorkloadCounts.ApplyExploratoryFieldSpec(parent + ".workloadCounts");
+            this.WorkloadCounts.ApplyExploratoryFieldSpec(ec.NewChild("workloadCounts"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ProtectedRansomwareInvestigationWorkloadCountReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ProtectedRansomwareInvestigationWorkloadCountReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ProtectedRansomwareInvestigationWorkloadCountReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

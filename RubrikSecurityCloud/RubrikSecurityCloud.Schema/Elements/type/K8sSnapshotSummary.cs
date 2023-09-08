@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? K8SresourceSetName
         // GraphQL -> k8SResourceSetName: String! (scalar)
-        if (this.K8SresourceSetName == null && Exploration.Includes(parent + ".k8SResourceSetName", true))
+        if (this.K8SresourceSetName == null && ec.Includes("k8SResourceSetName",true))
         {
             this.K8SresourceSetName = "FETCH";
         }
         //      C# -> BaseSnapshotSummary? BaseSnapshotSummary
         // GraphQL -> baseSnapshotSummary: BaseSnapshotSummary (type)
-        if (this.BaseSnapshotSummary == null && Exploration.Includes(parent + ".baseSnapshotSummary"))
+        if (this.BaseSnapshotSummary == null && ec.Includes("baseSnapshotSummary",false))
         {
             this.BaseSnapshotSummary = new BaseSnapshotSummary();
-            this.BaseSnapshotSummary.ApplyExploratoryFieldSpec(parent + ".baseSnapshotSummary");
+            this.BaseSnapshotSummary.ApplyExploratoryFieldSpec(ec.NewChild("baseSnapshotSummary"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<K8sSnapshotSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new K8sSnapshotSummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<K8sSnapshotSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -117,36 +117,35 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<SnapshotCustomization>? Customizations
         // GraphQL -> customizations: [SnapshotCustomization!]! (enum)
-        if (this.Customizations == null && Exploration.Includes(parent + ".customizations", true))
+        if (this.Customizations == null && ec.Includes("customizations",true))
         {
             this.Customizations = new List<SnapshotCustomization>();
         }
         //      C# -> SnapshotTypeEnum? Type
         // GraphQL -> type: SnapshotTypeEnum! (enum)
-        if (this.Type == null && Exploration.Includes(parent + ".type", true))
+        if (this.Type == null && ec.Includes("type",true))
         {
             this.Type = new SnapshotTypeEnum();
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> DateTime? LegalHoldTime
         // GraphQL -> legalHoldTime: DateTime (scalar)
-        if (this.LegalHoldTime == null && Exploration.Includes(parent + ".legalHoldTime", true))
+        if (this.LegalHoldTime == null && ec.Includes("legalHoldTime",true))
         {
             this.LegalHoldTime = new DateTime();
         }
         //      C# -> DateTime? SnapshotTime
         // GraphQL -> snapshotTime: DateTime (scalar)
-        if (this.SnapshotTime == null && Exploration.Includes(parent + ".snapshotTime", true))
+        if (this.SnapshotTime == null && ec.Includes("snapshotTime",true))
         {
             this.SnapshotTime = new DateTime();
         }
@@ -182,12 +181,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<LegalHoldSnapshotDetail> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new LegalHoldSnapshotDetail());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<LegalHoldSnapshotDetail> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> VolumeGroupSubObject? VolumeGroupSubObj
         // GraphQL -> volumeGroupSubObj: VolumeGroupSubObject (type)
-        if (this.VolumeGroupSubObj == null && Exploration.Includes(parent + ".volumeGroupSubObj"))
+        if (this.VolumeGroupSubObj == null && ec.Includes("volumeGroupSubObj",false))
         {
             this.VolumeGroupSubObj = new VolumeGroupSubObject();
-            this.VolumeGroupSubObj.ApplyExploratoryFieldSpec(parent + ".volumeGroupSubObj");
+            this.VolumeGroupSubObj.ApplyExploratoryFieldSpec(ec.NewChild("volumeGroupSubObj"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SnapshotSubObj> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SnapshotSubObj());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SnapshotSubObj> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -249,94 +249,93 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ClusterNodePlatformType? PlatformType
         // GraphQL -> platformType: ClusterNodePlatformType (enum)
-        if (this.PlatformType == null && Exploration.Includes(parent + ".platformType", true))
+        if (this.PlatformType == null && ec.Includes("platformType",true))
         {
             this.PlatformType = new ClusterNodePlatformType();
         }
         //      C# -> ClusterNodePosition? Position
         // GraphQL -> position: ClusterNodePosition (enum)
-        if (this.Position == null && Exploration.Includes(parent + ".position", true))
+        if (this.Position == null && ec.Includes("position",true))
         {
             this.Position = new ClusterNodePosition();
         }
         //      C# -> ClusterNodeStatus? Status
         // GraphQL -> status: ClusterNodeStatus (enum)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = new ClusterNodeStatus();
         }
         //      C# -> System.String? BrikId
         // GraphQL -> brikId: String! (scalar)
-        if (this.BrikId == null && Exploration.Includes(parent + ".brikId", true))
+        if (this.BrikId == null && ec.Includes("brikId",true))
         {
             this.BrikId = "FETCH";
         }
         //      C# -> System.String? ClusterId
         // GraphQL -> clusterId: UUID! (scalar)
-        if (this.ClusterId == null && Exploration.Includes(parent + ".clusterId", true))
+        if (this.ClusterId == null && ec.Includes("clusterId",true))
         {
             this.ClusterId = "FETCH";
         }
         //      C# -> System.Int32? CpuCores
         // GraphQL -> cpuCores: Int (scalar)
-        if (this.CpuCores == null && Exploration.Includes(parent + ".cpuCores", true))
+        if (this.CpuCores == null && ec.Includes("cpuCores",true))
         {
             this.CpuCores = Int32.MinValue;
         }
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String (scalar)
-        if (this.Hostname == null && Exploration.Includes(parent + ".hostname", true))
+        if (this.Hostname == null && ec.Includes("hostname",true))
         {
             this.Hostname = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.String? IpAddress
         // GraphQL -> ipAddress: String (scalar)
-        if (this.IpAddress == null && Exploration.Includes(parent + ".ipAddress", true))
+        if (this.IpAddress == null && ec.Includes("ipAddress",true))
         {
             this.IpAddress = "FETCH";
         }
         //      C# -> System.Boolean? NeedsInspection
         // GraphQL -> needsInspection: Boolean (scalar)
-        if (this.NeedsInspection == null && Exploration.Includes(parent + ".needsInspection", true))
+        if (this.NeedsInspection == null && ec.Includes("needsInspection",true))
         {
             this.NeedsInspection = true;
         }
         //      C# -> System.String? NetworkSpeed
         // GraphQL -> networkSpeed: String (scalar)
-        if (this.NetworkSpeed == null && Exploration.Includes(parent + ".networkSpeed", true))
+        if (this.NetworkSpeed == null && ec.Includes("networkSpeed",true))
         {
             this.NetworkSpeed = "FETCH";
         }
         //      C# -> System.Int64? Ram
         // GraphQL -> ram: Long (scalar)
-        if (this.Ram == null && Exploration.Includes(parent + ".ram", true))
+        if (this.Ram == null && ec.Includes("ram",true))
         {
             this.Ram = new System.Int64();
         }
         //      C# -> List<HealthPolicyStatus>? HardwareHealth
         // GraphQL -> hardwareHealth: [HealthPolicyStatus!] (type)
-        if (this.HardwareHealth == null && Exploration.Includes(parent + ".hardwareHealth"))
+        if (this.HardwareHealth == null && ec.Includes("hardwareHealth",false))
         {
             this.HardwareHealth = new List<HealthPolicyStatus>();
-            this.HardwareHealth.ApplyExploratoryFieldSpec(parent + ".hardwareHealth");
+            this.HardwareHealth.ApplyExploratoryFieldSpec(ec.NewChild("hardwareHealth"));
         }
         //      C# -> List<ClusterNodeInterfaceCidr>? InterfaceCidrs
         // GraphQL -> interfaceCidrs: [ClusterNodeInterfaceCidr!] (type)
-        if (this.InterfaceCidrs == null && Exploration.Includes(parent + ".interfaceCidrs"))
+        if (this.InterfaceCidrs == null && ec.Includes("interfaceCidrs",false))
         {
             this.InterfaceCidrs = new List<ClusterNodeInterfaceCidr>();
-            this.InterfaceCidrs.ApplyExploratoryFieldSpec(parent + ".interfaceCidrs");
+            this.InterfaceCidrs.ApplyExploratoryFieldSpec(ec.NewChild("interfaceCidrs"));
         }
     }
 
@@ -370,12 +369,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ClusterNode> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ClusterNode());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ClusterNode> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ResourceType? ResourceType
         // GraphQL -> resourceType: ResourceType! (enum)
-        if (this.ResourceType == null && Exploration.Includes(parent + ".resourceType", true))
+        if (this.ResourceType == null && ec.Includes("resourceType",true))
         {
             this.ResourceType = new ResourceType();
         }
         //      C# -> System.String? ResourceId
         // GraphQL -> resourceId: String! (scalar)
-        if (this.ResourceId == null && Exploration.Includes(parent + ".resourceId", true))
+        if (this.ResourceId == null && ec.Includes("resourceId",true))
         {
             this.ResourceId = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ResourceInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ResourceInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ResourceInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

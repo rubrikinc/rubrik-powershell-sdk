@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? ComputeClusterFid
         // GraphQL -> computeClusterFid: String! (scalar)
-        if (this.ComputeClusterFid == null && Exploration.Includes(parent + ".computeClusterFid", true))
+        if (this.ComputeClusterFid == null && ec.Includes("computeClusterFid",true))
         {
             this.ComputeClusterFid = "FETCH";
         }
         //      C# -> System.String? ComputeClusterName
         // GraphQL -> computeClusterName: String! (scalar)
-        if (this.ComputeClusterName == null && Exploration.Includes(parent + ".computeClusterName", true))
+        if (this.ComputeClusterName == null && ec.Includes("computeClusterName",true))
         {
             this.ComputeClusterName = "FETCH";
         }
         //      C# -> System.String? IofilterStatus
         // GraphQL -> iofilterStatus: String! (scalar)
-        if (this.IofilterStatus == null && Exploration.Includes(parent + ".iofilterStatus", true))
+        if (this.IofilterStatus == null && ec.Includes("iofilterStatus",true))
         {
             this.IofilterStatus = "FETCH";
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ComputeClusterIofilterStatus> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ComputeClusterIofilterStatus());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ComputeClusterIofilterStatus> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

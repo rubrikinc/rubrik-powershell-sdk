@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> CdpLocalStatus? LocalStatus
         // GraphQL -> localStatus: CdpLocalStatus (enum)
-        if (this.LocalStatus == null && Exploration.Includes(parent + ".localStatus", true))
+        if (this.LocalStatus == null && ec.Includes("localStatus",true))
         {
             this.LocalStatus = new CdpLocalStatus();
         }
         //      C# -> CdpReplicationStatus? ReplicationStatus
         // GraphQL -> replicationStatus: CdpReplicationStatus (enum)
-        if (this.ReplicationStatus == null && Exploration.Includes(parent + ".replicationStatus", true))
+        if (this.ReplicationStatus == null && ec.Includes("replicationStatus",true))
         {
             this.ReplicationStatus = new CdpReplicationStatus();
         }
         //      C# -> System.Single? HealthPercentage
         // GraphQL -> healthPercentage: Float (scalar)
-        if (this.HealthPercentage == null && Exploration.Includes(parent + ".healthPercentage", true))
+        if (this.HealthPercentage == null && ec.Includes("healthPercentage",true))
         {
             this.HealthPercentage = new System.Single();
         }
         //      C# -> System.String? VmId
         // GraphQL -> vmId: String! (scalar)
-        if (this.VmId == null && Exploration.Includes(parent + ".vmId", true))
+        if (this.VmId == null && ec.Includes("vmId",true))
         {
             this.VmId = "FETCH";
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VmwareCdpStateInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VmwareCdpStateInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VmwareCdpStateInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

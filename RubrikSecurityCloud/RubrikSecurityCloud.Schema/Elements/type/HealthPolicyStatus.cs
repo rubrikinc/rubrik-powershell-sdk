@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> HardwareHealthPolicyName? PolicyName
         // GraphQL -> policyName: HardwareHealthPolicyName! (enum)
-        if (this.PolicyName == null && Exploration.Includes(parent + ".policyName", true))
+        if (this.PolicyName == null && ec.Includes("policyName",true))
         {
             this.PolicyName = new HardwareHealthPolicyName();
         }
         //      C# -> System.Boolean? IsHealthy
         // GraphQL -> isHealthy: Boolean! (scalar)
-        if (this.IsHealthy == null && Exploration.Includes(parent + ".isHealthy", true))
+        if (this.IsHealthy == null && ec.Includes("isHealthy",true))
         {
             this.IsHealthy = true;
         }
         //      C# -> System.String? Message
         // GraphQL -> message: String! (scalar)
-        if (this.Message == null && Exploration.Includes(parent + ".message", true))
+        if (this.Message == null && ec.Includes("message",true))
         {
             this.Message = "FETCH";
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<HealthPolicyStatus> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new HealthPolicyStatus());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<HealthPolicyStatus> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

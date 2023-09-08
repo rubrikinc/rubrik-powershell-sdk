@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<ClusterStorageArrays>? ClusterStorageArrays
         // GraphQL -> clusterStorageArrays: [ClusterStorageArrays!]! (type)
-        if (this.ClusterStorageArrays == null && Exploration.Includes(parent + ".clusterStorageArrays"))
+        if (this.ClusterStorageArrays == null && ec.Includes("clusterStorageArrays",false))
         {
             this.ClusterStorageArrays = new List<ClusterStorageArrays>();
-            this.ClusterStorageArrays.ApplyExploratoryFieldSpec(parent + ".clusterStorageArrays");
+            this.ClusterStorageArrays.ApplyExploratoryFieldSpec(ec.NewChild("clusterStorageArrays"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AllStorageArraysReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AllStorageArraysReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AllStorageArraysReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

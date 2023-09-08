@@ -90,24 +90,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? AzureRegion
         // GraphQL -> azureRegion: String! (scalar)
-        if (this.AzureRegion == null && Exploration.Includes(parent + ".azureRegion", true))
+        if (this.AzureRegion == null && ec.Includes("azureRegion",true))
         {
             this.AzureRegion = "FETCH";
         }
         //      C# -> System.String? SubscriptionRubrikId
         // GraphQL -> subscriptionRubrikId: String (scalar)
-        if (this.SubscriptionRubrikId == null && Exploration.Includes(parent + ".subscriptionRubrikId", true))
+        if (this.SubscriptionRubrikId == null && ec.Includes("subscriptionRubrikId",true))
         {
             this.SubscriptionRubrikId = "FETCH";
         }
         //      C# -> System.String? SubscriptionRubrikName
         // GraphQL -> subscriptionRubrikName: String (scalar)
-        if (this.SubscriptionRubrikName == null && Exploration.Includes(parent + ".subscriptionRubrikName", true))
+        if (this.SubscriptionRubrikName == null && ec.Includes("subscriptionRubrikName",true))
         {
             this.SubscriptionRubrikName = "FETCH";
         }
@@ -143,12 +142,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AzureSnappableLocation> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AzureSnappableLocation());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AzureSnappableLocation> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

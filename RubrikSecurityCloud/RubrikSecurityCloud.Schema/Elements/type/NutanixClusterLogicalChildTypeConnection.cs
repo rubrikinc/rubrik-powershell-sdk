@@ -112,35 +112,34 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<NutanixClusterLogicalChildType>? Nodes
         // GraphQL -> nodes: [NutanixClusterLogicalChildType!]! (interface)
-        if (this.Nodes == null && Exploration.Includes(parent + ".nodes"))
+        if (this.Nodes == null && ec.Includes("nodes",false))
         {
             this.Nodes = new List<NutanixClusterLogicalChildType>();
-            this.Nodes.ApplyExploratoryFieldSpec(parent + ".nodes");
+            this.Nodes.ApplyExploratoryFieldSpec(ec.NewChild("nodes"));
         }
         //      C# -> System.Int32? Count
         // GraphQL -> count: Int! (scalar)
-        if (this.Count == null && Exploration.Includes(parent + ".count", true))
+        if (this.Count == null && ec.Includes("count",true))
         {
             this.Count = Int32.MinValue;
         }
         //      C# -> List<NutanixClusterLogicalChildTypeEdge>? Edges
         // GraphQL -> edges: [NutanixClusterLogicalChildTypeEdge!]! (type)
-        if (this.Edges == null && Exploration.Includes(parent + ".edges"))
+        if (this.Edges == null && ec.Includes("edges",false))
         {
             this.Edges = new List<NutanixClusterLogicalChildTypeEdge>();
-            this.Edges.ApplyExploratoryFieldSpec(parent + ".edges");
+            this.Edges.ApplyExploratoryFieldSpec(ec.NewChild("edges"));
         }
         //      C# -> PageInfo? PageInfo
         // GraphQL -> pageInfo: PageInfo! (type)
-        if (this.PageInfo == null && Exploration.Includes(parent + ".pageInfo"))
+        if (this.PageInfo == null && ec.Includes("pageInfo",false))
         {
             this.PageInfo = new PageInfo();
-            this.PageInfo.ApplyExploratoryFieldSpec(parent + ".pageInfo");
+            this.PageInfo.ApplyExploratoryFieldSpec(ec.NewChild("pageInfo"));
         }
     }
 
@@ -174,12 +173,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<NutanixClusterLogicalChildTypeConnection> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new NutanixClusterLogicalChildTypeConnection());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<NutanixClusterLogicalChildTypeConnection> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<ClusterPauseStatusResult>? PauseStatuses
         // GraphQL -> pauseStatuses: [ClusterPauseStatusResult!] (type)
-        if (this.PauseStatuses == null && Exploration.Includes(parent + ".pauseStatuses"))
+        if (this.PauseStatuses == null && ec.Includes("pauseStatuses",false))
         {
             this.PauseStatuses = new List<ClusterPauseStatusResult>();
-            this.PauseStatuses.ApplyExploratoryFieldSpec(parent + ".pauseStatuses");
+            this.PauseStatuses.ApplyExploratoryFieldSpec(ec.NewChild("pauseStatuses"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<UpdateClusterPauseStatusReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new UpdateClusterPauseStatusReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<UpdateClusterPauseStatusReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

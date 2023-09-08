@@ -1,8 +1,8 @@
 ### UpdateTprConfigurationInput
-Update TPR configuration.
+Updating TPR configuration request.
 
 - organizationId: System.String
-  - The organization ID for which TPR will be updated.
+  - Organization that is being updated.
 - executionMaxTimeoutHours: System.Int32
   - Maximum timeout for on-demand execution of TPR requests, in hours.
 - requestTimeoutHours: System.Int32

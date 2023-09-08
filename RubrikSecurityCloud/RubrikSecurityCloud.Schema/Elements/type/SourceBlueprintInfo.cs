@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? BlueprintId
         // GraphQL -> blueprintId: String! (scalar)
-        if (this.BlueprintId == null && Exploration.Includes(parent + ".blueprintId", true))
+        if (this.BlueprintId == null && ec.Includes("blueprintId",true))
         {
             this.BlueprintId = "FETCH";
         }
         //      C# -> List<SourceChildInfo>? SourceChildInfos
         // GraphQL -> sourceChildInfos: [SourceChildInfo!]! (type)
-        if (this.SourceChildInfos == null && Exploration.Includes(parent + ".sourceChildInfos"))
+        if (this.SourceChildInfos == null && ec.Includes("sourceChildInfos",false))
         {
             this.SourceChildInfos = new List<SourceChildInfo>();
-            this.SourceChildInfos.ApplyExploratoryFieldSpec(parent + ".sourceChildInfos");
+            this.SourceChildInfos.ApplyExploratoryFieldSpec(ec.NewChild("sourceChildInfos"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SourceBlueprintInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SourceBlueprintInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SourceBlueprintInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

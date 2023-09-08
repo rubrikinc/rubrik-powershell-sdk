@@ -120,39 +120,38 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? AvailabilityZone
         // GraphQL -> availabilityZone: String! (scalar)
-        if (this.AvailabilityZone == null && Exploration.Includes(parent + ".availabilityZone", true))
+        if (this.AvailabilityZone == null && ec.Includes("availabilityZone",true))
         {
             this.AvailabilityZone = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? SubnetId
         // GraphQL -> subnetId: String! (scalar)
-        if (this.SubnetId == null && Exploration.Includes(parent + ".subnetId", true))
+        if (this.SubnetId == null && ec.Includes("subnetId",true))
         {
             this.SubnetId = "FETCH";
         }
         //      C# -> System.String? VpcId
         // GraphQL -> vpcId: String! (scalar)
-        if (this.VpcId == null && Exploration.Includes(parent + ".vpcId", true))
+        if (this.VpcId == null && ec.Includes("vpcId",true))
         {
             this.VpcId = "FETCH";
         }
         //      C# -> CloudAccountAddressBlockV4? CidrBlock
         // GraphQL -> cidrBlock: CloudAccountAddressBlockV4 (type)
-        if (this.CidrBlock == null && Exploration.Includes(parent + ".cidrBlock"))
+        if (this.CidrBlock == null && ec.Includes("cidrBlock",false))
         {
             this.CidrBlock = new CloudAccountAddressBlockV4();
-            this.CidrBlock.ApplyExploratoryFieldSpec(parent + ".cidrBlock");
+            this.CidrBlock.ApplyExploratoryFieldSpec(ec.NewChild("cidrBlock"));
         }
     }
 
@@ -186,12 +185,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CloudAccountSubnet> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CloudAccountSubnet());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CloudAccountSubnet> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

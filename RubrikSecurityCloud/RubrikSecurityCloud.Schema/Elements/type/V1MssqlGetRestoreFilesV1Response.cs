@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<MssqlRestoreFile>? Items
         // GraphQL -> items: [MssqlRestoreFile!]! (type)
-        if (this.Items == null && Exploration.Includes(parent + ".items"))
+        if (this.Items == null && ec.Includes("items",false))
         {
             this.Items = new List<MssqlRestoreFile>();
-            this.Items.ApplyExploratoryFieldSpec(parent + ".items");
+            this.Items.ApplyExploratoryFieldSpec(ec.NewChild("items"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<V1MssqlGetRestoreFilesV1Response> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new V1MssqlGetRestoreFilesV1Response());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<V1MssqlGetRestoreFilesV1Response> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

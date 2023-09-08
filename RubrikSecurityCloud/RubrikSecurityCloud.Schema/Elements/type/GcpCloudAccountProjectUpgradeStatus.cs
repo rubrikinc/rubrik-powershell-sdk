@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Error
         // GraphQL -> error: String! (scalar)
-        if (this.Error == null && Exploration.Includes(parent + ".error", true))
+        if (this.Error == null && ec.Includes("error",true))
         {
             this.Error = "FETCH";
         }
         //      C# -> System.String? ProjectUuid
         // GraphQL -> projectUuid: String! (scalar)
-        if (this.ProjectUuid == null && Exploration.Includes(parent + ".projectUuid", true))
+        if (this.ProjectUuid == null && ec.Includes("projectUuid",true))
         {
             this.ProjectUuid = "FETCH";
         }
         //      C# -> System.Boolean? Success
         // GraphQL -> success: Boolean! (scalar)
-        if (this.Success == null && Exploration.Includes(parent + ".success", true))
+        if (this.Success == null && ec.Includes("success",true))
         {
             this.Success = true;
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GcpCloudAccountProjectUpgradeStatus> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GcpCloudAccountProjectUpgradeStatus());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<GcpCloudAccountProjectUpgradeStatus> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

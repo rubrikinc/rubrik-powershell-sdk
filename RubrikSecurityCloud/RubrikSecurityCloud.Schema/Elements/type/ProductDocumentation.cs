@@ -151,52 +151,51 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ProductDocumentationType? Type
         // GraphQL -> type: ProductDocumentationType! (enum)
-        if (this.Type == null && Exploration.Includes(parent + ".type", true))
+        if (this.Type == null && ec.Includes("type",true))
         {
             this.Type = new ProductDocumentationType();
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
-        if (this.Description == null && Exploration.Includes(parent + ".description", true))
+        if (this.Description == null && ec.Includes("description",true))
         {
             this.Description = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.String? Language
         // GraphQL -> language: String! (scalar)
-        if (this.Language == null && Exploration.Includes(parent + ".language", true))
+        if (this.Language == null && ec.Includes("language",true))
         {
             this.Language = "FETCH";
         }
         //      C# -> System.String? Title
         // GraphQL -> title: String! (scalar)
-        if (this.Title == null && Exploration.Includes(parent + ".title", true))
+        if (this.Title == null && ec.Includes("title",true))
         {
             this.Title = "FETCH";
         }
         //      C# -> List<ContentNode>? Contents
         // GraphQL -> contents: [ContentNode!]! (type)
-        if (this.Contents == null && Exploration.Includes(parent + ".contents"))
+        if (this.Contents == null && ec.Includes("contents",false))
         {
             this.Contents = new List<ContentNode>();
-            this.Contents.ApplyExploratoryFieldSpec(parent + ".contents");
+            this.Contents.ApplyExploratoryFieldSpec(ec.NewChild("contents"));
         }
         //      C# -> List<RelatedContent>? Related
         // GraphQL -> related: [RelatedContent!]! (type)
-        if (this.Related == null && Exploration.Includes(parent + ".related"))
+        if (this.Related == null && ec.Includes("related",false))
         {
             this.Related = new List<RelatedContent>();
-            this.Related.ApplyExploratoryFieldSpec(parent + ".related");
+            this.Related.ApplyExploratoryFieldSpec(ec.NewChild("related"));
         }
     }
 
@@ -230,12 +229,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ProductDocumentation> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ProductDocumentation());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ProductDocumentation> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

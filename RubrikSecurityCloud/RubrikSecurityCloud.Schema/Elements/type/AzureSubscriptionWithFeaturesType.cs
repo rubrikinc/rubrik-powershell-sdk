@@ -134,45 +134,44 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> AzureCloudType? CloudType
         // GraphQL -> cloudType: AzureCloudType! (enum)
-        if (this.CloudType == null && Exploration.Includes(parent + ".cloudType", true))
+        if (this.CloudType == null && ec.Includes("cloudType",true))
         {
             this.CloudType = new AzureCloudType();
         }
         //      C# -> System.String? CustomerTenantId
         // GraphQL -> customerTenantId: String! (scalar)
-        if (this.CustomerTenantId == null && Exploration.Includes(parent + ".customerTenantId", true))
+        if (this.CustomerTenantId == null && ec.Includes("customerTenantId",true))
         {
             this.CustomerTenantId = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? NativeId
         // GraphQL -> nativeId: String! (scalar)
-        if (this.NativeId == null && Exploration.Includes(parent + ".nativeId", true))
+        if (this.NativeId == null && ec.Includes("nativeId",true))
         {
             this.NativeId = "FETCH";
         }
         //      C# -> List<AzureCloudAccountFeatureDetail>? FeatureDetails
         // GraphQL -> featureDetails: [AzureCloudAccountFeatureDetail!]! (type)
-        if (this.FeatureDetails == null && Exploration.Includes(parent + ".featureDetails"))
+        if (this.FeatureDetails == null && ec.Includes("featureDetails",false))
         {
             this.FeatureDetails = new List<AzureCloudAccountFeatureDetail>();
-            this.FeatureDetails.ApplyExploratoryFieldSpec(parent + ".featureDetails");
+            this.FeatureDetails.ApplyExploratoryFieldSpec(ec.NewChild("featureDetails"));
         }
     }
 
@@ -206,12 +205,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AzureSubscriptionWithFeaturesType> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AzureSubscriptionWithFeaturesType());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AzureSubscriptionWithFeaturesType> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

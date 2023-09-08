@@ -31,3 +31,5 @@ Reply for getting TPR Request Detail.
   - Execution type for the request.
 - orgId: System.String
   - ID of the org.
+- operations: AuthorizedOps
+  - Authorized operations

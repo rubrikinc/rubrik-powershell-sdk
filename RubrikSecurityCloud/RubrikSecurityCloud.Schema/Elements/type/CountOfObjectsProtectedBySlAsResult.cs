@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<SlaIdToObjectCount>? SlaObjectCounts
         // GraphQL -> slaObjectCounts: [SLAIdToObjectCount!]! (type)
-        if (this.SlaObjectCounts == null && Exploration.Includes(parent + ".slaObjectCounts"))
+        if (this.SlaObjectCounts == null && ec.Includes("slaObjectCounts",false))
         {
             this.SlaObjectCounts = new List<SlaIdToObjectCount>();
-            this.SlaObjectCounts.ApplyExploratoryFieldSpec(parent + ".slaObjectCounts");
+            this.SlaObjectCounts.ApplyExploratoryFieldSpec(ec.NewChild("slaObjectCounts"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CountOfObjectsProtectedBySlAsResult> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CountOfObjectsProtectedBySlAsResult());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CountOfObjectsProtectedBySlAsResult> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

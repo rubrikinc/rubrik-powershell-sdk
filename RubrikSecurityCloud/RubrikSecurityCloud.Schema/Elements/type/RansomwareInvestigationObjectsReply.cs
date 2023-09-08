@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? ObjectsNoAnomalies
         // GraphQL -> objectsNoAnomalies: Long! (scalar)
-        if (this.ObjectsNoAnomalies == null && Exploration.Includes(parent + ".objectsNoAnomalies", true))
+        if (this.ObjectsNoAnomalies == null && ec.Includes("objectsNoAnomalies",true))
         {
             this.ObjectsNoAnomalies = new System.Int64();
         }
         //      C# -> System.Int64? ObjectsNoThreats
         // GraphQL -> objectsNoThreats: Long! (scalar)
-        if (this.ObjectsNoThreats == null && Exploration.Includes(parent + ".objectsNoThreats", true))
+        if (this.ObjectsNoThreats == null && ec.Includes("objectsNoThreats",true))
         {
             this.ObjectsNoThreats = new System.Int64();
         }
         //      C# -> System.Int64? ObjectsWithAnomalies
         // GraphQL -> objectsWithAnomalies: Long! (scalar)
-        if (this.ObjectsWithAnomalies == null && Exploration.Includes(parent + ".objectsWithAnomalies", true))
+        if (this.ObjectsWithAnomalies == null && ec.Includes("objectsWithAnomalies",true))
         {
             this.ObjectsWithAnomalies = new System.Int64();
         }
         //      C# -> System.Int64? ObjectsWithThreats
         // GraphQL -> objectsWithThreats: Long! (scalar)
-        if (this.ObjectsWithThreats == null && Exploration.Includes(parent + ".objectsWithThreats", true))
+        if (this.ObjectsWithThreats == null && ec.Includes("objectsWithThreats",true))
         {
             this.ObjectsWithThreats = new System.Int64();
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RansomwareInvestigationObjectsReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RansomwareInvestigationObjectsReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<RansomwareInvestigationObjectsReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<System.String>? PrimaryKeys
         // GraphQL -> primaryKeys: [String!]! (scalar)
-        if (this.PrimaryKeys == null && Exploration.Includes(parent + ".primaryKeys", true))
+        if (this.PrimaryKeys == null && ec.Includes("primaryKeys",true))
         {
             this.PrimaryKeys = new List<System.String>();
         }
         //      C# -> List<CassandraColumnObject>? Columns
         // GraphQL -> columns: [CassandraColumnObject!]! (type)
-        if (this.Columns == null && Exploration.Includes(parent + ".columns"))
+        if (this.Columns == null && ec.Includes("columns",false))
         {
             this.Columns = new List<CassandraColumnObject>();
-            this.Columns.ApplyExploratoryFieldSpec(parent + ".columns");
+            this.Columns.ApplyExploratoryFieldSpec(ec.NewChild("columns"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CassandraSchemaObject> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CassandraSchemaObject());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CassandraSchemaObject> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

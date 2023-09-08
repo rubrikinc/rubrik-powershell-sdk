@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int32? Added
         // GraphQL -> added: Int! (scalar)
-        if (this.Added == null && Exploration.Includes(parent + ".added", true))
+        if (this.Added == null && ec.Includes("added",true))
         {
             this.Added = Int32.MinValue;
         }
         //      C# -> System.Int32? Deleted
         // GraphQL -> deleted: Int! (scalar)
-        if (this.Deleted == null && Exploration.Includes(parent + ".deleted", true))
+        if (this.Deleted == null && ec.Includes("deleted",true))
         {
             this.Deleted = Int32.MinValue;
         }
         //      C# -> System.Int32? Modified
         // GraphQL -> modified: Int! (scalar)
-        if (this.Modified == null && Exploration.Includes(parent + ".modified", true))
+        if (this.Modified == null && ec.Includes("modified",true))
         {
             this.Modified = Int32.MinValue;
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ChangeCounts> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ChangeCounts());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ChangeCounts> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

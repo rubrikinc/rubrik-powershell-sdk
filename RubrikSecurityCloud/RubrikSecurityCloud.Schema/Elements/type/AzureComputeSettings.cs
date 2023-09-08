@@ -190,69 +190,68 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> AzureRegion? Region
         // GraphQL -> region: AzureRegion! (enum)
-        if (this.Region == null && Exploration.Includes(parent + ".region", true))
+        if (this.Region == null && ec.Includes("region",true))
         {
             this.Region = new AzureRegion();
         }
         //      C# -> System.String? AppId
         // GraphQL -> appId: String! (scalar)
-        if (this.AppId == null && Exploration.Includes(parent + ".appId", true))
+        if (this.AppId == null && ec.Includes("appId",true))
         {
             this.AppId = "FETCH";
         }
         //      C# -> System.String? CloudAccountId
         // GraphQL -> cloudAccountId: String! (scalar)
-        if (this.CloudAccountId == null && Exploration.Includes(parent + ".cloudAccountId", true))
+        if (this.CloudAccountId == null && ec.Includes("cloudAccountId",true))
         {
             this.CloudAccountId = "FETCH";
         }
         //      C# -> System.String? GeneralPurposeStorageContainer
         // GraphQL -> generalPurposeStorageContainer: String! (scalar)
-        if (this.GeneralPurposeStorageContainer == null && Exploration.Includes(parent + ".generalPurposeStorageContainer", true))
+        if (this.GeneralPurposeStorageContainer == null && ec.Includes("generalPurposeStorageContainer",true))
         {
             this.GeneralPurposeStorageContainer = "FETCH";
         }
         //      C# -> System.String? GeneralPurposeStorageName
         // GraphQL -> generalPurposeStorageName: String! (scalar)
-        if (this.GeneralPurposeStorageName == null && Exploration.Includes(parent + ".generalPurposeStorageName", true))
+        if (this.GeneralPurposeStorageName == null && ec.Includes("generalPurposeStorageName",true))
         {
             this.GeneralPurposeStorageName = "FETCH";
         }
         //      C# -> System.String? ResourceGroup
         // GraphQL -> resourceGroup: String! (scalar)
-        if (this.ResourceGroup == null && Exploration.Includes(parent + ".resourceGroup", true))
+        if (this.ResourceGroup == null && ec.Includes("resourceGroup",true))
         {
             this.ResourceGroup = "FETCH";
         }
         //      C# -> System.String? SecurityGroupId
         // GraphQL -> securityGroupId: String! (scalar)
-        if (this.SecurityGroupId == null && Exploration.Includes(parent + ".securityGroupId", true))
+        if (this.SecurityGroupId == null && ec.Includes("securityGroupId",true))
         {
             this.SecurityGroupId = "FETCH";
         }
         //      C# -> System.String? SubnetId
         // GraphQL -> subnetId: String! (scalar)
-        if (this.SubnetId == null && Exploration.Includes(parent + ".subnetId", true))
+        if (this.SubnetId == null && ec.Includes("subnetId",true))
         {
             this.SubnetId = "FETCH";
         }
         //      C# -> System.String? VirtualNetworkId
         // GraphQL -> virtualNetworkId: String! (scalar)
-        if (this.VirtualNetworkId == null && Exploration.Includes(parent + ".virtualNetworkId", true))
+        if (this.VirtualNetworkId == null && ec.Includes("virtualNetworkId",true))
         {
             this.VirtualNetworkId = "FETCH";
         }
         //      C# -> ProxySettings? ComputeProxySettings
         // GraphQL -> computeProxySettings: ProxySettings (type)
-        if (this.ComputeProxySettings == null && Exploration.Includes(parent + ".computeProxySettings"))
+        if (this.ComputeProxySettings == null && ec.Includes("computeProxySettings",false))
         {
             this.ComputeProxySettings = new ProxySettings();
-            this.ComputeProxySettings.ApplyExploratoryFieldSpec(parent + ".computeProxySettings");
+            this.ComputeProxySettings.ApplyExploratoryFieldSpec(ec.NewChild("computeProxySettings"));
         }
     }
 
@@ -286,12 +285,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AzureComputeSettings> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AzureComputeSettings());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AzureComputeSettings> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

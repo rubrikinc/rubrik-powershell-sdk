@@ -148,51 +148,50 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<IndicatorOfCompromiseKind>? MatchType
         // GraphQL -> matchType: [IndicatorOfCompromiseKind!]! (enum)
-        if (this.MatchType == null && Exploration.Includes(parent + ".matchType", true))
+        if (this.MatchType == null && ec.Includes("matchType",true))
         {
             this.MatchType = new List<IndicatorOfCompromiseKind>();
         }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum (enum)
-        if (this.ObjectType == null && Exploration.Includes(parent + ".objectType", true))
+        if (this.ObjectType == null && ec.Includes("objectType",true))
         {
             this.ObjectType = new HierarchyObjectTypeEnum();
         }
         //      C# -> System.Int64? FilesMatched
         // GraphQL -> filesMatched: Long! (scalar)
-        if (this.FilesMatched == null && Exploration.Includes(parent + ".filesMatched", true))
+        if (this.FilesMatched == null && ec.Includes("filesMatched",true))
         {
             this.FilesMatched = new System.Int64();
         }
         //      C# -> DateTime? LastDetection
         // GraphQL -> lastDetection: DateTime (scalar)
-        if (this.LastDetection == null && Exploration.Includes(parent + ".lastDetection", true))
+        if (this.LastDetection == null && ec.Includes("lastDetection",true))
         {
             this.LastDetection = new DateTime();
         }
         //      C# -> System.String? ObjectFid
         // GraphQL -> objectFid: UUID! (scalar)
-        if (this.ObjectFid == null && Exploration.Includes(parent + ".objectFid", true))
+        if (this.ObjectFid == null && ec.Includes("objectFid",true))
         {
             this.ObjectFid = "FETCH";
         }
         //      C# -> System.String? ObjectName
         // GraphQL -> objectName: String! (scalar)
-        if (this.ObjectName == null && Exploration.Includes(parent + ".objectName", true))
+        if (this.ObjectName == null && ec.Includes("objectName",true))
         {
             this.ObjectName = "FETCH";
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
-        if (this.Cluster == null && Exploration.Includes(parent + ".cluster"))
+        if (this.Cluster == null && ec.Includes("cluster",false))
         {
             this.Cluster = new Cluster();
-            this.Cluster.ApplyExploratoryFieldSpec(parent + ".cluster");
+            this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
         }
     }
 
@@ -226,12 +225,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ThreatMonitoringMatchedObject> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ThreatMonitoringMatchedObject());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ThreatMonitoringMatchedObject> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

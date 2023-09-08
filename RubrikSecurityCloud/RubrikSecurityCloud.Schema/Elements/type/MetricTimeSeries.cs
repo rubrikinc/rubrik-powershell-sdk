@@ -81,22 +81,21 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ClusterMetric? Metric
         // GraphQL -> metric: ClusterMetric! (type)
-        if (this.Metric == null && Exploration.Includes(parent + ".metric"))
+        if (this.Metric == null && ec.Includes("metric",false))
         {
             this.Metric = new ClusterMetric();
-            this.Metric.ApplyExploratoryFieldSpec(parent + ".metric");
+            this.Metric.ApplyExploratoryFieldSpec(ec.NewChild("metric"));
         }
         //      C# -> ClusterMetricGroupByInfo? TimeInfo
         // GraphQL -> timeInfo: ClusterMetricGroupByInfo! (union)
-        if (this.TimeInfo == null && Exploration.Includes(parent + ".timeInfo"))
+        if (this.TimeInfo == null && ec.Includes("timeInfo",false))
         {
             var impls = new List<ClusterMetricGroupByInfo>();
-            impls.ApplyExploratoryFieldSpec(parent + ".timeInfo");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("timeInfo"));
             this.TimeInfo = (ClusterMetricGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
         }
     }
@@ -131,12 +130,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<MetricTimeSeries> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new MetricTimeSeries());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<MetricTimeSeries> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

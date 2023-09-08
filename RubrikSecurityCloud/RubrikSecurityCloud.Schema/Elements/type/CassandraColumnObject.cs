@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? ColumnName
         // GraphQL -> columnName: String (scalar)
-        if (this.ColumnName == null && Exploration.Includes(parent + ".columnName", true))
+        if (this.ColumnName == null && ec.Includes("columnName",true))
         {
             this.ColumnName = "FETCH";
         }
         //      C# -> System.String? ColumnType
         // GraphQL -> columnType: String (scalar)
-        if (this.ColumnType == null && Exploration.Includes(parent + ".columnType", true))
+        if (this.ColumnType == null && ec.Includes("columnType",true))
         {
             this.ColumnType = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CassandraColumnObject> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CassandraColumnObject());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CassandraColumnObject> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

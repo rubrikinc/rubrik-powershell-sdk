@@ -92,27 +92,26 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? CloudFormationUrl
         // GraphQL -> cloudFormationUrl: String! (scalar)
-        if (this.CloudFormationUrl == null && Exploration.Includes(parent + ".cloudFormationUrl", true))
+        if (this.CloudFormationUrl == null && ec.Includes("cloudFormationUrl",true))
         {
             this.CloudFormationUrl = "FETCH";
         }
         //      C# -> System.String? TemplateUrl
         // GraphQL -> templateUrl: String! (scalar)
-        if (this.TemplateUrl == null && Exploration.Includes(parent + ".templateUrl", true))
+        if (this.TemplateUrl == null && ec.Includes("templateUrl",true))
         {
             this.TemplateUrl = "FETCH";
         }
         //      C# -> List<AwsCloudAccountFeatureVersion>? FeatureRegionMap
         // GraphQL -> featureRegionMap: [AwsCloudAccountFeatureVersion!]! (type)
-        if (this.FeatureRegionMap == null && Exploration.Includes(parent + ".featureRegionMap"))
+        if (this.FeatureRegionMap == null && ec.Includes("featureRegionMap",false))
         {
             this.FeatureRegionMap = new List<AwsCloudAccountFeatureVersion>();
-            this.FeatureRegionMap.ApplyExploratoryFieldSpec(parent + ".featureRegionMap");
+            this.FeatureRegionMap.ApplyExploratoryFieldSpec(ec.NewChild("featureRegionMap"));
         }
     }
 
@@ -146,12 +145,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PrepareAwsCloudAccountDeletionReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PrepareAwsCloudAccountDeletionReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<PrepareAwsCloudAccountDeletionReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

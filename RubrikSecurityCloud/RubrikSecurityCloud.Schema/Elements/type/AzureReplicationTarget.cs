@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> AzureNativeRegionForReplication? Region
         // GraphQL -> region: AzureNativeRegionForReplication! (enum)
-        if (this.Region == null && Exploration.Includes(parent + ".region", true))
+        if (this.Region == null && ec.Includes("region",true))
         {
             this.Region = new AzureNativeRegionForReplication();
         }
         //      C# -> System.String? SubscriptionId
         // GraphQL -> subscriptionId: String! (scalar)
-        if (this.SubscriptionId == null && Exploration.Includes(parent + ".subscriptionId", true))
+        if (this.SubscriptionId == null && ec.Includes("subscriptionId",true))
         {
             this.SubscriptionId = "FETCH";
         }
         //      C# -> System.String? SubscriptionName
         // GraphQL -> subscriptionName: String! (scalar)
-        if (this.SubscriptionName == null && Exploration.Includes(parent + ".subscriptionName", true))
+        if (this.SubscriptionName == null && ec.Includes("subscriptionName",true))
         {
             this.SubscriptionName = "FETCH";
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AzureReplicationTarget> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AzureReplicationTarget());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AzureReplicationTarget> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

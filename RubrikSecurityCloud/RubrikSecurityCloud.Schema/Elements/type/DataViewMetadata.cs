@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> DataViewTypeEnum? DataViewType
         // GraphQL -> dataViewType: DataViewTypeEnum! (enum)
-        if (this.DataViewType == null && Exploration.Includes(parent + ".dataViewType", true))
+        if (this.DataViewType == null && ec.Includes("dataViewType",true))
         {
             this.DataViewType = new DataViewTypeEnum();
         }
         //      C# -> System.Int64? Count
         // GraphQL -> count: Long! (scalar)
-        if (this.Count == null && Exploration.Includes(parent + ".count", true))
+        if (this.Count == null && ec.Includes("count",true))
         {
             this.Count = new System.Int64();
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<DataViewMetadata> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new DataViewMetadata());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<DataViewMetadata> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

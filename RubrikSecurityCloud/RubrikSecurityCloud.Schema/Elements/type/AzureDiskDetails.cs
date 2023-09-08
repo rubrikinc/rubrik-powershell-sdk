@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? DiskNativeName
         // GraphQL -> diskNativeName: String! (scalar)
-        if (this.DiskNativeName == null && Exploration.Includes(parent + ".diskNativeName", true))
+        if (this.DiskNativeName == null && ec.Includes("diskNativeName",true))
         {
             this.DiskNativeName = "FETCH";
         }
         //      C# -> System.Boolean? IsOsDisk
         // GraphQL -> isOsDisk: Boolean! (scalar)
-        if (this.IsOsDisk == null && Exploration.Includes(parent + ".isOsDisk", true))
+        if (this.IsOsDisk == null && ec.Includes("isOsDisk",true))
         {
             this.IsOsDisk = true;
         }
         //      C# -> System.String? MountedDiskId
         // GraphQL -> mountedDiskId: UUID! (scalar)
-        if (this.MountedDiskId == null && Exploration.Includes(parent + ".mountedDiskId", true))
+        if (this.MountedDiskId == null && ec.Includes("mountedDiskId",true))
         {
             this.MountedDiskId = "FETCH";
         }
         //      C# -> System.String? MountedDiskNativeId
         // GraphQL -> mountedDiskNativeId: UUID! (scalar)
-        if (this.MountedDiskNativeId == null && Exploration.Includes(parent + ".mountedDiskNativeId", true))
+        if (this.MountedDiskNativeId == null && ec.Includes("mountedDiskNativeId",true))
         {
             this.MountedDiskNativeId = "FETCH";
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AzureDiskDetails> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AzureDiskDetails());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AzureDiskDetails> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

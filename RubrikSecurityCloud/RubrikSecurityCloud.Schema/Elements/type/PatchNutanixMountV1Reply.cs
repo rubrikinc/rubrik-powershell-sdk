@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> NutanixVmMountSummary? NutanixVmMountSummary
         // GraphQL -> nutanixVmMountSummary: NutanixVmMountSummary (type)
-        if (this.NutanixVmMountSummary == null && Exploration.Includes(parent + ".nutanixVmMountSummary"))
+        if (this.NutanixVmMountSummary == null && ec.Includes("nutanixVmMountSummary",false))
         {
             this.NutanixVmMountSummary = new NutanixVmMountSummary();
-            this.NutanixVmMountSummary.ApplyExploratoryFieldSpec(parent + ".nutanixVmMountSummary");
+            this.NutanixVmMountSummary.ApplyExploratoryFieldSpec(ec.NewChild("nutanixVmMountSummary"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PatchNutanixMountV1Reply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PatchNutanixMountV1Reply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<PatchNutanixMountV1Reply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

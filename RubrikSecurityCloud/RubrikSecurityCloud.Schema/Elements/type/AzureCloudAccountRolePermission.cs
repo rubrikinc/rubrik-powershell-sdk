@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<System.String>? ExcludedActions
         // GraphQL -> excludedActions: [String!]! (scalar)
-        if (this.ExcludedActions == null && Exploration.Includes(parent + ".excludedActions", true))
+        if (this.ExcludedActions == null && ec.Includes("excludedActions",true))
         {
             this.ExcludedActions = new List<System.String>();
         }
         //      C# -> List<System.String>? ExcludedDataActions
         // GraphQL -> excludedDataActions: [String!]! (scalar)
-        if (this.ExcludedDataActions == null && Exploration.Includes(parent + ".excludedDataActions", true))
+        if (this.ExcludedDataActions == null && ec.Includes("excludedDataActions",true))
         {
             this.ExcludedDataActions = new List<System.String>();
         }
         //      C# -> List<System.String>? IncludedActions
         // GraphQL -> includedActions: [String!]! (scalar)
-        if (this.IncludedActions == null && Exploration.Includes(parent + ".includedActions", true))
+        if (this.IncludedActions == null && ec.Includes("includedActions",true))
         {
             this.IncludedActions = new List<System.String>();
         }
         //      C# -> List<System.String>? IncludedDataActions
         // GraphQL -> includedDataActions: [String!]! (scalar)
-        if (this.IncludedDataActions == null && Exploration.Includes(parent + ".includedDataActions", true))
+        if (this.IncludedDataActions == null && ec.Includes("includedDataActions",true))
         {
             this.IncludedDataActions = new List<System.String>();
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AzureCloudAccountRolePermission> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AzureCloudAccountRolePermission());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AzureCloudAccountRolePermission> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> SlaArchivalWarning? Code
         // GraphQL -> code: SlaArchivalWarning! (enum)
-        if (this.Code == null && Exploration.Includes(parent + ".code", true))
+        if (this.Code == null && ec.Includes("code",true))
         {
             this.Code = new SlaArchivalWarning();
         }
         //      C# -> SpecificArchivalLocationWarningDetails? SpecificArchivalLocationWarningDetails
         // GraphQL -> specificArchivalLocationWarningDetails: SpecificArchivalLocationWarningDetails! (interface)
-        if (this.SpecificArchivalLocationWarningDetails == null && Exploration.Includes(parent + ".specificArchivalLocationWarningDetails"))
+        if (this.SpecificArchivalLocationWarningDetails == null && ec.Includes("specificArchivalLocationWarningDetails",false))
         {
             var impls = new List<SpecificArchivalLocationWarningDetails>();
-            impls.ApplyExploratoryFieldSpec(parent + ".specificArchivalLocationWarningDetails");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("specificArchivalLocationWarningDetails"));
             this.SpecificArchivalLocationWarningDetails = (SpecificArchivalLocationWarningDetails)InterfaceHelper.MakeCompositeFromList(impls);
         }
     }
@@ -127,12 +126,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ArchivalLocationWarningsDetails> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ArchivalLocationWarningsDetails());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ArchivalLocationWarningsDetails> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> DateTime? CurrentTime
         // GraphQL -> currentTime: DateTime (scalar)
-        if (this.CurrentTime == null && Exploration.Includes(parent + ".currentTime", true))
+        if (this.CurrentTime == null && ec.Includes("currentTime",true))
         {
             this.CurrentTime = new DateTime();
         }
         //      C# -> DateTime? LocalRecoveryPoint
         // GraphQL -> localRecoveryPoint: DateTime (scalar)
-        if (this.LocalRecoveryPoint == null && Exploration.Includes(parent + ".localRecoveryPoint", true))
+        if (this.LocalRecoveryPoint == null && ec.Includes("localRecoveryPoint",true))
         {
             this.LocalRecoveryPoint = new DateTime();
         }
         //      C# -> DateTime? RemoteRecoveryPoint
         // GraphQL -> remoteRecoveryPoint: DateTime (scalar)
-        if (this.RemoteRecoveryPoint == null && Exploration.Includes(parent + ".remoteRecoveryPoint", true))
+        if (this.RemoteRecoveryPoint == null && ec.Includes("remoteRecoveryPoint",true))
         {
             this.RemoteRecoveryPoint = new DateTime();
         }
         //      C# -> System.String? VmId
         // GraphQL -> vmId: String! (scalar)
-        if (this.VmId == null && Exploration.Includes(parent + ".vmId", true))
+        if (this.VmId == null && ec.Includes("vmId",true))
         {
             this.VmId = "FETCH";
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VmwareCdpLiveInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VmwareCdpLiveInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VmwareCdpLiveInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

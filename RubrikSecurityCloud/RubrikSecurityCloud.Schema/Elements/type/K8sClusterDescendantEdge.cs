@@ -78,20 +78,19 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> K8sClusterDescendant? Node
         // GraphQL -> node: K8sClusterDescendant! (interface)
-        if (this.Node == null && Exploration.Includes(parent + ".node"))
+        if (this.Node == null && ec.Includes("node",false))
         {
             var impls = new List<K8sClusterDescendant>();
-            impls.ApplyExploratoryFieldSpec(parent + ".node");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
             this.Node = (K8sClusterDescendant)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> System.String? Cursor
         // GraphQL -> cursor: String! (scalar)
-        if (this.Cursor == null && Exploration.Includes(parent + ".cursor", true))
+        if (this.Cursor == null && ec.Includes("cursor",true))
         {
             this.Cursor = "FETCH";
         }
@@ -127,12 +126,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<K8sClusterDescendantEdge> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new K8sClusterDescendantEdge());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<K8sClusterDescendantEdge> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

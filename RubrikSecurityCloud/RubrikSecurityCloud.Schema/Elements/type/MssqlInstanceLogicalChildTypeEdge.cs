@@ -78,20 +78,19 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> MssqlInstanceLogicalChildType? Node
         // GraphQL -> node: MssqlInstanceLogicalChildType! (interface)
-        if (this.Node == null && Exploration.Includes(parent + ".node"))
+        if (this.Node == null && ec.Includes("node",false))
         {
             var impls = new List<MssqlInstanceLogicalChildType>();
-            impls.ApplyExploratoryFieldSpec(parent + ".node");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
             this.Node = (MssqlInstanceLogicalChildType)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> System.String? Cursor
         // GraphQL -> cursor: String! (scalar)
-        if (this.Cursor == null && Exploration.Includes(parent + ".cursor", true))
+        if (this.Cursor == null && ec.Includes("cursor",true))
         {
             this.Cursor = "FETCH";
         }
@@ -127,12 +126,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<MssqlInstanceLogicalChildTypeEdge> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new MssqlInstanceLogicalChildTypeEdge());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<MssqlInstanceLogicalChildTypeEdge> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

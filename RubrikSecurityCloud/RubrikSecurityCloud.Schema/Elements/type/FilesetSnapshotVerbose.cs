@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? HasFingerprint
         // GraphQL -> hasFingerprint: Boolean! (scalar)
-        if (this.HasFingerprint == null && Exploration.Includes(parent + ".hasFingerprint", true))
+        if (this.HasFingerprint == null && ec.Includes("hasFingerprint",true))
         {
             this.HasFingerprint = true;
         }
         //      C# -> List<System.String>? PartitionPaths
         // GraphQL -> partitionPaths: [String!]! (scalar)
-        if (this.PartitionPaths == null && Exploration.Includes(parent + ".partitionPaths", true))
+        if (this.PartitionPaths == null && ec.Includes("partitionPaths",true))
         {
             this.PartitionPaths = new List<System.String>();
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<FilesetSnapshotVerbose> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new FilesetSnapshotVerbose());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<FilesetSnapshotVerbose> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

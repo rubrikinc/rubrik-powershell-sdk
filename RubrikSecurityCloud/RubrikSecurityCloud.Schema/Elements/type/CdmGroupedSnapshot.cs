@@ -81,22 +81,21 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> CdmWorkloadSnapshotConnection? CdmSnapshots
         // GraphQL -> cdmSnapshots: CdmWorkloadSnapshotConnection! (type)
-        if (this.CdmSnapshots == null && Exploration.Includes(parent + ".cdmSnapshots"))
+        if (this.CdmSnapshots == null && ec.Includes("cdmSnapshots",false))
         {
             this.CdmSnapshots = new CdmWorkloadSnapshotConnection();
-            this.CdmSnapshots.ApplyExploratoryFieldSpec(parent + ".cdmSnapshots");
+            this.CdmSnapshots.ApplyExploratoryFieldSpec(ec.NewChild("cdmSnapshots"));
         }
         //      C# -> CdmGroupByInfo? GroupByInfo
         // GraphQL -> groupByInfo: CdmGroupByInfo (type)
-        if (this.GroupByInfo == null && Exploration.Includes(parent + ".groupByInfo"))
+        if (this.GroupByInfo == null && ec.Includes("groupByInfo",false))
         {
             this.GroupByInfo = new CdmGroupByInfo();
-            this.GroupByInfo.ApplyExploratoryFieldSpec(parent + ".groupByInfo");
+            this.GroupByInfo.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
         }
     }
 
@@ -130,12 +129,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CdmGroupedSnapshot> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CdmGroupedSnapshot());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CdmGroupedSnapshot> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

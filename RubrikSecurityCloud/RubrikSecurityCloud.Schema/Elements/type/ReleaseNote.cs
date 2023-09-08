@@ -176,63 +176,62 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ReleaseNoteTypeType? Type
         // GraphQL -> type: ReleaseNoteTypeType! (enum)
-        if (this.Type == null && Exploration.Includes(parent + ".type", true))
+        if (this.Type == null && ec.Includes("type",true))
         {
             this.Type = new ReleaseNoteTypeType();
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
-        if (this.Description == null && Exploration.Includes(parent + ".description", true))
+        if (this.Description == null && ec.Includes("description",true))
         {
             this.Description = "FETCH";
         }
         //      C# -> System.String? HelpUrl
         // GraphQL -> helpUrl: URL (scalar)
-        if (this.HelpUrl == null && Exploration.Includes(parent + ".helpUrl", true))
+        if (this.HelpUrl == null && ec.Includes("helpUrl",true))
         {
             this.HelpUrl = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.String? JiraKey
         // GraphQL -> jiraKey: String! (scalar)
-        if (this.JiraKey == null && Exploration.Includes(parent + ".jiraKey", true))
+        if (this.JiraKey == null && ec.Includes("jiraKey",true))
         {
             this.JiraKey = "FETCH";
         }
         //      C# -> DateTime? ReleaseDate
         // GraphQL -> releaseDate: DateTime (scalar)
-        if (this.ReleaseDate == null && Exploration.Includes(parent + ".releaseDate", true))
+        if (this.ReleaseDate == null && ec.Includes("releaseDate",true))
         {
             this.ReleaseDate = new DateTime();
         }
         //      C# -> System.String? Title
         // GraphQL -> title: String! (scalar)
-        if (this.Title == null && Exploration.Includes(parent + ".title", true))
+        if (this.Title == null && ec.Includes("title",true))
         {
             this.Title = "FETCH";
         }
         //      C# -> System.String? Version
         // GraphQL -> version: String! (scalar)
-        if (this.Version == null && Exploration.Includes(parent + ".version", true))
+        if (this.Version == null && ec.Includes("version",true))
         {
             this.Version = "FETCH";
         }
         //      C# -> List<ReleaseNoteTag>? Tags
         // GraphQL -> tags: [ReleaseNoteTag!]! (type)
-        if (this.Tags == null && Exploration.Includes(parent + ".tags"))
+        if (this.Tags == null && ec.Includes("tags",false))
         {
             this.Tags = new List<ReleaseNoteTag>();
-            this.Tags.ApplyExploratoryFieldSpec(parent + ".tags");
+            this.Tags.ApplyExploratoryFieldSpec(ec.NewChild("tags"));
         }
     }
 
@@ -266,12 +265,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ReleaseNote> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ReleaseNote());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ReleaseNote> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<System.String>? Errors
         // GraphQL -> errors: [String!]! (scalar)
-        if (this.Errors == null && Exploration.Includes(parent + ".errors", true))
+        if (this.Errors == null && ec.Includes("errors",true))
         {
             this.Errors = new List<System.String>();
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.Boolean? Success
         // GraphQL -> success: Boolean! (scalar)
-        if (this.Success == null && Exploration.Includes(parent + ".success", true))
+        if (this.Success == null && ec.Includes("success",true))
         {
             this.Success = true;
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SupportCaseAttachmentResponse> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SupportCaseAttachmentResponse());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SupportCaseAttachmentResponse> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

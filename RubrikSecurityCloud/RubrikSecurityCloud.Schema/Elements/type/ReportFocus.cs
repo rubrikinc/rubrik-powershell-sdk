@@ -62,12 +62,11 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ReportFocusEnum? EnumValue
         // GraphQL -> enumValue: ReportFocusEnum! (enum)
-        if (this.EnumValue == null && Exploration.Includes(parent + ".enumValue", true))
+        if (this.EnumValue == null && ec.Includes("enumValue",true))
         {
             this.EnumValue = new ReportFocusEnum();
         }
@@ -103,12 +102,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ReportFocus> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ReportFocus());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ReportFocus> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

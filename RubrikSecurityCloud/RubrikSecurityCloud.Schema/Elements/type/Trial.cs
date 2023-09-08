@@ -65,6 +65,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("offeredAt")]
         public DateTime? OfferedAt { get; set; }
 
+        //      C# -> System.Boolean? WasExplicitlyInvited
+        // GraphQL -> wasExplicitlyInvited: Boolean! (scalar)
+        [JsonProperty("wasExplicitlyInvited")]
+        public System.Boolean? WasExplicitlyInvited { get; set; }
+
         //      C# -> TrialSpecificParams? Params
         // GraphQL -> params: TrialSpecificParams (type)
         [JsonProperty("params")]
@@ -94,6 +99,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsIgnored = null,
         System.Boolean? IsOnboardingComplete = null,
         DateTime? OfferedAt = null,
+        System.Boolean? WasExplicitlyInvited = null,
         TrialSpecificParams? Params = null,
         List<TrialTask>? Tasks = null
     ) 
@@ -124,6 +130,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( OfferedAt != null ) {
             this.OfferedAt = OfferedAt;
+        }
+        if ( WasExplicitlyInvited != null ) {
+            this.WasExplicitlyInvited = WasExplicitlyInvited;
         }
         if ( Params != null ) {
             this.Params = Params;
@@ -186,6 +195,11 @@ namespace RubrikSecurityCloud.Types
         if (this.OfferedAt != null) {
             s += ind + "offeredAt\n" ;
         }
+        //      C# -> System.Boolean? WasExplicitlyInvited
+        // GraphQL -> wasExplicitlyInvited: Boolean! (scalar)
+        if (this.WasExplicitlyInvited != null) {
+            s += ind + "wasExplicitlyInvited\n" ;
+        }
         //      C# -> TrialSpecificParams? Params
         // GraphQL -> params: TrialSpecificParams (type)
         if (this.Params != null) {
@@ -207,76 +221,81 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ProductState? State
         // GraphQL -> state: ProductState! (enum)
-        if (this.State == null && Exploration.Includes(parent + ".state", true))
+        if (this.State == null && ec.Includes("state",true))
         {
             this.State = new ProductState();
         }
         //      C# -> TrialType? Type
         // GraphQL -> type: TrialType! (enum)
-        if (this.Type == null && Exploration.Includes(parent + ".type", true))
+        if (this.Type == null && ec.Includes("type",true))
         {
             this.Type = new TrialType();
         }
         //      C# -> DateTime? ActivatedAt
         // GraphQL -> activatedAt: DateTime (scalar)
-        if (this.ActivatedAt == null && Exploration.Includes(parent + ".activatedAt", true))
+        if (this.ActivatedAt == null && ec.Includes("activatedAt",true))
         {
             this.ActivatedAt = new DateTime();
         }
         //      C# -> System.Int32? Duration
         // GraphQL -> duration: Int! (scalar)
-        if (this.Duration == null && Exploration.Includes(parent + ".duration", true))
+        if (this.Duration == null && ec.Includes("duration",true))
         {
             this.Duration = Int32.MinValue;
         }
         //      C# -> DateTime? EndDate
         // GraphQL -> endDate: DateTime (scalar)
-        if (this.EndDate == null && Exploration.Includes(parent + ".endDate", true))
+        if (this.EndDate == null && ec.Includes("endDate",true))
         {
             this.EndDate = new DateTime();
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsIgnored
         // GraphQL -> isIgnored: Boolean! (scalar)
-        if (this.IsIgnored == null && Exploration.Includes(parent + ".isIgnored", true))
+        if (this.IsIgnored == null && ec.Includes("isIgnored",true))
         {
             this.IsIgnored = true;
         }
         //      C# -> System.Boolean? IsOnboardingComplete
         // GraphQL -> isOnboardingComplete: Boolean! (scalar)
-        if (this.IsOnboardingComplete == null && Exploration.Includes(parent + ".isOnboardingComplete", true))
+        if (this.IsOnboardingComplete == null && ec.Includes("isOnboardingComplete",true))
         {
             this.IsOnboardingComplete = true;
         }
         //      C# -> DateTime? OfferedAt
         // GraphQL -> offeredAt: DateTime! (scalar)
-        if (this.OfferedAt == null && Exploration.Includes(parent + ".offeredAt", true))
+        if (this.OfferedAt == null && ec.Includes("offeredAt",true))
         {
             this.OfferedAt = new DateTime();
         }
+        //      C# -> System.Boolean? WasExplicitlyInvited
+        // GraphQL -> wasExplicitlyInvited: Boolean! (scalar)
+        if (this.WasExplicitlyInvited == null && ec.Includes("wasExplicitlyInvited",true))
+        {
+            this.WasExplicitlyInvited = true;
+        }
         //      C# -> TrialSpecificParams? Params
         // GraphQL -> params: TrialSpecificParams (type)
-        if (this.Params == null && Exploration.Includes(parent + ".params"))
+        if (this.Params == null && ec.Includes("params",false))
         {
             this.Params = new TrialSpecificParams();
-            this.Params.ApplyExploratoryFieldSpec(parent + ".params");
+            this.Params.ApplyExploratoryFieldSpec(ec.NewChild("params"));
         }
         //      C# -> List<TrialTask>? Tasks
         // GraphQL -> tasks: [TrialTask!]! (type)
-        if (this.Tasks == null && Exploration.Includes(parent + ".tasks"))
+        if (this.Tasks == null && ec.Includes("tasks",false))
         {
             this.Tasks = new List<TrialTask>();
-            this.Tasks.ApplyExploratoryFieldSpec(parent + ".tasks");
+            this.Tasks.ApplyExploratoryFieldSpec(ec.NewChild("tasks"));
         }
     }
 
@@ -310,12 +329,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<Trial> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new Trial());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<Trial> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

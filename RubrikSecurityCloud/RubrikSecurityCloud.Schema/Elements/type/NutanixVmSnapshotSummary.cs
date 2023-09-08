@@ -92,27 +92,26 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int32? NicsInSnapshot
         // GraphQL -> nicsInSnapshot: Int (scalar)
-        if (this.NicsInSnapshot == null && Exploration.Includes(parent + ".nicsInSnapshot", true))
+        if (this.NicsInSnapshot == null && ec.Includes("nicsInSnapshot",true))
         {
             this.NicsInSnapshot = Int32.MinValue;
         }
         //      C# -> System.String? VmName
         // GraphQL -> vmName: String! (scalar)
-        if (this.VmName == null && Exploration.Includes(parent + ".vmName", true))
+        if (this.VmName == null && ec.Includes("vmName",true))
         {
             this.VmName = "FETCH";
         }
         //      C# -> BaseSnapshotSummary? BaseSnapshotSummary
         // GraphQL -> baseSnapshotSummary: BaseSnapshotSummary (type)
-        if (this.BaseSnapshotSummary == null && Exploration.Includes(parent + ".baseSnapshotSummary"))
+        if (this.BaseSnapshotSummary == null && ec.Includes("baseSnapshotSummary",false))
         {
             this.BaseSnapshotSummary = new BaseSnapshotSummary();
-            this.BaseSnapshotSummary.ApplyExploratoryFieldSpec(parent + ".baseSnapshotSummary");
+            this.BaseSnapshotSummary.ApplyExploratoryFieldSpec(ec.NewChild("baseSnapshotSummary"));
         }
     }
 
@@ -146,12 +145,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<NutanixVmSnapshotSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new NutanixVmSnapshotSummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<NutanixVmSnapshotSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -106,33 +106,32 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> SortOrder? DefaultSortByOrder
         // GraphQL -> defaultSortByOrder: SortOrder! (enum)
-        if (this.DefaultSortByOrder == null && Exploration.Includes(parent + ".defaultSortByOrder", true))
+        if (this.DefaultSortByOrder == null && ec.Includes("defaultSortByOrder",true))
         {
             this.DefaultSortByOrder = new SortOrder();
         }
         //      C# -> System.String? DefaultSortByColumn
         // GraphQL -> defaultSortByColumn: String! (scalar)
-        if (this.DefaultSortByColumn == null && Exploration.Includes(parent + ".defaultSortByColumn", true))
+        if (this.DefaultSortByColumn == null && ec.Includes("defaultSortByColumn",true))
         {
             this.DefaultSortByColumn = "FETCH";
         }
         //      C# -> System.Int32? PageSize
         // GraphQL -> pageSize: Int! (scalar)
-        if (this.PageSize == null && Exploration.Includes(parent + ".pageSize", true))
+        if (this.PageSize == null && ec.Includes("pageSize",true))
         {
             this.PageSize = Int32.MinValue;
         }
         //      C# -> List<PolarisReportColumn>? Columns
         // GraphQL -> columns: [PolarisReportColumn!]! (type)
-        if (this.Columns == null && Exploration.Includes(parent + ".columns"))
+        if (this.Columns == null && ec.Includes("columns",false))
         {
             this.Columns = new List<PolarisReportColumn>();
-            this.Columns.ApplyExploratoryFieldSpec(parent + ".columns");
+            this.Columns.ApplyExploratoryFieldSpec(ec.NewChild("columns"));
         }
     }
 
@@ -166,12 +165,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PolarisReportTableIntrospection> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PolarisReportTableIntrospection());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<PolarisReportTableIntrospection> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

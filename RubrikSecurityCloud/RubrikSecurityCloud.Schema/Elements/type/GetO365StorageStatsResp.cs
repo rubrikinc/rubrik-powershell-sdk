@@ -134,45 +134,44 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? DailyGrowthInBytes
         // GraphQL -> dailyGrowthInBytes: Long! (scalar)
-        if (this.DailyGrowthInBytes == null && Exploration.Includes(parent + ".dailyGrowthInBytes", true))
+        if (this.DailyGrowthInBytes == null && ec.Includes("dailyGrowthInBytes",true))
         {
             this.DailyGrowthInBytes = new System.Int64();
         }
         //      C# -> System.Int64? EstimatedThirtyDaysStorageInBytes
         // GraphQL -> estimatedThirtyDaysStorageInBytes: Long! (scalar)
-        if (this.EstimatedThirtyDaysStorageInBytes == null && Exploration.Includes(parent + ".estimatedThirtyDaysStorageInBytes", true))
+        if (this.EstimatedThirtyDaysStorageInBytes == null && ec.Includes("estimatedThirtyDaysStorageInBytes",true))
         {
             this.EstimatedThirtyDaysStorageInBytes = new System.Int64();
         }
         //      C# -> System.Int64? LiveDataSizeInBytes
         // GraphQL -> liveDataSizeInBytes: Long! (scalar)
-        if (this.LiveDataSizeInBytes == null && Exploration.Includes(parent + ".liveDataSizeInBytes", true))
+        if (this.LiveDataSizeInBytes == null && ec.Includes("liveDataSizeInBytes",true))
         {
             this.LiveDataSizeInBytes = new System.Int64();
         }
         //      C# -> System.Int64? PhysicalDataSizeInBytes
         // GraphQL -> physicalDataSizeInBytes: Long! (scalar)
-        if (this.PhysicalDataSizeInBytes == null && Exploration.Includes(parent + ".physicalDataSizeInBytes", true))
+        if (this.PhysicalDataSizeInBytes == null && ec.Includes("physicalDataSizeInBytes",true))
         {
             this.PhysicalDataSizeInBytes = new System.Int64();
         }
         //      C# -> System.Int64? StorageEfficiencyPercent
         // GraphQL -> storageEfficiencyPercent: Long! (scalar)
-        if (this.StorageEfficiencyPercent == null && Exploration.Includes(parent + ".storageEfficiencyPercent", true))
+        if (this.StorageEfficiencyPercent == null && ec.Includes("storageEfficiencyPercent",true))
         {
             this.StorageEfficiencyPercent = new System.Int64();
         }
         //      C# -> List<O365PhysicalDataSizeTimeStamp>? PhysicalDataSizeTimeSeries
         // GraphQL -> physicalDataSizeTimeSeries: [O365PhysicalDataSizeTimeStamp!]! (type)
-        if (this.PhysicalDataSizeTimeSeries == null && Exploration.Includes(parent + ".physicalDataSizeTimeSeries"))
+        if (this.PhysicalDataSizeTimeSeries == null && ec.Includes("physicalDataSizeTimeSeries",false))
         {
             this.PhysicalDataSizeTimeSeries = new List<O365PhysicalDataSizeTimeStamp>();
-            this.PhysicalDataSizeTimeSeries.ApplyExploratoryFieldSpec(parent + ".physicalDataSizeTimeSeries");
+            this.PhysicalDataSizeTimeSeries.ApplyExploratoryFieldSpec(ec.NewChild("physicalDataSizeTimeSeries"));
         }
     }
 
@@ -206,12 +205,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GetO365StorageStatsResp> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GetO365StorageStatsResp());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<GetO365StorageStatsResp> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

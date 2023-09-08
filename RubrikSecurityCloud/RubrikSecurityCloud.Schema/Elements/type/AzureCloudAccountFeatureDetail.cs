@@ -157,54 +157,53 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> CloudAccountFeature? Feature
         // GraphQL -> feature: CloudAccountFeature! (enum)
-        if (this.Feature == null && Exploration.Includes(parent + ".feature", true))
+        if (this.Feature == null && ec.Includes("feature",true))
         {
             this.Feature = new CloudAccountFeature();
         }
         //      C# -> List<AzureCloudAccountRegion>? Regions
         // GraphQL -> regions: [AzureCloudAccountRegion!]! (enum)
-        if (this.Regions == null && Exploration.Includes(parent + ".regions", true))
+        if (this.Regions == null && ec.Includes("regions",true))
         {
             this.Regions = new List<AzureCloudAccountRegion>();
         }
         //      C# -> CloudAccountStatus? Status
         // GraphQL -> status: CloudAccountStatus! (enum)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = new CloudAccountStatus();
         }
         //      C# -> PersistentStorage? PersistentStorage
         // GraphQL -> persistentStorage: PersistentStorage (type)
-        if (this.PersistentStorage == null && Exploration.Includes(parent + ".persistentStorage"))
+        if (this.PersistentStorage == null && ec.Includes("persistentStorage",false))
         {
             this.PersistentStorage = new PersistentStorage();
-            this.PersistentStorage.ApplyExploratoryFieldSpec(parent + ".persistentStorage");
+            this.PersistentStorage.ApplyExploratoryFieldSpec(ec.NewChild("persistentStorage"));
         }
         //      C# -> AzureResourceGroup? ResourceGroup
         // GraphQL -> resourceGroup: AzureResourceGroup! (type)
-        if (this.ResourceGroup == null && Exploration.Includes(parent + ".resourceGroup"))
+        if (this.ResourceGroup == null && ec.Includes("resourceGroup",false))
         {
             this.ResourceGroup = new AzureResourceGroup();
-            this.ResourceGroup.ApplyExploratoryFieldSpec(parent + ".resourceGroup");
+            this.ResourceGroup.ApplyExploratoryFieldSpec(ec.NewChild("resourceGroup"));
         }
         //      C# -> AzureRole? Role
         // GraphQL -> role: AzureRole! (type)
-        if (this.Role == null && Exploration.Includes(parent + ".role"))
+        if (this.Role == null && ec.Includes("role",false))
         {
             this.Role = new AzureRole();
-            this.Role.ApplyExploratoryFieldSpec(parent + ".role");
+            this.Role.ApplyExploratoryFieldSpec(ec.NewChild("role"));
         }
         //      C# -> AzureUserAssignedManagedIdentity? UserAssignedManagedIdentity
         // GraphQL -> userAssignedManagedIdentity: AzureUserAssignedManagedIdentity (type)
-        if (this.UserAssignedManagedIdentity == null && Exploration.Includes(parent + ".userAssignedManagedIdentity"))
+        if (this.UserAssignedManagedIdentity == null && ec.Includes("userAssignedManagedIdentity",false))
         {
             this.UserAssignedManagedIdentity = new AzureUserAssignedManagedIdentity();
-            this.UserAssignedManagedIdentity.ApplyExploratoryFieldSpec(parent + ".userAssignedManagedIdentity");
+            this.UserAssignedManagedIdentity.ApplyExploratoryFieldSpec(ec.NewChild("userAssignedManagedIdentity"));
         }
     }
 
@@ -238,12 +237,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AzureCloudAccountFeatureDetail> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AzureCloudAccountFeatureDetail());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AzureCloudAccountFeatureDetail> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

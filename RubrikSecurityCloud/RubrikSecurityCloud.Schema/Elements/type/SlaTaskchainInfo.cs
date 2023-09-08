@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? ErrMsg
         // GraphQL -> errMsg: String! (scalar)
-        if (this.ErrMsg == null && Exploration.Includes(parent + ".errMsg", true))
+        if (this.ErrMsg == null && ec.Includes("errMsg",true))
         {
             this.ErrMsg = "FETCH";
         }
         //      C# -> System.String? SlaId
         // GraphQL -> slaId: String! (scalar)
-        if (this.SlaId == null && Exploration.Includes(parent + ".slaId", true))
+        if (this.SlaId == null && ec.Includes("slaId",true))
         {
             this.SlaId = "FETCH";
         }
         //      C# -> System.String? TaskchainId
         // GraphQL -> taskchainId: String! (scalar)
-        if (this.TaskchainId == null && Exploration.Includes(parent + ".taskchainId", true))
+        if (this.TaskchainId == null && ec.Includes("taskchainId",true))
         {
             this.TaskchainId = "FETCH";
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SlaTaskchainInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SlaTaskchainInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SlaTaskchainInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

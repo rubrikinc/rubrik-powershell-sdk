@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<AsyncRequestStatus>? Responses
         // GraphQL -> responses: [AsyncRequestStatus!]! (type)
-        if (this.Responses == null && Exploration.Includes(parent + ".responses"))
+        if (this.Responses == null && ec.Includes("responses",false))
         {
             this.Responses = new List<AsyncRequestStatus>();
-            this.Responses.ApplyExploratoryFieldSpec(parent + ".responses");
+            this.Responses.ApplyExploratoryFieldSpec(ec.NewChild("responses"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CreateVappsInstantRecoveryReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CreateVappsInstantRecoveryReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CreateVappsInstantRecoveryReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

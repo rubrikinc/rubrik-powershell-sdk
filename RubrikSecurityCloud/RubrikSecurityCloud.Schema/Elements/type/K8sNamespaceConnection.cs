@@ -140,47 +140,46 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int32? AggregateK8sPvcs
         // GraphQL -> aggregateK8sPvcs: Int! (scalar)
-        if (this.AggregateK8sPvcs == null && Exploration.Includes(parent + ".aggregateK8sPvcs", true))
+        if (this.AggregateK8sPvcs == null && ec.Includes("aggregateK8sPvcs",true))
         {
             this.AggregateK8sPvcs = Int32.MinValue;
         }
         //      C# -> System.Int32? AggregateK8sWorkloads
         // GraphQL -> aggregateK8sWorkloads: Int! (scalar)
-        if (this.AggregateK8sWorkloads == null && Exploration.Includes(parent + ".aggregateK8sWorkloads", true))
+        if (this.AggregateK8sWorkloads == null && ec.Includes("aggregateK8sWorkloads",true))
         {
             this.AggregateK8sWorkloads = Int32.MinValue;
         }
         //      C# -> System.Int32? Count
         // GraphQL -> count: Int! (scalar)
-        if (this.Count == null && Exploration.Includes(parent + ".count", true))
+        if (this.Count == null && ec.Includes("count",true))
         {
             this.Count = Int32.MinValue;
         }
         //      C# -> List<K8sNamespaceEdge>? Edges
         // GraphQL -> edges: [K8sNamespaceEdge!]! (type)
-        if (this.Edges == null && Exploration.Includes(parent + ".edges"))
+        if (this.Edges == null && ec.Includes("edges",false))
         {
             this.Edges = new List<K8sNamespaceEdge>();
-            this.Edges.ApplyExploratoryFieldSpec(parent + ".edges");
+            this.Edges.ApplyExploratoryFieldSpec(ec.NewChild("edges"));
         }
         //      C# -> List<K8sNamespace>? Nodes
         // GraphQL -> nodes: [K8sNamespace!]! (type)
-        if (this.Nodes == null && Exploration.Includes(parent + ".nodes"))
+        if (this.Nodes == null && ec.Includes("nodes",false))
         {
             this.Nodes = new List<K8sNamespace>();
-            this.Nodes.ApplyExploratoryFieldSpec(parent + ".nodes");
+            this.Nodes.ApplyExploratoryFieldSpec(ec.NewChild("nodes"));
         }
         //      C# -> PageInfo? PageInfo
         // GraphQL -> pageInfo: PageInfo! (type)
-        if (this.PageInfo == null && Exploration.Includes(parent + ".pageInfo"))
+        if (this.PageInfo == null && ec.Includes("pageInfo",false))
         {
             this.PageInfo = new PageInfo();
-            this.PageInfo.ApplyExploratoryFieldSpec(parent + ".pageInfo");
+            this.PageInfo.ApplyExploratoryFieldSpec(ec.NewChild("pageInfo"));
         }
     }
 
@@ -214,12 +213,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<K8sNamespaceConnection> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new K8sNamespaceConnection());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<K8sNamespaceConnection> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -117,36 +117,35 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
-        if (this.Description == null && Exploration.Includes(parent + ".description", true))
+        if (this.Description == null && ec.Includes("description",true))
         {
             this.Description = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? OwnerId
         // GraphQL -> ownerId: String! (scalar)
-        if (this.OwnerId == null && Exploration.Includes(parent + ".ownerId", true))
+        if (this.OwnerId == null && ec.Includes("ownerId",true))
         {
             this.OwnerId = "FETCH";
         }
         //      C# -> System.String? SecurityGroupId
         // GraphQL -> securityGroupId: String! (scalar)
-        if (this.SecurityGroupId == null && Exploration.Includes(parent + ".securityGroupId", true))
+        if (this.SecurityGroupId == null && ec.Includes("securityGroupId",true))
         {
             this.SecurityGroupId = "FETCH";
         }
         //      C# -> System.String? VpcId
         // GraphQL -> vpcId: String! (scalar)
-        if (this.VpcId == null && Exploration.Includes(parent + ".vpcId", true))
+        if (this.VpcId == null && ec.Includes("vpcId",true))
         {
             this.VpcId = "FETCH";
         }
@@ -182,12 +181,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CloudAccountSub> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CloudAccountSub());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CloudAccountSub> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

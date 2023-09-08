@@ -117,36 +117,35 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.String? TargetClusterAddress
         // GraphQL -> targetClusterAddress: String (scalar)
-        if (this.TargetClusterAddress == null && Exploration.Includes(parent + ".targetClusterAddress", true))
+        if (this.TargetClusterAddress == null && ec.Includes("targetClusterAddress",true))
         {
             this.TargetClusterAddress = "FETCH";
         }
         //      C# -> System.String? TargetClusterName
         // GraphQL -> targetClusterName: String! (scalar)
-        if (this.TargetClusterName == null && Exploration.Includes(parent + ".targetClusterName", true))
+        if (this.TargetClusterName == null && ec.Includes("targetClusterName",true))
         {
             this.TargetClusterName = "FETCH";
         }
         //      C# -> System.String? TargetClusterUuid
         // GraphQL -> targetClusterUuid: UUID! (scalar)
-        if (this.TargetClusterUuid == null && Exploration.Includes(parent + ".targetClusterUuid", true))
+        if (this.TargetClusterUuid == null && ec.Includes("targetClusterUuid",true))
         {
             this.TargetClusterUuid = "FETCH";
         }
         //      C# -> System.Int64? TotalStorage
         // GraphQL -> totalStorage: Long (scalar)
-        if (this.TotalStorage == null && Exploration.Includes(parent + ".totalStorage", true))
+        if (this.TotalStorage == null && ec.Includes("totalStorage",true))
         {
             this.TotalStorage = new System.Int64();
         }
@@ -182,12 +181,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ReplicationTarget> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ReplicationTarget());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ReplicationTarget> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

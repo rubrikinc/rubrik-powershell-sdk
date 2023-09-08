@@ -120,39 +120,38 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> AzureNativeRegion? Region
         // GraphQL -> region: AzureNativeRegion! (enum)
-        if (this.Region == null && Exploration.Includes(parent + ".region", true))
+        if (this.Region == null && ec.Includes("region",true))
         {
             this.Region = new AzureNativeRegion();
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? ResourceGroupName
         // GraphQL -> resourceGroupName: String! (scalar)
-        if (this.ResourceGroupName == null && Exploration.Includes(parent + ".resourceGroupName", true))
+        if (this.ResourceGroupName == null && ec.Includes("resourceGroupName",true))
         {
             this.ResourceGroupName = "FETCH";
         }
         //      C# -> List<AzureTag>? Tags
         // GraphQL -> tags: [AzureTag!]! (type)
-        if (this.Tags == null && Exploration.Includes(parent + ".tags"))
+        if (this.Tags == null && ec.Includes("tags",false))
         {
             this.Tags = new List<AzureTag>();
-            this.Tags.ApplyExploratoryFieldSpec(parent + ".tags");
+            this.Tags.ApplyExploratoryFieldSpec(ec.NewChild("tags"));
         }
     }
 
@@ -186,12 +185,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AzureNativeStorageAccount> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AzureNativeStorageAccount());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AzureNativeStorageAccount> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

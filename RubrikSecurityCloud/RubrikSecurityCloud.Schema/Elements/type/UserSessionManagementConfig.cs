@@ -201,72 +201,71 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? InactivityTimeoutInSeconds
         // GraphQL -> inactivityTimeoutInSeconds: Long! (scalar)
-        if (this.InactivityTimeoutInSeconds == null && Exploration.Includes(parent + ".inactivityTimeoutInSeconds", true))
+        if (this.InactivityTimeoutInSeconds == null && ec.Includes("inactivityTimeoutInSeconds",true))
         {
             this.InactivityTimeoutInSeconds = new System.Int64();
         }
         //      C# -> System.Int64? InactivityTimeoutInSecondsMaxLimit
         // GraphQL -> inactivityTimeoutInSecondsMaxLimit: Long! (scalar)
-        if (this.InactivityTimeoutInSecondsMaxLimit == null && Exploration.Includes(parent + ".inactivityTimeoutInSecondsMaxLimit", true))
+        if (this.InactivityTimeoutInSecondsMaxLimit == null && ec.Includes("inactivityTimeoutInSecondsMaxLimit",true))
         {
             this.InactivityTimeoutInSecondsMaxLimit = new System.Int64();
         }
         //      C# -> System.Int64? InactivityTimeoutInSecondsMinLimit
         // GraphQL -> inactivityTimeoutInSecondsMinLimit: Long! (scalar)
-        if (this.InactivityTimeoutInSecondsMinLimit == null && Exploration.Includes(parent + ".inactivityTimeoutInSecondsMinLimit", true))
+        if (this.InactivityTimeoutInSecondsMinLimit == null && ec.Includes("inactivityTimeoutInSecondsMinLimit",true))
         {
             this.InactivityTimeoutInSecondsMinLimit = new System.Int64();
         }
         //      C# -> System.Boolean? IsConcurrentSessionLimitationEnabled
         // GraphQL -> isConcurrentSessionLimitationEnabled: Boolean! (scalar)
-        if (this.IsConcurrentSessionLimitationEnabled == null && Exploration.Includes(parent + ".isConcurrentSessionLimitationEnabled", true))
+        if (this.IsConcurrentSessionLimitationEnabled == null && ec.Includes("isConcurrentSessionLimitationEnabled",true))
         {
             this.IsConcurrentSessionLimitationEnabled = true;
         }
         //      C# -> System.Boolean? IsGlobalPolicyEnforced
         // GraphQL -> isGlobalPolicyEnforced: Boolean! (scalar)
-        if (this.IsGlobalPolicyEnforced == null && Exploration.Includes(parent + ".isGlobalPolicyEnforced", true))
+        if (this.IsGlobalPolicyEnforced == null && ec.Includes("isGlobalPolicyEnforced",true))
         {
             this.IsGlobalPolicyEnforced = true;
         }
         //      C# -> System.Boolean? IsInactivityTimeoutEnabled
         // GraphQL -> isInactivityTimeoutEnabled: Boolean! (scalar)
-        if (this.IsInactivityTimeoutEnabled == null && Exploration.Includes(parent + ".isInactivityTimeoutEnabled", true))
+        if (this.IsInactivityTimeoutEnabled == null && ec.Includes("isInactivityTimeoutEnabled",true))
         {
             this.IsInactivityTimeoutEnabled = true;
         }
         //      C# -> System.Int32? MaxConcurrentSessions
         // GraphQL -> maxConcurrentSessions: Int! (scalar)
-        if (this.MaxConcurrentSessions == null && Exploration.Includes(parent + ".maxConcurrentSessions", true))
+        if (this.MaxConcurrentSessions == null && ec.Includes("maxConcurrentSessions",true))
         {
             this.MaxConcurrentSessions = Int32.MinValue;
         }
         //      C# -> System.Int32? MaxConcurrentSessionsMaxLimit
         // GraphQL -> maxConcurrentSessionsMaxLimit: Int! (scalar)
-        if (this.MaxConcurrentSessionsMaxLimit == null && Exploration.Includes(parent + ".maxConcurrentSessionsMaxLimit", true))
+        if (this.MaxConcurrentSessionsMaxLimit == null && ec.Includes("maxConcurrentSessionsMaxLimit",true))
         {
             this.MaxConcurrentSessionsMaxLimit = Int32.MinValue;
         }
         //      C# -> System.Int64? SessionTimeoutInSeconds
         // GraphQL -> sessionTimeoutInSeconds: Long! (scalar)
-        if (this.SessionTimeoutInSeconds == null && Exploration.Includes(parent + ".sessionTimeoutInSeconds", true))
+        if (this.SessionTimeoutInSeconds == null && ec.Includes("sessionTimeoutInSeconds",true))
         {
             this.SessionTimeoutInSeconds = new System.Int64();
         }
         //      C# -> System.Int64? SessionTimeoutInSecondsMaxLimit
         // GraphQL -> sessionTimeoutInSecondsMaxLimit: Long! (scalar)
-        if (this.SessionTimeoutInSecondsMaxLimit == null && Exploration.Includes(parent + ".sessionTimeoutInSecondsMaxLimit", true))
+        if (this.SessionTimeoutInSecondsMaxLimit == null && ec.Includes("sessionTimeoutInSecondsMaxLimit",true))
         {
             this.SessionTimeoutInSecondsMaxLimit = new System.Int64();
         }
         //      C# -> System.Int64? SessionTimeoutInSecondsMinLimit
         // GraphQL -> sessionTimeoutInSecondsMinLimit: Long! (scalar)
-        if (this.SessionTimeoutInSecondsMinLimit == null && Exploration.Includes(parent + ".sessionTimeoutInSecondsMinLimit", true))
+        if (this.SessionTimeoutInSecondsMinLimit == null && ec.Includes("sessionTimeoutInSecondsMinLimit",true))
         {
             this.SessionTimeoutInSecondsMinLimit = new System.Int64();
         }
@@ -302,12 +301,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<UserSessionManagementConfig> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new UserSessionManagementConfig());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<UserSessionManagementConfig> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

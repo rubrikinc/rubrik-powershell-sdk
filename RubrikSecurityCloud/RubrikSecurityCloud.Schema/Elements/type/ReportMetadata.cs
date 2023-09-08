@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> PolarisReportViewType? ReportViewType
         // GraphQL -> reportViewType: PolarisReportViewType! (enum)
-        if (this.ReportViewType == null && Exploration.Includes(parent + ".reportViewType", true))
+        if (this.ReportViewType == null && ec.Includes("reportViewType",true))
         {
             this.ReportViewType = new PolarisReportViewType();
         }
         //      C# -> System.Int64? Count
         // GraphQL -> count: Long! (scalar)
-        if (this.Count == null && Exploration.Includes(parent + ".count", true))
+        if (this.Count == null && ec.Includes("count",true))
         {
             this.Count = new System.Int64();
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ReportMetadata> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ReportMetadata());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ReportMetadata> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

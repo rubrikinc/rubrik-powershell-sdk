@@ -188,67 +188,66 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? ArticleNumber
         // GraphQL -> articleNumber: String! (scalar)
-        if (this.ArticleNumber == null && Exploration.Includes(parent + ".articleNumber", true))
+        if (this.ArticleNumber == null && ec.Includes("articleNumber",true))
         {
             this.ArticleNumber = "FETCH";
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
-        if (this.Description == null && Exploration.Includes(parent + ".description", true))
+        if (this.Description == null && ec.Includes("description",true))
         {
             this.Description = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.String? Title
         // GraphQL -> title: String! (scalar)
-        if (this.Title == null && Exploration.Includes(parent + ".title", true))
+        if (this.Title == null && ec.Includes("title",true))
         {
             this.Title = "FETCH";
         }
         //      C# -> List<ContentNode>? Cause
         // GraphQL -> cause: [ContentNode!]! (type)
-        if (this.Cause == null && Exploration.Includes(parent + ".cause"))
+        if (this.Cause == null && ec.Includes("cause",false))
         {
             this.Cause = new List<ContentNode>();
-            this.Cause.ApplyExploratoryFieldSpec(parent + ".cause");
+            this.Cause.ApplyExploratoryFieldSpec(ec.NewChild("cause"));
         }
         //      C# -> List<ContentNode>? Environment
         // GraphQL -> environment: [ContentNode!]! (type)
-        if (this.Environment == null && Exploration.Includes(parent + ".environment"))
+        if (this.Environment == null && ec.Includes("environment",false))
         {
             this.Environment = new List<ContentNode>();
-            this.Environment.ApplyExploratoryFieldSpec(parent + ".environment");
+            this.Environment.ApplyExploratoryFieldSpec(ec.NewChild("environment"));
         }
         //      C# -> List<ContentNode>? Notes
         // GraphQL -> notes: [ContentNode!]! (type)
-        if (this.Notes == null && Exploration.Includes(parent + ".notes"))
+        if (this.Notes == null && ec.Includes("notes",false))
         {
             this.Notes = new List<ContentNode>();
-            this.Notes.ApplyExploratoryFieldSpec(parent + ".notes");
+            this.Notes.ApplyExploratoryFieldSpec(ec.NewChild("notes"));
         }
         //      C# -> List<ContentNode>? Resolution
         // GraphQL -> resolution: [ContentNode!]! (type)
-        if (this.Resolution == null && Exploration.Includes(parent + ".resolution"))
+        if (this.Resolution == null && ec.Includes("resolution",false))
         {
             this.Resolution = new List<ContentNode>();
-            this.Resolution.ApplyExploratoryFieldSpec(parent + ".resolution");
+            this.Resolution.ApplyExploratoryFieldSpec(ec.NewChild("resolution"));
         }
         //      C# -> List<ContentNode>? Summary
         // GraphQL -> summary: [ContentNode!]! (type)
-        if (this.Summary == null && Exploration.Includes(parent + ".summary"))
+        if (this.Summary == null && ec.Includes("summary",false))
         {
             this.Summary = new List<ContentNode>();
-            this.Summary.ApplyExploratoryFieldSpec(parent + ".summary");
+            this.Summary.ApplyExploratoryFieldSpec(ec.NewChild("summary"));
         }
     }
 
@@ -282,12 +281,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<KnowledgeBaseArticle> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new KnowledgeBaseArticle());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<KnowledgeBaseArticle> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

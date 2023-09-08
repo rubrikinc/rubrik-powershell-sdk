@@ -92,27 +92,26 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Domain
         // GraphQL -> domain: String (scalar)
-        if (this.Domain == null && Exploration.Includes(parent + ".domain", true))
+        if (this.Domain == null && ec.Includes("domain",true))
         {
             this.Domain = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> BaseGuestCredentialDetail? BaseGuestCredentialDetail
         // GraphQL -> baseGuestCredentialDetail: BaseGuestCredentialDetail (type)
-        if (this.BaseGuestCredentialDetail == null && Exploration.Includes(parent + ".baseGuestCredentialDetail"))
+        if (this.BaseGuestCredentialDetail == null && ec.Includes("baseGuestCredentialDetail",false))
         {
             this.BaseGuestCredentialDetail = new BaseGuestCredentialDetail();
-            this.BaseGuestCredentialDetail.ApplyExploratoryFieldSpec(parent + ".baseGuestCredentialDetail");
+            this.BaseGuestCredentialDetail.ApplyExploratoryFieldSpec(ec.NewChild("baseGuestCredentialDetail"));
         }
     }
 
@@ -146,12 +145,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CreateGuestCredentialReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CreateGuestCredentialReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CreateGuestCredentialReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

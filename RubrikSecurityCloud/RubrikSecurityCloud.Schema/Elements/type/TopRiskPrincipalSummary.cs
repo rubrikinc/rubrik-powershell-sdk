@@ -117,36 +117,35 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> RiskLevelType? RiskLevel
         // GraphQL -> riskLevel: RiskLevelType! (enum)
-        if (this.RiskLevel == null && Exploration.Includes(parent + ".riskLevel", true))
+        if (this.RiskLevel == null && ec.Includes("riskLevel",true))
         {
             this.RiskLevel = new RiskLevelType();
         }
         //      C# -> System.Int64? PolicyCount
         // GraphQL -> policyCount: Long! (scalar)
-        if (this.PolicyCount == null && Exploration.Includes(parent + ".policyCount", true))
+        if (this.PolicyCount == null && ec.Includes("policyCount",true))
         {
             this.PolicyCount = new System.Int64();
         }
         //      C# -> System.String? PrincipalName
         // GraphQL -> principalName: String! (scalar)
-        if (this.PrincipalName == null && Exploration.Includes(parent + ".principalName", true))
+        if (this.PrincipalName == null && ec.Includes("principalName",true))
         {
             this.PrincipalName = "FETCH";
         }
         //      C# -> System.Int64? RiskHits
         // GraphQL -> riskHits: Long! (scalar)
-        if (this.RiskHits == null && Exploration.Includes(parent + ".riskHits", true))
+        if (this.RiskHits == null && ec.Includes("riskHits",true))
         {
             this.RiskHits = new System.Int64();
         }
         //      C# -> System.String? Sid
         // GraphQL -> sid: String! (scalar)
-        if (this.Sid == null && Exploration.Includes(parent + ".sid", true))
+        if (this.Sid == null && ec.Includes("sid",true))
         {
             this.Sid = "FETCH";
         }
@@ -182,12 +181,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<TopRiskPrincipalSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new TopRiskPrincipalSummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<TopRiskPrincipalSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

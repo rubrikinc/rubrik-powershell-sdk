@@ -148,51 +148,50 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? ExportPoint
         // GraphQL -> exportPoint: String! (scalar)
-        if (this.ExportPoint == null && Exploration.Includes(parent + ".exportPoint", true))
+        if (this.ExportPoint == null && ec.Includes("exportPoint",true))
         {
             this.ExportPoint = "FETCH";
         }
         //      C# -> System.String? HostShareCdmId
         // GraphQL -> hostShareCdmId: String! (scalar)
-        if (this.HostShareCdmId == null && Exploration.Includes(parent + ".hostShareCdmId", true))
+        if (this.HostShareCdmId == null && ec.Includes("hostShareCdmId",true))
         {
             this.HostShareCdmId = "FETCH";
         }
         //      C# -> System.String? HostShareFid
         // GraphQL -> hostShareFid: String! (scalar)
-        if (this.HostShareFid == null && Exploration.Includes(parent + ".hostShareFid", true))
+        if (this.HostShareFid == null && ec.Includes("hostShareFid",true))
         {
             this.HostShareFid = "FETCH";
         }
         //      C# -> System.String? MappedNasShareExportPoint
         // GraphQL -> mappedNasShareExportPoint: String! (scalar)
-        if (this.MappedNasShareExportPoint == null && Exploration.Includes(parent + ".mappedNasShareExportPoint", true))
+        if (this.MappedNasShareExportPoint == null && ec.Includes("mappedNasShareExportPoint",true))
         {
             this.MappedNasShareExportPoint = "FETCH";
         }
         //      C# -> System.String? MappedNasShareFid
         // GraphQL -> mappedNasShareFid: String! (scalar)
-        if (this.MappedNasShareFid == null && Exploration.Includes(parent + ".mappedNasShareFid", true))
+        if (this.MappedNasShareFid == null && ec.Includes("mappedNasShareFid",true))
         {
             this.MappedNasShareFid = "FETCH";
         }
         //      C# -> System.String? ShareType
         // GraphQL -> shareType: String! (scalar)
-        if (this.ShareType == null && Exploration.Includes(parent + ".shareType", true))
+        if (this.ShareType == null && ec.Includes("shareType",true))
         {
             this.ShareType = "FETCH";
         }
         //      C# -> List<NasMigrationFilesetDetail>? Filesets
         // GraphQL -> filesets: [NasMigrationFilesetDetail!]! (type)
-        if (this.Filesets == null && Exploration.Includes(parent + ".filesets"))
+        if (this.Filesets == null && ec.Includes("filesets",false))
         {
             this.Filesets = new List<NasMigrationFilesetDetail>();
-            this.Filesets.ApplyExploratoryFieldSpec(parent + ".filesets");
+            this.Filesets.ApplyExploratoryFieldSpec(ec.NewChild("filesets"));
         }
     }
 
@@ -226,12 +225,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<NasMigrationShareDetail> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new NasMigrationShareDetail());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<NasMigrationShareDetail> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

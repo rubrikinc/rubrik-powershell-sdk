@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> AzureNativeProtectionFeature? FeatureName
         // GraphQL -> featureName: AzureNativeProtectionFeature! (enum)
-        if (this.FeatureName == null && Exploration.Includes(parent + ".featureName", true))
+        if (this.FeatureName == null && ec.Includes("featureName",true))
         {
             this.FeatureName = new AzureNativeProtectionFeature();
         }
         //      C# -> AzureSubscriptionStatus? Status
         // GraphQL -> status: AzureSubscriptionStatus! (enum)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = new AzureSubscriptionStatus();
         }
         //      C# -> DateTime? LastRefreshedAt
         // GraphQL -> lastRefreshedAt: DateTime (scalar)
-        if (this.LastRefreshedAt == null && Exploration.Includes(parent + ".lastRefreshedAt", true))
+        if (this.LastRefreshedAt == null && ec.Includes("lastRefreshedAt",true))
         {
             this.LastRefreshedAt = new DateTime();
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AzureNativeSubscriptionEnabledFeature> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AzureNativeSubscriptionEnabledFeature());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AzureNativeSubscriptionEnabledFeature> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

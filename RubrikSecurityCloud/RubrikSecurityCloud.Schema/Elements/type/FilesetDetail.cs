@@ -224,83 +224,82 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? ArchiveStorage
         // GraphQL -> archiveStorage: Long (scalar)
-        if (this.ArchiveStorage == null && Exploration.Includes(parent + ".archiveStorage", true))
+        if (this.ArchiveStorage == null && ec.Includes("archiveStorage",true))
         {
             this.ArchiveStorage = new System.Int64();
         }
         //      C# -> System.Int32? ArchivedSnapshotCount
         // GraphQL -> archivedSnapshotCount: Int (scalar)
-        if (this.ArchivedSnapshotCount == null && Exploration.Includes(parent + ".archivedSnapshotCount", true))
+        if (this.ArchivedSnapshotCount == null && ec.Includes("archivedSnapshotCount",true))
         {
             this.ArchivedSnapshotCount = Int32.MinValue;
         }
         //      C# -> System.String? BackupScriptErrorHandling
         // GraphQL -> backupScriptErrorHandling: String (scalar)
-        if (this.BackupScriptErrorHandling == null && Exploration.Includes(parent + ".backupScriptErrorHandling", true))
+        if (this.BackupScriptErrorHandling == null && ec.Includes("backupScriptErrorHandling",true))
         {
             this.BackupScriptErrorHandling = "FETCH";
         }
         //      C# -> System.Int64? BackupScriptTimeout
         // GraphQL -> backupScriptTimeout: Long (scalar)
-        if (this.BackupScriptTimeout == null && Exploration.Includes(parent + ".backupScriptTimeout", true))
+        if (this.BackupScriptTimeout == null && ec.Includes("backupScriptTimeout",true))
         {
             this.BackupScriptTimeout = new System.Int64();
         }
         //      C# -> System.Int64? LocalStorage
         // GraphQL -> localStorage: Long (scalar)
-        if (this.LocalStorage == null && Exploration.Includes(parent + ".localStorage", true))
+        if (this.LocalStorage == null && ec.Includes("localStorage",true))
         {
             this.LocalStorage = new System.Int64();
         }
         //      C# -> System.String? PostBackupScript
         // GraphQL -> postBackupScript: String (scalar)
-        if (this.PostBackupScript == null && Exploration.Includes(parent + ".postBackupScript", true))
+        if (this.PostBackupScript == null && ec.Includes("postBackupScript",true))
         {
             this.PostBackupScript = "FETCH";
         }
         //      C# -> System.String? PreBackupScript
         // GraphQL -> preBackupScript: String (scalar)
-        if (this.PreBackupScript == null && Exploration.Includes(parent + ".preBackupScript", true))
+        if (this.PreBackupScript == null && ec.Includes("preBackupScript",true))
         {
             this.PreBackupScript = "FETCH";
         }
         //      C# -> DateTime? ProtectionDate
         // GraphQL -> protectionDate: DateTime (scalar)
-        if (this.ProtectionDate == null && Exploration.Includes(parent + ".protectionDate", true))
+        if (this.ProtectionDate == null && ec.Includes("protectionDate",true))
         {
             this.ProtectionDate = new DateTime();
         }
         //      C# -> System.Int32? SnapshotCount
         // GraphQL -> snapshotCount: Int! (scalar)
-        if (this.SnapshotCount == null && Exploration.Includes(parent + ".snapshotCount", true))
+        if (this.SnapshotCount == null && ec.Includes("snapshotCount",true))
         {
             this.SnapshotCount = Int32.MinValue;
         }
         //      C# -> FilesetSummary? FilesetSummary
         // GraphQL -> filesetSummary: FilesetSummary (type)
-        if (this.FilesetSummary == null && Exploration.Includes(parent + ".filesetSummary"))
+        if (this.FilesetSummary == null && ec.Includes("filesetSummary",false))
         {
             this.FilesetSummary = new FilesetSummary();
-            this.FilesetSummary.ApplyExploratoryFieldSpec(parent + ".filesetSummary");
+            this.FilesetSummary.ApplyExploratoryFieldSpec(ec.NewChild("filesetSummary"));
         }
         //      C# -> FilesetUpdate? FilesetUpdate
         // GraphQL -> filesetUpdate: FilesetUpdate (type)
-        if (this.FilesetUpdate == null && Exploration.Includes(parent + ".filesetUpdate"))
+        if (this.FilesetUpdate == null && ec.Includes("filesetUpdate",false))
         {
             this.FilesetUpdate = new FilesetUpdate();
-            this.FilesetUpdate.ApplyExploratoryFieldSpec(parent + ".filesetUpdate");
+            this.FilesetUpdate.ApplyExploratoryFieldSpec(ec.NewChild("filesetUpdate"));
         }
         //      C# -> List<FilesetSnapshotSummary>? Snapshots
         // GraphQL -> snapshots: [FilesetSnapshotSummary!]! (type)
-        if (this.Snapshots == null && Exploration.Includes(parent + ".snapshots"))
+        if (this.Snapshots == null && ec.Includes("snapshots",false))
         {
             this.Snapshots = new List<FilesetSnapshotSummary>();
-            this.Snapshots.ApplyExploratoryFieldSpec(parent + ".snapshots");
+            this.Snapshots.ApplyExploratoryFieldSpec(ec.NewChild("snapshots"));
         }
     }
 
@@ -334,12 +333,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<FilesetDetail> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new FilesetDetail());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<FilesetDetail> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

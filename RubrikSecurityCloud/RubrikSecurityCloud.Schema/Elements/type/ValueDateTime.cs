@@ -76,18 +76,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? SerializedValue
         // GraphQL -> serializedValue: String! (scalar)
-        if (this.SerializedValue == null && Exploration.Includes(parent + ".serializedValue", true))
+        if (this.SerializedValue == null && ec.Includes("serializedValue",true))
         {
             this.SerializedValue = "FETCH";
         }
         //      C# -> DateTime? Value
         // GraphQL -> value: DateTime (scalar)
-        if (this.Value == null && Exploration.Includes(parent + ".value", true))
+        if (this.Value == null && ec.Includes("value",true))
         {
             this.Value = new DateTime();
         }
@@ -123,12 +122,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ValueDateTime> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ValueDateTime());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ValueDateTime> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

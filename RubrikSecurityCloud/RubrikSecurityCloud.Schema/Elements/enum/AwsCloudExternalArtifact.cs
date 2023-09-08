@@ -40,7 +40,13 @@ namespace RubrikSecurityCloud.Types
         IAM_USER_ARN,
 
         [EnumMember(Value = "SECRET_KEY")]
-        SECRET_KEY
+        SECRET_KEY,
+
+        [EnumMember(Value = "STACK_ARN")]
+        STACK_ARN,
+
+        [EnumMember(Value = "STACK_NAME")]
+        STACK_NAME
 
 
     } // enum AwsCloudExternalArtifact

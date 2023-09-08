@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> SlaMigrationStatus? Status
         // GraphQL -> status: SlaMigrationStatus! (enum)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = new SlaMigrationStatus();
         }
         //      C# -> System.String? Msg
         // GraphQL -> msg: String! (scalar)
-        if (this.Msg == null && Exploration.Includes(parent + ".msg", true))
+        if (this.Msg == null && ec.Includes("msg",true))
         {
             this.Msg = "FETCH";
         }
         //      C# -> System.String? TaskchainId
         // GraphQL -> taskchainId: String! (scalar)
-        if (this.TaskchainId == null && Exploration.Includes(parent + ".taskchainId", true))
+        if (this.TaskchainId == null && ec.Includes("taskchainId",true))
         {
             this.TaskchainId = "FETCH";
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SlaUpgrade> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SlaUpgrade());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SlaUpgrade> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

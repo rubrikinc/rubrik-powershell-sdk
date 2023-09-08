@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? LatestTimelineDate
         // GraphQL -> latestTimelineDate: Long! (scalar)
-        if (this.LatestTimelineDate == null && Exploration.Includes(parent + ".latestTimelineDate", true))
+        if (this.LatestTimelineDate == null && ec.Includes("latestTimelineDate",true))
         {
             this.LatestTimelineDate = new System.Int64();
         }
         //      C# -> List<TopRiskPrincipalSummary>? TopRiskPrincipalSummaries
         // GraphQL -> topRiskPrincipalSummaries: [TopRiskPrincipalSummary!]! (type)
-        if (this.TopRiskPrincipalSummaries == null && Exploration.Includes(parent + ".topRiskPrincipalSummaries"))
+        if (this.TopRiskPrincipalSummaries == null && ec.Includes("topRiskPrincipalSummaries",false))
         {
             this.TopRiskPrincipalSummaries = new List<TopRiskPrincipalSummary>();
-            this.TopRiskPrincipalSummaries.ApplyExploratoryFieldSpec(parent + ".topRiskPrincipalSummaries");
+            this.TopRiskPrincipalSummaries.ApplyExploratoryFieldSpec(ec.NewChild("topRiskPrincipalSummaries"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<TopRiskPrincipalsReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new TopRiskPrincipalsReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<TopRiskPrincipalsReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

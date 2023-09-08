@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? Active
         // GraphQL -> active: Boolean! (scalar)
-        if (this.Active == null && Exploration.Includes(parent + ".active", true))
+        if (this.Active == null && ec.Includes("active",true))
         {
             this.Active = true;
         }
         //      C# -> System.Int32? DefaultValue
         // GraphQL -> defaultValue: Int! (scalar)
-        if (this.DefaultValue == null && Exploration.Includes(parent + ".defaultValue", true))
+        if (this.DefaultValue == null && ec.Includes("defaultValue",true))
         {
             this.DefaultValue = Int32.MinValue;
         }
         //      C# -> System.Int32? MaxValue
         // GraphQL -> maxValue: Int! (scalar)
-        if (this.MaxValue == null && Exploration.Includes(parent + ".maxValue", true))
+        if (this.MaxValue == null && ec.Includes("maxValue",true))
         {
             this.MaxValue = Int32.MinValue;
         }
         //      C# -> System.Int32? MinValue
         // GraphQL -> minValue: Int! (scalar)
-        if (this.MinValue == null && Exploration.Includes(parent + ".minValue", true))
+        if (this.MinValue == null && ec.Includes("minValue",true))
         {
             this.MinValue = Int32.MinValue;
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PasswordComplexityPolicyTemplate> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PasswordComplexityPolicyTemplate());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<PasswordComplexityPolicyTemplate> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

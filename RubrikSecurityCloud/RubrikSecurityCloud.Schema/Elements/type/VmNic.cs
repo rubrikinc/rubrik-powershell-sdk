@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? NicId
         // GraphQL -> nicId: String! (scalar)
-        if (this.NicId == null && Exploration.Includes(parent + ".nicId", true))
+        if (this.NicId == null && ec.Includes("nicId",true))
         {
             this.NicId = "FETCH";
         }
         //      C# -> System.String? NicMoid
         // GraphQL -> nicMoid: String! (scalar)
-        if (this.NicMoid == null && Exploration.Includes(parent + ".nicMoid", true))
+        if (this.NicMoid == null && ec.Includes("nicMoid",true))
         {
             this.NicMoid = "FETCH";
         }
         //      C# -> System.String? NicName
         // GraphQL -> nicName: String! (scalar)
-        if (this.NicName == null && Exploration.Includes(parent + ".nicName", true))
+        if (this.NicName == null && ec.Includes("nicName",true))
         {
             this.NicName = "FETCH";
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VmNic> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VmNic());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VmNic> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

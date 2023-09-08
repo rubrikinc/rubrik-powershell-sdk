@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? ContainsQuarantinedFiles
         // GraphQL -> containsQuarantinedFiles: Boolean! (scalar)
-        if (this.ContainsQuarantinedFiles == null && Exploration.Includes(parent + ".containsQuarantinedFiles", true))
+        if (this.ContainsQuarantinedFiles == null && ec.Includes("containsQuarantinedFiles",true))
         {
             this.ContainsQuarantinedFiles = true;
         }
         //      C# -> System.Boolean? IsQuarantined
         // GraphQL -> isQuarantined: Boolean! (scalar)
-        if (this.IsQuarantined == null && Exploration.Includes(parent + ".isQuarantined", true))
+        if (this.IsQuarantined == null && ec.Includes("isQuarantined",true))
         {
             this.IsQuarantined = true;
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<QuarantineInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new QuarantineInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<QuarantineInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

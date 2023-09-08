@@ -168,59 +168,58 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ManagedObjectType? ObjectType
         // GraphQL -> objectType: ManagedObjectType! (enum)
-        if (this.ObjectType == null && Exploration.Includes(parent + ".objectType", true))
+        if (this.ObjectType == null && ec.Includes("objectType",true))
         {
             this.ObjectType = new ManagedObjectType();
         }
         //      C# -> System.Boolean? ApplyToAllCloudAccounts
         // GraphQL -> applyToAllCloudAccounts: Boolean! (scalar)
-        if (this.ApplyToAllCloudAccounts == null && Exploration.Includes(parent + ".applyToAllCloudAccounts", true))
+        if (this.ApplyToAllCloudAccounts == null && ec.Includes("applyToAllCloudAccounts",true))
         {
             this.ApplyToAllCloudAccounts = true;
         }
         //      C# -> System.Boolean? HasPermissionToModify
         // GraphQL -> hasPermissionToModify: Boolean! (scalar)
-        if (this.HasPermissionToModify == null && Exploration.Includes(parent + ".hasPermissionToModify", true))
+        if (this.HasPermissionToModify == null && ec.Includes("hasPermissionToModify",true))
         {
             this.HasPermissionToModify = true;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> List<CloudNativeAccountIdWithName>? CloudNativeAccounts
         // GraphQL -> cloudNativeAccounts: [CloudNativeAccountIdWithName!]! (type)
-        if (this.CloudNativeAccounts == null && Exploration.Includes(parent + ".cloudNativeAccounts"))
+        if (this.CloudNativeAccounts == null && ec.Includes("cloudNativeAccounts",false))
         {
             this.CloudNativeAccounts = new List<CloudNativeAccountIdWithName>();
-            this.CloudNativeAccounts.ApplyExploratoryFieldSpec(parent + ".cloudNativeAccounts");
+            this.CloudNativeAccounts.ApplyExploratoryFieldSpec(ec.NewChild("cloudNativeAccounts"));
         }
         //      C# -> TagRuleEffectiveSla? EffectiveSla
         // GraphQL -> effectiveSla: TagRuleEffectiveSla (type)
-        if (this.EffectiveSla == null && Exploration.Includes(parent + ".effectiveSla"))
+        if (this.EffectiveSla == null && ec.Includes("effectiveSla",false))
         {
             this.EffectiveSla = new TagRuleEffectiveSla();
-            this.EffectiveSla.ApplyExploratoryFieldSpec(parent + ".effectiveSla");
+            this.EffectiveSla.ApplyExploratoryFieldSpec(ec.NewChild("effectiveSla"));
         }
         //      C# -> TagRuleTag? Tag
         // GraphQL -> tag: TagRuleTag (type)
-        if (this.Tag == null && Exploration.Includes(parent + ".tag"))
+        if (this.Tag == null && ec.Includes("tag",false))
         {
             this.Tag = new TagRuleTag();
-            this.Tag.ApplyExploratoryFieldSpec(parent + ".tag");
+            this.Tag.ApplyExploratoryFieldSpec(ec.NewChild("tag"));
         }
     }
 
@@ -254,12 +253,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CloudNativeTagRule> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CloudNativeTagRule());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CloudNativeTagRule> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

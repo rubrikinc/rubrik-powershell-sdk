@@ -344,135 +344,134 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> RecoveryDomainType? BulkRecoveryDomain
         // GraphQL -> bulkRecoveryDomain: RecoveryDomainType! (enum)
-        if (this.BulkRecoveryDomain == null && Exploration.Includes(parent + ".bulkRecoveryDomain", true))
+        if (this.BulkRecoveryDomain == null && ec.Includes("bulkRecoveryDomain",true))
         {
             this.BulkRecoveryDomain = new RecoveryDomainType();
         }
         //      C# -> FailureActionType? FailureActionType
         // GraphQL -> failureActionType: FailureActionType! (enum)
-        if (this.FailureActionType == null && Exploration.Includes(parent + ".failureActionType", true))
+        if (this.FailureActionType == null && ec.Includes("failureActionType",true))
         {
             this.FailureActionType = new FailureActionType();
         }
         //      C# -> BulkRecoveryStatus? Status
         // GraphQL -> status: BulkRecoveryStatus! (enum)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = new BulkRecoveryStatus();
         }
         //      C# -> System.String? BulkRecoveryInstanceId
         // GraphQL -> bulkRecoveryInstanceId: UUID! (scalar)
-        if (this.BulkRecoveryInstanceId == null && Exploration.Includes(parent + ".bulkRecoveryInstanceId", true))
+        if (this.BulkRecoveryInstanceId == null && ec.Includes("bulkRecoveryInstanceId",true))
         {
             this.BulkRecoveryInstanceId = "FETCH";
         }
         //      C# -> System.Int32? CanceledObjects
         // GraphQL -> canceledObjects: Int (scalar)
-        if (this.CanceledObjects == null && Exploration.Includes(parent + ".canceledObjects", true))
+        if (this.CanceledObjects == null && ec.Includes("canceledObjects",true))
         {
             this.CanceledObjects = Int32.MinValue;
         }
         //      C# -> System.Int64? CreateTime
         // GraphQL -> createTime: Long (scalar)
-        if (this.CreateTime == null && Exploration.Includes(parent + ".createTime", true))
+        if (this.CreateTime == null && ec.Includes("createTime",true))
         {
             this.CreateTime = new System.Int64();
         }
         //      C# -> System.String? CurrentStep
         // GraphQL -> currentStep: String! (scalar)
-        if (this.CurrentStep == null && Exploration.Includes(parent + ".currentStep", true))
+        if (this.CurrentStep == null && ec.Includes("currentStep",true))
         {
             this.CurrentStep = "FETCH";
         }
         //      C# -> System.Int64? ElapsedTime
         // GraphQL -> elapsedTime: Long! (scalar)
-        if (this.ElapsedTime == null && Exploration.Includes(parent + ".elapsedTime", true))
+        if (this.ElapsedTime == null && ec.Includes("elapsedTime",true))
         {
             this.ElapsedTime = new System.Int64();
         }
         //      C# -> System.Int64? EndTime
         // GraphQL -> endTime: Long (scalar)
-        if (this.EndTime == null && Exploration.Includes(parent + ".endTime", true))
+        if (this.EndTime == null && ec.Includes("endTime",true))
         {
             this.EndTime = new System.Int64();
         }
         //      C# -> System.Int32? FailedObjects
         // GraphQL -> failedObjects: Int (scalar)
-        if (this.FailedObjects == null && Exploration.Includes(parent + ".failedObjects", true))
+        if (this.FailedObjects == null && ec.Includes("failedObjects",true))
         {
             this.FailedObjects = Int32.MinValue;
         }
         //      C# -> System.String? FailureReason
         // GraphQL -> failureReason: String (scalar)
-        if (this.FailureReason == null && Exploration.Includes(parent + ".failureReason", true))
+        if (this.FailureReason == null && ec.Includes("failureReason",true))
         {
             this.FailureReason = "FETCH";
         }
         //      C# -> System.Int32? GroupsProcessed
         // GraphQL -> groupsProcessed: Int! (scalar)
-        if (this.GroupsProcessed == null && Exploration.Includes(parent + ".groupsProcessed", true))
+        if (this.GroupsProcessed == null && ec.Includes("groupsProcessed",true))
         {
             this.GroupsProcessed = Int32.MinValue;
         }
         //      C# -> System.Int32? InProgressObjects
         // GraphQL -> inProgressObjects: Int (scalar)
-        if (this.InProgressObjects == null && Exploration.Includes(parent + ".inProgressObjects", true))
+        if (this.InProgressObjects == null && ec.Includes("inProgressObjects",true))
         {
             this.InProgressObjects = Int32.MinValue;
         }
         //      C# -> System.Int32? ObjectsWithoutSnapshot
         // GraphQL -> objectsWithoutSnapshot: Int (scalar)
-        if (this.ObjectsWithoutSnapshot == null && Exploration.Includes(parent + ".objectsWithoutSnapshot", true))
+        if (this.ObjectsWithoutSnapshot == null && ec.Includes("objectsWithoutSnapshot",true))
         {
             this.ObjectsWithoutSnapshot = Int32.MinValue;
         }
         //      C# -> System.String? RecoveryPlanName
         // GraphQL -> recoveryPlanName: String! (scalar)
-        if (this.RecoveryPlanName == null && Exploration.Includes(parent + ".recoveryPlanName", true))
+        if (this.RecoveryPlanName == null && ec.Includes("recoveryPlanName",true))
         {
             this.RecoveryPlanName = "FETCH";
         }
         //      C# -> System.Int64? StartTime
         // GraphQL -> startTime: Long (scalar)
-        if (this.StartTime == null && Exploration.Includes(parent + ".startTime", true))
+        if (this.StartTime == null && ec.Includes("startTime",true))
         {
             this.StartTime = new System.Int64();
         }
         //      C# -> System.Int32? SucceededObjects
         // GraphQL -> succeededObjects: Int (scalar)
-        if (this.SucceededObjects == null && Exploration.Includes(parent + ".succeededObjects", true))
+        if (this.SucceededObjects == null && ec.Includes("succeededObjects",true))
         {
             this.SucceededObjects = Int32.MinValue;
         }
         //      C# -> System.String? TaskchainId
         // GraphQL -> taskchainId: UUID! (scalar)
-        if (this.TaskchainId == null && Exploration.Includes(parent + ".taskchainId", true))
+        if (this.TaskchainId == null && ec.Includes("taskchainId",true))
         {
             this.TaskchainId = "FETCH";
         }
         //      C# -> System.Int32? TotalGroups
         // GraphQL -> totalGroups: Int! (scalar)
-        if (this.TotalGroups == null && Exploration.Includes(parent + ".totalGroups", true))
+        if (this.TotalGroups == null && ec.Includes("totalGroups",true))
         {
             this.TotalGroups = Int32.MinValue;
         }
         //      C# -> System.Int32? TotalObjects
         // GraphQL -> totalObjects: Int (scalar)
-        if (this.TotalObjects == null && Exploration.Includes(parent + ".totalObjects", true))
+        if (this.TotalObjects == null && ec.Includes("totalObjects",true))
         {
             this.TotalObjects = Int32.MinValue;
         }
         //      C# -> List<BulkRecoveryGroupProgress>? GroupProgresses
         // GraphQL -> groupProgresses: [BulkRecoveryGroupProgress!]! (type)
-        if (this.GroupProgresses == null && Exploration.Includes(parent + ".groupProgresses"))
+        if (this.GroupProgresses == null && ec.Includes("groupProgresses",false))
         {
             this.GroupProgresses = new List<BulkRecoveryGroupProgress>();
-            this.GroupProgresses.ApplyExploratoryFieldSpec(parent + ".groupProgresses");
+            this.GroupProgresses.ApplyExploratoryFieldSpec(ec.NewChild("groupProgresses"));
         }
     }
 
@@ -506,12 +505,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<BulkRecoveryProgressReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new BulkRecoveryProgressReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<BulkRecoveryProgressReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

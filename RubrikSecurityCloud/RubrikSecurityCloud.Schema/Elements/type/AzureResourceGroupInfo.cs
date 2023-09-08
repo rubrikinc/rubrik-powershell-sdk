@@ -106,33 +106,32 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> AzureCloudAccountRegion? Region
         // GraphQL -> region: AzureCloudAccountRegion! (enum)
-        if (this.Region == null && Exploration.Includes(parent + ".region", true))
+        if (this.Region == null && ec.Includes("region",true))
         {
             this.Region = new AzureCloudAccountRegion();
         }
         //      C# -> System.String? ResourceGroupName
         // GraphQL -> resourceGroupName: String! (scalar)
-        if (this.ResourceGroupName == null && Exploration.Includes(parent + ".resourceGroupName", true))
+        if (this.ResourceGroupName == null && ec.Includes("resourceGroupName",true))
         {
             this.ResourceGroupName = "FETCH";
         }
         //      C# -> System.String? SubscriptionNativeId
         // GraphQL -> subscriptionNativeId: UUID! (scalar)
-        if (this.SubscriptionNativeId == null && Exploration.Includes(parent + ".subscriptionNativeId", true))
+        if (this.SubscriptionNativeId == null && ec.Includes("subscriptionNativeId",true))
         {
             this.SubscriptionNativeId = "FETCH";
         }
         //      C# -> List<TagObject>? Tags
         // GraphQL -> tags: [TagObject!]! (type)
-        if (this.Tags == null && Exploration.Includes(parent + ".tags"))
+        if (this.Tags == null && ec.Includes("tags",false))
         {
             this.Tags = new List<TagObject>();
-            this.Tags.ApplyExploratoryFieldSpec(parent + ".tags");
+            this.Tags.ApplyExploratoryFieldSpec(ec.NewChild("tags"));
         }
     }
 
@@ -166,12 +165,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AzureResourceGroupInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AzureResourceGroupInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AzureResourceGroupInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> FailoverClusterNodeConnectionStatus? ConnectionStatus
         // GraphQL -> connectionStatus: FailoverClusterNodeConnectionStatus! (enum)
-        if (this.ConnectionStatus == null && Exploration.Includes(parent + ".connectionStatus", true))
+        if (this.ConnectionStatus == null && ec.Includes("connectionStatus",true))
         {
             this.ConnectionStatus = new FailoverClusterNodeConnectionStatus();
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? OperatingSystem
         // GraphQL -> operatingSystem: String (scalar)
-        if (this.OperatingSystem == null && Exploration.Includes(parent + ".operatingSystem", true))
+        if (this.OperatingSystem == null && ec.Includes("operatingSystem",true))
         {
             this.OperatingSystem = "FETCH";
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<FailoverClusterNode> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new FailoverClusterNode());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<FailoverClusterNode> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -81,22 +81,21 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> Duration? LogFrequency
         // GraphQL -> logFrequency: Duration (type)
-        if (this.LogFrequency == null && Exploration.Includes(parent + ".logFrequency"))
+        if (this.LogFrequency == null && ec.Includes("logFrequency",false))
         {
             this.LogFrequency = new Duration();
-            this.LogFrequency.ApplyExploratoryFieldSpec(parent + ".logFrequency");
+            this.LogFrequency.ApplyExploratoryFieldSpec(ec.NewChild("logFrequency"));
         }
         //      C# -> Duration? LogRetention
         // GraphQL -> logRetention: Duration (type)
-        if (this.LogRetention == null && Exploration.Includes(parent + ".logRetention"))
+        if (this.LogRetention == null && ec.Includes("logRetention",false))
         {
             this.LogRetention = new Duration();
-            this.LogRetention.ApplyExploratoryFieldSpec(parent + ".logRetention");
+            this.LogRetention.ApplyExploratoryFieldSpec(ec.NewChild("logRetention"));
         }
     }
 
@@ -130,12 +129,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<MongoConfig> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new MongoConfig());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<MongoConfig> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -117,36 +117,35 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> SapHanaHostHostType? HostType
         // GraphQL -> hostType: SapHanaHostHostType (enum)
-        if (this.HostType == null && Exploration.Includes(parent + ".hostType", true))
+        if (this.HostType == null && ec.Includes("hostType",true))
         {
             this.HostType = new SapHanaHostHostType();
         }
         //      C# -> System.String? HostName
         // GraphQL -> hostName: String! (scalar)
-        if (this.HostName == null && Exploration.Includes(parent + ".hostName", true))
+        if (this.HostName == null && ec.Includes("hostName",true))
         {
             this.HostName = "FETCH";
         }
         //      C# -> System.String? HostUuid
         // GraphQL -> hostUuid: String! (scalar)
-        if (this.HostUuid == null && Exploration.Includes(parent + ".hostUuid", true))
+        if (this.HostUuid == null && ec.Includes("hostUuid",true))
         {
             this.HostUuid = "FETCH";
         }
         //      C# -> System.String? SapHanaHostName
         // GraphQL -> sapHanaHostName: String (scalar)
-        if (this.SapHanaHostName == null && Exploration.Includes(parent + ".sapHanaHostName", true))
+        if (this.SapHanaHostName == null && ec.Includes("sapHanaHostName",true))
         {
             this.SapHanaHostName = "FETCH";
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = "FETCH";
         }
@@ -182,12 +181,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SapHanaHost> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SapHanaHost());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SapHanaHost> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

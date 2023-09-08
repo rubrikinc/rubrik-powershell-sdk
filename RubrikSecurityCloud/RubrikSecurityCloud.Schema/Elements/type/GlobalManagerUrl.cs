@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? IsReachable
         // GraphQL -> isReachable: Boolean! (scalar)
-        if (this.IsReachable == null && Exploration.Includes(parent + ".isReachable", true))
+        if (this.IsReachable == null && ec.Includes("isReachable",true))
         {
             this.IsReachable = true;
         }
         //      C# -> System.String? Url
         // GraphQL -> url: String! (scalar)
-        if (this.Url == null && Exploration.Includes(parent + ".url", true))
+        if (this.Url == null && ec.Includes("url",true))
         {
             this.Url = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GlobalManagerUrl> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GlobalManagerUrl());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<GlobalManagerUrl> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Error
         // GraphQL -> error: String! (scalar)
-        if (this.Error == null && Exploration.Includes(parent + ".error", true))
+        if (this.Error == null && ec.Includes("error",true))
         {
             this.Error = "FETCH";
         }
         //      C# -> System.String? WorkloadId
         // GraphQL -> workloadId: UUID! (scalar)
-        if (this.WorkloadId == null && Exploration.Includes(parent + ".workloadId", true))
+        if (this.WorkloadId == null && ec.Includes("workloadId",true))
         {
             this.WorkloadId = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<TakeOnDemandSnapshotError> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new TakeOnDemandSnapshotError());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<TakeOnDemandSnapshotError> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

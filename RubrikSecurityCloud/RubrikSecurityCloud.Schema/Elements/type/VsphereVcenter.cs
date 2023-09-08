@@ -646,262 +646,261 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<Operation>? AuthorizedOperations
         // GraphQL -> authorizedOperations: [Operation!]! (enum)
-        if (this.AuthorizedOperations == null && Exploration.Includes(parent + ".authorizedOperations", true))
+        if (this.AuthorizedOperations == null && ec.Includes("authorizedOperations",true))
         {
             this.AuthorizedOperations = new List<Operation>();
         }
         //      C# -> VcenterSummaryConflictResolutionAuthz? ConflictResolutionAuthz
         // GraphQL -> conflictResolutionAuthz: VcenterSummaryConflictResolutionAuthz (enum)
-        if (this.ConflictResolutionAuthz == null && Exploration.Includes(parent + ".conflictResolutionAuthz", true))
+        if (this.ConflictResolutionAuthz == null && ec.Includes("conflictResolutionAuthz",true))
         {
             this.ConflictResolutionAuthz = new VcenterSummaryConflictResolutionAuthz();
         }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
-        if (this.ObjectType == null && Exploration.Includes(parent + ".objectType", true))
+        if (this.ObjectType == null && ec.Includes("objectType",true))
         {
             this.ObjectType = new HierarchyObjectTypeEnum();
         }
         //      C# -> SlaAssignmentTypeEnum? SlaAssignment
         // GraphQL -> slaAssignment: SlaAssignmentTypeEnum! (enum)
-        if (this.SlaAssignment == null && Exploration.Includes(parent + ".slaAssignment", true))
+        if (this.SlaAssignment == null && ec.Includes("slaAssignment",true))
         {
             this.SlaAssignment = new SlaAssignmentTypeEnum();
         }
         //      C# -> SlaDomain? ConfiguredSlaDomain
         // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
-        if (this.ConfiguredSlaDomain == null && Exploration.Includes(parent + ".configuredSlaDomain"))
+        if (this.ConfiguredSlaDomain == null && ec.Includes("configuredSlaDomain",false))
         {
             var impls = new List<SlaDomain>();
-            impls.ApplyExploratoryFieldSpec(parent + ".configuredSlaDomain");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("configuredSlaDomain"));
             this.ConfiguredSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> SlaDomain? EffectiveRetentionSlaDomain
         // GraphQL -> effectiveRetentionSlaDomain: SlaDomain (interface)
-        if (this.EffectiveRetentionSlaDomain == null && Exploration.Includes(parent + ".effectiveRetentionSlaDomain"))
+        if (this.EffectiveRetentionSlaDomain == null && ec.Includes("effectiveRetentionSlaDomain",false))
         {
             var impls = new List<SlaDomain>();
-            impls.ApplyExploratoryFieldSpec(parent + ".effectiveRetentionSlaDomain");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("effectiveRetentionSlaDomain"));
             this.EffectiveRetentionSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> SlaDomain? EffectiveSlaDomain
         // GraphQL -> effectiveSlaDomain: SlaDomain! (interface)
-        if (this.EffectiveSlaDomain == null && Exploration.Includes(parent + ".effectiveSlaDomain"))
+        if (this.EffectiveSlaDomain == null && ec.Includes("effectiveSlaDomain",false))
         {
             var impls = new List<SlaDomain>();
-            impls.ApplyExploratoryFieldSpec(parent + ".effectiveSlaDomain");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("effectiveSlaDomain"));
             this.EffectiveSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> SlaDomain? PendingSla
         // GraphQL -> pendingSla: SlaDomain (interface)
-        if (this.PendingSla == null && Exploration.Includes(parent + ".pendingSla"))
+        if (this.PendingSla == null && ec.Includes("pendingSla",false))
         {
             var impls = new List<SlaDomain>();
-            impls.ApplyExploratoryFieldSpec(parent + ".pendingSla");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("pendingSla"));
             this.PendingSla = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> List<CdmHierarchyObject>? ReplicatedObjects
         // GraphQL -> replicatedObjects: [CdmHierarchyObject!]! (interface)
-        if (this.ReplicatedObjects == null && Exploration.Includes(parent + ".replicatedObjects"))
+        if (this.ReplicatedObjects == null && ec.Includes("replicatedObjects",false))
         {
             this.ReplicatedObjects = new List<CdmHierarchyObject>();
-            this.ReplicatedObjects.ApplyExploratoryFieldSpec(parent + ".replicatedObjects");
+            this.ReplicatedObjects.ApplyExploratoryFieldSpec(ec.NewChild("replicatedObjects"));
         }
         //      C# -> System.String? CaCerts
         // GraphQL -> caCerts: String! (scalar)
-        if (this.CaCerts == null && Exploration.Includes(parent + ".caCerts", true))
+        if (this.CaCerts == null && ec.Includes("caCerts",true))
         {
             this.CaCerts = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsHotAddEnabledForOnPremVcenter
         // GraphQL -> isHotAddEnabledForOnPremVcenter: Boolean! (scalar)
-        if (this.IsHotAddEnabledForOnPremVcenter == null && Exploration.Includes(parent + ".isHotAddEnabledForOnPremVcenter", true))
+        if (this.IsHotAddEnabledForOnPremVcenter == null && ec.Includes("isHotAddEnabledForOnPremVcenter",true))
         {
             this.IsHotAddEnabledForOnPremVcenter = true;
         }
         //      C# -> System.Boolean? IsVmc
         // GraphQL -> isVmc: Boolean! (scalar)
-        if (this.IsVmc == null && Exploration.Includes(parent + ".isVmc", true))
+        if (this.IsVmc == null && ec.Includes("isVmc",true))
         {
             this.IsVmc = true;
         }
         //      C# -> DateTime? LastRefreshTime
         // GraphQL -> lastRefreshTime: DateTime (scalar)
-        if (this.LastRefreshTime == null && Exploration.Includes(parent + ".lastRefreshTime", true))
+        if (this.LastRefreshTime == null && ec.Includes("lastRefreshTime",true))
         {
             this.LastRefreshTime = new DateTime();
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
-        if (this.NumWorkloadDescendants == null && Exploration.Includes(parent + ".numWorkloadDescendants", true))
+        if (this.NumWorkloadDescendants == null && ec.Includes("numWorkloadDescendants",true))
         {
             this.NumWorkloadDescendants = Int32.MinValue;
         }
         //      C# -> System.Int32? ReplicatedObjectCount
         // GraphQL -> replicatedObjectCount: Int! (scalar)
-        if (this.ReplicatedObjectCount == null && Exploration.Includes(parent + ".replicatedObjectCount", true))
+        if (this.ReplicatedObjectCount == null && ec.Includes("replicatedObjectCount",true))
         {
             this.ReplicatedObjectCount = Int32.MinValue;
         }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
-        if (this.SlaPauseStatus == null && Exploration.Includes(parent + ".slaPauseStatus", true))
+        if (this.SlaPauseStatus == null && ec.Includes("slaPauseStatus",true))
         {
             this.SlaPauseStatus = true;
         }
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)
-        if (this.Username == null && Exploration.Includes(parent + ".username", true))
+        if (this.Username == null && ec.Includes("username",true))
         {
             this.Username = "FETCH";
         }
         //      C# -> System.String? VcenterId
         // GraphQL -> vcenterId: String! (scalar)
-        if (this.VcenterId == null && Exploration.Includes(parent + ".vcenterId", true))
+        if (this.VcenterId == null && ec.Includes("vcenterId",true))
         {
             this.VcenterId = "FETCH";
         }
         //      C# -> System.String? VmcProvider
         // GraphQL -> vmcProvider: String (scalar)
-        if (this.VmcProvider == null && Exploration.Includes(parent + ".vmcProvider", true))
+        if (this.VmcProvider == null && ec.Includes("vmcProvider",true))
         {
             this.VmcProvider = "FETCH";
         }
         //      C# -> AboutInformation? AboutInfo
         // GraphQL -> aboutInfo: AboutInformation (type)
-        if (this.AboutInfo == null && Exploration.Includes(parent + ".aboutInfo"))
+        if (this.AboutInfo == null && ec.Includes("aboutInfo",false))
         {
             this.AboutInfo = new AboutInformation();
-            this.AboutInfo.ApplyExploratoryFieldSpec(parent + ".aboutInfo");
+            this.AboutInfo.ApplyExploratoryFieldSpec(ec.NewChild("aboutInfo"));
         }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
-        if (this.AllOrgs == null && Exploration.Includes(parent + ".allOrgs"))
+        if (this.AllOrgs == null && ec.Includes("allOrgs",false))
         {
             this.AllOrgs = new List<Org>();
-            this.AllOrgs.ApplyExploratoryFieldSpec(parent + ".allOrgs");
+            this.AllOrgs.ApplyExploratoryFieldSpec(ec.NewChild("allOrgs"));
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
-        if (this.Cluster == null && Exploration.Includes(parent + ".cluster"))
+        if (this.Cluster == null && ec.Includes("cluster",false))
         {
             this.Cluster = new Cluster();
-            this.Cluster.ApplyExploratoryFieldSpec(parent + ".cluster");
+            this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
         }
         //      C# -> List<ClusterVisibilityInfo>? ComputeVisibilityFilter
         // GraphQL -> computeVisibilityFilter: [ClusterVisibilityInfo!]! (type)
-        if (this.ComputeVisibilityFilter == null && Exploration.Includes(parent + ".computeVisibilityFilter"))
+        if (this.ComputeVisibilityFilter == null && ec.Includes("computeVisibilityFilter",false))
         {
             this.ComputeVisibilityFilter = new List<ClusterVisibilityInfo>();
-            this.ComputeVisibilityFilter.ApplyExploratoryFieldSpec(parent + ".computeVisibilityFilter");
+            this.ComputeVisibilityFilter.ApplyExploratoryFieldSpec(ec.NewChild("computeVisibilityFilter"));
         }
         //      C# -> RefreshableObjectConnectionStatus? ConnectionStatus
         // GraphQL -> connectionStatus: RefreshableObjectConnectionStatus! (type)
-        if (this.ConnectionStatus == null && Exploration.Includes(parent + ".connectionStatus"))
+        if (this.ConnectionStatus == null && ec.Includes("connectionStatus",false))
         {
             this.ConnectionStatus = new RefreshableObjectConnectionStatus();
-            this.ConnectionStatus.ApplyExploratoryFieldSpec(parent + ".connectionStatus");
+            this.ConnectionStatus.ApplyExploratoryFieldSpec(ec.NewChild("connectionStatus"));
         }
         //      C# -> VsphereVcenterDescendantTypeConnection? DescendantConnection
         // GraphQL -> descendantConnection: VsphereVcenterDescendantTypeConnection! (type)
-        if (this.DescendantConnection == null && Exploration.Includes(parent + ".descendantConnection"))
+        if (this.DescendantConnection == null && ec.Includes("descendantConnection",false))
         {
             this.DescendantConnection = new VsphereVcenterDescendantTypeConnection();
-            this.DescendantConnection.ApplyExploratoryFieldSpec(parent + ".descendantConnection");
+            this.DescendantConnection.ApplyExploratoryFieldSpec(ec.NewChild("descendantConnection"));
         }
         //      C# -> PathNode? EffectiveSlaSourceObject
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)
-        if (this.EffectiveSlaSourceObject == null && Exploration.Includes(parent + ".effectiveSlaSourceObject"))
+        if (this.EffectiveSlaSourceObject == null && ec.Includes("effectiveSlaSourceObject",false))
         {
             this.EffectiveSlaSourceObject = new PathNode();
-            this.EffectiveSlaSourceObject.ApplyExploratoryFieldSpec(parent + ".effectiveSlaSourceObject");
+            this.EffectiveSlaSourceObject.ApplyExploratoryFieldSpec(ec.NewChild("effectiveSlaSourceObject"));
         }
         //      C# -> LatestUserNote? LatestUserNote
         // GraphQL -> latestUserNote: LatestUserNote (type)
-        if (this.LatestUserNote == null && Exploration.Includes(parent + ".latestUserNote"))
+        if (this.LatestUserNote == null && ec.Includes("latestUserNote",false))
         {
             this.LatestUserNote = new LatestUserNote();
-            this.LatestUserNote.ApplyExploratoryFieldSpec(parent + ".latestUserNote");
+            this.LatestUserNote.ApplyExploratoryFieldSpec(ec.NewChild("latestUserNote"));
         }
         //      C# -> VsphereVcenterLogicalChildTypeConnection? LogicalChildConnection
         // GraphQL -> logicalChildConnection: VsphereVcenterLogicalChildTypeConnection! (type)
-        if (this.LogicalChildConnection == null && Exploration.Includes(parent + ".logicalChildConnection"))
+        if (this.LogicalChildConnection == null && ec.Includes("logicalChildConnection",false))
         {
             this.LogicalChildConnection = new VsphereVcenterLogicalChildTypeConnection();
-            this.LogicalChildConnection.ApplyExploratoryFieldSpec(parent + ".logicalChildConnection");
+            this.LogicalChildConnection.ApplyExploratoryFieldSpec(ec.NewChild("logicalChildConnection"));
         }
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)
-        if (this.LogicalPath == null && Exploration.Includes(parent + ".logicalPath"))
+        if (this.LogicalPath == null && ec.Includes("logicalPath",false))
         {
             this.LogicalPath = new List<PathNode>();
-            this.LogicalPath.ApplyExploratoryFieldSpec(parent + ".logicalPath");
+            this.LogicalPath.ApplyExploratoryFieldSpec(ec.NewChild("logicalPath"));
         }
         //      C# -> PendingSnapshotsOfObjectDeletion? PendingObjectDeletionStatus
         // GraphQL -> pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion (type)
-        if (this.PendingObjectDeletionStatus == null && Exploration.Includes(parent + ".pendingObjectDeletionStatus"))
+        if (this.PendingObjectDeletionStatus == null && ec.Includes("pendingObjectDeletionStatus",false))
         {
             this.PendingObjectDeletionStatus = new PendingSnapshotsOfObjectDeletion();
-            this.PendingObjectDeletionStatus.ApplyExploratoryFieldSpec(parent + ".pendingObjectDeletionStatus");
+            this.PendingObjectDeletionStatus.ApplyExploratoryFieldSpec(ec.NewChild("pendingObjectDeletionStatus"));
         }
         //      C# -> VsphereVcenterPhysicalChildTypeConnection? PhysicalChildConnection
         // GraphQL -> physicalChildConnection: VsphereVcenterPhysicalChildTypeConnection! (type)
-        if (this.PhysicalChildConnection == null && Exploration.Includes(parent + ".physicalChildConnection"))
+        if (this.PhysicalChildConnection == null && ec.Includes("physicalChildConnection",false))
         {
             this.PhysicalChildConnection = new VsphereVcenterPhysicalChildTypeConnection();
-            this.PhysicalChildConnection.ApplyExploratoryFieldSpec(parent + ".physicalChildConnection");
+            this.PhysicalChildConnection.ApplyExploratoryFieldSpec(ec.NewChild("physicalChildConnection"));
         }
         //      C# -> List<PathNode>? PhysicalPath
         // GraphQL -> physicalPath: [PathNode!]! (type)
-        if (this.PhysicalPath == null && Exploration.Includes(parent + ".physicalPath"))
+        if (this.PhysicalPath == null && ec.Includes("physicalPath",false))
         {
             this.PhysicalPath = new List<PathNode>();
-            this.PhysicalPath.ApplyExploratoryFieldSpec(parent + ".physicalPath");
+            this.PhysicalPath.ApplyExploratoryFieldSpec(ec.NewChild("physicalPath"));
         }
         //      C# -> DataLocation? PrimaryClusterLocation
         // GraphQL -> primaryClusterLocation: DataLocation! (type)
-        if (this.PrimaryClusterLocation == null && Exploration.Includes(parent + ".primaryClusterLocation"))
+        if (this.PrimaryClusterLocation == null && ec.Includes("primaryClusterLocation",false))
         {
             this.PrimaryClusterLocation = new DataLocation();
-            this.PrimaryClusterLocation.ApplyExploratoryFieldSpec(parent + ".primaryClusterLocation");
+            this.PrimaryClusterLocation.ApplyExploratoryFieldSpec(ec.NewChild("primaryClusterLocation"));
         }
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
-        if (this.SnapshotDistribution == null && Exploration.Includes(parent + ".snapshotDistribution"))
+        if (this.SnapshotDistribution == null && ec.Includes("snapshotDistribution",false))
         {
             this.SnapshotDistribution = new SnapshotDistribution();
-            this.SnapshotDistribution.ApplyExploratoryFieldSpec(parent + ".snapshotDistribution");
+            this.SnapshotDistribution.ApplyExploratoryFieldSpec(ec.NewChild("snapshotDistribution"));
         }
         //      C# -> VsphereVcenterTagChildTypeConnection? TagChildConnection
         // GraphQL -> tagChildConnection: VsphereVcenterTagChildTypeConnection! (type)
-        if (this.TagChildConnection == null && Exploration.Includes(parent + ".tagChildConnection"))
+        if (this.TagChildConnection == null && ec.Includes("tagChildConnection",false))
         {
             this.TagChildConnection = new VsphereVcenterTagChildTypeConnection();
-            this.TagChildConnection.ApplyExploratoryFieldSpec(parent + ".tagChildConnection");
+            this.TagChildConnection.ApplyExploratoryFieldSpec(ec.NewChild("tagChildConnection"));
         }
         //      C# -> List<PathNode>? VsphereTagPath
         // GraphQL -> vsphereTagPath: [PathNode!]! (type)
-        if (this.VsphereTagPath == null && Exploration.Includes(parent + ".vsphereTagPath"))
+        if (this.VsphereTagPath == null && ec.Includes("vsphereTagPath",false))
         {
             this.VsphereTagPath = new List<PathNode>();
-            this.VsphereTagPath.ApplyExploratoryFieldSpec(parent + ".vsphereTagPath");
+            this.VsphereTagPath.ApplyExploratoryFieldSpec(ec.NewChild("vsphereTagPath"));
         }
     }
 
@@ -935,12 +934,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VsphereVcenter> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VsphereVcenter());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VsphereVcenter> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

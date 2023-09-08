@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? VmId
         // GraphQL -> vmId: String! (scalar)
-        if (this.VmId == null && Exploration.Includes(parent + ".vmId", true))
+        if (this.VmId == null && ec.Includes("vmId",true))
         {
             this.VmId = "FETCH";
         }
         //      C# -> List<VmwareRecoverableRange>? RecoverableRanges
         // GraphQL -> recoverableRanges: [VmwareRecoverableRange!]! (type)
-        if (this.RecoverableRanges == null && Exploration.Includes(parent + ".recoverableRanges"))
+        if (this.RecoverableRanges == null && ec.Includes("recoverableRanges",false))
         {
             this.RecoverableRanges = new List<VmwareRecoverableRange>();
-            this.RecoverableRanges.ApplyExploratoryFieldSpec(parent + ".recoverableRanges");
+            this.RecoverableRanges.ApplyExploratoryFieldSpec(ec.NewChild("recoverableRanges"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VmwareVmRecoverableRanges> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VmwareVmRecoverableRanges());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VmwareVmRecoverableRanges> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

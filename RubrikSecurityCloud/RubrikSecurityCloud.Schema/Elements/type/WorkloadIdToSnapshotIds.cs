@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? ObjectId
         // GraphQL -> objectId: String! (scalar)
-        if (this.ObjectId == null && Exploration.Includes(parent + ".objectId", true))
+        if (this.ObjectId == null && ec.Includes("objectId",true))
         {
             this.ObjectId = "FETCH";
         }
         //      C# -> List<System.String>? SnapshotIds
         // GraphQL -> snapshotIds: [String!]! (scalar)
-        if (this.SnapshotIds == null && Exploration.Includes(parent + ".snapshotIds", true))
+        if (this.SnapshotIds == null && ec.Includes("snapshotIds",true))
         {
             this.SnapshotIds = new List<System.String>();
         }
         //      C# -> List<DateTime>? SnapshotTimestamps
         // GraphQL -> snapshotTimestamps: [DateTime!]! (scalar)
-        if (this.SnapshotTimestamps == null && Exploration.Includes(parent + ".snapshotTimestamps", true))
+        if (this.SnapshotTimestamps == null && ec.Includes("snapshotTimestamps",true))
         {
             this.SnapshotTimestamps = new List<DateTime>();
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<WorkloadIdToSnapshotIds> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new WorkloadIdToSnapshotIds());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<WorkloadIdToSnapshotIds> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

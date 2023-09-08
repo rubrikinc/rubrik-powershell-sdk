@@ -193,70 +193,69 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> DataViewTypeEnum? DataViewType
         // GraphQL -> dataViewType: DataViewTypeEnum! (enum)
-        if (this.DataViewType == null && Exploration.Includes(parent + ".dataViewType", true))
+        if (this.DataViewType == null && ec.Includes("dataViewType",true))
         {
             this.DataViewType = new DataViewTypeEnum();
         }
         //      C# -> SortOrder? SortOrder
         // GraphQL -> sortOrder: SortOrder (enum)
-        if (this.SortOrder == null && Exploration.Includes(parent + ".sortOrder", true))
+        if (this.SortOrder == null && ec.Includes("sortOrder",true))
         {
             this.SortOrder = new SortOrder();
         }
         //      C# -> List<System.String>? Aggregations
         // GraphQL -> aggregations: [String!]! (scalar)
-        if (this.Aggregations == null && Exploration.Includes(parent + ".aggregations", true))
+        if (this.Aggregations == null && ec.Includes("aggregations",true))
         {
             this.Aggregations = new List<System.String>();
         }
         //      C# -> List<System.String>? Columns
         // GraphQL -> columns: [String!]! (scalar)
-        if (this.Columns == null && Exploration.Includes(parent + ".columns", true))
+        if (this.Columns == null && ec.Includes("columns",true))
         {
             this.Columns = new List<System.String>();
         }
         //      C# -> System.String? Fid
         // GraphQL -> fid: UUID! (scalar)
-        if (this.Fid == null && Exploration.Includes(parent + ".fid", true))
+        if (this.Fid == null && ec.Includes("fid",true))
         {
             this.Fid = "FETCH";
         }
         //      C# -> System.Int64? Id
         // GraphQL -> id: Long! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = new System.Int64();
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? SortBy
         // GraphQL -> sortBy: String! (scalar)
-        if (this.SortBy == null && Exploration.Includes(parent + ".sortBy", true))
+        if (this.SortBy == null && ec.Includes("sortBy",true))
         {
             this.SortBy = "FETCH";
         }
         //      C# -> List<ConfigFilter>? Filters
         // GraphQL -> filters: [ConfigFilter!]! (type)
-        if (this.Filters == null && Exploration.Includes(parent + ".filters"))
+        if (this.Filters == null && ec.Includes("filters",false))
         {
             this.Filters = new List<ConfigFilter>();
-            this.Filters.ApplyExploratoryFieldSpec(parent + ".filters");
+            this.Filters.ApplyExploratoryFieldSpec(ec.NewChild("filters"));
         }
         //      C# -> ConfigGroupBy? GroupBy
         // GraphQL -> groupBy: configGroupBy! (type)
-        if (this.GroupBy == null && Exploration.Includes(parent + ".groupBy"))
+        if (this.GroupBy == null && ec.Includes("groupBy",false))
         {
             this.GroupBy = new ConfigGroupBy();
-            this.GroupBy.ApplyExploratoryFieldSpec(parent + ".groupBy");
+            this.GroupBy.ApplyExploratoryFieldSpec(ec.NewChild("groupBy"));
         }
     }
 
@@ -290,12 +289,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ReportConfig> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ReportConfig());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ReportConfig> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

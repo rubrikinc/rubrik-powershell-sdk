@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<System.String>? ActiveDirectoryGroups
         // GraphQL -> activeDirectoryGroups: [String!]! (scalar)
-        if (this.ActiveDirectoryGroups == null && Exploration.Includes(parent + ".activeDirectoryGroups", true))
+        if (this.ActiveDirectoryGroups == null && ec.Includes("activeDirectoryGroups",true))
         {
             this.ActiveDirectoryGroups = new List<System.String>();
         }
         //      C# -> System.String? DomainName
         // GraphQL -> domainName: String! (scalar)
-        if (this.DomainName == null && Exploration.Includes(parent + ".domainName", true))
+        if (this.DomainName == null && ec.Includes("domainName",true))
         {
             this.DomainName = "FETCH";
         }
         //      C# -> List<System.String>? ValidIps
         // GraphQL -> validIps: [String!]! (scalar)
-        if (this.ValidIps == null && Exploration.Includes(parent + ".validIps", true))
+        if (this.ValidIps == null && ec.Includes("validIps",true))
         {
             this.ValidIps = new List<System.String>();
         }
         //      C# -> List<System.String>? ValidUsers
         // GraphQL -> validUsers: [String!]! (scalar)
-        if (this.ValidUsers == null && Exploration.Includes(parent + ".validUsers", true))
+        if (this.ValidUsers == null && ec.Includes("validUsers",true))
         {
             this.ValidUsers = new List<System.String>();
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ManagedVolumeSmbShare> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ManagedVolumeSmbShare());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ManagedVolumeSmbShare> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

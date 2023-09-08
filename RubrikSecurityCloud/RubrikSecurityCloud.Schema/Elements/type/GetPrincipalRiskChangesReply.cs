@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<PrincipalChange>? PrincipalChanges
         // GraphQL -> principalChanges: [PrincipalChange!]! (type)
-        if (this.PrincipalChanges == null && Exploration.Includes(parent + ".principalChanges"))
+        if (this.PrincipalChanges == null && ec.Includes("principalChanges",false))
         {
             this.PrincipalChanges = new List<PrincipalChange>();
-            this.PrincipalChanges.ApplyExploratoryFieldSpec(parent + ".principalChanges");
+            this.PrincipalChanges.ApplyExploratoryFieldSpec(ec.NewChild("principalChanges"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GetPrincipalRiskChangesReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GetPrincipalRiskChangesReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<GetPrincipalRiskChangesReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

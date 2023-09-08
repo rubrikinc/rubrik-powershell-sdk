@@ -187,66 +187,65 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> CdpLocalStatus? CdpLocalStatus
         // GraphQL -> cdpLocalStatus: CdpLocalStatus (enum)
-        if (this.CdpLocalStatus == null && Exploration.Includes(parent + ".cdpLocalStatus", true))
+        if (this.CdpLocalStatus == null && ec.Includes("cdpLocalStatus",true))
         {
             this.CdpLocalStatus = new CdpLocalStatus();
         }
         //      C# -> CdpReplicationStatus? CdpReplicationStatus
         // GraphQL -> cdpReplicationStatus: CdpReplicationStatus (enum)
-        if (this.CdpReplicationStatus == null && Exploration.Includes(parent + ".cdpReplicationStatus", true))
+        if (this.CdpReplicationStatus == null && ec.Includes("cdpReplicationStatus",true))
         {
             this.CdpReplicationStatus = new CdpReplicationStatus();
         }
         //      C# -> IoFilterStatus? IoFilterStatus
         // GraphQL -> ioFilterStatus: IoFilterStatus (enum)
-        if (this.IoFilterStatus == null && Exploration.Includes(parent + ".ioFilterStatus", true))
+        if (this.IoFilterStatus == null && ec.Includes("ioFilterStatus",true))
         {
             this.IoFilterStatus = new IoFilterStatus();
         }
         //      C# -> DateTime? LatestSnapshotTime
         // GraphQL -> latestSnapshotTime: DateTime (scalar)
-        if (this.LatestSnapshotTime == null && Exploration.Includes(parent + ".latestSnapshotTime", true))
+        if (this.LatestSnapshotTime == null && ec.Includes("latestSnapshotTime",true))
         {
             this.LatestSnapshotTime = new DateTime();
         }
         //      C# -> System.String? ReplicationTarget
         // GraphQL -> replicationTarget: String! (scalar)
-        if (this.ReplicationTarget == null && Exploration.Includes(parent + ".replicationTarget", true))
+        if (this.ReplicationTarget == null && ec.Includes("replicationTarget",true))
         {
             this.ReplicationTarget = "FETCH";
         }
         //      C# -> System.String? SlaDomainName
         // GraphQL -> slaDomainName: String! (scalar)
-        if (this.SlaDomainName == null && Exploration.Includes(parent + ".slaDomainName", true))
+        if (this.SlaDomainName == null && ec.Includes("slaDomainName",true))
         {
             this.SlaDomainName = "FETCH";
         }
         //      C# -> System.String? SourceCluster
         // GraphQL -> sourceCluster: String! (scalar)
-        if (this.SourceCluster == null && Exploration.Includes(parent + ".sourceCluster", true))
+        if (this.SourceCluster == null && ec.Includes("sourceCluster",true))
         {
             this.SourceCluster = "FETCH";
         }
         //      C# -> System.String? VmId
         // GraphQL -> vmId: String! (scalar)
-        if (this.VmId == null && Exploration.Includes(parent + ".vmId", true))
+        if (this.VmId == null && ec.Includes("vmId",true))
         {
             this.VmId = "FETCH";
         }
         //      C# -> System.String? VmLocation
         // GraphQL -> vmLocation: String! (scalar)
-        if (this.VmLocation == null && Exploration.Includes(parent + ".vmLocation", true))
+        if (this.VmLocation == null && ec.Includes("vmLocation",true))
         {
             this.VmLocation = "FETCH";
         }
         //      C# -> System.String? VmName
         // GraphQL -> vmName: String! (scalar)
-        if (this.VmName == null && Exploration.Includes(parent + ".vmName", true))
+        if (this.VmName == null && ec.Includes("vmName",true))
         {
             this.VmName = "FETCH";
         }
@@ -282,12 +281,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CdpVmInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CdpVmInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CdpVmInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

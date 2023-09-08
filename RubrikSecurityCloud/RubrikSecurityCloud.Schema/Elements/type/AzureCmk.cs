@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> AzureRegion? Region
         // GraphQL -> region: AzureRegion! (enum)
-        if (this.Region == null && Exploration.Includes(parent + ".region", true))
+        if (this.Region == null && ec.Includes("region",true))
         {
             this.Region = new AzureRegion();
         }
         //      C# -> System.String? KeyName
         // GraphQL -> keyName: String! (scalar)
-        if (this.KeyName == null && Exploration.Includes(parent + ".keyName", true))
+        if (this.KeyName == null && ec.Includes("keyName",true))
         {
             this.KeyName = "FETCH";
         }
         //      C# -> System.String? KeyVaultName
         // GraphQL -> keyVaultName: String! (scalar)
-        if (this.KeyVaultName == null && Exploration.Includes(parent + ".keyVaultName", true))
+        if (this.KeyVaultName == null && ec.Includes("keyVaultName",true))
         {
             this.KeyVaultName = "FETCH";
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AzureCmk> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AzureCmk());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AzureCmk> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

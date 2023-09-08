@@ -117,36 +117,35 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> NetworkProtocolTypeEnum? NetworkType
         // GraphQL -> networkType: NetworkProtocolTypeEnum! (enum)
-        if (this.NetworkType == null && Exploration.Includes(parent + ".networkType", true))
+        if (this.NetworkType == null && ec.Includes("networkType",true))
         {
             this.NetworkType = new NetworkProtocolTypeEnum();
         }
         //      C# -> SmtpSecurityTypeEnum? SecurityType
         // GraphQL -> securityType: SMTPSecurityTypeEnum! (enum)
-        if (this.SecurityType == null && Exploration.Includes(parent + ".securityType", true))
+        if (this.SecurityType == null && ec.Includes("securityType",true))
         {
             this.SecurityType = new SmtpSecurityTypeEnum();
         }
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String! (scalar)
-        if (this.Hostname == null && Exploration.Includes(parent + ".hostname", true))
+        if (this.Hostname == null && ec.Includes("hostname",true))
         {
             this.Hostname = "FETCH";
         }
         //      C# -> System.Int32? Port
         // GraphQL -> port: Int! (scalar)
-        if (this.Port == null && Exploration.Includes(parent + ".port", true))
+        if (this.Port == null && ec.Includes("port",true))
         {
             this.Port = Int32.MinValue;
         }
         //      C# -> System.String? TrustedCerts
         // GraphQL -> trustedCerts: String! (scalar)
-        if (this.TrustedCerts == null && Exploration.Includes(parent + ".trustedCerts", true))
+        if (this.TrustedCerts == null && ec.Includes("trustedCerts",true))
         {
             this.TrustedCerts = "FETCH";
         }
@@ -182,12 +181,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CommonNotificationConfig> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CommonNotificationConfig());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CommonNotificationConfig> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

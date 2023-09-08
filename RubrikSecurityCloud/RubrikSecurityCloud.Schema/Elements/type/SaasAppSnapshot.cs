@@ -159,54 +159,53 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> DateTime? Date
         // GraphQL -> date: DateTime! (scalar)
-        if (this.Date == null && Exploration.Includes(parent + ".date", true))
+        if (this.Date == null && ec.Includes("date",true))
         {
             this.Date = new DateTime();
         }
         //      C# -> DateTime? ExpirationDate
         // GraphQL -> expirationDate: DateTime (scalar)
-        if (this.ExpirationDate == null && Exploration.Includes(parent + ".expirationDate", true))
+        if (this.ExpirationDate == null && ec.Includes("expirationDate",true))
         {
             this.ExpirationDate = new DateTime();
         }
         //      C# -> System.Boolean? ExpiryHint
         // GraphQL -> expiryHint: Boolean! (scalar)
-        if (this.ExpiryHint == null && Exploration.Includes(parent + ".expiryHint", true))
+        if (this.ExpiryHint == null && ec.Includes("expiryHint",true))
         {
             this.ExpiryHint = true;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> DateTime? IndexTime
         // GraphQL -> indexTime: DateTime (scalar)
-        if (this.IndexTime == null && Exploration.Includes(parent + ".indexTime", true))
+        if (this.IndexTime == null && ec.Includes("indexTime",true))
         {
             this.IndexTime = new DateTime();
         }
         //      C# -> System.Boolean? IsOnDemandSnapshot
         // GraphQL -> isOnDemandSnapshot: Boolean! (scalar)
-        if (this.IsOnDemandSnapshot == null && Exploration.Includes(parent + ".isOnDemandSnapshot", true))
+        if (this.IsOnDemandSnapshot == null && ec.Includes("isOnDemandSnapshot",true))
         {
             this.IsOnDemandSnapshot = true;
         }
         //      C# -> System.Int32? SequenceNumber
         // GraphQL -> sequenceNumber: Int! (scalar)
-        if (this.SequenceNumber == null && Exploration.Includes(parent + ".sequenceNumber", true))
+        if (this.SequenceNumber == null && ec.Includes("sequenceNumber",true))
         {
             this.SequenceNumber = Int32.MinValue;
         }
         //      C# -> System.String? WorkloadId
         // GraphQL -> workloadId: String! (scalar)
-        if (this.WorkloadId == null && Exploration.Includes(parent + ".workloadId", true))
+        if (this.WorkloadId == null && ec.Includes("workloadId",true))
         {
             this.WorkloadId = "FETCH";
         }
@@ -242,12 +241,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SaasAppSnapshot> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SaasAppSnapshot());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SaasAppSnapshot> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -117,36 +117,35 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? IsEnabled
         // GraphQL -> isEnabled: Boolean! (scalar)
-        if (this.IsEnabled == null && Exploration.Includes(parent + ".isEnabled", true))
+        if (this.IsEnabled == null && ec.Includes("isEnabled",true))
         {
             this.IsEnabled = true;
         }
         //      C# -> System.Boolean? IsEnforced
         // GraphQL -> isEnforced: Boolean! (scalar)
-        if (this.IsEnforced == null && Exploration.Includes(parent + ".isEnforced", true))
+        if (this.IsEnforced == null && ec.Includes("isEnforced",true))
         {
             this.IsEnforced = true;
         }
         //      C# -> System.Boolean? IsEnforcedUserLevel
         // GraphQL -> isEnforcedUserLevel: Boolean! (scalar)
-        if (this.IsEnforcedUserLevel == null && Exploration.Includes(parent + ".isEnforcedUserLevel", true))
+        if (this.IsEnforcedUserLevel == null && ec.Includes("isEnforcedUserLevel",true))
         {
             this.IsEnforcedUserLevel = true;
         }
         //      C# -> System.Boolean? IsSupported
         // GraphQL -> isSupported: Boolean! (scalar)
-        if (this.IsSupported == null && Exploration.Includes(parent + ".isSupported", true))
+        if (this.IsSupported == null && ec.Includes("isSupported",true))
         {
             this.IsSupported = true;
         }
         //      C# -> DateTime? TotpConfigUpdateAt
         // GraphQL -> totpConfigUpdateAt: DateTime (scalar)
-        if (this.TotpConfigUpdateAt == null && Exploration.Includes(parent + ".totpConfigUpdateAt", true))
+        if (this.TotpConfigUpdateAt == null && ec.Includes("totpConfigUpdateAt",true))
         {
             this.TotpConfigUpdateAt = new DateTime();
         }
@@ -182,12 +181,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<TotpStatus> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new TotpStatus());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<TotpStatus> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -81,22 +81,21 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ManagedVolumeStats? AlwaysMounted
         // GraphQL -> alwaysMounted: ManagedVolumeStats! (type)
-        if (this.AlwaysMounted == null && Exploration.Includes(parent + ".alwaysMounted"))
+        if (this.AlwaysMounted == null && ec.Includes("alwaysMounted",false))
         {
             this.AlwaysMounted = new ManagedVolumeStats();
-            this.AlwaysMounted.ApplyExploratoryFieldSpec(parent + ".alwaysMounted");
+            this.AlwaysMounted.ApplyExploratoryFieldSpec(ec.NewChild("alwaysMounted"));
         }
         //      C# -> ManagedVolumeStats? SlaBased
         // GraphQL -> slaBased: ManagedVolumeStats! (type)
-        if (this.SlaBased == null && Exploration.Includes(parent + ".slaBased"))
+        if (this.SlaBased == null && ec.Includes("slaBased",false))
         {
             this.SlaBased = new ManagedVolumeStats();
-            this.SlaBased.ApplyExploratoryFieldSpec(parent + ".slaBased");
+            this.SlaBased.ApplyExploratoryFieldSpec(ec.NewChild("slaBased"));
         }
     }
 
@@ -130,12 +129,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ManagedVolumeInventoryStats> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ManagedVolumeInventoryStats());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ManagedVolumeInventoryStats> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

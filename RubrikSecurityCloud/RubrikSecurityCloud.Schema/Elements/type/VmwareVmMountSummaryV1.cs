@@ -243,90 +243,89 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int32? AttachingDiskCount
         // GraphQL -> attachingDiskCount: Int (scalar)
-        if (this.AttachingDiskCount == null && Exploration.Includes(parent + ".attachingDiskCount", true))
+        if (this.AttachingDiskCount == null && ec.Includes("attachingDiskCount",true))
         {
             this.AttachingDiskCount = Int32.MinValue;
         }
         //      C# -> System.Boolean? CreateDatastoreOnlyMount
         // GraphQL -> createDatastoreOnlyMount: Boolean (scalar)
-        if (this.CreateDatastoreOnlyMount == null && Exploration.Includes(parent + ".createDatastoreOnlyMount", true))
+        if (this.CreateDatastoreOnlyMount == null && ec.Includes("createDatastoreOnlyMount",true))
         {
             this.CreateDatastoreOnlyMount = true;
         }
         //      C# -> System.String? DatastoreName
         // GraphQL -> datastoreName: String (scalar)
-        if (this.DatastoreName == null && Exploration.Includes(parent + ".datastoreName", true))
+        if (this.DatastoreName == null && ec.Includes("datastoreName",true))
         {
             this.DatastoreName = "FETCH";
         }
         //      C# -> System.Boolean? DatastoreReady
         // GraphQL -> datastoreReady: Boolean (scalar)
-        if (this.DatastoreReady == null && Exploration.Includes(parent + ".datastoreReady", true))
+        if (this.DatastoreReady == null && ec.Includes("datastoreReady",true))
         {
             this.DatastoreReady = true;
         }
         //      C# -> System.Boolean? HasAttachingDisk
         // GraphQL -> hasAttachingDisk: Boolean (scalar)
-        if (this.HasAttachingDisk == null && Exploration.Includes(parent + ".hasAttachingDisk", true))
+        if (this.HasAttachingDisk == null && ec.Includes("hasAttachingDisk",true))
         {
             this.HasAttachingDisk = true;
         }
         //      C# -> System.String? HostId
         // GraphQL -> hostId: String (scalar)
-        if (this.HostId == null && Exploration.Includes(parent + ".hostId", true))
+        if (this.HostId == null && ec.Includes("hostId",true))
         {
             this.HostId = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsReady
         // GraphQL -> isReady: Boolean! (scalar)
-        if (this.IsReady == null && Exploration.Includes(parent + ".isReady", true))
+        if (this.IsReady == null && ec.Includes("isReady",true))
         {
             this.IsReady = true;
         }
         //      C# -> System.String? MountRequestId
         // GraphQL -> mountRequestId: String (scalar)
-        if (this.MountRequestId == null && Exploration.Includes(parent + ".mountRequestId", true))
+        if (this.MountRequestId == null && ec.Includes("mountRequestId",true))
         {
             this.MountRequestId = "FETCH";
         }
         //      C# -> DateTime? MountTimestamp
         // GraphQL -> mountTimestamp: DateTime (scalar)
-        if (this.MountTimestamp == null && Exploration.Includes(parent + ".mountTimestamp", true))
+        if (this.MountTimestamp == null && ec.Includes("mountTimestamp",true))
         {
             this.MountTimestamp = new DateTime();
         }
         //      C# -> System.String? MountedVmId
         // GraphQL -> mountedVmId: String (scalar)
-        if (this.MountedVmId == null && Exploration.Includes(parent + ".mountedVmId", true))
+        if (this.MountedVmId == null && ec.Includes("mountedVmId",true))
         {
             this.MountedVmId = "FETCH";
         }
         //      C# -> DateTime? SnapshotDate
         // GraphQL -> snapshotDate: DateTime (scalar)
-        if (this.SnapshotDate == null && Exploration.Includes(parent + ".snapshotDate", true))
+        if (this.SnapshotDate == null && ec.Includes("snapshotDate",true))
         {
             this.SnapshotDate = new DateTime();
         }
         //      C# -> System.String? UnmountRequestId
         // GraphQL -> unmountRequestId: String (scalar)
-        if (this.UnmountRequestId == null && Exploration.Includes(parent + ".unmountRequestId", true))
+        if (this.UnmountRequestId == null && ec.Includes("unmountRequestId",true))
         {
             this.UnmountRequestId = "FETCH";
         }
         //      C# -> System.String? VmId
         // GraphQL -> vmId: String! (scalar)
-        if (this.VmId == null && Exploration.Includes(parent + ".vmId", true))
+        if (this.VmId == null && ec.Includes("vmId",true))
         {
             this.VmId = "FETCH";
         }
@@ -362,12 +361,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VmwareVmMountSummaryV1> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VmwareVmMountSummaryV1());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VmwareVmMountSummaryV1> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

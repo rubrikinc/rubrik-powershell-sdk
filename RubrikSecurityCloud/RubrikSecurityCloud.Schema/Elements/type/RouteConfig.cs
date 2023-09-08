@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Device
         // GraphQL -> device: String! (scalar)
-        if (this.Device == null && Exploration.Includes(parent + ".device", true))
+        if (this.Device == null && ec.Includes("device",true))
         {
             this.Device = "FETCH";
         }
         //      C# -> System.String? Gateway
         // GraphQL -> gateway: String! (scalar)
-        if (this.Gateway == null && Exploration.Includes(parent + ".gateway", true))
+        if (this.Gateway == null && ec.Includes("gateway",true))
         {
             this.Gateway = "FETCH";
         }
         //      C# -> System.String? Netmask
         // GraphQL -> netmask: String! (scalar)
-        if (this.Netmask == null && Exploration.Includes(parent + ".netmask", true))
+        if (this.Netmask == null && ec.Includes("netmask",true))
         {
             this.Netmask = "FETCH";
         }
         //      C# -> System.String? Network
         // GraphQL -> network: String! (scalar)
-        if (this.Network == null && Exploration.Includes(parent + ".network", true))
+        if (this.Network == null && ec.Includes("network",true))
         {
             this.Network = "FETCH";
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RouteConfig> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RouteConfig());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<RouteConfig> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

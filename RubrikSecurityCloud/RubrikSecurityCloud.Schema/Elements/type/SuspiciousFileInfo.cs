@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? FilePath
         // GraphQL -> filePath: String! (scalar)
-        if (this.FilePath == null && Exploration.Includes(parent + ".filePath", true))
+        if (this.FilePath == null && ec.Includes("filePath",true))
         {
             this.FilePath = "FETCH";
         }
         //      C# -> System.Int64? FileSizeBytes
         // GraphQL -> fileSizeBytes: Long! (scalar)
-        if (this.FileSizeBytes == null && Exploration.Includes(parent + ".fileSizeBytes", true))
+        if (this.FileSizeBytes == null && ec.Includes("fileSizeBytes",true))
         {
             this.FileSizeBytes = new System.Int64();
         }
         //      C# -> DateTime? LastModified
         // GraphQL -> lastModified: DateTime (scalar)
-        if (this.LastModified == null && Exploration.Includes(parent + ".lastModified", true))
+        if (this.LastModified == null && ec.Includes("lastModified",true))
         {
             this.LastModified = new DateTime();
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SuspiciousFileInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SuspiciousFileInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SuspiciousFileInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

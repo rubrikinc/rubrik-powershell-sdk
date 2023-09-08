@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? QueryUser
         // GraphQL -> queryUser: String! (scalar)
-        if (this.QueryUser == null && Exploration.Includes(parent + ".queryUser", true))
+        if (this.QueryUser == null && ec.Includes("queryUser",true))
         {
             this.QueryUser = "FETCH";
         }
         //      C# -> System.String? SysDbaUser
         // GraphQL -> sysDbaUser: String! (scalar)
-        if (this.SysDbaUser == null && Exploration.Includes(parent + ".sysDbaUser", true))
+        if (this.SysDbaUser == null && ec.Includes("sysDbaUser",true))
         {
             this.SysDbaUser = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<OracleUserDetails> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new OracleUserDetails());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<OracleUserDetails> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

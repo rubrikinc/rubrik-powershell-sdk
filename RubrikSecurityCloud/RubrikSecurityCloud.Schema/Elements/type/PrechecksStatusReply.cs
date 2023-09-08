@@ -123,40 +123,39 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? EndTime
         // GraphQL -> endTime: Long! (scalar)
-        if (this.EndTime == null && Exploration.Includes(parent + ".endTime", true))
+        if (this.EndTime == null && ec.Includes("endTime",true))
         {
             this.EndTime = new System.Int64();
         }
         //      C# -> System.Int32? NumPrechecks
         // GraphQL -> numPrechecks: Int! (scalar)
-        if (this.NumPrechecks == null && Exploration.Includes(parent + ".numPrechecks", true))
+        if (this.NumPrechecks == null && ec.Includes("numPrechecks",true))
         {
             this.NumPrechecks = Int32.MinValue;
         }
         //      C# -> System.Int32? RunPeriodInMinutes
         // GraphQL -> runPeriodInMinutes: Int! (scalar)
-        if (this.RunPeriodInMinutes == null && Exploration.Includes(parent + ".runPeriodInMinutes", true))
+        if (this.RunPeriodInMinutes == null && ec.Includes("runPeriodInMinutes",true))
         {
             this.RunPeriodInMinutes = Int32.MinValue;
         }
         //      C# -> List<PrecheckFailure>? FailureResults
         // GraphQL -> failureResults: [PrecheckFailure!]! (type)
-        if (this.FailureResults == null && Exploration.Includes(parent + ".failureResults"))
+        if (this.FailureResults == null && ec.Includes("failureResults",false))
         {
             this.FailureResults = new List<PrecheckFailure>();
-            this.FailureResults.ApplyExploratoryFieldSpec(parent + ".failureResults");
+            this.FailureResults.ApplyExploratoryFieldSpec(ec.NewChild("failureResults"));
         }
         //      C# -> PrecheckStatusNextRunInfo? NextRunInfo
         // GraphQL -> nextRunInfo: PrecheckStatusNextRunInfo (type)
-        if (this.NextRunInfo == null && Exploration.Includes(parent + ".nextRunInfo"))
+        if (this.NextRunInfo == null && ec.Includes("nextRunInfo",false))
         {
             this.NextRunInfo = new PrecheckStatusNextRunInfo();
-            this.NextRunInfo.ApplyExploratoryFieldSpec(parent + ".nextRunInfo");
+            this.NextRunInfo.ApplyExploratoryFieldSpec(ec.NewChild("nextRunInfo"));
         }
     }
 
@@ -190,12 +189,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PrechecksStatusReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PrechecksStatusReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<PrechecksStatusReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

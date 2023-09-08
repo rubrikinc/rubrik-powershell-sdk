@@ -106,33 +106,32 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> DateTime? BeginTime
         // GraphQL -> beginTime: DateTime (scalar)
-        if (this.BeginTime == null && Exploration.Includes(parent + ".beginTime", true))
+        if (this.BeginTime == null && ec.Includes("beginTime",true))
         {
             this.BeginTime = new DateTime();
         }
         //      C# -> DateTime? EndTime
         // GraphQL -> endTime: DateTime (scalar)
-        if (this.EndTime == null && Exploration.Includes(parent + ".endTime", true))
+        if (this.EndTime == null && ec.Includes("endTime",true))
         {
             this.EndTime = new DateTime();
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = "FETCH";
         }
         //      C# -> List<OracleDbSnapshotSummary>? DbSnapshotSummaries
         // GraphQL -> dbSnapshotSummaries: [OracleDbSnapshotSummary!]! (type)
-        if (this.DbSnapshotSummaries == null && Exploration.Includes(parent + ".dbSnapshotSummaries"))
+        if (this.DbSnapshotSummaries == null && ec.Includes("dbSnapshotSummaries",false))
         {
             this.DbSnapshotSummaries = new List<OracleDbSnapshotSummary>();
-            this.DbSnapshotSummaries.ApplyExploratoryFieldSpec(parent + ".dbSnapshotSummaries");
+            this.DbSnapshotSummaries.ApplyExploratoryFieldSpec(ec.NewChild("dbSnapshotSummaries"));
         }
     }
 
@@ -166,12 +165,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<OracleRecoverableRange> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new OracleRecoverableRange());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<OracleRecoverableRange> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? IsPendingSlaDomainRetentionLocked
         // GraphQL -> isPendingSlaDomainRetentionLocked: Boolean (scalar)
-        if (this.IsPendingSlaDomainRetentionLocked == null && Exploration.Includes(parent + ".isPendingSlaDomainRetentionLocked", true))
+        if (this.IsPendingSlaDomainRetentionLocked == null && ec.Includes("isPendingSlaDomainRetentionLocked",true))
         {
             this.IsPendingSlaDomainRetentionLocked = true;
         }
         //      C# -> System.String? ObjectId
         // GraphQL -> objectId: String! (scalar)
-        if (this.ObjectId == null && Exploration.Includes(parent + ".objectId", true))
+        if (this.ObjectId == null && ec.Includes("objectId",true))
         {
             this.ObjectId = "FETCH";
         }
         //      C# -> System.String? PendingSlaDomainId
         // GraphQL -> pendingSlaDomainId: String! (scalar)
-        if (this.PendingSlaDomainId == null && Exploration.Includes(parent + ".pendingSlaDomainId", true))
+        if (this.PendingSlaDomainId == null && ec.Includes("pendingSlaDomainId",true))
         {
             this.PendingSlaDomainId = "FETCH";
         }
         //      C# -> System.String? PendingSlaDomainName
         // GraphQL -> pendingSlaDomainName: String! (scalar)
-        if (this.PendingSlaDomainName == null && Exploration.Includes(parent + ".pendingSlaDomainName", true))
+        if (this.PendingSlaDomainName == null && ec.Includes("pendingSlaDomainName",true))
         {
             this.PendingSlaDomainName = "FETCH";
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ManagedObjectPendingSlaInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ManagedObjectPendingSlaInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ManagedObjectPendingSlaInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

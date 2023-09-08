@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<RefreshHostReply>? Data
         // GraphQL -> data: [RefreshHostReply!]! (type)
-        if (this.Data == null && Exploration.Includes(parent + ".data"))
+        if (this.Data == null && ec.Includes("data",false))
         {
             this.Data = new List<RefreshHostReply>();
-            this.Data.ApplyExploratoryFieldSpec(parent + ".data");
+            this.Data.ApplyExploratoryFieldSpec(ec.NewChild("data"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<BulkRefreshHostsReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new BulkRefreshHostsReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<BulkRefreshHostsReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

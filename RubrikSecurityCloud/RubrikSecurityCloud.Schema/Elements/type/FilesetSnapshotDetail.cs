@@ -109,34 +109,33 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? LastModified
         // GraphQL -> lastModified: String! (scalar)
-        if (this.LastModified == null && Exploration.Includes(parent + ".lastModified", true))
+        if (this.LastModified == null && ec.Includes("lastModified",true))
         {
             this.LastModified = "FETCH";
         }
         //      C# -> System.Int64? Size
         // GraphQL -> size: Long! (scalar)
-        if (this.Size == null && Exploration.Includes(parent + ".size", true))
+        if (this.Size == null && ec.Includes("size",true))
         {
             this.Size = new System.Int64();
         }
         //      C# -> FilesetSnapshotSummary? FilesetSnapshotSummary
         // GraphQL -> filesetSnapshotSummary: FilesetSnapshotSummary (type)
-        if (this.FilesetSnapshotSummary == null && Exploration.Includes(parent + ".filesetSnapshotSummary"))
+        if (this.FilesetSnapshotSummary == null && ec.Includes("filesetSnapshotSummary",false))
         {
             this.FilesetSnapshotSummary = new FilesetSnapshotSummary();
-            this.FilesetSnapshotSummary.ApplyExploratoryFieldSpec(parent + ".filesetSnapshotSummary");
+            this.FilesetSnapshotSummary.ApplyExploratoryFieldSpec(ec.NewChild("filesetSnapshotSummary"));
         }
         //      C# -> FilesetSnapshotVerbose? Verbose
         // GraphQL -> verbose: FilesetSnapshotVerbose (type)
-        if (this.Verbose == null && Exploration.Includes(parent + ".verbose"))
+        if (this.Verbose == null && ec.Includes("verbose",false))
         {
             this.Verbose = new FilesetSnapshotVerbose();
-            this.Verbose.ApplyExploratoryFieldSpec(parent + ".verbose");
+            this.Verbose.ApplyExploratoryFieldSpec(ec.NewChild("verbose"));
         }
     }
 
@@ -170,12 +169,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<FilesetSnapshotDetail> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new FilesetSnapshotDetail());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<FilesetSnapshotDetail> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

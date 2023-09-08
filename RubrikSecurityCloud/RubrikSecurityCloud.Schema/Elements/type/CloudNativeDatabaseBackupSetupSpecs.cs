@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? IsSetupSuccessful
         // GraphQL -> isSetupSuccessful: Boolean! (scalar)
-        if (this.IsSetupSuccessful == null && Exploration.Includes(parent + ".isSetupSuccessful", true))
+        if (this.IsSetupSuccessful == null && ec.Includes("isSetupSuccessful",true))
         {
             this.IsSetupSuccessful = true;
         }
         //      C# -> PathNode? SetupSourceObject
         // GraphQL -> setupSourceObject: PathNode! (type)
-        if (this.SetupSourceObject == null && Exploration.Includes(parent + ".setupSourceObject"))
+        if (this.SetupSourceObject == null && ec.Includes("setupSourceObject",false))
         {
             this.SetupSourceObject = new PathNode();
-            this.SetupSourceObject.ApplyExploratoryFieldSpec(parent + ".setupSourceObject");
+            this.SetupSourceObject.ApplyExploratoryFieldSpec(ec.NewChild("setupSourceObject"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CloudNativeDatabaseBackupSetupSpecs> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CloudNativeDatabaseBackupSetupSpecs());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CloudNativeDatabaseBackupSetupSpecs> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -81,22 +81,21 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> SummaryCount? SecureUsers
         // GraphQL -> secureUsers: SummaryCount! (type)
-        if (this.SecureUsers == null && Exploration.Includes(parent + ".secureUsers"))
+        if (this.SecureUsers == null && ec.Includes("secureUsers",false))
         {
             this.SecureUsers = new SummaryCount();
-            this.SecureUsers.ApplyExploratoryFieldSpec(parent + ".secureUsers");
+            this.SecureUsers.ApplyExploratoryFieldSpec(ec.NewChild("secureUsers"));
         }
         //      C# -> SummaryCount? VulnerableUsers
         // GraphQL -> vulnerableUsers: SummaryCount! (type)
-        if (this.VulnerableUsers == null && Exploration.Includes(parent + ".vulnerableUsers"))
+        if (this.VulnerableUsers == null && ec.Includes("vulnerableUsers",false))
         {
             this.VulnerableUsers = new SummaryCount();
-            this.VulnerableUsers.ApplyExploratoryFieldSpec(parent + ".vulnerableUsers");
+            this.VulnerableUsers.ApplyExploratoryFieldSpec(ec.NewChild("vulnerableUsers"));
         }
     }
 
@@ -130,12 +129,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GetUsersSummaryReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GetUsersSummaryReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<GetUsersSummaryReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

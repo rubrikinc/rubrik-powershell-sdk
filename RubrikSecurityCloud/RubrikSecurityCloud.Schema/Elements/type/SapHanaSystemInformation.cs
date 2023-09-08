@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> SapHanaSystemAuthType? AuthType
         // GraphQL -> authType: SapHanaSystemAuthType! (enum)
-        if (this.AuthType == null && Exploration.Includes(parent + ".authType", true))
+        if (this.AuthType == null && ec.Includes("authType",true))
         {
             this.AuthType = new SapHanaSystemAuthType();
         }
         //      C# -> System.String? HanaVersion
         // GraphQL -> hanaVersion: String! (scalar)
-        if (this.HanaVersion == null && Exploration.Includes(parent + ".hanaVersion", true))
+        if (this.HanaVersion == null && ec.Includes("hanaVersion",true))
         {
             this.HanaVersion = "FETCH";
         }
         //      C# -> System.Boolean? IsDtEnabled
         // GraphQL -> isDtEnabled: Boolean! (scalar)
-        if (this.IsDtEnabled == null && Exploration.Includes(parent + ".isDtEnabled", true))
+        if (this.IsDtEnabled == null && ec.Includes("isDtEnabled",true))
         {
             this.IsDtEnabled = true;
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SapHanaSystemInformation> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SapHanaSystemInformation());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SapHanaSystemInformation> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

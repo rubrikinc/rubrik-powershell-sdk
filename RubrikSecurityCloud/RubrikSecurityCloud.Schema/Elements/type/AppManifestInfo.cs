@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> K8sContentType? ManifestContentType
         // GraphQL -> manifestContentType: K8sContentType! (enum)
-        if (this.ManifestContentType == null && Exploration.Includes(parent + ".manifestContentType", true))
+        if (this.ManifestContentType == null && ec.Includes("manifestContentType",true))
         {
             this.ManifestContentType = new K8sContentType();
         }
         //      C# -> System.String? Manifest
         // GraphQL -> manifest: String! (scalar)
-        if (this.Manifest == null && Exploration.Includes(parent + ".manifest", true))
+        if (this.Manifest == null && ec.Includes("manifest",true))
         {
             this.Manifest = "FETCH";
         }
         //      C# -> System.String? ShaAlgorithm
         // GraphQL -> shaAlgorithm: String! (scalar)
-        if (this.ShaAlgorithm == null && Exploration.Includes(parent + ".shaAlgorithm", true))
+        if (this.ShaAlgorithm == null && ec.Includes("shaAlgorithm",true))
         {
             this.ShaAlgorithm = "FETCH";
         }
         //      C# -> System.String? ShaChecksum
         // GraphQL -> shaChecksum: String! (scalar)
-        if (this.ShaChecksum == null && Exploration.Includes(parent + ".shaChecksum", true))
+        if (this.ShaChecksum == null && ec.Includes("shaChecksum",true))
         {
             this.ShaChecksum = "FETCH";
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AppManifestInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AppManifestInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AppManifestInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

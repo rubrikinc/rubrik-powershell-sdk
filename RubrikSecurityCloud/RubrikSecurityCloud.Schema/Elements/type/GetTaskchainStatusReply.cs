@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> Taskchain? Taskchain
         // GraphQL -> taskchain: Taskchain (type)
-        if (this.Taskchain == null && Exploration.Includes(parent + ".taskchain"))
+        if (this.Taskchain == null && ec.Includes("taskchain",false))
         {
             this.Taskchain = new Taskchain();
-            this.Taskchain.ApplyExploratoryFieldSpec(parent + ".taskchain");
+            this.Taskchain.ApplyExploratoryFieldSpec(ec.NewChild("taskchain"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GetTaskchainStatusReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GetTaskchainStatusReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<GetTaskchainStatusReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

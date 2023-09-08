@@ -31,6 +31,10 @@ namespace RubrikSecurityCloud
         // { "clusterId": "String!", "filter": "[ClusterFilterInput!]!" }
         internal Hashtable _varDefs;
 
+        // an example of how the variables can
+        // be initialized
+        internal string _example;
+
         /// <summary>
         /// Create a new RscGqlVars object.
         /// </summary>
@@ -47,9 +51,11 @@ namespace RubrikSecurityCloud
             System.Object obj,
             Tuple<String, String>[] varDefs = null,
             GetOverrideValueForVarDelegate getOverrideValueForVar = null,
-            bool ignoreRequired = false)
+            bool ignoreRequired = false,
+            string example = null)
                 : this()
         {
+            _example = example;
             Set(
                 obj,
                 varDefs,
@@ -183,6 +189,14 @@ namespace RubrikSecurityCloud
                 info.Add(varName, v);
             }
             return info;
+        }
+
+        /// <summary>
+        /// Return an example of how the variables can be initialized.
+        /// </summary>
+        public string Example()
+        {
+            return _example;
         }
 
         /// <summary>

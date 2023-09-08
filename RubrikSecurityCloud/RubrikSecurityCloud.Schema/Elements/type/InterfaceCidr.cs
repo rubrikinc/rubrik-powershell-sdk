@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> InterfaceType? InterfaceType
         // GraphQL -> interfaceType: InterfaceType! (enum)
-        if (this.InterfaceType == null && Exploration.Includes(parent + ".interfaceType", true))
+        if (this.InterfaceType == null && ec.Includes("interfaceType",true))
         {
             this.InterfaceType = new InterfaceType();
         }
         //      C# -> System.String? Cidr
         // GraphQL -> cidr: String! (scalar)
-        if (this.Cidr == null && Exploration.Includes(parent + ".cidr", true))
+        if (this.Cidr == null && ec.Includes("cidr",true))
         {
             this.Cidr = "FETCH";
         }
         //      C# -> System.Boolean? Selected
         // GraphQL -> selected: Boolean! (scalar)
-        if (this.Selected == null && Exploration.Includes(parent + ".selected", true))
+        if (this.Selected == null && ec.Includes("selected",true))
         {
             this.Selected = true;
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<InterfaceCidr> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new InterfaceCidr());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<InterfaceCidr> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

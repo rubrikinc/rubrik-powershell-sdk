@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> TimeUnitEnum? Unit
         // GraphQL -> unit: TimeUnitEnum! (enum)
-        if (this.Unit == null && Exploration.Includes(parent + ".unit", true))
+        if (this.Unit == null && ec.Includes("unit",true))
         {
             this.Unit = new TimeUnitEnum();
         }
         //      C# -> System.Int32? Magnitude
         // GraphQL -> magnitude: Int! (scalar)
-        if (this.Magnitude == null && Exploration.Includes(parent + ".magnitude", true))
+        if (this.Magnitude == null && ec.Includes("magnitude",true))
         {
             this.Magnitude = Int32.MinValue;
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RelativeTimeRange> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RelativeTimeRange());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<RelativeTimeRange> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

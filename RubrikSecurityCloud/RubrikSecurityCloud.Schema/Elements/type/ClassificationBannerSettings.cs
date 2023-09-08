@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> BannerColor? BannerColor
         // GraphQL -> bannerColor: BannerColor! (enum)
-        if (this.BannerColor == null && Exploration.Includes(parent + ".bannerColor", true))
+        if (this.BannerColor == null && ec.Includes("bannerColor",true))
         {
             this.BannerColor = new BannerColor();
         }
         //      C# -> System.String? BannerText
         // GraphQL -> bannerText: String! (scalar)
-        if (this.BannerText == null && Exploration.Includes(parent + ".bannerText", true))
+        if (this.BannerText == null && ec.Includes("bannerText",true))
         {
             this.BannerText = "FETCH";
         }
         //      C# -> System.Boolean? IsBannerEnabled
         // GraphQL -> isBannerEnabled: Boolean! (scalar)
-        if (this.IsBannerEnabled == null && Exploration.Includes(parent + ".isBannerEnabled", true))
+        if (this.IsBannerEnabled == null && ec.Includes("isBannerEnabled",true))
         {
             this.IsBannerEnabled = true;
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ClassificationBannerSettings> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ClassificationBannerSettings());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ClassificationBannerSettings> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

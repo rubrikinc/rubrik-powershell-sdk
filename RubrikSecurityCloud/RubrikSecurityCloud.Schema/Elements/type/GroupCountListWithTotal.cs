@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int32? TotalCount
         // GraphQL -> totalCount: Int! (scalar)
-        if (this.TotalCount == null && Exploration.Includes(parent + ".totalCount", true))
+        if (this.TotalCount == null && ec.Includes("totalCount",true))
         {
             this.TotalCount = Int32.MinValue;
         }
         //      C# -> List<GroupCount>? GroupList
         // GraphQL -> groupList: [GroupCount!]! (type)
-        if (this.GroupList == null && Exploration.Includes(parent + ".groupList"))
+        if (this.GroupList == null && ec.Includes("groupList",false))
         {
             this.GroupList = new List<GroupCount>();
-            this.GroupList.ApplyExploratoryFieldSpec(parent + ".groupList");
+            this.GroupList.ApplyExploratoryFieldSpec(ec.NewChild("groupList"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GroupCountListWithTotal> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GroupCountListWithTotal());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<GroupCountListWithTotal> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

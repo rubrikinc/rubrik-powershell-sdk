@@ -120,39 +120,38 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> DateTime? Date
         // GraphQL -> date: DateTime! (scalar)
-        if (this.Date == null && Exploration.Includes(parent + ".date", true))
+        if (this.Date == null && ec.Includes("date",true))
         {
             this.Date = new DateTime();
         }
         //      C# -> DateTime? ExpirationDate
         // GraphQL -> expirationDate: DateTime (scalar)
-        if (this.ExpirationDate == null && Exploration.Includes(parent + ".expirationDate", true))
+        if (this.ExpirationDate == null && ec.Includes("expirationDate",true))
         {
             this.ExpirationDate = new DateTime();
         }
         //      C# -> System.String? SnappableId
         // GraphQL -> snappableId: String! (scalar)
-        if (this.SnappableId == null && Exploration.Includes(parent + ".snappableId", true))
+        if (this.SnappableId == null && ec.Includes("snappableId",true))
         {
             this.SnappableId = "FETCH";
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: String! (scalar)
-        if (this.SnapshotId == null && Exploration.Includes(parent + ".snapshotId", true))
+        if (this.SnapshotId == null && ec.Includes("snapshotId",true))
         {
             this.SnapshotId = "FETCH";
         }
         //      C# -> Cluster? AssociatedCdm
         // GraphQL -> associatedCdm: Cluster (type)
-        if (this.AssociatedCdm == null && Exploration.Includes(parent + ".associatedCdm"))
+        if (this.AssociatedCdm == null && ec.Includes("associatedCdm",false))
         {
             this.AssociatedCdm = new Cluster();
-            this.AssociatedCdm.ApplyExploratoryFieldSpec(parent + ".associatedCdm");
+            this.AssociatedCdm.ApplyExploratoryFieldSpec(ec.NewChild("associatedCdm"));
         }
     }
 
@@ -186,12 +185,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ReplicatedSnapshotInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ReplicatedSnapshotInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ReplicatedSnapshotInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

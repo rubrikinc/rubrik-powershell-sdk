@@ -131,42 +131,41 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? DiskType
         // GraphQL -> diskType: String! (scalar)
-        if (this.DiskType == null && Exploration.Includes(parent + ".diskType", true))
+        if (this.DiskType == null && ec.Includes("diskType",true))
         {
             this.DiskType = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsDegraded
         // GraphQL -> isDegraded: Boolean! (scalar)
-        if (this.IsDegraded == null && Exploration.Includes(parent + ".isDegraded", true))
+        if (this.IsDegraded == null && ec.Includes("isDegraded",true))
         {
             this.IsDegraded = true;
         }
         //      C# -> System.Boolean? IsEncrypted
         // GraphQL -> isEncrypted: Boolean! (scalar)
-        if (this.IsEncrypted == null && Exploration.Includes(parent + ".isEncrypted", true))
+        if (this.IsEncrypted == null && ec.Includes("isEncrypted",true))
         {
             this.IsEncrypted = true;
         }
         //      C# -> System.String? NodeId
         // GraphQL -> nodeId: String! (scalar)
-        if (this.NodeId == null && Exploration.Includes(parent + ".nodeId", true))
+        if (this.NodeId == null && ec.Includes("nodeId",true))
         {
             this.NodeId = "FETCH";
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = "FETCH";
         }
@@ -202,12 +201,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<DiskStatus> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new DiskStatus());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<DiskStatus> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

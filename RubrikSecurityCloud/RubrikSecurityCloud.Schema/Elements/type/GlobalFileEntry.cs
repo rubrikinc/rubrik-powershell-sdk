@@ -92,27 +92,26 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? ClusterName
         // GraphQL -> clusterName: String! (scalar)
-        if (this.ClusterName == null && Exploration.Includes(parent + ".clusterName", true))
+        if (this.ClusterName == null && ec.Includes("clusterName",true))
         {
             this.ClusterName = "FETCH";
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
-        if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
+        if (this.ClusterUuid == null && ec.Includes("clusterUuid",true))
         {
             this.ClusterUuid = "FETCH";
         }
         //      C# -> GlobalSearchFile? FileData
         // GraphQL -> fileData: GlobalSearchFile (type)
-        if (this.FileData == null && Exploration.Includes(parent + ".fileData"))
+        if (this.FileData == null && ec.Includes("fileData",false))
         {
             this.FileData = new GlobalSearchFile();
-            this.FileData.ApplyExploratoryFieldSpec(parent + ".fileData");
+            this.FileData.ApplyExploratoryFieldSpec(ec.NewChild("fileData"));
         }
     }
 
@@ -146,12 +145,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GlobalFileEntry> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GlobalFileEntry());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<GlobalFileEntry> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

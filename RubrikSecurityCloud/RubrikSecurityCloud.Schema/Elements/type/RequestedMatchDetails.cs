@@ -61,12 +61,11 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<HashType>? RequestedHashTypes
         // GraphQL -> requestedHashTypes: [HashType!] (enum)
-        if (this.RequestedHashTypes == null && Exploration.Includes(parent + ".requestedHashTypes", true))
+        if (this.RequestedHashTypes == null && ec.Includes("requestedHashTypes",true))
         {
             this.RequestedHashTypes = new List<HashType>();
         }
@@ -102,12 +101,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RequestedMatchDetails> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RequestedMatchDetails());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<RequestedMatchDetails> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -61,12 +61,11 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<System.String>? KvSnapshotFileInstancesInfoList
         // GraphQL -> kvSnapshotFileInstancesInfoList: [String!]! (scalar)
-        if (this.KvSnapshotFileInstancesInfoList == null && Exploration.Includes(parent + ".kvSnapshotFileInstancesInfoList", true))
+        if (this.KvSnapshotFileInstancesInfoList == null && ec.Includes("kvSnapshotFileInstancesInfoList",true))
         {
             this.KvSnapshotFileInstancesInfoList = new List<System.String>();
         }
@@ -102,12 +101,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<Db2WorkloadDataSnapshotMetadata> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new Db2WorkloadDataSnapshotMetadata());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<Db2WorkloadDataSnapshotMetadata> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

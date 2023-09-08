@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> Product? Product
         // GraphQL -> product: Product! (enum)
-        if (this.Product == null && Exploration.Includes(parent + ".product", true))
+        if (this.Product == null && ec.Includes("product",true))
         {
             this.Product = new Product();
         }
         //      C# -> System.Single? RegisteredCapacityBytes
         // GraphQL -> registeredCapacityBytes: Float! (scalar)
-        if (this.RegisteredCapacityBytes == null && Exploration.Includes(parent + ".registeredCapacityBytes", true))
+        if (this.RegisteredCapacityBytes == null && ec.Includes("registeredCapacityBytes",true))
         {
             this.RegisteredCapacityBytes = new System.Single();
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CapacityContribution> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CapacityContribution());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CapacityContribution> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

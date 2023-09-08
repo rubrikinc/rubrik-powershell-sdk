@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? IsTprRoleEligible
         // GraphQL -> isTprRoleEligible: Boolean! (scalar)
-        if (this.IsTprRoleEligible == null && Exploration.Includes(parent + ".isTprRoleEligible", true))
+        if (this.IsTprRoleEligible == null && ec.Includes("isTprRoleEligible",true))
         {
             this.IsTprRoleEligible = true;
         }
         //      C# -> System.String? Reason
         // GraphQL -> reason: String! (scalar)
-        if (this.Reason == null && Exploration.Includes(parent + ".reason", true))
+        if (this.Reason == null && ec.Includes("reason",true))
         {
             this.Reason = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<TprRoleEligibilityType> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new TprRoleEligibilityType());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<TprRoleEligibilityType> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

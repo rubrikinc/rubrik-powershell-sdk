@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int32? JobsFailing
         // GraphQL -> jobsFailing: Int! (scalar)
-        if (this.JobsFailing == null && Exploration.Includes(parent + ".jobsFailing", true))
+        if (this.JobsFailing == null && ec.Includes("jobsFailing",true))
         {
             this.JobsFailing = Int32.MinValue;
         }
         //      C# -> System.Int32? JobsPassing
         // GraphQL -> jobsPassing: Int! (scalar)
-        if (this.JobsPassing == null && Exploration.Includes(parent + ".jobsPassing", true))
+        if (this.JobsPassing == null && ec.Includes("jobsPassing",true))
         {
             this.JobsPassing = Int32.MinValue;
         }
         //      C# -> DateTime? Timestamp
         // GraphQL -> timestamp: DateTime (scalar)
-        if (this.Timestamp == null && Exploration.Includes(parent + ".timestamp", true))
+        if (this.Timestamp == null && ec.Includes("timestamp",true))
         {
             this.Timestamp = new DateTime();
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<NcdSlaComplianceData> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new NcdSlaComplianceData());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<NcdSlaComplianceData> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<DailyOrgBackupJobInformation>? PerDayJobInfo
         // GraphQL -> perDayJobInfo: [DailyOrgBackupJobInformation!]! (type)
-        if (this.PerDayJobInfo == null && Exploration.Includes(parent + ".perDayJobInfo"))
+        if (this.PerDayJobInfo == null && ec.Includes("perDayJobInfo",false))
         {
             this.PerDayJobInfo = new List<DailyOrgBackupJobInformation>();
-            this.PerDayJobInfo.ApplyExploratoryFieldSpec(parent + ".perDayJobInfo");
+            this.PerDayJobInfo.ApplyExploratoryFieldSpec(ec.NewChild("perDayJobInfo"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<OrgBackupJobInformation> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new OrgBackupJobInformation());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<OrgBackupJobInformation> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

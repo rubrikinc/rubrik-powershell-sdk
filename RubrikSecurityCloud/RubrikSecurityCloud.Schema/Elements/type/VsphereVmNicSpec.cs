@@ -201,72 +201,71 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> NetworkAdapterType? AdapterType
         // GraphQL -> adapterType: NetworkAdapterType! (enum)
-        if (this.AdapterType == null && Exploration.Includes(parent + ".adapterType", true))
+        if (this.AdapterType == null && ec.Includes("adapterType",true))
         {
             this.AdapterType = new NetworkAdapterType();
         }
         //      C# -> NetworkType? NetworkType
         // GraphQL -> networkType: NetworkType! (enum)
-        if (this.NetworkType == null && Exploration.Includes(parent + ".networkType", true))
+        if (this.NetworkType == null && ec.Includes("networkType",true))
         {
             this.NetworkType = new NetworkType();
         }
         //      C# -> List<System.String>? DnsInfos
         // GraphQL -> dnsInfos: [String!]! (scalar)
-        if (this.DnsInfos == null && Exploration.Includes(parent + ".dnsInfos", true))
+        if (this.DnsInfos == null && ec.Includes("dnsInfos",true))
         {
             this.DnsInfos = new List<System.String>();
         }
         //      C# -> System.String? Gateway
         // GraphQL -> gateway: String! (scalar)
-        if (this.Gateway == null && Exploration.Includes(parent + ".gateway", true))
+        if (this.Gateway == null && ec.Includes("gateway",true))
         {
             this.Gateway = "FETCH";
         }
         //      C# -> System.String? Ipv4Address
         // GraphQL -> ipv4Address: String! (scalar)
-        if (this.Ipv4Address == null && Exploration.Includes(parent + ".ipv4Address", true))
+        if (this.Ipv4Address == null && ec.Includes("ipv4Address",true))
         {
             this.Ipv4Address = "FETCH";
         }
         //      C# -> System.String? Ipv6Address
         // GraphQL -> ipv6Address: String! (scalar)
-        if (this.Ipv6Address == null && Exploration.Includes(parent + ".ipv6Address", true))
+        if (this.Ipv6Address == null && ec.Includes("ipv6Address",true))
         {
             this.Ipv6Address = "FETCH";
         }
         //      C# -> System.Boolean? IsPrimaryNic
         // GraphQL -> isPrimaryNic: Boolean! (scalar)
-        if (this.IsPrimaryNic == null && Exploration.Includes(parent + ".isPrimaryNic", true))
+        if (this.IsPrimaryNic == null && ec.Includes("isPrimaryNic",true))
         {
             this.IsPrimaryNic = true;
         }
         //      C# -> System.String? Key
         // GraphQL -> key: String! (scalar)
-        if (this.Key == null && Exploration.Includes(parent + ".key", true))
+        if (this.Key == null && ec.Includes("key",true))
         {
             this.Key = "FETCH";
         }
         //      C# -> System.String? Netmask
         // GraphQL -> netmask: String! (scalar)
-        if (this.Netmask == null && Exploration.Includes(parent + ".netmask", true))
+        if (this.Netmask == null && ec.Includes("netmask",true))
         {
             this.Netmask = "FETCH";
         }
         //      C# -> System.String? NetworkId
         // GraphQL -> networkId: String! (scalar)
-        if (this.NetworkId == null && Exploration.Includes(parent + ".networkId", true))
+        if (this.NetworkId == null && ec.Includes("networkId",true))
         {
             this.NetworkId = "FETCH";
         }
         //      C# -> System.String? NetworkMoid
         // GraphQL -> networkMoid: String! (scalar)
-        if (this.NetworkMoid == null && Exploration.Includes(parent + ".networkMoid", true))
+        if (this.NetworkMoid == null && ec.Includes("networkMoid",true))
         {
             this.NetworkMoid = "FETCH";
         }
@@ -302,12 +301,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VsphereVmNicSpec> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VsphereVmNicSpec());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VsphereVmNicSpec> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

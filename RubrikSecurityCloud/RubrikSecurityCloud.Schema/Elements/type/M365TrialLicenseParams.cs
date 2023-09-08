@@ -65,15 +65,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> M365LicenseParams? Value
         // GraphQL -> value: M365LicenseParams! (type)
-        if (this.Value == null && Exploration.Includes(parent + ".value"))
+        if (this.Value == null && ec.Includes("value",false))
         {
             this.Value = new M365LicenseParams();
-            this.Value.ApplyExploratoryFieldSpec(parent + ".value");
+            this.Value.ApplyExploratoryFieldSpec(ec.NewChild("value"));
         }
     }
 
@@ -107,12 +106,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<M365TrialLicenseParams> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new M365TrialLicenseParams());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<M365TrialLicenseParams> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

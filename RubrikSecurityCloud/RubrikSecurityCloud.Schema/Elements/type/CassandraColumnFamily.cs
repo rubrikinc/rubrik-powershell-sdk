@@ -474,189 +474,188 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<PolarisObjectAuthorizedOperationsEnum>? AuthorizedOperations
         // GraphQL -> authorizedOperations: [PolarisObjectAuthorizedOperationsEnum!]! (enum)
-        if (this.AuthorizedOperations == null && Exploration.Includes(parent + ".authorizedOperations", true))
+        if (this.AuthorizedOperations == null && ec.Includes("authorizedOperations",true))
         {
             this.AuthorizedOperations = new List<PolarisObjectAuthorizedOperationsEnum>();
         }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
-        if (this.ObjectType == null && Exploration.Includes(parent + ".objectType", true))
+        if (this.ObjectType == null && ec.Includes("objectType",true))
         {
             this.ObjectType = new HierarchyObjectTypeEnum();
         }
         //      C# -> SlaAssignmentTypeEnum? SlaAssignment
         // GraphQL -> slaAssignment: SlaAssignmentTypeEnum! (enum)
-        if (this.SlaAssignment == null && Exploration.Includes(parent + ".slaAssignment", true))
+        if (this.SlaAssignment == null && ec.Includes("slaAssignment",true))
         {
             this.SlaAssignment = new SlaAssignmentTypeEnum();
         }
         //      C# -> SlaDomain? ConfiguredSlaDomain
         // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
-        if (this.ConfiguredSlaDomain == null && Exploration.Includes(parent + ".configuredSlaDomain"))
+        if (this.ConfiguredSlaDomain == null && ec.Includes("configuredSlaDomain",false))
         {
             var impls = new List<SlaDomain>();
-            impls.ApplyExploratoryFieldSpec(parent + ".configuredSlaDomain");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("configuredSlaDomain"));
             this.ConfiguredSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> SlaDomain? EffectiveRetentionSlaDomain
         // GraphQL -> effectiveRetentionSlaDomain: SlaDomain (interface)
-        if (this.EffectiveRetentionSlaDomain == null && Exploration.Includes(parent + ".effectiveRetentionSlaDomain"))
+        if (this.EffectiveRetentionSlaDomain == null && ec.Includes("effectiveRetentionSlaDomain",false))
         {
             var impls = new List<SlaDomain>();
-            impls.ApplyExploratoryFieldSpec(parent + ".effectiveRetentionSlaDomain");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("effectiveRetentionSlaDomain"));
             this.EffectiveRetentionSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> SlaDomain? EffectiveSlaDomain
         // GraphQL -> effectiveSlaDomain: SlaDomain! (interface)
-        if (this.EffectiveSlaDomain == null && Exploration.Includes(parent + ".effectiveSlaDomain"))
+        if (this.EffectiveSlaDomain == null && ec.Includes("effectiveSlaDomain",false))
         {
             var impls = new List<SlaDomain>();
-            impls.ApplyExploratoryFieldSpec(parent + ".effectiveSlaDomain");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("effectiveSlaDomain"));
             this.EffectiveSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> System.Int32? BackupCount
         // GraphQL -> backupCount: Int (scalar)
-        if (this.BackupCount == null && Exploration.Includes(parent + ".backupCount", true))
+        if (this.BackupCount == null && ec.Includes("backupCount",true))
         {
             this.BackupCount = Int32.MinValue;
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
-        if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
+        if (this.ClusterUuid == null && ec.Includes("clusterUuid",true))
         {
             this.ClusterUuid = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
-        if (this.IsRelic == null && Exploration.Includes(parent + ".isRelic", true))
+        if (this.IsRelic == null && ec.Includes("isRelic",true))
         {
             this.IsRelic = true;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
-        if (this.NumWorkloadDescendants == null && Exploration.Includes(parent + ".numWorkloadDescendants", true))
+        if (this.NumWorkloadDescendants == null && ec.Includes("numWorkloadDescendants",true))
         {
             this.NumWorkloadDescendants = Int32.MinValue;
         }
         //      C# -> System.String? ProtectionDate
         // GraphQL -> protectionDate: String! (scalar)
-        if (this.ProtectionDate == null && Exploration.Includes(parent + ".protectionDate", true))
+        if (this.ProtectionDate == null && ec.Includes("protectionDate",true))
         {
             this.ProtectionDate = "FETCH";
         }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
-        if (this.SlaPauseStatus == null && Exploration.Includes(parent + ".slaPauseStatus", true))
+        if (this.SlaPauseStatus == null && ec.Includes("slaPauseStatus",true))
         {
             this.SlaPauseStatus = true;
         }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
-        if (this.AllOrgs == null && Exploration.Includes(parent + ".allOrgs"))
+        if (this.AllOrgs == null && ec.Includes("allOrgs",false))
         {
             this.AllOrgs = new List<Org>();
-            this.AllOrgs.ApplyExploratoryFieldSpec(parent + ".allOrgs");
+            this.AllOrgs.ApplyExploratoryFieldSpec(ec.NewChild("allOrgs"));
         }
         //      C# -> CassandraBackupParams? BackupParams
         // GraphQL -> backupParams: CassandraBackupParams (type)
-        if (this.BackupParams == null && Exploration.Includes(parent + ".backupParams"))
+        if (this.BackupParams == null && ec.Includes("backupParams",false))
         {
             this.BackupParams = new CassandraBackupParams();
-            this.BackupParams.ApplyExploratoryFieldSpec(parent + ".backupParams");
+            this.BackupParams.ApplyExploratoryFieldSpec(ec.NewChild("backupParams"));
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
-        if (this.Cluster == null && Exploration.Includes(parent + ".cluster"))
+        if (this.Cluster == null && ec.Includes("cluster",false))
         {
             this.Cluster = new Cluster();
-            this.Cluster.ApplyExploratoryFieldSpec(parent + ".cluster");
+            this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
         }
         //      C# -> PathNode? EffectiveSlaSourceObject
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)
-        if (this.EffectiveSlaSourceObject == null && Exploration.Includes(parent + ".effectiveSlaSourceObject"))
+        if (this.EffectiveSlaSourceObject == null && ec.Includes("effectiveSlaSourceObject",false))
         {
             this.EffectiveSlaSourceObject = new PathNode();
-            this.EffectiveSlaSourceObject.ApplyExploratoryFieldSpec(parent + ".effectiveSlaSourceObject");
+            this.EffectiveSlaSourceObject.ApplyExploratoryFieldSpec(ec.NewChild("effectiveSlaSourceObject"));
         }
         //      C# -> CassandraKeyspace? Keyspace
         // GraphQL -> keyspace: CassandraKeyspace! (type)
-        if (this.Keyspace == null && Exploration.Includes(parent + ".keyspace"))
+        if (this.Keyspace == null && ec.Includes("keyspace",false))
         {
             this.Keyspace = new CassandraKeyspace();
-            this.Keyspace.ApplyExploratoryFieldSpec(parent + ".keyspace");
+            this.Keyspace.ApplyExploratoryFieldSpec(ec.NewChild("keyspace"));
         }
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)
-        if (this.LogicalPath == null && Exploration.Includes(parent + ".logicalPath"))
+        if (this.LogicalPath == null && ec.Includes("logicalPath",false))
         {
             this.LogicalPath = new List<PathNode>();
-            this.LogicalPath.ApplyExploratoryFieldSpec(parent + ".logicalPath");
+            this.LogicalPath.ApplyExploratoryFieldSpec(ec.NewChild("logicalPath"));
         }
         //      C# -> MosaicSnapshot? NewestSnapshot
         // GraphQL -> newestSnapshot: MosaicSnapshot (type)
-        if (this.NewestSnapshot == null && Exploration.Includes(parent + ".newestSnapshot"))
+        if (this.NewestSnapshot == null && ec.Includes("newestSnapshot",false))
         {
             this.NewestSnapshot = new MosaicSnapshot();
-            this.NewestSnapshot.ApplyExploratoryFieldSpec(parent + ".newestSnapshot");
+            this.NewestSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("newestSnapshot"));
         }
         //      C# -> MosaicSnapshot? OldestSnapshot
         // GraphQL -> oldestSnapshot: MosaicSnapshot (type)
-        if (this.OldestSnapshot == null && Exploration.Includes(parent + ".oldestSnapshot"))
+        if (this.OldestSnapshot == null && ec.Includes("oldestSnapshot",false))
         {
             this.OldestSnapshot = new MosaicSnapshot();
-            this.OldestSnapshot.ApplyExploratoryFieldSpec(parent + ".oldestSnapshot");
+            this.OldestSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("oldestSnapshot"));
         }
         //      C# -> List<PathNode>? PhysicalPath
         // GraphQL -> physicalPath: [PathNode!]! (type)
-        if (this.PhysicalPath == null && Exploration.Includes(parent + ".physicalPath"))
+        if (this.PhysicalPath == null && ec.Includes("physicalPath",false))
         {
             this.PhysicalPath = new List<PathNode>();
-            this.PhysicalPath.ApplyExploratoryFieldSpec(parent + ".physicalPath");
+            this.PhysicalPath.ApplyExploratoryFieldSpec(ec.NewChild("physicalPath"));
         }
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
-        if (this.SnapshotDistribution == null && Exploration.Includes(parent + ".snapshotDistribution"))
+        if (this.SnapshotDistribution == null && ec.Includes("snapshotDistribution",false))
         {
             this.SnapshotDistribution = new SnapshotDistribution();
-            this.SnapshotDistribution.ApplyExploratoryFieldSpec(parent + ".snapshotDistribution");
+            this.SnapshotDistribution.ApplyExploratoryFieldSpec(ec.NewChild("snapshotDistribution"));
         }
         //      C# -> MosaicSnapshotGroupByTypeConnection? SnapshotGroupBys
         // GraphQL -> snapshotGroupBys: MosaicSnapshotGroupByTypeConnection (type)
-        if (this.SnapshotGroupBys == null && Exploration.Includes(parent + ".snapshotGroupBys"))
+        if (this.SnapshotGroupBys == null && ec.Includes("snapshotGroupBys",false))
         {
             this.SnapshotGroupBys = new MosaicSnapshotGroupByTypeConnection();
-            this.SnapshotGroupBys.ApplyExploratoryFieldSpec(parent + ".snapshotGroupBys");
+            this.SnapshotGroupBys.ApplyExploratoryFieldSpec(ec.NewChild("snapshotGroupBys"));
         }
         //      C# -> MosaicSnapshotConnection? Snapshots
         // GraphQL -> snapshots: MosaicSnapshotConnection! (type)
-        if (this.Snapshots == null && Exploration.Includes(parent + ".snapshots"))
+        if (this.Snapshots == null && ec.Includes("snapshots",false))
         {
             this.Snapshots = new MosaicSnapshotConnection();
-            this.Snapshots.ApplyExploratoryFieldSpec(parent + ".snapshots");
+            this.Snapshots.ApplyExploratoryFieldSpec(ec.NewChild("snapshots"));
         }
         //      C# -> CassandraSource? Source
         // GraphQL -> source: CassandraSource! (type)
-        if (this.Source == null && Exploration.Includes(parent + ".source"))
+        if (this.Source == null && ec.Includes("source",false))
         {
             this.Source = new CassandraSource();
-            this.Source.ApplyExploratoryFieldSpec(parent + ".source");
+            this.Source.ApplyExploratoryFieldSpec(ec.NewChild("source"));
         }
     }
 
@@ -690,12 +689,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CassandraColumnFamily> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CassandraColumnFamily());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CassandraColumnFamily> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

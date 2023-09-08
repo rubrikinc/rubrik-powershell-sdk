@@ -90,24 +90,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> WarningSeverityEnum? Severity
         // GraphQL -> severity: WarningSeverityEnum! (enum)
-        if (this.Severity == null && Exploration.Includes(parent + ".severity", true))
+        if (this.Severity == null && ec.Includes("severity",true))
         {
             this.Severity = new WarningSeverityEnum();
         }
         //      C# -> System.Int32? MaxArchivalRetentionInDaysExpected
         // GraphQL -> maxArchivalRetentionInDaysExpected: Int! (scalar)
-        if (this.MaxArchivalRetentionInDaysExpected == null && Exploration.Includes(parent + ".maxArchivalRetentionInDaysExpected", true))
+        if (this.MaxArchivalRetentionInDaysExpected == null && ec.Includes("maxArchivalRetentionInDaysExpected",true))
         {
             this.MaxArchivalRetentionInDaysExpected = Int32.MinValue;
         }
         //      C# -> System.Int32? MinArchivalRetentionInDaysExpected
         // GraphQL -> minArchivalRetentionInDaysExpected: Int! (scalar)
-        if (this.MinArchivalRetentionInDaysExpected == null && Exploration.Includes(parent + ".minArchivalRetentionInDaysExpected", true))
+        if (this.MinArchivalRetentionInDaysExpected == null && ec.Includes("minArchivalRetentionInDaysExpected",true))
         {
             this.MinArchivalRetentionInDaysExpected = Int32.MinValue;
         }
@@ -143,12 +142,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<NonCompliantArchivalRetentionWithCommonRangeWarningsDetails> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new NonCompliantArchivalRetentionWithCommonRangeWarningsDetails());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<NonCompliantArchivalRetentionWithCommonRangeWarningsDetails> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

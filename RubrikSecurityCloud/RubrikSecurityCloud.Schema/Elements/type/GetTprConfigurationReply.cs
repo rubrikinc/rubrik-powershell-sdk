@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int32? ExecutionMaxTimeoutHours
         // GraphQL -> executionMaxTimeoutHours: Int (scalar)
-        if (this.ExecutionMaxTimeoutHours == null && Exploration.Includes(parent + ".executionMaxTimeoutHours", true))
+        if (this.ExecutionMaxTimeoutHours == null && ec.Includes("executionMaxTimeoutHours",true))
         {
             this.ExecutionMaxTimeoutHours = Int32.MinValue;
         }
         //      C# -> System.Boolean? IsTprEnabled
         // GraphQL -> isTprEnabled: Boolean! (scalar)
-        if (this.IsTprEnabled == null && Exploration.Includes(parent + ".isTprEnabled", true))
+        if (this.IsTprEnabled == null && ec.Includes("isTprEnabled",true))
         {
             this.IsTprEnabled = true;
         }
         //      C# -> System.Int32? ReminderHours
         // GraphQL -> reminderHours: Int (scalar)
-        if (this.ReminderHours == null && Exploration.Includes(parent + ".reminderHours", true))
+        if (this.ReminderHours == null && ec.Includes("reminderHours",true))
         {
             this.ReminderHours = Int32.MinValue;
         }
         //      C# -> System.Int32? RequestTimeoutHours
         // GraphQL -> requestTimeoutHours: Int (scalar)
-        if (this.RequestTimeoutHours == null && Exploration.Includes(parent + ".requestTimeoutHours", true))
+        if (this.RequestTimeoutHours == null && ec.Includes("requestTimeoutHours",true))
         {
             this.RequestTimeoutHours = Int32.MinValue;
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GetTprConfigurationReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GetTprConfigurationReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<GetTprConfigurationReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

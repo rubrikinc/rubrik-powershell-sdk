@@ -40,6 +40,9 @@ Supported in v5.0+
 - shouldSkipDropDbInUndo: System.Boolean
   - Supported in v8.1+
       Indicates whether to skip dropping the database in undo task if the database was partially recovered.
+- shouldAllowRenameToSource: System.Boolean
+  - Supported in v9.0+
+      A boolean value determines if the database can be renamed back to the source Oracle host or RAC during the clone.
 - recoveryPoint: OracleRecoveryPointInput
   - Required. Supported in v5.0+
       v5.0-v5.2: Snapshot ID or timestamp for which the export is done.

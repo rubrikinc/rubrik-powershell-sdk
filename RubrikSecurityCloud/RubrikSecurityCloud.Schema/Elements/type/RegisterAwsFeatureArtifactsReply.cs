@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<AwsRscAccountDetails>? AllAwsNativeIdtoRscIdMappings
         // GraphQL -> allAwsNativeIdtoRscIdMappings: [AwsRscAccountDetails!]! (type)
-        if (this.AllAwsNativeIdtoRscIdMappings == null && Exploration.Includes(parent + ".allAwsNativeIdtoRscIdMappings"))
+        if (this.AllAwsNativeIdtoRscIdMappings == null && ec.Includes("allAwsNativeIdtoRscIdMappings",false))
         {
             this.AllAwsNativeIdtoRscIdMappings = new List<AwsRscAccountDetails>();
-            this.AllAwsNativeIdtoRscIdMappings.ApplyExploratoryFieldSpec(parent + ".allAwsNativeIdtoRscIdMappings");
+            this.AllAwsNativeIdtoRscIdMappings.ApplyExploratoryFieldSpec(ec.NewChild("allAwsNativeIdtoRscIdMappings"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RegisterAwsFeatureArtifactsReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RegisterAwsFeatureArtifactsReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<RegisterAwsFeatureArtifactsReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

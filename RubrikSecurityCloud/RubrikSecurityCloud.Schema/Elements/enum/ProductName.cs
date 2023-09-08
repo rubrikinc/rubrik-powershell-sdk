@@ -63,6 +63,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "SONAR_NAS")]
         SONAR_NAS,
 
+        [EnumMember(Value = "SONAR_O365")]
+        SONAR_O365,
+
         [EnumMember(Value = "SONAR_UCL")]
         SONAR_UCL,
 

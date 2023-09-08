@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int32? NumberOfOccurrences
         // GraphQL -> numberOfOccurrences: Int! (scalar)
-        if (this.NumberOfOccurrences == null && Exploration.Includes(parent + ".numberOfOccurrences", true))
+        if (this.NumberOfOccurrences == null && ec.Includes("numberOfOccurrences",true))
         {
             this.NumberOfOccurrences = Int32.MinValue;
         }
         //      C# -> DateTime? StartDate
         // GraphQL -> startDate: DateTime! (scalar)
-        if (this.StartDate == null && Exploration.Includes(parent + ".startDate", true))
+        if (this.StartDate == null && ec.Includes("startDate",true))
         {
             this.StartDate = new DateTime();
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<NumberedRecurrenceRange> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new NumberedRecurrenceRange());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<NumberedRecurrenceRange> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

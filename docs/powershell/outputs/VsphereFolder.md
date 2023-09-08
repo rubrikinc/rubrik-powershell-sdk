@@ -1,4 +1,6 @@
 ### VsphereFolder
+- cdmId: System.String
+  - Vsphere folder CDM ID.
 - folderType: VmwareFolderType
   - Vsphere folder type.
 - vCenterId: System.String

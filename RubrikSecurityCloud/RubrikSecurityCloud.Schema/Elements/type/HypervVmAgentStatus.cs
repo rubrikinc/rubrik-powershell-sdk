@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> HypervVmAgentConnectionStatus? ConnectionStatus
         // GraphQL -> connectionStatus: HypervVmAgentConnectionStatus! (enum)
-        if (this.ConnectionStatus == null && Exploration.Includes(parent + ".connectionStatus", true))
+        if (this.ConnectionStatus == null && ec.Includes("connectionStatus",true))
         {
             this.ConnectionStatus = new HypervVmAgentConnectionStatus();
         }
         //      C# -> System.String? DisconnectReason
         // GraphQL -> disconnectReason: String (scalar)
-        if (this.DisconnectReason == null && Exploration.Includes(parent + ".disconnectReason", true))
+        if (this.DisconnectReason == null && ec.Includes("disconnectReason",true))
         {
             this.DisconnectReason = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<HypervVmAgentStatus> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new HypervVmAgentStatus());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<HypervVmAgentStatus> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -98,29 +98,28 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> TaskSummaryConnection? TaskSummaryConnection
         // GraphQL -> taskSummaryConnection: TaskSummaryConnection! (type)
-        if (this.TaskSummaryConnection == null && Exploration.Includes(parent + ".taskSummaryConnection"))
+        if (this.TaskSummaryConnection == null && ec.Includes("taskSummaryConnection",false))
         {
             this.TaskSummaryConnection = new TaskSummaryConnection();
-            this.TaskSummaryConnection.ApplyExploratoryFieldSpec(parent + ".taskSummaryConnection");
+            this.TaskSummaryConnection.ApplyExploratoryFieldSpec(ec.NewChild("taskSummaryConnection"));
         }
         //      C# -> List<TaskSummaryGroupBy>? TaskSummaryGroupByField
         // GraphQL -> taskSummaryGroupBy: [TaskSummaryGroupBy!]! (type)
-        if (this.TaskSummaryGroupByField == null && Exploration.Includes(parent + ".taskSummaryGroupBy"))
+        if (this.TaskSummaryGroupByField == null && ec.Includes("taskSummaryGroupBy",false))
         {
             this.TaskSummaryGroupByField = new List<TaskSummaryGroupBy>();
-            this.TaskSummaryGroupByField.ApplyExploratoryFieldSpec(parent + ".taskSummaryGroupBy");
+            this.TaskSummaryGroupByField.ApplyExploratoryFieldSpec(ec.NewChild("taskSummaryGroupBy"));
         }
         //      C# -> TaskSummaryGroupByInfo? GroupByInfo
         // GraphQL -> groupByInfo: TaskSummaryGroupByInfo! (union)
-        if (this.GroupByInfo == null && Exploration.Includes(parent + ".groupByInfo"))
+        if (this.GroupByInfo == null && ec.Includes("groupByInfo",false))
         {
             var impls = new List<TaskSummaryGroupByInfo>();
-            impls.ApplyExploratoryFieldSpec(parent + ".groupByInfo");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
             this.GroupByInfo = (TaskSummaryGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
         }
     }
@@ -155,12 +154,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<TaskSummaryGroupBy> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new TaskSummaryGroupBy());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<TaskSummaryGroupBy> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

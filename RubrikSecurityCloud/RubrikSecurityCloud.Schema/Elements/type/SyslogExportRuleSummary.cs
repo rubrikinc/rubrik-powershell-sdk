@@ -95,28 +95,27 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> SyslogCertificateInfo? SyslogCertificateInfo
         // GraphQL -> syslogCertificateInfo: SyslogCertificateInfo (type)
-        if (this.SyslogCertificateInfo == null && Exploration.Includes(parent + ".syslogCertificateInfo"))
+        if (this.SyslogCertificateInfo == null && ec.Includes("syslogCertificateInfo",false))
         {
             this.SyslogCertificateInfo = new SyslogCertificateInfo();
-            this.SyslogCertificateInfo.ApplyExploratoryFieldSpec(parent + ".syslogCertificateInfo");
+            this.SyslogCertificateInfo.ApplyExploratoryFieldSpec(ec.NewChild("syslogCertificateInfo"));
         }
         //      C# -> SyslogExportRuleFull? SyslogExportRuleFull
         // GraphQL -> syslogExportRuleFull: SyslogExportRuleFull (type)
-        if (this.SyslogExportRuleFull == null && Exploration.Includes(parent + ".syslogExportRuleFull"))
+        if (this.SyslogExportRuleFull == null && ec.Includes("syslogExportRuleFull",false))
         {
             this.SyslogExportRuleFull = new SyslogExportRuleFull();
-            this.SyslogExportRuleFull.ApplyExploratoryFieldSpec(parent + ".syslogExportRuleFull");
+            this.SyslogExportRuleFull.ApplyExploratoryFieldSpec(ec.NewChild("syslogExportRuleFull"));
         }
     }
 
@@ -150,12 +149,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SyslogExportRuleSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SyslogExportRuleSummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SyslogExportRuleSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

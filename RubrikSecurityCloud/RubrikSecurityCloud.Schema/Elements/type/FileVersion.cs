@@ -117,36 +117,35 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? FileMode
         // GraphQL -> fileMode: String (scalar)
-        if (this.FileMode == null && Exploration.Includes(parent + ".fileMode", true))
+        if (this.FileMode == null && ec.Includes("fileMode",true))
         {
             this.FileMode = "FETCH";
         }
         //      C# -> System.String? LastModified
         // GraphQL -> lastModified: String (scalar)
-        if (this.LastModified == null && Exploration.Includes(parent + ".lastModified", true))
+        if (this.LastModified == null && ec.Includes("lastModified",true))
         {
             this.LastModified = "FETCH";
         }
         //      C# -> System.Int64? Size
         // GraphQL -> size: Long (scalar)
-        if (this.Size == null && Exploration.Includes(parent + ".size", true))
+        if (this.Size == null && ec.Includes("size",true))
         {
             this.Size = new System.Int64();
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: String (scalar)
-        if (this.SnapshotId == null && Exploration.Includes(parent + ".snapshotId", true))
+        if (this.SnapshotId == null && ec.Includes("snapshotId",true))
         {
             this.SnapshotId = "FETCH";
         }
         //      C# -> System.String? Source
         // GraphQL -> source: String (scalar)
-        if (this.Source == null && Exploration.Includes(parent + ".source", true))
+        if (this.Source == null && ec.Includes("source",true))
         {
             this.Source = "FETCH";
         }
@@ -182,12 +181,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<FileVersion> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new FileVersion());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<FileVersion> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

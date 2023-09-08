@@ -81,22 +81,21 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> RoleStatus? GlobalAdministrator
         // GraphQL -> globalAdministrator: RoleStatus (type)
-        if (this.GlobalAdministrator == null && Exploration.Includes(parent + ".globalAdministrator"))
+        if (this.GlobalAdministrator == null && ec.Includes("globalAdministrator",false))
         {
             this.GlobalAdministrator = new RoleStatus();
-            this.GlobalAdministrator.ApplyExploratoryFieldSpec(parent + ".globalAdministrator");
+            this.GlobalAdministrator.ApplyExploratoryFieldSpec(ec.NewChild("globalAdministrator"));
         }
         //      C# -> RoleStatus? SubscriptionOwner
         // GraphQL -> subscriptionOwner: RoleStatus (type)
-        if (this.SubscriptionOwner == null && Exploration.Includes(parent + ".subscriptionOwner"))
+        if (this.SubscriptionOwner == null && ec.Includes("subscriptionOwner",false))
         {
             this.SubscriptionOwner = new RoleStatus();
-            this.SubscriptionOwner.ApplyExploratoryFieldSpec(parent + ".subscriptionOwner");
+            this.SubscriptionOwner.ApplyExploratoryFieldSpec(ec.NewChild("subscriptionOwner"));
         }
     }
 
@@ -130,12 +129,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AzureUserRoleResp> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AzureUserRoleResp());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AzureUserRoleResp> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Key
         // GraphQL -> key: String! (scalar)
-        if (this.Key == null && Exploration.Includes(parent + ".key", true))
+        if (this.Key == null && ec.Includes("key",true))
         {
             this.Key = "FETCH";
         }
         //      C# -> System.Int32? SizeGbs
         // GraphQL -> sizeGbs: Int! (scalar)
-        if (this.SizeGbs == null && Exploration.Includes(parent + ".sizeGbs", true))
+        if (this.SizeGbs == null && ec.Includes("sizeGbs",true))
         {
             this.SizeGbs = Int32.MinValue;
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<Ec2InstanceVolume> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new Ec2InstanceVolume());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<Ec2InstanceVolume> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

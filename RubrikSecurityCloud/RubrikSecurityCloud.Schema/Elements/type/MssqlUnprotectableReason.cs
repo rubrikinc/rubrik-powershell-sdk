@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> MssqlUnprotectableType? UnprotectableType
         // GraphQL -> unprotectableType: MssqlUnprotectableType! (enum)
-        if (this.UnprotectableType == null && Exploration.Includes(parent + ".unprotectableType", true))
+        if (this.UnprotectableType == null && ec.Includes("unprotectableType",true))
         {
             this.UnprotectableType = new MssqlUnprotectableType();
         }
         //      C# -> System.String? Message
         // GraphQL -> message: String! (scalar)
-        if (this.Message == null && Exploration.Includes(parent + ".message", true))
+        if (this.Message == null && ec.Includes("message",true))
         {
             this.Message = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<MssqlUnprotectableReason> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new MssqlUnprotectableReason());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<MssqlUnprotectableReason> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

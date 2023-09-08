@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Cidr
         // GraphQL -> cidr: String! (scalar)
-        if (this.Cidr == null && Exploration.Includes(parent + ".cidr", true))
+        if (this.Cidr == null && ec.Includes("cidr",true))
         {
             this.Cidr = "FETCH";
         }
         //      C# -> System.String? InterfaceName
         // GraphQL -> interfaceName: String! (scalar)
-        if (this.InterfaceName == null && Exploration.Includes(parent + ".interfaceName", true))
+        if (this.InterfaceName == null && ec.Includes("interfaceName",true))
         {
             this.InterfaceName = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ClusterNodeInterfaceCidr> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ClusterNodeInterfaceCidr());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ClusterNodeInterfaceCidr> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

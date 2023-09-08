@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> HypervVirtualMachineMountSummary? HypervVirtualMachineMountSummary
         // GraphQL -> hypervVirtualMachineMountSummary: HypervVirtualMachineMountSummary (type)
-        if (this.HypervVirtualMachineMountSummary == null && Exploration.Includes(parent + ".hypervVirtualMachineMountSummary"))
+        if (this.HypervVirtualMachineMountSummary == null && ec.Includes("hypervVirtualMachineMountSummary",false))
         {
             this.HypervVirtualMachineMountSummary = new HypervVirtualMachineMountSummary();
-            this.HypervVirtualMachineMountSummary.ApplyExploratoryFieldSpec(parent + ".hypervVirtualMachineMountSummary");
+            this.HypervVirtualMachineMountSummary.ApplyExploratoryFieldSpec(ec.NewChild("hypervVirtualMachineMountSummary"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<UpdateHypervVirtualMachineSnapshotMountReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new UpdateHypervVirtualMachineSnapshotMountReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<UpdateHypervVirtualMachineSnapshotMountReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

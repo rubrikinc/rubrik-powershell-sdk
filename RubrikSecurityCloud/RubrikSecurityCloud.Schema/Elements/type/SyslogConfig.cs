@@ -95,28 +95,27 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int32? Id
         // GraphQL -> id: Int! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = Int32.MinValue;
         }
         //      C# -> CommonNotificationConfig? NotificationConf
         // GraphQL -> notificationConf: CommonNotificationConfig (type)
-        if (this.NotificationConf == null && Exploration.Includes(parent + ".notificationConf"))
+        if (this.NotificationConf == null && ec.Includes("notificationConf",false))
         {
             this.NotificationConf = new CommonNotificationConfig();
-            this.NotificationConf.ApplyExploratoryFieldSpec(parent + ".notificationConf");
+            this.NotificationConf.ApplyExploratoryFieldSpec(ec.NewChild("notificationConf"));
         }
         //      C# -> SyslogSetting? SyslogConf
         // GraphQL -> syslogConf: SyslogSetting (type)
-        if (this.SyslogConf == null && Exploration.Includes(parent + ".syslogConf"))
+        if (this.SyslogConf == null && ec.Includes("syslogConf",false))
         {
             this.SyslogConf = new SyslogSetting();
-            this.SyslogConf.ApplyExploratoryFieldSpec(parent + ".syslogConf");
+            this.SyslogConf.ApplyExploratoryFieldSpec(ec.NewChild("syslogConf"));
         }
     }
 
@@ -150,12 +149,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SyslogConfig> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SyslogConfig());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SyslogConfig> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

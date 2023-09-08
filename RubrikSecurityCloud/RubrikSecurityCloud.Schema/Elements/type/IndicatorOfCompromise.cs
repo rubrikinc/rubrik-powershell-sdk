@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> IndicatorOfCompromiseKind? IocKind
         // GraphQL -> iocKind: IndicatorOfCompromiseKind! (enum)
-        if (this.IocKind == null && Exploration.Includes(parent + ".iocKind", true))
+        if (this.IocKind == null && ec.Includes("iocKind",true))
         {
             this.IocKind = new IndicatorOfCompromiseKind();
         }
         //      C# -> System.String? IocValue
         // GraphQL -> iocValue: String! (scalar)
-        if (this.IocValue == null && Exploration.Includes(parent + ".iocValue", true))
+        if (this.IocValue == null && ec.Includes("iocValue",true))
         {
             this.IocValue = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<IndicatorOfCompromise> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new IndicatorOfCompromise());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<IndicatorOfCompromise> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

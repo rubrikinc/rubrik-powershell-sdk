@@ -81,22 +81,21 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ErrorInfo? TestError
         // GraphQL -> testError: ErrorInfo (type)
-        if (this.TestError == null && Exploration.Includes(parent + ".testError"))
+        if (this.TestError == null && ec.Includes("testError",false))
         {
             this.TestError = new ErrorInfo();
-            this.TestError.ApplyExploratoryFieldSpec(parent + ".testError");
+            this.TestError.ApplyExploratoryFieldSpec(ec.NewChild("testError"));
         }
         //      C# -> Webhook? Webhook
         // GraphQL -> webhook: Webhook! (type)
-        if (this.Webhook == null && Exploration.Includes(parent + ".webhook"))
+        if (this.Webhook == null && ec.Includes("webhook",false))
         {
             this.Webhook = new Webhook();
-            this.Webhook.ApplyExploratoryFieldSpec(parent + ".webhook");
+            this.Webhook.ApplyExploratoryFieldSpec(ec.NewChild("webhook"));
         }
     }
 
@@ -130,12 +129,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<UpdateWebhookReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new UpdateWebhookReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<UpdateWebhookReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

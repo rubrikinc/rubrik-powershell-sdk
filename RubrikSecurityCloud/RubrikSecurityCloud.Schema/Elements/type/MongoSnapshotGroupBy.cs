@@ -98,29 +98,28 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> CdmSnapshotConnection? MongoSnapshotConnection
         // GraphQL -> mongoSnapshotConnection: CdmSnapshotConnection! (type)
-        if (this.MongoSnapshotConnection == null && Exploration.Includes(parent + ".mongoSnapshotConnection"))
+        if (this.MongoSnapshotConnection == null && ec.Includes("mongoSnapshotConnection",false))
         {
             this.MongoSnapshotConnection = new CdmSnapshotConnection();
-            this.MongoSnapshotConnection.ApplyExploratoryFieldSpec(parent + ".mongoSnapshotConnection");
+            this.MongoSnapshotConnection.ApplyExploratoryFieldSpec(ec.NewChild("mongoSnapshotConnection"));
         }
         //      C# -> List<MongoSnapshotGroupBy>? MongoSnapshotGroupByField
         // GraphQL -> mongoSnapshotGroupBy: [MongoSnapshotGroupBy!]! (type)
-        if (this.MongoSnapshotGroupByField == null && Exploration.Includes(parent + ".mongoSnapshotGroupBy"))
+        if (this.MongoSnapshotGroupByField == null && ec.Includes("mongoSnapshotGroupBy",false))
         {
             this.MongoSnapshotGroupByField = new List<MongoSnapshotGroupBy>();
-            this.MongoSnapshotGroupByField.ApplyExploratoryFieldSpec(parent + ".mongoSnapshotGroupBy");
+            this.MongoSnapshotGroupByField.ApplyExploratoryFieldSpec(ec.NewChild("mongoSnapshotGroupBy"));
         }
         //      C# -> MongoSnapshotGroupByInfo? GroupByInfo
         // GraphQL -> groupByInfo: MongoSnapshotGroupByInfo! (union)
-        if (this.GroupByInfo == null && Exploration.Includes(parent + ".groupByInfo"))
+        if (this.GroupByInfo == null && ec.Includes("groupByInfo",false))
         {
             var impls = new List<MongoSnapshotGroupByInfo>();
-            impls.ApplyExploratoryFieldSpec(parent + ".groupByInfo");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
             this.GroupByInfo = (MongoSnapshotGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
         }
     }
@@ -155,12 +154,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<MongoSnapshotGroupBy> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new MongoSnapshotGroupBy());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<MongoSnapshotGroupBy> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

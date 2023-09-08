@@ -145,48 +145,47 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? FileMode
         // GraphQL -> fileMode: String (scalar)
-        if (this.FileMode == null && Exploration.Includes(parent + ".fileMode", true))
+        if (this.FileMode == null && ec.Includes("fileMode",true))
         {
             this.FileMode = "FETCH";
         }
         //      C# -> System.String? Filename
         // GraphQL -> filename: String (scalar)
-        if (this.Filename == null && Exploration.Includes(parent + ".filename", true))
+        if (this.Filename == null && ec.Includes("filename",true))
         {
             this.Filename = "FETCH";
         }
         //      C# -> System.String? LastModified
         // GraphQL -> lastModified: String (scalar)
-        if (this.LastModified == null && Exploration.Includes(parent + ".lastModified", true))
+        if (this.LastModified == null && ec.Includes("lastModified",true))
         {
             this.LastModified = "FETCH";
         }
         //      C# -> System.String? Path
         // GraphQL -> path: String (scalar)
-        if (this.Path == null && Exploration.Includes(parent + ".path", true))
+        if (this.Path == null && ec.Includes("path",true))
         {
             this.Path = "FETCH";
         }
         //      C# -> System.Int64? Size
         // GraphQL -> size: Long (scalar)
-        if (this.Size == null && Exploration.Includes(parent + ".size", true))
+        if (this.Size == null && ec.Includes("size",true))
         {
             this.Size = new System.Int64();
         }
         //      C# -> System.String? StatusMessage
         // GraphQL -> statusMessage: String (scalar)
-        if (this.StatusMessage == null && Exploration.Includes(parent + ".statusMessage", true))
+        if (this.StatusMessage == null && ec.Includes("statusMessage",true))
         {
             this.StatusMessage = "FETCH";
         }
         //      C# -> System.Int32? Unreadable
         // GraphQL -> unreadable: Int (scalar)
-        if (this.Unreadable == null && Exploration.Includes(parent + ".unreadable", true))
+        if (this.Unreadable == null && ec.Includes("unreadable",true))
         {
             this.Unreadable = Int32.MinValue;
         }
@@ -222,12 +221,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<BrowseResponse> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new BrowseResponse());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<BrowseResponse> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

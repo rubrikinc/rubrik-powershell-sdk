@@ -131,42 +131,41 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<AwsAuthServerBasedCloudAccountRegion>? AuthServerAwsRegions
         // GraphQL -> authServerAwsRegions: [AwsAuthServerBasedCloudAccountRegion!]! (enum)
-        if (this.AuthServerAwsRegions == null && Exploration.Includes(parent + ".authServerAwsRegions", true))
+        if (this.AuthServerAwsRegions == null && ec.Includes("authServerAwsRegions",true))
         {
             this.AuthServerAwsRegions = new List<AwsAuthServerBasedCloudAccountRegion>();
         }
         //      C# -> System.String? Agency
         // GraphQL -> agency: String! (scalar)
-        if (this.Agency == null && Exploration.Includes(parent + ".agency", true))
+        if (this.Agency == null && ec.Includes("agency",true))
         {
             this.Agency = "FETCH";
         }
         //      C# -> System.Int64? AuthServerCaCertId
         // GraphQL -> authServerCaCertId: Long! (scalar)
-        if (this.AuthServerCaCertId == null && Exploration.Includes(parent + ".authServerCaCertId", true))
+        if (this.AuthServerCaCertId == null && ec.Includes("authServerCaCertId",true))
         {
             this.AuthServerCaCertId = new System.Int64();
         }
         //      C# -> System.String? AuthServerHostName
         // GraphQL -> authServerHostName: String! (scalar)
-        if (this.AuthServerHostName == null && Exploration.Includes(parent + ".authServerHostName", true))
+        if (this.AuthServerHostName == null && ec.Includes("authServerHostName",true))
         {
             this.AuthServerHostName = "FETCH";
         }
         //      C# -> System.Int64? AuthServerUserClientCertId
         // GraphQL -> authServerUserClientCertId: Long! (scalar)
-        if (this.AuthServerUserClientCertId == null && Exploration.Includes(parent + ".authServerUserClientCertId", true))
+        if (this.AuthServerUserClientCertId == null && ec.Includes("authServerUserClientCertId",true))
         {
             this.AuthServerUserClientCertId = new System.Int64();
         }
         //      C# -> System.String? RoleName
         // GraphQL -> roleName: String! (scalar)
-        if (this.RoleName == null && Exploration.Includes(parent + ".roleName", true))
+        if (this.RoleName == null && ec.Includes("roleName",true))
         {
             this.RoleName = "FETCH";
         }
@@ -202,12 +201,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AwsAuthServerDetail> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AwsAuthServerDetail());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AwsAuthServerDetail> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

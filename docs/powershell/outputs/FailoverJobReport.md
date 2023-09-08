@@ -1,5 +1,5 @@
 ### FailoverJobReport
-Failover job reports for Blueprints.
+Failover job reports for Recovery Plan.
 
 - jobId: System.String
   - The job ID for the failover.
@@ -28,7 +28,7 @@ Failover job reports for Blueprints.
 - dataTransferType: System.String
   - Type of data transfer.
 - blueprintId: System.String
-  - The ID of the Blueprint.
+  - Recovery Plan ID.
 - isBlueprintVisible: System.Boolean
   - Specifies if the Blueprint is visible.
 - blueprintName: System.String

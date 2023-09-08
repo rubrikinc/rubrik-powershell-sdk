@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> UrlName? UrlName
         // GraphQL -> urlName: UrlName! (enum)
-        if (this.UrlName == null && Exploration.Includes(parent + ".urlName", true))
+        if (this.UrlName == null && ec.Includes("urlName",true))
         {
             this.UrlName = new UrlName();
         }
         //      C# -> System.String? DisplayText
         // GraphQL -> displayText: String! (scalar)
-        if (this.DisplayText == null && Exploration.Includes(parent + ".displayText", true))
+        if (this.DisplayText == null && ec.Includes("displayText",true))
         {
             this.DisplayText = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<UrlMap> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new UrlMap());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<UrlMap> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

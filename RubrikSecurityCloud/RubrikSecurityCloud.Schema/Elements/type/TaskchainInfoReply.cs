@@ -187,66 +187,65 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> TaskchainState? State
         // GraphQL -> state: TaskchainState! (enum)
-        if (this.State == null && Exploration.Includes(parent + ".state", true))
+        if (this.State == null && ec.Includes("state",true))
         {
             this.State = new TaskchainState();
         }
         //      C# -> System.String? Account
         // GraphQL -> account: String! (scalar)
-        if (this.Account == null && Exploration.Includes(parent + ".account", true))
+        if (this.Account == null && ec.Includes("account",true))
         {
             this.Account = "FETCH";
         }
         //      C# -> DateTime? EndTime
         // GraphQL -> endTime: DateTime (scalar)
-        if (this.EndTime == null && Exploration.Includes(parent + ".endTime", true))
+        if (this.EndTime == null && ec.Includes("endTime",true))
         {
             this.EndTime = new DateTime();
         }
         //      C# -> System.String? Error
         // GraphQL -> error: String! (scalar)
-        if (this.Error == null && Exploration.Includes(parent + ".error", true))
+        if (this.Error == null && ec.Includes("error",true))
         {
             this.Error = "FETCH";
         }
         //      C# -> System.Int64? JobId
         // GraphQL -> jobId: Long! (scalar)
-        if (this.JobId == null && Exploration.Includes(parent + ".jobId", true))
+        if (this.JobId == null && ec.Includes("jobId",true))
         {
             this.JobId = new System.Int64();
         }
         //      C# -> System.String? JobType
         // GraphQL -> jobType: String! (scalar)
-        if (this.JobType == null && Exploration.Includes(parent + ".jobType", true))
+        if (this.JobType == null && ec.Includes("jobType",true))
         {
             this.JobType = "FETCH";
         }
         //      C# -> System.String? PlatformConfig
         // GraphQL -> platformConfig: String (scalar)
-        if (this.PlatformConfig == null && Exploration.Includes(parent + ".platformConfig", true))
+        if (this.PlatformConfig == null && ec.Includes("platformConfig",true))
         {
             this.PlatformConfig = "FETCH";
         }
         //      C# -> System.Int64? Progress
         // GraphQL -> progress: Long! (scalar)
-        if (this.Progress == null && Exploration.Includes(parent + ".progress", true))
+        if (this.Progress == null && ec.Includes("progress",true))
         {
             this.Progress = new System.Int64();
         }
         //      C# -> DateTime? StartTime
         // GraphQL -> startTime: DateTime (scalar)
-        if (this.StartTime == null && Exploration.Includes(parent + ".startTime", true))
+        if (this.StartTime == null && ec.Includes("startTime",true))
         {
             this.StartTime = new DateTime();
         }
         //      C# -> System.String? TaskchainId
         // GraphQL -> taskchainId: String! (scalar)
-        if (this.TaskchainId == null && Exploration.Includes(parent + ".taskchainId", true))
+        if (this.TaskchainId == null && ec.Includes("taskchainId",true))
         {
             this.TaskchainId = "FETCH";
         }
@@ -282,12 +281,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<TaskchainInfoReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new TaskchainInfoReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<TaskchainInfoReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

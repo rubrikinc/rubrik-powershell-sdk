@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Code
         // GraphQL -> code: String! (scalar)
-        if (this.Code == null && Exploration.Includes(parent + ".code", true))
+        if (this.Code == null && ec.Includes("code",true))
         {
             this.Code = "FETCH";
         }
         //      C# -> System.String? Excepshuns
         // GraphQL -> excepshuns: String! (scalar)
-        if (this.Excepshuns == null && Exploration.Includes(parent + ".excepshuns", true))
+        if (this.Excepshuns == null && ec.Includes("excepshuns",true))
         {
             this.Excepshuns = "FETCH";
         }
         //      C# -> System.String? Message
         // GraphQL -> message: String! (scalar)
-        if (this.Message == null && Exploration.Includes(parent + ".message", true))
+        if (this.Message == null && ec.Includes("message",true))
         {
             this.Message = "FETCH";
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SetUpgradeTypeReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SetUpgradeTypeReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SetUpgradeTypeReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

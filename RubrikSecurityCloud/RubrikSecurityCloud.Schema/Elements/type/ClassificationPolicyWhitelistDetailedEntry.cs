@@ -120,38 +120,37 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> HierarchyObject? Snappable
         // GraphQL -> snappable: HierarchyObject! (interface)
-        if (this.Snappable == null && Exploration.Includes(parent + ".snappable"))
+        if (this.Snappable == null && ec.Includes("snappable",false))
         {
             var impls = new List<HierarchyObject>();
-            impls.ApplyExploratoryFieldSpec(parent + ".snappable");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("snappable"));
             this.Snappable = (HierarchyObject)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> System.String? NativePath
         // GraphQL -> nativePath: String! (scalar)
-        if (this.NativePath == null && Exploration.Includes(parent + ".nativePath", true))
+        if (this.NativePath == null && ec.Includes("nativePath",true))
         {
             this.NativePath = "FETCH";
         }
         //      C# -> System.String? StdPath
         // GraphQL -> stdPath: String! (scalar)
-        if (this.StdPath == null && Exploration.Includes(parent + ".stdPath", true))
+        if (this.StdPath == null && ec.Includes("stdPath",true))
         {
             this.StdPath = "FETCH";
         }
         //      C# -> System.Int64? UpdateTs
         // GraphQL -> updateTs: Long! (scalar)
-        if (this.UpdateTs == null && Exploration.Includes(parent + ".updateTs", true))
+        if (this.UpdateTs == null && ec.Includes("updateTs",true))
         {
             this.UpdateTs = new System.Int64();
         }
         //      C# -> System.String? UpdateUsername
         // GraphQL -> updateUsername: String! (scalar)
-        if (this.UpdateUsername == null && Exploration.Includes(parent + ".updateUsername", true))
+        if (this.UpdateUsername == null && ec.Includes("updateUsername",true))
         {
             this.UpdateUsername = "FETCH";
         }
@@ -187,12 +186,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ClassificationPolicyWhitelistDetailedEntry> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ClassificationPolicyWhitelistDetailedEntry());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ClassificationPolicyWhitelistDetailedEntry> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

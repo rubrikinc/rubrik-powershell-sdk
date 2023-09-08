@@ -104,30 +104,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<RetentionUnit>? FrequenciesProvided
         // GraphQL -> frequenciesProvided: [RetentionUnit!]! (enum)
-        if (this.FrequenciesProvided == null && Exploration.Includes(parent + ".frequenciesProvided", true))
+        if (this.FrequenciesProvided == null && ec.Includes("frequenciesProvided",true))
         {
             this.FrequenciesProvided = new List<RetentionUnit>();
         }
         //      C# -> WarningSeverityEnum? Severity
         // GraphQL -> severity: WarningSeverityEnum! (enum)
-        if (this.Severity == null && Exploration.Includes(parent + ".severity", true))
+        if (this.Severity == null && ec.Includes("severity",true))
         {
             this.Severity = new WarningSeverityEnum();
         }
         //      C# -> System.Int32? FrequencyCountExpected
         // GraphQL -> frequencyCountExpected: Int! (scalar)
-        if (this.FrequencyCountExpected == null && Exploration.Includes(parent + ".frequencyCountExpected", true))
+        if (this.FrequencyCountExpected == null && ec.Includes("frequencyCountExpected",true))
         {
             this.FrequencyCountExpected = Int32.MinValue;
         }
         //      C# -> System.Int32? FrequencyCountProvided
         // GraphQL -> frequencyCountProvided: Int! (scalar)
-        if (this.FrequencyCountProvided == null && Exploration.Includes(parent + ".frequencyCountProvided", true))
+        if (this.FrequencyCountProvided == null && ec.Includes("frequencyCountProvided",true))
         {
             this.FrequencyCountProvided = Int32.MinValue;
         }
@@ -163,12 +162,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SingleFrequencyArchivalWarningsDetails> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SingleFrequencyArchivalWarningsDetails());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SingleFrequencyArchivalWarningsDetails> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

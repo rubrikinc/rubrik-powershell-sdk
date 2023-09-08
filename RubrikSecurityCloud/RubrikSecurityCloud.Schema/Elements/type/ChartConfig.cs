@@ -131,42 +131,41 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ChartType? ChartType
         // GraphQL -> chartType: ChartType! (enum)
-        if (this.ChartType == null && Exploration.Includes(parent + ".chartType", true))
+        if (this.ChartType == null && ec.Includes("chartType",true))
         {
             this.ChartType = new ChartType();
         }
         //      C# -> List<System.String>? Aggregations
         // GraphQL -> aggregations: [String!]! (scalar)
-        if (this.Aggregations == null && Exploration.Includes(parent + ".aggregations", true))
+        if (this.Aggregations == null && ec.Includes("aggregations",true))
         {
             this.Aggregations = new List<System.String>();
         }
         //      C# -> System.String? ChartViewId
         // GraphQL -> chartViewId: String! (scalar)
-        if (this.ChartViewId == null && Exploration.Includes(parent + ".chartViewId", true))
+        if (this.ChartViewId == null && ec.Includes("chartViewId",true))
         {
             this.ChartViewId = "FETCH";
         }
         //      C# -> System.Boolean? DefaultChart
         // GraphQL -> defaultChart: Boolean! (scalar)
-        if (this.DefaultChart == null && Exploration.Includes(parent + ".defaultChart", true))
+        if (this.DefaultChart == null && ec.Includes("defaultChart",true))
         {
             this.DefaultChart = true;
         }
         //      C# -> List<System.String>? GroupBys
         // GraphQL -> groupBys: [String!]! (scalar)
-        if (this.GroupBys == null && Exploration.Includes(parent + ".groupBys", true))
+        if (this.GroupBys == null && ec.Includes("groupBys",true))
         {
             this.GroupBys = new List<System.String>();
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
@@ -202,12 +201,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ChartConfig> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ChartConfig());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ChartConfig> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? IsSuccessful
         // GraphQL -> isSuccessful: Boolean! (scalar)
-        if (this.IsSuccessful == null && Exploration.Includes(parent + ".isSuccessful", true))
+        if (this.IsSuccessful == null && ec.Includes("isSuccessful",true))
         {
             this.IsSuccessful = true;
         }
         //      C# -> ErrorInfo? ErrorInfo
         // GraphQL -> errorInfo: ErrorInfo (type)
-        if (this.ErrorInfo == null && Exploration.Includes(parent + ".errorInfo"))
+        if (this.ErrorInfo == null && ec.Includes("errorInfo",false))
         {
             this.ErrorInfo = new ErrorInfo();
-            this.ErrorInfo.ApplyExploratoryFieldSpec(parent + ".errorInfo");
+            this.ErrorInfo.ApplyExploratoryFieldSpec(ec.NewChild("errorInfo"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<TestWebhookReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new TestWebhookReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<TestWebhookReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

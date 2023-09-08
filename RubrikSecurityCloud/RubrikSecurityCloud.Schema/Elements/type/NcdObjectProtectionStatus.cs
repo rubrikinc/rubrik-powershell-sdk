@@ -109,34 +109,33 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? AverageFileSize
         // GraphQL -> averageFileSize: Long! (scalar)
-        if (this.AverageFileSize == null && Exploration.Includes(parent + ".averageFileSize", true))
+        if (this.AverageFileSize == null && ec.Includes("averageFileSize",true))
         {
             this.AverageFileSize = new System.Int64();
         }
         //      C# -> System.Int64? Throughput
         // GraphQL -> throughput: Long! (scalar)
-        if (this.Throughput == null && Exploration.Includes(parent + ".throughput", true))
+        if (this.Throughput == null && ec.Includes("throughput",true))
         {
             this.Throughput = new System.Int64();
         }
         //      C# -> NcdFilesObjectProtectionStatusData? Files
         // GraphQL -> files: NcdFilesObjectProtectionStatusData (type)
-        if (this.Files == null && Exploration.Includes(parent + ".files"))
+        if (this.Files == null && ec.Includes("files",false))
         {
             this.Files = new NcdFilesObjectProtectionStatusData();
-            this.Files.ApplyExploratoryFieldSpec(parent + ".files");
+            this.Files.ApplyExploratoryFieldSpec(ec.NewChild("files"));
         }
         //      C# -> NcdSharesObjectProtectionStatusData? Shares
         // GraphQL -> shares: NcdSharesObjectProtectionStatusData (type)
-        if (this.Shares == null && Exploration.Includes(parent + ".shares"))
+        if (this.Shares == null && ec.Includes("shares",false))
         {
             this.Shares = new NcdSharesObjectProtectionStatusData();
-            this.Shares.ApplyExploratoryFieldSpec(parent + ".shares");
+            this.Shares.ApplyExploratoryFieldSpec(ec.NewChild("shares"));
         }
     }
 
@@ -170,12 +169,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<NcdObjectProtectionStatus> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new NcdObjectProtectionStatus());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<NcdObjectProtectionStatus> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

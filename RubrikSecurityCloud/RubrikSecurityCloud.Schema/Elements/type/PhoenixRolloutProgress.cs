@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int32? NumEnabled
         // GraphQL -> numEnabled: Int! (scalar)
-        if (this.NumEnabled == null && Exploration.Includes(parent + ".numEnabled", true))
+        if (this.NumEnabled == null && ec.Includes("numEnabled",true))
         {
             this.NumEnabled = Int32.MinValue;
         }
         //      C# -> System.Int32? NumInProcess
         // GraphQL -> numInProcess: Int! (scalar)
-        if (this.NumInProcess == null && Exploration.Includes(parent + ".numInProcess", true))
+        if (this.NumInProcess == null && ec.Includes("numInProcess",true))
         {
             this.NumInProcess = Int32.MinValue;
         }
         //      C# -> System.Int32? NumIncompleteFirstFull
         // GraphQL -> numIncompleteFirstFull: Int! (scalar)
-        if (this.NumIncompleteFirstFull == null && Exploration.Includes(parent + ".numIncompleteFirstFull", true))
+        if (this.NumIncompleteFirstFull == null && ec.Includes("numIncompleteFirstFull",true))
         {
             this.NumIncompleteFirstFull = Int32.MinValue;
         }
         //      C# -> System.Int32? NumNotEnabled
         // GraphQL -> numNotEnabled: Int! (scalar)
-        if (this.NumNotEnabled == null && Exploration.Includes(parent + ".numNotEnabled", true))
+        if (this.NumNotEnabled == null && ec.Includes("numNotEnabled",true))
         {
             this.NumNotEnabled = Int32.MinValue;
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PhoenixRolloutProgress> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PhoenixRolloutProgress());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<PhoenixRolloutProgress> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

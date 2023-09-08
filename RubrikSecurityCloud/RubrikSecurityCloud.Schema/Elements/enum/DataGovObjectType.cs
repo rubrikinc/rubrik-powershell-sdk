@@ -126,6 +126,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "VSPHERE_COMPUTE_CLUSTER")]
         VSPHERE_COMPUTE_CLUSTER,
 
+        [EnumMember(Value = "VSPHERE_DATACENTER_FOLDER")]
+        VSPHERE_DATACENTER_FOLDER,
+
         [EnumMember(Value = "VSPHERE_FOLDER")]
         VSPHERE_FOLDER,
 

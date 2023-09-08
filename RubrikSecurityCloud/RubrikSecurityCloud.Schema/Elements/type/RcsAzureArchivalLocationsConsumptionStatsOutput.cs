@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<RcsArchivalLocationConsumptionStats>? RcsAzureConsumptionStats
         // GraphQL -> rcsAzureConsumptionStats: [RcsArchivalLocationConsumptionStats!]! (type)
-        if (this.RcsAzureConsumptionStats == null && Exploration.Includes(parent + ".rcsAzureConsumptionStats"))
+        if (this.RcsAzureConsumptionStats == null && ec.Includes("rcsAzureConsumptionStats",false))
         {
             this.RcsAzureConsumptionStats = new List<RcsArchivalLocationConsumptionStats>();
-            this.RcsAzureConsumptionStats.ApplyExploratoryFieldSpec(parent + ".rcsAzureConsumptionStats");
+            this.RcsAzureConsumptionStats.ApplyExploratoryFieldSpec(ec.NewChild("rcsAzureConsumptionStats"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RcsAzureArchivalLocationsConsumptionStatsOutput> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RcsAzureArchivalLocationsConsumptionStatsOutput());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<RcsAzureArchivalLocationsConsumptionStatsOutput> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

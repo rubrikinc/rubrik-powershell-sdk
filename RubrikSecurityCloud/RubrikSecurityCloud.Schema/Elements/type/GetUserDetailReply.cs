@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> RiskLevelType? Risk
         // GraphQL -> risk: RiskLevelType! (enum)
-        if (this.Risk == null && Exploration.Includes(parent + ".risk", true))
+        if (this.Risk == null && ec.Includes("risk",true))
         {
             this.Risk = new RiskLevelType();
         }
         //      C# -> System.String? Location
         // GraphQL -> location: String! (scalar)
-        if (this.Location == null && Exploration.Includes(parent + ".location", true))
+        if (this.Location == null && ec.Includes("location",true))
         {
             this.Location = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.Int32? NumFilesAccessible
         // GraphQL -> numFilesAccessible: Int! (scalar)
-        if (this.NumFilesAccessible == null && Exploration.Includes(parent + ".numFilesAccessible", true))
+        if (this.NumFilesAccessible == null && ec.Includes("numFilesAccessible",true))
         {
             this.NumFilesAccessible = Int32.MinValue;
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GetUserDetailReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GetUserDetailReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<GetUserDetailReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

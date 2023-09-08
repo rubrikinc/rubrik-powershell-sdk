@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? IsLoginEnabled
         // GraphQL -> isLoginEnabled: Boolean! (scalar)
-        if (this.IsLoginEnabled == null && Exploration.Includes(parent + ".isLoginEnabled", true))
+        if (this.IsLoginEnabled == null && ec.Includes("isLoginEnabled",true))
         {
             this.IsLoginEnabled = true;
         }
         //      C# -> System.String? LoginText
         // GraphQL -> loginText: String! (scalar)
-        if (this.LoginText == null && Exploration.Includes(parent + ".loginText", true))
+        if (this.LoginText == null && ec.Includes("loginText",true))
         {
             this.LoginText = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ClassificationLoginSettings> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ClassificationLoginSettings());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ClassificationLoginSettings> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

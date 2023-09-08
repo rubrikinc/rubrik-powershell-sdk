@@ -148,51 +148,50 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int32? HostCount
         // GraphQL -> hostCount: Int (scalar)
-        if (this.HostCount == null && Exploration.Includes(parent + ".hostCount", true))
+        if (this.HostCount == null && ec.Includes("hostCount",true))
         {
             this.HostCount = Int32.MinValue;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsArchived
         // GraphQL -> isArchived: Boolean (scalar)
-        if (this.IsArchived == null && Exploration.Includes(parent + ".isArchived", true))
+        if (this.IsArchived == null && ec.Includes("isArchived",true))
         {
             this.IsArchived = true;
         }
         //      C# -> System.Boolean? IsCreatedByKupr
         // GraphQL -> isCreatedByKupr: Boolean (scalar)
-        if (this.IsCreatedByKupr == null && Exploration.Includes(parent + ".isCreatedByKupr", true))
+        if (this.IsCreatedByKupr == null && ec.Includes("isCreatedByKupr",true))
         {
             this.IsCreatedByKupr = true;
         }
         //      C# -> System.String? PrimaryClusterId
         // GraphQL -> primaryClusterId: String! (scalar)
-        if (this.PrimaryClusterId == null && Exploration.Includes(parent + ".primaryClusterId", true))
+        if (this.PrimaryClusterId == null && ec.Includes("primaryClusterId",true))
         {
             this.PrimaryClusterId = "FETCH";
         }
         //      C# -> System.Int32? ShareCount
         // GraphQL -> shareCount: Int (scalar)
-        if (this.ShareCount == null && Exploration.Includes(parent + ".shareCount", true))
+        if (this.ShareCount == null && ec.Includes("shareCount",true))
         {
             this.ShareCount = Int32.MinValue;
         }
         //      C# -> FilesetTemplateCreate? FilesetTemplateCreate
         // GraphQL -> filesetTemplateCreate: FilesetTemplateCreate (type)
-        if (this.FilesetTemplateCreate == null && Exploration.Includes(parent + ".filesetTemplateCreate"))
+        if (this.FilesetTemplateCreate == null && ec.Includes("filesetTemplateCreate",false))
         {
             this.FilesetTemplateCreate = new FilesetTemplateCreate();
-            this.FilesetTemplateCreate.ApplyExploratoryFieldSpec(parent + ".filesetTemplateCreate");
+            this.FilesetTemplateCreate.ApplyExploratoryFieldSpec(ec.NewChild("filesetTemplateCreate"));
         }
     }
 
@@ -226,12 +225,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<FilesetTemplateDetail> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new FilesetTemplateDetail());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<FilesetTemplateDetail> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Role
         // GraphQL -> role: String! (scalar)
-        if (this.Role == null && Exploration.Includes(parent + ".role", true))
+        if (this.Role == null && ec.Includes("role",true))
         {
             this.Role = "FETCH";
         }
         //      C# -> Db2Instance? Db2Instance
         // GraphQL -> db2Instance: Db2Instance! (type)
-        if (this.Db2Instance == null && Exploration.Includes(parent + ".db2Instance"))
+        if (this.Db2Instance == null && ec.Includes("db2Instance",false))
         {
             this.Db2Instance = new Db2Instance();
-            this.Db2Instance.ApplyExploratoryFieldSpec(parent + ".db2Instance");
+            this.Db2Instance.ApplyExploratoryFieldSpec(ec.NewChild("db2Instance"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<Db2HadrInstanceInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new Db2HadrInstanceInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<Db2HadrInstanceInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

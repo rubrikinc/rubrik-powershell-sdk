@@ -191,68 +191,67 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<System.String>? ChannelHostMountPaths
         // GraphQL -> channelHostMountPaths: [String!]! (scalar)
-        if (this.ChannelHostMountPaths == null && Exploration.Includes(parent + ".channelHostMountPaths", true))
+        if (this.ChannelHostMountPaths == null && ec.Includes("channelHostMountPaths",true))
         {
             this.ChannelHostMountPaths = new List<System.String>();
         }
         //      C# -> System.Boolean? IsLogExportEnabled
         // GraphQL -> isLogExportEnabled: Boolean (scalar)
-        if (this.IsLogExportEnabled == null && Exploration.Includes(parent + ".isLogExportEnabled", true))
+        if (this.IsLogExportEnabled == null && ec.Includes("isLogExportEnabled",true))
         {
             this.IsLogExportEnabled = true;
         }
         //      C# -> System.Boolean? ShouldCancelBackupOnPreBackupScriptFailure
         // GraphQL -> shouldCancelBackupOnPreBackupScriptFailure: Boolean (scalar)
-        if (this.ShouldCancelBackupOnPreBackupScriptFailure == null && Exploration.Includes(parent + ".shouldCancelBackupOnPreBackupScriptFailure", true))
+        if (this.ShouldCancelBackupOnPreBackupScriptFailure == null && ec.Includes("shouldCancelBackupOnPreBackupScriptFailure",true))
         {
             this.ShouldCancelBackupOnPreBackupScriptFailure = true;
         }
         //      C# -> SlaManagedVolumeScriptSummary? BackupScriptDetails
         // GraphQL -> backupScriptDetails: SlaManagedVolumeScriptSummary (type)
-        if (this.BackupScriptDetails == null && Exploration.Includes(parent + ".backupScriptDetails"))
+        if (this.BackupScriptDetails == null && ec.Includes("backupScriptDetails",false))
         {
             this.BackupScriptDetails = new SlaManagedVolumeScriptSummary();
-            this.BackupScriptDetails.ApplyExploratoryFieldSpec(parent + ".backupScriptDetails");
+            this.BackupScriptDetails.ApplyExploratoryFieldSpec(ec.NewChild("backupScriptDetails"));
         }
         //      C# -> SlaManagedVolumeHostSummary? HostDetails
         // GraphQL -> hostDetails: SlaManagedVolumeHostSummary (type)
-        if (this.HostDetails == null && Exploration.Includes(parent + ".hostDetails"))
+        if (this.HostDetails == null && ec.Includes("hostDetails",false))
         {
             this.HostDetails = new SlaManagedVolumeHostSummary();
-            this.HostDetails.ApplyExploratoryFieldSpec(parent + ".hostDetails");
+            this.HostDetails.ApplyExploratoryFieldSpec(ec.NewChild("hostDetails"));
         }
         //      C# -> SlaManagedVolumeLogExportSummary? LogExportSummary
         // GraphQL -> logExportSummary: SlaManagedVolumeLogExportSummary (type)
-        if (this.LogExportSummary == null && Exploration.Includes(parent + ".logExportSummary"))
+        if (this.LogExportSummary == null && ec.Includes("logExportSummary",false))
         {
             this.LogExportSummary = new SlaManagedVolumeLogExportSummary();
-            this.LogExportSummary.ApplyExploratoryFieldSpec(parent + ".logExportSummary");
+            this.LogExportSummary.ApplyExploratoryFieldSpec(ec.NewChild("logExportSummary"));
         }
         //      C# -> SlaManagedVolumeScriptSummary? PostBackupScriptOnBackupFailureDetails
         // GraphQL -> postBackupScriptOnBackupFailureDetails: SlaManagedVolumeScriptSummary (type)
-        if (this.PostBackupScriptOnBackupFailureDetails == null && Exploration.Includes(parent + ".postBackupScriptOnBackupFailureDetails"))
+        if (this.PostBackupScriptOnBackupFailureDetails == null && ec.Includes("postBackupScriptOnBackupFailureDetails",false))
         {
             this.PostBackupScriptOnBackupFailureDetails = new SlaManagedVolumeScriptSummary();
-            this.PostBackupScriptOnBackupFailureDetails.ApplyExploratoryFieldSpec(parent + ".postBackupScriptOnBackupFailureDetails");
+            this.PostBackupScriptOnBackupFailureDetails.ApplyExploratoryFieldSpec(ec.NewChild("postBackupScriptOnBackupFailureDetails"));
         }
         //      C# -> SlaManagedVolumeScriptSummary? PostBackupScriptOnBackupSuccessDetails
         // GraphQL -> postBackupScriptOnBackupSuccessDetails: SlaManagedVolumeScriptSummary (type)
-        if (this.PostBackupScriptOnBackupSuccessDetails == null && Exploration.Includes(parent + ".postBackupScriptOnBackupSuccessDetails"))
+        if (this.PostBackupScriptOnBackupSuccessDetails == null && ec.Includes("postBackupScriptOnBackupSuccessDetails",false))
         {
             this.PostBackupScriptOnBackupSuccessDetails = new SlaManagedVolumeScriptSummary();
-            this.PostBackupScriptOnBackupSuccessDetails.ApplyExploratoryFieldSpec(parent + ".postBackupScriptOnBackupSuccessDetails");
+            this.PostBackupScriptOnBackupSuccessDetails.ApplyExploratoryFieldSpec(ec.NewChild("postBackupScriptOnBackupSuccessDetails"));
         }
         //      C# -> SlaManagedVolumeScriptSummary? PreBackupScriptDetails
         // GraphQL -> preBackupScriptDetails: SlaManagedVolumeScriptSummary (type)
-        if (this.PreBackupScriptDetails == null && Exploration.Includes(parent + ".preBackupScriptDetails"))
+        if (this.PreBackupScriptDetails == null && ec.Includes("preBackupScriptDetails",false))
         {
             this.PreBackupScriptDetails = new SlaManagedVolumeScriptSummary();
-            this.PreBackupScriptDetails.ApplyExploratoryFieldSpec(parent + ".preBackupScriptDetails");
+            this.PreBackupScriptDetails.ApplyExploratoryFieldSpec(ec.NewChild("preBackupScriptDetails"));
         }
     }
 
@@ -286,12 +285,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SlaManagedVolumeDetail> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SlaManagedVolumeDetail());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SlaManagedVolumeDetail> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -18,9 +18,12 @@ namespace RubrikSecurityCloud
             patchString = patchString.Trim();
             if (string.IsNullOrWhiteSpace(patchString))
             {
-                return;
+                _patches = new string[] { };
             }
-            _patches = patchString.Split(',');
+            else
+            {
+                _patches = patchString.Split(',');
+            }
         }
 
         public void Parse(ref HashSet<string> wantedFields, ref HashSet<string> unwantedFields)

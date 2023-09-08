@@ -132,42 +132,41 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsCalendarGroup
         // GraphQL -> isCalendarGroup: Boolean! (scalar)
-        if (this.IsCalendarGroup == null && Exploration.Includes(parent + ".isCalendarGroup", true))
+        if (this.IsCalendarGroup == null && ec.Includes("isCalendarGroup",true))
         {
             this.IsCalendarGroup = true;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? ParentFolderId
         // GraphQL -> parentFolderId: String (scalar)
-        if (this.ParentFolderId == null && Exploration.Includes(parent + ".parentFolderId", true))
+        if (this.ParentFolderId == null && ec.Includes("parentFolderId",true))
         {
             this.ParentFolderId = "FETCH";
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: UUID (scalar)
-        if (this.SnapshotId == null && Exploration.Includes(parent + ".snapshotId", true))
+        if (this.SnapshotId == null && ec.Includes("snapshotId",true))
         {
             this.SnapshotId = "FETCH";
         }
         //      C# -> DateTime? SnapshotTime
         // GraphQL -> snapshotTime: DateTime (scalar)
-        if (this.SnapshotTime == null && Exploration.Includes(parent + ".snapshotTime", true))
+        if (this.SnapshotTime == null && ec.Includes("snapshotTime",true))
         {
             this.SnapshotTime = new DateTime();
         }
@@ -203,12 +202,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<O365CalendarFolder> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new O365CalendarFolder());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<O365CalendarFolder> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

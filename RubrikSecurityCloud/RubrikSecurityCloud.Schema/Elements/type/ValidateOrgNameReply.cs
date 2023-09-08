@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> NameValidity? NameValidity
         // GraphQL -> nameValidity: NameValidity! (enum)
-        if (this.NameValidity == null && Exploration.Includes(parent + ".nameValidity", true))
+        if (this.NameValidity == null && ec.Includes("nameValidity",true))
         {
             this.NameValidity = new NameValidity();
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? Url
         // GraphQL -> url: String! (scalar)
-        if (this.Url == null && Exploration.Includes(parent + ".url", true))
+        if (this.Url == null && ec.Includes("url",true))
         {
             this.Url = "FETCH";
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ValidateOrgNameReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ValidateOrgNameReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ValidateOrgNameReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

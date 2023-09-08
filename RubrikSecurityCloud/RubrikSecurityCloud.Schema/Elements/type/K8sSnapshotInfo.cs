@@ -120,39 +120,38 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> DateTime? ExpirationTime
         // GraphQL -> expirationTime: DateTime (scalar)
-        if (this.ExpirationTime == null && Exploration.Includes(parent + ".expirationTime", true))
+        if (this.ExpirationTime == null && ec.Includes("expirationTime",true))
         {
             this.ExpirationTime = new DateTime();
         }
         //      C# -> System.Boolean? IsArchived
         // GraphQL -> isArchived: Boolean! (scalar)
-        if (this.IsArchived == null && Exploration.Includes(parent + ".isArchived", true))
+        if (this.IsArchived == null && ec.Includes("isArchived",true))
         {
             this.IsArchived = true;
         }
         //      C# -> System.String? Namespace
         // GraphQL -> namespace: String! (scalar)
-        if (this.Namespace == null && Exploration.Includes(parent + ".namespace", true))
+        if (this.Namespace == null && ec.Includes("namespace",true))
         {
             this.Namespace = "FETCH";
         }
         //      C# -> DateTime? SnapshotTime
         // GraphQL -> snapshotTime: DateTime! (scalar)
-        if (this.SnapshotTime == null && Exploration.Includes(parent + ".snapshotTime", true))
+        if (this.SnapshotTime == null && ec.Includes("snapshotTime",true))
         {
             this.SnapshotTime = new DateTime();
         }
         //      C# -> List<PvcInformation>? PvcList
         // GraphQL -> pvcList: [PvcInformation!]! (type)
-        if (this.PvcList == null && Exploration.Includes(parent + ".pvcList"))
+        if (this.PvcList == null && ec.Includes("pvcList",false))
         {
             this.PvcList = new List<PvcInformation>();
-            this.PvcList.ApplyExploratoryFieldSpec(parent + ".pvcList");
+            this.PvcList.ApplyExploratoryFieldSpec(ec.NewChild("pvcList"));
         }
     }
 
@@ -186,12 +185,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<K8sSnapshotInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new K8sSnapshotInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<K8sSnapshotInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

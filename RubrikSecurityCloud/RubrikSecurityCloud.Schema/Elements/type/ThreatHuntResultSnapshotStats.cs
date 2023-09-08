@@ -148,51 +148,50 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> MalwareScanInSnapshotStatus? Status
         // GraphQL -> status: MalwareScanInSnapshotStatus! (enum)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = new MalwareScanInSnapshotStatus();
         }
         //      C# -> System.Boolean? IsExpired
         // GraphQL -> isExpired: Boolean! (scalar)
-        if (this.IsExpired == null && Exploration.Includes(parent + ".isExpired", true))
+        if (this.IsExpired == null && ec.Includes("isExpired",true))
         {
             this.IsExpired = true;
         }
         //      C# -> System.Boolean? IsQuarantined
         // GraphQL -> isQuarantined: Boolean! (scalar)
-        if (this.IsQuarantined == null && Exploration.Includes(parent + ".isQuarantined", true))
+        if (this.IsQuarantined == null && ec.Includes("isQuarantined",true))
         {
             this.IsQuarantined = true;
         }
         //      C# -> DateTime? SnapshotDate
         // GraphQL -> snapshotDate: DateTime (scalar)
-        if (this.SnapshotDate == null && Exploration.Includes(parent + ".snapshotDate", true))
+        if (this.SnapshotDate == null && ec.Includes("snapshotDate",true))
         {
             this.SnapshotDate = new DateTime();
         }
         //      C# -> System.String? SnapshotFid
         // GraphQL -> snapshotFid: String! (scalar)
-        if (this.SnapshotFid == null && Exploration.Includes(parent + ".snapshotFid", true))
+        if (this.SnapshotFid == null && ec.Includes("snapshotFid",true))
         {
             this.SnapshotFid = "FETCH";
         }
         //      C# -> System.Int64? TotalMatchedPaths
         // GraphQL -> totalMatchedPaths: Long! (scalar)
-        if (this.TotalMatchedPaths == null && Exploration.Includes(parent + ".totalMatchedPaths", true))
+        if (this.TotalMatchedPaths == null && ec.Includes("totalMatchedPaths",true))
         {
             this.TotalMatchedPaths = new System.Int64();
         }
         //      C# -> List<IndicatorOfCompromise>? MatchTypes
         // GraphQL -> matchTypes: [IndicatorOfCompromise!]! (type)
-        if (this.MatchTypes == null && Exploration.Includes(parent + ".matchTypes"))
+        if (this.MatchTypes == null && ec.Includes("matchTypes",false))
         {
             this.MatchTypes = new List<IndicatorOfCompromise>();
-            this.MatchTypes.ApplyExploratoryFieldSpec(parent + ".matchTypes");
+            this.MatchTypes.ApplyExploratoryFieldSpec(ec.NewChild("matchTypes"));
         }
     }
 
@@ -226,12 +225,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ThreatHuntResultSnapshotStats> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ThreatHuntResultSnapshotStats());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ThreatHuntResultSnapshotStats> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

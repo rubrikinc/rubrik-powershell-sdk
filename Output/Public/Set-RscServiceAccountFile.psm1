@@ -86,7 +86,8 @@ function Set-RscServiceAccountFile {
             if ($OutputFilePath){
                 $outFile = $OutputFilePath
             }else{
-                $outFile = Join-Path -Path (Split-Path $PROFILE) -ChildPath $sdk_credential_store_path -AdditionalChildPath $sdk_default_credential_file
+                $outfile = Join-Path (Join-Path -Path (Split-Path $PROFILE) -ChildPath $sdk_credential_store_path) -ChildPath $sdk_default_credential_file    
+                               
                 if ((Test-Path -PathType Container -Path (Split-Path $outFile)) -eq $false){
                     Write-Output("`nCreating credential store...")
                     $null = New-Item -ItemType Directory -Force -Path (Split-Path -Path $OutFile)
@@ -96,8 +97,8 @@ function Set-RscServiceAccountFile {
             Write-Output("`nReading RSC Service Account JSON File from $InputFilePath")
             $saContent = Get-Content $InputFilePath | ConvertFrom-Json
             $secureContent = @{
-                "client_id" = ConvertTo-SecureString -String $saContent.client_id -AsPlainText
-                "client_secret" = ConvertTo-SecureString -String $saContent.client_secret -AsPlainText
+                "client_id" = ConvertTo-SecureString -String $saContent.client_id -AsPlainText -Force
+                "client_secret" = ConvertTo-SecureString -String $saContent.client_secret -AsPlainText -Force
                 "name" = $saContent.name
                 "access_token_uri" = $saContent.access_token_uri
             }

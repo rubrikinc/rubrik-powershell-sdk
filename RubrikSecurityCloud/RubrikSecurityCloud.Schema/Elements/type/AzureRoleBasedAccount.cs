@@ -135,45 +135,44 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> CloudAccountType? CloudProvider
         // GraphQL -> cloudProvider: CloudAccountType! (enum)
-        if (this.CloudProvider == null && Exploration.Includes(parent + ".cloudProvider", true))
+        if (this.CloudProvider == null && ec.Includes("cloudProvider",true))
         {
             this.CloudProvider = new CloudAccountType();
         }
         //      C# -> ConnectionStatusType? ConnectionStatus
         // GraphQL -> connectionStatus: ConnectionStatusType! (enum)
-        if (this.ConnectionStatus == null && Exploration.Includes(parent + ".connectionStatus", true))
+        if (this.ConnectionStatus == null && ec.Includes("connectionStatus",true))
         {
             this.ConnectionStatus = new ConnectionStatusType();
         }
         //      C# -> System.String? CloudAccountId
         // GraphQL -> cloudAccountId: String! (scalar)
-        if (this.CloudAccountId == null && Exploration.Includes(parent + ".cloudAccountId", true))
+        if (this.CloudAccountId == null && ec.Includes("cloudAccountId",true))
         {
             this.CloudAccountId = "FETCH";
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String (scalar)
-        if (this.Description == null && Exploration.Includes(parent + ".description", true))
+        if (this.Description == null && ec.Includes("description",true))
         {
             this.Description = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> AzureSubscriptionWithFeaturesType? SubscriptionWithFeatures
         // GraphQL -> subscriptionWithFeatures: AzureSubscriptionWithFeaturesType! (type)
-        if (this.SubscriptionWithFeatures == null && Exploration.Includes(parent + ".subscriptionWithFeatures"))
+        if (this.SubscriptionWithFeatures == null && ec.Includes("subscriptionWithFeatures",false))
         {
             this.SubscriptionWithFeatures = new AzureSubscriptionWithFeaturesType();
-            this.SubscriptionWithFeatures.ApplyExploratoryFieldSpec(parent + ".subscriptionWithFeatures");
+            this.SubscriptionWithFeatures.ApplyExploratoryFieldSpec(ec.NewChild("subscriptionWithFeatures"));
         }
     }
 
@@ -207,12 +206,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AzureRoleBasedAccount> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AzureRoleBasedAccount());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AzureRoleBasedAccount> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

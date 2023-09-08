@@ -137,46 +137,45 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? AclDetails
         // GraphQL -> aclDetails: String (scalar)
-        if (this.AclDetails == null && Exploration.Includes(parent + ".aclDetails", true))
+        if (this.AclDetails == null && ec.Includes("aclDetails",true))
         {
             this.AclDetails = "FETCH";
         }
         //      C# -> DateTime? CreationTime
         // GraphQL -> creationTime: DateTime (scalar)
-        if (this.CreationTime == null && Exploration.Includes(parent + ".creationTime", true))
+        if (this.CreationTime == null && ec.Includes("creationTime",true))
         {
             this.CreationTime = new DateTime();
         }
         //      C# -> DateTime? ModificationTime
         // GraphQL -> modificationTime: DateTime (scalar)
-        if (this.ModificationTime == null && Exploration.Includes(parent + ".modificationTime", true))
+        if (this.ModificationTime == null && ec.Includes("modificationTime",true))
         {
             this.ModificationTime = new DateTime();
         }
         //      C# -> System.String? Path
         // GraphQL -> path: String! (scalar)
-        if (this.Path == null && Exploration.Includes(parent + ".path", true))
+        if (this.Path == null && ec.Includes("path",true))
         {
             this.Path = "FETCH";
         }
         //      C# -> List<HashDetail>? RequestedHashDetails
         // GraphQL -> requestedHashDetails: [HashDetail!]! (type)
-        if (this.RequestedHashDetails == null && Exploration.Includes(parent + ".requestedHashDetails"))
+        if (this.RequestedHashDetails == null && ec.Includes("requestedHashDetails",false))
         {
             this.RequestedHashDetails = new List<HashDetail>();
-            this.RequestedHashDetails.ApplyExploratoryFieldSpec(parent + ".requestedHashDetails");
+            this.RequestedHashDetails.ApplyExploratoryFieldSpec(ec.NewChild("requestedHashDetails"));
         }
         //      C# -> List<YaraMatchDetail>? YaraMatchDetails
         // GraphQL -> yaraMatchDetails: [YARAMatchDetail!]! (type)
-        if (this.YaraMatchDetails == null && Exploration.Includes(parent + ".yaraMatchDetails"))
+        if (this.YaraMatchDetails == null && ec.Includes("yaraMatchDetails",false))
         {
             this.YaraMatchDetails = new List<YaraMatchDetail>();
-            this.YaraMatchDetails.ApplyExploratoryFieldSpec(parent + ".yaraMatchDetails");
+            this.YaraMatchDetails.ApplyExploratoryFieldSpec(ec.NewChild("yaraMatchDetails"));
         }
     }
 
@@ -210,12 +209,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PathInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PathInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<PathInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

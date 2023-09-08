@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> HierarchyObjectConnection? DescendantConnection
         // GraphQL -> descendantConnection: HierarchyObjectConnection! (type)
-        if (this.DescendantConnection == null && Exploration.Includes(parent + ".descendantConnection"))
+        if (this.DescendantConnection == null && ec.Includes("descendantConnection",false))
         {
             this.DescendantConnection = new HierarchyObjectConnection();
-            this.DescendantConnection.ApplyExploratoryFieldSpec(parent + ".descendantConnection");
+            this.DescendantConnection.ApplyExploratoryFieldSpec(ec.NewChild("descendantConnection"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<InventoryRoot> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new InventoryRoot());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<InventoryRoot> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

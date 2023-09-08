@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? AzureSubscriptionNativeId
         // GraphQL -> azureSubscriptionNativeId: String! (scalar)
-        if (this.AzureSubscriptionNativeId == null && Exploration.Includes(parent + ".azureSubscriptionNativeId", true))
+        if (this.AzureSubscriptionNativeId == null && ec.Includes("azureSubscriptionNativeId",true))
         {
             this.AzureSubscriptionNativeId = "FETCH";
         }
         //      C# -> System.String? AzureSubscriptionRubrikId
         // GraphQL -> azureSubscriptionRubrikId: String! (scalar)
-        if (this.AzureSubscriptionRubrikId == null && Exploration.Includes(parent + ".azureSubscriptionRubrikId", true))
+        if (this.AzureSubscriptionRubrikId == null && ec.Includes("azureSubscriptionRubrikId",true))
         {
             this.AzureSubscriptionRubrikId = "FETCH";
         }
         //      C# -> System.String? Error
         // GraphQL -> error: String! (scalar)
-        if (this.Error == null && Exploration.Includes(parent + ".error", true))
+        if (this.Error == null && ec.Includes("error",true))
         {
             this.Error = "FETCH";
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AddAzureCloudAccountStatus> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AddAzureCloudAccountStatus());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AddAzureCloudAccountStatus> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

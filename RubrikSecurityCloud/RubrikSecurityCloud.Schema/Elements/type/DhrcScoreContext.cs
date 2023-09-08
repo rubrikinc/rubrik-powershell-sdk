@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<DhrcScoreMetric>? Metrics
         // GraphQL -> metrics: [DhrcScoreMetric!]! (type)
-        if (this.Metrics == null && Exploration.Includes(parent + ".metrics"))
+        if (this.Metrics == null && ec.Includes("metrics",false))
         {
             this.Metrics = new List<DhrcScoreMetric>();
-            this.Metrics.ApplyExploratoryFieldSpec(parent + ".metrics");
+            this.Metrics.ApplyExploratoryFieldSpec(ec.NewChild("metrics"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<DhrcScoreContext> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new DhrcScoreContext());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<DhrcScoreContext> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

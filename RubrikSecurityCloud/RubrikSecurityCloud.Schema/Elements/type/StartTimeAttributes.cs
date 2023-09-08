@@ -92,27 +92,26 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int32? Hour
         // GraphQL -> hour: Int! (scalar)
-        if (this.Hour == null && Exploration.Includes(parent + ".hour", true))
+        if (this.Hour == null && ec.Includes("hour",true))
         {
             this.Hour = Int32.MinValue;
         }
         //      C# -> System.Int32? Minute
         // GraphQL -> minute: Int! (scalar)
-        if (this.Minute == null && Exploration.Includes(parent + ".minute", true))
+        if (this.Minute == null && ec.Includes("minute",true))
         {
             this.Minute = Int32.MinValue;
         }
         //      C# -> DayOfWeekOpt? DayOfWeek
         // GraphQL -> dayOfWeek: DayOfWeekOpt (type)
-        if (this.DayOfWeek == null && Exploration.Includes(parent + ".dayOfWeek"))
+        if (this.DayOfWeek == null && ec.Includes("dayOfWeek",false))
         {
             this.DayOfWeek = new DayOfWeekOpt();
-            this.DayOfWeek.ApplyExploratoryFieldSpec(parent + ".dayOfWeek");
+            this.DayOfWeek.ApplyExploratoryFieldSpec(ec.NewChild("dayOfWeek"));
         }
     }
 
@@ -146,12 +145,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<StartTimeAttributes> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new StartTimeAttributes());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<StartTimeAttributes> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

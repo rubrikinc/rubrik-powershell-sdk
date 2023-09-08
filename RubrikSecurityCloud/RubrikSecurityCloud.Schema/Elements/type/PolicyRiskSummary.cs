@@ -109,34 +109,33 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> RiskLevelType? Risk
         // GraphQL -> risk: RiskLevelType! (enum)
-        if (this.Risk == null && Exploration.Includes(parent + ".risk", true))
+        if (this.Risk == null && ec.Includes("risk",true))
         {
             this.Risk = new RiskLevelType();
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> SensitiveFiles? Files
         // GraphQL -> files: SensitiveFiles (type)
-        if (this.Files == null && Exploration.Includes(parent + ".files"))
+        if (this.Files == null && ec.Includes("files",false))
         {
             this.Files = new SensitiveFiles();
-            this.Files.ApplyExploratoryFieldSpec(parent + ".files");
+            this.Files.ApplyExploratoryFieldSpec(ec.NewChild("files"));
         }
         //      C# -> SensitiveHits? Hits
         // GraphQL -> hits: SensitiveHits (type)
-        if (this.Hits == null && Exploration.Includes(parent + ".hits"))
+        if (this.Hits == null && ec.Includes("hits",false))
         {
             this.Hits = new SensitiveHits();
-            this.Hits.ApplyExploratoryFieldSpec(parent + ".hits");
+            this.Hits.ApplyExploratoryFieldSpec(ec.NewChild("hits"));
         }
     }
 
@@ -170,12 +169,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PolicyRiskSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PolicyRiskSummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<PolicyRiskSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

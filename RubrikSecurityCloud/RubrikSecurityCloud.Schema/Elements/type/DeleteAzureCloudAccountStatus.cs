@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? AzureSubscriptionNativeId
         // GraphQL -> azureSubscriptionNativeId: String! (scalar)
-        if (this.AzureSubscriptionNativeId == null && Exploration.Includes(parent + ".azureSubscriptionNativeId", true))
+        if (this.AzureSubscriptionNativeId == null && ec.Includes("azureSubscriptionNativeId",true))
         {
             this.AzureSubscriptionNativeId = "FETCH";
         }
         //      C# -> System.String? Error
         // GraphQL -> error: String! (scalar)
-        if (this.Error == null && Exploration.Includes(parent + ".error", true))
+        if (this.Error == null && ec.Includes("error",true))
         {
             this.Error = "FETCH";
         }
         //      C# -> System.Boolean? IsSuccess
         // GraphQL -> isSuccess: Boolean! (scalar)
-        if (this.IsSuccess == null && Exploration.Includes(parent + ".isSuccess", true))
+        if (this.IsSuccess == null && ec.Includes("isSuccess",true))
         {
             this.IsSuccess = true;
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<DeleteAzureCloudAccountStatus> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new DeleteAzureCloudAccountStatus());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<DeleteAzureCloudAccountStatus> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

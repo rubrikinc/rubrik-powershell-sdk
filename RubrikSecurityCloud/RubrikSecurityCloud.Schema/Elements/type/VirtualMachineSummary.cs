@@ -390,153 +390,152 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> VirtualMachineSummarySnapshotConsistencyMandate? SnapshotConsistencyMandate
         // GraphQL -> snapshotConsistencyMandate: VirtualMachineSummarySnapshotConsistencyMandate! (enum)
-        if (this.SnapshotConsistencyMandate == null && Exploration.Includes(parent + ".snapshotConsistencyMandate", true))
+        if (this.SnapshotConsistencyMandate == null && ec.Includes("snapshotConsistencyMandate",true))
         {
             this.SnapshotConsistencyMandate = new VirtualMachineSummarySnapshotConsistencyMandate();
         }
         //      C# -> System.String? ClusterName
         // GraphQL -> clusterName: String (scalar)
-        if (this.ClusterName == null && Exploration.Includes(parent + ".clusterName", true))
+        if (this.ClusterName == null && ec.Includes("clusterName",true))
         {
             this.ClusterName = "FETCH";
         }
         //      C# -> System.String? GuestCredentialAuthorizationStatus
         // GraphQL -> guestCredentialAuthorizationStatus: String! (scalar)
-        if (this.GuestCredentialAuthorizationStatus == null && Exploration.Includes(parent + ".guestCredentialAuthorizationStatus", true))
+        if (this.GuestCredentialAuthorizationStatus == null && ec.Includes("guestCredentialAuthorizationStatus",true))
         {
             this.GuestCredentialAuthorizationStatus = "FETCH";
         }
         //      C# -> System.String? GuestOsName
         // GraphQL -> guestOsName: String (scalar)
-        if (this.GuestOsName == null && Exploration.Includes(parent + ".guestOsName", true))
+        if (this.GuestOsName == null && ec.Includes("guestOsName",true))
         {
             this.GuestOsName = "FETCH";
         }
         //      C# -> System.String? HostId
         // GraphQL -> hostId: String (scalar)
-        if (this.HostId == null && Exploration.Includes(parent + ".hostId", true))
+        if (this.HostId == null && ec.Includes("hostId",true))
         {
             this.HostId = "FETCH";
         }
         //      C# -> System.String? HostName
         // GraphQL -> hostName: String (scalar)
-        if (this.HostName == null && Exploration.Includes(parent + ".hostName", true))
+        if (this.HostName == null && ec.Includes("hostName",true))
         {
             this.HostName = "FETCH";
         }
         //      C# -> System.String? InstanceUuid
         // GraphQL -> instanceUuid: String (scalar)
-        if (this.InstanceUuid == null && Exploration.Includes(parent + ".instanceUuid", true))
+        if (this.InstanceUuid == null && ec.Includes("instanceUuid",true))
         {
             this.InstanceUuid = "FETCH";
         }
         //      C# -> System.String? IpAddress
         // GraphQL -> ipAddress: String! (scalar)
-        if (this.IpAddress == null && Exploration.Includes(parent + ".ipAddress", true))
+        if (this.IpAddress == null && ec.Includes("ipAddress",true))
         {
             this.IpAddress = "FETCH";
         }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
-        if (this.IsRelic == null && Exploration.Includes(parent + ".isRelic", true))
+        if (this.IsRelic == null && ec.Includes("isRelic",true))
         {
             this.IsRelic = true;
         }
         //      C# -> System.Boolean? IsReplicationEnabled
         // GraphQL -> isReplicationEnabled: Boolean! (scalar)
-        if (this.IsReplicationEnabled == null && Exploration.Includes(parent + ".isReplicationEnabled", true))
+        if (this.IsReplicationEnabled == null && ec.Includes("isReplicationEnabled",true))
         {
             this.IsReplicationEnabled = true;
         }
         //      C# -> System.String? Moid
         // GraphQL -> moid: String! (scalar)
-        if (this.Moid == null && Exploration.Includes(parent + ".moid", true))
+        if (this.Moid == null && ec.Includes("moid",true))
         {
             this.Moid = "FETCH";
         }
         //      C# -> System.String? PowerStatus
         // GraphQL -> powerStatus: String (scalar)
-        if (this.PowerStatus == null && Exploration.Includes(parent + ".powerStatus", true))
+        if (this.PowerStatus == null && ec.Includes("powerStatus",true))
         {
             this.PowerStatus = "FETCH";
         }
         //      C# -> DateTime? ProtectionDate
         // GraphQL -> protectionDate: DateTime (scalar)
-        if (this.ProtectionDate == null && Exploration.Includes(parent + ".protectionDate", true))
+        if (this.ProtectionDate == null && ec.Includes("protectionDate",true))
         {
             this.ProtectionDate = new DateTime();
         }
         //      C# -> System.Boolean? ToolsInstalled
         // GraphQL -> toolsInstalled: Boolean (scalar)
-        if (this.ToolsInstalled == null && Exploration.Includes(parent + ".toolsInstalled", true))
+        if (this.ToolsInstalled == null && ec.Includes("toolsInstalled",true))
         {
             this.ToolsInstalled = true;
         }
         //      C# -> System.String? VcenterId
         // GraphQL -> vcenterId: String (scalar)
-        if (this.VcenterId == null && Exploration.Includes(parent + ".vcenterId", true))
+        if (this.VcenterId == null && ec.Includes("vcenterId",true))
         {
             this.VcenterId = "FETCH";
         }
         //      C# -> System.Boolean? VmwareToolsInstalled
         // GraphQL -> vmwareToolsInstalled: Boolean! (scalar)
-        if (this.VmwareToolsInstalled == null && Exploration.Includes(parent + ".vmwareToolsInstalled", true))
+        if (this.VmwareToolsInstalled == null && ec.Includes("vmwareToolsInstalled",true))
         {
             this.VmwareToolsInstalled = true;
         }
         //      C# -> AdvancedVirtualMachineSummary? AdvancedSummary
         // GraphQL -> advancedSummary: AdvancedVirtualMachineSummary (type)
-        if (this.AdvancedSummary == null && Exploration.Includes(parent + ".advancedSummary"))
+        if (this.AdvancedSummary == null && ec.Includes("advancedSummary",false))
         {
             this.AdvancedSummary = new AdvancedVirtualMachineSummary();
-            this.AdvancedSummary.ApplyExploratoryFieldSpec(parent + ".advancedSummary");
+            this.AdvancedSummary.ApplyExploratoryFieldSpec(ec.NewChild("advancedSummary"));
         }
         //      C# -> CdmAgentStatus? AgentStatus
         // GraphQL -> agentStatus: CdmAgentStatus (type)
-        if (this.AgentStatus == null && Exploration.Includes(parent + ".agentStatus"))
+        if (this.AgentStatus == null && ec.Includes("agentStatus",false))
         {
             this.AgentStatus = new CdmAgentStatus();
-            this.AgentStatus.ApplyExploratoryFieldSpec(parent + ".agentStatus");
+            this.AgentStatus.ApplyExploratoryFieldSpec(ec.NewChild("agentStatus"));
         }
         //      C# -> CloudInstantiationSpec? CloudInstantiationSpec
         // GraphQL -> cloudInstantiationSpec: CloudInstantiationSpec (type)
-        if (this.CloudInstantiationSpec == null && Exploration.Includes(parent + ".cloudInstantiationSpec"))
+        if (this.CloudInstantiationSpec == null && ec.Includes("cloudInstantiationSpec",false))
         {
             this.CloudInstantiationSpec = new CloudInstantiationSpec();
-            this.CloudInstantiationSpec.ApplyExploratoryFieldSpec(parent + ".cloudInstantiationSpec");
+            this.CloudInstantiationSpec.ApplyExploratoryFieldSpec(ec.NewChild("cloudInstantiationSpec"));
         }
         //      C# -> List<VmPathPoint>? FolderPath
         // GraphQL -> folderPath: [VmPathPoint!]! (type)
-        if (this.FolderPath == null && Exploration.Includes(parent + ".folderPath"))
+        if (this.FolderPath == null && ec.Includes("folderPath",false))
         {
             this.FolderPath = new List<VmPathPoint>();
-            this.FolderPath.ApplyExploratoryFieldSpec(parent + ".folderPath");
+            this.FolderPath.ApplyExploratoryFieldSpec(ec.NewChild("folderPath"));
         }
         //      C# -> List<VmPathPoint>? InfraPath
         // GraphQL -> infraPath: [VmPathPoint!]! (type)
-        if (this.InfraPath == null && Exploration.Includes(parent + ".infraPath"))
+        if (this.InfraPath == null && ec.Includes("infraPath",false))
         {
             this.InfraPath = new List<VmPathPoint>();
-            this.InfraPath.ApplyExploratoryFieldSpec(parent + ".infraPath");
+            this.InfraPath.ApplyExploratoryFieldSpec(ec.NewChild("infraPath"));
         }
         //      C# -> ParentAppInfo? ParentAppInfo
         // GraphQL -> parentAppInfo: ParentAppInfo (type)
-        if (this.ParentAppInfo == null && Exploration.Includes(parent + ".parentAppInfo"))
+        if (this.ParentAppInfo == null && ec.Includes("parentAppInfo",false))
         {
             this.ParentAppInfo = new ParentAppInfo();
-            this.ParentAppInfo.ApplyExploratoryFieldSpec(parent + ".parentAppInfo");
+            this.ParentAppInfo.ApplyExploratoryFieldSpec(ec.NewChild("parentAppInfo"));
         }
         //      C# -> CdmWorkload? Snappable
         // GraphQL -> snappable: CdmWorkload (type)
-        if (this.Snappable == null && Exploration.Includes(parent + ".snappable"))
+        if (this.Snappable == null && ec.Includes("snappable",false))
         {
             this.Snappable = new CdmWorkload();
-            this.Snappable.ApplyExploratoryFieldSpec(parent + ".snappable");
+            this.Snappable.ApplyExploratoryFieldSpec(ec.NewChild("snappable"));
         }
     }
 
@@ -570,12 +569,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VirtualMachineSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VirtualMachineSummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VirtualMachineSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -92,27 +92,26 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<System.String>? Vips
         // GraphQL -> vips: [String!]! (scalar)
-        if (this.Vips == null && Exploration.Includes(parent + ".vips", true))
+        if (this.Vips == null && ec.Includes("vips",true))
         {
             this.Vips = new List<System.String>();
         }
         //      C# -> List<System.String>? VirtualIps
         // GraphQL -> virtualIps: [String!]! (scalar)
-        if (this.VirtualIps == null && Exploration.Includes(parent + ".virtualIps", true))
+        if (this.VirtualIps == null && ec.Includes("virtualIps",true))
         {
             this.VirtualIps = new List<System.String>();
         }
         //      C# -> List<FailoverClusterNodeOrder>? NodeOrders
         // GraphQL -> nodeOrders: [FailoverClusterNodeOrder!]! (type)
-        if (this.NodeOrders == null && Exploration.Includes(parent + ".nodeOrders"))
+        if (this.NodeOrders == null && ec.Includes("nodeOrders",false))
         {
             this.NodeOrders = new List<FailoverClusterNodeOrder>();
-            this.NodeOrders.ApplyExploratoryFieldSpec(parent + ".nodeOrders");
+            this.NodeOrders.ApplyExploratoryFieldSpec(ec.NewChild("nodeOrders"));
         }
     }
 
@@ -146,12 +145,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<FailoverClusterAppSource> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new FailoverClusterAppSource());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<FailoverClusterAppSource> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

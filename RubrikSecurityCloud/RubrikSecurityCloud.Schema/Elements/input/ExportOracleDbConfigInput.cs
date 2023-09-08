@@ -84,6 +84,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shouldSkipDropDbInUndo")]
         public System.Boolean? ShouldSkipDropDbInUndo { get; set; }
 
+        //      C# -> System.Boolean? ShouldAllowRenameToSource
+        // GraphQL -> shouldAllowRenameToSource: Boolean (scalar)
+        [JsonProperty("shouldAllowRenameToSource")]
+        public System.Boolean? ShouldAllowRenameToSource { get; set; }
+
         //      C# -> OracleRecoveryPointInput? RecoveryPoint
         // GraphQL -> recoveryPoint: OracleRecoveryPointInput! (input)
         [Required]

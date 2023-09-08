@@ -148,51 +148,50 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.String? PrimaryClusterId
         // GraphQL -> primaryClusterId: String! (scalar)
-        if (this.PrimaryClusterId == null && Exploration.Includes(parent + ".primaryClusterId", true))
+        if (this.PrimaryClusterId == null && ec.Includes("primaryClusterId",true))
         {
             this.PrimaryClusterId = "FETCH";
         }
         //      C# -> System.String? RunAsAccount
         // GraphQL -> runAsAccount: String! (scalar)
-        if (this.RunAsAccount == null && Exploration.Includes(parent + ".runAsAccount", true))
+        if (this.RunAsAccount == null && ec.Includes("runAsAccount",true))
         {
             this.RunAsAccount = "FETCH";
         }
         //      C# -> System.String? ScvmmVersion
         // GraphQL -> scvmmVersion: String (scalar)
-        if (this.ScvmmVersion == null && Exploration.Includes(parent + ".scvmmVersion", true))
+        if (this.ScvmmVersion == null && ec.Includes("scvmmVersion",true))
         {
             this.ScvmmVersion = "FETCH";
         }
         //      C# -> System.Boolean? ShouldDeployAgent
         // GraphQL -> shouldDeployAgent: Boolean! (scalar)
-        if (this.ShouldDeployAgent == null && Exploration.Includes(parent + ".shouldDeployAgent", true))
+        if (this.ShouldDeployAgent == null && ec.Includes("shouldDeployAgent",true))
         {
             this.ShouldDeployAgent = true;
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = "FETCH";
         }
         //      C# -> SlaAssignable? SlaAssignable
         // GraphQL -> slaAssignable: SlaAssignable (type)
-        if (this.SlaAssignable == null && Exploration.Includes(parent + ".slaAssignable"))
+        if (this.SlaAssignable == null && ec.Includes("slaAssignable",false))
         {
             this.SlaAssignable = new SlaAssignable();
-            this.SlaAssignable.ApplyExploratoryFieldSpec(parent + ".slaAssignable");
+            this.SlaAssignable.ApplyExploratoryFieldSpec(ec.NewChild("slaAssignable"));
         }
     }
 
@@ -226,12 +225,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<HypervScvmmSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new HypervScvmmSummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<HypervScvmmSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

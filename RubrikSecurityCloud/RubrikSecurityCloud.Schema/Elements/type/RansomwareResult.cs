@@ -173,60 +173,59 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
-        if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
+        if (this.ClusterUuid == null && ec.Includes("clusterUuid",true))
         {
             this.ClusterUuid = "FETCH";
         }
         //      C# -> System.Single? EncryptionProbability
         // GraphQL -> encryptionProbability: Float! (scalar)
-        if (this.EncryptionProbability == null && Exploration.Includes(parent + ".encryptionProbability", true))
+        if (this.EncryptionProbability == null && ec.Includes("encryptionProbability",true))
         {
             this.EncryptionProbability = new System.Single();
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsEncrypted
         // GraphQL -> isEncrypted: Boolean! (scalar)
-        if (this.IsEncrypted == null && Exploration.Includes(parent + ".isEncrypted", true))
+        if (this.IsEncrypted == null && ec.Includes("isEncrypted",true))
         {
             this.IsEncrypted = true;
         }
         //      C# -> System.String? ManagedId
         // GraphQL -> managedId: String! (scalar)
-        if (this.ManagedId == null && Exploration.Includes(parent + ".managedId", true))
+        if (this.ManagedId == null && ec.Includes("managedId",true))
         {
             this.ManagedId = "FETCH";
         }
         //      C# -> DateTime? SnapshotData
         // GraphQL -> snapshotData: DateTime! (scalar)
-        if (this.SnapshotData == null && Exploration.Includes(parent + ".snapshotData", true))
+        if (this.SnapshotData == null && ec.Includes("snapshotData",true))
         {
             this.SnapshotData = new DateTime();
         }
         //      C# -> System.String? SnapshotFid
         // GraphQL -> snapshotFid: String! (scalar)
-        if (this.SnapshotFid == null && Exploration.Includes(parent + ".snapshotFid", true))
+        if (this.SnapshotFid == null && ec.Includes("snapshotFid",true))
         {
             this.SnapshotFid = "FETCH";
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: String! (scalar)
-        if (this.SnapshotId == null && Exploration.Includes(parent + ".snapshotId", true))
+        if (this.SnapshotId == null && ec.Includes("snapshotId",true))
         {
             this.SnapshotId = "FETCH";
         }
         //      C# -> System.String? WorkloadId
         // GraphQL -> workloadId: String! (scalar)
-        if (this.WorkloadId == null && Exploration.Includes(parent + ".workloadId", true))
+        if (this.WorkloadId == null && ec.Includes("workloadId",true))
         {
             this.WorkloadId = "FETCH";
         }
@@ -262,12 +261,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RansomwareResult> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RansomwareResult());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<RansomwareResult> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

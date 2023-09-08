@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? FieldName
         // GraphQL -> fieldName: String! (scalar)
-        if (this.FieldName == null && Exploration.Includes(parent + ".fieldName", true))
+        if (this.FieldName == null && ec.Includes("fieldName",true))
         {
             this.FieldName = "FETCH";
         }
         //      C# -> System.String? NewValue
         // GraphQL -> newValue: String! (scalar)
-        if (this.NewValue == null && Exploration.Includes(parent + ".newValue", true))
+        if (this.NewValue == null && ec.Includes("newValue",true))
         {
             this.NewValue = "FETCH";
         }
         //      C# -> System.String? OldValue
         // GraphQL -> oldValue: String! (scalar)
-        if (this.OldValue == null && Exploration.Includes(parent + ".oldValue", true))
+        if (this.OldValue == null && ec.Includes("oldValue",true))
         {
             this.OldValue = "FETCH";
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<FieldDiffAgainstLive> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new FieldDiffAgainstLive());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<FieldDiffAgainstLive> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

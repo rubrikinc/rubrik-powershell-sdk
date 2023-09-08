@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<LicensedClusterProduct>? ClusterProducts
         // GraphQL -> clusterProducts: [LicensedClusterProduct!]! (type)
-        if (this.ClusterProducts == null && Exploration.Includes(parent + ".clusterProducts"))
+        if (this.ClusterProducts == null && ec.Includes("clusterProducts",false))
         {
             this.ClusterProducts = new List<LicensedClusterProduct>();
-            this.ClusterProducts.ApplyExploratoryFieldSpec(parent + ".clusterProducts");
+            this.ClusterProducts.ApplyExploratoryFieldSpec(ec.NewChild("clusterProducts"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GetLicensedProductsInfoReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GetLicensedProductsInfoReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<GetLicensedProductsInfoReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

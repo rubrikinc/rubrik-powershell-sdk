@@ -541,218 +541,217 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? DbUniqueName
         // GraphQL -> dbUniqueName: String (scalar)
-        if (this.DbUniqueName == null && Exploration.Includes(parent + ".dbUniqueName", true))
+        if (this.DbUniqueName == null && ec.Includes("dbUniqueName",true))
         {
             this.DbUniqueName = "FETCH";
         }
         //      C# -> System.Boolean? IsLiveMount
         // GraphQL -> isLiveMount: Boolean (scalar)
-        if (this.IsLiveMount == null && Exploration.Includes(parent + ".isLiveMount", true))
+        if (this.IsLiveMount == null && ec.Includes("isLiveMount",true))
         {
             this.IsLiveMount = true;
         }
         //      C# -> System.String? LatestRecoveryPointV50
         // GraphQL -> latestRecoveryPointV50: String (scalar)
-        if (this.LatestRecoveryPointV50 == null && Exploration.Includes(parent + ".latestRecoveryPointV50", true))
+        if (this.LatestRecoveryPointV50 == null && ec.Includes("latestRecoveryPointV50",true))
         {
             this.LatestRecoveryPointV50 = "FETCH";
         }
         //      C# -> System.String? LatestRecoveryPointV51
         // GraphQL -> latestRecoveryPointV51: String (scalar)
-        if (this.LatestRecoveryPointV51 == null && Exploration.Includes(parent + ".latestRecoveryPointV51", true))
+        if (this.LatestRecoveryPointV51 == null && ec.Includes("latestRecoveryPointV51",true))
         {
             this.LatestRecoveryPointV51 = "FETCH";
         }
         //      C# -> System.String? LatestRecoveryPointV52
         // GraphQL -> latestRecoveryPointV52: String (scalar)
-        if (this.LatestRecoveryPointV52 == null && Exploration.Includes(parent + ".latestRecoveryPointV52", true))
+        if (this.LatestRecoveryPointV52 == null && ec.Includes("latestRecoveryPointV52",true))
         {
             this.LatestRecoveryPointV52 = "FETCH";
         }
         //      C# -> System.String? LatestRecoveryPointV53
         // GraphQL -> latestRecoveryPointV53: String (scalar)
-        if (this.LatestRecoveryPointV53 == null && Exploration.Includes(parent + ".latestRecoveryPointV53", true))
+        if (this.LatestRecoveryPointV53 == null && ec.Includes("latestRecoveryPointV53",true))
         {
             this.LatestRecoveryPointV53 = "FETCH";
         }
         //      C# -> DateTime? LatestRecoveryPointV60
         // GraphQL -> latestRecoveryPointV60: DateTime (scalar)
-        if (this.LatestRecoveryPointV60 == null && Exploration.Includes(parent + ".latestRecoveryPointV60", true))
+        if (this.LatestRecoveryPointV60 == null && ec.Includes("latestRecoveryPointV60",true))
         {
             this.LatestRecoveryPointV60 = new DateTime();
         }
         //      C# -> DateTime? LatestRecoveryPointV70
         // GraphQL -> latestRecoveryPointV70: DateTime (scalar)
-        if (this.LatestRecoveryPointV70 == null && Exploration.Includes(parent + ".latestRecoveryPointV70", true))
+        if (this.LatestRecoveryPointV70 == null && ec.Includes("latestRecoveryPointV70",true))
         {
             this.LatestRecoveryPointV70 = new DateTime();
         }
         //      C# -> DateTime? LatestRecoveryPointV80
         // GraphQL -> latestRecoveryPointV80: DateTime (scalar)
-        if (this.LatestRecoveryPointV80 == null && Exploration.Includes(parent + ".latestRecoveryPointV80", true))
+        if (this.LatestRecoveryPointV80 == null && ec.Includes("latestRecoveryPointV80",true))
         {
             this.LatestRecoveryPointV80 = new DateTime();
         }
         //      C# -> DateTime? LatestRecoveryPointV81
         // GraphQL -> latestRecoveryPointV81: DateTime (scalar)
-        if (this.LatestRecoveryPointV81 == null && Exploration.Includes(parent + ".latestRecoveryPointV81", true))
+        if (this.LatestRecoveryPointV81 == null && ec.Includes("latestRecoveryPointV81",true))
         {
             this.LatestRecoveryPointV81 = new DateTime();
         }
         //      C# -> DateTime? LatestRecoveryPointV90
         // GraphQL -> latestRecoveryPointV90: DateTime (scalar)
-        if (this.LatestRecoveryPointV90 == null && Exploration.Includes(parent + ".latestRecoveryPointV90", true))
+        if (this.LatestRecoveryPointV90 == null && ec.Includes("latestRecoveryPointV90",true))
         {
             this.LatestRecoveryPointV90 = new DateTime();
         }
         //      C# -> DateTime? LatestRecoveryPointV91
         // GraphQL -> latestRecoveryPointV91: DateTime (scalar)
-        if (this.LatestRecoveryPointV91 == null && Exploration.Includes(parent + ".latestRecoveryPointV91", true))
+        if (this.LatestRecoveryPointV91 == null && ec.Includes("latestRecoveryPointV91",true))
         {
             this.LatestRecoveryPointV91 = new DateTime();
         }
         //      C# -> System.String? OldestRecoveryPointV50
         // GraphQL -> oldestRecoveryPointV50: String (scalar)
-        if (this.OldestRecoveryPointV50 == null && Exploration.Includes(parent + ".oldestRecoveryPointV50", true))
+        if (this.OldestRecoveryPointV50 == null && ec.Includes("oldestRecoveryPointV50",true))
         {
             this.OldestRecoveryPointV50 = "FETCH";
         }
         //      C# -> System.String? OldestRecoveryPointV51
         // GraphQL -> oldestRecoveryPointV51: String (scalar)
-        if (this.OldestRecoveryPointV51 == null && Exploration.Includes(parent + ".oldestRecoveryPointV51", true))
+        if (this.OldestRecoveryPointV51 == null && ec.Includes("oldestRecoveryPointV51",true))
         {
             this.OldestRecoveryPointV51 = "FETCH";
         }
         //      C# -> System.String? OldestRecoveryPointV52
         // GraphQL -> oldestRecoveryPointV52: String (scalar)
-        if (this.OldestRecoveryPointV52 == null && Exploration.Includes(parent + ".oldestRecoveryPointV52", true))
+        if (this.OldestRecoveryPointV52 == null && ec.Includes("oldestRecoveryPointV52",true))
         {
             this.OldestRecoveryPointV52 = "FETCH";
         }
         //      C# -> System.String? OldestRecoveryPointV53
         // GraphQL -> oldestRecoveryPointV53: String (scalar)
-        if (this.OldestRecoveryPointV53 == null && Exploration.Includes(parent + ".oldestRecoveryPointV53", true))
+        if (this.OldestRecoveryPointV53 == null && ec.Includes("oldestRecoveryPointV53",true))
         {
             this.OldestRecoveryPointV53 = "FETCH";
         }
         //      C# -> DateTime? OldestRecoveryPointV60
         // GraphQL -> oldestRecoveryPointV60: DateTime (scalar)
-        if (this.OldestRecoveryPointV60 == null && Exploration.Includes(parent + ".oldestRecoveryPointV60", true))
+        if (this.OldestRecoveryPointV60 == null && ec.Includes("oldestRecoveryPointV60",true))
         {
             this.OldestRecoveryPointV60 = new DateTime();
         }
         //      C# -> DateTime? OldestRecoveryPointV70
         // GraphQL -> oldestRecoveryPointV70: DateTime (scalar)
-        if (this.OldestRecoveryPointV70 == null && Exploration.Includes(parent + ".oldestRecoveryPointV70", true))
+        if (this.OldestRecoveryPointV70 == null && ec.Includes("oldestRecoveryPointV70",true))
         {
             this.OldestRecoveryPointV70 = new DateTime();
         }
         //      C# -> DateTime? OldestRecoveryPointV80
         // GraphQL -> oldestRecoveryPointV80: DateTime (scalar)
-        if (this.OldestRecoveryPointV80 == null && Exploration.Includes(parent + ".oldestRecoveryPointV80", true))
+        if (this.OldestRecoveryPointV80 == null && ec.Includes("oldestRecoveryPointV80",true))
         {
             this.OldestRecoveryPointV80 = new DateTime();
         }
         //      C# -> DateTime? OldestRecoveryPointV81
         // GraphQL -> oldestRecoveryPointV81: DateTime (scalar)
-        if (this.OldestRecoveryPointV81 == null && Exploration.Includes(parent + ".oldestRecoveryPointV81", true))
+        if (this.OldestRecoveryPointV81 == null && ec.Includes("oldestRecoveryPointV81",true))
         {
             this.OldestRecoveryPointV81 = new DateTime();
         }
         //      C# -> DateTime? OldestRecoveryPointV90
         // GraphQL -> oldestRecoveryPointV90: DateTime (scalar)
-        if (this.OldestRecoveryPointV90 == null && Exploration.Includes(parent + ".oldestRecoveryPointV90", true))
+        if (this.OldestRecoveryPointV90 == null && ec.Includes("oldestRecoveryPointV90",true))
         {
             this.OldestRecoveryPointV90 = new DateTime();
         }
         //      C# -> DateTime? OldestRecoveryPointV91
         // GraphQL -> oldestRecoveryPointV91: DateTime (scalar)
-        if (this.OldestRecoveryPointV91 == null && Exploration.Includes(parent + ".oldestRecoveryPointV91", true))
+        if (this.OldestRecoveryPointV91 == null && ec.Includes("oldestRecoveryPointV91",true))
         {
             this.OldestRecoveryPointV91 = new DateTime();
         }
         //      C# -> System.String? OracleHome
         // GraphQL -> oracleHome: String (scalar)
-        if (this.OracleHome == null && Exploration.Includes(parent + ".oracleHome", true))
+        if (this.OracleHome == null && ec.Includes("oracleHome",true))
         {
             this.OracleHome = "FETCH";
         }
         //      C# -> List<System.String>? PreferredDgMemberUniqueNames
         // GraphQL -> preferredDgMemberUniqueNames: [String!]! (scalar)
-        if (this.PreferredDgMemberUniqueNames == null && Exploration.Includes(parent + ".preferredDgMemberUniqueNames", true))
+        if (this.PreferredDgMemberUniqueNames == null && ec.Includes("preferredDgMemberUniqueNames",true))
         {
             this.PreferredDgMemberUniqueNames = new List<System.String>();
         }
         //      C# -> System.Int32? SectionSizeInGb
         // GraphQL -> sectionSizeInGb: Int (scalar)
-        if (this.SectionSizeInGb == null && Exploration.Includes(parent + ".sectionSizeInGb", true))
+        if (this.SectionSizeInGb == null && ec.Includes("sectionSizeInGb",true))
         {
             this.SectionSizeInGb = Int32.MinValue;
         }
         //      C# -> System.Boolean? ShouldBackupFromPrimaryDgGroupMemberOnly
         // GraphQL -> shouldBackupFromPrimaryDgGroupMemberOnly: Boolean (scalar)
-        if (this.ShouldBackupFromPrimaryDgGroupMemberOnly == null && Exploration.Includes(parent + ".shouldBackupFromPrimaryDgGroupMemberOnly", true))
+        if (this.ShouldBackupFromPrimaryDgGroupMemberOnly == null && ec.Includes("shouldBackupFromPrimaryDgGroupMemberOnly",true))
         {
             this.ShouldBackupFromPrimaryDgGroupMemberOnly = true;
         }
         //      C# -> System.Int32? SnapshotCount
         // GraphQL -> snapshotCount: Int! (scalar)
-        if (this.SnapshotCount == null && Exploration.Includes(parent + ".snapshotCount", true))
+        if (this.SnapshotCount == null && ec.Includes("snapshotCount",true))
         {
             this.SnapshotCount = Int32.MinValue;
         }
         //      C# -> List<System.String>? Tablespaces
         // GraphQL -> tablespaces: [String!]! (scalar)
-        if (this.Tablespaces == null && Exploration.Includes(parent + ".tablespaces", true))
+        if (this.Tablespaces == null && ec.Includes("tablespaces",true))
         {
             this.Tablespaces = new List<System.String>();
         }
         //      C# -> List<HostInfo>? HostsInfo
         // GraphQL -> hostsInfo: [HostInfo!]! (type)
-        if (this.HostsInfo == null && Exploration.Includes(parent + ".hostsInfo"))
+        if (this.HostsInfo == null && ec.Includes("hostsInfo",false))
         {
             this.HostsInfo = new List<HostInfo>();
-            this.HostsInfo.ApplyExploratoryFieldSpec(parent + ".hostsInfo");
+            this.HostsInfo.ApplyExploratoryFieldSpec(ec.NewChild("hostsInfo"));
         }
         //      C# -> OracleLastValidationResult? LastValidationResult
         // GraphQL -> lastValidationResult: OracleLastValidationResult (type)
-        if (this.LastValidationResult == null && Exploration.Includes(parent + ".lastValidationResult"))
+        if (this.LastValidationResult == null && ec.Includes("lastValidationResult",false))
         {
             this.LastValidationResult = new OracleLastValidationResult();
-            this.LastValidationResult.ApplyExploratoryFieldSpec(parent + ".lastValidationResult");
+            this.LastValidationResult.ApplyExploratoryFieldSpec(ec.NewChild("lastValidationResult"));
         }
         //      C# -> OracleDbSummary? OracleDbSummary
         // GraphQL -> oracleDbSummary: OracleDbSummary (type)
-        if (this.OracleDbSummary == null && Exploration.Includes(parent + ".oracleDbSummary"))
+        if (this.OracleDbSummary == null && ec.Includes("oracleDbSummary",false))
         {
             this.OracleDbSummary = new OracleDbSummary();
-            this.OracleDbSummary.ApplyExploratoryFieldSpec(parent + ".oracleDbSummary");
+            this.OracleDbSummary.ApplyExploratoryFieldSpec(ec.NewChild("oracleDbSummary"));
         }
         //      C# -> OracleNonSlaProperties? OracleNonSlaProperties
         // GraphQL -> oracleNonSlaProperties: OracleNonSlaProperties (type)
-        if (this.OracleNonSlaProperties == null && Exploration.Includes(parent + ".oracleNonSlaProperties"))
+        if (this.OracleNonSlaProperties == null && ec.Includes("oracleNonSlaProperties",false))
         {
             this.OracleNonSlaProperties = new OracleNonSlaProperties();
-            this.OracleNonSlaProperties.ApplyExploratoryFieldSpec(parent + ".oracleNonSlaProperties");
+            this.OracleNonSlaProperties.ApplyExploratoryFieldSpec(ec.NewChild("oracleNonSlaProperties"));
         }
         //      C# -> OraclePdbDetails? PdbDetails
         // GraphQL -> pdbDetails: OraclePdbDetails (type)
-        if (this.PdbDetails == null && Exploration.Includes(parent + ".pdbDetails"))
+        if (this.PdbDetails == null && ec.Includes("pdbDetails",false))
         {
             this.PdbDetails = new OraclePdbDetails();
-            this.PdbDetails.ApplyExploratoryFieldSpec(parent + ".pdbDetails");
+            this.PdbDetails.ApplyExploratoryFieldSpec(ec.NewChild("pdbDetails"));
         }
         //      C# -> ManagedObjectPendingSlaInfo? PendingSlaDomain
         // GraphQL -> pendingSlaDomain: ManagedObjectPendingSlaInfo (type)
-        if (this.PendingSlaDomain == null && Exploration.Includes(parent + ".pendingSlaDomain"))
+        if (this.PendingSlaDomain == null && ec.Includes("pendingSlaDomain",false))
         {
             this.PendingSlaDomain = new ManagedObjectPendingSlaInfo();
-            this.PendingSlaDomain.ApplyExploratoryFieldSpec(parent + ".pendingSlaDomain");
+            this.PendingSlaDomain.ApplyExploratoryFieldSpec(ec.NewChild("pendingSlaDomain"));
         }
     }
 
@@ -786,12 +785,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<OracleDbDetail> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new OracleDbDetail());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<OracleDbDetail> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

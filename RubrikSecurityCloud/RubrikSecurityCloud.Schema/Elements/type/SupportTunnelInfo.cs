@@ -131,42 +131,41 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> DateTime? EnabledTime
         // GraphQL -> enabledTime: DateTime (scalar)
-        if (this.EnabledTime == null && Exploration.Includes(parent + ".enabledTime", true))
+        if (this.EnabledTime == null && ec.Includes("enabledTime",true))
         {
             this.EnabledTime = new DateTime();
         }
         //      C# -> System.String? ErrorMessage
         // GraphQL -> errorMessage: String (scalar)
-        if (this.ErrorMessage == null && Exploration.Includes(parent + ".errorMessage", true))
+        if (this.ErrorMessage == null && ec.Includes("errorMessage",true))
         {
             this.ErrorMessage = "FETCH";
         }
         //      C# -> System.Int64? InactivityTimeoutInSeconds
         // GraphQL -> inactivityTimeoutInSeconds: Long (scalar)
-        if (this.InactivityTimeoutInSeconds == null && Exploration.Includes(parent + ".inactivityTimeoutInSeconds", true))
+        if (this.InactivityTimeoutInSeconds == null && ec.Includes("inactivityTimeoutInSeconds",true))
         {
             this.InactivityTimeoutInSeconds = new System.Int64();
         }
         //      C# -> System.Boolean? IsTunnelEnabled
         // GraphQL -> isTunnelEnabled: Boolean! (scalar)
-        if (this.IsTunnelEnabled == null && Exploration.Includes(parent + ".isTunnelEnabled", true))
+        if (this.IsTunnelEnabled == null && ec.Includes("isTunnelEnabled",true))
         {
             this.IsTunnelEnabled = true;
         }
         //      C# -> DateTime? LastActivityTime
         // GraphQL -> lastActivityTime: DateTime (scalar)
-        if (this.LastActivityTime == null && Exploration.Includes(parent + ".lastActivityTime", true))
+        if (this.LastActivityTime == null && ec.Includes("lastActivityTime",true))
         {
             this.LastActivityTime = new DateTime();
         }
         //      C# -> System.Int64? Port
         // GraphQL -> port: Long (scalar)
-        if (this.Port == null && Exploration.Includes(parent + ".port", true))
+        if (this.Port == null && ec.Includes("port",true))
         {
             this.Port = new System.Int64();
         }
@@ -202,12 +201,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SupportTunnelInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SupportTunnelInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SupportTunnelInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

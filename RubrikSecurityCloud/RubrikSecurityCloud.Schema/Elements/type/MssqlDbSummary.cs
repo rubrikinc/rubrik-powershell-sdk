@@ -583,236 +583,235 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> MssqlDbSummaryRecoveryModel? RecoveryModel
         // GraphQL -> recoveryModel: MssqlDbSummaryRecoveryModel (enum)
-        if (this.RecoveryModel == null && Exploration.Includes(parent + ".recoveryModel", true))
+        if (this.RecoveryModel == null && ec.Includes("recoveryModel",true))
         {
             this.RecoveryModel = new MssqlDbSummaryRecoveryModel();
         }
         //      C# -> System.String? AvailabilityGroupId
         // GraphQL -> availabilityGroupId: String (scalar)
-        if (this.AvailabilityGroupId == null && Exploration.Includes(parent + ".availabilityGroupId", true))
+        if (this.AvailabilityGroupId == null && ec.Includes("availabilityGroupId",true))
         {
             this.AvailabilityGroupId = "FETCH";
         }
         //      C# -> System.Boolean? CopyOnly
         // GraphQL -> copyOnly: Boolean! (scalar)
-        if (this.CopyOnly == null && Exploration.Includes(parent + ".copyOnly", true))
+        if (this.CopyOnly == null && ec.Includes("copyOnly",true))
         {
             this.CopyOnly = true;
         }
         //      C# -> System.Boolean? HasLogConfigFromSla
         // GraphQL -> hasLogConfigFromSla: Boolean (scalar)
-        if (this.HasLogConfigFromSla == null && Exploration.Includes(parent + ".hasLogConfigFromSla", true))
+        if (this.HasLogConfigFromSla == null && ec.Includes("hasLogConfigFromSla",true))
         {
             this.HasLogConfigFromSla = true;
         }
         //      C# -> System.Boolean? HasPermissions
         // GraphQL -> hasPermissions: Boolean! (scalar)
-        if (this.HasPermissions == null && Exploration.Includes(parent + ".hasPermissions", true))
+        if (this.HasPermissions == null && ec.Includes("hasPermissions",true))
         {
             this.HasPermissions = true;
         }
         //      C# -> System.Int32? HostLogRetention
         // GraphQL -> hostLogRetention: Int (scalar)
-        if (this.HostLogRetention == null && Exploration.Includes(parent + ".hostLogRetention", true))
+        if (this.HostLogRetention == null && ec.Includes("hostLogRetention",true))
         {
             this.HostLogRetention = Int32.MinValue;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IncludeBackupTaskInfo
         // GraphQL -> includeBackupTaskInfo: Boolean (scalar)
-        if (this.IncludeBackupTaskInfo == null && Exploration.Includes(parent + ".includeBackupTaskInfo", true))
+        if (this.IncludeBackupTaskInfo == null && ec.Includes("includeBackupTaskInfo",true))
         {
             this.IncludeBackupTaskInfo = true;
         }
         //      C# -> System.String? InstanceId
         // GraphQL -> instanceId: String (scalar)
-        if (this.InstanceId == null && Exploration.Includes(parent + ".instanceId", true))
+        if (this.InstanceId == null && ec.Includes("instanceId",true))
         {
             this.InstanceId = "FETCH";
         }
         //      C# -> System.String? InstanceName
         // GraphQL -> instanceName: String (scalar)
-        if (this.InstanceName == null && Exploration.Includes(parent + ".instanceName", true))
+        if (this.InstanceName == null && ec.Includes("instanceName",true))
         {
             this.InstanceName = "FETCH";
         }
         //      C# -> System.Boolean? IsInAvailabilityGroup
         // GraphQL -> isInAvailabilityGroup: Boolean! (scalar)
-        if (this.IsInAvailabilityGroup == null && Exploration.Includes(parent + ".isInAvailabilityGroup", true))
+        if (this.IsInAvailabilityGroup == null && ec.Includes("isInAvailabilityGroup",true))
         {
             this.IsInAvailabilityGroup = true;
         }
         //      C# -> System.Boolean? IsLiveMount
         // GraphQL -> isLiveMount: Boolean! (scalar)
-        if (this.IsLiveMount == null && Exploration.Includes(parent + ".isLiveMount", true))
+        if (this.IsLiveMount == null && ec.Includes("isLiveMount",true))
         {
             this.IsLiveMount = true;
         }
         //      C# -> System.Boolean? IsLogShippingSecondary
         // GraphQL -> isLogShippingSecondary: Boolean! (scalar)
-        if (this.IsLogShippingSecondary == null && Exploration.Includes(parent + ".isLogShippingSecondary", true))
+        if (this.IsLogShippingSecondary == null && ec.Includes("isLogShippingSecondary",true))
         {
             this.IsLogShippingSecondary = true;
         }
         //      C# -> System.Boolean? IsOnline
         // GraphQL -> isOnline: Boolean! (scalar)
-        if (this.IsOnline == null && Exploration.Includes(parent + ".isOnline", true))
+        if (this.IsOnline == null && ec.Includes("isOnline",true))
         {
             this.IsOnline = true;
         }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
-        if (this.IsRelic == null && Exploration.Includes(parent + ".isRelic", true))
+        if (this.IsRelic == null && ec.Includes("isRelic",true))
         {
             this.IsRelic = true;
         }
         //      C# -> DateTime? LastSnapshotTime
         // GraphQL -> lastSnapshotTime: DateTime (scalar)
-        if (this.LastSnapshotTime == null && Exploration.Includes(parent + ".lastSnapshotTime", true))
+        if (this.LastSnapshotTime == null && ec.Includes("lastSnapshotTime",true))
         {
             this.LastSnapshotTime = new DateTime();
         }
         //      C# -> System.Int32? LogBackupFrequencyInSeconds
         // GraphQL -> logBackupFrequencyInSeconds: Int! (scalar)
-        if (this.LogBackupFrequencyInSeconds == null && Exploration.Includes(parent + ".logBackupFrequencyInSeconds", true))
+        if (this.LogBackupFrequencyInSeconds == null && ec.Includes("logBackupFrequencyInSeconds",true))
         {
             this.LogBackupFrequencyInSeconds = Int32.MinValue;
         }
         //      C# -> System.Int32? LogBackupRetentionHours
         // GraphQL -> logBackupRetentionHours: Int! (scalar)
-        if (this.LogBackupRetentionHours == null && Exploration.Includes(parent + ".logBackupRetentionHours", true))
+        if (this.LogBackupRetentionHours == null && ec.Includes("logBackupRetentionHours",true))
         {
             this.LogBackupRetentionHours = Int32.MinValue;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.Int32? NumMissedSnapshot
         // GraphQL -> numMissedSnapshot: Int (scalar)
-        if (this.NumMissedSnapshot == null && Exploration.Includes(parent + ".numMissedSnapshot", true))
+        if (this.NumMissedSnapshot == null && ec.Includes("numMissedSnapshot",true))
         {
             this.NumMissedSnapshot = Int32.MinValue;
         }
         //      C# -> System.String? PrimaryClusterId
         // GraphQL -> primaryClusterId: String! (scalar)
-        if (this.PrimaryClusterId == null && Exploration.Includes(parent + ".primaryClusterId", true))
+        if (this.PrimaryClusterId == null && ec.Includes("primaryClusterId",true))
         {
             this.PrimaryClusterId = "FETCH";
         }
         //      C# -> System.String? State
         // GraphQL -> state: String (scalar)
-        if (this.State == null && Exploration.Includes(parent + ".state", true))
+        if (this.State == null && ec.Includes("state",true))
         {
             this.State = "FETCH";
         }
         //      C# -> List<System.String>? UnprotectableReasonsV51
         // GraphQL -> unprotectableReasonsV51: [String!]! (scalar)
-        if (this.UnprotectableReasonsV51 == null && Exploration.Includes(parent + ".unprotectableReasonsV51", true))
+        if (this.UnprotectableReasonsV51 == null && ec.Includes("unprotectableReasonsV51",true))
         {
             this.UnprotectableReasonsV51 = new List<System.String>();
         }
         //      C# -> List<System.String>? UnprotectableReasonsV52
         // GraphQL -> unprotectableReasonsV52: [String!]! (scalar)
-        if (this.UnprotectableReasonsV52 == null && Exploration.Includes(parent + ".unprotectableReasonsV52", true))
+        if (this.UnprotectableReasonsV52 == null && ec.Includes("unprotectableReasonsV52",true))
         {
             this.UnprotectableReasonsV52 = new List<System.String>();
         }
         //      C# -> List<System.String>? UnprotectableReasonsV53
         // GraphQL -> unprotectableReasonsV53: [String!]! (scalar)
-        if (this.UnprotectableReasonsV53 == null && Exploration.Includes(parent + ".unprotectableReasonsV53", true))
+        if (this.UnprotectableReasonsV53 == null && ec.Includes("unprotectableReasonsV53",true))
         {
             this.UnprotectableReasonsV53 = new List<System.String>();
         }
         //      C# -> List<System.String>? UnprotectableReasonsV60
         // GraphQL -> unprotectableReasonsV60: [String!]! (scalar)
-        if (this.UnprotectableReasonsV60 == null && Exploration.Includes(parent + ".unprotectableReasonsV60", true))
+        if (this.UnprotectableReasonsV60 == null && ec.Includes("unprotectableReasonsV60",true))
         {
             this.UnprotectableReasonsV60 = new List<System.String>();
         }
         //      C# -> List<System.String>? UnprotectableReasonsV70
         // GraphQL -> unprotectableReasonsV70: [String!]! (scalar)
-        if (this.UnprotectableReasonsV70 == null && Exploration.Includes(parent + ".unprotectableReasonsV70", true))
+        if (this.UnprotectableReasonsV70 == null && ec.Includes("unprotectableReasonsV70",true))
         {
             this.UnprotectableReasonsV70 = new List<System.String>();
         }
         //      C# -> List<System.String>? UnprotectableReasonsV80
         // GraphQL -> unprotectableReasonsV80: [String!]! (scalar)
-        if (this.UnprotectableReasonsV80 == null && Exploration.Includes(parent + ".unprotectableReasonsV80", true))
+        if (this.UnprotectableReasonsV80 == null && ec.Includes("unprotectableReasonsV80",true))
         {
             this.UnprotectableReasonsV80 = new List<System.String>();
         }
         //      C# -> List<System.String>? UnprotectableReasonsV81
         // GraphQL -> unprotectableReasonsV81: [String!]! (scalar)
-        if (this.UnprotectableReasonsV81 == null && Exploration.Includes(parent + ".unprotectableReasonsV81", true))
+        if (this.UnprotectableReasonsV81 == null && ec.Includes("unprotectableReasonsV81",true))
         {
             this.UnprotectableReasonsV81 = new List<System.String>();
         }
         //      C# -> List<System.String>? UnprotectableReasonsV90
         // GraphQL -> unprotectableReasonsV90: [String!]! (scalar)
-        if (this.UnprotectableReasonsV90 == null && Exploration.Includes(parent + ".unprotectableReasonsV90", true))
+        if (this.UnprotectableReasonsV90 == null && ec.Includes("unprotectableReasonsV90",true))
         {
             this.UnprotectableReasonsV90 = new List<System.String>();
         }
         //      C# -> List<System.String>? UnprotectableReasonsV91
         // GraphQL -> unprotectableReasonsV91: [String!]! (scalar)
-        if (this.UnprotectableReasonsV91 == null && Exploration.Includes(parent + ".unprotectableReasonsV91", true))
+        if (this.UnprotectableReasonsV91 == null && ec.Includes("unprotectableReasonsV91",true))
         {
             this.UnprotectableReasonsV91 = new List<System.String>();
         }
         //      C# -> BackupTaskDiagnosticInfo? CurrentBackupTaskInfo
         // GraphQL -> currentBackupTaskInfo: BackupTaskDiagnosticInfo (type)
-        if (this.CurrentBackupTaskInfo == null && Exploration.Includes(parent + ".currentBackupTaskInfo"))
+        if (this.CurrentBackupTaskInfo == null && ec.Includes("currentBackupTaskInfo",false))
         {
             this.CurrentBackupTaskInfo = new BackupTaskDiagnosticInfo();
-            this.CurrentBackupTaskInfo.ApplyExploratoryFieldSpec(parent + ".currentBackupTaskInfo");
+            this.CurrentBackupTaskInfo.ApplyExploratoryFieldSpec(ec.NewChild("currentBackupTaskInfo"));
         }
         //      C# -> ManagedObjectPendingSlaInfo? PendingSlaDomain
         // GraphQL -> pendingSlaDomain: ManagedObjectPendingSlaInfo (type)
-        if (this.PendingSlaDomain == null && Exploration.Includes(parent + ".pendingSlaDomain"))
+        if (this.PendingSlaDomain == null && ec.Includes("pendingSlaDomain",false))
         {
             this.PendingSlaDomain = new ManagedObjectPendingSlaInfo();
-            this.PendingSlaDomain.ApplyExploratoryFieldSpec(parent + ".pendingSlaDomain");
+            this.PendingSlaDomain.ApplyExploratoryFieldSpec(ec.NewChild("pendingSlaDomain"));
         }
         //      C# -> List<MssqlDbReplica>? Replicas
         // GraphQL -> replicas: [MssqlDbReplica!]! (type)
-        if (this.Replicas == null && Exploration.Includes(parent + ".replicas"))
+        if (this.Replicas == null && ec.Includes("replicas",false))
         {
             this.Replicas = new List<MssqlDbReplica>();
-            this.Replicas.ApplyExploratoryFieldSpec(parent + ".replicas");
+            this.Replicas.ApplyExploratoryFieldSpec(ec.NewChild("replicas"));
         }
         //      C# -> MssqlRootProperties? RootProperties
         // GraphQL -> rootProperties: MssqlRootProperties (type)
-        if (this.RootProperties == null && Exploration.Includes(parent + ".rootProperties"))
+        if (this.RootProperties == null && ec.Includes("rootProperties",false))
         {
             this.RootProperties = new MssqlRootProperties();
-            this.RootProperties.ApplyExploratoryFieldSpec(parent + ".rootProperties");
+            this.RootProperties.ApplyExploratoryFieldSpec(ec.NewChild("rootProperties"));
         }
         //      C# -> CdmWorkload? Snappable
         // GraphQL -> snappable: CdmWorkload (type)
-        if (this.Snappable == null && Exploration.Includes(parent + ".snappable"))
+        if (this.Snappable == null && ec.Includes("snappable",false))
         {
             this.Snappable = new CdmWorkload();
-            this.Snappable.ApplyExploratoryFieldSpec(parent + ".snappable");
+            this.Snappable.ApplyExploratoryFieldSpec(ec.NewChild("snappable"));
         }
         //      C# -> List<MssqlUnprotectableReason>? UnprotectableReasonsV50
         // GraphQL -> unprotectableReasonsV50: [MssqlUnprotectableReason!]! (type)
-        if (this.UnprotectableReasonsV50 == null && Exploration.Includes(parent + ".unprotectableReasonsV50"))
+        if (this.UnprotectableReasonsV50 == null && ec.Includes("unprotectableReasonsV50",false))
         {
             this.UnprotectableReasonsV50 = new List<MssqlUnprotectableReason>();
-            this.UnprotectableReasonsV50.ApplyExploratoryFieldSpec(parent + ".unprotectableReasonsV50");
+            this.UnprotectableReasonsV50.ApplyExploratoryFieldSpec(ec.NewChild("unprotectableReasonsV50"));
         }
     }
 
@@ -846,12 +845,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<MssqlDbSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new MssqlDbSummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<MssqlDbSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

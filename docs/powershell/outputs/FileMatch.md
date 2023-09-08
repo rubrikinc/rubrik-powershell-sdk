@@ -10,7 +10,7 @@ Data for a matched file.
 - detectedTime: DateTime
   - Time the scan detected the match.
 - isQuarantined: System.Boolean
-  - Specifies if the file is quarantined.
+  - Specifies if the file is quarantined in the first matched snapshot.
 - fileName: System.String
   - Name of the file that was matched.
 - fileSize: System.Int64
@@ -19,8 +19,12 @@ Data for a matched file.
   - ID of the matched file being returned.
 - objectFid: System.String
   - FID of the object.
-- snapshotFid: System.String
-  - FID of the snapshot.
+- analyzedSnapshotFid: System.String
+  - FID of the analyzed snapshot.
+- firstMatchedSnapshotFid: System.String
+  - FID of the first matched snapshot.
+- isFirstMatchedSnapshotExpired: System.Boolean
+  - Specifies whether the first matched snapshot has expired.
 - objectType: HierarchyObjectTypeEnum
   - Object type.
 - objectName: System.String

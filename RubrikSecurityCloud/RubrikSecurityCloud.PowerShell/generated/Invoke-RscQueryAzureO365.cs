@@ -435,7 +435,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (GetAzureO365ExocomputeResp)this.Field;
             }
             string fieldSpecDoc = Query.AzureO365Exocompute(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.orgId = <System.String>
+# REQUIRED
+$inputs.Var.exocomputeClusterId = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -460,7 +464,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AzureResourceAvailabilityResp)this.Field;
             }
             string fieldSpecDoc = Query.AzureO365CheckStorageAccountName(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.tenantId = <System.String>
+# REQUIRED
+$inputs.Var.subscriptionId = <System.String>
+# REQUIRED
+$inputs.Var.storage_account_name = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -491,7 +501,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AzureResourceAvailabilityResp)this.Field;
             }
             string fieldSpecDoc = Query.AzureO365CheckStorageAccountAccessibility(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.tenantId = <System.String>
+# REQUIRED
+$inputs.Var.subscriptionId = <System.String>
+# REQUIRED
+$inputs.Var.storage_account_name = <System.String>
+# REQUIRED
+$inputs.Var.groupName = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -516,7 +534,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AzureResourceAvailabilityResp)this.Field;
             }
             string fieldSpecDoc = Query.AzureO365CheckSubscriptionQuota(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.tenantId = <System.String>
+# REQUIRED
+$inputs.Var.subscriptionId = <System.String>
+# REQUIRED
+$inputs.Var.regionName = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -541,7 +565,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AzureResourceAvailabilityResp)this.Field;
             }
             string fieldSpecDoc = Query.AzureO365CheckResourceGroupName(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.tenantId = <System.String>
+# REQUIRED
+$inputs.Var.subscriptionId = <System.String>
+# REQUIRED
+$inputs.Var.groupName = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -572,7 +602,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AzureResourceAvailabilityResp)this.Field;
             }
             string fieldSpecDoc = Query.AzureO365CheckVirtualNetworkName(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.tenantId = <System.String>
+# REQUIRED
+$inputs.Var.subscriptionId = <System.String>
+# REQUIRED
+$inputs.Var.groupName = <System.String>
+# REQUIRED
+$inputs.Var.vnet_name = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -596,7 +634,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AzureUserRoleResp)this.Field;
             }
             string fieldSpecDoc = Query.AzureO365ValidateUserRoles(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.tenantId = <System.String>
+# REQUIRED
+$inputs.Var.subscriptionId = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -629,7 +671,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AzureNetworkSecurityGroupResp)this.Field;
             }
             string fieldSpecDoc = Query.AzureO365CheckNsgOutboundRules(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.tenantId = <System.String>
+# REQUIRED
+$inputs.Var.subscriptionId = <System.String>
+# REQUIRED
+$inputs.Var.resourceGroupName = <System.String>
+# REQUIRED
+$inputs.Var.vnet_name = <System.String>
+# REQUIRED
+$inputs.Var.subnet_name = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -664,7 +716,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AzureNetworkSubnetResp)this.Field;
             }
             string fieldSpecDoc = Query.AzureO365CheckNetworkSubnet(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.tenantId = <System.String>
+# REQUIRED
+$inputs.Var.subscriptionId = <System.String>
+# REQUIRED
+$inputs.Var.resourceGroupName = <System.String>
+# REQUIRED
+$inputs.Var.vnet_name = <System.String>
+# REQUIRED
+$inputs.Var.subnet_name = <System.String>
+# REQUIRED
+$inputs.Var.strict_addr_check = <System.Boolean>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -699,7 +763,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (AzureNetworkSubnetUnusedAddrResp)this.Field;
             }
             string fieldSpecDoc = Query.AzureO365GetNetworkSubnetUnusedAddr(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.tenantId = <System.String>
+# REQUIRED
+$inputs.Var.subscriptionId = <System.String>
+# REQUIRED
+$inputs.Var.resourceGroupName = <System.String>
+# REQUIRED
+$inputs.Var.vnet_name = <System.String>
+# REQUIRED
+$inputs.Var.subnet_name = <System.String>
+# REQUIRED
+$inputs.Var.strict_addr_check = <System.Boolean>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -721,7 +797,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (GetAzureHostTypeResp)this.Field;
             }
             string fieldSpecDoc = Query.AzureO365GetAzureHostType(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 

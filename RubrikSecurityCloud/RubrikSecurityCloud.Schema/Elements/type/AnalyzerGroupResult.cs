@@ -98,29 +98,28 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> AnalyzerGroup? AnalyzerGroup
         // GraphQL -> analyzerGroup: AnalyzerGroup! (type)
-        if (this.AnalyzerGroup == null && Exploration.Includes(parent + ".analyzerGroup"))
+        if (this.AnalyzerGroup == null && ec.Includes("analyzerGroup",false))
         {
             this.AnalyzerGroup = new AnalyzerGroup();
-            this.AnalyzerGroup.ApplyExploratoryFieldSpec(parent + ".analyzerGroup");
+            this.AnalyzerGroup.ApplyExploratoryFieldSpec(ec.NewChild("analyzerGroup"));
         }
         //      C# -> List<AnalyzerResult>? AnalyzerResults
         // GraphQL -> analyzerResults: [AnalyzerResult!]! (type)
-        if (this.AnalyzerResults == null && Exploration.Includes(parent + ".analyzerResults"))
+        if (this.AnalyzerResults == null && ec.Includes("analyzerResults",false))
         {
             this.AnalyzerResults = new List<AnalyzerResult>();
-            this.AnalyzerResults.ApplyExploratoryFieldSpec(parent + ".analyzerResults");
+            this.AnalyzerResults.ApplyExploratoryFieldSpec(ec.NewChild("analyzerResults"));
         }
         //      C# -> Hits? Hits
         // GraphQL -> hits: Hits! (type)
-        if (this.Hits == null && Exploration.Includes(parent + ".hits"))
+        if (this.Hits == null && ec.Includes("hits",false))
         {
             this.Hits = new Hits();
-            this.Hits.ApplyExploratoryFieldSpec(parent + ".hits");
+            this.Hits.ApplyExploratoryFieldSpec(ec.NewChild("hits"));
         }
     }
 
@@ -154,12 +153,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AnalyzerGroupResult> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AnalyzerGroupResult());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AnalyzerGroupResult> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

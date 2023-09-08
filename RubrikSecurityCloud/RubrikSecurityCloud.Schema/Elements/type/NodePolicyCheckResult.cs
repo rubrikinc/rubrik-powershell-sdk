@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? NodeId
         // GraphQL -> nodeId: String! (scalar)
-        if (this.NodeId == null && Exploration.Includes(parent + ".nodeId", true))
+        if (this.NodeId == null && ec.Includes("nodeId",true))
         {
             this.NodeId = "FETCH";
         }
         //      C# -> List<PolicyCheckResult>? CheckResults
         // GraphQL -> checkResults: [PolicyCheckResult!]! (type)
-        if (this.CheckResults == null && Exploration.Includes(parent + ".checkResults"))
+        if (this.CheckResults == null && ec.Includes("checkResults",false))
         {
             this.CheckResults = new List<PolicyCheckResult>();
-            this.CheckResults.ApplyExploratoryFieldSpec(parent + ".checkResults");
+            this.CheckResults.ApplyExploratoryFieldSpec(ec.NewChild("checkResults"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<NodePolicyCheckResult> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new NodePolicyCheckResult());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<NodePolicyCheckResult> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

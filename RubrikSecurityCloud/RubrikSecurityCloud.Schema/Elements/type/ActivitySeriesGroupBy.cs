@@ -98,29 +98,28 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ActivitySeriesConnection? ActivitySeriesConnection
         // GraphQL -> activitySeriesConnection: ActivitySeriesConnection! (type)
-        if (this.ActivitySeriesConnection == null && Exploration.Includes(parent + ".activitySeriesConnection"))
+        if (this.ActivitySeriesConnection == null && ec.Includes("activitySeriesConnection",false))
         {
             this.ActivitySeriesConnection = new ActivitySeriesConnection();
-            this.ActivitySeriesConnection.ApplyExploratoryFieldSpec(parent + ".activitySeriesConnection");
+            this.ActivitySeriesConnection.ApplyExploratoryFieldSpec(ec.NewChild("activitySeriesConnection"));
         }
         //      C# -> List<ActivitySeriesGroupBy>? ActivitySeriesGroupByField
         // GraphQL -> activitySeriesGroupBy: [ActivitySeriesGroupBy!]! (type)
-        if (this.ActivitySeriesGroupByField == null && Exploration.Includes(parent + ".activitySeriesGroupBy"))
+        if (this.ActivitySeriesGroupByField == null && ec.Includes("activitySeriesGroupBy",false))
         {
             this.ActivitySeriesGroupByField = new List<ActivitySeriesGroupBy>();
-            this.ActivitySeriesGroupByField.ApplyExploratoryFieldSpec(parent + ".activitySeriesGroupBy");
+            this.ActivitySeriesGroupByField.ApplyExploratoryFieldSpec(ec.NewChild("activitySeriesGroupBy"));
         }
         //      C# -> ActivitySeriesGroupByInfo? GroupByInfo
         // GraphQL -> groupByInfo: ActivitySeriesGroupByInfo! (union)
-        if (this.GroupByInfo == null && Exploration.Includes(parent + ".groupByInfo"))
+        if (this.GroupByInfo == null && ec.Includes("groupByInfo",false))
         {
             var impls = new List<ActivitySeriesGroupByInfo>();
-            impls.ApplyExploratoryFieldSpec(parent + ".groupByInfo");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
             this.GroupByInfo = (ActivitySeriesGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
         }
     }
@@ -155,12 +154,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ActivitySeriesGroupBy> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ActivitySeriesGroupBy());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ActivitySeriesGroupBy> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

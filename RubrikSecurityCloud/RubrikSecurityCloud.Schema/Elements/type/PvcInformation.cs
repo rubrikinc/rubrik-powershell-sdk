@@ -159,54 +159,53 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? AccessMode
         // GraphQL -> accessMode: String! (scalar)
-        if (this.AccessMode == null && Exploration.Includes(parent + ".accessMode", true))
+        if (this.AccessMode == null && ec.Includes("accessMode",true))
         {
             this.AccessMode = "FETCH";
         }
         //      C# -> System.String? Capacity
         // GraphQL -> capacity: String! (scalar)
-        if (this.Capacity == null && Exploration.Includes(parent + ".capacity", true))
+        if (this.Capacity == null && ec.Includes("capacity",true))
         {
             this.Capacity = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.String? Labels
         // GraphQL -> labels: String! (scalar)
-        if (this.Labels == null && Exploration.Includes(parent + ".labels", true))
+        if (this.Labels == null && ec.Includes("labels",true))
         {
             this.Labels = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? Phase
         // GraphQL -> phase: String! (scalar)
-        if (this.Phase == null && Exploration.Includes(parent + ".phase", true))
+        if (this.Phase == null && ec.Includes("phase",true))
         {
             this.Phase = "FETCH";
         }
         //      C# -> System.String? StorageClass
         // GraphQL -> storageClass: String! (scalar)
-        if (this.StorageClass == null && Exploration.Includes(parent + ".storageClass", true))
+        if (this.StorageClass == null && ec.Includes("storageClass",true))
         {
             this.StorageClass = "FETCH";
         }
         //      C# -> System.String? Volume
         // GraphQL -> volume: String! (scalar)
-        if (this.Volume == null && Exploration.Includes(parent + ".volume", true))
+        if (this.Volume == null && ec.Includes("volume",true))
         {
             this.Volume = "FETCH";
         }
@@ -242,12 +241,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PvcInformation> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PvcInformation());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<PvcInformation> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

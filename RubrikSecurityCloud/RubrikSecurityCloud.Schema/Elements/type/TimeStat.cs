@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? Stat
         // GraphQL -> stat: Long! (scalar)
-        if (this.Stat == null && Exploration.Includes(parent + ".stat", true))
+        if (this.Stat == null && ec.Includes("stat",true))
         {
             this.Stat = new System.Int64();
         }
         //      C# -> DateTime? Time
         // GraphQL -> time: DateTime (scalar)
-        if (this.Time == null && Exploration.Includes(parent + ".time", true))
+        if (this.Time == null && ec.Includes("time",true))
         {
             this.Time = new DateTime();
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<TimeStat> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new TimeStat());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<TimeStat> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

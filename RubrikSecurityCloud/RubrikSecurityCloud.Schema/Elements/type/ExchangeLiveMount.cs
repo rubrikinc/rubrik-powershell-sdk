@@ -168,59 +168,58 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: UUID! (scalar)
-        if (this.CdmId == null && Exploration.Includes(parent + ".cdmId", true))
+        if (this.CdmId == null && ec.Includes("cdmId",true))
         {
             this.CdmId = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsReady
         // GraphQL -> isReady: Boolean! (scalar)
-        if (this.IsReady == null && Exploration.Includes(parent + ".isReady", true))
+        if (this.IsReady == null && ec.Includes("isReady",true))
         {
             this.IsReady = true;
         }
         //      C# -> System.String? NodeCompositeId
         // GraphQL -> nodeCompositeId: String! (scalar)
-        if (this.NodeCompositeId == null && Exploration.Includes(parent + ".nodeCompositeId", true))
+        if (this.NodeCompositeId == null && ec.Includes("nodeCompositeId",true))
         {
             this.NodeCompositeId = "FETCH";
         }
         //      C# -> System.String? NodeIp
         // GraphQL -> nodeIp: String! (scalar)
-        if (this.NodeIp == null && Exploration.Includes(parent + ".nodeIp", true))
+        if (this.NodeIp == null && ec.Includes("nodeIp",true))
         {
             this.NodeIp = "FETCH";
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
-        if (this.Cluster == null && Exploration.Includes(parent + ".cluster"))
+        if (this.Cluster == null && ec.Includes("cluster",false))
         {
             this.Cluster = new Cluster();
-            this.Cluster.ApplyExploratoryFieldSpec(parent + ".cluster");
+            this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
         }
         //      C# -> ExchangeDatabase? SourceDatabase
         // GraphQL -> sourceDatabase: ExchangeDatabase (type)
-        if (this.SourceDatabase == null && Exploration.Includes(parent + ".sourceDatabase"))
+        if (this.SourceDatabase == null && ec.Includes("sourceDatabase",false))
         {
             this.SourceDatabase = new ExchangeDatabase();
-            this.SourceDatabase.ApplyExploratoryFieldSpec(parent + ".sourceDatabase");
+            this.SourceDatabase.ApplyExploratoryFieldSpec(ec.NewChild("sourceDatabase"));
         }
         //      C# -> CdmSnapshot? SourceSnapshot
         // GraphQL -> sourceSnapshot: CdmSnapshot! (type)
-        if (this.SourceSnapshot == null && Exploration.Includes(parent + ".sourceSnapshot"))
+        if (this.SourceSnapshot == null && ec.Includes("sourceSnapshot",false))
         {
             this.SourceSnapshot = new CdmSnapshot();
-            this.SourceSnapshot.ApplyExploratoryFieldSpec(parent + ".sourceSnapshot");
+            this.SourceSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("sourceSnapshot"));
         }
     }
 
@@ -254,12 +253,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ExchangeLiveMount> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ExchangeLiveMount());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ExchangeLiveMount> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

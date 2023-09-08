@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ReplicationType? ReplicationType
         // GraphQL -> replicationType: ReplicationType! (enum)
-        if (this.ReplicationType == null && Exploration.Includes(parent + ".replicationType", true))
+        if (this.ReplicationType == null && ec.Includes("replicationType",true))
         {
             this.ReplicationType = new ReplicationType();
         }
         //      C# -> SpecificReplicationSpec? SpecificReplicationSpec
         // GraphQL -> specificReplicationSpec: SpecificReplicationSpec (type)
-        if (this.SpecificReplicationSpec == null && Exploration.Includes(parent + ".specificReplicationSpec"))
+        if (this.SpecificReplicationSpec == null && ec.Includes("specificReplicationSpec",false))
         {
             this.SpecificReplicationSpec = new SpecificReplicationSpec();
-            this.SpecificReplicationSpec.ApplyExploratoryFieldSpec(parent + ".specificReplicationSpec");
+            this.SpecificReplicationSpec.ApplyExploratoryFieldSpec(ec.NewChild("specificReplicationSpec"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ReplicationSpec> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ReplicationSpec());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ReplicationSpec> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

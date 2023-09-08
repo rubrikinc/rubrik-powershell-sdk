@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? Count
         // GraphQL -> count: Long! (scalar)
-        if (this.Count == null && Exploration.Includes(parent + ".count", true))
+        if (this.Count == null && ec.Includes("count",true))
         {
             this.Count = new System.Int64();
         }
         //      C# -> List<PendingEvaluationResults>? PendingEvaluationResults
         // GraphQL -> pendingEvaluationResults: [PendingEvaluationResults!]! (type)
-        if (this.PendingEvaluationResults == null && Exploration.Includes(parent + ".pendingEvaluationResults"))
+        if (this.PendingEvaluationResults == null && ec.Includes("pendingEvaluationResults",false))
         {
             this.PendingEvaluationResults = new List<PendingEvaluationResults>();
-            this.PendingEvaluationResults.ApplyExploratoryFieldSpec(parent + ".pendingEvaluationResults");
+            this.PendingEvaluationResults.ApplyExploratoryFieldSpec(ec.NewChild("pendingEvaluationResults"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PendingEvaluationResultsReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PendingEvaluationResultsReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<PendingEvaluationResultsReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

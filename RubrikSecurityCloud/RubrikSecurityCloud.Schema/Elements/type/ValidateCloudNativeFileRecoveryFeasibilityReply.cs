@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<CloudNativeFileRecoveryFeasibility>? SnapshotFileRecoveryFeasibility
         // GraphQL -> snapshotFileRecoveryFeasibility: [CloudNativeFileRecoveryFeasibility!]! (type)
-        if (this.SnapshotFileRecoveryFeasibility == null && Exploration.Includes(parent + ".snapshotFileRecoveryFeasibility"))
+        if (this.SnapshotFileRecoveryFeasibility == null && ec.Includes("snapshotFileRecoveryFeasibility",false))
         {
             this.SnapshotFileRecoveryFeasibility = new List<CloudNativeFileRecoveryFeasibility>();
-            this.SnapshotFileRecoveryFeasibility.ApplyExploratoryFieldSpec(parent + ".snapshotFileRecoveryFeasibility");
+            this.SnapshotFileRecoveryFeasibility.ApplyExploratoryFieldSpec(ec.NewChild("snapshotFileRecoveryFeasibility"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ValidateCloudNativeFileRecoveryFeasibilityReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ValidateCloudNativeFileRecoveryFeasibilityReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ValidateCloudNativeFileRecoveryFeasibilityReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

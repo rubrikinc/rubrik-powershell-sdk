@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? LogicalBytes
         // GraphQL -> logicalBytes: Long! (scalar)
-        if (this.LogicalBytes == null && Exploration.Includes(parent + ".logicalBytes", true))
+        if (this.LogicalBytes == null && ec.Includes("logicalBytes",true))
         {
             this.LogicalBytes = new System.Int64();
         }
         //      C# -> System.Int64? PhysicalBytes
         // GraphQL -> physicalBytes: Long! (scalar)
-        if (this.PhysicalBytes == null && Exploration.Includes(parent + ".physicalBytes", true))
+        if (this.PhysicalBytes == null && ec.Includes("physicalBytes",true))
         {
             this.PhysicalBytes = new System.Int64();
         }
         //      C# -> System.Int64? TotalInodes
         // GraphQL -> totalInodes: Long (scalar)
-        if (this.TotalInodes == null && Exploration.Includes(parent + ".totalInodes", true))
+        if (this.TotalInodes == null && ec.Includes("totalInodes",true))
         {
             this.TotalInodes = new System.Int64();
         }
         //      C# -> System.Int64? UsedInodes
         // GraphQL -> usedInodes: Long (scalar)
-        if (this.UsedInodes == null && Exploration.Includes(parent + ".usedInodes", true))
+        if (this.UsedInodes == null && ec.Includes("usedInodes",true))
         {
             this.UsedInodes = new System.Int64();
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ManagedVolumeSnapshotStats> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ManagedVolumeSnapshotStats());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ManagedVolumeSnapshotStats> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

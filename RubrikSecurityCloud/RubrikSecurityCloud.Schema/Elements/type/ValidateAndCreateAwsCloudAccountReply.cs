@@ -81,22 +81,21 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> AwsCloudAccountCreateResponse? InitiateResponse
         // GraphQL -> initiateResponse: AwsCloudAccountCreateResponse (type)
-        if (this.InitiateResponse == null && Exploration.Includes(parent + ".initiateResponse"))
+        if (this.InitiateResponse == null && ec.Includes("initiateResponse",false))
         {
             this.InitiateResponse = new AwsCloudAccountCreateResponse();
-            this.InitiateResponse.ApplyExploratoryFieldSpec(parent + ".initiateResponse");
+            this.InitiateResponse.ApplyExploratoryFieldSpec(ec.NewChild("initiateResponse"));
         }
         //      C# -> AwsCloudAccountValidateResponse? ValidateResponse
         // GraphQL -> validateResponse: AwsCloudAccountValidateResponse (type)
-        if (this.ValidateResponse == null && Exploration.Includes(parent + ".validateResponse"))
+        if (this.ValidateResponse == null && ec.Includes("validateResponse",false))
         {
             this.ValidateResponse = new AwsCloudAccountValidateResponse();
-            this.ValidateResponse.ApplyExploratoryFieldSpec(parent + ".validateResponse");
+            this.ValidateResponse.ApplyExploratoryFieldSpec(ec.NewChild("validateResponse"));
         }
     }
 
@@ -130,12 +129,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ValidateAndCreateAwsCloudAccountReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ValidateAndCreateAwsCloudAccountReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ValidateAndCreateAwsCloudAccountReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -117,36 +117,35 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> SourceSslCertReqs? SslCertRequirements
         // GraphQL -> sslCertRequirements: SourceSslCertReqs! (enum)
-        if (this.SslCertRequirements == null && Exploration.Includes(parent + ".sslCertRequirements", true))
+        if (this.SslCertRequirements == null && ec.Includes("sslCertRequirements",true))
         {
             this.SslCertRequirements = new SourceSslCertReqs();
         }
         //      C# -> System.Boolean? Ssl
         // GraphQL -> ssl: Boolean! (scalar)
-        if (this.Ssl == null && Exploration.Includes(parent + ".ssl", true))
+        if (this.Ssl == null && ec.Includes("ssl",true))
         {
             this.Ssl = true;
         }
         //      C# -> System.String? SslCaCerts
         // GraphQL -> sslCaCerts: String! (scalar)
-        if (this.SslCaCerts == null && Exploration.Includes(parent + ".sslCaCerts", true))
+        if (this.SslCaCerts == null && ec.Includes("sslCaCerts",true))
         {
             this.SslCaCerts = "FETCH";
         }
         //      C# -> System.String? SslCertfile
         // GraphQL -> sslCertfile: String! (scalar)
-        if (this.SslCertfile == null && Exploration.Includes(parent + ".sslCertfile", true))
+        if (this.SslCertfile == null && ec.Includes("sslCertfile",true))
         {
             this.SslCertfile = "FETCH";
         }
         //      C# -> System.String? SslKeyfile
         // GraphQL -> sslKeyfile: String! (scalar)
-        if (this.SslKeyfile == null && Exploration.Includes(parent + ".sslKeyfile", true))
+        if (this.SslKeyfile == null && ec.Includes("sslKeyfile",true))
         {
             this.SslKeyfile = "FETCH";
         }
@@ -182,12 +181,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<MongodbSslOptions> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new MongodbSslOptions());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<MongodbSslOptions> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

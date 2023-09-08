@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> AwsNativeRegion? Region
         // GraphQL -> region: AwsNativeRegion! (enum)
-        if (this.Region == null && Exploration.Includes(parent + ".region", true))
+        if (this.Region == null && ec.Includes("region",true))
         {
             this.Region = new AwsNativeRegion();
         }
         //      C# -> System.Boolean? IsExocomputeConfigured
         // GraphQL -> isExocomputeConfigured: Boolean! (scalar)
-        if (this.IsExocomputeConfigured == null && Exploration.Includes(parent + ".isExocomputeConfigured", true))
+        if (this.IsExocomputeConfigured == null && ec.Includes("isExocomputeConfigured",true))
         {
             this.IsExocomputeConfigured = true;
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AwsNativeRegionSpec> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AwsNativeRegionSpec());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AwsNativeRegionSpec> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

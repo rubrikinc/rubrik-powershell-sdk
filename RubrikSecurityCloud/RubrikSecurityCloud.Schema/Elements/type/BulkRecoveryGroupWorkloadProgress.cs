@@ -246,93 +246,92 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> BulkRecoveryGroupWorkloadStatus? Status
         // GraphQL -> status: BulkRecoveryGroupWorkloadStatus! (enum)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = new BulkRecoveryGroupWorkloadStatus();
         }
         //      C# -> System.Int32? CanceledWorkloads
         // GraphQL -> canceledWorkloads: Int (scalar)
-        if (this.CanceledWorkloads == null && Exploration.Includes(parent + ".canceledWorkloads", true))
+        if (this.CanceledWorkloads == null && ec.Includes("canceledWorkloads",true))
         {
             this.CanceledWorkloads = Int32.MinValue;
         }
         //      C# -> System.Int64? CreateTime
         // GraphQL -> createTime: Long (scalar)
-        if (this.CreateTime == null && Exploration.Includes(parent + ".createTime", true))
+        if (this.CreateTime == null && ec.Includes("createTime",true))
         {
             this.CreateTime = new System.Int64();
         }
         //      C# -> System.Int64? ElapsedTime
         // GraphQL -> elapsedTime: Long! (scalar)
-        if (this.ElapsedTime == null && Exploration.Includes(parent + ".elapsedTime", true))
+        if (this.ElapsedTime == null && ec.Includes("elapsedTime",true))
         {
             this.ElapsedTime = new System.Int64();
         }
         //      C# -> System.Int64? EndTime
         // GraphQL -> endTime: Long (scalar)
-        if (this.EndTime == null && Exploration.Includes(parent + ".endTime", true))
+        if (this.EndTime == null && ec.Includes("endTime",true))
         {
             this.EndTime = new System.Int64();
         }
         //      C# -> System.Int32? FailedWorkloads
         // GraphQL -> failedWorkloads: Int (scalar)
-        if (this.FailedWorkloads == null && Exploration.Includes(parent + ".failedWorkloads", true))
+        if (this.FailedWorkloads == null && ec.Includes("failedWorkloads",true))
         {
             this.FailedWorkloads = Int32.MinValue;
         }
         //      C# -> System.Int32? InProgressWorkloads
         // GraphQL -> inProgressWorkloads: Int (scalar)
-        if (this.InProgressWorkloads == null && Exploration.Includes(parent + ".inProgressWorkloads", true))
+        if (this.InProgressWorkloads == null && ec.Includes("inProgressWorkloads",true))
         {
             this.InProgressWorkloads = Int32.MinValue;
         }
         //      C# -> System.Int32? Seq
         // GraphQL -> seq: Int! (scalar)
-        if (this.Seq == null && Exploration.Includes(parent + ".seq", true))
+        if (this.Seq == null && ec.Includes("seq",true))
         {
             this.Seq = Int32.MinValue;
         }
         //      C# -> System.Int64? StartTime
         // GraphQL -> startTime: Long (scalar)
-        if (this.StartTime == null && Exploration.Includes(parent + ".startTime", true))
+        if (this.StartTime == null && ec.Includes("startTime",true))
         {
             this.StartTime = new System.Int64();
         }
         //      C# -> System.Int32? SucceededWorkloads
         // GraphQL -> succeededWorkloads: Int (scalar)
-        if (this.SucceededWorkloads == null && Exploration.Includes(parent + ".succeededWorkloads", true))
+        if (this.SucceededWorkloads == null && ec.Includes("succeededWorkloads",true))
         {
             this.SucceededWorkloads = Int32.MinValue;
         }
         //      C# -> System.Int32? TotalWorkloads
         // GraphQL -> totalWorkloads: Int (scalar)
-        if (this.TotalWorkloads == null && Exploration.Includes(parent + ".totalWorkloads", true))
+        if (this.TotalWorkloads == null && ec.Includes("totalWorkloads",true))
         {
             this.TotalWorkloads = Int32.MinValue;
         }
         //      C# -> System.String? WorkloadType
         // GraphQL -> workloadType: String! (scalar)
-        if (this.WorkloadType == null && Exploration.Includes(parent + ".workloadType", true))
+        if (this.WorkloadType == null && ec.Includes("workloadType",true))
         {
             this.WorkloadType = "FETCH";
         }
         //      C# -> System.Int32? WorkloadsWithoutSnapshot
         // GraphQL -> workloadsWithoutSnapshot: Int (scalar)
-        if (this.WorkloadsWithoutSnapshot == null && Exploration.Includes(parent + ".workloadsWithoutSnapshot", true))
+        if (this.WorkloadsWithoutSnapshot == null && ec.Includes("workloadsWithoutSnapshot",true))
         {
             this.WorkloadsWithoutSnapshot = Int32.MinValue;
         }
         //      C# -> List<BulkRecoverySelectorStep>? SelectorSteps
         // GraphQL -> selectorSteps: [BulkRecoverySelectorStep!]! (type)
-        if (this.SelectorSteps == null && Exploration.Includes(parent + ".selectorSteps"))
+        if (this.SelectorSteps == null && ec.Includes("selectorSteps",false))
         {
             this.SelectorSteps = new List<BulkRecoverySelectorStep>();
-            this.SelectorSteps.ApplyExploratoryFieldSpec(parent + ".selectorSteps");
+            this.SelectorSteps.ApplyExploratoryFieldSpec(ec.NewChild("selectorSteps"));
         }
     }
 
@@ -366,12 +365,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<BulkRecoveryGroupWorkloadProgress> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new BulkRecoveryGroupWorkloadProgress());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<BulkRecoveryGroupWorkloadProgress> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

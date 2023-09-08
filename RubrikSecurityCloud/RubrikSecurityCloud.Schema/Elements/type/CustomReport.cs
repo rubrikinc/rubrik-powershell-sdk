@@ -286,109 +286,108 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ReportFocusEnum? Focus
         // GraphQL -> focus: ReportFocusEnum! (enum)
-        if (this.Focus == null && Exploration.Includes(parent + ".focus", true))
+        if (this.Focus == null && ec.Includes("focus",true))
         {
             this.Focus = new ReportFocusEnum();
         }
         //      C# -> DateTime? CreatedAt
         // GraphQL -> createdAt: DateTime! (scalar)
-        if (this.CreatedAt == null && Exploration.Includes(parent + ".createdAt", true))
+        if (this.CreatedAt == null && ec.Includes("createdAt",true))
         {
             this.CreatedAt = new DateTime();
         }
         //      C# -> System.String? Fid
         // GraphQL -> fid: UUID! (scalar)
-        if (this.Fid == null && Exploration.Includes(parent + ".fid", true))
+        if (this.Fid == null && ec.Includes("fid",true))
         {
             this.Fid = "FETCH";
         }
         //      C# -> System.Int32? Id
         // GraphQL -> id: Int! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = Int32.MinValue;
         }
         //      C# -> System.Boolean? IsHidden
         // GraphQL -> isHidden: Boolean! (scalar)
-        if (this.IsHidden == null && Exploration.Includes(parent + ".isHidden", true))
+        if (this.IsHidden == null && ec.Includes("isHidden",true))
         {
             this.IsHidden = true;
         }
         //      C# -> System.Boolean? IsReadOnly
         // GraphQL -> isReadOnly: Boolean! (scalar)
-        if (this.IsReadOnly == null && Exploration.Includes(parent + ".isReadOnly", true))
+        if (this.IsReadOnly == null && ec.Includes("isReadOnly",true))
         {
             this.IsReadOnly = true;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> DateTime? NewestSyncDate
         // GraphQL -> newestSyncDate: DateTime (scalar)
-        if (this.NewestSyncDate == null && Exploration.Includes(parent + ".newestSyncDate", true))
+        if (this.NewestSyncDate == null && ec.Includes("newestSyncDate",true))
         {
             this.NewestSyncDate = new DateTime();
         }
         //      C# -> DateTime? OldestSyncDate
         // GraphQL -> oldestSyncDate: DateTime (scalar)
-        if (this.OldestSyncDate == null && Exploration.Includes(parent + ".oldestSyncDate", true))
+        if (this.OldestSyncDate == null && ec.Includes("oldestSyncDate",true))
         {
             this.OldestSyncDate = new DateTime();
         }
         //      C# -> DateTime? UpdatedAt
         // GraphQL -> updatedAt: DateTime! (scalar)
-        if (this.UpdatedAt == null && Exploration.Includes(parent + ".updatedAt", true))
+        if (this.UpdatedAt == null && ec.Includes("updatedAt",true))
         {
             this.UpdatedAt = new DateTime();
         }
         //      C# -> DateTime? ViewedAt
         // GraphQL -> viewedAt: DateTime! (scalar)
-        if (this.ViewedAt == null && Exploration.Includes(parent + ".viewedAt", true))
+        if (this.ViewedAt == null && ec.Includes("viewedAt",true))
         {
             this.ViewedAt = new DateTime();
         }
         //      C# -> CustomReportFilters? Filters
         // GraphQL -> filters: CustomReportFilters! (type)
-        if (this.Filters == null && Exploration.Includes(parent + ".filters"))
+        if (this.Filters == null && ec.Includes("filters",false))
         {
             this.Filters = new CustomReportFilters();
-            this.Filters.ApplyExploratoryFieldSpec(parent + ".filters");
+            this.Filters.ApplyExploratoryFieldSpec(ec.NewChild("filters"));
         }
         //      C# -> User? Owner
         // GraphQL -> owner: User! (type)
-        if (this.Owner == null && Exploration.Includes(parent + ".owner"))
+        if (this.Owner == null && ec.Includes("owner",false))
         {
             this.Owner = new User();
-            this.Owner.ApplyExploratoryFieldSpec(parent + ".owner");
+            this.Owner.ApplyExploratoryFieldSpec(ec.NewChild("owner"));
         }
         //      C# -> ScheduledReportConnection? ScheduledReports
         // GraphQL -> scheduledReports: ScheduledReportConnection! (type)
-        if (this.ScheduledReports == null && Exploration.Includes(parent + ".scheduledReports"))
+        if (this.ScheduledReports == null && ec.Includes("scheduledReports",false))
         {
             this.ScheduledReports = new ScheduledReportConnection();
-            this.ScheduledReports.ApplyExploratoryFieldSpec(parent + ".scheduledReports");
+            this.ScheduledReports.ApplyExploratoryFieldSpec(ec.NewChild("scheduledReports"));
         }
         //      C# -> List<ReportChartType>? Charts
         // GraphQL -> charts: [ReportChartType!]! (union)
-        if (this.Charts == null && Exploration.Includes(parent + ".charts"))
+        if (this.Charts == null && ec.Includes("charts",false))
         {
             this.Charts = new List<ReportChartType>();
-            this.Charts.ApplyExploratoryFieldSpec(parent + ".charts");
+            this.Charts.ApplyExploratoryFieldSpec(ec.NewChild("charts"));
         }
         //      C# -> List<ReportTableType>? Tables
         // GraphQL -> tables: [ReportTableType!]! (union)
-        if (this.Tables == null && Exploration.Includes(parent + ".tables"))
+        if (this.Tables == null && ec.Includes("tables",false))
         {
             this.Tables = new List<ReportTableType>();
-            this.Tables.ApplyExploratoryFieldSpec(parent + ".tables");
+            this.Tables.ApplyExploratoryFieldSpec(ec.NewChild("tables"));
         }
     }
 
@@ -422,12 +421,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CustomReport> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CustomReport());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CustomReport> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

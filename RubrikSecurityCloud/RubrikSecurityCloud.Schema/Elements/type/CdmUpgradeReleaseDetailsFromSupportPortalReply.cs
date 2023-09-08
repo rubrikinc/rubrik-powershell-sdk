@@ -92,27 +92,26 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? CompatibilityMatrixLink
         // GraphQL -> compatibilityMatrixLink: String! (scalar)
-        if (this.CompatibilityMatrixLink == null && Exploration.Includes(parent + ".compatibilityMatrixLink", true))
+        if (this.CompatibilityMatrixLink == null && ec.Includes("compatibilityMatrixLink",true))
         {
             this.CompatibilityMatrixLink = "FETCH";
         }
         //      C# -> System.String? SupportSoftwareLink
         // GraphQL -> supportSoftwareLink: String! (scalar)
-        if (this.SupportSoftwareLink == null && Exploration.Includes(parent + ".supportSoftwareLink", true))
+        if (this.SupportSoftwareLink == null && ec.Includes("supportSoftwareLink",true))
         {
             this.SupportSoftwareLink = "FETCH";
         }
         //      C# -> List<CdmUpgradeReleaseDetail>? ReleaseDetails
         // GraphQL -> releaseDetails: [CdmUpgradeReleaseDetail!]! (type)
-        if (this.ReleaseDetails == null && Exploration.Includes(parent + ".releaseDetails"))
+        if (this.ReleaseDetails == null && ec.Includes("releaseDetails",false))
         {
             this.ReleaseDetails = new List<CdmUpgradeReleaseDetail>();
-            this.ReleaseDetails.ApplyExploratoryFieldSpec(parent + ".releaseDetails");
+            this.ReleaseDetails.ApplyExploratoryFieldSpec(ec.NewChild("releaseDetails"));
         }
     }
 
@@ -146,12 +145,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CdmUpgradeReleaseDetailsFromSupportPortalReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CdmUpgradeReleaseDetailsFromSupportPortalReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CdmUpgradeReleaseDetailsFromSupportPortalReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

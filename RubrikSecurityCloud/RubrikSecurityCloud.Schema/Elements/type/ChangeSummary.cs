@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<DailyChangeSummary>? PerDayChangeSummary
         // GraphQL -> perDayChangeSummary: [DailyChangeSummary!]! (type)
-        if (this.PerDayChangeSummary == null && Exploration.Includes(parent + ".perDayChangeSummary"))
+        if (this.PerDayChangeSummary == null && ec.Includes("perDayChangeSummary",false))
         {
             this.PerDayChangeSummary = new List<DailyChangeSummary>();
-            this.PerDayChangeSummary.ApplyExploratoryFieldSpec(parent + ".perDayChangeSummary");
+            this.PerDayChangeSummary.ApplyExploratoryFieldSpec(ec.NewChild("perDayChangeSummary"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ChangeSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ChangeSummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ChangeSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

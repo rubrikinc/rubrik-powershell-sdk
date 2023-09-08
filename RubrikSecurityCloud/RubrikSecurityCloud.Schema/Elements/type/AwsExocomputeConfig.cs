@@ -143,48 +143,47 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<AwsCloudAccountRegion>? ExocomputeEligibleRegions
         // GraphQL -> exocomputeEligibleRegions: [AwsCloudAccountRegion!]! (enum)
-        if (this.ExocomputeEligibleRegions == null && Exploration.Includes(parent + ".exocomputeEligibleRegions", true))
+        if (this.ExocomputeEligibleRegions == null && ec.Includes("exocomputeEligibleRegions",true))
         {
             this.ExocomputeEligibleRegions = new List<AwsCloudAccountRegion>();
         }
         //      C# -> List<System.String>? MappedCloudAccountIds
         // GraphQL -> mappedCloudAccountIds: [UUID!]! (scalar)
-        if (this.MappedCloudAccountIds == null && Exploration.Includes(parent + ".mappedCloudAccountIds", true))
+        if (this.MappedCloudAccountIds == null && ec.Includes("mappedCloudAccountIds",true))
         {
             this.MappedCloudAccountIds = new List<System.String>();
         }
         //      C# -> AwsCloudAccount? AwsCloudAccount
         // GraphQL -> awsCloudAccount: AwsCloudAccount! (type)
-        if (this.AwsCloudAccount == null && Exploration.Includes(parent + ".awsCloudAccount"))
+        if (this.AwsCloudAccount == null && ec.Includes("awsCloudAccount",false))
         {
             this.AwsCloudAccount = new AwsCloudAccount();
-            this.AwsCloudAccount.ApplyExploratoryFieldSpec(parent + ".awsCloudAccount");
+            this.AwsCloudAccount.ApplyExploratoryFieldSpec(ec.NewChild("awsCloudAccount"));
         }
         //      C# -> List<AwsExocomputeGetConfigResponse>? Configs
         // GraphQL -> configs: [AwsExocomputeGetConfigResponse!]! (type)
-        if (this.Configs == null && Exploration.Includes(parent + ".configs"))
+        if (this.Configs == null && ec.Includes("configs",false))
         {
             this.Configs = new List<AwsExocomputeGetConfigResponse>();
-            this.Configs.ApplyExploratoryFieldSpec(parent + ".configs");
+            this.Configs.ApplyExploratoryFieldSpec(ec.NewChild("configs"));
         }
         //      C# -> FeatureDetail? FeatureDetail
         // GraphQL -> featureDetail: FeatureDetail! (type)
-        if (this.FeatureDetail == null && Exploration.Includes(parent + ".featureDetail"))
+        if (this.FeatureDetail == null && ec.Includes("featureDetail",false))
         {
             this.FeatureDetail = new FeatureDetail();
-            this.FeatureDetail.ApplyExploratoryFieldSpec(parent + ".featureDetail");
+            this.FeatureDetail.ApplyExploratoryFieldSpec(ec.NewChild("featureDetail"));
         }
         //      C# -> List<CloudAccountDetails>? MappedCloudAccounts
         // GraphQL -> mappedCloudAccounts: [CloudAccountDetails!]! (type)
-        if (this.MappedCloudAccounts == null && Exploration.Includes(parent + ".mappedCloudAccounts"))
+        if (this.MappedCloudAccounts == null && ec.Includes("mappedCloudAccounts",false))
         {
             this.MappedCloudAccounts = new List<CloudAccountDetails>();
-            this.MappedCloudAccounts.ApplyExploratoryFieldSpec(parent + ".mappedCloudAccounts");
+            this.MappedCloudAccounts.ApplyExploratoryFieldSpec(ec.NewChild("mappedCloudAccounts"));
         }
     }
 
@@ -218,12 +217,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AwsExocomputeConfig> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AwsExocomputeConfig());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AwsExocomputeConfig> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

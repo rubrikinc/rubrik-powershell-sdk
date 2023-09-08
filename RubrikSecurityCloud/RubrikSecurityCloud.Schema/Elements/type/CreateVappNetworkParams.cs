@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? NewName
         // GraphQL -> newName: String (scalar)
-        if (this.NewName == null && Exploration.Includes(parent + ".newName", true))
+        if (this.NewName == null && ec.Includes("newName",true))
         {
             this.NewName = "FETCH";
         }
         //      C# -> VappNetworkSummary? VappNetworkSummary
         // GraphQL -> vappNetworkSummary: VappNetworkSummary (type)
-        if (this.VappNetworkSummary == null && Exploration.Includes(parent + ".vappNetworkSummary"))
+        if (this.VappNetworkSummary == null && ec.Includes("vappNetworkSummary",false))
         {
             this.VappNetworkSummary = new VappNetworkSummary();
-            this.VappNetworkSummary.ApplyExploratoryFieldSpec(parent + ".vappNetworkSummary");
+            this.VappNetworkSummary.ApplyExploratoryFieldSpec(ec.NewChild("vappNetworkSummary"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CreateVappNetworkParams> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CreateVappNetworkParams());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CreateVappNetworkParams> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

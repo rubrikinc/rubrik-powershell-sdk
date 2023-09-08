@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("errorInfo")]
         public System.String? ErrorInfo { get; set; }
 
+        //      C# -> System.String? EventSeriesId
+        // GraphQL -> eventSeriesId: String (scalar)
+        [JsonProperty("eventSeriesId")]
+        public System.String? EventSeriesId { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [JsonProperty("id")]
@@ -99,6 +104,7 @@ namespace RubrikSecurityCloud.Types
         System.String? ChildJobDebugInfo = null,
         System.String? EndTime = null,
         System.String? ErrorInfo = null,
+        System.String? EventSeriesId = null,
         System.String? Id = null,
         System.Boolean? IsDisabled = null,
         System.Single? JobProgress = null,
@@ -121,6 +127,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ErrorInfo != null ) {
             this.ErrorInfo = ErrorInfo;
+        }
+        if ( EventSeriesId != null ) {
+            this.EventSeriesId = EventSeriesId;
         }
         if ( Id != null ) {
             this.Id = Id;
@@ -179,6 +188,11 @@ namespace RubrikSecurityCloud.Types
         if (this.ErrorInfo != null) {
             s += ind + "errorInfo\n" ;
         }
+        //      C# -> System.String? EventSeriesId
+        // GraphQL -> eventSeriesId: String (scalar)
+        if (this.EventSeriesId != null) {
+            s += ind + "eventSeriesId\n" ;
+        }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
@@ -229,84 +243,89 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? Archived
         // GraphQL -> archived: Boolean! (scalar)
-        if (this.Archived == null && Exploration.Includes(parent + ".archived", true))
+        if (this.Archived == null && ec.Includes("archived",true))
         {
             this.Archived = true;
         }
         //      C# -> System.String? ChildJobDebugInfo
         // GraphQL -> childJobDebugInfo: String (scalar)
-        if (this.ChildJobDebugInfo == null && Exploration.Includes(parent + ".childJobDebugInfo", true))
+        if (this.ChildJobDebugInfo == null && ec.Includes("childJobDebugInfo",true))
         {
             this.ChildJobDebugInfo = "FETCH";
         }
         //      C# -> System.String? EndTime
         // GraphQL -> endTime: String (scalar)
-        if (this.EndTime == null && Exploration.Includes(parent + ".endTime", true))
+        if (this.EndTime == null && ec.Includes("endTime",true))
         {
             this.EndTime = "FETCH";
         }
         //      C# -> System.String? ErrorInfo
         // GraphQL -> errorInfo: String (scalar)
-        if (this.ErrorInfo == null && Exploration.Includes(parent + ".errorInfo", true))
+        if (this.ErrorInfo == null && ec.Includes("errorInfo",true))
         {
             this.ErrorInfo = "FETCH";
         }
+        //      C# -> System.String? EventSeriesId
+        // GraphQL -> eventSeriesId: String (scalar)
+        if (this.EventSeriesId == null && ec.Includes("eventSeriesId",true))
+        {
+            this.EventSeriesId = "FETCH";
+        }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsDisabled
         // GraphQL -> isDisabled: Boolean! (scalar)
-        if (this.IsDisabled == null && Exploration.Includes(parent + ".isDisabled", true))
+        if (this.IsDisabled == null && ec.Includes("isDisabled",true))
         {
             this.IsDisabled = true;
         }
         //      C# -> System.Single? JobProgress
         // GraphQL -> jobProgress: Float (scalar)
-        if (this.JobProgress == null && Exploration.Includes(parent + ".jobProgress", true))
+        if (this.JobProgress == null && ec.Includes("jobProgress",true))
         {
             this.JobProgress = new System.Single();
         }
         //      C# -> System.String? JobType
         // GraphQL -> jobType: String! (scalar)
-        if (this.JobType == null && Exploration.Includes(parent + ".jobType", true))
+        if (this.JobType == null && ec.Includes("jobType",true))
         {
             this.JobType = "FETCH";
         }
         //      C# -> System.String? NodeId
         // GraphQL -> nodeId: String! (scalar)
-        if (this.NodeId == null && Exploration.Includes(parent + ".nodeId", true))
+        if (this.NodeId == null && ec.Includes("nodeId",true))
         {
             this.NodeId = "FETCH";
         }
         //      C# -> System.String? OpentracingContext
         // GraphQL -> opentracingContext: String (scalar)
-        if (this.OpentracingContext == null && Exploration.Includes(parent + ".opentracingContext", true))
+        if (this.OpentracingContext == null && ec.Includes("opentracingContext",true))
         {
             this.OpentracingContext = "FETCH";
         }
         //      C# -> System.String? Result
         // GraphQL -> result: String (scalar)
-        if (this.Result == null && Exploration.Includes(parent + ".result", true))
+        if (this.Result == null && ec.Includes("result",true))
         {
             this.Result = "FETCH";
         }
         //      C# -> System.String? StartTime
         // GraphQL -> startTime: String (scalar)
-        if (this.StartTime == null && Exploration.Includes(parent + ".startTime", true))
+        if (this.StartTime == null && ec.Includes("startTime",true))
         {
             this.StartTime = "FETCH";
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = "FETCH";
         }
@@ -342,12 +361,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<InternalJobInstanceDetail> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new InternalJobInstanceDetail());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<InternalJobInstanceDetail> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

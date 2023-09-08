@@ -145,48 +145,47 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> OraclePdbOpenMode? OpenMode
         // GraphQL -> openMode: OraclePdbOpenMode! (enum)
-        if (this.OpenMode == null && Exploration.Includes(parent + ".openMode", true))
+        if (this.OpenMode == null && ec.Includes("openMode",true))
         {
             this.OpenMode = new OraclePdbOpenMode();
         }
         //      C# -> System.Int64? ApplicationRootContainerId
         // GraphQL -> applicationRootContainerId: Long! (scalar)
-        if (this.ApplicationRootContainerId == null && Exploration.Includes(parent + ".applicationRootContainerId", true))
+        if (this.ApplicationRootContainerId == null && ec.Includes("applicationRootContainerId",true))
         {
             this.ApplicationRootContainerId = new System.Int64();
         }
         //      C# -> System.Int64? DbId
         // GraphQL -> dbId: Long! (scalar)
-        if (this.DbId == null && Exploration.Includes(parent + ".dbId", true))
+        if (this.DbId == null && ec.Includes("dbId",true))
         {
             this.DbId = new System.Int64();
         }
         //      C# -> System.Int64? Id
         // GraphQL -> id: Long! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = new System.Int64();
         }
         //      C# -> System.Boolean? IsApplicationPdb
         // GraphQL -> isApplicationPdb: Boolean! (scalar)
-        if (this.IsApplicationPdb == null && Exploration.Includes(parent + ".isApplicationPdb", true))
+        if (this.IsApplicationPdb == null && ec.Includes("isApplicationPdb",true))
         {
             this.IsApplicationPdb = true;
         }
         //      C# -> System.Boolean? IsApplicationRoot
         // GraphQL -> isApplicationRoot: Boolean! (scalar)
-        if (this.IsApplicationRoot == null && Exploration.Includes(parent + ".isApplicationRoot", true))
+        if (this.IsApplicationRoot == null && ec.Includes("isApplicationRoot",true))
         {
             this.IsApplicationRoot = true;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
@@ -222,12 +221,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<OraclePdb> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new OraclePdb());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<OraclePdb> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

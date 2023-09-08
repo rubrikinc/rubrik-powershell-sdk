@@ -90,24 +90,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ReportFocusEnum? Focus
         // GraphQL -> focus: ReportFocusEnum! (enum)
-        if (this.Focus == null && Exploration.Includes(parent + ".focus", true))
+        if (this.Focus == null && ec.Includes("focus",true))
         {
             this.Focus = new ReportFocusEnum();
         }
         //      C# -> List<ActivitySeriesGroupByEnum>? GroupBy
         // GraphQL -> groupBy: [ActivitySeriesGroupByEnum!] (enum)
-        if (this.GroupBy == null && Exploration.Includes(parent + ".groupBy", true))
+        if (this.GroupBy == null && ec.Includes("groupBy",true))
         {
             this.GroupBy = new List<ActivitySeriesGroupByEnum>();
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
@@ -143,12 +142,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ActivityChart> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ActivityChart());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ActivityChart> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<System.String>? MissingPermissions
         // GraphQL -> missingPermissions: [String!]! (scalar)
-        if (this.MissingPermissions == null && Exploration.Includes(parent + ".missingPermissions", true))
+        if (this.MissingPermissions == null && ec.Includes("missingPermissions",true))
         {
             this.MissingPermissions = new List<System.String>();
         }
         //      C# -> System.String? SubscriptionNativeId
         // GraphQL -> subscriptionNativeId: String! (scalar)
-        if (this.SubscriptionNativeId == null && Exploration.Includes(parent + ".subscriptionNativeId", true))
+        if (this.SubscriptionNativeId == null && ec.Includes("subscriptionNativeId",true))
         {
             this.SubscriptionNativeId = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AzureSubscriptionMissingPermissions> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AzureSubscriptionMissingPermissions());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AzureSubscriptionMissingPermissions> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

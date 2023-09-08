@@ -61,12 +61,11 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> MssqlDbReplicaAvailabilityInfoRole? Role
         // GraphQL -> role: MssqlDbReplicaAvailabilityInfoRole! (enum)
-        if (this.Role == null && Exploration.Includes(parent + ".role", true))
+        if (this.Role == null && ec.Includes("role",true))
         {
             this.Role = new MssqlDbReplicaAvailabilityInfoRole();
         }
@@ -102,12 +101,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<MssqlDbReplicaAvailabilityInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new MssqlDbReplicaAvailabilityInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<MssqlDbReplicaAvailabilityInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

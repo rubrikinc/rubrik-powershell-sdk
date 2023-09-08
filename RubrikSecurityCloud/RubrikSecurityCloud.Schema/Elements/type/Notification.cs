@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("priority")]
         public NotificationPriority? Priority { get; set; }
 
+        //      C# -> NotificationResourceSubtype? ResourceSubtype
+        // GraphQL -> resourceSubtype: NotificationResourceSubtype! (enum)
+        [JsonProperty("resourceSubtype")]
+        public NotificationResourceSubtype? ResourceSubtype { get; set; }
+
         //      C# -> NotificationResourceType? ResourceType
         // GraphQL -> resourceType: NotificationResourceType! (enum)
         [JsonProperty("resourceType")]
@@ -60,10 +65,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("resourceId")]
         public System.String? ResourceId { get; set; }
 
-        //      C# -> System.String? ResourceSubtype
-        // GraphQL -> resourceSubtype: String! (scalar)
-        [JsonProperty("resourceSubtype")]
-        public System.String? ResourceSubtype { get; set; }
+        //      C# -> System.String? Variables
+        // GraphQL -> variables: String! (scalar)
+        [JsonProperty("variables")]
+        public System.String? Variables { get; set; }
 
 
         #endregion
@@ -76,6 +81,7 @@ namespace RubrikSecurityCloud.Types
 
     public Notification Set(
         NotificationPriority? Priority = null,
+        NotificationResourceSubtype? ResourceSubtype = null,
         NotificationResourceType? ResourceType = null,
         NotificationType? Type = null,
         DateTime? CreatedAt = null,
@@ -83,11 +89,14 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsRead = null,
         System.String? Message = null,
         System.String? ResourceId = null,
-        System.String? ResourceSubtype = null
+        System.String? Variables = null
     ) 
     {
         if ( Priority != null ) {
             this.Priority = Priority;
+        }
+        if ( ResourceSubtype != null ) {
+            this.ResourceSubtype = ResourceSubtype;
         }
         if ( ResourceType != null ) {
             this.ResourceType = ResourceType;
@@ -110,8 +119,8 @@ namespace RubrikSecurityCloud.Types
         if ( ResourceId != null ) {
             this.ResourceId = ResourceId;
         }
-        if ( ResourceSubtype != null ) {
-            this.ResourceSubtype = ResourceSubtype;
+        if ( Variables != null ) {
+            this.Variables = Variables;
         }
         return this;
     }
@@ -127,6 +136,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> priority: NotificationPriority! (enum)
         if (this.Priority != null) {
             s += ind + "priority\n" ;
+        }
+        //      C# -> NotificationResourceSubtype? ResourceSubtype
+        // GraphQL -> resourceSubtype: NotificationResourceSubtype! (enum)
+        if (this.ResourceSubtype != null) {
+            s += ind + "resourceSubtype\n" ;
         }
         //      C# -> NotificationResourceType? ResourceType
         // GraphQL -> resourceType: NotificationResourceType! (enum)
@@ -163,72 +177,77 @@ namespace RubrikSecurityCloud.Types
         if (this.ResourceId != null) {
             s += ind + "resourceId\n" ;
         }
-        //      C# -> System.String? ResourceSubtype
-        // GraphQL -> resourceSubtype: String! (scalar)
-        if (this.ResourceSubtype != null) {
-            s += ind + "resourceSubtype\n" ;
+        //      C# -> System.String? Variables
+        // GraphQL -> variables: String! (scalar)
+        if (this.Variables != null) {
+            s += ind + "variables\n" ;
         }
         return s;
     }
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> NotificationPriority? Priority
         // GraphQL -> priority: NotificationPriority! (enum)
-        if (this.Priority == null && Exploration.Includes(parent + ".priority", true))
+        if (this.Priority == null && ec.Includes("priority",true))
         {
             this.Priority = new NotificationPriority();
         }
+        //      C# -> NotificationResourceSubtype? ResourceSubtype
+        // GraphQL -> resourceSubtype: NotificationResourceSubtype! (enum)
+        if (this.ResourceSubtype == null && ec.Includes("resourceSubtype",true))
+        {
+            this.ResourceSubtype = new NotificationResourceSubtype();
+        }
         //      C# -> NotificationResourceType? ResourceType
         // GraphQL -> resourceType: NotificationResourceType! (enum)
-        if (this.ResourceType == null && Exploration.Includes(parent + ".resourceType", true))
+        if (this.ResourceType == null && ec.Includes("resourceType",true))
         {
             this.ResourceType = new NotificationResourceType();
         }
         //      C# -> NotificationType? Type
         // GraphQL -> type: NotificationType! (enum)
-        if (this.Type == null && Exploration.Includes(parent + ".type", true))
+        if (this.Type == null && ec.Includes("type",true))
         {
             this.Type = new NotificationType();
         }
         //      C# -> DateTime? CreatedAt
         // GraphQL -> createdAt: DateTime (scalar)
-        if (this.CreatedAt == null && Exploration.Includes(parent + ".createdAt", true))
+        if (this.CreatedAt == null && ec.Includes("createdAt",true))
         {
             this.CreatedAt = new DateTime();
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsRead
         // GraphQL -> isRead: Boolean! (scalar)
-        if (this.IsRead == null && Exploration.Includes(parent + ".isRead", true))
+        if (this.IsRead == null && ec.Includes("isRead",true))
         {
             this.IsRead = true;
         }
         //      C# -> System.String? Message
         // GraphQL -> message: String! (scalar)
-        if (this.Message == null && Exploration.Includes(parent + ".message", true))
+        if (this.Message == null && ec.Includes("message",true))
         {
             this.Message = "FETCH";
         }
         //      C# -> System.String? ResourceId
         // GraphQL -> resourceId: String! (scalar)
-        if (this.ResourceId == null && Exploration.Includes(parent + ".resourceId", true))
+        if (this.ResourceId == null && ec.Includes("resourceId",true))
         {
             this.ResourceId = "FETCH";
         }
-        //      C# -> System.String? ResourceSubtype
-        // GraphQL -> resourceSubtype: String! (scalar)
-        if (this.ResourceSubtype == null && Exploration.Includes(parent + ".resourceSubtype", true))
+        //      C# -> System.String? Variables
+        // GraphQL -> variables: String! (scalar)
+        if (this.Variables == null && ec.Includes("variables",true))
         {
-            this.ResourceSubtype = "FETCH";
+            this.Variables = "FETCH";
         }
     }
 
@@ -262,12 +281,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<Notification> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new Notification());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<Notification> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

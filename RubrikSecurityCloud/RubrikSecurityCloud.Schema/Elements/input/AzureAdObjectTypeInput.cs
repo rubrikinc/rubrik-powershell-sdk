@@ -20,7 +20,7 @@ namespace RubrikSecurityCloud.Types
         #region members
 
         //      C# -> System.String? SnapshotId
-        // GraphQL -> snapshotId: String! (scalar)
+        // GraphQL -> snapshotId: UUID! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("snapshotId")]

@@ -409,162 +409,161 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? EffectiveSlaDomainId
         // GraphQL -> effectiveSlaDomainId: String (scalar)
-        if (this.EffectiveSlaDomainId == null && Exploration.Includes(parent + ".effectiveSlaDomainId", true))
+        if (this.EffectiveSlaDomainId == null && ec.Includes("effectiveSlaDomainId",true))
         {
             this.EffectiveSlaDomainId = "FETCH";
         }
         //      C# -> System.String? EffectiveSlaDomainName
         // GraphQL -> effectiveSlaDomainName: String (scalar)
-        if (this.EffectiveSlaDomainName == null && Exploration.Includes(parent + ".effectiveSlaDomainName", true))
+        if (this.EffectiveSlaDomainName == null && ec.Includes("effectiveSlaDomainName",true))
         {
             this.EffectiveSlaDomainName = "FETCH";
         }
         //      C# -> System.String? EffectiveSlaDomainPolarisManagedId
         // GraphQL -> effectiveSlaDomainPolarisManagedId: String (scalar)
-        if (this.EffectiveSlaDomainPolarisManagedId == null && Exploration.Includes(parent + ".effectiveSlaDomainPolarisManagedId", true))
+        if (this.EffectiveSlaDomainPolarisManagedId == null && ec.Includes("effectiveSlaDomainPolarisManagedId",true))
         {
             this.EffectiveSlaDomainPolarisManagedId = "FETCH";
         }
         //      C# -> System.Boolean? EnableHardlinkSupport
         // GraphQL -> enableHardlinkSupport: Boolean (scalar)
-        if (this.EnableHardlinkSupport == null && Exploration.Includes(parent + ".enableHardlinkSupport", true))
+        if (this.EnableHardlinkSupport == null && ec.Includes("enableHardlinkSupport",true))
         {
             this.EnableHardlinkSupport = true;
         }
         //      C# -> System.Boolean? EnableSymlinkResolution
         // GraphQL -> enableSymlinkResolution: Boolean (scalar)
-        if (this.EnableSymlinkResolution == null && Exploration.Includes(parent + ".enableSymlinkResolution", true))
+        if (this.EnableSymlinkResolution == null && ec.Includes("enableSymlinkResolution",true))
         {
             this.EnableSymlinkResolution = true;
         }
         //      C# -> List<System.String>? Exceptions
         // GraphQL -> exceptions: [String!]! (scalar)
-        if (this.Exceptions == null && Exploration.Includes(parent + ".exceptions", true))
+        if (this.Exceptions == null && ec.Includes("exceptions",true))
         {
             this.Exceptions = new List<System.String>();
         }
         //      C# -> List<System.String>? Excludes
         // GraphQL -> excludes: [String!]! (scalar)
-        if (this.Excludes == null && Exploration.Includes(parent + ".excludes", true))
+        if (this.Excludes == null && ec.Includes("excludes",true))
         {
             this.Excludes = new List<System.String>();
         }
         //      C# -> System.String? FailoverClusterAppId
         // GraphQL -> failoverClusterAppId: String (scalar)
-        if (this.FailoverClusterAppId == null && Exploration.Includes(parent + ".failoverClusterAppId", true))
+        if (this.FailoverClusterAppId == null && ec.Includes("failoverClusterAppId",true))
         {
             this.FailoverClusterAppId = "FETCH";
         }
         //      C# -> System.String? FailoverClusterAppName
         // GraphQL -> failoverClusterAppName: String (scalar)
-        if (this.FailoverClusterAppName == null && Exploration.Includes(parent + ".failoverClusterAppName", true))
+        if (this.FailoverClusterAppName == null && ec.Includes("failoverClusterAppName",true))
         {
             this.FailoverClusterAppName = "FETCH";
         }
         //      C# -> System.String? HostId
         // GraphQL -> hostId: String (scalar)
-        if (this.HostId == null && Exploration.Includes(parent + ".hostId", true))
+        if (this.HostId == null && ec.Includes("hostId",true))
         {
             this.HostId = "FETCH";
         }
         //      C# -> System.String? HostName
         // GraphQL -> hostName: String! (scalar)
-        if (this.HostName == null && Exploration.Includes(parent + ".hostName", true))
+        if (this.HostName == null && ec.Includes("hostName",true))
         {
             this.HostName = "FETCH";
         }
         //      C# -> List<System.String>? Includes
         // GraphQL -> includes: [String!]! (scalar)
-        if (this.Includes == null && Exploration.Includes(parent + ".includes", true))
+        if (this.Includes == null && ec.Includes("includes",true))
         {
             this.Includes = new List<System.String>();
         }
         //      C# -> System.Boolean? IsEffectiveSlaDomainRetentionLocked
         // GraphQL -> isEffectiveSlaDomainRetentionLocked: Boolean (scalar)
-        if (this.IsEffectiveSlaDomainRetentionLocked == null && Exploration.Includes(parent + ".isEffectiveSlaDomainRetentionLocked", true))
+        if (this.IsEffectiveSlaDomainRetentionLocked == null && ec.Includes("isEffectiveSlaDomainRetentionLocked",true))
         {
             this.IsEffectiveSlaDomainRetentionLocked = true;
         }
         //      C# -> System.Boolean? IsPassthrough
         // GraphQL -> isPassthrough: Boolean (scalar)
-        if (this.IsPassthrough == null && Exploration.Includes(parent + ".isPassthrough", true))
+        if (this.IsPassthrough == null && ec.Includes("isPassthrough",true))
         {
             this.IsPassthrough = true;
         }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
-        if (this.IsRelic == null && Exploration.Includes(parent + ".isRelic", true))
+        if (this.IsRelic == null && ec.Includes("isRelic",true))
         {
             this.IsRelic = true;
         }
         //      C# -> System.String? OperatingSystemType
         // GraphQL -> operatingSystemType: String (scalar)
-        if (this.OperatingSystemType == null && Exploration.Includes(parent + ".operatingSystemType", true))
+        if (this.OperatingSystemType == null && ec.Includes("operatingSystemType",true))
         {
             this.OperatingSystemType = "FETCH";
         }
         //      C# -> System.String? ShareId
         // GraphQL -> shareId: String (scalar)
-        if (this.ShareId == null && Exploration.Includes(parent + ".shareId", true))
+        if (this.ShareId == null && ec.Includes("shareId",true))
         {
             this.ShareId = "FETCH";
         }
         //      C# -> System.String? SnapMirrorLabelForFullBackup
         // GraphQL -> snapMirrorLabelForFullBackup: String (scalar)
-        if (this.SnapMirrorLabelForFullBackup == null && Exploration.Includes(parent + ".snapMirrorLabelForFullBackup", true))
+        if (this.SnapMirrorLabelForFullBackup == null && ec.Includes("snapMirrorLabelForFullBackup",true))
         {
             this.SnapMirrorLabelForFullBackup = "FETCH";
         }
         //      C# -> System.String? SnapMirrorLabelForIncrementalBackup
         // GraphQL -> snapMirrorLabelForIncrementalBackup: String (scalar)
-        if (this.SnapMirrorLabelForIncrementalBackup == null && Exploration.Includes(parent + ".snapMirrorLabelForIncrementalBackup", true))
+        if (this.SnapMirrorLabelForIncrementalBackup == null && ec.Includes("snapMirrorLabelForIncrementalBackup",true))
         {
             this.SnapMirrorLabelForIncrementalBackup = "FETCH";
         }
         //      C# -> System.String? TemplateId
         // GraphQL -> templateId: String! (scalar)
-        if (this.TemplateId == null && Exploration.Includes(parent + ".templateId", true))
+        if (this.TemplateId == null && ec.Includes("templateId",true))
         {
             this.TemplateId = "FETCH";
         }
         //      C# -> System.String? TemplateName
         // GraphQL -> templateName: String! (scalar)
-        if (this.TemplateName == null && Exploration.Includes(parent + ".templateName", true))
+        if (this.TemplateName == null && ec.Includes("templateName",true))
         {
             this.TemplateName = "FETCH";
         }
         //      C# -> FilesetArraySpec? ArraySpec
         // GraphQL -> arraySpec: FilesetArraySpec (type)
-        if (this.ArraySpec == null && Exploration.Includes(parent + ".arraySpec"))
+        if (this.ArraySpec == null && ec.Includes("arraySpec",false))
         {
             this.ArraySpec = new FilesetArraySpec();
-            this.ArraySpec.ApplyExploratoryFieldSpec(parent + ".arraySpec");
+            this.ArraySpec.ApplyExploratoryFieldSpec(ec.NewChild("arraySpec"));
         }
         //      C# -> FilesetOptions? FilesetOptions
         // GraphQL -> filesetOptions: FilesetOptions (type)
-        if (this.FilesetOptions == null && Exploration.Includes(parent + ".filesetOptions"))
+        if (this.FilesetOptions == null && ec.Includes("filesetOptions",false))
         {
             this.FilesetOptions = new FilesetOptions();
-            this.FilesetOptions.ApplyExploratoryFieldSpec(parent + ".filesetOptions");
+            this.FilesetOptions.ApplyExploratoryFieldSpec(ec.NewChild("filesetOptions"));
         }
         //      C# -> ManagedObjectPendingSlaInfo? PendingSlaDomain
         // GraphQL -> pendingSlaDomain: ManagedObjectPendingSlaInfo (type)
-        if (this.PendingSlaDomain == null && Exploration.Includes(parent + ".pendingSlaDomain"))
+        if (this.PendingSlaDomain == null && ec.Includes("pendingSlaDomain",false))
         {
             this.PendingSlaDomain = new ManagedObjectPendingSlaInfo();
-            this.PendingSlaDomain.ApplyExploratoryFieldSpec(parent + ".pendingSlaDomain");
+            this.PendingSlaDomain.ApplyExploratoryFieldSpec(ec.NewChild("pendingSlaDomain"));
         }
         //      C# -> SlaAssignable? SlaAssignable
         // GraphQL -> slaAssignable: SlaAssignable (type)
-        if (this.SlaAssignable == null && Exploration.Includes(parent + ".slaAssignable"))
+        if (this.SlaAssignable == null && ec.Includes("slaAssignable",false))
         {
             this.SlaAssignable = new SlaAssignable();
-            this.SlaAssignable.ApplyExploratoryFieldSpec(parent + ".slaAssignable");
+            this.SlaAssignable.ApplyExploratoryFieldSpec(ec.NewChild("slaAssignable"));
         }
     }
 
@@ -598,12 +597,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<FilesetSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new FilesetSummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<FilesetSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

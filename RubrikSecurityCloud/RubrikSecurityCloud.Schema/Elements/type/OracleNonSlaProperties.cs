@@ -117,36 +117,35 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int32? HostLogRetentionHours
         // GraphQL -> hostLogRetentionHours: Int (scalar)
-        if (this.HostLogRetentionHours == null && Exploration.Includes(parent + ".hostLogRetentionHours", true))
+        if (this.HostLogRetentionHours == null && ec.Includes("hostLogRetentionHours",true))
         {
             this.HostLogRetentionHours = Int32.MinValue;
         }
         //      C# -> System.String? HostMount
         // GraphQL -> hostMount: String! (scalar)
-        if (this.HostMount == null && Exploration.Includes(parent + ".hostMount", true))
+        if (this.HostMount == null && ec.Includes("hostMount",true))
         {
             this.HostMount = "FETCH";
         }
         //      C# -> System.Int32? LogBackupFrequencyInMinutes
         // GraphQL -> logBackupFrequencyInMinutes: Int! (scalar)
-        if (this.LogBackupFrequencyInMinutes == null && Exploration.Includes(parent + ".logBackupFrequencyInMinutes", true))
+        if (this.LogBackupFrequencyInMinutes == null && ec.Includes("logBackupFrequencyInMinutes",true))
         {
             this.LogBackupFrequencyInMinutes = Int32.MinValue;
         }
         //      C# -> System.Int32? LogRetentionHours
         // GraphQL -> logRetentionHours: Int! (scalar)
-        if (this.LogRetentionHours == null && Exploration.Includes(parent + ".logRetentionHours", true))
+        if (this.LogRetentionHours == null && ec.Includes("logRetentionHours",true))
         {
             this.LogRetentionHours = Int32.MinValue;
         }
         //      C# -> System.Int32? NumChannels
         // GraphQL -> numChannels: Int! (scalar)
-        if (this.NumChannels == null && Exploration.Includes(parent + ".numChannels", true))
+        if (this.NumChannels == null && ec.Includes("numChannels",true))
         {
             this.NumChannels = Int32.MinValue;
         }
@@ -182,12 +181,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<OracleNonSlaProperties> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new OracleNonSlaProperties());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<OracleNonSlaProperties> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

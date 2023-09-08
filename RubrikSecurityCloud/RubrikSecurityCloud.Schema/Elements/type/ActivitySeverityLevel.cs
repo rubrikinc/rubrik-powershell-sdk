@@ -62,12 +62,11 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ActivitySeverityEnum? Severity
         // GraphQL -> severity: ActivitySeverityEnum! (enum)
-        if (this.Severity == null && Exploration.Includes(parent + ".severity", true))
+        if (this.Severity == null && ec.Includes("severity",true))
         {
             this.Severity = new ActivitySeverityEnum();
         }
@@ -103,12 +102,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ActivitySeverityLevel> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ActivitySeverityLevel());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ActivitySeverityLevel> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

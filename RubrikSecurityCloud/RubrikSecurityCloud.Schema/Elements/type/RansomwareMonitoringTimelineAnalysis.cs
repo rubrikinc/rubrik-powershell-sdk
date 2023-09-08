@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<DailyTimelineDetails>? TimelineDetails
         // GraphQL -> timelineDetails: [DailyTimelineDetails!]! (type)
-        if (this.TimelineDetails == null && Exploration.Includes(parent + ".timelineDetails"))
+        if (this.TimelineDetails == null && ec.Includes("timelineDetails",false))
         {
             this.TimelineDetails = new List<DailyTimelineDetails>();
-            this.TimelineDetails.ApplyExploratoryFieldSpec(parent + ".timelineDetails");
+            this.TimelineDetails.ApplyExploratoryFieldSpec(ec.NewChild("timelineDetails"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RansomwareMonitoringTimelineAnalysis> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RansomwareMonitoringTimelineAnalysis());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<RansomwareMonitoringTimelineAnalysis> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -277,106 +277,105 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> MssqlCbtEffectiveStatusType? MssqlCbtEffectiveStatus
         // GraphQL -> mssqlCbtEffectiveStatus: MssqlCbtEffectiveStatusType (enum)
-        if (this.MssqlCbtEffectiveStatus == null && Exploration.Includes(parent + ".mssqlCbtEffectiveStatus", true))
+        if (this.MssqlCbtEffectiveStatus == null && ec.Includes("mssqlCbtEffectiveStatus",true))
         {
             this.MssqlCbtEffectiveStatus = new MssqlCbtEffectiveStatusType();
         }
         //      C# -> MssqlCbtStatusType? MssqlCbtEnabled
         // GraphQL -> mssqlCbtEnabled: MssqlCbtStatusType (enum)
-        if (this.MssqlCbtEnabled == null && Exploration.Includes(parent + ".mssqlCbtEnabled", true))
+        if (this.MssqlCbtEnabled == null && ec.Includes("mssqlCbtEnabled",true))
         {
             this.MssqlCbtEnabled = new MssqlCbtStatusType();
         }
         //      C# -> System.String? Alias
         // GraphQL -> alias: String (scalar)
-        if (this.Alias == null && Exploration.Includes(parent + ".alias", true))
+        if (this.Alias == null && ec.Includes("alias",true))
         {
             this.Alias = "FETCH";
         }
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String! (scalar)
-        if (this.Hostname == null && Exploration.Includes(parent + ".hostname", true))
+        if (this.Hostname == null && ec.Includes("hostname",true))
         {
             this.Hostname = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsRefreshPaused
         // GraphQL -> isRefreshPaused: Boolean (scalar)
-        if (this.IsRefreshPaused == null && Exploration.Includes(parent + ".isRefreshPaused", true))
+        if (this.IsRefreshPaused == null && ec.Includes("isRefreshPaused",true))
         {
             this.IsRefreshPaused = true;
         }
         //      C# -> System.Int64? LastRefreshTimeStamp
         // GraphQL -> lastRefreshTimeStamp: Long (scalar)
-        if (this.LastRefreshTimeStamp == null && Exploration.Includes(parent + ".lastRefreshTimeStamp", true))
+        if (this.LastRefreshTimeStamp == null && ec.Includes("lastRefreshTimeStamp",true))
         {
             this.LastRefreshTimeStamp = new System.Int64();
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? OperatingSystem
         // GraphQL -> operatingSystem: String (scalar)
-        if (this.OperatingSystem == null && Exploration.Includes(parent + ".operatingSystem", true))
+        if (this.OperatingSystem == null && ec.Includes("operatingSystem",true))
         {
             this.OperatingSystem = "FETCH";
         }
         //      C# -> System.String? OperatingSystemType
         // GraphQL -> operatingSystemType: String (scalar)
-        if (this.OperatingSystemType == null && Exploration.Includes(parent + ".operatingSystemType", true))
+        if (this.OperatingSystemType == null && ec.Includes("operatingSystemType",true))
         {
             this.OperatingSystemType = "FETCH";
         }
         //      C# -> System.String? OrganizationId
         // GraphQL -> organizationId: String (scalar)
-        if (this.OrganizationId == null && Exploration.Includes(parent + ".organizationId", true))
+        if (this.OrganizationId == null && ec.Includes("organizationId",true))
         {
             this.OrganizationId = "FETCH";
         }
         //      C# -> System.String? OrganizationName
         // GraphQL -> organizationName: String (scalar)
-        if (this.OrganizationName == null && Exploration.Includes(parent + ".organizationName", true))
+        if (this.OrganizationName == null && ec.Includes("organizationName",true))
         {
             this.OrganizationName = "FETCH";
         }
         //      C# -> System.String? PrimaryClusterId
         // GraphQL -> primaryClusterId: String (scalar)
-        if (this.PrimaryClusterId == null && Exploration.Includes(parent + ".primaryClusterId", true))
+        if (this.PrimaryClusterId == null && ec.Includes("primaryClusterId",true))
         {
             this.PrimaryClusterId = "FETCH";
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String (scalar)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = "FETCH";
         }
         //      C# -> HdfsBaseConfig? HdfsBaseConfig
         // GraphQL -> hdfsBaseConfig: HdfsBaseConfig (type)
-        if (this.HdfsBaseConfig == null && Exploration.Includes(parent + ".hdfsBaseConfig"))
+        if (this.HdfsBaseConfig == null && ec.Includes("hdfsBaseConfig",false))
         {
             this.HdfsBaseConfig = new HdfsBaseConfig();
-            this.HdfsBaseConfig.ApplyExploratoryFieldSpec(parent + ".hdfsBaseConfig");
+            this.HdfsBaseConfig.ApplyExploratoryFieldSpec(ec.NewChild("hdfsBaseConfig"));
         }
         //      C# -> NasBaseConfig? NasBaseConfig
         // GraphQL -> nasBaseConfig: NasBaseConfig (type)
-        if (this.NasBaseConfig == null && Exploration.Includes(parent + ".nasBaseConfig"))
+        if (this.NasBaseConfig == null && ec.Includes("nasBaseConfig",false))
         {
             this.NasBaseConfig = new NasBaseConfig();
-            this.NasBaseConfig.ApplyExploratoryFieldSpec(parent + ".nasBaseConfig");
+            this.NasBaseConfig.ApplyExploratoryFieldSpec(ec.NewChild("nasBaseConfig"));
         }
     }
 
@@ -410,12 +409,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<HostSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new HostSummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<HostSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

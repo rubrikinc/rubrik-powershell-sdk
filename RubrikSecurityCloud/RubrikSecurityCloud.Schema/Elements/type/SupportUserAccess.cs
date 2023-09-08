@@ -165,58 +165,57 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> SupportUserAccessStatus? AccessStatus
         // GraphQL -> accessStatus: SupportUserAccessStatus! (enum)
-        if (this.AccessStatus == null && Exploration.Includes(parent + ".accessStatus", true))
+        if (this.AccessStatus == null && ec.Includes("accessStatus",true))
         {
             this.AccessStatus = new SupportUserAccessStatus();
         }
         //      C# -> System.Int32? DurationInHours
         // GraphQL -> durationInHours: Int! (scalar)
-        if (this.DurationInHours == null && Exploration.Includes(parent + ".durationInHours", true))
+        if (this.DurationInHours == null && ec.Includes("durationInHours",true))
         {
             this.DurationInHours = Int32.MinValue;
         }
         //      C# -> DateTime? EndTime
         // GraphQL -> endTime: DateTime! (scalar)
-        if (this.EndTime == null && Exploration.Includes(parent + ".endTime", true))
+        if (this.EndTime == null && ec.Includes("endTime",true))
         {
             this.EndTime = new DateTime();
         }
         //      C# -> System.Int32? Id
         // GraphQL -> id: Int! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = Int32.MinValue;
         }
         //      C# -> DateTime? StartTime
         // GraphQL -> startTime: DateTime! (scalar)
-        if (this.StartTime == null && Exploration.Includes(parent + ".startTime", true))
+        if (this.StartTime == null && ec.Includes("startTime",true))
         {
             this.StartTime = new DateTime();
         }
         //      C# -> System.String? TicketNumber
         // GraphQL -> ticketNumber: String! (scalar)
-        if (this.TicketNumber == null && Exploration.Includes(parent + ".ticketNumber", true))
+        if (this.TicketNumber == null && ec.Includes("ticketNumber",true))
         {
             this.TicketNumber = "FETCH";
         }
         //      C# -> User? AccessProviderUser
         // GraphQL -> accessProviderUser: User (type)
-        if (this.AccessProviderUser == null && Exploration.Includes(parent + ".accessProviderUser"))
+        if (this.AccessProviderUser == null && ec.Includes("accessProviderUser",false))
         {
             this.AccessProviderUser = new User();
-            this.AccessProviderUser.ApplyExploratoryFieldSpec(parent + ".accessProviderUser");
+            this.AccessProviderUser.ApplyExploratoryFieldSpec(ec.NewChild("accessProviderUser"));
         }
         //      C# -> User? ImpersonatedUser
         // GraphQL -> impersonatedUser: User (type)
-        if (this.ImpersonatedUser == null && Exploration.Includes(parent + ".impersonatedUser"))
+        if (this.ImpersonatedUser == null && ec.Includes("impersonatedUser",false))
         {
             this.ImpersonatedUser = new User();
-            this.ImpersonatedUser.ApplyExploratoryFieldSpec(parent + ".impersonatedUser");
+            this.ImpersonatedUser.ApplyExploratoryFieldSpec(ec.NewChild("impersonatedUser"));
         }
     }
 
@@ -250,12 +249,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SupportUserAccess> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SupportUserAccess());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SupportUserAccess> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

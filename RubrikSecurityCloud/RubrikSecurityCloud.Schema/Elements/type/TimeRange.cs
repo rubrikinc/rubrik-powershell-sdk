@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> DateTime? End
         // GraphQL -> end: DateTime! (scalar)
-        if (this.End == null && Exploration.Includes(parent + ".end", true))
+        if (this.End == null && ec.Includes("end",true))
         {
             this.End = new DateTime();
         }
         //      C# -> DateTime? Start
         // GraphQL -> start: DateTime! (scalar)
-        if (this.Start == null && Exploration.Includes(parent + ".start", true))
+        if (this.Start == null && ec.Includes("start",true))
         {
             this.Start = new DateTime();
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<TimeRange> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new TimeRange());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<TimeRange> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

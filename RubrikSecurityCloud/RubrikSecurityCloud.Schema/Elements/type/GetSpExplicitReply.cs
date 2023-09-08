@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? ApplicationCallbackUrl
         // GraphQL -> applicationCallbackUrl: String! (scalar)
-        if (this.ApplicationCallbackUrl == null && Exploration.Includes(parent + ".applicationCallbackUrl", true))
+        if (this.ApplicationCallbackUrl == null && ec.Includes("applicationCallbackUrl",true))
         {
             this.ApplicationCallbackUrl = "FETCH";
         }
         //      C# -> System.String? EncryptionCertificate
         // GraphQL -> encryptionCertificate: String! (scalar)
-        if (this.EncryptionCertificate == null && Exploration.Includes(parent + ".encryptionCertificate", true))
+        if (this.EncryptionCertificate == null && ec.Includes("encryptionCertificate",true))
         {
             this.EncryptionCertificate = "FETCH";
         }
         //      C# -> System.String? SigningCertificate
         // GraphQL -> signingCertificate: String! (scalar)
-        if (this.SigningCertificate == null && Exploration.Includes(parent + ".signingCertificate", true))
+        if (this.SigningCertificate == null && ec.Includes("signingCertificate",true))
         {
             this.SigningCertificate = "FETCH";
         }
         //      C# -> System.String? SpEntityId
         // GraphQL -> spEntityId: String! (scalar)
-        if (this.SpEntityId == null && Exploration.Includes(parent + ".spEntityId", true))
+        if (this.SpEntityId == null && ec.Includes("spEntityId",true))
         {
             this.SpEntityId = "FETCH";
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GetSpExplicitReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GetSpExplicitReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<GetSpExplicitReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

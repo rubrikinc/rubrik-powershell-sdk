@@ -115,36 +115,35 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> SummaryHits? HighRiskHits
         // GraphQL -> highRiskHits: SummaryHits (type)
-        if (this.HighRiskHits == null && Exploration.Includes(parent + ".highRiskHits"))
+        if (this.HighRiskHits == null && ec.Includes("highRiskHits",false))
         {
             this.HighRiskHits = new SummaryHits();
-            this.HighRiskHits.ApplyExploratoryFieldSpec(parent + ".highRiskHits");
+            this.HighRiskHits.ApplyExploratoryFieldSpec(ec.NewChild("highRiskHits"));
         }
         //      C# -> SummaryHits? LowRiskHits
         // GraphQL -> lowRiskHits: SummaryHits (type)
-        if (this.LowRiskHits == null && Exploration.Includes(parent + ".lowRiskHits"))
+        if (this.LowRiskHits == null && ec.Includes("lowRiskHits",false))
         {
             this.LowRiskHits = new SummaryHits();
-            this.LowRiskHits.ApplyExploratoryFieldSpec(parent + ".lowRiskHits");
+            this.LowRiskHits.ApplyExploratoryFieldSpec(ec.NewChild("lowRiskHits"));
         }
         //      C# -> SummaryHits? MediumRiskHits
         // GraphQL -> mediumRiskHits: SummaryHits (type)
-        if (this.MediumRiskHits == null && Exploration.Includes(parent + ".mediumRiskHits"))
+        if (this.MediumRiskHits == null && ec.Includes("mediumRiskHits",false))
         {
             this.MediumRiskHits = new SummaryHits();
-            this.MediumRiskHits.ApplyExploratoryFieldSpec(parent + ".mediumRiskHits");
+            this.MediumRiskHits.ApplyExploratoryFieldSpec(ec.NewChild("mediumRiskHits"));
         }
         //      C# -> SummaryHits? TotalHits
         // GraphQL -> totalHits: SummaryHits (type)
-        if (this.TotalHits == null && Exploration.Includes(parent + ".totalHits"))
+        if (this.TotalHits == null && ec.Includes("totalHits",false))
         {
             this.TotalHits = new SummaryHits();
-            this.TotalHits.ApplyExploratoryFieldSpec(parent + ".totalHits");
+            this.TotalHits.ApplyExploratoryFieldSpec(ec.NewChild("totalHits"));
         }
     }
 
@@ -178,12 +177,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SensitiveHits> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SensitiveHits());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SensitiveHits> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

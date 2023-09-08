@@ -29,6 +29,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("distribution")]
         public System.String? Distribution { get; set; }
 
+        //      C# -> K8sAwsConfigInput? K8SawsConfig
+        // GraphQL -> k8SAwsConfig: K8sAwsConfigInput (input)
+        [JsonProperty("k8SAwsConfig")]
+        public K8sAwsConfigInput? K8SawsConfig { get; set; }
+
         //      C# -> System.String? Region
         // GraphQL -> region: String (scalar)
         [JsonProperty("region")]

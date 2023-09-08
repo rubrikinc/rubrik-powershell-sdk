@@ -61,12 +61,11 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? IsQuarantineSuccessful
         // GraphQL -> isQuarantineSuccessful: Boolean! (scalar)
-        if (this.IsQuarantineSuccessful == null && Exploration.Includes(parent + ".isQuarantineSuccessful", true))
+        if (this.IsQuarantineSuccessful == null && ec.Includes("isQuarantineSuccessful",true))
         {
             this.IsQuarantineSuccessful = true;
         }
@@ -102,12 +101,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<QuarantineThreatHuntMatchesReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new QuarantineThreatHuntMatchesReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<QuarantineThreatHuntMatchesReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

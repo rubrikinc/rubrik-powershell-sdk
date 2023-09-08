@@ -120,39 +120,38 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int32? Index
         // GraphQL -> index: Int (scalar)
-        if (this.Index == null && Exploration.Includes(parent + ".index", true))
+        if (this.Index == null && ec.Includes("index",true))
         {
             this.Index = Int32.MinValue;
         }
         //      C# -> System.Int32? ParentIndex
         // GraphQL -> parentIndex: Int (scalar)
-        if (this.ParentIndex == null && Exploration.Includes(parent + ".parentIndex", true))
+        if (this.ParentIndex == null && ec.Includes("parentIndex",true))
         {
             this.ParentIndex = Int32.MinValue;
         }
         //      C# -> System.String? Tag
         // GraphQL -> tag: String! (scalar)
-        if (this.Tag == null && Exploration.Includes(parent + ".tag", true))
+        if (this.Tag == null && ec.Includes("tag",true))
         {
             this.Tag = "FETCH";
         }
         //      C# -> System.String? Text
         // GraphQL -> text: String! (scalar)
-        if (this.Text == null && Exploration.Includes(parent + ".text", true))
+        if (this.Text == null && ec.Includes("text",true))
         {
             this.Text = "FETCH";
         }
         //      C# -> List<ContentNodeAttribute>? Attributes
         // GraphQL -> attributes: [ContentNodeAttribute!]! (type)
-        if (this.Attributes == null && Exploration.Includes(parent + ".attributes"))
+        if (this.Attributes == null && ec.Includes("attributes",false))
         {
             this.Attributes = new List<ContentNodeAttribute>();
-            this.Attributes.ApplyExploratoryFieldSpec(parent + ".attributes");
+            this.Attributes.ApplyExploratoryFieldSpec(ec.NewChild("attributes"));
         }
     }
 
@@ -186,12 +185,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ContentNode> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ContentNode());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ContentNode> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

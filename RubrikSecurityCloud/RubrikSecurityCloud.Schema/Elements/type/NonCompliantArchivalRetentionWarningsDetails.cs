@@ -132,42 +132,41 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> RetentionUnit? FrequencyType
         // GraphQL -> frequencyType: RetentionUnit! (enum)
-        if (this.FrequencyType == null && Exploration.Includes(parent + ".frequencyType", true))
+        if (this.FrequencyType == null && ec.Includes("frequencyType",true))
         {
             this.FrequencyType = new RetentionUnit();
         }
         //      C# -> System.Int32? ArchivalRetentionInDaysProvided
         // GraphQL -> archivalRetentionInDaysProvided: Int! (scalar)
-        if (this.ArchivalRetentionInDaysProvided == null && Exploration.Includes(parent + ".archivalRetentionInDaysProvided", true))
+        if (this.ArchivalRetentionInDaysProvided == null && ec.Includes("archivalRetentionInDaysProvided",true))
         {
             this.ArchivalRetentionInDaysProvided = Int32.MinValue;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.Int32? MaxArchivalRetentionInDaysExpected
         // GraphQL -> maxArchivalRetentionInDaysExpected: Int! (scalar)
-        if (this.MaxArchivalRetentionInDaysExpected == null && Exploration.Includes(parent + ".maxArchivalRetentionInDaysExpected", true))
+        if (this.MaxArchivalRetentionInDaysExpected == null && ec.Includes("maxArchivalRetentionInDaysExpected",true))
         {
             this.MaxArchivalRetentionInDaysExpected = Int32.MinValue;
         }
         //      C# -> System.Int32? MinArchivalRetentionInDaysExpected
         // GraphQL -> minArchivalRetentionInDaysExpected: Int! (scalar)
-        if (this.MinArchivalRetentionInDaysExpected == null && Exploration.Includes(parent + ".minArchivalRetentionInDaysExpected", true))
+        if (this.MinArchivalRetentionInDaysExpected == null && ec.Includes("minArchivalRetentionInDaysExpected",true))
         {
             this.MinArchivalRetentionInDaysExpected = Int32.MinValue;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
@@ -203,12 +202,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<NonCompliantArchivalRetentionWarningsDetails> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new NonCompliantArchivalRetentionWarningsDetails());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<NonCompliantArchivalRetentionWarningsDetails> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

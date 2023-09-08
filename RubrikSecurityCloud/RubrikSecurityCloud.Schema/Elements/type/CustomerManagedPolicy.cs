@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> CloudAccountFeature? Feature
         // GraphQL -> feature: CloudAccountFeature! (enum)
-        if (this.Feature == null && Exploration.Includes(parent + ".feature", true))
+        if (this.Feature == null && ec.Includes("feature",true))
         {
             this.Feature = new CloudAccountFeature();
         }
         //      C# -> System.String? PolicyDocumentJson
         // GraphQL -> policyDocumentJson: String! (scalar)
-        if (this.PolicyDocumentJson == null && Exploration.Includes(parent + ".policyDocumentJson", true))
+        if (this.PolicyDocumentJson == null && ec.Includes("policyDocumentJson",true))
         {
             this.PolicyDocumentJson = "FETCH";
         }
         //      C# -> System.String? PolicyName
         // GraphQL -> policyName: String! (scalar)
-        if (this.PolicyName == null && Exploration.Includes(parent + ".policyName", true))
+        if (this.PolicyName == null && ec.Includes("policyName",true))
         {
             this.PolicyName = "FETCH";
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CustomerManagedPolicy> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CustomerManagedPolicy());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CustomerManagedPolicy> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

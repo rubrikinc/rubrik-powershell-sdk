@@ -148,51 +148,50 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> DhrcCategory? Category
         // GraphQL -> category: DhrcCategory! (enum)
-        if (this.Category == null && Exploration.Includes(parent + ".category", true))
+        if (this.Category == null && ec.Includes("category",true))
         {
             this.Category = new DhrcCategory();
         }
         //      C# -> DhrcRecommendationKey? Key
         // GraphQL -> key: DhrcRecommendationKey! (enum)
-        if (this.Key == null && Exploration.Includes(parent + ".key", true))
+        if (this.Key == null && ec.Includes("key",true))
         {
             this.Key = new DhrcRecommendationKey();
         }
         //      C# -> DateTime? CompiledAt
         // GraphQL -> compiledAt: DateTime (scalar)
-        if (this.CompiledAt == null && Exploration.Includes(parent + ".compiledAt", true))
+        if (this.CompiledAt == null && ec.Includes("compiledAt",true))
         {
             this.CompiledAt = new DateTime();
         }
         //      C# -> DateTime? EarliestMetric
         // GraphQL -> earliestMetric: DateTime (scalar)
-        if (this.EarliestMetric == null && Exploration.Includes(parent + ".earliestMetric", true))
+        if (this.EarliestMetric == null && ec.Includes("earliestMetric",true))
         {
             this.EarliestMetric = new DateTime();
         }
         //      C# -> System.String? Message
         // GraphQL -> message: String! (scalar)
-        if (this.Message == null && Exploration.Includes(parent + ".message", true))
+        if (this.Message == null && ec.Includes("message",true))
         {
             this.Message = "FETCH";
         }
         //      C# -> System.Single? Weight
         // GraphQL -> weight: Float! (scalar)
-        if (this.Weight == null && Exploration.Includes(parent + ".weight", true))
+        if (this.Weight == null && ec.Includes("weight",true))
         {
             this.Weight = new System.Single();
         }
         //      C# -> List<DhrcKeyValue>? TranslationArgs
         // GraphQL -> translationArgs: [DhrcKeyValue!]! (type)
-        if (this.TranslationArgs == null && Exploration.Includes(parent + ".translationArgs"))
+        if (this.TranslationArgs == null && ec.Includes("translationArgs",false))
         {
             this.TranslationArgs = new List<DhrcKeyValue>();
-            this.TranslationArgs.ApplyExploratoryFieldSpec(parent + ".translationArgs");
+            this.TranslationArgs.ApplyExploratoryFieldSpec(ec.NewChild("translationArgs"));
         }
     }
 
@@ -226,12 +225,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<DhrcActiveRecommendation> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new DhrcActiveRecommendation());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<DhrcActiveRecommendation> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

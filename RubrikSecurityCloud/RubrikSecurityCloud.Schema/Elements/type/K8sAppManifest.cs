@@ -109,34 +109,33 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? IsSuccessful
         // GraphQL -> isSuccessful: Boolean! (scalar)
-        if (this.IsSuccessful == null && Exploration.Includes(parent + ".isSuccessful", true))
+        if (this.IsSuccessful == null && ec.Includes("isSuccessful",true))
         {
             this.IsSuccessful = true;
         }
         //      C# -> System.String? Version
         // GraphQL -> version: String! (scalar)
-        if (this.Version == null && Exploration.Includes(parent + ".version", true))
+        if (this.Version == null && ec.Includes("version",true))
         {
             this.Version = "FETCH";
         }
         //      C# -> AppManifestInfo? ToApply
         // GraphQL -> toApply: AppManifestInfo (type)
-        if (this.ToApply == null && Exploration.Includes(parent + ".toApply"))
+        if (this.ToApply == null && ec.Includes("toApply",false))
         {
             this.ToApply = new AppManifestInfo();
-            this.ToApply.ApplyExploratoryFieldSpec(parent + ".toApply");
+            this.ToApply.ApplyExploratoryFieldSpec(ec.NewChild("toApply"));
         }
         //      C# -> AppManifestInfo? ToDelete
         // GraphQL -> toDelete: AppManifestInfo (type)
-        if (this.ToDelete == null && Exploration.Includes(parent + ".toDelete"))
+        if (this.ToDelete == null && ec.Includes("toDelete",false))
         {
             this.ToDelete = new AppManifestInfo();
-            this.ToDelete.ApplyExploratoryFieldSpec(parent + ".toDelete");
+            this.ToDelete.ApplyExploratoryFieldSpec(ec.NewChild("toDelete"));
         }
     }
 
@@ -170,12 +169,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<K8sAppManifest> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new K8sAppManifest());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<K8sAppManifest> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

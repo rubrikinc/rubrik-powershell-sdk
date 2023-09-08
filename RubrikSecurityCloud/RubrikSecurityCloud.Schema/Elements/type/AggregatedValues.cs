@@ -117,36 +117,35 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? MaxCreatedFileCount
         // GraphQL -> maxCreatedFileCount: Long! (scalar)
-        if (this.MaxCreatedFileCount == null && Exploration.Includes(parent + ".maxCreatedFileCount", true))
+        if (this.MaxCreatedFileCount == null && ec.Includes("maxCreatedFileCount",true))
         {
             this.MaxCreatedFileCount = new System.Int64();
         }
         //      C# -> System.Int64? MaxDeletedFileCount
         // GraphQL -> maxDeletedFileCount: Long! (scalar)
-        if (this.MaxDeletedFileCount == null && Exploration.Includes(parent + ".maxDeletedFileCount", true))
+        if (this.MaxDeletedFileCount == null && ec.Includes("maxDeletedFileCount",true))
         {
             this.MaxDeletedFileCount = new System.Int64();
         }
         //      C# -> System.Int64? MaxModifiedFileCount
         // GraphQL -> maxModifiedFileCount: Long! (scalar)
-        if (this.MaxModifiedFileCount == null && Exploration.Includes(parent + ".maxModifiedFileCount", true))
+        if (this.MaxModifiedFileCount == null && ec.Includes("maxModifiedFileCount",true))
         {
             this.MaxModifiedFileCount = new System.Int64();
         }
         //      C# -> System.Int64? MaxSuspiciousFileCount
         // GraphQL -> maxSuspiciousFileCount: Long! (scalar)
-        if (this.MaxSuspiciousFileCount == null && Exploration.Includes(parent + ".maxSuspiciousFileCount", true))
+        if (this.MaxSuspiciousFileCount == null && ec.Includes("maxSuspiciousFileCount",true))
         {
             this.MaxSuspiciousFileCount = new System.Int64();
         }
         //      C# -> System.Int64? Total
         // GraphQL -> total: Long! (scalar)
-        if (this.Total == null && Exploration.Includes(parent + ".total", true))
+        if (this.Total == null && ec.Includes("total",true))
         {
             this.Total = new System.Int64();
         }
@@ -182,12 +181,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AggregatedValues> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AggregatedValues());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AggregatedValues> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

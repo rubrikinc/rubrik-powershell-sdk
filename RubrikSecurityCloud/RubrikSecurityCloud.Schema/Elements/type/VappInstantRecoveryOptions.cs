@@ -81,22 +81,21 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<VappNetworkSummary>? AvailableVappNetworks
         // GraphQL -> availableVappNetworks: [VappNetworkSummary!]! (type)
-        if (this.AvailableVappNetworks == null && Exploration.Includes(parent + ".availableVappNetworks"))
+        if (this.AvailableVappNetworks == null && ec.Includes("availableVappNetworks",false))
         {
             this.AvailableVappNetworks = new List<VappNetworkSummary>();
-            this.AvailableVappNetworks.ApplyExploratoryFieldSpec(parent + ".availableVappNetworks");
+            this.AvailableVappNetworks.ApplyExploratoryFieldSpec(ec.NewChild("availableVappNetworks"));
         }
         //      C# -> List<VappVmRestoreSpec>? RestorableVms
         // GraphQL -> restorableVms: [VappVmRestoreSpec!]! (type)
-        if (this.RestorableVms == null && Exploration.Includes(parent + ".restorableVms"))
+        if (this.RestorableVms == null && ec.Includes("restorableVms",false))
         {
             this.RestorableVms = new List<VappVmRestoreSpec>();
-            this.RestorableVms.ApplyExploratoryFieldSpec(parent + ".restorableVms");
+            this.RestorableVms.ApplyExploratoryFieldSpec(ec.NewChild("restorableVms"));
         }
     }
 
@@ -130,12 +129,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VappInstantRecoveryOptions> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VappInstantRecoveryOptions());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VappInstantRecoveryOptions> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

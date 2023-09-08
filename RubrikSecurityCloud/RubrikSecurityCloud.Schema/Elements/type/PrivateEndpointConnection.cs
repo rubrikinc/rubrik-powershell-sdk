@@ -92,27 +92,26 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> PrivateEndpointConnectionStatus? PrivateEndpointConnectionStatus
         // GraphQL -> privateEndpointConnectionStatus: PrivateEndpointConnectionStatus! (enum)
-        if (this.PrivateEndpointConnectionStatus == null && Exploration.Includes(parent + ".privateEndpointConnectionStatus", true))
+        if (this.PrivateEndpointConnectionStatus == null && ec.Includes("privateEndpointConnectionStatus",true))
         {
             this.PrivateEndpointConnectionStatus = new PrivateEndpointConnectionStatus();
         }
         //      C# -> System.String? PrivateEndpointId
         // GraphQL -> privateEndpointId: String! (scalar)
-        if (this.PrivateEndpointId == null && Exploration.Includes(parent + ".privateEndpointId", true))
+        if (this.PrivateEndpointId == null && ec.Includes("privateEndpointId",true))
         {
             this.PrivateEndpointId = "FETCH";
         }
         //      C# -> PageInfo? PageInfo
         // GraphQL -> pageInfo: PageInfo! (type)
-        if (this.PageInfo == null && Exploration.Includes(parent + ".pageInfo"))
+        if (this.PageInfo == null && ec.Includes("pageInfo",false))
         {
             this.PageInfo = new PageInfo();
-            this.PageInfo.ApplyExploratoryFieldSpec(parent + ".pageInfo");
+            this.PageInfo.ApplyExploratoryFieldSpec(ec.NewChild("pageInfo"));
         }
     }
 
@@ -146,12 +145,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PrivateEndpointConnection> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PrivateEndpointConnection());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<PrivateEndpointConnection> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

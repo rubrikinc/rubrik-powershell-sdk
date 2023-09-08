@@ -115,36 +115,35 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<SnapshotLocationRetentionInfo>? ArchivalInfos
         // GraphQL -> archivalInfos: [SnapshotLocationRetentionInfo!]! (type)
-        if (this.ArchivalInfos == null && Exploration.Includes(parent + ".archivalInfos"))
+        if (this.ArchivalInfos == null && ec.Includes("archivalInfos",false))
         {
             this.ArchivalInfos = new List<SnapshotLocationRetentionInfo>();
-            this.ArchivalInfos.ApplyExploratoryFieldSpec(parent + ".archivalInfos");
+            this.ArchivalInfos.ApplyExploratoryFieldSpec(ec.NewChild("archivalInfos"));
         }
         //      C# -> List<SnapshotLocationRetentionInfo>? CloudNativeLocationInfo
         // GraphQL -> cloudNativeLocationInfo: [SnapshotLocationRetentionInfo!]! (type)
-        if (this.CloudNativeLocationInfo == null && Exploration.Includes(parent + ".cloudNativeLocationInfo"))
+        if (this.CloudNativeLocationInfo == null && ec.Includes("cloudNativeLocationInfo",false))
         {
             this.CloudNativeLocationInfo = new List<SnapshotLocationRetentionInfo>();
-            this.CloudNativeLocationInfo.ApplyExploratoryFieldSpec(parent + ".cloudNativeLocationInfo");
+            this.CloudNativeLocationInfo.ApplyExploratoryFieldSpec(ec.NewChild("cloudNativeLocationInfo"));
         }
         //      C# -> SnapshotLocationRetentionInfo? LocalInfo
         // GraphQL -> localInfo: SnapshotLocationRetentionInfo (type)
-        if (this.LocalInfo == null && Exploration.Includes(parent + ".localInfo"))
+        if (this.LocalInfo == null && ec.Includes("localInfo",false))
         {
             this.LocalInfo = new SnapshotLocationRetentionInfo();
-            this.LocalInfo.ApplyExploratoryFieldSpec(parent + ".localInfo");
+            this.LocalInfo.ApplyExploratoryFieldSpec(ec.NewChild("localInfo"));
         }
         //      C# -> List<SnapshotLocationRetentionInfo>? ReplicationInfos
         // GraphQL -> replicationInfos: [SnapshotLocationRetentionInfo!]! (type)
-        if (this.ReplicationInfos == null && Exploration.Includes(parent + ".replicationInfos"))
+        if (this.ReplicationInfos == null && ec.Includes("replicationInfos",false))
         {
             this.ReplicationInfos = new List<SnapshotLocationRetentionInfo>();
-            this.ReplicationInfos.ApplyExploratoryFieldSpec(parent + ".replicationInfos");
+            this.ReplicationInfos.ApplyExploratoryFieldSpec(ec.NewChild("replicationInfos"));
         }
     }
 
@@ -178,12 +177,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SnapshotRetentionInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SnapshotRetentionInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SnapshotRetentionInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

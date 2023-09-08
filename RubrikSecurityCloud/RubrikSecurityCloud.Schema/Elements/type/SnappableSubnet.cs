@@ -137,46 +137,45 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? AvailabilityZone
         // GraphQL -> availabilityZone: String! (scalar)
-        if (this.AvailabilityZone == null && Exploration.Includes(parent + ".availabilityZone", true))
+        if (this.AvailabilityZone == null && ec.Includes("availabilityZone",true))
         {
             this.AvailabilityZone = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? SubnetId
         // GraphQL -> subnetId: String! (scalar)
-        if (this.SubnetId == null && Exploration.Includes(parent + ".subnetId", true))
+        if (this.SubnetId == null && ec.Includes("subnetId",true))
         {
             this.SubnetId = "FETCH";
         }
         //      C# -> AddressBlockV4? CidrBlock
         // GraphQL -> cidrBlock: AddressBlockV4 (type)
-        if (this.CidrBlock == null && Exploration.Includes(parent + ".cidrBlock"))
+        if (this.CidrBlock == null && ec.Includes("cidrBlock",false))
         {
             this.CidrBlock = new AddressBlockV4();
-            this.CidrBlock.ApplyExploratoryFieldSpec(parent + ".cidrBlock");
+            this.CidrBlock.ApplyExploratoryFieldSpec(ec.NewChild("cidrBlock"));
         }
         //      C# -> Vpc? Vpc
         // GraphQL -> vpc: Vpc (type)
-        if (this.Vpc == null && Exploration.Includes(parent + ".vpc"))
+        if (this.Vpc == null && ec.Includes("vpc",false))
         {
             this.Vpc = new Vpc();
-            this.Vpc.ApplyExploratoryFieldSpec(parent + ".vpc");
+            this.Vpc.ApplyExploratoryFieldSpec(ec.NewChild("vpc"));
         }
     }
 
@@ -210,12 +209,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SnappableSubnet> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SnappableSubnet());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SnappableSubnet> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

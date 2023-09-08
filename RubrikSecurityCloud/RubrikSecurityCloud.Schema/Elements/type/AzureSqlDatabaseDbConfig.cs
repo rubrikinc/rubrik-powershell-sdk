@@ -61,12 +61,11 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int32? LogRetentionInDays
         // GraphQL -> logRetentionInDays: Int! (scalar)
-        if (this.LogRetentionInDays == null && Exploration.Includes(parent + ".logRetentionInDays", true))
+        if (this.LogRetentionInDays == null && ec.Includes("logRetentionInDays",true))
         {
             this.LogRetentionInDays = Int32.MinValue;
         }
@@ -102,12 +101,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AzureSqlDatabaseDbConfig> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AzureSqlDatabaseDbConfig());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AzureSqlDatabaseDbConfig> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

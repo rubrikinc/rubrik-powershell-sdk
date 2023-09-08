@@ -159,54 +159,53 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> DataTypeEnum? Type
         // GraphQL -> type: DataTypeEnum! (enum)
-        if (this.Type == null && Exploration.Includes(parent + ".type", true))
+        if (this.Type == null && ec.Includes("type",true))
         {
             this.Type = new DataTypeEnum();
         }
         //      C# -> System.Boolean? Aggregate
         // GraphQL -> aggregate: Boolean! (scalar)
-        if (this.Aggregate == null && Exploration.Includes(parent + ".aggregate", true))
+        if (this.Aggregate == null && ec.Includes("aggregate",true))
         {
             this.Aggregate = true;
         }
         //      C# -> System.Boolean? Default
         // GraphQL -> default: Boolean! (scalar)
-        if (this.Default == null && Exploration.Includes(parent + ".default", true))
+        if (this.Default == null && ec.Includes("default",true))
         {
             this.Default = true;
         }
         //      C# -> System.Boolean? Dimensional
         // GraphQL -> dimensional: Boolean! (scalar)
-        if (this.Dimensional == null && Exploration.Includes(parent + ".dimensional", true))
+        if (this.Dimensional == null && ec.Includes("dimensional",true))
         {
             this.Dimensional = true;
         }
         //      C# -> System.String? DisplayName
         // GraphQL -> displayName: String! (scalar)
-        if (this.DisplayName == null && Exploration.Includes(parent + ".displayName", true))
+        if (this.DisplayName == null && ec.Includes("displayName",true))
         {
             this.DisplayName = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.Boolean? Nullable
         // GraphQL -> nullable: Boolean! (scalar)
-        if (this.Nullable == null && Exploration.Includes(parent + ".nullable", true))
+        if (this.Nullable == null && ec.Includes("nullable",true))
         {
             this.Nullable = true;
         }
         //      C# -> System.Boolean? Sortable
         // GraphQL -> sortable: Boolean! (scalar)
-        if (this.Sortable == null && Exploration.Includes(parent + ".sortable", true))
+        if (this.Sortable == null && ec.Includes("sortable",true))
         {
             this.Sortable = true;
         }
@@ -242,12 +241,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<Column> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new Column());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<Column> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

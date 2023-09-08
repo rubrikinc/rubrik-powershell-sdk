@@ -162,57 +162,56 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> AzureCloudType? CloudType
         // GraphQL -> cloudType: AzureCloudType! (enum)
-        if (this.CloudType == null && Exploration.Includes(parent + ".cloudType", true))
+        if (this.CloudType == null && ec.Includes("cloudType",true))
         {
             this.CloudType = new AzureCloudType();
         }
         //      C# -> System.String? AppName
         // GraphQL -> appName: String! (scalar)
-        if (this.AppName == null && Exploration.Includes(parent + ".appName", true))
+        if (this.AppName == null && ec.Includes("appName",true))
         {
             this.AppName = "FETCH";
         }
         //      C# -> System.String? AzureCloudAccountTenantRubrikId
         // GraphQL -> azureCloudAccountTenantRubrikId: String! (scalar)
-        if (this.AzureCloudAccountTenantRubrikId == null && Exploration.Includes(parent + ".azureCloudAccountTenantRubrikId", true))
+        if (this.AzureCloudAccountTenantRubrikId == null && ec.Includes("azureCloudAccountTenantRubrikId",true))
         {
             this.AzureCloudAccountTenantRubrikId = "FETCH";
         }
         //      C# -> System.String? ClientId
         // GraphQL -> clientId: String! (scalar)
-        if (this.ClientId == null && Exploration.Includes(parent + ".clientId", true))
+        if (this.ClientId == null && ec.Includes("clientId",true))
         {
             this.ClientId = "FETCH";
         }
         //      C# -> System.String? DomainName
         // GraphQL -> domainName: String! (scalar)
-        if (this.DomainName == null && Exploration.Includes(parent + ".domainName", true))
+        if (this.DomainName == null && ec.Includes("domainName",true))
         {
             this.DomainName = "FETCH";
         }
         //      C# -> System.Boolean? IsAppRubrikManaged
         // GraphQL -> isAppRubrikManaged: Boolean! (scalar)
-        if (this.IsAppRubrikManaged == null && Exploration.Includes(parent + ".isAppRubrikManaged", true))
+        if (this.IsAppRubrikManaged == null && ec.Includes("isAppRubrikManaged",true))
         {
             this.IsAppRubrikManaged = true;
         }
         //      C# -> System.Int32? SubscriptionCount
         // GraphQL -> subscriptionCount: Int! (scalar)
-        if (this.SubscriptionCount == null && Exploration.Includes(parent + ".subscriptionCount", true))
+        if (this.SubscriptionCount == null && ec.Includes("subscriptionCount",true))
         {
             this.SubscriptionCount = Int32.MinValue;
         }
         //      C# -> List<AzureCloudAccountSubscriptionDetail>? Subscriptions
         // GraphQL -> subscriptions: [AzureCloudAccountSubscriptionDetail!]! (type)
-        if (this.Subscriptions == null && Exploration.Includes(parent + ".subscriptions"))
+        if (this.Subscriptions == null && ec.Includes("subscriptions",false))
         {
             this.Subscriptions = new List<AzureCloudAccountSubscriptionDetail>();
-            this.Subscriptions.ApplyExploratoryFieldSpec(parent + ".subscriptions");
+            this.Subscriptions.ApplyExploratoryFieldSpec(ec.NewChild("subscriptions"));
         }
     }
 
@@ -246,12 +245,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AzureCloudAccountTenant> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AzureCloudAccountTenant());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AzureCloudAccountTenant> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

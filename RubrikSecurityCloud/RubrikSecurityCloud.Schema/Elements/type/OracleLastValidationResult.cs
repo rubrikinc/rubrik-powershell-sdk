@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? EventSeriesId
         // GraphQL -> eventSeriesId: String! (scalar)
-        if (this.EventSeriesId == null && Exploration.Includes(parent + ".eventSeriesId", true))
+        if (this.EventSeriesId == null && ec.Includes("eventSeriesId",true))
         {
             this.EventSeriesId = "FETCH";
         }
         //      C# -> System.Boolean? IsSuccess
         // GraphQL -> isSuccess: Boolean! (scalar)
-        if (this.IsSuccess == null && Exploration.Includes(parent + ".isSuccess", true))
+        if (this.IsSuccess == null && ec.Includes("isSuccess",true))
         {
             this.IsSuccess = true;
         }
         //      C# -> DateTime? ValidationTime
         // GraphQL -> validationTime: DateTime (scalar)
-        if (this.ValidationTime == null && Exploration.Includes(parent + ".validationTime", true))
+        if (this.ValidationTime == null && ec.Includes("validationTime",true))
         {
             this.ValidationTime = new DateTime();
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<OracleLastValidationResult> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new OracleLastValidationResult());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<OracleLastValidationResult> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

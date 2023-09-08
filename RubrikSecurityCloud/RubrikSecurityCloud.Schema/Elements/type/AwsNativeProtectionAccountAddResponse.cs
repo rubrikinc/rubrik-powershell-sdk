@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? CloudFormationName
         // GraphQL -> cloudFormationName: String! (scalar)
-        if (this.CloudFormationName == null && Exploration.Includes(parent + ".cloudFormationName", true))
+        if (this.CloudFormationName == null && ec.Includes("cloudFormationName",true))
         {
             this.CloudFormationName = "FETCH";
         }
         //      C# -> System.String? CloudFormationTemplateUrl
         // GraphQL -> cloudFormationTemplateUrl: String! (scalar)
-        if (this.CloudFormationTemplateUrl == null && Exploration.Includes(parent + ".cloudFormationTemplateUrl", true))
+        if (this.CloudFormationTemplateUrl == null && ec.Includes("cloudFormationTemplateUrl",true))
         {
             this.CloudFormationTemplateUrl = "FETCH";
         }
         //      C# -> System.String? CloudFormationUrl
         // GraphQL -> cloudFormationUrl: String! (scalar)
-        if (this.CloudFormationUrl == null && Exploration.Includes(parent + ".cloudFormationUrl", true))
+        if (this.CloudFormationUrl == null && ec.Includes("cloudFormationUrl",true))
         {
             this.CloudFormationUrl = "FETCH";
         }
         //      C# -> System.String? ErrorMessage
         // GraphQL -> errorMessage: String! (scalar)
-        if (this.ErrorMessage == null && Exploration.Includes(parent + ".errorMessage", true))
+        if (this.ErrorMessage == null && ec.Includes("errorMessage",true))
         {
             this.ErrorMessage = "FETCH";
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AwsNativeProtectionAccountAddResponse> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AwsNativeProtectionAccountAddResponse());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AwsNativeProtectionAccountAddResponse> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

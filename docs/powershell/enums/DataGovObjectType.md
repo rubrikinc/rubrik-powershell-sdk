@@ -48,3 +48,4 @@ TODO: SPARK-150447 - Deprecate this enum to use managed object type
 - VMWARE_RESOURCE_POOL - Represents VMware resource pool.
 - MSSQL_DATABASE - Represents MSSQL Database.
 - MSSQL_ROOT - Represents MSSQL Root.
+- VSPHERE_DATACENTER_FOLDER - Represents VMWARE VSPHERE_DATACENTER_FOLDER.

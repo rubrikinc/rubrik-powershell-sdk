@@ -611,7 +611,61 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (MssqlTopLevelDescendantTypeConnection)this.Field;
             }
             string fieldSpecDoc = Query.MssqlTopLevelDescendants(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.sortBy = <HierarchySortByField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+# OPTIONAL
+$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$inputs.Var.typeFilter = @(
+	<HierarchyObjectTypeEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]) for enum values.
+)
+# OPTIONAL
+$inputs.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+		)
+}
+)";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -644,7 +698,57 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (MssqlDatabaseConnection)this.Field;
             }
             string fieldSpecDoc = Query.MssqlDatabases(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.sortBy = <HierarchySortByField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+# OPTIONAL
+$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$inputs.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+		)
+}
+)";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -667,7 +771,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (MssqlAvailabilityGroup)this.Field;
             }
             string fieldSpecDoc = Query.MssqlAvailabilityGroup(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.fid = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -690,7 +796,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (MssqlInstance)this.Field;
             }
             string fieldSpecDoc = Query.MssqlInstance(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.fid = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -713,7 +821,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (MssqlDatabase)this.Field;
             }
             string fieldSpecDoc = Query.MssqlDatabase(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.fid = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -736,7 +846,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (MssqlRecoverableRangeListResponse)this.Field;
             }
             string fieldSpecDoc = Query.MssqlRecoverableRanges(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	afterTime = <DateTime>
+	# OPTIONAL
+	beforeTime = <DateTime>
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -759,7 +878,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (MissedSnapshotListResponse)this.Field;
             }
             string fieldSpecDoc = Query.MssqlDatabaseMissedSnapshots(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	afterTime = <DateTime>
+	# OPTIONAL
+	beforeTime = <DateTime>
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -782,7 +910,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (MssqlInstanceSummaryListResponse)this.Field;
             }
             string fieldSpecDoc = Query.MssqlCompatibleInstances(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	recoveryTime = <DateTime>
+	# REQUIRED
+	recoveryType = <V1GetCompatibleMssqlInstancesV1RequestRecoveryType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V1GetCompatibleMssqlInstancesV1RequestRecoveryType]) for enum values.
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -805,7 +942,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (MssqlMissedRecoverableRangeListResponse)this.Field;
             }
             string fieldSpecDoc = Query.MssqlDatabaseMissedRecoverableRanges(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	afterTime = <DateTime>
+	# OPTIONAL
+	beforeTime = <DateTime>
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -828,7 +974,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (V1MssqlGetRestoreFilesV1Response)this.Field;
             }
             string fieldSpecDoc = Query.AllMssqlDatabaseRestoreFiles(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	lsn = <System.String>
+	# OPTIONAL
+	recoveryForkGuid = <System.String>
+	# OPTIONAL
+	time = <DateTime>
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -859,7 +1016,29 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (MssqlDatabaseLiveMountConnection)this.Field;
             }
             string fieldSpecDoc = Query.MssqlDatabaseLiveMounts(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.sortBy = @{
+	# OPTIONAL
+	field = <MssqlDatabaseLiveMountSortByField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlDatabaseLiveMountSortByField]) for enum values.
+	# OPTIONAL
+	sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+}
+# OPTIONAL
+$inputs.Var.filters = @(
+	@{
+		# OPTIONAL
+		field = <MssqlDatabaseLiveMountFilterField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlDatabaseLiveMountFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+}
+)";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -882,7 +1061,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (UpdateMssqlDefaultPropertiesReply)this.Field;
             }
             string fieldSpecDoc = Query.MssqlDefaultProperties(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -905,7 +1089,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (MssqlRestoreEstimateResult)this.Field;
             }
             string fieldSpecDoc = Query.MssqlDatabaseRestoreEstimate(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	lsn = <System.String>
+	# OPTIONAL
+	recoveryForkGuid = <System.String>
+	# OPTIONAL
+	time = <DateTime>
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -936,7 +1131,29 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (MssqlLogShippingTargetConnection)this.Field;
             }
             string fieldSpecDoc = Query.CdmMssqlLogShippingTargets(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.sortBy = @{
+	# OPTIONAL
+	field = <MssqlLogShippingTargetSortByField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlLogShippingTargetSortByField]) for enum values.
+	# OPTIONAL
+	sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+}
+# OPTIONAL
+$inputs.Var.filters = @(
+	@{
+		# OPTIONAL
+		field = <MssqlLogShippingTargetFilterField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlLogShippingTargetFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+}
+)";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -959,7 +1176,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (MssqlLogShippingTarget)this.Field;
             }
             string fieldSpecDoc = Query.CdmMssqlLogShippingTarget(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.fid = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -982,7 +1201,30 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 fieldSpecObj = (MssqlLogShippingSummaryV2ListResponse)this.Field;
             }
             string fieldSpecDoc = Query.MssqlLogShippingTargets(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	limit = <System.Int32>
+	# OPTIONAL
+	location = <System.String>
+	# OPTIONAL
+	offset = <System.Int32>
+	# OPTIONAL
+	primaryDatabaseId = <System.String>
+	# OPTIONAL
+	primaryDatabaseName = <System.String>
+	# OPTIONAL
+	secondaryDatabaseName = <System.String>
+	# OPTIONAL
+	sortBy = <V2QueryLogShippingConfigurationsV2RequestSortBy> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V2QueryLogShippingConfigurationsV2RequestSortBy]) for enum values.
+	# OPTIONAL
+	sortOrder = <V2QueryLogShippingConfigurationsV2RequestSortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V2QueryLogShippingConfigurationsV2RequestSortOrder]) for enum values.
+	# OPTIONAL
+	status = <V2QueryLogShippingConfigurationsV2RequestStatus> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V2QueryLogShippingConfigurationsV2RequestStatus]) for enum values.
+	# REQUIRED
+	clusterUuid = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 

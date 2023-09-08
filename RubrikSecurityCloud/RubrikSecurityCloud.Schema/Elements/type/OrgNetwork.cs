@@ -140,47 +140,46 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<System.String>? LiveMountIps
         // GraphQL -> liveMountIps: [String!]! (scalar)
-        if (this.LiveMountIps == null && Exploration.Includes(parent + ".liveMountIps", true))
+        if (this.LiveMountIps == null && ec.Includes("liveMountIps",true))
         {
             this.LiveMountIps = new List<System.String>();
         }
         //      C# -> System.String? OrgNetworkId
         // GraphQL -> orgNetworkId: UUID! (scalar)
-        if (this.OrgNetworkId == null && Exploration.Includes(parent + ".orgNetworkId", true))
+        if (this.OrgNetworkId == null && ec.Includes("orgNetworkId",true))
         {
             this.OrgNetworkId = "FETCH";
         }
         //      C# -> System.String? OrgNetworkName
         // GraphQL -> orgNetworkName: String! (scalar)
-        if (this.OrgNetworkName == null && Exploration.Includes(parent + ".orgNetworkName", true))
+        if (this.OrgNetworkName == null && ec.Includes("orgNetworkName",true))
         {
             this.OrgNetworkName = "FETCH";
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
-        if (this.Cluster == null && Exploration.Includes(parent + ".cluster"))
+        if (this.Cluster == null && ec.Includes("cluster",false))
         {
             this.Cluster = new Cluster();
-            this.Cluster.ApplyExploratoryFieldSpec(parent + ".cluster");
+            this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
         }
         //      C# -> List<EnvoyInfo>? EnvoyInfoList
         // GraphQL -> envoyInfoList: [EnvoyInfo!]! (type)
-        if (this.EnvoyInfoList == null && Exploration.Includes(parent + ".envoyInfoList"))
+        if (this.EnvoyInfoList == null && ec.Includes("envoyInfoList",false))
         {
             this.EnvoyInfoList = new List<EnvoyInfo>();
-            this.EnvoyInfoList.ApplyExploratoryFieldSpec(parent + ".envoyInfoList");
+            this.EnvoyInfoList.ApplyExploratoryFieldSpec(ec.NewChild("envoyInfoList"));
         }
         //      C# -> Org? Org
         // GraphQL -> org: Org! (type)
-        if (this.Org == null && Exploration.Includes(parent + ".org"))
+        if (this.Org == null && ec.Includes("org",false))
         {
             this.Org = new Org();
-            this.Org.ApplyExploratoryFieldSpec(parent + ".org");
+            this.Org.ApplyExploratoryFieldSpec(ec.NewChild("org"));
         }
     }
 
@@ -214,12 +213,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<OrgNetwork> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new OrgNetwork());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<OrgNetwork> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

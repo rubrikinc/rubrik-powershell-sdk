@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<System.String>? Regions
         // GraphQL -> regions: [String!]! (scalar)
-        if (this.Regions == null && Exploration.Includes(parent + ".regions", true))
+        if (this.Regions == null && ec.Includes("regions",true))
         {
             this.Regions = new List<System.String>();
         }
         //      C# -> List<System.String>? Zones
         // GraphQL -> zones: [String!]! (scalar)
-        if (this.Zones == null && Exploration.Includes(parent + ".zones", true))
+        if (this.Zones == null && ec.Includes("zones",true))
         {
             this.Zones = new List<System.String>();
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ListStoredDiskLocationsReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ListStoredDiskLocationsReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ListStoredDiskLocationsReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

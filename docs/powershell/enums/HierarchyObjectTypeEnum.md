@@ -31,6 +31,7 @@ Type of hierarchy object.
 - MONGO_COLLECTION_SET - MongoDB Database.
 - VSphereComputeCluster
 - OracleDatabase
+- VSPHERE_DATACENTER_FOLDER - VSphere datacenter folder.
 - VSphereDatacenter
 - PhysicalHost
 - ATLASSIAN_SITE - Atlassian site.

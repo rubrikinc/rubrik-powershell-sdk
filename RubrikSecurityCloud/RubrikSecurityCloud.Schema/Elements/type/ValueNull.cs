@@ -62,12 +62,11 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? SerializedValue
         // GraphQL -> serializedValue: String! (scalar)
-        if (this.SerializedValue == null && Exploration.Includes(parent + ".serializedValue", true))
+        if (this.SerializedValue == null && ec.Includes("serializedValue",true))
         {
             this.SerializedValue = "FETCH";
         }
@@ -103,12 +102,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ValueNull> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ValueNull());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ValueNull> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

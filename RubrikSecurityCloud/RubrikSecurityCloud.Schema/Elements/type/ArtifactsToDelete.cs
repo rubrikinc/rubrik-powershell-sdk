@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> CloudAccountFeature? Feature
         // GraphQL -> feature: CloudAccountFeature! (enum)
-        if (this.Feature == null && Exploration.Includes(parent + ".feature", true))
+        if (this.Feature == null && ec.Includes("feature",true))
         {
             this.Feature = new CloudAccountFeature();
         }
         //      C# -> List<ExternalArtifactMapReply>? ArtifactsToDeleteField
         // GraphQL -> artifactsToDelete: [ExternalArtifactMapReply!]! (type)
-        if (this.ArtifactsToDeleteField == null && Exploration.Includes(parent + ".artifactsToDelete"))
+        if (this.ArtifactsToDeleteField == null && ec.Includes("artifactsToDelete",false))
         {
             this.ArtifactsToDeleteField = new List<ExternalArtifactMapReply>();
-            this.ArtifactsToDeleteField.ApplyExploratoryFieldSpec(parent + ".artifactsToDelete");
+            this.ArtifactsToDeleteField.ApplyExploratoryFieldSpec(ec.NewChild("artifactsToDelete"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ArtifactsToDelete> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ArtifactsToDelete());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ArtifactsToDelete> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

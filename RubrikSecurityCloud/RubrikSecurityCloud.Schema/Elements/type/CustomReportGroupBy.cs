@@ -98,29 +98,28 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> CustomReportConnection? ReportConnection
         // GraphQL -> reportConnection: CustomReportConnection! (type)
-        if (this.ReportConnection == null && Exploration.Includes(parent + ".reportConnection"))
+        if (this.ReportConnection == null && ec.Includes("reportConnection",false))
         {
             this.ReportConnection = new CustomReportConnection();
-            this.ReportConnection.ApplyExploratoryFieldSpec(parent + ".reportConnection");
+            this.ReportConnection.ApplyExploratoryFieldSpec(ec.NewChild("reportConnection"));
         }
         //      C# -> List<CustomReportGroupBy>? ReportGroupBy
         // GraphQL -> reportGroupBy: [CustomReportGroupBy!]! (type)
-        if (this.ReportGroupBy == null && Exploration.Includes(parent + ".reportGroupBy"))
+        if (this.ReportGroupBy == null && ec.Includes("reportGroupBy",false))
         {
             this.ReportGroupBy = new List<CustomReportGroupBy>();
-            this.ReportGroupBy.ApplyExploratoryFieldSpec(parent + ".reportGroupBy");
+            this.ReportGroupBy.ApplyExploratoryFieldSpec(ec.NewChild("reportGroupBy"));
         }
         //      C# -> CustomReportGroupByInfo? GroupByInfo
         // GraphQL -> groupByInfo: CustomReportGroupByInfo! (union)
-        if (this.GroupByInfo == null && Exploration.Includes(parent + ".groupByInfo"))
+        if (this.GroupByInfo == null && ec.Includes("groupByInfo",false))
         {
             var impls = new List<CustomReportGroupByInfo>();
-            impls.ApplyExploratoryFieldSpec(parent + ".groupByInfo");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
             this.GroupByInfo = (CustomReportGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
         }
     }
@@ -155,12 +154,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CustomReportGroupBy> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CustomReportGroupBy());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CustomReportGroupBy> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

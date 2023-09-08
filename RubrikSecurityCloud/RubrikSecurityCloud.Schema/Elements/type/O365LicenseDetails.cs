@@ -117,36 +117,35 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> AzureHostType? AllowedHost
         // GraphQL -> allowedHost: AzureHostType! (enum)
-        if (this.AllowedHost == null && Exploration.Includes(parent + ".allowedHost", true))
+        if (this.AllowedHost == null && ec.Includes("allowedHost",true))
         {
             this.AllowedHost = new AzureHostType();
         }
         //      C# -> M365Cloud? M365Cloud
         // GraphQL -> m365Cloud: M365Cloud! (enum)
-        if (this.M365Cloud == null && Exploration.Includes(parent + ".m365Cloud", true))
+        if (this.M365Cloud == null && ec.Includes("m365Cloud",true))
         {
             this.M365Cloud = new M365Cloud();
         }
         //      C# -> O365AzureCloudType? RubrikSaasCloud
         // GraphQL -> rubrikSaasCloud: O365AzureCloudType! (enum)
-        if (this.RubrikSaasCloud == null && Exploration.Includes(parent + ".rubrikSaasCloud", true))
+        if (this.RubrikSaasCloud == null && ec.Includes("rubrikSaasCloud",true))
         {
             this.RubrikSaasCloud = new O365AzureCloudType();
         }
         //      C# -> System.Int32? AllowedO365UserCount
         // GraphQL -> allowedO365UserCount: Int! (scalar)
-        if (this.AllowedO365UserCount == null && Exploration.Includes(parent + ".allowedO365UserCount", true))
+        if (this.AllowedO365UserCount == null && ec.Includes("allowedO365UserCount",true))
         {
             this.AllowedO365UserCount = Int32.MinValue;
         }
         //      C# -> System.Boolean? DisableLicense
         // GraphQL -> disableLicense: Boolean! (scalar)
-        if (this.DisableLicense == null && Exploration.Includes(parent + ".disableLicense", true))
+        if (this.DisableLicense == null && ec.Includes("disableLicense",true))
         {
             this.DisableLicense = true;
         }
@@ -182,12 +181,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<O365LicenseDetails> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new O365LicenseDetails());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<O365LicenseDetails> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

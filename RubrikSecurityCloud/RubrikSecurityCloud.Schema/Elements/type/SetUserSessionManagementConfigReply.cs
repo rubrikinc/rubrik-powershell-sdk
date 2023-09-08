@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> UserSessionManagementConfig? Config
         // GraphQL -> config: UserSessionManagementConfig (type)
-        if (this.Config == null && Exploration.Includes(parent + ".config"))
+        if (this.Config == null && ec.Includes("config",false))
         {
             this.Config = new UserSessionManagementConfig();
-            this.Config.ApplyExploratoryFieldSpec(parent + ".config");
+            this.Config.ApplyExploratoryFieldSpec(ec.NewChild("config"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SetUserSessionManagementConfigReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SetUserSessionManagementConfigReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SetUserSessionManagementConfigReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

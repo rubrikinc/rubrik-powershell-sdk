@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int32? Total
         // GraphQL -> total: Int! (scalar)
-        if (this.Total == null && Exploration.Includes(parent + ".total", true))
+        if (this.Total == null && ec.Includes("total",true))
         {
             this.Total = Int32.MinValue;
         }
         //      C# -> List<GlobalFileEntry>? Results
         // GraphQL -> results: [GlobalFileEntry!]! (type)
-        if (this.Results == null && Exploration.Includes(parent + ".results"))
+        if (this.Results == null && ec.Includes("results",false))
         {
             this.Results = new List<GlobalFileEntry>();
-            this.Results.ApplyExploratoryFieldSpec(parent + ".results");
+            this.Results.ApplyExploratoryFieldSpec(ec.NewChild("results"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GlobalFileSearchReplyType> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GlobalFileSearchReplyType());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<GlobalFileSearchReplyType> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

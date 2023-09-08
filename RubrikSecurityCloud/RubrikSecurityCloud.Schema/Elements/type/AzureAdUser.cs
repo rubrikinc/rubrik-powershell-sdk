@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? CreationType
         // GraphQL -> creationType: String! (scalar)
-        if (this.CreationType == null && Exploration.Includes(parent + ".creationType", true))
+        if (this.CreationType == null && ec.Includes("creationType",true))
         {
             this.CreationType = "FETCH";
         }
         //      C# -> System.String? DisplayName
         // GraphQL -> displayName: String! (scalar)
-        if (this.DisplayName == null && Exploration.Includes(parent + ".displayName", true))
+        if (this.DisplayName == null && ec.Includes("displayName",true))
         {
             this.DisplayName = "FETCH";
         }
         //      C# -> System.String? PrincipalUserName
         // GraphQL -> principalUserName: String! (scalar)
-        if (this.PrincipalUserName == null && Exploration.Includes(parent + ".principalUserName", true))
+        if (this.PrincipalUserName == null && ec.Includes("principalUserName",true))
         {
             this.PrincipalUserName = "FETCH";
         }
         //      C# -> System.String? UserType
         // GraphQL -> userType: String! (scalar)
-        if (this.UserType == null && Exploration.Includes(parent + ".userType", true))
+        if (this.UserType == null && ec.Includes("userType",true))
         {
             this.UserType = "FETCH";
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AzureAdUser> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AzureAdUser());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AzureAdUser> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

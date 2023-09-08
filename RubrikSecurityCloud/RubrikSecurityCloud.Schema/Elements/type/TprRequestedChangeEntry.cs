@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Attribute
         // GraphQL -> attribute: String! (scalar)
-        if (this.Attribute == null && Exploration.Includes(parent + ".attribute", true))
+        if (this.Attribute == null && ec.Includes("attribute",true))
         {
             this.Attribute = "FETCH";
         }
         //      C# -> System.String? NewValue
         // GraphQL -> newValue: String! (scalar)
-        if (this.NewValue == null && Exploration.Includes(parent + ".newValue", true))
+        if (this.NewValue == null && ec.Includes("newValue",true))
         {
             this.NewValue = "FETCH";
         }
         //      C# -> System.String? OldValue
         // GraphQL -> oldValue: String! (scalar)
-        if (this.OldValue == null && Exploration.Includes(parent + ".oldValue", true))
+        if (this.OldValue == null && ec.Includes("oldValue",true))
         {
             this.OldValue = "FETCH";
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<TprRequestedChangeEntry> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new TprRequestedChangeEntry());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<TprRequestedChangeEntry> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -78,20 +78,19 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> PhysicalHostPhysicalChildType? Node
         // GraphQL -> node: PhysicalHostPhysicalChildType! (interface)
-        if (this.Node == null && Exploration.Includes(parent + ".node"))
+        if (this.Node == null && ec.Includes("node",false))
         {
             var impls = new List<PhysicalHostPhysicalChildType>();
-            impls.ApplyExploratoryFieldSpec(parent + ".node");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
             this.Node = (PhysicalHostPhysicalChildType)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> System.String? Cursor
         // GraphQL -> cursor: String! (scalar)
-        if (this.Cursor == null && Exploration.Includes(parent + ".cursor", true))
+        if (this.Cursor == null && ec.Includes("cursor",true))
         {
             this.Cursor = "FETCH";
         }
@@ -127,12 +126,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PhysicalHostPhysicalChildTypeEdge> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PhysicalHostPhysicalChildTypeEdge());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<PhysicalHostPhysicalChildTypeEdge> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

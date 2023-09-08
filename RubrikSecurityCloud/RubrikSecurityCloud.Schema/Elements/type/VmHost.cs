@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? HostId
         // GraphQL -> hostId: String! (scalar)
-        if (this.HostId == null && Exploration.Includes(parent + ".hostId", true))
+        if (this.HostId == null && ec.Includes("hostId",true))
         {
             this.HostId = "FETCH";
         }
         //      C# -> System.String? HostName
         // GraphQL -> hostName: String! (scalar)
-        if (this.HostName == null && Exploration.Includes(parent + ".hostName", true))
+        if (this.HostName == null && ec.Includes("hostName",true))
         {
             this.HostName = "FETCH";
         }
         //      C# -> System.String? VcenterId
         // GraphQL -> vcenterId: String! (scalar)
-        if (this.VcenterId == null && Exploration.Includes(parent + ".vcenterId", true))
+        if (this.VcenterId == null && ec.Includes("vcenterId",true))
         {
             this.VcenterId = "FETCH";
         }
         //      C# -> System.String? VcenterName
         // GraphQL -> vcenterName: String! (scalar)
-        if (this.VcenterName == null && Exploration.Includes(parent + ".vcenterName", true))
+        if (this.VcenterName == null && ec.Includes("vcenterName",true))
         {
             this.VcenterName = "FETCH";
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VmHost> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VmHost());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VmHost> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -81,22 +81,21 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ProtectionTaskDetailsTableFilter? ProtectionTaskDetailsTable
         // GraphQL -> ProtectionTaskDetailsTable: ProtectionTaskDetailsTableFilter! (type)
-        if (this.ProtectionTaskDetailsTable == null && Exploration.Includes(parent + ".ProtectionTaskDetailsTable"))
+        if (this.ProtectionTaskDetailsTable == null && ec.Includes("ProtectionTaskDetailsTable",false))
         {
             this.ProtectionTaskDetailsTable = new ProtectionTaskDetailsTableFilter();
-            this.ProtectionTaskDetailsTable.ApplyExploratoryFieldSpec(parent + ".ProtectionTaskDetailsTable");
+            this.ProtectionTaskDetailsTable.ApplyExploratoryFieldSpec(ec.NewChild("ProtectionTaskDetailsTable"));
         }
         //      C# -> RecoveryTaskDetailsTableFilter? RecoveryTaskDetailsTable
         // GraphQL -> RecoveryTaskDetailsTable: RecoveryTaskDetailsTableFilter! (type)
-        if (this.RecoveryTaskDetailsTable == null && Exploration.Includes(parent + ".RecoveryTaskDetailsTable"))
+        if (this.RecoveryTaskDetailsTable == null && ec.Includes("RecoveryTaskDetailsTable",false))
         {
             this.RecoveryTaskDetailsTable = new RecoveryTaskDetailsTableFilter();
-            this.RecoveryTaskDetailsTable.ApplyExploratoryFieldSpec(parent + ".RecoveryTaskDetailsTable");
+            this.RecoveryTaskDetailsTable.ApplyExploratoryFieldSpec(ec.NewChild("RecoveryTaskDetailsTable"));
         }
     }
 
@@ -130,12 +129,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<TableFilters> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new TableFilters());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<TableFilters> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

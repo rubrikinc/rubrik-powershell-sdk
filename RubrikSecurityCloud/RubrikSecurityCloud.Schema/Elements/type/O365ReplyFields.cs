@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> O365SharePointDrive? SpDriveItem
         // GraphQL -> spDriveItem: O365SharePointDrive (type)
-        if (this.SpDriveItem == null && Exploration.Includes(parent + ".spDriveItem"))
+        if (this.SpDriveItem == null && ec.Includes("spDriveItem",false))
         {
             this.SpDriveItem = new O365SharePointDrive();
-            this.SpDriveItem.ApplyExploratoryFieldSpec(parent + ".spDriveItem");
+            this.SpDriveItem.ApplyExploratoryFieldSpec(ec.NewChild("spDriveItem"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<O365ReplyFields> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new O365ReplyFields());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<O365ReplyFields> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

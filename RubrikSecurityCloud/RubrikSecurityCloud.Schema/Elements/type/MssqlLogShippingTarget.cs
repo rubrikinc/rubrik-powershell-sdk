@@ -244,91 +244,90 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
-        if (this.CdmId == null && Exploration.Includes(parent + ".cdmId", true))
+        if (this.CdmId == null && ec.Includes("cdmId",true))
         {
             this.CdmId = "FETCH";
         }
         //      C# -> System.String? Fid
         // GraphQL -> fid: String! (scalar)
-        if (this.Fid == null && Exploration.Includes(parent + ".fid", true))
+        if (this.Fid == null && ec.Includes("fid",true))
         {
             this.Fid = "FETCH";
         }
         //      C# -> System.Int64? LagTimeFromPrimary
         // GraphQL -> lagTimeFromPrimary: Long! (scalar)
-        if (this.LagTimeFromPrimary == null && Exploration.Includes(parent + ".lagTimeFromPrimary", true))
+        if (this.LagTimeFromPrimary == null && ec.Includes("lagTimeFromPrimary",true))
         {
             this.LagTimeFromPrimary = new System.Int64();
         }
         //      C# -> DateTime? LastAppliedPoint
         // GraphQL -> lastAppliedPoint: DateTime (scalar)
-        if (this.LastAppliedPoint == null && Exploration.Includes(parent + ".lastAppliedPoint", true))
+        if (this.LastAppliedPoint == null && ec.Includes("lastAppliedPoint",true))
         {
             this.LastAppliedPoint = new DateTime();
         }
         //      C# -> System.String? Location
         // GraphQL -> location: String! (scalar)
-        if (this.Location == null && Exploration.Includes(parent + ".location", true))
+        if (this.Location == null && ec.Includes("location",true))
         {
             this.Location = "FETCH";
         }
         //      C# -> System.Int64? LogFrequency
         // GraphQL -> logFrequency: Long! (scalar)
-        if (this.LogFrequency == null && Exploration.Includes(parent + ".logFrequency", true))
+        if (this.LogFrequency == null && ec.Includes("logFrequency",true))
         {
             this.LogFrequency = new System.Int64();
         }
         //      C# -> System.String? State
         // GraphQL -> state: String! (scalar)
-        if (this.State == null && Exploration.Includes(parent + ".state", true))
+        if (this.State == null && ec.Includes("state",true))
         {
             this.State = "FETCH";
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = "FETCH";
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster (type)
-        if (this.Cluster == null && Exploration.Includes(parent + ".cluster"))
+        if (this.Cluster == null && ec.Includes("cluster",false))
         {
             this.Cluster = new Cluster();
-            this.Cluster.ApplyExploratoryFieldSpec(parent + ".cluster");
+            this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
         }
         //      C# -> Cluster? PrimaryCluster
         // GraphQL -> primaryCluster: Cluster (type)
-        if (this.PrimaryCluster == null && Exploration.Includes(parent + ".primaryCluster"))
+        if (this.PrimaryCluster == null && ec.Includes("primaryCluster",false))
         {
             this.PrimaryCluster = new Cluster();
-            this.PrimaryCluster.ApplyExploratoryFieldSpec(parent + ".primaryCluster");
+            this.PrimaryCluster.ApplyExploratoryFieldSpec(ec.NewChild("primaryCluster"));
         }
         //      C# -> MssqlDatabase? PrimaryDatabase
         // GraphQL -> primaryDatabase: MssqlDatabase (type)
-        if (this.PrimaryDatabase == null && Exploration.Includes(parent + ".primaryDatabase"))
+        if (this.PrimaryDatabase == null && ec.Includes("primaryDatabase",false))
         {
             this.PrimaryDatabase = new MssqlDatabase();
-            this.PrimaryDatabase.ApplyExploratoryFieldSpec(parent + ".primaryDatabase");
+            this.PrimaryDatabase.ApplyExploratoryFieldSpec(ec.NewChild("primaryDatabase"));
         }
         //      C# -> MssqlDatabase? SecondaryDatabase
         // GraphQL -> secondaryDatabase: MssqlDatabase (type)
-        if (this.SecondaryDatabase == null && Exploration.Includes(parent + ".secondaryDatabase"))
+        if (this.SecondaryDatabase == null && ec.Includes("secondaryDatabase",false))
         {
             this.SecondaryDatabase = new MssqlDatabase();
-            this.SecondaryDatabase.ApplyExploratoryFieldSpec(parent + ".secondaryDatabase");
+            this.SecondaryDatabase.ApplyExploratoryFieldSpec(ec.NewChild("secondaryDatabase"));
         }
         //      C# -> MssqlInstance? SecondaryInstance
         // GraphQL -> secondaryInstance: MssqlInstance (type)
-        if (this.SecondaryInstance == null && Exploration.Includes(parent + ".secondaryInstance"))
+        if (this.SecondaryInstance == null && ec.Includes("secondaryInstance",false))
         {
             this.SecondaryInstance = new MssqlInstance();
-            this.SecondaryInstance.ApplyExploratoryFieldSpec(parent + ".secondaryInstance");
+            this.SecondaryInstance.ApplyExploratoryFieldSpec(ec.NewChild("secondaryInstance"));
         }
     }
 
@@ -362,12 +361,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<MssqlLogShippingTarget> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new MssqlLogShippingTarget());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<MssqlLogShippingTarget> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

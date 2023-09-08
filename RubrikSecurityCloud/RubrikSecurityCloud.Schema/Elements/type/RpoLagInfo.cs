@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? ActualInSecs
         // GraphQL -> actualInSecs: Long! (scalar)
-        if (this.ActualInSecs == null && Exploration.Includes(parent + ".actualInSecs", true))
+        if (this.ActualInSecs == null && ec.Includes("actualInSecs",true))
         {
             this.ActualInSecs = new System.Int64();
         }
         //      C# -> System.Int64? ExpectedInSecs
         // GraphQL -> expectedInSecs: Long! (scalar)
-        if (this.ExpectedInSecs == null && Exploration.Includes(parent + ".expectedInSecs", true))
+        if (this.ExpectedInSecs == null && ec.Includes("expectedInSecs",true))
         {
             this.ExpectedInSecs = new System.Int64();
         }
         //      C# -> System.String? Level
         // GraphQL -> level: String! (scalar)
-        if (this.Level == null && Exploration.Includes(parent + ".level", true))
+        if (this.Level == null && ec.Includes("level",true))
         {
             this.Level = "FETCH";
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RpoLagInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RpoLagInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<RpoLagInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -154,53 +154,52 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> HypervVirtualMachineDetailGuestOsType? GuestOsType
         // GraphQL -> guestOsType: HypervVirtualMachineDetailGuestOsType! (enum)
-        if (this.GuestOsType == null && Exploration.Includes(parent + ".guestOsType", true))
+        if (this.GuestOsType == null && ec.Includes("guestOsType",true))
         {
             this.GuestOsType = new HypervVirtualMachineDetailGuestOsType();
         }
         //      C# -> HypervVirtualMachineDetailOperatingSystemType? OperatingSystemType
         // GraphQL -> operatingSystemType: HypervVirtualMachineDetailOperatingSystemType (enum)
-        if (this.OperatingSystemType == null && Exploration.Includes(parent + ".operatingSystemType", true))
+        if (this.OperatingSystemType == null && ec.Includes("operatingSystemType",true))
         {
             this.OperatingSystemType = new HypervVirtualMachineDetailOperatingSystemType();
         }
         //      C# -> System.Boolean? IsAgentRegistered
         // GraphQL -> isAgentRegistered: Boolean (scalar)
-        if (this.IsAgentRegistered == null && Exploration.Includes(parent + ".isAgentRegistered", true))
+        if (this.IsAgentRegistered == null && ec.Includes("isAgentRegistered",true))
         {
             this.IsAgentRegistered = true;
         }
         //      C# -> System.String? NaturalId
         // GraphQL -> naturalId: String (scalar)
-        if (this.NaturalId == null && Exploration.Includes(parent + ".naturalId", true))
+        if (this.NaturalId == null && ec.Includes("naturalId",true))
         {
             this.NaturalId = "FETCH";
         }
         //      C# -> HypervVirtualMachineSummary? HypervVirtualMachineSummary
         // GraphQL -> hypervVirtualMachineSummary: HypervVirtualMachineSummary (type)
-        if (this.HypervVirtualMachineSummary == null && Exploration.Includes(parent + ".hypervVirtualMachineSummary"))
+        if (this.HypervVirtualMachineSummary == null && ec.Includes("hypervVirtualMachineSummary",false))
         {
             this.HypervVirtualMachineSummary = new HypervVirtualMachineSummary();
-            this.HypervVirtualMachineSummary.ApplyExploratoryFieldSpec(parent + ".hypervVirtualMachineSummary");
+            this.HypervVirtualMachineSummary.ApplyExploratoryFieldSpec(ec.NewChild("hypervVirtualMachineSummary"));
         }
         //      C# -> HypervVirtualMachineUpdate? HypervVirtualMachineUpdate
         // GraphQL -> hypervVirtualMachineUpdate: HypervVirtualMachineUpdate (type)
-        if (this.HypervVirtualMachineUpdate == null && Exploration.Includes(parent + ".hypervVirtualMachineUpdate"))
+        if (this.HypervVirtualMachineUpdate == null && ec.Includes("hypervVirtualMachineUpdate",false))
         {
             this.HypervVirtualMachineUpdate = new HypervVirtualMachineUpdate();
-            this.HypervVirtualMachineUpdate.ApplyExploratoryFieldSpec(parent + ".hypervVirtualMachineUpdate");
+            this.HypervVirtualMachineUpdate.ApplyExploratoryFieldSpec(ec.NewChild("hypervVirtualMachineUpdate"));
         }
         //      C# -> List<HypervVirtualDiskInfo>? VirtualDiskInfo
         // GraphQL -> virtualDiskInfo: [HypervVirtualDiskInfo!]! (type)
-        if (this.VirtualDiskInfo == null && Exploration.Includes(parent + ".virtualDiskInfo"))
+        if (this.VirtualDiskInfo == null && ec.Includes("virtualDiskInfo",false))
         {
             this.VirtualDiskInfo = new List<HypervVirtualDiskInfo>();
-            this.VirtualDiskInfo.ApplyExploratoryFieldSpec(parent + ".virtualDiskInfo");
+            this.VirtualDiskInfo.ApplyExploratoryFieldSpec(ec.NewChild("virtualDiskInfo"));
         }
     }
 
@@ -234,12 +233,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<HypervVirtualMachineDetail> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new HypervVirtualMachineDetail());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<HypervVirtualMachineDetail> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

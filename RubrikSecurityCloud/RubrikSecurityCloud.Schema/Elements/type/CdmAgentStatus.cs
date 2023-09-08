@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? AgentStatus
         // GraphQL -> agentStatus: String! (scalar)
-        if (this.AgentStatus == null && Exploration.Includes(parent + ".agentStatus", true))
+        if (this.AgentStatus == null && ec.Includes("agentStatus",true))
         {
             this.AgentStatus = "FETCH";
         }
         //      C# -> System.String? DisconnectReason
         // GraphQL -> disconnectReason: String (scalar)
-        if (this.DisconnectReason == null && Exploration.Includes(parent + ".disconnectReason", true))
+        if (this.DisconnectReason == null && ec.Includes("disconnectReason",true))
         {
             this.DisconnectReason = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CdmAgentStatus> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CdmAgentStatus());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CdmAgentStatus> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

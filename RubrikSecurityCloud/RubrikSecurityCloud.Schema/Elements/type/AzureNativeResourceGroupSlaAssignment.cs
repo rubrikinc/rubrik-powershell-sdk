@@ -95,28 +95,27 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> SlaAssignmentTypeEnum? SlaAssignment
         // GraphQL -> slaAssignment: SlaAssignmentTypeEnum! (enum)
-        if (this.SlaAssignment == null && Exploration.Includes(parent + ".slaAssignment", true))
+        if (this.SlaAssignment == null && ec.Includes("slaAssignment",true))
         {
             this.SlaAssignment = new SlaAssignmentTypeEnum();
         }
         //      C# -> GlobalSlaReply? ConfiguredSlaDomain
         // GraphQL -> configuredSlaDomain: GlobalSlaReply! (type)
-        if (this.ConfiguredSlaDomain == null && Exploration.Includes(parent + ".configuredSlaDomain"))
+        if (this.ConfiguredSlaDomain == null && ec.Includes("configuredSlaDomain",false))
         {
             this.ConfiguredSlaDomain = new GlobalSlaReply();
-            this.ConfiguredSlaDomain.ApplyExploratoryFieldSpec(parent + ".configuredSlaDomain");
+            this.ConfiguredSlaDomain.ApplyExploratoryFieldSpec(ec.NewChild("configuredSlaDomain"));
         }
         //      C# -> GlobalSlaReply? EffectiveSlaDomain
         // GraphQL -> effectiveSlaDomain: GlobalSlaReply! (type)
-        if (this.EffectiveSlaDomain == null && Exploration.Includes(parent + ".effectiveSlaDomain"))
+        if (this.EffectiveSlaDomain == null && ec.Includes("effectiveSlaDomain",false))
         {
             this.EffectiveSlaDomain = new GlobalSlaReply();
-            this.EffectiveSlaDomain.ApplyExploratoryFieldSpec(parent + ".effectiveSlaDomain");
+            this.EffectiveSlaDomain.ApplyExploratoryFieldSpec(ec.NewChild("effectiveSlaDomain"));
         }
     }
 
@@ -150,12 +149,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AzureNativeResourceGroupSlaAssignment> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AzureNativeResourceGroupSlaAssignment());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AzureNativeResourceGroupSlaAssignment> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

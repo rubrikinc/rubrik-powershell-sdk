@@ -27,3 +27,7 @@ The O365 subscription status and ID info.
   - Sharepoint Lists compliant.
 - past1DaySpListOutOfComplianceCount: System.Int32
   - Sharepoint Lists not compliant.
+- past1DaySpSiteCollectionComplianceCount: System.Int32
+  - Compliance count for SharePoint site collections.
+- past1DaySpSiteCollectionOutOfComplianceCount: System.Int32
+  - Out of compliance count for SharePoint site collections.

@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> O365ServiceStatusIndication? Status
         // GraphQL -> status: O365ServiceStatusIndication! (enum)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = new O365ServiceStatusIndication();
         }
         //      C# -> DateTime? LastUpdated
         // GraphQL -> lastUpdated: DateTime (scalar)
-        if (this.LastUpdated == null && Exploration.Includes(parent + ".lastUpdated", true))
+        if (this.LastUpdated == null && ec.Includes("lastUpdated",true))
         {
             this.LastUpdated = new DateTime();
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GetO365ServiceStatusResp> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GetO365ServiceStatusResp());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<GetO365ServiceStatusResp> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<GcpCloudAccountProjectDeleteStatus>? GcpProjectDeleteStatuses
         // GraphQL -> gcpProjectDeleteStatuses: [GcpCloudAccountProjectDeleteStatus!]! (type)
-        if (this.GcpProjectDeleteStatuses == null && Exploration.Includes(parent + ".gcpProjectDeleteStatuses"))
+        if (this.GcpProjectDeleteStatuses == null && ec.Includes("gcpProjectDeleteStatuses",false))
         {
             this.GcpProjectDeleteStatuses = new List<GcpCloudAccountProjectDeleteStatus>();
-            this.GcpProjectDeleteStatuses.ApplyExploratoryFieldSpec(parent + ".gcpProjectDeleteStatuses");
+            this.GcpProjectDeleteStatuses.ApplyExploratoryFieldSpec(ec.NewChild("gcpProjectDeleteStatuses"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GcpCloudAccountDeleteProjectsReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GcpCloudAccountDeleteProjectsReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<GcpCloudAccountDeleteProjectsReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

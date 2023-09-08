@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Address
         // GraphQL -> address: String! (scalar)
-        if (this.Address == null && Exploration.Includes(parent + ".address", true))
+        if (this.Address == null && ec.Includes("address",true))
         {
             this.Address = "FETCH";
         }
         //      C# -> System.Single? Latitude
         // GraphQL -> latitude: Float! (scalar)
-        if (this.Latitude == null && Exploration.Includes(parent + ".latitude", true))
+        if (this.Latitude == null && ec.Includes("latitude",true))
         {
             this.Latitude = new System.Single();
         }
         //      C# -> System.Single? Longitude
         // GraphQL -> longitude: Float! (scalar)
-        if (this.Longitude == null && Exploration.Includes(parent + ".longitude", true))
+        if (this.Longitude == null && ec.Includes("longitude",true))
         {
             this.Longitude = new System.Single();
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GeoLocation> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GeoLocation());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<GeoLocation> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

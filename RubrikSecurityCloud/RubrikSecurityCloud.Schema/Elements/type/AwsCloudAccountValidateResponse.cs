@@ -81,22 +81,21 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<AwsAccountValidationResponse>? InvalidAwsAccounts
         // GraphQL -> invalidAwsAccounts: [AwsAccountValidationResponse!]! (type)
-        if (this.InvalidAwsAccounts == null && Exploration.Includes(parent + ".invalidAwsAccounts"))
+        if (this.InvalidAwsAccounts == null && ec.Includes("invalidAwsAccounts",false))
         {
             this.InvalidAwsAccounts = new List<AwsAccountValidationResponse>();
-            this.InvalidAwsAccounts.ApplyExploratoryFieldSpec(parent + ".invalidAwsAccounts");
+            this.InvalidAwsAccounts.ApplyExploratoryFieldSpec(ec.NewChild("invalidAwsAccounts"));
         }
         //      C# -> AwsAccountValidationResponse? InvalidAwsAdminAccount
         // GraphQL -> invalidAwsAdminAccount: AwsAccountValidationResponse (type)
-        if (this.InvalidAwsAdminAccount == null && Exploration.Includes(parent + ".invalidAwsAdminAccount"))
+        if (this.InvalidAwsAdminAccount == null && ec.Includes("invalidAwsAdminAccount",false))
         {
             this.InvalidAwsAdminAccount = new AwsAccountValidationResponse();
-            this.InvalidAwsAdminAccount.ApplyExploratoryFieldSpec(parent + ".invalidAwsAdminAccount");
+            this.InvalidAwsAdminAccount.ApplyExploratoryFieldSpec(ec.NewChild("invalidAwsAdminAccount"));
         }
     }
 
@@ -130,12 +129,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AwsCloudAccountValidateResponse> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AwsCloudAccountValidateResponse());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AwsCloudAccountValidateResponse> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

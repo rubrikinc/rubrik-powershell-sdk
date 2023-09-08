@@ -210,78 +210,77 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> AwsRegion? Region
         // GraphQL -> region: AwsRegion! (enum)
-        if (this.Region == null && Exploration.Includes(parent + ".region", true))
+        if (this.Region == null && ec.Includes("region",true))
         {
             this.Region = new AwsRegion();
         }
         //      C# -> CloudAccount? CloudAccount
         // GraphQL -> cloudAccount: CloudAccount (interface)
-        if (this.CloudAccount == null && Exploration.Includes(parent + ".cloudAccount"))
+        if (this.CloudAccount == null && ec.Includes("cloudAccount",false))
         {
             var impls = new List<CloudAccount>();
-            impls.ApplyExploratoryFieldSpec(parent + ".cloudAccount");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("cloudAccount"));
             this.CloudAccount = (CloudAccount)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsArchived
         // GraphQL -> isArchived: Boolean! (scalar)
-        if (this.IsArchived == null && Exploration.Includes(parent + ".isArchived", true))
+        if (this.IsArchived == null && ec.Includes("isArchived",true))
         {
             this.IsArchived = true;
         }
         //      C# -> System.Boolean? IsRscManaged
         // GraphQL -> isRscManaged: Boolean! (scalar)
-        if (this.IsRscManaged == null && Exploration.Includes(parent + ".isRscManaged", true))
+        if (this.IsRscManaged == null && ec.Includes("isRscManaged",true))
         {
             this.IsRscManaged = true;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? SecurityGroupId
         // GraphQL -> securityGroupId: String! (scalar)
-        if (this.SecurityGroupId == null && Exploration.Includes(parent + ".securityGroupId", true))
+        if (this.SecurityGroupId == null && ec.Includes("securityGroupId",true))
         {
             this.SecurityGroupId = "FETCH";
         }
         //      C# -> System.String? SubnetId
         // GraphQL -> subnetId: String! (scalar)
-        if (this.SubnetId == null && Exploration.Includes(parent + ".subnetId", true))
+        if (this.SubnetId == null && ec.Includes("subnetId",true))
         {
             this.SubnetId = "FETCH";
         }
         //      C# -> System.String? VpcId
         // GraphQL -> vpcId: String! (scalar)
-        if (this.VpcId == null && Exploration.Includes(parent + ".vpcId", true))
+        if (this.VpcId == null && ec.Includes("vpcId",true))
         {
             this.VpcId = "FETCH";
         }
         //      C# -> List<ClusterInfCidrs>? ClusterInterfaceCidrs
         // GraphQL -> clusterInterfaceCidrs: [ClusterInfCidrs!]! (type)
-        if (this.ClusterInterfaceCidrs == null && Exploration.Includes(parent + ".clusterInterfaceCidrs"))
+        if (this.ClusterInterfaceCidrs == null && ec.Includes("clusterInterfaceCidrs",false))
         {
             this.ClusterInterfaceCidrs = new List<ClusterInfCidrs>();
-            this.ClusterInterfaceCidrs.ApplyExploratoryFieldSpec(parent + ".clusterInterfaceCidrs");
+            this.ClusterInterfaceCidrs.ApplyExploratoryFieldSpec(ec.NewChild("clusterInterfaceCidrs"));
         }
         //      C# -> ProxySettings? ProxySettings
         // GraphQL -> proxySettings: ProxySettings (type)
-        if (this.ProxySettings == null && Exploration.Includes(parent + ".proxySettings"))
+        if (this.ProxySettings == null && ec.Includes("proxySettings",false))
         {
             this.ProxySettings = new ProxySettings();
-            this.ProxySettings.ApplyExploratoryFieldSpec(parent + ".proxySettings");
+            this.ProxySettings.ApplyExploratoryFieldSpec(ec.NewChild("proxySettings"));
         }
     }
 
@@ -315,12 +314,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AwsComputeSettings> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AwsComputeSettings());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AwsComputeSettings> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

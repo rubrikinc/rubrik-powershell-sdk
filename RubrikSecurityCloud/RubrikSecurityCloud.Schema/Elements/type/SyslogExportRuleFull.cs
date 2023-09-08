@@ -145,48 +145,47 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> SyslogFacility? Facility
         // GraphQL -> facility: SyslogFacility! (enum)
-        if (this.Facility == null && Exploration.Includes(parent + ".facility", true))
+        if (this.Facility == null && ec.Includes("facility",true))
         {
             this.Facility = new SyslogFacility();
         }
         //      C# -> TransportLayerProtocol? Protocol
         // GraphQL -> protocol: TransportLayerProtocol! (enum)
-        if (this.Protocol == null && Exploration.Includes(parent + ".protocol", true))
+        if (this.Protocol == null && ec.Includes("protocol",true))
         {
             this.Protocol = new TransportLayerProtocol();
         }
         //      C# -> SyslogSeverity? Severity
         // GraphQL -> severity: SyslogSeverity! (enum)
-        if (this.Severity == null && Exploration.Includes(parent + ".severity", true))
+        if (this.Severity == null && ec.Includes("severity",true))
         {
             this.Severity = new SyslogSeverity();
         }
         //      C# -> System.String? CertificateId
         // GraphQL -> certificateId: String (scalar)
-        if (this.CertificateId == null && Exploration.Includes(parent + ".certificateId", true))
+        if (this.CertificateId == null && ec.Includes("certificateId",true))
         {
             this.CertificateId = "FETCH";
         }
         //      C# -> System.Boolean? EnableTls
         // GraphQL -> enableTls: Boolean! (scalar)
-        if (this.EnableTls == null && Exploration.Includes(parent + ".enableTls", true))
+        if (this.EnableTls == null && ec.Includes("enableTls",true))
         {
             this.EnableTls = true;
         }
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String! (scalar)
-        if (this.Hostname == null && Exploration.Includes(parent + ".hostname", true))
+        if (this.Hostname == null && ec.Includes("hostname",true))
         {
             this.Hostname = "FETCH";
         }
         //      C# -> System.Int32? Port
         // GraphQL -> port: Int! (scalar)
-        if (this.Port == null && Exploration.Includes(parent + ".port", true))
+        if (this.Port == null && ec.Includes("port",true))
         {
             this.Port = Int32.MinValue;
         }
@@ -222,12 +221,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SyslogExportRuleFull> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SyslogExportRuleFull());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SyslogExportRuleFull> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

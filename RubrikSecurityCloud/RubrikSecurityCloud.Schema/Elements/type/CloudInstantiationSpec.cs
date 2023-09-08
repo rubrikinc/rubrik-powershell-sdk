@@ -61,12 +61,11 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? ImageRetentionInSeconds
         // GraphQL -> imageRetentionInSeconds: Long! (scalar)
-        if (this.ImageRetentionInSeconds == null && Exploration.Includes(parent + ".imageRetentionInSeconds", true))
+        if (this.ImageRetentionInSeconds == null && ec.Includes("imageRetentionInSeconds",true))
         {
             this.ImageRetentionInSeconds = new System.Int64();
         }
@@ -102,12 +101,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CloudInstantiationSpec> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CloudInstantiationSpec());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CloudInstantiationSpec> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

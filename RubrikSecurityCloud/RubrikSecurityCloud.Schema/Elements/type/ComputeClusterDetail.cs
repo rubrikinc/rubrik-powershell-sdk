@@ -112,35 +112,34 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Moid
         // GraphQL -> moid: String! (scalar)
-        if (this.Moid == null && Exploration.Includes(parent + ".moid", true))
+        if (this.Moid == null && ec.Includes("moid",true))
         {
             this.Moid = "FETCH";
         }
         //      C# -> ComputeClusterSummary? ComputeClusterSummary
         // GraphQL -> computeClusterSummary: ComputeClusterSummary (type)
-        if (this.ComputeClusterSummary == null && Exploration.Includes(parent + ".computeClusterSummary"))
+        if (this.ComputeClusterSummary == null && ec.Includes("computeClusterSummary",false))
         {
             this.ComputeClusterSummary = new ComputeClusterSummary();
-            this.ComputeClusterSummary.ApplyExploratoryFieldSpec(parent + ".computeClusterSummary");
+            this.ComputeClusterSummary.ApplyExploratoryFieldSpec(ec.NewChild("computeClusterSummary"));
         }
         //      C# -> List<VmwareHostSummary>? Hosts
         // GraphQL -> hosts: [VmwareHostSummary!]! (type)
-        if (this.Hosts == null && Exploration.Includes(parent + ".hosts"))
+        if (this.Hosts == null && ec.Includes("hosts",false))
         {
             this.Hosts = new List<VmwareHostSummary>();
-            this.Hosts.ApplyExploratoryFieldSpec(parent + ".hosts");
+            this.Hosts.ApplyExploratoryFieldSpec(ec.NewChild("hosts"));
         }
         //      C# -> List<VirtualMachineSummary>? VirtualMachines
         // GraphQL -> virtualMachines: [VirtualMachineSummary!]! (type)
-        if (this.VirtualMachines == null && Exploration.Includes(parent + ".virtualMachines"))
+        if (this.VirtualMachines == null && ec.Includes("virtualMachines",false))
         {
             this.VirtualMachines = new List<VirtualMachineSummary>();
-            this.VirtualMachines.ApplyExploratoryFieldSpec(parent + ".virtualMachines");
+            this.VirtualMachines.ApplyExploratoryFieldSpec(ec.NewChild("virtualMachines"));
         }
     }
 
@@ -174,12 +173,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ComputeClusterDetail> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ComputeClusterDetail());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ComputeClusterDetail> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -246,93 +246,92 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> FailoverStatusEnum? FailoverStatus
         // GraphQL -> failoverStatus: FailoverStatusEnum! (enum)
-        if (this.FailoverStatus == null && Exploration.Includes(parent + ".failoverStatus", true))
+        if (this.FailoverStatus == null && ec.Includes("failoverStatus",true))
         {
             this.FailoverStatus = new FailoverStatusEnum();
         }
         //      C# -> FailoverTypeEnum? FailoverType
         // GraphQL -> failoverType: FailoverTypeEnum! (enum)
-        if (this.FailoverType == null && Exploration.Includes(parent + ".failoverType", true))
+        if (this.FailoverType == null && ec.Includes("failoverType",true))
         {
             this.FailoverType = new FailoverTypeEnum();
         }
         //      C# -> LastTestStatusEnum? LastTestStatus
         // GraphQL -> lastTestStatus: LastTestStatusEnum (enum)
-        if (this.LastTestStatus == null && Exploration.Includes(parent + ".lastTestStatus", true))
+        if (this.LastTestStatus == null && ec.Includes("lastTestStatus",true))
         {
             this.LastTestStatus = new LastTestStatusEnum();
         }
         //      C# -> System.String? AppBlueprintId
         // GraphQL -> appBlueprintId: UUID! (scalar)
-        if (this.AppBlueprintId == null && Exploration.Includes(parent + ".appBlueprintId", true))
+        if (this.AppBlueprintId == null && ec.Includes("appBlueprintId",true))
         {
             this.AppBlueprintId = "FETCH";
         }
         //      C# -> System.String? AppBlueprintName
         // GraphQL -> appBlueprintName: String! (scalar)
-        if (this.AppBlueprintName == null && Exploration.Includes(parent + ".appBlueprintName", true))
+        if (this.AppBlueprintName == null && ec.Includes("appBlueprintName",true))
         {
             this.AppBlueprintName = "FETCH";
         }
         //      C# -> System.Int64? Duration
         // GraphQL -> duration: Long (scalar)
-        if (this.Duration == null && Exploration.Includes(parent + ".duration", true))
+        if (this.Duration == null && ec.Includes("duration",true))
         {
             this.Duration = new System.Int64();
         }
         //      C# -> DateTime? EndTime
         // GraphQL -> endTime: DateTime (scalar)
-        if (this.EndTime == null && Exploration.Includes(parent + ".endTime", true))
+        if (this.EndTime == null && ec.Includes("endTime",true))
         {
             this.EndTime = new DateTime();
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> DateTime? LastTestTime
         // GraphQL -> lastTestTime: DateTime (scalar)
-        if (this.LastTestTime == null && Exploration.Includes(parent + ".lastTestTime", true))
+        if (this.LastTestTime == null && ec.Includes("lastTestTime",true))
         {
             this.LastTestTime = new DateTime();
         }
         //      C# -> System.String? Source
         // GraphQL -> source: String! (scalar)
-        if (this.Source == null && Exploration.Includes(parent + ".source", true))
+        if (this.Source == null && ec.Includes("source",true))
         {
             this.Source = "FETCH";
         }
         //      C# -> DateTime? StartTime
         // GraphQL -> startTime: DateTime! (scalar)
-        if (this.StartTime == null && Exploration.Includes(parent + ".startTime", true))
+        if (this.StartTime == null && ec.Includes("startTime",true))
         {
             this.StartTime = new DateTime();
         }
         //      C# -> System.String? TargetSite
         // GraphQL -> targetSite: String! (scalar)
-        if (this.TargetSite == null && Exploration.Includes(parent + ".targetSite", true))
+        if (this.TargetSite == null && ec.Includes("targetSite",true))
         {
             this.TargetSite = "FETCH";
         }
         //      C# -> System.String? TaskchainId
         // GraphQL -> taskchainId: UUID! (scalar)
-        if (this.TaskchainId == null && Exploration.Includes(parent + ".taskchainId", true))
+        if (this.TaskchainId == null && ec.Includes("taskchainId",true))
         {
             this.TaskchainId = "FETCH";
         }
         //      C# -> FailoverReport? Report
         // GraphQL -> report: FailoverReport (type)
-        if (this.Report == null && Exploration.Includes(parent + ".report"))
+        if (this.Report == null && ec.Includes("report",false))
         {
             this.Report = new FailoverReport();
-            this.Report.ApplyExploratoryFieldSpec(parent + ".report");
+            this.Report.ApplyExploratoryFieldSpec(ec.NewChild("report"));
         }
     }
 
@@ -366,12 +365,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<Failover> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new Failover());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<Failover> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

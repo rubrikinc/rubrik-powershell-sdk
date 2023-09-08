@@ -131,42 +131,41 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? DebianHashSha256
         // GraphQL -> debianHashSha256: String! (scalar)
-        if (this.DebianHashSha256 == null && Exploration.Includes(parent + ".debianHashSha256", true))
+        if (this.DebianHashSha256 == null && ec.Includes("debianHashSha256",true))
         {
             this.DebianHashSha256 = "FETCH";
         }
         //      C# -> System.String? DebianUrl
         // GraphQL -> debianUrl: String! (scalar)
-        if (this.DebianUrl == null && Exploration.Includes(parent + ".debianUrl", true))
+        if (this.DebianUrl == null && ec.Includes("debianUrl",true))
         {
             this.DebianUrl = "FETCH";
         }
         //      C# -> System.String? RpmHashSha256
         // GraphQL -> rpmHashSha256: String! (scalar)
-        if (this.RpmHashSha256 == null && Exploration.Includes(parent + ".rpmHashSha256", true))
+        if (this.RpmHashSha256 == null && ec.Includes("rpmHashSha256",true))
         {
             this.RpmHashSha256 = "FETCH";
         }
         //      C# -> System.String? RpmUrl
         // GraphQL -> rpmUrl: String! (scalar)
-        if (this.RpmUrl == null && Exploration.Includes(parent + ".rpmUrl", true))
+        if (this.RpmUrl == null && ec.Includes("rpmUrl",true))
         {
             this.RpmUrl = "FETCH";
         }
         //      C# -> System.String? WindowsHashSha256
         // GraphQL -> windowsHashSha256: String! (scalar)
-        if (this.WindowsHashSha256 == null && Exploration.Includes(parent + ".windowsHashSha256", true))
+        if (this.WindowsHashSha256 == null && ec.Includes("windowsHashSha256",true))
         {
             this.WindowsHashSha256 = "FETCH";
         }
         //      C# -> System.String? WindowsUrl
         // GraphQL -> windowsUrl: String! (scalar)
-        if (this.WindowsUrl == null && Exploration.Includes(parent + ".windowsUrl", true))
+        if (this.WindowsUrl == null && ec.Includes("windowsUrl",true))
         {
             this.WindowsUrl = "FETCH";
         }
@@ -202,12 +201,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RbaInstallerUrls> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RbaInstallerUrls());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<RbaInstallerUrls> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

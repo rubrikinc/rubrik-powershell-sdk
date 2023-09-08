@@ -26,7 +26,7 @@ namespace RubrikSecurityCloud.Types
         public SaasConnectionStatus? Status { get; set; }
 
         //      C# -> DateTime? ExpirationTime
-        // GraphQL -> expirationTime: DateTime! (scalar)
+        // GraphQL -> expirationTime: DateTime (scalar)
         [JsonProperty("expirationTime")]
         public DateTime? ExpirationTime { get; set; }
 
@@ -75,7 +75,7 @@ namespace RubrikSecurityCloud.Types
             s += ind + "status\n" ;
         }
         //      C# -> DateTime? ExpirationTime
-        // GraphQL -> expirationTime: DateTime! (scalar)
+        // GraphQL -> expirationTime: DateTime (scalar)
         if (this.ExpirationTime != null) {
             s += ind + "expirationTime\n" ;
         }
@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> SaasConnectionStatus? Status
         // GraphQL -> status: SaasConnectionStatus! (enum)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = new SaasConnectionStatus();
         }
         //      C# -> DateTime? ExpirationTime
-        // GraphQL -> expirationTime: DateTime! (scalar)
-        if (this.ExpirationTime == null && Exploration.Includes(parent + ".expirationTime", true))
+        // GraphQL -> expirationTime: DateTime (scalar)
+        if (this.ExpirationTime == null && ec.Includes("expirationTime",true))
         {
             this.ExpirationTime = new DateTime();
         }
         //      C# -> DateTime? LastUpdated
         // GraphQL -> lastUpdated: DateTime (scalar)
-        if (this.LastUpdated == null && Exploration.Includes(parent + ".lastUpdated", true))
+        if (this.LastUpdated == null && ec.Includes("lastUpdated",true))
         {
             this.LastUpdated = new DateTime();
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ConnectionStatus> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ConnectionStatus());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ConnectionStatus> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -383,7 +383,19 @@ Updates the name, condition, and description of the specified multi-tag filter.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.VsphereOnDemandSnapshot(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	config = @{
+		# OPTIONAL
+		slaId = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+	# OPTIONAL
+	userNote = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -406,7 +418,21 @@ Updates the name, condition, and description of the specified multi-tag filter.
                 fieldSpecObj = (BatchAsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.VsphereBulkOnDemandSnapshot(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		slaId = <System.String>
+		# REQUIRED
+		vms = @(
+			<System.String>
+		)
+	}
+	# OPTIONAL
+	userNote = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -429,7 +455,14 @@ Updates the name, condition, and description of the specified multi-tag filter.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.DeleteVsphereLiveMount(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	force = <System.Boolean>
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -452,7 +485,36 @@ Updates the name, condition, and description of the specified multi-tag filter.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.VsphereExportSnapshotToStandaloneHostV2(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		mountExportSnapshotJobCommonOptions = @{
+			# OPTIONAL
+			disableNetwork = <System.Boolean>
+			# OPTIONAL
+			keepMacAddresses = <System.Boolean>
+			# OPTIONAL
+			powerOn = <System.Boolean>
+			# OPTIONAL
+			removeNetworkDevices = <System.Boolean>
+			# OPTIONAL
+			vmName = <System.String>
+		}
+		# REQUIRED
+		datastoreName = <System.String>
+		# REQUIRED
+		hostIpAddress = <System.String>
+		# REQUIRED
+		hostPassword = <System.String>
+		# REQUIRED
+		hostUsername = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -495,7 +557,27 @@ Updates the name, condition, and description of the specified multi-tag filter.
                 fieldSpecObj = (VsphereAsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.VsphereExportSnapshotToStandaloneHost(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.snapshotFid = <System.String>
+# OPTIONAL
+$inputs.Var.vmName = <System.String>
+# OPTIONAL
+$inputs.Var.disableNetwork = <System.Boolean>
+# OPTIONAL
+$inputs.Var.removeNetworkDevices = <System.Boolean>
+# OPTIONAL
+$inputs.Var.powerOn = <System.Boolean>
+# OPTIONAL
+$inputs.Var.keepMacAddresses = <System.Boolean>
+# REQUIRED
+$inputs.Var.hostIpAddress = <System.String>
+# REQUIRED
+$inputs.Var.datastoreName = <System.String>
+# REQUIRED
+$inputs.Var.hostUsername = <System.String>
+# REQUIRED
+$inputs.Var.hostPassword = <System.String>";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -518,7 +600,21 @@ Updates the name, condition, and description of the specified multi-tag filter.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.DownloadVsphereVirtualMachineFiles(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		fileNamesToDownload = @(
+			<System.String>
+		)
+		# REQUIRED
+		vmId = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -541,7 +637,21 @@ Updates the name, condition, and description of the specified multi-tag filter.
                 fieldSpecObj = (CreateVsphereAdvancedTagReply)this.Field;
             }
             string fieldSpecDoc = Mutation.CreateVsphereAdvancedTag(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	filterInfo = @{
+		# OPTIONAL
+		description = <System.String>
+		# REQUIRED
+		condition = <System.String>
+		# REQUIRED
+		name = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -564,7 +674,14 @@ Updates the name, condition, and description of the specified multi-tag filter.
                 fieldSpecObj = (RequestSuccess)this.Field;
             }
             string fieldSpecDoc = Mutation.DeleteVsphereAdvancedTag(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	filterId = <System.String>
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -587,7 +704,23 @@ Updates the name, condition, and description of the specified multi-tag filter.
                 fieldSpecObj = (UpdateVsphereAdvancedTagReply)this.Field;
             }
             string fieldSpecDoc = Mutation.UpdateVsphereAdvancedTag(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	filterId = <System.String>
+	# REQUIRED
+	filterInfo = @{
+		# OPTIONAL
+		description = <System.String>
+		# REQUIRED
+		condition = <System.String>
+		# REQUIRED
+		name = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 

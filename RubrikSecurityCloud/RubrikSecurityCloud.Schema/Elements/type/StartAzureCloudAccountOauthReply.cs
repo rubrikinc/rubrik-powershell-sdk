@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? ClientId
         // GraphQL -> clientId: String! (scalar)
-        if (this.ClientId == null && Exploration.Includes(parent + ".clientId", true))
+        if (this.ClientId == null && ec.Includes("clientId",true))
         {
             this.ClientId = "FETCH";
         }
         //      C# -> System.String? SessionId
         // GraphQL -> sessionId: String! (scalar)
-        if (this.SessionId == null && Exploration.Includes(parent + ".sessionId", true))
+        if (this.SessionId == null && ec.Includes("sessionId",true))
         {
             this.SessionId = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<StartAzureCloudAccountOauthReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new StartAzureCloudAccountOauthReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<StartAzureCloudAccountOauthReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

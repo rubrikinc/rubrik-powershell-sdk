@@ -2,7 +2,7 @@
 Anomaly analysis report from lambda service.
 
 - workloadFid: System.String
-  - The internal fid of the object.
+  - The internal FID of the object.
 - workloadId: System.String
   - The internal ID of the object.
 - workloadName: System.String
@@ -10,7 +10,7 @@ Anomaly analysis report from lambda service.
 - snapshotId: System.String
   - The internal ID of the snapshot.
 - snapshotFid: System.String
-  - The internal fid of the snapshot.
+  - The internal FID of the snapshot.
 - managedId: System.String
   - The internal managed ID of the object.
 - previousSnapshotId: System.String
@@ -53,6 +53,8 @@ Anomaly analysis report from lambda service.
   - Activity series id for the events of this anomaly.
 - anomalyType: AnomalyType
   - Type of the anomaly detected.
+- previousSnapshotFid: System.String
+  - The FID of the previous snapshot.
 - severity: ActivitySeverityEnum
   - Severity of the anomaly.
 - objectType: ObjectTypeEnum
@@ -63,5 +65,7 @@ Anomaly analysis report from lambda service.
   - The location of the object.
 - snapshot: CdmSnapshot
   - The analyzed snapshot.
+- previousSnapshot: CdmSnapshot
+  - The previous snapshot.
 - ransomwareResult: RansomwareResult
   - The ransomware analysis result, including encryption.

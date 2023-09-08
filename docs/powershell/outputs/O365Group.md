@@ -17,6 +17,8 @@ O365 Groups from O365 hierarchy.
   - The specification for a configured group.
 - configuredGroupSpecification: O365ConfiguredGroupSpec
   - The specification for a configured group.
+- metadata: O365GroupMetadata
+  - The metadata for an Office 365 group.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
 - id: System.String

@@ -168,61 +168,60 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> SlaDomain? CurrentSlaSummary
         // GraphQL -> currentSlaSummary: SlaDomain (interface)
-        if (this.CurrentSlaSummary == null && Exploration.Includes(parent + ".currentSlaSummary"))
+        if (this.CurrentSlaSummary == null && ec.Includes("currentSlaSummary",false))
         {
             var impls = new List<SlaDomain>();
-            impls.ApplyExploratoryFieldSpec(parent + ".currentSlaSummary");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("currentSlaSummary"));
             this.CurrentSlaSummary = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> SlaDomain? PreviousSlaSummary
         // GraphQL -> previousSlaSummary: SlaDomain (interface)
-        if (this.PreviousSlaSummary == null && Exploration.Includes(parent + ".previousSlaSummary"))
+        if (this.PreviousSlaSummary == null && ec.Includes("previousSlaSummary",false))
         {
             var impls = new List<SlaDomain>();
-            impls.ApplyExploratoryFieldSpec(parent + ".previousSlaSummary");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("previousSlaSummary"));
             this.PreviousSlaSummary = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> System.Boolean? ApplyToExistingSnapshots
         // GraphQL -> applyToExistingSnapshots: Boolean! (scalar)
-        if (this.ApplyToExistingSnapshots == null && Exploration.Includes(parent + ".applyToExistingSnapshots", true))
+        if (this.ApplyToExistingSnapshots == null && ec.Includes("applyToExistingSnapshots",true))
         {
             this.ApplyToExistingSnapshots = true;
         }
         //      C# -> System.Boolean? ApplyToOndemandAndDownloadedSnapshots
         // GraphQL -> applyToOndemandAndDownloadedSnapshots: Boolean (scalar)
-        if (this.ApplyToOndemandAndDownloadedSnapshots == null && Exploration.Includes(parent + ".applyToOndemandAndDownloadedSnapshots", true))
+        if (this.ApplyToOndemandAndDownloadedSnapshots == null && ec.Includes("applyToOndemandAndDownloadedSnapshots",true))
         {
             this.ApplyToOndemandAndDownloadedSnapshots = true;
         }
         //      C# -> DateTime? Timestamp
         // GraphQL -> timestamp: DateTime (scalar)
-        if (this.Timestamp == null && Exploration.Includes(parent + ".timestamp", true))
+        if (this.Timestamp == null && ec.Includes("timestamp",true))
         {
             this.Timestamp = new DateTime();
         }
         //      C# -> System.String? UserAction
         // GraphQL -> userAction: String! (scalar)
-        if (this.UserAction == null && Exploration.Includes(parent + ".userAction", true))
+        if (this.UserAction == null && ec.Includes("userAction",true))
         {
             this.UserAction = "FETCH";
         }
         //      C# -> System.String? UserName
         // GraphQL -> userName: String! (scalar)
-        if (this.UserName == null && Exploration.Includes(parent + ".userName", true))
+        if (this.UserName == null && ec.Includes("userName",true))
         {
             this.UserName = "FETCH";
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster (type)
-        if (this.Cluster == null && Exploration.Includes(parent + ".cluster"))
+        if (this.Cluster == null && ec.Includes("cluster",false))
         {
             this.Cluster = new Cluster();
-            this.Cluster.ApplyExploratoryFieldSpec(parent + ".cluster");
+            this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
         }
     }
 
@@ -256,12 +255,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SlaAuditDetail> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SlaAuditDetail());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SlaAuditDetail> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

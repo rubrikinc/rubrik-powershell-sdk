@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? TargetClusterAddress
         // GraphQL -> targetClusterAddress: String! (scalar)
-        if (this.TargetClusterAddress == null && Exploration.Includes(parent + ".targetClusterAddress", true))
+        if (this.TargetClusterAddress == null && ec.Includes("targetClusterAddress",true))
         {
             this.TargetClusterAddress = "FETCH";
         }
         //      C# -> System.String? TargetClusterName
         // GraphQL -> targetClusterName: String (scalar)
-        if (this.TargetClusterName == null && Exploration.Includes(parent + ".targetClusterName", true))
+        if (this.TargetClusterName == null && ec.Includes("targetClusterName",true))
         {
             this.TargetClusterName = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RestoreFormConfigurationReplicationTarget> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RestoreFormConfigurationReplicationTarget());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<RestoreFormConfigurationReplicationTarget> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -190,69 +190,68 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> BulkRecoveryGroupStatus? Status
         // GraphQL -> status: BulkRecoveryGroupStatus! (enum)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = new BulkRecoveryGroupStatus();
         }
         //      C# -> System.Int64? CreateTime
         // GraphQL -> createTime: Long (scalar)
-        if (this.CreateTime == null && Exploration.Includes(parent + ".createTime", true))
+        if (this.CreateTime == null && ec.Includes("createTime",true))
         {
             this.CreateTime = new System.Int64();
         }
         //      C# -> System.Int64? ElapsedTime
         // GraphQL -> elapsedTime: Long! (scalar)
-        if (this.ElapsedTime == null && Exploration.Includes(parent + ".elapsedTime", true))
+        if (this.ElapsedTime == null && ec.Includes("elapsedTime",true))
         {
             this.ElapsedTime = new System.Int64();
         }
         //      C# -> System.Int64? EndTime
         // GraphQL -> endTime: Long (scalar)
-        if (this.EndTime == null && Exploration.Includes(parent + ".endTime", true))
+        if (this.EndTime == null && ec.Includes("endTime",true))
         {
             this.EndTime = new System.Int64();
         }
         //      C# -> System.String? GroupId
         // GraphQL -> groupId: UUID (scalar)
-        if (this.GroupId == null && Exploration.Includes(parent + ".groupId", true))
+        if (this.GroupId == null && ec.Includes("groupId",true))
         {
             this.GroupId = "FETCH";
         }
         //      C# -> System.String? GroupName
         // GraphQL -> groupName: String! (scalar)
-        if (this.GroupName == null && Exploration.Includes(parent + ".groupName", true))
+        if (this.GroupName == null && ec.Includes("groupName",true))
         {
             this.GroupName = "FETCH";
         }
         //      C# -> System.String? GroupType
         // GraphQL -> groupType: String! (scalar)
-        if (this.GroupType == null && Exploration.Includes(parent + ".groupType", true))
+        if (this.GroupType == null && ec.Includes("groupType",true))
         {
             this.GroupType = "FETCH";
         }
         //      C# -> System.Int32? Seq
         // GraphQL -> seq: Int! (scalar)
-        if (this.Seq == null && Exploration.Includes(parent + ".seq", true))
+        if (this.Seq == null && ec.Includes("seq",true))
         {
             this.Seq = Int32.MinValue;
         }
         //      C# -> System.Int64? StartTime
         // GraphQL -> startTime: Long (scalar)
-        if (this.StartTime == null && Exploration.Includes(parent + ".startTime", true))
+        if (this.StartTime == null && ec.Includes("startTime",true))
         {
             this.StartTime = new System.Int64();
         }
         //      C# -> List<BulkRecoveryGroupWorkloadProgress>? WorkloadProgresses
         // GraphQL -> workloadProgresses: [BulkRecoveryGroupWorkloadProgress!]! (type)
-        if (this.WorkloadProgresses == null && Exploration.Includes(parent + ".workloadProgresses"))
+        if (this.WorkloadProgresses == null && ec.Includes("workloadProgresses",false))
         {
             this.WorkloadProgresses = new List<BulkRecoveryGroupWorkloadProgress>();
-            this.WorkloadProgresses.ApplyExploratoryFieldSpec(parent + ".workloadProgresses");
+            this.WorkloadProgresses.ApplyExploratoryFieldSpec(ec.NewChild("workloadProgresses"));
         }
     }
 
@@ -286,12 +285,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<BulkRecoveryGroupProgress> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new BulkRecoveryGroupProgress());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<BulkRecoveryGroupProgress> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

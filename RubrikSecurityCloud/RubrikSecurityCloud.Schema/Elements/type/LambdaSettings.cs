@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Single? AnomalyThreshold
         // GraphQL -> anomalyThreshold: Float (scalar)
-        if (this.AnomalyThreshold == null && Exploration.Includes(parent + ".anomalyThreshold", true))
+        if (this.AnomalyThreshold == null && ec.Includes("anomalyThreshold",true))
         {
             this.AnomalyThreshold = new System.Single();
         }
         //      C# -> System.Boolean? IsAnomalyAlertEnabled
         // GraphQL -> isAnomalyAlertEnabled: Boolean (scalar)
-        if (this.IsAnomalyAlertEnabled == null && Exploration.Includes(parent + ".isAnomalyAlertEnabled", true))
+        if (this.IsAnomalyAlertEnabled == null && ec.Includes("isAnomalyAlertEnabled",true))
         {
             this.IsAnomalyAlertEnabled = true;
         }
         //      C# -> System.Single? RansomwareThreshold
         // GraphQL -> ransomwareThreshold: Float (scalar)
-        if (this.RansomwareThreshold == null && Exploration.Includes(parent + ".ransomwareThreshold", true))
+        if (this.RansomwareThreshold == null && ec.Includes("ransomwareThreshold",true))
         {
             this.RansomwareThreshold = new System.Single();
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<LambdaSettings> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new LambdaSettings());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<LambdaSettings> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

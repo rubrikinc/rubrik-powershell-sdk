@@ -165,58 +165,57 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> DateTime? EndTime
         // GraphQL -> endTime: DateTime (scalar)
-        if (this.EndTime == null && Exploration.Includes(parent + ".endTime", true))
+        if (this.EndTime == null && ec.Includes("endTime",true))
         {
             this.EndTime = new DateTime();
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.String? NodeId
         // GraphQL -> nodeId: String (scalar)
-        if (this.NodeId == null && Exploration.Includes(parent + ".nodeId", true))
+        if (this.NodeId == null && ec.Includes("nodeId",true))
         {
             this.NodeId = "FETCH";
         }
         //      C# -> System.Single? Progress
         // GraphQL -> progress: Float (scalar)
-        if (this.Progress == null && Exploration.Includes(parent + ".progress", true))
+        if (this.Progress == null && ec.Includes("progress",true))
         {
             this.Progress = new System.Single();
         }
         //      C# -> DateTime? StartTime
         // GraphQL -> startTime: DateTime (scalar)
-        if (this.StartTime == null && Exploration.Includes(parent + ".startTime", true))
+        if (this.StartTime == null && ec.Includes("startTime",true))
         {
             this.StartTime = new DateTime();
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = "FETCH";
         }
         //      C# -> RequestErrorInfo? Error
         // GraphQL -> error: RequestErrorInfo (type)
-        if (this.Error == null && Exploration.Includes(parent + ".error"))
+        if (this.Error == null && ec.Includes("error",false))
         {
             this.Error = new RequestErrorInfo();
-            this.Error.ApplyExploratoryFieldSpec(parent + ".error");
+            this.Error.ApplyExploratoryFieldSpec(ec.NewChild("error"));
         }
         //      C# -> List<Link>? Links
         // GraphQL -> links: [Link!]! (type)
-        if (this.Links == null && Exploration.Includes(parent + ".links"))
+        if (this.Links == null && ec.Includes("links",false))
         {
             this.Links = new List<Link>();
-            this.Links.ApplyExploratoryFieldSpec(parent + ".links");
+            this.Links.ApplyExploratoryFieldSpec(ec.NewChild("links"));
         }
     }
 
@@ -250,12 +249,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AsyncRequestStatus> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AsyncRequestStatus());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AsyncRequestStatus> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

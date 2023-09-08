@@ -11,16 +11,6 @@ using RubrikSecurityCloud.Types;
 
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
-    public class RscInvokeCommandInfo
-    {
-        public string GqlOperation { get; set; }
-        public string InvokeCommand { get; set; }
-        public RscInvokeCommandInfo(string invokeCommand, string gqlOperation)
-        {
-            GqlOperation = gqlOperation;
-            InvokeCommand = invokeCommand;
-        }
-    }
     /// <summary>
     /// Return info about SDK cmdlets
     /// </summary>
@@ -42,7 +32,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// PS> Get-RscCmdlet notImplementedOperation
     /// </code>
     /// </example>
-    [Cmdlet(VerbsCommon.Get, "RscCmdlet", DefaultParameterSetName = "LookupExistingOperation")]
+    [Cmdlet(VerbsCommon.Get, "RscCmdlet", DefaultParameterSetName = "LookupExistingGqlRootField")]
     public class Get_RscCmdlet : RscBasePSCmdlet
     {
         /// <summary>
@@ -52,9 +42,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             Position = 0,
             ValueFromPipeline = true,
-            ParameterSetName = "LookupExistingOperation")]
+            ParameterSetName = "LookupExistingGqlRootField")]
         [ValidateNotNullOrEmpty]
-        public SchemaMeta.GqlOperationName ExistingGqlOpName { get; set; } = SchemaMeta.GqlOperationName.Unknown;
+        public SchemaMeta.GqlRootFieldName ExistingGqlRootFieldName { get; set; } = SchemaMeta.GqlRootFieldName.Unknown;
 
         /// <summary>
         /// The name of the GraphQL Operation to look up.
@@ -63,9 +53,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             Position = 0,
             ValueFromPipeline = true,
-            ParameterSetName = "LookupAnyOperation")]
+            ParameterSetName = "LookupAnyGqlRootField")]
         [ValidateNotNullOrEmpty]
-        public string AnyGqlOpName { get; set; }
+        public string AnyGqlRootFieldName { get; set; }
 
         /// <summary>
         /// Info about the various locations the SDK uses
@@ -84,15 +74,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             {
                 switch (ParameterSetName)
                 {
-                    case "LookupExistingOperation":
-                        LookupExistingOperation();
+                    case "LookupExistingGqlRootField":
+                        LookupExistingGqlRootField();
                         break;
-                    case "LookupAnyOperation":
-                        LookupAnyOperation();
+                    case "LookupAnyGqlRootField":
+                        LookupAnyGqlRootField();
                         break;
-                    case "Locations":  
+                    case "Locations":
                         GetLocations();
-                        break;                  
+                        break;
                 }
             }
             catch (Exception ex)
@@ -106,45 +96,34 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             }
         }
 
-        protected void LookupExistingOperation()
+        protected void LookupExistingGqlRootField()
         {
-            if ( ExistingGqlOpName != SchemaMeta.GqlOperationName.Unknown )
+            if (ExistingGqlRootFieldName != SchemaMeta.GqlRootFieldName.Unknown)
             {
-                WriteObject(
-                    new RscInvokeCommandInfo(
-                        SchemaMeta.OperationLookup(ExistingGqlOpName),
-                        ExistingGqlOpName.ToString()
-                    )
+                var rscOp = SchemaMeta.RscOpLookupByGqlRootField(
+                    ExistingGqlRootFieldName
                 );
+                WriteObject(rscOp);
                 return;
             }
-            var rscCmdletInfos = Enum
-                .GetValues(typeof(SchemaMeta.GqlOperationName))
-                .Cast<SchemaMeta.GqlOperationName>()
-                .Select(value => new RscInvokeCommandInfo(SchemaMeta.OperationLookup(value), value.ToString()))
+
+            var rscOps = Enum
+                .GetValues(typeof(SchemaMeta.GqlRootFieldName))
+                .Cast<SchemaMeta.GqlRootFieldName>()
+                .Where(value => value != SchemaMeta.GqlRootFieldName.Unknown)  // Skip 'Unknown'
+                .Select(value =>
+                    SchemaMeta.RscOpLookupByGqlRootField(value))
                 .ToArray();
 
-            WriteObject(rscCmdletInfos, /*enumerateCollection=*/ true );
+            WriteObject(rscOps, /*enumerateCollection=*/ true);
         }
 
-        protected void LookupAnyOperation()
+        protected void LookupAnyGqlRootField()
         {
-            if (Enum.TryParse<SchemaMeta.GqlOperationName>(AnyGqlOpName, out SchemaMeta.GqlOperationName operation))
-            {
-                // The provided operation is a valid enum member. Use the existing operation lookup logic.
-                ExistingGqlOpName = operation;
-                LookupExistingOperation();
-            }
-            else
-            {
-                // The provided operation is not a valid enum member. Continue with the existing logic.
-                WriteObject(
-                    new RscInvokeCommandInfo(
-                        $"Invoke-Rsc -Op {AnyGqlOpName}",
-                        AnyGqlOpName
-                    )
-                );
-            }
+            var rscOp = SchemaMeta.RscOpLookupByGqlRootField(
+                AnyGqlRootFieldName
+            );
+            WriteObject(rscOp);
         }
 
         protected void GetLocations()
@@ -159,10 +138,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             {
                 opList.Add(System.IO.Path.GetFileNameWithoutExtension(file));
             }
-            locations.Add("CustomOperations", opList ) ;
+            locations.Add("CustomOperations", opList);
             locations.Add("ProfileDir", this.GetProfileDir());
             locations.Add("AssemblyDir", Files.GetAssemblyDir());
-            WriteObject(locations, /*enumerateCollection=*/ true );
+            WriteObject(locations, /*enumerateCollection=*/ true);
         }
 
     }

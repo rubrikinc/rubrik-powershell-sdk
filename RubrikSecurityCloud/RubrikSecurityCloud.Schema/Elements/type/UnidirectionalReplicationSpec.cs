@@ -120,39 +120,38 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> RetentionUnit? RetentionUnit
         // GraphQL -> retentionUnit: RetentionUnit! (enum)
-        if (this.RetentionUnit == null && Exploration.Includes(parent + ".retentionUnit", true))
+        if (this.RetentionUnit == null && ec.Includes("retentionUnit",true))
         {
             this.RetentionUnit = new RetentionUnit();
         }
         //      C# -> System.String? ReplicationTargetId
         // GraphQL -> replicationTargetId: String! (scalar)
-        if (this.ReplicationTargetId == null && Exploration.Includes(parent + ".replicationTargetId", true))
+        if (this.ReplicationTargetId == null && ec.Includes("replicationTargetId",true))
         {
             this.ReplicationTargetId = "FETCH";
         }
         //      C# -> System.String? ReplicationTargetName
         // GraphQL -> replicationTargetName: String! (scalar)
-        if (this.ReplicationTargetName == null && Exploration.Includes(parent + ".replicationTargetName", true))
+        if (this.ReplicationTargetName == null && ec.Includes("replicationTargetName",true))
         {
             this.ReplicationTargetName = "FETCH";
         }
         //      C# -> System.Int32? Retention
         // GraphQL -> retention: Int! (scalar)
-        if (this.Retention == null && Exploration.Includes(parent + ".retention", true))
+        if (this.Retention == null && ec.Includes("retention",true))
         {
             this.Retention = Int32.MinValue;
         }
         //      C# -> Cluster? TargetCluster
         // GraphQL -> targetCluster: Cluster (type)
-        if (this.TargetCluster == null && Exploration.Includes(parent + ".targetCluster"))
+        if (this.TargetCluster == null && ec.Includes("targetCluster",false))
         {
             this.TargetCluster = new Cluster();
-            this.TargetCluster.ApplyExploratoryFieldSpec(parent + ".targetCluster");
+            this.TargetCluster.ApplyExploratoryFieldSpec(ec.NewChild("targetCluster"));
         }
     }
 
@@ -186,12 +185,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<UnidirectionalReplicationSpec> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new UnidirectionalReplicationSpec());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<UnidirectionalReplicationSpec> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

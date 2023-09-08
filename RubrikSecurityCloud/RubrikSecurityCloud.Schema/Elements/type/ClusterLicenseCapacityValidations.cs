@@ -81,22 +81,21 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<ClusterLicenseInfo>? Errors
         // GraphQL -> errors: [ClusterLicenseInfo!]! (type)
-        if (this.Errors == null && Exploration.Includes(parent + ".errors"))
+        if (this.Errors == null && ec.Includes("errors",false))
         {
             this.Errors = new List<ClusterLicenseInfo>();
-            this.Errors.ApplyExploratoryFieldSpec(parent + ".errors");
+            this.Errors.ApplyExploratoryFieldSpec(ec.NewChild("errors"));
         }
         //      C# -> List<ClusterLicenseInfo>? Warnings
         // GraphQL -> warnings: [ClusterLicenseInfo!]! (type)
-        if (this.Warnings == null && Exploration.Includes(parent + ".warnings"))
+        if (this.Warnings == null && ec.Includes("warnings",false))
         {
             this.Warnings = new List<ClusterLicenseInfo>();
-            this.Warnings.ApplyExploratoryFieldSpec(parent + ".warnings");
+            this.Warnings.ApplyExploratoryFieldSpec(ec.NewChild("warnings"));
         }
     }
 
@@ -130,12 +129,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ClusterLicenseCapacityValidations> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ClusterLicenseCapacityValidations());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ClusterLicenseCapacityValidations> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

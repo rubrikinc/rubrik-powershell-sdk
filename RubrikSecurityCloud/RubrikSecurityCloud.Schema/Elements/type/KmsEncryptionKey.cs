@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<System.String>? Aliases
         // GraphQL -> aliases: [String!]! (scalar)
-        if (this.Aliases == null && Exploration.Includes(parent + ".aliases", true))
+        if (this.Aliases == null && ec.Includes("aliases",true))
         {
             this.Aliases = new List<System.String>();
         }
         //      C# -> System.String? Arn
         // GraphQL -> arn: String! (scalar)
-        if (this.Arn == null && Exploration.Includes(parent + ".arn", true))
+        if (this.Arn == null && ec.Includes("arn",true))
         {
             this.Arn = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<KmsEncryptionKey> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new KmsEncryptionKey());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<KmsEncryptionKey> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

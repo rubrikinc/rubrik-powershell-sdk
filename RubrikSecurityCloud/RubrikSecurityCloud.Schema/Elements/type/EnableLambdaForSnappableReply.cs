@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? DiffFmdEnabled
         // GraphQL -> diffFmdEnabled: Boolean! (scalar)
-        if (this.DiffFmdEnabled == null && Exploration.Includes(parent + ".diffFmdEnabled", true))
+        if (this.DiffFmdEnabled == null && ec.Includes("diffFmdEnabled",true))
         {
             this.DiffFmdEnabled = true;
         }
         //      C# -> System.Boolean? FullFmdEnabled
         // GraphQL -> fullFmdEnabled: Boolean! (scalar)
-        if (this.FullFmdEnabled == null && Exploration.Includes(parent + ".fullFmdEnabled", true))
+        if (this.FullFmdEnabled == null && ec.Includes("fullFmdEnabled",true))
         {
             this.FullFmdEnabled = true;
         }
         //      C# -> System.String? SnappableFid
         // GraphQL -> snappableFid: String! (scalar)
-        if (this.SnappableFid == null && Exploration.Includes(parent + ".snappableFid", true))
+        if (this.SnappableFid == null && ec.Includes("snappableFid",true))
         {
             this.SnappableFid = "FETCH";
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<EnableLambdaForSnappableReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new EnableLambdaForSnappableReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<EnableLambdaForSnappableReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

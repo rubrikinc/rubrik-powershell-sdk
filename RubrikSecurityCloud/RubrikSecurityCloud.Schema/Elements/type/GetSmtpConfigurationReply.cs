@@ -145,48 +145,47 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> SmtpSecurityTypeEnum? SecurityType
         // GraphQL -> securityType: SMTPSecurityTypeEnum! (enum)
-        if (this.SecurityType == null && Exploration.Includes(parent + ".securityType", true))
+        if (this.SecurityType == null && ec.Includes("securityType",true))
         {
             this.SecurityType = new SmtpSecurityTypeEnum();
         }
         //      C# -> System.String? DefaultFromEmail
         // GraphQL -> defaultFromEmail: String! (scalar)
-        if (this.DefaultFromEmail == null && Exploration.Includes(parent + ".defaultFromEmail", true))
+        if (this.DefaultFromEmail == null && ec.Includes("defaultFromEmail",true))
         {
             this.DefaultFromEmail = "FETCH";
         }
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String! (scalar)
-        if (this.Hostname == null && Exploration.Includes(parent + ".hostname", true))
+        if (this.Hostname == null && ec.Includes("hostname",true))
         {
             this.Hostname = "FETCH";
         }
         //      C# -> System.Boolean? IsValid
         // GraphQL -> isValid: Boolean! (scalar)
-        if (this.IsValid == null && Exploration.Includes(parent + ".isValid", true))
+        if (this.IsValid == null && ec.Includes("isValid",true))
         {
             this.IsValid = true;
         }
         //      C# -> System.Int32? Port
         // GraphQL -> port: Int! (scalar)
-        if (this.Port == null && Exploration.Includes(parent + ".port", true))
+        if (this.Port == null && ec.Includes("port",true))
         {
             this.Port = Int32.MinValue;
         }
         //      C# -> System.Int64? TrustedCertId
         // GraphQL -> trustedCertId: Long! (scalar)
-        if (this.TrustedCertId == null && Exploration.Includes(parent + ".trustedCertId", true))
+        if (this.TrustedCertId == null && ec.Includes("trustedCertId",true))
         {
             this.TrustedCertId = new System.Int64();
         }
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)
-        if (this.Username == null && Exploration.Includes(parent + ".username", true))
+        if (this.Username == null && ec.Includes("username",true))
         {
             this.Username = "FETCH";
         }
@@ -222,12 +221,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GetSmtpConfigurationReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GetSmtpConfigurationReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<GetSmtpConfigurationReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

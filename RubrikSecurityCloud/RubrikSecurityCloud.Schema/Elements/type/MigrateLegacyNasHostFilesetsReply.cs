@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<NasMigrationSummary>? MigrationSummaries
         // GraphQL -> migrationSummaries: [NasMigrationSummary!]! (type)
-        if (this.MigrationSummaries == null && Exploration.Includes(parent + ".migrationSummaries"))
+        if (this.MigrationSummaries == null && ec.Includes("migrationSummaries",false))
         {
             this.MigrationSummaries = new List<NasMigrationSummary>();
-            this.MigrationSummaries.ApplyExploratoryFieldSpec(parent + ".migrationSummaries");
+            this.MigrationSummaries.ApplyExploratoryFieldSpec(ec.NewChild("migrationSummaries"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<MigrateLegacyNasHostFilesetsReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new MigrateLegacyNasHostFilesetsReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<MigrateLegacyNasHostFilesetsReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -95,28 +95,27 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Scan
         // GraphQL -> scan: String! (scalar)
-        if (this.Scan == null && Exploration.Includes(parent + ".scan", true))
+        if (this.Scan == null && ec.Includes("scan",true))
         {
             this.Scan = "FETCH";
         }
         //      C# -> OracleNonSlaProperties? OracleNonSlaProperties
         // GraphQL -> oracleNonSlaProperties: OracleNonSlaProperties (type)
-        if (this.OracleNonSlaProperties == null && Exploration.Includes(parent + ".oracleNonSlaProperties"))
+        if (this.OracleNonSlaProperties == null && ec.Includes("oracleNonSlaProperties",false))
         {
             this.OracleNonSlaProperties = new OracleNonSlaProperties();
-            this.OracleNonSlaProperties.ApplyExploratoryFieldSpec(parent + ".oracleNonSlaProperties");
+            this.OracleNonSlaProperties.ApplyExploratoryFieldSpec(ec.NewChild("oracleNonSlaProperties"));
         }
         //      C# -> OracleRacSummary? OracleRacSummary
         // GraphQL -> oracleRacSummary: OracleRacSummary (type)
-        if (this.OracleRacSummary == null && Exploration.Includes(parent + ".oracleRacSummary"))
+        if (this.OracleRacSummary == null && ec.Includes("oracleRacSummary",false))
         {
             this.OracleRacSummary = new OracleRacSummary();
-            this.OracleRacSummary.ApplyExploratoryFieldSpec(parent + ".oracleRacSummary");
+            this.OracleRacSummary.ApplyExploratoryFieldSpec(ec.NewChild("oracleRacSummary"));
         }
     }
 
@@ -150,12 +149,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<OracleRacDetail> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new OracleRacDetail());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<OracleRacDetail> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

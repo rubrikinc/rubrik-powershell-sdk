@@ -165,58 +165,57 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? AppItemTypeToken
         // GraphQL -> appItemTypeToken: String! (scalar)
-        if (this.AppItemTypeToken == null && Exploration.Includes(parent + ".appItemTypeToken", true))
+        if (this.AppItemTypeToken == null && ec.Includes("appItemTypeToken",true))
         {
             this.AppItemTypeToken = "FETCH";
         }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
-        if (this.IsRelic == null && Exploration.Includes(parent + ".isRelic", true))
+        if (this.IsRelic == null && ec.Includes("isRelic",true))
         {
             this.IsRelic = true;
         }
         //      C# -> System.String? Key
         // GraphQL -> key: String! (scalar)
-        if (this.Key == null && Exploration.Includes(parent + ".key", true))
+        if (this.Key == null && ec.Includes("key",true))
         {
             this.Key = "FETCH";
         }
         //      C# -> System.String? NaturalId
         // GraphQL -> naturalId: String! (scalar)
-        if (this.NaturalId == null && Exploration.Includes(parent + ".naturalId", true))
+        if (this.NaturalId == null && ec.Includes("naturalId",true))
         {
             this.NaturalId = "FETCH";
         }
         //      C# -> System.String? ProjectId
         // GraphQL -> projectId: String! (scalar)
-        if (this.ProjectId == null && Exploration.Includes(parent + ".projectId", true))
+        if (this.ProjectId == null && ec.Includes("projectId",true))
         {
             this.ProjectId = "FETCH";
         }
         //      C# -> System.String? Summary
         // GraphQL -> summary: String! (scalar)
-        if (this.Summary == null && Exploration.Includes(parent + ".summary", true))
+        if (this.Summary == null && ec.Includes("summary",true))
         {
             this.Summary = "FETCH";
         }
         //      C# -> AtlassianUser? Assignee
         // GraphQL -> assignee: AtlassianUser (type)
-        if (this.Assignee == null && Exploration.Includes(parent + ".assignee"))
+        if (this.Assignee == null && ec.Includes("assignee",false))
         {
             this.Assignee = new AtlassianUser();
-            this.Assignee.ApplyExploratoryFieldSpec(parent + ".assignee");
+            this.Assignee.ApplyExploratoryFieldSpec(ec.NewChild("assignee"));
         }
         //      C# -> JiraIssueType? IssueType
         // GraphQL -> issueType: JiraIssueType (type)
-        if (this.IssueType == null && Exploration.Includes(parent + ".issueType"))
+        if (this.IssueType == null && ec.Includes("issueType",false))
         {
             this.IssueType = new JiraIssueType();
-            this.IssueType.ApplyExploratoryFieldSpec(parent + ".issueType");
+            this.IssueType.ApplyExploratoryFieldSpec(ec.NewChild("issueType"));
         }
     }
 
@@ -250,12 +249,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<JiraIssue> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new JiraIssue());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<JiraIssue> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

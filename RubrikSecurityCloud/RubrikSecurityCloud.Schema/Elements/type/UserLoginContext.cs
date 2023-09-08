@@ -120,39 +120,38 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? AccountName
         // GraphQL -> accountName: String! (scalar)
-        if (this.AccountName == null && Exploration.Includes(parent + ".accountName", true))
+        if (this.AccountName == null && ec.Includes("accountName",true))
         {
             this.AccountName = "FETCH";
         }
         //      C# -> System.String? OrgFullName
         // GraphQL -> orgFullName: String! (scalar)
-        if (this.OrgFullName == null && Exploration.Includes(parent + ".orgFullName", true))
+        if (this.OrgFullName == null && ec.Includes("orgFullName",true))
         {
             this.OrgFullName = "FETCH";
         }
         //      C# -> System.String? OrgId
         // GraphQL -> orgId: String! (scalar)
-        if (this.OrgId == null && Exploration.Includes(parent + ".orgId", true))
+        if (this.OrgId == null && ec.Includes("orgId",true))
         {
             this.OrgId = "FETCH";
         }
         //      C# -> System.String? OrgName
         // GraphQL -> orgName: String! (scalar)
-        if (this.OrgName == null && Exploration.Includes(parent + ".orgName", true))
+        if (this.OrgName == null && ec.Includes("orgName",true))
         {
             this.OrgName = "FETCH";
         }
         //      C# -> User? User
         // GraphQL -> user: User! (type)
-        if (this.User == null && Exploration.Includes(parent + ".user"))
+        if (this.User == null && ec.Includes("user",false))
         {
             this.User = new User();
-            this.User.ApplyExploratoryFieldSpec(parent + ".user");
+            this.User.ApplyExploratoryFieldSpec(ec.NewChild("user"));
         }
     }
 
@@ -186,12 +185,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<UserLoginContext> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new UserLoginContext());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<UserLoginContext> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

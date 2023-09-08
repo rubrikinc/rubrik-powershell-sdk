@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<LabelRule>? LabelRules
         // GraphQL -> labelRules: [LabelRule!]! (type)
-        if (this.LabelRules == null && Exploration.Includes(parent + ".labelRules"))
+        if (this.LabelRules == null && ec.Includes("labelRules",false))
         {
             this.LabelRules = new List<LabelRule>();
-            this.LabelRules.ApplyExploratoryFieldSpec(parent + ".labelRules");
+            this.LabelRules.ApplyExploratoryFieldSpec(ec.NewChild("labelRules"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GetCloudNativeLabelRulesReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GetCloudNativeLabelRulesReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<GetCloudNativeLabelRulesReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

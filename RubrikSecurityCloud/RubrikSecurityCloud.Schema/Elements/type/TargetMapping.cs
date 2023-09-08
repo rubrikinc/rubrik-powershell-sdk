@@ -168,60 +168,59 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ArchivalGroupType? GroupType
         // GraphQL -> groupType: ArchivalGroupType! (enum)
-        if (this.GroupType == null && Exploration.Includes(parent + ".groupType", true))
+        if (this.GroupType == null && ec.Includes("groupType",true))
         {
             this.GroupType = new ArchivalGroupType();
         }
         //      C# -> TargetType? TargetType
         // GraphQL -> targetType: TargetType! (enum)
-        if (this.TargetType == null && Exploration.Includes(parent + ".targetType", true))
+        if (this.TargetType == null && ec.Includes("targetType",true))
         {
             this.TargetType = new TargetType();
         }
         //      C# -> List<ArchivalGroupTieringStatus>? TieringStatus
         // GraphQL -> tieringStatus: [ArchivalGroupTieringStatus!] (enum)
-        if (this.TieringStatus == null && Exploration.Includes(parent + ".tieringStatus", true))
+        if (this.TieringStatus == null && ec.Includes("tieringStatus",true))
         {
             this.TieringStatus = new List<ArchivalGroupTieringStatus>();
         }
         //      C# -> TargetTemplate? TargetTemplate
         // GraphQL -> targetTemplate: TargetTemplate (interface)
-        if (this.TargetTemplate == null && Exploration.Includes(parent + ".targetTemplate"))
+        if (this.TargetTemplate == null && ec.Includes("targetTemplate",false))
         {
             var impls = new List<TargetTemplate>();
-            impls.ApplyExploratoryFieldSpec(parent + ".targetTemplate");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("targetTemplate"));
             this.TargetTemplate = (TargetTemplate)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> List<Target>? Targets
         // GraphQL -> targets: [Target!] (interface)
-        if (this.Targets == null && Exploration.Includes(parent + ".targets"))
+        if (this.Targets == null && ec.Includes("targets",false))
         {
             this.Targets = new List<Target>();
-            this.Targets.ApplyExploratoryFieldSpec(parent + ".targets");
+            this.Targets.ApplyExploratoryFieldSpec(ec.NewChild("targets"));
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> ArchivalGroupConnectionStatus? ConnectionStatus
         // GraphQL -> connectionStatus: ArchivalGroupConnectionStatus (type)
-        if (this.ConnectionStatus == null && Exploration.Includes(parent + ".connectionStatus"))
+        if (this.ConnectionStatus == null && ec.Includes("connectionStatus",false))
         {
             this.ConnectionStatus = new ArchivalGroupConnectionStatus();
-            this.ConnectionStatus.ApplyExploratoryFieldSpec(parent + ".connectionStatus");
+            this.ConnectionStatus.ApplyExploratoryFieldSpec(ec.NewChild("connectionStatus"));
         }
     }
 
@@ -255,12 +254,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<TargetMapping> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new TargetMapping());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<TargetMapping> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

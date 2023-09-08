@@ -120,39 +120,38 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? ClusterName
         // GraphQL -> clusterName: String! (scalar)
-        if (this.ClusterName == null && Exploration.Includes(parent + ".clusterName", true))
+        if (this.ClusterName == null && ec.Includes("clusterName",true))
         {
             this.ClusterName = "FETCH";
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: String! (scalar)
-        if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
+        if (this.ClusterUuid == null && ec.Includes("clusterUuid",true))
         {
             this.ClusterUuid = "FETCH";
         }
         //      C# -> System.String? CustomerAccount
         // GraphQL -> customerAccount: String! (scalar)
-        if (this.CustomerAccount == null && Exploration.Includes(parent + ".customerAccount", true))
+        if (this.CustomerAccount == null && ec.Includes("customerAccount",true))
         {
             this.CustomerAccount = "FETCH";
         }
         //      C# -> System.String? Version
         // GraphQL -> version: String! (scalar)
-        if (this.Version == null && Exploration.Includes(parent + ".version", true))
+        if (this.Version == null && ec.Includes("version",true))
         {
             this.Version = "FETCH";
         }
         //      C# -> JobMetadata? Metadata
         // GraphQL -> metadata: JobMetadata (type)
-        if (this.Metadata == null && Exploration.Includes(parent + ".metadata"))
+        if (this.Metadata == null && ec.Includes("metadata",false))
         {
             this.Metadata = new JobMetadata();
-            this.Metadata.ApplyExploratoryFieldSpec(parent + ".metadata");
+            this.Metadata.ApplyExploratoryFieldSpec(ec.NewChild("metadata"));
         }
     }
 
@@ -186,12 +185,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<JobReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new JobReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<JobReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

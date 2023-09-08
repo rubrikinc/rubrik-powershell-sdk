@@ -81,22 +81,21 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> WorkloadGroupByAggregationData? AggregationData
         // GraphQL -> aggregationData: WorkloadGroupByAggregationData! (type)
-        if (this.AggregationData == null && Exploration.Includes(parent + ".aggregationData"))
+        if (this.AggregationData == null && ec.Includes("aggregationData",false))
         {
             this.AggregationData = new WorkloadGroupByAggregationData();
-            this.AggregationData.ApplyExploratoryFieldSpec(parent + ".aggregationData");
+            this.AggregationData.ApplyExploratoryFieldSpec(ec.NewChild("aggregationData"));
         }
         //      C# -> WorkloadGroupByInfo? GroupByInfo
         // GraphQL -> groupByInfo: WorkloadGroupByInfo! (type)
-        if (this.GroupByInfo == null && Exploration.Includes(parent + ".groupByInfo"))
+        if (this.GroupByInfo == null && ec.Includes("groupByInfo",false))
         {
             this.GroupByInfo = new WorkloadGroupByInfo();
-            this.GroupByInfo.ApplyExploratoryFieldSpec(parent + ".groupByInfo");
+            this.GroupByInfo.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
         }
     }
 
@@ -130,12 +129,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<WorkloadGroupBySecondaryGroupByItem> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new WorkloadGroupBySecondaryGroupByItem());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<WorkloadGroupBySecondaryGroupByItem> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

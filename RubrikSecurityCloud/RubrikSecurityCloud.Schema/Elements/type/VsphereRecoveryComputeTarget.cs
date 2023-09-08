@@ -187,66 +187,65 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? ComputeClusterId
         // GraphQL -> computeClusterId: String! (scalar)
-        if (this.ComputeClusterId == null && Exploration.Includes(parent + ".computeClusterId", true))
+        if (this.ComputeClusterId == null && ec.Includes("computeClusterId",true))
         {
             this.ComputeClusterId = "FETCH";
         }
         //      C# -> System.String? ComputeClusterName
         // GraphQL -> computeClusterName: String! (scalar)
-        if (this.ComputeClusterName == null && Exploration.Includes(parent + ".computeClusterName", true))
+        if (this.ComputeClusterName == null && ec.Includes("computeClusterName",true))
         {
             this.ComputeClusterName = "FETCH";
         }
         //      C# -> System.String? DatacenterId
         // GraphQL -> datacenterId: String! (scalar)
-        if (this.DatacenterId == null && Exploration.Includes(parent + ".datacenterId", true))
+        if (this.DatacenterId == null && ec.Includes("datacenterId",true))
         {
             this.DatacenterId = "FETCH";
         }
         //      C# -> System.String? DatacenterName
         // GraphQL -> datacenterName: String! (scalar)
-        if (this.DatacenterName == null && Exploration.Includes(parent + ".datacenterName", true))
+        if (this.DatacenterName == null && ec.Includes("datacenterName",true))
         {
             this.DatacenterName = "FETCH";
         }
         //      C# -> System.String? HostId
         // GraphQL -> hostId: String! (scalar)
-        if (this.HostId == null && Exploration.Includes(parent + ".hostId", true))
+        if (this.HostId == null && ec.Includes("hostId",true))
         {
             this.HostId = "FETCH";
         }
         //      C# -> System.String? HostName
         // GraphQL -> hostName: String! (scalar)
-        if (this.HostName == null && Exploration.Includes(parent + ".hostName", true))
+        if (this.HostName == null && ec.Includes("hostName",true))
         {
             this.HostName = "FETCH";
         }
         //      C# -> System.String? ResourcePoolId
         // GraphQL -> resourcePoolId: String! (scalar)
-        if (this.ResourcePoolId == null && Exploration.Includes(parent + ".resourcePoolId", true))
+        if (this.ResourcePoolId == null && ec.Includes("resourcePoolId",true))
         {
             this.ResourcePoolId = "FETCH";
         }
         //      C# -> System.String? ResourcePoolName
         // GraphQL -> resourcePoolName: String! (scalar)
-        if (this.ResourcePoolName == null && Exploration.Includes(parent + ".resourcePoolName", true))
+        if (this.ResourcePoolName == null && ec.Includes("resourcePoolName",true))
         {
             this.ResourcePoolName = "FETCH";
         }
         //      C# -> System.String? VcenterId
         // GraphQL -> vCenterId: String! (scalar)
-        if (this.VcenterId == null && Exploration.Includes(parent + ".vCenterId", true))
+        if (this.VcenterId == null && ec.Includes("vCenterId",true))
         {
             this.VcenterId = "FETCH";
         }
         //      C# -> System.String? VcenterName
         // GraphQL -> vCenterName: String! (scalar)
-        if (this.VcenterName == null && Exploration.Includes(parent + ".vCenterName", true))
+        if (this.VcenterName == null && ec.Includes("vCenterName",true))
         {
             this.VcenterName = "FETCH";
         }
@@ -282,12 +281,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VsphereRecoveryComputeTarget> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VsphereRecoveryComputeTarget());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VsphereRecoveryComputeTarget> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

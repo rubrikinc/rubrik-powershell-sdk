@@ -112,3 +112,6 @@ Represents all the object types for which we expect to see audits.
 - JIRA_PROJECT - Atlassian Jira project.
 - JIRA_SETTINGS - Atlassian Jira settings.
 - REPLICATION_PAIR - Rubrik cluster replication pair.
+- TPR_POLICY - TPR policy.
+- TPR_REQUEST - TPR request.
+- TPR_CONFIG - TPR configuration.

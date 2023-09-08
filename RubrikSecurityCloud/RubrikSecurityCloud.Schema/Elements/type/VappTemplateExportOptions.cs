@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? OrgVdcId
         // GraphQL -> orgVdcId: String! (scalar)
-        if (this.OrgVdcId == null && Exploration.Includes(parent + ".orgVdcId", true))
+        if (this.OrgVdcId == null && ec.Includes("orgVdcId",true))
         {
             this.OrgVdcId = "FETCH";
         }
         //      C# -> List<VcdOrgVdcStorageProfile>? AvailableStoragePolicies
         // GraphQL -> availableStoragePolicies: [VcdOrgVdcStorageProfile!]! (type)
-        if (this.AvailableStoragePolicies == null && Exploration.Includes(parent + ".availableStoragePolicies"))
+        if (this.AvailableStoragePolicies == null && ec.Includes("availableStoragePolicies",false))
         {
             this.AvailableStoragePolicies = new List<VcdOrgVdcStorageProfile>();
-            this.AvailableStoragePolicies.ApplyExploratoryFieldSpec(parent + ".availableStoragePolicies");
+            this.AvailableStoragePolicies.ApplyExploratoryFieldSpec(ec.NewChild("availableStoragePolicies"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VappTemplateExportOptions> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VappTemplateExportOptions());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VappTemplateExportOptions> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

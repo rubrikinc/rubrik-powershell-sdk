@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? PhysicalDataSizeInBytes
         // GraphQL -> physicalDataSizeInBytes: Long! (scalar)
-        if (this.PhysicalDataSizeInBytes == null && Exploration.Includes(parent + ".physicalDataSizeInBytes", true))
+        if (this.PhysicalDataSizeInBytes == null && ec.Includes("physicalDataSizeInBytes",true))
         {
             this.PhysicalDataSizeInBytes = new System.Int64();
         }
         //      C# -> DateTime? Timestamp
         // GraphQL -> timestamp: DateTime (scalar)
-        if (this.Timestamp == null && Exploration.Includes(parent + ".timestamp", true))
+        if (this.Timestamp == null && ec.Includes("timestamp",true))
         {
             this.Timestamp = new DateTime();
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<O365PhysicalDataSizeTimeStamp> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new O365PhysicalDataSizeTimeStamp());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<O365PhysicalDataSizeTimeStamp> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

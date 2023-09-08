@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Server
         // GraphQL -> server: String! (scalar)
-        if (this.Server == null && Exploration.Includes(parent + ".server", true))
+        if (this.Server == null && ec.Includes("server",true))
         {
             this.Server = "FETCH";
         }
         //      C# -> NtpSymmKeyConfiguration? SymmetricKey
         // GraphQL -> symmetricKey: NtpSymmKeyConfiguration (type)
-        if (this.SymmetricKey == null && Exploration.Includes(parent + ".symmetricKey"))
+        if (this.SymmetricKey == null && ec.Includes("symmetricKey",false))
         {
             this.SymmetricKey = new NtpSymmKeyConfiguration();
-            this.SymmetricKey.ApplyExploratoryFieldSpec(parent + ".symmetricKey");
+            this.SymmetricKey.ApplyExploratoryFieldSpec(ec.NewChild("symmetricKey"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<NtpServerConfiguration> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new NtpServerConfiguration());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<NtpServerConfiguration> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

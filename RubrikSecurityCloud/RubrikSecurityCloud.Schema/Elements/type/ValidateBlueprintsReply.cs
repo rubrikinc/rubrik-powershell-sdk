@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<ValidateBlueprintReply>? BlueprintStatus
         // GraphQL -> blueprintStatus: [ValidateBlueprintReply!]! (type)
-        if (this.BlueprintStatus == null && Exploration.Includes(parent + ".blueprintStatus"))
+        if (this.BlueprintStatus == null && ec.Includes("blueprintStatus",false))
         {
             this.BlueprintStatus = new List<ValidateBlueprintReply>();
-            this.BlueprintStatus.ApplyExploratoryFieldSpec(parent + ".blueprintStatus");
+            this.BlueprintStatus.ApplyExploratoryFieldSpec(ec.NewChild("blueprintStatus"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ValidateBlueprintsReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ValidateBlueprintsReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ValidateBlueprintsReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

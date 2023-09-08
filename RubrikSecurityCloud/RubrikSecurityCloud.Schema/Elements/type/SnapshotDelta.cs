@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> DeltaType? DeltaType
         // GraphQL -> deltaType: DeltaType! (enum)
-        if (this.DeltaType == null && Exploration.Includes(parent + ".deltaType", true))
+        if (this.DeltaType == null && ec.Includes("deltaType",true))
         {
             this.DeltaType = new DeltaType();
         }
         //      C# -> System.Int64? DeltaAmount
         // GraphQL -> deltaAmount: Long! (scalar)
-        if (this.DeltaAmount == null && Exploration.Includes(parent + ".deltaAmount", true))
+        if (this.DeltaAmount == null && ec.Includes("deltaAmount",true))
         {
             this.DeltaAmount = new System.Int64();
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SnapshotDelta> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SnapshotDelta());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SnapshotDelta> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

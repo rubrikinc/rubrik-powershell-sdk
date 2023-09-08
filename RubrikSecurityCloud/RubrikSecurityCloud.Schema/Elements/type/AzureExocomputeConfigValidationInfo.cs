@@ -176,63 +176,62 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? ErrorMessage
         // GraphQL -> errorMessage: String! (scalar)
-        if (this.ErrorMessage == null && Exploration.Includes(parent + ".errorMessage", true))
+        if (this.ErrorMessage == null && ec.Includes("errorMessage",true))
         {
             this.ErrorMessage = "FETCH";
         }
         //      C# -> System.Boolean? HasBlockedSecurityRules
         // GraphQL -> hasBlockedSecurityRules: Boolean! (scalar)
-        if (this.HasBlockedSecurityRules == null && Exploration.Includes(parent + ".hasBlockedSecurityRules", true))
+        if (this.HasBlockedSecurityRules == null && ec.Includes("hasBlockedSecurityRules",true))
         {
             this.HasBlockedSecurityRules = true;
         }
         //      C# -> System.Boolean? HasRestrictedAddressRangeOverlap
         // GraphQL -> hasRestrictedAddressRangeOverlap: Boolean! (scalar)
-        if (this.HasRestrictedAddressRangeOverlap == null && Exploration.Includes(parent + ".hasRestrictedAddressRangeOverlap", true))
+        if (this.HasRestrictedAddressRangeOverlap == null && ec.Includes("hasRestrictedAddressRangeOverlap",true))
         {
             this.HasRestrictedAddressRangeOverlap = true;
         }
         //      C# -> System.Boolean? IsClusterSubnetSizeTooSmall
         // GraphQL -> isClusterSubnetSizeTooSmall: Boolean! (scalar)
-        if (this.IsClusterSubnetSizeTooSmall == null && Exploration.Includes(parent + ".isClusterSubnetSizeTooSmall", true))
+        if (this.IsClusterSubnetSizeTooSmall == null && ec.Includes("isClusterSubnetSizeTooSmall",true))
         {
             this.IsClusterSubnetSizeTooSmall = true;
         }
         //      C# -> System.Boolean? IsPodAndClusterSubnetSame
         // GraphQL -> isPodAndClusterSubnetSame: Boolean! (scalar)
-        if (this.IsPodAndClusterSubnetSame == null && Exploration.Includes(parent + ".isPodAndClusterSubnetSame", true))
+        if (this.IsPodAndClusterSubnetSame == null && ec.Includes("isPodAndClusterSubnetSame",true))
         {
             this.IsPodAndClusterSubnetSame = true;
         }
         //      C# -> System.Boolean? IsPodAndClusterVnetDifferent
         // GraphQL -> isPodAndClusterVnetDifferent: Boolean! (scalar)
-        if (this.IsPodAndClusterVnetDifferent == null && Exploration.Includes(parent + ".isPodAndClusterVnetDifferent", true))
+        if (this.IsPodAndClusterVnetDifferent == null && ec.Includes("isPodAndClusterVnetDifferent",true))
         {
             this.IsPodAndClusterVnetDifferent = true;
         }
         //      C# -> System.Boolean? IsPodSubnetSizeTooSmall
         // GraphQL -> isPodSubnetSizeTooSmall: Boolean! (scalar)
-        if (this.IsPodSubnetSizeTooSmall == null && Exploration.Includes(parent + ".isPodSubnetSizeTooSmall", true))
+        if (this.IsPodSubnetSizeTooSmall == null && ec.Includes("isPodSubnetSizeTooSmall",true))
         {
             this.IsPodSubnetSizeTooSmall = true;
         }
         //      C# -> System.Boolean? IsSubnetDelegated
         // GraphQL -> isSubnetDelegated: Boolean! (scalar)
-        if (this.IsSubnetDelegated == null && Exploration.Includes(parent + ".isSubnetDelegated", true))
+        if (this.IsSubnetDelegated == null && ec.Includes("isSubnetDelegated",true))
         {
             this.IsSubnetDelegated = true;
         }
         //      C# -> AzureExocomputeRegionConfig? Config
         // GraphQL -> config: AzureExocomputeRegionConfig (type)
-        if (this.Config == null && Exploration.Includes(parent + ".config"))
+        if (this.Config == null && ec.Includes("config",false))
         {
             this.Config = new AzureExocomputeRegionConfig();
-            this.Config.ApplyExploratoryFieldSpec(parent + ".config");
+            this.Config.ApplyExploratoryFieldSpec(ec.NewChild("config"));
         }
     }
 
@@ -266,12 +265,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AzureExocomputeConfigValidationInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AzureExocomputeConfigValidationInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AzureExocomputeConfigValidationInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

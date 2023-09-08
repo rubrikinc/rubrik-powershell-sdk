@@ -204,75 +204,74 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> CcpVendorType? Vendor
         // GraphQL -> vendor: CcpVendorType! (enum)
-        if (this.Vendor == null && Exploration.Includes(parent + ".vendor", true))
+        if (this.Vendor == null && ec.Includes("vendor",true))
         {
             this.Vendor = new CcpVendorType();
         }
         //      C# -> System.String? CloudAccount
         // GraphQL -> cloudAccount: String! (scalar)
-        if (this.CloudAccount == null && Exploration.Includes(parent + ".cloudAccount", true))
+        if (this.CloudAccount == null && ec.Includes("cloudAccount",true))
         {
             this.CloudAccount = "FETCH";
         }
         //      C# -> System.String? CloudAccountId
         // GraphQL -> cloudAccountId: UUID! (scalar)
-        if (this.CloudAccountId == null && Exploration.Includes(parent + ".cloudAccountId", true))
+        if (this.CloudAccountId == null && ec.Includes("cloudAccountId",true))
         {
             this.CloudAccountId = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? NativeCloudAccountId
         // GraphQL -> nativeCloudAccountId: String! (scalar)
-        if (this.NativeCloudAccountId == null && Exploration.Includes(parent + ".nativeCloudAccountId", true))
+        if (this.NativeCloudAccountId == null && ec.Includes("nativeCloudAccountId",true))
         {
             this.NativeCloudAccountId = "FETCH";
         }
         //      C# -> System.String? NativeCloudAccountName
         // GraphQL -> nativeCloudAccountName: String! (scalar)
-        if (this.NativeCloudAccountName == null && Exploration.Includes(parent + ".nativeCloudAccountName", true))
+        if (this.NativeCloudAccountName == null && ec.Includes("nativeCloudAccountName",true))
         {
             this.NativeCloudAccountName = "FETCH";
         }
         //      C# -> System.String? NetworkName
         // GraphQL -> networkName: String! (scalar)
-        if (this.NetworkName == null && Exploration.Includes(parent + ".networkName", true))
+        if (this.NetworkName == null && ec.Includes("networkName",true))
         {
             this.NetworkName = "FETCH";
         }
         //      C# -> System.String? Region
         // GraphQL -> region: String! (scalar)
-        if (this.Region == null && Exploration.Includes(parent + ".region", true))
+        if (this.Region == null && ec.Includes("region",true))
         {
             this.Region = "FETCH";
         }
         //      C# -> System.String? RegionId
         // GraphQL -> regionId: String! (scalar)
-        if (this.RegionId == null && Exploration.Includes(parent + ".regionId", true))
+        if (this.RegionId == null && ec.Includes("regionId",true))
         {
             this.RegionId = "FETCH";
         }
         //      C# -> System.String? Uuid
         // GraphQL -> uuid: UUID! (scalar)
-        if (this.Uuid == null && Exploration.Includes(parent + ".uuid", true))
+        if (this.Uuid == null && ec.Includes("uuid",true))
         {
             this.Uuid = "FETCH";
         }
         //      C# -> ElasticStorageConfig? StorageConfig
         // GraphQL -> storageConfig: ElasticStorageConfig (type)
-        if (this.StorageConfig == null && Exploration.Includes(parent + ".storageConfig"))
+        if (this.StorageConfig == null && ec.Includes("storageConfig",false))
         {
             this.StorageConfig = new ElasticStorageConfig();
-            this.StorageConfig.ApplyExploratoryFieldSpec(parent + ".storageConfig");
+            this.StorageConfig.ApplyExploratoryFieldSpec(ec.NewChild("storageConfig"));
         }
     }
 
@@ -306,12 +305,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CcWithCloudInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CcWithCloudInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CcWithCloudInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

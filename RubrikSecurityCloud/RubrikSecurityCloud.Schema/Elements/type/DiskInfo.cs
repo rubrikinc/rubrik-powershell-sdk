@@ -134,45 +134,44 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? CapacityBytes
         // GraphQL -> capacityBytes: Long! (scalar)
-        if (this.CapacityBytes == null && Exploration.Includes(parent + ".capacityBytes", true))
+        if (this.CapacityBytes == null && ec.Includes("capacityBytes",true))
         {
             this.CapacityBytes = new System.Int64();
         }
         //      C# -> System.Boolean? IsResizable
         // GraphQL -> isResizable: Boolean (scalar)
-        if (this.IsResizable == null && Exploration.Includes(parent + ".isResizable", true))
+        if (this.IsResizable == null && ec.Includes("isResizable",true))
         {
             this.IsResizable = true;
         }
         //      C# -> System.String? Path
         // GraphQL -> path: String! (scalar)
-        if (this.Path == null && Exploration.Includes(parent + ".path", true))
+        if (this.Path == null && ec.Includes("path",true))
         {
             this.Path = "FETCH";
         }
         //      C# -> System.Int64? UnallocatedBytes
         // GraphQL -> unallocatedBytes: Long (scalar)
-        if (this.UnallocatedBytes == null && Exploration.Includes(parent + ".unallocatedBytes", true))
+        if (this.UnallocatedBytes == null && ec.Includes("unallocatedBytes",true))
         {
             this.UnallocatedBytes = new System.Int64();
         }
         //      C# -> System.Int64? UsableBytes
         // GraphQL -> usableBytes: Long (scalar)
-        if (this.UsableBytes == null && Exploration.Includes(parent + ".usableBytes", true))
+        if (this.UsableBytes == null && ec.Includes("usableBytes",true))
         {
             this.UsableBytes = new System.Int64();
         }
         //      C# -> DiskStatus? DiskStatus
         // GraphQL -> diskStatus: DiskStatus (type)
-        if (this.DiskStatus == null && Exploration.Includes(parent + ".diskStatus"))
+        if (this.DiskStatus == null && ec.Includes("diskStatus",false))
         {
             this.DiskStatus = new DiskStatus();
-            this.DiskStatus.ApplyExploratoryFieldSpec(parent + ".diskStatus");
+            this.DiskStatus.ApplyExploratoryFieldSpec(ec.NewChild("diskStatus"));
         }
     }
 
@@ -206,12 +205,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<DiskInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new DiskInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<DiskInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

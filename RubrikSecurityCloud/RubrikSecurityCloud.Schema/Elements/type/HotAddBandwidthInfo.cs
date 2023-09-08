@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int32? ExportLimit
         // GraphQL -> exportLimit: Int! (scalar)
-        if (this.ExportLimit == null && Exploration.Includes(parent + ".exportLimit", true))
+        if (this.ExportLimit == null && ec.Includes("exportLimit",true))
         {
             this.ExportLimit = Int32.MinValue;
         }
         //      C# -> System.Int32? IngestLimit
         // GraphQL -> ingestLimit: Int! (scalar)
-        if (this.IngestLimit == null && Exploration.Includes(parent + ".ingestLimit", true))
+        if (this.IngestLimit == null && ec.Includes("ingestLimit",true))
         {
             this.IngestLimit = Int32.MinValue;
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<HotAddBandwidthInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new HotAddBandwidthInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<HotAddBandwidthInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

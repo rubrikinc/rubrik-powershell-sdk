@@ -115,36 +115,35 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> SummaryCount? HighRiskFileCount
         // GraphQL -> highRiskFileCount: SummaryCount (type)
-        if (this.HighRiskFileCount == null && Exploration.Includes(parent + ".highRiskFileCount"))
+        if (this.HighRiskFileCount == null && ec.Includes("highRiskFileCount",false))
         {
             this.HighRiskFileCount = new SummaryCount();
-            this.HighRiskFileCount.ApplyExploratoryFieldSpec(parent + ".highRiskFileCount");
+            this.HighRiskFileCount.ApplyExploratoryFieldSpec(ec.NewChild("highRiskFileCount"));
         }
         //      C# -> SummaryCount? LowRiskFileCount
         // GraphQL -> lowRiskFileCount: SummaryCount (type)
-        if (this.LowRiskFileCount == null && Exploration.Includes(parent + ".lowRiskFileCount"))
+        if (this.LowRiskFileCount == null && ec.Includes("lowRiskFileCount",false))
         {
             this.LowRiskFileCount = new SummaryCount();
-            this.LowRiskFileCount.ApplyExploratoryFieldSpec(parent + ".lowRiskFileCount");
+            this.LowRiskFileCount.ApplyExploratoryFieldSpec(ec.NewChild("lowRiskFileCount"));
         }
         //      C# -> SummaryCount? MediumRiskFileCount
         // GraphQL -> mediumRiskFileCount: SummaryCount (type)
-        if (this.MediumRiskFileCount == null && Exploration.Includes(parent + ".mediumRiskFileCount"))
+        if (this.MediumRiskFileCount == null && ec.Includes("mediumRiskFileCount",false))
         {
             this.MediumRiskFileCount = new SummaryCount();
-            this.MediumRiskFileCount.ApplyExploratoryFieldSpec(parent + ".mediumRiskFileCount");
+            this.MediumRiskFileCount.ApplyExploratoryFieldSpec(ec.NewChild("mediumRiskFileCount"));
         }
         //      C# -> SummaryCount? TotalFileCount
         // GraphQL -> totalFileCount: SummaryCount (type)
-        if (this.TotalFileCount == null && Exploration.Includes(parent + ".totalFileCount"))
+        if (this.TotalFileCount == null && ec.Includes("totalFileCount",false))
         {
             this.TotalFileCount = new SummaryCount();
-            this.TotalFileCount.ApplyExploratoryFieldSpec(parent + ".totalFileCount");
+            this.TotalFileCount.ApplyExploratoryFieldSpec(ec.NewChild("totalFileCount"));
         }
     }
 
@@ -178,12 +177,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SensitiveFiles> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SensitiveFiles());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SensitiveFiles> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

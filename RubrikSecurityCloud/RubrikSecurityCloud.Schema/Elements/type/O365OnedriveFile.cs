@@ -258,96 +258,95 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ChannelMembershipType? ChannelMembershipType
         // GraphQL -> channelMembershipType: ChannelMembershipType (enum)
-        if (this.ChannelMembershipType == null && Exploration.Includes(parent + ".channelMembershipType", true))
+        if (this.ChannelMembershipType == null && ec.Includes("channelMembershipType",true))
         {
             this.ChannelMembershipType = new ChannelMembershipType();
         }
         //      C# -> SharePointDescendantType? ObjectType
         // GraphQL -> objectType: SharePointDescendantType (enum)
-        if (this.ObjectType == null && Exploration.Includes(parent + ".objectType", true))
+        if (this.ObjectType == null && ec.Includes("objectType",true))
         {
             this.ObjectType = new SharePointDescendantType();
         }
         //      C# -> System.String? ChannelFolderName
         // GraphQL -> channelFolderName: String (scalar)
-        if (this.ChannelFolderName == null && Exploration.Includes(parent + ".channelFolderName", true))
+        if (this.ChannelFolderName == null && ec.Includes("channelFolderName",true))
         {
             this.ChannelFolderName = "FETCH";
         }
         //      C# -> System.String? ChannelId
         // GraphQL -> channelId: String (scalar)
-        if (this.ChannelId == null && Exploration.Includes(parent + ".channelId", true))
+        if (this.ChannelId == null && ec.Includes("channelId",true))
         {
             this.ChannelId = "FETCH";
         }
         //      C# -> System.String? ChannelName
         // GraphQL -> channelName: String (scalar)
-        if (this.ChannelName == null && Exploration.Includes(parent + ".channelName", true))
+        if (this.ChannelName == null && ec.Includes("channelName",true))
         {
             this.ChannelName = "FETCH";
         }
         //      C# -> DateTime? CreateTime
         // GraphQL -> createTime: DateTime (scalar)
-        if (this.CreateTime == null && Exploration.Includes(parent + ".createTime", true))
+        if (this.CreateTime == null && ec.Includes("createTime",true))
         {
             this.CreateTime = new DateTime();
         }
         //      C# -> System.String? FileType
         // GraphQL -> fileType: String (scalar)
-        if (this.FileType == null && Exploration.Includes(parent + ".fileType", true))
+        if (this.FileType == null && ec.Includes("fileType",true))
         {
             this.FileType = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> DateTime? ModifiedTime
         // GraphQL -> modifiedTime: DateTime (scalar)
-        if (this.ModifiedTime == null && Exploration.Includes(parent + ".modifiedTime", true))
+        if (this.ModifiedTime == null && ec.Includes("modifiedTime",true))
         {
             this.ModifiedTime = new DateTime();
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? ParentFolderId
         // GraphQL -> parentFolderId: String (scalar)
-        if (this.ParentFolderId == null && Exploration.Includes(parent + ".parentFolderId", true))
+        if (this.ParentFolderId == null && ec.Includes("parentFolderId",true))
         {
             this.ParentFolderId = "FETCH";
         }
         //      C# -> System.Int64? Size
         // GraphQL -> size: Long (scalar)
-        if (this.Size == null && Exploration.Includes(parent + ".size", true))
+        if (this.Size == null && ec.Includes("size",true))
         {
             this.Size = new System.Int64();
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: UUID (scalar)
-        if (this.SnapshotId == null && Exploration.Includes(parent + ".snapshotId", true))
+        if (this.SnapshotId == null && ec.Includes("snapshotId",true))
         {
             this.SnapshotId = "FETCH";
         }
         //      C# -> System.Int32? SnapshotNum
         // GraphQL -> snapshotNum: Int (scalar)
-        if (this.SnapshotNum == null && Exploration.Includes(parent + ".snapshotNum", true))
+        if (this.SnapshotNum == null && ec.Includes("snapshotNum",true))
         {
             this.SnapshotNum = Int32.MinValue;
         }
         //      C# -> DateTime? SnapshotTime
         // GraphQL -> snapshotTime: DateTime (scalar)
-        if (this.SnapshotTime == null && Exploration.Includes(parent + ".snapshotTime", true))
+        if (this.SnapshotTime == null && ec.Includes("snapshotTime",true))
         {
             this.SnapshotTime = new DateTime();
         }
@@ -383,12 +382,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<O365OnedriveFile> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new O365OnedriveFile());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<O365OnedriveFile> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

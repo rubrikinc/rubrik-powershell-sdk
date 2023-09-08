@@ -81,22 +81,21 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> SummaryCount? From
         // GraphQL -> from: SummaryCount! (type)
-        if (this.From == null && Exploration.Includes(parent + ".from"))
+        if (this.From == null && ec.Includes("from",false))
         {
             this.From = new SummaryCount();
-            this.From.ApplyExploratoryFieldSpec(parent + ".from");
+            this.From.ApplyExploratoryFieldSpec(ec.NewChild("from"));
         }
         //      C# -> SummaryCount? To
         // GraphQL -> to: SummaryCount! (type)
-        if (this.To == null && Exploration.Includes(parent + ".to"))
+        if (this.To == null && ec.Includes("to",false))
         {
             this.To = new SummaryCount();
-            this.To.ApplyExploratoryFieldSpec(parent + ".to");
+            this.To.ApplyExploratoryFieldSpec(ec.NewChild("to"));
         }
     }
 
@@ -130,12 +129,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CountChange> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CountChange());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CountChange> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

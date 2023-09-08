@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? AvailabilityZone
         // GraphQL -> availabilityZone: String! (scalar)
-        if (this.AvailabilityZone == null && Exploration.Includes(parent + ".availabilityZone", true))
+        if (this.AvailabilityZone == null && ec.Includes("availabilityZone",true))
         {
             this.AvailabilityZone = "FETCH";
         }
         //      C# -> List<System.String>? VmSizes
         // GraphQL -> vmSizes: [String!]! (scalar)
-        if (this.VmSizes == null && Exploration.Includes(parent + ".vmSizes", true))
+        if (this.VmSizes == null && ec.Includes("vmSizes",true))
         {
             this.VmSizes = new List<System.String>();
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AzureNativeExportCompatibleVmSizes> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AzureNativeExportCompatibleVmSizes());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AzureNativeExportCompatibleVmSizes> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

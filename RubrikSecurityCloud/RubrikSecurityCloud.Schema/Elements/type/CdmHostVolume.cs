@@ -145,48 +145,47 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
-        if (this.CdmId == null && Exploration.Includes(parent + ".cdmId", true))
+        if (this.CdmId == null && ec.Includes("cdmId",true))
         {
             this.CdmId = "FETCH";
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: String! (scalar)
-        if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
+        if (this.ClusterUuid == null && ec.Includes("clusterUuid",true))
         {
             this.ClusterUuid = "FETCH";
         }
         //      C# -> System.String? FileSystemType
         // GraphQL -> fileSystemType: String (scalar)
-        if (this.FileSystemType == null && Exploration.Includes(parent + ".fileSystemType", true))
+        if (this.FileSystemType == null && ec.Includes("fileSystemType",true))
         {
             this.FileSystemType = "FETCH";
         }
         //      C# -> List<System.String>? MountPoints
         // GraphQL -> mountPoints: [String!]! (scalar)
-        if (this.MountPoints == null && Exploration.Includes(parent + ".mountPoints", true))
+        if (this.MountPoints == null && ec.Includes("mountPoints",true))
         {
             this.MountPoints = new List<System.String>();
         }
         //      C# -> System.Int64? Size
         // GraphQL -> size: Long (scalar)
-        if (this.Size == null && Exploration.Includes(parent + ".size", true))
+        if (this.Size == null && ec.Includes("size",true))
         {
             this.Size = new System.Int64();
         }
         //      C# -> System.String? VolumeGroupId
         // GraphQL -> volumeGroupId: String (scalar)
-        if (this.VolumeGroupId == null && Exploration.Includes(parent + ".volumeGroupId", true))
+        if (this.VolumeGroupId == null && ec.Includes("volumeGroupId",true))
         {
             this.VolumeGroupId = "FETCH";
         }
         //      C# -> System.String? VolumeId
         // GraphQL -> volumeId: String! (scalar)
-        if (this.VolumeId == null && Exploration.Includes(parent + ".volumeId", true))
+        if (this.VolumeId == null && ec.Includes("volumeId",true))
         {
             this.VolumeId = "FETCH";
         }
@@ -222,12 +221,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CdmHostVolume> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CdmHostVolume());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CdmHostVolume> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

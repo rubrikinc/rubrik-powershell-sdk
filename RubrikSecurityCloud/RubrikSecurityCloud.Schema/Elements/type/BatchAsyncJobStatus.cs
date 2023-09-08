@@ -81,22 +81,21 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<AsyncJobStatusJobError>? Errors
         // GraphQL -> errors: [AsyncJobStatusJobError!]! (type)
-        if (this.Errors == null && Exploration.Includes(parent + ".errors"))
+        if (this.Errors == null && ec.Includes("errors",false))
         {
             this.Errors = new List<AsyncJobStatusJobError>();
-            this.Errors.ApplyExploratoryFieldSpec(parent + ".errors");
+            this.Errors.ApplyExploratoryFieldSpec(ec.NewChild("errors"));
         }
         //      C# -> List<AsyncJobStatusJobId>? JobIds
         // GraphQL -> jobIds: [AsyncJobStatusJobId!]! (type)
-        if (this.JobIds == null && Exploration.Includes(parent + ".jobIds"))
+        if (this.JobIds == null && ec.Includes("jobIds",false))
         {
             this.JobIds = new List<AsyncJobStatusJobId>();
-            this.JobIds.ApplyExploratoryFieldSpec(parent + ".jobIds");
+            this.JobIds.ApplyExploratoryFieldSpec(ec.NewChild("jobIds"));
         }
     }
 
@@ -130,12 +129,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<BatchAsyncJobStatus> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new BatchAsyncJobStatus());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<BatchAsyncJobStatus> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -112,35 +112,34 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<HyperVscvmmLogicalChildType>? Nodes
         // GraphQL -> nodes: [HyperVSCVMMLogicalChildType!]! (interface)
-        if (this.Nodes == null && Exploration.Includes(parent + ".nodes"))
+        if (this.Nodes == null && ec.Includes("nodes",false))
         {
             this.Nodes = new List<HyperVscvmmLogicalChildType>();
-            this.Nodes.ApplyExploratoryFieldSpec(parent + ".nodes");
+            this.Nodes.ApplyExploratoryFieldSpec(ec.NewChild("nodes"));
         }
         //      C# -> System.Int32? Count
         // GraphQL -> count: Int! (scalar)
-        if (this.Count == null && Exploration.Includes(parent + ".count", true))
+        if (this.Count == null && ec.Includes("count",true))
         {
             this.Count = Int32.MinValue;
         }
         //      C# -> List<HyperVscvmmLogicalChildTypeEdge>? Edges
         // GraphQL -> edges: [HyperVSCVMMLogicalChildTypeEdge!]! (type)
-        if (this.Edges == null && Exploration.Includes(parent + ".edges"))
+        if (this.Edges == null && ec.Includes("edges",false))
         {
             this.Edges = new List<HyperVscvmmLogicalChildTypeEdge>();
-            this.Edges.ApplyExploratoryFieldSpec(parent + ".edges");
+            this.Edges.ApplyExploratoryFieldSpec(ec.NewChild("edges"));
         }
         //      C# -> PageInfo? PageInfo
         // GraphQL -> pageInfo: PageInfo! (type)
-        if (this.PageInfo == null && Exploration.Includes(parent + ".pageInfo"))
+        if (this.PageInfo == null && ec.Includes("pageInfo",false))
         {
             this.PageInfo = new PageInfo();
-            this.PageInfo.ApplyExploratoryFieldSpec(parent + ".pageInfo");
+            this.PageInfo.ApplyExploratoryFieldSpec(ec.NewChild("pageInfo"));
         }
     }
 
@@ -174,12 +173,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<HyperVscvmmLogicalChildTypeConnection> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new HyperVscvmmLogicalChildTypeConnection());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<HyperVscvmmLogicalChildTypeConnection> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

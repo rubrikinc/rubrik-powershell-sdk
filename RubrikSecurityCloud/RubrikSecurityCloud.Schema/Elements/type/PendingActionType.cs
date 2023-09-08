@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> PendingActionGroupTypeEnum? PendingActionGroupType
         // GraphQL -> pendingActionGroupType: PendingActionGroupTypeEnum! (enum)
-        if (this.PendingActionGroupType == null && Exploration.Includes(parent + ".pendingActionGroupType", true))
+        if (this.PendingActionGroupType == null && ec.Includes("pendingActionGroupType",true))
         {
             this.PendingActionGroupType = new PendingActionGroupTypeEnum();
         }
         //      C# -> PendingActionSubGroupTypeEnum? PendingActionSubGroupType
         // GraphQL -> pendingActionSubGroupType: PendingActionSubGroupTypeEnum! (enum)
-        if (this.PendingActionSubGroupType == null && Exploration.Includes(parent + ".pendingActionSubGroupType", true))
+        if (this.PendingActionSubGroupType == null && ec.Includes("pendingActionSubGroupType",true))
         {
             this.PendingActionSubGroupType = new PendingActionSubGroupTypeEnum();
         }
         //      C# -> PendingActionSyncType? PendingActionSyncType
         // GraphQL -> pendingActionSyncType: PendingActionSyncType! (enum)
-        if (this.PendingActionSyncType == null && Exploration.Includes(parent + ".pendingActionSyncType", true))
+        if (this.PendingActionSyncType == null && ec.Includes("pendingActionSyncType",true))
         {
             this.PendingActionSyncType = new PendingActionSyncType();
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PendingActionType> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PendingActionType());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<PendingActionType> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

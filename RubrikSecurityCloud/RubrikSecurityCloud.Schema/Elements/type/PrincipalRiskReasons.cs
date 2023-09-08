@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<RiskReason>? AccessRiskReasons
         // GraphQL -> accessRiskReasons: [RiskReason!]! (enum)
-        if (this.AccessRiskReasons == null && Exploration.Includes(parent + ".accessRiskReasons", true))
+        if (this.AccessRiskReasons == null && ec.Includes("accessRiskReasons",true))
         {
             this.AccessRiskReasons = new List<RiskReason>();
         }
         //      C# -> List<InsecureReason>? InsecureReasons
         // GraphQL -> insecureReasons: [InsecureReason!]! (enum)
-        if (this.InsecureReasons == null && Exploration.Includes(parent + ".insecureReasons", true))
+        if (this.InsecureReasons == null && ec.Includes("insecureReasons",true))
         {
             this.InsecureReasons = new List<InsecureReason>();
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PrincipalRiskReasons> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PrincipalRiskReasons());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<PrincipalRiskReasons> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

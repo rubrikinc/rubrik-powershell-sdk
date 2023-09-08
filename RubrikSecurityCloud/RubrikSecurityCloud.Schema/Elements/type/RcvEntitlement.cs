@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> RcvRegionBundle? Bundle
         // GraphQL -> bundle: RcvRegionBundle! (enum)
-        if (this.Bundle == null && Exploration.Includes(parent + ".bundle", true))
+        if (this.Bundle == null && ec.Includes("bundle",true))
         {
             this.Bundle = new RcvRegionBundle();
         }
         //      C# -> RcvTier? Tier
         // GraphQL -> tier: RcvTier! (enum)
-        if (this.Tier == null && Exploration.Includes(parent + ".tier", true))
+        if (this.Tier == null && ec.Includes("tier",true))
         {
             this.Tier = new RcvTier();
         }
         //      C# -> System.Single? Capacity
         // GraphQL -> capacity: Float! (scalar)
-        if (this.Capacity == null && Exploration.Includes(parent + ".capacity", true))
+        if (this.Capacity == null && ec.Includes("capacity",true))
         {
             this.Capacity = new System.Single();
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RcvEntitlement> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RcvEntitlement());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<RcvEntitlement> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

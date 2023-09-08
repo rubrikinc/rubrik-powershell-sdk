@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? IsOnDemandSnapshot
         // GraphQL -> isOnDemandSnapshot: Boolean! (scalar)
-        if (this.IsOnDemandSnapshot == null && Exploration.Includes(parent + ".isOnDemandSnapshot", true))
+        if (this.IsOnDemandSnapshot == null && ec.Includes("isOnDemandSnapshot",true))
         {
             this.IsOnDemandSnapshot = true;
         }
         //      C# -> DateTime? SnapshotTime
         // GraphQL -> snapshotTime: DateTime (scalar)
-        if (this.SnapshotTime == null && Exploration.Includes(parent + ".snapshotTime", true))
+        if (this.SnapshotTime == null && ec.Includes("snapshotTime",true))
         {
             this.SnapshotTime = new DateTime();
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SnapshotDetails> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SnapshotDetails());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SnapshotDetails> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

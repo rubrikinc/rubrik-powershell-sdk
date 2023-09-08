@@ -79,21 +79,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? SnappableId
         // GraphQL -> snappableId: String! (scalar)
-        if (this.SnappableId == null && Exploration.Includes(parent + ".snappableId", true))
+        if (this.SnappableId == null && ec.Includes("snappableId",true))
         {
             this.SnappableId = "FETCH";
         }
         //      C# -> AwsEc2Instance? FailoverInstance
         // GraphQL -> failoverInstance: AwsEc2Instance! (type)
-        if (this.FailoverInstance == null && Exploration.Includes(parent + ".failoverInstance"))
+        if (this.FailoverInstance == null && ec.Includes("failoverInstance",false))
         {
             this.FailoverInstance = new AwsEc2Instance();
-            this.FailoverInstance.ApplyExploratoryFieldSpec(parent + ".failoverInstance");
+            this.FailoverInstance.ApplyExploratoryFieldSpec(ec.NewChild("failoverInstance"));
         }
     }
 
@@ -127,12 +126,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VsphereBlueprintChildFailoverInstance> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VsphereBlueprintChildFailoverInstance());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VsphereBlueprintChildFailoverInstance> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

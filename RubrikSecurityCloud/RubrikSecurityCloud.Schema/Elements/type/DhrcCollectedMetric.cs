@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> DhrcMetric? Metric
         // GraphQL -> metric: DhrcMetric! (enum)
-        if (this.Metric == null && Exploration.Includes(parent + ".metric", true))
+        if (this.Metric == null && ec.Includes("metric",true))
         {
             this.Metric = new DhrcMetric();
         }
         //      C# -> DateTime? CollectedAt
         // GraphQL -> collectedAt: DateTime (scalar)
-        if (this.CollectedAt == null && Exploration.Includes(parent + ".collectedAt", true))
+        if (this.CollectedAt == null && ec.Includes("collectedAt",true))
         {
             this.CollectedAt = new DateTime();
         }
         //      C# -> System.Single? MaxValue
         // GraphQL -> maxValue: Float! (scalar)
-        if (this.MaxValue == null && Exploration.Includes(parent + ".maxValue", true))
+        if (this.MaxValue == null && ec.Includes("maxValue",true))
         {
             this.MaxValue = new System.Single();
         }
         //      C# -> System.Single? Value
         // GraphQL -> value: Float! (scalar)
-        if (this.Value == null && Exploration.Includes(parent + ".value", true))
+        if (this.Value == null && ec.Includes("value",true))
         {
             this.Value = new System.Single();
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<DhrcCollectedMetric> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new DhrcCollectedMetric());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<DhrcCollectedMetric> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

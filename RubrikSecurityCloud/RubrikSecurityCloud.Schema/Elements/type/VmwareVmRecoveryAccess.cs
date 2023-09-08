@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? IsRecoverable
         // GraphQL -> isRecoverable: Boolean! (scalar)
-        if (this.IsRecoverable == null && Exploration.Includes(parent + ".isRecoverable", true))
+        if (this.IsRecoverable == null && ec.Includes("isRecoverable",true))
         {
             this.IsRecoverable = true;
         }
         //      C# -> System.Boolean? IsViewable
         // GraphQL -> isViewable: Boolean! (scalar)
-        if (this.IsViewable == null && Exploration.Includes(parent + ".isViewable", true))
+        if (this.IsViewable == null && ec.Includes("isViewable",true))
         {
             this.IsViewable = true;
         }
         //      C# -> System.String? VmwareVmId
         // GraphQL -> vmwareVmId: UUID! (scalar)
-        if (this.VmwareVmId == null && Exploration.Includes(parent + ".vmwareVmId", true))
+        if (this.VmwareVmId == null && ec.Includes("vmwareVmId",true))
         {
             this.VmwareVmId = "FETCH";
         }
         //      C# -> System.String? VmwareVmName
         // GraphQL -> vmwareVmName: String! (scalar)
-        if (this.VmwareVmName == null && Exploration.Includes(parent + ".vmwareVmName", true))
+        if (this.VmwareVmName == null && ec.Includes("vmwareVmName",true))
         {
             this.VmwareVmName = "FETCH";
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VmwareVmRecoveryAccess> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VmwareVmRecoveryAccess());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VmwareVmRecoveryAccess> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

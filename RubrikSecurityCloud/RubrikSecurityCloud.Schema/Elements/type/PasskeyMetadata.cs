@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? IsPasskeyEnabled
         // GraphQL -> isPasskeyEnabled: Boolean! (scalar)
-        if (this.IsPasskeyEnabled == null && Exploration.Includes(parent + ".isPasskeyEnabled", true))
+        if (this.IsPasskeyEnabled == null && ec.Includes("isPasskeyEnabled",true))
         {
             this.IsPasskeyEnabled = true;
         }
         //      C# -> List<PasskeyCredentialMetadata>? CredentialsMetadata
         // GraphQL -> credentialsMetadata: [PasskeyCredentialMetadata!]! (type)
-        if (this.CredentialsMetadata == null && Exploration.Includes(parent + ".credentialsMetadata"))
+        if (this.CredentialsMetadata == null && ec.Includes("credentialsMetadata",false))
         {
             this.CredentialsMetadata = new List<PasskeyCredentialMetadata>();
-            this.CredentialsMetadata.ApplyExploratoryFieldSpec(parent + ".credentialsMetadata");
+            this.CredentialsMetadata.ApplyExploratoryFieldSpec(ec.NewChild("credentialsMetadata"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PasskeyMetadata> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PasskeyMetadata());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<PasskeyMetadata> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

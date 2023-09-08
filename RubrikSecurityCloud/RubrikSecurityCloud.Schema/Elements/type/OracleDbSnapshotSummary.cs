@@ -134,45 +134,44 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? DatabaseName
         // GraphQL -> databaseName: String! (scalar)
-        if (this.DatabaseName == null && Exploration.Includes(parent + ".databaseName", true))
+        if (this.DatabaseName == null && ec.Includes("databaseName",true))
         {
             this.DatabaseName = "FETCH";
         }
         //      C# -> System.String? HostOrRacManagedId
         // GraphQL -> hostOrRacManagedId: String (scalar)
-        if (this.HostOrRacManagedId == null && Exploration.Includes(parent + ".hostOrRacManagedId", true))
+        if (this.HostOrRacManagedId == null && ec.Includes("hostOrRacManagedId",true))
         {
             this.HostOrRacManagedId = "FETCH";
         }
         //      C# -> System.String? HostOrRacName
         // GraphQL -> hostOrRacName: String (scalar)
-        if (this.HostOrRacName == null && Exploration.Includes(parent + ".hostOrRacName", true))
+        if (this.HostOrRacName == null && ec.Includes("hostOrRacName",true))
         {
             this.HostOrRacName = "FETCH";
         }
         //      C# -> System.Boolean? IsValid
         // GraphQL -> isValid: Boolean (scalar)
-        if (this.IsValid == null && Exploration.Includes(parent + ".isValid", true))
+        if (this.IsValid == null && ec.Includes("isValid",true))
         {
             this.IsValid = true;
         }
         //      C# -> List<System.String>? Tablespaces
         // GraphQL -> tablespaces: [String!]! (scalar)
-        if (this.Tablespaces == null && Exploration.Includes(parent + ".tablespaces", true))
+        if (this.Tablespaces == null && ec.Includes("tablespaces",true))
         {
             this.Tablespaces = new List<System.String>();
         }
         //      C# -> BaseSnapshotSummary? BaseSnapshotSummary
         // GraphQL -> baseSnapshotSummary: BaseSnapshotSummary (type)
-        if (this.BaseSnapshotSummary == null && Exploration.Includes(parent + ".baseSnapshotSummary"))
+        if (this.BaseSnapshotSummary == null && ec.Includes("baseSnapshotSummary",false))
         {
             this.BaseSnapshotSummary = new BaseSnapshotSummary();
-            this.BaseSnapshotSummary.ApplyExploratoryFieldSpec(parent + ".baseSnapshotSummary");
+            this.BaseSnapshotSummary.ApplyExploratoryFieldSpec(ec.NewChild("baseSnapshotSummary"));
         }
     }
 
@@ -206,12 +205,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<OracleDbSnapshotSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new OracleDbSnapshotSummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<OracleDbSnapshotSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

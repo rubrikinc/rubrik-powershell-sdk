@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> CloudProvider? CloudProvider
         // GraphQL -> cloudProvider: CloudProvider! (enum)
-        if (this.CloudProvider == null && Exploration.Includes(parent + ".cloudProvider", true))
+        if (this.CloudProvider == null && ec.Includes("cloudProvider",true))
         {
             this.CloudProvider = new CloudProvider();
         }
         //      C# -> RetentionUnit? RetentionUnit
         // GraphQL -> retentionUnit: RetentionUnit! (enum)
-        if (this.RetentionUnit == null && Exploration.Includes(parent + ".retentionUnit", true))
+        if (this.RetentionUnit == null && ec.Includes("retentionUnit",true))
         {
             this.RetentionUnit = new RetentionUnit();
         }
         //      C# -> System.String? ReplicationTargetRegion
         // GraphQL -> replicationTargetRegion: String! (scalar)
-        if (this.ReplicationTargetRegion == null && Exploration.Includes(parent + ".replicationTargetRegion", true))
+        if (this.ReplicationTargetRegion == null && ec.Includes("replicationTargetRegion",true))
         {
             this.ReplicationTargetRegion = "FETCH";
         }
         //      C# -> System.Int32? Retention
         // GraphQL -> retention: Int! (scalar)
-        if (this.Retention == null && Exploration.Includes(parent + ".retention", true))
+        if (this.Retention == null && ec.Includes("retention",true))
         {
             this.Retention = Int32.MinValue;
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ReplicationToCloudRegionSpec> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ReplicationToCloudRegionSpec());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ReplicationToCloudRegionSpec> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

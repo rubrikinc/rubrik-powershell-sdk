@@ -115,36 +115,35 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<VappVmRestoreSpec>? AllChildVmsWithDefaultNetworkConnections
         // GraphQL -> allChildVmsWithDefaultNetworkConnections: [VappVmRestoreSpec!]! (type)
-        if (this.AllChildVmsWithDefaultNetworkConnections == null && Exploration.Includes(parent + ".allChildVmsWithDefaultNetworkConnections"))
+        if (this.AllChildVmsWithDefaultNetworkConnections == null && ec.Includes("allChildVmsWithDefaultNetworkConnections",false))
         {
             this.AllChildVmsWithDefaultNetworkConnections = new List<VappVmRestoreSpec>();
-            this.AllChildVmsWithDefaultNetworkConnections.ApplyExploratoryFieldSpec(parent + ".allChildVmsWithDefaultNetworkConnections");
+            this.AllChildVmsWithDefaultNetworkConnections.ApplyExploratoryFieldSpec(ec.NewChild("allChildVmsWithDefaultNetworkConnections"));
         }
         //      C# -> List<VcdOrgVdcStorageProfile>? AvailableStoragePolicies
         // GraphQL -> availableStoragePolicies: [VcdOrgVdcStorageProfile!]! (type)
-        if (this.AvailableStoragePolicies == null && Exploration.Includes(parent + ".availableStoragePolicies"))
+        if (this.AvailableStoragePolicies == null && ec.Includes("availableStoragePolicies",false))
         {
             this.AvailableStoragePolicies = new List<VcdOrgVdcStorageProfile>();
-            this.AvailableStoragePolicies.ApplyExploratoryFieldSpec(parent + ".availableStoragePolicies");
+            this.AvailableStoragePolicies.ApplyExploratoryFieldSpec(ec.NewChild("availableStoragePolicies"));
         }
         //      C# -> List<CreateVappNetworkParams>? RestorableNetworks
         // GraphQL -> restorableNetworks: [CreateVappNetworkParams!]! (type)
-        if (this.RestorableNetworks == null && Exploration.Includes(parent + ".restorableNetworks"))
+        if (this.RestorableNetworks == null && ec.Includes("restorableNetworks",false))
         {
             this.RestorableNetworks = new List<CreateVappNetworkParams>();
-            this.RestorableNetworks.ApplyExploratoryFieldSpec(parent + ".restorableNetworks");
+            this.RestorableNetworks.ApplyExploratoryFieldSpec(ec.NewChild("restorableNetworks"));
         }
         //      C# -> List<VappNetworkSummary>? TargetVappNetworks
         // GraphQL -> targetVappNetworks: [VappNetworkSummary!]! (type)
-        if (this.TargetVappNetworks == null && Exploration.Includes(parent + ".targetVappNetworks"))
+        if (this.TargetVappNetworks == null && ec.Includes("targetVappNetworks",false))
         {
             this.TargetVappNetworks = new List<VappNetworkSummary>();
-            this.TargetVappNetworks.ApplyExploratoryFieldSpec(parent + ".targetVappNetworks");
+            this.TargetVappNetworks.ApplyExploratoryFieldSpec(ec.NewChild("targetVappNetworks"));
         }
     }
 
@@ -178,12 +177,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VappExportOptions> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VappExportOptions());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VappExportOptions> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Domain
         // GraphQL -> domain: String (scalar)
-        if (this.Domain == null && Exploration.Includes(parent + ".domain", true))
+        if (this.Domain == null && ec.Includes("domain",true))
         {
             this.Domain = "FETCH";
         }
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)
-        if (this.Username == null && Exploration.Includes(parent + ".username", true))
+        if (this.Username == null && ec.Includes("username",true))
         {
             this.Username = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RestoreFormConfigurationGuestOs> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RestoreFormConfigurationGuestOs());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<RestoreFormConfigurationGuestOs> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

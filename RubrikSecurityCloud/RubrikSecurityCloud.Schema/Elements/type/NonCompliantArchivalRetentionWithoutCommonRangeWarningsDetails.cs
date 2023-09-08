@@ -79,21 +79,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> WarningSeverityEnum? Severity
         // GraphQL -> severity: WarningSeverityEnum! (enum)
-        if (this.Severity == null && Exploration.Includes(parent + ".severity", true))
+        if (this.Severity == null && ec.Includes("severity",true))
         {
             this.Severity = new WarningSeverityEnum();
         }
         //      C# -> List<ArchivalLocationWarningsDetails>? AllWarnings
         // GraphQL -> allWarnings: [ArchivalLocationWarningsDetails!]! (type)
-        if (this.AllWarnings == null && Exploration.Includes(parent + ".allWarnings"))
+        if (this.AllWarnings == null && ec.Includes("allWarnings",false))
         {
             this.AllWarnings = new List<ArchivalLocationWarningsDetails>();
-            this.AllWarnings.ApplyExploratoryFieldSpec(parent + ".allWarnings");
+            this.AllWarnings.ApplyExploratoryFieldSpec(ec.NewChild("allWarnings"));
         }
     }
 
@@ -127,12 +126,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<NonCompliantArchivalRetentionWithoutCommonRangeWarningsDetails> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new NonCompliantArchivalRetentionWithoutCommonRangeWarningsDetails());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<NonCompliantArchivalRetentionWithoutCommonRangeWarningsDetails> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> RetentionUnit? Unit
         // GraphQL -> unit: RetentionUnit! (enum)
-        if (this.Unit == null && Exploration.Includes(parent + ".unit", true))
+        if (this.Unit == null && ec.Includes("unit",true))
         {
             this.Unit = new RetentionUnit();
         }
         //      C# -> System.Int32? DurationField
         // GraphQL -> duration: Int! (scalar)
-        if (this.DurationField == null && Exploration.Includes(parent + ".duration", true))
+        if (this.DurationField == null && ec.Includes("duration",true))
         {
             this.DurationField = Int32.MinValue;
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<Duration> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new Duration());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<Duration> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

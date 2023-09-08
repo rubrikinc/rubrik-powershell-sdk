@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "QUARTERLY")]
         QUARTERLY,
 
+        [EnumMember(Value = "UNKNOWN_FREQUENCY")]
+        UNKNOWN_FREQUENCY,
+
         [EnumMember(Value = "WEEKLY")]
         WEEKLY
 

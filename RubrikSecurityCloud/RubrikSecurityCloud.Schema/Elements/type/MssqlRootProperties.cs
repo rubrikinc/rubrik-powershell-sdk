@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> MssqlRootPropertiesRootType? RootType
         // GraphQL -> rootType: MssqlRootPropertiesRootType! (enum)
-        if (this.RootType == null && Exploration.Includes(parent + ".rootType", true))
+        if (this.RootType == null && ec.Includes("rootType",true))
         {
             this.RootType = new MssqlRootPropertiesRootType();
         }
         //      C# -> System.String? RootId
         // GraphQL -> rootId: String (scalar)
-        if (this.RootId == null && Exploration.Includes(parent + ".rootId", true))
+        if (this.RootId == null && ec.Includes("rootId",true))
         {
             this.RootId = "FETCH";
         }
         //      C# -> System.String? RootName
         // GraphQL -> rootName: String! (scalar)
-        if (this.RootName == null && Exploration.Includes(parent + ".rootName", true))
+        if (this.RootName == null && ec.Includes("rootName",true))
         {
             this.RootName = "FETCH";
         }
         //      C# -> System.String? RootRole
         // GraphQL -> rootRole: String (scalar)
-        if (this.RootRole == null && Exploration.Includes(parent + ".rootRole", true))
+        if (this.RootRole == null && ec.Includes("rootRole",true))
         {
             this.RootRole = "FETCH";
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<MssqlRootProperties> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new MssqlRootProperties());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<MssqlRootProperties> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

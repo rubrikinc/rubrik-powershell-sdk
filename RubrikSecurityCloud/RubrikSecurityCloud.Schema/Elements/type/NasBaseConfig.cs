@@ -201,72 +201,71 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? ApiCertificate
         // GraphQL -> apiCertificate: String (scalar)
-        if (this.ApiCertificate == null && Exploration.Includes(parent + ".apiCertificate", true))
+        if (this.ApiCertificate == null && ec.Includes("apiCertificate",true))
         {
             this.ApiCertificate = "FETCH";
         }
         //      C# -> System.String? ApiEndpoint
         // GraphQL -> apiEndpoint: String (scalar)
-        if (this.ApiEndpoint == null && Exploration.Includes(parent + ".apiEndpoint", true))
+        if (this.ApiEndpoint == null && ec.Includes("apiEndpoint",true))
         {
             this.ApiEndpoint = "FETCH";
         }
         //      C# -> System.String? ApiHostname
         // GraphQL -> apiHostname: String (scalar)
-        if (this.ApiHostname == null && Exploration.Includes(parent + ".apiHostname", true))
+        if (this.ApiHostname == null && ec.Includes("apiHostname",true))
         {
             this.ApiHostname = "FETCH";
         }
         //      C# -> System.String? ApiUsername
         // GraphQL -> apiUsername: String (scalar)
-        if (this.ApiUsername == null && Exploration.Includes(parent + ".apiUsername", true))
+        if (this.ApiUsername == null && ec.Includes("apiUsername",true))
         {
             this.ApiUsername = "FETCH";
         }
         //      C# -> System.Boolean? IsIsilonChangelistEnabled
         // GraphQL -> isIsilonChangelistEnabled: Boolean (scalar)
-        if (this.IsIsilonChangelistEnabled == null && Exploration.Includes(parent + ".isIsilonChangelistEnabled", true))
+        if (this.IsIsilonChangelistEnabled == null && ec.Includes("isIsilonChangelistEnabled",true))
         {
             this.IsIsilonChangelistEnabled = true;
         }
         //      C# -> System.Boolean? IsNetAppSnapDiffEnabled
         // GraphQL -> isNetAppSnapDiffEnabled: Boolean (scalar)
-        if (this.IsNetAppSnapDiffEnabled == null && Exploration.Includes(parent + ".isNetAppSnapDiffEnabled", true))
+        if (this.IsNetAppSnapDiffEnabled == null && ec.Includes("isNetAppSnapDiffEnabled",true))
         {
             this.IsNetAppSnapDiffEnabled = true;
         }
         //      C# -> System.Boolean? IsNutanixCftEnabled
         // GraphQL -> isNutanixCftEnabled: Boolean (scalar)
-        if (this.IsNutanixCftEnabled == null && Exploration.Includes(parent + ".isNutanixCftEnabled", true))
+        if (this.IsNutanixCftEnabled == null && ec.Includes("isNutanixCftEnabled",true))
         {
             this.IsNutanixCftEnabled = true;
         }
         //      C# -> System.Boolean? IsShareAutoDiscoveryEnabled
         // GraphQL -> isShareAutoDiscoveryEnabled: Boolean (scalar)
-        if (this.IsShareAutoDiscoveryEnabled == null && Exploration.Includes(parent + ".isShareAutoDiscoveryEnabled", true))
+        if (this.IsShareAutoDiscoveryEnabled == null && ec.Includes("isShareAutoDiscoveryEnabled",true))
         {
             this.IsShareAutoDiscoveryEnabled = true;
         }
         //      C# -> System.Boolean? IsSnapdiffEnabled
         // GraphQL -> isSnapdiffEnabled: Boolean (scalar)
-        if (this.IsSnapdiffEnabled == null && Exploration.Includes(parent + ".isSnapdiffEnabled", true))
+        if (this.IsSnapdiffEnabled == null && ec.Includes("isSnapdiffEnabled",true))
         {
             this.IsSnapdiffEnabled = true;
         }
         //      C# -> System.String? VendorType
         // GraphQL -> vendorType: String! (scalar)
-        if (this.VendorType == null && Exploration.Includes(parent + ".vendorType", true))
+        if (this.VendorType == null && ec.Includes("vendorType",true))
         {
             this.VendorType = "FETCH";
         }
         //      C# -> System.String? ZoneName
         // GraphQL -> zoneName: String (scalar)
-        if (this.ZoneName == null && Exploration.Includes(parent + ".zoneName", true))
+        if (this.ZoneName == null && ec.Includes("zoneName",true))
         {
             this.ZoneName = "FETCH";
         }
@@ -302,12 +301,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<NasBaseConfig> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new NasBaseConfig());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<NasBaseConfig> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

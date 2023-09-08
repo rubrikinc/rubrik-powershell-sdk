@@ -458,7 +458,25 @@ Deletes a Db2 database.
                 fieldSpecObj = (AddDb2InstanceReply)this.Field;
             }
             string fieldSpecDoc = Mutation.AddDb2Instance(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	db2InstanceRequestConfig = @{
+		# REQUIRED
+		hostIds = @(
+			<System.String>
+		)
+		# REQUIRED
+		instanceName = <System.String>
+		# REQUIRED
+		password = <System.String>
+		# REQUIRED
+		username = <System.String>
+	}
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -481,7 +499,12 @@ Deletes a Db2 database.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.DeleteDb2Instance(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -504,7 +527,12 @@ Deletes a Db2 database.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.DiscoverDb2Instance(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -527,7 +555,25 @@ Deletes a Db2 database.
                 fieldSpecObj = (PatchDb2InstanceReply)this.Field;
             }
             string fieldSpecDoc = Mutation.PatchDb2Instance(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	db2InstanceRequestConfig = @{
+		# OPTIONAL
+		hostIds = @(
+			<System.String>
+		)
+		# OPTIONAL
+		password = <System.String>
+		# OPTIONAL
+		username = <System.String>
+		# OPTIONAL
+		instanceName = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -550,7 +596,17 @@ Deletes a Db2 database.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.CreateOnDemandDb2Backup(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	config = @{
+		# OPTIONAL
+		slaId = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -573,7 +629,14 @@ Deletes a Db2 database.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.DownloadDb2Snapshot(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	locationId = <System.String>
+	# REQUIRED
+	snapshotId = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -596,7 +659,19 @@ Deletes a Db2 database.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.DownloadDb2SnapshotsForPointInTimeRecovery(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	downloadConfig = @{
+		# OPTIONAL
+		pointInTime = <DateTime>
+		# REQUIRED
+		preferredLocationId = <System.String>
+	}
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -619,7 +694,18 @@ Deletes a Db2 database.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.ExpireDownloadedDb2Snapshots(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# OPTIONAL
+	afterTime = <DateTime>
+	# OPTIONAL
+	beforeTime = <DateTime>
+	# OPTIONAL
+	shouldExpireLogsOnly = <System.Boolean>
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -642,7 +728,19 @@ Deletes a Db2 database.
                 fieldSpecObj = (PatchDb2DatabaseReply)this.Field;
             }
             string fieldSpecDoc = Mutation.PatchDb2Database(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	db2DatabaseConfig = @{
+		# OPTIONAL
+		backupParallelism = <System.Int32>
+		# OPTIONAL
+		backupSessions = <System.Int32>
+	}
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -665,7 +763,12 @@ Deletes a Db2 database.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.RefreshDb2Database(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 
@@ -688,7 +791,12 @@ Deletes a Db2 database.
                 fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
             string fieldSpecDoc = Mutation.DeleteDb2Database(ref fieldSpecObj);
-            BuildInput(fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
 

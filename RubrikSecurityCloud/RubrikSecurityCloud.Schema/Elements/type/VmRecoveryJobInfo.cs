@@ -117,36 +117,35 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? CdmRecoveryJobId
         // GraphQL -> cdmRecoveryJobId: String! (scalar)
-        if (this.CdmRecoveryJobId == null && Exploration.Includes(parent + ".cdmRecoveryJobId", true))
+        if (this.CdmRecoveryJobId == null && ec.Includes("cdmRecoveryJobId",true))
         {
             this.CdmRecoveryJobId = "FETCH";
         }
         //      C# -> System.String? JobStatus
         // GraphQL -> jobStatus: String! (scalar)
-        if (this.JobStatus == null && Exploration.Includes(parent + ".jobStatus", true))
+        if (this.JobStatus == null && ec.Includes("jobStatus",true))
         {
             this.JobStatus = "FETCH";
         }
         //      C# -> System.String? VmId
         // GraphQL -> vmId: String! (scalar)
-        if (this.VmId == null && Exploration.Includes(parent + ".vmId", true))
+        if (this.VmId == null && ec.Includes("vmId",true))
         {
             this.VmId = "FETCH";
         }
         //      C# -> System.String? VmName
         // GraphQL -> vmName: String! (scalar)
-        if (this.VmName == null && Exploration.Includes(parent + ".vmName", true))
+        if (this.VmName == null && ec.Includes("vmName",true))
         {
             this.VmName = "FETCH";
         }
         //      C# -> System.Int64? VmSizeInKbs
         // GraphQL -> vmSizeInKbs: Long! (scalar)
-        if (this.VmSizeInKbs == null && Exploration.Includes(parent + ".vmSizeInKbs", true))
+        if (this.VmSizeInKbs == null && ec.Includes("vmSizeInKbs",true))
         {
             this.VmSizeInKbs = new System.Int64();
         }
@@ -182,12 +181,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VmRecoveryJobInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VmRecoveryJobInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VmRecoveryJobInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -137,46 +137,45 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ManagedObjectType? SnappableType
         // GraphQL -> snappableType: ManagedObjectType! (enum)
-        if (this.SnappableType == null && Exploration.Includes(parent + ".snappableType", true))
+        if (this.SnappableType == null && ec.Includes("snappableType",true))
         {
             this.SnappableType = new ManagedObjectType();
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.Int32? SnapshotCount
         // GraphQL -> snapshotCount: Int! (scalar)
-        if (this.SnapshotCount == null && Exploration.Includes(parent + ".snapshotCount", true))
+        if (this.SnapshotCount == null && ec.Includes("snapshotCount",true))
         {
             this.SnapshotCount = Int32.MinValue;
         }
         //      C# -> List<LocationPathPoint>? PhysicalLocation
         // GraphQL -> physicalLocation: [LocationPathPoint!]! (type)
-        if (this.PhysicalLocation == null && Exploration.Includes(parent + ".physicalLocation"))
+        if (this.PhysicalLocation == null && ec.Includes("physicalLocation",false))
         {
             this.PhysicalLocation = new List<LocationPathPoint>();
-            this.PhysicalLocation.ApplyExploratoryFieldSpec(parent + ".physicalLocation");
+            this.PhysicalLocation.ApplyExploratoryFieldSpec(ec.NewChild("physicalLocation"));
         }
         //      C# -> List<LegalHoldSnapshotDetail>? SnapshotDetails
         // GraphQL -> snapshotDetails: [LegalHoldSnapshotDetail!]! (type)
-        if (this.SnapshotDetails == null && Exploration.Includes(parent + ".snapshotDetails"))
+        if (this.SnapshotDetails == null && ec.Includes("snapshotDetails",false))
         {
             this.SnapshotDetails = new List<LegalHoldSnapshotDetail>();
-            this.SnapshotDetails.ApplyExploratoryFieldSpec(parent + ".snapshotDetails");
+            this.SnapshotDetails.ApplyExploratoryFieldSpec(ec.NewChild("snapshotDetails"));
         }
     }
 
@@ -210,12 +209,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<LegalHoldSnappableDetail> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new LegalHoldSnappableDetail());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<LegalHoldSnappableDetail> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

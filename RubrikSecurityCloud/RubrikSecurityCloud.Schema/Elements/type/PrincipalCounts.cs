@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("mediumRiskCount")]
         public SummaryCount? MediumRiskCount { get; set; }
 
+        //      C# -> SummaryCount? TotalCount
+        // GraphQL -> totalCount: SummaryCount (type)
+        [JsonProperty("totalCount")]
+        public SummaryCount? TotalCount { get; set; }
+
 
         #endregion
 
@@ -47,7 +52,8 @@ namespace RubrikSecurityCloud.Types
     public PrincipalCounts Set(
         SummaryCount? HighRiskCount = null,
         SummaryCount? LowRiskCount = null,
-        SummaryCount? MediumRiskCount = null
+        SummaryCount? MediumRiskCount = null,
+        SummaryCount? TotalCount = null
     ) 
     {
         if ( HighRiskCount != null ) {
@@ -58,6 +64,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( MediumRiskCount != null ) {
             this.MediumRiskCount = MediumRiskCount;
+        }
+        if ( TotalCount != null ) {
+            this.TotalCount = TotalCount;
         }
         return this;
     }
@@ -93,34 +102,48 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "mediumRiskCount {\n" + fspec + ind + "}\n" ;
             }
         }
+        //      C# -> SummaryCount? TotalCount
+        // GraphQL -> totalCount: SummaryCount (type)
+        if (this.TotalCount != null) {
+            var fspec = this.TotalCount.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "totalCount {\n" + fspec + ind + "}\n" ;
+            }
+        }
         return s;
     }
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> SummaryCount? HighRiskCount
         // GraphQL -> highRiskCount: SummaryCount (type)
-        if (this.HighRiskCount == null && Exploration.Includes(parent + ".highRiskCount"))
+        if (this.HighRiskCount == null && ec.Includes("highRiskCount",false))
         {
             this.HighRiskCount = new SummaryCount();
-            this.HighRiskCount.ApplyExploratoryFieldSpec(parent + ".highRiskCount");
+            this.HighRiskCount.ApplyExploratoryFieldSpec(ec.NewChild("highRiskCount"));
         }
         //      C# -> SummaryCount? LowRiskCount
         // GraphQL -> lowRiskCount: SummaryCount (type)
-        if (this.LowRiskCount == null && Exploration.Includes(parent + ".lowRiskCount"))
+        if (this.LowRiskCount == null && ec.Includes("lowRiskCount",false))
         {
             this.LowRiskCount = new SummaryCount();
-            this.LowRiskCount.ApplyExploratoryFieldSpec(parent + ".lowRiskCount");
+            this.LowRiskCount.ApplyExploratoryFieldSpec(ec.NewChild("lowRiskCount"));
         }
         //      C# -> SummaryCount? MediumRiskCount
         // GraphQL -> mediumRiskCount: SummaryCount (type)
-        if (this.MediumRiskCount == null && Exploration.Includes(parent + ".mediumRiskCount"))
+        if (this.MediumRiskCount == null && ec.Includes("mediumRiskCount",false))
         {
             this.MediumRiskCount = new SummaryCount();
-            this.MediumRiskCount.ApplyExploratoryFieldSpec(parent + ".mediumRiskCount");
+            this.MediumRiskCount.ApplyExploratoryFieldSpec(ec.NewChild("mediumRiskCount"));
+        }
+        //      C# -> SummaryCount? TotalCount
+        // GraphQL -> totalCount: SummaryCount (type)
+        if (this.TotalCount == null && ec.Includes("totalCount",false))
+        {
+            this.TotalCount = new SummaryCount();
+            this.TotalCount.ApplyExploratoryFieldSpec(ec.NewChild("totalCount"));
         }
     }
 
@@ -154,12 +177,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PrincipalCounts> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PrincipalCounts());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<PrincipalCounts> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

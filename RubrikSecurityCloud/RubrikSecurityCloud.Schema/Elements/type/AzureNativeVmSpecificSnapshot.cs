@@ -96,28 +96,27 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: UUID! (scalar)
-        if (this.SnapshotId == null && Exploration.Includes(parent + ".snapshotId", true))
+        if (this.SnapshotId == null && ec.Includes("snapshotId",true))
         {
             this.SnapshotId = "FETCH";
         }
         //      C# -> List<AzureNativeAttachedDiskSpecificSnapshot>? DataDiskSnapshots
         // GraphQL -> dataDiskSnapshots: [AzureNativeAttachedDiskSpecificSnapshot!]! (type)
-        if (this.DataDiskSnapshots == null && Exploration.Includes(parent + ".dataDiskSnapshots"))
+        if (this.DataDiskSnapshots == null && ec.Includes("dataDiskSnapshots",false))
         {
             this.DataDiskSnapshots = new List<AzureNativeAttachedDiskSpecificSnapshot>();
-            this.DataDiskSnapshots.ApplyExploratoryFieldSpec(parent + ".dataDiskSnapshots");
+            this.DataDiskSnapshots.ApplyExploratoryFieldSpec(ec.NewChild("dataDiskSnapshots"));
         }
         //      C# -> AzureNativeAttachedDiskSpecificSnapshot? OsDiskSnapshot
         // GraphQL -> osDiskSnapshot: AzureNativeAttachedDiskSpecificSnapshot (type)
-        if (this.OsDiskSnapshot == null && Exploration.Includes(parent + ".osDiskSnapshot"))
+        if (this.OsDiskSnapshot == null && ec.Includes("osDiskSnapshot",false))
         {
             this.OsDiskSnapshot = new AzureNativeAttachedDiskSpecificSnapshot();
-            this.OsDiskSnapshot.ApplyExploratoryFieldSpec(parent + ".osDiskSnapshot");
+            this.OsDiskSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("osDiskSnapshot"));
         }
     }
 
@@ -151,12 +150,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AzureNativeVmSpecificSnapshot> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AzureNativeVmSpecificSnapshot());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AzureNativeVmSpecificSnapshot> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

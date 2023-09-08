@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? Https
         // GraphQL -> https: Boolean! (scalar)
-        if (this.Https == null && Exploration.Includes(parent + ".https", true))
+        if (this.Https == null && ec.Includes("https",true))
         {
             this.Https = true;
         }
         //      C# -> System.Boolean? Ikvm
         // GraphQL -> iKvm: Boolean! (scalar)
-        if (this.Ikvm == null && Exploration.Includes(parent + ".iKvm", true))
+        if (this.Ikvm == null && ec.Includes("iKvm",true))
         {
             this.Ikvm = true;
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<IpmiAccess> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new IpmiAccess());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<IpmiAccess> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

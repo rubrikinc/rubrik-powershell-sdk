@@ -370,145 +370,144 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ManagedVolumeApplicationTag? ApplicationTag
         // GraphQL -> applicationTag: ManagedVolumeApplicationTag (enum)
-        if (this.ApplicationTag == null && Exploration.Includes(parent + ".applicationTag", true))
+        if (this.ApplicationTag == null && ec.Includes("applicationTag",true))
         {
             this.ApplicationTag = new ManagedVolumeApplicationTag();
         }
         //      C# -> CdmManagedVolumeType? MvType
         // GraphQL -> mvType: CdmManagedVolumeType (enum)
-        if (this.MvType == null && Exploration.Includes(parent + ".mvType", true))
+        if (this.MvType == null && ec.Includes("mvType",true))
         {
             this.MvType = new CdmManagedVolumeType();
         }
         //      C# -> ManagedVolumeShareType? ShareType
         // GraphQL -> shareType: ManagedVolumeShareType! (enum)
-        if (this.ShareType == null && Exploration.Includes(parent + ".shareType", true))
+        if (this.ShareType == null && ec.Includes("shareType",true))
         {
             this.ShareType = new ManagedVolumeShareType();
         }
         //      C# -> ManagedVolumeState? State
         // GraphQL -> state: ManagedVolumeState! (enum)
-        if (this.State == null && Exploration.Includes(parent + ".state", true))
+        if (this.State == null && ec.Includes("state",true))
         {
             this.State = new ManagedVolumeState();
         }
         //      C# -> List<System.String>? HostPatterns
         // GraphQL -> hostPatterns: [String!]! (scalar)
-        if (this.HostPatterns == null && Exploration.Includes(parent + ".hostPatterns", true))
+        if (this.HostPatterns == null && ec.Includes("hostPatterns",true))
         {
             this.HostPatterns = new List<System.String>();
         }
         //      C# -> System.Boolean? IsDeleted
         // GraphQL -> isDeleted: Boolean! (scalar)
-        if (this.IsDeleted == null && Exploration.Includes(parent + ".isDeleted", true))
+        if (this.IsDeleted == null && ec.Includes("isDeleted",true))
         {
             this.IsDeleted = true;
         }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
-        if (this.IsRelic == null && Exploration.Includes(parent + ".isRelic", true))
+        if (this.IsRelic == null && ec.Includes("isRelic",true))
         {
             this.IsRelic = true;
         }
         //      C# -> System.Boolean? IsWritable
         // GraphQL -> isWritable: Boolean! (scalar)
-        if (this.IsWritable == null && Exploration.Includes(parent + ".isWritable", true))
+        if (this.IsWritable == null && ec.Includes("isWritable",true))
         {
             this.IsWritable = true;
         }
         //      C# -> System.Int32? NumChannels
         // GraphQL -> numChannels: Int! (scalar)
-        if (this.NumChannels == null && Exploration.Includes(parent + ".numChannels", true))
+        if (this.NumChannels == null && ec.Includes("numChannels",true))
         {
             this.NumChannels = Int32.MinValue;
         }
         //      C# -> System.Int32? PendingSnapshotCount
         // GraphQL -> pendingSnapshotCount: Int! (scalar)
-        if (this.PendingSnapshotCount == null && Exploration.Includes(parent + ".pendingSnapshotCount", true))
+        if (this.PendingSnapshotCount == null && ec.Includes("pendingSnapshotCount",true))
         {
             this.PendingSnapshotCount = Int32.MinValue;
         }
         //      C# -> System.String? SmbDomainName
         // GraphQL -> smbDomainName: String (scalar)
-        if (this.SmbDomainName == null && Exploration.Includes(parent + ".smbDomainName", true))
+        if (this.SmbDomainName == null && ec.Includes("smbDomainName",true))
         {
             this.SmbDomainName = "FETCH";
         }
         //      C# -> List<System.String>? SmbValidIps
         // GraphQL -> smbValidIps: [String!]! (scalar)
-        if (this.SmbValidIps == null && Exploration.Includes(parent + ".smbValidIps", true))
+        if (this.SmbValidIps == null && ec.Includes("smbValidIps",true))
         {
             this.SmbValidIps = new List<System.String>();
         }
         //      C# -> List<System.String>? SmbValidUsers
         // GraphQL -> smbValidUsers: [String!]! (scalar)
-        if (this.SmbValidUsers == null && Exploration.Includes(parent + ".smbValidUsers", true))
+        if (this.SmbValidUsers == null && ec.Includes("smbValidUsers",true))
         {
             this.SmbValidUsers = new List<System.String>();
         }
         //      C# -> System.Int32? SnapshotCount
         // GraphQL -> snapshotCount: Int! (scalar)
-        if (this.SnapshotCount == null && Exploration.Includes(parent + ".snapshotCount", true))
+        if (this.SnapshotCount == null && ec.Includes("snapshotCount",true))
         {
             this.SnapshotCount = Int32.MinValue;
         }
         //      C# -> System.String? Subnet
         // GraphQL -> subnet: String (scalar)
-        if (this.Subnet == null && Exploration.Includes(parent + ".subnet", true))
+        if (this.Subnet == null && ec.Includes("subnet",true))
         {
             this.Subnet = "FETCH";
         }
         //      C# -> System.Int64? UsedSize
         // GraphQL -> usedSize: Long! (scalar)
-        if (this.UsedSize == null && Exploration.Includes(parent + ".usedSize", true))
+        if (this.UsedSize == null && ec.Includes("usedSize",true))
         {
             this.UsedSize = new System.Int64();
         }
         //      C# -> System.Int64? VolumeSize
         // GraphQL -> volumeSize: Long! (scalar)
-        if (this.VolumeSize == null && Exploration.Includes(parent + ".volumeSize", true))
+        if (this.VolumeSize == null && ec.Includes("volumeSize",true))
         {
             this.VolumeSize = new System.Int64();
         }
         //      C# -> List<Link>? Links
         // GraphQL -> links: [Link!]! (type)
-        if (this.Links == null && Exploration.Includes(parent + ".links"))
+        if (this.Links == null && ec.Includes("links",false))
         {
             this.Links = new List<Link>();
-            this.Links.ApplyExploratoryFieldSpec(parent + ".links");
+            this.Links.ApplyExploratoryFieldSpec(ec.NewChild("links"));
         }
         //      C# -> ManagedVolumeExport? MainExport
         // GraphQL -> mainExport: ManagedVolumeExport (type)
-        if (this.MainExport == null && Exploration.Includes(parent + ".mainExport"))
+        if (this.MainExport == null && ec.Includes("mainExport",false))
         {
             this.MainExport = new ManagedVolumeExport();
-            this.MainExport.ApplyExploratoryFieldSpec(parent + ".mainExport");
+            this.MainExport.ApplyExploratoryFieldSpec(ec.NewChild("mainExport"));
         }
         //      C# -> ManagedObjectPendingSlaInfo? PendingSlaDomain
         // GraphQL -> pendingSlaDomain: ManagedObjectPendingSlaInfo (type)
-        if (this.PendingSlaDomain == null && Exploration.Includes(parent + ".pendingSlaDomain"))
+        if (this.PendingSlaDomain == null && ec.Includes("pendingSlaDomain",false))
         {
             this.PendingSlaDomain = new ManagedObjectPendingSlaInfo();
-            this.PendingSlaDomain.ApplyExploratoryFieldSpec(parent + ".pendingSlaDomain");
+            this.PendingSlaDomain.ApplyExploratoryFieldSpec(ec.NewChild("pendingSlaDomain"));
         }
         //      C# -> SlaManagedVolumeDetail? SlaManagedVolumeDetails
         // GraphQL -> slaManagedVolumeDetails: SlaManagedVolumeDetail (type)
-        if (this.SlaManagedVolumeDetails == null && Exploration.Includes(parent + ".slaManagedVolumeDetails"))
+        if (this.SlaManagedVolumeDetails == null && ec.Includes("slaManagedVolumeDetails",false))
         {
             this.SlaManagedVolumeDetails = new SlaManagedVolumeDetail();
-            this.SlaManagedVolumeDetails.ApplyExploratoryFieldSpec(parent + ".slaManagedVolumeDetails");
+            this.SlaManagedVolumeDetails.ApplyExploratoryFieldSpec(ec.NewChild("slaManagedVolumeDetails"));
         }
         //      C# -> CdmWorkload? Snappable
         // GraphQL -> snappable: CdmWorkload (type)
-        if (this.Snappable == null && Exploration.Includes(parent + ".snappable"))
+        if (this.Snappable == null && ec.Includes("snappable",false))
         {
             this.Snappable = new CdmWorkload();
-            this.Snappable.ApplyExploratoryFieldSpec(parent + ".snappable");
+            this.Snappable.ApplyExploratoryFieldSpec(ec.NewChild("snappable"));
         }
     }
 
@@ -542,12 +541,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<UpdateManagedVolumeReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new UpdateManagedVolumeReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<UpdateManagedVolumeReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

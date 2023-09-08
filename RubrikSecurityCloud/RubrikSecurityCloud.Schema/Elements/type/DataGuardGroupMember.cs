@@ -131,42 +131,41 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? DbUniqueName
         // GraphQL -> dbUniqueName: String! (scalar)
-        if (this.DbUniqueName == null && Exploration.Includes(parent + ".dbUniqueName", true))
+        if (this.DbUniqueName == null && ec.Includes("dbUniqueName",true))
         {
             this.DbUniqueName = "FETCH";
         }
         //      C# -> System.String? RacId
         // GraphQL -> racId: String (scalar)
-        if (this.RacId == null && Exploration.Includes(parent + ".racId", true))
+        if (this.RacId == null && ec.Includes("racId",true))
         {
             this.RacId = "FETCH";
         }
         //      C# -> System.String? RacName
         // GraphQL -> racName: String (scalar)
-        if (this.RacName == null && Exploration.Includes(parent + ".racName", true))
+        if (this.RacName == null && ec.Includes("racName",true))
         {
             this.RacName = "FETCH";
         }
         //      C# -> System.String? Role
         // GraphQL -> role: String! (scalar)
-        if (this.Role == null && Exploration.Includes(parent + ".role", true))
+        if (this.Role == null && ec.Includes("role",true))
         {
             this.Role = "FETCH";
         }
         //      C# -> System.String? StandaloneHostId
         // GraphQL -> standaloneHostId: String (scalar)
-        if (this.StandaloneHostId == null && Exploration.Includes(parent + ".standaloneHostId", true))
+        if (this.StandaloneHostId == null && ec.Includes("standaloneHostId",true))
         {
             this.StandaloneHostId = "FETCH";
         }
         //      C# -> System.String? StandaloneHostName
         // GraphQL -> standaloneHostName: String (scalar)
-        if (this.StandaloneHostName == null && Exploration.Includes(parent + ".standaloneHostName", true))
+        if (this.StandaloneHostName == null && ec.Includes("standaloneHostName",true))
         {
             this.StandaloneHostName = "FETCH";
         }
@@ -202,12 +201,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<DataGuardGroupMember> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new DataGuardGroupMember());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<DataGuardGroupMember> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

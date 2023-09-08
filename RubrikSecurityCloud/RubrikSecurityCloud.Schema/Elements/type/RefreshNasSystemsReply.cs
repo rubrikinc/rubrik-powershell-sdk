@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<DiscoverNasSystemSummary>? DiscoverNasSystemSummaries
         // GraphQL -> discoverNasSystemSummaries: [DiscoverNasSystemSummary!]! (type)
-        if (this.DiscoverNasSystemSummaries == null && Exploration.Includes(parent + ".discoverNasSystemSummaries"))
+        if (this.DiscoverNasSystemSummaries == null && ec.Includes("discoverNasSystemSummaries",false))
         {
             this.DiscoverNasSystemSummaries = new List<DiscoverNasSystemSummary>();
-            this.DiscoverNasSystemSummaries.ApplyExploratoryFieldSpec(parent + ".discoverNasSystemSummaries");
+            this.DiscoverNasSystemSummaries.ApplyExploratoryFieldSpec(ec.NewChild("discoverNasSystemSummaries"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RefreshNasSystemsReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RefreshNasSystemsReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<RefreshNasSystemsReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

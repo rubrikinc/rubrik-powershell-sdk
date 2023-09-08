@@ -104,30 +104,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> PastDurationEnum? Value
         // GraphQL -> value: PastDurationEnum (enum)
-        if (this.Value == null && Exploration.Includes(parent + ".value", true))
+        if (this.Value == null && ec.Includes("value",true))
         {
             this.Value = new PastDurationEnum();
         }
         //      C# -> System.String? DisplayValue
         // GraphQL -> displayValue: String! (scalar)
-        if (this.DisplayValue == null && Exploration.Includes(parent + ".displayValue", true))
+        if (this.DisplayValue == null && ec.Includes("displayValue",true))
         {
             this.DisplayValue = "FETCH";
         }
         //      C# -> System.String? ReportHeader
         // GraphQL -> reportHeader: String! (scalar)
-        if (this.ReportHeader == null && Exploration.Includes(parent + ".reportHeader", true))
+        if (this.ReportHeader == null && ec.Includes("reportHeader",true))
         {
             this.ReportHeader = "FETCH";
         }
         //      C# -> System.String? SerializedValue
         // GraphQL -> serializedValue: String! (scalar)
-        if (this.SerializedValue == null && Exploration.Includes(parent + ".serializedValue", true))
+        if (this.SerializedValue == null && ec.Includes("serializedValue",true))
         {
             this.SerializedValue = "FETCH";
         }
@@ -163,12 +162,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<DisplayableValueDateRange> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new DisplayableValueDateRange());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<DisplayableValueDateRange> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

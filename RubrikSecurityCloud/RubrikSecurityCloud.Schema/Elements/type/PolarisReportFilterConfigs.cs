@@ -78,19 +78,18 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<Value>? Values
         // GraphQL -> values: [Value!]! (interface)
-        if (this.Values == null && Exploration.Includes(parent + ".values"))
+        if (this.Values == null && ec.Includes("values",false))
         {
             this.Values = new List<Value>();
-            this.Values.ApplyExploratoryFieldSpec(parent + ".values");
+            this.Values.ApplyExploratoryFieldSpec(ec.NewChild("values"));
         }
         //      C# -> System.String? Key
         // GraphQL -> key: String! (scalar)
-        if (this.Key == null && Exploration.Includes(parent + ".key", true))
+        if (this.Key == null && ec.Includes("key",true))
         {
             this.Key = "FETCH";
         }
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PolarisReportFilterConfigs> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PolarisReportFilterConfigs());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<PolarisReportFilterConfigs> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

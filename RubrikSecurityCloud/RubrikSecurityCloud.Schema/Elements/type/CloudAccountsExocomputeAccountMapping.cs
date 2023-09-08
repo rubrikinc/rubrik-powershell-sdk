@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? ApplicationCloudAccountId
         // GraphQL -> applicationCloudAccountId: UUID! (scalar)
-        if (this.ApplicationCloudAccountId == null && Exploration.Includes(parent + ".applicationCloudAccountId", true))
+        if (this.ApplicationCloudAccountId == null && ec.Includes("applicationCloudAccountId",true))
         {
             this.ApplicationCloudAccountId = "FETCH";
         }
         //      C# -> System.String? ExocomputeCloudAccountId
         // GraphQL -> exocomputeCloudAccountId: UUID! (scalar)
-        if (this.ExocomputeCloudAccountId == null && Exploration.Includes(parent + ".exocomputeCloudAccountId", true))
+        if (this.ExocomputeCloudAccountId == null && ec.Includes("exocomputeCloudAccountId",true))
         {
             this.ExocomputeCloudAccountId = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CloudAccountsExocomputeAccountMapping> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CloudAccountsExocomputeAccountMapping());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CloudAccountsExocomputeAccountMapping> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

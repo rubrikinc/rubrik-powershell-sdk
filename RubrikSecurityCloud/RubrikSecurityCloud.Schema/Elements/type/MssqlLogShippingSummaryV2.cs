@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int32? MakeupReseedLimit
         // GraphQL -> makeupReseedLimit: Int (scalar)
-        if (this.MakeupReseedLimit == null && Exploration.Includes(parent + ".makeupReseedLimit", true))
+        if (this.MakeupReseedLimit == null && ec.Includes("makeupReseedLimit",true))
         {
             this.MakeupReseedLimit = Int32.MinValue;
         }
         //      C# -> MssqlLogShippingSummary? MssqlLogShippingSummary
         // GraphQL -> mssqlLogShippingSummary: MssqlLogShippingSummary (type)
-        if (this.MssqlLogShippingSummary == null && Exploration.Includes(parent + ".mssqlLogShippingSummary"))
+        if (this.MssqlLogShippingSummary == null && ec.Includes("mssqlLogShippingSummary",false))
         {
             this.MssqlLogShippingSummary = new MssqlLogShippingSummary();
-            this.MssqlLogShippingSummary.ApplyExploratoryFieldSpec(parent + ".mssqlLogShippingSummary");
+            this.MssqlLogShippingSummary.ApplyExploratoryFieldSpec(ec.NewChild("mssqlLogShippingSummary"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<MssqlLogShippingSummaryV2> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new MssqlLogShippingSummaryV2());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<MssqlLogShippingSummaryV2> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

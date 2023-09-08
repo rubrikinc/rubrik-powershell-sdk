@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<GcpCloudAccountAddProjectDetail>? Details
         // GraphQL -> details: [GcpCloudAccountAddProjectDetail!]! (type)
-        if (this.Details == null && Exploration.Includes(parent + ".details"))
+        if (this.Details == null && ec.Includes("details",false))
         {
             this.Details = new List<GcpCloudAccountAddProjectDetail>();
-            this.Details.ApplyExploratoryFieldSpec(parent + ".details");
+            this.Details.ApplyExploratoryFieldSpec(ec.NewChild("details"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GcpCloudAccountAddProjectsReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GcpCloudAccountAddProjectsReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<GcpCloudAccountAddProjectsReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

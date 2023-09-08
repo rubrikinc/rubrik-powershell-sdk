@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> SyslogFacilityTypeEnum? Facility
         // GraphQL -> facility: SyslogFacilityTypeEnum! (enum)
-        if (this.Facility == null && Exploration.Includes(parent + ".facility", true))
+        if (this.Facility == null && ec.Includes("facility",true))
         {
             this.Facility = new SyslogFacilityTypeEnum();
         }
         //      C# -> SyslogSeverityTypeEnum? Severity
         // GraphQL -> severity: SyslogSeverityTypeEnum! (enum)
-        if (this.Severity == null && Exploration.Includes(parent + ".severity", true))
+        if (this.Severity == null && ec.Includes("severity",true))
         {
             this.Severity = new SyslogSeverityTypeEnum();
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SyslogSetting> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SyslogSetting());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SyslogSetting> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

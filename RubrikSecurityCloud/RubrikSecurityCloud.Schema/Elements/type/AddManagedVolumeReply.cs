@@ -81,22 +81,21 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> AsyncRequestStatus? AsyncRequestStatus
         // GraphQL -> asyncRequestStatus: AsyncRequestStatus (type)
-        if (this.AsyncRequestStatus == null && Exploration.Includes(parent + ".asyncRequestStatus"))
+        if (this.AsyncRequestStatus == null && ec.Includes("asyncRequestStatus",false))
         {
             this.AsyncRequestStatus = new AsyncRequestStatus();
-            this.AsyncRequestStatus.ApplyExploratoryFieldSpec(parent + ".asyncRequestStatus");
+            this.AsyncRequestStatus.ApplyExploratoryFieldSpec(ec.NewChild("asyncRequestStatus"));
         }
         //      C# -> UpdateManagedVolumeReply? ManagedVolumeSummary
         // GraphQL -> managedVolumeSummary: UpdateManagedVolumeReply (type)
-        if (this.ManagedVolumeSummary == null && Exploration.Includes(parent + ".managedVolumeSummary"))
+        if (this.ManagedVolumeSummary == null && ec.Includes("managedVolumeSummary",false))
         {
             this.ManagedVolumeSummary = new UpdateManagedVolumeReply();
-            this.ManagedVolumeSummary.ApplyExploratoryFieldSpec(parent + ".managedVolumeSummary");
+            this.ManagedVolumeSummary.ApplyExploratoryFieldSpec(ec.NewChild("managedVolumeSummary"));
         }
     }
 
@@ -130,12 +129,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AddManagedVolumeReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AddManagedVolumeReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AddManagedVolumeReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

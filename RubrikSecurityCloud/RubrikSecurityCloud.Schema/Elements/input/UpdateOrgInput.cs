@@ -109,6 +109,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("newSsoGroups")]
         public List<NewSsoGroupInput>? NewSsoGroups { get; set; }
 
+        //      C# -> System.Boolean? IsServiceAccountEnabled
+        // GraphQL -> isServiceAccountEnabled: Boolean (scalar)
+        [JsonProperty("isServiceAccountEnabled")]
+        public System.Boolean? IsServiceAccountEnabled { get; set; }
+
 
         #endregion
 

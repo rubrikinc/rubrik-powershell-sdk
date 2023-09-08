@@ -106,33 +106,32 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? SourceNicAdapterType
         // GraphQL -> sourceNicAdapterType: String! (scalar)
-        if (this.SourceNicAdapterType == null && Exploration.Includes(parent + ".sourceNicAdapterType", true))
+        if (this.SourceNicAdapterType == null && ec.Includes("sourceNicAdapterType",true))
         {
             this.SourceNicAdapterType = "FETCH";
         }
         //      C# -> System.String? SourceNicId
         // GraphQL -> sourceNicId: String! (scalar)
-        if (this.SourceNicId == null && Exploration.Includes(parent + ".sourceNicId", true))
+        if (this.SourceNicId == null && ec.Includes("sourceNicId",true))
         {
             this.SourceNicId = "FETCH";
         }
         //      C# -> System.String? TargetNicId
         // GraphQL -> targetNicId: String! (scalar)
-        if (this.TargetNicId == null && Exploration.Includes(parent + ".targetNicId", true))
+        if (this.TargetNicId == null && ec.Includes("targetNicId",true))
         {
             this.TargetNicId = "FETCH";
         }
         //      C# -> VmNic? SourceNic
         // GraphQL -> sourceNic: VmNic (type)
-        if (this.SourceNic == null && Exploration.Includes(parent + ".sourceNic"))
+        if (this.SourceNic == null && ec.Includes("sourceNic",false))
         {
             this.SourceNic = new VmNic();
-            this.SourceNic.ApplyExploratoryFieldSpec(parent + ".sourceNic");
+            this.SourceNic.ApplyExploratoryFieldSpec(ec.NewChild("sourceNic"));
         }
     }
 
@@ -166,12 +165,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VmNicMapEntry> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VmNicMapEntry());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VmNicMapEntry> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

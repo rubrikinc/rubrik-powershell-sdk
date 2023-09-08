@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> CertificateUsage? Type
         // GraphQL -> type: CertificateUsage! (enum)
-        if (this.Type == null && Exploration.Includes(parent + ".type", true))
+        if (this.Type == null && ec.Includes("type",true))
         {
             this.Type = new CertificateUsage();
         }
         //      C# -> List<CertificateUsageParameter>? Params
         // GraphQL -> params: [CertificateUsageParameter!]! (type)
-        if (this.Params == null && Exploration.Includes(parent + ".params"))
+        if (this.Params == null && ec.Includes("params",false))
         {
             this.Params = new List<CertificateUsageParameter>();
-            this.Params.ApplyExploratoryFieldSpec(parent + ".params");
+            this.Params.ApplyExploratoryFieldSpec(ec.NewChild("params"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CertificateUsageInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CertificateUsageInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CertificateUsageInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

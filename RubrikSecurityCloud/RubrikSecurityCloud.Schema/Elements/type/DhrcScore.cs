@@ -134,45 +134,44 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> DhrcCategory? Category
         // GraphQL -> category: DhrcCategory! (enum)
-        if (this.Category == null && Exploration.Includes(parent + ".category", true))
+        if (this.Category == null && ec.Includes("category",true))
         {
             this.Category = new DhrcCategory();
         }
         //      C# -> DateTime? CalculatedAt
         // GraphQL -> calculatedAt: DateTime (scalar)
-        if (this.CalculatedAt == null && Exploration.Includes(parent + ".calculatedAt", true))
+        if (this.CalculatedAt == null && ec.Includes("calculatedAt",true))
         {
             this.CalculatedAt = new DateTime();
         }
         //      C# -> DateTime? Date
         // GraphQL -> date: DateTime (scalar)
-        if (this.Date == null && Exploration.Includes(parent + ".date", true))
+        if (this.Date == null && ec.Includes("date",true))
         {
             this.Date = new DateTime();
         }
         //      C# -> DateTime? EarliestMetric
         // GraphQL -> earliestMetric: DateTime (scalar)
-        if (this.EarliestMetric == null && Exploration.Includes(parent + ".earliestMetric", true))
+        if (this.EarliestMetric == null && ec.Includes("earliestMetric",true))
         {
             this.EarliestMetric = new DateTime();
         }
         //      C# -> System.Single? Value
         // GraphQL -> value: Float! (scalar)
-        if (this.Value == null && Exploration.Includes(parent + ".value", true))
+        if (this.Value == null && ec.Includes("value",true))
         {
             this.Value = new System.Single();
         }
         //      C# -> DhrcScoreContext? Context
         // GraphQL -> context: DhrcScoreContext (type)
-        if (this.Context == null && Exploration.Includes(parent + ".context"))
+        if (this.Context == null && ec.Includes("context",false))
         {
             this.Context = new DhrcScoreContext();
-            this.Context.ApplyExploratoryFieldSpec(parent + ".context");
+            this.Context.ApplyExploratoryFieldSpec(ec.NewChild("context"));
         }
     }
 
@@ -206,12 +205,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<DhrcScore> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new DhrcScore());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<DhrcScore> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

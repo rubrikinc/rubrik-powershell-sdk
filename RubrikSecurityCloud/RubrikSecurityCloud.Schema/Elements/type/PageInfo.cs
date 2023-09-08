@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? EndCursor
         // GraphQL -> endCursor: String! (scalar)
-        if (this.EndCursor == null && Exploration.Includes(parent + ".endCursor", true))
+        if (this.EndCursor == null && ec.Includes("endCursor",true))
         {
             this.EndCursor = "FETCH";
         }
         //      C# -> System.Boolean? HasNextPage
         // GraphQL -> hasNextPage: Boolean! (scalar)
-        if (this.HasNextPage == null && Exploration.Includes(parent + ".hasNextPage", true))
+        if (this.HasNextPage == null && ec.Includes("hasNextPage",true))
         {
             this.HasNextPage = true;
         }
         //      C# -> System.Boolean? HasPreviousPage
         // GraphQL -> hasPreviousPage: Boolean! (scalar)
-        if (this.HasPreviousPage == null && Exploration.Includes(parent + ".hasPreviousPage", true))
+        if (this.HasPreviousPage == null && ec.Includes("hasPreviousPage",true))
         {
             this.HasPreviousPage = true;
         }
         //      C# -> System.String? StartCursor
         // GraphQL -> startCursor: String! (scalar)
-        if (this.StartCursor == null && Exploration.Includes(parent + ".startCursor", true))
+        if (this.StartCursor == null && ec.Includes("startCursor",true))
         {
             this.StartCursor = "FETCH";
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PageInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PageInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<PageInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

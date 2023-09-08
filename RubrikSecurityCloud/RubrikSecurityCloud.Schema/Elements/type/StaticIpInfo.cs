@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<System.String>? DnsServers
         // GraphQL -> dnsServers: [String!]! (scalar)
-        if (this.DnsServers == null && Exploration.Includes(parent + ".dnsServers", true))
+        if (this.DnsServers == null && ec.Includes("dnsServers",true))
         {
             this.DnsServers = new List<System.String>();
         }
         //      C# -> System.String? Gateway
         // GraphQL -> gateway: String (scalar)
-        if (this.Gateway == null && Exploration.Includes(parent + ".gateway", true))
+        if (this.Gateway == null && ec.Includes("gateway",true))
         {
             this.Gateway = "FETCH";
         }
         //      C# -> List<System.String>? IpAddresses
         // GraphQL -> ipAddresses: [String!]! (scalar)
-        if (this.IpAddresses == null && Exploration.Includes(parent + ".ipAddresses", true))
+        if (this.IpAddresses == null && ec.Includes("ipAddresses",true))
         {
             this.IpAddresses = new List<System.String>();
         }
         //      C# -> System.String? SubnetMask
         // GraphQL -> subnetMask: String! (scalar)
-        if (this.SubnetMask == null && Exploration.Includes(parent + ".subnetMask", true))
+        if (this.SubnetMask == null && ec.Includes("subnetMask",true))
         {
             this.SubnetMask = "FETCH";
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<StaticIpInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new StaticIpInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<StaticIpInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

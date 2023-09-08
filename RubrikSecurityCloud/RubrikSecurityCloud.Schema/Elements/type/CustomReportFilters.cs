@@ -100,6 +100,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("clusterLocation")]
         public List<System.String>? ClusterLocation { get; set; }
 
+        //      C# -> DateTime? Date
+        // GraphQL -> date: DateTime (scalar)
+        [JsonProperty("date")]
+        public DateTime? Date { get; set; }
+
         //      C# -> System.Boolean? IsAnomaly
         // GraphQL -> isAnomaly: Boolean (scalar)
         [JsonProperty("isAnomaly")]
@@ -129,6 +134,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> searchTerm: String (scalar)
         [JsonProperty("searchTerm")]
         public System.String? SearchTerm { get; set; }
+
+        //      C# -> System.Boolean? ShouldApplyWhitelists
+        // GraphQL -> shouldApplyWhitelists: Boolean! (scalar)
+        [JsonProperty("shouldApplyWhitelists")]
+        public System.Boolean? ShouldApplyWhitelists { get; set; }
 
         //      C# -> List<System.String>? Source
         // GraphQL -> source: [String!] (scalar)
@@ -191,12 +201,14 @@ namespace RubrikSecurityCloud.Types
         List<UserAuditTypeEnum>? UserAuditType = null,
         List<SlaDomain>? SlaDomain = null,
         List<System.String>? ClusterLocation = null,
+        DateTime? Date = null,
         System.Boolean? IsAnomaly = null,
         List<System.String>? ManagedId = null,
         List<System.String>? OrgId = null,
         List<System.String>? PolicyId = null,
         List<System.String>? ReplicationSource = null,
         System.String? SearchTerm = null,
+        System.Boolean? ShouldApplyWhitelists = null,
         List<System.String>? Source = null,
         List<System.String>? TargetSite = null,
         List<System.String>? TaskCategory = null,
@@ -254,6 +266,9 @@ namespace RubrikSecurityCloud.Types
         if ( ClusterLocation != null ) {
             this.ClusterLocation = ClusterLocation;
         }
+        if ( Date != null ) {
+            this.Date = Date;
+        }
         if ( IsAnomaly != null ) {
             this.IsAnomaly = IsAnomaly;
         }
@@ -271,6 +286,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SearchTerm != null ) {
             this.SearchTerm = SearchTerm;
+        }
+        if ( ShouldApplyWhitelists != null ) {
+            this.ShouldApplyWhitelists = ShouldApplyWhitelists;
         }
         if ( Source != null ) {
             this.Source = Source;
@@ -386,6 +404,11 @@ namespace RubrikSecurityCloud.Types
         if (this.ClusterLocation != null) {
             s += ind + "clusterLocation\n" ;
         }
+        //      C# -> DateTime? Date
+        // GraphQL -> date: DateTime (scalar)
+        if (this.Date != null) {
+            s += ind + "date\n" ;
+        }
         //      C# -> System.Boolean? IsAnomaly
         // GraphQL -> isAnomaly: Boolean (scalar)
         if (this.IsAnomaly != null) {
@@ -415,6 +438,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> searchTerm: String (scalar)
         if (this.SearchTerm != null) {
             s += ind + "searchTerm\n" ;
+        }
+        //      C# -> System.Boolean? ShouldApplyWhitelists
+        // GraphQL -> shouldApplyWhitelists: Boolean! (scalar)
+        if (this.ShouldApplyWhitelists != null) {
+            s += ind + "shouldApplyWhitelists\n" ;
         }
         //      C# -> List<System.String>? Source
         // GraphQL -> source: [String!] (scalar)
@@ -462,185 +490,196 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<ActivityObjectTypeEnum>? ActivityObjectType
         // GraphQL -> activityObjectType: [ActivityObjectTypeEnum!] (enum)
-        if (this.ActivityObjectType == null && Exploration.Includes(parent + ".activityObjectType", true))
+        if (this.ActivityObjectType == null && ec.Includes("activityObjectType",true))
         {
             this.ActivityObjectType = new List<ActivityObjectTypeEnum>();
         }
         //      C# -> List<ClusterTypeEnum>? ClusterType
         // GraphQL -> clusterType: [ClusterTypeEnum!] (enum)
-        if (this.ClusterType == null && Exploration.Includes(parent + ".clusterType", true))
+        if (this.ClusterType == null && ec.Includes("clusterType",true))
         {
             this.ClusterType = new List<ClusterTypeEnum>();
         }
         //      C# -> List<ComplianceStatusEnum>? ComplianceStatus
         // GraphQL -> complianceStatus: [ComplianceStatusEnum!] (enum)
-        if (this.ComplianceStatus == null && Exploration.Includes(parent + ".complianceStatus", true))
+        if (this.ComplianceStatus == null && ec.Includes("complianceStatus",true))
         {
             this.ComplianceStatus = new List<ComplianceStatusEnum>();
         }
         //      C# -> List<FailoverStatusEnum>? FailoverStatus
         // GraphQL -> failoverStatus: [FailoverStatusEnum!] (enum)
-        if (this.FailoverStatus == null && Exploration.Includes(parent + ".failoverStatus", true))
+        if (this.FailoverStatus == null && ec.Includes("failoverStatus",true))
         {
             this.FailoverStatus = new List<FailoverStatusEnum>();
         }
         //      C# -> FailoverTypeEnum? FailoverType
         // GraphQL -> failoverType: FailoverTypeEnum (enum)
-        if (this.FailoverType == null && Exploration.Includes(parent + ".failoverType", true))
+        if (this.FailoverType == null && ec.Includes("failoverType",true))
         {
             this.FailoverType = new FailoverTypeEnum();
         }
         //      C# -> List<ActivityStatusEnum>? LastActivityStatus
         // GraphQL -> lastActivityStatus: [ActivityStatusEnum!] (enum)
-        if (this.LastActivityStatus == null && Exploration.Includes(parent + ".lastActivityStatus", true))
+        if (this.LastActivityStatus == null && ec.Includes("lastActivityStatus",true))
         {
             this.LastActivityStatus = new List<ActivityStatusEnum>();
         }
         //      C# -> List<ActivityTypeEnum>? LastActivityType
         // GraphQL -> lastActivityType: [ActivityTypeEnum!] (enum)
-        if (this.LastActivityType == null && Exploration.Includes(parent + ".lastActivityType", true))
+        if (this.LastActivityType == null && ec.Includes("lastActivityType",true))
         {
             this.LastActivityType = new List<ActivityTypeEnum>();
         }
         //      C# -> List<ObjectTypeEnum>? ObjectType
         // GraphQL -> objectType: [ObjectTypeEnum!] (enum)
-        if (this.ObjectType == null && Exploration.Includes(parent + ".objectType", true))
+        if (this.ObjectType == null && ec.Includes("objectType",true))
         {
             this.ObjectType = new List<ObjectTypeEnum>();
         }
         //      C# -> List<ProtectionStatusEnum>? ProtectionStatus
         // GraphQL -> protectionStatus: [ProtectionStatusEnum!] (enum)
-        if (this.ProtectionStatus == null && Exploration.Includes(parent + ".protectionStatus", true))
+        if (this.ProtectionStatus == null && ec.Includes("protectionStatus",true))
         {
             this.ProtectionStatus = new List<ProtectionStatusEnum>();
         }
         //      C# -> SlaComplianceTimeRange? SlaTimeRange
         // GraphQL -> slaTimeRange: SlaComplianceTimeRange (enum)
-        if (this.SlaTimeRange == null && Exploration.Includes(parent + ".slaTimeRange", true))
+        if (this.SlaTimeRange == null && ec.Includes("slaTimeRange",true))
         {
             this.SlaTimeRange = new SlaComplianceTimeRange();
         }
         //      C# -> List<HierarchyObjectTypeEnum>? SonarObjectTypes
         // GraphQL -> sonarObjectTypes: [HierarchyObjectTypeEnum!] (enum)
-        if (this.SonarObjectTypes == null && Exploration.Includes(parent + ".sonarObjectTypes", true))
+        if (this.SonarObjectTypes == null && ec.Includes("sonarObjectTypes",true))
         {
             this.SonarObjectTypes = new List<HierarchyObjectTypeEnum>();
         }
         //      C# -> List<UserAuditObjectTypeEnum>? UserAuditObjectType
         // GraphQL -> userAuditObjectType: [UserAuditObjectTypeEnum!] (enum)
-        if (this.UserAuditObjectType == null && Exploration.Includes(parent + ".userAuditObjectType", true))
+        if (this.UserAuditObjectType == null && ec.Includes("userAuditObjectType",true))
         {
             this.UserAuditObjectType = new List<UserAuditObjectTypeEnum>();
         }
         //      C# -> List<UserAuditStatusEnum>? UserAuditStatus
         // GraphQL -> userAuditStatus: [UserAuditStatusEnum!] (enum)
-        if (this.UserAuditStatus == null && Exploration.Includes(parent + ".userAuditStatus", true))
+        if (this.UserAuditStatus == null && ec.Includes("userAuditStatus",true))
         {
             this.UserAuditStatus = new List<UserAuditStatusEnum>();
         }
         //      C# -> List<UserAuditTypeEnum>? UserAuditType
         // GraphQL -> userAuditType: [UserAuditTypeEnum!] (enum)
-        if (this.UserAuditType == null && Exploration.Includes(parent + ".userAuditType", true))
+        if (this.UserAuditType == null && ec.Includes("userAuditType",true))
         {
             this.UserAuditType = new List<UserAuditTypeEnum>();
         }
         //      C# -> List<SlaDomain>? SlaDomain
         // GraphQL -> slaDomain: [SlaDomain!] (interface)
-        if (this.SlaDomain == null && Exploration.Includes(parent + ".slaDomain"))
+        if (this.SlaDomain == null && ec.Includes("slaDomain",false))
         {
             this.SlaDomain = new List<SlaDomain>();
-            this.SlaDomain.ApplyExploratoryFieldSpec(parent + ".slaDomain");
+            this.SlaDomain.ApplyExploratoryFieldSpec(ec.NewChild("slaDomain"));
         }
         //      C# -> List<System.String>? ClusterLocation
         // GraphQL -> clusterLocation: [String!] (scalar)
-        if (this.ClusterLocation == null && Exploration.Includes(parent + ".clusterLocation", true))
+        if (this.ClusterLocation == null && ec.Includes("clusterLocation",true))
         {
             this.ClusterLocation = new List<System.String>();
         }
+        //      C# -> DateTime? Date
+        // GraphQL -> date: DateTime (scalar)
+        if (this.Date == null && ec.Includes("date",true))
+        {
+            this.Date = new DateTime();
+        }
         //      C# -> System.Boolean? IsAnomaly
         // GraphQL -> isAnomaly: Boolean (scalar)
-        if (this.IsAnomaly == null && Exploration.Includes(parent + ".isAnomaly", true))
+        if (this.IsAnomaly == null && ec.Includes("isAnomaly",true))
         {
             this.IsAnomaly = true;
         }
         //      C# -> List<System.String>? ManagedId
         // GraphQL -> managedId: [String!] (scalar)
-        if (this.ManagedId == null && Exploration.Includes(parent + ".managedId", true))
+        if (this.ManagedId == null && ec.Includes("managedId",true))
         {
             this.ManagedId = new List<System.String>();
         }
         //      C# -> List<System.String>? OrgId
         // GraphQL -> orgId: [String!] (scalar)
-        if (this.OrgId == null && Exploration.Includes(parent + ".orgId", true))
+        if (this.OrgId == null && ec.Includes("orgId",true))
         {
             this.OrgId = new List<System.String>();
         }
         //      C# -> List<System.String>? PolicyId
         // GraphQL -> policyId: [String!] (scalar)
-        if (this.PolicyId == null && Exploration.Includes(parent + ".policyId", true))
+        if (this.PolicyId == null && ec.Includes("policyId",true))
         {
             this.PolicyId = new List<System.String>();
         }
         //      C# -> List<System.String>? ReplicationSource
         // GraphQL -> replicationSource: [String!] (scalar)
-        if (this.ReplicationSource == null && Exploration.Includes(parent + ".replicationSource", true))
+        if (this.ReplicationSource == null && ec.Includes("replicationSource",true))
         {
             this.ReplicationSource = new List<System.String>();
         }
         //      C# -> System.String? SearchTerm
         // GraphQL -> searchTerm: String (scalar)
-        if (this.SearchTerm == null && Exploration.Includes(parent + ".searchTerm", true))
+        if (this.SearchTerm == null && ec.Includes("searchTerm",true))
         {
             this.SearchTerm = "FETCH";
         }
+        //      C# -> System.Boolean? ShouldApplyWhitelists
+        // GraphQL -> shouldApplyWhitelists: Boolean! (scalar)
+        if (this.ShouldApplyWhitelists == null && ec.Includes("shouldApplyWhitelists",true))
+        {
+            this.ShouldApplyWhitelists = true;
+        }
         //      C# -> List<System.String>? Source
         // GraphQL -> source: [String!] (scalar)
-        if (this.Source == null && Exploration.Includes(parent + ".source", true))
+        if (this.Source == null && ec.Includes("source",true))
         {
             this.Source = new List<System.String>();
         }
         //      C# -> List<System.String>? TargetSite
         // GraphQL -> targetSite: [String!] (scalar)
-        if (this.TargetSite == null && Exploration.Includes(parent + ".targetSite", true))
+        if (this.TargetSite == null && ec.Includes("targetSite",true))
         {
             this.TargetSite = new List<System.String>();
         }
         //      C# -> List<System.String>? TaskCategory
         // GraphQL -> taskCategory: [String!] (scalar)
-        if (this.TaskCategory == null && Exploration.Includes(parent + ".taskCategory", true))
+        if (this.TaskCategory == null && ec.Includes("taskCategory",true))
         {
             this.TaskCategory = new List<System.String>();
         }
         //      C# -> List<System.String>? TaskStatus
         // GraphQL -> taskStatus: [String!] (scalar)
-        if (this.TaskStatus == null && Exploration.Includes(parent + ".taskStatus", true))
+        if (this.TaskStatus == null && ec.Includes("taskStatus",true))
         {
             this.TaskStatus = new List<System.String>();
         }
         //      C# -> List<System.String>? TaskType
         // GraphQL -> taskType: [String!] (scalar)
-        if (this.TaskType == null && Exploration.Includes(parent + ".taskType", true))
+        if (this.TaskType == null && ec.Includes("taskType",true))
         {
             this.TaskType = new List<System.String>();
         }
         //      C# -> List<Cluster>? Cluster
         // GraphQL -> cluster: [Cluster!] (type)
-        if (this.Cluster == null && Exploration.Includes(parent + ".cluster"))
+        if (this.Cluster == null && ec.Includes("cluster",false))
         {
             this.Cluster = new List<Cluster>();
-            this.Cluster.ApplyExploratoryFieldSpec(parent + ".cluster");
+            this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
         }
         //      C# -> GenericTimeRange? TimeRange
         // GraphQL -> timeRange: GenericTimeRange (type)
-        if (this.TimeRange == null && Exploration.Includes(parent + ".timeRange"))
+        if (this.TimeRange == null && ec.Includes("timeRange",false))
         {
             this.TimeRange = new GenericTimeRange();
-            this.TimeRange.ApplyExploratoryFieldSpec(parent + ".timeRange");
+            this.TimeRange.ApplyExploratoryFieldSpec(ec.NewChild("timeRange"));
         }
     }
 
@@ -674,12 +713,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CustomReportFilters> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CustomReportFilters());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CustomReportFilters> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

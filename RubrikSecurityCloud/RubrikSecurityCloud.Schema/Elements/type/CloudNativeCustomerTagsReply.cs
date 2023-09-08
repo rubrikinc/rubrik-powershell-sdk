@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? ShouldOverrideResourceTags
         // GraphQL -> shouldOverrideResourceTags: Boolean! (scalar)
-        if (this.ShouldOverrideResourceTags == null && Exploration.Includes(parent + ".shouldOverrideResourceTags", true))
+        if (this.ShouldOverrideResourceTags == null && ec.Includes("shouldOverrideResourceTags",true))
         {
             this.ShouldOverrideResourceTags = true;
         }
         //      C# -> List<TagObject>? CustomerTags
         // GraphQL -> customerTags: [TagObject!]! (type)
-        if (this.CustomerTags == null && Exploration.Includes(parent + ".customerTags"))
+        if (this.CustomerTags == null && ec.Includes("customerTags",false))
         {
             this.CustomerTags = new List<TagObject>();
-            this.CustomerTags.ApplyExploratoryFieldSpec(parent + ".customerTags");
+            this.CustomerTags.ApplyExploratoryFieldSpec(ec.NewChild("customerTags"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CloudNativeCustomerTagsReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CloudNativeCustomerTagsReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CloudNativeCustomerTagsReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

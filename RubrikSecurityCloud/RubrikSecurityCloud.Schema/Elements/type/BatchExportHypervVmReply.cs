@@ -81,22 +81,21 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<HypervAsyncRequestFailureSummary>? FailedRequests
         // GraphQL -> failedRequests: [HypervAsyncRequestFailureSummary!]! (type)
-        if (this.FailedRequests == null && Exploration.Includes(parent + ".failedRequests"))
+        if (this.FailedRequests == null && ec.Includes("failedRequests",false))
         {
             this.FailedRequests = new List<HypervAsyncRequestFailureSummary>();
-            this.FailedRequests.ApplyExploratoryFieldSpec(parent + ".failedRequests");
+            this.FailedRequests.ApplyExploratoryFieldSpec(ec.NewChild("failedRequests"));
         }
         //      C# -> List<HypervAsyncRequestSuccessSummary>? SuccessfulRequests
         // GraphQL -> successfulRequests: [HypervAsyncRequestSuccessSummary!]! (type)
-        if (this.SuccessfulRequests == null && Exploration.Includes(parent + ".successfulRequests"))
+        if (this.SuccessfulRequests == null && ec.Includes("successfulRequests",false))
         {
             this.SuccessfulRequests = new List<HypervAsyncRequestSuccessSummary>();
-            this.SuccessfulRequests.ApplyExploratoryFieldSpec(parent + ".successfulRequests");
+            this.SuccessfulRequests.ApplyExploratoryFieldSpec(ec.NewChild("successfulRequests"));
         }
     }
 
@@ -130,12 +129,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<BatchExportHypervVmReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new BatchExportHypervVmReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<BatchExportHypervVmReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

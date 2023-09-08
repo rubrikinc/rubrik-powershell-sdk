@@ -255,96 +255,95 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> VcenterSummaryConflictResolutionAuthz? ConflictResolutionAuthz
         // GraphQL -> conflictResolutionAuthz: VcenterSummaryConflictResolutionAuthz (enum)
-        if (this.ConflictResolutionAuthz == null && Exploration.Includes(parent + ".conflictResolutionAuthz", true))
+        if (this.ConflictResolutionAuthz == null && ec.Includes("conflictResolutionAuthz",true))
         {
             this.ConflictResolutionAuthz = new VcenterSummaryConflictResolutionAuthz();
         }
         //      C# -> System.String? ConfiguredSlaDomainPolarisManagedId
         // GraphQL -> configuredSlaDomainPolarisManagedId: String (scalar)
-        if (this.ConfiguredSlaDomainPolarisManagedId == null && Exploration.Includes(parent + ".configuredSlaDomainPolarisManagedId", true))
+        if (this.ConfiguredSlaDomainPolarisManagedId == null && ec.Includes("configuredSlaDomainPolarisManagedId",true))
         {
             this.ConfiguredSlaDomainPolarisManagedId = "FETCH";
         }
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String! (scalar)
-        if (this.Hostname == null && Exploration.Includes(parent + ".hostname", true))
+        if (this.Hostname == null && ec.Includes("hostname",true))
         {
             this.Hostname = "FETCH";
         }
         //      C# -> System.Boolean? IsHotAddProxyEnabledForOnPremVcenter
         // GraphQL -> isHotAddProxyEnabledForOnPremVcenter: Boolean (scalar)
-        if (this.IsHotAddProxyEnabledForOnPremVcenter == null && Exploration.Includes(parent + ".isHotAddProxyEnabledForOnPremVcenter", true))
+        if (this.IsHotAddProxyEnabledForOnPremVcenter == null && ec.Includes("isHotAddProxyEnabledForOnPremVcenter",true))
         {
             this.IsHotAddProxyEnabledForOnPremVcenter = true;
         }
         //      C# -> System.Boolean? IsIoFilterInstalled
         // GraphQL -> isIoFilterInstalled: Boolean (scalar)
-        if (this.IsIoFilterInstalled == null && Exploration.Includes(parent + ".isIoFilterInstalled", true))
+        if (this.IsIoFilterInstalled == null && ec.Includes("isIoFilterInstalled",true))
         {
             this.IsIoFilterInstalled = true;
         }
         //      C# -> System.Boolean? IsVmc
         // GraphQL -> isVmc: Boolean (scalar)
-        if (this.IsVmc == null && Exploration.Includes(parent + ".isVmc", true))
+        if (this.IsVmc == null && ec.Includes("isVmc",true))
         {
             this.IsVmc = true;
         }
         //      C# -> DateTime? LastRefreshTime
         // GraphQL -> lastRefreshTime: DateTime (scalar)
-        if (this.LastRefreshTime == null && Exploration.Includes(parent + ".lastRefreshTime", true))
+        if (this.LastRefreshTime == null && ec.Includes("lastRefreshTime",true))
         {
             this.LastRefreshTime = new DateTime();
         }
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)
-        if (this.Username == null && Exploration.Includes(parent + ".username", true))
+        if (this.Username == null && ec.Includes("username",true))
         {
             this.Username = "FETCH";
         }
         //      C# -> System.String? VcenterUuid
         // GraphQL -> vcenterUuid: String (scalar)
-        if (this.VcenterUuid == null && Exploration.Includes(parent + ".vcenterUuid", true))
+        if (this.VcenterUuid == null && ec.Includes("vcenterUuid",true))
         {
             this.VcenterUuid = "FETCH";
         }
         //      C# -> System.String? Version
         // GraphQL -> version: String (scalar)
-        if (this.Version == null && Exploration.Includes(parent + ".version", true))
+        if (this.Version == null && ec.Includes("version",true))
         {
             this.Version = "FETCH";
         }
         //      C# -> List<ClusterVisibilityInfo>? ComputeVisibilityFilter
         // GraphQL -> computeVisibilityFilter: [ClusterVisibilityInfo!]! (type)
-        if (this.ComputeVisibilityFilter == null && Exploration.Includes(parent + ".computeVisibilityFilter"))
+        if (this.ComputeVisibilityFilter == null && ec.Includes("computeVisibilityFilter",false))
         {
             this.ComputeVisibilityFilter = new List<ClusterVisibilityInfo>();
-            this.ComputeVisibilityFilter.ApplyExploratoryFieldSpec(parent + ".computeVisibilityFilter");
+            this.ComputeVisibilityFilter.ApplyExploratoryFieldSpec(ec.NewChild("computeVisibilityFilter"));
         }
         //      C# -> RefreshableObjectConnectionStatus? ConnectionStatus
         // GraphQL -> connectionStatus: RefreshableObjectConnectionStatus (type)
-        if (this.ConnectionStatus == null && Exploration.Includes(parent + ".connectionStatus"))
+        if (this.ConnectionStatus == null && ec.Includes("connectionStatus",false))
         {
             this.ConnectionStatus = new RefreshableObjectConnectionStatus();
-            this.ConnectionStatus.ApplyExploratoryFieldSpec(parent + ".connectionStatus");
+            this.ConnectionStatus.ApplyExploratoryFieldSpec(ec.NewChild("connectionStatus"));
         }
         //      C# -> SlaAssignable? SlaAssignable
         // GraphQL -> slaAssignable: SlaAssignable (type)
-        if (this.SlaAssignable == null && Exploration.Includes(parent + ".slaAssignable"))
+        if (this.SlaAssignable == null && ec.Includes("slaAssignable",false))
         {
             this.SlaAssignable = new SlaAssignable();
-            this.SlaAssignable.ApplyExploratoryFieldSpec(parent + ".slaAssignable");
+            this.SlaAssignable.ApplyExploratoryFieldSpec(ec.NewChild("slaAssignable"));
         }
         //      C# -> VcenterPatch? VcenterPatch
         // GraphQL -> vcenterPatch: VcenterPatch (type)
-        if (this.VcenterPatch == null && Exploration.Includes(parent + ".vcenterPatch"))
+        if (this.VcenterPatch == null && ec.Includes("vcenterPatch",false))
         {
             this.VcenterPatch = new VcenterPatch();
-            this.VcenterPatch.ApplyExploratoryFieldSpec(parent + ".vcenterPatch");
+            this.VcenterPatch.ApplyExploratoryFieldSpec(ec.NewChild("vcenterPatch"));
         }
     }
 
@@ -378,12 +377,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VcenterSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VcenterSummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VcenterSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -79,21 +79,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: UUID! (scalar)
-        if (this.SnapshotId == null && Exploration.Includes(parent + ".snapshotId", true))
+        if (this.SnapshotId == null && ec.Includes("snapshotId",true))
         {
             this.SnapshotId = "FETCH";
         }
         //      C# -> BackupEventStatus? BackupEventStatus
         // GraphQL -> backupEventStatus: BackupEventStatus (type)
-        if (this.BackupEventStatus == null && Exploration.Includes(parent + ".backupEventStatus"))
+        if (this.BackupEventStatus == null && ec.Includes("backupEventStatus",false))
         {
             this.BackupEventStatus = new BackupEventStatus();
-            this.BackupEventStatus.ApplyExploratoryFieldSpec(parent + ".backupEventStatus");
+            this.BackupEventStatus.ApplyExploratoryFieldSpec(ec.NewChild("backupEventStatus"));
         }
     }
 
@@ -127,12 +126,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<M365Snapshot> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new M365Snapshot());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<M365Snapshot> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<PathSecInfo>? SecInfo
         // GraphQL -> secInfo: [PathSecInfo!]! (type)
-        if (this.SecInfo == null && Exploration.Includes(parent + ".secInfo"))
+        if (this.SecInfo == null && ec.Includes("secInfo",false))
         {
             this.SecInfo = new List<PathSecInfo>();
-            this.SecInfo.ApplyExploratoryFieldSpec(parent + ".secInfo");
+            this.SecInfo.ApplyExploratoryFieldSpec(ec.NewChild("secInfo"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<QuerySddlReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new QuerySddlReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<QuerySddlReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

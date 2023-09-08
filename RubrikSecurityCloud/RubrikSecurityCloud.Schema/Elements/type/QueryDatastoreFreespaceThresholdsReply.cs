@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<DatastoreFreespaceThresholdType>? Thresholds
         // GraphQL -> thresholds: [DatastoreFreespaceThresholdType!]! (type)
-        if (this.Thresholds == null && Exploration.Includes(parent + ".thresholds"))
+        if (this.Thresholds == null && ec.Includes("thresholds",false))
         {
             this.Thresholds = new List<DatastoreFreespaceThresholdType>();
-            this.Thresholds.ApplyExploratoryFieldSpec(parent + ".thresholds");
+            this.Thresholds.ApplyExploratoryFieldSpec(ec.NewChild("thresholds"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<QueryDatastoreFreespaceThresholdsReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new QueryDatastoreFreespaceThresholdsReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<QueryDatastoreFreespaceThresholdsReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

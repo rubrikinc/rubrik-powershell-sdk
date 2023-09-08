@@ -81,22 +81,21 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<UserAccessGroup>? DirectGroups
         // GraphQL -> directGroups: [UserAccessGroup!]! (type)
-        if (this.DirectGroups == null && Exploration.Includes(parent + ".directGroups"))
+        if (this.DirectGroups == null && ec.Includes("directGroups",false))
         {
             this.DirectGroups = new List<UserAccessGroup>();
-            this.DirectGroups.ApplyExploratoryFieldSpec(parent + ".directGroups");
+            this.DirectGroups.ApplyExploratoryFieldSpec(ec.NewChild("directGroups"));
         }
         //      C# -> PrincipalSummary? PrincipalSummary
         // GraphQL -> principalSummary: PrincipalSummary! (type)
-        if (this.PrincipalSummary == null && Exploration.Includes(parent + ".principalSummary"))
+        if (this.PrincipalSummary == null && ec.Includes("principalSummary",false))
         {
             this.PrincipalSummary = new PrincipalSummary();
-            this.PrincipalSummary.ApplyExploratoryFieldSpec(parent + ".principalSummary");
+            this.PrincipalSummary.ApplyExploratoryFieldSpec(ec.NewChild("principalSummary"));
         }
     }
 
@@ -130,12 +129,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PrincipalDetails> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PrincipalDetails());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<PrincipalDetails> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

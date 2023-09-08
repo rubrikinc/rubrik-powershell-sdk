@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Ip
         // GraphQL -> ip: String! (scalar)
-        if (this.Ip == null && Exploration.Includes(parent + ".ip", true))
+        if (this.Ip == null && ec.Includes("ip",true))
         {
             this.Ip = "FETCH";
         }
         //      C# -> System.String? Node
         // GraphQL -> node: String! (scalar)
-        if (this.Node == null && Exploration.Includes(parent + ".node", true))
+        if (this.Node == null && ec.Includes("node",true))
         {
             this.Node = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<NodeIp> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new NodeIp());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<NodeIp> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

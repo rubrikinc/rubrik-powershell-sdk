@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> NutanixVmSnapshotSummary? NutanixVmSnapshotSummary
         // GraphQL -> nutanixVmSnapshotSummary: NutanixVmSnapshotSummary (type)
-        if (this.NutanixVmSnapshotSummary == null && Exploration.Includes(parent + ".nutanixVmSnapshotSummary"))
+        if (this.NutanixVmSnapshotSummary == null && ec.Includes("nutanixVmSnapshotSummary",false))
         {
             this.NutanixVmSnapshotSummary = new NutanixVmSnapshotSummary();
-            this.NutanixVmSnapshotSummary.ApplyExploratoryFieldSpec(parent + ".nutanixVmSnapshotSummary");
+            this.NutanixVmSnapshotSummary.ApplyExploratoryFieldSpec(ec.NewChild("nutanixVmSnapshotSummary"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<NutanixVmSnapshotDetail> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new NutanixVmSnapshotDetail());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<NutanixVmSnapshotDetail> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

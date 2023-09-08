@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<Operation>? Operations
         // GraphQL -> operations: [Operation!]! (enum)
-        if (this.Operations == null && Exploration.Includes(parent + ".operations", true))
+        if (this.Operations == null && ec.Includes("operations",true))
         {
             this.Operations = new List<Operation>();
         }
         //      C# -> RbacObject? RbacObject
         // GraphQL -> rbacObject: RbacObject! (type)
-        if (this.RbacObject == null && Exploration.Includes(parent + ".rbacObject"))
+        if (this.RbacObject == null && ec.Includes("rbacObject",false))
         {
             this.RbacObject = new RbacObject();
-            this.RbacObject.ApplyExploratoryFieldSpec(parent + ".rbacObject");
+            this.RbacObject.ApplyExploratoryFieldSpec(ec.NewChild("rbacObject"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RbacPermission> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RbacPermission());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<RbacPermission> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

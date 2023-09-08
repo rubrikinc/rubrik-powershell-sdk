@@ -109,34 +109,33 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? NumActivities
         // GraphQL -> numActivities: Long! (scalar)
-        if (this.NumActivities == null && Exploration.Includes(parent + ".numActivities", true))
+        if (this.NumActivities == null && ec.Includes("numActivities",true))
         {
             this.NumActivities = new System.Int64();
         }
         //      C# -> System.String? PaginationId
         // GraphQL -> paginationId: String! (scalar)
-        if (this.PaginationId == null && Exploration.Includes(parent + ".paginationId", true))
+        if (this.PaginationId == null && ec.Includes("paginationId",true))
         {
             this.PaginationId = "FETCH";
         }
         //      C# -> List<ActivityResult>? NumActivitiesBreakdown
         // GraphQL -> numActivitiesBreakdown: [ActivityResult!]! (type)
-        if (this.NumActivitiesBreakdown == null && Exploration.Includes(parent + ".numActivitiesBreakdown"))
+        if (this.NumActivitiesBreakdown == null && ec.Includes("numActivitiesBreakdown",false))
         {
             this.NumActivitiesBreakdown = new List<ActivityResult>();
-            this.NumActivitiesBreakdown.ApplyExploratoryFieldSpec(parent + ".numActivitiesBreakdown");
+            this.NumActivitiesBreakdown.ApplyExploratoryFieldSpec(ec.NewChild("numActivitiesBreakdown"));
         }
         //      C# -> AccessUser? User
         // GraphQL -> user: AccessUser (type)
-        if (this.User == null && Exploration.Includes(parent + ".user"))
+        if (this.User == null && ec.Includes("user",false))
         {
             this.User = new AccessUser();
-            this.User.ApplyExploratoryFieldSpec(parent + ".user");
+            this.User.ApplyExploratoryFieldSpec(ec.NewChild("user"));
         }
     }
 
@@ -170,12 +169,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<UserActivityResult> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new UserActivityResult());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<UserActivityResult> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

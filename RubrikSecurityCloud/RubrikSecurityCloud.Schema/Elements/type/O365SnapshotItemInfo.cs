@@ -134,45 +134,44 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<System.String>? FolderIdsTillRoot
         // GraphQL -> folderIdsTillRoot: [String!]! (scalar)
-        if (this.FolderIdsTillRoot == null && Exploration.Includes(parent + ".folderIdsTillRoot", true))
+        if (this.FolderIdsTillRoot == null && ec.Includes("folderIdsTillRoot",true))
         {
             this.FolderIdsTillRoot = new List<System.String>();
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.String? ParentFolderId
         // GraphQL -> parentFolderId: String (scalar)
-        if (this.ParentFolderId == null && Exploration.Includes(parent + ".parentFolderId", true))
+        if (this.ParentFolderId == null && ec.Includes("parentFolderId",true))
         {
             this.ParentFolderId = "FETCH";
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: String (scalar)
-        if (this.SnapshotId == null && Exploration.Includes(parent + ".snapshotId", true))
+        if (this.SnapshotId == null && ec.Includes("snapshotId",true))
         {
             this.SnapshotId = "FETCH";
         }
         //      C# -> System.Int32? SnapshotNum
         // GraphQL -> snapshotNum: Int (scalar)
-        if (this.SnapshotNum == null && Exploration.Includes(parent + ".snapshotNum", true))
+        if (this.SnapshotNum == null && ec.Includes("snapshotNum",true))
         {
             this.SnapshotNum = Int32.MinValue;
         }
         //      C# -> O365ReplyFields? O365ReplyFields
         // GraphQL -> o365ReplyFields: O365ReplyFields! (type)
-        if (this.O365ReplyFields == null && Exploration.Includes(parent + ".o365ReplyFields"))
+        if (this.O365ReplyFields == null && ec.Includes("o365ReplyFields",false))
         {
             this.O365ReplyFields = new O365ReplyFields();
-            this.O365ReplyFields.ApplyExploratoryFieldSpec(parent + ".o365ReplyFields");
+            this.O365ReplyFields.ApplyExploratoryFieldSpec(ec.NewChild("o365ReplyFields"));
         }
     }
 
@@ -206,12 +205,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<O365SnapshotItemInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new O365SnapshotItemInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<O365SnapshotItemInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -131,42 +131,41 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ClusterStatus? ClusterStatus
         // GraphQL -> clusterStatus: ClusterStatus! (enum)
-        if (this.ClusterStatus == null && Exploration.Includes(parent + ".clusterStatus", true))
+        if (this.ClusterStatus == null && ec.Includes("clusterStatus",true))
         {
             this.ClusterStatus = new ClusterStatus();
         }
         //      C# -> ClusterRegistrationMode? RegisteredMode
         // GraphQL -> registeredMode: ClusterRegistrationMode! (enum)
-        if (this.RegisteredMode == null && Exploration.Includes(parent + ".registeredMode", true))
+        if (this.RegisteredMode == null && ec.Includes("registeredMode",true))
         {
             this.RegisteredMode = new ClusterRegistrationMode();
         }
         //      C# -> System.String? ClusterName
         // GraphQL -> clusterName: String! (scalar)
-        if (this.ClusterName == null && Exploration.Includes(parent + ".clusterName", true))
+        if (this.ClusterName == null && ec.Includes("clusterName",true))
         {
             this.ClusterName = "FETCH";
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
-        if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
+        if (this.ClusterUuid == null && ec.Includes("clusterUuid",true))
         {
             this.ClusterUuid = "FETCH";
         }
         //      C# -> System.Int32? TotalApplicablePrechecks
         // GraphQL -> totalApplicablePrechecks: Int! (scalar)
-        if (this.TotalApplicablePrechecks == null && Exploration.Includes(parent + ".totalApplicablePrechecks", true))
+        if (this.TotalApplicablePrechecks == null && ec.Includes("totalApplicablePrechecks",true))
         {
             this.TotalApplicablePrechecks = Int32.MinValue;
         }
         //      C# -> System.Int32? TotalMigratedPrechecks
         // GraphQL -> totalMigratedPrechecks: Int! (scalar)
-        if (this.TotalMigratedPrechecks == null && Exploration.Includes(parent + ".totalMigratedPrechecks", true))
+        if (this.TotalMigratedPrechecks == null && ec.Includes("totalMigratedPrechecks",true))
         {
             this.TotalMigratedPrechecks = Int32.MinValue;
         }
@@ -202,12 +201,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<MigrationMetadata> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new MigrationMetadata());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<MigrationMetadata> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

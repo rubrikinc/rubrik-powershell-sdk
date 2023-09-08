@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<UserAuditTypeEnum>? AuditTypes
         // GraphQL -> auditTypes: [UserAuditTypeEnum!]! (enum)
-        if (this.AuditTypes == null && Exploration.Includes(parent + ".auditTypes", true))
+        if (this.AuditTypes == null && ec.Includes("auditTypes",true))
         {
             this.AuditTypes = new List<UserAuditTypeEnum>();
         }
         //      C# -> List<ActivityTypeEnum>? EventTypes
         // GraphQL -> eventTypes: [ActivityTypeEnum!]! (enum)
-        if (this.EventTypes == null && Exploration.Includes(parent + ".eventTypes", true))
+        if (this.EventTypes == null && ec.Includes("eventTypes",true))
         {
             this.EventTypes = new List<ActivityTypeEnum>();
         }
         //      C# -> System.Boolean? IsSubscribedToAllAudits
         // GraphQL -> isSubscribedToAllAudits: Boolean! (scalar)
-        if (this.IsSubscribedToAllAudits == null && Exploration.Includes(parent + ".isSubscribedToAllAudits", true))
+        if (this.IsSubscribedToAllAudits == null && ec.Includes("isSubscribedToAllAudits",true))
         {
             this.IsSubscribedToAllAudits = true;
         }
         //      C# -> System.Boolean? IsSubscribedToAllEvents
         // GraphQL -> isSubscribedToAllEvents: Boolean! (scalar)
-        if (this.IsSubscribedToAllEvents == null && Exploration.Includes(parent + ".isSubscribedToAllEvents", true))
+        if (this.IsSubscribedToAllEvents == null && ec.Includes("isSubscribedToAllEvents",true))
         {
             this.IsSubscribedToAllEvents = true;
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SubscriptionType> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SubscriptionType());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SubscriptionType> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

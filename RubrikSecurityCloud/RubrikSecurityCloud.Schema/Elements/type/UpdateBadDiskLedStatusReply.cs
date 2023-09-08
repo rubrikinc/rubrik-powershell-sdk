@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> CdmFindBadDiskResultType? Result
         // GraphQL -> result: CdmFindBadDiskResultType! (enum)
-        if (this.Result == null && Exploration.Includes(parent + ".result", true))
+        if (this.Result == null && ec.Includes("result",true))
         {
             this.Result = new CdmFindBadDiskResultType();
         }
         //      C# -> System.String? Output
         // GraphQL -> output: String (scalar)
-        if (this.Output == null && Exploration.Includes(parent + ".output", true))
+        if (this.Output == null && ec.Includes("output",true))
         {
             this.Output = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<UpdateBadDiskLedStatusReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new UpdateBadDiskLedStatusReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<UpdateBadDiskLedStatusReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

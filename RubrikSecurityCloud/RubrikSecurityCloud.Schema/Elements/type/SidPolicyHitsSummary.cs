@@ -92,27 +92,26 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<System.String>? AnalyzerNames
         // GraphQL -> analyzerNames: [String!]! (scalar)
-        if (this.AnalyzerNames == null && Exploration.Includes(parent + ".analyzerNames", true))
+        if (this.AnalyzerNames == null && ec.Includes("analyzerNames",true))
         {
             this.AnalyzerNames = new List<System.String>();
         }
         //      C# -> System.String? Principal
         // GraphQL -> principal: String! (scalar)
-        if (this.Principal == null && Exploration.Includes(parent + ".principal", true))
+        if (this.Principal == null && ec.Includes("principal",true))
         {
             this.Principal = "FETCH";
         }
         //      C# -> List<PolicyHitsSummary>? Summary
         // GraphQL -> summary: [PolicyHitsSummary!]! (type)
-        if (this.Summary == null && Exploration.Includes(parent + ".summary"))
+        if (this.Summary == null && ec.Includes("summary",false))
         {
             this.Summary = new List<PolicyHitsSummary>();
-            this.Summary.ApplyExploratoryFieldSpec(parent + ".summary");
+            this.Summary.ApplyExploratoryFieldSpec(ec.NewChild("summary"));
         }
     }
 
@@ -146,12 +145,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SidPolicyHitsSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SidPolicyHitsSummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SidPolicyHitsSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? AwsNativeEbsVolumeId
         // GraphQL -> awsNativeEbsVolumeId: String! (scalar)
-        if (this.AwsNativeEbsVolumeId == null && Exploration.Includes(parent + ".awsNativeEbsVolumeId", true))
+        if (this.AwsNativeEbsVolumeId == null && ec.Includes("awsNativeEbsVolumeId",true))
         {
             this.AwsNativeEbsVolumeId = "FETCH";
         }
         //      C# -> System.String? DevicePath
         // GraphQL -> devicePath: String! (scalar)
-        if (this.DevicePath == null && Exploration.Includes(parent + ".devicePath", true))
+        if (this.DevicePath == null && ec.Includes("devicePath",true))
         {
             this.DevicePath = "FETCH";
         }
         //      C# -> System.Boolean? IsExcludedFromSnapshot
         // GraphQL -> isExcludedFromSnapshot: Boolean! (scalar)
-        if (this.IsExcludedFromSnapshot == null && Exploration.Includes(parent + ".isExcludedFromSnapshot", true))
+        if (this.IsExcludedFromSnapshot == null && ec.Includes("isExcludedFromSnapshot",true))
         {
             this.IsExcludedFromSnapshot = true;
         }
         //      C# -> System.Boolean? IsRootVolume
         // GraphQL -> isRootVolume: Boolean! (scalar)
-        if (this.IsRootVolume == null && Exploration.Includes(parent + ".isRootVolume", true))
+        if (this.IsRootVolume == null && ec.Includes("isRootVolume",true))
         {
             this.IsRootVolume = true;
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AttachmentSpecForEc2Instance> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AttachmentSpecForEc2Instance());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AttachmentSpecForEc2Instance> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

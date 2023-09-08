@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<System.String>? Aggregations
         // GraphQL -> aggregations: [String!]! (scalar)
-        if (this.Aggregations == null && Exploration.Includes(parent + ".aggregations", true))
+        if (this.Aggregations == null && ec.Includes("aggregations",true))
         {
             this.Aggregations = new List<System.String>();
         }
         //      C# -> System.String? GroupById
         // GraphQL -> groupById: String! (scalar)
-        if (this.GroupById == null && Exploration.Includes(parent + ".groupById", true))
+        if (this.GroupById == null && ec.Includes("groupById",true))
         {
             this.GroupById = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ConfigGroupBy> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ConfigGroupBy());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ConfigGroupBy> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

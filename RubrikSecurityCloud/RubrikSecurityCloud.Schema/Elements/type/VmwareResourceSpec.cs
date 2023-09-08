@@ -194,70 +194,69 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? IsArchived
         // GraphQL -> isArchived: Boolean! (scalar)
-        if (this.IsArchived == null && Exploration.Includes(parent + ".isArchived", true))
+        if (this.IsArchived == null && ec.Includes("isArchived",true))
         {
             this.IsArchived = true;
         }
         //      C# -> System.Int32? MemoryMbs
         // GraphQL -> memoryMbs: Int! (scalar)
-        if (this.MemoryMbs == null && Exploration.Includes(parent + ".memoryMbs", true))
+        if (this.MemoryMbs == null && ec.Includes("memoryMbs",true))
         {
             this.MemoryMbs = Int32.MinValue;
         }
         //      C# -> System.String? OsType
         // GraphQL -> osType: String! (scalar)
-        if (this.OsType == null && Exploration.Includes(parent + ".osType", true))
+        if (this.OsType == null && ec.Includes("osType",true))
         {
             this.OsType = "FETCH";
         }
         //      C# -> System.Int64? RecoveryPointOpt
         // GraphQL -> recoveryPointOpt: Long (scalar)
-        if (this.RecoveryPointOpt == null && Exploration.Includes(parent + ".recoveryPointOpt", true))
+        if (this.RecoveryPointOpt == null && ec.Includes("recoveryPointOpt",true))
         {
             this.RecoveryPointOpt = new System.Int64();
         }
         //      C# -> System.String? SnappableId
         // GraphQL -> snappableId: String! (scalar)
-        if (this.SnappableId == null && Exploration.Includes(parent + ".snappableId", true))
+        if (this.SnappableId == null && ec.Includes("snappableId",true))
         {
             this.SnappableId = "FETCH";
         }
         //      C# -> System.String? SnappableName
         // GraphQL -> snappableName: String! (scalar)
-        if (this.SnappableName == null && Exploration.Includes(parent + ".snappableName", true))
+        if (this.SnappableName == null && ec.Includes("snappableName",true))
         {
             this.SnappableName = "FETCH";
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: String! (scalar)
-        if (this.SnapshotId == null && Exploration.Includes(parent + ".snapshotId", true))
+        if (this.SnapshotId == null && ec.Includes("snapshotId",true))
         {
             this.SnapshotId = "FETCH";
         }
         //      C# -> System.Int32? Vcpus
         // GraphQL -> vCpus: Int! (scalar)
-        if (this.Vcpus == null && Exploration.Includes(parent + ".vCpus", true))
+        if (this.Vcpus == null && ec.Includes("vCpus",true))
         {
             this.Vcpus = Int32.MinValue;
         }
         //      C# -> List<VmwareVirtualMachineVolume>? VmWareVolumeSpecs
         // GraphQL -> vmWareVolumeSpecs: [VmwareVirtualMachineVolume!]! (type)
-        if (this.VmWareVolumeSpecs == null && Exploration.Includes(parent + ".vmWareVolumeSpecs"))
+        if (this.VmWareVolumeSpecs == null && ec.Includes("vmWareVolumeSpecs",false))
         {
             this.VmWareVolumeSpecs = new List<VmwareVirtualMachineVolume>();
-            this.VmWareVolumeSpecs.ApplyExploratoryFieldSpec(parent + ".vmWareVolumeSpecs");
+            this.VmWareVolumeSpecs.ApplyExploratoryFieldSpec(ec.NewChild("vmWareVolumeSpecs"));
         }
         //      C# -> List<VmwareVirtualMachineNic>? VmwareNics
         // GraphQL -> vmwareNics: [VmwareVirtualMachineNic!]! (type)
-        if (this.VmwareNics == null && Exploration.Includes(parent + ".vmwareNics"))
+        if (this.VmwareNics == null && ec.Includes("vmwareNics",false))
         {
             this.VmwareNics = new List<VmwareVirtualMachineNic>();
-            this.VmwareNics.ApplyExploratoryFieldSpec(parent + ".vmwareNics");
+            this.VmwareNics.ApplyExploratoryFieldSpec(ec.NewChild("vmwareNics"));
         }
     }
 
@@ -291,12 +290,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VmwareResourceSpec> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VmwareResourceSpec());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VmwareResourceSpec> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

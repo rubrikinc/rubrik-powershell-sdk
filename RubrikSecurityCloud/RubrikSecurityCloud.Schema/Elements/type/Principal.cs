@@ -131,42 +131,41 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> PrincipalTypeEnum? PrincipalType
         // GraphQL -> principalType: PrincipalTypeEnum! (enum)
-        if (this.PrincipalType == null && Exploration.Includes(parent + ".principalType", true))
+        if (this.PrincipalType == null && ec.Includes("principalType",true))
         {
             this.PrincipalType = new PrincipalTypeEnum();
         }
         //      C# -> System.String? AuthDomainId
         // GraphQL -> authDomainId: String! (scalar)
-        if (this.AuthDomainId == null && Exploration.Includes(parent + ".authDomainId", true))
+        if (this.AuthDomainId == null && ec.Includes("authDomainId",true))
         {
             this.AuthDomainId = "FETCH";
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String (scalar)
-        if (this.Description == null && Exploration.Includes(parent + ".description", true))
+        if (this.Description == null && ec.Includes("description",true))
         {
             this.Description = "FETCH";
         }
         //      C# -> System.String? Email
         // GraphQL -> email: String (scalar)
-        if (this.Email == null && Exploration.Includes(parent + ".email", true))
+        if (this.Email == null && ec.Includes("email",true))
         {
             this.Email = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
@@ -202,12 +201,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<Principal> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new Principal());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<Principal> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

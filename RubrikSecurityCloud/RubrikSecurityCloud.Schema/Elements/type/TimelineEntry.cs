@@ -92,27 +92,26 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? Day
         // GraphQL -> day: String! (scalar)
-        if (this.Day == null && Exploration.Includes(parent + ".day", true))
+        if (this.Day == null && ec.Includes("day",true))
         {
             this.Day = "FETCH";
         }
         //      C# -> System.String? PolicyId
         // GraphQL -> policyId: String! (scalar)
-        if (this.PolicyId == null && Exploration.Includes(parent + ".policyId", true))
+        if (this.PolicyId == null && ec.Includes("policyId",true))
         {
             this.PolicyId = "FETCH";
         }
         //      C# -> Hits? Hits
         // GraphQL -> hits: Hits (type)
-        if (this.Hits == null && Exploration.Includes(parent + ".hits"))
+        if (this.Hits == null && ec.Includes("hits",false))
         {
             this.Hits = new Hits();
-            this.Hits.ApplyExploratoryFieldSpec(parent + ".hits");
+            this.Hits.ApplyExploratoryFieldSpec(ec.NewChild("hits"));
         }
     }
 
@@ -146,12 +145,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<TimelineEntry> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new TimelineEntry());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<TimelineEntry> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

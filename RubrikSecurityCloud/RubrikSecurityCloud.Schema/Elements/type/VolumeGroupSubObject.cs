@@ -117,36 +117,35 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Int64? CapacityInBytes
         // GraphQL -> capacityInBytes: Long! (scalar)
-        if (this.CapacityInBytes == null && Exploration.Includes(parent + ".capacityInBytes", true))
+        if (this.CapacityInBytes == null && ec.Includes("capacityInBytes",true))
         {
             this.CapacityInBytes = new System.Int64();
         }
         //      C# -> System.Int64? FileSizeInBytes
         // GraphQL -> fileSizeInBytes: Long! (scalar)
-        if (this.FileSizeInBytes == null && Exploration.Includes(parent + ".fileSizeInBytes", true))
+        if (this.FileSizeInBytes == null && ec.Includes("fileSizeInBytes",true))
         {
             this.FileSizeInBytes = new System.Int64();
         }
         //      C# -> System.String? FileSystemType
         // GraphQL -> fileSystemType: String! (scalar)
-        if (this.FileSystemType == null && Exploration.Includes(parent + ".fileSystemType", true))
+        if (this.FileSystemType == null && ec.Includes("fileSystemType",true))
         {
             this.FileSystemType = "FETCH";
         }
         //      C# -> List<System.String>? MountPointsOpt
         // GraphQL -> mountPointsOpt: [String!]! (scalar)
-        if (this.MountPointsOpt == null && Exploration.Includes(parent + ".mountPointsOpt", true))
+        if (this.MountPointsOpt == null && ec.Includes("mountPointsOpt",true))
         {
             this.MountPointsOpt = new List<System.String>();
         }
         //      C# -> System.String? VolumeId
         // GraphQL -> volumeId: String! (scalar)
-        if (this.VolumeId == null && Exploration.Includes(parent + ".volumeId", true))
+        if (this.VolumeId == null && ec.Includes("volumeId",true))
         {
             this.VolumeId = "FETCH";
         }
@@ -182,12 +181,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<VolumeGroupSubObject> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new VolumeGroupSubObject());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<VolumeGroupSubObject> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

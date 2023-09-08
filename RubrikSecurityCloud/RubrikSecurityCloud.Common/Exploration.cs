@@ -9,6 +9,31 @@ using System.IO;
 
 namespace RubrikSecurityCloud
 {
+    public class ExplorationContext
+    {
+        public string Parent { get; set; } = "";
+
+        public ExplorationContext(string parent = "")
+        {
+            Parent = parent;
+        }
+
+        public bool Includes(string nodeName, bool isLeaf = false)
+        {
+            return Exploration.Includes(Parent + "." + nodeName, isLeaf);
+        }
+
+        /// <summary>
+        /// Instantiate a new ExplorationContext from a parent context
+        /// and a child node name.
+        /// </summary>
+        public ExplorationContext NewChild(string child)
+        {
+            return new ExplorationContext(Parent + "." + child);
+        }
+    }
+
+
     public static class Exploration
     {
         // Enum for Profile
@@ -59,6 +84,11 @@ namespace RubrikSecurityCloud
             UnwantedFields.Clear();
         }
 
+        public static bool HasPatch()
+        {
+            return WantedFields.Count > 0 || UnwantedFields.Count > 0;
+        }
+        
         public static void ReadPatchFromFile(string patchFile, bool missingOk = true)
         {
             if (File.Exists(patchFile))

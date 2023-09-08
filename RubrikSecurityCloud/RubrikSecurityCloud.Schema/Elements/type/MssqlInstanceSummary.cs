@@ -521,210 +521,209 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? ClusterInstanceAddress
         // GraphQL -> clusterInstanceAddress: String (scalar)
-        if (this.ClusterInstanceAddress == null && Exploration.Includes(parent + ".clusterInstanceAddress", true))
+        if (this.ClusterInstanceAddress == null && ec.Includes("clusterInstanceAddress",true))
         {
             this.ClusterInstanceAddress = "FETCH";
         }
         //      C# -> System.String? ConfiguredSlaDomainId
         // GraphQL -> configuredSlaDomainId: String (scalar)
-        if (this.ConfiguredSlaDomainId == null && Exploration.Includes(parent + ".configuredSlaDomainId", true))
+        if (this.ConfiguredSlaDomainId == null && ec.Includes("configuredSlaDomainId",true))
         {
             this.ConfiguredSlaDomainId = "FETCH";
         }
         //      C# -> System.String? ConfiguredSlaDomainName
         // GraphQL -> configuredSlaDomainName: String (scalar)
-        if (this.ConfiguredSlaDomainName == null && Exploration.Includes(parent + ".configuredSlaDomainName", true))
+        if (this.ConfiguredSlaDomainName == null && ec.Includes("configuredSlaDomainName",true))
         {
             this.ConfiguredSlaDomainName = "FETCH";
         }
         //      C# -> System.String? ConfiguredSlaDomainType
         // GraphQL -> configuredSlaDomainType: String (scalar)
-        if (this.ConfiguredSlaDomainType == null && Exploration.Includes(parent + ".configuredSlaDomainType", true))
+        if (this.ConfiguredSlaDomainType == null && ec.Includes("configuredSlaDomainType",true))
         {
             this.ConfiguredSlaDomainType = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.Int64? InternalTimestamp
         // GraphQL -> internalTimestamp: Long (scalar)
-        if (this.InternalTimestamp == null && Exploration.Includes(parent + ".internalTimestamp", true))
+        if (this.InternalTimestamp == null && ec.Includes("internalTimestamp",true))
         {
             this.InternalTimestamp = new System.Int64();
         }
         //      C# -> System.Boolean? IsRetentionLocked
         // GraphQL -> isRetentionLocked: Boolean (scalar)
-        if (this.IsRetentionLocked == null && Exploration.Includes(parent + ".isRetentionLocked", true))
+        if (this.IsRetentionLocked == null && ec.Includes("isRetentionLocked",true))
         {
             this.IsRetentionLocked = true;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? PrimaryClusterId
         // GraphQL -> primaryClusterId: String! (scalar)
-        if (this.PrimaryClusterId == null && Exploration.Includes(parent + ".primaryClusterId", true))
+        if (this.PrimaryClusterId == null && ec.Includes("primaryClusterId",true))
         {
             this.PrimaryClusterId = "FETCH";
         }
         //      C# -> System.String? ProtectionDateV50
         // GraphQL -> protectionDateV50: String (scalar)
-        if (this.ProtectionDateV50 == null && Exploration.Includes(parent + ".protectionDateV50", true))
+        if (this.ProtectionDateV50 == null && ec.Includes("protectionDateV50",true))
         {
             this.ProtectionDateV50 = "FETCH";
         }
         //      C# -> System.String? ProtectionDateV51
         // GraphQL -> protectionDateV51: String (scalar)
-        if (this.ProtectionDateV51 == null && Exploration.Includes(parent + ".protectionDateV51", true))
+        if (this.ProtectionDateV51 == null && ec.Includes("protectionDateV51",true))
         {
             this.ProtectionDateV51 = "FETCH";
         }
         //      C# -> System.String? ProtectionDateV52
         // GraphQL -> protectionDateV52: String (scalar)
-        if (this.ProtectionDateV52 == null && Exploration.Includes(parent + ".protectionDateV52", true))
+        if (this.ProtectionDateV52 == null && ec.Includes("protectionDateV52",true))
         {
             this.ProtectionDateV52 = "FETCH";
         }
         //      C# -> System.String? ProtectionDateV53
         // GraphQL -> protectionDateV53: String (scalar)
-        if (this.ProtectionDateV53 == null && Exploration.Includes(parent + ".protectionDateV53", true))
+        if (this.ProtectionDateV53 == null && ec.Includes("protectionDateV53",true))
         {
             this.ProtectionDateV53 = "FETCH";
         }
         //      C# -> DateTime? ProtectionDateV60
         // GraphQL -> protectionDateV60: DateTime (scalar)
-        if (this.ProtectionDateV60 == null && Exploration.Includes(parent + ".protectionDateV60", true))
+        if (this.ProtectionDateV60 == null && ec.Includes("protectionDateV60",true))
         {
             this.ProtectionDateV60 = new DateTime();
         }
         //      C# -> DateTime? ProtectionDateV70
         // GraphQL -> protectionDateV70: DateTime (scalar)
-        if (this.ProtectionDateV70 == null && Exploration.Includes(parent + ".protectionDateV70", true))
+        if (this.ProtectionDateV70 == null && ec.Includes("protectionDateV70",true))
         {
             this.ProtectionDateV70 = new DateTime();
         }
         //      C# -> DateTime? ProtectionDateV80
         // GraphQL -> protectionDateV80: DateTime (scalar)
-        if (this.ProtectionDateV80 == null && Exploration.Includes(parent + ".protectionDateV80", true))
+        if (this.ProtectionDateV80 == null && ec.Includes("protectionDateV80",true))
         {
             this.ProtectionDateV80 = new DateTime();
         }
         //      C# -> DateTime? ProtectionDateV81
         // GraphQL -> protectionDateV81: DateTime (scalar)
-        if (this.ProtectionDateV81 == null && Exploration.Includes(parent + ".protectionDateV81", true))
+        if (this.ProtectionDateV81 == null && ec.Includes("protectionDateV81",true))
         {
             this.ProtectionDateV81 = new DateTime();
         }
         //      C# -> DateTime? ProtectionDateV90
         // GraphQL -> protectionDateV90: DateTime (scalar)
-        if (this.ProtectionDateV90 == null && Exploration.Includes(parent + ".protectionDateV90", true))
+        if (this.ProtectionDateV90 == null && ec.Includes("protectionDateV90",true))
         {
             this.ProtectionDateV90 = new DateTime();
         }
         //      C# -> DateTime? ProtectionDateV91
         // GraphQL -> protectionDateV91: DateTime (scalar)
-        if (this.ProtectionDateV91 == null && Exploration.Includes(parent + ".protectionDateV91", true))
+        if (this.ProtectionDateV91 == null && ec.Includes("protectionDateV91",true))
         {
             this.ProtectionDateV91 = new DateTime();
         }
         //      C# -> List<System.String>? UnprotectableReasonsV51
         // GraphQL -> unprotectableReasonsV51: [String!]! (scalar)
-        if (this.UnprotectableReasonsV51 == null && Exploration.Includes(parent + ".unprotectableReasonsV51", true))
+        if (this.UnprotectableReasonsV51 == null && ec.Includes("unprotectableReasonsV51",true))
         {
             this.UnprotectableReasonsV51 = new List<System.String>();
         }
         //      C# -> List<System.String>? UnprotectableReasonsV52
         // GraphQL -> unprotectableReasonsV52: [String!]! (scalar)
-        if (this.UnprotectableReasonsV52 == null && Exploration.Includes(parent + ".unprotectableReasonsV52", true))
+        if (this.UnprotectableReasonsV52 == null && ec.Includes("unprotectableReasonsV52",true))
         {
             this.UnprotectableReasonsV52 = new List<System.String>();
         }
         //      C# -> List<System.String>? UnprotectableReasonsV53
         // GraphQL -> unprotectableReasonsV53: [String!]! (scalar)
-        if (this.UnprotectableReasonsV53 == null && Exploration.Includes(parent + ".unprotectableReasonsV53", true))
+        if (this.UnprotectableReasonsV53 == null && ec.Includes("unprotectableReasonsV53",true))
         {
             this.UnprotectableReasonsV53 = new List<System.String>();
         }
         //      C# -> List<System.String>? UnprotectableReasonsV60
         // GraphQL -> unprotectableReasonsV60: [String!]! (scalar)
-        if (this.UnprotectableReasonsV60 == null && Exploration.Includes(parent + ".unprotectableReasonsV60", true))
+        if (this.UnprotectableReasonsV60 == null && ec.Includes("unprotectableReasonsV60",true))
         {
             this.UnprotectableReasonsV60 = new List<System.String>();
         }
         //      C# -> List<System.String>? UnprotectableReasonsV70
         // GraphQL -> unprotectableReasonsV70: [String!]! (scalar)
-        if (this.UnprotectableReasonsV70 == null && Exploration.Includes(parent + ".unprotectableReasonsV70", true))
+        if (this.UnprotectableReasonsV70 == null && ec.Includes("unprotectableReasonsV70",true))
         {
             this.UnprotectableReasonsV70 = new List<System.String>();
         }
         //      C# -> List<System.String>? UnprotectableReasonsV80
         // GraphQL -> unprotectableReasonsV80: [String!]! (scalar)
-        if (this.UnprotectableReasonsV80 == null && Exploration.Includes(parent + ".unprotectableReasonsV80", true))
+        if (this.UnprotectableReasonsV80 == null && ec.Includes("unprotectableReasonsV80",true))
         {
             this.UnprotectableReasonsV80 = new List<System.String>();
         }
         //      C# -> List<System.String>? UnprotectableReasonsV81
         // GraphQL -> unprotectableReasonsV81: [String!]! (scalar)
-        if (this.UnprotectableReasonsV81 == null && Exploration.Includes(parent + ".unprotectableReasonsV81", true))
+        if (this.UnprotectableReasonsV81 == null && ec.Includes("unprotectableReasonsV81",true))
         {
             this.UnprotectableReasonsV81 = new List<System.String>();
         }
         //      C# -> List<System.String>? UnprotectableReasonsV90
         // GraphQL -> unprotectableReasonsV90: [String!]! (scalar)
-        if (this.UnprotectableReasonsV90 == null && Exploration.Includes(parent + ".unprotectableReasonsV90", true))
+        if (this.UnprotectableReasonsV90 == null && ec.Includes("unprotectableReasonsV90",true))
         {
             this.UnprotectableReasonsV90 = new List<System.String>();
         }
         //      C# -> List<System.String>? UnprotectableReasonsV91
         // GraphQL -> unprotectableReasonsV91: [String!]! (scalar)
-        if (this.UnprotectableReasonsV91 == null && Exploration.Includes(parent + ".unprotectableReasonsV91", true))
+        if (this.UnprotectableReasonsV91 == null && ec.Includes("unprotectableReasonsV91",true))
         {
             this.UnprotectableReasonsV91 = new List<System.String>();
         }
         //      C# -> System.String? Version
         // GraphQL -> version: String (scalar)
-        if (this.Version == null && Exploration.Includes(parent + ".version", true))
+        if (this.Version == null && ec.Includes("version",true))
         {
             this.Version = "FETCH";
         }
         //      C# -> MssqlNonSlaProperties? MssqlNonSlaProperties
         // GraphQL -> mssqlNonSlaProperties: MssqlNonSlaProperties (type)
-        if (this.MssqlNonSlaProperties == null && Exploration.Includes(parent + ".mssqlNonSlaProperties"))
+        if (this.MssqlNonSlaProperties == null && ec.Includes("mssqlNonSlaProperties",false))
         {
             this.MssqlNonSlaProperties = new MssqlNonSlaProperties();
-            this.MssqlNonSlaProperties.ApplyExploratoryFieldSpec(parent + ".mssqlNonSlaProperties");
+            this.MssqlNonSlaProperties.ApplyExploratoryFieldSpec(ec.NewChild("mssqlNonSlaProperties"));
         }
         //      C# -> MssqlSlaRelatedProperties? MssqlSlaRelatedProperties
         // GraphQL -> mssqlSlaRelatedProperties: MssqlSlaRelatedProperties (type)
-        if (this.MssqlSlaRelatedProperties == null && Exploration.Includes(parent + ".mssqlSlaRelatedProperties"))
+        if (this.MssqlSlaRelatedProperties == null && ec.Includes("mssqlSlaRelatedProperties",false))
         {
             this.MssqlSlaRelatedProperties = new MssqlSlaRelatedProperties();
-            this.MssqlSlaRelatedProperties.ApplyExploratoryFieldSpec(parent + ".mssqlSlaRelatedProperties");
+            this.MssqlSlaRelatedProperties.ApplyExploratoryFieldSpec(ec.NewChild("mssqlSlaRelatedProperties"));
         }
         //      C# -> MssqlRootProperties? RootProperties
         // GraphQL -> rootProperties: MssqlRootProperties (type)
-        if (this.RootProperties == null && Exploration.Includes(parent + ".rootProperties"))
+        if (this.RootProperties == null && ec.Includes("rootProperties",false))
         {
             this.RootProperties = new MssqlRootProperties();
-            this.RootProperties.ApplyExploratoryFieldSpec(parent + ".rootProperties");
+            this.RootProperties.ApplyExploratoryFieldSpec(ec.NewChild("rootProperties"));
         }
         //      C# -> List<MssqlUnprotectableReason>? UnprotectableReasonsV50
         // GraphQL -> unprotectableReasonsV50: [MssqlUnprotectableReason!]! (type)
-        if (this.UnprotectableReasonsV50 == null && Exploration.Includes(parent + ".unprotectableReasonsV50"))
+        if (this.UnprotectableReasonsV50 == null && ec.Includes("unprotectableReasonsV50",false))
         {
             this.UnprotectableReasonsV50 = new List<MssqlUnprotectableReason>();
-            this.UnprotectableReasonsV50.ApplyExploratoryFieldSpec(parent + ".unprotectableReasonsV50");
+            this.UnprotectableReasonsV50.ApplyExploratoryFieldSpec(ec.NewChild("unprotectableReasonsV50"));
         }
     }
 
@@ -758,12 +757,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<MssqlInstanceSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new MssqlInstanceSummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<MssqlInstanceSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

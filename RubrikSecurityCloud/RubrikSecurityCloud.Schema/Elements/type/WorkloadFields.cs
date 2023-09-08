@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> O365SnapshotItemInfo? O365Item
         // GraphQL -> o365Item: O365SnapshotItemInfo (type)
-        if (this.O365Item == null && Exploration.Includes(parent + ".o365Item"))
+        if (this.O365Item == null && ec.Includes("o365Item",false))
         {
             this.O365Item = new O365SnapshotItemInfo();
-            this.O365Item.ApplyExploratoryFieldSpec(parent + ".o365Item");
+            this.O365Item.ApplyExploratoryFieldSpec(ec.NewChild("o365Item"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<WorkloadFields> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new WorkloadFields());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<WorkloadFields> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

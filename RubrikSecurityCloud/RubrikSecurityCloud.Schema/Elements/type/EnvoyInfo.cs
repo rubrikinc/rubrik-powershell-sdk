@@ -103,30 +103,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> EnvoyStatusField? EnvoyStatus
         // GraphQL -> envoyStatus: EnvoyStatusField! (enum)
-        if (this.EnvoyStatus == null && Exploration.Includes(parent + ".envoyStatus", true))
+        if (this.EnvoyStatus == null && ec.Includes("envoyStatus",true))
         {
             this.EnvoyStatus = new EnvoyStatusField();
         }
         //      C# -> System.String? EnvoyHostname
         // GraphQL -> envoyHostname: String! (scalar)
-        if (this.EnvoyHostname == null && Exploration.Includes(parent + ".envoyHostname", true))
+        if (this.EnvoyHostname == null && ec.Includes("envoyHostname",true))
         {
             this.EnvoyHostname = "FETCH";
         }
         //      C# -> List<System.String>? EnvoyIps
         // GraphQL -> envoyIps: [String!]! (scalar)
-        if (this.EnvoyIps == null && Exploration.Includes(parent + ".envoyIps", true))
+        if (this.EnvoyIps == null && ec.Includes("envoyIps",true))
         {
             this.EnvoyIps = new List<System.String>();
         }
         //      C# -> System.String? EnvoyUuid
         // GraphQL -> envoyUuid: UUID! (scalar)
-        if (this.EnvoyUuid == null && Exploration.Includes(parent + ".envoyUuid", true))
+        if (this.EnvoyUuid == null && ec.Includes("envoyUuid",true))
         {
             this.EnvoyUuid = "FETCH";
         }
@@ -162,12 +161,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<EnvoyInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new EnvoyInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<EnvoyInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

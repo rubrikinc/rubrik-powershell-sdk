@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? IsBlobImmutabilityEnabled
         // GraphQL -> isBlobImmutabilityEnabled: Boolean! (scalar)
-        if (this.IsBlobImmutabilityEnabled == null && Exploration.Includes(parent + ".isBlobImmutabilityEnabled", true))
+        if (this.IsBlobImmutabilityEnabled == null && ec.Includes("isBlobImmutabilityEnabled",true))
         {
             this.IsBlobImmutabilityEnabled = true;
         }
         //      C# -> System.Int32? LockDurationDays
         // GraphQL -> lockDurationDays: Int! (scalar)
-        if (this.LockDurationDays == null && Exploration.Includes(parent + ".lockDurationDays", true))
+        if (this.LockDurationDays == null && ec.Includes("lockDurationDays",true))
         {
             this.LockDurationDays = Int32.MinValue;
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AzureImmutabilitySettingsType> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AzureImmutabilitySettingsType());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AzureImmutabilitySettingsType> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

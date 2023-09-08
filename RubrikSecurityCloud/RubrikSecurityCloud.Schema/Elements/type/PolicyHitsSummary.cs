@@ -239,88 +239,87 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> RiskLevelType? RiskLevel
         // GraphQL -> riskLevel: RiskLevelType! (enum)
-        if (this.RiskLevel == null && Exploration.Includes(parent + ".riskLevel", true))
+        if (this.RiskLevel == null && ec.Includes("riskLevel",true))
         {
             this.RiskLevel = new RiskLevelType();
         }
         //      C# -> System.String? PolicyId
         // GraphQL -> policyId: String! (scalar)
-        if (this.PolicyId == null && Exploration.Includes(parent + ".policyId", true))
+        if (this.PolicyId == null && ec.Includes("policyId",true))
         {
             this.PolicyId = "FETCH";
         }
         //      C# -> System.String? PolicyName
         // GraphQL -> policyName: String! (scalar)
-        if (this.PolicyName == null && Exploration.Includes(parent + ".policyName", true))
+        if (this.PolicyName == null && ec.Includes("policyName",true))
         {
             this.PolicyName = "FETCH";
         }
         //      C# -> System.Int64? RiskHits
         // GraphQL -> riskHits: Long! (scalar)
-        if (this.RiskHits == null && Exploration.Includes(parent + ".riskHits", true))
+        if (this.RiskHits == null && ec.Includes("riskHits",true))
         {
             this.RiskHits = new System.Int64();
         }
         //      C# -> SensitiveHits? SidAnalyzerHits
         // GraphQL -> sidAnalyzerHits: SensitiveHits (type)
-        if (this.SidAnalyzerHits == null && Exploration.Includes(parent + ".sidAnalyzerHits"))
+        if (this.SidAnalyzerHits == null && ec.Includes("sidAnalyzerHits",false))
         {
             this.SidAnalyzerHits = new SensitiveHits();
-            this.SidAnalyzerHits.ApplyExploratoryFieldSpec(parent + ".sidAnalyzerHits");
+            this.SidAnalyzerHits.ApplyExploratoryFieldSpec(ec.NewChild("sidAnalyzerHits"));
         }
         //      C# -> SensitiveHits? SidDeltaAnalyzerHits
         // GraphQL -> sidDeltaAnalyzerHits: SensitiveHits (type)
-        if (this.SidDeltaAnalyzerHits == null && Exploration.Includes(parent + ".sidDeltaAnalyzerHits"))
+        if (this.SidDeltaAnalyzerHits == null && ec.Includes("sidDeltaAnalyzerHits",false))
         {
             this.SidDeltaAnalyzerHits = new SensitiveHits();
-            this.SidDeltaAnalyzerHits.ApplyExploratoryFieldSpec(parent + ".sidDeltaAnalyzerHits");
+            this.SidDeltaAnalyzerHits.ApplyExploratoryFieldSpec(ec.NewChild("sidDeltaAnalyzerHits"));
         }
         //      C# -> SensitiveObjects? SidDeltaObjectCount
         // GraphQL -> sidDeltaObjectCount: SensitiveObjects (type)
-        if (this.SidDeltaObjectCount == null && Exploration.Includes(parent + ".sidDeltaObjectCount"))
+        if (this.SidDeltaObjectCount == null && ec.Includes("sidDeltaObjectCount",false))
         {
             this.SidDeltaObjectCount = new SensitiveObjects();
-            this.SidDeltaObjectCount.ApplyExploratoryFieldSpec(parent + ".sidDeltaObjectCount");
+            this.SidDeltaObjectCount.ApplyExploratoryFieldSpec(ec.NewChild("sidDeltaObjectCount"));
         }
         //      C# -> SensitiveHits? SidDeltaRiskHits
         // GraphQL -> sidDeltaRiskHits: SensitiveHits (type)
-        if (this.SidDeltaRiskHits == null && Exploration.Includes(parent + ".sidDeltaRiskHits"))
+        if (this.SidDeltaRiskHits == null && ec.Includes("sidDeltaRiskHits",false))
         {
             this.SidDeltaRiskHits = new SensitiveHits();
-            this.SidDeltaRiskHits.ApplyExploratoryFieldSpec(parent + ".sidDeltaRiskHits");
+            this.SidDeltaRiskHits.ApplyExploratoryFieldSpec(ec.NewChild("sidDeltaRiskHits"));
         }
         //      C# -> SensitiveFiles? SidDeltaSensitiveFiles
         // GraphQL -> sidDeltaSensitiveFiles: SensitiveFiles (type)
-        if (this.SidDeltaSensitiveFiles == null && Exploration.Includes(parent + ".sidDeltaSensitiveFiles"))
+        if (this.SidDeltaSensitiveFiles == null && ec.Includes("sidDeltaSensitiveFiles",false))
         {
             this.SidDeltaSensitiveFiles = new SensitiveFiles();
-            this.SidDeltaSensitiveFiles.ApplyExploratoryFieldSpec(parent + ".sidDeltaSensitiveFiles");
+            this.SidDeltaSensitiveFiles.ApplyExploratoryFieldSpec(ec.NewChild("sidDeltaSensitiveFiles"));
         }
         //      C# -> SensitiveObjects? SidObjectCount
         // GraphQL -> sidObjectCount: SensitiveObjects (type)
-        if (this.SidObjectCount == null && Exploration.Includes(parent + ".sidObjectCount"))
+        if (this.SidObjectCount == null && ec.Includes("sidObjectCount",false))
         {
             this.SidObjectCount = new SensitiveObjects();
-            this.SidObjectCount.ApplyExploratoryFieldSpec(parent + ".sidObjectCount");
+            this.SidObjectCount.ApplyExploratoryFieldSpec(ec.NewChild("sidObjectCount"));
         }
         //      C# -> SensitiveHits? SidRiskHits
         // GraphQL -> sidRiskHits: SensitiveHits (type)
-        if (this.SidRiskHits == null && Exploration.Includes(parent + ".sidRiskHits"))
+        if (this.SidRiskHits == null && ec.Includes("sidRiskHits",false))
         {
             this.SidRiskHits = new SensitiveHits();
-            this.SidRiskHits.ApplyExploratoryFieldSpec(parent + ".sidRiskHits");
+            this.SidRiskHits.ApplyExploratoryFieldSpec(ec.NewChild("sidRiskHits"));
         }
         //      C# -> SensitiveFiles? SidSensitiveFiles
         // GraphQL -> sidSensitiveFiles: SensitiveFiles (type)
-        if (this.SidSensitiveFiles == null && Exploration.Includes(parent + ".sidSensitiveFiles"))
+        if (this.SidSensitiveFiles == null && ec.Includes("sidSensitiveFiles",false))
         {
             this.SidSensitiveFiles = new SensitiveFiles();
-            this.SidSensitiveFiles.ApplyExploratoryFieldSpec(parent + ".sidSensitiveFiles");
+            this.SidSensitiveFiles.ApplyExploratoryFieldSpec(ec.NewChild("sidSensitiveFiles"));
         }
     }
 
@@ -354,12 +353,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PolicyHitsSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PolicyHitsSummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<PolicyHitsSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -117,36 +117,35 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? IsRubrikManaged
         // GraphQL -> isRubrikManaged: Boolean! (scalar)
-        if (this.IsRubrikManaged == null && Exploration.Includes(parent + ".isRubrikManaged", true))
+        if (this.IsRubrikManaged == null && ec.Includes("isRubrikManaged",true))
         {
             this.IsRubrikManaged = true;
         }
         //      C# -> System.String? RoleAssignmentName
         // GraphQL -> roleAssignmentName: String! (scalar)
-        if (this.RoleAssignmentName == null && Exploration.Includes(parent + ".roleAssignmentName", true))
+        if (this.RoleAssignmentName == null && ec.Includes("roleAssignmentName",true))
         {
             this.RoleAssignmentName = "FETCH";
         }
         //      C# -> System.String? RoleDefinitionId
         // GraphQL -> roleDefinitionId: UUID! (scalar)
-        if (this.RoleDefinitionId == null && Exploration.Includes(parent + ".roleDefinitionId", true))
+        if (this.RoleDefinitionId == null && ec.Includes("roleDefinitionId",true))
         {
             this.RoleDefinitionId = "FETCH";
         }
         //      C# -> System.String? RoleDisplayName
         // GraphQL -> roleDisplayName: String! (scalar)
-        if (this.RoleDisplayName == null && Exploration.Includes(parent + ".roleDisplayName", true))
+        if (this.RoleDisplayName == null && ec.Includes("roleDisplayName",true))
         {
             this.RoleDisplayName = "FETCH";
         }
         //      C# -> System.String? Scope
         // GraphQL -> scope: String! (scalar)
-        if (this.Scope == null && Exploration.Includes(parent + ".scope", true))
+        if (this.Scope == null && ec.Includes("scope",true))
         {
             this.Scope = "FETCH";
         }
@@ -182,12 +181,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AzureRole> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AzureRole());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AzureRole> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

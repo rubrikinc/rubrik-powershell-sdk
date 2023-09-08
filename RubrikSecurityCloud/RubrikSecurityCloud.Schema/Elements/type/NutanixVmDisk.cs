@@ -131,42 +131,41 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? DeviceType
         // GraphQL -> deviceType: String! (scalar)
-        if (this.DeviceType == null && Exploration.Includes(parent + ".deviceType", true))
+        if (this.DeviceType == null && ec.Includes("deviceType",true))
         {
             this.DeviceType = "FETCH";
         }
         //      C# -> System.Boolean? IsSnapshottable
         // GraphQL -> isSnapshottable: Boolean! (scalar)
-        if (this.IsSnapshottable == null && Exploration.Includes(parent + ".isSnapshottable", true))
+        if (this.IsSnapshottable == null && ec.Includes("isSnapshottable",true))
         {
             this.IsSnapshottable = true;
         }
         //      C# -> System.String? Label
         // GraphQL -> label: String! (scalar)
-        if (this.Label == null && Exploration.Includes(parent + ".label", true))
+        if (this.Label == null && ec.Includes("label",true))
         {
             this.Label = "FETCH";
         }
         //      C# -> System.Int64? SizeInBytes
         // GraphQL -> sizeInBytes: Long! (scalar)
-        if (this.SizeInBytes == null && Exploration.Includes(parent + ".sizeInBytes", true))
+        if (this.SizeInBytes == null && ec.Includes("sizeInBytes",true))
         {
             this.SizeInBytes = new System.Int64();
         }
         //      C# -> System.String? Uuid
         // GraphQL -> uuid: String! (scalar)
-        if (this.Uuid == null && Exploration.Includes(parent + ".uuid", true))
+        if (this.Uuid == null && ec.Includes("uuid",true))
         {
             this.Uuid = "FETCH";
         }
         //      C# -> System.String? VmDiskUuid
         // GraphQL -> vmDiskUuid: String! (scalar)
-        if (this.VmDiskUuid == null && Exploration.Includes(parent + ".vmDiskUuid", true))
+        if (this.VmDiskUuid == null && ec.Includes("vmDiskUuid",true))
         {
             this.VmDiskUuid = "FETCH";
         }
@@ -202,12 +201,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<NutanixVmDisk> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new NutanixVmDisk());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<NutanixVmDisk> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -85,6 +85,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("analyzerHits")]
         public AnalyzerHits? AnalyzerHits { get; set; }
 
+        //      C# -> PrincipalCounts? DeltaUserCounts
+        // GraphQL -> deltaUserCounts: PrincipalCounts (type)
+        [JsonProperty("deltaUserCounts")]
+        public PrincipalCounts? DeltaUserCounts { get; set; }
+
         //      C# -> FileResultConnection? FileResultConnection
         // GraphQL -> fileResultConnection: FileResultConnection! (type)
         [JsonProperty("fileResultConnection")]
@@ -158,6 +163,7 @@ namespace RubrikSecurityCloud.Types
         System.String? TimeContext = null,
         List<AnalyzerMapping>? AllAnalyzerMappings = null,
         AnalyzerHits? AnalyzerHits = null,
+        PrincipalCounts? DeltaUserCounts = null,
         FileResultConnection? FileResultConnection = null,
         FileResultConnection? FolderChildConnection = null,
         ObjectStatus? ObjectStatus = null,
@@ -208,6 +214,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AnalyzerHits != null ) {
             this.AnalyzerHits = AnalyzerHits;
+        }
+        if ( DeltaUserCounts != null ) {
+            this.DeltaUserCounts = DeltaUserCounts;
         }
         if ( FileResultConnection != null ) {
             this.FileResultConnection = FileResultConnection;
@@ -323,6 +332,14 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "analyzerHits {\n" + fspec + ind + "}\n" ;
             }
         }
+        //      C# -> PrincipalCounts? DeltaUserCounts
+        // GraphQL -> deltaUserCounts: PrincipalCounts (type)
+        if (this.DeltaUserCounts != null) {
+            var fspec = this.DeltaUserCounts.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "deltaUserCounts {\n" + fspec + ind + "}\n" ;
+            }
+        }
         //      C# -> FileResultConnection? FileResultConnection
         // GraphQL -> fileResultConnection: FileResultConnection! (type)
         if (this.FileResultConnection != null) {
@@ -408,160 +425,166 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<RiskReason>? AccessRiskReasons
         // GraphQL -> accessRiskReasons: [RiskReason!]! (enum)
-        if (this.AccessRiskReasons == null && Exploration.Includes(parent + ".accessRiskReasons", true))
+        if (this.AccessRiskReasons == null && ec.Includes("accessRiskReasons",true))
         {
             this.AccessRiskReasons = new List<RiskReason>();
         }
         //      C# -> AnalysisStatus? AnalysisStatus
         // GraphQL -> analysisStatus: AnalysisStatus! (enum)
-        if (this.AnalysisStatus == null && Exploration.Includes(parent + ".analysisStatus", true))
+        if (this.AnalysisStatus == null && ec.Includes("analysisStatus",true))
         {
             this.AnalysisStatus = new AnalysisStatus();
         }
         //      C# -> DataGovOsType? OsType
         // GraphQL -> osType: DataGovOsType! (enum)
-        if (this.OsType == null && Exploration.Includes(parent + ".osType", true))
+        if (this.OsType == null && ec.Includes("osType",true))
         {
             this.OsType = new DataGovOsType();
         }
         //      C# -> RiskLevelType? RiskLevel
         // GraphQL -> riskLevel: RiskLevelType! (enum)
-        if (this.RiskLevel == null && Exploration.Includes(parent + ".riskLevel", true))
+        if (this.RiskLevel == null && ec.Includes("riskLevel",true))
         {
             this.RiskLevel = new RiskLevelType();
         }
         //      C# -> DataGovShareType? ShareType
         // GraphQL -> shareType: DataGovShareType! (enum)
-        if (this.ShareType == null && Exploration.Includes(parent + ".shareType", true))
+        if (this.ShareType == null && ec.Includes("shareType",true))
         {
             this.ShareType = new DataGovShareType();
         }
         //      C# -> HierarchyObject? Snappable
         // GraphQL -> snappable: HierarchyObject (interface)
-        if (this.Snappable == null && Exploration.Includes(parent + ".snappable"))
+        if (this.Snappable == null && ec.Includes("snappable",false))
         {
             var impls = new List<HierarchyObject>();
-            impls.ApplyExploratoryFieldSpec(parent + ".snappable");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("snappable"));
             this.Snappable = (HierarchyObject)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsUserAccessEnabledObject
         // GraphQL -> isUserAccessEnabledObject: Boolean! (scalar)
-        if (this.IsUserAccessEnabledObject == null && Exploration.Includes(parent + ".isUserAccessEnabledObject", true))
+        if (this.IsUserAccessEnabledObject == null && ec.Includes("isUserAccessEnabledObject",true))
         {
             this.IsUserAccessEnabledObject = true;
         }
         //      C# -> System.String? SnapshotFid
         // GraphQL -> snapshotFid: String! (scalar)
-        if (this.SnapshotFid == null && Exploration.Includes(parent + ".snapshotFid", true))
+        if (this.SnapshotFid == null && ec.Includes("snapshotFid",true))
         {
             this.SnapshotFid = "FETCH";
         }
         //      C# -> System.Int64? SnapshotTimestamp
         // GraphQL -> snapshotTimestamp: Long! (scalar)
-        if (this.SnapshotTimestamp == null && Exploration.Includes(parent + ".snapshotTimestamp", true))
+        if (this.SnapshotTimestamp == null && ec.Includes("snapshotTimestamp",true))
         {
             this.SnapshotTimestamp = new System.Int64();
         }
         //      C# -> System.String? TimeContext
         // GraphQL -> timeContext: String! (scalar)
-        if (this.TimeContext == null && Exploration.Includes(parent + ".timeContext", true))
+        if (this.TimeContext == null && ec.Includes("timeContext",true))
         {
             this.TimeContext = "FETCH";
         }
         //      C# -> List<AnalyzerMapping>? AllAnalyzerMappings
         // GraphQL -> allAnalyzerMappings: [AnalyzerMapping!]! (type)
-        if (this.AllAnalyzerMappings == null && Exploration.Includes(parent + ".allAnalyzerMappings"))
+        if (this.AllAnalyzerMappings == null && ec.Includes("allAnalyzerMappings",false))
         {
             this.AllAnalyzerMappings = new List<AnalyzerMapping>();
-            this.AllAnalyzerMappings.ApplyExploratoryFieldSpec(parent + ".allAnalyzerMappings");
+            this.AllAnalyzerMappings.ApplyExploratoryFieldSpec(ec.NewChild("allAnalyzerMappings"));
         }
         //      C# -> AnalyzerHits? AnalyzerHits
         // GraphQL -> analyzerHits: AnalyzerHits (type)
-        if (this.AnalyzerHits == null && Exploration.Includes(parent + ".analyzerHits"))
+        if (this.AnalyzerHits == null && ec.Includes("analyzerHits",false))
         {
             this.AnalyzerHits = new AnalyzerHits();
-            this.AnalyzerHits.ApplyExploratoryFieldSpec(parent + ".analyzerHits");
+            this.AnalyzerHits.ApplyExploratoryFieldSpec(ec.NewChild("analyzerHits"));
+        }
+        //      C# -> PrincipalCounts? DeltaUserCounts
+        // GraphQL -> deltaUserCounts: PrincipalCounts (type)
+        if (this.DeltaUserCounts == null && ec.Includes("deltaUserCounts",false))
+        {
+            this.DeltaUserCounts = new PrincipalCounts();
+            this.DeltaUserCounts.ApplyExploratoryFieldSpec(ec.NewChild("deltaUserCounts"));
         }
         //      C# -> FileResultConnection? FileResultConnection
         // GraphQL -> fileResultConnection: FileResultConnection! (type)
-        if (this.FileResultConnection == null && Exploration.Includes(parent + ".fileResultConnection"))
+        if (this.FileResultConnection == null && ec.Includes("fileResultConnection",false))
         {
             this.FileResultConnection = new FileResultConnection();
-            this.FileResultConnection.ApplyExploratoryFieldSpec(parent + ".fileResultConnection");
+            this.FileResultConnection.ApplyExploratoryFieldSpec(ec.NewChild("fileResultConnection"));
         }
         //      C# -> FileResultConnection? FolderChildConnection
         // GraphQL -> folderChildConnection: FileResultConnection! (type)
-        if (this.FolderChildConnection == null && Exploration.Includes(parent + ".folderChildConnection"))
+        if (this.FolderChildConnection == null && ec.Includes("folderChildConnection",false))
         {
             this.FolderChildConnection = new FileResultConnection();
-            this.FolderChildConnection.ApplyExploratoryFieldSpec(parent + ".folderChildConnection");
+            this.FolderChildConnection.ApplyExploratoryFieldSpec(ec.NewChild("folderChildConnection"));
         }
         //      C# -> ObjectStatus? ObjectStatus
         // GraphQL -> objectStatus: ObjectStatus! (type)
-        if (this.ObjectStatus == null && Exploration.Includes(parent + ".objectStatus"))
+        if (this.ObjectStatus == null && ec.Includes("objectStatus",false))
         {
             this.ObjectStatus = new ObjectStatus();
-            this.ObjectStatus.ApplyExploratoryFieldSpec(parent + ".objectStatus");
+            this.ObjectStatus.ApplyExploratoryFieldSpec(ec.NewChild("objectStatus"));
         }
         //      C# -> List<ClassificationPolicySummary>? PolicySummaries
         // GraphQL -> policySummaries: [ClassificationPolicySummary!]! (type)
-        if (this.PolicySummaries == null && Exploration.Includes(parent + ".policySummaries"))
+        if (this.PolicySummaries == null && ec.Includes("policySummaries",false))
         {
             this.PolicySummaries = new List<ClassificationPolicySummary>();
-            this.PolicySummaries.ApplyExploratoryFieldSpec(parent + ".policySummaries");
+            this.PolicySummaries.ApplyExploratoryFieldSpec(ec.NewChild("policySummaries"));
         }
         //      C# -> SensitiveHits? RiskHits
         // GraphQL -> riskHits: SensitiveHits (type)
-        if (this.RiskHits == null && Exploration.Includes(parent + ".riskHits"))
+        if (this.RiskHits == null && ec.Includes("riskHits",false))
         {
             this.RiskHits = new SensitiveHits();
-            this.RiskHits.ApplyExploratoryFieldSpec(parent + ".riskHits");
+            this.RiskHits.ApplyExploratoryFieldSpec(ec.NewChild("riskHits"));
         }
         //      C# -> FileResult? RootFileResult
         // GraphQL -> rootFileResult: FileResult! (type)
-        if (this.RootFileResult == null && Exploration.Includes(parent + ".rootFileResult"))
+        if (this.RootFileResult == null && ec.Includes("rootFileResult",false))
         {
             this.RootFileResult = new FileResult();
-            this.RootFileResult.ApplyExploratoryFieldSpec(parent + ".rootFileResult");
+            this.RootFileResult.ApplyExploratoryFieldSpec(ec.NewChild("rootFileResult"));
         }
         //      C# -> SensitiveFiles? SensitiveFiles
         // GraphQL -> sensitiveFiles: SensitiveFiles (type)
-        if (this.SensitiveFiles == null && Exploration.Includes(parent + ".sensitiveFiles"))
+        if (this.SensitiveFiles == null && ec.Includes("sensitiveFiles",false))
         {
             this.SensitiveFiles = new SensitiveFiles();
-            this.SensitiveFiles.ApplyExploratoryFieldSpec(parent + ".sensitiveFiles");
+            this.SensitiveFiles.ApplyExploratoryFieldSpec(ec.NewChild("sensitiveFiles"));
         }
         //      C# -> SummaryHits? TotalSensitiveHits
         // GraphQL -> totalSensitiveHits: SummaryHits (type)
-        if (this.TotalSensitiveHits == null && Exploration.Includes(parent + ".totalSensitiveHits"))
+        if (this.TotalSensitiveHits == null && ec.Includes("totalSensitiveHits",false))
         {
             this.TotalSensitiveHits = new SummaryHits();
-            this.TotalSensitiveHits.ApplyExploratoryFieldSpec(parent + ".totalSensitiveHits");
+            this.TotalSensitiveHits.ApplyExploratoryFieldSpec(ec.NewChild("totalSensitiveHits"));
         }
         //      C# -> PrincipalCounts? UserCounts
         // GraphQL -> userCounts: PrincipalCounts (type)
-        if (this.UserCounts == null && Exploration.Includes(parent + ".userCounts"))
+        if (this.UserCounts == null && ec.Includes("userCounts",false))
         {
             this.UserCounts = new PrincipalCounts();
-            this.UserCounts.ApplyExploratoryFieldSpec(parent + ".userCounts");
+            this.UserCounts.ApplyExploratoryFieldSpec(ec.NewChild("userCounts"));
         }
         //      C# -> List<WhitelistedAnalyzer>? WhitelistedAnalyzerList
         // GraphQL -> whitelistedAnalyzerList: [WhitelistedAnalyzer!]! (type)
-        if (this.WhitelistedAnalyzerList == null && Exploration.Includes(parent + ".whitelistedAnalyzerList"))
+        if (this.WhitelistedAnalyzerList == null && ec.Includes("whitelistedAnalyzerList",false))
         {
             this.WhitelistedAnalyzerList = new List<WhitelistedAnalyzer>();
-            this.WhitelistedAnalyzerList.ApplyExploratoryFieldSpec(parent + ".whitelistedAnalyzerList");
+            this.WhitelistedAnalyzerList.ApplyExploratoryFieldSpec(ec.NewChild("whitelistedAnalyzerList"));
         }
     }
 
@@ -595,12 +618,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PolicyObj> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PolicyObj());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<PolicyObj> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

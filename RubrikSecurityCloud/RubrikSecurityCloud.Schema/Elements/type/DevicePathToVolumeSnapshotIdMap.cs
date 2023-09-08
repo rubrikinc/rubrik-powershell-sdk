@@ -64,15 +64,14 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<DevicePathToVolumeSnapshotId>? DevicePathToVolumeSnapshotIdList
         // GraphQL -> devicePathToVolumeSnapshotIdList: [DevicePathToVolumeSnapshotId!]! (type)
-        if (this.DevicePathToVolumeSnapshotIdList == null && Exploration.Includes(parent + ".devicePathToVolumeSnapshotIdList"))
+        if (this.DevicePathToVolumeSnapshotIdList == null && ec.Includes("devicePathToVolumeSnapshotIdList",false))
         {
             this.DevicePathToVolumeSnapshotIdList = new List<DevicePathToVolumeSnapshotId>();
-            this.DevicePathToVolumeSnapshotIdList.ApplyExploratoryFieldSpec(parent + ".devicePathToVolumeSnapshotIdList");
+            this.DevicePathToVolumeSnapshotIdList.ApplyExploratoryFieldSpec(ec.NewChild("devicePathToVolumeSnapshotIdList"));
         }
     }
 
@@ -106,12 +105,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<DevicePathToVolumeSnapshotIdMap> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new DevicePathToVolumeSnapshotIdMap());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<DevicePathToVolumeSnapshotIdMap> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

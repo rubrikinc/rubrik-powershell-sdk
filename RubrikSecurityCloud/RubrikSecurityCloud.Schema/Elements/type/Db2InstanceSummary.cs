@@ -271,102 +271,101 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> Db2InstanceSummaryStatus? Status
         // GraphQL -> status: Db2InstanceSummaryStatus! (enum)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = new Db2InstanceSummaryStatus();
         }
         //      C# -> List<System.String>? DatabaseIds
         // GraphQL -> databaseIds: [String!]! (scalar)
-        if (this.DatabaseIds == null && Exploration.Includes(parent + ".databaseIds", true))
+        if (this.DatabaseIds == null && ec.Includes("databaseIds",true))
         {
             this.DatabaseIds = new List<System.String>();
         }
         //      C# -> List<System.String>? HadrDatabaseIds
         // GraphQL -> hadrDatabaseIds: [String!]! (scalar)
-        if (this.HadrDatabaseIds == null && Exploration.Includes(parent + ".hadrDatabaseIds", true))
+        if (this.HadrDatabaseIds == null && ec.Includes("hadrDatabaseIds",true))
         {
             this.HadrDatabaseIds = new List<System.String>();
         }
         //      C# -> List<System.String>? HostIds
         // GraphQL -> hostIds: [String!]! (scalar)
-        if (this.HostIds == null && Exploration.Includes(parent + ".hostIds", true))
+        if (this.HostIds == null && ec.Includes("hostIds",true))
         {
             this.HostIds = new List<System.String>();
         }
         //      C# -> List<System.String>? HostNames
         // GraphQL -> hostNames: [String!]! (scalar)
-        if (this.HostNames == null && Exploration.Includes(parent + ".hostNames", true))
+        if (this.HostNames == null && ec.Includes("hostNames",true))
         {
             this.HostNames = new List<System.String>();
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsArchived
         // GraphQL -> isArchived: Boolean (scalar)
-        if (this.IsArchived == null && Exploration.Includes(parent + ".isArchived", true))
+        if (this.IsArchived == null && ec.Includes("isArchived",true))
         {
             this.IsArchived = true;
         }
         //      C# -> System.String? LastRefreshTime
         // GraphQL -> lastRefreshTime: String! (scalar)
-        if (this.LastRefreshTime == null && Exploration.Includes(parent + ".lastRefreshTime", true))
+        if (this.LastRefreshTime == null && ec.Includes("lastRefreshTime",true))
         {
             this.LastRefreshTime = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? PrimaryClusterUuid
         // GraphQL -> primaryClusterUuid: String! (scalar)
-        if (this.PrimaryClusterUuid == null && Exploration.Includes(parent + ".primaryClusterUuid", true))
+        if (this.PrimaryClusterUuid == null && ec.Includes("primaryClusterUuid",true))
         {
             this.PrimaryClusterUuid = "FETCH";
         }
         //      C# -> System.String? ProtectionDate
         // GraphQL -> protectionDate: String! (scalar)
-        if (this.ProtectionDate == null && Exploration.Includes(parent + ".protectionDate", true))
+        if (this.ProtectionDate == null && ec.Includes("protectionDate",true))
         {
             this.ProtectionDate = "FETCH";
         }
         //      C# -> List<System.String>? RelicDatabaseIds
         // GraphQL -> relicDatabaseIds: [String!]! (scalar)
-        if (this.RelicDatabaseIds == null && Exploration.Includes(parent + ".relicDatabaseIds", true))
+        if (this.RelicDatabaseIds == null && ec.Includes("relicDatabaseIds",true))
         {
             this.RelicDatabaseIds = new List<System.String>();
         }
         //      C# -> System.String? SlaDomainId
         // GraphQL -> slaDomainId: String! (scalar)
-        if (this.SlaDomainId == null && Exploration.Includes(parent + ".slaDomainId", true))
+        if (this.SlaDomainId == null && ec.Includes("slaDomainId",true))
         {
             this.SlaDomainId = "FETCH";
         }
         //      C# -> System.String? SlaType
         // GraphQL -> slaType: String! (scalar)
-        if (this.SlaType == null && Exploration.Includes(parent + ".slaType", true))
+        if (this.SlaType == null && ec.Includes("slaType",true))
         {
             this.SlaType = "FETCH";
         }
         //      C# -> System.String? StatusMessage
         // GraphQL -> statusMessage: String! (scalar)
-        if (this.StatusMessage == null && Exploration.Includes(parent + ".statusMessage", true))
+        if (this.StatusMessage == null && ec.Includes("statusMessage",true))
         {
             this.StatusMessage = "FETCH";
         }
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)
-        if (this.Username == null && Exploration.Includes(parent + ".username", true))
+        if (this.Username == null && ec.Includes("username",true))
         {
             this.Username = "FETCH";
         }
@@ -402,12 +401,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<Db2InstanceSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new Db2InstanceSummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<Db2InstanceSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? ServerCertificate
         // GraphQL -> serverCertificate: String (scalar)
-        if (this.ServerCertificate == null && Exploration.Includes(parent + ".serverCertificate", true))
+        if (this.ServerCertificate == null && ec.Includes("serverCertificate",true))
         {
             this.ServerCertificate = "FETCH";
         }
         //      C# -> System.String? ServerCertificateName
         // GraphQL -> serverCertificateName: String (scalar)
-        if (this.ServerCertificateName == null && Exploration.Includes(parent + ".serverCertificateName", true))
+        if (this.ServerCertificateName == null && ec.Includes("serverCertificateName",true))
         {
             this.ServerCertificateName = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<SyslogCertificateInfo> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new SyslogCertificateInfo());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<SyslogCertificateInfo> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

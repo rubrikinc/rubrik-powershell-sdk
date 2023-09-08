@@ -33,6 +33,8 @@
   - Sensitive hits for various risk levels.
 - isUserAccessEnabledObject: System.Boolean
   - Specifies whether the object has user access enabled or not.
+- deltaUserCounts: PrincipalCounts
+  - Change in the user count for various risk levels.
 - id: System.String
 - folderChildConnection: FileResultConnection
 - fileResultConnection: FileResultConnection

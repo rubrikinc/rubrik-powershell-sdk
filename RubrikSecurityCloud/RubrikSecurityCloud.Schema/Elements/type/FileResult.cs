@@ -722,294 +722,293 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> AnalyzerErrorCode? ErrorCode
         // GraphQL -> errorCode: AnalyzerErrorCode! (enum)
-        if (this.ErrorCode == null && Exploration.Includes(parent + ".errorCode", true))
+        if (this.ErrorCode == null && ec.Includes("errorCode",true))
         {
             this.ErrorCode = new AnalyzerErrorCode();
         }
         //      C# -> DataGovFileMode? Mode
         // GraphQL -> mode: DataGovFileMode! (enum)
-        if (this.Mode == null && Exploration.Includes(parent + ".mode", true))
+        if (this.Mode == null && ec.Includes("mode",true))
         {
             this.Mode = new DataGovFileMode();
         }
         //      C# -> OpenAccessType? OpenAccessType
         // GraphQL -> openAccessType: OpenAccessType! (enum)
-        if (this.OpenAccessType == null && Exploration.Includes(parent + ".openAccessType", true))
+        if (this.OpenAccessType == null && ec.Includes("openAccessType",true))
         {
             this.OpenAccessType = new OpenAccessType();
         }
         //      C# -> RiskLevelType? RiskLevel
         // GraphQL -> riskLevel: RiskLevelType! (enum)
-        if (this.RiskLevel == null && Exploration.Includes(parent + ".riskLevel", true))
+        if (this.RiskLevel == null && ec.Includes("riskLevel",true))
         {
             this.RiskLevel = new RiskLevelType();
         }
         //      C# -> List<RiskReason>? RiskReasons
         // GraphQL -> riskReasons: [RiskReason!]! (enum)
-        if (this.RiskReasons == null && Exploration.Includes(parent + ".riskReasons", true))
+        if (this.RiskReasons == null && ec.Includes("riskReasons",true))
         {
             this.RiskReasons = new List<RiskReason>();
         }
         //      C# -> StalenessType? StalenessType
         // GraphQL -> stalenessType: StalenessType! (enum)
-        if (this.StalenessType == null && Exploration.Includes(parent + ".stalenessType", true))
+        if (this.StalenessType == null && ec.Includes("stalenessType",true))
         {
             this.StalenessType = new StalenessType();
         }
         //      C# -> UserAccessType? UserAccessType
         // GraphQL -> userAccessType: UserAccessType! (enum)
-        if (this.UserAccessType == null && Exploration.Includes(parent + ".userAccessType", true))
+        if (this.UserAccessType == null && ec.Includes("userAccessType",true))
         {
             this.UserAccessType = new UserAccessType();
         }
         //      C# -> HierarchyObject? Snappable
         // GraphQL -> snappable: HierarchyObject! (interface)
-        if (this.Snappable == null && Exploration.Includes(parent + ".snappable"))
+        if (this.Snappable == null && ec.Includes("snappable",false))
         {
             var impls = new List<HierarchyObject>();
-            impls.ApplyExploratoryFieldSpec(parent + ".snappable");
+            impls.ApplyExploratoryFieldSpec(ec.NewChild("snappable"));
             this.Snappable = (HierarchyObject)InterfaceHelper.MakeCompositeFromList(impls);
         }
         //      C# -> System.String? AccessibleBySidsRepresentation
         // GraphQL -> accessibleBySidsRepresentation: String! (scalar)
-        if (this.AccessibleBySidsRepresentation == null && Exploration.Includes(parent + ".accessibleBySidsRepresentation", true))
+        if (this.AccessibleBySidsRepresentation == null && ec.Includes("accessibleBySidsRepresentation",true))
         {
             this.AccessibleBySidsRepresentation = "FETCH";
         }
         //      C# -> System.String? AccessibleBySidsRepresentationShortForm
         // GraphQL -> accessibleBySidsRepresentationShortForm: String! (scalar)
-        if (this.AccessibleBySidsRepresentationShortForm == null && Exploration.Includes(parent + ".accessibleBySidsRepresentationShortForm", true))
+        if (this.AccessibleBySidsRepresentationShortForm == null && ec.Includes("accessibleBySidsRepresentationShortForm",true))
         {
             this.AccessibleBySidsRepresentationShortForm = "FETCH";
         }
         //      C# -> System.String? Directory
         // GraphQL -> directory: String! (scalar)
-        if (this.Directory == null && Exploration.Includes(parent + ".directory", true))
+        if (this.Directory == null && ec.Includes("directory",true))
         {
             this.Directory = "FETCH";
         }
         //      C# -> System.String? Filename
         // GraphQL -> filename: String! (scalar)
-        if (this.Filename == null && Exploration.Includes(parent + ".filename", true))
+        if (this.Filename == null && ec.Includes("filename",true))
         {
             this.Filename = "FETCH";
         }
         //      C# -> System.Boolean? IsDirectAcl
         // GraphQL -> isDirectAcl: Boolean! (scalar)
-        if (this.IsDirectAcl == null && Exploration.Includes(parent + ".isDirectAcl", true))
+        if (this.IsDirectAcl == null && ec.Includes("isDirectAcl",true))
         {
             this.IsDirectAcl = true;
         }
         //      C# -> System.Int64? LastAccessTime
         // GraphQL -> lastAccessTime: Long! (scalar)
-        if (this.LastAccessTime == null && Exploration.Includes(parent + ".lastAccessTime", true))
+        if (this.LastAccessTime == null && ec.Includes("lastAccessTime",true))
         {
             this.LastAccessTime = new System.Int64();
         }
         //      C# -> System.Int64? LastModifiedTime
         // GraphQL -> lastModifiedTime: Long! (scalar)
-        if (this.LastModifiedTime == null && Exploration.Includes(parent + ".lastModifiedTime", true))
+        if (this.LastModifiedTime == null && ec.Includes("lastModifiedTime",true))
         {
             this.LastModifiedTime = new System.Int64();
         }
         //      C# -> System.String? NativePath
         // GraphQL -> nativePath: String! (scalar)
-        if (this.NativePath == null && Exploration.Includes(parent + ".nativePath", true))
+        if (this.NativePath == null && ec.Includes("nativePath",true))
         {
             this.NativePath = "FETCH";
         }
         //      C# -> System.Int64? NumActivities
         // GraphQL -> numActivities: Long! (scalar)
-        if (this.NumActivities == null && Exploration.Includes(parent + ".numActivities", true))
+        if (this.NumActivities == null && ec.Includes("numActivities",true))
         {
             this.NumActivities = new System.Int64();
         }
         //      C# -> System.Int64? NumActivitiesDelta
         // GraphQL -> numActivitiesDelta: Long! (scalar)
-        if (this.NumActivitiesDelta == null && Exploration.Includes(parent + ".numActivitiesDelta", true))
+        if (this.NumActivitiesDelta == null && ec.Includes("numActivitiesDelta",true))
         {
             this.NumActivitiesDelta = new System.Int64();
         }
         //      C# -> System.Int64? NumChildren
         // GraphQL -> numChildren: Long! (scalar)
-        if (this.NumChildren == null && Exploration.Includes(parent + ".numChildren", true))
+        if (this.NumChildren == null && ec.Includes("numChildren",true))
         {
             this.NumChildren = new System.Int64();
         }
         //      C# -> System.Int64? NumDescendantErrorFiles
         // GraphQL -> numDescendantErrorFiles: Long! (scalar)
-        if (this.NumDescendantErrorFiles == null && Exploration.Includes(parent + ".numDescendantErrorFiles", true))
+        if (this.NumDescendantErrorFiles == null && ec.Includes("numDescendantErrorFiles",true))
         {
             this.NumDescendantErrorFiles = new System.Int64();
         }
         //      C# -> System.Int32? NumDescendantFiles
         // GraphQL -> numDescendantFiles: Int! (scalar)
-        if (this.NumDescendantFiles == null && Exploration.Includes(parent + ".numDescendantFiles", true))
+        if (this.NumDescendantFiles == null && ec.Includes("numDescendantFiles",true))
         {
             this.NumDescendantFiles = Int32.MinValue;
         }
         //      C# -> System.Int64? NumDescendantFolders
         // GraphQL -> numDescendantFolders: Long! (scalar)
-        if (this.NumDescendantFolders == null && Exploration.Includes(parent + ".numDescendantFolders", true))
+        if (this.NumDescendantFolders == null && ec.Includes("numDescendantFolders",true))
         {
             this.NumDescendantFolders = new System.Int64();
         }
         //      C# -> System.Int64? NumDescendantSkippedExtFiles
         // GraphQL -> numDescendantSkippedExtFiles: Long! (scalar)
-        if (this.NumDescendantSkippedExtFiles == null && Exploration.Includes(parent + ".numDescendantSkippedExtFiles", true))
+        if (this.NumDescendantSkippedExtFiles == null && ec.Includes("numDescendantSkippedExtFiles",true))
         {
             this.NumDescendantSkippedExtFiles = new System.Int64();
         }
         //      C# -> System.Int64? NumDescendantSkippedSizeFiles
         // GraphQL -> numDescendantSkippedSizeFiles: Long! (scalar)
-        if (this.NumDescendantSkippedSizeFiles == null && Exploration.Includes(parent + ".numDescendantSkippedSizeFiles", true))
+        if (this.NumDescendantSkippedSizeFiles == null && ec.Includes("numDescendantSkippedSizeFiles",true))
         {
             this.NumDescendantSkippedSizeFiles = new System.Int64();
         }
         //      C# -> System.String? Owner
         // GraphQL -> owner: String! (scalar)
-        if (this.Owner == null && Exploration.Includes(parent + ".owner", true))
+        if (this.Owner == null && ec.Includes("owner",true))
         {
             this.Owner = "FETCH";
         }
         //      C# -> System.String? PaginationId
         // GraphQL -> paginationId: String! (scalar)
-        if (this.PaginationId == null && Exploration.Includes(parent + ".paginationId", true))
+        if (this.PaginationId == null && ec.Includes("paginationId",true))
         {
             this.PaginationId = "FETCH";
         }
         //      C# -> System.Int64? Size
         // GraphQL -> size: Long! (scalar)
-        if (this.Size == null && Exploration.Includes(parent + ".size", true))
+        if (this.Size == null && ec.Includes("size",true))
         {
             this.Size = new System.Int64();
         }
         //      C# -> System.String? SnapshotFid
         // GraphQL -> snapshotFid: String! (scalar)
-        if (this.SnapshotFid == null && Exploration.Includes(parent + ".snapshotFid", true))
+        if (this.SnapshotFid == null && ec.Includes("snapshotFid",true))
         {
             this.SnapshotFid = "FETCH";
         }
         //      C# -> System.Int64? SnapshotTimestamp
         // GraphQL -> snapshotTimestamp: Long! (scalar)
-        if (this.SnapshotTimestamp == null && Exploration.Includes(parent + ".snapshotTimestamp", true))
+        if (this.SnapshotTimestamp == null && ec.Includes("snapshotTimestamp",true))
         {
             this.SnapshotTimestamp = new System.Int64();
         }
         //      C# -> System.String? StdPath
         // GraphQL -> stdPath: String! (scalar)
-        if (this.StdPath == null && Exploration.Includes(parent + ".stdPath", true))
+        if (this.StdPath == null && ec.Includes("stdPath",true))
         {
             this.StdPath = "FETCH";
         }
         //      C# -> System.String? Type
         // GraphQL -> type: String! (scalar)
-        if (this.Type == null && Exploration.Includes(parent + ".type", true))
+        if (this.Type == null && ec.Includes("type",true))
         {
             this.Type = "FETCH";
         }
         //      C# -> List<AnalyzerGroupResult>? AnalyzerGroupResults
         // GraphQL -> analyzerGroupResults: [AnalyzerGroupResult!]! (type)
-        if (this.AnalyzerGroupResults == null && Exploration.Includes(parent + ".analyzerGroupResults"))
+        if (this.AnalyzerGroupResults == null && ec.Includes("analyzerGroupResults",false))
         {
             this.AnalyzerGroupResults = new List<AnalyzerGroupResult>();
-            this.AnalyzerGroupResults.ApplyExploratoryFieldSpec(parent + ".analyzerGroupResults");
+            this.AnalyzerGroupResults.ApplyExploratoryFieldSpec(ec.NewChild("analyzerGroupResults"));
         }
         //      C# -> List<AnalyzerResult>? AnalyzerResults
         // GraphQL -> analyzerResults: [AnalyzerResult!]! (type)
-        if (this.AnalyzerResults == null && Exploration.Includes(parent + ".analyzerResults"))
+        if (this.AnalyzerResults == null && ec.Includes("analyzerResults",false))
         {
             this.AnalyzerResults = new List<AnalyzerResult>();
-            this.AnalyzerResults.ApplyExploratoryFieldSpec(parent + ".analyzerResults");
+            this.AnalyzerResults.ApplyExploratoryFieldSpec(ec.NewChild("analyzerResults"));
         }
         //      C# -> AnalyzerHits? AnalyzerRiskHits
         // GraphQL -> analyzerRiskHits: AnalyzerHits (type)
-        if (this.AnalyzerRiskHits == null && Exploration.Includes(parent + ".analyzerRiskHits"))
+        if (this.AnalyzerRiskHits == null && ec.Includes("analyzerRiskHits",false))
         {
             this.AnalyzerRiskHits = new AnalyzerHits();
-            this.AnalyzerRiskHits.ApplyExploratoryFieldSpec(parent + ".analyzerRiskHits");
+            this.AnalyzerRiskHits.ApplyExploratoryFieldSpec(ec.NewChild("analyzerRiskHits"));
         }
         //      C# -> Hits? FilesWithHits
         // GraphQL -> filesWithHits: Hits (type)
-        if (this.FilesWithHits == null && Exploration.Includes(parent + ".filesWithHits"))
+        if (this.FilesWithHits == null && ec.Includes("filesWithHits",false))
         {
             this.FilesWithHits = new Hits();
-            this.FilesWithHits.ApplyExploratoryFieldSpec(parent + ".filesWithHits");
+            this.FilesWithHits.ApplyExploratoryFieldSpec(ec.NewChild("filesWithHits"));
         }
         //      C# -> Hits? Hits
         // GraphQL -> hits: Hits! (type)
-        if (this.Hits == null && Exploration.Includes(parent + ".hits"))
+        if (this.Hits == null && ec.Includes("hits",false))
         {
             this.Hits = new Hits();
-            this.Hits.ApplyExploratoryFieldSpec(parent + ".hits");
+            this.Hits.ApplyExploratoryFieldSpec(ec.NewChild("hits"));
         }
         //      C# -> List<ActivityResult>? NumActivitiesBreakdown
         // GraphQL -> numActivitiesBreakdown: [ActivityResult!]! (type)
-        if (this.NumActivitiesBreakdown == null && Exploration.Includes(parent + ".numActivitiesBreakdown"))
+        if (this.NumActivitiesBreakdown == null && ec.Includes("numActivitiesBreakdown",false))
         {
             this.NumActivitiesBreakdown = new List<ActivityResult>();
-            this.NumActivitiesBreakdown.ApplyExploratoryFieldSpec(parent + ".numActivitiesBreakdown");
+            this.NumActivitiesBreakdown.ApplyExploratoryFieldSpec(ec.NewChild("numActivitiesBreakdown"));
         }
         //      C# -> Hits? OpenAccessFiles
         // GraphQL -> openAccessFiles: Hits (type)
-        if (this.OpenAccessFiles == null && Exploration.Includes(parent + ".openAccessFiles"))
+        if (this.OpenAccessFiles == null && ec.Includes("openAccessFiles",false))
         {
             this.OpenAccessFiles = new Hits();
-            this.OpenAccessFiles.ApplyExploratoryFieldSpec(parent + ".openAccessFiles");
+            this.OpenAccessFiles.ApplyExploratoryFieldSpec(ec.NewChild("openAccessFiles"));
         }
         //      C# -> Hits? OpenAccessFilesWithHits
         // GraphQL -> openAccessFilesWithHits: Hits (type)
-        if (this.OpenAccessFilesWithHits == null && Exploration.Includes(parent + ".openAccessFilesWithHits"))
+        if (this.OpenAccessFilesWithHits == null && ec.Includes("openAccessFilesWithHits",false))
         {
             this.OpenAccessFilesWithHits = new Hits();
-            this.OpenAccessFilesWithHits.ApplyExploratoryFieldSpec(parent + ".openAccessFilesWithHits");
+            this.OpenAccessFilesWithHits.ApplyExploratoryFieldSpec(ec.NewChild("openAccessFilesWithHits"));
         }
         //      C# -> Hits? OpenAccessFolders
         // GraphQL -> openAccessFolders: Hits (type)
-        if (this.OpenAccessFolders == null && Exploration.Includes(parent + ".openAccessFolders"))
+        if (this.OpenAccessFolders == null && ec.Includes("openAccessFolders",false))
         {
             this.OpenAccessFolders = new Hits();
-            this.OpenAccessFolders.ApplyExploratoryFieldSpec(parent + ".openAccessFolders");
+            this.OpenAccessFolders.ApplyExploratoryFieldSpec(ec.NewChild("openAccessFolders"));
         }
         //      C# -> Hits? OpenAccessStaleFiles
         // GraphQL -> openAccessStaleFiles: Hits (type)
-        if (this.OpenAccessStaleFiles == null && Exploration.Includes(parent + ".openAccessStaleFiles"))
+        if (this.OpenAccessStaleFiles == null && ec.Includes("openAccessStaleFiles",false))
         {
             this.OpenAccessStaleFiles = new Hits();
-            this.OpenAccessStaleFiles.ApplyExploratoryFieldSpec(parent + ".openAccessStaleFiles");
+            this.OpenAccessStaleFiles.ApplyExploratoryFieldSpec(ec.NewChild("openAccessStaleFiles"));
         }
         //      C# -> PrincipalAccessInfo? PrincipalAccessInfo
         // GraphQL -> principalAccessInfo: PrincipalAccessInfo (type)
-        if (this.PrincipalAccessInfo == null && Exploration.Includes(parent + ".principalAccessInfo"))
+        if (this.PrincipalAccessInfo == null && ec.Includes("principalAccessInfo",false))
         {
             this.PrincipalAccessInfo = new PrincipalAccessInfo();
-            this.PrincipalAccessInfo.ApplyExploratoryFieldSpec(parent + ".principalAccessInfo");
+            this.PrincipalAccessInfo.ApplyExploratoryFieldSpec(ec.NewChild("principalAccessInfo"));
         }
         //      C# -> SensitiveFiles? SensitiveFiles
         // GraphQL -> sensitiveFiles: SensitiveFiles (type)
-        if (this.SensitiveFiles == null && Exploration.Includes(parent + ".sensitiveFiles"))
+        if (this.SensitiveFiles == null && ec.Includes("sensitiveFiles",false))
         {
             this.SensitiveFiles = new SensitiveFiles();
-            this.SensitiveFiles.ApplyExploratoryFieldSpec(parent + ".sensitiveFiles");
+            this.SensitiveFiles.ApplyExploratoryFieldSpec(ec.NewChild("sensitiveFiles"));
         }
         //      C# -> Hits? StaleFiles
         // GraphQL -> staleFiles: Hits (type)
-        if (this.StaleFiles == null && Exploration.Includes(parent + ".staleFiles"))
+        if (this.StaleFiles == null && ec.Includes("staleFiles",false))
         {
             this.StaleFiles = new Hits();
-            this.StaleFiles.ApplyExploratoryFieldSpec(parent + ".staleFiles");
+            this.StaleFiles.ApplyExploratoryFieldSpec(ec.NewChild("staleFiles"));
         }
         //      C# -> Hits? StaleFilesWithHits
         // GraphQL -> staleFilesWithHits: Hits (type)
-        if (this.StaleFilesWithHits == null && Exploration.Includes(parent + ".staleFilesWithHits"))
+        if (this.StaleFilesWithHits == null && ec.Includes("staleFilesWithHits",false))
         {
             this.StaleFilesWithHits = new Hits();
-            this.StaleFilesWithHits.ApplyExploratoryFieldSpec(parent + ".staleFilesWithHits");
+            this.StaleFilesWithHits.ApplyExploratoryFieldSpec(ec.NewChild("staleFilesWithHits"));
         }
     }
 
@@ -1043,12 +1042,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<FileResult> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new FileResult());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<FileResult> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

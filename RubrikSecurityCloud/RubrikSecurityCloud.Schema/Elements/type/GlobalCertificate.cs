@@ -339,132 +339,131 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> GlobalCertificateStatus? Status
         // GraphQL -> status: GlobalCertificateStatus! (enum)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = new GlobalCertificateStatus();
         }
         //      C# -> System.String? Certificate
         // GraphQL -> certificate: String! (scalar)
-        if (this.Certificate == null && Exploration.Includes(parent + ".certificate", true))
+        if (this.Certificate == null && ec.Includes("certificate",true))
         {
             this.Certificate = "FETCH";
         }
         //      C# -> System.String? CertificateFid
         // GraphQL -> certificateFid: UUID! (scalar)
-        if (this.CertificateFid == null && Exploration.Includes(parent + ".certificateFid", true))
+        if (this.CertificateFid == null && ec.Includes("certificateFid",true))
         {
             this.CertificateFid = "FETCH";
         }
         //      C# -> System.String? CertificateId
         // GraphQL -> certificateId: String! (scalar)
-        if (this.CertificateId == null && Exploration.Includes(parent + ".certificateId", true))
+        if (this.CertificateId == null && ec.Includes("certificateId",true))
         {
             this.CertificateId = "FETCH";
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
-        if (this.Description == null && Exploration.Includes(parent + ".description", true))
+        if (this.Description == null && ec.Includes("description",true))
         {
             this.Description = "FETCH";
         }
         //      C# -> DateTime? ExpiringAt
         // GraphQL -> expiringAt: DateTime (scalar)
-        if (this.ExpiringAt == null && Exploration.Includes(parent + ".expiringAt", true))
+        if (this.ExpiringAt == null && ec.Includes("expiringAt",true))
         {
             this.ExpiringAt = new DateTime();
         }
         //      C# -> System.Boolean? HasKey
         // GraphQL -> hasKey: Boolean! (scalar)
-        if (this.HasKey == null && Exploration.Includes(parent + ".hasKey", true))
+        if (this.HasKey == null && ec.Includes("hasKey",true))
         {
             this.HasKey = true;
         }
         //      C# -> System.Boolean? IsCaSigned
         // GraphQL -> isCaSigned: Boolean! (scalar)
-        if (this.IsCaSigned == null && Exploration.Includes(parent + ".isCaSigned", true))
+        if (this.IsCaSigned == null && ec.Includes("isCaSigned",true))
         {
             this.IsCaSigned = true;
         }
         //      C# -> System.Boolean? IsCdmBorn
         // GraphQL -> isCdmBorn: Boolean! (scalar)
-        if (this.IsCdmBorn == null && Exploration.Includes(parent + ".isCdmBorn", true))
+        if (this.IsCdmBorn == null && ec.Includes("isCdmBorn",true))
         {
             this.IsCdmBorn = true;
         }
         //      C# -> System.String? IssuedBy
         // GraphQL -> issuedBy: String! (scalar)
-        if (this.IssuedBy == null && Exploration.Includes(parent + ".issuedBy", true))
+        if (this.IssuedBy == null && ec.Includes("issuedBy",true))
         {
             this.IssuedBy = "FETCH";
         }
         //      C# -> DateTime? IssuedOn
         // GraphQL -> issuedOn: DateTime (scalar)
-        if (this.IssuedOn == null && Exploration.Includes(parent + ".issuedOn", true))
+        if (this.IssuedOn == null && ec.Includes("issuedOn",true))
         {
             this.IssuedOn = new DateTime();
         }
         //      C# -> System.String? IssuedTo
         // GraphQL -> issuedTo: String! (scalar)
-        if (this.IssuedTo == null && Exploration.Includes(parent + ".issuedTo", true))
+        if (this.IssuedTo == null && ec.Includes("issuedTo",true))
         {
             this.IssuedTo = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? SerialNumber
         // GraphQL -> serialNumber: String! (scalar)
-        if (this.SerialNumber == null && Exploration.Includes(parent + ".serialNumber", true))
+        if (this.SerialNumber == null && ec.Includes("serialNumber",true))
         {
             this.SerialNumber = "FETCH";
         }
         //      C# -> System.String? Sha1Fingerprint
         // GraphQL -> sha1Fingerprint: String! (scalar)
-        if (this.Sha1Fingerprint == null && Exploration.Includes(parent + ".sha1Fingerprint", true))
+        if (this.Sha1Fingerprint == null && ec.Includes("sha1Fingerprint",true))
         {
             this.Sha1Fingerprint = "FETCH";
         }
         //      C# -> System.String? Sha256Fingerprint
         // GraphQL -> sha256Fingerprint: String! (scalar)
-        if (this.Sha256Fingerprint == null && Exploration.Includes(parent + ".sha256Fingerprint", true))
+        if (this.Sha256Fingerprint == null && ec.Includes("sha256Fingerprint",true))
         {
             this.Sha256Fingerprint = "FETCH";
         }
         //      C# -> List<CdmCertificateUsageInfo>? CdmUsages
         // GraphQL -> cdmUsages: [CdmCertificateUsageInfo!]! (type)
-        if (this.CdmUsages == null && Exploration.Includes(parent + ".cdmUsages"))
+        if (this.CdmUsages == null && ec.Includes("cdmUsages",false))
         {
             this.CdmUsages = new List<CdmCertificateUsageInfo>();
-            this.CdmUsages.ApplyExploratoryFieldSpec(parent + ".cdmUsages");
+            this.CdmUsages.ApplyExploratoryFieldSpec(ec.NewChild("cdmUsages"));
         }
         //      C# -> List<CertificateClusterInfo>? Clusters
         // GraphQL -> clusters: [CertificateClusterInfo!] (type)
-        if (this.Clusters == null && Exploration.Includes(parent + ".clusters"))
+        if (this.Clusters == null && ec.Includes("clusters",false))
         {
             this.Clusters = new List<CertificateClusterInfo>();
-            this.Clusters.ApplyExploratoryFieldSpec(parent + ".clusters");
+            this.Clusters.ApplyExploratoryFieldSpec(ec.NewChild("clusters"));
         }
         //      C# -> Org? Org
         // GraphQL -> org: Org (type)
-        if (this.Org == null && Exploration.Includes(parent + ".org"))
+        if (this.Org == null && ec.Includes("org",false))
         {
             this.Org = new Org();
-            this.Org.ApplyExploratoryFieldSpec(parent + ".org");
+            this.Org.ApplyExploratoryFieldSpec(ec.NewChild("org"));
         }
         //      C# -> List<CertificateUsageInfo>? Usages
         // GraphQL -> usages: [CertificateUsageInfo!]! (type)
-        if (this.Usages == null && Exploration.Includes(parent + ".usages"))
+        if (this.Usages == null && ec.Includes("usages",false))
         {
             this.Usages = new List<CertificateUsageInfo>();
-            this.Usages.ApplyExploratoryFieldSpec(parent + ".usages");
+            this.Usages.ApplyExploratoryFieldSpec(ec.NewChild("usages"));
         }
     }
 
@@ -498,12 +497,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<GlobalCertificate> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new GlobalCertificate());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<GlobalCertificate> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

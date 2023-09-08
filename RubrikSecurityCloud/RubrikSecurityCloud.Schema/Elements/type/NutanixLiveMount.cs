@@ -431,172 +431,171 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
-        if (this.CdmId == null && Exploration.Includes(parent + ".cdmId", true))
+        if (this.CdmId == null && ec.Includes("cdmId",true))
         {
             this.CdmId = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsMigrationDisabled
         // GraphQL -> isMigrationDisabled: Boolean! (scalar)
-        if (this.IsMigrationDisabled == null && Exploration.Includes(parent + ".isMigrationDisabled", true))
+        if (this.IsMigrationDisabled == null && ec.Includes("isMigrationDisabled",true))
         {
             this.IsMigrationDisabled = true;
         }
         //      C# -> System.Boolean? IsVmReady
         // GraphQL -> isVmReady: Boolean! (scalar)
-        if (this.IsVmReady == null && Exploration.Includes(parent + ".isVmReady", true))
+        if (this.IsVmReady == null && ec.Includes("isVmReady",true))
         {
             this.IsVmReady = true;
         }
         //      C# -> System.String? MigrationJobInstanceId
         // GraphQL -> migrationJobInstanceId: String (scalar)
-        if (this.MigrationJobInstanceId == null && Exploration.Includes(parent + ".migrationJobInstanceId", true))
+        if (this.MigrationJobInstanceId == null && ec.Includes("migrationJobInstanceId",true))
         {
             this.MigrationJobInstanceId = "FETCH";
         }
         //      C# -> System.String? MigrationJobStatus
         // GraphQL -> migrationJobStatus: String (scalar)
-        if (this.MigrationJobStatus == null && Exploration.Includes(parent + ".migrationJobStatus", true))
+        if (this.MigrationJobStatus == null && ec.Includes("migrationJobStatus",true))
         {
             this.MigrationJobStatus = "FETCH";
         }
         //      C# -> System.String? MountJobInstanceId
         // GraphQL -> mountJobInstanceId: String! (scalar)
-        if (this.MountJobInstanceId == null && Exploration.Includes(parent + ".mountJobInstanceId", true))
+        if (this.MountJobInstanceId == null && ec.Includes("mountJobInstanceId",true))
         {
             this.MountJobInstanceId = "FETCH";
         }
         //      C# -> System.String? MountSpec
         // GraphQL -> mountSpec: String! (scalar)
-        if (this.MountSpec == null && Exploration.Includes(parent + ".mountSpec", true))
+        if (this.MountSpec == null && ec.Includes("mountSpec",true))
         {
             this.MountSpec = "FETCH";
         }
         //      C# -> DateTime? MountedDate
         // GraphQL -> mountedDate: DateTime (scalar)
-        if (this.MountedDate == null && Exploration.Includes(parent + ".mountedDate", true))
+        if (this.MountedDate == null && ec.Includes("mountedDate",true))
         {
             this.MountedDate = new DateTime();
         }
         //      C# -> System.String? MountedVmFid
         // GraphQL -> mountedVmFid: String (scalar)
-        if (this.MountedVmFid == null && Exploration.Includes(parent + ".mountedVmFid", true))
+        if (this.MountedVmFid == null && ec.Includes("mountedVmFid",true))
         {
             this.MountedVmFid = "FETCH";
         }
         //      C# -> System.String? MountedVmId
         // GraphQL -> mountedVmId: String (scalar)
-        if (this.MountedVmId == null && Exploration.Includes(parent + ".mountedVmId", true))
+        if (this.MountedVmId == null && ec.Includes("mountedVmId",true))
         {
             this.MountedVmId = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? NutanixClusterFid
         // GraphQL -> nutanixClusterFid: String! (scalar)
-        if (this.NutanixClusterFid == null && Exploration.Includes(parent + ".nutanixClusterFid", true))
+        if (this.NutanixClusterFid == null && ec.Includes("nutanixClusterFid",true))
         {
             this.NutanixClusterFid = "FETCH";
         }
         //      C# -> System.String? NutanixClusterId
         // GraphQL -> nutanixClusterId: String! (scalar)
-        if (this.NutanixClusterId == null && Exploration.Includes(parent + ".nutanixClusterId", true))
+        if (this.NutanixClusterId == null && ec.Includes("nutanixClusterId",true))
         {
             this.NutanixClusterId = "FETCH";
         }
         //      C# -> System.String? NutanixClusterName
         // GraphQL -> nutanixClusterName: String! (scalar)
-        if (this.NutanixClusterName == null && Exploration.Includes(parent + ".nutanixClusterName", true))
+        if (this.NutanixClusterName == null && ec.Includes("nutanixClusterName",true))
         {
             this.NutanixClusterName = "FETCH";
         }
         //      C# -> System.String? OrganizationId
         // GraphQL -> organizationId: String! (scalar)
-        if (this.OrganizationId == null && Exploration.Includes(parent + ".organizationId", true))
+        if (this.OrganizationId == null && ec.Includes("organizationId",true))
         {
             this.OrganizationId = "FETCH";
         }
         //      C# -> System.String? OwnerId
         // GraphQL -> ownerId: String! (scalar)
-        if (this.OwnerId == null && Exploration.Includes(parent + ".ownerId", true))
+        if (this.OwnerId == null && ec.Includes("ownerId",true))
         {
             this.OwnerId = "FETCH";
         }
         //      C# -> System.String? PowerStatus
         // GraphQL -> powerStatus: String! (scalar)
-        if (this.PowerStatus == null && Exploration.Includes(parent + ".powerStatus", true))
+        if (this.PowerStatus == null && ec.Includes("powerStatus",true))
         {
             this.PowerStatus = "FETCH";
         }
         //      C# -> DateTime? SnapshotDate
         // GraphQL -> snapshotDate: DateTime (scalar)
-        if (this.SnapshotDate == null && Exploration.Includes(parent + ".snapshotDate", true))
+        if (this.SnapshotDate == null && ec.Includes("snapshotDate",true))
         {
             this.SnapshotDate = new DateTime();
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: String! (scalar)
-        if (this.SnapshotId == null && Exploration.Includes(parent + ".snapshotId", true))
+        if (this.SnapshotId == null && ec.Includes("snapshotId",true))
         {
             this.SnapshotId = "FETCH";
         }
         //      C# -> System.String? SourceVmFid
         // GraphQL -> sourceVmFid: String! (scalar)
-        if (this.SourceVmFid == null && Exploration.Includes(parent + ".sourceVmFid", true))
+        if (this.SourceVmFid == null && ec.Includes("sourceVmFid",true))
         {
             this.SourceVmFid = "FETCH";
         }
         //      C# -> System.String? SourceVmId
         // GraphQL -> sourceVmId: String! (scalar)
-        if (this.SourceVmId == null && Exploration.Includes(parent + ".sourceVmId", true))
+        if (this.SourceVmId == null && ec.Includes("sourceVmId",true))
         {
             this.SourceVmId = "FETCH";
         }
         //      C# -> System.String? SourceVmName
         // GraphQL -> sourceVmName: String! (scalar)
-        if (this.SourceVmName == null && Exploration.Includes(parent + ".sourceVmName", true))
+        if (this.SourceVmName == null && ec.Includes("sourceVmName",true))
         {
             this.SourceVmName = "FETCH";
         }
         //      C# -> System.String? StorageContainerName
         // GraphQL -> storageContainerName: String (scalar)
-        if (this.StorageContainerName == null && Exploration.Includes(parent + ".storageContainerName", true))
+        if (this.StorageContainerName == null && ec.Includes("storageContainerName",true))
         {
             this.StorageContainerName = "FETCH";
         }
         //      C# -> System.String? UnmountJobInstanceId
         // GraphQL -> unmountJobInstanceId: String! (scalar)
-        if (this.UnmountJobInstanceId == null && Exploration.Includes(parent + ".unmountJobInstanceId", true))
+        if (this.UnmountJobInstanceId == null && ec.Includes("unmountJobInstanceId",true))
         {
             this.UnmountJobInstanceId = "FETCH";
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
-        if (this.Cluster == null && Exploration.Includes(parent + ".cluster"))
+        if (this.Cluster == null && ec.Includes("cluster",false))
         {
             this.Cluster = new Cluster();
-            this.Cluster.ApplyExploratoryFieldSpec(parent + ".cluster");
+            this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
         }
         //      C# -> CdmSnapshot? SourceSnapshot
         // GraphQL -> sourceSnapshot: CdmSnapshot! (type)
-        if (this.SourceSnapshot == null && Exploration.Includes(parent + ".sourceSnapshot"))
+        if (this.SourceSnapshot == null && ec.Includes("sourceSnapshot",false))
         {
             this.SourceSnapshot = new CdmSnapshot();
-            this.SourceSnapshot.ApplyExploratoryFieldSpec(parent + ".sourceSnapshot");
+            this.SourceSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("sourceSnapshot"));
         }
     }
 
@@ -630,12 +629,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<NutanixLiveMount> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new NutanixLiveMount());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<NutanixLiveMount> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

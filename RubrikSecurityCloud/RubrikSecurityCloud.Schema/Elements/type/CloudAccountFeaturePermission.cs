@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? CloudAccountId
         // GraphQL -> cloudAccountId: String! (scalar)
-        if (this.CloudAccountId == null && Exploration.Includes(parent + ".cloudAccountId", true))
+        if (this.CloudAccountId == null && ec.Includes("cloudAccountId",true))
         {
             this.CloudAccountId = "FETCH";
         }
         //      C# -> List<FeaturePermission>? FeaturePermissions
         // GraphQL -> featurePermissions: [FeaturePermission!]! (type)
-        if (this.FeaturePermissions == null && Exploration.Includes(parent + ".featurePermissions"))
+        if (this.FeaturePermissions == null && ec.Includes("featurePermissions",false))
         {
             this.FeaturePermissions = new List<FeaturePermission>();
-            this.FeaturePermissions.ApplyExploratoryFieldSpec(parent + ".featurePermissions");
+            this.FeaturePermissions.ApplyExploratoryFieldSpec(ec.NewChild("featurePermissions"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CloudAccountFeaturePermission> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CloudAccountFeaturePermission());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CloudAccountFeaturePermission> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

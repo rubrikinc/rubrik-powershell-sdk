@@ -81,22 +81,21 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> AsyncRequestStatus? AsyncRequestStatus
         // GraphQL -> asyncRequestStatus: AsyncRequestStatus (type)
-        if (this.AsyncRequestStatus == null && Exploration.Includes(parent + ".asyncRequestStatus"))
+        if (this.AsyncRequestStatus == null && ec.Includes("asyncRequestStatus",false))
         {
             this.AsyncRequestStatus = new AsyncRequestStatus();
-            this.AsyncRequestStatus.ApplyExploratoryFieldSpec(parent + ".asyncRequestStatus");
+            this.AsyncRequestStatus.ApplyExploratoryFieldSpec(ec.NewChild("asyncRequestStatus"));
         }
         //      C# -> SapHanaSystemSummary? SystemSummary
         // GraphQL -> systemSummary: SapHanaSystemSummary (type)
-        if (this.SystemSummary == null && Exploration.Includes(parent + ".systemSummary"))
+        if (this.SystemSummary == null && ec.Includes("systemSummary",false))
         {
             this.SystemSummary = new SapHanaSystemSummary();
-            this.SystemSummary.ApplyExploratoryFieldSpec(parent + ".systemSummary");
+            this.SystemSummary.ApplyExploratoryFieldSpec(ec.NewChild("systemSummary"));
         }
     }
 
@@ -130,12 +129,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PatchSapHanaSystemReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PatchSapHanaSystemReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<PatchSapHanaSystemReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

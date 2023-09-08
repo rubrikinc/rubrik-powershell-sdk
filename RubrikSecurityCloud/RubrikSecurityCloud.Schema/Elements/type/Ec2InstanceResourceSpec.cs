@@ -236,88 +236,87 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? InstanceType
         // GraphQL -> instanceType: String! (scalar)
-        if (this.InstanceType == null && Exploration.Includes(parent + ".instanceType", true))
+        if (this.InstanceType == null && ec.Includes("instanceType",true))
         {
             this.InstanceType = "FETCH";
         }
         //      C# -> System.Int32? InstanceTypeMemoryMbs
         // GraphQL -> instanceTypeMemoryMbs: Int! (scalar)
-        if (this.InstanceTypeMemoryMbs == null && Exploration.Includes(parent + ".instanceTypeMemoryMbs", true))
+        if (this.InstanceTypeMemoryMbs == null && ec.Includes("instanceTypeMemoryMbs",true))
         {
             this.InstanceTypeMemoryMbs = Int32.MinValue;
         }
         //      C# -> System.Int32? InstanceTypeVcpus
         // GraphQL -> instanceTypeVcpus: Int! (scalar)
-        if (this.InstanceTypeVcpus == null && Exploration.Includes(parent + ".instanceTypeVcpus", true))
+        if (this.InstanceTypeVcpus == null && ec.Includes("instanceTypeVcpus",true))
         {
             this.InstanceTypeVcpus = Int32.MinValue;
         }
         //      C# -> System.Boolean? IsArchived
         // GraphQL -> isArchived: Boolean! (scalar)
-        if (this.IsArchived == null && Exploration.Includes(parent + ".isArchived", true))
+        if (this.IsArchived == null && ec.Includes("isArchived",true))
         {
             this.IsArchived = true;
         }
         //      C# -> System.String? NativeId
         // GraphQL -> nativeId: String! (scalar)
-        if (this.NativeId == null && Exploration.Includes(parent + ".nativeId", true))
+        if (this.NativeId == null && ec.Includes("nativeId",true))
         {
             this.NativeId = "FETCH";
         }
         //      C# -> System.String? OsType
         // GraphQL -> osType: String! (scalar)
-        if (this.OsType == null && Exploration.Includes(parent + ".osType", true))
+        if (this.OsType == null && ec.Includes("osType",true))
         {
             this.OsType = "FETCH";
         }
         //      C# -> System.Int64? RecoveryPointOpt
         // GraphQL -> recoveryPointOpt: Long (scalar)
-        if (this.RecoveryPointOpt == null && Exploration.Includes(parent + ".recoveryPointOpt", true))
+        if (this.RecoveryPointOpt == null && ec.Includes("recoveryPointOpt",true))
         {
             this.RecoveryPointOpt = new System.Int64();
         }
         //      C# -> System.String? Region
         // GraphQL -> region: String! (scalar)
-        if (this.Region == null && Exploration.Includes(parent + ".region", true))
+        if (this.Region == null && ec.Includes("region",true))
         {
             this.Region = "FETCH";
         }
         //      C# -> System.String? SnappableId
         // GraphQL -> snappableId: String! (scalar)
-        if (this.SnappableId == null && Exploration.Includes(parent + ".snappableId", true))
+        if (this.SnappableId == null && ec.Includes("snappableId",true))
         {
             this.SnappableId = "FETCH";
         }
         //      C# -> System.String? SnappableName
         // GraphQL -> snappableName: String! (scalar)
-        if (this.SnappableName == null && Exploration.Includes(parent + ".snappableName", true))
+        if (this.SnappableName == null && ec.Includes("snappableName",true))
         {
             this.SnappableName = "FETCH";
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: String! (scalar)
-        if (this.SnapshotId == null && Exploration.Includes(parent + ".snapshotId", true))
+        if (this.SnapshotId == null && ec.Includes("snapshotId",true))
         {
             this.SnapshotId = "FETCH";
         }
         //      C# -> List<Ec2InstanceNic>? Ec2InstanceNics
         // GraphQL -> ec2InstanceNics: [Ec2InstanceNic!]! (type)
-        if (this.Ec2InstanceNics == null && Exploration.Includes(parent + ".ec2InstanceNics"))
+        if (this.Ec2InstanceNics == null && ec.Includes("ec2InstanceNics",false))
         {
             this.Ec2InstanceNics = new List<Ec2InstanceNic>();
-            this.Ec2InstanceNics.ApplyExploratoryFieldSpec(parent + ".ec2InstanceNics");
+            this.Ec2InstanceNics.ApplyExploratoryFieldSpec(ec.NewChild("ec2InstanceNics"));
         }
         //      C# -> List<Ec2InstanceVolume>? Ec2InstanceVolumeSpecs
         // GraphQL -> ec2InstanceVolumeSpecs: [Ec2InstanceVolume!]! (type)
-        if (this.Ec2InstanceVolumeSpecs == null && Exploration.Includes(parent + ".ec2InstanceVolumeSpecs"))
+        if (this.Ec2InstanceVolumeSpecs == null && ec.Includes("ec2InstanceVolumeSpecs",false))
         {
             this.Ec2InstanceVolumeSpecs = new List<Ec2InstanceVolume>();
-            this.Ec2InstanceVolumeSpecs.ApplyExploratoryFieldSpec(parent + ".ec2InstanceVolumeSpecs");
+            this.Ec2InstanceVolumeSpecs.ApplyExploratoryFieldSpec(ec.NewChild("ec2InstanceVolumeSpecs"));
         }
     }
 
@@ -351,12 +350,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<Ec2InstanceResourceSpec> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new Ec2InstanceResourceSpec());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<Ec2InstanceResourceSpec> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

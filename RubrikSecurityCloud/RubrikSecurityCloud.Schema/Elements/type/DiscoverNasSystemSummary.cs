@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? NasSystemId
         // GraphQL -> nasSystemId: String! (scalar)
-        if (this.NasSystemId == null && Exploration.Includes(parent + ".nasSystemId", true))
+        if (this.NasSystemId == null && ec.Includes("nasSystemId",true))
         {
             this.NasSystemId = "FETCH";
         }
         //      C# -> AsyncRequestStatus? NasDiscoverJobStatus
         // GraphQL -> nasDiscoverJobStatus: AsyncRequestStatus (type)
-        if (this.NasDiscoverJobStatus == null && Exploration.Includes(parent + ".nasDiscoverJobStatus"))
+        if (this.NasDiscoverJobStatus == null && ec.Includes("nasDiscoverJobStatus",false))
         {
             this.NasDiscoverJobStatus = new AsyncRequestStatus();
-            this.NasDiscoverJobStatus.ApplyExploratoryFieldSpec(parent + ".nasDiscoverJobStatus");
+            this.NasDiscoverJobStatus.ApplyExploratoryFieldSpec(ec.NewChild("nasDiscoverJobStatus"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<DiscoverNasSystemSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new DiscoverNasSystemSummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<DiscoverNasSystemSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

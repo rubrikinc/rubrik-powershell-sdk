@@ -78,21 +78,20 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? SiteFid
         // GraphQL -> siteFid: String! (scalar)
-        if (this.SiteFid == null && Exploration.Includes(parent + ".siteFid", true))
+        if (this.SiteFid == null && ec.Includes("siteFid",true))
         {
             this.SiteFid = "FETCH";
         }
         //      C# -> List<FullSpObjectExclusion>? ExcludedObjects
         // GraphQL -> excludedObjects: [FullSpObjectExclusion!]! (type)
-        if (this.ExcludedObjects == null && Exploration.Includes(parent + ".excludedObjects"))
+        if (this.ExcludedObjects == null && ec.Includes("excludedObjects",false))
         {
             this.ExcludedObjects = new List<FullSpObjectExclusion>();
-            this.ExcludedObjects.ApplyExploratoryFieldSpec(parent + ".excludedObjects");
+            this.ExcludedObjects.ApplyExploratoryFieldSpec(ec.NewChild("excludedObjects"));
         }
     }
 
@@ -126,12 +125,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<FullSpSiteExclusions> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new FullSpSiteExclusions());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<FullSpSiteExclusions> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

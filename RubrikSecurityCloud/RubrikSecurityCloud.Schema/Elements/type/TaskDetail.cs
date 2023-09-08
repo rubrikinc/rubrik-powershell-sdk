@@ -579,234 +579,233 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? ArchivalTarget
         // GraphQL -> archivalTarget: String (scalar)
-        if (this.ArchivalTarget == null && Exploration.Includes(parent + ".archivalTarget", true))
+        if (this.ArchivalTarget == null && ec.Includes("archivalTarget",true))
         {
             this.ArchivalTarget = "FETCH";
         }
         //      C# -> System.String? ClusterLocation
         // GraphQL -> clusterLocation: String! (scalar)
-        if (this.ClusterLocation == null && Exploration.Includes(parent + ".clusterLocation", true))
+        if (this.ClusterLocation == null && ec.Includes("clusterLocation",true))
         {
             this.ClusterLocation = "FETCH";
         }
         //      C# -> System.String? ClusterName
         // GraphQL -> clusterName: String! (scalar)
-        if (this.ClusterName == null && Exploration.Includes(parent + ".clusterName", true))
+        if (this.ClusterName == null && ec.Includes("clusterName",true))
         {
             this.ClusterName = "FETCH";
         }
         //      C# -> System.String? ClusterType
         // GraphQL -> clusterType: String! (scalar)
-        if (this.ClusterType == null && Exploration.Includes(parent + ".clusterType", true))
+        if (this.ClusterType == null && ec.Includes("clusterType",true))
         {
             this.ClusterType = "FETCH";
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
-        if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
+        if (this.ClusterUuid == null && ec.Includes("clusterUuid",true))
         {
             this.ClusterUuid = "FETCH";
         }
         //      C# -> System.Single? DataReduction
         // GraphQL -> dataReduction: Float (scalar)
-        if (this.DataReduction == null && Exploration.Includes(parent + ".dataReduction", true))
+        if (this.DataReduction == null && ec.Includes("dataReduction",true))
         {
             this.DataReduction = new System.Single();
         }
         //      C# -> System.Int64? DataTransferred
         // GraphQL -> dataTransferred: Long (scalar)
-        if (this.DataTransferred == null && Exploration.Includes(parent + ".dataTransferred", true))
+        if (this.DataTransferred == null && ec.Includes("dataTransferred",true))
         {
             this.DataTransferred = new System.Int64();
         }
         //      C# -> System.Single? DedupRatio
         // GraphQL -> dedupRatio: Float (scalar)
-        if (this.DedupRatio == null && Exploration.Includes(parent + ".dedupRatio", true))
+        if (this.DedupRatio == null && ec.Includes("dedupRatio",true))
         {
             this.DedupRatio = new System.Single();
         }
         //      C# -> System.String? DirectArchive
         // GraphQL -> directArchive: String (scalar)
-        if (this.DirectArchive == null && Exploration.Includes(parent + ".directArchive", true))
+        if (this.DirectArchive == null && ec.Includes("directArchive",true))
         {
             this.DirectArchive = "FETCH";
         }
         //      C# -> System.Int64? Duration
         // GraphQL -> duration: Long! (scalar)
-        if (this.Duration == null && Exploration.Includes(parent + ".duration", true))
+        if (this.Duration == null && ec.Includes("duration",true))
         {
             this.Duration = new System.Int64();
         }
         //      C# -> DateTime? EndTime
         // GraphQL -> endTime: DateTime! (scalar)
-        if (this.EndTime == null && Exploration.Includes(parent + ".endTime", true))
+        if (this.EndTime == null && ec.Includes("endTime",true))
         {
             this.EndTime = new DateTime();
         }
         //      C# -> System.String? FailureReason
         // GraphQL -> failureReason: String (scalar)
-        if (this.FailureReason == null && Exploration.Includes(parent + ".failureReason", true))
+        if (this.FailureReason == null && ec.Includes("failureReason",true))
         {
             this.FailureReason = "FETCH";
         }
         //      C# -> System.Int64? Id
         // GraphQL -> id: Long! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = new System.Int64();
         }
         //      C# -> System.String? Location
         // GraphQL -> location: String! (scalar)
-        if (this.Location == null && Exploration.Includes(parent + ".location", true))
+        if (this.Location == null && ec.Includes("location",true))
         {
             this.Location = "FETCH";
         }
         //      C# -> System.Int64? LogicalBytes
         // GraphQL -> logicalBytes: Long (scalar)
-        if (this.LogicalBytes == null && Exploration.Includes(parent + ".logicalBytes", true))
+        if (this.LogicalBytes == null && ec.Includes("logicalBytes",true))
         {
             this.LogicalBytes = new System.Int64();
         }
         //      C# -> System.Single? LogicalDataReduction
         // GraphQL -> logicalDataReduction: Float (scalar)
-        if (this.LogicalDataReduction == null && Exploration.Includes(parent + ".logicalDataReduction", true))
+        if (this.LogicalDataReduction == null && ec.Includes("logicalDataReduction",true))
         {
             this.LogicalDataReduction = new System.Single();
         }
         //      C# -> System.Single? LogicalDedupRatio
         // GraphQL -> logicalDedupRatio: Float (scalar)
-        if (this.LogicalDedupRatio == null && Exploration.Includes(parent + ".logicalDedupRatio", true))
+        if (this.LogicalDedupRatio == null && ec.Includes("logicalDedupRatio",true))
         {
             this.LogicalDedupRatio = new System.Single();
         }
         //      C# -> System.String? ObjectFid
         // GraphQL -> objectFid: String! (scalar)
-        if (this.ObjectFid == null && Exploration.Includes(parent + ".objectFid", true))
+        if (this.ObjectFid == null && ec.Includes("objectFid",true))
         {
             this.ObjectFid = "FETCH";
         }
         //      C# -> System.String? ObjectName
         // GraphQL -> objectName: String! (scalar)
-        if (this.ObjectName == null && Exploration.Includes(parent + ".objectName", true))
+        if (this.ObjectName == null && ec.Includes("objectName",true))
         {
             this.ObjectName = "FETCH";
         }
         //      C# -> System.String? ObjectType
         // GraphQL -> objectType: String! (scalar)
-        if (this.ObjectType == null && Exploration.Includes(parent + ".objectType", true))
+        if (this.ObjectType == null && ec.Includes("objectType",true))
         {
             this.ObjectType = "FETCH";
         }
         //      C# -> System.String? OrgId
         // GraphQL -> orgId: String (scalar)
-        if (this.OrgId == null && Exploration.Includes(parent + ".orgId", true))
+        if (this.OrgId == null && ec.Includes("orgId",true))
         {
             this.OrgId = "FETCH";
         }
         //      C# -> System.String? OrgName
         // GraphQL -> orgName: String (scalar)
-        if (this.OrgName == null && Exploration.Includes(parent + ".orgName", true))
+        if (this.OrgName == null && ec.Includes("orgName",true))
         {
             this.OrgName = "FETCH";
         }
         //      C# -> System.Int64? PhysicalBytes
         // GraphQL -> physicalBytes: Long (scalar)
-        if (this.PhysicalBytes == null && Exploration.Includes(parent + ".physicalBytes", true))
+        if (this.PhysicalBytes == null && ec.Includes("physicalBytes",true))
         {
             this.PhysicalBytes = new System.Int64();
         }
         //      C# -> System.String? ProtectedVolume
         // GraphQL -> protectedVolume: String (scalar)
-        if (this.ProtectedVolume == null && Exploration.Includes(parent + ".protectedVolume", true))
+        if (this.ProtectedVolume == null && ec.Includes("protectedVolume",true))
         {
             this.ProtectedVolume = "FETCH";
         }
         //      C# -> System.String? RecoveryPoint
         // GraphQL -> recoveryPoint: String (scalar)
-        if (this.RecoveryPoint == null && Exploration.Includes(parent + ".recoveryPoint", true))
+        if (this.RecoveryPoint == null && ec.Includes("recoveryPoint",true))
         {
             this.RecoveryPoint = "FETCH";
         }
         //      C# -> System.String? RecoveryPointType
         // GraphQL -> recoveryPointType: String (scalar)
-        if (this.RecoveryPointType == null && Exploration.Includes(parent + ".recoveryPointType", true))
+        if (this.RecoveryPointType == null && ec.Includes("recoveryPointType",true))
         {
             this.RecoveryPointType = "FETCH";
         }
         //      C# -> System.String? ReplicationSource
         // GraphQL -> replicationSource: String (scalar)
-        if (this.ReplicationSource == null && Exploration.Includes(parent + ".replicationSource", true))
+        if (this.ReplicationSource == null && ec.Includes("replicationSource",true))
         {
             this.ReplicationSource = "FETCH";
         }
         //      C# -> System.String? ReplicationTarget
         // GraphQL -> replicationTarget: String (scalar)
-        if (this.ReplicationTarget == null && Exploration.Includes(parent + ".replicationTarget", true))
+        if (this.ReplicationTarget == null && ec.Includes("replicationTarget",true))
         {
             this.ReplicationTarget = "FETCH";
         }
         //      C# -> System.String? ReportJobInstanceId
         // GraphQL -> reportJobInstanceId: String! (scalar)
-        if (this.ReportJobInstanceId == null && Exploration.Includes(parent + ".reportJobInstanceId", true))
+        if (this.ReportJobInstanceId == null && ec.Includes("reportJobInstanceId",true))
         {
             this.ReportJobInstanceId = "FETCH";
         }
         //      C# -> System.String? SlaDomainId
         // GraphQL -> slaDomainId: String! (scalar)
-        if (this.SlaDomainId == null && Exploration.Includes(parent + ".slaDomainId", true))
+        if (this.SlaDomainId == null && ec.Includes("slaDomainId",true))
         {
             this.SlaDomainId = "FETCH";
         }
         //      C# -> System.String? SlaDomainName
         // GraphQL -> slaDomainName: String! (scalar)
-        if (this.SlaDomainName == null && Exploration.Includes(parent + ".slaDomainName", true))
+        if (this.SlaDomainName == null && ec.Includes("slaDomainName",true))
         {
             this.SlaDomainName = "FETCH";
         }
         //      C# -> System.String? SnapshotConsistency
         // GraphQL -> snapshotConsistency: String (scalar)
-        if (this.SnapshotConsistency == null && Exploration.Includes(parent + ".snapshotConsistency", true))
+        if (this.SnapshotConsistency == null && ec.Includes("snapshotConsistency",true))
         {
             this.SnapshotConsistency = "FETCH";
         }
         //      C# -> DateTime? StartTime
         // GraphQL -> startTime: DateTime! (scalar)
-        if (this.StartTime == null && Exploration.Includes(parent + ".startTime", true))
+        if (this.StartTime == null && ec.Includes("startTime",true))
         {
             this.StartTime = new DateTime();
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = "FETCH";
         }
         //      C# -> System.String? TaskCategory
         // GraphQL -> taskCategory: String! (scalar)
-        if (this.TaskCategory == null && Exploration.Includes(parent + ".taskCategory", true))
+        if (this.TaskCategory == null && ec.Includes("taskCategory",true))
         {
             this.TaskCategory = "FETCH";
         }
         //      C# -> System.String? TaskType
         // GraphQL -> taskType: String! (scalar)
-        if (this.TaskType == null && Exploration.Includes(parent + ".taskType", true))
+        if (this.TaskType == null && ec.Includes("taskType",true))
         {
             this.TaskType = "FETCH";
         }
         //      C# -> System.Int64? TotalFilesTransferred
         // GraphQL -> totalFilesTransferred: Long (scalar)
-        if (this.TotalFilesTransferred == null && Exploration.Includes(parent + ".totalFilesTransferred", true))
+        if (this.TotalFilesTransferred == null && ec.Includes("totalFilesTransferred",true))
         {
             this.TotalFilesTransferred = new System.Int64();
         }
         //      C# -> System.String? UserName
         // GraphQL -> userName: String (scalar)
-        if (this.UserName == null && Exploration.Includes(parent + ".userName", true))
+        if (this.UserName == null && ec.Includes("userName",true))
         {
             this.UserName = "FETCH";
         }
@@ -842,12 +841,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<TaskDetail> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new TaskDetail());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<TaskDetail> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

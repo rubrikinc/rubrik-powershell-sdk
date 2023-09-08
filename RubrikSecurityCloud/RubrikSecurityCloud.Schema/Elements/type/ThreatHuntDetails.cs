@@ -140,47 +140,46 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
-        if (this.CdmId == null && Exploration.Includes(parent + ".cdmId", true))
+        if (this.CdmId == null && ec.Includes("cdmId",true))
         {
             this.CdmId = "FETCH";
         }
         //      C# -> DateTime? EndTime
         // GraphQL -> endTime: DateTime (scalar)
-        if (this.EndTime == null && Exploration.Includes(parent + ".endTime", true))
+        if (this.EndTime == null && ec.Includes("endTime",true))
         {
             this.EndTime = new DateTime();
         }
         //      C# -> DateTime? StartTime
         // GraphQL -> startTime: DateTime (scalar)
-        if (this.StartTime == null && Exploration.Includes(parent + ".startTime", true))
+        if (this.StartTime == null && ec.Includes("startTime",true))
         {
             this.StartTime = new DateTime();
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
-        if (this.Cluster == null && Exploration.Includes(parent + ".cluster"))
+        if (this.Cluster == null && ec.Includes("cluster",false))
         {
             this.Cluster = new Cluster();
-            this.Cluster.ApplyExploratoryFieldSpec(parent + ".cluster");
+            this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
         }
         //      C# -> ThreatHuntConfig? Config
         // GraphQL -> config: ThreatHuntConfig! (type)
-        if (this.Config == null && Exploration.Includes(parent + ".config"))
+        if (this.Config == null && ec.Includes("config",false))
         {
             this.Config = new ThreatHuntConfig();
-            this.Config.ApplyExploratoryFieldSpec(parent + ".config");
+            this.Config.ApplyExploratoryFieldSpec(ec.NewChild("config"));
         }
         //      C# -> List<WorkloadIdToSnapshotIds>? Snapshots
         // GraphQL -> snapshots: [WorkloadIdToSnapshotIds!]! (type)
-        if (this.Snapshots == null && Exploration.Includes(parent + ".snapshots"))
+        if (this.Snapshots == null && ec.Includes("snapshots",false))
         {
             this.Snapshots = new List<WorkloadIdToSnapshotIds>();
-            this.Snapshots.ApplyExploratoryFieldSpec(parent + ".snapshots");
+            this.Snapshots.ApplyExploratoryFieldSpec(ec.NewChild("snapshots"));
         }
     }
 
@@ -214,12 +213,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ThreatHuntDetails> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ThreatHuntDetails());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ThreatHuntDetails> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

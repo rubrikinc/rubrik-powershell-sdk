@@ -215,78 +215,77 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? BypassCheck
         // GraphQL -> bypassCheck: Boolean! (scalar)
-        if (this.BypassCheck == null && Exploration.Includes(parent + ".bypassCheck", true))
+        if (this.BypassCheck == null && ec.Includes("bypassCheck",true))
         {
             this.BypassCheck = true;
         }
         //      C# -> System.String? ContractBase64
         // GraphQL -> contractBase64: String! (scalar)
-        if (this.ContractBase64 == null && Exploration.Includes(parent + ".contractBase64", true))
+        if (this.ContractBase64 == null && ec.Includes("contractBase64",true))
         {
             this.ContractBase64 = "FETCH";
         }
         //      C# -> System.String? CurrentMajorVersion
         // GraphQL -> currentMajorVersion: String! (scalar)
-        if (this.CurrentMajorVersion == null && Exploration.Includes(parent + ".currentMajorVersion", true))
+        if (this.CurrentMajorVersion == null && ec.Includes("currentMajorVersion",true))
         {
             this.CurrentMajorVersion = "FETCH";
         }
         //      C# -> System.String? CurrentVersion
         // GraphQL -> currentVersion: String! (scalar)
-        if (this.CurrentVersion == null && Exploration.Includes(parent + ".currentVersion", true))
+        if (this.CurrentVersion == null && ec.Includes("currentVersion",true))
         {
             this.CurrentVersion = "FETCH";
         }
         //      C# -> DateTime? Deadline
         // GraphQL -> deadline: DateTime (scalar)
-        if (this.Deadline == null && Exploration.Includes(parent + ".deadline", true))
+        if (this.Deadline == null && ec.Includes("deadline",true))
         {
             this.Deadline = new DateTime();
         }
         //      C# -> System.String? DownloadEndpoint
         // GraphQL -> downloadEndpoint: String! (scalar)
-        if (this.DownloadEndpoint == null && Exploration.Includes(parent + ".downloadEndpoint", true))
+        if (this.DownloadEndpoint == null && ec.Includes("downloadEndpoint",true))
         {
             this.DownloadEndpoint = "FETCH";
         }
         //      C# -> DateTime? EffectiveDate
         // GraphQL -> effectiveDate: DateTime (scalar)
-        if (this.EffectiveDate == null && Exploration.Includes(parent + ".effectiveDate", true))
+        if (this.EffectiveDate == null && ec.Includes("effectiveDate",true))
         {
             this.EffectiveDate = new DateTime();
         }
         //      C# -> DateTime? FirstSeenTimestamp
         // GraphQL -> firstSeenTimestamp: DateTime (scalar)
-        if (this.FirstSeenTimestamp == null && Exploration.Includes(parent + ".firstSeenTimestamp", true))
+        if (this.FirstSeenTimestamp == null && ec.Includes("firstSeenTimestamp",true))
         {
             this.FirstSeenTimestamp = new DateTime();
         }
         //      C# -> System.Boolean? IsAuthorizedSigner
         // GraphQL -> isAuthorizedSigner: Boolean! (scalar)
-        if (this.IsAuthorizedSigner == null && Exploration.Includes(parent + ".isAuthorizedSigner", true))
+        if (this.IsAuthorizedSigner == null && ec.Includes("isAuthorizedSigner",true))
         {
             this.IsAuthorizedSigner = true;
         }
         //      C# -> System.String? LatestVersionAccepted
         // GraphQL -> latestVersionAccepted: String! (scalar)
-        if (this.LatestVersionAccepted == null && Exploration.Includes(parent + ".latestVersionAccepted", true))
+        if (this.LatestVersionAccepted == null && ec.Includes("latestVersionAccepted",true))
         {
             this.LatestVersionAccepted = "FETCH";
         }
         //      C# -> List<System.String>? RequiredEmailDomains
         // GraphQL -> requiredEmailDomains: [String!]! (scalar)
-        if (this.RequiredEmailDomains == null && Exploration.Includes(parent + ".requiredEmailDomains", true))
+        if (this.RequiredEmailDomains == null && ec.Includes("requiredEmailDomains",true))
         {
             this.RequiredEmailDomains = new List<System.String>();
         }
         //      C# -> System.String? Title
         // GraphQL -> title: String! (scalar)
-        if (this.Title == null && Exploration.Includes(parent + ".title", true))
+        if (this.Title == null && ec.Includes("title",true))
         {
             this.Title = "FETCH";
         }
@@ -322,12 +321,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<PactsafeEulaState> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new PactsafeEulaState());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<PactsafeEulaState> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

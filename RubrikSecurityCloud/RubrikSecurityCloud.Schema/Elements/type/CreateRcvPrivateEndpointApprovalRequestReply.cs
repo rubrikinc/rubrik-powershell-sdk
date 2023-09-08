@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? RequestMessage
         // GraphQL -> requestMessage: String! (scalar)
-        if (this.RequestMessage == null && Exploration.Includes(parent + ".requestMessage", true))
+        if (this.RequestMessage == null && ec.Includes("requestMessage",true))
         {
             this.RequestMessage = "FETCH";
         }
         //      C# -> System.String? StorageAccountId
         // GraphQL -> storageAccountId: String! (scalar)
-        if (this.StorageAccountId == null && Exploration.Includes(parent + ".storageAccountId", true))
+        if (this.StorageAccountId == null && ec.Includes("storageAccountId",true))
         {
             this.StorageAccountId = "FETCH";
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CreateRcvPrivateEndpointApprovalRequestReply> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CreateRcvPrivateEndpointApprovalRequestReply());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CreateRcvPrivateEndpointApprovalRequestReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

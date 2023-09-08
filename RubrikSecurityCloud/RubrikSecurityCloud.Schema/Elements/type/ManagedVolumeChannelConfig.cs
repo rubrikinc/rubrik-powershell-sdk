@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? HostMountPoint
         // GraphQL -> hostMountPoint: String (scalar)
-        if (this.HostMountPoint == null && Exploration.Includes(parent + ".hostMountPoint", true))
+        if (this.HostMountPoint == null && ec.Includes("hostMountPoint",true))
         {
             this.HostMountPoint = "FETCH";
         }
         //      C# -> System.String? IpAddress
         // GraphQL -> ipAddress: String! (scalar)
-        if (this.IpAddress == null && Exploration.Includes(parent + ".ipAddress", true))
+        if (this.IpAddress == null && ec.Includes("ipAddress",true))
         {
             this.IpAddress = "FETCH";
         }
         //      C# -> System.String? MountPoint
         // GraphQL -> mountPoint: String! (scalar)
-        if (this.MountPoint == null && Exploration.Includes(parent + ".mountPoint", true))
+        if (this.MountPoint == null && ec.Includes("mountPoint",true))
         {
             this.MountPoint = "FETCH";
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ManagedVolumeChannelConfig> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ManagedVolumeChannelConfig());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ManagedVolumeChannelConfig> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

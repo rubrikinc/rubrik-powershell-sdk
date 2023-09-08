@@ -89,24 +89,23 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? IsImmutable
         // GraphQL -> isImmutable: Boolean! (scalar)
-        if (this.IsImmutable == null && Exploration.Includes(parent + ".isImmutable", true))
+        if (this.IsImmutable == null && ec.Includes("isImmutable",true))
         {
             this.IsImmutable = true;
         }
         //      C# -> System.String? LocationId
         // GraphQL -> locationId: String! (scalar)
-        if (this.LocationId == null && Exploration.Includes(parent + ".locationId", true))
+        if (this.LocationId == null && ec.Includes("locationId",true))
         {
             this.LocationId = "FETCH";
         }
         //      C# -> System.String? LocationName
         // GraphQL -> locationName: String! (scalar)
-        if (this.LocationName == null && Exploration.Includes(parent + ".locationName", true))
+        if (this.LocationName == null && ec.Includes("locationName",true))
         {
             this.LocationName = "FETCH";
         }
@@ -142,12 +141,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ElasticStorageConfig> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ElasticStorageConfig());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ElasticStorageConfig> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

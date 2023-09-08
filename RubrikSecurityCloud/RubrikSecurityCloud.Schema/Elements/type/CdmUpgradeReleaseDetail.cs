@@ -201,72 +201,71 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> AdoptionStatus? AdoptionStatus
         // GraphQL -> adoptionStatus: AdoptionStatus! (enum)
-        if (this.AdoptionStatus == null && Exploration.Includes(parent + ".adoptionStatus", true))
+        if (this.AdoptionStatus == null && ec.Includes("adoptionStatus",true))
         {
             this.AdoptionStatus = new AdoptionStatus();
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
-        if (this.Description == null && Exploration.Includes(parent + ".description", true))
+        if (this.Description == null && ec.Includes("description",true))
         {
             this.Description = "FETCH";
         }
         //      C# -> System.String? GaReleaseDate
         // GraphQL -> gaReleaseDate: String! (scalar)
-        if (this.GaReleaseDate == null && Exploration.Includes(parent + ".gaReleaseDate", true))
+        if (this.GaReleaseDate == null && ec.Includes("gaReleaseDate",true))
         {
             this.GaReleaseDate = "FETCH";
         }
         //      C# -> System.Boolean? IsRecommended
         // GraphQL -> isRecommended: Boolean! (scalar)
-        if (this.IsRecommended == null && Exploration.Includes(parent + ".isRecommended", true))
+        if (this.IsRecommended == null && ec.Includes("isRecommended",true))
         {
             this.IsRecommended = true;
         }
         //      C# -> System.Boolean? IsUpgradable
         // GraphQL -> isUpgradable: Boolean! (scalar)
-        if (this.IsUpgradable == null && Exploration.Includes(parent + ".isUpgradable", true))
+        if (this.IsUpgradable == null && ec.Includes("isUpgradable",true))
         {
             this.IsUpgradable = true;
         }
         //      C# -> System.String? Md5Sum
         // GraphQL -> md5Sum: String! (scalar)
-        if (this.Md5Sum == null && Exploration.Includes(parent + ".md5Sum", true))
+        if (this.Md5Sum == null && ec.Includes("md5Sum",true))
         {
             this.Md5Sum = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? ReleaseDate
         // GraphQL -> releaseDate: String! (scalar)
-        if (this.ReleaseDate == null && Exploration.Includes(parent + ".releaseDate", true))
+        if (this.ReleaseDate == null && ec.Includes("releaseDate",true))
         {
             this.ReleaseDate = "FETCH";
         }
         //      C# -> System.String? ReleaseNotesLink
         // GraphQL -> releaseNotesLink: String! (scalar)
-        if (this.ReleaseNotesLink == null && Exploration.Includes(parent + ".releaseNotesLink", true))
+        if (this.ReleaseNotesLink == null && ec.Includes("releaseNotesLink",true))
         {
             this.ReleaseNotesLink = "FETCH";
         }
         //      C# -> System.Int64? Size
         // GraphQL -> size: Long! (scalar)
-        if (this.Size == null && Exploration.Includes(parent + ".size", true))
+        if (this.Size == null && ec.Includes("size",true))
         {
             this.Size = new System.Int64();
         }
         //      C# -> System.String? TarDownloadLink
         // GraphQL -> tarDownloadLink: String! (scalar)
-        if (this.TarDownloadLink == null && Exploration.Includes(parent + ".tarDownloadLink", true))
+        if (this.TarDownloadLink == null && ec.Includes("tarDownloadLink",true))
         {
             this.TarDownloadLink = "FETCH";
         }
@@ -302,12 +301,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<CdmUpgradeReleaseDetail> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new CdmUpgradeReleaseDetail());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<CdmUpgradeReleaseDetail> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

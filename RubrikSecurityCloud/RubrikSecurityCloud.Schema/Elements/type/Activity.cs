@@ -218,81 +218,80 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ActivityObjectTypeEnum? ObjectType
         // GraphQL -> objectType: ActivityObjectTypeEnum! (enum)
-        if (this.ObjectType == null && Exploration.Includes(parent + ".objectType", true))
+        if (this.ObjectType == null && ec.Includes("objectType",true))
         {
             this.ObjectType = new ActivityObjectTypeEnum();
         }
         //      C# -> ActivitySeverityEnum? Severity
         // GraphQL -> severity: ActivitySeverityEnum! (enum)
-        if (this.Severity == null && Exploration.Includes(parent + ".severity", true))
+        if (this.Severity == null && ec.Includes("severity",true))
         {
             this.Severity = new ActivitySeverityEnum();
         }
         //      C# -> ActivityStatusEnum? Status
         // GraphQL -> status: ActivityStatusEnum! (enum)
-        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        if (this.Status == null && ec.Includes("status",true))
         {
             this.Status = new ActivityStatusEnum();
         }
         //      C# -> ActivityTypeEnum? Type
         // GraphQL -> type: ActivityTypeEnum! (enum)
-        if (this.Type == null && Exploration.Includes(parent + ".type", true))
+        if (this.Type == null && ec.Includes("type",true))
         {
             this.Type = new ActivityTypeEnum();
         }
         //      C# -> System.String? ActivityInfo
         // GraphQL -> activityInfo: String (scalar)
-        if (this.ActivityInfo == null && Exploration.Includes(parent + ".activityInfo", true))
+        if (this.ActivityInfo == null && ec.Includes("activityInfo",true))
         {
             this.ActivityInfo = "FETCH";
         }
         //      C# -> System.String? ClusterId
         // GraphQL -> clusterId: UUID! (scalar)
-        if (this.ClusterId == null && Exploration.Includes(parent + ".clusterId", true))
+        if (this.ClusterId == null && ec.Includes("clusterId",true))
         {
             this.ClusterId = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: ID! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> System.String? Message
         // GraphQL -> message: String! (scalar)
-        if (this.Message == null && Exploration.Includes(parent + ".message", true))
+        if (this.Message == null && ec.Includes("message",true))
         {
             this.Message = "FETCH";
         }
         //      C# -> System.String? ObjectId
         // GraphQL -> objectId: String! (scalar)
-        if (this.ObjectId == null && Exploration.Includes(parent + ".objectId", true))
+        if (this.ObjectId == null && ec.Includes("objectId",true))
         {
             this.ObjectId = "FETCH";
         }
         //      C# -> System.String? Progress
         // GraphQL -> progress: String (scalar)
-        if (this.Progress == null && Exploration.Includes(parent + ".progress", true))
+        if (this.Progress == null && ec.Includes("progress",true))
         {
             this.Progress = "FETCH";
         }
         //      C# -> DateTime? Time
         // GraphQL -> time: DateTime! (scalar)
-        if (this.Time == null && Exploration.Includes(parent + ".time", true))
+        if (this.Time == null && ec.Includes("time",true))
         {
             this.Time = new DateTime();
         }
         //      C# -> ActivitySeries? ActivitySeries
         // GraphQL -> activitySeries: ActivitySeries! (type)
-        if (this.ActivitySeries == null && Exploration.Includes(parent + ".activitySeries"))
+        if (this.ActivitySeries == null && ec.Includes("activitySeries",false))
         {
             this.ActivitySeries = new ActivitySeries();
-            this.ActivitySeries.ApplyExploratoryFieldSpec(parent + ".activitySeries");
+            this.ActivitySeries.ApplyExploratoryFieldSpec(ec.NewChild("activitySeries"));
         }
     }
 
@@ -326,12 +325,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<Activity> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new Activity());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<Activity> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

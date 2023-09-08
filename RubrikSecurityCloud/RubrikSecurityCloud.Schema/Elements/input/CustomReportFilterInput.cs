@@ -49,6 +49,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("searchTerm")]
         public System.String? SearchTerm { get; set; }
 
+        //      C# -> System.String? CreatedBy
+        // GraphQL -> createdBy: String (scalar)
+        [JsonProperty("createdBy")]
+        public System.String? CreatedBy { get; set; }
+
 
         #endregion
 

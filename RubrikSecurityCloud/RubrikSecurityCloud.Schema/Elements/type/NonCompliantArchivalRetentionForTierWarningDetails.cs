@@ -104,30 +104,29 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> WarningSeverityEnum? Severity
         // GraphQL -> severity: WarningSeverityEnum! (enum)
-        if (this.Severity == null && Exploration.Includes(parent + ".severity", true))
+        if (this.Severity == null && ec.Includes("severity",true))
         {
             this.Severity = new WarningSeverityEnum();
         }
         //      C# -> System.Int32? MinArchivalRetentionDaysExpected
         // GraphQL -> minArchivalRetentionDaysExpected: Int! (scalar)
-        if (this.MinArchivalRetentionDaysExpected == null && Exploration.Includes(parent + ".minArchivalRetentionDaysExpected", true))
+        if (this.MinArchivalRetentionDaysExpected == null && ec.Includes("minArchivalRetentionDaysExpected",true))
         {
             this.MinArchivalRetentionDaysExpected = Int32.MinValue;
         }
         //      C# -> System.Int32? MinArchivalRetentionDaysFound
         // GraphQL -> minArchivalRetentionDaysFound: Int! (scalar)
-        if (this.MinArchivalRetentionDaysFound == null && Exploration.Includes(parent + ".minArchivalRetentionDaysFound", true))
+        if (this.MinArchivalRetentionDaysFound == null && ec.Includes("minArchivalRetentionDaysFound",true))
         {
             this.MinArchivalRetentionDaysFound = Int32.MinValue;
         }
         //      C# -> System.String? Tier
         // GraphQL -> tier: String! (scalar)
-        if (this.Tier == null && Exploration.Includes(parent + ".tier", true))
+        if (this.Tier == null && ec.Includes("tier",true))
         {
             this.Tier = "FETCH";
         }
@@ -163,12 +162,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<NonCompliantArchivalRetentionForTierWarningDetails> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new NonCompliantArchivalRetentionForTierWarningDetails());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<NonCompliantArchivalRetentionForTierWarningDetails> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

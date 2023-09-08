@@ -106,33 +106,32 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> List<System.String>? AddressPrefixes
         // GraphQL -> addressPrefixes: [String!]! (scalar)
-        if (this.AddressPrefixes == null && Exploration.Includes(parent + ".addressPrefixes", true))
+        if (this.AddressPrefixes == null && ec.Includes("addressPrefixes",true))
         {
             this.AddressPrefixes = new List<System.String>();
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? NativeId
         // GraphQL -> nativeId: String! (scalar)
-        if (this.NativeId == null && Exploration.Includes(parent + ".nativeId", true))
+        if (this.NativeId == null && ec.Includes("nativeId",true))
         {
             this.NativeId = "FETCH";
         }
         //      C# -> AzureNativeVirtualNetwork? Vnet
         // GraphQL -> vnet: AzureNativeVirtualNetwork! (type)
-        if (this.Vnet == null && Exploration.Includes(parent + ".vnet"))
+        if (this.Vnet == null && ec.Includes("vnet",false))
         {
             this.Vnet = new AzureNativeVirtualNetwork();
-            this.Vnet.ApplyExploratoryFieldSpec(parent + ".vnet");
+            this.Vnet.ApplyExploratoryFieldSpec(ec.NewChild("vnet"));
         }
     }
 
@@ -166,12 +165,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<AzureNativeSubnet> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new AzureNativeSubnet());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<AzureNativeSubnet> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

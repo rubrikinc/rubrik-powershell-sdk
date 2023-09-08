@@ -117,36 +117,35 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.Boolean? IsCleanable
         // GraphQL -> isCleanable: Boolean! (scalar)
-        if (this.IsCleanable == null && Exploration.Includes(parent + ".isCleanable", true))
+        if (this.IsCleanable == null && ec.Includes("isCleanable",true))
         {
             this.IsCleanable = true;
         }
         //      C# -> System.Boolean? IsResumable
         // GraphQL -> isResumable: Boolean! (scalar)
-        if (this.IsResumable == null && Exploration.Includes(parent + ".isResumable", true))
+        if (this.IsResumable == null && ec.Includes("isResumable",true))
         {
             this.IsResumable = true;
         }
         //      C# -> System.Boolean? IsViewable
         // GraphQL -> isViewable: Boolean! (scalar)
-        if (this.IsViewable == null && Exploration.Includes(parent + ".isViewable", true))
+        if (this.IsViewable == null && ec.Includes("isViewable",true))
         {
             this.IsViewable = true;
         }
         //      C# -> System.String? RecoveryFid
         // GraphQL -> recoveryFid: UUID! (scalar)
-        if (this.RecoveryFid == null && Exploration.Includes(parent + ".recoveryFid", true))
+        if (this.RecoveryFid == null && ec.Includes("recoveryFid",true))
         {
             this.RecoveryFid = "FETCH";
         }
         //      C# -> System.String? RecoveryName
         // GraphQL -> recoveryName: String! (scalar)
-        if (this.RecoveryName == null && Exploration.Includes(parent + ".recoveryName", true))
+        if (this.RecoveryName == null && ec.Includes("recoveryName",true))
         {
             this.RecoveryName = "FETCH";
         }
@@ -182,12 +181,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<RecoveryPermission> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new RecoveryPermission());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<RecoveryPermission> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

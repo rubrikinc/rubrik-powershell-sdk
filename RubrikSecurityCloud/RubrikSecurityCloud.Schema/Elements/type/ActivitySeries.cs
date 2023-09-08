@@ -504,203 +504,202 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> ActivityStatusEnum? LastActivityStatus
         // GraphQL -> lastActivityStatus: ActivityStatusEnum! (enum)
-        if (this.LastActivityStatus == null && Exploration.Includes(parent + ".lastActivityStatus", true))
+        if (this.LastActivityStatus == null && ec.Includes("lastActivityStatus",true))
         {
             this.LastActivityStatus = new ActivityStatusEnum();
         }
         //      C# -> ActivityTypeEnum? LastActivityType
         // GraphQL -> lastActivityType: ActivityTypeEnum! (enum)
-        if (this.LastActivityType == null && Exploration.Includes(parent + ".lastActivityType", true))
+        if (this.LastActivityType == null && ec.Includes("lastActivityType",true))
         {
             this.LastActivityType = new ActivityTypeEnum();
         }
         //      C# -> ActivityObjectTypeEnum? ObjectType
         // GraphQL -> objectType: ActivityObjectTypeEnum! (enum)
-        if (this.ObjectType == null && Exploration.Includes(parent + ".objectType", true))
+        if (this.ObjectType == null && ec.Includes("objectType",true))
         {
             this.ObjectType = new ActivityObjectTypeEnum();
         }
         //      C# -> ActivitySeverityEnum? Severity
         // GraphQL -> severity: ActivitySeverityEnum! (enum)
-        if (this.Severity == null && Exploration.Includes(parent + ".severity", true))
+        if (this.Severity == null && ec.Includes("severity",true))
         {
             this.Severity = new ActivitySeverityEnum();
         }
         //      C# -> System.String? ActivitySeriesId
         // GraphQL -> activitySeriesId: UUID! (scalar)
-        if (this.ActivitySeriesId == null && Exploration.Includes(parent + ".activitySeriesId", true))
+        if (this.ActivitySeriesId == null && ec.Includes("activitySeriesId",true))
         {
             this.ActivitySeriesId = "FETCH";
         }
         //      C# -> System.String? CauseErrorCode
         // GraphQL -> causeErrorCode: String (scalar)
-        if (this.CauseErrorCode == null && Exploration.Includes(parent + ".causeErrorCode", true))
+        if (this.CauseErrorCode == null && ec.Includes("causeErrorCode",true))
         {
             this.CauseErrorCode = "FETCH";
         }
         //      C# -> System.String? CauseErrorMessage
         // GraphQL -> causeErrorMessage: String (scalar)
-        if (this.CauseErrorMessage == null && Exploration.Includes(parent + ".causeErrorMessage", true))
+        if (this.CauseErrorMessage == null && ec.Includes("causeErrorMessage",true))
         {
             this.CauseErrorMessage = "FETCH";
         }
         //      C# -> System.String? CauseErrorReason
         // GraphQL -> causeErrorReason: String (scalar)
-        if (this.CauseErrorReason == null && Exploration.Includes(parent + ".causeErrorReason", true))
+        if (this.CauseErrorReason == null && ec.Includes("causeErrorReason",true))
         {
             this.CauseErrorReason = "FETCH";
         }
         //      C# -> System.String? CauseErrorRemedy
         // GraphQL -> causeErrorRemedy: String (scalar)
-        if (this.CauseErrorRemedy == null && Exploration.Includes(parent + ".causeErrorRemedy", true))
+        if (this.CauseErrorRemedy == null && ec.Includes("causeErrorRemedy",true))
         {
             this.CauseErrorRemedy = "FETCH";
         }
         //      C# -> System.String? ClusterName
         // GraphQL -> clusterName: String! (scalar)
-        if (this.ClusterName == null && Exploration.Includes(parent + ".clusterName", true))
+        if (this.ClusterName == null && ec.Includes("clusterName",true))
         {
             this.ClusterName = "FETCH";
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
-        if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
+        if (this.ClusterUuid == null && ec.Includes("clusterUuid",true))
         {
             this.ClusterUuid = "FETCH";
         }
         //      C# -> System.Int64? DataTransferred
         // GraphQL -> dataTransferred: Long (scalar)
-        if (this.DataTransferred == null && Exploration.Includes(parent + ".dataTransferred", true))
+        if (this.DataTransferred == null && ec.Includes("dataTransferred",true))
         {
             this.DataTransferred = new System.Int64();
         }
         //      C# -> System.Int64? EffectiveThroughput
         // GraphQL -> effectiveThroughput: Long (scalar)
-        if (this.EffectiveThroughput == null && Exploration.Includes(parent + ".effectiveThroughput", true))
+        if (this.EffectiveThroughput == null && ec.Includes("effectiveThroughput",true))
         {
             this.EffectiveThroughput = new System.Int64();
         }
         //      C# -> System.String? FailureReason
         // GraphQL -> failureReason: String (scalar)
-        if (this.FailureReason == null && Exploration.Includes(parent + ".failureReason", true))
+        if (this.FailureReason == null && ec.Includes("failureReason",true))
         {
             this.FailureReason = "FETCH";
         }
         //      C# -> System.String? Fid
         // GraphQL -> fid: UUID (scalar)
-        if (this.Fid == null && Exploration.Includes(parent + ".fid", true))
+        if (this.Fid == null && ec.Includes("fid",true))
         {
             this.Fid = "FETCH";
         }
         //      C# -> System.Int64? Id
         // GraphQL -> id: Long! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = new System.Int64();
         }
         //      C# -> System.Boolean? IsCancelable
         // GraphQL -> isCancelable: Boolean (scalar)
-        if (this.IsCancelable == null && Exploration.Includes(parent + ".isCancelable", true))
+        if (this.IsCancelable == null && ec.Includes("isCancelable",true))
         {
             this.IsCancelable = true;
         }
         //      C# -> System.Boolean? IsPolarisEventSeries
         // GraphQL -> isPolarisEventSeries: Boolean! (scalar)
-        if (this.IsPolarisEventSeries == null && Exploration.Includes(parent + ".isPolarisEventSeries", true))
+        if (this.IsPolarisEventSeries == null && ec.Includes("isPolarisEventSeries",true))
         {
             this.IsPolarisEventSeries = true;
         }
         //      C# -> DateTime? LastEventAddedAt
         // GraphQL -> lastEventAddedAt: DateTime (scalar)
-        if (this.LastEventAddedAt == null && Exploration.Includes(parent + ".lastEventAddedAt", true))
+        if (this.LastEventAddedAt == null && ec.Includes("lastEventAddedAt",true))
         {
             this.LastEventAddedAt = new DateTime();
         }
         //      C# -> DateTime? LastUpdated
         // GraphQL -> lastUpdated: DateTime! (scalar)
-        if (this.LastUpdated == null && Exploration.Includes(parent + ".lastUpdated", true))
+        if (this.LastUpdated == null && ec.Includes("lastUpdated",true))
         {
             this.LastUpdated = new DateTime();
         }
         //      C# -> DateTime? LastVerifiedAt
         // GraphQL -> lastVerifiedAt: DateTime (scalar)
-        if (this.LastVerifiedAt == null && Exploration.Includes(parent + ".lastVerifiedAt", true))
+        if (this.LastVerifiedAt == null && ec.Includes("lastVerifiedAt",true))
         {
             this.LastVerifiedAt = new DateTime();
         }
         //      C# -> System.String? Location
         // GraphQL -> location: String! (scalar)
-        if (this.Location == null && Exploration.Includes(parent + ".location", true))
+        if (this.Location == null && ec.Includes("location",true))
         {
             this.Location = "FETCH";
         }
         //      C# -> System.Int64? LogicalSize
         // GraphQL -> logicalSize: Long (scalar)
-        if (this.LogicalSize == null && Exploration.Includes(parent + ".logicalSize", true))
+        if (this.LogicalSize == null && ec.Includes("logicalSize",true))
         {
             this.LogicalSize = new System.Int64();
         }
         //      C# -> System.String? ObjectId
         // GraphQL -> objectId: String! (scalar)
-        if (this.ObjectId == null && Exploration.Includes(parent + ".objectId", true))
+        if (this.ObjectId == null && ec.Includes("objectId",true))
         {
             this.ObjectId = "FETCH";
         }
         //      C# -> System.String? ObjectName
         // GraphQL -> objectName: String (scalar)
-        if (this.ObjectName == null && Exploration.Includes(parent + ".objectName", true))
+        if (this.ObjectName == null && ec.Includes("objectName",true))
         {
             this.ObjectName = "FETCH";
         }
         //      C# -> System.String? OrgId
         // GraphQL -> orgId: UUID (scalar)
-        if (this.OrgId == null && Exploration.Includes(parent + ".orgId", true))
+        if (this.OrgId == null && ec.Includes("orgId",true))
         {
             this.OrgId = "FETCH";
         }
         //      C# -> System.String? OrgName
         // GraphQL -> orgName: String (scalar)
-        if (this.OrgName == null && Exploration.Includes(parent + ".orgName", true))
+        if (this.OrgName == null && ec.Includes("orgName",true))
         {
             this.OrgName = "FETCH";
         }
         //      C# -> System.String? Progress
         // GraphQL -> progress: String (scalar)
-        if (this.Progress == null && Exploration.Includes(parent + ".progress", true))
+        if (this.Progress == null && ec.Includes("progress",true))
         {
             this.Progress = "FETCH";
         }
         //      C# -> DateTime? StartTime
         // GraphQL -> startTime: DateTime (scalar)
-        if (this.StartTime == null && Exploration.Includes(parent + ".startTime", true))
+        if (this.StartTime == null && ec.Includes("startTime",true))
         {
             this.StartTime = new DateTime();
         }
         //      C# -> ActivityConnection? ActivityConnection
         // GraphQL -> activityConnection: ActivityConnection! (type)
-        if (this.ActivityConnection == null && Exploration.Includes(parent + ".activityConnection"))
+        if (this.ActivityConnection == null && ec.Includes("activityConnection",false))
         {
             this.ActivityConnection = new ActivityConnection();
-            this.ActivityConnection.ApplyExploratoryFieldSpec(parent + ".activityConnection");
+            this.ActivityConnection.ApplyExploratoryFieldSpec(ec.NewChild("activityConnection"));
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster (type)
-        if (this.Cluster == null && Exploration.Includes(parent + ".cluster"))
+        if (this.Cluster == null && ec.Includes("cluster",false))
         {
             this.Cluster = new Cluster();
-            this.Cluster.ApplyExploratoryFieldSpec(parent + ".cluster");
+            this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
         }
         //      C# -> List<Org>? Organizations
         // GraphQL -> organizations: [Org!]! (type)
-        if (this.Organizations == null && Exploration.Includes(parent + ".organizations"))
+        if (this.Organizations == null && ec.Includes("organizations",false))
         {
             this.Organizations = new List<Org>();
-            this.Organizations.ApplyExploratoryFieldSpec(parent + ".organizations");
+            this.Organizations.ApplyExploratoryFieldSpec(ec.NewChild("organizations"));
         }
     }
 
@@ -734,12 +733,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ActivitySeries> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ActivitySeries());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ActivitySeries> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

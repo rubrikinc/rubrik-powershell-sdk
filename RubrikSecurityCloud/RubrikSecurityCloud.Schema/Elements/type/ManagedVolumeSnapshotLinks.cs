@@ -81,22 +81,21 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> Link? ExportLink
         // GraphQL -> exportLink: Link (type)
-        if (this.ExportLink == null && Exploration.Includes(parent + ".exportLink"))
+        if (this.ExportLink == null && ec.Includes("exportLink",false))
         {
             this.ExportLink = new Link();
-            this.ExportLink.ApplyExploratoryFieldSpec(parent + ".exportLink");
+            this.ExportLink.ApplyExploratoryFieldSpec(ec.NewChild("exportLink"));
         }
         //      C# -> Link? Self
         // GraphQL -> self: Link (type)
-        if (this.Self == null && Exploration.Includes(parent + ".self"))
+        if (this.Self == null && ec.Includes("self",false))
         {
             this.Self = new Link();
-            this.Self.ApplyExploratoryFieldSpec(parent + ".self");
+            this.Self.ApplyExploratoryFieldSpec(ec.NewChild("self"));
         }
     }
 
@@ -130,12 +129,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ManagedVolumeSnapshotLinks> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ManagedVolumeSnapshotLinks());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ManagedVolumeSnapshotLinks> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

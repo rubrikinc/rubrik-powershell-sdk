@@ -234,85 +234,84 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> AwsNativeS3SlaConfig? AwsNativeS3SlaConfig
         // GraphQL -> awsNativeS3SlaConfig: AwsNativeS3SlaConfig (type)
-        if (this.AwsNativeS3SlaConfig == null && Exploration.Includes(parent + ".awsNativeS3SlaConfig"))
+        if (this.AwsNativeS3SlaConfig == null && ec.Includes("awsNativeS3SlaConfig",false))
         {
             this.AwsNativeS3SlaConfig = new AwsNativeS3SlaConfig();
-            this.AwsNativeS3SlaConfig.ApplyExploratoryFieldSpec(parent + ".awsNativeS3SlaConfig");
+            this.AwsNativeS3SlaConfig.ApplyExploratoryFieldSpec(ec.NewChild("awsNativeS3SlaConfig"));
         }
         //      C# -> AwsRdsConfig? AwsRdsConfig
         // GraphQL -> awsRdsConfig: AwsRdsConfig (type)
-        if (this.AwsRdsConfig == null && Exploration.Includes(parent + ".awsRdsConfig"))
+        if (this.AwsRdsConfig == null && ec.Includes("awsRdsConfig",false))
         {
             this.AwsRdsConfig = new AwsRdsConfig();
-            this.AwsRdsConfig.ApplyExploratoryFieldSpec(parent + ".awsRdsConfig");
+            this.AwsRdsConfig.ApplyExploratoryFieldSpec(ec.NewChild("awsRdsConfig"));
         }
         //      C# -> AzureBlobConfig? AzureBlobConfig
         // GraphQL -> azureBlobConfig: AzureBlobConfig (type)
-        if (this.AzureBlobConfig == null && Exploration.Includes(parent + ".azureBlobConfig"))
+        if (this.AzureBlobConfig == null && ec.Includes("azureBlobConfig",false))
         {
             this.AzureBlobConfig = new AzureBlobConfig();
-            this.AzureBlobConfig.ApplyExploratoryFieldSpec(parent + ".azureBlobConfig");
+            this.AzureBlobConfig.ApplyExploratoryFieldSpec(ec.NewChild("azureBlobConfig"));
         }
         //      C# -> AzureSqlDatabaseDbConfig? AzureSqlDatabaseDbConfig
         // GraphQL -> azureSqlDatabaseDbConfig: AzureSqlDatabaseDbConfig (type)
-        if (this.AzureSqlDatabaseDbConfig == null && Exploration.Includes(parent + ".azureSqlDatabaseDbConfig"))
+        if (this.AzureSqlDatabaseDbConfig == null && ec.Includes("azureSqlDatabaseDbConfig",false))
         {
             this.AzureSqlDatabaseDbConfig = new AzureSqlDatabaseDbConfig();
-            this.AzureSqlDatabaseDbConfig.ApplyExploratoryFieldSpec(parent + ".azureSqlDatabaseDbConfig");
+            this.AzureSqlDatabaseDbConfig.ApplyExploratoryFieldSpec(ec.NewChild("azureSqlDatabaseDbConfig"));
         }
         //      C# -> AzureSqlManagedInstanceDbConfig? AzureSqlManagedInstanceDbConfig
         // GraphQL -> azureSqlManagedInstanceDbConfig: AzureSqlManagedInstanceDbConfig (type)
-        if (this.AzureSqlManagedInstanceDbConfig == null && Exploration.Includes(parent + ".azureSqlManagedInstanceDbConfig"))
+        if (this.AzureSqlManagedInstanceDbConfig == null && ec.Includes("azureSqlManagedInstanceDbConfig",false))
         {
             this.AzureSqlManagedInstanceDbConfig = new AzureSqlManagedInstanceDbConfig();
-            this.AzureSqlManagedInstanceDbConfig.ApplyExploratoryFieldSpec(parent + ".azureSqlManagedInstanceDbConfig");
+            this.AzureSqlManagedInstanceDbConfig.ApplyExploratoryFieldSpec(ec.NewChild("azureSqlManagedInstanceDbConfig"));
         }
         //      C# -> Db2Config? Db2Config
         // GraphQL -> db2Config: Db2Config (type)
-        if (this.Db2Config == null && Exploration.Includes(parent + ".db2Config"))
+        if (this.Db2Config == null && ec.Includes("db2Config",false))
         {
             this.Db2Config = new Db2Config();
-            this.Db2Config.ApplyExploratoryFieldSpec(parent + ".db2Config");
+            this.Db2Config.ApplyExploratoryFieldSpec(ec.NewChild("db2Config"));
         }
         //      C# -> MongoConfig? MongoConfig
         // GraphQL -> mongoConfig: MongoConfig (type)
-        if (this.MongoConfig == null && Exploration.Includes(parent + ".mongoConfig"))
+        if (this.MongoConfig == null && ec.Includes("mongoConfig",false))
         {
             this.MongoConfig = new MongoConfig();
-            this.MongoConfig.ApplyExploratoryFieldSpec(parent + ".mongoConfig");
+            this.MongoConfig.ApplyExploratoryFieldSpec(ec.NewChild("mongoConfig"));
         }
         //      C# -> MssqlConfig? MssqlConfig
         // GraphQL -> mssqlConfig: MssqlConfig (type)
-        if (this.MssqlConfig == null && Exploration.Includes(parent + ".mssqlConfig"))
+        if (this.MssqlConfig == null && ec.Includes("mssqlConfig",false))
         {
             this.MssqlConfig = new MssqlConfig();
-            this.MssqlConfig.ApplyExploratoryFieldSpec(parent + ".mssqlConfig");
+            this.MssqlConfig.ApplyExploratoryFieldSpec(ec.NewChild("mssqlConfig"));
         }
         //      C# -> OracleConfig? OracleConfig
         // GraphQL -> oracleConfig: OracleConfig (type)
-        if (this.OracleConfig == null && Exploration.Includes(parent + ".oracleConfig"))
+        if (this.OracleConfig == null && ec.Includes("oracleConfig",false))
         {
             this.OracleConfig = new OracleConfig();
-            this.OracleConfig.ApplyExploratoryFieldSpec(parent + ".oracleConfig");
+            this.OracleConfig.ApplyExploratoryFieldSpec(ec.NewChild("oracleConfig"));
         }
         //      C# -> SapHanaConfig? SapHanaConfig
         // GraphQL -> sapHanaConfig: SapHanaConfig (type)
-        if (this.SapHanaConfig == null && Exploration.Includes(parent + ".sapHanaConfig"))
+        if (this.SapHanaConfig == null && ec.Includes("sapHanaConfig",false))
         {
             this.SapHanaConfig = new SapHanaConfig();
-            this.SapHanaConfig.ApplyExploratoryFieldSpec(parent + ".sapHanaConfig");
+            this.SapHanaConfig.ApplyExploratoryFieldSpec(ec.NewChild("sapHanaConfig"));
         }
         //      C# -> VmwareVmConfig? VmwareVmConfig
         // GraphQL -> vmwareVmConfig: VmwareVmConfig (type)
-        if (this.VmwareVmConfig == null && Exploration.Includes(parent + ".vmwareVmConfig"))
+        if (this.VmwareVmConfig == null && ec.Includes("vmwareVmConfig",false))
         {
             this.VmwareVmConfig = new VmwareVmConfig();
-            this.VmwareVmConfig.ApplyExploratoryFieldSpec(parent + ".vmwareVmConfig");
+            this.VmwareVmConfig.ApplyExploratoryFieldSpec(ec.NewChild("vmwareVmConfig"));
         }
     }
 
@@ -346,12 +345,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<ObjectSpecificConfigs> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new ObjectSpecificConfigs());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<ObjectSpecificConfigs> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

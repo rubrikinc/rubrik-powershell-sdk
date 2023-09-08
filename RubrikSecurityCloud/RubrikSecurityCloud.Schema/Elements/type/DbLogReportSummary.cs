@@ -201,72 +201,71 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> DatabaseType? DatabaseType
         // GraphQL -> databaseType: DatabaseType! (enum)
-        if (this.DatabaseType == null && Exploration.Includes(parent + ".databaseType", true))
+        if (this.DatabaseType == null && ec.Includes("databaseType",true))
         {
             this.DatabaseType = new DatabaseType();
         }
         //      C# -> System.String? EffectiveSlaDomainId
         // GraphQL -> effectiveSlaDomainId: String! (scalar)
-        if (this.EffectiveSlaDomainId == null && Exploration.Includes(parent + ".effectiveSlaDomainId", true))
+        if (this.EffectiveSlaDomainId == null && ec.Includes("effectiveSlaDomainId",true))
         {
             this.EffectiveSlaDomainId = "FETCH";
         }
         //      C# -> System.String? EffectiveSlaDomainName
         // GraphQL -> effectiveSlaDomainName: String! (scalar)
-        if (this.EffectiveSlaDomainName == null && Exploration.Includes(parent + ".effectiveSlaDomainName", true))
+        if (this.EffectiveSlaDomainName == null && ec.Includes("effectiveSlaDomainName",true))
         {
             this.EffectiveSlaDomainName = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        if (this.Id == null && ec.Includes("id",true))
         {
             this.Id = "FETCH";
         }
         //      C# -> DateTime? LastSnapshotTime
         // GraphQL -> lastSnapshotTime: DateTime (scalar)
-        if (this.LastSnapshotTime == null && Exploration.Includes(parent + ".lastSnapshotTime", true))
+        if (this.LastSnapshotTime == null && ec.Includes("lastSnapshotTime",true))
         {
             this.LastSnapshotTime = new DateTime();
         }
         //      C# -> DateTime? LatestRecoveryTime
         // GraphQL -> latestRecoveryTime: DateTime (scalar)
-        if (this.LatestRecoveryTime == null && Exploration.Includes(parent + ".latestRecoveryTime", true))
+        if (this.LatestRecoveryTime == null && ec.Includes("latestRecoveryTime",true))
         {
             this.LatestRecoveryTime = new DateTime();
         }
         //      C# -> System.String? Location
         // GraphQL -> location: String! (scalar)
-        if (this.Location == null && Exploration.Includes(parent + ".location", true))
+        if (this.Location == null && ec.Includes("location",true))
         {
             this.Location = "FETCH";
         }
         //      C# -> System.Int64? LogBackupDelay
         // GraphQL -> logBackupDelay: Long (scalar)
-        if (this.LogBackupDelay == null && Exploration.Includes(parent + ".logBackupDelay", true))
+        if (this.LogBackupDelay == null && ec.Includes("logBackupDelay",true))
         {
             this.LogBackupDelay = new System.Int64();
         }
         //      C# -> System.Int32? LogBackupFrequency
         // GraphQL -> logBackupFrequency: Int (scalar)
-        if (this.LogBackupFrequency == null && Exploration.Includes(parent + ".logBackupFrequency", true))
+        if (this.LogBackupFrequency == null && ec.Includes("logBackupFrequency",true))
         {
             this.LogBackupFrequency = Int32.MinValue;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        if (this.Name == null && ec.Includes("name",true))
         {
             this.Name = "FETCH";
         }
         //      C# -> System.String? PrimaryClusterId
         // GraphQL -> primaryClusterId: String! (scalar)
-        if (this.PrimaryClusterId == null && Exploration.Includes(parent + ".primaryClusterId", true))
+        if (this.PrimaryClusterId == null && ec.Includes("primaryClusterId",true))
         {
             this.PrimaryClusterId = "FETCH";
         }
@@ -302,12 +301,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<DbLogReportSummary> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new DbLogReportSummary());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<DbLogReportSummary> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 

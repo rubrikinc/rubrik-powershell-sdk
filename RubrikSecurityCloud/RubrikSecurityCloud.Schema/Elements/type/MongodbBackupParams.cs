@@ -75,18 +75,17 @@ namespace RubrikSecurityCloud.Types
 
 
     
-    //[JsonIgnore]
-    public override void ApplyExploratoryFieldSpec(String parent = "")
+    public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
         //      C# -> System.String? StoreName
         // GraphQL -> storeName: String! (scalar)
-        if (this.StoreName == null && Exploration.Includes(parent + ".storeName", true))
+        if (this.StoreName == null && ec.Includes("storeName",true))
         {
             this.StoreName = "FETCH";
         }
         //      C# -> System.Int64? WatcherFrequency
         // GraphQL -> watcherFrequency: Long! (scalar)
-        if (this.WatcherFrequency == null && Exploration.Includes(parent + ".watcherFrequency", true))
+        if (this.WatcherFrequency == null && ec.Includes("watcherFrequency",true))
         {
             this.WatcherFrequency = new System.Int64();
         }
@@ -122,12 +121,17 @@ namespace RubrikSecurityCloud.Types
 
         public static void ApplyExploratoryFieldSpec(
             this List<MongodbBackupParams> list, 
-            String parent = "")
+            ExplorationContext ec)
         {
             if ( list.Count == 0 ) {
                 list.Add(new MongodbBackupParams());
             }
-            list[0].ApplyExploratoryFieldSpec(parent);
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void Fetch(this List<MongodbBackupParams> list)
+        {
+            list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
     }
 
