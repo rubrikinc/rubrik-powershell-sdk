@@ -15,30 +15,17 @@ function Remove-RscMssqlLiveMount {
     ___ Add example here ___
     #>
 
-    [CmdletBinding(
-        # ___ Example ___
-        # DefaultParameterSetName = "Id"
-    )]
+    [CmdletBinding()]
     Param(
-        # ___ Example ___
-        # Id parameter set:
-        # [Parameter(
-        #     ParameterSetName = "Id",
-        #     Mandatory = $false, 
-        #     ValueFromPipelineByPropertyName = $true
-        # )]
-        # [String]$Id,
-        
-        #  Common parameter to all parameter sets:
         [Parameter(
             Mandatory = $false, 
             ValueFromPipelineByPropertyName = $true
         )]
-        [String]$Id, 
+        [RubrikSecurityCloud.Types.MssqlDatabaseLiveMount]$MssqlLiveMount, 
 
         [Parameter(
             Mandatory = $false, 
-            ValueFromPipelineByPropertyName = $true
+            ValueFromPipelineByPropertyName = $false
         )]
         [Switch]$Force 
 
@@ -57,8 +44,8 @@ function Remove-RscMssqlLiveMount {
         
         $mssqlInputs = Invoke-RscMutateMssql -DeleteLiveMount -GetInput
         $mssqlInputs.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.DeleteMssqlLiveMountInput
-# This needs to be the FID of 
-        $mssqlInputs.Var.input.id = "$($Id)"
+
+        $mssqlInputs.Var.input.id = "$($MssqlLiveMount.Fid)"
         $mssqlInputs.Var.input.force = $force
 
         Invoke-RscMutateMssql -DeleteLiveMount -Var $mssqlInputs.var 
