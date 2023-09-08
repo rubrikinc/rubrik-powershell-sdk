@@ -16,7 +16,7 @@ function Get-RscMssqlInstance {
     or
     Get-RscMssqlInstance -List
 
-    Will return back a list of SQL Server Instances. The data returned will be the host and the instnace name nad ID will be in the 
+    Will return back a list of SQL Server Instances. The data returned will be the host and the instance name and ID will be in the 
     PhysicalChildConnection field
 
     .EXAMPLE
@@ -97,7 +97,7 @@ function Get-RscMssqlInstance {
             Mandatory = $false, 
             ValueFromPipelineByPropertyName = $true
         )]
-        [String]$clusterId #= "39b92c18-d897-4b55-a7f9-17ff178616d0"
+        [String]$clusterId = "39b92c18-d897-4b55-a7f9-17ff178616d0"
     )
     
     Process {
@@ -109,69 +109,68 @@ function Get-RscMssqlInstance {
         if ( $Detail -eq $true ) {
             $inputProfile = "DETAIL"
         }
-        # Write-Host "Get-RscMssqlInstance: $inputProfile"
-        # Write-Host "Get-RscMssqlInstance: $($PSCmdlet.ParameterSetName)"        
-           
+
+        #region Add Additional Fields to Output
+        $mssqlInputs = Invoke-RscQueryMssql -TopLevelDescendants -InputProfile $inputProfile -Patch "physicalChildConnection.Nodes" -GetInput
+        #endregion
+
         #region Base Filters
+        $mssqlInputs.Var.filter = @()
         if($PSBoundParameters.ContainsKey('isRelic')) {
             $relicFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
             $relicFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::IS_RELIC
             $relicFilter.texts = $isRelic
+            $mssqlInputs.Var.filter += $relicFilter
         }
 
         if($PSBoundParameters.ContainsKey('isArchived')) {
             $archivedFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
             $archivedFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::IS_ARCHIVED
             $archivedFilter.texts = $isArchived
+            $mssqlInputs.Var.filter += $archivedFilter
         }
 
         if($PSBoundParameters.ContainsKey('clusterId')) {
             $clusterFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
             $clusterFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::CLUSTER_ID
             $clusterFilter.texts = $clusterId
+            $mssqlInputs.Var.filter += $clusterFilter
         }
         #endregion
         
         #region Invoke GraphQL operation:
         switch ( $PSCmdlet.ParameterSetName){
             "List" {
-                $in = (Invoke-RscQueryMssql -TopLevelDescendants -InputProfile $inputProfile -GetInput)
-                # // TODO: Figure out way to include Windows Clusters
-                $in.Var.typeFilter = "PhysicalHost" #, "WindowsCluster")
-                $result = (Invoke-RscQueryMssql -TopLevelDescendants -Input $in -Patch "physicalChildConnection.Nodes").Nodes
+                # // TODO: Include Windows Clusters
+                $mssqlInputs.Var.typeFilter = "PhysicalHost"
+                
+                # // TODO: Get-RSCPages with the below line. 
+                $query = { Invoke-RscQueryMssql -TopLevelDescendants -InputProfile $inputProfile -Patch "physicalChildConnection.Nodes" -Input $mssqlInputs }
             }
-
             "Id"  {
                 # // TODO: Include Host information
                 # $inputProfile = "DETAIL"
                 $in = (Invoke-RscQueryMssql -Instance -InputProfile $inputProfile -GetInput)
                 $in.Var.fid = $id
-                $result = (Invoke-RscQueryMssql -Instance -Input $in -Patch "PhysicalPath")
+                $query = { Invoke-RscQueryMssql -Instance -Input $in -Patch "PhysicalPath" }
             }
-
             "HostName" {
                 $nameFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
                 $nameFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::NAME_EXACT_MATCH
                 $nameFilter.texts = $Hostname
-
-                $mssqlInputs = Invoke-RscQueryMssql -TopLevelDescendants -GetInput
-                $mssqlInputs.Var.filter = @()
-                
-                if ( -not [string]::IsNullOrEmpty( $relicFilter ) ) {
-                    $mssqlInputs.Var.filter += $relicFilter
-                }
-                if ( -not [string]::IsNullOrEmpty( $archivedFilter ) ) {
-                    $mssqlInputs.Var.filter += $archivedFilter
-                }
-                if ( -not [string]::IsNullOrEmpty( $clusterFilter ) ) {
-                    $mssqlInputs.Var.filter += $clusterFilter
-                }
                 $mssqlInputs.Var.filter += $nameFilter
-                $result = (Invoke-RscQueryMssql -TopLevelDescendants -Input $mssqlInputs).nodes 
 
+                $query = { Invoke-RscQueryMssql -TopLevelDescendants -InputProfile $inputProfile -Patch "physicalChildConnection.Nodes" -Input $mssqlInputs }
             }
         }
         #endregion
-        $result | Remove-NullProperties
+        $result = Invoke-Command -ScriptBlock $query 
+        if ([bool]($result.PSobject.Properties.name -match "Nodes")){
+            $result.Nodes #| Remove-NullProperties
+        }else{
+            $result #| Remove-NullProperties
+        }
+        
+        
     } 
 }
